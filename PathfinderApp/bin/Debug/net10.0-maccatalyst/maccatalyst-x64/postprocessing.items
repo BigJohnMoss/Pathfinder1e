@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="PathfinderApp.app/Contents\MacOS\">
+      <IsAppExtension>false</IsAppExtension>
+      <BCSymbolMapName>.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>true</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>true</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>PathfinderApp.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile></SymbolFile>
+      <DSymName>PathfinderApp.app.dSYM</DSymName>
+      <SourceProjectPath>C:\Users\kgfm2\Documents\Repo\Pathfinder1e\PathfinderApp</SourceProjectPath>
+      <IsXPCService></IsXPCService>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>
