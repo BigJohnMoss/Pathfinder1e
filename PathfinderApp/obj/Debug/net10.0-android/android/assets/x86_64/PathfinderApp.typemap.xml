@@ -1,10 +1,10 @@
-<api type="debug" assembly-name="PathfinderApp" mvid="8a42172da57a48679046f1b6240f4222">
+<api type="debug" assembly-name="PathfinderApp" mvid="3a113e38c49e40d29e96f3eba473c6ea">
   <java-to-managed>
-    <entry java-name="crc64eda9f8c1d8f2e5d3/MainActivity" managed-name="PathfinderApp.MainActivity, PathfinderApp" managed-type-token-id="33554441" />
-    <entry java-name="crc64eda9f8c1d8f2e5d3/MainApplication" managed-name="PathfinderApp.MainApplication, PathfinderApp" managed-type-token-id="33554442" />
+    <entry java-name="crc64eda9f8c1d8f2e5d3/MainActivity" managed-name="PathfinderApp.MainActivity, PathfinderApp" managed-type-token-id="33554451" />
+    <entry java-name="crc64eda9f8c1d8f2e5d3/MainApplication" managed-name="PathfinderApp.MainApplication, PathfinderApp" managed-type-token-id="33554452" />
   </java-to-managed>
   <managed-to-java>
-    <entry java-name="crc64eda9f8c1d8f2e5d3/MainActivity" managed-name="PathfinderApp.MainActivity, PathfinderApp" managed-type-token-id="33554441" />
-    <entry java-name="crc64eda9f8c1d8f2e5d3/MainApplication" managed-name="PathfinderApp.MainApplication, PathfinderApp" managed-type-token-id="33554442" />
+    <entry java-name="crc64eda9f8c1d8f2e5d3/MainActivity" managed-name="PathfinderApp.MainActivity, PathfinderApp" managed-type-token-id="33554451" />
+    <entry java-name="crc64eda9f8c1d8f2e5d3/MainApplication" managed-name="PathfinderApp.MainApplication, PathfinderApp" managed-type-token-id="33554452" />
   </managed-to-java>
 </api>

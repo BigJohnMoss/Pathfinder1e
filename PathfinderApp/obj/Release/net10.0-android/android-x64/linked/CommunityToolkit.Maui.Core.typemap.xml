@@ -1,0 +1,10 @@
+<api type="release" assembly-name="CommunityToolkit.Maui.Core" mvid="d88dc89548ea4f2e87fe8464678603cd">
+  <module assembly-name="CommunityToolkit.Maui.Core" mvid="d88dc89548ea4f2e87fe8464678603cd" mvid-bytes="lciN2OpILk+H/oRkZ4YDzQ==">
+    <types-scratch>
+      <entry key="crc64d6358e7bf64fbac4/SpeechToTextImplementation_SpeechRecognitionListener" java-name="crc64d6358e7bf64fbac4/SpeechToTextImplementation_SpeechRecognitionListener" managed-type-name="CommunityToolkit.Maui.Media.SpeechToTextImplementation/SpeechRecognitionListener" token="33554534" />
+      <entry key="crc64159f3caeb1269279/MauiDrawingView" java-name="crc64159f3caeb1269279/MauiDrawingView" managed-type-name="CommunityToolkit.Maui.Core.Views.MauiDrawingView" token="33554511" />
+      <entry key="crc64159f3caeb1269279/MauiPopup" java-name="crc64159f3caeb1269279/MauiPopup" managed-type-name="CommunityToolkit.Maui.Core.Views.MauiPopup" token="33554513" />
+      <entry key="crc64159f3caeb1269279/MauiSemanticOrderView" java-name="crc64159f3caeb1269279/MauiSemanticOrderView" managed-type-name="CommunityToolkit.Maui.Core.Views.MauiSemanticOrderView" token="33554515" />
+    </types-scratch>
+  </module>
+</api>

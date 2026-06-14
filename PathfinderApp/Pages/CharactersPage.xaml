@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PathfinderApp.Pages.CharactersPage"
+    Title="Characters">
+
+    <StackLayout Padding="10">
+        <Button Text="Add" Command="{Binding AddCommand}" HorizontalOptions="End" />
+
+        <CollectionView ItemsSource="{Binding Characters}" SelectionMode="Single" SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="8">
+                        <Label Text="{Binding Name}" FontAttributes="Bold" />
+                        <Label Text="{Binding Summary}" FontSize="Small" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>

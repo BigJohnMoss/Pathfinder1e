@@ -1,0 +1,8 @@
+<api type="release" assembly-name="PathfinderApp" mvid="231be11aa83d42cbb7b842e321e1579a">
+  <module assembly-name="PathfinderApp" mvid="231be11aa83d42cbb7b842e321e1579a" mvid-bytes="GuEbIz2oy0K3uELjIeFXmg==">
+    <types-scratch>
+      <entry key="crc64eda9f8c1d8f2e5d3/MainActivity" java-name="crc64eda9f8c1d8f2e5d3/MainActivity" managed-type-name="PathfinderApp.MainActivity" token="33554451" />
+      <entry key="crc64eda9f8c1d8f2e5d3/MainApplication" java-name="crc64eda9f8c1d8f2e5d3/MainApplication" managed-type-name="PathfinderApp.MainApplication" token="33554452" />
+    </types-scratch>
+  </module>
+</api>

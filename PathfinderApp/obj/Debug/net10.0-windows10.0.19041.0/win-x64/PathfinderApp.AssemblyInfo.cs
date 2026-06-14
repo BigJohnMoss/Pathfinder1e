@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PathfinderApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+29347b1d00cf6df0fdca07d173542d4fde23027d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+164f3621650ae44c20e0229170a1c7e95e7b0a33")]
 [assembly: System.Reflection.AssemblyProductAttribute("PathfinderApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PathfinderApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

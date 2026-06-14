@@ -1,0 +1,4 @@
+C:\Users\kgfm2\Documents\Repo\Pathfinder1e\PathfinderApp\bin\Release\net10.0-android\publish\com.companyname.pathfinderapp-Signed.aab
+C:\Users\kgfm2\Documents\Repo\Pathfinder1e\PathfinderApp\bin\Release\net10.0-android\publish\com.companyname.pathfinderapp.aab
+C:\Users\kgfm2\Documents\Repo\Pathfinder1e\PathfinderApp\bin\Release\net10.0-android\publish\com.companyname.pathfinderapp-Signed.apk
+C:\Users\kgfm2\Documents\Repo\Pathfinder1e\PathfinderApp\bin\Release\net10.0-android\publish\_Microsoft.Android.Resource.Designer.dll
