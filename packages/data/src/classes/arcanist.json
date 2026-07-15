@@ -1,0 +1,198 @@
+{
+  "id": "arcanist",
+  "name": "Arcanist",
+  "classType": "hybrid",
+  "hitDie": 6,
+  "babProgression": "half",
+  "saves": {
+    "fortitude": "poor",
+    "reflex": "poor",
+    "will": "good"
+  },
+  "skillRanksPerLevel": 2,
+  "classSkills": [
+    "Appraise",
+    "Craft",
+    "Fly",
+    "Knowledge",
+    "Linguistics",
+    "Profession",
+    "Spellcraft",
+    "Use Magic Device"
+  ],
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 8,
+    "url": "https://aonprd.com/ClassDisplay.aspx?ItemName=Arcanist"
+  },
+  "features": [
+    {
+      "id": "arcanist-spellcasting-1",
+      "name": "Spellcasting",
+      "level": 1,
+      "type": "spellcasting",
+      "summary": "Prepare spells from a spellbook and cast them using arcanist spell slots.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "arcanist-spellcasting",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcane-reservoir-1",
+      "name": "Arcane Reservoir",
+      "level": 1,
+      "type": "core",
+      "summary": "Gain a daily pool of arcane reservoir points.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "arcane-reservoir",
+      "scaling": "3 + floor(classLevel / 2)",
+      "uses": "points per day"
+    },
+    {
+      "id": "arcanist-exploit-1",
+      "name": "Arcanist Exploit",
+      "level": 1,
+      "type": "selectable",
+      "summary": "Choose one arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "consume-spells-1",
+      "name": "Consume Spells",
+      "level": 1,
+      "type": "core",
+      "summary": "Expend prepared spell slots to restore reservoir points.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": null,
+      "scaling": null,
+      "uses": "uses Charisma modifier per day"
+    },
+    {
+      "id": "arcanist-exploit-3",
+      "name": "Arcanist Exploit",
+      "level": 3,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcanist-exploit-5",
+      "name": "Arcanist Exploit",
+      "level": 5,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcanist-exploit-7",
+      "name": "Arcanist Exploit",
+      "level": 7,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcanist-exploit-9",
+      "name": "Arcanist Exploit",
+      "level": 9,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcanist-exploit-11",
+      "name": "Arcanist Exploit",
+      "level": 11,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcanist-exploit-13",
+      "name": "Arcanist Exploit",
+      "level": 13,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcanist-exploit-15",
+      "name": "Arcanist Exploit",
+      "level": 15,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcanist-exploit-17",
+      "name": "Arcanist Exploit",
+      "level": 17,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "arcanist-exploit-19",
+      "name": "Arcanist Exploit",
+      "level": 19,
+      "type": "selectable",
+      "summary": "Choose another arcanist exploit.",
+      "choiceRequired": true,
+      "optionGroupId": "arcanist-exploits",
+      "progressionKey": "arcanist-exploit",
+      "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "magical-supremacy-20",
+      "name": "Magical Supremacy",
+      "level": 20,
+      "type": "capstone",
+      "summary": "Use reservoir and exploits with exceptional efficiency.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": null,
+      "scaling": null,
+      "uses": null
+    }
+  ]
+}

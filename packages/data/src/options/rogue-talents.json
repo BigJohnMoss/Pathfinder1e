@@ -1,0 +1,41 @@
+{
+  "id": "rogue-talents",
+  "name": "Rogue Talents",
+  "classIds": [
+    "rogue"
+  ],
+  "options": [
+    {
+      "id": "combat-trick",
+      "groupId": "rogue-talents",
+      "name": "Combat Trick",
+      "classIds": [
+        "rogue"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Gain a combat feat for which you qualify.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": null,
+        "url": "https://aonprd.com/RogueTalents.aspx"
+      }
+    },
+    {
+      "id": "bleeding-attack",
+      "groupId": "rogue-talents",
+      "name": "Bleeding Attack",
+      "classIds": [
+        "rogue"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "A sneak attack can cause ongoing bleed damage.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": null,
+        "url": "https://aonprd.com/RogueTalents.aspx"
+      }
+    }
+  ]
+}

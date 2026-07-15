@@ -1,0 +1,22 @@
+{
+  "id": "power-attack",
+  "name": "Power Attack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Trade attack bonus for increased melee damage.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Power%20Attack"
+  }
+}

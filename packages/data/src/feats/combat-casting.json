@@ -1,0 +1,12 @@
+{
+  "id": "combat-casting",
+  "name": "Combat Casting",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain a bonus on concentration checks made to cast defensively or while grappled.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Combat%20Casting"
+  }
+}

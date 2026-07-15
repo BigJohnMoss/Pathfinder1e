@@ -1,0 +1,2 @@
+import test from "node:test";import assert from "node:assert/strict";import {readdir,readFile} from "node:fs/promises";
+test("all class feature occurrence ids are unique",async()=>{const dir=new URL('../packages/data/src/classes/',import.meta.url);const seen=new Set();for(const f of await readdir(dir)){if(!f.endsWith('.json'))continue;const c=JSON.parse(await readFile(new URL(f,dir),'utf8'));for(const x of c.features){assert.ok(!seen.has(x.id),`duplicate ${x.id}`);seen.add(x.id);}}});

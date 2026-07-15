@@ -1,0 +1,39 @@
+{
+  "id": "human",
+  "name": "Human",
+  "size": "medium",
+  "speed": 30,
+  "type": "humanoid",
+  "subtypes": [
+    "human"
+  ],
+  "abilityModifiers": {
+    "choice": {
+      "count": 1,
+      "amount": 2
+    }
+  },
+  "languages": {
+    "automatic": [
+      "Common"
+    ],
+    "bonus": "Any non-secret language"
+  },
+  "traits": [
+    {
+      "id": "human-bonus-feat",
+      "name": "Bonus Feat",
+      "summary": "Gain one additional feat at 1st level."
+    },
+    {
+      "id": "skilled",
+      "name": "Skilled",
+      "summary": "Gain one additional skill rank at every level."
+    }
+  ],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://aonprd.com/RacesDisplay.aspx?ItemName=Human"
+  }
+}
