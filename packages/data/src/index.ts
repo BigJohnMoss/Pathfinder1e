@@ -1,0 +1,11 @@
+import arcanist from "./classes/arcanist.json" with { type: "json" };
+import barbarian from "./classes/barbarian.json" with { type: "json" };
+import fighter from "./classes/fighter.json" with { type: "json" };
+import rogue from "./classes/rogue.json" with { type: "json" };
+import human from "./races/human.json" with { type: "json" };
+import exploits from "./options/arcanist-exploits.json" with { type: "json" };
+import ragePowers from "./options/rage-powers.json" with { type: "json" };
+import rogueTalents from "./options/rogue-talents.json" with { type: "json" };
+export const classes = [arcanist, barbarian, fighter, rogue];
+export const races = [human];
+export const optionGroups = [exploits, ragePowers, rogueTalents];

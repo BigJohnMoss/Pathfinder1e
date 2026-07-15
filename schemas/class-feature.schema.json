@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "class-feature.schema.json",
+  "title": "Class Feature Occurrence",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "level",
+    "type",
+    "summary"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "level": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20
+    },
+    "type": {
+      "enum": [
+        "core",
+        "selectable",
+        "scaling",
+        "bonus-feat",
+        "capstone",
+        "spellcasting"
+      ]
+    },
+    "choiceRequired": {
+      "type": "boolean"
+    },
+    "optionGroupId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "progressionKey": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scaling": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uses": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

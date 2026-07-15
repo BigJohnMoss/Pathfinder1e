@@ -1,0 +1,41 @@
+{
+  "id": "rage-powers",
+  "name": "Rage Powers",
+  "classIds": [
+    "barbarian"
+  ],
+  "options": [
+    {
+      "id": "superstition",
+      "groupId": "rage-powers",
+      "name": "Superstition",
+      "classIds": [
+        "barbarian"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Gain a morale bonus on saving throws against spells and supernatural or spell-like abilities while raging.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": null,
+        "url": "https://aonprd.com/BarbarianRagePowers.aspx"
+      }
+    },
+    {
+      "id": "guarded-stance",
+      "groupId": "rage-powers",
+      "name": "Guarded Stance",
+      "classIds": [
+        "barbarian"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Gain a dodge bonus to Armor Class while raging.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": null,
+        "url": "https://aonprd.com/BarbarianRagePowers.aspx"
+      }
+    }
+  ]
+}

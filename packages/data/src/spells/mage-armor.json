@@ -1,0 +1,23 @@
+{
+  "id": "mage-armor",
+  "name": "Mage Armor",
+  "school": "conjuration",
+  "levelByClass": {
+    "sorcerer": 1,
+    "wizard": 1,
+    "arcanist": 1
+  },
+  "components": [
+    "V",
+    "S",
+    "F"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "summary": "Grant an armor bonus without physical armor.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Mage%20Armor"
+  }
+}

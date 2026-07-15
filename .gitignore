@@ -1,0 +1,16 @@
+node_modules/
+.next/
+dist/
+coverage/
+.env
+.env.local
+.DS_Store
+generated/*.json
+!generated/.gitkeep
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates

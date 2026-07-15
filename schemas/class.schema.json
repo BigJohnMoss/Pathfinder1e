@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "class.schema.json",
+  "title": "PF1e Class",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "classType",
+    "hitDie",
+    "babProgression",
+    "saves",
+    "skillRanksPerLevel",
+    "source",
+    "features"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "classType": {
+      "enum": [
+        "core",
+        "base",
+        "hybrid",
+        "occult",
+        "unchained",
+        "npc",
+        "prestige"
+      ]
+    },
+    "hitDie": {
+      "enum": [
+        6,
+        8,
+        10,
+        12
+      ]
+    },
+    "babProgression": {
+      "enum": [
+        "full",
+        "three-quarters",
+        "half"
+      ]
+    },
+    "saves": {
+      "type": "object",
+      "required": [
+        "fortitude",
+        "reflex",
+        "will"
+      ],
+      "properties": {
+        "fortitude": {
+          "enum": [
+            "good",
+            "poor"
+          ]
+        },
+        "reflex": {
+          "enum": [
+            "good",
+            "poor"
+          ]
+        },
+        "will": {
+          "enum": [
+            "good",
+            "poor"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "skillRanksPerLevel": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 8
+    },
+    "source": {
+      "$ref": "source.schema.json"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "class-feature.schema.json"
+      }
+    }
+  },
+  "additionalProperties": true
+}

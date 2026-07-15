@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "selectable-option.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "groupId",
+    "name",
+    "classIds",
+    "minimumLevel",
+    "prerequisites",
+    "benefit",
+    "source"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "groupId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "classIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "minimumLevel": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20
+    },
+    "prerequisites": {
+      "type": "array"
+    },
+    "benefit": {
+      "type": "string"
+    },
+    "source": {
+      "$ref": "source.schema.json"
+    }
+  },
+  "additionalProperties": true
+}
