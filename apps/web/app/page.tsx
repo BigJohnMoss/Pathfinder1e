@@ -11,7 +11,7 @@ import { FeatChoices } from "./feat-choices";
 import { ClassOptions } from "./class-options";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { CharacterTabs, StoragePlaceholder, type CharacterTabId } from "./character-tabs";
-import { abilityNames, arcaneReservoir, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, normalizePreparedSpells, normalizeSpellSlotUses, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
+import { abilityNames, arcaneReservoir, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, normalizePreparedSpells, normalizeSpellSlotUses, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
 const defaultAbilities = { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 };
@@ -40,7 +40,7 @@ export default function Home() {
   }), [abilities.intelligence, characterClass, level]);
   const combat = useMemo(() => characterCombatStats(characterClass, level, abilities), [abilities, characterClass, level]);
   const featSlots = useMemo(() => Array.from({ length: progression.featSlots }, (_, index) => ({ index, name: index === 0 ? "Human bonus feat" : `Feat ${index}` })), [progression.featSlots]);
-  const featChoices = featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const checks = selected ? featPrerequisiteResults(selected, { abilities, baseAttackBonus: progression.baseAttackBonus, classLevel: level, selectedIds: selectedFeatIds }) : []; return { ...slot, selected, checks }; });
+  const featChoices = featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const otherFeatIds = selectedFeatIds.filter((_, index) => index !== slot.index); const context = { abilities, baseAttackBonus: progression.baseAttackBonus, classLevel: level, selectedIds: otherFeatIds }; const checks = selected ? featPrerequisiteResults(selected, context) : []; return { ...slot, selected, checks, eligibleFeatIds: feats.filter((feat) => prerequisitesMet(feat.prerequisites, context)).map((feat) => feat.id) }; });
   const updateAbility = (ability: keyof typeof defaultAbilities, value: number) => setBaseAbilities((current) => ({ ...current, [ability]: Math.max(1, Math.min(40, value || 1)) }));
   const updateFeat = (index: number, featId: string) => setSelectedFeatIds((current) => { const next = [...current]; next[index] = featId; return next; });
   const skillBudget = skillRankBudget(progression.skillRanks, skillRanks);
