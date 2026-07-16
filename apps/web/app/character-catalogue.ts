@@ -2,6 +2,7 @@ import arcanist from "../../../packages/data/src/classes/arcanist.json";
 import barbarian from "../../../packages/data/src/classes/barbarian.json";
 import fighter from "../../../packages/data/src/classes/fighter.json";
 import rogue from "../../../packages/data/src/classes/rogue.json";
+import monk from "../../../packages/data/src/classes/monk.json";
 import human from "../../../packages/data/src/races/human.json";
 import dwarf from "../../../packages/data/src/races/dwarf.json";
 import elf from "../../../packages/data/src/races/elf.json";
@@ -45,7 +46,7 @@ import sleep from "../../../packages/data/src/spells/sleep.json";
 import arcanistSpellCatalogue from "../../../packages/data/src/spell-catalogues/arcanist-levels-2-9.json";
 import arcanistStarterSpellCatalogue from "../../../packages/data/src/spell-catalogues/arcanist-levels-0-1.json";
 
-export const classes = [arcanist, barbarian, fighter, rogue];
+export const classes = [arcanist, barbarian, fighter, monk, rogue];
 export const ancestries = [human, dwarf, elf, gnome, halfElf, halfling, halfOrc];
 export const feats = [combatCasting, powerAttack, cleave, combatExpertise, dodge, greatFortitude, improvedInitiative, improvedUnarmedStrike, ironWill, lightningReflexes, pointBlankShot, preciseShot, rapidShot, toughness, weaponFinesse];
 export const optionGroups = [exploits, ragePowers, rogueTalents, combatFeats, fighterWeaponGroups];
