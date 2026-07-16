@@ -1,0 +1,1 @@
+{"id":"combat-expertise","name":"Combat Expertise","type":"combat","prerequisites":[{"type":"ability","key":"intelligence","minimum":13}],"benefit":"Take a penalty on melee attack rolls to gain a dodge bonus to AC.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Combat%20Expertise"}}
