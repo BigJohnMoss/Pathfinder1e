@@ -59,6 +59,7 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   await user.click(screen.getByRole("button", { name: "Add Magic Missile" }));
   assert.equal((screen.getByRole("button", { name: "Add Shield" }) as HTMLButtonElement).disabled, true);
+  assert.match(screen.getByText("Color Spray").closest("article")?.textContent ?? "", /level 1 · DC 12/);
   await user.click(screen.getByRole("button", { name: "Remove Magic Missile" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
