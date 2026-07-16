@@ -1,0 +1,1 @@
+{"id":"greater-disarm","name":"Greater Disarm","type":"combat","prerequisites":[{"type":"feat","id":"improved-disarm"},{"type":"bab","minimum":6}],"benefit":"Disarmed weapons are knocked away.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
