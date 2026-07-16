@@ -94,6 +94,21 @@ export function normalizePreparedSpells(preparedSpellIds, spells, classId, prepa
   });
 }
 
+export function normalizeSpellSlotUses(slotUses, slots) {
+  const counts = new Map(slots.map(slot => [slot.level, slot.count]));
+  if (!slotUses || typeof slotUses !== "object" || Array.isArray(slotUses)) return {};
+  return Object.fromEntries(Object.entries(slotUses).flatMap(([rawLevel, used]) => {
+    const level = Number(rawLevel);
+    const count = counts.get(level);
+    return Number.isInteger(level) && Number.isInteger(used) && used > 0 && count ? [[level, Math.min(used, count)]] : [];
+  }));
+}
+
+export function arcaneReservoir(level) {
+  assertLevel(level);
+  return { maximum: 3 + level, dailyRefresh: 3 + Math.floor(level / 2) };
+}
+
 export function bonusSpellsPerDay(abilityScore, maximumSpellLevel) {
   if (!Number.isInteger(maximumSpellLevel) || maximumSpellLevel < 0 || maximumSpellLevel > 9) throw new RangeError("Maximum spell level must be an integer from 0 to 9.");
   const modifier = abilityModifier(abilityScore);
@@ -141,7 +156,9 @@ export function normalizeCharacterDraft(value, { classIds = null } = {}) {
     selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
     skillRanks: isRankRecord(draft.skillRanks),
     selectedOptions: isStringRecord(draft.selectedOptions),
-    preparedSpells: Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : []
+    preparedSpells: Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : [],
+    spellSlotUses: isRankRecord(draft.spellSlotUses),
+    arcaneReservoir: Number.isInteger(draft.arcaneReservoir) && draft.arcaneReservoir >= 0 ? draft.arcaneReservoir : null
   };
 }
 
