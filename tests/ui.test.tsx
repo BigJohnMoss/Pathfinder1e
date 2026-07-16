@@ -49,6 +49,7 @@ test("prevents duplicate feats and prepares spells", async () => {
   const user = userEvent.setup();
   render(<Home />);
   assert.match(screen.getByText(/Arcanist slots/).textContent ?? "", /3 1st \(2 base \+ 1 Intelligence\)/);
+  assert.match(screen.getByText(/Mage Armor/).textContent ?? "", /DC 12/);
   await user.clear(screen.getByLabelText("Level"));
   await user.type(screen.getByLabelText("Level"), "3");
   await user.selectOptions(screen.getByLabelText("Human bonus feat"), "combat-casting");
