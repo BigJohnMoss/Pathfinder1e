@@ -1,0 +1,1 @@
+{"id":"deafening-critical","name":"Deafening Critical","type":"combat","prerequisites":[{"type":"feat","id":"critical-focus"},{"type":"bab","minimum":13}],"benefit":"Critical hits can deafen foes.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
