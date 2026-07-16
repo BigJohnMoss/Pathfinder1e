@@ -1,27 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import arcanist from "../../../packages/data/src/classes/arcanist.json";
-import barbarian from "../../../packages/data/src/classes/barbarian.json";
-import fighter from "../../../packages/data/src/classes/fighter.json";
-import rogue from "../../../packages/data/src/classes/rogue.json";
-import human from "../../../packages/data/src/races/human.json";
-import combatCasting from "../../../packages/data/src/feats/combat-casting.json";
-import powerAttack from "../../../packages/data/src/feats/power-attack.json";
-import exploits from "../../../packages/data/src/options/arcanist-exploits.json";
-import ragePowers from "../../../packages/data/src/options/rage-powers.json";
-import rogueTalents from "../../../packages/data/src/options/rogue-talents.json";
-import mageArmor from "../../../packages/data/src/spells/mage-armor.json";
-import magicMissile from "../../../packages/data/src/spells/magic-missile.json";
+import { classes, feats, human, optionGroups, skills, spells } from "./character-catalogue";
 import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, skillTotal, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 
-const classes = [arcanist, barbarian, fighter, rogue];
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
 const defaultAbilities = { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 };
-const feats = [combatCasting, powerAttack];
-const optionGroups = [exploits, ragePowers, rogueTalents];
-const spells = [mageArmor, magicMissile];
-const skills = [{name:"Acrobatics",ability:"dexterity"},{name:"Climb",ability:"strength"},{name:"Diplomacy",ability:"charisma"},{name:"Knowledge (arcana)",ability:"intelligence"},{name:"Perception",ability:"wisdom"},{name:"Spellcraft",ability:"intelligence"},{name:"Stealth",ability:"dexterity"}] as const;
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
 const prerequisiteLabel = (prerequisite: { type: string; key?: string; minimum?: number; id?: string }) => {
   if (prerequisite.type === "ability") return `${labels[prerequisite.key as keyof typeof labels]} ${prerequisite.minimum}+`;
