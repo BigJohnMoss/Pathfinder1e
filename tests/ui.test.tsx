@@ -127,6 +127,19 @@ test("shows Fighter combat-feat and weapon-group choices when earned", async () 
   assert.match(screen.getByText("Gain the weapon training bonus with bows.").textContent ?? "", /bows/);
 });
 
+test("makes Monk available with its full-save progression", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "monk");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "4" } });
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Ki Pool (Magic)"));
+  await user.click(screen.getByRole("button", { name: "Basic info" }));
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+4");
+  assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+4");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+4");
+});
+
 test("uses labelled icon tabs to show focused builder sections", async () => {
   const user = userEvent.setup();
   render(<Home />);
