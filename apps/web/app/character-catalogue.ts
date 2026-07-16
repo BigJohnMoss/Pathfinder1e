@@ -25,6 +25,18 @@ import preciseShot from "../../../packages/data/src/feats/precise-shot.json";
 import rapidShot from "../../../packages/data/src/feats/rapid-shot.json";
 import toughness from "../../../packages/data/src/feats/toughness.json";
 import weaponFinesse from "../../../packages/data/src/feats/weapon-finesse.json";
+import acrobatic from "../../../packages/data/src/feats/acrobatic.json";
+import agileManeuvers from "../../../packages/data/src/feats/agile-maneuvers.json";
+import alertness from "../../../packages/data/src/feats/alertness.json";
+import animalAffinity from "../../../packages/data/src/feats/animal-affinity.json";
+import athletic from "../../../packages/data/src/feats/athletic.json";
+import blindFight from "../../../packages/data/src/feats/blind-fight.json";
+import combatReflexes from "../../../packages/data/src/feats/combat-reflexes.json";
+import endurance from "../../../packages/data/src/feats/endurance.json";
+import greatCleave from "../../../packages/data/src/feats/great-cleave.json";
+import improvedBullRush from "../../../packages/data/src/feats/improved-bull-rush.json";
+import improvedGrapple from "../../../packages/data/src/feats/improved-grapple.json";
+import mobility from "../../../packages/data/src/feats/mobility.json";
 import exploits from "../../../packages/data/src/options/arcanist-exploits.json";
 import ragePowers from "../../../packages/data/src/options/rage-powers.json";
 import rogueTalents from "../../../packages/data/src/options/rogue-talents.json";
@@ -48,7 +60,7 @@ import arcanistStarterSpellCatalogue from "../../../packages/data/src/spell-cata
 
 export const classes = [arcanist, barbarian, fighter, monk, rogue];
 export const ancestries = [human, dwarf, elf, gnome, halfElf, halfling, halfOrc];
-export const feats = [combatCasting, powerAttack, cleave, combatExpertise, dodge, greatFortitude, improvedInitiative, improvedUnarmedStrike, ironWill, lightningReflexes, pointBlankShot, preciseShot, rapidShot, toughness, weaponFinesse];
+export const feats = [acrobatic, agileManeuvers, alertness, animalAffinity, athletic, blindFight, combatCasting, combatExpertise, combatReflexes, cleave, dodge, endurance, greatCleave, greatFortitude, improvedBullRush, improvedGrapple, improvedInitiative, improvedUnarmedStrike, ironWill, lightningReflexes, mobility, pointBlankShot, powerAttack, preciseShot, rapidShot, toughness, weaponFinesse];
 export const optionGroups = [exploits, ragePowers, rogueTalents, combatFeats, fighterWeaponGroups];
 export const spells = [detectMagic, light, mageHand, rayOfFrost, readMagic, alarm, charmPerson, colorSpray, holdPortal, mageArmor, magicMissile, shield, sleep, ...arcanistStarterSpellCatalogue.spells, ...arcanistSpellCatalogue.spells];
 export const skills = [{name:"Acrobatics",ability:"dexterity"},{name:"Climb",ability:"strength"},{name:"Diplomacy",ability:"charisma"},{name:"Knowledge (arcana)",ability:"intelligence"},{name:"Perception",ability:"wisdom"},{name:"Spellcraft",ability:"intelligence"},{name:"Stealth",ability:"dexterity"}] as const;
