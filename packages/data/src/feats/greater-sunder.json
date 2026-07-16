@@ -1,0 +1,1 @@
+{"id":"greater-sunder","name":"Greater Sunder","type":"combat","prerequisites":[{"type":"feat","id":"improved-sunder"},{"type":"bab","minimum":6}],"benefit":"Excess sunder damage transfers to target.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
