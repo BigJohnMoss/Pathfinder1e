@@ -1,0 +1,1 @@
+{"id":"extra-ki","name":"Extra Ki","type":"general","prerequisites":[{"type":"feature","id":"monk-ki-pool-4"}],"benefit":"Gain 2 additional ki points.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Ki"}}
