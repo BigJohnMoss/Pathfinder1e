@@ -11,7 +11,8 @@ import powerAttack from "../../../packages/data/src/feats/power-attack.json";
 import exploits from "../../../packages/data/src/options/arcanist-exploits.json";
 import ragePowers from "../../../packages/data/src/options/rage-powers.json";
 import rogueTalents from "../../../packages/data/src/options/rogue-talents.json";
-import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, skillTotal } from "../../../packages/engine/src/index.js";
+import starterGear from "../../../packages/data/src/equipment/starter-gear.json";
+import { abilityNames, availableOptions, characterCombatStats, classProgression, encumbrance, featPrerequisiteResults, skillTotal } from "../../../packages/engine/src/index.js";
 
 const classes = [arcanist, barbarian, fighter, rogue];
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
@@ -35,6 +36,7 @@ export default function Home() {
   const [selectedFeatIds, setSelectedFeatIds] = useState<string[]>([]);
   const [skillRanks, setSkillRanks] = useState<Record<string, number>>({});
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
+  const [equipment, setEquipment] = useState<Record<string, number>>({});
   const characterClass = classes.find((item) => item.id === classId) ?? classes[0];
   const abilities = useMemo(() => ({ ...baseAbilities, [humanAbility]: baseAbilities[humanAbility] + 2 }), [baseAbilities, humanAbility]);
   const progression = useMemo(() => classProgression(characterClass, level, {
@@ -49,6 +51,7 @@ export default function Home() {
   const allocatedSkillRanks = Object.values(skillRanks).reduce((total, ranks) => total + ranks, 0);
   const updateSkill = (name: string, ranks: number) => setSkillRanks((current) => ({ ...current, [name]: Math.max(0, Math.min(progression.skillRanks, ranks || 0)) }));
   const choiceFeatures = progression.features.filter((feature) => feature.choiceRequired && feature.optionGroupId);
+  const carried = useMemo(() => encumbrance(abilities.strength, starterGear.map((item) => ({ weight: item.weight, quantity: equipment[item.id] ?? 0 }))), [abilities.strength, equipment]);
 
   return <main>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
@@ -73,6 +76,7 @@ export default function Home() {
     <section className="feat-panel"><div><p className="eyebrow">FEATS</p><h2>Feat choices</h2><p>Prerequisites are shown for review and do not block a choice.</p></div><div className="feat-slots">{featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const checks = selected ? featPrerequisiteResults(selected, { abilities, baseAttackBonus: progression.baseAttackBonus, classLevel: level, selectedIds: selectedFeatIds }) : []; return <article key={slot.index}><label>{slot.name}<select value={selectedFeatIds[slot.index] ?? ""} onChange={(event) => updateFeat(slot.index, event.target.value)}><option value="">Choose a feat</option>{feats.map((feat) => <option key={feat.id} value={feat.id} disabled={selectedFeatIds.some((id, index) => id === feat.id && index !== slot.index)}>{feat.name}</option>)}</select></label>{selected && <><strong>{selected.name}</strong><p>{selected.benefit}</p>{checks.length > 0 && <ul className="checks">{checks.map((check, index) => <li className={check.met ? "met" : "unmet"} key={index}>{check.met ? "Met" : "Check"}: {prerequisiteLabel(check.prerequisite)}</li>)}</ul>}</>}</article>; })}</div></section>
     <section className="skill-panel"><div><p className="eyebrow">SKILLS</p><h2>Allocate ranks</h2><p><strong>{allocatedSkillRanks}</strong> of {progression.skillRanks} total ranks allocated. Class skills gain +3 once at least one rank is invested.</p></div><div className="skill-list">{skills.map((skill) => { const ranks = skillRanks[skill.name] ?? 0; const result = skillTotal(characterClass, skill, abilities[skill.ability], ranks); return <label key={skill.name}><span>{skill.name} <small>{labels[skill.ability]}</small></span><input type="number" min="0" max={progression.skillRanks} value={ranks} onChange={(event) => updateSkill(skill.name, Number(event.target.value))} /><strong className={result.isClassSkill ? "class-skill" : ""}>{signed(result.total)}{result.isClassSkill && " class"}</strong></label>; })}</div></section>
     {choiceFeatures.length > 0 && <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Each earned selectable feature gets its own choice.</p></div>{choiceFeatures.map((feature) => { const group = optionGroups.find((item) => item.id === feature.optionGroupId); const options = group ? availableOptions(group, characterClass.id, level, Object.values(selectedOptions)) : []; const selected = options.find((option) => option.id === selectedOptions[feature.id]); return <label key={feature.id}>{feature.name} <small>level {feature.level}</small><select value={selectedOptions[feature.id] ?? ""} onChange={(event) => setSelectedOptions((current) => ({ ...current, [feature.id]: event.target.value }))}><option value="">Choose an option</option>{options.map((option) => <option key={option.id} value={option.id} disabled={Object.entries(selectedOptions).some(([id, value]) => id !== feature.id && value === option.id)}>{option.name}</option>)}</select>{selected && <span>{selected.benefit}</span>}</label>; })}</section>}
+    <section className="inventory-panel"><div><p className="eyebrow">INVENTORY</p><h2>Starter gear</h2><p>{carried.carriedWeight} lb carried — <strong>{carried.load}</strong> load. Limits: {carried.capacity.light}/{carried.capacity.medium}/{carried.capacity.heavy} lb.</p></div>{starterGear.map((item) => <label key={item.id}>{item.name} <small>{item.weight} lb · {item.costGp} gp</small><input type="number" min="0" value={equipment[item.id] ?? 0} onChange={(event) => setEquipment((current) => ({ ...current, [item.id]: Math.max(0, Number(event.target.value) || 0) }))} /></label>)}</section>
     <section className="features"><div><p className="eyebrow">LEVEL {level}</p><h2>{characterClass.name} features</h2><p>Feat slots include the Human bonus feat. Skill ranks include Skilled and the fourfold 1st-level allocation.</p></div><ol>{progression.features.map((feature) => <li key={feature.id}><div><strong>{feature.name}</strong><p>{feature.summary}</p></div>{feature.choiceRequired && <span className="choice">Choose</span>}</li>)}</ol></section>
   </main>;
 }
