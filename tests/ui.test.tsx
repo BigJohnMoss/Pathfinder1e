@@ -74,6 +74,7 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   const secondFeat = screen.getByLabelText("Feat 1");
   assert.equal((secondFeat.querySelector("option[value='combat-casting']") as HTMLOptionElement).disabled, true);
   assert.equal((secondFeat.querySelector("option[value='power-attack']") as HTMLOptionElement).disabled, true);
+  assert.equal((secondFeat.querySelector("option[value='combat-reflexes']") as HTMLOptionElement).disabled, true);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "1" } });
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
