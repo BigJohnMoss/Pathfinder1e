@@ -1,0 +1,1 @@
+{"id":"dodge","name":"Dodge","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":13}],"benefit":"Gain a +1 dodge bonus to AC.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Dodge"}}
