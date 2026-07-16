@@ -62,6 +62,8 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   await user.click(screen.getByRole("button", { name: "Add Magic Missile" }));
+  await user.click(screen.getByRole("button", { name: "Cast Mage Armor" }));
+  assert.match(screen.getByText(/2\/3 1st-level/).textContent ?? "", /2\/3/);
   assert.equal((screen.getByRole("button", { name: "Add Shield" }) as HTMLButtonElement).disabled, true);
   assert.match(screen.getByText("Color Spray").closest("article")?.textContent ?? "", /level 1 · DC 12/);
   await user.click(screen.getByRole("button", { name: "Remove Magic Missile" }));
@@ -73,6 +75,11 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   await user.click(screen.getByRole("button", { name: "Add Mage Hand" }));
   await user.click(screen.getByRole("button", { name: "Add Ray of Frost" }));
   assert.equal((screen.getByRole("button", { name: "Add Read Magic" }) as HTMLButtonElement).disabled, true);
+  await user.click(screen.getByRole("button", { name: "Spend reservoir point" }));
+  assert.equal(screen.getByLabelText("Arcane Reservoir points").textContent, "2/4 reservoir");
+  await user.click(screen.getByRole("button", { name: "Refresh day" }));
+  assert.match(screen.getByText(/3\/3 1st-level/).textContent ?? "", /3\/3/);
+  assert.equal(screen.getByLabelText("Arcane Reservoir points").textContent, "3/4 reservoir");
 });
 
 test("searches the spellbook and normalizes loaded prepared spells", async () => {
