@@ -1,5 +1,4 @@
 import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
 
 const root = new URL("../../packages/data/src/", import.meta.url);
 const errors = [];
@@ -11,7 +10,10 @@ async function jsonFiles(directory) {
   const dir = new URL(directory, root);
   return (await readdir(dir)).filter(name => name.endsWith(".json")).map(name => new URL(name, dir));
 }
-async function load(url) { return JSON.parse(await readFile(url, "utf8")); }
+async function load(url) {
+  try { return JSON.parse(await readFile(url, "utf8")); }
+  catch (error) { errors.push(`${url.pathname.split("/").pop()}: invalid JSON (${error.message})`); return {}; }
+}
 function checkId(record, file) {
   if (!record.id || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(record.id)) errors.push(`${file}: invalid or missing id`);
   if (ids.has(record.id)) errors.push(`${file}: duplicate id ${record.id} (also in ${ids.get(record.id)})`);
