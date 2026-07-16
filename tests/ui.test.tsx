@@ -35,6 +35,21 @@ test("saves and restores character details", async () => {
   assert.match(screen.getByText("Loaded saved character").textContent ?? "", /Loaded/);
 });
 
+test("applies ancestry modifiers and persists the selected ancestry", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Ancestry"), "elf");
+  assert.ok(screen.getByText("Elf abilities"));
+  const intelligence = screen.getByText("Intelligence").closest("label")?.querySelector("strong");
+  const constitution = screen.getByText("Constitution").closest("label")?.querySelector("strong");
+  assert.match(intelligence?.textContent ?? "", /12/);
+  assert.match(constitution?.textContent ?? "", /8/);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Ancestry"), "dwarf");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal((screen.getByLabelText("Ancestry") as HTMLSelectElement).value, "elf");
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);

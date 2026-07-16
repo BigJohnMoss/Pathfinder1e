@@ -141,7 +141,7 @@ export function spellcastingProgression(characterClass, level, { abilityScore = 
   };
 }
 
-export function normalizeCharacterDraft(value, { classIds = null } = {}) {
+export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = null } = {}) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const draft = value;
   const validAbilities = abilityNames.every(name => Number.isInteger(draft.baseAbilities?.[name]) && draft.baseAbilities[name] >= 1 && draft.baseAbilities[name] <= 40);
@@ -150,6 +150,7 @@ export function normalizeCharacterDraft(value, { classIds = null } = {}) {
     version: 1,
     name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",
     classId: draft.classId,
+    ancestryId: typeof draft.ancestryId === "string" && (!ancestryIds || ancestryIds.includes(draft.ancestryId)) ? draft.ancestryId : "human",
     level: draft.level,
     humanAbility: abilityNames.includes(draft.humanAbility) ? draft.humanAbility : "intelligence",
     baseAbilities: draft.baseAbilities,

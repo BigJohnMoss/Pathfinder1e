@@ -3,6 +3,12 @@ import barbarian from "../../../packages/data/src/classes/barbarian.json";
 import fighter from "../../../packages/data/src/classes/fighter.json";
 import rogue from "../../../packages/data/src/classes/rogue.json";
 import human from "../../../packages/data/src/races/human.json";
+import dwarf from "../../../packages/data/src/races/dwarf.json";
+import elf from "../../../packages/data/src/races/elf.json";
+import gnome from "../../../packages/data/src/races/gnome.json";
+import halfElf from "../../../packages/data/src/races/half-elf.json";
+import halfling from "../../../packages/data/src/races/halfling.json";
+import halfOrc from "../../../packages/data/src/races/half-orc.json";
 import combatCasting from "../../../packages/data/src/feats/combat-casting.json";
 import powerAttack from "../../../packages/data/src/feats/power-attack.json";
 import cleave from "../../../packages/data/src/feats/cleave.json";
@@ -40,7 +46,7 @@ import arcanistSpellCatalogue from "../../../packages/data/src/spell-catalogues/
 import arcanistStarterSpellCatalogue from "../../../packages/data/src/spell-catalogues/arcanist-levels-0-1.json";
 
 export const classes = [arcanist, barbarian, fighter, rogue];
-export { human };
+export const ancestries = [human, dwarf, elf, gnome, halfElf, halfling, halfOrc];
 export const feats = [combatCasting, powerAttack, cleave, combatExpertise, dodge, greatFortitude, improvedInitiative, improvedUnarmedStrike, ironWill, lightningReflexes, pointBlankShot, preciseShot, rapidShot, toughness, weaponFinesse];
 export const optionGroups = [exploits, ragePowers, rogueTalents, combatFeats, fighterWeaponGroups];
 export const spells = [detectMagic, light, mageHand, rayOfFrost, readMagic, alarm, charmPerson, colorSpray, holdPortal, mageArmor, magicMissile, shield, sleep, ...arcanistStarterSpellCatalogue.spells, ...arcanistSpellCatalogue.spells];
