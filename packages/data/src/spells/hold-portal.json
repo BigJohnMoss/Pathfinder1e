@@ -1,0 +1,11 @@
+{
+  "id": "hold-portal",
+  "name": "Hold Portal",
+  "school": "abjuration",
+  "levelByClass": { "sorcerer": 1, "wizard": 1, "arcanist": 1 },
+  "components": ["V"],
+  "castingTime": "1 standard action",
+  "range": "medium",
+  "summary": "Magically hold a door, gate, window, or shutter closed.",
+  "source": { "title": "Core Rulebook", "page": 297, "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Hold+Portal" }
+}

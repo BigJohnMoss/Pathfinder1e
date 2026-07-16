@@ -1,0 +1,11 @@
+{
+  "id": "sleep",
+  "name": "Sleep",
+  "school": "enchantment",
+  "levelByClass": { "bard": 1, "sorcerer": 1, "wizard": 1, "arcanist": 1 },
+  "components": ["V", "S", "M"],
+  "castingTime": "1 round",
+  "range": "medium",
+  "summary": "Put up to 4 Hit Dice of living creatures into magical slumber.",
+  "source": { "title": "Core Rulebook", "page": 344, "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=sleep" }
+}
