@@ -1,0 +1,1 @@
+{"id":"deadly-aim","name":"Deadly Aim","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":13},{"type":"bab","minimum":1}],"benefit":"Trade ranged attack bonus for damage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
