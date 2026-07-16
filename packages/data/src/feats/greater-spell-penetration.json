@@ -1,0 +1,1 @@
+{"id":"greater-spell-penetration","name":"Greater Spell Penetration","type":"general","prerequisites":[{"type":"feat","id":"spell-penetration"}],"benefit":"Gain an additional +2 bonus on caster level checks to overcome spell resistance.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Spell%20Penetration"}}
