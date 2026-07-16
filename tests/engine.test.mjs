@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { abilityModifier, baseAttackBonus, classProgression, featSlotsAtLevel, savingThrow, skillRanksThroughLevel, featuresAtLevel, featuresThroughLevel } from "../packages/engine/src/index.js";
+import { abilityModifier, abilityModifiers, averageHitPoints, baseAttackBonus, characterCombatStats, classProgression, featSlotsAtLevel, savingThrow, skillRanksThroughLevel, featuresAtLevel, featuresThroughLevel } from "../packages/engine/src/index.js";
 const load=async name=>JSON.parse(await readFile(new URL(`../packages/data/src/classes/${name}.json`,import.meta.url),'utf8'));
 test("BAB progressions",()=>{assert.equal(baseAttackBonus('full',7),7);assert.equal(baseAttackBonus('three-quarters',7),5);assert.equal(baseAttackBonus('half',7),3);});
 test("save progressions",()=>{assert.equal(savingThrow('good',1),2);assert.equal(savingThrow('good',10),7);assert.equal(savingThrow('poor',10),3);});
@@ -11,3 +11,5 @@ test("ability modifiers use Pathfinder rounding",()=>{assert.equal(abilityModifi
 test("general feat slots include the human bonus feat",()=>{assert.equal(featSlotsAtLevel(1),1);assert.equal(featSlotsAtLevel(5),3);assert.equal(featSlotsAtLevel(1,{bonusFeats:1}),2);});
 test("skill ranks include the level one multiplier and racial ranks",async()=>{const fighter=await load('fighter');assert.equal(skillRanksThroughLevel(fighter,1,10,{racialBonusPerLevel:1}),12);assert.equal(skillRanksThroughLevel(fighter,3,14,{racialBonusPerLevel:1}),30);});
 test("class progression combines chassis values",async()=>{const fighter=await load('fighter');const result=classProgression(fighter,5,{intelligenceScore:12, racialSkillBonusPerLevel:1, bonusFeats:1});assert.equal(result.baseAttackBonus,5);assert.deepEqual(result.saves,{fortitude:4,reflex:1,will:1});assert.equal(result.skillRanks,32);assert.equal(result.featSlots,4);});
+test("combat statistics include ability modifiers",async()=>{const fighter=await load('fighter');const stats=characterCombatStats(fighter,3,{strength:16,dexterity:14,constitution:14,intelligence:10,wisdom:8,charisma:10});assert.deepEqual(abilityModifiers({strength:16,dexterity:14,constitution:14,intelligence:10,wisdom:8,charisma:10}),{strength:3,dexterity:2,constitution:2,intelligence:0,wisdom:-1,charisma:0});assert.deepEqual(stats.saves,{fortitude:5,reflex:3,will:0});assert.equal(stats.initiative,2);assert.deepEqual(stats.armorClass,{normal:12,touch:12,flatFooted:10});assert.equal(stats.combatManeuverBonus,6);assert.equal(stats.combatManeuverDefense,18);});
+test("average hit points use a maximum first die and average later dice",()=>{assert.equal(averageHitPoints(10,1,2),12);assert.equal(averageHitPoints(10,3,2),28);assert.equal(averageHitPoints(6,2,-2),6);});

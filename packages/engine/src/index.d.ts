@@ -17,7 +17,24 @@ export interface ClassProgression {
   features: CharacterClass["features"];
 }
 
+export type AbilityName = "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
+export type AbilityScores = Record<AbilityName, number>;
+export interface CharacterCombatStats {
+  abilityModifiers: AbilityScores;
+  baseAttackBonus: number;
+  saves: Record<"fortitude" | "reflex" | "will", number>;
+  initiative: number;
+  armorClass: { normal: number; touch: number; flatFooted: number };
+  combatManeuverBonus: number;
+  combatManeuverDefense: number;
+  averageHitPoints: number;
+}
+
 export function abilityModifier(score: number): number;
+export const abilityNames: AbilityName[];
+export function abilityModifiers(abilities: AbilityScores): AbilityScores;
+export function characterCombatStats(characterClass: CharacterClass, level: number, abilities: AbilityScores): CharacterCombatStats;
+export function averageHitPoints(hitDie: number, level: number, constitutionModifier?: number): number;
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function featSlotsAtLevel(level: number, options?: { bonusFeats?: number }): number;
