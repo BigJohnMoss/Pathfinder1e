@@ -156,6 +156,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     humanAbility: abilityNames.includes(draft.humanAbility) ? draft.humanAbility : "intelligence",
     baseAbilities: draft.baseAbilities,
     selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
+    selectedFeatChoices: isStringRecord(draft.selectedFeatChoices),
     skillRanks: isRankRecord(draft.skillRanks),
     selectedOptions: isStringRecord(draft.selectedOptions),
     preparedSpells: Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : [],
@@ -248,6 +249,16 @@ export function normalizeSelectedFeats(selectedFeatIds, feats, context, slotCoun
     result = next;
   }
   return result;
+}
+
+export function normalizeSelectedFeatChoices(selectedFeatChoices, selectedFeatIds, feats) {
+  if (!selectedFeatChoices || typeof selectedFeatChoices !== "object" || Array.isArray(selectedFeatChoices)) return {};
+  const byId = new Map(feats.map(feat => [feat.id, feat]));
+  return Object.fromEntries(Object.entries(selectedFeatChoices).flatMap(([featId, choice]) => {
+    const feat = byId.get(featId);
+    const options = feat?.choice?.options;
+    return selectedFeatIds.includes(featId) && typeof choice === "string" && Array.isArray(options) && options.some(option => option.id === choice) ? [[featId, choice]] : [];
+  }));
 }
 
 export function prerequisitesMet(prerequisites, context) {
