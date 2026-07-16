@@ -1,0 +1,1 @@
+{"id":"armor-proficiency-medium","name":"Armor Proficiency (Medium)","type":"combat","prerequisites":[{"type":"feat","id":"armor-proficiency-light"}],"benefit":"No armor check penalty on attack rolls with medium armor.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
