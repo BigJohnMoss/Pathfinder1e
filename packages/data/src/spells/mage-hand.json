@@ -1,0 +1,11 @@
+{
+  "id": "mage-hand",
+  "name": "Mage Hand",
+  "school": "transmutation",
+  "levelByClass": { "bard": 0, "sorcerer": 0, "wizard": 0, "arcanist": 0 },
+  "components": ["V", "S"],
+  "castingTime": "1 standard action",
+  "range": "close",
+  "summary": "Telekinetically move a small unattended object.",
+  "source": { "title": "Core Rulebook", "page": null, "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Mage%20Hand" }
+}

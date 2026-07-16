@@ -1,0 +1,11 @@
+{
+  "id": "detect-magic",
+  "name": "Detect Magic",
+  "school": "divination",
+  "levelByClass": { "sorcerer": 0, "wizard": 0, "arcanist": 0 },
+  "components": ["V", "S"],
+  "castingTime": "1 standard action",
+  "range": "60 ft.",
+  "summary": "Detect magical auras and learn their strength and school.",
+  "source": { "title": "Core Rulebook", "page": null, "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Detect%20Magic" }
+}

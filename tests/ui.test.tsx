@@ -61,4 +61,9 @@ test("prevents duplicate feats and prepares spells", async () => {
   assert.equal((mageArmor as HTMLInputElement).checked, true);
   await user.click(screen.getByLabelText(/Magic Missile/));
   assert.equal((screen.getByLabelText(/Shield/) as HTMLInputElement).disabled, true);
+  await user.click(screen.getByLabelText(/Detect Magic/));
+  await user.click(screen.getByLabelText(/Light/));
+  await user.click(screen.getByLabelText(/Mage Hand/));
+  await user.click(screen.getByLabelText(/Ray of Frost/));
+  assert.equal((screen.getByLabelText(/Read Magic/) as HTMLInputElement).disabled, true);
 });

@@ -1,0 +1,11 @@
+{
+  "id": "light",
+  "name": "Light",
+  "school": "evocation",
+  "levelByClass": { "bard": 0, "cleric": 0, "sorcerer": 0, "wizard": 0, "arcanist": 0 },
+  "components": ["V", "M/DF"],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "summary": "Make an object shine like a torch.",
+  "source": { "title": "Core Rulebook", "page": null, "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Light" }
+}
