@@ -79,11 +79,11 @@ export function spellsAvailableToClass(spells, classId, maximumSpellLevel) {
     .sort((a, b) => a.levelByClass[classId] - b.levelByClass[classId] || a.name.localeCompare(b.name));
 }
 
-export function normalizeCharacterDraft(value) {
+export function normalizeCharacterDraft(value, { classIds = null } = {}) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const draft = value;
   const validAbilities = abilityNames.every(name => Number.isInteger(draft.baseAbilities?.[name]) && draft.baseAbilities[name] >= 1 && draft.baseAbilities[name] <= 40);
-  if (typeof draft.classId !== "string" || !Number.isInteger(draft.level) || draft.level < 1 || draft.level > 20 || !validAbilities) return null;
+  if (typeof draft.classId !== "string" || (classIds && !classIds.includes(draft.classId)) || !Number.isInteger(draft.level) || draft.level < 1 || draft.level > 20 || !validAbilities) return null;
   return {
     version: 1,
     name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",

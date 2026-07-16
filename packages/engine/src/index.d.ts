@@ -39,7 +39,7 @@ export function averageHitPoints(hitDie: number, level: number, constitutionModi
 export function carryingCapacity(strength: number): { light: number; medium: number; heavy: number };
 export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
 export function spellsAvailableToClass<T extends { name: string; levelByClass: Record<string, number> }>(spells: T[], classId: string, maximumSpellLevel: number): T[];
-export function normalizeCharacterDraft(value: unknown): { version: 1; name: string; classId: string; level: number; humanAbility: AbilityName; baseAbilities: AbilityScores; selectedFeatIds: string[]; skillRanks: Record<string, number>; selectedOptions: Record<string, string>; preparedSpells: string[] } | null;
+export function normalizeCharacterDraft(value: unknown, options?: { classIds?: string[] | null }): { version: 1; name: string; classId: string; level: number; humanAbility: AbilityName; baseAbilities: AbilityScores; selectedFeatIds: string[]; skillRanks: Record<string, number>; selectedOptions: Record<string, string>; preparedSpells: string[] } | null;
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function featSlotsAtLevel(level: number, options?: { bonusFeats?: number }): number;
