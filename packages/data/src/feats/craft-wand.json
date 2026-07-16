@@ -1,0 +1,1 @@
+{"id":"craft-wand","name":"Craft Wand","type":"item-creation","prerequisites":[{"type":"caster-level","minimum":5}],"benefit":"Create a wand; its base price is spell level × caster level × 750 gp.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Wand"}}
