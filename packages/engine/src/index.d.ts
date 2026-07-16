@@ -29,7 +29,14 @@ export interface CharacterCombatStats {
   combatManeuverDefense: number;
   averageHitPoints: number;
 }
-export interface PrerequisiteResult { prerequisite: { type: string; key?: string; id?: string; minimum?: number }; met: boolean }
+export type Prerequisite =
+  | { type: "level" | "bab" | "caster-level"; minimum: number }
+  | { type: "class-level"; classId: string; minimum: number }
+  | { type: "ability" | "skill"; key: string; minimum: number }
+  | { type: "feat" | "feature"; id: string }
+  | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
+export interface PrerequisiteResult { prerequisite: Prerequisite; met: boolean }
+export interface PrerequisiteContext { classId?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[] }
 
 export function abilityModifier(score: number): number;
 export const abilityNames: AbilityName[];
@@ -40,7 +47,7 @@ export function carryingCapacity(strength: number): { light: number; medium: num
 export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
 export function spellsAvailableToClass<T extends { name: string; levelByClass: Record<string, number> }>(spells: T[], classId: string, maximumSpellLevel: number): T[];
 export function normalizePreparedSpells<T extends { id: string; levelByClass: Record<string, number> }>(preparedSpellIds: string[], spells: T[], classId: string, preparedLimits: Array<{ level: number; count: number }>): string[];
-export function normalizeSelectedFeats<T extends { id: string; prerequisites: PrerequisiteResult["prerequisite"][] }>(selectedFeatIds: string[], feats: T[], context: { abilities?: Partial<AbilityScores>; baseAttackBonus?: number; classLevel?: number; selectedIds?: string[] }, slotCount: number): string[];
+export function normalizeSelectedFeats<T extends { id: string; prerequisites: Prerequisite[] }>(selectedFeatIds: string[], feats: T[], context: PrerequisiteContext, slotCount: number): string[];
 export function normalizeSpellSlotUses(slotUses: Record<string, number> | null | undefined, slots: Array<{ level: number; count: number }>): Record<number, number>;
 export function arcaneReservoir(level: number): { maximum: number; dailyRefresh: number };
 export function bonusSpellsPerDay(abilityScore: number, maximumSpellLevel: number): Array<{ level: number; count: number }>;
@@ -56,6 +63,6 @@ export function skillRankBudget(totalRanks: number, allocations: Record<string, 
 export function classProgression(characterClass: CharacterClass, level: number, options?: { intelligenceScore?: number; racialSkillBonusPerLevel?: number; bonusFeats?: number }): ClassProgression;
 export function featuresAtLevel(characterClass: CharacterClass, level: number): CharacterClass["features"];
 export function featuresThroughLevel(characterClass: CharacterClass, level: number): CharacterClass["features"];
-export function availableOptions(group: { options: Array<{ id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: PrerequisiteResult["prerequisite"][] }> }, classId: string, classLevel: number, selectedIds?: string[], context?: { abilities?: Partial<AbilityScores>; baseAttackBonus?: number }): Array<{ id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: PrerequisiteResult["prerequisite"][] }>;
-export function featPrerequisiteResults(feat: { prerequisites: PrerequisiteResult["prerequisite"][] }, context: { abilities?: Partial<AbilityScores>; baseAttackBonus?: number; classLevel?: number; selectedIds?: string[] }): PrerequisiteResult[];
-export function prerequisitesMet(prerequisites: PrerequisiteResult["prerequisite"][], context: { abilities?: Partial<AbilityScores>; baseAttackBonus?: number; classLevel?: number; selectedIds?: string[] }): boolean;
+export function availableOptions(group: { options: Array<{ id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: Prerequisite[] }> }, classId: string, classLevel: number, selectedIds?: string[], context?: PrerequisiteContext): Array<{ id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: Prerequisite[] }>;
+export function featPrerequisiteResults(feat: { prerequisites: Prerequisite[] }, context: PrerequisiteContext): PrerequisiteResult[];
+export function prerequisitesMet(prerequisites: Prerequisite[], context: PrerequisiteContext): boolean;
