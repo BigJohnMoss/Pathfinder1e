@@ -29,6 +29,7 @@ export interface CharacterCombatStats {
   combatManeuverDefense: number;
   averageHitPoints: number;
 }
+export interface PrerequisiteResult { prerequisite: { type: string; key?: string; id?: string; minimum?: number }; met: boolean }
 
 export function abilityModifier(score: number): number;
 export const abilityNames: AbilityName[];
@@ -43,4 +44,5 @@ export function classProgression(characterClass: CharacterClass, level: number, 
 export function featuresAtLevel(characterClass: CharacterClass, level: number): CharacterClass["features"];
 export function featuresThroughLevel(characterClass: CharacterClass, level: number): CharacterClass["features"];
 export function availableOptions(group: { options: unknown[] }, classId: string, classLevel: number, selectedIds?: string[]): unknown[];
-export function prerequisitesMet(prerequisites: unknown[], context: unknown): boolean;
+export function featPrerequisiteResults(feat: { prerequisites: PrerequisiteResult["prerequisite"][] }, context: { abilities?: Partial<AbilityScores>; baseAttackBonus?: number; classLevel?: number; selectedIds?: string[] }): PrerequisiteResult[];
+export function prerequisitesMet(prerequisites: PrerequisiteResult["prerequisite"][], context: { abilities?: Partial<AbilityScores>; baseAttackBonus?: number; classLevel?: number; selectedIds?: string[] }): boolean;
