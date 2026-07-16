@@ -27,6 +27,15 @@ function checkSource(record, file) {
 function checkPrerequisites(prerequisites, file) {
   for (const error of validatePrerequisites(prerequisites)) errors.push(`${file}: ${error}`);
 }
+function checkChoice(choice, file) {
+  if (choice === undefined) return;
+  if (!choice || typeof choice !== "object" || Array.isArray(choice)) { errors.push(`${file}: choice must be an object`); return; }
+  if (typeof choice.key !== "string" || !choice.key.trim()) errors.push(`${file}: choice needs a key`);
+  if (typeof choice.label !== "string" || !choice.label.trim()) errors.push(`${file}: choice needs a label`);
+  if (!Array.isArray(choice.options) || choice.options.length === 0) { errors.push(`${file}: choice needs options`); return; }
+  const ids = new Set();
+  for (const option of choice.options) { if (!option || typeof option.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option.id) || typeof option.name !== "string" || !option.name.trim()) errors.push(`${file}: choice has an invalid option`); else if (ids.has(option.id)) errors.push(`${file}: choice has duplicate option ${option.id}`); else ids.add(option.id); }
+}
 function checkSpellcasting(spellcasting, file) {
   if (!spellcasting || typeof spellcasting !== "object") { errors.push(`${file}: spellcasting must be an object`); return; }
   if (!["intelligence", "wisdom", "charisma"].includes(spellcasting.ability)) errors.push(`${file}: spellcasting has an invalid ability`);
@@ -49,7 +58,7 @@ for (const url of await jsonFiles("classes/")) {
   }
 }
 for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const o of g.options??[]) {checkId(o,`${file}:${o.id}`); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); checkPrerequisites(o.prerequisites, `${file}:${o.id}`);} }
-for (const directory of ["races/","feats/","spells/"]) for (const url of await jsonFiles(directory)) { const r=await load(url); const file=url.pathname.split('/').pop(); checkId(r,file); checkSource(r,file); if(directory === "feats/") checkPrerequisites(r.prerequisites, file); }
+for (const directory of ["races/","feats/","spells/"]) for (const url of await jsonFiles(directory)) { const r=await load(url); const file=url.pathname.split('/').pop(); checkId(r,file); checkSource(r,file); if(directory === "feats/") { checkPrerequisites(r.prerequisites, file); checkChoice(r.choice, file); } }
 for (const url of await jsonFiles("spell-catalogues/")) { const catalogue=await load(url); const file=url.pathname.split("/").pop(); checkSource(catalogue,file); if(!Array.isArray(catalogue.spells)) { errors.push(file + ": spells must be an array"); continue; } for(const spell of catalogue.spells) { checkId(spell,file + ":" + (spell.id ?? "unknown")); if(typeof spell.name !== "string" || !spell.name.trim()) errors.push(file + ": spell is missing a name"); if(typeof spell.summary !== "string" || !spell.summary.trim()) errors.push(file + ": " + (spell.id ?? "unknown") + " is missing a summary"); const level=spell.levelByClass?.arcanist; if(!Number.isInteger(level) || level<0 || level>9) errors.push(file + ": " + (spell.id ?? "unknown") + " has an invalid arcanist spell level"); } }
 for (const url of await jsonFiles("classes/")) { const c=await load(url); for (const f of c.features??[]) if(f.optionGroupId && !groupIds.has(f.optionGroupId)) errors.push(`${c.id}:${f.id} references missing option group ${f.optionGroupId}`); }
 if(errors.length){ console.error(`Data validation failed with ${errors.length} error(s):`); errors.forEach(e=>console.error(`- ${e}`)); process.exit(1); }
