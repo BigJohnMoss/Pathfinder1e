@@ -15,5 +15,8 @@ export interface CharacterClass {
   skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
   features: ClassFeatureOccurrence[];
 }
-export interface Prerequisite { type: "level"|"ability"|"feat"|"feature"; key?: string; minimum?: number; id?: string; }
+export type Prerequisite =
+  | { type: "level"|"bab"; minimum: number }
+  | { type: "ability"; key: string; minimum: number }
+  | { type: "feat"|"feature"; id: string };
 export interface SelectableOption { id:string; groupId:string; name:string; classIds:string[]; minimumLevel:number; prerequisites:Prerequisite[]; benefit:string; source:SourceRef; }
