@@ -1,0 +1,1 @@
+{"id":"manyshot","name":"Manyshot","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":17},{"type":"feat","id":"rapid-shot"},{"type":"bab","minimum":6}],"benefit":"Fire two arrows with first attack.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
