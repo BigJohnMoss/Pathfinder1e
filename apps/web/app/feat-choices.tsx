@@ -1,11 +1,15 @@
 type Feat = { id: string; name: string; benefit: string };
-type Prerequisite = { type: string; key?: string; minimum?: number; id?: string };
+type Prerequisite = { type: string; key?: string; id?: string; classId?: string; minimum?: number; prerequisites?: Prerequisite[] };
 type FeatChoice = { index: number; name: string; selected?: Feat; checks: Array<{ met: boolean; prerequisite: Prerequisite }>; eligibleFeatIds: string[] };
 
 const labels: Record<string, string> = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
 const prerequisiteLabel = (prerequisite: Prerequisite) => {
   if (prerequisite.type === "ability") return `${labels[prerequisite.key ?? ""]} ${prerequisite.minimum}+`;
   if (prerequisite.type === "bab") return `BAB +${prerequisite.minimum}`;
+  if (prerequisite.type === "caster-level") return `Caster level ${prerequisite.minimum}+`;
+  if (prerequisite.type === "class-level") return `${prerequisite.classId ?? "class"} level ${prerequisite.minimum}+`;
+  if (prerequisite.type === "skill") return `${prerequisite.key} ${prerequisite.minimum}+ ranks`;
+  if (prerequisite.type === "any") return `one of: ${prerequisite.prerequisites?.map(prerequisiteLabel).join(", ")}`;
   return prerequisite.id ?? prerequisite.type;
 };
 
