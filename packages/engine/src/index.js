@@ -79,6 +79,21 @@ export function spellsAvailableToClass(spells, classId, maximumSpellLevel) {
     .sort((a, b) => a.levelByClass[classId] - b.levelByClass[classId] || a.name.localeCompare(b.name));
 }
 
+export function spellcastingProgression(characterClass, level) {
+  assertLevel(level);
+  const spellcasting = characterClass.spellcasting;
+  if (!spellcasting) return null;
+  const slots = spellcasting.slotsByLevel?.[level - 1];
+  const prepared = spellcasting.preparedByLevel?.[level - 1];
+  if (!Array.isArray(slots) || !Array.isArray(prepared)) throw new Error("Spellcasting progression is incomplete.");
+  return {
+    ability: spellcasting.ability,
+    castingType: spellcasting.castingType,
+    slots: slots.map((count, index) => ({ level: index + 1, count })).filter(entry => entry.count > 0),
+    prepared: prepared.map((count, level) => ({ level, count })).filter(entry => entry.count > 0)
+  };
+}
+
 export function normalizeCharacterDraft(value, { classIds = null } = {}) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const draft = value;

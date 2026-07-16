@@ -48,6 +48,7 @@ test("enforces the skill-rank pool through the interface", async () => {
 test("prevents duplicate feats and prepares spells", async () => {
   const user = userEvent.setup();
   render(<Home />);
+  assert.match(screen.getByText(/Arcanist slots/).textContent ?? "", /2 1st/);
   await user.clear(screen.getByLabelText("Level"));
   await user.type(screen.getByLabelText("Level"), "3");
   await user.selectOptions(screen.getByLabelText("Human bonus feat"), "combat-casting");
