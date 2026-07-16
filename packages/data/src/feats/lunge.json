@@ -1,0 +1,1 @@
+{"id":"lunge","name":"Lunge","type":"combat","prerequisites":[{"type":"bab","minimum":6}],"benefit":"Take a –2 penalty to AC to increase melee reach by 5 feet until the end of your turn.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Lunge"}}
