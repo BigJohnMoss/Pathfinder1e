@@ -13,6 +13,36 @@ export function savingThrow(progression, level) {
   throw new Error(`Unknown save progression: ${progression}`);
 }
 
+export function abilityModifier(score) {
+  if (!Number.isInteger(score) || score < 1) throw new RangeError("Ability score must be a positive integer.");
+  return Math.floor((score - 10) / 2);
+}
+
+export function featSlotsAtLevel(level, { bonusFeats = 0 } = {}) {
+  assertLevel(level);
+  if (!Number.isInteger(bonusFeats) || bonusFeats < 0) throw new RangeError("Bonus feats must be a non-negative integer.");
+  return 1 + Math.floor((level - 1) / 2) + bonusFeats;
+}
+
+export function skillRanksThroughLevel(characterClass, level, intelligenceScore, { racialBonusPerLevel = 0 } = {}) {
+  assertLevel(level);
+  if (!Number.isInteger(racialBonusPerLevel) || racialBonusPerLevel < 0) throw new RangeError("Racial skill bonus must be a non-negative integer.");
+  const ranksPerLevel = Math.max(1, characterClass.skillRanksPerLevel + abilityModifier(intelligenceScore)) + racialBonusPerLevel;
+  return ranksPerLevel * (level + 3);
+}
+
+export function classProgression(characterClass, level, { intelligenceScore = 10, racialSkillBonusPerLevel = 0, bonusFeats = 0 } = {}) {
+  assertLevel(level);
+  return {
+    level,
+    baseAttackBonus: baseAttackBonus(characterClass.babProgression, level),
+    saves: Object.fromEntries(Object.entries(characterClass.saves).map(([save, progression]) => [save, savingThrow(progression, level)])),
+    skillRanks: skillRanksThroughLevel(characterClass, level, intelligenceScore, { racialBonusPerLevel: racialSkillBonusPerLevel }),
+    featSlots: featSlotsAtLevel(level, { bonusFeats }),
+    features: featuresThroughLevel(characterClass, level)
+  };
+}
+
 export function featuresAtLevel(characterClass, level) {
   assertLevel(level);
   return characterClass.features.filter(feature => feature.level === level);
