@@ -1,4 +1,5 @@
 import { readdir, readFile } from "node:fs/promises";
+import { validatePrerequisites } from "../../packages/data/src/validation.js";
 
 const root = new URL("../../packages/data/src/", import.meta.url);
 const errors = [];
@@ -24,14 +25,7 @@ function checkSource(record, file) {
   try { new URL(record.source?.url); } catch { errors.push(`${file}: invalid source URL`); }
 }
 function checkPrerequisites(prerequisites, file) {
-  if (!Array.isArray(prerequisites)) { errors.push(`${file}: prerequisites must be an array`); return; }
-  for (const prerequisite of prerequisites) {
-    if (!prerequisite || typeof prerequisite !== "object" || Array.isArray(prerequisite)) { errors.push(`${file}: prerequisite must be an object`); continue; }
-    if (!["level", "ability", "bab", "feat", "feature"].includes(prerequisite.type)) { errors.push(`${file}: prerequisite has an unknown type`); continue; }
-    if (["level", "bab", "ability"].includes(prerequisite.type) && (!Number.isInteger(prerequisite.minimum) || prerequisite.minimum < 1)) errors.push(`${file}: ${prerequisite.type} prerequisite needs a positive integer minimum`);
-    if (prerequisite.type === "ability" && !["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].includes(prerequisite.key)) errors.push(`${file}: ability prerequisite has an invalid ability key`);
-    if (["feat", "feature"].includes(prerequisite.type) && (!prerequisite.id || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(prerequisite.id))) errors.push(`${file}: ${prerequisite.type} prerequisite needs a valid id`);
-  }
+  for (const error of validatePrerequisites(prerequisites)) errors.push(`${file}: ${error}`);
 }
 
 for (const url of await jsonFiles("classes/")) {
