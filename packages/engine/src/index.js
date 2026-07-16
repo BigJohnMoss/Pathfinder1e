@@ -88,6 +88,11 @@ export function bonusSpellsPerDay(abilityScore, maximumSpellLevel) {
   }).filter(entry => entry.count > 0);
 }
 
+export function spellSaveDC(abilityScore, spellLevel) {
+  if (!Number.isInteger(spellLevel) || spellLevel < 0 || spellLevel > 9) throw new RangeError("Spell level must be an integer from 0 to 9.");
+  return 10 + spellLevel + abilityModifier(abilityScore);
+}
+
 export function spellcastingProgression(characterClass, level, { abilityScore = 10 } = {}) {
   assertLevel(level);
   const spellcasting = characterClass.spellcasting;
@@ -96,10 +101,12 @@ export function spellcastingProgression(characterClass, level, { abilityScore = 
   const prepared = spellcasting.preparedByLevel?.[level - 1];
   if (!Array.isArray(slots) || !Array.isArray(prepared)) throw new Error("Spellcasting progression is incomplete.");
   const bonusByLevel = Object.fromEntries(bonusSpellsPerDay(abilityScore, slots.length).map(entry => [entry.level, entry.count]));
+  const baseSlots = slots.map((base, index) => ({ level: index + 1, base, bonus: bonusByLevel[index + 1] ?? 0, count: base + (bonusByLevel[index + 1] ?? 0) }));
   return {
     ability: spellcasting.ability,
     castingType: spellcasting.castingType,
-    slots: slots.map((base, index) => ({ level: index + 1, base, bonus: bonusByLevel[index + 1] ?? 0, count: base + (bonusByLevel[index + 1] ?? 0) })).filter(entry => entry.count > 0),
+    maximumSpellLevel: Math.min(Math.max(0, abilityScore - 10), Math.max(0, ...baseSlots.filter(entry => entry.base > 0).map(entry => entry.level))),
+    slots: baseSlots.filter(entry => entry.count > 0),
     prepared: prepared.map((count, level) => ({ level, count })).filter(entry => entry.count > 0)
   };
 }
