@@ -1,0 +1,1 @@
+{"id":"wind-stance","name":"Wind Stance","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":15},{"type":"feat","id":"dodge"},{"type":"bab","minimum":6}],"benefit":"Gain concealment after moving.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
