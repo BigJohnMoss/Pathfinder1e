@@ -10,6 +10,7 @@ import { SkillAllocation } from "./skill-allocation";
 import { FeatChoices } from "./feat-choices";
 import { ClassOptions } from "./class-options";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
+import { CharacterTabs, StoragePlaceholder, type CharacterTabId } from "./character-tabs";
 import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, normalizePreparedSpells, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
@@ -26,6 +27,7 @@ export default function Home() {
   const [skillRanks, setSkillRanks] = useState<Record<string, number>>({});
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
   const [preparedSpells, setPreparedSpells] = useState<string[]>([]);
+  const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
   const [saveNotice, setSaveNotice] = useState("");
   const characterClass = classes.find((item) => item.id === classId) ?? classes[0];
   const abilities = useMemo(() => ({ ...baseAbilities, [humanAbility]: baseAbilities[humanAbility] + 2 }), [baseAbilities, humanAbility]);
@@ -64,15 +66,16 @@ export default function Home() {
   return <main>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
     <CharacterDetails name={name} classId={classId} level={level} classes={classes} ancestryName={human.name} saveNotice={saveNotice} onNameChange={setName} onClassChange={setClassId} onLevelChange={setLevel} onSave={saveCharacter} onLoad={loadCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
-    <section className="sheet-grid">
-      <AbilityEditor abilityNames={abilityNames} humanAbility={humanAbility} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} onHumanAbilityChange={setHumanAbility} onAbilityChange={updateAbility} />
-      <CombatPanel combat={combat} />
+    <CharacterTabs activeTab={activeTab} onChange={setActiveTab} />
+    <section className="tab-panel" aria-live="polite">
+      {activeTab === "overview" && <><section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} humanAbility={humanAbility} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} onHumanAbilityChange={setHumanAbility} onAbilityChange={updateAbility} /><ProgressionSummary combat={combat} progression={progression} /></section></>}
+      {activeTab === "actions" && <CombatPanel combat={combat} />}
+      {activeTab === "storage" && <StoragePlaceholder />}
+      {activeTab === "spells" && (spellcasting ? <Spellbook spells={availableSpells} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spellcasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={preparedSpells} onPreparedSpellIdsChange={updatePreparedSpells} /> : <p className="empty-tab">This class does not cast spells.</p>)}
+      {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} onRankChange={updateSkill} />}
+      {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} onFeatChange={updateFeat} />}
+      {activeTab === "features" && <ClassFeatures level={level} className={characterClass.name} features={progression.features} />}
+      {activeTab === "options" && (classOptionChoices.length > 0 ? <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} onOptionChange={updateClassOption} /> : <p className="empty-tab">No selectable class options have been earned yet.</p>)}
     </section>
-    <ProgressionSummary combat={combat} progression={progression} />
-    <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} onFeatChange={updateFeat} />
-    <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} onRankChange={updateSkill} />
-    {classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} onOptionChange={updateClassOption} />}
-    {spellcasting && <Spellbook spells={availableSpells} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spellcasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={preparedSpells} onPreparedSpellIdsChange={updatePreparedSpells} />}
-    <ClassFeatures level={level} className={characterClass.name} features={progression.features} />
   </main>;
 }
