@@ -39,6 +39,7 @@ export default function Home() {
   const [skillRanks, setSkillRanks] = useState<Record<string, number>>({});
   const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
   const [preparedSpells, setPreparedSpells] = useState<string[]>([]);
+  const [saveNotice, setSaveNotice] = useState("");
   const characterClass = classes.find((item) => item.id === classId) ?? classes[0];
   const abilities = useMemo(() => ({ ...baseAbilities, [humanAbility]: baseAbilities[humanAbility] + 2 }), [baseAbilities, humanAbility]);
   const progression = useMemo(() => classProgression(characterClass, level, {
@@ -55,6 +56,9 @@ export default function Home() {
   const choiceFeatures = progression.features.filter((feature) => feature.choiceRequired && feature.optionGroupId);
   const maximumSpellLevel = Math.min(9, Math.floor((level + 1) / 2));
   const availableSpells = useMemo(() => spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel), [characterClass.id, maximumSpellLevel]);
+  const saveCharacter = () => { localStorage.setItem("pf1e-character-draft", JSON.stringify({ name, classId, level, humanAbility, baseAbilities, selectedFeatIds, skillRanks, selectedOptions, preparedSpells })); setSaveNotice("Saved locally"); };
+  const loadCharacter = () => { const saved = localStorage.getItem("pf1e-character-draft"); if (!saved) { setSaveNotice("No saved character"); return; } const draft = JSON.parse(saved); setName(draft.name ?? ""); setClassId(draft.classId ?? "arcanist"); setLevel(draft.level ?? 1); setHumanAbility(draft.humanAbility ?? "intelligence"); setBaseAbilities(draft.baseAbilities ?? defaultAbilities); setSelectedFeatIds(draft.selectedFeatIds ?? []); setSkillRanks(draft.skillRanks ?? {}); setSelectedOptions(draft.selectedOptions ?? {}); setPreparedSpells(draft.preparedSpells ?? []); setSaveNotice("Loaded saved character"); };
+  const resetCharacter = () => { localStorage.removeItem("pf1e-character-draft"); setName(""); setClassId("arcanist"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setSelectedFeatIds([]); setSkillRanks({}); setSelectedOptions({}); setPreparedSpells([]); setSaveNotice("Character reset"); };
 
   return <main>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
@@ -63,6 +67,7 @@ export default function Home() {
       <label>Class<select value={classId} onChange={(event) => setClassId(event.target.value)}>{classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
       <label>Ancestry<select disabled value="human"><option>{human.name}</option></select></label>
       <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => setLevel(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} /></label>
+      <div><button type="button" onClick={saveCharacter}>Save</button><button type="button" onClick={loadCharacter}>Load</button><button type="button" onClick={resetCharacter}>Reset</button><small>{saveNotice}</small></div>
     </section>
     <section className="sheet-grid">
       <article className="ability-panel"><div><p className="eyebrow">ABILITY SCORES</p><h2>Human abilities</h2></div><label className="human-choice">Human +2<select value={humanAbility} onChange={(event) => setHumanAbility(event.target.value as keyof typeof defaultAbilities)}>{abilityNames.map((ability) => <option key={ability} value={ability}>{labels[ability]}</option>)}</select></label><div className="ability-grid">{abilityNames.map((ability) => <label key={ability}><span>{labels[ability]}</span><input type="number" min="1" max="40" value={baseAbilities[ability]} onChange={(event) => updateAbility(ability, Number(event.target.value))} /><strong>{abilities[ability]} <small>{signed(combat.abilityModifiers[ability])}</small></strong></label>)}</div></article>
