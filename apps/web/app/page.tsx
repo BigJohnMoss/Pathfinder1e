@@ -46,7 +46,7 @@ export default function Home() {
   const choiceFeatures = progression.features.filter((feature) => feature.choiceRequired && feature.optionGroupId);
   const classOptionChoices = choiceFeatures.map((feature) => { const group = optionGroups.find((item) => item.id === feature.optionGroupId); const options = group ? availableOptions(group, characterClass.id, level, Object.values(selectedOptions)) : []; return { id: feature.id, name: feature.name, level: feature.level, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) }; });
   const updateClassOption = (featureId: string, optionId: string) => setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
-  const spellcasting = useMemo(() => spellcastingProgression(characterClass, level), [characterClass, level]);
+  const spellcasting = useMemo(() => spellcastingProgression(characterClass, level, { abilityScore: abilities.intelligence }), [abilities.intelligence, characterClass, level]);
   const maximumSpellLevel = spellcasting ? Math.max(...spellcasting.slots.map((slot) => slot.level)) : 0;
   const availableSpells = useMemo(() => spellcasting ? spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel) : [], [characterClass.id, maximumSpellLevel, spellcasting]);
   const saveCharacter = () => { localStorage.setItem("pf1e-character-draft", JSON.stringify({ name, classId, level, humanAbility, baseAbilities, selectedFeatIds, skillRanks, selectedOptions, preparedSpells })); setSaveNotice("Saved locally"); };
