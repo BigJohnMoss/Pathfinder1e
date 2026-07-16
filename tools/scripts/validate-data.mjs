@@ -17,9 +17,13 @@ function checkId(record, file) {
   if (ids.has(record.id)) errors.push(`${file}: duplicate id ${record.id} (also in ${ids.get(record.id)})`);
   else ids.set(record.id, file);
 }
+function checkSource(record, file) {
+  if (!record.source || typeof record.source.title !== "string" || !record.source.title.trim()) errors.push(`${file}: missing source title`);
+  try { new URL(record.source?.url); } catch { errors.push(`${file}: invalid source URL`); }
+}
 
 for (const url of await jsonFiles("classes/")) {
-  const c=await load(url); const file=url.pathname.split('/').pop(); checkId(c,file); classIds.add(c.id);
+  const c=await load(url); const file=url.pathname.split('/').pop(); checkId(c,file); checkSource(c,file); classIds.add(c.id);
   for (const key of ["name","hitDie","babProgression","saves","skillRanksPerLevel","source","features"]) if (c[key] === undefined) errors.push(`${file}: missing ${key}`);
   const featureIds=new Set();
   for (const f of c.features ?? []) {
@@ -28,8 +32,8 @@ for (const url of await jsonFiles("classes/")) {
     if (f.choiceRequired && !f.optionGroupId) errors.push(`${file}: ${f.id} requires a choice but has no optionGroupId`);
   }
 }
-for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const o of g.options??[]) {checkId(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`);} }
-for (const directory of ["races/","feats/","spells/"]) for (const url of await jsonFiles(directory)) { const r=await load(url); checkId(r,url.pathname.split('/').pop()); }
+for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const o of g.options??[]) {checkId(o,`${file}:${o.id}`); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); if(!Array.isArray(o.prerequisites)) errors.push(`${file}:${o.id} prerequisites must be an array`);} }
+for (const directory of ["races/","feats/","spells/"]) for (const url of await jsonFiles(directory)) { const r=await load(url); const file=url.pathname.split('/').pop(); checkId(r,file); checkSource(r,file); if(directory === "feats/" && !Array.isArray(r.prerequisites)) errors.push(`${file}: prerequisites must be an array`); }
 for (const url of await jsonFiles("classes/")) { const c=await load(url); for (const f of c.features??[]) if(f.optionGroupId && !groupIds.has(f.optionGroupId) && !["combat-feats","fighter-weapon-groups"].includes(f.optionGroupId)) errors.push(`${c.id}:${f.id} references missing option group ${f.optionGroupId}`); }
 if(errors.length){ console.error(`Data validation failed with ${errors.length} error(s):`); errors.forEach(e=>console.error(`- ${e}`)); process.exit(1); }
 console.log(`Validated ${ids.size} unique records across ${classIds.size} classes and ${groupIds.size} option groups.`);
