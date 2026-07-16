@@ -8,12 +8,13 @@ import rogue from "../../../packages/data/src/classes/rogue.json";
 import human from "../../../packages/data/src/races/human.json";
 import combatCasting from "../../../packages/data/src/feats/combat-casting.json";
 import powerAttack from "../../../packages/data/src/feats/power-attack.json";
-import { abilityNames, characterCombatStats, classProgression, featPrerequisiteResults } from "../../../packages/engine/src/index.js";
+import { abilityNames, characterCombatStats, classProgression, featPrerequisiteResults, skillTotal } from "../../../packages/engine/src/index.js";
 
 const classes = [arcanist, barbarian, fighter, rogue];
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
 const defaultAbilities = { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 };
 const feats = [combatCasting, powerAttack];
+const skills = [{name:"Acrobatics",ability:"dexterity"},{name:"Climb",ability:"strength"},{name:"Diplomacy",ability:"charisma"},{name:"Knowledge (arcana)",ability:"intelligence"},{name:"Perception",ability:"wisdom"},{name:"Spellcraft",ability:"intelligence"},{name:"Stealth",ability:"dexterity"}] as const;
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
 const prerequisiteLabel = (prerequisite: { type: string; key?: string; minimum?: number; id?: string }) => {
   if (prerequisite.type === "ability") return `${labels[prerequisite.key as keyof typeof labels]} ${prerequisite.minimum}+`;
@@ -28,6 +29,7 @@ export default function Home() {
   const [humanAbility, setHumanAbility] = useState<keyof typeof defaultAbilities>("intelligence");
   const [baseAbilities, setBaseAbilities] = useState(defaultAbilities);
   const [selectedFeatIds, setSelectedFeatIds] = useState<string[]>([]);
+  const [skillRanks, setSkillRanks] = useState<Record<string, number>>({});
   const characterClass = classes.find((item) => item.id === classId) ?? classes[0];
   const abilities = useMemo(() => ({ ...baseAbilities, [humanAbility]: baseAbilities[humanAbility] + 2 }), [baseAbilities, humanAbility]);
   const progression = useMemo(() => classProgression(characterClass, level, {
@@ -39,6 +41,8 @@ export default function Home() {
   const featSlots = useMemo(() => Array.from({ length: progression.featSlots }, (_, index) => ({ index, name: index === 0 ? "Human bonus feat" : `Feat ${index}` })), [progression.featSlots]);
   const updateAbility = (ability: keyof typeof defaultAbilities, value: number) => setBaseAbilities((current) => ({ ...current, [ability]: Math.max(1, Math.min(40, value || 1)) }));
   const updateFeat = (index: number, featId: string) => setSelectedFeatIds((current) => { const next = [...current]; next[index] = featId; return next; });
+  const allocatedSkillRanks = Object.values(skillRanks).reduce((total, ranks) => total + ranks, 0);
+  const updateSkill = (name: string, ranks: number) => setSkillRanks((current) => ({ ...current, [name]: Math.max(0, Math.min(progression.skillRanks, ranks || 0)) }));
 
   return <main>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
@@ -61,6 +65,7 @@ export default function Home() {
       <article><span>Feat slots</span><strong>{progression.featSlots}</strong></article>
     </section>
     <section className="feat-panel"><div><p className="eyebrow">FEATS</p><h2>Feat choices</h2><p>Prerequisites are shown for review and do not block a choice.</p></div><div className="feat-slots">{featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const checks = selected ? featPrerequisiteResults(selected, { abilities, baseAttackBonus: progression.baseAttackBonus, classLevel: level, selectedIds: selectedFeatIds }) : []; return <article key={slot.index}><label>{slot.name}<select value={selectedFeatIds[slot.index] ?? ""} onChange={(event) => updateFeat(slot.index, event.target.value)}><option value="">Choose a feat</option>{feats.map((feat) => <option key={feat.id} value={feat.id} disabled={selectedFeatIds.some((id, index) => id === feat.id && index !== slot.index)}>{feat.name}</option>)}</select></label>{selected && <><strong>{selected.name}</strong><p>{selected.benefit}</p>{checks.length > 0 && <ul className="checks">{checks.map((check, index) => <li className={check.met ? "met" : "unmet"} key={index}>{check.met ? "Met" : "Check"}: {prerequisiteLabel(check.prerequisite)}</li>)}</ul>}</>}</article>; })}</div></section>
+    <section className="skill-panel"><div><p className="eyebrow">SKILLS</p><h2>Allocate ranks</h2><p><strong>{allocatedSkillRanks}</strong> of {progression.skillRanks} total ranks allocated. Class skills gain +3 once at least one rank is invested.</p></div><div className="skill-list">{skills.map((skill) => { const ranks = skillRanks[skill.name] ?? 0; const result = skillTotal(characterClass, skill, abilities[skill.ability], ranks); return <label key={skill.name}><span>{skill.name} <small>{labels[skill.ability]}</small></span><input type="number" min="0" max={progression.skillRanks} value={ranks} onChange={(event) => updateSkill(skill.name, Number(event.target.value))} /><strong className={result.isClassSkill ? "class-skill" : ""}>{signed(result.total)}{result.isClassSkill && " class"}</strong></label>; })}</div></section>
     <section className="features"><div><p className="eyebrow">LEVEL {level}</p><h2>{characterClass.name} features</h2><p>Feat slots include the Human bonus feat. Skill ranks include Skilled and the fourfold 1st-level allocation.</p></div><ol>{progression.features.map((feature) => <li key={feature.id}><div><strong>{feature.name}</strong><p>{feature.summary}</p></div>{feature.choiceRequired && <span className="choice">Choose</span>}</li>)}</ol></section>
   </main>;
 }
