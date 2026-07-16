@@ -1,0 +1,1 @@
+{"id":"greater-feint","name":"Greater Feint","type":"combat","prerequisites":[{"type":"feat","id":"improved-feint"},{"type":"bab","minimum":6}],"benefit":"Feinted enemies lose Dex bonus against your attacks.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
