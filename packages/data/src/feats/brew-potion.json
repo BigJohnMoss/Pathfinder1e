@@ -1,0 +1,1 @@
+{"id":"brew-potion","name":"Brew Potion","type":"item-creation","prerequisites":[{"type":"caster-level","minimum":3}],"benefit":"Create a potion of a 3rd-level-or-lower spell you know.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Brew%20Potion"}}

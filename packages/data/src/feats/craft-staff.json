@@ -1,0 +1,1 @@
+{"id":"craft-staff","name":"Craft Staff","type":"item-creation","prerequisites":[{"type":"caster-level","minimum":11}],"benefit":"Create a magic staff.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Staff"}}
