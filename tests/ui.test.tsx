@@ -6,6 +6,7 @@ import { JSDOM } from "jsdom";
 let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
 let cleanup: typeof import("@testing-library/react").cleanup;
+let fireEvent: typeof import("@testing-library/react").fireEvent;
 let userEvent: typeof import("@testing-library/user-event").default;
 let Home: typeof import("../apps/web/app/page").default;
 
@@ -14,7 +15,7 @@ test.before(async () => {
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, localStorage: dom.window.localStorage });
   Object.defineProperty(globalThis, "navigator", { configurable: true, value: dom.window.navigator });
   Object.assign(globalThis, { React });
-  ({ render, screen, cleanup } = await import("@testing-library/react"));
+  ({ render, screen, cleanup, fireEvent } = await import("@testing-library/react"));
   userEvent = (await import("@testing-library/user-event")).default;
   Home = (await import("../apps/web/app/page")).default;
 });
@@ -50,12 +51,14 @@ test("prevents duplicate feats and prepares spells", async () => {
   render(<Home />);
   assert.match(screen.getByText(/Arcanist slots/).textContent ?? "", /3 1st \(2 base \+ 1 Intelligence\)/);
   assert.match(screen.getByText(/Mage Armor/).textContent ?? "", /DC 12/);
-  await user.clear(screen.getByLabelText("Level"));
-  await user.type(screen.getByLabelText("Level"), "3");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
   await user.selectOptions(screen.getByLabelText("Human bonus feat"), "combat-casting");
   const secondFeat = screen.getByLabelText("Feat 1");
   assert.equal((secondFeat.querySelector("option[value='combat-casting']") as HTMLOptionElement).disabled, true);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "1" } });
   const mageArmor = screen.getByLabelText(/Mage Armor/);
   await user.click(mageArmor);
   assert.equal((mageArmor as HTMLInputElement).checked, true);
+  await user.click(screen.getByLabelText(/Magic Missile/));
+  assert.equal((screen.getByLabelText(/Shield/) as HTMLInputElement).disabled, true);
 });
