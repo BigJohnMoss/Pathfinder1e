@@ -57,12 +57,13 @@ export function averageHitPoints(hitDie, level, constitutionModifier = 0) {
   return Math.max(1, hitDie + constitutionModifier) + (level - 1) * laterLevelGain;
 }
 
-const lightLoads = [3,6,10,13,16,20,23,26,30,33,38,43,50,58,66,76,86,100,116,133];
+const lightLoads = [3,6,10,13,16,20,23,26,30,33,38,43,50,58,66,76,86,100,116,133,153,173,200,233,266,306,346,400,466];
 
 export function carryingCapacity(strength) {
   if (!Number.isInteger(strength) || strength < 1) throw new RangeError("Strength must be a positive integer.");
-  const multiplier = Math.pow(4, Math.floor((strength - 1) / 20));
-  const light = lightLoads[(strength - 1) % 20] * multiplier;
+  const multiplier = Math.pow(4, Math.floor(Math.max(0, strength - 20) / 10));
+  const tableStrength = strength <= 29 ? strength : 20 + ((strength - 20) % 10);
+  const light = lightLoads[tableStrength - 1] * multiplier;
   return { light, medium: light * 2, heavy: light * 3 };
 }
 
@@ -229,6 +230,24 @@ export function featPrerequisiteResults(feat, context) {
     prerequisite,
     met: prerequisiteMet(prerequisite, context)
   }));
+}
+
+export function normalizeSelectedFeats(selectedFeatIds, feats, context, slotCount) {
+  if (!Array.isArray(selectedFeatIds) || !Number.isInteger(slotCount) || slotCount < 0) return [];
+  const byId = new Map(feats.map(feat => [feat.id, feat]));
+  let result = selectedFeatIds.filter((id, index, ids) => typeof id === "string" && ids.indexOf(id) === index && byId.has(id)).slice(0, slotCount);
+  let changed = true;
+  while (changed) {
+    changed = false;
+    const next = result.filter(id => {
+      const feat = byId.get(id);
+      const eligible = prerequisitesMet(feat.prerequisites, { ...context, selectedIds: result.filter(otherId => otherId !== id) });
+      if (!eligible) changed = true;
+      return eligible;
+    });
+    result = next;
+  }
+  return result;
 }
 
 export function prerequisitesMet(prerequisites, context) {
