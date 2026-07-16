@@ -82,3 +82,18 @@ test("searches the spellbook and normalizes loaded prepared spells", async () =>
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
   assert.equal(screen.getByLabelText("Magic Missile prepared").textContent, "0");
 });
+
+test("shows Fighter combat-feat and weapon-group choices when earned", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  const combatFeat = screen.getAllByText("Bonus Combat Feat")[0].closest("label")?.querySelector("select");
+  assert.ok(combatFeat);
+  assert.ok([...combatFeat.options].some(option => option.text === "Improved Initiative"));
+  assert.equal([...combatFeat.options].some(option => option.text === "Power Attack"), false);
+  const weaponTraining = screen.getAllByText("Weapon Training 1")[0].closest("label")?.querySelector("select");
+  assert.ok(weaponTraining);
+  await user.selectOptions(weaponTraining, "weapon-group-bows");
+  assert.match(screen.getByText("Gain the weapon training bonus with bows.").textContent ?? "", /bows/);
+});

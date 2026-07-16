@@ -197,12 +197,12 @@ export function featuresThroughLevel(characterClass, level) {
     .sort((a,b) => a.level-b.level || a.name.localeCompare(b.name));
 }
 
-export function availableOptions(group, classId, classLevel, selectedIds = []) {
+export function availableOptions(group, classId, classLevel, selectedIds = [], context = {}) {
   assertLevel(classLevel);
   return group.options.filter(option =>
     option.classIds.includes(classId) &&
     option.minimumLevel <= classLevel &&
-    prerequisitesMet(option.prerequisites, {classId, classLevel, selectedIds})
+    prerequisitesMet(option.prerequisites, {classId, classLevel, selectedIds, ...context})
   );
 }
 

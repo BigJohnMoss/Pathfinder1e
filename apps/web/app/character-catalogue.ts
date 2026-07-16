@@ -8,6 +8,8 @@ import powerAttack from "../../../packages/data/src/feats/power-attack.json";
 import exploits from "../../../packages/data/src/options/arcanist-exploits.json";
 import ragePowers from "../../../packages/data/src/options/rage-powers.json";
 import rogueTalents from "../../../packages/data/src/options/rogue-talents.json";
+import combatFeats from "../../../packages/data/src/options/combat-feats.json";
+import fighterWeaponGroups from "../../../packages/data/src/options/fighter-weapon-groups.json";
 import mageArmor from "../../../packages/data/src/spells/mage-armor.json";
 import magicMissile from "../../../packages/data/src/spells/magic-missile.json";
 import shield from "../../../packages/data/src/spells/shield.json";
@@ -27,6 +29,6 @@ import arcanistStarterSpellCatalogue from "../../../packages/data/src/spell-cata
 export const classes = [arcanist, barbarian, fighter, rogue];
 export { human };
 export const feats = [combatCasting, powerAttack];
-export const optionGroups = [exploits, ragePowers, rogueTalents];
+export const optionGroups = [exploits, ragePowers, rogueTalents, combatFeats, fighterWeaponGroups];
 export const spells = [detectMagic, light, mageHand, rayOfFrost, readMagic, alarm, charmPerson, colorSpray, holdPortal, mageArmor, magicMissile, shield, sleep, ...arcanistStarterSpellCatalogue.spells, ...arcanistSpellCatalogue.spells];
 export const skills = [{name:"Acrobatics",ability:"dexterity"},{name:"Climb",ability:"strength"},{name:"Diplomacy",ability:"charisma"},{name:"Knowledge (arcana)",ability:"intelligence"},{name:"Perception",ability:"wisdom"},{name:"Spellcraft",ability:"intelligence"},{name:"Stealth",ability:"dexterity"}] as const;
