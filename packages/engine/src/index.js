@@ -121,6 +121,12 @@ export function skillTotal(characterClass, skill, abilityScore, ranks) {
   };
 }
 
+export function skillRankBudget(totalRanks, allocations) {
+  if (!Number.isInteger(totalRanks) || totalRanks < 0) throw new RangeError("Total skill ranks must be a non-negative integer.");
+  const allocated = Object.values(allocations).reduce((total, ranks) => total + (Number.isInteger(ranks) && ranks > 0 ? ranks : 0), 0);
+  return { allocated, remaining: Math.max(0, totalRanks - allocated), overspent: Math.max(0, allocated - totalRanks) };
+}
+
 export function classProgression(characterClass, level, { intelligenceScore = 10, racialSkillBonusPerLevel = 0, bonusFeats = 0 } = {}) {
   assertLevel(level);
   return {
