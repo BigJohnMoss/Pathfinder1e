@@ -1,0 +1,1 @@
+{"id":"scorpion-style","name":"Scorpion Style","type":"combat","prerequisites":[{"type":"feat","id":"improved-unarmed-strike"}],"benefit":"Reduce target speed with an unarmed strike.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
