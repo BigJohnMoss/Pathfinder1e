@@ -1,0 +1,1 @@
+{"id":"scribe-scroll","name":"Scribe Scroll","type":"item-creation","prerequisites":[{"type":"caster-level","minimum":1}],"benefit":"Create a scroll of a spell you know.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Scribe%20Scroll"}}
