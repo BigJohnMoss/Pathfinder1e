@@ -1,0 +1,1 @@
+{"id":"mobility","name":"Mobility","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":13},{"type":"feat","id":"dodge"}],"benefit":"Gain a +4 dodge bonus to AC against attacks of opportunity caused by moving out of or within a threatened area.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Mobility"}}

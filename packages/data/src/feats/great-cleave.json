@@ -1,0 +1,1 @@
+{"id":"great-cleave","name":"Great Cleave","type":"combat","prerequisites":[{"type":"feat","id":"cleave"},{"type":"bab","minimum":4}],"benefit":"Continue making cleave attacks against adjacent foes until you miss or run out of targets.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Great%20Cleave"}}
