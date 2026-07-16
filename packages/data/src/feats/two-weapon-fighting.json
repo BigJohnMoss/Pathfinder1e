@@ -1,0 +1,1 @@
+{"id":"two-weapon-fighting","name":"Two-Weapon Fighting","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":15}],"benefit":"Reduce penalties when fighting with a weapon in each hand.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Two-Weapon%20Fighting"}}

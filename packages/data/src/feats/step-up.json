@@ -1,0 +1,1 @@
+{"id":"step-up","name":"Step Up","type":"combat","prerequisites":[{"type":"bab","minimum":1}],"benefit":"Take a 5-foot step as an immediate action when an adjacent foe takes a 5-foot step away.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Step%20Up"}}

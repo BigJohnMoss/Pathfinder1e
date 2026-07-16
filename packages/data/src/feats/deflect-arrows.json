@@ -1,0 +1,1 @@
+{"id":"deflect-arrows","name":"Deflect Arrows","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":13},{"type":"feat","id":"improved-unarmed-strike"}],"benefit":"Deflect one ranged attack each round while you have a hand free.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Deflect%20Arrows"}}
