@@ -49,7 +49,7 @@ test("enforces the skill-rank pool through the interface", async () => {
 test("prevents duplicate feats and manages prepared spell counts", async () => {
   const user = userEvent.setup();
   render(<Home />);
-  assert.match(screen.getByText(/Arcanist slots/).textContent ?? "", /3 1st \(2 base \+ 1 Intelligence\)/);
+  assert.match(screen.getByText(/Arcanist slots/).textContent ?? "", /3 1st-level \(2 base \+ 1 Intelligence\)/);
   assert.match(screen.getByText("Mage Armor").closest("article")?.textContent ?? "", /DC 12/);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
   await user.selectOptions(screen.getByLabelText("Human bonus feat"), "combat-casting");
@@ -63,9 +63,22 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   await user.click(screen.getByRole("button", { name: "Remove Magic Missile" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "0");
   await user.click(screen.getByRole("button", { name: "Add Detect Magic" }));
   await user.click(screen.getByRole("button", { name: "Add Light" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Hand" }));
   await user.click(screen.getByRole("button", { name: "Add Ray of Frost" }));
   assert.equal((screen.getByRole("button", { name: "Add Read Magic" }) as HTMLButtonElement).disabled, true);
+});
+
+test("searches the spellbook and normalizes loaded prepared spells", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.type(screen.getByLabelText("Search spells"), "magic missile");
+  assert.ok(screen.getByRole("button", { name: "Add Magic Missile" }));
+  await user.clear(screen.getByLabelText("Search spells"));
+  localStorage.setItem("pf1e-character-draft", JSON.stringify({ name: "Arcanist", classId: "arcanist", level: 1, humanAbility: "intelligence", baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 }, selectedFeatIds: [], skillRanks: {}, selectedOptions: {}, preparedSpells: ["mage-armor", "mage-armor", "magic-missile", "unknown"] }));
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
+  assert.equal(screen.getByLabelText("Magic Missile prepared").textContent, "0");
 });

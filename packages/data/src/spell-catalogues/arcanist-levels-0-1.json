@@ -1,0 +1,2145 @@
+{
+  "source": {
+    "title": "Archives of Nethys: Arcanist spell list",
+    "url": "https://www.aonprd.com/Spells.aspx?Class=Arcanist"
+  },
+  "spells": [
+    {
+      "id": "acid-splash",
+      "name": "Acid Splash",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Orb deals 1d3 acid damage."
+    },
+    {
+      "id": "arcane-mark",
+      "name": "Arcane Mark",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Inscribes a personal rune on an object or creature (visible or invisible)."
+    },
+    {
+      "id": "bleed",
+      "name": "Bleed",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Cause a stabilized creature to resume dying."
+    },
+    {
+      "id": "breeze",
+      "name": "Breeze",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Create a light wind."
+    },
+    {
+      "id": "chameleon-scales",
+      "name": "Chameleon Scales",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Change the color of your skin to something else."
+    },
+    {
+      "id": "dancing-lights",
+      "name": "Dancing Lights",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Creates torches or other lights."
+    },
+    {
+      "id": "daze",
+      "name": "Daze",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Humanoid creature of 4 HD or less loses next action."
+    },
+    {
+      "id": "detect-fiendish-presence",
+      "name": "Detect Fiendish Presence",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "As detect evil, except this specifically detects outsiders with the evil subtype and their servants."
+    },
+    {
+      "id": "detect-poison",
+      "name": "Detect Poison",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Detects poison in one creature or object."
+    },
+    {
+      "id": "disrupt-undead",
+      "name": "Disrupt Undead",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Deals 1d6 damage to one undead."
+    },
+    {
+      "id": "drench",
+      "name": "Drench",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Soak the target creature or object."
+    },
+    {
+      "id": "flare",
+      "name": "Flare",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Dazzles one creature (–1 on attack rolls)."
+    },
+    {
+      "id": "ghost-sound",
+      "name": "Ghost Sound",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Figment sounds."
+    },
+    {
+      "id": "grasp",
+      "name": "Grasp",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Retry a Climb check as an immediate action"
+    },
+    {
+      "id": "haunted-fey-aspect",
+      "name": "Haunted Fey Aspect",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "You surround yourself with disturbing illusions."
+    },
+    {
+      "id": "jolt",
+      "name": "Jolt",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Deal 1d3 electricity with a ranged touch attack."
+    },
+    {
+      "id": "mending",
+      "name": "Mending",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Makes minor repairs on an object."
+    },
+    {
+      "id": "message",
+      "name": "Message",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Whisper conversation at distance."
+    },
+    {
+      "id": "oath-of-anonymity",
+      "name": "Oath of Anonymity",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Cloak yourself in an illusion that hides your true identity"
+    },
+    {
+      "id": "open-close",
+      "name": "Open/Close",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Opens or closes small or light things."
+    },
+    {
+      "id": "penumbra",
+      "name": "Penumbra",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Keep something in the shadows."
+    },
+    {
+      "id": "prestidigitation",
+      "name": "Prestidigitation",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Performs minor tricks."
+    },
+    {
+      "id": "resistance",
+      "name": "Resistance",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Subject gains +1 on saving throws."
+    },
+    {
+      "id": "root",
+      "name": "Root",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Bolster the subject’s CMD vs. trips and Acrobatics checks to remain standing."
+    },
+    {
+      "id": "scoop",
+      "name": "Scoop",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Use a small vessel of force to scoop up liquid or small objects."
+    },
+    {
+      "id": "scriveners-chant",
+      "name": "Scrivener's Chant",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Imbue a quill to rapidly transcribe words from one page to another."
+    },
+    {
+      "id": "sotto-voce",
+      "name": "Sotto Voce",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Use your dry, rasping whisper to fill a creature with dread."
+    },
+    {
+      "id": "spark",
+      "name": "Spark",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Ignites flammable objects."
+    },
+    {
+      "id": "touch-of-fatigue",
+      "name": "Touch of Fatigue",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Touch attack fatigues target."
+    },
+    {
+      "id": "vacuous-vessel",
+      "name": "Vacuous Vessel",
+      "levelByClass": {
+        "arcanist": 0
+      },
+      "summary": "Make a single container appear empty."
+    },
+    {
+      "id": "abjuring-step",
+      "name": "Abjuring Step",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "You can move slowly and safely and still cast spells, until you move quickly, make an attack, or cast a harmful spell."
+    },
+    {
+      "id": "abundant-ammunition",
+      "name": "Abundant Ammunition",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Replaces nonmagical ammunition every round."
+    },
+    {
+      "id": "adhesive-spittle",
+      "name": "Adhesive Spittle",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Spit a tanglefoot bag at a creature."
+    },
+    {
+      "id": "air-bubble",
+      "name": "Air Bubble",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Creates a small pocket of air around your head or an object."
+    },
+    {
+      "id": "alchemical-tinkering",
+      "name": "Alchemical Tinkering",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Transform an alchemical item or firearm into another similar item."
+    },
+    {
+      "id": "alter-musical-instrument",
+      "name": "Alter Musical Instrument",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Make one instrument sound like a different kind of instrument."
+    },
+    {
+      "id": "alter-winds",
+      "name": "Alter Winds",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Increase/decrease strength of natural winds."
+    },
+    {
+      "id": "animate-rope",
+      "name": "Animate Rope",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Makes a rope move at your command."
+    },
+    {
+      "id": "ant-haul",
+      "name": "Ant Haul",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Triples carrying capacity of a creature."
+    },
+    {
+      "id": "anticipate-peril",
+      "name": "Anticipate Peril",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target gains a bonus on one initiative check."
+    },
+    {
+      "id": "aphasia",
+      "name": "Aphasia",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Prevent a target from understanding language."
+    },
+    {
+      "id": "arcane-pocket",
+      "name": "Arcane Pocket",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Conjure an extradimensional space inside a pouch or pocket."
+    },
+    {
+      "id": "auditory-hallucination",
+      "name": "Auditory Hallucination",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create a phantasm with auditory effects."
+    },
+    {
+      "id": "authenticating-gaze",
+      "name": "Authenticating Gaze",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain a bonus on Appraise/Linguistics checks related to books and scrolls, along with some magical detection abilities."
+    },
+    {
+      "id": "bed-of-iron",
+      "name": "Bed of Iron",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Allow the enchanted to sleep comfortably in medium or heavy armor."
+    },
+    {
+      "id": "bestow-planar-infusion-i",
+      "name": "Bestow Planar Infusion I",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Grant the target the effects of a planar infusion"
+    },
+    {
+      "id": "blend",
+      "name": "Blend",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Change the color of yourself to match your surroundings and gain a bonus to Stealth."
+    },
+    {
+      "id": "blend-with-surroundings",
+      "name": "Blend with Surroundings",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Change the appearance of a creature to better blend in with its surroundings."
+    },
+    {
+      "id": "blood-money",
+      "name": "Blood Money",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Use your own blood in order to create valuable material components."
+    },
+    {
+      "id": "blurred-movement",
+      "name": "Blurred Movement",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "As blur, but only while you are moving."
+    },
+    {
+      "id": "body-capacitance",
+      "name": "Body Capacitance",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Store electricity attacks used against you and release the energy as a touch attack."
+    },
+    {
+      "id": "bouncy-body",
+      "name": "Bouncy Body",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Transmute the subject’s flesh into rubber, helping to protect against falls and grapples."
+    },
+    {
+      "id": "break",
+      "name": "Break",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gives an object the broken condition."
+    },
+    {
+      "id": "brightest-night",
+      "name": "Brightest Night",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Grant improved low-light vision to several creatures"
+    },
+    {
+      "id": "bungle",
+      "name": "Bungle",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target takes a -20 penalty on its next attack roll or check."
+    },
+    {
+      "id": "burning-disarm",
+      "name": "Burning Disarm",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Make a metal item become red hot, forcing those holding it to drop it or risk searing their hand."
+    },
+    {
+      "id": "burning-hands",
+      "name": "Burning Hands",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "1d4/level fire damage (max 5d4)."
+    },
+    {
+      "id": "burning-sands",
+      "name": "Burning Sands",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create a field of hot sand that creates difficult terrain and minor fire damage"
+    },
+    {
+      "id": "cause-fear",
+      "name": "Cause Fear",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "One creature of 5 HD or less flees for 1d4 rounds."
+    },
+    {
+      "id": "celestial-healing",
+      "name": "Celestial Healing",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Grant fast healing 1 for 1 round/2 levels."
+    },
+    {
+      "id": "charm-fey",
+      "name": "Charm Fey",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "As charm person, but targets fey"
+    },
+    {
+      "id": "chastise",
+      "name": "Chastise",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "+5 bonus to convince a target to do what you want or get in trouble with their superiors."
+    },
+    {
+      "id": "chill-touch",
+      "name": "Chill Touch",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "One touch/level deals 1d6 damage and possibly 1 Str damage."
+    },
+    {
+      "id": "clarion-call",
+      "name": "Clarion Call",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Make yourself heard over great distances."
+    },
+    {
+      "id": "cloak-of-secrets",
+      "name": "Cloak of Secrets",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Filter speech from a given area to sound like a different conversation."
+    },
+    {
+      "id": "coin-shot",
+      "name": "Coin Shot",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Turn coins into deadly projectiles."
+    },
+    {
+      "id": "comprehend-languages",
+      "name": "Comprehend Languages",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "You understand all languages."
+    },
+    {
+      "id": "corrosive-touch",
+      "name": "Corrosive Touch",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Touch attack deals 1d4 acid/level."
+    },
+    {
+      "id": "cowards-cowl",
+      "name": "Coward's Cowl",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Enhance a target’s defensive instincts."
+    },
+    {
+      "id": "crafters-curse",
+      "name": "Crafter's Curse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Subject takes –5 on Craft skill checks."
+    },
+    {
+      "id": "crafters-fortune",
+      "name": "Crafter's Fortune",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Subject gains +5 on next Craft check."
+    },
+    {
+      "id": "cultural-adaptation",
+      "name": "Cultural Adaptation",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Adapt to fit the local cultural"
+    },
+    {
+      "id": "cultural-adaptation-taldan",
+      "name": "Cultural Adaptation (Taldan)",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Better impersonate the member of a specific culture."
+    },
+    {
+      "id": "damp-powder",
+      "name": "Damp Powder",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Ruins ammunition loaded in the targeted firearm."
+    },
+    {
+      "id": "dancing-darkness",
+      "name": "Dancing Darkness",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create four spheres of floating darkness."
+    },
+    {
+      "id": "dancing-lantern",
+      "name": "Dancing Lantern",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Animates a lantern that follows you."
+    },
+    {
+      "id": "darting-duplicate",
+      "name": "Darting Duplicate",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Summon a duplicate of yourself to provoke enemy attacks of opportunity."
+    },
+    {
+      "id": "dazzling-blade",
+      "name": "Dazzling Blade",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Make a weapon appear dazzingly shiny, making it easier to disarm and feint in combat."
+    },
+    {
+      "id": "decompose-corpse",
+      "name": "Decompose Corpse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Turn a corpse into a clean skeleton."
+    },
+    {
+      "id": "decrepit-disguise",
+      "name": "Decrepit Disguise",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Make an object seem worthless."
+    },
+    {
+      "id": "deja-vu",
+      "name": "Deja Vu",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Make a creature repeat its actions."
+    },
+    {
+      "id": "delusional-pride",
+      "name": "Delusional Pride",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target is penalized on attacks and checks but gains bonus against charms and compulsions."
+    },
+    {
+      "id": "depilate",
+      "name": "Depilate",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Creature takes -2 penalty to Diplomacy, Intimidate, and Perform for 1 week"
+    },
+    {
+      "id": "desperate-weapon",
+      "name": "Desperate Weapon",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create an improvised weapon."
+    },
+    {
+      "id": "detect-charm",
+      "name": "Detect Charm",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Detect charm, compulsion, and possession effects in the area"
+    },
+    {
+      "id": "detect-metal",
+      "name": "Detect Metal",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Detect metal objects or creatures."
+    },
+    {
+      "id": "detect-radiation",
+      "name": "Detect Radiation",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Detect radiation in the surrounding area."
+    },
+    {
+      "id": "detect-secret-doors",
+      "name": "Detect Secret Doors",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Reveals hidden doors within 60 ft."
+    },
+    {
+      "id": "detect-undead",
+      "name": "Detect Undead",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Reveals undead within 60 ft."
+    },
+    {
+      "id": "discern-next-of-kin",
+      "name": "Discern Next of Kin",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Read the target’s mind to learn about its family."
+    },
+    {
+      "id": "disguise-self",
+      "name": "Disguise Self",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Changes your appearance."
+    },
+    {
+      "id": "disguise-weapon",
+      "name": "Disguise Weapon",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Changes one weapon’s appearance."
+    },
+    {
+      "id": "ear-piercing-scream",
+      "name": "Ear-Piercing Scream",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Deal sonic damage and daze target."
+    },
+    {
+      "id": "ears-of-the-city",
+      "name": "Ears of the City",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "The target of this spell sees and hears a stream of past scenes and pieces of conversations related to local people and events."
+    },
+    {
+      "id": "emblazon-crest",
+      "name": "Emblazon Crest",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Display your crest on anything you carry."
+    },
+    {
+      "id": "endothermic-touch",
+      "name": "Endothermic Touch",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Stagger a creature and reduce their speed by half, but increase the time they can hold their breath."
+    },
+    {
+      "id": "endure-elements",
+      "name": "Endure Elements",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Exist comfortably in hot or cold regions."
+    },
+    {
+      "id": "enlarge-person",
+      "name": "Enlarge Person",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Humanoid creature doubles in size."
+    },
+    {
+      "id": "enlarge-tail",
+      "name": "Enlarge Tail",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Increase the reach and power of your tail."
+    },
+    {
+      "id": "erase",
+      "name": "Erase",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Mundane or magical writing vanishes."
+    },
+    {
+      "id": "expeditious-construction",
+      "name": "Expeditious Construction",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create a low wall or other simple structure of packed earth or stone."
+    },
+    {
+      "id": "expeditious-excavation",
+      "name": "Expeditious Excavation",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Moves 5-ft. cubes of earth."
+    },
+    {
+      "id": "expeditious-retreat",
+      "name": "Expeditious Retreat",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Your base land speed increases by 30 ft."
+    },
+    {
+      "id": "fabricate-bullets",
+      "name": "Fabricate Bullets",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Converts 1 pound of metal into ammunition."
+    },
+    {
+      "id": "fabricate-disguise",
+      "name": "Fabricate Disguise",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create a disguise in an instant."
+    },
+    {
+      "id": "face-of-the-devourer",
+      "name": "Face of the Devourer",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Horribly mutate the target’s face, disfiguring it while granting it a natural attack."
+    },
+    {
+      "id": "false-face",
+      "name": "False Face",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Polymorph into a disguised identity"
+    },
+    {
+      "id": "fastidiousness",
+      "name": "Fastidiousness",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Keep yourself and your equipment clean and dry"
+    },
+    {
+      "id": "feather-fall",
+      "name": "Feather Fall",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Objects or creatures fall slowly."
+    },
+    {
+      "id": "ferment",
+      "name": "Ferment",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Affected liquid becomes alcoholic"
+    },
+    {
+      "id": "flare-burst",
+      "name": "Flare Burst",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "As flare, but affects all creatures in 10 ft."
+    },
+    {
+      "id": "floating-disk",
+      "name": "Floating Disk",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Creates 3-ft.-diameter horizontal disk that holds 100 lbs./level."
+    },
+    {
+      "id": "fools-gold-vc",
+      "name": "Fool's Gold (VC)",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Disguise copper pieces or silver pieces as gold pieces"
+    },
+    {
+      "id": "forced-quiet",
+      "name": "Forced Quiet",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target cannot make loud noises."
+    },
+    {
+      "id": "fumblestep",
+      "name": "Fumblestep",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target takes -1 penalty to Reflex and Acrobatics, discharge to perform a trip combat maneuver."
+    },
+    {
+      "id": "gentle-breeze",
+      "name": "Gentle Breeze",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Light wind protects one target from clouds, gases, heat, and vapors."
+    },
+    {
+      "id": "glue-seal",
+      "name": "Glue Seal",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Makes one 5-ft. square or one object sticky."
+    },
+    {
+      "id": "grappling-scarf",
+      "name": "Grappling Scarf",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Enchanted scarf functions as grappling hook with 100 ft of rope"
+    },
+    {
+      "id": "grasping-corpse",
+      "name": "Grasping Corpse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Cause a corpse to grab or trip a foe"
+    },
+    {
+      "id": "gravity-bow",
+      "name": "Gravity Bow",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Arrows do damage as though one size category bigger."
+    },
+    {
+      "id": "grease",
+      "name": "Grease",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Makes 10-ft. square or one object slippery."
+    },
+    {
+      "id": "guardian-armor",
+      "name": "Guardian Armor",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Teleport your armor onto an ally in range"
+    },
+    {
+      "id": "handy-grapnel",
+      "name": "Handy Grapnel",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Transform a ropelike object into a retracting grapple."
+    },
+    {
+      "id": "heightened-awareness",
+      "name": "Heightened Awareness",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Your recall and ability to process information improve."
+    },
+    {
+      "id": "hide-bruises",
+      "name": "Hide Bruises",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Disguise a creature's injuries, making them more difficult to heal"
+    },
+    {
+      "id": "hide-weapon",
+      "name": "Hide Weapon",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Hide a weapon within your own arm."
+    },
+    {
+      "id": "hobble",
+      "name": "Hobble",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Reduce creature's speed"
+    },
+    {
+      "id": "hydraulic-push",
+      "name": "Hydraulic Push",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Wave of water bull rushes an enemy."
+    },
+    {
+      "id": "hypnotism",
+      "name": "Hypnotism",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Fascinates 2d4 HD of creatures."
+    },
+    {
+      "id": "icicle-dagger",
+      "name": "Icicle Dagger",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Masterwork ice dagger deals +1 cold damage."
+    },
+    {
+      "id": "identify",
+      "name": "Identify",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gives +10 bonus to identify magic items."
+    },
+    {
+      "id": "illusion-of-calm",
+      "name": "Illusion of Calm",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "You appear to be standing still, even when you take some actions."
+    },
+    {
+      "id": "implant-urge",
+      "name": "Implant Urge",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Implant a subconscious goal into a creature"
+    },
+    {
+      "id": "incendiary-runes",
+      "name": "Incendiary Runes",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "As explosive runes, except it creates a small surge of flames instead of an explosion of force."
+    },
+    {
+      "id": "incessant-buzzing",
+      "name": "Incessant Buzzing",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Summon illusory wasps to distract creatures"
+    },
+    {
+      "id": "infernal-healing",
+      "name": "Infernal Healing",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Give someone fast healing 1 for a minute, at the cost of a temporary evil alignment."
+    },
+    {
+      "id": "instant-portrait",
+      "name": "Instant Portrait",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create a portrait of a creature on the touched surface"
+    },
+    {
+      "id": "interrogation",
+      "name": "Interrogation",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target answers questions or suffers pain."
+    },
+    {
+      "id": "invisibility-alarm",
+      "name": "Invisibility Alarm",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "As alarm, but reacting only to invisible creatures."
+    },
+    {
+      "id": "itching-curse",
+      "name": "Itching Curse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Creature takes -1 penalty to attack, saves, skill checks, and ability checks"
+    },
+    {
+      "id": "jump",
+      "name": "Jump",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Subject gets bonus on Acrobatics checks."
+    },
+    {
+      "id": "jury-rig",
+      "name": "Jury-Rig",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Removes the broken condition from the targeted object."
+    },
+    {
+      "id": "keep-watch",
+      "name": "Keep Watch",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Allow creatures to stand watch without fatigue throughout the night."
+    },
+    {
+      "id": "keyhole",
+      "name": "Keyhole",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create a keyhole in any door or enlarge an existing keyhole"
+    },
+    {
+      "id": "ki-arrow",
+      "name": "Ki Arrow",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Arrow deals damage as your unarmed strike."
+    },
+    {
+      "id": "kreightons-perusal",
+      "name": "Kreighton's Perusal",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain a brief understanding from a book as if you had read it for 1 hour."
+    },
+    {
+      "id": "liberating-command",
+      "name": "Liberating Command",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target makes an Escape Artist check as an immediate action and gains a bonus on it."
+    },
+    {
+      "id": "lighten-object",
+      "name": "Lighten Object",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Decrease the target’s weight by half or reduce the armor check penalty of armor."
+    },
+    {
+      "id": "line-in-the-sand",
+      "name": "Line in the Sand",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Increase your attacks of opportunity per round."
+    },
+    {
+      "id": "linked-legacy",
+      "name": "Linked Legacy",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Share information with all targets of the spell in the blink of an eye."
+    },
+    {
+      "id": "lock-gaze",
+      "name": "Lock Gaze",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Compels the target to look only at you for the duration of the spell."
+    },
+    {
+      "id": "locksight",
+      "name": "Locksight",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Determine from a distance the quality of a lock and whether it is open, closed, or jammed."
+    },
+    {
+      "id": "long-arm",
+      "name": "Long Arm",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Your arms lengthen, giving you extra reach."
+    },
+    {
+      "id": "longshot",
+      "name": "Longshot",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Grants a +10-foot bonus to the range increment for any ranged weapon fired."
+    },
+    {
+      "id": "lose-the-trail",
+      "name": "Lose the Trail",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Obscure a target’s tracks when fleeing from a pursuer."
+    },
+    {
+      "id": "lucky-number",
+      "name": "Lucky Number",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Tweak tiny variables in a creature’s immediate future."
+    },
+    {
+      "id": "magic-aura",
+      "name": "Magic Aura",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Alters object's magic aura."
+    },
+    {
+      "id": "magic-weapon",
+      "name": "Magic Weapon",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Weapon gains +1 bonus."
+    },
+    {
+      "id": "marids-mastery",
+      "name": "Marid's Mastery",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target gains bonus to attack/damage when combat is in water, penalty if on land."
+    },
+    {
+      "id": "memorize-page",
+      "name": "Memorize Page",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target perfectly memorizes one page of information."
+    },
+    {
+      "id": "memory-lapse",
+      "name": "Memory Lapse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Subject forgets events back to last turn."
+    },
+    {
+      "id": "mindlink",
+      "name": "Mindlink",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Communicate a great deal of information in an instant."
+    },
+    {
+      "id": "mirror-mantis",
+      "name": "Mirror Mantis",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Creature sees an looming assassin whenever they see their reflection in a mirror"
+    },
+    {
+      "id": "mirror-polish",
+      "name": "Mirror Polish",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Polish a metal item until it’s usable as a mirror."
+    },
+    {
+      "id": "mirror-strike",
+      "name": "Mirror Strike",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "You may strike multiple opponents with a single attack."
+    },
+    {
+      "id": "moment-of-greatness",
+      "name": "Moment of Greatness",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Doubles a morale bonus."
+    },
+    {
+      "id": "monkey-fish",
+      "name": "Monkey Fish",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain a climb speed and a swim speed of 10 ft. for a time."
+    },
+    {
+      "id": "mount",
+      "name": "Mount",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Summons riding horse for 2 hours/level."
+    },
+    {
+      "id": "mudball",
+      "name": "Mudball",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Throw a ball of mud to blind your enemy."
+    },
+    {
+      "id": "murderous-crow",
+      "name": "Murderous Crow",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Conjure a supernaturally vicious and clever crow to watch over you."
+    },
+    {
+      "id": "negative-reaction",
+      "name": "Negative Reaction",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Targeted creature may not positively influence anyone."
+    },
+    {
+      "id": "night-blindness",
+      "name": "Night Blindness",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Impair target’s vision as if it were darker."
+    },
+    {
+      "id": "obscure-poison",
+      "name": "Obscure Poison",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Make it harder to detect a poison or venomous creature."
+    },
+    {
+      "id": "obscuring-mist",
+      "name": "Obscuring Mist",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Fog surrounds you."
+    },
+    {
+      "id": "open-and-shut",
+      "name": "Open and Shut",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Obfuscate whether a door is open or closed."
+    },
+    {
+      "id": "pattern-recognition",
+      "name": "Pattern Recognition",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain an insight bonus on Search checks and Survival checks to follow tracks."
+    },
+    {
+      "id": "peace-bond",
+      "name": "Peace Bond",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create a glowing rune of peace to protect targets from your own magic."
+    },
+    {
+      "id": "peacebond",
+      "name": "Peacebond",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Locks a weapon in place on the target's body."
+    },
+    {
+      "id": "peasant-armaments",
+      "name": "Peasant Armaments",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Transform improvised weapons into actual weapons."
+    },
+    {
+      "id": "pesh-vigor",
+      "name": "Pesh Vigor",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Increase target’s strength with consumption of pesh."
+    },
+    {
+      "id": "phantom-blood",
+      "name": "Phantom Blood",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain temporary hp if Con loss would knock you out or kill you."
+    },
+    {
+      "id": "pierce-facade",
+      "name": "Pierce Facade",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain a +5 insight bonus to Perception to see through disguises"
+    },
+    {
+      "id": "planar-orientation",
+      "name": "Planar Orientation",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Locate places of power on your current plane"
+    },
+    {
+      "id": "poisoned-egg",
+      "name": "Poisoned Egg",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Transform a single egg into a dose of poison."
+    },
+    {
+      "id": "polypurpose-panacea",
+      "name": "Polypurpose Panacea",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain a relaxing or entertaining effect."
+    },
+    {
+      "id": "positive-pulse",
+      "name": "Positive Pulse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Energy harms undead or bolsters the living"
+    },
+    {
+      "id": "preserve",
+      "name": "Preserve",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Prevent objects from rotting and spoiling"
+    },
+    {
+      "id": "protection-from-chaos",
+      "name": "Protection from Chaos",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "+2 to AC and saves, plus additional protection against selected alignment."
+    },
+    {
+      "id": "protection-from-evil",
+      "name": "Protection from Evil",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "+2 to AC and saves, plus additional protection against selected alignment."
+    },
+    {
+      "id": "protection-from-good",
+      "name": "Protection from Good",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "+2 to AC and saves, plus additional protection against selected alignment."
+    },
+    {
+      "id": "protection-from-law",
+      "name": "Protection from Law",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "+2 to AC and saves, plus additional protection against selected alignment."
+    },
+    {
+      "id": "punishing-armor",
+      "name": "Punishing Armor",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Coat yourself with a thin layer of energy that turns back nonlethal damage on your attacker."
+    },
+    {
+      "id": "quintessence",
+      "name": "Quintessence",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Mask any flaws of or damage to a creature or object."
+    },
+    {
+      "id": "ray-of-enfeeblement",
+      "name": "Ray of Enfeeblement",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Ray causes 1d6 Str penalty + 1 per 2 levels."
+    },
+    {
+      "id": "ray-of-sickening",
+      "name": "Ray of Sickening",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Ray makes subject sickened."
+    },
+    {
+      "id": "recharge-innate-magic",
+      "name": "Recharge Innate Magic",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Regain a use of all 0-level and 1st-level spell-like abilities."
+    },
+    {
+      "id": "reduce-person",
+      "name": "Reduce Person",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Humanoid creature halves in size."
+    },
+    {
+      "id": "refine-improvised-weapon",
+      "name": "Refine Improvised Weapon",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Transform improvised weapon into a masterwork simple or martial weapon."
+    },
+    {
+      "id": "reinforce-armaments",
+      "name": "Reinforce Armaments",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Temporarily mitigates the fragile quality in targeted weapon or armor."
+    },
+    {
+      "id": "repair-undead",
+      "name": "Repair Undead",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Heals one undead of 1d8 hp + 1/level (max +5)."
+    },
+    {
+      "id": "restore-corpse",
+      "name": "Restore Corpse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Skeletal corpse grows flesh."
+    },
+    {
+      "id": "reveal-secrets",
+      "name": "Reveal Secrets",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target reveals if it has secret knowledge of a topic"
+    },
+    {
+      "id": "rite-of-centered-mind",
+      "name": "Rite of Centered Mind",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "+1 to saves vs mind-affecting effects for 24 hours, discharge to reroll a failed save vs a mind-affecting effect."
+    },
+    {
+      "id": "rune-trace",
+      "name": "Rune Trace",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Learn information about a magical rune without triggering it"
+    },
+    {
+      "id": "sculpt-corpse",
+      "name": "Sculpt Corpse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Makes corpse look like another creature."
+    },
+    {
+      "id": "sculpted-cape",
+      "name": "Sculpted Cape",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Enchanted cape stiffens and can bear weight"
+    },
+    {
+      "id": "secluded-grimoire",
+      "name": "Secluded Grimoire",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Safeguard your spellbook on the Ethereal Plane"
+    },
+    {
+      "id": "see-alignment",
+      "name": "See Alignment",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Pick an alignment; in your sight, creatures and items with that alignment emit a ghostly radiance."
+    },
+    {
+      "id": "serrens-swift-girding",
+      "name": "Serren's Swift Girding",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Immediately clad a number of targets in armor."
+    },
+    {
+      "id": "shadow-trap",
+      "name": "Shadow Trap",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Pin someone’s target, causing them to become stuck."
+    },
+    {
+      "id": "shadow-weapon",
+      "name": "Shadow Weapon",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create a quasi-real masterwork weapon."
+    },
+    {
+      "id": "shadowfade",
+      "name": "Shadowfade",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Become invisibile to creatures using darkvision"
+    },
+    {
+      "id": "shield-companion-aa",
+      "name": "Shield Companion (AA)",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "As shield other, but affects the caster’s animal companion or familiar."
+    },
+    {
+      "id": "shield-speech",
+      "name": "Shield Speech",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Speak freely to one creature within 10 feet without being overheard."
+    },
+    {
+      "id": "shock-shield",
+      "name": "Shock Shield",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "A shield of force protects you until you dismiss it in an explosion of electricity."
+    },
+    {
+      "id": "shocking-grasp",
+      "name": "Shocking Grasp",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Touch delivers 1d6/level electricity damage (max 5d6)."
+    },
+    {
+      "id": "silent-image",
+      "name": "Silent Image",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Creates minor illusion of your design."
+    },
+    {
+      "id": "skim",
+      "name": "Skim",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Read four times faster than normal"
+    },
+    {
+      "id": "skin-tag",
+      "name": "Skin Tag",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Curse food or drink to gain afamilar connection to the creature"
+    },
+    {
+      "id": "snapdragon-fireworks",
+      "name": "Snapdragon Fireworks",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Create 1 dragon firework/level."
+    },
+    {
+      "id": "snowball",
+      "name": "Snowball",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Throw a conjured ball of snow at a target"
+    },
+    {
+      "id": "songbird",
+      "name": "Songbird",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Conjure music from a good-aligned plane"
+    },
+    {
+      "id": "sow-thought",
+      "name": "Sow Thought",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Plant an idea in the mind of the subject."
+    },
+    {
+      "id": "speak-local-language",
+      "name": "Speak Local Language",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target gains the ability to speak and understand a regional human language."
+    },
+    {
+      "id": "speechreaders-sight",
+      "name": "Speechreader's Sight",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Read lips from a distance"
+    },
+    {
+      "id": "spirit-share",
+      "name": "Spirit Share",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Grant beneficial liquids with a touch"
+    },
+    {
+      "id": "starsight",
+      "name": "Starsight",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Observe the night sky as if it were a clear and unobstructed night."
+    },
+    {
+      "id": "stone-fist",
+      "name": "Stone Fist",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Your unarmed strikes are lethal."
+    },
+    {
+      "id": "stone-shield",
+      "name": "Stone Shield",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Summon a thick stone slab from the ground to shield you from attacks."
+    },
+    {
+      "id": "strong-wings",
+      "name": "Strong Wings",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Enhance the target’s wings, giving them greater fly speed and maneuverability."
+    },
+    {
+      "id": "stumble-gap",
+      "name": "Stumble Gap",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Small hole trips creatures."
+    },
+    {
+      "id": "stunning-barrier",
+      "name": "Stunning Barrier",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Magical field grants a +1 bonus to AC and on saves, and stuns one creature attacking you."
+    },
+    {
+      "id": "summon-minor-monster",
+      "name": "Summon Minor Monster",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Summon 1d3 Tiny animals."
+    },
+    {
+      "id": "summon-monster-1",
+      "name": "Summon Monster 1",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Summons extraplanar creature to fight for you."
+    },
+    {
+      "id": "sunder-breaker",
+      "name": "Sunder Breaker",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "The next weapon that sunders an item belonging to the target takes damage."
+    },
+    {
+      "id": "sundering-shards",
+      "name": "Sundering Shards",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Sundered item explodes, dealing 1d6 damage to adjacent creatures."
+    },
+    {
+      "id": "sure-casting",
+      "name": "Sure Casting",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Treat your CL as 5 higher for the purposes of bypassing SR with the next spell you cast"
+    },
+    {
+      "id": "technomancy",
+      "name": "Technomancy",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "As detect magic, except detecting the presence of technological objects."
+    },
+    {
+      "id": "theft-ward",
+      "name": "Theft Ward",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain a +10 Perception bonus to notice someone trying to take a specific object from you."
+    },
+    {
+      "id": "thunderstomp",
+      "name": "Thunderstomp",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Trip one creature within range."
+    },
+    {
+      "id": "touch-of-blindness",
+      "name": "Touch of Blindness",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Coat a creature’s eyes in darkness, blinding them."
+    },
+    {
+      "id": "touch-of-combustion",
+      "name": "Touch of Combustion",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Cause someone to combust with a touch."
+    },
+    {
+      "id": "touch-of-gracelessness",
+      "name": "Touch of Gracelessness",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Subject loses 1d6 + 1 Dex/two levels and is prone to falling down."
+    },
+    {
+      "id": "touch-of-the-sea",
+      "name": "Touch of the Sea",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Swim speed becomes 30 ft."
+    },
+    {
+      "id": "transfer-tattoo",
+      "name": "Transfer Tattoo",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Transfer a magical tattoo from one creature to another."
+    },
+    {
+      "id": "tripvine",
+      "name": "Tripvine",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Animate a rope/vine/etc. to trip nearby creatures."
+    },
+    {
+      "id": "true-skill",
+      "name": "True Skill",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Gain an insight bonus equal to half your caster level on one skill check"
+    },
+    {
+      "id": "true-strike",
+      "name": "True Strike",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "+20 on your next attack roll."
+    },
+    {
+      "id": "undines-curse",
+      "name": "Undine's Curse",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "The target loses it’s body’s natural ability to breathe automatically."
+    },
+    {
+      "id": "unerring-weapon",
+      "name": "Unerring Weapon",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Grants a +2 bonus, +1 per four caster levels, on attack rolls to confirm a critical hit."
+    },
+    {
+      "id": "unhallowed-blows",
+      "name": "Unhallowed Blows",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "One natural weapon or unarmed strike of subject undead gets +1 on attack and damage rolls"
+    },
+    {
+      "id": "unlock-flesh",
+      "name": "Unlock Flesh",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Stagger a living creature or deal 1d6 damage/level to a corporeal undead"
+    },
+    {
+      "id": "unprepared-combatant",
+      "name": "Unprepared Combatant",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target takes -4 on initiative and Reflex saves."
+    },
+    {
+      "id": "unseen-servant",
+      "name": "Unseen Servant",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Invisible force obeys your commands."
+    },
+    {
+      "id": "unwelcome-halo",
+      "name": "Unwelcome Halo",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Force a halo around a target, preventing it from hiding in the dark."
+    },
+    {
+      "id": "urban-grace",
+      "name": "Urban Grace",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Move through crowds and urban settings with ease."
+    },
+    {
+      "id": "vanish",
+      "name": "Vanish",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "As invisibility for 1 round/level (5 max)."
+    },
+    {
+      "id": "ventriloquism",
+      "name": "Ventriloquism",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Throws voice for 1 min./level."
+    },
+    {
+      "id": "vocal-alteration",
+      "name": "Vocal Alteration",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Disguise target's voice."
+    },
+    {
+      "id": "waterproof",
+      "name": "Waterproof",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target becomes waterproof for the spells duration"
+    },
+    {
+      "id": "wave-shield",
+      "name": "Wave Shield",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Water blunts one incoming attack or fire effect."
+    },
+    {
+      "id": "weaken-powder",
+      "name": "Weaken Powder",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Targeted firearm's ammunition halves the firearm's range and imposes a –2 penalty on damage rolls."
+    },
+    {
+      "id": "web-bolt",
+      "name": "Web Bolt",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Throw a fist-sized ball of webbing at a target to ensare them."
+    },
+    {
+      "id": "windy-escape",
+      "name": "Windy Escape",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Briefly become insubstantial, allowing an attack to pass harmlessly through you."
+    },
+    {
+      "id": "winter-feathers",
+      "name": "Winter Feathers",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Protect a feathered creature from the cold for a day."
+    },
+    {
+      "id": "wizened-appearance",
+      "name": "Wizened Appearance",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Make a target appear as an older version of itself."
+    },
+    {
+      "id": "youthful-appearance",
+      "name": "Youthful Appearance",
+      "levelByClass": {
+        "arcanist": 1
+      },
+      "summary": "Target appears younger."
+    }
+  ]
+}
+
