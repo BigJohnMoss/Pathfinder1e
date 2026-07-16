@@ -79,6 +79,21 @@ export function spellsAvailableToClass(spells, classId, maximumSpellLevel) {
     .sort((a, b) => a.levelByClass[classId] - b.levelByClass[classId] || a.name.localeCompare(b.name));
 }
 
+export function normalizePreparedSpells(preparedSpellIds, spells, classId, preparedLimits) {
+  const limits = new Map(preparedLimits.map(entry => [entry.level, entry.count]));
+  const available = new Map(spells.filter(spell => spell.levelByClass[classId] !== undefined).map(spell => [spell.id, spell]));
+  const preparedByLevel = new Map();
+  return preparedSpellIds.filter(id => {
+    const spell = available.get(id);
+    if (!spell) return false;
+    const level = spell.levelByClass[classId];
+    const count = preparedByLevel.get(level) ?? 0;
+    if (count >= (limits.get(level) ?? 0)) return false;
+    preparedByLevel.set(level, count + 1);
+    return true;
+  });
+}
+
 export function bonusSpellsPerDay(abilityScore, maximumSpellLevel) {
   if (!Number.isInteger(maximumSpellLevel) || maximumSpellLevel < 0 || maximumSpellLevel > 9) throw new RangeError("Maximum spell level must be an integer from 0 to 9.");
   const modifier = abilityModifier(abilityScore);
