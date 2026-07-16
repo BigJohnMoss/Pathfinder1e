@@ -11,10 +11,15 @@ import rogueTalents from "../../../packages/data/src/options/rogue-talents.json"
 import mageArmor from "../../../packages/data/src/spells/mage-armor.json";
 import magicMissile from "../../../packages/data/src/spells/magic-missile.json";
 import shield from "../../../packages/data/src/spells/shield.json";
+import detectMagic from "../../../packages/data/src/spells/detect-magic.json";
+import light from "../../../packages/data/src/spells/light.json";
+import mageHand from "../../../packages/data/src/spells/mage-hand.json";
+import rayOfFrost from "../../../packages/data/src/spells/ray-of-frost.json";
+import readMagic from "../../../packages/data/src/spells/read-magic.json";
 
 export const classes = [arcanist, barbarian, fighter, rogue];
 export { human };
 export const feats = [combatCasting, powerAttack];
 export const optionGroups = [exploits, ragePowers, rogueTalents];
-export const spells = [mageArmor, magicMissile, shield];
+export const spells = [detectMagic, light, mageHand, rayOfFrost, readMagic, mageArmor, magicMissile, shield];
 export const skills = [{name:"Acrobatics",ability:"dexterity"},{name:"Climb",ability:"strength"},{name:"Diplomacy",ability:"charisma"},{name:"Knowledge (arcana)",ability:"intelligence"},{name:"Perception",ability:"wisdom"},{name:"Spellcraft",ability:"intelligence"},{name:"Stealth",ability:"dexterity"}] as const;
