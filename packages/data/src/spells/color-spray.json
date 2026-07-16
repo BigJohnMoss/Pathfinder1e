@@ -1,0 +1,11 @@
+{
+  "id": "color-spray",
+  "name": "Color Spray",
+  "school": "illusion",
+  "levelByClass": { "sorcerer": 1, "wizard": 1, "arcanist": 1 },
+  "components": ["V", "S", "M"],
+  "castingTime": "1 standard action",
+  "range": "15 ft.",
+  "summary": "Daze creatures in a cone, with stronger effects on creatures with fewer Hit Dice.",
+  "source": { "title": "Core Rulebook", "page": 256, "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=color+spray" }
+}
