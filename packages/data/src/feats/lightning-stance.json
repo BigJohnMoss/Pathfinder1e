@@ -1,0 +1,1 @@
+{"id":"lightning-stance","name":"Lightning Stance","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":17},{"type":"feat","id":"wind-stance"},{"type":"bab","minimum":11}],"benefit":"Gain better concealment after moving.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

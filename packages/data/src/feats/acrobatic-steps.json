@@ -1,0 +1,1 @@
+{"id":"acrobatic-steps","name":"Acrobatic Steps","type":"general","prerequisites":[{"type":"ability","key":"dexterity","minimum":15},{"type":"feat","id":"nimble-moves"}],"benefit":"Ignore more difficult terrain each round.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

@@ -1,0 +1,1 @@
+{"id":"exhausting-critical","name":"Exhausting Critical","type":"combat","prerequisites":[{"type":"feat","id":"tiring-critical"},{"type":"bab","minimum":15}],"benefit":"Critical hits can exhaust foes.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

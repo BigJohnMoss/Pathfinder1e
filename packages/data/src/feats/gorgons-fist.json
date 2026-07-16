@@ -1,0 +1,1 @@
+{"id":"gorgons-fist","name":"Gorgon's Fist","type":"combat","prerequisites":[{"type":"feat","id":"scorpion-style"},{"type":"bab","minimum":6}],"benefit":"Stagger a slowed foe.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

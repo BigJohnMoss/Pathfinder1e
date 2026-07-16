@@ -1,0 +1,1 @@
+{"id":"greater-grapple","name":"Greater Grapple","type":"combat","prerequisites":[{"type":"feat","id":"improved-grapple"},{"type":"bab","minimum":6}],"benefit":"Maintain grapple as a move action.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

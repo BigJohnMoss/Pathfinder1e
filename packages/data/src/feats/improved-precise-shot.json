@@ -1,0 +1,1 @@
+{"id":"improved-precise-shot","name":"Improved Precise Shot","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":19},{"type":"feat","id":"precise-shot"},{"type":"bab","minimum":11}],"benefit":"Ignore most cover and concealment.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

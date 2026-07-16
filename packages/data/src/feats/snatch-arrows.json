@@ -1,0 +1,1 @@
+{"id":"snatch-arrows","name":"Snatch Arrows","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":15},{"type":"feat","id":"deflect-arrows"}],"benefit":"Catch one ranged attack per round.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

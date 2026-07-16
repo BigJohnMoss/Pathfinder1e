@@ -1,0 +1,1 @@
+{"id":"critical-focus","name":"Critical Focus","type":"combat","prerequisites":[{"type":"bab","minimum":9}],"benefit":"+4 to confirm critical hits.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

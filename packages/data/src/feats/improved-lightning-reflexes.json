@@ -1,0 +1,1 @@
+{"id":"improved-lightning-reflexes","name":"Improved Lightning Reflexes","type":"general","prerequisites":[{"type":"feat","id":"lightning-reflexes"}],"benefit":"Reroll one Reflex save per day.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

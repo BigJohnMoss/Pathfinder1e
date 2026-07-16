@@ -1,0 +1,1 @@
+{"id":"improved-great-fortitude","name":"Improved Great Fortitude","type":"general","prerequisites":[{"type":"feat","id":"great-fortitude"}],"benefit":"Reroll one Fortitude save per day.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

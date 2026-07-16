@@ -1,0 +1,1 @@
+{"id":"medusas-wrath","name":"Medusa's Wrath","type":"combat","prerequisites":[{"type":"feat","id":"gorgons-fist"},{"type":"bab","minimum":11}],"benefit":"Make extra attacks against hindered foe.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

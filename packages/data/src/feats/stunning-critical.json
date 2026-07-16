@@ -1,0 +1,1 @@
+{"id":"stunning-critical","name":"Stunning Critical","type":"combat","prerequisites":[{"type":"feat","id":"staggering-critical"},{"type":"bab","minimum":17}],"benefit":"Critical hits can stun foes.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

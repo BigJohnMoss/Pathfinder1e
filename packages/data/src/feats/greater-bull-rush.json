@@ -1,0 +1,1 @@
+{"id":"greater-bull-rush","name":"Greater Bull Rush","type":"combat","prerequisites":[{"type":"feat","id":"improved-bull-rush"},{"type":"bab","minimum":6}],"benefit":"Bull rush movement can provoke attacks.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
