@@ -7,10 +7,17 @@
   "scripts": {
     "validate": "node tools/scripts/validate-data.mjs",
     "test": "node --test tests/*.test.mjs",
+    "test:ui": "TSX_TSCONFIG_PATH=tests/tsconfig.json node --import tsx --test tests/ui.test.tsx",
     "build:data": "node tools/scripts/build-data.mjs",
-    "check": "npm run validate && npm test && npm run build:data",
+    "check": "npm run validate && npm test && npm run test:ui && npm run build:data",
     "dev": "npm --workspace @pf1e/web run dev",
     "build": "npm run build:data && npm --workspace @pf1e/web run build"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "^26.1.0",
+    "tsx": "^4.20.5"
   },
   "engines": {"node": ">=20"}
 }
