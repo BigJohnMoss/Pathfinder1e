@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { abilityModifier, abilityModifiers, averageHitPoints, baseAttackBonus, carryingCapacity, characterCombatStats, classProgression, encumbrance, featPrerequisiteResults, featSlotsAtLevel, savingThrow, skillRanksThroughLevel, skillTotal, featuresAtLevel, featuresThroughLevel } from "../packages/engine/src/index.js";
+import { abilityModifier, abilityModifiers, averageHitPoints, baseAttackBonus, carryingCapacity, characterCombatStats, classProgression, encumbrance, featPrerequisiteResults, featSlotsAtLevel, savingThrow, skillRanksThroughLevel, skillTotal, spellsAvailableToClass, featuresAtLevel, featuresThroughLevel } from "../packages/engine/src/index.js";
 const load=async name=>JSON.parse(await readFile(new URL(`../packages/data/src/classes/${name}.json`,import.meta.url),'utf8'));
 test("BAB progressions",()=>{assert.equal(baseAttackBonus('full',7),7);assert.equal(baseAttackBonus('three-quarters',7),5);assert.equal(baseAttackBonus('half',7),3);});
 test("save progressions",()=>{assert.equal(savingThrow('good',1),2);assert.equal(savingThrow('good',10),7);assert.equal(savingThrow('poor',10),3);});
@@ -16,3 +16,4 @@ test("average hit points use a maximum first die and average later dice",()=>{as
 test("feat prerequisite results report unmet ability and BAB requirements",()=>{const feat={prerequisites:[{type:"ability",key:"strength",minimum:13},{type:"bab",minimum:1}]};const unmet=featPrerequisiteResults(feat,{abilities:{strength:12},baseAttackBonus:0});assert.deepEqual(unmet.map(result=>result.met),[false,false]);const met=featPrerequisiteResults(feat,{abilities:{strength:13},baseAttackBonus:1});assert.deepEqual(met.map(result=>result.met),[true,true]);});
 test("skill totals add the class skill bonus once ranks are invested",async()=>{const arcanist=await load("arcanist");assert.deepEqual(skillTotal(arcanist,{name:"Knowledge (arcana)"},14,1),{total:6,isClassSkill:true});assert.deepEqual(skillTotal(arcanist,{name:"Stealth"},14,1),{total:3,isClassSkill:false});});
 test("encumbrance uses Pathfinder carrying capacity",()=>{assert.deepEqual(carryingCapacity(10),{light:33,medium:66,heavy:99});assert.equal(encumbrance(10,[{weight:10,quantity:4}]).load,"medium");assert.equal(encumbrance(10,[{weight:100,quantity:1}]).load,"overloaded");});
+test("spell lists filter by class and spell level",()=>{const spells=[{name:"First",levelByClass:{arcanist:1}},{name:"Second",levelByClass:{arcanist:2}},{name:"Other",levelByClass:{cleric:1}}];assert.deepEqual(spellsAvailableToClass(spells,"arcanist",1).map(spell=>spell.name),["First"]);});

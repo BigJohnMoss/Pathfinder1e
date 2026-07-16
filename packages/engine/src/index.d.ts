@@ -38,6 +38,7 @@ export function characterCombatStats(characterClass: CharacterClass, level: numb
 export function averageHitPoints(hitDie: number, level: number, constitutionModifier?: number): number;
 export function carryingCapacity(strength: number): { light: number; medium: number; heavy: number };
 export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
+export function spellsAvailableToClass<T extends { name: string; levelByClass: Record<string, number> }>(spells: T[], classId: string, maximumSpellLevel: number): T[];
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function featSlotsAtLevel(level: number, options?: { bonusFeats?: number }): number;
