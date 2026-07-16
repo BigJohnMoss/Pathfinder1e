@@ -156,6 +156,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     humanAbility: abilityNames.includes(draft.humanAbility) ? draft.humanAbility : "intelligence",
     baseAbilities: draft.baseAbilities,
     selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
+    selectedFeatChoices: isStringRecord(draft.selectedFeatChoices),
     skillRanks: isRankRecord(draft.skillRanks),
     selectedOptions: isStringRecord(draft.selectedOptions),
     preparedSpells: Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : [],
@@ -241,13 +242,24 @@ export function normalizeSelectedFeats(selectedFeatIds, feats, context, slotCoun
     changed = false;
     const next = result.filter(id => {
       const feat = byId.get(id);
-      const eligible = prerequisitesMet(feat.prerequisites, { ...context, selectedIds: result.filter(otherId => otherId !== id) });
+      const eligible = prerequisitesMet(feat.prerequisites, { ...context, candidateId: id, selectedIds: result.filter(otherId => otherId !== id) });
       if (!eligible) changed = true;
       return eligible;
     });
     result = next;
   }
   return result;
+}
+
+export function normalizeSelectedFeatChoices(selectedFeatChoices, selectedFeatIds, feats) {
+  if (!selectedFeatChoices || typeof selectedFeatChoices !== "object" || Array.isArray(selectedFeatChoices)) return {};
+  const byId = new Map(feats.map(feat => [feat.id, feat]));
+  return Object.fromEntries(Object.entries(selectedFeatChoices).flatMap(([featId, choice]) => {
+    const feat = byId.get(featId);
+    const options = feat?.choice?.options;
+    const validChoice = typeof choice === "string" && (feat?.choice?.allowCustom ? choice.trim().length > 0 && choice.trim().length <= 80 : Array.isArray(options) && options.some(option => option.id === choice));
+    return selectedFeatIds.includes(featId) && validChoice ? [[featId, feat?.choice?.allowCustom ? choice.trim() : choice]] : [];
+  }));
 }
 
 export function prerequisitesMet(prerequisites, context) {
@@ -263,6 +275,7 @@ function prerequisiteMet(prerequisite, context) {
   if (prerequisite.type === "skill") return context.skillRanks?.[prerequisite.key] >= prerequisite.minimum;
   if (prerequisite.type === "feature") return context.featureIds?.includes(prerequisite.id);
   if (prerequisite.type === "feat") return context.selectedIds?.includes(prerequisite.id);
+  if (prerequisite.type === "matching-choice") { const candidateChoice = context.selectedFeatChoices?.[context.candidateId]; const prerequisiteChoice = context.selectedFeatChoices?.[prerequisite.featId]; return candidateChoice === undefined || (prerequisiteChoice !== undefined && candidateChoice === prerequisiteChoice); }
   if (prerequisite.type === "any") return prerequisite.prerequisites.some(alternative => prerequisiteMet(alternative, context));
   return true;
 }
