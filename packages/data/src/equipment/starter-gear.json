@@ -1,0 +1,8 @@
+[
+  {"id":"backpack","name":"Backpack","weight":2,"costGp":2},
+  {"id":"bedroll","name":"Bedroll","weight":5,"costGp":0.1},
+  {"id":"rope-hempen-50ft","name":"Rope, hempen (50 ft.)","weight":10,"costGp":1},
+  {"id":"rations-trail","name":"Rations, trail (1 day)","weight":1,"costGp":0.5},
+  {"id":"waterskin","name":"Waterskin","weight":1,"costGp":1},
+  {"id":"torch","name":"Torch","weight":1,"costGp":0.01}
+]
