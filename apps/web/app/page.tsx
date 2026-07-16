@@ -8,6 +8,7 @@ import { ClassFeatures } from "./class-features";
 import { Spellbook } from "./spellbook";
 import { SkillAllocation } from "./skill-allocation";
 import { FeatChoices } from "./feat-choices";
+import { ClassOptions } from "./class-options";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, skillRankBudget, skillTotal, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 
@@ -43,6 +44,8 @@ export default function Home() {
   const updateSkill = (name: string, ranks: number) => setSkillRanks((current) => { const otherRanks = Object.fromEntries(Object.entries(current).filter(([skill]) => skill !== name)); const available = skillRankBudget(progression.skillRanks, otherRanks).remaining; return { ...current, [name]: Math.max(0, Math.min(available, ranks || 0)) }; });
   const skillEntries = skills.map((skill) => { const ranks = skillRanks[skill.name] ?? 0; const result = skillTotal(characterClass, skill, abilities[skill.ability], ranks); return { ...skill, ranks, ...result }; });
   const choiceFeatures = progression.features.filter((feature) => feature.choiceRequired && feature.optionGroupId);
+  const classOptionChoices = choiceFeatures.map((feature) => { const group = optionGroups.find((item) => item.id === feature.optionGroupId); const options = group ? availableOptions(group, characterClass.id, level, Object.values(selectedOptions)) : []; return { id: feature.id, name: feature.name, level: feature.level, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) }; });
+  const updateClassOption = (featureId: string, optionId: string) => setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
   const maximumSpellLevel = Math.min(9, Math.floor((level + 1) / 2));
   const availableSpells = useMemo(() => spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel), [characterClass.id, maximumSpellLevel]);
   const saveCharacter = () => { localStorage.setItem("pf1e-character-draft", JSON.stringify({ name, classId, level, humanAbility, baseAbilities, selectedFeatIds, skillRanks, selectedOptions, preparedSpells })); setSaveNotice("Saved locally"); };
@@ -61,7 +64,7 @@ export default function Home() {
     <ProgressionSummary combat={combat} progression={progression} />
     <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} onFeatChange={updateFeat} />
     <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} onRankChange={updateSkill} />
-    {choiceFeatures.length > 0 && <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Each earned selectable feature gets its own choice.</p></div>{choiceFeatures.map((feature) => { const group = optionGroups.find((item) => item.id === feature.optionGroupId); const options = group ? availableOptions(group, characterClass.id, level, Object.values(selectedOptions)) : []; const selected = options.find((option) => option.id === selectedOptions[feature.id]); return <label key={feature.id}>{feature.name} <small>level {feature.level}</small><select value={selectedOptions[feature.id] ?? ""} onChange={(event) => setSelectedOptions((current) => ({ ...current, [feature.id]: event.target.value }))}><option value="">Choose an option</option>{options.map((option) => <option key={option.id} value={option.id} disabled={Object.entries(selectedOptions).some(([id, value]) => id !== feature.id && value === option.id)}>{option.name}</option>)}</select>{selected && <span>{selected.benefit}</span>}</label>; })}</section>}
+    {classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} onOptionChange={updateClassOption} />}
     {availableSpells.length > 0 && <Spellbook spells={availableSpells} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={preparedSpells} onPreparedSpellIdsChange={setPreparedSpells} />}
     <ClassFeatures level={level} className={characterClass.name} features={progression.features} />
   </main>;
