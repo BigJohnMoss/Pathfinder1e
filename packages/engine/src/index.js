@@ -102,12 +102,23 @@ export function availableOptions(group, classId, classLevel, selectedIds = []) {
   );
 }
 
+export function featPrerequisiteResults(feat, context) {
+  return feat.prerequisites.map(prerequisite => ({
+    prerequisite,
+    met: prerequisiteMet(prerequisite, context)
+  }));
+}
+
 export function prerequisitesMet(prerequisites, context) {
-  return prerequisites.every(prerequisite => {
-    if (prerequisite.type === "level") return context.classLevel >= prerequisite.minimum;
-    if (prerequisite.type === "feature" || prerequisite.type === "feat") return context.selectedIds.includes(prerequisite.id);
-    return true;
-  });
+  return prerequisites.every(prerequisite => prerequisiteMet(prerequisite, context));
+}
+
+function prerequisiteMet(prerequisite, context) {
+  if (prerequisite.type === "level") return context.classLevel >= prerequisite.minimum;
+  if (prerequisite.type === "ability") return context.abilities?.[prerequisite.key] >= prerequisite.minimum;
+  if (prerequisite.type === "bab") return context.baseAttackBonus >= prerequisite.minimum;
+  if (prerequisite.type === "feature" || prerequisite.type === "feat") return context.selectedIds?.includes(prerequisite.id);
+  return true;
 }
 
 function assertLevel(level) {
