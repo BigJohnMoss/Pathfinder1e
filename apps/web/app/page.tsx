@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { classes, feats, human, optionGroups, skills, spells } from "./character-catalogue";
-import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, skillTotal, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
+import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, skillRankBudget, skillTotal, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
 const defaultAbilities = { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 };
@@ -35,8 +35,9 @@ export default function Home() {
   const featSlots = useMemo(() => Array.from({ length: progression.featSlots }, (_, index) => ({ index, name: index === 0 ? "Human bonus feat" : `Feat ${index}` })), [progression.featSlots]);
   const updateAbility = (ability: keyof typeof defaultAbilities, value: number) => setBaseAbilities((current) => ({ ...current, [ability]: Math.max(1, Math.min(40, value || 1)) }));
   const updateFeat = (index: number, featId: string) => setSelectedFeatIds((current) => { const next = [...current]; next[index] = featId; return next; });
-  const allocatedSkillRanks = Object.values(skillRanks).reduce((total, ranks) => total + ranks, 0);
-  const updateSkill = (name: string, ranks: number) => setSkillRanks((current) => ({ ...current, [name]: Math.max(0, Math.min(progression.skillRanks, ranks || 0)) }));
+  const skillBudget = skillRankBudget(progression.skillRanks, skillRanks);
+  const allocatedSkillRanks = skillBudget.allocated;
+  const updateSkill = (name: string, ranks: number) => setSkillRanks((current) => { const otherRanks = Object.fromEntries(Object.entries(current).filter(([skill]) => skill !== name)); const available = skillRankBudget(progression.skillRanks, otherRanks).remaining; return { ...current, [name]: Math.max(0, Math.min(available, ranks || 0)) }; });
   const choiceFeatures = progression.features.filter((feature) => feature.choiceRequired && feature.optionGroupId);
   const maximumSpellLevel = Math.min(9, Math.floor((level + 1) / 2));
   const availableSpells = useMemo(() => spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel), [characterClass.id, maximumSpellLevel]);
