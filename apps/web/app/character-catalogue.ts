@@ -16,10 +16,15 @@ import light from "../../../packages/data/src/spells/light.json";
 import mageHand from "../../../packages/data/src/spells/mage-hand.json";
 import rayOfFrost from "../../../packages/data/src/spells/ray-of-frost.json";
 import readMagic from "../../../packages/data/src/spells/read-magic.json";
+import alarm from "../../../packages/data/src/spells/alarm.json";
+import charmPerson from "../../../packages/data/src/spells/charm-person.json";
+import colorSpray from "../../../packages/data/src/spells/color-spray.json";
+import holdPortal from "../../../packages/data/src/spells/hold-portal.json";
+import sleep from "../../../packages/data/src/spells/sleep.json";
 
 export const classes = [arcanist, barbarian, fighter, rogue];
 export { human };
 export const feats = [combatCasting, powerAttack];
 export const optionGroups = [exploits, ragePowers, rogueTalents];
-export const spells = [detectMagic, light, mageHand, rayOfFrost, readMagic, mageArmor, magicMissile, shield];
+export const spells = [detectMagic, light, mageHand, rayOfFrost, readMagic, alarm, charmPerson, colorSpray, holdPortal, mageArmor, magicMissile, shield, sleep];
 export const skills = [{name:"Acrobatics",ability:"dexterity"},{name:"Climb",ability:"strength"},{name:"Diplomacy",ability:"charisma"},{name:"Knowledge (arcana)",ability:"intelligence"},{name:"Perception",ability:"wisdom"},{name:"Spellcraft",ability:"intelligence"},{name:"Stealth",ability:"dexterity"}] as const;
