@@ -46,24 +46,25 @@ test("enforces the skill-rank pool through the interface", async () => {
   assert.match(screen.getByText(/of 16 total ranks allocated/).textContent ?? "", /16 of 16/);
 });
 
-test("prevents duplicate feats and prepares spells", async () => {
+test("prevents duplicate feats and manages prepared spell counts", async () => {
   const user = userEvent.setup();
   render(<Home />);
   assert.match(screen.getByText(/Arcanist slots/).textContent ?? "", /3 1st \(2 base \+ 1 Intelligence\)/);
-  assert.match(screen.getByText(/Mage Armor/).textContent ?? "", /DC 12/);
+  assert.match(screen.getByText("Mage Armor").closest("article")?.textContent ?? "", /DC 12/);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
   await user.selectOptions(screen.getByLabelText("Human bonus feat"), "combat-casting");
   const secondFeat = screen.getByLabelText("Feat 1");
   assert.equal((secondFeat.querySelector("option[value='combat-casting']") as HTMLOptionElement).disabled, true);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "1" } });
-  const mageArmor = screen.getByLabelText(/Mage Armor/);
-  await user.click(mageArmor);
-  assert.equal((mageArmor as HTMLInputElement).checked, true);
-  await user.click(screen.getByLabelText(/Magic Missile/));
-  assert.equal((screen.getByLabelText(/Shield/) as HTMLInputElement).disabled, true);
-  await user.click(screen.getByLabelText(/Detect Magic/));
-  await user.click(screen.getByLabelText(/Light/));
-  await user.click(screen.getByLabelText(/Mage Hand/));
-  await user.click(screen.getByLabelText(/Ray of Frost/));
-  assert.equal((screen.getByLabelText(/Read Magic/) as HTMLInputElement).disabled, true);
+  await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
+  await user.click(screen.getByRole("button", { name: "Add Magic Missile" }));
+  assert.equal((screen.getByRole("button", { name: "Add Shield" }) as HTMLButtonElement).disabled, true);
+  await user.click(screen.getByRole("button", { name: "Remove Magic Missile" }));
+  await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
+  assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
+  await user.click(screen.getByRole("button", { name: "Add Detect Magic" }));
+  await user.click(screen.getByRole("button", { name: "Add Light" }));
+  await user.click(screen.getByRole("button", { name: "Add Mage Hand" }));
+  await user.click(screen.getByRole("button", { name: "Add Ray of Frost" }));
+  assert.equal((screen.getByRole("button", { name: "Add Read Magic" }) as HTMLButtonElement).disabled, true);
 });
