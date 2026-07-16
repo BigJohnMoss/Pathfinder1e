@@ -1,0 +1,11 @@
+{
+  "id": "ray-of-frost",
+  "name": "Ray of Frost",
+  "school": "evocation",
+  "levelByClass": { "sorcerer": 0, "wizard": 0, "arcanist": 0 },
+  "components": ["V", "S"],
+  "castingTime": "1 standard action",
+  "range": "close",
+  "summary": "Fire a ray that deals cold damage.",
+  "source": { "title": "Core Rulebook", "page": null, "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Ray%20of%20Frost" }
+}
