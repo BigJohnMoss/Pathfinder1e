@@ -1,0 +1,1 @@
+{"id":"far-shot","name":"Far Shot","type":"combat","prerequisites":[{"type":"feat","id":"point-blank-shot"}],"benefit":"Reduce range penalties.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
