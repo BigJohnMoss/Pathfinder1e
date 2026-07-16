@@ -1,0 +1,1 @@
+{"id":"cleave","name":"Cleave","type":"combat","prerequisites":[{"type":"feat","id":"power-attack"},{"type":"bab","minimum":1}],"benefit":"Make an additional melee attack after dropping or hitting an adjacent opponent.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Cleave"}}
