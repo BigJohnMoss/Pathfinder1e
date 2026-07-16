@@ -7,17 +7,13 @@ import { CharacterDetails } from "./character-details";
 import { ClassFeatures } from "./class-features";
 import { Spellbook } from "./spellbook";
 import { SkillAllocation } from "./skill-allocation";
+import { FeatChoices } from "./feat-choices";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, skillRankBudget, skillTotal, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
 const defaultAbilities = { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 };
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
-const prerequisiteLabel = (prerequisite: { type: string; key?: string; minimum?: number; id?: string }) => {
-  if (prerequisite.type === "ability") return `${labels[prerequisite.key as keyof typeof labels]} ${prerequisite.minimum}+`;
-  if (prerequisite.type === "bab") return `BAB +${prerequisite.minimum}`;
-  return prerequisite.id ?? prerequisite.type;
-};
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -39,6 +35,7 @@ export default function Home() {
   }), [abilities.intelligence, characterClass, level]);
   const combat = useMemo(() => characterCombatStats(characterClass, level, abilities), [abilities, characterClass, level]);
   const featSlots = useMemo(() => Array.from({ length: progression.featSlots }, (_, index) => ({ index, name: index === 0 ? "Human bonus feat" : `Feat ${index}` })), [progression.featSlots]);
+  const featChoices = featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const checks = selected ? featPrerequisiteResults(selected, { abilities, baseAttackBonus: progression.baseAttackBonus, classLevel: level, selectedIds: selectedFeatIds }) : []; return { ...slot, selected, checks }; });
   const updateAbility = (ability: keyof typeof defaultAbilities, value: number) => setBaseAbilities((current) => ({ ...current, [ability]: Math.max(1, Math.min(40, value || 1)) }));
   const updateFeat = (index: number, featId: string) => setSelectedFeatIds((current) => { const next = [...current]; next[index] = featId; return next; });
   const skillBudget = skillRankBudget(progression.skillRanks, skillRanks);
@@ -62,7 +59,7 @@ export default function Home() {
       <CombatPanel combat={combat} />
     </section>
     <ProgressionSummary combat={combat} progression={progression} />
-    <section className="feat-panel"><div><p className="eyebrow">FEATS</p><h2>Feat choices</h2><p>Prerequisites are shown for review and do not block a choice.</p></div><div className="feat-slots">{featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const checks = selected ? featPrerequisiteResults(selected, { abilities, baseAttackBonus: progression.baseAttackBonus, classLevel: level, selectedIds: selectedFeatIds }) : []; return <article key={slot.index}><label>{slot.name}<select value={selectedFeatIds[slot.index] ?? ""} onChange={(event) => updateFeat(slot.index, event.target.value)}><option value="">Choose a feat</option>{feats.map((feat) => <option key={feat.id} value={feat.id} disabled={selectedFeatIds.some((id, index) => id === feat.id && index !== slot.index)}>{feat.name}</option>)}</select></label>{selected && <><strong>{selected.name}</strong><p>{selected.benefit}</p>{checks.length > 0 && <ul className="checks">{checks.map((check, index) => <li className={check.met ? "met" : "unmet"} key={index}>{check.met ? "Met" : "Check"}: {prerequisiteLabel(check.prerequisite)}</li>)}</ul>}</>}</article>; })}</div></section>
+    <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} onFeatChange={updateFeat} />
     <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} onRankChange={updateSkill} />
     {choiceFeatures.length > 0 && <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Each earned selectable feature gets its own choice.</p></div>{choiceFeatures.map((feature) => { const group = optionGroups.find((item) => item.id === feature.optionGroupId); const options = group ? availableOptions(group, characterClass.id, level, Object.values(selectedOptions)) : []; const selected = options.find((option) => option.id === selectedOptions[feature.id]); return <label key={feature.id}>{feature.name} <small>level {feature.level}</small><select value={selectedOptions[feature.id] ?? ""} onChange={(event) => setSelectedOptions((current) => ({ ...current, [feature.id]: event.target.value }))}><option value="">Choose an option</option>{options.map((option) => <option key={option.id} value={option.id} disabled={Object.entries(selectedOptions).some(([id, value]) => id !== feature.id && value === option.id)}>{option.name}</option>)}</select>{selected && <span>{selected.benefit}</span>}</label>; })}</section>}
     {availableSpells.length > 0 && <Spellbook spells={availableSpells} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={preparedSpells} onPreparedSpellIdsChange={setPreparedSpells} />}
