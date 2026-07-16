@@ -57,6 +57,22 @@ export function averageHitPoints(hitDie, level, constitutionModifier = 0) {
   return Math.max(1, hitDie + constitutionModifier) + (level - 1) * laterLevelGain;
 }
 
+const lightLoads = [3,6,10,13,16,20,23,26,30,33,38,43,50,58,66,76,86,100,116,133];
+
+export function carryingCapacity(strength) {
+  if (!Number.isInteger(strength) || strength < 1) throw new RangeError("Strength must be a positive integer.");
+  const multiplier = Math.pow(4, Math.floor((strength - 1) / 20));
+  const light = lightLoads[(strength - 1) % 20] * multiplier;
+  return { light, medium: light * 2, heavy: light * 3 };
+}
+
+export function encumbrance(strength, items) {
+  const capacity = carryingCapacity(strength);
+  const carriedWeight = items.reduce((total, item) => total + item.weight * item.quantity, 0);
+  const load = carriedWeight <= capacity.light ? "light" : carriedWeight <= capacity.medium ? "medium" : carriedWeight <= capacity.heavy ? "heavy" : "overloaded";
+  return { carriedWeight, capacity, load };
+}
+
 export function featSlotsAtLevel(level, { bonusFeats = 0 } = {}) {
   assertLevel(level);
   if (!Number.isInteger(bonusFeats) || bonusFeats < 0) throw new RangeError("Bonus feats must be a non-negative integer.");

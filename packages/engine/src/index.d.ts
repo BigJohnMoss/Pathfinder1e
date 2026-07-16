@@ -36,6 +36,8 @@ export const abilityNames: AbilityName[];
 export function abilityModifiers(abilities: AbilityScores): AbilityScores;
 export function characterCombatStats(characterClass: CharacterClass, level: number, abilities: AbilityScores): CharacterCombatStats;
 export function averageHitPoints(hitDie: number, level: number, constitutionModifier?: number): number;
+export function carryingCapacity(strength: number): { light: number; medium: number; heavy: number };
+export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function featSlotsAtLevel(level: number, options?: { bonusFeats?: number }): number;
