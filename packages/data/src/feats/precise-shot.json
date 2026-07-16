@@ -1,0 +1,1 @@
+{"id":"precise-shot","name":"Precise Shot","type":"combat","prerequisites":[{"type":"feat","id":"point-blank-shot"}],"benefit":"Ignore the -4 penalty for firing into melee.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Precise%20Shot"}}
