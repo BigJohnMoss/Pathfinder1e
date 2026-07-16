@@ -6,13 +6,14 @@ type PreparedLimit = { level: number; count: number };
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function Spellbook({ spells, classId, className, castingAbilityName, slots, preparedLimits, spellDcs, maximumSpellLevel, preparedSpellIds, onPreparedSpellIdsChange }: { spells: Spell[]; classId: string; className: string; castingAbilityName: string; slots: Slot[]; preparedLimits: PreparedLimit[]; spellDcs: Record<number, number>; maximumSpellLevel: number; preparedSpellIds: string[]; onPreparedSpellIdsChange: (spellIds: string[]) => void }) {
+export function Spellbook({ spells, classId, className, castingAbilityName, slots, preparedLimits, spellDcs, maximumSpellLevel, preparedSpellIds, onPreparedSpellIdsChange, slotUses, onSlotUsesChange, reservoir, onReservoirChange, onRefreshDay }: { spells: Spell[]; classId: string; className: string; castingAbilityName: string; slots: Slot[]; preparedLimits: PreparedLimit[]; spellDcs: Record<number, number>; maximumSpellLevel: number; preparedSpellIds: string[]; onPreparedSpellIdsChange: (spellIds: string[]) => void; slotUses: Record<number, number>; onSlotUsesChange: (uses: Record<number, number>) => void; reservoir: { current: number; maximum: number; dailyRefresh: number } | null; onReservoirChange: (value: number) => void; onRefreshDay: () => void }) {
   const [query, setQuery] = useState("");
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
 
   const preparedCount = (level: number) => preparedSpellIds.filter((id) => spells.find((spell) => spell.id === id)?.levelByClass[classId] === level).length;
   const limitFor = (level: number) => preparedLimits.find((entry) => entry.level === level)?.count ?? 0;
+  const remainingSlots = (level: number) => { const slot = slots.find((entry) => entry.level === level); return slot ? slot.count - (slotUses[level] ?? 0) : Infinity; };
   const filteredSpells = useMemo(() => spells.filter((spell) => {
     const level = spell.levelByClass[classId];
     const matchesLevel = query ? true : levelFilter === "all" || level === Number(levelFilter);
@@ -27,8 +28,9 @@ export function Spellbook({ spells, classId, className, castingAbilityName, slot
   return <section className="spell-panel">
     <p className="eyebrow">SPELLBOOK</p>
     <h2>Prepared spells</h2>
-    <p>{className} slots: {slots.map((slot) => `${slot.count} ${levelLabel(slot.level)}${slot.bonus ? ` (${slot.base} base + ${slot.bonus} ${castingAbilityName})` : ""}`).join(", ")}.</p>
+    <p>{className} slots: {slots.map((slot) => `${remainingSlots(slot.level)}/${slot.count} ${levelLabel(slot.level)}${slot.bonus ? ` (${slot.base} base + ${slot.bonus} ${castingAbilityName})` : ""}`).join(", ")}.</p>
     <p>{preparedLimits.map((limit) => `${preparedCount(limit.level)}/${limit.count} prepared ${levelLabel(limit.level)}`).join(" · ")}</p>
+    <div className="spell-count"><button type="button" onClick={onRefreshDay}>Refresh day</button>{reservoir && <><output aria-label="Arcane Reservoir points">{reservoir.current}/{reservoir.maximum} reservoir</output><button type="button" aria-label="Spend reservoir point" disabled={reservoir.current === 0} onClick={() => onReservoirChange(reservoir.current - 1)}>-</button><button type="button" aria-label="Gain reservoir point" disabled={reservoir.current === reservoir.maximum} onClick={() => onReservoirChange(reservoir.current + 1)}>+</button></>}</div>
     {maximumSpellLevel === 0 && <p className="hint">Increase {castingAbilityName} to 11 or higher to cast 1st-level spells.</p>}
     <div className="spell-controls">
       <label>Search spells<input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Name or effect" /></label>
@@ -41,9 +43,10 @@ export function Spellbook({ spells, classId, className, castingAbilityName, slot
         <div className="spell-list">{spellsAtLevel.map((spell) => {
           const prepared = preparedSpellIds.filter((id) => id === spell.id).length;
           const full = preparedCount(level) >= limitFor(level);
+          const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
             <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}</small></div>
-            <div className="spell-count"><button type="button" aria-label={`Remove ${spell.name}`} disabled={prepared === 0} onClick={() => onPreparedSpellIdsChange(preparedSpellIds.filter((id, index) => id !== spell.id || index !== preparedSpellIds.lastIndexOf(spell.id)))}>-</button><output aria-label={`${spell.name} prepared`}>{prepared}</output><button type="button" aria-label={`Add ${spell.name}`} disabled={full} onClick={() => onPreparedSpellIdsChange([...preparedSpellIds, spell.id])}>+</button></div>
+            <div className="spell-count"><button type="button" aria-label={`Cast ${spell.name}`} disabled={prepared === 0 || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><button type="button" aria-label={`Remove ${spell.name}`} disabled={prepared === 0} onClick={() => onPreparedSpellIdsChange(preparedSpellIds.filter((id, index) => id !== spell.id || index !== preparedSpellIds.lastIndexOf(spell.id)))}>-</button><output aria-label={`${spell.name} prepared`}>{prepared}</output><button type="button" aria-label={`Add ${spell.name}`} disabled={full} onClick={() => onPreparedSpellIdsChange([...preparedSpellIds, spell.id])}>+</button></div>
           </article>;
         })}</div>
       </section>;
