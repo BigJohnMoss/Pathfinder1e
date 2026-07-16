@@ -1,0 +1,1 @@
+{"id":"weapon-focus","name":"Weapon Focus","type":"combat","prerequisites":[{"type":"bab","minimum":1}],"choice":{"key":"weapon","label":"Weapon","allowCustom":true},"benefit":"Gain a +1 bonus on attack rolls with the selected weapon.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20Focus"}}
