@@ -256,9 +256,14 @@ export function prerequisitesMet(prerequisites, context) {
 
 function prerequisiteMet(prerequisite, context) {
   if (prerequisite.type === "level") return context.classLevel >= prerequisite.minimum;
+  if (prerequisite.type === "class-level") return context.classId === prerequisite.classId && context.classLevel >= prerequisite.minimum;
+  if (prerequisite.type === "caster-level") return context.casterLevel >= prerequisite.minimum;
   if (prerequisite.type === "ability") return context.abilities?.[prerequisite.key] >= prerequisite.minimum;
   if (prerequisite.type === "bab") return context.baseAttackBonus >= prerequisite.minimum;
-  if (prerequisite.type === "feature" || prerequisite.type === "feat") return context.selectedIds?.includes(prerequisite.id);
+  if (prerequisite.type === "skill") return context.skillRanks?.[prerequisite.key] >= prerequisite.minimum;
+  if (prerequisite.type === "feature") return context.featureIds?.includes(prerequisite.id);
+  if (prerequisite.type === "feat") return context.selectedIds?.includes(prerequisite.id);
+  if (prerequisite.type === "any") return prerequisite.prerequisites.some(alternative => prerequisiteMet(alternative, context));
   return true;
 }
 

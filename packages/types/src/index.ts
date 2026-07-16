@@ -16,7 +16,9 @@ export interface CharacterClass {
   features: ClassFeatureOccurrence[];
 }
 export type Prerequisite =
-  | { type: "level"|"bab"; minimum: number }
-  | { type: "ability"; key: string; minimum: number }
-  | { type: "feat"|"feature"; id: string };
+  | { type: "level"|"bab"|"caster-level"; minimum: number }
+  | { type: "class-level"; classId: string; minimum: number }
+  | { type: "ability"|"skill"; key: string; minimum: number }
+  | { type: "feat"|"feature"; id: string }
+  | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface SelectableOption { id:string; groupId:string; name:string; classIds:string[]; minimumLevel:number; prerequisites:Prerequisite[]; benefit:string; source:SourceRef; }
