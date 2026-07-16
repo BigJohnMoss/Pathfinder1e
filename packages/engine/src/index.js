@@ -242,7 +242,7 @@ export function normalizeSelectedFeats(selectedFeatIds, feats, context, slotCoun
     changed = false;
     const next = result.filter(id => {
       const feat = byId.get(id);
-      const eligible = prerequisitesMet(feat.prerequisites, { ...context, selectedIds: result.filter(otherId => otherId !== id) });
+      const eligible = prerequisitesMet(feat.prerequisites, { ...context, candidateId: id, selectedIds: result.filter(otherId => otherId !== id) });
       if (!eligible) changed = true;
       return eligible;
     });
@@ -274,6 +274,7 @@ function prerequisiteMet(prerequisite, context) {
   if (prerequisite.type === "skill") return context.skillRanks?.[prerequisite.key] >= prerequisite.minimum;
   if (prerequisite.type === "feature") return context.featureIds?.includes(prerequisite.id);
   if (prerequisite.type === "feat") return context.selectedIds?.includes(prerequisite.id);
+  if (prerequisite.type === "matching-choice") { const candidateChoice = context.selectedFeatChoices?.[context.candidateId]; const prerequisiteChoice = context.selectedFeatChoices?.[prerequisite.featId]; return candidateChoice === undefined || (prerequisiteChoice !== undefined && candidateChoice === prerequisiteChoice); }
   if (prerequisite.type === "any") return prerequisite.prerequisites.some(alternative => prerequisiteMet(alternative, context));
   return true;
 }
