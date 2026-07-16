@@ -79,6 +79,25 @@ export function spellsAvailableToClass(spells, classId, maximumSpellLevel) {
     .sort((a, b) => a.levelByClass[classId] - b.levelByClass[classId] || a.name.localeCompare(b.name));
 }
 
+export function normalizeCharacterDraft(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const draft = value;
+  const validAbilities = abilityNames.every(name => Number.isInteger(draft.baseAbilities?.[name]) && draft.baseAbilities[name] >= 1 && draft.baseAbilities[name] <= 40);
+  if (typeof draft.classId !== "string" || !Number.isInteger(draft.level) || draft.level < 1 || draft.level > 20 || !validAbilities) return null;
+  return {
+    version: 1,
+    name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",
+    classId: draft.classId,
+    level: draft.level,
+    humanAbility: abilityNames.includes(draft.humanAbility) ? draft.humanAbility : "intelligence",
+    baseAbilities: draft.baseAbilities,
+    selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
+    skillRanks: isRankRecord(draft.skillRanks),
+    selectedOptions: isStringRecord(draft.selectedOptions),
+    preparedSpells: Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : []
+  };
+}
+
 export function featSlotsAtLevel(level, { bonusFeats = 0 } = {}) {
   assertLevel(level);
   if (!Number.isInteger(bonusFeats) || bonusFeats < 0) throw new RangeError("Bonus feats must be a non-negative integer.");
@@ -156,3 +175,6 @@ function prerequisiteMet(prerequisite, context) {
 function assertLevel(level) {
   if (!Number.isInteger(level) || level < 1 || level > 20) throw new RangeError("Level must be an integer from 1 to 20.");
 }
+
+function isRankRecord(value) { return value && typeof value === "object" && !Array.isArray(value) ? Object.fromEntries(Object.entries(value).filter(([name, ranks]) => typeof name === "string" && Number.isInteger(ranks) && ranks >= 0)) : {}; }
+function isStringRecord(value) { return value && typeof value === "object" && !Array.isArray(value) ? Object.fromEntries(Object.entries(value).filter(([name, id]) => typeof name === "string" && typeof id === "string")) : {}; }
