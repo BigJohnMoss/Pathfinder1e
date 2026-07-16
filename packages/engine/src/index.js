@@ -73,6 +73,12 @@ export function encumbrance(strength, items) {
   return { carriedWeight, capacity, load };
 }
 
+export function spellsAvailableToClass(spells, classId, maximumSpellLevel) {
+  if (!Number.isInteger(maximumSpellLevel) || maximumSpellLevel < 0 || maximumSpellLevel > 9) throw new RangeError("Maximum spell level must be an integer from 0 to 9.");
+  return spells.filter(spell => spell.levelByClass[classId] !== undefined && spell.levelByClass[classId] <= maximumSpellLevel)
+    .sort((a, b) => a.levelByClass[classId] - b.levelByClass[classId] || a.name.localeCompare(b.name));
+}
+
 export function featSlotsAtLevel(level, { bonusFeats = 0 } = {}) {
   assertLevel(level);
   if (!Number.isInteger(bonusFeats) || bonusFeats < 0) throw new RangeError("Bonus feats must be a non-negative integer.");
