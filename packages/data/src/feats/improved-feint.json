@@ -1,0 +1,1 @@
+{"id":"improved-feint","name":"Improved Feint","type":"combat","prerequisites":[{"type":"feat","id":"combat-expertise"}],"benefit":"Feint in combat as a move action and gain a +2 bonus on Bluff checks to feint.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Feint"}}
