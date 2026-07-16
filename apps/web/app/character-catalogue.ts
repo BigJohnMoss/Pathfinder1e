@@ -50,6 +50,18 @@ import springAttack from "../../../packages/data/src/feats/spring-attack.json";
 import standStill from "../../../packages/data/src/feats/stand-still.json";
 import stepUp from "../../../packages/data/src/feats/step-up.json";
 import twoWeaponFighting from "../../../packages/data/src/feats/two-weapon-fighting.json";
+import deceitful from "../../../packages/data/src/feats/deceitful.json";
+import deftHands from "../../../packages/data/src/feats/deft-hands.json";
+import diehard from "../../../packages/data/src/feats/diehard.json";
+import diligent from "../../../packages/data/src/feats/diligent.json";
+import elementalFocus from "../../../packages/data/src/feats/elemental-focus.json";
+import eschewMaterials from "../../../packages/data/src/feats/eschew-materials.json";
+import fleet from "../../../packages/data/src/feats/fleet.json";
+import intimidatingProwess from "../../../packages/data/src/feats/intimidating-prowess.json";
+import magicalAptitude from "../../../packages/data/src/feats/magical-aptitude.json";
+import nimbleMoves from "../../../packages/data/src/feats/nimble-moves.json";
+import persuasive from "../../../packages/data/src/feats/persuasive.json";
+import selfSufficient from "../../../packages/data/src/feats/self-sufficient.json";
 import exploits from "../../../packages/data/src/options/arcanist-exploits.json";
 import ragePowers from "../../../packages/data/src/options/rage-powers.json";
 import rogueTalents from "../../../packages/data/src/options/rogue-talents.json";
@@ -73,7 +85,7 @@ import arcanistStarterSpellCatalogue from "../../../packages/data/src/spell-cata
 
 export const classes = [arcanist, barbarian, fighter, monk, rogue];
 export const ancestries = [human, dwarf, elf, gnome, halfElf, halfling, halfOrc];
-export const feats = [acrobatic, agileManeuvers, alertness, animalAffinity, athletic, blindFight, combatCasting, combatExpertise, combatReflexes, cleave, deflectArrows, dodge, endurance, greatCleave, greatFortitude, improvedBullRush, improvedDisarm, improvedFeint, improvedGrapple, improvedInitiative, improvedOverrun, improvedSunder, improvedTrip, improvedUnarmedStrike, ironWill, lightningReflexes, lunge, mobility, pointBlankShot, powerAttack, preciseShot, quickDraw, rapidShot, run, springAttack, standStill, stepUp, toughness, twoWeaponFighting, weaponFinesse];
+export const feats = [acrobatic, agileManeuvers, alertness, animalAffinity, athletic, blindFight, combatCasting, combatExpertise, combatReflexes, cleave, deceitful, deftHands, deflectArrows, diehard, diligent, dodge, elementalFocus, endurance, eschewMaterials, fleet, greatCleave, greatFortitude, improvedBullRush, improvedDisarm, improvedFeint, improvedGrapple, improvedInitiative, improvedOverrun, improvedSunder, improvedTrip, improvedUnarmedStrike, intimidatingProwess, ironWill, lightningReflexes, lunge, magicalAptitude, mobility, nimbleMoves, persuasive, pointBlankShot, powerAttack, preciseShot, quickDraw, rapidShot, run, selfSufficient, springAttack, standStill, stepUp, toughness, twoWeaponFighting, weaponFinesse];
 export const optionGroups = [exploits, ragePowers, rogueTalents, combatFeats, fighterWeaponGroups];
 export const spells = [detectMagic, light, mageHand, rayOfFrost, readMagic, alarm, charmPerson, colorSpray, holdPortal, mageArmor, magicMissile, shield, sleep, ...arcanistStarterSpellCatalogue.spells, ...arcanistSpellCatalogue.spells];
 export const skills = [{name:"Acrobatics",ability:"dexterity"},{name:"Climb",ability:"strength"},{name:"Diplomacy",ability:"charisma"},{name:"Knowledge (arcana)",ability:"intelligence"},{name:"Perception",ability:"wisdom"},{name:"Spellcraft",ability:"intelligence"},{name:"Stealth",ability:"dexterity"}] as const;

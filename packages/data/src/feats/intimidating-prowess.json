@@ -1,0 +1,1 @@
+{"id":"intimidating-prowess","name":"Intimidating Prowess","type":"general","prerequisites":[{"type":"ability","key":"strength","minimum":13}],"benefit":"Add your Strength modifier to Intimidate checks in addition to Charisma.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Intimidating%20Prowess"}}

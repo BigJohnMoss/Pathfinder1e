@@ -1,0 +1,1 @@
+{"id":"diehard","name":"Diehard","type":"general","prerequisites":[{"type":"feat","id":"endurance"}],"benefit":"Remain conscious and take actions while below 0 hit points.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Diehard"}}
