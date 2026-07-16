@@ -1,0 +1,11 @@
+{
+  "id": "read-magic",
+  "name": "Read Magic",
+  "school": "divination",
+  "levelByClass": { "bard": 0, "cleric": 0, "druid": 0, "sorcerer": 0, "wizard": 0, "arcanist": 0 },
+  "components": ["V", "S", "F"],
+  "castingTime": "1 standard action",
+  "range": "personal",
+  "summary": "Read magical inscriptions on objects and creatures.",
+  "source": { "title": "Core Rulebook", "page": null, "url": "https://aonprd.com/SpellDisplay.aspx?ItemName=Read%20Magic" }
+}
