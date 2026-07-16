@@ -18,6 +18,45 @@ export function abilityModifier(score) {
   return Math.floor((score - 10) / 2);
 }
 
+export const abilityNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
+
+export function abilityModifiers(abilities) {
+  return Object.fromEntries(abilityNames.map(name => [name, abilityModifier(abilities[name])]));
+}
+
+export function characterCombatStats(characterClass, level, abilities) {
+  assertLevel(level);
+  const modifiers = abilityModifiers(abilities);
+  const bab = baseAttackBonus(characterClass.babProgression, level);
+  const baseSaves = Object.fromEntries(Object.entries(characterClass.saves).map(([save, progression]) => [save, savingThrow(progression, level)]));
+  return {
+    abilityModifiers: modifiers,
+    baseAttackBonus: bab,
+    saves: {
+      fortitude: baseSaves.fortitude + modifiers.constitution,
+      reflex: baseSaves.reflex + modifiers.dexterity,
+      will: baseSaves.will + modifiers.wisdom
+    },
+    initiative: modifiers.dexterity,
+    armorClass: {
+      normal: 10 + modifiers.dexterity,
+      touch: 10 + modifiers.dexterity,
+      flatFooted: 10
+    },
+    combatManeuverBonus: bab + modifiers.strength,
+    combatManeuverDefense: 10 + bab + modifiers.strength + modifiers.dexterity,
+    averageHitPoints: averageHitPoints(characterClass.hitDie, level, modifiers.constitution)
+  };
+}
+
+export function averageHitPoints(hitDie, level, constitutionModifier = 0) {
+  assertLevel(level);
+  if (!Number.isInteger(hitDie) || ![6, 8, 10, 12].includes(hitDie)) throw new RangeError("Hit Die must be d6, d8, d10, or d12.");
+  if (!Number.isInteger(constitutionModifier)) throw new RangeError("Constitution modifier must be an integer.");
+  const laterLevelGain = Math.max(1, Math.floor(hitDie / 2) + 1 + constitutionModifier);
+  return Math.max(1, hitDie + constitutionModifier) + (level - 1) * laterLevelGain;
+}
+
 export function featSlotsAtLevel(level, { bonusFeats = 0 } = {}) {
   assertLevel(level);
   if (!Number.isInteger(bonusFeats) || bonusFeats < 0) throw new RangeError("Bonus feats must be a non-negative integer.");
