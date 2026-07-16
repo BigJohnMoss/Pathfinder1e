@@ -257,7 +257,8 @@ export function normalizeSelectedFeatChoices(selectedFeatChoices, selectedFeatId
   return Object.fromEntries(Object.entries(selectedFeatChoices).flatMap(([featId, choice]) => {
     const feat = byId.get(featId);
     const options = feat?.choice?.options;
-    return selectedFeatIds.includes(featId) && typeof choice === "string" && Array.isArray(options) && options.some(option => option.id === choice) ? [[featId, choice]] : [];
+    const validChoice = typeof choice === "string" && (feat?.choice?.allowCustom ? choice.trim().length > 0 && choice.trim().length <= 80 : Array.isArray(options) && options.some(option => option.id === choice));
+    return selectedFeatIds.includes(featId) && validChoice ? [[featId, feat?.choice?.allowCustom ? choice.trim() : choice]] : [];
   }));
 }
 

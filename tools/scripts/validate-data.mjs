@@ -32,7 +32,9 @@ function checkChoice(choice, file) {
   if (!choice || typeof choice !== "object" || Array.isArray(choice)) { errors.push(`${file}: choice must be an object`); return; }
   if (typeof choice.key !== "string" || !choice.key.trim()) errors.push(`${file}: choice needs a key`);
   if (typeof choice.label !== "string" || !choice.label.trim()) errors.push(`${file}: choice needs a label`);
-  if (!Array.isArray(choice.options) || choice.options.length === 0) { errors.push(`${file}: choice needs options`); return; }
+  if (!choice.allowCustom && (!Array.isArray(choice.options) || choice.options.length === 0)) { errors.push(`${file}: choice needs options`); return; }
+  if (choice.allowCustom !== undefined && typeof choice.allowCustom !== "boolean") errors.push(`${file}: choice allowCustom must be a boolean`);
+  if (!Array.isArray(choice.options)) return;
   const ids = new Set();
   for (const option of choice.options) { if (!option || typeof option.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option.id) || typeof option.name !== "string" || !option.name.trim()) errors.push(`${file}: choice has an invalid option`); else if (ids.has(option.id)) errors.push(`${file}: choice has duplicate option ${option.id}`); else ids.add(option.id); }
 }

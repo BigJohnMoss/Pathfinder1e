@@ -49,7 +49,7 @@ export function encumbrance(strength: number, items: Array<{ weight: number; qua
 export function spellsAvailableToClass<T extends { name: string; levelByClass: Record<string, number> }>(spells: T[], classId: string, maximumSpellLevel: number): T[];
 export function normalizePreparedSpells<T extends { id: string; levelByClass: Record<string, number> }>(preparedSpellIds: string[], spells: T[], classId: string, preparedLimits: Array<{ level: number; count: number }>): string[];
 export function normalizeSelectedFeats<T extends { id: string; prerequisites: Prerequisite[] }>(selectedFeatIds: string[], feats: T[], context: PrerequisiteContext, slotCount: number): string[];
-export function normalizeSelectedFeatChoices<T extends { id: string; choice?: { options: Array<{ id: string }> } }>(selectedFeatChoices: Record<string, string> | null | undefined, selectedFeatIds: string[], feats: T[]): Record<string, string>;
+export function normalizeSelectedFeatChoices<T extends { id: string; choice?: { options?: Array<{ id: string }>; allowCustom?: boolean } }>(selectedFeatChoices: Record<string, string> | null | undefined, selectedFeatIds: string[], feats: T[]): Record<string, string>;
 export function normalizeSpellSlotUses(slotUses: Record<string, number> | null | undefined, slots: Array<{ level: number; count: number }>): Record<number, number>;
 export function arcaneReservoir(level: number): { maximum: number; dailyRefresh: number };
 export function bonusSpellsPerDay(abilityScore: number, maximumSpellLevel: number): Array<{ level: number; count: number }>;
