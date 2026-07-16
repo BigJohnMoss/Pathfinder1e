@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { classes, feats, human, optionGroups, skills, spells } from "./character-catalogue";
 import { AbilityEditor } from "./ability-editor";
+import { CharacterDetails } from "./character-details";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, skillRankBudget, skillTotal, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 
@@ -51,13 +52,7 @@ export default function Home() {
 
   return <main>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
-    <section className="builder" aria-label="Character details">
-      <label>Character name<input value={name} placeholder="Unnamed hero" onChange={(event) => setName(event.target.value)} /></label>
-      <label>Class<select value={classId} onChange={(event) => setClassId(event.target.value)}>{classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
-      <label>Ancestry<select disabled value="human"><option>{human.name}</option></select></label>
-      <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => setLevel(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} /></label>
-      <div className="character-actions"><button type="button" onClick={saveCharacter}>Save</button><button type="button" onClick={loadCharacter}>Load</button><button type="button" onClick={exportCharacter}>Export</button><button type="button" onClick={printCharacter}>Print</button><button type="button" onClick={resetCharacter}>Reset</button><small>{saveNotice}</small></div>
-    </section>
+    <CharacterDetails name={name} classId={classId} level={level} classes={classes} ancestryName={human.name} saveNotice={saveNotice} onNameChange={setName} onClassChange={setClassId} onLevelChange={setLevel} onSave={saveCharacter} onLoad={loadCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
     <section className="sheet-grid">
       <AbilityEditor abilityNames={abilityNames} humanAbility={humanAbility} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} onHumanAbilityChange={setHumanAbility} onAbilityChange={updateAbility} />
       <CombatPanel combat={combat} />
