@@ -70,6 +70,16 @@ export function skillRanksThroughLevel(characterClass, level, intelligenceScore,
   return ranksPerLevel * (level + 3);
 }
 
+export function skillTotal(characterClass, skill, abilityScore, ranks) {
+  if (!Number.isInteger(ranks) || ranks < 0) throw new RangeError("Skill ranks must be a non-negative integer.");
+  const group = skill.name.split(" (")[0];
+  const isClassSkill = characterClass.classSkills.includes(skill.name) || characterClass.classSkills.includes(group);
+  return {
+    total: ranks + abilityModifier(abilityScore) + (isClassSkill && ranks > 0 ? 3 : 0),
+    isClassSkill
+  };
+}
+
 export function classProgression(characterClass, level, { intelligenceScore = 10, racialSkillBonusPerLevel = 0, bonusFeats = 0 } = {}) {
   assertLevel(level);
   return {
