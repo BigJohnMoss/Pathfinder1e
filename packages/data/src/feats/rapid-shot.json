@@ -1,0 +1,1 @@
+{"id":"rapid-shot","name":"Rapid Shot","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":13},{"type":"feat","id":"point-blank-shot"}],"benefit":"Make one extra ranged attack during a full attack at a -2 penalty to all ranged attack rolls.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Rapid%20Shot"}}

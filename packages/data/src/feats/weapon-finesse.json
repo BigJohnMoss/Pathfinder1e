@@ -1,0 +1,1 @@
+{"id":"weapon-finesse","name":"Weapon Finesse","type":"combat","prerequisites":[{"type":"bab","minimum":1}],"benefit":"Use Dexterity instead of Strength on attack rolls with eligible light weapons.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20Finesse"}}
