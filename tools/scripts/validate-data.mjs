@@ -27,10 +27,20 @@ function checkSource(record, file) {
 function checkPrerequisites(prerequisites, file) {
   for (const error of validatePrerequisites(prerequisites)) errors.push(`${file}: ${error}`);
 }
+function checkSpellcasting(spellcasting, file) {
+  if (!spellcasting || typeof spellcasting !== "object") { errors.push(`${file}: spellcasting must be an object`); return; }
+  if (!["intelligence", "wisdom", "charisma"].includes(spellcasting.ability)) errors.push(`${file}: spellcasting has an invalid ability`);
+  if (!["prepared", "spontaneous"].includes(spellcasting.castingType)) errors.push(`${file}: spellcasting has an invalid casting type`);
+  for (const [key, width] of [["slotsByLevel", 9], ["preparedByLevel", 10]]) {
+    const table = spellcasting[key];
+    if (!Array.isArray(table) || table.length !== 20 || table.some(row => !Array.isArray(row) || row.length !== width || row.some(value => !Number.isInteger(value) || value < 0))) errors.push(`${file}: ${key} must contain 20 non-negative integer rows of width ${width}`);
+  }
+}
 
 for (const url of await jsonFiles("classes/")) {
   const c=await load(url); const file=url.pathname.split('/').pop(); checkId(c,file); checkSource(c,file); classIds.add(c.id);
   for (const key of ["name","hitDie","babProgression","saves","skillRanksPerLevel","source","features"]) if (c[key] === undefined) errors.push(`${file}: missing ${key}`);
+  if (c.spellcasting) checkSpellcasting(c.spellcasting, file);
   const featureIds=new Set();
   for (const f of c.features ?? []) {
     if (featureIds.has(f.id)) errors.push(`${file}: duplicate feature id ${f.id}`); featureIds.add(f.id);
