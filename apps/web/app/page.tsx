@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { classes, feats, human, optionGroups, skills, spells } from "./character-catalogue";
+import { AbilityEditor } from "./ability-editor";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { abilityNames, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, skillRankBudget, skillTotal, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 
@@ -58,7 +59,7 @@ export default function Home() {
       <div className="character-actions"><button type="button" onClick={saveCharacter}>Save</button><button type="button" onClick={loadCharacter}>Load</button><button type="button" onClick={exportCharacter}>Export</button><button type="button" onClick={printCharacter}>Print</button><button type="button" onClick={resetCharacter}>Reset</button><small>{saveNotice}</small></div>
     </section>
     <section className="sheet-grid">
-      <article className="ability-panel"><div><p className="eyebrow">ABILITY SCORES</p><h2>Human abilities</h2></div><label className="human-choice">Human +2<select value={humanAbility} onChange={(event) => setHumanAbility(event.target.value as keyof typeof defaultAbilities)}>{abilityNames.map((ability) => <option key={ability} value={ability}>{labels[ability]}</option>)}</select></label><div className="ability-grid">{abilityNames.map((ability) => <label key={ability}><span>{labels[ability]}</span><input type="number" min="1" max="40" value={baseAbilities[ability]} onChange={(event) => updateAbility(ability, Number(event.target.value))} /><strong>{abilities[ability]} <small>{signed(combat.abilityModifiers[ability])}</small></strong></label>)}</div></article>
+      <AbilityEditor abilityNames={abilityNames} humanAbility={humanAbility} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} onHumanAbilityChange={setHumanAbility} onAbilityChange={updateAbility} />
       <CombatPanel combat={combat} />
     </section>
     <ProgressionSummary combat={combat} progression={progression} />
