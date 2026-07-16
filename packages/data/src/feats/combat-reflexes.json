@@ -1,0 +1,1 @@
+{"id":"combat-reflexes","name":"Combat Reflexes","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":13}],"benefit":"Make additional attacks of opportunity equal to your Dexterity bonus and make them while flat-footed.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Combat%20Reflexes"}}
