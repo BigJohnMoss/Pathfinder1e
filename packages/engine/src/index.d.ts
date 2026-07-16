@@ -44,6 +44,6 @@ export function skillTotal(characterClass: CharacterClass, skill: { name: string
 export function classProgression(characterClass: CharacterClass, level: number, options?: { intelligenceScore?: number; racialSkillBonusPerLevel?: number; bonusFeats?: number }): ClassProgression;
 export function featuresAtLevel(characterClass: CharacterClass, level: number): CharacterClass["features"];
 export function featuresThroughLevel(characterClass: CharacterClass, level: number): CharacterClass["features"];
-export function availableOptions(group: { options: unknown[] }, classId: string, classLevel: number, selectedIds?: string[]): unknown[];
+export function availableOptions(group: { options: Array<{ id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: PrerequisiteResult["prerequisite"][] }> }, classId: string, classLevel: number, selectedIds?: string[]): Array<{ id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: PrerequisiteResult["prerequisite"][] }>;
 export function featPrerequisiteResults(feat: { prerequisites: PrerequisiteResult["prerequisite"][] }, context: { abilities?: Partial<AbilityScores>; baseAttackBonus?: number; classLevel?: number; selectedIds?: string[] }): PrerequisiteResult[];
 export function prerequisitesMet(prerequisites: PrerequisiteResult["prerequisite"][], context: { abilities?: Partial<AbilityScores>; baseAttackBonus?: number; classLevel?: number; selectedIds?: string[] }): boolean;
