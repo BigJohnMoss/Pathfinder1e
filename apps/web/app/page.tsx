@@ -46,10 +46,12 @@ export default function Home() {
   const choiceFeatures = progression.features.filter((feature) => feature.choiceRequired && feature.optionGroupId);
   const classOptionChoices = choiceFeatures.map((feature) => { const group = optionGroups.find((item) => item.id === feature.optionGroupId); const options = group ? availableOptions(group, characterClass.id, level, Object.values(selectedOptions)) : []; return { id: feature.id, name: feature.name, level: feature.level, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) }; });
   const updateClassOption = (featureId: string, optionId: string) => setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
-  const spellcasting = useMemo(() => spellcastingProgression(characterClass, level, { abilityScore: abilities.intelligence }), [abilities.intelligence, characterClass, level]);
+  const castingAbility = "spellcasting" in characterClass && abilityNames.includes(characterClass.spellcasting?.ability as keyof typeof abilities) ? characterClass.spellcasting?.ability as keyof typeof abilities : null;
+  const castingAbilityScore = castingAbility ? abilities[castingAbility] : 10;
+  const spellcasting = useMemo(() => spellcastingProgression(characterClass, level, { abilityScore: castingAbilityScore }), [castingAbilityScore, characterClass, level]);
   const maximumSpellLevel = spellcasting?.maximumSpellLevel ?? 0;
   const availableSpells = useMemo(() => spellcasting ? spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel) : [], [characterClass.id, maximumSpellLevel, spellcasting]);
-  const spellDcs = spellcasting ? Object.fromEntries(spellcasting.slots.map((slot) => [slot.level, spellSaveDC(abilities.intelligence, slot.level)])) : {};
+  const spellDcs = spellcasting ? Object.fromEntries(spellcasting.slots.map((slot) => [slot.level, spellSaveDC(castingAbilityScore, slot.level)])) : {};
   const saveCharacter = () => { localStorage.setItem("pf1e-character-draft", JSON.stringify({ name, classId, level, humanAbility, baseAbilities, selectedFeatIds, skillRanks, selectedOptions, preparedSpells })); setSaveNotice("Saved locally"); };
   const loadCharacter = () => { const saved = localStorage.getItem("pf1e-character-draft"); if (!saved) { setSaveNotice("No saved character"); return; } try { const draft = normalizeCharacterDraft(JSON.parse(saved), { classIds: classes.map((item) => item.id) }); if (!draft) { setSaveNotice("Saved character is invalid"); return; } setName(draft.name); setClassId(draft.classId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setSelectedFeatIds(draft.selectedFeatIds); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setPreparedSpells(draft.preparedSpells); setSaveNotice("Loaded saved character"); } catch { setSaveNotice("Saved character is invalid"); } };
   const resetCharacter = () => { localStorage.removeItem("pf1e-character-draft"); setName(""); setClassId("arcanist"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setSelectedFeatIds([]); setSkillRanks({}); setSelectedOptions({}); setPreparedSpells([]); setSaveNotice("Character reset"); };
@@ -67,7 +69,7 @@ export default function Home() {
     <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} onFeatChange={updateFeat} />
     <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} onRankChange={updateSkill} />
     {classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} onOptionChange={updateClassOption} />}
-    {spellcasting && <Spellbook spells={availableSpells} classId={characterClass.id} slots={spellcasting.slots} preparedLimits={spellcasting.prepared} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={preparedSpells} onPreparedSpellIdsChange={setPreparedSpells} />}
+    {spellcasting && <Spellbook spells={availableSpells} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spellcasting.slots} preparedLimits={spellcasting.prepared} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={preparedSpells} onPreparedSpellIdsChange={setPreparedSpells} />}
     <ClassFeatures level={level} className={characterClass.name} features={progression.features} />
   </main>;
 }
