@@ -1,0 +1,1 @@
+{"id":"stand-still","name":"Stand Still","type":"combat","prerequisites":[{"type":"feat","id":"combat-reflexes"}],"benefit":"Use an attack of opportunity to stop a foe moving through your adjacent squares.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Stand%20Still"}}
