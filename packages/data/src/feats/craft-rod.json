@@ -1,0 +1,1 @@
+{"id":"craft-rod","name":"Craft Rod","type":"item-creation","prerequisites":[{"type":"caster-level","minimum":9}],"benefit":"Create a magic rod.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Rod"}}

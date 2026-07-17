@@ -1,0 +1,1 @@
+{"id":"forge-ring","name":"Forge Ring","type":"item-creation","prerequisites":[{"type":"caster-level","minimum":12}],"benefit":"Create a magic ring.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Forge%20Ring"}}
