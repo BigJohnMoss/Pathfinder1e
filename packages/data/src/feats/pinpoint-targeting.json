@@ -1,0 +1,1 @@
+{"id":"pinpoint-targeting","name":"Pinpoint Targeting","type":"combat","prerequisites":[{"type":"feat","id":"improved-precise-shot"},{"type":"bab","minimum":16}],"benefit":"Make a ranged attack that ignores armor and shield bonuses to AC.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
