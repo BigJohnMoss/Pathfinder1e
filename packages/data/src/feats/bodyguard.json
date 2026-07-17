@@ -1,0 +1,1 @@
+{"id":"bodyguard","name":"Bodyguard","type":"combat","prerequisites":[{"type":"feat","id":"combat-reflexes"}],"benefit":"Use an attack of opportunity to improve an adjacent ally's AC.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
