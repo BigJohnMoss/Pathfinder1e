@@ -1,0 +1,1 @@
+{"id":"penetrating-strike","name":"Penetrating Strike","type":"combat","prerequisites":[{"type":"class-level","classId":"fighter","minimum":12},{"type":"feat","id":"weapon-focus"}],"benefit":"Ignore 5 points of damage reduction with attacks using the selected weapon.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
