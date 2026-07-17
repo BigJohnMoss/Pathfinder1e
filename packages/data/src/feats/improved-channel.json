@@ -1,0 +1,1 @@
+{"id":"improved-channel","name":"Improved Channel","type":"general","prerequisites":[{"type":"feature","id":"channel-energy-1"}],"benefit":"Gain a +2 bonus on channel energy DCs.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
