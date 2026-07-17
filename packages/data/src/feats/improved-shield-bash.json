@@ -1,0 +1,1 @@
+{"id":"improved-shield-bash","name":"Improved Shield Bash","type":"combat","prerequisites":[{"type":"feat","id":"shield-proficiency"}],"benefit":"Retain a shield's AC bonus when making a shield bash.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Shield%20Bash"}}

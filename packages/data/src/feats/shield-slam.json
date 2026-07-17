@@ -1,0 +1,1 @@
+{"id":"shield-slam","name":"Shield Slam","type":"combat","prerequisites":[{"type":"bab","minimum":6},{"type":"feat","id":"improved-shield-bash"}],"benefit":"Make a free bull rush attempt after a successful shield bash.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Slam"}}
