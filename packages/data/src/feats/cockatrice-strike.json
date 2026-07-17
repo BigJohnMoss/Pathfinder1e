@@ -1,0 +1,1 @@
+{"id":"cockatrice-strike","name":"Cockatrice Strike","type":"combat","prerequisites":[{"type":"feat","id":"medusas-wrath"},{"type":"bab","minimum":14}],"benefit":"A critical hit can petrify an opponent under the feat's conditions.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
