@@ -1,0 +1,1 @@
+{"id":"shatter-defenses","name":"Shatter Defenses","type":"combat","prerequisites":[{"type":"feat","id":"dazzling-display"},{"type":"bab","minimum":6}],"benefit":"Make shaken, frightened, or panicked foes flat-footed against your attacks.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

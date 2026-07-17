@@ -1,0 +1,1 @@
+{"id":"double-slice","name":"Double Slice","type":"combat","prerequisites":[{"type":"feat","id":"two-weapon-fighting"}],"benefit":"Add your full Strength bonus to off-hand weapon damage rolls.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

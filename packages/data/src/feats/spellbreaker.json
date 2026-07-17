@@ -1,0 +1,1 @@
+{"id":"spellbreaker","name":"Spellbreaker","type":"combat","prerequisites":[{"type":"class-level","classId":"fighter","minimum":10},{"type":"feat","id":"disruptive"}],"benefit":"Enemies that fail to cast defensively provoke attacks of opportunity from you.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

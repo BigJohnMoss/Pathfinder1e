@@ -1,0 +1,1 @@
+{"id":"turn-undead","name":"Turn Undead","type":"general","prerequisites":[{"type":"feature","id":"channel-positive-energy-1"}],"benefit":"Use channel positive energy to make undead flee.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

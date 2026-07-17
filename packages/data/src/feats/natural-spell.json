@@ -1,0 +1,1 @@
+{"id":"natural-spell","name":"Natural Spell","type":"general","prerequisites":[{"type":"ability","key":"wisdom","minimum":13},{"type":"feature","id":"wild-shape-4"}],"benefit":"Cast spells while using wild shape.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

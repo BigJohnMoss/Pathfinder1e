@@ -1,0 +1,1 @@
+{"id":"unseat","name":"Unseat","type":"combat","prerequisites":[{"type":"feat","id":"improved-bull-rush"},{"type":"feat","id":"mounted-combat"}],"benefit":"Knock mounted opponents from their mounts with a successful bull rush.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}

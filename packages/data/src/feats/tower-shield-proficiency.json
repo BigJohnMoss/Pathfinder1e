@@ -1,0 +1,1 @@
+{"id":"tower-shield-proficiency","name":"Tower Shield Proficiency","type":"combat","prerequisites":[{"type":"feat","id":"shield-proficiency"}],"benefit":"Avoid attack-roll penalties while using a tower shield.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
