@@ -1,0 +1,1 @@
+{"id":"channel-smite","name":"Channel Smite","type":"combat","prerequisites":[{"type":"feature","id":"channel-energy-1"}],"benefit":"Spend a channel-energy use to deal its damage through a melee attack.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
