@@ -269,6 +269,7 @@ export function prerequisitesMet(prerequisites, context) {
 function prerequisiteMet(prerequisite, context) {
   if (prerequisite.type === "level") return context.classLevel >= prerequisite.minimum;
   if (prerequisite.type === "class-level") return context.classId === prerequisite.classId && context.classLevel >= prerequisite.minimum;
+  if (prerequisite.type === "ancestry") return context.ancestryId === prerequisite.id;
   if (prerequisite.type === "caster-level") return context.casterLevel >= prerequisite.minimum;
   if (prerequisite.type === "ability") return context.abilities?.[prerequisite.key] >= prerequisite.minimum;
   if (prerequisite.type === "bab") return context.baseAttackBonus >= prerequisite.minimum;
