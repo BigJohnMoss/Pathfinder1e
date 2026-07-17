@@ -35,6 +35,7 @@ export type Prerequisite =
   | { type: "ability" | "skill"; key: string; minimum: number }
   | { type: "feat" | "feature"; id: string }
   | { type: "matching-choice"; featId: string; key: string }
+  | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface PrerequisiteResult { prerequisite: Prerequisite; met: boolean }
 export interface PrerequisiteContext { classId?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
