@@ -1,0 +1,1 @@
+{"id":"extra-rage","name":"Extra Rage","type":"general","prerequisites":[{"type":"feature","id":"rage-1"}],"benefit":"Use rage for 6 additional rounds per day.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
