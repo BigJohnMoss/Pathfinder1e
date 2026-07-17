@@ -1,0 +1,1 @@
+{"id":"crippling-critical","name":"Crippling Critical","type":"combat","prerequisites":[{"type":"feat","id":"critical-focus"},{"type":"bab","minimum":13}],"benefit":"A critical hit halves the target's speed.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
