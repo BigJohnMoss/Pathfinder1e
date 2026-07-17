@@ -1,5 +1,5 @@
 const abilityNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
-const prerequisiteTypes = ["level", "class-level", "caster-level", "ability", "bab", "skill", "feat", "feature", "matching-choice", "any"];
+const prerequisiteTypes = ["level", "class-level", "caster-level", "ability", "bab", "skill", "feat", "feature", "matching-choice", "choice-value", "any"];
 const idPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export function validatePrerequisites(prerequisites, { nested = false } = {}) {
@@ -14,6 +14,7 @@ export function validatePrerequisites(prerequisites, { nested = false } = {}) {
     if (prerequisite.type === "skill" && (typeof prerequisite.key !== "string" || !prerequisite.key.trim())) errors.push("skill prerequisite needs a skill name");
     if (["feat", "feature"].includes(prerequisite.type) && (!prerequisite.id || !idPattern.test(prerequisite.id))) errors.push(`${prerequisite.type} prerequisite needs a valid id`);
     if (prerequisite.type === "matching-choice" && (!prerequisite.featId || !idPattern.test(prerequisite.featId) || typeof prerequisite.key !== "string" || !prerequisite.key.trim())) errors.push("matching-choice prerequisite needs a feat id and choice key");
+    if (prerequisite.type === "choice-value" && (!prerequisite.featId || !idPattern.test(prerequisite.featId) || typeof prerequisite.key !== "string" || !prerequisite.key.trim() || typeof prerequisite.value !== "string" || !prerequisite.value.trim())) errors.push("choice-value prerequisite needs a feat id, choice key, and value");
     if (prerequisite.type === "any") {
       if (!Array.isArray(prerequisite.prerequisites) || prerequisite.prerequisites.length === 0) errors.push("any prerequisite needs at least one alternative");
       else errors.push(...validatePrerequisites(prerequisite.prerequisites, { nested: true }).map(error => `any prerequisite: ${error}`));
