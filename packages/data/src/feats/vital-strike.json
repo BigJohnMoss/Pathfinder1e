@@ -1,0 +1,1 @@
+{"id":"vital-strike","name":"Vital Strike","type":"combat","prerequisites":[{"type":"bab","minimum":6}],"benefit":"When making an attack action, roll the weapon's damage dice twice and add the results.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Vital%20Strike"}}
