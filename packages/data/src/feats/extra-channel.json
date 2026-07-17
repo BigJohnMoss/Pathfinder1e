@@ -1,0 +1,1 @@
+{"id":"extra-channel","name":"Extra Channel","type":"general","prerequisites":[{"type":"feature","id":"channel-energy-1"}],"benefit":"Channel energy two additional times per day.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
