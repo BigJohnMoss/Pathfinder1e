@@ -1,0 +1,1 @@
+{"id":"greater-shield-focus","name":"Greater Shield Focus","type":"combat","prerequisites":[{"type":"class-level","classId":"fighter","minimum":8},{"type":"feat","id":"shield-focus"}],"benefit":"Increase the AC bonus from Shield Focus by an additional 1.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Shield%20Focus"}}
