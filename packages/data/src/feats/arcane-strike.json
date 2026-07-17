@@ -1,0 +1,1 @@
+{"id":"arcane-strike","name":"Arcane Strike","type":"combat","prerequisites":[{"type":"caster-level","minimum":1}],"benefit":"As a swift action, imbue your weapons with arcane energy for a bonus on damage rolls.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20Strike"}}

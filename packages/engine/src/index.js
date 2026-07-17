@@ -276,6 +276,7 @@ function prerequisiteMet(prerequisite, context) {
   if (prerequisite.type === "feature") return context.featureIds?.includes(prerequisite.id);
   if (prerequisite.type === "feat") return context.selectedIds?.includes(prerequisite.id);
   if (prerequisite.type === "matching-choice") { const candidateChoice = context.selectedFeatChoices?.[context.candidateId]; const prerequisiteChoice = context.selectedFeatChoices?.[prerequisite.featId]; return candidateChoice === undefined || (prerequisiteChoice !== undefined && candidateChoice === prerequisiteChoice); }
+  if (prerequisite.type === "choice-value") return context.selectedFeatChoices?.[prerequisite.featId] === prerequisite.value;
   if (prerequisite.type === "any") return prerequisite.prerequisites.some(alternative => prerequisiteMet(alternative, context));
   return true;
 }
