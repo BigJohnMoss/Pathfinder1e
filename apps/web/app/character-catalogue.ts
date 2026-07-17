@@ -1,4 +1,5 @@
 import arcanist from "../../../packages/data/src/classes/arcanist.json";
+import type { Prerequisite } from "../../../packages/engine/src/index.js";
 import barbarian from "../../../packages/data/src/classes/barbarian.json";
 import fighter from "../../../packages/data/src/classes/fighter.json";
 import rogue from "../../../packages/data/src/classes/rogue.json";
@@ -83,7 +84,14 @@ import armorProficiencyHeavy from "../../../packages/data/src/feats/armor-profic
 import catchOffGuard from "../../../packages/data/src/feats/catch-off-guard.json";
 import defensiveCombatTraining from "../../../packages/data/src/feats/defensive-combat-training.json";
 import improvedCounterspell from "../../../packages/data/src/feats/improved-counterspell.json";
+import scribeScroll from "../../../packages/data/src/feats/scribe-scroll.json";
+import brewPotion from "../../../packages/data/src/feats/brew-potion.json";
+import craftWondrousItem from "../../../packages/data/src/feats/craft-wondrous-item.json";
+import craftMagicArmsAndArmor from "../../../packages/data/src/feats/craft-magic-arms-and-armor.json";
+import craftRod from "../../../packages/data/src/feats/craft-rod.json";
+import craftStaff from "../../../packages/data/src/feats/craft-staff.json";
 import craftWand from "../../../packages/data/src/feats/craft-wand.json";
+import forgeRing from "../../../packages/data/src/feats/forge-ring.json";
 import extraKi from "../../../packages/data/src/feats/extra-ki.json";
 import empowerSpell from "../../../packages/data/src/feats/empower-spell.json";
 import enlargeSpell from "../../../packages/data/src/feats/enlarge-spell.json";
@@ -149,7 +157,12 @@ import arcanistStarterSpellCatalogue from "../../../packages/data/src/spell-cata
 
 export const classes = [arcanist, barbarian, fighter, monk, rogue];
 export const ancestries = [human, dwarf, elf, gnome, halfElf, halfling, halfOrc];
-export const feats = [acrobatic, acrobaticSteps, agileManeuvers, alertness, animalAffinity, armorProficiencyHeavy, armorProficiencyLight, armorProficiencyMedium, athletic, bleedingCritical, blindFight, blindingCritical, catchOffGuard, combatCasting, combatExpertise, combatReflexes, cleave, craftWand, criticalFocus, deadlyAim, deceitful, deafeningCritical, defensiveCombatTraining, deftHands, deflectArrows, diehard, diligent, dodge, elementalFocus, empowerSpell, enlargeSpell, endurance, eschewMaterials, exhaustingCritical, extendSpell, extraKi, farShot, fleet, gorgonsFist, greatCleave, greaterBullRush, greaterDisarm, greaterFeint, greaterGrapple, greaterOverrun, greaterSpellFocus, greaterSpellPenetration, greaterSunder, greaterTrip, greaterWeaponFocus, greaterWeaponSpecialization, greatFortitude, heightenSpell, improvedBullRush, improvedCounterspell, improvedDisarm, improvedFeint, improvedGrapple, improvedGreatFortitude, improvedInitiative, improvedIronWill, improvedLightningReflexes, improvedOverrun, improvedPreciseShot, improvedSunder, improvedTrip, improvedUnarmedStrike, intimidatingProwess, ironWill, leadership, lightningReflexes, lightningStance, lunge, magicalAptitude, manyshot, martialWeaponProficiency, maximizeSpell, medusasWrath, mobility, nimbleMoves, persuasive, pointBlankShot, powerAttack, preciseShot, quickDraw, quickenSpell, rapidShot, run, scorpionStyle, selfSufficient, shieldProficiency, shotOnTheRun, sickeningCritical, silentSpell, simpleWeaponProficiency, skillFocus, snatchArrows, spellFocus, spellPenetration, springAttack, staggeringCritical, standStill, stealthy, stepUp, stillSpell, stunningCritical, throwAnything, tiringCritical, toughness, twoWeaponFighting, weaponFinesse, weaponFocus, weaponSpecialization, whirlwindAttack, widenSpell, windStance];
-export const optionGroups = [exploits, ragePowers, rogueTalents, combatFeats, fighterWeaponGroups];
+export type CharacterFeat = { id: string; name: string; benefit: string; prerequisites: Prerequisite[]; choice?: { key: string; label: string; options?: Array<{ id: string; name: string }>; allowCustom?: boolean } };
+export type CharacterOption = { id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: Prerequisite[] };
+export type CharacterOptionGroup = { id: string; name: string; options: CharacterOption[] };
+// JSON module imports widen discriminant fields to string; data validation enforces this contract.
+export const feats = [acrobatic, acrobaticSteps, agileManeuvers, alertness, animalAffinity, armorProficiencyHeavy, armorProficiencyLight, armorProficiencyMedium, athletic, bleedingCritical, blindFight, blindingCritical, brewPotion, catchOffGuard, combatCasting, combatExpertise, combatReflexes, cleave, craftMagicArmsAndArmor, craftRod, craftStaff, craftWand, craftWondrousItem, criticalFocus, deadlyAim, deceitful, deafeningCritical, defensiveCombatTraining, deftHands, deflectArrows, diehard, diligent, dodge, elementalFocus, empowerSpell, enlargeSpell, endurance, eschewMaterials, exhaustingCritical, extendSpell, extraKi, farShot, fleet, forgeRing, gorgonsFist, greatCleave, greaterBullRush, greaterDisarm, greaterFeint, greaterGrapple, greaterOverrun, greaterSpellFocus, greaterSpellPenetration, greaterSunder, greaterTrip, greaterWeaponFocus, greaterWeaponSpecialization, greatFortitude, heightenSpell, improvedBullRush, improvedCounterspell, improvedDisarm, improvedFeint, improvedGrapple, improvedGreatFortitude, improvedInitiative, improvedIronWill, improvedLightningReflexes, improvedOverrun, improvedPreciseShot, improvedSunder, improvedTrip, improvedUnarmedStrike, intimidatingProwess, ironWill, leadership, lightningReflexes, lightningStance, lunge, magicalAptitude, manyshot, martialWeaponProficiency, maximizeSpell, medusasWrath, mobility, nimbleMoves, persuasive, pointBlankShot, powerAttack, preciseShot, quickDraw, quickenSpell, rapidShot, run, scorpionStyle, scribeScroll, selfSufficient, shieldProficiency, shotOnTheRun, sickeningCritical, silentSpell, simpleWeaponProficiency, skillFocus, snatchArrows, spellFocus, spellPenetration, springAttack, staggeringCritical, standStill, stealthy, stepUp, stillSpell, stunningCritical, throwAnything, tiringCritical, toughness, twoWeaponFighting, weaponFinesse, weaponFocus, weaponSpecialization, whirlwindAttack, widenSpell, windStance] as unknown as CharacterFeat[];
+// See the feat catalogue note above: JSON imports widen prerequisite discriminants.
+export const optionGroups = [exploits, ragePowers, rogueTalents, combatFeats, fighterWeaponGroups] as unknown as CharacterOptionGroup[];
 export const spells = [detectMagic, light, mageHand, rayOfFrost, readMagic, alarm, charmPerson, colorSpray, holdPortal, mageArmor, magicMissile, shield, sleep, ...arcanistStarterSpellCatalogue.spells, ...arcanistSpellCatalogue.spells];
 export const skills = [{name:"Acrobatics",ability:"dexterity"},{name:"Climb",ability:"strength"},{name:"Diplomacy",ability:"charisma"},{name:"Knowledge (arcana)",ability:"intelligence"},{name:"Perception",ability:"wisdom"},{name:"Spellcraft",ability:"intelligence"},{name:"Stealth",ability:"dexterity"}] as const;
