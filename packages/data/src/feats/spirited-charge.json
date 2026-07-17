@@ -1,0 +1,1 @@
+{"id":"spirited-charge","name":"Spirited Charge","type":"combat","prerequisites":[{"type":"feat","id":"ride-by-attack"}],"benefit":"Deal double damage with a mounted charge, or triple damage with a lance.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Spirited%20Charge"}}

@@ -1,0 +1,1 @@
+{"id":"trample","name":"Trample","type":"combat","prerequisites":[{"type":"feat","id":"mounted-combat"}],"benefit":"Attempt to overrun foes with your mount, dealing hoof damage on success.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Trample"}}

@@ -1,0 +1,1 @@
+{"id":"mounted-combat","name":"Mounted Combat","type":"combat","prerequisites":[{"type":"skill","key":"Ride","minimum":1}],"benefit":"Once per round, attempt a Ride check to negate a hit on your mount.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Mounted%20Combat"}}
