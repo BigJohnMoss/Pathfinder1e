@@ -1,0 +1,1 @@
+{"id":"disruptive","name":"Disruptive","type":"combat","prerequisites":[{"type":"class-level","classId":"fighter","minimum":6}],"benefit":"Increase the DC for adjacent enemies to cast defensively.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
