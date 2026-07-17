@@ -1,0 +1,1 @@
+{"id":"covering-defense","name":"Covering Defense","type":"combat","prerequisites":[{"type":"feat","id":"shield-focus"},{"type":"bab","minimum":6}],"benefit":"Provide cover to an adjacent ally while using total defense.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

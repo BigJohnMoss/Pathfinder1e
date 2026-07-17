@@ -1,0 +1,1 @@
+{"id":"in-harms-way","name":"In Harm's Way","type":"combat","prerequisites":[{"type":"feat","id":"bodyguard"}],"benefit":"Take the damage of a successful attack made against an adjacent ally.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

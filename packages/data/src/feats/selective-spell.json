@@ -1,0 +1,1 @@
+{"id":"selective-spell","name":"Selective Spell","type":"metamagic","prerequisites":[{"type":"skill","key":"Spellcraft","minimum":10}],"benefit":"Exclude selected targets from an area-effect spell.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

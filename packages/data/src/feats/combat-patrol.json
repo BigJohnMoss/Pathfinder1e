@@ -1,0 +1,1 @@
+{"id":"combat-patrol","name":"Combat Patrol","type":"combat","prerequisites":[{"type":"feat","id":"combat-reflexes"},{"type":"feat","id":"mobility"},{"type":"bab","minimum":5}],"benefit":"Increase your threatened area for attacks of opportunity.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

@@ -1,0 +1,1 @@
+{"id":"bull-rush-strike","name":"Bull Rush Strike","type":"combat","prerequisites":[{"type":"feat","id":"improved-bull-rush"},{"type":"bab","minimum":9}],"benefit":"Attempt a bull rush after scoring a critical hit.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
