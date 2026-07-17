@@ -1,0 +1,1 @@
+{"id":"feat-command-undead","name":"Command Undead","type":"general","prerequisites":[{"type":"feature","id":"channel-negative-energy-1"}],"benefit":"Use channel negative energy to command undead.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/corerulebook/feats.html"}}
