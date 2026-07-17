@@ -1,0 +1,1 @@
+{"id":"shield-focus","name":"Shield Focus","type":"combat","prerequisites":[{"type":"feat","id":"shield-proficiency"}],"benefit":"Gain a +1 bonus to AC while using a shield.","source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Focus"}}
