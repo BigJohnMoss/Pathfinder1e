@@ -1,0 +1,1 @@
+{"id":"blighted-critical-mastery","name":"Blighted Critical Mastery","type":"critical","prerequisites":[{"type":"feat","id":"blighted-critical"},{"type":"caster-level","minimum":9}],"benefit":"Choose the spellblight inflicted by Blighted Critical.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

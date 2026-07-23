@@ -1,0 +1,1 @@
+{"id":"ensemble","name":"Ensemble","type":"teamwork","prerequisites":[{"type":"skill","key":"Perform","minimum":5}],"benefit":"Nearby performers can aid your Perform checks.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}
