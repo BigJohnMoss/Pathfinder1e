@@ -1,0 +1,1 @@
+{"id":"improved-steal","name":"Improved Steal","type":"combat","prerequisites":[{"type":"feat","id":"combat-expertise"}],"benefit":"Gain a bonus on steal attempts and do not provoke attacks of opportunity.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
