@@ -1,0 +1,1 @@
+{"id":"team-up","name":"Team Up","type":"combat","prerequisites":[{"type":"feat","id":"gang-up"},{"type":"bab","minimum":6}],"benefit":"Aid another as a move action with two adjacent allies.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

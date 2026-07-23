@@ -1,0 +1,1 @@
+{"id":"greater-reposition","name":"Greater Reposition","type":"combat","prerequisites":[{"type":"feat","id":"improved-reposition"},{"type":"bab","minimum":6}],"benefit":"Creatures you reposition provoke attacks of opportunity.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

@@ -1,0 +1,1 @@
+{"id":"greater-drag","name":"Greater Drag","type":"combat","prerequisites":[{"type":"feat","id":"improved-drag"},{"type":"bab","minimum":6}],"benefit":"Creatures you drag provoke attacks of opportunity.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

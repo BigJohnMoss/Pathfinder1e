@@ -1,0 +1,1 @@
+{"id":"step-up-and-strike","name":"Step Up and Strike","type":"combat","prerequisites":[{"type":"feat","id":"following-step"},{"type":"bab","minimum":6}],"benefit":"Follow an adjacent creature and make an attack as an immediate action.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
