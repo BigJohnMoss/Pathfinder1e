@@ -1,0 +1,1 @@
+{"id":"shield-wall","name":"Shield Wall","type":"teamwork","prerequisites":[{"type":"feat","id":"shield-proficiency"}],"benefit":"Increase your shield bonus to AC when adjacent to an ally with this feat and a shield.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
