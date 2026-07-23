@@ -1,0 +1,1 @@
+{"id":"voice-of-the-sibyl","name":"Voice of the Sibyl","type":"general","prerequisites":[{"type":"ability","key":"charisma","minimum":15}],"benefit":"Gain bonuses on Bluff, Diplomacy, and Perform (oratory) checks.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

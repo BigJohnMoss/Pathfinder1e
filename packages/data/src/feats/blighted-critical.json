@@ -1,0 +1,1 @@
+{"id":"blighted-critical","name":"Blighted Critical","type":"critical","prerequisites":[{"type":"caster-level","minimum":5}],"benefit":"A confirmed critical hit with a spell or spell-like ability inflicts a minor spellblight.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

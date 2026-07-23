@@ -1,0 +1,1 @@
+{"id":"superior-summoning","name":"Superior Summoning","type":"general","prerequisites":[{"type":"feat","id":"augment-summoning"},{"type":"caster-level","minimum":3}],"benefit":"When summoning more than one creature, summon one additional creature.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}
