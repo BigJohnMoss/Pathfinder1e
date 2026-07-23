@@ -1,0 +1,1 @@
+{"id":"light-step","name":"Light Step","type":"general","prerequisites":[{"type":"feat","id":"acrobatic-steps"},{"type":"feat","id":"nimble-moves"},{"type":"ancestry","id":"elf"}],"benefit":"Move at normal speed through difficult terrain.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
