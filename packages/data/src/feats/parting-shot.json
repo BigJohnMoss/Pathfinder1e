@@ -1,0 +1,1 @@
+{"id":"parting-shot","name":"Parting Shot","type":"combat","prerequisites":[{"type":"feat","id":"shot-on-the-run"},{"type":"bab","minimum":6}],"benefit":"Make a ranged attack as part of a withdraw action.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

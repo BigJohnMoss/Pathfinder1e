@@ -20,6 +20,7 @@ export type Prerequisite =
   | { type: "class-level"; classId: string; minimum: number }
   | { type: "ability"|"skill"; key: string; minimum: number }
   | { type: "feat"|"feature"; id: string }
+  | { type: "size"; maximum: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal" }
   | { type: "matching-choice"; featId: string; key: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface SelectableOption { id:string; groupId:string; name:string; classIds:string[]; minimumLevel:number; prerequisites:Prerequisite[]; benefit:string; source:SourceRef; }
