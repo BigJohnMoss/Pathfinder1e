@@ -1,0 +1,1 @@
+{"id":"extra-ranger-trap","name":"Extra Ranger Trap","type":"general","prerequisites":[{"type":"feature","id":"ranger-trap-5"}],"benefit":"Use your ranger trap class feature two additional times each day.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

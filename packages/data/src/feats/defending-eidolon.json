@@ -1,0 +1,1 @@
+{"id":"defending-eidolon","name":"Defending Eidolon","type":"general","prerequisites":[{"type":"feature","id":"eidolon-shield-ally-4"}],"benefit":"Your adjacent eidolon can take an attack penalty to grant you a scaling dodge bonus to AC.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

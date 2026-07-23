@@ -1,0 +1,1 @@
+{"id":"intimidating-gaze","name":"Intimidating Gaze","type":"general","prerequisites":[{"type":"feature","id":"inquisitor-stern-gaze-1"},{"type":"skill","key":"Intimidate","minimum":5}],"benefit":"Roll Intimidate checks twice and take the higher result.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

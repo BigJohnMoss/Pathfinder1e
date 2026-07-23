@@ -1,0 +1,1 @@
+{"id":"accursed-hex","name":"Accursed Hex","type":"general","prerequisites":[{"type":"feature","id":"witch-hex-1"}],"benefit":"Retry a hex against a creature that succeeded at its saving throw.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

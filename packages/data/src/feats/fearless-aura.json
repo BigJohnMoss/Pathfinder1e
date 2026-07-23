@@ -1,0 +1,1 @@
+{"id":"fearless-aura","name":"Fearless Aura","type":"general","prerequisites":[{"type":"feature","id":"paladin-aura-of-courage-3"},{"type":"caster-level","minimum":8}],"benefit":"Expand your aura of courage and make allies immune to fear effects.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

@@ -1,0 +1,1 @@
+{"id":"grant-initiative","name":"Grant Initiative","type":"general","prerequisites":[{"type":"feature","id":"inquisitor-cunning-initiative-2"}],"benefit":"Grant your Wisdom bonus on initiative checks to an ally instead of using it yourself.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

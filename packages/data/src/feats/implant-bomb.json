@@ -1,0 +1,1 @@
+{"id":"implant-bomb","name":"Implant Bomb","type":"general","prerequisites":[{"type":"skill","key":"Heal","minimum":5},{"type":"feature","id":"alchemist-delayed-bomb"}],"benefit":"Implant a bomb in a willing or helpless creature.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

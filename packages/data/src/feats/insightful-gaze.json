@@ -1,0 +1,1 @@
+{"id":"insightful-gaze","name":"Insightful Gaze","type":"general","prerequisites":[{"type":"feature","id":"inquisitor-stern-gaze-1"},{"type":"skill","key":"Sense Motive","minimum":5}],"benefit":"Roll Sense Motive checks twice and take the higher result.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

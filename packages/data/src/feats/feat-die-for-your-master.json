@@ -1,0 +1,1 @@
+{"id":"feat-die-for-your-master","name":"Die for Your Master","type":"general","prerequisites":[{"type":"feature","id":"alchemist-tumor-familiar"}],"benefit":"Your tumor familiar can interpose itself to take damage meant for you once per day.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}
