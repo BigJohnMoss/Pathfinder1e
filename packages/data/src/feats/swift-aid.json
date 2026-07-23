@@ -1,0 +1,1 @@
+{"id":"swift-aid","name":"Swift Aid","type":"combat","prerequisites":[{"type":"ability","key":"intelligence","minimum":13},{"type":"feat","id":"combat-expertise"},{"type":"bab","minimum":6}],"benefit":"Attempt to aid another as a swift action.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
