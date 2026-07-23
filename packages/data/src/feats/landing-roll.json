@@ -1,0 +1,1 @@
+{"id":"landing-roll","name":"Landing Roll","type":"combat","prerequisites":[{"type":"feat","id":"mobility"}],"benefit":"When tripped, take an immediate 5-foot step.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

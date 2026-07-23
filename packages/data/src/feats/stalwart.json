@@ -1,0 +1,1 @@
+{"id":"stalwart","name":"Stalwart","type":"combat","prerequisites":[{"type":"feat","id":"diehard"},{"type":"bab","minimum":4}],"benefit":"Exchange your dodge bonus to AC for damage reduction.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

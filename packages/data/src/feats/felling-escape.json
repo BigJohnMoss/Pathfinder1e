@@ -1,0 +1,1 @@
+{"id":"felling-escape","name":"Felling Escape","type":"combat","prerequisites":[{"type":"feat","id":"improved-trip"}],"benefit":"Attempt to trip a foe when you break free from its grapple.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

@@ -1,0 +1,1 @@
+{"id":"improved-stalwart","name":"Improved Stalwart","type":"combat","prerequisites":[{"type":"feat","id":"stalwart"},{"type":"bab","minimum":11}],"benefit":"Double the damage reduction granted by Stalwart.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

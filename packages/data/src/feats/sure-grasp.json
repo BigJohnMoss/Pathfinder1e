@@ -1,0 +1,1 @@
+{"id":"sure-grasp","name":"Sure Grasp","type":"general","prerequisites":[{"type":"skill","key":"Climb","minimum":1}],"benefit":"When climbing, roll twice and take the higher result.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

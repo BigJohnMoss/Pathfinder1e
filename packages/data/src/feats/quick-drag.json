@@ -1,0 +1,1 @@
+{"id":"quick-drag","name":"Quick Drag","type":"combat","prerequisites":[{"type":"feat","id":"improved-drag"},{"type":"bab","minimum":6}],"benefit":"Make a drag maneuver in place of one melee attack.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

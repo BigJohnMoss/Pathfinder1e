@@ -1,0 +1,1 @@
+{"id":"cleaving-finish","name":"Cleaving Finish","type":"combat","prerequisites":[{"type":"feat","id":"cleave"}],"benefit":"Make an additional melee attack after dropping an opponent with Cleave.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

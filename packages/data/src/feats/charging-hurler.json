@@ -1,0 +1,1 @@
+{"id":"charging-hurler","name":"Charging Hurler","type":"combat","prerequisites":[{"type":"feat","id":"point-blank-shot"}],"benefit":"Use charge rules when making a thrown-weapon attack.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

@@ -1,0 +1,1 @@
+{"id":"body-shield","name":"Body Shield","type":"combat","prerequisites":[{"type":"feat","id":"improved-grapple"},{"type":"bab","minimum":6}],"benefit":"Use a creature you are grappling as cover against attacks.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

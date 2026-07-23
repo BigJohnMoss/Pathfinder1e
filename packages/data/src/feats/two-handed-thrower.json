@@ -1,0 +1,1 @@
+{"id":"two-handed-thrower","name":"Two-Handed Thrower","type":"combat","prerequisites":[{"type":"ability","key":"strength","minimum":15}],"benefit":"Add your Strength bonus when using two hands to throw a one- or two-handed weapon.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}

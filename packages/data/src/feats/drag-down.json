@@ -1,0 +1,1 @@
+{"id":"drag-down","name":"Drag Down","type":"combat","prerequisites":[{"type":"feat","id":"improved-trip"}],"benefit":"Attempt to trip an opponent who successfully trips you.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}
