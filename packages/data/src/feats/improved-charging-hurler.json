@@ -1,0 +1,1 @@
+{"id":"improved-charging-hurler","name":"Improved Charging Hurler","type":"combat","prerequisites":[{"type":"feat","id":"charging-hurler"}],"benefit":"Use Charging Hurler against a target at any range.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}
