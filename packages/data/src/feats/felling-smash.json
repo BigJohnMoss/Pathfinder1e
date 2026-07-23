@@ -1,0 +1,1 @@
+{"id":"felling-smash","name":"Felling Smash","type":"combat","prerequisites":[{"type":"feat","id":"improved-trip"},{"type":"feat","id":"power-attack"},{"type":"bab","minimum":6}],"benefit":"Attempt to trip a foe after hitting it with a Power Attack.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}
