@@ -1,0 +1,1 @@
+{"id":"raging-brutality","name":"Raging Brutality","type":"combat","prerequisites":[{"type":"feature","id":"rage-1"},{"type":"feat","id":"power-attack"},{"type":"bab","minimum":12}],"benefit":"Add your Constitution bonus to damage rolls while raging.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}
