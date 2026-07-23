@@ -1,0 +1,1 @@
+{"id":"spell-bluff","name":"Spell Bluff","type":"general","prerequisites":[{"type":"skill","key":"Bluff","minimum":5},{"type":"skill","key":"Spellcraft","minimum":5}],"benefit":"Bluff other spellcasters, increasing the DC required to identify your spell.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

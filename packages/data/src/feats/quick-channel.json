@@ -1,0 +1,1 @@
+{"id":"quick-channel","name":"Quick Channel","type":"general","prerequisites":[{"type":"skill","key":"Knowledge (religion)","minimum":5},{"type":"feature","id":"channel-energy-1"}],"benefit":"Channel energy more quickly by expending additional uses.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

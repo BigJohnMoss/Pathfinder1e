@@ -1,0 +1,1 @@
+{"id":"deny-death","name":"Deny Death","type":"general","prerequisites":[{"type":"feature","id":"monk-ki-pool-4"},{"type":"feat","id":"endurance"}],"benefit":"Spend ki to continue acting while disabled or dying, and to delay the effects of death.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}
