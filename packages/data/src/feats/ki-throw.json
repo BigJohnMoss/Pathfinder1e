@@ -1,0 +1,1 @@
+{"id":"ki-throw","name":"Ki Throw","type":"combat","prerequisites":[{"type":"feat","id":"improved-trip"},{"type":"feat","id":"improved-unarmed-strike"}],"benefit":"Throw an opponent into an adjacent square after a successful trip.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

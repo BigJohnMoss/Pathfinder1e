@@ -1,0 +1,1 @@
+{"id":"preferred-spell","name":"Preferred Spell","type":"general","prerequisites":[{"type":"skill","key":"Spellcraft","minimum":5},{"type":"feat","id":"heighten-spell"}],"benefit":"Spontaneously cast a selected spell using a higher-level slot.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

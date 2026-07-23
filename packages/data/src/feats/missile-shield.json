@@ -1,0 +1,1 @@
+{"id":"missile-shield","name":"Missile Shield","type":"combat","prerequisites":[{"type":"ability","key":"dexterity","minimum":13},{"type":"feat","id":"shield-focus"}],"benefit":"Deflect one ranged attack each round while using a shield.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

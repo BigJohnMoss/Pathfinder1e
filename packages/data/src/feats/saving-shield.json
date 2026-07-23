@@ -1,0 +1,1 @@
+{"id":"saving-shield","name":"Saving Shield","type":"combat","prerequisites":[{"type":"feat","id":"shield-proficiency"}],"benefit":"Grant your shield bonus to an adjacent ally against one attack.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

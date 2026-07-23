@@ -1,0 +1,1 @@
+{"id":"second-chance","name":"Second Chance","type":"combat","prerequisites":[{"type":"feat","id":"combat-expertise"},{"type":"bab","minimum":6}],"benefit":"Exchange later attacks to reroll a missed first attack.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

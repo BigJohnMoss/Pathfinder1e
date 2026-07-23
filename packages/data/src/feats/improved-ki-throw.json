@@ -1,0 +1,1 @@
+{"id":"improved-ki-throw","name":"Improved Ki Throw","type":"combat","prerequisites":[{"type":"feat","id":"improved-bull-rush"},{"type":"feat","id":"ki-throw"}],"benefit":"Throw a tripped opponent into an occupied square as a bull rush.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
