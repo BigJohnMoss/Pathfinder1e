@@ -1,0 +1,1 @@
+{"id":"ki-stand","name":"Ki Stand","type":"combat","prerequisites":[{"type":"feature","id":"monk-ki-pool-4"}],"benefit":"Stand from prone as a swift action, spending ki to avoid provoking attacks of opportunity.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}
