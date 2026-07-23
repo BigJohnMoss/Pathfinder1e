@@ -1,0 +1,1 @@
+{"id":"cloud-step","name":"Cloud Step","type":"combat","prerequisites":[{"type":"feat","id":"spider-step"},{"type":"class-level","classId":"monk","minimum":12}],"benefit":"Walk through the air for part of your slow fall distance.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
