@@ -1,0 +1,1 @@
+{"id":"extra-arcane-pool","name":"Extra Arcane Pool","type":"general","prerequisites":[{"type":"feature","id":"magus-arcane-pool-1"}],"benefit":"Increase your arcane pool by 2 points.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

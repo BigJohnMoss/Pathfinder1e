@@ -1,0 +1,1 @@
+{"id":"extra-arcana","name":"Extra Arcana","type":"general","prerequisites":[{"type":"feature","id":"magus-arcana-3"}],"benefit":"Gain one additional magus arcana.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

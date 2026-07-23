@@ -1,0 +1,1 @@
+{"id":"fast-empathy","name":"Fast Empathy","type":"general","prerequisites":[{"type":"skill","key":"Handle Animal","minimum":5},{"type":"feature","id":"wild-empathy-1"}],"benefit":"Use wild empathy as a standard action.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}

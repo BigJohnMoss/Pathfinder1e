@@ -1,0 +1,1 @@
+{"id":"favored-judgment","name":"Favored Judgment","type":"general","prerequisites":[{"type":"ability","key":"wisdom","minimum":13},{"type":"feature","id":"inquisitor-judgment-1"}],"benefit":"Make your judgments more effective against a selected creature type.","source":{"title":"Ultimate Magic","page":null,"url":"https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"}}
