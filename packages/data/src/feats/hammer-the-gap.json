@@ -1,0 +1,1 @@
+{"id":"hammer-the-gap","name":"Hammer the Gap","type":"combat","prerequisites":[{"type":"bab","minimum":6}],"benefit":"Each consecutive hit against the same opponent during a full attack deals additional damage.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}
