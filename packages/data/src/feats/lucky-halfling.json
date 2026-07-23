@@ -1,0 +1,1 @@
+{"id":"lucky-halfling","name":"Lucky Halfling","type":"general","prerequisites":[{"type":"ancestry","id":"halfling"}],"benefit":"Once per day, roll a saving throw for an adjacent ally.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

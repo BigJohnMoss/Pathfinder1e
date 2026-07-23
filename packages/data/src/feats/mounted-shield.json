@@ -1,0 +1,1 @@
+{"id":"mounted-shield","name":"Mounted Shield","type":"combat","prerequisites":[{"type":"feat","id":"mounted-combat"},{"type":"feat","id":"shield-focus"}],"benefit":"Apply your shield bonus to your mount's AC.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

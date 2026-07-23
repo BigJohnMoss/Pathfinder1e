@@ -1,0 +1,1 @@
+{"id":"improved-second-chance","name":"Improved Second Chance","type":"combat","prerequisites":[{"type":"feat","id":"second-chance"},{"type":"bab","minimum":11}],"benefit":"Spend later attacks to reroll a missed attack at a penalty.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

@@ -1,0 +1,1 @@
+{"id":"parry-spell","name":"Parry Spell","type":"general","prerequisites":[{"type":"skill","key":"Spellcraft","minimum":15},{"type":"feat","id":"improved-counterspell"}],"benefit":"Reflect a successfully counterspelled spell back at its caster.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
