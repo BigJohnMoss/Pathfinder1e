@@ -1,0 +1,1 @@
+{"id":"sociable","name":"Sociable","type":"general","prerequisites":[{"type":"ability","key":"charisma","minimum":13},{"type":"ancestry","id":"half-elf"}],"benefit":"Grant friendly creatures a bonus on Diplomacy checks.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
