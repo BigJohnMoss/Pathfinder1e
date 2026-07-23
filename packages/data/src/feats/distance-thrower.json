@@ -1,0 +1,1 @@
+{"id":"distance-thrower","name":"Distance Thrower","type":"combat","prerequisites":[{"type":"ability","key":"strength","minimum":13}],"benefit":"Reduce range penalties for thrown weapons by 2.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}
