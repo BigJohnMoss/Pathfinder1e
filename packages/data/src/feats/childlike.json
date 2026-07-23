@@ -1,0 +1,1 @@
+{"id":"childlike","name":"Childlike","type":"general","prerequisites":[{"type":"ability","key":"charisma","minimum":13},{"type":"ancestry","id":"halfling"}],"benefit":"Gain benefits when disguising yourself as a human child.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

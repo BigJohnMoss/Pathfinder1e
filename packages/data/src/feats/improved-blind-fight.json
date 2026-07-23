@@ -1,0 +1,1 @@
+{"id":"improved-blind-fight","name":"Improved Blind-Fight","type":"combat","prerequisites":[{"type":"skill","key":"Perception","minimum":10},{"type":"feat","id":"blind-fight"}],"benefit":"Ignore miss chance from less than total concealment.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}

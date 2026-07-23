@@ -1,0 +1,1 @@
+{"id":"elven-accuracy","name":"Elven Accuracy","type":"combat","prerequisites":[{"type":"ancestry","id":"elf"}],"benefit":"Reroll a concealment miss chance when using a bow.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedplayersguide/advancedFeats.html"}}
