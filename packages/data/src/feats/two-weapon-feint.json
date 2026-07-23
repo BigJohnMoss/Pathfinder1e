@@ -1,0 +1,1 @@
+{"id":"two-weapon-feint","name":"Two-Weapon Feint","type":"combat","prerequisites":[{"type":"feat","id":"combat-expertise"},{"type":"feat","id":"two-weapon-fighting"}],"benefit":"Forgo your first melee attack in a full attack to feint an opponent.","source":{"title":"Ultimate Combat","page":null,"url":"https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"}}
