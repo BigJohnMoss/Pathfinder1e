@@ -12,7 +12,7 @@ The project is working toward the **Core Character Builder** milestone. The curr
 - 1,891 spells
 - structured prerequisite checks, class progression, spell preparation, skills, basic combat statistics, and local character persistence
 
-Cleric is a complete playable Core class through level 20. Wizard has its full level 1–20 chassis, complete prepared arcane spell list, all nine Core arcane schools with powers, specialist opposition-school choices, complete Familiar or Bonded Object Arcane Bond paths, and one tracked specialist-school slot at each available spell level. Opposition-school spells still need their two-slot preparation cost enforced.
+Cleric and Wizard are complete playable Core classes through level 20. Wizard includes its complete prepared arcane spell list, all nine Core arcane schools and powers, two opposition-school choices with enforced two-slot preparation costs, Familiar and Bonded Object Arcane Bond paths, and one tracked specialist-school slot at each available spell level.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
