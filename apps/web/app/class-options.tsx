@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { alignmentsWithinOneStep, channelEnergyChoices } from "../../../packages/engine/src/cleric-alignment.js";
+import { channelEnergyProgression } from "../../../packages/engine/src/channel-energy.js";
 import { optionsGrantedBySelection } from "../../../packages/engine/src/dependent-options.js";
 
 type Option = {
@@ -34,12 +35,26 @@ function OptionDetails({ option }: { option: Option }) {
   </div>;
 }
 
-export function ClassOptions({ choices, selectedOptions, onOptionChange }: { choices: Choice[]; selectedOptions: Record<string, string>; onOptionChange: (featureId: string, optionId: string) => void }) {
+function ChannelEnergyTracker({ level, charismaModifier, used, onUsedChange }: { level: number; charismaModifier: number; used: number; onUsedChange: (used: number) => void }) {
+  const progression = channelEnergyProgression(level, charismaModifier);
+  const normalizedUsed = Math.min(used, progression.usesPerDay);
+  const remaining = progression.usesPerDay - normalizedUsed;
+  return <div className="channel-tracker">
+    <div><strong>{progression.dice}d6</strong><span>Will DC {progression.saveDC}</span></div>
+    <output aria-label="Channel energy uses">{remaining}/{progression.usesPerDay} uses remaining</output>
+    <div><button type="button" onClick={() => onUsedChange(normalizedUsed + 1)} disabled={remaining <= 0}>Use channel energy</button><button type="button" onClick={() => onUsedChange(0)} disabled={normalizedUsed === 0}>Refresh channels</button></div>
+  </div>;
+}
+
+export function ClassOptions({ choices, selectedOptions, classLevel, charismaModifier, onOptionChange }: { choices: Choice[]; selectedOptions: Record<string, string>; classLevel: number; charismaModifier: number; onOptionChange: (featureId: string, optionId: string) => void }) {
   const orderedChoices = [...choices].sort((left, right) => choiceOrder(left) - choiceOrder(right));
   const selectedDeity = orderedChoices.find((choice) => choice.id === "cleric-deity-1")?.selected;
   const selectedAlignment = orderedChoices.find((choice) => choice.id === "cleric-alignment-1")?.selected;
   const selectedDomains = orderedChoices.filter((choice) => choice.id === "cleric-domain-1-first" || choice.id === "cleric-domain-1-second").flatMap((choice) => choice.selected ? [choice.selected] : []);
   const domainSlotChoices = orderedChoices.filter((choice) => domainSpellLevel(choice) > 0);
+  const channelUsedKey = "cleric-channel-energy-used";
+  const channelProgression = channelEnergyProgression(classLevel, charismaModifier);
+  const channelUsed = Math.max(0, Number.parseInt(selectedOptions[channelUsedKey] ?? "0", 10) || 0);
   const domainSpellOptions = (level: number) => {
     const byId = new Map<string, Option>();
     for (const domain of selectedDomains) {
@@ -67,7 +82,8 @@ export function ClassOptions({ choices, selectedOptions, onOptionChange }: { cho
       if (choice.id === "cleric-channel-energy-type-1" && options.length === 1 && selectedId !== options[0].id) onOptionChange(choice.id, options[0].id);
       if (!selectedId && domainSpellLevel(choice) && selectedOptions[`${choice.id}-used`]) onOptionChange(`${choice.id}-used`, "");
     }
-  }, [choices, selectedDeity?.id, selectedAlignment?.id, selectedOptions, onOptionChange]);
+    if (channelUsed > channelProgression.usesPerDay) onOptionChange(channelUsedKey, String(channelProgression.usesPerDay));
+  }, [choices, selectedDeity?.id, selectedAlignment?.id, selectedOptions, classLevel, charismaModifier, onOptionChange]);
 
   const refreshDomainSlots = () => domainSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
 
@@ -82,6 +98,6 @@ export function ClassOptions({ choices, selectedOptions, onOptionChange }: { cho
     const usedKey = `${choice.id}-used`;
     const used = selectedOptions[usedKey] === "used";
     const placeholder = needsDeity ? "Choose a deity first" : needsAlignment ? "Choose alignment first" : needsDomains ? "Choose domains first" : unavailableDetails ? "Domain spell details unavailable" : options.length === 1 && choice.id === "cleric-channel-energy-type-1" ? "Determined by alignment" : "Choose an option";
-    return <article className="choice-card" key={choice.id}><label>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => { onOptionChange(choice.id, event.target.value); if (spellLevel) onOptionChange(usedKey, ""); }} disabled={needsDeity || needsAlignment || needsDomains || unavailableDetails || (choice.id === "cleric-channel-energy-type-1" && options.length === 1)}><option value="">{placeholder}</option>{options.map((option) => <option key={option.id} value={option.id} disabled={!spellLevel && Object.entries(selectedOptions).some(([id, value]) => id !== choice.id && value === option.id)}>{option.name}</option>)}</select></label>{selected && <OptionDetails option={selected} />}{Boolean(spellLevel) && selected && <div className="domain-slot-use"><output aria-label={`${choice.name} status`}>{used ? "Used" : "Available"}</output><button type="button" aria-label={`Cast ${selected.name} from ${choice.name}`} disabled={used} onClick={() => onOptionChange(usedKey, "used")}>{used ? "Used" : "Cast domain spell"}</button></div>}</article>;
+    return <article className="choice-card" key={choice.id}><label>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => { onOptionChange(choice.id, event.target.value); if (spellLevel) onOptionChange(usedKey, ""); }} disabled={needsDeity || needsAlignment || needsDomains || unavailableDetails || (choice.id === "cleric-channel-energy-type-1" && options.length === 1)}><option value="">{placeholder}</option>{options.map((option) => <option key={option.id} value={option.id} disabled={!spellLevel && Object.entries(selectedOptions).some(([id, value]) => id !== choice.id && value === option.id)}>{option.name}</option>)}</select></label>{selected && <OptionDetails option={selected} />}{choice.id === "cleric-channel-energy-type-1" && selected && <ChannelEnergyTracker level={classLevel} charismaModifier={charismaModifier} used={channelUsed} onUsedChange={(next) => onOptionChange(channelUsedKey, String(next))} />}{Boolean(spellLevel) && selected && <div className="domain-slot-use"><output aria-label={`${choice.name} status`}>{used ? "Used" : "Available"}</output><button type="button" aria-label={`Cast ${selected.name} from ${choice.name}`} disabled={used} onClick={() => onOptionChange(usedKey, "used")}>{used ? "Used" : "Cast domain spell"}</button></div>}</article>;
   })}</section>;
 }

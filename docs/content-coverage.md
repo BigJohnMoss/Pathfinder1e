@@ -15,7 +15,7 @@ This document distinguishes records present in the data bundle from systems that
 |---|---|---|
 | Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
 | Barbarian | Playable | Core progression and rage powers are integrated. |
-| Cleric | Playable chassis | Level 1–20 progression, divine prepared casting, orisons, spontaneous conversion, channel energy, deity-compatible alignment, positive or negative channel polarity, Core deity selection, deity-restricted domains, 22 Core domain power and spell lists, and dedicated domain spell preparation and usage are integrated. APG domain details and a dedicated channel-use tracker remain. |
+| Cleric | Playable Core chassis | Level 1–20 progression, divine prepared casting, orisons, spontaneous conversion, channel energy with daily tracking, deity-compatible alignment, positive or negative channel polarity, Core deity selection, deity-restricted domains, 22 Core domain power and spell lists, and dedicated domain spell preparation and usage are integrated. APG domain details remain. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
@@ -24,7 +24,7 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Cleric completion | 1 | channel-use tracker and remaining APG domain details |
+| Cleric expansion | 1 | remaining APG domain details |
 | Wizard | 2 | spellbook, arcane schools, bonded object or familiar |
 | Sorcerer | 3 | spontaneous casting, bloodlines and bloodline powers |
 | Paladin | 4 | smite evil, lay on hands, mercies and divine bond |
@@ -72,7 +72,7 @@ Feat records may reference class features belonging to classes that are not yet 
 | Traits | Not playable |
 | Domains | Two deity-restricted Cleric domains selectable; 22 Core powers and spell lists displayed; dedicated domain slots prepared and tracked; APG details remain |
 | Alignment | Cleric alignment is restricted to one step from the selected deity |
-| Channel energy | Positive or negative polarity follows Cleric and deity alignment; daily-use tracker remains |
+| Channel energy | Polarity, dice, save DC, daily uses, spending, refresh and persistence are integrated |
 | Bloodlines | Not playable |
 | Mysteries | Not playable |
 | Browser end-to-end tests | Not implemented |
