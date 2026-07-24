@@ -2,14 +2,27 @@
 
 A from-scratch, data-first Pathfinder First Edition character-builder project.
 
+## Current status
+
+The project is working toward the **Core Character Builder** milestone. The current generated catalogue includes:
+
+- 5 playable classes: Arcanist, Barbarian, Fighter, Monk, and Rogue
+- 7 selectable core ancestries
+- 424 selectable feats
+- 1,891 spells
+- structured prerequisite checks, class progression, spell preparation, skills, basic combat statistics, and local character persistence
+
+See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
+
 ## What is included
 
 - Validated JSON data with permanent IDs
-- Class progression for Arcanist, Barbarian, Fighter, and Rogue
+- Class progression for the currently supported classes
 - Separate selectable option groups
-- Human ancestry, starter feats, and starter spells
-- A dependency-free rules engine for class progression and prerequisite checks
-- Automated data validation and tests
+- Seven core ancestries
+- A substantial sourced feat and spell catalogue
+- A dependency-free rules engine for progression and prerequisite checks
+- Automated data validation, engine tests, UI tests, and production builds
 - A minimal Next.js web application
 - GitHub Actions checks for every push and pull request
 
@@ -32,7 +45,7 @@ packages/engine/          Character and rules calculations
 packages/types/           Shared TypeScript types
 schemas/                   JSON Schemas and data contracts
 tools/scripts/             Validation and generated-data scripts
-tests/                     Node test suite
+tests/                     Node and UI test suites
 generated/                 Build outputs
 ```
 
@@ -43,6 +56,7 @@ generated/                 Build outputs
 3. Selectable options are stored separately from the class feature granting the choice.
 4. Archetypes use structured remove/modify/add operations.
 5. Source title and URL are retained on every rules record.
-6. Full copied rules text should only be added when licensing permits it. The starter data uses concise summaries and structured mechanics.
+6. Full copied rules text should only be added when licensing permits it. The project uses concise summaries and structured mechanics.
+7. A record existing in data does not automatically mean the corresponding class or system is playable; supported content is tracked separately.
 
-See [docs/data-model.md](docs/data-model.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
+See [docs/data-model.md](docs/data-model.md), [docs/roadmap.md](docs/roadmap.md), [docs/content-coverage.md](docs/content-coverage.md), and [CONTRIBUTING.md](CONTRIBUTING.md).
