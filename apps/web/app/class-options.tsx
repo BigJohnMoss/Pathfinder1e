@@ -14,6 +14,10 @@ type Option = {
   alignment?: string;
   polarity?: string;
   domains?: string[];
+  classSkill?: string;
+  arcana?: string;
+  bonusSpells?: Array<{ sorcererLevel: number; spellLevel: number; name: string }>;
+  bonusFeats?: string[];
   powers?: Array<{ name: string; level: number; summary: string }>;
   domainSpells?: Array<{ level: number; name: string }>;
 };
@@ -26,7 +30,7 @@ const isWizardOpposition = (choice: Choice) => choice.id.startsWith("wizard-oppo
 const choiceOrder = (choice: Choice) => {
   if (choice.id === "wizard-arcane-bond-1") return 5;
   if (choice.id === "wizard-familiar-1" || choice.id === "wizard-bonded-object-1") return 6;
-  if (choice.id === "cleric-deity-1" || choice.id === "wizard-arcane-school-1") return 10;
+  if (choice.id === "cleric-deity-1" || choice.id === "wizard-arcane-school-1" || choice.id === "sorcerer-bloodline-1") return 10;
   if (choice.id === "cleric-alignment-1" || choice.id === "wizard-opposition-school-1-first") return 20;
   if (choice.id === "wizard-opposition-school-1-second") return 21;
   const specialistLevel = specialistSpellLevel(choice);
@@ -39,9 +43,14 @@ const choiceOrder = (choice: Choice) => {
 };
 
 function OptionDetails({ option }: { option: Option }) {
+  const bloodline = Boolean(option.arcana || option.bonusSpells || option.bonusFeats || option.classSkill);
   return <div className="option-details">
     <p>{option.benefit}</p>
-    {option.powers && <div className="domain-powers"><strong>Granted powers</strong><ul>{option.powers.map((power) => <li key={`${power.level}-${power.name}`}><b>{power.name}</b> <small>level {power.level}</small><span>{power.summary}</span></li>)}</ul></div>}
+    {option.classSkill && <p><strong>Bloodline class skill:</strong> {option.classSkill}</p>}
+    {option.arcana && <p><strong>Bloodline arcana:</strong> {option.arcana}</p>}
+    {option.powers && <div className="domain-powers"><strong>{bloodline ? "Bloodline powers" : "Granted powers"}</strong><ul>{option.powers.map((power) => <li key={`${power.level}-${power.name}`}><b>{power.name}</b> <small>level {power.level}</small><span>{power.summary}</span></li>)}</ul></div>}
+    {option.bonusSpells && <div className="domain-spells"><strong>Bloodline bonus spells</strong><ol>{option.bonusSpells.map((spell) => <li key={spell.sorcererLevel}><b>{spell.sorcererLevel}</b><span>{spell.name} <small>spell level {spell.spellLevel}</small></span></li>)}</ol></div>}
+    {option.bonusFeats && <div className="domain-powers"><strong>Bloodline bonus feats</strong><ul>{option.bonusFeats.map((feat) => <li key={feat}><span>{feat}</span></li>)}</ul></div>}
     {option.domainSpells && <div className="domain-spells"><strong>Domain spells</strong><ol>{option.domainSpells.map((spell) => <li key={spell.level}><b>{spell.level}</b><span>{spell.name}</span></li>)}</ol></div>}
   </div>;
 }
