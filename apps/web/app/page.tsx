@@ -93,7 +93,7 @@ export default function Home() {
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}
       {activeTab === "features" && <ClassFeatures level={level} className={characterClass.name} features={progression.features} />}
-      {activeTab === "options" && (classOptionChoices.length > 0 ? <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} onOptionChange={updateClassOption} /> : <p className="empty-tab">No selectable class options have been earned yet.</p>)}
+      {activeTab === "options" && (classOptionChoices.length > 0 ? <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={level} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} /> : <p className="empty-tab">No selectable class options have been earned yet.</p>)}
     </section>
   </main>;
 }
