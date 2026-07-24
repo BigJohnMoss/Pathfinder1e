@@ -19,15 +19,14 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 
 ### 1. Core classes
 
-Implement the remaining Core Rulebook classes in this order:
+Cleric is complete. Implement the remaining Core Rulebook classes in this order:
 
-1. Cleric
-2. Wizard
-3. Sorcerer
-4. Paladin
-5. Ranger
-6. Bard
-7. Druid
+1. Wizard
+2. Sorcerer
+3. Paladin
+4. Ranger
+5. Bard
+6. Druid
 
 Each class is considered playable when its level progression, class features, class skills, spellcasting or combat progression, selectable options and relevant prerequisite feature IDs are integrated and tested.
 
@@ -53,7 +52,7 @@ Add browser-level tests for representative martial, prepared-caster and spontane
 
 - traits
 - archetypes
-- domains and subdomains
+- subdomains
 - bloodlines
 - mysteries and revelations
 - discoveries, talents and similar class option systems
