@@ -37,8 +37,8 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   await user.click(screen.getByRole("button", { name: "Options" }));
 
   await user.selectOptions(optionSelect("Arcane School"), "wizard-school-evocation");
-  await user.selectOptions(optionSelect("First Opposition School"), "wizard-school-conjuration");
-  await user.selectOptions(optionSelect("Second Opposition School"), "wizard-school-abjuration");
+  await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-conjuration");
+  await user.selectOptions(optionSelect("Second Opposition School"), "wizard-opposition-abjuration");
 
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
@@ -54,7 +54,7 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   assert.equal((screen.getByRole("button", { name: "Add Magic Missile" }) as HTMLButtonElement).disabled, true);
 
   await user.click(screen.getByRole("button", { name: "Options" }));
-  await user.selectOptions(optionSelect("First Opposition School"), "wizard-school-necromancy");
+  await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-necromancy");
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.match(screen.getByText(/prepared 1st-level/).textContent ?? "", /1\/2 prepared 1st-level/);
@@ -63,7 +63,7 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   assert.match(screen.getByText(/prepared 1st-level/).textContent ?? "", /2\/2 prepared 1st-level/);
 
   await user.click(screen.getByRole("button", { name: "Options" }));
-  await user.selectOptions(optionSelect("First Opposition School"), "wizard-school-conjuration");
+  await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-conjuration");
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   await waitFor(() => assert.equal(screen.getByLabelText("Magic Missile prepared").textContent, "0"));
