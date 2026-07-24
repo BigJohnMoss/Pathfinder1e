@@ -29,6 +29,11 @@ export type CharacterOptionGroup = {
   options: CharacterOption[];
 };
 
+type GeneratedCatalogueRecord = {
+  id: string;
+  [key: string]: any;
+};
+
 function orderedById<T extends { id: string }>(items: readonly T[], ids: readonly string[]) {
   const byId = new Map(items.map(item => [item.id, item]));
   return ids.flatMap(id => {
@@ -37,8 +42,8 @@ function orderedById<T extends { id: string }>(items: readonly T[], ids: readonl
   });
 }
 
-export const classes = orderedById(generatedData.classes, ["arcanist", "barbarian", "fighter", "monk", "rogue"]);
-export const ancestries = orderedById(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
+export const classes = orderedById<GeneratedCatalogueRecord>(generatedData.classes, ["arcanist", "barbarian", "fighter", "monk", "rogue"]);
+export const ancestries = orderedById<GeneratedCatalogueRecord>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
 export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name)) as unknown as CharacterFeat[];
 export const optionGroups = orderedById(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "rogue-talents", "combat-feats", "fighter-weapon-groups"]) as unknown as CharacterOptionGroup[];
 export const spells = generatedData.spells;
