@@ -46,7 +46,7 @@ test("Sorcerer learns fixed spells, casts spontaneously, selects a bloodline, an
 
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "0");
   for (let index = 0; index < 4; index += 1) await user.click(firstEnabledButton(/^Learn /));
-  assert.ok(screen.getByText("4/4 known Cantrips"));
+  assert.ok(screen.getByText(/4\/4 known Cantrips/));
   assert.equal(screen.getAllByRole("button", { name: /^Learn / }).some((button) => !(button as HTMLButtonElement).disabled), false);
   const cantripCast = firstEnabledButton(/^Cast /);
   await user.click(cantripCast);
@@ -55,7 +55,7 @@ test("Sorcerer learns fixed spells, casts spontaneously, selects a bloodline, an
 
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   for (let index = 0; index < 2; index += 1) await user.click(firstEnabledButton(/^Learn /));
-  assert.ok(screen.getByText("2/2 known 1st-level"));
+  assert.ok(screen.getByText(/2\/2 known 1st-level/));
   assert.equal(screen.getAllByRole("button", { name: /^Learn / }).some((button) => !(button as HTMLButtonElement).disabled), false);
 
   for (let index = 0; index < 4; index += 1) await user.click(firstEnabledButton(/^Cast /));
@@ -69,7 +69,7 @@ test("Sorcerer learns fixed spells, casts spontaneously, selects a bloodline, an
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "sorcerer"));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   await waitFor(() => assert.ok(screen.getAllByText("Known").length >= 2));
-  assert.deepEqual(screen.getAllByText("Known").map((output) => output.getAttribute("aria-label")), knownNames.filter((name) => name && !name.includes("level 0")));
+  assert.deepEqual(screen.getAllByText("Known").map((output) => output.getAttribute("aria-label")), knownNames);
 
   await user.click(screen.getByRole("button", { name: "Options" }));
   const loadedBloodline = screen.getByText("Bloodline").closest("label")?.querySelector("select");
