@@ -71,7 +71,8 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   assert.match(screen.getByText(/prepared 1st-level/).textContent ?? "", /2\/2 prepared 1st-level/);
 
   await user.click(screen.getByRole("button", { name: "Save" }));
-  await user.click(screen.getByRole("button", { name: "Reset" }));
+  await user.selectOptions(screen.getByLabelText("Class"), "arcanist");
+  assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "arcanist");
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "wizard"));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
