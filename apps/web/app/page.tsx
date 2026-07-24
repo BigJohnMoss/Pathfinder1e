@@ -71,7 +71,7 @@ export default function Home() {
   const isSpontaneous = characterClass.spellcasting?.castingType === "spontaneous";
   const preparedCasting = useMemo(() => characterClass.spellcasting && !isSpontaneous ? spellcastingProgression(characterClass, level, { abilityScore: castingAbilityScore }) : null, [castingAbilityScore, characterClass, isSpontaneous, level]);
   const spontaneousCasting = useMemo(() => isSpontaneous ? spontaneousSpellcastingProgression(characterClass, level, { abilityScore: castingAbilityScore }) : null, [castingAbilityScore, characterClass, isSpontaneous, level]);
-  const spellSlots = spontaneousCasting?.slots ?? preparedCasting?.slots ?? [];
+  const spellSlots = useMemo(() => spontaneousCasting?.slots ?? preparedCasting?.slots ?? [], [preparedCasting, spontaneousCasting]);
   const maximumSpellLevel = spontaneousCasting?.maximumSpellLevel ?? preparedCasting?.maximumSpellLevel ?? 0;
   const hasSpellcasting = Boolean(preparedCasting || spontaneousCasting);
   const availableSpells = useMemo(() => hasSpellcasting ? spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel) : [], [characterClass.id, hasSpellcasting, maximumSpellLevel]);
