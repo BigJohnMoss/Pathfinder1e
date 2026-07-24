@@ -15,7 +15,7 @@ This document distinguishes records present in the data bundle from systems that
 |---|---|---|
 | Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
 | Barbarian | Playable | Core progression and rage powers are integrated. |
-| Cleric | Playable chassis | Level 1–20 progression, divine prepared casting, orisons, spontaneous conversion, channel energy and two domain choices are integrated. Deity restrictions, domain powers and domain spell slots remain. |
+| Cleric | Playable chassis | Level 1–20 progression, divine prepared casting, orisons, spontaneous conversion, channel energy, Core deity selection and deity-restricted domain choices are integrated. Domain powers and domain spell slots remain. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
@@ -24,7 +24,7 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Cleric completion | 1 | deity selection, deity domain restrictions, domain powers and domain spell slots |
+| Cleric completion | 1 | domain powers and domain spell slots |
 | Wizard | 2 | spellbook, arcane schools, bonded object or familiar |
 | Sorcerer | 3 | spontaneous casting, bloodlines and bloodline powers |
 | Paladin | 4 | smite evil, lay on hands, mercies and divine bond |
@@ -70,7 +70,7 @@ Feat records may reference class features belonging to classes that are not yet 
 | Multiclassing | Not implemented |
 | Archetypes | Data model planned; not playable |
 | Traits | Not playable |
-| Domains | Two Cleric domains selectable; powers, spell slots and deity restrictions remain |
+| Domains | Two deity-restricted Cleric domains selectable; powers and domain spell slots remain |
 | Bloodlines | Not playable |
 | Mysteries | Not playable |
 | Browser end-to-end tests | Not implemented |
