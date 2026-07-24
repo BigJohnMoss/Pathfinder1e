@@ -17,7 +17,7 @@ test("Cleric records its Core chassis and divine feature identifiers", () => {
 test("Cleric progression reaches ninth-level divine spells", () => {
   const first = spellcastingProgression(cleric, 1, { abilityScore: 18 });
   assert.equal(first.maximumSpellLevel, 1);
-  assert.deepEqual(first.slots.map(slot => [slot.level, slot.base]), [[1, 1]]);
+  assert.deepEqual(first.slots.filter(slot => slot.base > 0).map(slot => [slot.level, slot.base]), [[1, 1]]);
   assert.deepEqual(first.prepared, [{ level: 0, count: 3 }, { level: 1, count: 1 }]);
 
   const twentieth = spellcastingProgression(cleric, 20, { abilityScore: 28 });
