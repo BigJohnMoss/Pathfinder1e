@@ -15,7 +15,7 @@ This document distinguishes records present in the data bundle from systems that
 |---|---|---|
 | Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
 | Barbarian | Playable | Core progression and rage powers are integrated. |
-| Cleric | Playable chassis | Level 1–20 progression, divine prepared casting, orisons, spontaneous conversion, channel energy, Core deity selection, deity-restricted domains, and the 22 Core domain power and spell lists are integrated. Domain-only preparation slots and Advanced Player's Guide domain details remain. |
+| Cleric | Playable chassis | Level 1–20 progression, divine prepared casting, orisons, spontaneous conversion, channel energy, Core deity selection, deity-restricted domains, 22 Core domain power and spell lists, and dedicated domain spell preparation and usage are integrated. Alignment rules, channel-energy polarity, and APG domain details remain. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
@@ -24,7 +24,7 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Cleric completion | 1 | domain-only spell preparation slots and remaining APG domain details |
+| Cleric completion | 1 | alignment and channel-energy choices plus remaining APG domain details |
 | Wizard | 2 | spellbook, arcane schools, bonded object or familiar |
 | Sorcerer | 3 | spontaneous casting, bloodlines and bloodline powers |
 | Paladin | 4 | smite evil, lay on hands, mercies and divine bond |
@@ -70,7 +70,7 @@ Feat records may reference class features belonging to classes that are not yet 
 | Multiclassing | Not implemented |
 | Archetypes | Data model planned; not playable |
 | Traits | Not playable |
-| Domains | Two deity-restricted Cleric domains selectable; 22 Core domain powers and spell lists displayed; domain-only slots and APG details remain |
+| Domains | Two deity-restricted Cleric domains selectable; 22 Core powers and spell lists displayed; dedicated domain slots prepared and tracked; APG details remain |
 | Bloodlines | Not playable |
 | Mysteries | Not playable |
 | Browser end-to-end tests | Not implemented |
