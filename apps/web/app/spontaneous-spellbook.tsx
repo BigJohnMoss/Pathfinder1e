@@ -6,7 +6,7 @@ type KnownLimit = { level: number; count: number };
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function SpontaneousSpellbook({ spells, classId, className, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
+export function SpontaneousSpellbook({ spells, classId, className, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
   spells: Spell[];
   classId: string;
   className: string;
@@ -16,6 +16,7 @@ export function SpontaneousSpellbook({ spells, classId, className, castingAbilit
   spellDcs: Record<number, number>;
   maximumSpellLevel: number;
   knownSpellIds: string[];
+  grantedSpellIds?: string[];
   onKnownSpellIdsChange: (spellIds: string[]) => void;
   slotUses: Record<number, number>;
   onSlotUsesChange: (uses: Record<number, number>) => void;
@@ -25,7 +26,9 @@ export function SpontaneousSpellbook({ spells, classId, className, castingAbilit
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
 
+  const granted = useMemo(() => new Set(grantedSpellIds), [grantedSpellIds]);
   const knownCount = (level: number) => knownSpellIds.filter((id) => spells.find((spell) => spell.id === id)?.levelByClass[classId] === level).length;
+  const grantedCount = (level: number) => grantedSpellIds.filter((id) => spells.find((spell) => spell.id === id)?.levelByClass[classId] === level).length;
   const limitFor = (level: number) => knownLimits.find((entry) => entry.level === level)?.count ?? 0;
   const remainingSlots = (level: number) => { const slot = slots.find((entry) => entry.level === level); return slot ? slot.count - (slotUses[level] ?? 0) : Infinity; };
   const filteredSpells = useMemo(() => spells.filter((spell) => {
@@ -43,7 +46,7 @@ export function SpontaneousSpellbook({ spells, classId, className, castingAbilit
     <p className="eyebrow">SPELLS KNOWN</p>
     <h2>Spontaneous spells</h2>
     <p>{className} slots: {slots.length > 0 ? slots.map((slot) => `${remainingSlots(slot.level)}/${slot.count} ${levelLabel(slot.level)}${slot.bonus ? ` (${slot.base} base + ${slot.bonus} ${castingAbilityName})` : ""}`).join(", ") : "no leveled spell slots available"}.</p>
-    <p>{knownLimits.map((limit) => `${knownCount(limit.level)}/${limit.count} known ${levelLabel(limit.level)}`).join(" · ")}</p>
+    <p>{knownLimits.map((limit) => `${knownCount(limit.level)}/${limit.count} known ${levelLabel(limit.level)}${grantedCount(limit.level) ? ` + ${grantedCount(limit.level)} bloodline` : ""}`).join(" · ")}</p>
     <div className="spell-count"><button type="button" onClick={onRefreshDay}>Refresh day</button></div>
     {maximumSpellLevel === 0 && <p className="hint">Increase {castingAbilityName} to 11 or higher to cast 1st-level spells.</p>}
     <div className="spell-controls">
@@ -55,12 +58,14 @@ export function SpontaneousSpellbook({ spells, classId, className, castingAbilit
       return <section className="spell-level" key={level}>
         <h3>{levelLabel(level)} <small>{spellsAtLevel.length} spells</small></h3>
         <div className="spell-list">{spellsAtLevel.map((spell) => {
-          const known = knownSpellIds.includes(spell.id);
+          const learned = knownSpellIds.includes(spell.id);
+          const bloodlineGranted = granted.has(spell.id);
+          const known = learned || bloodlineGranted;
           const full = knownCount(level) >= limitFor(level);
           const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
             <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}</small></div>
-            <div className="spell-count"><button type="button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><button type="button" aria-label={`Forget ${spell.name}`} disabled={!known} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{known ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div>
+            <div className="spell-count"><button type="button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><button type="button" aria-label={`Forget ${spell.name}`} disabled={!learned || bloodlineGranted} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{bloodlineGranted ? "Bloodline" : learned ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div>
           </article>;
         })}</div>
       </section>;
