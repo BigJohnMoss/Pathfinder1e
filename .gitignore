@@ -6,6 +6,8 @@ coverage/
 .env.local
 .DS_Store
 generated/*.json
+generated/*.mjs
+generated/*.d.mts
 !generated/.gitkeep
 
 # Visual Studio
