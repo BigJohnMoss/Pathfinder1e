@@ -1,4 +1,4 @@
-import generatedData from "../../../generated/pf1e-data.json";
+import generatedData from "../../../generated/pf1e-data.mjs";
 import type { Prerequisite } from "../../../packages/engine/src/index.js";
 
 export type CharacterFeat = {
