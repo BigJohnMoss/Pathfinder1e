@@ -1,0 +1,24 @@
+{
+  "source": {
+    "title": "Verified PF1 spell school corrections",
+    "notes": "Explicit corrections for regional variants, standalone records absent from the pinned catalogue, and the multi-school Lissalan Snake Sigil."
+  },
+  "schoolsByName": {
+    "ablative sphere garundi": "abjuration",
+    "baphomet s blessing": "transmutation",
+    "burning arc keleshite": "evocation",
+    "fleshwarping swarm drow": "transmutation",
+    "hasten judgment": "necromancy",
+    "lissalan snake sigil": [
+      "abjuration",
+      "conjuration",
+      "enchantment",
+      "evocation",
+      "illusion",
+      "necromancy",
+      "transmutation"
+    ],
+    "snow shape ulfen": "transmutation",
+    "summon totem creature shoanti": "conjuration"
+  }
+}
