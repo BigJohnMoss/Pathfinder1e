@@ -12,8 +12,10 @@ const optionGroups=(await loadDir('options')).map(group=>({...group,options:grou
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
 const spells=sourceSpells.map(spell=>{
   const levelByClass=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
-  const school=spell.school??schoolsByName[normalizeName(spell.name)];
-  return {...spell,...(school?{school}:{}),levelByClass};
+  const mappedSchools=schoolsByName[normalizeName(spell.name)];
+  const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
+  const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);
+  return {...spell,...(school?{school}:{}),...(schools?{schools}:{}),levelByClass};
 });
 const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),races:await loadDir('races'),optionGroups,feats:await loadDir('feats'),spells};
 const serialized=JSON.stringify(bundle);
