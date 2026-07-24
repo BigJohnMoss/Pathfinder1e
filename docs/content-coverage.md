@@ -4,7 +4,7 @@ This document distinguishes records present in the data bundle from systems that
 
 ## Current generated catalogue
 
-- 6 selectable classes
+- 7 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
 - 1,891 spells
@@ -19,12 +19,13 @@ This document distinguishes records present in the data bundle from systems that
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
+| Wizard | Playable chassis | Level 1–20 d6 chassis, prepared Intelligence casting, cantrips, spellbook progression, Scribe Scroll, and bonus-feat levels are integrated. Arcane schools, opposition schools, and arcane bond choices remain. |
 
 ## Core classes still required
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Wizard | 1 | spellbook, arcane schools, bonded object or familiar |
+| Wizard completion | 1 | arcane schools, opposition schools, bonded object or familiar, specialist school slots |
 | Sorcerer | 2 | spontaneous casting, bloodlines and bloodline powers |
 | Paladin | 3 | smite evil, lay on hands, mercies and divine bond |
 | Ranger | 4 | favored enemy, combat styles, favored terrain and limited casting |
@@ -72,6 +73,8 @@ Feat records may reference class features belonging to classes that are not yet 
 | Domains | All 33 Core Cleric domains are deity-restricted, display granted powers and complete spell lists, and support dedicated domain spell preparation and usage |
 | Alignment | Cleric alignment is restricted to one step from the selected deity |
 | Channel energy | Polarity, dice, save DC, daily uses, spending, refresh and persistence are integrated |
+| Arcane schools | Wizard feature ID and chassis support exist; selectable schools and opposition rules remain |
+| Arcane bond | Wizard feature ID exists; familiar and bonded-object choices remain |
 | Bloodlines | Not playable |
 | Mysteries | Not playable |
 | Browser end-to-end tests | Not implemented |

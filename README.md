@@ -6,13 +6,13 @@ A from-scratch, data-first Pathfinder First Edition character-builder project.
 
 The project is working toward the **Core Character Builder** milestone. The current generated catalogue includes:
 
-- 6 selectable classes: Arcanist, Barbarian, Cleric, Fighter, Monk, and Rogue
+- 7 selectable classes: Arcanist, Barbarian, Cleric, Fighter, Monk, Rogue, and Wizard
 - 7 selectable core ancestries
 - 424 selectable feats
 - 1,891 spells
 - structured prerequisite checks, class progression, spell preparation, skills, basic combat statistics, and local character persistence
 
-Cleric is now a playable Core class through level 20, including divine spell preparation, spontaneous cure or inflict conversion, deity-compatible alignment, positive or negative channel energy with daily tracking, all 20 Core deity choices, all 33 Core domains, granted powers, and dedicated domain spell slots.
+Cleric is a complete playable Core class through level 20. Wizard now has its full level 1–20 chassis and prepared arcane spell progression; arcane school and bond choices are the next Wizard-specific systems.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
