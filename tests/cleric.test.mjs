@@ -12,7 +12,8 @@ test("Cleric records its Core chassis and divine feature identifiers", () => {
   assert.deepEqual(cleric.saves, { fortitude: "good", reflex: "poor", will: "good" });
   assert.equal(cleric.spellcasting.ability, "wisdom");
   assert.ok(cleric.features.some(feature => feature.id === "channel-energy-1"));
-  assert.deepEqual(cleric.features.filter(feature => feature.optionGroupId === "cleric-domains").map(feature => feature.id), ["cleric-domain-1-first", "cleric-domain-1-second"]);
+  assert.deepEqual(cleric.features.filter(feature => feature.progressionKey === "cleric-domains").map(feature => feature.id), ["cleric-domain-1-first", "cleric-domain-1-second"]);
+  assert.equal(cleric.features.filter(feature => feature.progressionKey === "cleric-domain-spell-slots").length, 9);
 });
 
 test("Cleric domain catalogue provides sourced Core choices", () => {
