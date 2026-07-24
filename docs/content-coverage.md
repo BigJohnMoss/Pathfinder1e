@@ -15,7 +15,7 @@ This document distinguishes records present in the data bundle from systems that
 |---|---|---|
 | Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
 | Barbarian | Playable | Core progression and rage powers are integrated. |
-| Cleric | Playable Core chassis | Level 1–20 progression, divine prepared casting, orisons, spontaneous conversion, channel energy with daily tracking, deity-compatible alignment, positive or negative channel polarity, Core deity selection, deity-restricted domains, 22 Core domain power and spell lists, and dedicated domain spell preparation and usage are integrated. APG domain details remain. |
+| Cleric | Playable Core class | Level 1–20 divine prepared casting, orisons, spontaneous cure or inflict conversion, channel energy with daily tracking, deity-compatible alignment, channel polarity, 20 Core deity choices, all 33 Core domains with granted powers and spell lists, and dedicated domain spell preparation and usage are integrated. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
@@ -24,13 +24,12 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Cleric expansion | 1 | remaining APG domain details |
-| Wizard | 2 | spellbook, arcane schools, bonded object or familiar |
-| Sorcerer | 3 | spontaneous casting, bloodlines and bloodline powers |
-| Paladin | 4 | smite evil, lay on hands, mercies and divine bond |
-| Ranger | 5 | favored enemy, combat styles, favored terrain and limited casting |
-| Bard | 6 | bardic performance, spontaneous casting and versatile performance |
-| Druid | 7 | nature bond, wild shape, animal companion or domain and divine casting |
+| Wizard | 1 | spellbook, arcane schools, bonded object or familiar |
+| Sorcerer | 2 | spontaneous casting, bloodlines and bloodline powers |
+| Paladin | 3 | smite evil, lay on hands, mercies and divine bond |
+| Ranger | 4 | favored enemy, combat styles, favored terrain and limited casting |
+| Bard | 5 | bardic performance, spontaneous casting and versatile performance |
+| Druid | 6 | nature bond, wild shape, animal companion or domain and divine casting |
 
 ## Selectable ancestries
 
@@ -70,7 +69,7 @@ Feat records may reference class features belonging to classes that are not yet 
 | Multiclassing | Not implemented |
 | Archetypes | Data model planned; not playable |
 | Traits | Not playable |
-| Domains | Two deity-restricted Cleric domains selectable; 22 Core powers and spell lists displayed; dedicated domain slots prepared and tracked; APG details remain |
+| Domains | All 33 Core Cleric domains are deity-restricted, display granted powers and complete spell lists, and support dedicated domain spell preparation and usage |
 | Alignment | Cleric alignment is restricted to one step from the selected deity |
 | Channel energy | Polarity, dice, save DC, daily uses, spending, refresh and persistence are integrated |
 | Bloodlines | Not playable |
