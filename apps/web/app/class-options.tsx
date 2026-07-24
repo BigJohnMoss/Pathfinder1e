@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { optionsGrantedBySelection } from "../../../packages/engine/src/dependent-options.js";
 
 type Option = { id: string; name: string; benefit: string; domains?: string[] };
 type Choice = { id: string; name: string; level: number; options: Option[]; selected?: Option };
@@ -7,8 +8,7 @@ export function ClassOptions({ choices, selectedOptions, onOptionChange }: { cho
   const selectedDeity = choices.find((choice) => choice.id === "cleric-deity-1")?.selected;
   const optionsFor = (choice: Choice) => {
     if (!choice.id.startsWith("cleric-domain-")) return choice.options;
-    if (!selectedDeity?.domains) return [];
-    return choice.options.filter((option) => selectedDeity.domains?.includes(option.id));
+    return optionsGrantedBySelection(choice.options, selectedDeity);
   };
 
   useEffect(() => {
