@@ -4,16 +4,24 @@ import { readFile } from "node:fs/promises";
 
 const bundle = JSON.parse(await readFile(new URL("../generated/pf1e-data.json", import.meta.url), "utf8"));
 const domains = bundle.optionGroups.find((group) => group.id === "cleric-domains");
-const coreIds = ["domain-air","domain-animal","domain-chaos","domain-death","domain-destruction","domain-earth","domain-evil","domain-fire","domain-good","domain-healing","domain-knowledge","domain-law","domain-luck","domain-magic","domain-plant","domain-protection","domain-strength","domain-sun","domain-travel","domain-trickery","domain-war","domain-water"];
+const coreIds = [
+  "domain-air","domain-animal","domain-artifice","domain-chaos","domain-charm","domain-community","domain-darkness","domain-death","domain-destruction","domain-earth","domain-evil",
+  "domain-fire","domain-glory","domain-good","domain-healing","domain-knowledge","domain-law","domain-liberation","domain-luck","domain-madness","domain-magic","domain-nobility",
+  "domain-plant","domain-protection","domain-repose","domain-rune","domain-strength","domain-sun","domain-travel","domain-trickery","domain-war","domain-water","domain-weather"
+];
 
-test("all 22 Core domains expose two granted powers and nine domain spells", () => {
+test("all 33 Core domains expose two granted powers and nine domain spells", () => {
+  assert.equal(domains.options.length, 33);
   const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  assert.deepEqual([...byId.keys()].sort(), [...coreIds].sort());
   for (const id of coreIds) {
     const domain = byId.get(id);
     assert.ok(domain, `missing ${id}`);
     assert.equal(domain.powers.length, 2, `${id} powers`);
     assert.equal(domain.domainSpells.length, 9, `${id} spells`);
     assert.deepEqual(domain.domainSpells.map((spell) => spell.level), [1,2,3,4,5,6,7,8,9]);
+    assert.ok(domain.powers.every((power) => power.name && power.summary), `${id} power details`);
+    assert.ok(domain.domainSpells.every((spell) => spell.name), `${id} spell names`);
   }
 });
 
@@ -21,6 +29,10 @@ test("Core domain detail records retain distinctive progressions", () => {
   const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
   assert.deepEqual(byId.get("domain-animal").powers.map((power) => [power.name, power.level]), [["Speak with Animals",1],["Animal Companion",4]]);
   assert.deepEqual(byId.get("domain-fire").domainSpells.slice(0,3).map((spell) => spell.name), ["burning hands","produce flame","fireball"]);
+  assert.equal(byId.get("domain-nobility").powers[1].name, "Leadership");
+  assert.equal(byId.get("domain-repose").domainSpells[5].name, "undeath to death");
+  assert.equal(byId.get("domain-rune").domainSpells[8].name, "teleportation circle");
   assert.equal(byId.get("domain-war").powers[1].name, "Weapon Master");
   assert.equal(byId.get("domain-water").domainSpells[8].name, "elemental swarm (water only)");
+  assert.deepEqual(byId.get("domain-weather").domainSpells.slice(6).map((spell) => spell.name), ["control weather","whirlwind","storm of vengeance"]);
 });

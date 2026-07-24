@@ -12,7 +12,7 @@ The project is working toward the **Core Character Builder** milestone. The curr
 - 1,891 spells
 - structured prerequisite checks, class progression, spell preparation, skills, basic combat statistics, and local character persistence
 
-Cleric currently includes its complete level 1–20 class chassis, divine spell progression and channel-energy feature support. Domains and deity selection are the next Cleric-specific systems.
+Cleric is now a playable Core class through level 20, including divine spell preparation, spontaneous cure or inflict conversion, deity-compatible alignment, positive or negative channel energy with daily tracking, all 20 Core deity choices, all 33 Core domains, granted powers, and dedicated domain spell slots.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
