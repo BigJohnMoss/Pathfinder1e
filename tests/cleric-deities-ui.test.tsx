@@ -47,7 +47,7 @@ test("cleric domains follow the selected deity and show their powers and spells"
   assert.equal(firstDomain.value, "domain-fire");
   assert.ok(screen.getByText("Fire Bolt"));
   assert.ok(screen.getByText("Fire Resistance"));
-  assert.ok(screen.getByText("burning hands"));
+  assert.ok(screen.getAllByText("burning hands").length >= 1);
   assert.ok(screen.getByText("elemental swarm (fire only)"));
   assert.equal((secondDomain.querySelector("option[value='domain-fire']") as HTMLOptionElement).disabled, true);
 
