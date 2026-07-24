@@ -1,4 +1,4 @@
 export type SpontaneousSpell = { id: string; levelByClass: Record<string, number> };
-export type SpontaneousCastingClass = { spellcasting?: { ability: string; castingType: string; slotsByLevel: number[][]; knownByLevel: number[][] } };
+export type SpontaneousCastingClass = { spellcasting?: { ability: string; castingType: string; slotsByLevel: number[][]; knownByLevel?: number[][] } };
 export function spontaneousSpellcastingProgression(characterClass: SpontaneousCastingClass, level: number, options?: { abilityScore?: number }): { ability: string; castingType: "spontaneous"; maximumSpellLevel: number; slots: Array<{ level: number; base: number; bonus: number; count: number }>; known: Array<{ level: number; count: number }> } | null;
 export function normalizeKnownSpells<T extends SpontaneousSpell>(knownSpellIds: string[], spells: T[], classId: string, knownLimits: Array<{ level: number; count: number }>): string[];
