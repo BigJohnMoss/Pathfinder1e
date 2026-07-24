@@ -1,17 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
+import { preparedSpellSlotUsage, spellPreparationCost } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 
-type Spell = { id: string; name: string; levelByClass: Record<string, number>; summary: string };
+type Spell = { id: string; name: string; school?: string; schools?: string[]; levelByClass: Record<string, number>; summary: string };
 type Slot = { level: number; base: number; bonus: number; count: number };
 type PreparedLimit = { level: number; count: number };
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function Spellbook({ spells, classId, className, castingAbilityName, slots, preparedLimits, spellDcs, maximumSpellLevel, preparedSpellIds, onPreparedSpellIdsChange, slotUses, onSlotUsesChange, reservoir, onReservoirChange, onRefreshDay }: { spells: Spell[]; classId: string; className: string; castingAbilityName: string; slots: Slot[]; preparedLimits: PreparedLimit[]; spellDcs: Record<number, number>; maximumSpellLevel: number; preparedSpellIds: string[]; onPreparedSpellIdsChange: (spellIds: string[]) => void; slotUses: Record<number, number>; onSlotUsesChange: (uses: Record<number, number>) => void; reservoir: { current: number; maximum: number; dailyRefresh: number } | null; onReservoirChange: (value: number) => void; onRefreshDay: () => void }) {
+export function Spellbook({ spells, classId, className, castingAbilityName, slots, preparedLimits, spellDcs, maximumSpellLevel, preparedSpellIds, onPreparedSpellIdsChange, slotUses, onSlotUsesChange, reservoir, onReservoirChange, onRefreshDay, oppositionSchoolIds = [] }: { spells: Spell[]; classId: string; className: string; castingAbilityName: string; slots: Slot[]; preparedLimits: PreparedLimit[]; spellDcs: Record<number, number>; maximumSpellLevel: number; preparedSpellIds: string[]; onPreparedSpellIdsChange: (spellIds: string[]) => void; slotUses: Record<number, number>; onSlotUsesChange: (uses: Record<number, number>) => void; reservoir: { current: number; maximum: number; dailyRefresh: number } | null; onReservoirChange: (value: number) => void; onRefreshDay: () => void; oppositionSchoolIds?: string[] }) {
   const [query, setQuery] = useState("");
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
 
-  const preparedCount = (level: number) => preparedSpellIds.filter((id) => spells.find((spell) => spell.id === id)?.levelByClass[classId] === level).length;
+  const preparedUsage = useMemo(() => preparedSpellSlotUsage(preparedSpellIds, spells, classId, oppositionSchoolIds), [classId, oppositionSchoolIds, preparedSpellIds, spells]);
+  const preparedCount = (level: number) => preparedUsage[level] ?? 0;
   const limitFor = (level: number) => preparedLimits.find((entry) => entry.level === level)?.count ?? 0;
   const remainingSlots = (level: number) => { const slot = slots.find((entry) => entry.level === level); return slot ? slot.count - (slotUses[level] ?? 0) : Infinity; };
   const filteredSpells = useMemo(() => spells.filter((spell) => {
@@ -42,10 +44,11 @@ export function Spellbook({ spells, classId, className, castingAbilityName, slot
         <h3>{levelLabel(level)} <small>{spellsAtLevel.length} spells</small></h3>
         <div className="spell-list">{spellsAtLevel.map((spell) => {
           const prepared = preparedSpellIds.filter((id) => id === spell.id).length;
-          const full = preparedCount(level) >= limitFor(level);
+          const preparationCost = spellPreparationCost(spell, oppositionSchoolIds);
+          const full = preparedCount(level) + preparationCost > limitFor(level);
           const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
-            <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}</small></div>
+            <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}{preparationCost === 2 ? " · opposition school: costs 2 prepared slots" : ""}</small></div>
             <div className="spell-count"><button type="button" aria-label={`Cast ${spell.name}`} disabled={prepared === 0 || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><button type="button" aria-label={`Remove ${spell.name}`} disabled={prepared === 0} onClick={() => onPreparedSpellIdsChange(preparedSpellIds.filter((id, index) => id !== spell.id || index !== preparedSpellIds.lastIndexOf(spell.id)))}>-</button><output aria-label={`${spell.name} prepared`}>{prepared}</output><button type="button" aria-label={`Add ${spell.name}`} disabled={full} onClick={() => onPreparedSpellIdsChange([...preparedSpellIds, spell.id])}>+</button></div>
           </article>;
         })}</div>
