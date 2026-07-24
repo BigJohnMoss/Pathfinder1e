@@ -21,7 +21,7 @@ test.before(async () => {
 
 test.afterEach(() => { cleanup(); localStorage.clear(); });
 
-test("cleric domains follow the selected deity and invalid choices are cleared", async () => {
+test("cleric domains follow the selected deity and show their powers and spells", async () => {
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
@@ -44,9 +44,17 @@ test("cleric domains follow the selected deity and invalid choices are cleared",
 
   await user.selectOptions(firstDomain, "domain-fire");
   assert.equal(firstDomain.value, "domain-fire");
+  assert.ok(screen.getByText("Fire Bolt"));
+  assert.ok(screen.getByText("Fire Resistance"));
+  assert.ok(screen.getByText("burning hands"));
+  assert.ok(screen.getByText("elemental swarm (fire only)"));
   assert.equal((secondDomain.querySelector("option[value='domain-fire']") as HTMLOptionElement).disabled, true);
+
   await user.selectOptions(secondDomain, "domain-sun");
   assert.equal(secondDomain.value, "domain-sun");
+  assert.ok(screen.getByText("Sun's Blessing"));
+  assert.ok(screen.getByText("Nimbus of Light"));
+  assert.ok(screen.getByText("sunburst"));
 
   await user.selectOptions(deity, "deity-torag");
   assert.equal([...firstDomain.options].some((option) => option.value === "domain-law"), true);
