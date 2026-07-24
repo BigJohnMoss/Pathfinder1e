@@ -2,12 +2,19 @@ import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 const base=new URL("../../packages/data/src/",import.meta.url); const out=new URL("../../generated/",import.meta.url);
 await mkdir(out,{recursive:true});
 async function loadDir(name){const dir=new URL(`${name}/`,base);const files=(await readdir(dir)).filter(f=>f.endsWith('.json')).sort();return Promise.all(files.map(async f=>JSON.parse(await readFile(new URL(f,dir),'utf8'))));}
+const normalizeName=(name)=>name.normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 const spellCatalogues=await loadDir('spell-catalogues');
+const spellSchoolFiles=await loadDir('spell-schools');
+const schoolsByName=Object.assign({},...spellSchoolFiles.map(file=>file.schoolsByName??{}));
 const domainDetailFiles=await loadDir('domain-details');
 const domainDetails=new Map(domainDetailFiles.flatMap(file=>file.domains).map(domain=>[domain.id,domain]));
 const optionGroups=(await loadDir('options')).map(group=>({...group,options:group.options.map(option=>({...option,...(domainDetails.get(option.id)??{})}))}));
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
-const spells=sourceSpells.map(spell=>spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell,levelByClass:{...spell.levelByClass,wizard:spell.levelByClass.arcanist}}:spell);
+const spells=sourceSpells.map(spell=>{
+  const levelByClass=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
+  const school=spell.school??schoolsByName[normalizeName(spell.name)];
+  return {...spell,...(school?{school}:{}),levelByClass};
+});
 const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),races:await loadDir('races'),optionGroups,feats:await loadDir('feats'),spells};
 const serialized=JSON.stringify(bundle);
 await writeFile(new URL('pf1e-data.json',out),JSON.stringify(bundle,null,2)+'\n');
