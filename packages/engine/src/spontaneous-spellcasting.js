@@ -38,13 +38,14 @@ export function spontaneousSpellcastingProgression(characterClass, level, { abil
   };
 }
 
-export function normalizeKnownSpells(knownSpellIds, spells, classId, knownLimits) {
+export function normalizeKnownSpells(knownSpellIds, spells, classId, knownLimits, grantedSpellIds = []) {
   if (!Array.isArray(knownSpellIds) || !Array.isArray(spells) || typeof classId !== "string" || !Array.isArray(knownLimits)) return [];
   const limits = new Map(knownLimits.map((entry) => [entry.level, entry.count]));
   const available = new Map(spells.filter((spell) => spell.levelByClass?.[classId] !== undefined).map((spell) => [spell.id, spell]));
+  const granted = new Set(Array.isArray(grantedSpellIds) ? grantedSpellIds : []);
   const knownByLevel = new Map();
   return knownSpellIds.filter((id, index, ids) => {
-    if (typeof id !== "string" || ids.indexOf(id) !== index) return false;
+    if (typeof id !== "string" || ids.indexOf(id) !== index || granted.has(id)) return false;
     const spell = available.get(id);
     if (!spell) return false;
     const spellLevel = spell.levelByClass[classId];
