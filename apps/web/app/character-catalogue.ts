@@ -29,8 +29,21 @@ export type CharacterOptionGroup = {
   options: CharacterOption[];
 };
 
-type GeneratedCatalogueRecord = {
+type GeneratedClass = {
   id: string;
+  name: string;
+  [key: string]: any;
+};
+
+type GeneratedAncestry = {
+  id: string;
+  name: string;
+  size: string;
+  abilityModifiers: unknown;
+  traits: Array<{
+    id: string;
+    [key: string]: any;
+  }>;
   [key: string]: any;
 };
 
@@ -42,8 +55,8 @@ function orderedById<T extends { id: string }>(items: readonly T[], ids: readonl
   });
 }
 
-export const classes = orderedById<GeneratedCatalogueRecord>(generatedData.classes, ["arcanist", "barbarian", "fighter", "monk", "rogue"]);
-export const ancestries = orderedById<GeneratedCatalogueRecord>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
+export const classes = orderedById<GeneratedClass>(generatedData.classes, ["arcanist", "barbarian", "fighter", "monk", "rogue"]);
+export const ancestries = orderedById<GeneratedAncestry>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
 export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name)) as unknown as CharacterFeat[];
 export const optionGroups = orderedById(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "rogue-talents", "combat-feats", "fighter-weapon-groups"]) as unknown as CharacterOptionGroup[];
 export const spells = generatedData.spells;
