@@ -1,0 +1,35 @@
+{
+  "id": "cleric",
+  "name": "Cleric",
+  "classType": "core",
+  "hitDie": 8,
+  "babProgression": "three-quarters",
+  "saves": {"fortitude":"good","reflex":"poor","will":"good"},
+  "skillRanksPerLevel": 2,
+  "classSkills": ["Appraise","Craft","Diplomacy","Heal","Knowledge (arcana)","Knowledge (history)","Knowledge (nobility)","Knowledge (planes)","Knowledge (religion)","Linguistics","Profession","Sense Motive","Spellcraft"],
+  "spellcasting": {
+    "ability": "wisdom",
+    "castingType": "prepared",
+    "slotsByLevel": [
+      [1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[2,1,0,0,0,0,0,0,0],[3,2,0,0,0,0,0,0,0],[3,2,1,0,0,0,0,0,0],
+      [3,3,2,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0],[4,3,3,2,0,0,0,0,0],[4,4,3,2,1,0,0,0,0],[4,4,3,3,2,0,0,0,0],
+      [5,4,4,3,2,1,0,0,0],[5,4,4,3,3,2,0,0,0],[5,5,4,4,3,2,1,0,0],[5,5,4,4,3,3,2,0,0],[5,5,5,4,4,3,2,1,0],
+      [5,5,5,4,4,3,3,2,0],[5,5,5,5,4,4,3,2,1],[5,5,5,5,4,4,3,3,2],[5,5,5,5,5,4,4,3,3],[5,5,5,5,5,4,4,4,4]
+    ],
+    "preparedByLevel": [
+      [3,1,0,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0,0],[4,2,1,0,0,0,0,0,0,0],[5,3,2,0,0,0,0,0,0,0],[5,3,2,1,0,0,0,0,0,0],
+      [5,3,3,2,0,0,0,0,0,0],[6,4,3,2,1,0,0,0,0,0],[6,4,3,3,2,0,0,0,0,0],[6,4,4,3,2,1,0,0,0,0],[6,4,4,3,3,2,0,0,0,0],
+      [6,5,4,4,3,2,1,0,0,0],[6,5,4,4,3,3,2,0,0,0],[6,5,5,4,4,3,2,1,0,0],[6,5,5,4,4,3,3,2,0,0],[6,5,5,5,4,4,3,2,1,0],
+      [6,5,5,5,4,4,3,3,2,0],[6,5,5,5,5,4,4,3,2,1],[6,5,5,5,5,4,4,3,3,2],[6,5,5,5,5,5,4,4,3,3],[6,5,5,5,5,5,4,4,4,4]
+    ]
+  },
+  "source": {"title":"Core Rulebook","page":38,"url":"https://aonprd.com/ClassDisplay.aspx?ItemName=Cleric"},
+  "features": [
+    {"id":"cleric-spellcasting-1","name":"Spellcasting","level":1,"type":"spellcasting","summary":"Prepare and cast divine spells from the cleric spell list using Wisdom.","choiceRequired":false,"optionGroupId":null,"progressionKey":"cleric-spellcasting","scaling":null,"uses":null},
+    {"id":"cleric-aura-1","name":"Aura","level":1,"type":"core","summary":"Project an alignment aura matching the cleric's deity when applicable.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"channel-energy-1","name":"Channel Energy","level":1,"type":"core","summary":"Release positive or negative energy to heal or harm creatures in an area.","choiceRequired":false,"optionGroupId":null,"progressionKey":"channel-energy","scaling":"1d6 at 1st level + 1d6 every 2 cleric levels thereafter","uses":"3 + Charisma modifier per day"},
+    {"id":"cleric-domains-1","name":"Domains","level":1,"type":"selectable","summary":"Choose two domains granted by the cleric's deity.","choiceRequired":false,"optionGroupId":null,"progressionKey":"cleric-domains","scaling":null,"uses":null},
+    {"id":"cleric-orisons-1","name":"Orisons","level":1,"type":"spellcasting","summary":"Prepare 0-level cleric spells and cast prepared orisons without expending them.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":"at will while prepared"},
+    {"id":"cleric-spontaneous-casting-1","name":"Spontaneous Casting","level":1,"type":"spellcasting","summary":"Convert prepared non-domain spells into cure or inflict spells according to channel alignment.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null}
+  ]
+}
