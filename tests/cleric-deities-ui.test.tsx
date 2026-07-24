@@ -107,3 +107,39 @@ test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   assert.equal([...firstSlot.options].some((option) => option.text === "cure light wounds"), true);
   assert.equal([...firstSlot.options].some((option) => option.text === "burning hands"), false);
 });
+
+test("Cleric alignment and channel energy follow the selected deity", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("button", { name: "Options" }));
+
+  const deity = screen.getByText("Deity").closest("label")?.querySelector("select");
+  const alignment = screen.getByText("Alignment").closest("label")?.querySelector("select");
+  const channel = screen.getByText("Channel Energy Type").closest("label")?.querySelector("select");
+  assert.ok(deity);
+  assert.ok(alignment);
+  assert.ok(channel);
+  assert.equal(alignment.disabled, true);
+  assert.equal(channel.disabled, true);
+
+  await user.selectOptions(deity, "deity-iomedae");
+  assert.deepEqual([...alignment.options].slice(1).map((option) => option.text), ["Lawful Good", "Neutral Good", "Lawful Neutral"]);
+  await user.selectOptions(alignment, "alignment-lawful-neutral");
+  assert.equal(channel.value, "channel-positive");
+  assert.equal(channel.disabled, true);
+  assert.ok(screen.getByText(/Spontaneously convert prepared non-domain spells into cure spells/));
+
+  await user.selectOptions(deity, "deity-asmodeus");
+  assert.equal(alignment.value, "");
+  await user.selectOptions(alignment, "alignment-lawful-neutral");
+  assert.equal(channel.value, "channel-negative");
+  assert.ok(screen.getByText(/Spontaneously convert prepared non-domain spells into inflict spells/));
+
+  await user.selectOptions(deity, "deity-gozreh");
+  await user.selectOptions(alignment, "alignment-neutral");
+  assert.equal(channel.disabled, false);
+  assert.deepEqual([...channel.options].slice(1).map((option) => option.text), ["Positive Energy", "Negative Energy"]);
+  await user.selectOptions(channel, "channel-negative");
+  assert.equal(channel.value, "channel-negative");
+});
