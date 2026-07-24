@@ -22,6 +22,8 @@ export type CharacterOption = {
   minimumLevel: number;
   prerequisites: Prerequisite[];
   domains?: string[];
+  powers?: Array<{ name: string; level: number; summary: string }>;
+  domainSpells?: Array<{ level: number; name: string }>;
 };
 
 export type CharacterOptionGroup = {
