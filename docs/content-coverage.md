@@ -4,7 +4,7 @@ This document distinguishes records present in the data bundle from systems that
 
 ## Current generated catalogue
 
-- 5 playable classes
+- 6 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
 - 1,891 spells
@@ -15,6 +15,7 @@ This document distinguishes records present in the data bundle from systems that
 |---|---|---|
 | Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
 | Barbarian | Playable | Core progression and rage powers are integrated. |
+| Cleric | Playable chassis | Level 1–20 progression, divine prepared casting, orisons, spontaneous conversion and channel-energy feature support are integrated. Domains and deity selection remain. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
@@ -23,7 +24,7 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Cleric | 1 | divine spellcasting, channel energy, domains, deity selection |
+| Cleric completion | 1 | domains, domain spell slots, domain powers and deity selection |
 | Wizard | 2 | spellbook, arcane schools, bonded object or familiar |
 | Sorcerer | 3 | spontaneous casting, bloodlines and bloodline powers |
 | Paladin | 4 | smite evil, lay on hands, mercies and divine bond |
