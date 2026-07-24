@@ -46,10 +46,14 @@ test("Wizard class progression exposes bonus feats at the correct levels", () =>
   assert.deepEqual(twentieth.features.filter((feature) => feature.id.startsWith("wizard-bonus-feat-")).map((feature) => feature.level), [5, 10, 15, 20]);
 });
 
-test("generated catalogue exposes Wizard and its spells through ninth level", () => {
+test("generated catalogue exposes the complete shared Arcanist and Wizard spell list", () => {
   assert.ok(bundle.classes.some((characterClass) => characterClass.id === "wizard"));
+  const sharedSpells = bundle.spells.filter((spell) => spell.levelByClass.arcanist !== undefined);
+  assert.ok(sharedSpells.length > 1000, `expected broad shared spell coverage, found ${sharedSpells.length}`);
+  for (const spell of sharedSpells) {
+    assert.equal(spell.levelByClass.wizard, spell.levelByClass.arcanist, `${spell.id} Wizard level`);
+  }
   const wizardSpells = spellsAvailableToClass(bundle.spells, "wizard", 9);
-  assert.ok(wizardSpells.length > 100, `expected broad Wizard spell coverage, found ${wizardSpells.length}`);
   assert.ok(wizardSpells.some((spell) => spell.name === "Mage Armor"));
   assert.ok(wizardSpells.some((spell) => spell.name === "Magic Missile"));
   assert.ok(wizardSpells.some((spell) => spell.levelByClass.wizard === 9));
