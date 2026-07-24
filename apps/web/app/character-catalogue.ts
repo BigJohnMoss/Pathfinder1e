@@ -37,6 +37,7 @@ export type CharacterOptionGroup = {
 export type CharacterSpell = {
   id: string;
   name: string;
+  school: string;
   levelByClass: Record<string, number>;
   summary: string;
 };
