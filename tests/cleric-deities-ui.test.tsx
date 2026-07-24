@@ -29,18 +29,28 @@ test("cleric domains follow the selected deity and invalid choices are cleared",
 
   const deity = screen.getByText("Deity").closest("label")?.querySelector("select");
   const firstDomain = screen.getByText("First Domain").closest("label")?.querySelector("select");
+  const secondDomain = screen.getByText("Second Domain").closest("label")?.querySelector("select");
   assert.ok(deity);
   assert.ok(firstDomain);
+  assert.ok(secondDomain);
+  assert.equal(firstDomain.disabled, true);
+  assert.equal(secondDomain.disabled, true);
+  assert.equal(firstDomain.options[0].text, "Choose a deity first");
 
   await user.selectOptions(deity, "deity-sarenrae");
+  assert.equal(firstDomain.disabled, false);
   assert.equal([...firstDomain.options].some((option) => option.value === "domain-fire"), true);
   assert.equal([...firstDomain.options].some((option) => option.value === "domain-law"), false);
 
   await user.selectOptions(firstDomain, "domain-fire");
   assert.equal(firstDomain.value, "domain-fire");
+  assert.equal((secondDomain.querySelector("option[value='domain-fire']") as HTMLOptionElement).disabled, true);
+  await user.selectOptions(secondDomain, "domain-sun");
+  assert.equal(secondDomain.value, "domain-sun");
 
   await user.selectOptions(deity, "deity-torag");
   assert.equal([...firstDomain.options].some((option) => option.value === "domain-law"), true);
   assert.equal([...firstDomain.options].some((option) => option.value === "domain-fire"), false);
   assert.equal(firstDomain.value, "");
+  assert.equal(secondDomain.value, "");
 });
