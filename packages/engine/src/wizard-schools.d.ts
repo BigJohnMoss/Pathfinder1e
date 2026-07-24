@@ -1,2 +1,1 @@
-export type WizardSchoolOption = { id: string; [key: string]: unknown };
-export function oppositionSchoolOptions<T extends WizardSchoolOption>(options: T[], selectedSchool?: WizardSchoolOption | null): T[];
+export function oppositionSchoolOptions<T extends { id: string }>(options: T[], selectedSchool?: { id: string } | null): T[];
