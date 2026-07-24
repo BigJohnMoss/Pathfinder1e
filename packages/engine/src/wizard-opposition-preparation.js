@@ -1,6 +1,9 @@
 const normalizeSchoolId = (schoolId) => {
   if (typeof schoolId !== "string") return null;
-  return schoolId.startsWith("wizard-school-") ? schoolId.slice("wizard-school-".length) : schoolId;
+  for (const prefix of ["wizard-school-", "wizard-opposition-"]) {
+    if (schoolId.startsWith(prefix)) return schoolId.slice(prefix.length);
+  }
+  return schoolId;
 };
 
 const spellSchools = (spell) => Array.isArray(spell?.schools) && spell.schools.length > 0
