@@ -1,0 +1,1 @@
+{"id":"extra-bane","name":"Extra Bane","type":"general","prerequisites":[{"type":"feature","id":"inquisitor-bane-5"}],"benefit":"Use your bane class feature for 3 additional rounds per day.","source":{"title":"Ultimate Combat","page":100,"url":"https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Bane"}}
