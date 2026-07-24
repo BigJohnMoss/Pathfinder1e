@@ -78,7 +78,7 @@ function orderedById<T extends { id: string }>(items: readonly T[], ids: readonl
 export const classes = orderedById<GeneratedClass>(generatedData.classes, ["arcanist", "barbarian", "cleric", "fighter", "monk", "rogue", "wizard"]);
 export const ancestries = orderedById<GeneratedAncestry>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
 export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name)) as unknown as CharacterFeat[];
-export const optionGroups = orderedById(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "cleric-deities", "cleric-alignments", "cleric-channel-energy", "cleric-domains", "wizard-schools", "wizard-opposition-schools", "rogue-talents", "combat-feats", "fighter-weapon-groups"]) as unknown as CharacterOptionGroup[];
+export const optionGroups = orderedById(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "cleric-deities", "cleric-alignments", "cleric-channel-energy", "cleric-domains", "wizard-arcane-bonds", "wizard-familiars", "wizard-bonded-objects", "wizard-schools", "wizard-opposition-schools", "rogue-talents", "combat-feats", "fighter-weapon-groups"]) as unknown as CharacterOptionGroup[];
 export const spells = generatedData.spells as CharacterSpell[];
 
 export const skills = [
