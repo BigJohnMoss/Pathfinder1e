@@ -11,7 +11,9 @@ const domainDetails=new Map(domainDetailFiles.flatMap(file=>file.domains).map(do
 const optionGroups=(await loadDir('options')).map(group=>({...group,options:group.options.map(option=>({...option,...(domainDetails.get(option.id)??{})}))}));
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
 const spells=sourceSpells.map(spell=>{
-  const levelByClass=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
+  const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
+  const sharedArcaneLevel=withWizard?.wizard??withWizard?.arcanist;
+  const levelByClass=sharedArcaneLevel!==undefined&&withWizard?.sorcerer===undefined?{...withWizard,sorcerer:sharedArcaneLevel}:withWizard;
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);

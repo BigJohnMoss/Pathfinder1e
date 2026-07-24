@@ -19,9 +19,9 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 
 ### 1. Core classes
 
-Cleric and Wizard are complete. Continue the remaining Core classes in this order:
+Cleric and Wizard are complete. Sorcerer's level 1–20 spontaneous-casting chassis and ten Core bloodline identities are integrated. Continue the remaining class systems in this order:
 
-1. Sorcerer
+1. Sorcerer Core bloodline details
 2. Paladin
 3. Ranger
 4. Bard
@@ -52,7 +52,7 @@ Add browser-level tests for representative martial, prepared-caster and spontane
 - traits
 - archetypes
 - subdomains
-- bloodlines
+- expanded bloodlines
 - mysteries and revelations
 - discoveries, talents and similar class option systems
 - favoured class bonuses
