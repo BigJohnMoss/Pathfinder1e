@@ -8,7 +8,9 @@ const spellSchoolFiles=await loadDir('spell-schools');
 const schoolsByName=Object.assign({},...spellSchoolFiles.map(file=>file.schoolsByName??{}));
 const domainDetailFiles=await loadDir('domain-details');
 const domainDetails=new Map(domainDetailFiles.flatMap(file=>file.domains).map(domain=>[domain.id,domain]));
-const optionGroups=(await loadDir('options')).map(group=>({...group,options:group.options.map(option=>({...option,...(domainDetails.get(option.id)??{})}))}));
+const bloodlineDetailFiles=await loadDir('bloodline-details');
+const bloodlineDetails=new Map(bloodlineDetailFiles.flatMap(file=>file.bloodlines).map(bloodline=>[bloodline.id,bloodline]));
+const optionGroups=(await loadDir('options')).map(group=>({...group,options:group.options.map(option=>({...option,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{})}))}));
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
 const spells=sourceSpells.map(spell=>{
   const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
