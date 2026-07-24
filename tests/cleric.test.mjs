@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import { classProgression, spellcastingProgression } from "../packages/engine/src/index.js";
 
 const cleric = JSON.parse(await readFile(new URL("../packages/data/src/classes/cleric.json", import.meta.url), "utf8"));
+const domains = JSON.parse(await readFile(new URL("../packages/data/src/options/cleric-domains.json", import.meta.url), "utf8"));
 
 test("Cleric records its Core chassis and divine feature identifiers", () => {
   assert.equal(cleric.hitDie, 8);
@@ -11,7 +12,15 @@ test("Cleric records its Core chassis and divine feature identifiers", () => {
   assert.deepEqual(cleric.saves, { fortitude: "good", reflex: "poor", will: "good" });
   assert.equal(cleric.spellcasting.ability, "wisdom");
   assert.ok(cleric.features.some(feature => feature.id === "channel-energy-1"));
-  assert.ok(cleric.features.some(feature => feature.id === "cleric-domains-1"));
+  assert.deepEqual(cleric.features.filter(feature => feature.optionGroupId === "cleric-domains").map(feature => feature.id), ["cleric-domain-1-first", "cleric-domain-1-second"]);
+});
+
+test("Cleric domain catalogue provides sourced Core choices", () => {
+  assert.equal(domains.id, "cleric-domains");
+  assert.ok(domains.options.length >= 30);
+  assert.ok(domains.options.some(option => option.id === "domain-healing"));
+  assert.ok(domains.options.some(option => option.id === "domain-war"));
+  assert.ok(domains.options.every(option => option.classIds.includes("cleric") && option.minimumLevel === 1));
 });
 
 test("Cleric progression reaches ninth-level divine spells", () => {
