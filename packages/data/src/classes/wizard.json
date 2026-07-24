@@ -1,0 +1,39 @@
+{
+  "id": "wizard",
+  "name": "Wizard",
+  "classType": "core",
+  "hitDie": 6,
+  "babProgression": "half",
+  "saves": {"fortitude":"poor","reflex":"poor","will":"good"},
+  "skillRanksPerLevel": 2,
+  "classSkills": ["Appraise","Craft","Fly","Knowledge","Linguistics","Profession","Spellcraft"],
+  "spellcasting": {
+    "ability": "intelligence",
+    "castingType": "prepared",
+    "slotsByLevel": [
+      [1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[2,1,0,0,0,0,0,0,0],[3,2,0,0,0,0,0,0,0],[3,2,1,0,0,0,0,0,0],
+      [3,3,2,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0],[4,3,3,2,0,0,0,0,0],[4,4,3,2,1,0,0,0,0],[4,4,3,3,2,0,0,0,0],
+      [4,4,4,3,2,1,0,0,0],[4,4,4,3,3,2,0,0,0],[4,4,4,4,3,2,1,0,0],[4,4,4,4,3,3,2,0,0],[4,4,4,4,4,3,2,1,0],
+      [4,4,4,4,4,3,3,2,0],[4,4,4,4,4,4,3,2,1],[4,4,4,4,4,4,3,3,2],[4,4,4,4,4,4,4,3,3],[4,4,4,4,4,4,4,4,4]
+    ],
+    "preparedByLevel": [
+      [3,1,0,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0,0],[4,2,1,0,0,0,0,0,0,0],[4,3,2,0,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0,0],
+      [4,3,3,2,0,0,0,0,0,0],[4,4,3,2,1,0,0,0,0,0],[4,4,3,3,2,0,0,0,0,0],[4,4,4,3,2,1,0,0,0,0],[4,4,4,3,3,2,0,0,0,0],
+      [4,4,4,4,3,2,1,0,0,0],[4,4,4,4,3,3,2,0,0,0],[4,4,4,4,4,3,2,1,0,0],[4,4,4,4,4,3,3,2,0,0],[4,4,4,4,4,4,3,2,1,0],
+      [4,4,4,4,4,4,3,3,2,0],[4,4,4,4,4,4,4,3,2,1],[4,4,4,4,4,4,4,3,3,2],[4,4,4,4,4,4,4,4,3,3],[4,4,4,4,4,4,4,4,4,4]
+    ]
+  },
+  "source": {"title":"Core Rulebook","page":77,"url":"https://aonprd.com/ClassDisplay.aspx?ItemName=Wizard"},
+  "features": [
+    {"id":"wizard-spellcasting-1","name":"Spellcasting","level":1,"type":"spellcasting","summary":"Prepare arcane spells from a spellbook and cast them using Intelligence.","choiceRequired":false,"optionGroupId":null,"progressionKey":"wizard-spellcasting","scaling":null,"uses":null},
+    {"id":"wizard-arcane-bond-1","name":"Arcane Bond","level":1,"type":"core","summary":"Form a permanent bond with a familiar or a bonded object.","choiceRequired":false,"optionGroupId":null,"progressionKey":"wizard-arcane-bond","scaling":null,"uses":null},
+    {"id":"wizard-arcane-school-1","name":"Arcane School","level":1,"type":"core","summary":"Choose a specialist school with opposition schools, or study as a universalist.","choiceRequired":false,"optionGroupId":null,"progressionKey":"wizard-arcane-school","scaling":null,"uses":null},
+    {"id":"wizard-cantrips-1","name":"Cantrips","level":1,"type":"spellcasting","summary":"Prepare 0-level wizard spells and cast prepared cantrips without expending them.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":"at will while prepared"},
+    {"id":"scribe-scroll-1","name":"Scribe Scroll","level":1,"type":"bonus-feat","summary":"Gain Scribe Scroll as a bonus feat.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"wizard-spellbook-1","name":"Spellbook","level":1,"type":"core","summary":"Begin with all allowed cantrips, three chosen 1st-level spells, and additional 1st-level spells equal to Intelligence modifier; add two spells at every new wizard level.","choiceRequired":false,"optionGroupId":null,"progressionKey":"wizard-spellbook","scaling":"two free spells per wizard level after 1st","uses":null},
+    {"id":"wizard-bonus-feat-5","name":"Wizard Bonus Feat","level":5,"type":"bonus-feat","summary":"Choose a metamagic feat, item creation feat, or Spell Mastery for which you qualify.","choiceRequired":false,"optionGroupId":null,"progressionKey":"wizard-bonus-feat","scaling":null,"uses":null},
+    {"id":"wizard-bonus-feat-10","name":"Wizard Bonus Feat","level":10,"type":"bonus-feat","summary":"Choose another metamagic feat, item creation feat, or Spell Mastery for which you qualify.","choiceRequired":false,"optionGroupId":null,"progressionKey":"wizard-bonus-feat","scaling":null,"uses":null},
+    {"id":"wizard-bonus-feat-15","name":"Wizard Bonus Feat","level":15,"type":"bonus-feat","summary":"Choose another metamagic feat, item creation feat, or Spell Mastery for which you qualify.","choiceRequired":false,"optionGroupId":null,"progressionKey":"wizard-bonus-feat","scaling":null,"uses":null},
+    {"id":"wizard-bonus-feat-20","name":"Wizard Bonus Feat","level":20,"type":"bonus-feat","summary":"Choose another metamagic feat, item creation feat, or Spell Mastery for which you qualify.","choiceRequired":false,"optionGroupId":null,"progressionKey":"wizard-bonus-feat","scaling":null,"uses":null}
+  ]
+}
