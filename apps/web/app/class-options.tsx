@@ -1,10 +1,13 @@
 import { useEffect } from "react";
+import { alignmentsWithinOneStep, channelEnergyChoices } from "../../../packages/engine/src/cleric-alignment.js";
 import { optionsGrantedBySelection } from "../../../packages/engine/src/dependent-options.js";
 
 type Option = {
   id: string;
   name: string;
   benefit: string;
+  alignment?: string;
+  polarity?: string;
   domains?: string[];
   powers?: Array<{ name: string; level: number; summary: string }>;
   domainSpells?: Array<{ level: number; name: string }>;
@@ -13,6 +16,15 @@ type Choice = { id: string; name: string; level: number; options: Option[]; sele
 
 const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const domainSpellLevel = (choice: Choice) => Number(choice.id.match(/^cleric-domain-spell-(\d+)$/)?.[1] ?? 0);
+const choiceOrder = (choice: Choice) => {
+  if (choice.id === "cleric-deity-1") return 10;
+  if (choice.id === "cleric-alignment-1") return 20;
+  if (choice.id === "cleric-channel-energy-type-1") return 30;
+  if (choice.id === "cleric-domain-1-first") return 40;
+  if (choice.id === "cleric-domain-1-second") return 41;
+  const spellLevel = domainSpellLevel(choice);
+  return spellLevel ? 50 + spellLevel : 100;
+};
 
 function OptionDetails({ option }: { option: Option }) {
   return <div className="option-details">
@@ -23,9 +35,11 @@ function OptionDetails({ option }: { option: Option }) {
 }
 
 export function ClassOptions({ choices, selectedOptions, onOptionChange }: { choices: Choice[]; selectedOptions: Record<string, string>; onOptionChange: (featureId: string, optionId: string) => void }) {
-  const selectedDeity = choices.find((choice) => choice.id === "cleric-deity-1")?.selected;
-  const selectedDomains = choices.filter((choice) => choice.id === "cleric-domain-1-first" || choice.id === "cleric-domain-1-second").flatMap((choice) => choice.selected ? [choice.selected] : []);
-  const domainSlotChoices = choices.filter((choice) => domainSpellLevel(choice) > 0);
+  const orderedChoices = [...choices].sort((left, right) => choiceOrder(left) - choiceOrder(right));
+  const selectedDeity = orderedChoices.find((choice) => choice.id === "cleric-deity-1")?.selected;
+  const selectedAlignment = orderedChoices.find((choice) => choice.id === "cleric-alignment-1")?.selected;
+  const selectedDomains = orderedChoices.filter((choice) => choice.id === "cleric-domain-1-first" || choice.id === "cleric-domain-1-second").flatMap((choice) => choice.selected ? [choice.selected] : []);
+  const domainSlotChoices = orderedChoices.filter((choice) => domainSpellLevel(choice) > 0);
   const domainSpellOptions = (level: number) => {
     const byId = new Map<string, Option>();
     for (const domain of selectedDomains) {
@@ -37,6 +51,8 @@ export function ClassOptions({ choices, selectedOptions, onOptionChange }: { cho
     return [...byId.values()].sort((left, right) => left.name.localeCompare(right.name));
   };
   const optionsFor = (choice: Choice) => {
+    if (choice.id === "cleric-alignment-1") return alignmentsWithinOneStep(choice.options, selectedDeity?.alignment);
+    if (choice.id === "cleric-channel-energy-type-1") return channelEnergyChoices(choice.options, selectedAlignment?.alignment, selectedDeity?.alignment);
     const spellLevel = domainSpellLevel(choice);
     if (spellLevel) return domainSpellOptions(spellLevel);
     if (!choice.id.startsWith("cleric-domain-")) return choice.options;
@@ -44,26 +60,28 @@ export function ClassOptions({ choices, selectedOptions, onOptionChange }: { cho
   };
 
   useEffect(() => {
-    for (const choice of choices) {
+    for (const choice of orderedChoices) {
       const selectedId = selectedOptions[choice.id];
       const options = optionsFor(choice);
       if (selectedId && !options.some((option) => option.id === selectedId)) onOptionChange(choice.id, "");
+      if (choice.id === "cleric-channel-energy-type-1" && options.length === 1 && selectedId !== options[0].id) onOptionChange(choice.id, options[0].id);
       if (!selectedId && domainSpellLevel(choice) && selectedOptions[`${choice.id}-used`]) onOptionChange(`${choice.id}-used`, "");
     }
-  }, [choices, selectedDeity?.id, selectedOptions, onOptionChange]);
+  }, [choices, selectedDeity?.id, selectedAlignment?.id, selectedOptions, onOptionChange]);
 
   const refreshDomainSlots = () => domainSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
 
-  return <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Each earned selectable feature gets its own choice.</p></div>{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{choices.map((choice) => {
+  return <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Dependent choices are ordered so each selection unlocks the next legal options.</p></div>{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{orderedChoices.map((choice) => {
     const options = optionsFor(choice);
     const spellLevel = domainSpellLevel(choice);
-    const needsDeity = !spellLevel && choice.id.startsWith("cleric-domain-") && !selectedDeity;
+    const needsDeity = (choice.id === "cleric-alignment-1" || (!spellLevel && choice.id.startsWith("cleric-domain-"))) && !selectedDeity;
+    const needsAlignment = choice.id === "cleric-channel-energy-type-1" && !selectedAlignment;
     const needsDomains = Boolean(spellLevel) && selectedDomains.length === 0;
     const unavailableDetails = Boolean(spellLevel) && selectedDomains.length > 0 && options.length === 0;
     const selected = options.find((option) => option.id === selectedOptions[choice.id]);
     const usedKey = `${choice.id}-used`;
     const used = selectedOptions[usedKey] === "used";
-    const placeholder = needsDeity ? "Choose a deity first" : needsDomains ? "Choose domains first" : unavailableDetails ? "Domain spell details unavailable" : "Choose an option";
-    return <article className="choice-card" key={choice.id}><label>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => { onOptionChange(choice.id, event.target.value); if (spellLevel) onOptionChange(usedKey, ""); }} disabled={needsDeity || needsDomains || unavailableDetails}><option value="">{placeholder}</option>{options.map((option) => <option key={option.id} value={option.id} disabled={!spellLevel && Object.entries(selectedOptions).some(([id, value]) => id !== choice.id && value === option.id)}>{option.name}</option>)}</select></label>{selected && <OptionDetails option={selected} />}{Boolean(spellLevel) && selected && <div className="domain-slot-use"><output aria-label={`${choice.name} status`}>{used ? "Used" : "Available"}</output><button type="button" aria-label={`Cast ${selected.name} from ${choice.name}`} disabled={used} onClick={() => onOptionChange(usedKey, "used")}>{used ? "Used" : "Cast domain spell"}</button></div>}</article>;
+    const placeholder = needsDeity ? "Choose a deity first" : needsAlignment ? "Choose alignment first" : needsDomains ? "Choose domains first" : unavailableDetails ? "Domain spell details unavailable" : options.length === 1 && choice.id === "cleric-channel-energy-type-1" ? "Determined by alignment" : "Choose an option";
+    return <article className="choice-card" key={choice.id}><label>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => { onOptionChange(choice.id, event.target.value); if (spellLevel) onOptionChange(usedKey, ""); }} disabled={needsDeity || needsAlignment || needsDomains || unavailableDetails || (choice.id === "cleric-channel-energy-type-1" && options.length === 1)}><option value="">{placeholder}</option>{options.map((option) => <option key={option.id} value={option.id} disabled={!spellLevel && Object.entries(selectedOptions).some(([id, value]) => id !== choice.id && value === option.id)}>{option.name}</option>)}</select></label>{selected && <OptionDetails option={selected} />}{Boolean(spellLevel) && selected && <div className="domain-slot-use"><output aria-label={`${choice.name} status`}>{used ? "Used" : "Available"}</output><button type="button" aria-label={`Cast ${selected.name} from ${choice.name}`} disabled={used} onClick={() => onOptionChange(usedKey, "used")}>{used ? "Used" : "Cast domain spell"}</button></div>}</article>;
   })}</section>;
 }
