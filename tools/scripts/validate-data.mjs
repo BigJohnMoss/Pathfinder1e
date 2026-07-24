@@ -38,14 +38,16 @@ function checkChoice(choice, file) {
   const ids = new Set();
   for (const option of choice.options) { if (!option || typeof option.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option.id) || typeof option.name !== "string" || !option.name.trim()) errors.push(`${file}: choice has an invalid option`); else if (ids.has(option.id)) errors.push(`${file}: choice has duplicate option ${option.id}`); else ids.add(option.id); }
 }
+function checkProgressionTable(table, file, key, width) {
+  if (!Array.isArray(table) || table.length !== 20 || table.some(row => !Array.isArray(row) || row.length !== width || row.some(value => !Number.isInteger(value) || value < 0))) errors.push(`${file}: ${key} must contain 20 non-negative integer rows of width ${width}`);
+}
 function checkSpellcasting(spellcasting, file) {
   if (!spellcasting || typeof spellcasting !== "object") { errors.push(`${file}: spellcasting must be an object`); return; }
   if (!["intelligence", "wisdom", "charisma"].includes(spellcasting.ability)) errors.push(`${file}: spellcasting has an invalid ability`);
   if (!["prepared", "spontaneous"].includes(spellcasting.castingType)) errors.push(`${file}: spellcasting has an invalid casting type`);
-  for (const [key, width] of [["slotsByLevel", 9], ["preparedByLevel", 10]]) {
-    const table = spellcasting[key];
-    if (!Array.isArray(table) || table.length !== 20 || table.some(row => !Array.isArray(row) || row.length !== width || row.some(value => !Number.isInteger(value) || value < 0))) errors.push(`${file}: ${key} must contain 20 non-negative integer rows of width ${width}`);
-  }
+  checkProgressionTable(spellcasting.slotsByLevel, file, "slotsByLevel", 9);
+  if (spellcasting.castingType === "prepared") checkProgressionTable(spellcasting.preparedByLevel, file, "preparedByLevel", 10);
+  if (spellcasting.castingType === "spontaneous") checkProgressionTable(spellcasting.knownByLevel, file, "knownByLevel", 10);
 }
 
 for (const url of await jsonFiles("classes/")) {
