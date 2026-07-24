@@ -108,7 +108,7 @@ test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   assert.equal([...firstSlot.options].some((option) => option.text === "burning hands"), false);
 });
 
-test("Cleric alignment and channel energy follow the selected deity", async () => {
+test("Cleric alignment, channel polarity, and daily uses follow the selected deity", async () => {
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
@@ -129,11 +129,24 @@ test("Cleric alignment and channel energy follow the selected deity", async () =
   assert.equal(channel.value, "channel-positive");
   assert.equal(channel.disabled, true);
   assert.ok(screen.getByText(/Spontaneously convert prepared non-domain spells into cure spells/));
+  assert.ok(screen.getByText("1d6"));
+  assert.ok(screen.getByText("Will DC 10"));
+  assert.equal(screen.getByLabelText("Channel energy uses").textContent, "3/3 uses remaining");
+
+  await user.click(screen.getByRole("button", { name: "Use channel energy" }));
+  await user.click(screen.getByRole("button", { name: "Use channel energy" }));
+  assert.equal(screen.getByLabelText("Channel energy uses").textContent, "1/3 uses remaining");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Refresh channels" }));
+  assert.equal(screen.getByLabelText("Channel energy uses").textContent, "3/3 uses remaining");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal(screen.getByLabelText("Channel energy uses").textContent, "1/3 uses remaining");
 
   await user.selectOptions(deity, "deity-asmodeus");
   assert.equal(alignment.value, "alignment-lawful-neutral");
   assert.equal(channel.value, "channel-negative");
   assert.ok(screen.getByText(/Spontaneously convert prepared non-domain spells into inflict spells/));
+  assert.equal(screen.getByLabelText("Channel energy uses").textContent, "1/3 uses remaining");
 
   await user.selectOptions(deity, "deity-gozreh");
   assert.equal(alignment.value, "alignment-lawful-neutral");
