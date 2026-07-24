@@ -143,6 +143,26 @@ test("makes Monk available with its full-save progression", async () => {
   assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+4");
 });
 
+test("makes Wizard selectable with prepared arcane spells and class features", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Arcane Bond"));
+  assert.ok(screen.getByText("Arcane School"));
+  assert.ok(screen.getByText("Spellbook"));
+  assert.ok(screen.getByText("Scribe Scroll"));
+
+  await user.click(screen.getByRole("button", { name: "Spells" }));
+  assert.match(screen.getByText(/Wizard slots/).textContent ?? "", /2 1st-level \(1 base \+ 1 Intelligence\)/);
+  assert.ok(screen.getByRole("button", { name: "Add Magic Missile" }));
+  assert.equal(screen.queryByLabelText("Arcane Reservoir points"), null);
+
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Wizard Bonus Feat"));
+});
+
 test("uses labelled icon tabs to show focused builder sections", async () => {
   const user = userEvent.setup();
   render(<Home />);
