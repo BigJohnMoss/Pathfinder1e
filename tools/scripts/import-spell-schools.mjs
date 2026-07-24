@@ -16,23 +16,17 @@ const normalizeName = (name) => name
 
 const aliasesFor = (value) => {
   if (typeof value !== "string") return [];
-  const values = new Set([value]);
-  const withoutParenthetical = value.replace(/\s*[\[(][^\])]*[\])]\s*$/, "").trim();
-  if (withoutParenthetical) values.add(withoutParenthetical);
+  const normalized = normalizeName(value);
+  if (!normalized) return [];
 
-  const aliases = new Set();
-  for (const candidate of values) {
-    const normalized = normalizeName(candidate);
-    if (!normalized) continue;
-    aliases.add(normalized);
-    const words = normalized.split(" ");
-    const last = words.at(-1);
-    if (ROMAN_TO_NUMBER[last]) aliases.add([...words.slice(0, -1), ROMAN_TO_NUMBER[last]].join(" "));
-    if (NUMBER_TO_ROMAN[last]) aliases.add([...words.slice(0, -1), NUMBER_TO_ROMAN[last]].join(" "));
-    if (MODIFIERS.has(last) && words.length > 1) aliases.add([last, ...words.slice(0, -1)].join(" "));
-    const first = words[0];
-    if (MODIFIERS.has(first) && words.length > 1) aliases.add([...words.slice(1), first].join(" "));
-  }
+  const aliases = new Set([normalized]);
+  const words = normalized.split(" ");
+  const last = words.at(-1);
+  if (ROMAN_TO_NUMBER[last]) aliases.add([...words.slice(0, -1), ROMAN_TO_NUMBER[last]].join(" "));
+  if (NUMBER_TO_ROMAN[last]) aliases.add([...words.slice(0, -1), NUMBER_TO_ROMAN[last]].join(" "));
+  if (MODIFIERS.has(last) && words.length > 1) aliases.add([last, ...words.slice(0, -1)].join(" "));
+  const first = words[0];
+  if (MODIFIERS.has(first) && words.length > 1) aliases.add([...words.slice(1), first].join(" "));
   return [...aliases];
 };
 
@@ -127,7 +121,7 @@ const output = {
     files: SOURCE_FILES,
     license: "Open Game License 1.0a"
   },
-  normalization: "NFKD lowercase alphanumeric words with section-aware inherited, modifier-order, parenthetical, and Roman numeral aliases",
+  normalization: "NFKD lowercase alphanumeric words with section-aware inherited, modifier-order, and Roman numeral aliases",
   schoolsByName: Object.fromEntries(Object.entries(schoolsByName).sort(([left], [right]) => left.localeCompare(right)))
 };
 await mkdir(new URL("../../packages/data/src/spell-schools/", import.meta.url), { recursive: true });
