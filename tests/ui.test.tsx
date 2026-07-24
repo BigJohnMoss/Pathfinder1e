@@ -163,6 +163,44 @@ test("makes Wizard selectable with prepared arcane spells and class features", a
   assert.ok(screen.getByText("Wizard Bonus Feat"));
 });
 
+test("guides Wizard school and opposition school choices", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  await user.click(screen.getByRole("button", { name: "Options" }));
+
+  const school = screen.getByText("Arcane School").closest("label")?.querySelector("select");
+  const firstOpposition = screen.getByText("First Opposition School").closest("label")?.querySelector("select");
+  const secondOpposition = screen.getByText("Second Opposition School").closest("label")?.querySelector("select");
+  assert.ok(school);
+  assert.ok(firstOpposition);
+  assert.ok(secondOpposition);
+  assert.equal(firstOpposition.disabled, true);
+  assert.equal(firstOpposition.options[0].text, "Choose an arcane school first");
+
+  await user.selectOptions(school, "wizard-school-evocation");
+  assert.ok(screen.getByText("Intense Spells"));
+  assert.ok(screen.getByText("Force Missile"));
+  assert.ok(screen.getByText("Elemental Wall"));
+  assert.equal(firstOpposition.disabled, false);
+  assert.equal([...firstOpposition.options].some((option) => option.value === "wizard-opposition-evocation"), false);
+
+  await user.selectOptions(firstOpposition, "wizard-opposition-abjuration");
+  assert.equal((secondOpposition.querySelector("option[value='wizard-opposition-abjuration']") as HTMLOptionElement).disabled, true);
+  await user.selectOptions(secondOpposition, "wizard-opposition-conjuration");
+  assert.equal(firstOpposition.value, "wizard-opposition-abjuration");
+  assert.equal(secondOpposition.value, "wizard-opposition-conjuration");
+
+  await user.selectOptions(school, "wizard-school-universalist");
+  assert.ok(screen.getByText("Hand of the Apprentice"));
+  assert.ok(screen.getByText("Metamagic Mastery"));
+  assert.equal(firstOpposition.disabled, true);
+  assert.equal(secondOpposition.disabled, true);
+  assert.equal(firstOpposition.value, "");
+  assert.equal(secondOpposition.value, "");
+  assert.equal(firstOpposition.options[0].text, "Universalists have no opposition schools");
+});
+
 test("uses labelled icon tabs to show focused builder sections", async () => {
   const user = userEvent.setup();
   render(<Home />);
