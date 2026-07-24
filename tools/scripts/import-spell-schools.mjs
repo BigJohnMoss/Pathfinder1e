@@ -15,21 +15,33 @@ const normalizeName = (name) => name
   .trim();
 
 const aliasesFor = (value) => {
-  const normalized = normalizeName(value);
-  if (!normalized) return [];
-  const aliases = new Set([normalized]);
-  const withoutParenthetical = normalized.replace(/\s+\([^)]*\)$/, "").trim();
-  if (withoutParenthetical) aliases.add(withoutParenthetical);
+  if (typeof value !== "string") return [];
+  const values = new Set([value]);
+  const withoutParenthetical = value.replace(/\s*[\[(][^\])]*[\])]\s*$/, "").trim();
+  if (withoutParenthetical) values.add(withoutParenthetical);
 
-  const words = normalized.split(" ");
-  const last = words.at(-1);
-  if (ROMAN_TO_NUMBER[last]) aliases.add([...words.slice(0, -1), ROMAN_TO_NUMBER[last]].join(" "));
-  if (NUMBER_TO_ROMAN[last]) aliases.add([...words.slice(0, -1), NUMBER_TO_ROMAN[last]].join(" "));
-
-  if (MODIFIERS.has(last) && words.length > 1) aliases.add([last, ...words.slice(0, -1)].join(" "));
-  const first = words[0];
-  if (MODIFIERS.has(first) && words.length > 1) aliases.add([...words.slice(1), first].join(" "));
+  const aliases = new Set();
+  for (const candidate of values) {
+    const normalized = normalizeName(candidate);
+    if (!normalized) continue;
+    aliases.add(normalized);
+    const words = normalized.split(" ");
+    const last = words.at(-1);
+    if (ROMAN_TO_NUMBER[last]) aliases.add([...words.slice(0, -1), ROMAN_TO_NUMBER[last]].join(" "));
+    if (NUMBER_TO_ROMAN[last]) aliases.add([...words.slice(0, -1), NUMBER_TO_ROMAN[last]].join(" "));
+    if (MODIFIERS.has(last) && words.length > 1) aliases.add([last, ...words.slice(0, -1)].join(" "));
+    const first = words[0];
+    if (MODIFIERS.has(first) && words.length > 1) aliases.add([...words.slice(1), first].join(" "));
+  }
   return [...aliases];
+};
+
+const headingName = (line) => {
+  if (typeof line !== "string") return null;
+  const markdown = line.match(/^#{2,6}\s+(.+?)\s*$/)?.[1];
+  const directive = line.match(/^::h[2-6]\[(.+?)\](?:\{.*\})?\s*$/)?.[1];
+  const heading = markdown ?? directive;
+  return heading?.replace(/[*_`]/g, "").trim() || null;
 };
 
 const records = new Map();
@@ -42,34 +54,69 @@ for (const filename of SOURCE_FILES) {
   for (const [key, record] of Object.entries(source)) records.set(key, record);
 }
 
+const variantsByKey = new Map();
+for (const [key, record] of records) {
+  let currentName = typeof record.name === "string" ? record.name : key.replaceAll("_", " ");
+  const variants = [];
+  if (Array.isArray(record.description)) {
+    for (const line of record.description) {
+      currentName = headingName(line) ?? currentName;
+      if (typeof line !== "string" || !line.startsWith("::spell{")) continue;
+      const school = line.match(SCHOOL_PATTERN)?.[1]?.toLowerCase();
+      if (school) variants.push({ name: currentName, school });
+    }
+  }
+  variantsByKey.set(key, variants);
+}
+
 const resolvedSchools = new Map();
-const resolveSchool = (key, path = new Set()) => {
-  if (resolvedSchools.has(key)) return resolvedSchools.get(key);
-  if (path.has(key)) throw new Error(`Circular spell school inheritance: ${[...path, key].join(" -> ")}`);
+const resolveSchool = (key, requestedName, path = new Set()) => {
+  const requestedAliases = new Set(aliasesFor(requestedName ?? key));
+  const cacheKey = `${key}|${[...requestedAliases].sort().join("|")}`;
+  if (resolvedSchools.has(cacheKey)) return resolvedSchools.get(cacheKey);
+  if (path.has(cacheKey)) throw new Error(`Circular spell school inheritance: ${[...path, cacheKey].join(" -> ")}`);
+
   const record = records.get(key);
   if (!record) return null;
-  const nextPath = new Set(path).add(key);
-  const directives = Array.isArray(record.description)
-    ? record.description.filter((line) => typeof line === "string" && line.startsWith("::spell{"))
-    : [];
-  const directSchools = [...new Set(directives.map((directive) => directive.match(SCHOOL_PATTERN)?.[1]?.toLowerCase()).filter(Boolean))];
-  if (directSchools.length > 1) throw new Error(`Conflicting direct schools for ${key}: ${directSchools.join(", ")}`);
+  const variants = variantsByKey.get(key) ?? [];
+  const exactVariant = variants.find((variant) => aliasesFor(variant.name).some((alias) => requestedAliases.has(alias)));
+  if (exactVariant) {
+    resolvedSchools.set(cacheKey, exactVariant.school);
+    return exactVariant.school;
+  }
+
+  const recordAliases = new Set([
+    ...aliasesFor(key),
+    ...(typeof record.name === "string" ? aliasesFor(record.name) : [])
+  ]);
+  const baseVariant = variants.find((variant) => aliasesFor(variant.name).some((alias) => recordAliases.has(alias))) ?? variants[0];
   const inheritedKey = typeof record.copyof === "string" ? record.copyof : typeof record.redirect === "string" ? record.redirect : null;
-  const school = directSchools[0] ?? (inheritedKey ? resolveSchool(inheritedKey, nextPath) : null);
-  resolvedSchools.set(key, school);
+  const school = inheritedKey
+    ? resolveSchool(inheritedKey, requestedName ?? record.name ?? key, new Set(path).add(cacheKey))
+    : baseVariant?.school ?? null;
+  resolvedSchools.set(cacheKey, school);
   return school;
 };
 
 const schoolsByName = {};
-for (const [key, record] of records) {
-  const school = resolveSchool(key);
-  if (!school) continue;
-  const aliases = new Set([...aliasesFor(key), ...(typeof record.name === "string" ? aliasesFor(record.name) : [])]);
-  for (const alias of aliases) {
-    const existing = schoolsByName[alias];
-    if (existing && existing !== school) throw new Error(`Conflicting schools for alias ${alias}: ${existing} and ${school}`);
-    schoolsByName[alias] = school;
+const setSchool = (alias, school, source) => {
+  if (!alias || !school) return;
+  const existing = schoolsByName[alias];
+  if (existing && existing !== school) throw new Error(`Conflicting schools for alias ${alias}: ${existing} and ${school} (${source})`);
+  schoolsByName[alias] = school;
+};
+
+for (const [key, variants] of variantsByKey) {
+  for (const variant of variants) {
+    for (const alias of aliasesFor(variant.name)) setSchool(alias, variant.school, `${key} variant ${variant.name}`);
   }
+}
+
+for (const [key, record] of records) {
+  const requestedName = typeof record.name === "string" ? record.name : key.replaceAll("_", " ");
+  const school = resolveSchool(key, requestedName);
+  if (!school) continue;
+  for (const alias of new Set([...aliasesFor(key), ...aliasesFor(requestedName)])) setSchool(alias, school, key);
 }
 
 const output = {
@@ -80,7 +127,7 @@ const output = {
     files: SOURCE_FILES,
     license: "Open Game License 1.0a"
   },
-  normalization: "NFKD lowercase alphanumeric words with inherited, modifier-order, and Roman numeral aliases",
+  normalization: "NFKD lowercase alphanumeric words with section-aware inherited, modifier-order, parenthetical, and Roman numeral aliases",
   schoolsByName: Object.fromEntries(Object.entries(schoolsByName).sort(([left], [right]) => left.localeCompare(right)))
 };
 await mkdir(new URL("../../packages/data/src/spell-schools/", import.meta.url), { recursive: true });
