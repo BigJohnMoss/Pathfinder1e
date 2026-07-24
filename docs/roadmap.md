@@ -19,9 +19,9 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 
 ### 1. Core classes
 
-Cleric is complete. The Wizard chassis, spell list, arcane schools, school powers, opposition schools, familiars, and bonded objects are integrated. Complete the remaining class systems in this order:
+Cleric is complete. The Wizard chassis, complete spell list and school metadata, arcane schools, school powers, opposition-school choices, specialist school slots, familiars, and bonded items are integrated. Complete the remaining class systems in this order:
 
-1. Wizard spell-school metadata and specialist school slots
+1. Wizard opposition-school preparation costs
 2. Sorcerer
 3. Paladin
 4. Ranger
