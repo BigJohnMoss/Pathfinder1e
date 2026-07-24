@@ -1,5 +1,5 @@
 import generatedData from "../../../generated/pf1e-data.mjs";
-import type { Prerequisite } from "../../../packages/engine/src/index.js";
+import type { CharacterClass, Prerequisite } from "../../../packages/engine/src/index.js";
 
 export type CharacterFeat = {
   id: string;
@@ -29,9 +29,17 @@ export type CharacterOptionGroup = {
   options: CharacterOption[];
 };
 
-type GeneratedClass = {
+type GeneratedClass = CharacterClass & {
   id: string;
   name: string;
+  hitDie: number;
+  classSkills?: string[];
+  spellcasting?: {
+    ability: string;
+    castingType: string;
+    slotsByLevel: number[][];
+    preparedByLevel: number[][];
+  };
   [key: string]: any;
 };
 
