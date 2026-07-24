@@ -131,15 +131,15 @@ test("Cleric alignment and channel energy follow the selected deity", async () =
   assert.ok(screen.getByText(/Spontaneously convert prepared non-domain spells into cure spells/));
 
   await user.selectOptions(deity, "deity-asmodeus");
-  assert.equal(alignment.value, "");
-  await user.selectOptions(alignment, "alignment-lawful-neutral");
+  assert.equal(alignment.value, "alignment-lawful-neutral");
   assert.equal(channel.value, "channel-negative");
   assert.ok(screen.getByText(/Spontaneously convert prepared non-domain spells into inflict spells/));
 
   await user.selectOptions(deity, "deity-gozreh");
-  await user.selectOptions(alignment, "alignment-neutral");
+  assert.equal(alignment.value, "alignment-lawful-neutral");
   assert.equal(channel.disabled, false);
   assert.deepEqual([...channel.options].slice(1).map((option) => option.text), ["Positive Energy", "Negative Energy"]);
+  await user.selectOptions(alignment, "alignment-neutral");
   await user.selectOptions(channel, "channel-negative");
   assert.equal(channel.value, "channel-negative");
 });
