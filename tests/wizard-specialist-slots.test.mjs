@@ -20,21 +20,21 @@ test("Wizard gains one specialist school slot with each new spell level", () => 
 
 test("every generated Wizard spell retains usable school metadata", () => {
   assert.ok(wizardSpells.length > 1000, `expected broad Wizard spell coverage, found ${wizardSpells.length}`);
-  for (const spell of wizardSpells) {
-    assert.equal(typeof spell.school, "string", `${spell.id} school type`);
-    assert.ok(spell.school.length > 0, `${spell.id} school value`);
-  }
+  const missing = wizardSpells.filter((spell) => typeof spell.school !== "string" || spell.school.length === 0).map((spell) => `${spell.id} (${spell.name})`);
+  assert.deepEqual(missing, [], `Wizard spells missing school metadata:\n${missing.join("\n")}`);
 });
 
 test("each specialist school has at least one spell at every spell level", () => {
   const specialistSchools = schools.options.filter((school) => school.id !== "wizard-school-universalist");
+  const missing = [];
   for (const school of specialistSchools) {
     for (let level = 1; level <= 9; level += 1) {
       const options = specialistSchoolSpells(wizardSpells, school, level);
-      assert.ok(options.length > 0, `${school.id} level ${level}`);
+      if (options.length === 0) missing.push(`${school.id} level ${level}`);
       assert.ok(options.every((spell) => spell.school === school.id.replace("wizard-school-", "") && spell.levelByClass.wizard === level));
     }
   }
+  assert.deepEqual(missing, [], `Specialist school levels without spells:\n${missing.join("\n")}`);
 });
 
 test("specialist filtering returns only the selected school and disables Universalists", () => {
