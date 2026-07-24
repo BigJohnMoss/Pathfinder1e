@@ -19,18 +19,17 @@ This document distinguishes records present in the data bundle from systems that
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
-| Wizard | Near-complete Core class | Level 1–20 progression, complete Wizard spell coverage with school metadata, cantrips, spellbook progression, Scribe Scroll, bonus feats, all nine Core schools, two opposition-school choices, Familiar and Bonded Object paths, and one prepared specialist-school slot at each available spell level are integrated. Opposition-school spells still need their two-slot preparation cost enforced. |
+| Wizard | Playable Core class | Level 1–20 progression, complete Wizard spell coverage with school metadata, cantrips, spellbook progression, Scribe Scroll, bonus feats, all nine Core schools, two opposition-school choices with enforced two-slot preparation costs, Familiar and Bonded Object paths, and one prepared specialist-school slot at each available spell level are integrated. |
 
 ## Core classes still required
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Wizard completion | 1 | opposition-school spell preparation costs |
-| Sorcerer | 2 | spontaneous casting, bloodlines and bloodline powers |
-| Paladin | 3 | smite evil, lay on hands, mercies and divine bond |
-| Ranger | 4 | favored enemy, combat styles, favored terrain and limited casting |
-| Bard | 5 | bardic performance, spontaneous casting and versatile performance |
-| Druid | 6 | nature bond, wild shape, animal companion or domain and divine casting |
+| Sorcerer | 1 | spontaneous casting, bloodlines and bloodline powers |
+| Paladin | 2 | smite evil, lay on hands, mercies and divine bond |
+| Ranger | 3 | favored enemy, combat styles, favored terrain and limited casting |
+| Bard | 4 | bardic performance, spontaneous casting and versatile performance |
+| Druid | 5 | nature bond, wild shape, animal companion or domain and divine casting |
 
 ## Selectable ancestries
 
@@ -73,7 +72,7 @@ Feat records may reference class features belonging to classes that are not yet 
 | Domains | All 33 Core Cleric domains are deity-restricted, display granted powers and complete spell lists, and support dedicated domain spell preparation and usage |
 | Alignment | Cleric alignment is restricted to one step from the selected deity |
 | Channel energy | Polarity, dice, save DC, daily uses, spending, refresh and persistence are integrated |
-| Arcane schools | All nine Core Wizard schools and their powers are selectable; specialists choose two opposition schools and gain one school-only prepared slot at every spell level; opposition preparation costs remain |
+| Arcane schools | All nine Core Wizard schools and their powers are selectable; specialists choose two opposition schools, pay two normal preparation slots for opposition spells, and gain one school-only prepared slot at every spell level |
 | Arcane bond | Familiar and bonded-item paths, 11 Core familiar choices, five item categories, shared progression rules, dependency clearing, and persistence are integrated |
 | Bloodlines | Not playable |
 | Mysteries | Not playable |

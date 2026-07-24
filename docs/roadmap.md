@@ -19,14 +19,13 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 
 ### 1. Core classes
 
-Cleric is complete. The Wizard chassis, complete spell list and school metadata, arcane schools, school powers, opposition-school choices, specialist school slots, familiars, and bonded items are integrated. Complete the remaining class systems in this order:
+Cleric and Wizard are complete. Continue the remaining Core classes in this order:
 
-1. Wizard opposition-school preparation costs
-2. Sorcerer
-3. Paladin
-4. Ranger
-5. Bard
-6. Druid
+1. Sorcerer
+2. Paladin
+3. Ranger
+4. Bard
+5. Druid
 
 Each class is considered playable when its level progression, class features, class skills, spellcasting or combat progression, selectable options and relevant prerequisite feature IDs are integrated and tested.
 
