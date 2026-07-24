@@ -5,9 +5,11 @@ type Choice = { id: string; name: string; level: number; options: Option[]; sele
 
 export function ClassOptions({ choices, selectedOptions, onOptionChange }: { choices: Choice[]; selectedOptions: Record<string, string>; onOptionChange: (featureId: string, optionId: string) => void }) {
   const selectedDeity = choices.find((choice) => choice.id === "cleric-deity-1")?.selected;
-  const optionsFor = (choice: Choice) => choice.id.startsWith("cleric-domain-") && selectedDeity?.domains
-    ? choice.options.filter((option) => selectedDeity.domains?.includes(option.id))
-    : choice.options;
+  const optionsFor = (choice: Choice) => {
+    if (!choice.id.startsWith("cleric-domain-")) return choice.options;
+    if (!selectedDeity?.domains) return [];
+    return choice.options.filter((option) => selectedDeity.domains?.includes(option.id));
+  };
 
   useEffect(() => {
     for (const choice of choices) {
@@ -16,5 +18,5 @@ export function ClassOptions({ choices, selectedOptions, onOptionChange }: { cho
     }
   }, [choices, selectedDeity?.id, selectedOptions, onOptionChange]);
 
-  return <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Each earned selectable feature gets its own choice.</p></div>{choices.map((choice) => <label key={choice.id}>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => onOptionChange(choice.id, event.target.value)}><option value="">Choose an option</option>{optionsFor(choice).map((option) => <option key={option.id} value={option.id} disabled={Object.entries(selectedOptions).some(([id, value]) => id !== choice.id && value === option.id)}>{option.name}</option>)}</select>{choice.selected && <span>{choice.selected.benefit}</span>}</label>)}</section>;
+  return <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Each earned selectable feature gets its own choice.</p></div>{choices.map((choice) => { const options = optionsFor(choice); const needsDeity = choice.id.startsWith("cleric-domain-") && !selectedDeity; return <label key={choice.id}>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => onOptionChange(choice.id, event.target.value)} disabled={needsDeity}><option value="">{needsDeity ? "Choose a deity first" : "Choose an option"}</option>{options.map((option) => <option key={option.id} value={option.id} disabled={Object.entries(selectedOptions).some(([id, value]) => id !== choice.id && value === option.id)}>{option.name}</option>)}</select>{choice.selected && <span>{choice.selected.benefit}</span>}</label>; })}</section>;
 }
