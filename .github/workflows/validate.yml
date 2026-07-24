@@ -12,5 +12,15 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run check
+      - name: Check
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run check 2>&1 | tee check.log
+      - name: Upload check failure log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: check-failure-log
+          path: check.log
       - run: npm run build
