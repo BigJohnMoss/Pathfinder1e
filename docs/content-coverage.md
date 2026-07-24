@@ -19,13 +19,13 @@ This document distinguishes records present in the data bundle from systems that
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
-| Wizard | Playable chassis | Level 1–20 d6 chassis, prepared Intelligence casting, cantrips, spellbook progression, Scribe Scroll, and bonus-feat levels are integrated. Arcane schools, opposition schools, and arcane bond choices remain. |
+| Wizard | Playable chassis | Level 1–20 d6 chassis, the complete prepared Wizard spell list, cantrips, spellbook progression, Scribe Scroll, bonus-feat levels, all nine Core arcane schools with powers, and two distinct opposition-school choices for specialists are integrated. Specialist school spell slots and arcane bond choices remain. |
 
 ## Core classes still required
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Wizard completion | 1 | arcane schools, opposition schools, bonded object or familiar, specialist school slots |
+| Wizard completion | 1 | specialist school spell slots and bonded object or familiar |
 | Sorcerer | 2 | spontaneous casting, bloodlines and bloodline powers |
 | Paladin | 3 | smite evil, lay on hands, mercies and divine bond |
 | Ranger | 4 | favored enemy, combat styles, favored terrain and limited casting |
@@ -73,7 +73,7 @@ Feat records may reference class features belonging to classes that are not yet 
 | Domains | All 33 Core Cleric domains are deity-restricted, display granted powers and complete spell lists, and support dedicated domain spell preparation and usage |
 | Alignment | Cleric alignment is restricted to one step from the selected deity |
 | Channel energy | Polarity, dice, save DC, daily uses, spending, refresh and persistence are integrated |
-| Arcane schools | Wizard feature ID and chassis support exist; selectable schools and opposition rules remain |
+| Arcane schools | All nine Core Wizard schools and their powers are selectable; specialists choose two distinct legal opposition schools; school spell slots remain |
 | Arcane bond | Wizard feature ID exists; familiar and bonded-object choices remain |
 | Bloodlines | Not playable |
 | Mysteries | Not playable |
