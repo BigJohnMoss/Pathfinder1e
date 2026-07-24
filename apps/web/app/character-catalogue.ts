@@ -29,6 +29,13 @@ export type CharacterOptionGroup = {
   options: CharacterOption[];
 };
 
+export type CharacterSpell = {
+  id: string;
+  name: string;
+  levelByClass: Record<string, number>;
+  summary: string;
+};
+
 type GeneratedClass = CharacterClass & {
   id: string;
   name: string;
@@ -67,7 +74,7 @@ export const classes = orderedById<GeneratedClass>(generatedData.classes, ["arca
 export const ancestries = orderedById<GeneratedAncestry>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
 export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name)) as unknown as CharacterFeat[];
 export const optionGroups = orderedById(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "rogue-talents", "combat-feats", "fighter-weapon-groups"]) as unknown as CharacterOptionGroup[];
-export const spells = generatedData.spells;
+export const spells = generatedData.spells as CharacterSpell[];
 
 export const skills = [
   {name:"Acrobatics",ability:"dexterity"},{name:"Appraise",ability:"intelligence"},{name:"Bluff",ability:"charisma"},{name:"Climb",ability:"strength"},{name:"Craft",ability:"intelligence"},{name:"Diplomacy",ability:"charisma"},{name:"Disable Device",ability:"dexterity"},{name:"Disguise",ability:"charisma"},{name:"Escape Artist",ability:"dexterity"},{name:"Fly",ability:"dexterity"},{name:"Handle Animal",ability:"charisma"},{name:"Heal",ability:"wisdom"},{name:"Intimidate",ability:"charisma"},
