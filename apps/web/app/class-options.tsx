@@ -1,9 +1,11 @@
 import { useEffect } from "react";
+import { spells as characterSpells, type CharacterSpell } from "./character-catalogue";
 import { alignmentsWithinOneStep, channelEnergyChoices } from "../../../packages/engine/src/cleric-alignment.js";
 import { channelEnergyProgression } from "../../../packages/engine/src/channel-energy.js";
 import { optionsGrantedBySelection } from "../../../packages/engine/src/dependent-options.js";
 import { arcaneBondDetailOptions } from "../../../packages/engine/src/wizard-arcane-bond.js";
 import { oppositionSchoolOptions } from "../../../packages/engine/src/wizard-schools.js";
+import { specialistSchoolSpells } from "../../../packages/engine/src/wizard-specialist-slots.js";
 
 type Option = {
   id: string;
@@ -19,6 +21,7 @@ type Choice = { id: string; name: string; level: number; options: Option[]; sele
 
 const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const domainSpellLevel = (choice: Choice) => Number(choice.id.match(/^cleric-domain-spell-(\d+)$/)?.[1] ?? 0);
+const specialistSpellLevel = (choice: Choice) => Number(choice.id.match(/^wizard-specialist-spell-(\d+)$/)?.[1] ?? 0);
 const isWizardOpposition = (choice: Choice) => choice.id.startsWith("wizard-opposition-school-");
 const choiceOrder = (choice: Choice) => {
   if (choice.id === "wizard-arcane-bond-1") return 5;
@@ -26,11 +29,13 @@ const choiceOrder = (choice: Choice) => {
   if (choice.id === "cleric-deity-1" || choice.id === "wizard-arcane-school-1") return 10;
   if (choice.id === "cleric-alignment-1" || choice.id === "wizard-opposition-school-1-first") return 20;
   if (choice.id === "wizard-opposition-school-1-second") return 21;
+  const specialistLevel = specialistSpellLevel(choice);
+  if (specialistLevel) return 30 + specialistLevel;
   if (choice.id === "cleric-channel-energy-type-1") return 30;
   if (choice.id === "cleric-domain-1-first") return 40;
   if (choice.id === "cleric-domain-1-second") return 41;
-  const spellLevel = domainSpellLevel(choice);
-  return spellLevel ? 50 + spellLevel : 100;
+  const domainLevel = domainSpellLevel(choice);
+  return domainLevel ? 50 + domainLevel : 100;
 };
 
 function OptionDetails({ option }: { option: Option }) {
@@ -52,6 +57,12 @@ function ChannelEnergyTracker({ level, charismaModifier, used, onUsedChange }: {
   </div>;
 }
 
+const spellAsOption = (spell: CharacterSpell, schoolName: string): Option => ({
+  id: spell.id,
+  name: spell.name,
+  benefit: `Prepare ${spell.name} in this dedicated ${schoolName} specialist slot. ${spell.summary}`
+});
+
 export function ClassOptions({ choices, selectedOptions, classLevel, charismaModifier, onOptionChange }: { choices: Choice[]; selectedOptions: Record<string, string>; classLevel: number; charismaModifier: number; onOptionChange: (featureId: string, optionId: string) => void }) {
   const orderedChoices = [...choices].sort((left, right) => choiceOrder(left) - choiceOrder(right));
   const selectedDeity = orderedChoices.find((choice) => choice.id === "cleric-deity-1")?.selected;
@@ -60,6 +71,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const selectedWizardSchool = orderedChoices.find((choice) => choice.id === "wizard-arcane-school-1")?.selected;
   const selectedDomains = orderedChoices.filter((choice) => choice.id === "cleric-domain-1-first" || choice.id === "cleric-domain-1-second").flatMap((choice) => choice.selected ? [choice.selected] : []);
   const domainSlotChoices = orderedChoices.filter((choice) => domainSpellLevel(choice) > 0);
+  const specialistSlotChoices = orderedChoices.filter((choice) => specialistSpellLevel(choice) > 0);
   const channelUsedKey = "cleric-channel-energy-used";
   const channelProgression = channelEnergyProgression(classLevel, charismaModifier);
   const channelUsed = Math.max(0, Number.parseInt(selectedOptions[channelUsedKey] ?? "0", 10) || 0);
@@ -73,14 +85,20 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     }
     return [...byId.values()].sort((left, right) => left.name.localeCompare(right.name));
   };
+  const specialistOptions = (level: number) => {
+    const schoolName = selectedWizardSchool?.name.replace(/ School$/, "") ?? "school";
+    return specialistSchoolSpells(characterSpells, selectedWizardSchool, level).map((spell) => spellAsOption(spell, schoolName));
+  };
   const optionsFor = (choice: Choice) => {
     if (choice.id === "cleric-alignment-1") return alignmentsWithinOneStep(choice.options, selectedDeity?.alignment);
     if (choice.id === "cleric-channel-energy-type-1") return channelEnergyChoices(choice.options, selectedAlignment?.alignment, selectedDeity?.alignment);
     if (choice.id === "wizard-familiar-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-familiar");
     if (choice.id === "wizard-bonded-object-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-object");
+    const specialistLevel = specialistSpellLevel(choice);
+    if (specialistLevel) return specialistOptions(specialistLevel);
     if (isWizardOpposition(choice)) return oppositionSchoolOptions(choice.options, selectedWizardSchool);
-    const spellLevel = domainSpellLevel(choice);
-    if (spellLevel) return domainSpellOptions(spellLevel);
+    const domainLevel = domainSpellLevel(choice);
+    if (domainLevel) return domainSpellOptions(domainLevel);
     if (!choice.id.startsWith("cleric-domain-")) return choice.options;
     return optionsGrantedBySelection(choice.options, selectedDeity);
   };
@@ -91,31 +109,37 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
       const options = optionsFor(choice);
       if (selectedId && !options.some((option) => option.id === selectedId)) onOptionChange(choice.id, "");
       if (choice.id === "cleric-channel-energy-type-1" && options.length === 1 && selectedId !== options[0].id) onOptionChange(choice.id, options[0].id);
-      if (!selectedId && domainSpellLevel(choice) && selectedOptions[`${choice.id}-used`]) onOptionChange(`${choice.id}-used`, "");
+      if (!selectedId && (domainSpellLevel(choice) || specialistSpellLevel(choice)) && selectedOptions[`${choice.id}-used`]) onOptionChange(`${choice.id}-used`, "");
     }
     if (channelUsed > channelProgression.usesPerDay) onOptionChange(channelUsedKey, String(channelProgression.usesPerDay));
   }, [choices, selectedDeity?.id, selectedAlignment?.id, selectedArcaneBond?.id, selectedWizardSchool?.id, selectedOptions, classLevel, charismaModifier, onOptionChange]);
 
   const refreshDomainSlots = () => domainSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
+  const refreshSpecialistSlots = () => specialistSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
 
-  return <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Dependent choices are ordered so each selection unlocks the next legal options.</p></div>{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{orderedChoices.map((choice) => {
+  return <section className="choice-panel"><div><p className="eyebrow">CLASS OPTIONS</p><h2>Choose class features</h2><p>Dependent choices are ordered so each selection unlocks the next legal options.</p></div>{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{specialistSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshSpecialistSlots}>Refresh specialist school slots</button>}{orderedChoices.map((choice) => {
     const options = optionsFor(choice);
-    const spellLevel = domainSpellLevel(choice);
+    const domainLevel = domainSpellLevel(choice);
+    const specialistLevel = specialistSpellLevel(choice);
+    const trackedSpellSlot = Boolean(domainLevel || specialistLevel);
     const wizardOpposition = isWizardOpposition(choice);
+    const specialistUniversalist = Boolean(specialistLevel) && selectedWizardSchool?.id === "wizard-school-universalist";
     const wizardUniversalist = wizardOpposition && selectedWizardSchool?.id === "wizard-school-universalist";
-    const needsWizardSchool = wizardOpposition && !selectedWizardSchool;
+    const needsWizardSchool = (wizardOpposition || Boolean(specialistLevel)) && !selectedWizardSchool;
     const familiarChoice = choice.id === "wizard-familiar-1";
     const objectChoice = choice.id === "wizard-bonded-object-1";
     const needsArcaneBond = (familiarChoice || objectChoice) && !selectedArcaneBond;
-    const wrongArcaneBond = familiarChoice && selectedArcaneBond?.id === "wizard-arcane-bond-object" || objectChoice && selectedArcaneBond?.id === "wizard-arcane-bond-familiar";
-    const needsDeity = (choice.id === "cleric-alignment-1" || (!spellLevel && choice.id.startsWith("cleric-domain-"))) && !selectedDeity;
+    const wrongArcaneBond = (familiarChoice && selectedArcaneBond?.id === "wizard-arcane-bond-object") || (objectChoice && selectedArcaneBond?.id === "wizard-arcane-bond-familiar");
+    const needsDeity = (choice.id === "cleric-alignment-1" || (!domainLevel && choice.id.startsWith("cleric-domain-"))) && !selectedDeity;
     const needsAlignment = choice.id === "cleric-channel-energy-type-1" && !selectedAlignment;
-    const needsDomains = Boolean(spellLevel) && selectedDomains.length === 0;
-    const unavailableDetails = Boolean(spellLevel) && selectedDomains.length > 0 && options.length === 0;
+    const needsDomains = Boolean(domainLevel) && selectedDomains.length === 0;
+    const unavailableDomainDetails = Boolean(domainLevel) && selectedDomains.length > 0 && options.length === 0;
+    const unavailableSpecialistSpells = Boolean(specialistLevel) && Boolean(selectedWizardSchool) && !specialistUniversalist && options.length === 0;
     const selected = options.find((option) => option.id === selectedOptions[choice.id]);
     const usedKey = `${choice.id}-used`;
     const used = selectedOptions[usedKey] === "used";
-    const placeholder = needsArcaneBond ? "Choose an arcane bond first" : wrongArcaneBond ? familiarChoice ? "Familiar bond not selected" : "Bonded object not selected" : needsWizardSchool ? "Choose an arcane school first" : wizardUniversalist ? "Universalists have no opposition schools" : needsDeity ? "Choose a deity first" : needsAlignment ? "Choose alignment first" : needsDomains ? "Choose domains first" : unavailableDetails ? "Domain spell details unavailable" : options.length === 1 && choice.id === "cleric-channel-energy-type-1" ? "Determined by alignment" : "Choose an option";
-    return <article className="choice-card" key={choice.id}><label>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => { onOptionChange(choice.id, event.target.value); if (spellLevel) onOptionChange(usedKey, ""); }} disabled={needsArcaneBond || wrongArcaneBond || needsWizardSchool || wizardUniversalist || needsDeity || needsAlignment || needsDomains || unavailableDetails || (choice.id === "cleric-channel-energy-type-1" && options.length === 1)}><option value="">{placeholder}</option>{options.map((option) => <option key={option.id} value={option.id} disabled={!spellLevel && Object.entries(selectedOptions).some(([id, value]) => id !== choice.id && value === option.id)}>{option.name}</option>)}</select></label>{selected && <OptionDetails option={selected} />}{choice.id === "cleric-channel-energy-type-1" && selected && <ChannelEnergyTracker level={classLevel} charismaModifier={charismaModifier} used={channelUsed} onUsedChange={(next) => onOptionChange(channelUsedKey, String(next))} />}{Boolean(spellLevel) && selected && <div className="domain-slot-use"><output aria-label={`${choice.name} status`}>{used ? "Used" : "Available"}</output><button type="button" aria-label={`Cast ${selected.name} from ${choice.name}`} disabled={used} onClick={() => onOptionChange(usedKey, "used")}>{used ? "Used" : "Cast domain spell"}</button></div>}</article>;
+    const placeholder = needsArcaneBond ? "Choose an arcane bond first" : wrongArcaneBond ? familiarChoice ? "Familiar bond not selected" : "Bonded object not selected" : needsWizardSchool ? "Choose an arcane school first" : specialistUniversalist ? "Universalists have no specialist slots" : wizardUniversalist ? "Universalists have no opposition schools" : needsDeity ? "Choose a deity first" : needsAlignment ? "Choose alignment first" : needsDomains ? "Choose domains first" : unavailableDomainDetails ? "Domain spell details unavailable" : unavailableSpecialistSpells ? "No matching specialist spells available" : options.length === 1 && choice.id === "cleric-channel-energy-type-1" ? "Determined by alignment" : "Choose an option";
+    const disabled = needsArcaneBond || wrongArcaneBond || needsWizardSchool || specialistUniversalist || wizardUniversalist || needsDeity || needsAlignment || needsDomains || unavailableDomainDetails || unavailableSpecialistSpells || (choice.id === "cleric-channel-energy-type-1" && options.length === 1);
+    return <article className="choice-card" key={choice.id}><label>{choice.name} <small>level {choice.level}</small><select value={selectedOptions[choice.id] ?? ""} onChange={(event) => { onOptionChange(choice.id, event.target.value); if (trackedSpellSlot) onOptionChange(usedKey, ""); }} disabled={disabled}><option value="">{placeholder}</option>{options.map((option) => <option key={option.id} value={option.id} disabled={!trackedSpellSlot && Object.entries(selectedOptions).some(([id, value]) => id !== choice.id && value === option.id)}>{option.name}</option>)}</select></label>{selected && <OptionDetails option={selected} />}{choice.id === "cleric-channel-energy-type-1" && selected && <ChannelEnergyTracker level={classLevel} charismaModifier={charismaModifier} used={channelUsed} onUsedChange={(next) => onOptionChange(channelUsedKey, String(next))} />}{trackedSpellSlot && selected && <div className="domain-slot-use"><output aria-label={`${choice.name} status`}>{used ? "Used" : "Available"}</output><button type="button" aria-label={`Cast ${selected.name} from ${choice.name}`} disabled={used} onClick={() => onOptionChange(usedKey, "used")}>{used ? "Used" : "Cast prepared spell"}</button></div>}</article>;
   })}</section>;
 }
