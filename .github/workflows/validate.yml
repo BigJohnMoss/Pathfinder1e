@@ -2,6 +2,8 @@ name: Validate PF1e data
 on:
   push:
   pull_request:
+permissions:
+  contents: write
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -12,12 +14,19 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - name: Check
-        run: npm run check > check.log 2>&1
-      - name: Upload check failure log
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: wizard-specialist-slot-failure
-          path: check.log
+      - name: Generate pinned spell school map
+        run: node tools/scripts/import-spell-schools.mjs
+      - name: Commit generated spell school map
+        if: github.event_name == 'push' && github.ref_name == 'agent/add-wizard-specialist-slots'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/data/src/spell-schools/pathfinder-data-1e.json
+          if git diff --cached --quiet; then
+            echo "Spell school map is already current."
+          else
+            git commit -m "Generate pinned spell school map"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
+      - run: npm run check
       - run: npm run build
