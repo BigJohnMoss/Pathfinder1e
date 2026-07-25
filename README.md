@@ -16,6 +16,10 @@ its application shell is cached for offline use. Character drafts continue to
 use the browser's local storage, so clearing site data will remove local drafts;
 export important characters before clearing browser data.
 
+Browser-level PWA tests use the production server because service workers are
+disabled during normal Next.js development. Run `npm run build` before
+`npm run test:e2e` when testing locally.
+
 A from-scratch, data-first Pathfinder First Edition character-builder project.
 
 ## Current status

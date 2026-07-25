@@ -51,15 +51,20 @@ export function PwaRegistration() {
         });
     };
 
+    const hadController = Boolean(navigator.serviceWorker.controller);
     const refreshOnActivation = () => {
-      if (refreshing.current) {
+      if (!hadController || refreshing.current) {
         return;
       }
       refreshing.current = true;
       window.location.reload();
     };
 
-    window.addEventListener("load", register);
+    if (document.readyState === "complete") {
+      register();
+    } else {
+      window.addEventListener("load", register);
+    }
     navigator.serviceWorker.addEventListener(
       "controllerchange",
       refreshOnActivation,
