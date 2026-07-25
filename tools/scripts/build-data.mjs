@@ -5,7 +5,10 @@ async function loadDir(name){const dir=new URL(`${name}/`,base);const files=(awa
 const normalizeName=(name)=>name.normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 const spellCatalogues=await loadDir('spell-catalogues');
 const spellClassLevelFiles=await loadDir('spell-class-levels');
-const spellClassLevels=Object.assign({},...spellClassLevelFiles.map(file=>file.levelsBySpellId??{}));
+const spellClassLevels={};
+for(const file of spellClassLevelFiles) for(const [spellId,levels] of Object.entries(file.levelsBySpellId??{})){
+  spellClassLevels[spellId]={...(spellClassLevels[spellId]??{}),...levels};
+}
 const spellSchoolFiles=await loadDir('spell-schools');
 const schoolsByName=Object.assign({},...spellSchoolFiles.map(file=>file.schoolsByName??{}));
 const domainDetailFiles=await loadDir('domain-details');
