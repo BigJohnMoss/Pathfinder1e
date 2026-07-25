@@ -15,7 +15,7 @@ This document distinguishes records present in the data bundle from systems that
 |---|---|---|
 | Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
 | Barbarian | Playable | Core progression and rage powers are integrated. |
-| Bard | Playable foundation | Level 1–20 chassis, spontaneous casting progression, Core performance milestones, and all nine Versatile Performance choices are integrated; daily performance tracking and the complete Core spell catalogue remain. |
+| Bard | Playable foundation | Level 1–20 chassis, spontaneous casting progression, Core performance milestones, all nine Versatile Performance choices, and persistent daily performance-round tracking are integrated; the complete Core spell catalogue remains. |
 | Cleric | Playable Core class | Level 1–20 divine prepared casting, orisons, spontaneous conversion, channel energy with daily tracking, deity-compatible alignment, channel polarity, 20 Core deity choices, all 33 Core domains, and dedicated domain spell preparation are integrated. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
@@ -29,7 +29,7 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Bard | 3 | daily bardic-performance tracking and the complete Core spell catalogue |
+| Bard | 3 | complete Core spell catalogue |
 | Druid | 4 | nature bond, wild shape, animal companion or domain and divine casting |
 
 ## Selectable ancestries

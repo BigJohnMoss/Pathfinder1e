@@ -12,7 +12,7 @@ import { FeatChoices } from "./feat-choices";
 import { ClassOptions } from "./class-options";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { CharacterTabs, OptionsPlaceholder, StoragePlaceholder, type CharacterTabId } from "./character-tabs";
-import { abilityBoostCount, abilityNames, arcaneReservoir, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
+import { abilityBoostCount, abilityNames, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells, bloodlineClassSkills } from "../../../packages/engine/src/sorcerer-bloodlines.js";
@@ -50,6 +50,7 @@ export default function Home() {
   const [selectedSpellIds, setSelectedSpellIds] = useState<string[]>([]);
   const [spellSlotUses, setSpellSlotUses] = useState<Record<number, number>>({});
   const [reservoirPoints, setReservoirPoints] = useState(3);
+  const [bardicPerformanceUsed, setBardicPerformanceUsed] = useState(0);
   const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
   const [saveNotice, setSaveNotice] = useState("");
 
@@ -114,9 +115,10 @@ export default function Home() {
   const knownLimits = useMemo(() => spontaneousCasting?.known ?? [], [spontaneousCasting]);
   const oppositionSchoolIds = useMemo(() => oppositionSchoolsFromOptions(classId, selectedOptions), [classId, selectedOptions]);
   const reservoir = classId === "arcanist" ? arcaneReservoir(level) : null;
+  const bardicPerformanceMaximum = classId === "bard" ? bardicPerformanceRounds(level, combat.abilityModifiers.charisma) : 0;
   const updateSpellSlotUses = (uses: Record<number, number>) => setSpellSlotUses(normalizeSpellSlotUses(uses, spellSlots));
   const updateReservoir = (points: number) => setReservoirPoints(Math.max(0, Math.min(reservoir?.maximum ?? 0, points)));
-  const refreshDay = () => { setSpellSlotUses({}); if (reservoir) setReservoirPoints(reservoir.dailyRefresh); };
+  const refreshDay = () => { setSpellSlotUses({}); if (reservoir) setReservoirPoints(reservoir.dailyRefresh); if (classId === "bard") setBardicPerformanceUsed(0); };
   const normalizeSelectedSpells = (spellIds: string[]) => isSpontaneous
     ? normalizeKnownSpells(spellIds, availableSpells, characterClass.id, knownLimits, bloodlineSpellIds)
     : normalizePreparedSpellsWithOpposition(spellIds, availableSpells, characterClass.id, preparedLimits, oppositionSchoolIds);
@@ -124,8 +126,9 @@ export default function Home() {
   useEffect(() => setSelectedSpellIds((current) => { const next = normalizeSelectedSpells(current); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [availableSpells, bloodlineSpellIds, characterClass.id, isSpontaneous, knownLimits, oppositionSchoolIds, preparedLimits]);
   useEffect(() => setSpellSlotUses((current) => normalizeSpellSlotUses(current, spellSlots)), [spellSlots]);
   useEffect(() => { if (reservoir) setReservoirPoints((current) => Math.min(current, reservoir.maximum)); }, [reservoir?.maximum]);
+  useEffect(() => setBardicPerformanceUsed((current) => Math.min(current, bardicPerformanceMaximum)), [bardicPerformanceMaximum]);
 
-  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, selectedFeatIds, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), arcaneReservoir: reservoir ? reservoirPoints : null };
+  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, selectedFeatIds, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), arcaneReservoir: reservoir ? reservoirPoints : null, bardicPerformanceUsed: classId === "bard" ? bardicPerformanceUsed : 0 };
   const applyCharacterDraft = (value: unknown, successNotice: string) => {
     if (value && typeof value === "object" && "version" in value && value.version !== 1) { setSaveNotice("Unsupported character file version"); return null; }
     const draft = normalizeCharacterDraft(value, { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id) });
@@ -143,13 +146,14 @@ export default function Home() {
     const draftCasting = draftSpontaneousCasting ?? draftPreparedCasting;
     const draftBaseSpells = draftCasting ? spellsAvailableToClass(spells, draftClass.id, draftCasting.maximumSpellLevel) : [];
     const draftReservoir = draft.classId === "arcanist" ? arcaneReservoir(draft.level) : null;
+    const draftBardicPerformanceMaximum = draft.classId === "bard" ? bardicPerformanceRounds(draft.level, Math.floor((draftAbilities.charisma - 10) / 2)) : 0;
     const draftOppositionSchoolIds = oppositionSchoolsFromOptions(draft.classId, draft.selectedOptions);
     const draftBloodline = bloodlineFromOptions(draft.classId, draft.selectedOptions);
     const draftBloodlineSpells = draftIsSpontaneous && draftCasting ? bloodlineBonusSpells(spells, draftBloodline, draft.level, draftClass.id).filter((spell) => spell.levelByClass[draftClass.id] <= draftCasting.maximumSpellLevel) : [];
     const draftSpells = mergeSpellLists(draftBaseSpells, draftBloodlineSpells);
     const draftBloodlineSpellIds = draftBloodlineSpells.map((spell) => spell.id);
     const normalizedDraftSpells = draftIsSpontaneous ? normalizeKnownSpells(draft.preparedSpells, draftSpells, draftClass.id, draftSpontaneousCasting?.known ?? [], draftBloodlineSpellIds) : normalizePreparedSpellsWithOpposition(draft.preparedSpells, draftSpells, draftClass.id, draftPreparedCasting?.prepared ?? [], draftOppositionSchoolIds);
-    setName(draft.name); setClassId(draft.classId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setSelectedFeatIds(draft.selectedFeatIds); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setSaveNotice(successNotice);
+    setName(draft.name); setClassId(draft.classId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setSelectedFeatIds(draft.selectedFeatIds); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setBardicPerformanceUsed(Math.min(draft.bardicPerformanceUsed, draftBardicPerformanceMaximum)); setSaveNotice(successNotice);
     return draft;
   };
   const saveCharacter = () => { localStorage.setItem("pf1e-character-draft", JSON.stringify(characterDraft)); setSaveNotice("Saved locally"); };
@@ -159,7 +163,7 @@ export default function Home() {
     try { applyCharacterDraft(JSON.parse(await file.text()), "Imported character"); }
     catch { setSaveNotice("Character file is invalid"); }
   };
-  const resetCharacter = () => { localStorage.removeItem("pf1e-character-draft"); setName(""); setClassId("arcanist"); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setSelectedFeatIds([]); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSpellSlotUses({}); setReservoirPoints(3); setSaveNotice("Character reset"); };
+  const resetCharacter = () => { localStorage.removeItem("pf1e-character-draft"); setName(""); setClassId("arcanist"); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setSelectedFeatIds([]); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSpellSlotUses({}); setReservoirPoints(3); setBardicPerformanceUsed(0); setSaveNotice("Character reset"); };
   const exportCharacter = () => { const draft = { ...characterDraft, exportedAt: new Date().toISOString() }; const url = URL.createObjectURL(new Blob([JSON.stringify(draft, null, 2)], { type: "application/json" })); const link = document.createElement("a"); link.href = url; link.download = `${name.trim().replace(/[^a-z0-9]+/gi, "-").toLowerCase() || "pf1e-character"}.json`; link.click(); URL.revokeObjectURL(url); setSaveNotice("Character exported"); };
   const printCharacter = () => window.print();
 
@@ -174,7 +178,7 @@ export default function Home() {
       {activeTab === "spells" && (spontaneousCasting ? <SpontaneousSpellbook spells={availableSpells} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spontaneousCasting.slots} knownLimits={knownLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={bloodlineSpellIds} onKnownSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} onRefreshDay={refreshDay} /> : preparedCasting ? <Spellbook spells={availableSpells} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={preparedCasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={updateReservoir} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} /> : <p className="empty-tab">This class does not cast spells.</p>)}
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}
-      {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={characterClass.name} features={progression.features} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={level} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
+      {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={characterClass.name} features={progression.features} dailyResource={classId === "bard" ? { label: "Performance rounds", unit: "round", maximum: bardicPerformanceMaximum, used: bardicPerformanceUsed, onUsedChange: setBardicPerformanceUsed } : undefined} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={level} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
       {activeTab === "options" && <OptionsPlaceholder />}
     </section>
   </main>;

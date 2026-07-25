@@ -19,7 +19,7 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 
 ### 1. Core classes
 
-Cleric, Paladin, Ranger, Sorcerer and Wizard are complete playable Core classes through level 20. Ranger includes its complete Core spell list, selectable combat styles, favored enemies and terrains, and both Hunter's Bond paths. Sorcerer includes all ten Core bloodlines with complete class skills, arcana, powers, automatic bonus spells, bonus-feat lists and dependent variant choices. Continue the remaining Core classes in this order:
+Cleric, Paladin, Ranger, Sorcerer and Wizard are complete playable Core classes through level 20. Ranger includes its complete Core spell list, selectable combat styles, favored enemies and terrains, and both Hunter's Bond paths. Sorcerer includes all ten Core bloodlines with complete class skills, arcana, powers, automatic bonus spells, bonus-feat lists and dependent variant choices. Bard has its complete chassis and persistent daily performance-round tracking; its Core spell catalogue remains. Continue the remaining Core classes in this order:
 
 1. Bard
 2. Druid

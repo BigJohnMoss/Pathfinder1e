@@ -22,6 +22,7 @@ export interface CharacterDraftV1 {
   preparedSpells: string[];
   spellSlotUses: Record<string, number>;
   arcaneReservoir: number | null;
+  bardicPerformanceUsed: number;
 }
 
 export type CharacterDraft = CharacterDraftV1;

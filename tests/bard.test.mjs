@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
-import { availableOptions, classProgression } from "../packages/engine/src/index.js";
+import { availableOptions, bardicPerformanceRounds, classProgression } from "../packages/engine/src/index.js";
 import { spontaneousSpellcastingProgression } from "../packages/engine/src/spontaneous-spellcasting.js";
 import bundle from "../generated/pf1e-data.mjs";
 
@@ -26,6 +26,13 @@ test("Bard spontaneous casting reaches 6th-level spells", () => {
   const twentieth = spontaneousSpellcastingProgression(bard, 20, { abilityScore: 22 });
   assert.deepEqual(twentieth.slots.map((slot) => slot.level), [1, 2, 3, 4, 5, 6]);
   assert.deepEqual(twentieth.known.map((entry) => entry.level), [0, 1, 2, 3, 4, 5, 6]);
+});
+
+test("Bardic Performance rounds scale with level and Charisma", () => {
+  assert.equal(bardicPerformanceRounds(1, 2), 6);
+  assert.equal(bardicPerformanceRounds(6, 2), 16);
+  assert.equal(bardicPerformanceRounds(20, 6), 48);
+  assert.throws(() => bardicPerformanceRounds(0, 0), RangeError);
 });
 
 test("Bard gains every Core performance at its milestone", () => {

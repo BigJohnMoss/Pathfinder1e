@@ -132,6 +132,8 @@ export function arcaneReservoir(level) {
   return { maximum: 3 + level, dailyRefresh: 3 + Math.floor(level / 2) };
 }
 
+export { bardicPerformanceRounds } from "./bardic-performance.js";
+
 export function bonusSpellsPerDay(abilityScore, maximumSpellLevel) {
   if (!Number.isInteger(maximumSpellLevel) || maximumSpellLevel < 0 || maximumSpellLevel > 9) throw new RangeError("Maximum spell level must be an integer from 0 to 9.");
   const modifier = abilityModifier(abilityScore);
@@ -198,7 +200,8 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     selectedOptions: isStringRecord(draft.selectedOptions),
     preparedSpells: Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : [],
     spellSlotUses: isRankRecord(draft.spellSlotUses),
-    arcaneReservoir: Number.isInteger(draft.arcaneReservoir) && draft.arcaneReservoir >= 0 ? draft.arcaneReservoir : null
+    arcaneReservoir: Number.isInteger(draft.arcaneReservoir) && draft.arcaneReservoir >= 0 ? draft.arcaneReservoir : null,
+    bardicPerformanceUsed: Number.isInteger(draft.bardicPerformanceUsed) && draft.bardicPerformanceUsed >= 0 ? draft.bardicPerformanceUsed : 0
   };
 }
 

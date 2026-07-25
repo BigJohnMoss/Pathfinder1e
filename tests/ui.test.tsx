@@ -215,6 +215,15 @@ test("makes Bard selectable with spontaneous casting and Versatile Performance c
   assert.ok(screen.getByText("Bardic Knowledge"));
   assert.ok(screen.getByText("Bardic Performance"));
   assert.ok(screen.getByText("Suggestion"));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "16/16 round remaining");
+  await user.click(screen.getByRole("button", { name: "Spend 1 round" }));
+  await user.click(screen.getByRole("button", { name: "Spend 1 round" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "14/16 round remaining");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Refresh performance rounds" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "16/16 round remaining");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "14/16 round remaining");
   const versatile1 = screen.getByLabelText(/Versatile Performance 1/);
   const versatile2 = screen.getByLabelText(/Versatile Performance 2/);
   await user.selectOptions(versatile1, "bard-versatile-performance-oratory");
