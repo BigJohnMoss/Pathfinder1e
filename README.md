@@ -12,7 +12,7 @@ The project is working toward the **Core Character Builder** milestone. The curr
 - 1,903 spells
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
-Cleric and Wizard are complete playable Core classes through level 20. Sorcerer has its full level 1–20 spontaneous-casting chassis, shared Sorcerer/Wizard spell list, spells-known progression, ten Core bloodline identities, bloodline milestones, and persistent casting workflow. Aberrant, Abyssal, Arcane, Celestial, Destined, Draconic, Elemental, and Fey now include their class skills, arcana, all five powers, nine automatically granted bonus spells, and bonus-feat lists. Draconic includes all ten Core dragon types; Elemental includes Air, Earth, Fire, and Water with persistent energy and movement selection. Only Infernal and Undead remain.
+Cleric, Sorcerer, and Wizard are complete playable Core classes through level 20. Sorcerer includes its full spontaneous-casting progression, complete shared spell list, spells known, all ten Core bloodlines, each bloodline's class skill, arcana, five powers, nine automatic bonus spells, bonus-feat list, and persistent dependent choices. Draconic includes all ten Core dragon types, Elemental includes Air, Earth, Fire, and Water, and Arcane includes a selectable Knowledge class skill.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
