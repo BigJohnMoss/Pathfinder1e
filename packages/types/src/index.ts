@@ -1,6 +1,28 @@
 export type Progression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
 export type FeatureType = "core" | "selectable" | "scaling" | "bonus-feat" | "capstone" | "spellcasting";
+export type AbilityName = "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
+export type AbilityScores = Record<AbilityName, number>;
+
+export interface CharacterDraftV1 {
+  version: 1;
+  exportedAt?: string;
+  name: string;
+  classId: string;
+  ancestryId: string;
+  level: number;
+  humanAbility: AbilityName;
+  baseAbilities: AbilityScores;
+  selectedFeatIds: string[];
+  selectedFeatChoices: Record<string, string>;
+  skillRanks: Record<string, number>;
+  selectedOptions: Record<string, string>;
+  preparedSpells: string[];
+  spellSlotUses: Record<string, number>;
+  arcaneReservoir: number | null;
+}
+
+export type CharacterDraft = CharacterDraftV1;
 
 export interface SourceRef { title: string; page?: number | null; url: string; }
 export interface ClassFeatureOccurrence {
@@ -20,7 +42,9 @@ export type Prerequisite =
   | { type: "class-level"; classId: string; minimum: number }
   | { type: "ability"|"skill"; key: string; minimum: number }
   | { type: "feat"|"feature"; id: string }
+  | { type: "ancestry"; id: string }
   | { type: "size"; maximum: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal" }
   | { type: "matching-choice"; featId: string; key: string }
+  | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface SelectableOption { id:string; groupId:string; name:string; classIds:string[]; minimumLevel:number; prerequisites:Prerequisite[]; benefit:string; source:SourceRef; }
