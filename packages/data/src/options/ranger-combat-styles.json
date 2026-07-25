@@ -1,0 +1,4 @@
+{"id":"ranger-combat-styles","name":"Ranger Combat Styles","classIds":["ranger"],"options":[
+{"id":"ranger-combat-style-archery","groupId":"ranger-combat-styles","name":"Archery","classIds":["ranger"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain style feats from the Core Archery list without meeting their normal prerequisites.","source":{"title":"Core Rulebook","page":65,"url":"https://legacy.aonprd.com/coreRulebook/classes/ranger.html#combat-style-feat"}},
+{"id":"ranger-combat-style-two-weapon","groupId":"ranger-combat-styles","name":"Two-Weapon Combat","classIds":["ranger"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain style feats from the Core Two-Weapon Combat list without meeting their normal prerequisites.","source":{"title":"Core Rulebook","page":65,"url":"https://legacy.aonprd.com/coreRulebook/classes/ranger.html#combat-style-feat"}}
+]}

@@ -4,7 +4,7 @@ This document distinguishes records present in the data bundle from systems that
 
 ## Current generated catalogue
 
-- 9 selectable classes
+- 10 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
 - 1,903 spells
@@ -27,7 +27,7 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Ranger | 2 | favored enemy, combat styles, favored terrain and limited casting |
+| Ranger | 2 | Chassis, favored-enemy/terrain choices, combat-style identity, Hunter's Bond, and limited-casting progression are integrated; style feat choices, animal companion details, and the complete Core spell catalogue remain |
 | Bard | 3 | bardic performance, spontaneous casting and versatile performance |
 | Druid | 4 | nature bond, wild shape, animal companion or domain and divine casting |
 
