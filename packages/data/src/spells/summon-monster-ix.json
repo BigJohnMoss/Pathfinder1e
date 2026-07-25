@@ -1,0 +1,24 @@
+{
+  "id": "summon-monster-ix",
+  "name": "Summon Monster IX",
+  "school": "conjuration",
+  "levelByClass": {
+    "cleric": 9,
+    "sorcerer": 9,
+    "wizard": 9,
+    "arcanist": 9
+  },
+  "components": [
+    "V",
+    "S",
+    "F/DF"
+  ],
+  "castingTime": "1 round",
+  "range": "close",
+  "summary": "Summon a creature from the ninth-level summon monster list, or multiple creatures from lower-level lists, to fight for you.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/spells/summonMonster.html"
+  }
+}
