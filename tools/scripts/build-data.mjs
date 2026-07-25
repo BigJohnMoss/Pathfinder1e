@@ -25,5 +25,5 @@ const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classe
 const serialized=JSON.stringify(bundle);
 await writeFile(new URL('pf1e-data.json',out),JSON.stringify(bundle,null,2)+'\n');
 await writeFile(new URL('pf1e-data.mjs',out),`const data = JSON.parse(${JSON.stringify(serialized)});\nexport default data;\n`);
-await writeFile(new URL('pf1e-data.d.mts',out),'declare const data: any;\nexport default data;\n');
+await writeFile(new URL('pf1e-data.d.mts',out),'import type { GeneratedDataBundle } from "../packages/types/src/index.js";\ndeclare const data: GeneratedDataBundle;\nexport default data;\n');
 console.log(`Generated bundle with ${bundle.classes.length} classes, ${bundle.feats.length} feats, and ${bundle.spells.length} spells.`);

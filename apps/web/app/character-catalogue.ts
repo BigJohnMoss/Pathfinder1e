@@ -1,80 +1,6 @@
 import generatedData from "../../../generated/pf1e-data.mjs";
-import type { CharacterClass, Prerequisite } from "../../../packages/engine/src/index.js";
-
-export type CharacterFeat = {
-  id: string;
-  name: string;
-  benefit: string;
-  prerequisites: Prerequisite[];
-  choice?: {
-    key: string;
-    label: string;
-    options?: Array<{ id: string; name: string }>;
-    allowCustom?: boolean;
-  };
-};
-
-export type CharacterOption = {
-  id: string;
-  name: string;
-  benefit: string;
-  classIds: string[];
-  minimumLevel: number;
-  prerequisites: Prerequisite[];
-  alignment?: string;
-  polarity?: string;
-  domains?: string[];
-  classSkill?: string;
-  classSkillChoices?: string[];
-  variants?: Array<{ id: string; name: string; energyType: string; breathShape?: string; movement?: string }>;
-  arcana?: string;
-  bonusSpells?: Array<{ sorcererLevel: number; spellLevel: number; name: string }>;
-  bonusFeats?: string[];
-  powers?: Array<{ name: string; level: number; summary: string }>;
-  domainSpells?: Array<{ level: number; name: string }>;
-};
-
-export type CharacterOptionGroup = {
-  id: string;
-  name: string;
-  options: CharacterOption[];
-};
-
-export type CharacterSpell = {
-  id: string;
-  name: string;
-  school?: string;
-  schools?: string[];
-  levelByClass: Record<string, number>;
-  summary: string;
-};
-
-type GeneratedClass = CharacterClass & {
-  id: string;
-  name: string;
-  hitDie: number;
-  classSkills?: string[];
-  spellcasting?: {
-    ability: string;
-    castingType: string;
-    slotsByLevel: number[][];
-    preparedByLevel?: number[][];
-    knownByLevel?: number[][];
-  };
-  [key: string]: any;
-};
-
-type GeneratedAncestry = {
-  id: string;
-  name: string;
-  size: string;
-  abilityModifiers: unknown;
-  traits: Array<{
-    id: string;
-    [key: string]: any;
-  }>;
-  [key: string]: any;
-};
+import type { CharacterAncestry, CharacterClass, CharacterFeat, CharacterOptionGroup, CharacterSpell } from "../../../packages/types/src/index.js";
+export type { CharacterFeat, CharacterOption, CharacterOptionGroup, CharacterSpell } from "../../../packages/types/src/index.js";
 
 function orderedById<T extends { id: string }>(items: readonly T[], ids: readonly string[]) {
   const byId = new Map(items.map(item => [item.id, item]));
@@ -84,11 +10,11 @@ function orderedById<T extends { id: string }>(items: readonly T[], ids: readonl
   });
 }
 
-export const classes = orderedById<GeneratedClass>(generatedData.classes, ["arcanist", "barbarian", "cleric", "fighter", "monk", "rogue", "sorcerer", "wizard"]);
-export const ancestries = orderedById<GeneratedAncestry>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
-export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name)) as unknown as CharacterFeat[];
-export const optionGroups = orderedById(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "cleric-deities", "cleric-alignments", "cleric-channel-energy", "cleric-domains", "sorcerer-bloodlines", "wizard-arcane-bonds", "wizard-familiars", "wizard-bonded-objects", "wizard-schools", "wizard-opposition-schools", "rogue-talents", "combat-feats", "fighter-weapon-groups"]) as unknown as CharacterOptionGroup[];
-export const spells = generatedData.spells as CharacterSpell[];
+export const classes = orderedById<CharacterClass>(generatedData.classes, ["arcanist", "barbarian", "cleric", "fighter", "monk", "rogue", "sorcerer", "wizard"]);
+export const ancestries = orderedById<CharacterAncestry>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
+export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name));
+export const optionGroups = orderedById<CharacterOptionGroup>(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "cleric-deities", "cleric-alignments", "cleric-channel-energy", "cleric-domains", "sorcerer-bloodlines", "wizard-arcane-bonds", "wizard-familiars", "wizard-bonded-objects", "wizard-schools", "wizard-opposition-schools", "rogue-talents", "combat-feats", "fighter-weapon-groups"]);
+export const spells = generatedData.spells;
 
 export const skills = [
   {name:"Acrobatics",ability:"dexterity"},{name:"Appraise",ability:"intelligence"},{name:"Bluff",ability:"charisma"},{name:"Climb",ability:"strength"},{name:"Craft",ability:"intelligence"},{name:"Diplomacy",ability:"charisma"},{name:"Disable Device",ability:"dexterity"},{name:"Disguise",ability:"charisma"},{name:"Escape Artist",ability:"dexterity"},{name:"Fly",ability:"dexterity"},{name:"Handle Animal",ability:"charisma"},{name:"Heal",ability:"wisdom"},{name:"Intimidate",ability:"charisma"},
