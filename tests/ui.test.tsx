@@ -387,8 +387,21 @@ test("uses labelled icon tabs to show focused builder sections", async () => {
   assert.ok(screen.getByText("Arcanist features"));
   assert.ok(screen.getByText("Configure class features"));
   await user.click(screen.getByRole("button", { name: "Options" }));
-  assert.ok(screen.getByText("Reserved for future character options"));
+  assert.ok(screen.getByText("Choose background traits"));
   assert.equal(screen.queryByText("Configure class features"), null);
+});
+
+test("selects, applies, and persists traits from different categories", async () => {
+  render(<Home />);
+  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "reactionary");
+  await userEvent.selectOptions(screen.getByLabelText("Trait 2"), "caretaker");
+  await userEvent.click(screen.getByRole("button", { name: "Actions" }));
+  assert.ok(screen.getByText("+2"));
+  await userEvent.click(screen.getByRole("button", { name: "Skills" }));
+  assert.ok(screen.getByText("Heal").closest("label")?.textContent?.includes("Class skill"));
+  await userEvent.click(screen.getByRole("button", { name: "Save" }));
+  assert.deepEqual(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").selectedTraitIds, ["reactionary", "caretaker"]);
 });
 
 test("tracks persistent equipment, encumbrance, currency, and equipped armor", async () => {

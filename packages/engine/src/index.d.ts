@@ -1,4 +1,4 @@
-import type { CharacterClass as SharedCharacterClass, CharacterDraftV1 } from "../../types/src/index.js";
+import type { CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterTrait } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
@@ -54,6 +54,8 @@ export function spellsAvailableToClass<T extends { name: string; levelByClass: R
 export function normalizePreparedSpells<T extends { id: string; levelByClass: Record<string, number> }>(preparedSpellIds: string[], spells: T[], classId: string, preparedLimits: Array<{ level: number; count: number }>): string[];
 export function normalizeSelectedFeats<T extends { id: string; prerequisites: Prerequisite[] }>(selectedFeatIds: string[], feats: T[], context: PrerequisiteContext, slotCount: number): string[];
 export function normalizeSelectedFeatChoices<T extends { id: string; choice?: { options?: Array<{ id: string }>; allowCustom?: boolean } }>(selectedFeatChoices: Record<string, string> | null | undefined, selectedFeatIds: string[], feats: T[]): Record<string, string>;
+export function normalizeSelectedTraits(selectedTraitIds: unknown, traits: CharacterTrait[], slotCount?: number): string[];
+export function traitBonuses(selectedTraitIds: string[], traits: CharacterTrait[]): { initiative: number; saves: Record<"fortitude" | "reflex" | "will", number>; skillBonuses: Record<string, number>; classSkills: string[] };
 export function normalizeSpellSlotUses(slotUses: Record<string, number> | null | undefined, slots: Array<{ level: number; count: number }>): Record<number, number>;
 export function arcaneReservoir(level: number): { maximum: number; dailyRefresh: number };
 export { bardicPerformanceRounds } from "./bardic-performance.js";

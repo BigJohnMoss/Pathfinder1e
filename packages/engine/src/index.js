@@ -196,6 +196,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     pointBuyBudget: [10, 15, 20, 25].includes(draft.pointBuyBudget) ? draft.pointBuyBudget : 15,
     abilityBoosts: normalizeAbilityBoosts(draft.abilityBoosts, draft.level),
     selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
+    selectedTraitIds: Array.isArray(draft.selectedTraitIds) ? draft.selectedTraitIds.filter(id => typeof id === "string") : [],
     selectedFeatChoices: isStringRecord(draft.selectedFeatChoices),
     skillRanks: isRankRecord(draft.skillRanks),
     selectedOptions: isStringRecord(draft.selectedOptions),
@@ -207,6 +208,33 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     inventory: Array.isArray(draft.inventory) ? draft.inventory.filter(entry => entry && typeof entry.itemId === "string" && Number.isInteger(entry.quantity) && entry.quantity > 0).map(entry => ({ itemId: entry.itemId, quantity: Math.min(999, entry.quantity), equipped: entry.equipped === true })) : [],
     coins: Object.fromEntries(["cp", "sp", "gp", "pp"].map(coin => [coin, Number.isInteger(draft.coins?.[coin]) && draft.coins[coin] >= 0 ? draft.coins[coin] : 0]))
   };
+}
+
+export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2) {
+  if (!Array.isArray(selectedTraitIds) || !Number.isInteger(slotCount) || slotCount < 0) return [];
+  const byId = new Map(traits.map(trait => [trait.id, trait]));
+  const categories = new Set();
+  const selected = [];
+  for (const id of selectedTraitIds) {
+    const trait = typeof id === "string" ? byId.get(id) : null;
+    if (!trait || selected.includes(id) || categories.has(trait.category) || selected.length >= slotCount) continue;
+    selected.push(id);
+    categories.add(trait.category);
+  }
+  return selected;
+}
+
+export function traitBonuses(selectedTraitIds, traits) {
+  const selected = normalizeSelectedTraits(selectedTraitIds, traits);
+  const result = { initiative: 0, saves: { fortitude: 0, reflex: 0, will: 0 }, skillBonuses: {}, classSkills: [] };
+  for (const id of selected) {
+    const effects = traits.find(trait => trait.id === id)?.effects ?? {};
+    result.initiative += effects.initiative ?? 0;
+    for (const save of Object.keys(result.saves)) result.saves[save] += effects.saves?.[save] ?? 0;
+    for (const [skill, bonus] of Object.entries(effects.skillBonuses ?? {})) result.skillBonuses[skill] = (result.skillBonuses[skill] ?? 0) + bonus;
+    for (const skill of effects.classSkills ?? []) if (!result.classSkills.includes(skill)) result.classSkills.push(skill);
+  }
+  return result;
 }
 
 export function featSlotsAtLevel(level, { bonusFeats = 0 } = {}) {

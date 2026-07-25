@@ -64,3 +64,17 @@ test("updates feat eligibility at a prerequisite boundary", async ({ page }) => 
   await page.getByRole("button", { name: "Feats" }).click();
   await expect(page.getByLabel("Human bonus feat").locator('option[value="power-attack"]')).not.toHaveAttribute("disabled", "");
 });
+
+test("applies and persists background traits", async ({ page }) => {
+  await page.getByRole("button", { name: "Options" }).click();
+  await page.getByLabel("Trait 1").selectOption("reactionary");
+  await page.getByLabel("Trait 2").selectOption("caretaker");
+  await page.getByRole("button", { name: "Actions" }).click();
+  await expect(page.getByText("+2")).toBeVisible();
+  await page.getByRole("button", { name: "Save" }).click();
+  await page.reload();
+  await page.getByRole("button", { name: "Load" }).click();
+  await page.getByRole("button", { name: "Options" }).click();
+  await expect(page.getByLabel("Trait 1")).toHaveValue("reactionary");
+  await expect(page.getByLabel("Trait 2")).toHaveValue("caretaker");
+});

@@ -1,0 +1,1 @@
+{"id":"bully","name":"Bully","category":"social","summary":"Gain a +1 trait bonus on Intimidate checks, and Intimidate is always a class skill.","effects":{"skillBonuses":{"Intimidate":1},"classSkills":["Intimidate"]},"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedNewRules.html"}}

@@ -1,0 +1,1 @@
+{"id":"caretaker","name":"Caretaker","category":"faith","summary":"Gain a +1 trait bonus on Heal checks, and Heal is always a class skill.","effects":{"skillBonuses":{"Heal":1},"classSkills":["Heal"]},"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedNewRules.html"}}
