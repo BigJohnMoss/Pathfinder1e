@@ -1,0 +1,52 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-aberrant",
+      "classSkill": "Knowledge (dungeoneering)",
+      "arcana": "Polymorph-subschooled spells you cast last 50% longer, with a minimum increase of 1 round. This does not stack with Extend Spell.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Enlarge Person"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"See Invisibility"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Tongues"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Black Tentacles"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Feeblemind"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Veil"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Plane Shift"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Mind Blank"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Shapechange"}
+      ],
+      "bonusFeats": ["Combat Casting","Improved Disarm","Improved Grapple","Improved Initiative","Improved Unarmed Strike","Iron Will","Silent Spell","Skill Focus (Knowledge [dungeoneering])"],
+      "powers": [
+        {"name":"Acidic Ray","level":1,"summary":"As a standard action, make a ranged touch attack against a foe within 30 feet. It deals 1d6 acid damage plus 1 per two sorcerer levels. Use it 3 + Charisma modifier times per day."},
+        {"name":"Long Limbs","level":3,"summary":"Increase your reach for melee touch attacks by 5 feet. The increase becomes 10 feet at 11th level and 15 feet at 17th level; it does not expand your threatened area."},
+        {"name":"Unusual Anatomy","level":9,"summary":"Gain a 25% chance to negate critical-hit and sneak-attack damage. This chance becomes 50% at 13th level."},
+        {"name":"Alien Resistance","level":15,"summary":"Gain spell resistance equal to 10 + your sorcerer level."},
+        {"name":"Aberrant Form","level":20,"summary":"Become immune to critical hits and sneak attacks, gain blindsight 60 feet, and gain damage reduction 5/—."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-abyssal",
+      "classSkill": "Knowledge (planes)",
+      "arcana": "Creatures you conjure with summoning-subschooled spells gain DR/good equal to half your sorcerer level, minimum 1. This does not stack with their other damage reduction.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Cause Fear"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Bull's Strength"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Rage"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Stoneskin"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Dismissal"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Transformation"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Greater Teleport"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Unholy Aura"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Summon Monster IX"}
+      ],
+      "bonusFeats": ["Augment Summoning","Cleave","Empower Spell","Great Fortitude","Improved Bull Rush","Improved Sunder","Power Attack","Skill Focus (Knowledge [planes])"],
+      "powers": [
+        {"name":"Claws","level":1,"summary":"Grow two claws as a free action for 3 + Charisma modifier rounds per day. Each is a primary natural attack dealing 1d4 damage, or 1d3 if Small, plus Strength. They count as magic at 5th level, increase to 1d6 damage, or 1d4 if Small, at 7th, and gain +1d6 fire damage at 11th."},
+        {"name":"Demon Resistances","level":3,"summary":"Gain electricity resistance 5 and +2 on saves against poison. At 9th level these improve to electricity resistance 10 and +4 against poison."},
+        {"name":"Strength of the Abyss","level":9,"summary":"Gain a +2 inherent Strength bonus. It becomes +4 at 13th level and +6 at 17th level."},
+        {"name":"Added Summonings","level":15,"summary":"When summon monster calls a creature with the demon subtype or fiendish template, summon one additional creature of the same kind."},
+        {"name":"Demonic Might","level":20,"summary":"Gain immunity to electricity and poison, resistance 10 to acid, cold, and fire, and telepathy 60 feet with creatures that speak a language."}
+      ]
+    }
+  ]
+}

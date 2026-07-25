@@ -1,0 +1,21 @@
+{
+  "id": "greater-teleport",
+  "name": "Greater Teleport",
+  "school": "conjuration",
+  "levelByClass": {
+    "sorcerer": 7,
+    "wizard": 7,
+    "arcanist": 7
+  },
+  "components": [
+    "V"
+  ],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "summary": "Teleport creatures and objects without a range limit or chance of arriving off target, though not between planes.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Teleport%2C%20Greater"
+  }
+}

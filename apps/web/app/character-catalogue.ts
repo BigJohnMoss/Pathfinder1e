@@ -24,6 +24,10 @@ export type CharacterOption = {
   alignment?: string;
   polarity?: string;
   domains?: string[];
+  classSkill?: string;
+  arcana?: string;
+  bonusSpells?: Array<{ sorcererLevel: number; spellLevel: number; name: string }>;
+  bonusFeats?: string[];
   powers?: Array<{ name: string; level: number; summary: string }>;
   domainSpells?: Array<{ level: number; name: string }>;
 };

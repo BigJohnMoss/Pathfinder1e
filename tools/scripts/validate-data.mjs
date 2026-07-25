@@ -6,6 +6,8 @@ const errors = [];
 const ids = new Map();
 const classIds = new Set();
 const groupIds = new Set();
+const optionIds = new Set();
+const bloodlineDetailIds = new Set();
 
 async function jsonFiles(directory) {
   const dir = new URL(directory, root);
@@ -49,6 +51,32 @@ function checkSpellcasting(spellcasting, file) {
   if (spellcasting.castingType === "prepared") checkProgressionTable(spellcasting.preparedByLevel, file, "preparedByLevel", 10);
   if (spellcasting.castingType === "spontaneous") checkProgressionTable(spellcasting.knownByLevel, file, "knownByLevel", 10);
 }
+function checkBloodlineDetail(bloodline, file) {
+  const label = `${file}:${bloodline?.id ?? "unknown"}`;
+  if (!bloodline || typeof bloodline !== "object" || Array.isArray(bloodline)) { errors.push(`${file}: bloodline must be an object`); return; }
+  if (typeof bloodline.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(bloodline.id)) errors.push(`${label}: invalid or missing id`);
+  else {
+    if (bloodlineDetailIds.has(bloodline.id)) errors.push(`${label}: duplicate bloodline detail id`);
+    bloodlineDetailIds.add(bloodline.id);
+    if (!optionIds.has(bloodline.id)) errors.push(`${label}: does not reference a selectable bloodline option`);
+  }
+  if (typeof bloodline.classSkill !== "string" || !bloodline.classSkill.trim()) errors.push(`${label}: missing class skill`);
+  if (typeof bloodline.arcana !== "string" || !bloodline.arcana.trim()) errors.push(`${label}: missing bloodline arcana`);
+
+  const expectedSpellLevels = [3, 5, 7, 9, 11, 13, 15, 17, 19];
+  if (!Array.isArray(bloodline.bonusSpells) || bloodline.bonusSpells.length !== expectedSpellLevels.length) errors.push(`${label}: bonusSpells must contain nine entries`);
+  else bloodline.bonusSpells.forEach((spell, index) => {
+    if (!spell || spell.sorcererLevel !== expectedSpellLevels[index] || spell.spellLevel !== index + 1 || typeof spell.name !== "string" || !spell.name.trim()) errors.push(`${label}: invalid bonus spell at index ${index}`);
+  });
+
+  if (!Array.isArray(bloodline.bonusFeats) || bloodline.bonusFeats.length !== 8 || new Set(bloodline.bonusFeats).size !== 8 || bloodline.bonusFeats.some(feat => typeof feat !== "string" || !feat.trim())) errors.push(`${label}: bonusFeats must contain eight unique names`);
+
+  const expectedPowerLevels = [1, 3, 9, 15, 20];
+  if (!Array.isArray(bloodline.powers) || bloodline.powers.length !== expectedPowerLevels.length) errors.push(`${label}: powers must contain five entries`);
+  else bloodline.powers.forEach((power, index) => {
+    if (!power || power.level !== expectedPowerLevels[index] || typeof power.name !== "string" || !power.name.trim() || typeof power.summary !== "string" || !power.summary.trim()) errors.push(`${label}: invalid bloodline power at index ${index}`);
+  });
+}
 
 for (const url of await jsonFiles("classes/")) {
   const c=await load(url); const file=url.pathname.split('/').pop(); checkId(c,file); checkSource(c,file); classIds.add(c.id);
@@ -61,9 +89,10 @@ for (const url of await jsonFiles("classes/")) {
     if (f.choiceRequired && !f.optionGroupId) errors.push(`${file}: ${f.id} requires a choice but has no optionGroupId`);
   }
 }
-for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const o of g.options??[]) {checkId(o,`${file}:${o.id}`); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); checkPrerequisites(o.prerequisites, `${file}:${o.id}`);} }
+for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const o of g.options??[]) {checkId(o,`${file}:${o.id}`); optionIds.add(o.id); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); checkPrerequisites(o.prerequisites, `${file}:${o.id}`);} }
+for (const url of await jsonFiles("bloodline-details/")) { const details=await load(url); const file=url.pathname.split('/').pop(); if(!Array.isArray(details.bloodlines)) errors.push(`${file}: bloodlines must be an array`); else for(const bloodline of details.bloodlines) checkBloodlineDetail(bloodline,file); }
 for (const directory of ["races/","feats/","spells/"]) for (const url of await jsonFiles(directory)) { const r=await load(url); const file=url.pathname.split('/').pop(); checkId(r,file); checkSource(r,file); if(directory === "feats/") { checkPrerequisites(r.prerequisites, file); checkChoice(r.choice, file); } }
 for (const url of await jsonFiles("spell-catalogues/")) { const catalogue=await load(url); const file=url.pathname.split("/").pop(); checkSource(catalogue,file); if(!Array.isArray(catalogue.spells)) { errors.push(file + ": spells must be an array"); continue; } for(const spell of catalogue.spells) { checkId(spell,file + ":" + (spell.id ?? "unknown")); if(typeof spell.name !== "string" || !spell.name.trim()) errors.push(file + ": spell is missing a name"); if(typeof spell.summary !== "string" || !spell.summary.trim()) errors.push(file + ": " + (spell.id ?? "unknown") + " is missing a summary"); const level=spell.levelByClass?.arcanist; if(!Number.isInteger(level) || level<0 || level>9) errors.push(file + ": " + (spell.id ?? "unknown") + " has an invalid arcanist spell level"); } }
 for (const url of await jsonFiles("classes/")) { const c=await load(url); for (const f of c.features??[]) if(f.optionGroupId && !groupIds.has(f.optionGroupId)) errors.push(`${c.id}:${f.id} references missing option group ${f.optionGroupId}`); }
 if(errors.length){ console.error(`Data validation failed with ${errors.length} error(s):`); errors.forEach(e=>console.error(`- ${e}`)); process.exit(1); }
-console.log(`Validated ${ids.size} unique records across ${classIds.size} classes and ${groupIds.size} option groups.`);
+console.log(`Validated ${ids.size} unique records across ${classIds.size} classes, ${groupIds.size} option groups, and ${bloodlineDetailIds.size} bloodline details.`);
