@@ -1,0 +1,52 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-infernal",
+      "classSkill": "Diplomacy",
+      "arcana": "Whenever you cast a spell of the charm subschool, increase its save DC by 2.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Protection from Good"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Scorching Ray"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Suggestion"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Charm Monster"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Dominate Person"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Planar Binding"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Greater Teleport"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Power Word Stun"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Meteor Swarm"}
+      ],
+      "bonusFeats": ["Blind-Fight","Combat Expertise","Deceitful","Extend Spell","Improved Disarm","Iron Will","Skill Focus (Knowledge [planes])","Spell Penetration"],
+      "powers": [
+        {"name":"Corrupting Touch","level":1,"summary":"Touch a creature to make it shaken for half your sorcerer level in rounds; the effect has the evil descriptor. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Infernal Resistances","level":3,"summary":"Gain fire resistance 5 and a +2 bonus on saving throws against poison, increasing to fire resistance 10 and +4 against poison at 9th level."},
+        {"name":"Hellfire","level":9,"summary":"Create a 10-foot-radius burst within 60 feet for 1d6 fire damage per sorcerer level, Reflex half; good creatures that fail are also shaken for one round per sorcerer level. Uses increase at 17th and 20th levels."},
+        {"name":"On Dark Wings","level":15,"summary":"Grow batlike wings as a standard action for a 60-foot fly speed with average maneuverability, dismissing them as a free action."},
+        {"name":"Power of the Pit","level":20,"summary":"Gain immunity to fire and poison, acid and cold resistance 10, and the ability to see perfectly in darkness within 60 feet."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-undead",
+      "classSkill": "Knowledge (religion)",
+      "arcana": "Corporeal undead that were once humanoids are treated as humanoids for determining which of your spells affect them, allowing your mind-affecting spells to affect such undead.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Chill Touch"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"False Life"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Vampiric Touch"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Animate Dead"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Waves of Fatigue"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Undeath to Death"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Finger of Death"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Horrid Wilting"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Energy Drain"}
+      ],
+      "bonusFeats": ["Combat Casting","Diehard","Endurance","Iron Will","Skill Focus (Knowledge [religion])","Spell Focus","Still Spell","Toughness"],
+      "powers": [
+        {"name":"Grave Touch","level":1,"summary":"Touch a living creature to make it shaken for half your sorcerer level in rounds; a second touch can frighten an already shaken creature with fewer Hit Dice than your sorcerer level for 1 round. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Death's Gift","level":3,"summary":"Gain cold resistance 5 and DR 5/- against nonlethal damage, increasing to cold resistance 10 and DR 10/- against nonlethal damage at 9th level."},
+        {"name":"Grasp of the Dead","level":9,"summary":"Skeletal arms erupt in a 20-foot-radius burst within 60 feet, dealing 1d6 slashing damage per sorcerer level, Reflex half; creatures that fail cannot move for 1 round. Uses increase at 17th and 20th levels."},
+        {"name":"Incorporeal Form","level":15,"summary":"Once per day become incorporeal for one round per sorcerer level, gaining the usual protection from corporeal attacks while your damaging spells deal half damage to corporeal creatures."},
+        {"name":"One of Us","level":20,"summary":"Gain immunity to cold, nonlethal damage, paralysis, and sleep; DR 5/-; unintelligent undead ignore you until attacked; and +4 morale on saves against undead spells and spell-like abilities."}
+      ]
+    }
+  ]
+}
