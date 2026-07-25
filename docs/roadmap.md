@@ -19,12 +19,11 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 
 ### 1. Core classes
 
-Cleric, Sorcerer and Wizard are complete playable Core classes through level 20. Sorcerer includes all ten Core bloodlines with complete class skills, arcana, powers, automatic bonus spells, bonus-feat lists and dependent variant choices. Continue the remaining Core classes in this order:
+Cleric, Paladin, Sorcerer and Wizard are complete playable Core classes through level 20. Paladin includes its complete Core spell list, selectable mercies and both Divine Bond paths. Sorcerer includes all ten Core bloodlines with complete class skills, arcana, powers, automatic bonus spells, bonus-feat lists and dependent variant choices. Continue the remaining Core classes in this order:
 
-1. Paladin
-2. Ranger
-3. Bard
-4. Druid
+1. Ranger
+2. Bard
+3. Druid
 
 Each class is considered playable when its level progression, class features, class skills, spellcasting or combat progression, selectable options and relevant prerequisite feature IDs are integrated and tested.
 

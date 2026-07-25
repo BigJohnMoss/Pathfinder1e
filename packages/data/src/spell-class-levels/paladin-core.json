@@ -1,0 +1,9 @@
+{
+  "source":{"title":"Core Rulebook: Paladin spell list","url":"https://legacy.aonprd.com/coreRulebook/spellLists.html#paladin-spells"},
+  "levelsBySpellId":{
+    "bless":{"paladin":1},"detect-poison":{"paladin":1},"detect-undead":{"paladin":1},"endure-elements":{"paladin":1},"magic-weapon":{"paladin":1},"protection-from-chaos":{"paladin":1},"protection-from-evil":{"paladin":1},"read-magic":{"paladin":1},"resistance":{"paladin":1},
+    "bulls-strength":{"paladin":2},"eagles-splendor":{"paladin":2},"owls-wisdom":{"paladin":2},"resist-energy":{"paladin":2},
+    "daylight":{"paladin":3},"dispel-magic":{"paladin":3},"magic-circle-against-chaos":{"paladin":3},"magic-circle-against-evil":{"paladin":3},"magic-weapon-greater":{"paladin":3},"remove-curse":{"paladin":3},
+    "break-enchantment":{"paladin":4}
+  }
+}
