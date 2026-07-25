@@ -175,7 +175,7 @@ export function skillRanksThroughLevel(characterClass, level, intelligenceScore,
   assertLevel(level);
   if (!Number.isInteger(racialBonusPerLevel) || racialBonusPerLevel < 0) throw new RangeError("Racial skill bonus must be a non-negative integer.");
   const ranksPerLevel = Math.max(1, characterClass.skillRanksPerLevel + abilityModifier(intelligenceScore)) + racialBonusPerLevel;
-  return ranksPerLevel * (level + 3);
+  return ranksPerLevel * level;
 }
 
 export function skillTotal(characterClass, skill, abilityScore, ranks) {
@@ -192,6 +192,19 @@ export function skillRankBudget(totalRanks, allocations) {
   if (!Number.isInteger(totalRanks) || totalRanks < 0) throw new RangeError("Total skill ranks must be a non-negative integer.");
   const allocated = Object.values(allocations).reduce((total, ranks) => total + (Number.isInteger(ranks) && ranks > 0 ? ranks : 0), 0);
   return { allocated, remaining: Math.max(0, totalRanks - allocated), overspent: Math.max(0, allocated - totalRanks) };
+}
+
+export function normalizeSkillRanks(allocations, totalRanks, maximumRanksPerSkill) {
+  if (!Number.isInteger(totalRanks) || totalRanks < 0) throw new RangeError("Total skill ranks must be a non-negative integer.");
+  if (!Number.isInteger(maximumRanksPerSkill) || maximumRanksPerSkill < 0) throw new RangeError("Maximum ranks per skill must be a non-negative integer.");
+  if (!allocations || typeof allocations !== "object" || Array.isArray(allocations)) return {};
+  let remaining = totalRanks;
+  return Object.fromEntries(Object.entries(allocations).flatMap(([name, ranks]) => {
+    if (typeof name !== "string" || !Number.isInteger(ranks) || ranks <= 0 || remaining <= 0) return [];
+    const normalized = Math.min(ranks, maximumRanksPerSkill, remaining);
+    remaining -= normalized;
+    return normalized > 0 ? [[name, normalized]] : [];
+  }));
 }
 
 export function classProgression(characterClass, level, { intelligenceScore = 10, racialSkillBonusPerLevel = 0, bonusFeats = 0 } = {}) {
