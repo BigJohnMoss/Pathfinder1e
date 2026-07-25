@@ -30,6 +30,8 @@ test("registers the service worker and reloads the builder offline", async ({
   page,
 }) => {
   await page.goto("/");
+  await page.getByLabel("Character name").fill("Offline Hero");
+  await page.getByRole("button", { name: "Save" }).click();
   await page.evaluate(async () => {
     await navigator.serviceWorker.ready;
   });
@@ -46,7 +48,9 @@ test("registers the service worker and reloads the builder offline", async ({
   await expect(
     page.getByRole("heading", { name: "Character Builder" }),
   ).toBeVisible();
+  await page.getByRole("button", { name: "Load" }).click();
   await expect(page.getByLabel("Character name")).toBeVisible();
+  await expect(page.getByLabel("Character name")).toHaveValue("Offline Hero");
 });
 
 test("fits the builder at an Android phone viewport", async ({ page }) => {

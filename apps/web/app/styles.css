@@ -36,3 +36,29 @@
     flex: 1;
   }
 }
+
+/* Standalone PWA spacing and touch targets. */
+main {
+  padding-bottom: max(88px, calc(env(safe-area-inset-bottom) + 40px));
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
+  padding-top: max(64px, calc(env(safe-area-inset-top) + 24px));
+}
+
+.character-tabs button {
+  min-height: 52px;
+}
+
+.spell-count button {
+  height: 44px;
+  width: 44px;
+}
+
+@media (max-width: 540px) {
+  main {
+    padding-bottom: max(38px, calc(env(safe-area-inset-bottom) + 20px));
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-top: max(38px, calc(env(safe-area-inset-top) + 20px));
+  }
+}

@@ -37,11 +37,11 @@ The generated bundle and web components consume shared TypeScript contracts for 
 
 Playwright covers representative martial, prepared-caster and spontaneous-caster builds, prerequisite boundaries, persistence and equipment. Chromium journeys run in CI after the production build.
 
-## Next milestone: Installable Application
+## Completed milestone: Installable Application
 
 Deliver the existing web builder as an installable Progressive Web App (PWA) so it can be launched from a desktop application icon or a phone or tablet home-screen icon without requiring a separate native codebase.
 
-### Completion criteria
+### Completion criteria delivered
 
 - A standards-compliant web app manifest defines the app name, short name, start URL, standalone display mode, theme and background colours, and orientation behaviour.
 - Branded application icons include the required desktop and mobile sizes plus a maskable icon.
@@ -64,7 +64,7 @@ Deliver the existing web builder as an installable Progressive Web App (PWA) so 
 
 Native store packages for Microsoft Store or Google Play are optional later work. Use a desktop or mobile wrapper only if store distribution or operating-system-specific integration becomes necessary.
 
-## Following milestone: Expanded Character Options
+## Next milestone: Expanded Character Options
 
 - traits
 - archetypes
@@ -85,4 +85,6 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Working rule
 
-Future work should begin with the Installable Application milestone, then proceed to Expanded Character Options, while preserving the completed Core milestone through its validation and browser journey suites.
+Future work should proceed through Expanded Character Options, beginning with
+traits, while preserving the completed Core and Installable Application
+milestones through their validation and browser journey suites.

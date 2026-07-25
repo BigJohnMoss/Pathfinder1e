@@ -24,15 +24,19 @@ A from-scratch, data-first Pathfinder First Edition character-builder project.
 
 ## Current status
 
-The project is working toward the **Core Character Builder** milestone. The current generated catalogue includes:
+The **Core Character Builder** and **Installable Application** milestones are
+complete. The builder can be installed on supported desktop browsers and
+Android, launched in a standalone window, and reopened offline after its first
+successful load. The current generated catalogue includes:
 
 - 11 selectable classes: Arcanist, Barbarian, Bard, Cleric, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, and Wizard
 - 7 selectable core ancestries
 - 424 selectable feats
-- 1,957 spells
+- 2,048 spells
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
-Cleric, Paladin, Ranger, Sorcerer, and Wizard are complete playable Core classes through level 20. Ranger includes its complete Core spell list, favored enemies and terrains, combat styles, and both Hunter's Bond paths. Sorcerer includes its full spontaneous-casting progression, complete shared spell list, spells known, all ten Core bloodlines, each bloodline's class skill, arcana, five powers, nine automatic bonus spells, bonus-feat list, and persistent dependent choices.
+All eleven Core classes are playable through level 20. Development now proceeds
+through the **Expanded Character Options** milestone, beginning with traits.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
