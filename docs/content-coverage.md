@@ -27,7 +27,7 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Ranger | 2 | Chassis, favored-enemy/terrain choices, combat-style identity, Hunter's Bond, and limited-casting progression are integrated; style feat choices, animal companion details, and the complete Core spell catalogue remain |
+| Ranger | 2 | Chassis, favored-enemy/terrain choices, combat-style identity and feat choices, Hunter's Bond, and limited-casting progression are integrated; animal companion details and the complete Core spell catalogue remain |
 | Bard | 3 | bardic performance, spontaneous casting and versatile performance |
 | Druid | 4 | nature bond, wild shape, animal companion or domain and divine casting |
 

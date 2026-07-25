@@ -212,14 +212,29 @@ test("makes Ranger selectable with persistent Core feature choices", async () =>
   const combatStyle = screen.getByLabelText(/Combat Style level 2/);
   const favoredTerrain = screen.getByLabelText(/Favored Terrain 1/);
   const huntersBond = screen.getByLabelText(/Hunter's Bond/);
+  const styleFeat1 = screen.getByLabelText(/Combat Style Feat 1/);
+  const styleFeat2 = screen.getByLabelText(/Combat Style Feat 2/);
   await user.selectOptions(favoredEnemy, "ranger-enemy-dragon");
   await user.selectOptions(combatStyle, "ranger-combat-style-archery");
+  assert.equal([...styleFeat1.options].some((option) => option.value === "ranger-style-feat-rapid-shot"), true);
+  assert.equal([...styleFeat1.options].some((option) => option.value === "ranger-style-feat-two-weapon-fighting"), false);
+  await user.selectOptions(styleFeat1, "ranger-style-feat-rapid-shot");
+  await user.selectOptions(styleFeat2, "ranger-style-feat-manyshot");
   await user.selectOptions(favoredTerrain, "ranger-terrain-forest");
   await user.selectOptions(huntersBond, "ranger-hunters-bond-animal");
   assert.equal((favoredEnemy as HTMLSelectElement).value, "ranger-enemy-dragon");
   assert.equal((combatStyle as HTMLSelectElement).value, "ranger-combat-style-archery");
   assert.equal((favoredTerrain as HTMLSelectElement).value, "ranger-terrain-forest");
   assert.equal((huntersBond as HTMLSelectElement).value, "ranger-hunters-bond-animal");
+  assert.equal((styleFeat1 as HTMLSelectElement).value, "ranger-style-feat-rapid-shot");
+  assert.equal(
+    [...styleFeat2.options].find((option) => option.value === "ranger-style-feat-rapid-shot")?.disabled,
+    true,
+  );
+  await user.selectOptions(combatStyle, "ranger-combat-style-two-weapon");
+  assert.equal((styleFeat1 as HTMLSelectElement).value, "");
+  assert.equal((styleFeat2 as HTMLSelectElement).value, "");
+  assert.equal([...styleFeat1.options].some((option) => option.value === "ranger-style-feat-two-weapon-fighting"), true);
 });
 
 test("makes Wizard selectable with prepared arcane spells and class features", async () => {
