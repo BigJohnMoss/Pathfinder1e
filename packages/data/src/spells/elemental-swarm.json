@@ -1,0 +1,17 @@
+{
+  "id": "elemental-swarm",
+  "name": "Elemental Swarm",
+  "school": "conjuration",
+  "levelByClass": {
+    "druid": 9
+  },
+  "components": ["V", "S"],
+  "castingTime": "10 minutes",
+  "range": "medium",
+  "summary": "Open a portal to an elemental plane and call forth a succession of elementals that serve you for 10 minutes per caster level.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Elemental%20Swarm"
+  }
+}

@@ -69,7 +69,9 @@ function checkBloodlineDetail(bloodline, file) {
     else {
       const variantIds = new Set();
       for (const variant of bloodline.variants) {
-        if (!variant || typeof variant.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(variant.id) || typeof variant.name !== "string" || !variant.name.trim() || !validEnergyTypes.has(variant.energyType) || !validBreathShapes.has(variant.breathShape)) errors.push(`${label}: invalid bloodline variant`);
+        const hasBreathShape = validBreathShapes.has(variant?.breathShape);
+        const hasMovement = typeof variant?.movement === "string" && variant.movement.trim().length > 0;
+        if (!variant || typeof variant.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(variant.id) || typeof variant.name !== "string" || !variant.name.trim() || !validEnergyTypes.has(variant.energyType) || (!hasBreathShape && !hasMovement)) errors.push(`${label}: invalid bloodline variant`);
         else if (variantIds.has(variant.id)) errors.push(`${label}: duplicate bloodline variant ${variant.id}`);
         else variantIds.add(variant.id);
       }

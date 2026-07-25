@@ -1,0 +1,20 @@
+{
+  "id": "summon-monster-viii",
+  "name": "Summon Monster VIII",
+  "school": "conjuration",
+  "levelByClass": {
+    "cleric": 8,
+    "sorcerer": 8,
+    "wizard": 8,
+    "arcanist": 8
+  },
+  "components": ["V", "S", "F/DF"],
+  "castingTime": "1 round",
+  "range": "close",
+  "summary": "Summon a creature from the eighth-level summon monster list, or multiple creatures from lower-level lists, to fight for you.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/spells/summonMonster.html"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-elemental",
+      "classSkill": "Knowledge (planes)",
+      "arcana": "Whenever you cast a spell that deals energy damage, you may change that damage and the spell's energy type to match your selected element.",
+      "variants": [
+        {"id":"air-element","name":"Air","energyType":"electricity","movement":"Fly 60 feet (average)"},
+        {"id":"earth-element","name":"Earth","energyType":"acid","movement":"Burrow 30 feet"},
+        {"id":"fire-element","name":"Fire","energyType":"fire","movement":"+30 feet base speed"},
+        {"id":"water-element","name":"Water","energyType":"cold","movement":"Swim 60 feet"}
+      ],
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Burning Hands"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Scorching Ray"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Protection from Energy"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Elemental Body I"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Elemental Body II"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Elemental Body III"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Elemental Body IV"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Summon Monster VIII"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Elemental Swarm"}
+      ],
+      "bonusFeats": ["Dodge","Empower Spell","Great Fortitude","Improved Initiative","Lightning Reflexes","Power Attack","Skill Focus (Knowledge [planes])","Weapon Finesse"],
+      "powers": [
+        {"name":"Elemental Ray","level":1,"summary":"Make a ranged touch attack within 30 feet for 1d6 damage of your selected energy type plus 1 per two sorcerer levels. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Elemental Resistance","level":3,"summary":"Gain resistance 10 against your selected energy type, increasing to resistance 20 at 9th level."},
+        {"name":"Elemental Blast","level":9,"summary":"Create a 20-foot-radius burst within 60 feet for 1d6 energy damage per sorcerer level, Reflex half; failed saves also gain vulnerability until the end of your next turn. Uses increase at 17th and 20th levels."},
+        {"name":"Elemental Movement","level":15,"summary":"Gain the movement type or speed bonus associated with your selected element."},
+        {"name":"Elemental Body","level":20,"summary":"Gain immunity to sneak attacks, critical hits, and damage from your selected energy type."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-fey",
+      "classSkill": "Knowledge (nature)",
+      "arcana": "Whenever you cast a spell of the compulsion subschool, increase its save DC by 2.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Entangle"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Hideous Laughter"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Deep Slumber"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Poison"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Tree Stride"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Mislead"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Phase Door"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Irresistible Dance"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Shapechange"}
+      ],
+      "bonusFeats": ["Dodge","Improved Initiative","Lightning Reflexes","Mobility","Point Blank Shot","Precise Shot","Quicken Spell","Skill Focus (Knowledge [nature])"],
+      "powers": [
+        {"name":"Laughing Touch","level":1,"summary":"Cause a creature touched to laugh for 1 round, limiting it to a move action while retaining normal defenses. Each creature is immune for 24 hours after being affected. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Woodland Stride","level":3,"summary":"Move through natural undergrowth at normal speed without damage or impairment, though magically manipulated plants still impede you."},
+        {"name":"Fleeting Glance","level":9,"summary":"Become invisible as greater invisibility for rounds per day equal to sorcerer level, divided as desired."},
+        {"name":"Fey Magic","level":15,"summary":"Reroll caster-level checks to overcome spell resistance at will, deciding before the result is revealed and taking the second result."},
+        {"name":"Soul of the Fey","level":20,"summary":"Gain immunity to poison, DR 10/cold iron, protection from uncommanded animals, and shadow walk once per day as a spell-like ability."}
+      ]
+    }
+  ]
+}
