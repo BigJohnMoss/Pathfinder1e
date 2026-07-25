@@ -1,0 +1,15 @@
+{
+  "id":"bard-versatile-performances","name":"Bard Versatile Performances","classIds":["bard"],
+  "optionDefaults":{"groupId":"bard-versatile-performances","classIds":["bard"],"minimumLevel":2,"prerequisites":[],"source":{"title":"Core Rulebook","page":38,"url":"https://legacy.aonprd.com/coreRulebook/classes/bard.html#versatile-performance"}},
+  "options":[
+    {"id":"bard-versatile-performance-act","name":"Act","benefit":"Use Perform (act) in place of Bluff and Disguise."},
+    {"id":"bard-versatile-performance-comedy","name":"Comedy","benefit":"Use Perform (comedy) in place of Bluff and Intimidate."},
+    {"id":"bard-versatile-performance-dance","name":"Dance","benefit":"Use Perform (dance) in place of Acrobatics and Fly."},
+    {"id":"bard-versatile-performance-keyboard","name":"Keyboard Instruments","benefit":"Use Perform (keyboard instruments) in place of Diplomacy and Intimidate."},
+    {"id":"bard-versatile-performance-oratory","name":"Oratory","benefit":"Use Perform (oratory) in place of Diplomacy and Sense Motive."},
+    {"id":"bard-versatile-performance-percussion","name":"Percussion","benefit":"Use Perform (percussion) in place of Handle Animal and Intimidate."},
+    {"id":"bard-versatile-performance-sing","name":"Sing","benefit":"Use Perform (sing) in place of Bluff and Sense Motive."},
+    {"id":"bard-versatile-performance-string","name":"String Instruments","benefit":"Use Perform (string instruments) in place of Bluff and Diplomacy."},
+    {"id":"bard-versatile-performance-wind","name":"Wind Instruments","benefit":"Use Perform (wind instruments) in place of Diplomacy and Handle Animal."}
+  ]
+}

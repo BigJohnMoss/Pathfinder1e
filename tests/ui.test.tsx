@@ -202,6 +202,35 @@ test("makes Paladin available with its martial chassis and divine features", asy
   assert.ok(screen.getByRole("button", { name: "Add Bless" }));
 });
 
+test("makes Bard selectable with spontaneous casting and Versatile Performance choices", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  assert.equal(screen.getByText("BAB").closest("article")?.querySelector("strong")?.textContent, "+0");
+  assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+2");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "14" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Bardic Knowledge"));
+  assert.ok(screen.getByText("Bardic Performance"));
+  assert.ok(screen.getByText("Suggestion"));
+  const versatile1 = screen.getByLabelText(/Versatile Performance 1/);
+  const versatile2 = screen.getByLabelText(/Versatile Performance 2/);
+  await user.selectOptions(versatile1, "bard-versatile-performance-oratory");
+  assert.equal((versatile1 as HTMLSelectElement).value, "bard-versatile-performance-oratory");
+  assert.equal(
+    [...versatile2.options].find((option) => option.value === "bard-versatile-performance-oratory")?.disabled,
+    true,
+  );
+  await user.selectOptions(versatile2, "bard-versatile-performance-dance");
+  assert.equal((versatile2 as HTMLSelectElement).value, "bard-versatile-performance-dance");
+  await user.click(screen.getByRole("button", { name: "Spells" }));
+  assert.match(screen.getByText(/Bard slots/).textContent ?? "", /1st-level/);
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
+  assert.ok(screen.getByRole("button", { name: "Learn Charm Person" }));
+});
+
 test("makes Ranger selectable with persistent Core feature choices", async () => {
   const user = userEvent.setup();
   render(<Home />);

@@ -6,7 +6,7 @@ A from-scratch, data-first Pathfinder First Edition character-builder project.
 
 The project is working toward the **Core Character Builder** milestone. The current generated catalogue includes:
 
-- 10 selectable classes: Arcanist, Barbarian, Cleric, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, and Wizard
+- 11 selectable classes: Arcanist, Barbarian, Bard, Cleric, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, and Wizard
 - 7 selectable core ancestries
 - 424 selectable feats
 - 1,957 spells
