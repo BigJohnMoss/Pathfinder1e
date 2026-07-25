@@ -37,7 +37,35 @@ The generated bundle and web components consume shared TypeScript contracts for 
 
 Playwright covers representative martial, prepared-caster and spontaneous-caster builds, prerequisite boundaries, persistence and equipment. Chromium journeys run in CI after the production build.
 
-## Next milestone: Expanded Character Options
+## Next milestone: Installable Application
+
+Deliver the existing web builder as an installable Progressive Web App (PWA) so it can be launched from a desktop application icon or a phone or tablet home-screen icon without requiring a separate native codebase.
+
+### Completion criteria
+
+- A standards-compliant web app manifest defines the app name, short name, start URL, standalone display mode, theme and background colours, and orientation behaviour.
+- Branded application icons include the required desktop and mobile sizes plus a maskable icon.
+- Supported desktop browsers can install the builder and launch it in a standalone application window.
+- Android users can install it from the browser and launch it from the home screen or app drawer.
+- iPhone and iPad users receive clear Add to Home Screen guidance and launch the builder in standalone mode.
+- The application shell and essential generated character data remain available offline after the first successful load.
+- Existing local character drafts persist across normal application updates, with versioned migrations when storage formats change.
+- An update prompt or safe refresh flow prevents service-worker updates from losing unsaved work.
+- Responsive layouts account for mobile safe areas, touch targets and small screens.
+- Automated tests verify the manifest, service worker and offline fallback, standalone launch metadata, persistence, and representative mobile and desktop viewports.
+- Installation instructions are documented in the README.
+
+### Delivery approach
+
+1. Add manifest metadata and production-quality icons.
+2. Add service-worker caching with explicit versioning and an offline fallback.
+3. Add installation guidance and safe update UX.
+4. Validate desktop, Android and iOS installation behaviour.
+5. Add CI checks for PWA installability and offline operation.
+
+Native store packages for Microsoft Store, Google Play or Apple App Store are optional later work. Use a desktop or mobile wrapper only if store distribution or operating-system-specific integration becomes necessary.
+
+## Following milestone: Expanded Character Options
 
 - traits
 - archetypes
@@ -58,4 +86,4 @@ Playwright covers representative martial, prepared-caster and spontaneous-caster
 
 ## Working rule
 
-Future work should begin with Expanded Character Options while preserving the completed Core milestone through its validation and browser journey suites.
+Future work should begin with the Installable Application milestone, then proceed to Expanded Character Options, while preserving the completed Core milestone through its validation and browser journey suites.
