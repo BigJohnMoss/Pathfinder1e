@@ -19,9 +19,9 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 
 ### 1. Core classes
 
-Cleric and Wizard are complete. Sorcerer's level 1–20 spontaneous-casting chassis and ten Core bloodline identities are integrated. Aberrant, Abyssal, Arcane, Celestial, Destined, and Draconic have complete detailed mechanics, leaving four Core bloodlines. Continue the remaining class systems in this order:
+Cleric and Wizard are complete. Sorcerer's level 1–20 spontaneous-casting chassis and ten Core bloodline identities are integrated. Aberrant, Abyssal, Arcane, Celestial, Destined, Draconic, Elemental, and Fey have complete detailed mechanics. Complete Infernal and Undead, then continue the remaining Core classes in this order:
 
-1. Remaining Sorcerer Core bloodline details
+1. Infernal and Undead Sorcerer bloodlines
 2. Paladin
 3. Ranger
 4. Bard
