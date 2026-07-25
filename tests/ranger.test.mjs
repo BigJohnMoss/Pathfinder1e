@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
 import { availableOptions, classProgression, spellcastingProgression } from "../packages/engine/src/index.js";
+import bundle from "../generated/pf1e-data.mjs";
 
 const read = async (path) => JSON.parse(await readFile(new URL(path, import.meta.url), "utf8"));
 const ranger = await read("../packages/data/src/classes/ranger.json");
@@ -37,4 +38,21 @@ test("Ranger primary choices unlock at their Core levels", async () => {
   assert.equal(availableOptions(styles, "ranger", 2).length, 2);
   assert.equal(availableOptions(bonds, "ranger", 3).length, 0);
   assert.equal(availableOptions(bonds, "ranger", 4).length, 2);
+});
+
+test("Ranger combat style feat slots filter by style and unlock tier", () => {
+  const styleFeats = bundle.optionGroups.find((group) => group.id === "ranger-combat-style-feats");
+  const archery = (level) => availableOptions(styleFeats, "ranger", level, [], { featureIds: ["ranger-combat-style-archery"] });
+  const twoWeapon = (level) => availableOptions(styleFeats, "ranger", level, [], { featureIds: ["ranger-combat-style-two-weapon"] });
+  assert.deepEqual([2, 6, 10].map((level) => archery(level).length), [4, 6, 8]);
+  assert.deepEqual([2, 6, 10].map((level) => twoWeapon(level).length), [4, 6, 8]);
+  assert.ok(archery(6).some((option) => option.id === "ranger-style-feat-manyshot"));
+  assert.equal(archery(6).some((option) => option.id === "ranger-style-feat-pinpoint-targeting"), false);
+  assert.ok(twoWeapon(10).some((option) => option.id === "ranger-style-feat-two-weapon-rend"));
+});
+
+test("Ranger earns five selectable combat style feat slots", () => {
+  const slots = ranger.features.filter((feature) => feature.progressionKey === "ranger-combat-style-feat");
+  assert.deepEqual(slots.map((feature) => feature.level), [2, 6, 10, 14, 18]);
+  assert.ok(slots.every((feature) => feature.choiceRequired && feature.optionGroupId === "ranger-combat-style-feats"));
 });
