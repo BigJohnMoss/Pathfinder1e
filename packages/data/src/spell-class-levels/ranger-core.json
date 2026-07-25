@@ -1,0 +1,9 @@
+{
+  "source":{"title":"Core Rulebook: Ranger spell list","url":"https://legacy.aonprd.com/coreRulebook/spellLists.html#ranger-spells"},
+  "levelsBySpellId":{
+    "alarm":{"ranger":1},"delay-poison":{"ranger":1},"detect-poison":{"ranger":1},"endure-elements":{"ranger":1},"jump":{"ranger":1},"read-magic":{"ranger":1},"resist-energy":{"ranger":1},
+    "bears-endurance":{"ranger":2},"cats-grace":{"ranger":2},"cure-light-wounds":{"ranger":2},"owls-wisdom":{"ranger":2},"protection-from-energy":{"ranger":2},"wind-wall":{"ranger":2},
+    "cure-moderate-wounds":{"ranger":3},"darkvision":{"ranger":3},"neutralize-poison":{"ranger":3},
+    "animal-growth":{"ranger":4},"cure-serious-wounds":{"ranger":4},"nondetection":{"ranger":4}
+  }
+}
