@@ -197,7 +197,7 @@ test("makes Paladin available with its martial chassis and divine features", asy
   fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "14" } });
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
   await user.click(screen.getByRole("button", { name: "Features" }));
-  assert.ok(screen.getByText("Divine Bond"));
+  assert.ok(screen.getAllByText("Divine Bond").length >= 2);
   await user.click(screen.getByRole("button", { name: "Spells" }));
   assert.ok(screen.getByRole("button", { name: "Add Bless" }));
 });
