@@ -50,6 +50,8 @@ function checkSpellcasting(spellcasting, file) {
   checkProgressionTable(spellcasting.slotsByLevel, file, "slotsByLevel", 9);
   if (spellcasting.castingType === "prepared") checkProgressionTable(spellcasting.preparedByLevel, file, "preparedByLevel", 10);
   if (spellcasting.castingType === "spontaneous") checkProgressionTable(spellcasting.knownByLevel, file, "knownByLevel", 10);
+  if (spellcasting.spellLevelUnlocks !== undefined && (!Array.isArray(spellcasting.spellLevelUnlocks) || spellcasting.spellLevelUnlocks.some(level => !Number.isInteger(level) || level < 1 || level > 20))) errors.push(`${file}: spellLevelUnlocks must contain class levels from 1 to 20`);
+  if (spellcasting.preparesFromSlots !== undefined && typeof spellcasting.preparesFromSlots !== "boolean") errors.push(`${file}: preparesFromSlots must be a boolean`);
 }
 function checkBloodlineDetail(bloodline, file) {
   const label = `${file}:${bloodline?.id ?? "unknown"}`;
