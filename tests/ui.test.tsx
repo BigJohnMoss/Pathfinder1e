@@ -416,6 +416,19 @@ test("selects and persists a trait-specific granted class skill", async () => {
   assert.deepEqual(saved.selectedTraitChoices, { "mathematical-prodigy": "Knowledge (engineering)" });
 });
 
+test("selects, displays, and persists a trait-specific spell modifier", async () => {
+  render(<Home />);
+  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "gifted-adept");
+  await userEvent.selectOptions(screen.getByLabelText("Affected spell"), "mage-hand");
+  await userEvent.click(screen.getByRole("button", { name: "Spells" }));
+  await userEvent.type(screen.getByLabelText("Search spells"), "Mage Hand");
+  assert.ok(screen.getByText("Mage Hand").closest("article")?.textContent?.includes("trait: +1 caster level"));
+  await userEvent.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.deepEqual(saved.selectedTraitChoices, { "gifted-adept": "mage-hand" });
+});
+
 test("tracks persistent equipment, encumbrance, currency, and equipped armor", async () => {
   const user = userEvent.setup();
   render(<Home />);

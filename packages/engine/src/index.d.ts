@@ -55,8 +55,8 @@ export function normalizePreparedSpells<T extends { id: string; levelByClass: Re
 export function normalizeSelectedFeats<T extends { id: string; prerequisites: Prerequisite[] }>(selectedFeatIds: string[], feats: T[], context: PrerequisiteContext, slotCount: number): string[];
 export function normalizeSelectedFeatChoices<T extends { id: string; choice?: { options?: Array<{ id: string }>; allowCustom?: boolean } }>(selectedFeatChoices: Record<string, string> | null | undefined, selectedFeatIds: string[], feats: T[]): Record<string, string>;
 export function normalizeSelectedTraits(selectedTraitIds: unknown, traits: CharacterTrait[], slotCount?: number): string[];
-export function normalizeSelectedTraitChoices(selectedTraitChoices: unknown, selectedTraitIds: string[], traits: CharacterTrait[]): Record<string, string>;
-export function traitBonuses(selectedTraitIds: string[], traits: CharacterTrait[], selectedTraitChoices?: Record<string, string>): { initiative: number; saves: Record<"fortitude" | "reflex" | "will", number>; skillBonuses: Record<string, number>; classSkills: string[] };
+export function normalizeSelectedTraitChoices(selectedTraitChoices: unknown, selectedTraitIds: string[], traits: CharacterTrait[], sources?: { spells?: Array<{ id: string }> }): Record<string, string>;
+export function traitBonuses(selectedTraitIds: string[], traits: CharacterTrait[], selectedTraitChoices?: Record<string, string>, sources?: { spells?: Array<{ id: string }> }): { initiative: number; saves: Record<"fortitude" | "reflex" | "will", number>; skillBonuses: Record<string, number>; classSkills: string[]; spellBonuses?: Record<string, { casterLevel: number; metamagicLevelAdjustment: number }> };
 export function normalizeSpellSlotUses(slotUses: Record<string, number> | null | undefined, slots: Array<{ level: number; count: number }>): Record<number, number>;
 export function arcaneReservoir(level: number): { maximum: number; dailyRefresh: number };
 export { bardicPerformanceRounds } from "./bardic-performance.js";

@@ -225,28 +225,40 @@ export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2)
   return selected;
 }
 
-export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTraitIds, traits) {
+export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTraitIds, traits, { spells = [] } = {}) {
   if (!selectedTraitChoices || typeof selectedTraitChoices !== "object" || Array.isArray(selectedTraitChoices)) return {};
   const selected = new Set(normalizeSelectedTraits(selectedTraitIds, traits));
   const byId = new Map(traits.map(trait => [trait.id, trait]));
   return Object.fromEntries(Object.entries(selectedTraitChoices).filter(([traitId, choice]) => {
-    const options = byId.get(traitId)?.choice?.options;
-    return selected.has(traitId) && typeof choice === "string" && Array.isArray(options) && options.includes(choice);
+    const traitChoice = byId.get(traitId)?.choice;
+    const validChoice = traitChoice?.key === "classSkill"
+      ? traitChoice.options.includes(choice)
+      : traitChoice?.key === "spell" && spells.some(spell => spell.id === choice);
+    return selected.has(traitId) && typeof choice === "string" && validChoice;
   }));
 }
 
-export function traitBonuses(selectedTraitIds, traits, selectedTraitChoices = {}) {
+export function traitBonuses(selectedTraitIds, traits, selectedTraitChoices = {}, sources = {}) {
   const selected = normalizeSelectedTraits(selectedTraitIds, traits);
-  const choices = normalizeSelectedTraitChoices(selectedTraitChoices, selected, traits);
+  const choices = normalizeSelectedTraitChoices(selectedTraitChoices, selected, traits, sources);
   const result = { initiative: 0, saves: { fortitude: 0, reflex: 0, will: 0 }, skillBonuses: {}, classSkills: [] };
   for (const id of selected) {
-    const effects = traits.find(trait => trait.id === id)?.effects ?? {};
+    const trait = traits.find(trait => trait.id === id);
+    const effects = trait?.effects ?? {};
     result.initiative += effects.initiative ?? 0;
     for (const save of Object.keys(result.saves)) result.saves[save] += effects.saves?.[save] ?? 0;
     for (const [skill, bonus] of Object.entries(effects.skillBonuses ?? {})) result.skillBonuses[skill] = (result.skillBonuses[skill] ?? 0) + bonus;
     for (const skill of effects.classSkills ?? []) if (!result.classSkills.includes(skill)) result.classSkills.push(skill);
     const choice = choices[id];
-    if (choice && !result.classSkills.includes(choice)) result.classSkills.push(choice);
+    if (choice && trait?.choice?.key === "classSkill" && !result.classSkills.includes(choice)) result.classSkills.push(choice);
+    if (choice && trait?.choice?.key === "spell" && effects.chosenSpell) {
+      result.spellBonuses ??= {};
+      const current = result.spellBonuses[choice] ?? { casterLevel: 0, metamagicLevelAdjustment: 0 };
+      result.spellBonuses[choice] = {
+        casterLevel: current.casterLevel + (effects.chosenSpell.casterLevel ?? 0),
+        metamagicLevelAdjustment: current.metamagicLevelAdjustment + (effects.chosenSpell.metamagicLevelAdjustment ?? 0)
+      };
+    }
   }
   return result;
 }

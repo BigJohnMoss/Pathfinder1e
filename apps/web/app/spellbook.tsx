@@ -5,10 +5,11 @@ import type { CharacterSpell } from "../../../packages/types/src/index.js";
 type Spell = CharacterSpell;
 type Slot = { level: number; base: number; bonus: number; count: number };
 type PreparedLimit = { level: number; count: number };
+type SpellTraitBonuses = Record<string, { casterLevel: number; metamagicLevelAdjustment: number }>;
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function Spellbook({ spells, classId, className, castingAbilityName, slots, preparedLimits, spellDcs, maximumSpellLevel, preparedSpellIds, onPreparedSpellIdsChange, slotUses, onSlotUsesChange, reservoir, onReservoirChange, onRefreshDay, oppositionSchoolIds = [] }: { spells: Spell[]; classId: string; className: string; castingAbilityName: string; slots: Slot[]; preparedLimits: PreparedLimit[]; spellDcs: Record<number, number>; maximumSpellLevel: number; preparedSpellIds: string[]; onPreparedSpellIdsChange: (spellIds: string[]) => void; slotUses: Record<number, number>; onSlotUsesChange: (uses: Record<number, number>) => void; reservoir: { current: number; maximum: number; dailyRefresh: number } | null; onReservoirChange: (value: number) => void; onRefreshDay: () => void; oppositionSchoolIds?: string[] }) {
+export function Spellbook({ spells, spellTraitBonuses = {}, classId, className, castingAbilityName, slots, preparedLimits, spellDcs, maximumSpellLevel, preparedSpellIds, onPreparedSpellIdsChange, slotUses, onSlotUsesChange, reservoir, onReservoirChange, onRefreshDay, oppositionSchoolIds = [] }: { spells: Spell[]; spellTraitBonuses?: SpellTraitBonuses; classId: string; className: string; castingAbilityName: string; slots: Slot[]; preparedLimits: PreparedLimit[]; spellDcs: Record<number, number>; maximumSpellLevel: number; preparedSpellIds: string[]; onPreparedSpellIdsChange: (spellIds: string[]) => void; slotUses: Record<number, number>; onSlotUsesChange: (uses: Record<number, number>) => void; reservoir: { current: number; maximum: number; dailyRefresh: number } | null; onReservoirChange: (value: number) => void; onRefreshDay: () => void; oppositionSchoolIds?: string[] }) {
   const [query, setQuery] = useState("");
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
@@ -49,7 +50,7 @@ export function Spellbook({ spells, classId, className, castingAbilityName, slot
           const full = preparedCount(level) + preparationCost > limitFor(level);
           const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
-            <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}{preparationCost === 2 ? " · opposition school: costs 2 prepared slots" : ""}</small></div>
+            <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}{spellTraitBonuses[spell.id]?.casterLevel ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level` : ""}{spellTraitBonuses[spell.id]?.metamagicLevelAdjustment ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment` : ""}{preparationCost === 2 ? " · opposition school: costs 2 prepared slots" : ""}</small></div>
             <div className="spell-count"><button type="button" aria-label={`Cast ${spell.name}`} disabled={prepared === 0 || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><button type="button" aria-label={`Remove ${spell.name}`} disabled={prepared === 0} onClick={() => onPreparedSpellIdsChange(preparedSpellIds.filter((id, index) => id !== spell.id || index !== preparedSpellIds.lastIndexOf(spell.id)))}>-</button><output aria-label={`${spell.name} prepared`}>{prepared}</output><button type="button" aria-label={`Add ${spell.name}`} disabled={full} onClick={() => onPreparedSpellIdsChange([...preparedSpellIds, spell.id])}>+</button></div>
           </article>;
         })}</div>
