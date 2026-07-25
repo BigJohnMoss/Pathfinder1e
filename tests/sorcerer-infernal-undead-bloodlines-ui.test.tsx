@@ -54,7 +54,7 @@ test("Infernal and Undead grant complete details, class skills, spells, switchin
   const diplomacy = skillLabel("Diplomacy");
   await user.clear(diplomacy.querySelector("input")!);
   await user.type(diplomacy.querySelector("input")!, "1");
-  assert.match(diplomacy.querySelector("strong")?.textContent ?? "", /\+4 class/);
+  assert.match(diplomacy.querySelector("strong")?.textContent ?? "", /\+5 class/);
 
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
