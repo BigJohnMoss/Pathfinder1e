@@ -7,7 +7,7 @@ This document distinguishes records present in the data bundle from systems that
 - 12 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
-- 1,957 spells
+- 2,048 spells
 
 ## Playable classes
 
@@ -15,22 +15,18 @@ This document distinguishes records present in the data bundle from systems that
 |---|---|---|
 | Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
 | Barbarian | Playable | Core progression and rage powers are integrated. |
-| Bard | Playable Core class | Level 1–20 chassis, spontaneous casting progression, all 164 Core Bard spells, Core performance milestones, all nine Versatile Performance choices, and persistent daily performance-round tracking are integrated. |
-| Cleric | Playable Core class | Level 1–20 divine prepared casting, orisons, spontaneous conversion, channel energy with daily tracking, deity-compatible alignment, channel polarity, 20 Core deity choices, all 33 Core domains, and dedicated domain spell preparation are integrated. |
-| Druid | Playable foundation | Level 1–20 chassis, prepared Wisdom casting, Nature Bond path choice, Core class features, and Wild Shape milestones are integrated; dependent companion/domain choices, daily Wild Shape tracking, and the complete Core spell catalogue remain. |
+| Bard | Playable Core class | Level 1–20 chassis, complete Core spell list, performance milestones, Versatile Performance choices and persistent performance-round tracking are integrated. |
+| Cleric | Playable Core class | Level 1–20 prepared casting, channel energy, deity-compatible alignment, Core deities and domains, and domain spell slots are integrated. |
+| Druid | Playable Core class | Level 1–20 prepared casting, complete Core spell list, both Nature Bond paths with dependent choices, and persistent Wild Shape tracking are integrated. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
-| Paladin | Playable Core class | Level 1–20 martial and divine progression, smite evil, lay on hands, channel energy, all Core mercies, weapon or mount Divine Bond, and the complete 45-spell Core Paladin list are integrated. |
-| Ranger | Playable Core class | Level 1–20 martial and limited-casting progression, favored enemies and terrains, combat-style feats, both Hunter's Bond paths, all Core animal companion choices, and the complete 51-spell Core Ranger list are integrated. |
+| Paladin | Playable Core class | Level 1–20 martial and divine progression, mercies, Divine Bond and the complete Core Paladin spell list are integrated. |
+| Ranger | Playable Core class | Level 1–20 progression, favored enemies and terrains, combat styles, both Hunter's Bond paths and the complete Core Ranger spell list are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
-| Sorcerer | Playable Core class | Level 1–20 spontaneous Charisma casting, complete shared Sorcerer/Wizard spell coverage, fixed spells-known progression, reusable daily slots, spell exchange milestones, Eschew Materials, all ten Core bloodlines, complete bloodline class skills, arcana, powers, bonus spells, bonus-feat lists, dependent variant choices, and persistence are integrated. Draconic supports all ten Core dragon types, Elemental supports Air, Earth, Fire, and Water, and Arcane supports a selected Knowledge class skill. |
-| Wizard | Playable Core class | Level 1–20 progression, complete Wizard spell coverage with school metadata, cantrips, spellbook progression, Scribe Scroll, bonus feats, all nine Core schools, two opposition-school choices with enforced two-slot preparation costs, Familiar and Bonded Object paths, and one prepared specialist-school slot at each available spell level are integrated. |
+| Sorcerer | Playable Core class | Level 1–20 spontaneous casting and all ten Core bloodlines with dependent choices and persistence are integrated. |
+| Wizard | Playable Core class | Level 1–20 prepared casting, Core schools, opposition preparation, Arcane Bond paths and specialist slots are integrated. |
 
-## Core classes still required
-
-| Class | Priority | Major systems required |
-|---|---:|---|
-| Druid | 4 | nature bond, wild shape, animal companion or domain and divine casting |
+All eleven Core Rulebook classes are playable. Arcanist is the additional selectable class.
 
 ## Selectable ancestries
 
@@ -44,41 +40,30 @@ This document distinguishes records present in the data bundle from systems that
 
 ## Feat coverage
 
-The catalogue includes substantial content from:
-
-- Core Rulebook
-- Advanced Player's Guide
-- Ultimate Magic
-- Ultimate Combat
-
-Feat records may reference class features belonging to classes that are not yet playable. These records remain useful data, but they will not normally become eligible until the relevant class implementation exists.
+The catalogue contains sourced feats from the Core Rulebook, Advanced Player's Guide, Ultimate Magic and Ultimate Combat. Structured prerequisites include abilities, base attack bonus, class and caster levels, skills, ancestry, size, features, other feats and matching choices.
 
 ## Current product systems
 
 | System | Status |
 |---|---|
-| Ability scores | Playable |
-| Class and ancestry selection | Playable for supported records |
-| Level progression | Playable for supported classes |
+| Ability scores and point buy | Playable |
+| Class and ancestry selection | Playable |
+| Guided level progression | Playable |
 | Skills and rank budget | Playable |
 | Feat eligibility and choices | Playable |
 | Class option groups | Playable for supported classes |
 | Prepared and spontaneous spellcasting | Playable for supported spellcasters |
-| Basic combat statistics | Playable |
-| Local save, load and export | Basic support |
-| Equipment and inventory | Not implemented |
-| Multiclassing | Not implemented |
-| Archetypes | Data model planned; not playable |
-| Traits | Not playable |
-| Domains | All 33 Core Cleric domains are deity-restricted, display granted powers and complete spell lists, and support dedicated domain spell preparation and usage |
-| Alignment | Cleric alignment is restricted to one step from the selected deity |
-| Channel energy | Polarity, dice, save DC, daily uses, spending, refresh and persistence are integrated |
-| Arcane schools | All nine Core Wizard schools and their powers are selectable; specialists choose two opposition schools, pay two normal preparation slots for opposition spells, and gain one school-only prepared slot at every spell level |
-| Arcane bond | Familiar and bonded-item paths, 11 Core familiar choices, five item categories, shared progression rules, dependency clearing, and persistence are integrated |
-| Bloodlines | All ten Core Sorcerer bloodlines have complete class skills, arcana, five powers, nine automatic bonus spells and bonus-feat lists. Draconic includes ten dragon types, Elemental includes four element choices, and Arcane includes a selectable Knowledge skill |
-| Mysteries | Not playable |
-| Browser end-to-end tests | Not implemented |
+| Combat statistics | Playable |
+| Save, load, import, export and print | Playable |
+| Equipment and inventory | Playable with persistent currency, carrying capacity, encumbrance, armour, shields, weapons, damage, critical and range statistics |
+| Domains | All 33 Core Cleric domains are deity-restricted and support powers, spell lists and domain-slot usage |
+| Alignment and channel energy | Cleric restrictions, polarity, dice, DC, daily uses, refresh and persistence are integrated |
+| Arcane schools and bond | Core schools, opposition costs, specialist slots, familiar and bonded-item paths are integrated |
+| Bloodlines | All ten Core Sorcerer bloodlines and their dependent choices are integrated |
+| Browser end-to-end tests | Martial, prepared-caster, spontaneous-caster, prerequisite, persistence and equipment journeys run in Chromium CI |
+| Multiclassing | Planned |
+| Archetypes and traits | Planned |
 
 ## Definition of playable
 
-A class or system is listed as playable only when it is exposed in the web interface, processed by the rules engine, validated by the data pipeline and covered by automated tests. A record merely existing in JSON does not make the corresponding system playable.
+A class or system is listed as playable only when it is exposed in the web interface, processed by the rules engine, validated by the data pipeline and covered by automated tests.
