@@ -12,7 +12,7 @@ The project is working toward the **Core Character Builder** milestone. The curr
 - 1,891 spells
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
-Cleric and Wizard are complete playable Core classes through level 20. Sorcerer has its full level 1–20 spontaneous-casting chassis, shared Sorcerer/Wizard spell list, spells-known progression, ten Core bloodline identities, bloodline milestones, and persistent casting workflow. Detailed bloodline arcana, powers, spells, and bonus-feat choices remain the next class-completion work.
+Cleric and Wizard are complete playable Core classes through level 20. Sorcerer has its full level 1–20 spontaneous-casting chassis, shared Sorcerer/Wizard spell list, spells-known progression, ten Core bloodline identities, bloodline milestones, and persistent casting workflow. Aberrant and Abyssal now include their class skills, arcana, all five powers, nine automatically granted bonus spells, and bonus-feat lists; the remaining eight Core bloodlines are the next class-completion work.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
