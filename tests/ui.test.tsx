@@ -202,6 +202,26 @@ test("makes Paladin available with its martial chassis and divine features", asy
   assert.ok(screen.getByRole("button", { name: "Add Bless" }));
 });
 
+test("makes Ranger selectable with persistent Core feature choices", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "8" } });
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  const favoredEnemy = screen.getByLabelText(/Favored Enemy 1/);
+  const combatStyle = screen.getByLabelText(/Combat Style level 2/);
+  const favoredTerrain = screen.getByLabelText(/Favored Terrain 1/);
+  const huntersBond = screen.getByLabelText(/Hunter's Bond/);
+  await user.selectOptions(favoredEnemy, "ranger-enemy-dragon");
+  await user.selectOptions(combatStyle, "ranger-combat-style-archery");
+  await user.selectOptions(favoredTerrain, "ranger-terrain-forest");
+  await user.selectOptions(huntersBond, "ranger-hunters-bond-animal");
+  assert.equal((favoredEnemy as HTMLSelectElement).value, "ranger-enemy-dragon");
+  assert.equal((combatStyle as HTMLSelectElement).value, "ranger-combat-style-archery");
+  assert.equal((favoredTerrain as HTMLSelectElement).value, "ranger-terrain-forest");
+  assert.equal((huntersBond as HTMLSelectElement).value, "ranger-hunters-bond-animal");
+});
+
 test("makes Wizard selectable with prepared arcane spells and class features", async () => {
   const user = userEvent.setup();
   render(<Home />);

@@ -1,0 +1,4 @@
+{"id":"ranger-hunters-bonds","name":"Ranger Hunter's Bonds","classIds":["ranger"],"options":[
+{"id":"ranger-hunters-bond-companions","groupId":"ranger-hunters-bonds","name":"Companions","classIds":["ranger"],"minimumLevel":4,"prerequisites":[],"benefit":"As a move action, grant nearby allies half your favored-enemy bonus for at least 1 round.","source":{"title":"Core Rulebook","page":66,"url":"https://legacy.aonprd.com/coreRulebook/classes/ranger.html#hunter-s-bond"}},
+{"id":"ranger-hunters-bond-animal","groupId":"ranger-hunters-bonds","name":"Animal Companion","classIds":["ranger"],"minimumLevel":4,"prerequisites":[],"benefit":"Gain an animal companion using Ranger level minus 3 as effective Druid level.","source":{"title":"Core Rulebook","page":66,"url":"https://legacy.aonprd.com/coreRulebook/classes/ranger.html#hunter-s-bond"}}
+]}
