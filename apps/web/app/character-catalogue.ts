@@ -26,6 +26,7 @@ export type CharacterOption = {
   domains?: string[];
   classSkill?: string;
   classSkillChoices?: string[];
+  variants?: Array<{ id: string; name: string; energyType: string; breathShape: string }>;
   arcana?: string;
   bonusSpells?: Array<{ sorcererLevel: number; spellLevel: number; name: string }>;
   bonusFeats?: string[];
