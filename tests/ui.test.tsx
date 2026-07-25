@@ -212,6 +212,8 @@ test("makes Ranger selectable with persistent Core feature choices", async () =>
   const combatStyle = screen.getByLabelText(/Combat Style level 2/);
   const favoredTerrain = screen.getByLabelText(/Favored Terrain 1/);
   const huntersBond = screen.getByLabelText(/Hunter's Bond/);
+  const animalCompanion = screen.getByLabelText(/Animal Companion Choice/);
+  assert.equal((animalCompanion as HTMLSelectElement).disabled, true);
   const styleFeat1 = screen.getByLabelText(/Combat Style Feat 1/);
   const styleFeat2 = screen.getByLabelText(/Combat Style Feat 2/);
   await user.selectOptions(favoredEnemy, "ranger-enemy-dragon");
@@ -222,10 +224,14 @@ test("makes Ranger selectable with persistent Core feature choices", async () =>
   await user.selectOptions(styleFeat2, "ranger-style-feat-manyshot");
   await user.selectOptions(favoredTerrain, "ranger-terrain-forest");
   await user.selectOptions(huntersBond, "ranger-hunters-bond-animal");
+  assert.equal((animalCompanion as HTMLSelectElement).disabled, false);
+  await user.selectOptions(animalCompanion, "ranger-animal-companion-wolf");
   assert.equal((favoredEnemy as HTMLSelectElement).value, "ranger-enemy-dragon");
   assert.equal((combatStyle as HTMLSelectElement).value, "ranger-combat-style-archery");
   assert.equal((favoredTerrain as HTMLSelectElement).value, "ranger-terrain-forest");
   assert.equal((huntersBond as HTMLSelectElement).value, "ranger-hunters-bond-animal");
+  assert.equal((animalCompanion as HTMLSelectElement).value, "ranger-animal-companion-wolf");
+  assert.ok(screen.getByText(/bite 1d6 plus trip/));
   assert.equal((styleFeat1 as HTMLSelectElement).value, "ranger-style-feat-rapid-shot");
   assert.equal(
     [...styleFeat2.options].find((option) => option.value === "ranger-style-feat-rapid-shot")?.disabled,
@@ -235,6 +241,9 @@ test("makes Ranger selectable with persistent Core feature choices", async () =>
   assert.equal((styleFeat1 as HTMLSelectElement).value, "");
   assert.equal((styleFeat2 as HTMLSelectElement).value, "");
   assert.equal([...styleFeat1.options].some((option) => option.value === "ranger-style-feat-two-weapon-fighting"), true);
+  await user.selectOptions(huntersBond, "ranger-hunters-bond-companions");
+  assert.equal((animalCompanion as HTMLSelectElement).value, "");
+  assert.equal((animalCompanion as HTMLSelectElement).disabled, true);
 });
 
 test("makes Wizard selectable with prepared arcane spells and class features", async () => {
