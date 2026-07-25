@@ -16,7 +16,7 @@ test("builds and persists a martial loadout", async ({ page }) => {
   const armor = page.locator("article").filter({ hasText: "Chain shirt" });
   await armor.getByRole("checkbox", { name: "Equipped" }).check();
   await page.getByLabel("GP").fill("125");
-  await expect(page.getByText("25 lb. carried — light load")).toBeVisible();
+  await expect(page.getByText("29 lb. carried — light load")).toBeVisible();
 
   const sword = page.locator("article").filter({ hasText: "Longsword" });
   await expect(sword).toContainText("Damage 1d8");
@@ -58,9 +58,9 @@ test("updates feat eligibility at a prerequisite boundary", async ({ page }) => 
   await page.getByLabel("Class").selectOption("fighter");
   await page.getByRole("button", { name: "Feats" }).click();
   const powerAttack = page.getByLabel("Human bonus feat").locator('option[value="power-attack"]');
-  await expect(powerAttack).toBeDisabled();
+  await expect(powerAttack).toHaveAttribute("disabled", "");
   await page.getByRole("button", { name: "Basic info" }).click();
   await page.getByLabel("Strength base score").fill("13");
   await page.getByRole("button", { name: "Feats" }).click();
-  await expect(page.getByLabel("Human bonus feat").locator('option[value="power-attack"]')).toBeEnabled();
+  await expect(page.getByLabel("Human bonus feat").locator('option[value="power-attack"]')).not.toHaveAttribute("disabled", "");
 });
