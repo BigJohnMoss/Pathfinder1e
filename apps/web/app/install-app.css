@@ -1,0 +1,53 @@
+.install-app {
+  align-items: center;
+  background: #2b241a;
+  color: #fffaf0;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.75rem max(1rem, env(safe-area-inset-right))
+    0.75rem max(1rem, env(safe-area-inset-left));
+}
+
+.install-app div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.install-app span {
+  color: #e9dfcf;
+  font-size: 0.9rem;
+}
+
+.install-app button {
+  background: #fffaf0;
+  border: 1px solid #fffaf0;
+  border-radius: 999px;
+  color: #7f1d1d;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font: inherit;
+  font-weight: 700;
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+}
+
+.install-app button:hover {
+  background: #f3e8d5;
+}
+
+.install-app button:focus-visible {
+  outline: 3px solid #f3c969;
+  outline-offset: 2px;
+}
+
+@media (max-width: 40rem) {
+  .install-app {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .install-app button {
+    width: 100%;
+  }
+}
