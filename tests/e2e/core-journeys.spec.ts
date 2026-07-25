@@ -78,3 +78,15 @@ test("applies and persists background traits", async ({ page }) => {
   await expect(page.getByLabel("Trait 1")).toHaveValue("reactionary");
   await expect(page.getByLabel("Trait 2")).toHaveValue("caretaker");
 });
+
+test("applies and persists a trait-specific class skill choice", async ({ page }) => {
+  await page.getByRole("button", { name: "Options" }).click();
+  await page.getByLabel("Trait 1").selectOption("mathematical-prodigy");
+  await page.getByLabel("Granted class skill").selectOption("Knowledge (engineering)");
+  await page.getByRole("button", { name: "Save" }).click();
+  await page.reload();
+  await page.getByRole("button", { name: "Load" }).click();
+  await page.getByRole("button", { name: "Options" }).click();
+  await expect(page.getByLabel("Trait 1")).toHaveValue("mathematical-prodigy");
+  await expect(page.getByLabel("Granted class skill")).toHaveValue("Knowledge (engineering)");
+});

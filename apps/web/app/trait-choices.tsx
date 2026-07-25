@@ -5,11 +5,15 @@ const categoryLabels = { combat: "Combat", faith: "Faith", magic: "Magic", socia
 export function TraitChoices({
   traits,
   selectedTraitIds,
+  selectedTraitChoices,
   onChange,
+  onChoiceChange,
 }: {
   traits: CharacterTrait[];
   selectedTraitIds: string[];
+  selectedTraitChoices: Record<string, string>;
   onChange: (index: number, traitId: string) => void;
+  onChoiceChange: (traitId: string, choice: string) => void;
 }) {
   return <section className="trait-panel">
     <p className="eyebrow">CHARACTER TRAITS</p>
@@ -27,7 +31,14 @@ export function TraitChoices({
             </option>)}
           </select>
         </label>
-        {selected && <div><strong>{selected.name}</strong><span>{categoryLabels[selected.category]} trait</span><p>{selected.summary}</p></div>}
+        {selected && <div><strong>{selected.name}</strong><span>{categoryLabels[selected.category]} trait</span><p>{selected.summary}</p>
+          {selected.choice && <label>{selected.choice.label}
+            <select value={selectedTraitChoices[selected.id] ?? ""} onChange={(event) => onChoiceChange(selected.id, event.target.value)}>
+              <option value="">Choose a skill</option>
+              {selected.choice.options.map((skill) => <option key={skill} value={skill}>{skill}</option>)}
+            </select>
+          </label>}
+        </div>}
       </article>;
     })}</div>
   </section>;

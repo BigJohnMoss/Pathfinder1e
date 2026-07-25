@@ -404,6 +404,18 @@ test("selects, applies, and persists traits from different categories", async ()
   assert.deepEqual(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").selectedTraitIds, ["reactionary", "caretaker"]);
 });
 
+test("selects and persists a trait-specific granted class skill", async () => {
+  render(<Home />);
+  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "mathematical-prodigy");
+  await userEvent.selectOptions(screen.getByLabelText("Granted class skill"), "Knowledge (engineering)");
+  await userEvent.click(screen.getByRole("button", { name: "Skills" }));
+  assert.ok(screen.getByText("Knowledge (engineering)").closest("label")?.textContent?.includes("Class skill"));
+  await userEvent.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.deepEqual(saved.selectedTraitChoices, { "mathematical-prodigy": "Knowledge (engineering)" });
+});
+
 test("tracks persistent equipment, encumbrance, currency, and equipped armor", async () => {
   const user = userEvent.setup();
   render(<Home />);
