@@ -1,0 +1,64 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-arcane",
+      "classSkill": "Knowledge (any one)",
+      "classSkillChoices": [
+        "Knowledge (arcana)",
+        "Knowledge (dungeoneering)",
+        "Knowledge (engineering)",
+        "Knowledge (geography)",
+        "Knowledge (history)",
+        "Knowledge (local)",
+        "Knowledge (nature)",
+        "Knowledge (nobility)",
+        "Knowledge (planes)",
+        "Knowledge (religion)"
+      ],
+      "arcana": "Whenever you apply a metamagic feat that raises a spell's slot by at least one level, increase that spell's save DC by 1. This does not stack with itself and does not apply to Heighten Spell.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Identify"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Invisibility"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Dispel Magic"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Dimension Door"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Overland Flight"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"True Seeing"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Greater Teleport"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Power Word Stun"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Wish"}
+      ],
+      "bonusFeats": ["Combat Casting","Improved Counterspell","Improved Initiative","Iron Will","Scribe Scroll","Skill Focus (Knowledge [arcana])","Spell Focus","Still Spell"],
+      "powers": [
+        {"name":"Arcane Bond","level":1,"summary":"Gain a familiar or bonded object as a wizard of your sorcerer level. Sorcerer and wizard levels stack for the bond, and a bonded item can cast one spell known once per day."},
+        {"name":"Metamagic Adept","level":3,"summary":"Apply a known metamagic feat without increasing a spontaneous spell's casting time. Use once per day at 3rd level, plus once per four additional sorcerer levels, up to five times at 19th."},
+        {"name":"New Arcana","level":9,"summary":"Add one sorcerer/wizard spell you can cast to your spells known, adding another at 13th and 17th levels."},
+        {"name":"School Power","level":15,"summary":"Choose one school of magic and increase the save DC of your spells from that school by 2, stacking with Spell Focus."},
+        {"name":"Arcane Apotheosis","level":20,"summary":"Apply known metamagic without increasing casting time, and expend spell slots in place of charges when using charged magic items."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-celestial",
+      "classSkill": "Heal",
+      "arcana": "Creatures you conjure with summoning-subschooled spells gain DR/evil equal to half your sorcerer level, minimum 1. This does not stack with their other damage reduction.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Bless"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Resist Energy"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Magic Circle against Evil"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Remove Curse"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Flame Strike"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Greater Dispel Magic"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Banishment"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Sunburst"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Gate"}
+      ],
+      "bonusFeats": ["Dodge","Extend Spell","Iron Will","Mobility","Mounted Combat","Ride-By Attack","Skill Focus (Knowledge [religion])","Weapon Finesse"],
+      "powers": [
+        {"name":"Heavenly Fire","level":1,"summary":"Make a ranged touch ray within 30 feet 3 + Charisma modifier times per day. It deals divine damage to evil creatures, heals good creatures once per day each, and has no effect on neutral creatures."},
+        {"name":"Celestial Resistances","level":3,"summary":"Gain acid resistance 5 and cold resistance 5, increasing both to 10 at 9th level."},
+        {"name":"Wings of Heaven","level":9,"summary":"Grow feathery wings and fly at 60 feet with good maneuverability for minutes per day equal to sorcerer level, spent in 1-minute increments."},
+        {"name":"Conviction","level":15,"summary":"Once per day, reroll one ability check, attack roll, skill check, or saving throw before the result is revealed, taking the second result."},
+        {"name":"Ascension","level":20,"summary":"Gain immunity to acid, cold, and petrification; electricity and fire resistance 10; +4 against poison; unlimited Wings of Heaven; and the ability to speak with any creature that has a language."}
+      ]
+    }
+  ]
+}
