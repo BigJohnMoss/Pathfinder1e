@@ -1,0 +1,27 @@
+{
+  "id": "druid-nature-bonds",
+  "name": "Druid Nature Bonds",
+  "classIds": ["druid"],
+  "options": [
+    {
+      "id": "druid-nature-bond-animal",
+      "groupId": "druid-nature-bonds",
+      "name": "Animal Companion",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain a loyal animal companion that advances using your full Druid level.",
+      "source": {"title":"Core Rulebook","page":50,"url":"https://legacy.aonprd.com/coreRulebook/classes/druid.html#nature-bond"}
+    },
+    {
+      "id": "druid-nature-bond-domain",
+      "groupId": "druid-nature-bonds",
+      "name": "Nature Domain",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Choose Air, Animal, Earth, Fire, Plant, Water, or Weather and gain its powers and dedicated domain spell slots.",
+      "source": {"title":"Core Rulebook","page":50,"url":"https://legacy.aonprd.com/coreRulebook/classes/druid.html#nature-bond"}
+    }
+  ]
+}

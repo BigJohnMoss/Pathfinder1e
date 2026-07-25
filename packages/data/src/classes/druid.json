@@ -1,0 +1,51 @@
+{
+  "id": "druid",
+  "name": "Druid",
+  "classType": "core",
+  "hitDie": 8,
+  "babProgression": "three-quarters",
+  "saves": {"fortitude": "good", "reflex": "poor", "will": "good"},
+  "skillRanksPerLevel": 4,
+  "classSkills": ["Climb","Craft","Fly","Handle Animal","Heal","Knowledge (geography)","Knowledge (nature)","Perception","Profession","Ride","Spellcraft","Survival","Swim"],
+  "spellcasting": {
+    "ability": "wisdom",
+    "castingType": "prepared",
+    "slotsByLevel": [
+      [1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[2,1,0,0,0,0,0,0,0],[3,2,0,0,0,0,0,0,0],[3,2,1,0,0,0,0,0,0],
+      [3,3,2,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0],[4,3,3,2,0,0,0,0,0],[4,4,3,2,1,0,0,0,0],[4,4,3,3,2,0,0,0,0],
+      [4,4,4,3,2,1,0,0,0],[4,4,4,3,3,2,0,0,0],[4,4,4,4,3,2,1,0,0],[4,4,4,4,3,3,2,0,0],[4,4,4,4,4,3,2,1,0],
+      [4,4,4,4,4,3,3,2,0],[4,4,4,4,4,4,3,2,1],[4,4,4,4,4,4,3,3,2],[4,4,4,4,4,4,4,3,3],[4,4,4,4,4,4,4,4,4]
+    ],
+    "preparedByLevel": [
+      [3,1,0,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0,0],[4,2,1,0,0,0,0,0,0,0],[4,3,2,0,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0,0],
+      [4,3,3,2,0,0,0,0,0,0],[4,4,3,2,1,0,0,0,0,0],[4,4,3,3,2,0,0,0,0,0],[4,4,4,3,2,1,0,0,0,0],[4,4,4,3,3,2,0,0,0,0],
+      [4,4,4,4,3,2,1,0,0,0],[4,4,4,4,3,3,2,0,0,0],[4,4,4,4,4,3,2,1,0,0],[4,4,4,4,4,3,3,2,0,0],[4,4,4,4,4,4,3,2,1,0],
+      [4,4,4,4,4,4,3,3,2,0],[4,4,4,4,4,4,4,3,2,1],[4,4,4,4,4,4,4,3,3,2],[4,4,4,4,4,4,4,4,3,3],[4,4,4,4,4,4,4,4,4,4]
+    ],
+    "spellLevelUnlocks": [1,3,5,7,9,11,13,15,17]
+  },
+  "source": {"title": "Core Rulebook", "page": 48, "url": "https://legacy.aonprd.com/coreRulebook/classes/druid.html"},
+  "features": [
+    {"id":"druid-spellcasting-1","name":"Divine Spellcasting","level":1,"type":"spellcasting","summary":"Prepare and cast divine Druid spells using Wisdom.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-spellcasting","scaling":"0-level through 9th-level spells","uses":null},
+    {"id":"druid-nature-bond-1","name":"Nature Bond","level":1,"type":"selectable","summary":"Bond with an animal companion or choose a nature domain.","choiceRequired":true,"optionGroupId":"druid-nature-bonds","progressionKey":"druid-nature-bond","scaling":null,"uses":null},
+    {"id":"druid-nature-sense-1","name":"Nature Sense","level":1,"type":"core","summary":"Gain +2 on Knowledge (nature) and Survival checks.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":"+2","uses":null},
+    {"id":"druid-orisons-1","name":"Orisons","level":1,"type":"spellcasting","summary":"Prepare 0-level Druid spells and cast prepared orisons without expending them.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":"at will while prepared"},
+    {"id":"druid-spontaneous-casting-1","name":"Spontaneous Casting","level":1,"type":"spellcasting","summary":"Convert a prepared spell into summon nature's ally of the same level or lower.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"druid-wild-empathy-1","name":"Wild Empathy","level":1,"type":"core","summary":"Influence animals using Druid level plus Charisma modifier.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"druid-woodland-stride-2","name":"Woodland Stride","level":2,"type":"core","summary":"Move through natural undergrowth at normal speed without harm.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"druid-trackless-step-3","name":"Trackless Step","level":3,"type":"core","summary":"Leave no trail in natural surroundings unless desired.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"druid-resist-natures-lure-4","name":"Resist Nature's Lure","level":4,"type":"core","summary":"Gain +4 on saves against fey abilities and effects that target plants.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":"+4","uses":null},
+    {"id":"druid-wild-shape-4","name":"Wild Shape","level":4,"type":"scaling","summary":"Assume a familiar Small or Medium animal form as beast shape I.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"1 use per day","uses":"1 per day"},
+    {"id":"druid-wild-shape-6","name":"Wild Shape","level":6,"type":"scaling","summary":"Gain a second daily use and unlock Large or Tiny animals and Small elementals.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"2 uses; beast shape II or elemental body I","uses":"2 per day"},
+    {"id":"druid-wild-shape-8","name":"Wild Shape","level":8,"type":"scaling","summary":"Gain a third daily use and unlock Huge or Diminutive animals, Medium elementals, and plant forms.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"3 uses; beast shape III, elemental body II, or plant shape I","uses":"3 per day"},
+    {"id":"druid-venom-immunity-9","name":"Venom Immunity","level":9,"type":"core","summary":"Become immune to all poisons.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"druid-wild-shape-10","name":"Wild Shape","level":10,"type":"scaling","summary":"Gain a fourth daily use and unlock Large elemental and plant forms.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"4 uses; elemental body III or plant shape II","uses":"4 per day"},
+    {"id":"druid-wild-shape-12","name":"Wild Shape","level":12,"type":"scaling","summary":"Gain a fifth daily use and unlock Huge elemental and plant forms.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"5 uses; elemental body IV or plant shape III","uses":"5 per day"},
+    {"id":"druid-thousand-faces-13","name":"A Thousand Faces","level":13,"type":"core","summary":"Alter your appearance at will while in your normal form.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":"at will"},
+    {"id":"druid-wild-shape-14","name":"Wild Shape","level":14,"type":"scaling","summary":"Gain a sixth daily use of Wild Shape.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"6 uses","uses":"6 per day"},
+    {"id":"druid-timeless-body-15","name":"Timeless Body","level":15,"type":"core","summary":"No longer suffer ability penalties from aging and cannot be magically aged.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"druid-wild-shape-16","name":"Wild Shape","level":16,"type":"scaling","summary":"Gain a seventh daily use of Wild Shape.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"7 uses","uses":"7 per day"},
+    {"id":"druid-wild-shape-18","name":"Wild Shape","level":18,"type":"scaling","summary":"Gain an eighth daily use of Wild Shape.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"8 uses","uses":"8 per day"},
+    {"id":"druid-wild-shape-20","name":"Wild Shape","level":20,"type":"capstone","summary":"Use Wild Shape without a daily limit.","choiceRequired":false,"optionGroupId":null,"progressionKey":"druid-wild-shape","scaling":"at will","uses":"at will"}
+  ]
+}

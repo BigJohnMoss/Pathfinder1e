@@ -4,7 +4,7 @@ This document distinguishes records present in the data bundle from systems that
 
 ## Current generated catalogue
 
-- 11 selectable classes
+- 12 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
 - 1,957 spells
@@ -17,6 +17,7 @@ This document distinguishes records present in the data bundle from systems that
 | Barbarian | Playable | Core progression and rage powers are integrated. |
 | Bard | Playable Core class | Level 1–20 chassis, spontaneous casting progression, all 164 Core Bard spells, Core performance milestones, all nine Versatile Performance choices, and persistent daily performance-round tracking are integrated. |
 | Cleric | Playable Core class | Level 1–20 divine prepared casting, orisons, spontaneous conversion, channel energy with daily tracking, deity-compatible alignment, channel polarity, 20 Core deity choices, all 33 Core domains, and dedicated domain spell preparation are integrated. |
+| Druid | Playable foundation | Level 1–20 chassis, prepared Wisdom casting, Nature Bond path choice, Core class features, and Wild Shape milestones are integrated; dependent companion/domain choices, daily Wild Shape tracking, and the complete Core spell catalogue remain. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Paladin | Playable Core class | Level 1–20 martial and divine progression, smite evil, lay on hands, channel energy, all Core mercies, weapon or mount Divine Bond, and the complete 45-spell Core Paladin list are integrated. |

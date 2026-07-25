@@ -240,6 +240,22 @@ test("makes Bard selectable with spontaneous casting and Versatile Performance c
   assert.ok(screen.getByRole("button", { name: "Learn Charm Person" }));
 });
 
+test("makes Druid selectable with prepared divine casting and Nature Bond", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  assert.equal(screen.getByText("BAB").closest("article")?.querySelector("strong")?.textContent, "+0");
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+2");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Nature Sense"));
+  const natureBond = screen.getByLabelText(/Nature Bond/);
+  await user.selectOptions(natureBond, "druid-nature-bond-animal");
+  assert.equal((natureBond as HTMLSelectElement).value, "druid-nature-bond-animal");
+  await user.click(screen.getByRole("button", { name: "Spells" }));
+  assert.match(screen.getByText(/Druid slots/).textContent ?? "", /1st-level/);
+});
+
 test("makes Ranger selectable with persistent Core feature choices", async () => {
   const user = userEvent.setup();
   render(<Home />);
