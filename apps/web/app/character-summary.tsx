@@ -1,11 +1,4 @@
-type CombatStats = {
-  initiative: number;
-  armorClass: { normal: number; touch: number; flatFooted: number };
-  combatManeuverBonus: number;
-  combatManeuverDefense: number;
-  averageHitPoints: number;
-  saves: { fortitude: number; reflex: number; will: number };
-};
+import type { CharacterCombatStats as CombatStats } from "../../../packages/engine/src/index.js";
 
 type Progression = { baseAttackBonus: number; skillRanks: number; featSlots: number };
 

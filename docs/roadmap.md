@@ -1,8 +1,8 @@
 # Pathfinder 1e Character Builder Roadmap
 
-## Current milestone: Core Character Builder
+## Completed milestone: Core Character Builder
 
-The immediate goal is to turn the existing data and rules foundation into a complete Core Rulebook character-building experience.
+The Core Rulebook character-building experience is implemented and protected by automated validation.
 
 ### Milestone completion criteria
 
@@ -13,37 +13,31 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 - Weapons, armour, shields, inventory, currency and carrying capacity are supported.
 - Characters can be saved, loaded, exported and printed.
 - End-to-end tests cover representative martial, prepared-caster and spontaneous-caster character journeys.
-- Data validation, engine tests, UI tests and the production build pass in CI.
+- Data validation, engine tests, UI tests, browser tests and the production build run in CI.
 
-## Development priorities
+## Completed development priorities
 
 ### 1. Core classes
 
-Cleric, Paladin, Ranger, Sorcerer, Wizard and Bard are complete playable Core classes through level 20. Ranger includes its complete Core spell list, selectable combat styles, favored enemies and terrains, and both Hunter's Bond paths. Sorcerer includes all ten Core bloodlines with complete class skills, arcana, powers, automatic bonus spells, bonus-feat lists and dependent variant choices. Bard includes all 164 Core spells and persistent daily performance-round tracking. Druid has its level 1–20 chassis, prepared casting progression, Nature Bond path, and Wild Shape milestones; dependent choices, resource tracking, and Core spells remain.
-
-1. Druid
-
-Each class is considered playable when its level progression, class features, class skills, spellcasting or combat progression, selectable options and relevant prerequisite feature IDs are integrated and tested.
+All eleven Core classes are playable through level 20. Druid includes its complete Core spell list, both Nature Bond paths with dependent companion or domain choices, and persistent Wild Shape use tracking.
 
 ### 2. Equipment and combat loadout
 
-Add structured records and UI support for weapons, armour, shields, inventory, currency, carrying capacity, encumbrance, damage, critical and range statistics.
+Weapons, armour, shields, inventory, currency, carrying capacity, encumbrance, damage, critical and range statistics are integrated and persistent.
 
 ### 3. Character progression workflow
 
-Add an explicit level-up flow that preserves prior selections, grants new choices at the correct level and explains newly available class features, feats, skill ranks and spell options.
+The explicit level-up preview preserves prior selections and explains newly available class features, ability increases, feats and skill ranks before advancing.
 
 ### 4. Strong generated types
 
-Replace broad generated-data casts with schema-derived or shared TypeScript contracts for classes, ancestries, feats, spells, class features and option groups.
+The generated bundle and web components consume shared TypeScript contracts for classes, ancestries, feats, spells, class features and option groups.
 
 ### 5. End-to-end coverage
 
-Add browser-level tests for representative martial, prepared-caster and spontaneous-caster builds, prerequisite boundaries, persistence and equipment.
+Playwright covers representative martial, prepared-caster and spontaneous-caster builds, prerequisite boundaries, persistence and equipment. Chromium journeys run in CI after the production build.
 
-## Later milestones
-
-### Expanded Character Options
+## Next milestone: Expanded Character Options
 
 - traits
 - archetypes
@@ -53,7 +47,7 @@ Add browser-level tests for representative martial, prepared-caster and spontane
 - discoveries, talents and similar class option systems
 - favoured class bonuses
 
-### Universal PF1e Builder
+## Later milestone: Universal PF1e Builder
 
 - multiclassing
 - prestige classes
@@ -64,4 +58,4 @@ Add browser-level tests for representative martial, prepared-caster and spontane
 
 ## Working rule
 
-Until the Core Character Builder milestone is substantially complete, development should prioritise playable class and equipment systems over additional feat-only imports. New feats may still be added when required to complete or test a class implementation.
+Future work should begin with Expanded Character Options while preserving the completed Core milestone through its validation and browser journey suites.

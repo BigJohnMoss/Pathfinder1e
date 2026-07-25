@@ -1,4 +1,4 @@
-type AbilityName = "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
+import type { AbilityName } from "../../../packages/types/src/index.js";
 
 const labels: Record<AbilityName, string> = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;

@@ -396,6 +396,9 @@ test("tracks persistent equipment, encumbrance, currency, and equipped armor", a
   render(<Home />);
   await user.click(screen.getByRole("button", { name: "Storage" }));
   const catalogue = screen.getByLabelText("Equipment catalogue");
+  await user.selectOptions(catalogue, "longbow");
+  assert.ok(screen.getByText(/Critical ×3 · Range 100 ft\./));
+  await user.click(screen.getByRole("button", { name: "Remove" }));
   await user.selectOptions(catalogue, "chain-shirt");
   assert.ok(screen.getByText(/25 lb. carried — light load/));
   await user.click(screen.getByLabelText("Equipped"));

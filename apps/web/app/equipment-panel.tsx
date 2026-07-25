@@ -2,7 +2,7 @@ import { encumbrance } from "../../../packages/engine/src/index.js";
 
 export type InventoryEntry = { itemId: string; quantity: number; equipped: boolean };
 export type CoinPurse = { cp: number; sp: number; gp: number; pp: number };
-type EquipmentItem = { id: string; name: string; category: "armor" | "shield" | "weapon" | "gear"; costGp: number; weight: number; armorBonus?: number; damage?: string; ranged?: boolean };
+type EquipmentItem = { id: string; name: string; category: "armor" | "shield" | "weapon" | "gear"; costGp: number; weight: number; armorBonus?: number; damage?: string; critical?: string; range?: number; ranged?: boolean };
 
 export const equipmentItems: EquipmentItem[] = [
   { id: "backpack", name: "Backpack", category: "gear", costGp: 2, weight: 2 },
@@ -11,9 +11,9 @@ export const equipmentItems: EquipmentItem[] = [
   { id: "torch", name: "Torch", category: "gear", costGp: 0.01, weight: 1 },
   { id: "trail-rations", name: "Trail rations (1 day)", category: "gear", costGp: 0.5, weight: 1 },
   { id: "waterskin", name: "Waterskin", category: "gear", costGp: 1, weight: 4 },
-  { id: "dagger", name: "Dagger", category: "weapon", costGp: 2, weight: 1, damage: "1d4" },
-  { id: "longsword", name: "Longsword", category: "weapon", costGp: 15, weight: 4, damage: "1d8" },
-  { id: "longbow", name: "Longbow", category: "weapon", costGp: 75, weight: 3, damage: "1d8", ranged: true },
+  { id: "dagger", name: "Dagger", category: "weapon", costGp: 2, weight: 1, damage: "1d4", critical: "19–20/×2", range: 10 },
+  { id: "longsword", name: "Longsword", category: "weapon", costGp: 15, weight: 4, damage: "1d8", critical: "19–20/×2" },
+  { id: "longbow", name: "Longbow", category: "weapon", costGp: 75, weight: 3, damage: "1d8", critical: "×3", range: 100, ranged: true },
   { id: "leather-armor", name: "Leather armor", category: "armor", costGp: 10, weight: 15, armorBonus: 2 },
   { id: "chain-shirt", name: "Chain shirt", category: "armor", costGp: 100, weight: 25, armorBonus: 4 },
   { id: "heavy-wooden-shield", name: "Heavy wooden shield", category: "shield", costGp: 7, weight: 10, armorBonus: 2 }
@@ -67,7 +67,7 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
       if (!item) return null;
       const equippable = item.category !== "gear";
       const attack = item.damage ? baseAttackBonus + (item.ranged ? dexterityModifier : strengthModifier) : null;
-      return <article key={entry.itemId}><div><strong>{item.name}</strong><span>{item.category} · {item.weight * entry.quantity} lb. · {item.costGp * entry.quantity} gp</span>{attack !== null && <small>Attack {signed(attack)} · Damage {item.damage}{!item.ranged && strengthModifier !== 0 ? ` ${signed(strengthModifier)}` : ""}</small>}</div><label>Qty<input aria-label={`${item.name} quantity`} type="number" min="1" max="999" value={entry.quantity} onChange={(event) => updateEntry(entry.itemId, { quantity: Math.max(1, Math.min(999, Number.parseInt(event.target.value, 10) || 1)) })} /></label>{equippable && <label className="equip-toggle"><input type="checkbox" checked={entry.equipped} onChange={(event) => equip(entry, item, event.target.checked)} />Equipped</label>}<button type="button" onClick={() => removeEntry(entry.itemId)}>Remove</button></article>;
+      return <article key={entry.itemId}><div><strong>{item.name}</strong><span>{item.category} · {item.weight * entry.quantity} lb. · {item.costGp * entry.quantity} gp</span>{attack !== null && <small>Attack {signed(attack)} · Damage {item.damage}{!item.ranged && strengthModifier !== 0 ? ` ${signed(strengthModifier)}` : ""} · Critical {item.critical ?? "×2"}{item.range ? ` · Range ${item.range} ft.` : ""}</small>}</div><label>Qty<input aria-label={`${item.name} quantity`} type="number" min="1" max="999" value={entry.quantity} onChange={(event) => updateEntry(entry.itemId, { quantity: Math.max(1, Math.min(999, Number.parseInt(event.target.value, 10) || 1)) })} /></label>{equippable && <label className="equip-toggle"><input type="checkbox" checked={entry.equipped} onChange={(event) => equip(entry, item, event.target.checked)} />Equipped</label>}<button type="button" onClick={() => removeEntry(entry.itemId)}>Remove</button></article>;
     })}</div>}
   </section>;
 }

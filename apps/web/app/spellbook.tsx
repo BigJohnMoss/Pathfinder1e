@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { preparedSpellSlotUsage, spellPreparationCost } from "../../../packages/engine/src/wizard-opposition-preparation.js";
+import type { CharacterSpell } from "../../../packages/types/src/index.js";
 
-type Spell = { id: string; name: string; school?: string; schools?: string[]; levelByClass: Record<string, number>; summary: string };
+type Spell = CharacterSpell;
 type Slot = { level: number; base: number; bonus: number; count: number };
 type PreparedLimit = { level: number; count: number };
 

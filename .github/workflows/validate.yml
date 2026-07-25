@@ -21,3 +21,5 @@ jobs:
           name: infernal-undead-failure
           path: check.log
       - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
