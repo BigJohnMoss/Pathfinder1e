@@ -47,7 +47,6 @@ Deliver the existing web builder as an installable Progressive Web App (PWA) so 
 - Branded application icons include the required desktop and mobile sizes plus a maskable icon.
 - Supported desktop browsers can install the builder and launch it in a standalone application window.
 - Android users can install it from the browser and launch it from the home screen or app drawer.
-- iPhone and iPad users receive clear Add to Home Screen guidance and launch the builder in standalone mode.
 - The application shell and essential generated character data remain available offline after the first successful load.
 - Existing local character drafts persist across normal application updates, with versioned migrations when storage formats change.
 - An update prompt or safe refresh flow prevents service-worker updates from losing unsaved work.
@@ -60,10 +59,10 @@ Deliver the existing web builder as an installable Progressive Web App (PWA) so 
 1. Add manifest metadata and production-quality icons.
 2. Add service-worker caching with explicit versioning and an offline fallback.
 3. Add installation guidance and safe update UX.
-4. Validate desktop, Android and iOS installation behaviour.
+4. Validate desktop and Android installation behaviour.
 5. Add CI checks for PWA installability and offline operation.
 
-Native store packages for Microsoft Store, Google Play or Apple App Store are optional later work. Use a desktop or mobile wrapper only if store distribution or operating-system-specific integration becomes necessary.
+Native store packages for Microsoft Store or Google Play are optional later work. Use a desktop or mobile wrapper only if store distribution or operating-system-specific integration becomes necessary.
 
 ## Following milestone: Expanded Character Options
 
