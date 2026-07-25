@@ -1,0 +1,37 @@
+{
+  "source": {
+    "title": "Core Rulebook: Bard spell list",
+    "url": "https://legacy.aonprd.com/coreRulebook/spellLists.html#bard-spells"
+  },
+  "spells": [
+    {"id": "know-direction", "name": "Know Direction", "levelByClass": {"bard": 0}, "summary": "Discern true north."},
+    {"id": "lullaby", "name": "Lullaby", "levelByClass": {"bard": 0}, "summary": "Make a subject drowsy and more vulnerable to sleep effects."},
+    {"id": "summon-instrument", "name": "Summon Instrument", "levelByClass": {"bard": 0}, "summary": "Summon one handheld musical instrument."},
+
+    {"id": "confusion-lesser", "name": "Confusion, Lesser", "levelByClass": {"bard": 1}, "summary": "Confuse one creature for 1 round."},
+    {"id": "remove-fear", "name": "Remove Fear", "levelByClass": {"bard": 1}, "summary": "Suppress fear and bolster subjects against fear effects."},
+
+    {"id": "animal-trance", "name": "Animal Trance", "levelByClass": {"bard": 2}, "summary": "Fascinate animals with a captivating performance."},
+    {"id": "calm-emotions", "name": "Calm Emotions", "levelByClass": {"bard": 2}, "summary": "Calm creatures and suppress emotion effects."},
+    {"id": "enthrall", "name": "Enthrall", "levelByClass": {"bard": 2}, "summary": "Captivate nearby creatures with your speech."},
+    {"id": "silence", "name": "Silence", "levelByClass": {"bard": 2}, "summary": "Negate sound within a 20-foot radius."},
+    {"id": "sound-burst", "name": "Sound Burst", "levelByClass": {"bard": 2}, "summary": "Deal sonic damage and potentially stun creatures."},
+
+    {"id": "glibness", "name": "Glibness", "levelByClass": {"bard": 3}, "summary": "Gain a major bonus on Bluff checks and conceal lies from magic."},
+    {"id": "good-hope", "name": "Good Hope", "levelByClass": {"bard": 3}, "summary": "Grant allies bonuses on attacks, damage, saves, and checks."},
+    {"id": "sculpt-sound", "name": "Sculpt Sound", "levelByClass": {"bard": 3}, "summary": "Create new sounds or reshape existing sounds."},
+
+    {"id": "cure-critical-wounds", "name": "Cure Critical Wounds", "levelByClass": {"bard": 4}, "summary": "Heal 4d8 hit points plus 1 per caster level, to a maximum of +20."},
+    {"id": "modify-memory", "name": "Modify Memory", "levelByClass": {"bard": 4}, "summary": "Change 5 minutes of a subject's memories."},
+    {"id": "zone-of-silence", "name": "Zone of Silence", "levelByClass": {"bard": 4}, "summary": "Prevent sounds within the warded area from escaping."},
+
+    {"id": "cure-light-wounds-mass", "name": "Cure Light Wounds, Mass", "levelByClass": {"bard": 5}, "summary": "Heal multiple creatures for 1d8 hit points plus 1 per caster level."},
+    {"id": "song-of-discord", "name": "Song of Discord", "levelByClass": {"bard": 5}, "summary": "Force affected creatures to attack one another."},
+
+    {"id": "animate-objects", "name": "Animate Objects", "levelByClass": {"bard": 6}, "summary": "Animate objects to attack your foes."},
+    {"id": "cure-moderate-wounds-mass", "name": "Cure Moderate Wounds, Mass", "levelByClass": {"bard": 6}, "summary": "Heal multiple creatures for 2d8 hit points plus 1 per caster level."},
+    {"id": "find-the-path", "name": "Find the Path", "levelByClass": {"bard": 6}, "summary": "Reveal the most direct route to a specified destination."},
+    {"id": "heroes-feast", "name": "Heroes' Feast", "levelByClass": {"bard": 6}, "summary": "Create a restorative feast that grants lasting combat benefits."},
+    {"id": "sympathetic-vibration", "name": "Sympathetic Vibration", "levelByClass": {"bard": 6}, "summary": "Damage a freestanding structure with destructive resonance."}
+  ]
+}
