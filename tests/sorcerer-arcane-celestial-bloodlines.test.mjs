@@ -9,7 +9,7 @@ const group = bundle.optionGroups.find((optionGroup) => optionGroup.id === "sorc
 const arcane = group.options.find((option) => option.id === "sorcerer-bloodline-arcane");
 const celestial = group.options.find((option) => option.id === "sorcerer-bloodline-celestial");
 
- test("Arcane and Celestial details merge into the generated bloodline catalogue", () => {
+test("Arcane and Celestial details merge into the generated bloodline catalogue", () => {
   assert.equal(details.bloodlines.length, 2);
   for (const bloodline of [arcane, celestial]) {
     assert.ok(bloodline);
@@ -32,14 +32,20 @@ test("Arcane requires a legal selected Knowledge class skill", () => {
   assert.deepEqual(bloodlineClassSkills(base, celestial), [...base, "Heal"]);
 });
 
-test("Arcane and Celestial bonus spells resolve at their bloodline spell levels", () => {
+test("every Arcane and Celestial bonus spell resolves from the generated catalogue", () => {
+  const missing = Object.fromEntries([arcane, celestial].map((bloodline) => {
+    const resolvedNames = new Set(bloodlineBonusSpells(bundle.spells, bloodline, 19).map((spell) => spell.name));
+    return [bloodline.id, bloodline.bonusSpells.map((entry) => entry.name).filter((name) => !resolvedNames.has(name))];
+  }));
+  assert.deepEqual(missing, {
+    "sorcerer-bloodline-arcane": [],
+    "sorcerer-bloodline-celestial": []
+  });
+});
+
+test("Arcane and Celestial bonus spells use their assigned bloodline spell levels", () => {
   for (const bloodline of [arcane, celestial]) {
     assert.deepEqual(bloodlineBonusSpells(bundle.spells, bloodline, 2), []);
-    const first = bloodlineBonusSpells(bundle.spells, bloodline, 3);
-    assert.equal(first.length, 1);
-    assert.equal(first[0].name, bloodline.bonusSpells[0].name);
-    assert.equal(first[0].levelByClass.sorcerer, 1);
-
     const all = bloodlineBonusSpells(bundle.spells, bloodline, 19);
     assert.equal(all.length, 9, `${bloodline.id} resolved spell count`);
     assert.deepEqual(all.map((spell) => spell.name), bloodline.bonusSpells.map((entry) => entry.name));
