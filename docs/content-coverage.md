@@ -19,18 +19,17 @@ This document distinguishes records present in the data bundle from systems that
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
-| Sorcerer | Playable chassis | Level 1–20 spontaneous Charisma casting, complete shared Sorcerer/Wizard spell coverage, fixed spells-known progression, reusable daily slots, spell exchange milestones, Eschew Materials, ten Core bloodline identities, bloodline progression milestones, and persistence are integrated. Aberrant, Abyssal, Arcane, Celestial, Destined, Draconic, Elemental, and Fey include complete class skills, arcana, powers, bonus spells and bonus-feat lists. Draconic supports ten Core dragon types and Elemental supports four persistent element choices; Infernal and Undead still need detailed mechanics. |
+| Sorcerer | Playable Core class | Level 1–20 spontaneous Charisma casting, complete shared Sorcerer/Wizard spell coverage, fixed spells-known progression, reusable daily slots, spell exchange milestones, Eschew Materials, all ten Core bloodlines, complete bloodline class skills, arcana, powers, bonus spells, bonus-feat lists, dependent variant choices, and persistence are integrated. Draconic supports all ten Core dragon types, Elemental supports Air, Earth, Fire, and Water, and Arcane supports a selected Knowledge class skill. |
 | Wizard | Playable Core class | Level 1–20 progression, complete Wizard spell coverage with school metadata, cantrips, spellbook progression, Scribe Scroll, bonus feats, all nine Core schools, two opposition-school choices with enforced two-slot preparation costs, Familiar and Bonded Object paths, and one prepared specialist-school slot at each available spell level are integrated. |
 
 ## Core classes still required
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Sorcerer completion | 1 | detailed Infernal and Undead bloodline mechanics |
-| Paladin | 2 | smite evil, lay on hands, mercies and divine bond |
-| Ranger | 3 | favored enemy, combat styles, favored terrain and limited casting |
-| Bard | 4 | bardic performance, spontaneous casting and versatile performance |
-| Druid | 5 | nature bond, wild shape, animal companion or domain and divine casting |
+| Paladin | 1 | smite evil, lay on hands, mercies and divine bond |
+| Ranger | 2 | favored enemy, combat styles, favored terrain and limited casting |
+| Bard | 3 | bardic performance, spontaneous casting and versatile performance |
+| Druid | 4 | nature bond, wild shape, animal companion or domain and divine casting |
 
 ## Selectable ancestries
 
@@ -75,7 +74,7 @@ Feat records may reference class features belonging to classes that are not yet 
 | Channel energy | Polarity, dice, save DC, daily uses, spending, refresh and persistence are integrated |
 | Arcane schools | All nine Core Wizard schools and their powers are selectable; specialists choose two opposition schools, pay two normal preparation slots for opposition spells, and gain one school-only prepared slot at every spell level |
 | Arcane bond | Familiar and bonded-item paths, 11 Core familiar choices, five item categories, shared progression rules, dependency clearing, and persistence are integrated |
-| Bloodlines | Ten Core Sorcerer identities are selectable. Eight have complete class skills, arcana, five powers, nine automatic bonus spells and bonus-feat lists. Draconic includes ten dragon types and Elemental includes Air, Earth, Fire, and Water; Infernal and Undead remain |
+| Bloodlines | All ten Core Sorcerer bloodlines have complete class skills, arcana, five powers, nine automatic bonus spells and bonus-feat lists. Draconic includes ten dragon types, Elemental includes four element choices, and Arcane includes a selectable Knowledge skill |
 | Mysteries | Not playable |
 | Browser end-to-end tests | Not implemented |
 
