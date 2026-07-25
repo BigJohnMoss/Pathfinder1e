@@ -24,6 +24,8 @@ export interface CharacterDraftV1 {
   arcaneReservoir: number | null;
   bardicPerformanceUsed: number;
   wildShapeUsed: number;
+  inventory: Array<{ itemId: string; quantity: number; equipped: boolean }>;
+  coins: { cp: number; sp: number; gp: number; pp: number };
 }
 
 export type CharacterDraft = CharacterDraftV1;

@@ -390,3 +390,24 @@ test("uses labelled icon tabs to show focused builder sections", async () => {
   assert.ok(screen.getByText("Reserved for future character options"));
   assert.equal(screen.queryByText("Configure class features"), null);
 });
+
+test("tracks persistent equipment, encumbrance, currency, and equipped armor", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.click(screen.getByRole("button", { name: "Storage" }));
+  const catalogue = screen.getByLabelText("Equipment catalogue");
+  await user.selectOptions(catalogue, "chain-shirt");
+  assert.ok(screen.getByText(/25 lb. carried — light load/));
+  await user.click(screen.getByLabelText("Equipped"));
+  fireEvent.change(screen.getByLabelText("GP"), { target: { value: "125" } });
+  await user.click(screen.getByRole("button", { name: "Actions" }));
+  assert.match(screen.getByText("AC / touch / flat-footed").closest("div")?.textContent ?? "", /14 \/ 10 \/ 14/);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Storage" }));
+  await user.click(screen.getByRole("button", { name: "Remove" }));
+  fireEvent.change(screen.getByLabelText("GP"), { target: { value: "0" } });
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal((screen.getByLabelText("GP") as HTMLInputElement).value, "125");
+  assert.equal((screen.getByLabelText("Equipped") as HTMLInputElement).checked, true);
+  assert.ok(screen.getByText(/25 lb. carried — light load/));
+});

@@ -203,7 +203,9 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     spellSlotUses: isRankRecord(draft.spellSlotUses),
     arcaneReservoir: Number.isInteger(draft.arcaneReservoir) && draft.arcaneReservoir >= 0 ? draft.arcaneReservoir : null,
     bardicPerformanceUsed: Number.isInteger(draft.bardicPerformanceUsed) && draft.bardicPerformanceUsed >= 0 ? draft.bardicPerformanceUsed : 0,
-    wildShapeUsed: Number.isInteger(draft.wildShapeUsed) && draft.wildShapeUsed >= 0 ? draft.wildShapeUsed : 0
+    wildShapeUsed: Number.isInteger(draft.wildShapeUsed) && draft.wildShapeUsed >= 0 ? draft.wildShapeUsed : 0,
+    inventory: Array.isArray(draft.inventory) ? draft.inventory.filter(entry => entry && typeof entry.itemId === "string" && Number.isInteger(entry.quantity) && entry.quantity > 0).map(entry => ({ itemId: entry.itemId, quantity: Math.min(999, entry.quantity), equipped: entry.equipped === true })) : [],
+    coins: Object.fromEntries(["cp", "sp", "gp", "pp"].map(coin => [coin, Number.isInteger(draft.coins?.[coin]) && draft.coins[coin] >= 0 ? draft.coins[coin] : 0]))
   };
 }
 
