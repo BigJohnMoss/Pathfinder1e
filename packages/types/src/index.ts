@@ -17,6 +17,7 @@ export interface CharacterDraftV1 {
   abilityBoosts: AbilityName[];
   selectedFeatIds: string[];
   selectedTraitIds: string[];
+  selectedTraitChoices: Record<string, string>;
   selectedFeatChoices: Record<string, string>;
   skillRanks: Record<string, number>;
   selectedOptions: Record<string, string>;
@@ -107,6 +108,11 @@ export interface CharacterTrait {
     saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>;
     skillBonuses?: Record<string, number>;
     classSkills?: string[];
+  };
+  choice?: {
+    key: "classSkill";
+    label: string;
+    options: string[];
   };
   source: SourceRef;
 }

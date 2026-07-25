@@ -197,6 +197,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     abilityBoosts: normalizeAbilityBoosts(draft.abilityBoosts, draft.level),
     selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
     selectedTraitIds: Array.isArray(draft.selectedTraitIds) ? draft.selectedTraitIds.filter(id => typeof id === "string") : [],
+    selectedTraitChoices: isStringRecord(draft.selectedTraitChoices),
     selectedFeatChoices: isStringRecord(draft.selectedFeatChoices),
     skillRanks: isRankRecord(draft.skillRanks),
     selectedOptions: isStringRecord(draft.selectedOptions),
@@ -224,8 +225,19 @@ export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2)
   return selected;
 }
 
-export function traitBonuses(selectedTraitIds, traits) {
+export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTraitIds, traits) {
+  if (!selectedTraitChoices || typeof selectedTraitChoices !== "object" || Array.isArray(selectedTraitChoices)) return {};
+  const selected = new Set(normalizeSelectedTraits(selectedTraitIds, traits));
+  const byId = new Map(traits.map(trait => [trait.id, trait]));
+  return Object.fromEntries(Object.entries(selectedTraitChoices).filter(([traitId, choice]) => {
+    const options = byId.get(traitId)?.choice?.options;
+    return selected.has(traitId) && typeof choice === "string" && Array.isArray(options) && options.includes(choice);
+  }));
+}
+
+export function traitBonuses(selectedTraitIds, traits, selectedTraitChoices = {}) {
   const selected = normalizeSelectedTraits(selectedTraitIds, traits);
+  const choices = normalizeSelectedTraitChoices(selectedTraitChoices, selected, traits);
   const result = { initiative: 0, saves: { fortitude: 0, reflex: 0, will: 0 }, skillBonuses: {}, classSkills: [] };
   for (const id of selected) {
     const effects = traits.find(trait => trait.id === id)?.effects ?? {};
@@ -233,6 +245,8 @@ export function traitBonuses(selectedTraitIds, traits) {
     for (const save of Object.keys(result.saves)) result.saves[save] += effects.saves?.[save] ?? 0;
     for (const [skill, bonus] of Object.entries(effects.skillBonuses ?? {})) result.skillBonuses[skill] = (result.skillBonuses[skill] ?? 0) + bonus;
     for (const skill of effects.classSkills ?? []) if (!result.classSkills.includes(skill)) result.classSkills.push(skill);
+    const choice = choices[id];
+    if (choice && !result.classSkills.includes(choice)) result.classSkills.push(choice);
   }
   return result;
 }
