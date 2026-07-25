@@ -1,4 +1,6 @@
 import "./styles.css";
+import "./skill-allocation.css";
+import "./character-actions.css";
 import "./class-options.css";
 import "./domain-details.css";
 import "./domain-slots.css";

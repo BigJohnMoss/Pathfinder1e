@@ -89,13 +89,15 @@ test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
   await user.click(screen.getByRole("button", { name: "Skills" }));
-  const climb = screen.getByText("Climb").closest("label")?.querySelector("input");
+  assert.equal(screen.getAllByText("Class skill").length > 0, true);
+  assert.ok(screen.getByLabelText("4 skill ranks remaining"));
+  const climb = screen.getByLabelText("Climb ranks");
   assert.ok(climb);
   await user.clear(climb);
   await user.type(climb, "999");
   assert.equal((climb as HTMLInputElement).value, "1");
-  assert.match(screen.getByText(/of 4 total ranks allocated/).textContent ?? "", /1 of 4/);
-  assert.match(screen.getByText(/at most 1 rank at this level/).textContent ?? "", /at most 1 rank/);
+  assert.ok(screen.getByLabelText("3 skill ranks remaining"));
+  assert.match(screen.getByText(/Invest up to 1 rank/).textContent ?? "", /class skills receive a \+3 bonus/);
 });
 
 test("prevents duplicate feats and manages prepared spell counts", async () => {
