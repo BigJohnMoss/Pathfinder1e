@@ -1,0 +1,1 @@
+{"id":"ease-of-faith","name":"Ease of Faith","category":"faith","summary":"Gain a +1 trait bonus on Diplomacy checks, and Diplomacy is always a class skill.","effects":{"skillBonuses":{"Diplomacy":1},"classSkills":["Diplomacy"]},"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedNewRules.html"}}
