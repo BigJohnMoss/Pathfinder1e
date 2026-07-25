@@ -36,6 +36,13 @@ export interface CharacterClass {
   babProgression: Progression; saves: {fortitude: SaveProgression; reflex: SaveProgression; will: SaveProgression};
   skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
   features: ClassFeatureOccurrence[];
+  spellcasting?: {
+    ability: "intelligence" | "wisdom" | "charisma";
+    castingType: "prepared" | "spontaneous";
+    slotsByLevel: number[][];
+    preparedByLevel?: number[][];
+    knownByLevel?: number[][];
+  };
 }
 export type Prerequisite =
   | { type: "level"|"bab"|"caster-level"; minimum: number }
@@ -48,3 +55,74 @@ export type Prerequisite =
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface SelectableOption { id:string; groupId:string; name:string; classIds:string[]; minimumLevel:number; prerequisites:Prerequisite[]; benefit:string; source:SourceRef; }
+
+export interface CharacterAncestry {
+  id: string;
+  name: string;
+  size: string;
+  speed: number;
+  type: string;
+  subtypes: string[];
+  abilityModifiers: {
+    fixed?: Partial<AbilityScores>;
+    choice?: { count: number; amount: number };
+  };
+  languages: { automatic: string[]; bonus: string | string[] };
+  traits: Array<{ id: string; name: string; summary: string }>;
+  source: SourceRef;
+}
+
+export interface CharacterFeat {
+  id: string;
+  name: string;
+  type: string;
+  benefit: string;
+  prerequisites: Prerequisite[];
+  source: SourceRef;
+  choice?: {
+    key: string;
+    label: string;
+    options?: Array<{ id: string; name: string }>;
+    allowCustom?: boolean;
+  };
+}
+
+export interface CharacterOption extends SelectableOption {
+  alignment?: string;
+  polarity?: string;
+  domains?: string[];
+  classSkill?: string;
+  classSkillChoices?: string[];
+  variants?: Array<{ id: string; name: string; energyType: string; breathShape?: string; movement?: string }>;
+  arcana?: string;
+  bonusSpells?: Array<{ sorcererLevel: number; spellLevel: number; name: string }>;
+  bonusFeats?: string[];
+  powers?: Array<{ name: string; level: number; summary: string }>;
+  domainSpells?: Array<{ level: number; name: string }>;
+}
+
+export interface CharacterOptionGroup {
+  id: string;
+  name: string;
+  classIds: string[];
+  options: CharacterOption[];
+}
+
+export interface CharacterSpell {
+  id: string;
+  name: string;
+  school?: string;
+  schools?: string[];
+  levelByClass: Record<string, number>;
+  summary: string;
+  source?: SourceRef;
+}
+
+export interface GeneratedDataBundle {
+  generatedAt: string;
+  classes: CharacterClass[];
+  races: CharacterAncestry[];
+  optionGroups: CharacterOptionGroup[];
+  feats: CharacterFeat[];
+  spells: CharacterSpell[];
+}

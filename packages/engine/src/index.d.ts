@@ -1,14 +1,9 @@
-import type { CharacterDraftV1 } from "../../types/src/index.js";
+import type { CharacterClass as SharedCharacterClass, CharacterDraftV1 } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
 
-export interface CharacterClass {
-  babProgression: string;
-  saves: Record<"fortitude" | "reflex" | "will", string>;
-  skillRanksPerLevel: number;
-  features: Array<{ id: string; level: number; name: string; summary: string; choiceRequired?: boolean; [key: string]: unknown }>;
-}
+export type CharacterClass = SharedCharacterClass;
 
 export interface ClassProgression {
   level: number;
