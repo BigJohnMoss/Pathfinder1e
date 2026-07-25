@@ -9,10 +9,10 @@ The project is working toward the **Core Character Builder** milestone. The curr
 - 8 selectable classes: Arcanist, Barbarian, Cleric, Fighter, Monk, Rogue, Sorcerer, and Wizard
 - 7 selectable core ancestries
 - 424 selectable feats
-- 1,898 spells
+- 1,903 spells
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
-Cleric and Wizard are complete playable Core classes through level 20. Sorcerer has its full level 1–20 spontaneous-casting chassis, shared Sorcerer/Wizard spell list, spells-known progression, ten Core bloodline identities, bloodline milestones, and persistent casting workflow. Aberrant, Abyssal, Arcane, Celestial, Destined, and Draconic now include their class skills, arcana, all five powers, nine automatically granted bonus spells, and bonus-feat lists. Draconic also includes all ten Core dragon types with persistent energy and breath-shape selection; four Core bloodlines remain.
+Cleric and Wizard are complete playable Core classes through level 20. Sorcerer has its full level 1–20 spontaneous-casting chassis, shared Sorcerer/Wizard spell list, spells-known progression, ten Core bloodline identities, bloodline milestones, and persistent casting workflow. Aberrant, Abyssal, Arcane, Celestial, Destined, Draconic, Elemental, and Fey now include their class skills, arcana, all five powers, nine automatically granted bonus spells, and bonus-feat lists. Draconic includes all ten Core dragon types; Elemental includes Air, Earth, Fire, and Water with persistent energy and movement selection. Only Infernal and Undead remain.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
