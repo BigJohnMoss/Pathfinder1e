@@ -66,8 +66,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Next milestone: Expanded Character Options
 
-- traits — in progress: first sourced basic-trait catalogue, selection rules,
-  mechanical bonuses, persistence, and browser coverage delivered
+- traits — in progress: 11 sourced basic traits, selection rules, mechanical
+  bonuses, persistence, and browser coverage delivered
 - archetypes
 - subdomains
 - expanded bloodlines
