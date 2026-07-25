@@ -44,6 +44,8 @@ export interface CharacterClass {
     slotsByLevel: number[][];
     preparedByLevel?: number[][];
     knownByLevel?: number[][];
+    spellLevelUnlocks?: number[];
+    preparesFromSlots?: boolean;
   };
 }
 export type Prerequisite =

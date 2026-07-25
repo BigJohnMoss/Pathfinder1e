@@ -181,6 +181,27 @@ test("makes Monk available with its full-save progression", async () => {
   assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+4");
 });
 
+test("makes Paladin available with its martial chassis and divine features", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "paladin");
+  assert.equal(screen.getByText("BAB").closest("article")?.querySelector("strong")?.textContent, "+1");
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+2");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Aura of Good"));
+  assert.ok(screen.getByText("Detect Evil"));
+  assert.ok(screen.getByText("Smite Evil"));
+
+  await user.click(screen.getByRole("button", { name: "Basic info" }));
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "14" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Divine Bond"));
+  await user.click(screen.getByRole("button", { name: "Spells" }));
+  assert.ok(screen.getByRole("button", { name: "Add Bless" }));
+});
+
 test("makes Wizard selectable with prepared arcane spells and class features", async () => {
   const user = userEvent.setup();
   render(<Home />);

@@ -153,14 +153,26 @@ export function spellcastingProgression(characterClass, level, { abilityScore = 
   const slots = spellcasting.slotsByLevel?.[level - 1];
   const prepared = spellcasting.preparedByLevel?.[level - 1];
   if (!Array.isArray(slots) || !Array.isArray(prepared)) throw new Error("Spellcasting progression is incomplete.");
+  const unlocks = spellcasting.spellLevelUnlocks;
   const bonusByLevel = Object.fromEntries(bonusSpellsPerDay(abilityScore, slots.length).map(entry => [entry.level, entry.count]));
-  const baseSlots = slots.map((base, index) => ({ level: index + 1, base, bonus: bonusByLevel[index + 1] ?? 0, count: base + (bonusByLevel[index + 1] ?? 0) }));
+  const baseSlots = slots.map((base, index) => {
+    const spellLevel = index + 1;
+    const unlocked = !Array.isArray(unlocks) || level >= (unlocks[index] ?? Number.POSITIVE_INFINITY);
+    const bonus = unlocked ? bonusByLevel[spellLevel] ?? 0 : 0;
+    return { level: spellLevel, base: unlocked ? base : 0, bonus, count: (unlocked ? base : 0) + bonus };
+  });
+  const preparedSlots = spellcasting.preparesFromSlots
+    ? [{ level: 0, count: prepared[0] ?? 0 }, ...baseSlots.map(({ level: spellLevel, count }) => ({ level: spellLevel, count }))]
+    : prepared.map((count, spellLevel) => ({ level: spellLevel, count }));
+  const accessibleSpellLevels = Array.isArray(unlocks)
+    ? baseSlots.filter(entry => entry.count > 0)
+    : baseSlots.filter(entry => entry.base > 0);
   return {
     ability: spellcasting.ability,
     castingType: spellcasting.castingType,
-    maximumSpellLevel: Math.min(Math.max(0, abilityScore - 10), Math.max(0, ...baseSlots.filter(entry => entry.base > 0).map(entry => entry.level))),
+    maximumSpellLevel: Math.min(Math.max(0, abilityScore - 10), Math.max(0, ...accessibleSpellLevels.map(entry => entry.level))),
     slots: baseSlots.filter(entry => entry.count > 0),
-    prepared: prepared.map((count, level) => ({ level, count })).filter(entry => entry.count > 0)
+    prepared: preparedSlots.filter(entry => entry.count > 0)
   };
 }
 
