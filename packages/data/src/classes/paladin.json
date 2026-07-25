@@ -1,0 +1,45 @@
+{
+  "id": "paladin",
+  "name": "Paladin",
+  "classType": "core",
+  "hitDie": 10,
+  "babProgression": "full",
+  "saves": {"fortitude":"good","reflex":"poor","will":"good"},
+  "skillRanksPerLevel": 2,
+  "classSkills": ["Craft","Diplomacy","Handle Animal","Heal","Knowledge (nobility)","Knowledge (religion)","Profession","Ride","Sense Motive","Spellcraft"],
+  "spellcasting": {
+    "ability": "charisma",
+    "castingType": "prepared",
+    "slotsByLevel": [
+      [0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[1,0,0,0,0,0,0,0,0],
+      [1,0,0,0,0,0,0,0,0],[1,0,0,0,0,0,0,0,0],[1,1,0,0,0,0,0,0,0],[2,1,0,0,0,0,0,0,0],[2,1,0,0,0,0,0,0,0],
+      [2,1,1,0,0,0,0,0,0],[2,2,1,0,0,0,0,0,0],[3,2,1,0,0,0,0,0,0],[3,2,1,1,0,0,0,0,0],[3,2,2,1,0,0,0,0,0],
+      [3,3,2,1,0,0,0,0,0],[4,3,2,1,0,0,0,0,0],[4,3,2,2,0,0,0,0,0],[4,3,3,2,0,0,0,0,0],[4,4,3,3,0,0,0,0,0]
+    ],
+    "preparedByLevel": [
+      [0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,1,0,0,0,0,0,0,0,0],
+      [0,1,0,0,0,0,0,0,0,0],[0,1,0,0,0,0,0,0,0,0],[0,1,1,0,0,0,0,0,0,0],[0,2,1,0,0,0,0,0,0,0],[0,2,1,0,0,0,0,0,0,0],
+      [0,2,1,1,0,0,0,0,0,0],[0,2,2,1,0,0,0,0,0,0],[0,3,2,1,0,0,0,0,0,0],[0,3,2,1,1,0,0,0,0,0],[0,3,2,2,1,0,0,0,0,0],
+      [0,3,3,2,1,0,0,0,0,0],[0,4,3,2,1,0,0,0,0,0],[0,4,3,2,2,0,0,0,0,0],[0,4,3,3,2,0,0,0,0,0],[0,4,4,3,3,0,0,0,0,0]
+    ]
+  },
+  "source": {"title":"Core Rulebook","page":60,"url":"https://legacy.aonprd.com/coreRulebook/classes/paladin.html"},
+  "features": [
+    {"id":"paladin-aura-of-good-1","name":"Aura of Good","level":1,"type":"core","summary":"Project a good aura with power equal to paladin level.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"paladin-detect-evil-1","name":"Detect Evil","level":1,"type":"core","summary":"Detect evil at will and focus on one creature or object as a move action.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":"at will"},
+    {"id":"paladin-smite-evil-1","name":"Smite Evil","level":1,"type":"scaling","summary":"Add Charisma to attacks, paladin level to damage, and Charisma as deflection AC against one evil target.","choiceRequired":false,"optionGroupId":null,"progressionKey":"paladin-smite-evil","scaling":"one additional daily use at 4th level and every 3 levels thereafter","uses":"1/day"},
+    {"id":"paladin-divine-grace-2","name":"Divine Grace","level":2,"type":"core","summary":"Add a positive Charisma bonus to all saving throws.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"paladin-lay-on-hands-2","name":"Lay on Hands","level":2,"type":"scaling","summary":"Heal 1d6 hit points per two paladin levels or damage undead by touch.","choiceRequired":false,"optionGroupId":null,"progressionKey":"paladin-lay-on-hands","scaling":"1d6 per 2 paladin levels","uses":"half paladin level + Charisma modifier per day"},
+    {"id":"paladin-aura-of-courage-3","name":"Aura of Courage","level":3,"type":"core","summary":"Become immune to fear and grant nearby allies +4 against fear.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"paladin-divine-health-3","name":"Divine Health","level":3,"type":"core","summary":"Become immune to disease.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"paladin-mercy-3","name":"Mercy","level":3,"type":"scaling","summary":"Lay on hands also removes one selected condition; gain another mercy every 3 levels.","choiceRequired":false,"optionGroupId":null,"progressionKey":"paladin-mercy","scaling":"one mercy every 3 levels","uses":null},
+    {"id":"paladin-channel-positive-energy-4","name":"Channel Positive Energy","level":4,"type":"core","summary":"Spend two uses of lay on hands to channel positive energy as a cleric of paladin level.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":"2 lay on hands uses"},
+    {"id":"paladin-spellcasting-4","name":"Divine Spellcasting","level":4,"type":"spellcasting","summary":"Prepare and cast divine paladin spells using Charisma; caster level equals paladin level minus 3.","choiceRequired":false,"optionGroupId":null,"progressionKey":"paladin-spellcasting","scaling":"1st through 4th-level spells","uses":null},
+    {"id":"paladin-divine-bond-5","name":"Divine Bond","level":5,"type":"core","summary":"Form a permanent bond with a celestial weapon spirit or loyal mount.","choiceRequired":false,"optionGroupId":null,"progressionKey":"paladin-divine-bond","scaling":"+1 at 5th level and +1 every 3 levels for a bonded weapon","uses":"1/day plus one use every 4 levels after 5th"},
+    {"id":"paladin-aura-of-resolve-8","name":"Aura of Resolve","level":8,"type":"core","summary":"Become immune to charm and grant nearby allies +4 against charm.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"paladin-aura-of-justice-11","name":"Aura of Justice","level":11,"type":"core","summary":"Spend two smite uses to grant nearby allies your smite evil ability.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":"2 smite evil uses"},
+    {"id":"paladin-aura-of-faith-14","name":"Aura of Faith","level":14,"type":"core","summary":"Nearby attacks count as good-aligned for overcoming damage reduction.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":null,"uses":null},
+    {"id":"paladin-aura-of-righteousness-17","name":"Aura of Righteousness","level":17,"type":"core","summary":"Gain DR 5/evil and immunity to compulsion; allies gain +4 against compulsion.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":"DR 5/evil","uses":null},
+    {"id":"paladin-holy-champion-20","name":"Holy Champion","level":20,"type":"capstone","summary":"Increase DR to 10/evil, maximize healing, and banish evil outsiders struck by smite evil.","choiceRequired":false,"optionGroupId":null,"progressionKey":null,"scaling":"DR 10/evil","uses":null}
+  ]
+}
