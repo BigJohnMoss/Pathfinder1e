@@ -92,7 +92,7 @@ export default function Home() {
   }), [level, progression.skillRanks]);
 
   const choiceFeatures = progression.features.filter((feature) => feature.choiceRequired && feature.optionGroupId);
-  const classOptionChoices = choiceFeatures.map((feature) => { const group = optionGroups.find((item) => item.id === feature.optionGroupId); const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)]; const options = group ? availableOptions(group, characterClass.id, level, selectedIds, { abilities, baseAttackBonus: progression.baseAttackBonus }) : []; return { id: feature.id, name: feature.name, level: feature.level, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) }; });
+  const classOptionChoices = choiceFeatures.map((feature) => { const group = optionGroups.find((item) => item.id === feature.optionGroupId); const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)]; const options = group ? availableOptions(group, characterClass.id, level, selectedIds, { abilities, baseAttackBonus: progression.baseAttackBonus, featureIds: selectedIds }) : []; return { id: feature.id, name: feature.name, level: feature.level, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) }; });
   const updateClassOption = (featureId: string, optionId: string) => setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
 
   const castingAbility = characterClass.spellcasting && abilityNames.includes(characterClass.spellcasting.ability as keyof typeof abilities) ? characterClass.spellcasting.ability as keyof typeof abilities : null;

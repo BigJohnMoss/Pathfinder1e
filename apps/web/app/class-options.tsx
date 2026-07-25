@@ -30,10 +30,12 @@ const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").
 const domainSpellLevel = (choice: Choice) => Number(choice.id.match(/^cleric-domain-spell-(\d+)$/)?.[1] ?? 0);
 const specialistSpellLevel = (choice: Choice) => Number(choice.id.match(/^wizard-specialist-spell-(\d+)$/)?.[1] ?? 0);
 const isWizardOpposition = (choice: Choice) => choice.id.startsWith("wizard-opposition-school-");
+const isPaladinMercy = (choice: Choice) => choice.id.startsWith("paladin-mercy-");
 const choiceOrder = (choice: Choice) => {
   if (choice.id === "wizard-arcane-bond-1") return 5;
   if (choice.id === "wizard-familiar-1" || choice.id === "wizard-bonded-object-1") return 6;
   if (choice.id === "cleric-deity-1" || choice.id === "wizard-arcane-school-1" || choice.id === "sorcerer-bloodline-1") return 10;
+  if (choice.id === "paladin-divine-bond-5") return 11;
   if (choice.id === "cleric-alignment-1" || choice.id === "wizard-opposition-school-1-first") return 20;
   if (choice.id === "wizard-opposition-school-1-second") return 21;
   const specialistLevel = specialistSpellLevel(choice);
@@ -116,6 +118,13 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     if (choice.id === "cleric-channel-energy-type-1") return channelEnergyChoices(choice.options, selectedAlignment?.alignment, selectedDeity?.alignment);
     if (choice.id === "wizard-familiar-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-familiar");
     if (choice.id === "wizard-bonded-object-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-object");
+    if (isPaladinMercy(choice)) {
+      const selectedByOtherMercy = orderedChoices
+        .filter((other) => other.id !== choice.id && isPaladinMercy(other))
+        .map((other) => selectedOptions[other.id])
+        .filter((id): id is string => Boolean(id));
+      return choice.options.filter((option) => !selectedByOtherMercy.includes(option.id));
+    }
     const specialistLevel = specialistSpellLevel(choice);
     if (specialistLevel) return specialistOptions(specialistLevel);
     if (isWizardOpposition(choice)) return oppositionSchoolOptions(choice.options, selectedWizardSchool);
@@ -126,8 +135,16 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   };
 
   useEffect(() => {
+    const seenMercies = new Set<string>();
     for (const choice of orderedChoices) {
       const selectedId = selectedOptions[choice.id];
+      if (isPaladinMercy(choice) && selectedId) {
+        if (seenMercies.has(selectedId)) {
+          onOptionChange(choice.id, "");
+          continue;
+        }
+        seenMercies.add(selectedId);
+      }
       const options = optionsFor(choice);
       if (selectedId && !options.some((option) => option.id === selectedId)) onOptionChange(choice.id, "");
       if (choice.id === "cleric-channel-energy-type-1" && options.length === 1 && selectedId !== options[0].id) onOptionChange(choice.id, options[0].id);
