@@ -1,4 +1,4 @@
-type AbilityName = "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
+import type { AbilityName } from "../../../packages/types/src/index.js";
 type SkillEntry = { name: string; ability: AbilityName; ranks: number; total: number; isClassSkill: boolean };
 
 const labels: Record<AbilityName, string> = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };

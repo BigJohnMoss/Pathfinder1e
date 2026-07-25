@@ -1,5 +1,4 @@
-type Feat = { id: string; name: string; benefit: string; choice?: { key: string; label: string; options?: Array<{ id: string; name: string }>; allowCustom?: boolean } };
-type Prerequisite = { type: string; key?: string; id?: string; featId?: string; classId?: string; minimum?: number; prerequisites?: Prerequisite[] };
+import type { CharacterFeat as Feat, Prerequisite } from "../../../packages/types/src/index.js";
 type FeatChoice = { index: number; name: string; selected?: Feat; checks: Array<{ met: boolean; prerequisite: Prerequisite }>; eligibleFeatIds: string[] };
 
 const labels: Record<string, string> = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
@@ -10,8 +9,11 @@ const prerequisiteLabel = (prerequisite: Prerequisite): string => {
   if (prerequisite.type === "class-level") return `${prerequisite.classId ?? "class"} level ${prerequisite.minimum}+`;
   if (prerequisite.type === "skill") return `${prerequisite.key} ${prerequisite.minimum}+ ranks`;
   if (prerequisite.type === "matching-choice") return `matching ${prerequisite.key} for ${prerequisite.featId}`;
+  if (prerequisite.type === "choice-value") return `${prerequisite.key} for ${prerequisite.featId}: ${prerequisite.value}`;
   if (prerequisite.type === "any") return `one of: ${prerequisite.prerequisites?.map(prerequisiteLabel).join(", ")}`;
-  return prerequisite.id ?? prerequisite.type;
+  if (prerequisite.type === "level") return `Character level ${prerequisite.minimum}+`;
+  if (prerequisite.type === "size") return `Size ${prerequisite.maximum} or smaller`;
+  return "id" in prerequisite ? prerequisite.id : prerequisite.type;
 };
 
 export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoices, onFeatChange, onFeatChoiceChange }: { feats: Feat[]; choices: FeatChoice[]; selectedFeatIds: string[]; selectedFeatChoices: Record<string, string>; onFeatChange: (index: number, featId: string) => void; onFeatChoiceChange: (featId: string, choice: string) => void }) {

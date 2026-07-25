@@ -1,4 +1,4 @@
-type Feature = { id: string; name: string; summary: string; choiceRequired?: boolean };
+import type { ClassFeatureOccurrence as Feature } from "../../../packages/types/src/index.js";
 type DailyResource = { label: string; unit: string; maximum: number | null; used: number; onUsedChange: (used: number) => void };
 
 export function ClassFeatures({ level, className, features, dailyResource }: { level: number; className: string; features: Feature[]; dailyResource?: DailyResource }) {

@@ -6,24 +6,10 @@ import { optionsGrantedBySelection } from "../../../packages/engine/src/dependen
 import { arcaneBondDetailOptions } from "../../../packages/engine/src/wizard-arcane-bond.js";
 import { oppositionSchoolOptions } from "../../../packages/engine/src/wizard-schools.js";
 import { specialistSchoolSpells } from "../../../packages/engine/src/wizard-specialist-slots.js";
+import type { CharacterOption } from "../../../packages/types/src/index.js";
 
-type BloodlineVariant = { id: string; name: string; energyType: string; breathShape?: string; movement?: string };
-type Option = {
-  id: string;
-  name: string;
-  benefit: string;
-  alignment?: string;
-  polarity?: string;
-  domains?: string[];
-  classSkill?: string;
-  classSkillChoices?: string[];
-  variants?: BloodlineVariant[];
-  arcana?: string;
-  bonusSpells?: Array<{ sorcererLevel: number; spellLevel: number; name: string }>;
-  bonusFeats?: string[];
-  powers?: Array<{ name: string; level: number; summary: string }>;
-  domainSpells?: Array<{ level: number; name: string }>;
-};
+type BloodlineVariant = NonNullable<CharacterOption["variants"]>[number];
+type Option = Pick<CharacterOption, "id" | "name" | "benefit"> & Partial<Omit<CharacterOption, "id" | "name" | "benefit">>;
 type Choice = { id: string; name: string; level: number; options: Option[]; selected?: Option };
 
 const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
