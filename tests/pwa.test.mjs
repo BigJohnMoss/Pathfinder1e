@@ -19,6 +19,24 @@ test("service worker provides a versioned offline application shell", async () =
   assert.match(worker, /caches\.delete/);
 });
 
+test("application updates require an explicit safe-refresh decision", async () => {
+  const worker = await readFile("apps/web/public/sw.js", "utf8");
+  const registration = await readFile(
+    "apps/web/app/pwa-registration.tsx",
+    "utf8",
+  );
+
+  assert.doesNotMatch(
+    worker.match(/self\.addEventListener\("install"[\s\S]*?\n}\);/)?.[0] ?? "",
+    /skipWaiting/,
+  );
+  assert.match(worker, /event\.data\?\.type === "SKIP_WAITING"/);
+  assert.match(registration, /registration\.waiting/);
+  assert.match(registration, /Save or export your character/);
+  assert.match(registration, /Update now/);
+  assert.match(registration, /controllerchange/);
+});
+
 test("all declared application icons exist", async () => {
   await Promise.all([
     access("apps/web/public/icons/pf1e-192.png"),
