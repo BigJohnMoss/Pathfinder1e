@@ -26,11 +26,11 @@ test("cleric domains follow the selected deity and show their powers and spells"
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
 
-  const deity = screen.getByText("Deity").closest("label")?.querySelector("select");
-  const firstDomain = screen.getByText("First Domain").closest("label")?.querySelector("select");
-  const secondDomain = screen.getByText("Second Domain").closest("label")?.querySelector("select");
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(deity);
   assert.ok(firstDomain);
   assert.ok(secondDomain);
@@ -69,11 +69,11 @@ test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
 
-  const deity = screen.getByText("Deity").closest("label")?.querySelector("select");
-  const firstDomain = screen.getByText("First Domain").closest("label")?.querySelector("select");
-  const secondDomain = screen.getByText("Second Domain").closest("label")?.querySelector("select");
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(deity);
   assert.ok(firstDomain);
   assert.ok(secondDomain);
@@ -81,9 +81,9 @@ test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   await user.selectOptions(firstDomain, "domain-fire");
   await user.selectOptions(secondDomain, "domain-sun");
 
-  const firstSlot = screen.getByText("1st-level Domain Spell Slot").closest("label")?.querySelector("select");
-  const secondSlot = screen.getByText("2nd-level Domain Spell Slot").closest("label")?.querySelector("select");
-  const thirdSlot = screen.getByText("3rd-level Domain Spell Slot").closest("label")?.querySelector("select");
+  const firstSlot = screen.getAllByText("1st-level Domain Spell Slot").at(-1)!.closest("label")?.querySelector("select");
+  const secondSlot = screen.getAllByText("2nd-level Domain Spell Slot").at(-1)!.closest("label")?.querySelector("select");
+  const thirdSlot = screen.getAllByText("3rd-level Domain Spell Slot").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(firstSlot);
   assert.ok(secondSlot);
   assert.ok(thirdSlot);
@@ -112,11 +112,11 @@ test("Cleric alignment, channel polarity, and daily uses follow the selected dei
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
 
-  const deity = screen.getByText("Deity").closest("label")?.querySelector("select");
-  const alignment = screen.getByText("Alignment").closest("label")?.querySelector("select");
-  const channel = screen.getByText("Channel Energy Type").closest("label")?.querySelector("select");
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const alignment = screen.getAllByText("Alignment").at(-1)!.closest("label")?.querySelector("select");
+  const channel = screen.getAllByText("Channel Energy Type").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(deity);
   assert.ok(alignment);
   assert.ok(channel);

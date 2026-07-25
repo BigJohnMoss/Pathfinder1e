@@ -26,11 +26,11 @@ test("Wizard Arcane Bond unlocks the selected familiar or object path and persis
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
 
-  const bond = screen.getByText("Arcane Bond").closest("label")?.querySelector("select");
-  const familiar = screen.getByText("Familiar Choice").closest("label")?.querySelector("select");
-  const object = screen.getByText("Bonded Object Choice").closest("label")?.querySelector("select");
+  const bond = screen.getAllByText("Arcane Bond").at(-1)!.closest("label")?.querySelector("select");
+  const familiar = screen.getAllByText("Familiar Choice").at(-1)!.closest("label")?.querySelector("select");
+  const object = screen.getAllByText("Bonded Object Choice").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(bond);
   assert.ok(familiar);
   assert.ok(object);

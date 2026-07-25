@@ -18,3 +18,7 @@ export function CharacterTabs({ activeTab, onChange }: { activeTab: CharacterTab
 export function StoragePlaceholder() {
   return <section className="storage-placeholder"><p className="eyebrow">STORAGE</p><h2>Equipment and carried items</h2><p>Inventory, currency, and encumbrance controls will live here. Current carrying-capacity rules are ready for the equipment catalogue to connect.</p></section>;
 }
+
+export function OptionsPlaceholder() {
+  return <section className="storage-placeholder"><p className="eyebrow">OPTIONS</p><h2>Reserved for future character options</h2><p>Class feature selections now live with their descriptions in Features. This section is reserved for future systems such as traits, archetypes, and other optional character customisation.</p></section>;
+}

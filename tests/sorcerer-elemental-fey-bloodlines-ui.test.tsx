@@ -24,7 +24,7 @@ test.before(async () => {
 test.afterEach(() => { cleanup(); localStorage.clear(); });
 
 const optionSelect = (name: string) => {
-  const select = screen.getByText(name).closest("label")?.querySelector("select");
+  const select = screen.getAllByText(name).at(-1)!.closest("label")?.querySelector("select");
   assert.ok(select, `expected ${name} select`);
   return select;
 };
@@ -43,7 +43,7 @@ test("Elemental and Fey grant class skills, spells, and a persistent element", a
   await user.selectOptions(screen.getByLabelText("Human +2"), "charisma");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-elemental");
   assert.ok(screen.getByText("Elemental Ray"));
   assert.ok(screen.getByText("Elemental Body"));
@@ -63,7 +63,7 @@ test("Elemental and Fey grant class skills, spells, and a persistent element", a
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Burning Hands known").textContent, "Bloodline");
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-fey");
   await waitFor(() => assert.equal(screen.queryByLabelText("Bloodline variant choice"), null));
   assert.ok(screen.getByText("Laughing Touch"));
@@ -81,7 +81,7 @@ test("Elemental and Fey grant class skills, spells, and a persistent element", a
   assert.equal(screen.getByLabelText("Entangle known").textContent, "Bloodline");
   assert.equal(screen.getByLabelText("Burning Hands known").textContent, "Unknown");
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-elemental");
   assert.equal((screen.getByLabelText("Bloodline variant choice") as HTMLSelectElement).value, "");
   await user.selectOptions(screen.getByLabelText("Bloodline variant choice"), "water-element");
@@ -91,7 +91,7 @@ test("Elemental and Fey grant class skills, spells, and a persistent element", a
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "sorcerer"));
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   assert.equal(optionSelect("Bloodline").value, "sorcerer-bloodline-elemental");
   assert.equal((screen.getByLabelText("Bloodline variant choice") as HTMLSelectElement).value, "water-element");
   assert.equal(screen.getByLabelText("Selected bloodline variant").textContent, "Water: cold · Swim 60 feet");

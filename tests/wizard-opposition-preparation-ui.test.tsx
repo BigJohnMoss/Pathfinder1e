@@ -24,7 +24,7 @@ test.before(async () => {
 test.afterEach(() => { cleanup(); localStorage.clear(); });
 
 const optionSelect = (name: string) => {
-  const select = screen.getByText(name).closest("label")?.querySelector("select");
+  const select = screen.getAllByText(name).at(-1)!.closest("label")?.querySelector("select");
   assert.ok(select, `${name} select`);
   return select;
 };
@@ -34,7 +34,7 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
 
   await user.selectOptions(optionSelect("Arcane School"), "wizard-school-evocation");
   await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-conjuration");
@@ -53,7 +53,7 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   assert.match(screen.getByText(/prepared 1st-level/).textContent ?? "", /2\/2 prepared 1st-level/);
   assert.equal((screen.getByRole("button", { name: "Add Magic Missile" }) as HTMLButtonElement).disabled, true);
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-necromancy");
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
@@ -62,7 +62,7 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   await user.click(screen.getByRole("button", { name: "Add Magic Missile" }));
   assert.match(screen.getByText(/prepared 1st-level/).textContent ?? "", /2\/2 prepared 1st-level/);
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-conjuration");
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
