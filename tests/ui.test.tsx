@@ -33,6 +33,20 @@ test("saves and restores character details", async () => {
   await user.click(screen.getByRole("button", { name: "Load" }));
   assert.equal((name as HTMLInputElement).value, "Kyra");
   assert.match(screen.getByText("Loaded saved character").textContent ?? "", /Loaded/);
+  assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").version, 1);
+});
+
+test("imports a versioned character file and rejects unsupported versions", async () => {
+  render(<Home />);
+  const input = screen.getByLabelText("Import character file");
+  const valid = { size: 500, text: async () => JSON.stringify({ version: 1, name: "Imported Kyra", classId: "cleric", ancestryId: "human", level: 3, humanAbility: "wisdom", baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 16, charisma: 12 }, selectedFeatIds: [], selectedFeatChoices: {}, skillRanks: {}, selectedOptions: {}, preparedSpells: [], spellSlotUses: {}, arcaneReservoir: null }) };
+  fireEvent.change(input, { target: { files: [valid] } });
+  assert.equal(await screen.findByDisplayValue("Imported Kyra").then((element) => (element as HTMLInputElement).value), "Imported Kyra");
+  assert.match(screen.getByText("Imported character").textContent ?? "", /Imported/);
+
+  const unsupported = { size: 100, text: async () => JSON.stringify({ ...valid, version: 2 }) };
+  fireEvent.change(input, { target: { files: [unsupported] } });
+  assert.ok(await screen.findByText("Unsupported character file version"));
 });
 
 test("applies ancestry modifiers and persists the selected ancestry", async () => {
