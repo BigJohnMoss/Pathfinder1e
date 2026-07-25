@@ -1,0 +1,22 @@
+{
+  "id": "bless",
+  "name": "Bless",
+  "school": "enchantment",
+  "levelByClass": {
+    "cleric": 1,
+    "paladin": 1
+  },
+  "components": [
+    "V",
+    "S",
+    "DF"
+  ],
+  "castingTime": "1 standard action",
+  "range": "50 feet",
+  "summary": "Grant allies a +1 morale bonus on attack rolls and saving throws against fear for 1 minute per level.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bless"
+  }
+}

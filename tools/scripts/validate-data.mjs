@@ -61,6 +61,7 @@ function checkBloodlineDetail(bloodline, file) {
     if (!optionIds.has(bloodline.id)) errors.push(`${label}: does not reference a selectable bloodline option`);
   }
   if (typeof bloodline.classSkill !== "string" || !bloodline.classSkill.trim()) errors.push(`${label}: missing class skill`);
+  if (bloodline.classSkillChoices !== undefined && (!Array.isArray(bloodline.classSkillChoices) || bloodline.classSkillChoices.length === 0 || new Set(bloodline.classSkillChoices).size !== bloodline.classSkillChoices.length || bloodline.classSkillChoices.some(skill => typeof skill !== "string" || !skill.trim()))) errors.push(`${label}: classSkillChoices must contain unique non-empty skill names`);
   if (typeof bloodline.arcana !== "string" || !bloodline.arcana.trim()) errors.push(`${label}: missing bloodline arcana`);
 
   const expectedSpellLevels = [3, 5, 7, 9, 11, 13, 15, 17, 19];

@@ -1,0 +1,22 @@
+{
+  "id": "flame-strike",
+  "name": "Flame Strike",
+  "school": "evocation",
+  "levelByClass": {
+    "cleric": 5,
+    "druid": 4
+  },
+  "components": [
+    "V",
+    "S",
+    "DF"
+  ],
+  "castingTime": "1 standard action",
+  "range": "medium",
+  "summary": "Call down a 10-foot-radius column dealing 1d6 damage per caster level, half fire and half divine, with a Reflex save for half.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flame%20Strike"
+  }
+}

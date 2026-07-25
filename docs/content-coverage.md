@@ -7,7 +7,7 @@ This document distinguishes records present in the data bundle from systems that
 - 8 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
-- 1,891 spells
+- 1,896 spells
 
 ## Playable classes
 
@@ -19,14 +19,14 @@ This document distinguishes records present in the data bundle from systems that
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
-| Sorcerer | Playable chassis | Level 1–20 spontaneous Charisma casting, complete shared Sorcerer/Wizard spell coverage, fixed spells-known progression, reusable daily slots, spell exchange milestones, Eschew Materials, ten Core bloodline identities, bloodline progression milestones, and persistence are integrated. Aberrant and Abyssal include complete class skills, arcana, powers, bonus spells and bonus-feat lists; eight Core bloodlines still need detailed mechanics. |
+| Sorcerer | Playable chassis | Level 1–20 spontaneous Charisma casting, complete shared Sorcerer/Wizard spell coverage, fixed spells-known progression, reusable daily slots, spell exchange milestones, Eschew Materials, ten Core bloodline identities, bloodline progression milestones, and persistence are integrated. Aberrant, Abyssal, Arcane, and Celestial include complete class skills, arcana, powers, bonus spells and bonus-feat lists; six Core bloodlines still need detailed mechanics. |
 | Wizard | Playable Core class | Level 1–20 progression, complete Wizard spell coverage with school metadata, cantrips, spellbook progression, Scribe Scroll, bonus feats, all nine Core schools, two opposition-school choices with enforced two-slot preparation costs, Familiar and Bonded Object paths, and one prepared specialist-school slot at each available spell level are integrated. |
 
 ## Core classes still required
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Sorcerer completion | 1 | detailed mechanics for the remaining eight Core bloodlines |
+| Sorcerer completion | 1 | detailed mechanics for the remaining six Core bloodlines |
 | Paladin | 2 | smite evil, lay on hands, mercies and divine bond |
 | Ranger | 3 | favored enemy, combat styles, favored terrain and limited casting |
 | Bard | 4 | bardic performance, spontaneous casting and versatile performance |
@@ -75,7 +75,7 @@ Feat records may reference class features belonging to classes that are not yet 
 | Channel energy | Polarity, dice, save DC, daily uses, spending, refresh and persistence are integrated |
 | Arcane schools | All nine Core Wizard schools and their powers are selectable; specialists choose two opposition schools, pay two normal preparation slots for opposition spells, and gain one school-only prepared slot at every spell level |
 | Arcane bond | Familiar and bonded-item paths, 11 Core familiar choices, five item categories, shared progression rules, dependency clearing, and persistence are integrated |
-| Bloodlines | Ten Core Sorcerer identities are selectable. Aberrant and Abyssal have complete class skills, arcana, five powers, nine automatic bonus spells and bonus-feat lists; eight detailed bloodlines remain |
+| Bloodlines | Ten Core Sorcerer identities are selectable. Aberrant, Abyssal, Arcane, and Celestial have complete class skills, arcana, five powers, nine automatic bonus spells and bonus-feat lists; six detailed bloodlines remain |
 | Mysteries | Not playable |
 | Browser end-to-end tests | Not implemented |
 
