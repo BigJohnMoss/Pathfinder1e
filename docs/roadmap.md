@@ -19,13 +19,12 @@ The immediate goal is to turn the existing data and rules foundation into a comp
 
 ### 1. Core classes
 
-Cleric and Wizard are complete. Sorcerer's level 1–20 spontaneous-casting chassis and ten Core bloodline identities are integrated. Aberrant, Abyssal, Arcane, Celestial, Destined, Draconic, Elemental, and Fey have complete detailed mechanics. Complete Infernal and Undead, then continue the remaining Core classes in this order:
+Cleric, Sorcerer and Wizard are complete playable Core classes through level 20. Sorcerer includes all ten Core bloodlines with complete class skills, arcana, powers, automatic bonus spells, bonus-feat lists and dependent variant choices. Continue the remaining Core classes in this order:
 
-1. Infernal and Undead Sorcerer bloodlines
-2. Paladin
-3. Ranger
-4. Bard
-5. Druid
+1. Paladin
+2. Ranger
+3. Bard
+4. Druid
 
 Each class is considered playable when its level progression, class features, class skills, spellcasting or combat progression, selectable options and relevant prerequisite feature IDs are integrated and tested.
 
