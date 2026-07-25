@@ -19,6 +19,28 @@ export function abilityModifier(score) {
 }
 
 export const abilityNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
+const pointBuyCosts = { 7: -4, 8: -2, 9: -1, 10: 0, 11: 1, 12: 2, 13: 3, 14: 5, 15: 7, 16: 10, 17: 13, 18: 17 };
+
+export function abilityScorePointCost(score) {
+  if (!Number.isInteger(score) || pointBuyCosts[score] === undefined) throw new RangeError("Point-buy ability score must be an integer from 7 to 18.");
+  return pointBuyCosts[score];
+}
+
+export function pointBuySummary(abilities, budget = 15) {
+  if (![10, 15, 20, 25].includes(budget)) throw new RangeError("Point-buy budget must be 10, 15, 20, or 25.");
+  const spent = abilityNames.reduce((total, ability) => total + abilityScorePointCost(abilities[ability]), 0);
+  return { budget, spent, remaining: budget - spent, valid: spent <= budget };
+}
+
+export function abilityBoostCount(level) {
+  assertLevel(level);
+  return Math.floor(level / 4);
+}
+
+export function normalizeAbilityBoosts(boosts, level) {
+  const count = abilityBoostCount(level);
+  return Array.isArray(boosts) ? boosts.filter(ability => abilityNames.includes(ability)).slice(0, count) : [];
+}
 
 export function abilityModifiers(abilities) {
   return Object.fromEntries(abilityNames.map(name => [name, abilityModifier(abilities[name])]));
@@ -146,7 +168,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const draft = value;
   if (draft.version !== undefined && draft.version !== 1) return null;
-  const validAbilities = abilityNames.every(name => Number.isInteger(draft.baseAbilities?.[name]) && draft.baseAbilities[name] >= 1 && draft.baseAbilities[name] <= 40);
+  const validAbilities = abilityNames.every(name => Number.isInteger(draft.baseAbilities?.[name]) && draft.baseAbilities[name] >= 7 && draft.baseAbilities[name] <= 18);
   if (typeof draft.classId !== "string" || (classIds && !classIds.includes(draft.classId)) || !Number.isInteger(draft.level) || draft.level < 1 || draft.level > 20 || !validAbilities) return null;
   return {
     version: 1,
@@ -156,6 +178,8 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     level: draft.level,
     humanAbility: abilityNames.includes(draft.humanAbility) ? draft.humanAbility : "intelligence",
     baseAbilities: draft.baseAbilities,
+    pointBuyBudget: [10, 15, 20, 25].includes(draft.pointBuyBudget) ? draft.pointBuyBudget : 15,
+    abilityBoosts: normalizeAbilityBoosts(draft.abilityBoosts, draft.level),
     selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
     selectedFeatChoices: isStringRecord(draft.selectedFeatChoices),
     skillRanks: isRankRecord(draft.skillRanks),

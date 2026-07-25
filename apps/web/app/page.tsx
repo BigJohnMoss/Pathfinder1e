@@ -12,7 +12,7 @@ import { FeatChoices } from "./feat-choices";
 import { ClassOptions } from "./class-options";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { CharacterTabs, StoragePlaceholder, type CharacterTabId } from "./character-tabs";
-import { abilityNames, arcaneReservoir, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSkillRanks, normalizeSpellSlotUses, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
+import { abilityBoostCount, abilityNames, arcaneReservoir, availableOptions, characterCombatStats, classProgression, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells, bloodlineClassSkills } from "../../../packages/engine/src/sorcerer-bloodlines.js";
@@ -41,6 +41,8 @@ export default function Home() {
   const [level, setLevel] = useState(1);
   const [humanAbility, setHumanAbility] = useState<keyof typeof defaultAbilities>("intelligence");
   const [baseAbilities, setBaseAbilities] = useState(defaultAbilities);
+  const [pointBuyBudget, setPointBuyBudget] = useState<10 | 15 | 20 | 25>(15);
+  const [abilityBoosts, setAbilityBoosts] = useState<(keyof typeof defaultAbilities)[]>([]);
   const [selectedFeatIds, setSelectedFeatIds] = useState<string[]>([]);
   const [selectedFeatChoices, setSelectedFeatChoices] = useState<Record<string, string>>({});
   const [skillRanks, setSkillRanks] = useState<Record<string, number>>({});
@@ -60,7 +62,9 @@ export default function Home() {
     : characterClass, [characterClass, selectedBloodline, selectedBloodlineClassSkill]);
   const fixedModifiers = (ancestry.abilityModifiers as { fixed?: Partial<typeof defaultAbilities> }).fixed ?? {};
   const choiceAmount = (ancestry.abilityModifiers as { choice?: { amount: number } }).choice?.amount ?? 0;
-  const abilities = useMemo(() => Object.fromEntries(Object.keys(baseAbilities).map((ability) => [ability, baseAbilities[ability as keyof typeof baseAbilities] + (fixedModifiers[ability as keyof typeof baseAbilities] ?? 0) + (choiceAmount && ability === humanAbility ? choiceAmount : 0)])) as typeof baseAbilities, [baseAbilities, choiceAmount, fixedModifiers, humanAbility]);
+  const abilities = useMemo(() => Object.fromEntries(Object.keys(baseAbilities).map((ability) => [ability, baseAbilities[ability as keyof typeof baseAbilities] + (fixedModifiers[ability as keyof typeof baseAbilities] ?? 0) + (choiceAmount && ability === humanAbility ? choiceAmount : 0) + abilityBoosts.filter(boost => boost === ability).length])) as typeof baseAbilities, [abilityBoosts, baseAbilities, choiceAmount, fixedModifiers, humanAbility]);
+  const pointBuy = pointBuySummary(baseAbilities, pointBuyBudget);
+  useEffect(() => setAbilityBoosts(current => { const next = normalizeAbilityBoosts(current, level); while (next.length < abilityBoostCount(level)) next.push("strength"); return next; }), [level]);
   const ancestryBonusFeats = ancestry.traits.some((trait) => trait.id === "human-bonus-feat") ? 1 : 0;
   const progression = useMemo(() => classProgression(characterClass, level, {
     intelligenceScore: abilities.intelligence,
@@ -74,7 +78,8 @@ export default function Home() {
   useEffect(() => setSelectedFeatIds((current) => { const next = normalizeSelectedFeats(current, feats, featContext, featSlots.length); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [featContext, featSlots.length]);
   useEffect(() => setSelectedFeatChoices((current) => { const next = normalizeSelectedFeatChoices(current, selectedFeatIds, feats); return Object.keys(next).length === Object.keys(current).length && Object.entries(next).every(([id, choice]) => current[id] === choice) ? current : next; }), [selectedFeatIds]);
 
-  const updateAbility = (ability: keyof typeof defaultAbilities, value: number) => setBaseAbilities((current) => ({ ...current, [ability]: Math.max(1, Math.min(40, value || 1)) }));
+  const updateAbility = (ability: keyof typeof defaultAbilities, value: number) => setBaseAbilities((current) => ({ ...current, [ability]: Math.max(7, Math.min(18, value || 7)) }));
+  const updateAbilityBoost = (index: number, ability: keyof typeof defaultAbilities) => setAbilityBoosts(current => current.map((value, boostIndex) => boostIndex === index ? ability : value));
   const updateFeat = (index: number, featId: string) => setSelectedFeatIds((current) => { const next = [...current]; next[index] = featId; return next; });
   const updateFeatChoice = (featId: string, choice: string) => setSelectedFeatChoices((current) => ({ ...current, [featId]: choice }));
   const skillBudget = skillRankBudget(progression.skillRanks, skillRanks);
@@ -120,7 +125,7 @@ export default function Home() {
   useEffect(() => setSpellSlotUses((current) => normalizeSpellSlotUses(current, spellSlots)), [spellSlots]);
   useEffect(() => { if (reservoir) setReservoirPoints((current) => Math.min(current, reservoir.maximum)); }, [reservoir?.maximum]);
 
-  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, ancestryId, level, humanAbility, baseAbilities, selectedFeatIds, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), arcaneReservoir: reservoir ? reservoirPoints : null };
+  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, selectedFeatIds, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), arcaneReservoir: reservoir ? reservoirPoints : null };
   const applyCharacterDraft = (value: unknown, successNotice: string) => {
     if (value && typeof value === "object" && "version" in value && value.version !== 1) { setSaveNotice("Unsupported character file version"); return null; }
     const draft = normalizeCharacterDraft(value, { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id) });
@@ -129,7 +134,7 @@ export default function Home() {
     const draftAncestry = ancestries.find((item) => item.id === draft.ancestryId) ?? ancestries[0];
     const draftFixedModifiers = (draftAncestry.abilityModifiers as { fixed?: Partial<typeof defaultAbilities> }).fixed ?? {};
     const draftChoiceAmount = (draftAncestry.abilityModifiers as { choice?: { amount: number } }).choice?.amount ?? 0;
-    const draftAbilities = Object.fromEntries(Object.keys(draft.baseAbilities).map((ability) => [ability, draft.baseAbilities[ability as keyof typeof defaultAbilities] + (draftFixedModifiers[ability as keyof typeof defaultAbilities] ?? 0) + (draftChoiceAmount && ability === draft.humanAbility ? draftChoiceAmount : 0)])) as typeof defaultAbilities;
+    const draftAbilities = Object.fromEntries(Object.keys(draft.baseAbilities).map((ability) => [ability, draft.baseAbilities[ability as keyof typeof defaultAbilities] + (draftFixedModifiers[ability as keyof typeof defaultAbilities] ?? 0) + (draftChoiceAmount && ability === draft.humanAbility ? draftChoiceAmount : 0) + draft.abilityBoosts.filter((boost) => boost === ability).length])) as typeof defaultAbilities;
     const draftCastingAbility = draftClass.spellcasting && abilityNames.includes(draftClass.spellcasting.ability as keyof typeof draftAbilities) ? draftClass.spellcasting.ability as keyof typeof draftAbilities : null;
     const draftAbilityScore = draftCastingAbility ? draftAbilities[draftCastingAbility] : 10;
     const draftIsSpontaneous = draftClass.spellcasting?.castingType === "spontaneous";
@@ -144,7 +149,7 @@ export default function Home() {
     const draftSpells = mergeSpellLists(draftBaseSpells, draftBloodlineSpells);
     const draftBloodlineSpellIds = draftBloodlineSpells.map((spell) => spell.id);
     const normalizedDraftSpells = draftIsSpontaneous ? normalizeKnownSpells(draft.preparedSpells, draftSpells, draftClass.id, draftSpontaneousCasting?.known ?? [], draftBloodlineSpellIds) : normalizePreparedSpellsWithOpposition(draft.preparedSpells, draftSpells, draftClass.id, draftPreparedCasting?.prepared ?? [], draftOppositionSchoolIds);
-    setName(draft.name); setClassId(draft.classId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setSelectedFeatIds(draft.selectedFeatIds); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setSaveNotice(successNotice);
+    setName(draft.name); setClassId(draft.classId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setSelectedFeatIds(draft.selectedFeatIds); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setSaveNotice(successNotice);
     return draft;
   };
   const saveCharacter = () => { localStorage.setItem("pf1e-character-draft", JSON.stringify(characterDraft)); setSaveNotice("Saved locally"); };
@@ -154,7 +159,7 @@ export default function Home() {
     try { applyCharacterDraft(JSON.parse(await file.text()), "Imported character"); }
     catch { setSaveNotice("Character file is invalid"); }
   };
-  const resetCharacter = () => { localStorage.removeItem("pf1e-character-draft"); setName(""); setClassId("arcanist"); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setSelectedFeatIds([]); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSpellSlotUses({}); setReservoirPoints(3); setSaveNotice("Character reset"); };
+  const resetCharacter = () => { localStorage.removeItem("pf1e-character-draft"); setName(""); setClassId("arcanist"); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setSelectedFeatIds([]); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSpellSlotUses({}); setReservoirPoints(3); setSaveNotice("Character reset"); };
   const exportCharacter = () => { const draft = { ...characterDraft, exportedAt: new Date().toISOString() }; const url = URL.createObjectURL(new Blob([JSON.stringify(draft, null, 2)], { type: "application/json" })); const link = document.createElement("a"); link.href = url; link.download = `${name.trim().replace(/[^a-z0-9]+/gi, "-").toLowerCase() || "pf1e-character"}.json`; link.click(); URL.revokeObjectURL(url); setSaveNotice("Character exported"); };
   const printCharacter = () => window.print();
 
@@ -163,7 +168,7 @@ export default function Home() {
     <CharacterDetails name={name} classId={classId} ancestryId={ancestryId} level={level} classes={classes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={setClassId} onAncestryChange={setAncestryId} onLevelChange={setLevel} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
     <CharacterTabs activeTab={activeTab} onChange={setActiveTab} />
     <section className="tab-panel" aria-live="polite">
-      {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} /><ProgressionSummary combat={combat} progression={progression} /></section>}
+      {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} pointBuyBudget={pointBuyBudget} pointBuySpent={pointBuy.spent} abilityBoosts={abilityBoosts} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} onPointBuyBudgetChange={setPointBuyBudget} onAbilityBoostChange={updateAbilityBoost} /><ProgressionSummary combat={combat} progression={progression} /></section>}
       {activeTab === "actions" && <CombatPanel combat={combat} />}
       {activeTab === "storage" && <StoragePlaceholder />}
       {activeTab === "spells" && (spontaneousCasting ? <SpontaneousSpellbook spells={availableSpells} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spontaneousCasting.slots} knownLimits={knownLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={bloodlineSpellIds} onKnownSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} onRefreshDay={refreshDay} /> : preparedCasting ? <Spellbook spells={availableSpells} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={preparedCasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={updateReservoir} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} /> : <p className="empty-tab">This class does not cast spells.</p>)}

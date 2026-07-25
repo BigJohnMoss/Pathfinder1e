@@ -64,6 +64,27 @@ test("applies ancestry modifiers and persists the selected ancestry", async () =
   assert.equal((screen.getByLabelText("Ancestry") as HTMLSelectElement).value, "elf");
 });
 
+test("tracks point-buy costs and applies earned ability increases", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  assert.match(screen.getByText(/of 15 points spent/).textContent ?? "", /15 remaining/);
+  const strength = screen.getByLabelText("Strength base score");
+  await user.clear(strength);
+  await user.type(strength, "18");
+  assert.match(screen.getByText(/of 15 points spent/).textContent ?? "", /2 overspent/);
+  await user.selectOptions(screen.getByText("Point-buy budget").closest("label")?.querySelector("select") as HTMLSelectElement, "20");
+  assert.match(screen.getByText(/of 20 points spent/).textContent ?? "", /3 remaining/);
+
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "4" } });
+  const increase = await screen.findByLabelText("Level 4 ability increase");
+  await user.selectOptions(increase, "dexterity");
+  const dexterityTotal = screen.getByLabelText("Dexterity base score").closest("label")?.querySelector("strong");
+  assert.match(dexterityTotal?.textContent ?? "", /11/);
+
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").abilityBoosts[0], "dexterity");
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
