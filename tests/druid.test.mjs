@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
-import { classProgression, spellcastingProgression } from "../packages/engine/src/index.js";
+import { classProgression, druidWildShapeUses, spellcastingProgression } from "../packages/engine/src/index.js";
 import bundle from "../generated/pf1e-data.mjs";
 
 const druid = JSON.parse(await readFile(new URL("../packages/data/src/classes/druid.json", import.meta.url), "utf8"));
@@ -33,4 +33,9 @@ test("Wild Shape follows its Core use and form milestones", () => {
   const wildShape = druid.features.filter((feature) => feature.progressionKey === "druid-wild-shape");
   assert.deepEqual(wildShape.map((feature) => feature.level), [4,6,8,10,12,14,16,18,20]);
   assert.equal(wildShape.at(-1).uses, "at will");
+  assert.equal(druidWildShapeUses(3), 0);
+  assert.equal(druidWildShapeUses(4), 1);
+  assert.equal(druidWildShapeUses(18), 8);
+  assert.equal(druidWildShapeUses(20), null);
+  assert.throws(() => druidWildShapeUses(21), RangeError);
 });

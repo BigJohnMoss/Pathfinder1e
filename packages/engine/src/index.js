@@ -133,6 +133,7 @@ export function arcaneReservoir(level) {
 }
 
 export { bardicPerformanceRounds } from "./bardic-performance.js";
+export { druidWildShapeUses } from "./druid-wild-shape.js";
 
 export function bonusSpellsPerDay(abilityScore, maximumSpellLevel) {
   if (!Number.isInteger(maximumSpellLevel) || maximumSpellLevel < 0 || maximumSpellLevel > 9) throw new RangeError("Maximum spell level must be an integer from 0 to 9.");
@@ -201,7 +202,8 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     preparedSpells: Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : [],
     spellSlotUses: isRankRecord(draft.spellSlotUses),
     arcaneReservoir: Number.isInteger(draft.arcaneReservoir) && draft.arcaneReservoir >= 0 ? draft.arcaneReservoir : null,
-    bardicPerformanceUsed: Number.isInteger(draft.bardicPerformanceUsed) && draft.bardicPerformanceUsed >= 0 ? draft.bardicPerformanceUsed : 0
+    bardicPerformanceUsed: Number.isInteger(draft.bardicPerformanceUsed) && draft.bardicPerformanceUsed >= 0 ? draft.bardicPerformanceUsed : 0,
+    wildShapeUsed: Number.isInteger(draft.wildShapeUsed) && draft.wildShapeUsed >= 0 ? draft.wildShapeUsed : 0
   };
 }
 

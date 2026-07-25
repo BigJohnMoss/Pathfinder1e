@@ -57,6 +57,7 @@ export function normalizeSelectedFeatChoices<T extends { id: string; choice?: { 
 export function normalizeSpellSlotUses(slotUses: Record<string, number> | null | undefined, slots: Array<{ level: number; count: number }>): Record<number, number>;
 export function arcaneReservoir(level: number): { maximum: number; dailyRefresh: number };
 export { bardicPerformanceRounds } from "./bardic-performance.js";
+export { druidWildShapeUses } from "./druid-wild-shape.js";
 export function bonusSpellsPerDay(abilityScore: number, maximumSpellLevel: number): Array<{ level: number; count: number }>;
 export function spellSaveDC(abilityScore: number, spellLevel: number): number;
 export function spellcastingProgression(characterClass: CharacterClass & { spellcasting?: { ability: string; castingType: string; slotsByLevel: number[][]; preparedByLevel?: number[][]; spellLevelUnlocks?: number[]; preparesFromSlots?: boolean } }, level: number, options?: { abilityScore?: number }): { ability: string; castingType: string; maximumSpellLevel: number; slots: Array<{ level: number; base: number; bonus: number; count: number }>; prepared: Array<{ level: number; count: number }> } | null;
