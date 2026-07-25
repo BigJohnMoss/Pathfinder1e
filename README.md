@@ -1,5 +1,21 @@
 # Pathfinder 1e Character Builder
 
+## Install the application
+
+The production character builder can be installed as an application after it
+has been opened once over HTTPS.
+
+- **Desktop Chrome or Edge:** open the builder, select **Install app** in the
+  banner, and confirm. The builder then appears in the Start menu or application
+  launcher and can create a desktop shortcut.
+- **Android Chrome:** open the builder, select **Install app**, and confirm. The
+  builder appears on the home screen and in the app drawer.
+
+The installed builder opens in its own window. After the first successful load,
+its application shell is cached for offline use. Character drafts continue to
+use the browser's local storage, so clearing site data will remove local drafts;
+export important characters before clearing browser data.
+
 A from-scratch, data-first Pathfinder First Edition character-builder project.
 
 ## Current status
