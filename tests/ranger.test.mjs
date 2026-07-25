@@ -56,3 +56,22 @@ test("Ranger earns five selectable combat style feat slots", () => {
   assert.deepEqual(slots.map((feature) => feature.level), [2, 6, 10, 14, 18]);
   assert.ok(slots.every((feature) => feature.choiceRequired && feature.optionGroupId === "ranger-combat-style-feats"));
 });
+
+test("Ranger Animal Companion bond unlocks the complete Core companion list", () => {
+  const companions = bundle.optionGroups.find((group) => group.id === "ranger-animal-companions");
+  assert.equal(availableOptions(companions, "ranger", 4).length, 0);
+  const available = availableOptions(companions, "ranger", 4, [], { featureIds: ["ranger-hunters-bond-animal"] });
+  assert.equal(available.length, 12);
+  assert.ok(available.some((option) => option.id === "ranger-animal-companion-dire-rat"));
+  assert.ok(available.some((option) => option.id === "ranger-animal-companion-shark"));
+  assert.ok(available.every((option) => option.powers?.some((power) => power.name === "Starting Statistics")));
+});
+
+test("Ranger animal companions record their effective-level advancement details", () => {
+  const companions = bundle.optionGroups.find((group) => group.id === "ranger-animal-companions");
+  const wolf = companions.options.find((option) => option.id === "ranger-animal-companion-wolf");
+  assert.equal(wolf.powers.find((power) => power.name === "7th-Level Advancement")?.level, 7);
+  const companionFeature = ranger.features.find((feature) => feature.id === "ranger-animal-companion-4");
+  assert.equal(companionFeature.level, 4);
+  assert.equal(companionFeature.scaling, "effective druid level equals Ranger level - 3");
+});
