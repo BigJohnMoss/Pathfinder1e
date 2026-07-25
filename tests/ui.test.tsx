@@ -411,3 +411,20 @@ test("tracks persistent equipment, encumbrance, currency, and equipped armor", a
   assert.equal((screen.getByLabelText("Equipped") as HTMLInputElement).checked, true);
   assert.ok(screen.getByText(/25 lb. carried — light load/));
 });
+
+test("previews and confirms a guided level up without losing selections", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.type(screen.getByLabelText("Character name"), "Leveler");
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  await user.click(screen.getByRole("button", { name: "Review level 4" }));
+  assert.ok(screen.getByRole("region", { name: "Level up to 4" }));
+  assert.ok(screen.getByText("Choose a +1 increase to one ability score."));
+  assert.ok(screen.getByText(/Allocate 4 new skill ranks/));
+  assert.ok(screen.getByText(/Bonus Combat Feat/));
+  await user.click(screen.getByRole("button", { name: "Advance to level 4" }));
+  assert.equal((screen.getByLabelText("Level") as HTMLInputElement).value, "4");
+  assert.equal((screen.getByLabelText("Character name") as HTMLInputElement).value, "Leveler");
+  assert.ok(screen.getByText(/Advanced to level 4/));
+});

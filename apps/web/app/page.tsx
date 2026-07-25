@@ -13,6 +13,7 @@ import { ClassOptions } from "./class-options";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { CharacterTabs, OptionsPlaceholder, type CharacterTabId } from "./character-tabs";
 import { EquipmentPanel, equipmentArmorBonus, type CoinPurse, type InventoryEntry } from "./equipment-panel";
+import { LevelUpPanel } from "./level-up-panel";
 import { abilityBoostCount, abilityNames, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, druidWildShapeUses, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
@@ -57,6 +58,7 @@ export default function Home() {
   const [coins, setCoins] = useState<CoinPurse>({ cp: 0, sp: 0, gp: 0, pp: 0 });
   const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
   const [saveNotice, setSaveNotice] = useState("");
+  const [showLevelUp, setShowLevelUp] = useState(false);
 
   const characterClass = classes.find((item) => item.id === classId) ?? classes[0];
   const ancestry = ancestries.find((item) => item.id === ancestryId) ?? ancestries[0];
@@ -76,12 +78,27 @@ export default function Home() {
     racialSkillBonusPerLevel: ancestry.traits.some((trait) => trait.id === "skilled") ? 1 : 0,
     bonusFeats: ancestryBonusFeats
   }), [abilities.intelligence, ancestry, ancestryBonusFeats, characterClass, level]);
+  const nextProgression = useMemo(() => level < 20 ? classProgression(characterClass, level + 1, {
+    intelligenceScore: abilities.intelligence,
+    racialSkillBonusPerLevel: ancestry.traits.some((trait) => trait.id === "skilled") ? 1 : 0,
+    bonusFeats: ancestryBonusFeats
+  }) : null, [abilities.intelligence, ancestry, ancestryBonusFeats, characterClass, level]);
   const baseCombat = useMemo(() => characterCombatStats(characterClass, level, abilities), [abilities, characterClass, level]);
   const combat = useMemo(() => {
     const armorBonus = equipmentArmorBonus(inventory);
     return { ...baseCombat, armorClass: { normal: baseCombat.armorClass.normal + armorBonus, touch: baseCombat.armorClass.touch, flatFooted: baseCombat.armorClass.flatFooted + armorBonus } };
   }, [baseCombat, inventory]);
   const featSlots = useMemo(() => Array.from({ length: progression.featSlots }, (_, index) => ({ index, name: index < ancestryBonusFeats ? `${ancestry.name} bonus feat` : `Feat ${index - ancestryBonusFeats + 1}` })), [ancestry.name, ancestryBonusFeats, progression.featSlots]);
+  const levelUpGains = useMemo(() => {
+    if (!nextProgression) return [];
+    const gains = nextProgression.features.filter((feature) => feature.level === level + 1).map((feature) => `${feature.name}: ${feature.summary}`);
+    const featGain = nextProgression.featSlots - progression.featSlots;
+    const skillGain = nextProgression.skillRanks - progression.skillRanks;
+    if (abilityBoostCount(level + 1) > abilityBoostCount(level)) gains.push("Choose a +1 increase to one ability score.");
+    if (featGain > 0) gains.push(`Choose ${featGain} new feat${featGain === 1 ? "" : "s"}.`);
+    if (skillGain > 0) gains.push(`Allocate ${skillGain} new skill rank${skillGain === 1 ? "" : "s"}.`);
+    return gains;
+  }, [level, nextProgression, progression.featSlots, progression.skillRanks]);
   const featContext = useMemo(() => ({ classId: characterClass.id, ancestryId, size: ancestry.size, classLevel: level, casterLevel: characterClass.spellcasting ? level : 0, abilities, baseAttackBonus: progression.baseAttackBonus, skillRanks, featureIds: progression.features.map((feature) => feature.id), selectedFeatChoices }), [abilities, ancestry.size, ancestryId, characterClass, level, progression.baseAttackBonus, progression.features, selectedFeatChoices, skillRanks]);
   const featChoices = featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const otherFeatIds = selectedFeatIds.filter((_, index) => index !== slot.index); const context = { ...featContext, candidateId: selected?.id, selectedIds: otherFeatIds }; const checks = selected ? featPrerequisiteResults(selected, context) : []; return { ...slot, selected, checks, eligibleFeatIds: feats.filter((feat) => prerequisitesMet(feat.prerequisites, { ...context, candidateId: feat.id })).map((feat) => feat.id) }; });
   useEffect(() => setSelectedFeatIds((current) => { const next = normalizeSelectedFeats(current, feats, featContext, featSlots.length); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [featContext, featSlots.length]);
@@ -180,7 +197,8 @@ export default function Home() {
 
   return <main>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
-    <CharacterDetails name={name} classId={classId} ancestryId={ancestryId} level={level} classes={classes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={setClassId} onAncestryChange={setAncestryId} onLevelChange={setLevel} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+    <CharacterDetails name={name} classId={classId} ancestryId={ancestryId} level={level} classes={classes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={setClassId} onAncestryChange={setAncestryId} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => setShowLevelUp(true)} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+    {showLevelUp && level < 20 && <LevelUpPanel currentLevel={level} className={characterClass.name} gains={levelUpGains} onCancel={() => setShowLevelUp(false)} onConfirm={() => { setLevel(level + 1); setShowLevelUp(false); setSaveNotice(`Advanced to level ${level + 1}. Review newly unlocked choices.`); }} />}
     <CharacterTabs activeTab={activeTab} onChange={setActiveTab} />
     <section className="tab-panel" aria-live="polite">
       {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} pointBuyBudget={pointBuyBudget} pointBuySpent={pointBuy.spent} abilityBoosts={abilityBoosts} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} onPointBuyBudgetChange={setPointBuyBudget} onAbilityBoostChange={updateAbilityBoost} /><ProgressionSummary combat={combat} progression={progression} /></section>}
