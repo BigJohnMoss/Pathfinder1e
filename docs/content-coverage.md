@@ -4,7 +4,7 @@ This document distinguishes records present in the data bundle from systems that
 
 ## Current generated catalogue
 
-- 8 selectable classes
+- 9 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
 - 1,903 spells
@@ -18,6 +18,7 @@ This document distinguishes records present in the data bundle from systems that
 | Cleric | Playable Core class | Level 1–20 divine prepared casting, orisons, spontaneous conversion, channel energy with daily tracking, deity-compatible alignment, channel polarity, 20 Core deity choices, all 33 Core domains, and dedicated domain spell preparation are integrated. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
+| Paladin | Playable Core class | Level 1–20 martial and divine progression, smite evil, lay on hands, channel energy, all Core mercies, weapon or mount Divine Bond, and the complete 45-spell Core Paladin list are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
 | Sorcerer | Playable Core class | Level 1–20 spontaneous Charisma casting, complete shared Sorcerer/Wizard spell coverage, fixed spells-known progression, reusable daily slots, spell exchange milestones, Eschew Materials, all ten Core bloodlines, complete bloodline class skills, arcana, powers, bonus spells, bonus-feat lists, dependent variant choices, and persistence are integrated. Draconic supports all ten Core dragon types, Elemental supports Air, Earth, Fire, and Water, and Arcane supports a selected Knowledge class skill. |
 | Wizard | Playable Core class | Level 1–20 progression, complete Wizard spell coverage with school metadata, cantrips, spellbook progression, Scribe Scroll, bonus feats, all nine Core schools, two opposition-school choices with enforced two-slot preparation costs, Familiar and Bonded Object paths, and one prepared specialist-school slot at each available spell level are integrated. |
@@ -26,7 +27,6 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Priority | Major systems required |
 |---|---:|---|
-| Paladin | 1 | smite evil, lay on hands, mercies and divine bond |
 | Ranger | 2 | favored enemy, combat styles, favored terrain and limited casting |
 | Bard | 3 | bardic performance, spontaneous casting and versatile performance |
 | Druid | 4 | nature bond, wild shape, animal companion or domain and divine casting |

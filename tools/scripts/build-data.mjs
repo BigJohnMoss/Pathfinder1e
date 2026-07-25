@@ -4,6 +4,8 @@ await mkdir(out,{recursive:true});
 async function loadDir(name){const dir=new URL(`${name}/`,base);const files=(await readdir(dir)).filter(f=>f.endsWith('.json')).sort();return Promise.all(files.map(async f=>JSON.parse(await readFile(new URL(f,dir),'utf8'))));}
 const normalizeName=(name)=>name.normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 const spellCatalogues=await loadDir('spell-catalogues');
+const spellClassLevelFiles=await loadDir('spell-class-levels');
+const spellClassLevels=Object.assign({},...spellClassLevelFiles.map(file=>file.levelsBySpellId??{}));
 const spellSchoolFiles=await loadDir('spell-schools');
 const schoolsByName=Object.assign({},...spellSchoolFiles.map(file=>file.schoolsByName??{}));
 const domainDetailFiles=await loadDir('domain-details');
@@ -15,7 +17,8 @@ const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(cata
 const spells=sourceSpells.map(spell=>{
   const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
   const sharedArcaneLevel=withWizard?.wizard??withWizard?.arcanist;
-  const levelByClass=sharedArcaneLevel!==undefined&&withWizard?.sorcerer===undefined?{...withWizard,sorcerer:sharedArcaneLevel}:withWizard;
+  const sharedLevelByClass=sharedArcaneLevel!==undefined&&withWizard?.sorcerer===undefined?{...withWizard,sorcerer:sharedArcaneLevel}:withWizard;
+  const levelByClass={...sharedLevelByClass,...(spellClassLevels[spell.id]??{})};
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);

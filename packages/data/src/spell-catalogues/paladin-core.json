@@ -1,0 +1,30 @@
+{
+  "source":{"title":"Core Rulebook: Paladin spell list","url":"https://legacy.aonprd.com/coreRulebook/spellLists.html#paladin-spells"},
+  "spells":[
+    {"id":"bless-water","name":"Bless Water","levelByClass":{"paladin":1},"summary":"Imbue water with positive energy to create holy water."},
+    {"id":"bless-weapon","name":"Bless Weapon","levelByClass":{"paladin":1},"summary":"Make a weapon strike true against evil foes."},
+    {"id":"create-water","name":"Create Water","levelByClass":{"paladin":1},"summary":"Create 2 gallons of pure water per caster level."},
+    {"id":"cure-light-wounds","name":"Cure Light Wounds","levelByClass":{"paladin":1},"summary":"Heal 1d8 hit points plus 1 per caster level, to a maximum of +5."},
+    {"id":"divine-favor","name":"Divine Favor","levelByClass":{"paladin":1},"summary":"Gain a luck bonus on attack and weapon damage rolls."},
+    {"id":"restoration-lesser","name":"Restoration, Lesser","levelByClass":{"paladin":1},"summary":"Dispel a magical ability penalty or repair 1d4 points of ability damage."},
+    {"id":"virtue","name":"Virtue","levelByClass":{"paladin":1},"summary":"Grant the subject 1 temporary hit point."},
+    {"id":"delay-poison","name":"Delay Poison","levelByClass":{"paladin":2},"summary":"Stop poison from harming the subject for 1 hour per caster level."},
+    {"id":"remove-paralysis","name":"Remove Paralysis","levelByClass":{"paladin":2},"summary":"Free one or more creatures from paralysis or a slow effect."},
+    {"id":"shield-other","name":"Shield Other","levelByClass":{"paladin":2},"summary":"Take half of the warded subject's damage."},
+    {"id":"undetectable-alignment","name":"Undetectable Alignment","levelByClass":{"paladin":2},"summary":"Conceal a creature or object's alignment for 24 hours."},
+    {"id":"zone-of-truth","name":"Zone of Truth","levelByClass":{"paladin":2},"summary":"Prevent affected creatures from speaking deliberate lies."},
+    {"id":"cure-moderate-wounds","name":"Cure Moderate Wounds","levelByClass":{"paladin":3},"summary":"Heal 2d8 hit points plus 1 per caster level, to a maximum of +10."},
+    {"id":"discern-lies","name":"Discern Lies","levelByClass":{"paladin":3},"summary":"Reveal deliberate falsehoods spoken by observed subjects."},
+    {"id":"heal-mount","name":"Heal Mount","levelByClass":{"paladin":3},"summary":"Restore a paladin's special mount as the heal spell."},
+    {"id":"prayer","name":"Prayer","levelByClass":{"paladin":3},"summary":"Grant allies bonuses and impose matching penalties on enemies."},
+    {"id":"remove-blindness-deafness","name":"Remove Blindness/Deafness","levelByClass":{"paladin":3},"summary":"Cure normal or magical blindness or deafness."},
+    {"id":"cure-serious-wounds","name":"Cure Serious Wounds","levelByClass":{"paladin":4},"summary":"Heal 3d8 hit points plus 1 per caster level, to a maximum of +15."},
+    {"id":"death-ward","name":"Death Ward","levelByClass":{"paladin":4},"summary":"Protect a subject from death effects, energy drain, and negative energy."},
+    {"id":"dispel-chaos","name":"Dispel Chaos","levelByClass":{"paladin":4},"summary":"Gain protection from chaotic creatures and dispel or banish chaos."},
+    {"id":"dispel-evil","name":"Dispel Evil","levelByClass":{"paladin":4},"summary":"Gain protection from evil creatures and dispel or banish evil."},
+    {"id":"holy-sword","name":"Holy Sword","levelByClass":{"paladin":4},"summary":"Make a weapon +5 and holy, with a protective magic circle."},
+    {"id":"mark-of-justice","name":"Mark of Justice","levelByClass":{"paladin":4},"summary":"Designate an action that triggers a curse on the subject."},
+    {"id":"neutralize-poison","name":"Neutralize Poison","levelByClass":{"paladin":4},"summary":"Detoxify venom and grant temporary immunity to poison."},
+    {"id":"restoration","name":"Restoration","levelByClass":{"paladin":4},"summary":"Restore drained levels and ability scores and remove fatigue or exhaustion."}
+  ]
+}
