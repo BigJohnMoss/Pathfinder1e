@@ -28,12 +28,12 @@ test("Wizard specialist school slots prepare, cast, refresh, and clear with scho
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
 
-  const school = screen.getByText("Arcane School").closest("label")?.querySelector("select");
-  const firstSlot = screen.getByText("1st-level Specialist School Slot").closest("label")?.querySelector("select");
-  const secondSlot = screen.getByText("2nd-level Specialist School Slot").closest("label")?.querySelector("select");
-  const thirdSlot = screen.getByText("3rd-level Specialist School Slot").closest("label")?.querySelector("select");
+  const school = screen.getAllByText("Arcane School").at(-1)!.closest("label")?.querySelector("select");
+  const firstSlot = screen.getAllByText("1st-level Specialist School Slot").at(-1)!.closest("label")?.querySelector("select");
+  const secondSlot = screen.getAllByText("2nd-level Specialist School Slot").at(-1)!.closest("label")?.querySelector("select");
+  const thirdSlot = screen.getAllByText("3rd-level Specialist School Slot").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(school);
   assert.ok(firstSlot);
   assert.ok(secondSlot);

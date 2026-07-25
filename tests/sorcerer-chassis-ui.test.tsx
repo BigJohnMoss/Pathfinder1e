@@ -34,8 +34,8 @@ test("Sorcerer learns fixed spells, casts spontaneously, selects a bloodline, an
   await user.selectOptions(screen.getByLabelText("Class"), "sorcerer");
   await user.selectOptions(screen.getByLabelText("Human +2"), "charisma");
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
-  const bloodline = screen.getByText("Bloodline").closest("label")?.querySelector("select");
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  const bloodline = screen.getAllByText("Bloodline").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(bloodline);
   assert.equal(bloodline.options.length, 11);
   await user.selectOptions(bloodline, "sorcerer-bloodline-arcane");
@@ -71,7 +71,7 @@ test("Sorcerer learns fixed spells, casts spontaneously, selects a bloodline, an
   await waitFor(() => assert.ok(screen.getAllByText("Known").length >= 2));
   assert.deepEqual(screen.getAllByText("Known").map((output) => output.getAttribute("aria-label")), knownNames);
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
-  const loadedBloodline = screen.getByText("Bloodline").closest("label")?.querySelector("select");
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  const loadedBloodline = screen.getAllByText("Bloodline").at(-1)!.closest("label")?.querySelector("select");
   assert.equal(loadedBloodline?.value, "sorcerer-bloodline-arcane");
 });

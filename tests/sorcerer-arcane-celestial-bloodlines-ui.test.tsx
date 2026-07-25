@@ -24,7 +24,7 @@ test.before(async () => {
 test.afterEach(() => { cleanup(); localStorage.clear(); });
 
 const optionSelect = (name: string) => {
-  const select = screen.getByText(name).closest("label")?.querySelector("select");
+  const select = screen.getAllByText(name).at(-1)!.closest("label")?.querySelector("select");
   assert.ok(select, `expected ${name} select`);
   return select;
 };
@@ -43,7 +43,7 @@ test("Arcane selects a Knowledge skill while Celestial grants off-list spells an
   await user.selectOptions(screen.getByLabelText("Human +2"), "charisma");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-arcane");
   assert.ok(screen.getByText("Arcane Bond"));
   assert.ok(screen.getByText("Arcane Apotheosis"));
@@ -63,7 +63,7 @@ test("Arcane selects a Knowledge skill while Celestial grants off-list spells an
   assert.equal(screen.getByLabelText("Identify known").textContent, "Bloodline");
   assert.match(screen.getByText(/known 1st-level/).textContent ?? "", /0\/3 known 1st-level \+ 1 bloodline/);
 
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-celestial");
   await waitFor(() => assert.equal(screen.queryByLabelText("Bloodline class skill choice"), null));
   assert.ok(screen.getByText("Heavenly Fire"));
@@ -89,7 +89,7 @@ test("Arcane selects a Knowledge skill while Celestial grants off-list spells an
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "sorcerer"));
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
   assert.equal(optionSelect("Bloodline").value, "sorcerer-bloodline-celestial");
   await user.click(screen.getByRole("button", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");

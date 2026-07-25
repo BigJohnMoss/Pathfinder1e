@@ -72,7 +72,7 @@ test("tracks point-buy costs and applies earned ability increases", async () => 
   await user.clear(strength);
   await user.type(strength, "18");
   assert.match(screen.getByText(/of 15 points spent/).textContent ?? "", /2 overspent/);
-  await user.selectOptions(screen.getByText("Point-buy budget").closest("label")?.querySelector("select") as HTMLSelectElement, "20");
+  await user.selectOptions(screen.getAllByText("Point-buy budget").at(-1)!.closest("label")?.querySelector("select") as HTMLSelectElement, "20");
   assert.match(screen.getByText(/of 20 points spent/).textContent ?? "", /3 remaining/);
 
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "4" } });
@@ -157,12 +157,12 @@ test("shows Fighter combat-feat and weapon-group choices when earned", async () 
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
-  await user.click(screen.getByRole("button", { name: "Options" }));
-  const combatFeat = screen.getAllByText("Bonus Combat Feat")[0].closest("label")?.querySelector("select");
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  const combatFeat = screen.getAllByText("Bonus Combat Feat").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(combatFeat);
   assert.ok([...combatFeat.options].some(option => option.text === "Improved Initiative"));
   assert.equal([...combatFeat.options].some(option => option.text === "Power Attack"), false);
-  const weaponTraining = screen.getAllByText("Weapon Training 1")[0].closest("label")?.querySelector("select");
+  const weaponTraining = screen.getAllByText("Weapon Training 1").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(weaponTraining);
   await user.selectOptions(weaponTraining, "weapon-group-bows");
   assert.match(screen.getByText("Gain the weapon training bonus with bows.").textContent ?? "", /bows/);
@@ -186,8 +186,8 @@ test("makes Wizard selectable with prepared arcane spells and class features", a
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   await user.click(screen.getByRole("button", { name: "Features" }));
-  assert.ok(screen.getByText("Arcane Bond"));
-  assert.ok(screen.getByText("Arcane School"));
+  assert.ok(screen.getAllByText("Arcane Bond").length >= 2);
+  assert.ok(screen.getAllByText("Arcane School").length >= 2);
   assert.ok(screen.getByText("Spellbook"));
   assert.ok(screen.getByText("Scribe Scroll"));
 
@@ -205,11 +205,11 @@ test("guides Wizard school and opposition school choices", async () => {
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("button", { name: "Features" }));
 
-  const school = screen.getByText("Arcane School").closest("label")?.querySelector("select");
-  const firstOpposition = screen.getByText("First Opposition School").closest("label")?.querySelector("select");
-  const secondOpposition = screen.getByText("Second Opposition School").closest("label")?.querySelector("select");
+  const school = screen.getAllByText("Arcane School").at(-1)!.closest("label")?.querySelector("select");
+  const firstOpposition = screen.getAllByText("First Opposition School").at(-1)!.closest("label")?.querySelector("select");
+  const secondOpposition = screen.getAllByText("Second Opposition School").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(school);
   assert.ok(firstOpposition);
   assert.ok(secondOpposition);
@@ -247,4 +247,10 @@ test("uses labelled icon tabs to show focused builder sections", async () => {
   assert.ok(screen.getByText("Equipment and carried items"));
   await user.click(screen.getByRole("button", { name: "Actions" }));
   assert.ok(screen.getByText("Core statistics"));
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Arcanist features"));
+  assert.ok(screen.getByText("Configure class features"));
+  await user.click(screen.getByRole("button", { name: "Options" }));
+  assert.ok(screen.getByText("Reserved for future character options"));
+  assert.equal(screen.queryByText("Configure class features"), null);
 });
