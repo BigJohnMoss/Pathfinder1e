@@ -13,6 +13,8 @@ export interface CharacterDraftV1 {
   level: number;
   humanAbility: AbilityName;
   baseAbilities: AbilityScores;
+  pointBuyBudget: 10 | 15 | 20 | 25;
+  abilityBoosts: AbilityName[];
   selectedFeatIds: string[];
   selectedFeatChoices: Record<string, string>;
   skillRanks: Record<string, number>;

@@ -41,6 +41,10 @@ export interface PrerequisiteContext { classId?: string; ancestryId?: string; si
 
 export function abilityModifier(score: number): number;
 export const abilityNames: AbilityName[];
+export function abilityScorePointCost(score: number): number;
+export function pointBuySummary(abilities: AbilityScores, budget?: 10 | 15 | 20 | 25): { budget: number; spent: number; remaining: number; valid: boolean };
+export function abilityBoostCount(level: number): number;
+export function normalizeAbilityBoosts(boosts: unknown, level: number): AbilityName[];
 export function abilityModifiers(abilities: AbilityScores): AbilityScores;
 export function characterCombatStats(characterClass: CharacterClass, level: number, abilities: AbilityScores): CharacterCombatStats;
 export function averageHitPoints(hitDie: number, level: number, constitutionModifier?: number): number;
