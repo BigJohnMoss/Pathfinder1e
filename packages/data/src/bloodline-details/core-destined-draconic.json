@@ -1,0 +1,64 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-destined",
+      "classSkill": "Knowledge (history)",
+      "arcana": "Whenever you cast a personal-range spell, gain a luck bonus equal to the spell's level on all saving throws for 1 round.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Alarm"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Blur"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Protection from Energy"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Freedom of Movement"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Break Enchantment"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Mislead"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Spell Turning"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Moment of Prescience"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Foresight"}
+      ],
+      "bonusFeats": ["Arcane Strike","Diehard","Endurance","Leadership","Lightning Reflexes","Maximize Spell","Skill Focus (Knowledge [history])","Weapon Focus"],
+      "powers": [
+        {"name":"Touch of Destiny","level":1,"summary":"Touch a creature to grant an insight bonus equal to half your sorcerer level, minimum +1, on attacks, skills, ability checks, and saves for 1 round. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Fated","level":3,"summary":"Gain a luck bonus to AC and saves during surprise rounds or while unaware of an attack, starting at +1 and increasing by +1 every four levels after 3rd to +5 at 19th."},
+        {"name":"It Was Meant To Be","level":9,"summary":"Reroll one attack, critical confirmation, or spell-resistance caster-level check after rolling but before the result. Use once per day, twice per day from 17th level."},
+        {"name":"Within Reach","level":15,"summary":"Once per day, when damage would kill you, attempt a DC 20 Will save. On success, remain at -1 hit point and automatically stabilize; Fated applies to this save."},
+        {"name":"Destiny Realized","level":20,"summary":"Enemy critical threats confirm only on a natural 20, your spell critical threats confirm automatically, and once per day you may automatically overcome spell resistance before rolling."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-draconic",
+      "classSkill": "Perception",
+      "arcana": "Whenever you cast a spell with an energy descriptor matching your selected dragon's energy type, add 1 point of damage per die rolled.",
+      "variants": [
+        {"id":"black-dragon","name":"Black Dragon","energyType":"acid","breathShape":"60-foot line"},
+        {"id":"blue-dragon","name":"Blue Dragon","energyType":"electricity","breathShape":"60-foot line"},
+        {"id":"green-dragon","name":"Green Dragon","energyType":"acid","breathShape":"30-foot cone"},
+        {"id":"red-dragon","name":"Red Dragon","energyType":"fire","breathShape":"30-foot cone"},
+        {"id":"white-dragon","name":"White Dragon","energyType":"cold","breathShape":"30-foot cone"},
+        {"id":"brass-dragon","name":"Brass Dragon","energyType":"fire","breathShape":"60-foot line"},
+        {"id":"bronze-dragon","name":"Bronze Dragon","energyType":"electricity","breathShape":"60-foot line"},
+        {"id":"copper-dragon","name":"Copper Dragon","energyType":"acid","breathShape":"60-foot line"},
+        {"id":"gold-dragon","name":"Gold Dragon","energyType":"fire","breathShape":"30-foot cone"},
+        {"id":"silver-dragon","name":"Silver Dragon","energyType":"cold","breathShape":"30-foot cone"}
+      ],
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Mage Armor"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Resist Energy"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Fly"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Fear"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Spell Resistance"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Form of the Dragon I"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Form of the Dragon II"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Form of the Dragon III"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Wish"}
+      ],
+      "bonusFeats": ["Blind-Fight","Great Fortitude","Improved Initiative","Power Attack","Quicken Spell","Skill Focus (Fly)","Skill Focus (Knowledge [arcana])","Toughness"],
+      "powers": [
+        {"name":"Claws","level":1,"summary":"Grow two claw attacks for rounds per day equal to 3 + Charisma modifier. They improve in damage at 7th level, become magic at 5th, and add 1d6 matching energy damage at 11th."},
+        {"name":"Dragon Resistances","level":3,"summary":"Gain resistance 5 to your dragon's energy type and +1 natural armor; resistance becomes 10 and armor +2 at 9th level, and armor becomes +4 at 15th."},
+        {"name":"Breath Weapon","level":9,"summary":"Use your dragon's line or cone once per day for 1d6 energy damage per sorcerer level, Reflex half, increasing to twice per day at 17th and three times at 20th."},
+        {"name":"Wings","level":15,"summary":"Grow leathery wings as a standard action for a 60-foot fly speed with average maneuverability, dismissing them as a free action."},
+        {"name":"Power of Wyrms","level":20,"summary":"Gain immunity to paralysis, sleep, and your dragon's energy type, plus blindsense 60 feet."}
+      ]
+    }
+  ]
+}
