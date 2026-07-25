@@ -1,0 +1,25 @@
+{
+  "id": "freedom-of-movement",
+  "name": "Freedom of Movement",
+  "school": "abjuration",
+  "levelByClass": {
+    "bard": 4,
+    "cleric": 4,
+    "druid": 4,
+    "ranger": 4
+  },
+  "components": [
+    "V",
+    "S",
+    "M",
+    "DF"
+  ],
+  "castingTime": "1 standard action",
+  "range": "personal or touch",
+  "summary": "Allow the subject to move and attack normally despite effects that impede movement, including paralysis, solid fog, slow, and grappling.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Freedom%20of%20Movement"
+  }
+}

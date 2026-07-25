@@ -62,6 +62,19 @@ function checkBloodlineDetail(bloodline, file) {
   }
   if (typeof bloodline.classSkill !== "string" || !bloodline.classSkill.trim()) errors.push(`${label}: missing class skill`);
   if (bloodline.classSkillChoices !== undefined && (!Array.isArray(bloodline.classSkillChoices) || bloodline.classSkillChoices.length === 0 || new Set(bloodline.classSkillChoices).size !== bloodline.classSkillChoices.length || bloodline.classSkillChoices.some(skill => typeof skill !== "string" || !skill.trim()))) errors.push(`${label}: classSkillChoices must contain unique non-empty skill names`);
+  if (bloodline.variants !== undefined) {
+    const validEnergyTypes = new Set(["acid", "cold", "electricity", "fire"]);
+    const validBreathShapes = new Set(["30-foot cone", "60-foot line"]);
+    if (!Array.isArray(bloodline.variants) || bloodline.variants.length === 0) errors.push(`${label}: variants must contain at least one entry`);
+    else {
+      const variantIds = new Set();
+      for (const variant of bloodline.variants) {
+        if (!variant || typeof variant.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(variant.id) || typeof variant.name !== "string" || !variant.name.trim() || !validEnergyTypes.has(variant.energyType) || !validBreathShapes.has(variant.breathShape)) errors.push(`${label}: invalid bloodline variant`);
+        else if (variantIds.has(variant.id)) errors.push(`${label}: duplicate bloodline variant ${variant.id}`);
+        else variantIds.add(variant.id);
+      }
+    }
+  }
   if (typeof bloodline.arcana !== "string" || !bloodline.arcana.trim()) errors.push(`${label}: missing bloodline arcana`);
 
   const expectedSpellLevels = [3, 5, 7, 9, 11, 13, 15, 17, 19];
