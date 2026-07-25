@@ -25,6 +25,10 @@ export function CharacterDetails({ name, classId, ancestryId, level, classes, an
     <label>Class<select value={classId} onChange={(event) => onClassChange(event.target.value)}>{classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Ancestry<select value={ancestryId} onChange={(event) => onAncestryChange(event.target.value)}>{ancestries.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => onLevelChange(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} /></label>
-    <div className="character-actions"><button type="button" onClick={onSave}>Save</button><button type="button" onClick={onLoad}>Load</button><button type="button" onClick={() => importInput.current?.click()}>Import</button><input ref={importInput} hidden type="file" accept="application/json,.json" aria-label="Import character file" onChange={(event) => { const file = event.target.files?.[0]; if (file) void onImport(file); event.target.value = ""; }} /><button type="button" onClick={onExport}>Export</button><button type="button" onClick={onPrint}>Print</button><button type="button" onClick={onReset}>Reset</button><small>{saveNotice}</small></div>
+    <div className="character-actions">
+      <span>Character file</span>
+      <div><button type="button" onClick={onSave}>Save</button><button type="button" onClick={onLoad}>Load</button><button type="button" onClick={() => importInput.current?.click()}>Import</button><input ref={importInput} hidden type="file" accept="application/json,.json" aria-label="Import character file" onChange={(event) => { const file = event.target.files?.[0]; if (file) void onImport(file); event.target.value = ""; }} /><button type="button" onClick={onExport}>Export</button><button type="button" onClick={onPrint}>Print</button><button className="danger-button" type="button" onClick={onReset}>Reset</button></div>
+      <small aria-live="polite">{saveNotice}</small>
+    </div>
   </section>;
 }
