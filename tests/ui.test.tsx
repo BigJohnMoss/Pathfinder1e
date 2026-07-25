@@ -58,8 +58,9 @@ test("enforces the skill-rank pool through the interface", async () => {
   assert.ok(climb);
   await user.clear(climb);
   await user.type(climb, "999");
-  assert.equal((climb as HTMLInputElement).value, "16");
-  assert.match(screen.getByText(/of 16 total ranks allocated/).textContent ?? "", /16 of 16/);
+  assert.equal((climb as HTMLInputElement).value, "1");
+  assert.match(screen.getByText(/of 4 total ranks allocated/).textContent ?? "", /1 of 4/);
+  assert.match(screen.getByText(/at most 1 rank at this level/).textContent ?? "", /at most 1 rank/);
 });
 
 test("prevents duplicate feats and manages prepared spell counts", async () => {
