@@ -27,9 +27,9 @@ const spells=sourceSpells.map(spell=>{
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);
   return {...spell,...(school?{school}:{}),...(schools?{schools}:{}),levelByClass};
 });
-const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),races:await loadDir('races'),optionGroups,feats:await loadDir('feats'),spells};
+const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),races:await loadDir('races'),optionGroups,feats:await loadDir('feats'),traits:await loadDir('traits'),spells};
 const serialized=JSON.stringify(bundle);
 await writeFile(new URL('pf1e-data.json',out),JSON.stringify(bundle,null,2)+'\n');
 await writeFile(new URL('pf1e-data.mjs',out),`const data = JSON.parse(${JSON.stringify(serialized)});\nexport default data;\n`);
 await writeFile(new URL('pf1e-data.d.mts',out),'import type { GeneratedDataBundle } from "../packages/types/src/index.js";\ndeclare const data: GeneratedDataBundle;\nexport default data;\n');
-console.log(`Generated bundle with ${bundle.classes.length} classes, ${bundle.feats.length} feats, and ${bundle.spells.length} spells.`);
+console.log(`Generated bundle with ${bundle.classes.length} classes, ${bundle.feats.length} feats, ${bundle.traits.length} traits, and ${bundle.spells.length} spells.`);

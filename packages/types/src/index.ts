@@ -16,6 +16,7 @@ export interface CharacterDraftV1 {
   pointBuyBudget: 10 | 15 | 20 | 25;
   abilityBoosts: AbilityName[];
   selectedFeatIds: string[];
+  selectedTraitIds: string[];
   selectedFeatChoices: Record<string, string>;
   skillRanks: Record<string, number>;
   selectedOptions: Record<string, string>;
@@ -95,6 +96,21 @@ export interface CharacterFeat {
   };
 }
 
+export type TraitCategory = "combat" | "faith" | "magic" | "social";
+export interface CharacterTrait {
+  id: string;
+  name: string;
+  category: TraitCategory;
+  summary: string;
+  effects: {
+    initiative?: number;
+    saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>;
+    skillBonuses?: Record<string, number>;
+    classSkills?: string[];
+  };
+  source: SourceRef;
+}
+
 export interface CharacterOption extends SelectableOption {
   alignment?: string;
   polarity?: string;
@@ -132,5 +148,6 @@ export interface GeneratedDataBundle {
   races: CharacterAncestry[];
   optionGroups: CharacterOptionGroup[];
   feats: CharacterFeat[];
+  traits: CharacterTrait[];
   spells: CharacterSpell[];
 }

@@ -1,0 +1,1 @@
+{"id":"classically-schooled","name":"Classically Schooled","category":"magic","summary":"Gain a +1 trait bonus on Spellcraft checks, and Spellcraft is always a class skill.","effects":{"skillBonuses":{"Spellcraft":1},"classSkills":["Spellcraft"]},"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedNewRules.html"}}
