@@ -43,7 +43,7 @@ test("Elemental and Fey grant class skills, spells, and a persistent element", a
   await user.selectOptions(screen.getByLabelText("Human +2"), "charisma");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-elemental");
   assert.ok(screen.getByText("Elemental Ray"));
   assert.ok(screen.getByText("Elemental Body"));
@@ -53,35 +53,35 @@ test("Elemental and Fey grant class skills, spells, and a persistent element", a
   await user.selectOptions(element, "air-element");
   assert.equal(screen.getByLabelText("Selected bloodline variant").textContent, "Air: electricity · Fly 60 feet (average)");
 
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   const planes = skillLabel("Knowledge (planes)");
   await user.clear(planes.querySelector("input")!);
   await user.type(planes.querySelector("input")!, "1");
   assert.match(planes.querySelector("strong")?.textContent ?? "", /\+4 class/);
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Burning Hands known").textContent, "Bloodline");
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-fey");
   await waitFor(() => assert.equal(screen.queryByLabelText("Bloodline variant choice"), null));
   assert.ok(screen.getByText("Laughing Touch"));
   assert.ok(screen.getByText("Soul of the Fey"));
 
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   assert.doesNotMatch(skillLabel("Knowledge (planes)").querySelector("strong")?.textContent ?? "", /class/);
   const nature = skillLabel("Knowledge (nature)");
   await user.clear(nature.querySelector("input")!);
   await user.type(nature.querySelector("input")!, "1");
   assert.match(nature.querySelector("strong")?.textContent ?? "", /\+4 class/);
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Entangle known").textContent, "Bloodline");
   assert.equal(screen.getByLabelText("Burning Hands known").textContent, "Unknown");
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-elemental");
   assert.equal((screen.getByLabelText("Bloodline variant choice") as HTMLSelectElement).value, "");
   await user.selectOptions(screen.getByLabelText("Bloodline variant choice"), "water-element");
@@ -91,7 +91,7 @@ test("Elemental and Fey grant class skills, spells, and a persistent element", a
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "sorcerer"));
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal(optionSelect("Bloodline").value, "sorcerer-bloodline-elemental");
   assert.equal((screen.getByLabelText("Bloodline variant choice") as HTMLSelectElement).value, "water-element");
   assert.equal(screen.getByLabelText("Selected bloodline variant").textContent, "Water: cold · Swim 60 feet");

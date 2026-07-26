@@ -64,3 +64,29 @@ main {
     padding-top: max(38px, calc(env(safe-area-inset-top) + 20px));
   }
 }
+
+.skip-link {
+  background: #172033;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 800;
+  left: 10px;
+  padding: 10px 14px;
+  position: fixed;
+  top: 10px;
+  transform: translateY(-160%);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 3px solid #315e8a;
+  outline-offset: 3px;
+}

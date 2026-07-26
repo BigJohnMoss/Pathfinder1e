@@ -28,7 +28,7 @@ test("Wizard specialist school slots prepare, cast, refresh, and clear with scho
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
 
   const school = screen.getAllByText("Arcane School").at(-1)!.closest("label")?.querySelector("select");
   const firstSlot = screen.getAllByText("1st-level Specialist School Slot").at(-1)!.closest("label")?.querySelector("select");

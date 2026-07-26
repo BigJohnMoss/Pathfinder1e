@@ -26,7 +26,7 @@ test("cleric domains follow the selected deity and show their powers and spells"
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
 
   const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
   const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
@@ -69,7 +69,7 @@ test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
 
   const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
   const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
@@ -112,7 +112,7 @@ test("Cleric alignment, channel polarity, and daily uses follow the selected dei
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
 
   const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
   const alignment = screen.getAllByText("Alignment").at(-1)!.closest("label")?.querySelector("select");

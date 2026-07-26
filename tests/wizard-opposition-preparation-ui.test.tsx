@@ -34,13 +34,13 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
 
   await user.selectOptions(optionSelect("Arcane School"), "wizard-school-evocation");
   await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-conjuration");
   await user.selectOptions(optionSelect("Second Opposition School"), "wizard-opposition-abjuration");
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
 
   const mageArmor = screen.getByText("Mage Armor").closest("article");
@@ -53,18 +53,18 @@ test("Wizard opposition spells consume two prepared slots and persist", async ()
   assert.match(screen.getByText(/prepared 1st-level/).textContent ?? "", /2\/2 prepared 1st-level/);
   assert.equal((screen.getByRole("button", { name: "Add Magic Missile" }) as HTMLButtonElement).disabled, true);
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-necromancy");
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.match(screen.getByText(/prepared 1st-level/).textContent ?? "", /1\/2 prepared 1st-level/);
   assert.equal((screen.getByRole("button", { name: "Add Magic Missile" }) as HTMLButtonElement).disabled, false);
   await user.click(screen.getByRole("button", { name: "Add Magic Missile" }));
   assert.match(screen.getByText(/prepared 1st-level/).textContent ?? "", /2\/2 prepared 1st-level/);
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("First Opposition School"), "wizard-opposition-conjuration");
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   await waitFor(() => assert.equal(screen.getByLabelText("Magic Missile prepared").textContent, "0"));
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");

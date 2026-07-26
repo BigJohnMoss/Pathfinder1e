@@ -43,39 +43,39 @@ test("Infernal and Undead grant complete details, class skills, spells, switchin
   await user.selectOptions(screen.getByLabelText("Human +2"), "charisma");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-infernal");
   assert.ok(screen.getByText("Corrupting Touch"));
   assert.ok(screen.getByText("Power of the Pit"));
   assert.ok(screen.getByText(/Meteor Swarm/));
   assert.equal(screen.queryByLabelText("Bloodline variant choice"), null);
 
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   const diplomacy = skillLabel("Diplomacy");
   await user.clear(diplomacy.querySelector("input")!);
   await user.type(diplomacy.querySelector("input")!, "1");
   assert.match(diplomacy.querySelector("strong")?.textContent ?? "", /\+5 class/);
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Protection from Good known").textContent, "Bloodline");
   assert.equal((screen.getByRole("button", { name: "Learn Protection from Good" }) as HTMLButtonElement).disabled, true);
   assert.equal((screen.getByRole("button", { name: "Forget Protection from Good" }) as HTMLButtonElement).disabled, true);
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-undead");
   assert.ok(screen.getByText("Grave Touch"));
   assert.ok(screen.getByText("One of Us"));
   assert.ok(screen.getByText(/Energy Drain/));
 
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   assert.doesNotMatch(skillLabel("Diplomacy").querySelector("strong")?.textContent ?? "", /class/);
   const religion = skillLabel("Knowledge (religion)");
   await user.clear(religion.querySelector("input")!);
   await user.type(religion.querySelector("input")!, "1");
   assert.match(religion.querySelector("strong")?.textContent ?? "", /\+4 class/);
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Chill Touch known").textContent, "Bloodline");
   assert.equal(screen.getByLabelText("Protection from Good known").textContent, "Unknown");
@@ -85,9 +85,9 @@ test("Infernal and Undead grant complete details, class skills, spells, switchin
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "sorcerer"));
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal(optionSelect("Bloodline").value, "sorcerer-bloodline-undead");
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   await waitFor(() => assert.equal(screen.getByLabelText("Chill Touch known").textContent, "Bloodline"));
 });
