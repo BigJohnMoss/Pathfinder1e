@@ -225,7 +225,7 @@ export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2)
   return selected;
 }
 
-export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTraitIds, traits, { spells = [], classId } = {}) {
+export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTraitIds, traits, { spells = [], classes = [], classId } = {}) {
   if (!selectedTraitChoices || typeof selectedTraitChoices !== "object" || Array.isArray(selectedTraitChoices)) return {};
   const selected = new Set(normalizeSelectedTraits(selectedTraitIds, traits));
   const byId = new Map(traits.map(trait => [trait.id, trait]));
@@ -235,7 +235,8 @@ export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTrai
       ? traitChoice.options.includes(choice)
       : traitChoice?.key === "spell" && spells.some(spell =>
         spell.id === choice && (!classId || spell.levelByClass?.[classId] !== undefined)
-      );
+        && (traitChoice.maximumSpellLevel === undefined || Math.min(...Object.values(spell.levelByClass ?? {})) <= traitChoice.maximumSpellLevel)
+      ) || traitChoice?.key === "class" && classes.some(characterClass => characterClass.id === choice);
     return selected.has(traitId) && typeof choice === "string" && validChoice;
   }));
 }
@@ -264,6 +265,10 @@ export function traitBonuses(selectedTraitIds, traits, selectedTraitChoices = {}
         casterLevel: current.casterLevel + (effects.chosenSpell.casterLevel ?? 0),
         metamagicLevelAdjustment: current.metamagicLevelAdjustment + (effects.chosenSpell.metamagicLevelAdjustment ?? 0)
       };
+      if (effects.chosenSpell.spellLikeAbilityUses) {
+        result.conditionalModifiers ??= [];
+        result.conditionalModifiers.push({ label: `${effects.chosenSpell.spellLikeAbilityUses}/day spell-like ability`, condition: `cast ${sources.spells?.find(spell => spell.id === choice)?.name ?? choice} as a spell-like ability`, source: trait.name });
+      }
     }
   }
   return result;

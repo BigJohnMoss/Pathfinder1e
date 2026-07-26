@@ -5,6 +5,7 @@ const categoryLabels = { combat: "Combat", faith: "Faith", magic: "Magic", socia
 export function TraitChoices({
   traits,
   spells,
+  classes,
   classId,
   selectedTraitIds,
   selectedTraitChoices,
@@ -13,6 +14,7 @@ export function TraitChoices({
 }: {
   traits: CharacterTrait[];
   spells: CharacterSpell[];
+  classes: Array<{ id: string; name: string }>;
   classId: string;
   selectedTraitIds: string[];
   selectedTraitChoices: Record<string, string>;
@@ -38,10 +40,12 @@ export function TraitChoices({
         {selected && <div><strong>{selected.name}</strong><span>{categoryLabels[selected.category]} trait</span><p>{selected.summary}</p>
           {selected.choice && <label>{selected.choice.label}
             <select value={selectedTraitChoices[selected.id] ?? ""} onChange={(event) => onChoiceChange(selected.id, event.target.value)}>
-              <option value="">Choose {selected.choice.key === "spell" ? "a spell" : "a skill"}</option>
+              <option value="">Choose {selected.choice.key === "spell" ? "a spell" : selected.choice.key === "class" ? "a class" : "a skill"}</option>
               {(selected.choice.key === "classSkill"
                 ? selected.choice.options.map((value) => ({ id: value, name: value }))
-                : spells.filter((spell) => spell.levelByClass[classId] !== undefined).sort((left, right) => left.name.localeCompare(right.name))
+                : selected.choice.key === "class"
+                  ? classes
+                  : spells.filter((spell) => spell.levelByClass[classId] !== undefined && (selected.choice.maximumSpellLevel === undefined || spell.levelByClass[classId] <= selected.choice.maximumSpellLevel)).sort((left, right) => left.name.localeCompare(right.name))
               ).map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}
             </select>
           </label>}

@@ -67,7 +67,7 @@ export default function Home() {
 
   const characterClass = classes.find((item) => item.id === classId) ?? classes[0];
   const ancestry = ancestries.find((item) => item.id === ancestryId) ?? ancestries[0];
-  const selectedTraitBonuses = useMemo(() => traitBonuses(selectedTraitIds, traits, selectedTraitChoices, { spells, classId }), [classId, selectedTraitChoices, selectedTraitIds]);
+  const selectedTraitBonuses = useMemo(() => traitBonuses(selectedTraitIds, traits, selectedTraitChoices, { spells, classes, classId }), [classId, selectedTraitChoices, selectedTraitIds]);
   const selectedBloodline = useMemo(() => bloodlineFromOptions(classId, selectedOptions), [classId, selectedOptions]);
   const selectedBloodlineClassSkill = selectedOptions["sorcerer-bloodline-class-skill"];
   const skillCharacterClass = useMemo(() => {
@@ -137,7 +137,7 @@ export default function Home() {
   useEffect(() => setSelectedFeatIds((current) => { const next = normalizeSelectedFeats(current, feats, featContext, featSlots.length); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [featContext, featSlots.length]);
   useEffect(() => setSelectedFeatChoices((current) => { const next = normalizeSelectedFeatChoices(current, selectedFeatIds, feats); return Object.keys(next).length === Object.keys(current).length && Object.entries(next).every(([id, choice]) => current[id] === choice) ? current : next; }), [selectedFeatIds]);
   useEffect(() => setSelectedTraitChoices((current) => {
-    const next = normalizeSelectedTraitChoices(current, selectedTraitIds, traits, { spells, classId });
+    const next = normalizeSelectedTraitChoices(current, selectedTraitIds, traits, { spells, classes, classId });
     return Object.keys(next).length === Object.keys(current).length && Object.entries(next).every(([id, choice]) => current[id] === choice) ? current : next;
   }), [classId, selectedTraitIds]);
 
@@ -162,10 +162,10 @@ export default function Home() {
     if (traitId) next[index] = traitId;
     else next.splice(index, 1);
     const normalized = normalizeSelectedTraits(next, traits);
-    setSelectedTraitChoices((choices) => normalizeSelectedTraitChoices(choices, normalized, traits, { spells, classId }));
+    setSelectedTraitChoices((choices) => normalizeSelectedTraitChoices(choices, normalized, traits, { spells, classes, classId }));
     return normalized;
   });
-  const updateTraitChoice = (traitId: string, choice: string) => setSelectedTraitChoices((current) => normalizeSelectedTraitChoices({ ...current, [traitId]: choice }, selectedTraitIds, traits, { spells, classId }));
+  const updateTraitChoice = (traitId: string, choice: string) => setSelectedTraitChoices((current) => normalizeSelectedTraitChoices({ ...current, [traitId]: choice }, selectedTraitIds, traits, { spells, classes, classId }));
 
   const castingAbility = characterClass.spellcasting && abilityNames.includes(characterClass.spellcasting.ability as keyof typeof abilities) ? characterClass.spellcasting.ability as keyof typeof abilities : null;
   const castingAbilityScore = castingAbility ? abilities[castingAbility] : 10;
@@ -253,7 +253,7 @@ export default function Home() {
     const draftBloodlineSpellIds = draftBloodlineSpells.map((spell) => spell.id);
     const normalizedDraftSpells = draftIsSpontaneous ? normalizeKnownSpells(draft.preparedSpells, draftSpells, draftClass.id, draftSpontaneousCasting?.known ?? [], draftBloodlineSpellIds) : normalizePreparedSpellsWithOpposition(draft.preparedSpells, draftSpells, draftClass.id, draftPreparedCasting?.prepared ?? [], draftOppositionSchoolIds);
     const draftTraitIds = normalizeSelectedTraits(draft.selectedTraitIds, traits);
-    setName(draft.name); setClassId(draft.classId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setSelectedFeatIds(draft.selectedFeatIds); setSelectedTraitIds(draftTraitIds); setSelectedTraitChoices(normalizeSelectedTraitChoices(draft.selectedTraitChoices, draftTraitIds, traits, { spells, classId: draft.classId })); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setBardicPerformanceUsed(Math.min(draft.bardicPerformanceUsed, draftBardicPerformanceMaximum)); setWildShapeUsed(draftWildShapeMaximum === null ? 0 : Math.min(draft.wildShapeUsed, draftWildShapeMaximum)); setInventory(draft.inventory); setCoins(draft.coins); setSaveNotice(successNotice);
+    setName(draft.name); setClassId(draft.classId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setSelectedFeatIds(draft.selectedFeatIds); setSelectedTraitIds(draftTraitIds); setSelectedTraitChoices(normalizeSelectedTraitChoices(draft.selectedTraitChoices, draftTraitIds, traits, { spells, classes, classId: draft.classId })); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setBardicPerformanceUsed(Math.min(draft.bardicPerformanceUsed, draftBardicPerformanceMaximum)); setWildShapeUsed(draftWildShapeMaximum === null ? 0 : Math.min(draft.wildShapeUsed, draftWildShapeMaximum)); setInventory(draft.inventory); setCoins(draft.coins); setSaveNotice(successNotice);
     return draft;
   };
   const saveCharacter = () => {
@@ -314,7 +314,7 @@ export default function Home() {
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}
       {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={characterClass.name} features={progression.features} dailyResource={classId === "bard" ? { label: "Performance rounds", unit: "round", maximum: bardicPerformanceMaximum, used: bardicPerformanceUsed, onUsedChange: setBardicPerformanceUsed } : classId === "druid" && level >= 4 ? { label: "Wild Shape", unit: "use", maximum: wildShapeMaximum, used: wildShapeUsed, onUsedChange: setWildShapeUsed } : undefined} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={level} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
-      {activeTab === "options" && <TraitChoices traits={traits} spells={spells} classId={characterClass.id} selectedTraitIds={selectedTraitIds} selectedTraitChoices={selectedTraitChoices} onChange={updateTrait} onChoiceChange={updateTraitChoice} />}
+      {activeTab === "options" && <TraitChoices traits={traits} spells={spells} classes={classes} classId={characterClass.id} selectedTraitIds={selectedTraitIds} selectedTraitChoices={selectedTraitChoices} onChange={updateTrait} onChoiceChange={updateTraitChoice} />}
     </section>
   </main>;
 }

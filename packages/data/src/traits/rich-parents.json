@@ -1,0 +1,1 @@
+{"id":"rich-parents","name":"Rich Parents","category":"social","summary":"Your starting cash increases to 900 gp.","effects":{"conditionalModifiers":[{"label":"Starting cash","condition":"set starting cash to 900 gp during character creation"}]},"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedNewRules.html"}}
