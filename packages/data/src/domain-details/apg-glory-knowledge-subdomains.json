@@ -1,0 +1,65 @@
+{
+  "source": {"title": "Advanced Player's Guide", "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"},
+  "subdomains": [
+    {
+      "id": "subdomain-heroism", "groupId": "cleric-domains", "name": "Heroism Subdomain (Glory)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Divine Presence with Aura of Heroism and replace the Glory domain's 3rd- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 90, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#heroism-subdomain"},
+      "parentDomainId": "domain-glory", "replacesPower": "Divine Presence",
+      "powers": [
+        {"name": "Touch of Glory", "level": 1, "summary": "As a standard action, touch a creature to grant a bonus equal to cleric level on one Charisma-based skill or ability check within 1 hour. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Aura of Heroism", "level": 8, "summary": "As a swift action, emit a 30-foot aura whose allies gain the effects of heroism for rounds per day equal to cleric level. Rounds need not be consecutive."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "shield of faith"}, {"level": 2, "name": "bless weapon"}, {"level": 3, "name": "heroism"},
+        {"level": 4, "name": "holy smite"}, {"level": 5, "name": "righteous might"}, {"level": 6, "name": "greater heroism"},
+        {"level": 7, "name": "holy sword"}, {"level": 8, "name": "holy aura"}, {"level": 9, "name": "gate"}
+      ]
+    },
+    {
+      "id": "subdomain-honor", "groupId": "cleric-domains", "name": "Honor Subdomain (Glory)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Touch of Glory with Honor Bound and replace the Glory domain's 2nd- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 90, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#honor-subdomain"},
+      "parentDomainId": "domain-glory", "replacesPower": "Touch of Glory",
+      "powers": [
+        {"name": "Honor Bound", "level": 1, "summary": "Touch a creature to grant one new save against each charm or compulsion currently affecting it, or use an immediate action after failing such a save yourself. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Divine Presence", "level": 8, "summary": "Emit a 30-foot aura for rounds per day equal to cleric level. Allies within it gain sanctuary until they leave the aura or attack."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "shield of faith"}, {"level": 2, "name": "zone of truth"}, {"level": 3, "name": "searing light"},
+        {"level": 4, "name": "holy smite"}, {"level": 5, "name": "righteous might"}, {"level": 6, "name": "geas/quest"},
+        {"level": 7, "name": "holy sword"}, {"level": 8, "name": "holy aura"}, {"level": 9, "name": "gate"}
+      ]
+    },
+    {
+      "id": "subdomain-memory", "groupId": "cleric-domains", "name": "Memory Subdomain (Knowledge)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Lore Keeper with Recall and replace the Knowledge domain's 2nd-, 6th-, and 8th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 92, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#memory-subdomain"},
+      "parentDomainId": "domain-knowledge", "replacesPower": "Lore Keeper",
+      "powers": [
+        {"name": "Recall", "level": 1, "summary": "Touch a creature to let it retry a Knowledge check made within the past minute with an insight bonus equal to your Wisdom modifier. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Remote Viewing", "level": 6, "summary": "Use clairvoyance/clairaudience at will as a spell-like ability for a total number of rounds per day equal to cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "comprehend languages"}, {"level": 2, "name": "memory lapse"}, {"level": 3, "name": "speak with dead"},
+        {"level": 4, "name": "divination"}, {"level": 5, "name": "true seeing"}, {"level": 6, "name": "modify memory"},
+        {"level": 7, "name": "legend lore"}, {"level": 8, "name": "moment of prescience"}, {"level": 9, "name": "foresight"}
+      ]
+    },
+    {
+      "id": "subdomain-thought", "groupId": "cleric-domains", "name": "Thought Subdomain (Knowledge)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Remote Viewing with Read Minds and replace the Knowledge domain's 3rd-, 5th-, and 8th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 95, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#thought-subdomain"},
+      "parentDomainId": "domain-knowledge", "replacesPower": "Remote Viewing",
+      "powers": [
+        {"name": "Lore Keeper", "level": 1, "summary": "As a melee touch attack, gain information about a creature as though making the appropriate Knowledge check with a result equal to 15 + cleric level + Wisdom modifier."},
+        {"name": "Read Minds", "level": 8, "summary": "Read the surface thoughts of creatures within 30 feet after 1 round of concentration; a Will save negates. Usable for rounds per day equal to cleric level, which need not be consecutive."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "comprehend languages"}, {"level": 2, "name": "detect thoughts"}, {"level": 3, "name": "seek thoughts"},
+        {"level": 4, "name": "divination"}, {"level": 5, "name": "telepathic bond"}, {"level": 6, "name": "find the path"},
+        {"level": 7, "name": "legend lore"}, {"level": 8, "name": "mind blank"}, {"level": 9, "name": "foresight"}
+      ]
+    }
+  ]
+}

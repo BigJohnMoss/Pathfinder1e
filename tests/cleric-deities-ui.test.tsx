@@ -223,6 +223,33 @@ test("Good and Healing subdomains inherit access with parent-specific outsider v
   assert.equal((secondDomain.querySelector("option[value='domain-healing']") as HTMLOptionElement).disabled, true);
 });
 
+test("Glory and Knowledge subdomains inherit deity access and exclude their parent", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity); assert.ok(firstDomain); assert.ok(secondDomain);
+
+  await user.selectOptions(deity, "deity-iomedae");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-heroism"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-honor"), true);
+  await user.selectOptions(firstDomain, "subdomain-heroism");
+  assert.ok(screen.getByText("Aura of Heroism"));
+  assert.ok(screen.getByText("greater heroism"));
+  assert.equal((secondDomain.querySelector("option[value='domain-glory']") as HTMLOptionElement).disabled, true);
+
+  await user.selectOptions(deity, "deity-nethys");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-memory"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-thought"), true);
+  await user.selectOptions(firstDomain, "subdomain-thought");
+  assert.ok(screen.getByText("Read Minds"));
+  assert.ok(screen.getByText("telepathic bond"));
+  assert.equal((secondDomain.querySelector("option[value='subdomain-memory']") as HTMLOptionElement).disabled, true);
+});
+
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   const user = userEvent.setup();
   render(<Home />);
