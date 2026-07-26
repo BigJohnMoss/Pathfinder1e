@@ -7,7 +7,7 @@ This document distinguishes records present in the data bundle from systems that
 - 12 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
-- 23 selectable basic traits
+- all 40 APG basic traits
 - 2,048 spells
 
 ## Playable classes

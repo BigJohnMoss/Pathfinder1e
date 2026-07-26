@@ -32,13 +32,13 @@ successful load. The current generated catalogue includes:
 - 12 selectable classes: Arcanist and all eleven Core classes—Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, and Wizard
 - 7 selectable core ancestries
 - 424 selectable feats
-- 23 selectable basic traits across combat, faith, magic, and social categories
+- all 40 APG basic traits across combat, faith, magic, and social categories
 - 2,048 spells
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
 All eleven Core classes are playable through level 20. Development now proceeds
-through the **Expanded Character Options** milestone. Basic traits are playable;
-archetypes and broader trait coverage remain future work.
+through the **Expanded Character Options** milestone. All APG basic traits are playable;
+archetypes and non-basic trait categories remain future work.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 

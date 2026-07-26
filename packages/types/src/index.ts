@@ -131,6 +131,7 @@ export interface CharacterTrait {
     chosenSpell?: {
       casterLevel?: number;
       metamagicLevelAdjustment?: number;
+      spellLikeAbilityUses?: number;
     };
   };
   choice?: {
@@ -141,6 +142,11 @@ export interface CharacterTrait {
     key: "spell";
     label: string;
     optionSource: "spells";
+    maximumSpellLevel?: number;
+  } | {
+    key: "class";
+    label: string;
+    optionSource: "classes";
   };
   source: SourceRef;
 }

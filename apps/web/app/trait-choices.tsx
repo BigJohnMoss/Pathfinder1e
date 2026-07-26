@@ -5,6 +5,7 @@ const categoryLabels = { combat: "Combat", faith: "Faith", magic: "Magic", socia
 export function TraitChoices({
   traits,
   spells,
+  classes,
   classId,
   selectedTraitIds,
   selectedTraitChoices,
@@ -13,6 +14,7 @@ export function TraitChoices({
 }: {
   traits: CharacterTrait[];
   spells: CharacterSpell[];
+  classes: Array<{ id: string; name: string }>;
   classId: string;
   selectedTraitIds: string[];
   selectedTraitChoices: Record<string, string>;
@@ -26,6 +28,7 @@ export function TraitChoices({
     <div className="trait-slots">{[0, 1].map((index) => {
       const selected = traits.find((trait) => trait.id === selectedTraitIds[index]);
       const other = traits.find((trait) => trait.id === selectedTraitIds[index === 0 ? 1 : 0]);
+      const traitChoice = selected?.choice;
       return <article key={index}>
         <label>Trait {index + 1}
           <select value={selected?.id ?? ""} onChange={(event) => onChange(index, event.target.value)}>
@@ -36,12 +39,14 @@ export function TraitChoices({
           </select>
         </label>
         {selected && <div><strong>{selected.name}</strong><span>{categoryLabels[selected.category]} trait</span><p>{selected.summary}</p>
-          {selected.choice && <label>{selected.choice.label}
+          {traitChoice && <label>{traitChoice.label}
             <select value={selectedTraitChoices[selected.id] ?? ""} onChange={(event) => onChoiceChange(selected.id, event.target.value)}>
-              <option value="">Choose {selected.choice.key === "spell" ? "a spell" : "a skill"}</option>
-              {(selected.choice.key === "classSkill"
-                ? selected.choice.options.map((value) => ({ id: value, name: value }))
-                : spells.filter((spell) => spell.levelByClass[classId] !== undefined).sort((left, right) => left.name.localeCompare(right.name))
+              <option value="">Choose {traitChoice.key === "spell" ? "a spell" : traitChoice.key === "class" ? "a class" : "a skill"}</option>
+              {(traitChoice.key === "classSkill"
+                ? traitChoice.options.map((value) => ({ id: value, name: value }))
+                : traitChoice.key === "class"
+                  ? classes
+                  : spells.filter((spell) => spell.levelByClass[classId] !== undefined && (traitChoice.maximumSpellLevel === undefined || spell.levelByClass[classId] <= traitChoice.maximumSpellLevel)).sort((left, right) => left.name.localeCompare(right.name))
               ).map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}
             </select>
           </label>}
