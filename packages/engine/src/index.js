@@ -225,7 +225,7 @@ export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2)
   return selected;
 }
 
-export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTraitIds, traits, { spells = [] } = {}) {
+export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTraitIds, traits, { spells = [], classId } = {}) {
   if (!selectedTraitChoices || typeof selectedTraitChoices !== "object" || Array.isArray(selectedTraitChoices)) return {};
   const selected = new Set(normalizeSelectedTraits(selectedTraitIds, traits));
   const byId = new Map(traits.map(trait => [trait.id, trait]));
@@ -233,7 +233,9 @@ export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTrai
     const traitChoice = byId.get(traitId)?.choice;
     const validChoice = traitChoice?.key === "classSkill"
       ? traitChoice.options.includes(choice)
-      : traitChoice?.key === "spell" && spells.some(spell => spell.id === choice);
+      : traitChoice?.key === "spell" && spells.some(spell =>
+        spell.id === choice && (!classId || spell.levelByClass?.[classId] !== undefined)
+      );
     return selected.has(traitId) && typeof choice === "string" && validChoice;
   }));
 }

@@ -429,6 +429,18 @@ test("selects, displays, and persists a trait-specific spell modifier", async ()
   assert.deepEqual(saved.selectedTraitChoices, { "gifted-adept": "mage-hand" });
 });
 
+test("clears a trait spell choice when the character changes to an ineligible class", async () => {
+  render(<Home />);
+  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "gifted-adept");
+  await userEvent.selectOptions(screen.getByLabelText("Affected spell"), "mage-hand");
+  await userEvent.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  assert.equal((screen.getByLabelText("Affected spell") as HTMLSelectElement).value, "");
+  await userEvent.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.deepEqual(saved.selectedTraitChoices, {});
+});
+
 test("tracks persistent equipment, encumbrance, currency, and equipped armor", async () => {
   const user = userEvent.setup();
   render(<Home />);

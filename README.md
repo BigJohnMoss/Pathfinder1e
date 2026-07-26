@@ -29,7 +29,7 @@ complete. The builder can be installed on supported desktop browsers and
 Android, launched in a standalone window, and reopened offline after its first
 successful load. The current generated catalogue includes:
 
-- 11 selectable classes: Arcanist, Barbarian, Bard, Cleric, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, and Wizard
+- 12 selectable classes: Arcanist and all eleven Core classes—Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, and Wizard
 - 7 selectable core ancestries
 - 424 selectable feats
 - 17 selectable basic traits across combat, faith, magic, and social categories
@@ -37,7 +37,8 @@ successful load. The current generated catalogue includes:
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
 All eleven Core classes are playable through level 20. Development now proceeds
-through the **Expanded Character Options** milestone, beginning with traits.
+through the **Expanded Character Options** milestone. Basic traits are playable;
+archetypes and broader trait coverage remain future work.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
