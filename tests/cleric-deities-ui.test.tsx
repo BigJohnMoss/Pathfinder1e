@@ -75,6 +75,22 @@ test("cleric domains follow the selected deity and show their powers and spells"
   assert.ok(screen.getByText("Granted class skills:").closest("p")?.textContent?.includes("Fly"));
   await user.click(screen.getByRole("tab", { name: "Skills" }));
   assert.ok(screen.getByText("Fly").closest("label")?.textContent?.includes("Class skill"));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const liveDeity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const liveFirstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const liveSecondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(liveDeity);
+  assert.ok(liveFirstDomain);
+  assert.ok(liveSecondDomain);
+  await user.selectOptions(liveDeity, "deity-calistria");
+  assert.equal([...liveFirstDomain.options].some((option) => option.value === "subdomain-protean"), true);
+  assert.equal([...liveFirstDomain.options].some((option) => option.value === "subdomain-love"), true);
+  assert.equal([...liveFirstDomain.options].some((option) => option.value === "subdomain-lust"), true);
+  await user.selectOptions(liveFirstDomain, "subdomain-protean");
+  await user.selectOptions(liveSecondDomain, "subdomain-love");
+  assert.ok(screen.getByText("Aura of Chaos"));
+  assert.ok(screen.getByText("Adoration"));
+  assert.equal((liveFirstDomain.querySelector("option[value='subdomain-lust']") as HTMLOptionElement).disabled, true);
 });
 
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {

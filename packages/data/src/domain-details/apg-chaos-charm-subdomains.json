@@ -1,0 +1,71 @@
+{
+  "source": {
+    "title": "Advanced Player's Guide",
+    "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"
+  },
+  "subdomains": [
+    {
+      "id": "subdomain-protean",
+      "groupId": "cleric-domains",
+      "name": "Protean Subdomain (Chaos)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Chaos Blade with Aura of Chaos and replace the Chaos domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 93, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#protean-subdomain"},
+      "parentDomainId": "domain-chaos",
+      "replacesPower": "Chaos Blade",
+      "powers": [
+        {"name": "Touch of Chaos", "level": 1, "summary": "As a melee touch attack, force the target to roll twice and take the worse result on every d20 roll during its next round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Aura of Chaos", "level": 8, "summary": "Emit a 30-foot aura for rounds per day equal to cleric level. Enemies must declare an action and make a Will save; failure forces a different legal action, while success requires the declared action."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "lesser confusion"}, {"level": 2, "name": "align weapon (chaos only)"}, {"level": 3, "name": "displacement"},
+        {"level": 4, "name": "chaos hammer"}, {"level": 5, "name": "dispel law"}, {"level": 6, "name": "planar binding (proteans only)"},
+        {"level": 7, "name": "word of chaos"}, {"level": 8, "name": "cloak of chaos"}, {"level": 9, "name": "summon monster IX (chaos only)"}
+      ]
+    },
+    {
+      "id": "subdomain-love",
+      "groupId": "cleric-domains",
+      "name": "Love Subdomain (Charm)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Dazing Touch with Adoration and replace the Charm domain's 2nd- and 8th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 91, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#love-subdomain"},
+      "parentDomainId": "domain-charm",
+      "replacesPower": "Dazing Touch",
+      "powers": [
+        {"name": "Adoration", "level": 1, "summary": "As an immediate action after an attack is declared but before it is rolled, make that single attack subject to sanctuary. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Charming Smile", "level": 8, "summary": "Cast charm person as a swift action with a save DC of 10 + half cleric level + Wisdom modifier. Only one creature can be charmed this way at a time. Usable for rounds per day equal to cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "charm person"}, {"level": 2, "name": "enthrall"}, {"level": 3, "name": "suggestion"},
+        {"level": 4, "name": "heroism"}, {"level": 5, "name": "charm monster"}, {"level": 6, "name": "geas/quest"},
+        {"level": 7, "name": "insanity"}, {"level": 8, "name": "euphoric tranquility"}, {"level": 9, "name": "dominate monster"}
+      ]
+    },
+    {
+      "id": "subdomain-lust",
+      "groupId": "cleric-domains",
+      "name": "Lust Subdomain (Charm)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Charming Smile with Anything to Please and replace the Charm domain's 2nd- and 4th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 91, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#lust-subdomain"},
+      "parentDomainId": "domain-charm",
+      "replacesPower": "Charming Smile",
+      "powers": [
+        {"name": "Dazing Touch", "level": 1, "summary": "As a melee touch attack, daze a living creature with no more Hit Dice than cleric level for 1 round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Anything to Please", "level": 8, "summary": "As a standard action, compel a creature within 30 feet that fails a Will save to attack your enemies, surrender its most valuable item, or grovel. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "charm person"}, {"level": 2, "name": "touch of idiocy"}, {"level": 3, "name": "suggestion"},
+        {"level": 4, "name": "confusion"}, {"level": 5, "name": "charm monster"}, {"level": 6, "name": "geas/quest"},
+        {"level": 7, "name": "insanity"}, {"level": 8, "name": "demand"}, {"level": 9, "name": "dominate monster"}
+      ]
+    }
+  ]
+}
