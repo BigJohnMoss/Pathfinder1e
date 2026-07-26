@@ -1,0 +1,92 @@
+{
+  "source": {
+    "title": "Advanced Player's Guide",
+    "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"
+  },
+  "subdomains": [
+    {
+      "id": "subdomain-murder",
+      "groupId": "cleric-domains",
+      "name": "Murder Subdomain (Death)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Death's Embrace with Killing Blow and replace the Death domain's 3rd-, 5th-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 92, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#murder-subdomain"},
+      "parentDomainId": "domain-death",
+      "replacesPower": "Death's Embrace",
+      "powers": [
+        {"name": "Bleeding Touch", "level": 1, "summary": "As a melee touch attack, cause a living creature to take 1d6 bleed damage each round for rounds equal to half cleric level. Healing or a DC 15 Heal check ends it. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Killing Blow", "level": 8, "summary": "When you confirm a critical hit with a melee or ranged weapon, deal additional bleed damage equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "cause fear"}, {"level": 2, "name": "death knell"}, {"level": 3, "name": "keen edge"},
+        {"level": 4, "name": "death ward"}, {"level": 5, "name": "suffocation"}, {"level": 6, "name": "create undead"},
+        {"level": 7, "name": "destruction"}, {"level": 8, "name": "create greater undead"}, {"level": 9, "name": "mass suffocation"}
+      ]
+    },
+    {
+      "id": "subdomain-undead",
+      "groupId": "cleric-domains",
+      "name": "Undead Subdomain (Death)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Bleeding Touch with Death's Kiss and replace the Death domain's 2nd-, 4th-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 96, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#undead-subdomain"},
+      "parentDomainId": "domain-death",
+      "replacesPower": "Bleeding Touch",
+      "powers": [
+        {"name": "Death's Kiss", "level": 1, "summary": "With a melee touch attack, make a creature count as undead for positive- and negative-energy healing and damage for rounds equal to half cleric level. This does not affect Turn Undead or Command Undead. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Death's Embrace", "level": 8, "summary": "Negative energy channeled by the cleric heals the cleric instead of harming them; excess healing is not gained as temporary hit points."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "cause fear"}, {"level": 2, "name": "ghoul touch"}, {"level": 3, "name": "animate dead"},
+        {"level": 4, "name": "enervation"}, {"level": 5, "name": "slay living"}, {"level": 6, "name": "create undead"},
+        {"level": 7, "name": "destruction"}, {"level": 8, "name": "create greater undead"}, {"level": 9, "name": "energy drain"}
+      ]
+    },
+    {
+      "id": "subdomain-catastrophe",
+      "groupId": "cleric-domains",
+      "name": "Catastrophe Subdomain (Destruction)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Destructive Aura with Deadly Weather and replace the Destruction domain's 2nd-, 3rd-, and 7th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 86, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#catastrophe-subdomain"},
+      "parentDomainId": "domain-destruction",
+      "replacesPower": "Destructive Aura",
+      "powers": [
+        {"name": "Destructive Smite", "level": 1, "summary": "Declare before a melee attack to gain a morale bonus on its damage roll equal to half cleric level, minimum +1. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Deadly Weather", "level": 8, "summary": "Create a storm with a radius of 5 feet per cleric level for rounds per day equal to cleric level. Each round choose driving rain, howling winds, heavy snow, or a call lightning bolt; the same effect cannot occur in consecutive rounds."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "true strike"}, {"level": 2, "name": "gust of wind"}, {"level": 3, "name": "call lightning"},
+        {"level": 4, "name": "inflict critical wounds"}, {"level": 5, "name": "shout"}, {"level": 6, "name": "harm"},
+        {"level": 7, "name": "control weather"}, {"level": 8, "name": "earthquake"}, {"level": 9, "name": "implosion"}
+      ]
+    },
+    {
+      "id": "subdomain-rage",
+      "groupId": "cleric-domains",
+      "name": "Rage Subdomain (Destruction)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Destructive Aura with Rage and replace the Destruction domain's 2nd- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 93, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#rage-subdomain"},
+      "parentDomainId": "domain-destruction",
+      "replacesPower": "Destructive Aura",
+      "powers": [
+        {"name": "Destructive Smite", "level": 1, "summary": "Declare before a melee attack to gain a morale bonus on its damage roll equal to half cleric level, minimum +1. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Rage", "level": 8, "summary": "Rage as a barbarian for rounds per day equal to cleric level. Select one rage power at 12th and 16th level, using half cleric level as barbarian level; powers with level requirements are unavailable."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "true strike"}, {"level": 2, "name": "bull's strength"}, {"level": 3, "name": "rage"},
+        {"level": 4, "name": "inflict critical wounds"}, {"level": 5, "name": "shout"}, {"level": 6, "name": "moonstruck"},
+        {"level": 7, "name": "disintegrate"}, {"level": 8, "name": "earthquake"}, {"level": 9, "name": "implosion"}
+      ]
+    }
+  ]
+}

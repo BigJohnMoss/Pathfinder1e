@@ -123,6 +123,38 @@ test("Community and Darkness subdomains inherit deity access and exclude their p
   assert.ok(screen.getAllByText("sleep").length >= 1);
 });
 
+test("Death and Destruction subdomains inherit deity access and exclude their parent", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity);
+  assert.ok(firstDomain);
+  assert.ok(secondDomain);
+
+  await user.selectOptions(deity, "deity-norgorber");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-murder"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-undead"), true);
+  await user.selectOptions(firstDomain, "subdomain-murder");
+  assert.ok(screen.getByText("Killing Blow"));
+  assert.ok(screen.getByText("mass suffocation"));
+  assert.equal((secondDomain.querySelector("option[value='domain-death']") as HTMLOptionElement).disabled, true);
+  assert.equal((secondDomain.querySelector("option[value='subdomain-undead']") as HTMLOptionElement).disabled, true);
+
+  await user.selectOptions(deity, "deity-gorum");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-catastrophe"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-rage"), true);
+  await user.selectOptions(firstDomain, "subdomain-catastrophe");
+  assert.ok(screen.getByText("Deadly Weather"));
+  assert.ok(screen.getByText("control weather"));
+  assert.equal((secondDomain.querySelector("option[value='domain-destruction']") as HTMLOptionElement).disabled, true);
+  assert.equal((secondDomain.querySelector("option[value='subdomain-rage']") as HTMLOptionElement).disabled, true);
+});
+
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   const user = userEvent.setup();
   render(<Home />);
