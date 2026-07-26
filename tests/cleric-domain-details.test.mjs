@@ -11,8 +11,9 @@ const coreIds = [
 ];
 
 test("all 33 Core domains expose two granted powers and nine domain spells", () => {
-  assert.equal(domains.options.length, 33);
-  const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  const coreDomains = domains.options.filter((domain) => !domain.parentDomainId);
+  assert.equal(coreDomains.length, 33);
+  const byId = new Map(coreDomains.map((domain) => [domain.id, domain]));
   assert.deepEqual([...byId.keys()].sort(), [...coreIds].sort());
   for (const id of coreIds) {
     const domain = byId.get(id);
@@ -23,6 +24,25 @@ test("all 33 Core domains expose two granted powers and nine domain spells", () 
     assert.ok(domain.powers.every((power) => power.name && power.summary), `${id} power details`);
     assert.ok(domain.domainSpells.every((spell) => spell.name), `${id} spell names`);
   }
+});
+
+test("APG Air and Earth subdomains replace powers and spells while retaining their parent domain", () => {
+  const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  const expected = [
+    ["subdomain-cloud", "domain-air", "Electricity Resistance", "Thundercloud"],
+    ["subdomain-wind", "domain-air", "Lightning Arc", "Wind Blast"],
+    ["subdomain-caves", "domain-earth", "Acid Resistance", "Tunnel Runner"],
+    ["subdomain-metal", "domain-earth", "Acid Dart", "Metal Fist"]
+  ];
+  for (const [id, parentDomainId, replacesPower, replacementPower] of expected) {
+    const subdomain = byId.get(id);
+    assert.equal(subdomain.parentDomainId, parentDomainId);
+    assert.equal(subdomain.replacesPower, replacesPower);
+    assert.ok(subdomain.powers.some((power) => power.name === replacementPower));
+    assert.deepEqual(subdomain.domainSpells.map((spell) => spell.level), [1,2,3,4,5,6,7,8,9]);
+  }
+  assert.equal(byId.get("subdomain-cloud").domainSpells[3].name, "solid fog");
+  assert.equal(byId.get("subdomain-caves").domainSpells[5].name, "hungry pit");
 });
 
 test("Core domain detail records retain distinctive progressions", () => {
