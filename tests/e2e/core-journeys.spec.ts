@@ -137,7 +137,7 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
     await page.getByRole("button", { name: `Review level ${nextLevel}` }).click();
     await expect(page.getByRole("heading", { name: `Review Fighter level ${nextLevel}` })).toBeVisible();
     await page.getByRole("button", { name: `Advance to level ${nextLevel}` }).click();
-    await expect(page.getByLabel(nextLevel < 20 ? `Level Review level ${nextLevel + 1}` : "Level")).toHaveValue(String(nextLevel));
+    await expect(page.getByLabel("Level")).toHaveValue(String(nextLevel));
     await expect(page.getByText(`Advanced to level ${nextLevel}. Review newly unlocked choices.`)).toBeVisible();
   }
 
