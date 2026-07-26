@@ -189,7 +189,7 @@ test("applies a Fighter bonus feat's mechanical effects to combat statistics", a
   await user.click(screen.getByRole("button", { name: "Features" }));
   await user.selectOptions(screen.getByLabelText("Bonus Combat Feat level 1"), "fighter-improved-initiative");
   await user.click(screen.getByRole("button", { name: "Actions" }));
-  assert.equal(screen.getByText("Initiative").closest("div")?.querySelector("dd")?.textContent, "+4");
+  assert.equal(screen.getByText("Core statistics").closest("article")?.querySelector("dt")?.closest("div")?.querySelector("dd")?.textContent, "+4");
 });
 
 test("selects and persists the Fighter Archer archetype", async () => {
@@ -458,6 +458,29 @@ test("uses labelled icon tabs to show focused builder sections", async () => {
   await user.click(screen.getByRole("button", { name: "Options" }));
   assert.ok(screen.getByText("Choose background traits"));
   assert.equal(screen.queryByText("Configure class features"), null);
+});
+
+test("tracks hit points and expires temporary combat effects by round", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.click(screen.getByRole("button", { name: "Actions" }));
+  const armorClass = screen.getByText("AC / touch / flat-footed").closest("div");
+  assert.match(armorClass?.textContent ?? "", /10 \/ 10 \/ 10/);
+  fireEvent.change(screen.getByLabelText("Current HP"), { target: { value: "3" } });
+  fireEvent.change(screen.getByLabelText("Temporary HP"), { target: { value: "5" } });
+  await user.type(screen.getByLabelText("Effect name"), "Shield");
+  await user.selectOptions(screen.getByLabelText("Affects"), "armorClass");
+  fireEvent.change(screen.getByLabelText("Rounds"), { target: { value: "2" } });
+  await user.click(screen.getByRole("button", { name: "Add effect" }));
+  assert.match(armorClass?.textContent ?? "", /11 \/ 11 \/ 11/);
+  await user.click(screen.getByRole("button", { name: "Advance round" }));
+  assert.ok(screen.getByText(/1 round$/));
+  await user.click(screen.getByRole("button", { name: "Advance round" }));
+  assert.match(armorClass?.textContent ?? "", /10 \/ 10 \/ 10/);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.equal(saved.currentHitPoints, 3);
+  assert.equal(saved.temporaryHitPoints, 5);
 });
 
 test("selects, applies, and persists traits from different categories", async () => {

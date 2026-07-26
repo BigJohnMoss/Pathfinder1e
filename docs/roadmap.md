@@ -82,7 +82,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - prestige classes
 - alternate racial traits
 - advanced equipment and magic items
-- conditional modifiers and temporary effects
+- [x] persisted hit points and round-based temporary effects for active play
 - broader sourcebook coverage
 
 ## Working rule

@@ -27,11 +27,22 @@ export interface CharacterDraftV1 {
   arcaneReservoir: number | null;
   bardicPerformanceUsed: number;
   wildShapeUsed: number;
+  currentHitPoints: number | null;
+  temporaryHitPoints: number;
+  activeEffects: ActiveEffect[];
   inventory: Array<{ itemId: string; quantity: number; equipped: boolean }>;
   coins: { cp: number; sp: number; gp: number; pp: number };
 }
 
 export type CharacterDraft = CharacterDraftV1;
+export type ActiveEffectTarget = "initiative" | "armorClass" | "fortitude" | "reflex" | "will";
+export interface ActiveEffect {
+  id: string;
+  name: string;
+  target: ActiveEffectTarget;
+  bonus: number;
+  roundsRemaining: number;
+}
 
 export interface SourceRef { title: string; page?: number | null; url: string; }
 export interface ClassFeatureOccurrence {
