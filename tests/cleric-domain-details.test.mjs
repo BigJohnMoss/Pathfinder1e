@@ -45,6 +45,26 @@ test("APG Air and Earth subdomains replace powers and spells while retaining the
   assert.equal(byId.get("subdomain-caves").domainSpells[5].name, "hungry pit");
 });
 
+test("APG Animal and Artifice subdomains expose complete replacements", () => {
+  const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  const expected = [
+    ["subdomain-feather", "domain-animal", "Speak with Animals", "Eyes of the Hawk"],
+    ["subdomain-fur", "domain-animal", "Speak with Animals", "Predator's Grace"],
+    ["subdomain-construct", "domain-artifice", "Dancing Weapons", "Animate Servant"],
+    ["subdomain-toil", "domain-artifice", "Dancing Weapons", "Aura of Repetition"]
+  ];
+  for (const [id, parentDomainId, replacesPower, replacementPower] of expected) {
+    const subdomain = byId.get(id);
+    assert.equal(subdomain.parentDomainId, parentDomainId);
+    assert.equal(subdomain.replacesPower, replacesPower);
+    assert.ok(subdomain.powers.some((power) => power.name === replacementPower));
+    assert.deepEqual(subdomain.domainSpells.map((spell) => spell.level), [1,2,3,4,5,6,7,8,9]);
+  }
+  assert.deepEqual(byId.get("subdomain-feather").classSkills, ["Fly"]);
+  assert.equal(byId.get("subdomain-construct").domainSpells[6].name, "limited wish");
+  assert.equal(byId.get("subdomain-toil").domainSpells[4].name, "waves of fatigue");
+});
+
 test("Core domain detail records retain distinctive progressions", () => {
   const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
   assert.deepEqual(byId.get("domain-animal").powers.map((power) => [power.name, power.level]), [["Speak with Animals",1],["Animal Companion",4]]);

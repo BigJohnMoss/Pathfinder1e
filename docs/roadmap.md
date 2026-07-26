@@ -74,8 +74,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
 - archetypes — in progress: reusable replacement schema and complete APG Fighter Archer
-- subdomains - in progress: APG schema plus Cloud, Wind, Caves, and Metal
-  selections with inherited deity eligibility and complete replacement details
+- subdomains - in progress: APG schema plus Cloud, Wind, Caves, Metal, Feather,
+  Fur, Construct, and Toil selections with inherited deity eligibility,
+  mechanical class skills, and complete replacement details
 - expanded bloodlines
 - mysteries and revelations
 - discoveries, talents and similar class option systems

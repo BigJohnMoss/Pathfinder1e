@@ -41,6 +41,7 @@ function OptionDetails({ option }: { option: Option }) {
     <p>{option.benefit}</p>
     {option.parentDomainId && <p><strong>Associated domain:</strong> {option.parentDomainId.replace(/^domain-/, "").replace(/-/g, " ")}</p>}
     {option.replacesPower && <p><strong>Replaces:</strong> {option.replacesPower}</p>}
+    {option.classSkills && option.classSkills.length > 0 && <p><strong>Granted class skills:</strong> {option.classSkills.join(", ")}</p>}
     {option.classSkill && <p><strong>Bloodline class skill:</strong> {option.classSkill}</p>}
     {option.arcana && <p><strong>Bloodline arcana:</strong> {option.arcana}</p>}
     {option.variants && <div className="domain-powers"><strong>Bloodline variants</strong><ul>{option.variants.map((variant) => <li key={variant.id}><b>{variant.name}</b><span>{variant.energyType}{variantDetail(variant) && ` · ${variantDetail(variant)}`}</span></li>)}</ul></div>}
