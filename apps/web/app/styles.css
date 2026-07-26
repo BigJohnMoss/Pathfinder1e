@@ -66,7 +66,11 @@ main {
 }
 
 .character-tabs{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 8px;border-bottom:2px solid #302a25;margin:0}
-.character-tabs{align-items:flex-start;margin-top:-48px}
+.character-tabs{align-items:flex-start;margin-top:-96px}
+
+@media (max-width:1100px){
+  .character-tabs{margin-top:-40px}
+}
 .character-tabs button{display:grid;justify-items:center;gap:6px;min-width:72px;padding:6px 8px;border:0;border-radius:10px;background:transparent;color:#5b584f;cursor:pointer;font:700 .7rem Inter,ui-sans-serif,system-ui,sans-serif}
 .character-tabs button span{display:grid;place-items:center;width:36px;height:36px;border:2px solid #7c2828;border-radius:50%;background:#fff7e8;color:#7c2828;font-size:1.05rem}
 .character-tabs button.active{color:#7c2828}
