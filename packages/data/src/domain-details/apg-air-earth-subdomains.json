@@ -1,0 +1,92 @@
+{
+  "source": {
+    "title": "Advanced Player's Guide",
+    "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"
+  },
+  "subdomains": [
+    {
+      "id": "subdomain-cloud",
+      "groupId": "cleric-domains",
+      "name": "Cloud Subdomain (Air)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Electricity Resistance with Thundercloud and replace the Air domain's 4th- and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 88, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#cloud-subdomain"},
+      "parentDomainId": "domain-air",
+      "replacesPower": "Electricity Resistance",
+      "powers": [
+        {"name": "Lightning Arc", "level": 1, "summary": "As a standard action, make a ranged touch attack against a foe within 30 feet, dealing 1d6 electricity damage plus 1 per two cleric levels. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Thundercloud", "level": 8, "summary": "Create a movable fog cloud that deafens creatures within it and deals 2d6 electricity damage each round. Usable for a number of rounds per day equal to cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "obscuring mist"}, {"level": 2, "name": "wind wall"}, {"level": 3, "name": "gaseous form"},
+        {"level": 4, "name": "solid fog"}, {"level": 5, "name": "control winds"}, {"level": 6, "name": "chain lightning"},
+        {"level": 7, "name": "elemental body IV (air only)"}, {"level": 8, "name": "whirlwind"}, {"level": 9, "name": "storm of vengeance"}
+      ]
+    },
+    {
+      "id": "subdomain-wind",
+      "groupId": "cleric-domains",
+      "name": "Wind Subdomain (Air)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Lightning Arc with Wind Blast and replace the Air domain's 1st-, 6th-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 96, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#wind-subdomain"},
+      "parentDomainId": "domain-air",
+      "replacesPower": "Lightning Arc",
+      "powers": [
+        {"name": "Wind Blast", "level": 1, "summary": "Unleash a 30-foot line and make bull rush checks using caster level as base attack bonus and Wisdom in place of Strength. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Electricity Resistance", "level": 6, "summary": "Gain electricity resistance 10 at 6th level, increasing to 20 at 12th level and immunity at 20th level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "whispering wind"}, {"level": 2, "name": "wind wall"}, {"level": 3, "name": "gaseous form"},
+        {"level": 4, "name": "air walk"}, {"level": 5, "name": "control winds"}, {"level": 6, "name": "wind walk"},
+        {"level": 7, "name": "elemental body IV (air only)"}, {"level": 8, "name": "whirlwind"}, {"level": 9, "name": "winds of vengeance"}
+      ]
+    },
+    {
+      "id": "subdomain-caves",
+      "groupId": "cleric-domains",
+      "name": "Caves Subdomain (Earth)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Acid Resistance with Tunnel Runner and replace the Earth domain's 2nd-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 86, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#caves-subdomain"},
+      "parentDomainId": "domain-earth",
+      "replacesPower": "Acid Resistance",
+      "powers": [
+        {"name": "Acid Dart", "level": 1, "summary": "As a standard action, make a ranged touch attack against a foe within 30 feet, dealing 1d6 acid damage plus 1 per two cleric levels. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Tunnel Runner", "level": 8, "summary": "Gain spider climb on stone, darkvision, and underground bonuses to Stealth and initiative for 1 minute per cleric level per day."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "magic stone"}, {"level": 2, "name": "create pit"}, {"level": 3, "name": "spiked pit"},
+        {"level": 4, "name": "spike stones"}, {"level": 5, "name": "wall of stone"}, {"level": 6, "name": "hungry pit"},
+        {"level": 7, "name": "elemental body IV (earth only)"}, {"level": 8, "name": "earthquake"}, {"level": 9, "name": "elemental swarm (earth only)"}
+      ]
+    },
+    {
+      "id": "subdomain-metal",
+      "groupId": "cleric-domains",
+      "name": "Metal Subdomain (Earth)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Acid Dart with Metal Fist and replace the Earth domain's 2nd-, 6th-, and 8th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 92, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#metal-subdomain"},
+      "parentDomainId": "domain-earth",
+      "replacesPower": "Acid Dart",
+      "powers": [
+        {"name": "Metal Fist", "level": 1, "summary": "As a swift action, turn your fists to metal for 1 round; unarmed strikes deal 1d6 bludgeoning damage, do not provoke, and ignore hardness 10 or lower. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Acid Resistance", "level": 6, "summary": "Gain acid resistance 10 at 6th level, increasing to 20 at 12th level and immunity at 20th level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "magic stone"}, {"level": 2, "name": "heat metal"}, {"level": 3, "name": "stone shape"},
+        {"level": 4, "name": "spike stones"}, {"level": 5, "name": "wall of stone"}, {"level": 6, "name": "wall of iron"},
+        {"level": 7, "name": "elemental body IV (earth only)"}, {"level": 8, "name": "iron body"}, {"level": 9, "name": "elemental swarm (earth only)"}
+      ]
+    }
+  ]
+}

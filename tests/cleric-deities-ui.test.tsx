@@ -62,6 +62,13 @@ test("cleric domains follow the selected deity and show their powers and spells"
   assert.equal([...firstDomain.options].some((option) => option.value === "domain-fire"), false);
   assert.equal(firstDomain.value, "");
   assert.equal(secondDomain.value, "");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-caves"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-metal"), true);
+  await user.selectOptions(firstDomain, "subdomain-metal");
+  assert.ok(screen.getByText("Metal Fist"));
+  assert.ok(screen.getByText("heat metal"));
+  assert.equal((secondDomain.querySelector("option[value='domain-earth']") as HTMLOptionElement).disabled, true);
+  assert.equal((secondDomain.querySelector("option[value='subdomain-caves']") as HTMLOptionElement).disabled, true);
 });
 
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {

@@ -3,5 +3,5 @@ export function optionsGrantedBySelection(options, selectedGrant, property = "do
   const allowedIds = selectedGrant?.[property];
   if (!Array.isArray(allowedIds)) return [];
   const allowed = new Set(allowedIds.filter((id) => typeof id === "string"));
-  return options.filter((option) => allowed.has(option.id));
+  return options.filter((option) => allowed.has(option.id) || allowed.has(option.parentDomainId));
 }
