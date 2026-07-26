@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 
 test("builds and persists a martial loadout", async ({ page }) => {
   await page.getByLabel("Character name").fill("Valeros");
-  await page.getByLabel("Class").selectOption("fighter");
+  await page.getByLabel("Class", { exact: true }).selectOption("fighter");
   await page.getByRole("button", { name: "Storage" }).click();
   await page.getByLabel("Equipment catalogue").selectOption("longsword");
   await page.getByLabel("Equipment catalogue").selectOption("chain-shirt");
@@ -30,7 +30,7 @@ test("builds and persists a martial loadout", async ({ page }) => {
 });
 
 test("prepares and casts a Druid spell", async ({ page }) => {
-  await page.getByLabel("Class").selectOption("druid");
+  await page.getByLabel("Class", { exact: true }).selectOption("druid");
   await page.getByLabel("Wisdom base score").fill("16");
   await page.getByLabel("Level").fill("5");
   await page.getByRole("button", { name: "Spells" }).click();
@@ -43,7 +43,7 @@ test("prepares and casts a Druid spell", async ({ page }) => {
 });
 
 test("learns and casts a spontaneous Bard spell", async ({ page }) => {
-  await page.getByLabel("Class").selectOption("bard");
+  await page.getByLabel("Class", { exact: true }).selectOption("bard");
   await page.getByLabel("Charisma base score").fill("16");
   await page.getByRole("button", { name: "Spells" }).click();
   await expect(page.getByRole("heading", { name: "Spontaneous spells" })).toBeVisible();
@@ -55,7 +55,7 @@ test("learns and casts a spontaneous Bard spell", async ({ page }) => {
 });
 
 test("updates feat eligibility at a prerequisite boundary", async ({ page }) => {
-  await page.getByLabel("Class").selectOption("fighter");
+  await page.getByLabel("Class", { exact: true }).selectOption("fighter");
   await page.getByRole("button", { name: "Feats" }).click();
   const powerAttack = page.getByLabel("Human bonus feat").locator('option[value="power-attack"]');
   await expect(powerAttack).toHaveAttribute("disabled", "");
@@ -107,7 +107,7 @@ test("applies and persists a trait-specific spell choice", async ({ page }) => {
 
 test("builds a complete Fighter through level 20 and preserves the user journey", async ({ page }) => {
   await page.getByLabel("Character name").fill("Aldric Twenty");
-  await page.getByLabel("Class").selectOption("fighter");
+  await page.getByLabel("Class", { exact: true }).selectOption("fighter");
   await page.getByLabel("Strength base score").fill("16");
   await page.getByLabel("Constitution base score").fill("14");
 
