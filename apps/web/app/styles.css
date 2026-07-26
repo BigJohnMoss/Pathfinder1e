@@ -22,6 +22,10 @@ header>p:last-child{font-size:1.05rem;color:var(--muted)}
 }
 .conditional-modifiers{margin:20px 0;padding:16px;border:1px solid #e3ddd0;border-radius:12px;background:#fffdf8}.conditional-modifiers h3{margin:0 0 10px;font:1.15rem Georgia,serif}.conditional-modifiers ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}.conditional-modifiers li{display:grid;gap:3px}.conditional-modifiers li span{color:#5b584f;font-size:.84rem}
 .builder,.summary,.sheet-grid{display:grid;gap:var(--gutter);grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+/* App grid: sidebar + main content */
+.app-grid{display:grid;grid-template-columns:320px 1fr;gap:20px}
+.sidebar{width:320px}
+.main-content{min-width:0}
 .builder{background:#252018;padding:20px;border-radius:var(--panel-radius);margin-bottom:18px}
 .builder label{color:#fff5e4;font-size:.9rem;font-weight:700;display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap}
 .builder label > input,.builder label > select{flex:1;min-width:160px}
