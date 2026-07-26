@@ -174,7 +174,7 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
   const exportedPath = await download.path();
   expect(exportedPath).toBeTruthy();
   await page.getByRole("button", { name: "Reset" }).click();
-  await expect(page.getByLabel("Level Review level 2")).toHaveValue("1");
+  await expect(page.locator('input[type="number"][min="1"][max="20"]')).toHaveValue("1");
   await page.getByLabel("Import character file").setInputFiles(exportedPath!);
   await expect(page.getByText("Imported character")).toBeVisible();
   await expect(page.getByLabel("Character name")).toHaveValue("Aldric Twenty");
