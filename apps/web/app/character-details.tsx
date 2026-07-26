@@ -1,15 +1,18 @@
 import { useRef } from "react";
 
-export function CharacterDetails({ name, classId, ancestryId, level, classes, ancestries, saveNotice, onNameChange, onClassChange, onAncestryChange, onLevelChange, onReviewLevelUp, onSave, onLoad, onImport, onExport, onPrint, onReset }: {
+export function CharacterDetails({ name, classId, archetypeId, ancestryId, level, classes, archetypes, ancestries, saveNotice, onNameChange, onClassChange, onArchetypeChange, onAncestryChange, onLevelChange, onReviewLevelUp, onSave, onLoad, onImport, onExport, onPrint, onReset }: {
   name: string;
   classId: string;
+  archetypeId: string;
   ancestryId: string;
   level: number;
   classes: Array<{ id: string; name: string }>;
+  archetypes: Array<{ id: string; name: string }>;
   ancestries: Array<{ id: string; name: string }>;
   saveNotice: string;
   onNameChange: (name: string) => void;
   onClassChange: (classId: string) => void;
+  onArchetypeChange: (archetypeId: string) => void;
   onAncestryChange: (ancestryId: string) => void;
   onLevelChange: (level: number) => void;
   onReviewLevelUp: () => void;
@@ -24,6 +27,7 @@ export function CharacterDetails({ name, classId, ancestryId, level, classes, an
   return <section className="builder" aria-label="Character details">
     <label>Character name<input value={name} placeholder="Unnamed hero" onChange={(event) => onNameChange(event.target.value)} /></label>
     <label>Class<select value={classId} onChange={(event) => onClassChange(event.target.value)}>{classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+    <label>Archetype<select value={archetypeId} onChange={(event) => onArchetypeChange(event.target.value)}><option value="">Standard class</option>{archetypes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Ancestry<select value={ancestryId} onChange={(event) => onAncestryChange(event.target.value)}>{ancestries.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => onLevelChange(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} />{level < 20 && <button type="button" className="level-up-trigger" onClick={onReviewLevelUp}>Review level {level + 1}</button>}</label>
     <div className="character-actions">

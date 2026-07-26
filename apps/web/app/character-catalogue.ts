@@ -1,5 +1,5 @@
 import generatedData from "../../../generated/pf1e-data.mjs";
-import type { CharacterAncestry, CharacterClass, CharacterFeat, CharacterOptionGroup, CharacterSpell, CharacterTrait } from "../../../packages/types/src/index.js";
+import type { CharacterAncestry, CharacterArchetype, CharacterClass, CharacterFeat, CharacterOptionGroup, CharacterSpell, CharacterTrait } from "../../../packages/types/src/index.js";
 export type { CharacterFeat, CharacterOption, CharacterOptionGroup, CharacterSpell, CharacterTrait } from "../../../packages/types/src/index.js";
 
 function orderedById<T extends { id: string }>(items: readonly T[], ids: readonly string[]) {
@@ -11,6 +11,7 @@ function orderedById<T extends { id: string }>(items: readonly T[], ids: readonl
 }
 
 export const classes = orderedById<CharacterClass>(generatedData.classes, ["arcanist", "barbarian", "bard", "cleric", "druid", "fighter", "monk", "paladin", "ranger", "rogue", "sorcerer", "wizard"]);
+export const archetypes = [...generatedData.archetypes].sort((left, right) => left.name.localeCompare(right.name)) as CharacterArchetype[];
 export const ancestries = orderedById<CharacterAncestry>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
 export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name));
 export const traits = [...generatedData.traits].sort((left, right) => left.name.localeCompare(right.name)) as CharacterTrait[];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ancestries, classes, feats, optionGroups, skills, spells, traits } from "./character-catalogue";
+import { ancestries, archetypes, classes, feats, optionGroups, skills, spells, traits } from "./character-catalogue";
 import { AbilityEditor } from "./ability-editor";
 import { CharacterDetails } from "./character-details";
 import { ClassFeatures } from "./class-features";
@@ -16,7 +16,7 @@ import { TraitChoices } from "./trait-choices";
 import { EquipmentPanel, equipmentArmorBonus, type CoinPurse, type InventoryEntry } from "./equipment-panel";
 import { LevelUpPanel } from "./level-up-panel";
 import { CharacterLibrary, characterLibraryKey, emptyCharacterLibrary, legacyCharacterKey, normalizeCharacterLibrary, type CharacterLibraryV1 } from "./character-library";
-import { abilityBoostCount, abilityNames, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, druidWildShapeUses, featBonuses, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSelectedTraitChoices, normalizeSelectedTraits, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass, traitBonuses } from "../../../packages/engine/src/index.js";
+import { abilityBoostCount, abilityNames, applyArchetype, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, druidWildShapeUses, featBonuses, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSelectedTraitChoices, normalizeSelectedTraits, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass, traitBonuses } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells, bloodlineClassSkills } from "../../../packages/engine/src/sorcerer-bloodlines.js";
@@ -41,6 +41,7 @@ function mergeSpellLists<T extends { id: string }>(baseSpells: T[], grantedSpell
 export default function Home() {
   const [name, setName] = useState("");
   const [classId, setClassId] = useState("arcanist");
+  const [archetypeId, setArchetypeId] = useState("");
   const [ancestryId, setAncestryId] = useState("human");
   const [level, setLevel] = useState(1);
   const [humanAbility, setHumanAbility] = useState<keyof typeof defaultAbilities>("intelligence");
@@ -65,7 +66,10 @@ export default function Home() {
   const [showLevelUp, setShowLevelUp] = useState(false);
   const [characterLibrary, setCharacterLibrary] = useState<CharacterLibraryV1>(emptyCharacterLibrary);
 
-  const characterClass = classes.find((item) => item.id === classId) ?? classes[0];
+  const baseCharacterClass = classes.find((item) => item.id === classId) ?? classes[0];
+  const availableArchetypes = archetypes.filter((item) => item.classId === baseCharacterClass.id);
+  const selectedArchetype = availableArchetypes.find((item) => item.id === archetypeId);
+  const characterClass = useMemo(() => applyArchetype(baseCharacterClass, selectedArchetype), [baseCharacterClass, selectedArchetype]);
   const ancestry = ancestries.find((item) => item.id === ancestryId) ?? ancestries[0];
   const selectedTraitBonuses = useMemo(() => traitBonuses(selectedTraitIds, traits, selectedTraitChoices, { spells, classes, classId }), [classId, selectedTraitChoices, selectedTraitIds]);
   const selectedBloodline = useMemo(() => bloodlineFromOptions(classId, selectedOptions), [classId, selectedOptions]);
@@ -201,14 +205,14 @@ export default function Home() {
   useEffect(() => setBardicPerformanceUsed((current) => Math.min(current, bardicPerformanceMaximum)), [bardicPerformanceMaximum]);
   useEffect(() => setWildShapeUsed((current) => wildShapeMaximum === null ? 0 : Math.min(current, wildShapeMaximum)), [wildShapeMaximum]);
 
-  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, selectedFeatIds, selectedTraitIds, selectedTraitChoices, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), arcaneReservoir: reservoir ? reservoirPoints : null, bardicPerformanceUsed: classId === "bard" ? bardicPerformanceUsed : 0, wildShapeUsed: classId === "druid" ? wildShapeUsed : 0, inventory, coins };
+  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, archetypeId, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, selectedFeatIds, selectedTraitIds, selectedTraitChoices, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), arcaneReservoir: reservoir ? reservoirPoints : null, bardicPerformanceUsed: classId === "bard" ? bardicPerformanceUsed : 0, wildShapeUsed: classId === "druid" ? wildShapeUsed : 0, inventory, coins };
   useEffect(() => {
     try {
       const stored = localStorage.getItem(characterLibraryKey);
       const library = stored ? normalizeCharacterLibrary(JSON.parse(stored)) : emptyCharacterLibrary();
       const legacy = localStorage.getItem(legacyCharacterKey);
       if (library.characters.length === 0 && legacy) {
-        const draft = normalizeCharacterDraft(JSON.parse(legacy), { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id) });
+        const draft = normalizeCharacterDraft(JSON.parse(legacy), { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id), archetypeIds: archetypes.map((item) => item.id) });
         if (draft) {
           const id = globalThis.crypto?.randomUUID?.() ?? `character-${Date.now()}`;
           const migrated = { version: 1 as const, activeCharacterId: id, characters: [{ id, updatedAt: new Date().toISOString(), draft }] };
@@ -229,7 +233,7 @@ export default function Home() {
   };
   const applyCharacterDraft = (value: unknown, successNotice: string) => {
     if (value && typeof value === "object" && "version" in value && value.version !== 1) { setSaveNotice("Unsupported character file version"); return null; }
-    const draft = normalizeCharacterDraft(value, { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id) });
+    const draft = normalizeCharacterDraft(value, { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id), archetypeIds: archetypes.filter((item) => item.classId === (value as { classId?: string })?.classId).map((item) => item.id) });
     if (!draft) { setSaveNotice("Character file is invalid"); return null; }
     const draftClass = classes.find((item) => item.id === draft.classId) ?? classes[0];
     const draftAncestry = ancestries.find((item) => item.id === draft.ancestryId) ?? ancestries[0];
@@ -253,7 +257,7 @@ export default function Home() {
     const draftBloodlineSpellIds = draftBloodlineSpells.map((spell) => spell.id);
     const normalizedDraftSpells = draftIsSpontaneous ? normalizeKnownSpells(draft.preparedSpells, draftSpells, draftClass.id, draftSpontaneousCasting?.known ?? [], draftBloodlineSpellIds) : normalizePreparedSpellsWithOpposition(draft.preparedSpells, draftSpells, draftClass.id, draftPreparedCasting?.prepared ?? [], draftOppositionSchoolIds);
     const draftTraitIds = normalizeSelectedTraits(draft.selectedTraitIds, traits);
-    setName(draft.name); setClassId(draft.classId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setSelectedFeatIds(draft.selectedFeatIds); setSelectedTraitIds(draftTraitIds); setSelectedTraitChoices(normalizeSelectedTraitChoices(draft.selectedTraitChoices, draftTraitIds, traits, { spells, classes, classId: draft.classId })); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setBardicPerformanceUsed(Math.min(draft.bardicPerformanceUsed, draftBardicPerformanceMaximum)); setWildShapeUsed(draftWildShapeMaximum === null ? 0 : Math.min(draft.wildShapeUsed, draftWildShapeMaximum)); setInventory(draft.inventory); setCoins(draft.coins); setSaveNotice(successNotice);
+    setName(draft.name); setClassId(draft.classId); setArchetypeId(draft.archetypeId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setSelectedFeatIds(draft.selectedFeatIds); setSelectedTraitIds(draftTraitIds); setSelectedTraitChoices(normalizeSelectedTraitChoices(draft.selectedTraitChoices, draftTraitIds, traits, { spells, classes, classId: draft.classId })); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setBardicPerformanceUsed(Math.min(draft.bardicPerformanceUsed, draftBardicPerformanceMaximum)); setWildShapeUsed(draftWildShapeMaximum === null ? 0 : Math.min(draft.wildShapeUsed, draftWildShapeMaximum)); setInventory(draft.inventory); setCoins(draft.coins); setSaveNotice(successNotice);
     return draft;
   };
   const saveCharacter = () => {
@@ -282,7 +286,7 @@ export default function Home() {
     try { applyCharacterDraft(JSON.parse(await file.text()), "Imported character"); }
     catch { setSaveNotice("Character file is invalid"); }
   };
-  const resetCharacter = () => { localStorage.removeItem(legacyCharacterKey); setName(""); setClassId("arcanist"); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setSelectedFeatIds([]); setSelectedTraitIds([]); setSelectedTraitChoices({}); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSpellSlotUses({}); setReservoirPoints(3); setBardicPerformanceUsed(0); setWildShapeUsed(0); setInventory([]); setCoins({ cp: 0, sp: 0, gp: 0, pp: 0 }); setSaveNotice("Character reset"); };
+  const resetCharacter = () => { localStorage.removeItem(legacyCharacterKey); setName(""); setClassId("arcanist"); setArchetypeId(""); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setSelectedFeatIds([]); setSelectedTraitIds([]); setSelectedTraitChoices({}); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSpellSlotUses({}); setReservoirPoints(3); setBardicPerformanceUsed(0); setWildShapeUsed(0); setInventory([]); setCoins({ cp: 0, sp: 0, gp: 0, pp: 0 }); setSaveNotice("Character reset"); };
   const newCharacter = () => { resetCharacter(); persistLibrary({ ...characterLibrary, activeCharacterId: null }); setSaveNotice("New character started; your library is unchanged"); };
   const openLibraryCharacter = (entry: CharacterLibraryV1["characters"][number]) => {
     const draft = applyCharacterDraft(entry.draft, `Opened ${entry.draft.name.trim() || "unnamed hero"}`);
@@ -303,7 +307,7 @@ export default function Home() {
 
   return <main>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
-    <CharacterDetails name={name} classId={classId} ancestryId={ancestryId} level={level} classes={classes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={setClassId} onAncestryChange={setAncestryId} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => setShowLevelUp(true)} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+    <CharacterDetails name={name} classId={classId} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={availableArchetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onArchetypeChange={setArchetypeId} onAncestryChange={setAncestryId} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => setShowLevelUp(true)} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
     {showLevelUp && level < 20 && <LevelUpPanel currentLevel={level} className={characterClass.name} gains={levelUpGains} onCancel={() => setShowLevelUp(false)} onConfirm={() => { setLevel(level + 1); setShowLevelUp(false); setSaveNotice(`Advanced to level ${level + 1}. Review newly unlocked choices.`); }} />}
     <CharacterTabs activeTab={activeTab} onChange={setActiveTab} />
     <section className="tab-panel" aria-live="polite">

@@ -8,6 +8,7 @@ This document distinguishes records present in the data bundle from systems that
 - 7 selectable core ancestries
 - 424 selectable feats
 - all 40 APG basic traits
+- Fighter Archer archetype with complete level 1–20 feature replacement
 - 2,048 spells
 
 ## Playable classes

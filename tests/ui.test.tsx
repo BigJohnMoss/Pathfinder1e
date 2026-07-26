@@ -192,6 +192,22 @@ test("applies a Fighter bonus feat's mechanical effects to combat statistics", a
   assert.equal(screen.getByText("Initiative").closest("div")?.querySelector("dd")?.textContent, "+4");
 });
 
+test("selects and persists the Fighter Archer archetype", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "fighter-archer");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  assert.ok(screen.getByText("Hawkeye +1"));
+  assert.ok(screen.getByText("Ranged Defense"));
+  assert.equal(screen.queryByText("Bravery +1"), null);
+  assert.equal(screen.queryByText("Armor Training 1"), null);
+  assert.match(screen.getByText("Weapon Mastery").closest("li")?.textContent ?? "", /bow/);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId, "fighter-archer");
+});
+
 test("applies Core save and hit point feat effects with visible sources", async () => {
   const user = userEvent.setup();
   render(<Home />);
