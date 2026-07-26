@@ -7,6 +7,7 @@ This document distinguishes records present in the data bundle from systems that
 - 12 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
+- 17 selectable basic traits
 - 2,048 spells
 
 ## Playable classes
@@ -62,7 +63,8 @@ The catalogue contains sourced feats from the Core Rulebook, Advanced Player's G
 | Bloodlines | All ten Core Sorcerer bloodlines and their dependent choices are integrated |
 | Browser end-to-end tests | Martial, prepared-caster, spontaneous-caster, prerequisite, persistence and equipment journeys run in Chromium CI |
 | Multiclassing | Planned |
-| Archetypes and traits | Planned |
+| Traits | Playable basic subset with category restrictions, skill choices and class-aware spell choices |
+| Archetypes | Planned |
 
 ## Definition of playable
 

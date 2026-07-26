@@ -22,7 +22,7 @@
     "build": "npm run build:data && npm --workspace @pf1e/web run build"
   },
   "devDependencies": {
-    "@playwright/test": "^1.51.1",
+    "@playwright/test": "^1.55.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "cross-env": "^7.0.3",
