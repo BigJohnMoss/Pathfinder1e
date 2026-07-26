@@ -32,7 +32,7 @@ test("builds and persists a martial loadout", async ({ page }) => {
 test("prepares and casts a Druid spell", async ({ page }) => {
   await page.getByLabel("Class").selectOption("druid");
   await page.getByLabel("Wisdom base score").fill("16");
-  await page.getByRole("spinbutton", { name: "Level", exact: true }).fill("5");
+  await page.getByLabel("Level").fill("5");
   await page.getByRole("button", { name: "Spells" }).click();
   await expect(page.getByRole("heading", { name: "Prepared spells" })).toBeVisible();
   await page.getByLabel("Search spells").fill("Entangle");
@@ -137,7 +137,7 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
     await page.getByRole("button", { name: `Review level ${nextLevel}` }).click();
     await expect(page.getByRole("heading", { name: `Review Fighter level ${nextLevel}` })).toBeVisible();
     await page.getByRole("button", { name: `Advance to level ${nextLevel}` }).click();
-    await expect(page.getByRole("spinbutton", { name: "Level", exact: true })).toHaveValue(String(nextLevel));
+    await expect(page.locator('input[type="number"][min="1"][max="20"]')).toHaveValue(String(nextLevel));
     await expect(page.getByText(`Advanced to level ${nextLevel}. Review newly unlocked choices.`)).toBeVisible();
   }
 
@@ -151,7 +151,7 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
   await page.reload();
   await page.getByRole("button", { name: "Load" }).click();
   await expect(page.getByLabel("Character name")).toHaveValue("Aldric Twenty");
-  await expect(page.getByRole("spinbutton", { name: "Level", exact: true })).toHaveValue("20");
+  await expect(page.locator('input[type="number"][min="1"][max="20"]')).toHaveValue("20");
   await page.getByRole("button", { name: "Storage" }).click();
   await expect(page.getByLabel("GP")).toHaveValue("150");
   await expect(page.locator("article").filter({ hasText: "Chain shirt" }).getByRole("checkbox", { name: "Equipped" })).toBeChecked();
@@ -178,5 +178,5 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
   await page.getByLabel("Import character file").setInputFiles(exportedPath!);
   await expect(page.getByText("Imported character")).toBeVisible();
   await expect(page.getByLabel("Character name")).toHaveValue("Aldric Twenty");
-  await expect(page.getByRole("spinbutton", { name: "Level", exact: true })).toHaveValue("20");
+  await expect(page.locator('input[type="number"][min="1"][max="20"]')).toHaveValue("20");
 });
