@@ -32,7 +32,7 @@ successful load. The current generated catalogue includes:
 - 12 selectable classes: Arcanist and all eleven Core classes—Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, and Wizard
 - 7 selectable core ancestries
 - 424 selectable feats
-- 17 selectable basic traits across combat, faith, magic, and social categories
+- 19 selectable basic traits across combat, faith, magic, and social categories
 - 2,048 spells
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 

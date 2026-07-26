@@ -404,6 +404,16 @@ test("selects, applies, and persists traits from different categories", async ()
   assert.deepEqual(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").selectedTraitIds, ["reactionary", "caretaker"]);
 });
 
+test("applies the expanded social trait skill bonuses", async () => {
+  render(<Home />);
+  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "poverty-stricken");
+  await userEvent.click(screen.getByRole("button", { name: "Skills" }));
+  const survival = screen.getByText("Survival").closest("label");
+  assert.ok(survival?.textContent?.includes("+1"));
+  assert.ok(survival?.textContent?.includes("Class skill"));
+});
+
 test("selects and persists a trait-specific granted class skill", async () => {
   render(<Home />);
   await userEvent.click(screen.getByRole("button", { name: "Options" }));

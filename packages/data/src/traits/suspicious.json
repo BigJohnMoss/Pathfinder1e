@@ -1,0 +1,1 @@
+{"id":"suspicious","name":"Suspicious","category":"social","summary":"Gain a +1 trait bonus on Sense Motive checks, and Sense Motive is always a class skill.","effects":{"skillBonuses":{"Sense Motive":1},"classSkills":["Sense Motive"]},"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedNewRules.html"}}
