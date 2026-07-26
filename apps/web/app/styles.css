@@ -65,7 +65,7 @@ main {
   padding-top: max(64px, calc(env(safe-area-inset-top) + 24px));
 }
 
-.character-tabs{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 8px;border-bottom:2px solid #302a25;margin:0}
+.character-tabs{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 8px;border-bottom:2px solid #302a25;margin:0;position:absolute;left:calc(320px + 24px);top:-20px;z-index:10}
 .character-tabs{align-items:flex-start;margin-top:-96px}
 
 @media (max-width:1100px){
