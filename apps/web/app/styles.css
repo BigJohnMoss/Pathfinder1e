@@ -1,10 +1,10 @@
-:root{--page-max-width:1180px;--page-pad-vertical:64px;--page-pad-horizontal:24px;--panel-padding:24px;--panel-radius:16px;--gutter:16px;--eyebrow-color:#8b2f2f;--muted:#5b584f;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#172033;background:#f4f1e9}
+:root{--page-max-width:1180px;--page-pad-vertical:20px;--page-pad-horizontal:20px;--panel-padding:16px;--panel-radius:10px;--gutter:12px;--eyebrow-color:#ff9a57;--muted:#98a0ab;--accent:#ff7a2d;--panel:#0f1418;--panel-2:#11151a;--panel-3:#0b0e10;font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#e6eef6;background:#07090b}
 main{max-width:var(--page-max-width);margin:auto;padding:var(--page-pad-vertical) var(--page-pad-horizontal) 88px}
 header{max-width:760px;margin-bottom:42px}
 .site-intro{color:var(--muted);margin-bottom:18px}
-.brand-heading{display:block;margin-bottom:8px}
-.brand-heading h1{margin:0}
-.brand-heading p{margin:0}
+.brand-heading{display:flex;align-items:flex-end;gap:18px;margin-bottom:6px}
+.brand-heading h1{margin:0;color:#fff;font-weight:800}
+.brand-heading p{margin:0;color:var(--muted)}
 .eyebrow{letter-spacing:.18em;font-weight:800;color:var(--eyebrow-color);font-size:.78rem}
 h1,h2{font-family:Georgia,serif;color:#252018}
 h1{font-size:clamp(2.2rem,5.2vw,4.4rem);line-height:1;margin:.15em 0}
@@ -61,12 +61,12 @@ main {
   padding-top: max(64px, calc(env(safe-area-inset-top) + 24px));
 }
 
-.character-tabs{display:flex;gap:18px;justify-content:center;overflow-x:auto;padding:18px 2px;border-bottom:1px solid rgba(0,0,0,0.08);margin:24px 0}
-.character-tabs button{display:flex;flex-direction:column;align-items:center;gap:8px;width:92px;padding:8px;border:0;background:transparent;color:#6b3b36;cursor:pointer}
-.character-tabs button span{display:grid;place-items:center;width:56px;height:56px;border:2px solid #7c2828;border-radius:999px;background:#fff7e8;color:#7c2828;font-size:1.2rem}
-.character-tabs button b{display:block;margin-top:4px;font-weight:700;color:#5b3b36;font-size:.82rem}
-.character-tabs button.active span{background:#7c2828;color:#fff7e8;box-shadow:0 6px 18px rgba(124,40,40,0.15)}
-.character-tabs button:hover span{transform:translateY(-3px)}
+.character-tabs{width:260px;display:flex;flex-direction:column;gap:12px;padding:12px;border-right:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg,var(--panel-3),var(--panel-2));border-radius:8px}
+.character-tabs button{display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;border:1px solid transparent}
+.character-tabs button span{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;background:transparent;color:var(--accent);font-size:1rem;border:1px solid rgba(255,255,255,0.03)}
+.character-tabs button b{font-weight:700;color:#e6eef6}
+.character-tabs button.active{background:linear-gradient(90deg,rgba(255,122,45,0.06),transparent);border-color:rgba(255,122,45,0.08)}
+.character-tabs button.active span{background:var(--accent);color:#0b0f12;border-color:transparent}
 .character-tabs button.active {
   color: #7c2828;
 }
