@@ -49,7 +49,7 @@ test("Aberrant and Abyssal bloodlines grant details, class skills, and free know
   await user.selectOptions(screen.getByLabelText("Human +2"), "charisma");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   const bloodline = optionSelect("Bloodline");
   await user.selectOptions(bloodline, "sorcerer-bloodline-aberrant");
   assert.ok(screen.getByText("Bloodline arcana:"));
@@ -60,13 +60,13 @@ test("Aberrant and Abyssal bloodlines grant details, class skills, and free know
   assert.ok(screen.getByText(/Shapechange/));
   assert.ok(screen.getByText("Bloodline bonus feats"));
 
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   const dungeoneering = skillLabel("Knowledge (dungeoneering)");
   await user.clear(dungeoneering.querySelector("input")!);
   await user.type(dungeoneering.querySelector("input")!, "1");
   assert.match(dungeoneering.querySelector("strong")?.textContent ?? "", /\+4 class/);
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Enlarge Person known").textContent, "Bloodline");
   assert.equal((screen.getByRole("button", { name: "Learn Enlarge Person" }) as HTMLButtonElement).disabled, true);
@@ -77,20 +77,20 @@ test("Aberrant and Abyssal bloodlines grant details, class skills, and free know
   assert.match(screen.getByText(/known 1st-level/).textContent ?? "", /3\/3 known 1st-level \+ 1 bloodline/);
   assert.equal(screen.getAllByRole("button", { name: /^Learn / }).some((button) => !(button as HTMLButtonElement).disabled), false);
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-abyssal");
   assert.ok(screen.getByText("Claws"));
   assert.ok(screen.getByText("Demonic Might"));
   assert.ok(screen.getByText(/Summon Monster IX/));
 
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   assert.doesNotMatch(skillLabel("Knowledge (dungeoneering)").querySelector("strong")?.textContent ?? "", /class/);
   const planes = skillLabel("Knowledge (planes)");
   await user.clear(planes.querySelector("input")!);
   await user.type(planes.querySelector("input")!, "1");
   assert.match(planes.querySelector("strong")?.textContent ?? "", /\+4 class/);
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Cause Fear known").textContent, "Bloodline");
   assert.equal(screen.getByLabelText("Enlarge Person known").textContent, "Unknown");
@@ -100,9 +100,9 @@ test("Aberrant and Abyssal bloodlines grant details, class skills, and free know
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "sorcerer"));
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal(optionSelect("Bloodline").value, "sorcerer-bloodline-abyssal");
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   await waitFor(() => assert.equal(screen.getByLabelText("Cause Fear known").textContent, "Bloodline"));
 });

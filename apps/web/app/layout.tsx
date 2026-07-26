@@ -37,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <a className="skip-link" href="#character-builder-main">Skip to character builder</a>
         <PwaRegistration />
         <InstallApp />
         {children}

@@ -34,7 +34,7 @@ test("Paladin configures unique prerequisite-aware mercies and a persistent Divi
   await user.selectOptions(screen.getByLabelText("Class"), "paladin");
   await user.clear(screen.getByLabelText("Level"));
   await user.type(screen.getByLabelText("Level"), "9");
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
 
   const firstMercy = optionSelect("Mercy 1");
   const secondMercy = optionSelect("Mercy 2");
@@ -55,7 +55,7 @@ test("Paladin configures unique prerequisite-aware mercies and a persistent Divi
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "paladin"));
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal(optionSelect("Mercy 1").value, "paladin-mercy-fatigued");
   assert.equal(optionSelect("Mercy 2").value, "paladin-mercy-dazed");
   assert.equal(optionSelect("Mercy 3").value, "paladin-mercy-exhausted");

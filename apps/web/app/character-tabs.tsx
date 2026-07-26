@@ -12,5 +12,26 @@ const tabs: Array<{ id: CharacterTabId; icon: string; label: string }> = [
 ];
 
 export function CharacterTabs({ activeTab, onChange }: { activeTab: CharacterTabId; onChange: (tab: CharacterTabId) => void }) {
-  return <nav className="character-tabs" aria-label="Character sections">{tabs.map((tab) => <button key={tab.id} type="button" aria-current={activeTab === tab.id ? "page" : undefined} className={activeTab === tab.id ? "active" : ""} onClick={() => onChange(tab.id)}><span aria-hidden="true">{tab.icon}</span><b>{tab.label}</b></button>)}</nav>;
+  const selectAdjacentTab = (currentIndex: number, direction: -1 | 1) => {
+    const next = tabs[(currentIndex + direction + tabs.length) % tabs.length];
+    onChange(next.id);
+    globalThis.setTimeout(() => document.getElementById(`character-tab-${next.id}`)?.focus(), 0);
+  };
+  return <nav className="character-tabs" aria-label="Character sections" role="tablist">{tabs.map((tab, index) => <button
+    key={tab.id}
+    id={`character-tab-${tab.id}`}
+    type="button"
+    role="tab"
+    aria-controls="character-tab-panel"
+    aria-selected={activeTab === tab.id}
+    tabIndex={activeTab === tab.id ? 0 : -1}
+    className={activeTab === tab.id ? "active" : ""}
+    onClick={() => onChange(tab.id)}
+    onKeyDown={(event) => {
+      if (event.key === "ArrowRight") { event.preventDefault(); selectAdjacentTab(index, 1); }
+      if (event.key === "ArrowLeft") { event.preventDefault(); selectAdjacentTab(index, -1); }
+      if (event.key === "Home") { event.preventDefault(); onChange(tabs[0].id); globalThis.setTimeout(() => document.getElementById(`character-tab-${tabs[0].id}`)?.focus(), 0); }
+      if (event.key === "End") { event.preventDefault(); onChange(tabs[tabs.length - 1].id); globalThis.setTimeout(() => document.getElementById(`character-tab-${tabs[tabs.length - 1].id}`)?.focus(), 0); }
+    }}
+  ><span aria-hidden="true">{tab.icon}</span><b>{tab.label}</b></button>)}</nav>;
 }

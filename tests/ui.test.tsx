@@ -45,7 +45,7 @@ test("migrates the previous single save into the character library", async () =>
   localStorage.setItem("pf1e-character-draft", JSON.stringify(legacy));
   render(<Home />);
   assert.ok(await screen.findByText("Your previous save was added to the character library"));
-  await userEvent.click(screen.getByRole("button", { name: "Storage" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Storage" }));
   assert.ok(screen.getByText("Legacy Kyra"));
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-library") ?? "{}").characters.length, 1);
 });
@@ -102,7 +102,7 @@ test("tracks point-buy costs and applies earned ability increases", async () => 
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   assert.equal(screen.getAllByText("Class skill").length > 0, true);
   assert.ok(screen.getByLabelText("4 skill ranks remaining"));
   const climb = screen.getByLabelText("Climb ranks");
@@ -117,11 +117,11 @@ test("enforces the skill-rank pool through the interface", async () => {
 test("prevents duplicate feats and manages prepared spell counts", async () => {
   const user = userEvent.setup();
   render(<Home />);
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   assert.match(screen.getByText(/Arcanist slots/).textContent ?? "", /3 1st-level \(2 base \+ 1 Intelligence\)/);
   assert.match(screen.getByText("Mage Armor").closest("article")?.textContent ?? "", /DC 12/);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
-  await user.click(screen.getByRole("button", { name: "Feats" }));
+  await user.click(screen.getByRole("tab", { name: "Feats" }));
   await user.selectOptions(screen.getByLabelText("Human bonus feat"), "combat-casting");
   const secondFeat = screen.getByLabelText("Feat 1");
   assert.equal((secondFeat.querySelector("option[value='combat-casting']") as HTMLOptionElement).disabled, true);
@@ -130,7 +130,7 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   assert.equal((secondFeat.querySelector("option[value='two-weapon-fighting']") as HTMLOptionElement).disabled, true);
   assert.equal((secondFeat.querySelector("option[value='leadership']") as HTMLOptionElement).disabled, true);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "1" } });
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   await user.click(screen.getByRole("button", { name: "Add Magic Missile" }));
   await user.click(screen.getByRole("button", { name: "Cast Mage Armor" }));
@@ -156,7 +156,7 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
 test("searches the spellbook and normalizes loaded prepared spells", async () => {
   const user = userEvent.setup();
   render(<Home />);
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.type(screen.getByLabelText("Search spells"), "magic missile");
   assert.ok(screen.getByRole("button", { name: "Add Magic Missile" }));
   await user.clear(screen.getByLabelText("Search spells"));
@@ -171,7 +171,7 @@ test("shows Fighter combat-feat and weapon-group choices when earned", async () 
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   const combatFeat = screen.getAllByText("Bonus Combat Feat").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(combatFeat);
   assert.ok([...combatFeat.options].some(option => option.text === "Improved Initiative"));
@@ -186,9 +186,9 @@ test("applies a Fighter bonus feat's mechanical effects to combat statistics", a
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(screen.getByLabelText("Bonus Combat Feat level 1"), "fighter-improved-initiative");
-  await user.click(screen.getByRole("button", { name: "Actions" }));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
   assert.equal(screen.getByText("Core statistics").closest("article")?.querySelector("dt")?.closest("div")?.querySelector("dd")?.textContent, "+4");
 });
 
@@ -198,7 +198,7 @@ test("selects and persists the Fighter Archer archetype", async () => {
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
   await user.selectOptions(screen.getByLabelText("Archetype"), "fighter-archer");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Hawkeye +1"));
   assert.ok(screen.getByText("Ranged Defense"));
   assert.equal(screen.queryByText("Bravery +1"), null);
@@ -212,12 +212,12 @@ test("applies Core save and hit point feat effects with visible sources", async 
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
-  await user.click(screen.getByRole("button", { name: "Feats" }));
+  await user.click(screen.getByRole("tab", { name: "Feats" }));
   await user.selectOptions(screen.getByLabelText("Human bonus feat"), "toughness");
   await user.selectOptions(screen.getByLabelText("Feat 1"), "great-fortitude");
-  await user.click(screen.getByRole("button", { name: "Basic info" }));
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+4");
-  await user.click(screen.getByRole("button", { name: "Actions" }));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
   assert.equal(screen.getByText("Average HP").closest("div")?.querySelector("dd")?.textContent, "13");
   const sources = screen.getByText("Applied feat modifiers").closest("section");
   assert.match(sources?.textContent ?? "", /\+3 Hit pointsToughness/);
@@ -229,10 +229,10 @@ test("applies selected weapon feat effects to matching equipment", async () => {
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
   fireEvent.change(screen.getByLabelText("Strength base score"), { target: { value: "13" } });
-  await user.click(screen.getByRole("button", { name: "Feats" }));
+  await user.click(screen.getByRole("tab", { name: "Feats" }));
   await user.selectOptions(screen.getByLabelText("Human bonus feat"), "weapon-focus");
   await user.type(screen.getByLabelText("Weapon Focus Weapon"), "Longsword");
-  await user.click(screen.getByRole("button", { name: "Storage" }));
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
   await user.selectOptions(screen.getByLabelText("Equipment catalogue"), "longsword");
   assert.match(screen.getByText("Longsword").closest("article")?.textContent ?? "", /Attack \+3/);
 });
@@ -242,9 +242,9 @@ test("makes Monk available with its full-save progression", async () => {
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "monk");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "4" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Ki Pool (Magic)"));
-  await user.click(screen.getByRole("button", { name: "Basic info" }));
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+4");
   assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+4");
   assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+4");
@@ -257,17 +257,17 @@ test("makes Paladin available with its martial chassis and divine features", asy
   assert.equal(screen.getByText("BAB").closest("article")?.querySelector("strong")?.textContent, "+1");
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+2");
   assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Aura of Good"));
   assert.ok(screen.getByText("Detect Evil"));
   assert.ok(screen.getByText("Smite Evil"));
 
-  await user.click(screen.getByRole("button", { name: "Basic info" }));
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
   fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "14" } });
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getAllByText("Divine Bond").length >= 2);
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   assert.ok(screen.getByRole("button", { name: "Add Bless" }));
 });
 
@@ -280,7 +280,7 @@ test("makes Bard selectable with spontaneous casting and Versatile Performance c
   assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
   fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "14" } });
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Bardic Knowledge"));
   assert.ok(screen.getByText("Bardic Performance"));
   assert.ok(screen.getByText("Suggestion"));
@@ -303,7 +303,7 @@ test("makes Bard selectable with spontaneous casting and Versatile Performance c
   );
   await user.selectOptions(versatile2, "bard-versatile-performance-dance");
   assert.equal((versatile2 as HTMLSelectElement).value, "bard-versatile-performance-dance");
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   assert.match(screen.getByText(/Bard slots/).textContent ?? "", /1st-level/);
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.ok(screen.getByRole("button", { name: "Learn Charm Person" }));
@@ -317,7 +317,7 @@ test("makes Druid selectable with prepared divine casting and Nature Bond", asyn
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+2");
   assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "4" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Nature Sense"));
   assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "1/1 use remaining");
   await user.click(screen.getByRole("button", { name: "Spend 1 use" }));
@@ -338,7 +338,7 @@ test("makes Druid selectable with prepared divine casting and Nature Bond", asyn
   assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "1/1 use remaining");
   await user.click(screen.getByRole("button", { name: "Load" }));
   assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "0/1 use remaining");
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   assert.match(screen.getByText(/Druid slots/).textContent ?? "", /1st-level/);
 });
 
@@ -347,7 +347,7 @@ test("makes Ranger selectable with persistent Core feature choices", async () =>
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "ranger");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "8" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   const favoredEnemy = screen.getByLabelText(/Favored Enemy 1/);
   const combatStyle = screen.getByLabelText(/Combat Style level 2/);
   const favoredTerrain = screen.getByLabelText(/Favored Terrain 1/);
@@ -390,19 +390,19 @@ test("makes Wizard selectable with prepared arcane spells and class features", a
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getAllByText("Arcane Bond").length >= 2);
   assert.ok(screen.getAllByText("Arcane School").length >= 2);
   assert.ok(screen.getByText("Spellbook"));
   assert.ok(screen.getByText("Scribe Scroll"));
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   assert.match(screen.getByText(/Wizard slots/).textContent ?? "", /2 1st-level \(1 base \+ 1 Intelligence\)/);
   assert.ok(screen.getByRole("button", { name: "Add Magic Missile" }));
   assert.equal(screen.queryByLabelText("Arcane Reservoir points"), null);
 
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Wizard Bonus Feat"));
 });
 
@@ -410,7 +410,7 @@ test("guides Wizard school and opposition school choices", async () => {
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
 
   const school = screen.getAllByText("Arcane School").at(-1)!.closest("label")?.querySelector("select");
   const firstOpposition = screen.getAllByText("First Opposition School").at(-1)!.closest("label")?.querySelector("select");
@@ -447,23 +447,38 @@ test("guides Wizard school and opposition school choices", async () => {
 test("uses labelled icon tabs to show focused builder sections", async () => {
   const user = userEvent.setup();
   render(<Home />);
-  assert.equal(screen.getByRole("button", { name: "Basic info" }).getAttribute("aria-current"), "page");
-  await user.click(screen.getByRole("button", { name: "Storage" }));
+  assert.equal(screen.getByRole("tab", { name: "Basic info" }).getAttribute("aria-selected"), "true");
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
   assert.ok(screen.getByText("Equipment and carried items"));
-  await user.click(screen.getByRole("button", { name: "Actions" }));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
   assert.ok(screen.getByText("Core statistics"));
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Arcanist features"));
   assert.ok(screen.getByText("Configure class features"));
-  await user.click(screen.getByRole("button", { name: "Options" }));
+  await user.click(screen.getByRole("tab", { name: "Options" }));
   assert.ok(screen.getByText("Choose background traits"));
   assert.equal(screen.queryByText("Configure class features"), null);
+});
+
+test("supports arrow, Home, and End keyboard navigation across character tabs", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const basicInfo = screen.getByRole("tab", { name: "Basic info" });
+  basicInfo.focus();
+  await user.keyboard("{ArrowRight}");
+  assert.equal(screen.getByRole("tab", { name: "Actions" }).getAttribute("aria-selected"), "true");
+  assert.equal(document.activeElement, screen.getByRole("tab", { name: "Actions" }));
+  await user.keyboard("{End}");
+  assert.equal(screen.getByRole("tab", { name: "Options" }).getAttribute("aria-selected"), "true");
+  await user.keyboard("{Home}");
+  assert.equal(screen.getByRole("tab", { name: "Basic info" }).getAttribute("aria-selected"), "true");
+  assert.equal(screen.getByRole("tabpanel").getAttribute("aria-labelledby"), "character-tab-overview");
 });
 
 test("tracks hit points and expires temporary combat effects by round", async () => {
   const user = userEvent.setup();
   render(<Home />);
-  await user.click(screen.getByRole("button", { name: "Actions" }));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
   const armorClass = screen.getByText("AC / touch / flat-footed").closest("div");
   assert.match(armorClass?.textContent ?? "", /10 \/ 10 \/ 10/);
   fireEvent.change(screen.getByLabelText("Current HP"), { target: { value: "3" } });
@@ -485,12 +500,12 @@ test("tracks hit points and expires temporary combat effects by round", async ()
 
 test("selects, applies, and persists traits from different categories", async () => {
   render(<Home />);
-  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Options" }));
   await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "reactionary");
   await userEvent.selectOptions(screen.getByLabelText("Trait 2"), "caretaker");
-  await userEvent.click(screen.getByRole("button", { name: "Actions" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Actions" }));
   assert.ok(screen.getByText("+2"));
-  await userEvent.click(screen.getByRole("button", { name: "Skills" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Skills" }));
   assert.ok(screen.getByText("Heal").closest("label")?.textContent?.includes("Class skill"));
   await userEvent.click(screen.getByRole("button", { name: "Save" }));
   assert.deepEqual(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").selectedTraitIds, ["reactionary", "caretaker"]);
@@ -498,9 +513,9 @@ test("selects, applies, and persists traits from different categories", async ()
 
 test("applies the expanded social trait skill bonuses", async () => {
   render(<Home />);
-  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Options" }));
   await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "poverty-stricken");
-  await userEvent.click(screen.getByRole("button", { name: "Skills" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Skills" }));
   const survival = screen.getByText("Survival").closest("label");
   assert.ok(survival?.textContent?.includes("+1"));
   assert.ok(survival?.textContent?.includes("Class skill"));
@@ -508,23 +523,23 @@ test("applies the expanded social trait skill bonuses", async () => {
 
 test("lists conditional trait modifiers without applying them as permanent saves", async () => {
   render(<Home />);
-  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Options" }));
   await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "courageous");
   await userEvent.selectOptions(screen.getByLabelText("Trait 2"), "birthmark");
-  await userEvent.click(screen.getByRole("button", { name: "Actions" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Actions" }));
   const modifiers = screen.getByText("Conditional trait modifiers").closest("section");
   assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects · Courageous/);
   assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus · Birthmark/);
-  await userEvent.click(screen.getByRole("button", { name: "Basic info" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Basic info" }));
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+0");
 });
 
 test("selects and persists a trait-specific granted class skill", async () => {
   render(<Home />);
-  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Options" }));
   await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "mathematical-prodigy");
   await userEvent.selectOptions(screen.getByLabelText("Granted class skill"), "Knowledge (engineering)");
-  await userEvent.click(screen.getByRole("button", { name: "Skills" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Skills" }));
   assert.ok(screen.getByText("Knowledge (engineering)").closest("label")?.textContent?.includes("Class skill"));
   await userEvent.click(screen.getByRole("button", { name: "Save" }));
   const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
@@ -533,10 +548,10 @@ test("selects and persists a trait-specific granted class skill", async () => {
 
 test("selects, displays, and persists a trait-specific spell modifier", async () => {
   render(<Home />);
-  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Options" }));
   await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "gifted-adept");
   await userEvent.selectOptions(screen.getByLabelText("Affected spell"), "mage-hand");
-  await userEvent.click(screen.getByRole("button", { name: "Spells" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Spells" }));
   await userEvent.type(screen.getByLabelText("Search spells"), "Mage Hand");
   assert.ok(screen.getByText("Mage Hand").closest("article")?.textContent?.includes("trait: +1 caster level"));
   await userEvent.click(screen.getByRole("button", { name: "Save" }));
@@ -546,7 +561,7 @@ test("selects, displays, and persists a trait-specific spell modifier", async ()
 
 test("clears a trait spell choice when the character changes to an ineligible class", async () => {
   render(<Home />);
-  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.click(screen.getByRole("tab", { name: "Options" }));
   await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "gifted-adept");
   await userEvent.selectOptions(screen.getByLabelText("Affected spell"), "mage-hand");
   await userEvent.selectOptions(screen.getByLabelText("Class"), "barbarian");
@@ -559,7 +574,7 @@ test("clears a trait spell choice when the character changes to an ineligible cl
 test("tracks persistent equipment, encumbrance, currency, and equipped armor", async () => {
   const user = userEvent.setup();
   render(<Home />);
-  await user.click(screen.getByRole("button", { name: "Storage" }));
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
   const catalogue = screen.getByLabelText("Equipment catalogue");
   await user.selectOptions(catalogue, "longbow");
   assert.ok(screen.getByText(/Critical ×3 · Range 100 ft\./));
@@ -568,10 +583,10 @@ test("tracks persistent equipment, encumbrance, currency, and equipped armor", a
   assert.ok(screen.getByText(/25 lb. carried — light load/));
   await user.click(screen.getByLabelText("Equipped"));
   fireEvent.change(screen.getByLabelText("GP"), { target: { value: "125" } });
-  await user.click(screen.getByRole("button", { name: "Actions" }));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
   assert.match(screen.getByText("AC / touch / flat-footed").closest("div")?.textContent ?? "", /14 \/ 10 \/ 14/);
   await user.click(screen.getByRole("button", { name: "Save" }));
-  await user.click(screen.getByRole("button", { name: "Storage" }));
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
   await user.click(screen.getByRole("button", { name: "Remove" }));
   fireEvent.change(screen.getByLabelText("GP"), { target: { value: "0" } });
   await user.click(screen.getByRole("button", { name: "Load" }));

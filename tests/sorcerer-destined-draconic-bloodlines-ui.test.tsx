@@ -43,23 +43,23 @@ test("Destined and Draconic grant class skills, spells, and a persistent dragon 
   await user.selectOptions(screen.getByLabelText("Human +2"), "charisma");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-destined");
   assert.ok(screen.getByText("Touch of Destiny"));
   assert.ok(screen.getByText("Destiny Realized"));
   assert.equal(screen.queryByLabelText("Bloodline variant choice"), null);
 
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   const history = skillLabel("Knowledge (history)");
   await user.clear(history.querySelector("input")!);
   await user.type(history.querySelector("input")!, "1");
   assert.match(history.querySelector("strong")?.textContent ?? "", /\+4 class/);
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Alarm known").textContent, "Bloodline");
 
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   await user.selectOptions(optionSelect("Bloodline"), "sorcerer-bloodline-draconic");
   assert.ok(screen.getByText("Claws"));
   assert.ok(screen.getByText("Power of Wyrms"));
@@ -68,14 +68,14 @@ test("Destined and Draconic grant class skills, spells, and a persistent dragon 
   await user.selectOptions(dragonType, "red-dragon");
   assert.equal(screen.getByLabelText("Selected bloodline variant").textContent, "Red Dragon: fire · 30-foot cone");
 
-  await user.click(screen.getByRole("button", { name: "Skills" }));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
   assert.doesNotMatch(skillLabel("Knowledge (history)").querySelector("strong")?.textContent ?? "", /class/);
   const perception = skillLabel("Perception");
   await user.clear(perception.querySelector("input")!);
   await user.type(perception.querySelector("input")!, "1");
   assert.match(perception.querySelector("strong")?.textContent ?? "", /\+4 class/);
 
-  await user.click(screen.getByRole("button", { name: "Spells" }));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Mage Armor known").textContent, "Bloodline");
   assert.equal(screen.getByLabelText("Alarm known").textContent, "Unknown");
@@ -84,7 +84,7 @@ test("Destined and Draconic grant class skills, spells, and a persistent dragon 
   await user.selectOptions(screen.getByLabelText("Class"), "wizard");
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "sorcerer"));
-  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal(optionSelect("Bloodline").value, "sorcerer-bloodline-draconic");
   assert.equal((screen.getByLabelText("Bloodline variant choice") as HTMLSelectElement).value, "red-dragon");
   assert.equal(screen.getByLabelText("Selected bloodline variant").textContent, "Red Dragon: fire · 30-foot cone");
