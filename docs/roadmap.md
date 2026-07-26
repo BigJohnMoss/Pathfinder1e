@@ -66,7 +66,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Next milestone: Expanded Character Options
 
-- traits — in progress: 19 sourced basic traits, trait-specific class-skill
+- traits — in progress: 23 sourced basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
 - archetypes

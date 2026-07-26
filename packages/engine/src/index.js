@@ -251,6 +251,10 @@ export function traitBonuses(selectedTraitIds, traits, selectedTraitChoices = {}
     for (const save of Object.keys(result.saves)) result.saves[save] += effects.saves?.[save] ?? 0;
     for (const [skill, bonus] of Object.entries(effects.skillBonuses ?? {})) result.skillBonuses[skill] = (result.skillBonuses[skill] ?? 0) + bonus;
     for (const skill of effects.classSkills ?? []) if (!result.classSkills.includes(skill)) result.classSkills.push(skill);
+    for (const modifier of effects.conditionalModifiers ?? []) {
+      result.conditionalModifiers ??= [];
+      result.conditionalModifiers.push({ ...modifier, source: trait.name });
+    }
     const choice = choices[id];
     if (choice && trait?.choice?.key === "classSkill" && !result.classSkills.includes(choice)) result.classSkills.push(choice);
     if (choice && trait?.choice?.key === "spell" && effects.chosenSpell) {

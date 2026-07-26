@@ -414,6 +414,19 @@ test("applies the expanded social trait skill bonuses", async () => {
   assert.ok(survival?.textContent?.includes("Class skill"));
 });
 
+test("lists conditional trait modifiers without applying them as permanent saves", async () => {
+  render(<Home />);
+  await userEvent.click(screen.getByRole("button", { name: "Options" }));
+  await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "courageous");
+  await userEvent.selectOptions(screen.getByLabelText("Trait 2"), "birthmark");
+  await userEvent.click(screen.getByRole("button", { name: "Actions" }));
+  const modifiers = screen.getByText("Conditional trait modifiers").closest("section");
+  assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects · Courageous/);
+  assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus · Birthmark/);
+  await userEvent.click(screen.getByRole("button", { name: "Basic info" }));
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+0");
+});
+
 test("selects and persists a trait-specific granted class skill", async () => {
   render(<Home />);
   await userEvent.click(screen.getByRole("button", { name: "Options" }));

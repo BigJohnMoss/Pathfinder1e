@@ -108,6 +108,11 @@ export interface CharacterTrait {
     saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>;
     skillBonuses?: Record<string, number>;
     classSkills?: string[];
+    conditionalModifiers?: Array<{
+      label: string;
+      bonus?: number;
+      condition: string;
+    }>;
     chosenSpell?: {
       casterLevel?: number;
       metamagicLevelAdjustment?: number;
