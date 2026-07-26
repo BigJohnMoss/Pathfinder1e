@@ -69,6 +69,12 @@ test("cleric domains follow the selected deity and show their powers and spells"
   assert.ok(screen.getByText("heat metal"));
   assert.equal((secondDomain.querySelector("option[value='domain-earth']") as HTMLOptionElement).disabled, true);
   assert.equal((secondDomain.querySelector("option[value='subdomain-caves']") as HTMLOptionElement).disabled, true);
+  await user.selectOptions(deity, "deity-erastil");
+  await user.selectOptions(firstDomain, "subdomain-feather");
+  assert.ok(screen.getByText("Eyes of the Hawk"));
+  assert.ok(screen.getByText("Granted class skills:").closest("p")?.textContent?.includes("Fly"));
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+  assert.ok(screen.getByText("Fly").closest("label")?.textContent?.includes("Class skill"));
 });
 
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {

@@ -181,6 +181,7 @@ export interface CharacterTrait {
 export interface CharacterOption extends SelectableOption {
   parentDomainId?: string;
   replacesPower?: string;
+  classSkills?: string[];
   alignment?: string;
   polarity?: string;
   domains?: string[];

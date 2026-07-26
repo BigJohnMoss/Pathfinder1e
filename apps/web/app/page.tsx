@@ -81,12 +81,16 @@ export default function Home() {
   const selectedTraitBonuses = useMemo(() => traitBonuses(selectedTraitIds, traits, selectedTraitChoices, { spells, classes, classId }), [classId, selectedTraitChoices, selectedTraitIds]);
   const selectedBloodline = useMemo(() => bloodlineFromOptions(classId, selectedOptions), [classId, selectedOptions]);
   const selectedBloodlineClassSkill = selectedOptions["sorcerer-bloodline-class-skill"];
+  const selectedOptionClassSkills = useMemo(() => {
+    const selectedIds = new Set(Object.values(selectedOptions));
+    return optionGroups.flatMap((group) => group.options).filter((option) => selectedIds.has(option.id)).flatMap((option) => option.classSkills ?? []);
+  }, [selectedOptions]);
   const skillCharacterClass = useMemo(() => {
     const bloodlineSkills = selectedBloodline?.classSkill
       ? bloodlineClassSkills(characterClass.classSkills, selectedBloodline, selectedBloodlineClassSkill)
       : characterClass.classSkills;
-    return { ...characterClass, classSkills: [...new Set([...bloodlineSkills, ...selectedTraitBonuses.classSkills])] };
-  }, [characterClass, selectedBloodline, selectedBloodlineClassSkill, selectedTraitBonuses.classSkills]);
+    return { ...characterClass, classSkills: [...new Set([...bloodlineSkills, ...selectedTraitBonuses.classSkills, ...selectedOptionClassSkills])] };
+  }, [characterClass, selectedBloodline, selectedBloodlineClassSkill, selectedOptionClassSkills, selectedTraitBonuses.classSkills]);
   const fixedModifiers = (ancestry.abilityModifiers as { fixed?: Partial<typeof defaultAbilities> }).fixed ?? {};
   const choiceAmount = (ancestry.abilityModifiers as { choice?: { amount: number } }).choice?.amount ?? 0;
   const abilities = useMemo(() => Object.fromEntries(Object.keys(baseAbilities).map((ability) => [ability, baseAbilities[ability as keyof typeof baseAbilities] + (fixedModifiers[ability as keyof typeof baseAbilities] ?? 0) + (choiceAmount && ability === humanAbility ? choiceAmount : 0) + abilityBoosts.filter(boost => boost === ability).length])) as typeof baseAbilities, [abilityBoosts, baseAbilities, choiceAmount, fixedModifiers, humanAbility]);

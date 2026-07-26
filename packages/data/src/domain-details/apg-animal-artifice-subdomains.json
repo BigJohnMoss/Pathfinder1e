@@ -1,0 +1,93 @@
+{
+  "source": {
+    "title": "Advanced Player's Guide",
+    "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"
+  },
+  "subdomains": [
+    {
+      "id": "subdomain-feather",
+      "groupId": "cleric-domains",
+      "name": "Feather Subdomain (Animal)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain Fly as a class skill, improve maneuverability from spells that grant a fly speed, replace Speak with Animals with Eyes of the Hawk, and replace three Animal domain spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 89, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#feather-subdomain"},
+      "parentDomainId": "domain-animal",
+      "replacesPower": "Speak with Animals",
+      "classSkills": ["Fly"],
+      "powers": [
+        {"name": "Eyes of the Hawk", "level": 1, "summary": "Gain a racial bonus on Perception checks equal to half cleric level, minimum +1, and a +2 racial bonus on initiative when able to act in a surprise round."},
+        {"name": "Animal Companion", "level": 4, "summary": "Gain an animal companion using an effective druid level equal to cleric level - 3."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "calm animals"}, {"level": 2, "name": "feather fall"}, {"level": 3, "name": "fly"},
+        {"level": 4, "name": "summon nature's ally IV (animals only)"}, {"level": 5, "name": "beast shape III (animals only)"}, {"level": 6, "name": "fly (mass)"},
+        {"level": 7, "name": "animal shapes"}, {"level": 8, "name": "summon nature's ally VIII (animals only)"}, {"level": 9, "name": "shapechange"}
+      ]
+    },
+    {
+      "id": "subdomain-fur",
+      "groupId": "cleric-domains",
+      "name": "Fur Subdomain (Animal)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Speak with Animals with Predator's Grace and replace the Animal domain's 1st- and 3rd-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 90, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#fur-subdomain"},
+      "parentDomainId": "domain-animal",
+      "replacesPower": "Speak with Animals",
+      "powers": [
+        {"name": "Predator's Grace", "level": 1, "summary": "As a swift action, gain a scaling bonus to base speed and low-light vision for 1 round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Animal Companion", "level": 4, "summary": "Gain an animal companion using an effective druid level equal to cleric level - 3."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "magic fang"}, {"level": 2, "name": "hold animal"}, {"level": 3, "name": "beast shape I (animals only)"},
+        {"level": 4, "name": "summon nature's ally IV (animals only)"}, {"level": 5, "name": "beast shape III (animals only)"}, {"level": 6, "name": "antilife shell"},
+        {"level": 7, "name": "animal shapes"}, {"level": 8, "name": "summon nature's ally VIII (animals only)"}, {"level": 9, "name": "shapechange"}
+      ]
+    },
+    {
+      "id": "subdomain-construct",
+      "groupId": "cleric-domains",
+      "name": "Construct Subdomain (Artifice)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Dancing Weapons with Animate Servant and replace the Artifice domain's 7th- and 8th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 87, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#construct-subdomain"},
+      "parentDomainId": "domain-artifice",
+      "replacesPower": "Dancing Weapons",
+      "powers": [
+        {"name": "Artificer's Touch", "level": 1, "summary": "Cast mending at will and damage objects or constructs with a melee touch attack. Uses of the damaging touch per day equal 3 + Wisdom modifier."},
+        {"name": "Animate Servant", "level": 8, "summary": "Animate objects using cleric level as caster level once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "animate rope"}, {"level": 2, "name": "wood shape"}, {"level": 3, "name": "stone shape"},
+        {"level": 4, "name": "minor creation"}, {"level": 5, "name": "fabricate"}, {"level": 6, "name": "major creation"},
+        {"level": 7, "name": "limited wish"}, {"level": 8, "name": "polymorph any object"}, {"level": 9, "name": "prismatic sphere"}
+      ]
+    },
+    {
+      "id": "subdomain-toil",
+      "groupId": "cleric-domains",
+      "name": "Toil Subdomain (Artifice)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Dancing Weapons with Aura of Repetition and replace the Artifice domain's 1st-, 5th-, and 7th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 95, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#toil-subdomain"},
+      "parentDomainId": "domain-artifice",
+      "replacesPower": "Dancing Weapons",
+      "powers": [
+        {"name": "Artificer's Touch", "level": 1, "summary": "Cast mending at will and damage objects or constructs with a melee touch attack. Uses of the damaging touch per day equal 3 + Wisdom modifier."},
+        {"name": "Aura of Repetition", "level": 8, "summary": "Emit a 30-foot aura for rounds per day equal to cleric level; enemies that fail a Will save must repeat their previous action when possible."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "command"}, {"level": 2, "name": "wood shape"}, {"level": 3, "name": "stone shape"},
+        {"level": 4, "name": "minor creation"}, {"level": 5, "name": "waves of fatigue"}, {"level": 6, "name": "major creation"},
+        {"level": 7, "name": "waves of exhaustion"}, {"level": 8, "name": "statue"}, {"level": 9, "name": "prismatic sphere"}
+      ]
+    }
+  ]
+}
