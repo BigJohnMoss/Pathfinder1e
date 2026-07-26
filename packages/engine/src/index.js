@@ -207,6 +207,14 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     arcaneReservoir: Number.isInteger(draft.arcaneReservoir) && draft.arcaneReservoir >= 0 ? draft.arcaneReservoir : null,
     bardicPerformanceUsed: Number.isInteger(draft.bardicPerformanceUsed) && draft.bardicPerformanceUsed >= 0 ? draft.bardicPerformanceUsed : 0,
     wildShapeUsed: Number.isInteger(draft.wildShapeUsed) && draft.wildShapeUsed >= 0 ? draft.wildShapeUsed : 0,
+    currentHitPoints: Number.isInteger(draft.currentHitPoints) && draft.currentHitPoints >= 0 ? Math.min(9999, draft.currentHitPoints) : null,
+    temporaryHitPoints: Number.isInteger(draft.temporaryHitPoints) && draft.temporaryHitPoints >= 0 ? Math.min(9999, draft.temporaryHitPoints) : 0,
+    activeEffects: Array.isArray(draft.activeEffects) ? draft.activeEffects.filter(effect =>
+      effect && typeof effect.id === "string" && typeof effect.name === "string" && effect.name.trim() &&
+      ["initiative", "armorClass", "fortitude", "reflex", "will"].includes(effect.target) &&
+      Number.isInteger(effect.bonus) && effect.bonus >= -20 && effect.bonus <= 20 &&
+      Number.isInteger(effect.roundsRemaining) && effect.roundsRemaining > 0
+    ).slice(0, 20).map(effect => ({ id: effect.id.slice(0, 80), name: effect.name.trim().slice(0, 80), target: effect.target, bonus: effect.bonus, roundsRemaining: Math.min(999, effect.roundsRemaining) })) : [],
     inventory: Array.isArray(draft.inventory) ? draft.inventory.filter(entry => entry && typeof entry.itemId === "string" && Number.isInteger(entry.quantity) && entry.quantity > 0).map(entry => ({ itemId: entry.itemId, quantity: Math.min(999, entry.quantity), equipped: entry.equipped === true })) : [],
     coins: Object.fromEntries(["cp", "sp", "gp", "pp"].map(coin => [coin, Number.isInteger(draft.coins?.[coin]) && draft.coins[coin] >= 0 ? draft.coins[coin] : 0]))
   };

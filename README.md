@@ -34,6 +34,7 @@ successful load. The current generated catalogue includes:
 - 424 selectable feats
 - all 40 APG basic traits across combat, faith, magic, and social categories
 - reusable archetype feature replacement with the complete APG Fighter Archer
+- active-play tracking for current and temporary hit points plus round-based combat modifiers
 - 2,048 spells
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
