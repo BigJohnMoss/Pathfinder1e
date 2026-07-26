@@ -95,10 +95,29 @@ export default function Home() {
     const option = optionGroups.flatMap((group) => group.options).find((candidate) => candidate.id === optionId);
     return option?.featId ? [option.featId] : [];
   }), [selectedOptions]);
-  const selectedFeatBonuses = useMemo(() => featBonuses([...selectedFeatIds, ...selectedClassFeatIds], feats), [selectedClassFeatIds, selectedFeatIds]);
+  const selectedFeatBonuses = useMemo(() => featBonuses(
+    [...selectedFeatIds, ...selectedClassFeatIds],
+    feats,
+    selectedFeatChoices,
+    { level, skillRanks }
+  ), [level, selectedClassFeatIds, selectedFeatChoices, selectedFeatIds, skillRanks]);
   const combat = useMemo(() => {
     const armorBonus = equipmentArmorBonus(inventory);
-    return { ...baseCombat, initiative: baseCombat.initiative + selectedTraitBonuses.initiative + selectedFeatBonuses.initiative, saves: { fortitude: baseCombat.saves.fortitude + selectedTraitBonuses.saves.fortitude, reflex: baseCombat.saves.reflex + selectedTraitBonuses.saves.reflex, will: baseCombat.saves.will + selectedTraitBonuses.saves.will }, armorClass: { normal: baseCombat.armorClass.normal + armorBonus, touch: baseCombat.armorClass.touch, flatFooted: baseCombat.armorClass.flatFooted + armorBonus } };
+    return {
+      ...baseCombat,
+      initiative: baseCombat.initiative + selectedTraitBonuses.initiative + selectedFeatBonuses.initiative,
+      saves: {
+        fortitude: baseCombat.saves.fortitude + selectedTraitBonuses.saves.fortitude + selectedFeatBonuses.saves.fortitude,
+        reflex: baseCombat.saves.reflex + selectedTraitBonuses.saves.reflex + selectedFeatBonuses.saves.reflex,
+        will: baseCombat.saves.will + selectedTraitBonuses.saves.will + selectedFeatBonuses.saves.will
+      },
+      armorClass: {
+        normal: baseCombat.armorClass.normal + armorBonus + selectedFeatBonuses.armorClass.normal,
+        touch: baseCombat.armorClass.touch + selectedFeatBonuses.armorClass.touch,
+        flatFooted: baseCombat.armorClass.flatFooted + armorBonus + selectedFeatBonuses.armorClass.flatFooted
+      },
+      averageHitPoints: baseCombat.averageHitPoints + selectedFeatBonuses.hitPoints
+    };
   }, [baseCombat, inventory, selectedFeatBonuses, selectedTraitBonuses]);
   const featSlots = useMemo(() => Array.from({ length: progression.featSlots }, (_, index) => ({ index, name: index < ancestryBonusFeats ? `${ancestry.name} bonus feat` : `Feat ${index - ancestryBonusFeats + 1}` })), [ancestry.name, ancestryBonusFeats, progression.featSlots]);
   const levelUpGains = useMemo(() => {
@@ -127,7 +146,7 @@ export default function Home() {
   const skillBudget = skillRankBudget(progression.skillRanks, skillRanks);
   const allocatedSkillRanks = skillBudget.allocated;
   const updateSkill = (skillName: string, ranks: number) => setSkillRanks((current) => { const otherRanks = Object.fromEntries(Object.entries(current).filter(([skill]) => skill !== skillName)); const available = skillRankBudget(progression.skillRanks, otherRanks).remaining; return { ...current, [skillName]: Math.max(0, Math.min(level, available, ranks || 0)) }; });
-  const skillEntries = skills.map((skill) => { const ranks = skillRanks[skill.name] ?? 0; const result = skillTotal(skillCharacterClass, skill, abilities[skill.ability], ranks); return { ...skill, ranks, ...result, total: result.total + (selectedTraitBonuses.skillBonuses[skill.name] ?? 0) }; });
+  const skillEntries = skills.map((skill) => { const ranks = skillRanks[skill.name] ?? 0; const result = skillTotal(skillCharacterClass, skill, abilities[skill.ability], ranks); return { ...skill, ranks, ...result, total: result.total + (selectedTraitBonuses.skillBonuses[skill.name] ?? 0) + (selectedFeatBonuses.skillBonuses[skill.name] ?? 0) }; });
   useEffect(() => setSkillRanks((current) => {
     const next = normalizeSkillRanks(current, progression.skillRanks, level);
     return Object.keys(next).length === Object.keys(current).length && Object.entries(next).every(([skill, ranks]) => current[skill] === ranks) ? current : next;
@@ -228,8 +247,8 @@ export default function Home() {
     <CharacterTabs activeTab={activeTab} onChange={setActiveTab} />
     <section className="tab-panel" aria-live="polite">
       {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} pointBuyBudget={pointBuyBudget} pointBuySpent={pointBuy.spent} abilityBoosts={abilityBoosts} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} onPointBuyBudgetChange={setPointBuyBudget} onAbilityBoostChange={updateAbilityBoost} /><ProgressionSummary combat={combat} progression={progression} /></section>}
-      {activeTab === "actions" && <CombatPanel combat={combat} conditionalModifiers={selectedTraitBonuses.conditionalModifiers} />}
-      {activeTab === "storage" && <EquipmentPanel strength={abilities.strength} strengthModifier={combat.abilityModifiers.strength} dexterityModifier={combat.abilityModifiers.dexterity} baseAttackBonus={progression.baseAttackBonus} inventory={inventory} coins={coins} onInventoryChange={setInventory} onCoinsChange={setCoins} />}
+      {activeTab === "actions" && <CombatPanel combat={combat} modifierSources={selectedFeatBonuses.sources} conditionalModifiers={selectedTraitBonuses.conditionalModifiers} />}
+      {activeTab === "storage" && <EquipmentPanel strength={abilities.strength} strengthModifier={combat.abilityModifiers.strength} dexterityModifier={combat.abilityModifiers.dexterity} baseAttackBonus={progression.baseAttackBonus} weaponBonuses={selectedFeatBonuses.weaponBonuses} inventory={inventory} coins={coins} onInventoryChange={setInventory} onCoinsChange={setCoins} />}
       {activeTab === "spells" && (spontaneousCasting ? <SpontaneousSpellbook spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spontaneousCasting.slots} knownLimits={knownLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={bloodlineSpellIds} onKnownSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} onRefreshDay={refreshDay} /> : preparedCasting ? <Spellbook spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={preparedCasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={updateReservoir} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} /> : <p className="empty-tab">This class does not cast spells.</p>)}
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}

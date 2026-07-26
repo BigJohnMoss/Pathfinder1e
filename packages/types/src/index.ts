@@ -91,6 +91,18 @@ export interface CharacterFeat {
   source: SourceRef;
   effects?: {
     initiative?: number;
+    saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>;
+    armorClass?: Partial<Record<"normal" | "touch" | "flatFooted", number>>;
+    hitPoints?: { minimum: number; perLevel: number };
+    skillBonuses?: Record<string, number>;
+    chosenSkill?: {
+      bonus: number;
+      rankThreshold?: { minimum: number; bonus: number };
+    };
+    chosenWeapon?: {
+      attack?: number;
+      damage?: number;
+    };
   };
   choice?: {
     key: string;
