@@ -26,8 +26,8 @@ export function CharacterDetails({ name, classId, archetypeId, ancestryId, level
   const importInput = useRef<HTMLInputElement>(null);
   return <section className="builder" aria-label="Character details">
     <label>Character name<input value={name} placeholder="Unnamed hero" onChange={(event) => onNameChange(event.target.value)} /></label>
-    <label>Class<select value={classId} onChange={(event) => onClassChange(event.target.value)}>{classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
-    <label>Archetype<select value={archetypeId} onChange={(event) => onArchetypeChange(event.target.value)}><option value="">Standard class</option>{archetypes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+    <label>Class<select aria-label="Class" value={classId} onChange={(event) => onClassChange(event.target.value)}>{classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+    <label>Archetype<select aria-label="Archetype" value={archetypeId} onChange={(event) => onArchetypeChange(event.target.value)}><option value="">Standard class</option>{archetypes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Ancestry<select value={ancestryId} onChange={(event) => onAncestryChange(event.target.value)}>{ancestries.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => onLevelChange(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} />{level < 20 && <button type="button" className="level-up-trigger" onClick={onReviewLevelUp}>Review level {level + 1}</button>}</label>
     <div className="character-actions">
