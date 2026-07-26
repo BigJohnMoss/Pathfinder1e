@@ -32,22 +32,22 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   return <section className="active-play" aria-labelledby="active-play-heading">
     <div className="active-play-heading">
       <div><p className="eyebrow">ACTIVE PLAY</p><h3 id="active-play-heading">Hit points and temporary effects</h3></div>
-      <button type="button" onClick={advanceRound} disabled={effects.length === 0}>Advance round</button>
+      <button type="button" onClick={advanceRound} disabled={effects.length === 0} aria-label="Advance one round">Advance round</button>
     </div>
-    <div className="hit-point-controls">
+    <div className="hit-point-controls" role="group" aria-label="Hit point controls">
       <label>Current HP<input aria-label="Current HP" type="number" min="0" max="9999" value={currentHitPoints} onChange={event => onCurrentHitPointsChange(Math.max(0, Math.min(9999, Number(event.target.value) || 0)))} /></label>
       <p>of <strong>{maximumHitPoints}</strong> maximum</p>
       <label>Temporary HP<input aria-label="Temporary HP" type="number" min="0" max="9999" value={temporaryHitPoints} onChange={event => onTemporaryHitPointsChange(Math.max(0, Math.min(9999, Number(event.target.value) || 0)))} /></label>
       <button type="button" onClick={() => { onCurrentHitPointsChange(maximumHitPoints); onTemporaryHitPointsChange(0); }}>Heal to full</button>
     </div>
-    <div className="effect-form">
+    <div className="effect-form" role="group" aria-label="Add temporary effect">
       <label>Effect name<input value={name} maxLength={80} placeholder="Bless" onChange={event => setName(event.target.value)} /></label>
       <label>Affects<select value={target} onChange={event => setTarget(event.target.value as ActiveEffectTarget)}>{targets.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
       <label>Modifier<input type="number" min="-20" max="20" value={bonus} onChange={event => setBonus(Math.max(-20, Math.min(20, Number(event.target.value) || 0)))} /></label>
       <label>Rounds<input type="number" min="1" max="999" value={rounds} onChange={event => setRounds(Math.max(1, Math.min(999, Number(event.target.value) || 1)))} /></label>
       <button type="button" onClick={addEffect} disabled={!name.trim()}>Add effect</button>
     </div>
-    {effects.length > 0 ? <ul className="active-effect-list">{effects.map(effect => <li key={effect.id}>
+    {effects.length > 0 ? <ul className="active-effect-list" role="list" aria-label="Active effects">{effects.map(effect => <li key={effect.id}>
       <div><strong>{effect.name}</strong><span>{effect.bonus >= 0 ? "+" : ""}{effect.bonus} {targets.find(item => item.id === effect.target)?.name} · {effect.roundsRemaining} round{effect.roundsRemaining === 1 ? "" : "s"}</span></div>
       <button type="button" aria-label={`Remove ${effect.name}`} onClick={() => onEffectsChange(effects.filter(item => item.id !== effect.id))}>Remove</button>
     </li>)}</ul> : <p className="hint">No temporary effects are active.</p>}
