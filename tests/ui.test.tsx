@@ -168,6 +168,16 @@ test("shows Fighter combat-feat and weapon-group choices when earned", async () 
   assert.match(screen.getByText("Gain the weapon training bonus with bows.").textContent ?? "", /bows/);
 });
 
+test("applies a Fighter bonus feat's mechanical effects to combat statistics", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.click(screen.getByRole("button", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Bonus Combat Feat level 1"), "fighter-improved-initiative");
+  await user.click(screen.getByRole("button", { name: "Actions" }));
+  assert.equal(screen.getByText("Initiative").closest("div")?.querySelector("dd")?.textContent, "+4");
+});
+
 test("makes Monk available with its full-save progression", async () => {
   const user = userEvent.setup();
   render(<Home />);

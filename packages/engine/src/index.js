@@ -269,6 +269,16 @@ export function traitBonuses(selectedTraitIds, traits, selectedTraitChoices = {}
   return result;
 }
 
+export function featBonuses(selectedFeatIds, feats) {
+  const selected = new Set(Array.isArray(selectedFeatIds) ? selectedFeatIds : []);
+  const result = { initiative: 0 };
+  for (const feat of feats) {
+    if (!selected.has(feat.id)) continue;
+    result.initiative += feat.effects?.initiative ?? 0;
+  }
+  return result;
+}
+
 export function featSlotsAtLevel(level, { bonusFeats = 0 } = {}) {
   assertLevel(level);
   if (!Number.isInteger(bonusFeats) || bonusFeats < 0) throw new RangeError("Bonus feats must be a non-negative integer.");
