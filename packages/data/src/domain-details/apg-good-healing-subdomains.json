@@ -1,0 +1,110 @@
+{
+  "source": {"title": "Advanced Player's Guide", "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"},
+  "subdomains": [
+    {
+      "id": "subdomain-agathion", "groupId": "cleric-domains", "name": "Agathion Subdomain (Good)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Holy Lance with Protective Aura and replace the Good domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 84, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#agathion-subdomain"},
+      "parentDomainId": "domain-good", "replacesPower": "Holy Lance",
+      "powers": [
+        {"name": "Touch of Good", "level": 1, "summary": "As a standard action, touch a willing creature to grant a sacred bonus equal to half cleric level, minimum +1, on attacks, saves, skill checks, and ability checks for 1 round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Protective Aura", "level": 8, "summary": "As a standard action, emit a 30-foot aura that grants allies +2 deflection AC, +2 resistance on saves, and protection from evil for rounds per day equal to cleric level. Rounds need not be consecutive."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "shield of faith"}, {"level": 2, "name": "align weapon (good only)"}, {"level": 3, "name": "tongues"},
+        {"level": 4, "name": "holy smite"}, {"level": 5, "name": "dispel evil"}, {"level": 6, "name": "planar ally (agathions only)"},
+        {"level": 7, "name": "holy word"}, {"level": 8, "name": "holy aura"}, {"level": 9, "name": "summon monster IX (good only)"}
+      ]
+    },
+    {
+      "id": "subdomain-archon-good", "groupId": "cleric-domains", "name": "Archon Subdomain (Good)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Holy Lance with Aura of Menace and replace the Good domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 85, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#archon-subdomain"},
+      "parentDomainId": "domain-good", "replacesPower": "Holy Lance",
+      "powers": [
+        {"name": "Touch of Good", "level": 1, "summary": "As a standard action, touch a willing creature to grant a sacred bonus equal to half cleric level, minimum +1, on attacks, saves, skill checks, and ability checks for 1 round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Aura of Menace", "level": 8, "summary": "As a standard action, emit a 30-foot aura whose enemies take -2 to AC, attacks, and saves for rounds per day equal to cleric level. Rounds need not be consecutive."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "divine favor"}, {"level": 2, "name": "align weapon (good only)"}, {"level": 3, "name": "prayer"},
+        {"level": 4, "name": "holy smite"}, {"level": 5, "name": "dispel evil"}, {"level": 6, "name": "planar ally (archon only)"},
+        {"level": 7, "name": "holy word"}, {"level": 8, "name": "holy aura"}, {"level": 9, "name": "summon monster IX (good only)"}
+      ]
+    },
+    {
+      "id": "subdomain-archon-law", "groupId": "cleric-domains", "name": "Archon Subdomain (Law)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Staff of Order with Aura of Menace and replace the Law domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 85, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#archon-subdomain"},
+      "parentDomainId": "domain-law", "replacesPower": "Staff of Order",
+      "powers": [
+        {"name": "Touch of Law", "level": 1, "summary": "As a standard action, touch a willing creature. For 1 round it treats every d20 result on attacks, saves, skill checks, and ability checks as an 11. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Aura of Menace", "level": 8, "summary": "As a standard action, emit a 30-foot aura whose enemies take -2 to AC, attacks, and saves for rounds per day equal to cleric level. Rounds need not be consecutive."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "divine favor"}, {"level": 2, "name": "align weapon (law only)"}, {"level": 3, "name": "prayer"},
+        {"level": 4, "name": "order's wrath"}, {"level": 5, "name": "dispel chaos"}, {"level": 6, "name": "planar ally (archon only)"},
+        {"level": 7, "name": "dictum"}, {"level": 8, "name": "shield of law"}, {"level": 9, "name": "summon monster IX (law only)"}
+      ]
+    },
+    {
+      "id": "subdomain-azata-chaos", "groupId": "cleric-domains", "name": "Azata Subdomain (Chaos)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Touch of Chaos with Elysium's Call and replace the Chaos domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 85, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#azata-subdomain"},
+      "parentDomainId": "domain-chaos", "replacesPower": "Touch of Chaos",
+      "powers": [
+        {"name": "Elysium's Call", "level": 1, "summary": "Touch a creature to free it from enchantments, bolster related saves and escape maneuvers, and let it ignore 5 feet of difficult terrain for rounds equal to half cleric level. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Chaos Blade", "level": 8, "summary": "As a standard action, give a touched weapon the anarchic special ability for rounds equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "expeditious retreat"}, {"level": 2, "name": "align weapon (chaos only)"}, {"level": 3, "name": "fly"},
+        {"level": 4, "name": "chaos hammer"}, {"level": 5, "name": "dispel law"}, {"level": 6, "name": "planar ally (azata only)"},
+        {"level": 7, "name": "word of chaos"}, {"level": 8, "name": "cloak of chaos"}, {"level": 9, "name": "summon monster IX (chaos only)"}
+      ]
+    },
+    {
+      "id": "subdomain-azata-good", "groupId": "cleric-domains", "name": "Azata Subdomain (Good)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Touch of Good with Elysium's Call and replace the Good domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 85, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#azata-subdomain"},
+      "parentDomainId": "domain-good", "replacesPower": "Touch of Good",
+      "powers": [
+        {"name": "Elysium's Call", "level": 1, "summary": "Touch a creature to free it from enchantments, bolster related saves and escape maneuvers, and let it ignore 5 feet of difficult terrain for rounds equal to half cleric level. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Holy Lance", "level": 8, "summary": "As a standard action, give a touched weapon the holy special ability for rounds equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "expeditious retreat"}, {"level": 2, "name": "align weapon (good only)"}, {"level": 3, "name": "fly"},
+        {"level": 4, "name": "holy smite"}, {"level": 5, "name": "dispel evil"}, {"level": 6, "name": "planar ally (azata only)"},
+        {"level": 7, "name": "holy word"}, {"level": 8, "name": "holy aura"}, {"level": 9, "name": "summon monster IX (good only)"}
+      ]
+    },
+    {
+      "id": "subdomain-restoration", "groupId": "cleric-domains", "name": "Restoration Subdomain (Healing)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Rebuke Death with Restorative Touch and replace the Healing domain's 2nd-, 4th-, and 5th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 94, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#restoration-subdomain"},
+      "parentDomainId": "domain-healing", "replacesPower": "Rebuke Death",
+      "powers": [
+        {"name": "Restorative Touch", "level": 1, "summary": "Touch a creature to remove the dazed, fatigued, shaken, sickened, or staggered condition. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Healer's Blessing", "level": 6, "summary": "Treat cure spells as empowered, increasing the damage healed by 50%. This does not increase damage dealt to undead or stack with Empower Spell."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "cure light wounds"}, {"level": 2, "name": "remove disease"}, {"level": 3, "name": "cure serious wounds"},
+        {"level": 4, "name": "neutralize poison"}, {"level": 5, "name": "break enchantment"}, {"level": 6, "name": "heal"},
+        {"level": 7, "name": "regenerate"}, {"level": 8, "name": "mass cure critical wounds"}, {"level": 9, "name": "mass heal"}
+      ]
+    },
+    {
+      "id": "subdomain-resurrection", "groupId": "cleric-domains", "name": "Resurrection Subdomain (Healing)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Healer's Blessing with Gift of Life and replace the Healing domain's 5th-, 7th-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 94, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#resurrection-subdomain"},
+      "parentDomainId": "domain-healing", "replacesPower": "Healer's Blessing",
+      "powers": [
+        {"name": "Rebuke Death", "level": 1, "summary": "As a standard action, touch a living creature below 0 hit points to heal 1d4 damage plus 1 for every two cleric levels. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Gift of Life", "level": 8, "summary": "Touch a creature dead for no more than 1 minute to return it temporarily for rounds equal to cleric level with hit points equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "cure light wounds"}, {"level": 2, "name": "cure moderate wounds"}, {"level": 3, "name": "cure serious wounds"},
+        {"level": 4, "name": "cure critical wounds"}, {"level": 5, "name": "raise dead"}, {"level": 6, "name": "heal"},
+        {"level": 7, "name": "resurrection"}, {"level": 8, "name": "mass cure critical wounds"}, {"level": 9, "name": "true resurrection"}
+      ]
+    }
+  ]
+}

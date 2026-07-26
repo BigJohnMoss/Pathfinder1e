@@ -76,8 +76,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - archetypes — in progress: reusable replacement schema and complete APG Fighter Archer
 - subdomains - in progress: APG schema plus Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
-  Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, and Smoke selections
-  (including parent-specific outsider variants) with inherited deity eligibility,
+  Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
+  Azata, Restoration, and Resurrection selections (including parent-specific
+  outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
 - expanded bloodlines
 - mysteries and revelations
