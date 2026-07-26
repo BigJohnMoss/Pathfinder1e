@@ -144,7 +144,8 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
   await page.getByRole("button", { name: "Actions" }).click();
   const coreStatistics = page
     .getByRole("heading", { name: "Core statistics" })
-    .locator("..");
+    .locator("..")
+    .locator("dl");
   await expect(coreStatistics.getByText("Initiative").locator("..")).toContainText("+4");
   await expect(
     coreStatistics.getByText("AC / touch / flat-footed").locator(".."),
