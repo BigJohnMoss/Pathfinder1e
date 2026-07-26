@@ -1,15 +1,19 @@
-import type { CharacterTrait } from "./character-catalogue";
+import type { CharacterSpell, CharacterTrait } from "./character-catalogue";
 
 const categoryLabels = { combat: "Combat", faith: "Faith", magic: "Magic", social: "Social" };
 
 export function TraitChoices({
   traits,
+  spells,
+  classId,
   selectedTraitIds,
   selectedTraitChoices,
   onChange,
   onChoiceChange,
 }: {
   traits: CharacterTrait[];
+  spells: CharacterSpell[];
+  classId: string;
   selectedTraitIds: string[];
   selectedTraitChoices: Record<string, string>;
   onChange: (index: number, traitId: string) => void;
@@ -34,8 +38,11 @@ export function TraitChoices({
         {selected && <div><strong>{selected.name}</strong><span>{categoryLabels[selected.category]} trait</span><p>{selected.summary}</p>
           {selected.choice && <label>{selected.choice.label}
             <select value={selectedTraitChoices[selected.id] ?? ""} onChange={(event) => onChoiceChange(selected.id, event.target.value)}>
-              <option value="">Choose a skill</option>
-              {selected.choice.options.map((skill) => <option key={skill} value={skill}>{skill}</option>)}
+              <option value="">Choose {selected.choice.key === "spell" ? "a spell" : "a skill"}</option>
+              {(selected.choice.key === "classSkill"
+                ? selected.choice.options.map((value) => ({ id: value, name: value }))
+                : spells.filter((spell) => spell.levelByClass[classId] !== undefined).sort((left, right) => left.name.localeCompare(right.name))
+              ).map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}
             </select>
           </label>}
         </div>}

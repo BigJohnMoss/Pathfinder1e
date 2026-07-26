@@ -108,11 +108,19 @@ export interface CharacterTrait {
     saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>;
     skillBonuses?: Record<string, number>;
     classSkills?: string[];
+    chosenSpell?: {
+      casterLevel?: number;
+      metamagicLevelAdjustment?: number;
+    };
   };
   choice?: {
     key: "classSkill";
     label: string;
     options: string[];
+  } | {
+    key: "spell";
+    label: string;
+    optionSource: "spells";
   };
   source: SourceRef;
 }

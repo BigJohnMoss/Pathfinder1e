@@ -90,3 +90,17 @@ test("applies and persists a trait-specific class skill choice", async ({ page }
   await expect(page.getByLabel("Trait 1")).toHaveValue("mathematical-prodigy");
   await expect(page.getByLabel("Granted class skill")).toHaveValue("Knowledge (engineering)");
 });
+
+test("applies and persists a trait-specific spell choice", async ({ page }) => {
+  await page.getByRole("button", { name: "Options" }).click();
+  await page.getByLabel("Trait 1").selectOption("gifted-adept");
+  await page.getByLabel("Affected spell").selectOption("mage-hand");
+  await page.getByRole("button", { name: "Spells" }).click();
+  await page.getByLabel("Search spells").fill("Mage Hand");
+  await expect(page.getByText("Mage Hand").locator("..")).toContainText("trait: +1 caster level");
+  await page.getByRole("button", { name: "Save" }).click();
+  await page.reload();
+  await page.getByRole("button", { name: "Load" }).click();
+  await page.getByRole("button", { name: "Options" }).click();
+  await expect(page.getByLabel("Affected spell")).toHaveValue("mage-hand");
+});

@@ -4,11 +4,13 @@ import type { CharacterSpell } from "../../../packages/types/src/index.js";
 type Spell = CharacterSpell;
 type Slot = { level: number; base: number; bonus: number; count: number };
 type KnownLimit = { level: number; count: number };
+type SpellTraitBonuses = Record<string, { casterLevel: number; metamagicLevelAdjustment: number }>;
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function SpontaneousSpellbook({ spells, classId, className, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
+export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, className, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
   spells: Spell[];
+  spellTraitBonuses?: SpellTraitBonuses;
   classId: string;
   className: string;
   castingAbilityName: string;
@@ -65,7 +67,7 @@ export function SpontaneousSpellbook({ spells, classId, className, castingAbilit
           const full = knownCount(level) >= limitFor(level);
           const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
-            <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}</small></div>
+            <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}{spellTraitBonuses[spell.id]?.casterLevel ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level` : ""}{spellTraitBonuses[spell.id]?.metamagicLevelAdjustment ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment` : ""}</small></div>
             <div className="spell-count"><button type="button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><button type="button" aria-label={`Forget ${spell.name}`} disabled={!learned || bloodlineGranted} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{bloodlineGranted ? "Bloodline" : learned ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div>
           </article>;
         })}</div>
