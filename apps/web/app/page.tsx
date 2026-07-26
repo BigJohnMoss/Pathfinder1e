@@ -15,6 +15,7 @@ import { CharacterTabs, type CharacterTabId } from "./character-tabs";
 import { TraitChoices } from "./trait-choices";
 import { EquipmentPanel, equipmentArmorBonus, type CoinPurse, type InventoryEntry } from "./equipment-panel";
 import { LevelUpPanel } from "./level-up-panel";
+import { CharacterLibrary, characterLibraryKey, emptyCharacterLibrary, legacyCharacterKey, normalizeCharacterLibrary, type CharacterLibraryV1 } from "./character-library";
 import { abilityBoostCount, abilityNames, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, druidWildShapeUses, featBonuses, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSelectedTraitChoices, normalizeSelectedTraits, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass, traitBonuses } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
@@ -62,6 +63,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
   const [saveNotice, setSaveNotice] = useState("");
   const [showLevelUp, setShowLevelUp] = useState(false);
+  const [characterLibrary, setCharacterLibrary] = useState<CharacterLibraryV1>(emptyCharacterLibrary);
 
   const characterClass = classes.find((item) => item.id === classId) ?? classes[0];
   const ancestry = ancestries.find((item) => item.id === ancestryId) ?? ancestries[0];
@@ -200,6 +202,31 @@ export default function Home() {
   useEffect(() => setWildShapeUsed((current) => wildShapeMaximum === null ? 0 : Math.min(current, wildShapeMaximum)), [wildShapeMaximum]);
 
   const characterDraft: CharacterDraftV1 = { version: 1, name, classId, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, selectedFeatIds, selectedTraitIds, selectedTraitChoices, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), arcaneReservoir: reservoir ? reservoirPoints : null, bardicPerformanceUsed: classId === "bard" ? bardicPerformanceUsed : 0, wildShapeUsed: classId === "druid" ? wildShapeUsed : 0, inventory, coins };
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(characterLibraryKey);
+      const library = stored ? normalizeCharacterLibrary(JSON.parse(stored)) : emptyCharacterLibrary();
+      const legacy = localStorage.getItem(legacyCharacterKey);
+      if (library.characters.length === 0 && legacy) {
+        const draft = normalizeCharacterDraft(JSON.parse(legacy), { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id) });
+        if (draft) {
+          const id = globalThis.crypto?.randomUUID?.() ?? `character-${Date.now()}`;
+          const migrated = { version: 1 as const, activeCharacterId: id, characters: [{ id, updatedAt: new Date().toISOString(), draft }] };
+          localStorage.setItem(characterLibraryKey, JSON.stringify(migrated));
+          setCharacterLibrary(migrated);
+          setSaveNotice("Your previous save was added to the character library");
+          return;
+        }
+      }
+      setCharacterLibrary(library);
+    } catch {
+      setSaveNotice("Saved character library is invalid; starting with an empty library");
+    }
+  }, []);
+  const persistLibrary = (library: CharacterLibraryV1) => {
+    localStorage.setItem(characterLibraryKey, JSON.stringify(library));
+    setCharacterLibrary(library);
+  };
   const applyCharacterDraft = (value: unknown, successNotice: string) => {
     if (value && typeof value === "object" && "version" in value && value.version !== 1) { setSaveNotice("Unsupported character file version"); return null; }
     const draft = normalizeCharacterDraft(value, { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id) });
@@ -229,14 +256,48 @@ export default function Home() {
     setName(draft.name); setClassId(draft.classId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setSelectedFeatIds(draft.selectedFeatIds); setSelectedTraitIds(draftTraitIds); setSelectedTraitChoices(normalizeSelectedTraitChoices(draft.selectedTraitChoices, draftTraitIds, traits, { spells, classId: draft.classId })); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUses, draftCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : 0); setBardicPerformanceUsed(Math.min(draft.bardicPerformanceUsed, draftBardicPerformanceMaximum)); setWildShapeUsed(draftWildShapeMaximum === null ? 0 : Math.min(draft.wildShapeUsed, draftWildShapeMaximum)); setInventory(draft.inventory); setCoins(draft.coins); setSaveNotice(successNotice);
     return draft;
   };
-  const saveCharacter = () => { localStorage.setItem("pf1e-character-draft", JSON.stringify(characterDraft)); setSaveNotice("Saved locally"); };
-  const loadCharacter = () => { const saved = localStorage.getItem("pf1e-character-draft"); if (!saved) { setSaveNotice("No saved character"); return; } try { const draft = applyCharacterDraft(JSON.parse(saved), "Loaded saved character"); if (draft) localStorage.setItem("pf1e-character-draft", JSON.stringify(draft)); } catch { setSaveNotice("Saved character is invalid"); } };
+  const saveCharacter = () => {
+    const id = characterLibrary.activeCharacterId ?? (globalThis.crypto?.randomUUID?.() ?? `character-${Date.now()}`);
+    const entry = { id, updatedAt: new Date().toISOString(), draft: characterDraft };
+    persistLibrary({ version: 1, activeCharacterId: id, characters: [...characterLibrary.characters.filter((item) => item.id !== id), entry] });
+    localStorage.setItem(legacyCharacterKey, JSON.stringify(characterDraft));
+    setSaveNotice(`Saved ${characterDraft.name.trim() || "unnamed hero"} to your library`);
+  };
+  const loadCharacter = () => {
+    const active = characterLibrary.characters.find((entry) => entry.id === characterLibrary.activeCharacterId);
+    if (active) { applyCharacterDraft(active.draft, "Loaded saved character"); return; }
+    const saved = localStorage.getItem(legacyCharacterKey);
+    if (!saved) { setSaveNotice("No saved character"); return; }
+    try {
+      const draft = applyCharacterDraft(JSON.parse(saved), "Loaded saved character");
+      if (draft) {
+        const id = globalThis.crypto?.randomUUID?.() ?? `character-${Date.now()}`;
+        persistLibrary({ version: 1, activeCharacterId: id, characters: [{ id, updatedAt: new Date().toISOString(), draft }] });
+        localStorage.setItem(legacyCharacterKey, JSON.stringify(draft));
+      }
+    } catch { setSaveNotice("Saved character is invalid"); }
+  };
   const importCharacter = async (file: File) => {
     if (file.size > 1_000_000) { setSaveNotice("Character file is too large"); return; }
     try { applyCharacterDraft(JSON.parse(await file.text()), "Imported character"); }
     catch { setSaveNotice("Character file is invalid"); }
   };
-  const resetCharacter = () => { localStorage.removeItem("pf1e-character-draft"); setName(""); setClassId("arcanist"); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setSelectedFeatIds([]); setSelectedTraitIds([]); setSelectedTraitChoices({}); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSpellSlotUses({}); setReservoirPoints(3); setBardicPerformanceUsed(0); setWildShapeUsed(0); setInventory([]); setCoins({ cp: 0, sp: 0, gp: 0, pp: 0 }); setSaveNotice("Character reset"); };
+  const resetCharacter = () => { localStorage.removeItem(legacyCharacterKey); setName(""); setClassId("arcanist"); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setSelectedFeatIds([]); setSelectedTraitIds([]); setSelectedTraitChoices({}); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSpellSlotUses({}); setReservoirPoints(3); setBardicPerformanceUsed(0); setWildShapeUsed(0); setInventory([]); setCoins({ cp: 0, sp: 0, gp: 0, pp: 0 }); setSaveNotice("Character reset"); };
+  const newCharacter = () => { resetCharacter(); persistLibrary({ ...characterLibrary, activeCharacterId: null }); setSaveNotice("New character started; your library is unchanged"); };
+  const openLibraryCharacter = (entry: CharacterLibraryV1["characters"][number]) => {
+    const draft = applyCharacterDraft(entry.draft, `Opened ${entry.draft.name.trim() || "unnamed hero"}`);
+    if (draft) {
+      persistLibrary({ ...characterLibrary, activeCharacterId: entry.id });
+      localStorage.setItem(legacyCharacterKey, JSON.stringify(draft));
+    }
+  };
+  const deleteLibraryCharacter = (id: string) => {
+    const characters = characterLibrary.characters.filter((entry) => entry.id !== id);
+    const activeCharacterId = characterLibrary.activeCharacterId === id ? null : characterLibrary.activeCharacterId;
+    persistLibrary({ version: 1, activeCharacterId, characters });
+    if (!activeCharacterId) localStorage.removeItem(legacyCharacterKey);
+    setSaveNotice("Character deleted from your library");
+  };
   const exportCharacter = () => { const draft = { ...characterDraft, exportedAt: new Date().toISOString() }; const url = URL.createObjectURL(new Blob([JSON.stringify(draft, null, 2)], { type: "application/json" })); const link = document.createElement("a"); link.href = url; link.download = `${name.trim().replace(/[^a-z0-9]+/gi, "-").toLowerCase() || "pf1e-character"}.json`; link.click(); URL.revokeObjectURL(url); setSaveNotice("Character exported"); };
   const printCharacter = () => window.print();
 
@@ -248,7 +309,7 @@ export default function Home() {
     <section className="tab-panel" aria-live="polite">
       {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} pointBuyBudget={pointBuyBudget} pointBuySpent={pointBuy.spent} abilityBoosts={abilityBoosts} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} onPointBuyBudgetChange={setPointBuyBudget} onAbilityBoostChange={updateAbilityBoost} /><ProgressionSummary combat={combat} progression={progression} /></section>}
       {activeTab === "actions" && <CombatPanel combat={combat} modifierSources={selectedFeatBonuses.sources} conditionalModifiers={selectedTraitBonuses.conditionalModifiers} />}
-      {activeTab === "storage" && <EquipmentPanel strength={abilities.strength} strengthModifier={combat.abilityModifiers.strength} dexterityModifier={combat.abilityModifiers.dexterity} baseAttackBonus={progression.baseAttackBonus} weaponBonuses={selectedFeatBonuses.weaponBonuses} inventory={inventory} coins={coins} onInventoryChange={setInventory} onCoinsChange={setCoins} />}
+      {activeTab === "storage" && <div className="storage-workspace"><CharacterLibrary library={characterLibrary} classNames={Object.fromEntries(classes.map((item) => [item.id, item.name]))} ancestryNames={Object.fromEntries(ancestries.map((item) => [item.id, item.name]))} onOpen={openLibraryCharacter} onDelete={deleteLibraryCharacter} onNew={newCharacter} /><EquipmentPanel strength={abilities.strength} strengthModifier={combat.abilityModifiers.strength} dexterityModifier={combat.abilityModifiers.dexterity} baseAttackBonus={progression.baseAttackBonus} weaponBonuses={selectedFeatBonuses.weaponBonuses} inventory={inventory} coins={coins} onInventoryChange={setInventory} onCoinsChange={setCoins} /></div>}
       {activeTab === "spells" && (spontaneousCasting ? <SpontaneousSpellbook spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spontaneousCasting.slots} knownLimits={knownLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={bloodlineSpellIds} onKnownSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} onRefreshDay={refreshDay} /> : preparedCasting ? <Spellbook spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={preparedCasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={updateReservoir} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} /> : <p className="empty-tab">This class does not cast spells.</p>)}
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}

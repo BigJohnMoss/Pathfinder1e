@@ -34,6 +34,20 @@ test("saves and restores character details", async () => {
   assert.equal((name as HTMLInputElement).value, "Kyra");
   assert.match(screen.getByText("Loaded saved character").textContent ?? "", /Loaded/);
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").version, 1);
+  const library = JSON.parse(localStorage.getItem("pf1e-character-library") ?? "{}");
+  assert.equal(library.version, 1);
+  assert.equal(library.characters.length, 1);
+  assert.equal(library.characters[0].draft.name, "Kyra");
+});
+
+test("migrates the previous single save into the character library", async () => {
+  const legacy = { version: 1, name: "Legacy Kyra", classId: "cleric", ancestryId: "human", level: 3, humanAbility: "wisdom", baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 16, charisma: 12 }, pointBuyBudget: 15, abilityBoosts: [], selectedFeatIds: [], selectedTraitIds: [], selectedTraitChoices: {}, selectedFeatChoices: {}, skillRanks: {}, selectedOptions: {}, preparedSpells: [], spellSlotUses: {}, arcaneReservoir: null, bardicPerformanceUsed: 0, wildShapeUsed: 0, inventory: [], coins: { cp: 0, sp: 0, gp: 0, pp: 0 } };
+  localStorage.setItem("pf1e-character-draft", JSON.stringify(legacy));
+  render(<Home />);
+  assert.ok(await screen.findByText("Your previous save was added to the character library"));
+  await userEvent.click(screen.getByRole("button", { name: "Storage" }));
+  assert.ok(screen.getByText("Legacy Kyra"));
+  assert.equal(JSON.parse(localStorage.getItem("pf1e-character-library") ?? "{}").characters.length, 1);
 });
 
 test("imports a versioned character file and rejects unsupported versions", async () => {
