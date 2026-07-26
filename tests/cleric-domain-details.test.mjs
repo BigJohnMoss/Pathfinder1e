@@ -151,6 +151,30 @@ test("APG Evil and Fire subdomains expose complete parent-specific replacements"
   assert.equal(byId.get("subdomain-smoke").domainSpells[2].name, "stinking cloud");
 });
 
+test("APG Good and Healing subdomains expose complete parent-specific replacements", () => {
+  const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  const expected = [
+    ["subdomain-agathion", "domain-good", "Holy Lance", "Protective Aura"],
+    ["subdomain-archon-good", "domain-good", "Holy Lance", "Aura of Menace"],
+    ["subdomain-archon-law", "domain-law", "Staff of Order", "Aura of Menace"],
+    ["subdomain-azata-chaos", "domain-chaos", "Touch of Chaos", "Elysium's Call"],
+    ["subdomain-azata-good", "domain-good", "Touch of Good", "Elysium's Call"],
+    ["subdomain-restoration", "domain-healing", "Rebuke Death", "Restorative Touch"],
+    ["subdomain-resurrection", "domain-healing", "Healer's Blessing", "Gift of Life"]
+  ];
+  for (const [id, parentDomainId, replacesPower, replacementPower] of expected) {
+    const subdomain = byId.get(id);
+    assert.equal(subdomain.parentDomainId, parentDomainId);
+    assert.equal(subdomain.replacesPower, replacesPower);
+    assert.ok(subdomain.powers.some((power) => power.name === replacementPower));
+    assert.deepEqual(subdomain.domainSpells.map((spell) => spell.level), [1,2,3,4,5,6,7,8,9]);
+  }
+  assert.equal(byId.get("subdomain-archon-law").domainSpells[3].name, "order's wrath");
+  assert.equal(byId.get("subdomain-azata-chaos").domainSpells[3].name, "chaos hammer");
+  assert.equal(byId.get("subdomain-restoration").domainSpells[4].name, "break enchantment");
+  assert.equal(byId.get("subdomain-resurrection").domainSpells[8].name, "true resurrection");
+});
+
 test("Core domain detail records retain distinctive progressions", () => {
   const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
   assert.deepEqual(byId.get("domain-animal").powers.map((power) => [power.name, power.level]), [["Speak with Animals",1],["Animal Companion",4]]);

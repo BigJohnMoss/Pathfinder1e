@@ -187,6 +187,42 @@ test("Evil and Fire subdomains inherit access with parent-specific outsider vari
   assert.ok(screen.getByText("fiery body"));
 });
 
+test("Good and Healing subdomains inherit access with parent-specific outsider variants", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity); assert.ok(firstDomain); assert.ok(secondDomain);
+
+  await user.selectOptions(deity, "deity-desna");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-azata-chaos"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-azata-good"), true);
+  await user.selectOptions(firstDomain, "subdomain-azata-chaos");
+  assert.ok(screen.getByText("Elysium's Call"));
+  assert.ok(screen.getByText("chaos hammer"));
+  assert.equal((secondDomain.querySelector("option[value='domain-chaos']") as HTMLOptionElement).disabled, true);
+  assert.equal((secondDomain.querySelector("option[value='subdomain-azata-good']") as HTMLOptionElement).disabled, false);
+
+  await user.selectOptions(deity, "deity-iomedae");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-agathion"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-archon-good"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-archon-law"), true);
+  await user.selectOptions(firstDomain, "subdomain-archon-law");
+  assert.ok(screen.getByText("Aura of Menace"));
+  assert.ok(screen.getByText("order's wrath"));
+
+  await user.selectOptions(deity, "deity-sarenrae");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-restoration"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-resurrection"), true);
+  await user.selectOptions(firstDomain, "subdomain-resurrection");
+  assert.ok(screen.getByText("Gift of Life"));
+  assert.ok(screen.getByText("true resurrection"));
+  assert.equal((secondDomain.querySelector("option[value='domain-healing']") as HTMLOptionElement).disabled, true);
+});
+
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   const user = userEvent.setup();
   render(<Home />);
