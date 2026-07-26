@@ -90,3 +90,50 @@ a:focus-visible,
   outline: 3px solid #315e8a;
   outline-offset: 3px;
 }
+
+.favored-class-bonus {
+  background: #fff;
+  border: 1px solid #d7d0c0;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px #332b1e12;
+  grid-column: 1 / -1;
+  padding: 24px;
+}
+
+.favored-class-bonus h2 {
+  margin: .15em 0;
+}
+
+.favored-class-bonus > div:first-child > p:last-child {
+  color: #5b584f;
+}
+
+.favored-class-controls {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.favored-class-controls label {
+  color: #726c61;
+  display: grid;
+  font-size: .78rem;
+  font-weight: 800;
+  gap: 7px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.favored-class-controls input {
+  border: 1px solid #a29a89;
+  border-radius: 8px;
+  font: inherit;
+  padding: 10px;
+}
+
+@media (max-width: 540px) {
+  .favored-class-controls {
+    grid-template-columns: 1fr;
+  }
+}

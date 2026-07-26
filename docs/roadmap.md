@@ -78,7 +78,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - expanded bloodlines
 - mysteries and revelations
 - discoveries, talents and similar class option systems
-- favoured class bonuses
+- favoured class bonuses - in progress: base +1 hit point or +1 skill rank
+  allocation is mechanical, level-bounded, persistent, and covered in the UI
 
 ## Later milestone: Universal PF1e Builder
 

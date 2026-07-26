@@ -196,6 +196,8 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     baseAbilities: draft.baseAbilities,
     pointBuyBudget: [10, 15, 20, 25].includes(draft.pointBuyBudget) ? draft.pointBuyBudget : 15,
     abilityBoosts: normalizeAbilityBoosts(draft.abilityBoosts, draft.level),
+    favoredClassHitPoints: Number.isInteger(draft.favoredClassHitPoints) && draft.favoredClassHitPoints > 0 ? Math.min(draft.level, draft.favoredClassHitPoints) : 0,
+    favoredClassSkillRanks: Number.isInteger(draft.favoredClassSkillRanks) && draft.favoredClassSkillRanks > 0 ? Math.min(Math.max(0, draft.level - (Number.isInteger(draft.favoredClassHitPoints) && draft.favoredClassHitPoints > 0 ? Math.min(draft.level, draft.favoredClassHitPoints) : 0)), draft.favoredClassSkillRanks) : 0,
     selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
     selectedTraitIds: Array.isArray(draft.selectedTraitIds) ? draft.selectedTraitIds.filter(id => typeof id === "string") : [],
     selectedTraitChoices: isStringRecord(draft.selectedTraitChoices),

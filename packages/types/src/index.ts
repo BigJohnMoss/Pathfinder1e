@@ -16,6 +16,8 @@ export interface CharacterDraftV1 {
   baseAbilities: AbilityScores;
   pointBuyBudget: 10 | 15 | 20 | 25;
   abilityBoosts: AbilityName[];
+  favoredClassHitPoints: number;
+  favoredClassSkillRanks: number;
   selectedFeatIds: string[];
   selectedTraitIds: string[];
   selectedTraitChoices: Record<string, string>;

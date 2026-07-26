@@ -99,6 +99,34 @@ test("tracks point-buy costs and applies earned ability increases", async () => 
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").abilityBoosts[0], "dexterity");
 });
 
+test("allocates and persists favored class hit points and skill ranks", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  const baseSkillRanks = Number(
+    screen.getByText("Skill ranks").closest("article")?.querySelector("strong")?.textContent,
+  );
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  const baseHitPoints = Number(screen.getByText("Average HP").closest("div")?.querySelector("dd")?.textContent);
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  fireEvent.change(screen.getByLabelText("Favored class bonus hit points"), { target: { value: "1" } });
+  fireEvent.change(screen.getByLabelText("Favored class bonus skill ranks"), { target: { value: "2" } });
+  assert.match(document.querySelector(".favored-class-bonus .hint")?.textContent ?? "", /3 of 3 favored-class bonuses assigned/);
+  assert.equal(
+    Number(screen.getByText("Skill ranks").closest("article")?.querySelector("strong")?.textContent),
+    baseSkillRanks + 2,
+  );
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.equal(
+    Number(screen.getByText("Average HP").closest("div")?.querySelector("dd")?.textContent),
+    baseHitPoints + 1,
+  );
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.equal(saved.favoredClassHitPoints, 1);
+  assert.equal(saved.favoredClassSkillRanks, 2);
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
