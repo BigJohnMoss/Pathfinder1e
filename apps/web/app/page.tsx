@@ -15,7 +15,7 @@ import { CharacterTabs, type CharacterTabId } from "./character-tabs";
 import { TraitChoices } from "./trait-choices";
 import { EquipmentPanel, equipmentArmorBonus, type CoinPurse, type InventoryEntry } from "./equipment-panel";
 import { LevelUpPanel } from "./level-up-panel";
-import { abilityBoostCount, abilityNames, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, druidWildShapeUses, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSelectedTraitChoices, normalizeSelectedTraits, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass, traitBonuses } from "../../../packages/engine/src/index.js";
+import { abilityBoostCount, abilityNames, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, druidWildShapeUses, featBonuses, featPrerequisiteResults, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSelectedTraitChoices, normalizeSelectedTraits, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass, traitBonuses } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells, bloodlineClassSkills } from "../../../packages/engine/src/sorcerer-bloodlines.js";
@@ -91,10 +91,15 @@ export default function Home() {
     bonusFeats: ancestryBonusFeats
   }) : null, [abilities.intelligence, ancestry, ancestryBonusFeats, characterClass, level]);
   const baseCombat = useMemo(() => characterCombatStats(characterClass, level, abilities), [abilities, characterClass, level]);
+  const selectedClassFeatIds = useMemo(() => Object.values(selectedOptions).flatMap((optionId) => {
+    const option = optionGroups.flatMap((group) => group.options).find((candidate) => candidate.id === optionId);
+    return option?.featId ? [option.featId] : [];
+  }), [selectedOptions]);
+  const selectedFeatBonuses = useMemo(() => featBonuses([...selectedFeatIds, ...selectedClassFeatIds], feats), [selectedClassFeatIds, selectedFeatIds]);
   const combat = useMemo(() => {
     const armorBonus = equipmentArmorBonus(inventory);
-    return { ...baseCombat, initiative: baseCombat.initiative + selectedTraitBonuses.initiative, saves: { fortitude: baseCombat.saves.fortitude + selectedTraitBonuses.saves.fortitude, reflex: baseCombat.saves.reflex + selectedTraitBonuses.saves.reflex, will: baseCombat.saves.will + selectedTraitBonuses.saves.will }, armorClass: { normal: baseCombat.armorClass.normal + armorBonus, touch: baseCombat.armorClass.touch, flatFooted: baseCombat.armorClass.flatFooted + armorBonus } };
-  }, [baseCombat, inventory, selectedTraitBonuses]);
+    return { ...baseCombat, initiative: baseCombat.initiative + selectedTraitBonuses.initiative + selectedFeatBonuses.initiative, saves: { fortitude: baseCombat.saves.fortitude + selectedTraitBonuses.saves.fortitude, reflex: baseCombat.saves.reflex + selectedTraitBonuses.saves.reflex, will: baseCombat.saves.will + selectedTraitBonuses.saves.will }, armorClass: { normal: baseCombat.armorClass.normal + armorBonus, touch: baseCombat.armorClass.touch, flatFooted: baseCombat.armorClass.flatFooted + armorBonus } };
+  }, [baseCombat, inventory, selectedFeatBonuses, selectedTraitBonuses]);
   const featSlots = useMemo(() => Array.from({ length: progression.featSlots }, (_, index) => ({ index, name: index < ancestryBonusFeats ? `${ancestry.name} bonus feat` : `Feat ${index - ancestryBonusFeats + 1}` })), [ancestry.name, ancestryBonusFeats, progression.featSlots]);
   const levelUpGains = useMemo(() => {
     if (!nextProgression) return [];

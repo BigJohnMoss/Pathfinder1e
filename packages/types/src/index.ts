@@ -64,7 +64,7 @@ export type Prerequisite =
   | { type: "matching-choice"; featId: string; key: string }
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
-export interface SelectableOption { id:string; groupId:string; name:string; classIds:string[]; minimumLevel:number; prerequisites:Prerequisite[]; benefit:string; source:SourceRef; }
+export interface SelectableOption { id:string; groupId:string; name:string; classIds:string[]; minimumLevel:number; prerequisites:Prerequisite[]; benefit:string; source:SourceRef; featId?: string; }
 
 export interface CharacterAncestry {
   id: string;
@@ -89,6 +89,9 @@ export interface CharacterFeat {
   benefit: string;
   prerequisites: Prerequisite[];
   source: SourceRef;
+  effects?: {
+    initiative?: number;
+  };
   choice?: {
     key: string;
     label: string;

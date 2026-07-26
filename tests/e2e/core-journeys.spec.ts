@@ -104,3 +104,79 @@ test("applies and persists a trait-specific spell choice", async ({ page }) => {
   await page.getByRole("button", { name: "Options" }).click();
   await expect(page.getByLabel("Affected spell")).toHaveValue("mage-hand");
 });
+
+test("builds a complete Fighter through level 20 and preserves the user journey", async ({ page }) => {
+  await page.getByLabel("Character name").fill("Aldric Twenty");
+  await page.getByLabel("Class").selectOption("fighter");
+  await page.getByLabel("Strength base score").fill("16");
+  await page.getByLabel("Constitution base score").fill("14");
+
+  await page.getByRole("button", { name: "Storage" }).click();
+  await page.getByLabel("Equipment catalogue").selectOption("longsword");
+  await page.getByLabel("Equipment catalogue").selectOption("chain-shirt");
+  await page.getByLabel("Equipment catalogue").selectOption("heavy-wooden-shield");
+  await page.locator("article").filter({ hasText: "Longsword" }).getByRole("checkbox", { name: "Equipped" }).check();
+  await page.locator("article").filter({ hasText: "Chain shirt" }).getByRole("checkbox", { name: "Equipped" }).check();
+  await page.locator("article").filter({ hasText: "Heavy wooden shield" }).getByRole("checkbox", { name: "Equipped" }).check();
+  await page.getByLabel("GP").fill("150");
+
+  await page.getByRole("button", { name: "Skills" }).click();
+  for (const skill of ["Climb", "Ride", "Survival", "Swim"]) await page.getByLabel(`${skill} ranks`).fill("1");
+  await expect(page.getByLabel("0 skill ranks remaining")).toBeVisible();
+
+  await page.getByRole("button", { name: "Feats" }).click();
+  await page.getByLabel("Human bonus feat").selectOption("power-attack");
+  await page.getByLabel("Feat 1").selectOption("toughness");
+  await page.getByRole("button", { name: "Features" }).click();
+  await page.getByLabel("Bonus Combat Feat level 1").selectOption("fighter-improved-initiative");
+  await page.getByRole("button", { name: "Options" }).click();
+  await page.getByLabel("Trait 1").selectOption("courageous");
+  await page.getByLabel("Trait 2").selectOption("caretaker");
+
+  for (let nextLevel = 2; nextLevel <= 20; nextLevel += 1) {
+    await page.getByRole("button", { name: `Review level ${nextLevel}` }).click();
+    await expect(page.getByRole("heading", { name: `Review Fighter level ${nextLevel}` })).toBeVisible();
+    await page.getByRole("button", { name: `Advance to level ${nextLevel}` }).click();
+    await expect(page.getByLabel(nextLevel < 20 ? `Level Review level ${nextLevel + 1}` : "Level")).toHaveValue(String(nextLevel));
+    await expect(page.getByText(`Advanced to level ${nextLevel}. Review newly unlocked choices.`)).toBeVisible();
+  }
+
+  await page.getByRole("button", { name: "Actions" }).click();
+  await expect(page.getByText("Initiative").locator("..")).toContainText("+4");
+  await expect(page.getByText("AC / touch / flat-footed").locator("..")).toContainText("16 / 10 / 16");
+  await expect(page.getByText("CMB / CMD").locator("..")).toContainText("+25 / 35");
+  await expect(page.getByRole("heading", { name: "Conditional trait modifiers" })).toBeVisible();
+
+  await page.getByRole("button", { name: "Save" }).click();
+  await page.reload();
+  await page.getByRole("button", { name: "Load" }).click();
+  await expect(page.getByLabel("Character name")).toHaveValue("Aldric Twenty");
+  await expect(page.getByLabel("Level")).toHaveValue("20");
+  await page.getByRole("button", { name: "Storage" }).click();
+  await expect(page.getByLabel("GP")).toHaveValue("150");
+  await expect(page.locator("article").filter({ hasText: "Chain shirt" }).getByRole("checkbox", { name: "Equipped" })).toBeChecked();
+  await page.getByRole("button", { name: "Options" }).click();
+  await expect(page.getByLabel("Trait 1")).toHaveValue("courageous");
+  await expect(page.getByLabel("Trait 2")).toHaveValue("caretaker");
+
+  const downloadPromise = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Export" }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toBe("aldric-twenty.json");
+  await expect(page.getByText("Character exported")).toBeVisible();
+
+  await page.evaluate(() => {
+    window.print = () => document.documentElement.setAttribute("data-print-invoked", "true");
+  });
+  await page.getByRole("button", { name: "Print" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-print-invoked", "true");
+
+  const exportedPath = await download.path();
+  expect(exportedPath).toBeTruthy();
+  await page.getByRole("button", { name: "Reset" }).click();
+  await expect(page.getByLabel("Level Review level 2")).toHaveValue("1");
+  await page.getByLabel("Import character file").setInputFiles(exportedPath!);
+  await expect(page.getByText("Imported character")).toBeVisible();
+  await expect(page.getByLabel("Character name")).toHaveValue("Aldric Twenty");
+  await expect(page.getByLabel("Level")).toHaveValue("20");
+});
