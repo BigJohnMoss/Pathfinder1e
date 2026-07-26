@@ -1,0 +1,1 @@
+{"id":"courageous","name":"Courageous","category":"combat","summary":"Gain a +2 trait bonus on saving throws against fear effects.","effects":{"conditionalModifiers":[{"label":"Saving throws","bonus":2,"condition":"against fear effects"}]},"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedNewRules.html"}}

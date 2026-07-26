@@ -10,6 +10,7 @@
   margin: 24px 0 8px;
   padding: 16px;
 }
+.conditional-modifiers{margin:20px 0;padding:16px;border:1px solid #e3ddd0;border-radius:12px;background:#fffdf8}.conditional-modifiers h3{margin:0 0 10px;font:1.15rem Georgia,serif}.conditional-modifiers ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}.conditional-modifiers li{display:grid;gap:3px}.conditional-modifiers li span{color:#5b584f;font-size:.84rem}
 
 .daily-resource > div {
   display: flex;

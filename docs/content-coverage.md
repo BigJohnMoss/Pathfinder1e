@@ -7,7 +7,7 @@ This document distinguishes records present in the data bundle from systems that
 - 12 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
-- 19 selectable basic traits
+- 23 selectable basic traits
 - 2,048 spells
 
 ## Playable classes
