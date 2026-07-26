@@ -1,0 +1,110 @@
+{
+  "source": {"title": "Advanced Player's Guide", "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"},
+  "subdomains": [
+    {
+      "id": "subdomain-daemon", "groupId": "cleric-domains", "name": "Daemon Subdomain (Evil)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Scythe of Evil with Whispering Evil and replace the Evil domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 88, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#daemon-subdomain"},
+      "parentDomainId": "domain-evil", "replacesPower": "Scythe of Evil",
+      "powers": [
+        {"name": "Touch of Evil", "level": 1, "summary": "As a melee touch attack, sicken a creature for rounds equal to half cleric level. While sickened this way, it counts as good for spells with the evil descriptor. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Whispering Evil", "level": 8, "summary": "As a standard action, fascinate enemies that fail a Will save within a 30-foot emanation while you continue the litany. Usable for rounds per day equal to cleric level; rounds need not be consecutive."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "cause fear"}, {"level": 2, "name": "align weapon (evil only)"}, {"level": 3, "name": "vampiric touch"},
+        {"level": 4, "name": "unholy blight"}, {"level": 5, "name": "dispel good"}, {"level": 6, "name": "planar binding (daemons only)"},
+        {"level": 7, "name": "blasphemy"}, {"level": 8, "name": "unholy aura"}, {"level": 9, "name": "summon monster IX (evil only)"}
+      ]
+    },
+    {
+      "id": "subdomain-demon-chaos", "groupId": "cleric-domains", "name": "Demon Subdomain (Chaos)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Touch of Chaos with Fury of the Abyss and replace the Chaos domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 88, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#demon-subdomain"},
+      "parentDomainId": "domain-chaos", "replacesPower": "Touch of Chaos",
+      "powers": [
+        {"name": "Fury of the Abyss", "level": 1, "summary": "As a swift action for 1 round, gain an enhancement bonus equal to half cleric level on melee attacks, melee damage, and combat maneuvers, but take a -2 AC penalty. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Chaos Blade", "level": 8, "summary": "As a standard action, give a touched weapon the anarchic special ability for rounds equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "doom"}, {"level": 2, "name": "align weapon (chaos only)"}, {"level": 3, "name": "rage"},
+        {"level": 4, "name": "chaos hammer"}, {"level": 5, "name": "dispel law"}, {"level": 6, "name": "planar binding (demons only)"},
+        {"level": 7, "name": "word of chaos"}, {"level": 8, "name": "cloak of chaos"}, {"level": 9, "name": "summon monster IX (chaos only)"}
+      ]
+    },
+    {
+      "id": "subdomain-demon-evil", "groupId": "cleric-domains", "name": "Demon Subdomain (Evil)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Touch of Evil with Fury of the Abyss and replace the Evil domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 88, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#demon-subdomain"},
+      "parentDomainId": "domain-evil", "replacesPower": "Touch of Evil",
+      "powers": [
+        {"name": "Fury of the Abyss", "level": 1, "summary": "As a swift action for 1 round, gain an enhancement bonus equal to half cleric level on melee attacks, melee damage, and combat maneuvers, but take a -2 AC penalty. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Scythe of Evil", "level": 8, "summary": "As a standard action, give a touched weapon the unholy special ability for rounds equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "doom"}, {"level": 2, "name": "align weapon (evil only)"}, {"level": 3, "name": "rage"},
+        {"level": 4, "name": "unholy blight"}, {"level": 5, "name": "dispel good"}, {"level": 6, "name": "planar binding (demons only)"},
+        {"level": 7, "name": "blasphemy"}, {"level": 8, "name": "unholy aura"}, {"level": 9, "name": "summon monster IX (evil only)"}
+      ]
+    },
+    {
+      "id": "subdomain-devil-evil", "groupId": "cleric-domains", "name": "Devil Subdomain (Evil)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Touch of Evil with Hell's Corruption and replace the Evil domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 89, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#devil-subdomain"},
+      "parentDomainId": "domain-evil", "replacesPower": "Touch of Evil",
+      "powers": [
+        {"name": "Hell's Corruption", "level": 1, "summary": "With a melee touch attack, impose a -2 penalty on all saves and force opposed skill checks to be rolled twice, taking the worse result, for rounds equal to half cleric level. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Scythe of Evil", "level": 8, "summary": "As a standard action, give a touched weapon the unholy special ability for rounds equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "command"}, {"level": 2, "name": "align weapon (evil only)"}, {"level": 3, "name": "suggestion"},
+        {"level": 4, "name": "unholy blight"}, {"level": 5, "name": "dispel good"}, {"level": 6, "name": "planar binding (devils only)"},
+        {"level": 7, "name": "blasphemy"}, {"level": 8, "name": "unholy aura"}, {"level": 9, "name": "summon monster IX (evil only)"}
+      ]
+    },
+    {
+      "id": "subdomain-devil-law", "groupId": "cleric-domains", "name": "Devil Subdomain (Law)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Touch of Law with Hell's Corruption and replace the Law domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 89, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#devil-subdomain"},
+      "parentDomainId": "domain-law", "replacesPower": "Touch of Law",
+      "powers": [
+        {"name": "Hell's Corruption", "level": 1, "summary": "With a melee touch attack, impose a -2 penalty on all saves and force opposed skill checks to be rolled twice, taking the worse result, for rounds equal to half cleric level. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Staff of Order", "level": 8, "summary": "As a standard action, give a touched weapon the axiomatic special ability for rounds equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "command"}, {"level": 2, "name": "align weapon (law only)"}, {"level": 3, "name": "suggestion"},
+        {"level": 4, "name": "order's wrath"}, {"level": 5, "name": "dispel chaos"}, {"level": 6, "name": "planar binding (devils only)"},
+        {"level": 7, "name": "dictum"}, {"level": 8, "name": "shield of law"}, {"level": 9, "name": "summon monster IX (law only)"}
+      ]
+    },
+    {
+      "id": "subdomain-ash", "groupId": "cleric-domains", "name": "Ash Subdomain (Fire)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Fire Resistance with Wall of Ashes and replace the Fire domain's 7th- and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 86, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#ash-subdomain"},
+      "parentDomainId": "domain-fire", "replacesPower": "Fire Resistance",
+      "powers": [
+        {"name": "Fire Bolt", "level": 1, "summary": "As a standard action, make a ranged touch attack against a foe within 30 feet. It deals 1d6 fire damage plus 1 for every two cleric levels. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Wall of Ashes", "level": 8, "summary": "Create a sight-blocking wall within 100 feet for minutes per day equal to cleric level. Creatures passing through may be blinded, and the ash reveals invisible creatures in or adjacent to the wall."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "burning hands"}, {"level": 2, "name": "produce flame"}, {"level": 3, "name": "fireball"},
+        {"level": 4, "name": "wall of fire"}, {"level": 5, "name": "fire shield"}, {"level": 6, "name": "fire seeds"},
+        {"level": 7, "name": "disintegrate"}, {"level": 8, "name": "incendiary cloud"}, {"level": 9, "name": "fiery body"}
+      ]
+    },
+    {
+      "id": "subdomain-smoke", "groupId": "cleric-domains", "name": "Smoke Subdomain (Fire)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Fire Bolt with Cloud of Smoke and replace the Fire domain's 2nd- and 3rd-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 95, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#smoke-subdomain"},
+      "parentDomainId": "domain-fire", "replacesPower": "Fire Bolt",
+      "powers": [
+        {"name": "Cloud of Smoke", "level": 1, "summary": "As a standard action, create a 5-foot-radius smoke cloud within 30 feet. It grants concealment and penalizes attacks and Perception while creatures remain inside and for 1 round after. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Fire Resistance", "level": 6, "summary": "Gain fire resistance 10 at 6th level, increasing to 20 at 12th level and immunity at 20th level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "burning hands"}, {"level": 2, "name": "pyrotechnics"}, {"level": 3, "name": "stinking cloud"},
+        {"level": 4, "name": "wall of fire"}, {"level": 5, "name": "fire shield"}, {"level": 6, "name": "fire seeds"},
+        {"level": 7, "name": "elemental body IV (fire only)"}, {"level": 8, "name": "incendiary cloud"}, {"level": 9, "name": "elemental swarm (fire only)"}
+      ]
+    }
+  ]
+}

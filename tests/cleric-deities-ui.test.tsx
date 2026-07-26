@@ -155,6 +155,38 @@ test("Death and Destruction subdomains inherit deity access and exclude their pa
   assert.equal((secondDomain.querySelector("option[value='subdomain-rage']") as HTMLOptionElement).disabled, true);
 });
 
+test("Evil and Fire subdomains inherit access with parent-specific outsider variants", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity); assert.ok(firstDomain); assert.ok(secondDomain);
+
+  await user.selectOptions(deity, "deity-lamashtu");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-demon-chaos"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-demon-evil"), true);
+  await user.selectOptions(firstDomain, "subdomain-demon-chaos");
+  assert.ok(screen.getByText("Fury of the Abyss"));
+  assert.ok(screen.getByText("chaos hammer"));
+  assert.equal((secondDomain.querySelector("option[value='domain-chaos']") as HTMLOptionElement).disabled, true);
+  assert.equal((secondDomain.querySelector("option[value='subdomain-demon-evil']") as HTMLOptionElement).disabled, false);
+
+  await user.selectOptions(deity, "deity-asmodeus");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-devil-evil"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-devil-law"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-ash"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-smoke"), true);
+  await user.selectOptions(firstDomain, "subdomain-devil-law");
+  assert.ok(screen.getByText("Hell's Corruption"));
+  assert.ok(screen.getByText("order's wrath"));
+  await user.selectOptions(secondDomain, "subdomain-ash");
+  assert.ok(screen.getByText("Wall of Ashes"));
+  assert.ok(screen.getByText("fiery body"));
+});
+
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   const user = userEvent.setup();
   render(<Home />);

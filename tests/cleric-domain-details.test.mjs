@@ -126,6 +126,31 @@ test("APG Death and Destruction subdomains expose complete replacements", () => 
   assert.equal(byId.get("subdomain-rage").domainSpells[5].name, "moonstruck");
 });
 
+test("APG Evil and Fire subdomains expose complete parent-specific replacements", () => {
+  const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  const expected = [
+    ["subdomain-daemon", "domain-evil", "Scythe of Evil", "Whispering Evil"],
+    ["subdomain-demon-chaos", "domain-chaos", "Touch of Chaos", "Fury of the Abyss"],
+    ["subdomain-demon-evil", "domain-evil", "Touch of Evil", "Fury of the Abyss"],
+    ["subdomain-devil-evil", "domain-evil", "Touch of Evil", "Hell's Corruption"],
+    ["subdomain-devil-law", "domain-law", "Touch of Law", "Hell's Corruption"],
+    ["subdomain-ash", "domain-fire", "Fire Resistance", "Wall of Ashes"],
+    ["subdomain-smoke", "domain-fire", "Fire Bolt", "Cloud of Smoke"]
+  ];
+  for (const [id, parentDomainId, replacesPower, replacementPower] of expected) {
+    const subdomain = byId.get(id);
+    assert.equal(subdomain.parentDomainId, parentDomainId);
+    assert.equal(subdomain.replacesPower, replacesPower);
+    assert.ok(subdomain.powers.some((power) => power.name === replacementPower));
+    assert.deepEqual(subdomain.domainSpells.map((spell) => spell.level), [1,2,3,4,5,6,7,8,9]);
+  }
+  assert.equal(byId.get("subdomain-demon-chaos").domainSpells[3].name, "chaos hammer");
+  assert.equal(byId.get("subdomain-demon-evil").domainSpells[3].name, "unholy blight");
+  assert.equal(byId.get("subdomain-devil-law").domainSpells[3].name, "order's wrath");
+  assert.equal(byId.get("subdomain-ash").domainSpells[8].name, "fiery body");
+  assert.equal(byId.get("subdomain-smoke").domainSpells[2].name, "stinking cloud");
+});
+
 test("Core domain detail records retain distinctive progressions", () => {
   const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
   assert.deepEqual(byId.get("domain-animal").powers.map((power) => [power.name, power.level]), [["Speak with Animals",1],["Animal Companion",4]]);
