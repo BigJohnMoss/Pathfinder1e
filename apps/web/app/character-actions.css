@@ -1,1 +1,11 @@
-.character-actions{display:grid;align-content:end;gap:7px}.character-actions>span{color:#fff5e4;font-size:.85rem;font-weight:700}.character-actions>div{display:flex;flex-wrap:wrap;gap:6px}.character-actions button{padding:9px 12px;border:1px solid #c9b99d;border-radius:8px;background:#fff7e8;color:#522020;cursor:pointer;font:700 .78rem Inter,ui-sans-serif,system-ui,sans-serif}.character-actions button:hover{background:#f1dcc0}.character-actions .danger-button{border-color:#a86464;background:transparent;color:#ffdede}.character-actions small{min-height:1em;color:#e6c89d}
+.character-actions{display:grid;align-content:end;gap:7px}
+.character-actions>span{color:#fff5e4;font-size:.85rem;font-weight:700}
+.character-actions>div{display:flex;flex-wrap:wrap;gap:8px}
+.character-actions button{padding:9px 12px;border:1px solid #c9b99d;border-radius:8px;background:#fff7e8;color:#522020;cursor:pointer;font:700 .78rem Inter,ui-sans-serif,system-ui,sans-serif}
+.character-actions button:hover{background:#f1dcc0}
+.character-actions .danger-button{border-color:#a86464;background:transparent;color:#ffdede}
+.character-actions small{min-height:1em;color:#e6c89d}
+
+/* Ensure action buttons meet minimum touch target and focus */
+.character-actions button{min-width:44px;min-height:44px}
+.character-actions button:focus-visible{outline:3px solid #315e8a;outline-offset:3px}
