@@ -93,6 +93,36 @@ test("cleric domains follow the selected deity and show their powers and spells"
   assert.equal((liveFirstDomain.querySelector("option[value='subdomain-lust']") as HTMLOptionElement).disabled, true);
 });
 
+test("Community and Darkness subdomains inherit deity access and exclude their parent", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity);
+  assert.ok(firstDomain);
+  assert.ok(secondDomain);
+
+  await user.selectOptions(deity, "deity-erastil");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-family"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-home"), true);
+  await user.selectOptions(firstDomain, "subdomain-family");
+  assert.ok(screen.getByText("Binding Ties"));
+  assert.ok(screen.getByText("create food and water"));
+  assert.equal((secondDomain.querySelector("option[value='domain-community']") as HTMLOptionElement).disabled, true);
+  assert.equal((secondDomain.querySelector("option[value='subdomain-home']") as HTMLOptionElement).disabled, true);
+
+  await user.selectOptions(deity, "deity-zon-kuthon");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-loss"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-night"), true);
+  await user.selectOptions(firstDomain, "subdomain-night");
+  assert.ok(screen.getByText("Night Hunter"));
+  assert.ok(screen.getAllByText("sleep").length >= 1);
+});
+
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   const user = userEvent.setup();
   render(<Home />);

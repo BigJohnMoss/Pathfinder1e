@@ -1,0 +1,92 @@
+{
+  "source": {
+    "title": "Advanced Player's Guide",
+    "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"
+  },
+  "subdomains": [
+    {
+      "id": "subdomain-family",
+      "groupId": "cleric-domains",
+      "name": "Family Subdomain (Community)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Calming Touch with Binding Ties and replace the Community domain's 2nd- and 3rd-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 88, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#family-subdomain"},
+      "parentDomainId": "domain-community",
+      "replacesPower": "Calming Touch",
+      "powers": [
+        {"name": "Binding Ties", "level": 1, "summary": "As a standard action, transfer one condition from a touched ally to yourself for rounds equal to cleric level, making the ally immune to that condition during the transfer. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Unity", "level": 8, "summary": "As an immediate action when an effect targets you and allies within 30 feet, allow each affected ally to use your saving throw result instead of their own. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "bless"}, {"level": 2, "name": "calm emotions"}, {"level": 3, "name": "create food and water"},
+        {"level": 4, "name": "imbue with spell ability"}, {"level": 5, "name": "telepathic bond"}, {"level": 6, "name": "heroes' feast"},
+        {"level": 7, "name": "refuge"}, {"level": 8, "name": "mass cure critical wounds"}, {"level": 9, "name": "miracle"}
+      ]
+    },
+    {
+      "id": "subdomain-home",
+      "groupId": "cleric-domains",
+      "name": "Home Subdomain (Community)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Unity with Guarded Hearth and replace the Community domain's 1st-, 3rd-, and 7th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 90, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#home-subdomain"},
+      "parentDomainId": "domain-community",
+      "replacesPower": "Unity",
+      "powers": [
+        {"name": "Calming Touch", "level": 1, "summary": "As a standard action, touch a creature to heal 1d6 nonlethal damage plus 1 per cleric level and remove fatigued, shaken, and sickened. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Guarded Hearth", "level": 8, "summary": "Create a ward once per day that alerts designated creatures to intruders and grants them a Wisdom-based sacred bonus on attacks and saves while they remain inside."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "alarm"}, {"level": 2, "name": "shield other"}, {"level": 3, "name": "glyph of warding"},
+        {"level": 4, "name": "imbue with spell ability"}, {"level": 5, "name": "telepathic bond"}, {"level": 6, "name": "heroes' feast"},
+        {"level": 7, "name": "guards and wards"}, {"level": 8, "name": "mass cure critical wounds"}, {"level": 9, "name": "miracle"}
+      ]
+    },
+    {
+      "id": "subdomain-loss",
+      "groupId": "cleric-domains",
+      "name": "Loss Subdomain (Darkness)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Eyes of Darkness with Aura of Forgetfulness and replace the Darkness domain's 5th-, 6th-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 91, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#loss-subdomain"},
+      "parentDomainId": "domain-darkness",
+      "replacesPower": "Eyes of Darkness",
+      "powers": [
+        {"name": "Touch of Darkness", "level": 1, "summary": "As a melee touch attack, make a creature treat all other creatures as concealed for rounds equal to half cleric level. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Aura of Forgetfulness", "level": 8, "summary": "Emit a 30-foot aura for rounds per day equal to cleric level. Failed Will saves erase memories of time in the aura, and spellcasters risk losing prepared spells or slots each round."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "obscuring mist"}, {"level": 2, "name": "blindness/deafness (blindness only)"}, {"level": 3, "name": "deeper darkness"},
+        {"level": 4, "name": "shadow conjuration"}, {"level": 5, "name": "enervation"}, {"level": 6, "name": "modify memory"},
+        {"level": 7, "name": "power word blind"}, {"level": 8, "name": "greater shadow evocation"}, {"level": 9, "name": "energy drain"}
+      ]
+    },
+    {
+      "id": "subdomain-night",
+      "groupId": "cleric-domains",
+      "name": "Night Subdomain (Darkness)",
+      "classIds": ["cleric"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Replace Touch of Darkness with Night Hunter and replace the Darkness domain's 1st- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 92, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#night-subdomain"},
+      "parentDomainId": "domain-darkness",
+      "replacesPower": "Touch of Darkness",
+      "powers": [
+        {"name": "Night Hunter", "level": 1, "summary": "As a standard action in dim light or darkness, become invisible to creatures without darkvision for rounds equal to half cleric level. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Eyes of Darkness", "level": 8, "summary": "See normally regardless of lighting, including absolute and magical darkness, for rounds per day equal to half cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "sleep"}, {"level": 2, "name": "blindness/deafness (blindness only)"}, {"level": 3, "name": "deeper darkness"},
+        {"level": 4, "name": "shadow conjuration"}, {"level": 5, "name": "summon monster V (1d3 shadows)"}, {"level": 6, "name": "nightmare"},
+        {"level": 7, "name": "power word blind"}, {"level": 8, "name": "greater shadow evocation"}, {"level": 9, "name": "shades"}
+      ]
+    }
+  ]
+}
