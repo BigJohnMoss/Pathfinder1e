@@ -33,12 +33,13 @@ successful load. The current generated catalogue includes:
 - 7 selectable core ancestries
 - 424 selectable feats
 - all 40 APG basic traits across combat, faith, magic, and social categories
+- reusable archetype feature replacement with the complete APG Fighter Archer
 - 2,048 spells
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
 All eleven Core classes are playable through level 20. Development now proceeds
 through the **Expanded Character Options** milestone. All APG basic traits are playable;
-archetypes and non-basic trait categories remain future work.
+additional archetypes and non-basic trait categories remain future work.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 

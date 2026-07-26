@@ -179,7 +179,7 @@ export function spellcastingProgression(characterClass, level, { abilityScore = 
   };
 }
 
-export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = null } = {}) {
+export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = null, archetypeIds = null } = {}) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const draft = value;
   if (draft.version !== undefined && draft.version !== 1) return null;
@@ -189,6 +189,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     version: 1,
     name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",
     classId: draft.classId,
+    archetypeId: typeof draft.archetypeId === "string" && (!archetypeIds || archetypeIds.includes(draft.archetypeId)) ? draft.archetypeId : "",
     ancestryId: typeof draft.ancestryId === "string" && (!ancestryIds || ancestryIds.includes(draft.ancestryId)) ? draft.ancestryId : "human",
     level: draft.level,
     humanAbility: abilityNames.includes(draft.humanAbility) ? draft.humanAbility : "intelligence",
@@ -209,6 +210,18 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     inventory: Array.isArray(draft.inventory) ? draft.inventory.filter(entry => entry && typeof entry.itemId === "string" && Number.isInteger(entry.quantity) && entry.quantity > 0).map(entry => ({ itemId: entry.itemId, quantity: Math.min(999, entry.quantity), equipped: entry.equipped === true })) : [],
     coins: Object.fromEntries(["cp", "sp", "gp", "pp"].map(coin => [coin, Number.isInteger(draft.coins?.[coin]) && draft.coins[coin] >= 0 ? draft.coins[coin] : 0]))
   };
+}
+
+export function applyArchetype(characterClass, archetype) {
+  if (!archetype || archetype.classId !== characterClass.id) return characterClass;
+  const featureIds = new Set(archetype.replacements.flatMap(replacement => replacement.featureIds ?? []));
+  const progressionKeys = new Set(archetype.replacements.flatMap(replacement => replacement.progressionKeys ?? []));
+  const overrides = new Map((archetype.featureOverrides ?? []).map(override => [override.featureId, override]));
+  const retained = characterClass.features
+    .filter(feature => !featureIds.has(feature.id) && !progressionKeys.has(feature.progressionKey))
+    .map(feature => overrides.has(feature.id) ? { ...feature, summary: overrides.get(feature.id).summary } : feature);
+  const replacements = archetype.replacements.flatMap(replacement => replacement.features);
+  return { ...characterClass, name: `${characterClass.name} (${archetype.name})`, features: [...retained, ...replacements].sort((left, right) => left.level - right.level || left.name.localeCompare(right.name)) };
 }
 
 export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2) {

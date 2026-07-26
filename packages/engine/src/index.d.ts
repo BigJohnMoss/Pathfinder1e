@@ -1,4 +1,4 @@
-import type { CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterTrait } from "../../types/src/index.js";
+import type { CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterTrait } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
@@ -74,7 +74,8 @@ export { druidWildShapeUses } from "./druid-wild-shape.js";
 export function bonusSpellsPerDay(abilityScore: number, maximumSpellLevel: number): Array<{ level: number; count: number }>;
 export function spellSaveDC(abilityScore: number, spellLevel: number): number;
 export function spellcastingProgression(characterClass: CharacterClass & { spellcasting?: { ability: string; castingType: string; slotsByLevel: number[][]; preparedByLevel?: number[][]; spellLevelUnlocks?: number[]; preparesFromSlots?: boolean } }, level: number, options?: { abilityScore?: number }): { ability: string; castingType: string; maximumSpellLevel: number; slots: Array<{ level: number; base: number; bonus: number; count: number }>; prepared: Array<{ level: number; count: number }> } | null;
-export function normalizeCharacterDraft(value: unknown, options?: { classIds?: string[] | null; ancestryIds?: string[] | null }): CharacterDraftV1 | null;
+export function normalizeCharacterDraft(value: unknown, options?: { classIds?: string[] | null; ancestryIds?: string[] | null; archetypeIds?: string[] | null }): CharacterDraftV1 | null;
+export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype): CharacterClass;
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function featSlotsAtLevel(level: number, options?: { bonusFeats?: number }): number;

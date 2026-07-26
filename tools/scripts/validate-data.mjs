@@ -122,6 +122,19 @@ for (const url of await jsonFiles("classes/")) {
     if (f.choiceRequired && !f.optionGroupId) errors.push(`${file}: ${f.id} requires a choice but has no optionGroupId`);
   }
 }
+for (const url of await jsonFiles("archetypes/")) {
+  const archetype=await load(url); const file=url.pathname.split('/').pop(); checkId(archetype,file); checkSource(archetype,file);
+  if(!classIds.has(archetype.classId)) errors.push(`${file}: references missing class ${archetype.classId}`);
+  if(typeof archetype.summary!=="string"||!archetype.summary.trim()||!Array.isArray(archetype.replacements)||archetype.replacements.length===0) errors.push(`${file}: missing summary or replacements`);
+  const replacementFeatureIds=new Set();
+  for(const replacement of archetype.replacements??[]) {
+    if((replacement.featureIds?.length??0)+(replacement.progressionKeys?.length??0)===0||!Array.isArray(replacement.features)||replacement.features.length===0) errors.push(`${file}: invalid replacement group`);
+    for(const feature of replacement.features??[]) {
+      if(replacementFeatureIds.has(feature.id)) errors.push(`${file}: duplicate replacement feature ${feature.id}`); replacementFeatureIds.add(feature.id);
+      if(!Number.isInteger(feature.level)||feature.level<1||feature.level>20||typeof feature.summary!=="string"||!feature.summary.trim()) errors.push(`${file}: invalid replacement feature ${feature.id}`);
+    }
+  }
+}
 for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const raw of g.options??[]) {const o={...g.optionDefaults,...raw}; checkId(o,`${file}:${o.id}`); optionIds.add(o.id); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); if(o.featId !== undefined && (typeof o.featId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.featId))) errors.push(`${file}:${o.id} has invalid featId`); checkPrerequisites(o.prerequisites, `${file}:${o.id}`);} }
 for (const url of await jsonFiles("bloodline-details/")) { const details=await load(url); const file=url.pathname.split('/').pop(); if(!Array.isArray(details.bloodlines)) errors.push(`${file}: bloodlines must be an array`); else for(const bloodline of details.bloodlines) checkBloodlineDetail(bloodline,file); }
 for (const directory of ["races/","feats/","traits/","spells/"]) for (const url of await jsonFiles(directory)) { const r=await load(url); const file=url.pathname.split('/').pop(); checkId(r,file); checkSource(r,file); if(directory === "feats/") { checkPrerequisites(r.prerequisites, file); checkChoice(r.choice, file); checkFeatEffects(r.effects, file); } if(directory === "traits/") { if(!["combat","faith","magic","social"].includes(r.category)) errors.push(`${file}: invalid trait category`); if(typeof r.summary !== "string" || !r.summary.trim()) errors.push(`${file}: missing trait summary`); if(!r.effects || typeof r.effects !== "object" || Array.isArray(r.effects)) errors.push(`${file}: missing trait effects`); for(const modifier of r.effects?.conditionalModifiers ?? []) if(!modifier || typeof modifier.label !== "string" || !modifier.label.trim() || typeof modifier.condition !== "string" || !modifier.condition.trim() || (modifier.bonus !== undefined && typeof modifier.bonus !== "number")) errors.push(`${file}: invalid conditional modifier`); } }

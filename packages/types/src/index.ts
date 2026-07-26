@@ -9,6 +9,7 @@ export interface CharacterDraftV1 {
   exportedAt?: string;
   name: string;
   classId: string;
+  archetypeId: string;
   ancestryId: string;
   level: number;
   humanAbility: AbilityName;
@@ -53,6 +54,19 @@ export interface CharacterClass {
     spellLevelUnlocks?: number[];
     preparesFromSlots?: boolean;
   };
+}
+export interface CharacterArchetype {
+  id: string;
+  name: string;
+  classId: string;
+  summary: string;
+  replacements: Array<{
+    featureIds?: string[];
+    progressionKeys?: string[];
+    features: ClassFeatureOccurrence[];
+  }>;
+  featureOverrides?: Array<{ featureId: string; summary: string }>;
+  source: SourceRef;
 }
 export type Prerequisite =
   | { type: "level"|"bab"|"caster-level"; minimum: number }
@@ -185,6 +199,7 @@ export interface CharacterSpell {
 export interface GeneratedDataBundle {
   generatedAt: string;
   classes: CharacterClass[];
+  archetypes: CharacterArchetype[];
   races: CharacterAncestry[];
   optionGroups: CharacterOptionGroup[];
   feats: CharacterFeat[];
