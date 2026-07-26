@@ -178,6 +178,35 @@ test("applies a Fighter bonus feat's mechanical effects to combat statistics", a
   assert.equal(screen.getByText("Initiative").closest("div")?.querySelector("dd")?.textContent, "+4");
 });
 
+test("applies Core save and hit point feat effects with visible sources", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.click(screen.getByRole("button", { name: "Feats" }));
+  await user.selectOptions(screen.getByLabelText("Human bonus feat"), "toughness");
+  await user.selectOptions(screen.getByLabelText("Feat 1"), "great-fortitude");
+  await user.click(screen.getByRole("button", { name: "Basic info" }));
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+4");
+  await user.click(screen.getByRole("button", { name: "Actions" }));
+  assert.equal(screen.getByText("Average HP").closest("div")?.querySelector("dd")?.textContent, "13");
+  const sources = screen.getByText("Applied feat modifiers").closest("section");
+  assert.match(sources?.textContent ?? "", /\+3 Hit pointsToughness/);
+  assert.match(sources?.textContent ?? "", /\+2 Fortitude saveGreat Fortitude/);
+});
+
+test("applies selected weapon feat effects to matching equipment", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Strength base score"), { target: { value: "13" } });
+  await user.click(screen.getByRole("button", { name: "Feats" }));
+  await user.selectOptions(screen.getByLabelText("Human bonus feat"), "weapon-focus");
+  await user.type(screen.getByLabelText("Weapon Focus Weapon"), "Longsword");
+  await user.click(screen.getByRole("button", { name: "Storage" }));
+  await user.selectOptions(screen.getByLabelText("Equipment catalogue"), "longsword");
+  assert.match(screen.getByText("Longsword").closest("article")?.textContent ?? "", /Attack \+3/);
+});
+
 test("makes Monk available with its full-save progression", async () => {
   const user = userEvent.setup();
   render(<Home />);

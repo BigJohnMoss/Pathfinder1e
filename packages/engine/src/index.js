@@ -269,12 +269,62 @@ export function traitBonuses(selectedTraitIds, traits, selectedTraitChoices = {}
   return result;
 }
 
-export function featBonuses(selectedFeatIds, feats) {
+export function featBonuses(selectedFeatIds, feats, selectedFeatChoices = {}, { level = 1, skillRanks = {} } = {}) {
   const selected = new Set(Array.isArray(selectedFeatIds) ? selectedFeatIds : []);
-  const result = { initiative: 0 };
+  const result = {
+    initiative: 0,
+    saves: { fortitude: 0, reflex: 0, will: 0 },
+    armorClass: { normal: 0, touch: 0, flatFooted: 0 },
+    hitPoints: 0,
+    skillBonuses: {},
+    weaponBonuses: {},
+    sources: []
+  };
+  const addSource = (source, target, bonus, choice) => {
+    if (bonus) result.sources.push({ source, target, bonus, ...(choice ? { choice } : {}) });
+  };
   for (const feat of feats) {
     if (!selected.has(feat.id)) continue;
-    result.initiative += feat.effects?.initiative ?? 0;
+    const effects = feat.effects ?? {};
+    result.initiative += effects.initiative ?? 0;
+    addSource(feat.name, "Initiative", effects.initiative ?? 0);
+    for (const save of Object.keys(result.saves)) {
+      const bonus = effects.saves?.[save] ?? 0;
+      result.saves[save] += bonus;
+      addSource(feat.name, `${save[0].toUpperCase()}${save.slice(1)} save`, bonus);
+    }
+    for (const armorClass of Object.keys(result.armorClass)) {
+      const bonus = effects.armorClass?.[armorClass] ?? 0;
+      result.armorClass[armorClass] += bonus;
+      addSource(feat.name, armorClass === "normal" ? "AC" : armorClass === "touch" ? "Touch AC" : "Flat-footed AC", bonus);
+    }
+    if (effects.hitPoints) {
+      const bonus = Math.max(effects.hitPoints.minimum, level * effects.hitPoints.perLevel);
+      result.hitPoints += bonus;
+      addSource(feat.name, "Hit points", bonus);
+    }
+    for (const [skill, bonus] of Object.entries(effects.skillBonuses ?? {})) {
+      result.skillBonuses[skill] = (result.skillBonuses[skill] ?? 0) + bonus;
+      addSource(feat.name, `${skill} checks`, bonus);
+    }
+    const choice = selectedFeatChoices[feat.id];
+    if (choice && effects.chosenSkill) {
+      const ranks = skillRanks[choice] ?? 0;
+      const bonus = effects.chosenSkill.rankThreshold && ranks >= effects.chosenSkill.rankThreshold.minimum
+        ? effects.chosenSkill.rankThreshold.bonus
+        : effects.chosenSkill.bonus;
+      result.skillBonuses[choice] = (result.skillBonuses[choice] ?? 0) + bonus;
+      addSource(feat.name, `${choice} checks`, bonus, choice);
+    }
+    if (choice && effects.chosenWeapon) {
+      const key = choice.trim().toLowerCase();
+      const current = result.weaponBonuses[key] ?? { attack: 0, damage: 0 };
+      const attack = effects.chosenWeapon.attack ?? 0;
+      const damage = effects.chosenWeapon.damage ?? 0;
+      result.weaponBonuses[key] = { attack: current.attack + attack, damage: current.damage + damage };
+      addSource(feat.name, "Weapon attacks", attack, choice);
+      addSource(feat.name, "Weapon damage", damage, choice);
+    }
   }
   return result;
 }

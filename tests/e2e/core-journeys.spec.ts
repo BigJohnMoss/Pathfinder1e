@@ -142,9 +142,17 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
   }
 
   await page.getByRole("button", { name: "Actions" }).click();
-  await expect(page.getByText("Initiative").locator("..")).toContainText("+4");
-  await expect(page.getByText("AC / touch / flat-footed").locator("..")).toContainText("16 / 10 / 16");
-  await expect(page.getByText("CMB / CMD").locator("..")).toContainText("+25 / 35");
+  const coreStatistics = page
+    .getByRole("heading", { name: "Core statistics" })
+    .locator("..")
+    .locator("dl");
+  await expect(coreStatistics.getByText("Initiative").locator("..")).toContainText("+4");
+  await expect(
+    coreStatistics.getByText("AC / touch / flat-footed").locator(".."),
+  ).toContainText("16 / 10 / 16");
+  await expect(coreStatistics.getByText("CMB / CMD").locator("..")).toContainText(
+    "+25 / 35",
+  );
   await expect(page.getByRole("heading", { name: "Conditional trait modifiers" })).toBeVisible();
 
   await page.getByRole("button", { name: "Save" }).click();

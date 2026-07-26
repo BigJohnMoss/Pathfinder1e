@@ -26,11 +26,12 @@ export const equipmentArmorBonus = (inventory: InventoryEntry[]) => inventory.re
 
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
 
-export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, baseAttackBonus, inventory, coins, onInventoryChange, onCoinsChange }: {
+export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, baseAttackBonus, weaponBonuses = {}, inventory, coins, onInventoryChange, onCoinsChange }: {
   strength: number;
   strengthModifier: number;
   dexterityModifier: number;
   baseAttackBonus: number;
+  weaponBonuses?: Record<string, { attack: number; damage: number }>;
   inventory: InventoryEntry[];
   coins: CoinPurse;
   onInventoryChange: (inventory: InventoryEntry[]) => void;
@@ -66,8 +67,10 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
       const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
       if (!item) return null;
       const equippable = item.category !== "gear";
-      const attack = item.damage ? baseAttackBonus + (item.ranged ? dexterityModifier : strengthModifier) : null;
-      return <article key={entry.itemId}><div><strong>{item.name}</strong><span>{item.category} · {item.weight * entry.quantity} lb. · {item.costGp * entry.quantity} gp</span>{attack !== null && <small>Attack {signed(attack)} · Damage {item.damage}{!item.ranged && strengthModifier !== 0 ? ` ${signed(strengthModifier)}` : ""} · Critical {item.critical ?? "×2"}{item.range ? ` · Range ${item.range} ft.` : ""}</small>}</div><label>Qty<input aria-label={`${item.name} quantity`} type="number" min="1" max="999" value={entry.quantity} onChange={(event) => updateEntry(entry.itemId, { quantity: Math.max(1, Math.min(999, Number.parseInt(event.target.value, 10) || 1)) })} /></label>{equippable && <label className="equip-toggle"><input type="checkbox" checked={entry.equipped} onChange={(event) => equip(entry, item, event.target.checked)} />Equipped</label>}<button type="button" onClick={() => removeEntry(entry.itemId)}>Remove</button></article>;
+      const featBonus = weaponBonuses[item.id] ?? weaponBonuses[item.name.toLowerCase()] ?? { attack: 0, damage: 0 };
+      const attack = item.damage ? baseAttackBonus + (item.ranged ? dexterityModifier : strengthModifier) + featBonus.attack : null;
+      const damageBonus = (item.ranged ? 0 : strengthModifier) + featBonus.damage;
+      return <article key={entry.itemId}><div><strong>{item.name}</strong><span>{item.category} · {item.weight * entry.quantity} lb. · {item.costGp * entry.quantity} gp</span>{attack !== null && <small>Attack {signed(attack)} · Damage {item.damage}{damageBonus !== 0 ? ` ${signed(damageBonus)}` : ""} · Critical {item.critical ?? "×2"}{item.range ? ` · Range ${item.range} ft.` : ""}</small>}</div><label>Qty<input aria-label={`${item.name} quantity`} type="number" min="1" max="999" value={entry.quantity} onChange={(event) => updateEntry(entry.itemId, { quantity: Math.max(1, Math.min(999, Number.parseInt(event.target.value, 10) || 1)) })} /></label>{equippable && <label className="equip-toggle"><input type="checkbox" checked={entry.equipped} onChange={(event) => equip(entry, item, event.target.checked)} />Equipped</label>}<button type="button" onClick={() => removeEntry(entry.itemId)}>Remove</button></article>;
     })}</div>}
   </section>;
 }
