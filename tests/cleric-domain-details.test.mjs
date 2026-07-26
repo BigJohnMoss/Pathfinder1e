@@ -65,6 +65,25 @@ test("APG Animal and Artifice subdomains expose complete replacements", () => {
   assert.equal(byId.get("subdomain-toil").domainSpells[4].name, "waves of fatigue");
 });
 
+test("APG Chaos and Charm subdomains expose complete replacements", () => {
+  const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  const expected = [
+    ["subdomain-protean", "domain-chaos", "Chaos Blade", "Aura of Chaos"],
+    ["subdomain-love", "domain-charm", "Dazing Touch", "Adoration"],
+    ["subdomain-lust", "domain-charm", "Charming Smile", "Anything to Please"]
+  ];
+  for (const [id, parentDomainId, replacesPower, replacementPower] of expected) {
+    const subdomain = byId.get(id);
+    assert.equal(subdomain.parentDomainId, parentDomainId);
+    assert.equal(subdomain.replacesPower, replacesPower);
+    assert.ok(subdomain.powers.some((power) => power.name === replacementPower));
+    assert.deepEqual(subdomain.domainSpells.map((spell) => spell.level), [1,2,3,4,5,6,7,8,9]);
+  }
+  assert.equal(byId.get("subdomain-protean").domainSpells[5].name, "planar binding (proteans only)");
+  assert.equal(byId.get("subdomain-love").domainSpells[7].name, "euphoric tranquility");
+  assert.equal(byId.get("subdomain-lust").domainSpells[3].name, "confusion");
+});
+
 test("Core domain detail records retain distinctive progressions", () => {
   const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
   assert.deepEqual(byId.get("domain-animal").powers.map((power) => [power.name, power.level]), [["Speak with Animals",1],["Animal Companion",4]]);
