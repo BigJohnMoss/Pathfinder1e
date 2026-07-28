@@ -260,6 +260,32 @@ test("uses the highest multiclass caster level for feat prerequisites", async ()
   assert.equal((bonusFeat as HTMLSelectElement).value, "craft-magic-arms-and-armor");
 });
 
+test("builds, calculates, and restores a three-class character", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "15" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "rogue");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "4" } });
+  await user.click(screen.getByRole("button", { name: "Add another class" }));
+  await user.selectOptions(screen.getByLabelText("Additional class 2"), "monk");
+  fireEvent.change(screen.getByLabelText("Additional class 2 levels"), { target: { value: "3" } });
+
+  assert.equal(screen.getByText("BAB").closest("article")?.querySelector("strong")?.textContent, "+13");
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+10");
+  assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+9");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+6");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByRole("heading", { name: "Fighter 8 / Rogue 4 / Monk 3 features" }));
+
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Remove Monk" }));
+  assert.equal(screen.queryByLabelText("Additional class 2"), null);
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await waitFor(() => assert.equal((screen.getByLabelText("Additional class 2") as HTMLSelectElement).value, "monk"));
+  assert.equal((screen.getByLabelText("Additional class 2 levels") as HTMLInputElement).value, "3");
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
