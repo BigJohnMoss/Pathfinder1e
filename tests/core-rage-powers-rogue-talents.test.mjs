@@ -1,10 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { optionGroups } from "../packages/data/src/index.js";
+import { readFile } from "node:fs/promises";
 import { availableOptions } from "../packages/engine/src/index.js";
 
-const ragePowers = optionGroups.find((group) => group.id === "rage-powers");
-const rogueTalents = optionGroups.find((group) => group.id === "rogue-talents");
+const read = async (path) => JSON.parse(await readFile(new URL(path, import.meta.url), "utf8"));
+const ragePowers = await read("../packages/data/src/options/rage-powers.json");
+const rogueTalents = await read("../packages/data/src/options/rogue-talents.json");
 
 test("the complete Core rage-power catalogue is available at the correct level gates", () => {
   assert.equal(ragePowers.options.length, 28);
@@ -25,4 +26,3 @@ test("the complete Core rogue-talent catalogue separates basic and advanced tale
   assert.equal(rogueTalents.options.find((option) => option.id === "feat").repeatable, true);
   assert.equal(rogueTalents.options.find((option) => option.id === "skill-mastery").repeatable, true);
 });
-
