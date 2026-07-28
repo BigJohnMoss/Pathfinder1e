@@ -257,7 +257,11 @@ export default function Home() {
     const featureClassId = "classId" in feature && typeof feature.classId === "string" ? feature.classId : characterClass.id;
     const featureClassLevel = classLevelMap[featureClassId] ?? primaryClassLevel;
     const featureCharacterClass = progressionClasses.find((item) => item.id === featureClassId);
-    const baseOptions = group && featureClassId === "druid" && group.id === "ranger-animal-companions"
+    const baseOptions = group && feature.id === "sacred-servant-deity-1"
+      ? group.options.filter((option) => ["lawful-good", "lawful-neutral", "neutral-good"].includes(option.alignment ?? ""))
+      : group && feature.id.startsWith("sacred-servant-domain-")
+        ? group.options
+        : group && featureClassId === "druid" && group.id === "ranger-animal-companions"
       ? group.options.filter((option) => option.minimumLevel <= featureClassLevel)
       : group && featureClassId === "druid" && group.id === "cleric-domains"
         ? group.options.filter((option) => (featureCharacterClass?.druidDomainIds ?? ["domain-air", "domain-animal", "domain-earth", "domain-fire", "domain-plant", "domain-water", "domain-weather"]).includes(option.id))
