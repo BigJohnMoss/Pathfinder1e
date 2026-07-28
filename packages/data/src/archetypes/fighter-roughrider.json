@@ -1,0 +1,25 @@
+{
+  "id":"fighter-roughrider","name":"Roughrider","classId":"fighter",
+  "summary":"A mounted specialist whose practiced bond improves both rider and steed through charges, mobile full attacks, and heavy barding.",
+  "replacements":[
+    {"progressionKeys":["bravery"],"features":[
+      {"id":"roughrider-steadfast-mount-2","name":"Steadfast Mount +1","level":2,"type":"scaling","summary":"After one hour of practice, your mount gains +1 dodge AC and +1 morale on saves while you are mounted or adjacent.","progressionKey":"roughrider-steadfast-mount","scaling":"+1"},
+      {"id":"roughrider-steadfast-mount-6","name":"Steadfast Mount +2","level":6,"type":"scaling","summary":"Increase Steadfast Mount to +2.","progressionKey":"roughrider-steadfast-mount","scaling":"+2"},
+      {"id":"roughrider-steadfast-mount-10","name":"Steadfast Mount +3","level":10,"type":"scaling","summary":"Increase Steadfast Mount to +3.","progressionKey":"roughrider-steadfast-mount","scaling":"+3"},
+      {"id":"roughrider-steadfast-mount-14","name":"Steadfast Mount +4","level":14,"type":"scaling","summary":"Increase Steadfast Mount to +4.","progressionKey":"roughrider-steadfast-mount","scaling":"+4"},
+      {"id":"roughrider-steadfast-mount-18","name":"Steadfast Mount +5","level":18,"type":"scaling","summary":"Increase Steadfast Mount to +5.","progressionKey":"roughrider-steadfast-mount","scaling":"+5"}]},
+    {"featureIds":["armor-training-3"],"features":[{"id":"roughrider-armored-charger-3","name":"Armored Charger","level":3,"type":"core","summary":"Ignore armor check penalties on Ride; your mount keeps its speed with a medium load or medium barding."}]},
+    {"progressionKeys":["weapon-training"],"features":[
+      {"id":"roughrider-mounted-mettle-5","name":"Mounted Mettle +1","level":5,"type":"scaling","summary":"You and your mount gain +1 on attack and damage rolls while mounted or adjacent.","progressionKey":"roughrider-mounted-mettle","scaling":"+1"},
+      {"id":"roughrider-mounted-mettle-9","name":"Mounted Mettle +2","level":9,"type":"scaling","summary":"Increase Mounted Mettle to +2.","progressionKey":"roughrider-mounted-mettle","scaling":"+2"},
+      {"id":"roughrider-mounted-mettle-13","name":"Mounted Mettle +3","level":13,"type":"scaling","summary":"Increase Mounted Mettle to +3.","progressionKey":"roughrider-mounted-mettle","scaling":"+3"},
+      {"id":"roughrider-mounted-mettle-17","name":"Mounted Mettle +4","level":17,"type":"scaling","summary":"Increase Mounted Mettle to +4.","progressionKey":"roughrider-mounted-mettle","scaling":"+4"}]},
+    {"featureIds":["armor-training-7"],"features":[{"id":"roughrider-leap-saddle-7","name":"Leap from the Saddle","level":7,"type":"core","summary":"After your mount moves once, make a DC 20 fast dismount to take a full attack."}]},
+    {"featureIds":["armor-training-11"],"features":[{"id":"roughrider-relentless-steed-11","name":"Relentless Steed","level":11,"type":"core","summary":"Your mount keeps its speed in heavy barding or under a heavy load; reroll one Ride check or mount save per day, plus once per four levels beyond 11th."}]},
+    {"featureIds":["armor-training-15"],"features":[
+      {"id":"roughrider-ride-them-down-15","name":"Ride Them Down","level":15,"type":"core","summary":"During one mount move, make a full attack at any points along the movement; Trample can replace attacks with overruns."},
+      {"id":"roughrider-unavoidable-onslaught-15","name":"Unavoidable Onslaught","level":15,"type":"core","summary":"Friendly creatures and difficult terrain no longer block your mounted charge."}]},
+    {"featureIds":["armor-mastery-19"],"features":[{"id":"roughrider-indomitable-steed-19","name":"Indomitable Steed","level":19,"type":"core","summary":"You and your steed gain DR 5/— while you are mounted."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":107,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#roughrider"}
+}

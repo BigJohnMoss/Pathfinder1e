@@ -1,0 +1,22 @@
+{
+  "id":"fighter-shielded-fighter","name":"Shielded Fighter","classId":"fighter",
+  "summary":"A shield specialist who blends offense and defense, shares protection, controls flanking lanes, and masters shield resilience.",
+  "replacements":[
+    {"progressionKeys":["armor-training"],"features":[
+      {"id":"shielded-active-defense-3","name":"Active Defense +1","level":3,"type":"scaling","summary":"While wielding a shield and fighting defensively, using Combat Expertise, or taking total defense, gain +1 dodge AC and share it with adjacent allies.","progressionKey":"shielded-active-defense","scaling":"+1"},
+      {"id":"shielded-active-defense-7","name":"Active Defense +2","level":7,"type":"scaling","summary":"Increase Active Defense to +2.","progressionKey":"shielded-active-defense","scaling":"+2"},
+      {"id":"shielded-active-defense-11","name":"Active Defense +3","level":11,"type":"scaling","summary":"Increase Active Defense to +3.","progressionKey":"shielded-active-defense","scaling":"+3"},
+      {"id":"shielded-active-defense-15","name":"Active Defense +4","level":15,"type":"scaling","summary":"Increase Active Defense to +4.","progressionKey":"shielded-active-defense","scaling":"+4"}]},
+    {"progressionKeys":["weapon-training"],"features":[
+      {"id":"shielded-shield-fighter-5","name":"Shield Fighter +1","level":5,"type":"scaling","summary":"Gain +1 on shield-bash attack and damage rolls and alternate weapon and shield attacks without gaining extra attacks or two-weapon penalties.","progressionKey":"shielded-shield-fighter","scaling":"+1"},
+      {"id":"shielded-shield-buffet-9","name":"Shield Buffet","level":9,"type":"core","summary":"As a move action, make a maneuver check to give an adjacent enemy -2 on attacks against you and -2 AC against your attacks."},
+      {"id":"shielded-shield-fighter-9","name":"Shield Fighter +2","level":9,"type":"scaling","summary":"Increase Shield Fighter to +2.","progressionKey":"shielded-shield-fighter","scaling":"+2"},
+      {"id":"shielded-shield-buffet-13","name":"Swift Shield Buffet","level":13,"type":"scaling","summary":"Use Shield Buffet as a swift action.","progressionKey":"shielded-shield-buffet","scaling":"swift action"},
+      {"id":"shielded-shield-fighter-13","name":"Shield Fighter +3","level":13,"type":"scaling","summary":"Increase Shield Fighter to +3.","progressionKey":"shielded-shield-fighter","scaling":"+3"},
+      {"id":"shielded-shield-guard-17","name":"Shield Guard","level":17,"type":"core","summary":"Designate adjacent squares based on shield size; enemies there cannot flank you or contribute to flanking."},
+      {"id":"shielded-shield-fighter-17","name":"Shield Fighter +4","level":17,"type":"scaling","summary":"Increase Shield Fighter to +4.","progressionKey":"shielded-shield-fighter","scaling":"+4"}]},
+    {"featureIds":["armor-mastery-19"],"features":[{"id":"shielded-shield-mastery-19","name":"Shield Mastery","level":19,"type":"core","summary":"Gain DR 5/— while wielding a shield."}]},
+    {"featureIds":["weapon-mastery-20"],"features":[{"id":"shielded-shield-ward-20","name":"Shield Ward","level":20,"type":"capstone","summary":"Gain evasion with a shield, add its base shield bonus to Reflex saves and touch AC, and make it immune to disarm and sunder."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":108,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#shielded-fighter"}
+}
