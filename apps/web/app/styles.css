@@ -178,7 +178,7 @@ a:focus-visible,
   display: grid;
   gap: 10px;
   grid-column: 1 / -1;
-  grid-template-columns: minmax(180px, 1fr) minmax(150px, .55fr) auto;
+  grid-template-columns: minmax(180px, 1fr) minmax(140px, .45fr) minmax(180px, .8fr) auto;
   padding: 12px;
 }
 
