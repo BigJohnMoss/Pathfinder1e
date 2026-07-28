@@ -1,0 +1,24 @@
+{
+  "id":"fighter-weapon-master","name":"Weapon Master","classId":"fighter",
+  "summary":"A specialist devoted to one weapon who gains exceptional reliability, defense, and critical performance with it.",
+  "replacements":[
+    {"progressionKeys":["bravery"],"features":[
+      {"id":"weapon-master-guard-2","name":"Weapon Guard +1","level":2,"type":"scaling","summary":"With your chosen weapon, gain +1 CMD against disarm and sunder and +1 on saves against effects targeting it.","progressionKey":"weapon-master-guard","scaling":"+1"},
+      {"id":"weapon-master-guard-6","name":"Weapon Guard +2","level":6,"type":"scaling","summary":"Increase Weapon Guard to +2.","progressionKey":"weapon-master-guard","scaling":"+2"},
+      {"id":"weapon-master-guard-10","name":"Weapon Guard +3","level":10,"type":"scaling","summary":"Increase Weapon Guard to +3.","progressionKey":"weapon-master-guard","scaling":"+3"},
+      {"id":"weapon-master-guard-14","name":"Weapon Guard +4","level":14,"type":"scaling","summary":"Increase Weapon Guard to +4.","progressionKey":"weapon-master-guard","scaling":"+4"},
+      {"id":"weapon-master-guard-18","name":"Weapon Guard +5","level":18,"type":"scaling","summary":"Increase Weapon Guard to +5.","progressionKey":"weapon-master-guard","scaling":"+5"}]},
+    {"progressionKeys":["armor-training"],"features":[
+      {"id":"weapon-master-training-3","name":"Chosen Weapon Training +1","level":3,"type":"scaling","summary":"Gain +1 on attack and damage rolls with your chosen weapon.","progressionKey":"weapon-master-training","scaling":"+1"},
+      {"id":"weapon-master-training-7","name":"Chosen Weapon Training +2","level":7,"type":"scaling","summary":"Increase Chosen Weapon Training to +2.","progressionKey":"weapon-master-training","scaling":"+2"},
+      {"id":"weapon-master-training-11","name":"Chosen Weapon Training +3","level":11,"type":"scaling","summary":"Increase Chosen Weapon Training to +3.","progressionKey":"weapon-master-training","scaling":"+3"},
+      {"id":"weapon-master-training-15","name":"Chosen Weapon Training +4","level":15,"type":"scaling","summary":"Increase Chosen Weapon Training to +4.","progressionKey":"weapon-master-training","scaling":"+4"}]},
+    {"progressionKeys":["weapon-training"],"features":[
+      {"id":"weapon-master-reliable-strike-5","name":"Reliable Strike","level":5,"type":"core","summary":"Immediately reroll an attack, critical confirmation, miss chance, or damage roll with your chosen weapon once per day, plus once per five levels beyond 5th."},
+      {"id":"weapon-master-mirror-move-9","name":"Mirror Move","level":9,"type":"core","summary":"Add your chosen weapon training bonus as insight AC when attacked by that weapon."},
+      {"id":"weapon-master-deadly-critical-13","name":"Deadly Critical","level":13,"type":"core","summary":"Immediately increase your chosen weapon's critical multiplier by 1 after confirming a critical, once per day plus once per three levels beyond 13th."},
+      {"id":"weapon-master-critical-specialist-17","name":"Critical Specialist","level":17,"type":"core","summary":"Increase save DCs of critical-hit effects from your chosen weapon by 4."}]},
+    {"featureIds":["armor-mastery-19"],"features":[{"id":"weapon-master-unstoppable-strike-19","name":"Unstoppable Strike","level":19,"type":"core","summary":"As a standard action, attack touch AC with your chosen weapon and ignore damage reduction or hardness."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":110,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#weapon-master"}
+}
