@@ -85,7 +85,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
   and Superstitious, while Totem Warrior is delivered through the complete,
   mutually exclusive totem rage-power families; APG Bard coverage is complete
   with Arcane Duelist, Archivist, Court Bard, Detective, Magician, Sandman,
-  Savage Skald, Sea Singer, and Street Performer
+  Savage Skald, Sea Singer, and Street Performer; APG Druid coverage is
+  complete with Aquatic, Arctic, Blight, Cave, Desert, Jungle, Mountain,
+  Plains, Swamp, and Urban Druid
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,

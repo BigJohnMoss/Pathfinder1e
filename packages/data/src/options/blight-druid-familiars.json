@@ -1,0 +1,18 @@
+{
+  "id":"blight-druid-familiars",
+  "name":"Blight Druid Familiars",
+  "classIds":["druid"],
+  "options":[
+    {
+      "id":"blight-druid-familiar",
+      "groupId":"blight-druid-familiars",
+      "name":"Wizard-style Familiar",
+      "classIds":["druid"],
+      "minimumLevel":1,
+      "prerequisites":[],
+      "benefit":"Choose a Core familiar that advances using your Druid level.",
+      "choice":{"key":"familiar","label":"Familiar","options":[{"id":"bat","name":"Bat"},{"id":"cat","name":"Cat"},{"id":"hawk","name":"Hawk"},{"id":"lizard","name":"Lizard"},{"id":"monkey","name":"Monkey"},{"id":"owl","name":"Owl"},{"id":"rat","name":"Rat"},{"id":"raven","name":"Raven"},{"id":"toad","name":"Toad"},{"id":"viper","name":"Viper"},{"id":"weasel","name":"Weasel"}]},
+      "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+    }
+  ]
+}

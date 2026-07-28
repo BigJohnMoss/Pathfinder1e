@@ -1,0 +1,16 @@
+{
+  "id":"druid-blight",
+  "name":"Blight Druid",
+  "classId":"druid",
+  "summary":"A keeper of corrupted and ruined lands who bonds with decay, sickens nearby life, and spreads supernatural disease.",
+  "druidDomainIds":["domain-air","domain-animal","domain-darkness","domain-death","domain-destruction","domain-earth","domain-fire","domain-plant","domain-water","domain-weather"],
+  "featureOverrides":[{"featureId":"druid-wild-empathy-1","summary":"Influence vermin normally and influence animals or formerly-animal mindless undead at -4 unless they carry disease."}],
+  "replacements":[
+    {"featureIds":["druid-nature-bond-1"],"features":[{"id":"druid-nature-bond-1","name":"Blighted Nature Bond","level":1,"type":"selectable","summary":"Choose a Wizard-style familiar or a permitted nature, Darkness, Death, or Destruction domain.","choiceRequired":true,"optionGroupId":"blight-druid-nature-bonds"}]},
+    {"featureIds":["druid-animal-companion-1"],"features":[{"id":"blight-druid-familiar-1","name":"Blight Familiar","level":1,"type":"selectable","summary":"If Familiar was chosen for Blighted Nature Bond, choose its form.","choiceRequired":true,"optionGroupId":"blight-druid-familiars","requiredOptionId":"blight-druid-nature-bond-familiar","requiredOptionMessage":"Choose the Familiar nature bond first"}]},
+    {"featureIds":["druid-trackless-step-3","druid-resist-natures-lure-4"],"features":[{"id":"blight-druid-miasma-5","name":"Miasma","level":5,"type":"core","summary":"Adjacent creatures must save each turn or become sickened; animals, fey, and plants are instead nauseated and then sickened."}]},
+    {"featureIds":["druid-venom-immunity-9"],"features":[{"id":"blight-druid-blightblooded-9","name":"Blightblooded","level":9,"type":"core","summary":"Become immune to natural and supernatural disease and to the sickened and nauseated conditions."}]},
+    {"featureIds":["druid-thousand-faces-13"],"features":[{"id":"blight-druid-plaguebearer-13","name":"Plaguebearer","level":13,"type":"core","summary":"Creatures striking you with touch attacks, unarmed strikes, or natural weapons risk contracting contagion."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+}

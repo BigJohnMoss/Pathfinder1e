@@ -256,12 +256,14 @@ export default function Home() {
     const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)];
     const featureClassId = "classId" in feature && typeof feature.classId === "string" ? feature.classId : characterClass.id;
     const featureClassLevel = classLevelMap[featureClassId] ?? primaryClassLevel;
-    const options = group && featureClassId === "druid" && group.id === "ranger-animal-companions"
+    const featureCharacterClass = progressionClasses.find((item) => item.id === featureClassId);
+    const baseOptions = group && featureClassId === "druid" && group.id === "ranger-animal-companions"
       ? group.options.filter((option) => option.minimumLevel <= featureClassLevel)
       : group && featureClassId === "druid" && group.id === "cleric-domains"
-        ? group.options.filter((option) => ["domain-air", "domain-animal", "domain-earth", "domain-fire", "domain-plant", "domain-water", "domain-weather"].includes(option.id))
+        ? group.options.filter((option) => (featureCharacterClass?.druidDomainIds ?? ["domain-air", "domain-animal", "domain-earth", "domain-fire", "domain-plant", "domain-water", "domain-weather"]).includes(option.id))
         : group ? availableOptions(group, featureClassId, featureClassLevel, selectedIds, { abilities, size: ancestry.size, baseAttackBonus: progression.baseAttackBonus, classLevels: classLevelMap, featureIds: [...progression.features.map((entry) => entry.id), ...selectedIds] }) : [];
-    return { id: feature.id, name: feature.name, level: feature.level, classLevel: featureClassLevel, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) };
+    const options = feature.requiredOptionId && !selectedIds.includes(feature.requiredOptionId) ? [] : baseOptions;
+    return { id: feature.id, name: feature.name, level: feature.level, classLevel: featureClassLevel, options, selected: options.find((option) => option.id === selectedOptions[feature.id]), requiredOptionId: feature.requiredOptionId, requiredOptionMessage: feature.requiredOptionMessage };
   });
   const updateClassOption = (featureId: string, optionId: string) => setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
   const updateTrait = (index: number, traitId: string) => setSelectedTraitIds((current) => {
@@ -338,11 +340,13 @@ export default function Home() {
   const secondaryReservoir = secondaryCharacterClass?.id === "arcanist" ? arcaneReservoir(secondaryClassLevel) : null;
   const bardClassLevel = classLevelMap.bard ?? 0;
   const druidClassLevel = classLevelMap.druid ?? 0;
+  const druidCharacterClass = progressionClasses.find((item) => item.id === "druid");
+  const druidWildShapeEffectiveLevel = Math.max(1, Math.min(20, druidClassLevel + (druidCharacterClass?.wildShapeLevelAdjustment ?? 0)));
   const bardicPerformanceMaximum = bardClassLevel > 0 ? bardicPerformanceRounds(bardClassLevel, combat.abilityModifiers.charisma) : 0;
-  const wildShapeMaximum = druidClassLevel > 0 ? druidWildShapeUses(druidClassLevel) : 0;
+  const wildShapeMaximum = druidClassLevel > 0 ? druidWildShapeUses(druidWildShapeEffectiveLevel) : 0;
   const classDailyResources = [
     ...(bardClassLevel > 0 ? [{ label: "Performance rounds", unit: "round", maximum: bardicPerformanceMaximum, used: bardicPerformanceUsed, onUsedChange: setBardicPerformanceUsed }] : []),
-    ...(druidClassLevel >= 4 ? [{ label: "Wild Shape", unit: "use", maximum: wildShapeMaximum, used: wildShapeUsed, onUsedChange: setWildShapeUsed }] : [])
+    ...(wildShapeMaximum !== 0 ? [{ label: "Wild Shape", unit: "use", maximum: wildShapeMaximum, used: wildShapeUsed, onUsedChange: setWildShapeUsed }] : [])
   ];
   const updateSpellSlotUses = (uses: Record<number, number>) => setSpellSlotUses(normalizeSpellSlotUses(uses, spellSlots));
   const updateSecondarySpellSlotUses = (uses: Record<number, number>) => setSecondarySpellSlotUses(normalizeSpellSlotUses(uses, secondarySpellSlots));
@@ -410,10 +414,12 @@ export default function Home() {
     if (value && typeof value === "object" && "version" in value && value.version !== 1) { setSaveNotice("Unsupported character file version"); return null; }
     const draft = normalizeCharacterDraft(value, { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id), archetypeIds: archetypes.filter((item) => item.classId === (value as { classId?: string })?.classId).map((item) => item.id), archetypeIdsByClass });
     if (!draft) { setSaveNotice("Character file is invalid"); return null; }
-    const draftClass = classes.find((item) => item.id === draft.classId) ?? classes[0];
+    const draftBaseClass = classes.find((item) => item.id === draft.classId) ?? classes[0];
+    const draftClass = applyArchetype(draftBaseClass, archetypes.find((item) => item.id === draft.archetypeIdsByClass[draft.classId] && item.classId === draft.classId));
     const draftPrimaryLevel = draft.classLevels[0]?.level ?? draft.level;
     const draftSecondaryLevel = draft.classLevels[1];
-    const draftSecondaryClass = classes.find((item) => item.id === draftSecondaryLevel?.classId);
+    const draftSecondaryBaseClass = classes.find((item) => item.id === draftSecondaryLevel?.classId);
+    const draftSecondaryClass = draftSecondaryBaseClass ? applyArchetype(draftSecondaryBaseClass, archetypes.find((item) => item.id === draft.archetypeIdsByClass[draftSecondaryBaseClass.id] && item.classId === draftSecondaryBaseClass.id)) : undefined;
     const draftAncestry = ancestries.find((item) => item.id === draft.ancestryId) ?? ancestries[0];
     const draftFixedModifiers = (draftAncestry.abilityModifiers as { fixed?: Partial<typeof defaultAbilities> }).fixed ?? {};
     const draftChoiceAmount = (draftAncestry.abilityModifiers as { choice?: { amount: number } }).choice?.amount ?? 0;
@@ -429,7 +435,9 @@ export default function Home() {
     const draftBardLevel = draft.classLevels.find((entry) => entry.classId === "bard")?.level ?? 0;
     const draftDruidLevel = draft.classLevels.find((entry) => entry.classId === "druid")?.level ?? 0;
     const draftBardicPerformanceMaximum = draftBardLevel > 0 ? bardicPerformanceRounds(draftBardLevel, Math.floor((draftAbilities.charisma - 10) / 2)) : 0;
-    const draftWildShapeMaximum = draftDruidLevel > 0 ? druidWildShapeUses(draftDruidLevel) : 0;
+    const draftDruidClass = draftClass.id === "druid" ? draftClass : draftSecondaryClass?.id === "druid" ? draftSecondaryClass : undefined;
+    const draftWildShapeEffectiveLevel = Math.max(1, Math.min(20, draftDruidLevel + (draftDruidClass?.wildShapeLevelAdjustment ?? 0)));
+    const draftWildShapeMaximum = draftDruidLevel > 0 ? druidWildShapeUses(draftWildShapeEffectiveLevel) : 0;
     const draftOppositionSchoolIds = oppositionSchoolsFromOptions(draft.classId, draft.selectedOptions);
     const draftBloodline = bloodlineFromOptions(draft.classId, draft.selectedOptions);
     const draftBloodlineSpells = draftIsSpontaneous && draftCasting ? bloodlineBonusSpells(spells, draftBloodline, draftPrimaryLevel, draftClass.id).filter((spell) => spell.levelByClass[draftClass.id] <= draftCasting.maximumSpellLevel) : [];

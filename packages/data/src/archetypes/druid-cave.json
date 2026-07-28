@@ -1,0 +1,22 @@
+{
+  "id":"druid-cave",
+  "name":"Cave Druid",
+  "classId":"druid",
+  "summary":"A guardian of the lightless world who runs tunnels, evades tremorsense, resists subterranean horrors, and assumes ooze forms.",
+  "wildShapeLevelAdjustment":-2,
+  "druidDomainIds":["domain-animal","domain-darkness","domain-earth","domain-fire","domain-plant","domain-water"],
+  "classSkillAdditions":["Knowledge (dungeoneering)"],
+  "classSkillRemovals":["Knowledge (geography)"],
+  "featureOverrides":[
+    {"featureId":"druid-wild-empathy-1","summary":"Influence oozes rather than magical beasts with the normal -4 penalty."},
+    {"featureId":"druid-wild-shape-8","summary":"Assume a Small or Medium ooze as beast shape III; gain ooze anatomy and immunity to poison, sneak attacks, and critical hits."},
+    {"featureId":"druid-wild-shape-10","summary":"Assume a Tiny or Large ooze as beast shape IV; plant forms are unavailable."}
+  ],
+  "replacements":[
+    {"featureIds":["druid-nature-sense-1"],"features":[{"id":"cave-druid-cavesense-1","name":"Cavesense","level":1,"type":"core","summary":"Replace Knowledge (geography) with Knowledge (dungeoneering) as a class skill and gain +2 on Knowledge (dungeoneering) and Survival."}]},
+    {"featureIds":["druid-woodland-stride-2"],"features":[{"id":"cave-druid-tunnelrunner-2","name":"Tunnelrunner","level":2,"type":"core","summary":"Move through rubble and squeezing passages at normal speed without penalty."}]},
+    {"featureIds":["druid-trackless-step-3"],"features":[{"id":"cave-druid-lightfoot-3","name":"Lightfoot","level":3,"type":"core","summary":"You cannot be detected with tremorsense."}]},
+    {"featureIds":["druid-resist-natures-lure-4"],"features":[{"id":"cave-druid-resist-corruption-4","name":"Resist Subterranean Corruption","level":4,"type":"core","summary":"Gain +2 on saves against exceptional, supernatural, and spell-like abilities of oozes and aberrations."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+}
