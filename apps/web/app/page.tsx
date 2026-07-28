@@ -84,6 +84,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
   const [saveNotice, setSaveNotice] = useState("");
   const [showLevelUp, setShowLevelUp] = useState(false);
+  const [levelUpClassId, setLevelUpClassId] = useState("");
   const [characterLibrary, setCharacterLibrary] = useState<CharacterLibraryV1>(emptyCharacterLibrary);
 
   const baseCharacterClass = classes.find((item) => item.id === classId) ?? classes[0];
@@ -102,6 +103,8 @@ export default function Home() {
   const primaryClassLevel = level - assignedAdditionalLevels;
   const classLevels = useMemo(() => [{ classId: characterClass.id, level: primaryClassLevel }, ...additionalClassLevels], [additionalClassLevels, characterClass.id, primaryClassLevel]);
   const progressionClasses = useMemo(() => [characterClass, ...additionalCharacterClasses], [additionalCharacterClasses, characterClass]);
+  const levelUpClassEntry = classLevels.find((entry) => entry.classId === levelUpClassId) ?? classLevels[0];
+  const levelUpClassChoices = classLevels.map((entry) => ({ id: entry.classId, name: classes.find((item) => item.id === entry.classId)?.name ?? entry.classId }));
   const classLevelMap = useMemo(() => Object.fromEntries(classLevels.map((entry) => [entry.classId, entry.level])), [classLevels]);
   const ancestry = ancestries.find((item) => item.id === ancestryId) ?? ancestries[0];
   const selectedTraitBonuses = useMemo(() => traitBonuses(selectedTraitIds, traits, selectedTraitChoices, { spells, classes, classId }), [classId, selectedTraitChoices, selectedTraitIds]);
@@ -163,9 +166,9 @@ export default function Home() {
       bonusFeats: ancestryBonusFeats
     };
     return additionalCharacterClasses.length > 0
-      ? multiclassProgression(progressionClasses, [{ classId: characterClass.id, level: primaryClassLevel + 1 }, ...additionalClassLevels], options)
+      ? multiclassProgression(progressionClasses, classLevels.map((entry) => entry.classId === levelUpClassEntry.classId ? { ...entry, level: entry.level + 1 } : entry), options)
       : classProgression(characterClass, level + 1, options);
-  }, [abilities.intelligence, additionalCharacterClasses.length, additionalClassLevels, ancestry, ancestryBonusFeats, characterClass, level, primaryClassLevel, progressionClasses]);
+  }, [abilities.intelligence, additionalCharacterClasses.length, ancestry, ancestryBonusFeats, characterClass, classLevels, level, levelUpClassEntry.classId, progressionClasses]);
   const baseCombat = useMemo(() => {
     const base = characterCombatStats(characterClass, level, abilities);
     if (additionalCharacterClasses.length === 0) return base;
@@ -493,8 +496,8 @@ export default function Home() {
 
   return <main id="character-builder-main" tabIndex={-1}>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
-    <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} additionalArchetypeIds={additionalArchetypeIds} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={archetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); const validIds = new Set(next.map((entry) => entry.classId)); setAdditionalArchetypeIds((current) => Object.fromEntries(Object.entries(current).filter(([selectedClassId]) => validIds.has(selectedClassId)))); if (next.length > 0 && level < next.length + 1) setLevel(next.length + 1); }} onAdditionalArchetypeChange={(selectedClassId, selectedId) => setAdditionalArchetypeIds((current) => selectedId ? { ...current, [selectedClassId]: selectedId } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== selectedClassId)))} onArchetypeChange={setArchetypeId} onAncestryChange={setAncestryId} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => setShowLevelUp(true)} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
-    {showLevelUp && level < 20 && <LevelUpPanel currentLevel={level} className={characterClass.name} gains={levelUpGains} onCancel={() => setShowLevelUp(false)} onConfirm={() => { setLevel(level + 1); setShowLevelUp(false); setSaveNotice(`Advanced to level ${level + 1}. Review newly unlocked choices.`); }} />}
+    <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} additionalArchetypeIds={additionalArchetypeIds} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={archetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); const validIds = new Set(next.map((entry) => entry.classId)); setAdditionalArchetypeIds((current) => Object.fromEntries(Object.entries(current).filter(([selectedClassId]) => validIds.has(selectedClassId)))); if (next.length > 0 && level < next.length + 1) setLevel(next.length + 1); }} onAdditionalArchetypeChange={(selectedClassId, selectedId) => setAdditionalArchetypeIds((current) => selectedId ? { ...current, [selectedClassId]: selectedId } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== selectedClassId)))} onArchetypeChange={setArchetypeId} onAncestryChange={setAncestryId} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => { setLevelUpClassId(characterClass.id); setShowLevelUp(true); }} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+    {showLevelUp && level < 20 && <LevelUpPanel currentLevel={level} classId={levelUpClassEntry.classId} classLevel={levelUpClassEntry.level} classChoices={levelUpClassChoices} gains={levelUpGains} onClassChange={setLevelUpClassId} onCancel={() => setShowLevelUp(false)} onConfirm={() => { if (levelUpClassEntry.classId !== characterClass.id) setAdditionalClassLevels((current) => current.map((entry) => entry.classId === levelUpClassEntry.classId ? { ...entry, level: entry.level + 1 } : entry)); setLevel(level + 1); setShowLevelUp(false); setSaveNotice(levelUpClassChoices.length > 1 ? `Advanced ${levelUpClassChoices.find((choice) => choice.id === levelUpClassEntry.classId)?.name ?? levelUpClassEntry.classId} to level ${levelUpClassEntry.level + 1}. Review newly unlocked choices.` : `Advanced to level ${level + 1}. Review newly unlocked choices.`); }} />}
     <CharacterTabs activeTab={activeTab} onChange={setActiveTab} />
     <section id="character-tab-panel" className="tab-panel" role="tabpanel" aria-labelledby={`character-tab-${activeTab}`} tabIndex={0}>
       {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} pointBuyBudget={pointBuyBudget} pointBuySpent={pointBuy.spent} abilityBoosts={abilityBoosts} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} onPointBuyBudgetChange={setPointBuyBudget} onAbilityBoostChange={updateAbilityBoost} /><ProgressionSummary combat={combat} progression={progression} /><FavoredClassBonus className={characterClass.name} level={level} hitPoints={favoredClassHitPoints} skillRanks={favoredClassSkillRanks} onChange={(hitPoints, skillRanks) => { setFavoredClassHitPoints(hitPoints); setFavoredClassSkillRanks(skillRanks); }} /></section>}
