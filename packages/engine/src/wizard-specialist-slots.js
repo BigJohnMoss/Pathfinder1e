@@ -1,4 +1,5 @@
 const schoolFromOption = (selectedSchool) => {
+  if (typeof selectedSchool?.associatedSchool === "string") return selectedSchool.associatedSchool;
   const prefix = "wizard-school-";
   return typeof selectedSchool?.id === "string" && selectedSchool.id.startsWith(prefix) ? selectedSchool.id.slice(prefix.length) : null;
 };
@@ -7,6 +8,13 @@ const spellSchools = (spell) => Array.isArray(spell.schools) && spell.schools.le
 
 export function specialistSchoolSpells(spells, selectedSchool, spellLevel) {
   if (!Number.isInteger(spellLevel) || spellLevel < 1 || spellLevel > 9) return [];
+  const elementalSpellIds = selectedSchool?.elementalSpellIdsByLevel?.[String(spellLevel)];
+  if (Array.isArray(elementalSpellIds)) {
+    const allowed = new Set(elementalSpellIds);
+    return spells
+      .filter((spell) => allowed.has(spell.id) && spell.levelByClass?.wizard === spellLevel)
+      .sort((left, right) => left.name.localeCompare(right.name));
+  }
   const school = schoolFromOption(selectedSchool);
   if (!school || school === "universalist") return [];
   return spells
