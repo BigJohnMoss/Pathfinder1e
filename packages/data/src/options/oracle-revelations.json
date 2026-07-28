@@ -88,6 +88,27 @@
     {"id":"oracle-revelation-shard-explosion","mysteryId":"oracle-mystery-stone","name":"Shard Explosion","minimumLevel":1,"benefit":"Burst into damaging shards that create difficult terrain."},
     {"id":"oracle-revelation-steelbreaker-skin","mysteryId":"oracle-mystery-stone","name":"Steelbreaker Skin","minimumLevel":7,"benefit":"Harden your skin so striking weapons take damage."},
     {"id":"oracle-revelation-stone-stability","mysteryId":"oracle-mystery-stone","name":"Stone Stability","minimumLevel":1,"benefit":"Resist bull rushes and trips and gain the Trip feat chain."},
-    {"id":"oracle-revelation-touch-of-acid","mysteryId":"oracle-mystery-stone","name":"Touch of Acid","minimumLevel":1,"benefit":"Deal acid damage by touch and later empower held weapons."}
+    {"id":"oracle-revelation-touch-of-acid","mysteryId":"oracle-mystery-stone","name":"Touch of Acid","minimumLevel":1,"benefit":"Deal acid damage by touch and later empower held weapons."},
+    {"id":"oracle-revelation-blizzard","mysteryId":"oracle-mystery-waves","name":"Blizzard","minimumLevel":11,"benefit":"Create a vast damaging storm that obscures sight and leaves ice."},
+    {"id":"oracle-revelation-fluid-nature","mysteryId":"oracle-mystery-waves","name":"Fluid Nature","minimumLevel":1,"benefit":"Resist combat maneuvers and critical confirmations and gain Dodge."},
+    {"id":"oracle-revelation-fluid-travel","mysteryId":"oracle-mystery-waves","name":"Fluid Travel","minimumLevel":1,"benefit":"Walk safely across liquids and later swim and breathe underwater."},
+    {"id":"oracle-revelation-freezing-spells","mysteryId":"oracle-mystery-waves","name":"Freezing Spells","minimumLevel":1,"benefit":"Cold spells that overcome saves also slow their targets."},
+    {"id":"oracle-revelation-ice-armor","mysteryId":"oracle-mystery-waves","name":"Ice Armor","minimumLevel":1,"benefit":"Conjure scaling armor and piercing resistance from ice."},
+    {"id":"oracle-revelation-icy-skin","mysteryId":"oracle-mystery-waves","name":"Icy Skin","minimumLevel":1,"benefit":"Gain scaling cold resistance and eventual immunity."},
+    {"id":"oracle-revelation-punitive-transformation","mysteryId":"oracle-mystery-waves","name":"Punitive Transformation","minimumLevel":7,"benefit":"Temporarily transform an opponent into a harmless animal."},
+    {"id":"oracle-revelation-water-form","mysteryId":"oracle-mystery-waves","name":"Water Form","minimumLevel":7,"benefit":"Assume increasingly powerful water elemental forms."},
+    {"id":"oracle-revelation-water-sight","mysteryId":"oracle-mystery-waves","name":"Water Sight","minimumLevel":1,"benefit":"See through mist and later scry through calm water."},
+    {"id":"oracle-revelation-wintry-touch","mysteryId":"oracle-mystery-waves","name":"Wintry Touch","minimumLevel":1,"benefit":"Deal cold damage by touch and later empower held weapons."},
+    {"id":"oracle-revelation-air-barrier","mysteryId":"oracle-mystery-wind","name":"Air Barrier","minimumLevel":1,"benefit":"Create scaling armor that eventually deflects ranged attacks."},
+    {"id":"oracle-revelation-gaseous-form","mysteryId":"oracle-mystery-wind","name":"Gaseous Form","minimumLevel":7,"benefit":"Become gaseous and carry passengers at additional duration cost."},
+    {"id":"oracle-revelation-invisibility-wind","mysteryId":"oracle-mystery-wind","name":"Invisibility","minimumLevel":3,"benefit":"Become invisible and later use greater invisibility."},
+    {"id":"oracle-revelation-lightning-breath","mysteryId":"oracle-mystery-wind","name":"Lightning Breath","minimumLevel":1,"benefit":"Breathe a scaling line of electricity."},
+    {"id":"oracle-revelation-spark-skin","mysteryId":"oracle-mystery-wind","name":"Spark Skin","minimumLevel":1,"benefit":"Gain scaling electricity resistance and eventual immunity."},
+    {"id":"oracle-revelation-thunderburst","mysteryId":"oracle-mystery-wind","name":"Thunderburst","minimumLevel":7,"benefit":"Create a widening blast that damages and deafens creatures."},
+    {"id":"oracle-revelation-touch-of-electricity","mysteryId":"oracle-mystery-wind","name":"Touch of Electricity","minimumLevel":1,"benefit":"Deal electricity damage by touch and later empower held weapons."},
+    {"id":"oracle-revelation-vortex-spells","mysteryId":"oracle-mystery-wind","name":"Vortex Spells","minimumLevel":1,"benefit":"Critical spell attacks stagger their targets."},
+    {"id":"oracle-revelation-wind-sight","mysteryId":"oracle-mystery-wind","name":"Wind Sight","minimumLevel":1,"benefit":"Ignore wind and distance penalties and perceive through connected air."},
+    {"id":"oracle-revelation-wings-of-air","mysteryId":"oracle-mystery-wind","name":"Wings of Air","minimumLevel":7,"benefit":"Manifest scaling magical flight with improving maneuverability."}
   ]
 }
+
