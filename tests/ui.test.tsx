@@ -326,6 +326,31 @@ test("switches and restores a third class spellbook", async () => {
   assert.equal(screen.getByLabelText("Entangle prepared").textContent, "1");
 });
 
+test("applies and restores an archetype on an additional class", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "rogue");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "12" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "monk");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "2" } });
+  await user.click(screen.getByRole("button", { name: "Add another class" }));
+  await user.selectOptions(screen.getByLabelText("Additional class 2"), "fighter");
+  fireEvent.change(screen.getByLabelText("Additional class 2 levels"), { target: { value: "5" } });
+  await user.selectOptions(screen.getByLabelText("Fighter archetype"), "fighter-archer");
+
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByText("Trick Shot"));
+  assert.ok(screen.getByText("Expert Archer +1"));
+  assert.equal(screen.queryByText("Armor Training 1"), null);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  await user.selectOptions(screen.getByLabelText("Fighter archetype"), "");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await waitFor(() => assert.equal((screen.getByLabelText("Fighter archetype") as HTMLSelectElement).value, "fighter-archer"));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByText("Expert Archer +1"));
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
