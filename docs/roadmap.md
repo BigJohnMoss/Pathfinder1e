@@ -115,9 +115,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
   arbitrary distinct class-level editing with combined combat statistics, hit
   points, class skills, features, and feat prerequisites; primary and first
   additional class feature choices,
-  independent class spellbooks and daily slot use, secondary Bard and Druid
-  resource tracking, highest-class caster-level prerequisites, and save/load
-  restoration
+  independent spellbooks and daily slot use for every spellcasting class entry,
+  secondary Bard and Druid resource tracking, highest-class caster-level
+  prerequisites, and save/load restoration
 - prestige classes
 - alternate racial traits
 - advanced equipment and magic items
