@@ -1,0 +1,27 @@
+{
+  "id": "barbarian-elemental-kin",
+  "name": "Elemental Kin",
+  "classId": "barbarian",
+  "summary": "A barbarian bound to elemental forces who turns energy damage into additional rage.",
+  "replacements": [
+    {
+      "progressionKeys": ["trap-sense"],
+      "features": [
+        {
+          "id": "elemental-kin-elemental-fury-3",
+          "name": "Elemental Fury",
+          "level": 3,
+          "type": "scaling",
+          "summary": "While raging, taking energy damage at least equal to your barbarian level adds rounds to your daily rage pool.",
+          "progressionKey": "elemental-kin-elemental-fury",
+          "scaling": "+1 round at 3rd, +1 every 3 levels to +6 at 18th"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  }
+}

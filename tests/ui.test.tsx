@@ -918,6 +918,21 @@ test("configures and restores Invulnerable Rager Extreme Endurance", async () =>
   assert.equal((screen.getByLabelText(/Extreme Endurance/) as HTMLSelectElement).value, "invulnerable-rager-endurance-cold");
 });
 
+test("switches among the remaining progression-only Barbarian archetypes", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "19" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-elemental-kin");
+  assert.ok(screen.getByText("Elemental Fury"));
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-savage-barbarian");
+  assert.ok(screen.getByText("Natural Toughness"));
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-superstitious");
+  assert.ok(screen.getByText("Keen Senses — Blindsight"));
+  assert.equal(screen.queryByText("Damage Reduction 5/-"), null);
+});
+
 test("previews and advances the selected multiclass entry", async () => {
   const user = userEvent.setup();
   render(<Home />);
