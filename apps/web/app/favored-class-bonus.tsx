@@ -25,6 +25,11 @@ export function FavoredClassBonus({ className, level, hitPoints, skillRanks, onC
       <label>Bonus hit points<input aria-label="Favored class bonus hit points" type="number" min="0" max={level - skillRanks} value={hitPoints} onChange={event => updateHitPoints(Number(event.target.value))} /></label>
       <label>Bonus skill ranks<input aria-label="Favored class bonus skill ranks" type="number" min="0" max={level - hitPoints} value={skillRanks} onChange={event => updateSkillRanks(Number(event.target.value))} /></label>
     </div>
+    <div className="favored-class-actions">
+      <button type="button" disabled={remaining === 0} onClick={() => onChange(hitPoints + remaining, skillRanks)}>Assign remaining to hit points</button>
+      <button type="button" disabled={remaining === 0} onClick={() => onChange(hitPoints, skillRanks + remaining)}>Assign remaining to skill ranks</button>
+      <button type="button" disabled={allocated === 0} onClick={() => onChange(0, 0)}>Clear bonuses</button>
+    </div>
     <p className={`hint${remaining > 0 ? " invalid" : ""}`} aria-live="polite"><strong>{allocated}</strong> of {level} favored-class bonuses assigned · {remaining} remaining.</p>
   </section>;
 }

@@ -102,8 +102,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Advanced Class Guide Arcanist exploits are playable, including level and
   option prerequisites, repeat limits, dependent selections, distinct energy
   choices, and mutually exclusive totem families
-- favoured class bonuses - in progress: base +1 hit point or +1 skill rank
-  allocation is mechanical, level-bounded, persistent, and covered in the UI
+- favoured class bonuses - complete for the universal Core rule: every class
+  level can grant +1 hit point or +1 skill rank, with one-click allocation,
+  level bounds, derived-stat integration, persistence, import normalization,
+  and UI coverage through level 20
 
 ## Later milestone: Universal PF1e Builder
 
@@ -113,6 +115,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - advanced equipment and magic items
 - [x] persisted hit points and round-based temporary effects for active play
 - broader sourcebook coverage
+  - optional ancestry-specific favoured-class rewards
 
 ## Working rule
 

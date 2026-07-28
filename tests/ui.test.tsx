@@ -127,6 +127,21 @@ test("allocates and persists favored class hit points and skill ranks", async ()
   assert.equal(saved.favoredClassSkillRanks, 2);
 });
 
+test("quick-allocates favored class bonuses and clamps them when level falls", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("button", { name: "Assign remaining to skill ranks" }));
+  assert.equal((screen.getByLabelText("Favored class bonus skill ranks") as HTMLInputElement).value, "20");
+  assert.match(document.querySelector(".favored-class-bonus .hint")?.textContent ?? "", /20 of 20 favored-class bonuses assigned/);
+
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  await waitFor(() => assert.equal((screen.getByLabelText("Favored class bonus skill ranks") as HTMLInputElement).value, "3"));
+  await user.click(screen.getByRole("button", { name: "Clear bonuses" }));
+  assert.equal((screen.getByLabelText("Favored class bonus skill ranks") as HTMLInputElement).value, "0");
+  assert.match(document.querySelector(".favored-class-bonus .hint")?.textContent ?? "", /0 of 3 favored-class bonuses assigned/);
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);

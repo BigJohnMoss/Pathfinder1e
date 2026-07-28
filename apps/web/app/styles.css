@@ -132,6 +132,17 @@ a:focus-visible,
   padding: 10px;
 }
 
+.favored-class-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 12px;
+}
+
+.favored-class-actions button {
+  width: auto;
+}
+
 @media (max-width: 540px) {
   .favored-class-controls {
     grid-template-columns: 1fr;
