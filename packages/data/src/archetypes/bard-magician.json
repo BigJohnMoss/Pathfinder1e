@@ -1,0 +1,136 @@
+{
+  "id": "bard-magician",
+  "name": "Magician",
+  "classId": "bard",
+  "summary": "A spell-focused performer who manipulates magical energy, counterspells, and an expanded arcane repertoire.",
+  "replacements": [
+    {
+      "progressionKeys": ["bard-inspire-courage"],
+      "features": [
+        {
+          "id": "magician-dweomercraft-1",
+          "name": "Dweomercraft +1",
+          "level": 1,
+          "type": "scaling",
+          "summary": "Grant allies a bonus on caster-level checks, concentration checks, and attack rolls with spells and spell-like abilities.",
+          "scaling": "+1; increases at 5th level and every 6 levels thereafter",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-dirge-of-doom-8"],
+      "features": [
+        {
+          "id": "magician-spell-suppression-8",
+          "name": "Spell Suppression",
+          "level": 8,
+          "type": "scaling",
+          "summary": "Track continuous performance rounds and spend an immediate action to counter an identified spell whose level does not exceed those rounds.",
+          "scaling": "counterspell limit equals continuous performance rounds",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-frightening-tune-14"],
+      "features": [
+        {
+          "id": "magician-metamagic-mastery-14",
+          "name": "Metamagic Mastery",
+          "level": 14,
+          "type": "core",
+          "summary": "End your performance to apply a metamagic feat to your next spell without increasing its casting time; the higher-level slot is still required.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bardic-knowledge-1"],
+      "features": [
+        {
+          "id": "magician-magical-talent-1",
+          "name": "Magical Talent",
+          "level": 1,
+          "type": "scaling",
+          "summary": "Add half Bard level to Knowledge (arcana), Spellcraft, and Use Magic Device checks.",
+          "scaling": "half Bard level"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-countersong-1"],
+      "features": [
+        {
+          "id": "magician-improved-counterspell-1",
+          "name": "Improved Counterspell",
+          "level": 1,
+          "type": "bonus-feat",
+          "summary": "Gain Improved Counterspell as a bonus feat.",
+          "grantedFeatId": "improved-counterspell"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-well-versed-2"],
+      "features": [
+        {
+          "id": "magician-extended-performance-2",
+          "name": "Extended Performance",
+          "level": 2,
+          "type": "core",
+          "summary": "Sacrifice a spell slot as a swift action to let a performance linger one round per spell level after concentration ends."
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-versatile-performance"],
+      "features": [
+        {"id":"magician-expanded-repertoire-2","name":"Expanded Repertoire Spell 1","level":2,"type":"selectable","summary":"Add one spell you can cast from any arcane spell list to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"},
+        {"id":"magician-expanded-repertoire-6","name":"Expanded Repertoire Spell 2","level":6,"type":"selectable","summary":"Add another legal arcane spell to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"},
+        {"id":"magician-expanded-repertoire-10","name":"Expanded Repertoire Spell 3","level":10,"type":"selectable","summary":"Add another legal arcane spell to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"},
+        {"id":"magician-expanded-repertoire-14","name":"Expanded Repertoire Spell 4","level":14,"type":"selectable","summary":"Add another legal arcane spell to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"},
+        {"id":"magician-expanded-repertoire-18","name":"Expanded Repertoire Spell 5","level":18,"type":"selectable","summary":"Add another legal arcane spell to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"}
+      ]
+    },
+    {
+      "progressionKeys": ["bard-lore-master"],
+      "features": [
+        {
+          "id": "magician-arcane-bond-5",
+          "name": "Arcane Bond",
+          "level": 5,
+          "type": "selectable",
+          "summary": "Bond with a non-weapon object and use it to cast one additional known spell once per day.",
+          "choiceRequired": true,
+          "optionGroupId": "magician-bonded-objects",
+          "uses": "1 per day"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-jack-of-all-trades"],
+      "features": [
+        {
+          "id": "magician-wand-mastery-10",
+          "name": "Wand Mastery: Charisma DC",
+          "level": 10,
+          "type": "scaling",
+          "summary": "Use your Charisma modifier to determine the save DC of wands containing spells on your spell list."
+        },
+        {
+          "id": "magician-wand-mastery-16",
+          "name": "Wand Mastery: Caster Level",
+          "level": 16,
+          "type": "scaling",
+          "summary": "Use your own caster level instead of a qualifying wand's caster level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+  }
+}

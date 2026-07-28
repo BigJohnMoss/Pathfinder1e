@@ -38,18 +38,21 @@ const optionGroups=rawOptionGroups.map(group=>{
   const additionalIds=new Set(filter.additionalSpellIds??[]);
   const generated=spells.filter(spell=>additionalIds.has(spell.id)||(spell.levelByClass?.[filter.classId]!==undefined&&(!filter.school||spell.school===filter.school||spell.schools?.includes(filter.school)))).map(spell=>{
     const spellLevel=filter.additionalSpellLevels?.[spell.id]??spell.levelByClass?.[filter.classId]??0;
+    if(filter.maximumSpellLevel!==undefined&&spellLevel>filter.maximumSpellLevel) return null;
+    const targetClassId=filter.targetClassId??filter.classId;
     return {
       ...group.optionDefaults,
       id:`${group.id}-${spell.id}`,
       name:spell.name,
       classIds:group.classIds,
-      minimumLevel:classLevelForSpellLevel(filter.classId,spellLevel),
+      minimumLevel:classLevelForSpellLevel(targetClassId,spellLevel),
       prerequisites:[],
       benefit:`Add ${spell.name} to your spells known as a bonus spell.`,
       spellId:spell.id,
+      spellLevel,
       source:spell.source??group.source
     };
-  });
+  }).filter(Boolean);
   return {...group,options:[...group.options,...generated.filter(option=>!group.options.some(existing=>existing.id===option.id))]};
 });
 const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),archetypes:await loadDir('archetypes'),races:await loadDir('races'),optionGroups,feats:await loadDir('feats'),traits:await loadDir('traits'),spells};

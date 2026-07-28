@@ -63,6 +63,20 @@ test("Detective Arcane Investigation options include added spells and Bard divin
   assert.equal(new Set(group.options.map((option) => option.spellId)).size, group.options.length);
 });
 
+test("Magician replaces its spell-focused progressions and exposes legal arcane choices", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-magician.json");
+  const ids = featuresThroughLevel(applyArchetype(bard, archetype), 20).map((feature) => feature.id);
+  for (const added of ["magician-dweomercraft-1", "magician-spell-suppression-8", "magician-metamagic-mastery-14", "magician-improved-counterspell-1", "magician-expanded-repertoire-18", "magician-arcane-bond-5", "magician-wand-mastery-16"]) assert.ok(ids.includes(added));
+  for (const removed of ["bardic-knowledge-1", "bard-countersong-1", "bard-inspire-courage-17", "bard-dirge-of-doom-8", "bard-frightening-tune-14", "bard-well-versed-2", "bard-versatile-performance-18", "bard-lore-master-17", "bard-jack-of-all-trades-19"]) assert.ok(!ids.includes(removed));
+  assert.ok(ids.includes("bard-deadly-performance-20"));
+
+  const bundle = await load("../generated/pf1e-data.json");
+  const group = bundle.optionGroups.find((item) => item.id === "magician-expanded-repertoire");
+  assert.ok(group.options.some((option) => option.spellId === "arcane-eye" && option.spellLevel === 4 && option.minimumLevel === 10));
+  assert.ok(group.options.every((option) => option.spellLevel <= 6));
+});
+
 test("Archivist replaces its performance and knowledge progressions through level 20", async () => {
   const bard = await load("../packages/data/src/classes/bard.json");
   const archetype = await load("../packages/data/src/archetypes/bard-archivist.json");
