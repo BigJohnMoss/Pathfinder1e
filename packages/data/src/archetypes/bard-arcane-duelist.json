@@ -1,0 +1,147 @@
+{
+  "id": "bard-arcane-duelist",
+  "name": "Arcane Duelist",
+  "classId": "bard",
+  "summary": "A martial bard who blends weapon mastery, protective performance, and arcane spellcraft.",
+  "replacements": [
+    {
+      "featureIds": ["bardic-knowledge-1"],
+      "features": [
+        {
+          "id": "arcane-duelist-arcane-strike-1",
+          "name": "Arcane Strike",
+          "level": 1,
+          "type": "bonus-feat",
+          "summary": "Gain Arcane Strike as a bonus feat.",
+          "grantedFeatId": "arcane-strike"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-countersong-1"],
+      "features": [
+        {
+          "id": "arcane-duelist-rallying-cry-1",
+          "name": "Rallying Cry",
+          "level": 1,
+          "type": "core",
+          "summary": "Use an Intimidate check in place of nearby allies' saving throws against fear and despair, allowing a new save each round.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-suggestion-6"],
+      "features": [
+        {
+          "id": "arcane-duelist-bladethirst-6",
+          "name": "Bladethirst +1",
+          "level": 6,
+          "type": "scaling",
+          "summary": "Grant one nearby weapon, natural weapon, double-weapon end, or ammunition group a +1 enhancement bonus or qualifying weapon properties.",
+          "progressionKey": "arcane-duelist-bladethirst",
+          "scaling": "+1; increases by +1 every 3 levels after 6th",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-mass-suggestion-18"],
+      "features": [
+        {
+          "id": "arcane-duelist-mass-bladethirst-18",
+          "name": "Mass Bladethirst",
+          "level": 18,
+          "type": "scaling",
+          "summary": "Extend Bladethirst to multiple allies, granting an identical bonus that scales from +4 for two allies to +1 for five or more.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-well-versed-2"],
+      "progressionKeys": ["bard-versatile-performance"],
+      "features": [
+        {
+          "id": "arcane-duelist-combat-casting-2",
+          "name": "Combat Casting",
+          "level": 2,
+          "type": "bonus-feat",
+          "summary": "Gain Combat Casting as a bonus feat.",
+          "grantedFeatId": "combat-casting"
+        },
+        {
+          "id": "arcane-duelist-disruptive-6",
+          "name": "Disruptive",
+          "level": 6,
+          "type": "bonus-feat",
+          "summary": "Gain Disruptive as a bonus feat without needing to meet its normal Fighter prerequisite.",
+          "grantedFeatId": "disruptive"
+        },
+        {
+          "id": "arcane-duelist-spellbreaker-10",
+          "name": "Spellbreaker",
+          "level": 10,
+          "type": "bonus-feat",
+          "summary": "Gain Spellbreaker as a bonus feat without needing to meet its normal Fighter prerequisite.",
+          "grantedFeatId": "spellbreaker"
+        },
+        {
+          "id": "arcane-duelist-penetrating-strike-14",
+          "name": "Penetrating Strike",
+          "level": 14,
+          "type": "bonus-feat",
+          "summary": "Gain Penetrating Strike as a bonus feat without needing to meet its normal Fighter prerequisite.",
+          "grantedFeatId": "penetrating-strike"
+        },
+        {
+          "id": "arcane-duelist-greater-penetrating-strike-18",
+          "name": "Greater Penetrating Strike",
+          "level": 18,
+          "type": "bonus-feat",
+          "summary": "Gain Greater Penetrating Strike as a bonus feat without needing to meet its normal Fighter prerequisite.",
+          "grantedFeatId": "greater-penetrating-strike"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-lore-master"],
+      "features": [
+        {
+          "id": "arcane-duelist-arcane-bond-5",
+          "name": "Arcane Bond",
+          "level": 5,
+          "type": "core",
+          "summary": "Bond with a weapon and cast one additional known spell once per day; the bonded-weapon hand can provide somatic components.",
+          "uses": "1 per day"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-jack-of-all-trades"],
+      "features": [
+        {
+          "id": "arcane-duelist-arcane-armor-medium-10",
+          "name": "Arcane Armor: Medium",
+          "level": 10,
+          "type": "core",
+          "summary": "Gain Medium Armor Proficiency and cast bard spells in medium armor without arcane spell failure.",
+          "grantedFeatId": "armor-proficiency-medium"
+        },
+        {
+          "id": "arcane-duelist-arcane-armor-heavy-16",
+          "name": "Arcane Armor: Heavy",
+          "level": 16,
+          "type": "core",
+          "summary": "Gain Heavy Armor Proficiency and cast bard spells in heavy armor without arcane spell failure.",
+          "grantedFeatId": "armor-proficiency-heavy"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+  }
+}

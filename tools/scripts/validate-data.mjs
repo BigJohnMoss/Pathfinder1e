@@ -143,6 +143,7 @@ for (const url of await jsonFiles("archetypes/")) {
     for(const feature of replacement.features??[]) {
       if(replacementFeatureIds.has(feature.id)) errors.push(`${file}: duplicate replacement feature ${feature.id}`); replacementFeatureIds.add(feature.id);
       if(!Number.isInteger(feature.level)||feature.level<1||feature.level>20||typeof feature.summary!=="string"||!feature.summary.trim()) errors.push(`${file}: invalid replacement feature ${feature.id}`);
+      if(feature.grantedFeatId !== undefined && (typeof feature.grantedFeatId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(feature.grantedFeatId))) errors.push(`${file}: ${feature.id} has invalid grantedFeatId`);
     }
   }
 }

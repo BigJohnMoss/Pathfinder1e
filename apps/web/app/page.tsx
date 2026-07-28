@@ -186,10 +186,10 @@ export default function Home() {
       averageHitPoints: multiclassAverageHitPoints(progressionClasses, classLevels, base.abilityModifiers.constitution)
     };
   }, [abilities, additionalCharacterClasses.length, characterClass, classLevels, level, progression.baseAttackBonus, progression.saves, progressionClasses]);
-  const selectedClassFeatIds = useMemo(() => Object.values(selectedOptions).flatMap((optionId) => {
+  const selectedClassFeatIds = useMemo(() => [...progression.features.flatMap((feature) => feature.grantedFeatId ? [feature.grantedFeatId] : []), ...Object.values(selectedOptions).flatMap((optionId) => {
     const option = optionGroups.flatMap((group) => group.options).find((candidate) => candidate.id === optionId);
     return option?.featId ? [option.featId] : [];
-  }), [selectedOptions]);
+  })], [progression.features, selectedOptions]);
   const selectedFeatBonuses = useMemo(() => featBonuses(
     [...selectedFeatIds, ...selectedClassFeatIds],
     feats,
@@ -228,8 +228,8 @@ export default function Home() {
     return gains;
   }, [level, nextProgression, progression.featSlots, progression.skillRanks]);
   const casterLevel = Math.max(0, ...classLevels.map((entry) => classes.find((item) => item.id === entry.classId)?.spellcasting ? entry.level : 0));
-  const featContext = useMemo(() => ({ classId: characterClass.id, classLevels: classLevelMap, ancestryId, size: ancestry.size, classLevel: level, casterLevel, abilities, baseAttackBonus: progression.baseAttackBonus, skillRanks, featureIds: progression.features.map((feature) => feature.id), selectedFeatChoices }), [abilities, ancestry.size, ancestryId, casterLevel, characterClass.id, classLevelMap, level, progression.baseAttackBonus, progression.features, selectedFeatChoices, skillRanks]);
-  const featChoices = featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const otherFeatIds = selectedFeatIds.filter((_, index) => index !== slot.index); const context = { ...featContext, candidateId: selected?.id, selectedIds: otherFeatIds }; const checks = selected ? featPrerequisiteResults(selected, context) : []; return { ...slot, selected, checks, eligibleFeatIds: feats.filter((feat) => prerequisitesMet(feat.prerequisites, { ...context, candidateId: feat.id })).map((feat) => feat.id) }; });
+  const featContext = useMemo(() => ({ classId: characterClass.id, classLevels: classLevelMap, ancestryId, size: ancestry.size, classLevel: level, casterLevel, abilities, baseAttackBonus: progression.baseAttackBonus, skillRanks, featureIds: progression.features.map((feature) => feature.id), selectedIds: selectedClassFeatIds, selectedFeatChoices }), [abilities, ancestry.size, ancestryId, casterLevel, characterClass.id, classLevelMap, level, progression.baseAttackBonus, progression.features, selectedClassFeatIds, selectedFeatChoices, skillRanks]);
+  const featChoices = featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const otherFeatIds = selectedFeatIds.filter((_, index) => index !== slot.index); const context = { ...featContext, candidateId: selected?.id, selectedIds: [...selectedClassFeatIds, ...otherFeatIds] }; const checks = selected ? featPrerequisiteResults(selected, context) : []; return { ...slot, selected, checks, eligibleFeatIds: feats.filter((feat) => prerequisitesMet(feat.prerequisites, { ...context, candidateId: feat.id })).map((feat) => feat.id) }; });
   useEffect(() => setSelectedFeatIds((current) => { const next = normalizeSelectedFeats(current, feats, featContext, featSlots.length); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [featContext, featSlots.length]);
   useEffect(() => setSelectedFeatChoices((current) => { const next = normalizeSelectedFeatChoices(current, selectedFeatIds, feats); return Object.keys(next).length === Object.keys(current).length && Object.entries(next).every(([id, choice]) => current[id] === choice) ? current : next; }), [selectedFeatIds]);
   useEffect(() => setSelectedTraitChoices((current) => {
