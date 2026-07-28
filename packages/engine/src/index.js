@@ -290,6 +290,7 @@ export function applyArchetype(characterClass, archetype) {
     ...characterClass,
     name: `${characterClass.name} (${archetype.name})`,
     spellListAdditions: { ...(characterClass.spellListAdditions ?? {}), ...(archetype.spellListAdditions ?? {}) },
+    spellcasting: archetype.removesSpellcasting ? undefined : characterClass.spellcasting,
     wildShapeLevelAdjustment: archetype.wildShapeLevelAdjustment ?? characterClass.wildShapeLevelAdjustment,
     druidDomainIds: archetype.druidDomainIds ?? characterClass.druidDomainIds,
     classSkills: [...new Set(characterClass.classSkills.filter(skill => !(archetype.classSkillRemovals ?? []).includes(skill)).concat(archetype.classSkillAdditions ?? []))],
