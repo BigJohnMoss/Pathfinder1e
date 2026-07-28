@@ -3,6 +3,10 @@ export type SaveProgression = "good" | "poor";
 export type FeatureType = "core" | "selectable" | "scaling" | "bonus-feat" | "capstone" | "spellcasting";
 export type AbilityName = "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
 export type AbilityScores = Record<AbilityName, number>;
+export interface CharacterClassLevel {
+  classId: string;
+  level: number;
+}
 
 export interface CharacterDraftV1 {
   version: 1;
@@ -247,4 +251,3 @@ export interface GeneratedDataBundle {
   traits: CharacterTrait[];
   spells: CharacterSpell[];
 }
-
