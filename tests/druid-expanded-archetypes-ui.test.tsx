@@ -49,7 +49,7 @@ test("Cave Druid exposes subterranean features and its restricted domains", asyn
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
   await user.click(screen.getByRole("tab", { name: "Features" }));
   for (const name of ["Cavesense", "Tunnelrunner", "Lightfoot", "Resist Subterranean Corruption"]) assert.ok(screen.getByText(name));
-  const domain = screen.getByLabelText("Nature Domain");
+  const domain = screen.getByLabelText("Nature Domain level 1");
   assert.ok(domain.querySelector("option[value='domain-darkness']"));
   assert.equal(domain.querySelector("option[value='domain-air']"), null);
   assert.equal(domain.querySelector("option[value='domain-weather']"), null);
@@ -65,17 +65,17 @@ test("Blight Druid unlocks its familiar only after the Familiar nature bond is c
   await user.click(screen.getByRole("tab", { name: "Features" }));
   for (const name of ["Miasma", "Blightblooded", "Plaguebearer"]) assert.ok(screen.getByText(name));
 
-  const familiar = screen.getByLabelText("Blight Familiar");
+  const familiar = screen.getByLabelText("Blight Familiar level 1");
   assert.ok(familiar.hasAttribute("disabled"));
   assert.ok(screen.getByText("Choose the Familiar nature bond first"));
 
-  await user.selectOptions(screen.getByLabelText("Blighted Nature Bond"), "blight-druid-nature-bond-familiar");
-  assert.equal(screen.getByLabelText("Blight Familiar").hasAttribute("disabled"), false);
-  await user.selectOptions(screen.getByLabelText("Blight Familiar"), "blight-druid-familiar");
+  await user.selectOptions(screen.getByLabelText("Blighted Nature Bond level 1"), "blight-druid-nature-bond-familiar");
+  assert.equal(screen.getByLabelText("Blight Familiar level 1").hasAttribute("disabled"), false);
+  await user.selectOptions(screen.getByLabelText("Blight Familiar level 1"), "blight-druid-familiar");
   await user.selectOptions(screen.getByLabelText("Blight Familiar Familiar"), "raven");
 
-  await user.selectOptions(screen.getByLabelText("Blighted Nature Bond"), "blight-druid-nature-bond-domain");
-  const domain = screen.getByLabelText("Nature Domain");
+  await user.selectOptions(screen.getByLabelText("Blighted Nature Bond level 1"), "blight-druid-nature-bond-domain");
+  const domain = screen.getByLabelText("Nature Domain level 1");
   for (const id of ["domain-darkness", "domain-death", "domain-destruction"]) assert.ok(domain.querySelector(`option[value='${id}']`));
 });
 
@@ -90,8 +90,8 @@ test("Urban Druid exposes urban domains and its delayed Wild Shape progression",
   assert.equal(screen.queryByText("Animal Companion Choice"), null);
   assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "7/7 use remaining");
 
-  await user.selectOptions(screen.getByLabelText("Urban Nature Bond"), "urban-druid-nature-bond-domain");
-  const domain = screen.getByLabelText("Nature Domain");
+  await user.selectOptions(screen.getByLabelText("Urban Nature Bond level 1"), "urban-druid-nature-bond-domain");
+  const domain = screen.getByLabelText("Nature Domain level 1");
   for (const id of ["domain-charm","domain-community","domain-knowledge","domain-nobility","domain-protection","domain-repose","domain-rune","domain-weather"]) assert.ok(domain.querySelector(`option[value='${id}']`));
   assert.equal(domain.querySelector("option[value='domain-air']"), null);
 });
