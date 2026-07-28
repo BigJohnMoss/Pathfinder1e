@@ -1,0 +1,51 @@
+{
+  "id": "bard-street-performer",
+  "name": "Street Performer",
+  "classId": "bard",
+  "summary": "A crowd-savvy entertainer who uses misdirection, comedy, disguise, and social guile to protect allies.",
+  "replacements": [
+    {
+      "progressionKeys": ["bard-inspire-courage"],
+      "features": [
+        {"id":"street-performer-disappearing-act-1","name":"Disappearing Act","level":1,"type":"scaling","summary":"Make creatures that fail a Will save treat one chosen ally as invisible.","scaling":"one additional protected creature at 5th and every 6 levels thereafter","uses":"bardic performance"}
+      ]
+    },
+    {
+      "progressionKeys": ["bard-inspire-competence"],
+      "features": [
+        {"id":"street-performer-harmless-performer-3","name":"Harmless Performer","level":3,"type":"core","summary":"Enemies targeting you must save or lose that attack, or make a concentration check to redirect a spell.","uses":"bardic performance"}
+      ]
+    },
+    {
+      "featureIds": ["bard-inspire-greatness-9"],
+      "features": [
+        {"id":"street-performer-madcap-prank-9","name":"Madcap Prank","level":9,"type":"core","summary":"Force a nearby target to save each round or suffer a random one-round mishap: blinded, dazzled, deafened, entangled, prone, or nauseated.","uses":"bardic performance"}
+      ]
+    },
+    {
+      "featureIds": ["bard-inspire-heroics-15"],
+      "features": [
+        {"id":"street-performer-slip-through-the-crowd-15","name":"Slip through the Crowd","level":15,"type":"core","summary":"Let creatures protected by Disappearing Act move through crowds and enemy squares and function as if under greater invisibility.","uses":"bardic performance"}
+      ]
+    },
+    {
+      "featureIds": ["bard-countersong-1"],
+      "features": [
+        {"id":"street-performer-gladhanding-1","name":"Gladhanding","level":1,"type":"core","summary":"Earn twice the normal Perform income and use Bluff to improve a creature's attitude briefly, after which it worsens."}
+      ]
+    },
+    {
+      "featureIds": ["bardic-knowledge-1"],
+      "features": [
+        {"id":"street-performer-streetwise-1","name":"Streetwise","level":1,"type":"scaling","summary":"Add half Bard level to Bluff, Disguise, Knowledge (local), Sleight of Hand, crowd-influence checks, and gathering information.","scaling":"half Bard level"}
+      ]
+    },
+    {
+      "progressionKeys": ["bard-lore-master"],
+      "features": [
+        {"id":"street-performer-quick-change-5","name":"Quick Change","level":5,"type":"scaling","summary":"Don a disguise as a standard action at -5, take 10 on Bluff and Disguise, and create a diversion as a swift action; periodically take 20.","scaling":"take 20 once per day plus once per 6 levels after 5th"}
+      ]
+    }
+  ],
+  "source": {"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"}
+}
