@@ -95,3 +95,29 @@ test("Wizard focused schools expose their APG powers and associated specialist s
   const firstOpposition = screen.getByLabelText(/First Opposition School/);
   assert.equal([...firstOpposition.options].some((option) => option.value === "wizard-opposition-evocation"), false);
 });
+
+test("Wizard elemental schools force one opposition element and use their APG spell list", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const school = screen.getAllByText("Arcane School").at(-1)!.closest("label")?.querySelector("select");
+  const firstSlot = screen.getAllByText("1st-level Specialist School Slot").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(school);
+  assert.ok(firstSlot);
+
+  await user.selectOptions(school, "wizard-school-air");
+  assert.ok(screen.getByText("Air Supremacy"));
+  assert.ok(screen.getByText("Lightning Flash"));
+  assert.ok(screen.getByText("Cyclone"));
+  assert.equal([...firstSlot.options].some((option) => option.value === "shocking-grasp"), true);
+  assert.equal([...firstSlot.options].some((option) => option.value === "magic-missile"), false);
+
+  const firstOpposition = screen.getByLabelText(/First Opposition School/) as HTMLSelectElement;
+  const secondOpposition = screen.getByLabelText(/Second Opposition School/) as HTMLSelectElement;
+  await waitFor(() => assert.equal(firstOpposition.value, "wizard-opposition-earth"));
+  assert.equal(secondOpposition.disabled, true);
+  assert.equal(secondOpposition.options[0].text, "Elementalists choose one opposition element");
+});
