@@ -209,6 +209,66 @@
       "uses": null
     },
     {
+      "id": "damage-reduction-7",
+      "name": "Damage Reduction 1/-",
+      "level": 7,
+      "type": "scaling",
+      "summary": "Ignore 1 point of damage from each weapon or natural attack.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "damage-reduction",
+      "scaling": "DR 1/-",
+      "uses": null
+    },
+    {
+      "id": "damage-reduction-10",
+      "name": "Damage Reduction 2/-",
+      "level": 10,
+      "type": "scaling",
+      "summary": "Ignore 2 points of damage from each weapon or natural attack.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "damage-reduction",
+      "scaling": "DR 2/-",
+      "uses": null
+    },
+    {
+      "id": "damage-reduction-13",
+      "name": "Damage Reduction 3/-",
+      "level": 13,
+      "type": "scaling",
+      "summary": "Ignore 3 points of damage from each weapon or natural attack.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "damage-reduction",
+      "scaling": "DR 3/-",
+      "uses": null
+    },
+    {
+      "id": "damage-reduction-16",
+      "name": "Damage Reduction 4/-",
+      "level": 16,
+      "type": "scaling",
+      "summary": "Ignore 4 points of damage from each weapon or natural attack.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "damage-reduction",
+      "scaling": "DR 4/-",
+      "uses": null
+    },
+    {
+      "id": "damage-reduction-19",
+      "name": "Damage Reduction 5/-",
+      "level": 19,
+      "type": "scaling",
+      "summary": "Ignore 5 points of damage from each weapon or natural attack.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "damage-reduction",
+      "scaling": "DR 5/-",
+      "uses": null
+    },
+    {
       "id": "greater-rage-11",
       "name": "Greater Rage",
       "level": 11,
