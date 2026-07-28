@@ -8,13 +8,28 @@ const ragePowers = await read("../packages/data/src/options/rage-powers.json");
 const rogueTalents = await read("../packages/data/src/options/rogue-talents.json");
 
 test("the complete Core rage-power catalogue is available at the correct level gates", () => {
-  assert.equal(ragePowers.options.length, 28);
+  const corePowers = ragePowers.options.filter((option) => option.source.title === "Core Rulebook");
+  assert.equal(corePowers.length, 28);
   assert.equal(availableOptions(ragePowers, "barbarian", 2).some((option) => option.id === "renewed-vigor"), false);
   assert.equal(availableOptions(ragePowers, "barbarian", 4).some((option) => option.id === "renewed-vigor"), true);
   assert.equal(availableOptions(ragePowers, "barbarian", 7).some((option) => option.id === "terrifying-howl"), false);
   assert.equal(availableOptions(ragePowers, "barbarian", 8, [], { featureIds: [] }).some((option) => option.id === "terrifying-howl"), false);
   assert.equal(availableOptions(ragePowers, "barbarian", 8, ["intimidating-glare"], { featureIds: ["intimidating-glare"] }).some((option) => option.id === "terrifying-howl"), true);
   assert.equal(ragePowers.options.find((option) => option.id === "swift-foot").selectionLimit, 3);
+});
+
+test("all APG rage powers are integrated with chains, repeat limits, and totem families", () => {
+  const apgPowers = ragePowers.options.filter((option) => option.source.title === "Advanced Player's Guide");
+  assert.equal(apgPowers.length, 48);
+  assert.equal(availableOptions(ragePowers, "barbarian", 9, [], { featureIds: [] }).some((option) => option.id === "beast-totem-greater"), false);
+  assert.equal(availableOptions(ragePowers, "barbarian", 10, ["beast-totem"], { featureIds: ["beast-totem"] }).some((option) => option.id === "beast-totem-greater"), true);
+  assert.equal(availableOptions(ragePowers, "barbarian", 15, ["energy-absorption"], { featureIds: ["energy-absorption"] }).some((option) => option.id === "energy-eruption"), false);
+  assert.equal(availableOptions(ragePowers, "barbarian", 16, ["energy-absorption"], { featureIds: ["energy-absorption"] }).some((option) => option.id === "energy-eruption"), true);
+  assert.equal(ragePowers.options.find((option) => option.id === "energy-resistance").selectionLimit, 5);
+  assert.deepEqual(
+    ragePowers.options.filter((option) => option.exclusiveGroupId === "totem-rage-powers").map((option) => option.familyId).filter((family, index, families) => families.indexOf(family) === index).sort(),
+    ["beast-totem", "chaos-totem", "fiend-totem", "spirit-totem"]
+  );
 });
 
 test("the complete Core rogue-talent catalogue separates basic and advanced talents", () => {

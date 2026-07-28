@@ -97,7 +97,11 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Life, Lore, Nature, Stone, Waves, and Wind include
   complete mystery spells, selectable level-gated revelations, final
   revelations, and mystery-granted class skills
-- discoveries, talents and similar class option systems
+- discoveries, talents and similar class option systems - in progress: complete
+  Core and APG rage-power and rogue-talent catalogues are playable, including
+  repeat limits, dependent selections, distinct energy choices, and mutually
+  exclusive totem families; remaining class-option systems still require a
+  coverage audit and completion
 - favoured class bonuses - in progress: base +1 hit point or +1 skill rank
   allocation is mechanical, level-bounded, persistent, and covered in the UI
 

@@ -16,7 +16,7 @@ This document distinguishes records present in the data bundle from systems that
 | Class | Status | Notes |
 |---|---|---|
 | Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
-| Barbarian | Playable | Core progression and rage powers are integrated. |
+| Barbarian | Playable | Core progression plus the complete Core and APG rage-power catalogues are integrated, including prerequisites, repeat limits, distinct energy choices, and mutually exclusive totem families. |
 | Bard | Playable Core class | Level 1–20 chassis, complete Core spell list, performance milestones, Versatile Performance choices and persistent performance-round tracking are integrated. |
 | Cleric | Playable Core class | Level 1–20 prepared casting, channel energy, deity-compatible alignment, Core deities and domains, and domain spell slots are integrated. |
 | Druid | Playable Core class | Level 1–20 prepared casting, complete Core spell list, both Nature Bond paths with dependent choices, and persistent Wild Shape tracking are integrated. |
@@ -25,7 +25,7 @@ This document distinguishes records present in the data bundle from systems that
 | Oracle | Playable APG class | Level 1-20 spontaneous divine casting, all six curses, cure-or-inflict choice, all ten mysteries, mystery spells, revelations and capstones are integrated. |
 | Paladin | Playable Core class | Level 1–20 martial and divine progression, mercies, Divine Bond and the complete Core Paladin spell list are integrated. |
 | Ranger | Playable Core class | Level 1–20 progression, favored enemies and terrains, combat styles, both Hunter's Bond paths and the complete Core Ranger spell list are integrated. |
-| Rogue | Playable | Core progression and rogue talents are integrated. |
+| Rogue | Playable | Core progression plus the complete Core and APG rogue-talent catalogues are integrated. |
 | Sorcerer | Playable Core class | Level 1–20 spontaneous casting and all ten Core bloodlines with dependent choices and persistence are integrated. |
 | Wizard | Playable Core class | Level 1–20 prepared casting, Core schools, opposition preparation, Arcane Bond paths and specialist slots are integrated. |
 
