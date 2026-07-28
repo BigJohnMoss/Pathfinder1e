@@ -1,0 +1,95 @@
+{
+  "source": {"title": "Advanced Player's Guide", "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"},
+  "subdomains": [
+    {
+      "id": "subdomain-ferocity", "groupId": "cleric-domains", "name": "Ferocity Subdomain (Strength)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Strength Surge with Ferocious Strike and replace the Strength domain's 3rd- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 89, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#ferocity-subdomain"},
+      "parentDomainId": "domain-strength", "replacesPower": "Strength Surge",
+      "powers": [
+        {"name": "Ferocious Strike", "level": 1, "summary": "Designate a melee attack as a ferocious strike; on a hit it deals additional damage equal to half cleric level, minimum +1. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Might of the Gods", "level": 8, "summary": "As a free action, add cleric level as an enhancement bonus to Strength for Strength checks and Strength-based skills. Usable for rounds per day equal to cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "enlarge person"}, {"level": 2, "name": "bull's strength"}, {"level": 3, "name": "rage"},
+        {"level": 4, "name": "spell immunity"}, {"level": 5, "name": "righteous might"}, {"level": 6, "name": "mass bull's strength"},
+        {"level": 7, "name": "grasping hand"}, {"level": 8, "name": "clenched fist"}, {"level": 9, "name": "crushing hand"}
+      ]
+    },
+    {
+      "id": "subdomain-resolve", "groupId": "cleric-domains", "name": "Resolve Subdomain (Strength)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Might of the Gods with Bestow Resolve and replace the Strength domain's 1st- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 94, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#resolve-subdomain"},
+      "parentDomainId": "domain-strength", "replacesPower": "Might of the Gods",
+      "powers": [
+        {"name": "Strength Surge", "level": 1, "summary": "As a standard action, touch a creature to grant an enhancement bonus equal to half cleric level, minimum +1, on melee attacks, Strength-based combat maneuvers, and Strength checks and skills for 1 round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Bestow Resolve", "level": 8, "summary": "Grant all allies within 20 feet temporary hit points equal to cleric level + Wisdom modifier for 1 minute. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "bless"}, {"level": 2, "name": "bull's strength"}, {"level": 3, "name": "magic vestment"},
+        {"level": 4, "name": "spell immunity"}, {"level": 5, "name": "righteous might"}, {"level": 6, "name": "heroes' feast"},
+        {"level": 7, "name": "grasping hand"}, {"level": 8, "name": "clenched fist"}, {"level": 9, "name": "crushing hand"}
+      ]
+    },
+    {
+      "id": "subdomain-day", "groupId": "cleric-domains", "name": "Day Subdomain (Sun)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Nimbus of Light with Day's Resurgence and replace the Sun domain's 2nd- and 3rd-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 87, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#day-subdomain"},
+      "parentDomainId": "domain-sun", "replacesPower": "Nimbus of Light",
+      "powers": [
+        {"name": "Sun's Blessing", "level": 1, "summary": "Add cleric level to damage dealt to undead with positive-energy channeling, and undead do not add channel resistance to saves against that channel."},
+        {"name": "Day's Resurgence", "level": 8, "summary": "After 10 uninterrupted minutes, restore a willing creature as if it completed 8 hours of rest and let it retry once-per-day saves against ongoing effects, without granting additional spell preparation. Usable once per day at 8th level, plus once per two levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "endure elements"}, {"level": 2, "name": "continual flame"}, {"level": 3, "name": "daylight"},
+        {"level": 4, "name": "fire shield"}, {"level": 5, "name": "flame strike"}, {"level": 6, "name": "fire seeds"},
+        {"level": 7, "name": "sunbeam"}, {"level": 8, "name": "sunburst"}, {"level": 9, "name": "prismatic sphere"}
+      ]
+    },
+    {
+      "id": "subdomain-light", "groupId": "cleric-domains", "name": "Light Subdomain (Sun)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Sun's Blessing with Blinding Flash and replace the Sun domain's 1st- and 3rd-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 91, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#light-subdomain"},
+      "parentDomainId": "domain-sun", "replacesPower": "Sun's Blessing",
+      "powers": [
+        {"name": "Blinding Flash", "level": 1, "summary": "As a standard action, emit a 20-foot flash. Creatures with fewer Hit Dice than cleric level are blinded for 1d4 rounds unless they save, and all creatures are dazzled for rounds equal to half cleric level, minimum 1. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Nimbus of Light", "level": 8, "summary": "Emit a 30-foot daylight nimbus for rounds per day equal to cleric level. Undead within it take damage equal to cleric level each round, and lower-level darkness effects are dispelled."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "faerie fire"}, {"level": 2, "name": "heat metal"}, {"level": 3, "name": "daylight"},
+        {"level": 4, "name": "fire shield"}, {"level": 5, "name": "flame strike"}, {"level": 6, "name": "fire seeds"},
+        {"level": 7, "name": "sunbeam"}, {"level": 8, "name": "sunburst"}, {"level": 9, "name": "prismatic sphere"}
+      ]
+    },
+    {
+      "id": "subdomain-exploration", "groupId": "cleric-domains", "name": "Exploration Subdomain (Travel)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Agile Feet with Door Sight and replace the Travel domain's 1st-, 4th-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 89, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#exploration-subdomain"},
+      "parentDomainId": "domain-travel", "replacesPower": "Agile Feet",
+      "powers": [
+        {"name": "Door Sight", "level": 1, "summary": "After touching a surface for 1 minute, see through it as clairvoyance for up to 10 minutes while maintaining contact and taking no other action. The surface can be up to 6 inches plus 1 inch per cleric level thick. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Dimensional Hop", "level": 8, "summary": "As a move action, teleport up to a total of 10 feet per cleric level each day, spent in 5-foot increments. You can bring willing allies by spending additional distance."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "expeditious retreat"}, {"level": 2, "name": "locate object"}, {"level": 3, "name": "fly"},
+        {"level": 4, "name": "locate creature"}, {"level": 5, "name": "teleport"}, {"level": 6, "name": "find the path"},
+        {"level": 7, "name": "greater teleport"}, {"level": 8, "name": "phase door"}, {"level": 9, "name": "world wave"}
+      ]
+    },
+    {
+      "id": "subdomain-trade", "groupId": "cleric-domains", "name": "Trade Subdomain (Travel)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Agile Feet with Silver-Tongued Haggler and replace the Travel domain's 1st-, 5th-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 96, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#trade-subdomain"},
+      "parentDomainId": "domain-travel", "replacesPower": "Agile Feet",
+      "powers": [
+        {"name": "Silver-Tongued Haggler", "level": 1, "summary": "As a free action when making a Bluff, Diplomacy, or Sense Motive check, gain a bonus equal to half cleric level, minimum +1. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Dimensional Hop", "level": 8, "summary": "As a move action, teleport up to a total of 10 feet per cleric level each day, spent in 5-foot increments. You can bring willing allies by spending additional distance."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "floating disk"}, {"level": 2, "name": "locate object"}, {"level": 3, "name": "fly"},
+        {"level": 4, "name": "dimension door"}, {"level": 5, "name": "overland flight"}, {"level": 6, "name": "find the path"},
+        {"level": 7, "name": "greater teleport"}, {"level": 8, "name": "phase door"}, {"level": 9, "name": "gate"}
+      ]
+    }
+  ]
+}
