@@ -286,6 +286,46 @@ test("builds, calculates, and restores a three-class character", async () => {
   assert.equal((screen.getByLabelText("Additional class 2 levels") as HTMLInputElement).value, "3");
 });
 
+test("switches and restores a third class spellbook", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "15" } });
+  fireEvent.change(screen.getByLabelText("Wisdom base score"), { target: { value: "12" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "cleric");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "4" } });
+  await user.click(screen.getByRole("button", { name: "Add another class" }));
+  await user.selectOptions(screen.getByLabelText("Additional class 2"), "druid");
+  fireEvent.change(screen.getByLabelText("Additional class 2 levels"), { target: { value: "5" } });
+
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const natureBond = screen.getByLabelText(/Nature Bond/);
+  await user.selectOptions(natureBond, "druid-nature-bond-animal");
+  assert.equal((natureBond as HTMLSelectElement).value, "druid-nature-bond-animal");
+
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  const classSelector = screen.getByLabelText("Spellcasting class");
+  assert.deepEqual(Array.from((classSelector as HTMLSelectElement).options).map((option) => option.textContent), ["Wizard", "Cleric", "Druid"]);
+  await user.selectOptions(classSelector, "druid");
+  assert.ok(screen.getByText(/Druid slots:/));
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
+  await user.type(screen.getByLabelText("Search spells"), "entangle");
+  await user.click(screen.getByRole("button", { name: "Add Entangle" }));
+  assert.equal(screen.getByLabelText("Entangle prepared").textContent, "1");
+
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Remove Druid" }));
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await waitFor(() => assert.equal((screen.getByLabelText("Additional class 2") as HTMLSelectElement).value, "druid"));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.equal((screen.getByLabelText(/Nature Bond/) as HTMLSelectElement).value, "druid-nature-bond-animal");
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  await user.selectOptions(screen.getByLabelText("Spellcasting class"), "druid");
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
+  await user.type(screen.getByLabelText("Search spells"), "entangle");
+  assert.equal(screen.getByLabelText("Entangle prepared").textContent, "1");
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
