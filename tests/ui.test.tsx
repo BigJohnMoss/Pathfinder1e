@@ -7,6 +7,7 @@ let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
 let cleanup: typeof import("@testing-library/react").cleanup;
 let fireEvent: typeof import("@testing-library/react").fireEvent;
+let waitFor: typeof import("@testing-library/react").waitFor;
 let userEvent: typeof import("@testing-library/user-event").default;
 let Home: typeof import("../apps/web/app/page").default;
 
@@ -15,7 +16,7 @@ test.before(async () => {
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, localStorage: dom.window.localStorage });
   Object.defineProperty(globalThis, "navigator", { configurable: true, value: dom.window.navigator });
   Object.assign(globalThis, { React });
-  ({ render, screen, cleanup, fireEvent } = await import("@testing-library/react"));
+  ({ render, screen, cleanup, fireEvent, waitFor } = await import("@testing-library/react"));
   userEvent = (await import("@testing-library/user-event")).default;
   Home = (await import("../apps/web/app/page")).default;
 });
@@ -302,10 +303,7 @@ test("makes Paladin available with its martial chassis and divine features", asy
   assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Aura of Good"));
-  assert.ok(screen.getByText("Detect Evil"));
-  assert.ok(screen.getByText("Smite Evil"));
-
-  await user…530 tokens truncated…("button", { name: "Load" }));
+  assert.ok(screen.getByText("Detect Ev…547 tokens truncated…("button", { name: "Load" }));
   assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "14/16 round remaining");
   const versatile1 = screen.getByLabelText(/Versatile Performance 1/);
   const versatile2 = screen.getByLabelText(/Versatile Performance 2/);
