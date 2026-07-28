@@ -220,6 +220,14 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
         seenMercies.add(selectedId);
       }
       const options = optionsFor(choice);
+      if (choice.id === "wizard-opposition-school-1-first" && selectedWizardSchool?.elementalOppositionSchool && options.length === 1 && selectedId !== options[0].id) {
+        onOptionChange(choice.id, options[0].id);
+        continue;
+      }
+      if (choice.id === "wizard-opposition-school-1-second" && selectedWizardSchool?.elementalOppositionSchool && selectedId) {
+        onOptionChange(choice.id, "");
+        continue;
+      }
       if (selectedId && !options.some((option) => option.id === selectedId)) onOptionChange(choice.id, "");
       const selectedOption = options.find((option) => option.id === selectedId);
       if (selectedOption?.choice) {
@@ -254,6 +262,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const wizardOpposition = isWizardOpposition(choice);
     const specialistUniversalist = Boolean(specialistLevel) && selectedWizardSchool?.id === "wizard-school-universalist";
     const wizardUniversalist = wizardOpposition && selectedWizardSchool?.id === "wizard-school-universalist";
+    const elementalSecondOpposition = choice.id === "wizard-opposition-school-1-second" && Boolean(selectedWizardSchool?.elementalOppositionSchool);
     const needsWizardSchool = (wizardOpposition || Boolean(specialistLevel)) && !selectedWizardSchool;
     const familiarChoice = choice.id === "wizard-familiar-1";
     const objectChoice = choice.id === "wizard-bonded-object-1";
@@ -278,8 +287,8 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const selected = options.find((option) => option.id === selectedOptions[choice.id]);
     const usedKey = `${choice.id}-used`;
     const used = selectedOptions[usedKey] === "used";
-    const placeholder = needsRequiredOption ? choice.requiredOptionMessage ?? "Choose the prerequisite option first" : needsArcaneBond ? "Choose an arcane bond first" : wrongArcaneBond ? familiarChoice ? "Familiar bond not selected" : "Bonded object not selected" : needsHuntersBond ? "Choose Hunter's Bond first" : wrongHuntersBond ? "Animal Companion bond not selected" : needsNatureBond ? "Choose Nature Bond first" : wrongNatureBond ? druidCompanionChoice ? "Animal Companion bond not selected" : "Nature Domain bond not selected" : needsWizardSchool ? "Choose an arcane school first" : specialistUniversalist ? "Universalists have no specialist slots" : wizardUniversalist ? "Universalists have no opposition schools" : needsOracleMystery ? "Choose a mystery first" : needsDeity ? "Choose a deity first" : needsAlignment ? "Choose alignment first" : needsDomains ? "Choose domains first" : unavailableDomainDetails ? "Domain spell details unavailable" : unavailableSpecialistSpells ? "No matching specialist spells available" : options.length === 1 && choice.id === "cleric-channel-energy-type-1" ? "Determined by alignment" : "Choose an option";
-    const disabled = needsRequiredOption || needsArcaneBond || wrongArcaneBond || needsHuntersBond || wrongHuntersBond || needsNatureBond || wrongNatureBond || needsWizardSchool || specialistUniversalist || wizardUniversalist || needsOracleMystery || needsDeity || needsAlignment || needsDomains || unavailableDomainDetails || unavailableSpecialistSpells || (choice.id === "cleric-channel-energy-type-1" && options.length === 1);
+    const placeholder = needsRequiredOption ? choice.requiredOptionMessage ?? "Choose the prerequisite option first" : needsArcaneBond ? "Choose an arcane bond first" : wrongArcaneBond ? familiarChoice ? "Familiar bond not selected" : "Bonded object not selected" : needsHuntersBond ? "Choose Hunter's Bond first" : wrongHuntersBond ? "Animal Companion bond not selected" : needsNatureBond ? "Choose Nature Bond first" : wrongNatureBond ? druidCompanionChoice ? "Animal Companion bond not selected" : "Nature Domain bond not selected" : needsWizardSchool ? "Choose an arcane school first" : specialistUniversalist ? "Universalists have no specialist slots" : wizardUniversalist ? "Universalists have no opposition schools" : elementalSecondOpposition ? "Elementalists choose one opposition element" : needsOracleMystery ? "Choose a mystery first" : needsDeity ? "Choose a deity first" : needsAlignment ? "Choose alignment first" : needsDomains ? "Choose domains first" : unavailableDomainDetails ? "Domain spell details unavailable" : unavailableSpecialistSpells ? "No matching specialist spells available" : options.length === 1 && choice.id === "cleric-channel-energy-type-1" ? "Determined by alignment" : "Choose an option";
+    const disabled = needsRequiredOption || needsArcaneBond || wrongArcaneBond || needsHuntersBond || wrongHuntersBond || needsNatureBond || wrongNatureBond || needsWizardSchool || specialistUniversalist || wizardUniversalist || elementalSecondOpposition || needsOracleMystery || needsDeity || needsAlignment || needsDomains || unavailableDomainDetails || unavailableSpecialistSpells || (choice.id === "cleric-channel-energy-type-1" && options.length === 1);
     const domainEquivalent = (option: Option) => option.parentDomainId ?? option.id;
     const domainSelection = choice.id.startsWith("cleric-domain-") || choice.id === "druid-domain-1" || choice.id === "sacred-servant-domain-4";
     const detailKey = selected?.choice ? `${choice.id}-${selected.choice.key}` : "";

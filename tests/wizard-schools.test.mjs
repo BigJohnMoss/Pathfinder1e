@@ -41,7 +41,7 @@ test("Wizard class progression requires a school and two dependent opposition ch
   assert.equal(schoolFeature.choiceRequired, true);
   assert.equal(schoolFeature.optionGroupId, "wizard-schools");
   assert.deepEqual(wizard.features.filter((feature) => feature.id.startsWith("wizard-opposition-school-")).map((feature) => feature.optionGroupId), ["wizard-opposition-schools", "wizard-opposition-schools"]);
-  assert.equal(opposition.options.length, 8);
+  assert.equal(opposition.options.filter((option) => !["air", "earth", "fire", "water"].includes(option.id.replace("wizard-opposition-", ""))).length, 8);
 });
 
 test("opposition school filtering excludes the specialty and disables Universalists", () => {
@@ -59,4 +59,18 @@ test("focused schools exclude their associated school from opposition choices", 
   const choices = oppositionSchoolOptions(opposition.options, admixture);
   assert.equal(choices.length, 7);
   assert.equal(choices.some((option) => option.id === "wizard-opposition-evocation"), false);
+});
+
+test("APG elemental schools force one opposed element", () => {
+  const elementalSchools = schools.options.filter((school) => school.elementalOppositionSchool);
+  assert.deepEqual(elementalSchools.map((school) => school.id), [
+    "wizard-school-air", "wizard-school-earth", "wizard-school-fire", "wizard-school-water"
+  ]);
+  assert.deepEqual(elementalSchools.map((school) => school.elementalOppositionSchool), ["earth", "air", "water", "fire"]);
+  for (const school of elementalSchools) {
+    assert.equal(school.powers.length, 3);
+    assert.deepEqual(Object.keys(school.elementalSpellIdsByLevel), ["1", "2", "3", "4", "5", "6", "7", "8", "9"]);
+    const choices = oppositionSchoolOptions(opposition.options, school);
+    assert.deepEqual(choices.map((option) => option.id), [`wizard-opposition-${school.elementalOppositionSchool}`]);
+  }
 });

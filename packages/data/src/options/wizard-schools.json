@@ -740,6 +740,424 @@
         "page": null,
         "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
       }
+    },
+    {
+      "id": "wizard-school-air",
+      "groupId": "wizard-schools",
+      "name": "Air School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "elementalOppositionSchool": "earth",
+      "elementalSpellIdsByLevel": {
+        "1": [
+          "alter-winds",
+          "feather-fall",
+          "shocking-grasp"
+        ],
+        "2": [
+          "elemental-speech",
+          "elemental-touch",
+          "resist-energy",
+          "summon-monster-2",
+          "glide",
+          "gust-of-wind",
+          "levitate",
+          "whispering-wind"
+        ],
+        "3": [
+          "draconic-reservoir",
+          "elemental-aura",
+          "protection-from-energy",
+          "cloak-of-winds",
+          "fly",
+          "gaseous-form",
+          "lightning-bolt",
+          "wind-wall"
+        ],
+        "4": [
+          "detonate",
+          "dragons-breath",
+          "elemental-body-i",
+          "summon-monster-4",
+          "ball-lightning",
+          "river-of-wind",
+          "shout"
+        ],
+        "5": [
+          "elemental-body-ii",
+          "planar-adaptation",
+          "planar-binding-lesser",
+          "summon-monster-5",
+          "overland-flight",
+          "suffocation"
+        ],
+        "6": [
+          "elemental-body-iii",
+          "planar-binding",
+          "summon-monster-6",
+          "chain-lightning",
+          "sirocco"
+        ],
+        "7": [
+          "elemental-body-iv",
+          "planar-adaptation-mass",
+          "summon-monster-7",
+          "control-weather",
+          "fly-mass"
+        ],
+        "8": [
+          "planar-binding-greater",
+          "summon-monster-viii",
+          "shout-greater",
+          "stormbolts"
+        ],
+        "9": [
+          "gate",
+          "suffocation-mass",
+          "winds-of-vengeance"
+        ]
+      },
+      "benefit": "Specialize in air, wind, lightning, and flight. Prepare one bonus spell from the Air elemental list at each available spell level and take Earth as the single opposition element.",
+      "powers": [
+        {
+          "name": "Air Supremacy",
+          "level": 1,
+          "summary": "Gain a scaling Fly bonus and self-only feather fall at will, adding levitate at 5th level and fly at 10th; at 20th level treat Fly checks as natural 20s."
+        },
+        {
+          "name": "Lightning Flash",
+          "level": 1,
+          "summary": "Damage and dazzle creatures within 5 feet with electricity. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Cyclone",
+          "level": 8,
+          "summary": "Create a defensive wind vortex that blocks ranged attacks and impedes creatures for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-earth",
+      "groupId": "wizard-schools",
+      "name": "Earth School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "elementalOppositionSchool": "air",
+      "elementalSpellIdsByLevel": {
+        "1": [
+          "expeditious-excavation",
+          "grease",
+          "stone-fist"
+        ],
+        "2": [
+          "elemental-speech",
+          "elemental-touch",
+          "resist-energy",
+          "summon-monster-2",
+          "acid-arrow",
+          "create-pit",
+          "glitterdust",
+          "shatter",
+          "stone-call"
+        ],
+        "3": [
+          "draconic-reservoir",
+          "elemental-aura",
+          "protection-from-energy",
+          "shifting-sand",
+          "spiked-pit",
+          "stinking-cloud"
+        ],
+        "4": [
+          "detonate",
+          "dragons-breath",
+          "elemental-body-i",
+          "summon-monster-4",
+          "acid-pit",
+          "calcific-touch",
+          "stone-shape",
+          "stoneskin"
+        ],
+        "5": [
+          "elemental-body-ii",
+          "planar-adaptation",
+          "planar-binding-lesser",
+          "summon-monster-5",
+          "hungry-pit",
+          "passwall",
+          "transmute-mud-to-rock",
+          "transmute-rock-to-mud",
+          "wall-of-stone"
+        ],
+        "6": [
+          "elemental-body-iii",
+          "planar-binding",
+          "summon-monster-6",
+          "acid-fog",
+          "flesh-to-stone",
+          "move-earth",
+          "stone-to-flesh",
+          "wall-of-iron"
+        ],
+        "7": [
+          "elemental-body-iv",
+          "planar-adaptation-mass",
+          "summon-monster-7",
+          "rampart",
+          "reverse-gravity",
+          "statue"
+        ],
+        "8": [
+          "planar-binding-greater",
+          "summon-monster-viii",
+          "iron-body",
+          "wall-of-lava"
+        ],
+        "9": [
+          "gate",
+          "clashing-rocks",
+          "world-wave"
+        ]
+      },
+      "benefit": "Specialize in earth, stone, and acid. Prepare one bonus spell from the Earth elemental list at each available spell level and take Air as the single opposition element.",
+      "powers": [
+        {
+          "name": "Earth Supremacy",
+          "level": 1,
+          "summary": "Gain scaling ground-based CMD defenses and +1 melee attack and damage while both combatants touch the ground; at 20th level cast through earth and stone when line of sight remains."
+        },
+        {
+          "name": "Acid Cloud",
+          "level": 1,
+          "summary": "Create a short-lived acid cloud that damages and sickens creatures. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Earth Glide",
+          "level": 8,
+          "summary": "Move through natural earth, dirt, and stone for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-fire",
+      "groupId": "wizard-schools",
+      "name": "Fire School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "elementalOppositionSchool": "water",
+      "elementalSpellIdsByLevel": {
+        "1": [
+          "burning-hands",
+          "dancing-lantern"
+        ],
+        "2": [
+          "elemental-speech",
+          "elemental-touch",
+          "resist-energy",
+          "summon-monster-2",
+          "burning-gaze",
+          "fire-breath",
+          "flaming-sphere",
+          "pyrotechnics",
+          "scorching-ray"
+        ],
+        "3": [
+          "draconic-reservoir",
+          "elemental-aura",
+          "protection-from-energy",
+          "campfire-wall",
+          "fireball",
+          "flame-arrow"
+        ],
+        "4": [
+          "detonate",
+          "dragons-breath",
+          "elemental-body-i",
+          "summon-monster-4",
+          "fire-shield",
+          "fire-trap",
+          "firefall",
+          "wall-of-fire"
+        ],
+        "5": [
+          "elemental-body-ii",
+          "planar-adaptation",
+          "planar-binding-lesser",
+          "summon-monster-5",
+          "fire-snake",
+          "geyser"
+        ],
+        "6": [
+          "elemental-body-iii",
+          "planar-binding",
+          "summon-monster-6",
+          "contagious-flame",
+          "sirocco"
+        ],
+        "7": [
+          "elemental-body-iv",
+          "planar-adaptation-mass",
+          "summon-monster-7",
+          "delayed-blast-fireball",
+          "firebrand"
+        ],
+        "8": [
+          "planar-binding-greater",
+          "summon-monster-viii",
+          "incendiary-cloud",
+          "wall-of-lava"
+        ],
+        "9": [
+          "gate",
+          "fiery-body",
+          "meteor-swarm"
+        ]
+      },
+      "benefit": "Specialize in flame, heat, and purification. Prepare one bonus spell from the Fire elemental list at each available spell level and take Water as the single opposition element.",
+      "powers": [
+        {
+          "name": "Fire Supremacy",
+          "level": 1,
+          "summary": "Gain fire resistance 5, increasing to 10 at 10th level and immunity at 20th, and draw nearby flame into a one-round retaliatory aura."
+        },
+        {
+          "name": "Fire Jet",
+          "level": 1,
+          "summary": "Project a 20-foot line of fire that can ignite targets. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Dancing Flame",
+          "level": 8,
+          "summary": "Move nonmagical fire or reshape and reposition your fire spells. Uses per day equal half wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-water",
+      "groupId": "wizard-schools",
+      "name": "Water School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "elementalOppositionSchool": "fire",
+      "elementalSpellIdsByLevel": {
+        "1": [
+          "hydraulic-push",
+          "obscuring-mist",
+          "touch-of-the-sea"
+        ],
+        "2": [
+          "elemental-speech",
+          "elemental-touch",
+          "resist-energy",
+          "summon-monster-2",
+          "accelerate-poison",
+          "fog-cloud",
+          "slipstream"
+        ],
+        "3": [
+          "draconic-reservoir",
+          "elemental-aura",
+          "protection-from-energy",
+          "aqueous-orb",
+          "hydraulic-torrent",
+          "sleet-storm",
+          "water-breathing"
+        ],
+        "4": [
+          "detonate",
+          "dragons-breath",
+          "elemental-body-i",
+          "summon-monster-4",
+          "ice-storm",
+          "solid-fog",
+          "wall-of-ice"
+        ],
+        "5": [
+          "elemental-body-ii",
+          "planar-adaptation",
+          "planar-binding-lesser",
+          "summon-monster-5",
+          "cloudkill",
+          "cone-of-cold",
+          "geyser"
+        ],
+        "6": [
+          "elemental-body-iii",
+          "planar-binding",
+          "summon-monster-6",
+          "fluid-form",
+          "freezing-sphere"
+        ],
+        "7": [
+          "elemental-body-iv",
+          "planar-adaptation-mass",
+          "summon-monster-7",
+          "control-weather",
+          "vortex"
+        ],
+        "8": [
+          "planar-binding-greater",
+          "summon-monster-viii",
+          "horrid-wilting",
+          "polar-ray",
+          "seamantle"
+        ],
+        "9": [
+          "gate",
+          "tsunami",
+          "world-wave"
+        ]
+      },
+      "benefit": "Specialize in water, cold, mist, and waves. Prepare one bonus spell from the Water elemental list at each available spell level and take Fire as the single opposition element.",
+      "powers": [
+        {
+          "name": "Water Supremacy",
+          "level": 1,
+          "summary": "Gain a scaling Swim bonus and greatly extended breath holding, adding a swim speed at 10th level; at 20th level treat Swim checks as natural 20s."
+        },
+        {
+          "name": "Cold Blast",
+          "level": 1,
+          "summary": "Damage and stagger creatures within 5 feet with cold. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Wave",
+          "level": 8,
+          "summary": "Create a moving wave that knocks creatures prone, carries them, and extinguishes nonmagical fire for rounds per day equal half wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
     }
   ]
 }
