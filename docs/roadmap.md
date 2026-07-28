@@ -80,7 +80,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Azata, Restoration, Resurrection, Heroism, Honor, Memory, Thought, Inevitable,
   Freedom, Revolution, Curse, Fate, Insanity, Nightmare, Arcane, Divine,
   Leadership, Martyr, Defense, Purity, Ancestors, Souls, Language, and Wards
-  selections (including parent-specific
+  selections, plus Ferocity, Resolve, Day, Light, Exploration, and Trade
+  (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
 - expanded bloodlines
