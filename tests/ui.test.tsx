@@ -893,6 +893,15 @@ test("switches between the Drunken Brute and Hurler archetypes", async () => {
   assert.equal(screen.queryByText("Raging Drunk"), null);
 });
 
+test("shows the Barbarian Damage Reduction progression through level 19", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "19" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByText("Damage Reduction 5/-"));
+});
+
 test("previews and advances the selected multiclass entry", async () => {
   const user = userEvent.setup();
   render(<Home />);

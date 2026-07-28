@@ -19,7 +19,10 @@ The Core Rulebook character-building experience is implemented and protected by 
 
 ### 1. Core classes
 
-All eleven Core classes are playable through level 20. Druid includes its complete Core spell list, both Nature Bond paths with dependent companion or domain choices, and persistent Wild Shape use tracking.
+All eleven Core classes are playable through level 20. Barbarian includes its
+complete Damage Reduction progression. Druid includes its complete Core spell
+list, both Nature Bond paths with dependent companion or domain choices, and
+persistent Wild Shape use tracking.
 
 ### 2. Equipment and combat loadout
 
