@@ -216,6 +216,35 @@ test("switches between independent multiclass spellbooks", async () => {
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
 });
 
+test("tracks and restores daily resources for secondary classes", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "10" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "bard");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "5" } });
+
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "12/12 round remaining");
+  await user.click(screen.getByRole("button", { name: "Spend 1 round" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "11/12 round remaining");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Additional class"), "");
+  assert.equal(screen.queryByLabelText("Performance rounds remaining"), null);
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await waitFor(() => assert.equal((screen.getByLabelText("Additional class") as HTMLSelectElement).value, "bard"));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "11/12 round remaining");
+
+  await user.selectOptions(screen.getByLabelText("Additional class"), "druid");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "5" } });
+  assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "1/1 use remaining");
+  await user.click(screen.getByRole("button", { name: "Spend 1 use" }));
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Refresh wild shape" }));
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "0/1 use remaining");
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
