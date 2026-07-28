@@ -1,0 +1,9 @@
+{
+  "id":"blight-druid-nature-bonds",
+  "name":"Blight Druid Nature Bonds",
+  "classIds":["druid"],
+  "options":[
+    {"id":"blight-druid-nature-bond-familiar","groupId":"blight-druid-nature-bonds","name":"Familiar","classIds":["druid"],"minimumLevel":1,"prerequisites":[],"benefit":"Gain a familiar using your Druid level as your Wizard level.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}},
+    {"id":"blight-druid-nature-bond-domain","groupId":"blight-druid-nature-bonds","name":"Nature Domain","classIds":["druid"],"minimumLevel":1,"prerequisites":[],"benefit":"Choose a normal Druid domain or Darkness, Death, or Destruction.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}}
+  ]
+}
