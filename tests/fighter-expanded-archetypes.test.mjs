@@ -56,3 +56,44 @@ test("expanded Fighter archetypes use unique feature identifiers", async () => {
   const ids = archetypes.flatMap((archetype) => archetype.replacements.flatMap((replacement) => replacement.features.map((feature) => feature.id)));
   assert.equal(new Set(ids).size, ids.length);
 });
+
+test("Free Hand Fighter replaces all defensive and training progressions while retaining the capstone", async () => {
+  const applied = applyArchetype(fighter, await loadArchetype("fighter-free-hand-fighter"));
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  assert.ok(ids.includes("free-hand-deceptive-strike-2"));
+  assert.ok(ids.includes("free-hand-reversal-19"));
+  assert.ok(ids.includes("weapon-mastery-20"));
+  for (const removed of ["bravery-2", "armor-training-3", "weapon-training-5", "armor-mastery-19"]) assert.ok(!ids.includes(removed));
+});
+
+test("Mobile Fighter preserves early armor training and replaces its capstone", async () => {
+  const applied = applyArchetype(fighter, await loadArchetype("fighter-mobile-fighter"));
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  assert.ok(ids.includes("armor-training-3"));
+  assert.ok(ids.includes("armor-training-7"));
+  assert.ok(ids.includes("mobile-rapid-attack-11"));
+  assert.ok(ids.includes("mobile-whirlwind-blitz-20"));
+  assert.ok(!ids.includes("weapon-training-5"));
+  assert.ok(!ids.includes("weapon-mastery-20"));
+});
+
+test("Polearm Master replaces every declared milestone and restricts Weapon Mastery", async () => {
+  const applied = applyArchetype(fighter, await loadArchetype("fighter-polearm-master"));
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  assert.ok(ids.includes("polearm-pole-fighting-2"));
+  assert.ok(ids.includes("polearm-parry-19"));
+  assert.ok(!ids.includes("bravery-18"));
+  assert.ok(!ids.includes("armor-training-15"));
+  assert.ok(!ids.includes("weapon-training-17"));
+  assert.match(applied.features.find((feature) => feature.id === "weapon-mastery-20").summary, /spear or polearm/);
+});
+
+test("Weapon Master focuses all replaced progressions on one chosen weapon", async () => {
+  const applied = applyArchetype(fighter, await loadArchetype("fighter-weapon-master"));
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  assert.ok(ids.includes("weapon-master-guard-2"));
+  assert.ok(ids.includes("weapon-master-training-15"));
+  assert.ok(ids.includes("weapon-master-unstoppable-strike-19"));
+  assert.ok(ids.includes("weapon-mastery-20"));
+  for (const removed of ["bravery-2", "armor-training-3", "weapon-training-5", "armor-mastery-19"]) assert.ok(!ids.includes(removed));
+});
