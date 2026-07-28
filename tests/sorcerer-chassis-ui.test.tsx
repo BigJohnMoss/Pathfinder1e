@@ -37,7 +37,21 @@ test("Sorcerer learns fixed spells, casts spontaneously, selects a bloodline, an
   await user.click(screen.getByRole("tab", { name: "Features" }));
   const bloodline = screen.getAllByText("Bloodline").at(-1)!.closest("label")?.querySelector("select");
   assert.ok(bloodline);
-  assert.equal(bloodline.options.length, 11);
+  const bloodlineValues = Array.from(bloodline.options, (option) => option.value);
+  for (const coreBloodlineId of [
+    "sorcerer-bloodline-aberrant",
+    "sorcerer-bloodline-abyssal",
+    "sorcerer-bloodline-arcane",
+    "sorcerer-bloodline-celestial",
+    "sorcerer-bloodline-destined",
+    "sorcerer-bloodline-draconic",
+    "sorcerer-bloodline-elemental",
+    "sorcerer-bloodline-fey",
+    "sorcerer-bloodline-infernal",
+    "sorcerer-bloodline-undead"
+  ]) {
+    assert.ok(bloodlineValues.includes(coreBloodlineId), `expected Core bloodline ${coreBloodlineId}`);
+  }
   await user.selectOptions(bloodline, "sorcerer-bloodline-arcane");
 
   await user.click(screen.getByRole("tab", { name: "Spells" }));
