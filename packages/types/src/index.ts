@@ -66,6 +66,7 @@ export interface CharacterClass {
   babProgression: Progression; saves: {fortitude: SaveProgression; reflex: SaveProgression; will: SaveProgression};
   skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
   features: ClassFeatureOccurrence[];
+  spellListAdditions?: Record<string, number>;
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
     castingType: "prepared" | "spontaneous";
@@ -87,6 +88,7 @@ export interface CharacterArchetype {
     features: ClassFeatureOccurrence[];
   }>;
   featureOverrides?: Array<{ featureId: string; summary: string }>;
+  spellListAdditions?: Record<string, number>;
   source: SourceRef;
 }
 export type Prerequisite =
@@ -109,6 +111,7 @@ export interface SelectableOption {
   benefit:string;
   source:SourceRef;
   featId?: string;
+  spellId?: string;
   repeatable?: boolean;
   selectionLimit?: number;
   familyId?: string;
@@ -233,6 +236,12 @@ export interface CharacterOptionGroup {
   name: string;
   classIds: string[];
   options: CharacterOption[];
+  generatedSpellOptions?: {
+    classId: string;
+    school?: string;
+    additionalSpellIds?: string[];
+    additionalSpellLevels?: Record<string, number>;
+  };
 }
 
 export interface CharacterSpell {
