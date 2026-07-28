@@ -1,0 +1,25 @@
+{
+  "id": "barbarian-drunken-brute",
+  "name": "Drunken Brute",
+  "classId": "barbarian",
+  "summary": "A hard-drinking barbarian who consumes potions and alcohol as part of a raging combat style.",
+  "replacements": [
+    {
+      "featureIds": ["fast-movement-1"],
+      "features": [
+        {
+          "id": "drunken-brute-raging-drunk-1",
+          "name": "Raging Drunk",
+          "level": 1,
+          "type": "core",
+          "summary": "While raging, drink a potion or tankard as a move action without provoking; alcohol sustains rage for that round but causes 1 round of nausea when the rage ends."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  }
+}
