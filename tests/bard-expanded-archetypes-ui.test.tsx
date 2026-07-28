@@ -42,3 +42,21 @@ test("Arcane Duelist is selectable, complete through level 20, and persistent", 
   await user.click(screen.getByRole("button", { name: "Save" }));
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId, "bard-arcane-duelist");
 });
+
+test("Archivist switches in its complete scholarly progression", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-archivist']"));
+  await user.selectOptions(archetype, "bard-archivist");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  for (const name of ["Naturalist +1", "Lamentable Belaborment", "Pedantic Lecture", "Magic Lore", "Jack of All Trades: Take 10", "Probable Path"]) {
+    assert.ok(screen.getByText(name));
+  }
+  assert.equal(screen.queryByText("Inspire Courage +4"), null);
+  assert.equal(screen.queryByText("Versatile Performance 5"), null);
+  assert.ok(screen.getByText("Deadly Performance"));
+});
