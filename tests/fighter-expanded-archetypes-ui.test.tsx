@@ -80,3 +80,34 @@ test("specialist Fighter archetypes expose their defining level-20 progressions"
   await user.click(screen.getByRole("button", { name: "Save" }));
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId, "fighter-weapon-master");
 });
+
+test("the final APG Fighter archetypes switch cleanly and persist their level-20 features", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.equal(archetype.querySelectorAll("option").length, 13);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  await user.selectOptions(archetype, "fighter-phalanx-soldier");
+  assert.ok(screen.getByText("Phalanx Fighting"));
+  assert.ok(screen.getByText("Shielded Fortress"));
+
+  await user.selectOptions(archetype, "fighter-roughrider");
+  assert.ok(screen.getByText("Armored Charger"));
+  assert.ok(screen.getByText("Indomitable Steed"));
+  assert.ok(screen.getByText("Weapon Mastery"));
+
+  await user.selectOptions(archetype, "fighter-savage-warrior");
+  assert.ok(screen.getByText("Natural Savagery +1"));
+  assert.ok(screen.getByText("Natural Weapon Mastery"));
+  assert.ok(screen.getByText("Armor Mastery"));
+
+  await user.selectOptions(archetype, "fighter-shielded-fighter");
+  assert.ok(screen.getByText("Active Defense +1"));
+  assert.ok(screen.getByText("Shield Ward"));
+  assert.equal(screen.queryByText("Armor Mastery"), null);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId, "fighter-shielded-fighter");
+});
