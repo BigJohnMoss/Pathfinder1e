@@ -1,0 +1,13 @@
+{
+  "id":"four-winds-aspects",
+  "name":"Four Winds Aspects",
+  "classIds":["monk"],
+  "options":[
+    {"id":"four-winds-aspect-carp","groupId":"four-winds-aspects","name":"Aspect of the Carp","classIds":["monk"],"minimumLevel":17,"prerequisites":[],"benefit":"Breathe water and gain a swim speed equal to land speed; requires a nonevil alignment.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}},
+    {"id":"four-winds-aspect-ki-rin","groupId":"four-winds-aspects","name":"Aspect of the Ki-Rin","classIds":["monk"],"minimumLevel":17,"prerequisites":[],"benefit":"Fly at land speed but end each turn on the ground; requires lawful good alignment.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}},
+    {"id":"four-winds-aspect-monkey","groupId":"four-winds-aspects","name":"Aspect of the Monkey","classIds":["monk"],"minimumLevel":17,"prerequisites":[],"benefit":"Gain a prehensile attacking tail and a climb speed equal to land speed.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}},
+    {"id":"four-winds-aspect-oni","groupId":"four-winds-aspects","name":"Aspect of the Oni","classIds":["monk"],"minimumLevel":17,"prerequisites":[],"benefit":"Assume gaseous form for 1 minute per Monk level each day; requires an evil alignment.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}},
+    {"id":"four-winds-aspect-owl","groupId":"four-winds-aspects","name":"Aspect of the Owl","classIds":["monk"],"minimumLevel":17,"prerequisites":[],"benefit":"Gain a 30-foot fly speed.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}},
+    {"id":"four-winds-aspect-tiger","groupId":"four-winds-aspects","name":"Aspect of the Tiger","classIds":["monk"],"minimumLevel":17,"prerequisites":[],"benefit":"Once per hour, charge at ten times land speed and gain pounce for that charge.","source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}}
+  ]
+}
