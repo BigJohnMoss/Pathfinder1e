@@ -112,6 +112,7 @@ export interface SelectableOption {
   source:SourceRef;
   featId?: string;
   spellId?: string;
+  spellLevel?: number;
   repeatable?: boolean;
   selectionLimit?: number;
   familyId?: string;
@@ -238,7 +239,9 @@ export interface CharacterOptionGroup {
   options: CharacterOption[];
   generatedSpellOptions?: {
     classId: string;
+    targetClassId?: string;
     school?: string;
+    maximumSpellLevel?: number;
     additionalSpellIds?: string[];
     additionalSpellLevels?: Record<string, number>;
   };
