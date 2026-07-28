@@ -245,6 +245,21 @@ test("tracks and restores daily resources for secondary classes", async () => {
   assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "0/1 use remaining");
 });
 
+test("uses the highest multiclass caster level for feat prerequisites", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "12" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "cleric");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "10" } });
+  await user.click(screen.getByRole("tab", { name: "Feats" }));
+
+  const bonusFeat = screen.getByLabelText("Human bonus feat");
+  assert.equal((bonusFeat.querySelector("option[value='craft-magic-arms-and-armor']") as HTMLOptionElement).disabled, false);
+  await user.selectOptions(bonusFeat, "craft-magic-arms-and-armor");
+  assert.equal((bonusFeat as HTMLSelectElement).value, "craft-magic-arms-and-armor");
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
