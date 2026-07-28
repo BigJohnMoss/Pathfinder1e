@@ -128,6 +128,21 @@ test("Savage Skald exposes every war-song replacement through level 20", async (
   assert.ok(screen.getByText("Deadly Performance"));
 });
 
+test("Sea Singer exposes its maritime features and familiar choice", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-sea-singer']"));
+  await user.selectOptions(archetype, "bard-sea-singer");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Sea Shanty", "Still Water", "Whistle the Wind", "Call the Storm", "World Traveler", "Sea Legs"]) assert.ok(screen.getByText(name));
+  const familiar = screen.getByLabelText("Exotic Familiar");
+  assert.ok(familiar.querySelector("option[value='sea-singer-familiar-monkey']"));
+  assert.ok(familiar.querySelector("option[value='sea-singer-familiar-parrot']"));
+});
+
 test("Court Bard exposes every replacement performance through level 20", async () => {
   const user = userEvent.setup();
   render(<Home />);

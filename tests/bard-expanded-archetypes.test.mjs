@@ -94,6 +94,16 @@ test("Savage Skald replaces its complete war-song progression through level 20",
   assert.ok(ids.includes("bard-deadly-performance-20"));
 });
 
+test("Sea Singer replaces every maritime progression and limits its familiar choice", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-sea-singer.json");
+  const ids = featuresThroughLevel(applyArchetype(bard, archetype), 20).map((feature) => feature.id);
+  for (const added of ["sea-singer-sea-shanty-1", "sea-singer-still-water-3", "sea-singer-whistle-the-wind-6", "sea-singer-call-the-storm-18", "sea-singer-world-traveler-1", "sea-singer-familiar-2", "sea-singer-sea-legs-2"]) assert.ok(ids.includes(added));
+  for (const removed of ["bard-countersong-1", "bard-inspire-competence-19", "bard-suggestion-6", "bard-mass-suggestion-18", "bardic-knowledge-1", "bard-versatile-performance-18", "bard-well-versed-2"]) assert.ok(!ids.includes(removed));
+  const group = await load("../packages/data/src/options/sea-singer-familiars.json");
+  assert.deepEqual(group.options.map((option) => option.name), ["Monkey", "Parrot"]);
+});
+
 test("Archivist replaces its performance and knowledge progressions through level 20", async () => {
   const bard = await load("../packages/data/src/classes/bard.json");
   const archetype = await load("../packages/data/src/archetypes/bard-archivist.json");

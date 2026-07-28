@@ -1,0 +1,51 @@
+{
+  "id": "bard-sea-singer",
+  "name": "Sea Singer",
+  "classId": "bard",
+  "summary": "A maritime performer who protects a crew, commands wind and water, and travels with an exotic familiar.",
+  "replacements": [
+    {
+      "featureIds": ["bard-countersong-1"],
+      "features": [
+        {"id":"sea-singer-sea-shanty-1","name":"Sea Shanty","level":1,"type":"core","summary":"Let nearby allies use your Perform check for saves against exhaustion, fatigue, nausea, and sickness, including new saves against ongoing effects.","uses":"bardic performance"}
+      ]
+    },
+    {
+      "progressionKeys": ["bard-inspire-competence"],
+      "features": [
+        {"id":"sea-singer-still-water-3","name":"Still Water","level":3,"type":"scaling","summary":"Reduce shipboard movement, sailing, and swimming check DCs within 30 feet by your Bard level, to a minimum DC of 10.","scaling":"reduction equals Bard level","uses":"bardic performance"}
+      ]
+    },
+    {
+      "featureIds": ["bard-suggestion-6"],
+      "features": [
+        {"id":"sea-singer-whistle-the-wind-6","name":"Whistle the Wind","level":6,"type":"core","summary":"Create a gust of wind for as long as you perform, or for one minute after five continuous rounds.","uses":"bardic performance"}
+      ]
+    },
+    {
+      "featureIds": ["bard-mass-suggestion-18"],
+      "features": [
+        {"id":"sea-singer-call-the-storm-18","name":"Call the Storm","level":18,"type":"core","summary":"Duplicate control water, control weather, control winds, or storm of vengeance after performing one round per spell level.","uses":"bardic performance"}
+      ]
+    },
+    {
+      "featureIds": ["bardic-knowledge-1"],
+      "features": [
+        {"id":"sea-singer-world-traveler-1","name":"World Traveler","level":1,"type":"scaling","summary":"Add half Bard level to Knowledge (geography, local, and nature) and Linguistics, with one reroll per day plus one every five levels.","scaling":"half Bard level; rerolls improve at 5th and every 5 levels"}
+      ]
+    },
+    {
+      "progressionKeys": ["bard-versatile-performance"],
+      "features": [
+        {"id":"sea-singer-familiar-2","name":"Exotic Familiar","level":2,"type":"selectable","summary":"Choose a monkey or parrot familiar that advances using your Bard level.","choiceRequired":true,"optionGroupId":"sea-singer-familiars"}
+      ]
+    },
+    {
+      "featureIds": ["bard-well-versed-2"],
+      "features": [
+        {"id":"sea-singer-sea-legs-2","name":"Sea Legs","level":2,"type":"core","summary":"Gain +4 on saves against air, water, and being knocked prone, and +2 CMD against grapple, overrun, and trip."}
+      ]
+    }
+  ],
+  "source": {"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"}
+}
