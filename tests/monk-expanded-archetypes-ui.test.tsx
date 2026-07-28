@@ -33,6 +33,6 @@ for (const [archetypeId, archetypeName, expected, removed] of [
   await user.selectOptions(screen.getByLabelText("Archetype"), archetypeId);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
   await user.click(screen.getByRole("tab", { name: "Features" }));
-  for (const name of expected) assert.ok(screen.getByText(name));
+  for (const name of expected) assert.ok(screen.getAllByText(name).length > 0);
   for (const name of removed) assert.equal(screen.queryByText(name), null);
 });
