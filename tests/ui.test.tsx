@@ -902,6 +902,22 @@ test("shows the Barbarian Damage Reduction progression through level 19", async 
   assert.ok(screen.getByText("Damage Reduction 5/-"));
 });
 
+test("configures and restores Invulnerable Rager Extreme Endurance", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-invulnerable-rager");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText(/Extreme Endurance/), "invulnerable-rager-endurance-cold");
+  assert.ok(screen.getByText(/gain cold resistance/i));
+  assert.equal(screen.queryByText("Uncanny Dodge"), null);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText(/Extreme Endurance/), "invulnerable-rager-endurance-heat");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal((screen.getByLabelText(/Extreme Endurance/) as HTMLSelectElement).value, "invulnerable-rager-endurance-cold");
+});
+
 test("previews and advances the selected multiclass entry", async () => {
   const user = userEvent.setup();
   render(<Home />);

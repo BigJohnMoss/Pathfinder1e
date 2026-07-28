@@ -1,0 +1,44 @@
+{
+  "id": "barbarian-invulnerable-rager",
+  "name": "Invulnerable Rager",
+  "classId": "barbarian",
+  "summary": "A relentlessly durable barbarian who shrugs off weapon blows, nonlethal harm, and hostile climates.",
+  "replacements": [
+    {
+      "featureIds": ["uncanny-dodge-2", "improved-uncanny-dodge-5"],
+      "progressionKeys": ["damage-reduction"],
+      "features": [
+        {
+          "id": "invulnerable-rager-invulnerability-2",
+          "name": "Invulnerability",
+          "level": 2,
+          "type": "scaling",
+          "summary": "Gain DR/- equal to half your barbarian level; double that damage reduction against nonlethal damage.",
+          "progressionKey": "invulnerable-rager-invulnerability",
+          "scaling": "DR class level / 2"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["trap-sense"],
+      "features": [
+        {
+          "id": "invulnerable-rager-extreme-endurance-3",
+          "name": "Extreme Endurance",
+          "level": 3,
+          "type": "selectable",
+          "summary": "Choose hot or cold climates: endure that climate and gain matching resistance that increases every three levels after 3rd.",
+          "choiceRequired": true,
+          "optionGroupId": "invulnerable-rager-endurance",
+          "progressionKey": "invulnerable-rager-extreme-endurance",
+          "scaling": "Resistance 1 at 6th, +1 every 3 levels"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  }
+}

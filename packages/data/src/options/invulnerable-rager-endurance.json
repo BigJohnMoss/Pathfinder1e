@@ -1,0 +1,28 @@
+{
+  "id": "invulnerable-rager-endurance",
+  "name": "Invulnerable Rager Endurance",
+  "classIds": ["barbarian"],
+  "optionDefaults": {
+    "groupId": "invulnerable-rager-endurance",
+    "classIds": ["barbarian"],
+    "minimumLevel": 3,
+    "prerequisites": [],
+    "source": {
+      "title": "Advanced Player's Guide",
+      "page": null,
+      "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+    }
+  },
+  "options": [
+    {
+      "id": "invulnerable-rager-endurance-cold",
+      "name": "Cold",
+      "benefit": "Endure cold climates and gain cold resistance that increases by 1 every three levels after 3rd."
+    },
+    {
+      "id": "invulnerable-rager-endurance-heat",
+      "name": "Heat",
+      "benefit": "Endure hot climates and gain fire resistance that increases by 1 every three levels after 3rd."
+    }
+  ]
+}
