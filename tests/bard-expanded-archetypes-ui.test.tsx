@@ -103,6 +103,63 @@ test("Magician exposes expanded repertoire and bonded-object choices", async () 
   assert.equal(screen.getByRole("button", { name: "Forget Mage Armor" }).hasAttribute("disabled"), true);
 });
 
+test("Sandman exposes its complete stealth progression through level 20", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-sandman']"));
+  await user.selectOptions(archetype, "bard-sandman");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Stealspell", "Slumber Song", "Dramatic Subtext", "Greater Stealspell", "Mass Slumber Song", "Spell Catching", "Master of Deception", "Sneakspell +1 DC", "Trap Sense +1", "Sneak Attack +1d6"]) assert.ok(screen.getByText(name));
+  assert.equal(screen.queryByText("Inspire Courage +4"), null);
+  assert.equal(screen.queryByText("Deadly Performance"), null);
+});
+
+test("Savage Skald exposes every war-song replacement through level 20", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-savage-skald']"));
+  await user.selectOptions(archetype, "bard-savage-skald");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Inspiring Blow", "Incite Rage", "Song of the Fallen: Silver Horn", "Berserkergang", "Battle Song"]) assert.ok(screen.getByText(name));
+  assert.equal(screen.queryByText("Fascinate"), null);
+  assert.ok(screen.getByText("Deadly Performance"));
+});
+
+test("Sea Singer exposes its maritime features and familiar choice", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-sea-singer']"));
+  await user.selectOptions(archetype, "bard-sea-singer");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Sea Shanty", "Still Water", "Whistle the Wind", "Call the Storm", "World Traveler", "Sea Legs"]) assert.ok(screen.getByText(name));
+  const familiar = screen.getByLabelText("Exotic Familiar");
+  assert.ok(familiar.querySelector("option[value='sea-singer-familiar-monkey']"));
+  assert.ok(familiar.querySelector("option[value='sea-singer-familiar-parrot']"));
+});
+
+test("Street Performer exposes every crowd-work replacement through level 20", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-street-performer']"));
+  await user.selectOptions(archetype, "bard-street-performer");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Disappearing Act", "Harmless Performer", "Madcap Prank", "Slip through the Crowd", "Gladhanding", "Streetwise", "Quick Change"]) assert.ok(screen.getByText(name));
+  assert.equal(screen.queryByText("Inspire Courage +4"), null);
+  assert.ok(screen.getByText("Deadly Performance"));
+});
+
 test("Court Bard exposes every replacement performance through level 20", async () => {
   const user = userEvent.setup();
   render(<Home />);
