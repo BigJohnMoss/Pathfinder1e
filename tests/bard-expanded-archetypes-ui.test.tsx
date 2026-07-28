@@ -141,7 +141,7 @@ test("Sea Singer exposes its maritime features and familiar choice", async () =>
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
   await user.click(screen.getByRole("tab", { name: "Features" }));
   for (const name of ["Sea Shanty", "Still Water", "Whistle the Wind", "Call the Storm", "World Traveler", "Sea Legs"]) assert.ok(screen.getByText(name));
-  const familiar = screen.getByLabelText("Exotic Familiar");
+  const familiar = screen.getByLabelText("Exotic Familiar level 2");
   assert.ok(familiar.querySelector("option[value='sea-singer-familiar-monkey']"));
   assert.ok(familiar.querySelector("option[value='sea-singer-familiar-parrot']"));
 });
