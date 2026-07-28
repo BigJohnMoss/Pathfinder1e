@@ -1,0 +1,52 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-stormborn",
+      "classSkill": "Knowledge (nature)",
+      "arcana": "Increase the save DC of every spell you cast with the electricity or sonic descriptor by 1.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Shocking Grasp"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Gust of Wind"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Lightning Bolt"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Shout"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Overland Flight"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Chain Lightning"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Control Weather"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Whirlwind"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Storm of Vengeance"}
+      ],
+      "bonusFeats": ["Deadly Aim","Dodge","Enlarge Spell","Far Shot","Great Fortitude","Point Blank Shot","Skill Focus (Fly)","Wind Stance"],
+      "powers": [
+        {"name":"Thunderstaff","level":1,"summary":"Give a touched weapon shock for half your sorcerer level in rounds; at 9th level grant shocking burst for half the duration. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Stormchild","level":3,"summary":"Gain electricity and sonic resistance 5 and reduce wind severity by one step; at 9th reduce it by two steps and gain blindsense 60 feet through weather concealment."},
+        {"name":"Thunderbolt","level":9,"summary":"Call a 5-foot-radius lightning stroke within 120 feet for 1d6 damage per sorcerer level, half electricity and half sonic, deafening creatures that fail their Reflex save."},
+        {"name":"Ride the Lightning","level":15,"summary":"Once per day become living lightning for rounds equal to your sorcerer level, moving up to ten times your speed through creatures and damaging them as Thunderbolt."},
+        {"name":"Storm Lord","level":20,"summary":"Gain immunity to deafness, stunning, and wind effects, weather blindsight 120 feet, and once per day absorb an electricity or sonic attack to heal."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-verdant",
+      "classSkill": "Knowledge (nature)",
+      "arcana": "After casting a personal-range spell, gain natural armor equal to its spell level for 1d4 rounds; this does not stack with other natural armor.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Entangle"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Barkskin"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Speak with Plants"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Command Plants"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Wall of Thorns"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Transport via Plants"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Plant Shape III"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Animate Plants"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Shambler"}
+      ],
+      "bonusFeats": ["Acrobatic Steps","Craft Staff","Endurance","Extend Spell","Fleet","Nimble Moves","Skill Focus (Knowledge [nature])","Toughness"],
+      "powers": [
+        {"name":"Tanglevine","level":1,"summary":"Create a 15-foot animated vine for one disarm, steal, or trip maneuver using sorcerer level plus Charisma modifier as CMB. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Photosynthesis","level":3,"summary":"Reduce your need for food and sleep as a ring of sustenance and gain +2 racial saves against poison and sleep, increasing to +4 at 9th level."},
+        {"name":"Massmorph","level":9,"summary":"Alter plant growth or transform willing creatures into trees; at levels 15 and 20 use progressively stronger plant shapes, with creature transformation once per day."},
+        {"name":"Rooting","level":15,"summary":"Root into the ground for minutes per day to gain +4 natural armor, +10 CMD against forced movement, tremorsense 30 feet, and fast healing 1 while reducing speed to 5 feet."},
+        {"name":"Shepherd of the Trees","level":20,"summary":"Gain +4 natural armor, tremorsense 30 feet, and immunity to paralysis, poison, polymorph, sleep, and stunning."}
+      ]
+    }
+  ]
+}
