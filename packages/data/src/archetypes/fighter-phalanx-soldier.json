@@ -1,0 +1,28 @@
+{
+  "id":"fighter-phalanx-soldier","name":"Phalanx Soldier","classId":"fighter",
+  "summary":"A shield-wall specialist who combines shields with spears and polearms to protect adjacent allies and drive through enemy lines.",
+  "replacements":[
+    {"progressionKeys":["bravery"],"features":[
+      {"id":"phalanx-stand-firm-2","name":"Stand Firm +1","level":2,"type":"scaling","summary":"Gain +1 CMD against bull rush, drag, overrun, and trip, and +1 on saves against trample.","progressionKey":"phalanx-stand-firm","scaling":"+1"},
+      {"id":"phalanx-stand-firm-6","name":"Stand Firm +2","level":6,"type":"scaling","summary":"Increase Stand Firm to +2.","progressionKey":"phalanx-stand-firm","scaling":"+2"},
+      {"id":"phalanx-stand-firm-10","name":"Stand Firm +3","level":10,"type":"scaling","summary":"Increase Stand Firm to +3.","progressionKey":"phalanx-stand-firm","scaling":"+3"},
+      {"id":"phalanx-stand-firm-14","name":"Stand Firm +4","level":14,"type":"scaling","summary":"Increase Stand Firm to +4.","progressionKey":"phalanx-stand-firm","scaling":"+4"},
+      {"id":"phalanx-stand-firm-18","name":"Stand Firm +5","level":18,"type":"scaling","summary":"Increase Stand Firm to +5.","progressionKey":"phalanx-stand-firm","scaling":"+5"}]},
+    {"featureIds":["armor-training-3"],"features":[{"id":"phalanx-fighting-3","name":"Phalanx Fighting","level":3,"type":"core","summary":"While wielding a shield, use a spear or polearm of your size as a one-handed weapon."}]},
+    {"featureIds":["weapon-training-5"],"features":[
+      {"id":"phalanx-ready-pike-5","name":"Ready Pike +1","level":5,"type":"scaling","summary":"Once per day, immediately ready a brace weapon with +1 on its attack and damage rolls.","progressionKey":"phalanx-ready-pike","scaling":"+1 / 1 per day"},
+      {"id":"phalanx-ready-pike-9","name":"Ready Pike +2","level":9,"type":"scaling","summary":"Increase Ready Pike to +2 and two uses per day.","progressionKey":"phalanx-ready-pike","scaling":"+2 / 2 per day"},
+      {"id":"phalanx-ready-pike-13","name":"Ready Pike +3","level":13,"type":"scaling","summary":"Increase Ready Pike to +3 and three uses per day.","progressionKey":"phalanx-ready-pike","scaling":"+3 / 3 per day"},
+      {"id":"phalanx-ready-pike-17","name":"Ready Pike +4","level":17,"type":"scaling","summary":"Increase Ready Pike to +4 and four uses per day.","progressionKey":"phalanx-ready-pike","scaling":"+4 / 4 per day"}]},
+    {"featureIds":["armor-training-7","armor-training-11"],"features":[
+      {"id":"phalanx-deft-shield-7","name":"Deft Shield -1","level":7,"type":"scaling","summary":"Reduce a tower shield's armor check and attack penalties by 1.","progressionKey":"phalanx-deft-shield","scaling":"-1"},
+      {"id":"phalanx-deft-shield-11","name":"Deft Shield -2","level":11,"type":"scaling","summary":"Reduce a tower shield's armor check and attack penalties by 2.","progressionKey":"phalanx-deft-shield","scaling":"-2"}]},
+    {"featureIds":["weapon-training-9","weapon-training-13","weapon-training-17"],"features":[
+      {"id":"phalanx-shield-ally-9","name":"Shield Ally","level":9,"type":"scaling","summary":"As a move action with a heavy or tower shield, give yourself and adjacent allies partial cover until your next turn.","progressionKey":"phalanx-shield-ally","scaling":"partial cover"},
+      {"id":"phalanx-shield-ally-13","name":"Greater Shield Ally","level":13,"type":"scaling","summary":"Give one adjacent ally cover and evasion until your next turn.","progressionKey":"phalanx-shield-ally","scaling":"cover + evasion"},
+      {"id":"phalanx-shield-ally-17","name":"Improved Shield Ally","level":17,"type":"scaling","summary":"Give yourself and all adjacent allies cover, or one adjacent ally improved cover and improved evasion.","progressionKey":"phalanx-shield-ally","scaling":"improved cover"}]},
+    {"featureIds":["armor-training-15"],"features":[{"id":"phalanx-irresistible-advance-15","name":"Irresistible Advance","level":15,"type":"core","summary":"Gain +1 to +4 on bull rush and overrun CMB depending on whether you use a buckler, light, heavy, or tower shield."}]},
+    {"featureIds":["weapon-mastery-20"],"features":[{"id":"phalanx-shielded-fortress-20","name":"Shielded Fortress","level":20,"type":"capstone","summary":"Your shield cannot be disarmed or sundered; gain evasion with a shield, improved evasion with a tower shield, and extend those defenses to adjacent allies."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":106,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#phalanx-soldier"}
+}
