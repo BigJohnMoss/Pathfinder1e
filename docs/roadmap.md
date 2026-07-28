@@ -111,7 +111,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 - multiclassing - in progress: rules-engine aggregation for independent class
   levels, BAB, saves, skill ranks, character-level feat slots, and class-tagged
-  features; backward-compatible save normalization for class-level arrays
+  features; backward-compatible save normalization for class-level arrays;
+  two-class editing with combined combat statistics, hit points, class skills,
+  features, feat prerequisites, and save/load restoration
 - prestige classes
 - alternate racial traits
 - advanced equipment and magic items
