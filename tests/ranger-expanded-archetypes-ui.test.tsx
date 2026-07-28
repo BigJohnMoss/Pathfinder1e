@@ -46,3 +46,25 @@ test("Urban Ranger applies its city skill list", async () => {
   assert.ok(screen.getByText("Disable Device").closest("label")?.textContent?.includes("Class skill"));
   assert.ok(!screen.getByText("Handle Animal").closest("label")?.textContent?.includes("Class skill"));
 });
+
+test("APG Ranger combat styles expose their level-gated feat lists", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "10" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const style = screen.getByLabelText(/Combat Style level 2/);
+  const firstFeat = screen.getByLabelText(/Combat Style Feat 1/);
+  const thirdFeat = screen.getByLabelText(/Combat Style Feat 3/);
+  for (const [styleId, earlyFeat, lateFeat] of [
+    ["ranger-combat-style-crossbow","ranger-style-feat-crossbow-deadly-aim","ranger-style-feat-crossbow-pinpoint-targeting"],
+    ["ranger-combat-style-mounted","ranger-style-feat-mounted-combat","ranger-style-feat-mounted-skirmisher"],
+    ["ranger-combat-style-natural-weapon","ranger-style-feat-natural-aspect-beast","ranger-style-feat-natural-multiattack"],
+    ["ranger-combat-style-two-handed","ranger-style-feat-two-handed-power-attack","ranger-style-feat-two-handed-dreadful-carnage"],
+    ["ranger-combat-style-weapon-shield","ranger-style-feat-shield-focus","ranger-style-feat-shield-bashing-finish"]
+  ] as const) {
+    await user.selectOptions(style, styleId);
+    assert.equal([...firstFeat.options].some((option) => option.value === earlyFeat), true);
+    assert.equal([...thirdFeat.options].some((option) => option.value === lateFeat), true);
+  }
+});

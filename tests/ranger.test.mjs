@@ -35,7 +35,7 @@ test("Ranger primary choices unlock at their Core levels", async () => {
   const styles = await read("../packages/data/src/options/ranger-combat-styles.json");
   const bonds = await read("../packages/data/src/options/ranger-hunters-bonds.json");
   assert.equal(availableOptions(styles, "ranger", 1).length, 0);
-  assert.equal(availableOptions(styles, "ranger", 2).length, 2);
+  assert.equal(availableOptions(styles, "ranger", 2).length, 7);
   assert.equal(availableOptions(bonds, "ranger", 3).length, 0);
   assert.equal(availableOptions(bonds, "ranger", 4).length, 2);
 });
@@ -49,6 +49,10 @@ test("Ranger combat style feat slots filter by style and unlock tier", () => {
   assert.ok(archery(6).some((option) => option.id === "ranger-style-feat-manyshot"));
   assert.equal(archery(6).some((option) => option.id === "ranger-style-feat-pinpoint-targeting"), false);
   assert.ok(twoWeapon(10).some((option) => option.id === "ranger-style-feat-two-weapon-rend"));
+  for (const style of ["crossbow","mounted","natural-weapon","two-handed","weapon-shield"]) {
+    const options = (level) => availableOptions(styleFeats, "ranger", level, [], { featureIds: [`ranger-combat-style-${style}`] });
+    assert.deepEqual([2, 6, 10].map((level) => options(level).length), [4, 6, 8]);
+  }
 });
 
 test("Ranger earns five selectable combat style feat slots", () => {
