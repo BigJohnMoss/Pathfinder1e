@@ -79,6 +79,24 @@ export function averageHitPoints(hitDie, level, constitutionModifier = 0) {
   return Math.max(1, hitDie + constitutionModifier) + (level - 1) * laterLevelGain;
 }
 
+export function multiclassAverageHitPoints(classes, classLevels, constitutionModifier = 0) {
+  if (!Array.isArray(classes) || !Array.isArray(classLevels) || classLevels.length === 0 || !Number.isInteger(constitutionModifier)) {
+    throw new RangeError("Valid class levels and a Constitution modifier are required.");
+  }
+  const classesById = new Map(classes.map(characterClass => [characterClass.id, characterClass]));
+  let firstCharacterLevel = true;
+  return classLevels.reduce((total, entry) => {
+    const characterClass = classesById.get(entry?.classId);
+    if (!characterClass || !Number.isInteger(entry.level) || entry.level < 1) throw new RangeError("Each class level entry must be valid.");
+    const laterLevelGain = Math.max(1, Math.floor(characterClass.hitDie / 2) + 1 + constitutionModifier);
+    const classHitPoints = firstCharacterLevel
+      ? Math.max(1, characterClass.hitDie + constitutionModifier) + (entry.level - 1) * laterLevelGain
+      : entry.level * laterLevelGain;
+    firstCharacterLevel = false;
+    return total + classHitPoints;
+  }, 0);
+}
+
 const lightLoads = [3,6,10,13,16,20,23,26,30,33,38,43,50,58,66,76,86,100,116,133,153,173,200,233,266,306,346,400,466];
 
 export function carryingCapacity(strength) {
@@ -541,7 +559,7 @@ export function prerequisitesMet(prerequisites, context) {
 
 function prerequisiteMet(prerequisite, context) {
   if (prerequisite.type === "level") return context.classLevel >= prerequisite.minimum;
-  if (prerequisite.type === "class-level") return context.classId === prerequisite.classId && context.classLevel >= prerequisite.minimum;
+  if (prerequisite.type === "class-level") return (context.classLevels?.[prerequisite.classId] ?? (context.classId === prerequisite.classId ? context.classLevel : 0)) >= prerequisite.minimum;
   if (prerequisite.type === "ancestry") return context.ancestryId === prerequisite.id;
   if (prerequisite.type === "size") {
     const sizes = ["fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal"];
