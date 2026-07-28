@@ -411,6 +411,59 @@ export function classProgression(characterClass, level, { intelligenceScore = 10
   };
 }
 
+export function multiclassProgression(classes, classLevels, { intelligenceScore = 10, racialSkillBonusPerLevel = 0, bonusFeats = 0 } = {}) {
+  if (!Array.isArray(classes) || !Array.isArray(classLevels) || classLevels.length === 0) {
+    throw new RangeError("At least one class level is required.");
+  }
+  if (!Number.isInteger(racialSkillBonusPerLevel) || racialSkillBonusPerLevel < 0) {
+    throw new RangeError("Racial skill bonus must be a non-negative integer.");
+  }
+  const classesById = new Map(classes.map(characterClass => [characterClass.id, characterClass]));
+  const seenClassIds = new Set();
+  const resolved = classLevels.map(entry => {
+    if (!entry || typeof entry.classId !== "string" || !Number.isInteger(entry.level) || entry.level < 1 || entry.level > 20) {
+      throw new RangeError("Each multiclass entry must have a valid class id and 1-20 levels.");
+    }
+    if (seenClassIds.has(entry.classId)) throw new RangeError("Each class may appear only once.");
+    seenClassIds.add(entry.classId);
+    const characterClass = classesById.get(entry.classId);
+    if (!characterClass) throw new RangeError(`Unknown class: ${entry.classId}`);
+    return { characterClass, level: entry.level };
+  });
+  const level = resolved.reduce((total, entry) => total + entry.level, 0);
+  assertLevel(level);
+  const saves = { fortitude: 0, reflex: 0, will: 0 };
+  const features = [];
+  let baseAttackBonusTotal = 0;
+  let skillRanks = 0;
+  for (const { characterClass, level: classLevel } of resolved) {
+    baseAttackBonusTotal += baseAttackBonus(characterClass.babProgression, classLevel);
+    for (const save of Object.keys(saves)) saves[save] += savingThrow(characterClass.saves[save], classLevel);
+    skillRanks += skillRanksThroughLevel(characterClass, classLevel, intelligenceScore, {
+      racialBonusPerLevel: racialSkillBonusPerLevel
+    });
+    features.push(...featuresThroughLevel(characterClass, classLevel).map(feature => ({
+      ...feature,
+      classId: characterClass.id,
+      className: characterClass.name,
+      classLevel
+    })));
+  }
+  return {
+    level,
+    classLevels: resolved.map(({ characterClass, level: classLevel }) => ({
+      classId: characterClass.id,
+      className: characterClass.name,
+      level: classLevel
+    })),
+    baseAttackBonus: baseAttackBonusTotal,
+    saves,
+    skillRanks,
+    featSlots: featSlotsAtLevel(level, { bonusFeats }),
+    features
+  };
+}
+
 export function featuresAtLevel(characterClass, level) {
   assertLevel(level);
   return characterClass.features.filter(feature => feature.level === level);
