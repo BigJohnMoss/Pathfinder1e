@@ -84,6 +84,14 @@ export function skillTotal(characterClass: CharacterClass, skill: { name: string
 export function skillRankBudget(totalRanks: number, allocations: Record<string, number>): { allocated: number; remaining: number; overspent: number };
 export function normalizeSkillRanks(allocations: Record<string, number> | null | undefined, totalRanks: number, maximumRanksPerSkill: number): Record<string, number>;
 export function classProgression(characterClass: CharacterClass, level: number, options?: { intelligenceScore?: number; racialSkillBonusPerLevel?: number; bonusFeats?: number }): ClassProgression;
+export function multiclassProgression(
+  classes: CharacterClass[],
+  classLevels: Array<{ classId: string; level: number }>,
+  options?: { intelligenceScore?: number; racialSkillBonusPerLevel?: number; bonusFeats?: number }
+): ClassProgression & {
+  classLevels: Array<{ classId: string; className: string; level: number }>;
+  features: Array<CharacterClass["features"][number] & { classId: string; className: string; classLevel: number }>;
+};
 export function featuresAtLevel(characterClass: CharacterClass, level: number): CharacterClass["features"];
 export function featuresThroughLevel(characterClass: CharacterClass, level: number): CharacterClass["features"];
 export function availableOptions(group: { options: Array<{ id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: Prerequisite[] }> }, classId: string, classLevel: number, selectedIds?: string[], context?: PrerequisiteContext): Array<{ id: string; name: string; benefit: string; classIds: string[]; minimumLevel: number; prerequisites: Prerequisite[] }>;
