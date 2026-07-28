@@ -1,0 +1,33 @@
+{
+  "id":"oracle-revelations",
+  "name":"Oracle Revelations",
+  "classIds":["oracle"],
+  "optionDefaults":{
+    "groupId":"oracle-revelations",
+    "classIds":["oracle"],
+    "prerequisites":[],
+    "source":{"title":"Advanced Player's Guide","page":45,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#mysteries"}
+  },
+  "options":[
+    {"id":"oracle-revelation-battlecry","mysteryId":"oracle-mystery-battle","name":"Battlecry","minimumLevel":1,"benefit":"Inspire allies within 100 feet with a morale bonus on attacks, skills, and saves."},
+    {"id":"oracle-revelation-battlefield-clarity","mysteryId":"oracle-mystery-battle","name":"Battlefield Clarity","minimumLevel":1,"benefit":"Reroll a failed save against debilitating battlefield conditions with an insight bonus."},
+    {"id":"oracle-revelation-combat-healer-battle","mysteryId":"oracle-mystery-battle","name":"Combat Healer","minimumLevel":7,"benefit":"Spend two spell slots to cast a cure spell as a swift action."},
+    {"id":"oracle-revelation-iron-skin","mysteryId":"oracle-mystery-battle","name":"Iron Skin","minimumLevel":11,"benefit":"Harden your skin as stoneskin to gain DR 10/adamantine."},
+    {"id":"oracle-revelation-maneuver-mastery","mysteryId":"oracle-mystery-battle","name":"Maneuver Mastery","minimumLevel":1,"benefit":"Use oracle level as BAB for one combat maneuver and gain its Improved and Greater feats as you advance."},
+    {"id":"oracle-revelation-resiliency","mysteryId":"oracle-mystery-battle","name":"Resiliency","minimumLevel":1,"benefit":"Remain effective at 0 hit points and gain Diehard at 7th level."},
+    {"id":"oracle-revelation-skill-at-arms","mysteryId":"oracle-mystery-battle","name":"Skill at Arms","minimumLevel":1,"benefit":"Gain proficiency with all martial weapons and heavy armor."},
+    {"id":"oracle-revelation-surprising-charge","mysteryId":"oracle-mystery-battle","name":"Surprising Charge","minimumLevel":1,"benefit":"Move up to your speed as an immediate action a limited number of times per day."},
+    {"id":"oracle-revelation-war-sight","mysteryId":"oracle-mystery-battle","name":"War Sight","minimumLevel":1,"benefit":"Roll initiative multiple times and gain increasing control over surprise rounds."},
+    {"id":"oracle-revelation-weapon-mastery","mysteryId":"oracle-mystery-battle","name":"Weapon Mastery","minimumLevel":1,"benefit":"Gain Weapon Focus, Improved Critical, and Greater Weapon Focus with one proficient weapon as you advance."},
+    {"id":"oracle-revelation-armor-of-bones","mysteryId":"oracle-mystery-bones","name":"Armor of Bones","minimumLevel":1,"benefit":"Conjure scaling bone armor that eventually grants DR 5/bludgeoning."},
+    {"id":"oracle-revelation-bleeding-wounds","mysteryId":"oracle-mystery-bones","name":"Bleeding Wounds","minimumLevel":1,"benefit":"Negative-energy damage from your spells causes scaling bleed damage."},
+    {"id":"oracle-revelation-deaths-touch","mysteryId":"oracle-mystery-bones","name":"Death's Touch","minimumLevel":1,"benefit":"Make a limited-use negative-energy touch that harms living creatures and heals undead."},
+    {"id":"oracle-revelation-near-death","mysteryId":"oracle-mystery-bones","name":"Near Death","minimumLevel":1,"benefit":"Gain scaling insight bonuses against disease, poison, mental effects, death, sleep, and stunning."},
+    {"id":"oracle-revelation-raise-the-dead","mysteryId":"oracle-mystery-bones","name":"Raise the Dead","minimumLevel":1,"benefit":"Temporarily summon a scaling skeleton or zombie servant."},
+    {"id":"oracle-revelation-resist-life","mysteryId":"oracle-mystery-bones","name":"Resist Life","minimumLevel":1,"benefit":"Interact with positive and negative energy as undead and gain scaling channel resistance."},
+    {"id":"oracle-revelation-soul-siphon","mysteryId":"oracle-mystery-bones","name":"Soul Siphon","minimumLevel":7,"benefit":"Bestow a temporary negative level with a ray and heal yourself."},
+    {"id":"oracle-revelation-spirit-walk","mysteryId":"oracle-mystery-bones","name":"Spirit Walk","minimumLevel":11,"benefit":"Become incorporeal and invisible while moving through obstacles."},
+    {"id":"oracle-revelation-undead-servitude","mysteryId":"oracle-mystery-bones","name":"Undead Servitude","minimumLevel":1,"benefit":"Gain Command Undead and channel negative energy solely to command undead."},
+    {"id":"oracle-revelation-voice-of-the-grave","mysteryId":"oracle-mystery-bones","name":"Voice of the Grave","minimumLevel":1,"benefit":"Speak with dead for scaling rounds each day and weaken resistance as you advance."}
+  ]
+}

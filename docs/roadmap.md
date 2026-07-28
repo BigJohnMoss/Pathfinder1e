@@ -93,8 +93,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Shadow, Starsoul, Stormborn, and Verdant
 - mysteries and revelations - in progress: the complete APG Oracle level 1-20
   chassis, spontaneous divine casting, all six curses, cure-or-inflict choice,
-  and all ten mystery identities are playable; detailed mystery spells,
-  revelations, final revelations, and mystery-granted class skills remain
+  and all ten mystery identities are playable; Battle and Bones now include
+  complete mystery spells, selectable level-gated revelations, final
+  revelations, and mystery-granted class skills; the other eight detailed
+  mystery progressions remain
 - discoveries, talents and similar class option systems
 - favoured class bonuses - in progress: base +1 hit point or +1 skill rank
   allocation is mechanical, level-bounded, persistent, and covered in the UI
