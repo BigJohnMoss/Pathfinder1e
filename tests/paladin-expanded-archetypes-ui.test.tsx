@@ -25,7 +25,9 @@ test.afterEach(() => { cleanup(); localStorage.clear(); });
 for (const [archetypeId, name, expected, removed] of [
   ["paladin-divine-defender","Divine Defender",["Shared Defense +1","Shared Defense (10 feet)","Armor Bond"],["Mercy 1","Mercy 2","Mercy 3","Mercy 4","Mercy 5","Mercy 6","Divine Bond"]],
   ["paladin-hospitaler","Hospitaler",["Hospitaler Channel Energy","Aura of Healing"],["Channel Positive Energy","Aura of Justice"]],
-  ["paladin-shining-knight","Shining Knight",["Skilled Rider","Bonded Mount","Knight's Charge"],["Divine Health","Divine Bond","Aura of Justice"]]
+  ["paladin-shining-knight","Shining Knight",["Skilled Rider","Bonded Mount","Knight's Charge"],["Divine Health","Divine Bond","Aura of Justice"]],
+  ["paladin-undead-scourge","Undead Scourge",["Aura of Life","Undead Annihilation"],["Aura of Resolve","Aura of Justice"]],
+  ["paladin-warrior-holy-light","Warrior of the Holy Light",["Power of Faith","Power of Faith (Restoration)","Power of Faith (Daylight)","Power of Faith (Fortification)","Power of Faith (Perfect Nimbus)","Shining Light"],["Divine Spellcasting","Aura of Faith"]]
 ] as const) test(`${name} is selectable with its level-20 progression`, async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -35,4 +37,12 @@ for (const [archetypeId, name, expected, removed] of [
   await user.click(screen.getByRole("tab", { name: "Features" }));
   for (const feature of expected) assert.ok(screen.getAllByText(feature).length > 0);
   for (const feature of removed) assert.equal(screen.queryByText(feature), null);
+});
+
+test("Warrior of the Holy Light has no spellbook", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "paladin");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "paladin-warrior-holy-light");
+  assert.equal(screen.queryByRole("tab", { name: "Spells" }), null);
 });

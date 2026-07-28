@@ -11,13 +11,14 @@ const tabs: Array<{ id: CharacterTabId; icon: string; label: string }> = [
   { id: "options", icon: "☰", label: "Options" }
 ];
 
-export function CharacterTabs({ activeTab, onChange }: { activeTab: CharacterTabId; onChange: (tab: CharacterTabId) => void }) {
+export function CharacterTabs({ activeTab, onChange, showSpells = true }: { activeTab: CharacterTabId; onChange: (tab: CharacterTabId) => void; showSpells?: boolean }) {
+  const visibleTabs = showSpells ? tabs : tabs.filter((tab) => tab.id !== "spells");
   const selectAdjacentTab = (currentIndex: number, direction: -1 | 1) => {
-    const next = tabs[(currentIndex + direction + tabs.length) % tabs.length];
+    const next = visibleTabs[(currentIndex + direction + visibleTabs.length) % visibleTabs.length];
     onChange(next.id);
     globalThis.setTimeout(() => document.getElementById(`character-tab-${next.id}`)?.focus(), 0);
   };
-  return <nav className="character-tabs" aria-label="Character sections" role="tablist">{tabs.map((tab, index) => <button
+  return <nav className="character-tabs" aria-label="Character sections" role="tablist">{visibleTabs.map((tab, index) => <button
     key={tab.id}
     id={`character-tab-${tab.id}`}
     type="button"
@@ -30,8 +31,8 @@ export function CharacterTabs({ activeTab, onChange }: { activeTab: CharacterTab
     onKeyDown={(event) => {
       if (event.key === "ArrowRight") { event.preventDefault(); selectAdjacentTab(index, 1); }
       if (event.key === "ArrowLeft") { event.preventDefault(); selectAdjacentTab(index, -1); }
-      if (event.key === "Home") { event.preventDefault(); onChange(tabs[0].id); globalThis.setTimeout(() => document.getElementById(`character-tab-${tabs[0].id}`)?.focus(), 0); }
-      if (event.key === "End") { event.preventDefault(); onChange(tabs[tabs.length - 1].id); globalThis.setTimeout(() => document.getElementById(`character-tab-${tabs[tabs.length - 1].id}`)?.focus(), 0); }
+      if (event.key === "Home") { event.preventDefault(); onChange(visibleTabs[0].id); globalThis.setTimeout(() => document.getElementById(`character-tab-${visibleTabs[0].id}`)?.focus(), 0); }
+      if (event.key === "End") { event.preventDefault(); onChange(visibleTabs[visibleTabs.length - 1].id); globalThis.setTimeout(() => document.getElementById(`character-tab-${visibleTabs[visibleTabs.length - 1].id}`)?.focus(), 0); }
     }}
   ><span aria-hidden="true">{tab.icon}</span><b>{tab.label}</b></button>)}</nav>;
 }

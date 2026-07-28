@@ -94,6 +94,7 @@ export interface CharacterArchetype {
   }>;
   featureOverrides?: Array<{ featureId: string; summary: string }>;
   spellListAdditions?: Record<string, number>;
+  removesSpellcasting?: boolean;
   wildShapeLevelAdjustment?: number;
   druidDomainIds?: string[];
   classSkillAdditions?: string[];
