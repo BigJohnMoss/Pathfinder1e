@@ -1,0 +1,21 @@
+{
+  "id":"ranger-beast-master",
+  "name":"Beast Master",
+  "classId":"ranger",
+  "summary":"An animal-bonded Ranger who commands a freely chosen roster of companions and divides effective Druid levels among them.",
+  "classSkillAdditions":["Acrobatics","Escape Artist"],
+  "classSkillRemovals":["Knowledge (dungeoneering)","Knowledge (geography)","Profession","Spellcraft"],
+  "replacements":[
+    {"featureIds":["ranger-hunters-bond-4","ranger-animal-companion-4"],"features":[
+      {"id":"ranger-hunters-bond-animal","name":"Beast Master Animal Bond","level":4,"type":"core","summary":"Gain +2 Wild Empathy and Handle Animal with your companions; effective Druid level initially equals Ranger level –3."},
+      {"id":"beast-master-companion-roster-4","name":"Companion Roster","level":4,"type":"selectable","summary":"Choose any number of companions and divide your available effective Druid levels among them.","choiceRequired":true,"optionGroupId":"ranger-animal-companions"}
+    ]},
+    {"featureIds":["ranger-combat-style-feat-6"],"features":[
+      {"id":"beast-master-improved-empathic-link-6","name":"Improved Empathic Link","level":6,"type":"core","summary":"Communicate empathically with every companion within 1 mile and see through one companion's eyes as a swift action."}
+    ]},
+    {"featureIds":["ranger-camouflage-12"],"features":[
+      {"id":"beast-master-strong-bond-12","name":"Strong Bond","level":12,"type":"core","summary":"Your total effective Druid level for companion allocation becomes equal to your Ranger level."}
+    ]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}
+}
