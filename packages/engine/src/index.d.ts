@@ -75,7 +75,7 @@ export { druidWildShapeUses } from "./druid-wild-shape.js";
 export function bonusSpellsPerDay(abilityScore: number, maximumSpellLevel: number): Array<{ level: number; count: number }>;
 export function spellSaveDC(abilityScore: number, spellLevel: number): number;
 export function spellcastingProgression(characterClass: CharacterClass & { spellcasting?: { ability: string; castingType: string; slotsByLevel: number[][]; preparedByLevel?: number[][]; spellLevelUnlocks?: number[]; preparesFromSlots?: boolean } }, level: number, options?: { abilityScore?: number }): { ability: string; castingType: string; maximumSpellLevel: number; slots: Array<{ level: number; base: number; bonus: number; count: number }>; prepared: Array<{ level: number; count: number }> } | null;
-export function normalizeCharacterDraft(value: unknown, options?: { classIds?: string[] | null; ancestryIds?: string[] | null; archetypeIds?: string[] | null }): CharacterDraftV1 | null;
+export function normalizeCharacterDraft(value: unknown, options?: { classIds?: string[] | null; ancestryIds?: string[] | null; archetypeIds?: string[] | null; archetypeIdsByClass?: Record<string, string[]> | null }): CharacterDraftV1 | null;
 export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype): CharacterClass;
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
