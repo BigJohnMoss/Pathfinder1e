@@ -62,3 +62,26 @@ test("Cave Druid changes class skills, domains, empathy, and Wild Shape forms", 
   assert.ok(!applied.druidDomainIds.includes("domain-air"));
   assert.match(applied.features.find((feature) => feature.id === "druid-wild-empathy-1").summary, /oozes/);
 });
+
+test("Blight Druid exposes its corrupted bond, restricted familiar, and disease progression", async () => {
+  const druid = await load("../packages/data/src/classes/druid.json");
+  const archetype = await load("../packages/data/src/archetypes/druid-blight.json");
+  const applied = applyArchetype(druid, archetype);
+  const features = featuresThroughLevel(applied, 20);
+  const ids = features.map((feature) => feature.id);
+  for (const id of ["druid-nature-bond-1", "blight-druid-familiar-1", "blight-druid-miasma-5", "blight-druid-blightblooded-9", "blight-druid-plaguebearer-13"]) assert.ok(ids.includes(id));
+  for (const id of ["druid-animal-companion-1", "druid-trackless-step-3", "druid-resist-natures-lure-4", "druid-venom-immunity-9", "druid-thousand-faces-13"]) assert.ok(!ids.includes(id));
+  assert.deepEqual(features.find((feature) => feature.id === "blight-druid-familiar-1"), {
+    id: "blight-druid-familiar-1",
+    name: "Blight Familiar",
+    level: 1,
+    type: "selectable",
+    summary: "If Familiar was chosen for Blighted Nature Bond, choose its form.",
+    choiceRequired: true,
+    optionGroupId: "blight-druid-familiars",
+    requiredOptionId: "blight-druid-nature-bond-familiar",
+    requiredOptionMessage: "Choose the Familiar nature bond first"
+  });
+  for (const id of ["domain-darkness", "domain-death", "domain-destruction"]) assert.ok(applied.druidDomainIds.includes(id));
+  assert.match(applied.features.find((feature) => feature.id === "druid-wild-empathy-1").summary, /vermin/);
+});

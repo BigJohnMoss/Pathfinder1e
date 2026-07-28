@@ -56,6 +56,29 @@ test("Cave Druid exposes subterranean features and its restricted domains", asyn
   assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "8/8 use remaining");
 });
 
+test("Blight Druid unlocks its familiar only after the Familiar nature bond is chosen", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "druid-blight");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Miasma", "Blightblooded", "Plaguebearer"]) assert.ok(screen.getByText(name));
+
+  const familiar = screen.getByLabelText("Blight Familiar");
+  assert.ok(familiar.hasAttribute("disabled"));
+  assert.ok(screen.getByText("Choose the Familiar nature bond first"));
+
+  await user.selectOptions(screen.getByLabelText("Blighted Nature Bond"), "blight-druid-nature-bond-familiar");
+  assert.equal(screen.getByLabelText("Blight Familiar").hasAttribute("disabled"), false);
+  await user.selectOptions(screen.getByLabelText("Blight Familiar"), "blight-druid-familiar");
+  await user.selectOptions(screen.getByLabelText("Blight Familiar Familiar"), "raven");
+
+  await user.selectOptions(screen.getByLabelText("Blighted Nature Bond"), "blight-druid-nature-bond-domain");
+  const domain = screen.getByLabelText("Nature Domain");
+  for (const id of ["domain-darkness", "domain-death", "domain-destruction"]) assert.ok(domain.querySelector(`option[value='${id}']`));
+});
+
 for (const [archetypeId, archetypeName, featureNames] of [
   ["druid-mountain", "Mountain Druid", ["Mountaineer", "Sure-Footed", "Spire Walker", "Mountain Stance", "Mountain Stone"]],
   ["druid-plains", "Plains Druid", ["Plains Traveler", "Run Like the Wind", "Savanna Ambush", "Canny Charger", "Evasion"]],
