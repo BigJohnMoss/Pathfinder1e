@@ -1,0 +1,27 @@
+{
+  "id": "sea-singer-familiars",
+  "name": "Sea Singer Familiars",
+  "classIds": ["bard"],
+  "options": [
+    {
+      "id": "sea-singer-familiar-monkey",
+      "groupId": "sea-singer-familiars",
+      "name": "Monkey",
+      "classIds": ["bard"],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Gain a monkey that advances as a Wizard familiar using your Bard level.",
+      "source": {"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"}
+    },
+    {
+      "id": "sea-singer-familiar-parrot",
+      "groupId": "sea-singer-familiars",
+      "name": "Parrot",
+      "classIds": ["bard"],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Gain a parrot treated as a raven familiar that advances using your Bard level.",
+      "source": {"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"}
+    }
+  ]
+}
