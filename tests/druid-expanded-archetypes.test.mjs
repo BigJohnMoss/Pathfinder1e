@@ -48,3 +48,17 @@ for (const [file, expected, removed] of [
   for (const id of removed) assert.ok(!ids.includes(id));
   assert.deepEqual(features.filter((feature) => feature.progressionKey === "druid-wild-shape").map((feature) => feature.level), [6,8,10,12,14,16,18,20]);
 });
+
+test("Cave Druid changes class skills, domains, empathy, and Wild Shape forms", async () => {
+  const druid = await load("../packages/data/src/classes/druid.json");
+  const archetype = await load("../packages/data/src/archetypes/druid-cave.json");
+  const applied = applyArchetype(druid, archetype);
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  for (const id of ["cave-druid-cavesense-1", "cave-druid-tunnelrunner-2", "cave-druid-lightfoot-3", "cave-druid-resist-corruption-4"]) assert.ok(ids.includes(id));
+  for (const id of ["druid-nature-sense-1", "druid-woodland-stride-2", "druid-trackless-step-3", "druid-resist-natures-lure-4"]) assert.ok(!ids.includes(id));
+  assert.ok(applied.classSkills.includes("Knowledge (dungeoneering)"));
+  assert.ok(!applied.classSkills.includes("Knowledge (geography)"));
+  assert.ok(applied.druidDomainIds.includes("domain-darkness"));
+  assert.ok(!applied.druidDomainIds.includes("domain-air"));
+  assert.match(applied.features.find((feature) => feature.id === "druid-wild-empathy-1").summary, /oozes/);
+});

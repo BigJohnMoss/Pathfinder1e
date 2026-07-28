@@ -41,6 +41,21 @@ for (const [archetypeId, archetypeName, featureNames] of [
   assert.equal(screen.queryByText("A Thousand Faces"), null);
 });
 
+test("Cave Druid exposes subterranean features and its restricted domains", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "druid-cave");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Cavesense", "Tunnelrunner", "Lightfoot", "Resist Subterranean Corruption"]) assert.ok(screen.getByText(name));
+  const domain = screen.getByLabelText("Nature Domain");
+  assert.ok(domain.querySelector("option[value='domain-darkness']"));
+  assert.equal(domain.querySelector("option[value='domain-air']"), null);
+  assert.equal(domain.querySelector("option[value='domain-weather']"), null);
+  assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "8/8 use remaining");
+});
+
 for (const [archetypeId, archetypeName, featureNames] of [
   ["druid-mountain", "Mountain Druid", ["Mountaineer", "Sure-Footed", "Spire Walker", "Mountain Stance", "Mountain Stone"]],
   ["druid-plains", "Plains Druid", ["Plains Traveler", "Run Like the Wind", "Savanna Ambush", "Canny Charger", "Evasion"]],

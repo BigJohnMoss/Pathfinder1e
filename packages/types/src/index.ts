@@ -68,6 +68,9 @@ export interface CharacterClass {
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
   wildShapeLevelAdjustment?: number;
+  druidDomainIds?: string[];
+  classSkillAdditions?: string[];
+  classSkillRemovals?: string[];
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
     castingType: "prepared" | "spontaneous";
@@ -91,6 +94,9 @@ export interface CharacterArchetype {
   featureOverrides?: Array<{ featureId: string; summary: string }>;
   spellListAdditions?: Record<string, number>;
   wildShapeLevelAdjustment?: number;
+  druidDomainIds?: string[];
+  classSkillAdditions?: string[];
+  classSkillRemovals?: string[];
   source: SourceRef;
 }
 export type Prerequisite =

@@ -256,10 +256,11 @@ export default function Home() {
     const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)];
     const featureClassId = "classId" in feature && typeof feature.classId === "string" ? feature.classId : characterClass.id;
     const featureClassLevel = classLevelMap[featureClassId] ?? primaryClassLevel;
+    const featureCharacterClass = progressionClasses.find((item) => item.id === featureClassId);
     const options = group && featureClassId === "druid" && group.id === "ranger-animal-companions"
       ? group.options.filter((option) => option.minimumLevel <= featureClassLevel)
       : group && featureClassId === "druid" && group.id === "cleric-domains"
-        ? group.options.filter((option) => ["domain-air", "domain-animal", "domain-earth", "domain-fire", "domain-plant", "domain-water", "domain-weather"].includes(option.id))
+        ? group.options.filter((option) => (featureCharacterClass?.druidDomainIds ?? ["domain-air", "domain-animal", "domain-earth", "domain-fire", "domain-plant", "domain-water", "domain-weather"]).includes(option.id))
         : group ? availableOptions(group, featureClassId, featureClassLevel, selectedIds, { abilities, size: ancestry.size, baseAttackBonus: progression.baseAttackBonus, classLevels: classLevelMap, featureIds: [...progression.features.map((entry) => entry.id), ...selectedIds] }) : [];
     return { id: feature.id, name: feature.name, level: feature.level, classLevel: featureClassLevel, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) };
   });
