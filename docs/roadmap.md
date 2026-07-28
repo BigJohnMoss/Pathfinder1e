@@ -70,10 +70,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Next milestone: Expanded Character Options
 
-- traits — complete: all 40 sourced APG basic traits, trait-specific class-skill
+- traits â€” complete: all 40 sourced APG basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
-- archetypes — in progress: reusable replacement schema plus all twelve APG
+- archetypes â€” in progress: reusable replacement schema plus all twelve APG
   Fighter paths: Archer, Crossbowman, Free Hand Fighter, Mobile Fighter,
   Phalanx Soldier, Polearm Master, Roughrider, Savage Warrior, Shielded Fighter,
   Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master
@@ -88,7 +88,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
   (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
-- expanded bloodlines — complete: complete Core catalogue plus all ten APG
+- expanded bloodlines â€” complete: complete Core catalogue plus all ten APG
   bloodlines: Aquatic, Boreal, Deep Earth, Dreamspun, Protean, Serpentine,
   Shadow, Starsoul, Stormborn, and Verdant
 - mysteries and revelations - complete: the complete APG Oracle level 1-20
@@ -97,7 +97,11 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Life, Lore, Nature, Stone, Waves, and Wind include
   complete mystery spells, selectable level-gated revelations, final
   revelations, and mystery-granted class skills
-- discoveries, talents and similar class option systems
+- discoveries, talents and similar class option systems - in progress: complete
+  Core and APG rage-power and rogue-talent catalogues are playable, including
+  repeat limits, dependent selections, distinct energy choices, and mutually
+  exclusive totem families; remaining class-option systems still require a
+  coverage audit and completion
 - favoured class bonuses - in progress: base +1 hit point or +1 skill rank
   allocation is mechanical, level-bounded, persistent, and covered in the UI
 
