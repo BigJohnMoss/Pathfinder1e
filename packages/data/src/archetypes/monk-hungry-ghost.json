@@ -1,0 +1,14 @@
+{
+  "id":"monk-hungry-ghost",
+  "name":"Hungry Ghost Monk",
+  "classId":"monk",
+  "summary":"A predatory mystic who knocks foes aside and steals their ki, vitality, and spiritual resilience.",
+  "replacements":[
+    {"featureIds":["monk-stunning-fist-1"],"features":[{"id":"hungry-ghost-punishing-kick-1","name":"Punishing Kick","level":1,"type":"bonus-feat","summary":"Gain Punishing Kick without meeting its prerequisites; its push distance improves at 10th, 15th, and 20th level.","grantedFeatId":"punishing-kick","scaling":"5 feet; +5 feet at 10th and every 5 levels"}]},
+    {"featureIds":["monk-purity-of-body-5"],"features":[{"id":"hungry-ghost-steal-ki-5","name":"Steal Ki","level":5,"type":"core","summary":"On a confirmed critical hit or when reducing a living enemy to 0 hit points, replenish 1 spent ki point; at 11th level you may also retry a disease save."}]},
+    {"featureIds":["monk-wholeness-of-body-7"],"features":[{"id":"hungry-ghost-life-funnel-7","name":"Life Funnel","level":7,"type":"core","summary":"On the same triggers as Steal Ki, heal hit points equal to Monk level instead of recovering ki."}]},
+    {"featureIds":["monk-diamond-body-11"],"features":[{"id":"hungry-ghost-life-from-stone-11","name":"Life from a Stone","level":11,"type":"core","summary":"Steal ki or life force from any creature rather than only living creatures."}]},
+    {"featureIds":["monk-diamond-soul-13"],"features":[{"id":"hungry-ghost-sipping-demon-13","name":"Sipping Demon","level":13,"type":"core","summary":"While at least 1 ki remains, gain temporary hit points from melee hits and additional temporary hit points on critical hits, up to Monk level."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+}
