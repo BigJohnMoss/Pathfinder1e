@@ -1,0 +1,17 @@
+{
+  "id": "entropic-shield",
+  "name": "Entropic Shield",
+  "school": "abjuration",
+  "levelByClass": {
+    "cleric": 1
+  },
+  "components": ["V", "S"],
+  "castingTime": "1 standard action",
+  "range": "personal",
+  "summary": "Surround yourself with a chaotic field that gives ranged attacks requiring attack rolls a 20% miss chance.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 278,
+    "url": "https://legacy.aonprd.com/coreRulebook/spells/entropicShield.html"
+  }
+}
