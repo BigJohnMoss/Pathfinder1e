@@ -73,10 +73,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Next milestone: Expanded Character Options
 
-- traits â€” complete: all 40 sourced APG basic traits, trait-specific class-skill
+- traits — complete: all 40 sourced APG basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
-- archetypes â€” in progress: reusable replacement schema plus all twelve APG
+- archetypes — in progress: reusable replacement schema plus all twelve APG
   Fighter paths: Archer, Crossbowman, Free Hand Fighter, Mobile Fighter,
   Phalanx Soldier, Polearm Master, Roughrider, Savage Warrior, Shielded Fighter,
   Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master; APG Barbarian
@@ -90,7 +90,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Plains, Swamp, and Urban Druid; APG Monk coverage is complete with Drunken
   Master, Hungry Ghost Monk, Ki Mystic, Monk of the Empty Hand, Monk of the
   Four Winds, Monk of the Healing Hand, Monk of the Lotus, Monk of the Sacred
-  Mountain, Weapon Adept, and Zen Archer
+  Mountain, Weapon Adept, and Zen Archer; APG Paladin coverage is complete with
+  Divine Defender, Hospitaler, Sacred Servant, Shining Knight, Undead Scourge,
+  and Warrior of the Holy Light; APG Ranger coverage is in progress with Guide,
+  Spirit Ranger, and Urban Ranger
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
@@ -102,7 +105,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
   (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
-- expanded bloodlines â€” complete: complete Core catalogue plus all ten APG
+- expanded bloodlines — complete: complete Core catalogue plus all ten APG
   bloodlines: Aquatic, Boreal, Deep Earth, Dreamspun, Protean, Serpentine,
   Shadow, Starsoul, Stormborn, and Verdant
 - mysteries and revelations - complete: the complete APG Oracle level 1-20
