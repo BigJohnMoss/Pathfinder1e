@@ -193,6 +193,10 @@ export interface CharacterOption extends SelectableOption {
   bonusFeats?: string[];
   powers?: Array<{ name: string; level: number; summary: string }>;
   domainSpells?: Array<{ level: number; name: string }>;
+  mysteryId?: string;
+  mysterySpells?: Array<{ oracleLevel: number; spellLevel: number; name: string }>;
+  revelations?: Array<{ id: string; name: string; minimumLevel: number; summary: string }>;
+  finalRevelation?: string;
 }
 
 export interface CharacterOptionGroup {
