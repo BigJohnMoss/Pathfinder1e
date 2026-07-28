@@ -217,6 +217,13 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
       ? entries
       : [{ classId: draft.classId, level: draft.level }];
   })();
+  const preparedSpells = Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : [];
+  const spellSlotUses = isRankRecord(draft.spellSlotUses);
+  const validClassIds = new Set(normalizedClassLevels.map(entry => entry.classId));
+  const preparedSpellsByClass = isStringArrayRecord(draft.preparedSpellsByClass, validClassIds);
+  const spellSlotUsesByClass = isNestedRankRecord(draft.spellSlotUsesByClass, validClassIds);
+  if (!preparedSpellsByClass[draft.classId]) preparedSpellsByClass[draft.classId] = preparedSpells;
+  if (!spellSlotUsesByClass[draft.classId]) spellSlotUsesByClass[draft.classId] = spellSlotUses;
   return {
     version: 1,
     name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",
@@ -237,8 +244,10 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     selectedFeatChoices: isStringRecord(draft.selectedFeatChoices),
     skillRanks: isRankRecord(draft.skillRanks),
     selectedOptions: isStringRecord(draft.selectedOptions),
-    preparedSpells: Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : [],
-    spellSlotUses: isRankRecord(draft.spellSlotUses),
+    preparedSpells,
+    preparedSpellsByClass,
+    spellSlotUses,
+    spellSlotUsesByClass,
     arcaneReservoir: Number.isInteger(draft.arcaneReservoir) && draft.arcaneReservoir >= 0 ? draft.arcaneReservoir : null,
     bardicPerformanceUsed: Number.isInteger(draft.bardicPerformanceUsed) && draft.bardicPerformanceUsed >= 0 ? draft.bardicPerformanceUsed : 0,
     wildShapeUsed: Number.isInteger(draft.wildShapeUsed) && draft.wildShapeUsed >= 0 ? draft.wildShapeUsed : 0,
@@ -583,3 +592,5 @@ function assertLevel(level) {
 
 function isRankRecord(value) { return value && typeof value === "object" && !Array.isArray(value) ? Object.fromEntries(Object.entries(value).filter(([name, ranks]) => typeof name === "string" && Number.isInteger(ranks) && ranks >= 0)) : {}; }
 function isStringRecord(value) { return value && typeof value === "object" && !Array.isArray(value) ? Object.fromEntries(Object.entries(value).filter(([name, id]) => typeof name === "string" && typeof id === "string")) : {}; }
+function isStringArrayRecord(value, validKeys) { return value && typeof value === "object" && !Array.isArray(value) ? Object.fromEntries(Object.entries(value).flatMap(([key, entries]) => validKeys.has(key) && Array.isArray(entries) ? [[key, entries.filter(entry => typeof entry === "string")]] : [])) : {}; }
+function isNestedRankRecord(value, validKeys) { return value && typeof value === "object" && !Array.isArray(value) ? Object.fromEntries(Object.entries(value).flatMap(([key, entries]) => validKeys.has(key) ? [[key, isRankRecord(entries)]] : [])) : {}; }
