@@ -100,6 +100,20 @@ test("Magician exposes expanded repertoire and bonded-object choices", async () 
   assert.equal(screen.getByRole("button", { name: "Forget Mage Armor" }).hasAttribute("disabled"), true);
 });
 
+test("Sandman exposes its complete stealth progression through level 20", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-sandman']"));
+  await user.selectOptions(archetype, "bard-sandman");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Stealspell", "Slumber Song", "Dramatic Subtext", "Greater Stealspell", "Mass Slumber Song", "Spell Catching", "Master of Deception", "Sneakspell +1 DC", "Trap Sense +1", "Sneak Attack +1d6"]) assert.ok(screen.getByText(name));
+  assert.equal(screen.queryByText("Inspire Courage +4"), null);
+  assert.equal(screen.queryByText("Deadly Performance"), null);
+});
+
 test("Court Bard exposes every replacement performance through level 20", async () => {
   const user = userEvent.setup();
   render(<Home />);
