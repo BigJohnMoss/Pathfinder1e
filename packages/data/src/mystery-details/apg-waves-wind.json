@@ -1,0 +1,49 @@
+{
+  "source":{"title":"Advanced Player's Guide","page":52,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#mysteries"},
+  "mysteries":[
+    {
+      "id":"oracle-mystery-waves",
+      "classSkills":["Acrobatics","Escape Artist","Knowledge (nature)","Swim"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"touch of the sea"},{"oracleLevel":4,"spellLevel":2,"name":"slipstream"},{"oracleLevel":6,"spellLevel":3,"name":"water breathing"},
+        {"oracleLevel":8,"spellLevel":4,"name":"wall of ice"},{"oracleLevel":10,"spellLevel":5,"name":"geyser"},{"oracleLevel":12,"spellLevel":6,"name":"fluid form"},
+        {"oracleLevel":14,"spellLevel":7,"name":"vortex"},{"oracleLevel":16,"spellLevel":8,"name":"seamantle"},{"oracleLevel":18,"spellLevel":9,"name":"tsunami"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-blizzard","name":"Blizzard","minimumLevel":11,"summary":"Create a vast damaging storm that obscures sight and leaves ice."},
+        {"id":"oracle-revelation-fluid-nature","name":"Fluid Nature","minimumLevel":1,"summary":"Resist combat maneuvers and critical confirmations and gain Dodge."},
+        {"id":"oracle-revelation-fluid-travel","name":"Fluid Travel","minimumLevel":1,"summary":"Walk safely across liquids and later swim and breathe underwater."},
+        {"id":"oracle-revelation-freezing-spells","name":"Freezing Spells","minimumLevel":1,"summary":"Cold spells that overcome saves also slow their targets."},
+        {"id":"oracle-revelation-ice-armor","name":"Ice Armor","minimumLevel":1,"summary":"Conjure scaling armor and piercing resistance from ice."},
+        {"id":"oracle-revelation-icy-skin","name":"Icy Skin","minimumLevel":1,"summary":"Gain scaling cold resistance and eventual immunity."},
+        {"id":"oracle-revelation-punitive-transformation","name":"Punitive Transformation","minimumLevel":7,"summary":"Temporarily transform an opponent into a harmless animal."},
+        {"id":"oracle-revelation-water-form","name":"Water Form","minimumLevel":7,"summary":"Assume increasingly powerful water elemental forms."},
+        {"id":"oracle-revelation-water-sight","name":"Water Sight","minimumLevel":1,"summary":"See through mist and later scry through calm water."},
+        {"id":"oracle-revelation-wintry-touch","name":"Wintry Touch","minimumLevel":1,"summary":"Deal cold damage by touch and later empower held weapons."}
+      ],
+      "finalRevelation":"Become a master of cold and water, applying Enlarge, Extend, Silent, or Still Spell to any cold or water spell without increasing its level or casting time."
+    },
+    {
+      "id":"oracle-mystery-wind",
+      "classSkills":["Acrobatics","Escape Artist","Fly","Stealth"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"alter winds"},{"oracleLevel":4,"spellLevel":2,"name":"gust of wind"},{"oracleLevel":6,"spellLevel":3,"name":"cloak of winds"},
+        {"oracleLevel":8,"spellLevel":4,"name":"river of wind"},{"oracleLevel":10,"spellLevel":5,"name":"control winds"},{"oracleLevel":12,"spellLevel":6,"name":"sirocco"},
+        {"oracleLevel":14,"spellLevel":7,"name":"control weather"},{"oracleLevel":16,"spellLevel":8,"name":"whirlwind"},{"oracleLevel":18,"spellLevel":9,"name":"winds of vengeance"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-air-barrier","name":"Air Barrier","minimumLevel":1,"summary":"Create scaling armor that eventually deflects ranged attacks."},
+        {"id":"oracle-revelation-gaseous-form","name":"Gaseous Form","minimumLevel":7,"summary":"Become gaseous and carry passengers at additional duration cost."},
+        {"id":"oracle-revelation-invisibility-wind","name":"Invisibility","minimumLevel":3,"summary":"Become invisible and later use greater invisibility."},
+        {"id":"oracle-revelation-lightning-breath","name":"Lightning Breath","minimumLevel":1,"summary":"Breathe a scaling line of electricity."},
+        {"id":"oracle-revelation-spark-skin","name":"Spark Skin","minimumLevel":1,"summary":"Gain scaling electricity resistance and eventual immunity."},
+        {"id":"oracle-revelation-thunderburst","name":"Thunderburst","minimumLevel":7,"summary":"Create a widening blast that damages and deafens creatures."},
+        {"id":"oracle-revelation-touch-of-electricity","name":"Touch of Electricity","minimumLevel":1,"summary":"Deal electricity damage by touch and later empower held weapons."},
+        {"id":"oracle-revelation-vortex-spells","name":"Vortex Spells","minimumLevel":1,"summary":"Critical spell attacks stagger their targets."},
+        {"id":"oracle-revelation-wind-sight","name":"Wind Sight","minimumLevel":1,"summary":"Ignore wind and distance penalties and perceive through connected air."},
+        {"id":"oracle-revelation-wings-of-air","name":"Wings of Air","minimumLevel":7,"summary":"Manifest scaling magical flight with improving maneuverability."}
+      ],
+      "finalRevelation":"Become a master of air and electricity, applying Enlarge, Extend, Silent, or Still Spell to any air or electricity spell without increasing its level or casting time."
+    }
+  ]
+}
