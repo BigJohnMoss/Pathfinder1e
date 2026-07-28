@@ -1,0 +1,20 @@
+{
+  "id":"druid-desert",
+  "name":"Desert Druid",
+  "classId":"druid",
+  "summary":"A guardian of arid wilderness who crosses sand unhindered, survives heat, assumes vermin forms, and melds into dunes.",
+  "wildShapeLevelAdjustment":-2,
+  "featureOverrides":[
+    {"featureId":"druid-wild-shape-8","summary":"Assume a Small or Medium vermin form as beast shape IV; plant forms are unavailable."},
+    {"featureId":"druid-wild-shape-10","summary":"Assume a Tiny or Large vermin form as beast shape IV; plant forms are unavailable."},
+    {"featureId":"druid-wild-shape-12","summary":"Assume a Diminutive or Huge vermin form as beast shape IV; plant forms are unavailable."}
+  ],
+  "replacements":[
+    {"featureIds":["druid-woodland-stride-2"],"features":[{"id":"desert-druid-native-2","name":"Desert Native","level":2,"type":"scaling","summary":"In desert terrain, add half Druid level to initiative and key exploration skills and leave no trail.","scaling":"half Druid level"}]},
+    {"featureIds":["druid-trackless-step-3"],"features":[{"id":"desert-druid-sandwalker-3","name":"Sandwalker","level":3,"type":"core","summary":"Ignore movement, Acrobatics, and Stealth penalties from sand and desert terrain."}]},
+    {"featureIds":["druid-resist-natures-lure-4"],"features":[{"id":"desert-druid-endurance-4","name":"Desert Endurance","level":4,"type":"core","summary":"Ignore hot-climate effects and require less food and water as if wearing a ring of sustenance."}]},
+    {"featureIds":["druid-venom-immunity-9"],"features":[{"id":"desert-druid-shaded-vision-9","name":"Shaded Vision","level":9,"type":"core","summary":"Become immune to blindness and dazzling and gain +2 on saves against gaze attacks and figment or pattern illusions."}]},
+    {"featureIds":["druid-thousand-faces-13"],"features":[{"id":"desert-druid-dunemeld-13","name":"Dunemeld","level":13,"type":"core","summary":"Become a swirling mass of sand at will with 10-foot land and burrow speeds and enhanced desert Stealth."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+}
