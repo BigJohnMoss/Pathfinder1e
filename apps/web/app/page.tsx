@@ -23,7 +23,7 @@ import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells, bloodlineClassSkills } from "../../../packages/engine/src/sorcerer-bloodlines.js";
 import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
-import type { ActiveEffect, CharacterDraftV1 } from "../../../packages/types/src/index.js";
+import type { ActiveEffect, CharacterClassLevel, CharacterDraftV1 } from "../../../packages/types/src/index.js";
 
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
 const defaultAbilities = { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10 };
@@ -47,8 +47,7 @@ function mergeSpellLists<T extends { id: string }>(baseSpells: T[], grantedSpell
 export default function Home() {
   const [name, setName] = useState("");
   const [classId, setClassId] = useState("arcanist");
-  const [secondaryClassId, setSecondaryClassId] = useState("");
-  const [secondaryClassLevel, setSecondaryClassLevel] = useState(0);
+  const [additionalClassLevels, setAdditionalClassLevels] = useState<CharacterClassLevel[]>([]);
   const [archetypeId, setArchetypeId] = useState("");
   const [ancestryId, setAncestryId] = useState("human");
   const [level, setLevel] = useState(1);
@@ -86,11 +85,14 @@ export default function Home() {
   const availableArchetypes = archetypes.filter((item) => item.classId === baseCharacterClass.id);
   const selectedArchetype = availableArchetypes.find((item) => item.id === archetypeId);
   const characterClass = useMemo(() => applyArchetype(baseCharacterClass, selectedArchetype), [baseCharacterClass, selectedArchetype]);
+  const additionalCharacterClasses = useMemo(() => additionalClassLevels.map((entry) => classes.find((item) => item.id === entry.classId)).filter((item): item is typeof classes[number] => Boolean(item)), [additionalClassLevels]);
+  const secondaryClassId = additionalClassLevels[0]?.classId ?? "";
+  const secondaryClassLevel = additionalClassLevels[0]?.level ?? 0;
   const secondaryCharacterClass = classes.find((item) => item.id === secondaryClassId);
-  const primaryClassLevel = secondaryCharacterClass ? level - secondaryClassLevel : level;
-  const classLevels = useMemo(() => secondaryCharacterClass
-    ? [{ classId: characterClass.id, level: primaryClassLevel }, { classId: secondaryCharacterClass.id, level: secondaryClassLevel }]
-    : [{ classId: characterClass.id, level }], [characterClass.id, level, primaryClassLevel, secondaryCharacterClass, secondaryClassLevel]);
+  const assignedAdditionalLevels = additionalClassLevels.reduce((total, entry) => total + entry.level, 0);
+  const primaryClassLevel = level - assignedAdditionalLevels;
+  const classLevels = useMemo(() => [{ classId: characterClass.id, level: primaryClassLevel }, ...additionalClassLevels], [additionalClassLevels, characterClass.id, primaryClassLevel]);
+  const progressionClasses = useMemo(() => [characterClass, ...additionalCharacterClasses], [additionalCharacterClasses, characterClass]);
   const classLevelMap = useMemo(() => Object.fromEntries(classLevels.map((entry) => [entry.classId, entry.level])), [classLevels]);
   const ancestry = ancestries.find((item) => item.id === ancestryId) ?? ancestries[0];
   const selectedTraitBonuses = useMemo(() => traitBonuses(selectedTraitIds, traits, selectedTraitChoices, { spells, classes, classId }), [classId, selectedTraitChoices, selectedTraitIds]);
@@ -105,8 +107,8 @@ export default function Home() {
     const bloodlineSkills = selectedBloodline?.classSkill
       ? bloodlineClassSkills(characterClass.classSkills, selectedBloodline, selectedBloodlineClassSkill)
       : characterClass.classSkills;
-    return { ...characterClass, classSkills: [...new Set([...bloodlineSkills, ...(secondaryCharacterClass?.classSkills ?? []), ...selectedTraitBonuses.classSkills, ...selectedOptionClassSkills])] };
-  }, [characterClass, secondaryCharacterClass, selectedBloodline, selectedBloodlineClassSkill, selectedOptionClassSkills, selectedTraitBonuses.classSkills]);
+    return { ...characterClass, classSkills: [...new Set([...bloodlineSkills, ...additionalCharacterClasses.flatMap((item) => item.classSkills), ...selectedTraitBonuses.classSkills, ...selectedOptionClassSkills])] };
+  }, [additionalCharacterClasses, characterClass, selectedBloodline, selectedBloodlineClassSkill, selectedOptionClassSkills, selectedTraitBonuses.classSkills]);
   const fixedModifiers = (ancestry.abilityModifiers as { fixed?: Partial<typeof defaultAbilities> }).fixed ?? {};
   const choiceAmount = (ancestry.abilityModifiers as { choice?: { amount: number } }).choice?.amount ?? 0;
   const abilities = useMemo(() => Object.fromEntries(Object.keys(baseAbilities).map((ability) => [ability, baseAbilities[ability as keyof typeof baseAbilities] + (fixedModifiers[ability as keyof typeof baseAbilities] ?? 0) + (choiceAmount && ability === humanAbility ? choiceAmount : 0) + abilityBoosts.filter(boost => boost === ability).length])) as typeof baseAbilities, [abilityBoosts, baseAbilities, choiceAmount, fixedModifiers, humanAbility]);
@@ -116,18 +118,22 @@ export default function Home() {
     setFavoredClassHitPoints(current => Math.min(current, level));
     setFavoredClassSkillRanks(current => Math.min(current, Math.max(0, level - favoredClassHitPoints)));
   }, [favoredClassHitPoints, level]);
-  useEffect(() => {
-    if (!secondaryClassId) {
-      setSecondaryClassLevel(0);
-      return;
-    }
-    if (secondaryClassId === classId) {
-      setSecondaryClassId("");
-      setSecondaryClassLevel(0);
-      return;
-    }
-    setSecondaryClassLevel((current) => Math.max(1, Math.min(current || 1, Math.max(1, level - 1))));
-  }, [classId, level, secondaryClassId]);
+  useEffect(() => setAdditionalClassLevels((current) => {
+    const seen = new Set([classId]);
+    const valid = current.filter((entry) => {
+      if (!classes.some((item) => item.id === entry.classId) || seen.has(entry.classId)) return false;
+      seen.add(entry.classId);
+      return true;
+    }).slice(0, Math.max(0, level - 1));
+    let remaining = level - 1;
+    const next = valid.map((entry, index) => {
+      const maximum = remaining - (valid.length - index - 1);
+      const normalized = { classId: entry.classId, level: Math.max(1, Math.min(entry.level, maximum)) };
+      remaining -= normalized.level;
+      return normalized;
+    });
+    return next.length === current.length && next.every((entry, index) => entry.classId === current[index].classId && entry.level === current[index].level) ? current : next;
+  }), [classId, level]);
   const ancestryBonusFeats = ancestry.traits.some((trait) => trait.id === "human-bonus-feat") ? 1 : 0;
   const progression = useMemo(() => {
     const options = {
@@ -135,11 +141,11 @@ export default function Home() {
       racialSkillBonusPerLevel: ancestry.traits.some((trait) => trait.id === "skilled") ? 1 : 0,
       bonusFeats: ancestryBonusFeats
     };
-    const base = secondaryCharacterClass
-      ? multiclassProgression([characterClass, secondaryCharacterClass], classLevels, options)
+    const base = additionalCharacterClasses.length > 0
+      ? multiclassProgression(progressionClasses, classLevels, options)
       : classProgression(characterClass, level, options);
     return { ...base, skillRanks: base.skillRanks + favoredClassSkillRanks };
-  }, [abilities.intelligence, ancestry, ancestryBonusFeats, characterClass, classLevels, favoredClassSkillRanks, level, secondaryCharacterClass]);
+  }, [abilities.intelligence, additionalCharacterClasses.length, ancestry, ancestryBonusFeats, characterClass, classLevels, favoredClassSkillRanks, level, progressionClasses]);
   const nextProgression = useMemo(() => {
     if (level >= 20) return null;
     const options = {
@@ -147,13 +153,13 @@ export default function Home() {
       racialSkillBonusPerLevel: ancestry.traits.some((trait) => trait.id === "skilled") ? 1 : 0,
       bonusFeats: ancestryBonusFeats
     };
-    return secondaryCharacterClass
-      ? multiclassProgression([characterClass, secondaryCharacterClass], [{ classId: characterClass.id, level: primaryClassLevel + 1 }, { classId: secondaryCharacterClass.id, level: secondaryClassLevel }], options)
+    return additionalCharacterClasses.length > 0
+      ? multiclassProgression(progressionClasses, [{ classId: characterClass.id, level: primaryClassLevel + 1 }, ...additionalClassLevels], options)
       : classProgression(characterClass, level + 1, options);
-  }, [abilities.intelligence, ancestry, ancestryBonusFeats, characterClass, level, primaryClassLevel, secondaryCharacterClass, secondaryClassLevel]);
+  }, [abilities.intelligence, additionalCharacterClasses.length, additionalClassLevels, ancestry, ancestryBonusFeats, characterClass, level, primaryClassLevel, progressionClasses]);
   const baseCombat = useMemo(() => {
     const base = characterCombatStats(characterClass, level, abilities);
-    if (!secondaryCharacterClass) return base;
+    if (additionalCharacterClasses.length === 0) return base;
     const saves = progression.saves;
     return {
       ...base,
@@ -165,9 +171,9 @@ export default function Home() {
       },
       combatManeuverBonus: progression.baseAttackBonus + base.abilityModifiers.strength,
       combatManeuverDefense: 10 + progression.baseAttackBonus + base.abilityModifiers.strength + base.abilityModifiers.dexterity,
-      averageHitPoints: multiclassAverageHitPoints([characterClass, secondaryCharacterClass], classLevels, base.abilityModifiers.constitution)
+      averageHitPoints: multiclassAverageHitPoints(progressionClasses, classLevels, base.abilityModifiers.constitution)
     };
-  }, [abilities, characterClass, classLevels, level, progression.baseAttackBonus, progression.saves, secondaryCharacterClass]);
+  }, [abilities, additionalCharacterClasses.length, characterClass, classLevels, level, progression.baseAttackBonus, progression.saves, progressionClasses]);
   const selectedClassFeatIds = useMemo(() => Object.values(selectedOptions).flatMap((optionId) => {
     const option = optionGroups.flatMap((group) => group.options).find((candidate) => candidate.id === optionId);
     return option?.featId ? [option.featId] : [];
@@ -304,8 +310,8 @@ export default function Home() {
   const secondaryOppositionSchoolIds = useMemo(() => oppositionSchoolsFromOptions(secondaryCharacterClass?.id ?? "", selectedOptions), [secondaryCharacterClass, selectedOptions]);
   const reservoir = classId === "arcanist" ? arcaneReservoir(primaryClassLevel) : null;
   const secondaryReservoir = secondaryCharacterClass?.id === "arcanist" ? arcaneReservoir(secondaryClassLevel) : null;
-  const bardClassLevel = classId === "bard" ? primaryClassLevel : secondaryCharacterClass?.id === "bard" ? secondaryClassLevel : 0;
-  const druidClassLevel = classId === "druid" ? primaryClassLevel : secondaryCharacterClass?.id === "druid" ? secondaryClassLevel : 0;
+  const bardClassLevel = classLevelMap.bard ?? 0;
+  const druidClassLevel = classLevelMap.druid ?? 0;
   const bardicPerformanceMaximum = bardClassLevel > 0 ? bardicPerformanceRounds(bardClassLevel, combat.abilityModifiers.charisma) : 0;
   const wildShapeMaximum = druidClassLevel > 0 ? druidWildShapeUses(druidClassLevel) : 0;
   const classDailyResources = [
@@ -419,7 +425,7 @@ export default function Home() {
       : normalizePreparedSpellsWithOpposition(draftSecondarySelections, draftSecondarySpells, draftSecondaryClass.id, draftSecondaryPrepared?.prepared ?? [], oppositionSchoolsFromOptions(draftSecondaryClass.id, draft.selectedOptions));
     const draftTraitIds = normalizeSelectedTraits(draft.selectedTraitIds, traits);
     const draftSecondaryReservoir = draftSecondaryClass?.id === "arcanist" ? arcaneReservoir(draftSecondaryLevel?.level ?? 1) : null;
-    setName(draft.name); setClassId(draft.classId); setSecondaryClassId(draftSecondaryLevel?.classId ?? ""); setSecondaryClassLevel(draftSecondaryLevel?.level ?? 0); setArchetypeId(draft.archetypeId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setFavoredClassHitPoints(draft.favoredClassHitPoints); setFavoredClassSkillRanks(draft.favoredClassSkillRanks); setSelectedFeatIds(draft.selectedFeatIds); setSelectedTraitIds(draftTraitIds); setSelectedTraitChoices(normalizeSelectedTraitChoices(draft.selectedTraitChoices, draftTraitIds, traits, { spells, classes, classId: draft.classId })); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSecondarySelectedSpellIds(normalizedDraftSecondarySpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUsesByClass[draft.classId] ?? draft.spellSlotUses, draftCasting?.slots ?? [])); setSecondarySpellSlotUses(normalizeSpellSlotUses(draftSecondaryClass ? draft.spellSlotUsesByClass[draftSecondaryClass.id] ?? {} : {}, draftSecondaryCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : draftSecondaryReservoir ? Math.min(draft.arcaneReservoir ?? draftSecondaryReservoir.dailyRefresh, draftSecondaryReservoir.maximum) : 0); setBardicPerformanceUsed(Math.min(draft.bardicPerformanceUsed, draftBardicPerformanceMaximum)); setWildShapeUsed(draftWildShapeMaximum === null ? 0 : Math.min(draft.wildShapeUsed, draftWildShapeMaximum)); setCurrentHitPoints(draft.currentHitPoints); setTemporaryHitPoints(draft.temporaryHitPoints); setActiveEffects(draft.activeEffects); setInventory(draft.inventory); setCoins(draft.coins); setSaveNotice(successNotice);
+    setName(draft.name); setClassId(draft.classId); setAdditionalClassLevels(draft.classLevels.slice(1)); setArchetypeId(draft.archetypeId); setAncestryId(draft.ancestryId); setLevel(draft.level); setHumanAbility(draft.humanAbility); setBaseAbilities(draft.baseAbilities); setPointBuyBudget(draft.pointBuyBudget); setAbilityBoosts(draft.abilityBoosts); setFavoredClassHitPoints(draft.favoredClassHitPoints); setFavoredClassSkillRanks(draft.favoredClassSkillRanks); setSelectedFeatIds(draft.selectedFeatIds); setSelectedTraitIds(draftTraitIds); setSelectedTraitChoices(normalizeSelectedTraitChoices(draft.selectedTraitChoices, draftTraitIds, traits, { spells, classes, classId: draft.classId })); setSelectedFeatChoices(normalizeSelectedFeatChoices(draft.selectedFeatChoices, draft.selectedFeatIds, feats)); setSkillRanks(draft.skillRanks); setSelectedOptions(draft.selectedOptions); setSelectedSpellIds(normalizedDraftSpells); setSecondarySelectedSpellIds(normalizedDraftSecondarySpells); setSpellSlotUses(normalizeSpellSlotUses(draft.spellSlotUsesByClass[draft.classId] ?? draft.spellSlotUses, draftCasting?.slots ?? [])); setSecondarySpellSlotUses(normalizeSpellSlotUses(draftSecondaryClass ? draft.spellSlotUsesByClass[draftSecondaryClass.id] ?? {} : {}, draftSecondaryCasting?.slots ?? [])); setReservoirPoints(draftReservoir ? Math.min(draft.arcaneReservoir ?? draftReservoir.dailyRefresh, draftReservoir.maximum) : draftSecondaryReservoir ? Math.min(draft.arcaneReservoir ?? draftSecondaryReservoir.dailyRefresh, draftSecondaryReservoir.maximum) : 0); setBardicPerformanceUsed(Math.min(draft.bardicPerformanceUsed, draftBardicPerformanceMaximum)); setWildShapeUsed(draftWildShapeMaximum === null ? 0 : Math.min(draft.wildShapeUsed, draftWildShapeMaximum)); setCurrentHitPoints(draft.currentHitPoints); setTemporaryHitPoints(draft.temporaryHitPoints); setActiveEffects(draft.activeEffects); setInventory(draft.inventory); setCoins(draft.coins); setSaveNotice(successNotice);
     return draft;
   };
   const saveCharacter = () => {
@@ -448,7 +454,7 @@ export default function Home() {
     try { applyCharacterDraft(JSON.parse(await file.text()), "Imported character"); }
     catch { setSaveNotice("Character file is invalid"); }
   };
-  const resetCharacter = () => { localStorage.removeItem(legacyCharacterKey); setName(""); setClassId("arcanist"); setSecondaryClassId(""); setSecondaryClassLevel(0); setArchetypeId(""); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setFavoredClassHitPoints(0); setFavoredClassSkillRanks(0); setSelectedFeatIds([]); setSelectedTraitIds([]); setSelectedTraitChoices({}); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSecondarySelectedSpellIds([]); setSpellSlotUses({}); setSecondarySpellSlotUses({}); setActiveSpellClassId(""); setReservoirPoints(3); setBardicPerformanceUsed(0); setWildShapeUsed(0); setCurrentHitPoints(null); setTemporaryHitPoints(0); setActiveEffects([]); setInventory([]); setCoins({ cp: 0, sp: 0, gp: 0, pp: 0 }); setSaveNotice("Character reset"); };
+  const resetCharacter = () => { localStorage.removeItem(legacyCharacterKey); setName(""); setClassId("arcanist"); setAdditionalClassLevels([]); setArchetypeId(""); setAncestryId("human"); setLevel(1); setHumanAbility("intelligence"); setBaseAbilities(defaultAbilities); setPointBuyBudget(15); setAbilityBoosts([]); setFavoredClassHitPoints(0); setFavoredClassSkillRanks(0); setSelectedFeatIds([]); setSelectedTraitIds([]); setSelectedTraitChoices({}); setSelectedFeatChoices({}); setSkillRanks({}); setSelectedOptions({}); setSelectedSpellIds([]); setSecondarySelectedSpellIds([]); setSpellSlotUses({}); setSecondarySpellSlotUses({}); setActiveSpellClassId(""); setReservoirPoints(3); setBardicPerformanceUsed(0); setWildShapeUsed(0); setCurrentHitPoints(null); setTemporaryHitPoints(0); setActiveEffects([]); setInventory([]); setCoins({ cp: 0, sp: 0, gp: 0, pp: 0 }); setSaveNotice("Character reset"); };
   const newCharacter = () => { resetCharacter(); persistLibrary({ ...characterLibrary, activeCharacterId: null }); setSaveNotice("New character started; your library is unchanged"); };
   const openLibraryCharacter = (entry: CharacterLibraryV1["characters"][number]) => {
     const draft = applyCharacterDraft(entry.draft, `Opened ${entry.draft.name.trim() || "unnamed hero"}`);
@@ -469,7 +475,7 @@ export default function Home() {
 
   return <main id="character-builder-main" tabIndex={-1}>
     <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
-    <CharacterDetails name={name} classId={classId} secondaryClassId={secondaryClassId} secondaryClassLevel={secondaryClassLevel} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={availableArchetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onSecondaryClassChange={(next) => { setSecondaryClassId(next); setSecondaryClassLevel(next ? 1 : 0); if (next && level < 2) setLevel(2); }} onSecondaryClassLevelChange={setSecondaryClassLevel} onArchetypeChange={setArchetypeId} onAncestryChange={setAncestryId} onLevelChange={(next) => { setSecondaryClassLevel((current) => secondaryClassId ? Math.min(current, Math.max(1, next - 1)) : 0); setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => setShowLevelUp(true)} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+    <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={availableArchetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); if (next.length > 0 && level < next.length + 1) setLevel(next.length + 1); }} onArchetypeChange={setArchetypeId} onAncestryChange={setAncestryId} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => setShowLevelUp(true)} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
     {showLevelUp && level < 20 && <LevelUpPanel currentLevel={level} className={characterClass.name} gains={levelUpGains} onCancel={() => setShowLevelUp(false)} onConfirm={() => { setLevel(level + 1); setShowLevelUp(false); setSaveNotice(`Advanced to level ${level + 1}. Review newly unlocked choices.`); }} />}
     <CharacterTabs activeTab={activeTab} onChange={setActiveTab} />
     <section id="character-tab-panel" className="tab-panel" role="tabpanel" aria-labelledby={`character-tab-${activeTab}`} tabIndex={0}>
@@ -479,7 +485,7 @@ export default function Home() {
       {activeTab === "spells" && (spellcastingClassIds.length > 0 ? <div className="spell-workspace">{spellcastingClassIds.length > 1 && <label className="spell-class-selector">Spellcasting class<select aria-label="Spellcasting class" value={activeSpellClassId} onChange={(event) => setActiveSpellClassId(event.target.value)}>{spellcastingClassIds.map((castingClassId) => <option key={castingClassId} value={castingClassId}>{classes.find((item) => item.id === castingClassId)?.name ?? castingClassId}</option>)}</select></label>}{activeSpellClassId === secondaryCharacterClass?.id ? secondarySpellbook : primarySpellbook}</div> : <p className="empty-tab">These classes do not cast spells.</p>)}
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}
-      {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={secondaryCharacterClass ? `${characterClass.name} ${primaryClassLevel} / ${secondaryCharacterClass.name} ${secondaryClassLevel}` : characterClass.name} features={progression.features} dailyResources={classDailyResources} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={primaryClassLevel} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
+      {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={additionalClassLevels.length > 0 ? classLevels.map((entry) => `${classes.find((item) => item.id === entry.classId)?.name ?? entry.classId} ${entry.level}`).join(" / ") : characterClass.name} features={progression.features} dailyResources={classDailyResources} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={primaryClassLevel} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
       {activeTab === "options" && <TraitChoices traits={traits} spells={spells} classes={classes} classId={characterClass.id} selectedTraitIds={selectedTraitIds} selectedTraitChoices={selectedTraitChoices} onChange={updateTrait} onChoiceChange={updateTraitChoice} />}
     </section>
   </main>;

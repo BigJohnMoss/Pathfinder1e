@@ -112,8 +112,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - multiclassing - in progress: rules-engine aggregation for independent class
   levels, BAB, saves, skill ranks, character-level feat slots, and class-tagged
   features; backward-compatible save normalization for class-level arrays;
-  two-class editing with combined combat statistics, hit points, class skills,
-  features, feat prerequisites, primary and secondary class feature choices,
+  arbitrary distinct class-level editing with combined combat statistics, hit
+  points, class skills, features, and feat prerequisites; primary and first
+  additional class feature choices,
   independent class spellbooks and daily slot use, secondary Bard and Druid
   resource tracking, highest-class caster-level prerequisites, and save/load
   restoration
