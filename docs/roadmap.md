@@ -76,7 +76,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - traits — complete: all 40 sourced APG basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
-- archetypes — in progress: reusable replacement schema plus all twelve APG
+- archetypes and class paths — complete: reusable replacement schema plus all twelve APG
   Fighter paths: Archer, Crossbowman, Free Hand Fighter, Mobile Fighter,
   Phalanx Soldier, Polearm Master, Roughrider, Savage Warrior, Shielded Fighter,
   Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master; APG Barbarian
@@ -97,7 +97,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Ranger, and Urban Ranger, plus the Crossbow, Mounted Combat, Natural Weapon,
   Two-Handed Weapon, and Weapon and Shield combat styles; APG Rogue coverage is
   complete with Acrobat, Burglar, Cutpurse, Investigator, Poisoner, Rake,
-  Scout, Sniper, Spy, Swashbuckler, Thug, and Trapsmith
+  Scout, Sniper, Spy, Swashbuckler, Thug, and Trapsmith; APG Wizard coverage
+  is complete with all sixteen focused arcane schools and the Air, Earth, Fire,
+  and Water elemental schools, including specialist spell lists and forced
+  opposition elements
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
