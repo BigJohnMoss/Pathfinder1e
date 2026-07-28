@@ -159,7 +159,8 @@ test("builds, calculates, and restores a multiclass character", async () => {
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByRole("heading", { name: "Fighter 12 / Wizard 8 features" }));
   assert.ok(screen.getAllByText(/Armor Training/).length > 0);
-  assert.ok(screen.getByText("Arcane School"));
+  assert.ok(screen.getAllByText("Arcane School").length > 0);
+  await user.selectOptions(screen.getByLabelText("Arcane School level 1"), "wizard-school-universalist");
 
   await user.click(screen.getByRole("button", { name: "Save" }));
   await user.selectOptions(screen.getByLabelText("Additional class"), "");
@@ -167,6 +168,8 @@ test("builds, calculates, and restores a multiclass character", async () => {
   await user.click(screen.getByRole("button", { name: "Load" }));
   await waitFor(() => assert.equal((screen.getByLabelText("Additional class") as HTMLSelectElement).value, "wizard"));
   assert.equal((screen.getByLabelText("Additional class levels") as HTMLInputElement).value, "8");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.equal((screen.getByLabelText("Arcane School level 1") as HTMLSelectElement).value, "wizard-school-universalist");
 });
 
 test("enforces the skill-rank pool through the interface", async () => {
