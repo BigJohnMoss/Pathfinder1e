@@ -37,7 +37,7 @@ export type Prerequisite =
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface PrerequisiteResult { prerequisite: Prerequisite; met: boolean }
-export interface PrerequisiteContext { classId?: string; ancestryId?: string; size?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
+export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; size?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
 
 export function abilityModifier(score: number): number;
 export const abilityNames: AbilityName[];
@@ -48,6 +48,7 @@ export function normalizeAbilityBoosts(boosts: unknown, level: number): AbilityN
 export function abilityModifiers(abilities: AbilityScores): AbilityScores;
 export function characterCombatStats(characterClass: CharacterClass, level: number, abilities: AbilityScores): CharacterCombatStats;
 export function averageHitPoints(hitDie: number, level: number, constitutionModifier?: number): number;
+export function multiclassAverageHitPoints(classes: CharacterClass[], classLevels: Array<{ classId: string; level: number }>, constitutionModifier?: number): number;
 export function carryingCapacity(strength: number): { light: number; medium: number; heavy: number };
 export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
 export function spellsAvailableToClass<T extends { name: string; levelByClass: Record<string, number> }>(spells: T[], classId: string, maximumSpellLevel: number): T[];
