@@ -29,6 +29,7 @@ for (const [archetypeId, name, expected, removed] of [
   ["ranger-horse-lord","Horse Lord",["Mounted Bond","Strong Bond","Spiritual Bond"],["Hunter's Bond","Animal Companion Choice","Camouflage","Hide in Plain Sight"]],
   ["ranger-shapeshifter","Shapeshifter",["Shifter's Blessing 1","Shifter's Blessing 4","Dual Form Shifter","Master Shifter"],["Favored Terrain 1","Camouflage","Master Hunter"]],
   ["ranger-skirmisher","Skirmisher",["Hunter's Trick 1","Hunter's Trick 8"],["Divine Spellcasting"]]
+  ,["ranger-beast-master","Beast Master",["Beast Master Animal Bond","Companion Roster","Improved Empathic Link","Strong Bond"],["Hunter's Bond","Animal Companion Choice","Combat Style Feat 2","Camouflage"]]
 ] as const) test(`${name} is selectable with its level-20 progression`, async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -114,4 +115,21 @@ test("Skirmisher has unique hunter tricks and no spellbook", async () => {
   await user.selectOptions(first, "hunter-trick-aiding-attack");
   assert.equal((second.querySelector("option[value='hunter-trick-aiding-attack']") as HTMLOptionElement).disabled, true);
   assert.equal([...first.options].filter((option) => option.value).length, 26);
+});
+
+test("Beast Master allocates multiple companion levels within its level-12 budget", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-beast-master");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "12" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const first = screen.getByLabelText("Beast Master companion 1");
+  await user.selectOptions(first, "ranger-animal-companion-wolf");
+  await user.selectOptions(screen.getByLabelText("Beast Master companion 1 effective levels"), "7");
+  const second = screen.getByLabelText("Beast Master companion 2");
+  await user.selectOptions(second, "ranger-animal-companion-wolf");
+  await user.selectOptions(screen.getByLabelText("Beast Master companion 2 effective levels"), "5");
+  assert.equal(screen.getByLabelText("Beast Master allocation").textContent, "12/12 levels allocated");
+  assert.equal(screen.queryByLabelText("Beast Master companion 3"), null);
 });
