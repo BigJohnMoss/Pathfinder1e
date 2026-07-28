@@ -15,7 +15,7 @@ This document distinguishes records present in the data bundle from systems that
 
 | Class | Status | Notes |
 |---|---|---|
-| Arcanist | Playable | Prepared arcane casting, arcane reservoir and exploits are integrated. |
+| Arcanist | Playable | Prepared arcane casting, arcane reservoir, and all 40 normal and greater Advanced Class Guide exploits are integrated with level and exploit prerequisites. |
 | Barbarian | Playable | Core progression plus the complete Core and APG rage-power catalogues are integrated, including prerequisites, repeat limits, distinct energy choices, and mutually exclusive totem families. |
 | Bard | Playable Core class | Level 1–20 chassis, complete Core spell list, performance milestones, Versatile Performance choices and persistent performance-round tracking are integrated. |
 | Cleric | Playable Core class | Level 1–20 prepared casting, channel energy, deity-compatible alignment, Core deities and domains, and domain spell slots are integrated. |
