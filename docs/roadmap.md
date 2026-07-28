@@ -114,7 +114,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
   features; backward-compatible save normalization for class-level arrays;
   two-class editing with combined combat statistics, hit points, class skills,
   features, feat prerequisites, primary and secondary class feature choices,
-  independent class spellbooks and daily slot use, and save/load restoration
+  independent class spellbooks and daily slot use, secondary Bard and Druid
+  resource tracking, and save/load restoration
 - prestige classes
 - alternate racial traits
 - advanced equipment and magic items
