@@ -87,7 +87,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
   with Arcane Duelist, Archivist, Court Bard, Detective, Magician, Sandman,
   Savage Skald, Sea Singer, and Street Performer; APG Druid coverage is
   complete with Aquatic, Arctic, Blight, Cave, Desert, Jungle, Mountain,
-  Plains, Swamp, and Urban Druid
+  Plains, Swamp, and Urban Druid; APG Monk coverage is complete with Drunken
+  Master, Hungry Ghost Monk, Ki Mystic, Monk of the Empty Hand, Monk of the
+  Four Winds, Monk of the Healing Hand, Monk of the Lotus, Monk of the Sacred
+  Mountain, Weapon Adept, and Zen Archer
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,

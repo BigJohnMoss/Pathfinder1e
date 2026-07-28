@@ -21,7 +21,7 @@ This document distinguishes records present in the data bundle from systems that
 | Cleric | Playable Core class | Level 1–20 prepared casting, channel energy, deity-compatible alignment, Core deities and domains, and domain spell slots are integrated. |
 | Druid | Playable | Level 1–20 prepared casting, complete Core spell list, both Nature Bond paths, all ten APG archetypes with their domain, familiar, class-skill and delayed Wild Shape rules, and persistent Wild Shape tracking are integrated. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
-| Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
+| Monk | Playable | Core progression plus all ten APG archetypes, their complete replacement progressions, granted feats, and Four Winds spirit-aspect choice are integrated. |
 | Oracle | Playable APG class | Level 1-20 spontaneous divine casting, all six curses, cure-or-inflict choice, all ten mysteries, mystery spells, revelations and capstones are integrated. |
 | Paladin | Playable Core class | Level 1–20 martial and divine progression, mercies, Divine Bond and the complete Core Paladin spell list are integrated. |
 | Ranger | Playable Core class | Level 1–20 progression, favored enemies and terrains, combat styles, both Hunter's Bond paths and the complete Core Ranger spell list are integrated. |
@@ -67,7 +67,7 @@ The catalogue contains sourced feats from the Core Rulebook, Advanced Player's G
 | Browser end-to-end tests | Martial, prepared-caster, spontaneous-caster, prerequisite, persistence and equipment journeys run in Chromium CI |
 | Multiclassing | Planned |
 | Traits | All 40 APG basic traits are playable with category restrictions, skill choices and class-aware spell choices |
-| Archetypes | All twelve APG Fighter, nine APG Barbarian, nine APG Bard, and ten APG Druid archetypes are playable through level 20; Totem Warrior is represented by the complete mutually exclusive totem rage-power families |
+| Archetypes | All twelve APG Fighter, nine APG Barbarian, nine APG Bard, ten APG Druid, and ten APG Monk archetypes are playable through level 20; Totem Warrior is represented by the complete mutually exclusive totem rage-power families |
 
 ## Definition of playable
 
