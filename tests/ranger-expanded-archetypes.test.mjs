@@ -10,7 +10,8 @@ for (const [file, expected, removed] of [
   ["ranger-spirit-ranger",["spirit-ranger-spirit-bond-4","spirit-ranger-wisdom-spirits-12"],["ranger-hunters-bond-4","ranger-animal-companion-4","ranger-camouflage-12"]],
   ["ranger-urban-ranger",["urban-ranger-favored-community-3","urban-ranger-trapfinding-3","urban-ranger-push-through-7","urban-ranger-blend-in-12","urban-ranger-invisibility-trick-17"],["ranger-favored-terrain-3","ranger-favored-terrain-18","ranger-endurance-3","ranger-woodland-stride-7","ranger-camouflage-12","ranger-hide-in-plain-sight-17"]],
   ["ranger-horse-lord",["ranger-hunters-bond-animal","horse-lord-strong-bond-12","horse-lord-spiritual-bond-17"],["ranger-hunters-bond-4","ranger-animal-companion-4","ranger-camouflage-12","ranger-hide-in-plain-sight-17"]],
-  ["ranger-shapeshifter",["shapeshifter-blessing-3","shapeshifter-blessing-8","shapeshifter-blessing-13","shapeshifter-blessing-18","shapeshifter-dual-form-12","shapeshifter-master-shifter-20"],["ranger-favored-terrain-3","ranger-favored-terrain-18","ranger-camouflage-12","ranger-master-hunter-20"]]
+  ["ranger-shapeshifter",["shapeshifter-blessing-3","shapeshifter-blessing-8","shapeshifter-blessing-13","shapeshifter-blessing-18","shapeshifter-dual-form-12","shapeshifter-master-shifter-20"],["ranger-favored-terrain-3","ranger-favored-terrain-18","ranger-camouflage-12","ranger-master-hunter-20"]],
+  ["ranger-skirmisher",["skirmisher-hunter-trick-5","skirmisher-hunter-trick-7","skirmisher-hunter-trick-9","skirmisher-hunter-trick-11","skirmisher-hunter-trick-13","skirmisher-hunter-trick-15","skirmisher-hunter-trick-17","skirmisher-hunter-trick-19"],["ranger-spellcasting-4"]]
 ]) test(`${file} exposes its complete APG progression`, async () => {
   const ranger = await load("../packages/data/src/classes/ranger.json");
   const archetype = await load(`../packages/data/src/archetypes/${file}.json`);
@@ -24,4 +25,5 @@ for (const [file, expected, removed] of [
   }
   if (file === "ranger-horse-lord") assert.deepEqual(applied.rangerCombatStyleIds, ["ranger-combat-style-mounted"]);
   if (file === "ranger-shapeshifter") assert.deepEqual(applied.rangerCombatStyleIds, ["ranger-combat-style-natural-weapon"]);
+  if (file === "ranger-skirmisher") assert.equal(applied.spellcasting, undefined);
 });
