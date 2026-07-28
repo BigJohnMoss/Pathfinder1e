@@ -103,6 +103,14 @@ export interface SelectableOption {
   featId?: string;
   repeatable?: boolean;
   selectionLimit?: number;
+  familyId?: string;
+  exclusiveGroupId?: string;
+  choice?: {
+    key: string;
+    label: string;
+    options: Array<{ id: string; name: string }>;
+    uniqueAcrossSelections?: boolean;
+  };
 }
 
 export interface CharacterAncestry {
