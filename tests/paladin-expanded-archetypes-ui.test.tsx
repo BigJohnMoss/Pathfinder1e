@@ -27,7 +27,8 @@ for (const [archetypeId, name, expected, removed] of [
   ["paladin-hospitaler","Hospitaler",["Hospitaler Channel Energy","Aura of Healing"],["Channel Positive Energy","Aura of Justice"]],
   ["paladin-shining-knight","Shining Knight",["Skilled Rider","Bonded Mount","Knight's Charge"],["Divine Health","Divine Bond","Aura of Justice"]],
   ["paladin-undead-scourge","Undead Scourge",["Aura of Life","Undead Annihilation"],["Aura of Resolve","Aura of Justice"]],
-  ["paladin-warrior-holy-light","Warrior of the Holy Light",["Power of Faith","Power of Faith (Restoration)","Power of Faith (Daylight)","Power of Faith (Fortification)","Power of Faith (Perfect Nimbus)","Shining Light"],["Divine Spellcasting","Aura of Faith"]]
+  ["paladin-warrior-holy-light","Warrior of the Holy Light",["Power of Faith","Power of Faith (Restoration)","Power of Faith (Daylight)","Power of Faith (Fortification)","Power of Faith (Perfect Nimbus)","Shining Light"],["Divine Spellcasting","Aura of Faith"]],
+  ["paladin-sacred-servant","Sacred Servant",["Sacred Deity","Sacred Servant Smite Evil","Sacred Domain","1st-level Domain Spell Slot","4th-level Domain Spell Slot","Holy Symbol Bond","Call Celestial Ally","Call Celestial Ally (Planar Ally)","Call Celestial Ally (Greater)"],["Smite Evil","Divine Spellcasting","Divine Bond","Aura of Resolve"]]
 ] as const) test(`${name} is selectable with its level-20 progression`, async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -45,4 +46,31 @@ test("Warrior of the Holy Light has no spellbook", async () => {
   await user.selectOptions(screen.getByLabelText("Class"), "paladin");
   await user.selectOptions(screen.getByLabelText("Archetype"), "paladin-warrior-holy-light");
   assert.equal(screen.queryByRole("tab", { name: "Spells" }), null);
+});
+
+test("Sacred Servant restricts deities and domains and prepares its domain slots", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "paladin");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "paladin-sacred-servant");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const deity = screen.getAllByText("Sacred Deity").at(-1)!.closest("label")?.querySelector("select");
+  const domain = screen.getAllByText("Sacred Domain").at(-1)!.closest("label")?.querySelector("select");
+  const firstSlot = screen.getAllByText("1st-level Domain Spell Slot").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity);
+  assert.ok(domain);
+  assert.ok(firstSlot);
+  assert.equal([...deity.options].some((option) => option.value === "deity-iomedae"), true);
+  assert.equal([...deity.options].some((option) => option.value === "deity-desna"), false);
+  assert.equal(domain.disabled, true);
+
+  await user.selectOptions(deity, "deity-iomedae");
+  assert.equal(domain.disabled, false);
+  assert.equal([...domain.options].some((option) => option.value === "domain-glory"), true);
+  assert.equal([...domain.options].some((option) => option.value === "domain-fire"), false);
+  await user.selectOptions(domain, "domain-glory");
+  assert.equal(firstSlot.disabled, false);
+  assert.equal([...firstSlot.options].some((option) => option.text.includes("shield of faith")), true);
 });

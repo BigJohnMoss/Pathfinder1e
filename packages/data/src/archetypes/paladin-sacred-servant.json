@@ -1,0 +1,29 @@
+{
+  "id":"paladin-sacred-servant",
+  "name":"Sacred Servant",
+  "classId":"paladin",
+  "summary":"A deity's devoted champion who gains a domain, dedicated domain spell slots, a holy-symbol bond, and celestial allies.",
+  "replacements":[
+    {"progressionKeys":["paladin-smite-evil"],"features":[
+      {"id":"sacred-servant-deity-1","name":"Sacred Deity","level":1,"type":"selectable","summary":"Choose one lawful good, lawful neutral, or neutral good deity to worship.","choiceRequired":true,"optionGroupId":"cleric-deities"},
+      {"id":"sacred-servant-smite-evil-1","name":"Sacred Servant Smite Evil","level":1,"type":"scaling","summary":"Smite evil as a Paladin, with additional daily uses at 7th level and every 6 levels thereafter.","progressionKey":"sacred-servant-smite-evil","scaling":"1/day; +1 use at 7th, 13th, and 19th"}
+    ]},
+    {"featureIds":["paladin-spellcasting-4"],"features":[
+      {"id":"sacred-servant-spellcasting-4","name":"Sacred Servant Spellcasting","level":4,"type":"spellcasting","summary":"Cast Paladin spells normally and gain one dedicated domain spell slot for each Paladin spell level you can cast.","scaling":"1st through 4th-level Paladin spells plus domain slots"},
+      {"id":"sacred-servant-domain-4","name":"Sacred Domain","level":4,"type":"selectable","summary":"Choose one domain associated with your deity; its effective Cleric level equals Paladin level –3.","choiceRequired":true,"optionGroupId":"cleric-domains"},
+      {"id":"sacred-servant-domain-spell-1","name":"1st-level Domain Spell Slot","level":4,"type":"selectable","summary":"Prepare the 1st-level spell from your selected domain in this dedicated slot.","choiceRequired":true,"optionGroupId":"cleric-domains","progressionKey":"sacred-servant-domain-spell-slots","uses":"1 slot per day"},
+      {"id":"sacred-servant-domain-spell-2","name":"2nd-level Domain Spell Slot","level":7,"type":"selectable","summary":"Prepare the 2nd-level spell from your selected domain in this dedicated slot.","choiceRequired":true,"optionGroupId":"cleric-domains","progressionKey":"sacred-servant-domain-spell-slots","uses":"1 slot per day"},
+      {"id":"sacred-servant-domain-spell-3","name":"3rd-level Domain Spell Slot","level":10,"type":"selectable","summary":"Prepare the 3rd-level spell from your selected domain in this dedicated slot.","choiceRequired":true,"optionGroupId":"cleric-domains","progressionKey":"sacred-servant-domain-spell-slots","uses":"1 slot per day"},
+      {"id":"sacred-servant-domain-spell-4","name":"4th-level Domain Spell Slot","level":13,"type":"selectable","summary":"Prepare the 4th-level spell from your selected domain in this dedicated slot.","choiceRequired":true,"optionGroupId":"cleric-domains","progressionKey":"sacred-servant-domain-spell-slots","uses":"1 slot per day"}
+    ]},
+    {"featureIds":["paladin-divine-bond-5"],"features":[
+      {"id":"sacred-servant-holy-symbol-bond-5","name":"Holy Symbol Bond","level":5,"type":"scaling","summary":"Bind a celestial spirit to your holy symbol to improve Paladin caster level, channel energy, channel damage, or lay on hands.","scaling":"one enhancement at 5th level and one more every 3 levels","uses":"1/day plus one use every 4 levels after 5th"}
+    ]},
+    {"featureIds":["paladin-aura-of-resolve-8"],"features":[
+      {"id":"sacred-servant-call-celestial-ally-8","name":"Call Celestial Ally","level":8,"type":"scaling","summary":"Cast lesser planar ally without payment for a reasonable task.","scaling":"planar ally at 12th; greater planar ally at 16th","uses":"once per week"},
+      {"id":"sacred-servant-call-celestial-ally-12","name":"Call Celestial Ally (Planar Ally)","level":12,"type":"scaling","summary":"Your weekly celestial ally improves to planar ally.","uses":"once per week"},
+      {"id":"sacred-servant-call-celestial-ally-16","name":"Call Celestial Ally (Greater)","level":16,"type":"scaling","summary":"Your weekly celestial ally improves to greater planar ally.","uses":"once per week"}
+    ]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"}
+}
