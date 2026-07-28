@@ -74,7 +74,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
 - archetypes — in progress: reusable replacement schema plus complete APG Fighter
-  Archer, Crossbowman, Two-Handed Fighter, and Two-Weapon Warrior paths
+  Archer, Crossbowman, Free Hand Fighter, Mobile Fighter, Polearm Master,
+  Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master paths
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
