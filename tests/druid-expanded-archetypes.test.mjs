@@ -34,3 +34,17 @@ for (const [file, expected, removed] of [
   assert.deepEqual(features.filter((feature) => feature.progressionKey === "druid-wild-shape").map((feature) => feature.level), [6,8,10,12,14,16,18,20]);
   assert.equal(druidWildShapeUses(18), 8);
 });
+
+for (const [file, expected, removed] of [
+  ["druid-mountain", ["mountain-druid-mountaineer-2", "mountain-druid-sure-footed-3", "mountain-druid-spire-walker-4", "mountain-druid-stance-9", "mountain-druid-stone-13"], ["druid-woodland-stride-2", "druid-trackless-step-3", "druid-resist-natures-lure-4", "druid-venom-immunity-9", "druid-thousand-faces-13"]],
+  ["druid-plains", ["plains-druid-traveler-2", "plains-druid-run-like-wind-3", "plains-druid-savanna-ambush-4", "plains-druid-canny-charger-9", "plains-druid-evasion-13"], ["druid-woodland-stride-2", "druid-trackless-step-3", "druid-resist-natures-lure-4", "druid-venom-immunity-9", "druid-thousand-faces-13"]],
+  ["druid-swamp", ["swamp-druid-marshwight-2", "swamp-druid-strider-3", "swamp-druid-pond-scum-4", "swamp-druid-slippery-13"], ["druid-woodland-stride-2", "druid-trackless-step-3", "druid-resist-natures-lure-4", "druid-thousand-faces-13"]]
+]) test(`${file} exposes its complete terrain progression through level 20`, async () => {
+  const druid = await load("../packages/data/src/classes/druid.json");
+  const archetype = await load(`../packages/data/src/archetypes/${file}.json`);
+  const features = featuresThroughLevel(applyArchetype(druid, archetype), 20);
+  const ids = features.map((feature) => feature.id);
+  for (const id of expected) assert.ok(ids.includes(id));
+  for (const id of removed) assert.ok(!ids.includes(id));
+  assert.deepEqual(features.filter((feature) => feature.progressionKey === "druid-wild-shape").map((feature) => feature.level), [6,8,10,12,14,16,18,20]);
+});

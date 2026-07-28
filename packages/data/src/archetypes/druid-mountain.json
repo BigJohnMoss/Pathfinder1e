@@ -1,0 +1,21 @@
+{
+  "id":"druid-mountain",
+  "name":"Mountain Druid",
+  "classId":"druid",
+  "summary":"A highland guardian who masters cliffs, altitude, immovability, giant forms, and living stone.",
+  "wildShapeLevelAdjustment":-2,
+  "featureOverrides":[
+    {"featureId":"druid-wild-shape-8","summary":"Unlock Huge or Diminutive animals and Medium elementals; plant forms are unavailable."},
+    {"featureId":"druid-wild-shape-10","summary":"Assume the form of a Large giant as giant form I; plant forms are unavailable."},
+    {"featureId":"druid-wild-shape-12","summary":"Gain another daily use and Huge elemental forms; plant forms are unavailable."},
+    {"featureId":"druid-wild-shape-14","summary":"Assume the form of a Huge giant as giant form II and gain another daily use."}
+  ],
+  "replacements":[
+    {"featureIds":["druid-woodland-stride-2"],"features":[{"id":"mountain-druid-mountaineer-2","name":"Mountaineer","level":2,"type":"scaling","summary":"In mountain terrain, add half Druid level to initiative, Climb, and key exploration skills and leave no trail.","scaling":"half Druid level"}]},
+    {"featureIds":["druid-trackless-step-3"],"features":[{"id":"mountain-druid-sure-footed-3","name":"Sure-Footed","level":3,"type":"core","summary":"Ignore movement, Acrobatics, and Stealth penalties from steep slopes, rubble, and scree."}]},
+    {"featureIds":["druid-resist-natures-lure-4"],"features":[{"id":"mountain-druid-spire-walker-4","name":"Spire Walker","level":4,"type":"core","summary":"Retain Dexterity while climbing, ignore altitude sickness, and ignore cold-climate effects."}]},
+    {"featureIds":["druid-venom-immunity-9"],"features":[{"id":"mountain-druid-stance-9","name":"Mountain Stance","level":9,"type":"core","summary":"Become immune to petrification and gain +4 against effects that physically move you."}]},
+    {"featureIds":["druid-thousand-faces-13"],"features":[{"id":"mountain-druid-stone-13","name":"Mountain Stone","level":13,"type":"core","summary":"Transform into a weathered stone outcrop and back at will as statue."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+}
