@@ -28,6 +28,26 @@
     {"id":"oracle-revelation-soul-siphon","mysteryId":"oracle-mystery-bones","name":"Soul Siphon","minimumLevel":7,"benefit":"Bestow a temporary negative level with a ray and heal yourself."},
     {"id":"oracle-revelation-spirit-walk","mysteryId":"oracle-mystery-bones","name":"Spirit Walk","minimumLevel":11,"benefit":"Become incorporeal and invisible while moving through obstacles."},
     {"id":"oracle-revelation-undead-servitude","mysteryId":"oracle-mystery-bones","name":"Undead Servitude","minimumLevel":1,"benefit":"Gain Command Undead and channel negative energy solely to command undead."},
-    {"id":"oracle-revelation-voice-of-the-grave","mysteryId":"oracle-mystery-bones","name":"Voice of the Grave","minimumLevel":1,"benefit":"Speak with dead for scaling rounds each day and weaken resistance as you advance."}
+    {"id":"oracle-revelation-voice-of-the-grave","mysteryId":"oracle-mystery-bones","name":"Voice of the Grave","minimumLevel":1,"benefit":"Speak with dead for scaling rounds each day and weaken resistance as you advance."},
+    {"id":"oracle-revelation-burning-magic","mysteryId":"oracle-mystery-flame","name":"Burning Magic","minimumLevel":1,"benefit":"Your fire spells ignite damaged creatures for additional ongoing fire damage."},
+    {"id":"oracle-revelation-cinder-dance","mysteryId":"oracle-mystery-flame","name":"Cinder Dance","minimumLevel":1,"incompatibleOptionIds":["oracle-curse-lame"],"benefit":"Increase your base speed and eventually move through difficult terrain without slowing."},
+    {"id":"oracle-revelation-fire-breath","mysteryId":"oracle-mystery-flame","name":"Fire Breath","minimumLevel":1,"benefit":"Breathe a scaling cone of fire a limited number of times per day."},
+    {"id":"oracle-revelation-firestorm","mysteryId":"oracle-mystery-flame","name":"Firestorm","minimumLevel":11,"benefit":"Fill chosen areas with a powerful storm of fire once per day."},
+    {"id":"oracle-revelation-form-of-flame","mysteryId":"oracle-mystery-flame","name":"Form of Flame","minimumLevel":7,"benefit":"Transform into an increasingly powerful fire elemental."},
+    {"id":"oracle-revelation-gaze-of-flames","mysteryId":"oracle-mystery-flame","name":"Gaze of Flames","minimumLevel":1,"benefit":"See through fire, fog, and smoke, eventually using fire as a remote viewpoint."},
+    {"id":"oracle-revelation-heat-aura","mysteryId":"oracle-mystery-flame","name":"Heat Aura","minimumLevel":1,"benefit":"Radiate heat that damages nearby creatures and can make their weapons searing hot."},
+    {"id":"oracle-revelation-molten-skin","mysteryId":"oracle-mystery-flame","name":"Molten Skin","minimumLevel":1,"benefit":"Gain increasing fire resistance and eventually fire immunity."},
+    {"id":"oracle-revelation-touch-of-flame","mysteryId":"oracle-mystery-flame","name":"Touch of Flame","minimumLevel":1,"benefit":"Make limited-use fiery touch attacks and cause your weapons to burn."},
+    {"id":"oracle-revelation-wings-of-fire","mysteryId":"oracle-mystery-flame","name":"Wings of Fire","minimumLevel":7,"benefit":"Manifest fiery wings and fly for a limited duration each day."},
+    {"id":"oracle-revelation-awesome-display","mysteryId":"oracle-mystery-heavens","name":"Awesome Display","minimumLevel":1,"benefit":"Your pattern spells affect creatures as though their Hit Dice were lower."},
+    {"id":"oracle-revelation-coat-of-many-stars","mysteryId":"oracle-mystery-heavens","name":"Coat of Many Stars","minimumLevel":1,"benefit":"Conjure scaling armor of starlight that eventually grants damage reduction."},
+    {"id":"oracle-revelation-dweller-in-darkness","mysteryId":"oracle-mystery-heavens","name":"Dweller in Darkness","minimumLevel":11,"benefit":"Summon a terrifying alien presence to assault a foe's mind."},
+    {"id":"oracle-revelation-guiding-star","mysteryId":"oracle-mystery-heavens","name":"Guiding Star","minimumLevel":1,"benefit":"Gain celestial guidance to knowledge, perception, survival, and spellcasting."},
+    {"id":"oracle-revelation-interstellar-void","mysteryId":"oracle-mystery-heavens","name":"Interstellar Void","minimumLevel":1,"benefit":"Expose a creature to the freezing darkness between the stars."},
+    {"id":"oracle-revelation-lure-of-the-heavens","mysteryId":"oracle-mystery-heavens","name":"Lure of the Heavens","minimumLevel":1,"benefit":"Ignore traces of your passage, hover, and eventually fly."},
+    {"id":"oracle-revelation-mantle-of-moonlight","mysteryId":"oracle-mystery-heavens","name":"Mantle of Moonlight","minimumLevel":1,"benefit":"Enrage a touched creature and gain protection against lycanthropes."},
+    {"id":"oracle-revelation-moonlight-bridge","mysteryId":"oracle-mystery-heavens","name":"Moonlight Bridge","minimumLevel":1,"benefit":"Create a bridge of moonlight whose dimensions scale with level."},
+    {"id":"oracle-revelation-spray-of-shooting-stars","mysteryId":"oracle-mystery-heavens","name":"Spray of Shooting Stars","minimumLevel":1,"benefit":"Fire bursts of starry energy at nearby creatures."},
+    {"id":"oracle-revelation-star-chart","mysteryId":"oracle-mystery-heavens","name":"Star Chart","minimumLevel":7,"benefit":"Consult a celestial chart to gain the benefits of commune."}
   ]
 }

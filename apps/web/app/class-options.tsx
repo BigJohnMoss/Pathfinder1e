@@ -122,11 +122,16 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
       return choice.options.filter((option) => !selectedByOtherMercy.includes(option.id));
     }
     if (isOracleRevelation(choice)) {
+      const selectedOptionIds = Object.values(selectedOptions);
       const selectedByOtherRevelation = orderedChoices
         .filter((other) => other.id !== choice.id && isOracleRevelation(other))
         .map((other) => selectedOptions[other.id])
         .filter((id): id is string => Boolean(id));
-      return choice.options.filter((option) => option.mysteryId === selectedOracleMystery?.id && !selectedByOtherRevelation.includes(option.id));
+      return choice.options.filter((option) =>
+        option.mysteryId === selectedOracleMystery?.id
+        && !selectedByOtherRevelation.includes(option.id)
+        && !option.incompatibleOptionIds?.some((id) => selectedOptionIds.includes(id))
+      );
     }
     const specialistLevel = specialistSpellLevel(choice);
     if (specialistLevel) return specialistOptions(specialistLevel);
