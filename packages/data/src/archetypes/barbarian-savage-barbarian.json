@@ -1,0 +1,41 @@
+{
+  "id": "barbarian-savage-barbarian",
+  "name": "Savage Barbarian",
+  "classId": "barbarian",
+  "summary": "An unarmored barbarian who avoids blows through instinct and develops naturally hardened skin.",
+  "replacements": [
+    {
+      "progressionKeys": ["trap-sense"],
+      "features": [
+        {
+          "id": "savage-barbarian-naked-courage-3",
+          "name": "Naked Courage",
+          "level": 3,
+          "type": "scaling",
+          "summary": "While unarmored, gain a dodge bonus to AC and a morale bonus against fear; shields remain permitted.",
+          "progressionKey": "savage-barbarian-naked-courage",
+          "scaling": "+1 at 3rd, +1 every 6 levels"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["damage-reduction"],
+      "features": [
+        {
+          "id": "savage-barbarian-natural-toughness-7",
+          "name": "Natural Toughness",
+          "level": 7,
+          "type": "scaling",
+          "summary": "While unarmored, gain a natural armor bonus to AC; shields remain permitted.",
+          "progressionKey": "savage-barbarian-natural-toughness",
+          "scaling": "+1 at 7th, +1 every 3 levels"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  }
+}
