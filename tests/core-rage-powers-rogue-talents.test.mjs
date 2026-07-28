@@ -18,7 +18,8 @@ test("the complete Core rage-power catalogue is available at the correct level g
 });
 
 test("the complete Core rogue-talent catalogue separates basic and advanced talents", () => {
-  assert.equal(rogueTalents.options.length, 23);
+  const coreTalents = rogueTalents.options.filter((option) => option.source.title === "Core Rulebook");
+  assert.equal(coreTalents.length, 23);
   assert.equal(availableOptions(rogueTalents, "rogue", 9, [], { abilities: { intelligence: 12 }, featureIds: [] }).some((option) => option.id === "crippling-strike"), false);
   assert.equal(availableOptions(rogueTalents, "rogue", 10, [], { abilities: { intelligence: 12 }, featureIds: [] }).some((option) => option.id === "crippling-strike"), true);
   assert.equal(availableOptions(rogueTalents, "rogue", 2, [], { abilities: { intelligence: 10 }, featureIds: [] }).some((option) => option.id === "major-magic"), false);
@@ -26,3 +27,14 @@ test("the complete Core rogue-talent catalogue separates basic and advanced tale
   assert.equal(rogueTalents.options.find((option) => option.id === "feat").repeatable, true);
   assert.equal(rogueTalents.options.find((option) => option.id === "skill-mastery").repeatable, true);
 });
+
+test("all APG rogue talents are integrated with advanced gates and prerequisites", () => {
+  const apgTalents = rogueTalents.options.filter((option) => option.source.title === "Advanced Player's Guide");
+  assert.equal(apgTalents.length, 42);
+  assert.equal(availableOptions(rogueTalents, "rogue", 9).some((option) => option.id === "another-day"), false);
+  assert.equal(availableOptions(rogueTalents, "rogue", 10).some((option) => option.id === "another-day"), true);
+  assert.equal(availableOptions(rogueTalents, "rogue", 10, [], { featureIds: [] }).some((option) => option.id === "deadly-sneak"), false);
+  assert.equal(availableOptions(rogueTalents, "rogue", 10, ["powerful-sneak"], { featureIds: ["powerful-sneak"] }).some((option) => option.id === "deadly-sneak"), true);
+  assert.deepEqual(rogueTalents.options.find((option) => option.id === "survivalist").classSkills, ["Heal", "Survival"]);
+});
+
