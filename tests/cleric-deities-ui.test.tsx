@@ -250,6 +250,36 @@ test("Glory and Knowledge subdomains inherit deity access and exclude their pare
   assert.equal((secondDomain.querySelector("option[value='subdomain-memory']") as HTMLOptionElement).disabled, true);
 });
 
+test("Law, Liberation, and Luck subdomains inherit deity access and exclude their parent", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity); assert.ok(firstDomain); assert.ok(secondDomain);
+
+  await user.selectOptions(deity, "deity-iomedae");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-inevitable"), true);
+  await user.selectOptions(firstDomain, "subdomain-inevitable");
+  assert.ok(screen.getByText("Command"));
+  assert.ok(screen.getByText("planar binding (inevitables only)"));
+  assert.equal((secondDomain.querySelector("option[value='domain-law']") as HTMLOptionElement).disabled, true);
+
+  await user.selectOptions(deity, "deity-desna");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-freedom"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-revolution"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-curse"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-fate"), true);
+  await user.selectOptions(firstDomain, "subdomain-revolution");
+  assert.ok(screen.getByText("Powerful Persuader"));
+  assert.ok(screen.getByText("symbol of persuasion"));
+  await user.selectOptions(secondDomain, "subdomain-fate");
+  assert.ok(screen.getByText("Tugging Strands"));
+  assert.ok(screen.getByText("borrow fortune"));
+});
+
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   const user = userEvent.setup();
   render(<Home />);
