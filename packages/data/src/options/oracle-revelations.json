@@ -48,6 +48,26 @@
     {"id":"oracle-revelation-mantle-of-moonlight","mysteryId":"oracle-mystery-heavens","name":"Mantle of Moonlight","minimumLevel":1,"benefit":"Enrage a touched creature and gain protection against lycanthropes."},
     {"id":"oracle-revelation-moonlight-bridge","mysteryId":"oracle-mystery-heavens","name":"Moonlight Bridge","minimumLevel":1,"benefit":"Create a bridge of moonlight whose dimensions scale with level."},
     {"id":"oracle-revelation-spray-of-shooting-stars","mysteryId":"oracle-mystery-heavens","name":"Spray of Shooting Stars","minimumLevel":1,"benefit":"Fire bursts of starry energy at nearby creatures."},
-    {"id":"oracle-revelation-star-chart","mysteryId":"oracle-mystery-heavens","name":"Star Chart","minimumLevel":7,"benefit":"Consult a celestial chart to gain the benefits of commune."}
+    {"id":"oracle-revelation-star-chart","mysteryId":"oracle-mystery-heavens","name":"Star Chart","minimumLevel":7,"benefit":"Consult a celestial chart to gain the benefits of commune."},
+    {"id":"oracle-revelation-channel-life","mysteryId":"oracle-mystery-life","name":"Channel","minimumLevel":1,"benefit":"Channel positive energy as a cleric using oracle level, 1 + Charisma modifier times per day."},
+    {"id":"oracle-revelation-combat-healer-life","mysteryId":"oracle-mystery-life","name":"Combat Healer","minimumLevel":7,"benefit":"Spend two spell slots to cast a cure spell as a swift action."},
+    {"id":"oracle-revelation-delay-affliction","mysteryId":"oracle-mystery-life","name":"Delay Affliction","minimumLevel":1,"benefit":"Temporarily suppress the effects of a failed disease or poison save."},
+    {"id":"oracle-revelation-energy-body","mysteryId":"oracle-mystery-life","name":"Energy Body","minimumLevel":1,"benefit":"Become living positive energy that harms undead and heals allies."},
+    {"id":"oracle-revelation-enhanced-cures","mysteryId":"oracle-mystery-life","name":"Enhanced Cures","minimumLevel":1,"benefit":"Use oracle level instead of a cure spell's normal caster-level healing cap."},
+    {"id":"oracle-revelation-healing-hands","mysteryId":"oracle-mystery-life","name":"Healing Hands","minimumLevel":1,"benefit":"Gain +4 Heal and treat twice as many patients, including yourself."},
+    {"id":"oracle-revelation-life-link","mysteryId":"oracle-mystery-life","name":"Life Link","minimumLevel":1,"benefit":"Bond allies so you take damage to restore their hit points each round."},
+    {"id":"oracle-revelation-lifesense","mysteryId":"oracle-mystery-life","name":"Lifesense","minimumLevel":11,"benefit":"Locate living creatures within 30 feet as blindsight."},
+    {"id":"oracle-revelation-safe-curing","mysteryId":"oracle-mystery-life","name":"Safe Curing","minimumLevel":1,"benefit":"Do not provoke attacks of opportunity when casting hit-point healing spells."},
+    {"id":"oracle-revelation-spirit-boost","mysteryId":"oracle-mystery-life","name":"Spirit Boost","minimumLevel":1,"benefit":"Convert excess healing into temporary hit points for a limited duration."},
+    {"id":"oracle-revelation-arcane-archivist","mysteryId":"oracle-mystery-lore","name":"Arcane Archivist","minimumLevel":11,"benefit":"Cast one spell per day from a spellbook by spending a slot one level higher."},
+    {"id":"oracle-revelation-automatic-writing","mysteryId":"oracle-mystery-lore","name":"Automatic Writing","minimumLevel":1,"benefit":"Meditate for prophetic writing that improves from augury to divination and commune."},
+    {"id":"oracle-revelation-brain-drain","mysteryId":"oracle-mystery-lore","name":"Brain Drain","minimumLevel":1,"benefit":"Damage a creature's mind and briefly use one of its Knowledge bonuses."},
+    {"id":"oracle-revelation-focused-trance","mysteryId":"oracle-mystery-lore","name":"Focused Trance","minimumLevel":1,"benefit":"Enter a trance to gain strong defenses and a +20 Intelligence-based skill bonus."},
+    {"id":"oracle-revelation-lore-keeper","mysteryId":"oracle-mystery-lore","name":"Lore Keeper","minimumLevel":1,"benefit":"Use Charisma instead of Intelligence for all Knowledge checks."},
+    {"id":"oracle-revelation-mental-acuity","mysteryId":"oracle-mystery-lore","name":"Mental Acuity","minimumLevel":7,"benefit":"Gain a scaling inherent bonus to Intelligence."},
+    {"id":"oracle-revelation-sidestep-secret","mysteryId":"oracle-mystery-lore","name":"Sidestep Secret","minimumLevel":1,"benefit":"Use Charisma instead of Dexterity for Armor Class and Reflex saves."},
+    {"id":"oracle-revelation-spontaneous-symbology","mysteryId":"oracle-mystery-lore","name":"Spontaneous Symbology","minimumLevel":11,"benefit":"Cast any symbol spell with an appropriate slot even when it is not known."},
+    {"id":"oracle-revelation-think-on-it","mysteryId":"oracle-mystery-lore","name":"Think On It","minimumLevel":1,"benefit":"Retry one failed Knowledge check per day with a +10 competence bonus."},
+    {"id":"oracle-revelation-whirlwind-lesson","mysteryId":"oracle-mystery-lore","name":"Whirlwind Lesson","minimumLevel":1,"benefit":"Study magical tomes quickly and eventually share their benefits with allies."}
   ]
 }

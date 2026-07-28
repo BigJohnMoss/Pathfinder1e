@@ -1,0 +1,49 @@
+{
+  "source":{"title":"Advanced Player's Guide","page":48,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#mysteries"},
+  "mysteries":[
+    {
+      "id":"oracle-mystery-life",
+      "classSkills":["Handle Animal","Knowledge (nature)","Survival"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"detect undead"},{"oracleLevel":4,"spellLevel":2,"name":"lesser restoration"},{"oracleLevel":6,"spellLevel":3,"name":"neutralize poison"},
+        {"oracleLevel":8,"spellLevel":4,"name":"restoration"},{"oracleLevel":10,"spellLevel":5,"name":"breath of life"},{"oracleLevel":12,"spellLevel":6,"name":"heal"},
+        {"oracleLevel":14,"spellLevel":7,"name":"greater restoration"},{"oracleLevel":16,"spellLevel":8,"name":"mass heal"},{"oracleLevel":18,"spellLevel":9,"name":"true resurrection"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-channel-life","name":"Channel","minimumLevel":1,"summary":"Channel positive energy using oracle level."},
+        {"id":"oracle-revelation-combat-healer-life","name":"Combat Healer","minimumLevel":7,"summary":"Cast cure spells swiftly by spending two slots."},
+        {"id":"oracle-revelation-delay-affliction","name":"Delay Affliction","minimumLevel":1,"summary":"Suppress disease or poison effects temporarily."},
+        {"id":"oracle-revelation-energy-body","name":"Energy Body","minimumLevel":1,"summary":"Become positive energy that harms undead and heals allies."},
+        {"id":"oracle-revelation-enhanced-cures","name":"Enhanced Cures","minimumLevel":1,"summary":"Remove normal caster-level caps from cure spells."},
+        {"id":"oracle-revelation-healing-hands","name":"Healing Hands","minimumLevel":1,"summary":"Improve Heal and treat more patients."},
+        {"id":"oracle-revelation-life-link","name":"Life Link","minimumLevel":1,"summary":"Transfer your vitality to wounded bonded allies."},
+        {"id":"oracle-revelation-lifesense","name":"Lifesense","minimumLevel":11,"summary":"Sense living creatures within 30 feet."},
+        {"id":"oracle-revelation-safe-curing","name":"Safe Curing","minimumLevel":1,"summary":"Cast healing spells without provoking."},
+        {"id":"oracle-revelation-spirit-boost","name":"Spirit Boost","minimumLevel":1,"summary":"Turn excess healing into temporary hit points."}
+      ],
+      "finalRevelation":"Become a perfect channel for life: gain broad immunities to bodily afflictions and negative levels, protect ability scores from falling below 1, automatically survive massive damage, and endure deeper into negative hit points."
+    },
+    {
+      "id":"oracle-mystery-lore",
+      "classSkills":["Appraise","Knowledge (arcana)","Knowledge (dungeoneering)","Knowledge (engineering)","Knowledge (geography)","Knowledge (history)","Knowledge (local)","Knowledge (nature)","Knowledge (nobility)","Knowledge (planes)","Knowledge (religion)"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"identify"},{"oracleLevel":4,"spellLevel":2,"name":"tongues"},{"oracleLevel":6,"spellLevel":3,"name":"locate object"},
+        {"oracleLevel":8,"spellLevel":4,"name":"legend lore"},{"oracleLevel":10,"spellLevel":5,"name":"contact other plane"},{"oracleLevel":12,"spellLevel":6,"name":"mass owl's wisdom"},
+        {"oracleLevel":14,"spellLevel":7,"name":"vision"},{"oracleLevel":16,"spellLevel":8,"name":"moment of prescience"},{"oracleLevel":18,"spellLevel":9,"name":"time stop"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-arcane-archivist","name":"Arcane Archivist","minimumLevel":11,"summary":"Cast an arcane spell from a spellbook."},
+        {"id":"oracle-revelation-automatic-writing","name":"Automatic Writing","minimumLevel":1,"summary":"Produce increasingly powerful prophetic writing."},
+        {"id":"oracle-revelation-brain-drain","name":"Brain Drain","minimumLevel":1,"summary":"Steal knowledge from a damaged mind."},
+        {"id":"oracle-revelation-focused-trance","name":"Focused Trance","minimumLevel":1,"summary":"Meditate for exceptional insight and defenses."},
+        {"id":"oracle-revelation-lore-keeper","name":"Lore Keeper","minimumLevel":1,"summary":"Use Charisma for Knowledge checks."},
+        {"id":"oracle-revelation-mental-acuity","name":"Mental Acuity","minimumLevel":7,"summary":"Gain scaling inherent Intelligence."},
+        {"id":"oracle-revelation-sidestep-secret","name":"Sidestep Secret","minimumLevel":1,"summary":"Use Charisma for Armor Class and Reflex saves."},
+        {"id":"oracle-revelation-spontaneous-symbology","name":"Spontaneous Symbology","minimumLevel":11,"summary":"Cast symbol spells without knowing them."},
+        {"id":"oracle-revelation-think-on-it","name":"Think On It","minimumLevel":1,"summary":"Retry a failed Knowledge check with a strong bonus."},
+        {"id":"oracle-revelation-whirlwind-lesson","name":"Whirlwind Lesson","minimumLevel":1,"summary":"Study magical tomes rapidly and share their lessons."}
+      ],
+      "finalRevelation":"Take 20 on every Knowledge check and cast wish once per day without a material component, though the wish cannot grant ability bonuses or reproduce spells with expensive components."
+    }
+  ]
+}
