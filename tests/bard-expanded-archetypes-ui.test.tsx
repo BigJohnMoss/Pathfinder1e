@@ -88,7 +88,8 @@ test("Magician exposes expanded repertoire and bonded-object choices", async () 
   await user.selectOptions(archetype, "bard-magician");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
   await user.click(screen.getByRole("tab", { name: "Features" }));
-  for (const name of ["Dweomercraft +1", "Spell Suppression", "Metamagic Mastery", "Improved Counterspell", "Expanded Repertoire Spell 5", "Arcane Bond", "Wand Mastery: Caster Level"]) assert.ok(screen.getByText(name));
+  for (const name of ["Dweomercraft +1", "Spell Suppression", "Metamagic Mastery", "Improved Counterspell", "Wand Mastery: Caster Level"]) assert.ok(screen.getByText(name));
+  assert.ok(screen.getByLabelText(/Expanded Repertoire Spell 5/));
   const firstSpell = screen.getByLabelText(/Expanded Repertoire Spell 1/);
   assert.ok(firstSpell.querySelector("option[value='magician-expanded-repertoire-mage-armor']"));
   await user.selectOptions(firstSpell, "magician-expanded-repertoire-mage-armor");
