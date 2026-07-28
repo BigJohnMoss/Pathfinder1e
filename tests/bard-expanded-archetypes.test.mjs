@@ -77,6 +77,42 @@ test("Magician replaces its spell-focused progressions and exposes legal arcane 
   assert.ok(group.options.every((option) => option.spellLevel <= 6));
 });
 
+test("Sandman replaces every stealth and spell-theft progression through level 20", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-sandman.json");
+  const ids = featuresThroughLevel(applyArchetype(bard, archetype), 20).map((feature) => feature.id);
+  for (const added of ["sandman-stealspell-1", "sandman-slumber-song-6", "sandman-dramatic-subtext-9", "sandman-greater-stealspell-15", "sandman-mass-slumber-song-18", "sandman-spell-catching-20", "sandman-master-of-deception-1", "sandman-sneakspell-2", "sandman-trap-sense-3", "sandman-sneak-attack-5"]) assert.ok(ids.includes(added));
+  for (const removed of ["bardic-knowledge-1", "bard-inspire-courage-17", "bard-suggestion-6", "bard-inspire-greatness-9", "bard-inspire-heroics-15", "bard-mass-suggestion-18", "bard-deadly-performance-20", "bard-versatile-performance-18", "bard-inspire-competence-19", "bard-lore-master-17"]) assert.ok(!ids.includes(removed));
+});
+
+test("Savage Skald replaces its complete war-song progression through level 20", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-savage-skald.json");
+  const ids = featuresThroughLevel(applyArchetype(bard, archetype), 20).map((feature) => feature.id);
+  for (const added of ["savage-skald-inspiring-blow-1", "savage-skald-incite-rage-6", "savage-skald-song-of-the-fallen-10", "savage-skald-berserkergang-12", "savage-skald-battle-song-18"]) assert.ok(ids.includes(added));
+  for (const removed of ["bard-fascinate-1", "bard-suggestion-6", "bard-jack-of-all-trades-19", "bard-soothing-performance-12", "bard-mass-suggestion-18"]) assert.ok(!ids.includes(removed));
+  assert.ok(ids.includes("bard-deadly-performance-20"));
+});
+
+test("Sea Singer replaces every maritime progression and limits its familiar choice", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-sea-singer.json");
+  const ids = featuresThroughLevel(applyArchetype(bard, archetype), 20).map((feature) => feature.id);
+  for (const added of ["sea-singer-sea-shanty-1", "sea-singer-still-water-3", "sea-singer-whistle-the-wind-6", "sea-singer-call-the-storm-18", "sea-singer-world-traveler-1", "sea-singer-familiar-2", "sea-singer-sea-legs-2"]) assert.ok(ids.includes(added));
+  for (const removed of ["bard-countersong-1", "bard-inspire-competence-19", "bard-suggestion-6", "bard-mass-suggestion-18", "bardic-knowledge-1", "bard-versatile-performance-18", "bard-well-versed-2"]) assert.ok(!ids.includes(removed));
+  const group = await load("../packages/data/src/options/sea-singer-familiars.json");
+  assert.deepEqual(group.options.map((option) => option.name), ["Monkey", "Parrot"]);
+});
+
+test("Street Performer replaces its complete crowd-work progression through level 20", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-street-performer.json");
+  const ids = featuresThroughLevel(applyArchetype(bard, archetype), 20).map((feature) => feature.id);
+  for (const added of ["street-performer-disappearing-act-1", "street-performer-harmless-performer-3", "street-performer-madcap-prank-9", "street-performer-slip-through-the-crowd-15", "street-performer-gladhanding-1", "street-performer-streetwise-1", "street-performer-quick-change-5"]) assert.ok(ids.includes(added));
+  for (const removed of ["bard-inspire-courage-17", "bard-inspire-competence-19", "bard-inspire-greatness-9", "bard-inspire-heroics-15", "bard-countersong-1", "bardic-knowledge-1", "bard-lore-master-17"]) assert.ok(!ids.includes(removed));
+  assert.ok(ids.includes("bard-deadly-performance-20"));
+});
+
 test("Archivist replaces its performance and knowledge progressions through level 20", async () => {
   const bard = await load("../packages/data/src/classes/bard.json");
   const archetype = await load("../packages/data/src/archetypes/bard-archivist.json");
