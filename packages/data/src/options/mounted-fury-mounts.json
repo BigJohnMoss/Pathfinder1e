@@ -1,0 +1,7 @@
+{"id":"mounted-fury-mounts","name":"Mounted Fury Bestial Mounts","classIds":["barbarian"],"optionDefaults":{"groupId":"mounted-fury-mounts","classIds":["barbarian"],"minimumLevel":5,"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"}},"options":[
+{"id":"mounted-fury-mount-camel","name":"Camel","prerequisites":[{"type":"size","minimum":"medium","maximum":"medium"}],"benefit":"Gain a camel bestial mount."},
+{"id":"mounted-fury-mount-horse","name":"Horse","prerequisites":[{"type":"size","minimum":"medium","maximum":"medium"}],"benefit":"Gain a horse bestial mount."},
+{"id":"mounted-fury-mount-pony","name":"Pony","prerequisites":[{"type":"size","maximum":"small"}],"benefit":"Gain a pony bestial mount."},
+{"id":"mounted-fury-mount-wolf","name":"Wolf","prerequisites":[{"type":"size","maximum":"small"}],"benefit":"Gain a wolf bestial mount."},
+{"id":"mounted-fury-mount-boar","name":"Boar","minimumLevel":8,"prerequisites":[{"type":"size","maximum":"small"}],"benefit":"Gain a boar bestial mount."},
+{"id":"mounted-fury-mount-dog","name":"Dog","minimumLevel":8,"prerequisites":[{"type":"size","maximum":"small"}],"benefit":"Gain a dog bestial mount."}]}
