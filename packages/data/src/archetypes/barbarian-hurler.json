@@ -1,0 +1,25 @@
+{
+  "id": "barbarian-hurler",
+  "name": "Hurler",
+  "classId": "barbarian",
+  "summary": "A barbarian who hurls weapons and nearby objects with exceptional reach.",
+  "replacements": [
+    {
+      "featureIds": ["fast-movement-1"],
+      "features": [
+        {
+          "id": "hurler-skilled-thrower-1",
+          "name": "Skilled Thrower",
+          "level": 1,
+          "type": "core",
+          "summary": "Increase the range increment of every thrown weapon or object by 10 feet."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  }
+}
