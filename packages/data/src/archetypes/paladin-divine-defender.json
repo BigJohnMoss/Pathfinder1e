@@ -1,0 +1,14 @@
+{
+  "id":"paladin-divine-defender",
+  "name":"Divine Defender",
+  "classId":"paladin",
+  "summary":"A protective champion who spends healing power to shield nearby allies and binds a celestial spirit into armor.",
+  "replacements":[
+    {"progressionKeys":["paladin-mercy"],"features":[
+      {"id":"divine-defender-shared-defense-3","name":"Shared Defense +1","level":3,"type":"scaling","summary":"Spend one use of lay on hands to grant adjacent allies sacred AC, CMD, and saving-throw bonuses for Charisma-modifier rounds.","scaling":"+1; +2 at 9th; +3 at 15th"},
+      {"id":"divine-defender-shared-defense-range-6","name":"Shared Defense (10 feet)","level":6,"type":"scaling","summary":"Shared Defense reaches 10 feet and automatically stabilizes allies below 0 hit points.","scaling":"15 feet and bleed immunity at 12th; 20 feet and 25% critical/sneak negation at 18th"}
+    ]},
+    {"featureIds":["paladin-divine-bond-5"],"features":[{"id":"divine-defender-armor-bond-5","name":"Armor Bond","level":5,"type":"scaling","summary":"Call a celestial spirit into worn armor, granting enhancement or defensive armor properties for 1 minute per Paladin level.","scaling":"+1 at 5th and +1 every 3 levels to +6","uses":"once per day plus one every 4 levels after 5th"}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"}
+}
