@@ -15,6 +15,7 @@ export interface CharacterDraftV1 {
   classId: string;
   classLevels: CharacterClassLevel[];
   archetypeId: string;
+  archetypeIdsByClass: Record<string, string>;
   ancestryId: string;
   level: number;
   humanAbility: AbilityName;
