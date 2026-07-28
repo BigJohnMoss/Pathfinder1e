@@ -1,0 +1,52 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-protean",
+      "classSkill": "Knowledge (planes)",
+      "arcana": "Increase by 4 the DC to dispel transmutation or conjuration (creation) spells you cast.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Entropic Shield"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Blur"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Gaseous Form"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Confusion"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Major Creation"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Disintegrate"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Greater Polymorph"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Polymorph Any Object"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Shapechange"}
+      ],
+      "bonusFeats": ["Agile Maneuvers","Defensive Combat Training","Enlarge Spell","Great Fortitude","Improved Great Fortitude","Skill Focus (Craft)","Spell Focus","Toughness"],
+      "powers": [
+        {"name":"Protoplasm","level":1,"summary":"Hurl entropic protoplasm within 30 feet as a tanglefoot bag that also deals 1 acid damage each round while the target is entangled. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Protean Resistances","level":3,"summary":"Gain acid resistance 5 and +2 on saves against polymorph, petrification, and transmutation; at 9th level these improve to acid resistance 10 and +4."},
+        {"name":"Reality Wrinkle","level":9,"summary":"Create a mobile 10-foot mutable-reality aura that slows others as solid fog and gives attacks entering it a 20% miss chance, for rounds per day equal to your sorcerer level."},
+        {"name":"Spatial Tear","level":15,"summary":"Once per day use dimension door while leaving black tentacles at your former location; at 20th level use this twice per day."},
+        {"name":"Avatar of Chaos","level":20,"summary":"Gain immunity to acid, petrification, and unwanted polymorph effects, plus +2 to spell save DCs and spell penetration checks against lawful creatures."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-serpentine",
+      "classSkill": "Diplomacy",
+      "arcana": "Your mind-affecting and language-dependent spells affect animals, magical beasts, and monstrous humanoids as humanoids that understand your language.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Hypnotism"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Delay Poison"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Summon Monster 3"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Poison"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Hold Monster"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Suggestion, Mass"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Summon Monster 7"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Irresistible Dance"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Dominate Monster"}
+      ],
+      "bonusFeats": ["Combat Casting","Combat Reflexes","Deceitful","Deft Hands","Persuasive","Silent Spell","Skill Focus (Bluff)","Stealthy"],
+      "powers": [
+        {"name":"Serpent's Fang","level":1,"summary":"Grow a venomous bite natural weapon for rounds per day equal to 3 + Charisma modifier; its poison and ability to overcome damage reduction improve with level."},
+        {"name":"Serpentfriend","level":3,"summary":"Speak at will with reptilian animals and gain a viper familiar using your sorcerer level minus 2 as your effective wizard level."},
+        {"name":"Snakeskin","level":9,"summary":"Gain +1 natural armor, +2 racial saves against poison, and +2 Escape Artist; all three bonuses increase by 1 at levels 13 and 17."},
+        {"name":"Den of Vipers","level":15,"summary":"Once per day summon serpent swarms as creeping doom whose poison deals Constitution damage and that entangle other creatures sharing their space."},
+        {"name":"Scaled Soul","level":20,"summary":"Gain the shapechanger subtype, assume reptilian humanoid or snake forms at will, become immune to poison and paralysis, and use Serpent's Fang without limit."}
+      ]
+    }
+  ]
+}
