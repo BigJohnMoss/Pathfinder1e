@@ -36,9 +36,20 @@ function checkChoice(choice, file) {
   if (typeof choice.label !== "string" || !choice.label.trim()) errors.push(`${file}: choice needs a label`);
   if (!choice.allowCustom && (!Array.isArray(choice.options) || choice.options.length === 0)) { errors.push(`${file}: choice needs options`); return; }
   if (choice.allowCustom !== undefined && typeof choice.allowCustom !== "boolean") errors.push(`${file}: choice allowCustom must be a boolean`);
+  if (choice.uniqueAcrossSelections !== undefined && typeof choice.uniqueAcrossSelections !== "boolean") errors.push(`${file}: choice uniqueAcrossSelections must be a boolean`);
   if (!Array.isArray(choice.options)) return;
   const ids = new Set();
   for (const option of choice.options) { if (!option || typeof option.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option.id) || typeof option.name !== "string" || !option.name.trim()) errors.push(`${file}: choice has an invalid option`); else if (ids.has(option.id)) errors.push(`${file}: choice has duplicate option ${option.id}`); else ids.add(option.id); }
+}
+function checkSelectableOption(option, file) {
+  if (option.repeatable !== undefined && typeof option.repeatable !== "boolean") errors.push(`${file}: repeatable must be a boolean`);
+  if (option.selectionLimit !== undefined && (!Number.isInteger(option.selectionLimit) || option.selectionLimit < 1)) errors.push(`${file}: selectionLimit must be a positive integer`);
+  if (option.selectionLimit !== undefined && option.repeatable !== true) errors.push(`${file}: selectionLimit requires repeatable`);
+  for (const key of ["familyId", "exclusiveGroupId"]) {
+    if (option[key] !== undefined && (typeof option[key] !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option[key]))) errors.push(`${file}: ${key} must be a slug`);
+  }
+  if ((option.familyId === undefined) !== (option.exclusiveGroupId === undefined)) errors.push(`${file}: familyId and exclusiveGroupId must be used together`);
+  checkChoice(option.choice, file);
 }
 function checkFeatEffects(effects, file) {
   if (effects === undefined) return;
@@ -135,7 +146,7 @@ for (const url of await jsonFiles("archetypes/")) {
     }
   }
 }
-for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const raw of g.options??[]) {const o={...g.optionDefaults,...raw}; checkId(o,`${file}:${o.id}`); optionIds.add(o.id); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); if(o.featId !== undefined && (typeof o.featId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.featId))) errors.push(`${file}:${o.id} has invalid featId`); checkPrerequisites(o.prerequisites, `${file}:${o.id}`);} }
+for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const raw of g.options??[]) {const o={...g.optionDefaults,...raw}; checkId(o,`${file}:${o.id}`); optionIds.add(o.id); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); if(o.featId !== undefined && (typeof o.featId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.featId))) errors.push(`${file}:${o.id} has invalid featId`); checkSelectableOption(o, `${file}:${o.id}`); checkPrerequisites(o.prerequisites, `${file}:${o.id}`);} }
 for (const url of await jsonFiles("bloodline-details/")) { const details=await load(url); const file=url.pathname.split('/').pop(); if(!Array.isArray(details.bloodlines)) errors.push(`${file}: bloodlines must be an array`); else for(const bloodline of details.bloodlines) checkBloodlineDetail(bloodline,file); }
 for (const directory of ["races/","feats/","traits/","spells/"]) for (const url of await jsonFiles(directory)) { const r=await load(url); const file=url.pathname.split('/').pop(); checkId(r,file); checkSource(r,file); if(directory === "feats/") { checkPrerequisites(r.prerequisites, file); checkChoice(r.choice, file); checkFeatEffects(r.effects, file); } if(directory === "traits/") { if(!["combat","faith","magic","social"].includes(r.category)) errors.push(`${file}: invalid trait category`); if(typeof r.summary !== "string" || !r.summary.trim()) errors.push(`${file}: missing trait summary`); if(!r.effects || typeof r.effects !== "object" || Array.isArray(r.effects)) errors.push(`${file}: missing trait effects`); for(const modifier of r.effects?.conditionalModifiers ?? []) if(!modifier || typeof modifier.label !== "string" || !modifier.label.trim() || typeof modifier.condition !== "string" || !modifier.condition.trim() || (modifier.bonus !== undefined && typeof modifier.bonus !== "number")) errors.push(`${file}: invalid conditional modifier`); } }
 for (const url of await jsonFiles("spell-catalogues/")) { const catalogue=await load(url); const file=url.pathname.split("/").pop(); checkSource(catalogue,file); if(!Array.isArray(catalogue.spells)) { errors.push(file + ": spells must be an array"); continue; } for(const spell of catalogue.spells) { checkId(spell,file + ":" + (spell.id ?? "unknown")); if(typeof spell.name !== "string" || !spell.name.trim()) errors.push(file + ": spell is missing a name"); if(typeof spell.summary !== "string" || !spell.summary.trim()) errors.push(file + ": " + (spell.id ?? "unknown") + " is missing a summary"); const levels=Object.values(spell.levelByClass??{}); if(levels.length===0||levels.some(level=>!Number.isInteger(level)||level<0||level>9)) errors.push(file + ": " + (spell.id ?? "unknown") + " has invalid spell levels"); } }
@@ -143,3 +154,4 @@ for (const url of await jsonFiles("spell-class-levels/")) { const overlay=await 
 for (const url of await jsonFiles("classes/")) { const c=await load(url); for (const f of c.features??[]) if(f.optionGroupId && !groupIds.has(f.optionGroupId)) errors.push(`${c.id}:${f.id} references missing option group ${f.optionGroupId}`); }
 if(errors.length){ console.error(`Data validation failed with ${errors.length} error(s):`); errors.forEach(e=>console.error(`- ${e}`)); process.exit(1); }
 console.log(`Validated ${ids.size} unique records across ${classIds.size} classes, ${groupIds.size} option groups, and ${bloodlineDetailIds.size} bloodline details.`);
+
