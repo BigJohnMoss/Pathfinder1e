@@ -90,7 +90,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Plains, Swamp, and Urban Druid; APG Monk coverage is complete with Drunken
   Master, Hungry Ghost Monk, Ki Mystic, Monk of the Empty Hand, Monk of the
   Four Winds, Monk of the Healing Hand, Monk of the Lotus, Monk of the Sacred
-  Mountain, Weapon Adept, and Zen Archer
+  Mountain, Weapon Adept, and Zen Archer; APG Paladin coverage is complete with
+  Divine Defender, Hospitaler, Sacred Servant, Shining Knight, Undead Scourge,
+  and Warrior of the Holy Light; APG Ranger coverage is in progress with Guide,
+  Spirit Ranger, and Urban Ranger
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,

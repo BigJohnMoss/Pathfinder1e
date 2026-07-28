@@ -1,0 +1,24 @@
+{
+  "id":"ranger-guide",
+  "name":"Guide",
+  "classId":"ranger",
+  "summary":"A wilderness leader who focuses on the foe at hand, shares terrain expertise, and turns luck and inspiration into decisive action.",
+  "replacements":[
+    {"progressionKeys":["ranger-favored-enemy"],"features":[
+      {"id":"guide-rangers-focus-1","name":"Ranger's Focus","level":1,"type":"scaling","summary":"Focus on one visible enemy to gain +2 on attack and damage rolls against it.","scaling":"+2 every 5 Ranger levels; +1 daily use at 4th and every 3 levels","uses":"1/day"}
+    ]},
+    {"featureIds":["ranger-hunters-bond-4","ranger-animal-companion-4"],"features":[
+      {"id":"guide-terrain-bond-4","name":"Terrain Bond","level":4,"type":"core","summary":"In favored terrain, grant nearby allies +2 initiative and bonuses on Perception, Stealth, and Survival, and let them travel without a trail."}
+    ]},
+    {"featureIds":["ranger-evasion-9"],"features":[
+      {"id":"guide-rangers-luck-9","name":"Ranger's Luck","level":9,"type":"scaling","summary":"Reroll one attack or force an enemy who hit you to reroll its attack.","scaling":"one additional daily use at 14th and 19th","uses":"1/day"}
+    ]},
+    {"featureIds":["ranger-quarry-11","ranger-improved-quarry-19"],"features":[
+      {"id":"guide-inspired-moment-11","name":"Inspired Moment","level":11,"type":"scaling","summary":"Until the end of your next turn, gain speed, an extra move or swift action, +4 to key checks and attacks, and automatic critical confirmations.","scaling":"one additional daily use at 19th","uses":"1/day"}
+    ]},
+    {"featureIds":["ranger-improved-evasion-16"],"features":[
+      {"id":"guide-improved-rangers-luck-16","name":"Improved Ranger's Luck","level":16,"type":"core","summary":"Gain +4 on your Ranger's Luck rerolls or impose –4 on the enemy reroll, including critical confirmation rolls."}
+    ]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}
+}
