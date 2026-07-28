@@ -1,20 +1,22 @@
 import { useRef } from "react";
 import type { CharacterClassLevel } from "../../../packages/types/src/index.js";
 
-export function CharacterDetails({ name, classId, additionalClassLevels, archetypeId, ancestryId, level, classes, archetypes, ancestries, saveNotice, onNameChange, onClassChange, onAdditionalClassLevelsChange, onArchetypeChange, onAncestryChange, onLevelChange, onReviewLevelUp, onSave, onLoad, onImport, onExport, onPrint, onReset }: {
+export function CharacterDetails({ name, classId, additionalClassLevels, additionalArchetypeIds, archetypeId, ancestryId, level, classes, archetypes, ancestries, saveNotice, onNameChange, onClassChange, onAdditionalClassLevelsChange, onAdditionalArchetypeChange, onArchetypeChange, onAncestryChange, onLevelChange, onReviewLevelUp, onSave, onLoad, onImport, onExport, onPrint, onReset }: {
   name: string;
   classId: string;
   additionalClassLevels: CharacterClassLevel[];
+  additionalArchetypeIds: Record<string, string>;
   archetypeId: string;
   ancestryId: string;
   level: number;
   classes: Array<{ id: string; name: string }>;
-  archetypes: Array<{ id: string; name: string }>;
+  archetypes: Array<{ id: string; name: string; classId: string }>;
   ancestries: Array<{ id: string; name: string }>;
   saveNotice: string;
   onNameChange: (name: string) => void;
   onClassChange: (classId: string) => void;
   onAdditionalClassLevelsChange: (classLevels: CharacterClassLevel[]) => void;
+  onAdditionalArchetypeChange: (classId: string, archetypeId: string) => void;
   onArchetypeChange: (archetypeId: string) => void;
   onAncestryChange: (ancestryId: string) => void;
   onLevelChange: (level: number) => void;
@@ -49,9 +51,11 @@ export function CharacterDetails({ name, classId, additionalClassLevels, archety
       const label = index === 0 ? "Additional class" : `Additional class ${index + 1}`;
       const levelLabel = index === 0 ? "Additional class levels" : `Additional class ${index + 1} levels`;
       const otherLevels = assignedAdditionalLevels - entry.level;
+      const classArchetypes = archetypes.filter((archetype) => archetype.classId === entry.classId);
       return <div className="additional-class-row" key={`${entry.classId}-${index}`}>
         <label>{label}<select aria-label={label} value={entry.classId} onChange={(event) => updateAdditionalClass(index, event.target.value)}><option value="">Remove class</option>{classes.filter((item) => item.id === entry.classId || !availableClassIds.has(item.id)).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
         <label>{levelLabel}<input aria-label={levelLabel} type="number" min="1" max={Math.max(1, level - otherLevels - 1)} value={entry.level} onChange={(event) => updateAdditionalLevel(index, Number(event.target.value))} /></label>
+        {classArchetypes.length > 0 && <label>{classes.find((item) => item.id === entry.classId)?.name ?? label} archetype<select aria-label={`${classes.find((item) => item.id === entry.classId)?.name ?? label} archetype`} value={additionalArchetypeIds[entry.classId] ?? ""} onChange={(event) => onAdditionalArchetypeChange(entry.classId, event.target.value)}><option value="">Standard class</option>{classArchetypes.map((archetype) => <option key={archetype.id} value={archetype.id}>{archetype.name}</option>)}</select></label>}
         <button type="button" className="secondary-button" aria-label={`Remove ${classes.find((item) => item.id === entry.classId)?.name ?? label}`} onClick={() => updateAdditionalClass(index, "")}>Remove</button>
       </div>;
     })}
@@ -61,7 +65,7 @@ export function CharacterDetails({ name, classId, additionalClassLevels, archety
       if (nextClass) onAdditionalClassLevelsChange([...additionalClassLevels, { classId: nextClass.id, level: 1 }]);
     }}>Add another class</button>}
     {additionalClassLevels.length > 0 && <p className="class-level-summary">{primaryLevels} level{primaryLevels === 1 ? "" : "s"} remain in the primary class.</p>}
-    <label>Archetype<select aria-label="Archetype" value={archetypeId} onChange={(event) => onArchetypeChange(event.target.value)}><option value="">Standard class</option>{archetypes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+    <label>Archetype<select aria-label="Archetype" value={archetypeId} onChange={(event) => onArchetypeChange(event.target.value)}><option value="">Standard class</option>{archetypes.filter((item) => item.classId === classId).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Ancestry<select value={ancestryId} onChange={(event) => onAncestryChange(event.target.value)}>{ancestries.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => onLevelChange(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} />{level < 20 && <button type="button" className="level-up-trigger" onClick={onReviewLevelUp}>Review level {level + 1}</button>}</label>
     <div className="character-actions">
