@@ -1,0 +1,28 @@
+{
+  "id":"monk-zen-archer",
+  "name":"Zen Archer",
+  "classId":"monk",
+  "summary":"A bow-focused Monk who flurries at range, attacks with Wisdom, channels ki through arrows, and bends shots around concealment and cover.",
+  "featureOverrides":[
+    {"featureId":"monk-ki-pool-4","summary":"Gain the normal ki pool and may spend 1 ki to increase a bow's range increment by 50 feet for 1 round."},
+    {"featureId":"monk-monk-bonus-feat-1","summary":"Choose a Zen Archer bonus feat from its ranged-combat list without meeting prerequisites."},
+    {"featureId":"monk-monk-bonus-feat-2","summary":"Choose a Zen Archer bonus feat from its ranged-combat list without meeting prerequisites."},
+    {"featureId":"monk-monk-bonus-feat-6","summary":"Choose from the expanded Zen Archer ranged-combat bonus-feat list without meeting prerequisites."},
+    {"featureId":"monk-monk-bonus-feat-10","summary":"Choose from the complete Zen Archer ranged-combat bonus-feat list without meeting prerequisites."}
+  ],
+  "replacements":[
+    {"featureIds":["monk-flurry-of-blows-1"],"features":[{"id":"zen-archer-bow-flurry-1","name":"Bow Flurry","level":1,"type":"core","summary":"Gain bow proficiency and flurry only with a bow; Rapid Shot and Manyshot cannot modify the flurry."}]},
+    {"featureIds":["monk-stunning-fist-1"],"features":[{"id":"zen-archer-perfect-strike-1","name":"Perfect Strike","level":1,"type":"bonus-feat","summary":"Gain Perfect Strike for bows; at 10th level roll three attack dice and keep the highest.","grantedFeatId":"perfect-strike","scaling":"three rolls at 10th"}]},
+    {"featureIds":["monk-evasion-2"],"features":[
+      {"id":"zen-archer-way-bow-2","name":"Way of the Bow (Weapon Focus)","level":2,"type":"bonus-feat","summary":"Gain Weapon Focus with one bow type without meeting prerequisites."},
+      {"id":"zen-archer-way-bow-6","name":"Way of the Bow (Weapon Specialization)","level":6,"type":"bonus-feat","summary":"Gain Weapon Specialization with the same bow type without meeting prerequisites."}
+    ]},
+    {"featureIds":["monk-maneuver-training-3"],"features":[{"id":"zen-archer-zen-archery-3","name":"Zen Archery","level":3,"type":"core","summary":"Use Wisdom instead of Dexterity on ranged attack rolls with bows."}]},
+    {"featureIds":["monk-still-mind-3"],"features":[{"id":"zen-archer-point-blank-master-3","name":"Point Blank Master","level":3,"type":"bonus-feat","summary":"Gain Point Blank Master for bows without meeting prerequisites."}]},
+    {"featureIds":["monk-purity-of-body-5"],"features":[{"id":"zen-archer-ki-arrows-5","name":"Ki Arrows","level":5,"type":"core","summary":"Spend 1 ki to use unarmed-strike damage dice for arrows until the next turn.","uses":"1 ki"}]},
+    {"featureIds":["monk-improved-evasion-9"],"features":[{"id":"zen-archer-reflexive-shot-9","name":"Reflexive Shot","level":9,"type":"core","summary":"Make attacks of opportunity with arrows while continuing to threaten with unarmed strikes."}]},
+    {"featureIds":["monk-diamond-body-11"],"features":[{"id":"zen-archer-trick-shot-11","name":"Trick Shot","level":11,"type":"core","summary":"Spend 1 to 3 ki to ignore concealment, total concealment, cover, or total cover for 1 round.","uses":"1 to 3 ki"}]},
+    {"featureIds":["monk-tongue-of-sun-and-moon-17"],"features":[{"id":"zen-archer-ki-focus-bow-17","name":"Ki Focus Bow","level":17,"type":"core","summary":"While at least 1 ki remains, arrows count as ki focus weapons for special ki attacks."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+}
