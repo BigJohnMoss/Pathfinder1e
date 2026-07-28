@@ -88,9 +88,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
   (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
-- expanded bloodlines — in progress: complete Core catalogue plus APG Aquatic,
-  Boreal, Deep Earth, Dreamspun, Protean, Serpentine, Shadow, and Starsoul
-  bloodlines
+- expanded bloodlines — complete: complete Core catalogue plus all ten APG
+  bloodlines: Aquatic, Boreal, Deep Earth, Dreamspun, Protean, Serpentine,
+  Shadow, Starsoul, Stormborn, and Verdant
 - mysteries and revelations
 - discoveries, talents and similar class option systems
 - favoured class bonuses - in progress: base +1 hit point or +1 skill rank
