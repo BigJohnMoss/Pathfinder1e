@@ -143,6 +143,20 @@ test("Sea Singer exposes its maritime features and familiar choice", async () =>
   assert.ok(familiar.querySelector("option[value='sea-singer-familiar-parrot']"));
 });
 
+test("Street Performer exposes every crowd-work replacement through level 20", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-street-performer']"));
+  await user.selectOptions(archetype, "bard-street-performer");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Disappearing Act", "Harmless Performer", "Madcap Prank", "Slip through the Crowd", "Gladhanding", "Streetwise", "Quick Change"]) assert.ok(screen.getByText(name));
+  assert.equal(screen.queryByText("Inspire Courage +4"), null);
+  assert.ok(screen.getByText("Deadly Performance"));
+});
+
 test("Court Bard exposes every replacement performance through level 20", async () => {
   const user = userEvent.setup();
   render(<Home />);

@@ -104,6 +104,15 @@ test("Sea Singer replaces every maritime progression and limits its familiar cho
   assert.deepEqual(group.options.map((option) => option.name), ["Monkey", "Parrot"]);
 });
 
+test("Street Performer replaces its complete crowd-work progression through level 20", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-street-performer.json");
+  const ids = featuresThroughLevel(applyArchetype(bard, archetype), 20).map((feature) => feature.id);
+  for (const added of ["street-performer-disappearing-act-1", "street-performer-harmless-performer-3", "street-performer-madcap-prank-9", "street-performer-slip-through-the-crowd-15", "street-performer-gladhanding-1", "street-performer-streetwise-1", "street-performer-quick-change-5"]) assert.ok(ids.includes(added));
+  for (const removed of ["bard-inspire-courage-17", "bard-inspire-competence-19", "bard-inspire-greatness-9", "bard-inspire-heroics-15", "bard-countersong-1", "bardic-knowledge-1", "bard-lore-master-17"]) assert.ok(!ids.includes(removed));
+  assert.ok(ids.includes("bard-deadly-performance-20"));
+});
+
 test("Archivist replaces its performance and knowledge progressions through level 20", async () => {
   const bard = await load("../packages/data/src/classes/bard.json");
   const archetype = await load("../packages/data/src/archetypes/bard-archivist.json");
