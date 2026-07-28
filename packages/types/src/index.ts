@@ -91,7 +91,19 @@ export type Prerequisite =
   | { type: "matching-choice"; featId: string; key: string }
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
-export interface SelectableOption { id:string; groupId:string; name:string; classIds:string[]; minimumLevel:number; prerequisites:Prerequisite[]; benefit:string; source:SourceRef; featId?: string; }
+export interface SelectableOption {
+  id:string;
+  groupId:string;
+  name:string;
+  classIds:string[];
+  minimumLevel:number;
+  prerequisites:Prerequisite[];
+  benefit:string;
+  source:SourceRef;
+  featId?: string;
+  repeatable?: boolean;
+  selectionLimit?: number;
+}
 
 export interface CharacterAncestry {
   id: string;

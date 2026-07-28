@@ -1,41 +1,30 @@
 {
   "id": "rogue-talents",
   "name": "Rogue Talents",
-  "classIds": [
-    "rogue"
-  ],
+  "classIds": ["rogue"],
   "options": [
-    {
-      "id": "combat-trick",
-      "groupId": "rogue-talents",
-      "name": "Combat Trick",
-      "classIds": [
-        "rogue"
-      ],
-      "minimumLevel": 2,
-      "prerequisites": [],
-      "benefit": "Gain a combat feat for which you qualify.",
-      "source": {
-        "title": "Core Rulebook",
-        "page": null,
-        "url": "https://aonprd.com/RogueTalents.aspx"
-      }
-    },
-    {
-      "id": "bleeding-attack",
-      "groupId": "rogue-talents",
-      "name": "Bleeding Attack",
-      "classIds": [
-        "rogue"
-      ],
-      "minimumLevel": 2,
-      "prerequisites": [],
-      "benefit": "A sneak attack can cause ongoing bleed damage.",
-      "source": {
-        "title": "Core Rulebook",
-        "page": null,
-        "url": "https://aonprd.com/RogueTalents.aspx"
-      }
-    }
+    {"id":"bleeding-attack","groupId":"rogue-talents","name":"Bleeding Attack","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"A sneak attack can cause ongoing bleed damage equal to the number of sneak attack dice.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"combat-trick","groupId":"rogue-talents","name":"Combat Trick","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain one combat feat for which you qualify.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"fast-stealth","groupId":"rogue-talents","name":"Fast Stealth","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Move at full speed while using Stealth without penalty.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"finesse-rogue","groupId":"rogue-talents","name":"Finesse Rogue","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain Weapon Finesse as a bonus feat.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"ledge-walker","groupId":"rogue-talents","name":"Ledge Walker","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Move at full speed along narrow surfaces without becoming flat-footed.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"major-magic","groupId":"rogue-talents","name":"Major Magic","classIds":["rogue"],"minimumLevel":2,"prerequisites":[{"type":"ability","key":"intelligence","minimum":11},{"type":"feature","id":"minor-magic"}],"benefit":"Cast one chosen 1st-level sorcerer/wizard spell twice per day as a spell-like ability.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"minor-magic","groupId":"rogue-talents","name":"Minor Magic","classIds":["rogue"],"minimumLevel":2,"prerequisites":[{"type":"ability","key":"intelligence","minimum":10}],"benefit":"Cast one chosen 0-level sorcerer/wizard spell three times per day as a spell-like ability.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"quick-disable","groupId":"rogue-talents","name":"Quick Disable","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Disable a trap in half the normal time, or open a lock as a standard action.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"resiliency","groupId":"rogue-talents","name":"Resiliency","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain temporary hit points once per day when reduced below 0 hit points.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"rogue-crawl","groupId":"rogue-talents","name":"Rogue Crawl","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Crawl at half speed and take a 5-foot step while prone.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"slow-reactions","groupId":"rogue-talents","name":"Slow Reactions","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"A foe damaged by your sneak attack cannot make attacks of opportunity for 1 round.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"stand-up","groupId":"rogue-talents","name":"Stand Up","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Stand from prone as a free action while still provoking normally.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"surprise-attack","groupId":"rogue-talents","name":"Surprise Attack","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Treat opponents as flat-footed during the surprise round even if they have acted.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"trap-spotter","groupId":"rogue-talents","name":"Trap Spotter","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Receive an automatic Perception check when within 10 feet of a trap.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"weapon-training","groupId":"rogue-talents","name":"Weapon Training","classIds":["rogue"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain Weapon Focus with a chosen weapon as a bonus feat.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#rogue-talents"}},
+    {"id":"crippling-strike","groupId":"rogue-talents","name":"Crippling Strike","classIds":["rogue"],"minimumLevel":10,"prerequisites":[],"benefit":"Deal 2 points of Strength damage with each sneak attack.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#advanced-talents"}},
+    {"id":"defensive-roll","groupId":"rogue-talents","name":"Defensive Roll","classIds":["rogue"],"minimumLevel":10,"prerequisites":[],"benefit":"Attempt a Reflex save once per day to halve damage from a potentially lethal blow.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#advanced-talents"}},
+    {"id":"dispelling-attack","groupId":"rogue-talents","name":"Dispelling Attack","classIds":["rogue"],"minimumLevel":10,"prerequisites":[{"type":"feature","id":"major-magic"}],"benefit":"A sneak attack can dispel an active spell effect on the target.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#advanced-talents"}},
+    {"id":"feat","groupId":"rogue-talents","name":"Feat","classIds":["rogue"],"minimumLevel":10,"prerequisites":[],"repeatable":true,"benefit":"Gain any feat for which you qualify; this advanced talent may be selected multiple times.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#advanced-talents"}},
+    {"id":"improved-evasion","groupId":"rogue-talents","name":"Improved Evasion","classIds":["rogue"],"minimumLevel":10,"prerequisites":[],"benefit":"Take only half damage on a failed Reflex save against attacks that allow half damage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#advanced-talents"}},
+    {"id":"opportunist","groupId":"rogue-talents","name":"Opportunist","classIds":["rogue"],"minimumLevel":10,"prerequisites":[],"benefit":"Make one attack of opportunity each round against a foe struck in melee by another character.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#advanced-talents"}},
+    {"id":"skill-mastery","groupId":"rogue-talents","name":"Skill Mastery","classIds":["rogue"],"minimumLevel":10,"prerequisites":[],"repeatable":true,"benefit":"Choose 3 plus Intelligence modifier skills and take 10 with them even under stress; this talent may be selected multiple times.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#advanced-talents"}},
+    {"id":"slippery-mind","groupId":"rogue-talents","name":"Slippery Mind","classIds":["rogue"],"minimumLevel":10,"prerequisites":[],"benefit":"Retry a failed save against an enchantment one round later.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/rogue.html#advanced-talents"}}
   ]
 }
