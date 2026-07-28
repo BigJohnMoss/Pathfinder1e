@@ -864,6 +864,22 @@ test("previews and confirms a guided level up without losing selections", async 
   assert.ok(screen.getByText(/Advanced to level 4/));
 });
 
+test("selects and persists the Barbarian Breaker archetype", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-breaker");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByText("Destructive"));
+  assert.ok(screen.getByText("Battle Scavenger +1"));
+  assert.equal(screen.queryByText("Fast Movement"), null);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Archetype"), "");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal((screen.getByLabelText("Archetype") as HTMLSelectElement).value, "barbarian-breaker");
+});
+
 test("previews and advances the selected multiclass entry", async () => {
   const user = userEvent.setup();
   render(<Home />);
