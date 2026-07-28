@@ -61,10 +61,22 @@ test("each specialist school has at least one spell at every spell level", () =>
     for (let level = 1; level <= 9; level += 1) {
       const options = specialistSchoolSpells(wizardSpells, school, level);
       if (options.length === 0) missing.push(`${school.id} level ${level}`);
-      assert.ok(options.every((spell) => schoolsForSpell(spell).includes(schoolId) && spell.levelByClass.wizard === level));
+      assert.ok(options.every((spell) =>
+        (school.elementalSpellIdsByLevel ? school.elementalSpellIdsByLevel[String(level)].includes(spell.id) : schoolsForSpell(spell).includes(schoolId))
+        && spell.levelByClass.wizard === level
+      ));
     }
   }
   assert.deepEqual(missing, [], `Specialist school levels without spells:\n${missing.join("\n")}`);
+});
+
+test("elemental schools expose their complete level-specific APG spell lists", () => {
+  for (const school of schools.options.filter((option) => option.elementalOppositionSchool)) {
+    for (let level = 1; level <= 9; level += 1) {
+      const expectedIds = school.elementalSpellIdsByLevel[String(level)];
+      assert.deepEqual(specialistSchoolSpells(wizardSpells, school, level).map((spell) => spell.id).sort(), [...expectedIds].sort(), `${school.id} level ${level}`);
+    }
+  }
 });
 
 test("focused schools prepare specialist spells from their associated school", () => {
