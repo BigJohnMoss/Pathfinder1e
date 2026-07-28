@@ -280,6 +280,40 @@ test("Law, Liberation, and Luck subdomains inherit deity access and exclude thei
   assert.ok(screen.getByText("borrow fortune"));
 });
 
+test("Madness, Magic, and Nobility subdomains inherit deity access and exclude their parent", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity); assert.ok(firstDomain); assert.ok(secondDomain);
+
+  await user.selectOptions(deity, "deity-lamashtu");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-insanity"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-nightmare"), true);
+  await user.selectOptions(firstDomain, "subdomain-nightmare");
+  assert.ok(screen.getByText("Fearful Touch"));
+  assert.ok(screen.getByText("cloak of dreams"));
+  assert.equal((secondDomain.querySelector("option[value='domain-madness']") as HTMLOptionElement).disabled, true);
+  assert.equal((secondDomain.querySelector("option[value='subdomain-insanity']") as HTMLOptionElement).disabled, true);
+
+  await user.selectOptions(deity, "deity-nethys");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-arcane"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-divine"), true);
+  await user.selectOptions(firstDomain, "subdomain-divine");
+  assert.ok(screen.getByText("Divine Vessel"));
+  assert.ok(screen.getByText("miracle"));
+
+  await user.selectOptions(deity, "deity-abadar");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-leadership"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-martyr"), true);
+  await user.selectOptions(firstDomain, "subdomain-martyr");
+  assert.ok(screen.getByText("Sacrificial Bond"));
+  assert.ok(screen.getByText("sacrificial oath"));
+});
+
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   const user = userEvent.setup();
   render(<Home />);

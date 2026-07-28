@@ -78,7 +78,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
   Azata, Restoration, Resurrection, Heroism, Honor, Memory, Thought, Inevitable,
-  Freedom, Revolution, Curse, and Fate selections (including parent-specific
+  Freedom, Revolution, Curse, Fate, Insanity, Nightmare, Arcane, Divine,
+  Leadership, and Martyr selections (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
 - expanded bloodlines

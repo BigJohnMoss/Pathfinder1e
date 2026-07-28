@@ -1,0 +1,95 @@
+{
+  "source": {"title": "Advanced Player's Guide", "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"},
+  "subdomains": [
+    {
+      "id": "subdomain-insanity", "groupId": "cleric-domains", "name": "Insanity Subdomain (Madness)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Vision of Madness with Insane Focus and replace the Madness domain's 4th- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 91, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#insanity-subdomain"},
+      "parentDomainId": "domain-madness", "replacesPower": "Vision of Madness",
+      "powers": [
+        {"name": "Insane Focus", "level": 1, "summary": "As a standard action, touch a willing creature to grant a +4 bonus on saves against mind-affecting effects and immunity to confusion for 1 minute. If it fails such a save, it loses the immunity and is confused for 1 round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Aura of Madness", "level": 8, "summary": "Emit a 30-foot aura for rounds per day equal to cleric level. Enemies must save each time they enter or become confused while inside; a successful save grants immunity for 24 hours."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "lesser confusion"}, {"level": 2, "name": "touch of idiocy"}, {"level": 3, "name": "rage"},
+        {"level": 4, "name": "moonstruck"}, {"level": 5, "name": "nightmare"}, {"level": 6, "name": "phantasmal web"},
+        {"level": 7, "name": "insanity"}, {"level": 8, "name": "scintillating pattern"}, {"level": 9, "name": "weird"}
+      ]
+    },
+    {
+      "id": "subdomain-nightmare", "groupId": "cleric-domains", "name": "Nightmare Subdomain (Madness)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Vision of Madness with Fearful Touch and replace the Madness domain's 4th- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 92, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#nightmare-subdomain"},
+      "parentDomainId": "domain-madness", "replacesPower": "Vision of Madness",
+      "powers": [
+        {"name": "Fearful Touch", "level": 1, "summary": "As a standard action, make a melee touch attack that suppresses the target's fear immunity for 1 minute, gives it a -2 penalty on attacks against you, and penalizes its saves against fear by half cleric level, minimum -1. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Aura of Madness", "level": 8, "summary": "Emit a 30-foot aura for rounds per day equal to cleric level. Enemies must save each time they enter or become confused while inside; a successful save grants immunity for 24 hours."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "lesser confusion"}, {"level": 2, "name": "touch of idiocy"}, {"level": 3, "name": "rage"},
+        {"level": 4, "name": "phantasmal killer"}, {"level": 5, "name": "nightmare"}, {"level": 6, "name": "cloak of dreams"},
+        {"level": 7, "name": "insanity"}, {"level": 8, "name": "scintillating pattern"}, {"level": 9, "name": "weird"}
+      ]
+    },
+    {
+      "id": "subdomain-arcane", "groupId": "cleric-domains", "name": "Arcane Subdomain (Magic)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Hand of the Acolyte with Arcane Beacon and replace the Magic domain's 1st-, 4th-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 85, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#arcane-subdomain"},
+      "parentDomainId": "domain-magic", "replacesPower": "Hand of the Acolyte",
+      "powers": [
+        {"name": "Arcane Beacon", "level": 1, "summary": "As a standard action, create a 15-foot aura until the end of your next turn. Arcane spells cast within it gain either +1 caster level or +1 save DC, chosen by each caster. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Dispelling Touch", "level": 8, "summary": "As a standard action, make a melee touch attack to use a targeted dispel magic effect. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "magic aura"}, {"level": 2, "name": "magic mouth"}, {"level": 3, "name": "dispel magic"},
+        {"level": 4, "name": "arcane eye"}, {"level": 5, "name": "spell resistance"}, {"level": 6, "name": "analyze dweomer"},
+        {"level": 7, "name": "spell turning"}, {"level": 8, "name": "protection from spells"}, {"level": 9, "name": "mage's disjunction"}
+      ]
+    },
+    {
+      "id": "subdomain-divine", "groupId": "cleric-domains", "name": "Divine Subdomain (Magic)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Hand of the Acolyte with Divine Vessel and replace the Magic domain's 2nd-, 5th-, 7th-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 88, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#divine-subdomain"},
+      "parentDomainId": "domain-magic", "replacesPower": "Hand of the Acolyte",
+      "powers": [
+        {"name": "Divine Vessel", "level": 1, "summary": "When targeted by a divine spell, use a swift action to grant each ally within 15 feet a +2 bonus on its next attack roll, skill check, or ability check before the end of your next turn. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Dispelling Touch", "level": 8, "summary": "As a standard action, make a melee touch attack to use a targeted dispel magic effect. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "identify"}, {"level": 2, "name": "bless water"}, {"level": 3, "name": "dispel magic"},
+        {"level": 4, "name": "imbue with spell ability"}, {"level": 5, "name": "cleanse"}, {"level": 6, "name": "antimagic field"},
+        {"level": 7, "name": "resurrection"}, {"level": 8, "name": "protection from spells"}, {"level": 9, "name": "miracle"}
+      ]
+    },
+    {
+      "id": "subdomain-leadership", "groupId": "cleric-domains", "name": "Leadership Subdomain (Nobility)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Inspiring Word with Inspiring Command and replace the Nobility domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 91, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#leadership-subdomain"},
+      "parentDomainId": "domain-nobility", "replacesPower": "Inspiring Word",
+      "powers": [
+        {"name": "Inspiring Command", "level": 1, "summary": "As a standard action, grant one ally plus one additional ally per three cleric levels within 30 feet a +2 insight bonus on attack rolls, AC, CMD, skill checks, and ability checks for 1 round. This is language-dependent and mind-affecting."},
+        {"name": "Leadership", "level": 8, "summary": "Gain Leadership as a bonus feat and a +2 bonus to your leadership score while upholding the tenets of your deity or divine concept."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "bless"}, {"level": 2, "name": "enthrall"}, {"level": 3, "name": "prayer"},
+        {"level": 4, "name": "discern lies"}, {"level": 5, "name": "greater command"}, {"level": 6, "name": "brilliant inspiration"},
+        {"level": 7, "name": "repulsion"}, {"level": 8, "name": "demand"}, {"level": 9, "name": "storm of vengeance"}
+      ]
+    },
+    {
+      "id": "subdomain-martyr", "groupId": "cleric-domains", "name": "Martyr Subdomain (Nobility)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Leadership with Sacrificial Bond and replace the Nobility domain's 2nd- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 92, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#martyr-subdomain"},
+      "parentDomainId": "domain-nobility", "replacesPower": "Leadership",
+      "powers": [
+        {"name": "Inspiring Word", "level": 1, "summary": "As a standard action, grant a creature within 30 feet a +2 morale bonus on attack rolls, skill checks, ability checks, and saving throws for rounds equal to half cleric level, minimum 1. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Sacrificial Bond", "level": 8, "summary": "As an immediate action when an ally within 30 feet takes attack damage, transfer that damage and its accompanying effects to yourself without reducing it. Usable once per day at 8th level, plus once at 14th and 20th levels."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "divine favor"}, {"level": 2, "name": "shield other"}, {"level": 3, "name": "magic vestment"},
+        {"level": 4, "name": "discern lies"}, {"level": 5, "name": "greater command"}, {"level": 6, "name": "sacrificial oath"},
+        {"level": 7, "name": "repulsion"}, {"level": 8, "name": "demand"}, {"level": 9, "name": "storm of vengeance"}
+      ]
+    }
+  ]
+}
