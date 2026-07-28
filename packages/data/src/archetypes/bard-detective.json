@@ -1,0 +1,146 @@
+{
+  "id": "bard-detective",
+  "name": "Detective",
+  "classId": "bard",
+  "summary": "An arcane investigator who exposes lies, enchantments, hidden creatures, and magical evidence.",
+  "spellListAdditions": {
+    "detect-chaos": 1,
+    "detect-evil": 1,
+    "detect-good": 1,
+    "detect-law": 1,
+    "zone-of-truth": 2,
+    "arcane-eye": 3,
+    "speak-with-dead": 3,
+    "speak-with-plants": 3,
+    "discern-lies": 4,
+    "prying-eyes": 5,
+    "stone-tell": 5,
+    "discern-location": 6,
+    "find-the-path": 6,
+    "greater-prying-eyes": 6,
+    "moment-of-prescience": 6
+  },
+  "replacements": [
+    {
+      "progressionKeys": ["bard-inspire-courage"],
+      "features": [
+        {
+          "id": "detective-careful-teamwork-1",
+          "name": "Careful Teamwork +1",
+          "level": 1,
+          "type": "scaling",
+          "summary": "After three rounds, grant nearby allies bonuses to initiative, Perception, Disable Device, Reflex saves, and AC against traps or while flat-footed for one hour.",
+          "scaling": "+1; increases at 5th level and every 6 levels thereafter",
+          "uses": "3 rounds of bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-inspire-greatness-9"],
+      "features": [
+        {
+          "id": "detective-true-confession-9",
+          "name": "True Confession",
+          "level": 9,
+          "type": "scaling",
+          "summary": "After detecting a lie or compulsion, perform to force the target to reveal the truth or the enchantment and grant a new save against it.",
+          "scaling": "3 rounds; 2 rounds at 15th; 1 round at 20th",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-inspire-heroics-15"],
+      "features": [
+        {
+          "id": "detective-show-yourselves-15",
+          "name": "Show Yourselves",
+          "level": 15,
+          "type": "core",
+          "summary": "Compel nearby enemies that fail a Will save to abandon Stealth and remove effects concealing them from you.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bardic-knowledge-1"],
+      "features": [
+        {
+          "id": "detective-eye-for-detail-1",
+          "name": "Eye for Detail",
+          "level": 1,
+          "type": "scaling",
+          "summary": "Add half Bard level to Knowledge (local), Perception, Sense Motive, and Diplomacy checks to gather information.",
+          "scaling": "half Bard level"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-well-versed-2"],
+      "features": [
+        {
+          "id": "detective-arcane-insight-2",
+          "name": "Arcane Insight",
+          "level": 2,
+          "type": "core",
+          "summary": "Find and disable magical traps and gain +4 against illusions and protections that foil divination or disguise detection."
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-versatile-performance"],
+      "features": [
+        {
+          "id": "detective-arcane-investigation-2",
+          "name": "Arcane Investigation Spell 1",
+          "level": 2,
+          "type": "selectable",
+          "summary": "Add one Detective spell-list addition or Bard divination to your spells known as a bonus spell.",
+          "choiceRequired": true,
+          "optionGroupId": "detective-arcane-investigation"
+        },
+        {
+          "id": "detective-arcane-investigation-6",
+          "name": "Arcane Investigation Spell 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Add another legal Arcane Investigation spell to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "detective-arcane-investigation"
+        },
+        {
+          "id": "detective-arcane-investigation-10",
+          "name": "Arcane Investigation Spell 3",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Add another legal Arcane Investigation spell to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "detective-arcane-investigation"
+        },
+        {
+          "id": "detective-arcane-investigation-14",
+          "name": "Arcane Investigation Spell 4",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Add another legal Arcane Investigation spell to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "detective-arcane-investigation"
+        },
+        {
+          "id": "detective-arcane-investigation-18",
+          "name": "Arcane Investigation Spell 5",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Add another legal Arcane Investigation spell to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "detective-arcane-investigation"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+  }
+}

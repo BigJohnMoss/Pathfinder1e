@@ -282,14 +282,19 @@ export default function Home() {
   const spellSlots = useMemo(() => spontaneousCasting?.slots ?? preparedCasting?.slots ?? [], [preparedCasting, spontaneousCasting]);
   const maximumSpellLevel = spontaneousCasting?.maximumSpellLevel ?? preparedCasting?.maximumSpellLevel ?? 0;
   const hasSpellcasting = Boolean(preparedCasting || spontaneousCasting);
-  const baseAvailableSpells = useMemo(() => hasSpellcasting ? spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel) : [], [characterClass.id, hasSpellcasting, maximumSpellLevel]);
+  const baseAvailableSpells = useMemo(() => hasSpellcasting ? spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel, characterClass.spellListAdditions) : [], [characterClass.id, characterClass.spellListAdditions, hasSpellcasting, maximumSpellLevel]);
   const bloodlineSpells = useMemo(() => classId === "sorcerer"
     ? bloodlineBonusSpells(spells, selectedBloodline, primaryClassLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
     : [], [characterClass.id, classId, maximumSpellLevel, primaryClassLevel, selectedBloodline]);
   const mysterySpells = useMemo(() => classId === "oracle"
     ? mysteryBonusSpells(spells, selectedMystery, primaryClassLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
     : [], [characterClass.id, classId, maximumSpellLevel, primaryClassLevel, selectedMystery]);
-  const grantedSpells = useMemo(() => [...bloodlineSpells, ...mysterySpells], [bloodlineSpells, mysterySpells]);
+  const selectedOptionSpellIds = useMemo(() => Object.values(selectedOptions).flatMap((optionId) => {
+    const option = optionGroups.flatMap((group) => group.options).find((candidate) => candidate.id === optionId);
+    return option?.spellId ? [option.spellId] : [];
+  }), [selectedOptions]);
+  const selectedOptionSpells = useMemo(() => baseAvailableSpells.filter((spell) => selectedOptionSpellIds.includes(spell.id)), [baseAvailableSpells, selectedOptionSpellIds]);
+  const grantedSpells = useMemo(() => [...bloodlineSpells, ...mysterySpells, ...selectedOptionSpells], [bloodlineSpells, mysterySpells, selectedOptionSpells]);
   const availableSpells = useMemo(() => mergeSpellLists(baseAvailableSpells, grantedSpells), [baseAvailableSpells, grantedSpells]);
   const grantedSpellIds = useMemo(() => grantedSpells.map((spell) => spell.id), [grantedSpells]);
   const spellDcs = hasSpellcasting ? Object.fromEntries(Array.from({ length: maximumSpellLevel + 1 }, (_, spellLevel) => [spellLevel, spellSaveDC(castingAbilityScore, spellLevel)])) : {};
@@ -306,14 +311,15 @@ export default function Home() {
   const secondaryHasSpellcasting = Boolean(secondaryPreparedCasting || secondarySpontaneousCasting);
   const secondarySelectedBloodline = useMemo(() => secondaryCharacterClass ? bloodlineFromOptions(secondaryCharacterClass.id, selectedOptions) : undefined, [secondaryCharacterClass, selectedOptions]);
   const secondarySelectedMystery = useMemo(() => secondaryCharacterClass ? mysteryFromOptions(secondaryCharacterClass.id, selectedOptions) : undefined, [secondaryCharacterClass, selectedOptions]);
-  const secondaryBaseSpells = useMemo(() => secondaryHasSpellcasting && secondaryCharacterClass ? spellsAvailableToClass(spells, secondaryCharacterClass.id, secondaryMaximumSpellLevel) : [], [secondaryCharacterClass, secondaryHasSpellcasting, secondaryMaximumSpellLevel]);
+  const secondaryBaseSpells = useMemo(() => secondaryHasSpellcasting && secondaryCharacterClass ? spellsAvailableToClass(spells, secondaryCharacterClass.id, secondaryMaximumSpellLevel, secondaryCharacterClass.spellListAdditions) : [], [secondaryCharacterClass, secondaryHasSpellcasting, secondaryMaximumSpellLevel]);
   const secondaryBloodlineSpells = useMemo(() => secondaryCharacterClass?.id === "sorcerer"
     ? bloodlineBonusSpells(spells, secondarySelectedBloodline, secondaryClassLevel, secondaryCharacterClass.id).filter((spell) => spell.levelByClass[secondaryCharacterClass.id] <= secondaryMaximumSpellLevel)
     : [], [secondaryCharacterClass, secondaryClassLevel, secondaryMaximumSpellLevel, secondarySelectedBloodline]);
   const secondaryMysterySpells = useMemo(() => secondaryCharacterClass?.id === "oracle"
     ? mysteryBonusSpells(spells, secondarySelectedMystery, secondaryClassLevel, secondaryCharacterClass.id).filter((spell) => spell.levelByClass[secondaryCharacterClass.id] <= secondaryMaximumSpellLevel)
     : [], [secondaryCharacterClass, secondaryClassLevel, secondaryMaximumSpellLevel, secondarySelectedMystery]);
-  const secondaryGrantedSpells = useMemo(() => [...secondaryBloodlineSpells, ...secondaryMysterySpells], [secondaryBloodlineSpells, secondaryMysterySpells]);
+  const secondarySelectedOptionSpells = useMemo(() => secondaryBaseSpells.filter((spell) => selectedOptionSpellIds.includes(spell.id)), [secondaryBaseSpells, selectedOptionSpellIds]);
+  const secondaryGrantedSpells = useMemo(() => [...secondaryBloodlineSpells, ...secondaryMysterySpells, ...secondarySelectedOptionSpells], [secondaryBloodlineSpells, secondaryMysterySpells, secondarySelectedOptionSpells]);
   const secondaryAvailableSpells = useMemo(() => mergeSpellLists(secondaryBaseSpells, secondaryGrantedSpells), [secondaryBaseSpells, secondaryGrantedSpells]);
   const secondaryGrantedSpellIds = useMemo(() => secondaryGrantedSpells.map((spell) => spell.id), [secondaryGrantedSpells]);
   const secondaryPreparedLimits = useMemo(() => secondaryPreparedCasting?.prepared ?? [], [secondaryPreparedCasting]);
@@ -410,7 +416,7 @@ export default function Home() {
     const draftPreparedCasting = draftClass.spellcasting && !draftIsSpontaneous ? spellcastingProgression(draftClass, draftPrimaryLevel, { abilityScore: draftAbilityScore }) : null;
     const draftSpontaneousCasting = draftIsSpontaneous ? spontaneousSpellcastingProgression(draftClass, draftPrimaryLevel, { abilityScore: draftAbilityScore }) : null;
     const draftCasting = draftSpontaneousCasting ?? draftPreparedCasting;
-    const draftBaseSpells = draftCasting ? spellsAvailableToClass(spells, draftClass.id, draftCasting.maximumSpellLevel) : [];
+    const draftBaseSpells = draftCasting ? spellsAvailableToClass(spells, draftClass.id, draftCasting.maximumSpellLevel, draftClass.spellListAdditions) : [];
     const draftReservoir = draft.classId === "arcanist" ? arcaneReservoir(draftPrimaryLevel) : null;
     const draftBardLevel = draft.classLevels.find((entry) => entry.classId === "bard")?.level ?? 0;
     const draftDruidLevel = draft.classLevels.find((entry) => entry.classId === "druid")?.level ?? 0;
@@ -419,8 +425,11 @@ export default function Home() {
     const draftOppositionSchoolIds = oppositionSchoolsFromOptions(draft.classId, draft.selectedOptions);
     const draftBloodline = bloodlineFromOptions(draft.classId, draft.selectedOptions);
     const draftBloodlineSpells = draftIsSpontaneous && draftCasting ? bloodlineBonusSpells(spells, draftBloodline, draftPrimaryLevel, draftClass.id).filter((spell) => spell.levelByClass[draftClass.id] <= draftCasting.maximumSpellLevel) : [];
-    const draftSpells = mergeSpellLists(draftBaseSpells, draftBloodlineSpells);
-    const draftBloodlineSpellIds = draftBloodlineSpells.map((spell) => spell.id);
+    const draftOptionSpellIds = Object.values(draft.selectedOptions).flatMap((optionId) => optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId)?.spellId ?? []);
+    const draftOptionSpells = draftBaseSpells.filter((spell) => draftOptionSpellIds.includes(spell.id));
+    const draftGrantedSpells = [...draftBloodlineSpells, ...draftOptionSpells];
+    const draftSpells = mergeSpellLists(draftBaseSpells, draftGrantedSpells);
+    const draftBloodlineSpellIds = draftGrantedSpells.map((spell) => spell.id);
     const draftPrimarySelections = draft.preparedSpellsByClass[draft.classId] ?? draft.preparedSpells;
     const normalizedDraftSpells = draftIsSpontaneous ? normalizeKnownSpells(draftPrimarySelections, draftSpells, draftClass.id, draftSpontaneousCasting?.known ?? [], draftBloodlineSpellIds) : normalizePreparedSpellsWithOpposition(draftPrimarySelections, draftSpells, draftClass.id, draftPreparedCasting?.prepared ?? [], draftOppositionSchoolIds);
     const draftSecondaryAbility = draftSecondaryClass?.spellcasting && abilityNames.includes(draftSecondaryClass.spellcasting.ability as keyof typeof draftAbilities) ? draftSecondaryClass.spellcasting.ability as keyof typeof draftAbilities : null;
@@ -429,7 +438,7 @@ export default function Home() {
     const draftSecondaryPrepared = draftSecondaryClass?.spellcasting && !draftSecondaryIsSpontaneous ? spellcastingProgression(draftSecondaryClass, draftSecondaryLevel?.level ?? 1, { abilityScore: draftSecondaryAbilityScore }) : null;
     const draftSecondarySpontaneous = draftSecondaryClass && draftSecondaryIsSpontaneous ? spontaneousSpellcastingProgression(draftSecondaryClass, draftSecondaryLevel?.level ?? 1, { abilityScore: draftSecondaryAbilityScore }) : null;
     const draftSecondaryCasting = draftSecondarySpontaneous ?? draftSecondaryPrepared;
-    const draftSecondaryBaseSpells = draftSecondaryClass && draftSecondaryCasting ? spellsAvailableToClass(spells, draftSecondaryClass.id, draftSecondaryCasting.maximumSpellLevel) : [];
+    const draftSecondaryBaseSpells = draftSecondaryClass && draftSecondaryCasting ? spellsAvailableToClass(spells, draftSecondaryClass.id, draftSecondaryCasting.maximumSpellLevel, draftSecondaryClass.spellListAdditions) : [];
     const draftSecondaryBloodline = draftSecondaryClass ? bloodlineFromOptions(draftSecondaryClass.id, draft.selectedOptions) : undefined;
     const draftSecondaryMystery = draftSecondaryClass ? mysteryFromOptions(draftSecondaryClass.id, draft.selectedOptions) : undefined;
     const draftSecondaryGranted = draftSecondaryClass?.id === "sorcerer" && draftSecondaryCasting
@@ -437,10 +446,12 @@ export default function Home() {
       : draftSecondaryClass?.id === "oracle" && draftSecondaryCasting
         ? mysteryBonusSpells(spells, draftSecondaryMystery, draftSecondaryLevel?.level ?? 1, draftSecondaryClass.id).filter((spell) => spell.levelByClass[draftSecondaryClass.id] <= draftSecondaryCasting.maximumSpellLevel)
         : [];
-    const draftSecondarySpells = mergeSpellLists(draftSecondaryBaseSpells, draftSecondaryGranted);
+    const draftSecondaryOptionSpells = draftSecondaryBaseSpells.filter((spell) => draftOptionSpellIds.includes(spell.id));
+    const draftAllSecondaryGranted = [...draftSecondaryGranted, ...draftSecondaryOptionSpells];
+    const draftSecondarySpells = mergeSpellLists(draftSecondaryBaseSpells, draftAllSecondaryGranted);
     const draftSecondarySelections = draftSecondaryClass ? (draft.preparedSpellsByClass[draftSecondaryClass.id] ?? []) : [];
     const normalizedDraftSecondarySpells = !draftSecondaryClass ? [] : draftSecondaryIsSpontaneous
-      ? normalizeKnownSpells(draftSecondarySelections, draftSecondarySpells, draftSecondaryClass.id, draftSecondarySpontaneous?.known ?? [], draftSecondaryGranted.map((spell) => spell.id))
+      ? normalizeKnownSpells(draftSecondarySelections, draftSecondarySpells, draftSecondaryClass.id, draftSecondarySpontaneous?.known ?? [], draftAllSecondaryGranted.map((spell) => spell.id))
       : normalizePreparedSpellsWithOpposition(draftSecondarySelections, draftSecondarySpells, draftSecondaryClass.id, draftSecondaryPrepared?.prepared ?? [], oppositionSchoolsFromOptions(draftSecondaryClass.id, draft.selectedOptions));
     const draftTraitIds = normalizeSelectedTraits(draft.selectedTraitIds, traits);
     const draftSecondaryReservoir = draftSecondaryClass?.id === "arcanist" ? arcaneReservoir(draftSecondaryLevel?.level ?? 1) : null;

@@ -8,8 +8,11 @@ test("Paladin receives the complete Core spell list", () => {
   assert.deepEqual(Object.fromEntries([1, 2, 3, 4].map((level) => [
     level,
     paladinSpells.filter((spell) => spell.levelByClass.paladin === level).length
-  ])), { 1: 16, 2: 9, 3: 11, 4: 9 });
-  assert.equal(paladinSpells.length, 45);
+  ])), { 1: 20, 2: 9, 3: 11, 4: 9 });
+  assert.equal(paladinSpells.length, 49);
+  for (const id of ["detect-chaos", "detect-evil", "detect-good", "detect-law"]) {
+    assert.equal(paladinSpells.find((spell) => spell.id === id)?.levelByClass.paladin, 1, id);
+  }
 });
 
 test("Paladin class-level overlays reuse shared spell records", () => {
