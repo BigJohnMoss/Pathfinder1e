@@ -1,0 +1,49 @@
+{
+  "source":{"title":"Advanced Player's Guide","page":47,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#mysteries"},
+  "mysteries":[
+    {
+      "id":"oracle-mystery-flame",
+      "classSkills":["Acrobatics","Climb","Intimidate","Perform"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"burning hands"},{"oracleLevel":4,"spellLevel":2,"name":"resist energy"},{"oracleLevel":6,"spellLevel":3,"name":"fireball"},
+        {"oracleLevel":8,"spellLevel":4,"name":"wall of fire"},{"oracleLevel":10,"spellLevel":5,"name":"summon monster V"},{"oracleLevel":12,"spellLevel":6,"name":"fire seeds"},
+        {"oracleLevel":14,"spellLevel":7,"name":"fire storm"},{"oracleLevel":16,"spellLevel":8,"name":"incendiary cloud"},{"oracleLevel":18,"spellLevel":9,"name":"fiery body"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-burning-magic","name":"Burning Magic","minimumLevel":1,"summary":"Fire spells ignite damaged creatures."},
+        {"id":"oracle-revelation-cinder-dance","name":"Cinder Dance","minimumLevel":1,"summary":"Move faster and master difficult terrain; incompatible with the lame curse."},
+        {"id":"oracle-revelation-fire-breath","name":"Fire Breath","minimumLevel":1,"summary":"Breathe a scaling cone of flame."},
+        {"id":"oracle-revelation-firestorm","name":"Firestorm","minimumLevel":11,"summary":"Create a devastating storm of fire."},
+        {"id":"oracle-revelation-form-of-flame","name":"Form of Flame","minimumLevel":7,"summary":"Transform into a fire elemental."},
+        {"id":"oracle-revelation-gaze-of-flames","name":"Gaze of Flames","minimumLevel":1,"summary":"See through and eventually scry through fire."},
+        {"id":"oracle-revelation-heat-aura","name":"Heat Aura","minimumLevel":1,"summary":"Radiate damaging heat around yourself."},
+        {"id":"oracle-revelation-molten-skin","name":"Molten Skin","minimumLevel":1,"summary":"Gain scaling fire resistance and immunity."},
+        {"id":"oracle-revelation-touch-of-flame","name":"Touch of Flame","minimumLevel":1,"summary":"Burn creatures by touch and empower weapons with flame."},
+        {"id":"oracle-revelation-wings-of-fire","name":"Wings of Fire","minimumLevel":7,"summary":"Fly on wings of living flame."}
+      ],
+      "finalRevelation":"Master fire completely: apply Enlarge Spell, Extend Spell, Silent Spell, or Still Spell to any fire spell without increasing its level or casting time."
+    },
+    {
+      "id":"oracle-mystery-heavens",
+      "classSkills":["Fly","Knowledge (arcana)","Perception","Survival"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"color spray"},{"oracleLevel":4,"spellLevel":2,"name":"hypnotic pattern"},{"oracleLevel":6,"spellLevel":3,"name":"daylight"},
+        {"oracleLevel":8,"spellLevel":4,"name":"rainbow pattern"},{"oracleLevel":10,"spellLevel":5,"name":"overland flight"},{"oracleLevel":12,"spellLevel":6,"name":"chain lightning"},
+        {"oracleLevel":14,"spellLevel":7,"name":"prismatic spray"},{"oracleLevel":16,"spellLevel":8,"name":"sunburst"},{"oracleLevel":18,"spellLevel":9,"name":"meteor swarm"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-awesome-display","name":"Awesome Display","minimumLevel":1,"summary":"Pattern spells affect creatures as though their Hit Dice were lower."},
+        {"id":"oracle-revelation-coat-of-many-stars","name":"Coat of Many Stars","minimumLevel":1,"summary":"Conjure scaling armor of starlight."},
+        {"id":"oracle-revelation-dweller-in-darkness","name":"Dweller in Darkness","minimumLevel":11,"summary":"Summon a terrifying alien presence."},
+        {"id":"oracle-revelation-guiding-star","name":"Guiding Star","minimumLevel":1,"summary":"Gain celestial guidance beneath the night sky."},
+        {"id":"oracle-revelation-interstellar-void","name":"Interstellar Void","minimumLevel":1,"summary":"Expose a foe to freezing interstellar darkness."},
+        {"id":"oracle-revelation-lure-of-the-heavens","name":"Lure of the Heavens","minimumLevel":1,"summary":"Leave no trail, hover, and eventually fly."},
+        {"id":"oracle-revelation-mantle-of-moonlight","name":"Mantle of Moonlight","minimumLevel":1,"summary":"Enrage a creature with a touch and ward against lycanthropes."},
+        {"id":"oracle-revelation-moonlight-bridge","name":"Moonlight Bridge","minimumLevel":1,"summary":"Create a scaling bridge of moonlight."},
+        {"id":"oracle-revelation-spray-of-shooting-stars","name":"Spray of Shooting Stars","minimumLevel":1,"summary":"Blast nearby creatures with starry bursts."},
+        {"id":"oracle-revelation-star-chart","name":"Star Chart","minimumLevel":7,"summary":"Consult the heavens for answers as commune."}
+      ],
+      "finalRevelation":"Become one with the heavens: add Charisma to all saving throws, stabilize automatically, gain fear immunity, confirm critical hits automatically, and return to life three days after death."
+    }
+  ]
+}
