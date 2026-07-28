@@ -184,6 +184,18 @@
       "uses": null
     },
     {
+      "id": "rogue-trap-sense-3",
+      "name": "Trap Sense +1",
+      "level": 3,
+      "type": "scaling",
+      "summary": "Gain +1 on Reflex saves against traps and +1 dodge AC against trap attacks.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "rogue-trap-sense",
+      "scaling": "+1",
+      "uses": null
+    },
+    {
       "id": "uncanny-dodge-4",
       "name": "Uncanny Dodge",
       "level": 4,
@@ -205,6 +217,66 @@
       "optionGroupId": null,
       "progressionKey": null,
       "scaling": null,
+      "uses": null
+    },
+    {
+      "id": "rogue-trap-sense-6",
+      "name": "Trap Sense +2",
+      "level": 6,
+      "type": "scaling",
+      "summary": "Increase the Reflex and dodge bonuses against traps to +2.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "rogue-trap-sense",
+      "scaling": "+2",
+      "uses": null
+    },
+    {
+      "id": "rogue-trap-sense-9",
+      "name": "Trap Sense +3",
+      "level": 9,
+      "type": "scaling",
+      "summary": "Increase the Reflex and dodge bonuses against traps to +3.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "rogue-trap-sense",
+      "scaling": "+3",
+      "uses": null
+    },
+    {
+      "id": "rogue-trap-sense-12",
+      "name": "Trap Sense +4",
+      "level": 12,
+      "type": "scaling",
+      "summary": "Increase the Reflex and dodge bonuses against traps to +4.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "rogue-trap-sense",
+      "scaling": "+4",
+      "uses": null
+    },
+    {
+      "id": "rogue-trap-sense-15",
+      "name": "Trap Sense +5",
+      "level": 15,
+      "type": "scaling",
+      "summary": "Increase the Reflex and dodge bonuses against traps to +5.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "rogue-trap-sense",
+      "scaling": "+5",
+      "uses": null
+    },
+    {
+      "id": "rogue-trap-sense-18",
+      "name": "Trap Sense +6",
+      "level": 18,
+      "type": "scaling",
+      "summary": "Increase the Reflex and dodge bonuses against traps to +6.",
+      "choiceRequired": false,
+      "optionGroupId": null,
+      "progressionKey": "rogue-trap-sense",
+      "scaling": "+6",
       "uses": null
     },
     {
