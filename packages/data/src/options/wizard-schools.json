@@ -1,1 +1,745 @@
-{"id":"wizard-schools","name":"Wizard Arcane Schools","classIds":["wizard"],"options":[{"id":"wizard-school-abjuration","groupId":"wizard-schools","name":"Abjuration School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Specialize in defensive and warding magic. Choose two opposition schools and later prepare one bonus abjuration spell at each available spell level.","powers":[{"name":"Resistance","level":1,"summary":"Choose an energy type when preparing spells and gain resistance 5, increasing to 10 at 11th level and immunity at 20th level."},{"name":"Protective Ward","level":1,"summary":"Create a 10-foot protective field that grants allies a scaling deflection bonus to AC. Uses per day equal 3 + Intelligence modifier."},{"name":"Energy Absorption","level":6,"summary":"Absorb energy damage each day up to a total equal to 3 times wizard level after immunity, vulnerability, and resistance are applied."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}},{"id":"wizard-school-conjuration","groupId":"wizard-schools","name":"Conjuration School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Specialize in summoning, creation, and magical transportation. Choose two opposition schools and later prepare one bonus conjuration spell at each available spell level.","powers":[{"name":"Summoner's Charm","level":1,"summary":"Increase the duration of conjuration summoning spells by half wizard level in rounds, minimum 1; at 20th level one summon monster spell can become permanent."},{"name":"Acid Dart","level":1,"summary":"Make a ranged touch attack within 30 feet for 1d6 acid damage plus 1 per two wizard levels. Uses per day equal 3 + Intelligence modifier."},{"name":"Dimensional Steps","level":8,"summary":"Teleport in 5-foot increments as a standard action, with a daily distance pool equal to 30 feet per wizard level."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}},{"id":"wizard-school-divination","groupId":"wizard-schools","name":"Divination School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Specialize in foresight, remote viewing, and information magic. Choose two opposition schools and later prepare one bonus divination spell at each available spell level.","powers":[{"name":"Forewarned","level":1,"summary":"Always act in surprise rounds and gain an initiative bonus equal to half wizard level, minimum +1; at 20th level treat initiative rolls as natural 20s."},{"name":"Diviner's Fortune","level":1,"summary":"Touch a creature to grant a one-round insight bonus equal to half wizard level on attacks, saves, skills, and ability checks. Uses per day equal 3 + Intelligence modifier."},{"name":"Scrying Adept","level":8,"summary":"Always notice magical observation and treat scrying subjects as one familiarity step closer."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}},{"id":"wizard-school-enchantment","groupId":"wizard-schools","name":"Enchantment School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Specialize in controlling and influencing minds. Choose two opposition schools and later prepare one bonus enchantment spell at each available spell level.","powers":[{"name":"Enchanting Smile","level":1,"summary":"Gain a scaling enhancement bonus on Bluff, Diplomacy, and Intimidate; at 20th level reflect enchantments after a successful save."},{"name":"Dazing Touch","level":1,"summary":"Daze a living creature with no more Hit Dice than wizard level for 1 round with a melee touch attack. Uses per day equal 3 + Intelligence modifier."},{"name":"Aura of Despair","level":8,"summary":"Emit a 30-foot aura for rounds per day equal to wizard level; enemies take -2 on attacks, damage, saves, skills, and ability checks."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}},{"id":"wizard-school-evocation","groupId":"wizard-schools","name":"Evocation School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Specialize in raw magical energy and damaging effects. Choose two opposition schools and later prepare one bonus evocation spell at each available spell level.","powers":[{"name":"Intense Spells","level":1,"summary":"Add half wizard level, minimum +1, to hit point damage from evocation spells once per spell; at 20th level roll twice to overcome spell resistance."},{"name":"Force Missile","level":1,"summary":"Automatically strike a foe with a force missile for 1d4 plus Intense Spells damage. Uses per day equal 3 + Intelligence modifier."},{"name":"Elemental Wall","level":8,"summary":"Create an acid, cold, electricity, or fire wall functioning as wall of fire for rounds per day equal to wizard level."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}},{"id":"wizard-school-illusion","groupId":"wizard-schools","name":"Illusion School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Specialize in deceptive images, figments, and phantasms. Choose two opposition schools and later prepare one bonus illusion spell at each available spell level.","powers":[{"name":"Extended Illusions","level":1,"summary":"Concentration-duration illusions persist for half wizard level in rounds after concentration ends; at 20th level maintain one such illusion permanently."},{"name":"Blinding Ray","level":1,"summary":"Fire a ray within 30 feet that blinds for 1 round, or dazzles creatures with more Hit Dice than wizard level. Uses per day equal 3 + Intelligence modifier."},{"name":"Invisibility Field","level":8,"summary":"Become invisible as greater invisibility using a swift action for rounds per day equal to wizard level."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}},{"id":"wizard-school-necromancy","groupId":"wizard-schools","name":"Necromancy School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Specialize in life force, death, and undead magic. Choose two opposition schools and later prepare one bonus necromancy spell at each available spell level.","powers":[{"name":"Power over Undead","level":1,"summary":"Gain Command Undead or Turn Undead and channel energy 3 + Intelligence modifier times per day only to power that feat."},{"name":"Grave Touch","level":1,"summary":"Make a living creature shaken for half wizard level in rounds; a second touch can frighten a weaker shaken creature. Uses per day equal 3 + Intelligence modifier."},{"name":"Life Sight","level":8,"summary":"Gain short-range blindsight that detects and distinguishes living creatures and undead for rounds per day equal to wizard level."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}},{"id":"wizard-school-transmutation","groupId":"wizard-schools","name":"Transmutation School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Specialize in altering creatures, objects, and physical properties. Choose two opposition schools and later prepare one bonus transmutation spell at each available spell level.","powers":[{"name":"Physical Enhancement","level":1,"summary":"Gain a scaling enhancement bonus to Strength, Dexterity, or Constitution chosen when preparing spells; at 20th level apply it to two scores."},{"name":"Telekinetic Fist","level":1,"summary":"Make a ranged touch attack within 30 feet for 1d4 bludgeoning damage plus 1 per two wizard levels. Uses per day equal 3 + Intelligence modifier."},{"name":"Change Shape","level":8,"summary":"Assume forms as beast shape II or elemental body I for rounds per day equal to wizard level, improving at 12th level."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}},{"id":"wizard-school-universalist","groupId":"wizard-schools","name":"Universalist School","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Study all schools without opposition schools. Universalists do not receive specialist school spell slots.","powers":[{"name":"Hand of the Apprentice","level":1,"summary":"Throw a held melee weapon up to 30 feet using Intelligence instead of Dexterity on the attack roll; it immediately returns. Uses per day equal 3 + Intelligence modifier."},{"name":"Metamagic Mastery","level":8,"summary":"Apply a known metamagic feat without increasing spell level or casting time, with daily uses increasing every two wizard levels after 8th."}],"source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"}}]}
+{
+  "id": "wizard-schools",
+  "name": "Wizard Arcane Schools",
+  "classIds": [
+    "wizard"
+  ],
+  "options": [
+    {
+      "id": "wizard-school-abjuration",
+      "groupId": "wizard-schools",
+      "name": "Abjuration School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Specialize in defensive and warding magic. Choose two opposition schools and later prepare one bonus abjuration spell at each available spell level.",
+      "powers": [
+        {
+          "name": "Resistance",
+          "level": 1,
+          "summary": "Choose an energy type when preparing spells and gain resistance 5, increasing to 10 at 11th level and immunity at 20th level."
+        },
+        {
+          "name": "Protective Ward",
+          "level": 1,
+          "summary": "Create a 10-foot protective field that grants allies a scaling deflection bonus to AC. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Energy Absorption",
+          "level": 6,
+          "summary": "Absorb energy damage each day up to a total equal to 3 times wizard level after immunity, vulnerability, and resistance are applied."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-conjuration",
+      "groupId": "wizard-schools",
+      "name": "Conjuration School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Specialize in summoning, creation, and magical transportation. Choose two opposition schools and later prepare one bonus conjuration spell at each available spell level.",
+      "powers": [
+        {
+          "name": "Summoner's Charm",
+          "level": 1,
+          "summary": "Increase the duration of conjuration summoning spells by half wizard level in rounds, minimum 1; at 20th level one summon monster spell can become permanent."
+        },
+        {
+          "name": "Acid Dart",
+          "level": 1,
+          "summary": "Make a ranged touch attack within 30 feet for 1d6 acid damage plus 1 per two wizard levels. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Dimensional Steps",
+          "level": 8,
+          "summary": "Teleport in 5-foot increments as a standard action, with a daily distance pool equal to 30 feet per wizard level."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-divination",
+      "groupId": "wizard-schools",
+      "name": "Divination School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Specialize in foresight, remote viewing, and information magic. Choose two opposition schools and later prepare one bonus divination spell at each available spell level.",
+      "powers": [
+        {
+          "name": "Forewarned",
+          "level": 1,
+          "summary": "Always act in surprise rounds and gain an initiative bonus equal to half wizard level, minimum +1; at 20th level treat initiative rolls as natural 20s."
+        },
+        {
+          "name": "Diviner's Fortune",
+          "level": 1,
+          "summary": "Touch a creature to grant a one-round insight bonus equal to half wizard level on attacks, saves, skills, and ability checks. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Scrying Adept",
+          "level": 8,
+          "summary": "Always notice magical observation and treat scrying subjects as one familiarity step closer."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-enchantment",
+      "groupId": "wizard-schools",
+      "name": "Enchantment School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Specialize in controlling and influencing minds. Choose two opposition schools and later prepare one bonus enchantment spell at each available spell level.",
+      "powers": [
+        {
+          "name": "Enchanting Smile",
+          "level": 1,
+          "summary": "Gain a scaling enhancement bonus on Bluff, Diplomacy, and Intimidate; at 20th level reflect enchantments after a successful save."
+        },
+        {
+          "name": "Dazing Touch",
+          "level": 1,
+          "summary": "Daze a living creature with no more Hit Dice than wizard level for 1 round with a melee touch attack. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Aura of Despair",
+          "level": 8,
+          "summary": "Emit a 30-foot aura for rounds per day equal to wizard level; enemies take -2 on attacks, damage, saves, skills, and ability checks."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-evocation",
+      "groupId": "wizard-schools",
+      "name": "Evocation School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Specialize in raw magical energy and damaging effects. Choose two opposition schools and later prepare one bonus evocation spell at each available spell level.",
+      "powers": [
+        {
+          "name": "Intense Spells",
+          "level": 1,
+          "summary": "Add half wizard level, minimum +1, to hit point damage from evocation spells once per spell; at 20th level roll twice to overcome spell resistance."
+        },
+        {
+          "name": "Force Missile",
+          "level": 1,
+          "summary": "Automatically strike a foe with a force missile for 1d4 plus Intense Spells damage. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Elemental Wall",
+          "level": 8,
+          "summary": "Create an acid, cold, electricity, or fire wall functioning as wall of fire for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-illusion",
+      "groupId": "wizard-schools",
+      "name": "Illusion School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Specialize in deceptive images, figments, and phantasms. Choose two opposition schools and later prepare one bonus illusion spell at each available spell level.",
+      "powers": [
+        {
+          "name": "Extended Illusions",
+          "level": 1,
+          "summary": "Concentration-duration illusions persist for half wizard level in rounds after concentration ends; at 20th level maintain one such illusion permanently."
+        },
+        {
+          "name": "Blinding Ray",
+          "level": 1,
+          "summary": "Fire a ray within 30 feet that blinds for 1 round, or dazzles creatures with more Hit Dice than wizard level. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Invisibility Field",
+          "level": 8,
+          "summary": "Become invisible as greater invisibility using a swift action for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-necromancy",
+      "groupId": "wizard-schools",
+      "name": "Necromancy School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Specialize in life force, death, and undead magic. Choose two opposition schools and later prepare one bonus necromancy spell at each available spell level.",
+      "powers": [
+        {
+          "name": "Power over Undead",
+          "level": 1,
+          "summary": "Gain Command Undead or Turn Undead and channel energy 3 + Intelligence modifier times per day only to power that feat."
+        },
+        {
+          "name": "Grave Touch",
+          "level": 1,
+          "summary": "Make a living creature shaken for half wizard level in rounds; a second touch can frighten a weaker shaken creature. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Life Sight",
+          "level": 8,
+          "summary": "Gain short-range blindsight that detects and distinguishes living creatures and undead for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-transmutation",
+      "groupId": "wizard-schools",
+      "name": "Transmutation School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Specialize in altering creatures, objects, and physical properties. Choose two opposition schools and later prepare one bonus transmutation spell at each available spell level.",
+      "powers": [
+        {
+          "name": "Physical Enhancement",
+          "level": 1,
+          "summary": "Gain a scaling enhancement bonus to Strength, Dexterity, or Constitution chosen when preparing spells; at 20th level apply it to two scores."
+        },
+        {
+          "name": "Telekinetic Fist",
+          "level": 1,
+          "summary": "Make a ranged touch attack within 30 feet for 1d4 bludgeoning damage plus 1 per two wizard levels. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Change Shape",
+          "level": 8,
+          "summary": "Assume forms as beast shape II or elemental body I for rounds per day equal to wizard level, improving at 12th level."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-universalist",
+      "groupId": "wizard-schools",
+      "name": "Universalist School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Study all schools without opposition schools. Universalists do not receive specialist school spell slots.",
+      "powers": [
+        {
+          "name": "Hand of the Apprentice",
+          "level": 1,
+          "summary": "Throw a held melee weapon up to 30 feet using Intelligence instead of Dexterity on the attack roll; it immediately returns. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Metamagic Mastery",
+          "level": 8,
+          "summary": "Apply a known metamagic feat without increasing spell level or casting time, with daily uses increasing every two wizard levels after 8th."
+        }
+      ],
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-schools"
+      }
+    },
+    {
+      "id": "wizard-school-admixture",
+      "groupId": "wizard-schools",
+      "name": "Admixture School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "evocation",
+      "benefit": "Focus evocation study on changing and manipulating elemental energy. Retain evocation specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Versatile Evocation",
+          "level": 1,
+          "summary": "Change acid, cold, electricity, or fire damage from an evocation spell to another of those energy types. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Elemental Manipulation",
+          "level": 8,
+          "summary": "Emit a 30-foot aura that converts one magical energy type into another for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-banishment",
+      "groupId": "wizard-schools",
+      "name": "Banishment School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "abjuration",
+      "benefit": "Focus abjuration study on disrupting summoned and called creatures. Retain abjuration specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Unstable Bonds",
+          "level": 1,
+          "summary": "A melee touch makes a summoned or called creature shaken and staggered for half wizard level in rounds. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Aura of Banishment",
+          "level": 8,
+          "summary": "Emit a 30-foot aura that staggers and can banish summoned or called creatures after failed Will saves, for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-controller",
+      "groupId": "wizard-schools",
+      "name": "Controller School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "enchantment",
+      "benefit": "Focus enchantment study on commanding creatures and maintaining mental control. Retain enchantment specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Force of Will",
+          "level": 1,
+          "summary": "Communicate telepathically with creatures you charm or dominate; the link becomes two-way at 11th level, and at 20th level resisted enchantments still affect targets for 1 round."
+        },
+        {
+          "name": "Irresistible Demand",
+          "level": 8,
+          "summary": "Dominate a creature with no more Hit Dice than wizard level while concentrating, for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-counterspell",
+      "groupId": "wizard-schools",
+      "name": "Counterspell School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "abjuration",
+      "benefit": "Focus abjuration study on interrupting hostile magic. Retain abjuration specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Disruption",
+          "level": 1,
+          "summary": "Place a disruptive field with a melee touch, forcing concentration checks to cast for half wizard level in rounds. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Counterspell Mastery",
+          "level": 6,
+          "summary": "Gain Improved Counterspell and counterspell as an immediate action once per day, plus one additional use every four levels beyond 6th."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-creation",
+      "groupId": "wizard-schools",
+      "name": "Creation School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "conjuration",
+      "benefit": "Focus conjuration study on creating useful objects. Retain conjuration specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Create Gear",
+          "level": 1,
+          "summary": "Create a simple nonmoving object weighing up to 1 pound per wizard level for 1 minute. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Creator's Will",
+          "level": 8,
+          "summary": "Use minor creation, improving to major creation at 12th level, a number of times per day equal to half wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-enhancement",
+      "groupId": "wizard-schools",
+      "name": "Enhancement School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "transmutation",
+      "benefit": "Focus transmutation study on improving bodies and abilities. Retain transmutation specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Augment",
+          "level": 1,
+          "summary": "Touch a creature to grant a temporary enhancement to one ability score or natural armor. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Perfection of Self",
+          "level": 8,
+          "summary": "As a swift action, grant yourself a one-round enhancement bonus to one ability score equal to half wizard level, maximum +10, for wizard level uses per day."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-foresight",
+      "groupId": "wizard-schools",
+      "name": "Foresight School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "divination",
+      "benefit": "Focus divination study on predicting immediate outcomes. Retain divination specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Prescience",
+          "level": 1,
+          "summary": "Roll a d20 at the start of your turn and substitute that result for one required d20 roll before your next turn. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Foretell",
+          "level": 8,
+          "summary": "Emit a 30-foot aura that grants allies +2 luck bonuses or imposes -2 penalties on enemies for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-generation",
+      "groupId": "wizard-schools",
+      "name": "Generation School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "evocation",
+      "benefit": "Focus evocation study on lingering effects and controlled blasts of air. Retain evocation specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Lingering Evocations",
+          "level": 1,
+          "summary": "Evocation spells with non-instantaneous durations last additional rounds equal to half wizard level; at 20th level opposing dispel checks roll twice and take the worse result."
+        },
+        {
+          "name": "Wind Servant",
+          "level": 1,
+          "summary": "Hurl or catch unattended objects weighing up to 1 pound per wizard level within 30 feet. Uses per day equal 3 + Intelligence modifier."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-life",
+      "groupId": "wizard-schools",
+      "name": "Life School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "necromancy",
+      "benefit": "Focus necromancy study on transferring and restoring life energy. Retain necromancy specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Healing Grace",
+          "level": 1,
+          "summary": "When casting a targeted, area, or attack spell, distribute healing equal to the spell level among affected creatures; this improves at 11th and 20th levels and harms undead instead."
+        },
+        {
+          "name": "Share Essence",
+          "level": 1,
+          "summary": "Take scaling nonlethal damage to grant a touched living creature the same amount of temporary hit points for 1 hour. Uses per day equal 3 + Intelligence modifier."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-manipulator",
+      "groupId": "wizard-schools",
+      "name": "Manipulator School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "enchantment",
+      "benefit": "Focus enchantment study on charm and emotional influence. Retain enchantment specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Beguiling Touch",
+          "level": 1,
+          "summary": "Charm a nonhostile living creature with no more Hit Dice than wizard level for half wizard level in rounds. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Shape Emotions",
+          "level": 8,
+          "summary": "Emit a 30-foot aura that protects allies from mind-affecting effects or penalizes enemies against them, for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-phantasm",
+      "groupId": "wizard-schools",
+      "name": "Phantasm School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "illusion",
+      "benefit": "Focus illusion study on terrifying phantasms. Retain illusion specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Terror",
+          "level": 1,
+          "summary": "A melee touch causes a creature with no more Hit Dice than wizard level to provoke an attack of opportunity. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Bedeviling Aura",
+          "level": 8,
+          "summary": "Emit a 30-foot aura that halves enemy speed, prevents their attacks of opportunity, and causes them to count as flanked, for rounds per day equal to wizard level."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-scryer",
+      "groupId": "wizard-schools",
+      "name": "Scryer School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "divination",
+      "benefit": "Focus divination study on remote observation. Retain divination specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Send Senses",
+          "level": 1,
+          "summary": "Place a visible scrying sensor within medium range and see or hear through it for half wizard level in rounds. Uses per day equal 3 + Intelligence modifier."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-shadow",
+      "groupId": "wizard-schools",
+      "name": "Shadow School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "illusion",
+      "benefit": "Focus illusion study on tangible darkness and travel through shadow. Retain illusion specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Binding Darkness",
+          "level": 1,
+          "summary": "Entangle a foe within 30 feet with a ranged touch attack for scaling rounds. Uses per day equal 3 + Intelligence modifier."
+        },
+        {
+          "name": "Shadow Step",
+          "level": 8,
+          "summary": "Travel through the Shadow Plane up to 30 feet per wizard level per day, in 5-foot increments, arriving slightly off target with 1 round of concealment."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-shapechange",
+      "groupId": "wizard-schools",
+      "name": "Shapechange School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "transmutation",
+      "benefit": "Focus transmutation study on battle-ready natural weapons. Retain transmutation specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Battleshaping",
+          "level": 1,
+          "summary": "Grow a claw, bite, or gore attack for 1 round with a scaling enhancement bonus; grow two weapons at 11th level. Uses per day equal 3 + Intelligence modifier."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-teleportation",
+      "groupId": "wizard-schools",
+      "name": "Teleportation School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "conjuration",
+      "benefit": "Focus conjuration study on short-range teleportation. Retain conjuration specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Shift",
+          "level": 1,
+          "summary": "Teleport as a swift action to a visible space within 5 feet per two wizard levels without provoking. Uses per day equal 3 + Intelligence modifier."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-school-undead",
+      "groupId": "wizard-schools",
+      "name": "Undead School",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "associatedSchool": "necromancy",
+      "benefit": "Focus necromancy study on strengthening undead. Retain necromancy specialist slots and choose two opposition schools.",
+      "powers": [
+        {
+          "name": "Bolster",
+          "level": 1,
+          "summary": "Touch an undead creature to grant scaling profane bonuses, temporary hit points, and turn resistance for half wizard level in rounds. Uses per day equal 3 + Intelligence modifier."
+        }
+      ],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    }
+  ]
+}

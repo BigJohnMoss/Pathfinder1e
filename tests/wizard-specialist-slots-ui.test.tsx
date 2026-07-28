@@ -73,3 +73,25 @@ test("Wizard specialist school slots prepare, cast, refresh, and clear with scho
   assert.equal(thirdSlot.disabled, true);
   assert.equal(firstSlot.options[0].text, "Universalists have no specialist slots");
 });
+
+test("Wizard focused schools expose their APG powers and associated specialist spells", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const school = screen.getAllByText("Arcane School").at(-1)!.closest("label")?.querySelector("select");
+  const firstSlot = screen.getAllByText("1st-level Specialist School Slot").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(school);
+  assert.ok(firstSlot);
+
+  await user.selectOptions(school, "wizard-school-admixture");
+  assert.ok(screen.getByText("Versatile Evocation"));
+  assert.ok(screen.getByText("Elemental Manipulation"));
+  assert.equal([...firstSlot.options].some((option) => option.value === "magic-missile"), true);
+  assert.equal([...firstSlot.options].some((option) => option.value === "mage-armor"), false);
+
+  const firstOpposition = screen.getByLabelText(/First Opposition School/);
+  assert.equal([...firstOpposition.options].some((option) => option.value === "wizard-opposition-evocation"), false);
+});
