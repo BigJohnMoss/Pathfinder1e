@@ -85,3 +85,18 @@ test("Blight Druid exposes its corrupted bond, restricted familiar, and disease 
   for (const id of ["domain-darkness", "domain-death", "domain-destruction"]) assert.ok(applied.druidDomainIds.includes(id));
   assert.match(applied.features.find((feature) => feature.id === "druid-wild-empathy-1").summary, /vermin/);
 });
+
+test("Urban Druid restricts Nature Bond and delays Wild Shape by four levels", async () => {
+  const druid = await load("../packages/data/src/classes/druid.json");
+  const archetype = await load("../packages/data/src/archetypes/druid-urban.json");
+  const applied = applyArchetype(druid, archetype);
+  const features = featuresThroughLevel(applied, 20);
+  const ids = features.map((feature) => feature.id);
+  for (const id of ["druid-nature-bond-1", "urban-druid-spontaneous-casting-1", "urban-druid-lorekeeper-2", "urban-druid-resist-temptation-4", "urban-druid-thousand-faces-6", "urban-druid-mental-strength-9"]) assert.ok(ids.includes(id));
+  for (const id of ["druid-animal-companion-1", "druid-spontaneous-casting-1", "druid-woodland-stride-2", "druid-trackless-step-3", "druid-resist-natures-lure-4", "druid-venom-immunity-9", "druid-thousand-faces-13"]) assert.ok(!ids.includes(id));
+  assert.deepEqual(features.filter((feature) => feature.progressionKey === "druid-wild-shape").map((feature) => feature.level), [8,10,12,14,16,18,20]);
+  assert.equal(applied.wildShapeLevelAdjustment, -4);
+  assert.equal(druidWildShapeUses(20 + applied.wildShapeLevelAdjustment), 7);
+  for (const skill of ["Diplomacy", "Knowledge (history)", "Knowledge (local)", "Knowledge (nobility)"]) assert.ok(applied.classSkills.includes(skill));
+  assert.deepEqual(applied.druidDomainIds, ["domain-charm","domain-community","domain-knowledge","domain-nobility","domain-protection","domain-repose","domain-rune","domain-weather"]);
+});

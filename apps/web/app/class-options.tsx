@@ -211,7 +211,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const needsHuntersBond = companionChoice && !selectedHuntersBond;
     const wrongHuntersBond = companionChoice && selectedHuntersBond?.id !== "ranger-hunters-bond-animal";
     const needsNatureBond = (druidCompanionChoice || druidDomainChoice || druidDomainSlot) && !selectedNatureBond;
-    const hasDomainNatureBond = selectedNatureBond?.id === "druid-nature-bond-domain" || selectedNatureBond?.id === "blight-druid-nature-bond-domain";
+    const hasDomainNatureBond = selectedNatureBond?.id?.endsWith("nature-bond-domain") ?? false;
     const wrongNatureBond = (druidCompanionChoice && selectedNatureBond?.id !== "druid-nature-bond-animal") || ((druidDomainChoice || druidDomainSlot) && !hasDomainNatureBond);
     const needsDeity = (choice.id === "cleric-alignment-1" || (!domainLevel && choice.id.startsWith("cleric-domain-"))) && !selectedDeity;
     const needsAlignment = choice.id === "cleric-channel-energy-type-1" && !selectedAlignment;

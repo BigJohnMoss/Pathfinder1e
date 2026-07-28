@@ -79,6 +79,23 @@ test("Blight Druid unlocks its familiar only after the Familiar nature bond is c
   for (const id of ["domain-darkness", "domain-death", "domain-destruction"]) assert.ok(domain.querySelector(`option[value='${id}']`));
 });
 
+test("Urban Druid exposes urban domains and its delayed Wild Shape progression", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "druid-urban");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Urban Spontaneous Casting", "Lorekeeper", "Resist Temptation", "Mental Strength", "A Thousand Faces"]) assert.ok(screen.getByText(name));
+  assert.equal(screen.queryByText("Animal Companion Choice"), null);
+  assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "7/7 use remaining");
+
+  await user.selectOptions(screen.getByLabelText("Urban Nature Bond"), "urban-druid-nature-bond-domain");
+  const domain = screen.getByLabelText("Nature Domain");
+  for (const id of ["domain-charm","domain-community","domain-knowledge","domain-nobility","domain-protection","domain-repose","domain-rune","domain-weather"]) assert.ok(domain.querySelector(`option[value='${id}']`));
+  assert.equal(domain.querySelector("option[value='domain-air']"), null);
+});
+
 for (const [archetypeId, archetypeName, featureNames] of [
   ["druid-mountain", "Mountain Druid", ["Mountaineer", "Sure-Footed", "Spire Walker", "Mountain Stance", "Mountain Stone"]],
   ["druid-plains", "Plains Druid", ["Plains Traveler", "Run Like the Wind", "Savanna Ambush", "Canny Charger", "Evasion"]],

@@ -1,0 +1,17 @@
+{
+  "id":"urban-druid-nature-bonds",
+  "name":"Urban Druid Nature Bonds",
+  "classIds":["druid"],
+  "options":[
+    {
+      "id":"urban-druid-nature-bond-domain",
+      "groupId":"urban-druid-nature-bonds",
+      "name":"Urban Domain",
+      "classIds":["druid"],
+      "minimumLevel":1,
+      "prerequisites":[],
+      "benefit":"Choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather.",
+      "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+    }
+  ]
+}
