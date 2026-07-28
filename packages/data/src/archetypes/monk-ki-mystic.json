@@ -1,0 +1,14 @@
+{
+  "id":"monk-ki-mystic",
+  "name":"Ki Mystic",
+  "classId":"monk",
+  "summary":"A contemplative martial artist who turns ki into insight, visions, prescience, and shared good fortune.",
+  "replacements":[
+    {"featureIds":["monk-still-mind-3"],"features":[{"id":"ki-mystic-ki-mystic-3","name":"Ki Mystic","level":3,"type":"scaling","summary":"Gain an early Wisdom-based ki pool, +2 on Knowledge checks while ki remains, and spend 1 ki for +4 insight on an ability or skill check.","scaling":"Wisdom modifier at 3rd; half Monk level + Wisdom modifier +2 from 4th"}]},
+    {"featureIds":["monk-purity-of-body-5"],"features":[{"id":"ki-mystic-mystic-insight-5","name":"Mystic Insight","level":5,"type":"core","summary":"Spend 2 ki as an immediate action to let a nearby ally reroll one attack roll or saving throw.","uses":"2 ki"}]},
+    {"featureIds":["monk-diamond-body-11"],"features":[{"id":"ki-mystic-mystic-visions-11","name":"Mystic Visions","level":11,"type":"core","summary":"Receive a nightly divination-like vision by spending 2 points from the next day's ki pool.","uses":"2 ki"}]},
+    {"featureIds":["monk-diamond-soul-13"],"features":[{"id":"ki-mystic-mystic-prescience-13","name":"Mystic Prescience +2","level":13,"type":"scaling","summary":"Gain an insight bonus to AC and CMD.","scaling":"+2; +4 at 20th"}]},
+    {"featureIds":["monk-empty-body-19"],"features":[{"id":"ki-mystic-mystic-persistence-19","name":"Mystic Persistence","level":19,"type":"core","summary":"Once per day, spend at least 2 ki to create an aura in which you and allies roll twice on attacks and saving throws.","uses":"once per day; 2+ ki"}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+}
