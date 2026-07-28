@@ -1,0 +1,52 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-aquatic",
+      "classSkill": "Swim",
+      "arcana": "Water spells use an effective caster level 1 higher, and your summoned creatures with a swim speed or the aquatic or water subtype gain +1 morale on attack and damage rolls.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Hydraulic Push"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Slipstream"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Aqueous Orb"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Geyser"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Control Water"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Beast Shape IV"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Summon Monster 7"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Seamantle"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"World Wave"}
+      ],
+      "bonusFeats": ["Athletic","Brew Potion","Defensive Combat Training","Dodge","Mobility","Silent Spell","Skill Focus (Swim)","Toughness"],
+      "powers": [
+        {"name":"Dehydrating Touch","level":1,"summary":"Make a melee touch attack for 1d6 nonlethal damage plus 1 per two sorcerer levels and sicken the target for 1 round; oozes, plants, and aquatic or water creatures take lethal damage. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Aquatic Adaptation","level":3,"summary":"Gain a 30-foot swim speed. At 9th level gain amphibious, +1 natural armor, cold resistance 5, and blindsense 30 feet underwater; at 15th gain a 60-foot swim speed and blindsense 60 feet underwater."},
+        {"name":"Aquatic Telepathy","level":9,"summary":"Gain 100-foot telepathy with creatures that swim or have the aquatic or water type and use suggestion on them Charisma-modifier times per day; at 15th level call one for service once per day."},
+        {"name":"Raise the Deep","level":15,"summary":"Once per day create stationary water as control water for one round per sorcerer level even where no water exists; double its dimensions at 20th level."},
+        {"name":"Deep One","level":20,"summary":"Gain blindsense 60 feet, DR 10/piercing, cold resistance 20, continuous freedom of movement, and underwater evasion, blindsight 120 feet, and immunity to deep-water pressure."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-boreal",
+      "classSkill": "Survival",
+      "arcana": "Increase the save DC of every spell you cast with the cold descriptor by 1.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Enlarge Person"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Rage"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Elemental Aura"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Wall of Ice"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Cone of Cold"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Transformation"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Giant Form I"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Polar Ray"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Meteor Swarm"}
+      ],
+      "bonusFeats": ["Arcane Strike","Diehard","Empower Spell","Endurance","Exotic Weapon Proficiency","Power Attack","Skill Focus (Intimidate)","Toughness"],
+      "powers": [
+        {"name":"Cold Steel","level":1,"summary":"Give a touched weapon or up to 50 ammunition the frost property for half your sorcerer level in rounds; at 9th level grant icy burst for half the duration. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Icewalker","level":3,"summary":"Gain cold resistance 5 and cross snow and ice without penalty or tracks; at 9th level gain cold resistance 10 and climb ice as spider climb."},
+        {"name":"Snow Shroud","level":9,"summary":"Ignore concealment and Perception penalties from snow, ice, and fog, and surround yourself with a cold fire-shield-like shroud that also grants 20% miss chance and a snowy-area Stealth bonus."},
+        {"name":"Blizzard","level":15,"summary":"Once per day create a control-winds storm centered on you whose outer area also functions as sleet storm and exposes creatures to extreme cold."},
+        {"name":"Child of Ancient Winters","level":20,"summary":"Gain the cold subtype, immunity to fatigue, exhaustion, sneak attacks, and critical hits, and vulnerability to fire."}
+      ]
+    }
+  ]
+}

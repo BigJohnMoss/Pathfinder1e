@@ -53,8 +53,7 @@ test("Sorcerer receives the complete shared Sorcerer/Wizard spell list", () => {
 
 test("Core Sorcerer bloodline selection exposes ten identities", () => {
   assert.equal(bloodlines.id, "sorcerer-bloodlines");
-  assert.equal(bloodlines.options.length, 10);
-  assert.deepEqual(bloodlines.options.map((option) => option.id), [
+  const coreBloodlineIds = [
     "sorcerer-bloodline-aberrant",
     "sorcerer-bloodline-abyssal",
     "sorcerer-bloodline-arcane",
@@ -65,7 +64,11 @@ test("Core Sorcerer bloodline selection exposes ten identities", () => {
     "sorcerer-bloodline-fey",
     "sorcerer-bloodline-infernal",
     "sorcerer-bloodline-undead"
-  ]);
+  ];
+  assert.deepEqual(
+    bloodlines.options.filter((option) => coreBloodlineIds.includes(option.id)).map((option) => option.id),
+    coreBloodlineIds
+  );
   assert.ok(bloodlines.options.every((option) => option.classIds.includes("sorcerer") && option.minimumLevel === 1));
 });
 
