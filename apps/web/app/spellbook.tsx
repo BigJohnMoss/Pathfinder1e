@@ -9,12 +9,12 @@ type SpellTraitBonuses = Record<string, { casterLevel: number; metamagicLevelAdj
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function Spellbook({ spells, spellTraitBonuses = {}, classId, className, castingAbilityName, slots, preparedLimits, spellDcs, maximumSpellLevel, preparedSpellIds, onPreparedSpellIdsChange, slotUses, onSlotUsesChange, reservoir, onReservoirChange, onRefreshDay, oppositionSchoolIds = [] }: { spells: Spell[]; spellTraitBonuses?: SpellTraitBonuses; classId: string; className: string; castingAbilityName: string; slots: Slot[]; preparedLimits: PreparedLimit[]; spellDcs: Record<number, number>; maximumSpellLevel: number; preparedSpellIds: string[]; onPreparedSpellIdsChange: (spellIds: string[]) => void; slotUses: Record<number, number>; onSlotUsesChange: (uses: Record<number, number>) => void; reservoir: { current: number; maximum: number; dailyRefresh: number } | null; onReservoirChange: (value: number) => void; onRefreshDay: () => void; oppositionSchoolIds?: string[] }) {
+export function Spellbook({ spells, spellTraitBonuses = {}, classId, className, castingAbilityName, slots, preparedLimits, spellDcs, maximumSpellLevel, preparedSpellIds, onPreparedSpellIdsChange, slotUses, onSlotUsesChange, reservoir, onReservoirChange, onRefreshDay, oppositionSchoolIds = [], oppositionSpellIds = [] }: { spells: Spell[]; spellTraitBonuses?: SpellTraitBonuses; classId: string; className: string; castingAbilityName: string; slots: Slot[]; preparedLimits: PreparedLimit[]; spellDcs: Record<number, number>; maximumSpellLevel: number; preparedSpellIds: string[]; onPreparedSpellIdsChange: (spellIds: string[]) => void; slotUses: Record<number, number>; onSlotUsesChange: (uses: Record<number, number>) => void; reservoir: { current: number; maximum: number; dailyRefresh: number } | null; onReservoirChange: (value: number) => void; onRefreshDay: () => void; oppositionSchoolIds?: string[]; oppositionSpellIds?: string[] }) {
   const [query, setQuery] = useState("");
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
 
-  const preparedUsage = useMemo(() => preparedSpellSlotUsage(preparedSpellIds, spells, classId, oppositionSchoolIds), [classId, oppositionSchoolIds, preparedSpellIds, spells]);
+  const preparedUsage = useMemo(() => preparedSpellSlotUsage(preparedSpellIds, spells, classId, oppositionSchoolIds, oppositionSpellIds), [classId, oppositionSchoolIds, oppositionSpellIds, preparedSpellIds, spells]);
   const preparedCount = (level: number) => preparedUsage[level] ?? 0;
   const limitFor = (level: number) => preparedLimits.find((entry) => entry.level === level)?.count ?? 0;
   const remainingSlots = (level: number) => { const slot = slots.find((entry) => entry.level === level); return slot ? slot.count - (slotUses[level] ?? 0) : Infinity; };
@@ -46,7 +46,7 @@ export function Spellbook({ spells, spellTraitBonuses = {}, classId, className, 
         <h3>{levelLabel(level)} <small>{spellsAtLevel.length} spells</small></h3>
         <div className="spell-list">{spellsAtLevel.map((spell) => {
           const prepared = preparedSpellIds.filter((id) => id === spell.id).length;
-          const preparationCost = spellPreparationCost(spell, oppositionSchoolIds);
+          const preparationCost = spellPreparationCost(spell, oppositionSchoolIds, oppositionSpellIds);
           const full = preparedCount(level) + preparationCost > limitFor(level);
           const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
