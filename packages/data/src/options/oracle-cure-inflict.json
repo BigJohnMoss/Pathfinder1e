@@ -1,0 +1,20 @@
+{
+  "id": "oracle-cure-inflict",
+  "name": "Oracle Cure or Inflict Spells",
+  "classIds": ["oracle"],
+  "optionDefaults": {
+    "groupId": "oracle-cure-inflict",
+    "classIds": ["oracle"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Advanced Player's Guide",
+      "page": 43,
+      "url": "https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#spells"
+    }
+  },
+  "options": [
+    {"id":"oracle-cure-spells","name":"Cure Spells","benefit":"Add every cure spell to spells known as soon as you can cast spells of its level."},
+    {"id":"oracle-inflict-spells","name":"Inflict Spells","benefit":"Add every inflict spell to spells known as soon as you can cast spells of its level."}
+  ]
+}

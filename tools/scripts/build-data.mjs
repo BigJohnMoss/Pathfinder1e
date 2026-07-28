@@ -22,7 +22,8 @@ const spells=sourceSpells.map(spell=>{
   const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
   const sharedArcaneLevel=withWizard?.wizard??withWizard?.arcanist;
   const sharedLevelByClass=sharedArcaneLevel!==undefined&&withWizard?.sorcerer===undefined?{...withWizard,sorcerer:sharedArcaneLevel}:withWizard;
-  const levelByClass={...sharedLevelByClass,...(spellClassLevels[spell.id]??{})};
+  const withClassOverlays={...sharedLevelByClass,...(spellClassLevels[spell.id]??{})};
+  const levelByClass=withClassOverlays.cleric!==undefined&&withClassOverlays.oracle===undefined?{...withClassOverlays,oracle:withClassOverlays.cleric}:withClassOverlays;
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);

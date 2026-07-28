@@ -10,12 +10,12 @@ function orderedById<T extends { id: string }>(items: readonly T[], ids: readonl
   });
 }
 
-export const classes = orderedById<CharacterClass>(generatedData.classes, ["arcanist", "barbarian", "bard", "cleric", "druid", "fighter", "monk", "paladin", "ranger", "rogue", "sorcerer", "wizard"]);
+export const classes = orderedById<CharacterClass>(generatedData.classes, ["arcanist", "barbarian", "bard", "cleric", "druid", "fighter", "monk", "oracle", "paladin", "ranger", "rogue", "sorcerer", "wizard"]);
 export const archetypes = [...generatedData.archetypes].sort((left, right) => left.name.localeCompare(right.name)) as CharacterArchetype[];
 export const ancestries = orderedById<CharacterAncestry>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
 export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name));
 export const traits = [...generatedData.traits].sort((left, right) => left.name.localeCompare(right.name)) as CharacterTrait[];
-export const optionGroups = orderedById<CharacterOptionGroup>(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "bard-versatile-performances", "cleric-deities", "cleric-alignments", "cleric-channel-energy", "cleric-domains", "druid-nature-bonds", "paladin-mercies", "paladin-divine-bonds", "ranger-favored-enemies", "ranger-combat-styles", "ranger-combat-style-feats", "ranger-favored-terrains", "ranger-hunters-bonds", "ranger-animal-companions", "sorcerer-bloodlines", "wizard-arcane-bonds", "wizard-familiars", "wizard-bonded-objects", "wizard-schools", "wizard-opposition-schools", "rogue-talents", "combat-feats", "fighter-weapon-groups"]);
+export const optionGroups = orderedById<CharacterOptionGroup>(generatedData.optionGroups, ["arcanist-exploits", "rage-powers", "bard-versatile-performances", "cleric-deities", "cleric-alignments", "cleric-channel-energy", "cleric-domains", "druid-nature-bonds", "oracle-mysteries", "oracle-curses", "oracle-cure-inflict", "paladin-mercies", "paladin-divine-bonds", "ranger-favored-enemies", "ranger-combat-styles", "ranger-combat-style-feats", "ranger-favored-terrains", "ranger-hunters-bonds", "ranger-animal-companions", "sorcerer-bloodlines", "wizard-arcane-bonds", "wizard-familiars", "wizard-bonded-objects", "wizard-schools", "wizard-opposition-schools", "rogue-talents", "combat-feats", "fighter-weapon-groups"]);
 export const spells = generatedData.spells;
 
 export const skills = [
