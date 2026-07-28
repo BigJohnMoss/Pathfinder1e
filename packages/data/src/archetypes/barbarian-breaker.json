@@ -1,0 +1,84 @@
+{
+  "id": "barbarian-breaker",
+  "name": "Breaker",
+  "classId": "barbarian",
+  "summary": "A destructive barbarian who turns broken and improvised weapons into tools of devastation.",
+  "replacements": [
+    {
+      "featureIds": ["fast-movement-1"],
+      "features": [
+        {
+          "id": "breaker-destructive-1",
+          "name": "Destructive",
+          "level": 1,
+          "type": "core",
+          "summary": "Add half your barbarian level (minimum +1) to melee damage against unattended objects and on sunder combat maneuvers."
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["trap-sense"],
+      "features": [
+        {
+          "id": "breaker-battle-scavenger-3",
+          "name": "Battle Scavenger",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Take no attack penalty with improvised weapons or weapons with the broken condition.",
+          "progressionKey": "breaker-battle-scavenger",
+          "scaling": "No attack penalty"
+        },
+        {
+          "id": "breaker-battle-scavenger-6",
+          "name": "Battle Scavenger +1",
+          "level": 6,
+          "type": "scaling",
+          "summary": "Gain +1 damage with improvised weapons and weapons with the broken condition.",
+          "progressionKey": "breaker-battle-scavenger",
+          "scaling": "+1 damage"
+        },
+        {
+          "id": "breaker-battle-scavenger-9",
+          "name": "Battle Scavenger +2",
+          "level": 9,
+          "type": "scaling",
+          "summary": "Gain +2 damage with improvised weapons and weapons with the broken condition.",
+          "progressionKey": "breaker-battle-scavenger",
+          "scaling": "+2 damage"
+        },
+        {
+          "id": "breaker-battle-scavenger-12",
+          "name": "Battle Scavenger +3",
+          "level": 12,
+          "type": "scaling",
+          "summary": "Gain +3 damage with improvised weapons and weapons with the broken condition.",
+          "progressionKey": "breaker-battle-scavenger",
+          "scaling": "+3 damage"
+        },
+        {
+          "id": "breaker-battle-scavenger-15",
+          "name": "Battle Scavenger +4",
+          "level": 15,
+          "type": "scaling",
+          "summary": "Gain +4 damage with improvised weapons and weapons with the broken condition.",
+          "progressionKey": "breaker-battle-scavenger",
+          "scaling": "+4 damage"
+        },
+        {
+          "id": "breaker-battle-scavenger-18",
+          "name": "Battle Scavenger +5",
+          "level": 18,
+          "type": "scaling",
+          "summary": "Gain +5 damage with improvised weapons and weapons with the broken condition.",
+          "progressionKey": "breaker-battle-scavenger",
+          "scaling": "+5 damage"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  }
+}
