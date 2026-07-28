@@ -68,6 +68,26 @@
     {"id":"oracle-revelation-sidestep-secret","mysteryId":"oracle-mystery-lore","name":"Sidestep Secret","minimumLevel":1,"benefit":"Use Charisma instead of Dexterity for Armor Class and Reflex saves."},
     {"id":"oracle-revelation-spontaneous-symbology","mysteryId":"oracle-mystery-lore","name":"Spontaneous Symbology","minimumLevel":11,"benefit":"Cast any symbol spell with an appropriate slot even when it is not known."},
     {"id":"oracle-revelation-think-on-it","mysteryId":"oracle-mystery-lore","name":"Think On It","minimumLevel":1,"benefit":"Retry one failed Knowledge check per day with a +10 competence bonus."},
-    {"id":"oracle-revelation-whirlwind-lesson","mysteryId":"oracle-mystery-lore","name":"Whirlwind Lesson","minimumLevel":1,"benefit":"Study magical tomes quickly and eventually share their benefits with allies."}
+    {"id":"oracle-revelation-whirlwind-lesson","mysteryId":"oracle-mystery-lore","name":"Whirlwind Lesson","minimumLevel":1,"benefit":"Study magical tomes quickly and eventually share their benefits with allies."},
+    {"id":"oracle-revelation-bonded-mount","mysteryId":"oracle-mystery-nature","name":"Bonded Mount","minimumLevel":1,"benefit":"Gain a loyal mount that advances as a druid animal companion."},
+    {"id":"oracle-revelation-erosion-touch","mysteryId":"oracle-mystery-nature","name":"Erosion Touch","minimumLevel":1,"benefit":"Damage objects and constructs with a scaling melee touch."},
+    {"id":"oracle-revelation-friend-to-animals","mysteryId":"oracle-mystery-nature","name":"Friend to the Animals","minimumLevel":1,"benefit":"Add summon nature's ally spells and bolster nearby animals' saves."},
+    {"id":"oracle-revelation-life-leach","mysteryId":"oracle-mystery-nature","name":"Life Leach","minimumLevel":7,"benefit":"Drain a living creature and gain temporary hit points."},
+    {"id":"oracle-revelation-natural-divination","mysteryId":"oracle-mystery-nature","name":"Natural Divination","minimumLevel":1,"benefit":"Read natural signs for a save, skill, or initiative bonus."},
+    {"id":"oracle-revelation-natures-whispers","mysteryId":"oracle-mystery-nature","name":"Nature's Whispers","minimumLevel":1,"benefit":"Use Charisma instead of Dexterity for Armor Class and CMD."},
+    {"id":"oracle-revelation-speak-with-animals","mysteryId":"oracle-mystery-nature","name":"Speak with Animals","minimumLevel":1,"benefit":"Converse with an increasing number of animal kinds."},
+    {"id":"oracle-revelation-spirit-of-nature","mysteryId":"oracle-mystery-nature","name":"Spirit of Nature","minimumLevel":1,"benefit":"Stabilize automatically and gain healing when near death."},
+    {"id":"oracle-revelation-transcendental-bond","mysteryId":"oracle-mystery-nature","name":"Transcendental Bond","minimumLevel":1,"benefit":"Communicate with designated allies and later deliver touch spells."},
+    {"id":"oracle-revelation-undo-artifice","mysteryId":"oracle-mystery-nature","name":"Undo Artifice","minimumLevel":11,"benefit":"Permanently reduce crafted objects to natural raw materials."},
+    {"id":"oracle-revelation-acid-skin","mysteryId":"oracle-mystery-stone","name":"Acid Skin","minimumLevel":1,"benefit":"Gain scaling acid resistance and eventual immunity."},
+    {"id":"oracle-revelation-clobbering-strike","mysteryId":"oracle-mystery-stone","name":"Clobbering Strike","minimumLevel":1,"benefit":"Trip a foe after a critical spell attack."},
+    {"id":"oracle-revelation-crystal-sight","mysteryId":"oracle-mystery-stone","name":"Crystal Sight","minimumLevel":1,"benefit":"See through earth, stone, sand, and thinner metal."},
+    {"id":"oracle-revelation-earth-glide","mysteryId":"oracle-mystery-stone","name":"Earth Glide","minimumLevel":7,"benefit":"Move through natural earth and carry passengers."},
+    {"id":"oracle-revelation-mighty-pebble","mysteryId":"oracle-mystery-stone","name":"Mighty Pebble","minimumLevel":1,"benefit":"Charge a stone into an explosive scaling projectile."},
+    {"id":"oracle-revelation-rock-throwing","mysteryId":"oracle-mystery-stone","name":"Rock Throwing","minimumLevel":1,"benefit":"Throw appropriately sized rocks with practiced accuracy."},
+    {"id":"oracle-revelation-shard-explosion","mysteryId":"oracle-mystery-stone","name":"Shard Explosion","minimumLevel":1,"benefit":"Burst into damaging shards that create difficult terrain."},
+    {"id":"oracle-revelation-steelbreaker-skin","mysteryId":"oracle-mystery-stone","name":"Steelbreaker Skin","minimumLevel":7,"benefit":"Harden your skin so striking weapons take damage."},
+    {"id":"oracle-revelation-stone-stability","mysteryId":"oracle-mystery-stone","name":"Stone Stability","minimumLevel":1,"benefit":"Resist bull rushes and trips and gain the Trip feat chain."},
+    {"id":"oracle-revelation-touch-of-acid","mysteryId":"oracle-mystery-stone","name":"Touch of Acid","minimumLevel":1,"benefit":"Deal acid damage by touch and later empower held weapons."}
   ]
 }
