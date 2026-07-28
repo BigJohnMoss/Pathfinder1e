@@ -278,7 +278,13 @@ export function applyArchetype(characterClass, archetype) {
   const overrides = new Map((archetype.featureOverrides ?? []).map(override => [override.featureId, override]));
   const retained = characterClass.features
     .filter(feature => !featureIds.has(feature.id) && !progressionKeys.has(feature.progressionKey))
-    .map(feature => overrides.has(feature.id) ? { ...feature, summary: overrides.get(feature.id).summary } : feature);
+    .map(feature => {
+      const overridden = overrides.has(feature.id) ? { ...feature, summary: overrides.get(feature.id).summary } : feature;
+      return feature.progressionKey === "druid-wild-shape" && archetype.wildShapeLevelAdjustment
+        ? { ...overridden, level: feature.level - archetype.wildShapeLevelAdjustment }
+        : overridden;
+    })
+    .filter(feature => feature.level <= 20);
   const replacements = archetype.replacements.flatMap(replacement => replacement.features);
   return {
     ...characterClass,

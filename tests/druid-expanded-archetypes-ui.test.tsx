@@ -40,3 +40,19 @@ for (const [archetypeId, archetypeName, featureNames] of [
   assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "8/8 use remaining");
   assert.equal(screen.queryByText("A Thousand Faces"), null);
 });
+
+for (const [archetypeId, archetypeName, featureNames] of [
+  ["druid-desert", "Desert Druid", ["Desert Native", "Sandwalker", "Desert Endurance", "Shaded Vision", "Dunemeld"]],
+  ["druid-jungle", "Jungle Druid", ["Jungle Guardian", "Woodland Stride", "Torrid Endurance", "Verdant Sentinel"]]
+] as const) test(`${archetypeName} exposes its complete terrain progression`, async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  const archetype = screen.getByLabelText("Archetype");
+  await user.selectOptions(archetype, archetypeId);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of featureNames) assert.ok(screen.getByText(name));
+  assert.equal(screen.getByLabelText("Wild Shape remaining").textContent, "8/8 use remaining");
+  assert.equal(screen.queryByText("A Thousand Faces"), null);
+});
