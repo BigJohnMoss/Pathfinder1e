@@ -97,6 +97,7 @@ test("Magician exposes expanded repertoire and bonded-object choices", async () 
   assert.ok(bondedObject.querySelector("option[value='magician-bonded-object-wand']"));
   assert.equal(bondedObject.querySelector("option")?.textContent?.includes("Weapon"), false);
   await user.click(screen.getByRole("tab", { name: "Spells" }));
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   assert.equal(screen.getByLabelText("Mage Armor known").textContent, "Feature");
   assert.equal(screen.getByRole("button", { name: "Forget Mage Armor" }).hasAttribute("disabled"), true);
 });
