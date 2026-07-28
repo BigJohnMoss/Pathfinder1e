@@ -1,0 +1,155 @@
+{
+  "source": {"title": "Advanced Player's Guide", "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"},
+  "subdomains": [
+    {
+      "id": "subdomain-decay", "groupId": "cleric-domains", "name": "Decay Subdomain (Plant)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Bramble Armor with Aura of Decay and replace the Plant domain's 3rd-, 4th-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 87, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#decay-subdomain"},
+      "parentDomainId": "domain-plant", "replacesPower": "Bramble Armor",
+      "powers": [
+        {"name": "Wooden Fist", "level": 1, "summary": "As a free action, make unarmed strikes without provoking attacks of opportunity, deal lethal damage, and add half cleric level to damage. Usable for rounds per day equal to 3 + Wisdom modifier."},
+        {"name": "Aura of Decay", "level": 8, "summary": "As a standard action, emit a 30-foot aura for rounds per day equal to cleric level. Living creatures other than you take 1d6 damage and a cumulative -1 Strength penalty each round; plants take 2d6 damage."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "entangle"}, {"level": 2, "name": "barkskin"}, {"level": 3, "name": "contagion"},
+        {"level": 4, "name": "poison"}, {"level": 5, "name": "wall of thorns"}, {"level": 6, "name": "harm"},
+        {"level": 7, "name": "animate plants"}, {"level": 8, "name": "control plants"}, {"level": 9, "name": "shambler"}
+      ]
+    },
+    {
+      "id": "subdomain-growth", "groupId": "cleric-domains", "name": "Growth Subdomain (Plant)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Wooden Fist with Enlarge and replace the Plant domain's 1st- and 5th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 90, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#growth-subdomain"},
+      "parentDomainId": "domain-plant", "replacesPower": "Wooden Fist",
+      "powers": [
+        {"name": "Enlarge", "level": 1, "summary": "As a swift action, enlarge yourself for 1 round as enlarge person. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Bramble Armor", "level": 6, "summary": "As a free action, grow thorns that deal 1d6 piercing damage plus 1 per two cleric levels to creatures striking you with unarmed or non-reach melee attacks. Usable for rounds per day equal to cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "enlarge person"}, {"level": 2, "name": "barkskin"}, {"level": 3, "name": "plant growth"},
+        {"level": 4, "name": "command plants"}, {"level": 5, "name": "righteous might"}, {"level": 6, "name": "repel wood"},
+        {"level": 7, "name": "animate plants"}, {"level": 8, "name": "control plants"}, {"level": 9, "name": "shambler"}
+      ]
+    },
+    {
+      "id": "subdomain-deception", "groupId": "cleric-domains", "name": "Deception Subdomain (Trickery)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Copycat with Sudden Shift and replace the Trickery domain's 2nd- and 7th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 88, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#deception-subdomain"},
+      "parentDomainId": "domain-trickery", "replacesPower": "Copycat",
+      "powers": [
+        {"name": "Sudden Shift", "level": 1, "summary": "As an immediate action after a melee attack misses you, teleport up to 10 feet to a visible space within the attacker's reach. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Master's Illusion", "level": 8, "summary": "As a standard action, create a veil-like illusion affecting you and allies within 30 feet. Usable for a total number of rounds per day equal to cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "disguise self"}, {"level": 2, "name": "mirror image"}, {"level": 3, "name": "nondetection"},
+        {"level": 4, "name": "confusion"}, {"level": 5, "name": "false vision"}, {"level": 6, "name": "mislead"},
+        {"level": 7, "name": "project image"}, {"level": 8, "name": "mass invisibility"}, {"level": 9, "name": "time stop"}
+      ]
+    },
+    {
+      "id": "subdomain-thievery", "groupId": "cleric-domains", "name": "Thievery Subdomain (Trickery)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Master's Illusion with Thief of the Gods and replace the Trickery domain's 3rd- and 7th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 95, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#thievery-subdomain"},
+      "parentDomainId": "domain-trickery", "replacesPower": "Master's Illusion",
+      "powers": [
+        {"name": "Copycat", "level": 1, "summary": "As a move action, create one mirror image that lasts for rounds equal to cleric level or until destroyed. Only one can exist at a time. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Thief of the Gods", "level": 8, "summary": "As a free action, roll a Disable Device or Sleight of Hand check twice and take the higher result. Usable once per day at 8th level, plus once per two levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "disguise self"}, {"level": 2, "name": "invisibility"}, {"level": 3, "name": "locate object"},
+        {"level": 4, "name": "confusion"}, {"level": 5, "name": "false vision"}, {"level": 6, "name": "mislead"},
+        {"level": 7, "name": "ethereal jaunt"}, {"level": 8, "name": "mass invisibility"}, {"level": 9, "name": "time stop"}
+      ]
+    },
+    {
+      "id": "subdomain-blood", "groupId": "cleric-domains", "name": "Blood Subdomain (War)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Weapon Master with Wounding Blade and replace the War domain's 3rd-, 5th-, and 7th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 85, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#blood-subdomain"},
+      "parentDomainId": "domain-war", "replacesPower": "Weapon Master",
+      "powers": [
+        {"name": "Battle Rage", "level": 1, "summary": "As a standard action, touch a creature to grant a bonus on melee damage rolls equal to half cleric level, minimum +1, for 1 round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Wounding Blade", "level": 8, "summary": "Give a touched weapon the wounding special quality for rounds equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "magic weapon"}, {"level": 2, "name": "spiritual weapon"}, {"level": 3, "name": "vampiric touch"},
+        {"level": 4, "name": "divine power"}, {"level": 5, "name": "wall of thorns"}, {"level": 6, "name": "blade barrier"},
+        {"level": 7, "name": "mass inflict serious wounds"}, {"level": 8, "name": "power word stun"}, {"level": 9, "name": "power word kill"}
+      ]
+    },
+    {
+      "id": "subdomain-tactics", "groupId": "cleric-domains", "name": "Tactics Subdomain (War)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Battle Rage with Seize the Initiative and replace the War domain's 2nd-, 5th-, and 8th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 95, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#tactics-subdomain"},
+      "parentDomainId": "domain-war", "replacesPower": "Battle Rage",
+      "powers": [
+        {"name": "Seize the Initiative", "level": 1, "summary": "When you and your allies roll initiative, let one ally within 30 feet roll twice and choose either result before results are revealed. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Weapon Master", "level": 8, "summary": "As a swift action, gain the use of one combat feat whose prerequisites you meet. Usable for a total number of rounds per day equal to cleric level, and the feat can change each activation."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "magic weapon"}, {"level": 2, "name": "aid"}, {"level": 3, "name": "magic vestment"},
+        {"level": 4, "name": "divine power"}, {"level": 5, "name": "greater command"}, {"level": 6, "name": "blade barrier"},
+        {"level": 7, "name": "power word blind"}, {"level": 8, "name": "greater planar ally"}, {"level": 9, "name": "power word kill"}
+      ]
+    },
+    {
+      "id": "subdomain-ice", "groupId": "cleric-domains", "name": "Ice Subdomain (Water)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Cold Resistance with Body of Ice and replace the Water domain's 7th- and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 90, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#ice-subdomain"},
+      "parentDomainId": "domain-water", "replacesPower": "Cold Resistance",
+      "powers": [
+        {"name": "Icicle", "level": 1, "summary": "As a standard action, make a ranged touch attack against a foe within 30 feet. It deals 1d6 cold damage plus 1 for every two cleric levels. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Body of Ice", "level": 8, "summary": "As a standard action, become immune to cold and gain DR 5/— while taking double fire damage. End as a free action; usable for rounds per day equal to cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "obscuring mist"}, {"level": 2, "name": "fog cloud"}, {"level": 3, "name": "water breathing"},
+        {"level": 4, "name": "control water"}, {"level": 5, "name": "ice storm"}, {"level": 6, "name": "cone of cold"},
+        {"level": 7, "name": "freezing sphere"}, {"level": 8, "name": "horrid wilting"}, {"level": 9, "name": "polar ray"}
+      ]
+    },
+    {
+      "id": "subdomain-oceans", "groupId": "cleric-domains", "name": "Oceans Subdomain (Water)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Icicle with Surge and replace the Water domain's 2nd-, 3rd-, and 9th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 92, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#oceans-subdomain"},
+      "parentDomainId": "domain-water", "replacesPower": "Icicle",
+      "powers": [
+        {"name": "Surge", "level": 1, "summary": "As a standard action, make a combat maneuver check using cleric level + Wisdom modifier to push or pull one creature as a bull rush or drag. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Cold Resistance", "level": 6, "summary": "Gain cold resistance 10 at 6th level, increasing to 20 at 12th level and immunity at 20th level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "obscuring mist"}, {"level": 2, "name": "slipstream"}, {"level": 3, "name": "water walk"},
+        {"level": 4, "name": "control water"}, {"level": 5, "name": "ice storm"}, {"level": 6, "name": "cone of cold"},
+        {"level": 7, "name": "elemental body IV (water only)"}, {"level": 8, "name": "horrid wilting"}, {"level": 9, "name": "tsunami"}
+      ]
+    },
+    {
+      "id": "subdomain-seasons", "groupId": "cleric-domains", "name": "Seasons Subdomain (Weather)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Storm Burst with Untouched by the Seasons and replace the Weather domain's 1st-, 4th-, and 8th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 94, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#seasons-subdomain"},
+      "parentDomainId": "domain-weather", "replacesPower": "Storm Burst",
+      "powers": [
+        {"name": "Untouched by the Seasons", "level": 1, "summary": "Touch a creature to grant endure elements for 1 hour per cleric level. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Lightning Lord", "level": 8, "summary": "Call down a number of lightning bolts per day equal to cleric level. Any number may be used with one standard action, but each creature can be targeted only once and targets must be within 30 feet of each other; otherwise functions as call lightning."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "goodberry"}, {"level": 2, "name": "fog cloud"}, {"level": 3, "name": "call lightning"},
+        {"level": 4, "name": "blight"}, {"level": 5, "name": "ice storm"}, {"level": 6, "name": "control winds"},
+        {"level": 7, "name": "control weather"}, {"level": 8, "name": "sunburst"}, {"level": 9, "name": "storm of vengeance"}
+      ]
+    },
+    {
+      "id": "subdomain-storms", "groupId": "cleric-domains", "name": "Storms Subdomain (Weather)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Lightning Lord with Gale Aura and replace the Weather domain's 5th- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 95, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#storms-subdomain"},
+      "parentDomainId": "domain-weather", "replacesPower": "Lightning Lord",
+      "powers": [
+        {"name": "Storm Burst", "level": 1, "summary": "As a standard action, make a ranged touch attack against a foe within 30 feet. Deal 1d6 nonlethal damage plus 1 per two cleric levels and impose a -2 penalty on attack rolls for 1 round. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Gale Aura", "level": 6, "summary": "As a standard action, create a 30-foot aura where creatures cannot take 5-foot steps and enemies treat squares moving closer to you as difficult terrain. Usable for rounds per day equal to cleric level."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "obscuring mist"}, {"level": 2, "name": "fog cloud"}, {"level": 3, "name": "call lightning"},
+        {"level": 4, "name": "sleet storm"}, {"level": 5, "name": "call lightning storm"}, {"level": 6, "name": "sirocco"},
+        {"level": 7, "name": "control weather"}, {"level": 8, "name": "whirlwind"}, {"level": 9, "name": "storm of vengeance"}
+      ]
+    }
+  ]
+}

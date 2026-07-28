@@ -74,13 +74,14 @@ Native store packages for Microsoft Store or Google Play are optional later work
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
 - archetypes — in progress: reusable replacement schema and complete APG Fighter Archer
-- subdomains - in progress: APG schema plus Cloud, Wind, Caves, Metal, Feather,
+- subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
   Azata, Restoration, Resurrection, Heroism, Honor, Memory, Thought, Inevitable,
   Freedom, Revolution, Curse, Fate, Insanity, Nightmare, Arcane, Divine,
   Leadership, Martyr, Defense, Purity, Ancestors, Souls, Language, and Wards
-  selections, plus Ferocity, Resolve, Day, Light, Exploration, and Trade
+  selections, plus Ferocity, Resolve, Day, Light, Exploration, Trade, Decay,
+  Growth, Deception, Thievery, Blood, Tactics, Ice, Oceans, Seasons, and Storms
   (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
