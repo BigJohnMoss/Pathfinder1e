@@ -22,6 +22,7 @@ import { abilityBoostCount, abilityNames, applyArchetype, arcaneReservoir, avail
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells, bloodlineClassSkills } from "../../../packages/engine/src/sorcerer-bloodlines.js";
+import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
 import type { ActiveEffect, CharacterDraftV1 } from "../../../packages/types/src/index.js";
 
 const labels = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
@@ -32,6 +33,9 @@ const oppositionSchoolsFromOptions = (selectedClassId: string, options: Record<s
   : [];
 const bloodlineFromOptions = (selectedClassId: string, options: Record<string, string>) => selectedClassId === "sorcerer"
   ? optionGroups.find((group) => group.id === "sorcerer-bloodlines")?.options.find((option) => option.id === options["sorcerer-bloodline-1"])
+  : undefined;
+const mysteryFromOptions = (selectedClassId: string, options: Record<string, string>) => selectedClassId === "oracle"
+  ? optionGroups.find((group) => group.id === "oracle-mysteries")?.options.find((option) => option.id === options["oracle-mystery-1"])
   : undefined;
 
 function mergeSpellLists<T extends { id: string }>(baseSpells: T[], grantedSpells: T[]) {
@@ -80,6 +84,7 @@ export default function Home() {
   const ancestry = ancestries.find((item) => item.id === ancestryId) ?? ancestries[0];
   const selectedTraitBonuses = useMemo(() => traitBonuses(selectedTraitIds, traits, selectedTraitChoices, { spells, classes, classId }), [classId, selectedTraitChoices, selectedTraitIds]);
   const selectedBloodline = useMemo(() => bloodlineFromOptions(classId, selectedOptions), [classId, selectedOptions]);
+  const selectedMystery = useMemo(() => mysteryFromOptions(classId, selectedOptions), [classId, selectedOptions]);
   const selectedBloodlineClassSkill = selectedOptions["sorcerer-bloodline-class-skill"];
   const selectedOptionClassSkills = useMemo(() => {
     const selectedIds = new Set(Object.values(selectedOptions));
@@ -202,8 +207,12 @@ export default function Home() {
   const bloodlineSpells = useMemo(() => classId === "sorcerer"
     ? bloodlineBonusSpells(spells, selectedBloodline, level, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
     : [], [characterClass.id, classId, level, maximumSpellLevel, selectedBloodline]);
-  const availableSpells = useMemo(() => mergeSpellLists(baseAvailableSpells, bloodlineSpells), [baseAvailableSpells, bloodlineSpells]);
-  const bloodlineSpellIds = useMemo(() => bloodlineSpells.map((spell) => spell.id), [bloodlineSpells]);
+  const mysterySpells = useMemo(() => classId === "oracle"
+    ? mysteryBonusSpells(spells, selectedMystery, level, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
+    : [], [characterClass.id, classId, level, maximumSpellLevel, selectedMystery]);
+  const grantedSpells = useMemo(() => [...bloodlineSpells, ...mysterySpells], [bloodlineSpells, mysterySpells]);
+  const availableSpells = useMemo(() => mergeSpellLists(baseAvailableSpells, grantedSpells), [baseAvailableSpells, grantedSpells]);
+  const grantedSpellIds = useMemo(() => grantedSpells.map((spell) => spell.id), [grantedSpells]);
   const spellDcs = hasSpellcasting ? Object.fromEntries(Array.from({ length: maximumSpellLevel + 1 }, (_, spellLevel) => [spellLevel, spellSaveDC(castingAbilityScore, spellLevel)])) : {};
   const preparedLimits = useMemo(() => preparedCasting?.prepared ?? [], [preparedCasting]);
   const knownLimits = useMemo(() => spontaneousCasting?.known ?? [], [spontaneousCasting]);
@@ -215,10 +224,10 @@ export default function Home() {
   const updateReservoir = (points: number) => setReservoirPoints(Math.max(0, Math.min(reservoir?.maximum ?? 0, points)));
   const refreshDay = () => { setSpellSlotUses({}); if (reservoir) setReservoirPoints(reservoir.dailyRefresh); if (classId === "bard") setBardicPerformanceUsed(0); if (classId === "druid") setWildShapeUsed(0); };
   const normalizeSelectedSpells = (spellIds: string[]) => isSpontaneous
-    ? normalizeKnownSpells(spellIds, availableSpells, characterClass.id, knownLimits, bloodlineSpellIds)
+    ? normalizeKnownSpells(spellIds, availableSpells, characterClass.id, knownLimits, grantedSpellIds)
     : normalizePreparedSpellsWithOpposition(spellIds, availableSpells, characterClass.id, preparedLimits, oppositionSchoolIds);
   const updateSelectedSpells = (spellIds: string[]) => setSelectedSpellIds(normalizeSelectedSpells(spellIds));
-  useEffect(() => setSelectedSpellIds((current) => { const next = normalizeSelectedSpells(current); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [availableSpells, bloodlineSpellIds, characterClass.id, isSpontaneous, knownLimits, oppositionSchoolIds, preparedLimits]);
+  useEffect(() => setSelectedSpellIds((current) => { const next = normalizeSelectedSpells(current); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [availableSpells, grantedSpellIds, characterClass.id, isSpontaneous, knownLimits, oppositionSchoolIds, preparedLimits]);
   useEffect(() => setSpellSlotUses((current) => normalizeSpellSlotUses(current, spellSlots)), [spellSlots]);
   useEffect(() => { if (reservoir) setReservoirPoints((current) => Math.min(current, reservoir.maximum)); }, [reservoir?.maximum]);
   useEffect(() => setBardicPerformanceUsed((current) => Math.min(current, bardicPerformanceMaximum)), [bardicPerformanceMaximum]);
@@ -333,7 +342,7 @@ export default function Home() {
       {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} pointBuyBudget={pointBuyBudget} pointBuySpent={pointBuy.spent} abilityBoosts={abilityBoosts} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} onPointBuyBudgetChange={setPointBuyBudget} onAbilityBoostChange={updateAbilityBoost} /><ProgressionSummary combat={combat} progression={progression} /><FavoredClassBonus className={characterClass.name} level={level} hitPoints={favoredClassHitPoints} skillRanks={favoredClassSkillRanks} onChange={(hitPoints, skillRanks) => { setFavoredClassHitPoints(hitPoints); setFavoredClassSkillRanks(skillRanks); }} /></section>}
       {activeTab === "actions" && <div className="actions-workspace"><CombatPanel combat={combat} modifierSources={selectedFeatBonuses.sources} conditionalModifiers={selectedTraitBonuses.conditionalModifiers} /><ActivePlayPanel maximumHitPoints={combat.averageHitPoints} currentHitPoints={currentHitPoints ?? combat.averageHitPoints} temporaryHitPoints={temporaryHitPoints} effects={activeEffects} onCurrentHitPointsChange={setCurrentHitPoints} onTemporaryHitPointsChange={setTemporaryHitPoints} onEffectsChange={setActiveEffects} /></div>}
       {activeTab === "storage" && <div className="storage-workspace"><CharacterLibrary library={characterLibrary} classNames={Object.fromEntries(classes.map((item) => [item.id, item.name]))} ancestryNames={Object.fromEntries(ancestries.map((item) => [item.id, item.name]))} onOpen={openLibraryCharacter} onDelete={deleteLibraryCharacter} onNew={newCharacter} /><EquipmentPanel strength={abilities.strength} strengthModifier={combat.abilityModifiers.strength} dexterityModifier={combat.abilityModifiers.dexterity} baseAttackBonus={progression.baseAttackBonus} weaponBonuses={selectedFeatBonuses.weaponBonuses} inventory={inventory} coins={coins} onInventoryChange={setInventory} onCoinsChange={setCoins} /></div>}
-      {activeTab === "spells" && (spontaneousCasting ? <SpontaneousSpellbook spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spontaneousCasting.slots} knownLimits={knownLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={bloodlineSpellIds} onKnownSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} onRefreshDay={refreshDay} /> : preparedCasting ? <Spellbook spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={preparedCasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={updateReservoir} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} /> : <p className="empty-tab">This class does not cast spells.</p>)}
+      {activeTab === "spells" && (spontaneousCasting ? <SpontaneousSpellbook spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spontaneousCasting.slots} knownLimits={knownLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} onRefreshDay={refreshDay} /> : preparedCasting ? <Spellbook spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={preparedCasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={updateReservoir} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} /> : <p className="empty-tab">This class does not cast spells.</p>)}
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}
       {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={characterClass.name} features={progression.features} dailyResource={classId === "bard" ? { label: "Performance rounds", unit: "round", maximum: bardicPerformanceMaximum, used: bardicPerformanceUsed, onUsedChange: setBardicPerformanceUsed } : classId === "druid" && level >= 4 ? { label: "Wild Shape", unit: "use", maximum: wildShapeMaximum, used: wildShapeUsed, onUsedChange: setWildShapeUsed } : undefined} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={level} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}

@@ -1,0 +1,49 @@
+{
+  "source":{"title":"Advanced Player's Guide","page":45,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#mysteries"},
+  "mysteries":[
+    {
+      "id":"oracle-mystery-battle",
+      "classSkills":["Intimidate","Knowledge (engineering)","Perception","Ride"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"enlarge person"},{"oracleLevel":4,"spellLevel":2,"name":"fog cloud"},{"oracleLevel":6,"spellLevel":3,"name":"magic vestment"},
+        {"oracleLevel":8,"spellLevel":4,"name":"wall of fire"},{"oracleLevel":10,"spellLevel":5,"name":"righteous might"},{"oracleLevel":12,"spellLevel":6,"name":"mass bull's strength"},
+        {"oracleLevel":14,"spellLevel":7,"name":"control weather"},{"oracleLevel":16,"spellLevel":8,"name":"earthquake"},{"oracleLevel":18,"spellLevel":9,"name":"storm of vengeance"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-battlecry","name":"Battlecry","minimumLevel":1,"summary":"Inspire allies within 100 feet with a scaling morale bonus."},
+        {"id":"oracle-revelation-battlefield-clarity","name":"Battlefield Clarity","minimumLevel":1,"summary":"Reroll a failed save against debilitating battlefield conditions."},
+        {"id":"oracle-revelation-combat-healer-battle","name":"Combat Healer","minimumLevel":7,"summary":"Cast cure spells swiftly by spending two spell slots."},
+        {"id":"oracle-revelation-iron-skin","name":"Iron Skin","minimumLevel":11,"summary":"Gain DR 10/adamantine as stoneskin."},
+        {"id":"oracle-revelation-maneuver-mastery","name":"Maneuver Mastery","minimumLevel":1,"summary":"Master one combat maneuver and its feat chain."},
+        {"id":"oracle-revelation-resiliency","name":"Resiliency","minimumLevel":1,"summary":"Remain effective at 0 hit points and gain Diehard."},
+        {"id":"oracle-revelation-skill-at-arms","name":"Skill at Arms","minimumLevel":1,"summary":"Gain martial weapon and heavy armor proficiency."},
+        {"id":"oracle-revelation-surprising-charge","name":"Surprising Charge","minimumLevel":1,"summary":"Move immediately outside your turn."},
+        {"id":"oracle-revelation-war-sight","name":"War Sight","minimumLevel":1,"summary":"Roll initiative multiple times and master surprise rounds."},
+        {"id":"oracle-revelation-weapon-mastery","name":"Weapon Mastery","minimumLevel":1,"summary":"Gain scaling focus and critical feats with one weapon."}
+      ],
+      "finalRevelation":"Become an avatar of battle: combine a full attack with movement, ignore DR on critical hits, resist confirmed criticals, and survive deeper into negative hit points."
+    },
+    {
+      "id":"oracle-mystery-bones",
+      "classSkills":["Bluff","Disguise","Intimidate","Stealth"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"cause fear"},{"oracleLevel":4,"spellLevel":2,"name":"false life"},{"oracleLevel":6,"spellLevel":3,"name":"animate dead"},
+        {"oracleLevel":8,"spellLevel":4,"name":"fear"},{"oracleLevel":10,"spellLevel":5,"name":"slay living"},{"oracleLevel":12,"spellLevel":6,"name":"circle of death"},
+        {"oracleLevel":14,"spellLevel":7,"name":"control undead"},{"oracleLevel":16,"spellLevel":8,"name":"horrid wilting"},{"oracleLevel":18,"spellLevel":9,"name":"wail of the banshee"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-armor-of-bones","name":"Armor of Bones","minimumLevel":1,"summary":"Conjure scaling armor and bludgeoning resistance."},
+        {"id":"oracle-revelation-bleeding-wounds","name":"Bleeding Wounds","minimumLevel":1,"summary":"Negative energy causes scaling bleed damage."},
+        {"id":"oracle-revelation-deaths-touch","name":"Death's Touch","minimumLevel":1,"summary":"Harm living creatures or heal undead with a touch."},
+        {"id":"oracle-revelation-near-death","name":"Near Death","minimumLevel":1,"summary":"Resist disease, poison, mental effects, death, sleep, and stunning."},
+        {"id":"oracle-revelation-raise-the-dead","name":"Raise the Dead","minimumLevel":1,"summary":"Temporarily summon a scaling undead servant."},
+        {"id":"oracle-revelation-resist-life","name":"Resist Life","minimumLevel":1,"summary":"Interact with energy as undead and gain channel resistance."},
+        {"id":"oracle-revelation-soul-siphon","name":"Soul Siphon","minimumLevel":7,"summary":"Bestow a negative level and heal yourself."},
+        {"id":"oracle-revelation-spirit-walk","name":"Spirit Walk","minimumLevel":11,"summary":"Become incorporeal and invisible while moving."},
+        {"id":"oracle-revelation-undead-servitude","name":"Undead Servitude","minimumLevel":1,"summary":"Command undead using dedicated negative-energy channeling."},
+        {"id":"oracle-revelation-voice-of-the-grave","name":"Voice of the Grave","minimumLevel":1,"summary":"Speak with dead for scaling rounds each day."}
+      ],
+      "finalRevelation":"Master death: cast bleed or stabilize freely, stabilize automatically, animate dead without material cost, and use power word kill once per day against a broadened hit-point threshold."
+    }
+  ]
+}

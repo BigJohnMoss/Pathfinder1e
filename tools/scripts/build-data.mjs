@@ -16,7 +16,9 @@ const domainDetails=new Map(domainDetailFiles.flatMap(file=>file.domains??[]).ma
 const subdomains=domainDetailFiles.flatMap(file=>file.subdomains??[]);
 const bloodlineDetailFiles=await loadDir('bloodline-details');
 const bloodlineDetails=new Map(bloodlineDetailFiles.flatMap(file=>file.bloodlines).map(bloodline=>[bloodline.id,bloodline]));
-const optionGroups=(await loadDir('options')).map(group=>({...group,options:[...group.options.map(option=>({...group.optionDefaults,...option,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{})})),...(group.id==="cleric-domains"?subdomains:[])]}));
+const mysteryDetailFiles=await loadDir('mystery-details');
+const mysteryDetails=new Map(mysteryDetailFiles.flatMap(file=>file.mysteries).map(mystery=>[mystery.id,mystery]));
+const optionGroups=(await loadDir('options')).map(group=>({...group,options:[...group.options.map(option=>({...group.optionDefaults,...option,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})})),...(group.id==="cleric-domains"?subdomains:[])]}));
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
 const spells=sourceSpells.map(spell=>{
   const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
