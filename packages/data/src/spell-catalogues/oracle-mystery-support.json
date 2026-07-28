@@ -4,6 +4,12 @@
     {"id":"magic-vestment","name":"Magic Vestment","levelByClass":{"cleric":3},"summary":"Grant armor or a shield an enhancement bonus."},
     {"id":"righteous-might","name":"Righteous Might","levelByClass":{"cleric":5},"summary":"Grow larger and gain combat bonuses, natural armor, and damage reduction."},
     {"id":"slay-living","name":"Slay Living","levelByClass":{"cleric":5},"summary":"Make a deadly touch attack that deals severe damage, reduced by a successful Fortitude save."},
-    {"id":"summon-monster-v","name":"Summon Monster V","levelByClass":{"cleric":5},"summary":"Summon one or more extraplanar creatures to fight for you."}
+    {"id":"summon-monster-v","name":"Summon Monster V","levelByClass":{"cleric":5},"summary":"Summon one or more extraplanar creatures to fight for you."},
+    {"id":"lesser-restoration","name":"Lesser Restoration","levelByClass":{"cleric":2},"summary":"Remove fatigue or reduce ability damage."},
+    {"id":"breath-of-life","name":"Breath of Life","levelByClass":{"cleric":5},"summary":"Restore life to a recently slain creature while healing damage."},
+    {"id":"greater-restoration","name":"Greater Restoration","levelByClass":{"cleric":7},"summary":"Remove severe afflictions, ability drain, and negative levels."},
+    {"id":"mass-heal","name":"Mass Heal","levelByClass":{"cleric":9},"summary":"Channel powerful healing among multiple creatures."},
+    {"id":"true-resurrection","name":"True Resurrection","levelByClass":{"cleric":9},"summary":"Restore a dead creature fully to life without requiring its body."},
+    {"id":"mass-owls-wisdom","name":"Owl's Wisdom, Mass","levelByClass":{"cleric":6},"summary":"Grant several creatures an enhancement bonus to Wisdom."}
   ]
 }
