@@ -80,7 +80,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Fighter paths: Archer, Crossbowman, Free Hand Fighter, Mobile Fighter,
   Phalanx Soldier, Polearm Master, Roughrider, Savage Warrior, Shielded Fighter,
   Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master; Barbarian coverage
-  includes Breaker, Drunken Brute, Elemental Kin, Hurler, Invulnerable Rager,
+  includes Breaker, Brutal Pugilist, Drunken Brute, Elemental Kin, Hurler, Invulnerable Rager,
   Savage Barbarian, and Superstitious
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,

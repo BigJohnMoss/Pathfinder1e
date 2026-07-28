@@ -933,6 +933,25 @@ test("switches among the remaining progression-only Barbarian archetypes", async
   assert.equal(screen.queryByText("Damage Reduction 5/-"), null);
 });
 
+test("configures and restores distinct Brutal Pugilist maneuver specialties", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-brutal-pugilist");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const pitFighterChoices = screen.getAllByLabelText(/Pit Fighter/);
+  assert.equal(pitFighterChoices.length, 2);
+  await user.selectOptions(pitFighterChoices[0], "brutal-pugilist-grapple-cmb");
+  await user.selectOptions(pitFighterChoices[1], "brutal-pugilist-grapple-cmd");
+  assert.ok(screen.getByText(/bonus on grapple checks/));
+  assert.ok(screen.getByText(/CMD against grapple/));
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(pitFighterChoices[0], "brutal-pugilist-trip-cmb");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal((screen.getAllByLabelText(/Pit Fighter/)[0] as HTMLSelectElement).value, "brutal-pugilist-grapple-cmb");
+});
+
 test("previews and advances the selected multiclass entry", async () => {
   const user = userEvent.setup();
   render(<Home />);
