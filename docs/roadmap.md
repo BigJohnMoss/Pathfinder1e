@@ -70,10 +70,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Next milestone: Expanded Character Options
 
-- traits â€” complete: all 40 sourced APG basic traits, trait-specific class-skill
+- traits — complete: all 40 sourced APG basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
-- archetypes â€” in progress: reusable replacement schema plus all twelve APG
+- archetypes — in progress: reusable replacement schema plus all twelve APG
   Fighter paths: Archer, Crossbowman, Free Hand Fighter, Mobile Fighter,
   Phalanx Soldier, Polearm Master, Roughrider, Savage Warrior, Shielded Fighter,
   Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master
@@ -88,7 +88,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
   (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
-- expanded bloodlines â€” complete: complete Core catalogue plus all ten APG
+- expanded bloodlines — complete: complete Core catalogue plus all ten APG
   bloodlines: Aquatic, Boreal, Deep Earth, Dreamspun, Protean, Serpentine,
   Shadow, Starsoul, Stormborn, and Verdant
 - mysteries and revelations - complete: the complete APG Oracle level 1-20
@@ -109,7 +109,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Later milestone: Universal PF1e Builder
 
-- multiclassing
+- multiclassing - in progress: rules-engine aggregation for independent class
+  levels, BAB, saves, skill ranks, character-level feat slots, and class-tagged
+  features
 - prestige classes
 - alternate racial traits
 - advanced equipment and magic items
@@ -122,4 +124,3 @@ Native store packages for Microsoft Store or Google Play are optional later work
 Future work should proceed through Expanded Character Options, beginning with
 traits, while preserving the completed Core and Installable Application
 milestones through their validation and browser journey suites.
-
