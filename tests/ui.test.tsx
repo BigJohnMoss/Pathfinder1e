@@ -863,3 +863,18 @@ test("previews and confirms a guided level up without losing selections", async 
   assert.equal((screen.getByLabelText("Character name") as HTMLInputElement).value, "Leveler");
   assert.ok(screen.getByText(/Advanced to level 4/));
 });
+
+test("previews and advances the selected multiclass entry", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "rogue");
+  await user.click(screen.getByRole("button", { name: "Review level 4" }));
+  await user.selectOptions(screen.getByLabelText("Class receiving this level"), "rogue");
+  assert.ok(screen.getByRole("heading", { name: "Review Rogue level 2" }));
+  assert.ok(screen.getByText(/Rogue Talent/));
+  await user.click(screen.getByRole("button", { name: "Advance to level 4" }));
+  assert.equal((screen.getByLabelText("Additional class levels") as HTMLInputElement).value, "2");
+  assert.match(screen.getByText(/Advanced Rogue to level 2/).textContent ?? "", /Advanced Rogue to level 2/);
+});
