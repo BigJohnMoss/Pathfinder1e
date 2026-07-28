@@ -27,7 +27,8 @@ for (const [archetypeId, name, expected, removed] of [
   ["ranger-spirit-ranger","Spirit Ranger",["Spirit Bond","Wisdom of the Spirits"],["Hunter's Bond","Animal Companion Choice","Camouflage"]],
   ["ranger-urban-ranger","Urban Ranger",["Favored Community","Trapfinding","Push Through","Blend In","Invisibility Trick"],["Favored Terrain 1","Endurance","Woodland Stride","Camouflage","Hide in Plain Sight"]],
   ["ranger-horse-lord","Horse Lord",["Mounted Bond","Strong Bond","Spiritual Bond"],["Hunter's Bond","Animal Companion Choice","Camouflage","Hide in Plain Sight"]],
-  ["ranger-shapeshifter","Shapeshifter",["Shifter's Blessing 1","Shifter's Blessing 4","Dual Form Shifter","Master Shifter"],["Favored Terrain 1","Camouflage","Master Hunter"]]
+  ["ranger-shapeshifter","Shapeshifter",["Shifter's Blessing 1","Shifter's Blessing 4","Dual Form Shifter","Master Shifter"],["Favored Terrain 1","Camouflage","Master Hunter"]],
+  ["ranger-skirmisher","Skirmisher",["Hunter's Trick 1","Hunter's Trick 8"],["Divine Spellcasting"]]
 ] as const) test(`${name} is selectable with its level-20 progression`, async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -98,4 +99,19 @@ test("Shapeshifter forces natural weapons and prevents duplicate forms", async (
   assert.deepEqual([...style.options].filter((option) => option.value).map((option) => option.value), ["ranger-combat-style-natural-weapon"]);
   await user.selectOptions(first, "ranger-shifter-form-bear");
   assert.equal((second.querySelector("option[value='ranger-shifter-form-bear']") as HTMLOptionElement).disabled, true);
+});
+
+test("Skirmisher has unique hunter tricks and no spellbook", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-skirmisher");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  assert.equal(screen.queryByRole("tab", { name: "Spells" }), null);
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const first = screen.getByLabelText(/Hunter's Trick 1/);
+  const second = screen.getByLabelText(/Hunter's Trick 2/);
+  await user.selectOptions(first, "hunter-trick-aiding-attack");
+  assert.equal((second.querySelector("option[value='hunter-trick-aiding-attack']") as HTMLOptionElement).disabled, true);
+  assert.equal([...first.options].filter((option) => option.value).length, 26);
 });
