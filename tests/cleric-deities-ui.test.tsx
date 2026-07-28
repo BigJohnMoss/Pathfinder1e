@@ -314,6 +314,37 @@ test("Madness, Magic, and Nobility subdomains inherit deity access and exclude t
   assert.ok(screen.getByText("sacrificial oath"));
 });
 
+test("Protection, Repose, and Rune subdomains inherit deity access and exclude their parents", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const deity = screen.getAllByText("Deity").at(-1)!.closest("label")?.querySelector("select");
+  const firstDomain = screen.getAllByText("First Domain").at(-1)!.closest("label")?.querySelector("select");
+  const secondDomain = screen.getAllByText("Second Domain").at(-1)!.closest("label")?.querySelector("select");
+  assert.ok(deity); assert.ok(firstDomain); assert.ok(secondDomain);
+
+  await user.selectOptions(deity, "deity-nethys");
+  for (const id of ["subdomain-defense", "subdomain-purity", "subdomain-language", "subdomain-wards"]) {
+    assert.equal([...firstDomain.options].some((option) => option.value === id), true);
+  }
+  await user.selectOptions(firstDomain, "subdomain-defense");
+  assert.ok(screen.getByText("Deflection Aura"));
+  assert.ok(screen.getByText("deflection"));
+  assert.equal((secondDomain.querySelector("option[value='domain-protection']") as HTMLOptionElement).disabled, true);
+  await user.selectOptions(secondDomain, "subdomain-language");
+  assert.ok(screen.getByText("Rune Shift"));
+  assert.ok(screen.getByText("telepathic bond"));
+
+  await user.selectOptions(deity, "deity-pharasma");
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-ancestors"), true);
+  assert.equal([...firstDomain.options].some((option) => option.value === "subdomain-souls"), true);
+  await user.selectOptions(firstDomain, "subdomain-souls");
+  assert.ok(screen.getByText("Touch the Spirit World"));
+  assert.ok(screen.getByText("trap the soul"));
+  assert.equal((secondDomain.querySelector("option[value='domain-repose']") as HTMLOptionElement).disabled, true);
+});
+
 test("Cleric prepares and tracks dedicated domain spell slots", async () => {
   const user = userEvent.setup();
   render(<Home />);
