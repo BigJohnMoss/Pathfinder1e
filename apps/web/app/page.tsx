@@ -260,7 +260,7 @@ export default function Home() {
       ? group.options.filter((option) => option.minimumLevel <= featureClassLevel)
       : group && featureClassId === "druid" && group.id === "cleric-domains"
         ? group.options.filter((option) => ["domain-air", "domain-animal", "domain-earth", "domain-fire", "domain-plant", "domain-water", "domain-weather"].includes(option.id))
-        : group ? availableOptions(group, featureClassId, featureClassLevel, selectedIds, { abilities, baseAttackBonus: progression.baseAttackBonus, classLevels: classLevelMap, featureIds: [...progression.features.map((entry) => entry.id), ...selectedIds] }) : [];
+        : group ? availableOptions(group, featureClassId, featureClassLevel, selectedIds, { abilities, size: ancestry.size, baseAttackBonus: progression.baseAttackBonus, classLevels: classLevelMap, featureIds: [...progression.features.map((entry) => entry.id), ...selectedIds] }) : [];
     return { id: feature.id, name: feature.name, level: feature.level, classLevel: featureClassLevel, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) };
   });
   const updateClassOption = (featureId: string, optionId: string) => setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));

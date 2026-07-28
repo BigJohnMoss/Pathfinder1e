@@ -578,7 +578,10 @@ function prerequisiteMet(prerequisite, context) {
   if (prerequisite.type === "ancestry") return context.ancestryId === prerequisite.id;
   if (prerequisite.type === "size") {
     const sizes = ["fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal"];
-    return sizes.indexOf(context.size) !== -1 && sizes.indexOf(context.size) <= sizes.indexOf(prerequisite.maximum);
+    const size = sizes.indexOf(context.size);
+    const minimum = prerequisite.minimum ? sizes.indexOf(prerequisite.minimum) : 0;
+    const maximum = prerequisite.maximum ? sizes.indexOf(prerequisite.maximum) : sizes.length - 1;
+    return size !== -1 && minimum !== -1 && maximum !== -1 && size >= minimum && size <= maximum;
   }
   if (prerequisite.type === "caster-level") return context.casterLevel >= prerequisite.minimum;
   if (prerequisite.type === "ability") return context.abilities?.[prerequisite.key] >= prerequisite.minimum;

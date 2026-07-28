@@ -952,6 +952,24 @@ test("configures and restores distinct Brutal Pugilist maneuver specialties", as
   assert.equal((screen.getAllByLabelText(/Pit Fighter/)[0] as HTMLSelectElement).value, "brutal-pugilist-grapple-cmb");
 });
 
+test("filters Mounted Fury bestial mounts by ancestry size and level", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-mounted-fury");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "8" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const mount = screen.getByLabelText(/Bestial Mount/) as HTMLSelectElement;
+  assert.deepEqual(Array.from(mount.options).slice(1).map(option => option.text), ["Camel", "Horse"]);
+  await user.selectOptions(screen.getByLabelText("Ancestry"), "halfling");
+  assert.deepEqual(Array.from(mount.options).slice(1).map(option => option.text), ["Pony", "Wolf", "Boar", "Dog"]);
+  await user.selectOptions(mount, "mounted-fury-mount-dog");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(mount, "mounted-fury-mount-pony");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal((screen.getByLabelText(/Bestial Mount/) as HTMLSelectElement).value, "mounted-fury-mount-dog");
+});
+
 test("previews and advances the selected multiclass entry", async () => {
   const user = userEvent.setup();
   render(<Home />);

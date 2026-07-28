@@ -95,7 +95,7 @@ export type Prerequisite =
   | { type: "ability"|"skill"; key: string; minimum: number }
   | { type: "feat"|"feature"; id: string }
   | { type: "ancestry"; id: string }
-  | { type: "size"; maximum: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal" }
+  | { type: "size"; minimum?: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal"; maximum?: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal" }
   | { type: "matching-choice"; featId: string; key: string }
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
