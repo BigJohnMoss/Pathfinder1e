@@ -1,0 +1,17 @@
+{
+  "id": "deeper-darkness",
+  "name": "Deeper Darkness",
+  "school": "evocation",
+  "levelByClass": {
+    "cleric": 3
+  },
+  "components": ["V", "M", "DF"],
+  "castingTime": "1 standard action",
+  "range": "touch",
+  "summary": "Cause a touched object to radiate supernatural darkness in a 60-foot radius, lowering illumination by two steps for 10 minutes per level.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 267,
+    "url": "https://legacy.aonprd.com/coreRulebook/spells/deeperDarkness.html"
+  }
+}
