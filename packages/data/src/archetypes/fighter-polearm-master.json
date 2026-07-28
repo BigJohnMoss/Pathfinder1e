@@ -1,0 +1,28 @@
+{
+  "id":"fighter-polearm-master","name":"Polearm Master","classId":"fighter",
+  "summary":"A reach-weapon specialist who controls adjacent space, flanks flexibly, and protects allies with a readied polearm.",
+  "replacements":[
+    {"progressionKeys":["bravery"],"features":[
+      {"id":"polearm-pole-fighting-2","name":"Pole Fighting -4","level":2,"type":"scaling","summary":"As an immediate action, shorten a reach spear or polearm to attack adjacent targets at -4 until you restore your grip.","progressionKey":"polearm-pole-fighting","scaling":"-4"},
+      {"id":"polearm-pole-fighting-6","name":"Pole Fighting -3","level":6,"type":"scaling","summary":"Reduce the shortened-grip penalty to -3.","progressionKey":"polearm-pole-fighting","scaling":"-3"},
+      {"id":"polearm-pole-fighting-10","name":"Pole Fighting -2","level":10,"type":"scaling","summary":"Reduce the shortened-grip penalty to -2.","progressionKey":"polearm-pole-fighting","scaling":"-2"},
+      {"id":"polearm-pole-fighting-14","name":"Pole Fighting -1","level":14,"type":"scaling","summary":"Reduce the shortened-grip penalty to -1.","progressionKey":"polearm-pole-fighting","scaling":"-1"},
+      {"id":"polearm-pole-fighting-18","name":"Pole Fighting","level":18,"type":"scaling","summary":"Use the shortened grip without an attack penalty.","progressionKey":"polearm-pole-fighting","scaling":"0"}]},
+    {"progressionKeys":["armor-training"],"features":[
+      {"id":"polearm-steadfast-pike-3","name":"Steadfast Pike +1","level":3,"type":"scaling","summary":"Gain +1 on readied attacks and attacks of opportunity with spears and polearms.","progressionKey":"polearm-steadfast-pike","scaling":"+1"},
+      {"id":"polearm-steadfast-pike-7","name":"Steadfast Pike +2","level":7,"type":"scaling","summary":"Increase Steadfast Pike to +2.","progressionKey":"polearm-steadfast-pike","scaling":"+2"},
+      {"id":"polearm-steadfast-pike-11","name":"Steadfast Pike +3","level":11,"type":"scaling","summary":"Increase Steadfast Pike to +3.","progressionKey":"polearm-steadfast-pike","scaling":"+3"},
+      {"id":"polearm-steadfast-pike-15","name":"Steadfast Pike +4","level":15,"type":"scaling","summary":"Increase Steadfast Pike to +4.","progressionKey":"polearm-steadfast-pike","scaling":"+4"}]},
+    {"progressionKeys":["weapon-training"],"features":[
+      {"id":"polearm-training-5","name":"Polearm Training +1","level":5,"type":"scaling","summary":"Gain +1 on attack and damage rolls with spears and polearms.","progressionKey":"polearm-training","scaling":"+1"},
+      {"id":"polearm-flexible-flanker-9","name":"Flexible Flanker","level":9,"type":"core","summary":"Choose any adjacent square as your location when determining flanking."},
+      {"id":"polearm-training-9","name":"Polearm Training +2","level":9,"type":"scaling","summary":"Increase Polearm Training to +2.","progressionKey":"polearm-training","scaling":"+2"},
+      {"id":"polearm-sweeping-fend-13","name":"Sweeping Fend","level":13,"type":"core","summary":"Use a spear or polearm for bull rush and trip attempts at -4 CMB; trip weapons avoid the trip penalty."},
+      {"id":"polearm-training-13","name":"Polearm Training +3","level":13,"type":"scaling","summary":"Increase Polearm Training to +3.","progressionKey":"polearm-training","scaling":"+3"},
+      {"id":"polearm-step-aside-17","name":"Step Aside","level":17,"type":"core","summary":"When a threatened creature steps adjacent, immediately step away and gain +2 dodge AC against it until your next turn."},
+      {"id":"polearm-training-17","name":"Polearm Training +4","level":17,"type":"scaling","summary":"Increase Polearm Training to +4.","progressionKey":"polearm-training","scaling":"+4"}]},
+    {"featureIds":["armor-mastery-19"],"features":[{"id":"polearm-parry-19","name":"Polearm Parry","level":19,"type":"core","summary":"Immediately grant an ally threatened by your attacker +2 shield AC and DR 5/— against one melee attack."}]}
+  ],
+  "featureOverrides":[{"featureId":"weapon-mastery-20","summary":"Master one type of spear or polearm and improve its critical performance."}],
+  "source":{"title":"Advanced Player's Guide","page":107,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#polearm-master"}
+}
