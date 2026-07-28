@@ -79,7 +79,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
   Azata, Restoration, Resurrection, Heroism, Honor, Memory, Thought, Inevitable,
   Freedom, Revolution, Curse, Fate, Insanity, Nightmare, Arcane, Divine,
-  Leadership, and Martyr selections (including parent-specific
+  Leadership, Martyr, Defense, Purity, Ancestors, Souls, Language, and Wards
+  selections (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
 - expanded bloodlines

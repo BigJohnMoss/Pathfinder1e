@@ -245,6 +245,32 @@ test("APG Madness, Magic, and Nobility subdomains expose complete replacements",
   assert.equal(byId.get("subdomain-martyr").domainSpells[5].name, "sacrificial oath");
 });
 
+test("APG Protection, Repose, and Rune subdomains expose complete replacements", () => {
+  const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  const expected = [
+    ["subdomain-defense", "domain-protection", "Resistant Touch", "Deflection Aura"],
+    ["subdomain-purity", "domain-protection", "Aura of Protection", "Purifying Touch"],
+    ["subdomain-ancestors", "domain-repose", "Ward Against Death", "Speak With Dead"],
+    ["subdomain-souls", "domain-repose", "Gentle Rest", "Touch the Spirit World"],
+    ["subdomain-language", "domain-rune", "Spell Rune", "Rune Shift"],
+    ["subdomain-wards", "domain-rune", "Spell Rune", "Warding Rune"]
+  ];
+  for (const [id, parentDomainId, replacesPower, replacementPower] of expected) {
+    const subdomain = byId.get(id);
+    assert.equal(subdomain.parentDomainId, parentDomainId);
+    assert.equal(subdomain.replacesPower, replacesPower);
+    assert.equal(subdomain.powers.length, 2);
+    assert.equal(subdomain.powers.some((power) => power.name === replacementPower), true);
+    assert.deepEqual(subdomain.domainSpells.map((spell) => spell.level), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  }
+  assert.equal(byId.get("subdomain-defense").domainSpells[6].name, "deflection");
+  assert.equal(byId.get("subdomain-purity").domainSpells[4].name, "atonement");
+  assert.equal(byId.get("subdomain-ancestors").domainSpells[3].name, "rest eternal");
+  assert.equal(byId.get("subdomain-souls").domainSpells[8].name, "trap the soul");
+  assert.equal(byId.get("subdomain-language").domainSpells[4].name, "telepathic bond");
+  assert.equal(byId.get("subdomain-wards").domainSpells[5].name, "guards and wards");
+});
+
 test("Core domain detail records retain distinctive progressions", () => {
   const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
   assert.deepEqual(byId.get("domain-animal").powers.map((power) => [power.name, power.level]), [["Speak with Animals",1],["Animal Companion",4]]);
