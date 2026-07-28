@@ -303,14 +303,20 @@ export default function Home() {
   const secondaryOppositionSchoolIds = useMemo(() => oppositionSchoolsFromOptions(secondaryCharacterClass?.id ?? "", selectedOptions), [secondaryCharacterClass, selectedOptions]);
   const reservoir = classId === "arcanist" ? arcaneReservoir(primaryClassLevel) : null;
   const secondaryReservoir = secondaryCharacterClass?.id === "arcanist" ? arcaneReservoir(secondaryClassLevel) : null;
-  const bardicPerformanceMaximum = classId === "bard" ? bardicPerformanceRounds(primaryClassLevel, combat.abilityModifiers.charisma) : 0;
-  const wildShapeMaximum = classId === "druid" ? druidWildShapeUses(primaryClassLevel) : 0;
+  const bardClassLevel = classId === "bard" ? primaryClassLevel : secondaryCharacterClass?.id === "bard" ? secondaryClassLevel : 0;
+  const druidClassLevel = classId === "druid" ? primaryClassLevel : secondaryCharacterClass?.id === "druid" ? secondaryClassLevel : 0;
+  const bardicPerformanceMaximum = bardClassLevel > 0 ? bardicPerformanceRounds(bardClassLevel, combat.abilityModifiers.charisma) : 0;
+  const wildShapeMaximum = druidClassLevel > 0 ? druidWildShapeUses(druidClassLevel) : 0;
+  const classDailyResources = [
+    ...(bardClassLevel > 0 ? [{ label: "Performance rounds", unit: "round", maximum: bardicPerformanceMaximum, used: bardicPerformanceUsed, onUsedChange: setBardicPerformanceUsed }] : []),
+    ...(druidClassLevel >= 4 ? [{ label: "Wild Shape", unit: "use", maximum: wildShapeMaximum, used: wildShapeUsed, onUsedChange: setWildShapeUsed }] : [])
+  ];
   const updateSpellSlotUses = (uses: Record<number, number>) => setSpellSlotUses(normalizeSpellSlotUses(uses, spellSlots));
   const updateSecondarySpellSlotUses = (uses: Record<number, number>) => setSecondarySpellSlotUses(normalizeSpellSlotUses(uses, secondarySpellSlots));
   const updateReservoir = (points: number) => setReservoirPoints(Math.max(0, Math.min(reservoir?.maximum ?? 0, points)));
   const updateSecondaryReservoir = (points: number) => setReservoirPoints(Math.max(0, Math.min(secondaryReservoir?.maximum ?? 0, points)));
   const refreshDay = () => { setSpellSlotUses({}); if (reservoir) setReservoirPoints(reservoir.dailyRefresh); if (classId === "bard") setBardicPerformanceUsed(0); if (classId === "druid") setWildShapeUsed(0); };
-  const refreshSecondaryDay = () => { setSecondarySpellSlotUses({}); if (secondaryReservoir) setReservoirPoints(secondaryReservoir.dailyRefresh); };
+  const refreshSecondaryDay = () => { setSecondarySpellSlotUses({}); if (secondaryReservoir) setReservoirPoints(secondaryReservoir.dailyRefresh); if (secondaryCharacterClass?.id === "bard") setBardicPerformanceUsed(0); if (secondaryCharacterClass?.id === "druid") setWildShapeUsed(0); };
   const normalizeSelectedSpells = (spellIds: string[]) => isSpontaneous
     ? normalizeKnownSpells(spellIds, availableSpells, characterClass.id, knownLimits, grantedSpellIds)
     : normalizePreparedSpellsWithOpposition(spellIds, availableSpells, characterClass.id, preparedLimits, oppositionSchoolIds);
@@ -334,7 +340,7 @@ export default function Home() {
 
   const preparedSpellsByClass = Object.fromEntries([[characterClass.id, selectedSpellIds], ...(secondaryCharacterClass ? [[secondaryCharacterClass.id, secondarySelectedSpellIds] as const] : [])]);
   const spellSlotUsesByClass = Object.fromEntries([[characterClass.id, Object.fromEntries(Object.entries(spellSlotUses))], ...(secondaryCharacterClass ? [[secondaryCharacterClass.id, Object.fromEntries(Object.entries(secondarySpellSlotUses))] as const] : [])]);
-  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, classLevels, archetypeId, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, favoredClassHitPoints, favoredClassSkillRanks, selectedFeatIds, selectedTraitIds, selectedTraitChoices, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, preparedSpellsByClass, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), spellSlotUsesByClass, arcaneReservoir: reservoir || secondaryReservoir ? reservoirPoints : null, bardicPerformanceUsed: classId === "bard" ? bardicPerformanceUsed : 0, wildShapeUsed: classId === "druid" ? wildShapeUsed : 0, currentHitPoints, temporaryHitPoints, activeEffects, inventory, coins };
+  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, classLevels, archetypeId, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, favoredClassHitPoints, favoredClassSkillRanks, selectedFeatIds, selectedTraitIds, selectedTraitChoices, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, preparedSpellsByClass, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), spellSlotUsesByClass, arcaneReservoir: reservoir || secondaryReservoir ? reservoirPoints : null, bardicPerformanceUsed: bardClassLevel > 0 ? bardicPerformanceUsed : 0, wildShapeUsed: druidClassLevel > 0 ? wildShapeUsed : 0, currentHitPoints, temporaryHitPoints, activeEffects, inventory, coins };
   useEffect(() => {
     try {
       const stored = localStorage.getItem(characterLibraryKey);
@@ -380,8 +386,10 @@ export default function Home() {
     const draftCasting = draftSpontaneousCasting ?? draftPreparedCasting;
     const draftBaseSpells = draftCasting ? spellsAvailableToClass(spells, draftClass.id, draftCasting.maximumSpellLevel) : [];
     const draftReservoir = draft.classId === "arcanist" ? arcaneReservoir(draftPrimaryLevel) : null;
-    const draftBardicPerformanceMaximum = draft.classId === "bard" ? bardicPerformanceRounds(draftPrimaryLevel, Math.floor((draftAbilities.charisma - 10) / 2)) : 0;
-    const draftWildShapeMaximum = draft.classId === "druid" ? druidWildShapeUses(draftPrimaryLevel) : 0;
+    const draftBardLevel = draft.classLevels.find((entry) => entry.classId === "bard")?.level ?? 0;
+    const draftDruidLevel = draft.classLevels.find((entry) => entry.classId === "druid")?.level ?? 0;
+    const draftBardicPerformanceMaximum = draftBardLevel > 0 ? bardicPerformanceRounds(draftBardLevel, Math.floor((draftAbilities.charisma - 10) / 2)) : 0;
+    const draftWildShapeMaximum = draftDruidLevel > 0 ? druidWildShapeUses(draftDruidLevel) : 0;
     const draftOppositionSchoolIds = oppositionSchoolsFromOptions(draft.classId, draft.selectedOptions);
     const draftBloodline = bloodlineFromOptions(draft.classId, draft.selectedOptions);
     const draftBloodlineSpells = draftIsSpontaneous && draftCasting ? bloodlineBonusSpells(spells, draftBloodline, draftPrimaryLevel, draftClass.id).filter((spell) => spell.levelByClass[draftClass.id] <= draftCasting.maximumSpellLevel) : [];
@@ -470,7 +478,7 @@ export default function Home() {
       {activeTab === "spells" && (spellcastingClassIds.length > 0 ? <div className="spell-workspace">{spellcastingClassIds.length > 1 && <label className="spell-class-selector">Spellcasting class<select aria-label="Spellcasting class" value={activeSpellClassId} onChange={(event) => setActiveSpellClassId(event.target.value)}>{spellcastingClassIds.map((castingClassId) => <option key={castingClassId} value={castingClassId}>{classes.find((item) => item.id === castingClassId)?.name ?? castingClassId}</option>)}</select></label>}{activeSpellClassId === secondaryCharacterClass?.id ? secondarySpellbook : primarySpellbook}</div> : <p className="empty-tab">These classes do not cast spells.</p>)}
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}
-      {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={secondaryCharacterClass ? `${characterClass.name} ${primaryClassLevel} / ${secondaryCharacterClass.name} ${secondaryClassLevel}` : characterClass.name} features={progression.features} dailyResource={classId === "bard" ? { label: "Performance rounds", unit: "round", maximum: bardicPerformanceMaximum, used: bardicPerformanceUsed, onUsedChange: setBardicPerformanceUsed } : classId === "druid" && primaryClassLevel >= 4 ? { label: "Wild Shape", unit: "use", maximum: wildShapeMaximum, used: wildShapeUsed, onUsedChange: setWildShapeUsed } : undefined} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={primaryClassLevel} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
+      {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={secondaryCharacterClass ? `${characterClass.name} ${primaryClassLevel} / ${secondaryCharacterClass.name} ${secondaryClassLevel}` : characterClass.name} features={progression.features} dailyResources={classDailyResources} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={primaryClassLevel} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
       {activeTab === "options" && <TraitChoices traits={traits} spells={spells} classes={classes} classId={characterClass.id} selectedTraitIds={selectedTraitIds} selectedTraitChoices={selectedTraitChoices} onChange={updateTrait} onChoiceChange={updateTraitChoice} />}
     </section>
   </main>;
