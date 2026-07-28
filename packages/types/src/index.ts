@@ -59,7 +59,7 @@ export interface ClassFeatureOccurrence {
   id: string; name: string; level: number; type: FeatureType;
   summary: string; description?: string; progressionKey?: string | null;
   scaling?: string | null; uses?: string | null; choiceRequired?: boolean;
-  optionGroupId?: string | null; source?: SourceRef;
+  optionGroupId?: string | null; grantedFeatId?: string; source?: SourceRef;
 }
 export interface CharacterClass {
   id: string; name: string; classType: string; hitDie: 6|8|10|12;
