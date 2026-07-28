@@ -51,3 +51,32 @@ test("expanded Fighter archetypes are selectable, complete through level 20, and
   await user.click(screen.getByRole("button", { name: "Save" }));
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId, "fighter-two-weapon-warrior");
 });
+
+test("specialist Fighter archetypes expose their defining level-20 progressions", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  const archetype = screen.getByLabelText("Archetype");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  await user.selectOptions(archetype, "fighter-free-hand-fighter");
+  assert.ok(screen.getByText("Deceptive Strike +1"));
+  assert.ok(screen.getByText("Reversal"));
+
+  await user.selectOptions(archetype, "fighter-mobile-fighter");
+  assert.ok(screen.getByText("Rapid Attack"));
+  assert.ok(screen.getByText("Whirlwind Blitz"));
+  assert.ok(screen.getByText("Armor Training 1"));
+
+  await user.selectOptions(archetype, "fighter-polearm-master");
+  assert.ok(screen.getByText("Pole Fighting -4"));
+  assert.ok(screen.getByText("Polearm Parry"));
+  assert.match(screen.getByText("Weapon Mastery").closest("li")?.textContent ?? "", /spear or polearm/);
+
+  await user.selectOptions(archetype, "fighter-weapon-master");
+  assert.ok(screen.getByText("Weapon Guard +1"));
+  assert.ok(screen.getByText("Unstoppable Strike"));
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId, "fighter-weapon-master");
+});
