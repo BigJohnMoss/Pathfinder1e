@@ -10,7 +10,8 @@ for (const [file, expected, removed] of [
   ["paladin-hospitaler", ["hospitaler-channel-positive-energy-4","hospitaler-aura-of-healing-11"], ["paladin-channel-positive-energy-4","paladin-aura-of-justice-11"]],
   ["paladin-shining-knight", ["shining-knight-skilled-rider-3","shining-knight-mounted-bond-5","shining-knight-knights-charge-11"], ["paladin-divine-health-3","paladin-divine-bond-5","paladin-aura-of-justice-11"]],
   ["paladin-undead-scourge", ["undead-scourge-aura-of-life-8","undead-scourge-annihilation-11"], ["paladin-aura-of-resolve-8","paladin-aura-of-justice-11"]],
-  ["paladin-warrior-holy-light", ["holy-light-power-faith-4","holy-light-power-faith-8","holy-light-power-faith-12","holy-light-power-faith-16","holy-light-power-faith-20","holy-light-shining-light-14"], ["paladin-spellcasting-4","paladin-aura-of-faith-14"]]
+  ["paladin-warrior-holy-light", ["holy-light-power-faith-4","holy-light-power-faith-8","holy-light-power-faith-12","holy-light-power-faith-16","holy-light-power-faith-20","holy-light-shining-light-14"], ["paladin-spellcasting-4","paladin-aura-of-faith-14"]],
+  ["paladin-sacred-servant", ["sacred-servant-deity-1","sacred-servant-smite-evil-1","sacred-servant-domain-4","sacred-servant-domain-spell-1","sacred-servant-domain-spell-2","sacred-servant-domain-spell-3","sacred-servant-domain-spell-4","sacred-servant-holy-symbol-bond-5","sacred-servant-call-celestial-ally-8","sacred-servant-call-celestial-ally-12","sacred-servant-call-celestial-ally-16"], ["paladin-smite-evil-1","paladin-spellcasting-4","paladin-divine-bond-5","paladin-aura-of-resolve-8"]]
 ]) test(`${file} exposes its complete APG progression`, async () => {
   const paladin = await load("../packages/data/src/classes/paladin.json");
   const archetype = await load(`../packages/data/src/archetypes/${file}.json`);
