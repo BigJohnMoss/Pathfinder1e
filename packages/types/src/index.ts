@@ -70,6 +70,8 @@ export interface CharacterClass {
   spellListAdditions?: Record<string, number>;
   wildShapeLevelAdjustment?: number;
   druidDomainIds?: string[];
+  rangerCombatStyleIds?: string[];
+  mountedCompanionOnly?: boolean;
   classSkillAdditions?: string[];
   classSkillRemovals?: string[];
   spellcasting?: {
@@ -97,6 +99,8 @@ export interface CharacterArchetype {
   removesSpellcasting?: boolean;
   wildShapeLevelAdjustment?: number;
   druidDomainIds?: string[];
+  rangerCombatStyleIds?: string[];
+  mountedCompanionOnly?: boolean;
   classSkillAdditions?: string[];
   classSkillRemovals?: string[];
   source: SourceRef;
