@@ -1,0 +1,151 @@
+{
+  "id": "bard-sandman",
+  "name": "Sandman",
+  "classId": "bard",
+  "summary": "A stealthy spell-thief who combines performance, deception, trapcraft, and precise magical attacks.",
+  "replacements": [
+    {
+      "progressionKeys": ["bard-inspire-courage"],
+      "features": [
+        {
+          "id": "sandman-stealspell-1",
+          "name": "Stealspell",
+          "level": 1,
+          "type": "core",
+          "summary": "Use a touch attack and performance to temporarily steal a prepared or known spell and cast it with your own available slots.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-suggestion-6"],
+      "features": [
+        {
+          "id": "sandman-slumber-song-6",
+          "name": "Slumber Song",
+          "level": 6,
+          "type": "core",
+          "summary": "Cause a creature already fascinated by your performance to fall asleep without a Hit Dice limit.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-inspire-greatness-9"],
+      "features": [
+        {
+          "id": "sandman-dramatic-subtext-9",
+          "name": "Dramatic Subtext",
+          "level": 9,
+          "type": "core",
+          "summary": "After performing for two rounds, conceal the visual and audible components of your spellcasting unless observers beat your Sleight of Hand with Perception.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-inspire-heroics-15"],
+      "features": [
+        {
+          "id": "sandman-greater-stealspell-15",
+          "name": "Greater Stealspell",
+          "level": 15,
+          "type": "core",
+          "summary": "Learn a failed target's spells and spell resistance, choose the spell stolen, or transfer half your Bard level of spell resistance.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-mass-suggestion-18"],
+      "features": [
+        {
+          "id": "sandman-mass-slumber-song-18",
+          "name": "Mass Slumber Song",
+          "level": 18,
+          "type": "core",
+          "summary": "Use Slumber Song against any number of fascinated creatures within 30 feet.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-deadly-performance-20"],
+      "features": [
+        {
+          "id": "sandman-spell-catching-20",
+          "name": "Spell Catching",
+          "level": 20,
+          "type": "capstone",
+          "summary": "When you save against a spell targeting only you, spend performance rounds to absorb it and immediately recast it or another spell of that level or lower.",
+          "uses": "bardic performance rounds equal to spell level"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bardic-knowledge-1"],
+      "features": [
+        {
+          "id": "sandman-master-of-deception-1",
+          "name": "Master of Deception",
+          "level": 1,
+          "type": "scaling",
+          "summary": "Add half Bard level to Bluff, Sleight of Hand, and Stealth, and use Disable Device against magical traps.",
+          "scaling": "half Bard level"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-versatile-performance"],
+      "features": [
+        {
+          "id": "sandman-sneakspell-2",
+          "name": "Sneakspell +1 DC",
+          "level": 2,
+          "type": "scaling",
+          "summary": "Increase spell and performance save DCs against opponents denied their Dexterity bonus.",
+          "scaling": "+1 DC; +2 at 10th; +3 at 18th"
+        },
+        {
+          "id": "sandman-sneakspell-resistance-6",
+          "name": "Sneakspell +2 vs. Spell Resistance",
+          "level": 6,
+          "type": "scaling",
+          "summary": "Gain a bonus on caster-level checks against denied-Dexterity opponents.",
+          "scaling": "+2; +4 at 14th"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-inspire-competence"],
+      "features": [
+        {
+          "id": "sandman-trap-sense-3",
+          "name": "Trap Sense +1",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Gain a bonus on Reflex saves and a dodge bonus to AC against traps.",
+          "scaling": "+1; increases every 3 levels after 3rd"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-lore-master"],
+      "features": [
+        {
+          "id": "sandman-sneak-attack-5",
+          "name": "Sneak Attack +1d6",
+          "level": 5,
+          "type": "scaling",
+          "summary": "Deal precision damage to nearby targets you flank or that are denied their Dexterity bonus.",
+          "scaling": "+1d6; increases every 5 levels after 5th"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+  }
+}
