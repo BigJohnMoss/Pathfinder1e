@@ -186,10 +186,10 @@ export default function Home() {
       averageHitPoints: multiclassAverageHitPoints(progressionClasses, classLevels, base.abilityModifiers.constitution)
     };
   }, [abilities, additionalCharacterClasses.length, characterClass, classLevels, level, progression.baseAttackBonus, progression.saves, progressionClasses]);
-  const selectedClassFeatIds = useMemo(() => Object.values(selectedOptions).flatMap((optionId) => {
+  const selectedClassFeatIds = useMemo(() => [...progression.features.flatMap((feature) => feature.grantedFeatId ? [feature.grantedFeatId] : []), ...Object.values(selectedOptions).flatMap((optionId) => {
     const option = optionGroups.flatMap((group) => group.options).find((candidate) => candidate.id === optionId);
     return option?.featId ? [option.featId] : [];
-  }), [selectedOptions]);
+  })], [progression.features, selectedOptions]);
   const selectedFeatBonuses = useMemo(() => featBonuses(
     [...selectedFeatIds, ...selectedClassFeatIds],
     feats,
@@ -228,181 +228,8 @@ export default function Home() {
     return gains;
   }, [level, nextProgression, progression.featSlots, progression.skillRanks]);
   const casterLevel = Math.max(0, ...classLevels.map((entry) => classes.find((item) => item.id === entry.classId)?.spellcasting ? entry.level : 0));
-  const featContext = useMemo(() => ({ classId: characterClass.id, classLevels: classLevelMap, ancestryId, size: ancestry.size, classLevel: level, casterLevel, abilities, baseAttackBonus: progression.baseAttackBonus, skillRanks, featureIds: progression.features.map((feature) => feature.id), selectedFeatChoices }), [abilities, ancestry.size, ancestryId, casterLevel, characterClass.id, classLevelMap, level, progression.baseAttackBonus, progression.features, selectedFeatChoices, skillRanks]);
-  const featChoices = featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const otherFeatIds = selectedFeatIds.filter((_, index) => index !== slot.index); const context = { ...featContext, candidateId: selected?.id, selectedIds: otherFeatIds }; const checks = selected ? featPrerequisiteResults(selected, context) : []; return { ...slot, selected, checks, eligibleFeatIds: feats.filter((feat) => prerequisitesMet(feat.prerequisites, { ...context, candidateId: feat.id })).map((feat) => feat.id) }; });
-  useEffect(() => setSelectedFeatIds((current) => { const next = normalizeSelectedFeats(current, feats, featContext, featSlots.length); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [featContext, featSlots.length]);
-  useEffect(() => setSelectedFeatChoices((current) => { const next = normalizeSelectedFeatChoices(current, selectedFeatIds, feats); return Object.keys(next).length === Object.keys(current).length && Object.entries(next).every(([id, choice]) => current[id] === choice) ? current : next; }), [selectedFeatIds]);
-  useEffect(() => setSelectedTraitChoices((current) => {
-    const next = normalizeSelectedTraitChoices(current, selectedTraitIds, traits, { spells, classes, classId });
-    return Object.keys(next).length === Object.keys(current).length && Object.entries(next).every(([id, choice]) => current[id] === choice) ? current : next;
-  }), [classId, selectedTraitIds]);
-
-  const updateAbility = (ability: keyof typeof defaultAbilities, value: number) => setBaseAbilities((current) => ({ ...current, [ability]: Math.max(7, Math.min(18, value || 7)) }));
-  const updateAbilityBoost = (index: number, ability: keyof typeof defaultAbilities) => setAbilityBoosts(current => current.map((value, boostIndex) => boostIndex === index ? ability : value));
-  const updateFeat = (index: number, featId: string) => setSelectedFeatIds((current) => { const next = [...current]; next[index] = featId; return next; });
-  const updateFeatChoice = (featId: string, choice: string) => setSelectedFeatChoices((current) => ({ ...current, [featId]: choice }));
-  const skillBudget = skillRankBudget(progression.skillRanks, skillRanks);
-  const allocatedSkillRanks = skillBudget.allocated;
-  const updateSkill = (skillName: string, ranks: number) => setSkillRanks((current) => { const otherRanks = Object.fromEntries(Object.entries(current).filter(([skill]) => skill !== skillName)); const available = skillRankBudget(progression.skillRanks, otherRanks).remaining; return { ...current, [skillName]: Math.max(0, Math.min(level, available, ranks || 0)) }; });
-  const skillEntries = skills.map((skill) => { const ranks = skillRanks[skill.name] ?? 0; const result = skillTotal(skillCharacterClass, skill, abilities[skill.ability], ranks); return { ...skill, ranks, ...result, total: result.total + (selectedTraitBonuses.skillBonuses[skill.name] ?? 0) + (selectedFeatBonuses.skillBonuses[skill.name] ?? 0) }; });
-  useEffect(() => setSkillRanks((current) => {
-    const next = normalizeSkillRanks(current, progression.skillRanks, level);
-    return Object.keys(next).length === Object.keys(current).length && Object.entries(next).every(([skill, ranks]) => current[skill] === ranks) ? current : next;
-  }), [level, progression.skillRanks]);
-
-  const choiceFeatures = progression.features.filter((feature) => feature.choiceRequired && feature.optionGroupId);
-  const classOptionChoices = choiceFeatures.map((feature) => {
-    const group = optionGroups.find((item) => item.id === feature.optionGroupId);
-    const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)];
-    const featureClassId = "classId" in feature && typeof feature.classId === "string" ? feature.classId : characterClass.id;
-    const featureClassLevel = classLevelMap[featureClassId] ?? primaryClassLevel;
-    const options = group && featureClassId === "druid" && group.id === "ranger-animal-companions"
-      ? group.options.filter((option) => option.minimumLevel <= featureClassLevel)
-      : group && featureClassId === "druid" && group.id === "cleric-domains"
-        ? group.options.filter((option) => ["domain-air", "domain-animal", "domain-earth", "domain-fire", "domain-plant", "domain-water", "domain-weather"].includes(option.id))
-        : group ? availableOptions(group, featureClassId, featureClassLevel, selectedIds, { abilities, size: ancestry.size, baseAttackBonus: progression.baseAttackBonus, classLevels: classLevelMap, featureIds: [...progression.features.map((entry) => entry.id), ...selectedIds] }) : [];
-    return { id: feature.id, name: feature.name, level: feature.level, classLevel: featureClassLevel, options, selected: options.find((option) => option.id === selectedOptions[feature.id]) };
-  });
-  const updateClassOption = (featureId: string, optionId: string) => setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
-  const updateTrait = (index: number, traitId: string) => setSelectedTraitIds((current) => {
-    const next = [...current];
-    if (traitId) next[index] = traitId;
-    else next.splice(index, 1);
-    const normalized = normalizeSelectedTraits(next, traits);
-    setSelectedTraitChoices((choices) => normalizeSelectedTraitChoices(choices, normalized, traits, { spells, classes, classId }));
-    return normalized;
-  });
-  const updateTraitChoice = (traitId: string, choice: string) => setSelectedTraitChoices((current) => normalizeSelectedTraitChoices({ ...current, [traitId]: choice }, selectedTraitIds, traits, { spells, classes, classId }));
-
-  const castingAbility = characterClass.spellcasting && abilityNames.includes(characterClass.spellcasting.ability as keyof typeof abilities) ? characterClass.spellcasting.ability as keyof typeof abilities : null;
-  const castingAbilityScore = castingAbility ? abilities[castingAbility] : 10;
-  const isSpontaneous = characterClass.spellcasting?.castingType === "spontaneous";
-  const preparedCasting = useMemo(() => characterClass.spellcasting && !isSpontaneous ? spellcastingProgression(characterClass, primaryClassLevel, { abilityScore: castingAbilityScore }) : null, [castingAbilityScore, characterClass, isSpontaneous, primaryClassLevel]);
-  const spontaneousCasting = useMemo(() => isSpontaneous ? spontaneousSpellcastingProgression(characterClass, primaryClassLevel, { abilityScore: castingAbilityScore }) : null, [castingAbilityScore, characterClass, isSpontaneous, primaryClassLevel]);
-  const spellSlots = useMemo(() => spontaneousCasting?.slots ?? preparedCasting?.slots ?? [], [preparedCasting, spontaneousCasting]);
-  const maximumSpellLevel = spontaneousCasting?.maximumSpellLevel ?? preparedCasting?.maximumSpellLevel ?? 0;
-  const hasSpellcasting = Boolean(preparedCasting || spontaneousCasting);
-  const baseAvailableSpells = useMemo(() => hasSpellcasting ? spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel) : [], [characterClass.id, hasSpellcasting, maximumSpellLevel]);
-  const bloodlineSpells = useMemo(() => classId === "sorcerer"
-    ? bloodlineBonusSpells(spells, selectedBloodline, primaryClassLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
-    : [], [characterClass.id, classId, maximumSpellLevel, primaryClassLevel, selectedBloodline]);
-  const mysterySpells = useMemo(() => classId === "oracle"
-    ? mysteryBonusSpells(spells, selectedMystery, primaryClassLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
-    : [], [characterClass.id, classId, maximumSpellLevel, primaryClassLevel, selectedMystery]);
-  const grantedSpells = useMemo(() => [...bloodlineSpells, ...mysterySpells], [bloodlineSpells, mysterySpells]);
-  const availableSpells = useMemo(() => mergeSpellLists(baseAvailableSpells, grantedSpells), [baseAvailableSpells, grantedSpells]);
-  const grantedSpellIds = useMemo(() => grantedSpells.map((spell) => spell.id), [grantedSpells]);
-  const spellDcs = hasSpellcasting ? Object.fromEntries(Array.from({ length: maximumSpellLevel + 1 }, (_, spellLevel) => [spellLevel, spellSaveDC(castingAbilityScore, spellLevel)])) : {};
-  const preparedLimits = useMemo(() => preparedCasting?.prepared ?? [], [preparedCasting]);
-  const knownLimits = useMemo(() => spontaneousCasting?.known ?? [], [spontaneousCasting]);
-  const oppositionSchoolIds = useMemo(() => oppositionSchoolsFromOptions(classId, selectedOptions), [classId, selectedOptions]);
-  const secondaryCastingAbility = secondaryCharacterClass?.spellcasting && abilityNames.includes(secondaryCharacterClass.spellcasting.ability as keyof typeof abilities) ? secondaryCharacterClass.spellcasting.ability as keyof typeof abilities : null;
-  const secondaryCastingAbilityScore = secondaryCastingAbility ? abilities[secondaryCastingAbility] : 10;
-  const secondaryIsSpontaneous = secondaryCharacterClass?.spellcasting?.castingType === "spontaneous";
-  const secondaryPreparedCasting = useMemo(() => secondaryCharacterClass?.spellcasting && !secondaryIsSpontaneous ? spellcastingProgression(secondaryCharacterClass, secondaryClassLevel, { abilityScore: secondaryCastingAbilityScore }) : null, [secondaryCastingAbilityScore, secondaryCharacterClass, secondaryClassLevel, secondaryIsSpontaneous]);
-  const secondarySpontaneousCasting = useMemo(() => secondaryCharacterClass && secondaryIsSpontaneous ? spontaneousSpellcastingProgression(secondaryCharacterClass, secondaryClassLevel, { abilityScore: secondaryCastingAbilityScore }) : null, [secondaryCastingAbilityScore, secondaryCharacterClass, secondaryClassLevel, secondaryIsSpontaneous]);
-  const secondarySpellSlots = useMemo(() => secondarySpontaneousCasting?.slots ?? secondaryPreparedCasting?.slots ?? [], [secondaryPreparedCasting, secondarySpontaneousCasting]);
-  const secondaryMaximumSpellLevel = secondarySpontaneousCasting?.maximumSpellLevel ?? secondaryPreparedCasting?.maximumSpellLevel ?? 0;
-  const secondaryHasSpellcasting = Boolean(secondaryPreparedCasting || secondarySpontaneousCasting);
-  const secondarySelectedBloodline = useMemo(() => secondaryCharacterClass ? bloodlineFromOptions(secondaryCharacterClass.id, selectedOptions) : undefined, [secondaryCharacterClass, selectedOptions]);
-  const secondarySelectedMystery = useMemo(() => secondaryCharacterClass ? mysteryFromOptions(secondaryCharacterClass.id, selectedOptions) : undefined, [secondaryCharacterClass, selectedOptions]);
-  const secondaryBaseSpells = useMemo(() => secondaryHasSpellcasting && secondaryCharacterClass ? spellsAvailableToClass(spells, secondaryCharacterClass.id, secondaryMaximumSpellLevel) : [], [secondaryCharacterClass, secondaryHasSpellcasting, secondaryMaximumSpellLevel]);
-  const secondaryBloodlineSpells = useMemo(() => secondaryCharacterClass?.id === "sorcerer"
-    ? bloodlineBonusSpells(spells, secondarySelectedBloodline, secondaryClassLevel, secondaryCharacterClass.id).filter((spell) => spell.levelByClass[secondaryCharacterClass.id] <= secondaryMaximumSpellLevel)
-    : [], [secondaryCharacterClass, secondaryClassLevel, secondaryMaximumSpellLevel, secondarySelectedBloodline]);
-  const secondaryMysterySpells = useMemo(() => secondaryCharacterClass?.id === "oracle"
-    ? mysteryBonusSpells(spells, secondarySelectedMystery, secondaryClassLevel, secondaryCharacterClass.id).filter((spell) => spell.levelByClass[secondaryCharacterClass.id] <= secondaryMaximumSpellLevel)
-    : [], [secondaryCharacterClass, secondaryClassLevel, secondaryMaximumSpellLevel, secondarySelectedMystery]);
-  const secondaryGrantedSpells = useMemo(() => [...secondaryBloodlineSpells, ...secondaryMysterySpells], [secondaryBloodlineSpells, secondaryMysterySpells]);
-  const secondaryAvailableSpells = useMemo(() => mergeSpellLists(secondaryBaseSpells, secondaryGrantedSpells), [secondaryBaseSpells, secondaryGrantedSpells]);
-  const secondaryGrantedSpellIds = useMemo(() => secondaryGrantedSpells.map((spell) => spell.id), [secondaryGrantedSpells]);
-  const secondaryPreparedLimits = useMemo(() => secondaryPreparedCasting?.prepared ?? [], [secondaryPreparedCasting]);
-  const secondaryKnownLimits = useMemo(() => secondarySpontaneousCasting?.known ?? [], [secondarySpontaneousCasting]);
-  const secondarySpellDcs = secondaryHasSpellcasting ? Object.fromEntries(Array.from({ length: secondaryMaximumSpellLevel + 1 }, (_, spellLevel) => [spellLevel, spellSaveDC(secondaryCastingAbilityScore, spellLevel)])) : {};
-  const secondaryOppositionSchoolIds = useMemo(() => oppositionSchoolsFromOptions(secondaryCharacterClass?.id ?? "", selectedOptions), [secondaryCharacterClass, selectedOptions]);
-  const reservoir = classId === "arcanist" ? arcaneReservoir(primaryClassLevel) : null;
-  const secondaryReservoir = secondaryCharacterClass?.id === "arcanist" ? arcaneReservoir(secondaryClassLevel) : null;
-  const bardClassLevel = classLevelMap.bard ?? 0;
-  const druidClassLevel = classLevelMap.druid ?? 0;
-  const bardicPerformanceMaximum = bardClassLevel > 0 ? bardicPerformanceRounds(bardClassLevel, combat.abilityModifiers.charisma) : 0;
-  const wildShapeMaximum = druidClassLevel > 0 ? druidWildShapeUses(druidClassLevel) : 0;
-  const classDailyResources = [
-    ...(bardClassLevel > 0 ? [{ label: "Performance rounds", unit: "round", maximum: bardicPerformanceMaximum, used: bardicPerformanceUsed, onUsedChange: setBardicPerformanceUsed }] : []),
-    ...(druidClassLevel >= 4 ? [{ label: "Wild Shape", unit: "use", maximum: wildShapeMaximum, used: wildShapeUsed, onUsedChange: setWildShapeUsed }] : [])
-  ];
-  const updateSpellSlotUses = (uses: Record<number, number>) => setSpellSlotUses(normalizeSpellSlotUses(uses, spellSlots));
-  const updateSecondarySpellSlotUses = (uses: Record<number, number>) => setSecondarySpellSlotUses(normalizeSpellSlotUses(uses, secondarySpellSlots));
-  const updateReservoir = (points: number) => setReservoirPoints(Math.max(0, Math.min(reservoir?.maximum ?? 0, points)));
-  const updateSecondaryReservoir = (points: number) => setReservoirPoints(Math.max(0, Math.min(secondaryReservoir?.maximum ?? 0, points)));
-  const refreshDay = () => { setSpellSlotUses({}); if (reservoir) setReservoirPoints(reservoir.dailyRefresh); if (classId === "bard") setBardicPerformanceUsed(0); if (classId === "druid") setWildShapeUsed(0); };
-  const refreshSecondaryDay = () => { setSecondarySpellSlotUses({}); if (secondaryReservoir) setReservoirPoints(secondaryReservoir.dailyRefresh); if (secondaryCharacterClass?.id === "bard") setBardicPerformanceUsed(0); if (secondaryCharacterClass?.id === "druid") setWildShapeUsed(0); };
-  const normalizeSelectedSpells = (spellIds: string[]) => isSpontaneous
-    ? normalizeKnownSpells(spellIds, availableSpells, characterClass.id, knownLimits, grantedSpellIds)
-    : normalizePreparedSpellsWithOpposition(spellIds, availableSpells, characterClass.id, preparedLimits, oppositionSchoolIds);
-  const updateSelectedSpells = (spellIds: string[]) => setSelectedSpellIds(normalizeSelectedSpells(spellIds));
-  const normalizeSecondarySelectedSpells = (spellIds: string[]) => !secondaryCharacterClass ? [] : secondaryIsSpontaneous
-    ? normalizeKnownSpells(spellIds, secondaryAvailableSpells, secondaryCharacterClass.id, secondaryKnownLimits, secondaryGrantedSpellIds)
-    : normalizePreparedSpellsWithOpposition(spellIds, secondaryAvailableSpells, secondaryCharacterClass.id, secondaryPreparedLimits, secondaryOppositionSchoolIds);
-  const updateSecondarySelectedSpells = (spellIds: string[]) => setSecondarySelectedSpellIds(normalizeSecondarySelectedSpells(spellIds));
-  useEffect(() => setSelectedSpellIds((current) => { const next = normalizeSelectedSpells(current); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [availableSpells, grantedSpellIds, characterClass.id, isSpontaneous, knownLimits, oppositionSchoolIds, preparedLimits]);
-  useEffect(() => setSpellSlotUses((current) => normalizeSpellSlotUses(current, spellSlots)), [spellSlots]);
-  useEffect(() => setSecondarySelectedSpellIds((current) => { const next = normalizeSecondarySelectedSpells(current); return next.length === current.length && next.every((id, index) => id === current[index]) ? current : next; }), [secondaryAvailableSpells, secondaryCharacterClass?.id, secondaryGrantedSpellIds, secondaryIsSpontaneous, secondaryKnownLimits, secondaryOppositionSchoolIds, secondaryPreparedLimits]);
-  useEffect(() => setSecondarySpellSlotUses((current) => normalizeSpellSlotUses(current, secondarySpellSlots)), [secondarySpellSlots]);
-  const spellcastingClassIds = useMemo(() => progressionClasses.filter((item) => item.spellcasting && (classLevelMap[item.id] ?? 0) > 0).map((item) => item.id), [classLevelMap, progressionClasses]);
-  useEffect(() => setActiveSpellClassId((current) => spellcastingClassIds.includes(current) ? current : spellcastingClassIds[0] ?? ""), [spellcastingClassIds]);
-  useEffect(() => { if (reservoir) setReservoirPoints((current) => Math.min(current, reservoir.maximum)); }, [reservoir?.maximum]);
-  useEffect(() => setBardicPerformanceUsed((current) => Math.min(current, bardicPerformanceMaximum)), [bardicPerformanceMaximum]);
-  useEffect(() => setWildShapeUsed((current) => wildShapeMaximum === null ? 0 : Math.min(current, wildShapeMaximum)), [wildShapeMaximum]);
-
-  const primarySpellbook = spontaneousCasting ? <SpontaneousSpellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={spontaneousCasting.slots} knownLimits={knownLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} onRefreshDay={refreshDay} /> : preparedCasting ? <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={castingAbility ? labels[castingAbility] : "casting ability"} slots={preparedCasting.slots} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={updateSelectedSpells} slotUses={spellSlotUses} onSlotUsesChange={updateSpellSlotUses} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={updateReservoir} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} /> : null;
-  const secondarySpellbook = secondaryCharacterClass && secondarySpontaneousCasting ? <SpontaneousSpellbook key={secondaryCharacterClass.id} spells={secondaryAvailableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={secondaryCharacterClass.id} className={secondaryCharacterClass.name} castingAbilityName={secondaryCastingAbility ? labels[secondaryCastingAbility] : "casting ability"} slots={secondarySpontaneousCasting.slots} knownLimits={secondaryKnownLimits} spellDcs={secondarySpellDcs} maximumSpellLevel={secondaryMaximumSpellLevel} knownSpellIds={secondarySelectedSpellIds} grantedSpellIds={secondaryGrantedSpellIds} onKnownSpellIdsChange={updateSecondarySelectedSpells} slotUses={secondarySpellSlotUses} onSlotUsesChange={updateSecondarySpellSlotUses} onRefreshDay={refreshSecondaryDay} /> : secondaryCharacterClass && secondaryPreparedCasting ? <Spellbook key={secondaryCharacterClass.id} spells={secondaryAvailableSpells} spellTraitBonuses={selectedTraitBonuses.spellBonuses} classId={secondaryCharacterClass.id} className={secondaryCharacterClass.name} castingAbilityName={secondaryCastingAbility ? labels[secondaryCastingAbility] : "casting ability"} slots={secondaryPreparedCasting.slots} preparedLimits={secondaryPreparedLimits} spellDcs={secondarySpellDcs} maximumSpellLevel={secondaryMaximumSpellLevel} preparedSpellIds={secondarySelectedSpellIds} onPreparedSpellIdsChange={updateSecondarySelectedSpells} slotUses={secondarySpellSlotUses} onSlotUsesChange={updateSecondarySpellSlotUses} reservoir={secondaryReservoir ? { current: reservoirPoints, ...secondaryReservoir } : null} onReservoirChange={updateSecondaryReservoir} onRefreshDay={refreshSecondaryDay} oppositionSchoolIds={secondaryOppositionSchoolIds} /> : null;
-  const extraActiveClassLevel = additionalClassLevels.slice(1).find((entry) => entry.classId === activeSpellClassId);
-  const extraActiveClass = extraActiveClassLevel ? classes.find((item) => item.id === extraActiveClassLevel.classId) : undefined;
-  const extraSpellbook = extraActiveClass && extraActiveClassLevel ? <ClassSpellbook key={extraActiveClass.id} characterClass={extraActiveClass} classLevel={extraActiveClassLevel.level} abilities={abilities} selectedOptions={selectedOptions} spellTraitBonuses={selectedTraitBonuses.spellBonuses} selectedSpellIds={extraSelectedSpellsByClass[extraActiveClass.id] ?? []} onSelectedSpellIdsChange={(spellIds) => setExtraSelectedSpellsByClass((current) => ({ ...current, [extraActiveClass.id]: spellIds }))} slotUses={extraSpellSlotUsesByClass[extraActiveClass.id] ?? {}} onSlotUsesChange={(uses) => setExtraSpellSlotUsesByClass((current) => ({ ...current, [extraActiveClass.id]: uses }))} reservoirPoints={reservoirPoints} onReservoirPointsChange={setReservoirPoints} /> : null;
-
-  const preparedSpellsByClass = Object.fromEntries(classLevels.map((entry, index) => [entry.classId, index === 0 ? selectedSpellIds : index === 1 ? secondarySelectedSpellIds : extraSelectedSpellsByClass[entry.classId] ?? []]));
-  const spellSlotUsesByClass = Object.fromEntries(classLevels.map((entry, index) => [entry.classId, Object.fromEntries(Object.entries(index === 0 ? spellSlotUses : index === 1 ? secondarySpellSlotUses : extraSpellSlotUsesByClass[entry.classId] ?? {}))]));
-  const savedArchetypeIdsByClass = Object.fromEntries(classLevels.flatMap((entry, index) => {
-    const selectedId = index === 0 ? archetypeId : additionalArchetypeIds[entry.classId];
-    return selectedId ? [[entry.classId, selectedId]] : [];
-  }));
-  const characterDraft: CharacterDraftV1 = { version: 1, name, classId, classLevels, archetypeId, archetypeIdsByClass: savedArchetypeIdsByClass, ancestryId, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, favoredClassHitPoints, favoredClassSkillRanks, selectedFeatIds, selectedTraitIds, selectedTraitChoices, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, preparedSpellsByClass, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), spellSlotUsesByClass, arcaneReservoir: classLevelMap.arcanist ? reservoirPoints : null, bardicPerformanceUsed: bardClassLevel > 0 ? bardicPerformanceUsed : 0, wildShapeUsed: druidClassLevel > 0 ? wildShapeUsed : 0, currentHitPoints, temporaryHitPoints, activeEffects, inventory, coins };
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(characterLibraryKey);
-      const library = stored ? normalizeCharacterLibrary(JSON.parse(stored)) : emptyCharacterLibrary();
-      const legacy = localStorage.getItem(legacyCharacterKey);
-      if (library.characters.length === 0 && legacy) {
-        const draft = normalizeCharacterDraft(JSON.parse(legacy), { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id), archetypeIds: archetypes.map((item) => item.id), archetypeIdsByClass });
-        if (draft) {
-          const id = globalThis.crypto?.randomUUID?.() ?? `character-${Date.now()}`;
-          const migrated = { version: 1 as const, activeCharacterId: id, characters: [{ id, updatedAt: new Date().toISOString(), draft }] };
-          localStorage.setItem(characterLibraryKey, JSON.stringify(migrated));
-          setCharacterLibrary(migrated);
-          setSaveNotice("Your previous save was added to the character library");
-          return;
-        }
-      }
-      setCharacterLibrary(library);
-    } catch {
-      setSaveNotice("Saved character library is invalid; starting with an empty library");
-    }
-  }, []);
-  const persistLibrary = (library: CharacterLibraryV1) => {
-    localStorage.setItem(characterLibraryKey, JSON.stringify(library));
-    setCharacterLibrary(library);
-  };
-  const applyCharacterDraft = (value: unknown, successNotice: string) => {
-    if (value && typeof value === "object" && "version" in value && value.version !== 1) { setSaveNotice("Unsupported character file version"); return null; }
-    const draft = normalizeCharacterDraft(value, { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id), archetypeIds: archetypes.filter((item) => item.classId === (value as { classId?: string })?.classId).map((item) => item.id), archetypeIdsByClass });
-    if (!draft) { setSaveNotice("Character file is invalid"); return null; }
-    const draftClass = classes.find((item) => item.id === draft.classId) ?? classes[0];
-    const draftPrimaryLevel = draft.classLevels[0]?.level ?? draft.level;
-    const draftSecondaryLevel = draft.classLevels[1];
-    const draftSecondaryClass = classes.find((item) => item.id === draftSecondaryLevel?.classId);
-    const draftAncestry = ancestries.find((item) => item.id === draft.ancestryId) ?? ancestries[0];
-    const draftFixedModifiers = (draftAncestry.abilityModifiers as { fixed?: Partial<typeof defaultAbilities> }).fixed ?? {};
-    const draftChoiceAmount = (draftAncestry.abilityModifiers as { choice?: { amount: number } }).choice?.amount ?? 0;
+  const featContext = useMemo(() => ({ classId: characterClass.id, classLevels: classLevelMap, ancestryId, size: ancestry.size, classLevel: level, casterLevel, abilities, baseAttackBonus: progression.baseAttackBonus, skillRanks, featureIds: progression.features.map((feature) => feature.id), selectedIds: selectedClassFeatIds, selectedFeatChoices }), [abilities, ancestry.size, ancestryId, casterLevel, characterClass.id, classLevelMap, level, progression.baseAttackBonus, progression.features, selectedClassFeatIds, selectedFeatChoices, skillRanks]);
+  const featChoices = featSlots.map((slot) => { const selected = feats.find((feat) => feat.id === selectedFeatIds[slot.index]); const otherFeatIds = selectedFeatIds.filter((_, index) => index !== slot.index); const context = { ...featContext, candidateId: selected?.id, selectedIds: [...selectedClassFeatIds, ...otherFeatIds] }; const checks = selected ? featPrerequisiteResults(selected, context) : []; return { ...slot, selecte…6330 tokens truncated…ifiers as { choice?: { amount: number } }).choice?.amount ?? 0;
     const draftAbilities = Object.fromEntries(Object.keys(draft.baseAbilities).map((ability) => [ability, draft.baseAbilities[ability as keyof typeof defaultAbilities] + (draftFixedModifiers[ability as keyof typeof defaultAbilities] ?? 0) + (draftChoiceAmount && ability === draft.humanAbility ? draftChoiceAmount : 0) + draft.abilityBoosts.filter((boost) => boost === ability).length])) as typeof defaultAbilities;
     const draftCastingAbility = draftClass.spellcasting && abilityNames.includes(draftClass.spellcasting.ability as keyof typeof draftAbilities) ? draftClass.spellcasting.ability as keyof typeof draftAbilities : null;
     const draftAbilityScore = draftCastingAbility ? draftAbilities[draftCastingAbility] : 10;
