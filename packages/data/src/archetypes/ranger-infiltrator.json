@@ -1,0 +1,18 @@
+{
+  "id":"ranger-infiltrator",
+  "name":"Infiltrator",
+  "classId":"ranger",
+  "summary":"A hunter who copies the defenses, senses, movement, and feats of selected favored enemies.",
+  "replacements":[
+    {"progressionKeys":["ranger-favored-terrain"],"features":[
+      {"id":"infiltrator-adaptation-3","name":"Adaptation 1","level":3,"type":"selectable","summary":"Choose an adaptation from one of your favored enemy types.","choiceRequired":true,"optionGroupId":"ranger-infiltrator-adaptations","progressionKey":"infiltrator-adaptations","uses":"10 minutes per Ranger level/day"},
+      {"id":"infiltrator-adaptation-8-first","name":"Adaptation 2","level":8,"type":"selectable","summary":"Choose an adaptation associated with a favored enemy type.","choiceRequired":true,"optionGroupId":"ranger-infiltrator-adaptations","progressionKey":"infiltrator-adaptations"},
+      {"id":"infiltrator-adaptation-8-second","name":"Adaptation 3","level":8,"type":"selectable","summary":"Choose another adaptation from any selected favored enemy type.","choiceRequired":true,"optionGroupId":"ranger-infiltrator-adaptations","progressionKey":"infiltrator-adaptations"},
+      {"id":"infiltrator-adaptation-13-first","name":"Adaptation 4","level":13,"type":"selectable","summary":"Choose an adaptation associated with a favored enemy type.","choiceRequired":true,"optionGroupId":"ranger-infiltrator-adaptations","progressionKey":"infiltrator-adaptations"},
+      {"id":"infiltrator-adaptation-13-second","name":"Adaptation 5","level":13,"type":"selectable","summary":"Choose another adaptation from any selected favored enemy type.","choiceRequired":true,"optionGroupId":"ranger-infiltrator-adaptations","progressionKey":"infiltrator-adaptations"},
+      {"id":"infiltrator-adaptation-18-first","name":"Adaptation 6","level":18,"type":"selectable","summary":"Choose an adaptation associated with a favored enemy type.","choiceRequired":true,"optionGroupId":"ranger-infiltrator-adaptations","progressionKey":"infiltrator-adaptations"},
+      {"id":"infiltrator-adaptation-18-second","name":"Adaptation 7","level":18,"type":"selectable","summary":"Choose another adaptation from any selected favored enemy type.","choiceRequired":true,"optionGroupId":"ranger-infiltrator-adaptations","progressionKey":"infiltrator-adaptations"}
+    ]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}
+}

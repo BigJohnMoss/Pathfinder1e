@@ -92,8 +92,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Four Winds, Monk of the Healing Hand, Monk of the Lotus, Monk of the Sacred
   Mountain, Weapon Adept, and Zen Archer; APG Paladin coverage is complete with
   Divine Defender, Hospitaler, Sacred Servant, Shining Knight, Undead Scourge,
-  and Warrior of the Holy Light; APG Ranger coverage is in progress with Guide,
-  Spirit Ranger, and Urban Ranger
+  and Warrior of the Holy Light; APG Ranger coverage is complete with Beast
+  Master, Guide, Horse Lord, Infiltrator, Shapeshifter, Skirmisher, Spirit
+  Ranger, and Urban Ranger, plus the Crossbow, Mounted Combat, Natural Weapon,
+  Two-Handed Weapon, and Weapon and Shield combat styles
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,

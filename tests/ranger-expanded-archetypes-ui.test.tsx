@@ -30,6 +30,7 @@ for (const [archetypeId, name, expected, removed] of [
   ["ranger-shapeshifter","Shapeshifter",["Shifter's Blessing 1","Shifter's Blessing 4","Dual Form Shifter","Master Shifter"],["Favored Terrain 1","Camouflage","Master Hunter"]],
   ["ranger-skirmisher","Skirmisher",["Hunter's Trick 1","Hunter's Trick 8"],["Divine Spellcasting"]]
   ,["ranger-beast-master","Beast Master",["Beast Master Animal Bond","Companion Roster","Improved Empathic Link","Strong Bond"],["Hunter's Bond","Animal Companion Choice","Combat Style Feat 2","Camouflage"]]
+  ,["ranger-infiltrator","Infiltrator",["Adaptation 1","Adaptation 7"],["Favored Terrain 1","Favored Terrain 4"]]
 ] as const) test(`${name} is selectable with its level-20 progression`, async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -132,4 +133,23 @@ test("Beast Master allocates multiple companion levels within its level-12 budge
   await user.selectOptions(screen.getByLabelText("Beast Master companion 2 effective levels"), "5");
   assert.equal(screen.getByLabelText("Beast Master allocation").textContent, "12/12 levels allocated");
   assert.equal(screen.queryByLabelText("Beast Master companion 3"), null);
+});
+
+test("Infiltrator adaptations follow favored enemies and remain unique", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-infiltrator");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  await user.selectOptions(screen.getByLabelText(/Favored Enemy 1/), "ranger-enemy-dragon");
+  await user.selectOptions(screen.getByLabelText(/Favored Enemy 2/), "ranger-enemy-undead");
+  const first = screen.getByLabelText(/Adaptation 1/);
+  const second = screen.getByLabelText(/Adaptation 2/);
+  assert.equal([...first.options].some((option) => option.value === "infiltrator-dragon"), true);
+  assert.equal([...first.options].some((option) => option.value === "infiltrator-animal"), false);
+  await user.selectOptions(first, "infiltrator-dragon");
+  await user.selectOptions(screen.getByLabelText("Adaptation 1 Adaptation"), "darkvision-60");
+  await user.selectOptions(second, "infiltrator-dragon");
+  assert.equal((screen.getByLabelText("Adaptation 2 Adaptation").querySelector("option[value='darkvision-60']") as HTMLOptionElement).disabled, true);
 });

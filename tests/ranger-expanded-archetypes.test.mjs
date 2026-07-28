@@ -13,6 +13,7 @@ for (const [file, expected, removed] of [
   ["ranger-shapeshifter",["shapeshifter-blessing-3","shapeshifter-blessing-8","shapeshifter-blessing-13","shapeshifter-blessing-18","shapeshifter-dual-form-12","shapeshifter-master-shifter-20"],["ranger-favored-terrain-3","ranger-favored-terrain-18","ranger-camouflage-12","ranger-master-hunter-20"]],
   ["ranger-skirmisher",["skirmisher-hunter-trick-5","skirmisher-hunter-trick-7","skirmisher-hunter-trick-9","skirmisher-hunter-trick-11","skirmisher-hunter-trick-13","skirmisher-hunter-trick-15","skirmisher-hunter-trick-17","skirmisher-hunter-trick-19"],["ranger-spellcasting-4"]]
   ,["ranger-beast-master",["ranger-hunters-bond-animal","beast-master-companion-roster-4","beast-master-improved-empathic-link-6","beast-master-strong-bond-12"],["ranger-hunters-bond-4","ranger-animal-companion-4","ranger-combat-style-feat-6","ranger-camouflage-12"]]
+  ,["ranger-infiltrator",["infiltrator-adaptation-3","infiltrator-adaptation-8-first","infiltrator-adaptation-8-second","infiltrator-adaptation-13-first","infiltrator-adaptation-13-second","infiltrator-adaptation-18-first","infiltrator-adaptation-18-second"],["ranger-favored-terrain-3","ranger-favored-terrain-8","ranger-favored-terrain-13","ranger-favored-terrain-18"]]
 ]) test(`${file} exposes its complete APG progression`, async () => {
   const ranger = await load("../packages/data/src/classes/ranger.json");
   const archetype = await load(`../packages/data/src/archetypes/${file}.json`);
