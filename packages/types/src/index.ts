@@ -13,6 +13,7 @@ export interface CharacterDraftV1 {
   exportedAt?: string;
   name: string;
   classId: string;
+  classLevels: CharacterClassLevel[];
   archetypeId: string;
   ancestryId: string;
   level: number;
