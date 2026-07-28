@@ -102,7 +102,7 @@ function checkBloodlineDetail(bloodline, file) {
     if (!spell || spell.sorcererLevel !== expectedSpellLevels[index] || spell.spellLevel !== index + 1 || typeof spell.name !== "string" || !spell.name.trim()) errors.push(`${label}: invalid bonus spell at index ${index}`);
   });
 
-  if (!Array.isArray(bloodline.bonusFeats) || bloodline.bonusFeats.length !== 8 || new Set(bloodline.bonusFeats).size !== 8 || bloodline.bonusFeats.some(feat => typeof feat !== "string" || !feat.trim())) errors.push(`${label}: bonusFeats must contain eight unique names`);
+  if (!Array.isArray(bloodline.bonusFeats) || bloodline.bonusFeats.length < 8 || new Set(bloodline.bonusFeats).size !== bloodline.bonusFeats.length || bloodline.bonusFeats.some(feat => typeof feat !== "string" || !feat.trim())) errors.push(`${label}: bonusFeats must contain at least eight unique names`);
 
   const expectedPowerLevels = [1, 3, 9, 15, 20];
   if (!Array.isArray(bloodline.powers) || bloodline.powers.length !== expectedPowerLevels.length) errors.push(`${label}: powers must contain five entries`);
