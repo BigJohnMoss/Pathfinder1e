@@ -1,41 +1,36 @@
 {
   "id": "rage-powers",
   "name": "Rage Powers",
-  "classIds": [
-    "barbarian"
-  ],
+  "classIds": ["barbarian"],
   "options": [
-    {
-      "id": "superstition",
-      "groupId": "rage-powers",
-      "name": "Superstition",
-      "classIds": [
-        "barbarian"
-      ],
-      "minimumLevel": 2,
-      "prerequisites": [],
-      "benefit": "Gain a morale bonus on saving throws against spells and supernatural or spell-like abilities while raging.",
-      "source": {
-        "title": "Core Rulebook",
-        "page": null,
-        "url": "https://aonprd.com/BarbarianRagePowers.aspx"
-      }
-    },
-    {
-      "id": "guarded-stance",
-      "groupId": "rage-powers",
-      "name": "Guarded Stance",
-      "classIds": [
-        "barbarian"
-      ],
-      "minimumLevel": 2,
-      "prerequisites": [],
-      "benefit": "Gain a dodge bonus to Armor Class while raging.",
-      "source": {
-        "title": "Core Rulebook",
-        "page": null,
-        "url": "https://aonprd.com/BarbarianRagePowers.aspx"
-      }
-    }
+    {"id":"animal-fury","groupId":"rage-powers","name":"Animal Fury","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain a bite attack while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"clear-mind","groupId":"rage-powers","name":"Clear Mind","classIds":["barbarian"],"minimumLevel":8,"prerequisites":[],"benefit":"Reroll one failed Will save while raging, once per rage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"fearless-rage","groupId":"rage-powers","name":"Fearless Rage","classIds":["barbarian"],"minimumLevel":12,"prerequisites":[],"benefit":"Become immune to shaken and frightened conditions while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"guarded-stance","groupId":"rage-powers","name":"Guarded Stance","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain a scaling dodge bonus to Armor Class while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"increased-damage-reduction","groupId":"rage-powers","name":"Increased Damage Reduction","classIds":["barbarian"],"minimumLevel":8,"prerequisites":[],"selectionLimit":3,"benefit":"Increase your damage reduction by 1; this power can be selected up to three times.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"internal-fortitude","groupId":"rage-powers","name":"Internal Fortitude","classIds":["barbarian"],"minimumLevel":8,"prerequisites":[],"benefit":"Become immune to sickened and nauseated conditions while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"intimidating-glare","groupId":"rage-powers","name":"Intimidating Glare","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Make an adjacent foe shaken with an Intimidate check while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"knockback","groupId":"rage-powers","name":"Knockback","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Attempt a bull rush in place of a melee attack while raging without provoking.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"low-light-vision","groupId":"rage-powers","name":"Low-Light Vision","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain low-light vision while raging, or double its range if you already have it.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"mighty-swing","groupId":"rage-powers","name":"Mighty Swing","classIds":["barbarian"],"minimumLevel":12,"prerequisites":[],"benefit":"Automatically confirm one critical threat while raging, once per rage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"moment-of-clarity","groupId":"rage-powers","name":"Moment of Clarity","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Suspend rage benefits and penalties for one round, once per rage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"night-vision","groupId":"rage-powers","name":"Night Vision","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[{"type":"feature","id":"low-light-vision"}],"benefit":"Gain darkvision 60 feet while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"no-escape","groupId":"rage-powers","name":"No Escape","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Use an immediate action to move up to double speed after a withdrawing foe, once per rage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"powerful-blow","groupId":"rage-powers","name":"Powerful Blow","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Add barbarian level to one damage roll while raging, once per rage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"quick-reflexes","groupId":"rage-powers","name":"Quick Reflexes","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Make one additional attack of opportunity each round while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"raging-climber","groupId":"rage-powers","name":"Raging Climber","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Add barbarian level as an enhancement bonus on Climb checks while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"raging-leaper","groupId":"rage-powers","name":"Raging Leaper","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Add barbarian level as an enhancement bonus on Acrobatics checks to jump while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"raging-swimmer","groupId":"rage-powers","name":"Raging Swimmer","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Add barbarian level as an enhancement bonus on Swim checks while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"renewed-vigor","groupId":"rage-powers","name":"Renewed Vigor","classIds":["barbarian"],"minimumLevel":4,"prerequisites":[],"benefit":"Heal 1d8 plus Constitution modifier hit points once per day while raging, improving with level.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"rolling-dodge","groupId":"rage-powers","name":"Rolling Dodge","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain a scaling dodge bonus against ranged attacks while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"roused-anger","groupId":"rage-powers","name":"Roused Anger","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Enter rage while fatigued, becoming exhausted afterward.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"scent","groupId":"rage-powers","name":"Scent","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain the scent ability while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"strength-surge","groupId":"rage-powers","name":"Strength Surge","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Add barbarian level to one Strength check or combat maneuver check while raging, once per rage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"superstition","groupId":"rage-powers","name":"Superstition","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain a scaling morale bonus on saves against spells and supernatural or spell-like abilities while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"surprise-accuracy","groupId":"rage-powers","name":"Surprise Accuracy","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"benefit":"Gain a morale bonus on one attack roll while raging, once per rage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"swift-foot","groupId":"rage-powers","name":"Swift Foot","classIds":["barbarian"],"minimumLevel":2,"prerequisites":[],"selectionLimit":3,"benefit":"Increase your land speed by 5 feet while raging; this power can be selected up to three times.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"terrifying-howl","groupId":"rage-powers","name":"Terrifying Howl","classIds":["barbarian"],"minimumLevel":8,"prerequisites":[{"type":"feature","id":"intimidating-glare"}],"benefit":"Panic nearby shaken enemies with a howl while raging.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}},
+    {"id":"unexpected-strike","groupId":"rage-powers","name":"Unexpected Strike","classIds":["barbarian"],"minimumLevel":8,"prerequisites":[],"benefit":"Make an attack of opportunity against a foe that moves into a threatened square, once per rage.","source":{"title":"Core Rulebook","page":null,"url":"https://legacy.aonprd.com/coreRulebook/classes/barbarian.html#rage-powers"}}
   ]
 }
+
