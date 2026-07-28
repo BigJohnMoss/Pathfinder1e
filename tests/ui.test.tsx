@@ -7,6 +7,7 @@ let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
 let cleanup: typeof import("@testing-library/react").cleanup;
 let fireEvent: typeof import("@testing-library/react").fireEvent;
+let waitFor: typeof import("@testing-library/react").waitFor;
 let userEvent: typeof import("@testing-library/user-event").default;
 let Home: typeof import("../apps/web/app/page").default;
 
@@ -15,7 +16,7 @@ test.before(async () => {
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, localStorage: dom.window.localStorage });
   Object.defineProperty(globalThis, "navigator", { configurable: true, value: dom.window.navigator });
   Object.assign(globalThis, { React });
-  ({ render, screen, cleanup, fireEvent } = await import("@testing-library/react"));
+  ({ render, screen, cleanup, fireEvent, waitFor } = await import("@testing-library/react"));
   userEvent = (await import("@testing-library/user-event")).default;
   Home = (await import("../apps/web/app/page")).default;
 });
@@ -125,6 +126,21 @@ test("allocates and persists favored class hit points and skill ranks", async ()
   const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
   assert.equal(saved.favoredClassHitPoints, 1);
   assert.equal(saved.favoredClassSkillRanks, 2);
+});
+
+test("quick-allocates favored class bonuses and clamps them when level falls", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("button", { name: "Assign remaining to skill ranks" }));
+  assert.equal((screen.getByLabelText("Favored class bonus skill ranks") as HTMLInputElement).value, "20");
+  assert.match(document.querySelector(".favored-class-bonus .hint")?.textContent ?? "", /20 of 20 favored-class bonuses assigned/);
+
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  await waitFor(() => assert.equal((screen.getByLabelText("Favored class bonus skill ranks") as HTMLInputElement).value, "3"));
+  await user.click(screen.getByRole("button", { name: "Clear bonuses" }));
+  assert.equal((screen.getByLabelText("Favored class bonus skill ranks") as HTMLInputElement).value, "0");
+  assert.match(document.querySelector(".favored-class-bonus .hint")?.textContent ?? "", /0 of 3 favored-class bonuses assigned/);
 });
 
 test("enforces the skill-rank pool through the interface", async () => {
