@@ -185,10 +185,25 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
   if (draft.version !== undefined && draft.version !== 1) return null;
   const validAbilities = abilityNames.every(name => Number.isInteger(draft.baseAbilities?.[name]) && draft.baseAbilities[name] >= 7 && draft.baseAbilities[name] <= 18);
   if (typeof draft.classId !== "string" || (classIds && !classIds.includes(draft.classId)) || !Number.isInteger(draft.level) || draft.level < 1 || draft.level > 20 || !validAbilities) return null;
+  const normalizedClassLevels = (() => {
+    if (!Array.isArray(draft.classLevels) || draft.classLevels.length === 0) return [{ classId: draft.classId, level: draft.level }];
+    const seen = new Set();
+    const entries = draft.classLevels.flatMap(entry => {
+      if (!entry || typeof entry.classId !== "string" || seen.has(entry.classId) ||
+        (classIds && !classIds.includes(entry.classId)) || !Number.isInteger(entry.level) || entry.level < 1 || entry.level > 20) return [];
+      seen.add(entry.classId);
+      return [{ classId: entry.classId, level: entry.level }];
+    });
+    const totalLevel = entries.reduce((total, entry) => total + entry.level, 0);
+    return entries.length === draft.classLevels.length && entries[0]?.classId === draft.classId && totalLevel === draft.level
+      ? entries
+      : [{ classId: draft.classId, level: draft.level }];
+  })();
   return {
     version: 1,
     name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",
     classId: draft.classId,
+    classLevels: normalizedClassLevels,
     archetypeId: typeof draft.archetypeId === "string" && (!archetypeIds || archetypeIds.includes(draft.archetypeId)) ? draft.archetypeId : "",
     ancestryId: typeof draft.ancestryId === "string" && (!ancestryIds || ancestryIds.includes(draft.ancestryId)) ? draft.ancestryId : "human",
     level: draft.level,
