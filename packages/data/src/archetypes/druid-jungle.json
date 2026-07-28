@@ -1,0 +1,14 @@
+{
+  "id":"druid-jungle",
+  "name":"Jungle Druid",
+  "classId":"druid",
+  "summary":"A guardian of equatorial wilderness who masters jungle travel, heat, disease, and the forms of ancient trees.",
+  "wildShapeLevelAdjustment":-2,
+  "replacements":[
+    {"featureIds":["druid-woodland-stride-2"],"features":[{"id":"jungle-druid-guardian-2","name":"Jungle Guardian","level":2,"type":"scaling","summary":"In jungle terrain, add half Druid level to initiative, Climb, and key exploration skills and leave no trail.","scaling":"half Druid level"}]},
+    {"featureIds":["druid-trackless-step-3"],"features":[{"id":"jungle-druid-woodland-stride-3","name":"Woodland Stride","level":3,"type":"core","summary":"Move through natural undergrowth at normal speed without harm."}]},
+    {"featureIds":["druid-resist-natures-lure-4"],"features":[{"id":"jungle-druid-torrid-endurance-4","name":"Torrid Endurance","level":4,"type":"core","summary":"Ignore hot-climate effects and gain +4 on saves against disease and exceptional animal or magical-beast abilities."}]},
+    {"featureIds":["druid-thousand-faces-13"],"features":[{"id":"jungle-druid-verdant-sentinel-13","name":"Verdant Sentinel","level":13,"type":"core","summary":"Use tree shape at will."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+}
