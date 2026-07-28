@@ -114,6 +114,20 @@ test("Sandman exposes its complete stealth progression through level 20", async 
   assert.equal(screen.queryByText("Deadly Performance"), null);
 });
 
+test("Savage Skald exposes every war-song replacement through level 20", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-savage-skald']"));
+  await user.selectOptions(archetype, "bard-savage-skald");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Inspiring Blow", "Incite Rage", "Song of the Fallen: Silver Horn", "Berserkergang", "Battle Song"]) assert.ok(screen.getByText(name));
+  assert.equal(screen.queryByText("Fascinate"), null);
+  assert.ok(screen.getByText("Deadly Performance"));
+});
+
 test("Court Bard exposes every replacement performance through level 20", async () => {
   const user = userEvent.setup();
   render(<Home />);

@@ -1,0 +1,80 @@
+{
+  "id": "bard-savage-skald",
+  "name": "Savage Skald",
+  "classId": "bard",
+  "summary": "A fierce tribal war-singer who turns critical blows, rage, and heroic summons into battle performances.",
+  "replacements": [
+    {
+      "featureIds": ["bard-fascinate-1"],
+      "features": [
+        {
+          "id": "savage-skald-inspiring-blow-1",
+          "name": "Inspiring Blow",
+          "level": 1,
+          "type": "core",
+          "summary": "Begin this performance after confirming a critical hit to gain Charisma-based temporary hit points and grant nearby allies +1 on their next attack.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-suggestion-6"],
+      "features": [
+        {
+          "id": "savage-skald-incite-rage-6",
+          "name": "Incite Rage",
+          "level": 6,
+          "type": "core",
+          "summary": "Induce a rage in another creature; a willing creature with the rage feature can rage without spending its own rounds.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-jack-of-all-trades"],
+      "features": [
+        {
+          "id": "savage-skald-song-of-the-fallen-10",
+          "name": "Song of the Fallen: Silver Horn",
+          "level": 10,
+          "type": "scaling",
+          "summary": "After ten continuous rounds, summon warriors as a horn of Valhalla for as long as the performance continues.",
+          "scaling": "silver; brass at 13th; bronze at 16th; iron at 19th",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-soothing-performance-12"],
+      "features": [
+        {
+          "id": "savage-skald-berserkergang-12",
+          "name": "Berserkergang",
+          "level": 12,
+          "type": "scaling",
+          "summary": "Suppress pain, stunning, and fear for chosen creatures and grant DR 5/—, or DR 10/— against nonlethal damage.",
+          "scaling": "one creature plus one per 3 levels after 12th",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-mass-suggestion-18"],
+      "features": [
+        {
+          "id": "savage-skald-battle-song-18",
+          "name": "Battle Song",
+          "level": 18,
+          "type": "core",
+          "summary": "Affect every ally within 30 feet when using Incite Rage.",
+          "uses": "bardic performance"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+  }
+}
