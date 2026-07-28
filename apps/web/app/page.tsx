@@ -261,6 +261,14 @@ export default function Home() {
       ? group.options.filter((option) => ["lawful-good", "lawful-neutral", "neutral-good"].includes(option.alignment ?? ""))
       : group && feature.id.startsWith("sacred-servant-domain-")
         ? group.options
+        : group && group.id === "ranger-combat-styles" && featureCharacterClass?.rangerCombatStyleIds
+          ? group.options.filter((option) => featureCharacterClass.rangerCombatStyleIds?.includes(option.id))
+        : group && featureCharacterClass?.mountedCompanionOnly && group.id === "ranger-animal-companions"
+          ? availableOptions(group, featureClassId, featureClassLevel, selectedIds, { abilities, size: ancestry.size, baseAttackBonus: progression.baseAttackBonus, classLevels: classLevelMap, featureIds: [...progression.features.map((entry) => entry.id), ...selectedIds] }).filter((option) => {
+              const mediumMounts = ["ranger-animal-companion-camel", "ranger-animal-companion-horse"];
+              const smallMounts = ["ranger-animal-companion-pony", "ranger-animal-companion-wolf", ...(featureClassLevel >= 7 ? ["ranger-animal-companion-dog"] : [])];
+              return (ancestry.size === "small" ? smallMounts : mediumMounts).includes(option.id);
+            })
         : group && featureClassId === "druid" && group.id === "ranger-animal-companions"
       ? group.options.filter((option) => option.minimumLevel <= featureClassLevel)
       : group && featureClassId === "druid" && group.id === "cleric-domains"
