@@ -95,7 +95,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
   and Warrior of the Holy Light; APG Ranger coverage is complete with Beast
   Master, Guide, Horse Lord, Infiltrator, Shapeshifter, Skirmisher, Spirit
   Ranger, and Urban Ranger, plus the Crossbow, Mounted Combat, Natural Weapon,
-  Two-Handed Weapon, and Weapon and Shield combat styles
+  Two-Handed Weapon, and Weapon and Shield combat styles; APG Rogue coverage is
+  complete with Acrobat, Burglar, Cutpurse, Investigator, Poisoner, Rake,
+  Scout, Sniper, Spy, Swashbuckler, Thug, and Trapsmith
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
