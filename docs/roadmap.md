@@ -73,15 +73,17 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Next milestone: Expanded Character Options
 
-- traits — complete: all 40 sourced APG basic traits, trait-specific class-skill
+- traits â€” complete: all 40 sourced APG basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
-- archetypes — in progress: reusable replacement schema plus all twelve APG
+- archetypes â€” in progress: reusable replacement schema plus all twelve APG
   Fighter paths: Archer, Crossbowman, Free Hand Fighter, Mobile Fighter,
   Phalanx Soldier, Polearm Master, Roughrider, Savage Warrior, Shielded Fighter,
-  Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master; Barbarian coverage
-  includes Breaker, Brutal Pugilist, Drunken Brute, Elemental Kin, Hurler, Invulnerable Rager,
-  Mounted Fury, Savage Barbarian, and Superstitious
+  Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master; APG Barbarian
+  coverage is complete with Breaker, Brutal Pugilist, Drunken Brute,
+  Elemental Kin, Hurler, Invulnerable Rager, Mounted Fury, Savage Barbarian,
+  and Superstitious, while Totem Warrior is delivered through the complete,
+  mutually exclusive totem rage-power families
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
@@ -93,7 +95,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
   (including parent-specific
   outsider variants) with inherited deity eligibility,
   mechanical class skills, and complete replacement details
-- expanded bloodlines — complete: complete Core catalogue plus all ten APG
+- expanded bloodlines â€” complete: complete Core catalogue plus all ten APG
   bloodlines: Aquatic, Boreal, Deep Earth, Dreamspun, Protean, Serpentine,
   Shadow, Starsoul, Stormborn, and Verdant
 - mysteries and revelations - complete: the complete APG Oracle level 1-20
