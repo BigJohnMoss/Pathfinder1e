@@ -1,0 +1,24 @@
+{
+  "id": "oracle-curses",
+  "name": "Oracle Curses",
+  "classIds": ["oracle"],
+  "optionDefaults": {
+    "groupId": "oracle-curses",
+    "classIds": ["oracle"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Advanced Player's Guide",
+      "page": 44,
+      "url": "https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#oracle-s-curse"
+    }
+  },
+  "options": [
+    {"id":"oracle-curse-clouded-vision","name":"Clouded Vision","benefit":"Vision is limited to 30 feet, but functions as darkvision. The range and supernatural senses improve at 5th, 10th, and 15th level."},
+    {"id":"oracle-curse-deaf","name":"Deaf","benefit":"You are deaf, but cast spells as though modified by Silent Spell without increasing their level or casting time. Other senses improve at 5th, 10th, and 15th level."},
+    {"id":"oracle-curse-haunted","name":"Haunted","benefit":"Spirits interfere with stored and dropped items, but grant bonus spells known that expand at 5th, 10th, and 15th level."},
+    {"id":"oracle-curse-lame","name":"Lame","benefit":"Your land speed is reduced, but encumbrance never reduces it. You gain protections against fatigue, armor speed reduction, and exhaustion as your curse advances."},
+    {"id":"oracle-curse-tongues","name":"Tongues","benefit":"In combat you can speak and understand only a chosen supernatural language. You gain more languages and eventually universal understanding as your curse advances."},
+    {"id":"oracle-curse-wasting","name":"Wasting","benefit":"Your decaying body penalizes most Charisma-based skills, but grants increasing resistance and immunity to disease, sickness, and nausea."}
+  ]
+}
