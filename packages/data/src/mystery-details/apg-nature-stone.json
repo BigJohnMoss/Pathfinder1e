@@ -1,0 +1,49 @@
+{
+  "source":{"title":"Advanced Player's Guide","page":50,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#mysteries"},
+  "mysteries":[
+    {
+      "id":"oracle-mystery-nature",
+      "classSkills":["Climb","Fly","Knowledge (nature)","Ride","Survival","Swim"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"charm animal"},{"oracleLevel":4,"spellLevel":2,"name":"barkskin"},{"oracleLevel":6,"spellLevel":3,"name":"speak with plants"},
+        {"oracleLevel":8,"spellLevel":4,"name":"grove of respite"},{"oracleLevel":10,"spellLevel":5,"name":"awaken"},{"oracleLevel":12,"spellLevel":6,"name":"stone tell"},
+        {"oracleLevel":14,"spellLevel":7,"name":"creeping doom"},{"oracleLevel":16,"spellLevel":8,"name":"animal shapes"},{"oracleLevel":18,"spellLevel":9,"name":"world wave"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-bonded-mount","name":"Bonded Mount","minimumLevel":1,"summary":"Gain a loyal mount that advances as a druid companion."},
+        {"id":"oracle-revelation-erosion-touch","name":"Erosion Touch","minimumLevel":1,"summary":"Damage objects and constructs with a scaling touch."},
+        {"id":"oracle-revelation-friend-to-animals","name":"Friend to the Animals","minimumLevel":1,"summary":"Learn nature summoning and bolster nearby animals' saves."},
+        {"id":"oracle-revelation-life-leach","name":"Life Leach","minimumLevel":7,"summary":"Drain a living creature to gain temporary hit points."},
+        {"id":"oracle-revelation-natural-divination","name":"Natural Divination","minimumLevel":1,"summary":"Read natural signs for a save, skill, or initiative bonus."},
+        {"id":"oracle-revelation-natures-whispers","name":"Nature's Whispers","minimumLevel":1,"summary":"Use Charisma instead of Dexterity for Armor Class and CMD."},
+        {"id":"oracle-revelation-speak-with-animals","name":"Speak with Animals","minimumLevel":1,"summary":"Speak with an increasing number of animal kinds."},
+        {"id":"oracle-revelation-spirit-of-nature","name":"Spirit of Nature","minimumLevel":1,"summary":"Stabilize automatically and gain healing when near death."},
+        {"id":"oracle-revelation-transcendental-bond","name":"Transcendental Bond","minimumLevel":1,"summary":"Communicate with designated allies and later deliver touch spells."},
+        {"id":"oracle-revelation-undo-artifice","name":"Undo Artifice","minimumLevel":11,"summary":"Permanently reduce crafted objects to natural raw materials."}
+      ],
+      "finalRevelation":"Create a restorative organic cocoon once per day, emerging eight hours later as a plant, animal, or humanoid type at full health and cleansed of poison, disease, and ability damage."
+    },
+    {
+      "id":"oracle-mystery-stone",
+      "classSkills":["Appraise","Climb","Intimidate","Survival"],
+      "mysterySpells":[
+        {"oracleLevel":2,"spellLevel":1,"name":"magic stone"},{"oracleLevel":4,"spellLevel":2,"name":"stone call"},{"oracleLevel":6,"spellLevel":3,"name":"meld into stone"},
+        {"oracleLevel":8,"spellLevel":4,"name":"wall of stone"},{"oracleLevel":10,"spellLevel":5,"name":"stoneskin"},{"oracleLevel":12,"spellLevel":6,"name":"stone tell"},
+        {"oracleLevel":14,"spellLevel":7,"name":"statue"},{"oracleLevel":16,"spellLevel":8,"name":"repel metal or stone"},{"oracleLevel":18,"spellLevel":9,"name":"clashing rocks"}
+      ],
+      "revelations":[
+        {"id":"oracle-revelation-acid-skin","name":"Acid Skin","minimumLevel":1,"summary":"Gain scaling acid resistance and eventual immunity."},
+        {"id":"oracle-revelation-clobbering-strike","name":"Clobbering Strike","minimumLevel":1,"summary":"Trip a foe after a critical spell attack."},
+        {"id":"oracle-revelation-crystal-sight","name":"Crystal Sight","minimumLevel":1,"summary":"See through earth, stone, sand, and thinner metal."},
+        {"id":"oracle-revelation-earth-glide","name":"Earth Glide","minimumLevel":7,"summary":"Move through natural earth and carry passengers."},
+        {"id":"oracle-revelation-mighty-pebble","name":"Mighty Pebble","minimumLevel":1,"summary":"Charge a stone into an explosive scaling projectile."},
+        {"id":"oracle-revelation-rock-throwing","name":"Rock Throwing","minimumLevel":1,"summary":"Throw appropriately sized rocks with practiced accuracy."},
+        {"id":"oracle-revelation-shard-explosion","name":"Shard Explosion","minimumLevel":1,"summary":"Burst into damaging shards that create difficult terrain."},
+        {"id":"oracle-revelation-steelbreaker-skin","name":"Steelbreaker Skin","minimumLevel":7,"summary":"Harden your skin so striking weapons take damage."},
+        {"id":"oracle-revelation-stone-stability","name":"Stone Stability","minimumLevel":1,"summary":"Resist bull rushes and trips and gain the Trip feat chain."},
+        {"id":"oracle-revelation-touch-of-acid","name":"Touch of Acid","minimumLevel":1,"summary":"Deal acid damage by touch and later empower held weapons."}
+      ],
+      "finalRevelation":"Become a master of acid and earth, applying Enlarge, Extend, Silent, or Still Spell to any acid or earth spell without increasing its level or casting time."
+    }
+  ]
+}
