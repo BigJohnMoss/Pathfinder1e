@@ -1,0 +1,19 @@
+{
+  "id":"monk-empty-hand",
+  "name":"Monk of the Empty Hand",
+  "classId":"monk",
+  "summary":"An improvisational combatant proficient only with shuriken who turns ordinary objects and even conventional weapons into improvised extensions of unarmed skill.",
+  "featureOverrides":[
+    {"featureId":"monk-monk-bonus-feat-6","summary":"Gain a Monk bonus feat, adding Improved Dirty Trick, Improved Steal, and Improvised Weapon Mastery to the 6th-level list."},
+    {"featureId":"monk-ki-pool-4","summary":"Gain the normal ki pool and may spend 1 ki to increase an improvised thrown weapon or shuriken's range increment by 20 feet for 1 round."}
+  ],
+  "replacements":[
+    {"featureIds":["monk-flurry-of-blows-1"],"features":[{"id":"empty-hand-improvised-flurry-1","name":"Improvised Flurry","level":1,"type":"core","summary":"Flurry only with unarmed strikes, shuriken, or improvised weapons; normal weapons are treated as equivalent improvised weapons and only shuriken proficiency is retained."}]},
+    {"featureIds":["monk-still-mind-3"],"features":[{"id":"empty-hand-versatile-improvisation-3","name":"Versatile Improvisation","level":3,"type":"core","summary":"As a swift action, change an improvised weapon's damage type to bludgeoning, piercing, or slashing for 1 round."}]},
+    {"featureIds":["monk-purity-of-body-5","monk-diamond-body-11"],"features":[
+      {"id":"empty-hand-ki-weapons-5","name":"Ki Weapons","level":5,"type":"scaling","summary":"Spend ki to use unarmed strike damage with an improvised weapon; from 11th level, spend ki to add enhancement bonuses or weapon abilities.","scaling":"up to 3 ki at 11th; up to 5 ki at 15th"},
+      {"id":"empty-hand-greater-ki-weapons-11","name":"Greater Ki Weapons","level":11,"type":"scaling","summary":"Grant improvised weapons enhancement bonuses or weapon abilities, even when the weapon could not normally receive them.","scaling":"up to +3 equivalent; +5 at 15th"}
+    ]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+}

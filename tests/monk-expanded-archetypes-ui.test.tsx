@@ -25,7 +25,10 @@ test.afterEach(() => { cleanup(); localStorage.clear(); });
 for (const [archetypeId, archetypeName, expected, removed] of [
   ["monk-drunken-master", "Drunken Master", ["Drunken Ki","Drunken Strength +1d6","Drunken Courage","Drunken Resilience DR 1/—","Firewater Breath"], ["Still Mind","Purity of Body","Diamond Body","Diamond Soul","Empty Body"]],
   ["monk-hungry-ghost", "Hungry Ghost Monk", ["Punishing Kick","Steal Ki","Life Funnel","Life from a Stone","Sipping Demon"], ["Stunning Fist","Purity of Body","Wholeness of Body","Diamond Body","Diamond Soul"]],
-  ["monk-ki-mystic", "Ki Mystic", ["Ki Mystic","Mystic Insight","Mystic Visions","Mystic Prescience +2","Mystic Persistence"], ["Still Mind","Purity of Body","Diamond Body","Diamond Soul","Empty Body"]]
+  ["monk-ki-mystic", "Ki Mystic", ["Ki Mystic","Mystic Insight","Mystic Visions","Mystic Prescience +2","Mystic Persistence"], ["Still Mind","Purity of Body","Diamond Body","Diamond Soul","Empty Body"]],
+  ["monk-empty-hand", "Monk of the Empty Hand", ["Improvised Flurry","Versatile Improvisation","Ki Weapons","Greater Ki Weapons"], ["Flurry of Blows","Still Mind","Purity of Body","Diamond Body"]],
+  ["monk-healing-hand", "Monk of the Healing Hand", ["Ancient Healing Hand","Ki Sacrifice (Raise Dead)","Ki Sacrifice (Resurrection)","True Sacrifice"], ["Wholeness of Body","Diamond Body","Quivering Palm","Perfect Self"]],
+  ["monk-lotus", "Monk of the Lotus", ["Touch of Serenity","Touch of Surrender","Touch of Peace","Learned Master"], ["Stunning Fist","Abundant Step","Quivering Palm","Tongue of the Sun and Moon"]]
 ] as const) test(`${archetypeName} is selectable with its level-20 progression`, async () => {
   const user = userEvent.setup();
   render(<Home />);
