@@ -1,0 +1,21 @@
+{
+  "id":"fighter-mobile-fighter","name":"Mobile Fighter","classId":"fighter",
+  "summary":"A swift combatant who exchanges static defenses and weapon mastery for movement-based offense and full attacks on the move.",
+  "replacements":[
+    {"progressionKeys":["bravery"],"features":[
+      {"id":"mobile-agility-2","name":"Agility +1","level":2,"type":"scaling","summary":"Gain +1 on saves against effects that paralyze, slow, or entangle you.","progressionKey":"mobile-agility","scaling":"+1"},
+      {"id":"mobile-agility-6","name":"Agility +2","level":6,"type":"scaling","summary":"Increase Agility to +2.","progressionKey":"mobile-agility","scaling":"+2"},
+      {"id":"mobile-agility-10","name":"Agility +3","level":10,"type":"scaling","summary":"Increase Agility to +3.","progressionKey":"mobile-agility","scaling":"+3"},
+      {"id":"mobile-agility-14","name":"Agility +4","level":14,"type":"scaling","summary":"Increase Agility to +4.","progressionKey":"mobile-agility","scaling":"+4"},
+      {"id":"mobile-agility-18","name":"Agility +5","level":18,"type":"scaling","summary":"Increase Agility to +5.","progressionKey":"mobile-agility","scaling":"+5"}]},
+    {"progressionKeys":["weapon-training"],"features":[
+      {"id":"mobile-leaping-attack-5","name":"Leaping Attack +1","level":5,"type":"scaling","summary":"After moving at least 5 feet, gain +1 on attack and damage rolls.","progressionKey":"mobile-leaping-attack","scaling":"+1"},
+      {"id":"mobile-leaping-attack-9","name":"Leaping Attack +2","level":9,"type":"scaling","summary":"Increase Leaping Attack to +2.","progressionKey":"mobile-leaping-attack","scaling":"+2"},
+      {"id":"mobile-leaping-attack-13","name":"Leaping Attack +3","level":13,"type":"scaling","summary":"Increase Leaping Attack to +3.","progressionKey":"mobile-leaping-attack","scaling":"+3"},
+      {"id":"mobile-leaping-attack-17","name":"Leaping Attack +4","level":17,"type":"scaling","summary":"Increase Leaping Attack to +4.","progressionKey":"mobile-leaping-attack","scaling":"+4"}]},
+    {"featureIds":["armor-training-11"],"features":[{"id":"mobile-rapid-attack-11","name":"Rapid Attack","level":11,"type":"core","summary":"Combine a full attack with one move by giving up the attack at your highest bonus; make the remaining attacks during the movement."}]},
+    {"featureIds":["armor-training-15"],"features":[{"id":"mobile-fleet-footed-15","name":"Fleet Footed","level":15,"type":"core","summary":"Increase speed by 10 feet, take 10 on Acrobatics while threatened, and take 20 once per day per five fighter levels."}]},
+    {"featureIds":["weapon-mastery-20"],"features":[{"id":"mobile-whirlwind-blitz-20","name":"Whirlwind Blitz","level":20,"type":"capstone","summary":"Make a full attack or use Whirlwind Attack as a standard action."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":105,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#mobile-fighter"}
+}
