@@ -4,12 +4,12 @@ This document distinguishes records present in the data bundle from systems that
 
 ## Current generated catalogue
 
-- 12 selectable classes
+- 13 selectable classes
 - 7 selectable core ancestries
 - 424 selectable feats
 - all 40 APG basic traits
-- Fighter Archer archetype with complete level 1–20 feature replacement
-- 2,048 spells
+- all twelve APG Fighter archetypes with complete level 1-20 feature replacements
+- 2,063 spells
 
 ## Playable classes
 
@@ -22,13 +22,14 @@ This document distinguishes records present in the data bundle from systems that
 | Druid | Playable Core class | Level 1–20 prepared casting, complete Core spell list, both Nature Bond paths with dependent choices, and persistent Wild Shape tracking are integrated. |
 | Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
 | Monk | Playable | Core progression and relevant feat prerequisites are integrated. |
+| Oracle | Playable APG class | Level 1-20 spontaneous divine casting, all six curses, cure-or-inflict choice, all ten mysteries, mystery spells, revelations and capstones are integrated. |
 | Paladin | Playable Core class | Level 1–20 martial and divine progression, mercies, Divine Bond and the complete Core Paladin spell list are integrated. |
 | Ranger | Playable Core class | Level 1–20 progression, favored enemies and terrains, combat styles, both Hunter's Bond paths and the complete Core Ranger spell list are integrated. |
 | Rogue | Playable | Core progression and rogue talents are integrated. |
 | Sorcerer | Playable Core class | Level 1–20 spontaneous casting and all ten Core bloodlines with dependent choices and persistence are integrated. |
 | Wizard | Playable Core class | Level 1–20 prepared casting, Core schools, opposition preparation, Arcane Bond paths and specialist slots are integrated. |
 
-All eleven Core Rulebook classes are playable. Arcanist is the additional selectable class.
+All eleven Core Rulebook classes are playable. Arcanist and Oracle are the additional selectable classes.
 
 ## Selectable ancestries
 
@@ -61,12 +62,14 @@ The catalogue contains sourced feats from the Core Rulebook, Advanced Player's G
 | Domains | All 33 Core Cleric domains are deity-restricted and support powers, spell lists and domain-slot usage |
 | Alignment and channel energy | Cleric restrictions, polarity, dice, DC, daily uses, refresh and persistence are integrated |
 | Arcane schools and bond | Core schools, opposition costs, specialist slots, familiar and bonded-item paths are integrated |
-| Bloodlines | All ten Core Sorcerer bloodlines and their dependent choices are integrated |
+| Bloodlines | All ten Core and all ten APG Sorcerer bloodlines and their dependent choices are integrated |
+| Oracle mysteries | All ten APG mysteries include granted skills, mystery spells, level-gated revelations and capstones |
 | Browser end-to-end tests | Martial, prepared-caster, spontaneous-caster, prerequisite, persistence and equipment journeys run in Chromium CI |
 | Multiclassing | Planned |
-| Traits | Playable basic subset with category restrictions, skill choices and class-aware spell choices |
-| Archetypes | Planned |
+| Traits | All 40 APG basic traits are playable with category restrictions, skill choices and class-aware spell choices |
+| Archetypes | All twelve APG Fighter archetypes are playable through level 20 |
 
 ## Definition of playable
 
 A class or system is listed as playable only when it is exposed in the web interface, processed by the rules engine, validated by the data pipeline and covered by automated tests.
+
