@@ -83,6 +83,7 @@ test("Magician exposes expanded repertoire and bonded-object choices", async () 
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "18" } });
   const archetype = screen.getByLabelText("Archetype");
   assert.ok(archetype.querySelector("option[value='bard-magician']"));
   await user.selectOptions(archetype, "bard-magician");
