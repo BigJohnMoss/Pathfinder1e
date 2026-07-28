@@ -880,6 +880,28 @@ test("selects and persists the Barbarian Breaker archetype", async () => {
   assert.equal((screen.getByLabelText("Archetype") as HTMLSelectElement).value, "barbarian-breaker");
 });
 
+test("switches between the Drunken Brute and Hurler archetypes", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-drunken-brute");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByText("Raging Drunk"));
+  assert.equal(screen.queryByText("Fast Movement"), null);
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-hurler");
+  assert.ok(screen.getByText("Skilled Thrower"));
+  assert.equal(screen.queryByText("Raging Drunk"), null);
+});
+
+test("shows the Barbarian Damage Reduction progression through level 19", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "19" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByText("Damage Reduction 5/-"));
+});
+
 test("previews and advances the selected multiclass entry", async () => {
   const user = userEvent.setup();
   render(<Home />);
