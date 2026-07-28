@@ -293,6 +293,8 @@ export function applyArchetype(characterClass, archetype) {
     spellcasting: archetype.removesSpellcasting ? undefined : characterClass.spellcasting,
     wildShapeLevelAdjustment: archetype.wildShapeLevelAdjustment ?? characterClass.wildShapeLevelAdjustment,
     druidDomainIds: archetype.druidDomainIds ?? characterClass.druidDomainIds,
+    rangerCombatStyleIds: archetype.rangerCombatStyleIds ?? characterClass.rangerCombatStyleIds,
+    mountedCompanionOnly: archetype.mountedCompanionOnly ?? characterClass.mountedCompanionOnly,
     classSkills: [...new Set(characterClass.classSkills.filter(skill => !(archetype.classSkillRemovals ?? []).includes(skill)).concat(archetype.classSkillAdditions ?? []))],
     features: [...retained, ...replacements].sort((left, right) => left.level - right.level || left.name.localeCompare(right.name))
   };
