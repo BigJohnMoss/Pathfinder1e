@@ -60,6 +60,7 @@ export interface ClassFeatureOccurrence {
   summary: string; description?: string; progressionKey?: string | null;
   scaling?: string | null; uses?: string | null; choiceRequired?: boolean;
   optionGroupId?: string | null; grantedFeatId?: string; source?: SourceRef;
+  requiredOptionId?: string; requiredOptionMessage?: string;
 }
 export interface CharacterClass {
   id: string; name: string; classType: string; hitDie: 6|8|10|12;
@@ -67,6 +68,10 @@ export interface CharacterClass {
   skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
+  wildShapeLevelAdjustment?: number;
+  druidDomainIds?: string[];
+  classSkillAdditions?: string[];
+  classSkillRemovals?: string[];
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
     castingType: "prepared" | "spontaneous";
@@ -89,6 +94,10 @@ export interface CharacterArchetype {
   }>;
   featureOverrides?: Array<{ featureId: string; summary: string }>;
   spellListAdditions?: Record<string, number>;
+  wildShapeLevelAdjustment?: number;
+  druidDomainIds?: string[];
+  classSkillAdditions?: string[];
+  classSkillRemovals?: string[];
   source: SourceRef;
 }
 export type Prerequisite =
