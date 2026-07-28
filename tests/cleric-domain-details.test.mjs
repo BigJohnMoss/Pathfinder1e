@@ -196,6 +196,29 @@ test("APG Glory and Knowledge subdomains expose complete replacements", () => {
   assert.equal(byId.get("subdomain-thought").domainSpells[4].name, "telepathic bond");
 });
 
+test("APG Law, Liberation, and Luck subdomains expose complete replacements", () => {
+  const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
+  const expected = [
+    ["subdomain-inevitable", "domain-law", "Touch of Law", "Command"],
+    ["subdomain-freedom", "domain-liberation", "Liberation", "Liberty's Blessing"],
+    ["subdomain-revolution", "domain-liberation", "Freedom's Call", "Powerful Persuader"],
+    ["subdomain-curse", "domain-luck", "Bit of Luck", "Malign Eye"],
+    ["subdomain-fate", "domain-luck", "Good Fortune", "Tugging Strands"]
+  ];
+  for (const [id, parentDomainId, replacesPower, replacementPower] of expected) {
+    const subdomain = byId.get(id);
+    assert.equal(subdomain.parentDomainId, parentDomainId);
+    assert.equal(subdomain.replacesPower, replacesPower);
+    assert.ok(subdomain.powers.some((power) => power.name === replacementPower));
+    assert.deepEqual(subdomain.domainSpells.map((spell) => spell.level), [1,2,3,4,5,6,7,8,9]);
+  }
+  assert.equal(byId.get("subdomain-inevitable").domainSpells[5].name, "planar binding (inevitables only)");
+  assert.equal(byId.get("subdomain-freedom").domainSpells[4].name, "plane shift");
+  assert.equal(byId.get("subdomain-revolution").domainSpells[5].name, "symbol of persuasion");
+  assert.equal(byId.get("subdomain-curse").domainSpells[5].name, "eyebite");
+  assert.equal(byId.get("subdomain-fate").domainSpells[2].name, "borrow fortune");
+});
+
 test("Core domain detail records retain distinctive progressions", () => {
   const byId = new Map(domains.options.map((domain) => [domain.id, domain]));
   assert.deepEqual(byId.get("domain-animal").powers.map((power) => [power.name, power.level]), [["Speak with Animals",1],["Animal Companion",4]]);

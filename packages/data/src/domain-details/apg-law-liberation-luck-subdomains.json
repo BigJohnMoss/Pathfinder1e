@@ -1,0 +1,80 @@
+{
+  "source": {"title": "Advanced Player's Guide", "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#subdomains"},
+  "subdomains": [
+    {
+      "id": "subdomain-inevitable", "groupId": "cleric-domains", "name": "Inevitable Subdomain (Law)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Touch of Law with Command and replace the Law domain's 3rd-, 5th-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 91, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#inevitable-subdomain"},
+      "parentDomainId": "domain-law", "replacesPower": "Touch of Law",
+      "powers": [
+        {"name": "Command", "level": 1, "summary": "As a standard action, issue an order as command; a Will save negates, and a creature cannot be targeted more than once per day. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Staff of Order", "level": 8, "summary": "As a standard action, give a touched weapon the axiomatic special ability for rounds equal to half cleric level. Usable once per day at 8th level, plus once per four levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "protection from chaos"}, {"level": 2, "name": "align weapon (law only)"}, {"level": 3, "name": "command undead"},
+        {"level": 4, "name": "order's wrath"}, {"level": 5, "name": "greater command"}, {"level": 6, "name": "planar binding (inevitables only)"},
+        {"level": 7, "name": "dictum"}, {"level": 8, "name": "shield of law"}, {"level": 9, "name": "summon monster IX (law only)"}
+      ]
+    },
+    {
+      "id": "subdomain-freedom", "groupId": "cleric-domains", "name": "Freedom Subdomain (Liberation)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Liberation with Liberty's Blessing and replace the Liberation domain's 1st- and 5th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 89, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#freedom-subdomain"},
+      "parentDomainId": "domain-liberation", "replacesPower": "Liberation",
+      "powers": [
+        {"name": "Liberty's Blessing", "level": 1, "summary": "As a standard action, grant a willing creature a 1-minute boon it may expend as a swift action to retry a save against an ongoing effect and end that effect on success. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Freedom's Call", "level": 8, "summary": "Emit a 30-foot aura for rounds per day equal to cleric level. Allies within it suppress the confused, grappled, frightened, panicked, paralyzed, pinned, and shaken conditions."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "sanctuary"}, {"level": 2, "name": "remove paralysis"}, {"level": 3, "name": "remove curse"},
+        {"level": 4, "name": "freedom of movement"}, {"level": 5, "name": "plane shift"}, {"level": 6, "name": "greater dispel magic"},
+        {"level": 7, "name": "refuge"}, {"level": 8, "name": "mind blank"}, {"level": 9, "name": "freedom"}
+      ]
+    },
+    {
+      "id": "subdomain-revolution", "groupId": "cleric-domains", "name": "Revolution Subdomain (Liberation)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Freedom's Call with Powerful Persuader and replace the Liberation domain's 2nd- and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 94, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#revolution-subdomain"},
+      "parentDomainId": "domain-liberation", "replacesPower": "Freedom's Call",
+      "powers": [
+        {"name": "Liberation", "level": 1, "summary": "Automatically ignore magical effects that impede movement as freedom of movement for a total number of rounds per day equal to cleric level."},
+        {"name": "Powerful Persuader", "level": 8, "summary": "As a free action, roll a Diplomacy or Intimidate check twice and take the higher result. Usable once per day at 8th level, plus once per two levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "remove fear"}, {"level": 2, "name": "enthrall"}, {"level": 3, "name": "remove curse"},
+        {"level": 4, "name": "freedom of movement"}, {"level": 5, "name": "break enchantment"}, {"level": 6, "name": "symbol of persuasion"},
+        {"level": 7, "name": "refuge"}, {"level": 8, "name": "mind blank"}, {"level": 9, "name": "freedom"}
+      ]
+    },
+    {
+      "id": "subdomain-curse", "groupId": "cleric-domains", "name": "Curse Subdomain (Luck)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Bit of Luck with Malign Eye and replace the Luck domain's 1st-, 3rd-, and 6th-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 87, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#curse-subdomain"},
+      "parentDomainId": "domain-luck", "replacesPower": "Bit of Luck",
+      "powers": [
+        {"name": "Malign Eye", "level": 1, "summary": "As a standard action, give a target within 30 feet a -2 penalty on saves against your spells for 1 minute or until it hits you. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Good Fortune", "level": 6, "summary": "As an immediate action before the result is revealed, reroll one d20 roll you just made. Usable once per day at 6th level, plus once per six levels beyond 6th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "bane"}, {"level": 2, "name": "aid"}, {"level": 3, "name": "bestow curse"},
+        {"level": 4, "name": "freedom of movement"}, {"level": 5, "name": "break enchantment"}, {"level": 6, "name": "eyebite"},
+        {"level": 7, "name": "spell turning"}, {"level": 8, "name": "moment of prescience"}, {"level": 9, "name": "miracle"}
+      ]
+    },
+    {
+      "id": "subdomain-fate", "groupId": "cleric-domains", "name": "Fate Subdomain (Luck)", "classIds": ["cleric"], "minimumLevel": 1, "prerequisites": [],
+      "benefit": "Replace Good Fortune with Tugging Strands and replace the Luck domain's 2nd- and 3rd-level spells.",
+      "source": {"title": "Advanced Player's Guide", "page": 89, "url": "https://legacy.aonprd.com/advancedplayersguide/coreClasses/cleric.html#fate-subdomain"},
+      "parentDomainId": "domain-luck", "replacesPower": "Good Fortune",
+      "powers": [
+        {"name": "Bit of Luck", "level": 1, "summary": "As a standard action, touch a willing creature. During its next round it rolls each d20 twice and takes the better result. Uses per day equal 3 + Wisdom modifier."},
+        {"name": "Tugging Strands", "level": 8, "summary": "Before its result is revealed, force a creature in line of sight to reroll a roll and use the new result. Usable once per day at 8th level, plus once per six levels beyond 8th."}
+      ],
+      "domainSpells": [
+        {"level": 1, "name": "true strike"}, {"level": 2, "name": "augury"}, {"level": 3, "name": "borrow fortune"},
+        {"level": 4, "name": "freedom of movement"}, {"level": 5, "name": "break enchantment"}, {"level": 6, "name": "mislead"},
+        {"level": 7, "name": "spell turning"}, {"level": 8, "name": "moment of prescience"}, {"level": 9, "name": "miracle"}
+      ]
+    }
+  ]
+}
