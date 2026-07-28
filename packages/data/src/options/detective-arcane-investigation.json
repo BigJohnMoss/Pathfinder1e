@@ -1,0 +1,54 @@
+{
+  "id": "detective-arcane-investigation",
+  "name": "Arcane Investigation Spells",
+  "classIds": ["bard"],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+  },
+  "optionDefaults": {
+    "groupId": "detective-arcane-investigation",
+    "classIds": ["bard"],
+    "prerequisites": []
+  },
+  "options": [],
+  "generatedSpellOptions": {
+    "classId": "bard",
+    "school": "divination",
+    "additionalSpellIds": [
+      "detect-chaos",
+      "detect-evil",
+      "detect-good",
+      "detect-law",
+      "zone-of-truth",
+      "arcane-eye",
+      "speak-with-dead",
+      "speak-with-plants",
+      "discern-lies",
+      "prying-eyes",
+      "stone-tell",
+      "discern-location",
+      "find-the-path",
+      "greater-prying-eyes",
+      "moment-of-prescience"
+    ],
+    "additionalSpellLevels": {
+      "detect-chaos": 1,
+      "detect-evil": 1,
+      "detect-good": 1,
+      "detect-law": 1,
+      "zone-of-truth": 2,
+      "arcane-eye": 3,
+      "speak-with-dead": 3,
+      "speak-with-plants": 3,
+      "discern-lies": 4,
+      "prying-eyes": 5,
+      "stone-tell": 5,
+      "discern-location": 6,
+      "find-the-path": 6,
+      "greater-prying-eyes": 6,
+      "moment-of-prescience": 6
+    }
+  }
+}

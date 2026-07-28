@@ -61,6 +61,23 @@ test("Archivist switches in its complete scholarly progression", async () => {
   assert.ok(screen.getByText("Deadly Performance"));
 });
 
+test("Detective exposes five legal Arcane Investigation spell choices", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-detective']"));
+  await user.selectOptions(archetype, "bard-detective");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Careful Teamwork +1", "True Confession", "Show Yourselves", "Eye for Detail", "Arcane Insight", "Arcane Investigation Spell 5"]) assert.ok(screen.getByText(name));
+  const firstSpell = screen.getByLabelText(/Arcane Investigation Spell 1/);
+  assert.ok(firstSpell.querySelector("option[value='detective-arcane-investigation-detect-evil']"));
+  await user.selectOptions(firstSpell, "detective-arcane-investigation-detect-evil");
+  assert.match(screen.getByText(/Add Detect Evil to your spells known/).textContent ?? "", /bonus spell/);
+  assert.equal(screen.queryByText("Versatile Performance 5"), null);
+});
+
 test("Court Bard exposes every replacement performance through level 20", async () => {
   const user = userEvent.setup();
   render(<Home />);

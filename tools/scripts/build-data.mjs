@@ -18,7 +18,7 @@ const bloodlineDetailFiles=await loadDir('bloodline-details');
 const bloodlineDetails=new Map(bloodlineDetailFiles.flatMap(file=>file.bloodlines).map(bloodline=>[bloodline.id,bloodline]));
 const mysteryDetailFiles=await loadDir('mystery-details');
 const mysteryDetails=new Map(mysteryDetailFiles.flatMap(file=>file.mysteries).map(mystery=>[mystery.id,mystery]));
-const optionGroups=(await loadDir('options')).map(group=>({...group,options:[...group.options.map(option=>({...group.optionDefaults,...option,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})})),...(group.id==="cleric-domains"?subdomains:[])]}));
+const rawOptionGroups=(await loadDir('options')).map(group=>({...group,options:[...group.options.map(option=>({...group.optionDefaults,...option,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})})),...(group.id==="cleric-domains"?subdomains:[])]}));
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
 const spells=sourceSpells.map(spell=>{
   const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
@@ -30,6 +30,27 @@ const spells=sourceSpells.map(spell=>{
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);
   return {...spell,...(school?{school}:{}),...(schools?{schools}:{}),levelByClass};
+});
+const classLevelForSpellLevel=(classId,spellLevel)=>classId==="bard"?([1,2,4,7,10,13,16][spellLevel]??20):1;
+const optionGroups=rawOptionGroups.map(group=>{
+  const filter=group.generatedSpellOptions;
+  if(!filter) return group;
+  const additionalIds=new Set(filter.additionalSpellIds??[]);
+  const generated=spells.filter(spell=>additionalIds.has(spell.id)||(spell.levelByClass?.[filter.classId]!==undefined&&(!filter.school||spell.school===filter.school||spell.schools?.includes(filter.school)))).map(spell=>{
+    const spellLevel=filter.additionalSpellLevels?.[spell.id]??spell.levelByClass?.[filter.classId]??0;
+    return {
+      ...group.optionDefaults,
+      id:`${group.id}-${spell.id}`,
+      name:spell.name,
+      classIds:group.classIds,
+      minimumLevel:classLevelForSpellLevel(filter.classId,spellLevel),
+      prerequisites:[],
+      benefit:`Add ${spell.name} to your spells known as a bonus spell.`,
+      spellId:spell.id,
+      source:spell.source??group.source
+    };
+  });
+  return {...group,options:[...group.options,...generated.filter(option=>!group.options.some(existing=>existing.id===option.id))]};
 });
 const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),archetypes:await loadDir('archetypes'),races:await loadDir('races'),optionGroups,feats:await loadDir('feats'),traits:await loadDir('traits'),spells};
 const serialized=JSON.stringify(bundle);

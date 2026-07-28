@@ -42,6 +42,27 @@ test("Arcane Duelist replaces every published Bard feature and grants its fixed 
   assert.ok(ids.includes("bard-deadly-performance-20"));
 });
 
+test("Detective replaces its investigation progressions and expands the Bard spell list", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-detective.json");
+  const applied = applyArchetype(bard, archetype);
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  for (const added of ["detective-careful-teamwork-1", "detective-true-confession-9", "detective-show-yourselves-15", "detective-eye-for-detail-1", "detective-arcane-insight-2", "detective-arcane-investigation-18"]) assert.ok(ids.includes(added));
+  for (const removed of ["bardic-knowledge-1", "bard-inspire-courage-17", "bard-inspire-greatness-9", "bard-inspire-heroics-15", "bard-well-versed-2", "bard-versatile-performance-18"]) assert.ok(!ids.includes(removed));
+  assert.equal(applied.spellListAdditions["arcane-eye"], 3);
+  assert.equal(applied.spellListAdditions["moment-of-prescience"], 6);
+  assert.ok(ids.includes("bard-deadly-performance-20"));
+});
+
+test("Detective Arcane Investigation options include added spells and Bard divinations", async () => {
+  const bundle = await load("../generated/pf1e-data.json");
+  const group = bundle.optionGroups.find((item) => item.id === "detective-arcane-investigation");
+  assert.ok(group.options.some((option) => option.spellId === "detect-evil" && option.minimumLevel === 2));
+  assert.ok(group.options.some((option) => option.spellId === "arcane-eye" && option.minimumLevel === 7));
+  assert.ok(group.options.some((option) => option.spellId === "moment-of-prescience" && option.minimumLevel === 16));
+  assert.equal(new Set(group.options.map((option) => option.spellId)).size, group.options.length);
+});
+
 test("Archivist replaces its performance and knowledge progressions through level 20", async () => {
   const bard = await load("../packages/data/src/classes/bard.json");
   const archetype = await load("../packages/data/src/archetypes/bard-archivist.json");

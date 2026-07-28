@@ -114,9 +114,10 @@ export function encumbrance(strength, items) {
   return { carriedWeight, capacity, load };
 }
 
-export function spellsAvailableToClass(spells, classId, maximumSpellLevel) {
+export function spellsAvailableToClass(spells, classId, maximumSpellLevel, spellListAdditions = {}) {
   if (!Number.isInteger(maximumSpellLevel) || maximumSpellLevel < 0 || maximumSpellLevel > 9) throw new RangeError("Maximum spell level must be an integer from 0 to 9.");
-  return spells.filter(spell => spell.levelByClass[classId] !== undefined && spell.levelByClass[classId] <= maximumSpellLevel)
+  return spells.map(spell => spellListAdditions[spell.id] === undefined ? spell : { ...spell, levelByClass: { ...spell.levelByClass, [classId]: spellListAdditions[spell.id] } })
+    .filter(spell => spell.levelByClass[classId] !== undefined && spell.levelByClass[classId] <= maximumSpellLevel)
     .sort((a, b) => a.levelByClass[classId] - b.levelByClass[classId] || a.name.localeCompare(b.name));
 }
 
@@ -279,7 +280,12 @@ export function applyArchetype(characterClass, archetype) {
     .filter(feature => !featureIds.has(feature.id) && !progressionKeys.has(feature.progressionKey))
     .map(feature => overrides.has(feature.id) ? { ...feature, summary: overrides.get(feature.id).summary } : feature);
   const replacements = archetype.replacements.flatMap(replacement => replacement.features);
-  return { ...characterClass, name: `${characterClass.name} (${archetype.name})`, features: [...retained, ...replacements].sort((left, right) => left.level - right.level || left.name.localeCompare(right.name)) };
+  return {
+    ...characterClass,
+    name: `${characterClass.name} (${archetype.name})`,
+    spellListAdditions: { ...(characterClass.spellListAdditions ?? {}), ...(archetype.spellListAdditions ?? {}) },
+    features: [...retained, ...replacements].sort((left, right) => left.level - right.level || left.name.localeCompare(right.name))
+  };
 }
 
 export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2) {
