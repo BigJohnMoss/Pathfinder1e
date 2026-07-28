@@ -25,7 +25,9 @@ test.afterEach(() => { cleanup(); localStorage.clear(); });
 for (const [archetypeId, name, expected, removed] of [
   ["ranger-guide","Guide",["Ranger's Focus","Terrain Bond","Ranger's Luck","Inspired Moment","Improved Ranger's Luck"],["Favored Enemy 1","Hunter's Bond","Animal Companion Choice","Evasion","Quarry","Improved Evasion","Improved Quarry"]],
   ["ranger-spirit-ranger","Spirit Ranger",["Spirit Bond","Wisdom of the Spirits"],["Hunter's Bond","Animal Companion Choice","Camouflage"]],
-  ["ranger-urban-ranger","Urban Ranger",["Favored Community","Trapfinding","Push Through","Blend In","Invisibility Trick"],["Favored Terrain 1","Endurance","Woodland Stride","Camouflage","Hide in Plain Sight"]]
+  ["ranger-urban-ranger","Urban Ranger",["Favored Community","Trapfinding","Push Through","Blend In","Invisibility Trick"],["Favored Terrain 1","Endurance","Woodland Stride","Camouflage","Hide in Plain Sight"]],
+  ["ranger-horse-lord","Horse Lord",["Mounted Bond","Strong Bond","Spiritual Bond"],["Hunter's Bond","Animal Companion Choice","Camouflage","Hide in Plain Sight"]],
+  ["ranger-shapeshifter","Shapeshifter",["Shifter's Blessing 1","Shifter's Blessing 4","Dual Form Shifter","Master Shifter"],["Favored Terrain 1","Camouflage","Master Hunter"]]
 ] as const) test(`${name} is selectable with its level-20 progression`, async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -67,4 +69,33 @@ test("APG Ranger combat styles expose their level-gated feat lists", async () =>
     assert.equal([...firstFeat.options].some((option) => option.value === earlyFeat), true);
     assert.equal([...thirdFeat.options].some((option) => option.value === lateFeat), true);
   }
+});
+
+test("Horse Lord forces mounted style and legal human mounts", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-horse-lord");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const style = screen.getByLabelText(/Combat Style level 2/);
+  const mount = screen.getByLabelText(/Mounted Bond/);
+  assert.deepEqual([...style.options].filter((option) => option.value).map((option) => option.value), ["ranger-combat-style-mounted"]);
+  assert.equal([...mount.options].some((option) => option.value === "ranger-animal-companion-horse"), true);
+  assert.equal([...mount.options].some((option) => option.value === "ranger-animal-companion-wolf"), false);
+});
+
+test("Shapeshifter forces natural weapons and prevents duplicate forms", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-shapeshifter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const style = screen.getByLabelText(/Combat Style level 2/);
+  const first = screen.getByLabelText(/Shifter's Blessing 1/);
+  const second = screen.getByLabelText(/Shifter's Blessing 2/);
+  assert.deepEqual([...style.options].filter((option) => option.value).map((option) => option.value), ["ranger-combat-style-natural-weapon"]);
+  await user.selectOptions(first, "ranger-shifter-form-bear");
+  assert.equal((second.querySelector("option[value='ranger-shifter-form-bear']") as HTMLOptionElement).disabled, true);
 });

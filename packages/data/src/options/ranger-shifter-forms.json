@@ -1,0 +1,8 @@
+{"id":"ranger-shifter-forms","name":"Ranger Shifter Forms","classIds":["ranger"],"optionDefaults":{"groupId":"ranger-shifter-forms","classIds":["ranger"],"minimumLevel":3,"prerequisites":[],"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}},"options":[
+{"id":"ranger-shifter-form-bear","name":"Form of the Bear","benefit":"Gain +4 enhancement Strength while shifted, but base speed becomes 20 feet."},
+{"id":"ranger-shifter-form-cat","name":"Form of the Cat","benefit":"Gain +10 feet base speed and +4 Acrobatics and Climb while shifted."},
+{"id":"ranger-shifter-form-dragon","name":"Form of the Dragon","benefit":"Gain +2 natural armor while shifted."},
+{"id":"ranger-shifter-form-eagle","name":"Form of the Eagle","benefit":"Gain +10 Perception while shifted."},
+{"id":"ranger-shifter-form-jackal","name":"Form of the Jackal","benefit":"Move half speed as a move action without provoking while shifted."},
+{"id":"ranger-shifter-form-otter","name":"Form of the Otter","benefit":"Gain swim 30 feet and +8 Swim while shifted."}
+]}

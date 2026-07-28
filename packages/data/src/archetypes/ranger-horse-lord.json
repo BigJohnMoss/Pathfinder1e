@@ -1,0 +1,20 @@
+{
+  "id":"ranger-horse-lord",
+  "name":"Horse Lord",
+  "classId":"ranger",
+  "summary":"A mounted wilderness warrior whose combat style, companion, and supernatural bond are devoted to a riding beast.",
+  "rangerCombatStyleIds":["ranger-combat-style-mounted"],
+  "mountedCompanionOnly":true,
+  "replacements":[
+    {"featureIds":["ranger-hunters-bond-4","ranger-animal-companion-4"],"features":[
+      {"id":"ranger-hunters-bond-animal","name":"Mounted Bond","level":4,"type":"selectable","summary":"Choose a legal riding companion; effective Druid level equals Ranger level –3 and gain +2 Handle Animal and Ride with it.","choiceRequired":true,"optionGroupId":"ranger-animal-companions","scaling":"effective Druid level equals Ranger level –3"}
+    ]},
+    {"featureIds":["ranger-camouflage-12"],"features":[
+      {"id":"horse-lord-strong-bond-12","name":"Strong Bond","level":12,"type":"core","summary":"Your mount's effective Druid level becomes equal to your Ranger level."}
+    ]},
+    {"featureIds":["ranger-hide-in-plain-sight-17"],"features":[
+      {"id":"horse-lord-spiritual-bond-17","name":"Spiritual Bond","level":17,"type":"core","summary":"Grant your mount temporary hit points equal to Ranger level and optionally share its damage while within 30 feet.","uses":"once per day"}
+    ]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}
+}
