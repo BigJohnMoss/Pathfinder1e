@@ -1,0 +1,46 @@
+{
+  "id": "fighter-two-weapon-warrior",
+  "name": "Two-Weapon Warrior",
+  "classId": "fighter",
+  "summary": "A paired-weapon specialist who trades armor and weapon training for a defensive flurry, paired strikes, and perfect balance.",
+  "replacements": [
+    {
+      "featureIds": ["armor-training-3","armor-training-7"],
+      "features": [
+        {"id":"two-weapon-defensive-flurry-3","name":"Defensive Flurry +1","level":3,"type":"scaling","summary":"After a full attack with both weapons, gain +1 dodge AC against melee attacks until your next turn.","progressionKey":"two-weapon-defensive-flurry","scaling":"+1"},
+        {"id":"two-weapon-defensive-flurry-7","name":"Defensive Flurry +2","level":7,"type":"scaling","summary":"After a full attack with both weapons, gain +2 dodge AC against melee attacks until your next turn.","progressionKey":"two-weapon-defensive-flurry","scaling":"+2"}
+      ]
+    },
+    {
+      "featureIds": ["armor-training-11"],
+      "features": [
+        {"id":"two-weapon-improved-balance-11","name":"Improved Balance","level":11,"type":"core","summary":"Reduce two-weapon attack penalties by 1, or treat a one-handed off-hand weapon as light."}
+      ]
+    },
+    {
+      "featureIds": ["armor-training-15"],
+      "features": [
+        {"id":"two-weapon-perfect-balance-15","name":"Perfect Balance","level":15,"type":"core","summary":"Reduce two-weapon attack penalties by another 1; this stacks with Improved Balance."}
+      ]
+    },
+    {
+      "progressionKeys": ["weapon-training"],
+      "features": [
+        {"id":"two-weapon-twin-blades-5","name":"Twin Blades +1","level":5,"type":"scaling","summary":"Gain +1 on attack and damage rolls during a full attack with two weapons or a double weapon.","progressionKey":"two-weapon-twin-blades","scaling":"+1"},
+        {"id":"two-weapon-doublestrike-9","name":"Doublestrike","level":9,"type":"core","summary":"As a standard action, attack once with both your primary and secondary weapons, applying normal two-weapon penalties."},
+        {"id":"two-weapon-twin-blades-9","name":"Twin Blades +2","level":9,"type":"scaling","summary":"Gain +2 on attack and damage rolls during a full attack with two weapons or a double weapon.","progressionKey":"two-weapon-twin-blades","scaling":"+2"},
+        {"id":"two-weapon-equal-opportunity-13","name":"Equal Opportunity","level":13,"type":"core","summary":"When making an attack of opportunity, attack once with both your primary and secondary weapons."},
+        {"id":"two-weapon-twin-blades-13","name":"Twin Blades +3","level":13,"type":"scaling","summary":"Gain +3 on attack and damage rolls during a full attack with two weapons or a double weapon.","progressionKey":"two-weapon-twin-blades","scaling":"+3"},
+        {"id":"two-weapon-deft-doublestrike-17","name":"Deft Doublestrike","level":17,"type":"core","summary":"After hitting one opponent with both weapons, immediately make a non-provoking disarm, sunder, or eligible trip attempt."},
+        {"id":"two-weapon-twin-blades-17","name":"Twin Blades +4","level":17,"type":"scaling","summary":"Gain +4 on attack and damage rolls during a full attack with two weapons or a double weapon.","progressionKey":"two-weapon-twin-blades","scaling":"+4"}
+      ]
+    },
+    {
+      "featureIds": ["armor-mastery-19"],
+      "features": [
+        {"id":"two-weapon-deadly-defense-19","name":"Deadly Defense","level":19,"type":"core","summary":"After a full attack with both weapons, each creature that hits you in melee before your next turn provokes an attack of opportunity from you."}
+      ]
+    }
+  ],
+  "source":{"title":"Advanced Player's Guide","page":110,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#two-weapon-warrior"}
+}

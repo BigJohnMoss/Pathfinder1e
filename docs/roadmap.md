@@ -73,7 +73,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - traits — in progress: all 40 sourced APG basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
-- archetypes — in progress: reusable replacement schema and complete APG Fighter Archer
+- archetypes — in progress: reusable replacement schema plus complete APG Fighter
+  Archer, Crossbowman, Two-Handed Fighter, and Two-Weapon Warrior paths
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,
