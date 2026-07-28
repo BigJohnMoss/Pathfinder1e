@@ -1,0 +1,37 @@
+{
+  "id": "barbarian-superstitious",
+  "name": "Superstitious",
+  "classId": "barbarian",
+  "summary": "A wary barbarian whose preternatural reactions and senses defend against ambush and hostile magic.",
+  "replacements": [
+    {
+      "progressionKeys": ["trap-sense"],
+      "features": [
+        {
+          "id": "superstitious-sixth-sense-3",
+          "name": "Sixth Sense",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Gain a bonus on initiative and an insight bonus to AC during surprise rounds.",
+          "progressionKey": "superstitious-sixth-sense",
+          "scaling": "+1 at 3rd, +1 every 3 levels"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["damage-reduction"],
+      "features": [
+        {"id":"superstitious-keen-senses-7","name":"Keen Senses — Low-Light Vision","level":7,"type":"scaling","summary":"Gain low-light vision, or triple your normal dim-light vision range.","progressionKey":"superstitious-keen-senses","scaling":"Low-light vision"},
+        {"id":"superstitious-keen-senses-10","name":"Keen Senses — Darkvision","level":10,"type":"scaling","summary":"Gain darkvision 60 feet, or extend existing darkvision by 60 feet.","progressionKey":"superstitious-keen-senses","scaling":"Darkvision 60 ft."},
+        {"id":"superstitious-keen-senses-13","name":"Keen Senses — Scent","level":13,"type":"scaling","summary":"Gain the scent ability.","progressionKey":"superstitious-keen-senses","scaling":"Scent"},
+        {"id":"superstitious-keen-senses-16","name":"Keen Senses — Blindsense","level":16,"type":"scaling","summary":"Gain blindsense out to 30 feet.","progressionKey":"superstitious-keen-senses","scaling":"Blindsense 30 ft."},
+        {"id":"superstitious-keen-senses-19","name":"Keen Senses — Blindsight","level":19,"type":"scaling","summary":"Gain blindsight out to 30 feet.","progressionKey":"superstitious-keen-senses","scaling":"Blindsight 30 ft."}
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  }
+}
