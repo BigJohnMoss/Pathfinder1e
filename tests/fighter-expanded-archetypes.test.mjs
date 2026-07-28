@@ -97,3 +97,48 @@ test("Weapon Master focuses all replaced progressions on one chosen weapon", asy
   assert.ok(ids.includes("weapon-mastery-20"));
   for (const removed of ["bravery-2", "armor-training-3", "weapon-training-5", "armor-mastery-19"]) assert.ok(!ids.includes(removed));
 });
+
+test("Phalanx Soldier replaces the shield-wall milestones and reaches Shielded Fortress", async () => {
+  const applied = applyArchetype(fighter, await loadArchetype("fighter-phalanx-soldier"));
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  for (const added of ["phalanx-fighting-3", "phalanx-ready-pike-17", "phalanx-shield-ally-17", "phalanx-shielded-fortress-20"]) assert.ok(ids.includes(added));
+  for (const removed of ["bravery-2", "armor-training-3", "weapon-training-5", "weapon-training-17", "weapon-mastery-20"]) assert.ok(!ids.includes(removed));
+  assert.ok(ids.includes("armor-mastery-19"));
+});
+
+test("Roughrider replaces mounted progression milestones while retaining Weapon Mastery", async () => {
+  const applied = applyArchetype(fighter, await loadArchetype("fighter-roughrider"));
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  for (const added of ["roughrider-armored-charger-3", "roughrider-mounted-mettle-17", "roughrider-ride-them-down-15", "roughrider-unavoidable-onslaught-15", "roughrider-indomitable-steed-19"]) assert.ok(ids.includes(added));
+  assert.ok(ids.includes("weapon-mastery-20"));
+  for (const removed of ["armor-training-15", "weapon-training-5", "armor-mastery-19"]) assert.ok(!ids.includes(removed));
+});
+
+test("Savage Warrior retains armor defenses and replaces only natural-weapon milestones", async () => {
+  const applied = applyArchetype(fighter, await loadArchetype("fighter-savage-warrior"));
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  assert.ok(ids.includes("armor-training-3"));
+  assert.ok(ids.includes("armor-mastery-19"));
+  assert.ok(ids.includes("savage-natural-savagery-17"));
+  assert.ok(ids.includes("savage-natural-mastery-20"));
+  assert.ok(!ids.includes("weapon-training-5"));
+  assert.ok(!ids.includes("weapon-mastery-20"));
+});
+
+test("Shielded Fighter replaces all armor, weapon-training, mastery, and capstone milestones", async () => {
+  const applied = applyArchetype(fighter, await loadArchetype("fighter-shielded-fighter"));
+  const ids = featuresThroughLevel(applied, 20).map((feature) => feature.id);
+  for (const added of ["shielded-active-defense-3", "shielded-shield-buffet-13", "shielded-shield-guard-17", "shielded-shield-mastery-19", "shielded-shield-ward-20"]) assert.ok(ids.includes(added));
+  for (const removed of ["armor-training-3", "weapon-training-5", "armor-mastery-19", "weapon-mastery-20"]) assert.ok(!ids.includes(removed));
+  assert.ok(ids.includes("bravery-18"));
+});
+
+test("the generated APG Fighter archetype catalogue contains all twelve published paths", async () => {
+  const expected = [
+    "fighter-archer", "fighter-crossbowman", "fighter-free-hand-fighter", "fighter-mobile-fighter",
+    "fighter-phalanx-soldier", "fighter-polearm-master", "fighter-roughrider", "fighter-savage-warrior",
+    "fighter-shielded-fighter", "fighter-two-handed-fighter", "fighter-two-weapon-warrior", "fighter-weapon-master"
+  ];
+  const bundle = JSON.parse(await readFile(new URL("../generated/pf1e-data.json", import.meta.url), "utf8"));
+  assert.deepEqual(bundle.archetypes.filter((archetype) => archetype.classId === "fighter").map((archetype) => archetype.id).sort(), expected.sort());
+});
