@@ -1,0 +1,28 @@
+{
+  "id": "oracle-mysteries",
+  "name": "Oracle Mysteries",
+  "classIds": ["oracle"],
+  "optionDefaults": {
+    "groupId": "oracle-mysteries",
+    "classIds": ["oracle"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Advanced Player's Guide",
+      "page": 45,
+      "url": "https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/oracle.html#mysteries"
+    }
+  },
+  "options": [
+    {"id":"oracle-mystery-battle","name":"Battle","benefit":"Master divine secrets of conflict, courage, weapons, armor, and battlefield command."},
+    {"id":"oracle-mystery-bones","name":"Bones","benefit":"Command the powers of death, undeath, negative energy, and communion with the departed."},
+    {"id":"oracle-mystery-flame","name":"Flame","benefit":"Wield supernatural fire, heat, smoke, and elemental transformation."},
+    {"id":"oracle-mystery-heavens","name":"Heavens","benefit":"Draw power from stars, moonlight, the night sky, and the void between worlds."},
+    {"id":"oracle-mystery-life","name":"Life","benefit":"Channel life energy to heal, protect, and preserve living creatures."},
+    {"id":"oracle-mystery-lore","name":"Lore","benefit":"Uncover hidden knowledge, prophecy, symbols, and the fundamental secrets of reality."},
+    {"id":"oracle-mystery-nature","name":"Nature","benefit":"Commune with animals, plants, landscapes, and the shared spirit of the natural world."},
+    {"id":"oracle-mystery-stone","name":"Stone","benefit":"Command earth, stone, acid, and the enduring strength beneath the world."},
+    {"id":"oracle-mystery-waves","name":"Waves","benefit":"Master water, ice, mist, currents, and fluid transformation."},
+    {"id":"oracle-mystery-wind","name":"Wind","benefit":"Command air, lightning, thunder, flight, and the movement of the wind."}
+  ]
+}
