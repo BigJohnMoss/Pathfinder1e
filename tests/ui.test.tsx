@@ -180,7 +180,7 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   await user.click(screen.getByRole("button", { name: "Cast Mage Armor" }));
   assert.match(screen.getByText(/2\/3 1st-level/).textContent ?? "", /2\/3/);
   assert.equal((screen.getByRole("button", { name: "Add Shield" }) as HTMLButtonElement).disabled, true);
-  assert.match(screen.getByText("Color Spray").closest("article")?.textContent ?? "", /level 1 Â· DC 12/);
+  assert.match(screen.getByText("Color Spray").closest("article")?.textContent ?? "", /level 1 · DC 12/);
   await user.click(screen.getByRole("button", { name: "Remove Magic Missile" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
@@ -303,7 +303,39 @@ test("makes Paladin available with its martial chassis and divine features", asy
   assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getByText("Aura of Good"));
-  assert.ok(screen.getByText("Detect Ev…547 tokens truncated…("button", { name: "Load" }));
+  assert.ok(screen.getByText("Detect Evil"));
+  assert.ok(screen.getByText("Smite Evil"));
+
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "14" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getAllByText("Divine Bond").length >= 2);
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  assert.ok(screen.getByRole("button", { name: "Add Bless" }));
+});
+
+test("makes Bard selectable with spontaneous casting and Versatile Performance choices", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  assert.equal(screen.getByText("BAB").closest("article")?.querySelector("strong")?.textContent, "+0");
+  assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+2");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+2");
+  fireEvent.change(screen.getByLabelText("Charisma base score"), { target: { value: "14" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByText("Bardic Knowledge"));
+  assert.ok(screen.getByText("Bardic Performance"));
+  assert.ok(screen.getByText("Suggestion"));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "16/16 round remaining");
+  await user.click(screen.getByRole("button", { name: "Spend 1 round" }));
+  await user.click(screen.getByRole("button", { name: "Spend 1 round" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "14/16 round remaining");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Refresh performance rounds" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "16/16 round remaining");
+  await user.click(screen.getByRole("button", { name: "Load" }));
   assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "14/16 round remaining");
   const versatile1 = screen.getByLabelText(/Versatile Performance 1/);
   const versatile2 = screen.getByLabelText(/Versatile Performance 2/);
@@ -540,8 +572,8 @@ test("lists conditional trait modifiers without applying them as permanent saves
   await userEvent.selectOptions(screen.getByLabelText("Trait 2"), "birthmark");
   await userEvent.click(screen.getByRole("tab", { name: "Actions" }));
   const modifiers = screen.getByText("Conditional trait modifiers").closest("section");
-  assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects Â· Courageous/);
-  assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus Â· Birthmark/);
+  assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects · Courageous/);
+  assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus · Birthmark/);
   await userEvent.click(screen.getByRole("tab", { name: "Basic info" }));
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+0");
 });
@@ -589,10 +621,10 @@ test("tracks persistent equipment, encumbrance, currency, and equipped armor", a
   await user.click(screen.getByRole("tab", { name: "Storage" }));
   const catalogue = screen.getByLabelText("Equipment catalogue");
   await user.selectOptions(catalogue, "longbow");
-  assert.ok(screen.getByText(/Critical Ã—3 Â· Range 100 ft\./));
+  assert.ok(screen.getByText(/Critical ×3 · Range 100 ft\./));
   await user.click(screen.getByRole("button", { name: "Remove" }));
   await user.selectOptions(catalogue, "chain-shirt");
-  assert.ok(screen.getByText(/25 lb. carried â€” light load/));
+  assert.ok(screen.getByText(/25 lb. carried — light load/));
   await user.click(screen.getByLabelText("Equipped"));
   fireEvent.change(screen.getByLabelText("GP"), { target: { value: "125" } });
   await user.click(screen.getByRole("tab", { name: "Actions" }));
@@ -604,7 +636,7 @@ test("tracks persistent equipment, encumbrance, currency, and equipped armor", a
   await user.click(screen.getByRole("button", { name: "Load" }));
   assert.equal((screen.getByLabelText("GP") as HTMLInputElement).value, "125");
   assert.equal((screen.getByLabelText("Equipped") as HTMLInputElement).checked, true);
-  assert.ok(screen.getByText(/25 lb. carried â€” light load/));
+  assert.ok(screen.getByText(/25 lb. carried — light load/));
 });
 
 test("previews and confirms a guided level up without losing selections", async () => {
@@ -623,4 +655,3 @@ test("previews and confirms a guided level up without losing selections", async 
   assert.equal((screen.getByLabelText("Character name") as HTMLInputElement).value, "Leveler");
   assert.ok(screen.getByText(/Advanced to level 4/));
 });
-
