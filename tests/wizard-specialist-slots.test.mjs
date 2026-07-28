@@ -57,7 +57,7 @@ test("each specialist school has at least one spell at every spell level", () =>
   const specialistSchools = schools.options.filter((school) => school.id !== "wizard-school-universalist");
   const missing = [];
   for (const school of specialistSchools) {
-    const schoolId = school.id.replace("wizard-school-", "");
+    const schoolId = school.associatedSchool ?? school.id.replace("wizard-school-", "");
     for (let level = 1; level <= 9; level += 1) {
       const options = specialistSchoolSpells(wizardSpells, school, level);
       if (options.length === 0) missing.push(`${school.id} level ${level}`);
@@ -65,6 +65,14 @@ test("each specialist school has at least one spell at every spell level", () =>
     }
   }
   assert.deepEqual(missing, [], `Specialist school levels without spells:\n${missing.join("\n")}`);
+});
+
+test("focused schools prepare specialist spells from their associated school", () => {
+  const admixture = schools.options.find((school) => school.id === "wizard-school-admixture");
+  const banishment = schools.options.find((school) => school.id === "wizard-school-banishment");
+  assert.ok(specialistSchoolSpells(wizardSpells, admixture, 1).some((spell) => spell.id === "magic-missile"));
+  assert.equal(specialistSchoolSpells(wizardSpells, admixture, 1).some((spell) => spell.id === "mage-armor"), false);
+  assert.ok(specialistSchoolSpells(wizardSpells, banishment, 1).every((spell) => schoolsForSpell(spell).includes("abjuration")));
 });
 
 test("multi-school spells appear for each legal specialist school", () => {
