@@ -1,0 +1,95 @@
+{
+  "id": "bard-court-bard",
+  "name": "Court Bard",
+  "classId": "bard",
+  "summary": "A polished courtier who weaponizes etiquette, ridicule, scandal, and a commanding public presence.",
+  "replacements": [
+    {
+      "progressionKeys": ["bard-inspire-courage"],
+      "features": [
+        {
+          "id": "court-bard-satire-1",
+          "name": "Satire -1",
+          "level": 1,
+          "type": "scaling",
+          "summary": "Penalize nearby enemies' weapon attacks, weapon damage, and saves against fear and charm while they hear your performance.",
+          "progressionKey": "court-bard-satire",
+          "scaling": "-1; worsens at 5th level and every 6 levels thereafter",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-inspire-competence"],
+      "features": [
+        {
+          "id": "court-bard-mockery-3",
+          "name": "Mockery -2",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Give one creature that hears you a penalty on Charisma checks and Charisma-based skill checks.",
+          "progressionKey": "court-bard-mockery",
+          "scaling": "-2; worsens by 1 every 4 levels after 3rd",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-dirge-of-doom-8"],
+      "features": [
+        {
+          "id": "court-bard-glorious-epic-8",
+          "name": "Glorious Epic",
+          "level": 8,
+          "type": "core",
+          "summary": "Make nearby enemies that fail a Will save flat-footed while they hear your captivating epic.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bard-frightening-tune-14"],
+      "features": [
+        {
+          "id": "court-bard-scandal-14",
+          "name": "Scandal",
+          "level": 14,
+          "type": "core",
+          "summary": "Incite nearby enemies that fail a Will save to attack one another as a song of discord.",
+          "uses": "bardic performance"
+        }
+      ]
+    },
+    {
+      "featureIds": ["bardic-knowledge-1"],
+      "features": [
+        {
+          "id": "court-bard-heraldic-expertise-1",
+          "name": "Heraldic Expertise",
+          "level": 1,
+          "type": "scaling",
+          "summary": "Add half Bard level to Diplomacy and Knowledge (history, local, and nobility), with daily rerolls of those checks.",
+          "scaling": "half Bard level; 1 reroll/day plus 1 every 5 levels"
+        }
+      ]
+    },
+    {
+      "progressionKeys": ["bard-lore-master", "bard-jack-of-all-trades"],
+      "features": [
+        {
+          "id": "court-bard-wide-audience-5",
+          "name": "Wide Audience",
+          "level": 5,
+          "type": "scaling",
+          "summary": "Use a 60-foot cone instead of a 30-foot radius for area performances and expand performance areas or target counts every five levels.",
+          "scaling": "+10-foot radius, +20-foot cone, or +1 target per 5 levels after 5th"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+  }
+}
