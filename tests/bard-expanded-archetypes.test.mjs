@@ -71,3 +71,31 @@ test("Archivist replaces its performance and knowledge progressions through leve
   assert.ok(ids.includes("bard-countersong-1"));
   assert.ok(ids.includes("bard-deadly-performance-20"));
 });
+
+test("Court Bard replaces every social performance progression through level 20", async () => {
+  const bard = await load("../packages/data/src/classes/bard.json");
+  const archetype = await load("../packages/data/src/archetypes/bard-court-bard.json");
+  const ids = featuresThroughLevel(applyArchetype(bard, archetype), 20).map((feature) => feature.id);
+
+  for (const added of [
+    "court-bard-satire-1",
+    "court-bard-mockery-3",
+    "court-bard-glorious-epic-8",
+    "court-bard-scandal-14",
+    "court-bard-heraldic-expertise-1",
+    "court-bard-wide-audience-5"
+  ]) assert.ok(ids.includes(added));
+
+  for (const removed of [
+    "bardic-knowledge-1",
+    "bard-inspire-courage-17",
+    "bard-inspire-competence-19",
+    "bard-dirge-of-doom-8",
+    "bard-frightening-tune-14",
+    "bard-lore-master-17",
+    "bard-jack-of-all-trades-19"
+  ]) assert.ok(!ids.includes(removed));
+
+  assert.ok(ids.includes("bard-suggestion-6"));
+  assert.ok(ids.includes("bard-deadly-performance-20"));
+});
