@@ -225,6 +225,9 @@ export interface CharacterTrait {
 }
 
 export interface CharacterOption extends SelectableOption {
+  associatedSchool?: string;
+  elementalOppositionSchool?: string;
+  elementalSpellIdsByLevel?: Record<string, string[]>;
   parentDomainId?: string;
   replacesPower?: string;
   classSkills?: string[];
