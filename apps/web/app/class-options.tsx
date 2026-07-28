@@ -149,7 +149,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const conflictsWithSelectedFamily = (choice: Choice, option: Option) => Boolean(option.exclusiveGroupId && orderedChoices.some((other) =>
     other.id !== choice.id
     && other.selected?.exclusiveGroupId === option.exclusiveGroupId
-    && other.selected.familyId !== option.familyId
+    && other.selected?.familyId !== option.familyId
   ));
 
   useEffect(() => {
