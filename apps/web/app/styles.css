@@ -143,8 +143,45 @@ a:focus-visible,
   width: auto;
 }
 
+.spell-class-selector {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #d7d0c0;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px #332b1e10;
+  color: #6f271f;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .78rem;
+  font-weight: 800;
+  gap: 12px;
+  justify-content: space-between;
+  letter-spacing: .06em;
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  text-transform: uppercase;
+}
+
+.spell-class-selector select {
+  border: 1px solid #a29a89;
+  border-radius: 8px;
+  font: inherit;
+  min-width: min(260px, 100%);
+  padding: 10px 36px 10px 12px;
+  text-transform: none;
+}
+
 @media (max-width: 540px) {
   .favored-class-controls {
     grid-template-columns: 1fr;
+  }
+
+  .spell-class-selector {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .spell-class-selector select {
+    width: 100%;
   }
 }

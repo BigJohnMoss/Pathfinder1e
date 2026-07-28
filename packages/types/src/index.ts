@@ -30,7 +30,9 @@ export interface CharacterDraftV1 {
   skillRanks: Record<string, number>;
   selectedOptions: Record<string, string>;
   preparedSpells: string[];
+  preparedSpellsByClass: Record<string, string[]>;
   spellSlotUses: Record<string, number>;
+  spellSlotUsesByClass: Record<string, Record<string, number>>;
   arcaneReservoir: number | null;
   bardicPerformanceUsed: number;
   wildShapeUsed: number;

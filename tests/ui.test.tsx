@@ -162,6 +162,15 @@ test("builds, calculates, and restores a multiclass character", async () => {
   assert.ok(screen.getAllByText("Arcane School").length > 0);
   await user.selectOptions(screen.getByLabelText("Arcane School level 1"), "wizard-school-universalist");
 
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  assert.ok(screen.getByRole("heading", { name: "Prepared spells" }));
+  assert.ok(screen.getByText(/Wizard slots:/));
+  assert.equal(screen.queryByLabelText("Spellcasting class"), null);
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
+  await user.type(screen.getByLabelText("Search spells"), "mage armor");
+  await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
+  assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
+
   await user.click(screen.getByRole("button", { name: "Save" }));
   await user.selectOptions(screen.getByLabelText("Additional class"), "");
   assert.equal(screen.queryByLabelText("Additional class levels"), null);
@@ -170,6 +179,41 @@ test("builds, calculates, and restores a multiclass character", async () => {
   assert.equal((screen.getByLabelText("Additional class levels") as HTMLInputElement).value, "8");
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal((screen.getByLabelText("Arcane School level 1") as HTMLSelectElement).value, "wizard-school-universalist");
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  assert.ok(screen.getByText(/Wizard slots:/));
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
+  await user.type(screen.getByLabelText("Search spells"), "mage armor");
+  assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
+});
+
+test("switches between independent multiclass spellbooks", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "8" } });
+  fireEvent.change(screen.getByLabelText("Wisdom base score"), { target: { value: "12" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "cleric");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "3" } });
+
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  const classSelector = screen.getByLabelText("Spellcasting class");
+  assert.equal((classSelector as HTMLSelectElement).value, "wizard");
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
+  await user.type(screen.getByLabelText("Search spells"), "mage armor");
+  await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
+
+  await user.selectOptions(classSelector, "cleric");
+  assert.ok(screen.getByText(/Cleric slots:/));
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
+  await user.type(screen.getByLabelText("Search spells"), "bless");
+  await user.click(screen.getByRole("button", { name: "Add Bless" }));
+  assert.equal(screen.getByLabelText("Bless prepared").textContent, "1");
+
+  await user.selectOptions(classSelector, "wizard");
+  assert.ok(screen.getByText(/Wizard slots:/));
+  await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
+  await user.type(screen.getByLabelText("Search spells"), "mage armor");
+  assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
 });
 
 test("enforces the skill-rank pool through the interface", async () => {
