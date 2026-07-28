@@ -197,7 +197,7 @@ export function spellcastingProgression(characterClass, level, { abilityScore = 
   };
 }
 
-export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = null, archetypeIds = null } = {}) {
+export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = null, archetypeIds = null, archetypeIdsByClass = null } = {}) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const draft = value;
   if (draft.version !== undefined && draft.version !== 1) return null;
@@ -220,6 +220,11 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
   const preparedSpells = Array.isArray(draft.preparedSpells) ? draft.preparedSpells.filter(id => typeof id === "string") : [];
   const spellSlotUses = isRankRecord(draft.spellSlotUses);
   const validClassIds = new Set(normalizedClassLevels.map(entry => entry.classId));
+  const normalizedArchetypeIdsByClass = Object.fromEntries(Object.entries(isStringRecord(draft.archetypeIdsByClass)).filter(([selectedClassId, selectedArchetypeId]) =>
+    validClassIds.has(selectedClassId) && (!archetypeIdsByClass || archetypeIdsByClass[selectedClassId]?.includes(selectedArchetypeId))
+  ));
+  const legacyArchetypeId = typeof draft.archetypeId === "string" && (!archetypeIds || archetypeIds.includes(draft.archetypeId)) ? draft.archetypeId : "";
+  if (!normalizedArchetypeIdsByClass[draft.classId] && legacyArchetypeId) normalizedArchetypeIdsByClass[draft.classId] = legacyArchetypeId;
   const preparedSpellsByClass = isStringArrayRecord(draft.preparedSpellsByClass, validClassIds);
   const spellSlotUsesByClass = isNestedRankRecord(draft.spellSlotUsesByClass, validClassIds);
   if (!preparedSpellsByClass[draft.classId]) preparedSpellsByClass[draft.classId] = preparedSpells;
@@ -229,7 +234,8 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",
     classId: draft.classId,
     classLevels: normalizedClassLevels,
-    archetypeId: typeof draft.archetypeId === "string" && (!archetypeIds || archetypeIds.includes(draft.archetypeId)) ? draft.archetypeId : "",
+    archetypeId: normalizedArchetypeIdsByClass[draft.classId] ?? legacyArchetypeId,
+    archetypeIdsByClass: normalizedArchetypeIdsByClass,
     ancestryId: typeof draft.ancestryId === "string" && (!ancestryIds || ancestryIds.includes(draft.ancestryId)) ? draft.ancestryId : "human",
     level: draft.level,
     humanAbility: abilityNames.includes(draft.humanAbility) ? draft.humanAbility : "intelligence",

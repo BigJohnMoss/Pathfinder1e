@@ -113,8 +113,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
   levels, BAB, saves, skill ranks, character-level feat slots, and class-tagged
   features; backward-compatible save normalization for class-level arrays;
   arbitrary distinct class-level editing with combined combat statistics, hit
-  points, class skills, features, and feat prerequisites; primary and first
-  additional class feature choices,
+  points, class skills, features, feat prerequisites, class-keyed archetypes,
+  and feature choices for every class entry;
   independent spellbooks and daily slot use for every spellcasting class entry,
   secondary Bard and Druid resource tracking, highest-class caster-level
   prerequisites, and save/load restoration
