@@ -31,7 +31,10 @@ for (const [archetypeId, name, expected] of [
   ["rogue-sniper","Sniper",["Accuracy","Deadly Range"]],
   ["rogue-spy","Spy",["Skilled Liar","Poison Use"]],
   ["rogue-swashbuckler","Swashbuckler",["Martial Training","Daring"]],
-  ["rogue-thug","Thug",["Frightening","Brutal Beating"]]
+  ["rogue-thug","Thug",["Frightening","Brutal Beating"]],
+  ["rogue-burglar","Burglar",["Careful Disarm","Distraction"]],
+  ["rogue-scout","Scout",["Scout's Charge","Skirmisher"]],
+  ["rogue-trapsmith","Trapsmith",["Careful Disarm","Trap Master"]]
 ] as const) test(`${name} is selectable through level 20`, async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -40,5 +43,9 @@ for (const [archetypeId, name, expected] of [
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
   await user.click(screen.getByRole("tab", { name: "Features" }));
   for (const feature of expected) assert.ok(screen.getAllByText(feature).length > 0);
-  assert.equal(screen.queryByText("Trapfinding"), null);
+  if (!["rogue-burglar","rogue-scout","rogue-trapsmith"].includes(archetypeId)) assert.equal(screen.queryByText("Trapfinding"), null);
+  else {
+    assert.equal(screen.queryByText("Uncanny Dodge"), null);
+    assert.equal(screen.queryByText("Improved Uncanny Dodge"), null);
+  }
 });
