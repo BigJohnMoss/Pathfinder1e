@@ -19,11 +19,18 @@ for (const [file, expected, replacesTrapSense] of [
   ["rogue-sniper",["sniper-accuracy-1","sniper-deadly-range-3"],true],
   ["rogue-spy",["spy-skilled-liar-1","spy-poison-use-3"],true],
   ["rogue-swashbuckler",["swashbuckler-martial-training-1","swashbuckler-daring-3"],true],
-  ["rogue-thug",["thug-frightening-1","thug-brutal-beating-3"],true]
+  ["rogue-thug",["thug-frightening-1","thug-brutal-beating-3"],true],
+  ["rogue-burglar",["burglar-careful-disarm-4","burglar-distraction-8"],false],
+  ["rogue-scout",["scout-charge-4","scout-skirmisher-8"],false],
+  ["rogue-trapsmith",["trapsmith-careful-disarm-4","trapsmith-trap-master-8"],false]
 ]) test(`${file} exposes its APG replacements`, async () => {
   const archetype = await load(`../packages/data/src/archetypes/${file}.json`);
   const ids = applyArchetype(rogue, archetype).features.map((feature) => feature.id);
   for (const id of expected) assert.ok(ids.includes(id));
-  assert.ok(!ids.includes("trapfinding-1"));
+  if (!["rogue-burglar","rogue-scout","rogue-trapsmith"].includes(file)) assert.ok(!ids.includes("trapfinding-1"));
   assert.equal(ids.includes("rogue-trap-sense-3"), !replacesTrapSense);
+  if (["rogue-burglar","rogue-scout","rogue-trapsmith"].includes(file)) {
+    assert.ok(!ids.includes("uncanny-dodge-4"));
+    assert.ok(!ids.includes("improved-uncanny-dodge-8"));
+  }
 });
