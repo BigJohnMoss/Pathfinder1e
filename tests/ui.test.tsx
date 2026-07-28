@@ -143,6 +143,32 @@ test("quick-allocates favored class bonuses and clamps them when level falls", a
   assert.match(document.querySelector(".favored-class-bonus .hint")?.textContent ?? "", /0 of 3 favored-class bonuses assigned/);
 });
 
+test("builds, calculates, and restores a multiclass character", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "8" } });
+
+  assert.equal(screen.getByText("BAB").closest("article")?.querySelector("strong")?.textContent, "+16");
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+10");
+  assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+6");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+10");
+
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByRole("heading", { name: "Fighter 12 / Wizard 8 features" }));
+  assert.ok(screen.getAllByText(/Armor Training/).length > 0);
+  assert.ok(screen.getByText("Arcane School"));
+
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Additional class"), "");
+  assert.equal(screen.queryByLabelText("Additional class levels"), null);
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await waitFor(() => assert.equal((screen.getByLabelText("Additional class") as HTMLSelectElement).value, "wizard"));
+  assert.equal((screen.getByLabelText("Additional class levels") as HTMLInputElement).value, "8");
+});
+
 test("enforces the skill-rank pool through the interface", async () => {
   const user = userEvent.setup();
   render(<Home />);
