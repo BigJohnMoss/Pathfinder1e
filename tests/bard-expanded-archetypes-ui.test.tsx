@@ -70,12 +70,34 @@ test("Detective exposes five legal Arcane Investigation spell choices", async ()
   await user.selectOptions(archetype, "bard-detective");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
   await user.click(screen.getByRole("tab", { name: "Features" }));
-  for (const name of ["Careful Teamwork +1", "True Confession", "Show Yourselves", "Eye for Detail", "Arcane Insight", "Arcane Investigation Spell 5"]) assert.ok(screen.getByText(name));
+  for (const name of ["Careful Teamwork +1", "True Confession", "Show Yourselves", "Eye for Detail", "Arcane Insight"]) assert.ok(screen.getByText(name));
+  assert.ok(screen.getByLabelText(/Arcane Investigation Spell 5/));
   const firstSpell = screen.getByLabelText(/Arcane Investigation Spell 1/);
   assert.ok(firstSpell.querySelector("option[value='detective-arcane-investigation-detect-evil']"));
   await user.selectOptions(firstSpell, "detective-arcane-investigation-detect-evil");
   assert.match(screen.getByText(/Add Detect Evil to your spells known/).textContent ?? "", /bonus spell/);
   assert.equal(screen.queryByText("Versatile Performance 5"), null);
+});
+
+test("Magician exposes expanded repertoire and bonded-object choices", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  const archetype = screen.getByLabelText("Archetype");
+  assert.ok(archetype.querySelector("option[value='bard-magician']"));
+  await user.selectOptions(archetype, "bard-magician");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  for (const name of ["Dweomercraft +1", "Spell Suppression", "Metamagic Mastery", "Improved Counterspell", "Expanded Repertoire Spell 5", "Arcane Bond", "Wand Mastery: Caster Level"]) assert.ok(screen.getByText(name));
+  const firstSpell = screen.getByLabelText(/Expanded Repertoire Spell 1/);
+  assert.ok(firstSpell.querySelector("option[value='magician-expanded-repertoire-mage-armor']"));
+  await user.selectOptions(firstSpell, "magician-expanded-repertoire-mage-armor");
+  const bondedObject = screen.getByLabelText(/Arcane Bond/);
+  assert.ok(bondedObject.querySelector("option[value='magician-bonded-object-wand']"));
+  assert.equal(bondedObject.querySelector("option")?.textContent?.includes("Weapon"), false);
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  assert.equal(screen.getByLabelText("Mage Armor known").textContent, "Feature");
+  assert.equal(screen.getByRole("button", { name: "Forget Mage Armor" }).hasAttribute("disabled"), true);
 });
 
 test("Court Bard exposes every replacement performance through level 20", async () => {

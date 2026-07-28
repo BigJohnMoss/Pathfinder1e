@@ -1,0 +1,21 @@
+{
+  "id": "magician-expanded-repertoire",
+  "name": "Magician Expanded Repertoire",
+  "classIds": ["bard"],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+  },
+  "optionDefaults": {
+    "groupId": "magician-expanded-repertoire",
+    "classIds": ["bard"],
+    "prerequisites": []
+  },
+  "options": [],
+  "generatedSpellOptions": {
+    "classId": "arcanist",
+    "targetClassId": "bard",
+    "maximumSpellLevel": 6
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "magician-bonded-objects",
+  "name": "Magician Bonded Objects",
+  "classIds": ["bard"],
+  "optionDefaults": {
+    "groupId": "magician-bonded-objects",
+    "classIds": ["bard"],
+    "minimumLevel": 5,
+    "prerequisites": [],
+    "source": {
+      "title": "Advanced Player's Guide",
+      "page": null,
+      "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
+    }
+  },
+  "options": [
+    {"id":"magician-bonded-object-amulet","name":"Amulet","benefit":"Choose a masterwork amulet as your bonded object."},
+    {"id":"magician-bonded-object-ring","name":"Ring","benefit":"Choose a masterwork ring as your bonded object."},
+    {"id":"magician-bonded-object-staff","name":"Staff","benefit":"Choose a masterwork staff as your bonded object."},
+    {"id":"magician-bonded-object-wand","name":"Wand","benefit":"Choose a masterwork wand as your bonded object; it remains bonded after its charges are expended."}
+  ]
+}
