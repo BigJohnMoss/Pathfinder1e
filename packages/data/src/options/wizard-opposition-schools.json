@@ -1,1 +1,201 @@
-{"id":"wizard-opposition-schools","name":"Wizard Opposition Schools","classIds":["wizard"],"options":[{"id":"wizard-opposition-abjuration","groupId":"wizard-opposition-schools","name":"Abjuration","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Treat abjuration as an opposition school. Preparing an abjuration spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.","source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"}},{"id":"wizard-opposition-conjuration","groupId":"wizard-opposition-schools","name":"Conjuration","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Treat conjuration as an opposition school. Preparing a conjuration spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.","source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"}},{"id":"wizard-opposition-divination","groupId":"wizard-opposition-schools","name":"Divination","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Treat divination as an opposition school. Preparing a divination spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.","source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"}},{"id":"wizard-opposition-enchantment","groupId":"wizard-opposition-schools","name":"Enchantment","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Treat enchantment as an opposition school. Preparing an enchantment spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.","source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"}},{"id":"wizard-opposition-evocation","groupId":"wizard-opposition-schools","name":"Evocation","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Treat evocation as an opposition school. Preparing an evocation spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.","source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"}},{"id":"wizard-opposition-illusion","groupId":"wizard-opposition-schools","name":"Illusion","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Treat illusion as an opposition school. Preparing an illusion spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.","source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"}},{"id":"wizard-opposition-necromancy","groupId":"wizard-opposition-schools","name":"Necromancy","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Treat necromancy as an opposition school. Preparing a necromancy spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.","source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"}},{"id":"wizard-opposition-transmutation","groupId":"wizard-opposition-schools","name":"Transmutation","classIds":["wizard"],"minimumLevel":1,"prerequisites":[],"benefit":"Treat transmutation as an opposition school. Preparing a transmutation spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.","source":{"title":"Core Rulebook","page":79,"url":"https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"}}]}
+{
+  "id": "wizard-opposition-schools",
+  "name": "Wizard Opposition Schools",
+  "classIds": [
+    "wizard"
+  ],
+  "options": [
+    {
+      "id": "wizard-opposition-abjuration",
+      "groupId": "wizard-opposition-schools",
+      "name": "Abjuration",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat abjuration as an opposition school. Preparing an abjuration spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"
+      }
+    },
+    {
+      "id": "wizard-opposition-conjuration",
+      "groupId": "wizard-opposition-schools",
+      "name": "Conjuration",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat conjuration as an opposition school. Preparing a conjuration spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"
+      }
+    },
+    {
+      "id": "wizard-opposition-divination",
+      "groupId": "wizard-opposition-schools",
+      "name": "Divination",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat divination as an opposition school. Preparing a divination spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"
+      }
+    },
+    {
+      "id": "wizard-opposition-enchantment",
+      "groupId": "wizard-opposition-schools",
+      "name": "Enchantment",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat enchantment as an opposition school. Preparing an enchantment spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"
+      }
+    },
+    {
+      "id": "wizard-opposition-evocation",
+      "groupId": "wizard-opposition-schools",
+      "name": "Evocation",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat evocation as an opposition school. Preparing an evocation spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"
+      }
+    },
+    {
+      "id": "wizard-opposition-illusion",
+      "groupId": "wizard-opposition-schools",
+      "name": "Illusion",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat illusion as an opposition school. Preparing an illusion spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"
+      }
+    },
+    {
+      "id": "wizard-opposition-necromancy",
+      "groupId": "wizard-opposition-schools",
+      "name": "Necromancy",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat necromancy as an opposition school. Preparing a necromancy spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"
+      }
+    },
+    {
+      "id": "wizard-opposition-transmutation",
+      "groupId": "wizard-opposition-schools",
+      "name": "Transmutation",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat transmutation as an opposition school. Preparing a transmutation spell uses two spell slots of that level, and related item-crafting checks take a -4 penalty.",
+      "source": {
+        "title": "Core Rulebook",
+        "page": 79,
+        "url": "https://legacy.aonprd.com/coreRulebook/classes/wizard.html#arcane-school"
+      }
+    },
+    {
+      "id": "wizard-opposition-air",
+      "groupId": "wizard-opposition-schools",
+      "name": "Air",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat the Air elemental school as your opposition element. Preparing an Air school spell uses two spell slots of that level.",
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-opposition-earth",
+      "groupId": "wizard-opposition-schools",
+      "name": "Earth",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat the Earth elemental school as your opposition element. Preparing an Earth school spell uses two spell slots of that level.",
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-opposition-fire",
+      "groupId": "wizard-opposition-schools",
+      "name": "Fire",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat the Fire elemental school as your opposition element. Preparing a Fire school spell uses two spell slots of that level.",
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    },
+    {
+      "id": "wizard-opposition-water",
+      "groupId": "wizard-opposition-schools",
+      "name": "Water",
+      "classIds": [
+        "wizard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Treat the Water elemental school as your opposition element. Preparing a Water school spell uses two spell slots of that level.",
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/wizard.html"
+      }
+    }
+  ]
+}
