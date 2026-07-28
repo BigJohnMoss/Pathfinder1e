@@ -1,0 +1,17 @@
+{
+  "id": "divination",
+  "name": "Divination",
+  "school": "divination",
+  "levelByClass": {
+    "cleric": 4
+  },
+  "components": ["V", "S", "M"],
+  "castingTime": "10 minutes",
+  "range": "personal",
+  "summary": "Receive useful advice about a specific goal, event, or activity expected to occur within one week.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 273,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Divination"
+  }
+}

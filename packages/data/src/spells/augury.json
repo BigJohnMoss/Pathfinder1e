@@ -1,0 +1,17 @@
+{
+  "id": "augury",
+  "name": "Augury",
+  "school": "divination",
+  "levelByClass": {
+    "cleric": 2
+  },
+  "components": ["V", "S", "M", "F"],
+  "castingTime": "1 minute",
+  "range": "personal",
+  "summary": "Learn whether a contemplated action is likely to bring good or bad results within roughly the next half hour.",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 245,
+    "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Augury"
+  }
+}
