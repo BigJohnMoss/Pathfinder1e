@@ -284,6 +284,7 @@ export function applyArchetype(characterClass, archetype) {
     ...characterClass,
     name: `${characterClass.name} (${archetype.name})`,
     spellListAdditions: { ...(characterClass.spellListAdditions ?? {}), ...(archetype.spellListAdditions ?? {}) },
+    wildShapeLevelAdjustment: archetype.wildShapeLevelAdjustment ?? characterClass.wildShapeLevelAdjustment,
     features: [...retained, ...replacements].sort((left, right) => left.level - right.level || left.name.localeCompare(right.name))
   };
 }

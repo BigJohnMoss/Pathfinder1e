@@ -1,0 +1,25 @@
+{
+  "id": "druid-arctic",
+  "name": "Arctic Druid",
+  "classId": "druid",
+  "summary": "A guardian of frozen wilderness who moves across ice, reshapes fire as cold, and becomes living snow.",
+  "wildShapeLevelAdjustment": -2,
+  "replacements": [
+    {"featureIds":["druid-woodland-stride-2"],"features":[{"id":"arctic-druid-native-2","name":"Arctic Native","level":2,"type":"scaling","summary":"In cold or icy terrain, add half Druid level to initiative and key exploration skills and leave no trail.","scaling":"half Druid level"}]},
+    {"featureIds":["druid-trackless-step-3"],"features":[{"id":"arctic-druid-icewalking-3","name":"Icewalking","level":3,"type":"core","summary":"Ignore snowy and icy movement and skill penalties and cross snow crusts or thin ice safely."}]},
+    {"featureIds":["druid-resist-natures-lure-4"],"features":[{"id":"arctic-druid-endurance-4","name":"Arctic Endurance","level":4,"type":"core","summary":"Ignore cold-climate effects and become immune to being dazzled."}]},
+    {"progressionKeys":["druid-wild-shape"],"features":[
+      {"id":"arctic-druid-wild-shape-6","name":"Wild Shape","level":6,"type":"scaling","summary":"Gain Wild Shape using an effective Druid level two lower.","scaling":"1 use per day; effective Druid level -2","uses":"1 per day"},
+      {"id":"arctic-druid-wild-shape-8","name":"Wild Shape","level":8,"type":"scaling","summary":"Gain a second daily use and forms available to a 6th-level Druid.","scaling":"2 uses","uses":"2 per day"},
+      {"id":"arctic-druid-wild-shape-10","name":"Wild Shape","level":10,"type":"scaling","summary":"Gain a third daily use and forms available to an 8th-level Druid.","scaling":"3 uses","uses":"3 per day"},
+      {"id":"arctic-druid-wild-shape-12","name":"Wild Shape","level":12,"type":"scaling","summary":"Gain a fourth daily use and forms available to a 10th-level Druid.","scaling":"4 uses","uses":"4 per day"},
+      {"id":"arctic-druid-wild-shape-14","name":"Wild Shape","level":14,"type":"scaling","summary":"Gain a fifth daily use and forms available to a 12th-level Druid.","scaling":"5 uses","uses":"5 per day"},
+      {"id":"arctic-druid-wild-shape-16","name":"Wild Shape","level":16,"type":"scaling","summary":"Gain a sixth daily use.","scaling":"6 uses","uses":"6 per day"},
+      {"id":"arctic-druid-wild-shape-18","name":"Wild Shape","level":18,"type":"scaling","summary":"Gain a seventh daily use.","scaling":"7 uses","uses":"7 per day"},
+      {"id":"arctic-druid-wild-shape-20","name":"Wild Shape","level":20,"type":"scaling","summary":"Gain an eighth daily use; the reduced effective level does not reach at-will Wild Shape.","scaling":"8 uses","uses":"8 per day"}
+    ]},
+    {"featureIds":["druid-venom-immunity-9"],"features":[{"id":"arctic-druid-snowcaster-9","name":"Snowcaster","level":9,"type":"core","summary":"See through magical and natural snowstorms and prepare fire-subtype Druid spells as cold spells."}]},
+    {"featureIds":["druid-thousand-faces-13"],"features":[{"id":"arctic-druid-flurry-form-13","name":"Flurry Form","level":13,"type":"core","summary":"Assume a gaseous column of snow at will and add Druid level to Stealth in cold terrain."}]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+}

@@ -67,6 +67,7 @@ export interface CharacterClass {
   skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
+  wildShapeLevelAdjustment?: number;
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
     castingType: "prepared" | "spontaneous";
@@ -89,6 +90,7 @@ export interface CharacterArchetype {
   }>;
   featureOverrides?: Array<{ featureId: string; summary: string }>;
   spellListAdditions?: Record<string, number>;
+  wildShapeLevelAdjustment?: number;
   source: SourceRef;
 }
 export type Prerequisite =
