@@ -17,6 +17,7 @@ test("opposition-school spells cost two prepared slots", () => {
   assert.equal(spellPreparationCost(spells[2], ["wizard-opposition-abjuration"]), 2);
   assert.equal(spellPreparationCost(spells[2], ["wizard-school-divination"]), 1);
   assert.equal(spellPreparationCost(spells[3], []), 1);
+  assert.equal(spellPreparationCost(spells[0], ["wizard-opposition-water"], ["magic-missile"]), 2);
 });
 
 test("prepared spell usage counts opposition costs by spell level", () => {
@@ -35,4 +36,15 @@ test("normalization rejects invalid and over-capacity records safely", () => {
   assert.deepEqual(normalizePreparedSpellsWithOpposition(["missing", "detect-magic", "detect-magic", "detect-magic", "detect-magic"], spells, "wizard", limits, ["wizard-opposition-divination"]), ["detect-magic"]);
   assert.deepEqual(normalizePreparedSpellsWithOpposition(null, spells, "wizard", limits, []), []);
   assert.deepEqual(normalizePreparedSpellsWithOpposition([], spells, "wizard", null, []), []);
+});
+
+test("elemental opposition spell lists consume two prepared slots", () => {
+  assert.deepEqual(
+    preparedSpellSlotUsage(["magic-missile", "mage-armor"], spells, "wizard", ["wizard-opposition-earth"], ["mage-armor"]),
+    { 1: 3 }
+  );
+  assert.deepEqual(
+    normalizePreparedSpellsWithOpposition(["mage-armor", "magic-missile"], spells, "wizard", limits, ["wizard-opposition-earth"], ["mage-armor"]),
+    ["mage-armor"]
+  );
 });
