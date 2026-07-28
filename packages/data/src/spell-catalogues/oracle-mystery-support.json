@@ -10,6 +10,7 @@
     {"id":"greater-restoration","name":"Greater Restoration","levelByClass":{"cleric":7},"summary":"Remove severe afflictions, ability drain, and negative levels."},
     {"id":"mass-heal","name":"Mass Heal","levelByClass":{"cleric":9},"summary":"Channel powerful healing among multiple creatures."},
     {"id":"true-resurrection","name":"True Resurrection","levelByClass":{"cleric":9},"summary":"Restore a dead creature fully to life without requiring its body."},
-    {"id":"mass-owls-wisdom","name":"Owl's Wisdom, Mass","levelByClass":{"cleric":6},"summary":"Grant several creatures an enhancement bonus to Wisdom."}
+    {"id":"mass-owls-wisdom","name":"Owl's Wisdom, Mass","levelByClass":{"cleric":6},"summary":"Grant several creatures an enhancement bonus to Wisdom."},
+    {"id":"grove-of-respite","name":"Grove of Respite","levelByClass":{"cleric":4},"summary":"Create a sheltered grove that provides food, water, and restorative rest."}
   ]
 }
