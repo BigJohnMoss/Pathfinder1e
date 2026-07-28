@@ -70,7 +70,8 @@ test("Detective exposes five legal Arcane Investigation spell choices", async ()
   await user.selectOptions(archetype, "bard-detective");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
   await user.click(screen.getByRole("tab", { name: "Features" }));
-  for (const name of ["Careful Teamwork +1", "True Confession", "Show Yourselves", "Eye for Detail", "Arcane Insight", "Arcane Investigation Spell 5"]) assert.ok(screen.getByText(name));
+  for (const name of ["Careful Teamwork +1", "True Confession", "Show Yourselves", "Eye for Detail", "Arcane Insight"]) assert.ok(screen.getByText(name));
+  assert.ok(screen.getByLabelText(/Arcane Investigation Spell 5/));
   const firstSpell = screen.getByLabelText(/Arcane Investigation Spell 1/);
   assert.ok(firstSpell.querySelector("option[value='detective-arcane-investigation-detect-evil']"));
   await user.selectOptions(firstSpell, "detective-arcane-investigation-detect-evil");
