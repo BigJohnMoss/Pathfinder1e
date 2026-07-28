@@ -1,0 +1,52 @@
+{
+  "bloodlines": [
+    {
+      "id": "sorcerer-bloodline-deep-earth",
+      "classSkill": "Knowledge (dungeoneering)",
+      "arcana": "Increase a spell's save DC by 1 whenever both you and its target are underground.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Expeditious Excavation"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Darkvision"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Shifting Sand"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Stoneskin"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Spike Stones"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Stone Tell"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Repel Metal or Stone"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Earthquake"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Clashing Rocks"}
+      ],
+      "bonusFeats": ["Acrobatic Steps","Alertness","Blind-Fight","Forge Ring","Nimble Moves","Skill Focus (Perception)","Stealthy","Still Spell"],
+      "powers": [
+        {"name":"Tremor","level":1,"summary":"As a standard action, attempt to trip one creature within 30 feet using sorcerer level plus Charisma modifier as your CMB. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Rockseer","level":3,"summary":"Gain dwarf stonecunning, or improve its bonus to +4. At 9th level gain tremorsense 30 feet; at 15th see through solid objects for a number of rounds per day equal to your sorcerer level."},
+        {"name":"Crystal Shard","level":9,"summary":"Give a touched metal or stone weapon or up to 50 ammunition bane against earth creatures, oozes, and stone or metal constructs for 1 minute, once per day and more often at levels 17 and 20."},
+        {"name":"Earth Glide","level":15,"summary":"Glide through natural earth or stone without leaving a trace at half your normal speed for 1 minute per sorcerer level each day, spent in 1-minute increments."},
+        {"name":"Strength of Stone","level":20,"summary":"Gain DR 10/adamantine and immunity to petrification, squeezing penalties, forced-movement combat maneuvers, and push or pull effects while grounded."}
+      ]
+    },
+    {
+      "id": "sorcerer-bloodline-dreamspun",
+      "classSkill": "Sense Motive",
+      "arcana": "After targeting one creature with a spell, gain an insight bonus equal to half the spell level, minimum 1, to AC and saves against that creature for 1 round.",
+      "bonusSpells": [
+        {"sorcererLevel":3,"spellLevel":1,"name":"Sleep"},
+        {"sorcererLevel":5,"spellLevel":2,"name":"Augury"},
+        {"sorcererLevel":7,"spellLevel":3,"name":"Deep Slumber"},
+        {"sorcererLevel":9,"spellLevel":4,"name":"Divination"},
+        {"sorcererLevel":11,"spellLevel":5,"name":"Dream"},
+        {"sorcererLevel":13,"spellLevel":6,"name":"Shadow Walk"},
+        {"sorcererLevel":15,"spellLevel":7,"name":"Vision"},
+        {"sorcererLevel":17,"spellLevel":8,"name":"Moment of Prescience"},
+        {"sorcererLevel":19,"spellLevel":9,"name":"Astral Projection"}
+      ],
+      "bonusFeats": ["Alertness","Blind-Fight","Combat Expertise","Deceitful","Heighten Spell","Improved Feint","Persuasive","Skill Focus (Sense Motive)"],
+      "powers": [
+        {"name":"Lullaby","level":1,"summary":"Use lullaby as a spell-like ability for 1 minute without concentration and impose a -4 penalty on saves against sleep effects. Uses per day equal 3 + Charisma modifier."},
+        {"name":"Combat Precognition","level":3,"summary":"Gain a +1 insight bonus on initiative checks at 3rd level and every 4 sorcerer levels thereafter."},
+        {"name":"Dreamshaper","level":9,"summary":"Manipulate memories as modify memory or question a corpse as speak with dead, once per day and more often at levels 17 and 20, with a Will save to negate."},
+        {"name":"Eye of Somnus","level":15,"summary":"Once per day project an arcane eye that can become stationary and visible, transforming into a symbol of sleep for all who see it."},
+        {"name":"Solipsism","level":20,"summary":"Become incorporeal for 1 minute per sorcerer level, spent in 1-minute increments, gaining the incorporeal subtype and its normal interactions with corporeal attacks and spells."}
+      ]
+    }
+  ]
+}
