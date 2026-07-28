@@ -1,0 +1,22 @@
+{
+  "id":"ranger-shapeshifter",
+  "name":"Shapeshifter",
+  "classId":"ranger",
+  "summary":"A feral Ranger who assumes chosen animal aspects, combines two forms, and masters true bestial transformations.",
+  "rangerCombatStyleIds":["ranger-combat-style-natural-weapon"],
+  "replacements":[
+    {"progressionKeys":["ranger-favored-terrain"],"features":[
+      {"id":"shapeshifter-blessing-3","name":"Shifter's Blessing 1","level":3,"type":"selectable","summary":"Choose a permanent animal aspect and assume it as a swift action.","choiceRequired":true,"optionGroupId":"ranger-shifter-forms","progressionKey":"shapeshifter-blessing","uses":"1/day for Ranger level + Wisdom modifier rounds"},
+      {"id":"shapeshifter-blessing-8","name":"Shifter's Blessing 2","level":8,"type":"selectable","summary":"Choose a second animal aspect and gain another daily use.","choiceRequired":true,"optionGroupId":"ranger-shifter-forms","progressionKey":"shapeshifter-blessing","uses":"2/day"},
+      {"id":"shapeshifter-blessing-13","name":"Shifter's Blessing 3","level":13,"type":"selectable","summary":"Choose a third animal aspect and gain another daily use.","choiceRequired":true,"optionGroupId":"ranger-shifter-forms","progressionKey":"shapeshifter-blessing","uses":"3/day"},
+      {"id":"shapeshifter-blessing-18","name":"Shifter's Blessing 4","level":18,"type":"selectable","summary":"Choose a fourth animal aspect and gain another daily use.","choiceRequired":true,"optionGroupId":"ranger-shifter-forms","progressionKey":"shapeshifter-blessing","uses":"4/day"}
+    ]},
+    {"featureIds":["ranger-camouflage-12"],"features":[
+      {"id":"shapeshifter-dual-form-12","name":"Dual Form Shifter","level":12,"type":"core","summary":"Assume two selected Shifter's Blessing forms at once and gain both sets of benefits."}
+    ]},
+    {"featureIds":["ranger-master-hunter-20"],"features":[
+      {"id":"shapeshifter-master-shifter-20","name":"Master Shifter","level":20,"type":"capstone","summary":"Improve every selected form and optionally assume its true beast or dragon shape while retaining Dual Form Shifter."}
+    ]}
+  ],
+  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}
+}
