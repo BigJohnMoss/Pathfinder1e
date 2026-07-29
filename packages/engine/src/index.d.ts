@@ -80,6 +80,10 @@ export function normalizeCharacterDraft(value: unknown, options?: { classIds?: s
 export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype): CharacterClass;
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
+export function classBaseAttackBonus(characterClass: CharacterClass, level: number): number;
+export function classSavingThrow(characterClass: CharacterClass, save: "fortitude" | "reflex" | "will", level: number): number;
+export function spellcastingTradition(characterClass: CharacterClass): "arcane" | "divine" | null;
+export function effectiveSpellcastingLevels(classes: CharacterClass[], classLevels: Array<{ classId: string; level: number }>, prestigeTargets?: Record<string, string[]>): Record<string, number>;
 export function featSlotsAtLevel(level: number, options?: { bonusFeats?: number }): number;
 export function skillRanksThroughLevel(characterClass: CharacterClass, level: number, intelligenceScore: number, options?: { racialBonusPerLevel?: number }): number;
 export function skillTotal(characterClass: CharacterClass, skill: { name: string }, abilityScore: number, ranks: number): { total: number; isClassSkill: boolean };

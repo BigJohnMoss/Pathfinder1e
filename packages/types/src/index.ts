@@ -16,6 +16,7 @@ export interface CharacterDraftV1 {
   classLevels: CharacterClassLevel[];
   archetypeId: string;
   archetypeIdsByClass: Record<string, string>;
+  prestigeSpellcastingTargets: Record<string, string[]>;
   ancestryId: string;
   selectedAlternateRacialTraitIds: string[];
   level: number;
@@ -66,6 +67,15 @@ export interface ClassFeatureOccurrence {
 export interface CharacterClass {
   id: string; name: string; classType: string; hitDie: 6|8|10|12;
   babProgression: Progression; saves: {fortitude: SaveProgression; reflex: SaveProgression; will: SaveProgression};
+  maximumLevel?: number;
+  baseAttackBonusByLevel?: number[];
+  savesByLevel?: Array<{ fortitude: number; reflex: number; will: number }>;
+  requirements?: string[];
+  spellcastingAdvancement?: {
+    tradition: "arcane" | "divine" | "any";
+    levels: number[];
+    targetCount?: number;
+  };
   skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
@@ -77,6 +87,7 @@ export interface CharacterClass {
   classSkillRemovals?: string[];
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
+    tradition?: "arcane" | "divine";
     castingType: "prepared" | "spontaneous";
     slotsByLevel: number[][];
     preparedByLevel?: number[][];

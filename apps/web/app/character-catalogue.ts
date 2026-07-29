@@ -10,7 +10,12 @@ function orderedById<T extends { id: string }>(items: readonly T[], ids: readonl
   });
 }
 
-export const classes = orderedById<CharacterClass>(generatedData.classes, ["arcanist", "barbarian", "bard", "cleric", "druid", "fighter", "monk", "oracle", "paladin", "ranger", "rogue", "sorcerer", "wizard"]);
+const primaryClassOrder = ["arcanist", "barbarian", "bard", "cleric", "druid", "fighter", "monk", "oracle", "paladin", "ranger", "rogue", "sorcerer", "wizard"];
+const primaryClassIds = new Set(primaryClassOrder);
+export const classes = [
+  ...orderedById<CharacterClass>(generatedData.classes, primaryClassOrder),
+  ...generatedData.classes.filter(characterClass => !primaryClassIds.has(characterClass.id)).sort((left, right) => left.name.localeCompare(right.name))
+] as CharacterClass[];
 export const archetypes = [...generatedData.archetypes].sort((left, right) => left.name.localeCompare(right.name)) as CharacterArchetype[];
 export const ancestries = orderedById<CharacterAncestry>(generatedData.races, ["human", "dwarf", "elf", "gnome", "half-elf", "halfling", "half-orc"]);
 export const feats = [...generatedData.feats].sort((left, right) => left.name.localeCompare(right.name));
