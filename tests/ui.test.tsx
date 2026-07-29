@@ -216,6 +216,23 @@ test("switches between independent multiclass spellbooks", async () => {
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
 });
 
+test("exchanges and restores Human alternate racial traits", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.click(screen.getByLabelText("Eye for Talent"));
+  assert.equal((screen.getByLabelText("Heart of the Fields") as HTMLInputElement).disabled, false);
+  await user.click(screen.getByLabelText("Heart of the Fields"));
+  assert.equal((screen.getByLabelText("Heart of the Streets") as HTMLInputElement).disabled, true);
+  await user.click(screen.getByRole("tab", { name: "Feats" }));
+  assert.equal(screen.queryByText("Human bonus feat"), null);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  await user.click(screen.getByLabelText("Eye for Talent"));
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal((screen.getByLabelText("Eye for Talent") as HTMLInputElement).checked, true);
+  assert.equal((screen.getByLabelText("Heart of the Fields") as HTMLInputElement).checked, true);
+});
+
 test("tracks and restores daily resources for secondary classes", async () => {
   const user = userEvent.setup();
   render(<Home />);

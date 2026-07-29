@@ -238,6 +238,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     archetypeId: normalizedArchetypeIdsByClass[draft.classId] ?? legacyArchetypeId,
     archetypeIdsByClass: normalizedArchetypeIdsByClass,
     ancestryId: typeof draft.ancestryId === "string" && (!ancestryIds || ancestryIds.includes(draft.ancestryId)) ? draft.ancestryId : "human",
+    selectedAlternateRacialTraitIds: Array.isArray(draft.selectedAlternateRacialTraitIds) ? draft.selectedAlternateRacialTraitIds.filter(id => typeof id === "string") : [],
     level: draft.level,
     humanAbility: abilityNames.includes(draft.humanAbility) ? draft.humanAbility : "intelligence",
     baseAbilities: draft.baseAbilities,
@@ -312,6 +313,19 @@ export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2)
     categories.add(trait.category);
   }
   return selected;
+}
+
+export function normalizeSelectedAlternateRacialTraits(selectedIds, alternateTraits = []) {
+  const byId = new Map(alternateTraits.map((trait) => [trait.id, trait]));
+  const replaced = new Set();
+  const normalized = [];
+  for (const id of Array.isArray(selectedIds) ? selectedIds : []) {
+    const trait = byId.get(id);
+    if (!trait || normalized.includes(id) || !Array.isArray(trait.replaces) || trait.replaces.some((replacedId) => replaced.has(replacedId))) continue;
+    normalized.push(id);
+    trait.replaces.forEach((replacedId) => replaced.add(replacedId));
+  }
+  return normalized;
 }
 
 export function normalizeSelectedTraitChoices(selectedTraitChoices, selectedTraitIds, traits, { spells = [], classes = [], classId } = {}) {
