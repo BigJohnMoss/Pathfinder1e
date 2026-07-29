@@ -25,8 +25,9 @@ export function PwaRegistration() {
 
     let removeFocusListener = () => {};
     const register = () => {
+      const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
       navigator.serviceWorker
-        .register("/sw.js")
+        .register(`${basePath}/sw.js`)
         .then((registration) => {
           showUpdate(registration);
           registration.addEventListener("updatefound", () => {

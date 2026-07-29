@@ -5,7 +5,9 @@ import { test } from "node:test";
 test("installable app metadata targets standalone desktop and Android use", async () => {
   const manifest = await readFile("apps/web/app/manifest.ts", "utf8");
   assert.match(manifest, /display: "standalone"/);
-  assert.match(manifest, /start_url: "\/"/);
+  assert.match(manifest, /const applicationRoot = `\$\{basePath\}\/`/);
+  assert.match(manifest, /start_url: applicationRoot/);
+  assert.match(manifest, /scope: applicationRoot/);
   assert.match(manifest, /pf1e-192\.png/);
   assert.match(manifest, /pf1e-512\.png/);
   assert.match(manifest, /purpose: "maskable"/);
