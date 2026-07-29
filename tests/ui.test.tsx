@@ -186,6 +186,35 @@ test("builds, calculates, and restores a multiclass character", async () => {
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
 });
 
+test("unlocks multiclassing at level 2 and can start a new class through level up", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  assert.equal(screen.queryByLabelText("Additional class"), null);
+  assert.ok(screen.getByText("Multiclassing unlocks at level 2"));
+
+  await user.click(screen.getByRole("button", { name: "Review level 2" }));
+  await user.selectOptions(screen.getByLabelText("Class receiving this level"), "rogue");
+  assert.ok(screen.getByRole("heading", { name: "Review Rogue level 1" }));
+  await user.click(screen.getByRole("button", { name: "Advance to level 2" }));
+
+  assert.equal((screen.getByLabelText("Level") as HTMLInputElement).value, "2");
+  assert.equal((screen.getByLabelText("Additional class") as HTMLSelectElement).value, "rogue");
+  assert.equal((screen.getByLabelText("Additional class levels") as HTMLInputElement).value, "1");
+  assert.match(screen.getByText(/2 total levels/).textContent ?? "", /1 in your starting class/);
+});
+
+test("removes impossible multiclass allocations when total level is lowered", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "6" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "4" } });
+
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "1" } });
+  await waitFor(() => assert.equal(screen.queryByLabelText("Additional class"), null));
+  assert.ok(screen.getByText("Multiclassing unlocks at level 2"));
+});
+
 test("allocates ancestry-specific favored class rewards and applies daily resources", async () => {
   const user = userEvent.setup();
   render(<Home />);

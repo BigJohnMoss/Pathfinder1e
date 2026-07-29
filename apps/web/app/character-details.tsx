@@ -49,7 +49,12 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
   };
   return <section className="builder" aria-label="Character details">
     <label>Character name<input value={name} placeholder="Unnamed hero" onChange={(event) => onNameChange(event.target.value)} /></label>
-    <label>Class<select aria-label="Class" value={classId} onChange={(event) => onClassChange(event.target.value)}>{classes.filter((item) => item.classType !== "prestige").map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+    <fieldset className="class-plan">
+      <legend>Class progression</legend>
+      <div className="primary-class-row">
+        <label>Starting class<select aria-label="Class" value={classId} onChange={(event) => onClassChange(event.target.value)}>{classes.filter((item) => item.classType !== "prestige").map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+        <span><small>Class levels</small><strong>{primaryLevels}</strong></span>
+      </div>
     {additionalClassLevels.map((entry, index) => {
       const label = index === 0 ? "Additional class" : `Additional class ${index + 1}`;
       const levelLabel = index === 0 ? "Additional class levels" : `Additional class ${index + 1} levels`;
@@ -80,12 +85,14 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
         <button type="button" className="secondary-button" aria-label={`Remove ${classes.find((item) => item.id === entry.classId)?.name ?? label}`} onClick={() => updateAdditionalClass(index, "")}>Remove</button>
       </div>;
     })}
-    {additionalClassLevels.length === 0 && <label>Additional class<select aria-label="Additional class" value="" onChange={(event) => event.target.value && onAdditionalClassLevelsChange([{ classId: event.target.value, level: 1 }])}><option value="">None</option>{classes.filter((item) => item.id !== classId).map((item) => <option key={item.id} value={item.id}>{item.name}{item.classType === "prestige" ? " (prestige)" : ""}</option>)}</select></label>}
+    {level === 1 && <div className="multiclass-locked"><strong>Multiclassing unlocks at level 2</strong><small>Your first character level always belongs to your starting class. Use Review level 2 when you are ready to continue this class or begin another one.</small></div>}
+    {level >= 2 && additionalClassLevels.length === 0 && <label>Multiclass<select aria-label="Additional class" value="" onChange={(event) => event.target.value && onAdditionalClassLevelsChange([{ classId: event.target.value, level: 1 }])}><option value="">Single class</option>{classes.filter((item) => item.id !== classId).map((item) => <option key={item.id} value={item.id}>{item.name}{item.classType === "prestige" ? " (prestige)" : ""}</option>)}</select><small className="field-help">Assign at least one of your {level - 1} later levels to another class.</small></label>}
     {additionalClassLevels.length > 0 && additionalClassLevels.length < classes.length - 1 && primaryLevels > 1 && <button type="button" className="add-class-button" onClick={() => {
       const nextClass = classes.find((item) => !availableClassIds.has(item.id));
       if (nextClass) onAdditionalClassLevelsChange([...additionalClassLevels, { classId: nextClass.id, level: 1 }]);
     }}>Add another class</button>}
-    {additionalClassLevels.length > 0 && <p className="class-level-summary">{primaryLevels} level{primaryLevels === 1 ? "" : "s"} remain in the primary class.</p>}
+    {additionalClassLevels.length > 0 && <p className="class-level-summary">{level} total levels · {primaryLevels} in your starting class · {assignedAdditionalLevels} in other classes.</p>}
+    </fieldset>
     <label>Archetype<select aria-label="Archetype" value={archetypeId} onChange={(event) => onArchetypeChange(event.target.value)}><option value="">Standard class</option>{archetypes.filter((item) => item.classId === classId).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Ancestry<select value={ancestryId} onChange={(event) => onAncestryChange(event.target.value)}>{ancestries.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => onLevelChange(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} />{level < 20 && <button type="button" className="level-up-trigger" onClick={onReviewLevelUp}>Review level {level + 1}</button>}</label>

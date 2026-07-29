@@ -182,6 +182,68 @@ a:focus-visible,
   padding: 12px;
 }
 
+.class-plan {
+  border: 1px solid #675b4c;
+  border-radius: 12px;
+  display: grid;
+  gap: 12px;
+  margin: 2px 0;
+  min-width: 0;
+  padding: 14px;
+}
+
+.class-plan legend {
+  color: #f2d6a9;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  padding: 0 6px;
+  text-transform: uppercase;
+}
+
+.primary-class-row {
+  align-items: end;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.primary-class-row > span {
+  background: #4a3c2f;
+  border-radius: 8px;
+  color: #fff5e4;
+  display: grid;
+  min-width: 74px;
+  padding: 8px 12px;
+}
+
+.primary-class-row small,
+.field-help {
+  color: #d9cbb8;
+  font-size: .72rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.primary-class-row strong {
+  font-size: 1.15rem;
+}
+
+.multiclass-locked {
+  background: #3a3127;
+  border: 1px dashed #8e7b63;
+  border-radius: 10px;
+  color: #fff5e4;
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+}
+
+.multiclass-locked small {
+  color: #d9cbb8;
+  line-height: 1.45;
+}
+
 .builder .additional-class-row button,
 .builder .add-class-button {
   background: #fff7e8;
@@ -284,6 +346,7 @@ main#character-builder-main {
 .character-sidebar .builder label,
 .character-sidebar .builder button,
 .character-sidebar .builder .character-actions,
+.character-sidebar .builder .class-plan,
 .character-sidebar .builder .additional-class-row,
 .character-sidebar .builder .class-level-summary {
   grid-column: 1;

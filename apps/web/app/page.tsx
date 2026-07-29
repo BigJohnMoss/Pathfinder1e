@@ -49,6 +49,22 @@ function mergeSpellLists<T extends { id: string }>(baseSpells: T[], grantedSpell
   return [...byId.values()];
 }
 
+function normalizeAdditionalClassLevels(entries: CharacterClassLevel[], primaryClassId: string, characterLevel: number) {
+  const seen = new Set([primaryClassId]);
+  const valid = entries.filter((entry) => {
+    if (!classes.some((item) => item.id === entry.classId) || seen.has(entry.classId)) return false;
+    seen.add(entry.classId);
+    return true;
+  }).slice(0, Math.max(0, characterLevel - 1));
+  let remaining = characterLevel - 1;
+  return valid.map((entry, index) => {
+    const maximum = remaining - (valid.length - index - 1);
+    const normalized = { classId: entry.classId, level: Math.max(1, Math.min(entry.level, maximum)) };
+    remaining -= normalized.level;
+    return normalized;
+  });
+}
+
 export default function Home() {
   const [name, setName] = useState("");
   const [classId, setClassId] = useState("arcanist");
@@ -111,8 +127,9 @@ export default function Home() {
   const primaryClassLevel = level - assignedAdditionalLevels;
   const classLevels = useMemo(() => [{ classId: characterClass.id, level: primaryClassLevel }, ...additionalClassLevels], [additionalClassLevels, characterClass.id, primaryClassLevel]);
   const progressionClasses = useMemo(() => [characterClass, ...additionalCharacterClasses], [additionalCharacterClasses, characterClass]);
-  const levelUpClassEntry = classLevels.find((entry) => entry.classId === levelUpClassId) ?? classLevels[0];
-  const levelUpClassChoices = classLevels.map((entry) => ({ id: entry.classId, name: classes.find((item) => item.id === entry.classId)?.name ?? entry.classId }));
+  const selectedLevelUpClassId = levelUpClassId || characterClass.id;
+  const levelUpClassEntry = classLevels.find((entry) => entry.classId === selectedLevelUpClassId) ?? { classId: selectedLevelUpClassId, level: 0 };
+  const levelUpClassChoices = classes.filter((item) => item.classType !== "prestige" || classLevels.some((entry) => entry.classId === item.id)).map((item) => ({ id: item.id, name: item.name }));
   const classLevelMap = useMemo(() => Object.fromEntries(classLevels.map((entry) => [entry.classId, entry.level])), [classLevels]);
   const effectiveSpellcastingLevelMap = useMemo(() => effectiveSpellcastingLevels(progressionClasses, classLevels, prestigeSpellcastingTargets), [classLevels, prestigeSpellcastingTargets, progressionClasses]);
   const primarySpellcastingLevel = effectiveSpellcastingLevelMap[characterClass.id] ?? primaryClassLevel;
@@ -165,19 +182,7 @@ export default function Home() {
     });
   }, [ancestryId, classId, primaryClassLevel]);
   useEffect(() => setAdditionalClassLevels((current) => {
-    const seen = new Set([classId]);
-    const valid = current.filter((entry) => {
-      if (!classes.some((item) => item.id === entry.classId) || seen.has(entry.classId)) return false;
-      seen.add(entry.classId);
-      return true;
-    }).slice(0, Math.max(0, level - 1));
-    let remaining = level - 1;
-    const next = valid.map((entry, index) => {
-      const maximum = remaining - (valid.length - index - 1);
-      const normalized = { classId: entry.classId, level: Math.max(1, Math.min(entry.level, maximum)) };
-      remaining -= normalized.level;
-      return normalized;
-    });
+    const next = normalizeAdditionalClassLevels(current, classId, level);
     return next.length === current.length && next.every((entry, index) => entry.classId === current[index].classId && entry.level === current[index].level) ? current : next;
   }), [classId, level]);
   const ancestryBonusFeats = effectiveRacialTraits.some((trait) => trait.id === "human-bonus-feat") ? 1 : 0;
@@ -199,10 +204,17 @@ export default function Home() {
       racialSkillBonusPerLevel: effectiveRacialTraits.some((trait) => trait.id === "skilled") ? 1 : 0,
       bonusFeats: ancestryBonusFeats
     };
-    return additionalCharacterClasses.length > 0
-      ? multiclassProgression(progressionClasses, classLevels.map((entry) => entry.classId === levelUpClassEntry.classId ? { ...entry, level: entry.level + 1 } : entry), options)
+    const existingEntry = classLevels.some((entry) => entry.classId === levelUpClassEntry.classId);
+    const nextClassLevels = existingEntry
+      ? classLevels.map((entry) => entry.classId === levelUpClassEntry.classId ? { ...entry, level: entry.level + 1 } : entry)
+      : [...classLevels, { classId: levelUpClassEntry.classId, level: 1 }];
+    const nextClasses = existingEntry
+      ? progressionClasses
+      : [...progressionClasses, classes.find((item) => item.id === levelUpClassEntry.classId)!].filter(Boolean);
+    return nextClassLevels.length > 1
+      ? multiclassProgression(nextClasses, nextClassLevels, options)
       : classProgression(characterClass, level + 1, options);
-  }, [abilities.intelligence, additionalCharacterClasses.length, ancestry, ancestryBonusFeats, characterClass, classLevels, level, levelUpClassEntry.classId, progressionClasses, selectedAlternateRacialTraitIds]);
+  }, [abilities.intelligence, ancestry, ancestryBonusFeats, characterClass, classLevels, level, levelUpClassEntry.classId, progressionClasses, selectedAlternateRacialTraitIds]);
   const baseCombat = useMemo(() => {
     const base = characterCombatStats(characterClass, level, abilities);
     if (additionalCharacterClasses.length === 0) return base;
@@ -603,7 +615,7 @@ export default function Home() {
       onSidebarOpen={() => setSidebarOpen(true)}
       onSidebarClose={() => setSidebarOpen(false)}
       sidebar={<>
-        <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} additionalArchetypeIds={additionalArchetypeIds} prestigeSpellcastingTargets={prestigeSpellcastingTargets} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={archetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); const validIds = new Set(next.map((entry) => entry.classId)); setAdditionalArchetypeIds((current) => Object.fromEntries(Object.entries(current).filter(([selectedClassId]) => validIds.has(selectedClassId)))); setPrestigeSpellcastingTargets((current) => Object.fromEntries(Object.entries(current).filter(([prestigeClassId]) => validIds.has(prestigeClassId)))); if (next.length > 0 && level < next.length + 1) setLevel(next.length + 1); }} onAdditionalArchetypeChange={(selectedClassId, selectedId) => setAdditionalArchetypeIds((current) => selectedId ? { ...current, [selectedClassId]: selectedId } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== selectedClassId)))} onPrestigeSpellcastingTargetChange={(prestigeClassId, targetClassId, targetIndex = 0) => setPrestigeSpellcastingTargets((current) => { const targets = [...(current[prestigeClassId] ?? [])]; targets[targetIndex] = targetClassId; return targets.some(Boolean) ? { ...current, [prestigeClassId]: targets } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== prestigeClassId)); })} onArchetypeChange={setArchetypeId} onAncestryChange={(next) => { setAncestryId(next); setSelectedAlternateRacialTraitIds([]); }} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => { setLevelUpClassId(characterClass.id); setShowLevelUp(true); setSidebarOpen(false); }} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+        <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} additionalArchetypeIds={additionalArchetypeIds} prestigeSpellcastingTargets={prestigeSpellcastingTargets} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={archetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); const validIds = new Set(next.map((entry) => entry.classId)); setAdditionalArchetypeIds((current) => Object.fromEntries(Object.entries(current).filter(([selectedClassId]) => validIds.has(selectedClassId)))); setPrestigeSpellcastingTargets((current) => Object.fromEntries(Object.entries(current).filter(([prestigeClassId]) => validIds.has(prestigeClassId)))); }} onAdditionalArchetypeChange={(selectedClassId, selectedId) => setAdditionalArchetypeIds((current) => selectedId ? { ...current, [selectedClassId]: selectedId } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== selectedClassId)))} onPrestigeSpellcastingTargetChange={(prestigeClassId, targetClassId, targetIndex = 0) => setPrestigeSpellcastingTargets((current) => { const targets = [...(current[prestigeClassId] ?? [])]; targets[targetIndex] = targetClassId; return targets.some(Boolean) ? { ...current, [prestigeClassId]: targets } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== prestigeClassId)); })} onArchetypeChange={setArchetypeId} onAncestryChange={(next) => { setAncestryId(next); setSelectedAlternateRacialTraitIds([]); }} onLevelChange={(next) => { setAdditionalClassLevels((current) => normalizeAdditionalClassLevels(current, classId, next)); setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => { setLevelUpClassId(characterClass.id); setShowLevelUp(true); setSidebarOpen(false); }} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
         <LevelProgression currentLevel={level} selectedLevel={selectedProgressionLevel} features={progression.features} selectedOptions={selectedOptions} suppressFeatureDetails={activeTab === "features"} onSelectLevel={setSelectedProgressionLevel} onReviewSection={reviewProgressionSection} />
       </>}
     >
@@ -616,7 +628,7 @@ export default function Home() {
         <span><small>Base attack</small><strong>{progression.baseAttackBonus >= 0 ? "+" : ""}{progression.baseAttackBonus}</strong></span>
       </div>
     </header>
-    {showLevelUp && level < 20 && <LevelUpPanel currentLevel={level} classId={levelUpClassEntry.classId} classLevel={levelUpClassEntry.level} classChoices={levelUpClassChoices} gains={levelUpGains} onClassChange={setLevelUpClassId} onCancel={() => setShowLevelUp(false)} onConfirm={() => { if (levelUpClassEntry.classId !== characterClass.id) setAdditionalClassLevels((current) => current.map((entry) => entry.classId === levelUpClassEntry.classId ? { ...entry, level: entry.level + 1 } : entry)); setLevel(level + 1); setShowLevelUp(false); setSaveNotice(levelUpClassChoices.length > 1 ? `Advanced ${levelUpClassChoices.find((choice) => choice.id === levelUpClassEntry.classId)?.name ?? levelUpClassEntry.classId} to level ${levelUpClassEntry.level + 1}. Review newly unlocked choices.` : `Advanced to level ${level + 1}. Review newly unlocked choices.`); }} />}
+    {showLevelUp && level < 20 && <LevelUpPanel currentLevel={level} classId={levelUpClassEntry.classId} classLevel={levelUpClassEntry.level} classChoices={levelUpClassChoices} gains={levelUpGains} onClassChange={setLevelUpClassId} onCancel={() => setShowLevelUp(false)} onConfirm={() => { if (levelUpClassEntry.classId !== characterClass.id) setAdditionalClassLevels((current) => { const existing = current.find((entry) => entry.classId === levelUpClassEntry.classId); return existing ? current.map((entry) => entry.classId === levelUpClassEntry.classId ? { ...entry, level: entry.level + 1 } : entry) : [...current, { classId: levelUpClassEntry.classId, level: 1 }]; }); setLevel(level + 1); setShowLevelUp(false); setSaveNotice(levelUpClassEntry.classId === characterClass.id ? `Advanced to level ${level + 1}. Review newly unlocked choices.` : `Advanced ${levelUpClassChoices.find((choice) => choice.id === levelUpClassEntry.classId)?.name ?? levelUpClassEntry.classId} to level ${levelUpClassEntry.level + 1}. Review newly unlocked choices.`); }} />}
     <CharacterTabs activeTab={activeTab} onChange={setActiveTab} showSpells={spellcastingClassIds.length > 0} />
     <section id="character-tab-panel" className="tab-panel" role="tabpanel" aria-labelledby={`character-tab-${activeTab}`} tabIndex={0}>
       {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} pointBuyBudget={pointBuyBudget} pointBuySpent={pointBuy.spent} abilityBoosts={abilityBoosts} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} onPointBuyBudgetChange={setPointBuyBudget} onAbilityBoostChange={updateAbilityBoost} /><ProgressionSummary combat={combat} progression={progression} /><FavoredClassBonus ancestryId={ancestry.id} ancestryName={ancestry.name} classId={characterClass.id} className={characterClass.name} level={primaryClassLevel} hitPoints={favoredClassHitPoints} skillRanks={favoredClassSkillRanks} alternateBonuses={favoredClassAlternateBonuses} onChange={(hitPoints, skillRanks, alternateBonuses) => { setFavoredClassHitPoints(hitPoints); setFavoredClassSkillRanks(skillRanks); setFavoredClassAlternateBonuses(alternateBonuses); }} /><AncestryTraits ancestry={ancestry} selectedIds={selectedAlternateRacialTraitIds} onChange={(ids) => setSelectedAlternateRacialTraitIds(normalizeSelectedAlternateRacialTraits(ids, ancestry.alternateTraits ?? []))} /></section>}
