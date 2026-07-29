@@ -924,6 +924,37 @@ test("tracks persistent equipment, encumbrance, currency, and equipped armor", a
   assert.ok(screen.getByText(/25 lb. carried — light load/));
 });
 
+test("applies, prices, and restores magic equipment without stacking like bonuses", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
+  const catalogue = screen.getByLabelText("Equipment catalogue");
+  await user.selectOptions(catalogue, "longsword");
+  await user.selectOptions(screen.getByLabelText("Longsword enhancement"), "2");
+  assert.match(screen.getByText("Longsword +2").closest("article")?.textContent ?? "", /8315 gp/);
+  assert.match(screen.getByText("Longsword +2").closest("article")?.textContent ?? "", /Attack \+2 · Damage 1d8 \+2/);
+
+  await user.selectOptions(catalogue, "chain-shirt");
+  await user.selectOptions(screen.getByLabelText("Chain shirt enhancement"), "2");
+  await user.click(screen.getAllByLabelText("Equipped")[1]);
+  for (const itemId of ["ring-protection-1", "ring-protection-2", "cloak-resistance-1", "cloak-resistance-3"]) {
+    await user.selectOptions(catalogue, itemId);
+    await user.click(screen.getAllByLabelText("Equipped").at(-1)!);
+  }
+
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.match(screen.getByText("AC / touch / flat-footed").closest("div")?.textContent ?? "", /18 \/ 12 \/ 18/);
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+3");
+  assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+3");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+5");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
+  await user.selectOptions(screen.getByLabelText("Longsword enhancement"), "0");
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal((screen.getByLabelText("Longsword enhancement") as HTMLSelectElement).value, "2");
+});
+
 test("previews and confirms a guided level up without losing selections", async () => {
   const user = userEvent.setup();
   render(<Home />);
