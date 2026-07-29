@@ -113,6 +113,18 @@ test("allows a mobile ability score to be cleared before entering one digit", as
   assert.match(strength.closest("label")?.querySelector("strong")?.textContent ?? "", /^8 -1$/);
 });
 
+test("allows an ability score input to remain empty after it loses focus", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const strength = screen.getByLabelText("Strength base score") as HTMLInputElement;
+
+  await user.clear(strength);
+  await user.tab();
+
+  assert.equal(strength.value, "");
+  assert.match(strength.closest("label")?.querySelector("strong")?.textContent ?? "", /^10 \+0$/);
+});
+
 test("allocates and persists favored class hit points and skill ranks", async () => {
   const user = userEvent.setup();
   render(<Home />);
