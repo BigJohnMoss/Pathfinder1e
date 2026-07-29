@@ -1,0 +1,25 @@
+{
+  "id": "undead-master",
+  "name": "Undead Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(necromancy)"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast animate dead or command undead"
+    }
+  ],
+  "benefit": "Animate and command more undead",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

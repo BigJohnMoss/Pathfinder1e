@@ -1,0 +1,21 @@
+{
+  "id": "coordinated-charge",
+  "name": "Coordinated Charge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "At least two other teamwork feats"
+    },
+    {
+      "type": "bab",
+      "minimum": 10
+    }
+  ],
+  "benefit": "You may charge the same foe when an ally does",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

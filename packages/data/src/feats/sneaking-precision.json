@@ -1,0 +1,29 @@
+{
+  "id": "sneaking-precision",
+  "name": "Sneaking Precision",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "sneak-attack"
+    },
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "rule",
+      "description": "any critical feat"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "On the second sneak attack in a round, you may apply a critical feat",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

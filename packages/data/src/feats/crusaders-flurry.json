@@ -1,0 +1,25 @@
+{
+  "id": "crusaders-flurry",
+  "name": "Crusader's Flurry",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy-and-flurry-of-blows"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with deity's favored weapon"
+    }
+  ],
+  "benefit": "May use flurry of blows with deity's favored melee weapon",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "nightmare-weaver",
+  "name": "Nightmare Weaver",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "nightmare-fist"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Can demoralize foes while casting darkness .",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

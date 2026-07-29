@@ -1,0 +1,26 @@
+{
+  "id": "deathless-zealot",
+  "name": "Deathless Zealot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "deathless-master"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    }
+  ],
+  "benefit": "Foes must reroll critical confirmation attacks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

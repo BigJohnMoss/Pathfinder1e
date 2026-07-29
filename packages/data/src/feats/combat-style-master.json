@@ -1,0 +1,25 @@
+{
+  "id": "combat-style-master",
+  "name": "Combat Style Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "two more style feats"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 5th"
+    }
+  ],
+  "benefit": "May switch styles as a free action",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

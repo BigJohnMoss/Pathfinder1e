@@ -1,0 +1,17 @@
+{
+  "id": "disengaging-flourish",
+  "name": "Disengaging Flourish",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "disengaging-feint"
+    }
+  ],
+  "benefit": "Successful feint causes your starting square to not count as threatened",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "close-quarters-thrower",
+  "name": "Close-Quarters Thrower",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with selected thrown weapon"
+    }
+  ],
+  "benefit": "Attacks with selected weapons do not provoke attacks of opportunity",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

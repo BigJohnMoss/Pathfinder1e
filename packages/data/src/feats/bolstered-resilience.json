@@ -1,0 +1,17 @@
+{
+  "id": "bolstered-resilience",
+  "name": "Bolstered Resilience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Damage reduction"
+    }
+  ],
+  "benefit": "Increase DR against a single attack",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

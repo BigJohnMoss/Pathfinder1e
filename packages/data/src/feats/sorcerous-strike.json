@@ -1,0 +1,21 @@
+{
+  "id": "sorcerous-strike",
+  "name": "Sorcerous Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "sorcerer-bloodline"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Apply a bloodline ability as part of a melee attack",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

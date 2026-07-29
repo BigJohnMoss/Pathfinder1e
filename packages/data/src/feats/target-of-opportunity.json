@@ -1,0 +1,21 @@
+{
+  "id": "target-of-opportunity",
+  "name": "Target of Opportunity",
+  "type": "teamwork",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "When an ally hits with a ranged attack, youmay make an attack as an immediate action",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

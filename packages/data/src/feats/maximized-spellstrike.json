@@ -1,0 +1,21 @@
+{
+  "id": "maximized-spellstrike",
+  "name": "Maximized Spellstrike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Maximized magic magus arcana"
+    },
+    {
+      "type": "rule",
+      "description": "weapon expertise class feature or Quick Draw"
+    }
+  ],
+  "benefit": "Maximize spellstrike by spending 3 arcana pool points",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

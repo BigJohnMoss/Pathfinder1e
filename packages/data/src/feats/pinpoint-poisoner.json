@@ -1,0 +1,26 @@
+{
+  "id": "pinpoint-poisoner",
+  "name": "Pinpoint Poisoner",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "adder-strike"
+    },
+    {
+      "type": "rule",
+      "description": "Two-Weapon Fighting or flurry of blows class feature"
+    },
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 6
+    }
+  ],
+  "benefit": "When using Adder Strike , you may poison two blowgun darts that can be used in melee",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

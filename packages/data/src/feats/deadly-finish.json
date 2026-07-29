@@ -1,0 +1,17 @@
+{
+  "id": "deadly-finish",
+  "name": "Deadly Finish",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Foes you knock out must make a Fort save or die",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "sap-adept",
+  "name": "Sap Adept",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Sneak attack +1d6"
+    }
+  ],
+  "benefit": "Gain bonus damage on nonlethal attacks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

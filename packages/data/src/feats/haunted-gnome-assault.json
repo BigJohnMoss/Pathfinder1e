@@ -1,0 +1,22 @@
+{
+  "id": "haunted-gnome-assault",
+  "name": "Haunted Gnome Assault",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "haunted-gnome"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain independent use of gnome magic",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

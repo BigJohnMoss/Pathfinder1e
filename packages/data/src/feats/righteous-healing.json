@@ -1,0 +1,17 @@
+{
+  "id": "righteous-healing",
+  "name": "Righteous Healing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "judgment"
+    }
+  ],
+  "benefit": "Heal more when you have a judgment active",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

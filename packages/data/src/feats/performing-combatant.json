@@ -1,0 +1,21 @@
+{
+  "id": "performing-combatant",
+  "name": "Performing Combatant",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    },
+    {
+      "type": "rule",
+      "description": "any one Performance feat"
+    }
+  ],
+  "benefit": "Can make combat performance checks in any combat",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

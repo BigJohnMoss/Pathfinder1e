@@ -1,0 +1,17 @@
+{
+  "id": "channeled-revival",
+  "name": "Channeled Revival",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel positive energy 6d6"
+    }
+  ],
+  "benefit": "May expend channel energy to cast breath of life",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

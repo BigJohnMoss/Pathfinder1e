@@ -1,0 +1,26 @@
+{
+  "id": "fire-music",
+  "name": "Fire Music",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    },
+    {
+      "type": "spell-access",
+      "id": "bard-spells"
+    },
+    {
+      "type": "spell-access",
+      "id": "at-least-one-arcane-fire-spell-from-another-class"
+    }
+  ],
+  "benefit": "Replace bard spell damage with fire damage, summoned monsters gain fire attacks",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

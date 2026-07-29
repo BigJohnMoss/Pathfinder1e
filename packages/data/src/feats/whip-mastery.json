@@ -1,0 +1,25 @@
+{
+  "id": "whip-mastery",
+  "name": "Whip Mastery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(whip)"
+    },
+    {
+      "type": "bab",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Using a whip does not provoke attacks of opportunity",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

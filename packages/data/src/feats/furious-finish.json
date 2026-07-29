@@ -1,0 +1,25 @@
+{
+  "id": "furious-finish",
+  "name": "Furious Finish",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "rage"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Deal maximum damage and end your rage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

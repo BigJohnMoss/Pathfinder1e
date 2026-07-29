@@ -1,0 +1,35 @@
+{
+  "id": "earth-child-style",
+  "name": "Earth Child Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "defensive training racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "dwarf or gnome"
+    }
+  ],
+  "benefit": "Defensive training AC increases to +6 against giants",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

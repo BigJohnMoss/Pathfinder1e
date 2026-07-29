@@ -1,0 +1,22 @@
+{
+  "id": "wave-strike",
+  "name": "Wave Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Weapon expertise class feature or Quick Draw"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Spend a swift action to make a Bluff check to feint",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

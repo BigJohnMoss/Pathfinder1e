@@ -1,0 +1,21 @@
+{
+  "id": "splintering-weapon",
+  "name": "Splintering Weapon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Weapon Proficiency"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Break a weapon to deal bleed damage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

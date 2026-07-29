@@ -1,0 +1,32 @@
+{
+  "id": "create-sanguine-elixir",
+  "name": "Create Sanguine Elixir",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "brew-potion"
+    },
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 12
+    },
+    {
+      "type": "class-level",
+      "classId": "sorcerer",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Create an elixir that allows another to use a bloodline power",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "oracular-intuition",
+  "name": "Oracular Intuition",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "mystery"
+    }
+  ],
+  "benefit": "Gain bonuses to Sense Motive and Spellcraft to identify magic item properties",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

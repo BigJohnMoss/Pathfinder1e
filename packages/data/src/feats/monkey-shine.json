@@ -1,0 +1,31 @@
+{
+  "id": "monkey-shine",
+  "name": "Monkey Shine",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "monkey-moves"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 11
+    },
+    {
+      "type": "skill",
+      "key": "Climb",
+      "minimum": 11
+    }
+  ],
+  "benefit": "After successful Stunning Fist , you may enter an adjacent square",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

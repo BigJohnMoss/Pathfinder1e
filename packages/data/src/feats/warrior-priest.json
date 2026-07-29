@@ -1,0 +1,21 @@
+{
+  "id": "warrior-priest",
+  "name": "Warrior Priest",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "divine-spells"
+    },
+    {
+      "type": "rule",
+      "description": "domain or mystery class feature"
+    }
+  ],
+  "benefit": "+1 bonus to initiative and +2 on concentration checks when casting defensively",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

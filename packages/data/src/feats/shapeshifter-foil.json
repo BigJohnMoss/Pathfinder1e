@@ -1,0 +1,21 @@
+{
+  "id": "shapeshifter-foil",
+  "name": "Shapeshifter Foil",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Knowledge (arcana) 5 ranks or Knowledge (nature) 5 ranks"
+    },
+    {
+      "type": "rule",
+      "description": "ability to use polymorph effects"
+    }
+  ],
+  "benefit": "When you deal damage, target's ability to use any polymorph effects is hindered",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

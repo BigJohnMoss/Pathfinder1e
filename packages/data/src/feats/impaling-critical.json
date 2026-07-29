@@ -1,0 +1,29 @@
+{
+  "id": "impaling-critical",
+  "name": "Impaling Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-specialization"
+    },
+    {
+      "type": "rule",
+      "description": "with piercing weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "May impale and deal extra damage to opponent with a critical hit",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

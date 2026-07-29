@@ -1,0 +1,42 @@
+{
+  "id": "neckbreaker",
+  "name": "Neckbreaker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bonebreaker"
+    },
+    {
+      "type": "feat",
+      "id": "greater-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "jawbreaker"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 12
+    }
+  ],
+  "benefit": "May deal Str or Dex damage to pinned opponent",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

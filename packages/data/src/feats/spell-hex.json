@@ -1,0 +1,17 @@
+{
+  "id": "spell-hex",
+  "name": "Spell Hex",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "major-hex"
+    }
+  ],
+  "benefit": "Cast a 1st-level spell as a hex",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

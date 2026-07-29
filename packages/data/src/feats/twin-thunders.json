@@ -1,0 +1,33 @@
+{
+  "id": "twin-thunders",
+  "name": "Twin Thunders",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Flurry of blows class feature or Two-Weapon Fighting"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with wielded bludgeoning weapons"
+    },
+    {
+      "type": "rule",
+      "description": "defensive training race trait"
+    },
+    {
+      "type": "rule",
+      "description": "dwarf or gnome"
+    }
+  ],
+  "benefit": "Substitute disarm, sunder, and trip for any of your attacks vs. giants",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

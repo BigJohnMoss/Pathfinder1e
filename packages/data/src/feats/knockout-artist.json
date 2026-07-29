@@ -1,0 +1,21 @@
+{
+  "id": "knockout-artist",
+  "name": "Knockout Artist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "sneak-attack"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Gain +2 damage per sneak attack when dealing nonlethal sneak damage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

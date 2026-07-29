@@ -1,0 +1,17 @@
+{
+  "id": "dramatic-display",
+  "name": "Dramatic Display",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    }
+  ],
+  "benefit": "Gain +2 on Performance checks, attack rolls, and combat maneuver checks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

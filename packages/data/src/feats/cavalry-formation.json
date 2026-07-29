@@ -1,0 +1,17 @@
+{
+  "id": "cavalry-formation",
+  "name": "Cavalry Formation",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mounted-combat"
+    }
+  ],
+  "benefit": "May share space with other mounts, charge through space occupied by allied mount",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

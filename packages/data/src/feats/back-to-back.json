@@ -1,0 +1,18 @@
+{
+  "id": "back-to-back",
+  "name": "Back to Back",
+  "type": "teamwork",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain a +2 to AC against flanking opponents",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

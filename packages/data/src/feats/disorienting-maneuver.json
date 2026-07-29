@@ -1,0 +1,22 @@
+{
+  "id": "disorienting-maneuver",
+  "name": "Disorienting Maneuver",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 5
+    }
+  ],
+  "benefit": "After successful tumble through opponent's square, gain +2 on attack rolls vs. that opponent",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

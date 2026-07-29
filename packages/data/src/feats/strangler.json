@@ -1,0 +1,21 @@
+{
+  "id": "strangler",
+  "name": "Strangler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "rule",
+      "description": "sneak attack +1d6"
+    }
+  ],
+  "benefit": "Deal sneak damage to grappled opponent",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

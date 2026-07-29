@@ -1,0 +1,18 @@
+{
+  "id": "feint-partner",
+  "name": "Feint Partner",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    }
+  ],
+  "benefit": "When ally successfully feints, opponent loses Dex bonus against your next attack",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

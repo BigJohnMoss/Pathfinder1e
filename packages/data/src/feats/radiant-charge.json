@@ -1,0 +1,17 @@
+{
+  "id": "radiant-charge",
+  "name": "Radiant Charge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "lay-on-hands"
+    }
+  ],
+  "benefit": "Expend uses of lay on hands to deal extra damage, bypassing evil creatures' resistances and immunities",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

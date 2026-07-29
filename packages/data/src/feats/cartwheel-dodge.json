@@ -1,0 +1,22 @@
+{
+  "id": "cartwheel-dodge",
+  "name": "Cartwheel Dodge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "improved-evasion"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 12
+    }
+  ],
+  "benefit": "With a successful evasion you may move half your speed",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

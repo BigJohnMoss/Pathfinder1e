@@ -1,0 +1,22 @@
+{
+  "id": "master-siege-engineer",
+  "name": "Master Siege Engineer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Siege Weapon Engineer"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Crew can load siege engine as a move action",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

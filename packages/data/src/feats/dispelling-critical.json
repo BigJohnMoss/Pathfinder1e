@@ -1,0 +1,25 @@
+{
+  "id": "dispelling-critical",
+  "name": "Dispelling Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "spell-access",
+      "id": "dispel-magic"
+    }
+  ],
+  "benefit": "After critical hit, you may cast dispel magic",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

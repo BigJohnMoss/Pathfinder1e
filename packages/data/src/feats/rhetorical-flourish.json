@@ -1,0 +1,22 @@
+{
+  "id": "rhetorical-flourish",
+  "name": "Rhetorical Flourish",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "persuasive"
+    }
+  ],
+  "benefit": "Use verbal misdirection while making Diplomacy check",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

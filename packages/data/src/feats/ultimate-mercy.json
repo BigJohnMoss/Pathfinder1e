@@ -1,0 +1,30 @@
+{
+  "id": "ultimate-mercy",
+  "name": "Ultimate Mercy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 19
+    },
+    {
+      "type": "feat",
+      "id": "greater-mercy"
+    },
+    {
+      "type": "rule",
+      "description": "lay on hands"
+    },
+    {
+      "type": "feature",
+      "id": "mercy"
+    }
+  ],
+  "benefit": "Expend 10 uses of lay on hands to bring a dead creature back to life",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

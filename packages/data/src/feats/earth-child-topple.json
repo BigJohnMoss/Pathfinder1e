@@ -1,0 +1,26 @@
+{
+  "id": "earth-child-topple",
+  "name": "Earth Child Topple",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "earth-child-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 6
+    }
+  ],
+  "benefit": "You may trip a giant of up to Huge size",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "split-hex",
+  "name": "Split Hex",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "witch",
+      "minimum": 10
+    }
+  ],
+  "benefit": "A targeted hex can affect two creatures",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

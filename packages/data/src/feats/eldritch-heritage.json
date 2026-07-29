@@ -1,0 +1,30 @@
+{
+  "id": "eldritch-heritage",
+  "name": "Eldritch Heritage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "in bloodline skill"
+    },
+    {
+      "type": "level",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain a bloodline power",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

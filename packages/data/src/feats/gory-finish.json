@@ -1,0 +1,21 @@
+{
+  "id": "gory-finish",
+  "name": "Gory Finish",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    }
+  ],
+  "benefit": "Make an Intimidate check if you reduce an opponent to negative hit points",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

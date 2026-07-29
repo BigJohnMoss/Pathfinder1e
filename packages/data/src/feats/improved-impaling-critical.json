@@ -1,0 +1,21 @@
+{
+  "id": "improved-impaling-critical",
+  "name": "Improved Impaling Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "impaling-critical"
+    },
+    {
+      "type": "bab",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Impaled opponent must succeed at a grapple maneuver to pull your weapon out",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

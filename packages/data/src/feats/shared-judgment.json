@@ -1,0 +1,17 @@
+{
+  "id": "shared-judgment",
+  "name": "Shared Judgment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "second-judgment"
+    }
+  ],
+  "benefit": "Extend a judgment to an adjacent ally instead of enacting a second judgment",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

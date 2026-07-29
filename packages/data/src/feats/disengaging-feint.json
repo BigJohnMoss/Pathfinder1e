@@ -1,0 +1,17 @@
+{
+  "id": "disengaging-feint",
+  "name": "Disengaging Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    }
+  ],
+  "benefit": "Feint lets you move your speed without provoking attacks of opportunity",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

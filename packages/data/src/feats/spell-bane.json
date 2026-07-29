@@ -1,0 +1,17 @@
+{
+  "id": "spell-bane",
+  "name": "Spell Bane",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bane"
+    }
+  ],
+  "benefit": "Your spells' DCs increase by 2 when bane is in effect",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

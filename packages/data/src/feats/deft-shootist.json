@@ -1,0 +1,21 @@
+{
+  "id": "deft-shootist",
+  "name": "Deft Shootist",
+  "type": "grit",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grit class feature or Amateur Gunslinger"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    }
+  ],
+  "benefit": "Do not provoke attacks of opportunity while shooting or reloading firearms as long as you have 1 grit point",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

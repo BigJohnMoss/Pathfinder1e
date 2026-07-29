@@ -1,0 +1,21 @@
+{
+  "id": "dimensional-savant",
+  "name": "Dimensional Savant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dimensional-dervish"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Provide flanking from all squares you attack from when using Dimensional Dervish",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

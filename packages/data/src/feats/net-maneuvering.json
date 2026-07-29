@@ -1,0 +1,21 @@
+{
+  "id": "net-maneuvering",
+  "name": "Net Maneuvering",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "net-adept"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "May use a net to trip or disarm",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

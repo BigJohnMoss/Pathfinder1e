@@ -1,0 +1,21 @@
+{
+  "id": "improved-whip-mastery",
+  "name": "Improved Whip Mastery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "whip-mastery"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Threaten with your whip and grasp Tiny objects",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

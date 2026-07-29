@@ -1,0 +1,27 @@
+{
+  "id": "monkey-moves",
+  "name": "Monkey Moves",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "monkey-style"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 8
+    },
+    {
+      "type": "skill",
+      "key": "Climb",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Add Wisdom bonus on Climb checks, and climb and crawl at half speed",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

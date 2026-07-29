@@ -1,0 +1,17 @@
+{
+  "id": "savage-display",
+  "name": "Savage Display",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    }
+  ],
+  "benefit": "Gain +2 on Performance checks and +1d6 on damage rolls",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

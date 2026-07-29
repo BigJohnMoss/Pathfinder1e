@@ -1,0 +1,21 @@
+{
+  "id": "destructive-dispel",
+  "name": "Destructive Dispel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast dispel magic or greater dispel magic"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Upon successful dispel, opponent must save or is stunned",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

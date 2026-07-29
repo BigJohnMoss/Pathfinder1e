@@ -1,0 +1,18 @@
+{
+  "id": "trappers-setup",
+  "name": "Trapper's Setup",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (traps)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Manually trigger traps to gain +2 on attack rolls and to DC",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

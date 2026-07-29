@@ -1,0 +1,21 @@
+{
+  "id": "stunning-pin",
+  "name": "Stunning Pin",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    }
+  ],
+  "benefit": "Use Stunning Fist against pinned opponents",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "word-of-healing",
+  "name": "Word of Healing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "lay-on-hands"
+    }
+  ],
+  "benefit": "Use lay on hands from a distance",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

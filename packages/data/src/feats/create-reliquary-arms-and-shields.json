@@ -1,0 +1,21 @@
+{
+  "id": "create-reliquary-arms-and-shields",
+  "name": "Create Reliquary Arms and Shields",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "craft-magic-arms-and-armor"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast hallow or unhallow"
+    }
+  ],
+  "benefit": "Make your shield or weapon a holy symbol",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

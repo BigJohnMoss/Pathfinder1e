@@ -1,0 +1,12 @@
+{
+  "id": "skilled-driver",
+  "name": "Skilled Driver",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain +4 bonus on driving checks with made with one vehicle",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "combat-medic",
+  "name": "Combat Medic",
+  "type": "teamwork",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 5
+    }
+  ],
+  "benefit": "May take 10 and not provoke attacks of opportunity when using Heal",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

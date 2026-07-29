@@ -1,0 +1,21 @@
+{
+  "id": "domain-strike",
+  "name": "Domain Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "domain"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Use a domain power through unarmed strike",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

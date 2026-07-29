@@ -1,0 +1,30 @@
+{
+  "id": "nightmare-striker",
+  "name": "Nightmare Striker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "nightmare-weaver"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 5
+    },
+    {
+      "type": "spell-access",
+      "id": "faerie-fire"
+    }
+  ],
+  "benefit": "While opponent is under the effects of faerie fire , your DC for Stunning Fist increases by 2",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

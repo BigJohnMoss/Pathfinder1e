@@ -1,0 +1,25 @@
+{
+  "id": "betrayer",
+  "name": "Betrayer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "persuasive"
+    },
+    {
+      "type": "feat",
+      "id": "quick-draw"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain free attack upon successful Diplomacy skill check",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "enfilading-fire",
+  "name": "Enfilading Fire",
+  "type": "teamwork",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "rule",
+      "description": "1 other teamwork feat"
+    }
+  ],
+  "benefit": "When ally flanks opponent, you gain +2 on ranged attack rolls against opponent",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

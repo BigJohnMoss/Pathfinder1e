@@ -1,0 +1,21 @@
+{
+  "id": "split-major-hex",
+  "name": "Split Major Hex",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "split-hex"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 18
+    }
+  ],
+  "benefit": "A targeted major hex can affect two creatures",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

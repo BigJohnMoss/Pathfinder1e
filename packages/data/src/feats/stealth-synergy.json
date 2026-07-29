@@ -1,0 +1,12 @@
+{
+  "id": "stealth-synergy",
+  "name": "Stealth Synergy",
+  "type": "teamwork",
+  "prerequisites": [],
+  "benefit": "Take the highest roll made by you and your allies on Stealth checks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

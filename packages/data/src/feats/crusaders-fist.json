@@ -1,0 +1,25 @@
+{
+  "id": "crusaders-fist",
+  "name": "Crusader's Fist",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Lay on hands or touch of corruption class feature"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "May use lay on hands or touch of corruption upon successful Unarmed Strike",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

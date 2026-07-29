@@ -1,0 +1,21 @@
+{
+  "id": "arc-slinger",
+  "name": "Arc Slinger",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "rule",
+      "description": "proficient with sling or halfling sling staff"
+    }
+  ],
+  "benefit": "Reduce ranged attack penalties due to range by 2",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

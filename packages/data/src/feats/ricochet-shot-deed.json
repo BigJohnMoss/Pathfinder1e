@@ -1,0 +1,21 @@
+{
+  "id": "ricochet-shot-deed",
+  "name": "Ricochet Shot Deed",
+  "type": "grit",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grit class feature or Amateur Gunslinger"
+    },
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    }
+  ],
+  "benefit": "Ricochet your shots off of a wall or other solid terrain",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

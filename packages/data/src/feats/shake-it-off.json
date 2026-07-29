@@ -1,0 +1,12 @@
+{
+  "id": "shake-it-off",
+  "name": "Shake It Off",
+  "type": "teamwork",
+  "prerequisites": [],
+  "benefit": "Gain +1 to all saving throws per adjacent ally",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mocking-dance",
+  "name": "Mocking Dance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Acrobatics 4 ranks or Perform (dance) 4 ranks"
+    }
+  ],
+  "benefit": "May either move 5 feet without provoking attacks of opportunity, or your speed with them",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

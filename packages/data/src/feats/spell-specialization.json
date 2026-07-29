@@ -1,0 +1,22 @@
+{
+  "id": "spell-specialization",
+  "name": "Spell Specialization",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    }
+  ],
+  "benefit": "Pick one spell and cast it as if you were higher level",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "witch-knife",
+  "name": "Witch Knife",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Witch class"
+    }
+  ],
+  "benefit": "Use dagger as focus for witch patron spells",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

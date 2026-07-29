@@ -1,0 +1,29 @@
+{
+  "id": "dispelling-fist",
+  "name": "Dispelling Fist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "spell-access",
+      "id": "dispel-magic"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "caster-level",
+      "minimum": 7
+    }
+  ],
+  "benefit": "May cast dispel magic as a swift action after an attack",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

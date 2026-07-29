@@ -1,0 +1,21 @@
+{
+  "id": "twin-thunders-flurry",
+  "name": "Twin Thunders Flurry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "twin-thunders"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Trip a giant of up to Huge size, and deal +2 damage against giants",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

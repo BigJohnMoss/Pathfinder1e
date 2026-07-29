@@ -1,0 +1,21 @@
+{
+  "id": "contingent-channeling",
+  "name": "Contingent Channeling",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "true-healer"
+    },
+    {
+      "type": "rule",
+      "description": "Selective Channeling"
+    }
+  ],
+  "benefit": "May transfer positive energy to ally who can use it to heal",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

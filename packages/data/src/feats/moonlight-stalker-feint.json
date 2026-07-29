@@ -1,0 +1,22 @@
+{
+  "id": "moonlight-stalker-feint",
+  "name": "Moonlight Stalker Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 6
+    },
+    {
+      "type": "feat",
+      "id": "moonlight-stalker"
+    }
+  ],
+  "benefit": "Make a Bluff check to feint with concealment vs. foe",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

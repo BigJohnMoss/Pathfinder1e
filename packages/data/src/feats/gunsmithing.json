@@ -1,0 +1,12 @@
+{
+  "id": "gunsmithing",
+  "name": "Gunsmithing",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "May create, repair, and restore firearms",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

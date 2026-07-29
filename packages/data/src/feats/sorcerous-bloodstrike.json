@@ -1,0 +1,22 @@
+{
+  "id": "sorcerous-bloodstrike",
+  "name": "Sorcerous Bloodstrike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "sorcerer-bloodline"
+    }
+  ],
+  "benefit": "Regain a bloodline power when you reduce a creature to 0 or fewer hit points",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

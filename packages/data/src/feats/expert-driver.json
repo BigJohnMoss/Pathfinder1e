@@ -1,0 +1,17 @@
+{
+  "id": "expert-driver",
+  "name": "Expert Driver",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skilled-driver"
+    }
+  ],
+  "benefit": "Maneuver a vehicle of a selected type as a move action, and you can stop immediately",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

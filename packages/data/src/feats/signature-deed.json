@@ -1,0 +1,22 @@
+{
+  "id": "signature-deed",
+  "name": "Signature Deed",
+  "type": "grit",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "grit"
+    },
+    {
+      "type": "class-level",
+      "classId": "gunslinger",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Use 1 deed for 1 fewer grit point",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

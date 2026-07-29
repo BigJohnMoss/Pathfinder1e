@@ -1,0 +1,22 @@
+{
+  "id": "disruptive-recall",
+  "name": "Disruptive Recall",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "spell-recall"
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use spell recall after disrupting an opponent's spell",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

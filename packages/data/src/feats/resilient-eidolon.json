@@ -1,0 +1,17 @@
+{
+  "id": "resilient-eidolon",
+  "name": "Resilient Eidolon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "eidolon"
+    }
+  ],
+  "benefit": "When you are knocked unconscious, fall asleep, or are killed, your eidolon remains with you",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

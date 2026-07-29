@@ -1,0 +1,38 @@
+{
+  "id": "detect-expertise",
+  "name": "Detect Expertise",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "spell-access",
+      "id": "detect-chaos"
+    },
+    {
+      "type": "rule",
+      "description": "detect evil"
+    },
+    {
+      "type": "rule",
+      "description": "detect good"
+    },
+    {
+      "type": "rule",
+      "description": "detect law"
+    },
+    {
+      "type": "rule",
+      "description": "or detect magic"
+    }
+  ],
+  "benefit": "Detect a creature's magical abilities",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

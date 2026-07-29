@@ -1,0 +1,17 @@
+{
+  "id": "sense-link",
+  "name": "Sense Link",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bond-senses"
+    }
+  ],
+  "benefit": "Gain a +4 bonus on Perception checks when sharing your eidolon's senses",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}
