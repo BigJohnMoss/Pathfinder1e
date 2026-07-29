@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { AbilityName } from "../../../packages/types/src/index.js";
 
 const labels: Record<AbilityName, string> = { strength: "Strength", dexterity: "Dexterity", constitution: "Constitution", intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" };
@@ -20,6 +21,20 @@ export function AbilityEditor({ abilityNames, ancestryName, choiceAbility, choic
   onAbilityBoostChange: (index: number, ability: AbilityName) => void;
 }) {
   const remaining = pointBuyBudget - pointBuySpent;
+  const [draftScores, setDraftScores] = useState<Record<AbilityName, string>>(() => Object.fromEntries(abilityNames.map((ability) => [ability, String(baseAbilities[ability])])) as Record<AbilityName, string>);
+  useEffect(() => setDraftScores(Object.fromEntries(abilityNames.map((ability) => [ability, String(baseAbilities[ability])])) as Record<AbilityName, string>), [abilityNames, baseAbilities]);
+  const editScore = (ability: AbilityName, rawValue: string) => {
+    setDraftScores((current) => ({ ...current, [ability]: rawValue }));
+    if (!/^\d{1,2}$/.test(rawValue)) return;
+    const score = Number(rawValue);
+    if (score >= 7 && score <= 18) onAbilityChange(ability, score);
+  };
+  const finishScore = (ability: AbilityName) => {
+    const score = Number(draftScores[ability]);
+    const normalized = Number.isFinite(score) ? Math.max(7, Math.min(18, score)) : baseAbilities[ability];
+    setDraftScores((current) => ({ ...current, [ability]: String(normalized) }));
+    if (normalized !== baseAbilities[ability]) onAbilityChange(ability, normalized);
+  };
   return <article className="ability-panel">
     <div>
       <p className="eyebrow">ABILITY SCORES</p>
@@ -41,7 +56,7 @@ export function AbilityEditor({ abilityNames, ancestryName, choiceAbility, choic
     </label>)}
     <div className="ability-grid">{abilityNames.map((ability) => <label key={ability}>
       <span>{labels[ability]}</span>
-      <input aria-label={`${labels[ability]} base score`} type="number" min="7" max="18" value={baseAbilities[ability]} onChange={(event) => onAbilityChange(ability, Number(event.target.value))} />
+      <input aria-label={`${labels[ability]} base score`} type="number" inputMode="numeric" min="7" max="18" value={draftScores[ability]} onFocus={(event) => event.currentTarget.select()} onChange={(event) => editScore(ability, event.target.value)} onBlur={() => finishScore(ability)} />
       <strong>{abilities[ability]} <small>{signed(modifiers[ability])}</small></strong>
     </label>)}</div>
   </article>;

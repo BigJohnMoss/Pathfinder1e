@@ -100,6 +100,19 @@ test("tracks point-buy costs and applies earned ability increases", async () => 
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").abilityBoosts[0], "dexterity");
 });
 
+test("allows a mobile ability score to be cleared before entering one digit", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const strength = screen.getByLabelText("Strength base score") as HTMLInputElement;
+
+  await user.clear(strength);
+  assert.equal(strength.value, "");
+  await user.type(strength, "8");
+
+  assert.equal(strength.value, "8");
+  assert.match(strength.closest("label")?.querySelector("strong")?.textContent ?? "", /^8 -1$/);
+});
+
 test("allocates and persists favored class hit points and skill ranks", async () => {
   const user = userEvent.setup();
   render(<Home />);
