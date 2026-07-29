@@ -114,6 +114,31 @@
         "minLength": 1
       }
     },
+    "spellcastingAdvancement": {
+      "type": "object",
+      "required": ["tradition", "levels"],
+      "properties": {
+        "tradition": {
+          "enum": ["arcane", "divine", "any"]
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "targetCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        }
+      },
+      "additionalProperties": false
+    },
     "skillRanksPerLevel": {
       "type": "integer",
       "minimum": 2,

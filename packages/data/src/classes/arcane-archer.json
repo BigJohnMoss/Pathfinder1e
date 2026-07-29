@@ -28,6 +28,10 @@
     "Point-Blank Shot, Precise Shot, and Weapon Focus (longbow or shortbow)",
     "Ability to cast 1st-level arcane spells"
   ],
+  "spellcastingAdvancement": {
+    "tradition": "arcane",
+    "levels": [2, 3, 4, 6, 7, 8, 10]
+  },
   "skillRanksPerLevel": 4,
   "classSkills": ["Perception", "Ride", "Stealth", "Survival"],
   "source": {

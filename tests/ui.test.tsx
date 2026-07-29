@@ -204,6 +204,26 @@ test("adds Arcane Archer only as a capped prestige class and shows its entry req
   assert.ok(screen.getByText("Arrow of Death"));
 });
 
+test("Arcane Archer advances and restores its selected arcane spellbook", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Intelligence base score"), { target: { value: "18" } });
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "16" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "arcane-archer");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "10" } });
+  assert.equal((screen.getByLabelText("Arcane Archer spellcasting class") as HTMLSelectElement).value, "wizard");
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  const spellLevelFilter = screen.getByLabelText("Spell level filter") as HTMLSelectElement;
+  assert.ok(Array.from(spellLevelFilter.options).some((option) => option.value === "7"));
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Reset" }));
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await waitFor(() => assert.equal((screen.getByLabelText("Additional class") as HTMLSelectElement).value, "arcane-archer"));
+  await user.click(screen.getByRole("tab", { name: "Spells" }));
+  assert.ok(Array.from((screen.getByLabelText("Spell level filter") as HTMLSelectElement).options).some((option) => option.value === "7"));
+});
+
 test("switches between independent multiclass spellbooks", async () => {
   const user = userEvent.setup();
   render(<Home />);

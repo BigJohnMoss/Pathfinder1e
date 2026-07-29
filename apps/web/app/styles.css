@@ -223,6 +223,11 @@ a:focus-visible,
   color: #6f271f;
 }
 
+.prestige-spellcasting-target {
+  grid-column: 1 / -1;
+  max-width: 360px;
+}
+
 @media (max-width: 540px) {
   .favored-class-controls {
     grid-template-columns: 1fr;

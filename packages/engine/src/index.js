@@ -29,6 +29,36 @@ export function classSavingThrow(characterClass, save, level) {
   return characterClass.savesByLevel?.[level - 1]?.[save] ?? savingThrow(characterClass.saves[save], level);
 }
 
+const divineSpellcastingClassIds = new Set(["cleric", "druid", "oracle", "paladin", "ranger"]);
+
+export function spellcastingTradition(characterClass) {
+  if (!characterClass?.spellcasting) return null;
+  return characterClass.spellcasting.tradition ?? (divineSpellcastingClassIds.has(characterClass.id) ? "divine" : "arcane");
+}
+
+export function effectiveSpellcastingLevels(classes, classLevels, prestigeTargets = {}) {
+  const classesById = new Map(classes.map(characterClass => [characterClass.id, characterClass]));
+  const levels = Object.fromEntries(classLevels.flatMap(entry => classesById.get(entry.classId)?.spellcasting ? [[entry.classId, entry.level]] : []));
+  for (const entry of classLevels) {
+    const prestigeClass = classesById.get(entry.classId);
+    const advancement = prestigeClass?.spellcastingAdvancement;
+    if (!advancement) continue;
+    const amount = advancement.levels.filter(level => level <= entry.level).length;
+    if (amount === 0) continue;
+    const eligible = classLevels.map(candidate => candidate.classId).filter(classId => {
+      if (classId === entry.classId) return false;
+      const tradition = spellcastingTradition(classesById.get(classId));
+      return tradition && (advancement.tradition === "any" || advancement.tradition === tradition);
+    });
+    const targetCount = advancement.targetCount ?? 1;
+    const requested = Array.isArray(prestigeTargets[entry.classId]) ? prestigeTargets[entry.classId] : [];
+    const targets = [...new Set(requested.filter(classId => eligible.includes(classId)))].slice(0, targetCount);
+    if (targets.length === 0 && eligible.length === targetCount) targets.push(...eligible);
+    for (const classId of targets) levels[classId] = Math.min(20, (levels[classId] ?? 0) + amount);
+  }
+  return levels;
+}
+
 export function abilityModifier(score) {
   if (!Number.isInteger(score) || score < 1) throw new RangeError("Ability score must be a positive integer.");
   return Math.floor((score - 10) / 2);
@@ -244,6 +274,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
   if (!normalizedArchetypeIdsByClass[draft.classId] && legacyArchetypeId) normalizedArchetypeIdsByClass[draft.classId] = legacyArchetypeId;
   const preparedSpellsByClass = isStringArrayRecord(draft.preparedSpellsByClass, validClassIds);
   const spellSlotUsesByClass = isNestedRankRecord(draft.spellSlotUsesByClass, validClassIds);
+  const prestigeSpellcastingTargets = Object.fromEntries(Object.entries(isStringArrayRecord(draft.prestigeSpellcastingTargets, validClassIds)).map(([prestigeClassId, targetIds]) => [prestigeClassId, [...new Set(targetIds.filter(classId => validClassIds.has(classId) && classId !== prestigeClassId))].slice(0, 2)]));
   if (!preparedSpellsByClass[draft.classId]) preparedSpellsByClass[draft.classId] = preparedSpells;
   if (!spellSlotUsesByClass[draft.classId]) spellSlotUsesByClass[draft.classId] = spellSlotUses;
   return {
@@ -253,6 +284,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     classLevels: normalizedClassLevels,
     archetypeId: normalizedArchetypeIdsByClass[draft.classId] ?? legacyArchetypeId,
     archetypeIdsByClass: normalizedArchetypeIdsByClass,
+    prestigeSpellcastingTargets,
     ancestryId: typeof draft.ancestryId === "string" && (!ancestryIds || ancestryIds.includes(draft.ancestryId)) ? draft.ancestryId : "human",
     selectedAlternateRacialTraitIds: Array.isArray(draft.selectedAlternateRacialTraitIds) ? draft.selectedAlternateRacialTraitIds.filter(id => typeof id === "string") : [],
     level: draft.level,

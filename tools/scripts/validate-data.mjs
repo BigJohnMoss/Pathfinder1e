@@ -131,6 +131,11 @@ for (const url of await jsonFiles("classes/")) {
   if (c.baseAttackBonusByLevel !== undefined && (!Array.isArray(c.baseAttackBonusByLevel) || c.baseAttackBonusByLevel.length !== maximumLevel || c.baseAttackBonusByLevel.some(value => !Number.isInteger(value) || value < 0))) errors.push(`${file}: baseAttackBonusByLevel must contain ${maximumLevel} non-negative integers`);
   if (c.savesByLevel !== undefined && (!Array.isArray(c.savesByLevel) || c.savesByLevel.length !== maximumLevel || c.savesByLevel.some(row => !row || ["fortitude","reflex","will"].some(save => !Number.isInteger(row[save]) || row[save] < 0)))) errors.push(`${file}: savesByLevel must contain ${maximumLevel} valid save rows`);
   if (c.requirements !== undefined && (!Array.isArray(c.requirements) || c.requirements.length === 0 || c.requirements.some(value => typeof value !== "string" || !value.trim()))) errors.push(`${file}: requirements must contain non-empty text`);
+  if (c.spellcastingAdvancement !== undefined) {
+    const advancement = c.spellcastingAdvancement;
+    if (!advancement || !["arcane","divine","any"].includes(advancement.tradition) || !Array.isArray(advancement.levels) || advancement.levels.length === 0 || new Set(advancement.levels).size !== advancement.levels.length || advancement.levels.some(level => !Number.isInteger(level) || level < 1 || level > maximumLevel)) errors.push(`${file}: invalid spellcastingAdvancement`);
+    if (advancement?.targetCount !== undefined && (!Number.isInteger(advancement.targetCount) || advancement.targetCount < 1 || advancement.targetCount > 2)) errors.push(`${file}: spellcastingAdvancement targetCount must be 1 or 2`);
+  }
   if (c.spellcasting) checkSpellcasting(c.spellcasting, file);
   const featureIds=new Set();
   for (const f of c.features ?? []) {
