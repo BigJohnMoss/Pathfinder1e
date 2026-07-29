@@ -1,0 +1,167 @@
+{
+  "id": "arcane-archer",
+  "name": "Arcane Archer",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 10,
+  "babProgression": "full",
+  "baseAttackBonusByLevel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "saves": {
+    "fortitude": "poor",
+    "reflex": "poor",
+    "will": "poor"
+  },
+  "savesByLevel": [
+    { "fortitude": 1, "reflex": 1, "will": 0 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 2, "reflex": 2, "will": 1 },
+    { "fortitude": 2, "reflex": 2, "will": 1 },
+    { "fortitude": 3, "reflex": 3, "will": 2 },
+    { "fortitude": 3, "reflex": 3, "will": 2 },
+    { "fortitude": 4, "reflex": 4, "will": 2 },
+    { "fortitude": 4, "reflex": 4, "will": 3 },
+    { "fortitude": 5, "reflex": 5, "will": 3 },
+    { "fortitude": 5, "reflex": 5, "will": 3 }
+  ],
+  "requirements": [
+    "Base attack bonus +6",
+    "Point-Blank Shot, Precise Shot, and Weapon Focus (longbow or shortbow)",
+    "Ability to cast 1st-level arcane spells"
+  ],
+  "skillRanksPerLevel": 4,
+  "classSkills": ["Perception", "Ride", "Stealth", "Survival"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/arcaneArcher.html"
+  },
+  "features": [
+    {
+      "id": "arcane-archer-enhance-arrows-magic-1",
+      "name": "Enhance Arrows (Magic)",
+      "level": 1,
+      "type": "scaling",
+      "summary": "Nonmagical arrows you fire become magical and gain a +1 enhancement bonus.",
+      "progressionKey": "arcane-archer-enhance-arrows"
+    },
+    {
+      "id": "arcane-archer-imbue-arrow-2",
+      "name": "Imbue Arrow",
+      "level": 2,
+      "type": "core",
+      "summary": "Place an area spell on an arrow and center its area where the arrow lands."
+    },
+    {
+      "id": "arcane-archer-spellcasting-2",
+      "name": "Existing Arcane Spellcasting +1",
+      "level": 2,
+      "type": "spellcasting",
+      "summary": "Advance spells per day, spells known, and caster level in one existing arcane spellcasting class."
+    },
+    {
+      "id": "arcane-archer-enhance-arrows-elemental-3",
+      "name": "Enhance Arrows (Elemental)",
+      "level": 3,
+      "type": "scaling",
+      "summary": "Choose flaming, frost, or shock for your nonmagical arrows after resting.",
+      "progressionKey": "arcane-archer-enhance-arrows"
+    },
+    {
+      "id": "arcane-archer-spellcasting-3",
+      "name": "Existing Arcane Spellcasting +1",
+      "level": 3,
+      "type": "spellcasting",
+      "summary": "Advance spells per day, spells known, and caster level in the chosen existing arcane spellcasting class."
+    },
+    {
+      "id": "arcane-archer-seeker-arrow-4",
+      "name": "Seeker Arrow",
+      "level": 4,
+      "type": "scaling",
+      "summary": "Fire an arrow that bends around corners and ignores cover and concealment.",
+      "uses": "1/day, plus 1/day every 2 levels beyond 4th"
+    },
+    {
+      "id": "arcane-archer-spellcasting-4",
+      "name": "Existing Arcane Spellcasting +1",
+      "level": 4,
+      "type": "spellcasting",
+      "summary": "Advance spells per day, spells known, and caster level in the chosen existing arcane spellcasting class."
+    },
+    {
+      "id": "arcane-archer-enhance-arrows-distance-5",
+      "name": "Enhance Arrows (Distance)",
+      "level": 5,
+      "type": "scaling",
+      "summary": "Your nonmagical arrows gain the distance weapon quality.",
+      "progressionKey": "arcane-archer-enhance-arrows"
+    },
+    {
+      "id": "arcane-archer-phase-arrow-6",
+      "name": "Phase Arrow",
+      "level": 6,
+      "type": "scaling",
+      "summary": "Fire through nonmagical barriers and ignore cover, concealment, armor, and shield bonuses.",
+      "uses": "1/day, plus 1/day every 2 levels beyond 6th"
+    },
+    {
+      "id": "arcane-archer-spellcasting-6",
+      "name": "Existing Arcane Spellcasting +1",
+      "level": 6,
+      "type": "spellcasting",
+      "summary": "Advance spells per day, spells known, and caster level in the chosen existing arcane spellcasting class."
+    },
+    {
+      "id": "arcane-archer-enhance-arrows-elemental-burst-7",
+      "name": "Enhance Arrows (Elemental Burst)",
+      "level": 7,
+      "type": "scaling",
+      "summary": "Replace the elemental quality with flaming burst, icy burst, or shocking burst.",
+      "progressionKey": "arcane-archer-enhance-arrows"
+    },
+    {
+      "id": "arcane-archer-spellcasting-7",
+      "name": "Existing Arcane Spellcasting +1",
+      "level": 7,
+      "type": "spellcasting",
+      "summary": "Advance spells per day, spells known, and caster level in the chosen existing arcane spellcasting class."
+    },
+    {
+      "id": "arcane-archer-hail-of-arrows-8",
+      "name": "Hail of Arrows",
+      "level": 8,
+      "type": "core",
+      "summary": "Once per day, fire one arrow at every target in range, up to your Arcane Archer level.",
+      "uses": "1/day"
+    },
+    {
+      "id": "arcane-archer-spellcasting-8",
+      "name": "Existing Arcane Spellcasting +1",
+      "level": 8,
+      "type": "spellcasting",
+      "summary": "Advance spells per day, spells known, and caster level in the chosen existing arcane spellcasting class."
+    },
+    {
+      "id": "arcane-archer-enhance-arrows-aligned-9",
+      "name": "Enhance Arrows (Aligned)",
+      "level": 9,
+      "type": "scaling",
+      "summary": "Choose an alignment-compatible anarchic, axiomatic, holy, or unholy quality for your arrows.",
+      "progressionKey": "arcane-archer-enhance-arrows"
+    },
+    {
+      "id": "arcane-archer-arrow-of-death-10",
+      "name": "Arrow of Death",
+      "level": 10,
+      "type": "capstone",
+      "summary": "Create a slaying arrow whose damaged target must save against DC 20 + your Charisma modifier or die."
+    },
+    {
+      "id": "arcane-archer-spellcasting-10",
+      "name": "Existing Arcane Spellcasting +1",
+      "level": 10,
+      "type": "spellcasting",
+      "summary": "Advance spells per day, spells known, and caster level in the chosen existing arcane spellcasting class."
+    }
+  ]
+}

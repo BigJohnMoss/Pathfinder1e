@@ -78,6 +78,42 @@
       },
       "additionalProperties": false
     },
+    "maximumLevel": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20
+    },
+    "baseAttackBonusByLevel": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minItems": 1,
+      "maxItems": 20
+    },
+    "savesByLevel": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fortitude", "reflex", "will"],
+        "properties": {
+          "fortitude": { "type": "integer", "minimum": 0 },
+          "reflex": { "type": "integer", "minimum": 0 },
+          "will": { "type": "integer", "minimum": 0 }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 20
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
     "skillRanksPerLevel": {
       "type": "integer",
       "minimum": 2,

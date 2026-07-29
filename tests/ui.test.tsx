@@ -186,6 +186,24 @@ test("builds, calculates, and restores a multiclass character", async () => {
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
 });
 
+test("adds Arcane Archer only as a capped prestige class and shows its entry requirements", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  assert.equal(Array.from((screen.getByLabelText("Class") as HTMLSelectElement).options).some((option) => option.value === "arcane-archer"), false);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "arcane-archer");
+  assert.ok(screen.getByText("Entry requirements"));
+  assert.ok(screen.getByText("Base attack bonus +6"));
+  const prestigeLevels = screen.getByLabelText("Additional class levels") as HTMLInputElement;
+  assert.equal(prestigeLevels.max, "10");
+  fireEvent.change(prestigeLevels, { target: { value: "15" } });
+  assert.equal(prestigeLevels.value, "10");
+  assert.equal(screen.getByText("BAB").closest("article")?.querySelector("strong")?.textContent, "+20");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.ok(screen.getByText("Arrow of Death"));
+});
+
 test("switches between independent multiclass spellbooks", async () => {
   const user = userEvent.setup();
   render(<Home />);

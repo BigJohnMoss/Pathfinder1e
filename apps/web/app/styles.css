@@ -205,6 +205,24 @@ a:focus-visible,
   padding: 10px 0;
 }
 
+.prestige-requirements {
+  background: #fff7e8;
+  border: 1px solid #d3b98e;
+  border-radius: 8px;
+  color: #342a22;
+  grid-column: 1 / -1;
+  padding: 12px 14px;
+}
+
+.prestige-requirements ul {
+  margin: 8px 0;
+  padding-left: 22px;
+}
+
+.prestige-requirements small {
+  color: #6f271f;
+}
+
 @media (max-width: 540px) {
   .favored-class-controls {
     grid-template-columns: 1fr;

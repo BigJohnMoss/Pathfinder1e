@@ -125,11 +125,17 @@ function checkBloodlineDetail(bloodline, file) {
 for (const url of await jsonFiles("classes/")) {
   const c=await load(url); const file=url.pathname.split('/').pop(); checkId(c,file); checkSource(c,file); classIds.add(c.id);
   for (const key of ["name","hitDie","babProgression","saves","skillRanksPerLevel","source","features"]) if (c[key] === undefined) errors.push(`${file}: missing ${key}`);
+  const maximumLevel = c.maximumLevel ?? 20;
+  if (!Number.isInteger(maximumLevel) || maximumLevel < 1 || maximumLevel > 20) errors.push(`${file}: maximumLevel must be from 1 to 20`);
+  if (c.classType === "prestige" && c.maximumLevel === undefined) errors.push(`${file}: prestige classes must declare maximumLevel`);
+  if (c.baseAttackBonusByLevel !== undefined && (!Array.isArray(c.baseAttackBonusByLevel) || c.baseAttackBonusByLevel.length !== maximumLevel || c.baseAttackBonusByLevel.some(value => !Number.isInteger(value) || value < 0))) errors.push(`${file}: baseAttackBonusByLevel must contain ${maximumLevel} non-negative integers`);
+  if (c.savesByLevel !== undefined && (!Array.isArray(c.savesByLevel) || c.savesByLevel.length !== maximumLevel || c.savesByLevel.some(row => !row || ["fortitude","reflex","will"].some(save => !Number.isInteger(row[save]) || row[save] < 0)))) errors.push(`${file}: savesByLevel must contain ${maximumLevel} valid save rows`);
+  if (c.requirements !== undefined && (!Array.isArray(c.requirements) || c.requirements.length === 0 || c.requirements.some(value => typeof value !== "string" || !value.trim()))) errors.push(`${file}: requirements must contain non-empty text`);
   if (c.spellcasting) checkSpellcasting(c.spellcasting, file);
   const featureIds=new Set();
   for (const f of c.features ?? []) {
     if (featureIds.has(f.id)) errors.push(`${file}: duplicate feature id ${f.id}`); featureIds.add(f.id);
-    if (!Number.isInteger(f.level) || f.level<1 || f.level>20) errors.push(`${file}: ${f.id} has invalid level`);
+    if (!Number.isInteger(f.level) || f.level<1 || f.level>maximumLevel) errors.push(`${file}: ${f.id} has invalid level`);
     if (f.choiceRequired && !f.optionGroupId) errors.push(`${file}: ${f.id} requires a choice but has no optionGroupId`);
   }
 }

@@ -66,6 +66,10 @@ export interface ClassFeatureOccurrence {
 export interface CharacterClass {
   id: string; name: string; classType: string; hitDie: 6|8|10|12;
   babProgression: Progression; saves: {fortitude: SaveProgression; reflex: SaveProgression; will: SaveProgression};
+  maximumLevel?: number;
+  baseAttackBonusByLevel?: number[];
+  savesByLevel?: Array<{ fortitude: number; reflex: number; will: number }>;
+  requirements?: string[];
   skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;

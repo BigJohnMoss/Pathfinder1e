@@ -13,6 +13,22 @@ export function savingThrow(progression, level) {
   throw new Error(`Unknown save progression: ${progression}`);
 }
 
+function assertClassLevel(characterClass, level) {
+  assertLevel(level);
+  const maximumLevel = characterClass.maximumLevel ?? 20;
+  if (level > maximumLevel) throw new RangeError(`${characterClass.name ?? "Class"} has a maximum level of ${maximumLevel}.`);
+}
+
+export function classBaseAttackBonus(characterClass, level) {
+  assertClassLevel(characterClass, level);
+  return characterClass.baseAttackBonusByLevel?.[level - 1] ?? baseAttackBonus(characterClass.babProgression, level);
+}
+
+export function classSavingThrow(characterClass, save, level) {
+  assertClassLevel(characterClass, level);
+  return characterClass.savesByLevel?.[level - 1]?.[save] ?? savingThrow(characterClass.saves[save], level);
+}
+
 export function abilityModifier(score) {
   if (!Number.isInteger(score) || score < 1) throw new RangeError("Ability score must be a positive integer.");
   return Math.floor((score - 10) / 2);
@@ -47,10 +63,10 @@ export function abilityModifiers(abilities) {
 }
 
 export function characterCombatStats(characterClass, level, abilities) {
-  assertLevel(level);
+  assertClassLevel(characterClass, level);
   const modifiers = abilityModifiers(abilities);
-  const bab = baseAttackBonus(characterClass.babProgression, level);
-  const baseSaves = Object.fromEntries(Object.entries(characterClass.saves).map(([save, progression]) => [save, savingThrow(progression, level)]));
+  const bab = classBaseAttackBonus(characterClass, level);
+  const baseSaves = Object.fromEntries(Object.keys(characterClass.saves).map(save => [save, classSavingThrow(characterClass, save, level)]));
   return {
     abilityModifiers: modifiers,
     baseAttackBonus: bab,
@@ -480,11 +496,11 @@ export function normalizeSkillRanks(allocations, totalRanks, maximumRanksPerSkil
 }
 
 export function classProgression(characterClass, level, { intelligenceScore = 10, racialSkillBonusPerLevel = 0, bonusFeats = 0 } = {}) {
-  assertLevel(level);
+  assertClassLevel(characterClass, level);
   return {
     level,
-    baseAttackBonus: baseAttackBonus(characterClass.babProgression, level),
-    saves: Object.fromEntries(Object.entries(characterClass.saves).map(([save, progression]) => [save, savingThrow(progression, level)])),
+    baseAttackBonus: classBaseAttackBonus(characterClass, level),
+    saves: Object.fromEntries(Object.keys(characterClass.saves).map(save => [save, classSavingThrow(characterClass, save, level)])),
     skillRanks: skillRanksThroughLevel(characterClass, level, intelligenceScore, { racialBonusPerLevel: racialSkillBonusPerLevel }),
     featSlots: featSlotsAtLevel(level, { bonusFeats }),
     features: featuresThroughLevel(characterClass, level)
@@ -508,6 +524,7 @@ export function multiclassProgression(classes, classLevels, { intelligenceScore 
     seenClassIds.add(entry.classId);
     const characterClass = classesById.get(entry.classId);
     if (!characterClass) throw new RangeError(`Unknown class: ${entry.classId}`);
+    assertClassLevel(characterClass, entry.level);
     return { characterClass, level: entry.level };
   });
   const level = resolved.reduce((total, entry) => total + entry.level, 0);
@@ -517,8 +534,8 @@ export function multiclassProgression(classes, classLevels, { intelligenceScore 
   let baseAttackBonusTotal = 0;
   let skillRanks = 0;
   for (const { characterClass, level: classLevel } of resolved) {
-    baseAttackBonusTotal += baseAttackBonus(characterClass.babProgression, classLevel);
-    for (const save of Object.keys(saves)) saves[save] += savingThrow(characterClass.saves[save], classLevel);
+    baseAttackBonusTotal += classBaseAttackBonus(characterClass, classLevel);
+    for (const save of Object.keys(saves)) saves[save] += classSavingThrow(characterClass, save, classLevel);
     skillRanks += skillRanksThroughLevel(characterClass, classLevel, intelligenceScore, {
       racialBonusPerLevel: racialSkillBonusPerLevel
     });
