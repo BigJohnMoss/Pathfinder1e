@@ -1,0 +1,30 @@
+{
+  "id": "final-embrace-horror",
+  "name": "Final Embrace Horror",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "final-embrace"
+    },
+    {
+      "type": "rule",
+      "description": "Ability Focus (constrict)"
+    }
+  ],
+  "benefit": "Creatures that take constriction damage from you are also shaken",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "raging-hurler",
+  "name": "Raging Hurler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "rage"
+    },
+    {
+      "type": "feat",
+      "id": "throw-anything"
+    }
+  ],
+  "benefit": "Throw a two-handed weapon as a standard action",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

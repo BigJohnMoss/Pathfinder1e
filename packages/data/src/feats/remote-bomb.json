@@ -1,0 +1,17 @@
+{
+  "id": "remote-bomb",
+  "name": "Remote Bomb",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Delayed bomb discovery"
+    }
+  ],
+  "benefit": "Increase the delay on your bombs and detonate bombs remotely",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

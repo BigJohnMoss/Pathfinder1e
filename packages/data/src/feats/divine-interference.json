@@ -1,0 +1,21 @@
+{
+  "id": "divine-interference",
+  "name": "Divine Interference",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Divine spellcaster"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Sacrifice a spell to force an enemy to reroll a successful attack against your ally",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

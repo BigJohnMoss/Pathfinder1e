@@ -1,0 +1,22 @@
+{
+  "id": "defensive-weapon-training",
+  "name": "Defensive Weapon Training",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain +2 dodge bonus against a single fighter weapon group",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

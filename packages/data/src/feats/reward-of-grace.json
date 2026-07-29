@@ -1,0 +1,17 @@
+{
+  "id": "reward-of-grace",
+  "name": "Reward of Grace",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "lay-on-hands"
+    }
+  ],
+  "benefit": "With each use of lay on hands, gain a +1 sacred bonus on attack rolls",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

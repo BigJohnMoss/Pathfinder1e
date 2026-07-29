@@ -1,0 +1,21 @@
+{
+  "id": "siege-engineer",
+  "name": "Siege Engineer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Knowledge (engineering) 5 ranks or Profession (siege engineer) 5 ranks"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with 1 siege weapon"
+    }
+  ],
+  "benefit": "You are considered proficient with all siege weapons",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

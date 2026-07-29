@@ -1,0 +1,22 @@
+{
+  "id": "siege-commander",
+  "name": "Siege Commander",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (siege weapon)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "Knowledge (engineering) 5 ranks or Profession ( Siege Engineer ) 1 rank"
+    }
+  ],
+  "benefit": "Grant weapon crew +4 on assemble or move checks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

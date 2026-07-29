@@ -1,0 +1,22 @@
+{
+  "id": "wild-speech",
+  "name": "Wild Speech",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    },
+    {
+      "type": "class-level",
+      "classId": "druid",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Speak while in wild shape",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

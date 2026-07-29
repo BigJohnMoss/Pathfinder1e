@@ -1,0 +1,17 @@
+{
+  "id": "raging-deathblow",
+  "name": "Raging Deathblow",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "greater-rage"
+    }
+  ],
+  "benefit": "Rend a dying foe and gain one round of rage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

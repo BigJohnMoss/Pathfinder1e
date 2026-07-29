@@ -1,0 +1,17 @@
+{
+  "id": "extra-grit",
+  "name": "Extra Grit",
+  "type": "grit",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grit class feature or Amateur Gunslinger"
+    }
+  ],
+  "benefit": "Gain 2 extra grit points per day, and maximum grit increases by 2",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

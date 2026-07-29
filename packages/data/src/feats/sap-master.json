@@ -1,0 +1,21 @@
+{
+  "id": "sap-master",
+  "name": "Sap Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "sap-adept"
+    },
+    {
+      "type": "rule",
+      "description": "sneak attack +3d6"
+    }
+  ],
+  "benefit": "Deal twice your sneak attack damage when dealing nonlethal damage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "siege-gunner",
+  "name": "Siege Gunner",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Siege Weapon Engineer"
+    }
+  ],
+  "benefit": "Take no size penalties for aiming a direct fire siege weapon",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

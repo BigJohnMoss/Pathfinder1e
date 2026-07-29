@@ -1,0 +1,17 @@
+{
+  "id": "planar-preservationist",
+  "name": "Planar Preservationist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Preservationist alchemist archetype"
+    }
+  ],
+  "benefit": "With every summon nature's ally extract you learn, learn a corresponding summon monster extract",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

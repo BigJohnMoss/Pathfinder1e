@@ -1,0 +1,17 @@
+{
+  "id": "amateur-gunslinger",
+  "name": "Amateur Gunslinger",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "no-levels-in-a-class-with-grit"
+    }
+  ],
+  "benefit": "Gain limited amount of grit and access to gunslinger deeds",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

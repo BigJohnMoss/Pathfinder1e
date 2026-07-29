@@ -1,0 +1,17 @@
+{
+  "id": "pure-faith",
+  "name": "Pure Faith",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "divine-health"
+    }
+  ],
+  "benefit": "Gain a +4 sacred bonus against poison",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

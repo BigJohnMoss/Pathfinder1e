@@ -1,0 +1,21 @@
+{
+  "id": "twin-thunders-master",
+  "name": "Twin Thunders Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "twin-thunders-flurry"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Opponent struck by Twin Thunders is shaken",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "greater-spell-specialization",
+  "name": "Greater Spell Specialization",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "feat",
+      "id": "spell-specialization"
+    },
+    {
+      "type": "spell-access",
+      "id": "5th-level-spells"
+    }
+  ],
+  "benefit": "Sacrifice a spell to cast your specialized spell",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

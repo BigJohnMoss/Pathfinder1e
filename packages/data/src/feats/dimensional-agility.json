@@ -1,0 +1,17 @@
+{
+  "id": "dimensional-agility",
+  "name": "Dimensional Agility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Abundant step class feature or ability to cast dimension door"
+    }
+  ],
+  "benefit": "May take any additional actions remaining after using dimension door or abundant step",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

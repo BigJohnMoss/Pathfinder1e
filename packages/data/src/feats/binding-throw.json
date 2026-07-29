@@ -1,0 +1,25 @@
+{
+  "id": "binding-throw",
+  "name": "Binding Throw",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "feat",
+      "id": "ki-throw"
+    }
+  ],
+  "benefit": "After successful Ki Throw, you may attempt to grapple",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

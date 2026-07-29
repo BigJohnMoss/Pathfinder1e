@@ -1,0 +1,25 @@
+{
+  "id": "sword-and-pistol",
+  "name": "Sword And Pistol",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "snap-shot-feat"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Ranged attacks do not provoke attacks of opportunity",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

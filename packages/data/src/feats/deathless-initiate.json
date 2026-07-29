@@ -1,0 +1,35 @@
+{
+  "id": "deathless-initiate",
+  "name": "Deathless Initiate",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "orc or half-orc"
+    },
+    {
+      "type": "feat",
+      "id": "diehard"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Not staggered while using Diehard ; gain +2 on melee damage rolls",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

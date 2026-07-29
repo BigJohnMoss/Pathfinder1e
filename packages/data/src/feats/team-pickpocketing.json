@@ -1,0 +1,23 @@
+{
+  "id": "team-pickpocketing",
+  "name": "Team Pickpocketing",
+  "type": "teamwork",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 1
+    }
+  ],
+  "benefit": "When ally makes a Bluff check, you can pick opponent's pocket as an immediate action",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

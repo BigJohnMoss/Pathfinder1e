@@ -1,0 +1,21 @@
+{
+  "id": "school-strike",
+  "name": "School Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feature",
+      "id": "wizard-school"
+    }
+  ],
+  "benefit": "May deliver magic school effect as swift action after melee attack",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

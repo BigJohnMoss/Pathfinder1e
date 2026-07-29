@@ -1,0 +1,21 @@
+{
+  "id": "prone-shooter",
+  "name": "Prone Shooter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Weapon Focus (crossbow or firearm)"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Take a reduced penalty to your AC against melee attacks while prone",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

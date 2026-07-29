@@ -1,0 +1,17 @@
+{
+  "id": "fortified-armor-training",
+  "name": "Fortified Armor Training",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficient with armor or shield"
+    }
+  ],
+  "benefit": "Break armor or shield to turn critical hit into a normal hit",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

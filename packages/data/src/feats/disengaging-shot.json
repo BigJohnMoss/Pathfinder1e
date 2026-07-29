@@ -1,0 +1,25 @@
+{
+  "id": "disengaging-shot",
+  "name": "Disengaging Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "disengaging-feint"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    }
+  ],
+  "benefit": "When using Disengaging Flourish , you may make a single attack",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "extra-cantrips-or-orisons",
+  "name": "Extra Cantrips or Orisons",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast cantrips or orisons"
+    }
+  ],
+  "benefit": "Gain 2 additional cantrips or orisons known",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

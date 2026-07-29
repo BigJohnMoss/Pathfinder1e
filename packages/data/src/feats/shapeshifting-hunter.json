@@ -1,0 +1,21 @@
+{
+  "id": "shapeshifting-hunter",
+  "name": "Shapeshifting Hunter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy"
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "Add your druid and ranger levels for favored enemy",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

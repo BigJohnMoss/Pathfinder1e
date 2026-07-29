@@ -1,0 +1,17 @@
+{
+  "id": "prophetic-visionary",
+  "name": "Prophetic Visionary",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "mystery"
+    }
+  ],
+  "benefit": "Once per day, enter a deep trance and gain a prophetic vision",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

@@ -124,6 +124,7 @@ export type Prerequisite =
   | { type: "class-level"; classId: string; minimum: number }
   | { type: "ability"|"skill"; key: string; minimum: number }
   | { type: "feat"|"feature"|"spell-access"; id: string }
+  | { type: "rule"; description: string }
   | { type: "ancestry"; id: string }
   | { type: "size"; minimum?: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal"; maximum?: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal" }
   | { type: "matching-choice"; featId: string; key: string }

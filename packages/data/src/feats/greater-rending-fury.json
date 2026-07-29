@@ -1,0 +1,21 @@
+{
+  "id": "greater-rending-fury",
+  "name": "Greater Rending Fury",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-rending-fury"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    }
+  ],
+  "benefit": "When you rend an opponent, you deal bleed damage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

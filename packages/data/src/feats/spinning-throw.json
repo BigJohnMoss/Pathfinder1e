@@ -1,0 +1,29 @@
+{
+  "id": "spinning-throw",
+  "name": "Spinning Throw",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "ki-throw"
+    }
+  ],
+  "benefit": "Spend a swift action to bull rush opponent, move it, then knock it prone",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

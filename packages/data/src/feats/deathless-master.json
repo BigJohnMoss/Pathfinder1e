@@ -1,0 +1,30 @@
+{
+  "id": "deathless-master",
+  "name": "Deathless Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "deathless-initiate"
+    },
+    {
+      "type": "feat",
+      "id": "ironhide"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Do not lose hit points while using Diehard",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "unsanctioned-detection",
+  "name": "Unsanctioned Detection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "detect-evil"
+    }
+  ],
+  "benefit": "Use detect evil to gain bonuses on Perception and Sense Motive checks",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

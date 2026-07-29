@@ -1,0 +1,26 @@
+{
+  "id": "bonebreaker",
+  "name": "Bonebreaker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "jawbreaker"
+    },
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Deal Str or Dex damage when using Stunning Fist",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

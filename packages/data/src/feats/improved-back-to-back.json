@@ -1,0 +1,22 @@
+{
+  "id": "improved-back-to-back",
+  "name": "Improved Back to Back",
+  "type": "teamwork",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "back-to-back"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Grant adjacent ally +2 to AC against flanking opponents",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

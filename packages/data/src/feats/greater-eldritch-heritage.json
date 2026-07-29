@@ -1,0 +1,30 @@
+{
+  "id": "greater-eldritch-heritage",
+  "name": "Greater Eldritch Heritage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "eldritch-heritage"
+    },
+    {
+      "type": "feat",
+      "id": "improved-eldritch-heritage"
+    },
+    {
+      "type": "level",
+      "minimum": 17
+    }
+  ],
+  "benefit": "Gain a higher-level sorcerer bloodline power",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

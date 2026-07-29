@@ -1,0 +1,12 @@
+{
+  "id": "escape-route",
+  "name": "Escape Route",
+  "type": "teamwork",
+  "prerequisites": [],
+  "benefit": "You do not provoke attacks of opportunity when moving through spaces adjacent to allies",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

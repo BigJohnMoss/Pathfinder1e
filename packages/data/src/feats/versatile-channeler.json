@@ -1,0 +1,21 @@
+{
+  "id": "versatile-channeler",
+  "name": "Versatile Channeler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "worship a neutral deity or neutral alignment and no deity"
+    }
+  ],
+  "benefit": "Channel both positive and negative energy",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

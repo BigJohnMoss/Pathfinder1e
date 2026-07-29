@@ -1,0 +1,26 @@
+{
+  "id": "final-embrace-master",
+  "name": "Final Embrace Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "final-embrace-horror"
+    }
+  ],
+  "benefit": "Your constrict attack deals double the number of damage dice",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

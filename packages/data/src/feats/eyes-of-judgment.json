@@ -1,0 +1,21 @@
+{
+  "id": "eyes-of-judgment",
+  "name": "Eyes of Judgment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "detect-alignment-ability"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Determine target's exact alignment after 3 rounds of observation",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

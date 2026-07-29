@@ -1,0 +1,27 @@
+{
+  "id": "haunted-gnome",
+  "name": "Haunted Gnome",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "gnome magic racial trait"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Gain haunted fey aspect",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

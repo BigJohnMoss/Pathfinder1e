@@ -1,0 +1,25 @@
+{
+  "id": "leaping-shot",
+  "name": "Leaping Shot",
+  "type": "grit",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grit class feature or Amateur Gunslinger"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "May move your speed and make firearm attacks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

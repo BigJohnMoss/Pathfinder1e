@@ -1,0 +1,17 @@
+{
+  "id": "reward-of-life",
+  "name": "Reward of Life",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "lay-on-hands"
+    }
+  ],
+  "benefit": "With each use of lay on hands, gain hit points equal to your Charisma",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

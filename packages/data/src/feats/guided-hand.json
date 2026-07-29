@@ -1,0 +1,21 @@
+{
+  "id": "guided-hand",
+  "name": "Guided Hand",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "channel-smite"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with deity's chosen weapon"
+    }
+  ],
+  "benefit": "May use Wisdom modifier for attack rolls with favored weapon",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

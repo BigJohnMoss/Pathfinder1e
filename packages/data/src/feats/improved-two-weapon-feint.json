@@ -1,0 +1,21 @@
+{
+  "id": "improved-two-weapon-feint",
+  "name": "Improved Two-Weapon Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-two-weapon-fighting"
+    }
+  ],
+  "benefit": "Make a Bluff check instead of your first attack",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

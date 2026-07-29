@@ -1,0 +1,30 @@
+{
+  "id": "theurgy",
+  "name": "Theurgy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Int or Cha 13"
+    },
+    {
+      "type": "spell-access",
+      "id": "1st-level-arcane-spells"
+    },
+    {
+      "type": "spell-access",
+      "id": "1st-level-divine-spells"
+    }
+  ],
+  "benefit": "Augment arcane spells with divine energy and divine spells with arcane energy",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

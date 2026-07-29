@@ -1,0 +1,18 @@
+{
+  "id": "field-repair",
+  "name": "Field Repair",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Take no penalty for repairs made with improvised materials",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

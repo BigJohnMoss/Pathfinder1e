@@ -1,0 +1,17 @@
+{
+  "id": "life-lure",
+  "name": "Life Lure",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-positive-energy"
+    }
+  ],
+  "benefit": "Channel positive energy to fascinate undead",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

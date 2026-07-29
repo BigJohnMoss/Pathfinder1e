@@ -1,0 +1,21 @@
+{
+  "id": "double-bane",
+  "name": "Double Bane",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bane"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    }
+  ],
+  "benefit": "Apply your bane to a second weapon",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

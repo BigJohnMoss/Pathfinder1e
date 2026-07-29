@@ -1,0 +1,17 @@
+{
+  "id": "painful-anchor",
+  "name": "Painful Anchor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "anchoring-aura"
+    }
+  ],
+  "benefit": "Deal damage to an anchored evil outsider",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "rebuffing-reduction",
+  "name": "Rebuffing Reduction",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Damage reduction"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    }
+  ],
+  "benefit": "Bull Rush opponent who fails to pierce your DR",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

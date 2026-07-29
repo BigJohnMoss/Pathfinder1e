@@ -1,0 +1,26 @@
+{
+  "id": "pinning-knockout",
+  "name": "Pinning Knockout",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "greater-grapple"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 9th"
+    }
+  ],
+  "benefit": "Against a pinned opponent, you may double nonlethal damage with grapple check",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

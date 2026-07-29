@@ -1,0 +1,26 @@
+{
+  "id": "impact-critical-shot",
+  "name": "Impact Critical Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "You can bull rush on a critical hit",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

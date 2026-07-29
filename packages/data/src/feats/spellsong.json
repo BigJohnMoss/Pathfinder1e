@@ -1,0 +1,26 @@
+{
+  "id": "spellsong",
+  "name": "Spellsong",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "bard-performance"
+    },
+    {
+      "type": "spell-access",
+      "id": "1st-level-spells"
+    }
+  ],
+  "benefit": "Combine spellcasting and bardic performance",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

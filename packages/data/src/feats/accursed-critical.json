@@ -1,0 +1,25 @@
+{
+  "id": "accursed-critical",
+  "name": "Accursed Critical",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast bestow curse or major curse"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Confirm a critical hit and cast a curse as part of the attack",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

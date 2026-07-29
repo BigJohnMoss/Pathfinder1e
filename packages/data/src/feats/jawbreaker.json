@@ -1,0 +1,26 @@
+{
+  "id": "jawbreaker",
+  "name": "Jawbreaker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 6
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    }
+  ],
+  "benefit": "With successful Stunning Fist , you may cripple opponent's mouth",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

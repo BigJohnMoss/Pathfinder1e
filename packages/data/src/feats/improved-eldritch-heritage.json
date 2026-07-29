@@ -1,0 +1,26 @@
+{
+  "id": "improved-eldritch-heritage",
+  "name": "Improved Eldritch Heritage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "eldritch-heritage"
+    },
+    {
+      "type": "level",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Gain an additional bloodline power",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

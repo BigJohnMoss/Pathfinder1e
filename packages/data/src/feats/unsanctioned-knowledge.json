@@ -1,0 +1,22 @@
+{
+  "id": "unsanctioned-knowledge",
+  "name": "Unsanctioned Knowledge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "must be able to cast 1st-level paladin spells"
+    }
+  ],
+  "benefit": "Add spells to your paladin spell list",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

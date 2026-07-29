@@ -1,0 +1,17 @@
+{
+  "id": "rapid-reload",
+  "name": "Rapid Reload",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Weapon Proficiency (crossbow) or Exotic Weapon Proficiency (firearms)"
+    }
+  ],
+  "benefit": "Reload your weapon quickly",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

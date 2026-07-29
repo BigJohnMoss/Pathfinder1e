@@ -1,0 +1,17 @@
+{
+  "id": "sin-seer",
+  "name": "Sin Seer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "detect-undead"
+    }
+  ],
+  "benefit": "Gain the ability to detect evil",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

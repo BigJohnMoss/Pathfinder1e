@@ -1,0 +1,21 @@
+{
+  "id": "seize-the-moment",
+  "name": "Seize the Moment",
+  "type": "teamwork",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "rule",
+      "description": "Improved Critical"
+    }
+  ],
+  "benefit": "When ally confirms a critical threat, you gain an attack of opportunity",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

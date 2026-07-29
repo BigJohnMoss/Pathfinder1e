@@ -1,0 +1,17 @@
+{
+  "id": "pack-attack",
+  "name": "Pack Attack",
+  "type": "teamwork",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Ally's attack allows you to take a 5-foot step",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

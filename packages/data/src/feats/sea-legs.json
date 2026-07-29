@@ -1,0 +1,18 @@
+{
+  "id": "sea-legs",
+  "name": "Sea Legs",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Profession (sailor)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain +2 on Acrobatics , Climb , and Swim checks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

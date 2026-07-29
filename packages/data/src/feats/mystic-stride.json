@@ -1,0 +1,26 @@
+{
+  "id": "mystic-stride",
+  "name": "Mystic Stride",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "nimble-moves"
+    },
+    {
+      "type": "feature",
+      "id": "woodland-stride"
+    }
+  ],
+  "benefit": "Move at full speed even through magically enhanced foliage",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "greater-snap-shot",
+  "name": "Greater Snap Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "improved-snap-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    }
+  ],
+  "benefit": "Gain bonus on damage and critical confirmation when using ranged weapons",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

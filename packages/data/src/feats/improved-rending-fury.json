@@ -1,0 +1,21 @@
+{
+  "id": "improved-rending-fury",
+  "name": "Improved Rending Fury",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "rending-fury"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Deal extra damage on a successful rend",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

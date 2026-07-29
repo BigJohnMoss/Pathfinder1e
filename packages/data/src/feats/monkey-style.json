@@ -1,0 +1,32 @@
+{
+  "id": "monkey-style",
+  "name": "Monkey Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Climb",
+      "minimum": 5
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Add Wisdom bonus on Acrobatics checks, and take no penalty for attacking while prone",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

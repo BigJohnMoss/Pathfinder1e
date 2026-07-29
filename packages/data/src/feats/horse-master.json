@@ -1,0 +1,22 @@
+{
+  "id": "horse-master",
+  "name": "Horse Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "expert-trainer"
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Use your character level to determine powers and abilities for your mount",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

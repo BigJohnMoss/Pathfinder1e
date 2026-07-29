@@ -1,0 +1,27 @@
+{
+  "id": "rebounding-leap",
+  "name": "Rebounding Leap",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 11
+    },
+    {
+      "type": "feature",
+      "id": "leaping-lance"
+    }
+  ],
+  "benefit": "Remount your steed as a swift action with successful Acrobatics check",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

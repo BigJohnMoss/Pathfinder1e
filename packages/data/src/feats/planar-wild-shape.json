@@ -1,0 +1,22 @@
+{
+  "id": "planar-wild-shape",
+  "name": "Planar Wild Shape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "May add the celestial or fiendish template to your animal form",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

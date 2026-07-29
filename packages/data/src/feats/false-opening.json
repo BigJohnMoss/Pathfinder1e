@@ -1,0 +1,29 @@
+{
+  "id": "false-opening",
+  "name": "False Opening",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "rule",
+      "description": "Close Quarters Thrower or Point-Blank Master"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with selected ranged weapon"
+    }
+  ],
+  "benefit": "May choose to provoke attacks of opportunity; gain +4 AC vs. attacks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

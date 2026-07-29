@@ -1,0 +1,17 @@
+{
+  "id": "crushing-blow",
+  "name": "Crushing Blow",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    }
+  ],
+  "benefit": "Stunning Fist reduces target's AC",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

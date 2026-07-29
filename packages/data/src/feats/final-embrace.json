@@ -1,0 +1,39 @@
+{
+  "id": "final-embrace",
+  "name": "Final Embrace",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "naga"
+    },
+    {
+      "type": "rule",
+      "description": "serpentfolk"
+    },
+    {
+      "type": "rule",
+      "description": "or constrict special attack"
+    }
+  ],
+  "benefit": "Gain constrict and grab special attacks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

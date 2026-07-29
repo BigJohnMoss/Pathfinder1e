@@ -1,0 +1,22 @@
+{
+  "id": "no-name",
+  "name": "No Name",
+  "type": "grit",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grit class feature or Amateur Gunslinger"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Gain +2 on Bluff checks, and spend grit to gain +10 on Disguise checks",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

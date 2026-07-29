@@ -1,0 +1,21 @@
+{
+  "id": "rending-fury",
+  "name": "Rending Fury",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Rend special attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Need half the normal number of attacks to deal rend damage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

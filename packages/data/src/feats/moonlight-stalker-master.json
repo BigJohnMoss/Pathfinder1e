@@ -1,0 +1,26 @@
+{
+  "id": "moonlight-stalker-master",
+  "name": "Moonlight Stalker Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 9
+    },
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    },
+    {
+      "type": "feat",
+      "id": "moonlight-stalker-feint"
+    }
+  ],
+  "benefit": "While concealed, miss chance increases by 10%",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

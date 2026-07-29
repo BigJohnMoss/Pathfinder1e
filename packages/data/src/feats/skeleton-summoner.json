@@ -1,0 +1,25 @@
+{
+  "id": "skeleton-summoner",
+  "name": "Skeleton Summoner",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(necromancy)"
+    },
+    {
+      "type": "spell-access",
+      "id": "summon-monster"
+    }
+  ],
+  "benefit": "Summon skeletons instead of living creatures with summon monster",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

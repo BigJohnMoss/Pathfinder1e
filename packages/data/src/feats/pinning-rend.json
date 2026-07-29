@@ -1,0 +1,34 @@
+{
+  "id": "pinning-rend",
+  "name": "Pinning Rend",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "greater-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base bonus +9 or monk level 9th"
+    }
+  ],
+  "benefit": "Against pinned opponent, you may deal bleed damage with Grapple check",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

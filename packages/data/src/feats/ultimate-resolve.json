@@ -1,0 +1,17 @@
+{
+  "id": "ultimate-resolve",
+  "name": "Ultimate Resolve",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "aura-of-resolve"
+    }
+  ],
+  "benefit": "Aura of resolve expands and does not fall when you do",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

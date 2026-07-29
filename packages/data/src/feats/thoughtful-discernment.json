@@ -1,0 +1,17 @@
+{
+  "id": "thoughtful-discernment",
+  "name": "Thoughtful Discernment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "discern-lies"
+    }
+  ],
+  "benefit": "Detect lies in a statement you heard, even hours after it has been uttered",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

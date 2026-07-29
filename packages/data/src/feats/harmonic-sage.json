@@ -1,0 +1,22 @@
+{
+  "id": "harmonic-sage",
+  "name": "Harmonic Sage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain extra abilities when performing within an artificial structure",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

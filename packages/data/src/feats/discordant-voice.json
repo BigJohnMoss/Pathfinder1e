@@ -1,0 +1,21 @@
+{
+  "id": "discordant-voice",
+  "name": "Discordant Voice",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "rule",
+      "description": "Perform (oratory or sing) 10 ranks"
+    }
+  ],
+  "benefit": "When using bardic performance, allies deal 1d6 extra sonic damage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

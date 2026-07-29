@@ -1,0 +1,17 @@
+{
+  "id": "dimensional-assault",
+  "name": "Dimensional Assault",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dimensional-agility"
+    }
+  ],
+  "benefit": "May use dimension door or abundant step as part of a charge action",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

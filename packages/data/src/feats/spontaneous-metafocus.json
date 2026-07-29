@@ -1,0 +1,26 @@
+{
+  "id": "spontaneous-metafocus",
+  "name": "Spontaneous Metafocus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "one metamagic feat"
+    },
+    {
+      "type": "rule",
+      "description": "ability to spontaneously cast spells"
+    }
+  ],
+  "benefit": "Apply metamagic to one spell and keep the standard casting time",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

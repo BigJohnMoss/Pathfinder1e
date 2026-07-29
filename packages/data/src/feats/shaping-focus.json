@@ -1,0 +1,22 @@
+{
+  "id": "shaping-focus",
+  "name": "Shaping Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "Count other class levels as druid levels for the purpose of wild shape",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

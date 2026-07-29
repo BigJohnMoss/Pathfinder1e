@@ -1,0 +1,18 @@
+{
+  "id": "broken-wing-gambit",
+  "name": "Broken Wing Gambit",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Grant opponent bonus to hit you, but opponent's attack provokes attacks of opportunity",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "net-and-trident",
+  "name": "Net and Trident",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "net-adept"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    }
+  ],
+  "benefit": "May wield a one-handed or light weapon with a net",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

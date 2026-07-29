@@ -1,0 +1,25 @@
+{
+  "id": "feral-combat-training",
+  "name": "Feral Combat Training",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(natural weapon)"
+    }
+  ],
+  "benefit": "Use Improved Unarmed Strike feats with natural weapons",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

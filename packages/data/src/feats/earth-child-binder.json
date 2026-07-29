@@ -1,0 +1,30 @@
+{
+  "id": "earth-child-binder",
+  "name": "Earth Child Binder",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "earth-child-topple"
+    },
+    {
+      "type": "feat",
+      "id": "greater-trip"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 9
+    }
+  ],
+  "benefit": "You can trip a giant of any size. You use Stunning Fist after the attack of opportunity against a standing giant has hit",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

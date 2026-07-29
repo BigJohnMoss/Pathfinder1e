@@ -1,0 +1,30 @@
+{
+  "id": "moonlight-stalker",
+  "name": "Moonlight Stalker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Darkvision or low-light vision racial trait"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 3
+    },
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    }
+  ],
+  "benefit": "Gain +2 on damage and attack rolls when you have concealment vs. foe",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

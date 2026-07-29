@@ -1,5 +1,5 @@
 const abilityNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
-const prerequisiteTypes = ["level", "class-level", "caster-level", "ability", "bab", "skill", "feat", "feature", "spell-access", "ancestry", "size", "matching-choice", "choice-value", "any"];
+const prerequisiteTypes = ["level", "class-level", "caster-level", "ability", "bab", "skill", "feat", "feature", "spell-access", "rule", "ancestry", "size", "matching-choice", "choice-value", "any"];
 const sizes = ["fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal"];
 const idPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -14,6 +14,7 @@ export function validatePrerequisites(prerequisites, { nested = false } = {}) {
     if (prerequisite.type === "class-level" && (!prerequisite.classId || !idPattern.test(prerequisite.classId))) errors.push("class-level prerequisite needs a valid class id");
     if (prerequisite.type === "skill" && (typeof prerequisite.key !== "string" || !prerequisite.key.trim())) errors.push("skill prerequisite needs a skill name");
     if (["feat", "feature", "spell-access"].includes(prerequisite.type) && (!prerequisite.id || !idPattern.test(prerequisite.id))) errors.push(`${prerequisite.type} prerequisite needs a valid id`);
+    if (prerequisite.type === "rule" && (typeof prerequisite.description !== "string" || !prerequisite.description.trim())) errors.push("rule prerequisite needs a description");
     if (prerequisite.type === "ancestry" && (!prerequisite.id || !idPattern.test(prerequisite.id))) errors.push("ancestry prerequisite needs a valid id");
     if (prerequisite.type === "size" && !sizes.includes(prerequisite.maximum)) errors.push("size prerequisite needs a valid maximum size");
     if (prerequisite.type === "matching-choice" && (!prerequisite.featId || !idPattern.test(prerequisite.featId) || typeof prerequisite.key !== "string" || !prerequisite.key.trim())) errors.push("matching-choice prerequisite needs a feat id and choice key");

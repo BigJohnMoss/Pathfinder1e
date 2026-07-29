@@ -1,0 +1,22 @@
+{
+  "id": "haunted-gnome-shroud",
+  "name": "Haunted Gnome Shroud",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "haunted-gnome-assault"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Gain additional use of gnome magic",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "deceptive-exchange",
+  "name": "Deceptive Exchange",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    }
+  ],
+  "benefit": "Upon successful feint, you may force opponent to accept an object",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "branded-for-retribution",
+  "name": "Branded for Retribution",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bane"
+    }
+  ],
+  "benefit": "Grant ally's weapon the bane quality against a branded opponent",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

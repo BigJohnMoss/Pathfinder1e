@@ -1,0 +1,17 @@
+{
+  "id": "heros-display",
+  "name": "Hero's Display",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    }
+  ],
+  "benefit": "Gain +2 on performance combat checks; may demoralize opponents",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

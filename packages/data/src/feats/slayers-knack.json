@@ -1,0 +1,21 @@
+{
+  "id": "slayers-knack",
+  "name": "Slayer's Knack",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Double the threat range of all weapons against one favored enemy",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

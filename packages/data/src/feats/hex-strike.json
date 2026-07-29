@@ -1,0 +1,21 @@
+{
+  "id": "hex-strike",
+  "name": "Hex Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hex"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Upon successful unarmed strike, you may use a hex",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

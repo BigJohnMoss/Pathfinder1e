@@ -1,0 +1,34 @@
+{
+  "id": "elusive-redirection",
+  "name": "Elusive Redirection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "elusive-target"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "class-level",
+      "classId": "monk",
+      "minimum": 12
+    },
+    {
+      "type": "rule",
+      "description": "flowing"
+    }
+  ],
+  "benefit": "When you successfully avoid damage, spend 1 ki point to redirect attack back at opponent",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "revelation-strike",
+  "name": "Revelation Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Improve Unarmed Strike"
+    },
+    {
+      "type": "feature",
+      "id": "revelation"
+    }
+  ],
+  "benefit": "Affect an opponent with revelation as part of a melee attack",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

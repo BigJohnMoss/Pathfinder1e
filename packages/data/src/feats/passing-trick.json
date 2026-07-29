@@ -1,0 +1,25 @@
+{
+  "id": "passing-trick",
+  "name": "Passing Trick",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "rule",
+      "description": "size Small or smaller"
+    }
+  ],
+  "benefit": "Successful Acrobatics check allows you to feint",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

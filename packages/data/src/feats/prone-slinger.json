@@ -1,0 +1,12 @@
+{
+  "id": "prone-slinger",
+  "name": "Prone Slinger",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "May use a sling while prone",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

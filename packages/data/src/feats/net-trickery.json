@@ -1,0 +1,25 @@
+{
+  "id": "net-trickery",
+  "name": "Net Trickery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "net-adept"
+    },
+    {
+      "type": "feat",
+      "id": "net-maneuvering"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "May use a net to blind your opponent",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

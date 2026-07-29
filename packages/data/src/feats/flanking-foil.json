@@ -1,0 +1,12 @@
+{
+  "id": "flanking-foil",
+  "name": "Flanking Foil",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Foes you strike lose their flanking bonus against you",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

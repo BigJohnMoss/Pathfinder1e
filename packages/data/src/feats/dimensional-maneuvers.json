@@ -1,0 +1,21 @@
+{
+  "id": "dimensional-maneuvers",
+  "name": "Dimensional Maneuvers",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dimensional-dervish"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Gain +4 on combat maneuver checks while using Dimensional Dervish",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "powerful-shape",
+  "name": "Powerful Shape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    },
+    {
+      "type": "class-level",
+      "classId": "druid",
+      "minimum": 8
+    }
+  ],
+  "benefit": "While in wild shape, you are treated as one size category larger",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

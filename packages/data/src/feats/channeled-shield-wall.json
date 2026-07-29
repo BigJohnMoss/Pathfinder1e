@@ -1,0 +1,21 @@
+{
+  "id": "channeled-shield-wall",
+  "name": "Channeled Shield Wall",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 3d6"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with shield"
+    }
+  ],
+  "benefit": "Enhance your shield and the shields of allies adjacent to you",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateMagic/ultimateMagicFeats.html"
+  }
+}

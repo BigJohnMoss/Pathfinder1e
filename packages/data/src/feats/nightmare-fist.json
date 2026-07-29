@@ -1,0 +1,26 @@
+{
+  "id": "nightmare-fist",
+  "name": "Nightmare Fist",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "ability to create magical darkness"
+    }
+  ],
+  "benefit": "While fighting in magical darkness, you deal +2 damage",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}

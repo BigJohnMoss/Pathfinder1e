@@ -1,0 +1,21 @@
+{
+  "id": "dimensional-dervish",
+  "name": "Dimensional Dervish",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dimensional-assault"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "During full-attack action, you may cast dimension door or use abundant step as a swift action",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimateCombat/ultimateCombatFeats.html"
+  }
+}
