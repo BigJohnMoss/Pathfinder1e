@@ -37,6 +37,13 @@ export function AbilityEditor({ abilityNames, ancestryName, choiceAbility, choic
     setDraftScores((current) => ({ ...current, [ability]: String(normalized) }));
     if (normalized !== baseAbilities[ability]) onAbilityChange(ability, normalized);
   };
+  const stepScore = (ability: AbilityName, amount: -1 | 1) => {
+    const draft = Number(draftScores[ability]);
+    const current = draftScores[ability] !== "" && Number.isFinite(draft) ? draft : baseAbilities[ability];
+    const next = Math.max(7, Math.min(18, current + amount));
+    setDraftScores((scores) => ({ ...scores, [ability]: String(next) }));
+    if (next !== baseAbilities[ability]) onAbilityChange(ability, next);
+  };
   return <article className="ability-panel">
     <div>
       <p className="eyebrow">ABILITY SCORES</p>
@@ -58,7 +65,11 @@ export function AbilityEditor({ abilityNames, ancestryName, choiceAbility, choic
     </label>)}
     <div className="ability-grid">{abilityNames.map((ability) => <label key={ability}>
       <span>{labels[ability]}</span>
-      <input aria-label={`${labels[ability]} base score`} type="number" inputMode="numeric" min="7" max="18" value={draftScores[ability]} onFocus={(event) => event.currentTarget.select()} onChange={(event) => editScore(ability, event.target.value)} onBlur={() => finishScore(ability)} />
+      <div className="ability-score-control">
+        <button type="button" aria-label={`Decrease ${labels[ability]} score`} disabled={(Number(draftScores[ability]) || baseAbilities[ability]) <= 7} onClick={() => stepScore(ability, -1)}>−</button>
+        <input aria-label={`${labels[ability]} base score`} type="number" inputMode="numeric" min="7" max="18" value={draftScores[ability]} onFocus={(event) => event.currentTarget.select()} onChange={(event) => editScore(ability, event.target.value)} onBlur={() => finishScore(ability)} />
+        <button type="button" aria-label={`Increase ${labels[ability]} score`} disabled={(Number(draftScores[ability]) || baseAbilities[ability]) >= 18} onClick={() => stepScore(ability, 1)}>+</button>
+      </div>
       <strong>{abilities[ability]} <small>{signed(modifiers[ability])}</small></strong>
     </label>)}</div>
   </article>;

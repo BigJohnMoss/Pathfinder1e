@@ -125,6 +125,21 @@ test("allows an ability score input to remain empty after it loses focus", async
   assert.match(strength.closest("label")?.querySelector("strong")?.textContent ?? "", /^10 \+0$/);
 });
 
+test("increases and decreases ability scores with mobile stepper buttons", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const strength = screen.getByLabelText("Strength base score") as HTMLInputElement;
+
+  await user.click(screen.getByRole("button", { name: "Increase Strength score" }));
+  assert.equal(strength.value, "11");
+  await user.click(screen.getByRole("button", { name: "Decrease Strength score" }));
+  assert.equal(strength.value, "10");
+
+  await user.clear(strength);
+  await user.click(screen.getByRole("button", { name: "Increase Strength score" }));
+  assert.equal(strength.value, "11");
+});
+
 test("allocates and persists favored class hit points and skill ranks", async () => {
   const user = userEvent.setup();
   render(<Home />);
