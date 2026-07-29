@@ -1,1 +1,28 @@
-{"id":"elf","name":"Elf","size":"medium","speed":30,"type":"humanoid","subtypes":["elf"],"abilityModifiers":{"fixed":{"dexterity":2,"intelligence":2,"constitution":-2}},"languages":{"automatic":["Common","Elven"],"bonus":"Celestial, Draconic, Gnoll, Gnome, Goblin, Orc, Sylvan"},"traits":[{"id":"low-light-vision","name":"Low-Light Vision","summary":"See twice as far as humans in dim light."}],"source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"}}
+{
+  "id": "elf",
+  "name": "Elf",
+  "size": "medium",
+  "speed": 30,
+  "type": "humanoid",
+  "subtypes": ["elf"],
+  "abilityModifiers": {"fixed": {"dexterity": 2, "intelligence": 2, "constitution": -2}},
+  "languages": {"automatic": ["Common", "Elven"], "bonus": "Celestial, Draconic, Gnoll, Gnome, Goblin, Orc, Sylvan"},
+  "traits": [
+    {"id":"elf-elven-immunities","name":"Elven Immunities","summary":"Immune to magical sleep and gain +2 on saves against enchantment."},
+    {"id":"elf-elven-magic","name":"Elven Magic","summary":"Gain +2 on caster-level checks to overcome spell resistance and +2 Spellcraft to identify magic items."},
+    {"id":"elf-keen-senses","name":"Keen Senses","summary":"Gain +2 Perception."},
+    {"id":"low-light-vision","name":"Low-Light Vision","summary":"See twice as far as humans in dim light."},
+    {"id":"elf-weapon-familiarity","name":"Weapon Familiarity","summary":"Gain traditional elven weapon proficiencies and treat elven weapons as martial."}
+  ],
+  "alternateTraits": [
+    {"id":"elf-desert-runner","name":"Desert Runner","summary":"Gain +4 on Constitution checks and Fortitude saves against fatigue, exhaustion, running, forced marches, starvation, thirst, and harsh environments.","replaces":["elf-elven-magic"]},
+    {"id":"elf-dreamspeaker","name":"Dreamspeaker","summary":"Increase the DC of divination spells and sleep effects by 1; with Charisma 15, use dream once per day.","replaces":["elf-elven-immunities"]},
+    {"id":"elf-eternal-grudge","name":"Eternal Grudge","summary":"Gain +1 on attack rolls against humanoids of the dwarf and orc subtypes.","replaces":["elf-elven-magic"]},
+    {"id":"elf-lightbringer","name":"Lightbringer","summary":"Become immune to light-based blindness and dazzle, count as one level higher for light effects, and with Intelligence 10 use light at will.","replaces":["elf-elven-immunities","elf-elven-magic"]},
+    {"id":"elf-silent-hunter","name":"Silent Hunter","summary":"Reduce the Stealth penalty while moving by 5 and make Stealth checks while running at -20.","replaces":["elf-elven-magic"]},
+    {"id":"elf-spirit-of-the-waters","name":"Spirit of the Waters","summary":"Gain +4 Swim, always take 10 while swimming, allow Aquan as a bonus language, and gain longspear, trident, and net proficiency.","replaces":["elf-elven-magic","elf-weapon-familiarity"]},
+    {"id":"elf-woodcraft","name":"Woodcraft","summary":"Gain +1 Knowledge (nature) and Survival, increasing to +2 in forests.","replaces":["elf-elven-magic"]}
+  ],
+  "alternateTraitSource": {"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#elves"},
+  "source": {"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Elf"}
+}
