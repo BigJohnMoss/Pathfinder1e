@@ -100,3 +100,40 @@ test("keeps spell actions separate at an Android phone viewport", async ({ page 
   }));
   expect(dimensions.bodyWidth).toBeLessThanOrEqual(dimensions.viewportWidth);
 });
+
+test("keeps mobile name typing focused and uses compact accessible controls", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Character & levels" }).click();
+
+  const name = page.getByLabel("Character name");
+  await name.focus();
+  for (const letter of "Kyra") {
+    await page.keyboard.type(letter);
+    await expect(name).toBeFocused();
+  }
+  await expect(name).toHaveValue("Kyra");
+
+  await expect(page.locator(".character-setup-section")).toHaveAttribute("open", "");
+  await expect(page.locator(".character-file-section")).toHaveAttribute("open", "");
+  await page.locator(".character-file-section > summary").click();
+  await expect(page.locator(".character-file-section")).not.toHaveAttribute("open", "");
+  await page.locator(".level-progression > summary").click();
+  await expect(page.locator(".level-progression")).not.toHaveAttribute("open", "");
+
+  await page.getByRole("button", { name: "Review level 2" }).click();
+  const classSelector = page.getByLabel("Class receiving this level");
+  const selectorBox = await classSelector.boundingBox();
+  expect(selectorBox).not.toBeNull();
+  expect(selectorBox!.height).toBeGreaterThanOrEqual(44);
+  expect(selectorBox!.width).toBeGreaterThan(250);
+
+  const actionBoxes = await Promise.all([
+    page.getByRole("button", { name: "Advance to level 2" }).boundingBox(),
+    page.getByRole("button", { name: "Not yet" }).boundingBox(),
+  ]);
+  for (const box of actionBoxes) expect(box!.height).toBeGreaterThanOrEqual(44);
+
+  const tabRows = await page.locator(".character-tabs [role=tab]").evaluateAll((tabs) => tabs.map((tab) => Math.round(tab.getBoundingClientRect().top)));
+  expect(new Set(tabRows).size).toBe(1);
+});

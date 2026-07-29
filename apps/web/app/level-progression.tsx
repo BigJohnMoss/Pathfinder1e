@@ -33,7 +33,9 @@ export function LevelProgression({
       ? unresolvedFeatures.length > 0 ? "Current level · choices to review" : "Current level"
       : "Upcoming level";
 
-  return <section className="level-progression" aria-label="Character progression">
+  return <details className="level-progression sidebar-collapsible" aria-label="Character progression" open>
+    <summary>Levels 1–20</summary>
+    <div className="sidebar-collapsible-content">
     <div className="sidebar-section-heading">
       <p className="eyebrow">PROGRESSION</p>
       <h2 id="level-progression-heading">Levels 1–20</h2>
@@ -84,5 +86,6 @@ export function LevelProgression({
         <button type="button" onClick={() => onReviewSection("spells")}>Spells</button>
       </div>
     </article>
-  </section>;
+    </div>
+  </details>;
 }
