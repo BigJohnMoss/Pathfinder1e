@@ -1,0 +1,66 @@
+{
+  "id": "dragon-disciple",
+  "name": "Dragon Disciple",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 12,
+  "babProgression": "three-quarters",
+  "baseAttackBonusByLevel": [0, 1, 2, 3, 3, 4, 5, 6, 6, 7],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 1, "reflex": 0, "will": 1 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 2, "reflex": 1, "will": 2 },
+    { "fortitude": 2, "reflex": 1, "will": 2 },
+    { "fortitude": 3, "reflex": 2, "will": 3 },
+    { "fortitude": 3, "reflex": 2, "will": 3 },
+    { "fortitude": 4, "reflex": 2, "will": 4 },
+    { "fortitude": 4, "reflex": 3, "will": 4 },
+    { "fortitude": 5, "reflex": 3, "will": 5 },
+    { "fortitude": 5, "reflex": 3, "will": 5 }
+  ],
+  "requirements": [
+    "Any nondragon ancestry",
+    "Knowledge (arcana) 5 ranks and the Draconic language",
+    "Ability to cast 1st-level arcane spells without preparation",
+    "Sorcerers must have the draconic bloodline"
+  ],
+  "spellcastingAdvancement": {
+    "tradition": "arcane",
+    "levels": [2, 3, 4, 6, 7, 8, 10]
+  },
+  "skillRanksPerLevel": 2,
+  "classSkills": ["Diplomacy", "Escape Artist", "Fly", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Perception", "Spellcraft"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/dragonDisciple.html"
+  },
+  "features": [
+    { "id": "dragon-disciple-blood-of-dragons-1", "name": "Blood of Dragons", "level": 1, "type": "core", "summary": "Advance draconic bloodline powers with Dragon Disciple levels, or gain them using Dragon Disciple level if you lack Sorcerer levels." },
+    { "id": "dragon-disciple-natural-armor-1", "name": "Natural Armor +1", "level": 1, "type": "scaling", "summary": "Increase existing natural armor by 1.", "progressionKey": "dragon-disciple-natural-armor" },
+    { "id": "dragon-disciple-strength-2", "name": "Ability Boost (Strength +2)", "level": 2, "type": "scaling", "summary": "Permanently increase Strength by 2.", "progressionKey": "dragon-disciple-ability-boost" },
+    { "id": "dragon-disciple-bloodline-feat-2", "name": "Bloodline Feat", "level": 2, "type": "bonus-feat", "summary": "Choose a bonus feat from the draconic bloodline list." },
+    { "id": "dragon-disciple-dragon-bite-2", "name": "Dragon Bite", "level": 2, "type": "core", "summary": "Gain the draconic bloodline bite attack, using combined Sorcerer and Dragon Disciple levels for scaling." },
+    { "id": "dragon-disciple-breath-weapon-3", "name": "Breath Weapon", "level": 3, "type": "core", "summary": "Gain the draconic bloodline breath weapon, using combined Sorcerer and Dragon Disciple levels for scaling." },
+    { "id": "dragon-disciple-strength-4", "name": "Ability Boost (Strength +2)", "level": 4, "type": "scaling", "summary": "Increase Strength by another 2.", "progressionKey": "dragon-disciple-ability-boost" },
+    { "id": "dragon-disciple-natural-armor-4", "name": "Natural Armor +2", "level": 4, "type": "scaling", "summary": "Increase the total natural armor bonus from this class to +2.", "progressionKey": "dragon-disciple-natural-armor" },
+    { "id": "dragon-disciple-blindsense-5", "name": "Blindsense 30 ft.", "level": 5, "type": "scaling", "summary": "Gain blindsense with a range of 30 feet.", "progressionKey": "dragon-disciple-blindsense" },
+    { "id": "dragon-disciple-bloodline-feat-5", "name": "Bloodline Feat", "level": 5, "type": "bonus-feat", "summary": "Choose another bonus feat from the draconic bloodline list." },
+    { "id": "dragon-disciple-constitution-6", "name": "Ability Boost (Constitution +2)", "level": 6, "type": "scaling", "summary": "Permanently increase Constitution by 2.", "progressionKey": "dragon-disciple-ability-boost" },
+    { "id": "dragon-disciple-dragon-form-7", "name": "Dragon Form", "level": 7, "type": "scaling", "summary": "Assume the form of a dragon as form of the dragon I.", "uses": "1/day" },
+    { "id": "dragon-disciple-natural-armor-7", "name": "Natural Armor +3", "level": 7, "type": "scaling", "summary": "Increase the total natural armor bonus from this class to +3.", "progressionKey": "dragon-disciple-natural-armor" },
+    { "id": "dragon-disciple-intelligence-8", "name": "Ability Boost (Intelligence +2)", "level": 8, "type": "scaling", "summary": "Permanently increase Intelligence by 2.", "progressionKey": "dragon-disciple-ability-boost" },
+    { "id": "dragon-disciple-bloodline-feat-8", "name": "Bloodline Feat", "level": 8, "type": "bonus-feat", "summary": "Choose another bonus feat from the draconic bloodline list." },
+    { "id": "dragon-disciple-wings-9", "name": "Wings", "level": 9, "type": "core", "summary": "Gain the draconic bloodline wings power, using combined Sorcerer and Dragon Disciple levels for scaling." },
+    { "id": "dragon-disciple-blindsense-10", "name": "Blindsense 60 ft.", "level": 10, "type": "scaling", "summary": "Increase blindsense range to 60 feet.", "progressionKey": "dragon-disciple-blindsense" },
+    { "id": "dragon-disciple-dragon-form-10", "name": "Dragon Form 2/day", "level": 10, "type": "capstone", "summary": "Use Dragon Form twice per day.", "uses": "2/day" },
+    { "id": "dragon-disciple-spellcasting-2", "name": "Existing Arcane Spellcasting +1", "level": 2, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "dragon-disciple-spellcasting-3", "name": "Existing Arcane Spellcasting +1", "level": 3, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "dragon-disciple-spellcasting-4", "name": "Existing Arcane Spellcasting +1", "level": 4, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "dragon-disciple-spellcasting-6", "name": "Existing Arcane Spellcasting +1", "level": 6, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "dragon-disciple-spellcasting-7", "name": "Existing Arcane Spellcasting +1", "level": 7, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "dragon-disciple-spellcasting-8", "name": "Existing Arcane Spellcasting +1", "level": 8, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "dragon-disciple-spellcasting-10", "name": "Existing Arcane Spellcasting +1", "level": 10, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." }
+  ]
+}
