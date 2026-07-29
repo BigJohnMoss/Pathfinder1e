@@ -68,3 +68,35 @@ test("fits the builder at an Android phone viewport", async ({ page }) => {
   }));
   expect(dimensions.bodyWidth).toBeLessThanOrEqual(dimensions.viewportWidth);
 });
+
+test("keeps spell actions separate at an Android phone viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 412, height: 915 });
+  await page.goto("/");
+  await page.getByRole("tab", { name: "Spells" }).click();
+  await page.getByLabel("Search spells").fill("Abjuring Step");
+
+  const refresh = page.getByRole("button", { name: "Refresh day" });
+  const reservoir = page.getByLabel("Arcane Reservoir points");
+  const spell = page.locator(".spell-list article").filter({ hasText: "Abjuring Step" });
+  const cast = spell.getByRole("button", { name: "Cast Abjuring Step" });
+  const preparedControls = spell.locator(".spell-count");
+
+  const [refreshBox, reservoirBox, castBox, preparedBox] = await Promise.all([
+    refresh.boundingBox(),
+    reservoir.boundingBox(),
+    cast.boundingBox(),
+    preparedControls.boundingBox(),
+  ]);
+  expect(refreshBox).not.toBeNull();
+  expect(reservoirBox).not.toBeNull();
+  expect(castBox).not.toBeNull();
+  expect(preparedBox).not.toBeNull();
+  expect(refreshBox!.y + refreshBox!.height).toBeLessThanOrEqual(reservoirBox!.y);
+  expect(castBox!.x + castBox!.width).toBeLessThanOrEqual(preparedBox!.x);
+
+  const dimensions = await page.evaluate(() => ({
+    bodyWidth: document.body.scrollWidth,
+    viewportWidth: window.innerWidth,
+  }));
+  expect(dimensions.bodyWidth).toBeLessThanOrEqual(dimensions.viewportWidth);
+});
