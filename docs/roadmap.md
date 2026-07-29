@@ -143,18 +143,25 @@ Native store packages for Microsoft Store or Google Play are optional later work
   independent spellbooks and daily slot use for every spellcasting class entry,
   secondary Bard and Druid resource tracking, highest-class caster-level
   prerequisites, and save/load restoration
-- prestige classes
+- [x] prestige classes: all ten Core prestige classes have exact level caps,
+  BAB/save tables, requirements, skills, and complete feature progressions;
+  existing-class spellcasting advancement supports single-class and
+  Mystic Theurge dual-tradition targets with persistence and UI coverage
 - [x] alternate racial traits: replacement-aware selection, persistence,
   derived-stat recalculation, and all 50 APG options for the seven Core
   ancestries
-- advanced equipment and magic items
+- [x] advanced equipment and magic items: expanded Core weapon and armour
+  choices, configurable +1 through +5 weapon/armour/shield enhancement,
+  rules-based market prices, attack/damage and AC integration, and common
+  resistance, deflection, and natural-armour items with non-stacking bonuses
+  and save/load coverage
 - [x] persisted hit points and round-based temporary effects for active play
 - broader sourcebook coverage
   - optional ancestry-specific favoured-class rewards
 
 ## Working rule
 
-Future work should proceed through the remaining Universal PF1e Builder
-milestones, beginning with alternate racial traits, while preserving the
-completed Core, Expanded Character Options, and Installable Application
-milestones through their validation and browser journey suites.
+Future work should proceed through optional ancestry-specific favoured-class
+rewards and deliberately scoped sourcebook expansions, while preserving the
+completed Core, Expanded Character Options, Installable Application, and
+Universal builder systems through their validation and browser journey suites.

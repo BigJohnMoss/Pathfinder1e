@@ -42,7 +42,7 @@ export interface CharacterDraftV1 {
   currentHitPoints: number | null;
   temporaryHitPoints: number;
   activeEffects: ActiveEffect[];
-  inventory: Array<{ itemId: string; quantity: number; equipped: boolean }>;
+  inventory: Array<{ itemId: string; quantity: number; equipped: boolean; enhancementBonus?: number }>;
   coins: { cp: number; sp: number; gp: number; pp: number };
 }
 
