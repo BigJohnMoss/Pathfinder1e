@@ -17,6 +17,8 @@ import { TraitChoices } from "./trait-choices";
 import { EquipmentPanel, equipmentCombatBonuses, type CoinPurse, type InventoryEntry } from "./equipment-panel";
 import { LevelUpPanel } from "./level-up-panel";
 import { ActivePlayPanel } from "./active-play-panel";
+import { CharacterWorkspace } from "./character-workspace";
+import { LevelProgression } from "./level-progression";
 import { alternateFavoredClassRewards, alternateRewardValue, FavoredClassBonus } from "./favored-class-bonus";
 import { AncestryTraits } from "./ancestry-traits";
 import { CharacterLibrary, characterLibraryKey, emptyCharacterLibrary, legacyCharacterKey, normalizeCharacterLibrary, type CharacterLibraryV1 } from "./character-library";
@@ -88,6 +90,8 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
   const [saveNotice, setSaveNotice] = useState("");
   const [showLevelUp, setShowLevelUp] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [selectedProgressionLevel, setSelectedProgressionLevel] = useState(1);
   const [levelUpClassId, setLevelUpClassId] = useState("");
   const [characterLibrary, setCharacterLibrary] = useState<CharacterLibraryV1>(emptyCharacterLibrary);
 
@@ -136,6 +140,7 @@ export default function Home() {
   const abilities = useMemo(() => Object.fromEntries(Object.keys(baseAbilities).map((ability) => [ability, baseAbilities[ability as keyof typeof baseAbilities] + (fixedModifiers[ability as keyof typeof baseAbilities] ?? 0) + (choiceAmount && ability === humanAbility ? choiceAmount : 0) + abilityBoosts.filter(boost => boost === ability).length])) as typeof baseAbilities, [abilityBoosts, baseAbilities, choiceAmount, fixedModifiers, humanAbility]);
   const pointBuy = pointBuySummary(baseAbilities, pointBuyBudget);
   useEffect(() => setAbilityBoosts(current => { const next = normalizeAbilityBoosts(current, level); while (next.length < abilityBoostCount(level)) next.push("strength"); return next; }), [level]);
+  useEffect(() => setSelectedProgressionLevel(level), [level]);
   useEffect(() => {
     const validRewardIds = new Set(alternateFavoredClassRewards.filter((reward) => reward.ancestryId === ancestryId && reward.classId === classId).map((reward) => reward.id));
     let remaining = primaryClassLevel;
@@ -585,9 +590,32 @@ export default function Home() {
   const exportCharacter = () => { const draft = { ...characterDraft, exportedAt: new Date().toISOString() }; const url = URL.createObjectURL(new Blob([JSON.stringify(draft, null, 2)], { type: "application/json" })); const link = document.createElement("a"); link.href = url; link.download = `${name.trim().replace(/[^a-z0-9]+/gi, "-").toLowerCase() || "pf1e-character"}.json`; link.click(); URL.revokeObjectURL(url); setSaveNotice("Character exported"); };
   const printCharacter = () => window.print();
 
+  const reviewProgressionSection = (tab: CharacterTabId) => {
+    if (tab === "spells" && spellcastingClassIds.length === 0) return;
+    setActiveTab(tab);
+    setSidebarOpen(false);
+    globalThis.setTimeout(() => document.getElementById(`character-tab-${tab}`)?.focus(), 0);
+  };
+
   return <main id="character-builder-main" tabIndex={-1}>
-    <header><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>Create a character foundation, then see the rules statistics it earns.</p></header>
-    <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} additionalArchetypeIds={additionalArchetypeIds} prestigeSpellcastingTargets={prestigeSpellcastingTargets} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={archetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); const validIds = new Set(next.map((entry) => entry.classId)); setAdditionalArchetypeIds((current) => Object.fromEntries(Object.entries(current).filter(([selectedClassId]) => validIds.has(selectedClassId)))); setPrestigeSpellcastingTargets((current) => Object.fromEntries(Object.entries(current).filter(([prestigeClassId]) => validIds.has(prestigeClassId)))); if (next.length > 0 && level < next.length + 1) setLevel(next.length + 1); }} onAdditionalArchetypeChange={(selectedClassId, selectedId) => setAdditionalArchetypeIds((current) => selectedId ? { ...current, [selectedClassId]: selectedId } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== selectedClassId)))} onPrestigeSpellcastingTargetChange={(prestigeClassId, targetClassId, targetIndex = 0) => setPrestigeSpellcastingTargets((current) => { const targets = [...(current[prestigeClassId] ?? [])]; targets[targetIndex] = targetClassId; return targets.some(Boolean) ? { ...current, [prestigeClassId]: targets } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== prestigeClassId)); })} onArchetypeChange={setArchetypeId} onAncestryChange={(next) => { setAncestryId(next); setSelectedAlternateRacialTraitIds([]); }} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => { setLevelUpClassId(characterClass.id); setShowLevelUp(true); }} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+    <CharacterWorkspace
+      sidebarOpen={sidebarOpen}
+      onSidebarOpen={() => setSidebarOpen(true)}
+      onSidebarClose={() => setSidebarOpen(false)}
+      sidebar={<>
+        <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} additionalArchetypeIds={additionalArchetypeIds} prestigeSpellcastingTargets={prestigeSpellcastingTargets} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={archetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); const validIds = new Set(next.map((entry) => entry.classId)); setAdditionalArchetypeIds((current) => Object.fromEntries(Object.entries(current).filter(([selectedClassId]) => validIds.has(selectedClassId)))); setPrestigeSpellcastingTargets((current) => Object.fromEntries(Object.entries(current).filter(([prestigeClassId]) => validIds.has(prestigeClassId)))); if (next.length > 0 && level < next.length + 1) setLevel(next.length + 1); }} onAdditionalArchetypeChange={(selectedClassId, selectedId) => setAdditionalArchetypeIds((current) => selectedId ? { ...current, [selectedClassId]: selectedId } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== selectedClassId)))} onPrestigeSpellcastingTargetChange={(prestigeClassId, targetClassId, targetIndex = 0) => setPrestigeSpellcastingTargets((current) => { const targets = [...(current[prestigeClassId] ?? [])]; targets[targetIndex] = targetClassId; return targets.some(Boolean) ? { ...current, [prestigeClassId]: targets } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== prestigeClassId)); })} onArchetypeChange={setArchetypeId} onAncestryChange={(next) => { setAncestryId(next); setSelectedAlternateRacialTraitIds([]); }} onLevelChange={(next) => { setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => { setLevelUpClassId(characterClass.id); setShowLevelUp(true); setSidebarOpen(false); }} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+        <LevelProgression currentLevel={level} selectedLevel={selectedProgressionLevel} features={progression.features} selectedOptions={selectedOptions} suppressFeatureDetails={activeTab === "features"} onSelectLevel={setSelectedProgressionLevel} onReviewSection={reviewProgressionSection} />
+      </>}
+    >
+    <header className="workspace-header">
+      <div><p className="eyebrow">PATHFINDER FIRST EDITION</p><h1>{name || "Character Builder"}</h1><p>{ancestry.name} · {additionalClassLevels.length > 0 ? classLevels.map((entry) => `${classes.find((item) => item.id === entry.classId)?.name ?? entry.classId} ${entry.level}`).join(" / ") : `${characterClass.name} ${level}`}</p></div>
+      <div className="workspace-vitals" aria-label="Character at a glance">
+        <span><small>Level</small><strong>{level}</strong></span>
+        <span><small>Hit points</small><strong>{currentHitPoints ?? combat.averageHitPoints}/{combat.averageHitPoints}</strong></span>
+        <span><small>Armor class</small><strong>{combat.armorClass.normal}</strong></span>
+        <span><small>Base attack</small><strong>{progression.baseAttackBonus >= 0 ? "+" : ""}{progression.baseAttackBonus}</strong></span>
+      </div>
+    </header>
     {showLevelUp && level < 20 && <LevelUpPanel currentLevel={level} classId={levelUpClassEntry.classId} classLevel={levelUpClassEntry.level} classChoices={levelUpClassChoices} gains={levelUpGains} onClassChange={setLevelUpClassId} onCancel={() => setShowLevelUp(false)} onConfirm={() => { if (levelUpClassEntry.classId !== characterClass.id) setAdditionalClassLevels((current) => current.map((entry) => entry.classId === levelUpClassEntry.classId ? { ...entry, level: entry.level + 1 } : entry)); setLevel(level + 1); setShowLevelUp(false); setSaveNotice(levelUpClassChoices.length > 1 ? `Advanced ${levelUpClassChoices.find((choice) => choice.id === levelUpClassEntry.classId)?.name ?? levelUpClassEntry.classId} to level ${levelUpClassEntry.level + 1}. Review newly unlocked choices.` : `Advanced to level ${level + 1}. Review newly unlocked choices.`); }} />}
     <CharacterTabs activeTab={activeTab} onChange={setActiveTab} showSpells={spellcastingClassIds.length > 0} />
     <section id="character-tab-panel" className="tab-panel" role="tabpanel" aria-labelledby={`character-tab-${activeTab}`} tabIndex={0}>
@@ -600,5 +628,6 @@ export default function Home() {
       {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={additionalClassLevels.length > 0 ? classLevels.map((entry) => `${classes.find((item) => item.id === entry.classId)?.name ?? entry.classId} ${entry.level}`).join(" / ") : characterClass.name} features={progression.features} dailyResources={classDailyResources} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={primaryClassLevel} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
       {activeTab === "options" && <TraitChoices traits={traits} spells={spells} classes={classes} classId={characterClass.id} selectedTraitIds={selectedTraitIds} selectedTraitChoices={selectedTraitChoices} onChange={updateTrait} onChoiceChange={updateTraitChoice} />}
     </section>
+    </CharacterWorkspace>
   </main>;
 }

@@ -1107,3 +1107,34 @@ test("previews and advances the selected multiclass entry", async () => {
   assert.equal((screen.getByLabelText("Additional class levels") as HTMLInputElement).value, "2");
   assert.match(screen.getByText(/Advanced Rogue to level 2/).textContent ?? "", /Advanced Rogue to level 2/);
 });
+
+test("reviews any level without changing the character level", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const characterLevel = screen.getByLabelText("Level") as HTMLInputElement;
+  await user.click(screen.getByRole("button", { name: /^Advancement step 10\b/ }));
+  assert.ok(screen.getByRole("heading", { name: "Upcoming level" }));
+  assert.equal(characterLevel.value, "1");
+  assert.equal(screen.getByRole("button", { name: /^Advancement step 10\b/ }).getAttribute("aria-pressed"), "true");
+});
+
+test("routes progression review actions to the existing character tabs", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.click(screen.getByRole("button", { name: /^Advancement step 1\b/ }));
+  await user.click(screen.getByRole("button", { name: "Feats" }));
+  assert.equal(screen.getByRole("tab", { name: "Feats" }).getAttribute("aria-selected"), "true");
+  assert.ok(screen.getByRole("heading", { name: "Feat choices" }));
+});
+
+test("opens and closes the responsive character drawer", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const trigger = screen.getByRole("button", { name: "Character & levels" });
+  assert.equal(trigger.getAttribute("aria-expanded"), "false");
+  await user.click(trigger);
+  assert.equal(trigger.getAttribute("aria-expanded"), "true");
+  assert.ok(screen.getByRole("complementary", { name: "Character creation and progression" }).classList.contains("is-open"));
+  await user.click(screen.getByRole("button", { name: "Close" }));
+  assert.equal(trigger.getAttribute("aria-expanded"), "false");
+});
