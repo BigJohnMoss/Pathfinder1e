@@ -1,1 +1,33 @@
-{"id":"dwarf","name":"Dwarf","size":"medium","speed":20,"type":"humanoid","subtypes":["dwarf"],"abilityModifiers":{"fixed":{"constitution":2,"wisdom":2,"charisma":-2}},"languages":{"automatic":["Common","Dwarven"],"bonus":"Giant, Gnome, Goblin, Orc, Terran, Undercommon"},"traits":[{"id":"darkvision","name":"Darkvision","summary":"See in darkness up to 60 feet."}],"source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"}}
+{
+  "id": "dwarf",
+  "name": "Dwarf",
+  "size": "medium",
+  "speed": 20,
+  "type": "humanoid",
+  "subtypes": ["dwarf"],
+  "abilityModifiers": {"fixed": {"constitution": 2, "wisdom": 2, "charisma": -2}},
+  "languages": {"automatic": ["Common", "Dwarven"], "bonus": "Giant, Gnome, Goblin, Orc, Terran, Undercommon"},
+  "traits": [
+    {"id": "dwarf-slow-and-steady", "name": "Slow and Steady", "summary": "Base speed is never modified by armor or encumbrance."},
+    {"id": "darkvision", "name": "Darkvision", "summary": "See in darkness up to 60 feet."},
+    {"id": "dwarf-defensive-training", "name": "Defensive Training", "summary": "Gain +4 dodge AC against monsters of the giant subtype."},
+    {"id": "dwarf-greed", "name": "Greed", "summary": "Gain +2 Appraise to determine the price of nonmagical goods containing precious metals or gemstones."},
+    {"id": "dwarf-hatred", "name": "Hatred", "summary": "Gain +1 on attacks against humanoids of the orc and goblinoid subtypes."},
+    {"id": "dwarf-hardy", "name": "Hardy", "summary": "Gain +2 on saves against poison, spells, and spell-like abilities."},
+    {"id": "dwarf-stability", "name": "Stability", "summary": "Gain +4 CMD against bull rush and trip while standing on the ground."},
+    {"id": "dwarf-stonecunning", "name": "Stonecunning", "summary": "Gain +2 Perception to notice unusual stonework and automatically check within 10 feet."},
+    {"id": "dwarf-weapon-familiarity", "name": "Weapon Familiarity", "summary": "Treat dwarven weapons as martial and gain the traditional dwarven weapon proficiencies."}
+  ],
+  "alternateTraits": [
+    {"id":"dwarf-ancient-enmity","name":"Ancient Enmity","summary":"Gain +1 on attack rolls against humanoids of the elf subtype.","replaces":["dwarf-hatred"]},
+    {"id":"dwarf-craftsman","name":"Craftsman","summary":"Gain +2 on Craft or Profession checks that create objects from metal or stone.","replaces":["dwarf-greed"]},
+    {"id":"dwarf-deep-warrior","name":"Deep Warrior","summary":"Gain +2 dodge AC against aberrations and +2 CMB to grapple them.","replaces":["dwarf-defensive-training"]},
+    {"id":"dwarf-lorekeeper","name":"Lorekeeper","summary":"Gain +2 on Knowledge (history) about dwarves or their enemies and make those checks untrained.","replaces":["dwarf-greed"]},
+    {"id":"dwarf-magic-resistant","name":"Magic Resistant","summary":"Gain spell resistance 5 + level, which can be lowered for 1 round, but take -2 on arcane concentration checks.","replaces":["dwarf-hardy"]},
+    {"id":"dwarf-relentless","name":"Relentless","summary":"Gain +2 CMB on bull rush and overrun while both creatures stand on the ground.","replaces":["dwarf-stability"]},
+    {"id":"dwarf-stonesinger","name":"Stonesinger","summary":"Count as one level higher for earth spells and specified earth-themed class powers.","replaces":["dwarf-stonecunning"]},
+    {"id":"dwarf-stubborn","name":"Stubborn","summary":"Gain +2 on Will saves against charm and compulsion and a second save 1 round after a failed save.","replaces":["dwarf-hardy"]}
+  ],
+  "alternateTraitSource": {"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#dwarves"},
+  "source": {"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Dwarf"}
+}
