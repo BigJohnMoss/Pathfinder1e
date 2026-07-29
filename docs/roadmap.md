@@ -133,7 +133,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Later milestone: Universal PF1e Builder
 
-- multiclassing - in progress: rules-engine aggregation for independent class
+- [x] multiclassing: rules-engine aggregation for independent class
   levels, BAB, saves, skill ranks, character-level feat slots, and class-tagged
   features; backward-compatible save normalization for class-level arrays;
     arbitrary distinct class-level editing with combined combat statistics, hit
@@ -144,7 +144,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
   secondary Bard and Druid resource tracking, highest-class caster-level
   prerequisites, and save/load restoration
 - prestige classes
-- alternate racial traits
+- alternate racial traits - in progress: replacement-aware selection,
+  persistence, derived-stat recalculation, and all four APG Human options
 - advanced equipment and magic items
 - [x] persisted hit points and round-based temporary effects for active play
 - broader sourcebook coverage
@@ -152,6 +153,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Working rule
 
-Future work should proceed through Expanded Character Options, beginning with
-traits, while preserving the completed Core and Installable Application
+Future work should proceed through the remaining Universal PF1e Builder
+milestones, beginning with alternate racial traits, while preserving the
+completed Core, Expanded Character Options, and Installable Application
 milestones through their validation and browser journey suites.

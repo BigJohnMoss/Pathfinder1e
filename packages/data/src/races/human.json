@@ -31,6 +31,52 @@
       "summary": "Gain one additional skill rank at every level."
     }
   ],
+  "alternateTraits": [
+    {
+      "id": "human-eye-for-talent",
+      "name": "Eye for Talent",
+      "summary": "Gain +2 on Sense Motive checks. An acquired animal companion, bonded mount, cohort, or familiar gains +2 to one ability score of your choice.",
+      "replaces": ["human-bonus-feat"],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#humans"
+      }
+    },
+    {
+      "id": "human-heart-of-the-fields",
+      "name": "Heart of the Fields",
+      "summary": "Gain half your character level on one Craft or Profession skill and once per day ignore an effect that would cause fatigue or exhaustion.",
+      "replaces": ["skilled"],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#humans"
+      }
+    },
+    {
+      "id": "human-heart-of-the-streets",
+      "name": "Heart of the Streets",
+      "summary": "Gain +1 Reflex and +1 dodge AC while adjacent to at least two allies, and crowds do not count as difficult terrain.",
+      "replaces": ["skilled"],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#humans"
+      }
+    },
+    {
+      "id": "human-heart-of-the-wilderness",
+      "name": "Heart of the Wilderness",
+      "summary": "Gain half your character level on Survival, +5 on Constitution checks to stabilize, and add half your level to Constitution when determining the negative hit point total that kills you.",
+      "replaces": ["skilled"],
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": null,
+        "url": "https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#humans"
+      }
+    }
+  ],
   "source": {
     "title": "Core Rulebook",
     "page": null,

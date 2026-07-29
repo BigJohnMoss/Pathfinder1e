@@ -17,6 +17,7 @@ export interface CharacterDraftV1 {
   archetypeId: string;
   archetypeIdsByClass: Record<string, string>;
   ancestryId: string;
+  selectedAlternateRacialTraitIds: string[];
   level: number;
   humanAbility: AbilityName;
   baseAbilities: AbilityScores;
@@ -152,6 +153,13 @@ export interface CharacterAncestry {
   };
   languages: { automatic: string[]; bonus: string | string[] };
   traits: Array<{ id: string; name: string; summary: string }>;
+  alternateTraits?: Array<{
+    id: string;
+    name: string;
+    summary: string;
+    replaces: string[];
+    source: SourceRef;
+  }>;
   source: SourceRef;
 }
 
