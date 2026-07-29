@@ -1,15 +1,16 @@
 import { useRef } from "react";
 import type { CharacterClassLevel } from "../../../packages/types/src/index.js";
 
-export function CharacterDetails({ name, classId, additionalClassLevels, additionalArchetypeIds, archetypeId, ancestryId, level, classes, archetypes, ancestries, saveNotice, onNameChange, onClassChange, onAdditionalClassLevelsChange, onAdditionalArchetypeChange, onArchetypeChange, onAncestryChange, onLevelChange, onReviewLevelUp, onSave, onLoad, onImport, onExport, onPrint, onReset }: {
+export function CharacterDetails({ name, classId, additionalClassLevels, additionalArchetypeIds, prestigeSpellcastingTargets, archetypeId, ancestryId, level, classes, archetypes, ancestries, saveNotice, onNameChange, onClassChange, onAdditionalClassLevelsChange, onAdditionalArchetypeChange, onPrestigeSpellcastingTargetChange, onArchetypeChange, onAncestryChange, onLevelChange, onReviewLevelUp, onSave, onLoad, onImport, onExport, onPrint, onReset }: {
   name: string;
   classId: string;
   additionalClassLevels: CharacterClassLevel[];
   additionalArchetypeIds: Record<string, string>;
+  prestigeSpellcastingTargets: Record<string, string[]>;
   archetypeId: string;
   ancestryId: string;
   level: number;
-  classes: Array<{ id: string; name: string }>;
+  classes: Array<{ id: string; name: string; classType: string; maximumLevel?: number; requirements?: string[]; spellcasting?: { tradition?: "arcane" | "divine" }; spellcastingAdvancement?: { tradition: "arcane" | "divine" | "any"; levels: number[]; targetCount?: number } }>;
   archetypes: Array<{ id: string; name: string; classId: string }>;
   ancestries: Array<{ id: string; name: string }>;
   saveNotice: string;
@@ -17,6 +18,7 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
   onClassChange: (classId: string) => void;
   onAdditionalClassLevelsChange: (classLevels: CharacterClassLevel[]) => void;
   onAdditionalArchetypeChange: (classId: string, archetypeId: string) => void;
+  onPrestigeSpellcastingTargetChange: (prestigeClassId: string, targetClassId: string) => void;
   onArchetypeChange: (archetypeId: string) => void;
   onAncestryChange: (ancestryId: string) => void;
   onLevelChange: (level: number) => void;
@@ -41,25 +43,37 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
   };
   const updateAdditionalLevel = (index: number, nextLevel: number) => {
     const otherLevels = additionalClassLevels.reduce((total, entry, entryIndex) => entryIndex === index ? total : total + entry.level, 0);
-    const maximum = Math.max(1, level - otherLevels - 1);
+    const classMaximum = classes.find((item) => item.id === additionalClassLevels[index]?.classId)?.maximumLevel ?? 20;
+    const maximum = Math.max(1, Math.min(classMaximum, level - otherLevels - 1));
     onAdditionalClassLevelsChange(additionalClassLevels.map((entry, entryIndex) => entryIndex === index ? { ...entry, level: Math.max(1, Math.min(maximum, nextLevel || 1)) } : entry));
   };
   return <section className="builder" aria-label="Character details">
     <label>Character name<input value={name} placeholder="Unnamed hero" onChange={(event) => onNameChange(event.target.value)} /></label>
-    <label>Class<select aria-label="Class" value={classId} onChange={(event) => onClassChange(event.target.value)}>{classes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+    <label>Class<select aria-label="Class" value={classId} onChange={(event) => onClassChange(event.target.value)}>{classes.filter((item) => item.classType !== "prestige").map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     {additionalClassLevels.map((entry, index) => {
       const label = index === 0 ? "Additional class" : `Additional class ${index + 1}`;
       const levelLabel = index === 0 ? "Additional class levels" : `Additional class ${index + 1} levels`;
       const otherLevels = assignedAdditionalLevels - entry.level;
+      const selectedClass = classes.find((item) => item.id === entry.classId);
+      const maximumClassLevels = selectedClass?.maximumLevel ?? 20;
+      const maximumEntryLevels = Math.max(1, Math.min(maximumClassLevels, level - otherLevels - 1));
       const classArchetypes = archetypes.filter((archetype) => archetype.classId === entry.classId);
+      const divineClassIds = new Set(["cleric", "druid", "oracle", "paladin", "ranger"]);
+      const advancement = selectedClass?.spellcastingAdvancement;
+      const eligibleSpellcastingClasses = classes.filter((candidate) => availableClassIds.has(candidate.id) && candidate.id !== entry.classId && candidate.spellcasting && (
+        advancement?.tradition === "any" || advancement?.tradition === (candidate.spellcasting.tradition ?? (divineClassIds.has(candidate.id) ? "divine" : "arcane"))
+      ));
+      const selectedSpellcastingTarget = prestigeSpellcastingTargets[entry.classId]?.[0] ?? (eligibleSpellcastingClasses.length === 1 ? eligibleSpellcastingClasses[0].id : "");
       return <div className="additional-class-row" key={`${entry.classId}-${index}`}>
-        <label>{label}<select aria-label={label} value={entry.classId} onChange={(event) => updateAdditionalClass(index, event.target.value)}><option value="">Remove class</option>{classes.filter((item) => item.id === entry.classId || !availableClassIds.has(item.id)).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
-        <label>{levelLabel}<input aria-label={levelLabel} type="number" min="1" max={Math.max(1, level - otherLevels - 1)} value={entry.level} onChange={(event) => updateAdditionalLevel(index, Number(event.target.value))} /></label>
+        <label>{label}<select aria-label={label} value={entry.classId} onChange={(event) => updateAdditionalClass(index, event.target.value)}><option value="">Remove class</option>{classes.filter((item) => item.id === entry.classId || !availableClassIds.has(item.id)).map((item) => <option key={item.id} value={item.id}>{item.name}{item.classType === "prestige" ? " (prestige)" : ""}</option>)}</select></label>
+        <label>{levelLabel}<input aria-label={levelLabel} type="number" min="1" max={maximumEntryLevels} value={entry.level} onChange={(event) => updateAdditionalLevel(index, Number(event.target.value))} /></label>
+        {selectedClass?.classType === "prestige" && <div className="prestige-requirements"><strong>Entry requirements</strong><ul>{selectedClass.requirements?.map((requirement) => <li key={requirement}>{requirement}</li>)}</ul><small>Confirm these requirements before adding the first prestige-class level.</small></div>}
+        {advancement && eligibleSpellcastingClasses.length > 0 && <label className="prestige-spellcasting-target">Advance spellcasting<select aria-label={`${selectedClass?.name ?? "Prestige class"} spellcasting class`} value={selectedSpellcastingTarget} onChange={(event) => onPrestigeSpellcastingTargetChange(entry.classId, event.target.value)}><option value="">Choose a class</option>{eligibleSpellcastingClasses.map((candidate) => <option key={candidate.id} value={candidate.id}>{candidate.name}</option>)}</select></label>}
         {classArchetypes.length > 0 && <label>{classes.find((item) => item.id === entry.classId)?.name ?? label} archetype<select aria-label={`${classes.find((item) => item.id === entry.classId)?.name ?? label} archetype`} value={additionalArchetypeIds[entry.classId] ?? ""} onChange={(event) => onAdditionalArchetypeChange(entry.classId, event.target.value)}><option value="">Standard class</option>{classArchetypes.map((archetype) => <option key={archetype.id} value={archetype.id}>{archetype.name}</option>)}</select></label>}
         <button type="button" className="secondary-button" aria-label={`Remove ${classes.find((item) => item.id === entry.classId)?.name ?? label}`} onClick={() => updateAdditionalClass(index, "")}>Remove</button>
       </div>;
     })}
-    {additionalClassLevels.length === 0 && <label>Additional class<select aria-label="Additional class" value="" onChange={(event) => event.target.value && onAdditionalClassLevelsChange([{ classId: event.target.value, level: 1 }])}><option value="">None</option>{classes.filter((item) => item.id !== classId).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>}
+    {additionalClassLevels.length === 0 && <label>Additional class<select aria-label="Additional class" value="" onChange={(event) => event.target.value && onAdditionalClassLevelsChange([{ classId: event.target.value, level: 1 }])}><option value="">None</option>{classes.filter((item) => item.id !== classId).map((item) => <option key={item.id} value={item.id}>{item.name}{item.classType === "prestige" ? " (prestige)" : ""}</option>)}</select></label>}
     {additionalClassLevels.length > 0 && additionalClassLevels.length < classes.length - 1 && primaryLevels > 1 && <button type="button" className="add-class-button" onClick={() => {
       const nextClass = classes.find((item) => !availableClassIds.has(item.id));
       if (nextClass) onAdditionalClassLevelsChange([...additionalClassLevels, { classId: nextClass.id, level: 1 }]);

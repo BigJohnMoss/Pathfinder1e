@@ -13,6 +13,52 @@ export function savingThrow(progression, level) {
   throw new Error(`Unknown save progression: ${progression}`);
 }
 
+function assertClassLevel(characterClass, level) {
+  assertLevel(level);
+  const maximumLevel = characterClass.maximumLevel ?? 20;
+  if (level > maximumLevel) throw new RangeError(`${characterClass.name ?? "Class"} has a maximum level of ${maximumLevel}.`);
+}
+
+export function classBaseAttackBonus(characterClass, level) {
+  assertClassLevel(characterClass, level);
+  return characterClass.baseAttackBonusByLevel?.[level - 1] ?? baseAttackBonus(characterClass.babProgression, level);
+}
+
+export function classSavingThrow(characterClass, save, level) {
+  assertClassLevel(characterClass, level);
+  return characterClass.savesByLevel?.[level - 1]?.[save] ?? savingThrow(characterClass.saves[save], level);
+}
+
+const divineSpellcastingClassIds = new Set(["cleric", "druid", "oracle", "paladin", "ranger"]);
+
+export function spellcastingTradition(characterClass) {
+  if (!characterClass?.spellcasting) return null;
+  return characterClass.spellcasting.tradition ?? (divineSpellcastingClassIds.has(characterClass.id) ? "divine" : "arcane");
+}
+
+export function effectiveSpellcastingLevels(classes, classLevels, prestigeTargets = {}) {
+  const classesById = new Map(classes.map(characterClass => [characterClass.id, characterClass]));
+  const levels = Object.fromEntries(classLevels.flatMap(entry => classesById.get(entry.classId)?.spellcasting ? [[entry.classId, entry.level]] : []));
+  for (const entry of classLevels) {
+    const prestigeClass = classesById.get(entry.classId);
+    const advancement = prestigeClass?.spellcastingAdvancement;
+    if (!advancement) continue;
+    const amount = advancement.levels.filter(level => level <= entry.level).length;
+    if (amount === 0) continue;
+    const eligible = classLevels.map(candidate => candidate.classId).filter(classId => {
+      if (classId === entry.classId) return false;
+      const tradition = spellcastingTradition(classesById.get(classId));
+      return tradition && (advancement.tradition === "any" || advancement.tradition === tradition);
+    });
+    const targetCount = advancement.targetCount ?? 1;
+    const requested = Array.isArray(prestigeTargets[entry.classId]) ? prestigeTargets[entry.classId] : [];
+    const targets = [...new Set(requested.filter(classId => eligible.includes(classId)))].slice(0, targetCount);
+    if (targets.length === 0 && eligible.length === targetCount) targets.push(...eligible);
+    for (const classId of targets) levels[classId] = Math.min(20, (levels[classId] ?? 0) + amount);
+  }
+  return levels;
+}
+
 export function abilityModifier(score) {
   if (!Number.isInteger(score) || score < 1) throw new RangeError("Ability score must be a positive integer.");
   return Math.floor((score - 10) / 2);
@@ -47,10 +93,10 @@ export function abilityModifiers(abilities) {
 }
 
 export function characterCombatStats(characterClass, level, abilities) {
-  assertLevel(level);
+  assertClassLevel(characterClass, level);
   const modifiers = abilityModifiers(abilities);
-  const bab = baseAttackBonus(characterClass.babProgression, level);
-  const baseSaves = Object.fromEntries(Object.entries(characterClass.saves).map(([save, progression]) => [save, savingThrow(progression, level)]));
+  const bab = classBaseAttackBonus(characterClass, level);
+  const baseSaves = Object.fromEntries(Object.keys(characterClass.saves).map(save => [save, classSavingThrow(characterClass, save, level)]));
   return {
     abilityModifiers: modifiers,
     baseAttackBonus: bab,
@@ -228,6 +274,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
   if (!normalizedArchetypeIdsByClass[draft.classId] && legacyArchetypeId) normalizedArchetypeIdsByClass[draft.classId] = legacyArchetypeId;
   const preparedSpellsByClass = isStringArrayRecord(draft.preparedSpellsByClass, validClassIds);
   const spellSlotUsesByClass = isNestedRankRecord(draft.spellSlotUsesByClass, validClassIds);
+  const prestigeSpellcastingTargets = Object.fromEntries(Object.entries(isStringArrayRecord(draft.prestigeSpellcastingTargets, validClassIds)).map(([prestigeClassId, targetIds]) => [prestigeClassId, [...new Set(targetIds.filter(classId => validClassIds.has(classId) && classId !== prestigeClassId))].slice(0, 2)]));
   if (!preparedSpellsByClass[draft.classId]) preparedSpellsByClass[draft.classId] = preparedSpells;
   if (!spellSlotUsesByClass[draft.classId]) spellSlotUsesByClass[draft.classId] = spellSlotUses;
   return {
@@ -237,6 +284,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     classLevels: normalizedClassLevels,
     archetypeId: normalizedArchetypeIdsByClass[draft.classId] ?? legacyArchetypeId,
     archetypeIdsByClass: normalizedArchetypeIdsByClass,
+    prestigeSpellcastingTargets,
     ancestryId: typeof draft.ancestryId === "string" && (!ancestryIds || ancestryIds.includes(draft.ancestryId)) ? draft.ancestryId : "human",
     selectedAlternateRacialTraitIds: Array.isArray(draft.selectedAlternateRacialTraitIds) ? draft.selectedAlternateRacialTraitIds.filter(id => typeof id === "string") : [],
     level: draft.level,
@@ -480,11 +528,11 @@ export function normalizeSkillRanks(allocations, totalRanks, maximumRanksPerSkil
 }
 
 export function classProgression(characterClass, level, { intelligenceScore = 10, racialSkillBonusPerLevel = 0, bonusFeats = 0 } = {}) {
-  assertLevel(level);
+  assertClassLevel(characterClass, level);
   return {
     level,
-    baseAttackBonus: baseAttackBonus(characterClass.babProgression, level),
-    saves: Object.fromEntries(Object.entries(characterClass.saves).map(([save, progression]) => [save, savingThrow(progression, level)])),
+    baseAttackBonus: classBaseAttackBonus(characterClass, level),
+    saves: Object.fromEntries(Object.keys(characterClass.saves).map(save => [save, classSavingThrow(characterClass, save, level)])),
     skillRanks: skillRanksThroughLevel(characterClass, level, intelligenceScore, { racialBonusPerLevel: racialSkillBonusPerLevel }),
     featSlots: featSlotsAtLevel(level, { bonusFeats }),
     features: featuresThroughLevel(characterClass, level)
@@ -508,6 +556,7 @@ export function multiclassProgression(classes, classLevels, { intelligenceScore 
     seenClassIds.add(entry.classId);
     const characterClass = classesById.get(entry.classId);
     if (!characterClass) throw new RangeError(`Unknown class: ${entry.classId}`);
+    assertClassLevel(characterClass, entry.level);
     return { characterClass, level: entry.level };
   });
   const level = resolved.reduce((total, entry) => total + entry.level, 0);
@@ -517,8 +566,8 @@ export function multiclassProgression(classes, classLevels, { intelligenceScore 
   let baseAttackBonusTotal = 0;
   let skillRanks = 0;
   for (const { characterClass, level: classLevel } of resolved) {
-    baseAttackBonusTotal += baseAttackBonus(characterClass.babProgression, classLevel);
-    for (const save of Object.keys(saves)) saves[save] += savingThrow(characterClass.saves[save], classLevel);
+    baseAttackBonusTotal += classBaseAttackBonus(characterClass, classLevel);
+    for (const save of Object.keys(saves)) saves[save] += classSavingThrow(characterClass, save, classLevel);
     skillRanks += skillRanksThroughLevel(characterClass, classLevel, intelligenceScore, {
       racialBonusPerLevel: racialSkillBonusPerLevel
     });
