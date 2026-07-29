@@ -30,14 +30,14 @@ export type Prerequisite =
   | { type: "level" | "bab" | "caster-level"; minimum: number }
   | { type: "class-level"; classId: string; minimum: number }
   | { type: "ability" | "skill"; key: string; minimum: number }
-  | { type: "feat" | "feature"; id: string }
+  | { type: "feat" | "feature" | "spell-access"; id: string }
   | { type: "ancestry"; id: string }
   | { type: "size"; minimum?: "fine" | "diminutive" | "tiny" | "small" | "medium" | "large" | "huge" | "gargantuan" | "colossal"; maximum?: "fine" | "diminutive" | "tiny" | "small" | "medium" | "large" | "huge" | "gargantuan" | "colossal" }
   | { type: "matching-choice"; featId: string; key: string }
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface PrerequisiteResult { prerequisite: Prerequisite; met: boolean }
-export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; size?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
+export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; size?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; spellIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
 
 export function abilityModifier(score: number): number;
 export const abilityNames: AbilityName[];

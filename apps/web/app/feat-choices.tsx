@@ -31,6 +31,7 @@ const prerequisiteLabel = (prerequisite: Prerequisite, featNames: Map<string, st
   if (prerequisite.type === "size") return `Size ${prerequisite.maximum ? `${prerequisite.maximum} or smaller` : `${prerequisite.minimum} or larger`}`;
   if (prerequisite.type === "feat") return featNames.get(prerequisite.id) ?? prerequisite.id;
   if (prerequisite.type === "feature") return `Feature: ${prerequisite.id}`;
+  if (prerequisite.type === "spell-access") return `Able to cast: ${prerequisite.id.replaceAll("-", " ")}`;
   return "id" in prerequisite ? `Ancestry: ${prerequisite.id}` : prerequisite.type;
 };
 
