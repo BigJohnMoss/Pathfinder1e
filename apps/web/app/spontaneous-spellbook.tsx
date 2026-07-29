@@ -51,7 +51,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
     <h2>Spontaneous spells</h2>
     <p>{className} slots: {slots.length > 0 ? slots.map((slot) => `${remainingSlots(slot.level)}/${slot.count} ${levelLabel(slot.level)}${slot.bonus ? ` (${slot.base} base + ${slot.bonus} ${castingAbilityName})` : ""}`).join(", ") : "no leveled spell slots available"}.</p>
     <p>{knownLimits.map((limit) => `${knownCount(limit.level)}/${limit.count} known ${levelLabel(limit.level)}${grantedCount(limit.level) ? ` + ${grantedCount(limit.level)} ${grantedSpellLabel.toLowerCase()}` : ""}`).join(" · ")}</p>
-    <div className="spell-count"><button type="button" onClick={onRefreshDay}>Refresh day</button></div>
+    <div className="spell-day-controls"><button type="button" onClick={onRefreshDay}>Refresh day</button></div>
     {maximumSpellLevel === 0 && <p className="hint">Increase {castingAbilityName} to 11 or higher to cast 1st-level spells.</p>}
     <div className="spell-controls">
       <label>Search spells<input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Name or effect" /></label>
@@ -69,7 +69,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
           const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
             <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}{spellTraitBonuses[spell.id]?.casterLevel ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level` : ""}{spellTraitBonuses[spell.id]?.metamagicLevelAdjustment ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment` : ""}</small></div>
-            <div className="spell-count"><button type="button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><button type="button" aria-label={`Forget ${spell.name}`} disabled={!learned || isGranted} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{isGranted ? grantedSpellLabel : learned ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div>
+            <div className="spell-actions"><button type="button" className="cast-spell-button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><div className="spell-selection-control"><button type="button" aria-label={`Forget ${spell.name}`} disabled={!learned || isGranted} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{isGranted ? grantedSpellLabel : learned ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div></div>
           </article>;
         })}</div>
       </section>;
