@@ -1,0 +1,56 @@
+{
+  "id": "assassin",
+  "name": "Assassin",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 8,
+  "babProgression": "three-quarters",
+  "baseAttackBonusByLevel": [0, 1, 2, 3, 3, 4, 5, 6, 6, 7],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 0, "reflex": 1, "will": 0 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 2, "will": 1 },
+    { "fortitude": 1, "reflex": 2, "will": 1 },
+    { "fortitude": 2, "reflex": 3, "will": 2 },
+    { "fortitude": 2, "reflex": 3, "will": 2 },
+    { "fortitude": 2, "reflex": 4, "will": 2 },
+    { "fortitude": 3, "reflex": 4, "will": 3 },
+    { "fortitude": 3, "reflex": 5, "will": 3 },
+    { "fortitude": 3, "reflex": 5, "will": 3 }
+  ],
+  "requirements": [
+    "Any evil alignment",
+    "Disguise 2 ranks and Stealth 5 ranks",
+    "Must kill someone for no reason other than qualifying as an Assassin"
+  ],
+  "skillRanksPerLevel": 4,
+  "classSkills": ["Acrobatics", "Bluff", "Climb", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Intimidate", "Linguistics", "Perception", "Sense Motive", "Sleight of Hand", "Stealth", "Swim", "Use Magic Device"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/assassin.html"
+  },
+  "features": [
+    { "id": "assassin-sneak-attack-1", "name": "Sneak Attack +1d6", "level": 1, "type": "scaling", "summary": "Gain 1d6 sneak attack damage.", "progressionKey": "assassin-sneak-attack" },
+    { "id": "assassin-death-attack-1", "name": "Death Attack", "level": 1, "type": "core", "summary": "After studying a victim for 3 rounds, attempt a sneak attack that can kill or paralyze; save DC 10 + class level + Intelligence modifier." },
+    { "id": "assassin-poison-use-1", "name": "Poison Use", "level": 1, "type": "core", "summary": "Never accidentally poison yourself while applying poison to a blade." },
+    { "id": "assassin-poison-save-2", "name": "Poison Save +1", "level": 2, "type": "scaling", "summary": "Gain +1 on saving throws against poison, increasing every two levels.", "progressionKey": "assassin-poison-save" },
+    { "id": "assassin-uncanny-dodge-2", "name": "Uncanny Dodge", "level": 2, "type": "core", "summary": "Retain Dexterity to AC when flat-footed or attacked by an invisible foe." },
+    { "id": "assassin-sneak-attack-3", "name": "Sneak Attack +2d6", "level": 3, "type": "scaling", "summary": "Increase Assassin sneak attack damage to 2d6.", "progressionKey": "assassin-sneak-attack" },
+    { "id": "assassin-hidden-weapons-4", "name": "Hidden Weapons", "level": 4, "type": "core", "summary": "Add Assassin level to Sleight of Hand checks made to conceal weapons." },
+    { "id": "assassin-true-death-4", "name": "True Death", "level": 4, "type": "core", "summary": "Creatures slain by Death Attack are harder to restore to life." },
+    { "id": "assassin-poison-save-4", "name": "Poison Save +2", "level": 4, "type": "scaling", "summary": "Increase the saving throw bonus against poison to +2.", "progressionKey": "assassin-poison-save" },
+    { "id": "assassin-sneak-attack-5", "name": "Sneak Attack +3d6", "level": 5, "type": "scaling", "summary": "Increase Assassin sneak attack damage to 3d6.", "progressionKey": "assassin-sneak-attack" },
+    { "id": "assassin-improved-uncanny-dodge-5", "name": "Improved Uncanny Dodge", "level": 5, "type": "core", "summary": "You can no longer be flanked except by a sufficiently higher-level rogue." },
+    { "id": "assassin-quiet-death-6", "name": "Quiet Death", "level": 6, "type": "core", "summary": "Make a Stealth check to prevent nearby creatures from noticing a successful Death Attack." },
+    { "id": "assassin-poison-save-6", "name": "Poison Save +3", "level": 6, "type": "scaling", "summary": "Increase the saving throw bonus against poison to +3.", "progressionKey": "assassin-poison-save" },
+    { "id": "assassin-sneak-attack-7", "name": "Sneak Attack +4d6", "level": 7, "type": "scaling", "summary": "Increase Assassin sneak attack damage to 4d6.", "progressionKey": "assassin-sneak-attack" },
+    { "id": "assassin-hide-in-plain-sight-8", "name": "Hide in Plain Sight", "level": 8, "type": "core", "summary": "Use Stealth while observed when within 10 feet of an area of dim light." },
+    { "id": "assassin-poison-save-8", "name": "Poison Save +4", "level": 8, "type": "scaling", "summary": "Increase the saving throw bonus against poison to +4.", "progressionKey": "assassin-poison-save" },
+    { "id": "assassin-sneak-attack-9", "name": "Sneak Attack +5d6", "level": 9, "type": "scaling", "summary": "Increase Assassin sneak attack damage to 5d6.", "progressionKey": "assassin-sneak-attack" },
+    { "id": "assassin-swift-death-9", "name": "Swift Death", "level": 9, "type": "core", "summary": "Attempt a Death Attack without studying the victim first.", "uses": "1/day" },
+    { "id": "assassin-angel-of-death-10", "name": "Angel of Death", "level": 10, "type": "capstone", "summary": "A slain Death Attack victim can only be restored by especially powerful magic, and failed attempts may destroy the caster." },
+    { "id": "assassin-poison-save-10", "name": "Poison Save +5", "level": 10, "type": "scaling", "summary": "Increase the saving throw bonus against poison to +5.", "progressionKey": "assassin-poison-save" }
+  ]
+}
