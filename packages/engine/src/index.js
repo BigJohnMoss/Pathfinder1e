@@ -52,8 +52,15 @@ export function effectiveSpellcastingLevels(classes, classLevels, prestigeTarget
     });
     const targetCount = advancement.targetCount ?? 1;
     const requested = Array.isArray(prestigeTargets[entry.classId]) ? prestigeTargets[entry.classId] : [];
-    const targets = [...new Set(requested.filter(classId => eligible.includes(classId)))].slice(0, targetCount);
-    if (targets.length === 0 && eligible.length === targetCount) targets.push(...eligible);
+    const targets = advancement.targetTraditions
+      ? advancement.targetTraditions.flatMap((requiredTradition, targetIndex) => {
+          const candidates = eligible.filter(classId => spellcastingTradition(classesById.get(classId)) === requiredTradition);
+          const requestedClassId = requested[targetIndex];
+          if (requestedClassId && candidates.includes(requestedClassId)) return [requestedClassId];
+          return candidates.length === 1 ? [candidates[0]] : [];
+        }).filter((classId, index, selected) => selected.indexOf(classId) === index)
+      : [...new Set(requested.filter(classId => eligible.includes(classId)))].slice(0, targetCount);
+    if (!advancement.targetTraditions && targets.length === 0 && eligible.length === targetCount) targets.push(...eligible);
     for (const classId of targets) levels[classId] = Math.min(20, (levels[classId] ?? 0) + amount);
   }
   return levels;

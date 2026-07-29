@@ -1,0 +1,49 @@
+{
+  "id": "pathfinder-chronicler",
+  "name": "Pathfinder Chronicler",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 8,
+  "babProgression": "three-quarters",
+  "baseAttackBonusByLevel": [0, 1, 2, 3, 3, 4, 5, 6, 6, 7],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 0, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 2, "will": 2 },
+    { "fortitude": 1, "reflex": 2, "will": 2 },
+    { "fortitude": 2, "reflex": 3, "will": 3 },
+    { "fortitude": 2, "reflex": 3, "will": 3 },
+    { "fortitude": 2, "reflex": 4, "will": 4 },
+    { "fortitude": 3, "reflex": 4, "will": 4 },
+    { "fortitude": 3, "reflex": 5, "will": 5 },
+    { "fortitude": 3, "reflex": 5, "will": 5 }
+  ],
+  "requirements": [
+    "Linguistics 3 ranks, Perform (oratory) 5 ranks, and Profession (scribe) 5 ranks",
+    "Author or scribe a nonmagical work for which a non-player character paid at least 50 gp"
+  ],
+  "skillRanksPerLevel": 8,
+  "classSkills": ["Appraise", "Bluff", "Diplomacy", "Disguise", "Escape Artist", "Intimidate", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Perception", "Perform", "Ride", "Sense Motive", "Sleight of Hand", "Survival", "Use Magic Device"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/pathfinderChronicler.html"
+  },
+  "features": [
+    { "id": "pathfinder-chronicler-bardic-knowledge-1", "name": "Bardic Knowledge", "level": 1, "type": "core", "summary": "Gain Bardic Knowledge, stacking this class with other classes that grant it." },
+    { "id": "pathfinder-chronicler-deep-pockets-1", "name": "Deep Pockets", "level": 1, "type": "scaling", "summary": "Carry unspecified equipment worth up to 100 gp per class level and pack carried gear efficiently.", "progressionKey": "pathfinder-chronicler-deep-pockets" },
+    { "id": "pathfinder-chronicler-master-scribe-1", "name": "Master Scribe", "level": 1, "type": "scaling", "summary": "Add class level to Linguistics, Profession (scribe), and Use Magic Device checks involving written magic.", "progressionKey": "pathfinder-chronicler-master-scribe" },
+    { "id": "pathfinder-chronicler-live-to-tell-2", "name": "Live to Tell the Tale", "level": 2, "type": "scaling", "summary": "Retry a failed save against an ongoing condition once per day per two class levels.", "progressionKey": "pathfinder-chronicler-live-to-tell" },
+    { "id": "pathfinder-chronicler-pathfinding-2", "name": "Pathfinding", "level": 2, "type": "core", "summary": "Gain +5 to avoid becoming lost and to escape maze, and improve overland travel through trackless terrain." },
+    { "id": "pathfinder-chronicler-bardic-performance-3", "name": "Bardic Performance", "level": 3, "type": "core", "summary": "Gain Bardic Performance at effective Bard level two lower than class level, stacking with similar classes." },
+    { "id": "pathfinder-chronicler-improved-aid-3", "name": "Improved Aid", "level": 3, "type": "core", "summary": "Aid another grants +4 instead of +2." },
+    { "id": "pathfinder-chronicler-epic-tales-4", "name": "Epic Tales", "level": 4, "type": "core", "summary": "Inscribe a written tale that conveys a Bardic Performance effect." },
+    { "id": "pathfinder-chronicler-whispering-campaign-5", "name": "Whispering Campaign", "level": 5, "type": "core", "summary": "Use written propaganda to influence a community's attitude toward a person or group." },
+    { "id": "pathfinder-chronicler-inspired-action-move-6", "name": "Inspired Action (Move)", "level": 6, "type": "scaling", "summary": "Spend Bardic Performance to grant an ally an immediate move action.", "progressionKey": "pathfinder-chronicler-inspired-action" },
+    { "id": "pathfinder-chronicler-call-down-legends-7", "name": "Call Down the Legends", "level": 7, "type": "core", "summary": "Use performance to grant an ally the effects of greater heroism." },
+    { "id": "pathfinder-chronicler-greater-epic-tales-8", "name": "Greater Epic Tales", "level": 8, "type": "core", "summary": "Create longer-lasting and more accessible Epic Tales." },
+    { "id": "pathfinder-chronicler-inspired-action-standard-9", "name": "Inspired Action (Standard)", "level": 9, "type": "scaling", "summary": "Inspired Action can grant an immediate standard action.", "progressionKey": "pathfinder-chronicler-inspired-action" },
+    { "id": "pathfinder-chronicler-lay-exalted-dead-10", "name": "Lay of the Exalted Dead", "level": 10, "type": "capstone", "summary": "Perform a tale that lets allies continue acting briefly after death." }
+  ]
+}

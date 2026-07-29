@@ -135,6 +135,7 @@ for (const url of await jsonFiles("classes/")) {
     const advancement = c.spellcastingAdvancement;
     if (!advancement || !["arcane","divine","any"].includes(advancement.tradition) || !Array.isArray(advancement.levels) || advancement.levels.length === 0 || new Set(advancement.levels).size !== advancement.levels.length || advancement.levels.some(level => !Number.isInteger(level) || level < 1 || level > maximumLevel)) errors.push(`${file}: invalid spellcastingAdvancement`);
     if (advancement?.targetCount !== undefined && (!Number.isInteger(advancement.targetCount) || advancement.targetCount < 1 || advancement.targetCount > 2)) errors.push(`${file}: spellcastingAdvancement targetCount must be 1 or 2`);
+    if (advancement?.targetTraditions !== undefined && (!Array.isArray(advancement.targetTraditions) || advancement.targetTraditions.length !== (advancement.targetCount ?? 1) || new Set(advancement.targetTraditions).size !== advancement.targetTraditions.length || advancement.targetTraditions.some(tradition => !["arcane","divine"].includes(tradition)))) errors.push(`${file}: spellcastingAdvancement targetTraditions must uniquely describe each target`);
   }
   if (c.spellcasting) checkSpellcasting(c.spellcasting, file);
   const featureIds=new Set();

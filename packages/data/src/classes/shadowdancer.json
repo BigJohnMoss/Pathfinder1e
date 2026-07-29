@@ -1,0 +1,55 @@
+{
+  "id": "shadowdancer",
+  "name": "Shadowdancer",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 8,
+  "babProgression": "three-quarters",
+  "baseAttackBonusByLevel": [0, 1, 2, 3, 3, 4, 5, 6, 6, 7],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 0, "reflex": 1, "will": 0 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 2, "will": 1 },
+    { "fortitude": 1, "reflex": 2, "will": 1 },
+    { "fortitude": 2, "reflex": 3, "will": 2 },
+    { "fortitude": 2, "reflex": 3, "will": 2 },
+    { "fortitude": 2, "reflex": 4, "will": 2 },
+    { "fortitude": 3, "reflex": 4, "will": 3 },
+    { "fortitude": 3, "reflex": 5, "will": 3 },
+    { "fortitude": 3, "reflex": 5, "will": 3 }
+  ],
+  "requirements": [
+    "Stealth 5 ranks and Perform (dance) 2 ranks",
+    "Combat Reflexes, Dodge, and Mobility"
+  ],
+  "skillRanksPerLevel": 6,
+  "classSkills": ["Acrobatics", "Bluff", "Diplomacy", "Disguise", "Escape Artist", "Perception", "Perform", "Sleight of Hand", "Stealth"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/shadowdancer.html"
+  },
+  "features": [
+    { "id": "shadowdancer-hide-in-plain-sight-1", "name": "Hide in Plain Sight", "level": 1, "type": "core", "summary": "Use Stealth while observed when within 10 feet of dim light." },
+    { "id": "shadowdancer-evasion-2", "name": "Evasion", "level": 2, "type": "core", "summary": "Take no damage on a successful Reflex save for half while lightly armored or unarmored." },
+    { "id": "shadowdancer-darkvision-2", "name": "Darkvision", "level": 2, "type": "core", "summary": "Gain darkvision 60 feet or increase existing darkvision by 30 feet." },
+    { "id": "shadowdancer-uncanny-dodge-2", "name": "Uncanny Dodge", "level": 2, "type": "core", "summary": "Retain Dexterity to AC when flat-footed or attacked by an invisible foe." },
+    { "id": "shadowdancer-rogue-talent-3", "name": "Rogue Talent", "level": 3, "type": "selectable", "summary": "Choose a rogue talent, or an advanced talent if already eligible for advanced talents." },
+    { "id": "shadowdancer-shadow-illusion-3", "name": "Shadow Illusion", "level": 3, "type": "scaling", "summary": "Create a silent image once per day per two Shadowdancer levels.", "progressionKey": "shadowdancer-shadow-illusion" },
+    { "id": "shadowdancer-summon-shadow-3", "name": "Summon Shadow", "level": 3, "type": "core", "summary": "Summon a loyal shadow companion whose hit points equal half your total." },
+    { "id": "shadowdancer-shadow-call-4", "name": "Shadow Call", "level": 4, "type": "scaling", "summary": "Use shadow conjuration once per day, plus once for every two additional levels.", "progressionKey": "shadowdancer-shadow-call" },
+    { "id": "shadowdancer-shadow-jump-4", "name": "Shadow Jump 40 ft.", "level": 4, "type": "scaling", "summary": "Travel between areas of dim light for up to 40 feet per day.", "progressionKey": "shadowdancer-shadow-jump" },
+    { "id": "shadowdancer-defensive-roll-5", "name": "Defensive Roll", "level": 5, "type": "core", "summary": "Attempt a Reflex save to halve damage from a potentially lethal attack." },
+    { "id": "shadowdancer-improved-uncanny-dodge-5", "name": "Improved Uncanny Dodge", "level": 5, "type": "core", "summary": "No longer be flanked except by a sufficiently higher-level rogue." },
+    { "id": "shadowdancer-rogue-talent-6", "name": "Rogue Talent", "level": 6, "type": "selectable", "summary": "Choose another rogue talent." },
+    { "id": "shadowdancer-shadow-jump-6", "name": "Shadow Jump 80 ft.", "level": 6, "type": "scaling", "summary": "Increase daily Shadow Jump distance to 80 feet.", "progressionKey": "shadowdancer-shadow-jump" },
+    { "id": "shadowdancer-slippery-mind-7", "name": "Slippery Mind", "level": 7, "type": "core", "summary": "Retry a failed save against an enchantment one round later." },
+    { "id": "shadowdancer-shadow-jump-8", "name": "Shadow Jump 160 ft.", "level": 8, "type": "scaling", "summary": "Increase daily Shadow Jump distance to 160 feet.", "progressionKey": "shadowdancer-shadow-jump" },
+    { "id": "shadowdancer-shadow-power-8", "name": "Shadow Power", "level": 8, "type": "core", "summary": "Use shadow evocation with Shadowdancer level as caster level." },
+    { "id": "shadowdancer-rogue-talent-9", "name": "Rogue Talent", "level": 9, "type": "selectable", "summary": "Choose another rogue talent." },
+    { "id": "shadowdancer-improved-evasion-10", "name": "Improved Evasion", "level": 10, "type": "core", "summary": "Take no damage on a successful Reflex save and half damage on a failure." },
+    { "id": "shadowdancer-shadow-jump-10", "name": "Shadow Jump 320 ft.", "level": 10, "type": "scaling", "summary": "Increase daily Shadow Jump distance to 320 feet.", "progressionKey": "shadowdancer-shadow-jump" },
+    { "id": "shadowdancer-shadow-master-10", "name": "Shadow Master", "level": 10, "type": "capstone", "summary": "Gain powerful defenses and accuracy while in dim light and improve Shadow Call to greater shadow conjuration." }
+  ]
+}
