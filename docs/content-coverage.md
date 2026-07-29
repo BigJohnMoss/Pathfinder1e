@@ -6,7 +6,7 @@ This document distinguishes records present in the data bundle from systems that
 
 - 13 selectable classes
 - 7 selectable core ancestries
-- 424 selectable feats
+- 427 selectable feats
 - all 40 APG basic traits
 - all twelve APG Fighter archetypes with complete level 1-20 feature replacements
 - 2,063 spells
@@ -43,7 +43,7 @@ All eleven Core Rulebook classes are playable. Arcanist and Oracle are the addit
 
 ## Feat coverage
 
-The catalogue contains sourced feats from the Core Rulebook, Advanced Player's Guide, Ultimate Magic and Ultimate Combat. Structured prerequisites include abilities, base attack bonus, class and caster levels, skills, ancestry, size, features, other feats and matching choices.
+The catalogue contains all 167 Core Rulebook feats, all 118 Advanced Player's Guide feats, 54 Ultimate Magic feats, and 88 Ultimate Combat feats. Structured prerequisites include abilities, base attack bonus, class and caster levels, skills, ancestry, size, features, other feats and matching choices. Ultimate Magic and Ultimate Combat expansion continues in validated feat-tree batches.
 
 ## Current product systems
 
