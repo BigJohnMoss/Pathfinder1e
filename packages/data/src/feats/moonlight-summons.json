@@ -1,0 +1,15 @@
+{
+  "id": "moonlight-summons",
+  "name": "Moonlight Summons",
+  "type": "general",
+  "prerequisites": [
+    {"type": "feat", "id": "spell-focus"},
+    {"type": "choice-value", "featId": "spell-focus", "key": "school", "value": "conjuration"},
+    {"type": "any", "prerequisites": [
+      {"type": "spell-access", "id": "summon-natures-ally-1"},
+      {"type": "spell-access", "id": "summon-natures-ally-i"}
+    ]}
+  ],
+  "benefit": "Creatures you summon shed light, are immune to confusion and sleep, and treat their natural weapons as silver for overcoming damage reduction.",
+  "source": {"title": "Ultimate Magic", "page": 153, "url": "https://aonprd.com/FeatDisplay.aspx?ItemName=Moonlight%20Summons"}
+}

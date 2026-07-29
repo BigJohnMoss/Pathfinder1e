@@ -1202,12 +1202,25 @@ test("searches the feat catalog and assigns an eligible feat to an open slot", a
   await user.click(screen.getByRole("tab", { name: "Feats" }));
   const search = screen.getByRole("searchbox", { name: "Search feats" });
   await user.type(search, "Toughness");
-  assert.match(screen.getByText(/1 of 427 feats shown/).textContent ?? "", /1 of 427/);
+  assert.match(screen.getByText(/1 of 430 feats shown/).textContent ?? "", /1 of 430/);
   await user.click(screen.getByText("Toughness", { selector: "summary strong" }));
   assert.ok(screen.getByText(/Gain 3 hit points/));
   await user.click(screen.getByRole("button", { name: "Add to open slot" }));
   assert.ok(screen.getByText("Selected", { selector: ".feat-status" }));
   assert.equal((screen.getByLabelText("Human bonus feat") as HTMLSelectElement).value, "toughness");
+});
+
+test("unlocks nature-summoning feats only for a focused eligible caster", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  await user.click(screen.getByRole("tab", { name: "Feats" }));
+  await user.selectOptions(screen.getByLabelText("Human bonus feat"), "spell-focus");
+  await user.selectOptions(screen.getByLabelText("Spell Focus School"), "conjuration");
+  const generalFeat = screen.getByLabelText("Feat 1") as HTMLSelectElement;
+  assert.equal([...generalFeat.options].find((option) => option.value === "moonlight-summons")?.disabled, false);
+  await user.selectOptions(screen.getByLabelText("Spell Focus School"), "evocation");
+  assert.equal([...generalFeat.options].find((option) => option.value === "moonlight-summons")?.disabled, true);
 });
 
 test("opens and closes the responsive character drawer", async () => {
