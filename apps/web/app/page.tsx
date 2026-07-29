@@ -276,7 +276,15 @@ export default function Home() {
   const casterLevel = Math.max(0, ...Object.values(effectiveSpellcastingLevelMap));
   const featSpellIds = useMemo(() => [...new Set(progressionClasses.flatMap((entry) => {
     const classLevel = effectiveSpellcastingLevelMap[entry.id] ?? classLevelMap[entry.id] ?? 0;
-    const casting = spellcastingProgression(entry, classLevel, { abilityScore: entry.spellcasting ? abilities[entry.spellcasting.ability] : 10 });
+    if (!entry.spellcasting || classLevel < 1) return [];
+    let casting;
+    try {
+      casting = spellcastingProgression(entry, classLevel, { abilityScore: abilities[entry.spellcasting.ability] });
+    } catch {
+      // Partial class fixtures and work-in-progress class records may not yet
+      // define a complete casting table. They grant no spell-access feats.
+      return [];
+    }
     const availableSpellLevel = casting ? Math.max(casting.maximumSpellLevel, ...casting.slots.filter((slot) => slot.count > 0).map((slot) => slot.level)) : -1;
     return casting ? spellsAvailableToClass(spells, entry.id, availableSpellLevel, entry.spellListAdditions).map((spell) => spell.id) : [];
   }))], [abilities, classLevelMap, effectiveSpellcastingLevelMap, progressionClasses]);
