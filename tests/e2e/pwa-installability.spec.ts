@@ -137,3 +137,26 @@ test("keeps mobile name typing focused and uses compact accessible controls", as
   const tabRows = await page.locator(".character-tabs [role=tab]").evaluateAll((tabs) => tabs.map((tab) => Math.round(tab.getBoundingClientRect().top)));
   expect(new Set(tabRows).size).toBe(1);
 });
+
+test("manages feat discovery and selection at an Android phone viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("tab", { name: "Feats" }).click();
+
+  await expect(page.getByRole("heading", { name: "Feat manager" })).toBeVisible();
+  await page.getByRole("searchbox", { name: "Search feats" }).fill("Toughness");
+  await expect(page.getByText("1 of 424 feats shown")).toBeVisible();
+
+  const toughness = page.locator(".feat-card").filter({ has: page.locator("summary strong", { hasText: "Toughness" }) });
+  await toughness.locator("summary").click();
+  await expect(toughness.getByText(/Gain 3 hit points/)).toBeVisible();
+  await toughness.getByRole("button", { name: "Add to open slot" }).click();
+  await expect(toughness.getByText("Selected", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Human bonus feat")).toHaveValue("toughness");
+
+  const dimensions = await page.evaluate(() => ({
+    bodyWidth: document.body.scrollWidth,
+    viewportWidth: window.innerWidth,
+  }));
+  expect(dimensions.bodyWidth).toBeLessThanOrEqual(dimensions.viewportWidth);
+});

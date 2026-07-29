@@ -1193,7 +1193,21 @@ test("routes progression review actions to the existing character tabs", async (
   await user.click(screen.getByRole("button", { name: /^Advancement step 1\b/ }));
   await user.click(screen.getByRole("button", { name: "Feats" }));
   assert.equal(screen.getByRole("tab", { name: "Feats" }).getAttribute("aria-selected"), "true");
-  assert.ok(screen.getByRole("heading", { name: "Feat choices" }));
+  assert.ok(screen.getByRole("heading", { name: "Feat manager" }));
+});
+
+test("searches the feat catalog and assigns an eligible feat to an open slot", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.click(screen.getByRole("tab", { name: "Feats" }));
+  const search = screen.getByRole("searchbox", { name: "Search feats" });
+  await user.type(search, "Toughness");
+  assert.match(screen.getByText(/1 of 424 feats shown/).textContent ?? "", /1 of 424/);
+  await user.click(screen.getByText("Toughness", { selector: "summary strong" }));
+  assert.ok(screen.getByText(/Gain 3 hit points/));
+  await user.click(screen.getByRole("button", { name: "Add to open slot" }));
+  assert.ok(screen.getByText("Selected", { selector: ".feat-status" }));
+  assert.equal((screen.getByLabelText("Human bonus feat") as HTMLSelectElement).value, "toughness");
 });
 
 test("opens and closes the responsive character drawer", async () => {
