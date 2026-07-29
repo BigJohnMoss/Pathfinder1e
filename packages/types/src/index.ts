@@ -26,6 +26,7 @@ export interface CharacterDraftV1 {
   abilityBoosts: AbilityName[];
   favoredClassHitPoints: number;
   favoredClassSkillRanks: number;
+  favoredClassAlternateBonuses: Record<string, number>;
   selectedFeatIds: string[];
   selectedTraitIds: string[];
   selectedTraitChoices: Record<string, string>;

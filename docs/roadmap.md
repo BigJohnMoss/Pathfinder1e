@@ -126,10 +126,11 @@ Native store packages for Microsoft Store or Google Play are optional later work
   Advanced Class Guide Arcanist exploits are playable, including level and
   option prerequisites, repeat limits, dependent selections, distinct energy
   choices, and mutually exclusive totem families
-- favoured class bonuses - complete for the universal Core rule: every class
-  level can grant +1 hit point or +1 skill rank, with one-click allocation,
-  level bounds, derived-stat integration, persistence, import normalization,
-  and UI coverage through level 20
+- favoured class bonuses - complete for the universal Core rule and the APG
+  ancestry-specific rewards available to supported Core ancestry/class pairs:
+  rewards can be mixed by class level, fractional rewards round down, bardic
+  performance integrates with daily resources, multiclass bounds use primary
+  favored-class levels, and selections persist through save/load normalization
 
 ## Later milestone: Universal PF1e Builder
 
@@ -156,12 +157,18 @@ Native store packages for Microsoft Store or Google Play are optional later work
   resistance, deflection, and natural-armour items with non-stacking bonuses
   and save/load coverage
 - [x] persisted hit points and round-based temporary effects for active play
-- broader sourcebook coverage
-  - optional ancestry-specific favoured-class rewards
+- [x] broader sourcebook coverage: deliberately scoped additions from the
+  Advanced Player's Guide and Advanced Class Guide now span traits, alternate
+  racial traits, ancestry-specific favoured-class rewards, archetypes,
+  subdomains, bloodlines, mysteries, revelations, exploits, class chassis,
+  equipment, and the generated multi-source spell catalogue
+  - [x] optional ancestry-specific favoured-class rewards for supported Core
+    ancestry/class combinations, including fractional benefit summaries and
+    direct bardic-performance resource integration
 
 ## Working rule
 
-Future work should proceed through optional ancestry-specific favoured-class
-rewards and deliberately scoped sourcebook expansions, while preserving the
-completed Core, Expanded Character Options, Installable Application, and
-Universal builder systems through their validation and browser journey suites.
+Future work should be selected as a new, deliberately scoped milestone while
+preserving the completed Core, Expanded Character Options, Installable
+Application, and Universal builder systems through their validation and browser
+journey suites.
