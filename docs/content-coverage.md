@@ -66,6 +66,7 @@ The catalogue contains sourced feats from the Core Rulebook, Advanced Player's G
 | Oracle mysteries | All ten APG mysteries include granted skills, mystery spells, level-gated revelations and capstones |
 | Browser end-to-end tests | Martial, prepared-caster, spontaneous-caster, prerequisite, persistence and equipment journeys run in Chromium CI |
 | Multiclassing | Complete: arbitrary distinct class entries combine progression, class-specific archetypes and choices, independent spellbooks and resources, feat prerequisites, level-up previews, and save/load restoration |
+| Alternate racial traits | All 50 APG options for the seven Core ancestries are selectable with replacement conflicts, derived-stat recalculation, and persistence |
 | Traits | All 40 APG basic traits are playable with category restrictions, skill choices and class-aware spell choices |
 | Archetypes | All twelve APG Fighter, nine APG Barbarian, nine APG Bard, ten APG Druid, and ten APG Monk archetypes are playable through level 20; Totem Warrior is represented by the complete mutually exclusive totem rage-power families |
 

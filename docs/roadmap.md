@@ -144,8 +144,9 @@ Native store packages for Microsoft Store or Google Play are optional later work
   secondary Bard and Druid resource tracking, highest-class caster-level
   prerequisites, and save/load restoration
 - prestige classes
-- alternate racial traits - in progress: replacement-aware selection,
-  persistence, derived-stat recalculation, and all four APG Human options
+- [x] alternate racial traits: replacement-aware selection, persistence,
+  derived-stat recalculation, and all 50 APG options for the seven Core
+  ancestries
 - advanced equipment and magic items
 - [x] persisted hit points and round-based temporary effects for active play
 - broader sourcebook coverage
