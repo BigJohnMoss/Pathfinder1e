@@ -158,8 +158,9 @@ export interface CharacterAncestry {
     name: string;
     summary: string;
     replaces: string[];
-    source: SourceRef;
+    source?: SourceRef;
   }>;
+  alternateTraitSource?: SourceRef;
   source: SourceRef;
 }
 
