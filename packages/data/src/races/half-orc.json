@@ -1,1 +1,26 @@
-{"id":"half-orc","name":"Half-Orc","size":"medium","speed":30,"type":"humanoid","subtypes":["human","orc"],"abilityModifiers":{"choice":{"count":1,"amount":2}},"languages":{"automatic":["Common","Orc"],"bonus":"Abyssal, Draconic, Giant, Gnoll, Goblin"},"traits":[{"id":"darkvision","name":"Darkvision","summary":"See in darkness up to 60 feet."}],"source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"}}
+{
+  "id":"half-orc","name":"Half-Orc","size":"medium","speed":30,"type":"humanoid","subtypes":["human","orc"],
+  "abilityModifiers":{"choice":{"count":1,"amount":2}},
+  "languages":{"automatic":["Common","Orc"],"bonus":"Abyssal, Draconic, Giant, Gnoll, Goblin"},
+  "traits":[
+    {"id":"darkvision","name":"Darkvision","summary":"See in darkness up to 60 feet."},
+    {"id":"half-orc-intimidating","name":"Intimidating","summary":"Gain +2 Intimidate."},
+    {"id":"half-orc-orc-blood","name":"Orc Blood","summary":"Count as both human and orc for effects related to race."},
+    {"id":"half-orc-orc-ferocity","name":"Orc Ferocity","summary":"Once per day remain conscious and fighting for 1 round when reduced below 0 hit points."},
+    {"id":"half-orc-weapon-familiarity","name":"Weapon Familiarity","summary":"Gain greataxe and falchion proficiency and treat orc weapons as martial."}
+  ],
+  "alternateTraits":[
+    {"id":"half-orc-beastmaster","name":"Beastmaster","summary":"Treat whip and net as martial weapons and gain +2 Handle Animal.","replaces":["half-orc-orc-ferocity"]},
+    {"id":"half-orc-bestial","name":"Bestial","summary":"Gain +2 Perception.","replaces":["half-orc-orc-ferocity"]},
+    {"id":"half-orc-cavewight","name":"Cavewight","summary":"Gain +1 Knowledge (dungeoneering) and Survival underground.","replaces":["half-orc-intimidating"]},
+    {"id":"half-orc-chain-fighter","name":"Chain Fighter","summary":"Gain flail and heavy flail proficiency and treat dire flails and spiked chains as martial.","replaces":["half-orc-weapon-familiarity"]},
+    {"id":"half-orc-gatecrasher","name":"Gatecrasher","summary":"Gain +2 on Strength checks to break objects and +2 on sunder attempts.","replaces":["half-orc-orc-ferocity"]},
+    {"id":"half-orc-plagueborn","name":"Plagueborn","summary":"Gain +2 on saves against disease, ingested poison, nausea, and sickness.","replaces":["half-orc-intimidating","half-orc-orc-ferocity"]},
+    {"id":"half-orc-rock-climber","name":"Rock Climber","summary":"Gain +1 Acrobatics and Climb.","replaces":["half-orc-intimidating"]},
+    {"id":"half-orc-sacred-tattoo","name":"Sacred Tattoo","summary":"Gain +1 luck on all saving throws.","replaces":["half-orc-orc-ferocity"]},
+    {"id":"half-orc-scavenger","name":"Scavenger","summary":"Gain +2 Appraise and specified Perception checks for hidden objects, spoiled food, and potions.","replaces":["half-orc-intimidating"]},
+    {"id":"half-orc-toothy","name":"Toothy","summary":"Gain a primary bite attack dealing 1d4 piercing damage.","replaces":["half-orc-orc-ferocity"]}
+  ],
+  "alternateTraitSource":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#half-orcs"},
+  "source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Orc"}
+}
