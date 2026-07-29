@@ -224,6 +224,28 @@ test("Arcane Archer advances and restores its selected arcane spellbook", async 
   assert.ok(Array.from((screen.getByLabelText("Spell level filter") as HTMLSelectElement).options).some((option) => option.value === "7"));
 });
 
+test("Mystic Theurge selects and restores one arcane and one divine spellbook", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "wizard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "15" } });
+  await user.selectOptions(screen.getByLabelText("Additional class"), "cleric");
+  fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "3" } });
+  await user.click(screen.getByRole("button", { name: "Add another class" }));
+  await user.selectOptions(screen.getByLabelText("Additional class 2"), "mystic-theurge");
+  fireEvent.change(screen.getByLabelText("Additional class 2 levels"), { target: { value: "9" } });
+
+  assert.equal((screen.getByLabelText("Mystic Theurge arcane spellcasting class") as HTMLSelectElement).value, "wizard");
+  assert.equal((screen.getByLabelText("Mystic Theurge divine spellcasting class") as HTMLSelectElement).value, "cleric");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Reset" }));
+  await user.click(screen.getByRole("button", { name: "Load" }));
+
+  await waitFor(() => assert.equal((screen.getByLabelText("Additional class 2") as HTMLSelectElement).value, "mystic-theurge"));
+  assert.equal((screen.getByLabelText("Mystic Theurge arcane spellcasting class") as HTMLSelectElement).value, "wizard");
+  assert.equal((screen.getByLabelText("Mystic Theurge divine spellcasting class") as HTMLSelectElement).value, "cleric");
+});
+
 test("switches between independent multiclass spellbooks", async () => {
   const user = userEvent.setup();
   render(<Home />);

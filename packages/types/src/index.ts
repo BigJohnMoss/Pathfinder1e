@@ -75,6 +75,7 @@ export interface CharacterClass {
     tradition: "arcane" | "divine" | "any";
     levels: number[];
     targetCount?: number;
+    targetTraditions?: Array<"arcane" | "divine">;
   };
   skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
   features: ClassFeatureOccurrence[];

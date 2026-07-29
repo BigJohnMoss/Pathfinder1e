@@ -1,0 +1,57 @@
+{
+  "id": "mystic-theurge",
+  "name": "Mystic Theurge",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 6,
+  "babProgression": "half",
+  "baseAttackBonusByLevel": [0, 1, 1, 2, 2, 3, 3, 4, 4, 5],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 0, "reflex": 0, "will": 1 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 1, "will": 2 },
+    { "fortitude": 1, "reflex": 1, "will": 2 },
+    { "fortitude": 2, "reflex": 2, "will": 3 },
+    { "fortitude": 2, "reflex": 2, "will": 3 },
+    { "fortitude": 2, "reflex": 2, "will": 4 },
+    { "fortitude": 3, "reflex": 3, "will": 4 },
+    { "fortitude": 3, "reflex": 3, "will": 5 },
+    { "fortitude": 3, "reflex": 3, "will": 5 }
+  ],
+  "requirements": [
+    "Knowledge (arcana) 3 ranks and Knowledge (religion) 3 ranks",
+    "Ability to cast 2nd-level divine spells and 2nd-level arcane spells"
+  ],
+  "spellcastingAdvancement": {
+    "tradition": "any",
+    "targetTraditions": ["arcane", "divine"],
+    "targetCount": 2,
+    "levels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  "skillRanksPerLevel": 2,
+  "classSkills": ["Knowledge (arcana)", "Knowledge (religion)", "Sense Motive", "Spellcraft"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/mysticTheurge.html"
+  },
+  "features": [
+    { "id": "mystic-theurge-combined-spells-1", "name": "Combined Spells (1st)", "level": 1, "type": "scaling", "summary": "Prepare or cast a 1st-level spell from one spellcasting class using a 2nd-level slot from the other.", "progressionKey": "mystic-theurge-combined-spells" },
+    { "id": "mystic-theurge-spellcasting-1", "name": "Arcane and Divine Spellcasting +1", "level": 1, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-spellcasting-2", "name": "Arcane and Divine Spellcasting +1", "level": 2, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-combined-spells-3", "name": "Combined Spells (2nd)", "level": 3, "type": "scaling", "summary": "Use cross-class slots for spells through 2nd level.", "progressionKey": "mystic-theurge-combined-spells" },
+    { "id": "mystic-theurge-spellcasting-3", "name": "Arcane and Divine Spellcasting +1", "level": 3, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-spellcasting-4", "name": "Arcane and Divine Spellcasting +1", "level": 4, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-combined-spells-5", "name": "Combined Spells (3rd)", "level": 5, "type": "scaling", "summary": "Use cross-class slots for spells through 3rd level.", "progressionKey": "mystic-theurge-combined-spells" },
+    { "id": "mystic-theurge-spellcasting-5", "name": "Arcane and Divine Spellcasting +1", "level": 5, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-spellcasting-6", "name": "Arcane and Divine Spellcasting +1", "level": 6, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-combined-spells-7", "name": "Combined Spells (4th)", "level": 7, "type": "scaling", "summary": "Use cross-class slots for spells through 4th level.", "progressionKey": "mystic-theurge-combined-spells" },
+    { "id": "mystic-theurge-spellcasting-7", "name": "Arcane and Divine Spellcasting +1", "level": 7, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-spellcasting-8", "name": "Arcane and Divine Spellcasting +1", "level": 8, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-combined-spells-9", "name": "Combined Spells (5th)", "level": 9, "type": "scaling", "summary": "Use cross-class slots for spells through 5th level.", "progressionKey": "mystic-theurge-combined-spells" },
+    { "id": "mystic-theurge-spellcasting-9", "name": "Arcane and Divine Spellcasting +1", "level": 9, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." },
+    { "id": "mystic-theurge-spell-synthesis-10", "name": "Spell Synthesis", "level": 10, "type": "capstone", "summary": "Once per day, cast one arcane and one divine spell with the same casting time as one action.", "uses": "1/day" },
+    { "id": "mystic-theurge-spellcasting-10", "name": "Arcane and Divine Spellcasting +1", "level": 10, "type": "spellcasting", "summary": "Advance one existing arcane class and one existing divine class." }
+  ]
+}
