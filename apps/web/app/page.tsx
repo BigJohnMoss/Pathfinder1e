@@ -14,7 +14,7 @@ import { ClassOptions } from "./class-options";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { CharacterTabs, type CharacterTabId } from "./character-tabs";
 import { TraitChoices } from "./trait-choices";
-import { EquipmentPanel, equipmentArmorBonus, type CoinPurse, type InventoryEntry } from "./equipment-panel";
+import { EquipmentPanel, equipmentCombatBonuses, type CoinPurse, type InventoryEntry } from "./equipment-panel";
 import { LevelUpPanel } from "./level-up-panel";
 import { ActivePlayPanel } from "./active-play-panel";
 import { FavoredClassBonus } from "./favored-class-bonus";
@@ -206,20 +206,20 @@ export default function Home() {
     { level, skillRanks }
   ), [level, selectedClassFeatIds, selectedFeatChoices, selectedFeatIds, skillRanks]);
   const combat = useMemo(() => {
-    const armorBonus = equipmentArmorBonus(inventory);
+    const equipmentBonuses = equipmentCombatBonuses(inventory);
     const activeBonus = (target: ActiveEffect["target"]) => activeEffects.filter(effect => effect.target === target).reduce((total, effect) => total + effect.bonus, 0);
     return {
       ...baseCombat,
       initiative: baseCombat.initiative + selectedTraitBonuses.initiative + selectedFeatBonuses.initiative + activeBonus("initiative"),
       saves: {
-        fortitude: baseCombat.saves.fortitude + selectedTraitBonuses.saves.fortitude + selectedFeatBonuses.saves.fortitude + activeBonus("fortitude"),
-        reflex: baseCombat.saves.reflex + selectedTraitBonuses.saves.reflex + selectedFeatBonuses.saves.reflex + activeBonus("reflex"),
-        will: baseCombat.saves.will + selectedTraitBonuses.saves.will + selectedFeatBonuses.saves.will + activeBonus("will")
+        fortitude: baseCombat.saves.fortitude + selectedTraitBonuses.saves.fortitude + selectedFeatBonuses.saves.fortitude + equipmentBonuses.saves.fortitude + activeBonus("fortitude"),
+        reflex: baseCombat.saves.reflex + selectedTraitBonuses.saves.reflex + selectedFeatBonuses.saves.reflex + equipmentBonuses.saves.reflex + activeBonus("reflex"),
+        will: baseCombat.saves.will + selectedTraitBonuses.saves.will + selectedFeatBonuses.saves.will + equipmentBonuses.saves.will + activeBonus("will")
       },
       armorClass: {
-        normal: baseCombat.armorClass.normal + armorBonus + selectedFeatBonuses.armorClass.normal + activeBonus("armorClass"),
-        touch: baseCombat.armorClass.touch + selectedFeatBonuses.armorClass.touch + activeBonus("armorClass"),
-        flatFooted: baseCombat.armorClass.flatFooted + armorBonus + selectedFeatBonuses.armorClass.flatFooted + activeBonus("armorClass")
+        normal: baseCombat.armorClass.normal + equipmentBonuses.armorClass.normal + selectedFeatBonuses.armorClass.normal + activeBonus("armorClass"),
+        touch: baseCombat.armorClass.touch + equipmentBonuses.armorClass.touch + selectedFeatBonuses.armorClass.touch + activeBonus("armorClass"),
+        flatFooted: baseCombat.armorClass.flatFooted + equipmentBonuses.armorClass.flatFooted + selectedFeatBonuses.armorClass.flatFooted + activeBonus("armorClass")
       },
       averageHitPoints: baseCombat.averageHitPoints + selectedFeatBonuses.hitPoints + favoredClassHitPoints
     };

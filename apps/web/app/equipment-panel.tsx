@@ -1,8 +1,20 @@
 import { encumbrance } from "../../../packages/engine/src/index.js";
 
-export type InventoryEntry = { itemId: string; quantity: number; equipped: boolean };
+export type InventoryEntry = { itemId: string; quantity: number; equipped: boolean; enhancementBonus?: number };
 export type CoinPurse = { cp: number; sp: number; gp: number; pp: number };
-type EquipmentItem = { id: string; name: string; category: "armor" | "shield" | "weapon" | "gear"; costGp: number; weight: number; armorBonus?: number; damage?: string; critical?: string; range?: number; ranged?: boolean };
+type EquipmentItem = {
+  id: string;
+  name: string;
+  category: "armor" | "shield" | "weapon" | "gear" | "magic";
+  costGp: number;
+  weight: number;
+  armorBonus?: number;
+  damage?: string;
+  critical?: string;
+  range?: number;
+  ranged?: boolean;
+  magicBonus?: { armorClass?: { deflection?: number; natural?: number }; saves?: number };
+};
 
 export const equipmentItems: EquipmentItem[] = [
   { id: "backpack", name: "Backpack", category: "gear", costGp: 2, weight: 2 },
@@ -12,17 +24,63 @@ export const equipmentItems: EquipmentItem[] = [
   { id: "trail-rations", name: "Trail rations (1 day)", category: "gear", costGp: 0.5, weight: 1 },
   { id: "waterskin", name: "Waterskin", category: "gear", costGp: 1, weight: 4 },
   { id: "dagger", name: "Dagger", category: "weapon", costGp: 2, weight: 1, damage: "1d4", critical: "19–20/×2", range: 10 },
+  { id: "shortsword", name: "Shortsword", category: "weapon", costGp: 10, weight: 2, damage: "1d6", critical: "19–20/×2" },
+  { id: "rapier", name: "Rapier", category: "weapon", costGp: 20, weight: 2, damage: "1d6", critical: "18–20/×2" },
   { id: "longsword", name: "Longsword", category: "weapon", costGp: 15, weight: 4, damage: "1d8", critical: "19–20/×2" },
+  { id: "greatsword", name: "Greatsword", category: "weapon", costGp: 50, weight: 8, damage: "2d6", critical: "19–20/×2" },
+  { id: "greataxe", name: "Greataxe", category: "weapon", costGp: 20, weight: 12, damage: "1d12", critical: "×3" },
+  { id: "light-crossbow", name: "Light crossbow", category: "weapon", costGp: 35, weight: 4, damage: "1d8", critical: "19–20/×2", range: 80, ranged: true },
   { id: "longbow", name: "Longbow", category: "weapon", costGp: 75, weight: 3, damage: "1d8", critical: "×3", range: 100, ranged: true },
+  { id: "padded-armor", name: "Padded armor", category: "armor", costGp: 5, weight: 10, armorBonus: 1 },
   { id: "leather-armor", name: "Leather armor", category: "armor", costGp: 10, weight: 15, armorBonus: 2 },
+  { id: "studded-leather", name: "Studded leather", category: "armor", costGp: 25, weight: 20, armorBonus: 3 },
   { id: "chain-shirt", name: "Chain shirt", category: "armor", costGp: 100, weight: 25, armorBonus: 4 },
-  { id: "heavy-wooden-shield", name: "Heavy wooden shield", category: "shield", costGp: 7, weight: 10, armorBonus: 2 }
+  { id: "breastplate", name: "Breastplate", category: "armor", costGp: 200, weight: 30, armorBonus: 6 },
+  { id: "full-plate", name: "Full plate", category: "armor", costGp: 1500, weight: 50, armorBonus: 9 },
+  { id: "light-wooden-shield", name: "Light wooden shield", category: "shield", costGp: 3, weight: 5, armorBonus: 1 },
+  { id: "heavy-wooden-shield", name: "Heavy wooden shield", category: "shield", costGp: 7, weight: 10, armorBonus: 2 },
+  { id: "cloak-resistance-1", name: "Cloak of resistance +1", category: "magic", costGp: 1000, weight: 1, magicBonus: { saves: 1 } },
+  { id: "cloak-resistance-2", name: "Cloak of resistance +2", category: "magic", costGp: 4000, weight: 1, magicBonus: { saves: 2 } },
+  { id: "cloak-resistance-3", name: "Cloak of resistance +3", category: "magic", costGp: 9000, weight: 1, magicBonus: { saves: 3 } },
+  { id: "ring-protection-1", name: "Ring of protection +1", category: "magic", costGp: 2000, weight: 0, magicBonus: { armorClass: { deflection: 1 } } },
+  { id: "ring-protection-2", name: "Ring of protection +2", category: "magic", costGp: 8000, weight: 0, magicBonus: { armorClass: { deflection: 2 } } },
+  { id: "ring-protection-3", name: "Ring of protection +3", category: "magic", costGp: 18000, weight: 0, magicBonus: { armorClass: { deflection: 3 } } },
+  { id: "amulet-natural-armor-1", name: "Amulet of natural armor +1", category: "magic", costGp: 2000, weight: 0, magicBonus: { armorClass: { natural: 1 } } },
+  { id: "amulet-natural-armor-2", name: "Amulet of natural armor +2", category: "magic", costGp: 8000, weight: 0, magicBonus: { armorClass: { natural: 2 } } }
 ];
 
-export const equipmentArmorBonus = (inventory: InventoryEntry[]) => inventory.reduce((total, entry) => {
+export const equipmentMarketPrice = (entry: InventoryEntry) => {
   const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
-  return total + (entry.equipped ? item?.armorBonus ?? 0 : 0);
-}, 0);
+  if (!item) return 0;
+  const enhancement = Math.max(0, Math.min(5, entry.enhancementBonus ?? 0));
+  const magicPrice = item.category === "weapon"
+    ? enhancement ** 2 * 2000 + (enhancement > 0 ? 300 : 0)
+    : ["armor", "shield"].includes(item.category)
+      ? enhancement ** 2 * 1000 + (enhancement > 0 ? 150 : 0)
+      : 0;
+  return item.costGp + magicPrice;
+};
+
+export const equipmentCombatBonuses = (inventory: InventoryEntry[]) => {
+  let armor = 0;
+  let deflection = 0;
+  let natural = 0;
+  let resistance = 0;
+  for (const entry of inventory.filter((candidate) => candidate.equipped)) {
+    const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
+    if (!item) continue;
+    armor += (item.armorBonus ?? 0) + (["armor", "shield"].includes(item.category) ? entry.enhancementBonus ?? 0 : 0);
+    deflection = Math.max(deflection, item.magicBonus?.armorClass?.deflection ?? 0);
+    natural = Math.max(natural, item.magicBonus?.armorClass?.natural ?? 0);
+    resistance = Math.max(resistance, item.magicBonus?.saves ?? 0);
+  }
+  return {
+    armorClass: { normal: armor + deflection + natural, touch: deflection, flatFooted: armor + deflection + natural },
+    saves: { fortitude: resistance, reflex: resistance, will: resistance }
+  };
+};
+
+export const equipmentArmorBonus = (inventory: InventoryEntry[]) => equipmentCombatBonuses(inventory).armorClass.normal;
 
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
 
@@ -68,9 +126,11 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
       if (!item) return null;
       const equippable = item.category !== "gear";
       const featBonus = weaponBonuses[item.id] ?? weaponBonuses[item.name.toLowerCase()] ?? { attack: 0, damage: 0 };
-      const attack = item.damage ? baseAttackBonus + (item.ranged ? dexterityModifier : strengthModifier) + featBonus.attack : null;
-      const damageBonus = (item.ranged ? 0 : strengthModifier) + featBonus.damage;
-      return <article key={entry.itemId}><div><strong>{item.name}</strong><span>{item.category} · {item.weight * entry.quantity} lb. · {item.costGp * entry.quantity} gp</span>{attack !== null && <small>Attack {signed(attack)} · Damage {item.damage}{damageBonus !== 0 ? ` ${signed(damageBonus)}` : ""} · Critical {item.critical ?? "×2"}{item.range ? ` · Range ${item.range} ft.` : ""}</small>}</div><label>Qty<input aria-label={`${item.name} quantity`} type="number" min="1" max="999" value={entry.quantity} onChange={(event) => updateEntry(entry.itemId, { quantity: Math.max(1, Math.min(999, Number.parseInt(event.target.value, 10) || 1)) })} /></label>{equippable && <label className="equip-toggle"><input type="checkbox" checked={entry.equipped} onChange={(event) => equip(entry, item, event.target.checked)} />Equipped</label>}<button type="button" onClick={() => removeEntry(entry.itemId)}>Remove</button></article>;
+      const enhancement = entry.enhancementBonus ?? 0;
+      const attack = item.damage ? baseAttackBonus + (item.ranged ? dexterityModifier : strengthModifier) + featBonus.attack + enhancement : null;
+      const damageBonus = (item.ranged ? 0 : strengthModifier) + featBonus.damage + enhancement;
+      const enhanceable = ["weapon", "armor", "shield"].includes(item.category);
+      return <article key={entry.itemId}><div><strong>{item.name}{enhancement > 0 ? ` +${enhancement}` : ""}</strong><span>{item.category} · {item.weight * entry.quantity} lb. · {equipmentMarketPrice(entry) * entry.quantity} gp</span>{attack !== null && <small>Attack {signed(attack)} · Damage {item.damage}{damageBonus !== 0 ? ` ${signed(damageBonus)}` : ""} · Critical {item.critical ?? "×2"}{item.range ? ` · Range ${item.range} ft.` : ""}</small>}</div><label>Qty<input aria-label={`${item.name} quantity`} type="number" min="1" max="999" value={entry.quantity} onChange={(event) => updateEntry(entry.itemId, { quantity: Math.max(1, Math.min(999, Number.parseInt(event.target.value, 10) || 1)) })} /></label>{enhanceable && <label>Enhancement<select aria-label={`${item.name} enhancement`} value={enhancement} onChange={(event) => updateEntry(entry.itemId, { enhancementBonus: Number(event.target.value) })}>{Array.from({ length: 6 }, (_, bonus) => <option key={bonus} value={bonus}>{bonus === 0 ? "Mundane" : `+${bonus}`}</option>)}</select></label>}{equippable && <label className="equip-toggle"><input type="checkbox" checked={entry.equipped} onChange={(event) => equip(entry, item, event.target.checked)} />Equipped</label>}<button type="button" onClick={() => removeEntry(entry.itemId)}>Remove</button></article>;
     })}</div>}
   </section>;
 }

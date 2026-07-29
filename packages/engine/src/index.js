@@ -322,7 +322,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
       Number.isInteger(effect.bonus) && effect.bonus >= -20 && effect.bonus <= 20 &&
       Number.isInteger(effect.roundsRemaining) && effect.roundsRemaining > 0
     ).slice(0, 20).map(effect => ({ id: effect.id.slice(0, 80), name: effect.name.trim().slice(0, 80), target: effect.target, bonus: effect.bonus, roundsRemaining: Math.min(999, effect.roundsRemaining) })) : [],
-    inventory: Array.isArray(draft.inventory) ? draft.inventory.filter(entry => entry && typeof entry.itemId === "string" && Number.isInteger(entry.quantity) && entry.quantity > 0).map(entry => ({ itemId: entry.itemId, quantity: Math.min(999, entry.quantity), equipped: entry.equipped === true })) : [],
+    inventory: Array.isArray(draft.inventory) ? draft.inventory.filter(entry => entry && typeof entry.itemId === "string" && Number.isInteger(entry.quantity) && entry.quantity > 0).map(entry => ({ itemId: entry.itemId, quantity: Math.min(999, entry.quantity), equipped: entry.equipped === true, ...(Number.isInteger(entry.enhancementBonus) && entry.enhancementBonus > 0 ? { enhancementBonus: Math.min(5, entry.enhancementBonus) } : {}) })) : [],
     coins: Object.fromEntries(["cp", "sp", "gp", "pp"].map(coin => [coin, Number.isInteger(draft.coins?.[coin]) && draft.coins[coin] >= 0 ? draft.coins[coin] : 0]))
   };
 }
