@@ -97,7 +97,7 @@ export function FavoredClassBonus({ ancestryId, ancestryName, classId, className
       <label>Bonus hit points<input aria-label="Favored class bonus hit points" type="number" min="0" max={hitPoints + remaining} value={hitPoints} onChange={event => update(Number(event.target.value) || 0, skillRanks)} /></label>
       <label>Bonus skill ranks<input aria-label="Favored class bonus skill ranks" type="number" min="0" max={skillRanks + remaining} value={skillRanks} onChange={event => update(hitPoints, Number(event.target.value) || 0)} /></label>
       {rewards.map((reward) => <label key={reward.id}>{reward.label}
-        <input aria-label={`${reward.label} favored class levels`} type="number" min="0" max={(alternateBonuses[reward.id] ?? 0) + remaining} value={alternateBonuses[reward.id] ?? 0} onChange={event => updateReward(reward.id, Number(event.target.value))} />
+        <input aria-label={`${reward.label} favored class allocation`} type="number" min="0" max={(alternateBonuses[reward.id] ?? 0) + remaining} value={alternateBonuses[reward.id] ?? 0} onChange={event => updateReward(reward.id, Number(event.target.value))} />
         <span className="hint">{reward.description} Current benefit: +{alternateRewardValue(reward, alternateBonuses[reward.id] ?? 0)}.</span>
       </label>)}
     </div>

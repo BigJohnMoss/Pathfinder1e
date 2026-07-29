@@ -192,7 +192,7 @@ test("allocates ancestry-specific favored class rewards and applies daily resour
   await user.selectOptions(screen.getByLabelText("Class"), "bard");
   await user.selectOptions(screen.getByLabelText("Ancestry"), "gnome");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
-  fireEvent.change(screen.getByLabelText("Bardic performance favored class levels"), { target: { value: "3" } });
+  fireEvent.change(screen.getByLabelText("Bardic performance favored class allocation"), { target: { value: "3" } });
   assert.match(document.querySelector(".favored-class-bonus > p.hint")?.textContent ?? "", /3 of 3 favored-class bonuses assigned/);
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "12/12 round remaining");
