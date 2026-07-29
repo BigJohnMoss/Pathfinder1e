@@ -1,0 +1,62 @@
+{
+  "id": "arcane-trickster",
+  "name": "Arcane Trickster",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 6,
+  "babProgression": "half",
+  "baseAttackBonusByLevel": [0, 1, 1, 2, 2, 3, 3, 4, 4, 5],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 0, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 2, "will": 2 },
+    { "fortitude": 1, "reflex": 2, "will": 2 },
+    { "fortitude": 2, "reflex": 3, "will": 3 },
+    { "fortitude": 2, "reflex": 3, "will": 3 },
+    { "fortitude": 2, "reflex": 4, "will": 4 },
+    { "fortitude": 3, "reflex": 4, "will": 4 },
+    { "fortitude": 3, "reflex": 5, "will": 5 },
+    { "fortitude": 3, "reflex": 5, "will": 5 }
+  ],
+  "requirements": [
+    "Any nonlawful alignment",
+    "Disable Device 4 ranks, Escape Artist 4 ranks, and Knowledge (arcana) 4 ranks",
+    "Ability to cast mage hand and at least one 2nd-level arcane spell",
+    "Sneak attack +2d6"
+  ],
+  "spellcastingAdvancement": {
+    "tradition": "arcane",
+    "levels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  "skillRanksPerLevel": 4,
+  "classSkills": ["Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy", "Disable Device", "Disguise", "Escape Artist", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Perception", "Sense Motive", "Sleight of Hand", "Spellcraft", "Stealth", "Swim"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/arcaneTrickster.html"
+  },
+  "features": [
+    { "id": "arcane-trickster-ranged-legerdemain-1", "name": "Ranged Legerdemain", "level": 1, "type": "core", "summary": "Use Disable Device and Sleight of Hand at 30 feet with a +5 DC and without taking 10." },
+    { "id": "arcane-trickster-spellcasting-1", "name": "Existing Arcane Spellcasting +1", "level": 1, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-sneak-attack-2", "name": "Sneak Attack +1d6", "level": 2, "type": "scaling", "summary": "Increase sneak attack damage by 1d6.", "progressionKey": "arcane-trickster-sneak-attack" },
+    { "id": "arcane-trickster-spellcasting-2", "name": "Existing Arcane Spellcasting +1", "level": 2, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-impromptu-sneak-attack-3", "name": "Impromptu Sneak Attack", "level": 3, "type": "scaling", "summary": "Declare one attack per day a sneak attack and deny the target Dexterity to AC against it.", "uses": "1/day" },
+    { "id": "arcane-trickster-spellcasting-3", "name": "Existing Arcane Spellcasting +1", "level": 3, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-sneak-attack-4", "name": "Sneak Attack +2d6", "level": 4, "type": "scaling", "summary": "Increase total Arcane Trickster sneak attack damage to 2d6.", "progressionKey": "arcane-trickster-sneak-attack" },
+    { "id": "arcane-trickster-spellcasting-4", "name": "Existing Arcane Spellcasting +1", "level": 4, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-tricky-spells-5", "name": "Tricky Spells", "level": 5, "type": "scaling", "summary": "Cast without verbal or somatic components without changing spell level or casting time.", "uses": "3/day; 4/day at 7th and 5/day at 9th" },
+    { "id": "arcane-trickster-spellcasting-5", "name": "Existing Arcane Spellcasting +1", "level": 5, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-sneak-attack-6", "name": "Sneak Attack +3d6", "level": 6, "type": "scaling", "summary": "Increase total Arcane Trickster sneak attack damage to 3d6.", "progressionKey": "arcane-trickster-sneak-attack" },
+    { "id": "arcane-trickster-spellcasting-6", "name": "Existing Arcane Spellcasting +1", "level": 6, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-impromptu-sneak-attack-7", "name": "Impromptu Sneak Attack 2/day", "level": 7, "type": "scaling", "summary": "Use Impromptu Sneak Attack twice per day.", "uses": "2/day" },
+    { "id": "arcane-trickster-spellcasting-7", "name": "Existing Arcane Spellcasting +1", "level": 7, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-sneak-attack-8", "name": "Sneak Attack +4d6", "level": 8, "type": "scaling", "summary": "Increase total Arcane Trickster sneak attack damage to 4d6.", "progressionKey": "arcane-trickster-sneak-attack" },
+    { "id": "arcane-trickster-spellcasting-8", "name": "Existing Arcane Spellcasting +1", "level": 8, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-invisible-thief-9", "name": "Invisible Thief", "level": 9, "type": "core", "summary": "Become greater invisible as a free action for up to your class level in rounds per day.", "uses": "10 rounds/day at 10th" },
+    { "id": "arcane-trickster-spellcasting-9", "name": "Existing Arcane Spellcasting +1", "level": 9, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "arcane-trickster-surprise-spells-10", "name": "Surprise Spells", "level": 10, "type": "capstone", "summary": "Add sneak attack damage to hit-point-damaging spells against flat-footed targets." },
+    { "id": "arcane-trickster-sneak-attack-10", "name": "Sneak Attack +5d6", "level": 10, "type": "scaling", "summary": "Increase total Arcane Trickster sneak attack damage to 5d6.", "progressionKey": "arcane-trickster-sneak-attack" },
+    { "id": "arcane-trickster-spellcasting-10", "name": "Existing Arcane Spellcasting +1", "level": 10, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." }
+  ]
+}
