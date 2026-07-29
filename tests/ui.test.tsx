@@ -186,6 +186,21 @@ test("builds, calculates, and restores a multiclass character", async () => {
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
 });
 
+test("allocates ancestry-specific favored class rewards and applies daily resources", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  await user.selectOptions(screen.getByLabelText("Ancestry"), "gnome");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  fireEvent.change(screen.getByLabelText("Bardic performance favored class allocation"), { target: { value: "3" } });
+  assert.match(document.querySelector(".favored-class-bonus > p.hint")?.textContent ?? "", /3 of 3 favored-class bonuses assigned/);
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "12/12 round remaining");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.deepEqual(saved.favoredClassAlternateBonuses, { "gnome-bard-performance": 3 });
+});
+
 test("adds Arcane Archer only as a capped prestige class and shows its entry requirements", async () => {
   const user = userEvent.setup();
   render(<Home />);
