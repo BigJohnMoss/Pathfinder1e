@@ -22,7 +22,7 @@ export function AbilityEditor({ abilityNames, ancestryName, choiceAbility, choic
 }) {
   const remaining = pointBuyBudget - pointBuySpent;
   const [draftScores, setDraftScores] = useState<Record<AbilityName, string>>(() => Object.fromEntries(abilityNames.map((ability) => [ability, String(baseAbilities[ability])])) as Record<AbilityName, string>);
-  useEffect(() => setDraftScores(Object.fromEntries(abilityNames.map((ability) => [ability, String(baseAbilities[ability])])) as Record<AbilityName, string>), [abilityNames, baseAbilities]);
+  useEffect(() => setDraftScores((current) => Object.fromEntries(abilityNames.map((ability) => [ability, current[ability] === "" ? "" : String(baseAbilities[ability])])) as Record<AbilityName, string>), [abilityNames, baseAbilities]);
   const editScore = (ability: AbilityName, rawValue: string) => {
     setDraftScores((current) => ({ ...current, [ability]: rawValue }));
     if (!/^\d{1,2}$/.test(rawValue)) return;
@@ -30,7 +30,9 @@ export function AbilityEditor({ abilityNames, ancestryName, choiceAbility, choic
     if (score >= 7 && score <= 18) onAbilityChange(ability, score);
   };
   const finishScore = (ability: AbilityName) => {
-    const score = Number(draftScores[ability]);
+    const draft = draftScores[ability].trim();
+    if (draft === "") return;
+    const score = Number(draft);
     const normalized = Number.isFinite(score) ? Math.max(7, Math.min(18, score)) : baseAbilities[ability];
     setDraftScores((current) => ({ ...current, [ability]: String(normalized) }));
     if (normalized !== baseAbilities[ability]) onAbilityChange(ability, normalized);
