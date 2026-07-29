@@ -24,3 +24,23 @@ test("Duelist, Eldritch Knight, and Loremaster expose complete Core prestige tab
   assert.deepEqual(effectiveSpellcastingLevels([wizard, eldritchKnight], [{ classId: "wizard", level: 5 }, { classId: "eldritch-knight", level: 10 }]), { wizard: 14 });
   assert.deepEqual(effectiveSpellcastingLevels([cleric, loremaster], [{ classId: "cleric", level: 7 }, { classId: "loremaster", level: 10 }]), { cleric: 17 });
 });
+
+test("Mystic Theurge advances one arcane and one divine class while the final Core prestige tables remain complete", async () => {
+  const [wizard, sorcerer, cleric, mysticTheurge, pathfinderChronicler, shadowdancer] = await Promise.all([
+    load("wizard"),
+    load("sorcerer"),
+    load("cleric"),
+    load("mystic-theurge"),
+    load("pathfinder-chronicler"),
+    load("shadowdancer")
+  ]);
+  for (const prestige of [mysticTheurge, pathfinderChronicler, shadowdancer]) {
+    assert.equal(prestige.classType, "prestige");
+    assert.equal(prestige.maximumLevel, 10);
+    assert.equal(prestige.baseAttackBonusByLevel.length, 10);
+    assert.equal(prestige.savesByLevel.length, 10);
+    assert.ok(prestige.features.some((feature) => feature.level === 10));
+  }
+  assert.deepEqual(effectiveSpellcastingLevels([wizard, cleric, mysticTheurge], [{ classId: "wizard", level: 3 }, { classId: "cleric", level: 3 }, { classId: "mystic-theurge", level: 10 }]), { wizard: 13, cleric: 13 });
+  assert.deepEqual(effectiveSpellcastingLevels([wizard, sorcerer, cleric, mysticTheurge], [{ classId: "wizard", level: 3 }, { classId: "sorcerer", level: 3 }, { classId: "cleric", level: 3 }, { classId: "mystic-theurge", level: 6 }], { "mystic-theurge": ["sorcerer", "cleric"] }), { wizard: 3, sorcerer: 9, cleric: 9 });
+});
