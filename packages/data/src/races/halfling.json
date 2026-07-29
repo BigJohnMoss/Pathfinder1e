@@ -1,1 +1,24 @@
-{"id":"halfling","name":"Halfling","size":"small","speed":20,"type":"humanoid","subtypes":["halfling"],"abilityModifiers":{"fixed":{"dexterity":2,"charisma":2,"strength":-2}},"languages":{"automatic":["Common","Halfling"],"bonus":"Dwarven, Elven, Gnome, Goblin"},"traits":[{"id":"fearless","name":"Fearless","summary":"Gain a +2 racial bonus on saving throws against fear."}],"source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"}}
+{
+  "id":"halfling","name":"Halfling","size":"small","speed":20,"type":"humanoid","subtypes":["halfling"],
+  "abilityModifiers":{"fixed":{"dexterity":2,"charisma":2,"strength":-2}},
+  "languages":{"automatic":["Common","Halfling"],"bonus":"Dwarven, Elven, Gnome, Goblin"},
+  "traits":[
+    {"id":"halfling-fearless","name":"Fearless","summary":"Gain +2 on saving throws against fear."},
+    {"id":"halfling-luck","name":"Halfling Luck","summary":"Gain +1 on all saving throws."},
+    {"id":"halfling-keen-senses","name":"Keen Senses","summary":"Gain +2 Perception."},
+    {"id":"halfling-sure-footed","name":"Sure-Footed","summary":"Gain +2 Acrobatics and Climb."},
+    {"id":"halfling-weapon-familiarity","name":"Weapon Familiarity","summary":"Gain sling proficiency and treat halfling weapons as martial."}
+  ],
+  "alternateTraits":[
+    {"id":"halfling-craven","name":"Craven","summary":"Gain +1 initiative and flanking attacks, but take penalties against fear; fear also increases speed and AC.","replaces":["halfling-fearless","halfling-luck"]},
+    {"id":"halfling-low-blow","name":"Low Blow","summary":"Gain +1 on critical confirmation rolls against larger opponents.","replaces":["halfling-keen-senses"]},
+    {"id":"halfling-outrider","name":"Outrider","summary":"Gain +2 Handle Animal and Ride.","replaces":["halfling-sure-footed"]},
+    {"id":"halfling-practicality","name":"Practicality","summary":"Gain +2 on one Craft or Profession skill, Sense Motive, and saves against illusions.","replaces":["halfling-fearless","halfling-sure-footed"]},
+    {"id":"halfling-swift-as-shadows","name":"Swift as Shadows","summary":"Reduce the Stealth penalty while moving by 5 and the sniping penalty by 10.","replaces":["halfling-sure-footed"]},
+    {"id":"halfling-underfoot","name":"Underfoot","summary":"Gain +1 dodge AC against larger foes and +1 Reflex against trample.","replaces":["halfling-luck"]},
+    {"id":"halfling-wanderlust","name":"Wanderlust","summary":"Gain +2 Knowledge (geography) and Survival and count caster level as one higher for movement effects.","replaces":["halfling-fearless","halfling-luck"]},
+    {"id":"halfling-warslinger","name":"Warslinger","summary":"Reload a sling as a free action while using two hands and provoking normally.","replaces":["halfling-sure-footed"]}
+  ],
+  "alternateTraitSource":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#halflings"},
+  "source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Halfling"}
+}
