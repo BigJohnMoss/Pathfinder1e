@@ -1,0 +1,53 @@
+{
+  "id": "eldritch-knight",
+  "name": "Eldritch Knight",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 10,
+  "babProgression": "full",
+  "baseAttackBonusByLevel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 1, "reflex": 0, "will": 0 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 2, "reflex": 1, "will": 1 },
+    { "fortitude": 2, "reflex": 1, "will": 1 },
+    { "fortitude": 3, "reflex": 2, "will": 2 },
+    { "fortitude": 3, "reflex": 2, "will": 2 },
+    { "fortitude": 4, "reflex": 2, "will": 2 },
+    { "fortitude": 4, "reflex": 3, "will": 3 },
+    { "fortitude": 5, "reflex": 3, "will": 3 },
+    { "fortitude": 5, "reflex": 3, "will": 3 }
+  ],
+  "requirements": [
+    "Proficiency with all martial weapons",
+    "Ability to cast 3rd-level arcane spells"
+  ],
+  "spellcastingAdvancement": {
+    "tradition": "arcane",
+    "levels": [2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  "skillRanksPerLevel": 2,
+  "classSkills": ["Climb", "Knowledge (arcana)", "Knowledge (nobility)", "Linguistics", "Ride", "Sense Motive", "Spellcraft", "Swim"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/eldritchKnight.html"
+  },
+  "features": [
+    { "id": "eldritch-knight-bonus-combat-feat-1", "name": "Bonus Combat Feat", "level": 1, "type": "bonus-feat", "summary": "Gain a combat feat for which you meet the prerequisites." },
+    { "id": "eldritch-knight-diverse-training-1", "name": "Diverse Training", "level": 1, "type": "core", "summary": "Add Eldritch Knight levels to Fighter levels for feat prerequisites and to an arcane class for feat-granting class features." },
+    { "id": "eldritch-knight-spellcasting-2", "name": "Existing Arcane Spellcasting +1", "level": 2, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "eldritch-knight-spellcasting-3", "name": "Existing Arcane Spellcasting +1", "level": 3, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "eldritch-knight-spellcasting-4", "name": "Existing Arcane Spellcasting +1", "level": 4, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "eldritch-knight-bonus-combat-feat-5", "name": "Bonus Combat Feat", "level": 5, "type": "bonus-feat", "summary": "Gain another combat feat for which you meet the prerequisites." },
+    { "id": "eldritch-knight-spellcasting-5", "name": "Existing Arcane Spellcasting +1", "level": 5, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "eldritch-knight-spellcasting-6", "name": "Existing Arcane Spellcasting +1", "level": 6, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "eldritch-knight-spellcasting-7", "name": "Existing Arcane Spellcasting +1", "level": 7, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "eldritch-knight-spellcasting-8", "name": "Existing Arcane Spellcasting +1", "level": 8, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "eldritch-knight-bonus-combat-feat-9", "name": "Bonus Combat Feat", "level": 9, "type": "bonus-feat", "summary": "Gain another combat feat for which you meet the prerequisites." },
+    { "id": "eldritch-knight-spellcasting-9", "name": "Existing Arcane Spellcasting +1", "level": 9, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." },
+    { "id": "eldritch-knight-spell-critical-10", "name": "Spell Critical", "level": 10, "type": "capstone", "summary": "After confirming a critical hit, cast a spell as a swift action once per round.", "uses": "Once per round" },
+    { "id": "eldritch-knight-spellcasting-10", "name": "Existing Arcane Spellcasting +1", "level": 10, "type": "spellcasting", "summary": "Advance the chosen existing arcane spellcasting class." }
+  ]
+}
