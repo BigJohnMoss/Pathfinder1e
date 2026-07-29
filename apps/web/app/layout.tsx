@@ -13,15 +13,17 @@ import type { Metadata, Viewport } from "next";
 import { InstallApp } from "./install-app";
 import { PwaRegistration } from "./pwa-registration";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   title: "PF1e Character Builder",
   description: "Build and manage Pathfinder First Edition characters.",
   applicationName: "PF1e Character Builder",
-  manifest: "/manifest.webmanifest",
+  manifest: `${basePath}/manifest.webmanifest`,
   icons: {
     icon: [
-      { url: "/icons/pf1e-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icons/pf1e-512.png", sizes: "512x512", type: "image/png" },
+      { url: `${basePath}/icons/pf1e-192.png`, sizes: "192x192", type: "image/png" },
+      { url: `${basePath}/icons/pf1e-512.png`, sizes: "512x512", type: "image/png" },
     ],
   },
 };

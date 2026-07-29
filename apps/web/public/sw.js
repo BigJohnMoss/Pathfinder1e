@@ -1,11 +1,13 @@
 const CACHE_VERSION = "pf1e-builder-v2";
+const BASE_PATH = new URL("./", self.location.href).pathname.replace(/\/$/, "");
+const appUrl = (path) => `${BASE_PATH}${path}`;
 const APP_SHELL = [
-  "/",
-  "/offline.html",
-  "/manifest.webmanifest",
-  "/icons/pf1e-192.png",
-  "/icons/pf1e-512.png",
-  "/icons/pf1e-maskable-512.png",
+  appUrl("/"),
+  appUrl("/offline.html"),
+  appUrl("/manifest.webmanifest"),
+  appUrl("/icons/pf1e-192.png"),
+  appUrl("/icons/pf1e-512.png"),
+  appUrl("/icons/pf1e-maskable-512.png"),
 ];
 
 self.addEventListener("install", (event) => {
@@ -52,8 +54,8 @@ self.addEventListener("fetch", (event) => {
         .catch(async () => {
           return (
             (await caches.match(request)) ??
-            (await caches.match("/")) ??
-            caches.match("/offline.html")
+            (await caches.match(appUrl("/"))) ??
+            caches.match(appUrl("/offline.html"))
           );
         }),
     );
