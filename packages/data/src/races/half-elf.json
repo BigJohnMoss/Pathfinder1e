@@ -1,1 +1,23 @@
-{"id":"half-elf","name":"Half-Elf","size":"medium","speed":30,"type":"humanoid","subtypes":["elf","human"],"abilityModifiers":{"choice":{"count":1,"amount":2}},"languages":{"automatic":["Common","Elven"],"bonus":"Any non-secret language"},"traits":[{"id":"low-light-vision","name":"Low-Light Vision","summary":"See twice as far as humans in dim light."}],"source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"}}
+{
+  "id":"half-elf","name":"Half-Elf","size":"medium","speed":30,"type":"humanoid","subtypes":["elf","human"],
+  "abilityModifiers":{"choice":{"count":1,"amount":2}},
+  "languages":{"automatic":["Common","Elven"],"bonus":"Any non-secret language"},
+  "traits":[
+    {"id":"half-elf-adaptability","name":"Adaptability","summary":"Gain Skill Focus as a bonus feat at 1st level."},
+    {"id":"half-elf-elf-blood","name":"Elf Blood","summary":"Count as both elf and human for effects related to race."},
+    {"id":"half-elf-elven-immunities","name":"Elven Immunities","summary":"Immune to magical sleep and gain +2 on saves against enchantment."},
+    {"id":"half-elf-keen-senses","name":"Keen Senses","summary":"Gain +2 Perception."},
+    {"id":"low-light-vision","name":"Low-Light Vision","summary":"See twice as far as humans in dim light."},
+    {"id":"half-elf-multitalented","name":"Multitalented","summary":"Choose two favored classes."}
+  ],
+  "alternateTraits":[
+    {"id":"half-elf-ancestral-arms","name":"Ancestral Arms","summary":"Gain Exotic Weapon Proficiency or Martial Weapon Proficiency with one weapon at 1st level.","replaces":["half-elf-adaptability"]},
+    {"id":"half-elf-arcane-training","name":"Arcane Training","summary":"Choose one arcane favored class and use its spell-trigger and spell-completion items as if one level higher.","replaces":["half-elf-multitalented"]},
+    {"id":"half-elf-dual-minded","name":"Dual Minded","summary":"Gain +2 on all Will saves.","replaces":["half-elf-adaptability"]},
+    {"id":"half-elf-integrated","name":"Integrated","summary":"Gain +1 Bluff, Disguise, and Knowledge (local).","replaces":["half-elf-adaptability"]},
+    {"id":"half-elf-sociable","name":"Sociable","summary":"Retry a failed attempt to change a creature's attitude even when it failed by 5 or more.","replaces":["half-elf-adaptability"]},
+    {"id":"half-elf-water-child","name":"Water Child","summary":"Gain +4 Swim, always take 10 while swimming, and allow Aquan as a bonus language.","replaces":["half-elf-adaptability","half-elf-multitalented"]}
+  ],
+  "alternateTraitSource":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#half-elves"},
+  "source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Half-Elf"}
+}

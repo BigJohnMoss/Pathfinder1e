@@ -1,1 +1,26 @@
-{"id":"gnome","name":"Gnome","size":"small","speed":20,"type":"humanoid","subtypes":["gnome"],"abilityModifiers":{"fixed":{"constitution":2,"charisma":2,"strength":-2}},"languages":{"automatic":["Common","Gnome"],"bonus":"Draconic, Dwarven, Elven, Giant, Goblin, Orc"},"traits":[{"id":"low-light-vision","name":"Low-Light Vision","summary":"See twice as far as humans in dim light."}],"source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"}}
+{
+  "id":"gnome","name":"Gnome","size":"small","speed":20,"type":"humanoid","subtypes":["gnome"],
+  "abilityModifiers":{"fixed":{"constitution":2,"charisma":2,"strength":-2}},
+  "languages":{"automatic":["Common","Gnome"],"bonus":"Draconic, Dwarven, Elven, Giant, Goblin, Orc"},
+  "traits":[
+    {"id":"gnome-defensive-training","name":"Defensive Training","summary":"Gain +4 dodge AC against monsters of the giant subtype."},
+    {"id":"gnome-magic","name":"Gnome Magic","summary":"Increase illusion DCs by 1 and, with Charisma 11, gain the Core gnome spell-like abilities."},
+    {"id":"gnome-hatred","name":"Hatred","summary":"Gain +1 on attacks against humanoids of the reptilian and goblinoid subtypes."},
+    {"id":"gnome-illusion-resistance","name":"Illusion Resistance","summary":"Gain +2 on saves against illusion spells and effects."},
+    {"id":"gnome-keen-senses","name":"Keen Senses","summary":"Gain +2 Perception."},
+    {"id":"low-light-vision","name":"Low-Light Vision","summary":"See twice as far as humans in dim light."},
+    {"id":"gnome-obsessive","name":"Obsessive","summary":"Gain +2 on one Craft or Profession skill."},
+    {"id":"gnome-weapon-familiarity","name":"Weapon Familiarity","summary":"Treat weapons with gnome in their name as martial."}
+  ],
+  "alternateTraits":[
+    {"id":"gnome-academician","name":"Academician","summary":"Gain +2 on one Knowledge skill.","replaces":["gnome-obsessive"]},
+    {"id":"gnome-eternal-hope","name":"Eternal Hope","summary":"Gain +2 on saves against fear and despair and once per day reroll a natural 1 on a d20.","replaces":["gnome-defensive-training","gnome-hatred"]},
+    {"id":"gnome-gift-of-tongues","name":"Gift of Tongues","summary":"Gain +1 Bluff and Diplomacy and learn an extra language whenever you gain a Linguistics rank.","replaces":["gnome-defensive-training","gnome-hatred"]},
+    {"id":"gnome-magical-linguist","name":"Magical Linguist","summary":"Improve language-dependent and magical-writing spell DCs, saves against them, and gain four language spell-like abilities.","replaces":["gnome-magic","gnome-illusion-resistance"]},
+    {"id":"gnome-master-tinker","name":"Master Tinker","summary":"Gain +1 Disable Device and Knowledge (engineering), and proficiency with weapons you personally craft.","replaces":["gnome-defensive-training","gnome-hatred"]},
+    {"id":"gnome-pyromaniac","name":"Pyromaniac","summary":"Count as one level higher for specified fire spells and powers and gain fire-themed spell-like abilities.","replaces":["gnome-magic","gnome-illusion-resistance"]},
+    {"id":"gnome-warden-of-nature","name":"Warden of Nature","summary":"Gain +2 dodge AC and +1 attacks against aberrations, oozes, and vermin.","replaces":["gnome-defensive-training","gnome-hatred"]}
+  ],
+  "alternateTraitSource":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/advancedRaces.html#gnomes"},
+  "source":{"title":"Core Rulebook","page":null,"url":"https://aonprd.com/RacesDisplay.aspx?ItemName=Gnome"}
+}
