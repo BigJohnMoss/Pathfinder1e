@@ -1,0 +1,50 @@
+{
+  "id": "duelist",
+  "name": "Duelist",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 10,
+  "babProgression": "full",
+  "baseAttackBonusByLevel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 0, "reflex": 1, "will": 0 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 2, "will": 1 },
+    { "fortitude": 1, "reflex": 2, "will": 1 },
+    { "fortitude": 2, "reflex": 3, "will": 2 },
+    { "fortitude": 2, "reflex": 3, "will": 2 },
+    { "fortitude": 2, "reflex": 4, "will": 2 },
+    { "fortitude": 3, "reflex": 4, "will": 3 },
+    { "fortitude": 3, "reflex": 5, "will": 3 },
+    { "fortitude": 3, "reflex": 5, "will": 3 }
+  ],
+  "requirements": [
+    "Base attack bonus +6",
+    "Acrobatics 2 ranks and Perform 2 ranks",
+    "Dodge, Mobility, and Weapon Finesse"
+  ],
+  "skillRanksPerLevel": 4,
+  "classSkills": ["Acrobatics", "Bluff", "Escape Artist", "Perception", "Perform", "Sense Motive"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/duelist.html"
+  },
+  "features": [
+    { "id": "duelist-canny-defense-1", "name": "Canny Defense", "level": 1, "type": "core", "summary": "While lightly armored or unarmored, unshielded, and wielding a melee weapon, add up to one point of Intelligence bonus per Duelist level as a dodge bonus to AC." },
+    { "id": "duelist-precise-strike-1", "name": "Precise Strike", "level": 1, "type": "scaling", "summary": "Add Duelist level to damage with a light or one-handed piercing weapon when the other hand is not attacking or using a shield.", "progressionKey": "duelist-precise-strike" },
+    { "id": "duelist-improved-reaction-2", "name": "Improved Reaction +2", "level": 2, "type": "scaling", "summary": "Gain a +2 bonus on initiative checks.", "progressionKey": "duelist-improved-reaction" },
+    { "id": "duelist-parry-2", "name": "Parry", "level": 2, "type": "core", "summary": "Forego a full-attack strike to contest and potentially negate an attack against you or an adjacent ally." },
+    { "id": "duelist-enhanced-mobility-3", "name": "Enhanced Mobility", "level": 3, "type": "core", "summary": "Gain +4 AC against attacks of opportunity caused by moving from a threatened square while lightly armored or unarmored and unshielded." },
+    { "id": "duelist-combat-reflexes-4", "name": "Combat Reflexes", "level": 4, "type": "bonus-feat", "summary": "Gain the benefit of Combat Reflexes while using a light or one-handed piercing weapon." },
+    { "id": "duelist-grace-4", "name": "Grace", "level": 4, "type": "core", "summary": "Gain +2 on Reflex saves while lightly armored or unarmored and unshielded." },
+    { "id": "duelist-riposte-5", "name": "Riposte", "level": 5, "type": "core", "summary": "Make an attack of opportunity against a creature whose attack you successfully parry." },
+    { "id": "duelist-acrobatic-charge-6", "name": "Acrobatic Charge", "level": 6, "type": "core", "summary": "Charge across difficult terrain and through other conditions that normally prevent charging." },
+    { "id": "duelist-elaborate-defense-7", "name": "Elaborate Defense", "level": 7, "type": "scaling", "summary": "While fighting defensively or using total defense in melee, gain +1 dodge AC per three Duelist levels.", "progressionKey": "duelist-elaborate-defense" },
+    { "id": "duelist-improved-reaction-8", "name": "Improved Reaction +4", "level": 8, "type": "scaling", "summary": "Increase the initiative bonus to +4.", "progressionKey": "duelist-improved-reaction" },
+    { "id": "duelist-deflect-arrows-9", "name": "Deflect Arrows", "level": 9, "type": "bonus-feat", "summary": "Gain the benefit of Deflect Arrows with a light or one-handed piercing weapon without needing a free hand." },
+    { "id": "duelist-no-retreat-9", "name": "No Retreat", "level": 9, "type": "core", "summary": "Adjacent enemies provoke an attack of opportunity when they withdraw." },
+    { "id": "duelist-crippling-critical-10", "name": "Crippling Critical", "level": 10, "type": "capstone", "summary": "A confirmed critical hit with a light or one-handed piercing weapon can also slow, damage an ability, penalize saves or AC, or cause bleed." }
+  ]
+}

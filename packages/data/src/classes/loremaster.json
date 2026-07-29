@@ -1,0 +1,60 @@
+{
+  "id": "loremaster",
+  "name": "Loremaster",
+  "classType": "prestige",
+  "maximumLevel": 10,
+  "hitDie": 6,
+  "babProgression": "half",
+  "baseAttackBonusByLevel": [0, 1, 1, 2, 2, 3, 3, 4, 4, 5],
+  "saves": { "fortitude": "poor", "reflex": "poor", "will": "poor" },
+  "savesByLevel": [
+    { "fortitude": 0, "reflex": 0, "will": 1 },
+    { "fortitude": 1, "reflex": 1, "will": 1 },
+    { "fortitude": 1, "reflex": 1, "will": 2 },
+    { "fortitude": 1, "reflex": 1, "will": 2 },
+    { "fortitude": 2, "reflex": 2, "will": 3 },
+    { "fortitude": 2, "reflex": 2, "will": 3 },
+    { "fortitude": 2, "reflex": 2, "will": 4 },
+    { "fortitude": 3, "reflex": 3, "will": 4 },
+    { "fortitude": 3, "reflex": 3, "will": 5 },
+    { "fortitude": 3, "reflex": 3, "will": 5 }
+  ],
+  "requirements": [
+    "7 ranks each in any two Knowledge skills",
+    "Any three metamagic or item creation feats plus Skill Focus in one Knowledge skill",
+    "Ability to cast seven different divination spells, including one of 3rd level or higher"
+  ],
+  "spellcastingAdvancement": {
+    "tradition": "any",
+    "levels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  "skillRanksPerLevel": 4,
+  "classSkills": ["Appraise", "Diplomacy", "Handle Animal", "Heal", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)", "Linguistics", "Perform", "Spellcraft", "Use Magic Device"],
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://legacy.aonprd.com/coreRulebook/prestigeClasses/loremaster.html"
+  },
+  "features": [
+    { "id": "loremaster-secret-1", "name": "Secret", "level": 1, "type": "selectable", "summary": "Choose one Loremaster secret allowed by Loremaster level plus Intelligence modifier." },
+    { "id": "loremaster-spellcasting-1", "name": "Existing Spellcasting +1", "level": 1, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-lore-2", "name": "Lore", "level": 2, "type": "scaling", "summary": "Add half Loremaster level to all Knowledge checks and make them untrained.", "progressionKey": "loremaster-lore" },
+    { "id": "loremaster-spellcasting-2", "name": "Existing Spellcasting +1", "level": 2, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-secret-3", "name": "Secret", "level": 3, "type": "selectable", "summary": "Choose another eligible Loremaster secret." },
+    { "id": "loremaster-spellcasting-3", "name": "Existing Spellcasting +1", "level": 3, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-bonus-language-4", "name": "Bonus Language", "level": 4, "type": "selectable", "summary": "Learn any new language." },
+    { "id": "loremaster-spellcasting-4", "name": "Existing Spellcasting +1", "level": 4, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-secret-5", "name": "Secret", "level": 5, "type": "selectable", "summary": "Choose another eligible Loremaster secret." },
+    { "id": "loremaster-spellcasting-5", "name": "Existing Spellcasting +1", "level": 5, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-greater-lore-6", "name": "Greater Lore", "level": 6, "type": "core", "summary": "Gain +10 on Spellcraft checks made to determine a magic item's properties." },
+    { "id": "loremaster-spellcasting-6", "name": "Existing Spellcasting +1", "level": 6, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-secret-7", "name": "Secret", "level": 7, "type": "selectable", "summary": "Choose another eligible Loremaster secret." },
+    { "id": "loremaster-spellcasting-7", "name": "Existing Spellcasting +1", "level": 7, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-bonus-language-8", "name": "Bonus Language", "level": 8, "type": "selectable", "summary": "Learn any new language." },
+    { "id": "loremaster-spellcasting-8", "name": "Existing Spellcasting +1", "level": 8, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-secret-9", "name": "Secret", "level": 9, "type": "selectable", "summary": "Choose another eligible Loremaster secret." },
+    { "id": "loremaster-spellcasting-9", "name": "Existing Spellcasting +1", "level": 9, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." },
+    { "id": "loremaster-true-lore-10", "name": "True Lore", "level": 10, "type": "capstone", "summary": "Once per day, produce the effect of legend lore or analyze dweomer.", "uses": "1/day" },
+    { "id": "loremaster-spellcasting-10", "name": "Existing Spellcasting +1", "level": 10, "type": "spellcasting", "summary": "Advance one chosen existing spellcasting class." }
+  ]
+}
