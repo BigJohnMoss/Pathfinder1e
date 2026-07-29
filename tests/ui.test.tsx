@@ -944,7 +944,9 @@ test("applies, prices, and restores magic equipment without stacking like bonuse
 
   await user.click(screen.getByRole("tab", { name: "Actions" }));
   assert.match(screen.getByText("AC / touch / flat-footed").closest("div")?.textContent ?? "", /18 \/ 12 \/ 18/);
-  assert.match(screen.getByText("Saves").closest("div")?.textContent ?? "", /Fort \+3 · Ref \+3 · Will \+5/);
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+3");
+  assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+3");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+5");
   await user.click(screen.getByRole("button", { name: "Save" }));
   await user.click(screen.getByRole("tab", { name: "Storage" }));
   await user.selectOptions(screen.getByLabelText("Longsword enhancement"), "0");
