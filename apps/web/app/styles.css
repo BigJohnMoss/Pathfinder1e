@@ -505,6 +505,59 @@ main#character-builder-main {
   min-height: 42px;
 }
 
+.sidebar-collapsible > summary {
+  display: none;
+}
+
+.character-setup-section .sidebar-collapsible-content {
+  display: contents;
+}
+
+.character-file-section:not([open]) > .sidebar-collapsible-content,
+.level-progression:not([open]) > .sidebar-collapsible-content {
+  display: block;
+}
+
+.character-file-section .character-actions {
+  display: grid;
+}
+
+.point-buy-control {
+  align-items: start;
+  display: grid;
+  gap: 7px;
+  justify-items: start;
+}
+
+.point-buy-control select,
+.level-up-panel label select {
+  background: #fff;
+  border: 1px solid #a29a89;
+  border-radius: 8px;
+  color: #252018;
+  font: inherit;
+  min-height: 44px;
+  padding: 9px 36px 9px 11px;
+}
+
+.level-up-panel label {
+  display: grid;
+  font-weight: 700;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.level-up-panel label select {
+  width: min(100%, 360px);
+}
+
+.level-up-trigger,
+.level-up-actions button,
+.level-detail-actions button,
+.character-sidebar .character-actions button {
+  min-height: 44px;
+}
+
 .character-main-workspace {
   min-width: 0;
 }
@@ -831,8 +884,68 @@ main#character-builder-main {
     border-radius: 8px;
     color: #6f271f;
     font-weight: 800;
-    min-height: 40px;
+    min-height: 44px;
     padding: 8px 12px;
+  }
+
+  .sidebar-collapsible {
+    border-top: 1px solid #675b4c;
+  }
+
+  .sidebar-collapsible > summary {
+    align-items: center;
+    color: #fff5e4;
+    cursor: pointer;
+    display: flex;
+    font-size: .82rem;
+    font-weight: 800;
+    justify-content: space-between;
+    letter-spacing: .05em;
+    list-style: none;
+    min-height: 48px;
+    padding: 12px 0;
+    text-transform: uppercase;
+  }
+
+  .sidebar-collapsible > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .sidebar-collapsible > summary::after {
+    content: "+";
+    font-size: 1.2rem;
+  }
+
+  .sidebar-collapsible[open] > summary::after {
+    content: "−";
+  }
+
+  .sidebar-collapsible:not([open]) > .sidebar-collapsible-content {
+    display: none;
+  }
+
+  .character-setup-section .sidebar-collapsible-content {
+    display: grid;
+    gap: 16px;
+  }
+
+  .character-file-section .character-actions {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 4px;
+  }
+
+  .level-progression {
+    border-color: #d4c6af;
+    padding: 0 22px;
+  }
+
+  .level-progression > summary {
+    color: #342a22;
+  }
+
+  .level-progression > .sidebar-collapsible-content {
+    padding-bottom: 22px;
   }
 }
 
@@ -848,14 +961,50 @@ main#character-builder-main {
   }
 
   .character-main-workspace .character-tabs {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: flex;
+    gap: 4px;
     margin-inline: -4px;
-    overflow-x: visible;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 9px;
+    scrollbar-width: thin;
   }
 
   .character-main-workspace .character-tabs button {
-    min-width: 0;
+    flex: 0 0 auto;
+    min-height: 58px;
+    min-width: 74px;
+  }
+
+  .character-main-workspace .character-tabs button span {
+    height: 30px;
+    width: 30px;
+  }
+
+  .point-buy-control {
+    width: 100%;
+  }
+
+  .point-buy-control select,
+  .level-up-panel label select {
+    width: 100%;
+  }
+
+  .level-up-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .level-up-actions .primary-action {
+    grid-row: 1;
+  }
+
+  .ability-score-control {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+  }
+
+  .ability-score-control button {
+    min-height: 44px;
   }
 }
 
