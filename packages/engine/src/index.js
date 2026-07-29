@@ -284,6 +284,18 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
   const prestigeSpellcastingTargets = Object.fromEntries(Object.entries(isStringArrayRecord(draft.prestigeSpellcastingTargets, validClassIds)).map(([prestigeClassId, targetIds]) => [prestigeClassId, [...new Set(targetIds.filter(classId => validClassIds.has(classId) && classId !== prestigeClassId))].slice(0, 2)]));
   if (!preparedSpellsByClass[draft.classId]) preparedSpellsByClass[draft.classId] = preparedSpells;
   if (!spellSlotUsesByClass[draft.classId]) spellSlotUsesByClass[draft.classId] = spellSlotUses;
+  const favoredClassLevel = normalizedClassLevels.find(entry => entry.classId === draft.classId)?.level ?? draft.level;
+  const favoredClassHitPoints = Number.isInteger(draft.favoredClassHitPoints) && draft.favoredClassHitPoints > 0 ? Math.min(favoredClassLevel, draft.favoredClassHitPoints) : 0;
+  const favoredClassSkillRanks = Number.isInteger(draft.favoredClassSkillRanks) && draft.favoredClassSkillRanks > 0 ? Math.min(Math.max(0, favoredClassLevel - favoredClassHitPoints), draft.favoredClassSkillRanks) : 0;
+  let favoredClassRemaining = favoredClassLevel - favoredClassHitPoints - favoredClassSkillRanks;
+  const favoredClassAlternateBonuses = {};
+  if (draft.favoredClassAlternateBonuses && typeof draft.favoredClassAlternateBonuses === "object" && !Array.isArray(draft.favoredClassAlternateBonuses)) {
+    for (const [id, value] of Object.entries(draft.favoredClassAlternateBonuses)) {
+      if (!id || !Number.isInteger(value) || value <= 0 || favoredClassRemaining <= 0) continue;
+      favoredClassAlternateBonuses[id] = Math.min(value, favoredClassRemaining);
+      favoredClassRemaining -= favoredClassAlternateBonuses[id];
+    }
+  }
   return {
     version: 1,
     name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",
@@ -299,8 +311,9 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     baseAbilities: draft.baseAbilities,
     pointBuyBudget: [10, 15, 20, 25].includes(draft.pointBuyBudget) ? draft.pointBuyBudget : 15,
     abilityBoosts: normalizeAbilityBoosts(draft.abilityBoosts, draft.level),
-    favoredClassHitPoints: Number.isInteger(draft.favoredClassHitPoints) && draft.favoredClassHitPoints > 0 ? Math.min(draft.level, draft.favoredClassHitPoints) : 0,
-    favoredClassSkillRanks: Number.isInteger(draft.favoredClassSkillRanks) && draft.favoredClassSkillRanks > 0 ? Math.min(Math.max(0, draft.level - (Number.isInteger(draft.favoredClassHitPoints) && draft.favoredClassHitPoints > 0 ? Math.min(draft.level, draft.favoredClassHitPoints) : 0)), draft.favoredClassSkillRanks) : 0,
+    favoredClassHitPoints,
+    favoredClassSkillRanks,
+    favoredClassAlternateBonuses,
     selectedFeatIds: Array.isArray(draft.selectedFeatIds) ? draft.selectedFeatIds.filter(id => typeof id === "string") : [],
     selectedTraitIds: Array.isArray(draft.selectedTraitIds) ? draft.selectedTraitIds.filter(id => typeof id === "string") : [],
     selectedTraitChoices: isStringRecord(draft.selectedTraitChoices),

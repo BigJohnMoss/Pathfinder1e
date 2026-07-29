@@ -186,6 +186,21 @@ test("builds, calculates, and restores a multiclass character", async () => {
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
 });
 
+test("allocates ancestry-specific favored class rewards and applies daily resources", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  await user.selectOptions(screen.getByLabelText("Ancestry"), "gnome");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  fireEvent.change(screen.getByLabelText("Bardic performance favored class levels"), { target: { value: "3" } });
+  assert.match(document.querySelector(".favored-class-bonus > p.hint")?.textContent ?? "", /3 of 3 favored-class bonuses assigned/);
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.equal(screen.getByLabelText("Performance rounds remaining").textContent, "12/12 round remaining");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.deepEqual(saved.favoredClassAlternateBonuses, { "gnome-bard-performance": 3 });
+});
+
 test("adds Arcane Archer only as a capped prestige class and shows its entry requirements", async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -944,7 +959,10 @@ test("applies, prices, and restores magic equipment without stacking like bonuse
 
   await user.click(screen.getByRole("tab", { name: "Actions" }));
   assert.match(screen.getByText("AC / touch / flat-footed").closest("div")?.textContent ?? "", /18 \/ 12 \/ 18/);
-  assert.match(screen.getByText("Saves").closest("div")?.textContent ?? "", /Fort \+3 · Ref \+3 · Will \+5/);
+  await user.click(screen.getByRole("tab", { name: "Basic info" }));
+  assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+3");
+  assert.equal(screen.getByText("Reflex").closest("article")?.querySelector("strong")?.textContent, "+3");
+  assert.equal(screen.getByText("Will").closest("article")?.querySelector("strong")?.textContent, "+5");
   await user.click(screen.getByRole("button", { name: "Save" }));
   await user.click(screen.getByRole("tab", { name: "Storage" }));
   await user.selectOptions(screen.getByLabelText("Longsword enhancement"), "0");
