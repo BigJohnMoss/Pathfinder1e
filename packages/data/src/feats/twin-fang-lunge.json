@@ -4,8 +4,34 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
       "type": "rule",
-      "description": "Dex 15; Quick Draw; Twin Fang Strike; Twin Fang Style; Two-Weapon Fighting; Acrobatics 8 ranks; base attack bonus +8 or monk level 8th"
+      "description": "Quick Draw"
+    },
+    {
+      "type": "rule",
+      "description": "Twin Fang Strike"
+    },
+    {
+      "type": "rule",
+      "description": "Twin Fang Style"
+    },
+    {
+      "type": "rule",
+      "description": "Two-Weapon Fighting"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +8 or monk level 8th"
     }
   ],
   "benefit": "Move up to twice your speed and use Twin Fang Strike",

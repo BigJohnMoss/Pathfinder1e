@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Deft Hands or Trepanation"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "deft-hands"
+        },
+        {
+          "type": "feat",
+          "id": "trepanation"
+        }
+      ]
     }
   ],
   "benefit": "Manually adjust someone’s skull in order to hypnotize them",

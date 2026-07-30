@@ -12,8 +12,9 @@
       "description": "UC"
     },
     {
-      "type": "rule",
-      "description": "Knowledge (engineering) or Profession (siege engineer) 7 ranks"
+      "type": "skill",
+      "key": "Knowledge (engineering) or Profession (siege engineer)",
+      "minimum": 7
     },
     {
       "type": "rule",

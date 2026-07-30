@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Perform (act) or Perform (dance) 3 ranks"
+      "type": "skill",
+      "key": "Perform (act) or Perform (dance)",
+      "minimum": 3
     },
     {
       "type": "rule",

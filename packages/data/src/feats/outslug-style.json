@@ -4,8 +4,17 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Int 13; Combat Expertise or brawler’s cunning ACG class feature; Weapon Focus with the chosen weapon"
+      "description": "Combat Expertise or brawler’s cunning ACG class feature"
+    },
+    {
+      "type": "rule",
+      "description": "Weapon Focus with the chosen weapon"
     }
   ],
   "benefit": "+1 to AC and damage when taking a 5-foot step with a chosen weapon",

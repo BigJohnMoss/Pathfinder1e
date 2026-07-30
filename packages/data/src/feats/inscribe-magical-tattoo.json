@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Craft (calligraphy, paintings, or tattoos) 5 ranks"
+      "type": "skill",
+      "key": "Craft (calligraphy, paintings, or tattoos)",
+      "minimum": 5
     },
     {
       "type": "caster-level",

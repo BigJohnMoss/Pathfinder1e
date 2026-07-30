@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Knowledge (nature) or Knowledge (planes) 3 ranks"
+      "type": "skill",
+      "key": "Knowledge (nature) or Knowledge (planes)",
+      "minimum": 3
     }
   ],
   "benefit": "Gain a +2 morale bonus against enchantment and illusion effects from fey",

@@ -8,8 +8,9 @@
       "id": "basic-harmony"
     },
     {
-      "type": "rule",
-      "description": "Perform (keyboard, percussion, sing, string, or wind) 10 ranks"
+      "type": "skill",
+      "key": "Perform (keyboard, percussion, sing, string, or wind)",
+      "minimum": 10
     },
     {
       "type": "rule",

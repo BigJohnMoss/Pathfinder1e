@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Precise Shot or Throw Anything"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "precise-shot"
+        },
+        {
+          "type": "feat",
+          "id": "throw-anything"
+        }
+      ]
     }
   ],
   "benefit": "Exclude extra squares from the area of a splash weapon; allies can catch missed throws",

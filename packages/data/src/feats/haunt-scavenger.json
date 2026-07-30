@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Any one item creation feat or Craft (alchemy) 3 ranks"
+      "type": "skill",
+      "key": "Any one item creation feat or Craft (alchemy)",
+      "minimum": 3
     }
   ],
   "benefit": "Syphon ectoplasm from haunts to use in crafting magic items",

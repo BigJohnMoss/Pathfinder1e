@@ -4,8 +4,26 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
       "type": "rule",
-      "description": "Con 15; Wis 15; Subjective Mobility; Subjective Slam; base attack bonus +8 or monk level 7th"
+      "description": "Subjective Mobility"
+    },
+    {
+      "type": "rule",
+      "description": "Subjective Slam"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +8 or monk level 7th"
     }
   ],
   "benefit": "Lessen check penalty and increase maximum damage when using Subjective Slam",

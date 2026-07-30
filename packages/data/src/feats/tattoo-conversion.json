@@ -5,7 +5,20 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Inscribe Magical Tattoo ISM or Varisian Tattoo ISWG ; Tattoo Attunement; Spellcraft 15 ranks; ability to cast control summoned creature UM"
+      "description": "Inscribe Magical Tattoo ISM or Varisian Tattoo ISWG"
+    },
+    {
+      "type": "rule",
+      "description": "Tattoo Attunement"
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast control summoned creature UM"
     }
   ],
   "benefit": "Transform a hostile summoned creature into a tattoo to take control of it",

@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "3 ranks in Knowledge (planes)"
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
     },
     {
       "type": "rule",

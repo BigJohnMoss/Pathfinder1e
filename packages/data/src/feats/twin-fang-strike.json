@@ -4,8 +4,30 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
       "type": "rule",
-      "description": "Dex 15; Quick Draw; Twin Fang Style; Two- Weapon Fighting; Acrobatics 6 ranks; base attack bonus +6 or monk level 6th"
+      "description": "Quick Draw"
+    },
+    {
+      "type": "rule",
+      "description": "Twin Fang Style"
+    },
+    {
+      "type": "rule",
+      "description": "Two- Weapon Fighting"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
     }
   ],
   "benefit": "You can make two attacks as an attack action",

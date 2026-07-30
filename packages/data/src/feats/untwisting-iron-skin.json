@@ -4,8 +4,30 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Str 15; Wis 13; Perfect Style; Toughness; Untwisting Iron Strength; base attack bonus +13 or monk level 13th"
+      "description": "Perfect Style"
+    },
+    {
+      "type": "rule",
+      "description": "Toughness"
+    },
+    {
+      "type": "rule",
+      "description": "Untwisting Iron Strength"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +13 or monk level 13th"
     }
   ],
   "benefit": "Gain DR/adamantine, and gain DR/— when you break certain objects",

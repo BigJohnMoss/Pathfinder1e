@@ -4,8 +4,27 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Intimidating Prowess or Persuasive; Diplomacy 1 rank; Intimidate 1 rank"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "intimidating-prowess"
+        },
+        {
+          "type": "feat",
+          "id": "persuasive"
+        }
+      ]
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 1
     }
   ],
   "benefit": "Work with an ally to adjust a creature's attitude",

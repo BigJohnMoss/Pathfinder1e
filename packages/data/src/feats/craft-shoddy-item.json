@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "1 rank in appropriate Craft skill"
+      "type": "skill",
+      "key": "appropriate Craft skill",
+      "minimum": 1
     }
   ],
   "benefit": "Craft lesser quality items for a reduced cost",

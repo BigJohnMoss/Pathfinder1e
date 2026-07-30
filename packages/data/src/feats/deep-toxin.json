@@ -5,7 +5,15 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Vital Strike; base attack bonus +6; Craft (poison) 6 ranks or poison use class feature"
+      "description": "Vital Strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "Craft (poison) 6 ranks or poison use class feature"
     }
   ],
   "benefit": "Increase poison duration when using vital strike",

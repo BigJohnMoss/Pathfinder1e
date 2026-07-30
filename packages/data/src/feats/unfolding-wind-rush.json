@@ -4,8 +4,38 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Dex 13; Wis 13; Dodge; Mobility; Perfect Style; Quick Draw; Unfolding Wind Strike; base attack bonus +13 or monk level 13th"
+      "description": "Dodge"
+    },
+    {
+      "type": "rule",
+      "description": "Mobility"
+    },
+    {
+      "type": "rule",
+      "description": "Perfect Style"
+    },
+    {
+      "type": "rule",
+      "description": "Quick Draw"
+    },
+    {
+      "type": "rule",
+      "description": "Unfolding Wind Strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +13 or monk level 13th"
     }
   ],
   "benefit": "Move and make a full attack with thrown weapons",

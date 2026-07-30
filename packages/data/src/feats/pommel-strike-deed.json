@@ -5,7 +5,11 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Amateur Swashbuckler or panache class feature; base attack bonus +3"
+      "description": "Amateur Swashbuckler or panache class feature"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
     }
   ],
   "benefit": "Attack with a light or one-handed piercing weapon’s pommel and knock down foes",

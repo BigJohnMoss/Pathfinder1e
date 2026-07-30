@@ -5,7 +5,12 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Amateur Swashbuckler or panache class feature; Diplomacy 2 ranks"
+      "description": "Amateur Swashbuckler or panache class feature"
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 2
     },
     {
       "type": "skill",

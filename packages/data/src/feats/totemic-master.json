@@ -25,8 +25,18 @@
       "id": "athletic"
     },
     {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Dex 13; Wis 13; ; ; ; ; no barbarian totem rage powers except those chosen with this feat"
+      "description": "no barbarian totem rage powers except those chosen with this feat"
     },
     {
       "type": "feat",

@@ -5,7 +5,16 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Beast Hunter; base attack bonus +3; Knowledge (nature) or Survival 3 ranks"
+      "description": "Beast Hunter"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature) or Survival",
+      "minimum": 3
     }
   ],
   "benefit": "Gain bonuses on combat maneuver checks, CMD, and Reflex saves when fighting animals larger than you in chosen terrain",

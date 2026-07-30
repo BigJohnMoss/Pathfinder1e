@@ -8,8 +8,9 @@
       "minimum": 2
     },
     {
-      "type": "rule",
-      "description": "Knowledge (arcana, dungeoneering, local, nature, planes, or religion) 3 ranks"
+      "type": "skill",
+      "key": "Knowledge (arcana, dungeoneering, local, nature, planes, or religion)",
+      "minimum": 3
     }
   ],
   "benefit": "Gain an insight bonus to attack and damage vs creatures you are smarter than",

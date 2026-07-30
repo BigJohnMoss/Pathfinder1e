@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Desert Dweller or Jungle Survivalist"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "desert-dweller"
+        },
+        {
+          "type": "feat",
+          "id": "jungle-survivalist"
+        }
+      ]
     }
   ],
   "benefit": "Treat hot environments as though they were one step less severe; take no penalty on Constitution checks for wearing armor in hot climates",

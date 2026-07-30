@@ -21,8 +21,9 @@
       "minimum": 8
     },
     {
-      "type": "rule",
-      "description": "1 rank in at least one Knowledge skill"
+      "type": "skill",
+      "key": "at least one Knowledge skill",
+      "minimum": 1
     },
     {
       "type": "feature",

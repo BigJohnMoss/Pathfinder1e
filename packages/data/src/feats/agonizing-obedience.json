@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "3 ranks in Heal"
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 3
     }
   ],
   "benefit": "Physically defile yourself to gain special boons",

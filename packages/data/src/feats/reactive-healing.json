@@ -4,8 +4,21 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "quick-channel"
+        },
+        {
+          "type": "feat",
+          "id": "quicken-spell"
+        }
+      ]
+    },
+    {
       "type": "rule",
-      "description": "Quick Channel or Quicken Spell; channel energy or lay on hands class feature"
+      "description": "channel energy or lay on hands class feature"
     }
   ],
   "benefit": "When reduced to 0 hp or fewer, use channel energy or lay on hands to heal yourself as immediate action",

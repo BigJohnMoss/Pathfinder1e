@@ -17,8 +17,17 @@
       "id": "mobility"
     },
     {
-      "type": "rule",
-      "description": "Shot on the Run or Spring Attack"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "shot-on-the-run"
+        },
+        {
+          "type": "feat",
+          "id": "spring-attack"
+        }
+      ]
     },
     {
       "type": "bab",

@@ -4,8 +4,34 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "arcane-strike"
+        },
+        {
+          "type": "feat",
+          "id": "disruptive"
+        }
+      ]
+    },
+    {
       "type": "rule",
-      "description": "Arcane Strike or Disruptive; Banishing Critical; Combat Reflexes; Spellcraft 8 ranks; arcane pool class feature"
+      "description": "Banishing Critical"
+    },
+    {
+      "type": "rule",
+      "description": "Combat Reflexes"
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "arcane pool class feature"
     }
   ],
   "benefit": "Free attack against nearby summoned/called creature",

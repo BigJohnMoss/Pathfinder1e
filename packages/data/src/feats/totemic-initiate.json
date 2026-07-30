@@ -17,8 +17,17 @@
       "id": "athletic"
     },
     {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Dex 13; ; ; no barbarian totem rage powers except the one you choose with this feat; nonlawful alignment"
+      "description": "no barbarian totem rage powers except the one you choose with this feat"
+    },
+    {
+      "type": "rule",
+      "description": "nonlawful alignment"
     }
   ],
   "benefit": "Gain benefits of a barbarian lesser totem rage power",

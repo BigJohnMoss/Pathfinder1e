@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Knowledge (arcana, dungeoneering, local, nature, planes, or religion) 5 ranks"
+      "type": "skill",
+      "key": "Knowledge (arcana, dungeoneering, local, nature, planes, or religion)",
+      "minimum": 5
     },
     {
       "type": "caster-level",

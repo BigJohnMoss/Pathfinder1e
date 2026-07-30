@@ -4,8 +4,29 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Int 13; Combat Expertise or brawler’s cunning ACG class feature; Lunge; Outslug Style; Outslug Weave; Weapon Focus with the chosen weapon"
+      "description": "Combat Expertise or brawler’s cunning ACG class feature"
+    },
+    {
+      "type": "rule",
+      "description": "Lunge"
+    },
+    {
+      "type": "rule",
+      "description": "Outslug Style"
+    },
+    {
+      "type": "rule",
+      "description": "Outslug Weave"
+    },
+    {
+      "type": "rule",
+      "description": "Weapon Focus with the chosen weapon"
     }
   ],
   "benefit": "Move an additional 5 feet when making a 5-foot step with Outslug Style",

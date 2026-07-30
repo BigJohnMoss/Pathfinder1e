@@ -4,8 +4,22 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Con 13; Wis 13; Subjective Mobility; base attack bonus +4 or monk level 3rd"
+      "description": "Subjective Mobility"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +4 or monk level 3rd"
     }
   ],
   "benefit": "Take half falling damage and you can intentionally fall against targets to damage them while on planes with subjective directional gravity",

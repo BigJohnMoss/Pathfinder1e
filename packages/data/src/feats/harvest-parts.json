@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Craft (any) 1 rank or Heal 1 rank"
+      "type": "skill",
+      "key": "Craft (any) 1 rank or Heal",
+      "minimum": 1
     }
   ],
   "benefit": "Harvest parts from a creature to be used for crafting",

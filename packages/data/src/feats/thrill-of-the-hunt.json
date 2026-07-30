@@ -4,8 +4,13 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 1
+    },
+    {
       "type": "rule",
-      "description": "Survival 1 rank; base attack bonus +4 or track class feature"
+      "description": "base attack bonus +4 or track class feature"
     }
   ],
   "benefit": "Designate a creature you are tracking as your prize to gain bonuses against it",

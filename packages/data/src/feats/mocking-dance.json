@@ -4,8 +4,9 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Acrobatics 4 ranks or Perform (dance) 4 ranks"
+      "type": "skill",
+      "key": "Acrobatics 4 ranks or Perform (dance)",
+      "minimum": 4
     }
   ],
   "benefit": "May either move 5 feet without provoking attacks of opportunity, or your speed with them",

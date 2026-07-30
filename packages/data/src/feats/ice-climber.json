@@ -4,8 +4,22 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Arctic Adaptation or Mountaineer; Climb 2 ranks"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "arctic-adaptation"
+        },
+        {
+          "type": "feat",
+          "id": "mountaineer"
+        }
+      ]
+    },
+    {
+      "type": "skill",
+      "key": "Climb",
+      "minimum": 2
     }
   ],
   "benefit": "Gain bonuses to climb on or move across slippery surfaces and to noitce and avoid avalanches",
