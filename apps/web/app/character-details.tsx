@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { CharacterClassLevel } from "../../../packages/types/src/index.js";
 
-export function CharacterDetails({ name, classId, additionalClassLevels, additionalArchetypeIds, prestigeSpellcastingTargets, archetypeId, ancestryId, level, classes, archetypes, ancestries, saveNotice, onNameChange, onClassChange, onAdditionalClassLevelsChange, onAdditionalArchetypeChange, onPrestigeSpellcastingTargetChange, onArchetypeChange, onAncestryChange, onLevelChange, onReviewLevelUp, onSave, onLoad, onImport, onExport, onPrint, onReset }: {
+export function CharacterDetails({ name, classId, additionalClassLevels, additionalArchetypeIds, prestigeSpellcastingTargets, archetypeId, ancestryId, level, classes, archetypes, ancestries, saveNotice, autosaveStatus, recoveryAvailable, onRecover, onDismissRecovery, onNameChange, onClassChange, onAdditionalClassLevelsChange, onAdditionalArchetypeChange, onPrestigeSpellcastingTargetChange, onArchetypeChange, onAncestryChange, onLevelChange, onReviewLevelUp, onSave, onLoad, onImport, onExport, onPrint, onReset }: {
   name: string;
   classId: string;
   additionalClassLevels: CharacterClassLevel[];
@@ -14,6 +14,10 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
   archetypes: Array<{ id: string; name: string; classId: string }>;
   ancestries: Array<{ id: string; name: string }>;
   saveNotice: string;
+  autosaveStatus: string;
+  recoveryAvailable: boolean;
+  onRecover: () => void;
+  onDismissRecovery: () => void;
   onNameChange: (name: string) => void;
   onClassChange: (classId: string) => void;
   onAdditionalClassLevelsChange: (classLevels: CharacterClassLevel[]) => void;
@@ -119,7 +123,9 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
     <details className="sidebar-collapsible character-file-section" open>
       <summary>Character file</summary>
       <div className="sidebar-collapsible-content character-actions">
+      {recoveryAvailable && <div className="recovery-notice" role="status"><strong>Unsaved work is available</strong><span>Recover the latest local autosave or dismiss it.</span><div><button type="button" onClick={onRecover}>Recover autosave</button><button type="button" className="secondary-button" onClick={onDismissRecovery}>Dismiss</button></div></div>}
       <div><button type="button" onClick={() => onSave(nameDraft)}>Save</button><button type="button" onClick={() => { cancelNameCommit(); setNameDraft(name); onLoad(); }}>Load</button><button type="button" onClick={() => { cancelNameCommit(); importInput.current?.click(); }}>Import</button><input ref={importInput} hidden type="file" accept="application/json,.json" aria-label="Import character file" onChange={(event) => { const file = event.target.files?.[0]; if (file) void onImport(file); event.target.value = ""; }} /><button type="button" onClick={onExport}>Export</button><button type="button" onClick={onPrint}>Print</button><button className="danger-button" type="button" onClick={() => { cancelNameCommit(); setNameDraft(""); onReset(); }}>Reset</button></div>
+      <small className="autosave-status" aria-live="polite">{autosaveStatus}</small>
       <small aria-live="polite">{saveNotice}</small>
       </div>
     </details>

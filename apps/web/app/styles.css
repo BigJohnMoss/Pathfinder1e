@@ -1204,3 +1204,49 @@ main#character-builder-main {
   outline: 3px solid #315e8a;
   outline-offset: 2px;
 }
+
+.autosave-status {
+  display: block;
+  color: #315e54;
+  font-weight: 700;
+}
+
+.recovery-notice {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid #d49a4c;
+  border-radius: 10px;
+  background: #fff8e8;
+  color: #40372c;
+}
+
+.recovery-notice > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.character-versions {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.character-versions summary {
+  color: #6f2424;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.character-versions ul {
+  margin-top: 8px;
+}
+
+.character-versions li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+}

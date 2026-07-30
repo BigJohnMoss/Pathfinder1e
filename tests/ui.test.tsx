@@ -50,6 +50,35 @@ test("saves and restores character details", async () => {
   assert.equal(library.characters[0].draft.name, "Kyra");
 });
 
+test("autosaves changes and offers recovery after an interrupted session", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  assert.ok(screen.getByText("Unsaved changes"));
+  await waitFor(() => assert.match(screen.getByText(/Autosaved/).textContent ?? "", /Autosaved/), { timeout: 2000 });
+  const autosave = JSON.parse(localStorage.getItem("pf1e-character-autosave") ?? "{}");
+  assert.equal(autosave.draft.classId, "fighter");
+
+  cleanup();
+  render(<Home />);
+  assert.ok(await screen.findByText("Unsaved work is available"));
+  await user.click(screen.getByRole("button", { name: "Recover autosave" }));
+  await waitFor(() => assert.equal((screen.getByLabelText("Class") as HTMLSelectElement).value, "fighter"));
+  assert.ok(screen.getByText("Recovered autosave"));
+});
+
+test("keeps recent versions when an existing library character is saved again", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  const library = JSON.parse(localStorage.getItem("pf1e-character-library") ?? "{}");
+  assert.equal(library.characters.length, 1);
+  assert.equal(library.characters[0].versions.length, 1);
+  assert.equal(library.characters[0].versions[0].draft.classId, "arcanist");
+});
+
 test("migrates the previous single save into the character library", async () => {
   const legacy = { version: 1, name: "Legacy Kyra", classId: "cleric", ancestryId: "human", level: 3, humanAbility: "wisdom", baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 16, charisma: 12 }, pointBuyBudget: 15, abilityBoosts: [], selectedFeatIds: [], selectedTraitIds: [], selectedTraitChoices: {}, selectedFeatChoices: {}, skillRanks: {}, selectedOptions: {}, preparedSpells: [], spellSlotUses: {}, arcaneReservoir: null, bardicPerformanceUsed: 0, wildShapeUsed: 0, inventory: [], coins: { cp: 0, sp: 0, gp: 0, pp: 0 } };
   localStorage.setItem("pf1e-character-draft", JSON.stringify(legacy));

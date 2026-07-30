@@ -3,11 +3,18 @@ import type { CharacterDraftV1 } from "../../../packages/types/src/index.js";
 
 export const characterLibraryKey = "pf1e-character-library";
 export const legacyCharacterKey = "pf1e-character-draft";
+export const characterAutosaveKey = "pf1e-character-autosave";
+
+export interface CharacterVersion {
+  savedAt: string;
+  draft: CharacterDraftV1;
+}
 
 export interface CharacterLibraryEntry {
   id: string;
   updatedAt: string;
   draft: CharacterDraftV1;
+  versions?: CharacterVersion[];
 }
 
 export interface CharacterLibraryV1 {
@@ -32,6 +39,14 @@ export function normalizeCharacterLibrary(value: unknown): CharacterLibraryV1 {
       entry && typeof entry.id === "string" && typeof entry.updatedAt === "string"
       && entry.draft && entry.draft.version === 1,
     ))
+      .map((entry) => ({
+        ...entry,
+        versions: Array.isArray(entry.versions)
+          ? entry.versions.filter((version): version is CharacterVersion => Boolean(
+            version && typeof version.savedAt === "string" && version.draft?.version === 1,
+          )).slice(-5)
+          : [],
+      }))
     : [];
   const activeCharacterId = typeof candidate.activeCharacterId === "string"
     && characters.some((entry) => entry.id === candidate.activeCharacterId)
@@ -40,11 +55,12 @@ export function normalizeCharacterLibrary(value: unknown): CharacterLibraryV1 {
   return { version: 1, activeCharacterId, characters };
 }
 
-export function CharacterLibrary({ library, classNames, ancestryNames, onOpen, onDelete, onNew }: {
+export function CharacterLibrary({ library, classNames, ancestryNames, onOpen, onRestoreVersion, onDelete, onNew }: {
   library: CharacterLibraryV1;
   classNames: Record<string, string>;
   ancestryNames: Record<string, string>;
   onOpen: (entry: CharacterLibraryEntry) => void;
+  onRestoreVersion: (entry: CharacterLibraryEntry, version: CharacterVersion) => void;
   onDelete: (id: string) => void;
   onNew: () => void;
 }) {
@@ -69,6 +85,13 @@ export function CharacterLibrary({ library, classNames, ancestryNames, onOpen, o
             ? <><button className="danger-button" type="button" onClick={() => { onDelete(entry.id); setConfirmDeleteId(null); }}>Confirm delete</button><button type="button" onClick={() => setConfirmDeleteId(null)}>Cancel</button></>
             : <button className="danger-button" type="button" onClick={() => setConfirmDeleteId(entry.id)}>Delete</button>}
         </div>
+        {entry.versions && entry.versions.length > 0 && <details className="character-versions">
+          <summary>Recent versions ({entry.versions.length})</summary>
+          <ul>{[...entry.versions].reverse().map((version) => <li key={version.savedAt}>
+            <span>{new Date(version.savedAt).toLocaleString()}</span>
+            <button type="button" onClick={() => onRestoreVersion(entry, version)}>Restore</button>
+          </li>)}</ul>
+        </details>}
       </li>)}</ul>}
   </section>;
 }
