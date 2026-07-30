@@ -16,21 +16,27 @@
       "id": "improved-unarmed-strike"
     },
     {
-      "type": "bab",
-      "minimum": 9
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 9
+        },
+        {
+          "type": "class-level",
+          "classId": "brawler",
+          "minimum": 5
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 5
+        }
+      ]
     },
     {
       "type": "feat",
       "id": "pummeling-style"
-    },
-    {
-      "type": "class-level",
-      "classId": "brawler",
-      "minimum": 5
-    },
-    {
-      "type": "rule",
-      "description": "or monk level 5th"
     }
   ],
   "benefit": "When using Pummeling Style, attempt a reposition or trip combat maneuver as a free action",

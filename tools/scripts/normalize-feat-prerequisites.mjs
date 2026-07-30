@@ -43,7 +43,9 @@ const classFeatureKeys = new Set(classes.flatMap((characterClass) => characterCl
 const parseAtomicRule = (description) => {
   const text = description.trim().replace(/\.$/, "");
   if (!text || /^or\b/i.test(text)) return null;
-  let match = text.match(/^base attack bonus\s*\+?(\d+)$/i);
+  let match = text.match(/^base (?:attack )?bonus\s*\+?(\d+)\s+or\s+monk level\s*(\d+)(?:st|nd|rd|th)?$/i);
+  if (match) return { type: "any", prerequisites: [{ type: "bab", minimum: Number(match[1]) }, { type: "class-level", classId: "monk", minimum: Number(match[2]) }] };
+  match = text.match(/^base attack bonus\s*\+?(\d+)$/i);
   if (match) return { type: "bab", minimum: Number(match[1]) };
   match = text.match(/^caster level\s*(\d+)(?:st|nd|rd|th)?$/i);
   if (match) return { type: "caster-level", minimum: Number(match[1]) };
@@ -92,6 +94,27 @@ const parseAtomicRule = (description) => {
   return null;
 };
 
+const repairSplitBrawlerMonkAlternative = (prerequisites) => {
+  const monkRuleIndex = prerequisites.findIndex((prerequisite) => prerequisite.type === "rule" && /^or monk level \d+(?:st|nd|rd|th)$/i.test(prerequisite.description));
+  if (monkRuleIndex === -1) return prerequisites;
+  const monkLevel = Number(prerequisites[monkRuleIndex].description.match(/\d+/)?.[0]);
+  const babIndex = prerequisites.findLastIndex((prerequisite, index) => index < monkRuleIndex && prerequisite.type === "bab");
+  let brawlerIndex = prerequisites.findLastIndex((prerequisite, index) => index < monkRuleIndex && prerequisite.type === "class-level" && prerequisite.classId === "brawler" && prerequisite.minimum === monkLevel);
+  const citationIndex = prerequisites.findLastIndex((prerequisite, index) => index < monkRuleIndex && prerequisite.type === "class-level" && prerequisite.classId === "acg" && prerequisite.minimum === monkLevel);
+  const brawlerLabelIndex = prerequisites.findLastIndex((prerequisite, index) => index < monkRuleIndex && prerequisite.type === "rule" && /^brawler$/i.test(prerequisite.description));
+  if (brawlerIndex === -1 && citationIndex !== -1 && brawlerLabelIndex !== -1) brawlerIndex = citationIndex;
+  if (babIndex === -1 || brawlerIndex === -1 || !Number.isInteger(monkLevel)) return prerequisites;
+  const removed = new Set([babIndex, brawlerIndex, monkRuleIndex]);
+  if (brawlerLabelIndex !== -1) removed.add(brawlerLabelIndex);
+  const insertionIndex = Math.min(...removed);
+  const alternative = { type: "any", prerequisites: [
+    { type: "bab", minimum: prerequisites[babIndex].minimum },
+    { type: "class-level", classId: "brawler", minimum: monkLevel },
+    { type: "class-level", classId: "monk", minimum: monkLevel },
+  ] };
+  return prerequisites.flatMap((prerequisite, index) => index === insertionIndex ? [alternative] : removed.has(index) ? [] : [prerequisite]);
+};
+
 let convertedRules = 0;
 let changedFeats = 0;
 const remainingRules = [];
@@ -115,8 +138,13 @@ for (const feat of feats) {
       prerequisites.push(prerequisite);
     }
   }
-  feat.value.prerequisites = prerequisites;
-  for (const prerequisite of prerequisites) {
+  const repairedPrerequisites = repairSplitBrawlerMonkAlternative(prerequisites);
+  if (repairedPrerequisites !== prerequisites) {
+    changed = true;
+    convertedRules += 1;
+  }
+  feat.value.prerequisites = repairedPrerequisites;
+  for (const prerequisite of repairedPrerequisites) {
     if (prerequisite.type === "rule") remainingRules.push({ feat: feat.value.name, description: prerequisite.description });
   }
   if (changed) {

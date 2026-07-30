@@ -24,21 +24,27 @@
       "id": "mobility"
     },
     {
-      "type": "bab",
-      "minimum": 12
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 12
+        },
+        {
+          "type": "class-level",
+          "classId": "brawler",
+          "minimum": 8
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 8
+        }
+      ]
     },
     {
       "type": "feat",
       "id": "power-attack"
-    },
-    {
-      "type": "class-level",
-      "classId": "brawler",
-      "minimum": 8
-    },
-    {
-      "type": "rule",
-      "description": "or monk level 8th"
     }
   ],
   "benefit": "Increase the damage dealt with Jabbing Style",

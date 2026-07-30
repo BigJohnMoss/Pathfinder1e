@@ -12,21 +12,27 @@
       "id": "dodge"
     },
     {
-      "type": "bab",
-      "minimum": 9
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 9
+        },
+        {
+          "type": "class-level",
+          "classId": "brawler",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 6
+        }
+      ]
     },
     {
       "type": "feat",
       "id": "mobility"
-    },
-    {
-      "type": "class-level",
-      "classId": "brawler",
-      "minimum": 6
-    },
-    {
-      "type": "rule",
-      "description": "or monk level 6th"
     }
   ],
   "benefit": "Opponents with Mobility do not gain a bonus when they provoke attacks of opportunity from you",

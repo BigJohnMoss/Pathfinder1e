@@ -16,21 +16,27 @@
       "id": "jabbing-style"
     },
     {
-      "type": "bab",
-      "minimum": 9
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 9
+        },
+        {
+          "type": "class-level",
+          "classId": "brawler",
+          "minimum": 5
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 5
+        }
+      ]
     },
     {
       "type": "feat",
       "id": "mobility"
-    },
-    {
-      "type": "class-level",
-      "classId": "brawler",
-      "minimum": 5
-    },
-    {
-      "type": "rule",
-      "description": "or monk level 5th"
     }
   ],
   "benefit": "Move 5 feet without provoking attacks of opportunity whenever you hit with an unarmed strike",

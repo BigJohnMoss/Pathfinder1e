@@ -5,12 +5,8 @@
   "prerequisites": [
     {
       "type": "class-level",
-      "classId": "disciple",
+      "classId": "dragon-disciple",
       "minimum": 3
-    },
-    {
-      "type": "rule",
-      "description": "Dragon"
     }
   ],
   "benefit": "Deal ongoing damage with your breath weapon",
