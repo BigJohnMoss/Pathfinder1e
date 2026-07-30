@@ -8,10 +8,6 @@
       "id": "word-of-healing"
     },
     {
-      "type": "rule",
-      "description": "UM"
-    },
-    {
       "type": "class-level",
       "classId": "paladin",
       "minimum": 5

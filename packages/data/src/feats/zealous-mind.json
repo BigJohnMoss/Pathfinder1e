@@ -13,10 +13,6 @@
     },
     {
       "type": "rule",
-      "description": "UI"
-    },
-    {
-      "type": "rule",
       "description": "lawful alignment"
     }
   ],

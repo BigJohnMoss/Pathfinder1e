@@ -42,10 +42,6 @@
       "id": "vicious-stomp"
     },
     {
-      "type": "rule",
-      "description": "UC"
-    },
-    {
       "type": "bab",
       "minimum": 10
     }

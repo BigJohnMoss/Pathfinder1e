@@ -24,6 +24,7 @@ const prerequisiteLabel = (prerequisite: Prerequisite, featNames: Map<string, st
   if (prerequisite.type === "caster-level") return `Caster level ${prerequisite.minimum}+`;
   if (prerequisite.type === "class-level") return `${prerequisite.classId} level ${prerequisite.minimum}+`;
   if (prerequisite.type === "skill") return `${prerequisite.key} ${prerequisite.minimum}+ ranks`;
+  if (prerequisite.type === "save") return `Base ${prerequisite.key} save +${prerequisite.minimum}`;
   if (prerequisite.type === "matching-choice") return `Matching ${prerequisite.key} for ${featNames.get(prerequisite.featId) ?? prerequisite.featId}`;
   if (prerequisite.type === "choice-value") return `${prerequisite.key} for ${featNames.get(prerequisite.featId) ?? prerequisite.featId}: ${prerequisite.value}`;
   if (prerequisite.type === "any") return `One of: ${prerequisite.prerequisites.map((item) => prerequisiteLabel(item, featNames)).join("; ")}`;

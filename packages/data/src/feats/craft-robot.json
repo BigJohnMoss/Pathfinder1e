@@ -8,24 +8,12 @@
       "id": "craft-technological-arms-and-armor"
     },
     {
-      "type": "rule",
-      "description": "TG"
-    },
-    {
       "type": "feat",
       "id": "craft-technological-item"
     },
     {
-      "type": "rule",
-      "description": "TG"
-    },
-    {
       "type": "feat",
       "id": "technologist"
-    },
-    {
-      "type": "rule",
-      "description": "TG"
     },
     {
       "type": "skill",

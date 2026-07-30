@@ -15,10 +15,6 @@
     {
       "type": "feat",
       "id": "improved-dirty-trick"
-    },
-    {
-      "type": "rule",
-      "description": "APG"
     }
   ],
   "benefit": "Perform a dirty trick at the end of a charge",

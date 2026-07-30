@@ -29,6 +29,8 @@ const sizeIds = new Map([
   ["gargantuan", "gargantuan"],
   ["colossal", "colossal"],
 ]);
+const sourceCitationTokens = new Set(["ACG", "APG", "ARG", "ISG", "ISWG", "OA", "TG", "UC", "UI", "UM"]);
+const saveKeys = { fortitude: "fortitude", reflex: "reflex", will: "will" };
 const featIdByName = new Map(feats.map(({ value }) => [value.name.toLocaleLowerCase(), value.id]));
 
 const parseAtomicRule = (description) => {
@@ -40,6 +42,10 @@ const parseAtomicRule = (description) => {
   if (match) return { type: "caster-level", minimum: Number(match[1]) };
   match = text.match(/^character level\s*(\d+)(?:st|nd|rd|th)?$/i);
   if (match) return { type: "level", minimum: Number(match[1]) };
+  match = text.match(/^(\d+)\s+(?:or more\s+)?Hit Dice$/i);
+  if (match) return { type: "level", minimum: Number(match[1]) };
+  match = text.match(/^base (Fortitude|Reflex|Will) (?:saving throw|save) bonus\s*\+?(\d+)$/i);
+  if (match) return { type: "save", key: saveKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
   match = text.match(/^(Str|Dex|Con|Int|Wis|Cha)\s*(\d+)$/i);
   if (match) return { type: "ability", key: abilityKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
   match = text.match(/^([A-Za-z]+) level\s*(\d+)(?:st|nd|rd|th)?$/i);
@@ -82,11 +88,11 @@ for (const feat of feats) {
       continue;
     }
     const segments = prerequisite.description.split(/\s*;\s*/).filter(Boolean);
-    const parsed = segments.map(parseAtomicRule);
+    const parsed = segments.map((segment) => sourceCitationTokens.has(segment.trim()) ? { type: "source-citation" } : parseAtomicRule(segment));
     if (parsed.some(Boolean)) {
       changed = true;
       for (let index = 0; index < segments.length; index += 1) {
-        prerequisites.push(parsed[index] ?? { type: "rule", description: segments[index] });
+        if (parsed[index]?.type !== "source-citation") prerequisites.push(parsed[index] ?? { type: "rule", description: segments[index] });
         if (parsed[index]) convertedRules += 1;
       }
     } else {

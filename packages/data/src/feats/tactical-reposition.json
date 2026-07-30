@@ -15,10 +15,6 @@
     {
       "type": "feat",
       "id": "improved-reposition"
-    },
-    {
-      "type": "rule",
-      "description": "APG"
     }
   ],
   "benefit": "Use reposition to move enemies into hazardous areas",

@@ -21,10 +21,6 @@
       "id": "improved-dirty-trick"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "bab",
       "minimum": 11
     }

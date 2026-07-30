@@ -13,16 +13,8 @@
       "id": "fencing-grace"
     },
     {
-      "type": "rule",
-      "description": "UI"
-    },
-    {
       "type": "feat",
       "id": "slashing-grace"
-    },
-    {
-      "type": "rule",
-      "description": "ACG"
     },
     {
       "type": "rule",

@@ -21,10 +21,6 @@
       "id": "elemental-fist"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "feat",
       "id": "improved-unarmed-strike"
     },

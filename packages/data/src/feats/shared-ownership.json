@@ -8,10 +8,6 @@
       "id": "well-prepared"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "skill",
       "key": "Sleight of Hand",
       "minimum": 1

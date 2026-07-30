@@ -9,8 +9,9 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "base Fortitude save bonus +7"
+      "type": "save",
+      "key": "fortitude",
+      "minimum": 7
     }
   ],
   "benefit": "Cast telekinesis with a transmutation-crafted item",

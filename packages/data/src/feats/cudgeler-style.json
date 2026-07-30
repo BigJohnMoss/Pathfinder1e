@@ -6,10 +6,6 @@
     {
       "type": "feat",
       "id": "bludgeoner"
-    },
-    {
-      "type": "rule",
-      "description": "UC"
     }
   ],
   "benefit": "Deal greater damage with nonlethal damage on a charge",

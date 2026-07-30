@@ -10,10 +10,6 @@
     {
       "type": "feat",
       "id": "target-of-opportunity"
-    },
-    {
-      "type": "rule",
-      "description": "UC"
     }
   ],
   "benefit": "Use Target of Opportunity to give allies a chance to hide",

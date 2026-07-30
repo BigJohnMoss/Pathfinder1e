@@ -6,10 +6,6 @@
     {
       "type": "feat",
       "id": "antagonize"
-    },
-    {
-      "type": "rule",
-      "description": "UM"
     }
   ],
   "benefit": "Trick opponents into making opportunity attacks against you, granting yourself a +4 dodge bonus to AC",

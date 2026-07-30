@@ -30,6 +30,7 @@ export type Prerequisite =
   | { type: "level" | "bab" | "caster-level"; minimum: number }
   | { type: "class-level"; classId: string; minimum: number }
   | { type: "ability" | "skill"; key: string; minimum: number }
+  | { type: "save"; key: "fortitude" | "reflex" | "will"; minimum: number }
   | { type: "feat" | "feature" | "spell-access"; id: string }
   | { type: "rule"; description: string }
   | { type: "ancestry"; id: string }
@@ -38,7 +39,7 @@ export type Prerequisite =
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface PrerequisiteResult { prerequisite: Prerequisite; met: boolean }
-export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; size?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; spellIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
+export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; size?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; spellIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
 
 export function abilityModifier(score: number): number;
 export const abilityNames: AbilityName[];

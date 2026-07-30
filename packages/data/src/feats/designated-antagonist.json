@@ -6,10 +6,6 @@
     {
       "type": "feat",
       "id": "antagonize"
-    },
-    {
-      "type": "rule",
-      "description": "UM"
     }
   ],
   "benefit": "When using Antagonize, directy hostility to willing ally",

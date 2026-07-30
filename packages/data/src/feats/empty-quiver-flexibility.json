@@ -16,10 +16,6 @@
       "id": "stabbing-shot"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "feat",
       "id": "weapon-focus"
     },

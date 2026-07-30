@@ -9,8 +9,9 @@
       "minimum": 3
     },
     {
-      "type": "rule",
-      "description": "base Fortitude saving throw bonus +4"
+      "type": "save",
+      "key": "fortitude",
+      "minimum": 4
     }
   ],
   "benefit": "Gain an enhancement bonus to an ability score with a suit of magic armor or transmutation-crafted item",

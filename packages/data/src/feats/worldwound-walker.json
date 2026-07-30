@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "5 or more Hit Dice"
+      "type": "level",
+      "minimum": 5
     },
     {
       "type": "rule",

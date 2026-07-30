@@ -8,10 +8,6 @@
       "id": "sharp-senses"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "skill",
       "key": "Perception",
       "minimum": 7

@@ -6,10 +6,6 @@
     {
       "type": "feat",
       "id": "lookout"
-    },
-    {
-      "type": "rule",
-      "description": "APG"
     }
   ],
   "benefit": "Stop being flat-footed earlier when near another ally with Lookout who acts",

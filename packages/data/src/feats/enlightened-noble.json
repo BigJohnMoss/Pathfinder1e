@@ -13,10 +13,6 @@
       "id": "noble-scion"
     },
     {
-      "type": "rule",
-      "description": "ISWG"
-    },
-    {
       "type": "skill",
       "key": "Knowledge (nobility)",
       "minimum": 1

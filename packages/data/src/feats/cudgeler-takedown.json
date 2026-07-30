@@ -8,10 +8,6 @@
       "id": "bludgeoner"
     },
     {
-      "type": "rule",
-      "description": "UC"
-    },
-    {
       "type": "feat",
       "id": "cudgeler-style"
     },

@@ -13,16 +13,8 @@
       "id": "bodyguard"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "feat",
       "id": "combat-patrol"
-    },
-    {
-      "type": "rule",
-      "description": "APG"
     },
     {
       "type": "feat",
@@ -35,10 +27,6 @@
     {
       "type": "feat",
       "id": "saving-shield"
-    },
-    {
-      "type": "rule",
-      "description": "APG"
     },
     {
       "type": "feat",

@@ -8,10 +8,6 @@
       "id": "siege-engineer"
     },
     {
-      "type": "rule",
-      "description": "UC"
-    },
-    {
       "type": "skill",
       "key": "Knowledge (engineering) or Profession (siege engineer)",
       "minimum": 7

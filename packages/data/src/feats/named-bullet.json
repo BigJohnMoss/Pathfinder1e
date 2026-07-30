@@ -12,10 +12,6 @@
       "id": "gunsmithing"
     },
     {
-      "type": "rule",
-      "description": "UC"
-    },
-    {
       "type": "bab",
       "minimum": 5
     }

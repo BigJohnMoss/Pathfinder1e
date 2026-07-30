@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Base Will save bonus +2"
+      "type": "save",
+      "key": "will",
+      "minimum": 2
     }
   ],
   "benefit": "Take mental actions while being controlled",

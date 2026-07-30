@@ -12,10 +12,6 @@
       "id": "improved-blind-fight"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "skill",
       "key": "Perception",
       "minimum": 10

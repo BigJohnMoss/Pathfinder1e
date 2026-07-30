@@ -8,8 +8,8 @@
       "description": "Kyton subtype"
     },
     {
-      "type": "rule",
-      "description": "5 or more Hit Dice"
+      "type": "level",
+      "minimum": 5
     }
   ],
   "benefit": "Gain or enhance dancing chains ability",

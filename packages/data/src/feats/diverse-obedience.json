@@ -8,10 +8,6 @@
       "id": "deific-obedience"
     },
     {
-      "type": "rule",
-      "description": "ISG"
-    },
-    {
       "type": "skill",
       "key": "Knowledge (religion)",
       "minimum": 5
