@@ -4,12 +4,12 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Beast Hunter"
+      "type": "feat",
+      "id": "beast-hunter"
     },
     {
-      "type": "rule",
-      "description": "Improved Beast Hunter"
+      "type": "feat",
+      "id": "improved-beast-hunter"
     },
     {
       "type": "bab",

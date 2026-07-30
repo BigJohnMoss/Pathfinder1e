@@ -12,8 +12,8 @@
       "id": "kobold-style"
     },
     {
-      "type": "rule",
-      "description": "Small size or smaller"
+      "type": "size",
+      "maximum": "small"
     }
   ],
   "benefit": "Prone creatures are denied their Dex bonus to AC",

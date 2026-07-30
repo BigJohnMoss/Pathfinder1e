@@ -9,8 +9,18 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +1 or bard level 1st"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 1
+        },
+        {
+          "type": "class-level",
+          "classId": "bard",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "Use Perform instead of Bluff to feint",

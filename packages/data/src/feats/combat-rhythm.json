@@ -4,8 +4,18 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Base attack bonus +6 or monk level 6th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 6
+        }
+      ]
     }
   ],
   "benefit": "Reduce penalties to your attacks with successive hits against the same target",

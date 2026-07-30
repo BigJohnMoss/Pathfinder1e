@@ -12,8 +12,18 @@
       "id": "improved-unarmed-strike"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +3 or monk level 1st"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 3
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "Release a grapple by slamming the target into the ground",

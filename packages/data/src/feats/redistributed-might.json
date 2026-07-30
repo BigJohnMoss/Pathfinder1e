@@ -4,8 +4,19 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Con 13 or Wis 13"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ability",
+          "key": "constitution",
+          "minimum": 13
+        },
+        {
+          "type": "ability",
+          "key": "wisdom",
+          "minimum": 13
+        }
+      ]
     },
     {
       "type": "rule",

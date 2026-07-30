@@ -4,8 +4,26 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "ascetic-style"
+    },
+    {
       "type": "rule",
-      "description": "Ascetic Style; Weapon Focus with the chosen melee weapon; base attack bonus +5 or monk level 5th"
+      "description": "Weapon Focus with the chosen melee weapon"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 5
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 5
+        }
+      ]
     }
   ],
   "benefit": "Use a new melee weapon with unarmed class abilities",

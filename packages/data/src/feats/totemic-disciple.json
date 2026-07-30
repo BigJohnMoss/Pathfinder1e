@@ -18,8 +18,8 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Totemic Initiate"
+      "type": "feat",
+      "id": "totemic-initiate"
     },
     {
       "type": "bab",

@@ -13,8 +13,18 @@
       "id": "greater-grapple"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +9 or monk level 9th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 9
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 9
+        }
+      ]
     }
   ],
   "benefit": "Against a pinned opponent, you may double nonlethal damage with grapple check",

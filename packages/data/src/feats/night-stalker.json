@@ -20,8 +20,8 @@
       "description": "half-ogre or ogre"
     },
     {
-      "type": "rule",
-      "description": "size Large or larger"
+      "type": "size",
+      "minimum": "large"
     }
   ],
   "benefit": "Ignore size penalties on Stealth while in darkness",

@@ -9,8 +9,8 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     },
     {
       "type": "rule",

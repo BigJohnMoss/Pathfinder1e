@@ -9,8 +9,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "elf"
+      "type": "ancestry",
+      "id": "elf"
     }
   ],
   "benefit": "Gain a cumulative +2 bonus (max +10) on Knowledge checks to identify monsters for each ally within 30 feet who has this feat",

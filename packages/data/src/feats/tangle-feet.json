@@ -20,8 +20,8 @@
       "description": "goblin"
     },
     {
-      "type": "rule",
-      "description": "Small size or smaller"
+      "type": "size",
+      "maximum": "small"
     }
   ],
   "benefit": "Trip up larger opponents when you use Acrobatics to move through their square",

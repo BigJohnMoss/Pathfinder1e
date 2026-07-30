@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Position of Strength"
+      "type": "feat",
+      "id": "position-of-strength"
     },
     {
       "type": "any",

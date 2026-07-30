@@ -12,8 +12,8 @@
       "id": "guardian-of-the-wild"
     },
     {
-      "type": "rule",
-      "description": "elf"
+      "type": "ancestry",
+      "id": "elf"
     }
   ],
   "benefit": "Become more perceptive within a specific terrain",

@@ -12,8 +12,8 @@
       "description": "(illusion)"
     },
     {
-      "type": "rule",
-      "description": "Gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Force enemies to think of your illusions as real threats",

@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Vital Strike"
+      "type": "feat",
+      "id": "vital-strike"
     },
     {
       "type": "bab",

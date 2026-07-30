@@ -16,7 +16,11 @@ export function validatePrerequisites(prerequisites, { nested = false } = {}) {
     if (["feat", "feature", "spell-access"].includes(prerequisite.type) && (!prerequisite.id || !idPattern.test(prerequisite.id))) errors.push(`${prerequisite.type} prerequisite needs a valid id`);
     if (prerequisite.type === "rule" && (typeof prerequisite.description !== "string" || !prerequisite.description.trim())) errors.push("rule prerequisite needs a description");
     if (prerequisite.type === "ancestry" && (!prerequisite.id || !idPattern.test(prerequisite.id))) errors.push("ancestry prerequisite needs a valid id");
-    if (prerequisite.type === "size" && !sizes.includes(prerequisite.maximum)) errors.push("size prerequisite needs a valid maximum size");
+    if (prerequisite.type === "size") {
+      if (!prerequisite.minimum && !prerequisite.maximum) errors.push("size prerequisite needs a minimum or maximum size");
+      if (prerequisite.minimum && !sizes.includes(prerequisite.minimum)) errors.push("size prerequisite has an invalid minimum size");
+      if (prerequisite.maximum && !sizes.includes(prerequisite.maximum)) errors.push("size prerequisite has an invalid maximum size");
+    }
     if (prerequisite.type === "matching-choice" && (!prerequisite.featId || !idPattern.test(prerequisite.featId) || typeof prerequisite.key !== "string" || !prerequisite.key.trim())) errors.push("matching-choice prerequisite needs a feat id and choice key");
     if (prerequisite.type === "choice-value" && (!prerequisite.featId || !idPattern.test(prerequisite.featId) || typeof prerequisite.key !== "string" || !prerequisite.key.trim() || typeof prerequisite.value !== "string" || !prerequisite.value.trim())) errors.push("choice-value prerequisite needs a feat id, choice key, and value");
     if (prerequisite.type === "any") {

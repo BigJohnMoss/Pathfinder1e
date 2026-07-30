@@ -4,8 +4,30 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Archon Style; Combat Expertise; Combat Reflexes; base attack bonus +4 or monk level 3rd"
+      "type": "feat",
+      "id": "archon-style"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 4
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 3
+        }
+      ]
     }
   ],
   "benefit": "Redirect an attack from an opponent to yourself to grant an ally an attack of opportunity",

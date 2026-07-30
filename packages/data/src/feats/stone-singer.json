@@ -13,8 +13,8 @@
       "id": "bardic-performance"
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "Gain benefits to bardic performance underground and against earth creatures",

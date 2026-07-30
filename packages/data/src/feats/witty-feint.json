@@ -13,8 +13,8 @@
       "id": "weapon-training"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Improve your own AC instead of harming your enemy's when feinting in combat",

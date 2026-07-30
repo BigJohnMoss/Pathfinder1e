@@ -8,8 +8,8 @@
       "description": "Weapon Focus or natural weapon"
     },
     {
-      "type": "rule",
-      "description": "Small size or smaller"
+      "type": "size",
+      "maximum": "small"
     }
   ],
   "benefit": "Ignore strength penalty to damage with racial natural weapons and Weapon Focused weapons",

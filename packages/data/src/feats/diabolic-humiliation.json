@@ -8,8 +8,30 @@
       "id": "combat-reflexes"
     },
     {
+      "type": "feat",
+      "id": "diabolic-style"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
       "type": "rule",
-      "description": "Diabolic Style; Vital Strike; Improved Unarmed Strike or Weapon Focus (unarmed strike); base attack bonus +8 or monk level 7th"
+      "description": "Improved Unarmed Strike or Weapon Focus (unarmed strike)"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 8
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 7
+        }
+      ]
     }
   ],
   "benefit": "Gain enhanced effects when you use Diabolic Style to humiliate a target",

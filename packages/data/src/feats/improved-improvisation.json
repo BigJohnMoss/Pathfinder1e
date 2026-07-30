@@ -17,8 +17,8 @@
       "id": "improvisation"
     },
     {
-      "type": "rule",
-      "description": "human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "Halve nonproficiency penalty, gain +4 bonus when using Improvisation instead of +2",

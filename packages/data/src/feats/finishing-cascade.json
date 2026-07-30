@@ -4,8 +4,22 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 11
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 11
+        }
+      ]
+    },
+    {
       "type": "rule",
-      "description": "Base attack bonus +11 or monk level 11th ; at least one combination feat"
+      "description": "at least one combination feat"
     }
   ],
   "benefit": "Double the effect's of a combination feat once per round",

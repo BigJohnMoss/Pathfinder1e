@@ -9,8 +9,8 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "half-elf"
+      "type": "ancestry",
+      "id": "half-elf"
     }
   ],
   "benefit": "Grant friendly creatures a +2 bonus on Perception checks",

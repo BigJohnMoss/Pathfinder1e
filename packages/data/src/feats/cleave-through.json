@@ -21,8 +21,8 @@
       "minimum": 11
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "Take 5 ft steps between cleaves to threaten additional creatures",

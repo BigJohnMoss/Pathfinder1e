@@ -8,8 +8,8 @@
       "id": "point-blank-shot"
     },
     {
-      "type": "rule",
-      "description": "elf"
+      "type": "ancestry",
+      "id": "elf"
     },
     {
       "type": "rule",

@@ -9,8 +9,8 @@
       "minimum": 8
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     },
     {
       "type": "rule",

@@ -8,8 +8,8 @@
       "id": "combat-expertise"
     },
     {
-      "type": "rule",
-      "description": "Small size or smaller"
+      "type": "size",
+      "maximum": "small"
     }
   ],
   "benefit": "+4 CMB vs. enemies denied their Dex bonus to AC",

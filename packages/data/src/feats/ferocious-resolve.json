@@ -9,8 +9,8 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "half-orc"
+      "type": "ancestry",
+      "id": "half-orc"
     },
     {
       "type": "rule",

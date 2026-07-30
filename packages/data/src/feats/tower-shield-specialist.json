@@ -12,8 +12,18 @@
       "id": "tower-shield-proficiency"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +11 or fighter level 8th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 11
+        },
+        {
+          "type": "class-level",
+          "classId": "fighter",
+          "minimum": 8
+        }
+      ]
     }
   ],
   "benefit": "Reduce the armor check penalty of a tower shield",

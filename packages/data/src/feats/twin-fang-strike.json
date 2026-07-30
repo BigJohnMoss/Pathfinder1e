@@ -9,12 +9,12 @@
       "minimum": 15
     },
     {
-      "type": "rule",
-      "description": "Quick Draw"
+      "type": "feat",
+      "id": "quick-draw"
     },
     {
-      "type": "rule",
-      "description": "Twin Fang Style"
+      "type": "feat",
+      "id": "twin-fang-style"
     },
     {
       "type": "rule",
@@ -26,8 +26,18 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or monk level 6th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 6
+        }
+      ]
     }
   ],
   "benefit": "You can make two attacks as an attack action",

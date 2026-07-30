@@ -8,8 +8,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     },
     {
       "type": "rule",

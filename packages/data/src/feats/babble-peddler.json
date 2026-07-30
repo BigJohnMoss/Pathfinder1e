@@ -14,8 +14,8 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Trick creatures into exchanging valuable things for junk",

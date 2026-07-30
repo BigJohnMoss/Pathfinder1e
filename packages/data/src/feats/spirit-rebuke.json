@@ -9,12 +9,12 @@
       "minimum": 17
     },
     {
-      "type": "rule",
-      "description": "Iron Will"
+      "type": "feat",
+      "id": "iron-will"
     },
     {
-      "type": "rule",
-      "description": "Spirit Beacon"
+      "type": "feat",
+      "id": "spirit-beacon"
     },
     {
       "type": "skill",

@@ -9,8 +9,8 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "half-elf"
+      "type": "ancestry",
+      "id": "half-elf"
     }
   ],
   "benefit": "Grant +2 Bluff or Intimidate to nearby allies",

@@ -13,8 +13,18 @@
       "id": "improved-unarmed-strike"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +5 or monk level 5th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 5
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 5
+        }
+      ]
     }
   ],
   "benefit": "You can sicken creatures casting divine spells with your unarmed strikes",

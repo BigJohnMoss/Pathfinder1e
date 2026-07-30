@@ -12,8 +12,18 @@
       "id": "asura-style"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +13 or monk level 13th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 13
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 13
+        }
+      ]
     }
   ],
   "benefit": "You can dispel divine spells with your unarmed strikes in Asura Style",

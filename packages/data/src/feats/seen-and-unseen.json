@@ -12,8 +12,8 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "half-elf"
+      "type": "ancestry",
+      "id": "half-elf"
     }
   ],
   "benefit": "+2 vs. scrying/divination, +2 on Stealth, -4 penalty to track you",

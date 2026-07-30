@@ -12,8 +12,8 @@
       "description": "base Will save +4"
     },
     {
-      "type": "rule",
-      "description": "human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "Attempt a new Will save 1/day to remove a harmful effect",

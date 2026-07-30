@@ -14,8 +14,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     },
     {
       "type": "feat",

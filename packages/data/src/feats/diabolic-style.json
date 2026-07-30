@@ -4,8 +4,26 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
       "type": "rule",
-      "description": "Combat Reflexes; Improved Unarmed Strike or Weapon Focus (unarmed strike); base attack bonus +2 or monk level 1st"
+      "description": "Improved Unarmed Strike or Weapon Focus (unarmed strike)"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 2
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "Humiliate targets that provoke attacks of opportun",

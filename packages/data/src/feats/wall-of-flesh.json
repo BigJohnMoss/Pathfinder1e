@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Small size or smaller"
+      "type": "size",
+      "maximum": "small"
     }
   ],
   "benefit": "Increase your size modifier with combat maneuvers",

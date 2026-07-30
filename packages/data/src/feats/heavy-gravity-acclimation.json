@@ -4,8 +4,18 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Str 17 or Endurance"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ability",
+          "key": "strength",
+          "minimum": 17
+        },
+        {
+          "type": "feat",
+          "id": "endurance"
+        }
+      ]
     }
   ],
   "benefit": "Ignore penalties for being on heavy gravity planes and increase carrying capacity",

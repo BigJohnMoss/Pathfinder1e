@@ -13,8 +13,8 @@
       "id": "wild-shape"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Pantomine animal behavior to frighten your enemies or make them consider you harmless",

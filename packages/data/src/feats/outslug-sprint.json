@@ -13,16 +13,16 @@
       "description": "Combat Expertise or brawler’s cunning ACG class feature"
     },
     {
-      "type": "rule",
-      "description": "Lunge"
+      "type": "feat",
+      "id": "lunge"
     },
     {
-      "type": "rule",
-      "description": "Outslug Style"
+      "type": "feat",
+      "id": "outslug-style"
     },
     {
-      "type": "rule",
-      "description": "Outslug Weave"
+      "type": "feat",
+      "id": "outslug-weave"
     },
     {
       "type": "rule",

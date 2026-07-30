@@ -8,8 +8,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "Adjacent allies with this feat grant you a cumulative +1 bonus (max +4) on combat maneuver checks",

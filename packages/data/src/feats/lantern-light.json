@@ -20,8 +20,18 @@
       "description": "good or lawful alignment"
     },
     {
-      "type": "rule",
-      "description": "caster level 7th or monk level 7th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "caster-level",
+          "minimum": 7
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 7
+        }
+      ]
     }
   ],
   "benefit": "Bypass damage reduction when using Lantern Style",

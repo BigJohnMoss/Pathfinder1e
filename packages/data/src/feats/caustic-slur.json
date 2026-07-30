@@ -13,8 +13,8 @@
       "id": "favored-enemy"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Insult your favored enemies to anger them",

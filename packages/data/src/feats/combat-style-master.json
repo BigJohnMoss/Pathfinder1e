@@ -12,8 +12,18 @@
       "description": "two more style feats"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or monk level 5th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 5
+        }
+      ]
     }
   ],
   "benefit": "May switch styles as a free action",

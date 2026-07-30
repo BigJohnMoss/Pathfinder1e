@@ -9,8 +9,8 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "Gain both +1 HP and +1 skill point when leveling in a favored class",

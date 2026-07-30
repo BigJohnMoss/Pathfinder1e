@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Gnome"
+      "type": "ancestry",
+      "id": "gnome"
     },
     {
       "type": "rule",

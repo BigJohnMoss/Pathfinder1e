@@ -8,8 +8,18 @@
       "id": "shield-focus"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +3 or fighter level 1st"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 3
+        },
+        {
+          "type": "class-level",
+          "classId": "fighter",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "Cast spells while using a shield",

@@ -14,16 +14,26 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Combat Expertise"
+      "type": "feat",
+      "id": "combat-expertise"
     },
     {
-      "type": "rule",
-      "description": "Perfect Style"
+      "type": "feat",
+      "id": "perfect-style"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +9 or monk level 9th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 9
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 9
+        }
+      ]
     }
   ],
   "benefit": "Use Wis mod instead of Cha mod to feint",

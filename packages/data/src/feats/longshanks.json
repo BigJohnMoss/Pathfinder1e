@@ -8,8 +8,8 @@
       "description": "Giant subtype"
     },
     {
-      "type": "rule",
-      "description": "size Large or larger"
+      "type": "size",
+      "minimum": "large"
     }
   ],
   "benefit": "Land speed increases, ignore some difficult terrain",

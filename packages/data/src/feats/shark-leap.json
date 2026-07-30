@@ -21,8 +21,18 @@
       "minimum": 10
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +10 or monk level 10th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 10
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 10
+        }
+      ]
     }
   ],
   "benefit": "Make a special charge while underater that deals bonus damage and knows the target off-balance",

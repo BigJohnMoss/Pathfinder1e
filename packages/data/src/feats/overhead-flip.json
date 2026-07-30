@@ -21,8 +21,18 @@
       "id": "savage-slam"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +9 or monk level 6th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 9
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 6
+        }
+      ]
     }
   ],
   "benefit": "Savage Slam staggers the target",

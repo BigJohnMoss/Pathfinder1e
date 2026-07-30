@@ -13,8 +13,8 @@
       "id": "bloodline"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Use Bluff in place of Diplomacy to influence those tied to your bloodline",

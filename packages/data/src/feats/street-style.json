@@ -21,8 +21,18 @@
       "id": "power-attack"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +4 or monk level 3rd"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 4
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 3
+        }
+      ]
     }
   ],
   "benefit": "Deal extra damage and bullrush in urban areas",

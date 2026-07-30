@@ -9,8 +9,8 @@
       "minimum": 15
     },
     {
-      "type": "rule",
-      "description": "half-orc"
+      "type": "ancestry",
+      "id": "half-orc"
     }
   ],
   "benefit": "Grant allies a +2 moral bonus to attack when you confirm a critical hit",

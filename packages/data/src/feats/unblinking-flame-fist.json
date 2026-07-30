@@ -14,24 +14,34 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Combat Expertise"
+      "type": "feat",
+      "id": "combat-expertise"
     },
     {
-      "type": "rule",
-      "description": "Perfect Style"
+      "type": "feat",
+      "id": "perfect-style"
     },
     {
-      "type": "rule",
-      "description": "Stunning Fist"
+      "type": "feat",
+      "id": "stunning-fist"
     },
     {
-      "type": "rule",
-      "description": "Unblinking Flame Feint"
+      "type": "feat",
+      "id": "unblinking-flame-feint"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +13 or monk level 13th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 13
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 13
+        }
+      ]
     }
   ],
   "benefit": "Stunning fist save DC is +2 vs flat-footed foes",

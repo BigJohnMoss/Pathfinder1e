@@ -9,8 +9,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "half-elf"
+      "type": "ancestry",
+      "id": "half-elf"
     }
   ],
   "benefit": "You are more agile in crowds",

@@ -4,8 +4,26 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Combat Expertise; Combat Reflexes; base attack bonus +2 or monk level 1st"
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 2
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "Grant bonus to AC to allies against single opponent's attacks",

@@ -17,8 +17,18 @@
       "id": "improved-reposition"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +1 or monk level 1st"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 1
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "Gain +2 AC against charging foes, use reposition as an immediate action against a failed charge",

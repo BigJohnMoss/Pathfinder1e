@@ -4,8 +4,12 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
       "type": "rule",
-      "description": "Combat Expertise; sneak attack +3d6 or studied strike +3d6"
+      "description": "sneak attack +3d6 or studied strike +3d6"
     }
   ],
   "benefit": "Gain a bonus on combat maneuver checks against flanked foes and those denied their Dex bonus to AC",

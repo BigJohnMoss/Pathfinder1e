@@ -12,8 +12,8 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "+1 AC vs critical hits when wearing a helmet, apply half damage of critical hit towards helmet",

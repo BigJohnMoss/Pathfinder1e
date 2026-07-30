@@ -13,8 +13,8 @@
       "id": "fast-learner"
     },
     {
-      "type": "rule",
-      "description": "human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "+2 bonus on skills with no ranks, all trained skills may be used untrained",

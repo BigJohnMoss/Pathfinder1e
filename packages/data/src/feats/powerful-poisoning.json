@@ -4,8 +4,12 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
       "type": "rule",
-      "description": "Power Attack; Craft (poison) 3 ranks or poison use class feature"
+      "description": "Craft (poison) 3 ranks or poison use class feature"
     }
   ],
   "benefit": "Forgo damage from power attack to increase the DC of a poison",

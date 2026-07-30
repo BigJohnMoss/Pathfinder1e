@@ -14,20 +14,30 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Perfect Style"
+      "type": "feat",
+      "id": "perfect-style"
     },
     {
-      "type": "rule",
-      "description": "Toughness"
+      "type": "feat",
+      "id": "toughness"
     },
     {
-      "type": "rule",
-      "description": "Untwisting Iron Strength"
+      "type": "feat",
+      "id": "untwisting-iron-strength"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +13 or monk level 13th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 13
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 13
+        }
+      ]
     }
   ],
   "benefit": "Gain DR/adamantine, and gain DR/— when you break certain objects",

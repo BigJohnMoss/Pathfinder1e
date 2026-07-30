@@ -21,8 +21,8 @@
       "id": "power-attack"
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "+2 bonus to attack when cleaving orcs",

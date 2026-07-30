@@ -24,8 +24,18 @@
       "description": "good or lawful alignment"
     },
     {
-      "type": "rule",
-      "description": "caster level 11th or monk level 11th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "caster-level",
+          "minimum": 11
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 11
+        }
+      ]
     }
   ],
   "benefit": "Creatures you attack with Lantern Style are shaken",

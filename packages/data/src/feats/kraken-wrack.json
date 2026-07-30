@@ -21,8 +21,18 @@
       "id": "kraken-style"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +7 or monk level 7th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 7
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 7
+        }
+      ]
     }
   ],
   "benefit": "Crush your opponent while grappling, damaging their gear",

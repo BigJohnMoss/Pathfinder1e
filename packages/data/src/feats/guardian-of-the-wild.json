@@ -8,8 +8,8 @@
       "id": "attuned-to-the-wild"
     },
     {
-      "type": "rule",
-      "description": "elf"
+      "type": "ancestry",
+      "id": "elf"
     }
   ],
   "benefit": "+2 dodge bonus to AC within specific terrain",

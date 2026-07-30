@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Size Huge or larger"
+      "type": "size",
+      "minimum": "huge"
     }
   ],
   "benefit": "Start a grapple when hitting a creature with your claw or bite attack, as if you had the Grab ability.",

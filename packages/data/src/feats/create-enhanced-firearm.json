@@ -4,8 +4,22 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Craft Magic Arms and Armor; Craft (weapons) 1 rank or Gunsmithing"
+      "type": "feat",
+      "id": "craft-magic-arms-and-armor"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "skill",
+          "key": "Craft (weapons)",
+          "minimum": 1
+        },
+        {
+          "type": "feat",
+          "id": "gunsmithing"
+        }
+      ]
     }
   ],
   "benefit": "Firearms you create are less likely to misfire",

@@ -20,8 +20,17 @@
       "description": "defensive training race trait"
     },
     {
-      "type": "rule",
-      "description": "dwarf or gnome"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "dwarf"
+        },
+        {
+          "type": "ancestry",
+          "id": "gnome"
+        }
+      ]
     }
   ],
   "benefit": "Substitute disarm, sunder, and trip for any of your attacks vs. giants",
