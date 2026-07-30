@@ -1,5 +1,7 @@
 # Pathfinder 1e Character Builder
 
+## [Open the Pathfinder 1e Character Builder](https://bigjohnmoss.github.io/Pathfinder1e/)
+
 ## Install the application
 
 The production character builder can be installed as an application after it
