@@ -71,12 +71,15 @@ test("learns and casts a spontaneous Bard spell", async ({ page }) => {
 test("updates feat eligibility at a prerequisite boundary", async ({ page }) => {
   await page.getByLabel("Class", { exact: true }).selectOption("fighter");
   await page.getByRole("tab", { name: "Feats" }).click();
-  const powerAttack = page.getByLabel("Human bonus feat").locator('option[value="power-attack"]');
-  await expect(powerAttack).toHaveAttribute("disabled", "");
+  await page.getByRole("button", { name: "Choose Human bonus feat" }).click();
+  await page.getByRole("searchbox", { name: "Search feats" }).fill("Power Attack");
+  await expect(page.locator("summary strong", { hasText: "Power Attack" })).toHaveCount(0);
   await page.getByRole("tab", { name: "Basic info" }).click();
   await page.getByLabel("Strength base score").fill("13");
   await page.getByRole("tab", { name: "Feats" }).click();
-  await expect(page.getByLabel("Human bonus feat").locator('option[value="power-attack"]')).not.toHaveAttribute("disabled", "");
+  await page.getByRole("button", { name: "Choose Human bonus feat" }).click();
+  await page.getByRole("searchbox", { name: "Search feats" }).fill("Power Attack");
+  await expect(page.locator("summary strong", { hasText: "Power Attack" })).toBeVisible();
 });
 
 test("applies and persists background traits", async ({ page }) => {
@@ -139,8 +142,14 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
   await expect(page.getByLabel("0 skill ranks remaining")).toBeVisible();
 
   await page.getByRole("tab", { name: "Feats" }).click();
-  await page.getByLabel("Human bonus feat").selectOption("power-attack");
-  await page.getByLabel("Feat 1").selectOption("toughness");
+  await page.getByRole("button", { name: "Choose Human bonus feat" }).click();
+  await page.getByRole("searchbox", { name: "Search feats" }).fill("Power Attack");
+  await page.locator(".feat-card").filter({ has: page.locator("summary strong", { hasText: "Power Attack" }) }).locator("summary").click();
+  await page.getByRole("button", { name: "Choose for Human bonus feat" }).click();
+  await page.getByRole("button", { name: "Choose Feat 1" }).click();
+  await page.getByRole("searchbox", { name: "Search feats" }).fill("Toughness");
+  await page.locator(".feat-card").filter({ has: page.locator("summary strong", { hasText: "Toughness" }) }).locator("summary").click();
+  await page.getByRole("button", { name: "Choose for Feat 1" }).click();
   await page.getByRole("tab", { name: "Features" }).click();
   await page.getByLabel("Bonus Combat Feat level 1").selectOption("fighter-improved-initiative");
   await page.getByRole("tab", { name: "Options" }).click();

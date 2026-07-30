@@ -23,6 +23,15 @@ test.before(async () => {
 
 test.afterEach(() => { cleanup(); localStorage.clear(); });
 
+const chooseFeat = async (user: ReturnType<typeof userEvent.setup>, slotName: string, featName: string) => {
+  await user.click(screen.getByRole("button", { name: new RegExp(`^(Choose|Replace) ${slotName}$`) }));
+  const search = screen.getByRole("searchbox", { name: "Search feats" });
+  await user.clear(search);
+  await user.type(search, featName);
+  await user.click(screen.getByText(featName, { selector: "summary strong", exact: true }));
+  await user.click(screen.getByRole("button", { name: `Choose for ${slotName}` }));
+};
+
 test("saves and restores character details", async () => {
   const user = userEvent.setup();
   render(<Home />);
@@ -415,10 +424,8 @@ test("uses the highest multiclass caster level for feat prerequisites", async ()
   fireEvent.change(screen.getByLabelText("Additional class levels"), { target: { value: "10" } });
   await user.click(screen.getByRole("tab", { name: "Feats" }));
 
-  const bonusFeat = screen.getByLabelText("Human bonus feat");
-  assert.equal((bonusFeat.querySelector("option[value='craft-magic-arms-and-armor']") as HTMLOptionElement).disabled, false);
-  await user.selectOptions(bonusFeat, "craft-magic-arms-and-armor");
-  assert.equal((bonusFeat as HTMLSelectElement).value, "craft-magic-arms-and-armor");
+  await chooseFeat(user, "Human bonus feat", "Craft Magic Arms and Armor");
+  assert.ok(screen.getByText("Craft Magic Arms and Armor", { selector: ".selected-feat-summary > strong" }));
 });
 
 test("builds, calculates, and restores a three-class character", async () => {
@@ -535,13 +542,11 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   assert.match(screen.getByText("Mage Armor").closest("article")?.textContent ?? "", /DC 12/);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
   await user.click(screen.getByRole("tab", { name: "Feats" }));
-  await user.selectOptions(screen.getByLabelText("Human bonus feat"), "combat-casting");
-  const secondFeat = screen.getByLabelText("Feat 1");
-  assert.equal((secondFeat.querySelector("option[value='combat-casting']") as HTMLOptionElement).disabled, true);
-  assert.equal((secondFeat.querySelector("option[value='power-attack']") as HTMLOptionElement).disabled, true);
-  assert.equal((secondFeat.querySelector("option[value='combat-reflexes']") as HTMLOptionElement).disabled, true);
-  assert.equal((secondFeat.querySelector("option[value='two-weapon-fighting']") as HTMLOptionElement).disabled, true);
-  assert.equal((secondFeat.querySelector("option[value='leadership']") as HTMLOptionElement).disabled, true);
+  await chooseFeat(user, "Human bonus feat", "Combat Casting");
+  await user.click(screen.getByRole("button", { name: "Choose Feat 1" }));
+  await user.type(screen.getByRole("searchbox", { name: "Search feats" }), "Combat Casting");
+  await user.click(screen.getByText("Combat Casting", { selector: "summary strong", exact: true }));
+  assert.equal((screen.getByRole("button", { name: "Already selected" }) as HTMLButtonElement).disabled, true);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "1" } });
   await user.click(screen.getByRole("tab", { name: "Spells" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
@@ -626,8 +631,8 @@ test("applies Core save and hit point feat effects with visible sources", async 
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
   await user.click(screen.getByRole("tab", { name: "Feats" }));
-  await user.selectOptions(screen.getByLabelText("Human bonus feat"), "toughness");
-  await user.selectOptions(screen.getByLabelText("Feat 1"), "great-fortitude");
+  await chooseFeat(user, "Human bonus feat", "Toughness");
+  await chooseFeat(user, "Feat 1", "Great Fortitude");
   await user.click(screen.getByRole("tab", { name: "Basic info" }));
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+4");
   await user.click(screen.getByRole("tab", { name: "Actions" }));
@@ -643,7 +648,7 @@ test("applies selected weapon feat effects to matching equipment", async () => {
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
   fireEvent.change(screen.getByLabelText("Strength base score"), { target: { value: "13" } });
   await user.click(screen.getByRole("tab", { name: "Feats" }));
-  await user.selectOptions(screen.getByLabelText("Human bonus feat"), "weapon-focus");
+  await chooseFeat(user, "Human bonus feat", "Weapon Focus");
   await user.type(screen.getByLabelText("Weapon Focus Weapon"), "Longsword");
   await user.click(screen.getByRole("tab", { name: "Storage" }));
   await user.selectOptions(screen.getByLabelText("Equipment catalogue"), "longsword");
@@ -1200,14 +1205,16 @@ test("searches the feat catalog and assigns an eligible feat to an open slot", a
   const user = userEvent.setup();
   render(<Home />);
   await user.click(screen.getByRole("tab", { name: "Feats" }));
+  await user.click(screen.getByRole("button", { name: "Choose Human bonus feat" }));
   const search = screen.getByRole("searchbox", { name: "Search feats" });
   await user.type(search, "Toughness");
   assert.match(screen.getByText(/1 of 3448 feats shown/).textContent ?? "", /1 of 3448/);
   await user.click(screen.getByText("Toughness", { selector: "summary strong" }));
   assert.ok(screen.getByText(/Gain 3 hit points/));
-  await user.click(screen.getByRole("button", { name: "Add to open slot" }));
+  await user.click(screen.getByRole("button", { name: "Choose for Human bonus feat" }));
   assert.ok(screen.getByText("Selected", { selector: ".feat-status" }));
-  assert.equal((screen.getByLabelText("Human bonus feat") as HTMLSelectElement).value, "toughness");
+  assert.ok(screen.getByText("Toughness", { selector: ".selected-feat-summary > strong" }));
+  assert.equal(document.querySelectorAll(".feat-slots option").length, 0);
 });
 
 test("unlocks nature-summoning feats only for a focused eligible caster", async () => {
@@ -1215,12 +1222,14 @@ test("unlocks nature-summoning feats only for a focused eligible caster", async 
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "druid");
   await user.click(screen.getByRole("tab", { name: "Feats" }));
-  await user.selectOptions(screen.getByLabelText("Human bonus feat"), "spell-focus");
+  await chooseFeat(user, "Human bonus feat", "Spell Focus");
   await user.selectOptions(screen.getByLabelText("Spell Focus School"), "conjuration");
-  const generalFeat = screen.getByLabelText("Feat 1") as HTMLSelectElement;
-  assert.equal([...generalFeat.options].find((option) => option.value === "moonlight-summons")?.disabled, false);
+  await user.click(screen.getByRole("button", { name: "Choose Feat 1" }));
+  await user.type(screen.getByRole("searchbox", { name: "Search feats" }), "Moonlight Summons");
+  await user.click(screen.getByText("Moonlight Summons", { selector: "summary strong", exact: true }));
+  assert.equal((screen.getByRole("button", { name: "Choose for Feat 1" }) as HTMLButtonElement).disabled, false);
   await user.selectOptions(screen.getByLabelText("Spell Focus School"), "evocation");
-  assert.equal([...generalFeat.options].find((option) => option.value === "moonlight-summons")?.disabled, true);
+  assert.equal(screen.queryByText("Moonlight Summons", { selector: "summary strong", exact: true }), null);
 });
 
 test("opens and closes the responsive character drawer", async () => {

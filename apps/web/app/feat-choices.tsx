@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { CharacterFeat as Feat, Prerequisite } from "../../../packages/types/src/index.js";
 
 type FeatChoice = {
@@ -48,8 +48,12 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
   const [availability, setAvailability] = useState<"eligible" | "all" | "selected">("eligible");
   const [type, setType] = useState("all");
   const [visibleLimit, setVisibleLimit] = useState(40);
+  const [activeSlotIndex, setActiveSlotIndex] = useState<number | null>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   const featNames = useMemo(() => new Map(feats.map((feat) => [feat.id, feat.name])), [feats]);
   const eligibleIds = useMemo(() => new Set(choices.flatMap((choice) => choice.eligibleFeatIds)), [choices]);
+  const activeChoice = choices.find((choice) => choice.index === activeSlotIndex);
+  const activeEligibleIds = useMemo(() => new Set(activeChoice?.eligibleFeatIds ?? []), [activeChoice]);
   const selectedIds = useMemo(() => new Set(selectedFeatIds.filter(Boolean)), [selectedFeatIds]);
   const featTypes = useMemo(() => [...new Set(feats.map((feat) => feat.type))].sort(), [feats]);
   const unlockedBy = useMemo(() => {
@@ -65,19 +69,34 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
   const visibleFeats = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
     return feats.filter((feat) => {
-      if (availability === "eligible" && !eligibleIds.has(feat.id)) return false;
+      if (availability === "eligible" && !(activeChoice ? activeEligibleIds : eligibleIds).has(feat.id)) return false;
       if (availability === "selected" && !selectedIds.has(feat.id)) return false;
       if (type !== "all" && feat.type !== type) return false;
       if (!normalizedQuery) return true;
       const searchable = [feat.name, feat.benefit, feat.type, ...feat.prerequisites.map((item) => prerequisiteLabel(item, featNames))].join(" ").toLocaleLowerCase();
       return searchable.includes(normalizedQuery);
     }).sort((left, right) => left.name.localeCompare(right.name));
-  }, [availability, eligibleIds, featNames, feats, query, selectedIds, type]);
+  }, [activeChoice, activeEligibleIds, availability, eligibleIds, featNames, feats, query, selectedIds, type]);
   useEffect(() => setVisibleLimit(40), [availability, query, type]);
 
   const chooseFeat = (feat: Feat) => {
+    if (activeChoice) {
+      const selectedElsewhere = selectedFeatIds.some((id, index) => id === feat.id && index !== activeChoice.index);
+      if (activeChoice.eligibleFeatIds.includes(feat.id) && !selectedElsewhere) {
+        onFeatChange(activeChoice.index, feat.id);
+        setActiveSlotIndex(null);
+      }
+      return;
+    }
     const openSlot = choices.find((choice) => !selectedFeatIds[choice.index] && choice.eligibleFeatIds.includes(feat.id));
     if (openSlot) onFeatChange(openSlot.index, feat.id);
+  };
+
+  const startChoosing = (index: number) => {
+    setActiveSlotIndex(index);
+    setAvailability("eligible");
+    setQuery("");
+    window.setTimeout(() => searchRef.current?.focus(), 0);
   };
 
   return <section className="feat-panel">
@@ -88,11 +107,8 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
 
     <section aria-labelledby="feat-slots-heading">
       <h3 id="feat-slots-heading">Your feat slots</h3>
-      <div className="feat-slots">{choices.map((choice) => <article key={choice.index}>
-        <label>{choice.name}<select value={selectedFeatIds[choice.index] ?? ""} onChange={(event) => onFeatChange(choice.index, event.target.value)}>
-          <option value="">Choose a feat</option>
-          {feats.map((feat) => <option key={feat.id} value={feat.id} disabled={!choice.eligibleFeatIds.includes(feat.id) || selectedFeatIds.some((id, index) => id === feat.id && index !== choice.index)}>{feat.name}</option>)}
-        </select></label>
+      <div className="feat-slots">{choices.map((choice) => <article className={activeSlotIndex === choice.index ? "feat-slot-active" : undefined} key={choice.index}>
+        <div className="feat-slot-heading"><strong>{choice.name}</strong><span>{choice.selected ? "Filled" : "Open"}</span></div>
         {choice.selected && <div className="selected-feat-summary">
           <strong>{choice.selected.name}</strong>
           <span className="feat-type">{choice.selected.type}</span>
@@ -103,13 +119,20 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
           }</label>}
           {choice.checks.length > 0 && <ul className="checks">{choice.checks.map((check, index) => <li className={check.met ? "met" : "unmet"} key={index}>{check.met ? "✓" : "○"} {prerequisiteLabel(check.prerequisite, featNames)}</li>)}</ul>}
         </div>}
+        {!choice.selected && <p className="feat-slot-empty">No feat selected yet.</p>}
+        <div className="feat-slot-actions">
+          <button type="button" aria-label={`${choice.selected ? "Replace" : "Choose"} ${choice.name}`} onClick={() => startChoosing(choice.index)}>{choice.selected ? "Replace feat" : "Choose feat"}</button>
+          {choice.selected && <button type="button" className="secondary" aria-label={`Remove ${choice.name}`} onClick={() => onFeatChange(choice.index, "")}>Remove</button>}
+        </div>
       </article>)}</div>
     </section>
 
     <section className="feat-catalog" aria-labelledby="feat-catalog-heading">
-      <div className="feat-catalog-heading"><div><h3 id="feat-catalog-heading">Feat catalog</h3><p>{visibleFeats.length} of {feats.length} feats shown</p></div></div>
+      <div className="feat-catalog-heading"><div><h3 id="feat-catalog-heading">{activeChoice ? `Choose a feat for ${activeChoice.name}` : "Feat catalog"}</h3><p>{visibleFeats.length} of {feats.length} feats shown</p></div>
+        {activeChoice && <button type="button" className="secondary" onClick={() => setActiveSlotIndex(null)}>Cancel choosing</button>}
+      </div>
       <div className="feat-filters">
-        <label>Search feats<input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Name, benefit, or requirement" /></label>
+        <label>Search feats<input ref={searchRef} type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Name, benefit, or requirement" /></label>
         <label>Availability<select value={availability} onChange={(event) => setAvailability(event.target.value as typeof availability)}><option value="eligible">Eligible now</option><option value="all">All feats</option><option value="selected">Selected</option></select></label>
         <label>Category<select value={type} onChange={(event) => setType(event.target.value)}><option value="all">All categories</option>{featTypes.map((featType) => <option value={featType} key={featType}>{featType}</option>)}</select></label>
       </div>
@@ -117,8 +140,10 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
         const featPrerequisites = feat.prerequisites.filter((item) => item.type === "feat");
         const children = unlockedBy.get(feat.id) ?? [];
         const selected = selectedIds.has(feat.id);
-        const eligible = eligibleIds.has(feat.id);
+        const eligible = (activeChoice ? activeEligibleIds : eligibleIds).has(feat.id);
+        const selectedElsewhere = selectedFeatIds.some((id, index) => id === feat.id && index !== activeChoice?.index);
         const hasOpenSlot = choices.some((choice) => !selectedFeatIds[choice.index] && choice.eligibleFeatIds.includes(feat.id));
+        const canChooseActive = Boolean(activeChoice && eligible && !selectedElsewhere);
         return <details className="feat-card" key={feat.id}>
           <summary>
             <span><strong>{feat.name}</strong><small>{feat.type}</small></span>
@@ -131,7 +156,7 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
               <div><strong>Unlocks</strong>{children.length ? <ul>{children.map((child) => <li key={child.id}>{child.name}</li>)}</ul> : <p>No feats in the current catalog</p>}</div>
             </div>
             {featPrerequisites.length > 0 && <p className="feat-path">Tree path: {featPrerequisites.map((item) => item.type === "feat" ? featNames.get(item.id) ?? item.id : "").join(" + ")} → {feat.name}</p>}
-            <div className="feat-card-actions"><a href={feat.source.url} target="_blank" rel="noreferrer">Rules source</a>{!selected && <button type="button" disabled={!hasOpenSlot} onClick={() => chooseFeat(feat)}>{hasOpenSlot ? "Add to open slot" : eligible ? "Replace a slot above" : "Requirements not met"}</button>}</div>
+            <div className="feat-card-actions"><a href={feat.source.url} target="_blank" rel="noreferrer">Rules source</a>{(activeChoice || !selected) && <button type="button" disabled={activeChoice ? !canChooseActive : !hasOpenSlot} onClick={() => chooseFeat(feat)}>{activeChoice ? canChooseActive ? `Choose for ${activeChoice.name}` : selectedElsewhere ? "Already selected" : "Requirements not met" : hasOpenSlot ? "Add to open slot" : eligible ? "Choose a slot above" : "Requirements not met"}</button>}</div>
           </div>
         </details>;
       })}</div>{visibleLimit < visibleFeats.length && <button className="feat-show-more" type="button" onClick={() => setVisibleLimit((current) => current + 40)}>Show 40 more feats</button>}</>}

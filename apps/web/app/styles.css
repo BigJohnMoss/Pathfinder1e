@@ -1137,3 +1137,70 @@ main#character-builder-main {
     margin-top: 1px;
   }
 }
+
+.feat-slots article.feat-slot-active {
+  border-color: #8b2f2f;
+  box-shadow: 0 0 0 3px #8b2f2f18;
+}
+
+.feat-slot-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.feat-slot-heading > strong {
+  color: #514b42;
+  font-size: .86rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.feat-slot-heading > span {
+  padding: 4px 8px;
+  border-radius: 99px;
+  background: #f3eee4;
+  color: #726c61;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.feat-slot-empty {
+  min-height: 2.5rem;
+  margin: 14px 0;
+  color: #726c61;
+}
+
+.feat-slot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.feat-slot-actions button,
+.feat-catalog-heading button {
+  min-height: 40px;
+  padding: 8px 13px;
+  border: 1px solid #7c2828;
+  border-radius: 8px;
+  background: #7c2828;
+  color: #fff;
+  cursor: pointer;
+  font: 700 .82rem Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.feat-slot-actions button.secondary,
+.feat-catalog-heading button.secondary {
+  background: #fff;
+  color: #7c2828;
+}
+
+.feat-slot-actions button:focus-visible,
+.feat-catalog-heading button:focus-visible {
+  outline: 3px solid #315e8a;
+  outline-offset: 2px;
+}
