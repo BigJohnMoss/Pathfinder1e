@@ -62,7 +62,8 @@ ${classRows}
 const output = new URL("docs/generated-content-coverage.md", root);
 if (process.argv.includes("--check")) {
   const current = await readFile(output, "utf8").catch(() => "");
-  if (current !== report) {
+  const normalizedCurrent = current.replace(/\r\n/g, "\n");
+  if (normalizedCurrent !== report) {
     console.error("docs/generated-content-coverage.md is stale. Run npm run coverage.");
     process.exitCode = 1;
   } else {
