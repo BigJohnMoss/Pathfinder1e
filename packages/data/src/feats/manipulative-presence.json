@@ -4,8 +4,19 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Int or Cha 19"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ability",
+          "key": "intelligence",
+          "minimum": 19
+        },
+        {
+          "type": "ability",
+          "key": "charisma",
+          "minimum": 19
+        }
+      ]
     },
     {
       "type": "feat",

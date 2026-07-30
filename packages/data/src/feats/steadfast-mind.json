@@ -4,18 +4,24 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "ability",
-      "key": "charisma",
-      "minimum": 15
-    },
-    {
-      "type": "ability",
-      "key": "intelligence",
-      "minimum": 15
-    },
-    {
-      "type": "rule",
-      "description": "or Wis 15 (see special)"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ability",
+          "key": "charisma",
+          "minimum": 15
+        },
+        {
+          "type": "ability",
+          "key": "intelligence",
+          "minimum": 15
+        },
+        {
+          "type": "ability",
+          "key": "wisdom",
+          "minimum": 15
+        }
+      ]
     }
   ],
   "benefit": "Use a Will save to retain your spell on a failed concentration check to cast defensively",
