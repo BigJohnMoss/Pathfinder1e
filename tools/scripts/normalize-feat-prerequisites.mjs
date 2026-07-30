@@ -50,6 +50,17 @@ const parseAtomicRule = (description) => {
   if (match) return { type: "bab", minimum: Number(match[1]) };
   match = text.match(/^caster level\s*(\d+)(?:st|nd|rd|th)?$/i);
   if (match) return { type: "caster-level", minimum: Number(match[1]) };
+  match = text.match(/^ability to prepare(?: and cast)? (\d+)(?:st|nd|rd|th)-level spells$/i);
+  if (match) return { type: "spell-level", minimum: Number(match[1]), castingType: "prepared" };
+  match = text.match(/^ability to spontaneously cast (\d+)(?:st|nd|rd|th)-level spells$/i);
+  if (match) return { type: "spell-level", minimum: Number(match[1]), castingType: "spontaneous" };
+  match = text.match(/^ability to cast (\d+)(?:st|nd|rd|th)-level spells$/i);
+  if (match) return { type: "spell-level", minimum: Number(match[1]) };
+  match = text.match(/^ability to cast (\d+)(?:st|nd|rd|th)-level spells or use a \1(?:st|nd|rd|th)-level spell-like ability$/i);
+  if (match) return { type: "any", prerequisites: [
+    { type: "spell-level", minimum: Number(match[1]) },
+    { type: "rule", description: `Use a ${match[1]}${["st", "nd", "rd"][Number(match[1]) - 1] ?? "th"}-level spell-like ability` },
+  ] };
   match = text.match(/^character level\s*(\d+)(?:st|nd|rd|th)?$/i);
   if (match) return { type: "level", minimum: Number(match[1]) };
   match = text.match(/^(?:must be taken|may only be taken|you may only (?:gain|select) this feat) at (?:the )?(\d+)(?:st|nd|rd|th) level$/i);

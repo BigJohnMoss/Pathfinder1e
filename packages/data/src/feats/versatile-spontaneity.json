@@ -8,8 +8,9 @@
       "description": "Int 13 or Wis 13 (see Special)"
     },
     {
-      "type": "rule",
-      "description": "ability to spontaneously cast 2nd-level spells"
+      "type": "spell-level",
+      "minimum": 2,
+      "castingType": "spontaneous"
     }
   ],
   "benefit": "Gain temporary access to a spell you otherwise don’t know",

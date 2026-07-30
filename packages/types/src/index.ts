@@ -130,6 +130,7 @@ export type Prerequisite =
   | { type: "level"; minimum?: number; maximum?: number }
   | { type: "bab"|"caster-level"; minimum: number }
   | { type: "class-level"; classId: string; minimum: number }
+  | { type: "spell-level"; minimum: number; castingType?: "prepared"|"spontaneous" }
   | { type: "ability"|"skill"; key: string; minimum: number }
   | { type: "save"; key: "fortitude"|"reflex"|"will"; minimum: number }
   | { type: "feat"|"feature"|"spell-access"; id: string }

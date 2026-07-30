@@ -751,6 +751,10 @@ function prerequisiteMet(prerequisite, context) {
     return size !== -1 && minimum !== -1 && maximum !== -1 && size >= minimum && size <= maximum;
   }
   if (prerequisite.type === "caster-level") return context.casterLevel >= prerequisite.minimum;
+  if (prerequisite.type === "spell-level") {
+    const levels = prerequisite.castingType ? [context.spellLevels?.[prerequisite.castingType]] : Object.values(context.spellLevels ?? {});
+    return levels.some(level => level >= prerequisite.minimum);
+  }
   if (prerequisite.type === "ability") return context.abilities?.[prerequisite.key] >= prerequisite.minimum;
   if (prerequisite.type === "bab") return context.baseAttackBonus >= prerequisite.minimum;
   if (prerequisite.type === "save") return context.saves?.[prerequisite.key] >= prerequisite.minimum;

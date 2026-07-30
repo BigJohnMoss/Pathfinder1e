@@ -22,6 +22,7 @@ const prerequisiteLabel = (prerequisite: Prerequisite, featNames: Map<string, st
   if (prerequisite.type === "ability") return `${labels[prerequisite.key] ?? prerequisite.key} ${prerequisite.minimum}+`;
   if (prerequisite.type === "bab") return `BAB +${prerequisite.minimum}`;
   if (prerequisite.type === "caster-level") return `Caster level ${prerequisite.minimum}+`;
+  if (prerequisite.type === "spell-level") return `Able to cast ${prerequisite.minimum}${["st", "nd", "rd"][prerequisite.minimum - 1] ?? "th"}-level${prerequisite.castingType ? ` ${prerequisite.castingType}` : ""} spells`;
   if (prerequisite.type === "class-level") return `${prerequisite.classId} level ${prerequisite.minimum}+`;
   if (prerequisite.type === "skill") return `${prerequisite.key} ${prerequisite.minimum}+ ranks`;
   if (prerequisite.type === "save") return `Base ${prerequisite.key} save +${prerequisite.minimum}`;
