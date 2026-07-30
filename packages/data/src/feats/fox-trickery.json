@@ -23,10 +23,6 @@
     {
       "type": "feat",
       "id": "improved-dirty-trick"
-    },
-    {
-      "type": "rule",
-      "description": "APG"
     }
   ],
   "benefit": "Perform dirty tricks as attacks of opportunity",

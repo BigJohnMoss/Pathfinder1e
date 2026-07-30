@@ -8,10 +8,6 @@
       "id": "outflank"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "bab",
       "minimum": 6
     }

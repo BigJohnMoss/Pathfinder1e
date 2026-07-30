@@ -17,10 +17,6 @@
       "id": "gnome-weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "ARG"
-    },
-    {
       "type": "feat",
       "id": "improved-feint"
     },

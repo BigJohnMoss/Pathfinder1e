@@ -9,10 +9,6 @@
     },
     {
       "type": "rule",
-      "description": "ARG"
-    },
-    {
-      "type": "rule",
       "description": "kobold"
     }
   ],

@@ -9,8 +9,9 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "base Fortitude save bonus +4"
+      "type": "save",
+      "key": "fortitude",
+      "minimum": 4
     }
   ],
   "benefit": "Cast burning hands or lightning bolt with an evocation-crafted item",

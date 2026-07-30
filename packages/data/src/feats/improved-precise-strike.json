@@ -13,10 +13,6 @@
       "id": "precise-strike"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "bab",
       "minimum": 4
     }

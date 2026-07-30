@@ -8,10 +8,6 @@
       "id": "demon-hunter"
     },
     {
-      "type": "rule",
-      "description": "ISWG"
-    },
-    {
       "type": "skill",
       "key": "Knowledge (planes)",
       "minimum": 6

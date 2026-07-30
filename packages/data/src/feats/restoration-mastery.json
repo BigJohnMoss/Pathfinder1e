@@ -14,8 +14,9 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "base Fortitude saving throw bonus +3"
+      "type": "save",
+      "key": "fortitude",
+      "minimum": 3
     }
   ],
   "benefit": "Cast lesser restoration with a conjuration (healing)-crafted item",

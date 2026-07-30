@@ -16,10 +16,6 @@
       "id": "whip-mastery"
     },
     {
-      "type": "rule",
-      "description": "UC"
-    },
-    {
       "type": "bab",
       "minimum": 8
     }

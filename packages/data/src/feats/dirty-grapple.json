@@ -22,10 +22,6 @@
       "id": "improved-dirty-trick"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "feat",
       "id": "improved-grapple"
     },

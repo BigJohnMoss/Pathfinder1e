@@ -19,10 +19,6 @@
     {
       "type": "feat",
       "id": "sidestep"
-    },
-    {
-      "type": "rule",
-      "description": "APG"
     }
   ],
   "benefit": "Dodge charging opponents",

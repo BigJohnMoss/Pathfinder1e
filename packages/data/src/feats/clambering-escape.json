@@ -17,10 +17,6 @@
       "id": "improved-reposition"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "feature",
       "id": "evasion"
     }

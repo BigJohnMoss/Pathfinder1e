@@ -10,10 +10,6 @@
     {
       "type": "feat",
       "id": "spirit-sense"
-    },
-    {
-      "type": "rule",
-      "description": "OA"
     }
   ],
   "benefit": "Notice adjacent incorporeal creatures inside walls",

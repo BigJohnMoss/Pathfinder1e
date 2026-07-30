@@ -15,10 +15,6 @@
     {
       "type": "feat",
       "id": "gang-up"
-    },
-    {
-      "type": "rule",
-      "description": "APG"
     }
   ],
   "benefit": "Forgo a flanking bonus to grant +1 to the attacks of two other allies",

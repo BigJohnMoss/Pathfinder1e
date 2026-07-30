@@ -6,10 +6,6 @@
     {
       "type": "feat",
       "id": "escape-route"
-    },
-    {
-      "type": "rule",
-      "description": "UC"
     }
   ],
   "benefit": "Help move allies around without provoking",

@@ -17,10 +17,6 @@
       "id": "elven-battle-training"
     },
     {
-      "type": "rule",
-      "description": "ARG"
-    },
-    {
       "type": "feat",
       "id": "weapon-finesse"
     },

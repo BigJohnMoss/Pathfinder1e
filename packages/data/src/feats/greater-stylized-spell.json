@@ -8,10 +8,6 @@
       "id": "stylized-spell"
     },
     {
-      "type": "rule",
-      "description": "UI"
-    },
-    {
       "type": "skill",
       "key": "Bluff",
       "minimum": 10

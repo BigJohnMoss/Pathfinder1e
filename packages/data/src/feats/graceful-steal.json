@@ -17,10 +17,6 @@
       "id": "improved-steal"
     },
     {
-      "type": "rule",
-      "description": "APG"
-    },
-    {
       "type": "skill",
       "key": "Sleight of Hand",
       "minimum": 3

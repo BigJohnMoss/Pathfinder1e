@@ -8,10 +8,6 @@
       "id": "dimensional-agility"
     },
     {
-      "type": "rule",
-      "description": "UC"
-    },
-    {
       "type": "feat",
       "id": "step-up"
     },
