@@ -1,0 +1,55 @@
+{
+  "id": "rogue-kitsune-trickster",
+  "name": "Kitsune Trickster",
+  "classId": "rogue",
+  "summary": "(Kitsune Only) The kitsune trickster combines her sharpened wit with minor arcane powers of charm and persuasion.",
+  "replacesText": "Trapfinding; Trap Sense",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-kitsune-trickster-kitsune-s-guile-ex-1",
+          "name": "Kitsune’s Guile (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a trickster relies on her intellect as much as her personality. She adds her Intelligence modifier on Bluff, Diplomacy, Disguise, and Sense Motive checks. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-kitsune-trickster-kitsune-s-charm-sp-3",
+          "name": "Kitsune’s Charm (Sp)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a kitsune trickster can use charm person once per day as a spell-like ability (caster level equal to her rogue level – 2). At 6th level, and every three levels thereafter, the kitsune trickster gains an additional daily use of this ability. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-kitsune-trickster-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the kitsune trickster archetype: major magic, minor magic ( Core Rulebook ); false friend, obfuscate story, steal the story (see below); charmer, coax information, honeyed words ; convincing lie."
+        },
+        {
+          "id": "rogue-kitsune-trickster-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the kitsune trickster archetype: skill mastery, slippery mind ( Core Rulebook ); master of disguise ; rumormonger."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Kitsune%20Trickster"
+  }
+}

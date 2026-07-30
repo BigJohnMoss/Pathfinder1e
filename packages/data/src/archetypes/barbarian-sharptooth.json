@@ -1,0 +1,61 @@
+{
+  "id": "barbarian-sharptooth",
+  "name": "Sharptooth",
+  "classId": "barbarian",
+  "summary": "Coastal hunters and agents of the ocean’s rage, sharptooth barbarians emulate the greatest predators of the sea.",
+  "replacesText": "Fast Movement; Uncanny Dodge; Improved Uncanny Dodge; Trap Sense; 6th and 12th-level Rage Powers",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1",
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5",
+        "trap-sense-3",
+        "rage-power-6",
+        "rage-power-12"
+      ],
+      "features": [
+        {
+          "id": "barbarian-sharptooth-swim-like-a-fish-ex-5",
+          "name": "Swim Like a Fish (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "A sharptooth gains a swim speed of 10 feet. At 5th level and every 5 levels thereafter, her swim speed increases by 5 feet. This replaces fast movement."
+        },
+        {
+          "id": "barbarian-sharptooth-scent-of-blood-ex-2",
+          "name": "Scent of Blood (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a sharptooth gains scent as per the universal monster rule. At 5th level, she also gains keen scent as per universal monster rule. This replaces both uncanny dodge and improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-sharptooth-ocean-breath-ex-3",
+          "name": "Ocean Breath (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a sharptooth counts her Constitution score as 1 higher for the purposes of holding her breath. She also gains a +1 bonus on Constitution checks to continue holding her breath. This bonus and the addition to her effective Constitution score both increase by 1 at 6th level and every 3 levels thereafter, to a maximum bonus of +6 at 18th level. This replaces trap sense."
+        },
+        {
+          "id": "barbarian-sharptooth-blood-in-the-water-ex-6",
+          "name": "Blood in the Water (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a sharptooth can tear the flesh from living creatures. Her attacks add 3 points of bleed damage while she is raging. At 12th level, this bleed damage increases to equal her Constitution modifier if it’s higher. This replaces the rage powers normally gained at 6th and 12th levels."
+        },
+        {
+          "id": "barbarian-sharptooth-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the sharptooth archetype: animal fury, bleeding blow, contagious rage, pack rage, powerful blow, primal scent, raging swimmer, and scent."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Sharptooth"
+  }
+}

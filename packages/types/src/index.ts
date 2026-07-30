@@ -104,6 +104,7 @@ export interface CharacterArchetype {
   classId: string;
   summary: string;
   replacesText?: string;
+  nestedReplacements?: string[];
   replacements: Array<{
     featureIds?: string[];
     progressionKeys?: string[];

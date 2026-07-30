@@ -1,0 +1,66 @@
+{
+  "id": "rogue-dark-lurker",
+  "name": "Dark Lurker",
+  "classId": "rogue",
+  "summary": "Dark lurkers use darkness as an ally.",
+  "replacesText": "Evasion; 2nd, 8th, 14th, and 20th-level Rogue Talents",
+  "replacements": [
+    {
+      "featureIds": [
+        "evasion-2",
+        "rogue-talent-2",
+        "rogue-talent-8",
+        "rogue-talent-14"
+      ],
+      "features": [
+        {
+          "id": "rogue-dark-lurker-blades-from-the-shadows-ex-2",
+          "name": "Blades from the Shadows (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a dark lurker gains shadow strike APG as a bonus rogue talent. (A character using the unchained rogue class from Pathfinder RPG Pathfinder Unchained instead gains the ability to make attacks of opportunity against foes with cover, though not foes with improved cover or total cover). At 6th level, the dark lurker can deal precision damage to targets with total concealment (though any miss chance applies normally, and may prevent an attack from hitting in the first place). This ability replaces evasion; the dark lurker can take evasion as a rogue talent."
+        },
+        {
+          "id": "rogue-dark-lurker-blind-fight-ex-2",
+          "name": "Blind-Fight (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a dark lurker gains Blind-Fight as a bonus feat. This ability replaces the rogue talent gained at 2nd level."
+        },
+        {
+          "id": "rogue-dark-lurker-improved-blind-fight-ex-8",
+          "name": "Improved Blind-Fight (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a dark lurker gains Improved Blind-Fight APG as a bonus feat. This ability replaces the rogue talent gained at 8th level."
+        },
+        {
+          "id": "rogue-dark-lurker-greater-blind-fight-ex-14",
+          "name": "Greater Blind-Fight (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, a dark lurker gains Greater Blind-Fight APG as a bonus feat. This ability replaces the rogue talent gained at 14th level."
+        },
+        {
+          "id": "rogue-dark-lurker-instinctual-sense-ex-20",
+          "name": "Instinctual Sense (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a dark lurker gains blindsight with a range of 30 feet. This ability replaces the rogue talent gained at 20th level."
+        },
+        {
+          "id": "rogue-dark-lurker-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the dark lurker archetype: befuddling strike APG , fast getaway APG , fast stealth, opportunist, sniper’s eye APG , and surprise attack."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Dark%20Lurker"
+  }
+}

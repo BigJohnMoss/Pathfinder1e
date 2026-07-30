@@ -1,0 +1,59 @@
+{
+  "id": "druid-fungal-pilgrim",
+  "name": "Fungal Pilgrim",
+  "classId": "druid",
+  "summary": "Fungal pilgrims are druids seeking transformation into a more plantlike existence.",
+  "replacesText": "Nature Bond; Wild Shape; Timeless Body",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-nature-bond-1",
+        "druid-wild-shape-4",
+        "druid-wild-shape-6",
+        "druid-wild-shape-8",
+        "druid-wild-shape-10",
+        "druid-wild-shape-12",
+        "druid-wild-shape-14",
+        "druid-wild-shape-16",
+        "druid-wild-shape-18",
+        "druid-wild-shape-20",
+        "druid-timeless-body-15"
+      ],
+      "features": [
+        {
+          "id": "druid-fungal-pilgrim-devotion-to-ascension-ex-1",
+          "name": "Devotion to Ascension (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A fungal pilgrim must select the Plant domain for her nature bond if she does not select an animal companion. This alters nature bond."
+        },
+        {
+          "id": "druid-fungal-pilgrim-spore-spawning-4",
+          "name": "Spore Spawning",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a fungal pilgrim who selected the Plant domain for her nature bond gains the ability to grow fungal creatures from the spores of her body. Once per day, when casting a summon nature’s ally spell to summon a single creature, the fungal pilgrim can infuse her fungal connection into the casting. The creature summoned must be selected from the summon nature’s ally list for 1 spell level lower than the spell cast. For example, if the fungal pilgrim casts summon nature’s ally III , she must choose a creature from the list in summon nature’s ally II . Creatures summoned in this manner gain the fungal creature template ( Pathfinder RPG Bestiary 4 116 ), except they do not gain the create spawn and poison spore cloud special attacks. A creature summoned in this manner cannot be harvested for its poison. A druid can use this ability an additional time per day at 6th level and every 2 levels thereafter, for a total of eight times at 18th level. At 20th level, it can be used any number of times per day. This ability replaces wild shape if the fungal pilgrim selected the Plant domain as her nature bond."
+        },
+        {
+          "id": "druid-fungal-pilgrim-fungal-companion-4",
+          "name": "Fungal Companion",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a fungal pilgrim who selected an animal companion for her nature bond initiates a transformation in her companion. The animal companion gains the fungal creature template ( Bestiary 4 116 ), but does not gain the create spawn, poison spore cloud, and poisonous blood special attacks. At 10th level, the animal companion gains the poisonous blood special attack. At 14th level, the animal companion gains the poison spore cloud special attack. At 20th level, the animal companion gains the create spawn special attack; created spawn are under the control of the fungal pilgrim. Spawn created in this way last for only 48 hours before rotting away. This ability replaces wild shape if the fungal pilgrim selected an animal companion as her nature bond."
+        },
+        {
+          "id": "druid-fungal-pilgrim-mycological-transformation-ex-15",
+          "name": "Mycological Transformation (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "Fungal spores become fully integrated into the druid’s body, inside and out. At 15th level, she gains all immunities granted by the plant creature type as well as the light sensitivity universal monster rule. She counts as a plant for the purposes of effects that would negatively affect or damage plants. In addition, she no longer needs to eat or sleep in the typical manner, and instead gains the fungal creature’s rejuvenation ability. She can perform her daily meditation during her rejuvenation. This ability replaces timeless body."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Fungal%20Pilgrim"
+  }
+}

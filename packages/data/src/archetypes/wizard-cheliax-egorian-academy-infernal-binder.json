@@ -1,0 +1,80 @@
+{
+  "id": "wizard-cheliax-egorian-academy-infernal-binder",
+  "name": "Cheliax: Egorian Academy Infernal Binder",
+  "classId": "wizard",
+  "summary": "A wizard trained by the prestigious Egorian Academy, best known for its Infernal Binding program in the school of conjuration.",
+  "replacesText": "Acid Dart, Dimensional Steps",
+  "nestedReplacements": [
+    "Acid Dart, Dimensional Steps"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-acid-dart-dimensional-steps"
+      ],
+      "features": [
+        {
+          "id": "wizard-cheliax-egorian-academy-infernal-binder-associated-school-1",
+          "name": "Associated School",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Conjuration."
+        },
+        {
+          "id": "wizard-cheliax-egorian-academy-infernal-binder-suggested-opposition-schools-1",
+          "name": "Suggested Opposition Schools",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Divination, illusion, or transmutation."
+        },
+        {
+          "id": "wizard-cheliax-egorian-academy-infernal-binder-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Lawful Evil, Lawful Neutral, Neutral Evil, or Neutral."
+        },
+        {
+          "id": "wizard-cheliax-egorian-academy-infernal-binder-requirements-1",
+          "name": "Requirements",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An infernal binder must choose a familiar as her arcane bond at 1st level."
+        },
+        {
+          "id": "wizard-cheliax-egorian-academy-infernal-binder-replacement-powers-1",
+          "name": "Replacement Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following school powers replace the acid dart and dimensional steps powers of the conjuration school."
+        },
+        {
+          "id": "wizard-cheliax-egorian-academy-infernal-binder-planar-knowledge-ex-1",
+          "name": "Planar Knowledge (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "As an infernal binder, you gain a +3 bonus on Knowledge (planes) checks."
+        },
+        {
+          "id": "wizard-cheliax-egorian-academy-infernal-binder-assume-control-su-1",
+          "name": "Assume Control (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, you can attempt to gain control over a summoned creature by disrupting the bond between it and the caster who summoned it. You must make a caster level check (1d20 + caster level) equal to 10 + the summoning caster’s level. If you know the summoned creature’s name, you receive a +2 circumstance bonus on the check. If the check is successful, you can control the summoned creature as if you had summoned it for a number of rounds equal to 1/2 your wizard level (minimum 1 round). This does not increase the duration of the original summoning. The original summoning caster can attempt to regain control of the summoned creature as a standard action by making a caster level check against your caster level + 10. When your control ends, the creature reverts to the control of its summoner. At 9th level, you can use this ability to bargain with called creatures as if you were the caster who conjured them. You can use this ability a number of times per day equal to 3 + your Intelligence modifier."
+        },
+        {
+          "id": "wizard-cheliax-egorian-academy-infernal-binder-imp-familiar-ex-7",
+          "name": "Imp Familiar (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, you gain Improved Familiar as a bonus feat, and must take an imp as a familiar. The imp replaces your current familiar."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Cheliax%20%20Egorian%20Academy%20Infernal%20Binder"
+  }
+}

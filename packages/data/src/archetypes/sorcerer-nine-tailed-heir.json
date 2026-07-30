@@ -1,0 +1,37 @@
+{
+  "id": "sorcerer-nine-tailed-heir",
+  "name": "Nine-Tailed Heir",
+  "classId": "sorcerer",
+  "summary": "(Kitsune only) Tian stories often tell of kitsune with multiple tails who have a magical quirk in their blood or have been blessed by their race’s deific matron, Daikitsu",
+  "replacesText": "Bloodline Spell",
+  "replacements": [
+    {
+      "featureIds": [
+        "sorcerer-bloodline-1",
+        "sorcerer-bloodline-spell-3",
+        "sorcerer-bloodline-spell-5",
+        "sorcerer-bloodline-spell-7",
+        "sorcerer-bloodline-spell-9",
+        "sorcerer-bloodline-spell-11",
+        "sorcerer-bloodline-spell-13",
+        "sorcerer-bloodline-spell-15",
+        "sorcerer-bloodline-spell-17",
+        "sorcerer-bloodline-spell-19"
+      ],
+      "features": [
+        {
+          "id": "sorcerer-nine-tailed-heir-magical-tail-3",
+          "name": "Magical Tail",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level and every 4 levels thereafter, a ninetailed heir gains Magical Tail ARG as a bonus feat. If the nine-tailed heir already has nine tails, each additional time the feat is taken, the sorcerer gains one additional daily use of the lowest level Magical Tail ability not already affected by this effect. This ability replaces the bloodline spell class feature."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Nine-Tailed%20Heir"
+  }
+}

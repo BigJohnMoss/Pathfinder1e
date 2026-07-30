@@ -1,0 +1,31 @@
+{
+  "id": "fighter-molthuni-defender",
+  "name": "Molthuni Defender",
+  "classId": "fighter",
+  "summary": "Taking advantage of their weighty armor, Molthuni defenders can hold back an onslaught of enemies intent on breaking through their line.",
+  "replacesText": "Armor Training",
+  "replacements": [
+    {
+      "featureIds": [
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15"
+      ],
+      "features": [
+        {
+          "id": "fighter-molthuni-defender-armored-defense-ex-3",
+          "name": "Armored Defense (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a Molthuni defender gains a bonus to his CMD against bull rush, dirty trick APG , drag APG , grapple, overrun, reposition APG , and trip combat maneuver checks. This bonus also applies to the DC of foes’ Acrobatics checks to move through squares he threatens. This bonus is +1 when the Molthuni defender is wearing medium armor, and +3 when he is wearing heavy armor. At 7th, 11th, and 15th levels, these bonuses increase by 1. In addition to this, the Molthuni defender is able to choose one of the following combat maneuvers: bull rush, dirty trick APG , drag APG , grapple, overrun, reposition APG , or trip. When he is wearing medium or heavy armor, the Molthuni defender adds half his armor training bonus on combat maneuver checks for the selected maneuver. He can choose an additional combat maneuver at 7th, 11th, and 15th levels. This ability replaces armor training 1 through 4, but counts as armor training for the purposes of qualifying for feats and prestige classes. It does not count as advanced armor training (see page 14)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Molthuni%20Defender"
+  }
+}

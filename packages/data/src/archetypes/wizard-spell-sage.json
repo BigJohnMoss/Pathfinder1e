@@ -1,0 +1,36 @@
+{
+  "id": "wizard-spell-sage",
+  "name": "Spell Sage",
+  "classId": "wizard",
+  "summary": "A spell sage has mastered spells of all types, and is able to increase the effectiveness of his own spells and eventually even cast spells from other classes’ spell lists.",
+  "replacesText": "Arcane Bond; Arcane School",
+  "replacements": [
+    {
+      "featureIds": [
+        "wizard-arcane-bond-1",
+        "wizard-arcane-school-1"
+      ],
+      "features": [
+        {
+          "id": "wizard-spell-sage-focused-spells-su-1",
+          "name": "Focused Spells (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, once per day the spell sage’s understanding of spells allows him to increase his caster level by 4 for a single spell cast. He can do this twice per day at 8th level, and three times per day at 16th level. This ability replaces arcane bond."
+        },
+        {
+          "id": "wizard-spell-sage-spell-study-su-2",
+          "name": "Spell Study (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the sage’s understanding of the spells of bards, clerics, and druids is so great that he can use his own magic in an inefficient, roundabout way to duplicate those classes’ spells. Once per day, a spell sage can spontaneously cast any spell on the bard, cleric, or druid spell list as if it were a wizard spell he knew and had prepared. Casting the spell requires the spell sage to spend 1 full round per spell level of the desired spell (if the spell is on multiple spell lists indicated above, using the lowest level from among those lists) and requires expending two prepared spells of that spell level or higher; if the spell’s casting time is normally 1 full round or longer, this is added to the spell sage’s casting time. For example, if a spell sage wants to use spell study to cast cure light wounds (cleric spell level 1st), he must spend 2 full rounds casting and expend two prepared wizard spells of 1st level or higher. At 6th level and every 5 levels thereafter, a spell sage can use this ability an additional time per day (to a maximum of four times per day at 16th level). This ability replaces arcane school."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Spell%20Sage"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "cleric-cloistered-cleric",
+  "name": "Cloistered Cleric",
+  "classId": "cleric",
+  "summary": "Cloistered clerics typically live in a temple and rarely interact with the outside world. They are bookish and well learned in the lore of the faith, paying less attention to its magical and martial aspects.",
+  "replacesText": "Weapon/Armor Proficiencies; Domains; Spells",
+  "replacements": [
+    {
+      "featureIds": [
+        "cleric-domain-1-first",
+        "cleric-domain-1-second",
+        "cleric-domain-spell-1",
+        "cleric-domain-spell-2",
+        "cleric-domain-spell-3",
+        "cleric-domain-spell-4",
+        "cleric-domain-spell-5",
+        "cleric-domain-spell-6",
+        "cleric-domain-spell-7",
+        "cleric-domain-spell-8",
+        "cleric-domain-spell-9",
+        "cleric-spellcasting-1"
+      ],
+      "features": [
+        {
+          "id": "cleric-cloistered-cleric-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Cloistered clerics are proficient with light armor and with the following weapons: club, heavy mace, light mace, quarterstaff, and sling. They are not proficient with shields."
+        },
+        {
+          "id": "cleric-cloistered-cleric-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The cloistered cleric’s class skills are Appraise (Int), Craft (Int), Diplomacy (Cha), Heal (Wis), Knowledge (all) (Int), Linguistics (Int), Profession (Wis), Sense Motive (Wis), and Spellcraft (Int)."
+        },
+        {
+          "id": "cleric-cloistered-cleric-skill-ranks-per-level-1",
+          "name": "Skill Ranks per Level",
+          "level": 1,
+          "type": "archetype",
+          "summary": "4 + Int modifier."
+        },
+        {
+          "id": "cleric-cloistered-cleric-diminished-spellcasting-1",
+          "name": "Diminished Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A cloistered cleric chooses only one domain from her deity’s list of domains, and her number of non-domain spells per day for each spell level is one less than normal (for example, a 4th-level cloistered cleric has three cantrips, two 1st-level spells, one 1st-level domain spell, one 2nd-level spell, and one 2nd-level domain spell). If this reduces the number of spells per day for that level to 0, she gains only the bonus spells she would be entitled to based on her Wisdom score for that level, plus her domain spell for that level."
+        },
+        {
+          "id": "cleric-cloistered-cleric-breadth-of-knowledge-1",
+          "name": "Breadth of Knowledge",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a cloistered cleric gains a bonus on Knowledge skill checks equal to half her class level (minimum +1) and can make Knowledge skill checks untrained."
+        },
+        {
+          "id": "cleric-cloistered-cleric-well-read-ex-2",
+          "name": "Well-Read (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a cloistered cleric gains a +2 bonus on skill checks, caster level checks, and saving throws if such rolls pertain to mundane or magical glyphs, runes, scrolls, symbols, and other writings."
+        },
+        {
+          "id": "cleric-cloistered-cleric-verbal-instruction-ex-3",
+          "name": "Verbal Instruction (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a cloistered cleric can use the aid another action to assist an ally within 30 feet on a skill or ability check. The ally must be able to hear and understand the cleric’s instructions. For every three class levels beyond 3rd, the cloistered cleric can instruct one additional ally. If all allies are not engaged in the same task, using this ability is a full-round action rather than a standard action."
+        },
+        {
+          "id": "cleric-cloistered-cleric-scribe-scroll-su-4",
+          "name": "Scribe Scroll (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a cloistered cleric gains Scribe Scroll as a bonus feat."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Cloistered%20Cleric"
+  }
+}

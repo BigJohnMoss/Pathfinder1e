@@ -1,0 +1,81 @@
+{
+  "id": "rogue-sylvan-trickster",
+  "name": "Sylvan Trickster",
+  "classId": "rogue",
+  "summary": "Sylvan tricksters are rogues who model themselves after the mischievous fey of legend.",
+  "replacesText": "Class Skills; Trapfinding; Rogue Talents; Uncanny Dodge; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-talent-2",
+        "rogue-talent-4",
+        "rogue-talent-6",
+        "rogue-talent-8",
+        "rogue-talent-10",
+        "rogue-talent-12",
+        "rogue-talent-14",
+        "rogue-talent-16",
+        "rogue-talent-18",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-sylvan-trickster-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sylvan trickster adds Knowledge (nature) to her list of class skills and learns Sylvan as a bonus language. She does not gain Knowledge (dungeoneering) as a class skill. This alters the rogue’s class skills."
+        },
+        {
+          "id": "rogue-sylvan-trickster-wild-empathy-ex-1",
+          "name": "Wild Empathy (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sylvan trickster can improve an animal’s attitude. This ability functions as the druid ability of the same name, using the sylvan trickster’s rogue level as her effective druid level. This replaces trapfinding."
+        },
+        {
+          "id": "rogue-sylvan-trickster-fey-tricks-10",
+          "name": "Fey Tricks",
+          "level": 10,
+          "type": "archetype",
+          "summary": "A sylvan trickster can select a witch hex in place of a rogue talent. At 10th level, the sylvan trickster can select a hex or major hex in place of a rogue talent. At 18th level, a sylvan trickster can select a hex, major hex, or grand hex in place of a rogue talent. She cannot select any hex more than once. This alters rogue talents."
+        },
+        {
+          "id": "rogue-sylvan-trickster-resist-nature-s-lure-ex-4",
+          "name": "Resist Nature’s Lure (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a sylvan trickster gains resist nature’s lure as the druid ability of the same name. This replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-sylvan-trickster-fey-resistance-ex-8",
+          "name": "Fey Resistance (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a sylvan trickster gains DR 2/cold iron. At 11th level and every 3 levels thereafter, this damage reduction increases by 2 (to a maximum of DR 10/cold iron at 20th level). This replaces improved uncanny dodge."
+        },
+        {
+          "id": "rogue-sylvan-trickster-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the sylvan trickster archetype: camouflage, charmer, honeyed words, major magic, minor magic, survivalist, terrain mastery."
+        },
+        {
+          "id": "rogue-sylvan-trickster-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the sylvan trickster archetype: familiar, hide in plain sight."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sylvan%20Trickster"
+  }
+}

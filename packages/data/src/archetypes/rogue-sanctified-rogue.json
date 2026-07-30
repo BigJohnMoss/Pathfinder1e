@@ -1,0 +1,50 @@
+{
+  "id": "rogue-sanctified-rogue",
+  "name": "Sanctified Rogue",
+  "classId": "rogue",
+  "summary": "The sanctified rogue serves a higher purpose, acting as a representative of a church or cult, or following the tenets of a specific faith or deity.",
+  "replacesText": "Uncanny Dodge; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-sanctified-rogue-divine-purpose-su-4",
+          "name": "Divine Purpose (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the favor of a deity or religious institution grants a special blessing on a sanctified rogue, shoring up some of her weaknesses. She gains a +1 sacred bonus on Fortitude and Will saving throws. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-sanctified-rogue-divine-epiphany-su-8",
+          "name": "Divine Epiphany (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, once per day, a sanctified rogue can peer into the immediate future and predict the results of a specific action as if she had cast an augury spell. The caster level of this spell is equal to the sanctified rogue’s rogue class level. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "rogue-sanctified-rogue-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the sanctified rogue archetype: esoteric scholar*, major magic, and minor magic."
+        },
+        {
+          "id": "rogue-sanctified-rogue-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the sanctified rogue archetype: feat and skill mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sanctified%20Rogue"
+  }
+}

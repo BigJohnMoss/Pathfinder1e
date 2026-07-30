@@ -1,0 +1,80 @@
+{
+  "id": "rogue-phantom-thief",
+  "name": "Phantom Thief",
+  "classId": "rogue",
+  "summary": "Phantom thieves come from the ranks of the elite, having grown bored with their finery, and seek thrills from acts of daring, skill, and crime.",
+  "replacesText": "Class Skills; Sneak Attack; Trapfinding; Trap Sense; Master Strike",
+  "replacements": [
+    {
+      "featureIds": [
+        "sneak-attack-1",
+        "sneak-attack-3",
+        "sneak-attack-5",
+        "sneak-attack-7",
+        "sneak-attack-9",
+        "sneak-attack-11",
+        "sneak-attack-13",
+        "sneak-attack-15",
+        "sneak-attack-17",
+        "sneak-attack-19",
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "master-strike-20"
+      ],
+      "features": [
+        {
+          "id": "rogue-phantom-thief-refined-education-ex-3",
+          "name": "Refined Education (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A phantom thief adds Handle Animal, Heal, Ride, Spellcraft, Survival, and all Knowledge skills to her list of class skills. Furthermore, she selects one of her rogue class skills and adds half her rogue level on all skill checks using that skill. At 3rd level and every 2 rogue levels thereafter, she selects an additional rogue class skill and adds half her rogue level on all skill checks using that skill as well. Starting at 4th level, if the phantom thief is an unchained rogue, she gains rogue’s edge skill unlocks with each of these skills rather than selecting one skill every 5 levels, and she adds half her rogue level to her number of ranks to determine when she receives a skill unlock (so a 7th level rogue (phantom thief ) with 7 ranks in a chosen skill would count as having 10 ranks and receive the second skill unlock). This ability alters the rogue’s class skills and replaces sneak attack and trapfinding. For an unchained rogue, it also alters rogue’s edge and replaces debilitating injury."
+        },
+        {
+          "id": "rogue-phantom-thief-broad-education-ex-1",
+          "name": "Broad Education (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A phantom thief ’s broad studies with expensive tutors keep her up to speed in both martial and magical knowledge, as well as in her skills. She can select the combat trick, minor magic, and major magic rogue talents as many times as she likes, and she can select the Skill Focus feat as a rogue talent, also as many times as she likes. Finally, she can select a vigilante social talent instead of a rogue talent, except for social grace and vigilante social talents that would require her to be a craftsman or professional. For the purpose of vigilante social talents, a phantom thief does not have a vigilante identity and is always considered to be in her social identity. This ability alters rogue talent."
+        },
+        {
+          "id": "rogue-phantom-thief-social-sense-ex-3",
+          "name": "Social Sense (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a phantom thief ’s social sixth sense allows her to avoid danger in social situations and to act first when it breaks out. She receives a +1 bonus on Sense Motive checks to avoid being surprised by a foe, on Bluff checks to surprise a foe, and on initiative checks for surprise rounds that involved Bluff and Sense Motive checks to determine surprise. This bonus increases by 1 at 3rd level and every 3 rogue levels thereafter. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-phantom-thief-master-of-all-ex-20",
+          "name": "Master of All (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a phantom thief can reroll any skill check as long as it is a class skill in which she is trained. She must take the second result, even if it is worse. She can use this ability no more than once per minute. This ability replaces master strike."
+        },
+        {
+          "id": "rogue-phantom-thief-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the phantom thief archetype: combat trick, major magic, minor magic (as well as certainty for an unchained rogue)."
+        },
+        {
+          "id": "rogue-phantom-thief-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the phantom thief archetype: feat, hidden mind, rumormonger UC , and skill mastery (as well as cutting edge for an unchained rogue)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Phantom%20Thief"
+  }
+}

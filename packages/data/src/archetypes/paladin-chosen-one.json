@@ -1,0 +1,74 @@
+{
+  "id": "paladin-chosen-one",
+  "name": "Chosen One",
+  "classId": "paladin",
+  "summary": "Most paladins train for years at a temple to attain a holy status, but rarely, an emissary of the divine appears to one of humble origins and calls her directly to the charge.",
+  "replacesText": "Divine Bond; Class Skills; Divine Grace; Smite Evil; Lay on Hands; Channel Positive Energy",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-divine-bond-5",
+        "paladin-divine-grace-2",
+        "paladin-smite-evil-1",
+        "paladin-lay-on-hands-2",
+        "paladin-channel-positive-energy-4"
+      ],
+      "features": [
+        {
+          "id": "paladin-chosen-one-bondless-1",
+          "name": "Bondless",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A chosen one does not gain the divine bond class feature."
+        },
+        {
+          "id": "paladin-chosen-one-divine-emissary-ex-1",
+          "name": "Divine Emissary (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a chosen one gains an emissary familiar (see page 10), treating her paladin level as her wizard level for the purpose of this ability."
+        },
+        {
+          "id": "paladin-chosen-one-religious-mentor-ex-1",
+          "name": "Religious Mentor (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The familiar’s sworn duty is to help train the chosen one for her future glory. The familiar is treated as having a number of ranks in Knowledge (religion) equal to the chosen one’s paladin level. The chosen one doesn’t gain Knowledge (religion) as a class skill."
+        },
+        {
+          "id": "paladin-chosen-one-delayed-grace-su-2",
+          "name": "Delayed Grace (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A chosen one begins her adventuring career without fully understanding her true potential. The chosen one uses the Barbarian, Rogue, Sorcerer column on Table 7–1 on page 169 of the Pathfinder RPG Core Rulebook to calculate her typical starting age. She receives the smite evil ability at 2nd level and the divine grace ability at 4th level. This does not affect the rate at which she gains additional uses per day of smite evil, so she still gains her second use at 4th level, her third at 7th level, and so on. This ability alters divine grace and smite evil."
+        },
+        {
+          "id": "paladin-chosen-one-lay-on-paws-su-2",
+          "name": "Lay on Paws (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a chosen one’s familiar is able to borrow some of her divine energy to heal itself and others. The familiar can use the chosen one’s lay on hands ability, including all of her mercies, but each such use consumes two uses of the paladin’s lay on hands ability. Starting at 4th level, the familiar can also channel positive energy, but each such use consumes four uses of the paladin’s lay on hands ability. This ability alters lay on hands and channel positive energy."
+        },
+        {
+          "id": "paladin-chosen-one-true-form-ex-7",
+          "name": "True Form (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a chosen one’s familiar reveals its true form, transforming into an outsider improved familiar that matches the chosen one’s patron’s alignment (typically an arbiter, a cassisian, a harbinger, or a silvanshee, but potentially any lawful neutral, lawful good, or neutral good outsider familiar depending on the patron). The familiar gains the change shape universal monster ability if it doesn’t already have it, which it can use at will to transform into its original form or back to its true form."
+        },
+        {
+          "id": "paladin-chosen-one-emissary-s-smite-su-11",
+          "name": "Emissary’s Smite (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a chosen one’s familiar also benefits from the paladin’s smite evil ability whenever the chosen one uses smite evil."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Chosen%20One"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "druid-defender-of-the-true-world",
+  "name": "Defender of the True World",
+  "classId": "druid",
+  "summary": "Some druids specialize in protecting Golarion from the threat of First World inhabitants.",
+  "replacesText": "Class Skills; Wild Empathy; Trackless Step; Resist Nature's Lure; Venom Immunity; A Thousand Faces",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-wild-empathy-1",
+        "druid-trackless-step-3",
+        "druid-resist-natures-lure-4",
+        "druid-venom-immunity-9",
+        "druid-thousand-faces-13"
+      ],
+      "features": [
+        {
+          "id": "druid-defender-of-the-true-world-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A defender of the true world gains Diplomacy as a class skill. This alters the druid’s class skills."
+        },
+        {
+          "id": "druid-defender-of-the-true-world-bonus-languages-1",
+          "name": "Bonus Languages",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A defender of the true world can select Aklo, Sylvan, or Undercommon as bonus languages, in addition to the normal list of bonus languages available."
+        },
+        {
+          "id": "druid-defender-of-the-true-world-enemy-of-the-first-world-1",
+          "name": "Enemy of the First World",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A defender of the true world cannot use summon nature’s ally to summon fey creatures. This modifies spontaneous casting."
+        },
+        {
+          "id": "druid-defender-of-the-true-world-fey-empathy-ex-20",
+          "name": "Fey Empathy (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "A defender of the true world gains a +2 competence bonus on Bluff, Diplomacy, and Intimidate checks when interacting with fey creatures. This bonus increases by 1 for every 4 druid levels she has (maximum +7 at 20th level). This replaces wild empathy."
+        },
+        {
+          "id": "druid-defender-of-the-true-world-fey-stalker-ex-3",
+          "name": "Fey Stalker (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the defender of the true world’s animal companion and any creatures she summons with summon nature’s ally gain a +1 morale bonus on attack and damage rolls against fey creatures. This bonus increases to +2 at 8th level, +3 at 13th level, and +4 at 18th level. This ability replaces trackless step"
+        },
+        {
+          "id": "druid-defender-of-the-true-world-feybane-ex-4",
+          "name": "Feybane (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a defender of the true world doesn’t gain a bonus on saving throws against spells and effects that utilize or target plants. She instead treats her natural attacks as cold iron for the purpose of overcoming damage reduction, and she gains a +2 bonus on caster level checks to overcome the spell resistance of fey creatures. This ability alters resist nature’s lure."
+        },
+        {
+          "id": "druid-defender-of-the-true-world-beguiling-immunity-ex-9",
+          "name": "Beguiling Immunity (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a defender of the true world becomes immune to the mind-affecting effects of fey. This ability replaces venom immunity."
+        },
+        {
+          "id": "druid-defender-of-the-true-world-first-world-deceiver-su-13",
+          "name": "First World Deceiver (Su)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a defender of the true world gains the ability to change her appearance as per alter self , except she can take the form of a humanoid or fey creature. Her base land speed from this ability cannot exceed 60 feet. This ability replaces a thousand faces."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Defender%20of%20the%20True%20World"
+  }
+}

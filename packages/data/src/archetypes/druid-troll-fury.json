@@ -1,0 +1,44 @@
+{
+  "id": "druid-troll-fury",
+  "name": "Troll Fury",
+  "classId": "druid",
+  "summary": "(Troll Only) Troll furies combine a druid’s love of natural balance with a single-minded devotion to the welfare of the troll tribe.",
+  "replacesText": "Wild Empathy; Resist Nature’s Lure; Venom Immunity",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-wild-empathy-1",
+        "druid-resist-natures-lure-4",
+        "druid-venom-immunity-9"
+      ],
+      "features": [
+        {
+          "id": "druid-troll-fury-inspire-fervor-ex-1",
+          "name": "Inspire Fervor (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, once per day as a standard action, a troll fury can chant over another troll within 30 feet, bolstering it against fear and improving its combat abilities. This works like the inspire courage bard ability, but affects only one troll and lasts 1 minute. The troll fury uses her druid level as her bard level to determine the effects of this ability. This ability replaces wild empathy."
+        },
+        {
+          "id": "druid-troll-fury-chosen-prey-ex-4",
+          "name": "Chosen Prey (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a troll fury can select one creature type from the ranger’s favored enemy list and gains a favored enemy bonus against that creature type with an effective ranger level equal to her druid level. This ability never grants the troll fury favored enemy bonuses against a second favored enemy creature type. A troll fury can change her favored enemy type once per week by performing a ritual that takes 1 hour to perform. If a troll fury already has a favored enemy from another class, the levels from the classes that grant favored enemies stack with this one to determine the favored enemy bonuses, and in this case she can gain other favored enemy creature types. This ability replaces resist nature’s lure."
+        },
+        {
+          "id": "druid-troll-fury-troll-fury-s-mark-su-9",
+          "name": "Troll Fury’s Mark (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, each time a troll fury or her animal companion damages a creature with a natural attack, the troll fury gains a +10 insight bonus on Survival checks to track that creature for 24 hours. The duration of this ability does not stack with itself. Each time the troll fury or her animal companion hits the target, this ability lasts for the next 24 hours. This ability replaces venom immunity."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Troll%20Fury"
+  }
+}

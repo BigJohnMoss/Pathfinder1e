@@ -1,0 +1,64 @@
+{
+  "id": "rogue-okeno-liberator",
+  "name": "Okeno Liberator",
+  "classId": "rogue",
+  "summary": "The sight of yellow sails on the Inner Sea signals the approach of a ship from Okeno, home port of the most ruthless and feared of all slaving operations. Most who see these sails flee in terror, but some freedom fighters actually endeavor to be captured, knowing that being taken to Stonespine Island in manacles is the easiest way to infiltrate the city, liberate other slaves, and lead them to freedom.",
+  "replacesText": "Trapfinding; Trap Sense; Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-okeno-liberator-bond-breaker-ex-1",
+          "name": "Bond Breaker (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An Okeno liberator adds 1/2 her class level to Escape Artist checks, and never takes a penalty on Disable Device checks when using improvised tools to open locks. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-okeno-liberator-covert-commander-ex-1",
+          "name": "Covert Commander (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An Okeno liberator grants all allies within 30 feet who are in her line of sight (but not herself ) a +1 competence bonus on Disguise and Stealth checks. This bonus increases by 1 for every 3 levels beyond 3rd. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-okeno-liberator-catch-off-guard-ex-4",
+          "name": "Catch Off-Guard (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the Okeno liberator is adept at improvising weapons. She gains Catch Off-Guard as a bonus feat. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-okeno-liberator-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the Okeno liberator archetype: deft palm UC , fast picks APG , fast stealth, quick disguise APG , slow reactions, underhanded UC ."
+        },
+        {
+          "id": "rogue-okeno-liberator-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the Okeno liberator archetype: defensive roll, fast tumble, knock-out blow APG , skill mastery, weapon snatcher UC ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Okeno%20Liberator"
+  }
+}

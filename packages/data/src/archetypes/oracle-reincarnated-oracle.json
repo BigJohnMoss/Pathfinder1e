@@ -1,0 +1,52 @@
+{
+  "id": "oracle-reincarnated-oracle",
+  "name": "Reincarnated Oracle",
+  "classId": "oracle",
+  "summary": "(Samsaran Only) A reincarnated oracle draws her knowledge and power from the experiences of her previous lives.",
+  "replacesText": "Oracle’s Curse; Bonus Spells; 1st, 3rd, or 7th-level Revelations (must pick two)",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-curse-1",
+        "oracle-revelation-1",
+        "oracle-revelation-3",
+        "oracle-revelation-7"
+      ],
+      "features": [
+        {
+          "id": "oracle-reincarnated-oracle-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "ancestor, lore, time."
+        },
+        {
+          "id": "oracle-reincarnated-oracle-oracle-s-curse-1",
+          "name": "Oracle’s Curse",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reincarnated oracle must choose the haunted or tongues curse at 1st level."
+        },
+        {
+          "id": "oracle-reincarnated-oracle-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "see alignment (2nd), detect thoughts (4th), contact other plane (10th), moment of prescience (16th), overwhelming presence (18th). These spells replace the oracle’s mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-reincarnated-oracle-revelations-1",
+          "name": "Revelations",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reincarnated oracle must take the following revelations at one of the listed levels. Location Memories (Su) : As a swift action, you may search your past lives for memories of or insight about your current location. This grants you the scent ability, low-light vision, and a +2 insight bonus on Perception and Survival checks for 1 minute. You can use this ability a number of times per day equal to 3 + your Charisma modifier. You must take this revelation at 1st level or 3rd level. Spirit Memories (Su) : Once per day, you call upon the unfulfilled desires and goals of your past lives and project their frustration and despair through your eyes at a target. This is a gaze attack affecting one creature. The target must make a Will save (DC 10 + 1/2 your oracle level + your Charisma modifier) or be sickened and staggered for 1 round. This is a mind-affecting compulsion effect. You can use this ability a number of times per day equal to 3 + your Charisma modifier. You must take this revelation at 1st, 3rd, or 7th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Reincarnated%20Oracle"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "cleric-undead-lord",
+  "name": "Undead Lord",
+  "classId": "cleric",
+  "summary": "An undead lord is a cleric focused on using necromancy to control undead.",
+  "replacesText": "Domains",
+  "replacements": [
+    {
+      "featureIds": [
+        "cleric-domain-1-first",
+        "cleric-domain-1-second",
+        "cleric-domain-spell-1",
+        "cleric-domain-spell-2",
+        "cleric-domain-spell-3",
+        "cleric-domain-spell-4",
+        "cleric-domain-spell-5",
+        "cleric-domain-spell-6",
+        "cleric-domain-spell-7",
+        "cleric-domain-spell-8",
+        "cleric-domain-spell-9"
+      ],
+      "features": [
+        {
+          "id": "cleric-undead-lord-death-magic-1",
+          "name": "Death Magic",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An undead lord must select the Death domain (and the Undead subdomain, if available in the campaign). She does not gain a second domain. In all other respects, this works like and replaces the standard cleric’s domain ability."
+        },
+        {
+          "id": "cleric-undead-lord-corpse-companion-su-1",
+          "name": "Corpse Companion (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "With a ritual requiring 8 hours, an undead lord can animate a single skeleton or zombie whose Hit Dice do not exceed her cleric level. This corpse companion automatically follows her commands and does not need to be controlled by her. She cannot have more than one corpse companion at a time. It does not count against the number of Hit Dice of undead controlled by other methods. She can use this ability to create a variant skeleton such as a bloody or burning skeleton, but its Hit Dice cannot exceed half her cleric level. She can dismiss her companion as a standard action, which destroys it."
+        },
+        {
+          "id": "cleric-undead-lord-bonus-feats-10",
+          "name": "Bonus Feats",
+          "level": 10,
+          "type": "archetype",
+          "summary": "All undead lords gain Command Undead as a bonus feat. In addition, at 10th level, she may select one of the following as a bonus feat: Channel Smite, Extra Channel, Improved Channel, Quick Channel, Skeleton Summoner, Undead Master."
+        },
+        {
+          "id": "cleric-undead-lord-unlife-healer-su-8",
+          "name": "Unlife Healer (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, the undead lord’s spells, spell-like abilities, and supernatural abilities used to heal undead heal an extra 50% damage. At 16th level, these effects automatically heal the maximum possible damage for the effect + the extra 50%. This does not stack with abilities or feats such as Empower Spell or Maximize Spell."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Undead%20Lord"
+  }
+}

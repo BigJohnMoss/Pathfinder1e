@@ -1,0 +1,112 @@
+{
+  "id": "ranger-jungle-lord",
+  "name": "Jungle Lord",
+  "classId": "ranger",
+  "summary": "Jungle lords are tempered by their harsh and unforgiving environments into something more than ordinary men and women.",
+  "replacesText": "Class Skills; Weapon and Armor Proficiency; Favored Enemy; Favored Terrain; Hunter's Bond; Spells; 5th, 10th, 15th, 18th-level Favored Terrain; Quarry; Improved Quarry; Camouflage; Master Hunter",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-favored-enemy-1",
+        "ranger-favored-enemy-5",
+        "ranger-favored-enemy-10",
+        "ranger-favored-enemy-15",
+        "ranger-favored-enemy-20",
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18",
+        "ranger-hunters-bond-4",
+        "ranger-spellcasting-4",
+        "ranger-quarry-11",
+        "ranger-improved-quarry-19",
+        "ranger-camouflage-12",
+        "ranger-master-hunter-20"
+      ],
+      "features": [
+        {
+          "id": "ranger-jungle-lord-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The jungle lord gains Acrobatics and Linguistics as class skills instead of Knowledge (dungeoneering) and Spellcraft."
+        },
+        {
+          "id": "ranger-jungle-lord-weapon-and-armor-proi-ciency-1",
+          "name": "Weapon and Armor Proï¬ciency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A jungle lord is proï¬cient with the dagger, battleaxe, blowgun, bolas, club, greatclub, handaxe, kukri, lasso ( Pathï¬nder RPG Ultimate Equipment 31 ), longbow, longspear, net, quarterstaff, shortbow, shortspear, sling, spear, and whip. Jungle Lords are not proï¬cient with armor and shields. This replaces the ranger’s normal weapon and armor proï¬ciencies."
+        },
+        {
+          "id": "ranger-jungle-lord-bonus-language-1",
+          "name": "Bonus Language",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A jungle lord's language options include Sylvan, the language of woodland creatures."
+        },
+        {
+          "id": "ranger-jungle-lord-animal-focus-su-1",
+          "name": "Animal Focus (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "As a swift action, a jungle lord can take on the aspect of an animal, gaining a bonus or a special ability based on the type of animal emulated. This ability functions as the hunter’s animal focus class feature ( Pathï¬nder RPG Advanced Class Guide 27 ), though it applies only to the jungle lord and not an animal companion. The jungle lord can use this ability for 1 minute per day per ranger level. This duration does not need to be consecutive, but it must be spent in 1-minute increments. He can emulate only one animal at a time. This ability replaces favored enemy."
+        },
+        {
+          "id": "ranger-jungle-lord-favored-terrain-ex-3",
+          "name": "Favored Terrain (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a jungle lord must select jungle as his ï¬rst favored terrain. This alters favored terrain."
+        },
+        {
+          "id": "ranger-jungle-lord-hunter-s-bond-ex-1",
+          "name": "Hunter’s Bond (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A jungle lord forms a close bond with an animal companion. This ability functions like the druid animal companion ability except that the jungle lord’s effective druid level is equal to his ranger level -3. The jungle lord gains a +2 bonus on wild empathy and Handle Animal checks regarding his animal companion. A jungle lord can choose his companion from the following list: ape, axe beak B3 , baboon B2 , bear, big cat (lion, tiger), bird, boar, crocodile (alligator), dinosaur (deinonychus, pteranodon B1 , velociraptor), dog, elephant B1 , giant chameleon B3 , giant gecko B3 , giant vulture B3 , giraffe B4 , hippopotamus B2 , moa B5 , monitor lizard B1 , rhinoceros B1 , small cat (cheetah, leopard), snake (constrictor, viper), or wolf. (Superscript B indicates a Pathï¬nder RPG Bestiary volume.) The jungle lord can have up to four animal companions, but he must divide up his eï¬ective druid level between his companions to determine the abilities of each companion. For example, a jungle lord with an effective druid level of 4 can have one 4th-level companion, two and- level companions, or one lst-level and one 3rd-level companion. Each time a jungle lord’s effective druid level increases, he must decide how to allocate the increase among his animal companions (including the option of adding a new 1st-level companion). Once an effective druid level is allocated to a particular companion, it cannot be redistributed while that companion is in thejungle lord’s service (he must release a companion or wait until a companion dies to allocate its levels to another companion). This alters hunter’s bond."
+        },
+        {
+          "id": "ranger-jungle-lord-hardened-by-nature-ex-4",
+          "name": "Hardened by Nature (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the jungle lord's keen senses make him harder to hit and more able to withstand those blows that manage to sneak by his defenses. When unarmored and unencumbered, the jungle lord can add his Wisdom bonus (if any) to his AC and his CMB. In addition, the jungle lord gains a +1 dodge bonus to AC at 6th level, and every 3 ranger levels thereafter (9th, 12th, 15th, and 18th). He loses these bonuses when he wears any armor, when he carries a shield, or when he carries a medium or heavy load. This ability replaces spells."
+        },
+        {
+          "id": "ranger-jungle-lord-brachiation-ex-5",
+          "name": "Brachiation (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, as a free action for a number of rounds per day equal to his ranger level, a jungle lord can climb with a climb speed equal to his land speed, and gains a bonus on Acrobatics checks equal to his ranger level. These rounds do not have to be consecutive. This ability replaces the additional favored terrain granted to rangers at 5th level. The jungle lord still gains additional favored terrains at 10th, 15th, and 18th levels."
+        },
+        {
+          "id": "ranger-jungle-lord-inspired-moment-ex-11",
+          "name": "Inspired Moment (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, the jungle lord can have an inspired moment once per day as a free action. The jungle lord gains the following beneï¬ts until the end of his next turn. His speed increases by 10 feet. He can take an extra move or swift action on his turn. He gains a +4 bonus to AC and on attack rolls, skill checks, or ability checks. Finally, he automatically conï¬rms any critical threat he scores. He can use this ability one additional time per day at 19th level. This ability replaces quarry and improved quarry."
+        },
+        {
+          "id": "ranger-jungle-lord-strong-bond-ex-12",
+          "name": "Strong Bond (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, the jungle lord strengthens his bond with his animal companions. The jungle lord’s effective druid level for his animal companions is now equal to his ranger level; he can immediately allocate these additional levels to his companions as he sees ï¬t. This ability replaces camouï¬‚age."
+        },
+        {
+          "id": "ranger-jungle-lord-victory-cry-ex-20",
+          "name": "Victory Cry (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, the jungle lord’s signature battle cry rallies his animal friends to greater combat prowess and hardiness. The jungle lord can shout his victory cry a number of times per day equal to his Wisdom modiï¬er as a standard action. Each time he does so, his animal companions within 200 feet gain a +6 morale bonus on attack rolls and to AC, and all threatened critical hits made by his animal companions are automatically conï¬rmed. Furthermore, following his victory cry, the jungle lord can apply a number of animal aspects equal to his Wisdom modiï¬er when using animal focus, rather than the usual limit of one. These effects last for 1 minute. This ability replaces master hunter."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Jungle%20Lord"
+  }
+}

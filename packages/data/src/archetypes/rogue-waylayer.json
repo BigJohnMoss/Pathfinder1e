@@ -1,0 +1,73 @@
+{
+  "id": "rogue-waylayer",
+  "name": "Waylayer",
+  "classId": "rogue",
+  "summary": "A clever rogue knows the easiest battle to win is the one that’s over before your foe knows it has begun.",
+  "replacesText": "Trapfinding; Uncanny Dodge; Improved Uncanny Dodge; 12th and 20th-level Rogue Talents",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8",
+        "rogue-talent-12"
+      ],
+      "features": [
+        {
+          "id": "rogue-waylayer-staggering-reflexes-ex-1",
+          "name": "Staggering Reflexes (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a waylayer gains a bonus on initiative checks equal to 1/2 her level (minimum +1) if she acts in a surprise round, and is never flat-footed at the start of combat (even if she fails to act during the surprise round). This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-waylayer-ambuscading-sneak-attack-ex-4",
+          "name": "Ambuscading Sneak Attack (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a waylayer becomes especially skilled at attacking unaware foes. When she makes a sneak attack during a surprise round, she uses d8s to roll sneak attack damage instead of d6s. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-waylayer-danger-awareness-ex-8",
+          "name": "Danger Awareness (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a waylayer is never considered an unaware combatant and is always able to act in the surprise round. This replaces improved uncanny dodge."
+        },
+        {
+          "id": "rogue-waylayer-exceptional-reflexes-ex-12",
+          "name": "Exceptional Reflexes (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a waylayer can move up to her speed before taking her action in a surprise round. This replaces the rogue talent gained at 12th level."
+        },
+        {
+          "id": "rogue-waylayer-masterful-reflexes-ex-20",
+          "name": "Masterful Reflexes (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a waylayer’s initiative roll is automatically a natural 20. This ability replaces the rogue talent gained at 20th level."
+        },
+        {
+          "id": "rogue-waylayer-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the waylayer archetype: camouflage APG , cunning trigger APG , quick trapsmith APG , slow reactions, surprise attack, and underhanded UC ."
+        },
+        {
+          "id": "rogue-waylayer-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced talents complement the waylayer archetype: entanglement of blades APG , hide in plain sight UC , knock-out blow APG , and weapon snatcher UC ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Waylayer"
+  }
+}

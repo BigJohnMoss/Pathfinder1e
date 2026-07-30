@@ -1,0 +1,55 @@
+{
+  "id": "bard-speaker-of-the-palatine-eye",
+  "name": "Speaker of the Palatine Eye",
+  "classId": "bard",
+  "summary": "speaker of the Palatine Eye influences others using his occult knowledge rather than the boisterous enthusiasm of most bards.",
+  "replacesText": "Class Skills; Spells; Countersong; Jack-of-all-Trades",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-jack-of-all-trades-16",
+        "bard-spellcasting-1",
+        "bard-cantrips-1",
+        "bard-spell-exchange-5",
+        "bard-countersong-1",
+        "bard-jack-of-all-trades-10",
+        "bard-jack-of-all-trades-19"
+      ],
+      "features": [
+        {
+          "id": "bard-speaker-of-the-palatine-eye-angelic-grace-ex-1",
+          "name": "Angelic Grace (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Members of the Order of the Palatine Eye carry themselves with the austerity and import their heavenly aspirations demand. A speaker of the Palatine Eye does not have Acrobatics or Escape Artist as class skills, but he gains Celestial as a bonus language. This does not count toward the number of languages he is otherwise able to learn. This alters the bard’s class skills."
+        },
+        {
+          "id": "bard-speaker-of-the-palatine-eye-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A speaker of the Palatine Eye draws his powers from the mysterious rites of the Esoteric Order of the Palatine Eye. He casts psychic spells from the mesmerist list instead of arcane spells from the bard spell list. He otherwise casts spells, learns spells, and determines his spell allotment and spell DCs as a bard. This alters spells."
+        },
+        {
+          "id": "bard-speaker-of-the-palatine-eye-corpse-speaker-su-1",
+          "name": "Corpse Speaker (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A speaker of the Palatine Eye can make it appear as if a corpse is speaking, similar to ventriloquism. A creature must succeed at a Will saving throw (DC = 10 + half the bard’s level + the bard’s Charisma modifier) to see through the ruse. A creature that fails the saving throw is convinced that the corpse is speaking of its own volition. This replaces countersong."
+        },
+        {
+          "id": "bard-speaker-of-the-palatine-eye-keen-ritualist-ex-10",
+          "name": "Keen Ritualist (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a speaker of the Palatine Eye reduces the number of secondary casters required to cast a ritual by 2. At 16th level, the DCs of skill checks the speaker of the Palatine Eye attempts during a ritual are reduced by 2. At 19th level, a speaker of the Palatine Eye can perform any ritual by himself without needing to satisfy any secondary caster requirements. The DCs of skill checks he attempts during a ritual are reduced by an additional 2, for a maximum DC reduction of 4. This replaces jack-of-all-trades."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Speaker%20of%20the%20Palatine%20Eye"
+  }
+}

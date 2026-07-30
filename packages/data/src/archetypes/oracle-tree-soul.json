@@ -1,0 +1,77 @@
+{
+  "id": "oracle-tree-soul",
+  "name": "Tree Soul",
+  "classId": "oracle",
+  "summary": "Tree souls develop an affinity not just with trees but also with objects carved from them, feeling the essence of the tree’s spirit living within.",
+  "replacesText": "Class Skills; Weapon and Armor Proficiency; 2nd, 10th, 12th, 14th, 16th, 18th-level Mystery Bonus Spells; Oracle's Curse; 1st, 11th-level Revelation; Final Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-curse-1",
+        "oracle-revelation-1",
+        "oracle-revelation-11",
+        "oracle-revelation-3",
+        "oracle-revelation-7",
+        "oracle-revelation-15",
+        "oracle-revelation-19",
+        "oracle-final-revelation-20"
+      ],
+      "features": [
+        {
+          "id": "oracle-tree-soul-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tree soul adds Acrobatics, Climb, Knowledge (nature), and Survival to her list of class skills. This replaces the class skills granted by the oracle’s mystery and class skills."
+        },
+        {
+          "id": "oracle-tree-soul-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Tree souls are proficient with light and medium armor but are prohibited from wearing metal armor. A tree soul can also wear wooden armor that has been altered by the ironwood spell so that it functions as though it were steel. Tree souls are proficient with shields (except tower shields) but can use only those crafted from wood. A tree soul who wears prohibited armor or uses a prohibited shield is unable to cast oracle spells or use any of her supernatural or spell-like class abilities while doing so and for 24 hours thereafter."
+        },
+        {
+          "id": "oracle-tree-soul-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Ancestor, lore, nature, wood."
+        },
+        {
+          "id": "oracle-tree-soul-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Warp wood (2nd), tree stride (10th), ironwood (12th), changestaff (14th), repel metal or stone (16th), greater siege of trees (18th). These bonus spells replace the oracle’s mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-tree-soul-tree-bound-curse-su-1",
+          "name": "Tree Bound Curse (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "You bind your power to a specific tree. Any damage to the tree deals the same amount of damage to you, overcoming DR, energy resistance, and immunities. Damage you take in this way cannot be healed by normal or magical means until your bonded tree is healed or destroyed. The damage can reduce you to 0 hit points but not below. If the tree is destroyed, you are considered to be staggered and are unable to cast oracle spells or use supernatural or spell-like class abilities until you bond with a new tree in a ceremony that takes 12 hours to complete. Once per month, you can create a new bond with a different tree in a ceremony at that tree that takes 12 hours to complete. You lose your bond with your previous tree in the process. This replaces oracle’s curse."
+        },
+        {
+          "id": "oracle-tree-soul-revelations-1",
+          "name": "Revelations",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tree soul oracle must take the following revelations at the listed levels. Transform Wood (Su) : At 1st level, as a standard action you can temporarily transform a number of 5-foot cubes of wood each day equal to 1 + your Charisma modifier. The wood takes on the quality of darkwood for 1 minute per oracle level. At 11th level, you can have it instead take on the quality of living steel for the same duration. Living Steel Dolls (Ex) : At 11th level, you add animate objects to your list of spells known. When you cast this spell on wooden objects, the objects’ wooden parts immediately transform into living steel. If the objects are destroyed or the duration ends, the wooden parts revert back to their original material."
+        },
+        {
+          "id": "oracle-tree-soul-tree-soul-revelation-su-20",
+          "name": "Tree Soul Revelation (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, your skin takes on the appearance and properties of a tree trunk. This bark-like skin grants you a +4 natural armor bonus to your Armor Class and DR 10/slashing. You also regrow any severed limbs except your head within 24 hours as per regenerate . Finally, once a day as a standard action, you can assume the form of a treant, as per plant shape III , for a number of minutes equal to 3 + your Charisma modifier (minimum 1). This replaces final revelation."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Tree%20Soul"
+  }
+}

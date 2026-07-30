@@ -1,0 +1,70 @@
+{
+  "id": "rogue-makeshift-scrapper",
+  "name": "Makeshift Scrapper",
+  "classId": "rogue",
+  "summary": "Some combatants specialize in the study of certain weapons, but those without formal training often learn to survive a fight by making brilliant use of whatever is lying around.",
+  "replacesText": "Weapon Proficiencies; Trapfinding; Trap Sense; 12th-level Rogue Talent",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "rogue-talent-12"
+      ],
+      "features": [
+        {
+          "id": "rogue-makeshift-scrapper-weapon-proficiency-1",
+          "name": "Weapon Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The makeshift scrapper is proficient with only simple weapons."
+        },
+        {
+          "id": "rogue-makeshift-scrapper-improvised-weapons-ex-1",
+          "name": "Improvised Weapons (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a makeshift scrapper gains Catch Off-Guard and Throw Anything as bonus feats. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-makeshift-scrapper-supernatural-improvisation-su-3",
+          "name": "Supernatural Improvisation (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a makeshift scrapper gains the ability to enhance an item, making it a more effective weapon or changing the way it can be used. As a swift action, she can alter a single improvised weapon to either grant it a +1 enhancement bonus on attack rolls and damage rolls or use it to gain a +1 shield bonus to her AC. The makeshift scrapper can use this ability for a number of rounds per day equal to her rogue level. These rounds need not be consecutive, and the makeshift scrapper can change the enhancement each time she activates the ability. The bonus increases by 1 every 4 levels thereafter, up to a maximum bonus of +5 at 19th level. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-makeshift-scrapper-improvised-weapon-mastery-ex-12",
+          "name": "Improvised Weapon Mastery (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, the makeshift scrapper gains Improvised Weapon Mastery as a bonus feat. This ability replaces the rogue talent gained at 12th level."
+        },
+        {
+          "id": "rogue-makeshift-scrapper-rogue-talents-ninja-tricks-1",
+          "name": "Rogue Talents/Ninja Tricks",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents and ninja tricks complement the makeshift scrapper archetype: acrobatic master UC , expert leaper APG , fast getaway APG , ki pool UC , offensive defense APG , peerless maneuver APG , and surprise attack."
+        },
+        {
+          "id": "rogue-makeshift-scrapper-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the makeshift scrapper archetype: another day APG , defensive roll, fast getaway APG , and opportunist."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Makeshift%20Scrapper"
+  }
+}

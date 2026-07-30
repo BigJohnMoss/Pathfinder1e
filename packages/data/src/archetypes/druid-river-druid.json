@@ -1,0 +1,76 @@
+{
+  "id": "druid-river-druid",
+  "name": "River Druid",
+  "classId": "druid",
+  "summary": "These druids are the guardians of rivers and the creatures that depend on them.",
+  "replacesText": "Class Skills; Nature Sense; Woodland Stride; Trackless Step; Resist Nature’s Lure; Wild Shape; Timeless Body",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-nature-sense-1",
+        "druid-woodland-stride-2",
+        "druid-trackless-step-3",
+        "druid-resist-natures-lure-4",
+        "druid-wild-shape-4",
+        "druid-wild-shape-6",
+        "druid-wild-shape-8",
+        "druid-wild-shape-10",
+        "druid-wild-shape-12",
+        "druid-wild-shape-14",
+        "druid-wild-shape-16",
+        "druid-wild-shape-18",
+        "druid-wild-shape-20",
+        "druid-timeless-body-15"
+      ],
+      "features": [
+        {
+          "id": "druid-river-druid-ferrier-ex-1",
+          "name": "Ferrier (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A river druid adds Diplomacy to her list of class skills and gains a +2 bonus on Diplomacy and Knowledge (nature) skill checks. This alters the druid’s class skills and replaces nature sense."
+        },
+        {
+          "id": "druid-river-druid-read-the-currents-ex-2",
+          "name": "Read the Currents (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a river druid gains a bonus equal to half her druid level on initiative checks and Acrobatics, Knowledge (geography), Perception, Stealth, Survival, and Swim checks when she is in, on, or adjacent to flowing water. This replaces woodland stride."
+        },
+        {
+          "id": "druid-river-druid-countercurrent-ex-3",
+          "name": "Countercurrent (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a river druid takes no penalty to speed or on Acrobatics or Stealth checks in shallow water up to 2 feet deep (1 foot deep for Small characters) such as shallow bogs, shorelines, streams, and partially flooded areas. A river druid (and any vehicle she pilots) isn’t moved by flowing water unless she allows it. Water that has been magically manipulated to impede or boost motion still affects her. This replaces trackless step."
+        },
+        {
+          "id": "druid-river-druid-deep-breath-ex-4",
+          "name": "Deep Breath (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a river druid can hold her breath for a number of minutes equal to her Constitution score (after this, she must begin attempting Constitution checks to avoid suffocation as normal). This replaces resist nature’s lure."
+        },
+        {
+          "id": "druid-river-druid-wild-shape-su-6",
+          "name": "Wild Shape (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "A river druid gains this ability at 6th level, except her effective druid level for the ability is equal to her druid level – 2. This alters wild shape."
+        },
+        {
+          "id": "druid-river-druid-tongue-of-the-sun-and-moon-ex-15",
+          "name": "Tongue of the Sun and Moon (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a river druid can speak with any living creature. This replaces timeless body."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20River%20Druid"
+  }
+}

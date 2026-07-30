@@ -1,0 +1,72 @@
+{
+  "id": "fighter-siegebreaker",
+  "name": "Siegebreaker",
+  "classId": "fighter",
+  "summary": "The siegebreaker is trained to break through lines of enemy soldiers.",
+  "replacesText": "1st, 2nd, 4th, and 8th-level Bonus Feats; Bravery; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "fighter-bonus-feat-2",
+        "fighter-bonus-feat-4",
+        "fighter-bonus-feat-8",
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-siegebreaker-breaker-rush-ex-1",
+          "name": "Breaker Rush (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a siegebreaker can attempt bull rush or overrun combat maneuvers without provoking attacks of opportunity. When he performs either combat maneuver, he deals an amount of bludgeoning damage equal to his Strength bonus (minimum 1). If he has Improved Bull Rush or Improved Overrun, the damage dealt by the appropriate maneuver increases by 2 and he adds any enhancement bonus from his armor or shield (though such enhancement bonuses do not stack, if both armor and shield are magic). This ability replaces the feat gained at 1st level."
+        },
+        {
+          "id": "fighter-siegebreaker-armored-vigor-ex-2",
+          "name": "Armored Vigor (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level as a swift action, a siegebreaker can gain 2 temporary hit points that last for 1 minute. He can use this ability a number of times per day equal to 3 + his Constitution modifier (minimum 1 per day), but only while wearing armor. At 6th level and every 4 levels thereafter, the number of temporary hit points the siegebreaker gains increases by 2, to a maximum of 10 at 18th level. This ability replaces bravery."
+        },
+        {
+          "id": "fighter-siegebreaker-breaker-momentum-ex-2",
+          "name": "Breaker Momentum (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, when a siegebreaker successfully bull rushes a foe, he can attempt an overrun combat maneuver check against that foe as a free action. This ability replaces the feat gained at 2nd level."
+        },
+        {
+          "id": "fighter-siegebreaker-persistent-menace-ex-4",
+          "name": "Persistent Menace (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a siegebreaker must choose either Step Up or Disruptive as his bonus feat, but need not meet the prerequisites."
+        },
+        {
+          "id": "fighter-siegebreaker-disorienting-blow-ex-8",
+          "name": "Disorienting Blow (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, as an immediate action, a siegebreaker can distract a foe he just hit with an attack or combat maneuver, imposing a –2 penalty on the foe’s attack rolls, caster level checks, or skill checks for 1 round. The foe can negate this penalty with a successful Fortitude save (DC = 10 + 1/2 the siegebreaker’s fighter level + his Strength modifier). At 14th level, the penalty increases to –4. This ability replaces the bonus feat gained at 8th level."
+        },
+        {
+          "id": "fighter-siegebreaker-masterful-distraction-ex-20",
+          "name": "Masterful Distraction (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a siegebreaker can nauseate a foe he targets with his disorienting blow instead of inflicting a penalty. This ability replaces weapon mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Siegebreaker"
+  }
+}

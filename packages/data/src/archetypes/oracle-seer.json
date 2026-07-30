@@ -1,0 +1,44 @@
+{
+  "id": "oracle-seer",
+  "name": "Seer",
+  "classId": "oracle",
+  "summary": "While all oracles possess some ability at divination, the seer is a true prophet, able to see things as they really are, or will be.",
+  "replacesText": "Mystery Bonus Spells; 1st-level Revelation; 3rd-level Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-mystery-1",
+        "oracle-revelation-1",
+        "oracle-revelation-3"
+      ],
+      "features": [
+        {
+          "id": "oracle-seer-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "lore, nature, time."
+        },
+        {
+          "id": "oracle-seer-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "detect thoughts (4th), clairaudience/clairvoyance (6th), scrying (8th), true seeing (10th), legend lore (12th), greater scrying (14th), vision (16th), foresight (18th). These bonus spells replace the oracle’s mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-seer-revelations-1",
+          "name": "Revelations",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A seer must take the following revelations at the listed levels. Natural Divination (Ex) : As the nature mystery revelation. You must take this revelation at 1st level. Gift of Prophecy (Su) : Once per day, you can enter a trance to gain a glimpse of the future. This trance lasts for 1 minute, which must be uninterrupted and during which you can take no other actions. At 3rd level, you gain the benefits of an augury spell with 90% effectiveness. At 5th level, you gain the benefits of a divination spell with 90% effectiveness. At 9th level, the knowledge you gain is equivalent to a commune spell. None of these spell effects require material components. You must take this revelation at 3rd level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Seer"
+  }
+}

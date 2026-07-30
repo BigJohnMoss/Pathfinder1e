@@ -8,26 +8,26 @@ This document distinguishes records present in the data bundle from systems that
 - 7 selectable core ancestries
 - 3,447 selectable feats
 - all 40 APG basic traits
-- 91 playable archetypes, including all 15 published Arcanist archetypes
+- 623 selectable archetype records covering all 624 published entries for the 13 supported classes; Totem Warrior is represented by the rage-power system because it replaces no class feature
 - 2,063 spells
 
 ## Playable classes
 
 | Class | Status | Notes |
 |---|---|---|
-| Arcanist | Playable | Prepared arcane casting, arcane reservoir, all 40 normal and greater Advanced Class Guide exploits, and all 15 published archetypes are integrated with sourced replacement progressions, level gates and persistence. |
-| Barbarian | Playable | Core progression plus the complete Core and APG rage-power catalogues are integrated, including prerequisites, repeat limits, distinct energy choices, and mutually exclusive totem families. |
-| Bard | Playable | Level 1–20 Core chassis and spell list plus all nine APG archetypes, their replacement progressions, off-list bonus spells, bonded objects, familiars, and persistent performance-round tracking are integrated. |
-| Cleric | Playable Core class | Level 1–20 prepared casting, channel energy, deity-compatible alignment, Core deities and domains, and domain spell slots are integrated. |
-| Druid | Playable | Level 1–20 prepared casting, complete Core spell list, both Nature Bond paths, all ten APG archetypes with their domain, familiar, class-skill and delayed Wild Shape rules, and persistent Wild Shape tracking are integrated. |
-| Fighter | Playable | Core progression, bonus feats and weapon groups are integrated. |
-| Monk | Playable | Core progression plus all ten APG archetypes, their complete replacement progressions, granted feats, and Four Winds spirit-aspect choice are integrated. |
-| Oracle | Playable APG class | Level 1-20 spontaneous divine casting, all six curses, cure-or-inflict choice, all ten mysteries, mystery spells, revelations and capstones are integrated. |
-| Paladin | Playable Core class | Level 1–20 martial and divine progression, mercies, Divine Bond and the complete Core Paladin spell list are integrated. |
-| Ranger | Playable Core class | Level 1–20 progression, favored enemies and terrains, combat styles, both Hunter's Bond paths and the complete Core Ranger spell list are integrated. |
-| Rogue | Playable | Core progression plus the complete Core and APG rogue-talent catalogues are integrated. |
-| Sorcerer | Playable Core class | Level 1–20 spontaneous casting and all ten Core bloodlines with dependent choices and persistence are integrated. |
-| Wizard | Playable Core class | Level 1–20 prepared casting, Core schools, opposition preparation, Arcane Bond paths and specialist slots are integrated. |
+| Arcanist | Playable | Core chassis, exploits, and all 15 published archetypes are selectable with sourced replacement progressions and persistence. |
+| Barbarian | Playable | Core chassis, rage powers, and 41 replacement archetypes are selectable. Totem Warrior is represented by the complete mutually exclusive totem rage-power families. |
+| Bard | Playable | Core chassis, spellcasting, performance tracking, and all 73 published archetypes are selectable with sourced replacement progressions. |
+| Cleric | Playable | Core chassis, domains, spellcasting, and all 35 published archetypes are selectable; nested domain-power replacements are applied to the chosen domains. |
+| Druid | Playable | Core chassis, Nature Bond paths, spellcasting, Wild Shape tracking, and all 75 published archetypes are selectable with sourced replacement progressions. |
+| Fighter | Playable | Core chassis, bonus feats, weapon groups, and all 67 published archetypes are selectable with sourced replacement progressions. |
+| Monk | Playable | Core chassis and all 56 published archetypes are selectable with sourced replacement progressions. |
+| Oracle | Playable | Core chassis, mysteries, revelations, spellcasting, and all 26 published archetypes are selectable with sourced replacement progressions. |
+| Paladin | Playable | Core chassis, mercies, Divine Bond, spellcasting, and all 47 published archetypes are selectable with sourced replacement progressions. |
+| Ranger | Playable | Core chassis, favored enemies and terrains, combat styles, Hunter's Bond, spellcasting, and all 62 published archetypes are selectable with sourced replacement progressions. |
+| Rogue | Playable | Core chassis, rogue talents, and all 78 published archetypes are selectable with sourced replacement progressions. |
+| Sorcerer | Playable | Core chassis, bloodlines, spellcasting, and all 13 published archetypes are selectable with sourced replacement progressions. |
+| Wizard | Playable | Core chassis, schools, opposition schools, Arcane Bond, spellcasting, and all 35 published archetypes are selectable; nested school-power replacements are applied to the chosen school. |
 
 All eleven Core Rulebook classes are playable. Arcanist and Oracle are the additional selectable classes.
 
@@ -68,7 +68,7 @@ The catalogue contains 3,447 selectable records and covers every one of the 3,44
 | Multiclassing | Complete: arbitrary distinct class entries combine progression, class-specific archetypes and choices, independent spellbooks and resources, feat prerequisites, level-up previews, and save/load restoration |
 | Alternate racial traits | All 50 APG options for the seven Core ancestries are selectable with replacement conflicts, derived-stat recalculation, and persistence |
 | Traits | All 40 APG basic traits are playable with category restrictions, skill choices and class-aware spell choices |
-| Archetypes | All 15 Arcanist archetypes plus all twelve APG Fighter, nine APG Barbarian, nine APG Bard, ten APG Druid, and ten APG Monk archetypes are playable through level 20; Totem Warrior is represented by the complete mutually exclusive totem rage-power families |
+| Archetypes | All 624 published archetype entries for the 13 supported classes are covered by 623 selectors plus the Totem Warrior rage-power representation. Each selector includes sourced rules text, replacement progression, level gates, nested domain/school-power filtering, and saved-character persistence. Bespoke effects that require a dedicated subsystem remain descriptive until that subsystem exists. |
 
 ## Definition of playable
 

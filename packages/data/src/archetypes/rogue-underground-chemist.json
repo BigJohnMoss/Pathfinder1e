@@ -1,0 +1,66 @@
+{
+  "id": "rogue-underground-chemist",
+  "name": "Underground Chemist",
+  "classId": "rogue",
+  "summary": "Underground chemists are part of the rotting, fetid underbelly of the alchemical world.",
+  "replacesText": "Evasion; 4th-level Rogue Talent; Advanced Talents",
+  "replacements": [
+    {
+      "featureIds": [
+        "evasion-2",
+        "rogue-talent-4",
+        "advanced-talents-10",
+        "rogue-talent-2",
+        "rogue-talent-6",
+        "rogue-talent-8",
+        "rogue-talent-10",
+        "rogue-talent-12",
+        "rogue-talent-14",
+        "rogue-talent-16",
+        "rogue-talent-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-underground-chemist-chemical-weapons-ex-2",
+          "name": "Chemical Weapons (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an underground chemist is able to retrieve an alchemical item as if drawing a weapon. She adds her Intelligence modifier to damage dealt with splash weapons, including any splash damage. She adds 1/2 her level to Craft (alchemy) checks. This ability replaces evasion."
+        },
+        {
+          "id": "rogue-underground-chemist-precise-splash-weapons-ex-4",
+          "name": "Precise Splash Weapons (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, an underground chemist can deal sneak attack damage with splash weapons. The attack must be her first attack that round, qualify for dealing sneak attack damage (such as against a flat-footed target), and be directed at a creature rather than a square. This ability replaces the rogue talent gained at 4th level."
+        },
+        {
+          "id": "rogue-underground-chemist-discovery-su-10",
+          "name": "Discovery (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, an underground chemist can select one of the following alchemist discoveries ( Advanced Player’s Guide 28) in place of a rogue talent: concentrate poison, dilution, enhance potion, extend potion, mummification UM , nauseating flesh UC , poison conversion UC , preserve organs UM , spontaneous healing UM , or sticky poison. She uses her rogue level as her alchemist level for determining the effects of her discoveries and whether she is able to select one. This ability alters advanced talents."
+        },
+        {
+          "id": "rogue-underground-chemist-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the underground chemist archetype: black market connections UC , fast fingers APG , lasting poison APG , sniper’s eye APG , and swift poison APG ."
+        },
+        {
+          "id": "rogue-underground-chemist-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the underground chemist archetype: deadly cocktail APG and thoughtful reexamining APG ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Underground%20Chemist"
+  }
+}

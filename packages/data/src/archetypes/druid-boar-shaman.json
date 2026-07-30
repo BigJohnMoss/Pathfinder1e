@@ -1,0 +1,64 @@
+{
+  "id": "druid-boar-shaman",
+  "name": "Boar Shaman",
+  "classId": "druid",
+  "summary": "A boar shaman chooses the stolid and ferocious boar as her totem.",
+  "replacesText": "A Thousand Faces; Venom Immunity",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-thousand-faces-13",
+        "druid-venom-immunity-9"
+      ],
+      "features": [
+        {
+          "id": "druid-boar-shaman-nature-bond-1",
+          "name": "Nature Bond",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A boar shaman who chooses an animal companion must select a boar. If choosing a domain, the boar shaman must choose from the Animal, Destruction (Rage), Protection, and Strength domains."
+        },
+        {
+          "id": "druid-boar-shaman-wild-empathy-ex-1",
+          "name": "Wild Empathy (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A boar shaman can use wild empathy with porcine creatures as a full-round action with a +4 bonus."
+        },
+        {
+          "id": "druid-boar-shaman-totem-transformation-su-2",
+          "name": "Totem Transformation (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a boar shaman may adopt an aspect of the boar while retaining her normal form. This ability functions as the ape shaman ability, but the druid may select from the following sets of bonuses and abilities: movement (+10 enhancement bonus to land speed), senses (low-light vision, scent), natural weapons (gore [1d8 for a Medium druid], +2 on combat maneuver checks to overrun), or toughness (+2 natural armor bonus to AC, Endurance feat). While using totem transformation, the boar shaman may speak normally and can cast speak with animals (boars and related animals only) at will. This ability replaces woodland stride."
+        },
+        {
+          "id": "druid-boar-shaman-totemic-summons-su-5",
+          "name": "Totemic Summons (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a boar shaman may cast summon nature’s ally as a standard action when summoning boars or other porcine creatures, and these summoned creatures gain temporary hit points equal to her druid level. This ability otherwise functions as the ape shaman ability."
+        },
+        {
+          "id": "druid-boar-shaman-wild-shape-su-6",
+          "name": "Wild Shape (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a boar shaman’s wild shape ability functions at her druid level –2. If she takes on the form of a boar, she instead uses her druid level +2. This ability replaces wild shape."
+        },
+        {
+          "id": "druid-boar-shaman-bonus-feat-9",
+          "name": "Bonus Feat",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level and every four levels thereafter, a boar shaman gains one of the following bonus feats: Bleeding Critical, Blind-Fight, Diehard, or Improved Overrun. She must meet the prerequisites for these bonus feats. This ability replaces venom immunity."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Boar%20Shaman"
+  }
+}

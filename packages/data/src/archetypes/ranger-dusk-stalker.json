@@ -1,0 +1,54 @@
+{
+  "id": "ranger-dusk-stalker",
+  "name": "Dusk Stalker",
+  "classId": "ranger",
+  "summary": "(Fetchling Only) Hunters and guides through the Shadow Plane, dusk stalkers are rangers that thrive in shadow.",
+  "replacesText": "Class Skills; Favored Terrain; Hunter’s Bond; Camouflage",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18",
+        "ranger-hunters-bond-4",
+        "ranger-camouflage-12"
+      ],
+      "features": [
+        {
+          "id": "ranger-dusk-stalker-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The dusk stalker adds Knowledge (planes) to his list of class skills and removes Knowledge (nature) from his list of class skills."
+        },
+        {
+          "id": "ranger-dusk-stalker-shadow-guide-3",
+          "name": "Shadow Guide",
+          "level": 3,
+          "type": "archetype",
+          "summary": "When a dusk stalker gains the favored terrain ability, that ability is modified in the following ways. At 3rd level, a dusk stalker picks his primary terrain normally, but only gains a +1 bonus on those checks while on a plane other than the Shadow Plane, and gains a +3 bonus on those checks while on the Shadow Plane. Each time he chooses to add a bonus in a favored terrain, he gains a +1 bonus on those checks while on a plane other than the Shadow Plane, and gains a +3 bonus on those checks while on the Shadow Plane. This ability modifies favored terrain."
+        },
+        {
+          "id": "ranger-dusk-stalker-shadow-bond-su-4",
+          "name": "Shadow Bond (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a dusk stalker creates a mystical bond with shadows. The shadows around a dusk stalker weave and swirl, confusing his enemies. When a dusk stalker is fighting in dim light or darkness (magical or otherwise), he gains a +4 insight bonus on Acrobatics checks made to move through an enemy’s threatened area or through its space. Furthermore, a number of times per day equal to his Wisdom modifier, the dusk stalker can manipulate shadows in a 5-foot square within 30 feet. That square must be in an area of dim light or darkness (magical or otherwise). Enemies with an Intelligence score within or adjacent to that 5-foot square take a –2 penalty to AC and on Reflex saving throws. The harassing shadows last for 1 round. This is a mind-affecting fear effect. This ability replaces hunter’s bond."
+        },
+        {
+          "id": "ranger-dusk-stalker-dark-sight-su-12",
+          "name": "Dark Sight (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a dusk stalker gains the see in darkness ability. This ability replaces camouflage."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Dusk%20Stalker"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "fighter-lore-warden-pfs-field-guide",
+  "name": "Lore Warden (PFS Field Guide)",
+  "classId": "fighter",
+  "summary": "Lore wardens are fighters who benefit from learning to outsmart and outmaneuver their foes rather than just overpower them.",
+  "replacesText": "Medium Armor, Heavy Armor, and Shield Proficiency; Bravery 1; Armor Training 1-4; Armor Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "armor-mastery-19"
+      ],
+      "features": [
+        {
+          "id": "fighter-lore-warden-pfs-field-guide-scholastic-ex-1",
+          "name": "Scholastic (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Lore wardens gain 2 additional skill ranks each level. These ranks must be spent on Intelligence-based skills. All Intelligence-based skills are class skills for lore wardens. This ability replaces the lore warden’s proficiency with medium armor, heavy armor, and shields."
+        },
+        {
+          "id": "fighter-lore-warden-pfs-field-guide-expertise-ex-2",
+          "name": "Expertise (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a lore warden gains Combat Expertise as a bonus feat, even if he would not normally qualify for this feat. This ability replaces bravery 1."
+        },
+        {
+          "id": "fighter-lore-warden-pfs-field-guide-maneuver-mastery-ex-3",
+          "name": "Maneuver Mastery (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a lore warden gains a +2 bonus on all CMB checks and to his CMD. This bonus increases to +4 at 7th level, +6 at 11th level, and +8 at 15th level. This ability replaces armor training 1."
+        },
+        {
+          "id": "fighter-lore-warden-pfs-field-guide-know-thy-enemy-ex-7",
+          "name": "Know Thy Enemy (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a lore warden can take a standard action to study a specific target in sight. He must make a Knowledge check to determine the target’s abilities and weaknesses as part of this standard action. If successful, the lore warden not only notes the appropriate abilities and weaknesses, as detailed under the Knowledge skill on page 100 of the Pathfinder RPG Core Rulebook, but also gains a +2 competence bonus on all attack rolls and weapon damage rolls made against that enemy. Note that this bonus on attack and damage rolls applies only to that specific creature. This bonus lasts for the duration of an encounter, or until the lore warden attempts a new Knowledge check to use this ability on a different target. This ability replaces armor training 2."
+        },
+        {
+          "id": "fighter-lore-warden-pfs-field-guide-hair-s-breadth-ex-11",
+          "name": "Hair’s Breadth (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a lore warden can attempt an Acrobatics check as an immediate action to negate a confirmation role for a critical hit. The critical hit confirmation is negated (though the attack still hits and deals normal damage) if the Acrobatics check is greater than the opponent’s confirmation roll. This ability replaces armor training 3."
+        },
+        {
+          "id": "fighter-lore-warden-pfs-field-guide-swift-lore-ex-14",
+          "name": "Swift Lore (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, a lore warden can use his Know Thy Enemy ability as a swift action. This ability replaces armor training 4."
+        },
+        {
+          "id": "fighter-lore-warden-pfs-field-guide-know-weakness-ex-19",
+          "name": "Know Weakness (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, a lore warden can automatically conf irm a critical hit once per round when he threatens a critical hit. This ability replaces armor mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Lore%20Warden%20(PFS%20Field%20Guide)"
+  }
+}

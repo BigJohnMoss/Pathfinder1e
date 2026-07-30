@@ -86,7 +86,7 @@ test("the final APG Fighter archetypes switch cleanly and persist their level-20
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "fighter");
   const archetype = screen.getByLabelText("Archetype");
-  assert.equal(archetype.querySelectorAll("option").length, 13);
+  assert.equal(archetype.querySelectorAll("option").length, 68);
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
   await user.click(screen.getByRole("tab", { name: "Features" }));
 

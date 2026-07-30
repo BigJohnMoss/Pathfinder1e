@@ -1,0 +1,70 @@
+{
+  "id": "oracle-river-soul",
+  "name": "River Soul",
+  "classId": "oracle",
+  "summary": "River soul oracles derive their powers from their bonds with rivers, whether these waterways are rapid cascades or lazy channels plied by boats.",
+  "replacesText": "Class Skills; 2nd, 6th, 8th, 10th ,18th-level Mystery Bonus Spells; Oracle's Curse; 1st, 11th-level Revelation; Final Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-curse-1",
+        "oracle-revelation-1",
+        "oracle-revelation-11",
+        "oracle-revelation-3",
+        "oracle-revelation-7",
+        "oracle-revelation-15",
+        "oracle-revelation-19",
+        "oracle-final-revelation-20"
+      ],
+      "features": [
+        {
+          "id": "oracle-river-soul-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A river soul oracle adds Escape Artist, Knowledge (nature), Survival, and Swim to his list of class skills. This replaces the class skills granted by the oracle’s mystery and alters the oracle’s class skills."
+        },
+        {
+          "id": "oracle-river-soul-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Life, nature, stone, waves."
+        },
+        {
+          "id": "oracle-river-soul-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Hydraulic push (2nd), hydraulic torrent (6th), control water (8th), cone of cold (10th), world wave (18th). These bonus spells replace the oracle’s mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-river-soul-river-bound-curse-su-1",
+          "name": "River Bound Curse (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "You bind your power to one particular river, which is the source of your spells and class abilities. You must carry a small vessel containing water from the river you are bound to at all times. If the vessel is destroyed or travels more than 10 feet away from you, you are unable to cast oracle spells or use your supernatural or spell-like class abilities until you recover the vessel or fill a new one with water from the river to which you are bound. Once per month, you can bond with a different river in a ceremony at that river that takes 12 hours to complete. You lose your bond with the previous river in the process. This replaces oracle’s curse."
+        },
+        {
+          "id": "oracle-river-soul-revelations-1",
+          "name": "Revelations",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A river soul oracle must take the following revelations at the listed levels. River Flow (Su) : At 1st level, as a free action while you are underwater, you can negate the penalties you take for making bludgeoning, piercing, and slashing melee attacks underwater. You can use this ability a number of rounds per day equal to 1 + your Charisma modifier (minimum 1). The rounds do not have to be used consecutively. River Form (Su) : At 11th level, you can become one with a river. Once a day as a standard action, while immersed in a river, you can completely merge with it. Your body and all your gear meld into the water, as per meld into stone , except abilities that control or shape water expel you and deal you 5d6 damage rather than abilities that control or shape stone. You travel along with the river at the rate it is currently moving. You can remain in this form a number of hours equal to 3 + your Charisma modifier (minimum 1). Transforming back to your normal form is a swift action."
+        },
+        {
+          "id": "oracle-river-soul-river-soul-revelation-su-20",
+          "name": "River Soul Revelation (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, you strengthen your ties to the river with which you bonded. While traveling on or immersed in the river, you gain fast healing 10 and immunity to bleed, death attacks, exhaustion, fatigue, nausea effects, negative levels, and sickened effects. Additionally, if you are slain and your body or some part of your body (including your ashes, if applicable) is floated down the river in a specially prepared vessel costing 5,000 gp, you return to life as per resurrection once you reach the mouth of the river, as long as the trip has taken 24 hours or longer. This replaces final revelation."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20River%20Soul"
+  }
+}

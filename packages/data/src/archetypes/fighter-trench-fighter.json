@@ -1,0 +1,38 @@
+{
+  "id": "fighter-trench-fighter",
+  "name": "Trench Fighter",
+  "classId": "fighter",
+  "summary": "Advances in technology have made archaic armors\nobsolete by the twentieth century, and modern soldiers\nconcentrate training on firearms and swift feet.",
+  "replacesText": "Armor Training 1-4",
+  "replacements": [
+    {
+      "featureIds": [
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15"
+      ],
+      "features": [
+        {
+          "id": "fighter-trench-fighter-note-from-nethys-1",
+          "name": "Note from Nethys",
+          "level": 1,
+          "type": "archetype",
+          "summary": "This archetype was introduced in a section on Modern Firearms, where guns were treated as the 'guns everywhere' mechanic. GMs may wish to read the appropriate section in Pathfinder #71 to see if this is suitable for their game."
+        },
+        {
+          "id": "fighter-trench-fighter-trench-warfare-ex-3",
+          "name": "Trench Warfare (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "Starting at 3rd level, a trench fighter\ncan select one specific type of firearm (such as a machine\ngun, revolver, or rifle). He gains a bonus equal to his\nDexterity modifier on damage rolls when firing that type\nof firearm. Every 4 levels thereafter (7th, 11th, and 15th), the\ntrench fighter picks up another type of firearm, gaining\nthese bonuses for those types as well. Furthermore, when\nbehind partial, normal, or improved cover, a trench fighter\ngains an additional +2 AC bonus from the cover. This ability\nreplaces armor training 1, 2, 3, and 4."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Trench%20Fighter"
+  }
+}

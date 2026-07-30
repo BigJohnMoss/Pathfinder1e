@@ -1,0 +1,45 @@
+{
+  "id": "wizard-absalom-arcanamirium-crafter",
+  "name": "Absalom: Arcanamirium Crafter",
+  "classId": "wizard",
+  "summary": "One trained by the Arcanamirium, a college specializing in the universalist school of magic and the art of crafting magical items.",
+  "replacesText": "Hand of the Apprentice",
+  "nestedReplacements": [
+    "Hand of the Apprentice"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-hand-of-the-apprentice"
+      ],
+      "features": [
+        {
+          "id": "wizard-absalom-arcanamirium-crafter-associated-school-1",
+          "name": "Associated School",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Universalist."
+        },
+        {
+          "id": "wizard-absalom-arcanamirium-crafter-replacement-power-1",
+          "name": "Replacement Power",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following school power replaces the hand of the apprentice power of the universalist school."
+        },
+        {
+          "id": "wizard-absalom-arcanamirium-crafter-metacharge-ex-3",
+          "name": "Metacharge (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "As an Arcanamirium crafter, you gain a bonus feat at 3rd level, which must be an item creation feat or metamagic feat. You must still meet all prerequisites for a bonus feat, including caster level minimums. When using metamagic feats to create magic items, your skill and understanding of the principles involved in the item’s creation give you a +2 bonus on the skill check made to create the item."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Absalom%20%20Arcanamirium%20Crafter"
+  }
+}

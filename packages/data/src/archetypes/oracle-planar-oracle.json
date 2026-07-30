@@ -1,0 +1,56 @@
+{
+  "id": "oracle-planar-oracle",
+  "name": "Planar Oracle",
+  "classId": "oracle",
+  "summary": "A planar oracle has an affinity with one of the Outer Planes.",
+  "replacesText": "Mystery Bonus Spells; 3rd-level Revelation; Final Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-mystery-1",
+        "oracle-revelation-3",
+        "oracle-revelation-1",
+        "oracle-revelation-7",
+        "oracle-revelation-11",
+        "oracle-revelation-15",
+        "oracle-revelation-19",
+        "oracle-final-revelation-20"
+      ],
+      "features": [
+        {
+          "id": "oracle-planar-oracle-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "dark tapestry, flame, heavens, stone, waves, wind."
+        },
+        {
+          "id": "oracle-planar-oracle-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "endure elements (2nd), elemental speech (4th), tongues (6th), planar adaptation (8th), plane shift (10th), mass planar adaptation (12th), shadow walk (14th), etherealness (16th), gate (18th). These bonus spells replace the oracle’s mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-planar-oracle-revelations-1",
+          "name": "Revelations",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, you must choose one Outer Plane with which you have an affinity. This choice cannot be changed. A planar oracle must take the following revelation at 3rd level. Planar Resistance (Su) : At 3rd level, you gain energy resistance 10 against one energy type associated with your chosen plane. At 11th level, your energy resistance increases to 20."
+        },
+        {
+          "id": "oracle-planar-oracle-final-revelation-20",
+          "name": "Final Revelation",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, you become an extraplanar creature. Choose one outer plane, such as Heaven or the Abyss. You gain superficial physical characteristics as appropriate to natives of your chosen outer plane. For example, if your chosen plane is Heaven, you gain angelic features such as a halo and metallic skin. This change does not alter your Hit Dice, hit points, saving throws, skill points, class skills, or proficiencies. Your type changes to “outsider (extraplanar),” except on your associated plane, where your type is “outsider (native).” In addition, you gain immunity to your associated energy type and gain damage reduction 10/magic. Unlike other outsiders, you can still be brought back from the dead as if you were a member of your previous creature type. This replaces the final revelation of the oracle’s mystery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Planar%20Oracle"
+  }
+}

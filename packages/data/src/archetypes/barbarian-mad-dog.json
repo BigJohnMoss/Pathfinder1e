@@ -1,0 +1,91 @@
+{
+  "id": "barbarian-mad-dog",
+  "name": "Mad Dog",
+  "classId": "barbarian",
+  "summary": "Though named for the wild savages who fight alongside rabid dogs, mad dogs employ all manner of beasts as their battle brethren.",
+  "replacesText": "2nd, 6th, 10th, 14th, 18th-level Rage Powers; Rage; Uncanny Dodge; Improved Uncanny Dodge; Damage Reduction; Indomitable Will",
+  "replacements": [
+    {
+      "featureIds": [
+        "rage-power-2",
+        "rage-power-6",
+        "rage-power-10",
+        "rage-power-14",
+        "rage-power-18",
+        "rage-1",
+        "rage-power-4",
+        "rage-power-8",
+        "rage-power-12",
+        "rage-power-16",
+        "rage-power-20",
+        "greater-rage-11",
+        "tireless-rage-17",
+        "mighty-rage-20",
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5",
+        "damage-reduction-7",
+        "damage-reduction-10",
+        "damage-reduction-13",
+        "damage-reduction-16",
+        "damage-reduction-19",
+        "indomitable-will-14"
+      ],
+      "features": [
+        {
+          "id": "barbarian-mad-dog-war-beast-ex-1",
+          "name": "War Beast (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a mad dog gains the service of an animal companion , using the barbarian’s level as her effective druid level. This ability replaces the rage powers gained at 2nd, 6th, 10th, 14th, and 18th level."
+        },
+        {
+          "id": "barbarian-mad-dog-pack-tactics-ex-2",
+          "name": "Pack Tactics (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a mad dog and her war beast gain a +4 bonus on attack rolls while flanking the same opponent (instead of the normal +2 bonus). This ability replaces uncanny dodge."
+        },
+        {
+          "id": "barbarian-mad-dog-rage-ex-4",
+          "name": "Rage (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A mad dog gains this ability at 4th level, except that her effective barbarian level for the ability is equal to her barbarian level – 3."
+        },
+        {
+          "id": "barbarian-mad-dog-ferocious-fetch-ex-5",
+          "name": "Ferocious Fetch (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a mad dog’s war beast gains Improved Drag as a bonus feat. As a swift action, a mad dog can command her war beast to move toward an opponent within 30 feet and attempt a drag combat maneuver to pull the target back toward the mad dog. The war beast can move before and after performing the maneuver, but this movement counts toward the war beast’s total movement during its turn. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-mad-dog-damage-reduction-ex-10",
+          "name": "Damage Reduction (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a mad dog gains damage reduction. At 13th level and every 3 barbarian levels thereafter, this damage reduction rises by 1, to a maximum of DR 4/— at 19th level. A mad dog’s war beast gains the same damage reduction as the mad dog."
+        },
+        {
+          "id": "barbarian-mad-dog-throat-cutter-ex-14",
+          "name": "Throat Cutter (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, whenever her war beast succeeds at a bull rush, drag, grapple, overrun, or trip combat maneuver against an opponent threatened by the mad dog, a mad dog can take an attack of opportunity against that opponent. This ability replaces indomitable will."
+        },
+        {
+          "id": "barbarian-mad-dog-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the mad dog archetype: animal fury, beast totem, bestial leaper, primal scent, raging leaper, reckless abandon, scent, sprint, swift foot, and terrifying howl. The following new rage powers also complement this archetype: Ferocious Beast (Ex) : While the barbarian is raging, her animal companion also gains the benefits of rage (including greater rage, mighty rage, and tireless rage), though the barbarian must spend 1 additional round of rage per round if her companion begins or ends its turn adjacent to her, and 2 additional rounds of rage per round if not. Ferocious Beast, Greater (Ex) : While the barbarian is raging, her animal companion shares the benefits of the barbarian’s rage powers that are constant in effect. It gains no benefit from rage powers that require actions to activate, even if they are free actions. A barbarian must have the ferocious beast rage power and be at least 8th level to select this rage power."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Mad%20Dog"
+  }
+}

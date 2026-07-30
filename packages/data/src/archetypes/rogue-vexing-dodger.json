@@ -1,0 +1,72 @@
+{
+  "id": "rogue-vexing-dodger",
+  "name": "Vexing Dodger",
+  "classId": "rogue",
+  "summary": "Vexing dodgers take advantage of their smaller size to outmaneuver larger foes such as giants.",
+  "replacesText": "Trapfinding; 2nd-level Rogue Talent; Trap Sense; Uncanny Dodge; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-talent-2",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-vexing-dodger-limb-climber-ex-1",
+          "name": "Limb-Climber (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When adjacent to or in the space of a corporeal creature at least one size category larger than herself, a vexing dodger can climb that creature’s body with a successful Climb check against a DC equal to the target creature’s CMD. Although the vexing dodger is holding on to the creature, this action isn’t a grapple; it doesn’t provoke attacks of opportunity from the creature, and neither the vexing dodger nor the creature she climbs gains the grappled condition. While the vexing dodger is on the climbed creature, the creature takes a penalty on attack rolls against the vexing dodger equal to the number of sneak attack dice the dodger possesses. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-vexing-dodger-improved-dirty-trick-ex-2",
+          "name": "Improved Dirty Trick (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a vexing dodger gains Improved Dirty Trick APG as a bonus feat, even if she doesn’t meet the prerequisites. This ability replaces the rogue talent gained at 2nd level."
+        },
+        {
+          "id": "rogue-vexing-dodger-underfoot-agility-ex-3",
+          "name": "Underfoot Agility (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a vexing dodger gains a +1 morale bonus on Acrobatics, Climb, and Escape Artist attempts against creatures at least one size category larger than herself. This bonus increases by 1 for every 3 levels beyond 3rd. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-vexing-dodger-underfoot-trickster-ex-4",
+          "name": "Underfoot Trickster (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a vexing dodger can move through the space of a creature two size categories larger than herself without needing to attempt an Acrobatics check. She would still need to succeed at Acrobatics checks to avoid attacks of opportunity provoked by leaving a threatened space; this ability covers only the ability to move. Additionally, whenever the vexing dodger hits a larger foe with a melee sneak attack, she can choose to forgo the sneak attack bonus damage and instead attempt make a dirty trick combat maneuver as a swift action. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-vexing-dodger-distracting-climber-ex-8",
+          "name": "Distracting Climber (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, when a vexing dodger attempts a dirty trick maneuver against a creature she’s climbing, she gets a bonus on the combat maneuver check equal to the number of sneak attack dice she has. If she chooses to sicken the target with her dirty trick and succeeds at her combat maneuver check, the target must succeed at a Fortitude saving throw (DC = 10 + 1/2 the vexing dodger’s level + her Intelligence modifier) or be nauseated for 1 round. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "rogue-vexing-dodger-rogue-talents-ex-4",
+          "name": "Rogue Talents (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A vexing dodger can choose uncanny dodge as a rogue talent starting at 4th level, and she can choose improved uncanny dodge as an advanced rogue talent. The following talents complement the vexing dodger archetype: befuddling strike APG , confounding blades UC , peerless maneuver APG , positioning attack APG , slow reactions, wall scramble UC ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Vexing%20Dodger"
+  }
+}

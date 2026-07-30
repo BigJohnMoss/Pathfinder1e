@@ -1,0 +1,64 @@
+{
+  "id": "druid-eagle-shaman",
+  "name": "Eagle Shaman",
+  "classId": "druid",
+  "summary": "A shaman with this totem calls upon the noble eagle, stern and proud, soaring high above the world with keen and pitiless eyes that miss nothing.",
+  "replacesText": "A Thousand Faces; Venom Immunity",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-thousand-faces-13",
+        "druid-venom-immunity-9"
+      ],
+      "features": [
+        {
+          "id": "druid-eagle-shaman-nature-bond-1",
+          "name": "Nature Bond",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An eagle shaman who chooses an animal companion must select a bird (eagle). If choosing a domain, the eagle shaman must choose from the Air, Animal, Nobility, and Weather domains."
+        },
+        {
+          "id": "druid-eagle-shaman-wild-empathy-ex-1",
+          "name": "Wild Empathy (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An eagle shaman can use wild empathy with birds as a full-round action with a +4 bonus."
+        },
+        {
+          "id": "druid-eagle-shaman-totem-transformation-su-2",
+          "name": "Totem Transformation (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an eagle shaman may adopt an aspect of the eagle while retaining her normal form. This ability functions as the bear shaman ability, but the druid may select from the following bonuses: movement (fly speed 30 feet [average], the druid must be 5th level to select this bonus), senses (low-light vision, +4 racial bonus to Perception), or natural weapons (bite [1d4], 2 talons [1d4] for a Medium shaman). While using totem transformation, the eagle shaman may speak normally and can cast speak with animals (birds only) at will."
+        },
+        {
+          "id": "druid-eagle-shaman-totemic-summons-su-5",
+          "name": "Totemic Summons (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, an eagle shaman may cast summon nature’s ally as a standard action when summoning eagles, rocs, and giant eagles (added to the 4th-level list), and these summoned creatures gain temporary hit points equal to her druid level. This ability otherwise functions as the bear shaman ability."
+        },
+        {
+          "id": "druid-eagle-shaman-wild-shape-su-6",
+          "name": "Wild Shape (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, an eagle shaman’s wild shape ability functions at her druid level – 2. If she takes on the form of an eagle or roc, she instead uses her druid level + 2. This ability replaces wild shape."
+        },
+        {
+          "id": "druid-eagle-shaman-bonus-feat-9",
+          "name": "Bonus Feat",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level and every 4 levels thereafter, an eagle shaman gains one of the following bonus feats: Flyby Attack, Improved Lightning Reflexes, Lightning Reflexes, Skill Focus (Perception), or Wind Stance. She must meet the prerequisites for these bonus feats. This ability replaces venom immunity."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Eagle%20Shaman"
+  }
+}

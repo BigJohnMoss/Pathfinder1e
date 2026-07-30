@@ -1,0 +1,51 @@
+{
+  "id": "oracle-possessed-oracle",
+  "name": "Possessed Oracle",
+  "classId": "oracle",
+  "summary": "Some oracles are possessed by spirits, demons, or similar beings.",
+  "replacesText": "Oracle’s Curse; Mystery Bonus Spells; 1st-level Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-curse-1",
+        "oracle-mystery-1",
+        "oracle-revelation-1"
+      ],
+      "features": [
+        {
+          "id": "oracle-possessed-oracle-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Any."
+        },
+        {
+          "id": "oracle-possessed-oracle-oracle-s-curse-1",
+          "name": "Oracle’s Curse",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A possessed oracle must choose the haunted or tongues curse at 1st level."
+        },
+        {
+          "id": "oracle-possessed-oracle-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "ventriloquism (1st), spider climb (4th), screech (6th), sleepwalk (8th), telekinesis (10th), animate objects (12th), divine vessel (16th). These bonus spells replace the oracle’s normal mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-possessed-oracle-revelations-1",
+          "name": "Revelations",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A possessed oracle must take the following revelation at 1st level. Two Minds (Su) : You gain a +2 bonus on Will saves against enchantment spells or effects. At 7th level, you may reroll a failed Will save once per day as an immediate action. You must take the second result, even if it is worse."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Possessed%20Oracle"
+  }
+}

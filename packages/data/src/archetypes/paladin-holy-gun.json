@@ -1,0 +1,65 @@
+{
+  "id": "paladin-holy-gun",
+  "name": "Holy Gun",
+  "classId": "paladin",
+  "summary": "Not all paladins are knights in shining armor. Holy guns roam the world searching for evil. And where they find it, they put it down.",
+  "replacesText": "Weapon/Armor Proficiency; Detect Evil; Smite Evil; Divine Bond",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-detect-evil-1",
+        "paladin-smite-evil-1",
+        "paladin-divine-bond-5"
+      ],
+      "features": [
+        {
+          "id": "paladin-holy-gun-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Holy guns are proficient with all simple and martial weapons, firearms, and light armor."
+        },
+        {
+          "id": "paladin-holy-gun-have-gun-1",
+          "name": "Have Gun",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the holy gun gains the Amateur Gunslinger feat and Gunsmithing as a bonus feat. She also gains a battered gun identical to the one gained by the gunslinger. This ability replaces detect evil."
+        },
+        {
+          "id": "paladin-holy-gun-divine-deed-2",
+          "name": "Divine Deed",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the holy gun gains the following deed. This deed works and interacts with grit the same way as gunslinger deeds, but only the holy gun can use it. If the holy gun also has levels in gunslinger, she can spend grit points from that class to use this deed. Smiting Shot (Su) : A holy gun can spend 1 grit point to make a smiting shot with a firearm attack as a standard action. If the target is evil, the holy gun adds her Charisma bonus and her paladin level to the damage of the firearm attack. If the target of the smiting shot is an outsider with the evil subtype, an evil-aligned dragon, or an undead creature, the bonus to damage increases to the Charisma modifier plus 2 points of damage per level the paladin possess. Regardless of the target, smiting shot automatically bypasses any DR the creature might have. This ability replaces smite evil."
+        },
+        {
+          "id": "paladin-holy-gun-divine-bond-5",
+          "name": "Divine Bond",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a holy gun forms a bond with her deity. This functions as the paladin’s divine bond ability, except the bond must always take the form of a firearm. In addition to the listed abilities, a holy gun can add the distance , reliable , or seeking special abilities to her weapon, but she cannot add the defending or disruption special abilities. This ability replaces the standard paladin’s divine bond."
+        },
+        {
+          "id": "paladin-holy-gun-holy-grit-ex-11",
+          "name": "Holy Grit (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a holy gun gains a number of grit points equal to her Charisma modifier (minimum 1) and gains the use of a single gunslinger deed. She can select any deed that a gunslinger of her paladin level –4 could use. At 14th level, and every three levels beyond 14th, the holy gun gains another point of grit and another gunslinger deed that a gunslinger of her level –4 could use. If she already has levels in gunslinger, she gains a bonus to the maximum amount of grit she can have each day, equal to her Charisma bonus (if any) but gains no extra grit as the start of each day."
+        },
+        {
+          "id": "paladin-holy-gun-holy-slinger-ex-1",
+          "name": "Holy Slinger (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "This ability function like the holy champion paladin class feature, but the banishment occurs when she hits an evil outsider with the smiting shot deed."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Gun"
+  }
+}

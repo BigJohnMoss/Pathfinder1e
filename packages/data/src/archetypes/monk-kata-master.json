@@ -1,0 +1,63 @@
+{
+  "id": "monk-kata-master",
+  "name": "Kata Master",
+  "classId": "monk",
+  "summary": "The kata master takes the visual aspect of his martial art to its logical extreme, harnessing her flowing movements and skilled maneuvers as a psychological weapon against her enemies.",
+  "replacesText": "Stunning Fist; Still Mind; Ki Pool; Wholeness of Body; Quivering Palm",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-stunning-fist-1",
+        "monk-still-mind-3",
+        "monk-ki-pool-4",
+        "monk-ki-pool-7",
+        "monk-ki-pool-10",
+        "monk-ki-pool-16",
+        "monk-wholeness-of-body-7",
+        "monk-quivering-palm-15"
+      ],
+      "features": [
+        {
+          "id": "monk-kata-master-panache-1",
+          "name": "Panache",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a kata master gains the swashbuckler’s panache class ability. At the start of each day, a kata master gains a number of panache points equal to her Charisma bonus (minimum 1). Her panache goes up or down throughout the day, but usually cannot go higher than his Charisma bonus (minimum 1). A kata master gains the swashbuckler’s derring-do and dodging panache deeds. A kata master can use an unarmed strike or monk special weapon in place of a light or one-handed piercing melee weapon for granted swashbuckler class features and deeds. This ability replaces stunning fist."
+        },
+        {
+          "id": "monk-kata-master-menacing-swordplay-ex-3",
+          "name": "Menacing Swordplay (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a kata master gains the swashbuckler’s menacing swordplay deed. This ability replaces still mind."
+        },
+        {
+          "id": "monk-kata-master-ki-pool-su-4",
+          "name": "Ki Pool (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a kata master can treat ki points as panache points for any swashbuckler deed gained through this archetype. This ability modifies ki pool."
+        },
+        {
+          "id": "monk-kata-master-targeted-strike-ex-7",
+          "name": "Targeted Strike (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a kata master gains the swashbuckler’s targeted strike deed. This ability replaces wholeness of body."
+        },
+        {
+          "id": "monk-kata-master-dizzying-defense-ex-15",
+          "name": "Dizzying Defense (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a kata master gains the dizzying defense swashbuckler deed. This ability replaces quivering palm."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Kata%20Master"
+  }
+}

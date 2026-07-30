@@ -7,7 +7,8 @@
   "replacements": [
     {
       "featureIds": [
-        "arcanist-spellcasting-1"
+        "arcanist-spellcasting-1",
+        "consume-spells-1"
       ],
       "features": [
         {

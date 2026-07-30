@@ -1,0 +1,50 @@
+{
+  "id": "rogue-cat-burglar",
+  "name": "Cat Burglar",
+  "classId": "rogue",
+  "summary": "(Catfolk Only) Cat burglars are masters of breaking and entering, using their feline grace to make it seem as though no crime was ever committed in the first place.",
+  "replacesText": "Uncanny Dodge; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-cat-burglar-phantom-presence-ex-4",
+          "name": "Phantom Presence (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a cat burglar masters stealthy movement and leaves no trace of her passing in dungeons and cities. While in dungeon and urban environments, she leaves no trail and cannot be tracked, though she can choose to leave behind a trail if she so desires. Furthermore, she can always choose to take 10 when making a Stealth check. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-cat-burglar-trap-saboteur-su-8",
+          "name": "Trap Saboteur (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a cat burglar becomes a master of avoiding and manipulating traps and locks. She can attempt to open a lock as a standard action and takes 1/2 the normal amount of time to disable traps (minimum 1 round) . When she has bypassed a trap without disarming it, she can also choose to suppress its trigger for up to 1 minute. If she does, she can also choose to end this suppression prematurely as a free action. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "rogue-cat-burglar-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the cat burglar archetype: fast stealth, quick disable ; convincing fakes, dodge trap ; fast picks terrain mastery ."
+        },
+        {
+          "id": "rogue-cat-burglar-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the cat burglar archetype: another day, fast tumble hide in plain sight ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Cat%20Burglar"
+  }
+}

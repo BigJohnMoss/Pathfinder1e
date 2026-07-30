@@ -1,0 +1,41 @@
+{
+  "id": "bard-sound-striker",
+  "name": "Sound Striker",
+  "classId": "bard",
+  "summary": "They say that words can cut deeper than any blade, and the sound striker proves this true.",
+  "replacesText": "Inspire Competence; Suggestion",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-inspire-competence-3",
+        "bard-inspire-competence-7",
+        "bard-inspire-competence-11",
+        "bard-inspire-competence-15",
+        "bard-inspire-competence-19",
+        "bard-suggestion-6",
+        "bard-mass-suggestion-18"
+      ],
+      "features": [
+        {
+          "id": "bard-sound-striker-errata-1",
+          "name": "Errata",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Link They say that words can cut deeper than any blade, and the sound striker proves this true. Using music and words as a weapon, he can focus his performances into a deadly delivery."
+        },
+        {
+          "id": "bard-sound-striker-bardic-performance-3",
+          "name": "Bardic Performance",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A sound striker gains the following type of bardic performance. Neither performance can be performed more quickly than a standard action. Wordstrike (Su) : At 3rd level, the sound striker bard can spend 1 round of bardic performance as a standard action to direct a burst of sonically charged words at a creature or object. This performance deals 1d4 points of damage plus the bard’s level to an object, or half this damage to a living creature. This performance replaces inspire competence. Weird Words (Su) : At 6th level the bard can start a performance that is always a standard action to speak up to one word per 4 bard levels laden with sonic energy. Each word deals 4d6 points of sonic damage as a ranged touch attack with a range of 30 feet. The bard adds his charisma modifier on damage rolls with weird words. Multiple words that strike the same target stack into a single powerful attack, applying energy resistance and bonuses on damage rolls only once. The bard can target all words at the same or different targets, but he unleashes all words simultaneously. Each word costs 1 round of bardic performance. This performance replaces suggestion ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Sound%20Striker"
+  }
+}

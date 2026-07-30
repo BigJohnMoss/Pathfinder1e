@@ -1,0 +1,49 @@
+{
+  "id": "ranger-trapper",
+  "name": "Trapper",
+  "classId": "ranger",
+  "summary": "A trapper is a ranger who focuses exclusively on traps, rather than learning conventional magic.",
+  "replacesText": "Spells",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-spellcasting-4"
+      ],
+      "features": [
+        {
+          "id": "ranger-trapper-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A trapper adds Disable Device to her list of class skills in addition to the normal ranger class skills."
+        },
+        {
+          "id": "ranger-trapper-trapfinding-1",
+          "name": "Trapfinding",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A trapper adds 1/2 her ranger level on Perception skill checks made to locate traps and on Disable Device skill checks (minimum +1). A trapper can use Disable Device to disarm magic traps."
+        },
+        {
+          "id": "ranger-trapper-trap-5",
+          "name": "Trap",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a trapper learns how to create a snare trap and one other ranger trap of her choice. At 7th level and every two levels thereafter, she learns another trap. The trapper can use these traps a total number of times per day equal to 1/2 her ranger level + her Wisdom modifier. Once a trap is learned, it can’t be unlearned and replaced with a different type of trap. The trapper cannot select an individual trap more than once. This ability replaces the ranger’s spells class feature. Trappers do not gain any spells or spellcasting ability, do not have a caster level, and cannot use spell trigger and spell completion magic items."
+        },
+        {
+          "id": "ranger-trapper-launch-trap-10",
+          "name": "Launch Trap",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a trapper can affix a magical ranger trap to an arrow, crossbow bolt, or thrown weapon, allowing her to set the trap remotely or use it as a direct attack. Attaching the trap to the projectile is part of the full-round action of creating a new trap. The trapped projectile is fired or thrown in the normal manner. If fired at a square, the trap is treated as if the ranger had set the trap in that square, except the DC is 5 lower than normal. If fired at a creature, the target takes damage from the ranged weapon and is treated as if it had triggered the trap (saving throw applies, if any). The attack has a maximum range of 60 feet, and range increments apply to the attack roll. The duration of the trapped projectile starts from when it is created, not from when it is used."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Trapper"
+  }
+}

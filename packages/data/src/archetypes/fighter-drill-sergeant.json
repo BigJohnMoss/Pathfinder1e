@@ -1,0 +1,64 @@
+{
+  "id": "fighter-drill-sergeant",
+  "name": "Drill Sergeant",
+  "classId": "fighter",
+  "summary": "Drill sergeants excel at training other combatants in fighting techniques.",
+  "replacesText": "Bravery; Weapon Training 1-4",
+  "replacements": [
+    {
+      "featureIds": [
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17"
+      ],
+      "features": [
+        {
+          "id": "fighter-drill-sergeant-tactician-ex-2",
+          "name": "Tactician (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a drill sergeant gains the cavalier’s tactician class feature, treating his fighter level as his cavalier level for the purposes of this ability. This ability replaces bravery."
+        },
+        {
+          "id": "fighter-drill-sergeant-weapon-training-ex-5",
+          "name": "Weapon Training (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a drill sergeant gains weapon training with one group of weapons. He doesn’t gain weapon training with other groups at later levels, though his weapon training bonus improves by 1 for every 4 levels after 5th level. This ability modifies weapon training 1."
+        },
+        {
+          "id": "fighter-drill-sergeant-greater-tactician-ex-9",
+          "name": "Greater Tactician (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, the drill sergeant gains the cavalier’s greater tactician class feature. This ability replaces weapon training 2."
+        },
+        {
+          "id": "fighter-drill-sergeant-weapon-trainer-ex-13",
+          "name": "Weapon Trainer (Ex)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, when a drill sergeant wields a weapon he has weapon training in, all allies within 30 feet who can see and hear the drill sergeant gain half his weapon training bonus when they wield any weapon from the same weapon group. This bonus doesn’t stack with any weapon training bonus an ally already possesses. This ability replaces weapon training 3."
+        },
+        {
+          "id": "fighter-drill-sergeant-master-tactician-ex-17",
+          "name": "Master Tactician (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, the drill sergeant gains the cavalier’s master tactician class feature. This ability replaces weapon training 4."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Drill%20Sergeant"
+  }
+}

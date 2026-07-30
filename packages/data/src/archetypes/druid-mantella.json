@@ -1,0 +1,45 @@
+{
+  "id": "druid-mantella",
+  "name": "Mantella",
+  "classId": "druid",
+  "summary": "(Grippli) A mantella focuses on exploring her poisonous heritage, whether or not it has manifested in her own personal biology.",
+  "replacesText": "Wild Shape; Venom Immunity; Spontaneous Casting",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-wild-shape-4",
+        "druid-wild-shape-6",
+        "druid-wild-shape-8",
+        "druid-wild-shape-10",
+        "druid-wild-shape-12",
+        "druid-wild-shape-14",
+        "druid-wild-shape-16",
+        "druid-wild-shape-18",
+        "druid-wild-shape-20",
+        "druid-venom-immunity-9",
+        "druid-spontaneous-casting-1"
+      ],
+      "features": [
+        {
+          "id": "druid-mantella-poison-affinity-su-4",
+          "name": "Poison Affinity (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, if a form the mantella assumes with wild shape has any poison abilities, the mantella also gains those abilities. However, the mantilla can never use wild shape to take the form of an elemental. This alters wild shape."
+        },
+        {
+          "id": "druid-mantella-toxic-diet-ex-6",
+          "name": "Toxic Diet (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, both the mantella and her animal companion gain immunity to poison. Additionally, as an immediate action when exposed to a dose of poison, a mantella can absorb the toxin and store it internally for up to 1 day. As a swift action, a mantella can secrete this poison; this changes the poison’s type to injury and applies the dose of poison to all of the druid’s natural attacks. A mantella can use this ability three times per day, plus one additional time per day at 8th level and every 2 druid levels thereafter. This alters venom immunity and replaces spontaneous casting."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Mantella"
+  }
+}

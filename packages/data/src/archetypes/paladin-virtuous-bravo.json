@@ -1,0 +1,77 @@
+{
+  "id": "paladin-virtuous-bravo",
+  "name": "Virtuous Bravo",
+  "classId": "paladin",
+  "summary": "Virtuous bravos rely on their wit and grace rather than might and strong armor.",
+  "replacesText": "Armor Proficiency; Smite Evil; Mercy; Spellcasting",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-smite-evil-1",
+        "paladin-mercy-3",
+        "paladin-mercy-6",
+        "paladin-mercy-9",
+        "paladin-mercy-12",
+        "paladin-mercy-15",
+        "paladin-mercy-18",
+        "paladin-spellcasting-4"
+      ],
+      "features": [
+        {
+          "id": "paladin-virtuous-bravo-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Virtuous bravos aren’t proficient with heavy armor or shields (except for bucklers). This ability alters the paladin’s armor proficiency."
+        },
+        {
+          "id": "paladin-virtuous-bravo-bravo-s-finesse-ex-1",
+          "name": "Bravo’s Finesse (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A virtuous bravo can use her Dexterity modifier instead of her Strength modifier on attack rolls with light or one-handed piercing melee weapons (though if she carries a shield, she applies its armor check penalty to such attack rolls), and she can use her Charisma score in place of her Intelligence score to meet prerequisites of combat feats. This ability counts as having the Weapon Finesse feat for the purpose of meeting feat prerequisites."
+        },
+        {
+          "id": "paladin-virtuous-bravo-bravo-s-smite-su-1",
+          "name": "Bravo’s Smite (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When using smite evil, a virtuous bravo doesn’t gain a deflection bonus to AC. This ability alters smite evil."
+        },
+        {
+          "id": "paladin-virtuous-bravo-nimble-ex-3",
+          "name": "Nimble (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a virtuous bravo gains a +1 dodge bonus to AC while wearing light armor or no armor. Anything that causes the virtuous bravo to lose her Dexterity bonus to AC also causes her to lose this dodge bonus. This bonus increases by 1 for every 4 paladin levels beyond 3rd (to a maximum of +5 at 19th level). This ability replaces mercy."
+        },
+        {
+          "id": "paladin-virtuous-bravo-panache-and-deeds-ex-4",
+          "name": "Panache and Deeds (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a virtuous bravo gains the swashbuckler’s panache class feature along with the following swashbuckler deeds: dodging panache, menacing swordplay, opportune parry and riposte, precise strike, and swashbuckler initiative. The virtuous bravo’s paladin levels stack with any swashbuckler levels when using these deeds. This ability replaces the paladin’s spellcasting."
+        },
+        {
+          "id": "paladin-virtuous-bravo-advanced-deeds-ex-11",
+          "name": "Advanced Deeds (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a virtuous bravo gains the following swashbuckler deeds: bleeding wound, evasive, subtle blade, superior feint, swashbuckler’s grace, and targeted strike. This ability replaces aura of justice."
+        },
+        {
+          "id": "paladin-virtuous-bravo-bravo-s-holy-strike-su-20",
+          "name": "Bravo’s Holy Strike (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a virtuous bravo becomes a master at dispensing holy justice with her blade. When the virtuous bravo confirms a critical hit with a light or one-handed piercing melee weapon, she can choose one of the following three effects in addition to dealing damage: the target is rendered unconscious for 1d4 hours, the target is paralyzed for 2d6 rounds, or the target is slain. Regardless of the effect chosen, the target can attempt a Fortitude save. On a success, the target is instead stunned for 1 round (it still takes damage). The DC of this save is equal to 10 + 1/2 the virtuous bravo’s paladin level + her Charisma modifier. Once a creature has been the target of a bravo’s holy strike, regardless of whether or not it succeeds at the save, that creature is immune to that bravo’s holy strike for 24 hours. Creatures that are immune to critical hits are also immune to this ability. This ability replaces holy champion."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Virtuous%20Bravo"
+  }
+}

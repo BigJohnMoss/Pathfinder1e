@@ -1,0 +1,61 @@
+{
+  "id": "wizard-elder-mythos-scholar",
+  "name": "Elder Mythos Scholar",
+  "classId": "wizard",
+  "summary": "Elder Mythos scholars risk their sanity to seek knowledge of alien and awful entities from beyond the stars.",
+  "replacesText": "Arcane Bond; 1st, 8th-level Arcane School Ability; Spellbook; Scribe Scroll; 5th, 10th-level Bonus feats",
+  "replacements": [
+    {
+      "featureIds": [
+        "wizard-arcane-bond-1",
+        "wizard-arcane-school-1",
+        "wizard-spellbook-1",
+        "scribe-scroll-1",
+        "wizard-bonus-feat-5",
+        "wizard-bonus-feat-10"
+      ],
+      "features": [
+        {
+          "id": "wizard-elder-mythos-scholar-arcane-bond-1",
+          "name": "Arcane Bond",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An Elder Mythos scholar must choose to bond with an object, inscribing that object with eldritch runes. This alters arcane bond."
+        },
+        {
+          "id": "wizard-elder-mythos-scholar-eldritch-knowledge-su-1",
+          "name": "Eldritch Knowledge (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An Elder Mythos scholar gains two fewer daily uses of his 1st-level arcane school ability, which is normally used a number of times per day equal to 3 + his Intelligence modifier. If he has no such ability, he can’t take this archetype. When an Elder Mythos scholar attempts a Will save against confusion, fear, insanity, or madness (see page 12), whether magical or mundane, he can spend 2 daily uses of that arcane school ability to apply his Intelligence modifier instead of his Wisdom modifier to the save. However, whenever he uses this ability, he is affected by a nightmare the next time he sleeps, with no saving throw. Until he sleeps and experiences the nightmare, he can’t recover the spent uses of the arcane school ability by any means. This ability alters the 1st-level arcane school ability."
+        },
+        {
+          "id": "wizard-elder-mythos-scholar-eldritch-grimoire-1",
+          "name": "Eldritch Grimoire",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An Elder Mythos scholar keeps copious notes on how to use magic against the servants of the Elder Mythos in his spellbook. Every spell he adds to his spellbook takes up an additional 1d6 pages and costs twice the normal amount to inscribe; however, when casting spells prepared from his grimoire, he gains a +2 bonus on caster level checks and increases the save DCs by 1 against the creatures listed in talisman of revealing below. This ability alters spellbook."
+        },
+        {
+          "id": "wizard-elder-mythos-scholar-talisman-of-revealing-5",
+          "name": "Talisman of Revealing",
+          "level": 5,
+          "type": "archetype",
+          "summary": "While wearing or wielding his bonded item, an Elder Mythos scholar can spontaneously cast a special detect aberration APG spell by sacrificing a prepared 1st-level spell. Instead of detecting aberrations, this spell detects creatures associated with the Elder Mythos, such as the following (or similar creatures, at the GM’s discretion): bhole B4 , colour out of space B4 , deep one B5 , deep one elder B5 , denizen of Leng B2 , elder thing B4 , flying polyp B4 , gug B2 , hound of Tindalos B2 , Leng ghoul B5 , Leng spider B2 , mi-go B4 , nightgaunt B4 , ratling B4 , shantak B2 , shoggoth, spawn of Yog-Sothoth B4 , star-spawn of Cthulhu B4 , voonith B3 , wendigo B2 , and yithian B3 . He gains a +2 circumstance bonus on Knowledge checks to identify such creatures and Spellcraft checks to identify effects they create. At 5th level, an Elder Mythos scholar adds invisibility purge and see invisibility to his spellbook and can spontaneously cast either spell by sacrificing a prepared spell of the same or higher level while wearing or wielding his bonded item. At 10th level, he adds banish seemingAPG and true seeing to his spellbook as 5th-level spells and can spontaneously cast them in the same fashion. This replaces Scribe Scroll and the 5th- and 10th-level bonus feats."
+        },
+        {
+          "id": "wizard-elder-mythos-scholar-eldritch-infusion-su-8",
+          "name": "Eldritch Infusion (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, once each day while preparing spells, an Elder Mythos scholar can spend 1 extra hour to brew a tincture of hallucinogens and alien trace minerals. Though it has no effect for others, if he drinks it, the elixir expands his mind and perceptions into transitive dimensions, granting him a +4 alchemical bonus to his Intelligence score and reducing his Wisdom and Constitution scores by 2 for 10 minutes per wizard level he has. While under the effects of this elixir, he adds 1/2 his class level to his Perception checks against aberrations and creatures listed in talisman of revealing, but subtracts the same amount from all other Perception checks. His spells have a 20% failure chance, unless they summon, call, or contact a creature listed in talisman of revealing or otherwise affect only such creatures (for instance, a fireball aimed at 3 gugs but not a fireball aimed at 3 gugs and a gnome). This ability replaces the school ability gained at 8th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Elder%20Mythos%20Scholar"
+  }
+}

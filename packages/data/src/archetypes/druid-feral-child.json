@@ -1,0 +1,105 @@
+{
+  "id": "druid-feral-child",
+  "name": "Feral Child",
+  "classId": "druid",
+  "summary": "(Human Only) Some youths, abandoned in the wilderness and then raised by animals, are so connected with their adoptive home and family that they become feral.",
+  "replacesText": "Weapon/Armor Proficiency; Class Skills; Nature Bond; Trackless Step; A Thousand Faces; Wild Shape; Resist Nature’s Lure; Venom Immunity; Timeless Body",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-nature-bond-1",
+        "druid-trackless-step-3",
+        "druid-thousand-faces-13",
+        "druid-wild-shape-4",
+        "druid-wild-shape-6",
+        "druid-wild-shape-8",
+        "druid-wild-shape-10",
+        "druid-wild-shape-12",
+        "druid-wild-shape-14",
+        "druid-wild-shape-16",
+        "druid-wild-shape-18",
+        "druid-wild-shape-20",
+        "druid-resist-natures-lure-4",
+        "druid-venom-immunity-9",
+        "druid-timeless-body-15"
+      ],
+      "features": [
+        {
+          "id": "druid-feral-child-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A feral child loses proficiency with the scimitar, scythe, and sickle and with shields."
+        },
+        {
+          "id": "druid-feral-child-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A feral child adds Acrobatics to her list of class skills and removes Fly and Profession from her list of class skills."
+        },
+        {
+          "id": "druid-feral-child-illiteracy-1",
+          "name": "Illiteracy",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a feral child is unable to read and write, though she may learn by taking 1 rank of Linguistics. She does not gain Druidic as a free language and cannot select Sylvan as a bonus language."
+        },
+        {
+          "id": "druid-feral-child-improved-unarmed-strike-1",
+          "name": "Improved Unarmed Strike",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a feral child gains Improved Unarmed Strike as a bonus feat."
+        },
+        {
+          "id": "druid-feral-child-beast-family-ex-1",
+          "name": "Beast Family (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a feral child may choose one specific type of animal as the type that raised her. She gains a +2 circumstance bonus on Handle Animal and wild empathy checks with animals of that type, and she can communicate with them as if using a continual speak with animals spell-like ability, but this ability is nonmagical."
+        },
+        {
+          "id": "druid-feral-child-nature-bond-ex-1",
+          "name": "Nature Bond (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a feral child must select an animal companion as her nature bond."
+        },
+        {
+          "id": "druid-feral-child-favored-terrain-ex-3",
+          "name": "Favored Terrain (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a feral child gains the favored terrain ability as a ranger of her class level. A feral child may not choose urban as a favored terrain. This ability replaces trackless step and a thousand faces."
+        },
+        {
+          "id": "druid-feral-child-native-cunning-ex-3",
+          "name": "Native Cunning (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a feral child gains trap sense as a barbarian of equal level, and in her favored terrain, she immediately receives a Perception check to notice traps within 10 feet, as the trap spotter rogue talent. In addition, at 3rd level and every three levels thereafter, she may choose one combat maneuver, and gains a bonus equal to her trap sense bonus to her CMD against that maneuver. This ability replaces wild shape."
+        },
+        {
+          "id": "druid-feral-child-native-fortitude-ex-4",
+          "name": "Native Fortitude (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a feral child gains a +1 bonus on saving throws against disease, exhaustion, fatigue, fear, and poison. When she is in her favored terrain, she instead applies her favored terrain bonus on such saving throws. She also recovers from ability damage, exhaustion, and fatigue at twice the normal rate. This ability replaces resist nature’s lure."
+        },
+        {
+          "id": "druid-feral-child-native-call-su-9",
+          "name": "Native Call (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, when in her favored terrain, for any summon nature’s ally spells a feral child uses to summon animals that are native to that terrain, she treats the duration of the spell as if she were 2 levels higher. At 17th level, when the feral child uses summon nature’s ally spells to summon such animals, those animals gain a +2 bonus to both their Strength and Constitution ability scores. This stacks with the effects of the Augmented Summoning feat. This ability replaces venom immunity and timeless body."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feral%20Child"
+  }
+}

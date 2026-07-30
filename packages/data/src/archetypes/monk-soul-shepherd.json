@@ -1,0 +1,53 @@
+{
+  "id": "monk-soul-shepherd",
+  "name": "Soul Shepherd",
+  "classId": "monk",
+  "summary": "Whether studying at the feet of psychopomps or merely imitating the creatures' philosophy and methods, soul shepherds believe in safeguarding the Cycle of Souls.",
+  "replacesText": "Stunning Fist; Evasion; Improved Evasion; Abundant Step; Quivering Palm",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-stunning-fist-1",
+        "monk-evasion-2",
+        "monk-improved-evasion-9",
+        "monk-abundant-step-12",
+        "monk-quivering-palm-15"
+      ],
+      "features": [
+        {
+          "id": "monk-soul-shepherd-calming-strike-su-1",
+          "name": "Calming Strike (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "As an immediate action after hitting an incorporeal undead creature with an unarmed strike, a soul shepherd can attempt to calm the creature, encouraging it to move peacefully to the next stage of its metaphysical journey. The target must succeed at a Will save (DC = 10 + half soul shepherd's level + the soul shepherd's Wisdom modifier) or be calmed, as calm spirit , for 1 minute. The soul shepherd can use this ability against a haunt by making a touch attack against an AC of 10 + the haunt's CR. A haunt does not receive a saving throw against this ability, but the ability's duration changes to concentration + 1 round, up to 1 round per level. A soul shepherd can use this ability a number of times per day equal to his soul shepherd level. This replaces stunning fist."
+        },
+        {
+          "id": "monk-soul-shepherd-otherworldly-resilience-ex-2",
+          "name": "Otherworldly Resilience (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a soul shepherd gains DR 2/adamantine, cold resistance 5, and electricity resistance 5. At 9th level, this improves to DR 5/adamantine, cold resistance 10, and electricity resistance 10. This replaces evasion and improved evasion."
+        },
+        {
+          "id": "monk-soul-shepherd-spirit-sense-su-12",
+          "name": "Spirit Sense (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a soul shepherd can spend 1 point from his ki pool as a swift action to grant himself the ability to notice, locate, and distinguish between living and undead creatures within 30 feet, just as if he had a psychopomp's spiritsense ability for a number of rounds equal to his Wisdom modifier (minimum 1). This replaces abundant step."
+        },
+        {
+          "id": "monk-soul-shepherd-yamaraj-s-judgment-sp-15",
+          "name": "Yamaraj's Judgment (Sp)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a soul shepherd can spend 1 point from his ki pool as a standard action to attempt to free an enslaved soul from an effect that is imprisoning it, such as soul bind or trap the soul . This functions as a targeted dispel magic spell with a caster level equal to the soul shepherd's level. He can spend an additional ki point when he activates this ability to gain a +4 bonus on the caster level check. If the soul is held prisoner by a creature or a non-spell effect, the soul shepherd frees it if his caster level check result is at least 11 + the creature or effect's CR. This replaces quivering palm."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Soul%20Shepherd"
+  }
+}

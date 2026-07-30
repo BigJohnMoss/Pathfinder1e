@@ -1,0 +1,51 @@
+{
+  "id": "oracle-stargazer",
+  "name": "Stargazer",
+  "classId": "oracle",
+  "summary": "Some oracles seek meaning in the pattern of the stars across the night sky, the trails of comets, and the eternal orbits of the planets.",
+  "replacesText": "Mystery Bonus Spells; 1st-level Revelation; 7th-level Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-mystery-1",
+        "oracle-revelation-1",
+        "oracle-revelation-7"
+      ],
+      "features": [
+        {
+          "id": "oracle-stargazer-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "dark tapestry, heavens, lore, nature, time."
+        },
+        {
+          "id": "oracle-stargazer-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A stargazer adds Knowledge (nature), Perception, and Survival to her list of class skills. These replace the additional class skills from her mystery."
+        },
+        {
+          "id": "oracle-stargazer-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "faerie fire (2nd), glitterdust (4th), guiding star (6th), wandering star motes (8th), meteor swarm (18th). These bonus spells replace the oracle’s mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-stargazer-revelations-1",
+          "name": "Revelations",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A stargazer must take the following revelations at the listed levels. Guiding Star (Su) : As the heavens mystery revelation. You must take this revelation at 1st level. Star Chart (Ex) : As the heavens mystery revelation. You must take this revelation at 7th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Stargazer"
+  }
+}

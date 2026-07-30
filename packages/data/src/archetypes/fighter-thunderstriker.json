@@ -1,0 +1,78 @@
+{
+  "id": "fighter-thunderstriker",
+  "name": "Thunderstriker",
+  "classId": "fighter",
+  "summary": "The thunderstriker adopts an unusual fighting style, gripping a heavy weapon with both hands and switching to a defensive posture with weapon and buckler, lashing out with the shield with surprising speed and power.",
+  "replacesText": "Armor Training 1-4; Weapon Training 3-4; Armor Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "armor-mastery-19"
+      ],
+      "features": [
+        {
+          "id": "fighter-thunderstriker-strapped-shield-ex-3",
+          "name": "Strapped Shield (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a thunderstriker takes no penalty on attack rolls when using a weapon in two hands while wearing a buckler. This ability replaces armor training 1."
+        },
+        {
+          "id": "fighter-thunderstriker-hardbuckler-ex-7",
+          "name": "Hardbuckler (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a thunderstriker may make shield bash attacks with a buckler as if it were a light shield. This ability replaces armor training 2."
+        },
+        {
+          "id": "fighter-thunderstriker-knockback-smash-ex-11",
+          "name": "Knockback Smash (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, when a thunderstriker uses his buckler to attack, he gains a bonus equal to the enhancement bonus of the buckler on both attack and damage rolls. This ability replaces armor training 3."
+        },
+        {
+          "id": "fighter-thunderstriker-hammer-and-anvil-ex-13",
+          "name": "Hammer and Anvil (Ex)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a thunderstriker suffers only half the normal penalties for two-weapon fighting when using a buckler as his off-hand weapon. This ability replaces weapon training 3."
+        },
+        {
+          "id": "fighter-thunderstriker-buckler-defense-ex-15",
+          "name": "Buckler Defense (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a thunderstriker retains partial use of his buckler even when using a weapon in both hands or in each hand (rather than losing his shield bonus until the beginning of his next turn). He gains a +1 shield bonus to AC and may apply the benefits of any feats he knows that require the use of a shield, but does not benefit from any magical properties his shield may possess. This ability replaces armor training 4."
+        },
+        {
+          "id": "fighter-thunderstriker-balanced-bashing-ex-17",
+          "name": "Balanced Bashing (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a thunderstriker no longer suffers two-weapon fighting penalties when using a buckler as his off-hand weapon. This ability replaces weapon training 4."
+        },
+        {
+          "id": "fighter-thunderstriker-improved-buckler-defense-ex-19",
+          "name": "Improved Buckler Defense (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, a thunderstriker does not forfeit his shield bonus to AC from a buckler when fighting two-handed. This ability replaces armor mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Thunderstriker"
+  }
+}

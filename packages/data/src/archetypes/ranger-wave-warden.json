@@ -1,0 +1,68 @@
+{
+  "id": "ranger-wave-warden",
+  "name": "Wave Warden",
+  "classId": "ranger",
+  "summary": "(Merfolk Only) The wave warden patrols beneath the sea, preserving the safety and secrets of merfolk communities.",
+  "replacesText": "Track; Combat Style; Favored Terrain; Woodland Stride; Swift Tracker",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-track-1",
+        "ranger-swift-tracker-8",
+        "ranger-combat-style-2",
+        "ranger-combat-style-feat-2",
+        "ranger-combat-style-feat-6",
+        "ranger-combat-style-feat-10",
+        "ranger-combat-style-feat-14",
+        "ranger-combat-style-feat-18",
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18",
+        "ranger-woodland-stride-7"
+      ],
+      "features": [
+        {
+          "id": "ranger-wave-warden-deep-sentinel-ex-1",
+          "name": "Deep Sentinel (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A wave warden adds half his level (minimum +1) on Perception checks made to notice creatures underwater. This ability replaces track."
+        },
+        {
+          "id": "ranger-wave-warden-aquatic-prowess-feat-ex-2",
+          "name": "Aquatic Prowess Feat (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level and every four levels thereafter, a wave warden selects a bonus feat that improves his prowess in aquatic environments. He can choose these feats even if he does not meet the prerequisites. Initially, he may choose from the following feats: Dodge, Mobility, Net Adept, Net and Trident, Net Maneuvering, Precise Shot, Rapid Reload, Sea Hunter, and Two-Weapon Fighting. At 6th level, he adds Improved Two-Weapon Fighting, Net Trickery, and Spring Attack to the list. At 10th level, he adds Greater Two-Weapon Fighting and Improved Precise Shot to the list. This ability otherwise functions like and replaces the standard ranger’s combat style bonus feats, including the limitations on armor worn."
+        },
+        {
+          "id": "ranger-wave-warden-favored-terrain-ex-3",
+          "name": "Favored Terrain (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a wave warden gains water as a favored terrain. At 8th level and every five levels thereafter, his bonus in aquatic terrain increases by +2. He does not gain additional favored terrains. This otherwise functions like the standard ranger’s favored terrain ability and replaces that ability."
+        },
+        {
+          "id": "ranger-wave-warden-seaborn-ex-7",
+          "name": "Seaborn (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a wave warden may move through any sort of aquatic growth (such as coral or seaweed) or across a wet surface at his normal speed and without taking damage or suffering any other impairment. Obstacles that are enchanted or magically manipulated to impede motion still affect him. This ability replaces woodland stride."
+        },
+        {
+          "id": "ranger-wave-warden-watery-summons-sp-8",
+          "name": "Watery Summons (Sp)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a wave warden can summon allies once per day as a full-round action. This functions as summon nature’s ally III , except it can only be used to summon creatures with the aquatic or water subtypes. At 11th level, this ability improves to summon nature’s ally IV , with this progression continuing every three levels thereafter. The warden’s caster level is equal to his ranger level. This ability replaces swift tracker."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Wave%20Warden"
+  }
+}

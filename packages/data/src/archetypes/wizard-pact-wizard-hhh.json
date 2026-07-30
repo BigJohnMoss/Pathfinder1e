@@ -1,0 +1,47 @@
+{
+  "id": "wizard-pact-wizard-hhh",
+  "name": "Pact Wizard (HHH)",
+  "classId": "wizard",
+  "summary": "Wizards who seek mastery of arcane power without tedious study and monotonous research.",
+  "replacesText": "Spellcasting; Scribe Scroll; 5th, 10th, 15th, and 20th level Bonus Feats",
+  "replacements": [
+    {
+      "featureIds": [
+        "wizard-spellcasting-1",
+        "scribe-scroll-1",
+        "wizard-bonus-feat-5",
+        "wizard-bonus-feat-10",
+        "wizard-bonus-feat-15",
+        "wizard-bonus-feat-20"
+      ],
+      "features": [
+        {
+          "id": "wizard-pact-wizard-hhh-effortless-magic-ex-1",
+          "name": "Effortless Magic (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Although a pact wizard still uses a spellbook to prepare his wizard spells, his close ties with his otherworldly patron allow him to do so nearly effortlessly. A pact wizard can prepare all of his spells in only 15 minutes, and his minimum preparation time is only 1 minute. This alters the wizard's spellcasting."
+        },
+        {
+          "id": "wizard-pact-wizard-hhh-patron-spells-1",
+          "name": "Patron Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a pact wizard must select a patron. This functions like the witch class ability of the same name, except the pact wizard automatically adds his patron’s spells to his spellbook instead of to his familiar. In addition, the pact wizard can expend any prepared spell that isn’t a spell prepared using the additional spell slot the wizard receives from his arcane school in order to spontaneously cast one of his patron’s spells of the same level or lower. This ability replaces Scribe Scroll."
+        },
+        {
+          "id": "wizard-pact-wizard-hhh-great-power-greater-expense-ex-5",
+          "name": "Great Power, Greater Expense (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "As a pact wizard grows in power, his choice of patron begins to affect his physical body. At 5th level, the pact wizard chooses one oracle curse, using 1/2 his character level as his effective oracle level when determining the effects of this curse. If an oracle curse would add spells to the oracle’s list of spells known, the pact wizard instead add those spells to the wizard’s spell list as well as to his spellbook. At 10th level, the pact wizard can invoke his patron’s power to roll twice and take the better result when attempting any caster level check, concentration check, initiative check, or saving throw. He can activate this ability as a free action before attempting the check, even if it isn’t his turn. He can use this ability a number of times per day equal to 3 + 1/2 his Intelligence modifier. At 15th level, when the pact wizard invokes his patron’s power to roll twice on a check, he adds his Intelligence bonus to the result as an insight bonus. When he applies metamagic feats to any spells he learned via his patron or curse, he treats that spell’s final effective level as 1 lower (to a minimum level equal to the spell’s original level). At 20th level, whenever the pact wizard invokes his patron’s power to roll twice on a check and his result is a natural 20, he automatically succeeds, regardless of whether or not a check of that type would normally allow an automatic success. This ability replaces the bonus feats a wizard gains at 5th, 10th, 15th, and 20th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Pact%20Wizard%20(HHH)"
+  }
+}

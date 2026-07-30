@@ -1,0 +1,67 @@
+{
+  "id": "fighter-warlord",
+  "name": "Warlord",
+  "classId": "fighter",
+  "summary": "Honorable, fearless experts in gun and blade, warlords eschew armor as impractical to their harsh and often desert-like environment",
+  "replacesText": "Class Skills; Weapon and Armor Proficiency; Armor Training; Armor Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "armor-mastery-19"
+      ],
+      "features": [
+        {
+          "id": "fighter-warlord-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The warlord gains Acrobatics and Knowledge (nobility) as class skills as replacements for Swim and Knowledge (dungeoneering)."
+        },
+        {
+          "id": "fighter-warlord-weapon-and-armor-proi-ciency-1",
+          "name": "Weapon and Armor Proï¬ciency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A warlord is proï¬cient with the halberd. radium pistol*, rapier, radium riï¬‚e*, longspear, longsword, shortspear, spear, Thark riï¬‚e*, trident, and whip. Warlords are not proï¬cient with armor or shields. This ability replaces the ï¬ghter’s standard Weapon and Armor Proï¬ciency class feature."
+        },
+        {
+          "id": "fighter-warlord-evasive-dueling-ex-1",
+          "name": "Evasive Dueling (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, and at every even level thereafter, warlord can add a +1 dodge bonus to his Armor Class instead of taking a bonus feat. The dodge bonus does not apply when wearing any armor, when using a shield, or when carrying a medium or heavier load. This ability modiï¬es bonus feat."
+        },
+        {
+          "id": "fighter-warlord-battle-bravado-ex-3",
+          "name": "Battle Bravado (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level. the warlord's self conï¬dence and force of will make him more difï¬cult to hit. When unarmored and unencumbered. the warlord adds his Charisma bonus(if any)to his AC and his CMD. In addition, the warlord gains a +1 dodge bonus at 7th, 11th, and 15th levels. He loses these bonuses when he wears any armor, when he carries a shield, or when he carries a medium or heavy load. This ability replaces armor training."
+        },
+        {
+          "id": "fighter-warlord-weapon-training-ex-1",
+          "name": "Weapon Training (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A warlord adds the following weapon group to those he can choose from when using weapon training. Barsoomian : Halberd, radium pistol*, rapier, radium riï¬‚e*, longspear, longsword, shortspear, spear, Thark riï¬‚e*, trident, whip."
+        },
+        {
+          "id": "fighter-warlord-sun-bronzed-skin-ex-19",
+          "name": "Sun-Bronzed Skin (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, the warlord gains DR 5/- whenever he is not wearing armor or using a shield. This ability replaces armor mastery. * Rules for radium pistols. radium riï¬‚es. and Thark riï¬‚es can be found in the Pathï¬nder Chronicles appendix featured in Pathfinder Worldscape #2 ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Warlord"
+  }
+}

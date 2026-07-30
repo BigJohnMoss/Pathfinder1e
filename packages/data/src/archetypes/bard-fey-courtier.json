@@ -1,0 +1,54 @@
+{
+  "id": "bard-fey-courtier",
+  "name": "Fey Courtier",
+  "classId": "bard",
+  "summary": "(Gathlain) Fey who associate with courts often become bards skilled at navigating the inhuman societies of the trackless wilds.",
+  "replacesText": "Dirge of Doom; Frightening Tune; Inspire Heroics; Versatile Performance: Inspire Competence",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-dirge-of-doom-8",
+        "bard-frightening-tune-14",
+        "bard-inspire-heroics-15",
+        "bard-versatile-performance-2",
+        "bard-inspire-competence-3",
+        "bard-versatile-performance-6",
+        "bard-inspire-competence-7",
+        "bard-versatile-performance-10",
+        "bard-inspire-competence-11",
+        "bard-versatile-performance-14",
+        "bard-inspire-competence-15",
+        "bard-versatile-performance-18",
+        "bard-inspire-competence-19"
+      ],
+      "features": [
+        {
+          "id": "bard-fey-courtier-bardic-performance-8",
+          "name": "Bardic Performance",
+          "level": 8,
+          "type": "archetype",
+          "summary": "The fey courtier has access to the following bardic performances. Scorn of the Wilds (Sp) : At 8th level, the fey courtier can use bardic performance to permanently mark a creature with nature's displeasure by spending 2 rounds performing while the target remains within 30 feet. The performance includes a litany of the target's misdeeds against fey and nature. Unless the target succeeds at a Will saving throw (DC = 10 + half the bard's level + his Charisma modifier), it is cursed as per nature's exile or bestow curse . At 14th level, the fey courtier's options expand to include baleful polymorph and green caress . As part of the performance, the fey courtier must define a condition under which the curse will be lifted, which must relate to making amends for the crime against fey or nature and cannot be suicidal to carry out. A creature that succeeds at its saving throw is immune to the fey courtier's scorn of the wild for 24 hours. This is a curse effect. This replaces dirge of doom and frightening tune. Stone Dance (Sp) : At 15th level, the bard's performance can move even the features of the natural world. This performance functions as animate plants (DC = 10 + half the bard's level + his Charisma modifier) except it can also animate unworked stone and water from natural bodies of water (with statistics equivalent to an appropriate plant). This replaces inspire heroics."
+        },
+        {
+          "id": "bard-fey-courtier-fey-contacts-2",
+          "name": "Fey Contacts",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, thanks to his fey contacts and knowledge of the byzantine trade customs of the fey courts, a fey courtier can treat any wilderness area with fey residents as a settlement with a certain base value and purchase limit based on his bard level for the purpose of buying and selling magic items. See here for rules on settlement base values and purchase limits. The fey courtier can also use these contacts to gather information about the residents, geography, and nearby areas with Diplomacy. This replaces versatile performance. Bard LevelBase ValuePurchase Limit 2nd50 gp500 gp 6th500 gp2,500 gp 10th2,000 gp10,000 gp 14th8,000 gp50,000 gp 18th32,000 gp200,000 gp"
+        },
+        {
+          "id": "bard-fey-courtier-summon-fey-allies-3",
+          "name": "Summon Fey Allies",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the fey courtier gains Augment Summoning as a bonus feat and can call upon natural allies who owe him favors. He adds summon nature’s ally I to his list of 1st-level bard spells known. Whenever he gains access to another spell level, he adds the next-higher summon nature’s ally spell to his list of bard spells known. The fey courtier adds the following creatures to the summon nature’s ally list: 1st— grimple (gremlin) , mite , sprite ; 2nd— atomie , fuath (gremlin) , nixie ; 3rd— leprechaun , nuglub (gremlin) , pooka ; 4th— kelpie , korred , twigjack ; 5th— lampad , lurker in light , swan maiden ; 6th— cold rider , oceanid , sangoi . This replaces inspire competence."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Fey%20Courtier"
+  }
+}

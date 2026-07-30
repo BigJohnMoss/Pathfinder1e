@@ -1,0 +1,70 @@
+{
+  "id": "oracle-enlightened-philosopher",
+  "name": "Enlightened Philosopher",
+  "classId": "oracle",
+  "summary": "The enlightened philosopher seeks enlightenment through compassion, moderation, and humility.",
+  "replacesText": "Mystery Class Skills; Mystery Bonus Spells; 7th-level Revelation; Final Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-mystery-1",
+        "oracle-revelation-7",
+        "oracle-revelation-1",
+        "oracle-revelation-3",
+        "oracle-revelation-11",
+        "oracle-revelation-15",
+        "oracle-revelation-19",
+        "oracle-final-revelation-20"
+      ],
+      "features": [
+        {
+          "id": "oracle-enlightened-philosopher-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Any lawful."
+        },
+        {
+          "id": "oracle-enlightened-philosopher-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "ancestor, fire, heavens, lore, metal, nature, stone, time, waves, wood."
+        },
+        {
+          "id": "oracle-enlightened-philosopher-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An enlightened philosopher adds Linguistics and all Knowledge skills to her list of class skills. These replace the additional class skills from her mystery."
+        },
+        {
+          "id": "oracle-enlightened-philosopher-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "owl’s wisdom (4th), water walk (6th), discern lies (8th), true seeing (10th), wind walk (12th), ethereal jaunt (14th), moment of prescience (16th), astral projection (18th). These bonus spells replace the oracle’s mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-enlightened-philosopher-revelations-7",
+          "name": "Revelations",
+          "level": 7,
+          "type": "archetype",
+          "summary": "An enlightened philosopher must take the following revelation at 7th level. Mental Acuity (Ex) : As the lore mystery revelation."
+        },
+        {
+          "id": "oracle-enlightened-philosopher-final-revelation-1",
+          "name": "Final Revelation",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Upon achieving 20th level, you achieve true enlightenment and become one with the universe. You receive a bonus on all saving throws equal to your Charisma modifier. You become immune to confusion, exhaustion, fatigue, nausea, and sickened effects. You can take 20 on all Knowledge skill checks. Should you die, you are reborn 3 days later as a living example of the summoning of your chosen philosophy (treat as the reincarnate spell). This replaces the final revelation of the oracle’s mystery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Enlightened%20Philosopher"
+  }
+}

@@ -844,13 +844,31 @@ test("explains class-specific archetype availability", async () => {
   assert.equal([...archetype.options].filter((option) => option.value).length, 15);
   assert.match(screen.getByText(/class-specific archetypes available/).textContent ?? "", /class-specific archetypes available/);
   await user.selectOptions(screen.getByLabelText("Class"), "cleric");
-  assert.equal(archetype.disabled, true);
-  assert.equal(archetype.options[0]?.textContent, "No Cleric archetypes available");
-  assert.ok(screen.getByText(/does not yet include archetypes for Cleric/));
+  assert.equal(archetype.disabled, false);
+  assert.equal([...archetype.options].filter((option) => option.value).length, 35);
+  assert.match(screen.getByText(/class-specific archetypes available/).textContent ?? "", /class-specific archetypes available/);
   await user.selectOptions(screen.getByLabelText("Class"), "ranger");
   assert.equal(archetype.disabled, false);
   assert.ok(archetype.options.length > 1);
   assert.match(screen.getByText(/class-specific archetypes available/).textContent ?? "", /class-specific archetypes available/);
+});
+
+test("exposes the complete archetype catalogue for every supported base class", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const expected = { arcanist: 15, barbarian: 41, bard: 73, cleric: 35, druid: 75, fighter: 67, monk: 56, oracle: 26, paladin: 47, ranger: 62, rogue: 78, sorcerer: 13, wizard: 35 };
+  const classSelect = screen.getByLabelText("Class");
+  const archetype = screen.getByLabelText("Archetype") as HTMLSelectElement;
+  for (const [classId, count] of Object.entries(expected)) {
+    await user.selectOptions(classSelect, classId);
+    assert.equal([...archetype.options].filter((option) => option.value).length, count, classId);
+    const first = [...archetype.options].find((option) => option.value);
+    assert.ok(first);
+    await user.selectOptions(archetype, first.value);
+    assert.equal(archetype.value, first.value);
+  }
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  assert.ok(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId);
 });
 
 test("makes Wizard selectable with prepared arcane spells and class features", async () => {

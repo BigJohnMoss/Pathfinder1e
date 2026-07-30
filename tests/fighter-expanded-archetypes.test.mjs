@@ -133,12 +133,15 @@ test("Shielded Fighter replaces all armor, weapon-training, mastery, and capston
   assert.ok(ids.includes("bravery-18"));
 });
 
-test("the generated APG Fighter archetype catalogue contains all twelve published paths", async () => {
+test("the generated Fighter archetype catalogue retains all twelve curated APG paths", async () => {
   const expected = [
     "fighter-archer", "fighter-crossbowman", "fighter-free-hand-fighter", "fighter-mobile-fighter",
     "fighter-phalanx-soldier", "fighter-polearm-master", "fighter-roughrider", "fighter-savage-warrior",
     "fighter-shielded-fighter", "fighter-two-handed-fighter", "fighter-two-weapon-warrior", "fighter-weapon-master"
   ];
   const bundle = JSON.parse(await readFile(new URL("../generated/pf1e-data.json", import.meta.url), "utf8"));
-  assert.deepEqual(bundle.archetypes.filter((archetype) => archetype.classId === "fighter").map((archetype) => archetype.id).sort(), expected.sort());
+  const fighterIds = bundle.archetypes
+    .filter((archetype) => archetype.classId === "fighter")
+    .map((archetype) => archetype.id);
+  for (const id of expected) assert.ok(fighterIds.includes(id), id);
 });

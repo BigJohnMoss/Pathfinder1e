@@ -1,0 +1,71 @@
+{
+  "id": "barbarian-mooncursed",
+  "name": "Mooncursed",
+  "classId": "barbarian",
+  "summary": "Some barbarians exhibit an unusual form of lycanthropy powered by their fury. Such a character transforms willfully but can maintain her animal or hybrid forms only while raging.",
+  "replacesText": "Race; Rage; Improved Uncanny Dodge; Greater Rage; Mighty Rage",
+  "replacements": [
+    {
+      "featureIds": [
+        "rage-1",
+        "rage-power-2",
+        "rage-power-4",
+        "rage-power-6",
+        "rage-power-8",
+        "rage-power-10",
+        "rage-power-12",
+        "rage-power-14",
+        "rage-power-16",
+        "rage-power-18",
+        "rage-power-20",
+        "greater-rage-11",
+        "tireless-rage-17",
+        "mighty-rage-20",
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5"
+      ],
+      "features": [
+        {
+          "id": "barbarian-mooncursed-race-1",
+          "name": "Race",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mooncursed must either be a humanoid or monstrous humanoid."
+        },
+        {
+          "id": "barbarian-mooncursed-shifting-rage-su-1",
+          "name": "Shifting Rage (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mooncursed can call upon an animal totem or inner curse, transforming her into a savage beast. Starting at 1st level, she chooses bear, boar, crocodile, shark, tiger, or wolf. Once chosen, this animal can’t be changed. When using rounds of her shifting rage, instead of the usual bonuses and penalties from rage, the mooncursed transforms into a Medium version of this animal’s form as if under the influence of beast shape I , treating her class level as her caster level whenever relevant. Other aspects of rage aside from the bonuses and penalties, such as the skill restrictions on skills and effects that require concentration, still apply during a shifting rage. This ability alters rage."
+        },
+        {
+          "id": "barbarian-mooncursed-hybrid-rage-su-5",
+          "name": "Hybrid Rage (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "Beginning at 5th level, a mooncursed can choose to assume a hybrid of her base type and alternate form instead of her usual alternate form during her shifting rage. If she does, the animal’s forelimbs (or pectoral fins for the shark) remain hands able to manipulate objects and wield weapons as well as human hands do, she can walk on two legs (the shark’s tail fins remain legs), and she can talk. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-mooncursed-greater-shifting-rage-su-11",
+          "name": "Greater Shifting Rage (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a mooncursed can assume larger alternate and hybrid forms. This functions like beast shape II , and it allows the mooncursed to take on a Medium or Large version of her animal’s form. This ability replaces greater rage."
+        },
+        {
+          "id": "barbarian-mooncursed-mighty-shifting-rage-su-20",
+          "name": "Mighty Shifting Rage (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a mooncursed can assume even larger alternate and hybrid forms. This functions like beast shape III , and it allows the mooncursed to take on a Medium, Large, or Huge version of her animal’s form. This ability replaces mighty rage."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Mooncursed"
+  }
+}

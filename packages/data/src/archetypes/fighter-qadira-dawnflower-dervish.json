@@ -1,0 +1,59 @@
+{
+  "id": "fighter-qadira-dawnflower-dervish",
+  "name": "Qadira: Dawnflower Dervish",
+  "classId": "fighter",
+  "summary": "Spinning warrior dervish of Sarenrae, wielding a scimitar with devastating consequences.",
+  "replacesText": "Armor Training 1-4",
+  "replacements": [
+    {
+      "featureIds": [
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15"
+      ],
+      "features": [
+        {
+          "id": "fighter-qadira-dawnflower-dervish-suggested-feats-1",
+          "name": "Suggested Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Agile Maneuvers, Combat Expertise, Dazzling Display, Dervish Dance (see World Guide: The Inner Sea ), Dodge, Mobility, Spring Attack, Step Up, Weapon Finesse, Weapon Focus (scimitar), Weapon Specialization (scimitar), Whirlwind Attack."
+        },
+        {
+          "id": "fighter-qadira-dawnflower-dervish-burst-of-speed-ex-3",
+          "name": "Burst of Speed (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a Dawnflower dervish takes only a –1 penalty to her AC after charging. At 7th level, the Dawnflower dervish can charge with no penalty. This ability replaces armor training 1."
+        },
+        {
+          "id": "fighter-qadira-dawnflower-dervish-desert-stride-ex-7",
+          "name": "Desert Stride (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a Dawnflower dervish can move through 10 feet of difficult terrain each round as if it were normal terrain. This benefit stacks with the benefits provided by the Acrobatic Steps and Nimble Moves feats. This ability replaces armor training 2."
+        },
+        {
+          "id": "fighter-qadira-dawnflower-dervish-rapid-attack-ex-11",
+          "name": "Rapid Attack (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a Dawnflower dervish can combine a full attack with a single move. She must forgo the attack at her highest bonus but may take the remaining attacks at any point during her movement. This movement provokes attacks of opportunity as normal. This ability replaces armor training 3."
+        },
+        {
+          "id": "fighter-qadira-dawnflower-dervish-lightning-strike-ex-15",
+          "name": "Lightning Strike (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, as part of a full attack, a Dawnflower dervish can make one additional attack. This attack is at the dervish’s highest base attack bonus, but each attack in the round (including the extra one) takes a –2 penalty. This ability replaces armor training 4."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Qadira%20%20Dawnflower%20Dervish"
+  }
+}

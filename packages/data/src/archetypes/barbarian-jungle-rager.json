@@ -1,0 +1,63 @@
+{
+  "id": "barbarian-jungle-rager",
+  "name": "Jungle Rager",
+  "classId": "barbarian",
+  "summary": "A jungle rager can disappear from sight, strike from hiding, and use the environment to shield herself from harm.",
+  "replacesText": "Uncanny Dodge; Trap Sense; Improved Uncanny Dodge; Damage Reduction",
+  "replacements": [
+    {
+      "featureIds": [
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5",
+        "trap-sense-3",
+        "damage-reduction-7",
+        "damage-reduction-10",
+        "damage-reduction-13",
+        "damage-reduction-16",
+        "damage-reduction-19"
+      ],
+      "features": [
+        {
+          "id": "barbarian-jungle-rager-home-ground-advantage-ex-2",
+          "name": "Home Ground Advantage (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a jungle rager learns how to make optimal use of the natural cover of her homeland. She chooses a specific terrain type from the ranger list of favored terrains. When in this terrain, she increases her bonus to AC and on Reflex saving throws gained from cover, partial cover, and improved cover (but not soft cover) by 1. In this terrain, she also increases the miss chance caused by concealment for attacks against her by 5%. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "barbarian-jungle-rager-jungle-endurance-ex-3",
+          "name": "Jungle Endurance (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a jungle rager gains a +1 bonus on Fortitude saves to resist the effects of hot weather and diseases. This bonus increases by +1 every 3 barbarian levels after 3rd. This ability replaces trap sense."
+        },
+        {
+          "id": "barbarian-jungle-rager-home-ground-supremacy-ex-5",
+          "name": "Home Ground Supremacy (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a jungle rager becomes even more capable when navigating and fighting in her preferred terrain. She gains the woodland stride ranger ability, though this ability works only in the terrain she selected for the home ground advantage ability. In this terrain, she gains an additional +1 bonus to AC when benefiting from cover or improved cover (but not soft cover). This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-jungle-rager-damage-reduction-ex-8",
+          "name": "Damage Reduction (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "A jungle rager gains this ability at 8th level, except her effective barbarian level for the ability is equal to her barbarian level – 1. In addition, this damage reduction is doubled against damage dealt by creatures with the swarm subtype. This ability otherwise functions as the barbarian ability of the same name."
+        },
+        {
+          "id": "barbarian-jungle-rager-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the jungle rager archetype: animal fury, bestial climber, hive totem, internal fortitude, low-light vision, night vision, raging climber, scent, sharpened accuracy, and surprise accuracy."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Jungle%20Rager"
+  }
+}

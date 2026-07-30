@@ -1,0 +1,52 @@
+{
+  "id": "druid-mooncaller",
+  "name": "Mooncaller",
+  "classId": "druid",
+  "summary": "A mooncaller is bound to the subtle influences of the ever-changing moon and its endless cycles from light to dark and back again.",
+  "replacesText": "Woodland Stride; Resist Nature's Lure; Venom Immunity; A Thousand Faces",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-woodland-stride-2",
+        "druid-resist-natures-lure-4",
+        "druid-venom-immunity-9",
+        "druid-thousand-faces-13"
+      ],
+      "features": [
+        {
+          "id": "druid-mooncaller-night-sight-ex-2",
+          "name": "Night Sight (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a mooncaller gains low-light vision. If she already has low-light vision, she gains darkvision with a range of 30 feet. If she already has darkvision, the range of her darkvision is increased by 30 feet. This ability replaces woodland stride."
+        },
+        {
+          "id": "druid-mooncaller-resist-call-of-the-wild-ex-4",
+          "name": "Resist Call of the Wild (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a mooncaller gains a +4 bonus on saving throws to avoid confusion, daze, feeblemind, and insanity effects. She also gains a +4 bonus against the exceptional, spell-like, and supernatural abilities of creatures with the shapechanger subtype. This ability replaces resist nature’s lure."
+        },
+        {
+          "id": "druid-mooncaller-purity-of-body-ex-9",
+          "name": "Purity of Body (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a mooncaller gains immunity to all diseases, including supernatural and magical diseases. This ability replaces venom immunity."
+        },
+        {
+          "id": "druid-mooncaller-wolfsbane-su-13",
+          "name": "Wolfsbane (Su)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a mooncaller gains DR 3/silver, increasing to DR 4/silver at 16th level and DR 5/silver at 19th level. This ability replaces a thousand faces."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Mooncaller"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "barbarian-scarred-rager",
+  "name": "Scarred Rager",
+  "classId": "barbarian",
+  "summary": "The scarred rager believes each wound tells the tales of her prowess and bravery.",
+  "replacesText": "Fast Movement; Uncanny Dodge; Trap Sense; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1",
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5",
+        "trap-sense-3"
+      ],
+      "features": [
+        {
+          "id": "barbarian-scarred-rager-terrifying-visage-ex-1",
+          "name": "Terrifying Visage (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A scarred rager adds 1/2 her barbarian level on Intimidate checks against humanoids who are not members of barbarian tribes. When dealing with barbarians, the scarred rager may choose to add this bonus on Diplomacy checks instead. The DC of any fear effect created by the scarred rager also increases by 1. This ability replaces fast movement."
+        },
+        {
+          "id": "barbarian-scarred-rager-tolerance-ex-2",
+          "name": "Tolerance (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a scarred rager who fails a save against an effect that causes her to become nauseated, sickened, fatigued, or exhausted can make a second save to negate the effect on the start of her next turn. Only one additional save is allowed. If the effect does not allow a saving throw, its duration is halved instead (minimum of 1 round). This ability replaces uncanny dodge."
+        },
+        {
+          "id": "barbarian-scarred-rager-scarification-ex-3",
+          "name": "Scarification (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a scarred rager can ignore 1 point of bleed damage per round. This amount increases by 1 every three levels beyond 3rd. At 15th level, a scarred rager can ignore 1 bleed effect each round. This ability replaces trap sense."
+        },
+        {
+          "id": "barbarian-scarred-rager-improved-tolerance-ex-5",
+          "name": "Improved Tolerance (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a scarred rager’s tolerance ability also applies to effects that would cause her to become dazed, frightened, shaken, or stunned. This replaces improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-scarred-rager-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the scarred rager archetype: auspicious mark, body bludgeon, come and get me, increased damage reduction, inspire ferocity, internal fortitude, intimidating glare, reckless abandon, regenerative vigor, renewed life, renewed vigor, renewed vitality, roused anger, and terrifying howl."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Scarred%20Rager"
+  }
+}

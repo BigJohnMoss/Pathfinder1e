@@ -1,0 +1,84 @@
+{
+  "id": "monk-sohei",
+  "name": "Sohei",
+  "classId": "monk",
+  "summary": "The sohei are masters of the horse and the hunt.",
+  "replacesText": "Weapon/Armor Proficiency; Stunning Fist; Fast Movement; Increased Unarmed Damage; Slow Fall; Abundant Step; Purity of Body; Diamond Body; Quivering Palm; Timeless Body; Tongue of Sun and Moon",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-stunning-fist-1",
+        "monk-fast-movement-3",
+        "monk-slow-fall-4",
+        "monk-abundant-step-12",
+        "monk-purity-of-body-5",
+        "monk-diamond-body-11",
+        "monk-quivering-palm-15",
+        "monk-timeless-body-17"
+      ],
+      "features": [
+        {
+          "id": "monk-sohei-skills-1",
+          "name": "Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sohei gains Handle Animal as a class skill."
+        },
+        {
+          "id": "monk-sohei-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sohei is proficient with all simple and martial weapons and with light armor, instead of a monk’s usual weapon and armor proficiencies. When wearing light armor, a sohei can still use his flurry of blows ability, but loses his AC bonus. This ability alters the monk’s weapon and armor proficiencies."
+        },
+        {
+          "id": "monk-sohei-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sohei may select mounted combat feats as bonus feats."
+        },
+        {
+          "id": "monk-sohei-devoted-guardian-ex-1",
+          "name": "Devoted Guardian (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a sohei can always act in a surprise round even if he does not notice his enemies, though he remains flat-footed until he acts. In addition, a sohei gains a bonus on initiative rolls equal to 1/2 his monk level. At 20th level, a sohei’s initiative roll is automatically a natural 20. This ability replaces stunning fist."
+        },
+        {
+          "id": "monk-sohei-unarmed-strike-4",
+          "name": "Unarmed Strike",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A sohei’s unarmed strike damage does not increase at 4th level and above."
+        },
+        {
+          "id": "monk-sohei-monastic-mount-su-4",
+          "name": "Monastic Mount (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a sohei may spend 1 point from his ki pool to grant his mount temporary hit points equal to twice his level for 1 hour per level. In addition, as long as the sohei and his mount are adjacent, including when mounted, the mount gains any of the following abilities the sohei possesses: AC bonus, diamond soul, evasion, high jump, improved evasion, ki strike (as long as the sohei has at least 1 point in his ki pool), perfect self, and still mind. When a sohei spends points from his ki pool, his mount gains the same benefits as the sohei. This ability replaces fast movement and increased unarmed damage."
+        },
+        {
+          "id": "monk-sohei-ki-weapon-su-4",
+          "name": "Ki Weapon (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, as a swift action, a sohei may spend 1 point from his ki pool to grant any weapon he wields (including his unarmed strike) a +1 enhancement bonus on attack and damage rolls, increasing by +1 per four levels after 4th to a maximum bonus of +5 at 20th level, until the end of his next turn. This ability replaces slow fall and abundant step."
+        },
+        {
+          "id": "monk-sohei-weapon-training-ex-6",
+          "name": "Weapon Training (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a sohei gains weapon training in one of the following weapon groups, as the fighter class feature: bows, crossbows, monk weapons, polearms, spears, or thrown weapons. He may select an additional group of weapons for every six levels after 6th, to a maximum of three at 18th level. A sohei may use flurry of blows and ki strike with any weapon in which he has weapon training. This ability replaces purity of body, diamond body, quivering palm, timeless body, and tongue of sun and moon."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Sohei"
+  }
+}

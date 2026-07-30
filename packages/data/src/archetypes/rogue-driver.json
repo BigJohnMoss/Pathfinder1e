@@ -1,0 +1,55 @@
+{
+  "id": "rogue-driver",
+  "name": "Driver",
+  "classId": "rogue",
+  "summary": "A driver makes her living driving vehicles in the service of those who can pay for her considerable talents.",
+  "replacesText": "Trapfinding; Trap Sense",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-driver-hard-drive-ex-1",
+          "name": "Hard Drive (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When driving a vehicle that uses a group of animals or magical beasts as muscle propulsion, the DCs of all driving checks are reduced by 2, the maximum speed of the vehicle increases by 10 feet, and the acceleration increases by 5 feet. This ability takes the place of trapfinding."
+        },
+        {
+          "id": "rogue-driver-driver-s-fortitude-ex-3",
+          "name": "Driver’s Fortitude (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the driver learns to keep driving and maintain control of her vehicle, even when mortally wounded. If the driver drops below 0 hit points but is not dead, she can attempt a DC 15 Fortitude save each round to remain conscious and in control of her vehicle, though she may take no other actions. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-driver-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the driver archetype: firearm training* and getaway artist*."
+        },
+        {
+          "id": "rogue-driver-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the driver archetype: feat and getaway master*."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Driver"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "barbarian-armored-hulk",
+  "name": "Armored Hulk",
+  "classId": "barbarian",
+  "summary": "Some barbarians disdain the hides and leather used as armor by most of their kin. Instead they master the heaviest of armors, even those created by more civilized people, to gain greater protection and stability in battle.",
+  "replacesText": "Fast Movement; Uncanny Dodge; Trap Sense; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1",
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5",
+        "trap-sense-3"
+      ],
+      "features": [
+        {
+          "id": "barbarian-armored-hulk-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An armored hulk gains proficiency in heavy armor."
+        },
+        {
+          "id": "barbarian-armored-hulk-indomitable-stance-ex-1",
+          "name": "Indomitable Stance (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An armored hulk gains a +1 bonus on combat maneuver checks and to CMD for overrun combat maneuvers, and on Reflex saves against trample attacks. She also gains a +1 bonus to her AC against charge attacks and on attack and damage rolls against charging creatures. This ability replaces fast movement."
+        },
+        {
+          "id": "barbarian-armored-hulk-armored-swiftness-ex-2",
+          "name": "Armored Swiftness (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an armored hulk moves faster in medium and heavy armor. When wearing medium or heavy armor, an armored hulk can move 5 feet faster than normal, to a maximum of her speed. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "barbarian-armored-hulk-resilience-of-steel-ex-3",
+          "name": "Resilience of Steel (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, an armored hulk is able to use her armor to help avoid deadly hits. While wearing heavy armor, she gains a +1 bonus to AC that applies only on critical hit confirmation rolls. This bonus increases by +1 every 3 levels beyond 3rd (maximum +6 at 18th level). This ability replaces trap sense."
+        },
+        {
+          "id": "barbarian-armored-hulk-improved-armored-swiftness-ex-5",
+          "name": "Improved Armored Swiftness (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, an armored hulk’s land speed is faster than the norm for her race by +10 feet. This benefit applies when she is wearing any armor, including heavy armor, but not while carrying a heavy load. Apply this bonus before modifying the armored hulk’s speed because of any load carried or armor worn. This bonus stacks with any other bonuses to the barbarian’s land speed. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-armored-hulk-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the armored hulk archetype: boasting taunt, greater guarded life, guarded life, guarded stance, increased damage reduction, no escape, overbearing advance, overbearing onslaught, reflexive dodge, rolling dodge, and unexpected strike."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Armored%20Hulk"
+  }
+}

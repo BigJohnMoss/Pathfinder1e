@@ -1,0 +1,93 @@
+{
+  "id": "fighter-foehammer",
+  "name": "Foehammer",
+  "classId": "fighter",
+  "summary": "(Dwarf Only) While the axe is the most famous dwarven weapon, the hammer is at the heart of dwarves’ heritage as forgemasters and warriors alike.",
+  "replacesText": "Armor Training 1-4; Weapon Training 2-4; Armor Mastery; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "armor-mastery-19",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-foehammer-sledgehammer-ex-3",
+          "name": "Sledgehammer (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a foehammer wielding a hammer gains a +2 circumstance bonus on combat maneuver checks made to bull rush, overrun, sunder, or trip. This ability replaces armor training 1."
+        },
+        {
+          "id": "fighter-foehammer-weapon-training-ex-5",
+          "name": "Weapon Training (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a foehammer must select hammers and does not gain weapon training with other groups, though his weapon training bonus improves by +1 every four levels after 5th."
+        },
+        {
+          "id": "fighter-foehammer-hammer-to-the-ground-ex-7",
+          "name": "Hammer to the Ground (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, when a foehammer succeeds at a bull rush combat maneuver, he can make a trip combat maneuver at the end of the bull rush. If he does not move with the target, the force of his blow may still trip his foe, but he takes a –5 penalty on the combat maneuver check to trip. At 15th level, any creature a foehammer successfully bull rushes is automatically knocked prone at the end of the bull rush. This ability replaces armor training 2 and 4."
+        },
+        {
+          "id": "fighter-foehammer-rhythmic-blows-ex-9",
+          "name": "Rhythmic Blows (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, each time that a foehammer hits a target, he gains a +1 bonus on attack rolls against that target. This bonus stacks with each hit against that target, but lasts only until the end of the foehammer’s turn. This ability replaces weapon training 2."
+        },
+        {
+          "id": "fighter-foehammer-piledriver-ex-11",
+          "name": "Piledriver (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, as a standard action, a foehammer may make a single melee attack with a weapon from the hammer weapon training group. If the attack hits, he may make a bull rush or trip combat maneuver against the target of his attack as a free action that does not provoke an attack of opportunity. This ability replaces armor training 3."
+        },
+        {
+          "id": "fighter-foehammer-ground-breaker-ex-13",
+          "name": "Ground Breaker (Ex)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, as a full-round action, a foehammer may strike the ground with his hammer. If the attack deals more damage than the floor’s hardness, the space he occupies and all adjacent squares become difficult terrain. Creatures in those squares, except for the foehammer, are knocked prone (DC 15 Reflex negates). This ability replaces weapon training 3."
+        },
+        {
+          "id": "fighter-foehammer-hammer-master-ex-17",
+          "name": "Hammer Master (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, any combat feats a foehammer has learned with any weapon from the hammer weapon training group (e.g., Improved Critical, Weapon Focus) apply to all weapons from that group. This ability replaces weapon training 4."
+        },
+        {
+          "id": "fighter-foehammer-devastating-blow-ex-19",
+          "name": "Devastating Blow (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, as a standard action, a foehammer may make a single melee attack with a weapon from the hammer weapon training group at a –5 penalty. If the attack hits, it is treated as a critical threat. Weapon special abilities that only activate on a critical hit do not activate if this critical hit is confirmed. This ability replaces armor mastery."
+        },
+        {
+          "id": "fighter-foehammer-weapon-mastery-ex-1",
+          "name": "Weapon Mastery (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A foehammer must choose a weapon from the hammer group."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Foehammer"
+  }
+}

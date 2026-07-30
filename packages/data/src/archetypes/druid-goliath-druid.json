@@ -1,0 +1,91 @@
+{
+  "id": "druid-goliath-druid",
+  "name": "Goliath Druid",
+  "classId": "druid",
+  "summary": "Goliath druids hone their spiritual and magical connections to nature’s largest creatures, especially dinosaurs, giants, and megafauna, revering these massive creatures as living relics of a primeval time when all creatures were more in harmony with nature.",
+  "replacesText": "Class Skills; Nature Sense; Nature Bond; Wild Empathy; Resist Nature’s Lure; Wild Shape; Venom Immunity; A Thousand Faces",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-nature-sense-1",
+        "druid-nature-bond-1",
+        "druid-wild-empathy-1",
+        "druid-resist-natures-lure-4",
+        "druid-wild-shape-4",
+        "druid-wild-shape-6",
+        "druid-wild-shape-8",
+        "druid-wild-shape-10",
+        "druid-wild-shape-12",
+        "druid-wild-shape-14",
+        "druid-wild-shape-16",
+        "druid-wild-shape-18",
+        "druid-wild-shape-20",
+        "druid-venom-immunity-9",
+        "druid-thousand-faces-13"
+      ],
+      "features": [
+        {
+          "id": "druid-goliath-druid-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A goliath druid gains Bluff, Diplomacy, and Knowledge (local) as class skills, but does not gain Craft, Profession, and Ride as class skills."
+        },
+        {
+          "id": "druid-goliath-druid-bonus-languages-1",
+          "name": "Bonus Languages",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A goliath druid with an Intelligence bonus can select Giant as a bonus language."
+        },
+        {
+          "id": "druid-goliath-druid-primal-size-1",
+          "name": "Primal Size",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A goliath druid adds enlarge person to her list of class spells. She can cast this spell only on herself. She can also channel stored spell energy to cast this spell without preparing it—she can lose a prepared spell of 1st level or higher to cast enlarge person . This ability replaces nature sense."
+        },
+        {
+          "id": "druid-goliath-druid-primal-bond-ex-1",
+          "name": "Primal Bond (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When a goliath druid forms a nature bond, if she selects a cleric domain, she must selected from the Animal, Destruction, or Strength domains, or the Ferocity, Growth, or Rage subdomains APG . If the goliath druid selects an animal companion, she must select a dinosaur or megafauna. If she has a dinosaur or megafauna animal companion, she can target it with enlarge person even though the companion isn’t of the humanoid type. This ability alters nature bond."
+        },
+        {
+          "id": "druid-goliath-druid-primal-empathy-ex-1",
+          "name": "Primal Empathy (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A goliath druid’s wild empathy functions only with creatures that are Large or larger. This ability alters wild empathy."
+        },
+        {
+          "id": "druid-goliath-druid-face-nature-s-might-ex-4",
+          "name": "Face Nature’s Might (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a goliath druid gains a +4 bonus on saving throws against the spell-like and supernatural abilities of giants. This ability replaces resist nature’s lure."
+        },
+        {
+          "id": "druid-goliath-druid-wild-shape-su-6",
+          "name": "Wild Shape (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "Druids’ ability to wild shape into a creature of the animal type allows a goliath druid to assume only the form of a dinosaur or megafauna. She doesn’t gain the ability to become an elemental or plant. At 6th level, the goliath druid can use wild shape to become a Large humanoid of the giant subtype. This functions as the alter self spell, except the goliath druid gains a +4 size bonus to Strength, a –2 penalty to Dexterity, and a +1 natural armor bonus. If the Large humanoid form she takes has rock throwing, she gains rock throwing (range 40 feet, 1d8 damage). If the form has the aquatic subtype, she gains the aquatic and amphibious subtypes. At 12th level, when taking the form of a giant, the goliath druid’s wild shape functions as giant form I . At 14th level, the goliath druid can also use wild shape to change into a Huge giant. When taking the form of a giant, the goliath druid’s wild shape functions as giant form II . This ability alters wild shape."
+        },
+        {
+          "id": "druid-goliath-druid-primal-summons-1",
+          "name": "Primal Summons",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A goliath druid adds the following creatures to the list of creatures she can normally summon using summon nature’s ally spells. Summon Nature’s Ally I : Compsognathus B2 . Summon Nature’s Ally II : Dimorphodon B4 . Summon Nature’s Ally III : Velociraptor B4 . Summon Nature’s Ally IV : Ogre, parasaurolophus B2 . Summon Nature’s Ally V : Glyptodon B2 , iguanodon B3 . Summon Nature’s Ally VI : Baluchitherium B3 , megalania B3 . Summon Nature’s Ally VII : Cliff giant B4 . Summon Nature’s Ally VIII : Spinosaurus B3 . Summon Nature’s Ally IX : Diplodocus B4 . This ability replaces venom immunity and a thousand faces."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Goliath%20Druid"
+  }
+}

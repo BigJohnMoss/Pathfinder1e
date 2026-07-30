@@ -1,0 +1,41 @@
+{
+  "id": "bard-dragon-yapper",
+  "name": "Dragon Yapper",
+  "classId": "bard",
+  "summary": "(Kobold Only) Kobolds’ yammering songs distract opponents in combat, hindering their ability to attack.",
+  "replacesText": "Fascinate; Dirge of Doom; Versatile Performance",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-fascinate-1",
+        "bard-dirge-of-doom-8",
+        "bard-versatile-performance-2",
+        "bard-versatile-performance-6",
+        "bard-versatile-performance-10",
+        "bard-versatile-performance-14",
+        "bard-versatile-performance-18"
+      ],
+      "features": [
+        {
+          "id": "bard-dragon-yapper-bardic-performance-5",
+          "name": "Bardic Performance",
+          "level": 5,
+          "type": "archetype",
+          "summary": "A dragon yapper gains the following types of bardic performance. Yapping Song (Su) : A dragon yapper can use performance to annoy those that hear it, causing them to take a –1 penalty on attack and damage rolls (minimum 1) and a –1 penalty on saves against fear effects and charm effects as long as the dragon yapper continues performing. This penalty increases by 1 at 5th level and every 6 levels thereafter. Yapping song is a mind-affecting ability that uses audible components, but is not language-dependent. This performance replaces fascinate. Frightful Song (Su) : A dragon yapper of 8th level or higher can amplify his voice to sound like an actual dragon. Enemies within 30 feet become shaken unless they succeed at a Will save (DC 10 +1/2 the dragon yapper’s level + the dragon yapper’s Charisma modifier). A successful save renders targets immune to this ability for 24 hours. Frightful song is a mind-affecting ability, and a fear effect that uses audible components. This performance replaces dirge of doom."
+        },
+        {
+          "id": "bard-dragon-yapper-versatile-performance-ex-2",
+          "name": "Versatile Performance (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A dragon yapper must choose sing at 2nd level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dragon%20Yapper"
+  }
+}

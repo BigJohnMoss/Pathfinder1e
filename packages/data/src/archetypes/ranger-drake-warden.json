@@ -1,0 +1,30 @@
+{
+  "id": "ranger-drake-warden",
+  "name": "Drake Warden",
+  "classId": "ranger",
+  "summary": "Some rangers specialize in dealing with rambunctious younger drakes and thanks to their methods, their drakes are both fiercely loyal and extremely useful for scouting and stealth missions.",
+  "replacesText": "Hunter's Bond; 2nd Favored Enemy; Swift Tracker",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-hunters-bond-4",
+        "ranger-track-1",
+        "ranger-swift-tracker-8"
+      ],
+      "features": [
+        {
+          "id": "ranger-drake-warden-young-drake-4",
+          "name": "Young Drake",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a drake warden gains a drake companion instead of an animal companion, but his effective charge’s level is equal to his ranger level - 3. The young drake gains drake powers only when its charge reaches 3rd and 7th levels (not 11th or 15th level) and increases in size only when its charge reaches 5th level (not 9th, 13th, or 17th level). This ability replaces hunter’s bond, 2nd favored enemy, and swift tracker."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Drake%20Warden"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "barbarian-cave-dweller",
+  "name": "Cave Dweller",
+  "classId": "barbarian",
+  "summary": "Unused to the light of the sun, cave dwellers use their subterranean expertise to protect their clans from the manifold dangers of deep caverns and tunnels.",
+  "replacesText": "Skills; Fast Movement; Trap Sense; Damage Reduction",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1",
+        "trap-sense-3",
+        "damage-reduction-7",
+        "damage-reduction-10",
+        "damage-reduction-13",
+        "damage-reduction-16",
+        "damage-reduction-19"
+      ],
+      "features": [
+        {
+          "id": "barbarian-cave-dweller-skills-1",
+          "name": "Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A cave dweller gains Stealth as a class skill in place of Ride. This alters the barbarian’s skills."
+        },
+        {
+          "id": "barbarian-cave-dweller-tight-tunnels-ex-1",
+          "name": "Tight Tunnels (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Cave dwellers pursue prey through the winding tunnels of the deep, which rarely accommodate open sprints. A cave dweller can make a single turn up to 90 degrees while running (though not while charging). Additionally, a cave dweller takes no penalties to movement speed while squeezing. This replaces fast movement."
+        },
+        {
+          "id": "barbarian-cave-dweller-tunnel-vision-ex-3",
+          "name": "Tunnel Vision (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a cave dweller’s senses become sharp in the dark. She gains darkvision to a range of 60 feet and a +1 bonus on Perception checks to detect ambushes, movement, and sound while in darkness. This bonus increases by 1 at 6th level and every 3 levels thereafter. This replaces trap sense."
+        },
+        {
+          "id": "barbarian-cave-dweller-sun-walker-ex-7",
+          "name": "Sun Walker (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a cave dweller gains a +1 dodge bonus to AC and on saving throws against effects with the light descriptor or that produce bright or sudden light. Any penalties on attack rolls, saving throws, or skill checks because of bright light are reduced by 1. At 10th level and every 3 levels after 10th, the bonus to AC and saving throws, as well as the reduction of light-based penalties, increases by 1. This replaces damage reduction."
+        },
+        {
+          "id": "barbarian-cave-dweller-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the cave dweller archetype: animal fury, bestial climber, eclipsing rage, greater eclipsing rage, greater ground breaker, ground breaker, night vision, raging climber, primal scent, and sprint."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Cave%20Dweller"
+  }
+}

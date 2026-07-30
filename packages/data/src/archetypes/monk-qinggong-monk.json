@@ -1,0 +1,51 @@
+{
+  "id": "monk-qinggong-monk",
+  "name": "Qinggong Monk",
+  "classId": "monk",
+  "summary": "The qinggong monk is a master of her ki, using it to perform superhuman stunts or even blast opponents with supernatural energy.",
+  "replacesText": "Slow Fall; High Jump; Wholeness of Body; Diamond Body; Abundant Step; Diamond Soul; Quivering Palm; Timeless Body; Tongue of the Sun and Moon; Empty Body; Perfect Self",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-slow-fall-4",
+        "monk-high-jump-5",
+        "monk-wholeness-of-body-7",
+        "monk-diamond-body-11",
+        "monk-abundant-step-12",
+        "monk-diamond-soul-13",
+        "monk-quivering-palm-15",
+        "monk-timeless-body-17",
+        "monk-empty-body-19",
+        "monk-perfect-self-20"
+      ],
+      "features": [
+        {
+          "id": "monk-qinggong-monk-ki-power-1",
+          "name": "Ki Power",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A qinggong monk can select a ki power (see below) for which she qualifies in place of the following monk class abilities: slow fall (4th), high jump (5th), wholeness of body (7th), diamond body (11th), abundant step (12th), diamond soul (13th), quivering palm (15th), timeless body (17th), tongue of the sun and moon (17th), empty body (19th), and perfect self (20th). This replaces the monk class ability the qinggong monk gives up for this ki power. Ki Powers Ki powers are abilities that draw on the power of a monk’s ki. The standard monk has several abilities that count as ki powers, such as wholeness of body, abundant step, and empty body. A qinggong monk can learn additional ki powers, which often replaces a non-ki monk ability such as purity of body. Ki powers are divided into three categories: feats, monk abilities, and spells. Feats : These ki powers duplicate the effects of specific feats. A monk does not need to qualify for a feat to select it as a ki power. For example, a qinggong monk can select Spring Attack as a ki power even if she doesn’t meet the prerequisites for selecting Spring Attack as a feat. Activating one of these ki powers is a free action on the monk’s turn; until the start of her next turn, the monk is treated as if she had that feat. Some of these ki powers that duplicate feats may also be activated as an immediate action; these powers are noted in the ki powers list. Monk Abilities : Some ki powers are standard monk abilities. Even if a qinggong monk selects a different ki power in place of a standard monk ability, she can select that monk ability later as one of her ki powers. Spells : These ki powers duplicate the effects of a spell, and are spell-like abilities. A qinggong monk’s class level is the caster level for these spell-like abilities, and she uses Wisdom to determine her concentration check bonus."
+        },
+        {
+          "id": "monk-qinggong-monk-requirements-1",
+          "name": "Requirements",
+          "level": 1,
+          "type": "archetype",
+          "summary": "All ki powers have a minimum monk level requirement to select them. A monk who does not meet this requirement cannot select that ki power."
+        },
+        {
+          "id": "monk-qinggong-monk-activation-1",
+          "name": "Activation",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Most ki powers require the monk to spend ki points; the exact amount is listed after the ki power. Ki powers that cost 0 ki do not require the monk to have any ki points in her ki pool to use the ability. The saving throw against a monk’s ki power, if any, is equal to 10 + 1/2 the monk’s level + the monk’s Wisdom bonus. Feats marked with a dagger (— ) are ki powers that can be activated as an immediate action. 4th-level Ki Powers Acrobatic Steps (1 ki point)"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Qinggong%20Monk"
+  }
+}

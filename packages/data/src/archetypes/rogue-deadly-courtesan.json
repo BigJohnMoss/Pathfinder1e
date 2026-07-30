@@ -1,0 +1,70 @@
+{
+  "id": "rogue-deadly-courtesan",
+  "name": "Deadly Courtesan",
+  "classId": "rogue",
+  "summary": "(Vishkanya Only) Skilled at manipulation and diversion, the deadly courtesan builds up those around her and periodically takes them down.",
+  "replacesText": "Class Skills; 2nd-level Rogue Trick; Trap Sense; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-deadly-courtesan-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a deadly courtesan adds Knowledge (history) and Knowledge (nobility) to her list of class skills and removes Knowledge (dungeoneering) from her list of class skills."
+        },
+        {
+          "id": "rogue-deadly-courtesan-bardic-performance-su-2",
+          "name": "Bardic Performance (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a deadly courtesan gains the bardic performance ability and the fascinate bardic performance. Her fascinate DC is 10 + 1/2 her rogue level + her Charisma modifier. She can use this bardic performance for a number of rounds per day equal to 1 + her Charisma modifier. At each level after 2nd, she can use bardic performance for 1 additional round per day. If the courtesan also has bard levels, she may use these rounds for either class’s fascinate bardic performance, and her bard and rogue levels stack for determining her fascinate DC. This ability replaces the rogue trick gained at 2nd level."
+        },
+        {
+          "id": "rogue-deadly-courtesan-inspire-competence-su-3",
+          "name": "Inspire Competence (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a deadly courtesan can use her bardic performance to inspire competence. The bonus begins at +2 and increases by +1 for every six levels the courtesan has attained beyond 3rd (+3 at 9th and +4 at 15th). This ability replaces all levels of trap sense."
+        },
+        {
+          "id": "rogue-deadly-courtesan-performance-strike-sp-8",
+          "name": "Performance Strike (Sp)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, as a swift action, a deadly courtesan may expend rounds of bardic performance to gain a morale bonus on one attack roll. The amount of the bonus is equal to the number of bardic performance rounds expended (maximum bonus equal to 1/2 her deadly courtesan level). This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "rogue-deadly-courtesan-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the deadly courtesan archetype: finesse rogue, stand up ( Core Rulebook ); charmer, coax information, fast fingers, honeyed words ; convincing lie, deft palm."
+        },
+        {
+          "id": "rogue-deadly-courtesan-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the deadly courtesan archetype: slippery mind ( Core Rulebook ); master of disguise ; rumormonger, unwitting ally."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Deadly%20Courtesan"
+  }
+}

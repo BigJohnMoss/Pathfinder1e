@@ -1,0 +1,73 @@
+{
+  "id": "paladin-hunting-paladin",
+  "name": "Hunting Paladin",
+  "classId": "paladin",
+  "summary": "Hunting paladins are tenacious trackers and stealthy stalkers in pursuit of evildoers.",
+  "replacesText": "Class Skills; Armor Proficiencies; Smite Evil; Detect Evil; Spells; Aura of Resolve",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-smite-evil-1",
+        "paladin-detect-evil-1",
+        "paladin-spellcasting-4",
+        "paladin-aura-of-resolve-8"
+      ],
+      "features": [
+        {
+          "id": "paladin-hunting-paladin-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A hunting paladin adds Knowledge (nature), Perception, Stealth, and Survival as class skills. She does not gain Diplomacy, Heal, Knowledge (nobility), or Spellcraft as class skills. This alters the paladin’s class skills."
+        },
+        {
+          "id": "paladin-hunting-paladin-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A hunting paladin is not proficient with heavy armor. This alters the paladin’s armor proficiencies."
+        },
+        {
+          "id": "paladin-hunting-paladin-hunt-evil-su-1",
+          "name": "Hunt Evil (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Once per day, a hunting paladin can designate a single evil creature within her sight or one that she has determined to be evil by declaring it the target of her hunt and following its tracks; this allows her to add her Charisma modifier as a bonus on Survival checks to follow that creature’s tracks and on Perception and Stealth checks opposed by the target of her hunt. She can sense her target’s presence and location, which lets her pinpoint her target’s location when within 10 feet; if the target has concealment, she can roll twice and use the better result on rolls to determine whether she misses due to the concealment. She gains uncanny dodge as per the barbarian class feature against her target. If the hunting paladin targets a nonevil creature with hunt evil, the ability fails and it is wasted. This ability ends after 24 hours (unless she spends the next day’s use of this ability to continue hunting the same target), after the hunting paladin or the target is killed or when she designates a new target for her hunt. This replaces the use of smite evil gained at 1st level."
+        },
+        {
+          "id": "paladin-hunting-paladin-detect-evil-su-1",
+          "name": "Detect Evil (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A hunting paladin cannot use this ability as a move action. However, when a hunting paladin has successfully followed a creature’s tracks for at least 1 minute, she can discern whether the tracked creature’s alignment was evil, as if she had cast detect evil in its presence and concentrated for 3 rounds. This alters detect evil."
+        },
+        {
+          "id": "paladin-hunting-paladin-smite-evil-su-4",
+          "name": "Smite Evil (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A hunting paladin gains this ability at 4th level, and it functions at her paladin level – 3. She can expend a daily use of smite evil to gain an additional daily use of hunt evil. She can use smite evil and hunt evil against the same target. This alters smite evil."
+        },
+        {
+          "id": "paladin-hunting-paladin-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "For each level of spell she can cast, a hunting paladin can prepare and cast one spell per day from the ranger spell list rather than the paladin spell list. This alters spells."
+        },
+        {
+          "id": "paladin-hunting-paladin-tireless-aura-su-8",
+          "name": "Tireless Aura (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a hunting paladin becomes immune to fatigue and sleep effects, and allies within 10 feet gain a +4 bonus on saving throws to avoid becoming fatigued or falling asleep. This replaces aura of resolve."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Hunting%20Paladin"
+  }
+}

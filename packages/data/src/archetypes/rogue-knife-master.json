@@ -1,0 +1,72 @@
+{
+  "id": "rogue-knife-master",
+  "name": "Knife Master",
+  "classId": "rogue",
+  "summary": "The knife master is a trained killer who specializes in close-up combat and the wave and weave of knife fighting.",
+  "replacesText": "Trapfinding; Sneak Attack; Trap Sense",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "sneak-attack-1",
+        "sneak-attack-3",
+        "sneak-attack-5",
+        "sneak-attack-7",
+        "sneak-attack-9",
+        "sneak-attack-11",
+        "sneak-attack-13",
+        "sneak-attack-15",
+        "sneak-attack-17",
+        "sneak-attack-19",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-knife-master-hidden-blade-1",
+          "name": "Hidden Blade",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A knife master adds 1/2 her level on Sleight of Hand checks made to conceal a light blade. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-knife-master-sneak-stab-ex-1",
+          "name": "Sneak Stab (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A knife master focuses her ability to deal sneak attack damage with daggers and similar weapons to such a degree that she can deal more sneak attack damage with those weapons at the expense of sneak attacks with other weapons. When she makes a sneak attack with a dagger, kerambit, kukri, punching daggers, starknife, or swordbreaker dagger ( Advanced Player’s Guide 178), she uses d8s to roll sneak attack damage instead of d6s. For sneak attacks with all other weapons, she uses d4s instead of d6s. This ability is identical in all other ways to sneak attack, and supplements that ability."
+        },
+        {
+          "id": "rogue-knife-master-blade-sense-ex-3",
+          "name": "Blade Sense (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a knife master is so skilled in combat involving light blades that she gains a +1 dodge bonus to AC against attacks made against her with light blades. This bonus increases by +1 for every three levels, to a maximum of +6 at 18th level. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-knife-master-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the knife master archetype: befuddling strike, combat trick, offensive defense, surprise attack, underhanded*, and weapon training."
+        },
+        {
+          "id": "rogue-knife-master-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the knife master archetype: another day, confounding blades*, deadly sneak, entanglement of blades, and unwitting ally*."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Knife%20Master"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "cleric-channeler-of-the-unknown",
+  "name": "Channeler of the Unknown",
+  "classId": "cleric",
+  "summary": "(Ex-cleric archetype) Channelers of the unknown are those faithless clerics who channel the power of an unknown entity or force of the universe",
+  "replacesText": "Weapon and Armor Proficiency; Spells; Aura; Channel Energy; Domains; Spontaneous Casting",
+  "replacements": [
+    {
+      "featureIds": [
+        "cleric-spellcasting-1",
+        "cleric-domain-spell-1",
+        "cleric-domain-spell-2",
+        "cleric-domain-spell-3",
+        "cleric-domain-spell-4",
+        "cleric-domain-spell-5",
+        "cleric-domain-spell-6",
+        "cleric-domain-spell-7",
+        "cleric-domain-spell-8",
+        "cleric-domain-spell-9",
+        "cleric-aura-1",
+        "channel-energy-1",
+        "cleric-channel-energy-type-1",
+        "cleric-domain-1-first",
+        "cleric-domain-1-second",
+        "cleric-spontaneous-casting-1"
+      ],
+      "features": [
+        {
+          "id": "cleric-channeler-of-the-unknown-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A channeler of the unknown loses proficiency with her deity’s favored weapon. She instead gains proficiency with one martial or exotic weapon, chosen when she first takes this archetype, which thereafter effectively functions as her holy or unholy symbol for the purposes of class abilities and spellcasting. The weapon chosen cannot be one associated with her former deity. Once she makes this choice, she can’t later change it. This alters the cleric’s weapon and armor proficiency."
+        },
+        {
+          "id": "cleric-channeler-of-the-unknown-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A channeler of the unknown has one fewer spell slot per spell level in which she can prepare spells than normal. She is no longer restricted by alignment descriptors, and she gains access to all spells on the cleric spell list, even spells her alignment would normally prohibit. This alters the cleric’s spells."
+        },
+        {
+          "id": "cleric-channeler-of-the-unknown-unknown-aura-su-1",
+          "name": "Unknown Aura (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A channeler of the unknown never radiates an alignment aura, as if under the effect of a permanent undetectable alignment spell. This replaces the cleric’s aura."
+        },
+        {
+          "id": "cleric-channeler-of-the-unknown-channel-entropy-su-1",
+          "name": "Channel Entropy (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A channeler of the unknown can channel entropy as a cleric channels negative or positive energy, releasing a wave of twisting void that harms creatures in the area of effect. The amount of damage dealt is equal to that an evil cleric of her level would deal by channeling negative energy, except it affects living, unliving, and undead creatures alike. This functions in all other ways as a cleric’s channel energy class feature, including benefiting from feats that affect channel energy (such as Selective Channeling). This alters channel energy."
+        },
+        {
+          "id": "cleric-channeler-of-the-unknown-power-of-the-unknown-1",
+          "name": "Power of the Unknown",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A channeler of the unknown has lost the benefit of the domains granted by her deity, but the unknown entity that answers her supplications instead grants her the benefits of one domain from the following list: Darkness, Destruction, Luck, Madness, or Void. Instead of a single domain spell slot, the channeler of the unknown gains two domain spell slots per spell level she can cast. A channeler of the unknown cannot select a subdomain in place of the domain available to her. This alters the cleric’s domains."
+        },
+        {
+          "id": "cleric-channeler-of-the-unknown-spontaneous-casting-1",
+          "name": "Spontaneous Casting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Instead of converting prepared spells into cure or inflict spells, a channeler of the unknown can channel stored spell energy into her domain spells. She can lose a prepared spell, including a domain spell, to spontaneously cast a domain spell of the same spell level or lower. This alters spontaneous casting."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Channeler%20of%20the%20Unknown"
+  }
+}

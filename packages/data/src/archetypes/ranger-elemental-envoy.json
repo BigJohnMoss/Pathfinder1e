@@ -1,0 +1,44 @@
+{
+  "id": "ranger-elemental-envoy",
+  "name": "Elemental Envoy",
+  "classId": "ranger",
+  "summary": "An elemental envoy travels the Elemental Planes. He has learned to protect himself from their many dangers, and he models his fighting style after their teachings.",
+  "replacesText": "Combat Style; Favored Terrain",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-combat-style-2",
+        "ranger-combat-style-feat-2",
+        "ranger-combat-style-feat-6",
+        "ranger-combat-style-feat-10",
+        "ranger-combat-style-feat-14",
+        "ranger-combat-style-feat-18",
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18"
+      ],
+      "features": [
+        {
+          "id": "ranger-elemental-envoy-planar-combatant-ex-2",
+          "name": "Planar Combatant (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an elemental envoy must choose the elemental combat style on this page, choosing his combat style feats from that list. This alters the ranger’s combat style feats."
+        },
+        {
+          "id": "ranger-elemental-envoy-elemental-explorer-ex-3",
+          "name": "Elemental Explorer (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, instead of selecting a favored terrain, an elemental envoy gains the typical favored terrain bonuses when traveling on the Plane of Air, Plane of Earth, Plane of Fire, and Plane of Water, except the elemental envoy gains a bonus on Knowledge (planes) checks instead of Knowledge (geography) checks. At 8th level and every 5 levels thereafter, he does not select an additional favored terrain, but his favored terrain bonuses increase by 2. This alters favored terrain."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Elemental%20Envoy"
+  }
+}

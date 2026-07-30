@@ -1,0 +1,49 @@
+{
+  "id": "bard-geisha",
+  "name": "Geisha",
+  "classId": "bard",
+  "summary": "Specially trained entertainers called geisha are praised for their appearance and skill at conversation, music, dancing, singing, poetry, and calligraphy.",
+  "replacesText": "Weapon/Armor Proficiencies; Bardic Knowledge",
+  "replacements": [
+    {
+      "featureIds": [
+        "bardic-knowledge-1"
+      ],
+      "features": [
+        {
+          "id": "bard-geisha-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Geisha are proficient in all simple weapons and one monk weapon. Geisha are not proficient in any armor or shield; unlike bards, geisha are subject to arcane spell failure even when casting in light armor or when using a shield. This replaces the normal bard armor and weapon proficiencies."
+        },
+        {
+          "id": "bard-geisha-tea-ceremony-su-1",
+          "name": "Tea Ceremony (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "By spending 10 minutes preparing an elaborate tea ceremony, a geisha may affect her allies with inspire courage, inspire competence, inspire greatness, or inspire heroics. The ceremony’s effects last 10 minutes. The geisha must spend 4 rounds of bardic performance for each creature to be affected."
+        },
+        {
+          "id": "bard-geisha-geisha-knowledge-1",
+          "name": "Geisha Knowledge",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A geisha adds half her class level (minimum 1) on Craft (calligraphy) checks, Diplomacy checks, Knowledge (nobility) checks, and one type of Perform check (act, dance, oratory, percussion, string instruments, or sing); she may make checks with these skills untrained. This replaces bardic knowledge."
+        },
+        {
+          "id": "bard-geisha-scribe-scroll-1",
+          "name": "Scribe Scroll",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A geisha gains Scribe Scroll as a bonus feat."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+  }
+}

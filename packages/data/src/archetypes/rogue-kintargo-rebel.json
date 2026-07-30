@@ -1,0 +1,56 @@
+{
+  "id": "rogue-kintargo-rebel",
+  "name": "Kintargo Rebel",
+  "classId": "rogue",
+  "summary": "Whenever the Chelish navy sails into the port, these rebels are quick to appear agreeably subservient in order to conceal their noncompliance and avoid retribution.",
+  "replacesText": "Trap Sense; Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-kintargo-rebel-sophisticated-stealth-ex-3",
+          "name": "Sophisticated Stealth (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a Kintargo rebel gains a +1 bonus on Knowledge (nobility) checks. In addition, she gains a +1 bonus on Bluff checks to convey a secret message and on Sense Motive checks to discern secret messages. These bonuses increase by 1 every 3 rogue levels thereafter. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-kintargo-rebel-misdirection-sp-4",
+          "name": "Misdirection (Sp)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a Kintargo rebel gains the ability to cast misdirection on herself once per day, though instead of choosing an object for the second target, she must choose a creature in range. The caster level for this ability is equal to her class level, and the save DC for this spell is 12 + the Kintargo rebel’s Intelligence modifier. The save DC of this ability increases by 1 if the secondary target is lawful or evil. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-kintargo-rebel-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the Kintargo rebel archetype: canny observer APG , charmer APG , false friend ARG , fast getaway APG , honeyed words APG , obfuscate story ARG , and quick disguise ARG ."
+        },
+        {
+          "id": "rogue-kintargo-rebel-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the Kintargo rebel archetype: hard to fool UC , master of disguise APG , skill mastery, slippery mind, and thoughtful reexamining APG ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Kintargo%20Rebel"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "rogue-bekyar-kidnapper",
+  "name": "Bekyar Kidnapper",
+  "classId": "rogue",
+  "summary": "A Bekyar kidnapper is not only adept at hiding herself in thick jungles and quickly subduing her prey, but also at spreading rumors of hidden ruins, buried treasure, and other such valuables that might lure an unwary foreigner into her traps.",
+  "replacesText": "Trapfinding; Trap Sense",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-bekyar-kidnapper-clean-capture-ex-1",
+          "name": "Clean Capture (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a Bekyar kidnapper reduces the penalty to her combat maneuver check to tie up a pinned or otherwise restrained target by an amount equal to 1/2 her rogue level. In addition, she can take the feats Improved Grapple and Greater Grapple as rogue talents. She can ignore the Improved Unarmed Strike requirement when selecting these feats as rogue talents, but must meet all other prerequisites. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-bekyar-kidnapper-abductor-ex-3",
+          "name": "Abductor (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a Bekyar kidnapper gains a +1 bonus on combat maneuver checks to grapple a foe. In addition, the Bekyar kidnapper treats her combat maneuver bonus as 1 higher when a foe tries to grapple her or when a grappled target attempts to break free of her grapple. These bonuses increase by 1 for every 3 levels beyond 3rd. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-bekyar-kidnapper-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the Bekyar kidnapper archetype: black market connections UC , camouflage APG , combat trick, rope master UC , survivalist APG , and terrain mastery UC ."
+        },
+        {
+          "id": "rogue-bekyar-kidnapper-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the Bekyar kidnapper archetype: crippling strike, hide in plain sight UC , knock-out blow APG , rumormonger UC , and weapon snatcher UC ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Bekyar%20Kidnapper"
+  }
+}

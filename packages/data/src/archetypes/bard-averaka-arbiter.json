@@ -1,0 +1,46 @@
+{
+  "id": "bard-averaka-arbiter",
+  "name": "Averaka Arbiter",
+  "classId": "bard",
+  "summary": "Some Averakan bards make it their mission to unify their fellow half-orcs, and are equally skilled at helping allies defeat common enemies and at building a new civilization that reflects their unique identity.",
+  "replacesText": "Inspire Competence; Dirge of Doom; Versatile Performance; Well-Versed",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-inspire-competence-3",
+        "bard-inspire-competence-7",
+        "bard-inspire-competence-11",
+        "bard-inspire-competence-15",
+        "bard-inspire-competence-19",
+        "bard-dirge-of-doom-8",
+        "bard-versatile-performance-2",
+        "bard-versatile-performance-6",
+        "bard-versatile-performance-10",
+        "bard-versatile-performance-14",
+        "bard-versatile-performance-18",
+        "bard-well-versed-2"
+      ],
+      "features": [
+        {
+          "id": "bard-averaka-arbiter-bardic-performance-1",
+          "name": "Bardic Performance",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An Averaka arbiter gains the following types of bardic performance. Inspire Teamwork (Ex) : A 3rd-level Averaka arbiter can use his performance to treat his allies as if they possessed the same teamwork feats as the bard for the purpose of determining whether the bard receives a bonus from his teamwork feats. His allies do not receive any bonuses from these feats unless they actually possess the feats themselves. The allies’ positioning and actions must still meet the prerequisites listed in the teamwork feat for the bard to receive the listed bonus. This performance replaces inspire competence. Ritual of Reconciliation (Su) : An Averaka arbiter of 8th level or higher can use his performance to improve the attitudes of nearby creatures by two steps. To be affected, a creature must be within 30 feet and able to hear the bard. Creatures whose attitude toward the bard becomes indifferent or better immediately cease attacking the bard and his allies, but may otherwise act as they please. The effect persists for as long as the creature is within 30 feet and the bard continues his performance. The effect ends if one of the bard’s allies attacks the creature. A successful Will saving throw (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) negates the effect. Ritual of reconciliation relies on audible components. This performance replaces dirge of doom."
+        },
+        {
+          "id": "bard-averaka-arbiter-versatile-teamwork-ex-2",
+          "name": "Versatile Teamwork (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an Averaka arbiter gains a bonus teamwork feat . He gains an additional bonus teamwork feat at 6th level and every 4 levels thereafter. This ability replaces versatile performance and well-versed."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Averaka%20Arbiter"
+  }
+}

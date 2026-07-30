@@ -76,31 +76,11 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - traits — complete: all 40 sourced APG basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
-- archetypes and class paths — complete: reusable replacement schema plus all twelve APG
-  Fighter paths: Archer, Crossbowman, Free Hand Fighter, Mobile Fighter,
-  Phalanx Soldier, Polearm Master, Roughrider, Savage Warrior, Shielded Fighter,
-  Two-Handed Fighter, Two-Weapon Warrior, and Weapon Master; APG Barbarian
-  coverage is complete with Breaker, Brutal Pugilist, Drunken Brute,
-  Elemental Kin, Hurler, Invulnerable Rager, Mounted Fury, Savage Barbarian,
-  and Superstitious, while Totem Warrior is delivered through the complete,
-  mutually exclusive totem rage-power families; APG Bard coverage is complete
-  with Arcane Duelist, Archivist, Court Bard, Detective, Magician, Sandman,
-  Savage Skald, Sea Singer, and Street Performer; APG Druid coverage is
-  complete with Aquatic, Arctic, Blight, Cave, Desert, Jungle, Mountain,
-  Plains, Swamp, and Urban Druid; APG Monk coverage is complete with Drunken
-  Master, Hungry Ghost Monk, Ki Mystic, Monk of the Empty Hand, Monk of the
-  Four Winds, Monk of the Healing Hand, Monk of the Lotus, Monk of the Sacred
-  Mountain, Weapon Adept, and Zen Archer; APG Paladin coverage is complete with
-  Divine Defender, Hospitaler, Sacred Servant, Shining Knight, Undead Scourge,
-  and Warrior of the Holy Light; APG Ranger coverage is complete with Beast
-  Master, Guide, Horse Lord, Infiltrator, Shapeshifter, Skirmisher, Spirit
-  Ranger, and Urban Ranger, plus the Crossbow, Mounted Combat, Natural Weapon,
-  Two-Handed Weapon, and Weapon and Shield combat styles; APG Rogue coverage is
-  complete with Acrobat, Burglar, Cutpurse, Investigator, Poisoner, Rake,
-  Scout, Sniper, Spy, Swashbuckler, Thug, and Trapsmith; APG Wizard coverage
-  is complete with all sixteen focused arcane schools and the Air, Earth, Fire,
-  and Water elemental schools, including specialist spell lists and forced
-  opposition elements
+- archetypes and class paths — catalogue complete for all 624 published entries across
+  the 13 supported classes: 623 selectors plus Totem Warrior's rage-power representation,
+  with sourced rules text, reusable replacement progressions, persistence, and
+  nested domain/school-power filtering. Bespoke effects without an existing
+  builder subsystem remain descriptive.
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,

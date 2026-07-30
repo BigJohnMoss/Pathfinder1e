@@ -1,0 +1,54 @@
+{
+  "id": "bard-flamesinger",
+  "name": "Flamesinger",
+  "classId": "bard",
+  "summary": "The flamesinger finds inspiration in the mesmerizing beauty of fire.",
+  "replacesText": "Bardic Knowledge; Lore Master; Inspire Courage; Versatile Performance",
+  "replacements": [
+    {
+      "featureIds": [
+        "bardic-knowledge-1",
+        "bard-lore-master-5",
+        "bard-lore-master-11",
+        "bard-lore-master-17",
+        "bard-inspire-courage-1",
+        "bard-inspire-courage-5",
+        "bard-inspire-courage-11",
+        "bard-inspire-courage-17",
+        "bard-versatile-performance-2",
+        "bard-versatile-performance-6",
+        "bard-versatile-performance-10",
+        "bard-versatile-performance-14",
+        "bard-versatile-performance-18"
+      ],
+      "features": [
+        {
+          "id": "bard-flamesinger-fire-music-1",
+          "name": "Fire Music",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A flamesinger gains Fire Music as a bonus feat at 1st level (without needing the meet the normal prerequisites). At 4th level (when she gains access to 2nd-level spells), she adds summon monster I and summon monster II to her bard spells known; every 3 levels thereafter she gains the next level of summon monster , until she adds summon monster VI to her spells known at 16th level. The flamesinger must apply the Fire Music feat’s effect when casting these spells. This ability replaces bardic knowledge and lore master."
+        },
+        {
+          "id": "bard-flamesinger-bardic-performance-5",
+          "name": "Bardic Performance",
+          "level": 5,
+          "type": "archetype",
+          "summary": "A flamesinger gains the following bardic performance. Blazing Blades (Su) : The flamesinger’s song causes allies’ weapons to burst into flames. To be affected, an ally must be able to hear the bard perform and be within 30 feet. An affected creature’s successful attacks with manufactured or natural weapons deal 1d4 additional points of fire damage. These flames do not harm the weapon or its wielder. This damage stacks with other sources of fire damage, such as the flaming special weapon ability. At 5th level and every 6 bard levels thereafter, this bonus fire damage increases by 1d4 (to a maximum of 4d4 at 17th level). This is a fire effect that relies on audible components. This ability replaces inspire courage."
+        },
+        {
+          "id": "bard-flamesinger-wildfire-ex-2",
+          "name": "Wildfire (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "Like a raging wildfire, a flamesinger moves with blistering speed. At 2nd level and every 4 levels thereafter, the flamesinger gains a +5-foot enhancement bonus to her base speed (to a maximum of +25 feet at 18th level). This ability replaces versatile performance."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Flamesinger"
+  }
+}

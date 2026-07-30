@@ -1,0 +1,44 @@
+{
+  "id": "rogue-numerian-scavenger",
+  "name": "Numerian Scavenger",
+  "classId": "rogue",
+  "summary": "A Numerian scavenger lives for the discovery of new technological wonders scraped from the depths of the strange ruins, metal caverns, and outlandish junkyards of Numeria.",
+  "replacesText": "Trapfinding; Uncanny Dodge; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-numerian-scavenger-technic-training-ex-1",
+          "name": "Technic Training (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Numerian scavenger adds 1/2 her rogue level to Perception skill checks to locate mechanical or high-tech traps and to Disable Device skill checks against these traps (minimum +1). She gains Technologist as a bonus feat. She cannot use Disable Device to disarm magical traps. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-numerian-scavenger-lucky-glitch-ex-4",
+          "name": "Lucky Glitch (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "Starting at 4th level, whenever a Numerian scavenger triggers a glitch when using a timeworn technological item, she rolls twice and can choose which of the two glitch effects actually occurs. A Numerian scavenger always adds her level to rolls to determine what kind of glitch occurs, and treats rolls of over 100 as 100. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-numerian-scavenger-robot-slayer-ex-8",
+          "name": "Robot Slayer (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a Numerian scavenger knows just where to strike robots to incapacitate and disable them. When she deals sneak attack damage to a robot, she ignores all hardness that robot possesses. This ability replaces improved uncanny dodge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Numerian%20Scavenger"
+  }
+}
