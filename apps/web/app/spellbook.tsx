@@ -15,6 +15,14 @@ export function Spellbook({ spells, spellTraitBonuses = {}, classId, className, 
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
 
   const preparedUsage = useMemo(() => preparedSpellSlotUsage(preparedSpellIds, spells, classId, oppositionSchoolIds, oppositionSpellIds), [classId, oppositionSchoolIds, oppositionSpellIds, preparedSpellIds, spells]);
+  const preparedSelections = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const id of preparedSpellIds) counts.set(id, (counts.get(id) ?? 0) + 1);
+    return [...counts.entries()].flatMap(([id, count]) => {
+      const spell = spells.find((item) => item.id === id);
+      return spell ? [{ spell, count, level: spell.levelByClass[classId] }] : [];
+    }).sort((left, right) => left.level - right.level || left.spell.name.localeCompare(right.spell.name));
+  }, [classId, preparedSpellIds, spells]);
   const preparedCount = (level: number) => preparedUsage[level] ?? 0;
   const limitFor = (level: number) => preparedLimits.find((entry) => entry.level === level)?.count ?? 0;
   const remainingSlots = (level: number) => { const slot = slots.find((entry) => entry.level === level); return slot ? slot.count - (slotUses[level] ?? 0) : Infinity; };
@@ -35,7 +43,33 @@ export function Spellbook({ spells, spellTraitBonuses = {}, classId, className, 
     <p>{className} slots: {slots.map((slot) => `${remainingSlots(slot.level)}/${slot.count} ${levelLabel(slot.level)}${slot.bonus ? ` (${slot.base} base + ${slot.bonus} ${castingAbilityName})` : ""}`).join(", ")}.</p>
     <p>{preparedLimits.map((limit) => `${preparedCount(limit.level)}/${limit.count} prepared ${levelLabel(limit.level)}`).join(" · ")}</p>
     <div className="spell-day-controls"><button type="button" onClick={onRefreshDay}>Refresh day</button>{reservoir && <div className="reservoir-control"><output aria-label="Arcane Reservoir points">{reservoir.current}/{reservoir.maximum} reservoir</output><button type="button" aria-label="Spend reservoir point" disabled={reservoir.current === 0} onClick={() => onReservoirChange(reservoir.current - 1)}>-</button><button type="button" aria-label="Gain reservoir point" disabled={reservoir.current === reservoir.maximum} onClick={() => onReservoirChange(reservoir.current + 1)}>+</button></div>}</div>
+    <section className="prepared-summary" aria-labelledby="prepared-today-heading">
+      <div className="prepared-summary-heading">
+        <div><p className="eyebrow">READY TO CAST</p><h3 id="prepared-today-heading">Prepared today</h3></div>
+        <strong>{preparedSpellIds.length} spell{preparedSpellIds.length === 1 ? "" : "s"}</strong>
+      </div>
+      {preparedSelections.length === 0
+        ? <p className="hint">No spells prepared yet. Browse the catalogue below and use + to prepare one.</p>
+        : <div className="prepared-spell-groups">{preparedLimits.map(({ level }) => {
+          const selections = preparedSelections.filter((selection) => selection.level === level);
+          if (selections.length === 0) return null;
+          return <section key={level}>
+            <h4>{levelLabel(level)} <small>{preparedCount(level)}/{limitFor(level)} slots prepared</small></h4>
+            <ul>{selections.map(({ spell, count }) => {
+              const canCast = level === 0 || remainingSlots(level) > 0;
+              return <li key={spell.id}>
+                <span><strong>{spell.name}</strong><small>DC {spellDcs[level]} · prepared ×{count}</small></span>
+                <div>
+                  <button type="button" aria-label={`Quick cast ${spell.name}`} disabled={!canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button>
+                  <button type="button" aria-label={`Remove one prepared ${spell.name}`} onClick={() => onPreparedSpellIdsChange(preparedSpellIds.filter((id, index) => id !== spell.id || index !== preparedSpellIds.lastIndexOf(spell.id)))}>Remove</button>
+                </div>
+              </li>;
+            })}</ul>
+          </section>;
+        })}</div>}
+    </section>
     {maximumSpellLevel === 0 && <p className="hint">Increase {castingAbilityName} to 11 or higher to cast 1st-level spells.</p>}
+    <h3 className="spell-catalogue-heading">Browse spell catalogue</h3>
     <div className="spell-controls">
       <label>Search spells<input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Name or effect" /></label>
       <label>Spell level<select aria-label="Spell level filter" value={levelFilter} disabled={Boolean(query)} onChange={(event) => setLevelFilter(event.target.value)}><option value="all">All levels</option>{Array.from({ length: maximumSpellLevel + 1 }, (_, level) => <option key={level} value={level}>{levelLabel(level)}</option>)}</select></label>
