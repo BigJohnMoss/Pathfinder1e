@@ -4,9 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "class-level",
-      "classId": "effective",
-      "minimum": 5
+      "type": "rule",
+      "description": "Familiar effective level 5th"
     },
     {
       "type": "feature",

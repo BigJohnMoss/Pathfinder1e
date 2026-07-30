@@ -21,25 +21,27 @@
       "id": "improved-grapple"
     },
     {
-      "type": "bab",
-      "minimum": 12
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 12
+        },
+        {
+          "type": "class-level",
+          "classId": "brawler",
+          "minimum": 8
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 8
+        }
+      ]
     },
     {
       "type": "feat",
       "id": "improved-unarmed-strike"
-    },
-    {
-      "type": "class-level",
-      "classId": "acg",
-      "minimum": 8
-    },
-    {
-      "type": "rule",
-      "description": "brawler"
-    },
-    {
-      "type": "rule",
-      "description": "or monk level 8th"
     }
   ],
   "benefit": "Redirect a creature's charge when you grab it with Bull-Catcher Style",

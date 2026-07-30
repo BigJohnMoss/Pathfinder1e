@@ -8,21 +8,27 @@
       "id": "dodge"
     },
     {
-      "type": "bab",
-      "minimum": 7
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 7
+        },
+        {
+          "type": "class-level",
+          "classId": "brawler",
+          "minimum": 4
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 4
+        }
+      ]
     },
     {
       "type": "feat",
       "id": "mobility"
-    },
-    {
-      "type": "class-level",
-      "classId": "brawler",
-      "minimum": 4
-    },
-    {
-      "type": "rule",
-      "description": "or monk level 4th"
     }
   ],
   "benefit": "Gain up to a +2 bonus on attack rolls against creatures with a dodge bonus",

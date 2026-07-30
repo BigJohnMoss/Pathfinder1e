@@ -17,25 +17,27 @@
       "id": "improved-grapple"
     },
     {
-      "type": "bab",
-      "minimum": 8
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 8
+        },
+        {
+          "type": "class-level",
+          "classId": "brawler",
+          "minimum": 4
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 4
+        }
+      ]
     },
     {
       "type": "feat",
       "id": "improved-unarmed-strike"
-    },
-    {
-      "type": "class-level",
-      "classId": "acg",
-      "minimum": 4
-    },
-    {
-      "type": "rule",
-      "description": "brawler"
-    },
-    {
-      "type": "rule",
-      "description": "or monk level 4th"
     }
   ],
   "benefit": "Reposition creatures you grab a crature with Bull-Catcher Style",
