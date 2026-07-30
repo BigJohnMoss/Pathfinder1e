@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Sneak attack +3d6"
+      "type": "feature",
+      "id": "sneak-attack-3d6"
     },
     {
       "type": "rule",

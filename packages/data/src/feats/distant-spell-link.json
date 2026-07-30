@@ -4,16 +4,29 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Enlarge Spell or Reach Spell APG ; animal companion"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "enlarge-spell"
+        },
+        {
+          "type": "feat",
+          "id": "reach-spell"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "id": "animal-companion"
     },
     {
       "type": "rule",
       "description": "eidolon"
     },
     {
-      "type": "rule",
-      "description": "familiar"
+      "type": "feature",
+      "id": "familiar"
     },
     {
       "type": "rule",

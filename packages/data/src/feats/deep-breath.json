@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Constitution 15"
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
     }
   ],
   "benefit": "You can hold your breath for twice as long.",

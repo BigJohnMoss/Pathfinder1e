@@ -8,8 +8,8 @@
       "id": "sap-adept"
     },
     {
-      "type": "rule",
-      "description": "sneak attack +3d6"
+      "type": "feature",
+      "id": "sneak-attack-3d6"
     }
   ],
   "benefit": "Deal twice your sneak attack damage when dealing nonlethal damage",

@@ -14,8 +14,8 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "trapfinding"
+      "type": "feature",
+      "id": "trapfinding"
     }
   ],
   "benefit": "Use Disable Device to suppress magic items",

@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "1st-level Wizard"
+      "type": "class-level",
+      "classId": "wizard",
+      "minimum": 1
     }
   ],
   "benefit": "Prepare some spells without a spellbook",

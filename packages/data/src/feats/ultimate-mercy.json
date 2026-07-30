@@ -13,8 +13,8 @@
       "id": "greater-mercy"
     },
     {
-      "type": "rule",
-      "description": "lay on hands"
+      "type": "feature",
+      "id": "lay-on-hands"
     },
     {
       "type": "feature",

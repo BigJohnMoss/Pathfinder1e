@@ -9,8 +9,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     }
   ],
   "benefit": "Gain bonuses to feint",

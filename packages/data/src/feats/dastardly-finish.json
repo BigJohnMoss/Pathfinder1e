@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Sneak attack +5d6"
+      "type": "feature",
+      "id": "sneak-attack-5d6"
     }
   ],
   "benefit": "Deliver coup de grace to cowering or stunned target",

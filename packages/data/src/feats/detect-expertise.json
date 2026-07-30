@@ -13,8 +13,8 @@
       "id": "detect-chaos"
     },
     {
-      "type": "rule",
-      "description": "detect evil"
+      "type": "feature",
+      "id": "detect-evil"
     },
     {
       "type": "rule",

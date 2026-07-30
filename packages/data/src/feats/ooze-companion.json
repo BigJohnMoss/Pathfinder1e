@@ -8,8 +8,8 @@
       "id": "ooze-whisperer"
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     },
     {
       "type": "feat",

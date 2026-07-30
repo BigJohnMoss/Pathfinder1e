@@ -9,8 +9,8 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "trap sense +1"
+      "type": "feature",
+      "id": "trap-sense-1"
     }
   ],
   "benefit": "Make automatic Search checks when near traps",

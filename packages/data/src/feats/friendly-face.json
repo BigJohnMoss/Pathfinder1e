@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     }
   ],
   "benefit": "Animals like you have a better starting attitude towards you and your master",

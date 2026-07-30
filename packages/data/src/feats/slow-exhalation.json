@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Breath weapon"
+      "type": "feature",
+      "id": "breath-weapon"
     },
     {
       "type": "rule",

@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Intelligence 13"
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
     },
     {
       "type": "rule",

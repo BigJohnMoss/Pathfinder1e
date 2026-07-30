@@ -8,8 +8,9 @@
       "description": "Vampire"
     },
     {
-      "type": "rule",
-      "description": "Charisma 18"
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 18
     },
     {
       "type": "rule",

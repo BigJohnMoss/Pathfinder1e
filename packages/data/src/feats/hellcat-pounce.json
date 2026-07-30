@@ -16,8 +16,8 @@
       "description": "(Stealth)"
     },
     {
-      "type": "rule",
-      "description": "sneak attack +2d6"
+      "type": "feature",
+      "id": "sneak-attack-2d6"
     }
   ],
   "benefit": "Make a second attack in the surprise round",

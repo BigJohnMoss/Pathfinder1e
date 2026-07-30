@@ -12,12 +12,12 @@
       "minimum": 3
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     },
     {
-      "type": "rule",
-      "description": "evasion"
+      "type": "feature",
+      "id": "evasion"
     }
   ],
   "benefit": "Provide evasion to master",

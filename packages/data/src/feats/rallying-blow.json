@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Aura of courage"
+      "type": "feature",
+      "id": "aura-of-courage"
     }
   ],
   "benefit": "Confirming critical hits helps to remove fear from your allies",

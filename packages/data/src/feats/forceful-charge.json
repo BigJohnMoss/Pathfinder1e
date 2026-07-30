@@ -12,8 +12,8 @@
       "id": "power-attack"
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     }
   ],
   "benefit": "bull rush a foe it charges",

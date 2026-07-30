@@ -13,8 +13,8 @@
       "id": "combat-expertise"
     },
     {
-      "type": "rule",
-      "description": "Improved Dirty Trick APG"
+      "type": "feat",
+      "id": "improved-dirty-trick"
     },
     {
       "type": "feat",

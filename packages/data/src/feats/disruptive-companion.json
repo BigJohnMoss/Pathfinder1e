@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     }
   ],
   "benefit": "Companion hinders spellcasting",

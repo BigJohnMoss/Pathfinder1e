@@ -8,12 +8,12 @@
       "description": "Aasimar"
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     },
     {
-      "type": "rule",
-      "description": "familiar"
+      "type": "feature",
+      "id": "familiar"
     },
     {
       "type": "rule",

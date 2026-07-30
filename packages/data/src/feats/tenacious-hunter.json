@@ -14,8 +14,8 @@
       "minimum": 3
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     }
   ],
   "benefit": "Pinpoint invisible creatures",
