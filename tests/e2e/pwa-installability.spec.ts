@@ -146,11 +146,11 @@ test("manages feat discovery and selection at an Android phone viewport", async 
   await expect(page.getByRole("heading", { name: "Feat manager" })).toBeVisible();
   await page.getByRole("button", { name: "Choose Human bonus feat" }).click();
   await page.getByRole("searchbox", { name: "Search feats" }).fill("Toughness");
-  await expect(page.getByText("1 of 3448 feats shown")).toBeVisible();
+  await expect(page.getByText("1 of 3447 feats shown")).toBeVisible();
 
   const toughness = page.locator(".feat-card").filter({ has: page.locator("summary strong", { hasText: "Toughness" }) });
   await toughness.locator("summary").click();
-  await expect(toughness.getByText(/Gain 3 hit points/)).toBeVisible();
+  await expect(toughness.getByText(/You gain \+3 hit points/)).toBeVisible();
   await toughness.getByRole("button", { name: "Choose for Human bonus feat" }).click();
   await expect(toughness.getByText("Selected", { exact: true })).toBeVisible();
   await expect(page.locator(".selected-feat-summary > strong", { hasText: "Toughness" })).toBeVisible();

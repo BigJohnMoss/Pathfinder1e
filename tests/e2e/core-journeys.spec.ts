@@ -52,7 +52,7 @@ test("prepares and casts a Druid spell", async ({ page }) => {
   await page.getByLabel("Search spells").fill("Entangle");
   await page.getByRole("button", { name: "Add Entangle" }).click();
   await expect(page.getByLabel("Entangle prepared")).toHaveText("1");
-  await page.getByRole("button", { name: "Cast Entangle" }).click();
+  await page.getByRole("button", { name: "Cast Entangle", exact: true }).click();
   await expect(page.getByText(/Druid slots:/)).toContainText("1st-level");
 });
 

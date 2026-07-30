@@ -55,9 +55,18 @@ const optionGroups=rawOptionGroups.map(group=>{
   }).filter(Boolean);
   return {...group,options:[...group.options,...generated.filter(option=>!group.options.some(existing=>existing.id===option.id))]};
 });
-const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),archetypes:await loadDir('archetypes'),races:await loadDir('races'),optionGroups,feats:await loadDir('feats'),traits:await loadDir('traits'),spells};
+let feats=await loadDir('feats');
+const featDetailFiles=await loadDir('feat-details').catch(()=>[]);
+const featDetailsById=new Map(featDetailFiles.flatMap(file=>file.feats??[]).map(detail=>[detail.id,detail]));
+feats=feats.map(feat=>{
+  const detail=featDetailsById.get(feat.id);
+  if(!detail) return feat;
+  const fullBenefit=detail.sections?.find(section=>section.label.toLowerCase()==="benefit")?.text??feat.benefit;
+  return {...feat,benefit:fullBenefit,description:detail.description,rulesSections:detail.sections};
+});
+const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),archetypes:await loadDir('archetypes'),races:await loadDir('races'),optionGroups,feats,traits:await loadDir('traits'),spells};
 const serialized=JSON.stringify(bundle);
-const compactFeats=bundle.feats.map(feat=>({...feat,benefit:"",source:{...feat.source,title:""}}));
+const compactFeats=bundle.feats.map(({description,rulesSections,...feat})=>({...feat,benefit:"",source:{...feat.source,title:""}}));
 const clientBundle={...bundle,feats:compactFeats};
 const serializedClientBundle=JSON.stringify(clientBundle);
 await writeFile(new URL('pf1e-data.json',out),JSON.stringify(bundle,null,2)+'\n');

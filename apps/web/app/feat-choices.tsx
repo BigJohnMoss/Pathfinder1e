@@ -150,7 +150,10 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
             <span className={`feat-status ${selected ? "selected" : eligible ? "eligible" : "locked"}`}>{selected ? "Selected" : eligible ? "Eligible" : "Locked"}</span>
           </summary>
           <div className="feat-card-body">
-            <p>{feat.benefit}</p>
+            {feat.description && <p className="feat-description">{feat.description}</p>}
+            {feat.rulesSections?.length
+              ? <dl className="feat-rules-text">{feat.rulesSections.map((section, sectionIndex) => <div key={`${section.label}-${sectionIndex}`}><dt>{section.label}</dt><dd>{section.text}</dd></div>)}</dl>
+              : <p>{feat.benefit}</p>}
             <div className="feat-tree-links">
               <div><strong>Requires</strong>{feat.prerequisites.length ? <ul>{feat.prerequisites.map((item, index) => <li key={index}>{prerequisiteLabel(item, featNames)}</li>)}</ul> : <p>Nothing</p>}</div>
               <div><strong>Unlocks</strong>{children.length ? <ul>{children.map((child, childIndex) => <li key={`${child.id}-${childIndex}`}>{child.name}</li>)}</ul> : <p>No feats in the current catalog</p>}</div>
