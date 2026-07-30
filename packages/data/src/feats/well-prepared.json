@@ -1,0 +1,21 @@
+{
+  "id": "well-prepared",
+  "name": "Well-Prepared",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal"
+    }
+  ],
+  "benefit": "Retrieve a specific mundane item from your person",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 173,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Well-Prepared"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "extra-word",
+  "name": "Extra Word",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 1
+    },
+    {
+      "type": "spell-access",
+      "id": "wordspells"
+    },
+    {
+      "type": "rule",
+      "description": "see Special"
+    }
+  ],
+  "benefit": "Gain additional effect words",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": 166,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Word"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "blood-of-heroes",
+  "name": "Blood of Heroes",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Hero’s Fortune"
+    }
+  ],
+  "benefit": "Gain 2 hero points when leveling up.",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 323,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20of%20Heroes"
+  }
+}

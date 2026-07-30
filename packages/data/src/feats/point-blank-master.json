@@ -1,0 +1,21 @@
+{
+  "id": "point-blank-master",
+  "name": "Point-Blank Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-specialization"
+    },
+    {
+      "type": "rule",
+      "description": "with selected ranged weapon"
+    }
+  ],
+  "benefit": "Do not provoke attacks of opportunity while firing one ranged weapon",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 167,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Point-Blank%20Master"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "extra-discovery",
+  "name": "Extra Discovery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "discovery"
+    }
+  ],
+  "benefit": "Gain one additional discovery",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 160,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Discovery"
+  }
+}

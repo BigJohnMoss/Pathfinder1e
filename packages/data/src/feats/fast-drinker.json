@@ -1,0 +1,22 @@
+{
+  "id": "fast-drinker",
+  "name": "Fast Drinker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 18
+    },
+    {
+      "type": "feature",
+      "id": "drunken-ki"
+    }
+  ],
+  "benefit": "Drink as a swift action",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 160,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fast%20Drinker"
+  }
+}

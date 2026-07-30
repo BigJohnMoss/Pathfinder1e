@@ -1,0 +1,25 @@
+{
+  "id": "heroic-recovery",
+  "name": "Heroic Recovery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "diehard"
+    },
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude save +4"
+    }
+  ],
+  "benefit": "Once per day, gain new saving throw against harmful condition requiring Fort save",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 162,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Heroic%20Recovery"
+  }
+}

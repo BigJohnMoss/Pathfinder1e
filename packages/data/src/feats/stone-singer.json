@@ -1,0 +1,26 @@
+{
+  "id": "stone-singer",
+  "name": "Stone Singer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    }
+  ],
+  "benefit": "Gain benefits to bardic performance underground and against earth creatures",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 171,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Singer"
+  }
+}

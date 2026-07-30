@@ -1,0 +1,22 @@
+{
+  "id": "selective-channeling",
+  "name": "Selective Channeling",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Choose whom to affect with channel energy",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 132,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Selective%20Channeling"
+  }
+}

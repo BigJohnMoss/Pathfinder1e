@@ -1,0 +1,21 @@
+{
+  "id": "improved-familiar",
+  "name": "Improved Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to acquire a familiar"
+    },
+    {
+      "type": "rule",
+      "description": "see feat"
+    }
+  ],
+  "benefit": "Gain a more powerful familiar",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 127,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Familiar"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "lingering-performance",
+  "name": "Lingering Performance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    }
+  ],
+  "benefit": "Bardic performance continues for 2 rounds after you stop performing",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 164,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lingering%20Performance"
+  }
+}

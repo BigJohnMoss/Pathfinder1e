@@ -1,0 +1,17 @@
+{
+  "id": "extra-performance",
+  "name": "Extra Performance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    }
+  ],
+  "benefit": "Use bardic performance for 6 additional rounds per day",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Performance"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "expanded-arcana",
+  "name": "Expanded Arcana",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "see Special"
+    }
+  ],
+  "benefit": "Add one or two spells to list of spells known",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Arcana"
+  }
+}

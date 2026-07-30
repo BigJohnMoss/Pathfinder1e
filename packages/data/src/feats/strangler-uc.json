@@ -1,0 +1,30 @@
+{
+  "id": "strangler-uc",
+  "name": "Strangler (UC)",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "sneak attack +1d6"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Deal sneak damage to grappled opponent",
+  "source": {
+    "title": "Ultimate Combat",
+    "page": 121,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Strangler%20(UC)"
+  }
+}

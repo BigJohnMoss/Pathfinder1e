@@ -1,0 +1,17 @@
+{
+  "id": "master-craftsman",
+  "name": "Master Craftsman",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "5 ranks in any Craft or Profession skill"
+    }
+  ],
+  "benefit": "You can craft magic items without being a spellcaster",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 130,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20Craftsman"
+  }
+}

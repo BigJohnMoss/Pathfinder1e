@@ -1,0 +1,17 @@
+{
+  "id": "summoners-call",
+  "name": "Summoner's Call",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "eidolon"
+    }
+  ],
+  "benefit": "Your eidolon gets a bonus when summoned",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 171,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Summoner's%20Call"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "extra-lay-on-hands",
+  "name": "Extra Lay on Hands",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "lay-on-hands"
+    }
+  ],
+  "benefit": "Use lay on hands two additional times per day",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Lay%20on%20Hands"
+  }
+}

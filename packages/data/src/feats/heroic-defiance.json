@@ -1,0 +1,25 @@
+{
+  "id": "heroic-defiance",
+  "name": "Heroic Defiance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "diehard"
+    },
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude save +8"
+    }
+  ],
+  "benefit": "Once per day, delay onset of harmful condition for 1 round",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 162,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Heroic%20Defiance"
+  }
+}

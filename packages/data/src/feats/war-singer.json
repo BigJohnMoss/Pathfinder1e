@@ -1,0 +1,26 @@
+{
+  "id": "war-singer",
+  "name": "War Singer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "rule",
+      "description": "half-orc or orc"
+    }
+  ],
+  "benefit": "Gain benefits to bardic performance on battlefields and against orcs",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 173,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=War%20Singer"
+  }
+}

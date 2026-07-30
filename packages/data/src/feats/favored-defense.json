@@ -1,0 +1,17 @@
+{
+  "id": "favored-defense",
+  "name": "Favored Defense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy"
+    }
+  ],
+  "benefit": "Bonus to CMD and AC when attacked by favored enemy",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 160,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Favored%20Defense"
+  }
+}

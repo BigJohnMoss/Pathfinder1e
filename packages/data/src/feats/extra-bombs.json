@@ -1,0 +1,17 @@
+{
+  "id": "extra-bombs",
+  "name": "Extra Bombs",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bomb"
+    }
+  ],
+  "benefit": "Throw two additional bombs per day",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Bombs"
+  }
+}

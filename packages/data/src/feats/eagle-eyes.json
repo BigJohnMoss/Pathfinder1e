@@ -1,0 +1,22 @@
+{
+  "id": "eagle-eyes",
+  "name": "Eagle Eyes",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "keen senses racial trait"
+    }
+  ],
+  "benefit": "Ignore up to –5 due to distance on visual Perception checks",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 158,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eagle%20Eyes"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "spell-perfection",
+  "name": "Spell Perfection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "at least three metamagic feats"
+    }
+  ],
+  "benefit": "Apply any metamagic feat to one spell without penalty, up to 9th level",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 170,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Perfection"
+  }
+}

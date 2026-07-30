@@ -1,0 +1,21 @@
+{
+  "id": "major-spell-expertise",
+  "name": "Major Spell Expertise",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "minor-spell-expertise"
+    },
+    {
+      "type": "spell-access",
+      "id": "9th-level-spells"
+    }
+  ],
+  "benefit": "Cast 5th-level or lower spell as spell-like ability 2/day",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 165,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Major%20Spell%20Expertise"
+  }
+}
