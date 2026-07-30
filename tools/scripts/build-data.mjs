@@ -57,7 +57,12 @@ const optionGroups=rawOptionGroups.map(group=>{
 });
 const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),archetypes:await loadDir('archetypes'),races:await loadDir('races'),optionGroups,feats:await loadDir('feats'),traits:await loadDir('traits'),spells};
 const serialized=JSON.stringify(bundle);
+const compactFeats=bundle.feats.map(feat=>({...feat,benefit:"",source:{...feat.source,title:""}}));
+const clientBundle={...bundle,feats:compactFeats};
+const serializedClientBundle=JSON.stringify(clientBundle);
 await writeFile(new URL('pf1e-data.json',out),JSON.stringify(bundle,null,2)+'\n');
-await writeFile(new URL('pf1e-data.mjs',out),`const data = JSON.parse(${JSON.stringify(serialized)});\nexport default data;\n`);
+await writeFile(new URL('pf1e-data.mjs',out),`const data = JSON.parse(${JSON.stringify(serializedClientBundle)});\nexport default data;\n`);
 await writeFile(new URL('pf1e-data.d.mts',out),'import type { GeneratedDataBundle } from "../packages/types/src/index.js";\ndeclare const data: GeneratedDataBundle;\nexport default data;\n');
+await writeFile(new URL('pf1e-feats.mjs',out),`const feats = JSON.parse(${JSON.stringify(JSON.stringify(bundle.feats))});\nexport default feats;\n`);
+await writeFile(new URL('pf1e-feats.d.mts',out),'import type { CharacterFeat } from "../packages/types/src/index.js";\ndeclare const feats: CharacterFeat[];\nexport default feats;\n');
 console.log(`Generated bundle with ${bundle.classes.length} classes, ${bundle.feats.length} feats, ${bundle.traits.length} traits, and ${bundle.spells.length} spells.`);
