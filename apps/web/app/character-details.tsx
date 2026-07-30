@@ -37,6 +37,8 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
   const importInput = useRef<HTMLInputElement>(null);
   const nameCommitTimer = useRef<ReturnType<typeof globalThis.setTimeout> | null>(null);
   const [nameDraft, setNameDraft] = useState(name);
+  const primaryArchetypes = archetypes.filter((item) => item.classId === classId);
+  const selectedClassName = classes.find((item) => item.id === classId)?.name ?? "this class";
   useEffect(() => setNameDraft(name), [name]);
   useEffect(() => () => { if (nameCommitTimer.current !== null) globalThis.clearTimeout(nameCommitTimer.current); }, []);
   const cancelNameCommit = () => {
@@ -115,7 +117,7 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
     }}>Add another class</button>}
     {additionalClassLevels.length > 0 && <p className="class-level-summary">{level} total levels · {primaryLevels} in your starting class · {assignedAdditionalLevels} in other classes.</p>}
     </fieldset>
-    <label>Archetype<select aria-label="Archetype" value={archetypeId} onChange={(event) => onArchetypeChange(event.target.value)}><option value="">Standard class</option>{archetypes.filter((item) => item.classId === classId).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+    <label>Archetype<select aria-label="Archetype" value={archetypeId} disabled={primaryArchetypes.length === 0} onChange={(event) => onArchetypeChange(event.target.value)}><option value="">{primaryArchetypes.length === 0 ? `No ${selectedClassName} archetypes available` : "Standard class"}</option>{primaryArchetypes.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select><small className="field-help">{primaryArchetypes.length === 0 ? `The current catalogue does not yet include archetypes for ${selectedClassName}. Choose a class with supported archetypes to see its options.` : `${primaryArchetypes.length} class-specific archetype${primaryArchetypes.length === 1 ? "" : "s"} available.`}</small></label>
     <label>Ancestry<select value={ancestryId} onChange={(event) => onAncestryChange(event.target.value)}>{ancestries.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => onLevelChange(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} />{level < 20 && <button type="button" className="level-up-trigger" onClick={onReviewLevelUp}>Review level {level + 1}</button>}</label>
     </div>

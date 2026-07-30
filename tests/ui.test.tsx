@@ -586,6 +586,10 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   await user.click(screen.getByRole("button", { name: "Remove Magic Missile" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
+  assert.ok(screen.getByRole("heading", { name: "Prepared today" }));
+  assert.match(screen.getByText(/prepared ×2/).textContent ?? "", /prepared ×2/);
+  assert.ok(screen.getByRole("button", { name: "Quick cast Mage Armor" }));
+  assert.ok(screen.getByRole("button", { name: "Remove one prepared Mage Armor" }));
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "0");
   await user.click(screen.getByRole("button", { name: "Add Detect Magic" }));
   await user.click(screen.getByRole("button", { name: "Add Light" }));
@@ -830,6 +834,19 @@ test("makes Ranger selectable with persistent Core feature choices", async () =>
   await user.selectOptions(huntersBond, "ranger-hunters-bond-companions");
   assert.equal((animalCompanion as HTMLSelectElement).value, "");
   assert.equal((animalCompanion as HTMLSelectElement).disabled, true);
+});
+
+test("explains class-specific archetype availability", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  const archetype = screen.getByLabelText("Archetype") as HTMLSelectElement;
+  assert.equal(archetype.disabled, true);
+  assert.equal(archetype.options[0]?.textContent, "No Arcanist archetypes available");
+  assert.ok(screen.getByText(/does not yet include archetypes for Arcanist/));
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  assert.equal(archetype.disabled, false);
+  assert.ok(archetype.options.length > 1);
+  assert.match(screen.getByText(/class-specific archetypes available/).textContent ?? "", /class-specific archetypes available/);
 });
 
 test("makes Wizard selectable with prepared arcane spells and class features", async () => {
