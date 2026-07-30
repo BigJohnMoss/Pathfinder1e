@@ -105,6 +105,8 @@ export default function Home() {
   const [inventory, setInventory] = useState<InventoryEntry[]>([]);
   const [coins, setCoins] = useState<CoinPurse>({ cp: 0, sp: 0, gp: 0, pp: 0 });
   const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
+  const [displayFeats, setDisplayFeats] = useState(feats);
+  const [featCatalogueLoading, setFeatCatalogueLoading] = useState(false);
   const [saveNotice, setSaveNotice] = useState("");
   const [showLevelUp, setShowLevelUp] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -449,6 +451,17 @@ export default function Home() {
   const spellcastingClassIds = useMemo(() => progressionClasses.filter((item) => item.spellcasting && (effectiveSpellcastingLevelMap[item.id] ?? 0) > 0).map((item) => item.id), [effectiveSpellcastingLevelMap, progressionClasses]);
   useEffect(() => setActiveSpellClassId((current) => spellcastingClassIds.includes(current) ? current : spellcastingClassIds[0] ?? ""), [spellcastingClassIds]);
   useEffect(() => { if (activeTab === "spells" && spellcastingClassIds.length === 0) setActiveTab("features"); }, [activeTab, spellcastingClassIds.length]);
+  useEffect(() => {
+    if (activeTab !== "feats" || displayFeats.some((feat) => feat.benefit)) return;
+    let active = true;
+    setFeatCatalogueLoading(true);
+    void import("./feat-catalogue").then(({ fullFeatCatalogue }) => {
+      if (active) setDisplayFeats(fullFeatCatalogue);
+    }).finally(() => {
+      if (active) setFeatCatalogueLoading(false);
+    });
+    return () => { active = false; };
+  }, [activeTab, displayFeats]);
   useEffect(() => { if (reservoir) setReservoirPoints((current) => Math.min(current, reservoir.maximum)); }, [reservoir?.maximum]);
   useEffect(() => setBardicPerformanceUsed((current) => Math.min(current, bardicPerformanceMaximum)), [bardicPerformanceMaximum]);
   useEffect(() => setWildShapeUsed((current) => wildShapeMaximum === null ? 0 : Math.min(current, wildShapeMaximum)), [wildShapeMaximum]);
@@ -716,7 +729,7 @@ export default function Home() {
       {activeTab === "storage" && <div className="storage-workspace"><CharacterLibrary library={characterLibrary} classNames={Object.fromEntries(classes.map((item) => [item.id, item.name]))} ancestryNames={Object.fromEntries(ancestries.map((item) => [item.id, item.name]))} onOpen={openLibraryCharacter} onRestoreVersion={restoreCharacterVersion} onDelete={deleteLibraryCharacter} onNew={newCharacter} /><EquipmentPanel strength={abilities.strength} strengthModifier={combat.abilityModifiers.strength} dexterityModifier={combat.abilityModifiers.dexterity} baseAttackBonus={progression.baseAttackBonus} weaponBonuses={selectedFeatBonuses.weaponBonuses} inventory={inventory} coins={coins} onInventoryChange={setInventory} onCoinsChange={setCoins} /></div>}
       {activeTab === "spells" && (spellcastingClassIds.length > 0 ? <div className="spell-workspace">{spellcastingClassIds.length > 1 && <label className="spell-class-selector">Spellcasting class<select aria-label="Spellcasting class" value={activeSpellClassId} onChange={(event) => setActiveSpellClassId(event.target.value)}>{spellcastingClassIds.map((castingClassId) => <option key={castingClassId} value={castingClassId}>{classes.find((item) => item.id === castingClassId)?.name ?? castingClassId}</option>)}</select></label>}{activeSpellClassId === characterClass.id ? primarySpellbook : activeSpellClassId === secondaryCharacterClass?.id ? secondarySpellbook : extraSpellbook}</div> : <p className="empty-tab">These classes do not cast spells.</p>)}
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
-      {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}
+      {activeTab === "feats" && <>{featCatalogueLoading && <p className="catalogue-loading" role="status">Loading feat details…</p>}<FeatChoices feats={displayFeats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} /></>}
       {activeTab === "features" && <div className="feature-workspace"><ClassFeatures level={level} className={additionalClassLevels.length > 0 ? classLevels.map((entry) => `${classes.find((item) => item.id === entry.classId)?.name ?? entry.classId} ${entry.level}`).join(" / ") : characterClass.name} features={progression.features} dailyResources={classDailyResources} />{classOptionChoices.length > 0 && <ClassOptions choices={classOptionChoices} selectedOptions={selectedOptions} classLevel={primaryClassLevel} charismaModifier={combat.abilityModifiers.charisma} onOptionChange={updateClassOption} />}</div>}
       {activeTab === "options" && <TraitChoices traits={traits} spells={spells} classes={classes} classId={characterClass.id} selectedTraitIds={selectedTraitIds} selectedTraitChoices={selectedTraitChoices} onChange={updateTrait} onChoiceChange={updateTraitChoice} />}
     </section>
