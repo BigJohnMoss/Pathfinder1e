@@ -5,7 +5,20 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Vital Strike; Heavy Gravity Acclimation or Light Gravity Acclimation"
+      "description": "Vital Strike"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "heavy-gravity-acclimation"
+        },
+        {
+          "type": "feat",
+          "id": "light-gravity-acclimation"
+        }
+      ]
     }
   ],
   "benefit": "Deal additional damage in heavy or light gravity",

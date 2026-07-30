@@ -4,8 +4,29 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Int 13; Combat Expertise; Improved Dirty Trick APG ; Kitsune Style; Kitsune Tricks; base attack bonus +6 or monk level 6th"
+      "description": "Combat Expertise"
+    },
+    {
+      "type": "rule",
+      "description": "Improved Dirty Trick APG"
+    },
+    {
+      "type": "rule",
+      "description": "Kitsune Style"
+    },
+    {
+      "type": "rule",
+      "description": "Kitsune Tricks"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
     }
   ],
   "benefit": "Use dirty tricks with attacks of opportunity",

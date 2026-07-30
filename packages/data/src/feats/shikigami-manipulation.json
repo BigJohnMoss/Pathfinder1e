@@ -4,8 +4,17 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Catch Off-Guard or Throw Anything"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "catch-off-guard"
+        },
+        {
+          "type": "feat",
+          "id": "throw-anything"
+        }
+      ]
     },
     {
       "type": "feat",

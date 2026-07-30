@@ -4,8 +4,13 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 12
+    },
+    {
       "type": "rule",
-      "description": "Stealth 12 ranks; assassinate advanced slayer talent or ninja master trick"
+      "description": "assassinate advanced slayer talent or ninja master trick"
     }
   ],
   "benefit": "Kill during the surprise round and slip back into shadows",

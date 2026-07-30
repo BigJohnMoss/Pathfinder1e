@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Knowledge (arcana, dungeoneering, local, nature, planes, or religion) 3 ranks"
+      "type": "skill",
+      "key": "Knowledge (arcana, dungeoneering, local, nature, planes, or religion)",
+      "minimum": 3
     }
   ],
   "benefit": "Use your knowledge to treat an identified enemy’s ability as if it were less powerful",

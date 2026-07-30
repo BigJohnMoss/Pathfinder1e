@@ -4,8 +4,25 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
       "type": "rule",
-      "description": "Cha 15; Combat Expertise; Diva Style; Improved Feint; base attack bonus +7 or bard level 7th"
+      "description": "Combat Expertise"
+    },
+    {
+      "type": "rule",
+      "description": "Diva Style"
+    },
+    {
+      "type": "rule",
+      "description": "Improved Feint"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +7 or bard level 7th"
     }
   ],
   "benefit": "Deal additional damage t o a target that is denied its Dex bonus to AC",

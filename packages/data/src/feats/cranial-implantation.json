@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Self-Sufficient or Trepanation"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "self-sufficient"
+        },
+        {
+          "type": "feat",
+          "id": "trepanation"
+        }
+      ]
     },
     {
       "type": "skill",

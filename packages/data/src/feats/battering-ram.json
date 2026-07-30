@@ -4,8 +4,21 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 3
+    },
+    {
       "type": "rule",
-      "description": "Craft (alchemy) 3 ranks; grit class feature or Amateur Gunslinger; pistol-whip gunslinger deed; quick clear gunslinger deed"
+      "description": "grit class feature or Amateur Gunslinger"
+    },
+    {
+      "type": "rule",
+      "description": "pistol-whip gunslinger deed"
+    },
+    {
+      "type": "rule",
+      "description": "quick clear gunslinger deed"
     }
   ],
   "benefit": "Use the pistol-whip deed to remove your gun's broken condition after a misfire",

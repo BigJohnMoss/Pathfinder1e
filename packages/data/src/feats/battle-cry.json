@@ -4,8 +4,14 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Cha 13; base attack bonus +5 or Perform (act, oratory, or sing) 5 ranks"
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "base attack bonus +5 or Perform (act, oratory, or sing)",
+      "minimum": 5
     }
   ],
   "benefit": "Let out a cry that grants allies a +1 bonus on attack rolls and +4 bonus on saves against fear",

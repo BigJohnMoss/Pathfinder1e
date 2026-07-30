@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Knowledge (nature) or Survival 5 ranks"
+      "type": "skill",
+      "key": "Knowledge (nature) or Survival",
+      "minimum": 5
     }
   ],
   "benefit": "Gain a +2 bonus on skills checks when using the discovery rules",

@@ -4,8 +4,25 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Int 13; Combat Expertise or brawler’s cunning ACG class feature; Lunge; Outslug Style; Weapon Focus with the chosen weapon"
+      "description": "Combat Expertise or brawler’s cunning ACG class feature"
+    },
+    {
+      "type": "rule",
+      "description": "Lunge"
+    },
+    {
+      "type": "rule",
+      "description": "Outslug Style"
+    },
+    {
+      "type": "rule",
+      "description": "Weapon Focus with the chosen weapon"
     }
   ],
   "benefit": "No penalty to AC when using Lunge with Outslug Style; +2 to AC/damage from Outslug Style instead of +1",

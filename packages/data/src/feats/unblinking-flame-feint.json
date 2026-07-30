@@ -4,8 +4,26 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Int 13; Wis 13; Combat Expertise; Perfect Style; base attack bonus +9 or monk level 9th"
+      "description": "Combat Expertise"
+    },
+    {
+      "type": "rule",
+      "description": "Perfect Style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 9th"
     }
   ],
   "benefit": "Use Wis mod instead of Cha mod to feint",

@@ -9,8 +9,13 @@
       "minimum": 1
     },
     {
+      "type": "skill",
+      "key": "Disguise",
+      "minimum": 1
+    },
+    {
       "type": "rule",
-      "description": "Disguise 1 rank; kitsune"
+      "description": "kitsune"
     },
     {
       "type": "rule",

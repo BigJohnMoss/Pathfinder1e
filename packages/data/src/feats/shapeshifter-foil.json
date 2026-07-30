@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Knowledge (arcana) 5 ranks or Knowledge (nature) 5 ranks"
+      "type": "skill",
+      "key": "Knowledge (arcana) 5 ranks or Knowledge (nature)",
+      "minimum": 5
     },
     {
       "type": "rule",

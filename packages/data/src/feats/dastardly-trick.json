@@ -4,8 +4,21 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Int 13; Amateur Swashbuckler ACG or panache ACG class feature; Combat Expertise; Improved Dirty Trick APG"
+      "description": "Amateur Swashbuckler ACG or panache ACG class feature"
+    },
+    {
+      "type": "rule",
+      "description": "Combat Expertise"
+    },
+    {
+      "type": "rule",
+      "description": "Improved Dirty Trick APG"
     }
   ],
   "benefit": "Your dirty tricks are harder to remove",

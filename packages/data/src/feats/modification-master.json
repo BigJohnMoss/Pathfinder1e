@@ -30,8 +30,9 @@
       "minimum": 7
     },
     {
-      "type": "rule",
-      "description": "Knowledge (engineering) 7 ranks"
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 7
     }
   ],
   "benefit": "You can add an armor or weapon modification to an item that already has a modification",

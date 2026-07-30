@@ -4,8 +4,22 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Str 13; Dex 13; Endurance or armor training class feature; proficiency with heavy armor"
+      "description": "Endurance or armor training class feature"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with heavy armor"
     }
   ],
   "benefit": "Treat Gray Maiden plate as medium or heavy armor for class features",

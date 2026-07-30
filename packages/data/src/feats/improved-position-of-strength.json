@@ -5,7 +5,25 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Position of Strength; Two-Weapon Fighting or Multiattack; Intimidate 5 ranks"
+      "description": "Position of Strength"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "two-weapon-fighting"
+        },
+        {
+          "type": "feat",
+          "id": "multiattack"
+        }
+      ]
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
     }
   ],
   "benefit": "Gain the bonus from Position of Strength even when target is armed",

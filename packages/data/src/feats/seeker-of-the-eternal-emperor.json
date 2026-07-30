@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Enlarge Spell or Extend Spell"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "enlarge-spell"
+        },
+        {
+          "type": "feat",
+          "id": "extend-spell"
+        }
+      ]
     },
     {
       "type": "feature",

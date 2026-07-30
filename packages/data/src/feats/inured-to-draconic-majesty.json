@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Favored enemy (dragon) or Knowledge (arcana) 1 rank"
+      "type": "skill",
+      "key": "Favored enemy (dragon) or Knowledge (arcana)",
+      "minimum": 1
     }
   ],
   "benefit": "Gain a +4 bonus to saves against fear effects",

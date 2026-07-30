@@ -4,8 +4,34 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Int 13; Wis 13; Combat Expertise; Perfect Style; Stunning Fist; Unblinking Flame Feint; base attack bonus +13 or monk level 13th"
+      "description": "Combat Expertise"
+    },
+    {
+      "type": "rule",
+      "description": "Perfect Style"
+    },
+    {
+      "type": "rule",
+      "description": "Stunning Fist"
+    },
+    {
+      "type": "rule",
+      "description": "Unblinking Flame Feint"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +13 or monk level 13th"
     }
   ],
   "benefit": "Stunning fist save DC is +2 vs flat-footed foes",

@@ -4,8 +4,13 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "skill",
+      "key": "Perform (wind instruments)",
+      "minimum": 5
+    },
+    {
       "type": "rule",
-      "description": "Perform (wind instruments) 5 ranks; bardic performance or raging song class feature"
+      "description": "bardic performance or raging song class feature"
     }
   ],
   "benefit": "Echo your performance so that it originates from a square far from you",

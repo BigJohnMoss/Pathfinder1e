@@ -4,8 +4,22 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
       "type": "rule",
-      "description": "Wis 17; Iron Will; Spirit Beacon; Diplomacy 5 ranks or Intimidate 5 ranks"
+      "description": "Iron Will"
+    },
+    {
+      "type": "rule",
+      "description": "Spirit Beacon"
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy 5 ranks or Intimidate",
+      "minimum": 5
     }
   ],
   "benefit": "Dispel magical spirit effects or damage spirits",

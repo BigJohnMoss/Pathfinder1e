@@ -9,8 +9,13 @@
       "minimum": 4
     },
     {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 4
+    },
+    {
       "type": "rule",
-      "description": "Ride 4 ranks; divine bond (mount)"
+      "description": "divine bond (mount)"
     },
     {
       "type": "rule",

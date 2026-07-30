@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "5 ranks in the chosen skill"
+      "type": "skill",
+      "key": "the chosen skill",
+      "minimum": 5
     }
   ],
   "benefit": "Gain unique abilities with a chosen skill",

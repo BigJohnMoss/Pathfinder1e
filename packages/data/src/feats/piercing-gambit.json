@@ -4,8 +4,13 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Spell Penetration or Bluff 3 ranks; caster level 1st"
+      "type": "skill",
+      "key": "Spell Penetration or Bluff",
+      "minimum": 3
+    },
+    {
+      "type": "caster-level",
+      "minimum": 1
     }
   ],
   "benefit": "Expend spell or spell slot to give ally spellcaster a bonus to overcome spell resistance",

@@ -4,8 +4,26 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "arcane-strike"
+        },
+        {
+          "type": "feat",
+          "id": "disruptive"
+        }
+      ]
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 8
+    },
+    {
       "type": "rule",
-      "description": "Arcane Strike or Disruptive; Spellcraft 8 ranks; arcane pool class feature"
+      "description": "arcane pool class feature"
     }
   ],
   "benefit": "Dismiss a summoned creature with a critical hit",

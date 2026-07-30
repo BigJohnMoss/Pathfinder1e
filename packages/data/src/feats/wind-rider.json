@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Acrobatics or Fly 3 ranks"
+      "type": "skill",
+      "key": "Acrobatics or Fly",
+      "minimum": 3
     }
   ],
   "benefit": "Increase your fly speed while in strong wind",

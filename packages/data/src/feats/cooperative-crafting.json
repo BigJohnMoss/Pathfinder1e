@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "1 rank in any Craft skill"
+      "type": "skill",
+      "key": "any Craft skill",
+      "minimum": 1
     },
     {
       "type": "rule",

@@ -9,8 +9,17 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Armor Adept or Weapon Adept"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "armor-adept"
+        },
+        {
+          "type": "feat",
+          "id": "weapon-adept"
+        }
+      ]
     },
     {
       "type": "class-level",

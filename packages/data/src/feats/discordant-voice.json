@@ -8,8 +8,9 @@
       "id": "bardic-performance"
     },
     {
-      "type": "rule",
-      "description": "Perform (oratory or sing) 10 ranks"
+      "type": "skill",
+      "key": "Perform (oratory or sing)",
+      "minimum": 10
     }
   ],
   "benefit": "When using bardic performance, allies deal 1d6 extra sonic damage",

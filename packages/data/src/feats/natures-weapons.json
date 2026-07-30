@@ -5,7 +5,16 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Catch Off-Guard; base attack bonus +2; Knowledge (nature) or Survival 2 ranks"
+      "description": "Catch Off-Guard"
+    },
+    {
+      "type": "bab",
+      "minimum": 2
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature) or Survival",
+      "minimum": 2
     }
   ],
   "benefit": "Wield improvised weapons you find in the wild so that they do more damage than normal",

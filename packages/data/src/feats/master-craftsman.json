@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "5 ranks in any Craft or Profession skill"
+      "type": "skill",
+      "key": "any Craft or Profession skill",
+      "minimum": 5
     }
   ],
   "benefit": "You can craft magic items without being a spellcaster",

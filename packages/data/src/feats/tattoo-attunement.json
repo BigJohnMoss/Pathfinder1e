@@ -5,7 +5,12 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Inscribe Magical Tattoo ISM or Varisian Tattoo ISWG ; Spellcraft 5 ranks"
+      "description": "Inscribe Magical Tattoo ISM or Varisian Tattoo ISWG"
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
     }
   ],
   "benefit": "Transform a summoned creature into a magical tattoo",

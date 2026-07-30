@@ -4,8 +4,18 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    },
+    {
       "type": "rule",
-      "description": "Cha 13; Intimidate 5 ranks; Persuasive or renown social talent UI"
+      "description": "Persuasive or renown social talent UI"
     }
   ],
   "benefit": "Establish a fearsome reputation in a settlement",

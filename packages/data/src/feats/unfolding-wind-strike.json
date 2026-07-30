@@ -4,8 +4,26 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Dex 13; Wis 13; Perfect Style; Quick Draw; base attack bonus +9 or monk level 9th"
+      "description": "Perfect Style"
+    },
+    {
+      "type": "rule",
+      "description": "Quick Draw"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 9th"
     }
   ],
   "benefit": "Double range increment of thrown weapons",

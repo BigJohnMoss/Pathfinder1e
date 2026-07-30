@@ -4,8 +4,22 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Str 15; Wis 13; Perfect Style; base attack bonus +9 or monk level 9th"
+      "description": "Perfect Style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 9th"
     }
   ],
   "benefit": "Ignore some of target's hardness",

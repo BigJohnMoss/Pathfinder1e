@@ -13,12 +13,25 @@
       "id": "athletic"
     },
     {
-      "type": "rule",
-      "description": "Dex 13"
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
     },
     {
       "type": "rule",
-      "description": "Totemic Initiate; base attack bonus +9; no barbarian totem rage powers except those chosen with this feat or Totemic Initiate; nonlawful alignment"
+      "description": "Totemic Initiate"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "no barbarian totem rage powers except those chosen with this feat or Totemic Initiate"
+    },
+    {
+      "type": "rule",
+      "description": "nonlawful alignment"
     }
   ],
   "benefit": "Gain benefits of a rage power linked to your chosen totem",

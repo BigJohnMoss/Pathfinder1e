@@ -12,8 +12,9 @@
       "description": "medium armor proficiency"
     },
     {
-      "type": "rule",
-      "description": "3 ranks in any Dexterity- or Strength-based skill"
+      "type": "skill",
+      "key": "any Dexterity- or Strength-based skill",
+      "minimum": 3
     }
   ],
   "benefit": "Reduce your armor check penalty on certain skills",

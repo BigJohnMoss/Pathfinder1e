@@ -4,8 +4,9 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Knowledge (engineering) 5 ranks or Profession (siege engineer) 5 ranks"
+      "type": "skill",
+      "key": "Knowledge (engineering) 5 ranks or Profession (siege engineer)",
+      "minimum": 5
     },
     {
       "type": "rule",

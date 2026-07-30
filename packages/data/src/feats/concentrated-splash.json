@@ -4,8 +4,17 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Precise Shot or Throw Anything"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "precise-shot"
+        },
+        {
+          "type": "feat",
+          "id": "throw-anything"
+        }
+      ]
     }
   ],
   "benefit": "Deal extra damage with the direct hit from a splash weapon by reducing the splash damage to other targets",

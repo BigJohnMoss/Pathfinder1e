@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Craft Magic Arms and Armor or Craft Wondrous Item"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "craft-magic-arms-and-armor"
+        },
+        {
+          "type": "feat",
+          "id": "craft-wondrous-item"
+        }
+      ]
     }
   ],
   "benefit": "Create magic items infused with your alignment",

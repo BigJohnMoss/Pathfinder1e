@@ -4,8 +4,13 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Cha 13; base attack bonus +1 or bard level 1st"
+      "description": "base attack bonus +1 or bard level 1st"
     }
   ],
   "benefit": "Use Perform instead of Bluff to feint",

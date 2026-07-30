@@ -4,8 +4,13 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Base attack bonus +1; Knowledge (nature) or Survival 1 rank"
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature) or Survival",
+      "minimum": 1
     }
   ],
   "benefit": "+2 bonus to track and +1 bonus to AC and on attacks against larger animals in chosen terrain",

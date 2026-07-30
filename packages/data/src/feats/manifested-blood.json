@@ -4,8 +4,13 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
       "type": "rule",
-      "description": "Cha 13; draconic or elemental bloodline"
+      "description": "draconic or elemental bloodline"
     }
   ],
   "benefit": "Surround yourself with an element associated with your bloodline to gain resistance against its energy and deal damage to attackers",

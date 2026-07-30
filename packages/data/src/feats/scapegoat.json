@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Great Fortitude or Iron Will"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "great-fortitude"
+        },
+        {
+          "type": "feat",
+          "id": "iron-will"
+        }
+      ]
     }
   ],
   "benefit": "Become resistant to curses",

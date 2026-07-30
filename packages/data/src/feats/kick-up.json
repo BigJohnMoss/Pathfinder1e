@@ -13,8 +13,13 @@
       "id": "acrobatic"
     },
     {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 1
+    },
+    {
       "type": "rule",
-      "description": "Acrobatics 1 rank; slayer level 1st or swashbuckler level 1st"
+      "description": "slayer level 1st or swashbuckler level 1st"
     }
   ],
   "benefit": "Retrieve an unattended item as a swift action",

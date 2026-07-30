@@ -5,7 +5,20 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Beast Hunter; Improved Beast Hunter; base attack bonus +6; Knowledge (nature) or Survival 6 ranks"
+      "description": "Beast Hunter"
+    },
+    {
+      "type": "rule",
+      "description": "Improved Beast Hunter"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature) or Survival",
+      "minimum": 6
     }
   ],
   "benefit": "Act normally in surprise round when surprised by an animal in chosen terrain; +4 bonus on rolls to confirm critical hits against animals native to that terrain",

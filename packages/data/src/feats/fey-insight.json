@@ -4,8 +4,14 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Wis 13; Knowledge (nature) or Knowledge (planes) 2 ranks"
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature) or Knowledge (planes)",
+      "minimum": 2
     }
   ],
   "benefit": "Gain +2 bonus on Bluff, Diplomacy, and Sense Motive when interacting with Fey",
