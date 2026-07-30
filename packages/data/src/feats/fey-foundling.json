@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "You may only select this feat at 1st level"
+      "type": "level",
+      "maximum": 1
     }
   ],
   "benefit": "Magical healing works better on you",

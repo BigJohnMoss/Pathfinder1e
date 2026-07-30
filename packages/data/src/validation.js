@@ -9,7 +9,13 @@ export function validatePrerequisites(prerequisites, { nested = false } = {}) {
   for (const prerequisite of prerequisites) {
     if (!prerequisite || typeof prerequisite !== "object" || Array.isArray(prerequisite)) { errors.push("prerequisite must be an object"); continue; }
     if (!prerequisiteTypes.includes(prerequisite.type)) { errors.push("prerequisite has an unknown type"); continue; }
-    if (["level", "class-level", "caster-level", "bab", "ability", "skill", "save"].includes(prerequisite.type) && (!Number.isInteger(prerequisite.minimum) || prerequisite.minimum < 1)) errors.push(`${prerequisite.type} prerequisite needs a positive integer minimum`);
+    if (["class-level", "caster-level", "bab", "ability", "skill", "save"].includes(prerequisite.type) && (!Number.isInteger(prerequisite.minimum) || prerequisite.minimum < 1)) errors.push(`${prerequisite.type} prerequisite needs a positive integer minimum`);
+    if (prerequisite.type === "level") {
+      if (prerequisite.minimum === undefined && prerequisite.maximum === undefined) errors.push("level prerequisite needs a minimum or maximum");
+      if (prerequisite.minimum !== undefined && (!Number.isInteger(prerequisite.minimum) || prerequisite.minimum < 1)) errors.push("level prerequisite has an invalid minimum");
+      if (prerequisite.maximum !== undefined && (!Number.isInteger(prerequisite.maximum) || prerequisite.maximum < 1)) errors.push("level prerequisite has an invalid maximum");
+      if (prerequisite.minimum !== undefined && prerequisite.maximum !== undefined && prerequisite.minimum > prerequisite.maximum) errors.push("level prerequisite minimum exceeds maximum");
+    }
     if (prerequisite.type === "ability" && !abilityNames.includes(prerequisite.key)) errors.push("ability prerequisite has an invalid ability key");
     if (prerequisite.type === "class-level" && (!prerequisite.classId || !idPattern.test(prerequisite.classId))) errors.push("class-level prerequisite needs a valid class id");
     if (prerequisite.type === "skill" && (typeof prerequisite.key !== "string" || !prerequisite.key.trim())) errors.push("skill prerequisite needs a skill name");

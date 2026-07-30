@@ -8,8 +8,8 @@
       "description": "Aasimar"
     },
     {
-      "type": "rule",
-      "description": "must be taken at 1st level"
+      "type": "level",
+      "maximum": 1
     }
   ],
   "benefit": "+4 Diplomacy with a chosen race.",

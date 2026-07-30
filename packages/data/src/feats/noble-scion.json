@@ -9,8 +9,8 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "must be taken at 1st level"
+      "type": "level",
+      "maximum": 1
     }
   ],
   "benefit": "+2 on Knowledge (nobility) plus gain a nobility-related boon",
