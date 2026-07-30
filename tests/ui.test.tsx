@@ -220,6 +220,36 @@ test("quick-allocates favored class bonuses and clamps them when level falls", a
   assert.match(document.querySelector(".favored-class-bonus .hint")?.textContent ?? "", /0 of 3 favored-class bonuses assigned/);
 });
 
+test("caps typed favored class bonuses at the earned class-level budget", async () => {
+  render(<Home />);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  const hitPoints = screen.getByLabelText("Favored class bonus hit points") as HTMLInputElement;
+  const skillRanks = screen.getByLabelText("Favored class bonus skill ranks") as HTMLInputElement;
+
+  fireEvent.change(hitPoints, { target: { value: "69" } });
+  assert.equal(hitPoints.value, "3");
+  assert.equal(skillRanks.value, "0");
+  assert.match(document.querySelector(".favored-class-bonus .hint")?.textContent ?? "", /3 of 3 favored-class bonuses assigned/);
+
+  fireEvent.change(hitPoints, { target: { value: "1" } });
+  fireEvent.change(skillRanks, { target: { value: "69" } });
+  assert.equal(hitPoints.value, "1");
+  assert.equal(skillRanks.value, "2");
+});
+
+test("caps typed alternate favored class rewards within the shared budget", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  await user.selectOptions(screen.getByLabelText("Ancestry"), "gnome");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  fireEvent.change(screen.getByLabelText("Favored class bonus hit points"), { target: { value: "1" } });
+  const performance = screen.getByLabelText("Bardic performance favored class allocation") as HTMLInputElement;
+  fireEvent.change(performance, { target: { value: "69" } });
+  assert.equal(performance.value, "2");
+  assert.match(document.querySelector(".favored-class-bonus > p.hint")?.textContent ?? "", /3 of 3 favored-class bonuses assigned/);
+});
+
 test("builds, calculates, and restores a multiclass character", async () => {
   const user = userEvent.setup();
   render(<Home />);

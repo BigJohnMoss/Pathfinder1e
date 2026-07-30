@@ -62,6 +62,31 @@ export function alternateRewardValue(reward: AlternateFavoredClassReward, levels
   return Math.floor(levels / (reward.divisor ?? 1));
 }
 
+const allocationValue = (value: number, maximum: number) =>
+  Math.min(maximum, Math.max(0, Number.isFinite(value) ? Math.trunc(value) : 0));
+
+export function normalizeFavoredClassAllocation(
+  level: number,
+  hitPoints: number,
+  skillRanks: number,
+  alternateBonuses: Record<string, number>,
+  validRewardIds?: Set<string>,
+) {
+  let remaining = Math.max(0, Math.trunc(level));
+  const normalizedHitPoints = allocationValue(hitPoints, remaining);
+  remaining -= normalizedHitPoints;
+  const normalizedSkillRanks = allocationValue(skillRanks, remaining);
+  remaining -= normalizedSkillRanks;
+  const normalizedAlternates: Record<string, number> = {};
+  for (const [id, value] of Object.entries(alternateBonuses)) {
+    if (validRewardIds && !validRewardIds.has(id)) continue;
+    const normalized = allocationValue(value, remaining);
+    if (normalized > 0) normalizedAlternates[id] = normalized;
+    remaining -= normalized;
+  }
+  return { hitPoints: normalizedHitPoints, skillRanks: normalizedSkillRanks, alternateBonuses: normalizedAlternates };
+}
+
 export function FavoredClassBonus({ ancestryId, ancestryName, classId, className, level, hitPoints, skillRanks, alternateBonuses, onChange }: {
   ancestryId: string;
   ancestryName: string;
@@ -74,15 +99,17 @@ export function FavoredClassBonus({ ancestryId, ancestryName, classId, className
   onChange: (hitPoints: number, skillRanks: number, alternateBonuses: Record<string, number>) => void;
 }) {
   const rewards = alternateFavoredClassRewards.filter((reward) => reward.ancestryId === ancestryId && reward.classId === classId);
+  const rewardIds = new Set(rewards.map((reward) => reward.id));
   const alternateAllocated = Object.values(alternateBonuses).reduce((total, value) => total + value, 0);
   const allocated = hitPoints + skillRanks + alternateAllocated;
   const remaining = Math.max(0, level - allocated);
-  const update = (nextHitPoints: number, nextSkillRanks: number, nextAlternates = alternateBonuses) =>
-    onChange(Math.max(0, nextHitPoints), Math.max(0, nextSkillRanks), nextAlternates);
+  const update = (nextHitPoints: number, nextSkillRanks: number, nextAlternates = alternateBonuses) => {
+    const normalized = normalizeFavoredClassAllocation(level, nextHitPoints, nextSkillRanks, nextAlternates, rewardIds);
+    onChange(normalized.hitPoints, normalized.skillRanks, normalized.alternateBonuses);
+  };
   const updateReward = (rewardId: string, value: number) => {
-    const otherAllocated = allocated - (alternateBonuses[rewardId] ?? 0);
-    const next = Math.max(0, Math.min(level - otherAllocated, value || 0));
     const bonuses = { ...alternateBonuses };
+    const next = Number.isFinite(value) ? Math.trunc(value) : 0;
     if (next > 0) bonuses[rewardId] = next;
     else delete bonuses[rewardId];
     update(hitPoints, skillRanks, bonuses);
@@ -94,10 +121,10 @@ export function FavoredClassBonus({ ancestryId, ancestryName, classId, className
       <p>Assign one reward for each of your {level} {className} {level === 1 ? "level" : "levels"}. You may mix universal and {ancestryName} rewards.</p>
     </div>
     <div className="favored-class-controls">
-      <label>Bonus hit points<input aria-label="Favored class bonus hit points" type="number" min="0" max={hitPoints + remaining} value={hitPoints} onChange={event => update(Number(event.target.value) || 0, skillRanks)} /></label>
-      <label>Bonus skill ranks<input aria-label="Favored class bonus skill ranks" type="number" min="0" max={skillRanks + remaining} value={skillRanks} onChange={event => update(hitPoints, Number(event.target.value) || 0)} /></label>
+      <label>Bonus hit points<input aria-label="Favored class bonus hit points" type="number" inputMode="numeric" step="1" min="0" max={hitPoints + remaining} value={hitPoints} onChange={event => update(Number(event.target.value), skillRanks)} /></label>
+      <label>Bonus skill ranks<input aria-label="Favored class bonus skill ranks" type="number" inputMode="numeric" step="1" min="0" max={skillRanks + remaining} value={skillRanks} onChange={event => update(hitPoints, Number(event.target.value))} /></label>
       {rewards.map((reward) => <label key={reward.id}>{reward.label}
-        <input aria-label={`${reward.label} favored class allocation`} type="number" min="0" max={(alternateBonuses[reward.id] ?? 0) + remaining} value={alternateBonuses[reward.id] ?? 0} onChange={event => updateReward(reward.id, Number(event.target.value))} />
+        <input aria-label={`${reward.label} favored class allocation`} type="number" inputMode="numeric" step="1" min="0" max={(alternateBonuses[reward.id] ?? 0) + remaining} value={alternateBonuses[reward.id] ?? 0} onChange={event => updateReward(reward.id, Number(event.target.value))} />
         <span className="hint">{reward.description} Current benefit: +{alternateRewardValue(reward, alternateBonuses[reward.id] ?? 0)}.</span>
       </label>)}
     </div>
