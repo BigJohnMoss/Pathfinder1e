@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ancestries, archetypes, classes, feats, optionGroups, skills, spells, traits } from "./character-catalogue";
 import { AbilityEditor } from "./ability-editor";
 import { CharacterDetails } from "./character-details";
@@ -21,7 +21,7 @@ import { CharacterWorkspace } from "./character-workspace";
 import { LevelProgression } from "./level-progression";
 import { alternateFavoredClassRewards, alternateRewardValue, FavoredClassBonus } from "./favored-class-bonus";
 import { AncestryTraits } from "./ancestry-traits";
-import { CharacterLibrary, characterLibraryKey, emptyCharacterLibrary, legacyCharacterKey, normalizeCharacterLibrary, type CharacterLibraryV1 } from "./character-library";
+import { CharacterLibrary, characterAutosaveKey, characterLibraryKey, emptyCharacterLibrary, legacyCharacterKey, normalizeCharacterLibrary, type CharacterLibraryV1, type CharacterVersion } from "./character-library";
 import { abilityBoostCount, abilityNames, applyArchetype, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, druidWildShapeUses, effectiveSpellcastingLevels, featBonuses, featPrerequisiteResults, multiclassAverageHitPoints, multiclassProgression, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedAlternateRacialTraits, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSelectedTraitChoices, normalizeSelectedTraits, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass, traitBonuses } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
@@ -111,6 +111,10 @@ export default function Home() {
   const [selectedProgressionLevel, setSelectedProgressionLevel] = useState(1);
   const [levelUpClassId, setLevelUpClassId] = useState("");
   const [characterLibrary, setCharacterLibrary] = useState<CharacterLibraryV1>(emptyCharacterLibrary);
+  const [autosaveStatus, setAutosaveStatus] = useState("All changes saved locally");
+  const [recoveryDraft, setRecoveryDraft] = useState<{ updatedAt: string; draft: CharacterDraftV1 } | null>(null);
+  const autosaveReady = useRef(false);
+  const lastPersistedDraft = useRef("");
 
   const baseCharacterClass = classes.find((item) => item.id === classId) ?? classes[0];
   const availableArchetypes = archetypes.filter((item) => item.classId === baseCharacterClass.id);
@@ -462,6 +466,7 @@ export default function Home() {
     return selectedId ? [[entry.classId, selectedId]] : [];
   }));
   const characterDraft: CharacterDraftV1 = { version: 1, name, classId, classLevels, archetypeId, archetypeIdsByClass: savedArchetypeIdsByClass, prestigeSpellcastingTargets, ancestryId, selectedAlternateRacialTraitIds, level, humanAbility, baseAbilities, pointBuyBudget, abilityBoosts, favoredClassHitPoints, favoredClassSkillRanks, favoredClassAlternateBonuses, selectedFeatIds, selectedTraitIds, selectedTraitChoices, selectedFeatChoices, skillRanks, selectedOptions, preparedSpells: selectedSpellIds, preparedSpellsByClass, spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)), spellSlotUsesByClass, arcaneReservoir: classLevelMap.arcanist ? reservoirPoints : null, bardicPerformanceUsed: bardClassLevel > 0 ? bardicPerformanceUsed : 0, wildShapeUsed: druidClassLevel > 0 ? wildShapeUsed : 0, currentHitPoints, temporaryHitPoints, activeEffects, inventory, coins };
+  const serializedCharacterDraft = JSON.stringify(characterDraft);
   useEffect(() => {
     try {
       const stored = localStorage.getItem(characterLibraryKey);
@@ -479,10 +484,42 @@ export default function Home() {
         }
       }
       setCharacterLibrary(library);
+      const autosave = localStorage.getItem(characterAutosaveKey);
+      if (autosave) {
+        const candidate = JSON.parse(autosave) as { updatedAt?: unknown; draft?: unknown };
+        const draft = normalizeCharacterDraft(candidate.draft, { classIds: classes.map((item) => item.id), ancestryIds: ancestries.map((item) => item.id), archetypeIds: archetypes.map((item) => item.id), archetypeIdsByClass });
+        const activeDraft = library.characters.find((entry) => entry.id === library.activeCharacterId)?.draft;
+        if (draft && typeof candidate.updatedAt === "string" && JSON.stringify(draft) !== JSON.stringify(activeDraft)) setRecoveryDraft({ updatedAt: candidate.updatedAt, draft });
+      }
     } catch {
       setSaveNotice("Saved character library is invalid; starting with an empty library");
     }
   }, []);
+  useEffect(() => {
+    if (!autosaveReady.current) {
+      autosaveReady.current = true;
+      lastPersistedDraft.current = serializedCharacterDraft;
+      return;
+    }
+    if (serializedCharacterDraft === lastPersistedDraft.current) return;
+    setAutosaveStatus("Unsaved changes");
+    const timer = globalThis.setTimeout(() => {
+      const updatedAt = new Date().toISOString();
+      localStorage.setItem(characterAutosaveKey, JSON.stringify({ updatedAt, draft: characterDraft }));
+      lastPersistedDraft.current = serializedCharacterDraft;
+      setAutosaveStatus(`Autosaved ${new Date(updatedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`);
+    }, 750);
+    return () => globalThis.clearTimeout(timer);
+  }, [serializedCharacterDraft]);
+  useEffect(() => {
+    const protectUnsavedChanges = (event: BeforeUnloadEvent) => {
+      if (serializedCharacterDraft === lastPersistedDraft.current) return;
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", protectUnsavedChanges);
+    return () => window.removeEventListener("beforeunload", protectUnsavedChanges);
+  }, [serializedCharacterDraft]);
   const persistLibrary = (library: CharacterLibraryV1) => {
     localStorage.setItem(characterLibraryKey, JSON.stringify(library));
     setCharacterLibrary(library);
@@ -575,9 +612,17 @@ export default function Home() {
   const saveCharacter = (nameOverride = name) => {
     const id = characterLibrary.activeCharacterId ?? (globalThis.crypto?.randomUUID?.() ?? `character-${Date.now()}`);
     const draft = nameOverride === characterDraft.name ? characterDraft : { ...characterDraft, name: nameOverride };
-    const entry = { id, updatedAt: new Date().toISOString(), draft };
+    const previous = characterLibrary.characters.find((item) => item.id === id);
+    const versions = previous && JSON.stringify(previous.draft) !== JSON.stringify(draft)
+      ? [...(previous.versions ?? []), { savedAt: previous.updatedAt, draft: previous.draft }].slice(-5)
+      : previous?.versions ?? [];
+    const entry = { id, updatedAt: new Date().toISOString(), draft, versions };
     persistLibrary({ version: 1, activeCharacterId: id, characters: [...characterLibrary.characters.filter((item) => item.id !== id), entry] });
     localStorage.setItem(legacyCharacterKey, JSON.stringify(draft));
+    localStorage.setItem(characterAutosaveKey, JSON.stringify({ updatedAt: entry.updatedAt, draft }));
+    lastPersistedDraft.current = JSON.stringify(draft);
+    setAutosaveStatus("All changes saved locally");
+    setRecoveryDraft(null);
     setName(nameOverride);
     setSaveNotice(`Saved ${nameOverride.trim() || "unnamed hero"} to your library`);
   };
@@ -609,6 +654,24 @@ export default function Home() {
       localStorage.setItem(legacyCharacterKey, JSON.stringify(draft));
     }
   };
+  const restoreCharacterVersion = (entry: CharacterLibraryV1["characters"][number], version: CharacterVersion) => {
+    const draft = applyCharacterDraft(version.draft, `Restored version from ${new Date(version.savedAt).toLocaleString()}`);
+    if (draft) {
+      persistLibrary({ ...characterLibrary, activeCharacterId: entry.id });
+      lastPersistedDraft.current = JSON.stringify(draft);
+      setAutosaveStatus("Restored version; save to keep it");
+    }
+  };
+  const recoverAutosave = () => {
+    if (!recoveryDraft) return;
+    const draft = applyCharacterDraft(recoveryDraft.draft, `Recovered autosave from ${new Date(recoveryDraft.updatedAt).toLocaleString()}`);
+    if (draft) {
+      lastPersistedDraft.current = JSON.stringify(draft);
+      setAutosaveStatus("Recovered autosave");
+      setRecoveryDraft(null);
+    }
+  };
+  const dismissRecovery = () => { localStorage.removeItem(characterAutosaveKey); setRecoveryDraft(null); };
   const deleteLibraryCharacter = (id: string) => {
     const characters = characterLibrary.characters.filter((entry) => entry.id !== id);
     const activeCharacterId = characterLibrary.activeCharacterId === id ? null : characterLibrary.activeCharacterId;
@@ -632,7 +695,7 @@ export default function Home() {
       onSidebarOpen={() => setSidebarOpen(true)}
       onSidebarClose={() => setSidebarOpen(false)}
       sidebar={<>
-        <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} additionalArchetypeIds={additionalArchetypeIds} prestigeSpellcastingTargets={prestigeSpellcastingTargets} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={archetypes} ancestries={ancestries} saveNotice={saveNotice} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); const validIds = new Set(next.map((entry) => entry.classId)); setAdditionalArchetypeIds((current) => Object.fromEntries(Object.entries(current).filter(([selectedClassId]) => validIds.has(selectedClassId)))); setPrestigeSpellcastingTargets((current) => Object.fromEntries(Object.entries(current).filter(([prestigeClassId]) => validIds.has(prestigeClassId)))); }} onAdditionalArchetypeChange={(selectedClassId, selectedId) => setAdditionalArchetypeIds((current) => selectedId ? { ...current, [selectedClassId]: selectedId } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== selectedClassId)))} onPrestigeSpellcastingTargetChange={(prestigeClassId, targetClassId, targetIndex = 0) => setPrestigeSpellcastingTargets((current) => { const targets = [...(current[prestigeClassId] ?? [])]; targets[targetIndex] = targetClassId; return targets.some(Boolean) ? { ...current, [prestigeClassId]: targets } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== prestigeClassId)); })} onArchetypeChange={setArchetypeId} onAncestryChange={(next) => { setAncestryId(next); setSelectedAlternateRacialTraitIds([]); }} onLevelChange={(next) => { setAdditionalClassLevels((current) => normalizeAdditionalClassLevels(current, classId, next)); setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => { setLevelUpClassId(characterClass.id); setShowLevelUp(true); setSidebarOpen(false); }} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
+        <CharacterDetails name={name} classId={classId} additionalClassLevels={additionalClassLevels} additionalArchetypeIds={additionalArchetypeIds} prestigeSpellcastingTargets={prestigeSpellcastingTargets} archetypeId={archetypeId} ancestryId={ancestryId} level={level} classes={classes} archetypes={archetypes} ancestries={ancestries} saveNotice={saveNotice} autosaveStatus={autosaveStatus} recoveryAvailable={Boolean(recoveryDraft)} onRecover={recoverAutosave} onDismissRecovery={dismissRecovery} onNameChange={setName} onClassChange={(next) => { setClassId(next); setArchetypeId(""); }} onAdditionalClassLevelsChange={(next) => { setAdditionalClassLevels(next); const validIds = new Set(next.map((entry) => entry.classId)); setAdditionalArchetypeIds((current) => Object.fromEntries(Object.entries(current).filter(([selectedClassId]) => validIds.has(selectedClassId)))); setPrestigeSpellcastingTargets((current) => Object.fromEntries(Object.entries(current).filter(([prestigeClassId]) => validIds.has(prestigeClassId)))); }} onAdditionalArchetypeChange={(selectedClassId, selectedId) => setAdditionalArchetypeIds((current) => selectedId ? { ...current, [selectedClassId]: selectedId } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== selectedClassId)))} onPrestigeSpellcastingTargetChange={(prestigeClassId, targetClassId, targetIndex = 0) => setPrestigeSpellcastingTargets((current) => { const targets = [...(current[prestigeClassId] ?? [])]; targets[targetIndex] = targetClassId; return targets.some(Boolean) ? { ...current, [prestigeClassId]: targets } : Object.fromEntries(Object.entries(current).filter(([key]) => key !== prestigeClassId)); })} onArchetypeChange={setArchetypeId} onAncestryChange={(next) => { setAncestryId(next); setSelectedAlternateRacialTraitIds([]); }} onLevelChange={(next) => { setAdditionalClassLevels((current) => normalizeAdditionalClassLevels(current, classId, next)); setLevel(next); setShowLevelUp(false); }} onReviewLevelUp={() => { setLevelUpClassId(characterClass.id); setShowLevelUp(true); setSidebarOpen(false); }} onSave={saveCharacter} onLoad={loadCharacter} onImport={importCharacter} onExport={exportCharacter} onPrint={printCharacter} onReset={resetCharacter} />
         <LevelProgression currentLevel={level} selectedLevel={selectedProgressionLevel} features={progression.features} selectedOptions={selectedOptions} suppressFeatureDetails={activeTab === "features"} onSelectLevel={setSelectedProgressionLevel} onReviewSection={reviewProgressionSection} />
       </>}
     >
@@ -650,7 +713,7 @@ export default function Home() {
     <section id="character-tab-panel" className="tab-panel" role="tabpanel" aria-labelledby={`character-tab-${activeTab}`} tabIndex={0}>
       {activeTab === "overview" && <section className="sheet-grid"><AbilityEditor abilityNames={abilityNames} ancestryName={ancestry.name} choiceAbility={humanAbility} choiceAmount={choiceAmount} baseAbilities={baseAbilities} abilities={abilities} modifiers={combat.abilityModifiers} pointBuyBudget={pointBuyBudget} pointBuySpent={pointBuy.spent} abilityBoosts={abilityBoosts} onChoiceAbilityChange={setHumanAbility} onAbilityChange={updateAbility} onPointBuyBudgetChange={setPointBuyBudget} onAbilityBoostChange={updateAbilityBoost} /><ProgressionSummary combat={combat} progression={progression} /><FavoredClassBonus ancestryId={ancestry.id} ancestryName={ancestry.name} classId={characterClass.id} className={characterClass.name} level={primaryClassLevel} hitPoints={favoredClassHitPoints} skillRanks={favoredClassSkillRanks} alternateBonuses={favoredClassAlternateBonuses} onChange={(hitPoints, skillRanks, alternateBonuses) => { setFavoredClassHitPoints(hitPoints); setFavoredClassSkillRanks(skillRanks); setFavoredClassAlternateBonuses(alternateBonuses); }} /><AncestryTraits ancestry={ancestry} selectedIds={selectedAlternateRacialTraitIds} onChange={(ids) => setSelectedAlternateRacialTraitIds(normalizeSelectedAlternateRacialTraits(ids, ancestry.alternateTraits ?? []))} /></section>}
       {activeTab === "actions" && <div className="actions-workspace"><CombatPanel combat={combat} modifierSources={selectedFeatBonuses.sources} conditionalModifiers={selectedTraitBonuses.conditionalModifiers} /><ActivePlayPanel maximumHitPoints={combat.averageHitPoints} currentHitPoints={currentHitPoints ?? combat.averageHitPoints} temporaryHitPoints={temporaryHitPoints} effects={activeEffects} onCurrentHitPointsChange={setCurrentHitPoints} onTemporaryHitPointsChange={setTemporaryHitPoints} onEffectsChange={setActiveEffects} /></div>}
-      {activeTab === "storage" && <div className="storage-workspace"><CharacterLibrary library={characterLibrary} classNames={Object.fromEntries(classes.map((item) => [item.id, item.name]))} ancestryNames={Object.fromEntries(ancestries.map((item) => [item.id, item.name]))} onOpen={openLibraryCharacter} onDelete={deleteLibraryCharacter} onNew={newCharacter} /><EquipmentPanel strength={abilities.strength} strengthModifier={combat.abilityModifiers.strength} dexterityModifier={combat.abilityModifiers.dexterity} baseAttackBonus={progression.baseAttackBonus} weaponBonuses={selectedFeatBonuses.weaponBonuses} inventory={inventory} coins={coins} onInventoryChange={setInventory} onCoinsChange={setCoins} /></div>}
+      {activeTab === "storage" && <div className="storage-workspace"><CharacterLibrary library={characterLibrary} classNames={Object.fromEntries(classes.map((item) => [item.id, item.name]))} ancestryNames={Object.fromEntries(ancestries.map((item) => [item.id, item.name]))} onOpen={openLibraryCharacter} onRestoreVersion={restoreCharacterVersion} onDelete={deleteLibraryCharacter} onNew={newCharacter} /><EquipmentPanel strength={abilities.strength} strengthModifier={combat.abilityModifiers.strength} dexterityModifier={combat.abilityModifiers.dexterity} baseAttackBonus={progression.baseAttackBonus} weaponBonuses={selectedFeatBonuses.weaponBonuses} inventory={inventory} coins={coins} onInventoryChange={setInventory} onCoinsChange={setCoins} /></div>}
       {activeTab === "spells" && (spellcastingClassIds.length > 0 ? <div className="spell-workspace">{spellcastingClassIds.length > 1 && <label className="spell-class-selector">Spellcasting class<select aria-label="Spellcasting class" value={activeSpellClassId} onChange={(event) => setActiveSpellClassId(event.target.value)}>{spellcastingClassIds.map((castingClassId) => <option key={castingClassId} value={castingClassId}>{classes.find((item) => item.id === castingClassId)?.name ?? castingClassId}</option>)}</select></label>}{activeSpellClassId === characterClass.id ? primarySpellbook : activeSpellClassId === secondaryCharacterClass?.id ? secondarySpellbook : extraSpellbook}</div> : <p className="empty-tab">These classes do not cast spells.</p>)}
       {activeTab === "skills" && <SkillAllocation skills={skillEntries} allocatedRanks={allocatedSkillRanks} totalRanks={progression.skillRanks} maximumRanksPerSkill={level} onRankChange={updateSkill} />}
       {activeTab === "feats" && <FeatChoices feats={feats} choices={featChoices} selectedFeatIds={selectedFeatIds} selectedFeatChoices={selectedFeatChoices} onFeatChange={updateFeat} onFeatChoiceChange={updateFeatChoice} />}
