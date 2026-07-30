@@ -934,14 +934,34 @@ test("tracks hit points and expires temporary combat effects by round", async ()
   fireEvent.change(screen.getByLabelText("Rounds"), { target: { value: "2" } });
   await user.click(screen.getByRole("button", { name: "Add effect" }));
   assert.match(armorClass?.textContent ?? "", /11 \/ 11 \/ 11/);
-  await user.click(screen.getByRole("button", { name: "Advance round" }));
+  await user.click(screen.getByRole("button", { name: "Next round" }));
   assert.ok(screen.getByText(/1 round$/));
-  await user.click(screen.getByRole("button", { name: "Advance round" }));
+  await user.click(screen.getByRole("button", { name: "Next round" }));
   assert.match(armorClass?.textContent ?? "", /10 \/ 10 \/ 10/);
   await user.click(screen.getByRole("button", { name: "Save" }));
   const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
   assert.equal(saved.currentHitPoints, 3);
   assert.equal(saved.temporaryHitPoints, 5);
+});
+
+test("uses equipped attacks and quick hit point controls during combat", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
+  await user.selectOptions(screen.getByLabelText("Equipment catalogue"), "longsword");
+  await user.click(screen.getByLabelText("Equipped"));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.match(screen.getByText("Longsword").closest("article")?.textContent ?? "", /Attack \+0 · Damage 1d8/);
+  await user.click(screen.getByRole("button", { name: "Roll attack" }));
+  assert.match(screen.getByText(/Longsword:/).textContent ?? "", /Longsword:/);
+  fireEvent.change(screen.getByLabelText("Current HP"), { target: { value: "5" } });
+  fireEvent.change(screen.getByLabelText("Temporary HP"), { target: { value: "3" } });
+  fireEvent.change(screen.getByLabelText("Hit point adjustment"), { target: { value: "4" } });
+  await user.click(screen.getByRole("button", { name: "Take 4 damage" }));
+  assert.equal((screen.getByLabelText("Temporary HP") as HTMLInputElement).value, "0");
+  assert.equal((screen.getByLabelText("Current HP") as HTMLInputElement).value, "4");
+  await user.click(screen.getByRole("button", { name: "Heal 4 HP" }));
+  assert.equal((screen.getByLabelText("Current HP") as HTMLInputElement).value, "6");
 });
 
 test("selects, applies, and persists traits from different categories", async () => {

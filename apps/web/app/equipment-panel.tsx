@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 
 export type InventoryEntry = { itemId: string; quantity: number; equipped: boolean; enhancementBonus?: number };
 export type CoinPurse = { cp: number; sp: number; gp: number; pp: number };
-type EquipmentItem = {
+export type EquipmentItem = {
   id: string;
   name: string;
   category: "armor" | "shield" | "weapon" | "gear" | "magic";
@@ -17,6 +17,7 @@ type EquipmentItem = {
   ranged?: boolean;
   magicBonus?: { armorClass?: { deflection?: number; natural?: number }; saves?: number };
 };
+export type EquipmentAttack = { id: string; name: string; attack: number; damage: string; damageBonus: number; critical: string; range?: number };
 
 export const equipmentItems = coreEquipment.items as EquipmentItem[];
 
@@ -54,6 +55,22 @@ export const equipmentCombatBonuses = (inventory: InventoryEntry[]) => {
 export const equipmentArmorBonus = (inventory: InventoryEntry[]) => equipmentCombatBonuses(inventory).armorClass.normal;
 
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
+
+export const equippedWeaponAttacks = (inventory: InventoryEntry[], baseAttackBonus: number, strengthModifier: number, dexterityModifier: number, weaponBonuses: Record<string, { attack: number; damage: number }> = {}): EquipmentAttack[] => inventory.flatMap((entry) => {
+  const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
+  if (!item?.damage || !entry.equipped) return [];
+  const featBonus = weaponBonuses[item.id] ?? weaponBonuses[item.name.toLowerCase()] ?? { attack: 0, damage: 0 };
+  const enhancement = entry.enhancementBonus ?? 0;
+  return [{
+    id: item.id,
+    name: `${item.name}${enhancement > 0 ? ` +${enhancement}` : ""}`,
+    attack: baseAttackBonus + (item.ranged ? dexterityModifier : strengthModifier) + featBonus.attack + enhancement,
+    damage: item.damage,
+    damageBonus: (item.ranged ? 0 : strengthModifier) + featBonus.damage + enhancement,
+    critical: item.critical ?? "×2",
+    range: item.range,
+  }];
+});
 
 export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, baseAttackBonus, weaponBonuses = {}, inventory, coins, onInventoryChange, onCoinsChange }: {
   strength: number;
