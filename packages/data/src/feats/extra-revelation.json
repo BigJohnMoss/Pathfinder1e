@@ -1,0 +1,17 @@
+{
+  "id": "extra-revelation",
+  "name": "Extra Revelation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "revelation"
+    }
+  ],
+  "benefit": "Gain one additional revelation",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 160,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Revelation"
+  }
+}

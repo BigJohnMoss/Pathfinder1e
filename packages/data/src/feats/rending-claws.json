@@ -1,0 +1,26 @@
+{
+  "id": "rending-claws",
+  "name": "Rending Claws",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "two claw natural weapon attacks"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Deal 1d6 extra damage if both claws hit",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 168,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rending%20Claws"
+  }
+}

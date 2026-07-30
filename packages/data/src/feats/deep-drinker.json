@@ -1,0 +1,27 @@
+{
+  "id": "deep-drinker",
+  "name": "Deep Drinker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "class-level",
+      "classId": "monk",
+      "minimum": 11
+    },
+    {
+      "type": "feature",
+      "id": "drunken-ki"
+    }
+  ],
+  "benefit": "Gain 2 temporary ki from drunken ki",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 157,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deep%20Drinker"
+  }
+}

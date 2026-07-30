@@ -1,0 +1,17 @@
+{
+  "id": "luck-of-heroes",
+  "name": "Luck of Heroes",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Hero’s Fortune"
+    }
+  ],
+  "benefit": "25% chance to not spend a Hero Point when using one",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 324,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Luck%20of%20Heroes"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "greater-shield-specialization",
+  "name": "Greater Shield Specialization",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficiency with selected shield"
+    },
+    {
+      "type": "feat",
+      "id": "greater-shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "shield-specialization"
+    },
+    {
+      "type": "rule",
+      "description": "with selected shield"
+    },
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 12
+    }
+  ],
+  "benefit": "+2 bonus to AC against criticals, and negate critical hit once per day",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 162,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Shield%20Specialization"
+  }
+}

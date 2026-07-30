@@ -1,0 +1,21 @@
+{
+  "id": "cooperative-crafting",
+  "name": "Cooperative Crafting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "1 rank in any Craft skill"
+    },
+    {
+      "type": "rule",
+      "description": "any item creation feat"
+    }
+  ],
+  "benefit": "+2 bonus on Craft or Spellcraft checks while working together",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cooperative%20Crafting"
+  }
+}

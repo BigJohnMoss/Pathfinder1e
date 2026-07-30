@@ -1,0 +1,17 @@
+{
+  "id": "practiced-tactician",
+  "name": "Practiced Tactician",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "tactician"
+    }
+  ],
+  "benefit": "Use tactician ability one additional time per day",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 167,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Practiced%20Tactician"
+  }
+}

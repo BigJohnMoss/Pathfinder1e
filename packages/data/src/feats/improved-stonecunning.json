@@ -1,0 +1,30 @@
+{
+  "id": "improved-stonecunning",
+  "name": "Improved Stonecunning",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    },
+    {
+      "type": "feat",
+      "id": "cunning"
+    },
+    {
+      "type": "rule",
+      "description": "stone racial trait"
+    }
+  ],
+  "benefit": "+4 bonus on Perception checks to notice unusual stonework",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 163,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Stonecunning"
+  }
+}

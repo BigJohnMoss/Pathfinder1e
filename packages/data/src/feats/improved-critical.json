@@ -1,0 +1,21 @@
+{
+  "id": "improved-critical",
+  "name": "Improved Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficiency with weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Double the threat range of one weapon",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 127,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Critical"
+  }
+}

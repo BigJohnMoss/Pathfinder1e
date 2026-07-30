@@ -1,0 +1,23 @@
+{
+  "id": "spell-bluff-um",
+  "name": "Spell Bluff (UM)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Bluff other spellcasters, increasing the DC needed to identify your spell",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Bluff%20(UM)"
+  }
+}

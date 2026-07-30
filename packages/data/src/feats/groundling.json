@@ -1,0 +1,26 @@
+{
+  "id": "groundling",
+  "name": "Groundling",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    },
+    {
+      "type": "rule",
+      "description": "gnome magic racial trait"
+    }
+  ],
+  "benefit": "Speak with burrowing animals as spell-like ability",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 162,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Groundling"
+  }
+}

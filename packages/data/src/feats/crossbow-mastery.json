@@ -1,0 +1,30 @@
+{
+  "id": "crossbow-mastery",
+  "name": "Crossbow Mastery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "rapid-reload"
+    },
+    {
+      "type": "feat",
+      "id": "rapid-shot"
+    }
+  ],
+  "benefit": "Reload crossbow as free action and make full attacks",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 157,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crossbow%20Mastery"
+  }
+}

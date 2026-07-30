@@ -1,0 +1,21 @@
+{
+  "id": "aspect-of-the-beast",
+  "name": "Aspect of the Beast",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    },
+    {
+      "type": "rule",
+      "description": "see Special"
+    }
+  ],
+  "benefit": "Gain one of four bestial advantages",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aspect%20of%20the%20Beast"
+  }
+}

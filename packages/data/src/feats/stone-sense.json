@@ -1,0 +1,22 @@
+{
+  "id": "stone-sense",
+  "name": "Stone Sense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-stonecunning"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Gain tremorsense 10 ft.",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 170,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Sense"
+  }
+}

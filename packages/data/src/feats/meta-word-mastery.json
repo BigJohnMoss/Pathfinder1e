@@ -1,0 +1,17 @@
+{
+  "id": "meta-word-mastery",
+  "name": "Meta Word Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "wordspells"
+    }
+  ],
+  "benefit": "Gain additional uses of meta words per day",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": 166,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Meta%20Word%20Mastery"
+  }
+}

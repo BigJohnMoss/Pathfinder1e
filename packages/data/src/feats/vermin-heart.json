@@ -1,0 +1,17 @@
+{
+  "id": "vermin-heart",
+  "name": "Vermin Heart",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-empathy"
+    }
+  ],
+  "benefit": "Target vermin with spells as if they were animals",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 173,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vermin%20Heart"
+  }
+}

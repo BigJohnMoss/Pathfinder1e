@@ -1,0 +1,22 @@
+{
+  "id": "shared-insight",
+  "name": "Shared Insight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "half-elf"
+    }
+  ],
+  "benefit": "Grant friendly creatures a +2 bonus on Perception checks",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 169,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shared%20Insight"
+  }
+}

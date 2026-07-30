@@ -1,0 +1,17 @@
+{
+  "id": "extra-mercy",
+  "name": "Extra Mercy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "mercy"
+    }
+  ],
+  "benefit": "Your lay on hands benefits from one additional mercy",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Mercy"
+  }
+}

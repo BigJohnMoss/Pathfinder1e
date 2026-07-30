@@ -1,0 +1,25 @@
+{
+  "id": "breadth-of-experience",
+  "name": "Breadth of Experience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dwarf"
+    },
+    {
+      "type": "rule",
+      "description": "elf"
+    },
+    {
+      "type": "rule",
+      "description": "or gnome; 100+ years old"
+    }
+  ],
+  "benefit": "+2 bonus on all Knowledge and Profession checks",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Breadth%20of%20Experience"
+  }
+}

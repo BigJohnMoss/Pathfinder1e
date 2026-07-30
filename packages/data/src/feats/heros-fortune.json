@@ -1,0 +1,12 @@
+{
+  "id": "heros-fortune",
+  "name": "Hero's Fortune",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain a hero point and increase your maximum.",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 324,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hero's%20Fortune"
+  }
+}

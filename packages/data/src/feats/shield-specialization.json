@@ -1,0 +1,26 @@
+{
+  "id": "shield-specialization",
+  "name": "Shield Specialization",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficiency with selected shield"
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 4
+    }
+  ],
+  "benefit": "+2 bonus to AC against criticals with one type of shield",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 169,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Specialization"
+  }
+}

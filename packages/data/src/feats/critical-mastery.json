@@ -1,0 +1,21 @@
+{
+  "id": "critical-mastery",
+  "name": "Critical Mastery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any two critical feats"
+    },
+    {
+      "type": "rule",
+      "description": "14th-level fighter"
+    }
+  ],
+  "benefit": "Apply two effects to your critical hits",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 120,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Critical%20Mastery"
+  }
+}

@@ -6,7 +6,7 @@ This document distinguishes records present in the data bundle from systems that
 
 - 13 selectable classes
 - 7 selectable core ancestries
-- 653 selectable feats
+- 714 selectable feats
 - all 40 APG basic traits
 - all twelve APG Fighter archetypes with complete level 1-20 feature replacements
 - 2,063 spells
@@ -43,7 +43,7 @@ All eleven Core Rulebook classes are playable. Arcanist and Oracle are the addit
 
 ## Feat coverage
 
-The catalogue contains all 167 Core Rulebook feats, all 118 Advanced Player's Guide feats, all 110 Ultimate Magic feats, and all 258 Ultimate Combat feats listed in the book chapter (including Improved Called Shot and Greater Called Shot, which appear outside its summary table). Structured prerequisites include abilities, base attack bonus, class and caster levels, spell access, skills, ancestry, size, features, other feats and matching choices. Requirements that depend on rules the builder cannot yet evaluate remain visibly locked as manual requirements instead of being treated as satisfied.
+The catalogue contains 714 feats: 177 Core Rulebook records, 164 Advanced Player's Guide records, 114 Ultimate Magic records, and 259 Ultimate Combat records. These totals include feats that Archives of Nethys exposes outside the legacy chapter summary tables and retain three existing armor-proficiency naming aliases as single records. Structured prerequisites include abilities, base attack bonus, class and caster levels, spell access, skills, ancestry, size, features, other feats and matching choices. Requirements that depend on rules the builder cannot yet evaluate remain visibly locked as manual requirements instead of being treated as satisfied. The all-source expansion inventory currently tracks 2,734 further missing feats.
 
 ## Current product systems
 

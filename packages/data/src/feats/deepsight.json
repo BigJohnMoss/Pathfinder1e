@@ -1,0 +1,17 @@
+{
+  "id": "deepsight",
+  "name": "Deepsight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Darkvision 60 feet"
+    }
+  ],
+  "benefit": "Your darkvision has a range of 120 feet",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 157,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deepsight"
+  }
+}

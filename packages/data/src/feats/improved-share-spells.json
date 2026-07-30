@@ -1,0 +1,34 @@
+{
+  "id": "improved-share-spells",
+  "name": "Improved Share Spells",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "ability to acquire an animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "eidolon"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    },
+    {
+      "type": "rule",
+      "description": "or special mount"
+    }
+  ],
+  "benefit": "Spells affect both you and your bonded creature",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 162,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Share%20Spells"
+  }
+}

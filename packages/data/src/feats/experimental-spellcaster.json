@@ -1,0 +1,17 @@
+{
+  "id": "experimental-spellcaster",
+  "name": "Experimental Spellcaster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "spells"
+    }
+  ],
+  "benefit": "Gain access to minor wordcasting",
+  "source": {
+    "title": "Ultimate Magic",
+    "page": 166,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Experimental%20Spellcaster"
+  }
+}

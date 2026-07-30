@@ -1,0 +1,17 @@
+{
+  "id": "spell-mastery",
+  "name": "Spell Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "1st-level Wizard"
+    }
+  ],
+  "benefit": "Prepare some spells without a spellbook",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 134,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Mastery"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "minor-spell-expertise",
+  "name": "Minor Spell Expertise",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "4th-level-spells"
+    }
+  ],
+  "benefit": "Cast 1st-level spell as spell-like ability 2/day",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 165,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Minor%20Spell%20Expertise"
+  }
+}

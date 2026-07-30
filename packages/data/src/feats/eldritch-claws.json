@@ -1,0 +1,26 @@
+{
+  "id": "eldritch-claws",
+  "name": "Eldritch Claws",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "natural weapons"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Natural weapons treated as magic and silver",
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 158,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eldritch%20Claws"
+  }
+}
