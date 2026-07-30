@@ -14,8 +14,17 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "orc or half-orc"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "orc"
+        },
+        {
+          "type": "ancestry",
+          "id": "half-orc"
+        }
+      ]
     },
     {
       "type": "feat",

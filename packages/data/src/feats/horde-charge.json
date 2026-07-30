@@ -8,8 +8,17 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "half-orc or orc"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "half-orc"
+        },
+        {
+          "type": "ancestry",
+          "id": "orc"
+        }
+      ]
     }
   ],
   "benefit": "+2 attack/damage when charging at the same time",

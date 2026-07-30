@@ -13,8 +13,17 @@
       "id": "bardic-performance"
     },
     {
-      "type": "rule",
-      "description": "half-orc or orc"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "half-orc"
+        },
+        {
+          "type": "ancestry",
+          "id": "orc"
+        }
+      ]
     }
   ],
   "benefit": "Gain benefits to bardic performance on battlefields and against orcs",

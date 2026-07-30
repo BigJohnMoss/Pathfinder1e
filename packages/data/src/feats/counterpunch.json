@@ -18,7 +18,21 @@
     },
     {
       "type": "rule",
-      "description": "Weapon Focus (unarmed strike); base attack bonus +16 or brawler level 12th"
+      "description": "Weapon Focus (unarmed strike)"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 16
+        },
+        {
+          "type": "class-level",
+          "classId": "brawler",
+          "minimum": 12
+        }
+      ]
     }
   ],
   "benefit": "When you fight unarmed and a foe misses with all melee attacks, it provokes attacks of opportunity from you",

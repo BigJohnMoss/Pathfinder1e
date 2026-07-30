@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Orc"
+      "type": "ancestry",
+      "id": "orc"
     }
   ],
   "benefit": "+1 attack/damage against those who attack you",

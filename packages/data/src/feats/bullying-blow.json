@@ -9,8 +9,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "orc"
+      "type": "ancestry",
+      "id": "orc"
     }
   ],
   "benefit": "Intimidate creatures while attacking them",

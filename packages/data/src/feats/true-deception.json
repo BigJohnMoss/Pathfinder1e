@@ -18,8 +18,19 @@
       "description": "master disguise master ninja trick UC or master of disguise advanced rogue talent"
     },
     {
-      "type": "rule",
-      "description": "ninja level 10th or rogue level 10th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "class-level",
+          "classId": "ninja",
+          "minimum": 10
+        },
+        {
+          "type": "class-level",
+          "classId": "rogue",
+          "minimum": 10
+        }
+      ]
     }
   ],
   "benefit": "Fool divinations with Disguise",

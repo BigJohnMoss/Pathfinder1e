@@ -4,8 +4,17 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Half-orc or orc"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "half-orc"
+        },
+        {
+          "type": "ancestry",
+          "id": "orc"
+        }
+      ]
     },
     {
       "type": "feature",

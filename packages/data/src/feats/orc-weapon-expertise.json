@@ -8,8 +8,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "orc"
+      "type": "ancestry",
+      "id": "orc"
     }
   ],
   "benefit": "Learn unique abilities with orc weapons",

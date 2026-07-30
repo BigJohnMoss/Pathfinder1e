@@ -12,8 +12,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "orc"
+      "type": "ancestry",
+      "id": "orc"
     }
   ],
   "benefit": "Allow an opponent to easily hit you so you can make a quick counter attack",
