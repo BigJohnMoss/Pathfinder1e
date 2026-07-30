@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { CharacterArchetype } from "../../../packages/types/src/index.js";
-import { archetypeConflictReasons, compatibleArchetypes } from "../../../packages/engine/src/index.js";
+import { archetypeConflictReasons, archetypeEligibilityIssues, compatibleArchetypes } from "../../../packages/engine/src/index.js";
 
 export function ArchetypePicker({ className, archetypes, selectedIds, ancestryId, onChange, label = "Archetype" }: {
   className: string;
@@ -11,28 +11,30 @@ export function ArchetypePicker({ className, archetypes, selectedIds, ancestryId
   label?: string;
 }) {
   const [search, setSearch] = useState("");
+  const [coverage, setCoverage] = useState<"all" | "full" | "partial">("all");
   const selected = selectedIds.flatMap(id => archetypes.find(archetype => archetype.id === id) ?? []);
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();
-    return archetypes.filter(archetype => !query || `${archetype.name} ${archetype.summary} ${archetype.replacesText ?? ""}`.toLowerCase().includes(query));
-  }, [archetypes, search]);
+    return archetypes.filter(archetype =>
+      (coverage === "all" || (archetype.mechanicalCoverage ?? "partial") === coverage)
+      && (!query || `${archetype.name} ${archetype.summary} ${archetype.replacesText ?? ""}`.toLowerCase().includes(query))
+    );
+  }, [archetypes, coverage, search]);
   const candidates = filtered.filter(archetype => !selectedIds.includes(archetype.id));
   const coverageLabel = (archetype: CharacterArchetype) => archetype.mechanicalCoverage === "full"
     ? "Fully automated"
     : archetype.mechanicalCoverage === "descriptive"
       ? "Rules reference"
       : "Partially automated";
-  const ancestryRequirementMet = (requirement: NonNullable<CharacterArchetype["requirements"]>[number]): boolean =>
-    requirement.type === "ancestry"
-      ? requirement.id === ancestryId
-      : requirement.type === "any"
-        ? requirement.prerequisites.some(ancestryRequirementMet)
-        : true;
-  const requirementIssues = (archetype: CharacterArchetype) => [
-    ...(archetype.requirements ?? []).flatMap(requirement => ancestryRequirementMet(requirement) ? [] : ["Requires a different ancestry"]),
-    ...(archetype.manualRequirements ?? [])
-  ];
+  const requirementIssues = (archetype: CharacterArchetype) => archetypeEligibilityIssues(archetype, { ancestryId });
   const primaryOptions = [...selected, ...filtered.filter(archetype => !selectedIds.includes(archetype.id))];
+  useEffect(() => {
+    const legalIds = selectedIds.filter(id => {
+      const archetype = archetypes.find(item => item.id === id);
+      return archetype && requirementIssues(archetype).length === 0;
+    });
+    if (legalIds.length !== selectedIds.length) onChange(legalIds);
+  }, [ancestryId, archetypes, selectedIds.join("|")]);
   return <section className="archetype-picker" aria-label={`${className} archetypes`}>
     <div className="archetype-picker-heading">
       <label>{label}
@@ -43,6 +45,13 @@ export function ArchetypePicker({ className, archetypes, selectedIds, ancestryId
       </label>
       {archetypes.length > 3 && <label>Search archetypes
         <input type="search" value={search} placeholder="Name, feature, or theme" onChange={event => setSearch(event.target.value)} />
+      </label>}
+      {archetypes.length > 3 && <label>Mechanical coverage
+        <select aria-label="Mechanical coverage" value={coverage} onChange={event => setCoverage(event.target.value as typeof coverage)}>
+          <option value="all">All archetypes</option>
+          <option value="full">Fully automated</option>
+          <option value="partial">Partially automated</option>
+        </select>
       </label>}
     </div>
     <small className="field-help">{archetypes.length} class-specific archetype{archetypes.length === 1 ? "" : "s"} available. Compatible archetypes can be combined.</small>
