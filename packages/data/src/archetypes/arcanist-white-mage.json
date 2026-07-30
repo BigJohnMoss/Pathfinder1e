@@ -1,0 +1,36 @@
+{
+  "id": "arcanist-white-mage",
+  "name": "White Mage",
+  "classId": "arcanist",
+  "summary": "A white mage is an arcanist touched by a divine power and gifted with the ability to heal others.",
+  "replacesText": "1st and 9th-level Arcanist Exploits",
+  "replacements": [
+    {
+      "featureIds": [
+        "arcanist-exploit-1",
+        "arcanist-exploit-9"
+      ],
+      "features": [
+        {
+          "id": "arcanist-white-mage-spontaneous-healing-su-1",
+          "name": "Spontaneous Healing (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a white mage can expend 1 point from her arcane reservoir to use one of her spell slots to cast a cure spell (any spell with “cure” in its name) from the cleric spell list as if it were on her spell list and prepared. The spell must be of a level the arcanist can cast. At 10th level, the white mage can expend 5 points from her arcane reservoir and a spell slot of at least 5th level to cast breath of life . This ability replaces the arcanist exploits gained at 1st and 9th levels."
+        },
+        {
+          "id": "arcanist-white-mage-greater-exploit-11",
+          "name": "Greater Exploit",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a white mage can select the following greater exploit. Fast Healing (Su) : A white mage can spend 1 point from her arcane reservoir and expend a spell slot of at least 2nd level to grant her allies the fast healing ability. Allies within 30 feet gain fast healing ( Bestiary 300) equal to 1/2 the level of the spell slot sacrificed. This effect lasts for a number of rounds equal to the arcanist’s Charisma modifier (minimum 1)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20White%20Mage"
+  }
+}
