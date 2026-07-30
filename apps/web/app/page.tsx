@@ -22,6 +22,7 @@ import { LevelProgression } from "./level-progression";
 import { alternateFavoredClassRewards, alternateRewardValue, FavoredClassBonus } from "./favored-class-bonus";
 import { AncestryTraits } from "./ancestry-traits";
 import { CharacterLibrary, characterAutosaveKey, characterLibraryKey, emptyCharacterLibrary, legacyCharacterKey, normalizeCharacterLibrary, type CharacterLibraryV1, type CharacterVersion } from "./character-library";
+import { useFeatCatalogue } from "./use-feat-catalogue";
 import { abilityBoostCount, abilityNames, applyArchetype, arcaneReservoir, availableOptions, bardicPerformanceRounds, characterCombatStats, classProgression, druidWildShapeUses, effectiveSpellcastingLevels, featBonuses, featPrerequisiteResults, multiclassAverageHitPoints, multiclassProgression, normalizeAbilityBoosts, normalizeCharacterDraft, normalizeSelectedAlternateRacialTraits, normalizeSelectedFeatChoices, normalizeSelectedFeats, normalizeSelectedTraitChoices, normalizeSelectedTraits, normalizeSkillRanks, normalizeSpellSlotUses, pointBuySummary, prerequisitesMet, skillRankBudget, skillTotal, spellSaveDC, spellcastingProgression, spellsAvailableToClass, traitBonuses } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
@@ -105,8 +106,7 @@ export default function Home() {
   const [inventory, setInventory] = useState<InventoryEntry[]>([]);
   const [coins, setCoins] = useState<CoinPurse>({ cp: 0, sp: 0, gp: 0, pp: 0 });
   const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
-  const [displayFeats, setDisplayFeats] = useState(feats);
-  const [featCatalogueLoading, setFeatCatalogueLoading] = useState(false);
+  const { feats: displayFeats, loading: featCatalogueLoading } = useFeatCatalogue(activeTab === "feats");
   const [saveNotice, setSaveNotice] = useState("");
   const [showLevelUp, setShowLevelUp] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -451,17 +451,6 @@ export default function Home() {
   const spellcastingClassIds = useMemo(() => progressionClasses.filter((item) => item.spellcasting && (effectiveSpellcastingLevelMap[item.id] ?? 0) > 0).map((item) => item.id), [effectiveSpellcastingLevelMap, progressionClasses]);
   useEffect(() => setActiveSpellClassId((current) => spellcastingClassIds.includes(current) ? current : spellcastingClassIds[0] ?? ""), [spellcastingClassIds]);
   useEffect(() => { if (activeTab === "spells" && spellcastingClassIds.length === 0) setActiveTab("features"); }, [activeTab, spellcastingClassIds.length]);
-  useEffect(() => {
-    if (activeTab !== "feats" || displayFeats.some((feat) => feat.benefit)) return;
-    let active = true;
-    setFeatCatalogueLoading(true);
-    void import("./feat-catalogue").then(({ fullFeatCatalogue }) => {
-      if (active) setDisplayFeats(fullFeatCatalogue);
-    }).finally(() => {
-      if (active) setFeatCatalogueLoading(false);
-    });
-    return () => { active = false; };
-  }, [activeTab, displayFeats]);
   useEffect(() => { if (reservoir) setReservoirPoints((current) => Math.min(current, reservoir.maximum)); }, [reservoir?.maximum]);
   useEffect(() => setBardicPerformanceUsed((current) => Math.min(current, bardicPerformanceMaximum)), [bardicPerformanceMaximum]);
   useEffect(() => setWildShapeUsed((current) => wildShapeMaximum === null ? 0 : Math.min(current, wildShapeMaximum)), [wildShapeMaximum]);
