@@ -15,8 +15,10 @@
     "test:ui": "cross-env TSX_TSCONFIG_PATH=tests/tsconfig.json node --import tsx --test --test-concurrency=1 tests/*ui.test.tsx",
     "test:e2e": "playwright test",
     "build:data": "node tools/scripts/build-data.mjs",
+    "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
+    "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
     "generate:icons": "node tools/scripts/generate-app-icons.mjs",
-    "check": "npm run validate && npm test && npm run test:ui && npm run build:data",
+    "check": "npm run validate && npm test && npm run test:ui && npm run build:data && npm run coverage:check",
     "dev": "npm --workspace @pf1e/web run dev",
     "prebuild": "npm run generate:icons",
     "build": "npm run build:data && npm --workspace @pf1e/web run build"

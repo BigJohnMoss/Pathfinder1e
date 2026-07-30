@@ -582,7 +582,7 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   await user.click(screen.getByRole("button", { name: "Cast Mage Armor" }));
   assert.match(screen.getByText(/2\/3 1st-level/).textContent ?? "", /2\/3/);
   assert.equal((screen.getByRole("button", { name: "Add Shield" }) as HTMLButtonElement).disabled, true);
-  assert.match(screen.getByText("Color Spray").closest("article")?.textContent ?? "", /level 1 Â· DC 12/);
+  assert.match(screen.getByText("Color Spray").closest("article")?.textContent ?? "", /level 1 · DC 12/);
   await user.click(screen.getByRole("button", { name: "Remove Magic Missile" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
@@ -839,7 +839,7 @@ test("makes Wizard selectable with prepared arcane spells and class features", a
   await user.click(screen.getByRole("tab", { name: "Features" }));
   assert.ok(screen.getAllByText("Arcane Bond").length >= 2);
   assert.ok(screen.getAllByText("Arcane School").length >= 2);
-  assert.ok(screen.getByText("Spellbook"));
+  assert.ok(screen.getAllByText("Spellbook").length >= 1);
   assert.ok(screen.getByText("Scribe Scroll"));
 
   await user.click(screen.getByRole("tab", { name: "Spells" }));
@@ -994,8 +994,8 @@ test("lists conditional trait modifiers without applying them as permanent saves
   await userEvent.selectOptions(screen.getByLabelText("Trait 2"), "birthmark");
   await userEvent.click(screen.getByRole("tab", { name: "Actions" }));
   const modifiers = screen.getByText("Conditional trait modifiers").closest("section");
-  assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects Â· Courageous/);
-  assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus Â· Birthmark/);
+  assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects · Courageous/);
+  assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus · Birthmark/);
   await userEvent.click(screen.getByRole("tab", { name: "Basic info" }));
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+0");
 });
@@ -1179,7 +1179,7 @@ test("switches among the remaining progression-only Barbarian archetypes", async
   await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-savage-barbarian");
   assert.ok(screen.getByText("Natural Toughness"));
   await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-superstitious");
-  assert.ok(screen.getByText("Keen Senses â€” Blindsight"));
+  assert.ok(screen.getByText("Keen Senses — Blindsight"));
   assert.equal(screen.queryByText("Damage Reduction 5/-"), null);
 });
 

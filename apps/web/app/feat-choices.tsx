@@ -136,7 +136,7 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
         <label>Availability<select value={availability} onChange={(event) => setAvailability(event.target.value as typeof availability)}><option value="eligible">Eligible now</option><option value="all">All feats</option><option value="selected">Selected</option></select></label>
         <label>Category<select value={type} onChange={(event) => setType(event.target.value)}><option value="all">All categories</option>{featTypes.map((featType) => <option value={featType} key={featType}>{featType}</option>)}</select></label>
       </div>
-      {visibleFeats.length === 0 ? <p className="feat-empty">No feats match these filters.</p> : <><div className="feat-catalog-list">{visibleFeats.slice(0, visibleLimit).map((feat) => {
+      {visibleFeats.length === 0 ? <p className="feat-empty">No feats match these filters.</p> : <><div className="feat-catalog-list">{visibleFeats.slice(0, visibleLimit).map((feat, featIndex) => {
         const featPrerequisites = feat.prerequisites.filter((item) => item.type === "feat");
         const children = unlockedBy.get(feat.id) ?? [];
         const selected = selectedIds.has(feat.id);
@@ -144,7 +144,7 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
         const selectedElsewhere = selectedFeatIds.some((id, index) => id === feat.id && index !== activeChoice?.index);
         const hasOpenSlot = choices.some((choice) => !selectedFeatIds[choice.index] && choice.eligibleFeatIds.includes(feat.id));
         const canChooseActive = Boolean(activeChoice && eligible && !selectedElsewhere);
-        return <details className="feat-card" key={feat.id}>
+        return <details className="feat-card" key={`${feat.id}-${featIndex}`}>
           <summary>
             <span><strong>{feat.name}</strong><small>{feat.type}</small></span>
             <span className={`feat-status ${selected ? "selected" : eligible ? "eligible" : "locked"}`}>{selected ? "Selected" : eligible ? "Eligible" : "Locked"}</span>
@@ -153,7 +153,7 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
             <p>{feat.benefit}</p>
             <div className="feat-tree-links">
               <div><strong>Requires</strong>{feat.prerequisites.length ? <ul>{feat.prerequisites.map((item, index) => <li key={index}>{prerequisiteLabel(item, featNames)}</li>)}</ul> : <p>Nothing</p>}</div>
-              <div><strong>Unlocks</strong>{children.length ? <ul>{children.map((child) => <li key={child.id}>{child.name}</li>)}</ul> : <p>No feats in the current catalog</p>}</div>
+              <div><strong>Unlocks</strong>{children.length ? <ul>{children.map((child, childIndex) => <li key={`${child.id}-${childIndex}`}>{child.name}</li>)}</ul> : <p>No feats in the current catalog</p>}</div>
             </div>
             {featPrerequisites.length > 0 && <p className="feat-path">Tree path: {featPrerequisites.map((item) => item.type === "feat" ? featNames.get(item.id) ?? item.id : "").join(" + ")} → {feat.name}</p>}
             <div className="feat-card-actions"><a href={feat.source.url} target="_blank" rel="noreferrer">Rules source</a>{(activeChoice || !selected) && <button type="button" disabled={activeChoice ? !canChooseActive : !hasOpenSlot} onClick={() => chooseFeat(feat)}>{activeChoice ? canChooseActive ? `Choose for ${activeChoice.name}` : selectedElsewhere ? "Already selected" : "Requirements not met" : hasOpenSlot ? "Add to open slot" : eligible ? "Choose a slot above" : "Requirements not met"}</button>}</div>
