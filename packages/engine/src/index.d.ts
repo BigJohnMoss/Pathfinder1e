@@ -81,6 +81,7 @@ export function normalizeCharacterDraft(value: unknown, options?: { classIds?: s
 export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype): CharacterClass;
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
+export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];
 export function applyArchetypes(characterClass: CharacterClass, archetypes?: CharacterArchetype[]): CharacterClass;
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;

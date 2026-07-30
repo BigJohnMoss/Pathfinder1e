@@ -404,6 +404,19 @@ export function compatibleArchetypes(selected, candidate) {
   return !selected.some(archetype => archetypeConflictReasons(archetype, candidate).length > 0);
 }
 
+export function archetypeEligibilityIssues(archetype, context = {}) {
+  if (!archetype) return ["Archetype is unavailable."];
+  const issues = [...(archetype.manualRequirements ?? [])];
+  for (const requirement of archetype.requirements ?? []) {
+    if (prerequisiteMet(requirement, context)) continue;
+    if (requirement.type === "ancestry") issues.push(`Requires ${requirement.id.replace(/-/g, " ")} ancestry.`);
+    else if (requirement.type === "any" && requirement.prerequisites.every(item => item.type === "ancestry")) {
+      issues.push(`Requires ${requirement.prerequisites.map(item => item.id.replace(/-/g, " ")).join(" or ")} ancestry.`);
+    } else issues.push("Has an unmet requirement.");
+  }
+  return [...new Set(issues)];
+}
+
 export function applyArchetypes(characterClass, archetypes = []) {
   const selected = archetypes.filter(archetype => archetype?.classId === characterClass.id);
   for (let index = 0; index < selected.length; index += 1) {

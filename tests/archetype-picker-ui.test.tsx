@@ -39,6 +39,8 @@ test("archetype search filters choices and ancestry restrictions stay unavailabl
   assert.deepEqual([...select.options].map(option => option.text), ["Standard class", "Armourer"]);
   await user.clear(screen.getByRole("searchbox", { name: "Search archetypes" }));
   assert.equal([...select.options].find(option => option.value === "dwarven")?.disabled, true);
+  await user.selectOptions(screen.getByLabelText("Mechanical coverage"), "full");
+  assert.deepEqual([...select.options].filter(option => option.value).map(option => option.text), ["Archer", "Dwarven Defender"]);
 });
 
 test("compatible archetypes stack and conflicting choices are disabled", async () => {
@@ -50,4 +52,17 @@ test("compatible archetypes stack and conflicting choices are disabled", async (
   await user.selectOptions(additional, "armourer");
   assert.ok(screen.getByRole("button", { name: "Remove Archer" }));
   assert.ok(screen.getByRole("button", { name: "Remove Armourer" }));
+});
+
+test("changing ancestry removes a selected archetype that is no longer legal", async () => {
+  const user = userEvent.setup();
+  function AncestryHarness() {
+    const [selectedIds, setSelectedIds] = useState<string[]>(["dwarven"]);
+    const [ancestryId, setAncestryId] = useState("dwarf");
+    return <><button type="button" onClick={() => setAncestryId("human")}>Become human</button><ArchetypePicker className="Fighter" archetypes={archetypes} selectedIds={selectedIds} ancestryId={ancestryId} onChange={setSelectedIds} /></>;
+  }
+  render(<AncestryHarness />);
+  assert.ok(screen.getByRole("button", { name: "Remove Dwarven Defender" }));
+  await user.click(screen.getByRole("button", { name: "Become human" }));
+  assert.equal((screen.getByLabelText("Archetype") as HTMLSelectElement).value, "");
 });
