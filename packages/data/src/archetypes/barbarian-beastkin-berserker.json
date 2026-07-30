@@ -1,0 +1,38 @@
+{
+  "id": "barbarian-beastkin-berserker",
+  "name": "Beastkin Berserker",
+  "classId": "barbarian",
+  "summary": "While some barbarians take on bestial aspects in their rages, the beastkin berserker descends so deeply into primal fury that she actually transforms into an animal.",
+  "replacesText": "Fast Movement; 4th, 8th, 12th-level Rage Power",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1",
+        "rage-power-4",
+        "rage-power-8",
+        "rage-power-12"
+      ],
+      "features": [
+        {
+          "id": "barbarian-beastkin-berserker-savage-rapport-ex-1",
+          "name": "Savage Rapport (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a beastkin berserker gains a spiritual connection to a specific kind of creature with the animal type (such as a badger or a triceratops). She adds half her level (minimum 1) on Handle Animal, Intimidate, and Sense Motive checks involving the chosen type of animal. At 5th level and every 5 levels thereafter (10th, 15th, and 20th levels), the beastkin berserker can select an additional kind of animal to which these bonuses apply. This ability replaces fast movement."
+        },
+        {
+          "id": "barbarian-beastkin-berserker-feral-transformation-su-4",
+          "name": "Feral Transformation (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, when entering a rage, a beastkin berserker can take the form of a Small or Medium animal. This functions as beast shape I , except the duration is for as long as the beastkin berserker rages and the animal must be one she has chosen with her savage rapport. At 8th level, the beastkin berserker can use feral transformation to take the form of a Large or Tiny animal that she has chosen with her savage rapport. Feral transformation now acts as beast shape II . At 12th level, a beastkin berserker is able to use feral transformation to take the form of a Huge or Diminutive animal that she has chosen with her savage rapport. Feral transformation now functions as beast shape III . This ability replaces the rage powers gained at 4th, 8th, and 12th levels."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Beastkin%20Berserker"
+  }
+}

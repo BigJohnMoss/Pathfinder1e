@@ -1,0 +1,126 @@
+{
+  "id": "ranger-galvanic-saboteur",
+  "name": "Galvanic Saboteur",
+  "classId": "ranger",
+  "summary": "Many Kellid locals blame Kevoth-Kul’s change on the influence of the Technic League and view both the League and their mechanical minions with a mix of fear and distrust. Some Kellid rangers have since developed skills to defeat the League’s robotic enforcers and devious arcanists.",
+  "replacesText": "Class Skills; Favored Enemy; Wild Empathy; Favored Terrain; Woodland Stride; Swift Tracker; Camouflage; Hide in Plain Sight",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-favored-enemy-1",
+        "ranger-favored-enemy-5",
+        "ranger-favored-enemy-10",
+        "ranger-favored-enemy-15",
+        "ranger-favored-enemy-20",
+        "ranger-wild-empathy-1",
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18",
+        "ranger-woodland-stride-7",
+        "ranger-track-1",
+        "ranger-swift-tracker-8",
+        "ranger-camouflage-12",
+        "ranger-hide-in-plain-sight-17"
+      ],
+      "features": [
+        {
+          "id": "ranger-galvanic-saboteur-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A galvanic saboteur adds Disable Device and Knowledge (arcana) to his list of class skills and removes Handle Animal and Knowledge (dungeoneering) from his list of class skills."
+        },
+        {
+          "id": "ranger-galvanic-saboteur-favored-enemy-ex-1",
+          "name": "Favored Enemy (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a galvanic saboteur must select construct creatures as his first favored enemy. This ability alters favored enemy."
+        },
+        {
+          "id": "ranger-galvanic-saboteur-reprogram-ex-1",
+          "name": "Reprogram (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a galvanic saboteur can improve the initial attitude of a mindless construct. This ability functions as wild empathy, except only against mindless constructs. The ranger can use this ability against constructs with an Intelligence score, but he takes a –4 penalty on the check. This ability replaces wild empathy."
+        },
+        {
+          "id": "ranger-galvanic-saboteur-lucky-dodge-ex-3",
+          "name": "Lucky Dodge (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a galvanic saboteur can dodge the precise attacks of even the most technologically advanced foes. The ranger gains a luck bonus to AC against attacks that target his touch AC as long as his opponent’s type matches that of his first favored enemy. This luck bonus is equal to 1/2 the ranger’s favored enemy bonus against that creature type. At 8th, 13th, and 18th levels, the ranger gains this luck bonus to AC against attacks that target touch his AC as long as his opponent’s type matches his second, third, and fourth favored enemy, respectively. A galvanic saboteur’s animal companion (if he chose one for his hunter’s bond) also gains this luck bonus. This ability replaces favored terrain."
+        },
+        {
+          "id": "ranger-galvanic-saboteur-technological-trapsmith-ex-7",
+          "name": "Technological Trapsmith (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a galvanic saboteur can rig technological traps using the remains of destroyed constructs with the clockwork or robot subtype. To successfully rig such a trap, the ranger must spend 1 minute working on the destroyed construct and succeed at a Disable Device check (DC = 10 + the construct’s HD). On a failure, the trap doesn’t function and the construct’s remains are ruined. On a success, the ranger creates a mechanical trap with the following statistics. Rigged Construct Trap"
+        },
+        {
+          "id": "ranger-galvanic-saboteur-type-1",
+          "name": "Type",
+          "level": 1,
+          "type": "archetype",
+          "summary": "mechanical;"
+        },
+        {
+          "id": "ranger-galvanic-saboteur-perception-1",
+          "name": "Perception",
+          "level": 1,
+          "type": "archetype",
+          "summary": "DC 20;"
+        },
+        {
+          "id": "ranger-galvanic-saboteur-disable-device-1",
+          "name": "Disable Device",
+          "level": 1,
+          "type": "archetype",
+          "summary": "DC 20 Effects"
+        },
+        {
+          "id": "ranger-galvanic-saboteur-trigger-1",
+          "name": "Trigger",
+          "level": 1,
+          "type": "archetype",
+          "summary": "location (all spaces occupied by the construct’s remains);"
+        },
+        {
+          "id": "ranger-galvanic-saboteur-reset-1",
+          "name": "Reset",
+          "level": 1,
+          "type": "archetype",
+          "summary": "none"
+        },
+        {
+          "id": "ranger-galvanic-saboteur-effect-1",
+          "name": "Effect",
+          "level": 1,
+          "type": "archetype",
+          "summary": "blast of electricity (1d6 electricity damage/2 HD of construct); Reflex negates (DC = 10 + 1/2 the ranger’s level + his Intelligence modifier); multiple targets (all targets within 5 ft. of construct’s remains) Other types of destroyed constructs can serve as suitable materials for a rigged construct trap (at the GM’s discretion). Constructs destroyed by disintegrate or similar effects that leave no intact remains cannot be used to create a rigged construct trap. This ability replaces woodland stride."
+        },
+        {
+          "id": "ranger-galvanic-saboteur-static-strike-ex-8",
+          "name": "Static Strike (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, the galvanic saboteur has gathered enough parts and scrap from his constructed enemies that he can infuse some of his attacks with a bit of their alien energy. Once per day as a standard action, the ranger can make a static strike as a melee attack at his full base attack bonus. If the attack hits, it deals an additional 1d6 points of electricity damage and the ranger can make an additional attack at his full base attack bonus against a foe that is adjacent to the previous foe and still within his reach, as if he had Cleave, except he doesn’t take a –2 penalty to his AC and the second attack deals an additional 2d6 points of electricity damage. At 12th level, the ranger can continue to make attacks against adjacent creatures, as if he had Greater Cleave, with each hit increasing the amount of electricity damage dealt to the next foe in line. The ranger can use this ability twice per day at 14th level and three times per day at 20th level. This ability replaces swift tracker and camouflage."
+        },
+        {
+          "id": "ranger-galvanic-saboteur-sensor-evasion-su-17",
+          "name": "Sensor Evasion (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a galvanic saboteur has mastered the art of evading technological and magical observation. He can use the Stealth skill against constructs and magical sensors (such as those created by arcane eye or clairaudience/clairvoyance ) even while being observed. This ability replaces hide in plain sight."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Galvanic%20Saboteur"
+  }
+}

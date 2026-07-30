@@ -1,0 +1,45 @@
+{
+  "id": "sorcerer-wildblooded",
+  "name": "Wildblooded",
+  "classId": "sorcerer",
+  "summary": "A wildblooded sorcerer has a mutated version of a more common bloodline, with one arcana and at least one bloodline power that are different from those of an unmutated bloodline.",
+  "replacesText": "Bloodline",
+  "replacements": [
+    {
+      "featureIds": [
+        "sorcerer-bloodline-1",
+        "sorcerer-bloodline-power-1",
+        "sorcerer-bloodline-power-3",
+        "sorcerer-bloodline-spell-3",
+        "sorcerer-bloodline-spell-5",
+        "sorcerer-bloodline-spell-7",
+        "sorcerer-bloodline-feat-7",
+        "sorcerer-bloodline-power-9",
+        "sorcerer-bloodline-spell-9",
+        "sorcerer-bloodline-spell-11",
+        "sorcerer-bloodline-spell-13",
+        "sorcerer-bloodline-feat-13",
+        "sorcerer-bloodline-power-15",
+        "sorcerer-bloodline-spell-15",
+        "sorcerer-bloodline-spell-17",
+        "sorcerer-bloodline-spell-19",
+        "sorcerer-bloodline-feat-19",
+        "sorcerer-bloodline-power-20"
+      ],
+      "features": [
+        {
+          "id": "sorcerer-wildblooded-wildblooded-1",
+          "name": "Wildblooded",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A wildblooded sorcerer has a mutated version of a more common bloodline, with one arcana and at least one bloodline power that are different from those of an unmutated bloodline. When creating a wildblooded sorcerer, select an existing bloodline, then select one of the following mutated bloodlines associated with that bloodline. Use the normal bloodline's class skill, bonus spells, and bonus feats, and the mutated bloodline's bloodline arcana. Use the normal bloodline's bloodline powers, except when the mutated bloodline replaces one of those powers."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Wildblooded"
+  }
+}

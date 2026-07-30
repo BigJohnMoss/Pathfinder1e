@@ -1,0 +1,48 @@
+{
+  "id": "wizard-spirit-binder",
+  "name": "Spirit Binder",
+  "classId": "wizard",
+  "summary": "While most wizards learn their arts through gradual study, spirit binders have made a sudden arcane breakthrough due to the traumatic experience of losing a loved one.",
+  "replacesText": "Arcane Bond; Arcane School; Scribe Scroll; Bonus Feats",
+  "replacements": [
+    {
+      "featureIds": [
+        "wizard-arcane-bond-1",
+        "wizard-arcane-school-1",
+        "scribe-scroll-1",
+        "wizard-bonus-feat-5",
+        "wizard-bonus-feat-10",
+        "wizard-bonus-feat-15",
+        "wizard-bonus-feat-20"
+      ],
+      "features": [
+        {
+          "id": "wizard-spirit-binder-soulbound-familiar-ex-1",
+          "name": "Soulbound Familiar (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spirit binder must select a familiar for his arcane bond. Unlike in a normal familiar-summoning ritual, a spirit binder created his special familiar through a dangerous ritual catalyzed by the death of a loved one. Before the loved one’s spirit passed on to the Boneyard, the spirit binder was able to bind the spirit to an animal or vermin, which then became his familiar. A soulbound familiar’s personality is that of the lost loved one, rather than a servant of the spirit binder. It can have any alignment, even one that is diametrically opposed to the spirit binder’s. A soulbound familiar has the base attack bonus and base saving throws of the loved one’s favored class (using the spirit binder’s level as its level). If the loved one died before the beginning of the campaign, the spirit binder selects the familiar’s favored class at 1st level and it cannot be changed. This ability alters arcane bond."
+        },
+        {
+          "id": "wizard-spirit-binder-arcane-school-1",
+          "name": "Arcane School",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spirit binder can’t choose necromancy as an opposition school. This ability alters arcane school."
+        },
+        {
+          "id": "wizard-spirit-binder-lost-talents-ex-1",
+          "name": "Lost Talents (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spirit binder’s soulbound familiar possesses some of the ability of the lost loved one, and it is capable of learning more. At 1st level, 5th level, and every 5 levels thereafter, the spirit binder’s familiar gains a new feat for which it meets the prerequisites. This ability replaces Scribe Scroll and the wizard’s bonus feats."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Spirit%20Binder"
+  }
+}

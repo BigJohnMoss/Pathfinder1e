@@ -1,0 +1,60 @@
+{
+  "id": "monk-nimble-guardian",
+  "name": "Nimble Guardian",
+  "classId": "monk",
+  "summary": "(Catfolk Only) Some catfolk monks dedicate their graceful prowess to the defense of others, especially those dedicated to a similar ethos or who prove themselves as stalwart allies of the monk’s cause.",
+  "replacesText": "Evasion; Still Mind; Purity of Body; Wholeness of Body; Improved Evasion",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-evasion-2",
+        "monk-improved-evasion-9",
+        "monk-still-mind-3",
+        "monk-purity-of-body-5",
+        "monk-wholeness-of-body-7"
+      ],
+      "features": [
+        {
+          "id": "monk-nimble-guardian-defensive-aid-ex-2",
+          "name": "Defensive Aid (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a number of times per day equal to his Wisdom bonus, a nimble guardian can interpose herself between one adjacent ally and an attack or damage dealt in an area of effect. If an adjacent ally is the target of the attack or is required to make a Reflex saving throw against a damaging effect, as an immediate action the nimble guardian can grant that ally a +4 circumstance bonus to AC or on the saving throw against the effect. The nimble guardian must use this ability before the attack roll or saving throw is made. The nimble guardian can only use this ability if he is wearing light or no armor. This ability replaces evasion."
+        },
+        {
+          "id": "monk-nimble-guardian-nimble-reflexes-ex-3",
+          "name": "Nimble Reflexes (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a nimble guardian gains a +2 bonus on all Reflex saving throws. This ability replaces still mind."
+        },
+        {
+          "id": "monk-nimble-guardian-defensive-mastery-ex-5",
+          "name": "Defensive Mastery (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a nimble guardian gains 3 additional uses of her defensive aid ability per day. Furthermore, if an ally that gained the benefit of a use of defensive aid succeeds her Reflex saving throw, and the effect still deals damage on a successful saving throw, the nimble guardian can spend 1 ki point to negate that damage. Doing so is not an action. This ability replaces purity of body."
+        },
+        {
+          "id": "monk-nimble-guardian-guardian-feline-su-7",
+          "name": "Guardian Feline (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a nimble guardian can transform himself into a feline creature by spending 2 ki points. The effect lasts for 1 hour or until the nimble guardian changes back. Changing form (to animal or back) is a standard action and does not provoke an attack of opportunity. The chosen form must be some form of feline (cheetah, lion, etc.). This ability is otherwise identical to beast shape II . At 9th level, this ability functions as beast shape III . This ability replaces wholeness of body."
+        },
+        {
+          "id": "monk-nimble-guardian-evasion-ex-9",
+          "name": "Evasion (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a nimble guardian gains evasion. This ability replaces improved evasion."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Nimble%20Guardian"
+  }
+}

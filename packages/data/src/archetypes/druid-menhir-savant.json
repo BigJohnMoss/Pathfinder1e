@@ -1,0 +1,53 @@
+{
+  "id": "druid-menhir-savant",
+  "name": "Menhir Savant",
+  "classId": "druid",
+  "summary": "Some druids study the paths of nature’s power through the nodes and ley lines that connect standing stones and megalithic circles, learning to tap into their energies.",
+  "replacesText": "Nature Sense; Wild Empathy; Woodland Stride; Trackless Step; A Thousand Faces",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-nature-sense-1",
+        "druid-wild-empathy-1",
+        "druid-woodland-stride-2",
+        "druid-trackless-step-3",
+        "druid-thousand-faces-13"
+      ],
+      "features": [
+        {
+          "id": "druid-menhir-savant-spirit-sense-sp-1",
+          "name": "Spirit Sense (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a menhir savant can detect the presence of undead; fey; outsiders; and astral, ethereal, or incorporeal creatures. This ability functions like detect undead , and the druid detects all of these creatures rather than trying to detect one kind. This ability replaces nature sense and wild empathy."
+        },
+        {
+          "id": "druid-menhir-savant-place-magic-su-2",
+          "name": "Place Magic (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a menhir savant learns to identify and tap into ley lines in different types of terrain. As a free action, she can tap into the magic of a nearby ley line and increase her caster level by +1 for 1 round. She can use this ability a number of times per day equal to 3 + her Wisdom bonus. This ability replaces woodland stride and trackless step."
+        },
+        {
+          "id": "druid-menhir-savant-walk-the-lines-su-9",
+          "name": "Walk the Lines (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a menhir savant can use her connection to ley lines to cast transport via plants a number of times per day equal to her Wisdom bonus."
+        },
+        {
+          "id": "druid-menhir-savant-empty-body-su-13",
+          "name": "Empty Body (Su)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a menhir savant can become ethereal as a standard action, as if using ethereal jaunt . She can remain ethereal for a number of rounds per day equal to her druid level. These rounds do not need to be consecutive. This ability replaces a thousand faces."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Menhir%20Savant"
+  }
+}

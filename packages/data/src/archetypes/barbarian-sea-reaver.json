@@ -1,0 +1,66 @@
+{
+  "id": "barbarian-sea-reaver",
+  "name": "Sea Reaver",
+  "classId": "barbarian",
+  "summary": "Some sea reavers are no more than hunters of the open sea, while others are raiders striking fear into coastal settlements within reach of the sea reavers’ longships.",
+  "replacesText": "Fast Movement; Uncanny Dodge; Trap Sense; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1",
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5",
+        "trap-sense-3"
+      ],
+      "features": [
+        {
+          "id": "barbarian-sea-reaver-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sea reaver is not proficient with medium armor."
+        },
+        {
+          "id": "barbarian-sea-reaver-marine-terror-ex-1",
+          "name": "Marine Terror (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sea reaver can hold her breath for a number of rounds equal to four times her Constitution score. In addition, a sea reaver can move normally though squares of standing water or bog that is 1 foot deep. It does not cost her extra movement to traverse these terrains. Lastly, a sea reaver ignores the normal cover bonus to AC when attacking creatures that are partially immersed in water. This ability replaces fast movement."
+        },
+        {
+          "id": "barbarian-sea-reaver-eyes-of-the-storm-ex-2",
+          "name": "Eyes of the Storm (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a sea reaver ignores any concealment provided by fog, rain, sleet, mist, wind, or other weather effects that is less than total concealment, and any penalties weather applies on Perception checks are halved. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "barbarian-sea-reaver-savage-sailor-ex-3",
+          "name": "Savage Sailor (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a sea reaver gains a +1 bonus on Acrobatics, Climb, Profession (sailor), Survival, and Swim checks made in aquatic terrain, including aboard a ship or along shorelines. These bonuses improve by +1 every three levels after 3rd. This ability replaces trap sense."
+        },
+        {
+          "id": "barbarian-sea-reaver-sure-footed-ex-5",
+          "name": "Sure-Footed (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a sea reaver takes no penalties when moving across slick surfaces, whether natural or magical (e.g., grease , ice storm , and sleet storm ). She is not at risk of falling, is not denied her Dexterity bonus when moving across such areas, and does not treat them as difficult terrain. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-sea-reaver-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the sea reaver archetype: bestial leaper, bestial swimmer, come and get me, hurling charge, raging leaper, raging swimmer, rolling dodge, and smasher."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Sea%20Reaver"
+  }
+}

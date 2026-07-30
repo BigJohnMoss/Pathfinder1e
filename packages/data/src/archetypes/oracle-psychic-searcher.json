@@ -1,0 +1,50 @@
+{
+  "id": "oracle-psychic-searcher",
+  "name": "Psychic Searcher",
+  "classId": "oracle",
+  "summary": "A psychic searcher is devoted to revealing the hidden within the world around her by sensing and communing with residual mental energy, haunts, and fragments of living spirits that can dwell in objects or rooms.",
+  "replacesText": "Bonus Spells; 2nd-level Mystery Spell; 3rd-level Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-mystery-spell-2",
+        "oracle-revelation-3"
+      ],
+      "features": [
+        {
+          "id": "oracle-psychic-searcher-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Augury (4th), locate object (6th), divination (8th), find the path (12th), discern location (16th), foresight (18th). These bonus spells replace the oracle’s normal mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-psychic-searcher-inspiration-ex-2",
+          "name": "Inspiration (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a psychic searcher gains an inspiration pool, as the investigator class ability. A psychic searcher uses her oracle level as her investigator level to determine the effects of this ability. She gains free uses of inspiration on Diplomacy, Knowledge (arcana, history, local, nobility, planes, religion), and Sense Motive skill checks without spending a use of inspiration, provided she’s trained in that skill. A psychic searcher’s inspiration pool refreshes each day, usually when she refreshes her spells. A psychic searcher’s inspiration pool is based on her Charisma modifier, not her Intelligence modifier. This ability replaces the mystery spell gained at 2nd level."
+        },
+        {
+          "id": "oracle-psychic-searcher-psychic-talent-su-3",
+          "name": "Psychic Talent (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a psychic searcher’s mastery of her supernatural insight grows, granting her a new investigator talent from the following list: amazing inspiration, eidetic recollection, empathy, inspired alertness, item lore, perceptive tracking (except using Sense Motive instead of Perception or Survival), rogue talent (only for hard to foolAPG), and tenacious inspiration. Whenever a psychic searcher can select a new revelation, she can instead select an investigator or rogue talent from the above list. This ability replaces the revelation gained at 3rd level."
+        },
+        {
+          "id": "oracle-psychic-searcher-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Ancestor, lore, nature."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Psychic%20Searcher"
+  }
+}

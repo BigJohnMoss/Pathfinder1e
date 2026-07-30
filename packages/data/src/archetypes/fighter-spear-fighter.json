@@ -1,0 +1,77 @@
+{
+  "id": "fighter-spear-fighter",
+  "name": "Spear Fighter",
+  "classId": "fighter",
+  "summary": "One of the oldest spear-fighting styles originates in Vudra, where many martial arts traditions consider the spear to be the ultimate weapon.",
+  "replacesText": "Class Skills; Armor Proficiencies; Bravery; Armor Training; Armor Mastery; Weapon Training; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "armor-mastery-19",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-spear-fighter-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spear fighter adds Acrobatics to his list of class skills and removes Ride as a class skill. This alters the fighter’s class skills."
+        },
+        {
+          "id": "fighter-spear-fighter-armor-proficiency-1",
+          "name": "Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spear fighter is not proficient with heavy armor or tower shields. Instead, he gains Dodge as a bonus feat, even if he doesn’t fulfill the prerequisites, but he can’t use this feat while wearing heavy armor or using a shield. This alters the fighter’s armor proficiencies."
+        },
+        {
+          "id": "fighter-spear-fighter-balanced-stride-ex-2",
+          "name": "Balanced Stride (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the spear fighter gains a +1 bonus on Acrobatics checks to avoid attacks of opportunity. This bonus increases by 1 for every 4 levels he has beyond 2nd. This replaces bravery."
+        },
+        {
+          "id": "fighter-spear-fighter-spear-parry-ex-3",
+          "name": "Spear Parry (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a spear fighter learns to parry his opponents’ attacks with his spear. This functions as a swashbuckler’s opportune parry and riposte deed except as noted below. The spear fighter must use a weapon from the spears weapon group to perform the parry. He doesn’t need panache to parry an attack or to make an attack against a creature whose attack he has parried; instead, he takes a cumulative –4 penalty on all attacks (including further parry attempts) until the end of his next turn. At 7th, 11th, and 15th levels, the penalty decreases by 1. At 19th level, a spear fighter can use spear parry without penalty. This replaces armor training 1, 2, 3, and 4, and armor mastery."
+        },
+        {
+          "id": "fighter-spear-fighter-weapon-training-ex-5",
+          "name": "Weapon Training (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a spear fighter must choose the spears weapon group for the weapon training class feature."
+        },
+        {
+          "id": "fighter-spear-fighter-weapon-mastery-ex-20",
+          "name": "Weapon Mastery (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a spear fighter must choose a weapon from the spears weapon group for his weapon mastery class feature."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Spear%20Fighter"
+  }
+}

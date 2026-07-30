@@ -1,0 +1,63 @@
+{
+  "id": "bard-studious-librarian",
+  "name": "Studious Librarian",
+  "classId": "bard",
+  "summary": "Studious librarians are bards that have studied long in great libraries of the Inner Sea region.",
+  "replacesText": "Distraction; Suggestion; Jack-of-All-Trades; Dirge of Doom; Mass Suggestion; Deadly Performance",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-distraction-1",
+        "bard-suggestion-6",
+        "bard-mass-suggestion-18",
+        "bard-jack-of-all-trades-10",
+        "bard-jack-of-all-trades-16",
+        "bard-jack-of-all-trades-19",
+        "bard-dirge-of-doom-8",
+        "bard-deadly-performance-20"
+      ],
+      "features": [
+        {
+          "id": "bard-studious-librarian-scribe-scroll-6",
+          "name": "Scribe Scroll",
+          "level": 6,
+          "type": "archetype",
+          "summary": "A studious librarian gains Scribe Scroll as a bonus feat. This ability replaces distraction.Comparative Arcane Studies (Su): At 6th level, the studious librarian is exposed to a wide variety of magical writing, and can use his own magic to duplicate spells from other classes’ spell lists. Once per day, a studious librarian can cast any spell from the bard, sorcerer/wizard, or witch spell lists from a scroll or spellbook in hand as if it were one of his bard spells known, expending a bard spell slot of the same spell level to cast the desired spell. Casting a spell from a scroll this way does not cause the spell to vanish from the scroll. A spell cast in this way cannot be modified by metamagic. The studious librarian gains one additional daily use of this ability at 10th level and again every 4 bard levels thereafter, to a maximum of four times per day at 18th level. This ability replaces suggestion and jack-of-all-trades.Critical Research Focus (Ex): At 8th level, the studious librarian threatens a critical hit on a Research check (Ultimate Intrigue 148) with a roll of 18, 19, or 20. He gains a +4 bonus on Research checks to confirm a critical hit. This ability replaces dirge of doom.Perfect Recollection (Ex): At 19th level, the studious librarian can always take 20 on Knowledge checks. This ability replaces mass suggestion.One with the Library (Ex): At 20th level, the studious librarian can replace one of her spells known with any bard spell from a scroll once per day by studying the scroll for 1 hour. Doing so erases the spell from the scroll. This ability replaces deadly performance."
+        },
+        {
+          "id": "bard-studious-librarian-comparative-arcane-studies-su-6",
+          "name": "Comparative Arcane Studies (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the studious librarian is exposed to a wide variety of magical writing, and can use his own magic to duplicate spells from other classes’ spell lists. Once per day, a studious librarian can cast any spell from the bard , sorcerer/wizard , or witch spell lists from a scroll or spellbook in hand as if it were one of his bard spells known, expending a bard spell slot of the same spell level to cast the desired spell. Casting a spell from a scroll this way does not cause the spell to vanish from the scroll. A spell cast in this way cannot be modified by metamagic. The studious librarian gains one additional daily use of this ability at 10th level and again every 4 bard levels thereafter, to a maximum of four times per day at 18th level. This ability replaces suggestion and jack-of-all-trades."
+        },
+        {
+          "id": "bard-studious-librarian-critical-research-focus-ex-8",
+          "name": "Critical Research Focus (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, the studious librarian threatens a critical hit on a Research check ( Ultimate Intrigue 148 ) with a roll of 18, 19, or 20. He gains a +4 bonus on Research checks to confirm a critical hit. This ability replaces dirge of doom."
+        },
+        {
+          "id": "bard-studious-librarian-perfect-recollection-ex-19",
+          "name": "Perfect Recollection (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, the studious librarian can always take 20 on Knowledge checks. This ability replaces mass suggestion."
+        },
+        {
+          "id": "bard-studious-librarian-one-with-the-library-ex-20",
+          "name": "One with the Library (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, the studious librarian can replace one of her spells known with any bard spell from a scroll once per day by studying the scroll for 1 hour. Doing so erases the spell from the scroll. This ability replaces deadly performance."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Studious%20Librarian"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "id": "wizard-thassilonian-specialist",
+  "name": "Thassilonian Specialist",
+  "classId": "wizard",
+  "summary": "Specialist in a Thassilonian school of magic, this specialist sacrifices his connection with two schools in order to greatly strengthen his chosen specialty.",
+  "replacesText": "Lose access to two schools of magic",
+  "nestedReplacements": [
+    "Lose access to two schools of magic"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-lose-access-to-two-schools-of-magic"
+      ],
+      "features": [
+        {
+          "id": "wizard-thassilonian-specialist-benefits-1",
+          "name": "Benefits",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Thassilonian specialist wizard receives two additional spell slots of each spell level he can cast. These bonus spell slots must both be used to prepare the same spell from the wizard’s school of specialization, allowing the wizard to cast that spell twice (as he has prepared the spell twice). The wizard cannot use these slots to prepare two different spells, even if they are of the school he is specialized in."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-restrictions-1",
+          "name": "Restrictions",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Thassilonian specialist does not get to customize his choice for opposition schools—that choice is selected for him when he chooses his specialization. These restrictions are more significant than those most wizards follow, and are known as prohibited schools. A Thassilonian wizard can never prepare a spell that is in one of his prohibited schools—he treats these spells as if they were not on the wizard spell list. If using a spell trigger or spell completion item to cast a spell from one of his prohibited schools, he must use the Use Magic Device skill to do so."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-thassilonian-magic-1",
+          "name": "Thassilonian Magic",
+          "level": 1,
+          "type": "archetype",
+          "summary": "While the concept of wizard specializations along the classically recognized schools of magic certainly dates back to the time of Azlant, and perhaps beyond into the dim recesses of time before humanity rose to prominence, it was the runelords of Thassilon who explored school specialization to its full extreme. Focusing their research on the discovery that each school of magic was opposed by two specific opposition schools, the runelords developed methods of further enhancing their mastery over their chosen arcane specialties. Essentially, they defined these seven schools as much by what they couldn’t do as by what they could. By excising “impurities” introduced by fixed oppositional schools, they traded arcane versatility for greater strength in their chosen fields. The seven schools of Thassilonian Magic are presented here."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-envy-abjuration-1",
+          "name": "Envy (Abjuration)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The art of suppressing magic other than your own. Prohibited Schools : evocation, necromancy."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-gluttony-necromancy-1",
+          "name": "Gluttony (Necromancy)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Magic that manipulates the physical body to provide for an unending hunger for life. Prohibited Schools : abjuration, enchantment."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-greed-transmutation-1",
+          "name": "Greed (Transmutation)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Magically transforming things into objects of greater value or utility, and enhancing the physical self. Prohibited Schools : enchantment, illusion."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-lust-enchantment-1",
+          "name": "Lust (Enchantment)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Magically controlling and dominating other creatures to satisfy your desires, and manipulating others’ minds, emotions, and wills. Prohibited Schools : necromancy, transmutation."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-pride-illusion-1",
+          "name": "Pride (Illusion)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Perfecting your own appearance and domain through trickery and illusions. Prohibited Schools : conjuration, transmutation."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-sloth-conjuration-1",
+          "name": "Sloth (Conjuration)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Calling agents and minions to perform your deeds for you, or creating what you need as you need it. Prohibited Schools : evocation, illusion."
+        },
+        {
+          "id": "wizard-thassilonian-specialist-wrath-evocation-1",
+          "name": "Wrath (Evocation)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Mastery of the raw destructive power of magic, and channeling those destructive forces. Prohibited Schools : abjuration, conjuration."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Thassilonian%20Specialist"
+  }
+}

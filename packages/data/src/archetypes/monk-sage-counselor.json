@@ -1,0 +1,56 @@
+{
+  "id": "monk-sage-counselor",
+  "name": "Sage Counselor",
+  "classId": "monk",
+  "summary": "Sage counselors are ascetics and mystics who leave the confines of the monastery walls to advise secular people about spiritual truths and to seek knowledge of the outside world.",
+  "replacesText": "Class Skills; 1st, 2nd, 6th, 10th-level Bonus Feat; Ki Pool abilities",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-monk-bonus-feat-1",
+        "monk-monk-bonus-feat-2",
+        "monk-monk-bonus-feat-6",
+        "monk-monk-bonus-feat-10",
+        "monk-ki-pool-4",
+        "monk-ki-pool-7",
+        "monk-ki-pool-10",
+        "monk-ki-pool-16"
+      ],
+      "features": [
+        {
+          "id": "monk-sage-counselor-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sage counselor adds Bluff, Diplomacy, and Knowledge (nobility) to his list of class skills, instead of Climb, Escape Artist, and Perception. This alters the monk’s class skills."
+        },
+        {
+          "id": "monk-sage-counselor-cunning-fist-ex-2",
+          "name": "Cunning Fist (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A sage counselor gains Combat Expertise as a bonus feat, even if he doesn’t meet the prerequisites, and he can ignore the Intelligence prerequisite on feats that have Combat Expertise as a prerequisite. At 2nd level, he gains Improved Feint, and at 6th level, he gains Greater Feint, even if he doesn’t meet the prerequisites. This ability replaces the bonus feats gained at 1st, 2nd, and 6th levels."
+        },
+        {
+          "id": "monk-sage-counselor-feinting-flurry-4",
+          "name": "Feinting Flurry",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a sage counselor can spend 1 ki point while performing a flurry of blows to feint an opponent as a swift action, but he can’t spend 1 ki point to make an additional attack when making a flurry of blows. At 10th level, he can also choose to replace his first attack during a flurry of blows with a feint check. This ability alters flurry of blows and ki pool, and it replaces the bonus feat gained at 10th level."
+        },
+        {
+          "id": "monk-sage-counselor-deceptive-ki-su-4",
+          "name": "Deceptive Ki (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the sage counselor can spend 1 point from his ki pool as a swift action to give himself a +4 insight bonus on his next Bluff check. The sage counselor does not gain the ability to spend ki to increase his speed by 20 feet for 1 round. This ability alters ki pool."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Sage%20Counselor"
+  }
+}

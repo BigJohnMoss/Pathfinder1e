@@ -1,0 +1,59 @@
+{
+  "id": "paladin-redeemer",
+  "name": "Redeemer",
+  "classId": "paladin",
+  "summary": "(Half-Orc Only) As most half-orcs are outcasts, a half-orc paladin recognizes that often those who are monstrous are not necessarily evil and that sometimes even those who are evil became that way because of circumstances and misfortune.",
+  "replacesText": "Smite Evil; Detect Evil; Aura of Resolve; Aura of Justice",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-smite-evil-1",
+        "paladin-detect-evil-1",
+        "paladin-aura-of-resolve-8",
+        "paladin-aura-of-justice-11"
+      ],
+      "features": [
+        {
+          "id": "paladin-redeemer-merciful-smite-su-1",
+          "name": "Merciful Smite (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, when a redeemer chooses to smite a creature, she can have all of her attacks against the target deal nonlethal damage. She does not take the normal –4 attack roll penalty for using a lethal weapon to deal nonlethal damage. She cannot use this ability to deal nonlethal damage to outsiders with the evil subtype, evil-aligned dragons, or undead creatures (these creatures take lethal damage from her smite). This otherwise works like and replaces the standard paladin’s smite evil."
+        },
+        {
+          "id": "paladin-redeemer-monstrous-rapport-ex-1",
+          "name": "Monstrous Rapport (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, redeemers gain a +2 bonus on Diplomacy checks to influence creatures who are commonly considered monstrous. This includes but is not limited to \"monstrous\" races such as goblins and orcs, monstrous humanoids, and other intelligent non-humanoid monsters. This ability replaces detect evil ."
+        },
+        {
+          "id": "paladin-redeemer-pact-of-peace-sp-8",
+          "name": "Pact of Peace (Sp)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a redeemer can force a defeated creature to accept a binding pact of peace as a condition of its surrender, as if using lesser geas . Her caster level for this ability is equal to her paladin level. Rather than assigning a mission or task, the redeemer gives the creature a simple set of prohibitions to protect others. Example geas include \"Leave this city and do not return\" or \"Do not attack caravans.\" The prohibition must be against an area no larger than 300 square miles or one specific group of people (such as a tribe or citizens of a particular city). This ability lasts 1 month per paladin level. This replaces aura of resolve."
+        },
+        {
+          "id": "paladin-redeemer-aura-of-mercy-su-11",
+          "name": "Aura of Mercy (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a redeemer can expend two uses of her merciful smite ability to grant the merciful smite ability to all allies within 10 feet, using her bonuses. Allies must use this merciful smite ability by the start of the paladin’s next turn and the bonuses last for 1 minute. Using this ability is a free action. Evil creatures gain no benefit from this ability. This replaces aura of justice."
+        },
+        {
+          "id": "paladin-redeemer-associates-1",
+          "name": "Associates",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A redeemer may ally with an evil creature as long as she feels the creature is capable of redemption. A redeemer may accept henchmen, followers, or cohorts who are not lawful good provided they demonstrate they are willing to follow her and seek betterment under her tutelage."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Redeemer"
+  }
+}

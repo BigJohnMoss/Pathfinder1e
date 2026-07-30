@@ -1,0 +1,56 @@
+{
+  "id": "barbarian-untamed-rager",
+  "name": "Untamed Rager",
+  "classId": "barbarian",
+  "summary": "There are no rules in the wild. Some barbarians enter combat with only victory in mind and do anything in their power to achieve it.",
+  "replacesText": "Uncanny Dodge; Trap Sense; Improved Uncanny Dodge; Damage Reduction",
+  "replacements": [
+    {
+      "featureIds": [
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5",
+        "trap-sense-3",
+        "damage-reduction-7",
+        "damage-reduction-10",
+        "damage-reduction-13",
+        "damage-reduction-16",
+        "damage-reduction-19"
+      ],
+      "features": [
+        {
+          "id": "barbarian-untamed-rager-despicable-tactics-2",
+          "name": "Despicable Tactics",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the untamed rager gains Improved Dirty Trick as a bonus feat. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "barbarian-untamed-rager-feral-appearance-ex-3",
+          "name": "Feral Appearance (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the untamed rager gains a +1 bonus on Intimidate checks. This bonus increases by 1 every 3 barbarian levels thereafter. This ability replaces trap sense."
+        },
+        {
+          "id": "barbarian-untamed-rager-deplorable-tactics-5",
+          "name": "Deplorable Tactics",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the untamed rager gains Greater Dirty Trick as a bonus feat. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-untamed-rager-dishonorable-ex-7",
+          "name": "Dishonorable (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level and every 3 barbarian levels thereafter, the untamed rager gains a +1 bonus on combat maneuver checks when performing dirty tricks and to her CMD to resist others’ dirty tricks. This ability replaces damage reduction."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Untamed%20Rager"
+  }
+}

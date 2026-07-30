@@ -1,0 +1,54 @@
+{
+  "id": "fighter-corsair",
+  "name": "Corsair",
+  "classId": "fighter",
+  "summary": "A corsair is a pirate who focuses on shipboard combat, relying on his strength of arms over his agility.",
+  "replacesText": "2nd-level Bonus Feat; Armor Training; 6th-level Bonus Feat",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-2",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "fighter-bonus-feat-6"
+      ],
+      "features": [
+        {
+          "id": "fighter-corsair-pirate-weapons-ex-1",
+          "name": "Pirate Weapons (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A corsair is well versed in the types of weapons favored by pirates. When selecting a group of weapons for his Weapon Training ability, he can select Pirate Weapons as a group. The Pirate Weapons group consists of the crossbow, cutlass, dagger, hook hand, rapier, and short sword."
+        },
+        {
+          "id": "fighter-corsair-deck-fighting-ex-2",
+          "name": "Deck Fighting (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A corsair is used to fighting on crowded decks, and isn’t fazed by fighting multiple opponents at once. At 2nd level, he gains Cleave as a bonus feat. He may use this feat even if he does not meet the prerequisites. A corsair does not take the normal –2 penalty to his AC when using the Cleave feat. This ability replaces the fighter’s 2nd-level bonus feat."
+        },
+        {
+          "id": "fighter-corsair-armored-pirate-ex-3",
+          "name": "Armored Pirate (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A corsair wears heavier armor than is common aboard a ship. At 3rd level, the corsair reduces the armor check penalty of any light armor he wears to 0 for purposes of Acrobatics and Swim checks. At 7th level, this becomes true of medium armor as well. At 11th level, it includes heavy armor. This ability replaces armor training."
+        },
+        {
+          "id": "fighter-corsair-improved-deck-fighting-ex-6",
+          "name": "Improved Deck Fighting (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the corsair gains Great Cleave as a bonus feat. He may use this feat even if he does not meet the prerequisites. A corsair does not take the normal –2 penalty to his AC when using the Great Cleave feat. This ability replaces the fighter’s 6th-level bonus feat."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Corsair"
+  }
+}

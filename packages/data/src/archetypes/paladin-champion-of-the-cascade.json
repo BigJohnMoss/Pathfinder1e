@@ -1,0 +1,63 @@
+{
+  "id": "paladin-champion-of-the-cascade",
+  "name": "Champion of the Cascade",
+  "classId": "paladin",
+  "summary": "Champions of the cascade are paladins who defend the freedom and purity of waterways, protecting the very existence of the civilizations they belong to.",
+  "replacesText": "Armor Proficiency; Class Skills; Divine Health; Mercy; Divine Bond",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-divine-health-3",
+        "paladin-mercy-3",
+        "paladin-mercy-6",
+        "paladin-mercy-9",
+        "paladin-mercy-12",
+        "paladin-mercy-15",
+        "paladin-mercy-18",
+        "paladin-divine-bond-5"
+      ],
+      "features": [
+        {
+          "id": "paladin-champion-of-the-cascade-armor-proficiency-1",
+          "name": "Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A champion of the cascade is proficient with light armor, medium armor, and shields (except tower shields). This alters the paladin’s armor proficiency."
+        },
+        {
+          "id": "paladin-champion-of-the-cascade-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A champion of the cascade adds Acrobatics, Knowledge (geography), and Swim to her list of class skills and removes Knowledge (nobility). This alters the paladin’s class skills."
+        },
+        {
+          "id": "paladin-champion-of-the-cascade-swiftsurge-ex-3",
+          "name": "Swiftsurge (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a champion of the cascade does not take any penalty on Acrobatics or Swim checks due to her armor check penalty. This replaces divine health."
+        },
+        {
+          "id": "paladin-champion-of-the-cascade-flowing-stride-su-3",
+          "name": "Flowing Stride (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, whenever a champion of the cascade uses lay on hands to restore hit points to one target, she can grant a willing target the ability to walk on water as water walk for 1 minute. At 9th level, this extends to creatures healed by her channel positive energy. At 15th level, healed creatures can walk on water for 24 hours. This replaces mercy."
+        },
+        {
+          "id": "paladin-champion-of-the-cascade-rising-tide-su-5",
+          "name": "Rising Tide (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a champion of the cascade’s connection to her deity allows her to summon rivers and alter her surroundings. As a standard action, she can change up to two 5-foot squares per paladin level within 100 feet to become freshwater pools with a depth of up to 5 feet per paladin level. The squares must be adjacent to each other. Each creature standing in the area where she first creates the water must attempt a Reflex save (DC = 10 + half the paladin’s level + the paladin’s Charisma modifier) to jump to the nearest unaffected space and avoid falling into the water. The champion of the cascade can use this ability for 1 minute per paladin level. These minutes do not need to be consecutive, but they must be spent in 1-minute increments. The changed squares revert back to their original form after the duration ends, and any creatures in the water are shunted out to the nearest open space. At 10th level, as a swift action, she may spend 1 minute of her rising tide’s duration to create a geyser in any body of water she has created, lifting an allied creature in that square up to 10 feet per paladin level into the air for 1 round. This replaces divine bond."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Champion%20of%20the%20Cascade"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "oracle-hermit",
+  "name": "Hermit",
+  "classId": "oracle",
+  "summary": "A hermit is a recluse who gained her oracular powers from isolation in a deep desert, on a mountain peak, or in another secluded location.",
+  "replacesText": "Mystery; Curse; 4th, 8th, 12th, 16th-level Bonus Spells; 1st, 7th-level Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-mystery-1",
+        "oracle-mystery-spell-2",
+        "oracle-curse-1",
+        "oracle-revelation-1",
+        "oracle-revelation-7"
+      ],
+      "features": [
+        {
+          "id": "oracle-hermit-mystery-1",
+          "name": "Mystery",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A hermit must choose a mystery that adds Survival to his list of class skills, such as nature or stone."
+        },
+        {
+          "id": "oracle-hermit-oracle-s-curse-1",
+          "name": "Oracle’s Curse",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A hermit must choose the reclusive curse (below) at 1st level."
+        },
+        {
+          "id": "oracle-hermit-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Blindness/deafness (4th), crushing despair (8th), wall of force (12th), maze (16th). These bonus spells replace the oracle’s normal mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-hermit-revelations-5",
+          "name": "Revelations",
+          "level": 5,
+          "type": "archetype",
+          "summary": "A hermit must take the following revelations at the listed levels. Recluse’s Stride (Su) : Your base speed increases by 10 feet. At 5th level, once per round when leaving a square, you can treat the square as though it isn’t threatened by any opponents that you can see. At 10th level, you can teleport a distance equal to your base land speed (as per dimension door ) as a move action, provided that there are no other creatures within 10 feet of you when you use this ability and no other creatures within 10 feet of your destination. You can teleport a number of times per day equal to 3 + your Charisma modifier. You must take this revelation at 1st level. Fade from Memory (Su) At 7th level, whenever there are no creatures within 10 feet of you at the end of your turn, you gain 20% concealment until the beginning of your next turn as a free action. At 14th level, you instead gain 50% concealment until the beginning of your next turn. You can use this ability a number of times per day equal to your oracle level. You must take this revelation at 7th level."
+        },
+        {
+          "id": "oracle-hermit-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Heavens, life, nature, stone."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Hermit"
+  }
+}

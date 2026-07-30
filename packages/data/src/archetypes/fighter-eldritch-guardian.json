@@ -1,0 +1,55 @@
+{
+  "id": "fighter-eldritch-guardian",
+  "name": "Eldritch Guardian",
+  "classId": "fighter",
+  "summary": "Eldritch guardians are trained to detect and give warning about magic threats to the people and places they protect.",
+  "replacesText": "Class Skills; 1st and 2nd-level Bonus Feats; Bravery",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "fighter-bonus-feat-2",
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18"
+      ],
+      "features": [
+        {
+          "id": "fighter-eldritch-guardian-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The eldritch guardian adds Perception, Spellcraft, and Use Magic Device to his list of class skills, but does not gain Intimidate, Ride, or Swim as class skills."
+        },
+        {
+          "id": "fighter-eldritch-guardian-familiar-ex-1",
+          "name": "Familiar (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an eldritch guardian gains a familiar, treating his fighter level as his effective wizard level for the purpose of this ability. This ability replaces the bonus feat gained at 1st level."
+        },
+        {
+          "id": "fighter-eldritch-guardian-share-training-ex-2",
+          "name": "Share Training (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, when the familiar can see and hear its master, it can use any combat feat possessed by the eldritch guardian. The familiar doesn’t have to meet the feat’s prerequisites, but at the GM’s discretion may be precluded from using certain combat feats due to its physical form. For example, an eldritch guardian’s pig familiar with access to Exotic Weapon Proficiency (spiked chain) would not gain the ability to use spiked chains, since it doesn’t have any limbs capable of properly handling them. This ability replaces the bonus feat gained at 2nd level."
+        },
+        {
+          "id": "fighter-eldritch-guardian-steel-will-ex-2",
+          "name": "Steel Will (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the eldritch guardian gains a +1 bonus on Will saves against fear and mind-affecting effects. This bonus increases by 1 for every 4 levels beyond 2nd. This ability replaces bravery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Eldritch%20Guardian"
+  }
+}

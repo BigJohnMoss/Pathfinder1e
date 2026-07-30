@@ -1,0 +1,68 @@
+{
+  "id": "paladin-tranquil-guardian",
+  "name": "Tranquil Guardian",
+  "classId": "paladin",
+  "summary": "(Aasimar Only) A tranquil guardian is a missionary of peace and tranquility, a soothing voice of succor in a violent and dangerous world.",
+  "replacesText": "Smite Evil; Aura of Courage; Divine Bond; Aura of Resolve; Aura of Justice; Holy Champion",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-smite-evil-1",
+        "paladin-aura-of-courage-3",
+        "paladin-divine-bond-5",
+        "paladin-aura-of-resolve-8",
+        "paladin-aura-of-justice-11",
+        "paladin-holy-champion-20"
+      ],
+      "features": [
+        {
+          "id": "paladin-tranquil-guardian-touch-of-serenity-su-1",
+          "name": "Touch of Serenity (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a tranquil guardian gains Touch of Serenity as a bonus feat, even if she does not meet the prerequisites. At 6th level, and every six levels thereafter, the duration of a tranquil guardian’s Touch of Serenity increases by 1 round. Each round on its turn, the target may attempt a new Will save to end the effect. The duration does not stack; only the longest remaining duration applies. This ability replaces smite evil."
+        },
+        {
+          "id": "paladin-tranquil-guardian-serene-strike-su-3",
+          "name": "Serene Strike (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, when a tranquil guardian confirms a critical hit, she may convert all damage from her attack to nonlethal damage, and when she does, she can activate Touch of Serenity through her weapon or unarmed strike. Using serene strike is a free action. This ability replaces aura of courage."
+        },
+        {
+          "id": "paladin-tranquil-guardian-divine-bond-su-1",
+          "name": "Divine Bond (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tranquil guardian who chooses a weapon as her divine bond may only increase her weapon’s enhancement bonus or add the following properties to her weapon: conductive , defending , disruptive , grayflame , or merciful ."
+        },
+        {
+          "id": "paladin-tranquil-guardian-aura-of-calm-su-8",
+          "name": "Aura of Calm (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a tranquil guardian is immune to all spells and spell-like abilities with the emotion descriptor, as well as all fear effects. Each ally within 10 feet of her gains a +4 morale bonus on saving throws against these effects. This ability functions only while the tranquil guardian is conscious, not if she is unconscious or dead. This ability replaces aura of resolve."
+        },
+        {
+          "id": "paladin-tranquil-guardian-waves-of-peace-su-11",
+          "name": "Waves of Peace (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a tranquil guardian may expend 2 uses of her Touch of Serenity to affect each opponent within 5 feet of her with that effect. She does not need to touch the creature for the effect to take hold. This ability replaces aura of justice."
+        },
+        {
+          "id": "paladin-tranquil-guardian-apostle-of-peace-su-20",
+          "name": "Apostle of Peace (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a tranquil guardian’s DR increases to 10/evil, and whenever she channels positive energy or uses lay on hands to heal, she heals the maximum possible amount. In addition, any creature struck by her Touch of Serenity, even if it saves, must make an additional Will save (DC 10 + 1/2 her tranquil guardian level + her Charisma modifier) the next time it tries to attack. If it fails this save, the attack (including spells or special abilities) automatically fails. This ability replaces holy champion."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Tranquil%20Guardian"
+  }
+}

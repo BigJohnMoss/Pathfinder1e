@@ -1,0 +1,55 @@
+{
+  "id": "ranger-deep-walker",
+  "name": "Deep Walker",
+  "classId": "ranger",
+  "summary": "Some rangers devote their lives to the woods, becoming hunters, protectors, and wilderness guides among its diverse terrain types.",
+  "replacesText": "Favored Terrain; Woodland Stride; Camouflage; Hide in Plain Sight",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18",
+        "ranger-woodland-stride-7",
+        "ranger-camouflage-12",
+        "ranger-hide-in-plain-sight-17"
+      ],
+      "features": [
+        {
+          "id": "ranger-deep-walker-deep-knowledge-ex-3",
+          "name": "Deep Knowledge (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a deep walker gains a +2 bonus on initiative checks and Knowledge (dungeoneering), Perception, Stealth, and Survival skill checks while underground (in caves and dungeons). Every 5 levels thereafter, the deep walker gains an additional +3 on each of those checks while underground (to a maximum of +11 at 18th level). This ability replaces favored terrain."
+        },
+        {
+          "id": "ranger-deep-walker-rock-hopper-ex-7",
+          "name": "Rock Hopper (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a deep walker instinctively grasps for the most stable surfaces and holds on tighter while moving over underground rock and stone. The deep walker gains a +5 bonus on all Acrobatics and Climb checks made to traverse underground terrain. Furthermore, the deep walker ignores difficult terrain created by underground terrain and subterranean flora. This ability replaces woodland stride."
+        },
+        {
+          "id": "ranger-deep-walker-deep-walker-camouflage-ex-12",
+          "name": "Deep Walker Camouflage (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a deep walker can use the Stealth skill to hide in underground environments, even if the terrain does not grant cover or concealment. This ability replaces camouflage."
+        },
+        {
+          "id": "ranger-deep-walker-one-with-the-stone-ex-17",
+          "name": "One with the Stone (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a deep walker can use the Stealth skill while he is underground, even when being observed. This ability replaces hide in plain sight."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Deep%20Walker"
+  }
+}

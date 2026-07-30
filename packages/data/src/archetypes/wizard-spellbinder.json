@@ -1,0 +1,35 @@
+{
+  "id": "wizard-spellbinder",
+  "name": "Spellbinder",
+  "classId": "wizard",
+  "summary": "(Elf Only) A spellbinder is an elven wizard who forges an arcane bond between himself and one or more wizard spells.",
+  "replacesText": "Arcane Bond",
+  "replacements": [
+    {
+      "featureIds": [
+        "wizard-arcane-bond-1"
+      ],
+      "features": [
+        {
+          "id": "wizard-spellbinder-spell-bond-su-1",
+          "name": "Spell Bond (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a spellbinder selects any one spell that he knows as a bonded spell. As a full-round action, the spellbinder may replace a spell of the same or higher level as his bonded spell with his bonded spell. For example, a spellbinder who selects magic missile as his bonded spell could spend a full-round action to exchange any 1st-level or higher spell that he has prepared with magic missile . At 3rd level, and every two levels thereafter, a spellbinder may select another spell he knows and add it to his list of bonded spells, to a maximum of nine bonded spells at 17th level. Upon reaching 4th level, and every two levels thereafter, a spellbinder can choose to select a new spell as a bonded spell in place of one with which he is already bonded. In effect, the spellbinder loses the bond with the old spell (though it is still one of his spells known) in exchange for forging a spell bond with a new spell. The new spell’s level must be the same as that of the spell being exchanged. A spellbinder may swap only one spell bond at any given level, and must choose whether or not to swap the spell bond at the same time that he gains two new spells known for the level. This ability replaces arcane bond."
+        },
+        {
+          "id": "wizard-spellbinder-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the spellbinder archetype: Fast Study, Split Slot."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Spellbinder"
+  }
+}

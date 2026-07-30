@@ -1,0 +1,95 @@
+{
+  "id": "fighter-dragonheir-scion",
+  "name": "Dragonheir Scion",
+  "classId": "fighter",
+  "summary": "Dragonheir scions are the martially inclined humanoid descendants of those influenced by draconic power.",
+  "replacesText": "Class Skills; 1st, 3rd, 5th-level Bonus Feats; Bravery; Armor Training; Armor Mastery; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "armor-mastery-19",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-dragonheir-scion-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The dragonheir scion adds Knowledge (arcana) and Use Magic Device to her list of class skills, instead of Handle Animal or Ride. This alters the fighter’s class skills."
+        },
+        {
+          "id": "fighter-dragonheir-scion-draconic-bloodline-su-1",
+          "name": "Draconic Bloodline (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Each dragonheir scion can draw her lineage back to the influence of a great draconic progenitor. At 1st level, a dragonheir scion must select one of the chromatic or metallic dragon types. Once chosen, this cannot be changed. A number of dragonheir scion’s abilities deal damage and grant resistances based on her dragon type, as noted below. If a dragonheir scion takes a level in another class that grants a bloodline, the bloodlines must be of the same type, even if that means that the bloodline of one of the classes must change. Subject to GM discretion, the dragonheir scion can change her former bloodline to make them conform. Chromatic Dragon TypeEnergy TypeMetallic Dragon TypeEnergy TypeBlackAcidBrassFireBlueElectricityBronzeElectricityGreenAcidCopperAcidRedFireGoldFireWhiteColdSilverCold"
+        },
+        {
+          "id": "fighter-dragonheir-scion-eldritch-strikes-su-1",
+          "name": "Eldritch Strikes (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a dragonheir scion gains Arcane Strike as a bonus feat. She does not need to meet its prerequisites. This ability replaces the bonus feat gained at 1st level."
+        },
+        {
+          "id": "fighter-dragonheir-scion-fearful-might-ex-1",
+          "name": "Fearful Might (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a dragonheir scion gains a +1 bonus on Intimidate checks to demoralize a foe. This bonus increases to +2 at 6th level and by an additional 1 every 4 fighter levels thereafter to a maximum of +5 at 18th level. This ability replaces bravery."
+        },
+        {
+          "id": "fighter-dragonheir-scion-draconic-defense-su-3",
+          "name": "Draconic Defense (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a dragonheir scion gains a +1 natural armor bonus and energy resistance 5 against her energy type. At 7th level, this increases to a +2 natural armor bonus and energy resistance 10; at 13th level, it increases to a +3 natural armor bonus and energy resistance 20. This ability replaces armor training 1, 2, and 3."
+        },
+        {
+          "id": "fighter-dragonheir-scion-draconic-strike-su-3",
+          "name": "Draconic Strike (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, whenever the dragonheir scion damages a target with an attack augmented by Arcane Strike, the attack deals an additional 1d4 points of damage of the dragonheir scion’s energy type. This ability replaces the bonus feat gained at 3rd level."
+        },
+        {
+          "id": "fighter-dragonheir-scion-draconic-presense-su-5",
+          "name": "Draconic Presense (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the dragonheir scion receives Dazzling Display as a bonus feat. She does not need a weapon in hand to use this ability, and can use it as a standard action. This ability replaces the bonus feat gained at 5th level."
+        },
+        {
+          "id": "fighter-dragonheir-scion-wings-su-15",
+          "name": "Wings (Su)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a dragonheir scion can grow leathery dragon wings from her back as a standard action, granting her a fly speed of 60 feet with average maneuverability. She can dismiss the wings as a free action. This ability replaces armor training 4 and armor mastery."
+        },
+        {
+          "id": "fighter-dragonheir-scion-might-of-wyrms-su-20",
+          "name": "Might of Wyrms (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a dragonheir scion’s draconic heritage becomes manifest. She gains immunity to paralysis, sleep, and damage of her energy type, as well as blindsense with a range of 60 feet. This ability replaces weapon mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Dragonheir%20Scion"
+  }
+}

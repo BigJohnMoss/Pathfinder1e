@@ -1,0 +1,56 @@
+{
+  "id": "rogue-swamp-poisoner",
+  "name": "Swamp Poisoner",
+  "classId": "rogue",
+  "summary": "(Grippli) Swamp poisoners use their own toxins to defend their homes and level the playing field",
+  "replacesText": "Racial Traits; Trapfinding; 2nd-level Rogue Talent; Trap Sense",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-talent-2",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-swamp-poisoner-prerequisites-1",
+          "name": "Prerequisites",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A swamp poisoner must have selected the toxic skin grippli alternate racial trait."
+        },
+        {
+          "id": "rogue-swamp-poisoner-mucous-membrane-ex-1",
+          "name": "Mucous Membrane (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A swamp poisoner gains a bonus equal to half his class level on Escape Artist checks and to his CMD when resisting grapple attempts (minimum 1). This replaces trapfinding."
+        },
+        {
+          "id": "rogue-swamp-poisoner-mark-the-vein-ex-2",
+          "name": "Mark the Vein (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, when the swamp poisoner attacks a target that is currently affected by his grippli racial poison, that target is denied its Dexterity bonus to AC. The target must be actively poisoned, not just suffering the effects of poison, such as lingering ability damage. This replaces the rogue talent gained at 2nd level."
+        },
+        {
+          "id": "rogue-swamp-poisoner-poison-the-well-ex-3",
+          "name": "Poison the Well (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level as a standard action, a swamp poisoner can smear the poison generated through the use of his toxic skin alternate racial trait onto the ground in a 5-foot area, instead of onto a weapon or his own body. The first creature other than the swamp poisoner to enter the area is exposed to the poison. The poison loses its potency after 1 hour. This area is considered a trap, and the DCs of Perception checks to notice it and Disable Device checks to disable it are equal to 10 + half the swamp poisoner’s level + the swamp poisoner’s Constitution modifier. The swamp poisoner also gains an extra use per day of his toxic skin alternate racial trait, plus one additional use per day for every 3 levels beyond 3rd. This replaces trap sense. An unchained rogue replaces danger sense instead."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Swamp%20Poisoner"
+  }
+}

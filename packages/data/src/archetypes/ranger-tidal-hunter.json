@@ -1,0 +1,67 @@
+{
+  "id": "ranger-tidal-hunter",
+  "name": "Tidal Hunter",
+  "classId": "ranger",
+  "summary": "The tidal hunter draws strength from the fish and other wildlife of the deep.",
+  "replacesText": "Wild Empathy; 6th-level Combat Style Feat; Track; Camouflage; Favored Terrain; Woodland Stride; Improved Evasion",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-wild-empathy-1",
+        "ranger-combat-style-feat-6",
+        "ranger-track-1",
+        "ranger-swift-tracker-8",
+        "ranger-camouflage-12",
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18",
+        "ranger-woodland-stride-7",
+        "ranger-evasion-9",
+        "ranger-improved-evasion-16"
+      ],
+      "features": [
+        {
+          "id": "ranger-tidal-hunter-waterborn-su-6",
+          "name": "Waterborn (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "A tidal hunter can breathe water for up to 10 minutes per ranger level each day. At 6th level, he can breathe underwater indefinitely. This replaces wild empathy and the 6th-level combat style feat."
+        },
+        {
+          "id": "ranger-tidal-hunter-keen-scent-ex-12",
+          "name": "Keen Scent (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "A tidal hunter gains scent, as per the universal monster rule. At 12th level, while in water, the tidal hunter can detect particularly strong or distinct odors (such as blood) up to 1 mile away. This replaces track and camouflage."
+        },
+        {
+          "id": "ranger-tidal-hunter-aquatic-mastery-ex-3",
+          "name": "Aquatic Mastery (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a tidal hunter must select water as his favored terrain, and he doesn’t gain additional favored terrains. At 8th level and every 5 levels thereafter, the bonus from this favored terrain increases by 2. This alters favored terrain."
+        },
+        {
+          "id": "ranger-tidal-hunter-wave-rush-ex-7",
+          "name": "Wave Rush (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a tidal hunter gains a swim speed equal to his base speed. If he already has a swim speed, it increases by 10 feet. This replaces woodland stride."
+        },
+        {
+          "id": "ranger-tidal-hunter-tidal-surge-sp-16",
+          "name": "Tidal Surge (Sp)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, a tidal hunter gains control over water, and he can use the tides to attack his foes. Once per day, he can cast tidal surge as a spell-like ability. This replaces improved evasion."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Tidal%20Hunter"
+  }
+}

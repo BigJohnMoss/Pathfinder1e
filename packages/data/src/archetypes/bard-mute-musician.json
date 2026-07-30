@@ -1,0 +1,88 @@
+{
+  "id": "bard-mute-musician",
+  "name": "Mute Musician",
+  "classId": "bard",
+  "summary": "A mute musician forswears speech for the unnatural songs and thunderous silences of the depths of space.",
+  "replacesText": "Bardic Knowledge; Inspire Competence; Frightening Tune; Inspire Heroics; Mass Suggestion; Versatile Performance; Well-Versed; Jack-of-All-Trades",
+  "replacements": [
+    {
+      "featureIds": [
+        "bardic-knowledge-1",
+        "bard-inspire-competence-3",
+        "bard-inspire-competence-7",
+        "bard-inspire-competence-11",
+        "bard-inspire-competence-15",
+        "bard-inspire-competence-19",
+        "bard-frightening-tune-14",
+        "bard-inspire-heroics-15",
+        "bard-suggestion-6",
+        "bard-mass-suggestion-18",
+        "bard-versatile-performance-2",
+        "bard-versatile-performance-6",
+        "bard-versatile-performance-10",
+        "bard-versatile-performance-14",
+        "bard-versatile-performance-18",
+        "bard-well-versed-2",
+        "bard-jack-of-all-trades-10",
+        "bard-jack-of-all-trades-16",
+        "bard-jack-of-all-trades-19"
+      ],
+      "features": [
+        {
+          "id": "bard-mute-musician-mute-ex-1",
+          "name": "Mute (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mute musician has a disability or injury (possibly self-inflicted or even psychological) that prevents her from speaking or vocalizing. Language-dependent effects (including Perform [oratory]) require the bard to be able to use telepathy, nonverbal languages, or writing to communicate. She cannot use Perform (sing) or speak languages, though she can still create audible bardic performances by means of a musical instrument. A mute musician can provide verbal and somatic components for spells she casts via any musical instrument in which she has ranks in the appropriate Perform skill."
+        },
+        {
+          "id": "bard-mute-musician-eschew-materials-ex-1",
+          "name": "Eschew Materials (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mute musician gains Eschew Materials as a bonus feat at 1st level. This ability replaces bardic knowledge."
+        },
+        {
+          "id": "bard-mute-musician-bardic-performance-3",
+          "name": "Bardic Performance",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A mute musician gains the following bardic performances. Symphony of Silence (Su) : At 3rd level, the mute musician’s music muffles all other sounds within a 30-foot radius. All creatures in the area of effect gain a +2 bonus on all saving throws made against sonic attacks or language-dependent effects. This bonus increases to +3 at 7th level, +4 at 11th level, +5 at 15th level, and +6 at 19th level. Symphony of silence relies on audible components. This bardic performance replaces inspire competence. Maddening Harmonics (Su) : At 14th level, the mute musician can create a performance so baffling and discordant that it usurps all thought within a 30-foot radius with chaos and entropy. The mute musician can select which creatures in this area are affected by the maddening harmonics and which are not. All targeted creatures within this area must succeed at a Will saving throw (DC = 10 + 1/2 the bard’s level + the bard’s Charisma modifier) or be confused for as long as they can hear the performance. If the creature succeeds at its saving throw, it is immune to this ability for 24 hours. This performance relies on audible components. This bardic performance replaces frightening tune. Ceaseless Performance (Su) : At 15th level, the mute musician can continue taking the free action to maintain a bardic performance even while confused, cowering in fear, dazed, nauseated, panicked, paralyzed, petrified, silenced, staggered, stunned, or unconscious. Even if the mute musician is killed, she can continue to take the free action to maintain her performance as long as she has rounds remaining. Only the utter destruction of the mute musician’s body (such as via destruction or disintegrate , or by reducing the bard to a negative hit point total equal to 10 Ã— her Constitution score) causes the performance to end. This ability replaces inspire heroics. Song of the Conjunction (Su) : At 18th level, the mute musician can harmonize with the alien chorus beyond the music of the spheres, creating a portentous cosmic alignment. This effect duplicates a gate used to travel, save that the destination point must be on the same plane as the bard, but it is not otherwise limited by distance. This bardic performance replaces mass suggestion."
+        },
+        {
+          "id": "bard-mute-musician-insights-from-beyond-ex-2",
+          "name": "Insights from Beyond (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a mute musician adds two abjuration, conjuration (calling), conjuration (summoning), or conjuration (teleportation) spells from the sorcerer/wizard spell list to her list of bard spells known. At 6th level and every 4 bard levels thereafter, she can choose two more spells to add to her spells known. This class feature replaces versatile performance."
+        },
+        {
+          "id": "bard-mute-musician-dulled-horror-ex-2",
+          "name": "Dulled Horror (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a mute musician gains a +4 bonus on saves against confusion, fear, insanity effects, and the supernatural abilities of aberrations. This class feature replaces well-versed."
+        },
+        {
+          "id": "bard-mute-musician-eldritch-caesura-su-10",
+          "name": "Eldritch Caesura (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a mute musician can insert unsettling silences into her otherworldly music by spending an additional 1 round of bardic performance per round. This supernatural technique impossibly blurs the line between music and light, transmitting audible performances and sonic bard spells through most barriers save lead. This allows the music and sonic spells to affect creatures across planar boundaries (including on the Ethereal or Shadow Planes), vacuums, and areas of magical silence. This class feature replaces jack-of-all-trades."
+        },
+        {
+          "id": "bard-mute-musician-ex-mute-musicians-1",
+          "name": "Ex-Mute Musicians",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mute musician who regains the ability to speak or chooses to speak aloud loses all abilities granted by this archetype. She can regain the archetype’s abilities by spending 24 hours without speaking."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Mute%20Musician"
+  }
+}

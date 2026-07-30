@@ -1,0 +1,75 @@
+{
+  "id": "monk-maneuver-master",
+  "name": "Maneuver Master",
+  "classId": "monk",
+  "summary": "The maneuver master specializes in more complicated moves than simple damage-dealing strikes.",
+  "replacesText": "Flurry of Blows; Still Mind; Slow Fall; Purity of Body; Diamond Body; Quivering Palm",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-flurry-of-blows-1",
+        "monk-still-mind-3",
+        "monk-slow-fall-4",
+        "monk-purity-of-body-5",
+        "monk-diamond-body-11",
+        "monk-quivering-palm-15"
+      ],
+      "features": [
+        {
+          "id": "monk-maneuver-master-bonus-feat-6",
+          "name": "Bonus Feat",
+          "level": 6,
+          "type": "archetype",
+          "summary": "In addition to normal monk bonus feats, a maneuver master may select any Improved combat maneuver feat (such as Improved Overrun) as a bonus feat. At 6th level and above, he may select any Greater combat maneuver feat (such as Greater Grapple) as a bonus feat. At 10th level and above, he may select any maneuver Strike feat (such as Tripping Strike) as a bonus feat."
+        },
+        {
+          "id": "monk-maneuver-master-flurry-of-maneuvers-ex-1",
+          "name": "Flurry of Maneuvers (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, as part of a full-attack action, a maneuver master can make one additional combat maneuver, regardless of whether the maneuver normally replaces a melee attack or requires a standard action. The maneuver master uses his monk level in place of his base attack bonus to determine his CMB for the bonus maneuvers, though all combat maneuver checks suffer a –2 penalty when using a flurry. At 8th level, a maneuver master may attempt a second additional combat maneuver, with an additional –3 penalty on combat maneuver checks. At 15th level, a maneuver master may attempt a third additional combat maneuver, with an additional –7 penalty on combat maneuver checks. A maneuver master loses this ability when wearing armor, using a shield, or carrying a medium or heavy load. This ability replaces flurry of blows."
+        },
+        {
+          "id": "monk-maneuver-master-maneuver-defense-ex-3",
+          "name": "Maneuver Defense (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, if a maneuver master has an Improved combat maneuver feat, any creature attempting that maneuver against the maneuver master provokes an attack of opportunity, even if it would not normally do so. This ability replaces still mind."
+        },
+        {
+          "id": "monk-maneuver-master-reliable-maneuver-ex-4",
+          "name": "Reliable Maneuver (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, as a swift action, a maneuver master may spend 1 point from his ki pool before attempting a combat maneuver. He can roll his combat maneuver check for that maneuver twice and use the better result. This ability replaces slow fall."
+        },
+        {
+          "id": "monk-maneuver-master-meditative-maneuver-ex-5",
+          "name": "Meditative Maneuver (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, as a swift action, a maneuver master can add his Wisdom modifier on any combat maneuver check he makes before the beginning of his next turn. He must choose which combat maneuver check to grant the bonus to before making the combat maneuver check. This ability replaces purity of body."
+        },
+        {
+          "id": "monk-maneuver-master-sweeping-maneuver-ex-11",
+          "name": "Sweeping Maneuver (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a maneuver master can make two combat maneuvers as a standard action, as long as neither maneuver requires the maneuver master to move. He may perform two identical maneuvers against two adjacent enemies, or he may perform two different combat maneuvers against the same target. This ability replaces diamond body."
+        },
+        {
+          "id": "monk-maneuver-master-whirlwind-maneuver-ex-15",
+          "name": "Whirlwind Maneuver (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, once per day as a full-round action, a maneuver master can attempt a single combat maneuver against every opponent he threatens, as long as the combat maneuver does not require movement. He makes a single combat maneuver check, and it applies to all targets. This ability replaces quivering palm."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Maneuver%20Master"
+  }
+}

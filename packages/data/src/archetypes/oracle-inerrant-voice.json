@@ -1,0 +1,42 @@
+{
+  "id": "oracle-inerrant-voice",
+  "name": "Inerrant Voice",
+  "classId": "oracle",
+  "summary": "An inerrant voice serves as a spiritual advisor to either a monarch or noble.",
+  "replacesText": "2nd, 4th, 8th, 14th-level Bonus Spells; 3rd-level Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-revelation-3"
+      ],
+      "features": [
+        {
+          "id": "oracle-inerrant-voice-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Ancestor UM , intrigue UI , life, lore."
+        },
+        {
+          "id": "oracle-inerrant-voice-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An inerrant voice gains the following bonus spells: shield other (2nd), augury (4th), divination (8th), vision (14th). These replace the bonus spells at those levels gained from the oracle’s mystery."
+        },
+        {
+          "id": "oracle-inerrant-voice-revelations-3",
+          "name": "Revelations",
+          "level": 3,
+          "type": "archetype",
+          "summary": "An inerrant voice must take the following revelation at 3rd level. Vigilant Protector (Su) : Each day when you recover your spells, you can select a specific person you know other than yourself as your ward. When your ward becomes the target of an attack or spell and you are aware of the attack, you can cast an abjuration spell you know on the ally as an immediate action. You must expend the appropriate spell slot and be able to target the ally as normal for the spell. At 11th level, as an immediate action when you know your ward is targeted, you can transpose yourself with your ward, teleporting into the original target’s square (and becoming the new target of the attack or spell) while your ally is teleported into yours; this is a teleportation effect that doesn’t provoke attacks of opportunity. You can use this revelation once per day, plus an additional time at 7th level and every 4 oracle levels thereafter."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Inerrant%20Voice"
+  }
+}

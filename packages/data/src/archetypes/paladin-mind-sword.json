@@ -1,0 +1,49 @@
+{
+  "id": "paladin-mind-sword",
+  "name": "Mind Sword",
+  "classId": "paladin",
+  "summary": "Veterans of mystical battles against demons of the Worldwound, mind swords merge psychic and divine power, probing and cleansing minds while their telekinetic blades cleave demonic flesh.",
+  "replacesText": "Lay on Hands; Mercy; Channel Positive Energy",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-lay-on-hands-2",
+        "paladin-mercy-3",
+        "paladin-mercy-6",
+        "paladin-mercy-9",
+        "paladin-mercy-12",
+        "paladin-mercy-15",
+        "paladin-mercy-18",
+        "paladin-channel-positive-energy-4"
+      ],
+      "features": [
+        {
+          "id": "paladin-mind-sword-mind-arsenal-su-2",
+          "name": "Mind Arsenal (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a mind sword can make a telekinetic attack with a melee weapon. This functions as the hand of the apprentice universalist wizard school ability, but any calculations of that ability based on Intelligence are instead based on Charisma. At 6th level, a mind sword can expend two uses of this ability as a fullround action to attack the same opponent multiple times, as if using the full-attack action. At 12th level, a mind sword can expend one use of this ability as a full-round action to combine melee attacks and ranged attacks aimed at different targets within 60 feet as part of a single full-attack action. This ability replaces lay on hands."
+        },
+        {
+          "id": "paladin-mind-sword-touch-treatment-su-3",
+          "name": "Touch Treatment (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a mind sword can expend one use of her mind arsenal ability to remove minor harmful mental conditions, as per the mesmerist touch treatment class feature ( Pathfinder RPG Occult Adventures 43). At 9th level, she can remove moderate conditions, and at 15th level, she can remove major conditions. This ability replaces mercy."
+        },
+        {
+          "id": "paladin-mind-sword-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mind sword adds the following psychic spells to her paladin spell list at the listed spell levels: 1st— detect psychic significance OA , mage hand , telekinetic projectile OA , thought shield I OA ; 2nd— apport object OA , enshroud thoughts OA , mental barrier I OA , thought shield II OA ; 3rd— intellect fortress I OA , mental barrier II OA , telekinetic maneuver OA , thought shield III OA ; 4th— intellect fortress II OA , telekinesis , thought shield IV OA , thoughtsense OA , tower of iron will I OA . The mind sword can prepare and cast these psychic spells as divine paladin spells. However, the mind sword cannot use these spells for item creation, including making potions or scrolls of these spells. This ability replaces channel positive energy."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Mind%20Sword"
+  }
+}

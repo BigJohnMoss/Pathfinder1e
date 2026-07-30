@@ -1,0 +1,105 @@
+{
+  "id": "fighter-unbreakable",
+  "name": "Unbreakable",
+  "classId": "fighter",
+  "summary": "The unbreakable is a warrior of indomitable will, unstoppable and implacable once he has set his mind upon a course of action.",
+  "replacesText": "Weapon/Armor Proficiency; 1st-level Bonus Feat; Bravery; Weapon Training 1-4; Armor Training 3-4; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-unbreakable-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An unbreakable is not proficient with tower shields."
+        },
+        {
+          "id": "fighter-unbreakable-tough-as-nails-1",
+          "name": "Tough as Nails",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An unbreakable gains Endurance and Die Hard as bonus feats. This ability replaces the fighter’s 1st-level bonus feat."
+        },
+        {
+          "id": "fighter-unbreakable-unflinching-ex-2",
+          "name": "Unflinching (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an unbreakable gains a +1 bonus on Will saves against mind-affecting effects. This bonus increases by +1 for every four levels after 2nd level (to a maximum of +5 at 18th level). This ability replaces bravery."
+        },
+        {
+          "id": "fighter-unbreakable-heroic-recovery-ex-5",
+          "name": "Heroic Recovery (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, an unbreakable gains the Heroic Recovery feat as a bonus feat, if he does not have it already. If he already has this feat, the unbreakable can choose any combat feat instead. In addition, he may use this feat one additional time per day for every four levels after 5th (to a maximum of 4 times per day at 17th level). This ability replaces weapon training 1."
+        },
+        {
+          "id": "fighter-unbreakable-heroic-defiance-ex-9",
+          "name": "Heroic Defiance (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, an unbreakable gains the Heroic Defiance feat as a bonus feat, if he does not have it already. If he already has this feat, the unbreakable can choose any combat feat instead. In addition, he may use this feat one additional time per day for every four levels after 9th (to a maximum of 3 times per day at 19th level). This ability replaces weapon training 2."
+        },
+        {
+          "id": "fighter-unbreakable-quick-recovery-ex-11",
+          "name": "Quick Recovery (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, an unbreakable needs only 15 minutes of rest or to be subject to a healing spell or effect to recover from the fatigued condition. This ability replaces armor training 3."
+        },
+        {
+          "id": "fighter-unbreakable-stalwart-ex-13",
+          "name": "Stalwart (Ex)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, when an unbreakable succeeds on a Fortitude or Will save against a spell or spell-like ability that has a partial effect even on a successful save, he is completely unaffected by it. This ability replaces weapon training 3."
+        },
+        {
+          "id": "fighter-unbreakable-unlimited-endurance-ex-15",
+          "name": "Unlimited Endurance (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, when an unbreakable is exhausted, he only suffers the effects of the fatigued condition instead, but does require 1 hour of rest to reduce this condition to the actual fatigued condition. This ability replaces armor training 4."
+        },
+        {
+          "id": "fighter-unbreakable-miraculous-recovery-ex-17",
+          "name": "Miraculous Recovery (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, when an unbreakable makes a saving throw to recover from an ongoing effect, he may roll twice and choose the better roll. This ability replaces weapon training 4."
+        },
+        {
+          "id": "fighter-unbreakable-unbreakable-mind-ex-20",
+          "name": "Unbreakable Mind (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, an unbreakable becomes nearly impossible to sway with honeyed words or magic. He gains immunity to mind-affecting effects. This ability replaces weapon mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Unbreakable"
+  }
+}

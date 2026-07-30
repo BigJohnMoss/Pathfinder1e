@@ -1,0 +1,39 @@
+{
+  "id": "fighter-mutation-warrior",
+  "name": "Mutation Warrior",
+  "classId": "fighter",
+  "summary": "While most fighters rely on physical fitness and rigorous training to achieve martial superiority, a few prefer to create and imbibe dangerous concoctions that mutate them into fearsome creatures.",
+  "replacesText": "Armor Training 1-4; Armor Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "armor-mastery-19"
+      ],
+      "features": [
+        {
+          "id": "fighter-mutation-warrior-mutagen-su-3",
+          "name": "Mutagen (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a mutation warrior discovers how to create a mutagen that he can imbibe in order to heighten his physical prowess at the cost of his personality. This ability functions as the alchemist’s mutagen ability ( Advanced Player’s Guide 28), using his fighter level as his alchemist level. This ability replaces armor training 1."
+        },
+        {
+          "id": "fighter-mutation-warrior-mutagen-discovery-su-7",
+          "name": "Mutagen Discovery (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level and every 4 levels thereafter, the mutation warrior can choose one of the following alchemist discoveries ( Advanced Player’s Guide 28) to augment his abilities: feral mutagen, grand mutagen, greater mutagen, infuse mutagen, nauseating flesh UC , preserve organs UM , rag doll mutagen ARG , spontaneous healing UM , tentacle UM , vestigial arm UM , wings UM . The mutagen warrior uses his fighter level as his effective alchemist level for the purpose of these discoveries. This ability replaces armor training 2, 3, 4, and armor mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Mutation%20Warrior"
+  }
+}

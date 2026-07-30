@@ -1,0 +1,74 @@
+{
+  "id": "cleric-stoic-caregiver",
+  "name": "Stoic Caregiver",
+  "classId": "cleric",
+  "summary": "Stoic caregivers are champions of life in defiance of untimely death as well as undeath.",
+  "replacesText": "Channel Energy; Domains;",
+  "replacements": [
+    {
+      "featureIds": [
+        "channel-energy-1",
+        "cleric-channel-energy-type-1",
+        "cleric-domain-1-first",
+        "cleric-domain-1-second",
+        "cleric-domain-spell-1",
+        "cleric-domain-spell-2",
+        "cleric-domain-spell-3",
+        "cleric-domain-spell-4",
+        "cleric-domain-spell-5",
+        "cleric-domain-spell-6",
+        "cleric-domain-spell-7",
+        "cleric-domain-spell-8",
+        "cleric-domain-spell-9",
+        "cleric-spellcasting-1",
+        "cleric-aura-1",
+        "cleric-deity-1",
+        "cleric-alignment-1",
+        "cleric-orisons-1",
+        "cleric-spontaneous-casting-1"
+      ],
+      "features": [
+        {
+          "id": "cleric-stoic-caregiver-positive-channeler-su-1",
+          "name": "Positive Channeler (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A stoic caregiver must choose to channel positive energy, even if she worships a deity who is neutral or if she is not devoted to a particular deity. A stoic caregiver cannot worship a deity who is evil. This ability alters channel energy."
+        },
+        {
+          "id": "cleric-stoic-caregiver-domains-1",
+          "name": "Domains",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A stoic caregiver chooses only one domain. This ability alters domains."
+        },
+        {
+          "id": "cleric-stoic-caregiver-midwife-training-su-1",
+          "name": "Midwife Training (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A stoic caregiver is an expert at caring for lives that are in the process of being formed as well as the bodies of those who expect to usher new life into the world. The stoic caregiver gains a +2 bonus on Heal checks to treat expectant mothers and children. Any Heal check by the stoic caregiver that deals damage to the patient always deals the minimum amount of damage. Whenever a stoic caregiver stops bleeding with the Heal skill or magical healing, or restores hit points with a healing spell or channeled positive energy, the healed creature gains partial resistance to bleed damage and negative energy for a number of minutes equal to 1/2 the stoic caregiver’s cleric level. Any bleed damage a target takes during that time is halved. Additionally, when protected creatures take negative energy damage (such as from an evil cleric’s or an antipaladin’s negative channeled energy, or spells such as inflict light wounds), the amount of that damage is reduced by 5."
+        },
+        {
+          "id": "cleric-stoic-caregiver-fated-cures-su-1",
+          "name": "Fated Cures (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Creatures must roll twice and take the lower result when they make any saving throws against a stoic caregiver’s spells of the healing subschool."
+        },
+        {
+          "id": "cleric-stoic-caregiver-three-aspect-channel-su-6",
+          "name": "Three-Aspect Channel (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a stoic caregiver can channel positive energy to heal and harm simultaneously. When she does so, she restores only 1/2 the usual amount of hit points and deals only 1/2 the usual number of points of damage (or 1/4 on a successful saving throw)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Stoic%20Caregiver"
+  }
+}

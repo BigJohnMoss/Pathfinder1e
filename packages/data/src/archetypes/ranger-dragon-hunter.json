@@ -1,0 +1,75 @@
+{
+  "id": "ranger-dragon-hunter",
+  "name": "Dragon Hunter",
+  "classId": "ranger",
+  "summary": "The quintessential dragonslayers, dragon hunters are\nexperts at forging through the wilds in search of great\nwyrms.",
+  "replacesText": "Class Skills; Track; 5th, 10th, 15th, 20th-level Favored Enemies",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-track-1",
+        "ranger-swift-tracker-8",
+        "ranger-favored-enemy-5",
+        "ranger-favored-enemy-10",
+        "ranger-favored-enemy-15",
+        "ranger-favored-enemy-20"
+      ],
+      "features": [
+        {
+          "id": "ranger-dragon-hunter-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dragon hunter adds Knowledge (arcana)\nto his list of class skills, in addition to the normal ranger\nclass skills."
+        },
+        {
+          "id": "ranger-dragon-hunter-predatory-deduction-ex-1",
+          "name": "Predatory Deduction (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Beginning at 1st level, when\na dragon hunter successfully uses Survival to spot the\ntrail of a creature of the dragon type, the hunter may\nattempt an immediate DC 15 Knowledge (arcana) check.\nOn a success, the dragon hunter is able to deduce the\nspecies, age category, size, and color of the dragon. If the\ntrail is less than 48 hours old, the dragon hunter gains\na +2 circumstance bonus on the Knowledge check. This\nability replaces Track."
+        },
+        {
+          "id": "ranger-dragon-hunter-wyrm-hatred-ex-1",
+          "name": "Wyrm Hatred (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Beginning at 1st level, a dragon\nhunter must select dragons as his favored enemy, granting\nhim a +2 bonus on Bluff, Knowledge, Perception, Sense\nMotive, and Survival checks against creatures of the\ndragon type. He also gains +2 bonuses on weapon attack\nand damage rolls against them. These bonuses increase\nby +2 at 5th level and every five levels thereafter (10th,\n15th, and 20th level)."
+        },
+        {
+          "id": "ranger-dragon-hunter-dragoncrafting-ex-5",
+          "name": "Dragoncrafting (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "Dragon hunters are experts not\nonly at tracking and killing dragons, but also at using\ndragon bodies to craft unique equipment. A dragon\nhunter gains Dragoncrafting as a bonus feat at 5th level,\neven if she does not meet the prerequisites. See page 18\nof this book for more information. This ability replaces\nthe additional favored enemy and any bonuses to existing\nfavored enemies gained at 5th level."
+        },
+        {
+          "id": "ranger-dragon-hunter-undaunted-ex-10",
+          "name": "Undaunted (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "Beginning at 10th level, a dragon\nhunter gains a +4 bonus on Will saves made to resist\nmind-affecting fear effects, Reflex saves made to avoid\ndamage from breath weapons, Reflex saves made to\navoid crush attacks, and Reflex saves made to avoid\ndamage from tail sweep attacks. This ability replaces the\nadditional favored enemy and any bonuses to existing\nfavored enemies gained at 10th level."
+        },
+        {
+          "id": "ranger-dragon-hunter-expert-dragoncrafter-ex-15",
+          "name": "Expert Dragoncrafter (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a dragon\nhunter may take 10 on Heal and Craft skill checks to\nharvest dragoncraft materials and to create dragoncraft\nitems. Additionally, the amount of time required to\ncreate a dragoncraft item is reduced by half. This ability\nreplaces the additional favored enemy and any bonuses to\nexisting favored enemies gained at 15th level."
+        },
+        {
+          "id": "ranger-dragon-hunter-elemental-resilience-su-20",
+          "name": "Elemental Resilience (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a dragon\nhunter gains energy resistance 30 against a single energy\ntype for 1 hour. The energy types he may choose are acid,\ncold, electricity, and fire. He may use this ability once per\nday. This ability replaces the additional favored enemy\nand any bonuses to existing favored enemies gained at\n20th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Dragon%20Hunter"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "bard-plant-speaker",
+  "name": "Plant Speaker",
+  "classId": "bard",
+  "summary": "(Vine Leshy only) Plant speakers build upon their racial plantspeech ability and their storytelling tendencies to create an art form full of deep metaphors and allegory rather than specific details and facts.",
+  "replacesText": "Inspire Greatness; Bardic Knowledge; Well-Versed; Lore Master",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-inspire-greatness-9",
+        "bardic-knowledge-1",
+        "bard-well-versed-2",
+        "bard-lore-master-5",
+        "bard-lore-master-11",
+        "bard-lore-master-17"
+      ],
+      "features": [
+        {
+          "id": "bard-plant-speaker-bardic-performance-9",
+          "name": "Bardic Performance",
+          "level": 9,
+          "type": "archetype",
+          "summary": "Plant speakers gain the following bardic performance. Leshy Speaker (Su) : At 9th level, the plant speaker can speak to its disembodied brethren, the spirits of nature that become leshys. He performs for 10 minutes and spends 7 rounds of bardic performance to gain the effects of commune with nature . This replaces inspire greatness."
+        },
+        {
+          "id": "bard-plant-speaker-plant-speech-2",
+          "name": "Plant Speech",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A plant speaker’s mind-affecting bard spells and class abilities also affect plants, ignoring plants’ immunity to mind-affecting effects. At 2nd level, a plant speaker’s racial plantspeech allows him to communicate with all plants, not just plants that match his alternate form. This replaces bardic knowledge and well-versed."
+        },
+        {
+          "id": "bard-plant-speaker-mystical-allegory-su-5",
+          "name": "Mystical Allegory (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the plant speaker can tell a story that matches some of the themes of the current situation in order to gain insight, gaining the effects of augury by performing for 1 minute and spending 4 rounds of bardic performance. At 11th level, he can perform for 10 minutes and spend 7 rounds of bardic performance to gain the effects of divination . At 17th level, he can perform for 1 hour and spend 10 rounds of bardic performance to gain the effects of legend lore , but the information is always vague and incomplete. This replaces lore master."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Plant%20Speaker"
+  }
+}

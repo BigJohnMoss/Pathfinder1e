@@ -1,0 +1,67 @@
+{
+  "id": "monk-brazen-disciple",
+  "name": "Brazen Disciple",
+  "classId": "monk",
+  "summary": "Brazen disciples use deception in their fighting style, and many go a step further, incorporating fire and smoke both mundane and magical.",
+  "replacesText": "Class Skills; 1st, 6th-level Bonus Feats; Still Mind; Abundant Step; Perfect Self",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-monk-bonus-feat-1",
+        "monk-monk-bonus-feat-6",
+        "monk-still-mind-3",
+        "monk-abundant-step-12",
+        "monk-perfect-self-20"
+      ],
+      "features": [
+        {
+          "id": "monk-brazen-disciple-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A brazen disciple gains Bluff (Cha), Disguise (Cha), and Knowledge (planes) (Int) as class skills but loses Knowledge (religion), Ride, and Swim. This alters the monk’s class skills."
+        },
+        {
+          "id": "monk-brazen-disciple-feinting-flurry-ex-6",
+          "name": "Feinting Flurry (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "When using flurry of blows to make melee attacks, a brazen disciple can forgo his first attack to attempt a Bluff check to feint. At 6th level, when a brazen disciple successfully feints, his opponent is denied its Dexterity bonus to AC until the end of the monk’s turn. This ability replaces the monk’s bonus feats at 1st level and at 6th level."
+        },
+        {
+          "id": "monk-brazen-disciple-bonus-feats-6",
+          "name": "Bonus Feats",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 2nd, 10th, 14th, and 18th levels, a brazen disciple can select a bonus feat. These feats must be chosen from the following list: Catch Off-Guard, Combat Reflexes, Deceitful, Dodge, Elemental Fist APG , and Improved Initiative. At 6th level, the brazen disciple can also choose from the following feats: Efreeti Style UC , Improved Dirty Trick APG , Improved Disarm, Improved Steal APG , Improved Trip, and Mobility. At 10th level, the brazen disciple can also choose from the following feats: Efreeti Stance UC , Efreeti Touch UC , Improved Critical, and Spring Attack. He need not meet the prerequisites normally required for these feats to select them. This ability alters the monk’s bonus feats."
+        },
+        {
+          "id": "monk-brazen-disciple-efreeti-s-guile-ex-3",
+          "name": "Efreeti’s Guile (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a brazen disciple can add his Wisdom modifier on Bluff and Disguise checks instead of his Charisma modifier. This ability replaces still mind."
+        },
+        {
+          "id": "monk-brazen-disciple-confounding-koan-sp-12",
+          "name": "Confounding Koan (Sp)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a brazen disciple can spend 2 ki points as a standard action to confuse a target within 30 feet with a riddle or paradox. This ability functions as per confusion , except that it is language-dependent. The DC is equal to 10 + half the monk’s class level + his Wisdom modifier, and the caster level is equal to his class level. This ability replaces abundant step."
+        },
+        {
+          "id": "monk-brazen-disciple-genie-apotheosis-20",
+          "name": "Genie Apotheosis",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a brazen disciple is treated as a native outsider with the fire subtype rather than as a humanoid (or whatever the monk’s creature type was) for the purpose of spells and magical effects. He has immunity to fire and vulnerability to cold. Once per day, the brazen disciple can grant a limited wish (as per the spell limited wish ) to a non-outsider as a spell-like ability (CL 20th). This ability replaces perfect self."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Brazen%20Disciple"
+  }
+}

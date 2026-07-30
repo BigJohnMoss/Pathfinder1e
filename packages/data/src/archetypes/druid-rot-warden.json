@@ -1,0 +1,77 @@
+{
+  "id": "druid-rot-warden",
+  "name": "Rot Warden",
+  "classId": "druid",
+  "summary": "Harbingers of decay, rot wardens live in damp lands where insects and rot break down the dead to feed the living.",
+  "replacesText": "Spontaneous Casting; Nature Bond; Wild Empathy; Trackless Step; Venom Immunity; Resist Nature’s Lure; Wild Shape",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-spontaneous-casting-1",
+        "druid-nature-bond-1",
+        "druid-wild-empathy-1",
+        "druid-trackless-step-3",
+        "druid-venom-immunity-9",
+        "druid-resist-natures-lure-4",
+        "druid-wild-shape-4",
+        "druid-wild-shape-6",
+        "druid-wild-shape-8",
+        "druid-wild-shape-10",
+        "druid-wild-shape-12",
+        "druid-wild-shape-14",
+        "druid-wild-shape-16",
+        "druid-wild-shape-18",
+        "druid-wild-shape-20"
+      ],
+      "features": [
+        {
+          "id": "druid-rot-warden-invoke-decay-su-1",
+          "name": "Invoke Decay (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A rot warden can channel stored spell energy into specific spells he hasn’t prepared ahead of time. He can “lose” a prepared spell in order to cast the following spells at the indicated levels: 1st— decompose corpse , 2nd— warp wood , 3rd— fungal infestation , 4th— explosion of rot , 5th— insect plague , 6th— swarm skin , 7th— creeping doom , 8th— horrid wilting , 9th— massacre . This alters spontaneous casting."
+        },
+        {
+          "id": "druid-rot-warden-nature-bond-1",
+          "name": "Nature Bond",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A rot warden who chooses a cleric domain as his nature bond must choose from the Destruction, Erosion, Repose, or Vermin domains. This alters nature bond."
+        },
+        {
+          "id": "druid-rot-warden-vermin-empathy-su-1",
+          "name": "Vermin Empathy (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A rot warden can improve the attitude of vermin as a normal druid can with animals. Vermin have a starting attitude of unfriendly. The rot warden can also improve the attitude of vermin swarms, but he takes a –4 penalty on the check unless the swarm consists of the same kind of vermin as his vermin companion or his current wild shape. This replaces wild empathy."
+        },
+        {
+          "id": "druid-rot-warden-swarmcaller-sp-3",
+          "name": "Swarmcaller (Sp)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a rot warden can summon a swarm of vermin once per day as a standard action. This functions like summon swarm , except the swarm the rot warden summons must be a cockroach, locust, or spider swarm. If he uses this ability during the surprise round of combat, nearby animals and vermin become hushed until the first round of combat ends; during this surprise round and first round of combat, flat-footed creatures also gain the shaken condition (this doesn’t stack with other fear effects). At 9th level, he adds army ant, centipede, and wasp swarms to the list of swarms he can call with this ability. This replaces trackless step and venom immunity."
+        },
+        {
+          "id": "druid-rot-warden-enduring-druid-su-4",
+          "name": "Enduring Druid (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a rot warden gains a +4 bonus on saving throws against attacks and special abilities of vermin and swarms with the vermin type. This bonus also applies on saving throws against effects that would age or decay the rot warden or his equipment. This replaces resist nature’s lure."
+        },
+        {
+          "id": "druid-rot-warden-wild-shape-6",
+          "name": "Wild Shape",
+          "level": 6,
+          "type": "archetype",
+          "summary": "A rot warden gains this ability at 6th level, except his effective druid level is his druid level – 2. He cannot take the form of an elemental. At 8th level, a rot warden can assume the form of a Small or Medium vermin as if using vermin shape I . At 10th level, the rot warden can assume the shape of a Tiny or Large vermin as if using vermin shape II . At 12th level, he can take the form of a Huge vermin as if using vermin shape III . This alters wild shape."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Rot%20Warden"
+  }
+}

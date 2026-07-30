@@ -1,0 +1,44 @@
+{
+  "id": "paladin-temple-champion",
+  "name": "Temple Champion",
+  "classId": "paladin",
+  "summary": "A temple champion is a powerful warrior dedicated to a good or lawful deity. She thinks of herself primarily as a servant of her deity and secondarily as an agent of her deity’s church.",
+  "replacesText": "Spells; Divine Bond; Aura of Justice",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-spellcasting-4",
+        "paladin-divine-bond-5",
+        "paladin-aura-of-justice-11"
+      ],
+      "features": [
+        {
+          "id": "paladin-temple-champion-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A temple champion does not gain access to paladin spells, and does not have a paladin caster level or spell list. This is not considered a spellcasting class."
+        },
+        {
+          "id": "paladin-temple-champion-domain-granted-power-4",
+          "name": "Domain Granted Power",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a temple champion selects one domain granted by her deity (or a domain suitable for her ethos or goals, subject to GM approval). The temple champion gains the 1st-level granted power of that domain and uses her paladin level as her cleric level for determining the effects of that granted power. Any Wisdom-based aspects of that granted power instead use the temple champion’s Charisma. The temple champion does not gain access to that domain’s spell list."
+        },
+        {
+          "id": "paladin-temple-champion-blessing-su-5",
+          "name": "Blessing (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a temple champion gains the minor blessing (as the warpriest class feature) of the domain she selected at 4th level. She uses her paladin level as her warpriest level for determining the effects of that blessing. Any Wisdom-based aspects of that blessing instead use the temple champion’s Charisma. At 11th level, she gains the major blessing of her chosen domain. This ability replaces divine bond and aura of justice."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Temple%20Champion"
+  }
+}

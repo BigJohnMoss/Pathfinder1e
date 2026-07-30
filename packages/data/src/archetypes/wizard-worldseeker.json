@@ -1,0 +1,52 @@
+{
+  "id": "wizard-worldseeker",
+  "name": "Worldseeker",
+  "classId": "wizard",
+  "summary": "Worldseekers are wizards who travel to all corners of the Great Beyond.",
+  "replacesText": "Scribe Scroll; 6th/8th-level School Ability; Arcane Bond; 5th, 15th-level Bonus Feat",
+  "replacements": [
+    {
+      "featureIds": [
+        "scribe-scroll-1",
+        "wizard-arcane-bond-1",
+        "wizard-bonus-feat-5",
+        "wizard-bonus-feat-15"
+      ],
+      "features": [
+        {
+          "id": "wizard-worldseeker-walk-the-planes-sp-su-1",
+          "name": "Walk the Planes (Sp, Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A worldseeker learns every plane’s place in the Great Beyond and trains to survive even on the harshest of them. She gains a +2 bonus on Knowledge (planes) checks and is constantly under the effects of endure elements. This replaces Scribe Scroll."
+        },
+        {
+          "id": "wizard-worldseeker-planar-adaptation-su-8",
+          "name": "Planar Adaptation (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a worldseeker is continually protected from planar environments as by planar adaptation. At 15th level, she can extend that benefit to all allies within 30 feet of her. This replaces the school ability normally gained at 6th or 8th level."
+        },
+        {
+          "id": "wizard-worldseeker-planar-associates-ex-5",
+          "name": "Planar Associates (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "A worldseeker’s travels and dealings across the planes allow her to make connections she can call upon when necessary to gain assistance without needing to resort to planar binding. A worldseeker must choose a familiar for her arcane bond. At 5th level, she gains Improved Familiar as a bonus feat and must choose an outsider familiar that matches her alignment exactly; she can choose an outsider in this way even if it normally requires a 7th-level spellcaster as its master. At 7th level, a worldseeker automatically learns lesser planar ally as a 4th-level wizard spell. She automatically learns planar ally as a 6th-level wizard spell at 11th level, and greater planar ally as an 8th-level wizard spell at 15th level. She can swap out a prepared spell of an equal spell level to spontaneously cast any of these three spells (one 4th-level spell for lesser planar ally, a 6th-level spell for planar ally, and a 8th level spell for greater planar ally). The first time each day she casts one of these three spells, the worldseeker reduces the gp value of the material component cost by an amount equal to her caster level x 100 (to a minimum cost of 0 gp). This alters arcane bond and replaces the bonus feat gained at 5th level."
+        },
+        {
+          "id": "wizard-worldseeker-planar-redoubt-sp-15",
+          "name": "Planar Redoubt (Sp)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a worldseeker creates a planar redoubt, a personal demiplane to which she can retreat to rest and plan. This functions like lesser create demiplane , except the demiplane is up to a single 50-foot cube in size and is permanent. This replaces the bonus feat gained at 15th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Worldseeker"
+  }
+}

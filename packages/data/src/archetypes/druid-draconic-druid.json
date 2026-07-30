@@ -1,0 +1,56 @@
+{
+  "id": "druid-draconic-druid",
+  "name": "Draconic Druid",
+  "classId": "druid",
+  "summary": "Some druids believe that dragons are the ultimate expression of nature and eventually transform into draconic forms.",
+  "replacesText": "Nature Bond; Wild Empathy; Woodland Stride; Venom Immunity; A Thousand Faces; Timeless Body; Nature Sense; Resist Nature's Lure",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-nature-bond-1",
+        "druid-wild-empathy-1",
+        "druid-woodland-stride-2",
+        "druid-venom-immunity-9",
+        "druid-thousand-faces-13",
+        "druid-timeless-body-15",
+        "druid-nature-sense-1",
+        "druid-resist-natures-lure-4"
+      ],
+      "features": [
+        {
+          "id": "druid-draconic-druid-drake-companion-1",
+          "name": "Drake Companion",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A draconic druid gains a drake companion instead of an animal companion. This ability replaces nature bond, wild empathy, woodland stride, venom immunity, a thousand faces, and timeless body."
+        },
+        {
+          "id": "druid-draconic-druid-dragon-sense-1",
+          "name": "Dragon Sense",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A draconic druid studies dragons and their history. She gains a +2 bonus on Knowledge (arcana) and Knowledge (history) checks. This ability replaces nature sense."
+        },
+        {
+          "id": "druid-draconic-druid-resist-dragon-s-might-1",
+          "name": "Resist Dragon's Might",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A draconic druid gains a +4 bonus on saving throws against the spells, spell-like abilities, and supernatural abilities of dragons. This ability replaces resist nature’s lure."
+        },
+        {
+          "id": "druid-draconic-druid-dragon-shape-4",
+          "name": "Dragon Shape",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A draconic druid can’t use wild shape to change into any of the usual forms available to a druid. Instead, at 4th level, she can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size (1d6 points of damage for a Medium druid) but otherwise retaining her usual form. At 10th level, she can spend two uses of wild shape to transform into a Medium dragon as per form of the dragon I , and at 12th level, she can spend two uses to change into a Large dragon as per form of the dragon II . Each time that a draconic druid uses wild shape counts as a separate casting of the spell for the purpose of refreshing her uses of her breath weapon."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Draconic%20Druid"
+  }
+}

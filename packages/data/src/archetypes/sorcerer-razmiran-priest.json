@@ -1,0 +1,45 @@
+{
+  "id": "sorcerer-razmiran-priest",
+  "name": "Razmiran Priest",
+  "classId": "sorcerer",
+  "summary": "The Razmiran priest is a magical charlatan, missionary servant of the Living God.",
+  "replacesText": "Eschew Materials; 3rd-level Bloodline Spell; 5th-level Bloodline Spell; 9th-level Bloodline Power",
+  "replacements": [
+    {
+      "featureIds": [
+        "eschew-materials-1",
+        "sorcerer-bloodline-spell-3",
+        "sorcerer-bloodline-spell-5",
+        "sorcerer-bloodline-power-9"
+      ],
+      "features": [
+        {
+          "id": "sorcerer-razmiran-priest-false-piety-ex-1",
+          "name": "False Piety (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a Razmiran priest gains Knowledge (religion) and Perform as class skills, but loses Appraise and Fly as class skills. He adds half his sorcerer level to Use Magic Device checks to activate spell trigger and spell completion items that use divine spells. He gains False Focus as a bonus feat (see page 10). In addition to replacing Appraise and Fly as class skills, this ability replaces the priest’s Eschew Materials bonus feat."
+        },
+        {
+          "id": "sorcerer-razmiran-priest-lay-healer-su-3",
+          "name": "Lay Healer (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the Razmiran priest adds aid to his list of spells known as a 2nd-level spell. At 5th level, he adds remove disease to his list of spells known as a 3rd-level spell. This ability replaces the bloodline spells gained at 3rd level and 5th level respectively."
+        },
+        {
+          "id": "sorcerer-razmiran-priest-razmiran-channel-su-9",
+          "name": "Razmiran Channel (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, the Razmiran priest can use his own magic to power spell completion and spell trigger items that use divine spells. He expends a sorcerer spell slot that is at least 1 level higher than the level of the spell he’s trying to activate, then makes a Use Magic Device check. If he succeeds, the item’s spell occurs and the item or charge is not expended. If he fails, nothing happens. Whether he succeeds or fail, his spell slot is expended. This ability replaces the bloodline power gained at 9th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Razmiran%20Priest"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "monk-student-of-stone",
+  "name": "Student of Stone",
+  "classId": "monk",
+  "summary": "(Oread Only) By following the path of the stone, students of stone give up much of monks’ mobility in favor of sheer resilience.",
+  "replacesText": "Evasion; Fast Movement; Bonus Feat; High Jump; Improved Evasion; Abundant Step",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-evasion-2",
+        "monk-improved-evasion-9",
+        "monk-fast-movement-3",
+        "monk-monk-bonus-feat-1",
+        "monk-monk-bonus-feat-2",
+        "monk-monk-bonus-feat-6",
+        "monk-monk-bonus-feat-10",
+        "monk-monk-bonus-feat-14",
+        "monk-monk-bonus-feat-18",
+        "monk-high-jump-5",
+        "monk-abundant-step-12"
+      ],
+      "features": [
+        {
+          "id": "monk-student-of-stone-hard-as-stone-ex-2",
+          "name": "Hard as Stone (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, whenever an opponent rolls to confirm a critical hit against a student of stone, treat the student of stone’s AC as +4 higher than normal. This ability replaces evasion."
+        },
+        {
+          "id": "monk-student-of-stone-strength-of-stone-ex-3",
+          "name": "Strength of Stone (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a student of stone learns to draw strength from the earth. So long as both he and his opponent are touching the ground, the student of stone gains a +1 bonus on attack rolls, damage rolls, bull rush and trip combat maneuver rolls, and to his CMD when resisting a bull rush or trip attempt. This ability replaces fast movement."
+        },
+        {
+          "id": "monk-student-of-stone-bonus-feat-6",
+          "name": "Bonus Feat",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a student of stone adds Elemental Fist to his list of available bonus feats. If the student of stone selects Elemental Fist as a bonus feat, he may only deal acid damage when using the feat. At 10th level, the student of stone adds Shaitan Style to his list of bonus feats, at 14th level, he adds Shaitan Skin , and at 18th level, he adds Shaitan Earthblast. This otherwise functions as and alters the bonus feat ability."
+        },
+        {
+          "id": "monk-student-of-stone-bones-of-stone-su-7",
+          "name": "Bones of Stone (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, as a swift action, a student of stone can spend 1 ki point to gain DR 2/magic until the beginning of his next turn. At 10th level, he can spend 1 ki point to gain DR 2/chaotic until his next turn. At 15th level, he can spend 1 ki point to gain DR 5/chaotic until his next turn. This ability replaces high jump."
+        },
+        {
+          "id": "monk-student-of-stone-body-of-stone-ex-9",
+          "name": "Body of Stone (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a student of stone gains the benefits of the light fortification armor property . This ability replaces improved evasion."
+        },
+        {
+          "id": "monk-student-of-stone-soul-of-stone-su-12",
+          "name": "Soul of Stone (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, as a swift action, a student of stone can spend 1 ki point to gain tremorsense 15 feet until his next turn. At 16th level, the range of this tremorsense increases to 30 feet. This ability replaces abundant step."
+        },
+        {
+          "id": "monk-student-of-stone-stone-self-20",
+          "name": "Stone Self",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a student of stone becomes an earth outsider. He gains the earth subtype, as well as DR 5/chaotic, burrow speed 20 feet, and tremorsense 20 feet."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Student%20of%20Stone"
+  }
+}

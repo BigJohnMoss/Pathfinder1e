@@ -1,0 +1,55 @@
+{
+  "id": "rogue-survivalist",
+  "name": "Survivalist",
+  "classId": "rogue",
+  "summary": "The survivalist focuses her talents on surviving harsh and unforgiving conditions that would kill a lesser rogue.",
+  "replacesText": "Trapfinding; Trap Sense",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-survivalist-hardy-ex-1",
+          "name": "Hardy (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a survivalist is already prepared to endure extreme hardships and environmental conditions. She can go twice the normal number of days without water and triple the normal number of days without food before feeling the effects of either thirst or starvation. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-survivalist-endure-elements-sp-3",
+          "name": "Endure Elements (Sp)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a survivalist rogue can use endure elements once per day as a spell-like ability. The survivalist’s caster level is the same as her rogue level. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-survivalist-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the survivalist archetype: hold breath*, iron guts*, resiliency, strong stroke*, survivalist, terrain mastery*, and wall scramble*."
+        },
+        {
+          "id": "rogue-survivalist-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the survivalist archetype: another day, defensive roll, feat, and skill mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Survivalist"
+  }
+}

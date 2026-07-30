@@ -1,0 +1,69 @@
+{
+  "id": "wizard-undead-master",
+  "name": "Undead Master",
+  "classId": "wizard",
+  "summary": "Undead masters have great power over undeath.",
+  "replacesText": "Alignment; Arcane School; Arcane Bond; Scribe Scroll; 5th, 10th, 15th, 20th-level Bonus Feats",
+  "replacements": [
+    {
+      "featureIds": [
+        "wizard-arcane-school-1",
+        "wizard-arcane-bond-1",
+        "scribe-scroll-1",
+        "wizard-bonus-feat-5",
+        "wizard-bonus-feat-10",
+        "wizard-bonus-feat-15",
+        "wizard-bonus-feat-20"
+      ],
+      "features": [
+        {
+          "id": "wizard-undead-master-necromantic-focus-1",
+          "name": "Necromantic Focus",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An undead master must be of an evil alignment. If he becomes nonevil, he can still use his powers but can’t progress any further as a wizard. Most undead masters specialize in the necromancy school, and an undead master can’t have necromancy as an opposition school. This alters arcane school and alignment."
+        },
+        {
+          "id": "wizard-undead-master-necropolitan-ex-1",
+          "name": "Necropolitan (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An undead master gains a bonus equal to half his wizard level (minimum +1) on Diplomacy and Knowledge checks regarding undead creatures. Because of his obsessive focus on the undead, he takes a –2 penalty when attempting such checks regarding living creatures."
+        },
+        {
+          "id": "wizard-undead-master-corpse-bond-su-1",
+          "name": "Corpse Bond (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An undead master can forge an arcane bond with an object, but that object must be made at least partially of bone. Alternatively, he can animate a corpse companion, as per the undead lord cleric archetype ( Pathfinder RPG Ultimate Magic 32 ). He can’t gain a familiar. This ability alters arcane bond."
+        },
+        {
+          "id": "wizard-undead-master-command-undead-su-1",
+          "name": "Command Undead (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An undead master gains Command Undead as a bonus feat, treating his wizard level as his cleric level. If he lacks the ability to channel negative energy for the purpose of Command Undead, he can expend 3 uses of any 1st-level arcane school ability that normally has a number of uses per day equal to 3 + his Intelligence modifier, rather than a use of channel energy. If he’s a necromancer with the power over undead ability, he instead gains Improved Channel. This ability replaces Scribe Scroll."
+        },
+        {
+          "id": "wizard-undead-master-reanimator-su-1",
+          "name": "Reanimator (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An undead master adds the following spells to his spellbook at the given wizard levels: 1st— repair undeadACG ; 3rd— lesser animate deadUM ; 5th— animate dead ; 7th— undead anatomy IUM ; 9th— create undead ; 11th— undeath to death ; 13th— create greater undead ; 15th— undead anatomy IVUM ; 17th— cursed earthUM . He can spontaneously cast any of these spells by sacrificing a prepared spell of the same level or higher. The undead master can cast lesser animate dead, animate dead, create undead , and create greater undead as if they were 1 level lower than their normal wizard spell level; this does not alter their level for the purpose of item crafting and the like. This ability replaces the bonus feats gained at 5th, 10th, and 15th levels."
+        },
+        {
+          "id": "wizard-undead-master-lich-loved-su-20",
+          "name": "Lich-Loved (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, an undead master gains the benefits of the undead sorcerer bloodline’s one of us ability. This ability replaces the bonus feat gained at 20th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Undead%20Master"
+  }
+}

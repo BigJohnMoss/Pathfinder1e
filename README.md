@@ -42,7 +42,8 @@ successful load. The current generated catalogue includes:
 
 All eleven Core classes are playable through level 20. Development now proceeds
 through the **Expanded Character Options** milestone. All APG basic traits are playable;
-additional archetypes and non-basic trait categories remain future work.
+non-basic trait categories and bespoke automation for rules that lack a dedicated
+builder subsystem remain future work.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 

@@ -1,0 +1,38 @@
+{
+  "id": "sorcerer-eldritch-scrapper",
+  "name": "Eldritch Scrapper",
+  "classId": "sorcerer",
+  "summary": "An eldritch scrapper is usually spoiling for a fight, looking to prove that she’s just as tough as a martial character.",
+  "replacesText": "1st, 9th, and 15th-level Bloodline Powers",
+  "replacements": [
+    {
+      "featureIds": [
+        "sorcerer-bloodline-1",
+        "sorcerer-bloodline-power-1",
+        "sorcerer-bloodline-power-9",
+        "sorcerer-bloodline-power-15"
+      ],
+      "features": [
+        {
+          "id": "sorcerer-eldritch-scrapper-martial-flexibility-ex-1",
+          "name": "Martial Flexibility (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an eldritch scrapper gains the brawler’s martial flexibility class feature, using her sorcerer level as her brawler level for the purposes of uses per day. The scrapper treats Arcane Strike and Combat Casting as combat feats for the purpose of this ability. At 9th level, an eldritch scrapper can use this ability to gain the benefit of two combat feats at the same time. She can select one feat as a move action or two feats as a standard action. She can use one of these feats to meet a prerequisite of the second feat; doing so means she cannot replace the feat that is currently fulfilling another feat’s prerequisites without also replacing all feats that require it. Each individual feat selected counts toward her daily uses of this ability. At 15th level, an eldritch scrapper can use this ability to gain the benefit of three combat feats at the same time. She can select one feat as a swift action, two feats as a move action, or three feats as a standard action. She can use one of the feats to meet a prerequisite of the second and third feats, and use the second feat to meet a prerequisite of the third feat. Each individual feat selected counts toward her daily uses of this ability. This ability replaces the sorcerer’s bloodline powers gained 1st, 9th, and 15th levels."
+        },
+        {
+          "id": "sorcerer-eldritch-scrapper-bloodline-weapons-3",
+          "name": "Bloodline Weapons",
+          "level": 3,
+          "type": "archetype",
+          "summary": "If an eldritch scrapper’s 1st-level bloodline power would normally grant her natural attacks (such as bite or claws), at 3rd level she can select that 1st-level bloodline power in place of her 3rd-level bloodline power."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Eldritch%20Scrapper"
+  }
+}

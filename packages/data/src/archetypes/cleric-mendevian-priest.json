@@ -1,0 +1,59 @@
+{
+  "id": "cleric-mendevian-priest",
+  "name": "Mendevian Priest",
+  "classId": "cleric",
+  "summary": "Crusade-minded clerics of Iomedae, Gorum, and other churches come to Mendev to learn battlefield tactics and the weaknesses of demons.",
+  "replacesText": "Domains",
+  "replacements": [
+    {
+      "featureIds": [
+        "cleric-domain-1-first",
+        "cleric-domain-1-second",
+        "cleric-domain-spell-1",
+        "cleric-domain-spell-2",
+        "cleric-domain-spell-3",
+        "cleric-domain-spell-4",
+        "cleric-domain-spell-5",
+        "cleric-domain-spell-6",
+        "cleric-domain-spell-7",
+        "cleric-domain-spell-8",
+        "cleric-domain-spell-9"
+      ],
+      "features": [
+        {
+          "id": "cleric-mendevian-priest-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Mendevian priest is proficient with all simple weapons, light armor, medium armor, heavy armor, shields (except tower shields), and the favored weapon of her deity."
+        },
+        {
+          "id": "cleric-mendevian-priest-diminished-spellcasting-1",
+          "name": "Diminished Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Mendevian priest chooses only one domain from her deity’s list of domains rather than the normal two domains. In all other respects, this works like and replaces the standard cleric domain ability."
+        },
+        {
+          "id": "cleric-mendevian-priest-demonic-knowledge-ex-1",
+          "name": "Demonic Knowledge (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, when making Knowledge (planes) checks regarding demons, demonic cults, and their magic, a Mendevian priest gains a bonus on the check equal to half her class level (minimum +1) and can make these Knowledge skill checks untrained."
+        },
+        {
+          "id": "cleric-mendevian-priest-teamwork-feat-4",
+          "name": "Teamwork Feat",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level and 8th level, the Mendevian priest gains a bonus feat. This must be a teamwork feat, Alignment Channel, Greater Spell Penetration, Leadership, or Spell Penetration. The cleric must meet the prerequisites of the selected bonus feat."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Mendevian%20Priest"
+  }
+}

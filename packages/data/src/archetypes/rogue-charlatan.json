@@ -1,0 +1,55 @@
+{
+  "id": "rogue-charlatan",
+  "name": "Charlatan",
+  "classId": "rogue",
+  "summary": "A charlatan is a master of lies and deception.",
+  "replacesText": "Trapfinding; Trap Sense",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-charlatan-natural-born-liar-ex-1",
+          "name": "Natural Born Liar (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, when a charlatan successfully deceives a creature with a Bluff, that creature takes a Â­–2 penalty on the charlatan’s Bluff checks for the next 24 hours. This ability does not stack with itself. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-charlatan-grand-hoax-ex-3",
+          "name": "Grand Hoax (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the charlatan begins to master the art of the grand hoax and learns to create deceptions designed to bestow harm upon her foes. She gains the rumormonger advanced talent, even though she is not yet 10th level. This ability takes the place of trap sense."
+        },
+        {
+          "id": "rogue-charlatan-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the charlatan archetype: black market connections*, coax information, cunning lie*, honeyed words, and underhanded*."
+        },
+        {
+          "id": "rogue-charlatan-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the charlatan archetype: hard to fool*, skill mastery, and unwitting ally*."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Charlatan"
+  }
+}

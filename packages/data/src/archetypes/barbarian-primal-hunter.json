@@ -1,0 +1,56 @@
+{
+  "id": "barbarian-primal-hunter",
+  "name": "Primal Hunter",
+  "classId": "barbarian",
+  "summary": "Rather than exploding with anger, primal hunters focus their rage to strike distant targets.",
+  "replacesText": "Fast Movement; Rage",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1",
+        "rage-1",
+        "rage-power-2",
+        "rage-power-4",
+        "rage-power-6",
+        "rage-power-8",
+        "rage-power-10",
+        "rage-power-12",
+        "rage-power-14",
+        "rage-power-16",
+        "rage-power-18",
+        "rage-power-20",
+        "greater-rage-11",
+        "tireless-rage-17",
+        "mighty-rage-20"
+      ],
+      "features": [
+        {
+          "id": "barbarian-primal-hunter-exceptional-pull-1",
+          "name": "Exceptional Pull",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a primal hunter gains Exceptional Pull as a bonus feat, even if she doesn’t meet the requirements. At 11th and 20th levels, the strength rating of weapons she wields increases by 1 (weapons without a strength rating are not affected). This ability replaces fast movement."
+        },
+        {
+          "id": "barbarian-primal-hunter-focused-rage-ex-11",
+          "name": "Focused Rage (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "While raging, a primal hunter gains a +2 bonus on attack rolls with ranged weapons. This bonus increases to +3 at 11th level and to +4 at 20th level. While raging, a primal hunter can attempt Stealth checks but doesn’t gain a morale bonus on Will saves. This ability alters rage."
+        },
+        {
+          "id": "barbarian-primal-hunter-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the primal hunter archetype: deadly accuracy UC , lethal accuracy UC , reflexive dodge UC , rolling dodge, sharpened accuracy UC , surprise accuracy."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Primal%20Hunter"
+  }
+}

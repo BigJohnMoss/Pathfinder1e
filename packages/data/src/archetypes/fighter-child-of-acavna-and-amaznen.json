@@ -1,0 +1,69 @@
+{
+  "id": "fighter-child-of-acavna-and-amaznen",
+  "name": "Child of Acavna and Amaznen",
+  "classId": "fighter",
+  "summary": "The child of Acavna and Amaznen has trained in the nearly forgotten arts of Azlant passed down by Aroden, which combine martial prowess with elementary wizardry. Inspired by the deities Aroden once worshiped long ago, children of Acavna and Amaznen strive to understand the dangers of the world and overcome them with knowledge and strength of arms.",
+  "replacesText": "Weapon/Armor Proficiency; Skills; 1st, 2nd, 8th, 12th, 16th, and 20th-level Combat Feats; Armor Training; Weapon Training",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "fighter-bonus-feat-2",
+        "fighter-bonus-feat-8",
+        "fighter-bonus-feat-12",
+        "fighter-bonus-feat-16",
+        "fighter-bonus-feat-20",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17"
+      ],
+      "features": [
+        {
+          "id": "fighter-child-of-acavna-and-amaznen-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A child of Acavna and Amaznen is not proficient with two-handed martial weapons or tower shields. This alters the fighter’s weapon and armor proficiency."
+        },
+        {
+          "id": "fighter-child-of-acavna-and-amaznen-eldritch-lore-1",
+          "name": "Eldritch Lore",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A child of Acavna and Amaznen gains 4 skill ranks + a number of skill ranks equal to her Intelligence modifier at each level, instead of the normal 2 skill ranks + her Intelligence modifier at each level. Furthermore, Knowledge (arcana, religion), Linguistics, and Spellcraft are all class skills for the child of Acavna and Amaznen. This alters the fighter’s skills and replaces the bonus fighter combat feat gained at 1st level."
+        },
+        {
+          "id": "fighter-child-of-acavna-and-amaznen-lore-of-acavna-and-amaznen-ex-2",
+          "name": "Lore of Acavna and Amaznen (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a child of Acavna and Amaznen is further initiated into the arcane secrets passed down from Azlant. This gives her minor spellcasting abilities and access to lore collected to give her an edge against the enemies of humanity. The child of Acavna and Amaznen gains a spellbook containing 4 0-level wizard spells of her choice. She can prepare and cast these spells as a wizard, using her fighter level as her caster level. She can prepare a number of 0-level spells each day equal to 1 + 1 per 6 fighter levels. She also gains a +2 bonus on Knowledge checks relating to Azlant and the Azlanti, and on Knowledge checks to identify and learn the powers and weaknesses of aboleths, demons, serpentfolk, and undead. This ability replaces the bonus feat gained at 2nd level."
+        },
+        {
+          "id": "fighter-child-of-acavna-and-amaznen-eldritch-armor-training-ex-3",
+          "name": "Eldritch Armor Training (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a child of Acavna and Amaznen gains eldritch armor training. This functions as armor training, except as a swift action she can also reduce the arcane spell failure chance due to armor she is wearing by 15% for any spells she casts this round. This reduction increases to 20% at 7th level, 25% at 11th level, and 30% at 15th level. In addition, if she has Arcane Armor Training or Arcane Armor Mastery, rather than having their normal effects, each of those feats increases the arcane spell failure reduction of her eldritch armor training by 10%. This ability modifies armor training."
+        },
+        {
+          "id": "fighter-child-of-acavna-and-amaznen-spells-5",
+          "name": "Spells",
+          "level": 5,
+          "type": "archetype",
+          "summary": "Starting at 5th level, the spellcasting ability of a child of Acavna and Amaznen increases to allow her to cast a limited number of spells drawn from the bloodrager spell list ( Pathfinder RPG Advanced Class Guide 22). She automatically adds to her spellbook a number of 1st-level bloodrager spells equal to 3 + her Intelligence modifier. Her caster level for these spells is equal to her fighter level, and the bloodrager class spell list is considered to be her class spell list for the purposes of meeting prerequisites and using magic items. She uses the ranger’s spells per day, but uses her Intelligence score to determine her bonus spells and spell saving throw DCs, just as a wizard does. She does not gain any other wizard abilities, such as an arcane bond or school. Each time she attains a new fighter level, she gains one bloodrager spell of her choice to add to her spellbook. The free spells must be of spell levels she can cast. She otherwise follows the rules for a wizard regarding her spellbook and learning or preparing spells. This replaces all weapon training and the bonus feats gained at 8th, 12th, 16th, and 20th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Child%20of%20Acavna%20and%20Amaznen"
+  }
+}

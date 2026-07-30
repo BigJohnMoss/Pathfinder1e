@@ -1,0 +1,75 @@
+{
+  "id": "fighter-taldor-rondelero-duelist",
+  "name": "Taldor: Rondelero Duelist",
+  "classId": "fighter",
+  "summary": "One who has perfected the art of rondelero, fighting with falcata and buckler.",
+  "replacesText": "Armor Training 1-3, Bravery, Weapon Training 1",
+  "replacements": [
+    {
+      "featureIds": [
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17"
+      ],
+      "features": [
+        {
+          "id": "fighter-taldor-rondelero-duelist-suggested-feats-1",
+          "name": "Suggested Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Exotic Weapon Proficiency (falcata), Improved Shield Bash, Improved Two-Weapon Fighting, Power Attack, Shield Slam, Shield Master, Taldan Duelist (see World Guide: The Inner Sea ), Two-Weapon Fighting, Weapon Focus (falcata), Weapon Specialization (falcata)."
+        },
+        {
+          "id": "fighter-taldor-rondelero-duelist-buckler-bash-ex-2",
+          "name": "Buckler Bash (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a rondelero can perform a shield bash with a buckler (use the same damage and critical modifier as for a light shield). This ability replaces bravery."
+        },
+        {
+          "id": "fighter-taldor-rondelero-duelist-buckler-catch-ex-3",
+          "name": "Buckler Catch (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a rondelero can catch his opponent’s weapon between his buckler and his forearm, effectively wedging the hafts of polearms and hammers or the flats of blades. This functions as a disarm combat maneuver, and the rondelero gains a +4 bonus on the roll. If the rondelero’s attack fails by 10 or more, he suffers a –2 penalty to his AC until the start of his next turn. This ability replaces armor training 1."
+        },
+        {
+          "id": "fighter-taldor-rondelero-duelist-strong-swing-ex-5",
+          "name": "Strong Swing (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a rondelero gains a +1 bonus on attack and damage rolls when wielding a falcata and buckler that applies to attacks made by either hand. These bonuses increase by +1 for every four levels beyond 5th. With a full-attack action, a rondelero may alternate between using his falcata or his buckler for each attack. This does not grant additional attacks or incur penalties as two-weapon fighting does. This ability replaces weapon training 1."
+        },
+        {
+          "id": "fighter-taldor-rondelero-duelist-armor-training-ex-7",
+          "name": "Armor Training (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a rondelero gains armor training 1, and can move at his normal speed in medium armor. At 15th level, the rondelero gains armor training 2, and can move at his normal speed in heavy armor. This ability replaces armor training 2."
+        },
+        {
+          "id": "fighter-taldor-rondelero-duelist-chopping-blow-ex-11",
+          "name": "Chopping Blow (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, as a standard action, a rondelero can make a single melee attack with a falcata. If the attack hits, he may make a sunder combat maneuver against the target of his attack as a free action that does not provoke an attack of opportunity. This ability replaces armor training 3."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Taldor%20%20Rondelero%20Duelist"
+  }
+}

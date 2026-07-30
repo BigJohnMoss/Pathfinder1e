@@ -1,0 +1,43 @@
+{
+  "id": "druid-drovier",
+  "name": "Drovier",
+  "classId": "druid",
+  "summary": "Droviers view their allies and adventuring companions as a herd or pack to be protected and directed.",
+  "replacesText": "Nature's Bond; Wild Shape",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-wild-shape-4",
+        "druid-wild-shape-6",
+        "druid-wild-shape-8",
+        "druid-wild-shape-10",
+        "druid-wild-shape-12",
+        "druid-wild-shape-14",
+        "druid-wild-shape-16",
+        "druid-wild-shape-18",
+        "druid-wild-shape-20"
+      ],
+      "features": [
+        {
+          "id": "druid-drovier-nature-s-bond-ex-1",
+          "name": "Nature's Bond (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A drovier must take the Animal domain with this ability, or the Eagle or Wolf animal domains from pages 34 and 36 respectively of Pathfinder RPG Ultimate Magic . This ability modifies nature’s bond."
+        },
+        {
+          "id": "druid-drovier-communal-aspect-su-4",
+          "name": "Communal Aspect (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a drovier can imbue her allies (including herself) with an aspect of a wild animal. As a standard action, she chooses an animal totem and grants the abilities of that totem to every ally within 30 feet. This otherwise functions like the spell animal aspectUC . She can use this ability for 10 minutes per druid level each day. This duration does not need to be consecutive, but it must be used in 10-minute increments. If she uses the ability to grant a new aspect, any previous aspect immediately ends. At 20th level, the drovier can use this ability at will. At 6th level, the drovier’s communal aspect ability grants the benefits of the spell greater animal aspectUC . The drovier can still choose only one aspect to grant her allies. At 8th level, the drovier can choose to grant her allies the benefits of the spell aspect of the falconAPG instead of an animal aspect. At 10th level, the drovier can choose to grant her allies the benefits of the spell aspect of the bearAPG instead of an animal aspect. At 12th level, the drovier can choose to grant her allies the benefits of the spell aspect of the stagAPG instead of an animal aspect. At 14th level, the drovier can choose to grant her allies the benefits of the spell aspect of the wolfAPG rather than an animal aspect. This replaces wild shape."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Drovier"
+  }
+}

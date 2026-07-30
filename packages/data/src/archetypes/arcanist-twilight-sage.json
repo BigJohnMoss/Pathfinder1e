@@ -7,11 +7,11 @@
   "replacements": [
     {
       "featureIds": [
+        "consume-spells-1",
+        "arcanist-spellcasting-1",
         "arcanist-exploit-1",
         "arcanist-exploit-11",
-        "consume-spells-1",
-        "magical-supremacy-20",
-        "arcanist-spellcasting-1"
+        "magical-supremacy-20"
       ],
       "features": [
         {

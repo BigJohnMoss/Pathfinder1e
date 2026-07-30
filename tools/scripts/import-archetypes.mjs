@@ -1,4 +1,4 @@
-import { access, mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
 
 const classArgument = process.argv.find((argument) => argument.startsWith("--className=") || argument.startsWith("--class="));
@@ -21,14 +21,20 @@ const clean = (value) => value
   .replace(/\u00e2\u20ac\u2122/g, "\u2019")
   .replace(/\u00e2\u20ac\u0153/g, "\u201c")
   .replace(/\u00e2\u20ac\u009d/g, "\u201d")
+  .replace(/\u00e2\u20ac\u02dc/g, "\u2018")
   .replace(/\u00e2\u20ac\u201c/g, "\u2013")
   .replace(/\u00e2\u20ac\u201d/g, "\u2014")
+  .replace(/\u00e2\u20ac(?=\s|[,.)])/g, "\u2014")
   .replace(/\u00a0/g, " ")
   .replace(/[ \t]+\n/g, "\n")
   .replace(/\n[ \t]+/g, "\n")
   .replace(/[ \t]{2,}/g, " ")
   .replace(/\n{3,}/g, "\n\n")
   .trim();
+
+const singularize = (value) => value.split(" ").map((word) =>
+  word.endsWith("ies") ? `${word.slice(0, -3)}y` : word.length > 3 && word.endsWith("s") ? word.slice(0, -1) : word
+).join(" ");
 
 async function fetchDocument(url) {
   const response = await fetch(url);
@@ -53,6 +59,7 @@ function indexEntries(document) {
 
 function replacedFeatureIds(replacesText) {
   const matches = new Set();
+  const nestedReplacements = [];
   const addProgression = (key, levels = []) => {
     for (const feature of classRecord.features) {
       if (feature.progressionKey === key && (!levels.length || levels.includes(feature.level))) matches.add(feature.id);
@@ -65,23 +72,27 @@ function replacedFeatureIds(replacesText) {
   for (const clause of replacesText.split(";")) {
     const levels = [...clause.matchAll(/\b(\d+)(?:st|nd|rd|th)\b/gi)].map((match) => Number(match[1]));
     const normalized = clause.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-    const target = normalized
+    const target = singularize(normalized
       .replace(/\b\d+(?:st|nd|rd|th)?\b/g, "")
       .replace(/\blevel\b/g, "")
       .replace(/\b(?:and|the|class|feature|features|gained|at)\b/g, "")
       .replace(/\s+/g, " ")
-      .trim();
+      .trim());
+    if (/\bdomain powers?\b|\bschool powers?\b/.test(normalized)) {
+      nestedReplacements.push(clean(clause));
+      continue;
+    }
 
     for (const feature of classRecord.features) {
       if (levels.length && !levels.includes(feature.level)) continue;
-      const candidates = [feature.name, feature.progressionKey ?? ""].map((value) => value
+      const candidates = [feature.name, feature.progressionKey ?? ""].map((value) => singularize(value
         .toLowerCase()
         .replace(/\b\d+d\d+\b/g, "")
         .replace(/\b[+-]?\d+\b/g, "")
         .replace(/[^a-z0-9]+/g, " ")
         .replace(new RegExp(`\\b${classId}\\b`, "g"), "")
         .replace(/\s+/g, " ")
-        .trim());
+        .trim()));
       if (candidates.some((candidate) => candidate && (target.includes(candidate) || candidate.includes(target)))) matches.add(feature.id);
     }
 
@@ -92,13 +103,27 @@ function replacedFeatureIds(replacesText) {
     if (classId === "arcanist" && /\bspellbooks?\b|\bspells?\b/.test(normalized)) addProgression("arcanist-spellcasting", levels);
   }
 
-  return [...matches];
+  return { featureIds: [...matches], nestedReplacements };
 }
 
-function detailFeatures(document, archetypeId) {
+function detailFeatures(document, archetypeId, archetypeName) {
   const content = document.querySelector("#MainContent_DataListTypes_LabelName_0");
   if (!content) throw new Error(`${archetypeId}: archetype detail block not found`);
   const headings = [...content.querySelectorAll("b")].filter((heading) => clean(heading.textContent).toLowerCase() !== "source");
+  if (!headings.length) {
+    const clone = content.cloneNode(true);
+    clone.querySelector("h1")?.remove();
+    const source = [...clone.querySelectorAll("b")].find((heading) => clean(heading.textContent).toLowerCase() === "source");
+    let node = source;
+    while (node) {
+      const next = node.nextSibling;
+      node.remove();
+      if (node.nodeType === 1 && node.tagName === "BR") break;
+      node = next;
+    }
+    const summary = clean(clone.textContent);
+    return summary ? [{ id: `${archetypeId}-${slug(archetypeName)}-1`, name: archetypeName, level: 1, type: "archetype", summary }] : [];
+  }
   return headings.map((heading, index) => {
     const fragments = [];
     let node = heading.nextSibling;
@@ -125,23 +150,29 @@ function detailFeatures(document, archetypeId) {
 }
 
 await mkdir(outputDirectory, { recursive: true });
+const existingRecords = await Promise.all((await readdir(outputDirectory))
+  .filter((file) => file.endsWith(".json"))
+  .map(async (file) => JSON.parse(await readFile(new URL(file, outputDirectory), "utf8"))));
 const indexUrl = `https://www.aonprd.com/Archetypes.aspx?Class=${encodeURIComponent(className)}`;
 const entries = indexEntries(await fetchDocument(indexUrl));
 if (!entries.length) throw new Error(`${className}: no archetypes found`);
 
 for (const [index, entry] of entries.entries()) {
   const archetypeId = `${classId}-${slug(entry.name)}`;
-  const outputFile = new URL(`${archetypeId}.json`, outputDirectory);
-  if (!overwrite) {
-    try {
-      await access(outputFile);
-      console.log(`Preserved ${index + 1}/${entries.length}: ${entry.name}`);
-      continue;
-    } catch {}
+  if (/^none$/i.test(entry.replacesText)) {
+    console.log(`No replacement record needed ${index + 1}/${entries.length}: ${entry.name}`);
+    continue;
   }
-  const featureIds = replacedFeatureIds(entry.replacesText);
-  const features = detailFeatures(await fetchDocument(entry.url), archetypeId);
-  if (!featureIds.length) throw new Error(`${entry.name}: could not map replacements: ${entry.replacesText}`);
+  const existingRecord = existingRecords.find((record) =>
+    record.classId === classId && record.name.localeCompare(entry.name, undefined, { sensitivity: "base" }) === 0
+  );
+  if (!overwrite && existingRecord && existingRecord.source?.title !== "Archives of Nethys") {
+    console.log(`Preserved curated ${index + 1}/${entries.length}: ${entry.name}`);
+    continue;
+  }
+  const outputFile = new URL(`${archetypeId}.json`, outputDirectory);
+  const { featureIds, nestedReplacements } = replacedFeatureIds(entry.replacesText);
+  const features = detailFeatures(await fetchDocument(entry.url), archetypeId, entry.name);
   if (!features.length) throw new Error(`${entry.name}: no features parsed`);
   const record = {
     id: archetypeId,
@@ -149,7 +180,8 @@ for (const [index, entry] of entries.entries()) {
     classId,
     summary: entry.summary,
     replacesText: entry.replacesText,
-    replacements: [{ featureIds, features }],
+    nestedReplacements: nestedReplacements.length ? nestedReplacements : featureIds.length ? undefined : [entry.replacesText],
+    replacements: [{ featureIds: featureIds.length ? featureIds : [`nested-${slug(entry.replacesText)}`], features }],
     source: { title: "Archives of Nethys", page: null, url: entry.url }
   };
   await writeFile(outputFile, `${JSON.stringify(record, null, 2)}\n`);

@@ -1,0 +1,44 @@
+{
+  "id": "ranger-groom",
+  "name": "Groom",
+  "classId": "ranger",
+  "summary": "The groom attends to the needs of the party’s mounts and beasts of burden during their adventures, and guards these animals while the party goes underground.",
+  "replacesText": "Track; Endurance; 1st Favored Terrain",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-track-1",
+        "ranger-swift-tracker-8",
+        "ranger-endurance-3"
+      ],
+      "features": [
+        {
+          "id": "ranger-groom-hide-the-horses-ex-1",
+          "name": "Hide the Horses (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A groom finds the best place to stable and conceal a party’s mounts while the group explores a dungeon. A groom adds half her level (minimum 1) on Stealth skill checks for both herself and the mounts she’s hiding while she is concealing a party’s mounts. This ability replaces track."
+        },
+        {
+          "id": "ranger-groom-horse-whisperer-su-3",
+          "name": "Horse Whisperer (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a groom can use speak with animals at will, but can use this power only on horses, riding dogs, and other mounts of the animal type. This ability replaces Endurance."
+        },
+        {
+          "id": "ranger-groom-scout-the-area-ex-3",
+          "name": "Scout the Area (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a groom gains a +4 bonus on Knowledge (local) checks. In addition, she always knows where to find the nearest expert or spellcaster who can provide a particular service, such as the nearest source of raise dead . This ability replaces the ranger’s 1st favored terrain."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Groom"
+  }
+}

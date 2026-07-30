@@ -1,0 +1,81 @@
+{
+  "id": "druid-tempest-druid",
+  "name": "Tempest Druid",
+  "classId": "druid",
+  "summary": "Some druids have come to worship the Eye of Abendego as an aspect of pure elemental fury, channeling its mysteries into their own magic",
+  "replacesText": "Alignment; Weapon and Armor Proficiencies; Nature Bond; Nature Sense; Trackless Step; Resist Nature's Lure; Venom Immunity",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-nature-bond-1",
+        "druid-nature-sense-1",
+        "druid-trackless-step-3",
+        "druid-resist-natures-lure-4",
+        "druid-venom-immunity-9"
+      ],
+      "features": [
+        {
+          "id": "druid-tempest-druid-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The beliefs held by tempest druids are inherently more chaotic than those held by most druids, and as a result, tempest druids must be chaotic neutral. This alters the druid’s alignment."
+        },
+        {
+          "id": "druid-tempest-druid-armor-and-weapon-proficiencies-1",
+          "name": "Armor and Weapon Proficiencies",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tempest druid is proficient with the trident, in addition to the druid’s normal armor and weapon proficiencies. This alters the druid’s armor and weapon proficiencies."
+        },
+        {
+          "id": "druid-tempest-druid-spontaneous-domain-casting-1",
+          "name": "Spontaneous Domain Casting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tempest druid can channel stored spell energy into domain spells that he has not prepared ahead of time. He can “lose” a prepared spell to cast any domain spell of the same level or lower. This replaces the druid’s normal ability to spontaneously cast summon spells."
+        },
+        {
+          "id": "druid-tempest-druid-nature-bond-ex-1",
+          "name": "Nature Bond (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "As a result of his beliefs, a tempest druid has little connection to the spirituality of animals or plants. He can’t choose an animal companion, and must instead select a domain or subdomain from the following list when he gains the nature bond ability: Air, Aquatic UM , Cloud APG , Storm APG , Swamp UM , Weather, or Wind APG . This alters nature bond."
+        },
+        {
+          "id": "druid-tempest-druid-sodden-shore-sense-ex-1",
+          "name": "Sodden Shore Sense (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tempest druid gains a +4 bonus on Knowledge (nature) and Survival checks in coastal or marshy lands. This ability replaces nature sense."
+        },
+        {
+          "id": "druid-tempest-druid-electrical-resistance-ex-3",
+          "name": "Electrical Resistance (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a tempest druid gains electricity resistance 5. As a standard action, he can transfer this resistance to another creature for 1 hour, after which time it reverts to him. This ability replaces trackless step."
+        },
+        {
+          "id": "druid-tempest-druid-eyes-of-the-storm-ex-4",
+          "name": "Eyes of the Storm (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a tempest druid can see through 10 feet of magical fog, mist, rain, wind, or similar inclement weather conditions, ignoring any concealment such conditions might grant. This distance increases by 5 feet for every 4 levels beyond 4th. This ability replaces resist nature’s lure."
+        },
+        {
+          "id": "druid-tempest-druid-bend-bolt-su-9",
+          "name": "Bend Bolt (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a tempest druid can redirect nearby electrical attacks. As an immediate action, the druid can shift the area or target of an electricity attack by 5 feet in any direction. If the electricity affects an area, the druid selects one square to be unaffected and an adjacent square to be affected. If the adjacent square is already in the area, this has no additional effect in that square. If the electricity affects a target, the druid selects an adjacent target. For example, if he were in the line of a wizard’s lightning bolt , he could have the spell skip his square and instead affect an adjacent square, even if this meant the spell did not form a continuous line. If another druid attacked him with call lightning , he could shift the called bolt to an adjacent square, affecting a creature in that square (if any). He can’t redirect electricity damage conducted to him by physical contact with an object or creature (such as a shocking grasp or a shock weapon). He can use this ability a number of times per day equal to his Wisdom bonus. This ability replaces venom immunity."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Tempest%20Druid"
+  }
+}

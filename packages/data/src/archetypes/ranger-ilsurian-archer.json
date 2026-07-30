@@ -1,0 +1,74 @@
+{
+  "id": "ranger-ilsurian-archer",
+  "name": "Ilsurian Archer",
+  "classId": "ranger",
+  "summary": "Ilsurian archers maintain the strong tradition of archery first developed by soldiers in the service of Ilsur, who raised a small army with which he intended to overthrow the monarch of Korvosa after the fall of the Chelish Empire.",
+  "replacesText": "Track; Wild Empathy; Combat Style; Spellcasting; Swift Tracking; Quarry; Improved Quarry",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-track-1",
+        "ranger-swift-tracker-8",
+        "ranger-wild-empathy-1",
+        "ranger-combat-style-2",
+        "ranger-combat-style-feat-2",
+        "ranger-combat-style-feat-6",
+        "ranger-combat-style-feat-10",
+        "ranger-combat-style-feat-14",
+        "ranger-combat-style-feat-18",
+        "ranger-spellcasting-4",
+        "ranger-quarry-11",
+        "ranger-improved-quarry-19"
+      ],
+      "features": [
+        {
+          "id": "ranger-ilsurian-archer-bullseye-shot-ex-1",
+          "name": "Bullseye Shot (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an Ilsurian archer gains the Bullseye Shot ISG feat as a bonus feat. He need not meet its prerequisites. This ability replaces track and wild empathy."
+        },
+        {
+          "id": "ranger-ilsurian-archer-archery-style-ex-2",
+          "name": "Archery Style (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an Ilsurian archer must select the archery combat style. This modifies the ranger’s combat style feat class feature."
+        },
+        {
+          "id": "ranger-ilsurian-archer-vicious-aim-ex-4",
+          "name": "Vicious Aim (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, an Ilsurian archer adds half his highest favored enemy bonus to all attack rolls and damage rolls for attacks made with ranged weapons. This does not stack with his normal favored enemy bonus when targeting a creature that qualifies as a favored enemy. This ability replaces all spellcasting, and the Ilsurian ranger is not considered to have a caster level."
+        },
+        {
+          "id": "ranger-ilsurian-archer-iomedae-s-influence-ex-8",
+          "name": "Iomedae’s Influence (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, an Ilsurian archer gains Weapon Focus with the longsword as a bonus feat, due to the influence the church of Iomedae has over Ilsurian causes. This ability replaces swift tracking."
+        },
+        {
+          "id": "ranger-ilsurian-archer-pinpoint-targeting-ex-11",
+          "name": "Pinpoint Targeting (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, an Ilsurian ranger gains Pinpoint Targeting as a bonus feat, even if he does not meet its prerequisites. This replaces quarry."
+        },
+        {
+          "id": "ranger-ilsurian-archer-quarry-ex-19",
+          "name": "Quarry (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, an Ilsurian ranger gains the quarry class feature. This ability replaces improved quarry."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Ilsurian%20Archer"
+  }
+}

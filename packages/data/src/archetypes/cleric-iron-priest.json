@@ -1,0 +1,44 @@
+{
+  "id": "cleric-iron-priest",
+  "name": "Iron Priest",
+  "classId": "cleric",
+  "summary": "Iron priests preach of the messengers from beyond the stars, envoys of the divine brought to Golarion in a falling star.",
+  "replacesText": "Class Skills; Channel Energy; Spellcasting",
+  "replacements": [
+    {
+      "featureIds": [
+        "channel-energy-1",
+        "cleric-channel-energy-type-1",
+        "cleric-spellcasting-1"
+      ],
+      "features": [
+        {
+          "id": "cleric-iron-priest-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The iron priest’s class skills are Appraise (Int), Craft (Int), Diplomacy (Cha), Disable Device (Dex), Heal (Wis), Knowledge (engineering) (Int), Knowledge (history) (Int), Knowledge (local), Knowledge (religion) (Int), Linguistics (Int), Profession (Wis), Spellcraft (Int), and Survival (Wis)."
+        },
+        {
+          "id": "cleric-iron-priest-channel-energy-su-1",
+          "name": "Channel Energy (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When an iron priest channels energy to heal or harm living creatures, she heals or harms constructs with the clockwork or robot subtypes as well. Constructs without those subtypes are also affected, but gain only half the normal amount of healing or take only half the normal amount of damage, as appropriate. An iron priest cannot harm or heal undead with channel energy. This ability alters channel energy."
+        },
+        {
+          "id": "cleric-iron-priest-spontaneous-casting-1",
+          "name": "Spontaneous Casting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An iron priest can spontaneously cast make whole and greater make whole in place of cure/inflict moderate wounds and cure/inflict critical wounds , regardless of whether she channels positive or negative energy. This ability alters casting."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Iron%20Priest"
+  }
+}

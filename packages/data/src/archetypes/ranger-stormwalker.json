@@ -1,0 +1,75 @@
+{
+  "id": "ranger-stormwalker",
+  "name": "Stormwalker",
+  "classId": "ranger",
+  "summary": "Rangers who walk in the tempest unafraid draw the power of the storm into themselves and become stormwalkers.",
+  "replacesText": "Combat Style; Hunter's Bond; Swift Tracker; Quarry; Improved Evasion; Improved Quarry",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-combat-style-2",
+        "ranger-combat-style-feat-2",
+        "ranger-combat-style-feat-6",
+        "ranger-combat-style-feat-10",
+        "ranger-combat-style-feat-14",
+        "ranger-combat-style-feat-18",
+        "ranger-hunters-bond-4",
+        "ranger-track-1",
+        "ranger-swift-tracker-8",
+        "ranger-quarry-11",
+        "ranger-improved-quarry-19",
+        "ranger-evasion-9",
+        "ranger-improved-evasion-16"
+      ],
+      "features": [
+        {
+          "id": "ranger-stormwalker-combat-style-feat-ex-2",
+          "name": "Combat Style Feat (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a stormwalker must choose archery style. This alters the ranger’s combat style."
+        },
+        {
+          "id": "ranger-stormwalker-thundershot-su-4",
+          "name": "Thundershot (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a stormwalker can wreathe his weapon in lightning. As a standard action, he can grant a single weapon he holds the shock special ability for 1 minute; while under this effect, the weapon counts as magic for the purpose of overcoming damage reduction. A stormwalker can use this ability a number of times per day equal to 3 + his Wisdom modifier. At 12th level, weapons affected by this ability gain the shocking burst special ability. This replaces hunter’s bond."
+        },
+        {
+          "id": "ranger-stormwalker-wind-treader-ex-8",
+          "name": "Wind Treader (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a stormwalker becomes immune to the effects of strong wind. He can move without hindrance in windy conditions, and his ranged attacks take no penalties from nonmagical wind. This replaces swift tracker."
+        },
+        {
+          "id": "ranger-stormwalker-flash-step-su-11",
+          "name": "Flash Step (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a stormwalker can move across the battlefield like a bolt of lightning. As a full-round action, he can transform into lightning and move to any unoccupied square within 60 feet without provoking attacks of opportunity. He can make a single ranged attack before or after this movement. This replaces quarry."
+        },
+        {
+          "id": "ranger-stormwalker-control-weather-sp-16",
+          "name": "Control Weather (Sp)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, a stormwalker can cast control weather as a spell-like ability once per day. This replaces improved evasion."
+        },
+        {
+          "id": "ranger-stormwalker-flash-shot-su-19",
+          "name": "Flash Shot (Su)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, when a stormwalker uses flash step, he can make a ranged attack both before and after his movement. Both of these attacks are made at his highest base attack bonus. This replaces improved quarry."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Stormwalker"
+  }
+}

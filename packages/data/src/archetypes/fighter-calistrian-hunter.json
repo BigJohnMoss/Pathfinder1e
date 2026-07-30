@@ -1,0 +1,86 @@
+{
+  "id": "fighter-calistrian-hunter",
+  "name": "Calistrian Hunter",
+  "classId": "fighter",
+  "summary": "Like a bounty hunter following his own rules, a Calistrian hunter tracks down elusive prey using his wits and delivers long-overdue retribution while easily ignoring his own injuries thanks to the joy he receives from a job well done.",
+  "replacesText": "Weapon/Armor Proficiency; Class Skills; Bravery; Weapon Training 1-4; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-calistrian-hunter-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Calistrian hunter is proficient with all simple and martial weapons, plus the whip. In addition, the hunter is proficient with light and medium armor as well as shields (except tower shields). This replaces the normal fighter armor and weapon proficiencies."
+        },
+        {
+          "id": "fighter-calistrian-hunter-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Calistrian hunter gains Diplomacy, Knowledge (local), and Perception as class skills and loses Knowledge (dungeoneering) and Knowledge (engineering) as class skills."
+        },
+        {
+          "id": "fighter-calistrian-hunter-tenacious-tracker-ex-2",
+          "name": "Tenacious Tracker (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a Calistrian hunter gains a +1 bonus on Diplomacy checks to gather information and on Survival checks made to identify or follow tracks. This bonus increases by 1 for every 4 levels the Calistrian hunter possesses beyond 2nd. This ability replaces bravery."
+        },
+        {
+          "id": "fighter-calistrian-hunter-vengeance-ex-5",
+          "name": "Vengeance (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a Calistrian hunter deals 1d4 points of bleed damage when he damages a creature that has damaged him since the beginning of his last turn. Whenever a creature takes bleed damage from this effect, it also takes a –1 penalty on attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks for 1 round. This penalty is a pain effect and does not stack with the effects of the sickened condition. This bleed damage increases to 1d6 at 9th level, 1d8 at 13th level, and 2d6 at 17th level. This ability replaces weapon training 1."
+        },
+        {
+          "id": "fighter-calistrian-hunter-savor-the-sting-ex-9",
+          "name": "Savor the Sting (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, whenever a target takes bleed damage from a Calistrian hunter’s vengeance ability, the Calistrian hunter gains an equal number of temporary hit points. These temporary hit points last for 1 minute and do not stack with each other. This ability replaces weapon training 2."
+        },
+        {
+          "id": "fighter-calistrian-hunter-swift-revenge-ex-13",
+          "name": "Swift Revenge (Ex)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a Calistrian hunter gains the quarry class feature; this functions like the ranger ability of the same name, but the target must be one that has damaged the Calistrian hunter in the past hour. This ability replaces weapon training 3."
+        },
+        {
+          "id": "fighter-calistrian-hunter-perceived-wrongs-ex-17",
+          "name": "Perceived Wrongs (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a Calistrian hunter can, once per day, use his vengeance ability against any creature—even one that has not harmed him. If the target is also one that has damaged him since the beginning of his last turn, the bleed damage increases to 3d6 and the target is sickened for as long as the bleed effect continues. This ability replaces weapon training 4."
+        },
+        {
+          "id": "fighter-calistrian-hunter-certain-revenge-ex-20",
+          "name": "Certain Revenge (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a Calistrian hunter gains the improved quarry class feature; this functions like the ranger ability of the same name, but the target must have attacked him in the past day. Whenever he uses his vengeance ability against his quarry, the bleed damage increases by 2 per bleed damage die. This ability replaces weapon mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Calistrian%20Hunter"
+  }
+}

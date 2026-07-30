@@ -1,0 +1,62 @@
+{
+  "id": "druid-toxicologist",
+  "name": "Toxicologist",
+  "classId": "druid",
+  "summary": "Toxicologists specialize in the stealthy application of insidious poisons to their targets, believing word of their foes’ horrifying deaths will deter others from attempting similar desecrations of the natural world.",
+  "replacesText": "Spontaneous Casting; Wild Empathy; Woodland Stride; Trackless Step; Resist Nature's Lure; Wild Shape",
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-spontaneous-casting-1",
+        "druid-wild-empathy-1",
+        "druid-woodland-stride-2",
+        "druid-trackless-step-3",
+        "druid-resist-natures-lure-4",
+        "druid-wild-shape-4",
+        "druid-wild-shape-6",
+        "druid-wild-shape-8",
+        "druid-wild-shape-10",
+        "druid-wild-shape-12",
+        "druid-wild-shape-14",
+        "druid-wild-shape-16",
+        "druid-wild-shape-18",
+        "druid-wild-shape-20"
+      ],
+      "features": [
+        {
+          "id": "druid-toxicologist-expanded-repertoire-ex-1",
+          "name": "Expanded Repertoire (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A toxicologist adds the following extracts and spells to her druid spell list as druid spells of the listed spell level: poisoned egg (1st level, Pathfinder Campaign Setting: Inner Sea Gods 238 ), transmute potion to poisonAPG (2nd level), stinking cloud (3rd level), toxic giftUM (4th level), and cloudkill (5th level). A toxicologist can channel stored spell energy only into summoning spells she has prepared ahead of time. This ability alters spells and replaces spontaneous casting."
+        },
+        {
+          "id": "druid-toxicologist-natural-poison-lore-ex-2",
+          "name": "Natural Poison Lore (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A toxicologist has a deep understanding of and appreciation for poisons. At 2nd level, she cannot accidentally poison herself when applying poison to a weapon and cannot accidentally poison an animal companion or summoned creature when applying poison to its claws (though poison obviously should not be applied to a creature’s bite). This ability replaces wild empathy and woodland stride."
+        },
+        {
+          "id": "druid-toxicologist-expert-poisoner-su-4",
+          "name": "Expert Poisoner (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a toxicologist increases the DCs of any spells she casts with the poison descriptor by 1. This ability replaces trackless step and resist nature’s lure."
+        },
+        {
+          "id": "druid-toxicologist-toxic-shaper-su-8",
+          "name": "Toxic Shaper (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "A toxicologist never gains the ability to use wild shape to transform into an elemental or plant. At 8th level, a toxicologist can transform into a Small or Medium vermin. When she takes this form, her wild shape functions as vermin shape IUM . At 10th level, a toxicologist can transform into a tiny or large vermin. When she takes this form, her wild shape functions as vermin shape IIUM . This ability alters wild shape."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Toxicologist"
+  }
+}

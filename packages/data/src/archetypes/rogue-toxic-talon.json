@@ -1,0 +1,64 @@
+{
+  "id": "rogue-toxic-talon",
+  "name": "Toxic Talon",
+  "classId": "rogue",
+  "summary": "A toxic talon spends resources and time combining easy-to-obtain materials into dangerous toxins to aid in the defense of Andoran.",
+  "replacesText": "Weapon Proficiencies; Trapfinding; Trap Sense; Uncanny Dodge; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "rogue-toxic-talon-forceful-breath-ex-1",
+          "name": "Forceful Breath (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A toxic talon is proficient with blowguns instead of hand crossbows. He can use a blowgun without penalty while prone. This alters the rogue’s weapon proficiencies."
+        },
+        {
+          "id": "rogue-toxic-talon-poison-adept-ex-1",
+          "name": "Poison Adept (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A toxic talon is trained in the use of poison and cannot accidentally poison himself when applying poison to a projectile weapon. He can apply poison to a projectile as a move action. This counts as the poison use ability for the purposes of qualifying for feats, prestige classes, and other options. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-toxic-talon-toxin-resistance-ex-3",
+          "name": "Toxin Resistance (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A toxic talon’s constant exposure to varied poisons grants him increasing resistance to them. At 3rd level, a toxic talon gains a +1 bonus on saving throws against diseases and poisons, and he gains a +1 bonus on Heal checks to treat diseases and poisons. He also gains a +1 bonus on caster level checks (including when he activates a magic item) to treat or remove poisons and diseases, such as when using remove disease or neutralize poison. Finally, he gains a +1 bonus on Perception checks to identify traps that utilize diseases or poisons. These bonuses increase to +2 at 6th level, to +3 at 9th level, to +4 at 12th level, to +5 at 15th level, and to +6 at 18th level. This replaces trap sense."
+        },
+        {
+          "id": "rogue-toxic-talon-catalyst-su-4",
+          "name": "Catalyst (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a toxic talon can use secret alchemical techniques to enhance a poison as he applies it to a weapon, increasing the save DC of the poison by 1 (this bonus increases to +2 at 12th level). This increase to the save DC lasts for 1 minute or until the poison is used up, whichever comes first. A toxic talon can use catalyst once per hour. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-toxic-talon-split-toxin-su-8",
+          "name": "Split Toxin (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, when a toxic talon uses catalyst to enhance poison as he applies it, he can envenom two ranged weapons or units of ammunition simultaneously with the same dose. This ability replaces the rogue’s improved uncanny dodge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Toxic%20Talon"
+  }
+}

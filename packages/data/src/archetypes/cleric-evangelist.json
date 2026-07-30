@@ -1,0 +1,62 @@
+{
+  "id": "cleric-evangelist",
+  "name": "Evangelist",
+  "classId": "cleric",
+  "summary": "The evangelist is the voice of her religion in the world.",
+  "replacesText": "Domains; Channel Energy; Spontaneous Casting",
+  "replacements": [
+    {
+      "featureIds": [
+        "cleric-domain-1-first",
+        "cleric-domain-1-second",
+        "cleric-domain-spell-1",
+        "cleric-domain-spell-2",
+        "cleric-domain-spell-3",
+        "cleric-domain-spell-4",
+        "cleric-domain-spell-5",
+        "cleric-domain-spell-6",
+        "cleric-domain-spell-7",
+        "cleric-domain-spell-8",
+        "cleric-domain-spell-9",
+        "channel-energy-1",
+        "cleric-channel-energy-type-1",
+        "cleric-spontaneous-casting-1"
+      ],
+      "features": [
+        {
+          "id": "cleric-evangelist-single-minded-1",
+          "name": "Single-Minded",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An evangelist focuses her skills and learning on proclamation rather than the fine details of the church’s deeper mysteries or martial training. Thus, she may select only one domain and does not gain Medium Armor Proficiency or Shield Proficiency."
+        },
+        {
+          "id": "cleric-evangelist-public-speaker-1",
+          "name": "Public Speaker",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An evangelist gains Perform as a class skill. In addition, she is trained to project her voice with great skill and effect; the DC to hear her speak in difficult conditions is reduced by an amount equal to her class level plus her Charisma modifier (minimum 0)."
+        },
+        {
+          "id": "cleric-evangelist-sermonic-performance-1",
+          "name": "Sermonic Performance",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An evangelist gains the ability to deliver a select number of supernatural and spell-like performances through the force and power of her divinely inspired preaching and exhortation. This ability is similar in all respects to bardic performance as used by a bard of the same level (including interactions with feats, spells, and prestige classes), using Perform (oratory) as the evangelist’s performance skill. However, an evangelist gains only the following types of bardic performance: countersong, fascinate, and inspire courage at 1st level; inspire greatness at 9th level; and inspire heroics at 15th level. Sermonic performance replaces the 1st-, 9th-, and 15th-level channel energy abilities. This caps the cleric’s channel energy damage at 7d6 points."
+        },
+        {
+          "id": "cleric-evangelist-spontaneous-casting-1",
+          "name": "Spontaneous Casting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An evangelist does not gain the ability to spontaneously cast cure or inflict spells by sacrificing prepared spells. However, an evangelist can spontaneously cast the following spells by sacrificing a prepared spell of the noted level or above: Spell Level Spontaneous Spell 1st level command 2nd level enthrall 3rd level tongues 4th level suggestion 5th level greater command 6th level geas/quest 7th level mass suggestion 8th level sympathy 9th level demand"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Evangelist"
+  }
+}

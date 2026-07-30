@@ -1,0 +1,52 @@
+{
+  "id": "sorcerer-mongrel-mage",
+  "name": "Mongrel Mage",
+  "classId": "sorcerer",
+  "summary": "A mongrel mage is a sorcerer whose bloodline is so weak, or mixed with so many others, that her power isn’t clearly associated with any bloodline source.",
+  "replacesText": "Bloodline; Bloodline Powers; Bloodline Spells; 7th, 13th, and 19th-level Bloodline Feats",
+  "replacements": [
+    {
+      "featureIds": [
+        "sorcerer-bloodline-1",
+        "sorcerer-bloodline-power-1",
+        "sorcerer-bloodline-power-3",
+        "sorcerer-bloodline-spell-3",
+        "sorcerer-bloodline-spell-5",
+        "sorcerer-bloodline-spell-7",
+        "sorcerer-bloodline-feat-7",
+        "sorcerer-bloodline-power-9",
+        "sorcerer-bloodline-spell-9",
+        "sorcerer-bloodline-spell-11",
+        "sorcerer-bloodline-spell-13",
+        "sorcerer-bloodline-feat-13",
+        "sorcerer-bloodline-power-15",
+        "sorcerer-bloodline-spell-15",
+        "sorcerer-bloodline-spell-17",
+        "sorcerer-bloodline-spell-19",
+        "sorcerer-bloodline-feat-19",
+        "sorcerer-bloodline-power-20"
+      ],
+      "features": [
+        {
+          "id": "sorcerer-mongrel-mage-mongrel-reservoir-su-1",
+          "name": "Mongrel Reservoir (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a mongrel mage has an innate pool of magical energy, known as her mongrel reservoir, that she can draw upon to activate her weakened bloodline. Her mongrel reservoir can hold an amount of magical energy equal to 3 + her sorcerer level. Each day when refreshing her spell slots, her mongrel reservoir is restored to full. The mongrel reservoir can never hold more points that the total mentioned above; points gained in excess of this maximum are lost. Each day when she refreshes her spell slots, the mongrel mage selects one sorcerer bloodline. She must select an ordinary bloodline with this ability, not one altered by the wildblooded archetype or any other archetype. She gains this bloodline’s 1st-level bloodline power for that day, using it as if she were only a 1st-level sorcerer. (If this ability is used to gain an arcane bond and the bonded item is selected, she can use the item only to cast a 1st-level spell known, as she counts as only a 1st-level sorcerer.) A mongrel mage can have only one bloodline selected at a time. As a swift action, she can expend 1 point from her mongrel reservoir to activate that bloodline, allowing her to use its 1st-level bloodline powers as well as its bloodline arcana at her full sorcerer level, including using a bonded item from an arcane bond. This lasts for a number of rounds equal to her Charisma modifier (minimum 1). At 3rd level, when activating her selected bloodline, a mongrel mage can instead spend 2 points from her mongrel reservoir to allow her to use the bloodline’s 1st- and 3rd-level powers as well as its bloodline arcana at her full sorcerer level for a number of rounds equal to her Charisma modifier (minimum 1). At 7th level, when a mongrel mage is activating her selected bloodline, the mongrel mage can instead spend 3 points from her mongrel reservoir, allowing her to use the bloodline’s 1st-, 3rd-, and 7th-level powers as well as its bloodline arcana at her full sorcerer level for a number of rounds equal to her Charisma bonus. At 20th level, when activating her selected bloodline, a mongrel mage can instead spend 5 points from her mongrel reservoir, allowing her to use all of the bloodline’s powers as well as its bloodline arcana at her full sorcerer level for a number of rounds equal to her Charisma modifier (minimum 1). This ability alters the bloodline class feature, bloodline powers, and bloodline spells."
+        },
+        {
+          "id": "sorcerer-mongrel-mage-bloodline-spells-7",
+          "name": "Bloodline Spells",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, each day when she selects her bloodline, a mongrel mage adds the 1st-, 2nd-, and 3rdlevel spells from her selected bloodline to her current list of spells known. At 13th level, each day when she selects her bloodline, a mongrel mage adds the 4th-, 5th-, and 6th-level spells from her selected bloodline to her current list of spells known. At 19th level, each day when she selects her bloodline, a mongrel mage adds the 7th-, 8th-, and 9th-level spells from her selected bloodline to her current list of spells known. This ability replaces the bloodline feats gained at 7th, 13th, and 19th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Mongrel%20Mage"
+  }
+}

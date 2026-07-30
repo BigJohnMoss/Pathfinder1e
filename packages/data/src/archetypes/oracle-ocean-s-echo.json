@@ -1,0 +1,52 @@
+{
+  "id": "oracle-ocean-s-echo",
+  "name": "Ocean's Echo",
+  "classId": "oracle",
+  "summary": "Although many merfolk claim deep connections to both art and the natural world, a rare few merfolk can manipulate the forces of nature and weave them into song.",
+  "replacesText": "Mystery Bonus Skills; 4th, 8th, 10th, 12th, 14th-level Bonus Spells; 1st, 3rd, 15th-level Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-mystery-1",
+        "oracle-revelation-1",
+        "oracle-revelation-3",
+        "oracle-revelation-15"
+      ],
+      "features": [
+        {
+          "id": "oracle-ocean-s-echo-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An ocean’s echo adds Bluff, Intimidate, Knowledge (nature), and Perform to her list of class skills. These replace the additional class skills from her mystery."
+        },
+        {
+          "id": "oracle-ocean-s-echo-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Sound burst (4th), shout (8th), song of discord (10th), greater shout (12th), and pied piping APG (14th). These bonus spells replace the oracle’s mystery bonus spells at these levels."
+        },
+        {
+          "id": "oracle-ocean-s-echo-inspiring-song-ex-1",
+          "name": "Inspiring Song (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The voice of an ocean’s echo provides inspiration to allies. This ability is identical to bardic performance (using Perform [sing] only), allowing her to inspire courage at 1st level, inspire competence at 3rd level, and inspire heroics at 15th level, as a bard of the ocean’s echo’s level. It is usable a total number of rounds per day equal to her level + her Charisma modifier (minimum 1). This ability replaces the revelations gained at 1st, 3rd, and 15th level."
+        },
+        {
+          "id": "oracle-ocean-s-echo-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Ancestor UM , heavens, life, lore, nature, time UM , waves, wind."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Ocean%27s%20Echo"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "paladin-kraken-slayer",
+  "name": "Kraken Slayer",
+  "classId": "paladin",
+  "summary": "Triton kraken slayers oppose all underwater threats, but they especially target the tentacled monstrosities called krakens.",
+  "replacesText": "Smite Evil; Divine Health; Divine Bond; Aura of Faith",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-smite-evil-1",
+        "paladin-divine-health-3",
+        "paladin-divine-bond-5",
+        "paladin-aura-of-faith-14"
+      ],
+      "features": [
+        {
+          "id": "paladin-kraken-slayer-smite-deepest-evil-su-1",
+          "name": "Smite Deepest Evil (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "This functions as the smite evil ability, but the kraken slayer does not get a bonus of 2 points of damage per level on the first successful attack against any creatures other than evil creatures with the aquatic or water subtype. She gains a bonus of 2 points of damage per level on all smite attacks made against evil creatures with the aquatic or water subtype. This ability alters smite evil."
+        },
+        {
+          "id": "paladin-kraken-slayer-divine-immunity-ex-3",
+          "name": "Divine Immunity (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a kraken slayer is immune to poisons and diseases, including supernatural and magical diseases, delivered by the natural attacks of creatures with the aquatic or water subtype. This ability replaces divine health."
+        },
+        {
+          "id": "paladin-kraken-slayer-divine-bond-sp-1",
+          "name": "Divine Bond (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A kraken slayer who chooses a weapon as her divine bond may either increase her weapon’s enhancement bonus or add any of the following properties to her weapon: axiomatic , brilliant energy , defending , grayflameUE , holy , keen , merciful , seaborneUE , and speed . A kraken slayer who chooses a mount must select one suitable for an aquatic environment, such as an elasmosaurus, giant seahorse B4 , or orca. This ability alters divine bond."
+        },
+        {
+          "id": "paladin-kraken-slayer-aura-of-elusion-su-14",
+          "name": "Aura of Elusion (Su)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, a kraken slayer gains a sacred bonus equal to her kraken slayer level on Escape Artist checks and combat maneuver checks to escape a grapple and to her CMD to avoid being grappled. Each ally within 10 feet of her gains a sacred bonus equal to half her kraken slayer level on Escape Artist checks and combat maneuver checks to escape a grapple and to CMD to avoid being grappled. This ability functions only while the paladin is conscious, not if she is unconscious or dead. This ability replaces aura of faith."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Kraken%20Slayer"
+  }
+}

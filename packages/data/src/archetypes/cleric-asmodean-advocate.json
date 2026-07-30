@@ -1,0 +1,59 @@
+{
+  "id": "cleric-asmodean-advocate",
+  "name": "Asmodean Advocate",
+  "classId": "cleric",
+  "summary": "For the faithful of Asmodeus, the words used in a negotiation or contract matter more than their intent.",
+  "replacesText": "Domains",
+  "replacements": [
+    {
+      "featureIds": [
+        "cleric-domain-1-first",
+        "cleric-domain-1-second",
+        "cleric-domain-spell-1",
+        "cleric-domain-spell-2",
+        "cleric-domain-spell-3",
+        "cleric-domain-spell-4",
+        "cleric-domain-spell-5",
+        "cleric-domain-spell-6",
+        "cleric-domain-spell-7",
+        "cleric-domain-spell-8",
+        "cleric-domain-spell-9"
+      ],
+      "features": [
+        {
+          "id": "cleric-asmodean-advocate-pact-bound-ex-1",
+          "name": "Pact-Bound (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An Asmodean advocate must choose Asmodeus as her deity and select the Trickery domain. She does not gain a second domain. If she ever changes her deity, she loses this archetype and becomes a normal ex-cleric. This ability alters domains."
+        },
+        {
+          "id": "cleric-asmodean-advocate-serpent-su-1",
+          "name": "Serpent (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an Asmodean advocate gains a familiar as the arcane bond class feature, using her cleric level as her wizard level. She must choose a viper familiar. The viper speaks one language of the Asmodean advocate’s choice as a supernatural ability."
+        },
+        {
+          "id": "cleric-asmodean-advocate-devil-in-the-details-ex-1",
+          "name": "Devil in the Details (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an Asmodean advocate learns to choose her words so carefully that even when she says something designed to deceive listeners, the words are phrased to be technically true. She can use her Profession (barrister) skill for Bluff and Diplomacy checks. This benefit also extends to her familiar. The Asmodean advocate gains an insight bonus equal to 1/2 her cleric level (minimum +1) on Linguistics checks related to forgeries and on all Profession (barrister) checks."
+        },
+        {
+          "id": "cleric-asmodean-advocate-shoulder-devil-su-8",
+          "name": "Shoulder Devil (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, an Asmodean advocate can choose an imp familiar as though she had the Improved Familiar feat."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Asmodean%20Advocate"
+  }
+}

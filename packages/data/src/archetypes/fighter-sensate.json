@@ -1,0 +1,105 @@
+{
+  "id": "fighter-sensate",
+  "name": "Sensate",
+  "classId": "fighter",
+  "summary": "A sensate perceives battle through senses beyond mortal ken, anticipating his opponents’ movements before they even begin to act.",
+  "replacesText": "Class Skills; Weapon/Armor Proficiencies; Bravery; Armor Training 1-4; Weapon Training 2-4; Armor Mastery; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "armor-mastery-19",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-sensate-skills-1",
+          "name": "Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The sensate’s class skills are Acrobatics (Dex), Climb (Str), Craft (Int), Perception (Wis), Profession (Wis), Ride (Dex), Sense Motive (Wis), Survival (Wis), and Swim (Str). This replaces the fighter’s class skills."
+        },
+        {
+          "id": "fighter-sensate-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Sensates are proficient with all simple and martial weapons, light armor, medium armor, and shields (except tower shields). This replaces the fighter’s weapon and armor proficiency."
+        },
+        {
+          "id": "fighter-sensate-guarded-senses-su-2",
+          "name": "Guarded Senses (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a sensate gains a +1 bonus on saves against sonic effects, figments, glamers, patterns, gaze attacks, and scent-based attacks. This bonus increases by 1 for every 4 levels the sensate possesses beyond 2nd. This ability replaces bravery."
+        },
+        {
+          "id": "fighter-sensate-uncanny-dodge-su-3",
+          "name": "Uncanny Dodge (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a sensate gains uncanny dodge as the barbarian ability of the same name, except supernatural in nature. This ability replaces armor training 1."
+        },
+        {
+          "id": "fighter-sensate-centered-senses-su-5",
+          "name": "Centered Senses (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a sensate can center his senses as a move action. While centered, a sensate gains a +1 insight bonus on attack rolls, weapon damage rolls, and Will saves. This bonus increases by 1 at 9th level and every 4 levels thereafter. A sensate loses his centered state if he gains the confused, dazed, fascinated, staggered, or stunned condition; falls unconscious; or fails a Will save. This ability replaces weapon training 1, 2, 3, and 4."
+        },
+        {
+          "id": "fighter-sensate-improved-uncanny-dodge-su-7",
+          "name": "Improved Uncanny Dodge (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a sensate gains improved uncanny dodge as the barbarian ability of the same name, except supernatural in nature. This ability replaces armor training 2."
+        },
+        {
+          "id": "fighter-sensate-evasion-su-11",
+          "name": "Evasion (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a sensate gains evasion while using centered senses. This functions as the rogue ability of the same name, except that it is supernatural in nature and works regardless of the sensate’s armor and encumbrance. This ability replaces armor training 3."
+        },
+        {
+          "id": "fighter-sensate-steady-su-15",
+          "name": "Steady (Su)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a sensate can center himself as a swift action. This ability replaces armor training 4."
+        },
+        {
+          "id": "fighter-sensate-perfect-senses-su-19",
+          "name": "Perfect Senses (Su)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, a sensate’s senses reach perfection, and he can easily notice illusions and unseen foes by combining his senses. While centered, he gains the effects of true seeing as well as blindsense 60 feet. An unseen creature that makes no sound and leaves no scent (such as a creature under the effects of invisibility , silence , and negate aroma ) can still avoid both the true seeing and the blindsense. This ability replaces armor mastery."
+        },
+        {
+          "id": "fighter-sensate-precision-su-20",
+          "name": "Precision (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a sensate rolls twice to confirm critical hits while centered, taking the more favorable result. Opponents must roll twice to confirm critical hits against him, taking the less favorable result. The latter ability does not function when the sensate is denied his Dexterity bonus. This ability replaces weapon mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Sensate"
+  }
+}

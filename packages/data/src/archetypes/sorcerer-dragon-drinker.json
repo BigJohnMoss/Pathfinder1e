@@ -1,0 +1,71 @@
+{
+  "id": "sorcerer-dragon-drinker",
+  "name": "Dragon Drinker",
+  "classId": "sorcerer",
+  "summary": "(Requires Draconic Bloodline) The blood of dragons not only flows through a dragon\ndrinker’s veins, but also empowers her spells and\nmagical abilities when consumed.",
+  "replacesText": "Bloodline Arcana; Claws Bloodline Power; 7th, 13th, and 19th-level Bloodline Feats",
+  "replacements": [
+    {
+      "featureIds": [
+        "sorcerer-bloodline-1",
+        "sorcerer-bloodline-power-1",
+        "sorcerer-bloodline-power-3",
+        "sorcerer-bloodline-power-9",
+        "sorcerer-bloodline-power-15",
+        "sorcerer-bloodline-power-20",
+        "sorcerer-bloodline-feat-7",
+        "sorcerer-bloodline-feat-13",
+        "sorcerer-bloodline-feat-19"
+      ],
+      "features": [
+        {
+          "id": "sorcerer-dragon-drinker-bloodline-1",
+          "name": "Bloodline",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dragon drinker must belong to the\ndraconic bloodline."
+        },
+        {
+          "id": "sorcerer-dragon-drinker-bleeding-spells-su-1",
+          "name": "Bleeding Spells (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Whenever a dragon drinker casts\na spell that deals damage, the spell deals 1 point of bleed\ndamage per spell level to any creatures of the dragon\ntype damaged. This ability replaces the bloodline\narcana ability."
+        },
+        {
+          "id": "sorcerer-dragon-drinker-blood-drinking-su-5",
+          "name": "Blood Drinking (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "Starting at first level, a dragon drinker gains the ability to drink dragon blood to alter or augment her spellcasting abilities. See page 18 for information on dragon’s blood. For the purposes of harvesting dragon’s blood, treat the dragon drinker as though she has Dragoncrafting feat. At 5th level, drinking a vial of dragon’s blood is a standard action that provides the dragon drinker with the normal benef its of the item, as well as a +1 bonus to her caster level for purposes of level-dependent spell effects on a single spell cast within 1 minute. At 7th level, a consumed vial of dragon blood also heals 1d8 points of damage instead of the standard 1d4. At 11th level, the alchemical bonus on Fortitude and Reflex saves granted by the blood increases to +2. In the absence of true dragon’s blood, the dragon drinker may tap into the draconic blood flowing through her veins to gain the temporary effects of having consumed dragon’s blood. As a free action, she can activate this ability, healing 1d4 points of damage and gaining a +1 resistance bonus on Will and Fortitude saves for 1 round. This action may only be performed once per round, and can be performed a number of times per day equal to 3 + her Charisma modifier. This ability replaces the claws bloodline power."
+        },
+        {
+          "id": "sorcerer-dragon-drinker-energy-assimilation-su-7",
+          "name": "Energy Assimilation (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, when the dragon\ndrinker drinks true dragon’s blood from a dragon with\na breath weapon that deals a different type of energy\ndamage than her chosen energy type, she may adopt the\nenergy resistance of the blood’s source dragon as if it were\nher selected bloodline. This effect lasts for 1 minute per\ndose of dragon’s blood, after which the dragon drinker’s\nenergy resistance reverts back to her normal energy type.\nThis ability replaces the 7th-level bloodline feat."
+        },
+        {
+          "id": "sorcerer-dragon-drinker-breath-mimicry-su-13",
+          "name": "Breath Mimicry (Su)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, when the dragon\ndrinker drinks true dragon’s blood from a dragon with\na breath weapon of a shape or energy type different from\nher own, she may use the shape and energy type of the\nblood’s source dragon when she next uses her breath\nweapon. This ability replaces the 13th-level bloodline feat."
+        },
+        {
+          "id": "sorcerer-dragon-drinker-blood-siphon-su-19",
+          "name": "Blood Siphon (Su)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, when the dragon\ndrinker is within 60 feet of a creature of the dragon\ntype that is suffering bleed damage, she can, as a swift\naction, draw a dose of its blood into herself as though\nshe had consumed it from a vial. Additionally, when she\nconsumes dragon’s blood, it heals 3d8 points of damage\nand provides a +3 resistance bonus on Fortitude and Will\nsaves for 1 minute in place of its normal effects. This\nability replaces the 19th-level bloodline feat."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Sorcerer%20Dragon%20Drinker"
+  }
+}

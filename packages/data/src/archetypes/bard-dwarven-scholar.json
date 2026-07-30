@@ -1,0 +1,59 @@
+{
+  "id": "bard-dwarven-scholar",
+  "name": "Dwarven Scholar",
+  "classId": "bard",
+  "summary": "A dwarven scholar researches the lineage of the kings of the old dwarven empires and learns their ancient tactics.",
+  "replacesText": "Key Ability Score; Weapon and Armor Proficiencies; Versatile Performance; Inspire Courage; Suggestion",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-versatile-performance-2",
+        "bard-versatile-performance-6",
+        "bard-versatile-performance-10",
+        "bard-versatile-performance-14",
+        "bard-versatile-performance-18",
+        "bard-inspire-courage-1",
+        "bard-inspire-courage-5",
+        "bard-inspire-courage-11",
+        "bard-inspire-courage-17",
+        "bard-suggestion-6",
+        "bard-mass-suggestion-18"
+      ],
+      "features": [
+        {
+          "id": "bard-dwarven-scholar-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dwarven scholar is proficient with one weapon of her choosing with the word “dwarven” in its name, in addition to her normal weapon proficiencies. She is not proficient with shields. This alters the bard’s weapon and armor proficiency."
+        },
+        {
+          "id": "bard-dwarven-scholar-studied-insight-ex-1",
+          "name": "Studied Insight (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dwarven scholar uses her Wisdom modifier instead of her Charisma modifier to determine all class features and effects relating to her bard class, including her bardic performance ability, bonus spells per day, the maximum spell level she can cast, and the save DCs of her spells."
+        },
+        {
+          "id": "bard-dwarven-scholar-dwarven-training-ex-2",
+          "name": "Dwarven Training (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a dwarven scholar masters one aspect of dwarven combat and gains a bonus combat feat. She must meet the prerequisites for this feat, but she treats her bard level as her base attack bonus (in addition to base attack bonuses gained from other classes and racial Hit Dice) for the purpose of qualifying for this feat. At 6th level and every 4 levels thereafter, she gains another bonus combat feat. This replaces versatile performance."
+        },
+        {
+          "id": "bard-dwarven-scholar-bardic-performance-1",
+          "name": "Bardic Performance",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dwarven scholar gains the following type of bardic performance. War Chant (Su) : At 1st level, a dwarven scholar can use her performance to inspire the martial prowess of the ancient dwarves in her allies. The dwarven scholar selects a single combat feat she knows. Allies affected by this performance gain the benefit of this feat for as long as the performance is maintained. To be affected, an ally must be able to perceive the dwarven scholar’s performance. If a combat feat has a daily use limitation (such as Stunning Fist ), any uses of that combat feat by the dwarven scholar’s allies while using this ability counts toward the dwarven scholar’s feat’s daily limit. At 6th level, the dwarven scholar may grant the benefit of two combat feats at the same time. She may use one of these feats to meet a prerequisite of the second feat. Maintaining two feats in this way requires spending 2 rounds of bardic performance every round. This replaces inspire courage and suggestion."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dwarven%20Scholar"
+  }
+}

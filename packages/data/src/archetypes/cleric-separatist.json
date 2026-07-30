@@ -1,0 +1,45 @@
+{
+  "id": "cleric-separatist",
+  "name": "Separatist",
+  "classId": "cleric",
+  "summary": "A radical cleric, unsatisfied with the orthodoxy of her deity’s teachings, forges her own path of defiant divine expression.",
+  "replacesText": "Domains",
+  "replacements": [
+    {
+      "featureIds": [
+        "cleric-domain-1-first",
+        "cleric-domain-1-second",
+        "cleric-domain-spell-1",
+        "cleric-domain-spell-2",
+        "cleric-domain-spell-3",
+        "cleric-domain-spell-4",
+        "cleric-domain-spell-5",
+        "cleric-domain-spell-6",
+        "cleric-domain-spell-7",
+        "cleric-domain-spell-8",
+        "cleric-domain-spell-9"
+      ],
+      "features": [
+        {
+          "id": "cleric-separatist-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Separatists do not gain proficiency in their deity’s favored weapon (though they are not prohibited from using it or learning its use)."
+        },
+        {
+          "id": "cleric-separatist-forbidden-rites-1",
+          "name": "Forbidden Rites",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A separatist selects one domain from her deity’s domain list, and a second domain that is not on her deity’s domain list. This second domain cannot be an alignment domain that doesn’t match the cleric’s or her deity’s alignment. For example, a lawful good separatist cleric of a neutral good deity cannot choose the Chaos or Evil domain with this ability, but can select the Lawful domain even though her deity isn’t lawful. Granted powers from the cleric’s second domain function as if the cleric’s level, Wisdom, and Charisma were 2 lower than normal (minimum level 1) in terms of effect, DC, and uses per day. This also means the separatist doesn’t gain the domain’s higher-level ability until 2 levels later than normal. If the second domain grants additional class skills, the separatist gains these as normal. In all other respects, this ability works like and replaces the standard cleric’s domain ability."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Separatist"
+  }
+}

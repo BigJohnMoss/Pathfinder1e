@@ -1,0 +1,48 @@
+{
+  "id": "wizard-spirit-whisperer",
+  "name": "Spirit Whisperer",
+  "classId": "wizard",
+  "summary": "Spirit whisperers are a breed apart among wizards, and are often mistaken for witches.",
+  "replacesText": "Arcane Bond; Spellbooks; Arcane School; Bonus Feats; 20th-level Bonus Feat",
+  "replacements": [
+    {
+      "featureIds": [
+        "wizard-arcane-bond-1",
+        "wizard-spellbook-1",
+        "wizard-arcane-school-1",
+        "wizard-bonus-feat-5",
+        "wizard-bonus-feat-10",
+        "wizard-bonus-feat-15",
+        "wizard-bonus-feat-20"
+      ],
+      "features": [
+        {
+          "id": "wizard-spirit-whisperer-arcane-bond-ex-1",
+          "name": "Arcane Bond (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When a spirit whisperer chooses an arcane bond, he must choose the familiar arcane bond, and the familiar gains the spirit animal ability of his selected spirit (see spirit link, below). The spirit whisperer does not need a spellbook, but instead stores and prepares his spell by communing with the familiar as the witch’s familiar class feature ( Advanced Player’s Guide 67). This ability alters arcane bond and replaces the spellbooks class feature."
+        },
+        {
+          "id": "wizard-spirit-whisperer-spirit-link-su-1",
+          "name": "Spirit Link (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a spirit whisperer forms a mystical bond with a spirit. The spirit whisperer picks a spirit from the shaman’s list of spirits (see page 37). At 1st level, he gains a spirit ability granted by that spirit. At 8th level, he gains the greater spirit ability granted by that spirit. At 20th level, the spirit whisperer gains the manifestation ability granted by the spirit. He uses his wizard level as his shaman level for determining the effects and DCs of abilities granted by the spirit. In addition, he uses his Intelligence modifier in place of his Wisdom modifier for these abilities. He does not gain hexes, spirit magic spells, or the true spirit ability typically granted to a shaman by these spirits. This ability replaces arcane school and the bonus feat gained at 20th level."
+        },
+        {
+          "id": "wizard-spirit-whisperer-spirit-hex-5",
+          "name": "Spirit Hex",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a spirit whisperer can select one hex from the list of those granted by his chosen spirit. He uses his wizard level as his shaman level when determining the effects and DC of this hex. In addition, he uses his Intelligence modifier in place of his Wisdom modifier for these hexes. At 10th and 15th level, he can select another hex from those granted by his spirit. Each hex selected in this way replaces the bonus feat gained at that level. This ability alters bonus feats."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Spirit%20Whisperer"
+  }
+}

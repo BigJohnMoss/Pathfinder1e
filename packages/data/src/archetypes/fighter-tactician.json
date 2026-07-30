@@ -1,0 +1,83 @@
+{
+  "id": "fighter-tactician",
+  "name": "Tactician",
+  "classId": "fighter",
+  "summary": "While many fighters focus on the fundamentals of melee and ranged combat, there are those who are trained to view the bigger picture on the battlefield.",
+  "replacesText": "Weapon/Armor Proficiency; 1st-level Bonus Feat; Bravery; Weapon Training 1; Armor Training 3, 4",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15"
+      ],
+      "features": [
+        {
+          "id": "fighter-tactician-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tactician is not proficient with heavy armor or tower shields."
+        },
+        {
+          "id": "fighter-tactician-strategic-training-ex-1",
+          "name": "Strategic Training (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tactician gains 4 skill points + a number of skill points equal to his Intelligence modifier at each level, instead of the normal 2 skill points + Intelligence modifier at each level. Furthermore, Diplomacy (Cha), Knowledge (geography) (Int), Knowledge (nobility) (Int), Linguistics (Int), and Sense Motive (Wis) are all class skills for the tactician. This ability replaces the bonus fighter combat feat gained at 1st level."
+        },
+        {
+          "id": "fighter-tactician-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A tactician may choose Skill Focus or any teamwork feat, in addition to combat feats, as bonus feats."
+        },
+        {
+          "id": "fighter-tactician-tactical-awareness-ex-2",
+          "name": "Tactical Awareness (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a tactician gains a +1 bonus on initiative checks. This bonus increases by +1 for every four levels after 2nd level (to a maximum of +5 at 18th level). This ability replaces bravery."
+        },
+        {
+          "id": "fighter-tactician-tactician-ex-5",
+          "name": "Tactician (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a tactician gains this ability as the cavalier class feature. He may use this ability once per day at 5th level, plus one additional time for every five levels after 5th (to a maximum of four times at 20th level). If the tactician also has cavalier levels, these levels stack for determining the number of uses per day, and he can take the better progression. This ability replaces weapon training 1."
+        },
+        {
+          "id": "fighter-tactician-cooperative-combatant-ex-11",
+          "name": "Cooperative Combatant (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, when a tactician uses the aid another special attack, he may affect one additional ally per point of Intelligence bonus. For each ally that a tactician aids, he can pick whether to grant that ally the +2 bonus on its next attack against the opponent or the +2 bonus to AC against the opponent’s next attack on that ally, and can grant different allies different bonuses. This ability replaces armor training 3."
+        },
+        {
+          "id": "fighter-tactician-battle-insight-ex-15",
+          "name": "Battle Insight (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, as a swift action, a tactician can grant his Intelligence modifier as an insight bonus on the attack rolls made by a single ally within line of sight that can both see and hear the tactician. That ally gains the bonus until the end of the tactician’s next turn. The tactician can use this ability a number of times per day equal to 3 + his Intelligence modifier. This ability replaces armor training 4."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Tactician"
+  }
+}

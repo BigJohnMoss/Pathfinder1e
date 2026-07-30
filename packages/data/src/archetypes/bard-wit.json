@@ -1,0 +1,81 @@
+{
+  "id": "bard-wit",
+  "name": "Wit",
+  "classId": "bard",
+  "summary": "The wit is a master of clever repartee and verbal dueling, moving through noble courts like a fish through water.",
+  "replacesText": "Bardic Knowledge; Inspire Competence; Dirge of Doom; Frightening Tune; Versatile Performance; Lore Master; Jack-of-All-Trades",
+  "replacements": [
+    {
+      "featureIds": [
+        "bardic-knowledge-1",
+        "bard-inspire-competence-3",
+        "bard-inspire-competence-7",
+        "bard-inspire-competence-11",
+        "bard-inspire-competence-15",
+        "bard-inspire-competence-19",
+        "bard-dirge-of-doom-8",
+        "bard-frightening-tune-14",
+        "bard-versatile-performance-2",
+        "bard-versatile-performance-6",
+        "bard-versatile-performance-10",
+        "bard-versatile-performance-14",
+        "bard-versatile-performance-18",
+        "bard-lore-master-5",
+        "bard-lore-master-11",
+        "bard-lore-master-17",
+        "bard-jack-of-all-trades-10",
+        "bard-jack-of-all-trades-16",
+        "bard-jack-of-all-trades-19"
+      ],
+      "features": [
+        {
+          "id": "bard-wit-way-with-words-ex-4",
+          "name": "Way with Words (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A wit gains a +1 bonus on Bluff, Diplomacy, Intimidate, Linguistics, and Sense Motive checks. At 4th level, and every 4 bard levels thereafter, this bonus increases by 1, to a maximum of +6 at 20th level. He also gains a number of edges at the beginning of any verbal duel equal to this bonus. This ability replaces bardic knowledge."
+        },
+        {
+          "id": "bard-wit-counterargument-1",
+          "name": "Counterargument",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A wit can use only Perform (act, comedy, or oratory) to perform a countersong. This ability alters countersong."
+        },
+        {
+          "id": "bard-wit-bardic-performance-3",
+          "name": "Bardic Performance",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A wit gains the following bardic performance. Cutting Remark (Su) : At 3rd level, a wit can wound with his words. The wit can spend 1 round of bardic performance as a standard action to deal 1d4 points of nonlethal damage + the wit’s bard level to a creature within 30 feet. Damage reduction applies to this damage. At 8th level, a target who takes damage from cutting remark is also sickened for as long as it remains within 30 feet of the wit and for 1 round thereafter. Additionally, the nonlethal damage counts as magic for purposes such as overcoming damage reduction. At 14th level, a target who takes damage from cutting remark must also succeed at a Will save (DC = 10 + 1/2 the wit’s bard level + his Charisma modifier) or be dazed for 1 round. A creature that makes a successful save is immune to the dazing effect of the wit’s cutting remark for 24 hours. Cutting remark is a mind-affecting, language-dependent effect, and relies on audible components. This ability replaces inspire competence, dirge of doom, and frightening tune."
+        },
+        {
+          "id": "bard-wit-quick-witted-ex-2",
+          "name": "Quick Witted (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a wit can always act in a surprise round (though he remains flat-footed until he acts). In addition, the wit adds half his bard level on initiative checks. This ability replaces versatile performance."
+        },
+        {
+          "id": "bard-wit-on-the-ball-ex-5",
+          "name": "On the Ball (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, rather than roll for initiative, the wit can treat his roll as if it was a 10 (adding any modifiers as usual). The wit can use this ability once per day at 5th level, and an additional time per day for every 6 bard levels thereafter. At 20th level, when the wit uses this ability, he can instead treat his roll as if it was a 20. This ability replaces lore master."
+        },
+        {
+          "id": "bard-wit-duel-master-ex-10",
+          "name": "Duel Master (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, the wit does not lose any edges for being at an extreme disadvantage in a verbal duel and can either ask about one additional bias when successfully using Sense Motive to determine an audience’s biases or automatically seed one of the biases that he discovered. Once during a verbal duel, he can reassign an appropriate skill from one tactic to another tactic in which he didn’t assign any skills. The original tactic is treated as being unprepared for the rest of the duel. This ability replaces jack-of-all-trades."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Wit"
+  }
+}

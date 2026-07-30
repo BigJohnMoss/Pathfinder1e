@@ -1,0 +1,102 @@
+{
+  "id": "paladin-pearl-seeker",
+  "name": "Pearl Seeker",
+  "classId": "paladin",
+  "summary": "Some paladins are called to their faith by strange empathic visions and dreams that beckon them to the oceans and beyond.",
+  "replacesText": "Armor Proficiency; Class Skills; Detect Evil; Aura of Courage; Aura of Resolve; Spells; Divine Bond; Channel Energy",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-detect-evil-1",
+        "paladin-aura-of-courage-3",
+        "paladin-aura-of-resolve-8",
+        "paladin-spellcasting-4",
+        "paladin-divine-bond-5"
+      ],
+      "features": [
+        {
+          "id": "paladin-pearl-seeker-armor-proficiency-and-class-skills-1",
+          "name": "Armor Proficiency and Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pearl seeker is proficient with light and medium armor but not with shields, and gains Swim as a class skill. This alters the paladin’s armor proficiency and class skills."
+        },
+        {
+          "id": "paladin-pearl-seeker-seek-impressions-ex-sp-1",
+          "name": "Seek Impressions (Ex, Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Pearl seekers gain their power from a rare resonant sensitivity to the visiongranting entity. A pearl seeker gains Psychic Sensitivity OA as a bonus feat and can use detect psychic significanceOA at will as a spell-like ability. This ability replaces detect evil ."
+        },
+        {
+          "id": "paladin-pearl-seeker-aquatic-domain-su-3",
+          "name": "Aquatic Domain (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a pearl seeker gains the 1st-level domain power of the Aquatic terrain domain (see page 33 of Ultimate Magic ), using her paladin level as her effective druid level. At 8th level, she gains the 6th-level domain power of the Aquatic terrain domain. This ability replaces aura of courage and aura of resolve."
+        },
+        {
+          "id": "paladin-pearl-seeker-vision-magic-7",
+          "name": "Vision Magic",
+          "level": 7,
+          "type": "archetype",
+          "summary": "A pearl seeker casts divine spells spontaneously, using the spells known and spells per day from the bloodrager ACG progression table. At 7th level, she gains slipstreamAPG as a bonus 1st-level spell known; at 10th level, she gains ride the wavesUM as a bonus 2nd-level spell known; at 13th level, she gains fluid formAPG as a bonus 3rd-level spell known; and at 16th level, she gains seamantleAPG as a bonus 4th-level spell known. She also adds hydraulic pushAPG and hydraulic torrentAPG (as a 1st and 3rd level spells, respectively) to her paladin spell list (but must learn these spells as normal). This ability alters the paladin’s spells."
+        },
+        {
+          "id": "paladin-pearl-seeker-divine-hippocampus-5",
+          "name": "Divine Hippocampus",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a pearl seeker must choose a mount as her divine bond, gaining a hippocampus mount with the following companion statistics."
+        },
+        {
+          "id": "paladin-pearl-seeker-size-1",
+          "name": "Size",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Large;"
+        },
+        {
+          "id": "paladin-pearl-seeker-speed-1",
+          "name": "Speed",
+          "level": 1,
+          "type": "archetype",
+          "summary": "5 ft., swim 80 ft.;"
+        },
+        {
+          "id": "paladin-pearl-seeker-ac-1",
+          "name": "AC",
+          "level": 1,
+          "type": "archetype",
+          "summary": "+4 natural armor;"
+        },
+        {
+          "id": "paladin-pearl-seeker-attack-1",
+          "name": "Attack",
+          "level": 1,
+          "type": "archetype",
+          "summary": "bite (1d6), tail slap (1d4; secondary attack);"
+        },
+        {
+          "id": "paladin-pearl-seeker-ability-scores-1",
+          "name": "Ability Scores",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Str 18, Dex 13, Con 15, Int 2, Wis 12, Cha 11;"
+        },
+        {
+          "id": "paladin-pearl-seeker-special-qualities-1",
+          "name": "Special Qualities",
+          "level": 1,
+          "type": "archetype",
+          "summary": "darkvision 60 ft., low-light vision, scent, water dependency. This ability alters divine bond and replaces channel positive energy."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Pearl%20Seeker"
+  }
+}

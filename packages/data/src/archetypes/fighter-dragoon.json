@@ -1,0 +1,86 @@
+{
+  "id": "fighter-dragoon",
+  "name": "Dragoon",
+  "classId": "fighter",
+  "summary": "These gallant lancers serve in the vanguard of many armies or as knights-errant.",
+  "replacesText": "Weapon/Armor Proficiency; 1st-level Bonus Feat; Weapon Training 1-4; Armor Training 2-4; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-dragoon-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dragoon is not proficient with tower shields."
+        },
+        {
+          "id": "fighter-dragoon-skilled-rider-ex-1",
+          "name": "Skilled Rider (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a dragoon gains both the Mounted Combat and Skill Focus (Ride) feats as bonus feats. This ability replaces the 1st-level fighter bonus combat feat."
+        },
+        {
+          "id": "fighter-dragoon-spear-training-ex-5",
+          "name": "Spear Training (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a dragoon must select weapon training with the spear group. The dragoon’s weapon training bonus with spears improves by +1 on attack rolls and +2 on damage rolls for every four levels beyond 5th (to a maximum of +4 on attack rolls and +8 on damage rolls at 17th level). The dragoon does not gain weapon training in any other groups as he increases in level."
+        },
+        {
+          "id": "fighter-dragoon-spinning-lance-ex-7",
+          "name": "Spinning Lance (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a dragoon may alternate attacks with the piercing head of his lance with reach, or with the butt end (treat as a club) against adjacent targets. Unlike a double weapon, the masterwork quality and magical special abilities apply to both ends of the lance, except for those weapon special abilities that apply only to edged weapons. This ability replaces armor training 2."
+        },
+        {
+          "id": "fighter-dragoon-banner-ex-9",
+          "name": "Banner (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a dragoon may attach a banner to his lance. This is identical to the cavalier class feature. The bonuses provided by the dragoon’s banner increase by +1 for every five levels beyond 9th (to a maximum of +3 at 19th level). Cavalier levels stack with his dragoon level for determining the effect of his banner, and he can take the better banner progression. This ability replaces weapon training 2, 3, and 4."
+        },
+        {
+          "id": "fighter-dragoon-piercing-lance-ex-11",
+          "name": "Piercing Lance (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, as a standard action or as part of a charge, a dragoon attacking a mounted opponent can make two attacks, one against the mount and the other against the rider, using his highest base attack bonus. Furthermore, if the mount is hit and its rider attempts to negate the hit with the Mounted Combat feat, the dragoon’s attack roll is considered 4 higher when calculating the DC of the Ride check to negate the hit. This ability replaces armor training 3."
+        },
+        {
+          "id": "fighter-dragoon-leaping-lance-ex-15",
+          "name": "Leaping Lance (Ex)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a dragoon and his mount suffer no armor check penalty on Acrobatics checks while mounted. When charging, a dragoon may jump from his mount toward his target. If he jumps 10 feet, his charge modifiers on attack rolls and to AC are doubled and he is still considered mounted for lance damage, mounted combat feats, and so on. This ability replaces armor training 4."
+        },
+        {
+          "id": "fighter-dragoon-weapon-mastery-1",
+          "name": "Weapon Mastery",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The dragoon must select the lance for this ability."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Dragoon"
+  }
+}

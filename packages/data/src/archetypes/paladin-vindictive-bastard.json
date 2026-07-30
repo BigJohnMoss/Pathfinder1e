@@ -1,0 +1,123 @@
+{
+  "id": "paladin-vindictive-bastard",
+  "name": "Vindictive Bastard",
+  "classId": "paladin",
+  "summary": "(Ex-paladin archetype) A vindictive bastard is a paladin that strikes out for retribution and revenge, far more interested in tearing down those who have harmed her or her companions than furthering a distant deity’s cause.",
+  "replacesText": "Aura; Detect Evil; Smite Evil; Divine Grace; Lay on Hands; Divine Health; Mercy; Channel Energy; Divine Bond; Aura of Justice; Aura of Faith; Aura of Righteousness; Holy Champion",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-aura-of-good-1",
+        "paladin-aura-of-courage-3",
+        "paladin-aura-of-resolve-8",
+        "paladin-aura-of-justice-11",
+        "paladin-aura-of-faith-14",
+        "paladin-aura-of-righteousness-17",
+        "paladin-detect-evil-1",
+        "paladin-smite-evil-1",
+        "paladin-divine-grace-2",
+        "paladin-lay-on-hands-2",
+        "paladin-divine-health-3",
+        "paladin-mercy-3",
+        "paladin-mercy-6",
+        "paladin-mercy-9",
+        "paladin-mercy-12",
+        "paladin-mercy-15",
+        "paladin-mercy-18",
+        "paladin-divine-bond-5",
+        "paladin-holy-champion-20"
+      ],
+      "features": [
+        {
+          "id": "paladin-vindictive-bastard-no-aura-1",
+          "name": "No Aura",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A vindictive bastard does not radiate an alignment aura. This alters the paladin’s aura."
+        },
+        {
+          "id": "paladin-vindictive-bastard-locate-ally-sp-1",
+          "name": "Locate Ally (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Once per day, a vindictive bastard can cast locate creature as a spell-like ability with a caster level equal to her paladin level, but she can do so only to target an ally whom she has spent at least 24 hours in close proximity to within the last week. This replaces detect evil."
+        },
+        {
+          "id": "paladin-vindictive-bastard-vindictive-smite-ex-4",
+          "name": "Vindictive Smite (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A vindictive bastard is particularly ruthless against those who have harmed her or her allies. Once per day as a swift action, she can smite one target within sight who has dealt hit point damage to her or an ally. She adds her Charisma modifier to her attack rolls and adds her paladin level to damage rolls against the target of her smite. In addition, while vindictive smite is in effect, the vindictive bastard gains a deflection bonus equal to her Charisma bonus (if any) to her AC against attacks by the target of the smite. If the target of vindictive smite has rendered an ally of the vindictive bastard unconscious or dead within the last 24 hours, the bonus on damage rolls on the first attack that hits increases by 2 for every paladin level she has. The vindictive smite effect remains until the target of the smite is dead or the next time the vindictive bastard rests and regains her uses of this ability. At 4th level and every 3 levels thereafter, the vindictive bastard can invoke her vindictive smite one additional time per day, to a maximum of seven times per day at 19th level. This replaces smite evil."
+        },
+        {
+          "id": "paladin-vindictive-bastard-faded-grace-ex-2",
+          "name": "Faded Grace (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a vindictive bastard gains one of the following as a bonus feat: Great Fortitude, Iron Will, or Lightning Reflexes. This replaces divine grace."
+        },
+        {
+          "id": "paladin-vindictive-bastard-solo-tactics-ex-2",
+          "name": "Solo Tactics (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a vindictive bastard gains solo tactics, as per the inquisitor class feature. She can activate this ability as a swift action and gains the benefits of it for 1 round. She can use this ability a number of rounds per day equal to half her paladin level + her Charisma modifier. This replaces lay on hands."
+        },
+        {
+          "id": "paladin-vindictive-bastard-spiteful-tenacity-ex-3",
+          "name": "Spiteful Tenacity (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, whenever a vindictive bastard has a vindictive smite in effect, she gains the benefits of the Diehard feat. This replaces divine health."
+        },
+        {
+          "id": "paladin-vindictive-bastard-teamwork-feat-3",
+          "name": "Teamwork Feat",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level and every 6 levels thereafter, the vindictive bastard gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as teamwork feats. The vindictive bastard must meet the prerequisites of the selected bonus feat. This replaces mercy and channel energy."
+        },
+        {
+          "id": "paladin-vindictive-bastard-gang-up-ex-5",
+          "name": "Gang Up (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a vindictive bastard forms a close bond with her companions. This allows her to spend a move action to grant half her vindictive smite bonus against a single target to all allies within 30 feet who can see and hear her. This bonus lasts for a number of rounds equal to the vindictive bastard’s Charisma modifier (minimum 1). This replaces divine bond."
+        },
+        {
+          "id": "paladin-vindictive-bastard-swift-justice-ex-11",
+          "name": "Swift Justice (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a vindictive bastard can activate her gang up ability as a swift action. This replaces aura of justice."
+        },
+        {
+          "id": "paladin-vindictive-bastard-stalwart-ex-14",
+          "name": "Stalwart (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, a vindictive bastard gains stalwart, as per the inquisitor class feature, except she can also benefit from this ability while wearing heavy armor. This replaces aura of faith."
+        },
+        {
+          "id": "paladin-vindictive-bastard-aura-of-self-righteousness-ex-17",
+          "name": "Aura of Self-Righteousness (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a vindictive bastard gains DR 5/lawful or good and immunity to compulsion spells and spell-like abilities. Each ally within 10 feet of her gains a +4 morale bonus on saving throws against compulsion effects. Aura of self-righteousness functions only while the vindictive bastard is conscious, not if she is unconscious or dead. This replaces aura of righteousness."
+        },
+        {
+          "id": "paladin-vindictive-bastard-ultimate-vindication-ex-20",
+          "name": "Ultimate Vindication (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, if a foe kills one of a vindictive bastard’s allies or knocks the vindictive bastard unconscious (and she later regains consciousness), the vindictive bastard musters a vindictive fury. The next time she hits that foe within 1 minute, the vindictive bastard can channel the effects of a disintegrate spell through her weapon, using her paladin level as her effective caster level. Whether or not the target succeeds at its save against the disintegrate effect, it is immune to this ability for the next 24 hours. This replaces holy champion."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Vindictive%20Bastard"
+  }
+}

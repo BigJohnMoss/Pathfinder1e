@@ -1,0 +1,64 @@
+{
+  "id": "wizard-pact-wizard-ff",
+  "name": "Pact Wizard (FF)",
+  "classId": "wizard",
+  "summary": "Some wizards make bargains with beings from other realms in order to gain arcane power. These pact wizards have unparalleled access to extraplanar allies, but these bonds never come without strings attached.",
+  "replacesText": "Arcane Bond; Arcane School",
+  "replacements": [
+    {
+      "featureIds": [
+        "wizard-arcane-bond-1",
+        "wizard-arcane-school-1"
+      ],
+      "features": [
+        {
+          "id": "wizard-pact-wizard-ff-familiar-ex-1",
+          "name": "Familiar (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pact wizard must select a familiar for his arcane bond. The familiar’s loyalty ultimately lies with the pact wizard’s patron, and it reports back to the patron on the wizard’s activities. This ability alters arcane bond."
+        },
+        {
+          "id": "wizard-pact-wizard-ff-pact-focus-ex-1",
+          "name": "Pact Focus (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a pact wizard must choose one additional opposition school, even if he is a universalist. A pact wizard can’t pick conjuration as an opposition school. This ability alters arcane school."
+        },
+        {
+          "id": "wizard-pact-wizard-ff-pact-ex-1",
+          "name": "Pact (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pact wizard enters into a bargain with an extraplanar being in order to gain increased wizardly powers. At 1st level, he selects a patron belonging to one specific subtype of outsider for which there exists an improved familiar option (such as devil or azata). The pact wizard can select a subtype of outsider even with a diametrically opposed alignment; in this case, the patron being offers the pact in an attempt to tempt or redeem the pact wizard. A pact wizard whose alignment shifts away from the chosen outsider subtype, who grossly abuses his familiar or any outsider of the chosen subtype, or who commits egregious acts against the alignment of the patron loses all the benefits of this archetype (but keeps the additional opposition school) until he receives an atonement ."
+        },
+        {
+          "id": "wizard-pact-wizard-ff-aura-ex-1",
+          "name": "Aura (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pact wizard has an aura corresponding to the alignment of his chosen subtype as a cleric of his wizard level."
+        },
+        {
+          "id": "wizard-pact-wizard-ff-pact-summons-ex-1",
+          "name": "Pact Summons (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pact wizard can select Sacred Summons ( Pathfinder RPG Ultimate Magic 155) as a wizard bonus feat. He can use this feat only to summon outsiders of his chosen subtype."
+        },
+        {
+          "id": "wizard-pact-wizard-ff-true-form-ex-7",
+          "name": "True Form (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a pact wizard’s familiar reveals its true form, automatically transforming into an outsider improved familiar of the chosen subtype."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Pact%20Wizard%20(FF)"
+  }
+}

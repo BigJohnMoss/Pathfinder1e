@@ -1,0 +1,32 @@
+{
+  "id": "bard-pitax-academy-of-grand-arts",
+  "name": "Pitax: Academy of Grand Arts",
+  "classId": "bard",
+  "summary": "Those who have successfully mastered the strict curriculum of the Academy of Grand Arts.",
+  "replacesText": "Versatile Performance",
+  "replacements": [
+    {
+      "featureIds": [
+        "bard-versatile-performance-2",
+        "bard-versatile-performance-6",
+        "bard-versatile-performance-10",
+        "bard-versatile-performance-14",
+        "bard-versatile-performance-18"
+      ],
+      "features": [
+        {
+          "id": "bard-pitax-academy-of-grand-arts-focused-performance-ex-2",
+          "name": "Focused Performance (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a bard must choose one type of Perform skill. The bard gains Extra Performance as a bonus feat, usable only with the chosen category of the Perform skill. At 8th level, and every 6 levels thereafter, the bard gains Extra Performance as an additional bonus feat. The additional uses of bardic performance gained from these feats cannot be used with any category of the Performance skill other than the one chosen at 2nd level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Pitax%20%20Academy%20of%20Grand%20Arts"
+  }
+}

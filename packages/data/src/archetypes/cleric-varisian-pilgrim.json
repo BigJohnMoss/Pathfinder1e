@@ -1,0 +1,46 @@
+{
+  "id": "cleric-varisian-pilgrim",
+  "name": "Varisian Pilgrim",
+  "classId": "cleric",
+  "summary": "While most clerics are associated with a particular temple, adventuring clerics spend much of their time away from their favored place of worship, and there are those who worship primarily on the road and during the journey.",
+  "replacesText": "Altered Domain Abilities; Medium Armor/Shield Proficiency; 8th-level Domain Power",
+  "nestedReplacements": [
+    "8th-level Domain Power"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cleric-domain-1-first",
+        "cleric-domain-1-second"
+      ],
+      "features": [
+        {
+          "id": "cleric-varisian-pilgrim-fortunate-road-1",
+          "name": "Fortunate Road",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a Varisian pilgrim must select the Chaos, Community, Liberation, Luck, Travel, or Weather domain (or the Exploration, Fate, Freedom, Trade, or Seasons subdomains from the Advanced Player’s Guide , if available in the campaign) as one of her domains. If the cleric worships a deity that doesn’t normally grant one of these domains, she gains access to this domain but can only pick this one domain—she effectively loses the option to pick a second domain. As a result, very few clerics who worship deities who don’t grant access to one of the domains or subdomains listed above opt to become Varisian pilgrims. In all other respects, this works like and replaces the standard cleric’s domain ability."
+        },
+        {
+          "id": "cleric-varisian-pilgrim-caravan-bond-su-1",
+          "name": "Caravan Bond (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, by leading a group prayer for 1 minute, a Varisian pilgrim can select a number of traveling companions equal to her cleric level + her Wisdom bonus. She may use her domain-granted powers on any of these traveling companions as if they were her. She can use these abilities on her traveling companions at a range of up to 30 feet, even if the ability normally requires her touch. This ability replaces the cleric’s proficiency with medium armor and shields— she retains proficiency with light armor only."
+        },
+        {
+          "id": "cleric-varisian-pilgrim-blessing-of-the-harrow-su-8",
+          "name": "Blessing of the Harrow (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, once per day the pilgrim may perform a harrowing for herself or another creature. This is otherwise identical to the blessing of the harrow from the harrower prestige class ( Inner Sea World Guide 276). This replaces an 8th-level domain power of the Varisian pilgrim’s choice."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Varisian%20Pilgrim"
+  }
+}

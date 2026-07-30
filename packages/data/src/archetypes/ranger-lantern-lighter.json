@@ -1,0 +1,99 @@
+{
+  "id": "ranger-lantern-lighter",
+  "name": "Lantern Lighter",
+  "classId": "ranger",
+  "summary": "Lantern lighters were originally entrusted with secretly eliminating the drow and quarantining any knowledge of their existence, but in the new Lantern Bearer era, the lantern lighters have refocused their efforts on helping to rescue those imprisoned by the drow, or even to help individual drow who seek to escape the cruelties of their society for a chance at redemption on the surface.",
+  "replacesText": "Wild Empathy; Endurance; Favored Terrain; Woodland Stride; Camouflage; Hide in Plain Sight",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-wild-empathy-1",
+        "ranger-endurance-3",
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18",
+        "ranger-woodland-stride-7",
+        "ranger-camouflage-12",
+        "ranger-hide-in-plain-sight-17"
+      ],
+      "features": [
+        {
+          "id": "ranger-lantern-lighter-daylight-1",
+          "name": "Daylight",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A lantern lighter treats daylight as a 3rd-level ranger spell. This ability alters the ranger’s spells."
+        },
+        {
+          "id": "ranger-lantern-lighter-enhanced-vision-ex-1",
+          "name": "Enhanced Vision (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A lantern lighter hones his senses to better combat subterranean enemies. He gains low-light vision. If the lantern lighter already has low-light vision, he can instead see three times as far as humans in areas of dim light. This ability replaces wild empathy."
+        },
+        {
+          "id": "ranger-lantern-lighter-poison-resistance-ex-3",
+          "name": "Poison Resistance (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a lantern lighter gains a +4 bonus on saving throws against poison. This ability replaces endurance."
+        },
+        {
+          "id": "ranger-lantern-lighter-favored-terrain-ex-3",
+          "name": "Favored Terrain (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a lantern lighter selects a favored terrain as normal. The skill bonus and initiative bonus granted in this favored terrain increase by 2 at 8th level and every 5 ranger levels thereafter. This ability alters favored terrain."
+        },
+        {
+          "id": "ranger-lantern-lighter-cavern-stride-ex-7",
+          "name": "Cavern Stride (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a lantern lighter’s movement is unimpeded by nonmagical difficult terrain underground and nonmagical webs. This ability replaces woodland stride."
+        },
+        {
+          "id": "ranger-lantern-lighter-darkvision-ex-8",
+          "name": "Darkvision (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a lantern lighter’s senses fully attune to the darkness, granting him darkvision to a distance of 60 feet. If the lantern lighter already has darkvision, its range increases by 30 feet. This replaces the favored terrain gained at 8th level."
+        },
+        {
+          "id": "ranger-lantern-lighter-poison-immunity-ex-12",
+          "name": "Poison Immunity (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a lantern lighter gains immunity to poison. This ability replaces camouflage."
+        },
+        {
+          "id": "ranger-lantern-lighter-stunning-light-su-13",
+          "name": "Stunning Light (Su)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a lantern lighter learns to increase the effectiveness of bright light on creatures with light blindness. Daylight spells cast by the lantern lighter or other sources of bright light he wields cause creatures with light blindness within the area of bright light to become stunned for 1 round in addition to being blinded. This ability replaces the favored terrain gained at 13th level."
+        },
+        {
+          "id": "ranger-lantern-lighter-camouflage-ex-17",
+          "name": "Camouflage (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a lantern lighter gains camouflage, as the ranger class feature. This ability replaces hide in plain sight."
+        },
+        {
+          "id": "ranger-lantern-lighter-paralyzing-light-su-18",
+          "name": "Paralyzing Light (Su)",
+          "level": 18,
+          "type": "archetype",
+          "summary": "At 18th level, a lantern lighter can stop light-blind enemies in their tracks, often gaining a great edge in battle. Daylight spells cast by the lantern lighter or sources of bright light wielded by him cause creatures with light blindness within the area of bright light to become paralyzed for 1 round in addition to being blinded and stunned. This ability replaces the favored terrain gained at 18th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Lantern%20Lighter"
+  }
+}

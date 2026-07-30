@@ -1,0 +1,48 @@
+{
+  "id": "ranger-yokai-hunter",
+  "name": "Yokai Hunter",
+  "classId": "ranger",
+  "summary": "Yokai hunters possess a supernatural tether to the spirit worlds that shroud mortal existence.",
+  "replacesText": "Favored Enemy; Woodland Stride; Camouflage",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-favored-enemy-1",
+        "ranger-favored-enemy-5",
+        "ranger-favored-enemy-10",
+        "ranger-favored-enemy-15",
+        "ranger-favored-enemy-20",
+        "ranger-woodland-stride-7",
+        "ranger-camouflage-12"
+      ],
+      "features": [
+        {
+          "id": "ranger-yokai-hunter-favored-yokai-su-1",
+          "name": "Favored Yokai (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A yokai hunter possesses a supernatural ability to sense beings connected to the spirit world, such as kami, oni, and ghosts, and is formidable at fighting them. At 1st level, a yokai hunter gains a +2 bonus on weapon attacks and damage rolls against one of the following creature types (and subtypes, if applicable), which are considered yokai for the purposes of this archetype: aberration, dragon, fey, magical beast, outsider (native), and undead (incorporeal). (A GM may choose to alter this list for the purposes of her campaign.) At 5th level and every five levels thereafter, a yokai hunter may select another favored yokai from this list, gaining a +2 bonus on weapon attacks and damage rolls against that yokai. In addition, whenever a yokai hunter sees a favored yokai that is disguised or has not made its otherworldly essence known, he gains an automatic check to identify the creature as such. To make this check, a yokai hunter rolls 1d20 and adds his yokai hunter level and Charisma modifier (DC 10 + 1/2 the yokai’s Hit Dice + the yokai’s Cha modifier). A successful check means that the yokai hunter recognizes the creature’s ties to the spiritual world. Regardless of whether the check is successful, a yokai hunter gains the bonus on weapon attacks and damage rolls against favored yokai. This ability replaces favored enemy. Ranger abilities that rely on a favored enemy instead rely on this ability."
+        },
+        {
+          "id": "ranger-yokai-hunter-yokai-sense-su-7",
+          "name": "Yokai Sense (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a yokai hunter can sense yokai he has identified with his favored yokai ability as though he had blindsense out to a range of 60 feet. This ability replaces woodland stride."
+        },
+        {
+          "id": "ranger-yokai-hunter-resist-yokai-su-12",
+          "name": "Resist Yokai (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a yokai hunter can attempt to shrug off the magical energies of a yokai. He gains a +4 insight bonus on saving throws to resist the spells, spell-like abilities, and supernatural abilities of favored yokai. In addition, once per day as a standard action, a yokai hunter can shed an effect placed on him by a yokai as break enchantment, using his yokai hunter level as his caster level. This ability replaces camouflage."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Yokai%20Hunter"
+  }
+}

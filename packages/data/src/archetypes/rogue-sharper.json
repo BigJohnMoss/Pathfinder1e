@@ -1,0 +1,93 @@
+{
+  "id": "rogue-sharper",
+  "name": "Sharper",
+  "classId": "rogue",
+  "summary": "Sharpers use trickery and deception to part an owner from his valuables.",
+  "replacesText": "Trapfinding; 2nd, 4th, 6th, 8th, 10th, 16th-level Rogue Talent; Trap Sense;",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-talent-2",
+        "rogue-talent-4",
+        "rogue-talent-6",
+        "rogue-talent-8",
+        "rogue-talent-10",
+        "rogue-talent-16",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "sneak-attack-1",
+        "sneak-attack-3",
+        "sneak-attack-5",
+        "sneak-attack-7",
+        "sneak-attack-9",
+        "sneak-attack-11",
+        "sneak-attack-13",
+        "sneak-attack-15",
+        "sneak-attack-17",
+        "sneak-attack-19",
+        "evasion-2",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8",
+        "advanced-talents-10",
+        "master-strike-20",
+        "rogue-talent-12",
+        "rogue-talent-14",
+        "rogue-talent-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-sharper-scam-artist-ex-1",
+          "name": "Scam Artist (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sharper gains a bonus equal to half her rogue level (minimum +1) on all Bluff and Sleight of Hand checks. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-sharper-sticky-fingers-ex-2",
+          "name": "Sticky Fingers (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a sharper receives Improved Steal APG as a bonus feat. At 6th level, she receives Greater Steal APG as a bonus feat, and at 8th level, she receives Quick Steal APG as a bonus feat. The sharper gains these feats even if she doesn’t meet the prerequisites. This ability replaces the rogue talents gained at 2nd, 6th, and 8th levels."
+        },
+        {
+          "id": "rogue-sharper-lucky-save-su-3",
+          "name": "Lucky Save (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, when a sharper’s wits aren’t enough to pull her out of a bad situation, her luck still just might save her. She gains a +1 luck bonus on all saving throws. This bonus increases to +2 at 9th level and to +3 at 15th level. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-sharper-audacious-overconfidence-ex-4",
+          "name": "Audacious Overconfidence (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, after failing an attack roll, skill check, or saving throw, a sharper can reduce her saving throw bonus from lucky save by 1 for 24 hours in order to reroll the failed roll. She can use this ability once per day at 4th level, plus an additional time per day at 10th level and again at 16th level. The decreases to her bonus from lucky save stack with each other. This ability replaces the rogue talents gained at 4th, 10th, and 16th levels."
+        },
+        {
+          "id": "rogue-sharper-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the sharper archetype: charmer APG , convincing lie UC , deft palm UC , false friend ARG , fast fingers, follow along, honeyed words APG , obfuscate story ARG , shades of gray, and steal the story ARG (as well as certainty for an unchained rogue)."
+        },
+        {
+          "id": "rogue-sharper-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced talents complement the sharper archetype: another day APG , defensive roll, hidden mind, improved evasion, redirect attack APG , and skill mastery (as well as cutting edge for an unchained rogue)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sharper"
+  }
+}

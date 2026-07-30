@@ -1,0 +1,66 @@
+{
+  "id": "fighter-pack-mule",
+  "name": "Pack Mule",
+  "classId": "fighter",
+  "summary": "Pack mules carry heavy loads with ease and small packages with discretion.",
+  "replacesText": "Skill Ranks; 1st-level Bonus Feat; Bravery; Armor Training 1-4; Armor Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "armor-training-3",
+        "armor-training-7",
+        "armor-training-11",
+        "armor-training-15",
+        "armor-mastery-19"
+      ],
+      "features": [
+        {
+          "id": "fighter-pack-mule-skill-ranks-per-level-1",
+          "name": "Skill Ranks per Level",
+          "level": 1,
+          "type": "archetype",
+          "summary": "4 + Int modifier. This alters the fighter’s skill ranks per level."
+        },
+        {
+          "id": "fighter-pack-mule-unobtrusive-1",
+          "name": "Unobtrusive",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pack mule gains Bluff (Cha), Disguise (Cha), Sleight of Hand (Dex), and Stealth (Dex) as class skills. This ability replaces the bonus feat gained at 1st level."
+        },
+        {
+          "id": "fighter-pack-mule-efficient-packer-ex-2",
+          "name": "Efficient Packer (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a pack mule adds a bonus equal to 1/2 his fighter level on Sleight of Hand checks to conceal objects on his body. He also adds a bonus equal to 1/2 his class level to his Strength score for the purpose of determining his carrying capacity. This ability replaces bravery."
+        },
+        {
+          "id": "fighter-pack-mule-weight-training-ex-3",
+          "name": "Weight Training (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a pack mule learns to be more maneuverable when carrying loads. Whenever he is carrying a medium or heavy load, he reduces the check penalty by 1 (to a minimum of 0) and increases the maximum Dexterity bonus allowed by 1. At 7th, 11th, and 15th levels, these benefits increase by 1 (to a maximum of 4 at 15th level). In addition, a pack mule can move at his normal speed while carrying a medium load. At 7th level, a pack mule can move at his normal speed while carrying a heavy load. This ability replaces armor training 1 through 4."
+        },
+        {
+          "id": "fighter-pack-mule-healthy-as-a-mule-ex-19",
+          "name": "Healthy as a Mule (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, whenever the pack mule takes Constitution, Dexterity, or Strength damage, he reduces the amount of ability damage taken by 2, to a minimum of 0. This ability replaces armor mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Pack%20Mule"
+  }
+}

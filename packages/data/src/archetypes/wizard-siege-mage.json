@@ -1,0 +1,52 @@
+{
+  "id": "wizard-siege-mage",
+  "name": "Siege Mage",
+  "classId": "wizard",
+  "summary": "The siege mage combines his arcane mastery with a supernatural link to siege engines.",
+  "replacesText": "Scribe Scroll; Arcane Bond; Cantrips; Arcane School",
+  "replacements": [
+    {
+      "featureIds": [
+        "scribe-scroll-1",
+        "wizard-arcane-bond-1",
+        "wizard-cantrips-1",
+        "wizard-arcane-school-1"
+      ],
+      "features": [
+        {
+          "id": "wizard-siege-mage-siege-engineer-1",
+          "name": "Siege Engineer",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the siege mage gains Siege Engineer as a bonus feat, even though he does not meet the prerequisites for that feat. This ability replaces scribe scroll."
+        },
+        {
+          "id": "wizard-siege-mage-siege-engine-bond-su-1",
+          "name": "Siege Engine Bond (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a siege mage can bond with a single siege engine within 30 feet and line of sight as a standard action. He can utilize the power of this link to aim and fire the siege engine remotely (as long as he’s within 30 feet), though it still requires a crew to reload the siege engine. At 10th level, he can reload, aim, and fire the siege engine purely by the power of this link, and no longer needs a crew to control the siege engine. It still takes the normal required amount of time and actions to control a siege engine in this manner. This ability replaces arcane bond. The siege mage can end this bond with a free action. A siege mage can bond with a siege engine in this manner a number of times per day equal to his Intelligence modifier (minimum 1) but can only be bonded with one siege engine at a time."
+        },
+        {
+          "id": "wizard-siege-mage-empower-siege-engine-su-1",
+          "name": "Empower Siege Engine (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "As a swift action, a siege mage can sacrifice one of his spells to empower the next attack he makes before the end of his turn with a siege engine he is bonded with. When he does, the siege engine attack gains a bonus on its attack roll or targeting roll equal to the level of the spell he sacrificed, and a bonus to damage equal to 3 Ã— the level of the spell. This ability replaces cantrips, but the siege mage gains the detect magic and read magic cantrips and places them in his spellbook. He can cast either of these as 1st-level spells."
+        },
+        {
+          "id": "wizard-siege-mage-siege-school-1",
+          "name": "Siege School",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The strange rituals needed to empower all forms of siege engines takes a level of dedication and perseverance that limits a wizard’s time to unlock other arcane mysteries. At 1st level, the siege mage forsakes three schools of magic. Once chosen, these opposition schools cannot be changed. A siege mage who prepares spells from his opposition school must use two spell slots of that level to prepare the spell. In addition, the siege mage takes a –4 penalty on any skill checks made when crafting a magic item that has a spell from one of his opposition schools. This ability replaces arcane school."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Siege%20Mage"
+  }
+}

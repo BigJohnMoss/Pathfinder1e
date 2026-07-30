@@ -1,0 +1,90 @@
+{
+  "id": "ranger-sword-devil",
+  "name": "Sword-Devil",
+  "classId": "ranger",
+  "summary": "Agile, vengeful, and deadly, a sword-devil ï¬ghts with precision and grace, channeling the difficult lessons of a star-crossed life into unparalleled battle prowess.",
+  "replacesText": "Class Skills; Favored Enemy; Favored Terrain; Hunter's Bond; Spells; Quarry; Improved Quarry; Master Hunter",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-favored-enemy-1",
+        "ranger-favored-enemy-5",
+        "ranger-favored-enemy-10",
+        "ranger-favored-enemy-15",
+        "ranger-favored-enemy-20",
+        "ranger-favored-terrain-3",
+        "ranger-favored-terrain-8",
+        "ranger-favored-terrain-13",
+        "ranger-favored-terrain-18",
+        "ranger-hunters-bond-4",
+        "ranger-spellcasting-4",
+        "ranger-quarry-11",
+        "ranger-improved-quarry-19",
+        "ranger-master-hunter-20"
+      ],
+      "features": [
+        {
+          "id": "ranger-sword-devil-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The sword-devil gains Acrobatics as a class skill as a replacement for Spellcraft."
+        },
+        {
+          "id": "ranger-sword-devil-death-vow-ex-1",
+          "name": "Death Vow (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a sword-devil may, as a swift action, focus all her fury and determination on a single foe she swears to slay. She may do this once per day, plus one additional time per day at 4th level and every 3 levels thereafter (7th, 10th, etc). The sword-devil gains a bonus on weapon attack and damage rolls against her sworn target equal to half her sword-devil level (minimum +1). The death vow effect remains until the target of the death vow is dead, or the next time the sword-devil rests and regains use of this ability. This ability replaces favored enemy."
+        },
+        {
+          "id": "ranger-sword-devil-slashing-fury-ex-3",
+          "name": "Slashing Fury (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "Beginning at 3rd level, the sword-devil can use her Charisma score in place of her Intelligence score as a prerequisite for combat feats. Additionally, she selects one type of light or one- handed slashing melee weapon. When using this weapon, she may use her Dexterity modiï¬er instead of her Strength modiï¬er on melee attack rolls. At 8th level and every 5 levels thereafter (13th and 18th). the sword-devil may select an additional type of light or one-handed slashing weapon she may use with this ability. This ability counts as having the Weapon Finesse feat for the purpose of meeting feat prerequisites. This ability replaces favored terrain."
+        },
+        {
+          "id": "ranger-sword-devil-inspiring-example-ex-4",
+          "name": "Inspiring Example (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the sword-devil forms a bond with her companions, inspiring them to greater zeal in combat by the example of her weaponcraft. As a standard action, the sword-devil may grant half her death vow bonus against a single victim of her death vow to all allies within 30 feet who can see and hear her. This bonus lasts for a number of rounds equal to the sword-devil's Charisma modiï¬er (minimum 1). This bonus does not stack with any death vow bonuses possessed by the sword-devil‘s allies; they use whichever bonus is higher. This ability replaces hunter's bond."
+        },
+        {
+          "id": "ranger-sword-devil-untouchable-ex-4",
+          "name": "Untouchable (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level. the sword-devil's conï¬dence and personality distract her foes in combat, making her more difficult to hit. When unarmored and unencumbered. the sword-devil may add her Charisma bonus (ifany) to her AC and her CMD. In addition, the sword-devil gains a +1 dodge bonus to AC at 6th level, and every three sword-devil levels thereafter (9th, 12th, 15th, and 18th). She loses these bonuses when she wears any armor, when she carries a shield, or when she carriers a medium or heavy load. This ability replaces spells."
+        },
+        {
+          "id": "ranger-sword-devil-second-combat-style-ex-11",
+          "name": "Second Combat Style (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, the sword-devil chooses a second ranger combat style. When she recieves a bonus combat feat, she may select any feat from either combat style's list. This ability replaces quarry."
+        },
+        {
+          "id": "ranger-sword-devil-seething-fury-ex-19",
+          "name": "Seething Fury (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, the sword-devil's countless battles harden her soul and make her lose touch with her humanity. Her growing lack of control over her wrath fuels the potency of her death vow. She adds her Charisma bonus on weapon attack and damage rolls against targets of her death vow, and automatically conï¬rms threatened critical hits against them. This ability replaces improved quarry."
+        },
+        {
+          "id": "ranger-sword-devil-avatar-of-vengeance-su-1",
+          "name": "Avatar of Vengeance (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sword-devil of 20th level becomes a living avatar of vengeance, infused with supernatural powers that push her beyond the mortal. Recognized for her battle prowess and unparalleled skill at killing by a potent otherworldly entity. The sword-devil becomes the living vessel of an immortal, intangible, and inscrutable being obsessed only with slaying her foes, meting out violent retribution to those who have wronged her, or simply dispatching her enemies in dazzling display of wanton destruction. As a standard action, the sword-devil allows herself to be infused with this killing spirit. She gains a fly speed of 60-feet (perfect), a +6 morale bonus to AC, and ï¬re resistance 30- This ability can be used for 10 minutes per day. but it must be used in 1-minute increments. This ability replaces master hunter."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Sword-Devil"
+  }
+}

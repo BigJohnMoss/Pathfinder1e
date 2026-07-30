@@ -1,0 +1,73 @@
+{
+  "id": "oracle-purifier",
+  "name": "Purifier",
+  "classId": "oracle",
+  "summary": "(Aasimar Only) The purifier seeks out signs of possession or mind control that manifest from unwilling (and often unwitting) servants for fiendish corruptors and their mortal minions.",
+  "replacesText": "Bonus Spells; Spellcasting; 3rd, 7th, 11th-level Revelation",
+  "replacements": [
+    {
+      "featureIds": [
+        "oracle-spellcasting-1",
+        "oracle-revelation-3",
+        "oracle-revelation-7",
+        "oracle-revelation-11"
+      ],
+      "features": [
+        {
+          "id": "oracle-purifier-recommended-mysteries-1",
+          "name": "Recommended Mysteries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "ancestor, battle, heavens, lore."
+        },
+        {
+          "id": "oracle-purifier-bonus-spells-1",
+          "name": "Bonus Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "veil of heaven (2nd), confess (4th), cast out (6th), denounce (8th), dispel evil (10th), banishment (12th), holy word (14th), mind blank (16th), freedom (18th)."
+        },
+        {
+          "id": "oracle-purifier-diminished-spellcasting-1",
+          "name": "Diminished Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A purifier can use one fewer spell per day of each level and does not automatically learn cure or inflict spells. Her number of oracle spells known is unchanged."
+        },
+        {
+          "id": "oracle-purifier-revelations-3",
+          "name": "Revelations",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A purifier must take the following revelations at the listed levels. See Sin (Sp) : At 3rd level, a purifier gains a bonus equal to 1/2 her oracle level on Sense Motive checks to sense enchantments, which she can make as a full-round action. She also gains a bonus equal to 1/2 her oracle level on Spellcraft checks to identify enchantment school spells and spells with the curse or emotion descriptor (see page 251 of for spells in the and that have the curse or emotion descriptor). Celestial Armor (Su) : At 7th level, a purifier’s armor takes on a golden or silvery sheen and becomes light as a feather. Her armor weighs half as much as long as she wears it, and she also gains armor training as a fighter 4 levels lower than her oracle level. At 11th level, a purifier gains heavy armor proficiency. Sin Eater (Su) : At 11th level, a purifier can consume a curse, enchantment, or emotion effect by touch as a full-round action. She can do this a number of times per day equal to her Charisma modifier, and must make a Charisma check with a bonus equal to her oracle level against a DC of 11 + the caster level of the effect (or the Hit Dice of the creator for a supernatural effect). If the check succeeds, the effect is negated; however, the purifier is sickened for 1d4 rounds. If the target is possessed (such as by a magic jar effect or a ghost’s malevolence ability), the possessor is forced out on a successful check. Whether the check succeeds or fails, the possessor is sickened for 2d4 rounds."
+        },
+        {
+          "id": "oracle-purifier-sacred-scourge-su-5",
+          "name": "Sacred Scourge (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a purifier may channel holy power to harm evil outsiders as a cleric of her level using the Alignment Channel feat. She may use this ability a number of times per day equal to 1 + her Charisma modifier."
+        },
+        {
+          "id": "oracle-purifier-holy-terror-su-9",
+          "name": "Holy Terror (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a purifier may use her sacred scourge to panic evil outsiders as if using the Turn Undead feat against undead."
+        },
+        {
+          "id": "oracle-purifier-celestial-master-su-13",
+          "name": "Celestial Master (Su)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a purifier may use her sacred scourge to compel good outsiders to serve her, as if using the Command Undead feat against undead."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Purifier"
+  }
+}

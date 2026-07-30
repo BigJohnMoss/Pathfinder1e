@@ -1,0 +1,49 @@
+{
+  "id": "fighter-venomblade",
+  "name": "Venomblade",
+  "classId": "fighter",
+  "summary": "(Nagaji) The venomblade has learned to take full advantage of his toxic spittle, blinding his targets and then rushing in to cut them down where they stand.",
+  "replacesText": "1st, 6th, 12th-level Bonus Feat; Bravery",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "fighter-bonus-feat-6",
+        "fighter-bonus-feat-12",
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18"
+      ],
+      "features": [
+        {
+          "id": "fighter-venomblade-venom-projection-ex-2",
+          "name": "Venom Projection (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "The venomblade must take the Spit Venom nagaji racial feat as his 1st-level fighter bonus feat if he does not already have that ability. At 2nd level, he does not provoke an attack of opportunity for using the ability granted by the Spit Venom feat. At 4th level, he can use the ability granted by the Spit Venom feat as a standard action; at 8th level, he can use it as a move action; and at 12th level, he can use it as a swift action. This replaces bravery and alters the bonus feat gained at 1st level."
+        },
+        {
+          "id": "fighter-venomblade-sneak-attack-ex-6",
+          "name": "Sneak Attack (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a venomblade deals 1d6 additional points of damage to targets within 30 feet that he flanks or that are denied their Dexterity bonus to AC against him. This damage increases by 1d6 every 4 levels beyond 6th. This replaces the bonus feat gained at 6th level."
+        },
+        {
+          "id": "fighter-venomblade-viper-strike-ex-12",
+          "name": "Viper Strike (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, upon making a successful attack with a slashing or piercing weapon, the venomblade can spend a use of the ability granted by the Spit Venom feat as a swift action to spray his toxin into the wound. This imposes a –4 penalty on the victim’s saving throw against the poison and causes the target to take 1d6 additional points of damage from all successful attacks for 1 round. This is a poison effect. This replaces the bonus feat gained at 12th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Venomblade"
+  }
+}

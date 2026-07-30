@@ -1,0 +1,69 @@
+{
+  "id": "ranger-toxic-herbalist",
+  "name": "Toxic Herbalist",
+  "classId": "ranger",
+  "summary": "Saviors and destroyers in equal measure, toxic herbalists use nature’s bounty to craft remedies and poisons.",
+  "replacesText": "Wild Empathy; Endurance; Hunter's Bond; Swift Tracker; Quarry; Improved Quarry",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-wild-empathy-1",
+        "ranger-endurance-3",
+        "ranger-hunters-bond-4",
+        "ranger-track-1",
+        "ranger-swift-tracker-8",
+        "ranger-quarry-11",
+        "ranger-improved-quarry-19"
+      ],
+      "features": [
+        {
+          "id": "ranger-toxic-herbalist-toxic-touch-ex-1",
+          "name": "Toxic Touch (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A toxic herbalist studies the safe handling of deadly substances. He cannot accidentally poison himself when he applies poison to a weapon. This replaces wild empathy."
+        },
+        {
+          "id": "ranger-toxic-herbalist-nature-s-mercy-ex-and-su-3",
+          "name": "Nature’s Mercy (Ex and Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a toxic herbalist’s knowledge of the natural world offers respite from wounds and illness. Once per day, he can spend 1 hour in a wilderness area gathering herbs and other natural materials and combine them into a medicinal poultice—this hour can be integrated with the hour required for the ranger to prepare spells. Placing the poultice on a wound or ingesting it is a standard action; the creature receiving the poultice heals a number of hit points equal to 1d6 + the ranger’s Wisdom modifier. At 8th level and every 5 levels thereafter, the ranger creates one additional poultice when using this ability, to a maximum of four at 18th level. Poultices remain potent for 1 hour. Additionally, at 8th level, the poultice neutralizes one poison affecting the recipient, as per neutralize poison. At 13th level, it also attempts to cure one disease affecting the recipient, as per remove disease. The caster level of both of these effects is equal to the toxic herbalist’s level. These additional effects are supernatural effects. This replaces endurance."
+        },
+        {
+          "id": "ranger-toxic-herbalist-sudden-onset-ex-4",
+          "name": "Sudden Onset (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a toxic herbalist can administer a poultice he created via nature’s mercy or poison a weapon as a swift action. Additionally, the toxic herbalist adds the following spells to the ranger spell list at the indicated spell levels: 1st— nauseating dart , ray of sickening ; 2nd— pernicious poison , pox pustules ; 3rd— poison , toxic gift ; 4th— absorb toxicity , cloudkill . This replaces hunter’s bond."
+        },
+        {
+          "id": "ranger-toxic-herbalist-grim-harvest-ex-8",
+          "name": "Grim Harvest (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a toxic herbalist can spend 1 hour foraging for poisonous substances to create a dose of poison (this hour can be integrated with the hour required to prepare spells or poultices). The toxic herbalist rolls 1d20 and adds his ranger level and his Intelligence modifier. The DC of this check is equal to the Craft DC of the poison he wishes to create. If he succeeds at this check, the ranger creates 1 dose of the chosen poison. The poison remains potent for a number of hours equal to the toxic herbalist’s level, regardless of the means used in attempts to preserve it, and it can’t be sold. This ability functions only while the toxic herbalist is within one of his favored terrains. This replaces swift tracker."
+        },
+        {
+          "id": "ranger-toxic-herbalist-potent-venom-ex-11",
+          "name": "Potent Venom (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a toxic herbalist’s poisons become even deadlier. When he poisons a favored enemy, the DC of the poison’s saving throw increases by half the toxic herbalist’s favored enemy bonus against that target. This replaces quarry."
+        },
+        {
+          "id": "ranger-toxic-herbalist-poisonous-reaper-ex-19",
+          "name": "Poisonous Reaper (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, a single dose of poison on a toxic herbalist’s weapon remains potent for the entirety of a full attack, instead of for a single strike. This replaces improved quarry."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Toxic%20Herbalist"
+  }
+}

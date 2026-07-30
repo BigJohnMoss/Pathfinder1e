@@ -1,0 +1,59 @@
+{
+  "id": "paladin-divine-guardian",
+  "name": "Divine Guardian",
+  "classId": "paladin",
+  "summary": "The divine guardian devotes herself to the protection and guardianship of one creature at a time, be that her liege lord, an allied cleric, or an innocent facing overwhelming danger at the hands of evil.",
+  "replacesText": "Spellcasting; Detect Evil; Lay on Hands; Aura of Courage",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-spellcasting-4",
+        "paladin-detect-evil-1",
+        "paladin-lay-on-hands-2",
+        "paladin-aura-of-courage-3"
+      ],
+      "features": [
+        {
+          "id": "paladin-divine-guardian-martial-focus-1",
+          "name": "Martial Focus",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The divine guardian devotes herself to the concerns of the material world, eschewing some divine studies. She does not gain access to divine spellcasting and cannot use spell-completion magic items."
+        },
+        {
+          "id": "paladin-divine-guardian-divine-troth-sp-1",
+          "name": "Divine Troth (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Once per day the divine guardian pledges her protection to a willing creature for the day. This is done at the same time she prepares her spells. When the paladin first selects a creature for divine troth, that creature must be present and agree to receive the paladin’s protection, but if the paladin already has a creature selected for divine troth, she can maintain that selection each day without her charge being present. Once per day, the divine guardian can cast locate creature to find the current target of her divine troth. This ability replaces detect evil ."
+        },
+        {
+          "id": "paladin-divine-guardian-guarding-hands-su-1",
+          "name": "Guarding Hands (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The paladin can use lay on hands to heal herself or her divine troth as a move action, but cannot use lay on hands to heal herself as a swift action. The divine guardian cannot use lay on hands more than once per round. This modifies lay on hands."
+        },
+        {
+          "id": "paladin-divine-guardian-courageous-defense-ex-3",
+          "name": "Courageous Defense (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level a divine guardian can intercept attacks directed at the target of her divine troth as if she had the Bodyguard APG and In Harm’s Way APG feats. The divine guardian’s aura of courage does not grant a bonus to allies within 10 feet, but still grants her immunity to fear effects. This ability modifies aura of courage."
+        },
+        {
+          "id": "paladin-divine-guardian-bonus-feat-7",
+          "name": "Bonus Feat",
+          "level": 7,
+          "type": "archetype",
+          "summary": "A divine guardian gains a bonus feat at 7th level, and additional bonus feats at 10th and 13th level. These bonus feats must be chosen from the following list: Diehard, Endurance, Greater Shield Focus, Greater Shield Specialization APG , Heroic Defiance APG , Heroic Recovery APG , Missile Shield APG , Ray Shield APG , Saving Shield APG , Shield Focus, Shield Specialization APG , or Tower Shield Proficiency. She must meet these feats’ prerequisites, but for purposes of meeting the prerequisites of these bonus feats, she treats her paladin level as her fighter level, may use her Charisma score as her Dexterity score, and is considered to have the Spellbreaker feat."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Divine%20Guardian"
+  }
+}

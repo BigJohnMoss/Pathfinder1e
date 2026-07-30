@@ -1,0 +1,55 @@
+{
+  "id": "rogue-roof-runner",
+  "name": "Roof Runner",
+  "classId": "rogue",
+  "summary": "A specialized urban acrobat, the roof runner makes her home high atop the spires and gables of great cities.",
+  "replacesText": "Trapfinding; Trap Sense",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-roof-runner-roof-running-ex-1",
+          "name": "Roof Running (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a roof runner becomes entirely adept at moving across the tops of buildings, spires, and similar locations. Provided she is wearing light armor or no armor, the roof runner can move at full speed while traveling across the tops of buildings or similar structures, and takes no penalties on any Dexterity-based Skill checks or Reflex saves that might be incurred from moving about on a roof. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-roof-runner-tumbling-descent-ex-2",
+          "name": "Tumbling Descent (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a roof runner can use her acrobatics skill to attempt a rapid descent from a rooftop or another surface, ricocheting against another surface and then diving through an opening (such as a balcony or window) directly below. So long as she has at least two surfaces no farther than 10 feet apart to bounce against, she can ricochet her body back from one to the next, descending great distances with a single check. The DC is 10 + 5 for every additional 10-foot increment descended beyond the initial 10 feet dropped. If she fails, she falls the full distance. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-roof-runner-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the roof runner archetype: expert leaper, ledge walker, nimble climber, stand up, and terrain mastery*."
+        },
+        {
+          "id": "rogue-roof-runner-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talent complements the roof runner archetype: fast tumble."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Roof%20Runner"
+  }
+}

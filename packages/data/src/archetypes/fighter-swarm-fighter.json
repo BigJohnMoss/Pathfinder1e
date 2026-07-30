@@ -1,0 +1,106 @@
+{
+  "id": "fighter-swarm-fighter",
+  "name": "Swarm Fighter",
+  "classId": "fighter",
+  "summary": "(Kobold Only) Scuttling between the legs of friend and\nfoe alike, the swarm fighter is an unshakable combatant.",
+  "replacesText": "Weapon/Armor Proficiency; 1st, 2nd, 6th, 10th, 14th, 18th-level Bonus Feats; Bravery; Weapon Training 1-4; Weapon Mastery",
+  "replacements": [
+    {
+      "featureIds": [
+        "fighter-bonus-feat-1",
+        "fighter-bonus-feat-2",
+        "fighter-bonus-feat-6",
+        "fighter-bonus-feat-10",
+        "fighter-bonus-feat-14",
+        "fighter-bonus-feat-18",
+        "bravery-2",
+        "bravery-6",
+        "bravery-10",
+        "bravery-14",
+        "bravery-18",
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "fighter-swarm-fighter-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A swarm fighter is\nproficient with all simple and martial weapons. She is\nproficient with light and medium armor, but not with\nshields."
+        },
+        {
+          "id": "fighter-swarm-fighter-athletic-prowess-ex-1",
+          "name": "Athletic Prowess (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A swarm fighter adds Acrobatics\nand Climb to her class skills, and gains a bonus on checks\nwith these skills equal to 1/2 her swarm fighter level."
+        },
+        {
+          "id": "fighter-swarm-fighter-mobility-ex-1",
+          "name": "Mobility (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The swarm fighter gains Mobility as a\nbonus feat, even if she does not meet the prerequisites.\nThis replaces the bonus feat a fighter gains at first level,\nand can’t be replaced at a later level."
+        },
+        {
+          "id": "fighter-swarm-fighter-safety-in-numbers-ex-1",
+          "name": "Safety in Numbers (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A swarm fighter benefits greatly\nfrom the proximity of her allies. She gains a morale bonus\non saves against fear effects equal to the number of allies\nwithin 20 feet of her. This bonus can’t exceed half her level.\nThis ability replaces bravery."
+        },
+        {
+          "id": "fighter-swarm-fighter-bonus-teamwork-feats-ex-2",
+          "name": "Bonus Teamwork Feats (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level and every\n4 levels thereafter, the swarm fighter gains a bonus\nTeamwork Feat.\nThis ability replaces the bonus combat feats the fighter\nnormally receives at those levels."
+        },
+        {
+          "id": "fighter-swarm-fighter-bonus-feats-ex-4",
+          "name": "Bonus Feats (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, and every 4 levels\nthereafter, the swarm fighter gains a bonus combat feat.\nThese are gained as with the fighter’s normal bonus feats\nclass feature (but less frequently)."
+        },
+        {
+          "id": "fighter-swarm-fighter-share-space-ex-5",
+          "name": "Share Space (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the swarm fighter can\nmove into the space of another creature at least one size\ncategory larger than she is. She may end her movement in,\nand make attacks from, that space. She must succeed at the\nAcrobatics check for moving through an occupied square\nto move into a space occupied by an enemy. While sharing\nthe space of another creature, she gains a +2 shield bonus\nto AC and a +1 circumstance bonus on Reflex saves.\nThis ability replaces weapon training 1."
+        },
+        {
+          "id": "fighter-swarm-fighter-strike-the-underbelly-ex-9",
+          "name": "Strike the Underbelly (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, creatures\nwith which the swarm fighter shares a space are denied\ntheir Dexterity bonus to Armor Class against the swam\nfighter’s attacks.\nThis ability replaces weapon training 2."
+        },
+        {
+          "id": "fighter-swarm-fighter-always-underfoot-ex-13",
+          "name": "Always Underfoot (Ex)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, the swarm fighter\ngains Step Up as a bonus feat. A creature sharing a square\nwith the swarm fighter is considered adjacent for the\npurposes of this feat. At 17th level, the swarm fighter gains\nFollowing Step as a bonus feat.\nThese abilities replace weapon training 3 and 4."
+        },
+        {
+          "id": "fighter-swarm-fighter-soft-underbelly-ex-20",
+          "name": "Soft Underbelly (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, any attacks made\nagainst creatures with which the swarm fighter shares a\nspace automatically confirm all critical threats.\nThis ability replaces weapon mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Swarm%20Fighter"
+  }
+}

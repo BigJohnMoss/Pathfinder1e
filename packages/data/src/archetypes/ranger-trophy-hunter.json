@@ -1,0 +1,43 @@
+{
+  "id": "ranger-trophy-hunter",
+  "name": "Trophy Hunter",
+  "classId": "ranger",
+  "summary": "Some rangers have taken up the mysteries of black powder in order to become big game hunters.",
+  "replacesText": "Wild Empathy; Combat Feat Style; Hunter’s Bond",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-wild-empathy-1",
+        "ranger-hunters-bond-4"
+      ],
+      "features": [
+        {
+          "id": "ranger-trophy-hunter-improved-tracking-ex-1",
+          "name": "Improved Tracking (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a trophy hunter gains a +2 bonus on Survival skill checks when following or identifying tracks. When he tracks, he can also attempt a Knowledge (nature) check at DC 15. On a success, the trophy hunter can discern the type and condition of any animals or magical beasts he tracks. By studying their tracks, the trophy hunter is able to identify a rough approximation of their health, maneuverability, and their general behavior as compared to the norm. This ability replaces wild empathy."
+        },
+        {
+          "id": "ranger-trophy-hunter-firearm-style-2",
+          "name": "Firearm Style",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a trophy hunter gains the Amateur Gunslinger feat and Exotic Weapon Proficiency (firearms), and can use any 1st-level gunslinger deed (page 10). At every four levels thereafter, the trophy hunter can take a grit feat or select a gunslinger deed of his level or lower, ranger’s choice. This ability replaces all combat style feats."
+        },
+        {
+          "id": "ranger-trophy-hunter-hunter-s-aim-ex-4",
+          "name": "Hunter’s Aim (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a trophy hunter gains a specific understanding of the weaknesses and vulnerabilities of his favored enemies, and his careful study of these enemies reveals the best way to hurt them. When the trophy hunter makes a firearm attack against a favored enemy, he can target touch AC in the first two range increments of his firearm. This ability stacks with other effects that increase the range increments to target touch AC, adding one range increment to the effect. This ability replaces hunter’s bond."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Trophy%20Hunter"
+  }
+}

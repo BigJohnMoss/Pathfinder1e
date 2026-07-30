@@ -1,0 +1,43 @@
+{
+  "id": "paladin-holy-guide",
+  "name": "Holy Guide",
+  "classId": "paladin",
+  "summary": "A holy guide believes that it’s his sacred calling to clear the roads of bandits between towns as well as to escort travelers to safety.",
+  "replacesText": "Class Skills; 3rd and 6th-level Mercies",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-mercy-3",
+        "paladin-mercy-6"
+      ],
+      "features": [
+        {
+          "id": "paladin-holy-guide-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A holy guide gains Knowledge (geography) and Survival as class skills."
+        },
+        {
+          "id": "paladin-holy-guide-favored-terrain-ex-3",
+          "name": "Favored Terrain (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a holy guide chooses a favored terrain from the ranger favored terrains table. This otherwise functions like the ranger ability of the same name. This ability replaces the mercy gained at 3rd level. Every time a holy guide would be able to select another mercy, he can instead select another favored terrain and increase his bonuses for one existing favored terrain, just like a ranger."
+        },
+        {
+          "id": "paladin-holy-guide-teamwork-feat-ex-6",
+          "name": "Teamwork Feat (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a holy guide gains a teamwork feat as a bonus feat. He must meet the prerequisites for this feat. As a standard action, He can expend one use of smite evil to grant this feat to all allies within 30 feet who can see and hear him. Allies retain the use of this bonus feat for 3 rounds plus 1 round for every 2 levels the holy guide possesses. Allies do not need to meet the prerequisites of this bonus feat. Evil creatures do not gain the benefit of this teamwork feat, even if the paladin considers them allies. This ability replaces the mercy gained at 6th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Paladin%20Holy%20Guide"
+  }
+}

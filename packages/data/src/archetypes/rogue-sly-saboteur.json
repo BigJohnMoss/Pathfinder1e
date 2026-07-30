@@ -1,0 +1,93 @@
+{
+  "id": "rogue-sly-saboteur",
+  "name": "Sly Saboteur",
+  "classId": "rogue",
+  "summary": "Sly saboteurs are irregular soldiers who specialize in sabotage and surprise attacks.",
+  "replacesText": "Class Skills; Trap Sense; Uncanny Dodge; Improved Uncanny Dodge;",
+  "replacements": [
+    {
+      "featureIds": [
+        "rogue-trap-sense-3",
+        "rogue-trap-sense-6",
+        "rogue-trap-sense-9",
+        "rogue-trap-sense-12",
+        "rogue-trap-sense-15",
+        "rogue-trap-sense-18",
+        "uncanny-dodge-4",
+        "improved-uncanny-dodge-8",
+        "sneak-attack-1",
+        "sneak-attack-3",
+        "sneak-attack-5",
+        "sneak-attack-7",
+        "sneak-attack-9",
+        "sneak-attack-11",
+        "sneak-attack-13",
+        "sneak-attack-15",
+        "sneak-attack-17",
+        "sneak-attack-19",
+        "trapfinding-1",
+        "evasion-2",
+        "advanced-talents-10",
+        "master-strike-20",
+        "rogue-talent-2",
+        "rogue-talent-4",
+        "rogue-talent-6",
+        "rogue-talent-8",
+        "rogue-talent-10",
+        "rogue-talent-12",
+        "rogue-talent-14",
+        "rogue-talent-16",
+        "rogue-talent-18"
+      ],
+      "features": [
+        {
+          "id": "rogue-sly-saboteur-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sly saboteur adds Survival to her list of class skills instead of Knowledge (dungeoneering). This alters the rogue’s class skills."
+        },
+        {
+          "id": "rogue-sly-saboteur-scamper-ex-3",
+          "name": "Scamper (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a sly saboteur can move through 5 feet of difficult terrain each round as if it were normal terrain. At 6th level and every 3 levels thereafter, this distance increases by 5 feet (to a maximum of 30 feet at 18th level). This ability allows the sly saboteur to take a 5-foot step into difficult terrain. This ability applies only when she is wearing light armor or no armor and carrying no more than a light load, and it stacks with the Acrobatic Steps and Nimble Moves feats. This replaces trap sense."
+        },
+        {
+          "id": "rogue-sly-saboteur-catastrophic-failure-ex-4",
+          "name": "Catastrophic Failure (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, when a sly saboteur uses Disable Device to rig a device to fail, she can increase the DC of the check by 5. If she does so and succeeds at the check, when the device fails, users take damage equal to the sly saboteur’s sneak attack, or they take half that amount with a successful Reflex save (DC = 10 + half the sly saboteur’s level + her Dexterity modifier). The type of damage depends on the nature of the device but is typically bludgeoning, fire, piercing, or slashing. This replaces uncanny dodge."
+        },
+        {
+          "id": "rogue-sly-saboteur-disable-magic-device-su-8",
+          "name": "Disable Magic Device (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a sly saboteur can use Disable Device to rig a magic item to fail as if it were an extremely complex device. If the item’s effect is instantaneous, the effect is countered the next time the item is activated, but the activation still consumes a charge or use. If the item’s effect is continuous or has a duration, the effect fails after 1d4 rounds or minutes of use (sly saboteur’s choice). This ends the duration or suppresses a continuous effect for 1d4 rounds (as the spell dispel magic ). This ability cannot be used on artifacts. If this ability is combined with the catastrophic failure ability, the resulting damage is untyped magic and is not reduced by damage reduction or energy resistance. This replaces improved uncanny dodge."
+        },
+        {
+          "id": "rogue-sly-saboteur-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the sly saboteur archetype: cunning trigger, fast stealth, getaway artist, quick disable, quick trapsmith, rogue crawl, trap spotter, wall scramble."
+        },
+        {
+          "id": "rogue-sly-saboteur-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the sly saboteur archetype: frugal trapsmith, hide in plain sight, knock-out blow, rumormonger, skill mastery, stealthy sniper."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Sly%20Saboteur"
+  }
+}

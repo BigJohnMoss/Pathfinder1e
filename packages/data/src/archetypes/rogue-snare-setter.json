@@ -1,0 +1,74 @@
+{
+  "id": "rogue-snare-setter",
+  "name": "Snare Setter",
+  "classId": "rogue",
+  "summary": "(Kobold Only) Deep in darkness, the snare setter constructs his deadly\ntraps and brutal mechanisms to confound and destroy any\nwho try to invade his domain.",
+  "replacesText": "Sneak Attack; Trapfinding; Master Strike",
+  "replacements": [
+    {
+      "featureIds": [
+        "sneak-attack-1",
+        "sneak-attack-3",
+        "sneak-attack-5",
+        "sneak-attack-7",
+        "sneak-attack-9",
+        "sneak-attack-11",
+        "sneak-attack-13",
+        "sneak-attack-15",
+        "sneak-attack-17",
+        "sneak-attack-19",
+        "trapfinding-1",
+        "master-strike-20"
+      ],
+      "features": [
+        {
+          "id": "rogue-snare-setter-trapper-ex-1",
+          "name": "Trapper (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a snare setter gains Learn Ranger\nTrap (see page 24) as a bonus feat. In addition to the trap\ngranted by this feat, he learns how to construct the tripwire\ntrap for free. For the purposes of this feat, he’s considered\na ranger of his snare setter level, and uses his Intelligence\nin place of Wisdom to determine uses per day and the DC\nof his ranger traps. Whenever the snare setter could learn\na new rogue trick, he may instead learn a new ranger trap.\nThis ability replaces sneak attack (but see below)."
+        },
+        {
+          "id": "rogue-snare-setter-trapsmithing-ex-1",
+          "name": "Trapsmithing (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A snare setter gains a bonus on\nPerception skill checks to detect traps and on Craft (traps)\nchecks equal to 1/2 his snare setter level. He can use Craft\n(traps) in place of Disable Device to disarm traps, including\nmagical traps.\nThis ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-snare-setter-deadly-traps-ex-3",
+          "name": "Deadly Traps (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the snare setter’s traps\ndeal an additional 1d6 points of damage on the first round\nthey’re activated. This damage is of the same type the trap\nnormally deals. Traps that don’t deal damage are unaffected\nby this ability. This additional damage increases by 1d6\npoints every 4 levels beyond 3rd (7th, 11th, 15th, and 19th)."
+        },
+        {
+          "id": "rogue-snare-setter-sneak-attack-su-5",
+          "name": "Sneak Attack (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the snare setter gains\nsneak attack +1d6. This functions as the rogue ability of\nthe same name, but the damage increases by 1d6 every 4\nlevels after 5th (9th, 13th, and 17th)."
+        },
+        {
+          "id": "rogue-snare-setter-master-snare-setter-ex-20",
+          "name": "Master Snare Setter (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, the snare setter\ncan attach one of a rogue’s master strike effects to a trap\nhe creates. When the trap is triggered, the subject makes\nan additional Fortitude save at the same DC as the trap\nto avoid this effect. A snare setter can have only one trap\naffected by this ability active at any time. He may remove\nthis ability from a trap at any range as a free action.\nThis ability replaces master strike."
+        },
+        {
+          "id": "rogue-snare-setter-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement\nthe snare setter archetype: camouflage, cunning trigger,\nfast stealth, sniper’s eye."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Snare%20Setter"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "monk-terra-cotta-monk",
+  "name": "Terra-Cotta Monk",
+  "classId": "monk",
+  "summary": "Possessing a natural affinity for all things earthen, terracotta monks are experts at turning the stone around them against their enemies.",
+  "replacesText": "Class Skills; Evasion; High Jump; Improved Evasion; Abundant Step; Quivering Palm; Empty Body",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-evasion-2",
+        "monk-improved-evasion-9",
+        "monk-high-jump-5",
+        "monk-abundant-step-12",
+        "monk-quivering-palm-15",
+        "monk-empty-body-19"
+      ],
+      "features": [
+        {
+          "id": "monk-terra-cotta-monk-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A terra-cotta monk adds Knowledge (dungeoneering), Knowledge (engineering), and Disable Device to his list of class skills and removes Knowledge (history), Perform, and Ride."
+        },
+        {
+          "id": "monk-terra-cotta-monk-trap-intuition-ex-2",
+          "name": "Trap Intuition (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, whenever a terra-cotta monk comes within 10 feet of a trap, he receives an immediate Perception check to notice the trap. The GM should make this check in secret. A terra-cotta monk gains a +2 bonus on Perception checks to notice traps. This bonus increases to +4 if the trap is located in a stone wall or floor. This ability replaces evasion."
+        },
+        {
+          "id": "monk-terra-cotta-monk-stone-grip-su-5",
+          "name": "Stone Grip (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a terra-cotta monk adds a bonus equal to his class level on all Climb checks. He can move at his full movement rate while climbing with no increase to the check’s DC. By spending 1 point from his ki pool as a swift action, a monk gains the benefits of spider climb for 1 round. This ability replaces high jump."
+        },
+        {
+          "id": "monk-terra-cotta-monk-trap-dodge-ex-10",
+          "name": "Trap Dodge (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a terra-cotta monk gains a bonus equal to his Wisdom modifier on all saving throws made against effects produced by mechanical traps. This ability replaces improved evasion."
+        },
+        {
+          "id": "monk-terra-cotta-monk-sudden-adit-su-12",
+          "name": "Sudden Adit (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a terra-cotta monk can create passages through stone or dirt as if using the spell passwall with a caster level equal to his monk level. Using this ability is a move action that consumes 2 points of the monk’s ki pool. This ability replaces abundant step."
+        },
+        {
+          "id": "monk-terra-cotta-monk-petrifying-strike-su-15",
+          "name": "Petrifying Strike (Su)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a terra-cotta monk can turn an opponent to stone with a single strike. He can use this ability once per day, and must announce the attempt before making his attack roll. If the terra-cotta monk’s strike is successful, the creature must succeed at a Fortitude save (DC = 10 + 1/2 the monk’s level + the monk’s Wis modifier) or be petrified for 1 hour per monk level. Incorporeal creatures and creatures immune to petrification are unaffected by this ability. This ability replaces quivering palm."
+        },
+        {
+          "id": "monk-terra-cotta-monk-rainmaker-su-19",
+          "name": "Rainmaker (Su)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, anytime a terra-cotta monk is underground, he may cause a section of the roof to come down on his enemies per the spell earthquake , with a caster level equal to his monk level. The terra-cotta monk may use this ability only while in a cave, cavern, or tunnel. Using this ability is a standard action that consumes 3 points from his ki pool. This ability replaces empty body."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Terra-Cotta%20Monk"
+  }
+}

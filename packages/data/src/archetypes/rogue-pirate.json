@@ -1,0 +1,57 @@
+{
+  "id": "rogue-pirate",
+  "name": "Pirate",
+  "classId": "rogue",
+  "summary": "A pirate breaks from the confines of country and king to commit her crimes upon the high seas.",
+  "replacesText": "Trapfinding; 2nd-level Rogue Talent; Trapfinding",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1",
+        "rogue-talent-2"
+      ],
+      "features": [
+        {
+          "id": "rogue-pirate-sea-legs-ex-1",
+          "name": "Sea Legs (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a pirate becomes adept at moving on ships, boats, and similar vessels. She gains the Sea Legs feat as a bonus feat, even if she does not meet the prerequisites. This ability replaces trapfinding."
+        },
+        {
+          "id": "rogue-pirate-swinging-reposition-ex-2",
+          "name": "Swinging Reposition (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a pirate incorporates a ship’s masts, rigging, ropes, sails, and other such structures into her combat style. Provided she is wearing light armor or no armor, when fighting in an environment where such structures exist, the rogue incorporates them into her movement, and does not have to move in a straight line when making either a charge attack or a bull rush combat maneuver. Once she completes her attack or maneuver, she can reposition herself. Immediately after making the charge or bull rush, she can move 5 feet as a free action, even if the charge ends her turn. This movement does not provoke attacks of opportunity. This ability replaces the 2nd-level rogue talent."
+        },
+        {
+          "id": "rogue-pirate-unflinching-ex-3",
+          "name": "Unflinching (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "Pirates are a salty and steadfast lot. At 3rd level, a pirate gains a +1 bonus on saving throws against fear and mind-affecting effects. This bonus increases by +1 for every three levels, to a maximum of +6 at 18th level. This ability replaces trap sense."
+        },
+        {
+          "id": "rogue-pirate-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rogue talents complement the pirate archetype: black market connections*, combat trick, finesse rogue, firearm training*, hold breath*, rope master*, and strong stroke*."
+        },
+        {
+          "id": "rogue-pirate-advanced-talents-1",
+          "name": "Advanced Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced rogue talents complement the pirate archetype: getaway master*, hard to fool*, and unwitting ally*."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Rogue%20Pirate"
+  }
+}

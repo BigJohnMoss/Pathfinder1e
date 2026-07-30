@@ -1,0 +1,88 @@
+{
+  "id": "barbarian-feral-gnasher",
+  "name": "Feral Gnasher",
+  "classId": "barbarian",
+  "summary": "(Goblin Only) Feral gnashers grow up in the wild, either raised by animals or scraping by on their own, and soon learn to fend for themselves.",
+  "replacesText": "Weapon/Armor Proficiency; Fast Movement; 2nd-level Rage Power; Trap Sense 1-5; Improved Uncanny Dodge",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1",
+        "rage-power-2",
+        "trap-sense-3",
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5"
+      ],
+      "features": [
+        {
+          "id": "barbarian-feral-gnasher-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A feral gnasher loses all martial weapon proficiencies except for greatclub and loses proficiency with medium armor."
+        },
+        {
+          "id": "barbarian-feral-gnasher-savage-bite-ex-1",
+          "name": "Savage Bite (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a feral gnasher gains a savage bite attack. This is a primary natural attack that deals 1d4 points of damage. If the goblin already has the hard head, big teeth racial trait, the damage increases to 1d6. At 10th level, the damage from a feral gnasher’s bite increases to 1d6 (or 1d8 if the goblin has the hard head, big teeth racial trait) and deals Ã—3 damage on a critical hit. This ability replaces fast movement."
+        },
+        {
+          "id": "barbarian-feral-gnasher-impromptu-armament-ex-2",
+          "name": "Impromptu Armament (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a feral gnasher gains Throw Anything as a bonus feat and can pick up an unattended object that can be wielded in one hand as a free action. Additionally, the feral gnasher can take Catch Off-Guard in place of a rage power. This replaces the rage power gained at second level."
+        },
+        {
+          "id": "barbarian-feral-gnasher-lockjaw-ex-3",
+          "name": "Lockjaw (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a feral gnasher gains the grab ability with her bite attack. A feral gnasher can use this ability on a creature up to one size category larger than she is. This replaces trap sense +1."
+        },
+        {
+          "id": "barbarian-feral-gnasher-improvised-weapon-mastery-ex-5",
+          "name": "Improvised Weapon Mastery (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a feral gnasher gains Improvised Weapon Mastery as a bonus feat. This replaces improved uncanny dodge."
+        },
+        {
+          "id": "barbarian-feral-gnasher-improved-lockjaw-ex-6",
+          "name": "Improved Lockjaw (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, as long as a feral gnasher is controlling the grapple with her lockjaw attack, she does not gain the grappled condition, but is unable to move or use her mouth for anything other than grappling. This ability replaces trap sense +2."
+        },
+        {
+          "id": "barbarian-feral-gnasher-greater-lockjaw-ex-9",
+          "name": "Greater Lockjaw (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level and again at 15th level, the size of a creature a feral gnasher is able to use her lockjaw’s grab ability on increases by one size increment. This ability replaces trap sense +3 and trap sense +5."
+        },
+        {
+          "id": "barbarian-feral-gnasher-wicked-improvisation-ex-12",
+          "name": "Wicked Improvisation (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a feral gnasher becomes more capable with improvised weapons and natural attacks. The feral gnasher gains a +1 competence bonus on damage rolls when using natural attacks or improvised weapons while raging. At 14th level and every two levels thereafter, the damage bonus increases by +1. This increase is not precision damage and is thus multiplied on a critical hit. This ability replaces trap sense +4."
+        },
+        {
+          "id": "barbarian-feral-gnasher-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the feral gnasher archetype: increased damage reduction, scent, superstition ; beast totem, beast totem (greater), beast totem (lesser) eater of magic, ghost rager."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Feral%20Gnasher"
+  }
+}

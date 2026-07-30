@@ -1,0 +1,45 @@
+{
+  "id": "cleric-scroll-scholar",
+  "name": "Scroll Scholar",
+  "classId": "cleric",
+  "summary": "Those who trade some of their potential to better understand ancient texts and scrolls can become learned scroll scholars.",
+  "replacesText": "1st Level Domain Power, Channel Energy 5th level increase, 4th-level spell slot",
+  "nestedReplacements": [
+    "1st Level Domain Power, Channel Energy 5th level increase, 4th-level spell slot"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-1st-level-domain-power-channel-energy-5th-level-increase-4th-level-spell-slot"
+      ],
+      "features": [
+        {
+          "id": "cleric-scroll-scholar-diligent-student-ex-1",
+          "name": "Diligent Student (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a scroll scholar chooses one Knowledge skill. This becomes a class skill if it is not already one. The scroll scholar adds half her class level to all Knowledge checks of this type (minimum 1). At 5th level and every five levels thereafter, a scroll scholar chooses 1 additional Knowledge skill to receive this bonus. For clerics, this ability replaces one of the 1st-level granted powers from her domains—the character gets to choose which of her two 1st-level granted powers it replaces. For wizards, this ability replaces diviner’s fortune (if a diviner) or hand of the apprentice (if a universalist)."
+        },
+        {
+          "id": "cleric-scroll-scholar-secrets-revealed-sp-5",
+          "name": "Secrets Revealed (Sp)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a scroll scholar gains the ability to cast comprehend languages and identify as spelllike abilities. Her caster level is equal to her character level in whatever class she took the scroll scholar archetype for. She can cast these spells once per day each at 5th level, twice per day each at 7th level, and three times per day each at 9th level. At 11th level, one of these spell-like abilities (scholar’s choice) becomes a constant spell-like ability, and at 13th level, the second one becomes a constant spell-like ability. If the scholar is a cleric, this ability replaces the increase to her channel energy damage normally gained at 5th level—her channel energy damage increases to 3d6 at 7th level instead, and for the rest of her career as a cleric lags 1d6 behind normal. If the scholar is a wizard, this ability replaces her bonus feat for 5th level."
+        },
+        {
+          "id": "cleric-scroll-scholar-flash-of-insight-su-10",
+          "name": "Flash of Insight (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, once per day, a scroll scholar can gain a +5 bonus on a single attack roll, caster level check, or saving throw as an immediate action. This decision must be made before the results of the roll are known, but can be made after the die is rolled. This ability can be used twice per day at 15th level, and 3 times per day at 20th level. This ability replaces the normal addition of a new 4th-level spell slot to the character’s spells per day— from this point on, the cleric or wizard has one fewer 4thlevel spell slot than other clerics or wizards."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cleric%20Scroll%20Scholar"
+  }
+}
