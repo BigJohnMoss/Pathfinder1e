@@ -1314,3 +1314,98 @@ main#character-builder-main {
     grid-template-columns: 1fr;
   }
 }
+
+.round-controls,
+.quick-hp-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.round-controls > strong {
+  padding: 8px 12px;
+  border-radius: 99px;
+  background: #f3eee4;
+  color: #6f2424;
+}
+
+.quick-hp-controls {
+  margin: 14px 0 22px;
+  padding: 14px;
+  border: 1px solid #e3ddd0;
+  border-radius: 12px;
+  background: #fdfbf7;
+}
+
+.quick-hp-controls label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 700;
+}
+
+.quick-hp-controls input {
+  width: 76px;
+}
+
+.quick-hp-controls .damage-button {
+  border-color: #9b3737;
+  background: #9b3737;
+  color: #fff;
+}
+
+.quick-hp-controls small {
+  color: #726c61;
+}
+
+.combat-attacks {
+  margin: 22px 0;
+}
+
+.combat-attacks > div:first-child p {
+  margin-top: 4px;
+  color: #5b584f;
+}
+
+.combat-attacks > div:not(:first-child) {
+  display: grid;
+  gap: 8px;
+}
+
+.combat-attacks article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #e3ddd0;
+  border-radius: 10px;
+}
+
+.combat-attacks article div {
+  display: grid;
+  gap: 3px;
+}
+
+.combat-attacks article span,
+.combat-attacks article small {
+  color: #5b584f;
+}
+
+.combat-attacks output {
+  display: block;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #252018;
+  color: #fff5e4;
+  font-weight: 800;
+}
+
+@media(max-width:540px) {
+  .combat-attacks article {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
