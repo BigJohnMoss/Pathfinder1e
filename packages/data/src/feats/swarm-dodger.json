@@ -9,8 +9,8 @@
       "minimum": 15
     },
     {
-      "type": "rule",
-      "description": "evasion"
+      "type": "feature",
+      "id": "evasion"
     }
   ],
   "benefit": "Avoid damage from swarms when they attack",

@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Animal companion or familiar"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "animal-companion"
+        },
+        {
+          "type": "feature",
+          "id": "familiar"
+        }
+      ]
     }
   ],
   "benefit": "You're treated as one size category larger for size-based abilities",

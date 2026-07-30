@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Familiar"
+      "type": "feature",
+      "id": "familiar"
     }
   ],
   "benefit": "The power of your master’s spells is increased when cast on you",

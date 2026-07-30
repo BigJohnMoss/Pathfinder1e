@@ -4,8 +4,9 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Constitution 13"
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
     }
   ],
   "benefit": "Roll damage from diseases twice and take the lower result",

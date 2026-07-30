@@ -17,8 +17,8 @@
       "description": "eidolon"
     },
     {
-      "type": "rule",
-      "description": "familiar"
+      "type": "feature",
+      "id": "familiar"
     },
     {
       "type": "rule",

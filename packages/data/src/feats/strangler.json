@@ -8,8 +8,8 @@
       "id": "improved-grapple"
     },
     {
-      "type": "rule",
-      "description": "sneak attack +1d6"
+      "type": "feature",
+      "id": "sneak-attack-1d6"
     }
   ],
   "benefit": "Deal sneak damage to grappled opponent",

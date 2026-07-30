@@ -9,12 +9,12 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "aura"
+      "type": "feature",
+      "id": "aura"
     },
     {
-      "type": "rule",
-      "description": "aura of good"
+      "type": "feature",
+      "id": "aura-of-good"
     },
     {
       "type": "rule",

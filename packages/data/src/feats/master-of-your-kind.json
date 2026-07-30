@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Familiar"
+      "type": "feature",
+      "id": "familiar"
     },
     {
       "type": "rule",

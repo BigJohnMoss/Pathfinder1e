@@ -12,8 +12,8 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     }
   ],
   "benefit": "Further reduce damage while using Intercept Blows",

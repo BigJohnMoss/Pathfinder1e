@@ -16,8 +16,8 @@
       "id": "power-attack"
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     }
   ],
   "benefit": "Bull rush and potentially trip larger foes when it charges",

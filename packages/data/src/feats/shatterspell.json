@@ -16,8 +16,9 @@
       "id": "dwarf"
     },
     {
-      "type": "rule",
-      "description": "10th-level fighter"
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 10
     }
   ],
   "benefit": "Sunder ongoing spell effects",

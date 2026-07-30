@@ -9,8 +9,8 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "Familiar"
+      "type": "feature",
+      "id": "familiar"
     },
     {
       "type": "feature",

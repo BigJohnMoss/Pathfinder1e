@@ -12,8 +12,8 @@
       "description": "(Stealth)"
     },
     {
-      "type": "rule",
-      "description": "darkvision"
+      "type": "feature",
+      "id": "darkvision"
     },
     {
       "type": "rule",

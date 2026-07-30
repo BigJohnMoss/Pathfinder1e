@@ -4,8 +4,9 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Dexterity 13"
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
     },
     {
       "type": "feat",

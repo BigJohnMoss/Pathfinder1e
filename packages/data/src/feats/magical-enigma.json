@@ -4,16 +4,16 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Bloodline"
+      "type": "feature",
+      "id": "bloodline"
     },
     {
       "type": "rule",
       "description": "eidolon"
     },
     {
-      "type": "rule",
-      "description": "mystery"
+      "type": "feature",
+      "id": "mystery"
     },
     {
       "type": "rule",

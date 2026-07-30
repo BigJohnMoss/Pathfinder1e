@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     },
     {
       "type": "feature",

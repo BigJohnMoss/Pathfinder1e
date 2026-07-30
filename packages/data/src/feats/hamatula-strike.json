@@ -8,8 +8,9 @@
       "id": "improved-grapple"
     },
     {
-      "type": "rule",
-      "description": "Strength 13"
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
     },
     {
       "type": "bab",

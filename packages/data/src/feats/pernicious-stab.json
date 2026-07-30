@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Sneak attack +2d6"
+      "type": "feature",
+      "id": "sneak-attack-2d6"
     }
   ],
   "benefit": "Forgo sneak attack damage to increase a poison’s effectiveness",

@@ -8,8 +8,9 @@
       "description": "Any two critical feats"
     },
     {
-      "type": "rule",
-      "description": "14th-level fighter"
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 14
     }
   ],
   "benefit": "Apply two effects to your critical hits",

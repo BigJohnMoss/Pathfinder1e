@@ -4,8 +4,21 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "black-cat"
+        },
+        {
+          "type": "feat",
+          "id": "lucky-halfling"
+        }
+      ]
+    },
+    {
       "type": "rule",
-      "description": "Black Cat ARG or Lucky Halfling ARG ; must have a racial trait with “luck” in its name"
+      "description": "must have a racial trait with “luck” in its name"
     }
   ],
   "benefit": "Use a luck-related feat two additional times per day",

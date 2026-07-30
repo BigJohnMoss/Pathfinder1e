@@ -2,13 +2,18 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 
 const writeChanges = process.argv.includes("--write");
 const featDirectory = new URL("../../packages/data/src/feats/", import.meta.url);
+const classDirectory = new URL("../../packages/data/src/classes/", import.meta.url);
 const files = (await readdir(featDirectory)).filter((file) => file.endsWith(".json")).sort();
 const feats = await Promise.all(files.map(async (file) => ({
   file,
   value: JSON.parse(await readFile(new URL(file, featDirectory), "utf8")),
 })));
+const classes = await Promise.all((await readdir(classDirectory))
+  .filter((file) => file.endsWith(".json"))
+  .map(async (file) => JSON.parse(await readFile(new URL(file, classDirectory), "utf8"))));
 const classIds = new Set(["arcanist", "barbarian", "bard", "cleric", "druid", "fighter", "monk", "oracle", "paladin", "ranger", "rogue", "sorcerer", "wizard"]);
 const abilityKeys = { str: "strength", dex: "dexterity", con: "constitution", int: "intelligence", wis: "wisdom", cha: "charisma" };
+const fullAbilityKeys = Object.fromEntries(Object.values(abilityKeys).map((key) => [key, key]));
 const ancestryIds = new Map([
   ["dwarf", "dwarf"],
   ["elf", "elf"],
@@ -32,6 +37,8 @@ const sizeIds = new Map([
 const sourceCitationTokens = new Set(["ACG", "APG", "ARG", "ISG", "ISWG", "OA", "TG", "UC", "UI", "UM"]);
 const saveKeys = { fortitude: "fortitude", reflex: "reflex", will: "will" };
 const featIdByName = new Map(feats.map(({ value }) => [value.name.toLocaleLowerCase(), value.id]));
+const featureKey = (value) => value.toLocaleLowerCase().replace(/[’']/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const classFeatureKeys = new Set(classes.flatMap((characterClass) => characterClass.features.map((feature) => featureKey(feature.name))));
 
 const parseAtomicRule = (description) => {
   const text = description.trim().replace(/\.$/, "");
@@ -48,8 +55,12 @@ const parseAtomicRule = (description) => {
   if (match) return { type: "save", key: saveKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
   match = text.match(/^(Str|Dex|Con|Int|Wis|Cha)\s*(\d+)$/i);
   if (match) return { type: "ability", key: abilityKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
+  match = text.match(/^(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s*(\d+)$/i);
+  if (match) return { type: "ability", key: fullAbilityKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
   match = text.match(/^([A-Za-z]+) level\s*(\d+)(?:st|nd|rd|th)?$/i);
   if (match && classIds.has(match[1].toLocaleLowerCase())) return { type: "class-level", classId: match[1].toLocaleLowerCase(), minimum: Number(match[2]) };
+  match = text.match(/^(\d+)(?:st|nd|rd|th)-level\s+([A-Za-z]+)$/i);
+  if (match && classIds.has(match[2].toLocaleLowerCase())) return { type: "class-level", classId: match[2].toLocaleLowerCase(), minimum: Number(match[1]) };
   match = text.match(/^(\d+)\s+ranks?\s+in\s+(.+)$/i);
   if (match) return { type: "skill", key: match[2].trim(), minimum: Number(match[1]) };
   match = text.match(/^(.+?)\s+(\d+)\s+ranks?$/i);
@@ -64,7 +75,12 @@ const parseAtomicRule = (description) => {
   }
   const ancestryId = ancestryIds.get(text.toLocaleLowerCase());
   if (ancestryId) return { type: "ancestry", id: ancestryId };
-  const featId = featIdByName.get(text.toLocaleLowerCase());
+  const normalizedFeatureKey = featureKey(text);
+  if (!text.startsWith("(") && classFeatureKeys.has(normalizedFeatureKey)) return { type: "feature", id: normalizedFeatureKey };
+  if (/^animal companion$/i.test(text)) return { type: "feature", id: "animal-companion" };
+  if (/^familiar$/i.test(text)) return { type: "feature", id: "familiar" };
+  const withoutCitation = text.replace(/\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)$/i, "");
+  const featId = featIdByName.get(withoutCitation.toLocaleLowerCase());
   if (featId) return { type: "feat", id: featId };
   const alternatives = text.split(/\s+or\s+/i);
   if (alternatives.length > 1) {

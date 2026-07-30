@@ -20,8 +20,18 @@
       "id": "improved-unarmed-strike"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +12 or 10th-level monk"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 12
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 10
+        }
+      ]
     }
   ],
   "benefit": "Use your grappling prowess to keep an enemy from opening its mouth",

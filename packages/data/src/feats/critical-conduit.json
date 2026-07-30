@@ -8,8 +8,8 @@
       "description": "Deliver touch spells ability"
     },
     {
-      "type": "rule",
-      "description": "familiar"
+      "type": "feature",
+      "id": "familiar"
     }
   ],
   "benefit": "Increase critical threat range when delivering touch spells for your master",

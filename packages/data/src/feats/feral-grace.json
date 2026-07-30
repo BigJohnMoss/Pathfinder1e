@@ -12,8 +12,8 @@
       "minimum": 3
     },
     {
-      "type": "rule",
-      "description": "animal companion"
+      "type": "feature",
+      "id": "animal-companion"
     }
   ],
   "benefit": "Gain bonus to damage from fighting with finesse",

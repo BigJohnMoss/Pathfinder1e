@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Evasion"
+      "type": "feature",
+      "id": "evasion"
     }
   ],
   "benefit": "Use Reflex in place of Fortitude as an immediate action",

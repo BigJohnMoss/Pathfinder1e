@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Bardic performance"
+      "type": "feature",
+      "id": "bardic-performance"
     },
     {
       "type": "rule",

@@ -14,8 +14,8 @@
       "minimum": 4
     },
     {
-      "type": "rule",
-      "description": "Track"
+      "type": "feature",
+      "id": "track"
     }
   ],
   "benefit": "Use Survival to forage and track in urban locations",
