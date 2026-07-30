@@ -1,0 +1,17 @@
+{
+  "id": "warren-digger",
+  "name": "Warren Digger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ghoul"
+    }
+  ],
+  "benefit": "Gain a burrow speed",
+  "source": {
+    "title": "Monster Codex",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Warren%20Digger"
+  }
+}

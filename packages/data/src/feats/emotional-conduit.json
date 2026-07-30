@@ -1,0 +1,17 @@
+{
+  "id": "emotional-conduit",
+  "name": "Emotional Conduit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "shared-consciousness"
+    }
+  ],
+  "benefit": "Gain new spells tied to phantom’s emotional focus",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 132,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Emotional%20Conduit"
+  }
+}

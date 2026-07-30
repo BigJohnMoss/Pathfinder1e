@@ -1,0 +1,17 @@
+{
+  "id": "agile-maiden",
+  "name": "Agile Maiden",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Str 13; Dex 13; Endurance or armor training class feature; proficiency with heavy armor"
+    }
+  ],
+  "benefit": "Treat Gray Maiden plate as medium or heavy armor for class features",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Agile%20Maiden"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "armor-focus",
+  "name": "Armor Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with selected armor"
+    }
+  ],
+  "benefit": "Increase one type of armor's AC bonus by 1",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Armor%20Focus"
+  }
+}

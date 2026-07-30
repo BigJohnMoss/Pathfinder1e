@@ -1,0 +1,17 @@
+{
+  "id": "sheltering-stubborness",
+  "name": "Sheltering Stubborness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Delay a mind-affecting effect for 1 round, becoming dazzled instead of the normal effect",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sheltering%20Stubborness"
+  }
+}

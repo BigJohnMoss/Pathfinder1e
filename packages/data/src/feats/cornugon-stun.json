@@ -1,0 +1,17 @@
+{
+  "id": "cornugon-stun",
+  "name": "Cornugon Stun",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    }
+  ],
+  "benefit": "Use stunning fist with monk weapons along with unarmed attacks",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cornugon%20Stun"
+  }
+}

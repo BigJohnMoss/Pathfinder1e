@@ -1,0 +1,17 @@
+{
+  "id": "eidolon-mount",
+  "name": "Eidolon Mount",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Eidolon able to choose quadruped or serpentine as a base form"
+    }
+  ],
+  "benefit": "Your eidolon is capable of serving as a combat-trained mount",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 110,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eidolon%20Mount"
+  }
+}

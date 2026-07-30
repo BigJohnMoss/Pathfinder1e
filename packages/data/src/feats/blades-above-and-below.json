@@ -1,0 +1,17 @@
+{
+  "id": "blades-above-and-below",
+  "name": "Blades Above and Below",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "When fighting with a differently sized ally, you flank an adjacent foe from any position",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 201,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blades%20Above%20and%20Below"
+  }
+}

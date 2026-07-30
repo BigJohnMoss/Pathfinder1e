@@ -1,0 +1,29 @@
+{
+  "id": "uncanny-defense",
+  "name": "Uncanny Defense",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cautious-fighter"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "hal"
+    }
+  ],
+  "benefit": "Gain bonus to Reflex saves and CMD when fighting defensively or taking total defense",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 67,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Uncanny%20Defense"
+  }
+}

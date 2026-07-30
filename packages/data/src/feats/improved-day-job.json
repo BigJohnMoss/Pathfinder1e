@@ -1,0 +1,17 @@
+{
+  "id": "improved-day-job",
+  "name": "Improved Day Job",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to attempt Day Job checks (see the Guide to Pathfinder Society Organized Play )"
+    }
+  ],
+  "benefit": "+3 bonus on Day Job checks (in PFS Organized Play)",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Day%20Job"
+  }
+}

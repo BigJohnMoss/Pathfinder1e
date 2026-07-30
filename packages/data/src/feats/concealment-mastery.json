@@ -1,0 +1,27 @@
+{
+  "id": "concealment-mastery",
+  "name": "Concealment Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude saving throw bonus +3"
+    }
+  ],
+  "benefit": "Cast invisibility with an illusion-crafted item",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Concealment%20Mastery"
+  }
+}

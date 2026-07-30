@@ -1,0 +1,25 @@
+{
+  "id": "savage-slam",
+  "name": "Savage Slam",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +3 or monk level 1st"
+    }
+  ],
+  "benefit": "Release a grapple by slamming the target into the ground",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Savage%20Slam"
+  }
+}

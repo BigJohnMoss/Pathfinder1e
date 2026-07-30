@@ -1,0 +1,21 @@
+{
+  "id": "wilding",
+  "name": "Wilding",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any neutral alignment"
+    },
+    {
+      "type": "rule",
+      "description": "must be taken at 1st level"
+    }
+  ],
+  "benefit": "Gain wild empathy ability or bonus and are treated as an animal for the purpose of harmful mind-affecting effects that target animals",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 120,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wilding"
+  }
+}

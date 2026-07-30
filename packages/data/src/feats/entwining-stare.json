@@ -1,0 +1,22 @@
+{
+  "id": "entwining-stare",
+  "name": "Entwining Stare",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Target takes a -4 penalty to CMD vs grapple",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Entwining%20Stare"
+  }
+}

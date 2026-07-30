@@ -1,0 +1,17 @@
+{
+  "id": "favored-enemy-spellcasting",
+  "name": "Favored Enemy Spellcasting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "spells"
+    }
+  ],
+  "benefit": "Spell DCs are 1 higher for your chosen enemy",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Favored%20Enemy%20Spellcasting"
+  }
+}

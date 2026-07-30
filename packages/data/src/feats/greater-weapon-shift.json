@@ -1,0 +1,29 @@
+{
+  "id": "greater-weapon-shift",
+  "name": "Greater Weapon Shift",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-weapon-shift"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-shift"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "When using Weapon Shift , your natural attacks have the enhancement bonus of your weapon",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Weapon%20Shift"
+  }
+}

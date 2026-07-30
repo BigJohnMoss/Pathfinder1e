@@ -1,0 +1,27 @@
+{
+  "id": "burn-rider",
+  "name": "Burn Rider",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mounted-combat"
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 6
+    },
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Gain fire resistance while mounted",
+  "source": {
+    "title": "Pathfinder #7: Edge of Anarchy",
+    "page": 75,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Burn%20Rider"
+  }
+}

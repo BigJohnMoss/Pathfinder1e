@@ -1,0 +1,25 @@
+{
+  "id": "craft-construct",
+  "name": "Craft Construct",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 5
+    },
+    {
+      "type": "feat",
+      "id": "craft-magic-arms-and-armor"
+    },
+    {
+      "type": "feat",
+      "id": "craft-wondrous-item"
+    }
+  ],
+  "benefit": "Learn how to craft constructs.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 314,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Construct"
+  }
+}

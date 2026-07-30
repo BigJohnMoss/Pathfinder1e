@@ -1,0 +1,30 @@
+{
+  "id": "fencing-grace",
+  "name": "Fencing Grace",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(rapier)"
+    }
+  ],
+  "benefit": "Use Dexterity on rapier damage rolls",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fencing%20Grace"
+  }
+}

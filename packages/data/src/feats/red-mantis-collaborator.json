@@ -1,0 +1,21 @@
+{
+  "id": "red-mantis-collaborator",
+  "name": "Red Mantis Collaborator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "associate"
+    },
+    {
+      "type": "rule",
+      "description": "(Red Mantis)"
+    }
+  ],
+  "benefit": "Association with the Red Mantis makes you harder to find",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Red%20Mantis%20Collaborator"
+  }
+}

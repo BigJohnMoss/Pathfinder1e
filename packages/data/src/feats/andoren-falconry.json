@@ -1,0 +1,26 @@
+{
+  "id": "andoren-falconry",
+  "name": "Andoren Falconry",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "animal-affinity"
+    },
+    {
+      "type": "feature",
+      "id": "animal-companion"
+    }
+  ],
+  "benefit": "Bonuses when dealing with birds of prey",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 284,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Andoren%20Falconry"
+  }
+}

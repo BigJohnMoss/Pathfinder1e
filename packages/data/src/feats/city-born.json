@@ -1,0 +1,21 @@
+{
+  "id": "city-born",
+  "name": "City Born",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "1st-level character"
+    },
+    {
+      "type": "rule",
+      "description": "cannot have Country Born or Lone Wolf"
+    }
+  ],
+  "benefit": "Gain a bonus based on your home city",
+  "source": {
+    "title": "Rise of the Runelords Player's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=City%20Born"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "improved-bless-equipment",
+  "name": "Improved Bless Equipment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bless-equipment"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 9
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Channel more energy into your equipment blessings",
+  "source": {
+    "title": "Undead Slayer's Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Bless%20Equipment"
+  }
+}

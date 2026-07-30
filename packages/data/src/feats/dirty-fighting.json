@@ -1,0 +1,12 @@
+{
+  "id": "dirty-fighting",
+  "name": "Dirty Fighting",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Ignore a flanking bonus in order to prevent attacks of opportunity on your combat maneuvers",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dirty%20Fighting"
+  }
+}

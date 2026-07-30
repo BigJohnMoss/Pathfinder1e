@@ -1,0 +1,23 @@
+{
+  "id": "sandwalker",
+  "name": "Sandwalker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Move faster in the desert",
+  "source": {
+    "title": "Legacy of Fire Player's Guide",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sandwalker"
+  }
+}

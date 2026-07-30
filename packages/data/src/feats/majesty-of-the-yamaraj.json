@@ -1,0 +1,25 @@
+{
+  "id": "majesty-of-the-yamaraj",
+  "name": "Majesty of the Yamaraj",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 5d6"
+    },
+    {
+      "type": "rule",
+      "description": "duskwalker"
+    },
+    {
+      "type": "rule",
+      "description": "ghost hunter racial trait"
+    }
+  ],
+  "benefit": "Expend ghost hunter to deal increased channel energy damage to undead",
+  "source": {
+    "title": "Pathfinder #139: The Dead Roads",
+    "page": 71,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Majesty%20of%20the%20Yamaraj"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "poised-bearing",
+  "name": "Poised Bearing*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base attack bonus +6 or fighter level 4th"
+    },
+    {
+      "type": "feature",
+      "id": "armor-training"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with medium or heavy armor"
+    }
+  ],
+  "benefit": "Treat your size as one category larger for combat maneuvers",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Poised%20Bearing*"
+  }
+}

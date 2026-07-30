@@ -1,0 +1,27 @@
+{
+  "id": "false-casting",
+  "name": "False Casting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "magical-aptitude"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Trick viewers into thinking magic item use is spellcasting",
+  "source": {
+    "title": "Inner Sea Magic",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=False%20Casting"
+  }
+}

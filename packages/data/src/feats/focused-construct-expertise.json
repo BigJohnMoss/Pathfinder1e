@@ -1,0 +1,17 @@
+{
+  "id": "focused-construct-expertise",
+  "name": "Focused Construct Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-construct"
+    }
+  ],
+  "benefit": "Bypass hardness and some types of damage reduction",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Construct%20Expertise"
+  }
+}

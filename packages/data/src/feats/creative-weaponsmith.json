@@ -1,0 +1,23 @@
+{
+  "id": "creative-weaponsmith",
+  "name": "Creative Weaponsmith",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (weapons)",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "You can add temporary modifications to your weapons",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Creative%20Weaponsmith"
+  }
+}

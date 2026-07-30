@@ -1,0 +1,17 @@
+{
+  "id": "snatch",
+  "name": "Snatch",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Size Huge or larger"
+    }
+  ],
+  "benefit": "Start a grapple when hitting a creature with your claw or bite attack, as if you had the Grab ability.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 316,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Snatch"
+  }
+}

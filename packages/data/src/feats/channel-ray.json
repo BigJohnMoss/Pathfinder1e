@@ -1,0 +1,17 @@
+{
+  "id": "channel-ray",
+  "name": "Channel Ray",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Project your channel energy as a single ray",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channel%20Ray"
+  }
+}

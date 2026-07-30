@@ -1,0 +1,17 @@
+{
+  "id": "bouncing-spell-like-ability",
+  "name": "Bouncing Spell-Like Ability",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Spell-like ability at caster level 4th or higher"
+    }
+  ],
+  "benefit": "Failed spell-like ability bounces to another target",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bouncing%20Spell-Like%20Ability"
+  }
+}

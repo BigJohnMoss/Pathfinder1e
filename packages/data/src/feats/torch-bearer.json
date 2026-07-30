@@ -1,0 +1,12 @@
+{
+  "id": "torch-bearer",
+  "name": "Torch Bearer",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Treat torch as a light weapon that deals damage as a mace",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 217,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Torch%20Bearer"
+  }
+}

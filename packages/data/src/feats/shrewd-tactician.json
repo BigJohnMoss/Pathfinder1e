@@ -1,0 +1,21 @@
+{
+  "id": "shrewd-tactician",
+  "name": "Shrewd Tactician",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    }
+  ],
+  "benefit": "Flanking is less efficient against you",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 289,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shrewd%20Tactician"
+  }
+}

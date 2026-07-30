@@ -1,0 +1,17 @@
+{
+  "id": "stony-step",
+  "name": "Stony Step",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Oread"
+    }
+  ],
+  "benefit": "Move through earth/stone difficult terrain as if it were normal",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stony%20Step"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "spider-climber",
+  "name": "Spider Climber",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "drow"
+    }
+  ],
+  "benefit": "Gain spider climb as a spell-like ability along with +4 bonus on saves involving webs",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spider%20Climber"
+  }
+}

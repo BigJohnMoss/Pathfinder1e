@@ -1,0 +1,25 @@
+{
+  "id": "ranged-study",
+  "name": "Ranged Study",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    },
+    {
+      "type": "feature",
+      "id": "studied-combat"
+    }
+  ],
+  "benefit": "Choose a ranged weapon and use studied combat with that weapon",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ranged%20Study"
+  }
+}

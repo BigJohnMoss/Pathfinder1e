@@ -1,0 +1,17 @@
+{
+  "id": "war-blessing",
+  "name": "War Blessing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Mystery or domain class feature"
+    }
+  ],
+  "benefit": "Gain a lesser use of the blessings class feature",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=War%20Blessing"
+  }
+}

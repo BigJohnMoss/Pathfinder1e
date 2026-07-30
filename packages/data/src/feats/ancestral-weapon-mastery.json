@@ -1,0 +1,21 @@
+{
+  "id": "ancestral-weapon-mastery",
+  "name": "Ancestral Weapon Mastery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "weapon familiarity racial trait"
+    }
+  ],
+  "benefit": "Gain proficiency with your race’s racial weapons or gain a bonus Weapon Focus feat with one racial weapon at a time",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 201,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ancestral%20Weapon%20Mastery"
+  }
+}

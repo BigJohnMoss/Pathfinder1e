@@ -1,0 +1,17 @@
+{
+  "id": "gravitational-vital-strike",
+  "name": "Gravitational Vital Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Vital Strike; Heavy Gravity Acclimation or Light Gravity Acclimation"
+    }
+  ],
+  "benefit": "Deal additional damage in heavy or light gravity",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gravitational%20Vital%20Strike"
+  }
+}

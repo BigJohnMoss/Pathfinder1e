@@ -1,0 +1,17 @@
+{
+  "id": "legionnaires-inspiration",
+  "name": "Legionnaire's Inspiration",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Affiliated with the Golden Legion"
+    }
+  ],
+  "benefit": "Grant allies +1 morale bonus to AC",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Legionnaire's%20Inspiration"
+  }
+}

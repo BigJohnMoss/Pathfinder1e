@@ -1,0 +1,26 @@
+{
+  "id": "frightful-shape",
+  "name": "Frightful Shape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 19
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "Your wild shape form is supernaturally fearsome and can frighten observers",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 112,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Frightful%20Shape"
+  }
+}

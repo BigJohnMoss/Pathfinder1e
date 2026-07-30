@@ -1,0 +1,17 @@
+{
+  "id": "diva-strike",
+  "name": "Diva Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cha 15; Combat Expertise; Diva Style; Improved Feint; base attack bonus +7 or bard level 7th"
+    }
+  ],
+  "benefit": "Deal additional damage t o a target that is denied its Dex bonus to AC",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 176,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diva%20Strike"
+  }
+}

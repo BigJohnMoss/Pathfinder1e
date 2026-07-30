@@ -1,0 +1,17 @@
+{
+  "id": "deep-diver",
+  "name": "Deep Diver",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    }
+  ],
+  "benefit": "Gain bonuses on diving into water and swimming deep underwater; hold your breath for longer than normal",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 109,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deep%20Diver"
+  }
+}

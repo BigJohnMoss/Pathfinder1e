@@ -1,0 +1,23 @@
+{
+  "id": "clinging-climber",
+  "name": "Clinging Climber",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Climb",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Cling to a surface using your legs so you can use both hands to attack",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 108,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Clinging%20Climber"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "decoys-misdirection",
+  "name": "Decoy's Misdirection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "page"
+    },
+    {
+      "type": "rule",
+      "description": "Must have a familiar with the decoy archetype (see 10)"
+    }
+  ],
+  "benefit": "Fool scry attempts using your familiar",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Decoy's%20Misdirection"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "lingering-breath",
+  "name": "Lingering Breath",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "disciple",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "Dragon"
+    }
+  ],
+  "benefit": "Deal ongoing damage with your breath weapon",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lingering%20Breath"
+  }
+}

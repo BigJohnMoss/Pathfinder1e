@@ -1,0 +1,29 @@
+{
+  "id": "ooze-companion",
+  "name": "Ooze Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "ooze-whisperer"
+    },
+    {
+      "type": "rule",
+      "description": "animal companion"
+    },
+    {
+      "type": "feat",
+      "id": "empathy"
+    },
+    {
+      "type": "rule",
+      "description": "wild"
+    }
+  ],
+  "benefit": "Bond with an ooze as an animal companion",
+  "source": {
+    "title": "Dungeon Denizens Revisited",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ooze%20Companion"
+  }
+}

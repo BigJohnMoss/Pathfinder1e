@@ -1,0 +1,26 @@
+{
+  "id": "monument-builder",
+  "name": "Monument Builder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "and you must have built a structure worth at least 5"
+    },
+    {
+      "type": "rule",
+      "description": "000 gp"
+    }
+  ],
+  "benefit": "Increase the value of your constructions and gain bonuses to Knowledge (engineering)",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 71,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monument%20Builder"
+  }
+}

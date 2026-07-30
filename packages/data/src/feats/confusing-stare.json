@@ -1,0 +1,22 @@
+{
+  "id": "confusing-stare",
+  "name": "Confusing Stare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Painful stare inflicts confusion",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Confusing%20Stare"
+  }
+}

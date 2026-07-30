@@ -1,0 +1,21 @@
+{
+  "id": "wretched-curator",
+  "name": "Wretched Curator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have purchased a scroll or spellbook containing a spell with the evil descriptor in a place where such dealings are illegal"
+    },
+    {
+      "type": "rule",
+      "description": "or must have the Secret Society Inductee or Diabolical Upbringing background"
+    }
+  ],
+  "benefit": "Purchase evil items cheaper, bonus to checks to understand evil items",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wretched%20Curator"
+  }
+}

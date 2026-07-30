@@ -1,0 +1,26 @@
+{
+  "id": "painful-blow",
+  "name": "Painful Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Damage you deal with vital strike continues to distract until your next turn",
+  "source": {
+    "title": "Arcane Anthology",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Painful%20Blow"
+  }
+}

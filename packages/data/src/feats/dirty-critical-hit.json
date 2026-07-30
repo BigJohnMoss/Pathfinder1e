@@ -1,0 +1,38 @@
+{
+  "id": "dirty-critical-hit",
+  "name": "Dirty Critical Hit",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Inflict dirty trick conditions on a critical hit",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dirty%20Critical%20Hit"
+  }
+}

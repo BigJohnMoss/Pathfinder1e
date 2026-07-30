@@ -1,0 +1,17 @@
+{
+  "id": "focused-undead-expertise",
+  "name": "Focused Undead Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-undead"
+    }
+  ],
+  "benefit": "Gain a bonus to saving throws against ability damage, energy drain, and negative energy",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Undead%20Expertise"
+  }
+}

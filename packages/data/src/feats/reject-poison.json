@@ -1,0 +1,26 @@
+{
+  "id": "reject-poison",
+  "name": "Reject Poison",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "poison-use"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Norgorber"
+    }
+  ],
+  "benefit": "You have a 20% chance of not being affected by poisons",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reject%20Poison"
+  }
+}

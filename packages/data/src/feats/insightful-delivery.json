@@ -1,0 +1,21 @@
+{
+  "id": "insightful-delivery",
+  "name": "Insightful Delivery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "poison-use"
+    },
+    {
+      "type": "rule",
+      "description": "studied strike +4d6"
+    }
+  ],
+  "benefit": "Increase the DC of poison delivered with studied strike",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Insightful%20Delivery"
+  }
+}

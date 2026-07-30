@@ -1,0 +1,17 @@
+{
+  "id": "spell-bluff-ah",
+  "name": "Spell Bluff (AH)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Teamwork"
+    }
+  ],
+  "benefit": "If ally is in the area of a damaging spell, enemies also in the area take a penalty to their saving throws vs the spell",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Bluff%20(AH)"
+  }
+}

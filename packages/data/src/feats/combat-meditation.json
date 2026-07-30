@@ -1,0 +1,26 @@
+{
+  "id": "combat-meditation",
+  "name": "Combat Meditation",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Learn to meditate quickly, though your meditation benefits will not last as long.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Combat%20Meditation"
+  }
+}

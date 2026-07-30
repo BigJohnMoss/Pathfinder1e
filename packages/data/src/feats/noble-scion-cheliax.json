@@ -1,0 +1,21 @@
+{
+  "id": "noble-scion-cheliax",
+  "name": "Noble Scion (Cheliax)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cheliax affinity"
+    },
+    {
+      "type": "rule",
+      "description": "member of Chelish noble house"
+    }
+  ],
+  "benefit": "Gain a bonus from your noble house",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 71,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Noble%20Scion%20(Cheliax)"
+  }
+}

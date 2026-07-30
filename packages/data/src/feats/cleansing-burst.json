@@ -1,0 +1,21 @@
+{
+  "id": "cleansing-burst",
+  "name": "Cleansing Burst",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Able to cast remove disease or the ability to cure disease with a mercy"
+    },
+    {
+      "type": "feature",
+      "id": "channel-positive-energy"
+    }
+  ],
+  "benefit": "Your channeled energy helps prevent the use of disease and wards against it",
+  "source": {
+    "title": "Pathfinder #81: Shifting Sands",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cleansing%20Burst"
+  }
+}

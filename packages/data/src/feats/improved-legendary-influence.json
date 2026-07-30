@@ -1,0 +1,21 @@
+{
+  "id": "improved-legendary-influence",
+  "name": "Improved Legendary Influence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "legendary-influence"
+    },
+    {
+      "type": "rule",
+      "description": "lesser spirit power OA and propitiation OA class features"
+    }
+  ],
+  "benefit": "Gain two different feats from each legend",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Legendary%20Influence"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "tunnel-rat",
+  "name": "Tunnel Rat",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ratfolk"
+    },
+    {
+      "type": "rule",
+      "description": "swarming racial trait"
+    }
+  ],
+  "benefit": "Count as a smaller size for the purpose of squeezing",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tunnel%20Rat"
+  }
+}

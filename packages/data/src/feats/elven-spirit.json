@@ -1,0 +1,17 @@
+{
+  "id": "elven-spirit",
+  "name": "Elven Spirit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-elf"
+    }
+  ],
+  "benefit": "Gain the Elven Magic quality",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 46,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elven%20Spirit"
+  }
+}

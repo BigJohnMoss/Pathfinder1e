@@ -1,0 +1,46 @@
+{
+  "id": "sisterhood-rampart",
+  "name": "Sisterhood Rampart",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "shield-wall"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "sisterhood-style"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(longsword)"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Grant adjacent female allies greater protection from Shield Wall",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sisterhood%20Rampart"
+  }
+}

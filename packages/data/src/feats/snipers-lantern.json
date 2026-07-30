@@ -1,0 +1,21 @@
+{
+  "id": "snipers-lantern",
+  "name": "Sniper's Lantern",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "rule",
+      "description": "dancing lights racial spell-like ability"
+    }
+  ],
+  "benefit": "Improve dancing lights to help your ranged attacks",
+  "source": {
+    "title": "Monster Codex",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sniper's%20Lantern"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "cushioning-shield",
+  "name": "Cushioning Shield*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or fighter level 4th"
+    }
+  ],
+  "benefit": "Tranfer half your falling damage to your shield",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cushioning%20Shield*"
+  }
+}

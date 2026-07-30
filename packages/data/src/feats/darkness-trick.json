@@ -1,0 +1,22 @@
+{
+  "id": "darkness-trick",
+  "name": "Darkness Trick",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 5
+    },
+    {
+      "type": "spell-access",
+      "id": "darkness"
+    }
+  ],
+  "benefit": "Deactivate a magic weapon's light",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Darkness%20Trick"
+  }
+}

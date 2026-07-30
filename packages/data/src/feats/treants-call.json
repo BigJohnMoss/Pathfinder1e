@@ -1,0 +1,30 @@
+{
+  "id": "treants-call",
+  "name": "Treant's Call",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 17
+    },
+    {
+      "type": "spell-access",
+      "id": "speak-with-plants"
+    },
+    {
+      "type": "level",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Gain liveoak as a spell-like ability",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Treant's%20Call"
+  }
+}

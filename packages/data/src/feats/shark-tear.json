@@ -1,0 +1,30 @@
+{
+  "id": "shark-tear",
+  "name": "Shark Tear",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "shark-style"
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Gain scent and combat bonuses against bleeding creatures",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shark%20Tear"
+  }
+}

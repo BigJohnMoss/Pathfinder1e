@@ -1,0 +1,21 @@
+{
+  "id": "sluggish-jinx",
+  "name": "Sluggish Jinx",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Apply the penalty of your jinx to the target's initiative and attack rolls",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sluggish%20Jinx"
+  }
+}

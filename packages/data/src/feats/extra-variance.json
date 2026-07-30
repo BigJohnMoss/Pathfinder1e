@@ -1,0 +1,21 @@
+{
+  "id": "extra-variance",
+  "name": "Extra Variance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channeling Variance or variant channeling ability"
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Add more variety to your channeled energy",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Variance"
+  }
+}

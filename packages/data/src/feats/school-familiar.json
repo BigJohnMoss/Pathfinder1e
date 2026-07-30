@@ -1,0 +1,26 @@
+{
+  "id": "school-familiar",
+  "name": "School Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "effective",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "Familiar"
+    },
+    {
+      "type": "feature",
+      "id": "specialized-arcane-school"
+    }
+  ],
+  "benefit": "Gain access to the School Familiar archetype",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=School%20Familiar"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "latent-curse",
+  "name": "Latent Curse",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Alter curse spells to target objects instead of people",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Latent%20Curse"
+  }
+}

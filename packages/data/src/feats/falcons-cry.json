@@ -1,0 +1,22 @@
+{
+  "id": "falcons-cry",
+  "name": "Falcon's Cry",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "affiliated with the Steel Falcons"
+    }
+  ],
+  "benefit": "Bolter allies' chances of escape",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Falcon's%20Cry"
+  }
+}

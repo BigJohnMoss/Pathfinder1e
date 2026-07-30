@@ -1,0 +1,29 @@
+{
+  "id": "night-sky-hex",
+  "name": "Night Sky Hex",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hex"
+    },
+    {
+      "type": "rule",
+      "description": "moon"
+    },
+    {
+      "type": "rule",
+      "description": "stars"
+    },
+    {
+      "type": "rule",
+      "description": "or winter patron"
+    }
+  ],
+  "benefit": "One of your hex's save DCs increases by 2 when you are in view of the night sky",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Night%20Sky%20Hex"
+  }
+}

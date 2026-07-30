@@ -1,0 +1,25 @@
+{
+  "id": "dwarven-hatred-style",
+  "name": "Dwarven Hatred Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "defensive training and hatred racial traits"
+    },
+    {
+      "type": "rule",
+      "description": "Medium size"
+    }
+  ],
+  "benefit": "Apply hatred on both attack/damage and increase to +2",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dwarven%20Hatred%20Style"
+  }
+}

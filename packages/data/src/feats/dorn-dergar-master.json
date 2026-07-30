@@ -1,0 +1,25 @@
+{
+  "id": "dorn-dergar-master",
+  "name": "Dorn-Dergar Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with the dwarven dorn-dergar"
+    }
+  ],
+  "benefit": "Use a dorn-dergar as a one-handed weapon",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dorn-Dergar%20Master"
+  }
+}

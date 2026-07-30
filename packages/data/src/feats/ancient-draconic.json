@@ -1,0 +1,25 @@
+{
+  "id": "ancient-draconic",
+  "name": "Ancient Draconic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "Arcane"
+    },
+    {
+      "type": "rule",
+      "description": "speaks Draconic"
+    }
+  ],
+  "benefit": "Empower spells using the language of dragons",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ancient%20Draconic"
+  }
+}

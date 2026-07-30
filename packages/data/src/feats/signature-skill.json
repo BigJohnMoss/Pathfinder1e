@@ -1,0 +1,17 @@
+{
+  "id": "signature-skill",
+  "name": "Signature Skill",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "5 ranks in the chosen skill"
+    }
+  ],
+  "benefit": "Gain unique abilities with a chosen skill",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 82,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Signature%20Skill"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "changeling-familiar",
+  "name": "Changeling Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "familiar"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "your familiar must have the change shape universal monster ability"
+    }
+  ],
+  "benefit": "Your familiar gains the ability to take one a humanoid form",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Changeling%20Familiar"
+  }
+}

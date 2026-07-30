@@ -1,0 +1,21 @@
+{
+  "id": "champion-of-righteousness",
+  "name": "Champion of Righteousness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "10 Hit Dice"
+    },
+    {
+      "type": "rule",
+      "description": "lawful good alignment"
+    }
+  ],
+  "benefit": "You know that good must be tempered with order if it’s going to prevail in the long term.",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 99,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Righteousness"
+  }
+}

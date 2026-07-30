@@ -1,0 +1,17 @@
+{
+  "id": "endure-pain-zon-kuthons-kiss",
+  "name": "Endure Pain (Zon-Kuthon's Kiss)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Survived being tortured 10 or more times"
+    }
+  ],
+  "benefit": "Reduce nonlethal damage taken by half",
+  "source": {
+    "title": "Cities of Golarion",
+    "page": 42,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Endure%20Pain%20(Zon-Kuthon's%20Kiss)"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "possessed-hand",
+  "name": "Possessed Hand",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain a possessed hand",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Possessed%20Hand"
+  }
+}

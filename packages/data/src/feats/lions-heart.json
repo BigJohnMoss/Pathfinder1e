@@ -1,0 +1,22 @@
+{
+  "id": "lions-heart",
+  "name": "Lion's Heart",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "great-fortitude"
+    }
+  ],
+  "benefit": "Ignore a large amout of ability damage to one ability score",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lion's%20Heart"
+  }
+}

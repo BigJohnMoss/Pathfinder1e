@@ -1,0 +1,26 @@
+{
+  "id": "take-a-breather",
+  "name": "Take a Breather",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-vigor"
+    },
+    {
+      "type": "level",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Spend vigor instead of making an attack of opportunity",
+  "source": {
+    "title": "Healer's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Take%20a%20Breather"
+  }
+}

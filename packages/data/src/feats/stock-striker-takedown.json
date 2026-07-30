@@ -1,0 +1,37 @@
+{
+  "id": "stock-striker-takedown",
+  "name": "Stock-Striker Takedown",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "stock-striker-style"
+    },
+    {
+      "type": "feat",
+      "id": "stock-striker-sweep"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feat",
+      "id": "gunslinger"
+    },
+    {
+      "type": "rule",
+      "description": "pistol-whip deed"
+    }
+  ],
+  "benefit": "Execute a creature you knock to the ground with the pistol-whip deed",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stock-Striker%20Takedown"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "kinslayer",
+  "name": "Kinslayer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "(see special)"
+    },
+    {
+      "type": "rule",
+      "description": "evil alignment"
+    }
+  ],
+  "benefit": "Deal +1d6 precision damage against creatures of your type and subtype",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kinslayer"
+  }
+}

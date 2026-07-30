@@ -1,0 +1,12 @@
+{
+  "id": "muddled-morals",
+  "name": "Muddled Morals",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Bonus on saving throws against alignment effects, treated as different alignment when drunk",
+  "source": {
+    "title": "Inner Sea Taverns",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Muddled%20Morals"
+  }
+}

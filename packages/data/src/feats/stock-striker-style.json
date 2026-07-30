@@ -1,0 +1,21 @@
+{
+  "id": "stock-striker-style",
+  "name": "Stock-Striker Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "gunslinger"
+    },
+    {
+      "type": "rule",
+      "description": "Pistol-whip deed"
+    }
+  ],
+  "benefit": "Gain bounses while using the pistol-whip deed",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stock-Striker%20Style"
+  }
+}

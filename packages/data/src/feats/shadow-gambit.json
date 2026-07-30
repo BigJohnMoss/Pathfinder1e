@@ -1,0 +1,25 @@
+{
+  "id": "shadow-gambit",
+  "name": "Shadow Gambit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(illusion)"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Tap into the Plane of Shadow to temporarily make your illusion a reality",
+  "source": {
+    "title": "Inner Sea Magic",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shadow%20Gambit"
+  }
+}

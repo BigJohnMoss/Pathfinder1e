@@ -1,0 +1,12 @@
+{
+  "id": "extreme-mood-swings",
+  "name": "Extreme Mood Swings",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Increase all moral bonuses and take a penalty to emotion and fear effects",
+  "source": {
+    "title": "Inner Sea Taverns",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extreme%20Mood%20Swings"
+  }
+}

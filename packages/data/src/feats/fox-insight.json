@@ -1,0 +1,22 @@
+{
+  "id": "fox-insight",
+  "name": "Fox Insight",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "fox-style"
+    }
+  ],
+  "benefit": "You are difficult to feint against and demoralize",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fox%20Insight"
+  }
+}

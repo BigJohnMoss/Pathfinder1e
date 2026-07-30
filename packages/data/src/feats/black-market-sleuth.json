@@ -1,0 +1,23 @@
+{
+  "id": "black-market-sleuth",
+  "name": "Black Market Sleuth",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (local)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Roll twice and take best on checks to learn about/access black markets",
+  "source": {
+    "title": "Black Markets",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Black%20Market%20Sleuth"
+  }
+}

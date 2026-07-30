@@ -1,0 +1,33 @@
+{
+  "id": "vanguard-ward",
+  "name": "Vanguard Ward",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bodyguard"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "vanguard-style"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with light or heavy shields"
+    }
+  ],
+  "benefit": "Use Bodyguard and Vanguard Style with the same action",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vanguard%20Ward"
+  }
+}

@@ -145,7 +145,7 @@ test("manages feat discovery and selection at an Android phone viewport", async 
 
   await expect(page.getByRole("heading", { name: "Feat manager" })).toBeVisible();
   await page.getByRole("searchbox", { name: "Search feats" }).fill("Toughness");
-  await expect(page.getByText("1 of 714 feats shown")).toBeVisible();
+  await expect(page.getByText("1 of 3448 feats shown")).toBeVisible();
 
   const toughness = page.locator(".feat-card").filter({ has: page.locator("summary strong", { hasText: "Toughness" }) });
   await toughness.locator("summary").click();

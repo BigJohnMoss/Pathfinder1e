@@ -1,0 +1,21 @@
+{
+  "id": "sea-hunter",
+  "name": "Sea Hunter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "rule",
+      "description": "merfolk"
+    }
+  ],
+  "benefit": "Knock a swimming opponent off balance using trip",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 195,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sea%20Hunter"
+  }
+}

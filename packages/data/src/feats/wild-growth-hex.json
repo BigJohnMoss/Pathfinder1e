@@ -1,0 +1,29 @@
+{
+  "id": "wild-growth-hex",
+  "name": "Wild Growth Hex",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hex"
+    },
+    {
+      "type": "rule",
+      "description": "summer"
+    },
+    {
+      "type": "rule",
+      "description": "thorns"
+    },
+    {
+      "type": "rule",
+      "description": "or woodlands patron"
+    }
+  ],
+  "benefit": "Cause disruptive thorny plants to grow at the feet of victims of a chosen hex",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wild%20Growth%20Hex"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "smash-from-the-air",
+  "name": "Smash from the Air",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "cut-from-the-air"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a melee weapon"
+    }
+  ],
+  "benefit": "Use Cut from the Air against unusually large ranged weapons",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Smash%20from%20the%20Air"
+  }
+}

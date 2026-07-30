@@ -1,0 +1,25 @@
+{
+  "id": "startling-shapechanger",
+  "name": "Startling Shapechanger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    },
+    {
+      "type": "rule",
+      "description": "change shape ability"
+    },
+    {
+      "type": "rule",
+      "description": "shapechanger subtype"
+    }
+  ],
+  "benefit": "When you change forms, you can use Dazzling Display as a swift action",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Startling%20Shapechanger"
+  }
+}

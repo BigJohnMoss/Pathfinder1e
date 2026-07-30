@@ -1,0 +1,17 @@
+{
+  "id": "outslug-weave",
+  "name": "Outslug Weave",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int 13; Combat Expertise or brawler’s cunning ACG class feature; Lunge; Outslug Style; Weapon Focus with the chosen weapon"
+    }
+  ],
+  "benefit": "No penalty to AC when using Lunge with Outslug Style; +2 to AC/damage from Outslug Style instead of +1",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Outslug%20Weave"
+  }
+}

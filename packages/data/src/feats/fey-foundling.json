@@ -1,0 +1,17 @@
+{
+  "id": "fey-foundling",
+  "name": "Fey Foundling",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You may only select this feat at 1st level"
+    }
+  ],
+  "benefit": "Magical healing works better on you",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 286,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fey%20Foundling"
+  }
+}

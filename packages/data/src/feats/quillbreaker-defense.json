@@ -1,0 +1,17 @@
+{
+  "id": "quillbreaker-defense",
+  "name": "Quillbreaker Defense",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficiency with armor spikes"
+    }
+  ],
+  "benefit": "Use your armor spikes to reduce damage",
+  "source": {
+    "title": "Magical Marketplace",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quillbreaker%20Defense"
+  }
+}

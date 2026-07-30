@@ -1,0 +1,33 @@
+{
+  "id": "lantern-light",
+  "name": "Lantern Light",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "lantern-style"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "rule",
+      "description": "good or lawful alignment"
+    },
+    {
+      "type": "rule",
+      "description": "caster level 7th or monk level 7th"
+    }
+  ],
+  "benefit": "Bypass damage reduction when using Lantern Style",
+  "source": {
+    "title": "Distant Realms",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lantern%20Light"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "psychic-virtuoso",
+  "name": "Psychic Virtuoso",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or ability to cast psychic spells"
+    }
+  ],
+  "benefit": "+2 on checks for occult skill unlock (+4 at 10 ranks)",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychic%20Virtuoso"
+  }
+}

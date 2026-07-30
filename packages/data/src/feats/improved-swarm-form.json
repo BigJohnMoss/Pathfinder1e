@@ -1,0 +1,17 @@
+{
+  "id": "improved-swarm-form",
+  "name": "Improved Swarm Form",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Vampire"
+    }
+  ],
+  "benefit": "Learn to assume the form of a multitude of vermin",
+  "source": {
+    "title": "Blood of the Night",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Swarm%20Form"
+  }
+}

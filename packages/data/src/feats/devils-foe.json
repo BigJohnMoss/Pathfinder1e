@@ -1,0 +1,25 @@
+{
+  "id": "devils-foe",
+  "name": "Devil's Foe",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Face 10 different devils in combat and take damage or suffer some other sort of injury from five or more attacks made by each one without falling unconscious"
+    },
+    {
+      "type": "rule",
+      "description": "fleeing"
+    },
+    {
+      "type": "rule",
+      "description": "or otherwise becoming unable to strike back at them"
+    }
+  ],
+  "benefit": "Attacks count as good-aligned when bypassing a devil's DR",
+  "source": {
+    "title": "Andoran, Spirit of Liberty",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Devil's%20Foe"
+  }
+}

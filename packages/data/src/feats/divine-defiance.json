@@ -1,0 +1,12 @@
+{
+  "id": "divine-defiance",
+  "name": "Divine Defiance",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+2 save vs. divine spells and abilities",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Defiance"
+  }
+}

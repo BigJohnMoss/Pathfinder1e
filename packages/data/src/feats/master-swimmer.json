@@ -1,0 +1,26 @@
+{
+  "id": "master-swimmer",
+  "name": "Master Swimmer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Swim)"
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Gain a swim speed",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20Swimmer"
+  }
+}

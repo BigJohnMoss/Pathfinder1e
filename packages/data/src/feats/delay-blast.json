@@ -1,0 +1,21 @@
+{
+  "id": "delay-blast",
+  "name": "Delay Blast",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "kinetic-blast"
+    }
+  ],
+  "benefit": "Delay kinetic blast",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Delay%20Blast"
+  }
+}

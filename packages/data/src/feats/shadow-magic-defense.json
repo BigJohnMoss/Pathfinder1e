@@ -1,0 +1,17 @@
+{
+  "id": "shadow-magic-defense",
+  "name": "Shadow Magic Defense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Disguise self racial spell-like ability or shadow illusion shadowdancer prestige class feature"
+    }
+  ],
+  "benefit": "Resist the effects of shadow magic",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shadow%20Magic%20Defense"
+  }
+}

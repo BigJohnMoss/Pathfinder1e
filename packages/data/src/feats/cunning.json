@@ -1,0 +1,12 @@
+{
+  "id": "cunning",
+  "name": "Cunning",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain 1 additional skill rank per HD",
+  "source": {
+    "title": "Villain Codex",
+    "page": 128,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cunning"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "killing-flourish",
+  "name": "Killing Flourish",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 4
+    },
+    {
+      "type": "class-level",
+      "classId": "slayer",
+      "minimum": 4
+    }
+  ],
+  "benefit": "When melee attacks reduce a foe to below 0 hit points, demoralize those around you",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Killing%20Flourish"
+  }
+}

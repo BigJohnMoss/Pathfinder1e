@@ -1,0 +1,12 @@
+{
+  "id": "crypt-spell",
+  "name": "Crypt Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Damaging spell hinders resurrection or sickens undead",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crypt%20Spell"
+  }
+}

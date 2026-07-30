@@ -1,0 +1,25 @@
+{
+  "id": "dog-sniff-hate",
+  "name": "Dog-Sniff-Hate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Perception)"
+    },
+    {
+      "type": "rule",
+      "description": "goblin"
+    }
+  ],
+  "benefit": "Gain scent, +1 attack, and +2 damage vs. canines",
+  "source": {
+    "title": "We Be Goblins Free!",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dog-Sniff-Hate"
+  }
+}

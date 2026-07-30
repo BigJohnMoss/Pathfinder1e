@@ -1,0 +1,17 @@
+{
+  "id": "valiant-steed",
+  "name": "Valiant Steed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal or magical beast"
+    }
+  ],
+  "benefit": "+4 bonus against fear or emotion effects, easier to be pushed into a frightening situation",
+  "source": {
+    "title": "Animal Archive",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Valiant%20Steed"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "coordinated-distraction",
+  "name": "Coordinated Distraction",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Make it harder for your foes to cast spells defensively.",
+  "source": {
+    "title": "Demon Hunter's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Coordinated%20Distraction"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "barrage-of-styles",
+  "name": "Barrage of Styles",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "human"
+    }
+  ],
+  "benefit": "Adjacent allies with this feat grant you a cumulative +1 bonus (max +4) on combat maneuver checks",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 201,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Barrage%20of%20Styles"
+  }
+}

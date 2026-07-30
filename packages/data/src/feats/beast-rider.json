@@ -1,0 +1,25 @@
+{
+  "id": "beast-rider",
+  "name": "Beast Rider",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal companion or mount class feature"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "half-orc or orc"
+    }
+  ],
+  "benefit": "Gain the service of a monstrous companion or mount",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beast%20Rider"
+  }
+}

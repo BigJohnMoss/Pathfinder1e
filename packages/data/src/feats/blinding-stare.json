@@ -1,0 +1,22 @@
+{
+  "id": "blinding-stare",
+  "name": "Blinding Stare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Painful stare inflicts blindness",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blinding%20Stare"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "greater-drow-nobility",
+  "name": "Greater Drow Nobility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "drow-nobility"
+    },
+    {
+      "type": "feat",
+      "id": "improved-drow-nobility"
+    },
+    {
+      "type": "rule",
+      "description": "able to use drow spell-like abilities"
+    },
+    {
+      "type": "rule",
+      "description": "drow"
+    }
+  ],
+  "benefit": "Enhance detect magic to be constant, gain more spell-like abilities",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 105,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Drow%20Nobility"
+  }
+}

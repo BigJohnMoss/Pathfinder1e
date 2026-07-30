@@ -1,0 +1,25 @@
+{
+  "id": "swords-shadow",
+  "name": "Sword's Shadow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deft-hands"
+    },
+    {
+      "type": "bab",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "wyrwood"
+    }
+  ],
+  "benefit": "After your first attack, your target is flat-footed against your next attack",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sword's%20Shadow"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "sycophant",
+  "name": "Sycophant",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Force an enemy to show you mercy",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sycophant"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "demonologist",
+  "name": "Demonologist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "+2 Knowledge checks on Abyss/demons, may take 10 on Knowledge checks for demons",
+  "source": {
+    "title": "Pathfinder #74: Sword of Valor",
+    "page": 71,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demonologist"
+  }
+}

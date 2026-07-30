@@ -1,0 +1,21 @@
+{
+  "id": "sizzling-shot",
+  "name": "Sizzling Shot",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grit class feature or Amateur Gunslinger"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Cause your firearm attacks to be half fire damage",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sizzling%20Shot"
+  }
+}

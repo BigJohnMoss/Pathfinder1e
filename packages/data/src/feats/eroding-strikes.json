@@ -1,0 +1,21 @@
+{
+  "id": "eroding-strikes",
+  "name": "Eroding Strikes",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with bludgeoning weapon"
+    }
+  ],
+  "benefit": "Use a bludgeoning weapon to reduce a creature's damage reduction",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eroding%20Strikes"
+  }
+}

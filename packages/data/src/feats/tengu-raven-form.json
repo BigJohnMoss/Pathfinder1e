@@ -1,0 +1,25 @@
+{
+  "id": "tengu-raven-form",
+  "name": "Tengu Raven Form",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "tengu-wings"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "tengu"
+    }
+  ],
+  "benefit": "Take the form of a large black raven 1/day",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 165,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tengu%20Raven%20Form"
+  }
+}

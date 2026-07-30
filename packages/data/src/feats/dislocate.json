@@ -1,0 +1,18 @@
+{
+  "id": "dislocate",
+  "name": "Dislocate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Take nonlethal damage to gain bonuses on Escape Artist checks",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 45,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dislocate"
+  }
+}

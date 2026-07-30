@@ -1,0 +1,34 @@
+{
+  "id": "intense-blows",
+  "name": "Intense Blows*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or fighter level 4th"
+    },
+    {
+      "type": "feature",
+      "id": "armor-training"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with heavy armor"
+    }
+  ],
+  "benefit": "Gain a bonus to CMD when using Power Attack",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Intense%20Blows*"
+  }
+}

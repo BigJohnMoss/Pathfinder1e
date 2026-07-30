@@ -1,0 +1,25 @@
+{
+  "id": "marksmans-utility",
+  "name": "Marksman's Utility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a ranged weapon"
+    }
+  ],
+  "benefit": "Gain the utility shot deed, or +4 attack with it if already possessed",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Marksman's%20Utility"
+  }
+}

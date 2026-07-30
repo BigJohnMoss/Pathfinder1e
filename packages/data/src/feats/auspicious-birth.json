@@ -1,0 +1,17 @@
+{
+  "id": "auspicious-birth",
+  "name": "Auspicious Birth",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must be taken at 1st level"
+    }
+  ],
+  "benefit": "Gain a boon based on the astralogical conditions of your birth",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Auspicious%20Birth"
+  }
+}

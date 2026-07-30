@@ -1,0 +1,21 @@
+{
+  "id": "toxic-recovery",
+  "name": "Toxic Recovery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dwarf"
+    },
+    {
+      "type": "rule",
+      "description": "hardy racial trait"
+    }
+  ],
+  "benefit": "Heal ability damage faster",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Toxic%20Recovery"
+  }
+}

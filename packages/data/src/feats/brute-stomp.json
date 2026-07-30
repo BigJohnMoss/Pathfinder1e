@@ -1,0 +1,55 @@
+{
+  "id": "brute-stomp",
+  "name": "Brute Stomp",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 19
+    },
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "brute-style"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "improved-overrun"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "vicious-stomp"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Make an extra unarmed attack when starting next to a prone foe",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brute%20Stomp"
+  }
+}

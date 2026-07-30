@@ -1,0 +1,33 @@
+{
+  "id": "angelbane-strike",
+  "name": "Angelbane Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "channel-smite"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "divine"
+    },
+    {
+      "type": "feature",
+      "id": "channel-negative-energy"
+    },
+    {
+      "type": "rule",
+      "description": "demon lord patron deity"
+    }
+  ],
+  "benefit": "Improve your smite against Good creatures",
+  "source": {
+    "title": "Monster Codex",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Angelbane%20Strike"
+  }
+}

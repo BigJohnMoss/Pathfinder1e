@@ -1,0 +1,27 @@
+{
+  "id": "swift-iron-style",
+  "name": "Swift Iron Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with medium armor"
+    }
+  ],
+  "benefit": "Increase your maneuverability in armor",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swift%20Iron%20Style"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "subconscious-ursurpation",
+  "name": "Subconscious Ursurpation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base Will save bonus +2"
+    }
+  ],
+  "benefit": "Take mental actions while being controlled",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Subconscious%20Ursurpation"
+  }
+}

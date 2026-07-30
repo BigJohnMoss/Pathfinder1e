@@ -1,0 +1,21 @@
+{
+  "id": "cooperative-rend",
+  "name": "Cooperative Rend",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Rend"
+    },
+    {
+      "type": "rule",
+      "description": "troll"
+    }
+  ],
+  "benefit": "Use your rend with greater ease",
+  "source": {
+    "title": "Monster Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cooperative%20Rend"
+  }
+}

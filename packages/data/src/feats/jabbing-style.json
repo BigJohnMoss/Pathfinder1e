@@ -1,0 +1,29 @@
+{
+  "id": "jabbing-style",
+  "name": "Jabbing Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feature",
+      "id": "brawlers-flurry"
+    },
+    {
+      "type": "rule",
+      "description": "or flurry of blows class feature"
+    }
+  ],
+  "benefit": "Gain bonus damage when two or more unarmed strikes hit the same opponent during your turn",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Jabbing%20Style"
+  }
+}

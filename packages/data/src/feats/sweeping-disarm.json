@@ -1,0 +1,30 @@
+{
+  "id": "sweeping-disarm",
+  "name": "Sweeping Disarm",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-disarm"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "After a successful disarm maneuver, make a second maneuver against an adjacent creature",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sweeping%20Disarm"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "death-field",
+  "name": "Death Field",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Exude negative energy that hinders entangling plants and swarms",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Death%20Field"
+  }
+}

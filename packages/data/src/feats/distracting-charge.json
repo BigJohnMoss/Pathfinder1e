@@ -1,0 +1,12 @@
+{
+  "id": "distracting-charge",
+  "name": "Distracting Charge",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "When an ally with this feat charges, you gain a +2 bonus on attack rolls against the creature charged",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 144,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Distracting%20Charge"
+  }
+}

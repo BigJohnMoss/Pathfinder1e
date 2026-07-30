@@ -1,0 +1,30 @@
+{
+  "id": "powerful-wings",
+  "name": "Powerful Wings",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Fly)"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Gain two wing attacks and improve abilities related to your wings",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 53,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Powerful%20Wings"
+  }
+}

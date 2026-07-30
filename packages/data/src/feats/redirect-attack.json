@@ -1,0 +1,27 @@
+{
+  "id": "redirect-attack-feat",
+  "name": "Redirect Attack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    }
+  ],
+  "benefit": "Redirect attacks to target other foes",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Redirect%20Attack"
+  }
+}

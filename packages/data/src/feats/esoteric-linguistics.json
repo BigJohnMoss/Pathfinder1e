@@ -1,0 +1,21 @@
+{
+  "id": "esoteric-linguistics",
+  "name": "Esoteric Linguistics",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Linguistics)"
+    }
+  ],
+  "benefit": "Use Linguistics in place of some Use Magic Device and Spellcraft checks",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 146,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Esoteric%20Linguistics"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "strike-true",
+  "name": "Strike True",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Gain +4 bonus on next melee attack as a move action",
+  "source": {
+    "title": "Paths of the Righteous",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Strike%20True"
+  }
+}

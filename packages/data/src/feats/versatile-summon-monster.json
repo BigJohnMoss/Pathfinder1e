@@ -1,0 +1,23 @@
+{
+  "id": "versatile-summon-monster",
+  "name": "Versatile Summon Monster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Apply new templates to your summoned creatures",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Versatile%20Summon%20Monster"
+  }
+}

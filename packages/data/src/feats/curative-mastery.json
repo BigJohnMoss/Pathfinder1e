@@ -1,0 +1,22 @@
+{
+  "id": "curative-mastery",
+  "name": "Curative Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude bonus +2"
+    }
+  ],
+  "benefit": "Cast healing spells with a conjuration-crafted item",
+  "source": {
+    "title": "Healer's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Curative%20Mastery"
+  }
+}

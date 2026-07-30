@@ -1,0 +1,30 @@
+{
+  "id": "greater-mesmerizing-feint",
+  "name": "Greater Mesmerizing Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mesmerizing-feint"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 10
+    },
+    {
+      "type": "feature",
+      "id": "hypnotic-stare"
+    },
+    {
+      "type": "rule",
+      "description": "psychic inception bold stare"
+    }
+  ],
+  "benefit": "Feint against mindless creatures",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 134,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Mesmerizing%20Feint"
+  }
+}

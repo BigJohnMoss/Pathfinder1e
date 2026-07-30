@@ -1,0 +1,21 @@
+{
+  "id": "unfettered-rage",
+  "name": "Unfettered Rage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "rage"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Expend additional rounds of rage for extra attacks",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unfettered%20Rage"
+  }
+}

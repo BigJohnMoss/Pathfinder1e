@@ -1,0 +1,21 @@
+{
+  "id": "wild-growth-channel",
+  "name": "Wild Growth Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-positive-energy"
+    },
+    {
+      "type": "rule",
+      "description": "Plant domain"
+    }
+  ],
+  "benefit": "Cause grapsing vines under your control to grow from the ground",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wild%20Growth%20Channel"
+  }
+}

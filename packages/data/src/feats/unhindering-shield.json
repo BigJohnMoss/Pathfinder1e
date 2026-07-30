@@ -1,0 +1,25 @@
+{
+  "id": "unhindering-shield",
+  "name": "Unhindering Shield*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or fighter level 4th"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with bucklers"
+    }
+  ],
+  "benefit": "Treat your buckler hand as free for all purposes",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unhindering%20Shield*"
+  }
+}

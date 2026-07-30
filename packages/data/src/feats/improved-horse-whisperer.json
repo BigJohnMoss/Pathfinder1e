@@ -1,0 +1,27 @@
+{
+  "id": "improved-horse-whisperer",
+  "name": "Improved Horse Whisperer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "horse-whisperer"
+    },
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Can speak with horses",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Horse%20Whisperer"
+  }
+}

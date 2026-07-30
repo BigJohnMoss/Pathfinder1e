@@ -1,0 +1,17 @@
+{
+  "id": "thuvian-grenadier",
+  "name": "Thuvian Grenadier",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Precise Shot or Throw Anything"
+    }
+  ],
+  "benefit": "Exclude extra squares from the area of a splash weapon; allies can catch missed throws",
+  "source": {
+    "title": "People of the Sands",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Thuvian%20Grenadier"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "hermean-blood",
+  "name": "Hermean Blood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You may only gain this feat at 1st level"
+    }
+  ],
+  "benefit": "2 skills of your choice are class skills",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 287,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hermean%20Blood"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "expanded-metakinesis",
+  "name": "Expanded Metakinesis",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "kinetic-blast-oa"
+    },
+    {
+      "type": "feature",
+      "id": "metakinesis-oa"
+    }
+  ],
+  "benefit": "Use different metamagic with your kinetic blast",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Metakinesis"
+  }
+}

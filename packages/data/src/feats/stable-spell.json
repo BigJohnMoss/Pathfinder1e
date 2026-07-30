@@ -1,0 +1,12 @@
+{
+  "id": "stable-spell",
+  "name": "Stable Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Cast spells in areas of primal magic with less chance of triggering a primal magic event",
+  "source": {
+    "title": "Wardens of the Reborn Forge",
+    "page": 49,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stable%20Spell"
+  }
+}

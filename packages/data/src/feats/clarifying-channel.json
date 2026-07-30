@@ -1,0 +1,21 @@
+{
+  "id": "clarifying-channel",
+  "name": "Clarifying Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Shelyn"
+    }
+  ],
+  "benefit": "Channel positive energy to heal and grant extra save against charms and compulsions",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Clarifying%20Channel"
+  }
+}

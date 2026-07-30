@@ -1,0 +1,21 @@
+{
+  "id": "cry-challenge",
+  "name": "Cry Challenge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "antagonize"
+    },
+    {
+      "type": "rule",
+      "description": "UM"
+    }
+  ],
+  "benefit": "Trick opponents into making opportunity attacks against you, granting yourself a +4 dodge bonus to AC",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cry%20Challenge"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "lucid-dreamer",
+  "name": "Lucid Dreamer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain greater control during dreams",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 137,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lucid%20Dreamer"
+  }
+}

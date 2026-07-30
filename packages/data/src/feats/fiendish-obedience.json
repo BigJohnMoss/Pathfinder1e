@@ -1,0 +1,30 @@
+{
+  "id": "fiendish-obedience",
+  "name": "Fiendish Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must worship a fiendish deity"
+    },
+    {
+      "type": "rule",
+      "description": "demigod"
+    },
+    {
+      "type": "rule",
+      "description": "or quasi deity (such as any of the entities presented in Chapter 1 of this book)"
+    }
+  ],
+  "benefit": "Gain access to a fiend's exalted boons",
+  "source": {
+    "title": "Book of the Damned",
+    "page": 178,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fiendish%20Obedience"
+  }
+}

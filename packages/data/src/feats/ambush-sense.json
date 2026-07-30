@@ -1,0 +1,22 @@
+{
+  "id": "ambush-sense",
+  "name": "Ambush Sense",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "trap-sense"
+    }
+  ],
+  "benefit": "Add your trap sense bonus to Perception checks against surprise and AC during the surprise round",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ambush%20Sense"
+  }
+}

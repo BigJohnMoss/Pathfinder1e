@@ -1,0 +1,21 @@
+{
+  "id": "command-plants-feat",
+  "name": "Command Plants",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "Plant domain"
+    }
+  ],
+  "benefit": "Use channeled energy to control plants",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 108,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Command%20Plants"
+  }
+}

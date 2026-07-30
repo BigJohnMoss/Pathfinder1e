@@ -1,0 +1,26 @@
+{
+  "id": "giants-smash",
+  "name": "Giant's Smash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "giant subtype"
+    }
+  ],
+  "benefit": "Ignore 5 hardness on objects, +5 Strength to break down doors",
+  "source": {
+    "title": "Pathfinder #91: Battle of Bloodmarch Hills",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Giant's%20Smash"
+  }
+}

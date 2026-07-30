@@ -1,0 +1,18 @@
+{
+  "id": "twinned-feint",
+  "name": "Twinned Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    }
+  ],
+  "benefit": "After succeeding at a feint, you can attempt a feint against a second target",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 158,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Twinned%20Feint"
+  }
+}

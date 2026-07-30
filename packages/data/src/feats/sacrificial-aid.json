@@ -1,0 +1,17 @@
+{
+  "id": "sacrificial-aid",
+  "name": "Sacrificial Aid",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Teamwork"
+    }
+  ],
+  "benefit": "Allies can aid another on Disable Device, at the risk of being the target of the trap",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sacrificial%20Aid"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "innocent-blood",
+  "name": "Innocent Blood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must slay at least 50 intelligent noncombatants for either your own personal gain or for no cause at all"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Bloodthirsty"
+    },
+    {
+      "type": "rule",
+      "description": "First Kill"
+    },
+    {
+      "type": "rule",
+      "description": "or The Kill background"
+    }
+  ],
+  "benefit": "Be more intimidating than ever before",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Innocent%20Blood"
+  }
+}

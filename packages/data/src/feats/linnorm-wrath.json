@@ -1,0 +1,34 @@
+{
+  "id": "linnorm-wrath",
+  "name": "Linnorm Wrath",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "linnorm-style"
+    },
+    {
+      "type": "feat",
+      "id": "linnorm-vengeance"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 9th"
+    }
+  ],
+  "benefit": "When you use the Linnorm Vengeance feat to allow an enemy to hit you, you can make a retaliatory unarmed strike attack against that opponent as an immediate action. This acts as an attack of opportunity, and counts against the number of attacks of opportunity you can make each round. Additionally, once per day when a melee attack deals enough damage to knock you unconscious or kill you, the attacker must succeed at a Fortitude saving throw (DC = 10 + 1/2 your character level + your Wisdom modifier) or be stunned for 1 round. This save occurs after you make the retaliatory unarmed strike granted by the Linnorm Vengeance feat.",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Linnorm%20Wrath"
+  }
+}

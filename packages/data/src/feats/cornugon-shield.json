@@ -1,0 +1,26 @@
+{
+  "id": "cornugon-shield",
+  "name": "Cornugon Shield",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(spiked chain)"
+    }
+  ],
+  "benefit": "Wield a spiked chain as a weapon and shield",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cornugon%20Shield"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "traditional-weapons",
+  "name": "Traditional Weapons",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Gain a bonus to CMB and CMD against creatures wielding exotic weapons",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 45,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Traditional%20Weapons"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "ally-shield",
+  "name": "Ally Shield",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Use your allies as shields",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ally%20Shield"
+  }
+}

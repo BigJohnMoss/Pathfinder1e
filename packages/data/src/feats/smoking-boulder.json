@@ -1,0 +1,21 @@
+{
+  "id": "smoking-boulder",
+  "name": "Smoking Boulder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "heated rock special ability"
+    }
+  ],
+  "benefit": "Boulders you throw emit clouds of smoke",
+  "source": {
+    "title": "Monster Codex",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Smoking%20Boulder"
+  }
+}

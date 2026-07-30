@@ -1,0 +1,22 @@
+{
+  "id": "shingle-runner",
+  "name": "Shingle Runner",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "acrobatic"
+    }
+  ],
+  "benefit": "+2 Acrobatics/Climb, take 10 on Climb, fall down from heights easier",
+  "source": {
+    "title": "Curse of the Crimson Throne (PFRPG)",
+    "page": 461,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shingle%20Runner"
+  }
+}

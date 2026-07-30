@@ -1,0 +1,21 @@
+{
+  "id": "impaling-charge",
+  "name": "Impaling Charge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Gore attack"
+    },
+    {
+      "type": "rule",
+      "description": "powerful charge"
+    }
+  ],
+  "benefit": "Start a grapple with a charge attack",
+  "source": {
+    "title": "Classic Monsters Revisited",
+    "page": 43,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Impaling%20Charge"
+  }
+}

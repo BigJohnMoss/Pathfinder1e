@@ -1,0 +1,17 @@
+{
+  "id": "catfolk-exemplar",
+  "name": "Catfolk Exemplar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Catfolk"
+    }
+  ],
+  "benefit": "Gain a unique manifestation of your catlike nature",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 96,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Catfolk%20Exemplar"
+  }
+}

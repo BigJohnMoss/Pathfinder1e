@@ -1,0 +1,33 @@
+{
+  "id": "block-upper-chakras",
+  "name": "Block Upper Chakras",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "block-chakras"
+    },
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or levels in an occult class"
+    },
+    {
+      "type": "rule",
+      "description": "brawler’s flurry or flurry of blows class feature"
+    },
+    {
+      "type": "rule",
+      "description": "ki pool"
+    },
+    {
+      "type": "level",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Block a creature's upper chakra with an unarmed strike",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Block%20Upper%20Chakras"
+  }
+}

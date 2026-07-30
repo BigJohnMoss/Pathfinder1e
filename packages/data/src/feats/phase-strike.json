@@ -1,0 +1,18 @@
+{
+  "id": "phase-strike",
+  "name": "Phase Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Make a weapon attack as a touch attack",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Phase%20Strike"
+  }
+}

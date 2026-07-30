@@ -1,0 +1,42 @@
+{
+  "id": "superior-dirty-trick",
+  "name": "Superior Dirty Trick",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "greater-dirty-trick"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Targets must spend a full-round action to remove some of your dirty tricks",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Superior%20Dirty%20Trick"
+  }
+}

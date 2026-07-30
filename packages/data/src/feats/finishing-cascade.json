@@ -1,0 +1,17 @@
+{
+  "id": "finishing-cascade",
+  "name": "Finishing Cascade",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base attack bonus +11 or monk level 11th ; at least one combination feat"
+    }
+  ],
+  "benefit": "Double the effect's of a combination feat once per round",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Finishing%20Cascade"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "efficient-focus-shift",
+  "name": "Efficient Focus Shift",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "occultist",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Shift mental focus points without losing any 2/day",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 132,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Efficient%20Focus%20Shift"
+  }
+}

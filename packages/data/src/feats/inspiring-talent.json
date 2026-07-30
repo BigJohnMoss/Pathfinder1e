@@ -1,0 +1,21 @@
+{
+  "id": "inspiring-talent",
+  "name": "Inspiring Talent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-elf"
+    },
+    {
+      "type": "rule",
+      "description": "adaptability or ancestral arms racial trait"
+    }
+  ],
+  "benefit": "Share benefits of an ally’s Skill Focus or weapon proficiencies in certain situations",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inspiring%20Talent"
+  }
+}

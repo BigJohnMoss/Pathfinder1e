@@ -1,0 +1,12 @@
+{
+  "id": "horse-whisperer",
+  "name": "Horse Whisperer",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+2 Handle Animal and Ride with horsese",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Horse%20Whisperer"
+  }
+}

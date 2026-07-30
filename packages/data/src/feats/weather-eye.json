@@ -1,0 +1,22 @@
+{
+  "id": "weather-eye",
+  "name": "Weather Eye",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must worship nature"
+    }
+  ],
+  "benefit": "+4 Survival bonus to predict the weather, +1 save vs. extreme weather",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weather%20Eye"
+  }
+}

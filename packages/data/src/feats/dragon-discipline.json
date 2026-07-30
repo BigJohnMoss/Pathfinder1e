@@ -1,0 +1,30 @@
+{
+  "id": "dragon-discipline",
+  "name": "Dragon Discipline",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "rule",
+      "description": "base Will save +10"
+    },
+    {
+      "type": "rule",
+      "description": "any lawful alignment"
+    },
+    {
+      "type": "rule",
+      "description": "dragon type"
+    }
+  ],
+  "benefit": "Re-roll a failed save against mind-affecting enchantment or necromancy effects",
+  "source": {
+    "title": "Dragons Revisited",
+    "page": 45,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dragon%20Discipline"
+  }
+}

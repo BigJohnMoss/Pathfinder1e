@@ -1,0 +1,17 @@
+{
+  "id": "cecaelia-focus-tattoo",
+  "name": "Cecaelia Focus Tattoo",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cecaelia"
+    }
+  ],
+  "benefit": "Gain a magical tattoo with a helpful effect",
+  "source": {
+    "title": "Blood of the Sea",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cecaelia%20Focus%20Tattoo"
+  }
+}

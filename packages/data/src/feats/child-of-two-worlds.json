@@ -1,0 +1,53 @@
+{
+  "id": "child-of-two-worlds",
+  "name": "Child of Two Worlds",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Whether through an elixir of two worlds (see page 62) or other means"
+    },
+    {
+      "type": "rule",
+      "description": "one of your parents was aquatic and the other was a land-dweller. You are mostly a normal member of your race"
+    },
+    {
+      "type": "rule",
+      "description": "except as stated in this feat. You must select this feat at 1st level"
+    },
+    {
+      "type": "rule",
+      "description": "and you can’t have other feats"
+    },
+    {
+      "type": "rule",
+      "description": "traits"
+    },
+    {
+      "type": "rule",
+      "description": "or abilities that specify your bloodline such as Racial Heritage APG . Thematically appropriate backgrounds include Adopted Outside Your Race"
+    },
+    {
+      "type": "rule",
+      "description": "Bastard Born"
+    },
+    {
+      "type": "rule",
+      "description": "Death in the Family"
+    },
+    {
+      "type": "rule",
+      "description": "One of a Kind"
+    },
+    {
+      "type": "rule",
+      "description": "and The Relative. These backgrounds are found in Pathfinder RPG Ultimate Intrigue"
+    }
+  ],
+  "benefit": "See text",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Child%20of%20Two%20Worlds"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "spirit-of-the-river",
+  "name": "Spirit of the River",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aquatic subtype"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Breathe air or water interchangeably",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 219,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20of%20the%20River"
+  }
+}

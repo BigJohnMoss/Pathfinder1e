@@ -1,0 +1,30 @@
+{
+  "id": "linnorm-vengeance",
+  "name": "Linnorm Vengeance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "linnorm-style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Allow an attack to hit you to gain combat bonuses against your attacker",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Linnorm%20Vengeance"
+  }
+}

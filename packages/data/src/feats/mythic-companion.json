@@ -1,0 +1,17 @@
+{
+  "id": "mythic-companion",
+  "name": "Mythic Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must be non-mythic"
+    }
+  ],
+  "benefit": "You are considered a mythic creature",
+  "source": {
+    "title": "Mythic Adventures",
+    "page": 70,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mythic%20Companion"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "footslasher",
+  "name": "Footslasher",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Target a creature's feet to reduce its speed",
+  "source": {
+    "title": "Rival Guide",
+    "page": 35,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Footslasher"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "undaunted-bravery",
+  "name": "Undaunted Bravery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bravery"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Cayden Cailean"
+    }
+  ],
+  "benefit": "You can add your bonus from bravery to Intimidate checks and to the DC to intimidate you.",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Undaunted%20Bravery"
+  }
+}

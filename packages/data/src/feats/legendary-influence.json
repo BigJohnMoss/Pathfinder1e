@@ -1,0 +1,17 @@
+{
+  "id": "legendary-influence",
+  "name": "Legendary Influence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "lesser-spirit-power-oa"
+    }
+  ],
+  "benefit": "Gain a different feat from each legend",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 86,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Legendary%20Influence"
+  }
+}

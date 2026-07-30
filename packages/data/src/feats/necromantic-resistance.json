@@ -1,0 +1,22 @@
+{
+  "id": "necromantic-resistance",
+  "name": "Necromantic Resistance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Geb affinity"
+    }
+  ],
+  "benefit": "Learn to resist necromantic spells and reduce damage from the undead",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 77,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Necromantic%20Resistance"
+  }
+}

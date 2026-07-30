@@ -1,0 +1,21 @@
+{
+  "id": "silent-as-stone",
+  "name": "Silent as Stone",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Roper"
+    },
+    {
+      "type": "feat",
+      "id": "stealthy"
+    }
+  ],
+  "benefit": "Become much stealthier in rocky environments",
+  "source": {
+    "title": "Dungeon Denizens Revisited",
+    "page": 46,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Silent%20as%20Stone"
+  }
+}

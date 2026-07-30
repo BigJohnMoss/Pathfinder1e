@@ -1,0 +1,31 @@
+{
+  "id": "seasoned-flier",
+  "name": "Seasoned Flier",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "skill",
+      "key": "Fly",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "fly speed"
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Improve your flying maneuverability",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Seasoned%20Flier"
+  }
+}

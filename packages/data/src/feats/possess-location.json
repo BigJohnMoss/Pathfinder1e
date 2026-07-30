@@ -1,0 +1,22 @@
+{
+  "id": "possess-location",
+  "name": "Possess Location",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 16
+    },
+    {
+      "type": "rule",
+      "description": "any evil outsider with 8 or more Hit Dice"
+    }
+  ],
+  "benefit": "Some fiends have the ability to merge with the land or a structure and spread their foul influence",
+  "source": {
+    "title": "Pathfinder #28: The Infernal Syndrome",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Possess%20Location"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "spirit-ridden",
+  "name": "Spirit Ridden",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain ranks in a skill equal to your character level",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Ridden"
+  }
+}

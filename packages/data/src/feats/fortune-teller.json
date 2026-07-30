@@ -1,0 +1,17 @@
+{
+  "id": "fortune-teller",
+  "name": "Fortune Teller",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "divination-spells"
+    }
+  ],
+  "benefit": "Cast some divination spells at +1 caster level",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 286,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fortune%20Teller"
+  }
+}

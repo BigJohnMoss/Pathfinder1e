@@ -1,0 +1,39 @@
+{
+  "id": "entreating-critical",
+  "name": "Entreating Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "call-truce"
+    },
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "feat",
+      "id": "persuasive"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use a critical hit to convince foes to a agree to a truce",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 82,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Entreating%20Critical"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "bushwhack",
+  "name": "Bushwhack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Grapple and pin with a surprise action",
+  "source": {
+    "title": "Monster Codex",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bushwhack"
+  }
+}

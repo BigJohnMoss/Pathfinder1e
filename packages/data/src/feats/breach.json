@@ -1,0 +1,22 @@
+{
+  "id": "breach",
+  "name": "Breach",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "bunyip"
+    }
+  ],
+  "benefit": "Learn how to charge from underwater to a creature on land",
+  "source": {
+    "title": "Mystery Monsters Revisited",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Breach"
+  }
+}

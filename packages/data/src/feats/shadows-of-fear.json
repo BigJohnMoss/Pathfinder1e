@@ -1,0 +1,17 @@
+{
+  "id": "shadows-of-fear",
+  "name": "Shadows of Fear",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Hidden strike +2d8 or sneak attack +2d6"
+    }
+  ],
+  "benefit": "Flank a scared creature once per round",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 91,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shadows%20of%20Fear"
+  }
+}

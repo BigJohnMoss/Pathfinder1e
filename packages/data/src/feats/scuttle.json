@@ -1,0 +1,12 @@
+{
+  "id": "scuttle",
+  "name": "Scuttle",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Crawl farther with a move action, learn to 5 ft. step while crawling, avoid opportunity attacks from larger opponents",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scuttle"
+  }
+}

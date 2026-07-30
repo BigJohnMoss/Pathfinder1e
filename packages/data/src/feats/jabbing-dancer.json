@@ -1,0 +1,42 @@
+{
+  "id": "jabbing-dancer",
+  "name": "Jabbing Dancer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "jabbing-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "class-level",
+      "classId": "brawler",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "or monk level 5th"
+    }
+  ],
+  "benefit": "Move 5 feet without provoking attacks of opportunity whenever you hit with an unarmed strike",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Jabbing%20Dancer"
+  }
+}

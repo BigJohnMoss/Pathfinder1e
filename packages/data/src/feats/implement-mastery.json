@@ -1,0 +1,21 @@
+{
+  "id": "implement-mastery",
+  "name": "Implement Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "implements-oa"
+    },
+    {
+      "type": "feature",
+      "id": "mental-focus-oa"
+    }
+  ],
+  "benefit": "Treat your implements as magic items of their associated school for Item Mastery feats.",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Implement%20Mastery"
+  }
+}

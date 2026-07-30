@@ -1,0 +1,17 @@
+{
+  "id": "noble-impostor",
+  "name": "Noble Impostor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must not be a member of an established family or a member of nobility"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Bluff and Knowledge (nobility)",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Noble%20Impostor"
+  }
+}

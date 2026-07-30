@@ -1,0 +1,25 @@
+{
+  "id": "great-rend",
+  "name": "Great Rend",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bite attack"
+    },
+    {
+      "type": "rule",
+      "description": "rend"
+    },
+    {
+      "type": "rule",
+      "description": "troll"
+    }
+  ],
+  "benefit": "Deal additional damage with your rend when biting",
+  "source": {
+    "title": "Monster Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Great%20Rend"
+  }
+}

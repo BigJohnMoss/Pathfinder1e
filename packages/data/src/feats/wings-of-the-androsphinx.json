@@ -1,0 +1,30 @@
+{
+  "id": "wings-of-the-androsphinx",
+  "name": "Wings of the Androsphinx",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-reposition"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +1 or monk level 1st"
+    }
+  ],
+  "benefit": "Gain +2 AC against charging foes, use reposition as an immediate action against a failed charge",
+  "source": {
+    "title": "People of the Sands",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wings%20of%20the%20Androsphinx"
+  }
+}

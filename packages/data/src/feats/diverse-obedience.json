@@ -1,0 +1,30 @@
+{
+  "id": "diverse-obedience",
+  "name": "Diverse Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deific-obedience"
+    },
+    {
+      "type": "rule",
+      "description": "ISG"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "alignment must match that of your worshiped deity"
+    }
+  ],
+  "benefit": "Plus 2 HD to qualify for boons, choose from among evangelist, exalted or sentinal boons",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diverse%20Obedience"
+  }
+}

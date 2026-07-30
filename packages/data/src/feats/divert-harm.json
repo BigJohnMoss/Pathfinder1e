@@ -1,0 +1,30 @@
+{
+  "id": "divert-harm",
+  "name": "Divert Harm",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feature",
+      "id": "evasion"
+    }
+  ],
+  "benefit": "Pull an opponent into an area-of-effect attack to take damage in your place",
+  "source": {
+    "title": "Bastards of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divert%20Harm"
+  }
+}

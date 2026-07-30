@@ -1,0 +1,30 @@
+{
+  "id": "blood-frenzy-style",
+  "name": "Blood Frenzy Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "aquatic subtype"
+    }
+  ],
+  "benefit": "Increase your Strength and Constitution, but lower your AC",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Frenzy%20Style"
+  }
+}

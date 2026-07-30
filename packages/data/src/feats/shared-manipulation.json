@@ -1,0 +1,22 @@
+{
+  "id": "shared-manipulation",
+  "name": "Shared Manipulation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "half-elf"
+    }
+  ],
+  "benefit": "Grant +2 Bluff or Intimidate to nearby allies",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 47,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shared%20Manipulation"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "improvisational-focus",
+  "name": "Improvisational Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Catch Off-Guard or Throw Anything"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Gain proficiency and Weapon Focus with improvised weapons",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improvisational%20Focus"
+  }
+}

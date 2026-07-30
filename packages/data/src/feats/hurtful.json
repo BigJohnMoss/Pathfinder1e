@@ -1,0 +1,22 @@
+{
+  "id": "hurtful",
+  "name": "Hurtful",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Make a melee attack after a succesful intimidation",
+  "source": {
+    "title": "Monster Codex",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hurtful"
+  }
+}

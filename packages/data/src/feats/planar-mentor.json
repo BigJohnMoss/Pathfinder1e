@@ -1,0 +1,12 @@
+{
+  "id": "planar-mentor",
+  "name": "Planar Mentor",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain a planar mentor who gives you blessings when you act in their interest",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Mentor"
+  }
+}

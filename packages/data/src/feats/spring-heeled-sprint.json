@@ -1,0 +1,42 @@
+{
+  "id": "spring-heeled-sprint",
+  "name": "Spring-Heeled Sprint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "rule",
+      "description": "Shot on the Run or Spring Attack"
+    },
+    {
+      "type": "feat",
+      "id": "spring-heeled-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with light armor"
+    }
+  ],
+  "benefit": "Move up to twice your speed when using Shot on the Run or Spring Attack",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spring-Heeled%20Sprint"
+  }
+}

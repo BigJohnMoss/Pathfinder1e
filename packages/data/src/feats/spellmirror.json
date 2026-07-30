@@ -1,0 +1,30 @@
+{
+  "id": "spellmirror",
+  "name": "Spellmirror",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "level",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "ghoran"
+    },
+    {
+      "type": "rule",
+      "description": "spelleater racial trait"
+    }
+  ],
+  "benefit": "You can use your spelleater racial trait as an immediate action",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spellmirror"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "improved-channel-force",
+  "name": "Improved Channel Force",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "channel-force"
+    },
+    {
+      "type": "rule",
+      "description": "aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "channel energy 4d6"
+    }
+  ],
+  "benefit": "As Channel Force, but target all creatures in a 60-foot line or 30-foot cone",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Channel%20Force"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "mobile-fortress",
+  "name": "Mobile Fortress",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "mobile-bulwark-style"
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "tower-shield-proficiency"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Add half your shield bonus to AC to your touch AC",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mobile%20Fortress"
+  }
+}

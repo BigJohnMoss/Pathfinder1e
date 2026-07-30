@@ -1,0 +1,26 @@
+{
+  "id": "pile-on",
+  "name": "Pile On",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "hurtful"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Deal less damage in order to extend the duration of a fear condition",
+  "source": {
+    "title": "Monster Codex",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pile%20On"
+  }
+}

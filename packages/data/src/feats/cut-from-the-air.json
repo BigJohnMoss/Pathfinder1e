@@ -1,0 +1,34 @@
+{
+  "id": "cut-from-the-air",
+  "name": "Cut from the Air",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a melee weapon"
+    }
+  ],
+  "benefit": "Cut ranged attacks out of the air",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cut%20from%20the%20Air"
+  }
+}

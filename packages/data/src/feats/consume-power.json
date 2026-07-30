@@ -1,0 +1,22 @@
+{
+  "id": "consume-power",
+  "name": "Consume Power",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "wyrwood"
+    }
+  ],
+  "benefit": "You can destroy one of your magic items to regain hp",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Consume%20Power"
+  }
+}

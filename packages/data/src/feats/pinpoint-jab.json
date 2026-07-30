@@ -1,0 +1,25 @@
+{
+  "id": "pinpoint-jab",
+  "name": "Pinpoint Jab",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "ki pool or martial flexibility class feature"
+    }
+  ],
+  "benefit": "You can use a limited form of the swashbuckler's targeted strike deed",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pinpoint%20Jab"
+  }
+}

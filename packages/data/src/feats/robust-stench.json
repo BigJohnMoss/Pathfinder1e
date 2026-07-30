@@ -1,0 +1,17 @@
+{
+  "id": "robust-stench",
+  "name": "Robust Stench",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    }
+  ],
+  "benefit": "Allies gain a +2 bonus to Fortitude while adjacent to you",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Robust%20Stench"
+  }
+}

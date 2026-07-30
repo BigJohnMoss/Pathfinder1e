@@ -1,0 +1,12 @@
+{
+  "id": "sense-metals-and-minerals",
+  "name": "Sense Metals and Minerals",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain bonuses to Appraise and Perception with metal and gems",
+  "source": {
+    "title": "Heroes of the Darklands",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sense%20Metals%20and%20Minerals"
+  }
+}

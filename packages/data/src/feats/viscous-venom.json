@@ -1,0 +1,21 @@
+{
+  "id": "viscous-venom",
+  "name": "Viscous Venom",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spit-venom"
+    },
+    {
+      "type": "rule",
+      "description": "nagaji"
+    }
+  ],
+  "benefit": "Entangle creatures with your racial poison",
+  "source": {
+    "title": "Potions and Poisons",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Viscous%20Venom"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "stretched-wings",
+  "name": "Stretched Wings",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Fly)"
+    },
+    {
+      "type": "rule",
+      "description": "strix"
+    },
+    {
+      "type": "rule",
+      "description": "wing-clipped racial trait"
+    }
+  ],
+  "benefit": "Increase your Strix fly speed, ignore the wing-clipped penalty to flying upward",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 201,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stretched%20Wings"
+  }
+}

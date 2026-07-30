@@ -1,0 +1,25 @@
+{
+  "id": "toxic-spray",
+  "name": "Toxic Spray",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spit-venom"
+    },
+    {
+      "type": "feat",
+      "id": "viscous-venom"
+    },
+    {
+      "type": "rule",
+      "description": "nagaji"
+    }
+  ],
+  "benefit": "Poison an area with your racial poison",
+  "source": {
+    "title": "Potions and Poisons",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Toxic%20Spray"
+  }
+}

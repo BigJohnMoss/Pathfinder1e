@@ -1,0 +1,22 @@
+{
+  "id": "freeze-in-place",
+  "name": "Freeze in Place",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "wyrwood"
+    }
+  ],
+  "benefit": "Gain the freeze universal monster ability",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Freeze%20in%20Place"
+  }
+}

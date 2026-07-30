@@ -1,0 +1,17 @@
+{
+  "id": "airy-step",
+  "name": "Airy Step",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Sylph"
+    }
+  ],
+  "benefit": "+2 save vs. air/electricity effects, ignore 30 ft. when falling",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Airy%20Step"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "lamashtus-mark",
+  "name": "Lamashtu's Mark",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Lamashtu as patron deity"
+    }
+  ],
+  "benefit": "Identify yourself as favored of Lamashtu, invoke her name to deform your enemies",
+  "source": {
+    "title": "Rise of the Runelords Anniversary Edition",
+    "page": 419,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lamashtu's%20Mark"
+  }
+}

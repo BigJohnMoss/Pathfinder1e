@@ -1,0 +1,12 @@
+{
+  "id": "focused-discipline",
+  "name": "Focused Discipline",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Gain temporary combat bonuses after resisting fear effects",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 286,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Discipline"
+  }
+}

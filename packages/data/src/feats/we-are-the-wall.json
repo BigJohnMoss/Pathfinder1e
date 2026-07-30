@@ -1,0 +1,29 @@
+{
+  "id": "we-are-the-wall",
+  "name": "We are the Wall",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Be a member of House Darahan"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Champion of the People"
+    },
+    {
+      "type": "rule",
+      "description": "Duty"
+    },
+    {
+      "type": "rule",
+      "description": "or Raider background"
+    }
+  ],
+  "benefit": "3 times per day, you can declare a creature to be your quarry",
+  "source": {
+    "title": "Pathfinder #131: The Reaper's Right Hand",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=We%20are%20the%20Wall"
+  }
+}

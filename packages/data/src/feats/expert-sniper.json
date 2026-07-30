@@ -1,0 +1,18 @@
+{
+  "id": "expert-sniper",
+  "name": "Expert Sniper",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Reduce the penalty on Stealth checks to stay hidden while sniping by 10",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expert%20Sniper"
+  }
+}

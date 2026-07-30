@@ -1,0 +1,21 @@
+{
+  "id": "discerning-eye",
+  "name": "Discerning Eye",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Elf or half-elf"
+    },
+    {
+      "type": "rule",
+      "description": "keen senses racial trait"
+    }
+  ],
+  "benefit": "+2 save vs. illusion, +2 Linguistic to detect forgeries",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 46,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Discerning%20Eye"
+  }
+}

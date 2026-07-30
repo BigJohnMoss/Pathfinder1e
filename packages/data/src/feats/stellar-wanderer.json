@@ -1,0 +1,22 @@
+{
+  "id": "stellar-wanderer",
+  "name": "Stellar Wanderer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 15
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 10
+    }
+  ],
+  "benefit": "You can use plane shift once per week",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stellar%20Wanderer"
+  }
+}

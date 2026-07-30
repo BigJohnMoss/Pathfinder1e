@@ -1,0 +1,25 @@
+{
+  "id": "graceful-flier",
+  "name": "Graceful Flier",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Fly)"
+    },
+    {
+      "type": "rule",
+      "description": "fly speed"
+    }
+  ],
+  "benefit": "Fly speed increases by 5 ft.",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 53,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Graceful%20Flier"
+  }
+}

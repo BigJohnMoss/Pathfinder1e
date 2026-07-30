@@ -1,0 +1,18 @@
+{
+  "id": "practiced-ritualist",
+  "name": "Practiced Ritualist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana, history, planes, and religion)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "+2 bonus on skill checks to perform occult rituals, and on Intelligence checks to learn the method of casting an occult ritual",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Practiced%20Ritualist"
+  }
+}

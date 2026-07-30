@@ -1,0 +1,17 @@
+{
+  "id": "seize-advantage",
+  "name": "Seize Advantage",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Opportune parry and riposte deed"
+    }
+  ],
+  "benefit": "Add foe’s Power Attack damage to your riposte",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Seize%20Advantage"
+  }
+}

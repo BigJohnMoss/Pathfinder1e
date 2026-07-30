@@ -1,0 +1,22 @@
+{
+  "id": "planned-spontaneity",
+  "name": "Planned Spontaneity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "ability to prepare and cast 4th-level spells"
+    }
+  ],
+  "benefit": "Increase your spell options by preparing two spells in one slot",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planned%20Spontaneity"
+  }
+}

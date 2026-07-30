@@ -1,0 +1,25 @@
+{
+  "id": "rhino-charge",
+  "name": "Rhino Charge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain the ability to ready charge attacks",
+  "source": {
+    "title": "Sargava, the Lost Colony",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rhino%20Charge"
+  }
+}

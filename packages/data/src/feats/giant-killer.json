@@ -1,0 +1,46 @@
+{
+  "id": "giant-killer",
+  "name": "Giant Killer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "cleave"
+    },
+    {
+      "type": "feat",
+      "id": "goblin-cleaver"
+    },
+    {
+      "type": "feat",
+      "id": "orc-hewer"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "strike-back"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    }
+  ],
+  "benefit": "Target additional creatures during cleave if larger than you, gain +2 attack against them",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Giant%20Killer"
+  }
+}

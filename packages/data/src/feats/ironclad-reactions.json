@@ -1,0 +1,25 @@
+{
+  "id": "ironclad-reactions",
+  "name": "Ironclad Reactions*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base attack bonus +6 or fighter level 4th"
+    },
+    {
+      "type": "feature",
+      "id": "armor-training"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with medium armor"
+    }
+  ],
+  "benefit": "Take a bonus 5-foot step when struck in combat",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ironclad%20Reactions*"
+  }
+}

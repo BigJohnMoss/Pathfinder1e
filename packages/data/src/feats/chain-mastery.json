@@ -1,0 +1,26 @@
+{
+  "id": "chain-mastery",
+  "name": "Chain Mastery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(spiked chain)"
+    }
+  ],
+  "benefit": "Wield spiked chain in one hand, gain bonuses when wielding spiked chain two-handed",
+  "source": {
+    "title": "Book of the Damned",
+    "page": 178,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chain%20Mastery"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "monitor-obedience",
+  "name": "Monitor Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must worship a monitor demigod"
+    }
+  ],
+  "benefit": "Gain spell-like and other abilities in exchange for performing a daily obedience",
+  "source": {
+    "title": "Concordance of Rivals",
+    "page": 3,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monitor%20Obedience"
+  }
+}

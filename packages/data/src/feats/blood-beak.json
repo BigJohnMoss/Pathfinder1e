@@ -1,0 +1,25 @@
+{
+  "id": "blood-beak",
+  "name": "Blood Beak",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "natural weapon racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "tengu"
+    }
+  ],
+  "benefit": "Increase the damage of your beak attack, deal bleed with a critical hit",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 165,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Beak"
+  }
+}

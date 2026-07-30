@@ -1,0 +1,21 @@
+{
+  "id": "frost-warrior",
+  "name": "Frost Warrior",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cold subtype"
+    },
+    {
+      "type": "rule",
+      "description": "giant subtype"
+    }
+  ],
+  "benefit": "Metal melee weapons you wield gain 1d6 cold damage",
+  "source": {
+    "title": "Pathfinder #91: Battle of Bloodmarch Hills",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Frost%20Warrior"
+  }
+}

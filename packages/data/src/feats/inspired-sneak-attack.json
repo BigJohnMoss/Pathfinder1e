@@ -1,0 +1,17 @@
+{
+  "id": "inspired-sneak-attack",
+  "name": "Inspired Sneak Attack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Inspiration pool; sneak attack or studied strike class feature"
+    }
+  ],
+  "benefit": "Expend uses of inspiration to reroll sneak attack dice",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inspired%20Sneak%20Attack"
+  }
+}

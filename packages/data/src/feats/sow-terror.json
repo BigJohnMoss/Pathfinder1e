@@ -1,0 +1,17 @@
+{
+  "id": "sow-terror",
+  "name": "Sow Terror",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stealthy"
+    }
+  ],
+  "benefit": "Create terror while hiding from your opponents",
+  "source": {
+    "title": "Classic Monsters Revisited",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sow%20Terror"
+  }
+}

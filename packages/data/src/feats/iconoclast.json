@@ -1,0 +1,30 @@
+{
+  "id": "iconoclast",
+  "name": "Iconoclast",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "divine-defiance"
+    },
+    {
+      "type": "feat",
+      "id": "improved-sunder"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Intimidate nearby creatures when sundering a holy symbol",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Iconoclast"
+  }
+}

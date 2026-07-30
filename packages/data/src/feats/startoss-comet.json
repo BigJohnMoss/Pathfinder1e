@@ -1,0 +1,34 @@
+{
+  "id": "startoss-comet",
+  "name": "Startoss Comet",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "startoss-style"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    }
+  ],
+  "benefit": "Make an extra attack with thrown weapon as a standard action",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Startoss%20Comet"
+  }
+}

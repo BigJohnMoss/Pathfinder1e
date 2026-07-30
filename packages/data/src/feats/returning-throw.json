@@ -1,0 +1,30 @@
+{
+  "id": "returning-throw",
+  "name": "Returning Throw",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "goblinoid subtype"
+    }
+  ],
+  "benefit": "When an ally misses with a thrown weapon attack, you can catch the weapon and use it to attack the original target",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Returning%20Throw"
+  }
+}

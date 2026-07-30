@@ -1,0 +1,21 @@
+{
+  "id": "apotheosis",
+  "name": "Apotheosis",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have had direct contact with a deity or godlike being"
+    },
+    {
+      "type": "rule",
+      "description": "or have been risen from the dead at the personal behest of a deity or godlike being"
+    }
+  ],
+  "benefit": "Resist the call of death with greater ease, communications with your deity have a higher chance of succeeding",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Apotheosis"
+  }
+}

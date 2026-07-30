@@ -1,0 +1,17 @@
+{
+  "id": "sure-footed",
+  "name": "Sure-Footed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Quadruped animal or magical beast"
+    }
+  ],
+  "benefit": "+2 bonus to keep your balance and avoid falling",
+  "source": {
+    "title": "Animal Archive",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sure-Footed"
+  }
+}

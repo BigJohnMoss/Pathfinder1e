@@ -1,0 +1,12 @@
+{
+  "id": "cherry-blossom-spell",
+  "name": "Cherry Blossom Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Creatures that take damage from your spell have their age manipulated",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cherry%20Blossom%20Spell"
+  }
+}

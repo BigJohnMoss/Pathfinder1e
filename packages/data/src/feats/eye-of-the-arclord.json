@@ -1,0 +1,22 @@
+{
+  "id": "eye-of-the-arclord",
+  "name": "Eye of the Arclord",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 4
+    },
+    {
+      "type": "spell-access",
+      "id": "arcane-spells"
+    }
+  ],
+  "benefit": "Gain a third eye with magic powers",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 286,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eye%20of%20the%20Arclord"
+  }
+}

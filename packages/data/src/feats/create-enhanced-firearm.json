@@ -1,0 +1,17 @@
+{
+  "id": "create-enhanced-firearm",
+  "name": "Create Enhanced Firearm",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Craft Magic Arms and Armor; Craft (weapons) 1 rank or Gunsmithing"
+    }
+  ],
+  "benefit": "Firearms you create are less likely to misfire",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Create%20Enhanced%20Firearm"
+  }
+}

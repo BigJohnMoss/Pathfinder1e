@@ -1,0 +1,17 @@
+{
+  "id": "twin-fang-strike",
+  "name": "Twin Fang Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dex 15; Quick Draw; Twin Fang Style; Two- Weapon Fighting; Acrobatics 6 ranks; base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "You can make two attacks as an attack action",
+  "source": {
+    "title": "Villain Codex",
+    "page": 105,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Twin%20Fang%20Strike"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "graceful-athlete",
+  "name": "Graceful Athlete",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Climb",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "racial bonus to Dexterity"
+    }
+  ],
+  "benefit": "Use Dexterity instead of Strength for Climb and Swim",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Graceful%20Athlete"
+  }
+}

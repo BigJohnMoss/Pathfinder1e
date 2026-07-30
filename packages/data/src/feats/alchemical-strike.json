@@ -1,0 +1,21 @@
+{
+  "id": "alchemical-strike",
+  "name": "Alchemical Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "throw-anything"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Increase the save DC of thrown alchemical items",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Alchemical%20Strike"
+  }
+}

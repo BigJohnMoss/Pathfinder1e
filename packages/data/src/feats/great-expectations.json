@@ -1,0 +1,21 @@
+{
+  "id": "great-expectations",
+  "name": "Great Expectations",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Rainkin half-orc"
+    },
+    {
+      "type": "rule",
+      "description": "skilled alternate racial trait"
+    }
+  ],
+  "benefit": "Gain a bonus on certain skills, depending on your chosen mental ability score",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Great%20Expectations"
+  }
+}

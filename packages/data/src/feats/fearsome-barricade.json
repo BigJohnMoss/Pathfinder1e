@@ -1,0 +1,22 @@
+{
+  "id": "fearsome-barricade",
+  "name": "Fearsome Barricade",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "Ulfen Guard TPA 20"
+    }
+  ],
+  "benefit": "Demoralize opponents that attack your allies",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fearsome%20Barricade"
+  }
+}

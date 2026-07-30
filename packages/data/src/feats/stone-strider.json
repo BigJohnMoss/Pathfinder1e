@@ -1,0 +1,25 @@
+{
+  "id": "stone-strider",
+  "name": "Stone Strider",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cunning"
+    },
+    {
+      "type": "rule",
+      "description": "Stone racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Torag"
+    }
+  ],
+  "benefit": "Move freely through nonmagical rocky terrain",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 216,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Strider"
+  }
+}

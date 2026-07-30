@@ -1,0 +1,25 @@
+{
+  "id": "bullseye-shot",
+  "name": "Bullseye Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain +4 bonus on next ranged attack as a move action",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bullseye%20Shot"
+  }
+}

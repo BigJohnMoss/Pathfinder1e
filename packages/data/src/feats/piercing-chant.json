@@ -1,0 +1,17 @@
+{
+  "id": "piercing-chant",
+  "name": "Piercing Chant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    }
+  ],
+  "benefit": "Sing a painful song to daze creatures within 15 ft.",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Piercing%20Chant"
+  }
+}

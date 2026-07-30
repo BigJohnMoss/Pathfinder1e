@@ -1,0 +1,17 @@
+{
+  "id": "scapegoat",
+  "name": "Scapegoat",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Great Fortitude or Iron Will"
+    }
+  ],
+  "benefit": "Become resistant to curses",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scapegoat"
+  }
+}

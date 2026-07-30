@@ -1,0 +1,27 @@
+{
+  "id": "my-blade-is-yours",
+  "name": "My Blade is Yours",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use a weapon special quality from adjacent ally's weapon",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=My%20Blade%20is%20Yours"
+  }
+}

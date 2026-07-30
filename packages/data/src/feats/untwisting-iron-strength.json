@@ -1,0 +1,17 @@
+{
+  "id": "untwisting-iron-strength",
+  "name": "Untwisting Iron Strength",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Str 15; Wis 13; Perfect Style; base attack bonus +9 or monk level 9th"
+    }
+  ],
+  "benefit": "Ignore some of target's hardness",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 107,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Untwisting%20Iron%20Strength"
+  }
+}

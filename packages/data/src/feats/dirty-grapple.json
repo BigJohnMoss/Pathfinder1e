@@ -1,0 +1,47 @@
+{
+  "id": "dirty-grapple",
+  "name": "Dirty Grapple",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Combine a dirty trick and grapple combat maneuver",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dirty%20Grapple"
+  }
+}

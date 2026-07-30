@@ -1,0 +1,17 @@
+{
+  "id": "pacify-animal",
+  "name": "Pacify Animal",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-empathy"
+    }
+  ],
+  "benefit": "Use wild empathy against hostile creatures",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pacify%20Animal"
+  }
+}

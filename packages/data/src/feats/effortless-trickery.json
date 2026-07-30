@@ -1,0 +1,17 @@
+{
+  "id": "effortless-trickery",
+  "name": "Effortless Trickery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Gnome"
+    }
+  ],
+  "benefit": "Maintain concentration with illusion spells easier",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Effortless%20Trickery"
+  }
+}

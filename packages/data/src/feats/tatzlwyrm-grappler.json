@@ -1,0 +1,35 @@
+{
+  "id": "tatzlwyrm-grappler",
+  "name": "Tatzlwyrm Grappler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "tatzlwyrm-claw-style"
+    },
+    {
+      "type": "skill",
+      "key": "Escape Artist",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use Escape Artist instead of CMD when resisting a grapple.",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tatzlwyrm%20Grappler"
+  }
+}

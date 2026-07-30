@@ -1,0 +1,26 @@
+{
+  "id": "stunning-irruption",
+  "name": "Stunning Irruption",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Stun your opponents by breaking through objects",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stunning%20Irruption"
+  }
+}

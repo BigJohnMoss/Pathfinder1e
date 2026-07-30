@@ -1,0 +1,21 @@
+{
+  "id": "improved-lookout",
+  "name": "Improved Lookout",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "lookout"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    }
+  ],
+  "benefit": "Stop being flat-footed earlier when near another ally with Lookout who acts",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Lookout"
+  }
+}

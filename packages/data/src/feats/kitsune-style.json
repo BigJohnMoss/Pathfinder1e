@@ -1,0 +1,30 @@
+{
+  "id": "kitsune-style",
+  "name": "Kitsune Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    }
+  ],
+  "benefit": "Perform a dirty trick at the end of a charge",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kitsune%20Style"
+  }
+}

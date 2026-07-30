@@ -1,0 +1,22 @@
+{
+  "id": "favored-community",
+  "name": "Favored Community",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (local)",
+      "minimum": 2
+    },
+    {
+      "type": "rule",
+      "description": "must have lived in the settlement for at least 1 year"
+    }
+  ],
+  "benefit": "Gain a favored terrain bonus in a certain community",
+  "source": {
+    "title": "Villain Codex",
+    "page": 44,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Favored%20Community"
+  }
+}

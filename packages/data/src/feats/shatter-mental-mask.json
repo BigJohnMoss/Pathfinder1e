@@ -1,0 +1,21 @@
+{
+  "id": "shatter-mental-mask",
+  "name": "Shatter Mental Mask",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or ability to cast psychic spells or use psychic spell-like abilities"
+    },
+    {
+      "type": "level",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Offensive manifestations with Will saves reveal opponent’s true form",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 139,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shatter%20Mental%20Mask"
+  }
+}

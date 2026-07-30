@@ -1,0 +1,17 @@
+{
+  "id": "oath-of-the-unbound",
+  "name": "Oath of the Unbound",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Worshiper of Rovagug"
+    }
+  ],
+  "benefit": "+2 bonus on combat maneuver checks, Strength checks, and saving throws to break free of bonds and restraints",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 214,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Oath%20of%20the%20Unbound"
+  }
+}

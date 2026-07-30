@@ -1,0 +1,26 @@
+{
+  "id": "strange-yield",
+  "name": "Strange Yield",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    },
+    {
+      "type": "rule",
+      "description": "racial fly speed"
+    }
+  ],
+  "benefit": "Gain a free potion or oil once per day",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Strange%20Yield"
+  }
+}

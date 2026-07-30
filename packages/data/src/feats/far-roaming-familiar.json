@@ -1,0 +1,21 @@
+{
+  "id": "far-roaming-familiar",
+  "name": "Far-Roaming Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Intelligence 13"
+    },
+    {
+      "type": "rule",
+      "description": "must have a familiar"
+    }
+  ],
+  "benefit": "Empathic link on familiar persists regardless of distance",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Far-Roaming%20Familiar"
+  }
+}

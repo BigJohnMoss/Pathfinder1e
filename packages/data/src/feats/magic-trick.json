@@ -1,0 +1,17 @@
+{
+  "id": "magic-trick",
+  "name": "Magic Trick",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast the chosen spell or spell-like ability"
+    }
+  ],
+  "benefit": "Gain special benefits with certain spells",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Magic%20Trick"
+  }
+}

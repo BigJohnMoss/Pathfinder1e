@@ -1,0 +1,38 @@
+{
+  "id": "spring-heeled-style",
+  "name": "Spring-Heeled Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "rule",
+      "description": "Shot on the Run or Spring Attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with light armor"
+    }
+  ],
+  "benefit": "Gain a bonus on attack rolls when moving",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spring-Heeled%20Style"
+  }
+}

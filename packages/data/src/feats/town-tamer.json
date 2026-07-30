@@ -1,0 +1,21 @@
+{
+  "id": "town-tamer",
+  "name": "Town Tamer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have 5 ranks in Intimidate and a personal motivation to clean up a particular town (such as an old friend calling in a favor, or seeking a place to settle down)"
+    },
+    {
+      "type": "rule",
+      "description": "or you must have the Bounty Hunter or Champion of the People background"
+    }
+  ],
+  "benefit": "Become more intimidating in specific settlements",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Town%20Tamer"
+  }
+}

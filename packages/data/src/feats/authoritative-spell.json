@@ -1,0 +1,12 @@
+{
+  "id": "authoritative-spell",
+  "name": "Authoritative Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Spell forbids target from taking certain actions",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Authoritative%20Spell"
+  }
+}

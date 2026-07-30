@@ -1,0 +1,21 @@
+{
+  "id": "disorienting-blow",
+  "name": "Disorienting Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Confuse the enemy with your stunning fist attack.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Disorienting%20Blow"
+  }
+}

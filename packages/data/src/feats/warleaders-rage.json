@@ -1,0 +1,26 @@
+{
+  "id": "warleaders-rage",
+  "name": "Warleader's Rage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "half-orc or orc"
+    },
+    {
+      "type": "rule",
+      "description": "non-lawful"
+    }
+  ],
+  "benefit": "Allow allies with lesser rage powers to remain raging at greater distances",
+  "source": {
+    "title": "Orcs of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Warleader's%20Rage"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "foeslayer",
+  "name": "Foeslayer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have been defeated and robbed of at least half your possessions by a particular group of humanoids or monstrous humanoids"
+    },
+    {
+      "type": "rule",
+      "description": "or have the An Eye for an Eye"
+    },
+    {
+      "type": "rule",
+      "description": "Hated Foe"
+    },
+    {
+      "type": "rule",
+      "description": "Raiders"
+    },
+    {
+      "type": "rule",
+      "description": "or Vengeance background (see Ultimate Campaign ). You may choose a specific race"
+    },
+    {
+      "type": "rule",
+      "description": "such as duergar"
+    },
+    {
+      "type": "rule",
+      "description": "or a broader group"
+    },
+    {
+      "type": "rule",
+      "description": "such as goblinoids. At the GM’s discretion"
+    },
+    {
+      "type": "rule",
+      "description": "you may instead choose residents of a particular country"
+    },
+    {
+      "type": "rule",
+      "description": "settlement"
+    },
+    {
+      "type": "rule",
+      "description": "or tribe"
+    }
+  ],
+  "benefit": "Improve your battle prowess against the chosen enemy",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Foeslayer"
+  }
+}

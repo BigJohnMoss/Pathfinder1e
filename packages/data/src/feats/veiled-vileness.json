@@ -1,0 +1,17 @@
+{
+  "id": "veiled-vileness",
+  "name": "Veiled Vileness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc"
+    }
+  ],
+  "benefit": "Hide any signs of your orcish heritage, +1 Diplomacy, Intimidate, Will saves",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 219,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Veiled%20Vileness"
+  }
+}

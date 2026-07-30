@@ -1,0 +1,17 @@
+{
+  "id": "aberrant-tumor",
+  "name": "Aberrant Tumor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aberrant bloodline"
+    }
+  ],
+  "benefit": "Gain a tumor familiar",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 136,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aberrant%20Tumor"
+  }
+}

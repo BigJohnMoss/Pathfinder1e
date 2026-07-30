@@ -1,0 +1,21 @@
+{
+  "id": "lob-shot",
+  "name": "Lob Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "far-shot"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    }
+  ],
+  "benefit": "Ignore all cover bonuses when making a ranged attack unless they have cover from above",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lob%20Shot"
+  }
+}

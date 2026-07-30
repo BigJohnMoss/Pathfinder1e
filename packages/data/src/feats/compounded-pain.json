@@ -1,0 +1,22 @@
+{
+  "id": "compounded-pain",
+  "name": "Compounded Pain",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Apply the effects of two stare feats to painful stares",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Compounded%20Pain"
+  }
+}

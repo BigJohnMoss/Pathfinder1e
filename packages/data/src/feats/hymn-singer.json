@@ -1,0 +1,25 @@
+{
+  "id": "hymn-singer",
+  "name": "Hymn Singer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bardic performance"
+    },
+    {
+      "type": "rule",
+      "description": "good alignment"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of a good deity"
+    }
+  ],
+  "benefit": "Weave holy scripture into your performance to keep vampires at bay",
+  "source": {
+    "title": "Blood of the Night",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hymn%20Singer"
+  }
+}

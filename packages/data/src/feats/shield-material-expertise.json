@@ -1,0 +1,21 @@
+{
+  "id": "shield-material-expertise",
+  "name": "Shield Material Expertise*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or fighter level 4th"
+    }
+  ],
+  "benefit": "Gain a benefit based on your shield's special material",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Material%20Expertise*"
+  }
+}

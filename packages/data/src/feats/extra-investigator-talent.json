@@ -1,0 +1,17 @@
+{
+  "id": "extra-investigator-talent",
+  "name": "Extra Investigator Talent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "investigator-talent"
+    }
+  ],
+  "benefit": "Gain an additional investigator talent",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Investigator%20Talent"
+  }
+}

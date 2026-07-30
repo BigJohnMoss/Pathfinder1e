@@ -1,0 +1,29 @@
+{
+  "id": "grabbing-style",
+  "name": "Grabbing Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feature",
+      "id": "brawlers-flurry"
+    },
+    {
+      "type": "rule",
+      "description": "or flurry of blows class feature"
+    }
+  ],
+  "benefit": "Take no penalty for grabbing a foe one-handed, retain your Dex bonus to AC when pinning",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 148,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grabbing%20Style"
+  }
+}

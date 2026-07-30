@@ -1,0 +1,27 @@
+{
+  "id": "beast-speaker",
+  "name": "Beast Speaker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 7
+    },
+    {
+      "type": "class-level",
+      "classId": "druid",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "animal companion with effective"
+    }
+  ],
+  "benefit": "Gain a magical beast as your animal companion",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beast%20Speaker"
+  }
+}

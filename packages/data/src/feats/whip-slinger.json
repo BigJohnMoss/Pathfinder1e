@@ -1,0 +1,17 @@
+{
+  "id": "whip-slinger",
+  "name": "Whip-Slinger",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficient with sling"
+    }
+  ],
+  "benefit": "Threaten the area around you with a sling",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Whip-Slinger"
+  }
+}

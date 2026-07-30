@@ -1,0 +1,26 @@
+{
+  "id": "kick-up",
+  "name": "Kick Up",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 12
+    },
+    {
+      "type": "feat",
+      "id": "acrobatic"
+    },
+    {
+      "type": "rule",
+      "description": "Acrobatics 1 rank; slayer level 1st or swashbuckler level 1st"
+    }
+  ],
+  "benefit": "Retrieve an unattended item as a swift action",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kick%20Up"
+  }
+}

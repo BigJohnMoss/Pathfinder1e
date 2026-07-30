@@ -1,0 +1,30 @@
+{
+  "id": "huntmaster",
+  "name": "Huntmaster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "either the animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "divine bond (mount)"
+    },
+    {
+      "type": "rule",
+      "description": "or mount class feature; human"
+    }
+  ],
+  "benefit": "+2 Handle Animal and Knowledge (nature) with chosen animal, +1 level higher for animal companion abilities",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 77,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Huntmaster"
+  }
+}

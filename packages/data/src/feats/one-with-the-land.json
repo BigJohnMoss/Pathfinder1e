@@ -1,0 +1,17 @@
+{
+  "id": "one-with-the-land",
+  "name": "One with the Land",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-terrain"
+    }
+  ],
+  "benefit": "You eat and drink half as much, heal naturally faster, and are protected from environmental effects in your favored terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=One%20with%20the%20Land"
+  }
+}

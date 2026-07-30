@@ -1,0 +1,26 @@
+{
+  "id": "mirror-kin",
+  "name": "Mirror Kin",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    },
+    {
+      "type": "rule",
+      "description": "gnome magic racial trait"
+    }
+  ],
+  "benefit": "You become difficult to distinguish from your allies, giving you a 20% miss chance due to concealment",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mirror%20Kin"
+  }
+}

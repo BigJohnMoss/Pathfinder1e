@@ -1,0 +1,21 @@
+{
+  "id": "rahadoumi-exorcist",
+  "name": "Rahadoumi Exorcist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "can’t have a patron deity"
+    }
+  ],
+  "benefit": "Stagger incorporeal undead and possessing creatures",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rahadoumi%20Exorcist"
+  }
+}

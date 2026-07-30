@@ -1,0 +1,29 @@
+{
+  "id": "savage-leap",
+  "name": "Savage Leap",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "savage-slam"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +12 or monk level 10th"
+    }
+  ],
+  "benefit": "You can move half your speed when using Savage Slam",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Savage%20Leap"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "extraplanar-conjunction",
+  "name": "Extraplanar Conjunction",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any racial spell-like ability"
+    },
+    {
+      "type": "rule",
+      "description": "outsider"
+    }
+  ],
+  "benefit": "Increase the save DC of a racial spell-like ability by 2 when near an ally with this feat and the same spell-like ability",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 206,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extraplanar%20Conjunction"
+  }
+}

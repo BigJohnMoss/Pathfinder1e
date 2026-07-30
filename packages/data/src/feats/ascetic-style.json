@@ -1,0 +1,17 @@
+{
+  "id": "ascetic-style",
+  "name": "Ascetic Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Weapon Focus with the chosen melee weapon; base attack bonus +1 or monk level 1st"
+    }
+  ],
+  "benefit": "Use weapons with unarmed strike abilities",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ascetic%20Style"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "shared-quarry",
+  "name": "Shared Quarry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hunters-bond"
+    },
+    {
+      "type": "feature",
+      "id": "quarry"
+    }
+  ],
+  "benefit": "Animal companion or allies gain the benefit of quarry",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shared%20Quarry"
+  }
+}

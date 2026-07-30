@@ -1,0 +1,12 @@
+{
+  "id": "growth-in-ash",
+  "name": "Growth in Ash",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain fasthealing when you stop taking ongoing fire damage",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Growth%20in%20Ash"
+  }
+}

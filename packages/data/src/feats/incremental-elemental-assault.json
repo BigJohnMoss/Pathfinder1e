@@ -1,0 +1,17 @@
+{
+  "id": "incremental-elemental-assault",
+  "name": "Incremental Elemental Assault",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Suli"
+    }
+  ],
+  "benefit": "Use your elemental assault in 1-round increments",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 203,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Incremental%20Elemental%20Assault"
+  }
+}

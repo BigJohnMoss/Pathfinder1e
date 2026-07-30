@@ -1,0 +1,29 @@
+{
+  "id": "improved-low-blow",
+  "name": "Improved Low Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "hal"
+    },
+    {
+      "type": "rule",
+      "description": "low-blow racial trait"
+    }
+  ],
+  "benefit": "+2 critical confirmation against larger opponents, 1/day reroll a confirmation roll",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 66,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Low%20Blow"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "friendly-rivalry",
+  "name": "Friendly Rivalry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Human (Taldan)"
+    }
+  ],
+  "benefit": "Gain +2 morale bonus on melee attacks against foes only you threaten if an ally is the only one threatening a different foe",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 206,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Friendly%20Rivalry"
+  }
+}

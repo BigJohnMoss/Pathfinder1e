@@ -1,0 +1,17 @@
+{
+  "id": "persuasive-bribery",
+  "name": "Persuasive Bribery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "persuasive"
+    }
+  ],
+  "benefit": "Bribe effectively and without offending others",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Persuasive%20Bribery"
+  }
+}

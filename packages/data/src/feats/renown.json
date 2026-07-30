@@ -1,0 +1,12 @@
+{
+  "id": "renown",
+  "name": "Renown",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Treat your Fame as 2 higher when in larger settlements",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Renown"
+  }
+}

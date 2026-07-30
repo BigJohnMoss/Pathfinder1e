@@ -1,0 +1,21 @@
+{
+  "id": "channel-discord",
+  "name": "Channel Discord",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 8d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of a demon lord"
+    }
+  ],
+  "benefit": "Affect those damaged by your channeled energy with song of discord",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channel%20Discord"
+  }
+}

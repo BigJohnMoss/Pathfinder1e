@@ -1,0 +1,17 @@
+{
+  "id": "blood-feast",
+  "name": "Blood Feast",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bite attack"
+    }
+  ],
+  "benefit": "Gain morale bonuses after biting living creatures",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 82,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Feast"
+  }
+}

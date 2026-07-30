@@ -1,0 +1,17 @@
+{
+  "id": "planar-heritage",
+  "name": "Planar Heritage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Human"
+    }
+  ],
+  "benefit": "Gain access to options available to a type of native outsider",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Heritage"
+  }
+}

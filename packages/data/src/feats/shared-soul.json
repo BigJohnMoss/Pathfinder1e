@@ -1,0 +1,17 @@
+{
+  "id": "shared-soul",
+  "name": "Shared Soul",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "shared-consciousness"
+    }
+  ],
+  "benefit": "Phantom protects against death effects, energy drain, and possession",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 139,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shared%20Soul"
+  }
+}

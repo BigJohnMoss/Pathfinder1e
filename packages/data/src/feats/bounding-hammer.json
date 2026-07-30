@@ -1,0 +1,21 @@
+{
+  "id": "bounding-hammer",
+  "name": "Bounding Hammer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficiency with hammer"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Bounce throwing hammers off your opponents so they return to you",
+  "source": {
+    "title": "Dwarves of Golarion",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bounding%20Hammer"
+  }
+}

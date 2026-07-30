@@ -1,0 +1,17 @@
+{
+  "id": "reviving-channel",
+  "name": "Reviving Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 3d6"
+    }
+  ],
+  "benefit": "Grant increased healing from channeled energy to a creature below 0 hp",
+  "source": {
+    "title": "Distant Realms",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reviving%20Channel"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "casters-champion",
+  "name": "Caster's Champion",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "3/day, use allies' magic to gain a bonus to damage rolls for 1 round",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Caster's%20Champion"
+  }
+}

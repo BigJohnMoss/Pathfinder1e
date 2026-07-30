@@ -1,0 +1,17 @@
+{
+  "id": "creature-focus",
+  "name": "Creature Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "no-levels-in-a-class-that-grants-the-favored-enemy"
+    }
+  ],
+  "benefit": "Gain a limited version of favored enemy",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Creature%20Focus"
+  }
+}

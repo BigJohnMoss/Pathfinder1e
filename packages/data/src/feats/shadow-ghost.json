@@ -1,0 +1,21 @@
+{
+  "id": "shadow-ghost",
+  "name": "Shadow Ghost",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fetchling"
+    },
+    {
+      "type": "rule",
+      "description": "shadow walk spell-like ability"
+    }
+  ],
+  "benefit": "Use shadow walk an additional time per day",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 112,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shadow%20Ghost"
+  }
+}

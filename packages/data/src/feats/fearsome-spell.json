@@ -1,0 +1,12 @@
+{
+  "id": "fearsome-spell",
+  "name": "Fearsome Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Spell damage causes the shaken condition",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 134,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fearsome%20Spell"
+  }
+}

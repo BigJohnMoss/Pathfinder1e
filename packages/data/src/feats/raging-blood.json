@@ -1,0 +1,17 @@
+{
+  "id": "raging-blood",
+  "name": "Raging Blood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Eldritch Heritage or sorcerer bloodline class feature"
+    }
+  ],
+  "benefit": "Enter a lesser bloodrage",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Raging%20Blood"
+  }
+}

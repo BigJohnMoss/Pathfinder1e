@@ -1,0 +1,21 @@
+{
+  "id": "practical-kata",
+  "name": "Practical Kata",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    }
+  ],
+  "benefit": "Regain ki by striking an opponent multiple times",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Practical%20Kata"
+  }
+}

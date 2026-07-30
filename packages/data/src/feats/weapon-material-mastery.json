@@ -1,0 +1,25 @@
+{
+  "id": "weapon-material-mastery",
+  "name": "Weapon Material Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a melee weapon"
+    }
+  ],
+  "benefit": "Perform impressive deeds with weapons made of special materials",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20Material%20Mastery"
+  }
+}

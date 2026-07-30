@@ -1,0 +1,22 @@
+{
+  "id": "supernal-feast",
+  "name": "Supernal Feast",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "aasimar"
+    }
+  ],
+  "benefit": "Feast on your ancestors to gain their power.",
+  "source": {
+    "title": "Blood of Angels",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Supernal%20Feast"
+  }
+}

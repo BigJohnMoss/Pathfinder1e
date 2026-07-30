@@ -1,0 +1,28 @@
+{
+  "id": "black-marketeer",
+  "name": "Black Marketeer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Appraise",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Gather Information",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (local)",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Gain a resource pool from black market connections",
+  "source": {
+    "title": "Osirion, Land of the Pharaohs",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Black%20Marketeer"
+  }
+}

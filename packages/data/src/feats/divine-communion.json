@@ -1,0 +1,21 @@
+{
+  "id": "divine-communion",
+  "name": "Divine Communion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wisdom 13"
+    },
+    {
+      "type": "rule",
+      "description": "alignment must match that of your worshiped deity"
+    }
+  ],
+  "benefit": "Learn whether or not your deity would approve or disapprove of a particular course of action.",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Communion"
+  }
+}

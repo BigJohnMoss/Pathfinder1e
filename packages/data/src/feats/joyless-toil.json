@@ -1,0 +1,31 @@
+{
+  "id": "joyless-toil",
+  "name": "Joyless Toil",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Nauseate a creature that you strike",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Joyless%20Toil"
+  }
+}

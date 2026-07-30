@@ -1,0 +1,17 @@
+{
+  "id": "twisted-love",
+  "name": "Twisted Love",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "See text"
+    }
+  ],
+  "benefit": "Gain a +2 bonus vs. enchantments and bonuses to influence your obsessed foe, and on completion, you can pretend to be affected by enchantments",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 95,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Twisted%20Love"
+  }
+}

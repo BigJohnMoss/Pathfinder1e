@@ -1,0 +1,17 @@
+{
+  "id": "mothers-gift",
+  "name": "Mother's Gift",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Changeling"
+    }
+  ],
+  "benefit": "Enhance the boon from your hag parent",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 185,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mother's%20Gift"
+  }
+}

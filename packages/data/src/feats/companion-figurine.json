@@ -1,0 +1,22 @@
+{
+  "id": "companion-figurine",
+  "name": "Companion Figurine",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "own a figurine of wondrous power"
+    }
+  ],
+  "benefit": "Make a figurine of wondrous power your animal companion or familiar",
+  "source": {
+    "title": "Classic Treasures Revisited",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Companion%20Figurine"
+  }
+}

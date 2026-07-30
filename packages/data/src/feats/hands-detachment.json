@@ -1,0 +1,21 @@
+{
+  "id": "hands-detachment",
+  "name": "Hand's Detachment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Hand’s Autonomy"
+    },
+    {
+      "type": "feat",
+      "id": "possessed-hand"
+    }
+  ],
+  "benefit": "Your possessed hand can detach and move on its own",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hand's%20Detachment"
+  }
+}

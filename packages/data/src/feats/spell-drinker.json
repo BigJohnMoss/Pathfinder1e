@@ -1,0 +1,30 @@
+{
+  "id": "spell-drinker",
+  "name": "Spell Drinker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "great-fortitude"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "or Lightning Reflexes"
+    }
+  ],
+  "benefit": "Gain temporary hit points when you succeed on a saving throw against a spell or spell-like ability",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Drinker"
+  }
+}

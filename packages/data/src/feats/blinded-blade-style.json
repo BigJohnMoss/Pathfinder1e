@@ -1,0 +1,22 @@
+{
+  "id": "blinded-blade-style",
+  "name": "Blinded Blade Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain unique benefits when unable to see",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blinded%20Blade%20Style"
+  }
+}

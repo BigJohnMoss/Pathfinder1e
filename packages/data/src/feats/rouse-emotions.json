@@ -1,0 +1,31 @@
+{
+  "id": "rouse-emotions",
+  "name": "Rouse Emotions",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "charming-performance"
+    },
+    {
+      "type": "skill",
+      "key": "Perform (any)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "bardic performance or raging song"
+    }
+  ],
+  "benefit": "Sway a group using Chariming Performance",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rouse%20Emotions"
+  }
+}

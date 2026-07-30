@@ -1,0 +1,29 @@
+{
+  "id": "damned",
+  "name": "Damned",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have had friendly contact with an evil-aligned outsider that would qualify as a challenging foe"
+    },
+    {
+      "type": "rule",
+      "description": "have a fiend-related sorcerous bloodline such as abyssal or infernal"
+    },
+    {
+      "type": "rule",
+      "description": "have direct fiendish ancestry (such as being a tiefling or half-fiend)"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Fiend Raised or The Fiend background (see Ultimate Campaign )"
+    }
+  ],
+  "benefit": "Bonus to checks relating to evil-aligned outsiders",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Damned"
+  }
+}

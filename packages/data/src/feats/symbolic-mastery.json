@@ -1,0 +1,22 @@
+{
+  "id": "symbolic-mastery",
+  "name": "Symbolic Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude saving throw bonus +2"
+    }
+  ],
+  "benefit": "Launch destructive blasts from your holy symbol",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Symbolic%20Mastery"
+  }
+}

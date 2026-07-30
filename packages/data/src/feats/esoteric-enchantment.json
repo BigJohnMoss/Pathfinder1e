@@ -1,0 +1,12 @@
+{
+  "id": "esoteric-enchantment",
+  "name": "Esoteric Enchantment",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your enchantment spells inflict a penalty to ability checks, attack rolls, damage rolls, saving throws, or skill checks",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Esoteric%20Enchantment"
+  }
+}

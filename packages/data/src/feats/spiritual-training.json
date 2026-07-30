@@ -1,0 +1,12 @@
+{
+  "id": "spiritual-training",
+  "name": "Spiritual Training",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Struggle against a creature possessing you",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spiritual%20Training"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "blazing-aura-arg",
+  "name": "Blazing Aura (ARG)",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "inner-flame"
+    },
+    {
+      "type": "feat",
+      "id": "scorching-weapons"
+    },
+    {
+      "type": "level",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "ifrit"
+    }
+  ],
+  "benefit": "Create an aura of heat around you after using Scorching Weapons",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 130,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blazing%20Aura%20(ARG)"
+  }
+}

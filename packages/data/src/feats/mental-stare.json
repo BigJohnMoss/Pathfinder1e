@@ -1,0 +1,17 @@
+{
+  "id": "mental-stare",
+  "name": "Mental Stare",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hypnotic-stare"
+    }
+  ],
+  "benefit": "Your hypnotic stare doesn't rely on sight",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mental%20Stare"
+  }
+}

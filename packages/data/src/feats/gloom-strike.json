@@ -1,0 +1,21 @@
+{
+  "id": "gloom-strike",
+  "name": "Gloom Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "rule",
+      "description": "fetchling"
+    }
+  ],
+  "benefit": "+1 attack when within dim light or darkness",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gloom%20Strike"
+  }
+}

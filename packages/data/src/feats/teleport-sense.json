@@ -1,0 +1,22 @@
+{
+  "id": "teleport-sense",
+  "name": "Teleport Sense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Mendev affinity"
+    }
+  ],
+  "benefit": "Sense creatures teleporting nearby",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 99,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Teleport%20Sense"
+  }
+}

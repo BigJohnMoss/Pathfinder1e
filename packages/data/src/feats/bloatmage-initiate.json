@@ -1,0 +1,21 @@
+{
+  "id": "bloatmage-initiate",
+  "name": "Bloatmage Initiate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(any school)"
+    }
+  ],
+  "benefit": "Learn the basics of the ancient art of hemotheurgy",
+  "source": {
+    "title": "City of Strangers",
+    "page": 41,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bloatmage%20Initiate"
+  }
+}

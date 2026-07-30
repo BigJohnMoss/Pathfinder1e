@@ -1,0 +1,30 @@
+{
+  "id": "spear-dancing-style",
+  "name": "Spear Dancing Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    }
+  ],
+  "benefit": "Gain the Double feature with a polearm weapon",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spear%20Dancing%20Style"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "noble-stipend",
+  "name": "Noble Stipend",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "noble-scion"
+    },
+    {
+      "type": "rule",
+      "description": "ISWG"
+    }
+  ],
+  "benefit": "Gain a small allowance to spend on services and non-material goods",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Noble%20Stipend"
+  }
+}

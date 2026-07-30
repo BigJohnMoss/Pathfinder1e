@@ -1,0 +1,12 @@
+{
+  "id": "elemental-conversion",
+  "name": "Elemental Conversion",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Change your spells energy type at random",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Conversion"
+  }
+}

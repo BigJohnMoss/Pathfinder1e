@@ -1,0 +1,25 @@
+{
+  "id": "aboleth-deceiver",
+  "name": "Aboleth Deceiver",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "gillman"
+    },
+    {
+      "type": "rule",
+      "description": "enchantment resistance racial trait"
+    }
+  ],
+  "benefit": "Once per day, reroll a failed saving throw against a compulsion effect",
+  "source": {
+    "title": "Blood of the Sea",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aboleth%20Deceiver"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "magical-enigma",
+  "name": "Magical Enigma",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bloodline"
+    },
+    {
+      "type": "rule",
+      "description": "eidolon"
+    },
+    {
+      "type": "rule",
+      "description": "mystery"
+    },
+    {
+      "type": "rule",
+      "description": "phantom"
+    },
+    {
+      "type": "rule",
+      "description": "spirit animal"
+    },
+    {
+      "type": "rule",
+      "description": "or witch’s familiar class feature and you must have an unknown secret about your magic or family history (even if you do not yet know the topic of the secret) or have the One of a Kind UCA"
+    },
+    {
+      "type": "rule",
+      "description": "the Outsider’s Lineage UCA"
+    },
+    {
+      "type": "rule",
+      "description": "or the Unknown UCA background"
+    }
+  ],
+  "benefit": "Increase your class level or ability modifier for the purpose of your selected class feature",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Magical%20Enigma"
+  }
+}

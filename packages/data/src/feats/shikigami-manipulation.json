@@ -1,0 +1,30 @@
+{
+  "id": "shikigami-manipulation",
+  "name": "Shikigami Manipulation",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Catch Off-Guard or Throw Anything"
+    },
+    {
+      "type": "feat",
+      "id": "shikigami-mimicry"
+    },
+    {
+      "type": "feat",
+      "id": "shikigami-style"
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Treat magic items as magically enhanced improvised weapons",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shikigami%20Manipulation"
+  }
+}

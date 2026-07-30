@@ -1,0 +1,26 @@
+{
+  "id": "demonic-nemesis",
+  "name": "Demonic Nemesis",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "demon-hunter"
+    },
+    {
+      "type": "rule",
+      "description": "ISWG"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Gain bonus damage against followers of a specific demon lord.",
+  "source": {
+    "title": "Demon Hunter's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demonic%20Nemesis"
+  }
+}

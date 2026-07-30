@@ -1,0 +1,25 @@
+{
+  "id": "force-dash",
+  "name": "Force Dash",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "spell-access",
+      "id": "2nd-level-arcane-spells"
+    },
+    {
+      "type": "spell-access",
+      "id": "at-least-one-arcane-force-spell"
+    }
+  ],
+  "benefit": "Lose a prepared spell or a spell slot to increase your speed",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 148,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Force%20Dash"
+  }
+}

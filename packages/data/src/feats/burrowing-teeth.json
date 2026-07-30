@@ -1,0 +1,25 @@
+{
+  "id": "burrowing-teeth",
+  "name": "Burrowing Teeth",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "sharpclaw"
+    },
+    {
+      "type": "feat",
+      "id": "tunnel-rat"
+    },
+    {
+      "type": "rule",
+      "description": "ratfolk"
+    }
+  ],
+  "benefit": "Gain a limited burrow speed",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Burrowing%20Teeth"
+  }
+}

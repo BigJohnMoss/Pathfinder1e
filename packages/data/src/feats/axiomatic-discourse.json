@@ -1,0 +1,23 @@
+{
+  "id": "axiomatic-discourse",
+  "name": "Axiomatic Discourse",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Your Diplomacy checks have a lower chance of backfiring",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Axiomatic%20Discourse"
+  }
+}

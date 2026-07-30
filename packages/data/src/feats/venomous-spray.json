@@ -1,0 +1,17 @@
+{
+  "id": "venomous-spray",
+  "name": "Venomous Spray",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Serpentfolk"
+    }
+  ],
+  "benefit": "Spit venom as a ranged attack",
+  "source": {
+    "title": "Monster Codex",
+    "page": 200,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Venomous%20Spray"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "bestow-hope",
+  "name": "Bestow Hope",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-channel"
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Sarenrae"
+    }
+  ],
+  "benefit": "Channel positive energy to heal creatures and alleviate fear conditions",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bestow%20Hope"
+  }
+}

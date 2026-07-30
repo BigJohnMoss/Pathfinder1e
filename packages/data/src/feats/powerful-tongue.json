@@ -1,0 +1,22 @@
+{
+  "id": "powerful-tongue",
+  "name": "Powerful Tongue",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 17
+    },
+    {
+      "type": "rule",
+      "description": "sticky tongue"
+    }
+  ],
+  "benefit": "Gain the pull ability with your tongue",
+  "source": {
+    "title": "Monster Codex",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Powerful%20Tongue"
+  }
+}

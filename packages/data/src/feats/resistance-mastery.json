@@ -1,0 +1,22 @@
+{
+  "id": "resistance-mastery",
+  "name": "Resistance Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude saving throw bonus +3"
+    }
+  ],
+  "benefit": "Gain a resistance bonus to saves or energy resistance with a suit of magic armor or abjuration-crafted item",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Resistance%20Mastery"
+  }
+}

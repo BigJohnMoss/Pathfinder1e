@@ -1,0 +1,34 @@
+{
+  "id": "fanged-crown-massacre",
+  "name": "Fanged Crown Massacre",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bodyguard"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "skill",
+      "key": "Perform (oratory)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "any evil alignment"
+    }
+  ],
+  "benefit": "Grant a female ally a +2 bonus on an attack roll with a DC 10 Perform (oratory) check",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fanged%20Crown%20Massacre"
+  }
+}

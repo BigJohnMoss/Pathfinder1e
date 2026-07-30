@@ -1,0 +1,26 @@
+{
+  "id": "greater-hunters-bond",
+  "name": "Greater Hunter's Bond",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Improved Hunter’s Bond"
+    },
+    {
+      "type": "feature",
+      "id": "hunters-bond-hunting-companions"
+    },
+    {
+      "type": "class-level",
+      "classId": "ranger",
+      "minimum": 12
+    }
+  ],
+  "benefit": "Select targets equal to your Wisdom modifier to benefit from your hunter's bond",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Hunter's%20Bond"
+  }
+}

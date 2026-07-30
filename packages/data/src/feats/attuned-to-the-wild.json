@@ -1,0 +1,17 @@
+{
+  "id": "attuned-to-the-wild",
+  "name": "Attuned to the Wild",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Elf"
+    }
+  ],
+  "benefit": "Heal faster within a specific terrain",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Attuned%20to%20the%20Wild"
+  }
+}

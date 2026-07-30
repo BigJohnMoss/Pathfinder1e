@@ -1,0 +1,47 @@
+{
+  "id": "kyton-cut",
+  "name": "Kyton Cut",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(spiked chain)"
+    },
+    {
+      "type": "feat",
+      "id": "kyton-shield"
+    },
+    {
+      "type": "feat",
+      "id": "kyton-style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +8 or monk level 6th"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    }
+  ],
+  "benefit": "Spiked chain attacks can hurt both you and the target, and hinder concentration",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kyton%20Cut"
+  }
+}

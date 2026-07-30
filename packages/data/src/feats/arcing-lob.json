@@ -1,0 +1,30 @@
+{
+  "id": "arcing-lob",
+  "name": "Arcing Lob",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "feat",
+      "id": "throw-anything"
+    }
+  ],
+  "benefit": "Reduce or extend your splash damage when hitting larger creatures",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Arcing%20Lob"
+  }
+}

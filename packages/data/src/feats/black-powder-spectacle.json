@@ -1,0 +1,21 @@
+{
+  "id": "black-powder-spectacle",
+  "name": "Black Powder Spectacle",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Gunslinger UC or the grit class feature"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Gain a bonus on Intimidate and Perform checks by making a grand spectacle with your firearm",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Black%20Powder%20Spectacle"
+  }
+}

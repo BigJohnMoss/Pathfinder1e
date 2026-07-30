@@ -1,0 +1,21 @@
+{
+  "id": "maulers-endurance",
+  "name": "Mauler's Endurance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "page"
+    },
+    {
+      "type": "rule",
+      "description": "Must have a familiar with the mauler archetype (see 11)"
+    }
+  ],
+  "benefit": "Familiar gains 2 hp/level",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mauler's%20Endurance"
+  }
+}

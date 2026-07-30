@@ -1,0 +1,26 @@
+{
+  "id": "daggermark-lore",
+  "name": "Daggermark Lore",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "member of the Daggermark Poisoner’s Guild"
+    },
+    {
+      "type": "rule",
+      "description": "poison lore or poison use class feature"
+    }
+  ],
+  "benefit": "Your poison is more difficult to resist",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Daggermark%20Lore"
+  }
+}

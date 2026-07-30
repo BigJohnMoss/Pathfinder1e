@@ -1,0 +1,26 @@
+{
+  "id": "monster-spotter",
+  "name": "Monster Spotter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Knowledge [any])"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (any)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use Knowledge in place of Perception against Disguise and Stealth",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monster%20Spotter"
+  }
+}

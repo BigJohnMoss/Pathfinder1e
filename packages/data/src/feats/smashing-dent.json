@@ -1,0 +1,42 @@
+{
+  "id": "smashing-dent",
+  "name": "Smashing Dent",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-sunder"
+    },
+    {
+      "type": "feat",
+      "id": "smashing-crush"
+    },
+    {
+      "type": "feat",
+      "id": "smashing-style"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Reduce the armor bonus of armor you sunder and increase the armor check penalty",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Smashing%20Dent"
+  }
+}

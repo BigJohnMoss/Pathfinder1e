@@ -1,0 +1,17 @@
+{
+  "id": "quick-at-hand",
+  "name": "Quick at Hand",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ogre"
+    }
+  ],
+  "benefit": "Use anything as an improvised melee or ranged weapon",
+  "source": {
+    "title": "Classic Monsters Revisited",
+    "page": 49,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quick%20at%20Hand"
+  }
+}

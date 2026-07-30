@@ -1,0 +1,22 @@
+{
+  "id": "reward-of-the-faithful",
+  "name": "Reward of the Faithful",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "alignment must match that of your worshiped deity"
+    }
+  ],
+  "benefit": "Gain an increased effect from magic and healing from fellow worshipers of your deity.",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reward%20of%20the%20Faithful"
+  }
+}

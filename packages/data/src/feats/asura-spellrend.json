@@ -1,0 +1,25 @@
+{
+  "id": "asura-spellrend",
+  "name": "Asura Spellrend",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "asura-sight"
+    },
+    {
+      "type": "feat",
+      "id": "asura-style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +13 or monk level 13th"
+    }
+  ],
+  "benefit": "You can dispel divine spells with your unarmed strikes in Asura Style",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Asura%20Spellrend"
+  }
+}

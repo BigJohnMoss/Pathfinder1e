@@ -1,0 +1,17 @@
+{
+  "id": "water-skinned",
+  "name": "Water Skinned",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Undine"
+    }
+  ],
+  "benefit": "Extinguish small flames with a touch",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 178,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Water%20Skinned"
+  }
+}

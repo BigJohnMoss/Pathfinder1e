@@ -1,0 +1,21 @@
+{
+  "id": "butterflys-sting",
+  "name": "Butterfly's Sting",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Desna"
+    }
+  ],
+  "benefit": "Grant confirmed critical hit to an ally instead",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Butterfly's%20Sting"
+  }
+}

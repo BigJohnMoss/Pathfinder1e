@@ -1,0 +1,29 @@
+{
+  "id": "align-equipment",
+  "name": "Align Equipment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alignment-channel"
+    },
+    {
+      "type": "feat",
+      "id": "bless-equipment"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Enhance your equipment blessings with abilities",
+  "source": {
+    "title": "Undead Slayer's Handbook",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Align%20Equipment"
+  }
+}

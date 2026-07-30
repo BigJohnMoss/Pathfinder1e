@@ -1,0 +1,21 @@
+{
+  "id": "pinch-time",
+  "name": "Pinch Time",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "Spireborn half-elf"
+    }
+  ],
+  "benefit": "Gain the effects of haste for 1 round per day",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pinch%20Time"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "perfect-style",
+  "name": "Perfect Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wis 13; base attack bonus +5 or monk level 5th"
+    }
+  ],
+  "benefit": "Gain energy resistance 5",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Perfect%20Style"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "lingering-invisibility",
+  "name": "Lingering Invisibility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duergar"
+    }
+  ],
+  "benefit": "Remain translucent when your invisibility ends",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 187,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lingering%20Invisibility"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "call-out",
+  "name": "Call Out",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Force a creature to duel you by using Intimidate",
+  "source": {
+    "title": "People of the River",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Call%20Out"
+  }
+}

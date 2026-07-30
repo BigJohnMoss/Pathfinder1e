@@ -1,0 +1,39 @@
+{
+  "id": "misdirection-attack",
+  "name": "Misdirection Attack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "deceitful"
+    },
+    {
+      "type": "feat",
+      "id": "misdirection-redirection"
+    },
+    {
+      "type": "feat",
+      "id": "misdirection-tactics"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 10
+    }
+  ],
+  "benefit": "When using Misdirection Tactics, attacker provokes an attack of opportunity",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Misdirection%20Attack"
+  }
+}

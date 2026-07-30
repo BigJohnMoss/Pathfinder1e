@@ -1,0 +1,21 @@
+{
+  "id": "awakened-hag-heritage",
+  "name": "Awakened Hag Heritage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Iron Will or Mother’s Gift"
+    },
+    {
+      "type": "rule",
+      "description": "changeling"
+    }
+  ],
+  "benefit": "Awaken the latent power inherited from your hag mother",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Awakened%20Hag%20Heritage"
+  }
+}

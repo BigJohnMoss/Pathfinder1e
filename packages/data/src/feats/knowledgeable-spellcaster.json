@@ -1,0 +1,21 @@
+{
+  "id": "knowledgeable-spellcaster",
+  "name": "Knowledgeable Spellcaster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Knowledge (arcana, dungeoneering, local, nature, planes, or religion) 5 ranks"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Use Knowledge checks to bypass a creature's spell resistance",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Knowledgeable%20Spellcaster"
+  }
+}

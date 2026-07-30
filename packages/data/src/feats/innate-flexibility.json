@@ -1,0 +1,21 @@
+{
+  "id": "innate-flexibility",
+  "name": "Innate Flexibility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duergar"
+    },
+    {
+      "type": "rule",
+      "description": "two racial spell-like abilities usable once per day"
+    }
+  ],
+  "benefit": "Gain additional uses of your spell-like abilities",
+  "source": {
+    "title": "Monster Codex",
+    "page": 44,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Innate%20Flexibility"
+  }
+}

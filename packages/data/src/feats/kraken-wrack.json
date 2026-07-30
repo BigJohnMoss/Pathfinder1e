@@ -1,0 +1,34 @@
+{
+  "id": "kraken-wrack",
+  "name": "Kraken Wrack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "kraken-style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +7 or monk level 7th"
+    }
+  ],
+  "benefit": "Crush your opponent while grappling, damaging their gear",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kraken%20Wrack"
+  }
+}

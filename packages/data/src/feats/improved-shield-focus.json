@@ -1,0 +1,21 @@
+{
+  "id": "improved-shield-focus",
+  "name": "Improved Shield Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Decrease shield's armor check penalty by 1",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Shield%20Focus"
+  }
+}

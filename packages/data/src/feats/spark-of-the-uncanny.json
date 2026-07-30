@@ -1,0 +1,17 @@
+{
+  "id": "spark-of-the-uncanny",
+  "name": "Spark of the Uncanny",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "familiar"
+    }
+  ],
+  "benefit": "Your familiar can speak a language you know",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spark%20of%20the%20Uncanny"
+  }
+}

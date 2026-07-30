@@ -1,0 +1,30 @@
+{
+  "id": "exorcising-mutilation",
+  "name": "Exorcising Mutilation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "clarity-of-pain"
+    },
+    {
+      "type": "feat",
+      "id": "improved-iron-will"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Grievously damage yourself to fight off a dominate effect or possession",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Exorcising%20Mutilation"
+  }
+}

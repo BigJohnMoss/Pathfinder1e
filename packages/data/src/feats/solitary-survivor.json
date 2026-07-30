@@ -1,0 +1,26 @@
+{
+  "id": "solitary-survivor",
+  "name": "Solitary Survivor",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 17
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "half-orc"
+    }
+  ],
+  "benefit": "Deal extra damage when you have no allies within 30 ft.",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Solitary%20Survivor"
+  }
+}

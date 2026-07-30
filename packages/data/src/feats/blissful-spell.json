@@ -1,0 +1,12 @@
+{
+  "id": "blissful-spell",
+  "name": "Blissful Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Target of spell takes combat penalties or gains bonuses on skills and saves",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blissful%20Spell"
+  }
+}

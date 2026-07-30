@@ -1,0 +1,12 @@
+{
+  "id": "ambuscading-spell",
+  "name": "Ambuscading Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Creatures take a penalty versus your spells on the surprise round",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ambuscading%20Spell"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "phantom-fighter",
+  "name": "Phantom Fighter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "phantom"
+    },
+    {
+      "type": "rule",
+      "description": "phantom with the magic attacks ability"
+    }
+  ],
+  "benefit": "Phantom’s natural weapon attacks and delivered spells have full effect on incorporeal creatures",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 137,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Phantom%20Fighter"
+  }
+}

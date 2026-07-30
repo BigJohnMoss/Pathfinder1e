@@ -1,0 +1,27 @@
+{
+  "id": "charming-performance",
+  "name": "Charming Performance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Perform (any)",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "bardic performance or raging song"
+    }
+  ],
+  "benefit": "Use perform instead of diplomacy to improve an attitude",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Charming%20Performance"
+  }
+}

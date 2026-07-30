@@ -1,0 +1,17 @@
+{
+  "id": "familiar-spell",
+  "name": "Familiar Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "spellcaster-with-familiar"
+    }
+  ],
+  "benefit": "Imbue your familiar with a spell, allowing it to cast the spell at a later time",
+  "source": {
+    "title": "Animal Archive",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Familiar%20Spell"
+  }
+}

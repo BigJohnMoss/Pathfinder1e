@@ -1,0 +1,34 @@
+{
+  "id": "improved-feinting-flurry",
+  "name": "Improved Feinting Flurry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 17
+    },
+    {
+      "type": "feature",
+      "id": "flurry-of-blows"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "feinting-flurry"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Deny your opponent their Dex bonus when using Feinting Flurry.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Feinting%20Flurry"
+  }
+}

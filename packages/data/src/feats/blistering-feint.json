@@ -1,0 +1,25 @@
+{
+  "id": "blistering-feint",
+  "name": "Blistering Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    },
+    {
+      "type": "rule",
+      "description": "ifrit"
+    }
+  ],
+  "benefit": "+2 on feint checks when wielding a fire weapon",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 130,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blistering%20Feint"
+  }
+}

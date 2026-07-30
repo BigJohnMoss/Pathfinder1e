@@ -1,0 +1,17 @@
+{
+  "id": "inspired-by-fear",
+  "name": "Inspired by Fear",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to perform dirge of doom"
+    }
+  ],
+  "benefit": "You and allies in your dirge of doom effect gain a +4 bonus against fear",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inspired%20by%20Fear"
+  }
+}

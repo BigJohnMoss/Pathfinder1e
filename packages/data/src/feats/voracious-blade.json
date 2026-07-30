@@ -1,0 +1,29 @@
+{
+  "id": "voracious-blade",
+  "name": "Voracious Blade",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(rhoka sword)"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "urdefhan"
+    }
+  ],
+  "benefit": "Channel your daemonic energy through a rhoka sword",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Voracious%20Blade"
+  }
+}

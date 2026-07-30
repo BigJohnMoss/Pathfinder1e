@@ -1,0 +1,17 @@
+{
+  "id": "shadows-embrace",
+  "name": "Shadow's Embrace",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "shadow-illusion"
+    }
+  ],
+  "benefit": "You can cast darkness using your shadow illusion ability",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shadow's%20Embrace"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "flaying-critical",
+  "name": "Flaying Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Reduce the opponent’s natural armor when scoring a critical hit",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flaying%20Critical"
+  }
+}

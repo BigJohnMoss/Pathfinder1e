@@ -1,0 +1,25 @@
+{
+  "id": "heavenly-radiance",
+  "name": "Heavenly Radiance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "daylight spell-like ability"
+    },
+    {
+      "type": "rule",
+      "description": "sufficiently high level (see below)"
+    }
+  ],
+  "benefit": "Gain an additional use of daylight , expend your use of it to use other spells",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Heavenly%20Radiance"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "darting-retrieval",
+  "name": "Darting Retrieval",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-disarm"
+    }
+  ],
+  "benefit": "Kick disarmed items out of the way before the enemy can retrieve them",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Darting%20Retrieval"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "dryads-attendant",
+  "name": "Dryad's Attendant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "Dryad’s Apprentice"
+    },
+    {
+      "type": "level",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "You can meld with trees and serve as a bonded tree of a dryad",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dryad's%20Attendant"
+  }
+}

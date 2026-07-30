@@ -1,0 +1,12 @@
+{
+  "id": "psychic-sensitivity",
+  "name": "Psychic Sensitivity",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Use occult skill unlocks for trained skills",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychic%20Sensitivity"
+  }
+}

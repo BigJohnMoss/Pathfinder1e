@@ -1,0 +1,22 @@
+{
+  "id": "structural-strike",
+  "name": "Structural Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "precise strike class feature or precise strike ACG deed"
+    }
+  ],
+  "benefit": "Use precise strike against creatures normally immune",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 92,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Structural%20Strike"
+  }
+}

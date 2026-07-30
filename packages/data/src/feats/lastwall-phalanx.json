@@ -1,0 +1,21 @@
+{
+  "id": "lastwall-phalanx",
+  "name": "Lastwall Phalanx",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "good alignment"
+    }
+  ],
+  "benefit": "Bonus to AC and saves against evil creatures depending on the number of adjacent allies",
+  "source": {
+    "title": "Champions of Purity",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lastwall%20Phalanx"
+  }
+}

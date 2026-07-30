@@ -1,0 +1,12 @@
+{
+  "id": "invested-magic",
+  "name": "Invested Magic",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Use gold or gems instead of normal spell material components",
+  "source": {
+    "title": "Pathfinder #30: The Twice-Damned Prince",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Invested%20Magic"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "befuddling-initiative",
+  "name": "Befuddling Initiative",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-initiative"
+    }
+  ],
+  "benefit": "Treat all opponents as flat-footed during the surprise round",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Befuddling%20Initiative"
+  }
+}

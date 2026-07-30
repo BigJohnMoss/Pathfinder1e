@@ -1,0 +1,29 @@
+{
+  "id": "stock-striker-sweep",
+  "name": "Stock-Striker Sweep",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stock-striker-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 7
+    },
+    {
+      "type": "feat",
+      "id": "gunslinger"
+    },
+    {
+      "type": "rule",
+      "description": "pistol-whip deed"
+    }
+  ],
+  "benefit": "Follow through when using the pistol-whip deed",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stock-Striker%20Sweep"
+  }
+}

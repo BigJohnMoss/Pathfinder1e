@@ -1,0 +1,21 @@
+{
+  "id": "poppet-familiar",
+  "name": "Poppet Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to acquire a new familiar"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Take a poppet as a familiar",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Poppet%20Familiar"
+  }
+}

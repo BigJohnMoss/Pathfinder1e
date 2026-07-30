@@ -1,0 +1,29 @@
+{
+  "id": "stunning-croak",
+  "name": "Stunning Croak",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "sonic-croak"
+    },
+    {
+      "type": "feat",
+      "id": "throat-pouch"
+    },
+    {
+      "type": "rule",
+      "description": "boggard"
+    },
+    {
+      "type": "rule",
+      "description": "terrifying croak"
+    }
+  ],
+  "benefit": "Stun creatures with your croak",
+  "source": {
+    "title": "Monster Codex",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stunning%20Croak"
+  }
+}

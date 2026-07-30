@@ -1,0 +1,30 @@
+{
+  "id": "throw-back-arrows",
+  "name": "Throw Back Arrows",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "deflect-arrows"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "snatch-arrows"
+    }
+  ],
+  "benefit": "Throw a caught piece of ammunition when using snatch arrows",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Throw%20Back%20Arrows"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "diva-advance",
+  "name": "Diva Advance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "diva-strike"
+    },
+    {
+      "type": "feat",
+      "id": "diva-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or bard level 11th"
+    }
+  ],
+  "benefit": "You don't provoke attacks of opportunity from foes you feinted against",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 176,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diva%20Advance"
+  }
+}

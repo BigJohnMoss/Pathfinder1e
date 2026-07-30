@@ -1,0 +1,27 @@
+{
+  "id": "blunt-blade",
+  "name": "Blunt Blade",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Blood curse causes a creature to fail any critical confirmation roll",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blunt%20Blade"
+  }
+}

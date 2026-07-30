@@ -1,0 +1,38 @@
+{
+  "id": "titans-tangle",
+  "name": "Titan's Tangle",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "feat",
+      "id": "tangled-limbs"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    }
+  ],
+  "benefit": "Trip larger creatures when using a reach weapon",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Titan's%20Tangle"
+  }
+}

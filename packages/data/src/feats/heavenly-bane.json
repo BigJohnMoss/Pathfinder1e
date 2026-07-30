@@ -1,0 +1,17 @@
+{
+  "id": "heavenly-bane",
+  "name": "Heavenly Bane",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bane"
+    }
+  ],
+  "benefit": "Weapons affected by bane are treated as lawful- and good-aligned",
+  "source": {
+    "title": "Distant Realms",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Heavenly%20Bane"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "glorious-blaze",
+  "name": "Glorious Blaze",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    },
+    {
+      "type": "rule",
+      "description": "worshipper of Sarenrae"
+    }
+  ],
+  "benefit": "Preform a wild dance in honor of Sarenrae to aid your allies",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Glorious%20Blaze"
+  }
+}

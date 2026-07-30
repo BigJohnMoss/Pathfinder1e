@@ -1,0 +1,25 @@
+{
+  "id": "blasting-boulder",
+  "name": "Blasting Boulder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "smoking-boulder"
+    },
+    {
+      "type": "bab",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "heat rock special attack"
+    }
+  ],
+  "benefit": "Hurled boulders explode on impact.",
+  "source": {
+    "title": "Giants Revisited",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blasting%20Boulder"
+  }
+}

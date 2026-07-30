@@ -1,0 +1,21 @@
+{
+  "id": "flame-warrior",
+  "name": "Flame Warrior",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fire subtype"
+    },
+    {
+      "type": "rule",
+      "description": "giant subtype"
+    }
+  ],
+  "benefit": "Metal melee weapons you wield gain 1d6 fire damage",
+  "source": {
+    "title": "Pathfinder #91: Battle of Bloodmarch Hills",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flame%20Warrior"
+  }
+}

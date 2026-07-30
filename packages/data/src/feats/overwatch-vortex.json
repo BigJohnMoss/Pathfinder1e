@@ -1,0 +1,41 @@
+{
+  "id": "overwatch-vortex",
+  "name": "Overwatch Vortex",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "overwatch-style"
+    },
+    {
+      "type": "feat",
+      "id": "overwatch-tactician"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "feat",
+      "id": "rapid-shot"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Ready up to four ranged attacks with Overwatch Style instead of two",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Overwatch%20Vortex"
+  }
+}

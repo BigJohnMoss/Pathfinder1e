@@ -1,0 +1,26 @@
+{
+  "id": "arcane-school-spirit",
+  "name": "Arcane School Spirit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "feature",
+      "id": "arcane-school"
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    }
+  ],
+  "benefit": "Talk up your spells, making them harder to resist",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20School%20Spirit"
+  }
+}

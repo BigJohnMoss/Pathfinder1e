@@ -1,0 +1,31 @@
+{
+  "id": "enlightened-noble",
+  "name": "Enlightened Noble",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "noble-scion"
+    },
+    {
+      "type": "rule",
+      "description": "ISWG"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nobility)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Improve your Noble Scion bonus",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Enlightened%20Noble"
+  }
+}

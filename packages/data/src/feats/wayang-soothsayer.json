@@ -1,0 +1,17 @@
+{
+  "id": "wayang-soothsayer",
+  "name": "Wayang Soothsayer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wayang"
+    }
+  ],
+  "benefit": "Improve the power of Shadow Speaker",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wayang%20Soothsayer"
+  }
+}

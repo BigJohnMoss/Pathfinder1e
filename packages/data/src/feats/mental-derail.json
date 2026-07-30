@@ -1,0 +1,17 @@
+{
+  "id": "mental-derail",
+  "name": "Mental Derail",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    }
+  ],
+  "benefit": "Shout nonsense to distract a creature",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mental%20Derail"
+  }
+}

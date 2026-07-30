@@ -1,0 +1,38 @@
+{
+  "id": "improved-surprise-follow-through",
+  "name": "Improved Surprise Follow-Through",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "cleave"
+    },
+    {
+      "type": "feat",
+      "id": "great-cleave"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "Surprise Follow Through"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Deny opponents their Dex bonus when using Great Cleave",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Surprise%20Follow-Through"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "excoriating-stare",
+  "name": "Excoriating Stare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 11
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Painful stare causes the sickened condition",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Excoriating%20Stare"
+  }
+}

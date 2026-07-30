@@ -1,0 +1,30 @@
+{
+  "id": "tenacious-survivor",
+  "name": "Tenacious Survivor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "diehard"
+    },
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "rule",
+      "description": "half-orc or orc"
+    }
+  ],
+  "benefit": "Linger on to be healed even after death",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tenacious%20Survivor"
+  }
+}

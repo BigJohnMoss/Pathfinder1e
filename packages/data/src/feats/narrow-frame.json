@@ -1,0 +1,22 @@
+{
+  "id": "narrow-frame",
+  "name": "Narrow Frame",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Escape Artist",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "animal or magical beast"
+    }
+  ],
+  "benefit": "Avoid penalties on attack and AC when squeezing",
+  "source": {
+    "title": "Animal Archive",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Narrow%20Frame"
+  }
+}

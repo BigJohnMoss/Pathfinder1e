@@ -1,0 +1,17 @@
+{
+  "id": "surprise-maneuver",
+  "name": "Surprise Maneuver",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Combat Expertise; sneak attack +3d6 or studied strike +3d6"
+    }
+  ],
+  "benefit": "Gain a bonus on combat maneuver checks against flanked foes and those denied their Dex bonus to AC",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 157,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Surprise%20Maneuver"
+  }
+}

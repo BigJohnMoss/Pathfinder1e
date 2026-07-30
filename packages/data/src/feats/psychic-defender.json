@@ -1,0 +1,26 @@
+{
+  "id": "psychic-defender",
+  "name": "Psychic Defender",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or the ability to cast psychic spells or use psychic spell-like abilities"
+    },
+    {
+      "type": "level",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain free temporary hit points when starting a psychic duel",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychic%20Defender"
+  }
+}

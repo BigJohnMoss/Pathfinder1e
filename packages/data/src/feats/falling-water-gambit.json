@@ -1,0 +1,49 @@
+{
+  "id": "falling-water-gambit",
+  "name": "Falling Water Gambit",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "aldori-dueling-disciple"
+    },
+    {
+      "type": "feat",
+      "id": "duelist-of-the-roaring-falls"
+    },
+    {
+      "type": "feat",
+      "id": "duelist-of-the-shrouded-lake"
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Increase threat ranged of Aldori dueling sword versus foes you feint against",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Falling%20Water%20Gambit"
+  }
+}

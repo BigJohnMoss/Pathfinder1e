@@ -1,0 +1,22 @@
+{
+  "id": "civilized-ghoulishness",
+  "name": "Civilized Ghoulishness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ghoul"
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 18
+    }
+  ],
+  "benefit": "Learn to pass as a human",
+  "source": {
+    "title": "Classic Horrors Revisited",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Civilized%20Ghoulishness"
+  }
+}

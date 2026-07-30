@@ -1,0 +1,25 @@
+{
+  "id": "vermin-companion",
+  "name": "Vermin Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "vermin-heart"
+    },
+    {
+      "type": "feature",
+      "id": "animal-companion"
+    },
+    {
+      "type": "feature",
+      "id": "wild-empathy"
+    }
+  ],
+  "benefit": "Take a vermin as a companion instead of an animal",
+  "source": {
+    "title": "Revenge of the Kobold King",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vermin%20Companion"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "bred-commander",
+  "name": "Bred Commander",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Hobgoblin"
+    }
+  ],
+  "benefit": "Add class level to Morale checks when in mass combat",
+  "source": {
+    "title": "Monster Codex",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bred%20Commander"
+  }
+}

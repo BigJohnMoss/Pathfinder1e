@@ -1,0 +1,26 @@
+{
+  "id": "mirror-move",
+  "name": "Mirror Move",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Mirror uses of your opponents’ feats",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mirror%20Move"
+  }
+}

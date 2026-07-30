@@ -1,0 +1,17 @@
+{
+  "id": "inspired-strike",
+  "name": "Inspired Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "studied-combat"
+    }
+  ],
+  "benefit": "Expend inspiration to increase the damage dealt with the studied combat",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inspired%20Strike"
+  }
+}

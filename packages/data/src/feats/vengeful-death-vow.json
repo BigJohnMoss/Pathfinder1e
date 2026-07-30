@@ -1,0 +1,17 @@
+{
+  "id": "vengeful-death-vow",
+  "name": "Vengeful Death Vow",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "death-vow"
+    }
+  ],
+  "benefit": "Targets of death vow take -2 attack against you",
+  "source": {
+    "title": "Pathfinder: Worldscape #1",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vengeful%20Death%20Vow"
+  }
+}

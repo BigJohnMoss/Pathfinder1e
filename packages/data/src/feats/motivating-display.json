@@ -1,0 +1,26 @@
+{
+  "id": "motivating-display",
+  "name": "Motivating Display",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    }
+  ],
+  "benefit": "Motivate your allies while demoralizing your foes",
+  "source": {
+    "title": "Blood of the Moon",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Motivating%20Display"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "exotic-heritage",
+  "name": "Exotic Heritage",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain a +2 bonus on skills checks with a skill of your choice, and adjust prerequisites for the Eldritch Heritage feat",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 110,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Exotic%20Heritage"
+  }
+}

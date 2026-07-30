@@ -1,0 +1,25 @@
+{
+  "id": "baneful-judgment",
+  "name": "Baneful Judgment",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bane-apg"
+    },
+    {
+      "type": "feature",
+      "id": "judgment-apg"
+    },
+    {
+      "type": "feature",
+      "id": "monster-lore-apg"
+    }
+  ],
+  "benefit": "Spend 1 round of bane to gain a temporary judgement against an identified creature",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Baneful%20Judgment"
+  }
+}

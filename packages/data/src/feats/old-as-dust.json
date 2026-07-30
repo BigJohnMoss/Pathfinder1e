@@ -1,0 +1,25 @@
+{
+  "id": "old-as-dust",
+  "name": "Old as Dust",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "sleeper"
+    },
+    {
+      "type": "feat",
+      "id": "warren-digger"
+    },
+    {
+      "type": "rule",
+      "description": "creature has been a ghoul for at least 500 years"
+    }
+  ],
+  "benefit": "Avoid death unless completely destroyed",
+  "source": {
+    "title": "Monster Codex",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Old%20as%20Dust"
+  }
+}

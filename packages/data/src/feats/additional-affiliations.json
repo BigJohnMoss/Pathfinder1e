@@ -1,0 +1,12 @@
+{
+  "id": "additional-affiliations",
+  "name": "Additional Affiliations",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Increase affiliation slot total by 2",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Additional%20Affiliations"
+  }
+}

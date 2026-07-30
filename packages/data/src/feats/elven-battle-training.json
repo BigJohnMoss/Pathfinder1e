@@ -1,0 +1,21 @@
+{
+  "id": "elven-battle-training",
+  "name": "Elven Battle Training",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "elf"
+    }
+  ],
+  "benefit": "Gain bonuses with traditional elven weapons",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elven%20Battle%20Training"
+  }
+}

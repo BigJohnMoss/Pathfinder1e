@@ -1,0 +1,27 @@
+{
+  "id": "improved-natural-poison-harvester",
+  "name": "Improved Natural Poison Harvester",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "natural-poison-harvester"
+    },
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 9
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Gain 1d4 additional doses when you harvest poison",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 114,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Natural%20Poison%20Harvester"
+  }
+}

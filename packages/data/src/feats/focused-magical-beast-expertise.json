@@ -1,0 +1,17 @@
+{
+  "id": "focused-magical-beast-expertise",
+  "name": "Focused Magical Beast Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-magical-beast"
+    }
+  ],
+  "benefit": "Gain cover against creatures attacking you with multiple natural attacks",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Magical%20Beast%20Expertise"
+  }
+}

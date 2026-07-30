@@ -1,0 +1,25 @@
+{
+  "id": "beartrap-bite",
+  "name": "Beartrap Bite",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(bite)"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Clamp down on your opponent when critically hitting with your bite attack",
+  "source": {
+    "title": "Blood of the Moon",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beartrap%20Bite"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "shamed",
+  "name": "Shamed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have been publicly embarrassed"
+    },
+    {
+      "type": "rule",
+      "description": "or must have the Bastard Born background. If the embarrassment didn’t cause significant harm to your personal honor or social standing"
+    },
+    {
+      "type": "rule",
+      "description": "it does not qualify for the feat prerequisites. The humiliation doesn’t need to have been unjustified"
+    }
+  ],
+  "benefit": "Get bonuses in combat when observed by others",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shamed"
+  }
+}

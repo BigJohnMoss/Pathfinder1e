@@ -1,0 +1,12 @@
+{
+  "id": "apocalyptic-spell",
+  "name": "Apocalyptic Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Area affected by spell becomes difficult to move in",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Apocalyptic%20Spell"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "vanguard-hustle",
+  "name": "Vanguard Hustle",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "bodyguard"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "combat-patrol"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "feat",
+      "id": "saving-shield"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "vanguard-style"
+    },
+    {
+      "type": "feat",
+      "id": "vanguard-ward"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with light or heavy shields"
+    }
+  ],
+  "benefit": "Add half your shields enhancement bonus when using Saving Shield",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vanguard%20Hustle"
+  }
+}

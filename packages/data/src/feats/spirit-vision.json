@@ -1,0 +1,22 @@
+{
+  "id": "spirit-vision",
+  "name": "Spirit Vision",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Magic jar as a known spell or spell-like ability"
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    }
+  ],
+  "benefit": "Increase your senses while using magic jar .",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Vision"
+  }
+}

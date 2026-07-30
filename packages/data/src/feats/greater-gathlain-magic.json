@@ -1,0 +1,30 @@
+{
+  "id": "greater-gathlain-magic",
+  "name": "Greater Gathlain Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "advanced-gathlain-magic"
+    },
+    {
+      "type": "level",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Gain even more spell-like abilities",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Gathlain%20Magic"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "group-shared-spells",
+  "name": "Group Shared Spells",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "share-spells"
+    },
+    {
+      "type": "rule",
+      "description": "Familiar with the ability"
+    }
+  ],
+  "benefit": "Your allies can share spells with your familiar",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Group%20Shared%20Spells"
+  }
+}

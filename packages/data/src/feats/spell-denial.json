@@ -1,0 +1,25 @@
+{
+  "id": "spell-denial",
+  "name": "Spell Denial",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Con"
+    },
+    {
+      "type": "rule",
+      "description": "Dex"
+    },
+    {
+      "type": "rule",
+      "description": "or Wis 13"
+    }
+  ],
+  "benefit": "+2 bonus on all saving throws versus a specific school",
+  "source": {
+    "title": "Arcane Anthology",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Denial"
+  }
+}

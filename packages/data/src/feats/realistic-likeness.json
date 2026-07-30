@@ -1,0 +1,17 @@
+{
+  "id": "realistic-likeness",
+  "name": "Realistic Likeness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Kitsune"
+    }
+  ],
+  "benefit": "Take the shape of specific people when in human form",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 193,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Realistic%20Likeness"
+  }
+}

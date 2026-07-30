@@ -1,0 +1,12 @@
+{
+  "id": "brackish-spell",
+  "name": "Brackish Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Modfy a spell to sheath you in protective seawater when cast",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brackish%20Spell"
+  }
+}

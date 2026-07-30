@@ -1,0 +1,17 @@
+{
+  "id": "lightning-rager",
+  "name": "Lightning Rager",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Can enter rage immediately in a surprise round, gain bonus AC",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lightning%20Rager"
+  }
+}

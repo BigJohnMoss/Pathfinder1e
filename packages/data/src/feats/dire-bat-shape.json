@@ -1,0 +1,30 @@
+{
+  "id": "dire-bat-shape",
+  "name": "Dire Bat Shape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "bat-shape"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "werebat-kin"
+    }
+  ],
+  "benefit": "Learn how to change shape into a dire bat",
+  "source": {
+    "title": "Blood of the Moon",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dire%20Bat%20Shape"
+  }
+}

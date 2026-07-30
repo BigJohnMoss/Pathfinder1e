@@ -1,0 +1,25 @@
+{
+  "id": "shield-material-mastery",
+  "name": "Shield Material Mastery*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "Shield Material Expertise"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or fighter level 8th"
+    }
+  ],
+  "benefit": "Use Shield Material Experties two additional times per day",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Material%20Mastery*"
+  }
+}

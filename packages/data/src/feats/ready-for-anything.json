@@ -1,0 +1,33 @@
+{
+  "id": "ready-for-anything",
+  "name": "Ready for Anything",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "feat",
+      "id": "improved-initiative"
+    },
+    {
+      "type": "feat",
+      "id": "lightning-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "quick-draw"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or uncanny dodge class feature"
+    }
+  ],
+  "benefit": "Always act on the surprise round",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 90,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ready%20for%20Anything"
+  }
+}

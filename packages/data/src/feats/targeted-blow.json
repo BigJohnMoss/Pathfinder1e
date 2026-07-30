@@ -1,0 +1,34 @@
+{
+  "id": "targeted-blow",
+  "name": "Targeted Blow",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a melee weapon"
+    }
+  ],
+  "benefit": "Target a specific body part with an attack",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Targeted%20Blow"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "improved-hammer-throw",
+  "name": "Improved Hammer Throw",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "hammer-throw"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    }
+  ],
+  "benefit": "Trip larger opponents from further away when using Hammer Throw",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Hammer%20Throw"
+  }
+}

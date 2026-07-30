@@ -1,0 +1,34 @@
+{
+  "id": "electric-eel-style",
+  "name": "Electric Eel Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "elemental-fist"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 5th"
+    }
+  ],
+  "benefit": "Gain a bonus on grapple combat maneuvers when you hit a creature with Elemental Fist",
+  "source": {
+    "title": "Blood of the Sea",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Electric%20Eel%20Style"
+  }
+}

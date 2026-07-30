@@ -1,0 +1,22 @@
+{
+  "id": "wilding-stride",
+  "name": "Wilding Stride",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "wilding"
+    }
+  ],
+  "benefit": "Base speed increases by 10 feet",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 120,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wilding%20Stride"
+  }
+}

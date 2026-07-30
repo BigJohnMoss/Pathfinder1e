@@ -1,0 +1,17 @@
+{
+  "id": "unimpeachable-honor",
+  "name": "Unimpeachable Honor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "+4 bonus to avoid violating beliefes, -4 penalty on attack rolls and damage rolls versus allies",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 95,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unimpeachable%20Honor"
+  }
+}

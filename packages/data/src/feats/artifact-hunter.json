@@ -1,0 +1,17 @@
+{
+  "id": "artifact-hunter",
+  "name": "Artifact Hunter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have come within sight of a legendary artifact at some point in your past"
+    }
+  ],
+  "benefit": "Coax more out of your magical items",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Artifact%20Hunter"
+  }
+}

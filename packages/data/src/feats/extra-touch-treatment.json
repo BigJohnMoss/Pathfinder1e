@@ -1,0 +1,17 @@
+{
+  "id": "extra-touch-treatment",
+  "name": "Extra Touch Treatment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "touch-treatment"
+    }
+  ],
+  "benefit": "Use touch treatment two additional times per day",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Touch%20Treatment"
+  }
+}

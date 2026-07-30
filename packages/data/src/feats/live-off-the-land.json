@@ -1,0 +1,17 @@
+{
+  "id": "live-off-the-land",
+  "name": "Live off the Land",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-terrain"
+    }
+  ],
+  "benefit": "Move at full speed and gain a +4 bonus on Survival checks when using Survival to gather food",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 115,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Live%20off%20the%20Land"
+  }
+}

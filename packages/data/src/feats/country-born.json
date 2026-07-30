@@ -1,0 +1,21 @@
+{
+  "id": "country-born",
+  "name": "Country Born",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "1st-level character"
+    },
+    {
+      "type": "rule",
+      "description": "cannot have City Born or Lone Wolf"
+    }
+  ],
+  "benefit": "Ignore fatigue and gain a +1 bonus to Will saves",
+  "source": {
+    "title": "Rise of the Runelords Player's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Country%20Born"
+  }
+}

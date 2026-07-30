@@ -1,0 +1,17 @@
+{
+  "id": "spiked-destroyer",
+  "name": "Spiked Destroyer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficient with armor spikes"
+    }
+  ],
+  "benefit": "Use your armor spikes against foes you bull rush or overrun",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 216,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spiked%20Destroyer"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "wild-flanking",
+  "name": "Wild Flanking",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Hit an enemy with stronger power attacks, but risk damaging your allies",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wild%20Flanking"
+  }
+}

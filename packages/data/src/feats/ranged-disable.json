@@ -1,0 +1,30 @@
+{
+  "id": "ranged-disable",
+  "name": "Ranged Disable",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "far-shot"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Use a ranged weapon for Disable Device",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ranged%20Disable"
+  }
+}

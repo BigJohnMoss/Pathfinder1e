@@ -1,0 +1,17 @@
+{
+  "id": "mobile-acrobat",
+  "name": "Mobile Acrobat",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Racial bonus to Dexterity"
+    }
+  ],
+  "benefit": "Reduce the movement speed penalty for certain Acrobatics checks",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mobile%20Acrobat"
+  }
+}

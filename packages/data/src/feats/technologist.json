@@ -1,0 +1,12 @@
+{
+  "id": "technologist",
+  "name": "Technologist",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Can use skills to interact with technology",
+  "source": {
+    "title": "Iron Gods Player's Guide",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Technologist"
+  }
+}

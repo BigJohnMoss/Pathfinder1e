@@ -1,0 +1,21 @@
+{
+  "id": "shatter-resolve",
+  "name": "Shatter Resolve",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Urgathoa"
+    }
+  ],
+  "benefit": "Creatures damaged by your channeled negative energy become shaken",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 216,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shatter%20Resolve"
+  }
+}

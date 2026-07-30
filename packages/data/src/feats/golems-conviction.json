@@ -1,0 +1,25 @@
+{
+  "id": "golems-conviction",
+  "name": "Golem's Conviction",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-iron-will"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "When initially mind controlled, temporarily retain some autonomy",
+  "source": {
+    "title": "Druma, Profit and Prophecy",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Golem's%20Conviction"
+  }
+}

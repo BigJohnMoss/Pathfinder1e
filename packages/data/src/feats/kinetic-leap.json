@@ -1,0 +1,22 @@
+{
+  "id": "kinetic-leap",
+  "name": "Kinetic Leap",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "kinetic-blast"
+    }
+  ],
+  "benefit": "Use blast to add +10 on Acrobatics checks to jump (+20 at 10 ranks)",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 136,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kinetic%20Leap"
+  }
+}

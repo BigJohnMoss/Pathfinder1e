@@ -1,0 +1,34 @@
+{
+  "id": "bulette-leap",
+  "name": "Bulette Leap",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "bulette-charge-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-overrun"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with heavy armor"
+    }
+  ],
+  "benefit": "Overrun multiple opponents and add your Strength on Acrobatics checks to jump",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bulette%20Leap"
+  }
+}

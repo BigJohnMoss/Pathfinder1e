@@ -1,0 +1,25 @@
+{
+  "id": "kobold-groundling",
+  "name": "Kobold Groundling",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "kobold-style"
+    },
+    {
+      "type": "rule",
+      "description": "Small size or smaller"
+    }
+  ],
+  "benefit": "Prone creatures are denied their Dex bonus to AC",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kobold%20Groundling"
+  }
+}

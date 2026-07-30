@@ -1,0 +1,23 @@
+{
+  "id": "wrest-charge",
+  "name": "Wrest Charge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Jury-rig a depleted battery to hold 1 charge",
+  "source": {
+    "title": "Technology Guide",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wrest%20Charge"
+  }
+}

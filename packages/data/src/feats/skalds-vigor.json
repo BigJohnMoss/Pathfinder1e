@@ -1,0 +1,17 @@
+{
+  "id": "skalds-vigor",
+  "name": "Skald's Vigor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "raging-song"
+    }
+  ],
+  "benefit": "Gain fast healing while raging and performing or performing raging song",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Skald's%20Vigor"
+  }
+}

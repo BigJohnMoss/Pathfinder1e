@@ -1,0 +1,22 @@
+{
+  "id": "multiweapon-defense",
+  "name": "Multiweapon Defense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Three or more arms"
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 21
+    }
+  ],
+  "benefit": "Sacrifice some attacks to parry blows.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 38,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Multiweapon%20Defense"
+  }
+}

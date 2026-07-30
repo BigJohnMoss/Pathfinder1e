@@ -1,0 +1,21 @@
+{
+  "id": "peacemaker",
+  "name": "Peacemaker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Charisma 13"
+    },
+    {
+      "type": "rule",
+      "description": "good alignment"
+    }
+  ],
+  "benefit": "Increase the save DC of spells that calm others",
+  "source": {
+    "title": "Champions of Purity",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Peacemaker"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "unfettered-familiar",
+  "name": "Unfettered Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "familiar"
+    }
+  ],
+  "benefit": "Bestow touch spells on your familiar from a distance",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unfettered%20Familiar"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "fan-bearer-at-the-kings-right-hand",
+  "name": "Fan-Bearer at the King's Right Hand",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Shabti"
+    }
+  ],
+  "benefit": "Chosen ally gains your defensive racial resistances",
+  "source": {
+    "title": "Pathfinder #139: The Dead Roads",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fan-Bearer%20at%20the%20King's%20Right%20Hand"
+  }
+}

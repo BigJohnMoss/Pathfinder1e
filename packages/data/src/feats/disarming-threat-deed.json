@@ -1,0 +1,22 @@
+{
+  "id": "disarming-threat-deed",
+  "name": "Disarming Threat Deed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Swashbuckler or panache class feature; Diplomacy 2 ranks"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Use Intimidate without making the target unfriendly",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 144,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Disarming%20Threat%20Deed"
+  }
+}

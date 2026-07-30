@@ -1,0 +1,29 @@
+{
+  "id": "alien-mindpaths",
+  "name": "Alien Mindpaths",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Android"
+    },
+    {
+      "type": "rule",
+      "description": "kasatha"
+    },
+    {
+      "type": "rule",
+      "description": "lashunta"
+    },
+    {
+      "type": "rule",
+      "description": "or Triaxian"
+    }
+  ],
+  "benefit": "Gain +4 on saves vs. mind-affecting effects and scrying",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 201,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Alien%20Mindpaths"
+  }
+}

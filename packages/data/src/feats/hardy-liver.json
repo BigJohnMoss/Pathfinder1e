@@ -1,0 +1,17 @@
+{
+  "id": "hardy-liver",
+  "name": "Hardy Liver",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "great-fortitude"
+    }
+  ],
+  "benefit": "Bonus on saving throws against ingested poisons and alcohol",
+  "source": {
+    "title": "Inner Sea Taverns",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hardy%20Liver"
+  }
+}

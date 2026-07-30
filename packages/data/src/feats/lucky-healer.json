@@ -1,0 +1,25 @@
+{
+  "id": "lucky-healer",
+  "name": "Lucky Healer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Adaptive luck racial trait"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "hal"
+    }
+  ],
+  "benefit": "Use Adaptive Luck to reroll damage healed",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 66,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lucky%20Healer"
+  }
+}

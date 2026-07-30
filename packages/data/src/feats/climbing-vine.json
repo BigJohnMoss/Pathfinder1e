@@ -1,0 +1,22 @@
+{
+  "id": "climbing-vine",
+  "name": "Climbing Vine",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "vine leshy"
+    }
+  ],
+  "benefit": "Gain a climb speed of 10 feet (or improve an existing speed)",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Climbing%20Vine"
+  }
+}

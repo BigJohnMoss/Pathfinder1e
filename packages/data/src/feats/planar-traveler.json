@@ -1,0 +1,17 @@
+{
+  "id": "planar-traveler",
+  "name": "Planar Traveler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must be related to an outsider or have been born on a plane other than the Material Plane"
+    }
+  ],
+  "benefit": "Enhance your survival outside of your home plane",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Traveler"
+  }
+}

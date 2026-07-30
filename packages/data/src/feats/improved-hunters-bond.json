@@ -1,0 +1,22 @@
+{
+  "id": "improved-hunters-bond",
+  "name": "Improved Hunter's Bond",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hunters-bond-hunting-companions"
+    },
+    {
+      "type": "class-level",
+      "classId": "ranger",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Grant your allies full favored enemy bouns",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Hunter's%20Bond"
+  }
+}

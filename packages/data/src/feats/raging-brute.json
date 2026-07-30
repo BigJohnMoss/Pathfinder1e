@@ -1,0 +1,22 @@
+{
+  "id": "raging-brute",
+  "name": "Raging Brute",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 21
+    },
+    {
+      "type": "rule",
+      "description": "ogre"
+    }
+  ],
+  "benefit": "Gain a rage power and the ability to rage 1/day",
+  "source": {
+    "title": "Monster Codex",
+    "page": 153,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Raging%20Brute"
+  }
+}

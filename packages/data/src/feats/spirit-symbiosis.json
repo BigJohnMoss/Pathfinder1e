@@ -1,0 +1,21 @@
+{
+  "id": "spirit-symbiosis",
+  "name": "Spirit Symbiosis",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "speak-with-dead"
+    },
+    {
+      "type": "feature",
+      "id": "phantom"
+    }
+  ],
+  "benefit": "Gain a new emotional focus by merging dead spirits with your phantom",
+  "source": {
+    "title": "Occult Origins",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Symbiosis"
+  }
+}

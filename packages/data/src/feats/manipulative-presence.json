@@ -1,0 +1,25 @@
+{
+  "id": "manipulative-presence",
+  "name": "Manipulative Presence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int or Cha 19"
+    },
+    {
+      "type": "feat",
+      "id": "hidden-presence-feat"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast possession or greater possession"
+    }
+  ],
+  "benefit": "Modify a possessed creature’s memories",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 137,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Manipulative%20Presence"
+  }
+}

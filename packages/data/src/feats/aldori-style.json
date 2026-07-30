@@ -1,0 +1,37 @@
+{
+  "id": "aldori-style",
+  "name": "Aldori Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    }
+  ],
+  "benefit": "Gain a +2 bonus to damage when fighting defensively or using Combat Expertise",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aldori%20Style"
+  }
+}

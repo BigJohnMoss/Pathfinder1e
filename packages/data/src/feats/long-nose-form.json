@@ -1,0 +1,21 @@
+{
+  "id": "long-nose-form",
+  "name": "Long-Nose Form",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "tengu"
+    }
+  ],
+  "benefit": "Learn to shape-shift into a long-nosed human",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 165,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Long-Nose%20Form"
+  }
+}

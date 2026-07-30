@@ -1,0 +1,18 @@
+{
+  "id": "resisting-grappler",
+  "name": "Resisting Grappler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Creatures attempting to grab you provoke an attack of opportunity",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Resisting%20Grappler"
+  }
+}

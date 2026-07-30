@@ -1,0 +1,22 @@
+{
+  "id": "perturbing-stare",
+  "name": "Perturbing Stare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Painful stare removes foe's Dexterity bonus to AC",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Perturbing%20Stare"
+  }
+}

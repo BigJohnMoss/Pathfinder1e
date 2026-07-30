@@ -1,0 +1,30 @@
+{
+  "id": "hurricane-punch",
+  "name": "Hurricane Punch",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Bull rush a creature you strike multiple times",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hurricane%20Punch"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "interweave-composite-blast",
+  "name": "Interweave Composite Blast",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "kinetic-blast"
+    }
+  ],
+  "benefit": "Work together to unleash a composite blast",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 135,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Interweave%20Composite%20Blast"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "twin-fang-lunge",
+  "name": "Twin Fang Lunge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dex 15; Quick Draw; Twin Fang Strike; Twin Fang Style; Two-Weapon Fighting; Acrobatics 8 ranks; base attack bonus +8 or monk level 8th"
+    }
+  ],
+  "benefit": "Move up to twice your speed and use Twin Fang Strike",
+  "source": {
+    "title": "Villain Codex",
+    "page": 105,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Twin%20Fang%20Lunge"
+  }
+}

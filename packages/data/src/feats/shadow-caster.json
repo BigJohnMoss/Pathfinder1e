@@ -1,0 +1,21 @@
+{
+  "id": "shadow-caster",
+  "name": "Shadow Caster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "drow"
+    }
+  ],
+  "benefit": "Cast shadow and darkness spells as if you were two levels higher",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 105,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shadow%20Caster"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "quivering-palm-adept",
+  "name": "Quivering Palm Adept",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "quivering-palm"
+    }
+  ],
+  "benefit": "Add +2 to the saving throw DC of quivering palm.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quivering%20Palm%20Adept"
+  }
+}

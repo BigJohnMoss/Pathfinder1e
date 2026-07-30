@@ -1,0 +1,22 @@
+{
+  "id": "teleportation-mastery",
+  "name": "Teleportation Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude save bonus +6"
+    }
+  ],
+  "benefit": "Cast dimension door with a conjuration-crafted item",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Teleportation%20Mastery"
+  }
+}

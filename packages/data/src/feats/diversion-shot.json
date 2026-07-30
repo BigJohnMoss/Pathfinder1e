@@ -1,0 +1,25 @@
+{
+  "id": "diversion-shot",
+  "name": "Diversion Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stealthy"
+    },
+    {
+      "type": "feat",
+      "id": "target-of-opportunity"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    }
+  ],
+  "benefit": "Use Target of Opportunity to give allies a chance to hide",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diversion%20Shot"
+  }
+}

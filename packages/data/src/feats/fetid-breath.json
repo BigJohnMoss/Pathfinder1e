@@ -1,0 +1,30 @@
+{
+  "id": "fetid-breath",
+  "name": "Fetid Breath",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "corrupted-flesh"
+    },
+    {
+      "type": "rule",
+      "description": "6 HD"
+    },
+    {
+      "type": "rule",
+      "description": "ogre"
+    }
+  ],
+  "benefit": "Exhale a cone of vile air and phlegm",
+  "source": {
+    "title": "Monster Codex",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fetid%20Breath"
+  }
+}

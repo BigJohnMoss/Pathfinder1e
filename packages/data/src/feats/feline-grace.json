@@ -1,0 +1,21 @@
+{
+  "id": "feline-grace",
+  "name": "Feline Grace",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dexterity 13"
+    },
+    {
+      "type": "rule",
+      "description": "catfolk"
+    }
+  ],
+  "benefit": "+2 CMD vs. bull rush, grapple, overrun, reposition, and trip",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Feline%20Grace"
+  }
+}

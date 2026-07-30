@@ -1,0 +1,28 @@
+{
+  "id": "falter",
+  "name": "Falter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Blood curse causes creature to fail at planned actions",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Falter"
+  }
+}

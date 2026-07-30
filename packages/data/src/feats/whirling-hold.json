@@ -1,0 +1,21 @@
+{
+  "id": "whirling-hold",
+  "name": "Whirling Hold",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "You can sicken your opponent with a successful check to maintain the grapple",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Whirling%20Hold"
+  }
+}

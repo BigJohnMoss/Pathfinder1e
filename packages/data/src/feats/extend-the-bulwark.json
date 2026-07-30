@@ -1,0 +1,12 @@
+{
+  "id": "extend-the-bulwark",
+  "name": "Extend the Bulwark",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Extend the protection of your armor to your allies",
+  "source": {
+    "title": "Magical Marketplace",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extend%20the%20Bulwark"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "tangle-feet",
+  "name": "Tangle Feet",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "feat",
+      "id": "underfoot"
+    },
+    {
+      "type": "rule",
+      "description": "goblin"
+    },
+    {
+      "type": "rule",
+      "description": "Small size or smaller"
+    }
+  ],
+  "benefit": "Trip up larger opponents when you use Acrobatics to move through their square",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tangle%20Feet"
+  }
+}

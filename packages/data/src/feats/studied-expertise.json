@@ -1,0 +1,17 @@
+{
+  "id": "studied-expertise",
+  "name": "Studied Expertise",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Inspirational expertise investigator talent ACG"
+    }
+  ],
+  "benefit": "Grant allies a +4 insight bonus to attack against one creature type",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Studied%20Expertise"
+  }
+}

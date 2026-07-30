@@ -1,0 +1,21 @@
+{
+  "id": "drow-nobility",
+  "name": "Drow Nobility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Able to use drow spell-like abilities"
+    },
+    {
+      "type": "rule",
+      "description": "drow"
+    }
+  ],
+  "benefit": "Increase your drow spell-like abilities",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 105,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Drow%20Nobility"
+  }
+}

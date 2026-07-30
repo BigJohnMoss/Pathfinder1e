@@ -1,0 +1,17 @@
+{
+  "id": "summon-evil-monster",
+  "name": "Summon Evil Monster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Evil alignment"
+    }
+  ],
+  "benefit": "Add a large number of evil creatures to your summon monster list",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Summon%20Evil%20Monster"
+  }
+}

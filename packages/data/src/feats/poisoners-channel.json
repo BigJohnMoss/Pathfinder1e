@@ -1,0 +1,21 @@
+{
+  "id": "poisoners-channel",
+  "name": "Poisoner's Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 3d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Norgorber"
+    }
+  ],
+  "benefit": "Channel negative energy to deal damage and impose a –4 penalty on saving throws to resist poison",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Poisoner's%20Channel"
+  }
+}

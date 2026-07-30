@@ -1,0 +1,17 @@
+{
+  "id": "untwisting-iron-skin",
+  "name": "Untwisting Iron Skin",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Str 15; Wis 13; Perfect Style; Toughness; Untwisting Iron Strength; base attack bonus +13 or monk level 13th"
+    }
+  ],
+  "benefit": "Gain DR/adamantine, and gain DR/— when you break certain objects",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 107,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Untwisting%20Iron%20Skin"
+  }
+}

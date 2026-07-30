@@ -1,0 +1,21 @@
+{
+  "id": "greater-dirge-of-doom",
+  "name": "Greater Dirge of Doom",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-dirge-of-doom"
+    },
+    {
+      "type": "rule",
+      "description": "ability to perform dirge of doom"
+    }
+  ],
+  "benefit": "Your dirge effects linger and can cause fear up to panicked",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 149,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Dirge%20of%20Doom"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "fey-friend",
+  "name": "Fey Friend",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Worshiper of one of the Eldest"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Bluff, Diplomacy, and Sense Motive checks against fey",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 212,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fey%20Friend"
+  }
+}

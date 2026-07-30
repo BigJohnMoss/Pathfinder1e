@@ -1,0 +1,21 @@
+{
+  "id": "calm-disposition",
+  "name": "Calm Disposition",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "prophet"
+    },
+    {
+      "type": "rule",
+      "description": "s of Kalistrade 10 TPA"
+    }
+  ],
+  "benefit": "+2 save vs. effects that affect your composure",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Calm%20Disposition"
+  }
+}

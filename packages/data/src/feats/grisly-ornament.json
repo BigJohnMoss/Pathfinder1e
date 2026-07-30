@@ -1,0 +1,17 @@
+{
+  "id": "grisly-ornament",
+  "name": "Grisly Ornament",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "harvest-parts"
+    }
+  ],
+  "benefit": "Craft grotesque ornaments that provide moral bonuses to AC, attack, CMB, CMD, saves, or skills",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grisly%20Ornament"
+  }
+}

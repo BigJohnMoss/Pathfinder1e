@@ -1,0 +1,21 @@
+{
+  "id": "inner-breath",
+  "name": "Inner Breath",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "sylph"
+    }
+  ],
+  "benefit": "You no longer need to breathe",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inner%20Breath"
+  }
+}

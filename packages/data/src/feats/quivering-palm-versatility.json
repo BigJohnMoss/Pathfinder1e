@@ -1,0 +1,21 @@
+{
+  "id": "quivering-palm-versatility",
+  "name": "Quivering Palm Versatility",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "quivering-palm"
+    },
+    {
+      "type": "bab",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Alter the way you use your quivering palm.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quivering%20Palm%20Versatility"
+  }
+}

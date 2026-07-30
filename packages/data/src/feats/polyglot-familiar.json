@@ -1,0 +1,17 @@
+{
+  "id": "polyglot-familiar",
+  "name": "Polyglot Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must have a familiar"
+    }
+  ],
+  "benefit": "Your familiar can speak with other creatures",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Polyglot%20Familiar"
+  }
+}

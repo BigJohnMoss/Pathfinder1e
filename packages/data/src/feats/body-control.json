@@ -1,0 +1,22 @@
+{
+  "id": "body-control",
+  "name": "Body Control",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 11
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    }
+  ],
+  "benefit": "+1 Fort vs. poison, disease, starvation, fatigue/exhausted effects. Eat less food, drink less water, sleep half as much.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Body%20Control"
+  }
+}

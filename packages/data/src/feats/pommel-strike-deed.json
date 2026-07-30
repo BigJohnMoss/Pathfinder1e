@@ -1,0 +1,17 @@
+{
+  "id": "pommel-strike-deed",
+  "name": "Pommel Strike Deed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Swashbuckler or panache class feature; base attack bonus +3"
+    }
+  ],
+  "benefit": "Attack with a light or one-handed piercing weapon’s pommel and knock down foes",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 153,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pommel%20Strike%20Deed"
+  }
+}

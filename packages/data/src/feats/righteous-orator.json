@@ -1,0 +1,22 @@
+{
+  "id": "righteous-orator",
+  "name": "Righteous Orator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "smite-evil"
+    }
+  ],
+  "benefit": "Use smite evil to gain an advantage against evil creatures during a verbal debate",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Righteous%20Orator"
+  }
+}

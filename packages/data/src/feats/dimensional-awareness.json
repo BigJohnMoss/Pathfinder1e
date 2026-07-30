@@ -1,0 +1,17 @@
+{
+  "id": "dimensional-awareness",
+  "name": "Dimensional Awareness",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Arcane Strike or Disruptive; Banishing Critical; Combat Reflexes; Spellcraft 8 ranks; arcane pool class feature"
+    }
+  ],
+  "benefit": "Free attack against nearby summoned/called creature",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dimensional%20Awareness"
+  }
+}

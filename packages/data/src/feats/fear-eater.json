@@ -1,0 +1,26 @@
+{
+  "id": "fear-eater",
+  "name": "Fear Eater",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "have no immunity to fear effects"
+    }
+  ],
+  "benefit": "Transfer others’ fear effects to yourself",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fear%20Eater"
+  }
+}

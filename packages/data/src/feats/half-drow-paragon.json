@@ -1,0 +1,21 @@
+{
+  "id": "half-drow-paragon",
+  "name": "Half-Drow Paragon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Drow-blooded and drow magic racial traits"
+    },
+    {
+      "type": "rule",
+      "description": "half-elf"
+    }
+  ],
+  "benefit": "Count as Drow for race-related effects",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 47,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Half-Drow%20Paragon"
+  }
+}

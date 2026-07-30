@@ -1,0 +1,39 @@
+{
+  "id": "dance-of-chains",
+  "name": "Dance of Chains",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "chain-mastery"
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(spiked chain)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "skill",
+      "key": "Perform (dance)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Add Dex modifier instead of Str modifier with spiked chains, reach with spiked chains 5 feet during your turn",
+  "source": {
+    "title": "Book of the Damned",
+    "page": 178,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dance%20of%20Chains"
+  }
+}

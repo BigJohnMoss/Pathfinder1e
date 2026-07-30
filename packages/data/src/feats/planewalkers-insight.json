@@ -1,0 +1,12 @@
+{
+  "id": "planewalkers-insight",
+  "name": "Planewalker's Insight",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain +2 on Knowledge (planes) checks and on Sense Motive checks against outsiders; Knowledge (planes) is a class skill for you",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planewalker's%20Insight"
+  }
+}

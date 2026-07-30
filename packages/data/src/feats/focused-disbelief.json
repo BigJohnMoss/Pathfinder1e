@@ -1,0 +1,17 @@
+{
+  "id": "focused-disbelief",
+  "name": "Focused Disbelief",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "divine-defiance"
+    }
+  ],
+  "benefit": "Gain SR 11 + level against certain divine sources",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Disbelief"
+  }
+}

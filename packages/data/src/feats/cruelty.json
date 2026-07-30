@@ -1,0 +1,17 @@
+{
+  "id": "cruelty",
+  "name": "Cruelty",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Worshiper of Zon-Kuthon"
+    }
+  ],
+  "benefit": "+2 bonus on attacks and damage when you cause others to suffer",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cruelty"
+  }
+}

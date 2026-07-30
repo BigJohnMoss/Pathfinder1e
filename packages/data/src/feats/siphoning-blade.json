@@ -1,0 +1,33 @@
+{
+  "id": "siphoning-blade",
+  "name": "Siphoning Blade",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "voracious-blade"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(rhoka sword)"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "urdefhan"
+    }
+  ],
+  "benefit": "Use Voracious Blade to deal bleed damage and heal yourself",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Siphoning%20Blade"
+  }
+}

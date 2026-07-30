@@ -1,0 +1,21 @@
+{
+  "id": "tail-maneuvers",
+  "name": "Tail Maneuvers",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dragon creature type"
+    },
+    {
+      "type": "rule",
+      "description": "tail attack"
+    }
+  ],
+  "benefit": "Gain a bonus to CMB and CMD when you don't use your tail to attack",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tail%20Maneuvers"
+  }
+}

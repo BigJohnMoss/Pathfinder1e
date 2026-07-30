@@ -1,0 +1,17 @@
+{
+  "id": "focused-overseer",
+  "name": "Focused Overseer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "focused-worker"
+    }
+  ],
+  "benefit": "Purchase capital for a lesser cost",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Overseer"
+  }
+}

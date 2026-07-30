@@ -1,0 +1,25 @@
+{
+  "id": "raging-regeneration",
+  "name": "Raging Regeneration",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Rage class ability"
+    },
+    {
+      "type": "rule",
+      "description": "regeneration"
+    },
+    {
+      "type": "rule",
+      "description": "troll"
+    }
+  ],
+  "benefit": "Prevent your regeneration from stopping while raging",
+  "source": {
+    "title": "Monster Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Raging%20Regeneration"
+  }
+}

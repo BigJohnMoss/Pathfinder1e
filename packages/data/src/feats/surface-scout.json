@@ -1,0 +1,21 @@
+{
+  "id": "surface-scout",
+  "name": "Surface Scout",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Drow"
+    },
+    {
+      "type": "rule",
+      "description": "spell-like abilities drow racial trait"
+    }
+  ],
+  "benefit": "Learn new spell-like abilities related to ambush and infiltration",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Surface%20Scout"
+  }
+}

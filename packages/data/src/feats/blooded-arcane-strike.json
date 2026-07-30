@@ -1,0 +1,25 @@
+{
+  "id": "blooded-arcane-strike",
+  "name": "Blooded Arcane Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "spell-access",
+      "id": "arcane-spells"
+    },
+    {
+      "type": "feature",
+      "id": "bloodrage"
+    }
+  ],
+  "benefit": "Gain the benefits of Arcane Strike while bloodraging",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 143,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blooded%20Arcane%20Strike"
+  }
+}

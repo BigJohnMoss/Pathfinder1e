@@ -1,0 +1,30 @@
+{
+  "id": "awesome-blow",
+  "name": "Awesome Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 25
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "rule",
+      "description": "size Large or larger"
+    }
+  ],
+  "benefit": "Learn a maneuver to send opponent’s flying backwards.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 314,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Awesome%20Blow"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "improved-fiendish-darkness",
+  "name": "Improved Fiendish Darkness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fiendish-darkness"
+    },
+    {
+      "type": "rule",
+      "description": "darkness spell-like ability"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 3
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "tie"
+    }
+  ],
+  "benefit": "+2 CL when casting darkness ; use darkness as swift action with an evil spell.",
+  "source": {
+    "title": "Blood of Fiends",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Fiendish%20Darkness"
+  }
+}

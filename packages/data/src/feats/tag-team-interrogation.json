@@ -1,0 +1,17 @@
+{
+  "id": "tag-team-interrogation",
+  "name": "Tag-Team Interrogation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Intimidating Prowess or Persuasive; Diplomacy 1 rank; Intimidate 1 rank"
+    }
+  ],
+  "benefit": "Work with an ally to adjust a creature's attitude",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 36,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tag-Team%20Interrogation"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "craft-shoddy-item",
+  "name": "Craft Shoddy Item",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "1 rank in appropriate Craft skill"
+    }
+  ],
+  "benefit": "Craft lesser quality items for a reduced cost",
+  "source": {
+    "title": "Villain Codex",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Shoddy%20Item"
+  }
+}

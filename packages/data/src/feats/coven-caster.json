@@ -1,0 +1,17 @@
+{
+  "id": "coven-caster",
+  "name": "Coven Caster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Changeling"
+    }
+  ],
+  "benefit": "Increase a spellcaster’s caster level using aid another",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Coven%20Caster"
+  }
+}

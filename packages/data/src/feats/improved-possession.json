@@ -1,0 +1,22 @@
+{
+  "id": "improved-possession",
+  "name": "Improved Possession",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Demonic Possession or shadow demon"
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 25
+    }
+  ],
+  "benefit": "Improve the power and duration of your magic jar spell-like ability.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Possession"
+  }
+}

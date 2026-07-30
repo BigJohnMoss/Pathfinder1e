@@ -1,0 +1,38 @@
+{
+  "id": "orc-rampage",
+  "name": "Orc Rampage",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bullying-blow"
+    },
+    {
+      "type": "rule",
+      "description": "ARG"
+    },
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    },
+    {
+      "type": "feat",
+      "id": "orc-fury-style"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "weapon familiarity racial trait"
+    }
+  ],
+  "benefit": "Bonus to attack/damage against shaken opponents",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Orc%20Rampage"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "noxious-touch",
+  "name": "Noxious Touch",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grippli"
+    },
+    {
+      "type": "rule",
+      "description": "toxic skin alternate racial trait"
+    }
+  ],
+  "benefit": "Creatures that attack you are exposed to your racial poison",
+  "source": {
+    "title": "Potions and Poisons",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Noxious%20Touch"
+  }
+}

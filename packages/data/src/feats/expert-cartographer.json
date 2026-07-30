@@ -1,0 +1,18 @@
+{
+  "id": "expert-cartographer",
+  "name": "Expert Cartographer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (maps)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain a +4 bonus on Craft (maps) checks, and enhanced results when using the discovery system",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 110,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expert%20Cartographer"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "beastmaster-ire",
+  "name": "Beastmaster Ire",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "feat",
+      "id": "beastmaster-salvation"
+    },
+    {
+      "type": "feat",
+      "id": "beastmaster-style"
+    },
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 9
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 5
+    }
+  ],
+  "benefit": "+2 on attacks and +4 on damage against a target when you activate Beastmastery Style's benefit; bonuses double if an enemy's attack damaged your animal companion",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 107,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beastmaster%20Ire"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "unblinking-flame-feint",
+  "name": "Unblinking Flame Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int 13; Wis 13; Combat Expertise; Perfect Style; base attack bonus +9 or monk level 9th"
+    }
+  ],
+  "benefit": "Use Wis mod instead of Cha mod to feint",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unblinking%20Flame%20Feint"
+  }
+}

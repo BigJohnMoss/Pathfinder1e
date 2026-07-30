@@ -1,0 +1,21 @@
+{
+  "id": "suppress-blight",
+  "name": "Suppress Blight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "great-fortitude"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Suppress a curse or disease temporarily",
+  "source": {
+    "title": "Pathfinder #119: Prisoners of the Blight",
+    "page": 61,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Suppress%20Blight"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "our-bounty-our-glory",
+  "name": "Our Bounty, Our Glory",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Be a member of House Denzarni"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Bloodthirsty"
+    },
+    {
+      "type": "rule",
+      "description": "Omen"
+    },
+    {
+      "type": "rule",
+      "description": "Tree Tender"
+    },
+    {
+      "type": "rule",
+      "description": "or Unsuspecting Master background"
+    }
+  ],
+  "benefit": "You can go longer without food and water",
+  "source": {
+    "title": "Pathfinder #131: The Reaper's Right Hand",
+    "page": 77,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Our%20Bounty%2C%20Our%20Glory"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "dirty-trick-master",
+  "name": "Dirty Trick Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "greater-dirty-trick"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Worsen the condition of a previously inflicted dirty trick",
+  "source": {
+    "title": "Bastards of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dirty%20Trick%20Master"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "lifeless-gaze",
+  "name": "Lifeless Gaze",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain bonuses against emotions, and those who read your mind or fail to impress you gain the shaken condition",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lifeless%20Gaze"
+  }
+}

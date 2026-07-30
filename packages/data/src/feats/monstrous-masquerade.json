@@ -1,0 +1,27 @@
+{
+  "id": "monstrous-masquerade",
+  "name": "Monstrous Masquerade",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "monstrous-disguise"
+    },
+    {
+      "type": "skill",
+      "key": "Disguise",
+      "minimum": 9
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Gain a limited bonus when emulating a monstrous humanoid",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monstrous%20Masquerade"
+  }
+}

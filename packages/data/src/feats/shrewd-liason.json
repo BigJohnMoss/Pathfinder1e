@@ -1,0 +1,17 @@
+{
+  "id": "shrewd-liason",
+  "name": "Shrewd Liason",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Mediogalti affinity"
+    }
+  ],
+  "benefit": "Prevent flanking and resist feint attacks",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 97,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shrewd%20Liason"
+  }
+}

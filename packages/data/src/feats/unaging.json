@@ -1,0 +1,17 @@
+{
+  "id": "unaging",
+  "name": "Unaging",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-elf"
+    }
+  ],
+  "benefit": "Gain resistance to the effects of aging",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unaging"
+  }
+}

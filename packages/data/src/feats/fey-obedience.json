@@ -1,0 +1,22 @@
+{
+  "id": "fey-obedience",
+  "name": "Fey Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must worship one of the Eldest"
+    }
+  ],
+  "benefit": "Serve one of the Eldest to gain powerful abilities",
+  "source": {
+    "title": "The First World, Realm of the Fey",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fey%20Obedience"
+  }
+}

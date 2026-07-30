@@ -1,0 +1,22 @@
+{
+  "id": "mountain-splitting-strike",
+  "name": "Mountain-Splitting Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Unarmed and stunning fist attacks are mroe effective on a charge",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mountain-Splitting%20Strike"
+  }
+}

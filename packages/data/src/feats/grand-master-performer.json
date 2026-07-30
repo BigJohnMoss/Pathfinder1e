@@ -1,0 +1,34 @@
+{
+  "id": "grand-master-performer",
+  "name": "Grand Master Performer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "feat",
+      "id": "extra-performance"
+    },
+    {
+      "type": "feat",
+      "id": "master-performer"
+    },
+    {
+      "type": "class-level",
+      "classId": "bard",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "Kitharodian Academy 20 TPA"
+    }
+  ],
+  "benefit": "Increase the bonus of your bardic abilities by +1",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grand%20Master%20Performer"
+  }
+}

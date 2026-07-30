@@ -1,0 +1,33 @@
+{
+  "id": "serrens-masterstroke",
+  "name": "Serren's Masterstroke",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Deal bonus precision damage to a foe you successfully feint against",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Serren's%20Masterstroke"
+  }
+}

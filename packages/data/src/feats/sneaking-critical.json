@@ -1,0 +1,25 @@
+{
+  "id": "sneaking-critical",
+  "name": "Sneaking Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feature",
+      "id": "sneak-attack"
+    }
+  ],
+  "benefit": "Roll additional sneak attack dice on a critical hit",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sneaking%20Critical"
+  }
+}

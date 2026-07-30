@@ -1,0 +1,21 @@
+{
+  "id": "earth-magic",
+  "name": "Earth Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "1st-level-spells"
+    },
+    {
+      "type": "feature",
+      "id": "favored-terrain"
+    }
+  ],
+  "benefit": "Your spells are more potent in your favored terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 110,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Earth%20Magic"
+  }
+}

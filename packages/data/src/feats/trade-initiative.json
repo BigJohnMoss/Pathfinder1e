@@ -1,0 +1,12 @@
+{
+  "id": "trade-initiative",
+  "name": "Trade Initiative",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Trade the die roll of your initiative with an adjacent ally",
+  "source": {
+    "title": "Distant Shores",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Trade%20Initiative"
+  }
+}

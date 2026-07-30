@@ -1,0 +1,26 @@
+{
+  "id": "shark-style",
+  "name": "Shark Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +3 or monk level 3rd"
+    }
+  ],
+  "benefit": "Can use your unarmed strikes to deal piercing damage and bleed damage",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shark%20Style"
+  }
+}

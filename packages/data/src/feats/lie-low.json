@@ -1,0 +1,12 @@
+{
+  "id": "lie-low",
+  "name": "Lie Low",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Enemies take a larger penalty on Perception checks to see you when prone",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lie%20Low"
+  }
+}

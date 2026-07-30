@@ -1,0 +1,26 @@
+{
+  "id": "just-out-of-reach",
+  "name": "Just Out of Reach",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    }
+  ],
+  "benefit": "+4 dodge bonus to AC vs. melee attacks with > 5 ft. reach",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Just%20Out%20of%20Reach"
+  }
+}

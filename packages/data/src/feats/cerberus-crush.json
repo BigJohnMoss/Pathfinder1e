@@ -1,0 +1,29 @@
+{
+  "id": "cerberus-crush",
+  "name": "Cerberus Crush",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cerberus-snare"
+    },
+    {
+      "type": "feat",
+      "id": "cerberus-style"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +13 or monk level 13th"
+    }
+  ],
+  "benefit": "You can apply Vital Strike to attacks made in Cerberus Style",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cerberus%20Crush"
+  }
+}

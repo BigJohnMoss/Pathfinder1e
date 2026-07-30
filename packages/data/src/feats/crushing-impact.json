@@ -1,0 +1,30 @@
+{
+  "id": "crushing-impact",
+  "name": "Crushing Impact",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Deal damage when you bull rush a creature into a solid object",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crushing%20Impact"
+  }
+}

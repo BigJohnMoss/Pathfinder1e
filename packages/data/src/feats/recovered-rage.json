@@ -1,0 +1,17 @@
+{
+  "id": "recovered-rage",
+  "name": "Recovered Rage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Rage or raging song class feature"
+    }
+  ],
+  "benefit": "Regain rage or raging song with each foe you reduce to 0 or fewer hit points",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Recovered%20Rage"
+  }
+}

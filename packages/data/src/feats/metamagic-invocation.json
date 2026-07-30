@@ -1,0 +1,17 @@
+{
+  "id": "metamagic-invocation",
+  "name": "Metamagic Invocation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "metakinesis"
+    }
+  ],
+  "benefit": "Add metamagic to your kinetic invocations",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Metamagic%20Invocation"
+  }
+}

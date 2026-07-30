@@ -1,0 +1,22 @@
+{
+  "id": "warmonger",
+  "name": "Warmonger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "Gain Bluff and Diplomacy as class skills, +4 bonus when using them to convince creatures to fight",
+  "source": {
+    "title": "Monster Codex",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Warmonger"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "taskmaster",
+  "name": "Taskmaster",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "demoralizing-lash"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "Spur an ally into combat to increase their offense at the cost of defense",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Taskmaster"
+  }
+}

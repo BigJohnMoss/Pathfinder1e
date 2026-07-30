@@ -1,0 +1,38 @@
+{
+  "id": "heavens-step",
+  "name": "Heaven's Step",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "following-step"
+    },
+    {
+      "type": "feat",
+      "id": "step-up"
+    },
+    {
+      "type": "feat",
+      "id": "step-up-and-strike"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "bab",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Make two attacks with Step Up and Strike",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Heaven's%20Step"
+  }
+}

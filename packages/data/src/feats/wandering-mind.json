@@ -1,0 +1,21 @@
+{
+  "id": "wandering-mind",
+  "name": "Wandering Mind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Reroll a failed Will save against a mind-affecting ability",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wandering%20Mind"
+  }
+}

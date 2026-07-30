@@ -1,0 +1,21 @@
+{
+  "id": "channeled-blessing",
+  "name": "Channeled Blessing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "blessings"
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Bestow a blessing on an ally when you channel energy",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 143,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channeled%20Blessing"
+  }
+}

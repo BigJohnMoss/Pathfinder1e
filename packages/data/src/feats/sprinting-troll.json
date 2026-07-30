@@ -1,0 +1,25 @@
+{
+  "id": "sprinting-troll",
+  "name": "Sprinting Troll",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fleet"
+    },
+    {
+      "type": "rule",
+      "description": "regeneration"
+    },
+    {
+      "type": "rule",
+      "description": "troll"
+    }
+  ],
+  "benefit": "Increase your speed at the cost of regeneration",
+  "source": {
+    "title": "Monster Codex",
+    "page": 225,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sprinting%20Troll"
+  }
+}

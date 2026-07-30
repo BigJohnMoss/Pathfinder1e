@@ -1,0 +1,27 @@
+{
+  "id": "stone-awareness",
+  "name": "Stone Awareness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "stone giant"
+    }
+  ],
+  "benefit": "Gain tremorsense when in contact with earth or stone.",
+  "source": {
+    "title": "Giants Revisited",
+    "page": 49,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Awareness"
+  }
+}

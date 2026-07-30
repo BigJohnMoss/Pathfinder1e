@@ -1,0 +1,22 @@
+{
+  "id": "quick-trapper",
+  "name": "Quick Trapper",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Learn Ranger Trap or trap class feature"
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Reduce the DC to set traps by 5 and learn to do so as a standard action",
+  "source": {
+    "title": "Pathfinder #116: Fangs of War",
+    "page": 67,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quick%20Trapper"
+  }
+}

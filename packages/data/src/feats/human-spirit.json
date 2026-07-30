@@ -1,0 +1,17 @@
+{
+  "id": "human-spirit",
+  "name": "Human Spirit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-elf"
+    }
+  ],
+  "benefit": "Receive 1 bonus skill rank per hit dice (max 4)",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 47,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Human%20Spirit"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "position-of-strength",
+  "name": "Position of Strength",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain bonuses to Intimidate when you are armed and target is not",
+  "source": {
+    "title": "Villain Codex",
+    "page": 188,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Position%20of%20Strength"
+  }
+}

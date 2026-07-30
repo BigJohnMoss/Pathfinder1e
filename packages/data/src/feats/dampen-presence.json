@@ -1,0 +1,26 @@
+{
+  "id": "dampen-presence",
+  "name": "Dampen Presence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Stealth)"
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use stealth to hide from creatures with blindsight/blindsense",
+  "source": {
+    "title": "Dungeoneer's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dampen%20Presence"
+  }
+}

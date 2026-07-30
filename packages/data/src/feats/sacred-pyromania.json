@@ -1,0 +1,21 @@
+{
+  "id": "sacred-pyromania",
+  "name": "Sacred Pyromania",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    },
+    {
+      "type": "rule",
+      "description": "worshipper of Sarenrae"
+    }
+  ],
+  "benefit": "Fire damage you deal always affects incorporeal creatures",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sacred%20Pyromania"
+  }
+}

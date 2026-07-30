@@ -1,0 +1,26 @@
+{
+  "id": "spontaneous-natures-ally",
+  "name": "Spontaneous Nature's Ally",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "ability to spontaneously cast cure or inflict spells"
+    },
+    {
+      "type": "rule",
+      "description": "Animal or Plant domain"
+    }
+  ],
+  "benefit": "Lose a spell slot to spontaneous cast a summon nature’s ally spell of the same level",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 157,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spontaneous%20Nature's%20Ally"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "esoteric-evocation",
+  "name": "Esoteric Evocation",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your evocation spells deal extra damage",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Esoteric%20Evocation"
+  }
+}

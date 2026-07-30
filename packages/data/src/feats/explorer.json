@@ -1,0 +1,17 @@
+{
+  "id": "explorer",
+  "name": "Explorer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have crossed at least 30 miles of wilderness without map or guide"
+    }
+  ],
+  "benefit": "Gain skills to aid getting along in the wild",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Explorer"
+  }
+}

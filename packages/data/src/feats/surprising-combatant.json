@@ -1,0 +1,22 @@
+{
+  "id": "surprising-combatant",
+  "name": "Surprising Combatant",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-initiative"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Trick your foes into discounting you as a combatant",
+  "source": {
+    "title": "Blood of the Moon",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Surprising%20Combatant"
+  }
+}

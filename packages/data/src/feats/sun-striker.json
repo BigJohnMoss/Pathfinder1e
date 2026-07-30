@@ -1,0 +1,33 @@
+{
+  "id": "sun-striker",
+  "name": "Sun Striker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(scimitar)"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Sarenrae"
+    }
+  ],
+  "benefit": "Critical hits against undead bypass DR and gain additional properties",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 217,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sun%20Striker"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "natures-weapons",
+  "name": "Nature's Weapons",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Catch Off-Guard; base attack bonus +2; Knowledge (nature) or Survival 2 ranks"
+    }
+  ],
+  "benefit": "Wield improvised weapons you find in the wild so that they do more damage than normal",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Nature's%20Weapons"
+  }
+}

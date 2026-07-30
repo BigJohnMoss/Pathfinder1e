@@ -1,0 +1,21 @@
+{
+  "id": "protectors-strike",
+  "name": "Protector's Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "smite-evil"
+    }
+  ],
+  "benefit": "Grant your deflection bonus to another creature when you smite evil",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Protector's%20Strike"
+  }
+}

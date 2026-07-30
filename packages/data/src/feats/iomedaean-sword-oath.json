@@ -1,0 +1,33 @@
+{
+  "id": "iomedaean-sword-oath",
+  "name": "Iomedaean Sword Oath",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Prof. in longsword"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(longsword)"
+    },
+    {
+      "type": "rule",
+      "description": "BAB +4"
+    },
+    {
+      "type": "rule",
+      "description": "worships Iomedae"
+    }
+  ],
+  "benefit": "Unlock fighter-only feats for longswords",
+  "source": {
+    "title": "Pathfinder #26: The Sixfold Trial",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Iomedaean%20Sword%20Oath"
+  }
+}

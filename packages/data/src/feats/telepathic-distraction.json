@@ -1,0 +1,22 @@
+{
+  "id": "telepathic-distraction",
+  "name": "Telepathic Distraction",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "serpentfolk"
+    }
+  ],
+  "benefit": "Focus your telepathy to weaken a creature’s resistance against mind-affecting effects",
+  "source": {
+    "title": "Monster Codex",
+    "page": 200,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Telepathic%20Distraction"
+  }
+}

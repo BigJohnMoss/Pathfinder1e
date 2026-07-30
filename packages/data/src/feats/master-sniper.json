@@ -1,0 +1,26 @@
+{
+  "id": "master-sniper",
+  "name": "Master Sniper",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "expert-sniper"
+    },
+    {
+      "type": "feat",
+      "id": "rapid-shot"
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Learn to make two attacks while sniping",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20Sniper"
+  }
+}

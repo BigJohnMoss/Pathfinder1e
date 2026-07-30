@@ -1,0 +1,17 @@
+{
+  "id": "scion-of-the-lost-empire",
+  "name": "Scion of the Lost Empire",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Human (Chelaxian or Taldan)"
+    }
+  ],
+  "benefit": "Gain +2 competence bonus on attack roll, save, ability check, or skill check when adjacent to an ally with this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scion%20of%20the%20Lost%20Empire"
+  }
+}

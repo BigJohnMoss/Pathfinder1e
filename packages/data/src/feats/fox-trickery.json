@@ -1,0 +1,38 @@
+{
+  "id": "fox-trickery",
+  "name": "Fox Trickery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "fox-insight"
+    },
+    {
+      "type": "feat",
+      "id": "fox-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    }
+  ],
+  "benefit": "Perform dirty tricks as attacks of opportunity",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fox%20Trickery"
+  }
+}

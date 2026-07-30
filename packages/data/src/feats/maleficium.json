@@ -1,0 +1,12 @@
+{
+  "id": "maleficium",
+  "name": "Maleficium",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Cast evil spells with increased potency",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Maleficium"
+  }
+}

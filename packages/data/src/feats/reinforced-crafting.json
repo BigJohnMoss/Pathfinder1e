@@ -1,0 +1,21 @@
+{
+  "id": "reinforced-crafting",
+  "name": "Reinforced Crafting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "craft-magic-arms-and-armor"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast make whole or mending"
+    }
+  ],
+  "benefit": "Your magic items are more resilient",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reinforced%20Crafting"
+  }
+}

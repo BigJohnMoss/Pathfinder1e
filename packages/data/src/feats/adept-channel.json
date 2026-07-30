@@ -1,0 +1,30 @@
+{
+  "id": "adept-channel",
+  "name": "Adept Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "divine-spells"
+    },
+    {
+      "type": "rule",
+      "description": "summon familiar class ability"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 4
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Gain the channel energy class feature",
+  "source": {
+    "title": "Orcs of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Adept%20Channel"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "mounted-onslaught",
+  "name": "Mounted Onslaught",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mounted-combat"
+    },
+    {
+      "type": "feat",
+      "id": "trample"
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Overrun multiple creatures",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mounted%20Onslaught"
+  }
+}

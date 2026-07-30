@@ -1,0 +1,29 @@
+{
+  "id": "acrobatic-spellcaster",
+  "name": "Acrobatic Spellcaster",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-casting"
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "feat",
+      "id": "acrobatic"
+    },
+    {
+      "type": "rule",
+      "description": "( s)"
+    }
+  ],
+  "benefit": "Avoid attacks of opportunity from casting with Acrobatics",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 75,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Acrobatic%20Spellcaster"
+  }
+}

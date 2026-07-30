@@ -1,0 +1,21 @@
+{
+  "id": "merciless-precision",
+  "name": "Merciless Precision",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "sneak-attack"
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "Enemies with negative conditions take more sneak attack damage",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Merciless%20Precision"
+  }
+}

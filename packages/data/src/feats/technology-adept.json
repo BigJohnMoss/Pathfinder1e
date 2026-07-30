@@ -1,0 +1,30 @@
+{
+  "id": "technology-adept",
+  "name": "Technology Adept",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(firearms)"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    }
+  ],
+  "benefit": "Gain a bonus on save DCs to resist the effects of technological firearms",
+  "source": {
+    "title": "Technology Guide",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Technology%20Adept"
+  }
+}

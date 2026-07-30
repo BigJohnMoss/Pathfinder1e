@@ -1,0 +1,12 @@
+{
+  "id": "focused-worker",
+  "name": "Focused Worker",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain a specific type of capital faster at the cost of taking longer to gain another type",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Worker"
+  }
+}

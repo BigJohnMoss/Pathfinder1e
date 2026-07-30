@@ -1,0 +1,29 @@
+{
+  "id": "conceal-aura",
+  "name": "Conceal Aura",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Chaotic"
+    },
+    {
+      "type": "rule",
+      "description": "evil"
+    },
+    {
+      "type": "rule",
+      "description": "good"
+    },
+    {
+      "type": "rule",
+      "description": "or lawful alignment"
+    }
+  ],
+  "benefit": "You can weaken you alignment aura to avoid detection",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Conceal%20Aura"
+  }
+}

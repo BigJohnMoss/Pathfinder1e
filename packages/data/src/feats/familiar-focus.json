@@ -1,0 +1,17 @@
+{
+  "id": "familiar-focus",
+  "name": "Familiar Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Familiar"
+    }
+  ],
+  "benefit": "The power of your master’s spells is increased when cast on you",
+  "source": {
+    "title": "Animal Archive",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Familiar%20Focus"
+  }
+}

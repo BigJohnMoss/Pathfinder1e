@@ -1,0 +1,30 @@
+{
+  "id": "improved-precise-strike",
+  "name": "Improved Precise Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "precise-strike"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Deal bleed damage with Precise Strike",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Precise%20Strike"
+  }
+}

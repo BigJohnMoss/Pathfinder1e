@@ -1,0 +1,27 @@
+{
+  "id": "urban-forager",
+  "name": "Urban Forager",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (local)",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "Track"
+    }
+  ],
+  "benefit": "Use Survival to forage and track in urban locations",
+  "source": {
+    "title": "Taldor, Echoes of Glory",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Urban%20Forager"
+  }
+}

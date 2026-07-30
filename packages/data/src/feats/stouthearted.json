@@ -1,0 +1,17 @@
+{
+  "id": "stouthearted",
+  "name": "Stouthearted",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "raging-song"
+    }
+  ],
+  "benefit": "Use raging song to reroll failed saves against fear effects",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 157,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stouthearted"
+  }
+}

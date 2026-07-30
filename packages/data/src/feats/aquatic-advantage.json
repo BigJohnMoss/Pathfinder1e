@@ -1,0 +1,21 @@
+{
+  "id": "aquatic-advantage",
+  "name": "Aquatic Advantage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "rule",
+      "description": "must have a natural swim speed"
+    }
+  ],
+  "benefit": "Creatures lacking swim speeds provoke attacks of opportunity when attacking you",
+  "source": {
+    "title": "Monster Codex",
+    "page": 188,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aquatic%20Advantage"
+  }
+}

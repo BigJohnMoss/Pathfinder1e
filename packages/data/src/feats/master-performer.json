@@ -1,0 +1,25 @@
+{
+  "id": "master-performer",
+  "name": "Master Performer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "feat",
+      "id": "extra-performance"
+    },
+    {
+      "type": "rule",
+      "description": "Kitharodian Academy 15 TPA"
+    }
+  ],
+  "benefit": "Increase your bardic performance bonuses by +1",
+  "source": {
+    "title": "Faction Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20Performer"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "greater-skalds-vigor",
+  "name": "Greater Skald's Vigor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Skald’s Vigor"
+    },
+    {
+      "type": "skill",
+      "key": "Perform (song)",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Allies share the fast healing of Skald’s Vigor",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 149,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Skald's%20Vigor"
+  }
+}

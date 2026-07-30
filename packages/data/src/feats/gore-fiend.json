@@ -1,0 +1,21 @@
+{
+  "id": "gore-fiend",
+  "name": "Gore Fiend",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Regain rage by confirming a critical or receiving one",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gore%20Fiend"
+  }
+}

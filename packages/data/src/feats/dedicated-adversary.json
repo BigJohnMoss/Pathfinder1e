@@ -1,0 +1,17 @@
+{
+  "id": "dedicated-adversary",
+  "name": "Dedicated Adversary",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "no-levels-in-a-class-that-has-the-favored-enemy"
+    }
+  ],
+  "benefit": "Gain a favored enemy",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dedicated%20Adversary"
+  }
+}

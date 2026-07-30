@@ -1,0 +1,17 @@
+{
+  "id": "stoic",
+  "name": "Stoic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "+1 save vs. fear, limited fear immunity",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 289,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stoic"
+  }
+}

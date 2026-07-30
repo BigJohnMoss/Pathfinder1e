@@ -1,0 +1,27 @@
+{
+  "id": "sliding-dash",
+  "name": "Sliding Dash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "Acrobatics 10 ranks or acrobatic charge class feature"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Charge through a foe for a flank attack",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 91,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sliding%20Dash"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "toppling-bash",
+  "name": "Toppling Bash*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-shield-bash"
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "Stumbling Bash"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or fighter level 8th"
+    }
+  ],
+  "benefit": "Trip creatures you shield bash as a swift action",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Toppling%20Bash*"
+  }
+}

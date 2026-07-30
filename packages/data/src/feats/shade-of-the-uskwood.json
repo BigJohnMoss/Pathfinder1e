@@ -1,0 +1,21 @@
+{
+  "id": "shade-of-the-uskwood",
+  "name": "Shade of the Uskwood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Neutral evil"
+    },
+    {
+      "type": "rule",
+      "description": "patron deity Zon-Kuthon"
+    }
+  ],
+  "benefit": "Add sinister spells to druid spell list",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 288,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shade%20of%20the%20Uskwood"
+  }
+}

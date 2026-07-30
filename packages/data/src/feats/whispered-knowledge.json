@@ -1,0 +1,21 @@
+{
+  "id": "whispered-knowledge",
+  "name": "Whispered Knowledge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Corporeal undead"
+    },
+    {
+      "type": "rule",
+      "description": "Whispering Way 15 TPA"
+    }
+  ],
+  "benefit": "Enhance your undead form with secret knowledge",
+  "source": {
+    "title": "Faction Guide",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Whispered%20Knowledge"
+  }
+}

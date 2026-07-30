@@ -1,0 +1,21 @@
+{
+  "id": "ordered-mind",
+  "name": "Ordered Mind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "any lawful alignment"
+    }
+  ],
+  "benefit": "Counterspell with spells of the same school",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 214,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ordered%20Mind"
+  }
+}

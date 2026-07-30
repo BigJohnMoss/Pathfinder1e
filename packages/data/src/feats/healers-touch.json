@@ -1,0 +1,21 @@
+{
+  "id": "healers-touch",
+  "name": "Healer's Touch",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cure 1"
+    },
+    {
+      "type": "rule",
+      "description": "000 points of damage with healing spells"
+    }
+  ],
+  "benefit": "Maximize all your healing spells",
+  "source": {
+    "title": "Legacy of Fire Player's Guide",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Healer's%20Touch"
+  }
+}

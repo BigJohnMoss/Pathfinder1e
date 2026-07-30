@@ -1,0 +1,17 @@
+{
+  "id": "fire-tamer",
+  "name": "Fire Tamer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    }
+  ],
+  "benefit": "+2 save vs. fire, +2 Diplomacy/Intimidate with goblins",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fire%20Tamer"
+  }
+}

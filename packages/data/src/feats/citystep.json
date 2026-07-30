@@ -1,0 +1,22 @@
+{
+  "id": "citystep",
+  "name": "Citystep",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "half-elf"
+    }
+  ],
+  "benefit": "You are more agile in crowds",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Citystep"
+  }
+}

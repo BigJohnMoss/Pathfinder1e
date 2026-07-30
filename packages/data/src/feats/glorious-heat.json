@@ -1,0 +1,25 @@
+{
+  "id": "glorious-heat",
+  "name": "Glorious Heat",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "divine-spells"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Sarenrae"
+    }
+  ],
+  "benefit": "Heal nearby allies when you cast fire spells",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 212,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Glorious%20Heat"
+  }
+}

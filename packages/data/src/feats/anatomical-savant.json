@@ -1,0 +1,21 @@
+{
+  "id": "anatomical-savant",
+  "name": "Anatomical Savant",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    }
+  ],
+  "benefit": "Sneak attack creatures normally immune or fortified",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Anatomical%20Savant"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "eclipsed-spell",
+  "name": "Eclipsed Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Alter how your spells affect illumination",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eclipsed%20Spell"
+  }
+}

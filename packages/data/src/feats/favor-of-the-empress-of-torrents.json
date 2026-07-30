@@ -1,0 +1,21 @@
+{
+  "id": "favor-of-the-empress-of-torrents",
+  "name": "Favor of the Empress of Torrents",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Worshiper of Lysianassa or pearl seeker paladin"
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain hydraulic torrent as a spell-like ability",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Favor%20of%20the%20Empress%20of%20Torrents"
+  }
+}

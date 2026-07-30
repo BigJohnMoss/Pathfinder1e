@@ -1,0 +1,22 @@
+{
+  "id": "celestial-obedience",
+  "name": "Celestial Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must worship an empyreal lord"
+    }
+  ],
+  "benefit": "Serve an empyreal lord in order to gain unique boons",
+  "source": {
+    "title": "Chronicle of the Righteous",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Celestial%20Obedience"
+  }
+}

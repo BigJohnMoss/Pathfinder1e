@@ -1,0 +1,27 @@
+{
+  "id": "osirionology",
+  "name": "Osirionology",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (history)",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (local)",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "must be able to speak Osiriani and Ancient Osiriani"
+    }
+  ],
+  "benefit": "Gain bonuses to intelligence-based skill checks made in relation to Osirion",
+  "source": {
+    "title": "People of the Sands",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Osirionology"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "pernicious-stab",
+  "name": "Pernicious Stab",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Sneak attack +2d6"
+    }
+  ],
+  "benefit": "Forgo sneak attack damage to increase a poison’s effectiveness",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pernicious%20Stab"
+  }
+}

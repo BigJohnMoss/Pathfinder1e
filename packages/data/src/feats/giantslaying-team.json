@@ -1,0 +1,34 @@
+{
+  "id": "giantslaying-team",
+  "name": "Giantslaying Team",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "defensive training racial trait"
+    }
+  ],
+  "benefit": "Attack a giant as an immediate action when the giant’s attack of opportunity misses an ally with this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 206,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Giantslaying%20Team"
+  }
+}

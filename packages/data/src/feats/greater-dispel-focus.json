@@ -1,0 +1,21 @@
+{
+  "id": "greater-dispel-focus",
+  "name": "Greater Dispel Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dispel-focus"
+    },
+    {
+      "type": "spell-access",
+      "id": "dispel-magic"
+    }
+  ],
+  "benefit": "Additional +2 bonus to CL when dispelling",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Dispel%20Focus"
+  }
+}

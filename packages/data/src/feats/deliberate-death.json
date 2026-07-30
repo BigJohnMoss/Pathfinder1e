@@ -1,0 +1,17 @@
+{
+  "id": "deliberate-death",
+  "name": "Deliberate Death",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duskwalker"
+    }
+  ],
+  "benefit": "When reduced below 0 hit points by a creature, you can attack them as an immediate action",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deliberate%20Death"
+  }
+}

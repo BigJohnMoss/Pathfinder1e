@@ -1,0 +1,21 @@
+{
+  "id": "fiendish-serpent",
+  "name": "Fiendish Serpent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bipedal body shape"
+    },
+    {
+      "type": "rule",
+      "description": "non-native outsider with the evil subtype"
+    }
+  ],
+  "benefit": "Gain climb and swim speeds, can't be tripped",
+  "source": {
+    "title": "Book of the Damned",
+    "page": 178,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fiendish%20Serpent"
+  }
+}

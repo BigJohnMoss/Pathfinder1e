@@ -1,0 +1,22 @@
+{
+  "id": "advanced-weapon-training",
+  "name": "Advanced Weapon Training",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    }
+  ],
+  "benefit": "Gain an advanced weapon training option",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Advanced%20Weapon%20Training"
+  }
+}

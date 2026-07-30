@@ -1,0 +1,21 @@
+{
+  "id": "forceful-channel",
+  "name": "Forceful Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel negative energy 7d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Nethys"
+    }
+  ],
+  "benefit": "Channel negative energy to deal force damage and knock foes prone",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 212,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Forceful%20Channel"
+  }
+}

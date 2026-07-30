@@ -1,0 +1,30 @@
+{
+  "id": "merciless-beating",
+  "name": "Merciless Beating",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "gang-up"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    }
+  ],
+  "benefit": "Forgo a flanking bonus to grant +1 to the attacks of two other allies",
+  "source": {
+    "title": "The Harrow Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Merciless%20Beating"
+  }
+}

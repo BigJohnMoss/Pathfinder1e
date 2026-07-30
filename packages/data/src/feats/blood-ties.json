@@ -1,0 +1,26 @@
+{
+  "id": "blood-ties",
+  "name": "Blood Ties",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "feature",
+      "id": "bloodline"
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    }
+  ],
+  "benefit": "Use Bluff in place of Diplomacy to influence those tied to your bloodline",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Ties"
+  }
+}

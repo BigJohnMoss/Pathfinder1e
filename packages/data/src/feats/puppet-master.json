@@ -1,0 +1,29 @@
+{
+  "id": "puppet-master",
+  "name": "Puppet Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have survived an encounter with a challenging foe without suffering significant harm by striking a deal (regardless of whether the deal was with the challenging foe or not)"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Boss UCA"
+    },
+    {
+      "type": "rule",
+      "description": "the Liege Lord UCA"
+    },
+    {
+      "type": "rule",
+      "description": "or the Well-Connected Friend UCA background"
+    }
+  ],
+  "benefit": "Make successive Diplomacy checks more easily.",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Puppet%20Master"
+  }
+}

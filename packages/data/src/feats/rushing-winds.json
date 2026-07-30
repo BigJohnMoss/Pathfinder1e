@@ -1,0 +1,22 @@
+{
+  "id": "rushing-winds",
+  "name": "Rushing Winds",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "turbulent-takeoff"
+    },
+    {
+      "type": "skill",
+      "key": "Fly",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Create a shockwave while flying to buffet other creatures",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rushing%20Winds"
+  }
+}

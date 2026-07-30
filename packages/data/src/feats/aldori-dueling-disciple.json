@@ -1,0 +1,33 @@
+{
+  "id": "aldori-dueling-disciple",
+  "name": "Aldori Dueling Disciple",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    }
+  ],
+  "benefit": "Gain bonuses on Intimidate checks",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aldori%20Dueling%20Disciple"
+  }
+}

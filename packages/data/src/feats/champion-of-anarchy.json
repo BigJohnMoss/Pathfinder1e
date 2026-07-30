@@ -1,0 +1,21 @@
+{
+  "id": "champion-of-anarchy",
+  "name": "Champion of Anarchy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "10 Hit Dice"
+    },
+    {
+      "type": "rule",
+      "description": "chaotic neutral alignment"
+    }
+  ],
+  "benefit": "You spread chaos wherever you go.",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 98,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Anarchy"
+  }
+}

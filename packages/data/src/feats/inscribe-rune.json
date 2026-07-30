@@ -1,0 +1,17 @@
+{
+  "id": "inscribe-rune",
+  "name": "Inscribe Rune",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "CL 3rd"
+    }
+  ],
+  "benefit": "Learn to create Thassilonian rune tattoos",
+  "source": {
+    "title": "Pathfinder #5: Sins of the Saviors",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inscribe%20Rune"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "ostentatious-rager",
+  "name": "Ostentatious Rager",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Rage as a performance for money or to distract enemies",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ostentatious%20Rager"
+  }
+}

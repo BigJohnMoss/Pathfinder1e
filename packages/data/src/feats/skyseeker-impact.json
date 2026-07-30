@@ -1,0 +1,34 @@
+{
+  "id": "skyseeker-impact",
+  "name": "Skyseeker Impact",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "skyseeker-style"
+    },
+    {
+      "type": "feat",
+      "id": "skyseeker-thrash"
+    },
+    {
+      "type": "feat",
+      "id": "step-up"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Treat your weapon as one size category larger against creatures larger than yourself",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Skyseeker%20Impact"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "porcupine-defense",
+  "name": "Porcupine Defense",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Raise your defenses against combat maneuvers from larger creatures",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Porcupine%20Defense"
+  }
+}

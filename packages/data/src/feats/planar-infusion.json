@@ -1,0 +1,17 @@
+{
+  "id": "planar-infusion",
+  "name": "Planar Infusion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must spend a significant amount of time on a plane other than your home plane or the Material Plane"
+    }
+  ],
+  "benefit": "Gain infusion from a plane",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Infusion"
+  }
+}

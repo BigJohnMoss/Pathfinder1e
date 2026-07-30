@@ -1,0 +1,29 @@
+{
+  "id": "brutal-coup-de-grace",
+  "name": "Brutal Coup de Grace",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with the selected weapon"
+    }
+  ],
+  "benefit": "Successful coup de grace disheartens nearby enemies",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brutal%20Coup%20de%20Grace"
+  }
+}

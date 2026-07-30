@@ -1,0 +1,26 @@
+{
+  "id": "push-the-limits",
+  "name": "Push the Limits",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-stamina"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Gain a secondary stamina pool to use in the event your primary runs out",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Push%20the%20Limits"
+  }
+}

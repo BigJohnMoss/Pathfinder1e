@@ -1,0 +1,17 @@
+{
+  "id": "dwarf-blooded",
+  "name": "Dwarf Blooded",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Oread"
+    }
+  ],
+  "benefit": "Learn the dwarven racial traits \"slow and steady\" and \"stonecunning\"",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dwarf%20Blooded"
+  }
+}

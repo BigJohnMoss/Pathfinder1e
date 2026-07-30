@@ -1,0 +1,17 @@
+{
+  "id": "expanded-summon-monster",
+  "name": "Expanded Summon Monster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "a-summon-monster-spell"
+    }
+  ],
+  "benefit": "Expand your summon monster list to include new creatures",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Summon%20Monster"
+  }
+}

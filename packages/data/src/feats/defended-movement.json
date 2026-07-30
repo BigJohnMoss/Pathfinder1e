@@ -1,0 +1,21 @@
+{
+  "id": "defended-movement",
+  "name": "Defended Movement*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or fighter level 4th"
+    }
+  ],
+  "benefit": "Gain +2 AC vs attacks of opportunity",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Defended%20Movement*"
+  }
+}

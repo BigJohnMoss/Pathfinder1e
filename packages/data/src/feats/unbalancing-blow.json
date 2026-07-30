@@ -1,0 +1,31 @@
+{
+  "id": "unbalancing-blow",
+  "name": "Unbalancing Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "On a successful unarmed strike, target is flatfooted and unbalanced",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unbalancing%20Blow"
+  }
+}

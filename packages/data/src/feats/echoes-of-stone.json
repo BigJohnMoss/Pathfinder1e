@@ -1,0 +1,17 @@
+{
+  "id": "echoes-of-stone",
+  "name": "Echoes of Stone",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Oread"
+    }
+  ],
+  "benefit": "+4 Perception when underground, +4 Survival to avoid becoming lost in caverns/rocky areas",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Echoes%20of%20Stone"
+  }
+}

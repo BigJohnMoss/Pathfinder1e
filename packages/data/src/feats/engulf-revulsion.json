@@ -1,0 +1,17 @@
+{
+  "id": "engulf-revulsion",
+  "name": "Engulf Revulsion",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Engulf or smother universal monster ability"
+    }
+  ],
+  "benefit": "Engulfed or smothered foes are shaken",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 86,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Engulf%20Revulsion"
+  }
+}

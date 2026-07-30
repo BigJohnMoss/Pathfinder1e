@@ -1,0 +1,34 @@
+{
+  "id": "high-magic-focus",
+  "name": "High Magic Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any metamagic feat"
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 7
+    },
+    {
+      "type": "spell-access",
+      "id": "2nd-level-spells"
+    },
+    {
+      "type": "feat",
+      "id": "run"
+    },
+    {
+      "type": "rule",
+      "description": "human (Ga di)"
+    }
+  ],
+  "benefit": "Spontaneously apply metamagic feats without using higherlevel spell slots or increasing casting time if allies ready an action to cast the same spell",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 206,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=High%20Magic%20Focus"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conceal-scent",
+  "name": "Conceal Scent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Hide",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Hide your scent from monsters",
+  "source": {
+    "title": "Osirion, Land of the Pharaohs",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Conceal%20Scent"
+  }
+}

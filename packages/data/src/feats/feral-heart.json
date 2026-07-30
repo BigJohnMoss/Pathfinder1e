@@ -1,0 +1,21 @@
+{
+  "id": "feral-heart",
+  "name": "Feral Heart",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have reverted to savage behavior through a traumatic event or extended period in the wilderness"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Raised by Beasts background"
+    }
+  ],
+  "benefit": "Embrace your savage behaivor for increased combat ability",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Feral%20Heart"
+  }
+}

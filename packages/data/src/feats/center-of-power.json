@@ -1,0 +1,33 @@
+{
+  "id": "center-of-power",
+  "name": "Center of Power",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "leadership"
+    },
+    {
+      "type": "rule",
+      "description": "score 13"
+    },
+    {
+      "type": "feat",
+      "id": "leadership"
+    },
+    {
+      "type": "feat",
+      "id": "run"
+    },
+    {
+      "type": "rule",
+      "description": "hold a role related to ning a kingdom"
+    }
+  ],
+  "benefit": "Increase the benefits of a building in your kingdom",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Center%20of%20Power"
+  }
+}

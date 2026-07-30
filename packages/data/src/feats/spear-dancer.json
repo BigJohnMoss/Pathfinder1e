@@ -1,0 +1,26 @@
+{
+  "id": "spear-dancer",
+  "name": "Spear Dancer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(any two-handed reach weapon)"
+    },
+    {
+      "type": "skill",
+      "key": "Perform (dance)",
+      "minimum": 4
+    }
+  ],
+  "benefit": "When you hit a creature with a two-handed reach weapon they are dazzled for 1 round",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 216,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spear%20Dancer"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "chakra-initiate",
+  "name": "Chakra Initiate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to awaken the root chakra"
+    }
+  ],
+  "benefit": "Gain 3 serpent-fire ki points for chakras",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chakra%20Initiate"
+  }
+}

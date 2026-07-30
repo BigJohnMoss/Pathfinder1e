@@ -1,0 +1,25 @@
+{
+  "id": "improved-armor-focus",
+  "name": "Improved Armor Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "armor-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with selected armor"
+    }
+  ],
+  "benefit": "Decrease selected armor types armor check penalty by 1",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Armor%20Focus"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "lonely-death",
+  "name": "Lonely Death",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duskwalker"
+    }
+  ],
+  "benefit": "When reduced to below 0 hit points, you can move and hide as an immediate action",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lonely%20Death"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "stone-shroud",
+  "name": "Stone Shroud",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    },
+    {
+      "type": "feat",
+      "id": "cunning"
+    },
+    {
+      "type": "rule",
+      "description": "stone racial trait"
+    }
+  ],
+  "benefit": "Gain a bonus to Stealth checks when in rocky terrain",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Shroud"
+  }
+}

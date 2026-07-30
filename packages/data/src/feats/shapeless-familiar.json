@@ -1,0 +1,21 @@
+{
+  "id": "shapeless-familiar",
+  "name": "Shapeless Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "familiar"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Your familiar can change shape",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shapeless%20Familiar"
+  }
+}

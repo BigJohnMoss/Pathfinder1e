@@ -1,0 +1,29 @@
+{
+  "id": "vampiric-animal-companion",
+  "name": "Vampiric Animal Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Vampire"
+    },
+    {
+      "type": "rule",
+      "description": "Charisma 18"
+    },
+    {
+      "type": "rule",
+      "description": "animal companion class ability"
+    },
+    {
+      "type": "rule",
+      "description": "sufficiently high level (see below)"
+    }
+  ],
+  "benefit": "Gain a vampire animal companion",
+  "source": {
+    "title": "Rival Guide",
+    "page": 47,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vampiric%20Animal%20Companion"
+  }
+}

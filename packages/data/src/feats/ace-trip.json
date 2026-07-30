@@ -1,0 +1,42 @@
+{
+  "id": "ace-trip",
+  "name": "Ace Trip",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "deadly-aim"
+    },
+    {
+      "type": "feat",
+      "id": "ranged-trip"
+    },
+    {
+      "type": "rule",
+      "description": "( Ranged Tactics Toolbox 9)"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a ranged weapon"
+    }
+  ],
+  "benefit": "No penalty when using Ranged Trip, make special ranged trips against flying creatures",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ace%20Trip"
+  }
+}

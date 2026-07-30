@@ -1,0 +1,21 @@
+{
+  "id": "fearsome-finish",
+  "name": "Fearsome Finish",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Lamashtu"
+    }
+  ],
+  "benefit": "+4 bonus on Intimidate checks to demoralize when you reduce an enemy to 0 or fewer hit points",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 212,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fearsome%20Finish"
+  }
+}

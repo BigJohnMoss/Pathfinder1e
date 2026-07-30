@@ -1,0 +1,17 @@
+{
+  "id": "wind-song",
+  "name": "Wind Song",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Perform (wind instruments) 5 ranks; bardic performance or raging song class feature"
+    }
+  ],
+  "benefit": "Echo your performance so that it originates from a square far from you",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wind%20Song"
+  }
+}

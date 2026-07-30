@@ -1,0 +1,17 @@
+{
+  "id": "outslug-sprint",
+  "name": "Outslug Sprint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int 13; Combat Expertise or brawler’s cunning ACG class feature; Lunge; Outslug Style; Outslug Weave; Weapon Focus with the chosen weapon"
+    }
+  ],
+  "benefit": "Move an additional 5 feet when making a 5-foot step with Outslug Style",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Outslug%20Sprint"
+  }
+}

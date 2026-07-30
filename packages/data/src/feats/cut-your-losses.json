@@ -1,0 +1,23 @@
+{
+  "id": "cut-your-losses",
+  "name": "Cut Your Losses",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Pick up objects or allies when escaping combat, treat Strength as 2 higher for carrying capacity",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cut%20Your%20Losses"
+  }
+}

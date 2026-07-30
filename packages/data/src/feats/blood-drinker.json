@@ -1,0 +1,17 @@
+{
+  "id": "blood-drinker",
+  "name": "Blood Drinker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dhampir"
+    }
+  ],
+  "benefit": "Gain strength by drinking blood",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 99,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Drinker"
+  }
+}

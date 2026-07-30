@@ -1,0 +1,21 @@
+{
+  "id": "taldan-squire",
+  "name": "Taldan Squire",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "proficient in a martial weapon"
+    }
+  ],
+  "benefit": "+2 initiative when near a knight, +1 dodge AC when near injured allies",
+  "source": {
+    "title": "Taldor, Echoes of Glory",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Taldan%20Squire"
+  }
+}

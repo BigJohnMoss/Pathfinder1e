@@ -1,0 +1,35 @@
+{
+  "id": "greater-tenacious-hunter",
+  "name": "Greater Tenacious Hunter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "tenacious-hunter"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "animal companion"
+    }
+  ],
+  "benefit": "Deny Dexterity bonus to creatures pinpointed",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 218,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Tenacious%20Hunter"
+  }
+}

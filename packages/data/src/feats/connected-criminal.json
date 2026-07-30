@@ -1,0 +1,18 @@
+{
+  "id": "connected-criminal",
+  "name": "Connected Criminal",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (local)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Shorter time to access black markets; gain Crime modifier on checks within the market",
+  "source": {
+    "title": "Black Markets",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Connected%20Criminal"
+  }
+}

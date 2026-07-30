@@ -1,0 +1,17 @@
+{
+  "id": "gifted-mesmerist",
+  "name": "Gifted Mesmerist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Successfully affect 25 different targets with charm or compulsion spells"
+    }
+  ],
+  "benefit": "Gain a charm or compulsion spell-like ability",
+  "source": {
+    "title": "Legacy of Fire Player's Guide",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gifted%20Mesmerist"
+  }
+}

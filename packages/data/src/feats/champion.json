@@ -1,0 +1,33 @@
+{
+  "id": "champion",
+  "name": "Champion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have defeated a single challenging foe without any aid from another"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Champion of a God"
+    },
+    {
+      "type": "rule",
+      "description": "Champion of the People"
+    },
+    {
+      "type": "rule",
+      "description": "Competition Champion"
+    },
+    {
+      "type": "rule",
+      "description": "or Gladiator background"
+    }
+  ],
+  "benefit": "Gain bonuses on attack/AC with combat challenges",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 67,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Champion"
+  }
+}

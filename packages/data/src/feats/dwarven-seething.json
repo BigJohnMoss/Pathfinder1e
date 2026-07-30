@@ -1,0 +1,29 @@
+{
+  "id": "dwarven-seething",
+  "name": "Dwarven Seething",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dwarven-hatred-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "defensive training and hatred racial traits"
+    },
+    {
+      "type": "rule",
+      "description": "Medium size"
+    }
+  ],
+  "benefit": "Apply hated/defensive training to different types/subtypes",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dwarven%20Seething"
+  }
+}

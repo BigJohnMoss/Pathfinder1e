@@ -1,0 +1,12 @@
+{
+  "id": "lost-in-the-crowd",
+  "name": "Lost in the Crowd",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Hide easier when in crowds, and gain a bonus to AC when threatened by multiple enemies",
+  "source": {
+    "title": "Osirion, Land of the Pharaohs",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lost%20in%20the%20Crowd"
+  }
+}

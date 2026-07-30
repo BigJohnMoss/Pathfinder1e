@@ -1,0 +1,22 @@
+{
+  "id": "cooperative-disabling",
+  "name": "Cooperative Disabling",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 1
+    },
+    {
+      "type": "feature",
+      "id": "trapfinding"
+    }
+  ],
+  "benefit": "Ally can attempt a second Disable Device check as an immediate action",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cooperative%20Disabling"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "octopus-style",
+  "name": "Octopus Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 1
+    }
+  ],
+  "benefit": "As a move action, designate a number of creatures who can't flank you while in Octopus Style",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Octopus%20Style"
+  }
+}

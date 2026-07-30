@@ -1,0 +1,22 @@
+{
+  "id": "linnorm-hunter-style",
+  "name": "Linnorm Hunter Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "must have or be an animal companion"
+    }
+  ],
+  "benefit": "Enemies that provoke an attack of opportunity from your ally also provoke from you",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Linnorm%20Hunter%20Style"
+  }
+}

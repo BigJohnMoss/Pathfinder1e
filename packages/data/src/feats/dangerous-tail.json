@@ -1,0 +1,21 @@
+{
+  "id": "dangerous-tail",
+  "name": "Dangerous Tail",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "Lizardfolk"
+    }
+  ],
+  "benefit": "Gain a tail swipe attack",
+  "source": {
+    "title": "Monster Codex",
+    "page": 140,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dangerous%20Tail"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "fortunate-ruler",
+  "name": "Fortunate Ruler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "leadership"
+    },
+    {
+      "type": "rule",
+      "description": "Hold the Ruler role for a kingdom"
+    }
+  ],
+  "benefit": "Have greater control over the events in your kingdom",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fortunate%20Ruler"
+  }
+}

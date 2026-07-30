@@ -1,0 +1,51 @@
+{
+  "id": "bull-catcher-wrangler",
+  "name": "Bull-Catcher Wrangler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "bull-catcher-style"
+    },
+    {
+      "type": "feat",
+      "id": "bull-catcher-toss"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "class-level",
+      "classId": "acg",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "brawler"
+    },
+    {
+      "type": "rule",
+      "description": "or monk level 8th"
+    }
+  ],
+  "benefit": "Redirect a creature's charge when you grab it with Bull-Catcher Style",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bull-Catcher%20Wrangler"
+  }
+}

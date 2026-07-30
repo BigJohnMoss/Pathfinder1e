@@ -1,0 +1,18 @@
+{
+  "id": "draconic-heritage",
+  "name": "Draconic Heritage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Manifest the power of your draconic heritage",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Draconic%20Heritage"
+  }
+}

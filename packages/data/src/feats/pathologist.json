@@ -1,0 +1,17 @@
+{
+  "id": "pathologist",
+  "name": "Pathologist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "incredible-healer"
+    }
+  ],
+  "benefit": "Improve your ability to treat diseases and poisons with a Heal check",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pathologist"
+  }
+}

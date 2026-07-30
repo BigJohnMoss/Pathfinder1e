@@ -1,0 +1,21 @@
+{
+  "id": "sin-sharing-critical",
+  "name": "Sin-Sharing Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Share your curses with an opponent after confirming a critical hit",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sin-Sharing%20Critical"
+  }
+}

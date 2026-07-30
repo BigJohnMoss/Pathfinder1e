@@ -1,0 +1,21 @@
+{
+  "id": "consecrate-spell",
+  "name": "Consecrate Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "able to prepare or cast consecrate"
+    }
+  ],
+  "benefit": "Maximize spell variables against evil creatures.",
+  "source": {
+    "title": "Blood of Angels",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Consecrate%20Spell"
+  }
+}

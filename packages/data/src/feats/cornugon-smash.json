@@ -1,0 +1,22 @@
+{
+  "id": "cornugon-smash",
+  "name": "Cornugon Smash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Make intimidate checks along with power attacks",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cornugon%20Smash"
+  }
+}

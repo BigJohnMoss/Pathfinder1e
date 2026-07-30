@@ -1,0 +1,21 @@
+{
+  "id": "snapping-flank",
+  "name": "Snapping Flank",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "bite attack"
+    }
+  ],
+  "benefit": "Make a bite attack as a swift action when flanking",
+  "source": {
+    "title": "Monster Codex",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Snapping%20Flank"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "improved-spring-attack",
+  "name": "Improved Spring Attack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "feat",
+      "id": "nimble-moves"
+    },
+    {
+      "type": "feat",
+      "id": "spring-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Attack up to two targets intead of one when you use Spring Attack",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 114,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Spring%20Attack"
+  }
+}

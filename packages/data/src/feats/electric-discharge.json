@@ -1,0 +1,21 @@
+{
+  "id": "electric-discharge",
+  "name": "Electric Discharge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast a 1st-level or higher spell with the electricity descriptor"
+    }
+  ],
+  "benefit": "Combine electricity spells to greater effect",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Electric%20Discharge"
+  }
+}

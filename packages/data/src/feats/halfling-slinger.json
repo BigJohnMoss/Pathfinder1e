@@ -1,0 +1,21 @@
+{
+  "id": "halfling-slinger",
+  "name": "Halfling Slinger",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal"
+    }
+  ],
+  "benefit": "+1 racial attack bonus with slings",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Halfling%20Slinger"
+  }
+}

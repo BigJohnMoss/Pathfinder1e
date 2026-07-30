@@ -1,0 +1,38 @@
+{
+  "id": "heroic-leader",
+  "name": "Heroic Leader",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "any combat feat; ability to gain an animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "cohort"
+    },
+    {
+      "type": "rule",
+      "description": "eidolon"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    },
+    {
+      "type": "rule",
+      "description": "or mount"
+    }
+  ],
+  "benefit": "Certain allies do not count as threatening opponents for certain feats",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Heroic%20Leader"
+  }
+}

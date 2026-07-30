@@ -1,0 +1,26 @@
+{
+  "id": "dolphin-style",
+  "name": "Dolphin Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +3 or monk level 3rd"
+    }
+  ],
+  "benefit": "Gain bonuses when enemies are grouped together and bypass bonuses from aid another",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dolphin%20Style"
+  }
+}

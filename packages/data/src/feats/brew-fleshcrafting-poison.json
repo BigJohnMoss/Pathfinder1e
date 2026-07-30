@@ -1,0 +1,22 @@
+{
+  "id": "brew-fleshcrafting-poison",
+  "name": "Brew Fleshcrafting Poison",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "CL 10th"
+    },
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Learn to create fleshcrafting poisons",
+  "source": {
+    "title": "Pathfinder #16: Endless Night",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brew%20Fleshcrafting%20Poison"
+  }
+}

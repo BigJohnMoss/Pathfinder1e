@@ -1,0 +1,22 @@
+{
+  "id": "bleeding-stare",
+  "name": "Bleeding Stare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Painful stare causes bleed damage",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bleeding%20Stare"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "dark-adept",
+  "name": "Dark Adept",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Drow"
+    },
+    {
+      "type": "level",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain new drow spell-like abilities",
+  "source": {
+    "title": "Pathfinder #18: Descent into Midnight",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dark%20Adept"
+  }
+}

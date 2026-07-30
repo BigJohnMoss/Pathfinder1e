@@ -1,0 +1,21 @@
+{
+  "id": "eldritch-researcher",
+  "name": "Eldritch Researcher",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have created a new spell"
+    },
+    {
+      "type": "rule",
+      "description": "or have The Way Things Work background"
+    }
+  ],
+  "benefit": "Gain bonuses with spells that you’ve created",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eldritch%20Researcher"
+  }
+}

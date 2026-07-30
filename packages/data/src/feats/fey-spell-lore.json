@@ -1,0 +1,27 @@
+{
+  "id": "fey-spell-lore",
+  "name": "Fey Spell Lore",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 1
+    },
+    {
+      "type": "spell-access",
+      "id": "druid-spells"
+    }
+  ],
+  "benefit": "Add fey-themed spells to your druid spell list",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fey%20Spell%20Lore"
+  }
+}

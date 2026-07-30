@@ -1,0 +1,17 @@
+{
+  "id": "city-sprinter",
+  "name": "City Sprinter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "street-smarts"
+    }
+  ],
+  "benefit": "Move quickly and safely through urban terrain",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=City%20Sprinter"
+  }
+}

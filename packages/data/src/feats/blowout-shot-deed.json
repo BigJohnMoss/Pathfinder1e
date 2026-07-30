@@ -1,0 +1,22 @@
+{
+  "id": "blowout-shot-deed",
+  "name": "Blowout Shot Deed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "grit class feature or Amateur Gunslinger UC feat"
+    }
+  ],
+  "benefit": "Create concussive blasts with a specially prepared black powder mix",
+  "source": {
+    "title": "Magical Marketplace",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blowout%20Shot%20Deed"
+  }
+}

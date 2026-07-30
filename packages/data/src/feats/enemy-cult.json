@@ -1,0 +1,17 @@
+{
+  "id": "enemy-cult",
+  "name": "Enemy Cult",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "See text"
+    }
+  ],
+  "benefit": "Detect the cult’s alignment, and on completion, gain defenses against that alignment",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 86,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Enemy%20Cult"
+  }
+}

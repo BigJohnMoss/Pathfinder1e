@@ -1,0 +1,21 @@
+{
+  "id": "chimeric-adept",
+  "name": "Chimeric Adept",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "chimeric-aspect"
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "Gain the effects of one of your minor forms of your aspects when you use wild shape",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chimeric%20Adept"
+  }
+}

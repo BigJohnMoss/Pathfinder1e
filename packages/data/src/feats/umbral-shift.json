@@ -1,0 +1,17 @@
+{
+  "id": "umbral-shift",
+  "name": "Umbral Shift",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Darkness racial spell-like ability"
+    }
+  ],
+  "benefit": "When in magical darkness, swap places with an ally who also has this feat as a swift action",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Umbral%20Shift"
+  }
+}

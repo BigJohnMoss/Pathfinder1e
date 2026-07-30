@@ -1,0 +1,29 @@
+{
+  "id": "reflexive-interception",
+  "name": "Reflexive Interception",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intercept-blow"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "evasion"
+    }
+  ],
+  "benefit": "Provide evasion to master",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 219,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reflexive%20Interception"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "open-up",
+  "name": "Open Up",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    }
+  ],
+  "benefit": "Uses of aid another to improve attacks also ignore AC bonuses granted by a shield",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Open%20Up"
+  }
+}

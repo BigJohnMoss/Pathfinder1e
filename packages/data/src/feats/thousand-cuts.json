@@ -1,0 +1,21 @@
+{
+  "id": "thousand-cuts",
+  "name": "Thousand Cuts",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with slashing weapon"
+    }
+  ],
+  "benefit": "Use a slashing weapon to inflict bleed damage",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Thousand%20Cuts"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "fool-magic",
+  "name": "Fool Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deceitful"
+    },
+    {
+      "type": "skill",
+      "key": "Disguise",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Use Disguise to fool magic items",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fool%20Magic"
+  }
+}

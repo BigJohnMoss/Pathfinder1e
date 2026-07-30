@@ -1,0 +1,17 @@
+{
+  "id": "extra-spell-synthesis",
+  "name": "Extra Spell Synthesis",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "spell-synthesis"
+    }
+  ],
+  "benefit": "Gain an additional use of spell synthesis",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Spell%20Synthesis"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "guardians-return",
+  "name": "Guardian's Return",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "page"
+    },
+    {
+      "type": "rule",
+      "description": "Must have a familiar with the protector archetype (see 11)"
+    }
+  ],
+  "benefit": "Your familiar can teleport near when you are in danger",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Guardian's%20Return"
+  }
+}

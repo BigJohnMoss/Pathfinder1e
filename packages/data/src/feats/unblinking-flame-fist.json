@@ -1,0 +1,17 @@
+{
+  "id": "unblinking-flame-fist",
+  "name": "Unblinking Flame Fist",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int 13; Wis 13; Combat Expertise; Perfect Style; Stunning Fist; Unblinking Flame Feint; base attack bonus +13 or monk level 13th"
+    }
+  ],
+  "benefit": "Stunning fist save DC is +2 vs flat-footed foes",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unblinking%20Flame%20Fist"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "wind-rider",
+  "name": "Wind Rider",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Acrobatics or Fly 3 ranks"
+    }
+  ],
+  "benefit": "Increase your fly speed while in strong wind",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wind%20Rider"
+  }
+}

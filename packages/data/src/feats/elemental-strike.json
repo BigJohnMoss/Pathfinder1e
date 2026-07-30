@@ -1,0 +1,29 @@
+{
+  "id": "elemental-strike",
+  "name": "Elemental Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ifrit"
+    },
+    {
+      "type": "rule",
+      "description": "oread"
+    },
+    {
+      "type": "rule",
+      "description": "sylph"
+    },
+    {
+      "type": "rule",
+      "description": "or undine"
+    }
+  ],
+  "benefit": "Deal +1 damage of an energy type linked to your race",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 205,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Strike"
+  }
+}

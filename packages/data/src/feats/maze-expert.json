@@ -1,0 +1,26 @@
+{
+  "id": "maze-expert",
+  "name": "Maze Expert",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Survival)"
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain bonuses to navigate mazes",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Maze%20Expert"
+  }
+}

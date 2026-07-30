@@ -1,0 +1,17 @@
+{
+  "id": "altitude-affinity",
+  "name": "Altitude Affinity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    }
+  ],
+  "benefit": "Automatically acclimated to high altitude",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 284,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Altitude%20Affinity"
+  }
+}

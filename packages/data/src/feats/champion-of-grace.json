@@ -1,0 +1,21 @@
+{
+  "id": "champion-of-grace",
+  "name": "Champion of Grace",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "10 Hit Dice"
+    },
+    {
+      "type": "rule",
+      "description": "neutral good alignment"
+    }
+  ],
+  "benefit": "It is your mission to do as much good as possible.",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 99,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Grace"
+  }
+}

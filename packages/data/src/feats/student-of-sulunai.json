@@ -1,0 +1,17 @@
+{
+  "id": "student-of-sulunai",
+  "name": "Student of Sulunai",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aasimar"
+    }
+  ],
+  "benefit": "Give creatures rerolling a check a +2 insight bonus",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Student%20of%20Sulunai"
+  }
+}

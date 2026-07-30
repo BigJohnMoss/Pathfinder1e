@@ -1,0 +1,30 @@
+{
+  "id": "master-of-knowledge",
+  "name": "Master of Knowledge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Knowledge [any])"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Irori"
+    }
+  ],
+  "benefit": "Once per day, treat a roll on your selected Knowledge skill check as a natural 20",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 213,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20of%20Knowledge"
+  }
+}

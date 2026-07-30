@@ -1,0 +1,21 @@
+{
+  "id": "liberation-channel",
+  "name": "Liberation Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 7d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Cayden Cailean"
+    }
+  ],
+  "benefit": "Affect those healed by your channeled energy as per the spell freedom of movement",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 213,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Liberation%20Channel"
+  }
+}

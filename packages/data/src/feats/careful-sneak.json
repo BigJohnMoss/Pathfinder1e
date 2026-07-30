@@ -1,0 +1,23 @@
+{
+  "id": "careful-sneak",
+  "name": "Careful Sneak",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use Stealth slowly without penalty from most armor",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Careful%20Sneak"
+  }
+}

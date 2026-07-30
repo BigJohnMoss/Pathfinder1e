@@ -1,0 +1,36 @@
+{
+  "id": "barracuda-slam",
+  "name": "Barracuda Slam",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "barracuda-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 5
+    }
+  ],
+  "benefit": "You can run and charge while swimming",
+  "source": {
+    "title": "Pathfinder #124: City in the Deep",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Barracuda%20Slam"
+  }
+}

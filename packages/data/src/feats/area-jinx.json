@@ -1,0 +1,25 @@
+{
+  "id": "area-jinx",
+  "name": "Area Jinx",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "widen-spell"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Jinx multiple creatures at once",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Area%20Jinx"
+  }
+}

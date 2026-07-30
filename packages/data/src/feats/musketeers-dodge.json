@@ -1,0 +1,38 @@
+{
+  "id": "musketeers-dodge",
+  "name": "Musketeer's Dodge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(firearms) UC"
+    },
+    {
+      "type": "class-level",
+      "classId": "gunslinger",
+      "minimum": 3
+    },
+    {
+      "type": "feat",
+      "id": "gunslinger"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "rule",
+      "description": "’s deed"
+    }
+  ],
+  "benefit": "Increase the bonus from gunslinger's dodge and your movement doesn't provoke",
+  "source": {
+    "title": "Villain Codex",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Musketeer's%20Dodge"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "mark-of-the-devoted",
+  "name": "Mark of the Devoted",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "1st-level character"
+    },
+    {
+      "type": "rule",
+      "description": "human of Mwangi ethnicity"
+    },
+    {
+      "type": "rule",
+      "description": "Walkena worshiper"
+    },
+    {
+      "type": "rule",
+      "description": "must personally create a token worth at least 50 gp prior to an 8-hour branding ritual during which you survive taking 2d6 points of fire damage"
+    }
+  ],
+  "benefit": "Dedicate yourself to Mzali, rising as a juju zombie when you are killed",
+  "source": {
+    "title": "Undead Unleashed",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mark%20of%20the%20Devoted"
+  }
+}

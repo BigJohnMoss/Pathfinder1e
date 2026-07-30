@@ -1,0 +1,46 @@
+{
+  "id": "greater-spring-attack",
+  "name": "Greater Spring Attack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "acrobatic-steps"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-spring-attack"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "feat",
+      "id": "nimble-moves"
+    },
+    {
+      "type": "feat",
+      "id": "spring-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 16
+    }
+  ],
+  "benefit": "Attack up to three targets instead of one when you use Spring Attack",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Spring%20Attack"
+  }
+}

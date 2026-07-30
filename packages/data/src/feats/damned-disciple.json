@@ -1,0 +1,17 @@
+{
+  "id": "damned-disciple",
+  "name": "Damned Disciple",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fiendish-obedience"
+    }
+  ],
+  "benefit": "Gain access to evangelest boons and a +2 profane bonus to 2 skills",
+  "source": {
+    "title": "Book of the Damned",
+    "page": 178,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Damned%20Disciple"
+  }
+}

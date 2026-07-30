@@ -1,0 +1,25 @@
+{
+  "id": "shapechanging-savage",
+  "name": "Shapechanging Savage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Improved Feint or canny feint vigilante talent"
+    },
+    {
+      "type": "rule",
+      "description": "change shape ability"
+    },
+    {
+      "type": "rule",
+      "description": "shapechanger subtype"
+    }
+  ],
+  "benefit": "When you change forms, you can feint as a swift action",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shapechanging%20Savage"
+  }
+}

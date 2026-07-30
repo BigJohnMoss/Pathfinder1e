@@ -1,0 +1,17 @@
+{
+  "id": "eagles-resolve",
+  "name": "Eagle's Resolve",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Gain bonuses against mind-affecting effects",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eagle's%20Resolve"
+  }
+}

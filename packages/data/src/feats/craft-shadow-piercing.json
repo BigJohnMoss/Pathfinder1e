@@ -1,0 +1,22 @@
+{
+  "id": "craft-shadow-piercing",
+  "name": "Craft Shadow Piercing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (jewelry)",
+      "minimum": 5
+    },
+    {
+      "type": "caster-level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Learn to craft magical piercings infused with shadow",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Shadow%20Piercing"
+  }
+}

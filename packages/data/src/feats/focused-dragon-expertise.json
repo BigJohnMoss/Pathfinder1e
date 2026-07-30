@@ -1,0 +1,17 @@
+{
+  "id": "focused-dragon-expertise",
+  "name": "Focused Dragon Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-dragon"
+    }
+  ],
+  "benefit": "Gain a bonus to saving throws against breath weapons and fear effects",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Dragon%20Expertise"
+  }
+}

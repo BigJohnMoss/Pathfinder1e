@@ -1,0 +1,28 @@
+{
+  "id": "wary-smuggler",
+  "name": "Wary Smuggler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 5
+    }
+  ],
+  "benefit": "+5 Sleight of Hand to conceal small objects; take 10 on Perception, Sleight of Hand, and Stealth within urban areas",
+  "source": {
+    "title": "Black Markets",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wary%20Smuggler"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "expanded-studies",
+  "name": "Expanded Studies",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "rule",
+      "description": "hunter or warpriest level 16th"
+    }
+  ],
+  "benefit": "Add 7th-level spells to your spell list for the purpose of using spell completion and spell trigger items",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Studies"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "taldan-knight",
+  "name": "Taldan Knight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "heavy armor proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "proficient in a martial weapon"
+    }
+  ],
+  "benefit": "Gain a cohort squire",
+  "source": {
+    "title": "Taldor, Echoes of Glory",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Taldan%20Knight"
+  }
+}

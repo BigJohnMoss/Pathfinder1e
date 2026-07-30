@@ -1,0 +1,18 @@
+{
+  "id": "improvisational-healer",
+  "name": "Improvisational Healer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Gain bonuses when using the Heal skill",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improvisational%20Healer"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "improved-drow-nobility",
+  "name": "Improved Drow Nobility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "drow-nobility"
+    },
+    {
+      "type": "rule",
+      "description": "able to use drow spell-like abilities"
+    },
+    {
+      "type": "rule",
+      "description": "drow"
+    }
+  ],
+  "benefit": "Gain even more drow spell-like abilities",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 105,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Drow%20Nobility"
+  }
+}

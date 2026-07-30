@@ -1,0 +1,12 @@
+{
+  "id": "storm-lashed",
+  "name": "Storm-Lashed",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Take fewer penalties from bad weather",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 184,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Storm-Lashed"
+  }
+}

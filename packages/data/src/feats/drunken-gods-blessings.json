@@ -1,0 +1,17 @@
+{
+  "id": "drunken-gods-blessings",
+  "name": "Drunken God's Blessings",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Worshiper of Cayden Cailean"
+    }
+  ],
+  "benefit": "Gain Cayden Cailean's blessing after getting drunk in a tavern",
+  "source": {
+    "title": "Inner Sea Taverns",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Drunken%20God's%20Blessings"
+  }
+}

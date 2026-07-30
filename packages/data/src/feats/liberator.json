@@ -1,0 +1,21 @@
+{
+  "id": "liberator",
+  "name": "Liberator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have been enslaved for at least 6 months"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Imprisoned or Kidnapped background (see Ultimate Campaign )"
+    }
+  ],
+  "benefit": "Inspire others to join your cause",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Liberator"
+  }
+}

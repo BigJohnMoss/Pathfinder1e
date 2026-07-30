@@ -1,0 +1,23 @@
+{
+  "id": "natural-poison-harvester",
+  "name": "Natural Poison Harvester",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 6
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Craft (alchemy) checks when creating poisons harvested from creatures; such poisons increase their save DC by +2",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Natural%20Poison%20Harvester"
+  }
+}

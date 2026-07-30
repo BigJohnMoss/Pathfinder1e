@@ -1,0 +1,36 @@
+{
+  "id": "spirit-speaker",
+  "name": "Spirit Speaker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "absorb-spirit"
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "must have died at least once or been possessed by an undead creature"
+    }
+  ],
+  "benefit": "Talk to spirits you’ve absorbed",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Speaker"
+  }
+}

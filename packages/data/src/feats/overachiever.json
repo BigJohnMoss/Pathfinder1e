@@ -1,0 +1,29 @@
+{
+  "id": "overachiever",
+  "name": "Overachiever",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have been defeated by the same individual"
+    },
+    {
+      "type": "rule",
+      "description": "organization"
+    },
+    {
+      "type": "rule",
+      "description": "or creature type at least four times"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Boarding School or Humiliated background"
+    }
+  ],
+  "benefit": "Take less penalties from exhaustion, forgo rest to improve skills",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Overachiever"
+  }
+}

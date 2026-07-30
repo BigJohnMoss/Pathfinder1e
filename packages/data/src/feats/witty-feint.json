@@ -1,0 +1,26 @@
+{
+  "id": "witty-feint",
+  "name": "Witty Feint",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    }
+  ],
+  "benefit": "Improve your own AC instead of harming your enemy's when feinting in combat",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Witty%20Feint"
+  }
+}

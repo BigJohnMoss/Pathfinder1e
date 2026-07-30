@@ -1,0 +1,12 @@
+{
+  "id": "armor-adept",
+  "name": "Armor Adept",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Armor modifications no longer inhibit you",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Armor%20Adept"
+  }
+}

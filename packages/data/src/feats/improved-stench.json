@@ -1,0 +1,17 @@
+{
+  "id": "improved-stench",
+  "name": "Improved Stench",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Stench universal monster ability"
+    }
+  ],
+  "benefit": "Increase the power of your stench.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Stench"
+  }
+}

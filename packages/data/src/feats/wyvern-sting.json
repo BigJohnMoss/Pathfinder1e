@@ -1,0 +1,34 @@
+{
+  "id": "wyvern-sting",
+  "name": "Wyvern Sting",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(whip)"
+    },
+    {
+      "type": "feat",
+      "id": "wyvern-fury-style"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "brawler’s flurry ACG class feature or flurry of blows class feature"
+    }
+  ],
+  "benefit": "When using Wyvern Style, you can use a whip to force an enemy to focus on you.",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wyvern%20Sting"
+  }
+}

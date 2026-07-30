@@ -1,0 +1,21 @@
+{
+  "id": "lengthy-potion",
+  "name": "Lengthy Potion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "brew-potion"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Potions you create last longer",
+  "source": {
+    "title": "Potions and Poisons",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lengthy%20Potion"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "bully-breed",
+  "name": "Bully Breed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "animal companion or mount class feature"
+    }
+  ],
+  "benefit": "Animal companion or mount gains Intimidate as a class skill and can demoralize foes",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bully%20Breed"
+  }
+}

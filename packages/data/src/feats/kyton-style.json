@@ -1,0 +1,35 @@
+{
+  "id": "kyton-style",
+  "name": "Kyton Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(spiked chain)"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    }
+  ],
+  "benefit": "Use a spiked chain as a monk weapon and deliver Stunning Fist through it",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kyton%20Style"
+  }
+}

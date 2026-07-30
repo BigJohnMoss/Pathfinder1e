@@ -1,0 +1,26 @@
+{
+  "id": "rubble-skirmisher",
+  "name": "Rubble Skirmisher",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "nimble-moves"
+    },
+    {
+      "type": "bab",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Gain a +2 bonus on combat maneuver checks and CMD when in naturally occuring difficult terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rubble%20Skirmisher"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "studied-spell",
+  "name": "Studied Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Spell uses Knowledge to bypass racial resistances",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Studied%20Spell"
+  }
+}

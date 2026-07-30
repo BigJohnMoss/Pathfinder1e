@@ -1,0 +1,25 @@
+{
+  "id": "reflexive-crystalline-dust",
+  "name": "Reflexive Crystalline Dust",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "swift-crystalline-dust"
+    },
+    {
+      "type": "rule",
+      "description": "aphorite"
+    },
+    {
+      "type": "rule",
+      "description": "crystalline dust racial trait"
+    }
+  ],
+  "benefit": "You can use crystalline dust as an immediate action",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reflexive%20Crystalline%20Dust"
+  }
+}

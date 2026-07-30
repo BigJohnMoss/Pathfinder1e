@@ -1,0 +1,29 @@
+{
+  "id": "toxic-stench",
+  "name": "Toxic Stench",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Stench universal monster ability"
+    },
+    {
+      "type": "rule",
+      "description": "immunity to poison"
+    },
+    {
+      "type": "feat",
+      "id": "improved-stench"
+    },
+    {
+      "type": "rule",
+      "description": "Toughnes"
+    }
+  ],
+  "benefit": "Your stench becomes poisonous.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Toxic%20Stench"
+  }
+}

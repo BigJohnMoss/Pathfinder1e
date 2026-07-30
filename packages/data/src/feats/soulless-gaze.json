@@ -1,0 +1,12 @@
+{
+  "id": "soulless-gaze",
+  "name": "Soulless Gaze",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Use Intimidate with greater proficiency",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Soulless%20Gaze"
+  }
+}

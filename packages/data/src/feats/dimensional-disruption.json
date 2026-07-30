@@ -1,0 +1,17 @@
+{
+  "id": "dimensional-disruption",
+  "name": "Dimensional Disruption",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Arcane Strike or Disruptive; Banishing Critical; Combat Reflexes; Dimensional Awareness; Spellcraft 8 ranks; arcane pool class feature"
+    }
+  ],
+  "benefit": "Quickly send summoned/called creatures back to their home plane before they have a chance to act",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dimensional%20Disruption"
+  }
+}

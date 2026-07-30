@@ -1,0 +1,25 @@
+{
+  "id": "improved-weapon-of-the-chosen",
+  "name": "Improved Weapon of the Chosen",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with your deity’s favored weapon"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-of-the-chosen"
+    }
+  ],
+  "benefit": "Gain the benefits of Weapon of the Chosen until the start of your next turn",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Weapon%20of%20the%20Chosen"
+  }
+}

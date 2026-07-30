@@ -1,0 +1,18 @@
+{
+  "id": "blazing-aura-pa",
+  "name": "Blazing Aura (PA)",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Shroud yourself in fire that damages those who attack you",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blazing%20Aura%20(PA)"
+  }
+}

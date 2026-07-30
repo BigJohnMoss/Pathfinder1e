@@ -1,0 +1,22 @@
+{
+  "id": "genie-touched-companion",
+  "name": "Genie-Touched Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "animal companion or mount class feature"
+    }
+  ],
+  "benefit": "Your mount has been blessed by genies",
+  "source": {
+    "title": "Qadira, Jewel of the East",
+    "page": 61,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Genie-Touched%20Companion"
+  }
+}

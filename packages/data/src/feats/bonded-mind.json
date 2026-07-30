@@ -1,0 +1,12 @@
+{
+  "id": "bonded-mind",
+  "name": "Bonded Mind",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Trade nonverbal messages with allies",
+  "source": {
+    "title": "Distant Shores",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bonded%20Mind"
+  }
+}

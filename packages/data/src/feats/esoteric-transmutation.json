@@ -1,0 +1,12 @@
+{
+  "id": "esoteric-transmutation",
+  "name": "Esoteric Transmutation",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your transmutation spells grant a bonus to physical abilities",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Esoteric%20Transmutation"
+  }
+}

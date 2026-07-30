@@ -1,0 +1,34 @@
+{
+  "id": "follow-up-strike",
+  "name": "Follow-Up Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-disarm"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Make an attack as a swift action after you disarm a creature",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Follow-Up%20Strike"
+  }
+}

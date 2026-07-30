@@ -1,0 +1,27 @@
+{
+  "id": "musketeers-daring",
+  "name": "Musketeer's Daring",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "derring-do deed"
+    },
+    {
+      "type": "class-level",
+      "classId": "swashbuckler",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Reroll derring-do on a natural 5",
+  "source": {
+    "title": "Villain Codex",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Musketeer's%20Daring"
+  }
+}

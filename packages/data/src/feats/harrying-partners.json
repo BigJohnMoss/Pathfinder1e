@@ -1,0 +1,21 @@
+{
+  "id": "harrying-partners",
+  "name": "Harrying Partners",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any teamwork feat"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Uses of aid another to improve AC last longer",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Harrying%20Partners"
+  }
+}

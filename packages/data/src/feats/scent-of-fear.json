@@ -1,0 +1,21 @@
+{
+  "id": "scent-of-fear",
+  "name": "Scent of Fear",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Scent"
+    },
+    {
+      "type": "rule",
+      "description": "any evil"
+    }
+  ],
+  "benefit": "Smell frightened creatures from farther away and gain a bonus to attack them",
+  "source": {
+    "title": "Classic Monsters Revisited",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scent%20of%20Fear"
+  }
+}

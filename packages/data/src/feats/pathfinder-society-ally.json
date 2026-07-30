@@ -1,0 +1,21 @@
+{
+  "id": "pathfinder-society-ally",
+  "name": "Pathfinder Society Ally",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "associate"
+    },
+    {
+      "type": "rule",
+      "description": "(Pathfinder Society)"
+    }
+  ],
+  "benefit": "Gain access to the vast archives of the Pathfinder Society",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pathfinder%20Society%20Ally"
+  }
+}

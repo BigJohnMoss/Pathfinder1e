@@ -1,0 +1,17 @@
+{
+  "id": "spirits-gift",
+  "name": "Spirit's Gift",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal companion class feature or familiar class feature"
+    }
+  ],
+  "benefit": "Commune with a spirit to grant your animal companion or familiar a shaman spirit augmentation",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 157,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit's%20Gift"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "chairbreaker",
+  "name": "Chairbreaker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "catch-off-guard"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Break improvised weapons to deal more damage",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chairbreaker"
+  }
+}

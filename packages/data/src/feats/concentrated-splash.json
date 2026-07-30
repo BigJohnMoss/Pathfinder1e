@@ -1,0 +1,17 @@
+{
+  "id": "concentrated-splash",
+  "name": "Concentrated Splash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Precise Shot or Throw Anything"
+    }
+  ],
+  "benefit": "Deal extra damage with the direct hit from a splash weapon by reducing the splash damage to other targets",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Concentrated%20Splash"
+  }
+}

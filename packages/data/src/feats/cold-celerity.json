@@ -1,0 +1,17 @@
+{
+  "id": "cold-celerity",
+  "name": "Cold Celerity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    }
+  ],
+  "benefit": "+2 initiative and +1 attack rolls in cold",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cold%20Celerity"
+  }
+}

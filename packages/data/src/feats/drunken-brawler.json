@@ -1,0 +1,21 @@
+{
+  "id": "drunken-brawler",
+  "name": "Drunken Brawler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Cayden Cailean"
+    }
+  ],
+  "benefit": "Alcohol bestows a –2 penalty on Reflex saves, but grants temporary hit points and more",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 211,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Drunken%20Brawler"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "indomitable-mountain-style",
+  "name": "Indomitable Mountain Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Gain +4 morale bonus to CMD and to the DC of Bluff checks used for feint attempts against you if you don't move",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 115,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Indomitable%20Mountain%20Style"
+  }
+}

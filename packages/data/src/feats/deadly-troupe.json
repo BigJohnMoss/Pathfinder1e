@@ -1,0 +1,21 @@
+{
+  "id": "deadly-troupe",
+  "name": "Deadly Troupe",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Perform (act) or Perform (dance) 3 ranks"
+    },
+    {
+      "type": "rule",
+      "description": "human (Varisian)"
+    }
+  ],
+  "benefit": "Gain a +4 bonus on certain combat maneuver checks and skill checks against foes threatened by allies with this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 204,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deadly%20Troupe"
+  }
+}

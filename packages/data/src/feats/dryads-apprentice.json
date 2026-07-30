@@ -1,0 +1,22 @@
+{
+  "id": "dryads-apprentice",
+  "name": "Dryad's Apprentice",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Gain wood shape as a spell-like ability",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dryad's%20Apprentice"
+  }
+}

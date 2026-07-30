@@ -1,0 +1,26 @@
+{
+  "id": "trap-wrecker",
+  "name": "Trap Wrecker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "orc"
+    }
+  ],
+  "benefit": "Smash traps instead of disarming them",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 142,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Trap%20Wrecker"
+  }
+}

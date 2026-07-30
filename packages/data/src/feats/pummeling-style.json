@@ -1,0 +1,29 @@
+{
+  "id": "pummeling-style",
+  "name": "Pummeling Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feature",
+      "id": "brawlers-flurry"
+    },
+    {
+      "type": "rule",
+      "description": "or flurry of blows class feature"
+    }
+  ],
+  "benefit": "Combine your unarmed strikes together",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pummeling%20Style"
+  }
+}

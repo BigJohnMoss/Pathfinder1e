@@ -1,0 +1,17 @@
+{
+  "id": "open-conduit",
+  "name": "Open Conduit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Knowledge (planes) 5 ranks or outsider with the native subtype"
+    }
+  ],
+  "benefit": "You can use a conduit feat more often",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Open%20Conduit"
+  }
+}

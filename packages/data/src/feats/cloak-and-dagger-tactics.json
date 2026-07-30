@@ -1,0 +1,54 @@
+{
+  "id": "cloak-and-dagger-tactics",
+  "name": "Cloak and Dagger Tactics",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "cloak-and-dagger-style"
+    },
+    {
+      "type": "feat",
+      "id": "cloak-and-dagger-subterfuge"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 16
+    }
+  ],
+  "benefit": "Use free dirty tricks when your opponent is off guard or flanked",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cloak%20and%20Dagger%20Tactics"
+  }
+}

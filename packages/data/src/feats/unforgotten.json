@@ -1,0 +1,37 @@
+{
+  "id": "unforgotten",
+  "name": "Unforgotten",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have a close relative"
+    },
+    {
+      "type": "rule",
+      "description": "spouse"
+    },
+    {
+      "type": "rule",
+      "description": "or other person dear to your heart who never returned from a journey"
+    },
+    {
+      "type": "rule",
+      "description": "was captured"
+    },
+    {
+      "type": "rule",
+      "description": "or otherwise vanished with little trace"
+    },
+    {
+      "type": "rule",
+      "description": "or you have the Major Disaster background"
+    }
+  ],
+  "benefit": "Reduce nonlethal damage you take, increase your saving throw bonuses",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unforgotten"
+  }
+}

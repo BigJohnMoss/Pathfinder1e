@@ -1,0 +1,21 @@
+{
+  "id": "blood-vengeance",
+  "name": "Blood Vengeance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    },
+    {
+      "type": "rule",
+      "description": "nonlawful"
+    }
+  ],
+  "benefit": "Enter a rage-like state when an ally is critically wounded or killed",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Vengeance"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "take-the-hit",
+  "name": "Take the Hit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bonded-mind"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Absorb damage that an ally receives",
+  "source": {
+    "title": "Distant Shores",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Take%20the%20Hit"
+  }
+}

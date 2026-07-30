@@ -1,0 +1,31 @@
+{
+  "id": "explosive-escape",
+  "name": "Explosive Escape",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Send your opponents flying when breaking a grapple",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Explosive%20Escape"
+  }
+}

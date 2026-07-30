@@ -1,0 +1,22 @@
+{
+  "id": "extra-gnome-magic",
+  "name": "Extra Gnome Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Gnome"
+    }
+  ],
+  "benefit": "Gain additional uses of your spell-like abilities",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Gnome%20Magic"
+  }
+}

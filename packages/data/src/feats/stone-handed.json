@@ -1,0 +1,22 @@
+{
+  "id": "stone-handed",
+  "name": "Stone-Handed",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    }
+  ],
+  "benefit": "Make an attack that ignores hardness",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone-Handed"
+  }
+}

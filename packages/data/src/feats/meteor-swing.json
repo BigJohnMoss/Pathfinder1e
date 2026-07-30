@@ -1,0 +1,25 @@
+{
+  "id": "meteor-swing",
+  "name": "Meteor Swing",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with bludgeoning weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "You can knock a target off balance with a bludgeoning weapon",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Meteor%20Swing"
+  }
+}

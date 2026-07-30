@@ -1,0 +1,25 @@
+{
+  "id": "to-the-last",
+  "name": "To the Last",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "diehard"
+    },
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Gorum"
+    }
+  ],
+  "benefit": "You are no longer staggered when disabled",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 217,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=To%20the%20Last"
+  }
+}

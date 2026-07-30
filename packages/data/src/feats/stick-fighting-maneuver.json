@@ -1,0 +1,25 @@
+{
+  "id": "stick-fighting-maneuver",
+  "name": "Stick-Fighting Maneuver",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stick-fighting-counter"
+    },
+    {
+      "type": "feat",
+      "id": "stick-fighting-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Perform a free combat maneuver when making a full attack",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stick-Fighting%20Maneuver"
+  }
+}

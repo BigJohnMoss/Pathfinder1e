@@ -1,0 +1,17 @@
+{
+  "id": "hover",
+  "name": "Hover",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fly speed"
+    }
+  ],
+  "benefit": "Hover without needing to make a Fly check.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 315,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hover"
+  }
+}

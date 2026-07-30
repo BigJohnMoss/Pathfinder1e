@@ -1,0 +1,30 @@
+{
+  "id": "meditative-concentration",
+  "name": "Meditative Concentration",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-meditation"
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Enhance your concentration after meditating.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Meditative%20Concentration"
+  }
+}

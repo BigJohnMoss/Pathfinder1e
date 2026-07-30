@@ -1,0 +1,18 @@
+{
+  "id": "scavengers-luck",
+  "name": "Scavenger's Luck",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "When using timeworn technology, roll twice to determine the glitch effect",
+  "source": {
+    "title": "Technology Guide",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scavenger's%20Luck"
+  }
+}

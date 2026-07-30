@@ -1,0 +1,27 @@
+{
+  "id": "fleshwarper",
+  "name": "Fleshwarper",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "evil alignment"
+    }
+  ],
+  "benefit": "Create fleshwarped creatures and items",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fleshwarper"
+  }
+}

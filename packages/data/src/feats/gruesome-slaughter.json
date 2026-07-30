@@ -1,0 +1,31 @@
+{
+  "id": "gruesome-slaughter",
+  "name": "Gruesome Slaughter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    },
+    {
+      "type": "feat",
+      "id": "killing-flourish"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 11
+    },
+    {
+      "type": "class-level",
+      "classId": "slayer",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Creatures demoralized by Killing Flourish could become sickened",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 150,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gruesome%20Slaughter"
+  }
+}

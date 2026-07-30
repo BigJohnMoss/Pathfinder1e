@@ -1,0 +1,21 @@
+{
+  "id": "champion-of-balance",
+  "name": "Champion of Balance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "10 Hit Dice"
+    },
+    {
+      "type": "rule",
+      "description": "neutral alignment"
+    }
+  ],
+  "benefit": "You are dedicated to perfect balance in the multiverse.",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 98,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Balance"
+  }
+}

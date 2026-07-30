@@ -1,0 +1,17 @@
+{
+  "id": "spirit-sense",
+  "name": "Spirit Sense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or ability to cast psychic spells"
+    }
+  ],
+  "benefit": "+5 on checks to notice haunts, 75% chance to affect incorporeal creatures",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 140,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Sense"
+  }
+}

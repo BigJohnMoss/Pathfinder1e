@@ -1,0 +1,38 @@
+{
+  "id": "blood-frenzy-strike",
+  "name": "Blood Frenzy Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "blood-frenzy-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "aquatic subtype"
+    }
+  ],
+  "benefit": "Deal bleed damage when using Bloody Frenzy Style",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Frenzy%20Strike"
+  }
+}

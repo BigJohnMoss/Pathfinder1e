@@ -1,0 +1,17 @@
+{
+  "id": "greater-beast-hunter",
+  "name": "Greater Beast Hunter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Beast Hunter; Improved Beast Hunter; base attack bonus +6; Knowledge (nature) or Survival 6 ranks"
+    }
+  ],
+  "benefit": "Act normally in surprise round when surprised by an animal in chosen terrain; +4 bonus on rolls to confirm critical hits against animals native to that terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 112,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Beast%20Hunter"
+  }
+}

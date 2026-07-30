@@ -1,0 +1,22 @@
+{
+  "id": "bounding-step",
+  "name": "Bounding Step",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "nimble-moves"
+    }
+  ],
+  "benefit": "Get bonuses when balancing or moving through specific terrain",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bounding%20Step"
+  }
+}

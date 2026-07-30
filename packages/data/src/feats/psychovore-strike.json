@@ -1,0 +1,26 @@
+{
+  "id": "psychovore-strike",
+  "name": "Psychovore Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "psychovore-style"
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Confuse creatures you attack while you are in Psychovore Style",
+  "source": {
+    "title": "Pathfinder: Spiral of Bones #3",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychovore%20Strike"
+  }
+}

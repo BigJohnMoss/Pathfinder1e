@@ -1,0 +1,29 @@
+{
+  "id": "imposing-bearing",
+  "name": "Imposing Bearing*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Poised Bearing"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or fighter level 8th"
+    },
+    {
+      "type": "feature",
+      "id": "armor-training"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with heavy armor"
+    }
+  ],
+  "benefit": "Treat your size as two category larger for combat maneuvers",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Imposing%20Bearing*"
+  }
+}

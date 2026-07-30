@@ -1,0 +1,22 @@
+{
+  "id": "spawnlink",
+  "name": "Spawnlink",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "create spawn monster ability"
+    }
+  ],
+  "benefit": "See through spawn’s eyes",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spawnlink"
+  }
+}

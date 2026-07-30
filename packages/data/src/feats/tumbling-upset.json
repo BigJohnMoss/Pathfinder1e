@@ -1,0 +1,31 @@
+{
+  "id": "tumbling-upset",
+  "name": "Tumbling Upset",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 7
+    }
+  ],
+  "benefit": "When you move through an enemy's space, you can attempt to trip them",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tumbling%20Upset"
+  }
+}

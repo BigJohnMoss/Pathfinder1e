@@ -1,0 +1,21 @@
+{
+  "id": "blood-salvage",
+  "name": "Blood Salvage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blood-drinker"
+    },
+    {
+      "type": "rule",
+      "description": "dhampir"
+    }
+  ],
+  "benefit": "Drink the blood from dead creatures as well as the living",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 100,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Salvage"
+  }
+}

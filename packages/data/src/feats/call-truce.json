@@ -1,0 +1,27 @@
+{
+  "id": "call-truce",
+  "name": "Call Truce",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "persuasive"
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Call for a truce in combat",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Call%20Truce"
+  }
+}

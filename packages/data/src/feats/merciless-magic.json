@@ -1,0 +1,21 @@
+{
+  "id": "merciless-magic",
+  "name": "Merciless Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "spells"
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "Enemies under a negative condition find it harder to resist your spells",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Merciless%20Magic"
+  }
+}

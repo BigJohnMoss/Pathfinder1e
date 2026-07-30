@@ -1,0 +1,17 @@
+{
+  "id": "sharptooth",
+  "name": "Sharptooth",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ratfolk"
+    }
+  ],
+  "benefit": "Gain a bite attack",
+  "source": {
+    "title": "Monster Codex",
+    "page": 177,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sharptooth"
+  }
+}

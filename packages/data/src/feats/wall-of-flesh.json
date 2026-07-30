@@ -1,0 +1,17 @@
+{
+  "id": "wall-of-flesh",
+  "name": "Wall of Flesh",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Small size or smaller"
+    }
+  ],
+  "benefit": "Increase your size modifier with combat maneuvers",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wall%20of%20Flesh"
+  }
+}

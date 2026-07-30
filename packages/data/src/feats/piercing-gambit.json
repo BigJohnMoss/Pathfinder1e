@@ -1,0 +1,17 @@
+{
+  "id": "piercing-gambit",
+  "name": "Piercing Gambit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Spell Penetration or Bluff 3 ranks; caster level 1st"
+    }
+  ],
+  "benefit": "Expend spell or spell slot to give ally spellcaster a bonus to overcome spell resistance",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Piercing%20Gambit"
+  }
+}

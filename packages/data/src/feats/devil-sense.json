@@ -1,0 +1,22 @@
+{
+  "id": "devil-sense",
+  "name": "Devil Sense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast detect evil as a spell or spell-like ability"
+    }
+  ],
+  "benefit": "Sense the presence of evil outsiders",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 176,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Devil%20Sense"
+  }
+}

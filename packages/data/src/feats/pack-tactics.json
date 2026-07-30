@@ -1,0 +1,22 @@
+{
+  "id": "pack-tactics",
+  "name": "Pack Tactics",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "animal-companion"
+    }
+  ],
+  "benefit": "Your companion is treated as having all the same teamwork feats you do",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pack%20Tactics"
+  }
+}

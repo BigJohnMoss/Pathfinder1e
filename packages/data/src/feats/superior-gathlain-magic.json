@@ -1,0 +1,34 @@
+{
+  "id": "superior-gathlain-magic",
+  "name": "Superior Gathlain Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "advanced-gathlain-magic"
+    },
+    {
+      "type": "feat",
+      "id": "greater-gathlain-magic"
+    },
+    {
+      "type": "level",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Dramatically enhance your spell-like abilities",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Superior%20Gathlain%20Magic"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "bear-hug",
+  "name": "Bear Hug",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "beartrap-bite"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(bite)"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Grapple a bitten opponent without provoking",
+  "source": {
+    "title": "Blood of the Moon",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bear%20Hug"
+  }
+}

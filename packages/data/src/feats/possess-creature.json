@@ -1,0 +1,22 @@
+{
+  "id": "possess-creature",
+  "name": "Possess Creature",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 20
+    },
+    {
+      "type": "rule",
+      "description": "any evil outsider with 10 or more Hit Dice"
+    }
+  ],
+  "benefit": "Powerful fiends have the ability to merge with creatures and spread their foul influence",
+  "source": {
+    "title": "Pathfinder #28: The Infernal Syndrome",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Possess%20Creature"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "underhanded-teamwork",
+  "name": "Underhanded Teamwork",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    }
+  ],
+  "benefit": "Increase the length of an ally’s dirty trick use",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Underhanded%20Teamwork"
+  }
+}

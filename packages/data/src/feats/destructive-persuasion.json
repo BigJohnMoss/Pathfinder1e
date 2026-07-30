@@ -1,0 +1,27 @@
+{
+  "id": "destructive-persuasion",
+  "name": "Destructive Persuasion",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Smash objects to gain bonuses on Intimidate",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Destructive%20Persuasion"
+  }
+}

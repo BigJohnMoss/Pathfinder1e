@@ -1,0 +1,17 @@
+{
+  "id": "crowd-of-bullies",
+  "name": "Crowd of Bullies",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc"
+    }
+  ],
+  "benefit": "Allies with this feat gain a +2 bonus on combat maneuver checks after you fail a combat maneuver check",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 204,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crowd%20of%20Bullies"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "exiles-path",
+  "name": "Exile's Path",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-elf"
+    }
+  ],
+  "benefit": "Reroll Will saves against enchantment effects",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 47,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Exile's%20Path"
+  }
+}

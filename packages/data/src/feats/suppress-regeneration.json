@@ -1,0 +1,12 @@
+{
+  "id": "suppress-regeneration",
+  "name": "Suppress Regeneration",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Allies take advantage of an enemies’ halted regeneration",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Suppress%20Regeneration"
+  }
+}

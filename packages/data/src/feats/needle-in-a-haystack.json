@@ -1,0 +1,26 @@
+{
+  "id": "needle-in-a-haystack",
+  "name": "Needle in a Haystack",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Perception)"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use Perception to follow tracks",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Needle%20in%20a%20Haystack"
+  }
+}

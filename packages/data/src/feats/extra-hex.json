@@ -1,0 +1,17 @@
+{
+  "id": "extra-hex",
+  "name": "Extra Hex",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hex"
+    }
+  ],
+  "benefit": "Gain one additional hex",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Hex"
+  }
+}

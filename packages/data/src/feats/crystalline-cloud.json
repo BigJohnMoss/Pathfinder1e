@@ -1,0 +1,25 @@
+{
+  "id": "crystalline-cloud",
+  "name": "Crystalline Cloud",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aphorite"
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "crystalline dust racial trait"
+    }
+  ],
+  "benefit": "Create a cloud to distribute your crystalline dust",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crystalline%20Cloud"
+  }
+}

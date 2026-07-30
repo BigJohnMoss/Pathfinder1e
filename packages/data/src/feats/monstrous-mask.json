@@ -1,0 +1,25 @@
+{
+  "id": "monstrous-mask",
+  "name": "Monstrous Mask",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Tie"
+    },
+    {
+      "type": "rule",
+      "description": "must be taken at 1st level"
+    }
+  ],
+  "benefit": "+5 Intimidate vs. humanoids.",
+  "source": {
+    "title": "Blood of Fiends",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monstrous%20Mask"
+  }
+}

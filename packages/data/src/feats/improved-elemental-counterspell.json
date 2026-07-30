@@ -1,0 +1,25 @@
+{
+  "id": "improved-elemental-counterspell",
+  "name": "Improved Elemental Counterspell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Two basic blast wild talents from two different elements"
+    },
+    {
+      "type": "feature",
+      "id": "expanded-element"
+    },
+    {
+      "type": "feature",
+      "id": "kinetic-blast"
+    }
+  ],
+  "benefit": "You can use your kinetic blast to counterspell any elemental spell",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Elemental%20Counterspell"
+  }
+}

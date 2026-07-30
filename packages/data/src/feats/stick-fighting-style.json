@@ -1,0 +1,17 @@
+{
+  "id": "stick-fighting-style",
+  "name": "Stick-Fighting Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Treat stick-weapons as though they were masterwork and had certain weapon properties",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stick-Fighting%20Style"
+  }
+}

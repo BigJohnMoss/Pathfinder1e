@@ -1,0 +1,25 @@
+{
+  "id": "lifecrafting",
+  "name": "Lifecrafting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "craft-construct"
+    },
+    {
+      "type": "feat",
+      "id": "leadership"
+    },
+    {
+      "type": "rule",
+      "description": "wyrwood"
+    }
+  ],
+  "benefit": "Create a new wyrwood from an ioun stone",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lifecrafting"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "gray-dwarf-magic",
+  "name": "Gray Dwarf Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duergar"
+    }
+  ],
+  "benefit": "Gain a new spell-like ability",
+  "source": {
+    "title": "Monster Codex",
+    "page": 44,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gray%20Dwarf%20Magic"
+  }
+}

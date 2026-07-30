@@ -1,0 +1,37 @@
+{
+  "id": "redistributed-might",
+  "name": "Redistributed Might",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Con 13 or Wis 13"
+    },
+    {
+      "type": "rule",
+      "description": "Enhanced Morale"
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Apply bonuses to your Strength to your Dexterity instead",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Redistributed%20Might"
+  }
+}

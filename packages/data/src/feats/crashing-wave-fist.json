@@ -1,0 +1,42 @@
+{
+  "id": "crashing-wave-fist",
+  "name": "Crashing Wave Fist",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "crashing-wave-buffet"
+    },
+    {
+      "type": "feat",
+      "id": "crashing-wave-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-drag"
+    },
+    {
+      "type": "feat",
+      "id": "improved-reposition"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Make an unarmed attack against a foe when you drag or reposition it",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 109,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crashing%20Wave%20Fist"
+  }
+}

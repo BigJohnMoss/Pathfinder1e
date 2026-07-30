@@ -1,0 +1,25 @@
+{
+  "id": "blasting-charge",
+  "name": "Blasting Charge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 7
+    },
+    {
+      "type": "spell-access",
+      "id": "2nd-level-bloodrager-spells"
+    },
+    {
+      "type": "feature",
+      "id": "bloodrage"
+    }
+  ],
+  "benefit": "Expend a bloodrager spell slot while bloodraging to add force damage to your charge attack",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 143,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blasting%20Charge"
+  }
+}

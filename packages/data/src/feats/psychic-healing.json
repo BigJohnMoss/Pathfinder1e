@@ -1,0 +1,27 @@
+{
+  "id": "psychic-healing",
+  "name": "Psychic Healing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or the ability to cast psychic spells"
+    },
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use faith healing to treat deadly wounds and grant temporary hit points",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychic%20Healing"
+  }
+}

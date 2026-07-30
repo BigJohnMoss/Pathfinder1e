@@ -1,0 +1,21 @@
+{
+  "id": "chainbreaker",
+  "name": "Chainbreaker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Over the course of at least five different occasions"
+    },
+    {
+      "type": "rule",
+      "description": "free a cumulative total of 50+ sentient beings held in unjust captivity"
+    }
+  ],
+  "benefit": "Gain a bonus to damage against slave-traders or masters",
+  "source": {
+    "title": "Andoran, Spirit of Liberty",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chainbreaker"
+  }
+}

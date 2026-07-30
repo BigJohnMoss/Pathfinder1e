@@ -1,0 +1,17 @@
+{
+  "id": "amateur-swashbuckler",
+  "name": "Amateur Swashbuckler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "no-levels-in-a-class-that-has-the-panache"
+    }
+  ],
+  "benefit": "Gain a minor pool of panache to use with a 1st-level swashbuckler deed of your choice",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Amateur%20Swashbuckler"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "eldritch-aid",
+  "name": "Eldritch Aid",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Expend spells to grant additional energy to an allied spellcaster",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eldritch%20Aid"
+  }
+}

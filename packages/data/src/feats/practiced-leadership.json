@@ -1,0 +1,21 @@
+{
+  "id": "practiced-leadership",
+  "name": "Practiced Leadership",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "leadership"
+    },
+    {
+      "type": "rule",
+      "description": "membership in the same organization as your cohort"
+    }
+  ],
+  "benefit": "Improve your cohort’s capabilities when you and your cohort belong to the same organization",
+  "source": {
+    "title": "Champions of Balance",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Practiced%20Leadership"
+  }
+}

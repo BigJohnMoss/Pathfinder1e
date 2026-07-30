@@ -1,0 +1,26 @@
+{
+  "id": "improved-uncivilized-tactics",
+  "name": "Improved Uncivilized Tactics",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "uncivilized-tactics"
+    }
+  ],
+  "benefit": "+2 bonus to use Uncivilized Tactics, stop provoking attacks when using",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Uncivilized%20Tactics"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "familiar-link",
+  "name": "Familiar Link",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Coven hex or Coven-Touched"
+    },
+    {
+      "type": "rule",
+      "description": "familiar or spirit animal class feature"
+    },
+    {
+      "type": "class-level",
+      "classId": "witch",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Within your coven, you have formed a bond with your fellow witches’ familiars",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Familiar%20Link"
+  }
+}

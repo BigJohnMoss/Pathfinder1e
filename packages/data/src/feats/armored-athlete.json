@@ -1,0 +1,25 @@
+{
+  "id": "armored-athlete",
+  "name": "Armored Athlete",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Light armor proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "medium armor proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "3 ranks in any Dexterity- or Strength-based skill"
+    }
+  ],
+  "benefit": "Reduce your armor check penalty on certain skills",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Armored%20Athlete"
+  }
+}

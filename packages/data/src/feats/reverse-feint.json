@@ -1,0 +1,25 @@
+{
+  "id": "reverse-feint",
+  "name": "Reverse-Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "toughness"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "orc"
+    }
+  ],
+  "benefit": "Allow an opponent to easily hit you so you can make a quick counter attack",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 142,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reverse-Feint"
+  }
+}

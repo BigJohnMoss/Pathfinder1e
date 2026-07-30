@@ -1,0 +1,17 @@
+{
+  "id": "shocking-bellow",
+  "name": "Shocking Bellow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    }
+  ],
+  "benefit": "Demoralize for free during the surprise round",
+  "source": {
+    "title": "Monster Codex",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shocking%20Bellow"
+  }
+}

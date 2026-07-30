@@ -1,0 +1,25 @@
+{
+  "id": "blessed-striker",
+  "name": "Blessed Striker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "spell-access",
+      "id": "divine-spells"
+    },
+    {
+      "type": "rule",
+      "description": "alignment must be within one step of your deity’s"
+    }
+  ],
+  "benefit": "Your attacks are considered to have the alignments you share with your deity",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 143,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blessed%20Striker"
+  }
+}

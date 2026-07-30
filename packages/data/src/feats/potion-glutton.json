@@ -1,0 +1,17 @@
+{
+  "id": "potion-glutton",
+  "name": "Potion Glutton",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Worshiper of Urgathoa"
+    }
+  ],
+  "benefit": "Drink potables as a move action instead of a standard action",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Potion%20Glutton"
+  }
+}

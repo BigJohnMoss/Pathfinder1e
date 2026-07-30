@@ -1,0 +1,40 @@
+{
+  "id": "barracuda-dash",
+  "name": "Barracuda Dash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "barracuda-slam"
+    },
+    {
+      "type": "feat",
+      "id": "barracuda-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 7
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 7
+    }
+  ],
+  "benefit": "You can make a second charge attack after a first",
+  "source": {
+    "title": "Pathfinder #124: City in the Deep",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Barracuda%20Dash"
+  }
+}

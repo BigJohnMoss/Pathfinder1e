@@ -1202,7 +1202,7 @@ test("searches the feat catalog and assigns an eligible feat to an open slot", a
   await user.click(screen.getByRole("tab", { name: "Feats" }));
   const search = screen.getByRole("searchbox", { name: "Search feats" });
   await user.type(search, "Toughness");
-  assert.match(screen.getByText(/1 of 714 feats shown/).textContent ?? "", /1 of 714/);
+  assert.match(screen.getByText(/1 of 3448 feats shown/).textContent ?? "", /1 of 3448/);
   await user.click(screen.getByText("Toughness", { selector: "summary strong" }));
   assert.ok(screen.getByText(/Gain 3 hit points/));
   await user.click(screen.getByRole("button", { name: "Add to open slot" }));

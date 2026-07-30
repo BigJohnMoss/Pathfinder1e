@@ -1,0 +1,33 @@
+{
+  "id": "prosperity-and-pride",
+  "name": "Prosperity and Pride",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Be a member of House Corcina"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Craftsperson"
+    },
+    {
+      "type": "rule",
+      "description": "Inheritance"
+    },
+    {
+      "type": "rule",
+      "description": "Well-Connected Friend"
+    },
+    {
+      "type": "rule",
+      "description": "or Worldshaker background"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Appraise and Diplomacy checks in large cities",
+  "source": {
+    "title": "Pathfinder #131: The Reaper's Right Hand",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Prosperity%20and%20Pride"
+  }
+}

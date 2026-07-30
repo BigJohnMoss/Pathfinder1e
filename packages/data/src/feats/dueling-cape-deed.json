@@ -1,0 +1,22 @@
+{
+  "id": "dueling-cape-deed",
+  "name": "Dueling Cape Deed",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Swashbuckler† or panache† class feature; Dodge"
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Use your cape as a snaring buckler",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 145,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dueling%20Cape%20Deed"
+  }
+}

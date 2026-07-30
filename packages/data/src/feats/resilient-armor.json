@@ -1,0 +1,21 @@
+{
+  "id": "resilient-armor",
+  "name": "Resilient Armor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Divine bond (armor or shield)"
+    },
+    {
+      "type": "rule",
+      "description": "or sacred armor class feature"
+    }
+  ],
+  "benefit": "Gain DR against the some attacks",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Resilient%20Armor"
+  }
+}

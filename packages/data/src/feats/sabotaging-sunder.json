@@ -1,0 +1,31 @@
+{
+  "id": "sabotaging-sunder",
+  "name": "Sabotaging Sunder",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-sunder"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Break objects through sabotage rather than force",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 90,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sabotaging%20Sunder"
+  }
+}

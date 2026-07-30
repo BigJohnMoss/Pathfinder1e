@@ -1,0 +1,25 @@
+{
+  "id": "crisis-of-conscience",
+  "name": "Crisis of Conscience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Lawful neutral"
+    },
+    {
+      "type": "rule",
+      "description": "neutral"
+    },
+    {
+      "type": "rule",
+      "description": "or chaotic neutral alignment. Your alignment must have shifted from either good or evil at least once since 1st level or the last time you completed this feat (see Special)"
+    }
+  ],
+  "benefit": "Hide your alignment and loyalties",
+  "source": {
+    "title": "Champions of Balance",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crisis%20of%20Conscience"
+  }
+}

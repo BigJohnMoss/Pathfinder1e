@@ -1,0 +1,21 @@
+{
+  "id": "improved-shadowy-resistance",
+  "name": "Improved Shadowy Resistance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fetchling"
+    },
+    {
+      "type": "rule",
+      "description": "shadowy resistance racial trait"
+    }
+  ],
+  "benefit": "Gain resistance to life-sapping magic and effects",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Shadowy%20Resistance"
+  }
+}

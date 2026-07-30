@@ -1,0 +1,21 @@
+{
+  "id": "topple-foe",
+  "name": "Topple Foe",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    }
+  ],
+  "benefit": "Assist your allies in tripping a creature",
+  "source": {
+    "title": "Rival Guide",
+    "page": 35,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Topple%20Foe"
+  }
+}

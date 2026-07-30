@@ -1,0 +1,25 @@
+{
+  "id": "erastils-blessing",
+  "name": "Erastil's Blessing",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(longbow)"
+    },
+    {
+      "type": "rule",
+      "description": "must be a worshiper of Erastil"
+    }
+  ],
+  "benefit": "Use Wisdom on ranged attack rolls when using a bow",
+  "source": {
+    "title": "Paths of the Righteous",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Erastil's%20Blessing"
+  }
+}

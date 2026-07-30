@@ -1,0 +1,34 @@
+{
+  "id": "signature-strike-style",
+  "name": "Signature Strike Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 7
+    },
+    {
+      "type": "skill",
+      "key": "Precise Shot; Weapon Focus;  ; Intimidate",
+      "minimum": 7
+    },
+    {
+      "type": "feat",
+      "id": "improved-called-shot"
+    },
+    {
+      "type": "rule",
+      "description": "targeted strike swashbuckler deed"
+    },
+    {
+      "type": "rule",
+      "description": "or targeting gunslinger deed"
+    }
+  ],
+  "benefit": "Frighten your target when you use an aimed attack",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Signature%20Strike%20Style"
+  }
+}

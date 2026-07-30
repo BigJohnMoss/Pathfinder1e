@@ -1,0 +1,17 @@
+{
+  "id": "personal-chronicler",
+  "name": "Personal Chronicler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duskwalker"
+    }
+  ],
+  "benefit": "Gain a nosoi familiar",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Personal%20Chronicler"
+  }
+}

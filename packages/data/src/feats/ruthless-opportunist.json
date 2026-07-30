@@ -1,0 +1,17 @@
+{
+  "id": "ruthless-opportunist",
+  "name": "Ruthless Opportunist",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Human (Chelaxian)"
+    }
+  ],
+  "benefit": "When an ally with this feat hits a foe using an attack of opportunity, gain +2 on attacks against that foe for 1 round",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ruthless%20Opportunist"
+  }
+}

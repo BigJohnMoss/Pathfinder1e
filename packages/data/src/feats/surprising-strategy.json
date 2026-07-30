@@ -1,0 +1,17 @@
+{
+  "id": "surprising-strategy",
+  "name": "Surprising Strategy",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "riposte"
+    }
+  ],
+  "benefit": "Make a combat manuever against a creature when you riposte",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Surprising%20Strategy"
+  }
+}

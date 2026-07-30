@@ -1,0 +1,17 @@
+{
+  "id": "ioun-resonance",
+  "name": "Ioun Resonance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wyrwood"
+    }
+  ],
+  "benefit": "Increase the bonus gained from an ioun stone in your possession",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ioun%20Resonance"
+  }
+}

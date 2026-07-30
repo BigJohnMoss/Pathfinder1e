@@ -1,0 +1,12 @@
+{
+  "id": "scarring-spell",
+  "name": "Scarring Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Emotion or fear spell gives penalties against further such spells",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 139,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scarring%20Spell"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "extra-surge",
+  "name": "Extra Surge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "nanite surge ability"
+    }
+  ],
+  "benefit": "Use nanite surge an extra time per day",
+  "source": {
+    "title": "Pathfinder #85: Fires of Creation",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Surge"
+  }
+}

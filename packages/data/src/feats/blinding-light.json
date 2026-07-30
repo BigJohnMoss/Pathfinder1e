@@ -1,0 +1,25 @@
+{
+  "id": "blinding-light",
+  "name": "Blinding Light",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Inner Light"
+    },
+    {
+      "type": "rule",
+      "description": "aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "daylight spell-like ability"
+    }
+  ],
+  "benefit": "Blind those who attempt to dispel your daylight effect.",
+  "source": {
+    "title": "Blood of Angels",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blinding%20Light"
+  }
+}

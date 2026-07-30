@@ -1,0 +1,23 @@
+{
+  "id": "but-a-scratch",
+  "name": "But a Scratch",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Demoralize foes by playing down a mighty blow",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=But%20a%20Scratch"
+  }
+}

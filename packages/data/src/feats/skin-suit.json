@@ -1,0 +1,22 @@
+{
+  "id": "skin-suit",
+  "name": "Skin Suit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "undead creature that was originally humanoid"
+    }
+  ],
+  "benefit": "Hide in false flesh during the day",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Skin%20Suit"
+  }
+}

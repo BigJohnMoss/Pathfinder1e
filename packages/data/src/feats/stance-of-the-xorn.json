@@ -1,0 +1,22 @@
+{
+  "id": "stance-of-the-xorn",
+  "name": "Stance of the Xorn",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Prevent flanking creatures from gaining a bonus against you",
+  "source": {
+    "title": "Dwarves of Golarion",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stance%20of%20the%20Xorn"
+  }
+}

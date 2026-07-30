@@ -1,0 +1,23 @@
+{
+  "id": "cats-fall",
+  "name": "Cat's Fall",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Take less damage when falling and always land on your feat",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cat's%20Fall"
+  }
+}

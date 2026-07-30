@@ -1,0 +1,26 @@
+{
+  "id": "sensory-control",
+  "name": "Sensory Control",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    }
+  ],
+  "benefit": "Gain lowlight vision and scent",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sensory%20Control"
+  }
+}

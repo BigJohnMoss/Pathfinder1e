@@ -1,0 +1,12 @@
+{
+  "id": "obscuring-beacon",
+  "name": "Obscuring Beacon",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Use your light to dazzle foes",
+  "source": {
+    "title": "Heroes of the Darklands",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Obscuring%20Beacon"
+  }
+}

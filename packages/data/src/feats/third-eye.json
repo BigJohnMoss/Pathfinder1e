@@ -1,0 +1,17 @@
+{
+  "id": "third-eye",
+  "name": "Third Eye",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or ability to cast psychic spells"
+    }
+  ],
+  "benefit": "Use third eye to read auras and see the truth",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Third%20Eye"
+  }
+}

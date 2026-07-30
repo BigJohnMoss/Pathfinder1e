@@ -1,0 +1,25 @@
+{
+  "id": "vishkanya-perfume",
+  "name": "Vishkanya Perfume",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deadly-kiss"
+    },
+    {
+      "type": "rule",
+      "description": "toxic racial trait ARG"
+    },
+    {
+      "type": "rule",
+      "description": "vishkanya ARG"
+    }
+  ],
+  "benefit": "Change your racial venom into an inhaled poison",
+  "source": {
+    "title": "Villain Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vishkanya%20Perfume"
+  }
+}

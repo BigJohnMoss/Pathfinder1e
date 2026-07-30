@@ -1,0 +1,21 @@
+{
+  "id": "storm-warrior",
+  "name": "Storm Warrior",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "storm-soul"
+    },
+    {
+      "type": "rule",
+      "description": "cloud or storm giant"
+    }
+  ],
+  "benefit": "Metal melee weapons you wield gain 1d6 electricity damage",
+  "source": {
+    "title": "Pathfinder #91: Battle of Bloodmarch Hills",
+    "page": 70,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Storm%20Warrior"
+  }
+}

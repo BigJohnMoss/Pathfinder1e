@@ -1,0 +1,21 @@
+{
+  "id": "shield-gauntlet-style",
+  "name": "Shield Gauntlet Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Weapon Focus (gauntlet or spiked gauntlet)"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with bucklers and light shields"
+    }
+  ],
+  "benefit": "Treat your off-hand gauntlet as a buckler",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Gauntlet%20Style"
+  }
+}

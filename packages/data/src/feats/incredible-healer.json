@@ -1,0 +1,18 @@
+{
+  "id": "incredible-healer",
+  "name": "Incredible Healer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Heal extra hit points when you treat deadly wounds with a Heal check",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Incredible%20Healer"
+  }
+}

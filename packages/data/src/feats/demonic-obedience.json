@@ -1,0 +1,21 @@
+{
+  "id": "demonic-obedience",
+  "name": "Demonic Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "3 ranks in Knowledge (planes)"
+    },
+    {
+      "type": "rule",
+      "description": "must worship a demon lord"
+    }
+  ],
+  "benefit": "Pledge yourself to a demon lord, gaining boons from your service",
+  "source": {
+    "title": "Book of the Damned - Volume 2: Lords of Chaos",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demonic%20Obedience"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "dented-helm",
+  "name": "Dented Helm",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "hard-headed"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    }
+  ],
+  "benefit": "+1 AC vs critical hits when wearing a helmet, apply half damage of critical hit towards helmet",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dented%20Helm"
+  }
+}

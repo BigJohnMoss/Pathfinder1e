@@ -1,0 +1,21 @@
+{
+  "id": "bravery-in-action",
+  "name": "Bravery in Action",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bravery"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Cayden Cailean"
+    }
+  ],
+  "benefit": "You can add the bonus from bravery to your initiative checks.",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bravery%20in%20Action"
+  }
+}

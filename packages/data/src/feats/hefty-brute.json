@@ -1,0 +1,17 @@
+{
+  "id": "hefty-brute",
+  "name": "Hefty Brute",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal companion or familiar"
+    }
+  ],
+  "benefit": "You're treated as one size category larger for size-based abilities",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hefty%20Brute"
+  }
+}

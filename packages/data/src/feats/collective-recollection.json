@@ -1,0 +1,12 @@
+{
+  "id": "collective-recollection",
+  "name": "Collective Recollection",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Use aid another on an ally’s Knowledge checks",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Collective%20Recollection"
+  }
+}

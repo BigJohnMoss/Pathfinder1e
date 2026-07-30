@@ -1,0 +1,30 @@
+{
+  "id": "elephant-stomp",
+  "name": "Elephant Stomp",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "improved-overrun"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Get an immediate attack against an opponent you overrun",
+  "source": {
+    "title": "Sargava, the Lost Colony",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elephant%20Stomp"
+  }
+}

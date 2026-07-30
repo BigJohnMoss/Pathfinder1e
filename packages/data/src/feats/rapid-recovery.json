@@ -1,0 +1,26 @@
+{
+  "id": "rapid-recovery",
+  "name": "Rapid Recovery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "rapid-repair-feat"
+    },
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "nanite surge ability"
+    }
+  ],
+  "benefit": "Remove some conditions when healing with Rapid Repair",
+  "source": {
+    "title": "Pathfinder #85: Fires of Creation",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rapid%20Recovery"
+  }
+}

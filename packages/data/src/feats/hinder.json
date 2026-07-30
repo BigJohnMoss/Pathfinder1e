@@ -1,0 +1,23 @@
+{
+  "id": "hinder",
+  "name": "Hinder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Blood curse causes creature to take -10 penalty to initiative",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hinder"
+  }
+}

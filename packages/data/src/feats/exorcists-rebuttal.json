@@ -1,0 +1,21 @@
+{
+  "id": "exorcists-rebuttal",
+  "name": "Exorcist's Rebuttal",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-iron-will"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Damage the minds of those who try to control your own.",
+  "source": {
+    "title": "Demon Hunter's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Exorcist's%20Rebuttal"
+  }
+}

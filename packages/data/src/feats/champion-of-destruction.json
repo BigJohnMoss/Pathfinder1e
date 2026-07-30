@@ -1,0 +1,21 @@
+{
+  "id": "champion-of-destruction",
+  "name": "Champion of Destruction",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "10 Hit Dice"
+    },
+    {
+      "type": "rule",
+      "description": "chaotic evil alignment"
+    }
+  ],
+  "benefit": "You would destroy the world if it were within your power.",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 98,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Destruction"
+  }
+}

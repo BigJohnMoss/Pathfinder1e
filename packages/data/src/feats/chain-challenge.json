@@ -1,0 +1,21 @@
+{
+  "id": "chain-challenge",
+  "name": "Chain Challenge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "challenge"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Declare a new challenge for free immediately on felling the old one",
+  "source": {
+    "title": "Monster Codex",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chain%20Challenge"
+  }
+}

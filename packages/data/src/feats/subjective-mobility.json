@@ -1,0 +1,18 @@
+{
+  "id": "subjective-mobility",
+  "name": "Subjective Mobility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Move via falling more easily on planes with subjective directional gravity",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Subjective%20Mobility"
+  }
+}

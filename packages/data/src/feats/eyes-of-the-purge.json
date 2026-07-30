@@ -1,0 +1,17 @@
+{
+  "id": "eyes-of-the-purge",
+  "name": "Eyes of the Purge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast detect magic as a spell or spell-like ability"
+    }
+  ],
+  "benefit": "Detect which deity a divine caster worships by examining one of their spell auras",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eyes%20of%20the%20Purge"
+  }
+}

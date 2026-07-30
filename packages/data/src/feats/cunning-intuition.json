@@ -1,0 +1,42 @@
+{
+  "id": "cunning-intuition",
+  "name": "Cunning Intuition",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "feat",
+      "id": "improved-initiative"
+    },
+    {
+      "type": "feat",
+      "id": "lightning-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "quick-draw"
+    },
+    {
+      "type": "feat",
+      "id": "ready-for-anything"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +13 or rogue level 13th"
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Choose your readied action when it triggers",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cunning%20Intuition"
+  }
+}

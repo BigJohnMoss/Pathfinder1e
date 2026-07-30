@@ -1,0 +1,30 @@
+{
+  "id": "mobile-bulwark-style",
+  "name": "Mobile Bulwark Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "tower-shield-proficiency"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Add your shield bonus to AC to your CMD vs bull rush and overrun manuevers",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mobile%20Bulwark%20Style"
+  }
+}

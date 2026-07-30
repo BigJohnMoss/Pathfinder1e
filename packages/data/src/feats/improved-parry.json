@@ -1,0 +1,22 @@
+{
+  "id": "improved-parry",
+  "name": "Improved Parry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    }
+  ],
+  "benefit": "Parry an opponent to make it flat-footed",
+  "source": {
+    "title": "People of the River",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Parry"
+  }
+}

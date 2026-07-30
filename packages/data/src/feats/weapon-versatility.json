@@ -1,0 +1,21 @@
+{
+  "id": "weapon-versatility",
+  "name": "Weapon Versatility",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Deal different types of damage with your favored weapon",
+  "source": {
+    "title": "Undead Slayer's Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20Versatility"
+  }
+}

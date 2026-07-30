@@ -1,0 +1,17 @@
+{
+  "id": "pesh-healing",
+  "name": "Pesh Healing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Sahir-Afiyun or pesh addict"
+    }
+  ],
+  "benefit": "Gain temporary hit points after taking pesh",
+  "source": {
+    "title": "Black Markets",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pesh%20Healing"
+  }
+}

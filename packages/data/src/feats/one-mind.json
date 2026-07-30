@@ -1,0 +1,26 @@
+{
+  "id": "one-mind",
+  "name": "One Mind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "human (Vudrani)"
+    }
+  ],
+  "benefit": "Avoid penalties when flat-footed, blinded, or fighting invisible creatures if you’re adjacent to ally who has this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=One%20Mind"
+  }
+}

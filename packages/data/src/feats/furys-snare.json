@@ -1,0 +1,21 @@
+{
+  "id": "furys-snare",
+  "name": "Fury's Snare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fury’s Fall"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    }
+  ],
+  "benefit": "Entangle an opponent in your whip when tripping them",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fury's%20Snare"
+  }
+}

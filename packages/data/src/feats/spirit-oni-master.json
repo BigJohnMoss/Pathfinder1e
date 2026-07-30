@@ -1,0 +1,30 @@
+{
+  "id": "spirit-oni-master",
+  "name": "Spirit Oni Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "Lawful neutral"
+    },
+    {
+      "type": "rule",
+      "description": "lawful evil"
+    },
+    {
+      "type": "rule",
+      "description": "or neutral evil"
+    }
+  ],
+  "benefit": "Gain a gore attack while wearing a special mask",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Oni%20Master"
+  }
+}

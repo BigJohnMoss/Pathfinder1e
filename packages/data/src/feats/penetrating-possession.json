@@ -1,0 +1,22 @@
+{
+  "id": "penetrating-possession",
+  "name": "Penetrating Possession",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Magic jar as a known spell or spell-like ability"
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 21
+    }
+  ],
+  "benefit": "Gain the chance to dispel a protective spell before attempting possession.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Penetrating%20Possession"
+  }
+}

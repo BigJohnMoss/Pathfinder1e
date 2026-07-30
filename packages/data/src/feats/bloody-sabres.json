@@ -1,0 +1,34 @@
+{
+  "id": "bloody-sabres",
+  "name": "Bloody Sabres",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(sawtooth sabre)"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Achaekek"
+    }
+  ],
+  "benefit": "When you hit with both your primary and off-hand sawtooth sabres, deal 1 bleed damage",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bloody%20Sabres"
+  }
+}

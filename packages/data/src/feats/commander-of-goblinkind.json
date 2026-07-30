@@ -1,0 +1,22 @@
+{
+  "id": "commander-of-goblinkind",
+  "name": "Commander of Goblinkind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "Gain bonuses when leading goblinoids",
+  "source": {
+    "title": "Monster Codex",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Commander%20of%20Goblinkind"
+  }
+}

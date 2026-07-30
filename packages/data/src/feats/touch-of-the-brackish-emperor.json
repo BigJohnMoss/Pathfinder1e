@@ -1,0 +1,21 @@
+{
+  "id": "touch-of-the-brackish-emperor",
+  "name": "Touch of the Brackish Emperor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Kelizandri"
+    }
+  ],
+  "benefit": "Suspend water breathing spells with a touch attack",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Touch%20of%20the%20Brackish%20Emperor"
+  }
+}

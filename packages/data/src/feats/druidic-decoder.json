@@ -1,0 +1,22 @@
+{
+  "id": "druidic-decoder",
+  "name": "Druidic Decoder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Linguistics",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "cannot be a druid"
+    }
+  ],
+  "benefit": "Gain an understanding of the Druidic language.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Druidic%20Decoder"
+  }
+}

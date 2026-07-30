@@ -1,0 +1,21 @@
+{
+  "id": "cudgeler-style",
+  "name": "Cudgeler Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bludgeoner"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    }
+  ],
+  "benefit": "Deal greater damage with nonlethal damage on a charge",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cudgeler%20Style"
+  }
+}

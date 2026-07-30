@@ -1,0 +1,38 @@
+{
+  "id": "electric-eel-shock",
+  "name": "Electric Eel Shock",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "electric-eel-style"
+    },
+    {
+      "type": "feat",
+      "id": "elemental-fist"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or monk level 7th"
+    }
+  ],
+  "benefit": "Stagger foes you hit with Elemental Fist",
+  "source": {
+    "title": "Blood of the Sea",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Electric%20Eel%20Shock"
+  }
+}

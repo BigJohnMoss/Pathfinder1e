@@ -1,0 +1,29 @@
+{
+  "id": "distant-spell-link",
+  "name": "Distant Spell Link",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Enlarge Spell or Reach Spell APG ; animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "eidolon"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    },
+    {
+      "type": "rule",
+      "description": "or other allied creature with the share spells ability ( Pathfinder RPG Core Rulebook 52)"
+    }
+  ],
+  "benefit": "Range of allied creature’s shared spells ability increases to close",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Distant%20Spell%20Link"
+  }
+}

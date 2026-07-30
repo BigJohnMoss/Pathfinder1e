@@ -1,0 +1,35 @@
+{
+  "id": "deadhand-style",
+  "name": "Deadhand Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 4
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    },
+    {
+      "type": "rule",
+      "description": "nongood alignment"
+    }
+  ],
+  "benefit": "You are hard to scare and your unarmed strikes can make foes shaken",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deadhand%20Style"
+  }
+}

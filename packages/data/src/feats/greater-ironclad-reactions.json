@@ -1,0 +1,33 @@
+{
+  "id": "greater-ironclad-reactions",
+  "name": "Greater Ironclad Reactions*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "rule",
+      "description": "Ironclad Reactions"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or fighter level 8th"
+    },
+    {
+      "type": "rule",
+      "description": "armor trainingclass feature"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with medium armor"
+    }
+  ],
+  "benefit": "Use Ironclad Reactions more than once per round.",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Ironclad%20Reactions*"
+  }
+}

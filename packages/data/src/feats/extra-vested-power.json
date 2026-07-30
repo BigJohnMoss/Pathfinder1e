@@ -1,0 +1,17 @@
+{
+  "id": "extra-vested-power",
+  "name": "Extra Vested Power",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "vested-power"
+    }
+  ],
+  "benefit": "Gain an extra vested power",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Vested%20Power"
+  }
+}

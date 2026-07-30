@@ -1,0 +1,25 @@
+{
+  "id": "fiendish-heritage",
+  "name": "Fiendish Heritage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Tie"
+    },
+    {
+      "type": "rule",
+      "description": "must be taken at 1st level"
+    }
+  ],
+  "benefit": "Choose a different Tiefling heritage",
+  "source": {
+    "title": "Pathfinder #25: The Bastards of Erebus",
+    "page": 66,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fiendish%20Heritage"
+  }
+}

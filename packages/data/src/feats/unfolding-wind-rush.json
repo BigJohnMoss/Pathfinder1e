@@ -1,0 +1,17 @@
+{
+  "id": "unfolding-wind-rush",
+  "name": "Unfolding Wind Rush",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dex 13; Wis 13; Dodge; Mobility; Perfect Style; Quick Draw; Unfolding Wind Strike; base attack bonus +13 or monk level 13th"
+    }
+  ],
+  "benefit": "Move and make a full attack with thrown weapons",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unfolding%20Wind%20Rush"
+  }
+}

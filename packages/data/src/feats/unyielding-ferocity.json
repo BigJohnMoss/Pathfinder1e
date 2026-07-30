@@ -1,0 +1,22 @@
+{
+  "id": "unyielding-ferocity",
+  "name": "Unyielding Ferocity",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 19
+    },
+    {
+      "type": "rule",
+      "description": "ferocity"
+    }
+  ],
+  "benefit": "Make a full attack when reduced to 0 or fewer hit points, with restrictions",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 95,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unyielding%20Ferocity"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "trick-spell",
+  "name": "Trick Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "1st-level-spells"
+    },
+    {
+      "type": "rule",
+      "description": "chaotic neutral alignment"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Calistria"
+    }
+  ],
+  "benefit": "Spells carry with them a dirty trick",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Trick%20Spell"
+  }
+}

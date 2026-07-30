@@ -1,0 +1,12 @@
+{
+  "id": "ascendant-spell",
+  "name": "Ascendant Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Imitate mythic version of a spell",
+  "source": {
+    "title": "Mythic Adventures",
+    "page": 55,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ascendant%20Spell"
+  }
+}

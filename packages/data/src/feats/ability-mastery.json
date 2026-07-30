@@ -1,0 +1,22 @@
+{
+  "id": "ability-mastery",
+  "name": "Ability Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude saving throw bonus +4"
+    }
+  ],
+  "benefit": "Gain an enhancement bonus to an ability score with a suit of magic armor or transmutation-crafted item",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ability%20Mastery"
+  }
+}

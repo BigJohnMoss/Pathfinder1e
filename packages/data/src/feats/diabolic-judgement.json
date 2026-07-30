@@ -1,0 +1,17 @@
+{
+  "id": "diabolic-judgement",
+  "name": "Diabolic Judgement",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Combat Reflexes; Diabolic Humiliation; Diabolic Style; Improved Vital Strike; Vital Strike; Improved Unarmed Strike or Weapon Focus (unarmed strike); base attack bonus +12 or monk level 11th"
+    }
+  ],
+  "benefit": "Apply Vital Strike on attacks of opportunity",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diabolic%20Judgement"
+  }
+}

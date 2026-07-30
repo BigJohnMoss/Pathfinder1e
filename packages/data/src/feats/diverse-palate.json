@@ -1,0 +1,21 @@
+{
+  "id": "diverse-palate",
+  "name": "Diverse Palate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blood-drinker"
+    },
+    {
+      "type": "rule",
+      "description": "dhampir"
+    }
+  ],
+  "benefit": "Enhance your taste for blood to other creatures",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 100,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diverse%20Palate"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "arcing-weapon",
+  "name": "Arcing Weapon",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "diverse-training"
+    }
+  ],
+  "benefit": "Channel a ranged spell through your weapon",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Arcing%20Weapon"
+  }
+}

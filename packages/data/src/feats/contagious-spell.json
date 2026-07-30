@@ -1,0 +1,12 @@
+{
+  "id": "contagious-spell",
+  "name": "Contagious Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Spell spreads to those who fail to remove it",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Contagious%20Spell"
+  }
+}

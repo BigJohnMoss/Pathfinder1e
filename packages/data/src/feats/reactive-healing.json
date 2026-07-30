@@ -1,0 +1,17 @@
+{
+  "id": "reactive-healing",
+  "name": "Reactive Healing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Quick Channel or Quicken Spell; channel energy or lay on hands class feature"
+    }
+  ],
+  "benefit": "When reduced to 0 hp or fewer, use channel energy or lay on hands to heal yourself as immediate action",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reactive%20Healing"
+  }
+}

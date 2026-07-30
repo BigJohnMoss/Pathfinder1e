@@ -1,0 +1,25 @@
+{
+  "id": "flame-heart",
+  "name": "Flame Heart",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fire-tamer"
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "goblin"
+    }
+  ],
+  "benefit": "Gain fire resistance 5, +1 caster/alchemist level with fire spells or fire bombs",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flame%20Heart"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "thicket-channel",
+  "name": "Thicket Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 7d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Erastil"
+    }
+  ],
+  "benefit": "Make plants in the area grow when you channel positive energy",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 217,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Thicket%20Channel"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "visceral-threat",
+  "name": "Visceral Threat",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    }
+  ],
+  "benefit": "Use Intimidate instead of Bluff to feint",
+  "source": {
+    "title": "Monster Codex",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Visceral%20Threat"
+  }
+}

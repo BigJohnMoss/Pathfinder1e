@@ -1,0 +1,22 @@
+{
+  "id": "burn-burn-burn",
+  "name": "Burn! Burn! Burn!",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "goblin"
+    }
+  ],
+  "benefit": "Deal extra fire damage with non-magical fire attacks, +4 Reflex vs. catching on fire",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Burn!%20Burn!%20Burn!"
+  }
+}

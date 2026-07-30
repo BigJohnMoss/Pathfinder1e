@@ -1,0 +1,29 @@
+{
+  "id": "threatening-negotiator",
+  "name": "Threatening Negotiator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "nerve-racking-negotiator"
+    },
+    {
+      "type": "feat",
+      "id": "persuasive"
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Intimidate)"
+    }
+  ],
+  "benefit": "Increase Intimidate's duration to 2d6 hours",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Threatening%20Negotiator"
+  }
+}

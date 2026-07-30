@@ -1,0 +1,17 @@
+{
+  "id": "forgotten-past",
+  "name": "Forgotten Past",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have suffered permanent memory loss or have the Reincarnated background"
+    }
+  ],
+  "benefit": "Reduce the effectiveness of mind-affecting spells on you",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Forgotten%20Past"
+  }
+}

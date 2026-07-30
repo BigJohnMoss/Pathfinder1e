@@ -1,0 +1,12 @@
+{
+  "id": "timely-coordination",
+  "name": "Timely Coordination",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+1 bonus on attack rolls and skill checks for readied actions triggered by allies",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Timely%20Coordination"
+  }
+}

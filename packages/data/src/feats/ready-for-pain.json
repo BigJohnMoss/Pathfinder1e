@@ -1,0 +1,17 @@
+{
+  "id": "ready-for-pain",
+  "name": "Ready for Pain",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "mesmerist-trick"
+    }
+  ],
+  "benefit": "DR/— against nonlethal damage for allies with implanted tricks",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ready%20for%20Pain"
+  }
+}

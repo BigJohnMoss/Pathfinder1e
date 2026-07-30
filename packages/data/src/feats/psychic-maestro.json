@@ -1,0 +1,17 @@
+{
+  "id": "psychic-maestro",
+  "name": "Psychic Maestro",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or the ability to cast psychic spells"
+    }
+  ],
+  "benefit": "Use occult skill unlocks more often",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychic%20Maestro"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "maddening-style",
+  "name": "Maddening Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 11
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 4
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    },
+    {
+      "type": "rule",
+      "description": "nongood alignment"
+    }
+  ],
+  "benefit": "ain additional use of Stunning Fist, increase DC of madness effects, and deal Wisdom/sanity damage with Stunning Fist",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 90,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Maddening%20Style"
+  }
+}

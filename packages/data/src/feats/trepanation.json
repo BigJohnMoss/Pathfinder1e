@@ -1,0 +1,23 @@
+{
+  "id": "trepanation",
+  "name": "Trepanation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Learn to use faith healing",
+  "source": {
+    "title": "Occult Origins",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Trepanation"
+  }
+}

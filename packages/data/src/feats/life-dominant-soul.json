@@ -1,0 +1,17 @@
+{
+  "id": "life-dominant-soul",
+  "name": "Life-Dominant Soul",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dhampir"
+    }
+  ],
+  "benefit": "Gain half normal healing from positive and negative energy instead of full from negative",
+  "source": {
+    "title": "Blood of the Night",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Life-Dominant%20Soul"
+  }
+}

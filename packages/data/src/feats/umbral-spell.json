@@ -1,0 +1,17 @@
+{
+  "id": "umbral-spell",
+  "name": "Umbral Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "tenebrous-spell"
+    }
+  ],
+  "benefit": "Alter a spell to radiate darkness",
+  "source": {
+    "title": "Inner Sea Magic",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Umbral%20Spell"
+  }
+}

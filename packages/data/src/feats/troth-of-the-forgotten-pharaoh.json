@@ -1,0 +1,17 @@
+{
+  "id": "troth-of-the-forgotten-pharaoh",
+  "name": "Troth of the Forgotten Pharaoh",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must be a member of the Cult of the Forgotten Pharaoh"
+    }
+  ],
+  "benefit": "Undergo a ritual to connect yourself with Pharaoh Hakotep I",
+  "source": {
+    "title": "Pathfinder #82: Secrets of the Sphinx",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Troth%20of%20the%20Forgotten%20Pharaoh"
+  }
+}

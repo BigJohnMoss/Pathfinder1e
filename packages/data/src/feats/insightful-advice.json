@@ -1,0 +1,18 @@
+{
+  "id": "insightful-advice",
+  "name": "Insightful Advice",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Perform (oratory)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Aid allies all day long",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Insightful%20Advice"
+  }
+}

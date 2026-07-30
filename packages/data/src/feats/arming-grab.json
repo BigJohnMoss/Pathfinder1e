@@ -1,0 +1,30 @@
+{
+  "id": "arming-grab",
+  "name": "Arming Grab",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "catch-off-guard"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-disarm"
+    }
+  ],
+  "benefit": "You can easily disarm while unarmed and gain a bonus on attack rolls with the disarmed weapon",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Arming%20Grab"
+  }
+}

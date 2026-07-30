@@ -1,0 +1,17 @@
+{
+  "id": "lesser-spell-synthesis",
+  "name": "Lesser Spell Synthesis",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "combined-spells"
+    }
+  ],
+  "benefit": "Cast two spells at once, with certain limitations",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lesser%20Spell%20Synthesis"
+  }
+}

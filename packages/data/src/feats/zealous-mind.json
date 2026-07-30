@@ -1,0 +1,29 @@
+{
+  "id": "zealous-mind",
+  "name": "Zealous Mind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "feat",
+      "id": "unimpeachable-honor"
+    },
+    {
+      "type": "rule",
+      "description": "UI"
+    },
+    {
+      "type": "rule",
+      "description": "lawful alignment"
+    }
+  ],
+  "benefit": "Gain additional bonuses against enchantments",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 95,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Zealous%20Mind"
+  }
+}

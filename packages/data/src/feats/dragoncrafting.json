@@ -1,0 +1,23 @@
+{
+  "id": "dragoncrafting",
+  "name": "Dragoncrafting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (any)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Create rare and valuable items from the bodies of dragons",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dragoncrafting"
+  }
+}

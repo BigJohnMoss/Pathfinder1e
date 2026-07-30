@@ -1,0 +1,25 @@
+{
+  "id": "crippling-thrust",
+  "name": "Crippling Thrust",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with piercing weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "You can hamper a creature's movements with a piercing weapon",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crippling%20Thrust"
+  }
+}

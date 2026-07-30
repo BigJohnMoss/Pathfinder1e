@@ -1,0 +1,17 @@
+{
+  "id": "extra-amplification",
+  "name": "Extra Amplification",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "phrenic-amplification"
+    }
+  ],
+  "benefit": "Gain one additional phrenic amplification",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Amplification"
+  }
+}

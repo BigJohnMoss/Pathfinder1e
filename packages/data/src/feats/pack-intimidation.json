@@ -1,0 +1,21 @@
+{
+  "id": "pack-intimidation",
+  "name": "Pack Intimidation",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc"
+    },
+    {
+      "type": "rule",
+      "description": "intimidating racial trait"
+    }
+  ],
+  "benefit": "When you use Intimidate to demoralize, gain a +2 circumstance bonus for every ally with this feat within 30 feet",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pack%20Intimidation"
+  }
+}

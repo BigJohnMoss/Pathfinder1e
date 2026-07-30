@@ -1,0 +1,26 @@
+{
+  "id": "mischievous-tail",
+  "name": "Mischievous Tail",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "grasping-tail"
+    },
+    {
+      "type": "rule",
+      "description": "you must have a tail"
+    }
+  ],
+  "benefit": "Your tail functions as a free hand and gains a +2 bonus on disarm and steal combat maneuvers and on Sleight of Hand checks",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mischievous%20Tail"
+  }
+}

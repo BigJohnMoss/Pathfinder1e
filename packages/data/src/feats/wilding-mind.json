@@ -1,0 +1,22 @@
+{
+  "id": "wilding-mind",
+  "name": "Wilding Mind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "wilding"
+    }
+  ],
+  "benefit": "Can take 1d3 Int damage to reroll a failed saving through versus a fear effect or versus a mind-affecting effect",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 120,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wilding%20Mind"
+  }
+}

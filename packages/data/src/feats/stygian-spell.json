@@ -1,0 +1,12 @@
+{
+  "id": "stygian-spell",
+  "name": "Stygian Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Water spell causes memory loss to target",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stygian%20Spell"
+  }
+}

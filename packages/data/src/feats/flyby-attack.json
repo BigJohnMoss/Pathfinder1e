@@ -1,0 +1,17 @@
+{
+  "id": "flyby-attack",
+  "name": "Flyby Attack",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fly speed"
+    }
+  ],
+  "benefit": "Take a standard action during your move action while flying.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 315,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flyby%20Attack"
+  }
+}

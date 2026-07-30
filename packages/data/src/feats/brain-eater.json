@@ -1,0 +1,22 @@
+{
+  "id": "brain-eater",
+  "name": "Brain Eater",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ghoul"
+    },
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 17
+    }
+  ],
+  "benefit": "Gain a bonus on skill checks and Will saves by eating brains",
+  "source": {
+    "title": "Classic Horrors Revisited",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brain%20Eater"
+  }
+}

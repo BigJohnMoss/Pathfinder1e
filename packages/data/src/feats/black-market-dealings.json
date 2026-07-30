@@ -1,0 +1,12 @@
+{
+  "id": "black-market-dealings",
+  "name": "Black Market Dealings",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Bonus to access black markets, additional options with black markets",
+  "source": {
+    "title": "Black Markets",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Black%20Market%20Dealings"
+  }
+}

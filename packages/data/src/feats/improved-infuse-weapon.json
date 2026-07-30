@@ -1,0 +1,22 @@
+{
+  "id": "improved-infuse-weapon",
+  "name": "Improved Infuse Weapon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Infuse weapon special ability"
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 27
+    }
+  ],
+  "benefit": "Add additional magical qualities when you infuse weapons.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 38,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Infuse%20Weapon"
+  }
+}

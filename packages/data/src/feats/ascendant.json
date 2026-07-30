@@ -1,0 +1,21 @@
+{
+  "id": "ascendant",
+  "name": "Ascendant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have the Secret Shame drawback (page 7) or the Bastard-Born background UCA"
+    },
+    {
+      "type": "rule",
+      "description": "and you must also have no publicly known faults or made any indisputable mistakes that could humiliate or cast down a figure of high station"
+    }
+  ],
+  "benefit": "You and your apparent allies gain a +2 bonus on skill checks to gain influence or request a favor",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ascendant"
+  }
+}

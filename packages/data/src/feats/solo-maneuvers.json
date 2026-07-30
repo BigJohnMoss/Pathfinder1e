@@ -1,0 +1,12 @@
+{
+  "id": "solo-maneuvers",
+  "name": "Solo Maneuvers",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "+1 CMB/CMD whenever you are the only one threatening a creature",
+  "source": {
+    "title": "Bastards of Golarion",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Solo%20Maneuvers"
+  }
+}

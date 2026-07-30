@@ -1,0 +1,21 @@
+{
+  "id": "underfoot-botb",
+  "name": "Underfoot (BotB)",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "rule",
+      "description": "swarming racial trait"
+    }
+  ],
+  "benefit": "Can share a space with an enemy",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Underfoot%20(BotB)"
+  }
+}

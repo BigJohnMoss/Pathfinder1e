@@ -1,0 +1,21 @@
+{
+  "id": "unbound-bravery",
+  "name": "Unbound Bravery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bravery"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Cayden Cailean"
+    }
+  ],
+  "benefit": "You can add the bonus from bravery to Escape Artist checks and combat maneuver checks to escape a grapple.",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unbound%20Bravery"
+  }
+}

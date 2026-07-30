@@ -1,0 +1,17 @@
+{
+  "id": "combat-rhythm",
+  "name": "Combat Rhythm",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Reduce penalties to your attacks with successive hits against the same target",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Combat%20Rhythm"
+  }
+}

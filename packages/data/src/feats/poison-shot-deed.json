@@ -1,0 +1,17 @@
+{
+  "id": "poison-shot-deed",
+  "name": "Poison Shot Deed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Gunslinger UC or grit UC class feature"
+    }
+  ],
+  "benefit": "Prepare bullets to deliver poison",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Poison%20Shot%20Deed"
+  }
+}

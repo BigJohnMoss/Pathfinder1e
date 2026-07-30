@@ -1,0 +1,21 @@
+{
+  "id": "figments-fluidity",
+  "name": "Figment's Fluidity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "page"
+    },
+    {
+      "type": "rule",
+      "description": "Must have a familiar with the figment archetype (see 10)"
+    }
+  ],
+  "benefit": "Your familiar can reshape itself",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Figment's%20Fluidity"
+  }
+}

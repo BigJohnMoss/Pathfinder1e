@@ -1,0 +1,22 @@
+{
+  "id": "weapon-evoker-mastery",
+  "name": "Weapon Evoker Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 2
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude saving throw bonus +3"
+    }
+  ],
+  "benefit": "Amplify the power of a magic weapon that deals energy damage",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20Evoker%20Mastery"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "wand-dancer",
+  "name": "Wand Dancer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "skill",
+      "key": "Perform (dance)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Move before and after using a spell trigger item",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 289,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wand%20Dancer"
+  }
+}

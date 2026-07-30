@@ -1,0 +1,26 @@
+{
+  "id": "awe-inspiring-smash",
+  "name": "Awe-Inspiring Smash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Apply your Strength modifier instead of Charisma on performance combat checks",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Awe-Inspiring%20Smash"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "hobgoblin-discipline",
+  "name": "Hobgoblin Discipline",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "+1 on saves when near other hobgoblins",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hobgoblin%20Discipline"
+  }
+}

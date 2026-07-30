@@ -1,0 +1,22 @@
+{
+  "id": "psychovore-style",
+  "name": "Psychovore Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain a Dodge bonus to AC while fighting thinking creatures",
+  "source": {
+    "title": "Pathfinder: Spiral of Bones #3",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychovore%20Style"
+  }
+}

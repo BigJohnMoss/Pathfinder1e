@@ -1,0 +1,39 @@
+{
+  "id": "tatzlwyrm-rake",
+  "name": "Tatzlwyrm Rake",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "tatzlwyrm-claw-style"
+    },
+    {
+      "type": "feat",
+      "id": "tatzlwyrm-grappler"
+    },
+    {
+      "type": "skill",
+      "key": "Escape Artist",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Maintain a grapple without using your hands",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tatzlwyrm%20Rake"
+  }
+}

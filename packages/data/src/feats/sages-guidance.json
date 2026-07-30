@@ -1,0 +1,21 @@
+{
+  "id": "sages-guidance",
+  "name": "Sage's Guidance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "page"
+    },
+    {
+      "type": "rule",
+      "description": "Must have a familiar with the sage archetype (see 11)"
+    }
+  ],
+  "benefit": "Your familiar’s knowledge grants you bonuses on attack/skills",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sage's%20Guidance"
+  }
+}

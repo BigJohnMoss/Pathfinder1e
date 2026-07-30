@@ -1,0 +1,17 @@
+{
+  "id": "mud-in-your-eye",
+  "name": "Mud in Your Eye",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "throw-anything"
+    }
+  ],
+  "benefit": "Use mud and dirt to perform dirty tricks",
+  "source": {
+    "title": "Heroes of the Streets",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mud%20in%20Your%20Eye"
+  }
+}

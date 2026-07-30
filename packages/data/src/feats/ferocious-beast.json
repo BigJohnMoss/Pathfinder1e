@@ -1,0 +1,22 @@
+{
+  "id": "ferocious-beast",
+  "name": "Ferocious Beast",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "animal companion"
+    }
+  ],
+  "benefit": "Gain bonuses on Intimidate checks",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 218,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ferocious%20Beast"
+  }
+}

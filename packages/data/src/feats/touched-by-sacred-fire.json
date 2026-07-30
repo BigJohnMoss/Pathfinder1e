@@ -1,0 +1,25 @@
+{
+  "id": "touched-by-sacred-fire",
+  "name": "Touched by Sacred Fire",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "rule",
+      "description": "Risen Guard rank"
+    },
+    {
+      "type": "rule",
+      "description": "Risen Guard 15 TPA"
+    }
+  ],
+  "benefit": "Gain resistance to fire and a bonus to saves against fire effects",
+  "source": {
+    "title": "Faction Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Touched%20by%20Sacred%20Fire"
+  }
+}

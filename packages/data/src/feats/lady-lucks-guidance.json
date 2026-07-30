@@ -1,0 +1,23 @@
+{
+  "id": "lady-lucks-guidance",
+  "name": "Lady Luck's Guidance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (geography)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Travel twice as far during overland travel",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lady%20Luck's%20Guidance"
+  }
+}

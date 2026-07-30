@@ -1,0 +1,21 @@
+{
+  "id": "savage-surge",
+  "name": "Savage Surge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Improve your performance combat check by expending rounds of rage",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Savage%20Surge"
+  }
+}

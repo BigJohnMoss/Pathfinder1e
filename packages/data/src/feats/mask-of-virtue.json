@@ -1,0 +1,12 @@
+{
+  "id": "mask-of-virtue",
+  "name": "Mask of Virtue",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Mask your true alignment",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mask%20of%20Virtue"
+  }
+}

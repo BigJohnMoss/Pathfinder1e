@@ -1,0 +1,17 @@
+{
+  "id": "second-wind",
+  "name": "Second Wind",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    }
+  ],
+  "benefit": "Suppress a negative condition",
+  "source": {
+    "title": "People of the River",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Second%20Wind"
+  }
+}

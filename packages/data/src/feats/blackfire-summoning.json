@@ -1,0 +1,17 @@
+{
+  "id": "blackfire-summoning",
+  "name": "Blackfire Summoning",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "sacred-summons"
+    }
+  ],
+  "benefit": "Your summoned evil outsiders appear in a damaging burst of flames",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blackfire%20Summoning"
+  }
+}

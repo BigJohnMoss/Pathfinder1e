@@ -1,0 +1,17 @@
+{
+  "id": "extra-panache",
+  "name": "Extra Panache",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Swashbuckler or panache class feature"
+    }
+  ],
+  "benefit": "Gain 2 extra panache points",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Panache"
+  }
+}

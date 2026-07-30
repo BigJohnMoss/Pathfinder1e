@@ -1,0 +1,21 @@
+{
+  "id": "spell-trick",
+  "name": "Spell Trick",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "masterful-tricks"
+    },
+    {
+      "type": "spell-access",
+      "id": "4th-level-mesmerist-spells"
+    }
+  ],
+  "benefit": "Implant one of your spells as a trick",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Trick"
+  }
+}

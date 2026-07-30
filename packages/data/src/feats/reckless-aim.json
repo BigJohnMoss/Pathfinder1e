@@ -1,0 +1,21 @@
+{
+  "id": "reckless-aim",
+  "name": "Reckless Aim",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    }
+  ],
+  "benefit": "Take -1 AC for +2 attack, risk hitting random adjacent creature on natural 1.",
+  "source": {
+    "title": "Blood of Fiends",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reckless%20Aim"
+  }
+}

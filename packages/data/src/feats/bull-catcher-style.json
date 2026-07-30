@@ -1,0 +1,26 @@
+{
+  "id": "bull-catcher-style",
+  "name": "Bull-Catcher Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Ready an action to grab creatures charging you",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bull-Catcher%20Style"
+  }
+}

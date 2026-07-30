@@ -1,0 +1,21 @@
+{
+  "id": "friendly-fire-maneuvers",
+  "name": "Friendly Fire Maneuvers",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    }
+  ],
+  "benefit": "Stay out of each other’s way with ranged and area attacks",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Friendly%20Fire%20Maneuvers"
+  }
+}

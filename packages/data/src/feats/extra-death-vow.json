@@ -1,0 +1,17 @@
+{
+  "id": "extra-death-vow",
+  "name": "Extra Death Vow",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "death-vow"
+    }
+  ],
+  "benefit": "Gain two additional uses of death vow per day",
+  "source": {
+    "title": "Pathfinder: Worldscape #1",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Death%20Vow"
+  }
+}

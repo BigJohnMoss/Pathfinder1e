@@ -1,0 +1,30 @@
+{
+  "id": "dervish-dance",
+  "name": "Dervish Dance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dexterity 13"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "skill",
+      "key": "Perform (dance)",
+      "minimum": 2
+    },
+    {
+      "type": "rule",
+      "description": "proficient with scimitar"
+    }
+  ],
+  "benefit": "Use Dex modifier instead of Str modifier with scimitar",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 286,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dervish%20Dance"
+  }
+}

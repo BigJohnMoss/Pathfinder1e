@@ -1,0 +1,21 @@
+{
+  "id": "suffocating-strangulation",
+  "name": "Suffocating Strangulation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Improved grab"
+    },
+    {
+      "type": "rule",
+      "description": "constrict"
+    }
+  ],
+  "benefit": "Suffocate those you constrict",
+  "source": {
+    "title": "Dungeon Denizens Revisited",
+    "page": 62,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Suffocating%20Strangulation"
+  }
+}

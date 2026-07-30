@@ -1,0 +1,31 @@
+{
+  "id": "elemental-claws",
+  "name": "Elemental Claws",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "You can imbue your natural attacks with elemental energy",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Claws"
+  }
+}

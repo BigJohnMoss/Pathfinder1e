@@ -1,0 +1,25 @@
+{
+  "id": "sonic-croak",
+  "name": "Sonic Croak",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "throat-pouch"
+    },
+    {
+      "type": "rule",
+      "description": "boggard"
+    },
+    {
+      "type": "rule",
+      "description": "terrifying croak"
+    }
+  ],
+  "benefit": "Deal sonic damage with your croak",
+  "source": {
+    "title": "Monster Codex",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sonic%20Croak"
+  }
+}

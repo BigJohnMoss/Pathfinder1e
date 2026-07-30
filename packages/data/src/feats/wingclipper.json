@@ -1,0 +1,17 @@
+{
+  "id": "wingclipper",
+  "name": "Wingclipper",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Forgo critical damage to prevent your enemy from flying",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wingclipper"
+  }
+}

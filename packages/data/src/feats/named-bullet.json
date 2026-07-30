@@ -1,0 +1,29 @@
+{
+  "id": "named-bullet-feat",
+  "name": "Named Bullet",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Gunslinger UC feat or grit class feature"
+    },
+    {
+      "type": "feat",
+      "id": "gunsmithing"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Inscribe names of your targets on bullets to grant them bane against that target",
+  "source": {
+    "title": "Champions of Balance",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Named%20Bullet"
+  }
+}

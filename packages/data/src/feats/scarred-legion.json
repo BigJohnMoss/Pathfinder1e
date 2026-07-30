@@ -1,0 +1,12 @@
+{
+  "id": "scarred-legion",
+  "name": "Scarred Legion",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+2 Intimidate and +2 Will when adjacent to ally with the feat; Keep bonus after charging for 1 round",
+  "source": {
+    "title": "Monster Codex",
+    "page": 164,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scarred%20Legion"
+  }
+}

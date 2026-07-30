@@ -1,0 +1,21 @@
+{
+  "id": "eerily-centered",
+  "name": "Eerily Centered",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bleachling racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    }
+  ],
+  "benefit": "Gain a +4 bonus to saving throws against emotion effects",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eerily%20Centered"
+  }
+}

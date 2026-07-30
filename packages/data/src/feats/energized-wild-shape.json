@@ -1,0 +1,26 @@
+{
+  "id": "energized-wild-shape",
+  "name": "Energized Wild Shape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 19
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "One natural attack while wild shaped deals +1d6 points of energy damage; gain energy resistance 10 (choose between acid, cold, electricity, or fire)",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 110,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Energized%20Wild%20Shape"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "consume-essence",
+  "name": "Consume Essence",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "evil alignment; swallow whole universal monster ability; must be of the magical beast"
+    },
+    {
+      "type": "rule",
+      "description": "outsider"
+    },
+    {
+      "type": "rule",
+      "description": "or undead type"
+    }
+  ],
+  "benefit": "Inflict negative levels on swallowed creatures",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Consume%20Essence"
+  }
+}

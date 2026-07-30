@@ -1,0 +1,17 @@
+{
+  "id": "basic-harmony",
+  "name": "Basic Harmony",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bardic performance or raging song"
+    }
+  ],
+  "benefit": "Grant improved bonuses on Perform when aiding another",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Basic%20Harmony"
+  }
+}

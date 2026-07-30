@@ -1,0 +1,21 @@
+{
+  "id": "death-roll",
+  "name": "Death Roll",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bite attack"
+    },
+    {
+      "type": "rule",
+      "description": "reptilian subtype"
+    }
+  ],
+  "benefit": "Perform a death roll when grappling a foe of your size or smaller to knock that foe prone",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 204,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Death%20Roll"
+  }
+}

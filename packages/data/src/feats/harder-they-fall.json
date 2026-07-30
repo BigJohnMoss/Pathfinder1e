@@ -1,0 +1,31 @@
+{
+  "id": "harder-they-fall",
+  "name": "Harder They Fall",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Grant ally a +2 bonus on bull rush or trip attempt",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Harder%20They%20Fall"
+  }
+}

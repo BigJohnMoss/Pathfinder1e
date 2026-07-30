@@ -1,0 +1,21 @@
+{
+  "id": "jackal-heritage",
+  "name": "Jackal Heritage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Humanoid"
+    },
+    {
+      "type": "rule",
+      "description": "must be taken at 1st level"
+    }
+  ],
+  "benefit": "Gain a bonus on saves against mind-affecting effects and a bonus to Perception checks",
+  "source": {
+    "title": "Rival Guide",
+    "page": 41,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Jackal%20Heritage"
+  }
+}

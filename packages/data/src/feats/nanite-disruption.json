@@ -1,0 +1,17 @@
+{
+  "id": "nanite-disruption",
+  "name": "Nanite Disruption",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Nanite surge racial trait"
+    }
+  ],
+  "benefit": "Use nanite surge to damage other mechanical creatures",
+  "source": {
+    "title": "People of the Stars",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Nanite%20Disruption"
+  }
+}

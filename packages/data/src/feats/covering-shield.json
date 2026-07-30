@@ -1,0 +1,26 @@
+{
+  "id": "covering-shield",
+  "name": "Covering Shield",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "shield-proficiency"
+    }
+  ],
+  "benefit": "Gain a bonus against Area of Effect attacks while using your shield",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Covering%20Shield"
+  }
+}

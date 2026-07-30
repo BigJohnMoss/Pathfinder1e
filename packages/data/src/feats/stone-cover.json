@@ -1,0 +1,39 @@
+{
+  "id": "stone-cover",
+  "name": "Stone Cover",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "stone-shroud"
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    },
+    {
+      "type": "feat",
+      "id": "cunning"
+    },
+    {
+      "type": "rule",
+      "description": "stone racial trait"
+    }
+  ],
+  "benefit": "Gain concealment when in rocky terrain",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Cover"
+  }
+}

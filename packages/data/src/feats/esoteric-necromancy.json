@@ -1,0 +1,12 @@
+{
+  "id": "esoteric-necromancy",
+  "name": "Esoteric Necromancy",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your necromancy spells cause their targets to be shaken",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Esoteric%20Necromancy"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "lead-by-example",
+  "name": "Lead by Example",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "half-orc"
+    }
+  ],
+  "benefit": "Grant allies a +2 moral bonus to attack when you confirm a critical hit",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lead%20by%20Example"
+  }
+}

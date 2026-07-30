@@ -1,0 +1,17 @@
+{
+  "id": "fey-insight",
+  "name": "Fey Insight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wis 13; Knowledge (nature) or Knowledge (planes) 2 ranks"
+    }
+  ],
+  "benefit": "Gain +2 bonus on Bluff, Diplomacy, and Sense Motive when interacting with Fey",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fey%20Insight"
+  }
+}

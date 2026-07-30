@@ -1,0 +1,30 @@
+{
+  "id": "terrifying-mask",
+  "name": "Terrifying Mask",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "monstrous-mask"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "tie"
+    }
+  ],
+  "benefit": "Use Intimidate in place of Sense Motive.",
+  "source": {
+    "title": "Blood of Fiends",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Terrifying%20Mask"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "elven-battle-torrent",
+  "name": "Elven Battle Torrent",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "elven-battle-focus"
+    },
+    {
+      "type": "feat",
+      "id": "elven-battle-style"
+    },
+    {
+      "type": "feat",
+      "id": "elven-battle-training"
+    },
+    {
+      "type": "rule",
+      "description": "ARG"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "bab",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "weapon familiarity racial trait"
+    }
+  ],
+  "benefit": "Enemies provoke attacks while you’re fighting defensively",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elven%20Battle%20Torrent"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "nature-soul",
+  "name": "Nature Soul",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+2 bonus on Knowledge (nature) and Survival checks.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Nature%20Soul"
+  }
+}

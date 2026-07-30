@@ -1,0 +1,17 @@
+{
+  "id": "superintendent",
+  "name": "Superintendent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Own at least one room"
+    }
+  ],
+  "benefit": "Repair rooms for half the normal cost, halt capital attrition for longer",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Superintendent"
+  }
+}

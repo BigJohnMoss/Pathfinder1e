@@ -1,0 +1,22 @@
+{
+  "id": "critical-versatility",
+  "name": "Critical Versatility",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "human"
+    }
+  ],
+  "benefit": "1/day, learn a Critical feat",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Critical%20Versatility"
+  }
+}

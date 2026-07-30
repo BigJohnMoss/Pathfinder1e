@@ -1,0 +1,22 @@
+{
+  "id": "natural-charmer",
+  "name": "Natural Charmer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 17
+    },
+    {
+      "type": "rule",
+      "description": "dhampir"
+    }
+  ],
+  "benefit": "Take 20 on charisma-based checks with friendly humanoids",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 100,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Natural%20Charmer"
+  }
+}

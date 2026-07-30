@@ -1,0 +1,21 @@
+{
+  "id": "lingering-smite",
+  "name": "Lingering Smite",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "channel-smite"
+    },
+    {
+      "type": "rule",
+      "description": "channel energy 3d6"
+    }
+  ],
+  "benefit": "Cause lingering damage with channel smite",
+  "source": {
+    "title": "Undead Slayer's Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lingering%20Smite"
+  }
+}

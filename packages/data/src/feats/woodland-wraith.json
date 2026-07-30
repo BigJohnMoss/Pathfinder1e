@@ -1,0 +1,26 @@
+{
+  "id": "woodland-wraith",
+  "name": "Woodland Wraith",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Gain concealment when withdrawing or taking multiple actions and ending movement in naturally occurring difficult terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 121,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Woodland%20Wraith"
+  }
+}

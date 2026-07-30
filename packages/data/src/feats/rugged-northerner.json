@@ -1,0 +1,23 @@
+{
+  "id": "rugged-northerner",
+  "name": "Rugged Northerner",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 1
+    }
+  ],
+  "benefit": "You are less harmed by cold environments",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rugged%20Northerner"
+  }
+}

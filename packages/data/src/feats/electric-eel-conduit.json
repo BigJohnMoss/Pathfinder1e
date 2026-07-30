@@ -1,0 +1,42 @@
+{
+  "id": "electric-eel-conduit",
+  "name": "Electric Eel Conduit",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "electric-eel-shock"
+    },
+    {
+      "type": "feat",
+      "id": "electric-eel-style"
+    },
+    {
+      "type": "feat",
+      "id": "elemental-fist"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +13 or monk level 9th"
+    }
+  ],
+  "benefit": "Continuously electrocute a target you have grappled",
+  "source": {
+    "title": "Blood of the Sea",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Electric%20Eel%20Conduit"
+  }
+}

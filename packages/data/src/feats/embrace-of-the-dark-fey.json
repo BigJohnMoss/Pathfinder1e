@@ -1,0 +1,21 @@
+{
+  "id": "embrace-of-the-dark-fey",
+  "name": "Embrace of the Dark Fey",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have an evil fey such as a quickling B2 or redcap B2 somewhere in your family line"
+    },
+    {
+      "type": "rule",
+      "description": "or you must have the Shameful Heritage background ( Ultimate Campaign 40 )"
+    }
+  ],
+  "benefit": "See text",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Embrace%20of%20the%20Dark%20Fey"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "tandem-evasion",
+  "name": "Tandem Evasion",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    }
+  ],
+  "benefit": "Gain evasion against a dragon’s breath weapon and tail sweep when close to an ally",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tandem%20Evasion"
+  }
+}

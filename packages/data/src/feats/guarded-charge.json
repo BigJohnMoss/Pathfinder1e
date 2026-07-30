@@ -1,0 +1,21 @@
+{
+  "id": "guarded-charge",
+  "name": "Guarded Charge*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or fighter level 4th"
+    }
+  ],
+  "benefit": "Don't provoke for making a bull rush or overrun at the end of a charge",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Guarded%20Charge*"
+  }
+}

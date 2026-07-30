@@ -1,0 +1,12 @@
+{
+  "id": "choir-of-blades",
+  "name": "Choir of Blades",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Gain an ally’s bonus on attack rolls against a creature or a subtype, as well as the ally’s racial weapon proficiencies",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 204,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Choir%20of%20Blades"
+  }
+}

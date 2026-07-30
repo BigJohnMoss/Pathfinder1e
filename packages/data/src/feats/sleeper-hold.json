@@ -1,0 +1,21 @@
+{
+  "id": "sleeper-hold",
+  "name": "Sleeper Hold",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "greater-grapple"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Put your opponent to sleep when grappled.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sleeper%20Hold"
+  }
+}

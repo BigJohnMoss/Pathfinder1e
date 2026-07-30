@@ -1,0 +1,29 @@
+{
+  "id": "redirected-shot",
+  "name": "Redirected Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Gunslinger UC or the grit class feature"
+    },
+    {
+      "type": "feat",
+      "id": "deadly-aim"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    }
+  ],
+  "benefit": "Help redirect your allies’ poorly aimed ranged attacks",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Redirected%20Shot"
+  }
+}

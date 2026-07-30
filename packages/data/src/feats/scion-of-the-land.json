@@ -1,0 +1,18 @@
+{
+  "id": "scion-of-the-land",
+  "name": "Scion of the Land",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Grant ability to leave no trail to allies within 60 feet or gain +2 bonus on some nature-based skills",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scion%20of%20the%20Land"
+  }
+}

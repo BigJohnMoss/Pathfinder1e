@@ -1,0 +1,43 @@
+{
+  "id": "umbral-scion",
+  "name": "Umbral Scion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "drow-nobility"
+    },
+    {
+      "type": "feat",
+      "id": "greater-drow-nobility"
+    },
+    {
+      "type": "feat",
+      "id": "improved-drow-nobility"
+    },
+    {
+      "type": "rule",
+      "description": "able to use drow spell-like abilities"
+    },
+    {
+      "type": "rule",
+      "description": "drow"
+    }
+  ],
+  "benefit": "Unlock spell-like abilities marking your place amongst Drow nobility",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Umbral%20Scion"
+  }
+}

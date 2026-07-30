@@ -1,0 +1,37 @@
+{
+  "id": "share-spells",
+  "name": "Share Spells",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bonded-mind"
+    },
+    {
+      "type": "rule",
+      "description": "ability to share spells with an animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "eidolon"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    },
+    {
+      "type": "rule",
+      "description": "or phantom"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Share personal spells with allies",
+  "source": {
+    "title": "Distant Shores",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Share%20Spells"
+  }
+}

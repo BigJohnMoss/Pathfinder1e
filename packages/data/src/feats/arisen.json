@@ -1,0 +1,21 @@
+{
+  "id": "arisen",
+  "name": "Arisen",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have been slain and brought back from the dead"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Left to Die or Cursed Birth background"
+    }
+  ],
+  "benefit": "Negative hit point threshold for death is increased",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 67,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Arisen"
+  }
+}

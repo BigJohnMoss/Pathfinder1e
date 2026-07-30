@@ -1,0 +1,22 @@
+{
+  "id": "vision-mastery",
+  "name": "Vision Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 2
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude save bonus +4"
+    }
+  ],
+  "benefit": "Cast darkvision or see invisibility with a divination-crafted item",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vision%20Mastery"
+  }
+}

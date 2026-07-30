@@ -1,0 +1,25 @@
+{
+  "id": "greater-planar-mentor",
+  "name": "Greater Planar Mentor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-planar-mentor"
+    },
+    {
+      "type": "feat",
+      "id": "planar-mentor"
+    },
+    {
+      "type": "level",
+      "minimum": 13
+    }
+  ],
+  "benefit": "You can call your planar mentor once per week",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Planar%20Mentor"
+  }
+}

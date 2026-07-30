@@ -1,0 +1,12 @@
+{
+  "id": "shocking-amplification",
+  "name": "Shocking Amplification",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your electricity spells cause creatures to become fatigued",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shocking%20Amplification"
+  }
+}

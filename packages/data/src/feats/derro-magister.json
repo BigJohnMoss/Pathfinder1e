@@ -1,0 +1,22 @@
+{
+  "id": "derro-magister",
+  "name": "Derro Magister",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 20
+    },
+    {
+      "type": "rule",
+      "description": "derro"
+    }
+  ],
+  "benefit": "Increase your SR and spell-like power",
+  "source": {
+    "title": "Pathfinder #61: Shards of Sin",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Derro%20Magister"
+  }
+}

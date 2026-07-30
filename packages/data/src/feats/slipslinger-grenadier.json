@@ -1,0 +1,29 @@
+{
+  "id": "slipslinger-grenadier",
+  "name": "Slipslinger Grenadier",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "slipslinger-style"
+    },
+    {
+      "type": "feat",
+      "id": "throw-anything"
+    },
+    {
+      "type": "rule",
+      "description": "Weapon Focus (sling) or weapon training (thrown) class feature"
+    },
+    {
+      "type": "rule",
+      "description": "warslinger racial trait ARG"
+    }
+  ],
+  "benefit": "Use sling to hurl alchemical splash weapons",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Slipslinger%20Grenadier"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "extended-aspects",
+  "name": "Extended Aspects",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "shifter-aspect"
+    }
+  ],
+  "benefit": "Add Wisdom bonus to minutes usable per day for your shifter aspect ability to asume a minor form",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extended%20Aspects"
+  }
+}

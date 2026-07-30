@@ -1,0 +1,17 @@
+{
+  "id": "outslug-style",
+  "name": "Outslug Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int 13; Combat Expertise or brawler’s cunning ACG class feature; Weapon Focus with the chosen weapon"
+    }
+  ],
+  "benefit": "+1 to AC and damage when taking a 5-foot step with a chosen weapon",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Outslug%20Style"
+  }
+}

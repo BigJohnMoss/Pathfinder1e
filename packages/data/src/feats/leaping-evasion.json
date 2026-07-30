@@ -1,0 +1,21 @@
+{
+  "id": "leaping-evasion",
+  "name": "Leaping Evasion",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "lightning-reflexes"
+    },
+    {
+      "type": "feature",
+      "id": "evasion"
+    }
+  ],
+  "benefit": "Use Acrobatics to leap out of large area effects",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Leaping%20Evasion"
+  }
+}

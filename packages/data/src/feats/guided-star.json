@@ -1,0 +1,25 @@
+{
+  "id": "guided-star",
+  "name": "Guided Star",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "starry-grace"
+    },
+    {
+      "type": "rule",
+      "description": "UI"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Desna"
+    }
+  ],
+  "benefit": "Add the returning property and Wisdom to damage rolls with a starknife 1/day",
+  "source": {
+    "title": "Paths of the Righteous",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Guided%20Star"
+  }
+}

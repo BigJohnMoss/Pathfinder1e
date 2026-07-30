@@ -1,0 +1,22 @@
+{
+  "id": "ranged-feint",
+  "name": "Ranged Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 2
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Feint with a ranged weapon",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ranged%20Feint"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "flame-blade-dervish",
+  "name": "Flame Blade Dervish",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast flame blade as a spell or spell-like ability"
+    }
+  ],
+  "benefit": "Increased damage and maneuverability when using a flame blade",
+  "source": {
+    "title": "Paths of the Righteous",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flame%20Blade%20Dervish"
+  }
+}

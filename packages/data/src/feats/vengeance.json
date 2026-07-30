@@ -1,0 +1,21 @@
+{
+  "id": "vengeance",
+  "name": "Vengeance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have a close family member or other loved one slain by a specific challenging foe or that foe’s minions"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Raiders or Vengeance background"
+    }
+  ],
+  "benefit": "Receive a bonus against a specific foe and its minions",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vengeance"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "noble-spell-resistance",
+  "name": "Noble Spell Resistance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "greater-drow-nobility"
+    },
+    {
+      "type": "level",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "drow"
+    }
+  ],
+  "benefit": "Increase your Spell Resistance",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 105,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Noble%20Spell%20Resistance"
+  }
+}

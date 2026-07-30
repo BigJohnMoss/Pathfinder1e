@@ -1,0 +1,21 @@
+{
+  "id": "history-of-scars",
+  "name": "History of Scars",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Take a cumulative 1"
+    },
+    {
+      "type": "rule",
+      "description": "000 points of damage"
+    }
+  ],
+  "benefit": "Increase your natural armor with thick scars",
+  "source": {
+    "title": "Legacy of Fire Player's Guide",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=History%20of%20Scars"
+  }
+}

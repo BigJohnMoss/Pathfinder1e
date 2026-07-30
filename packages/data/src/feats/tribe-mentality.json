@@ -1,0 +1,12 @@
+{
+  "id": "tribe-mentality",
+  "name": "Tribe Mentality",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Roll saves vs. compulsion/emotion spells with allies, take either result",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tribe%20Mentality"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "dragon-touched",
+  "name": "Dragon-Touched",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have been knocked unconscious in an encounter with a challenging draconic foe or have a regional background tied to a specific dragon (such as those presented in this section or a similar trait)"
+    }
+  ],
+  "benefit": "+2 Reflex, +1 attack, +1 AC versus a specific kind of dragon",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dragon-Touched"
+  }
+}

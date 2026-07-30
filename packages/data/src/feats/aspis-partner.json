@@ -1,0 +1,12 @@
+{
+  "id": "aspis-partner",
+  "name": "Aspis Partner",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain access to additional resources when shopping",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 35,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aspis%20Partner"
+  }
+}

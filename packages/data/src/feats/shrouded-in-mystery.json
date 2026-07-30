@@ -1,0 +1,38 @@
+{
+  "id": "shrouded-in-mystery",
+  "name": "Shrouded in Mystery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "Disguise 1 rank; kitsune"
+    },
+    {
+      "type": "rule",
+      "description": "nagaji"
+    },
+    {
+      "type": "rule",
+      "description": "samsaran"
+    },
+    {
+      "type": "rule",
+      "description": "tengu"
+    },
+    {
+      "type": "rule",
+      "description": "or wayang"
+    }
+  ],
+  "benefit": "Against other humanoid races, gain a +2 bonus on Will saves vs. mind-affecting spells and a +3 bonus on Bluff checks",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shrouded%20in%20Mystery"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "animal-soul",
+  "name": "Animal Soul",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal companion or mount class feature"
+    }
+  ],
+  "benefit": "You can shrug off spells that don't work on animals",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Animal%20Soul"
+  }
+}

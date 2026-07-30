@@ -1,0 +1,22 @@
+{
+  "id": "gloomstorm",
+  "name": "Gloomstorm",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 4
+    },
+    {
+      "type": "feature",
+      "id": "shadow-weapon"
+    }
+  ],
+  "benefit": "Create new shadow weapons as a free action",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gloomstorm"
+  }
+}

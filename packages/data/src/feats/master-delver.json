@@ -1,0 +1,17 @@
+{
+  "id": "master-delver",
+  "name": "Master Delver",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Explored part of Cassomir’s locker"
+    }
+  ],
+  "benefit": "+2 Knowledge (dungeoneering) and Perception checks to notice traps",
+  "source": {
+    "title": "Cities of Golarion",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20Delver"
+  }
+}

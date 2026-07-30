@@ -1,0 +1,17 @@
+{
+  "id": "pesh-euphoria",
+  "name": "Pesh Euphoria",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Sahir-Afiyun or pesh addict"
+    }
+  ],
+  "benefit": "Better resist emotion and fear effects while under pesh",
+  "source": {
+    "title": "Black Markets",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pesh%20Euphoria"
+  }
+}

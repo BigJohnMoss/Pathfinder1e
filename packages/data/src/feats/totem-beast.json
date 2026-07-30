@@ -1,0 +1,22 @@
+{
+  "id": "totem-beast",
+  "name": "Totem Beast",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "animal-companion"
+    }
+  ],
+  "benefit": "Grant totem bonuses to your animal companion",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Totem%20Beast"
+  }
+}

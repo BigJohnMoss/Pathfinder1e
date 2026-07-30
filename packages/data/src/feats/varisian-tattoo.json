@@ -1,0 +1,17 @@
+{
+  "id": "varisian-tattoo",
+  "name": "Varisian Tattoo",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    }
+  ],
+  "benefit": "Gain a cantrip as a spell-like ability",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 289,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Varisian%20Tattoo"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "shapeshifter-twist",
+  "name": "Shapeshifter Twist",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shapeshifter-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "change shape ability"
+    },
+    {
+      "type": "rule",
+      "description": "shapechanger subtype"
+    }
+  ],
+  "benefit": "While in Shapeshifter Style, you gain a bonus to CMD and can more easily escape grapples",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shapeshifter%20Twist"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "cloak-of-stone",
+  "name": "Cloak of Stone",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "stone-cover"
+    },
+    {
+      "type": "feat",
+      "id": "stone-shroud"
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    },
+    {
+      "type": "feat",
+      "id": "cunning"
+    },
+    {
+      "type": "rule",
+      "description": "stone racial trait"
+    }
+  ],
+  "benefit": "Can hide in plain sight when in rocky terrain",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cloak%20of%20Stone"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "ferocious-loyalty",
+  "name": "Ferocious Loyalty",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Bonus on attacks when the enemy threatens or knocks out your allies",
+  "source": {
+    "title": "Blood of the Moon",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ferocious%20Loyalty"
+  }
+}

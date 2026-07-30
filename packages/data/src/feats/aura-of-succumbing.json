@@ -1,0 +1,21 @@
+{
+  "id": "aura-of-succumbing",
+  "name": "Aura of Succumbing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of one of the Four Horsemen"
+    }
+  ],
+  "benefit": "Channel energy to create aura that saps life from dying creatures",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aura%20of%20Succumbing"
+  }
+}

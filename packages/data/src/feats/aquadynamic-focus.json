@@ -1,0 +1,21 @@
+{
+  "id": "aquadynamic-focus",
+  "name": "Aquadynamic Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Use bludgeoning and slashing weapons normally underwater",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aquadynamic%20Focus"
+  }
+}

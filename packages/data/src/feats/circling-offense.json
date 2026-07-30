@@ -1,0 +1,25 @@
+{
+  "id": "circling-offense",
+  "name": "Circling Offense",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Dodge attacks of opportunity from larger creatures better, while having the offending creature provoke from your allies",
+  "source": {
+    "title": "Rival Guide",
+    "page": 35,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Circling%20Offense"
+  }
+}

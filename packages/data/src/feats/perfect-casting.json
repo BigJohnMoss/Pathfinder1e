@@ -1,0 +1,29 @@
+{
+  "id": "perfect-casting",
+  "name": "Perfect Casting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-casting"
+    },
+    {
+      "type": "feat",
+      "id": "divine-dignity"
+    },
+    {
+      "type": "spell-access",
+      "id": "divine-spells"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Abadar"
+    }
+  ],
+  "benefit": "Benefits of Divine Dignity extend to all divine spells",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Perfect%20Casting"
+  }
+}

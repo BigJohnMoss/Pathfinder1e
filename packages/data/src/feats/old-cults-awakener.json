@@ -1,0 +1,17 @@
+{
+  "id": "old-cults-awakener",
+  "name": "Old Cults Awakener",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Old Cults 20 TPA"
+    }
+  ],
+  "benefit": "Implant visions of the Old Ones into others",
+  "source": {
+    "title": "Faction Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Old%20Cults%20Awakener"
+  }
+}

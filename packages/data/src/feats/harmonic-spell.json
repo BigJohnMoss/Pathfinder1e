@@ -1,0 +1,17 @@
+{
+  "id": "harmonic-spell",
+  "name": "Harmonic Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bardic music ability"
+    }
+  ],
+  "benefit": "Casting spells extends duration of bardic performance",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 287,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Harmonic%20Spell"
+  }
+}

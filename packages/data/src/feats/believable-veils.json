@@ -1,0 +1,25 @@
+{
+  "id": "believable-veils",
+  "name": "Believable Veils",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast at least one glamer or figment"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Sivanah"
+    }
+  ],
+  "benefit": "DC to disbelieve your figments and glamers is 2 higher",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Believable%20Veils"
+  }
+}

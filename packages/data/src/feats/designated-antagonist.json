@@ -1,0 +1,21 @@
+{
+  "id": "designated-antagonist",
+  "name": "Designated Antagonist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "antagonize"
+    },
+    {
+      "type": "rule",
+      "description": "UM"
+    }
+  ],
+  "benefit": "When using Antagonize, directy hostility to willing ally",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Designated%20Antagonist"
+  }
+}

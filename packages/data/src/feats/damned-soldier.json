@@ -1,0 +1,17 @@
+{
+  "id": "damned-soldier",
+  "name": "Damned Soldier",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fiendish-obedience"
+    }
+  ],
+  "benefit": "Gain accesss to sentinel boons and a +1 profane bonus on weapon damage rolls with favored weapon",
+  "source": {
+    "title": "Book of the Damned",
+    "page": 178,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Damned%20Soldier"
+  }
+}

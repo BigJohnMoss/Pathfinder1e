@@ -1,0 +1,17 @@
+{
+  "id": "bag-of-bones",
+  "name": "Bag of Bones",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ghoul"
+    }
+  ],
+  "benefit": "Bonus to Escape Artist, treat smaller for purposes of squeezing",
+  "source": {
+    "title": "Monster Codex",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bag%20of%20Bones"
+  }
+}

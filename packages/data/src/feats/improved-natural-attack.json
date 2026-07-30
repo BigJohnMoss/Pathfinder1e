@@ -1,0 +1,21 @@
+{
+  "id": "improved-natural-attack",
+  "name": "Improved Natural Attack",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Natural weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Increase the damage dice for one of your natural attacks.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 315,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Natural%20Attack"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "alter-binary-mindscape",
+  "name": "Alter Binary Mindscape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "spell-access",
+      "id": "instigate-psychic-duel"
+    }
+  ],
+  "benefit": "Opponent must spend 1 extra manifestation point to defend itself",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Alter%20Binary%20Mindscape"
+  }
+}

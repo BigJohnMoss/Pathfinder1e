@@ -1,0 +1,17 @@
+{
+  "id": "sure-on-ice",
+  "name": "Sure on Ice",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Frost giant"
+    }
+  ],
+  "benefit": "Move across icy and snowy surfaces as if dry ground",
+  "source": {
+    "title": "Monster Codex",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sure%20on%20Ice"
+  }
+}

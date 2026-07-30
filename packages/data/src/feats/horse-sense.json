@@ -1,0 +1,22 @@
+{
+  "id": "horse-sense",
+  "name": "Horse Sense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Roll twice when making saving throws against enchantment spells that don't affect animals",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Horse%20Sense"
+  }
+}

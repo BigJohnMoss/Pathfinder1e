@@ -1,0 +1,25 @@
+{
+  "id": "murmurs-of-earth",
+  "name": "Murmurs of Earth",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "echoes-of-stone"
+    },
+    {
+      "type": "level",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "oread"
+    }
+  ],
+  "benefit": "Gain a limited form of tremorsense",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Murmurs%20of%20Earth"
+  }
+}

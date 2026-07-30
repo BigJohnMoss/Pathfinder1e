@@ -1,0 +1,21 @@
+{
+  "id": "merciless-rush",
+  "name": "Merciless Rush",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Rovagug"
+    }
+  ],
+  "benefit": "When your bull rush exceeds your target’s CMD by 5 or more, deal damage equal to your Strength modifier",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 214,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Merciless%20Rush"
+  }
+}

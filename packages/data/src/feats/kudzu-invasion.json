@@ -1,0 +1,42 @@
+{
+  "id": "kudzu-invasion",
+  "name": "Kudzu Invasion",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "greater-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "kudzu-grappler"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
+    },
+    {
+      "type": "rule",
+      "description": "vine leshy"
+    }
+  ],
+  "benefit": "Damage creatures when using Kudzu Grappler",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kudzu%20Invasion"
+  }
+}

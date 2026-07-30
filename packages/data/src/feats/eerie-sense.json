@@ -1,0 +1,21 @@
+{
+  "id": "eerie-sense",
+  "name": "Eerie Sense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast detect undead or detect evil as a spell or spell-like ability"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Pharasma"
+    }
+  ],
+  "benefit": "Intuitively sense the presence undead",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 211,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eerie%20Sense"
+  }
+}

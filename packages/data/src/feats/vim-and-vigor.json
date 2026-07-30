@@ -1,0 +1,30 @@
+{
+  "id": "vim-and-vigor",
+  "name": "Vim and Vigor",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-vigor"
+    },
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "level",
+      "minimum": 3
+    }
+  ],
+  "benefit": "You are less fatigued by using vigor",
+  "source": {
+    "title": "Healer's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vim%20and%20Vigor"
+  }
+}

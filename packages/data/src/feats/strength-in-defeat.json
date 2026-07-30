@@ -1,0 +1,21 @@
+{
+  "id": "strength-in-defeat",
+  "name": "Strength in Defeat",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "darkborn half-elf"
+    }
+  ],
+  "benefit": "Gain a moral bonus to attack and damage when below half health",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Strength%20in%20Defeat"
+  }
+}

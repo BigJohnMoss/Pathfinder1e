@@ -1,0 +1,25 @@
+{
+  "id": "blessed",
+  "name": "Blessed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have had friendly contact with a good outsider that would qualify as a challenging foe"
+    },
+    {
+      "type": "rule",
+      "description": "be a sorcerer with the celestial bloodline"
+    },
+    {
+      "type": "rule",
+      "description": "or have direct celestial ancestry (such as by being an aasimar)"
+    }
+  ],
+  "benefit": "Bonus to checks relating to good-aligned outsiders",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blessed"
+  }
+}

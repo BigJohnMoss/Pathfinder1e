@@ -1,0 +1,17 @@
+{
+  "id": "cranial-adjustment",
+  "name": "Cranial Adjustment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Deft Hands or Trepanation"
+    }
+  ],
+  "benefit": "Manually adjust someone’s skull in order to hypnotize them",
+  "source": {
+    "title": "Occult Origins",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cranial%20Adjustment"
+  }
+}

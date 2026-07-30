@@ -1,0 +1,29 @@
+{
+  "id": "magnum-opus",
+  "name": "Magnum Opus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must either have sold five or more self-created works of art worth a total of at least 5"
+    },
+    {
+      "type": "rule",
+      "description": "000 gp"
+    },
+    {
+      "type": "rule",
+      "description": "have performed at least five performances for audiences of 50 or more while achieving a great performance result or better on your Perform check"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Virtuoso background"
+    }
+  ],
+  "benefit": "Enhance your abilities with Craft and Perform checks",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 70,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Magnum%20Opus"
+  }
+}

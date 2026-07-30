@@ -1,0 +1,33 @@
+{
+  "id": "metallic-wings",
+  "name": "Metallic Wings",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "angelic-blood"
+    },
+    {
+      "type": "feat",
+      "id": "angelic-flesh"
+    },
+    {
+      "type": "feat",
+      "id": "angel-wings"
+    },
+    {
+      "type": "rule",
+      "description": "aasimar"
+    },
+    {
+      "type": "level",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Change your wings to metal and gain wing attacks",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Metallic%20Wings"
+  }
+}

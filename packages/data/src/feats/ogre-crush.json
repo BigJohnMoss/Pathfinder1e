@@ -1,0 +1,34 @@
+{
+  "id": "ogre-crush",
+  "name": "Ogre Crush",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 25
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "ogre"
+    },
+    {
+      "type": "rule",
+      "description": "size Large or larger"
+    }
+  ],
+  "benefit": "Increase unarmed damage while grappling, gain the constrict ability",
+  "source": {
+    "title": "Monster Codex",
+    "page": 153,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ogre%20Crush"
+  }
+}

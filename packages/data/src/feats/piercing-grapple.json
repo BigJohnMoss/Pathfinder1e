@@ -1,0 +1,35 @@
+{
+  "id": "piercing-grapple",
+  "name": "Piercing Grapple",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "quick-draw"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Impale a foe while grappling",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Piercing%20Grapple"
+  }
+}

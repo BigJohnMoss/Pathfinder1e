@@ -1,0 +1,29 @@
+{
+  "id": "standing-tall",
+  "name": "Standing Tall",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Be a member of House Fahlspar"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Hunter"
+    },
+    {
+      "type": "rule",
+      "description": "Nature"
+    },
+    {
+      "type": "rule",
+      "description": "or Tree Tender background"
+    }
+  ],
+  "benefit": "Once per day, gain a +2 bonus to saving throws against mind-affecting effects",
+  "source": {
+    "title": "Pathfinder #131: The Reaper's Right Hand",
+    "page": 77,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Standing%20Tall"
+  }
+}

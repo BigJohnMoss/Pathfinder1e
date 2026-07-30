@@ -1,0 +1,17 @@
+{
+  "id": "virtuous-creed",
+  "name": "Virtuous Creed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must be good"
+    }
+  ],
+  "benefit": "Follow a heavenly virtue to gain unique abilities",
+  "source": {
+    "title": "Champions of Purity",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Virtuous%20Creed"
+  }
+}

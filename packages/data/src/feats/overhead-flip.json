@@ -1,0 +1,34 @@
+{
+  "id": "overhead-flip",
+  "name": "Overhead Flip",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "savage-slam"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 6th"
+    }
+  ],
+  "benefit": "Savage Slam staggers the target",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Overhead%20Flip"
+  }
+}

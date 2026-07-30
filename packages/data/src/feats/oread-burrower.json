@@ -1,0 +1,25 @@
+{
+  "id": "oread-burrower",
+  "name": "Oread Burrower",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stony-step"
+    },
+    {
+      "type": "level",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "oread"
+    }
+  ],
+  "benefit": "Gain a burrow speed",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Oread%20Burrower"
+  }
+}

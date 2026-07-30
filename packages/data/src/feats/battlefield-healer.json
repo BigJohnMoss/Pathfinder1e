@@ -1,0 +1,29 @@
+{
+  "id": "battlefield-healer",
+  "name": "Battlefield Healer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must successfully cast a conjuration (healing) spell on an ally after being hit by an attack of opportunity"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Battle"
+    },
+    {
+      "type": "rule",
+      "description": "Chaplain"
+    },
+    {
+      "type": "rule",
+      "description": "or Healed background"
+    }
+  ],
+  "benefit": "Reduce DC for casting defensively when taking damage",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 67,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Battlefield%20Healer"
+  }
+}

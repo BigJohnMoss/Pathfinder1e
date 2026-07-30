@@ -1,0 +1,41 @@
+{
+  "id": "greater-balor-whip",
+  "name": "Greater Balor Whip",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "balor-whip"
+    },
+    {
+      "type": "feat",
+      "id": "improved-balor-whip"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(whip)"
+    },
+    {
+      "type": "feat",
+      "id": "whip-mastery"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    },
+    {
+      "type": "bab",
+      "minimum": 16
+    }
+  ],
+  "benefit": "Increase your critical threat range when using Improved Balor Whip",
+  "source": {
+    "title": "Villain Codex",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Balor%20Whip"
+  }
+}

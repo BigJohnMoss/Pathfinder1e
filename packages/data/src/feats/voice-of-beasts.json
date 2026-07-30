@@ -1,0 +1,17 @@
+{
+  "id": "voice-of-beasts",
+  "name": "Voice of Beasts",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "Can speak with animals while in wild shape form",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Voice%20of%20Beasts"
+  }
+}

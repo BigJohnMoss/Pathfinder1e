@@ -1,0 +1,22 @@
+{
+  "id": "legalistic-reading",
+  "name": "Legalistic Reading",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "scribe-scroll"
+    },
+    {
+      "type": "skill",
+      "key": "Linguistics",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use a scroll twice before it is consumed",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Legalistic%20Reading"
+  }
+}

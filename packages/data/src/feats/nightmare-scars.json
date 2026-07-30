@@ -1,0 +1,17 @@
+{
+  "id": "nightmare-scars",
+  "name": "Nightmare Scars",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Worshiper of Lamashtu"
+    }
+  ],
+  "benefit": "+2 bonus on Intimidate checks and to affect attitudes of magical beasts, monstrous humanoids, and worshipers of Lamashtu",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 214,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Nightmare%20Scars"
+  }
+}

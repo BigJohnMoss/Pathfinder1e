@@ -1,0 +1,22 @@
+{
+  "id": "spirit-beacon",
+  "name": "Spirit Beacon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Gain bonuses agaisnt one category of spirit",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 169,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Beacon"
+  }
+}

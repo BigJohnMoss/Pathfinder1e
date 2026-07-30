@@ -1,0 +1,46 @@
+{
+  "id": "cloak-and-dagger-subterfuge",
+  "name": "Cloak and Dagger Subterfuge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "cloak-and-dagger-style"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Use dirty tricks as free actions with an attack of opportunity",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cloak%20and%20Dagger%20Subterfuge"
+  }
+}

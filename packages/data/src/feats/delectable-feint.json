@@ -1,0 +1,26 @@
+{
+  "id": "delectable-feint",
+  "name": "Delectable Feint",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "delicious racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "ghoran"
+    }
+  ],
+  "benefit": "Other creatures are distracted by how tasty you appear",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Delectable%20Feint"
+  }
+}

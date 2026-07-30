@@ -1,0 +1,34 @@
+{
+  "id": "improved-wilding-strike",
+  "name": "Improved Wilding Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 16
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "wilding"
+    },
+    {
+      "type": "feat",
+      "id": "wilding-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Your unarmed strike damage increases to 1d8 (or 1d6 if you are Small)",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 114,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Wilding%20Strike"
+  }
+}

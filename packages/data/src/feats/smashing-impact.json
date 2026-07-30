@@ -1,0 +1,34 @@
+{
+  "id": "smashing-impact",
+  "name": "Smashing Impact",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "crushing-impact"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Damage a barrier by bull rushing a creature into it, possibly knocking them through the barrier",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Smashing%20Impact"
+  }
+}

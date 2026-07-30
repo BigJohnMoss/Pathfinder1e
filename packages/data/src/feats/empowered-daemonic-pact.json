@@ -1,0 +1,17 @@
+{
+  "id": "empowered-daemonic-pact",
+  "name": "Empowered Daemonic Pact",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Urdefhan"
+    }
+  ],
+  "benefit": "The blast radius of your daemonic pact increases to 10 ft., +2 to DC",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Empowered%20Daemonic%20Pact"
+  }
+}

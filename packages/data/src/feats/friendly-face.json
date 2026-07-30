@@ -1,0 +1,17 @@
+{
+  "id": "friendly-face",
+  "name": "Friendly Face",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal companion"
+    }
+  ],
+  "benefit": "Animals like you have a better starting attitude towards you and your master",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Friendly%20Face"
+  }
+}

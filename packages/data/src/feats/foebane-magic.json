@@ -1,0 +1,21 @@
+{
+  "id": "foebane-magic",
+  "name": "Foebane Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "1st-level-spells"
+    },
+    {
+      "type": "feature",
+      "id": "favored-enemy"
+    }
+  ],
+  "benefit": "Favore enemies take a penalty against your spells",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 112,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Foebane%20Magic"
+  }
+}

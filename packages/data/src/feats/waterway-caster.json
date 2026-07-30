@@ -1,0 +1,12 @@
+{
+  "id": "waterway-caster",
+  "name": "Waterway Caster",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Automatically succeed at concentration checks while in rough water, and gain a +4 bonus on concentration checks to cast spells underwater",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Waterway%20Caster"
+  }
+}
