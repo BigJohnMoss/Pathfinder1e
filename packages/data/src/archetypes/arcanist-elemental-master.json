@@ -1,0 +1,60 @@
+{
+  "id": "arcanist-elemental-master",
+  "name": "Elemental Master",
+  "classId": "arcanist",
+  "summary": "Arcanists with an affinity for elemental forces sometimes focus on one and display its power in everything they do.",
+  "replacesText": "1st, 3rd, 9th, 11th, and 15th-level Arcanist Exploits",
+  "replacements": [
+    {
+      "featureIds": [
+        "arcanist-exploit-1",
+        "arcanist-exploit-3",
+        "arcanist-exploit-9",
+        "arcanist-exploit-11",
+        "arcanist-exploit-15"
+      ],
+      "features": [
+        {
+          "id": "arcanist-elemental-master-elemental-focus-su-1",
+          "name": "Elemental Focus (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the elemental master must select one element: air, earth, fire, or water. The arcanist can prepare one additional spell per day of each level she can cast, but it must have the elemental descriptor of her chosen element. In addition, any spell she prepares from the opposite elemental school (air opposes earth, fire opposes water) takes up two of her prepared spell slots. This ability replaces the arcanist exploit gained at 1st level."
+        },
+        {
+          "id": "arcanist-elemental-master-elemental-attack-su-3",
+          "name": "Elemental Attack (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the elemental master gains an arcanist exploit tied to her element. If she selected air, she gains the lightning lance arcanist exploit. If she selected earth, she gains the acid jet arcanist exploit. If she selected fire, she gains the flame arc arcanist exploit. If she selected water, she gains the ice missile arcanist exploit. This ability replaces the arcanist exploit gained at 3rd level."
+        },
+        {
+          "id": "arcanist-elemental-master-powerful-exploit-su-9",
+          "name": "Powerful Exploit (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, an elemental master increases the damage done by her elemental attack to 1d8 points of energy damage plus 1d8 points of damage per two arcanist levels she possesses. The type of damage is determined by the elemental attack. In addition, the range for the elemental attack ability increases to 60 feet (in the case of flame arc, a 60-foot line). This ability replaces the arcanist exploit gained at 9th level."
+        },
+        {
+          "id": "arcanist-elemental-master-greater-elemental-attack-su-11",
+          "name": "Greater Elemental Attack (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, the elemental master gains a greater arcanist exploit tied to her element. If she selected air, she gains the dancing electricity arcanist exploit. If she selected earth, she gains the lingering acid arcanist exploit. If she selected fire, she gains the burning flame arcanist exploit. If she selected water, she gains the icy tomb arcanist exploit. This ability replaces the arcanist exploit gained at 11th level."
+        },
+        {
+          "id": "arcanist-elemental-master-elemental-movement-su-15",
+          "name": "Elemental Movement (Su)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, an elemental master gains an elemental movement. This enhancement is based on her chosen element type. Air grants a fly speed of 90 feet (average maneuverability), earth grants a burrow speed of 30 feet, fire grants a increase of 30 feet to base land speed, and water grants a swim speed of 60 feet. This ability replaces the arcanist exploit gained at 15th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Elemental%20Master"
+  }
+}

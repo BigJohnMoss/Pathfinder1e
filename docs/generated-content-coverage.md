@@ -7,7 +7,7 @@ This report is generated from the application's source data by `npm run coverage
 | Area | Records |
 |---|---:|
 | Classes | 23 |
-| Archetypes | 76 |
+| Archetypes | 91 |
 | Ancestries | 7 |
 | Option groups | 43 |
 | Feats | 3447 |
@@ -31,7 +31,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 |---|---:|---:|---:|
 | Arcane Archer | 17 | 10 | 0 |
 | Arcane Trickster | 21 | 10 | 0 |
-| Arcanist | 14 | 20 | 0 |
+| Arcanist | 14 | 20 | 15 |
 | Assassin | 20 | 10 | 0 |
 | Barbarian | 24 | 20 | 9 |
 | Bard | 39 | 20 | 9 |

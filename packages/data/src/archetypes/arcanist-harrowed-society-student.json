@@ -1,0 +1,52 @@
+{
+  "id": "arcanist-harrowed-society-student",
+  "name": "Harrowed Society Student",
+  "classId": "arcanist",
+  "summary": "Based out of Varisia’s Twilight Academy, the secretive Harrowed Society focuses its efforts on the intellectual study of the region’s supernatural quirks and hidden history, and embraces the use of the harrow deck to examine the world’s occult mysteries.",
+  "replacesText": "1st and 9th-level Arcanist Exploits; Consume Spells",
+  "replacements": [
+    {
+      "featureIds": [
+        "arcanist-exploit-1",
+        "arcanist-exploit-9",
+        "consume-spells-1",
+        "arcanist-spellcasting-1"
+      ],
+      "features": [
+        {
+          "id": "arcanist-harrowed-society-student-psychic-reader-ex-1",
+          "name": "Psychic Reader (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Harrowed Society student gains Psychic Sensitivity as a bonus feat and adds Diplomacy, Perception, and Sense Motive to her list of class skills. This ability replaces the 1st-level arcanist exploit."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-harrow-reservoir-ex-8",
+          "name": "Harrow Reservoir (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "Once per day, a Harrowed Society student can perform a harrow reading as a 5-minute ritual. She decides which suit most closely aligns with her task at hand and deals a nine-card spread. Each time that suit appears in her spread, she adds 1 point to her arcane reservoir, to a maximum of 1 point per 2 arcanist levels. Points gained in excess of her reservoir’s maximum are lost. The Harrowed Society student can perform this reading one additional time per day at 8th level and at 16th level. This ability replaces consume spells."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-divine-the-mysteries-ex-5",
+          "name": "Divine the Mysteries (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level and every 2 levels thereafter, a Harrowed Society student can select a divination spell from the spell list of any class, including classes that cast divine or psychic spells, and add it to her list of spells known. This spell must be at least 1 level lower than the highest-level spell she can cast. She casts these spells as arcane spells, using her normal spell slots, but must use a harrow deck as an additional focus component. If such a spell is normally a psychic spell with an emotion or thought component, she must also add that component."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-trump-card-su-9",
+          "name": "Trump Card (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a Harrowed Society student can expend 1 point from her arcane reservoir and draw a card from her harrow deck as a standard action to learn her own fate or that of an ally within 30 feet. The target’s fate depends on the suit of the card drawn from the deck. Books : The target gains a +2 insight bonus on her next caster level check. Crowns : The target gains a +2 insight bonus on her next saving throw. Hammers : The target gains a +4 insight bonus on the damage roll of her next successful melee attack. Keys : The target gains a +4 insight bonus on her next initiative check. Shields : The next time the target receives magical healing, she regains an additional number of hit points equal to the Harrowed Society student’s arcanist class level. Stars : The target gains a +4 insight bonus on her next skill check. A creature cannot have more than one trump card in effect at one time; drawing a new trump card for a target negates the effect of the previous trump card. A Harrow Society student can attempt to read the fate of an enemy within 30 feet, resulting in a penalty for that target equal to the bonus granted above, but the target is entitled to a Will save (DC = 10 + 1/2 the Harrowed Society student’s arcanist level + her Charisma modifier) to negate the effect. This is considered a curse effect. A Harrow Society student can have trump cards in effect for multiple creatures at the same time. This ability replaces the 9th-level arcanist exploit."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Harrowed%20Society%20Student"
+  }
+}

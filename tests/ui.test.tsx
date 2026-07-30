@@ -840,9 +840,13 @@ test("explains class-specific archetype availability", async () => {
   const user = userEvent.setup();
   render(<Home />);
   const archetype = screen.getByLabelText("Archetype") as HTMLSelectElement;
+  assert.equal(archetype.disabled, false);
+  assert.equal([...archetype.options].filter((option) => option.value).length, 15);
+  assert.match(screen.getByText(/class-specific archetypes available/).textContent ?? "", /class-specific archetypes available/);
+  await user.selectOptions(screen.getByLabelText("Class"), "cleric");
   assert.equal(archetype.disabled, true);
-  assert.equal(archetype.options[0]?.textContent, "No Arcanist archetypes available");
-  assert.ok(screen.getByText(/does not yet include archetypes for Arcanist/));
+  assert.equal(archetype.options[0]?.textContent, "No Cleric archetypes available");
+  assert.ok(screen.getByText(/does not yet include archetypes for Cleric/));
   await user.selectOptions(screen.getByLabelText("Class"), "ranger");
   assert.equal(archetype.disabled, false);
   assert.ok(archetype.options.length > 1);

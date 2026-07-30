@@ -103,6 +103,7 @@ export interface CharacterArchetype {
   name: string;
   classId: string;
   summary: string;
+  replacesText?: string;
   replacements: Array<{
     featureIds?: string[];
     progressionKeys?: string[];

@@ -8,14 +8,14 @@ This document distinguishes records present in the data bundle from systems that
 - 7 selectable core ancestries
 - 3,447 selectable feats
 - all 40 APG basic traits
-- all twelve APG Fighter archetypes with complete level 1-20 feature replacements
+- 91 playable archetypes, including all 15 published Arcanist archetypes
 - 2,063 spells
 
 ## Playable classes
 
 | Class | Status | Notes |
 |---|---|---|
-| Arcanist | Playable | Prepared arcane casting, arcane reservoir, and all 40 normal and greater Advanced Class Guide exploits are integrated with level and exploit prerequisites. |
+| Arcanist | Playable | Prepared arcane casting, arcane reservoir, all 40 normal and greater Advanced Class Guide exploits, and all 15 published archetypes are integrated with sourced replacement progressions, level gates and persistence. |
 | Barbarian | Playable | Core progression plus the complete Core and APG rage-power catalogues are integrated, including prerequisites, repeat limits, distinct energy choices, and mutually exclusive totem families. |
 | Bard | Playable | Level 1–20 Core chassis and spell list plus all nine APG archetypes, their replacement progressions, off-list bonus spells, bonded objects, familiars, and persistent performance-round tracking are integrated. |
 | Cleric | Playable Core class | Level 1–20 prepared casting, channel energy, deity-compatible alignment, Core deities and domains, and domain spell slots are integrated. |
@@ -68,7 +68,7 @@ The catalogue contains 3,447 selectable records and covers every one of the 3,44
 | Multiclassing | Complete: arbitrary distinct class entries combine progression, class-specific archetypes and choices, independent spellbooks and resources, feat prerequisites, level-up previews, and save/load restoration |
 | Alternate racial traits | All 50 APG options for the seven Core ancestries are selectable with replacement conflicts, derived-stat recalculation, and persistence |
 | Traits | All 40 APG basic traits are playable with category restrictions, skill choices and class-aware spell choices |
-| Archetypes | All twelve APG Fighter, nine APG Barbarian, nine APG Bard, ten APG Druid, and ten APG Monk archetypes are playable through level 20; Totem Warrior is represented by the complete mutually exclusive totem rage-power families |
+| Archetypes | All 15 Arcanist archetypes plus all twelve APG Fighter, nine APG Barbarian, nine APG Bard, ten APG Druid, and ten APG Monk archetypes are playable through level 20; Totem Warrior is represented by the complete mutually exclusive totem rage-power families |
 
 ## Definition of playable
 
