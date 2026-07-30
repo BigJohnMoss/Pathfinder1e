@@ -10,7 +10,7 @@ This report is generated from the application's source data by `npm run coverage
 | Archetypes | 76 |
 | Ancestries | 7 |
 | Option groups | 43 |
-| Feats | 3448 |
+| Feats | 3447 |
 | Traits | 40 |
 | Spells | 2069 |
 | Equipment | 80 |

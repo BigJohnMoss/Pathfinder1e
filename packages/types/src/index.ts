@@ -183,6 +183,8 @@ export interface CharacterFeat {
   name: string;
   type: string;
   benefit: string;
+  description?: string;
+  rulesSections?: Array<{ label: string; text: string }>;
   prerequisites: Prerequisite[];
   source: SourceRef;
   effects?: {

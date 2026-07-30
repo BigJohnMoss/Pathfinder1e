@@ -1278,9 +1278,9 @@ test("searches the feat catalog and assigns an eligible feat to an open slot", a
   await user.click(screen.getByRole("button", { name: "Choose Human bonus feat" }));
   const search = screen.getByRole("searchbox", { name: "Search feats" });
   await user.type(search, "Toughness");
-  assert.match(screen.getByText(/1 of 3448 feats shown/).textContent ?? "", /1 of 3448/);
+  assert.match(screen.getByText(/1 of 3447 feats shown/).textContent ?? "", /1 of 3447/);
   await user.click(screen.getByText("Toughness", { selector: "summary strong" }));
-  assert.ok(screen.getByText(/Gain 3 hit points/));
+  assert.ok(screen.getByText(/You gain \+3 hit points/));
   await user.click(screen.getByRole("button", { name: "Choose for Human bonus feat" }));
   assert.ok(screen.getByText("Selected", { selector: ".feat-status" }));
   assert.ok(screen.getByText("Toughness", { selector: ".selected-feat-summary > strong" }));

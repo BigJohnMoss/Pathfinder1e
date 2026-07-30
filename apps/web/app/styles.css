@@ -1523,3 +1523,35 @@ main#character-builder-main {
     flex-direction: column;
   }
 }
+
+.feat-description {
+  font-style: italic;
+}
+
+.feat-rules-text {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.feat-rules-text > div {
+  border-left: 3px solid #d8b980;
+  display: grid;
+  gap: 4px;
+  padding-left: 12px;
+}
+
+.feat-rules-text dt {
+  color: #6f2424;
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.feat-rules-text dd {
+  color: #4f493f;
+  line-height: 1.55;
+  margin: 0;
+  white-space: pre-line;
+}
