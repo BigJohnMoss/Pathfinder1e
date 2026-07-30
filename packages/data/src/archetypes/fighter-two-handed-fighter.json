@@ -5,36 +5,129 @@
   "summary": "A heavy-weapon specialist who trades bravery, armor training, and armor mastery for overwhelming Strength and maneuver damage.",
   "replacements": [
     {
-      "progressionKeys": ["bravery"],
+      "progressionKeys": [
+        "bravery"
+      ],
       "features": [
-        {"id":"two-handed-shattering-strike-2","name":"Shattering Strike +1","level":2,"type":"scaling","summary":"Gain +1 to CMB and CMD on sunder attempts and damage rolls against objects.","progressionKey":"two-handed-shattering-strike","scaling":"+1"},
-        {"id":"two-handed-shattering-strike-6","name":"Shattering Strike +2","level":6,"type":"scaling","summary":"Gain +2 to CMB and CMD on sunder attempts and damage rolls against objects.","progressionKey":"two-handed-shattering-strike","scaling":"+2"},
-        {"id":"two-handed-shattering-strike-10","name":"Shattering Strike +3","level":10,"type":"scaling","summary":"Gain +3 to CMB and CMD on sunder attempts and damage rolls against objects.","progressionKey":"two-handed-shattering-strike","scaling":"+3"},
-        {"id":"two-handed-shattering-strike-14","name":"Shattering Strike +4","level":14,"type":"scaling","summary":"Gain +4 to CMB and CMD on sunder attempts and damage rolls against objects.","progressionKey":"two-handed-shattering-strike","scaling":"+4"},
-        {"id":"two-handed-shattering-strike-18","name":"Shattering Strike +5","level":18,"type":"scaling","summary":"Gain +5 to CMB and CMD on sunder attempts and damage rolls against objects.","progressionKey":"two-handed-shattering-strike","scaling":"+5"}
+        {
+          "id": "two-handed-shattering-strike-2",
+          "name": "Shattering Strike +1",
+          "level": 2,
+          "type": "scaling",
+          "summary": "Gain +1 to CMB and CMD on sunder attempts and damage rolls against objects.",
+          "progressionKey": "two-handed-shattering-strike",
+          "scaling": "+1"
+        },
+        {
+          "id": "two-handed-shattering-strike-6",
+          "name": "Shattering Strike +2",
+          "level": 6,
+          "type": "scaling",
+          "summary": "Gain +2 to CMB and CMD on sunder attempts and damage rolls against objects.",
+          "progressionKey": "two-handed-shattering-strike",
+          "scaling": "+2"
+        },
+        {
+          "id": "two-handed-shattering-strike-10",
+          "name": "Shattering Strike +3",
+          "level": 10,
+          "type": "scaling",
+          "summary": "Gain +3 to CMB and CMD on sunder attempts and damage rolls against objects.",
+          "progressionKey": "two-handed-shattering-strike",
+          "scaling": "+3"
+        },
+        {
+          "id": "two-handed-shattering-strike-14",
+          "name": "Shattering Strike +4",
+          "level": 14,
+          "type": "scaling",
+          "summary": "Gain +4 to CMB and CMD on sunder attempts and damage rolls against objects.",
+          "progressionKey": "two-handed-shattering-strike",
+          "scaling": "+4"
+        },
+        {
+          "id": "two-handed-shattering-strike-18",
+          "name": "Shattering Strike +5",
+          "level": 18,
+          "type": "scaling",
+          "summary": "Gain +5 to CMB and CMD on sunder attempts and damage rolls against objects.",
+          "progressionKey": "two-handed-shattering-strike",
+          "scaling": "+5"
+        }
       ]
     },
     {
-      "progressionKeys": ["armor-training"],
+      "progressionKeys": [
+        "armor-training"
+      ],
       "features": [
-        {"id":"two-handed-overhand-chop-3","name":"Overhand Chop","level":3,"type":"core","summary":"On a single attack or charge with a two-handed weapon, add double your Strength bonus to damage."},
-        {"id":"two-handed-backswing-7","name":"Backswing","level":7,"type":"core","summary":"During a full attack with a two-handed weapon, add double your Strength bonus to damage on every attack after the first."},
-        {"id":"two-handed-piledriver-11","name":"Piledriver","level":11,"type":"core","summary":"As a standard action, make one two-handed melee attack; on a hit, make a free bull rush or trip that does not provoke."},
-        {"id":"two-handed-greater-power-attack-15","name":"Greater Power Attack","level":15,"type":"core","summary":"Power Attack's bonus damage with a two-handed melee weapon is doubled instead of increased by half."}
+        {
+          "id": "two-handed-overhand-chop-3",
+          "name": "Overhand Chop",
+          "level": 3,
+          "type": "core",
+          "summary": "On a single attack or charge with a two-handed weapon, add double your Strength bonus to damage."
+        },
+        {
+          "id": "two-handed-backswing-7",
+          "name": "Backswing",
+          "level": 7,
+          "type": "core",
+          "summary": "During a full attack with a two-handed weapon, add double your Strength bonus to damage on every attack after the first."
+        },
+        {
+          "id": "two-handed-piledriver-11",
+          "name": "Piledriver",
+          "level": 11,
+          "type": "core",
+          "summary": "As a standard action, make one two-handed melee attack; on a hit, make a free bull rush or trip that does not provoke."
+        },
+        {
+          "id": "two-handed-greater-power-attack-15",
+          "name": "Greater Power Attack",
+          "level": 15,
+          "type": "core",
+          "summary": "Power Attack's bonus damage with a two-handed melee weapon is doubled instead of increased by half."
+        }
       ]
     },
     {
-      "featureIds": ["armor-mastery-19"],
+      "featureIds": [
+        "armor-mastery-19"
+      ],
       "features": [
-        {"id":"two-handed-devastating-blow-19","name":"Devastating Blow","level":19,"type":"core","summary":"As a standard action, make one two-handed melee attack at -5; a hit is treated as a critical threat."}
+        {
+          "id": "two-handed-devastating-blow-19",
+          "name": "Devastating Blow",
+          "level": 19,
+          "type": "core",
+          "summary": "As a standard action, make one two-handed melee attack at -5; a hit is treated as a critical threat."
+        }
       ]
     }
   ],
   "featureOverrides": [
-    {"featureId":"weapon-training-5","summary":"Gain +1 on attack and damage rolls with two-handed melee weapons."},
-    {"featureId":"weapon-training-9","summary":"Increase the attack and damage bonus with two-handed melee weapons to +2."},
-    {"featureId":"weapon-training-13","summary":"Increase the attack and damage bonus with two-handed melee weapons to +3."},
-    {"featureId":"weapon-training-17","summary":"Increase the attack and damage bonus with two-handed melee weapons to +4."}
+    {
+      "featureId": "weapon-training-5",
+      "summary": "Gain +1 on attack and damage rolls with two-handed melee weapons."
+    },
+    {
+      "featureId": "weapon-training-9",
+      "summary": "Increase the attack and damage bonus with two-handed melee weapons to +2."
+    },
+    {
+      "featureId": "weapon-training-13",
+      "summary": "Increase the attack and damage bonus with two-handed melee weapons to +3."
+    },
+    {
+      "featureId": "weapon-training-17",
+      "summary": "Increase the attack and damage bonus with two-handed melee weapons to +4."
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":109,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#two-handed-fighter"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 109,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#two-handed-fighter"
+  },
+  "mechanicalCoverage": "full"
 }

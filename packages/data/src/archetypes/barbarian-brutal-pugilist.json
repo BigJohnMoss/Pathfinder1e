@@ -1,11 +1,109 @@
-{"id":"barbarian-brutal-pugilist","name":"Brutal Pugilist","classId":"barbarian","summary":"A close-quarters barbarian trained to dominate grapples and specialize in combat maneuvers.","replacements":[
-{"featureIds":["uncanny-dodge-2"],"features":[{"id":"brutal-pugilist-savage-grapple-2","name":"Savage Grapple","level":2,"type":"core","summary":"Halve grappled-condition penalties and threaten creatures attempting to grapple you; a successful attack of opportunity grants +2 CMD against that attempt."}]},
-{"progressionKeys":["trap-sense"],"features":[
-{"id":"brutal-pugilist-pit-fighter-3","name":"Pit Fighter","level":3,"type":"selectable","summary":"Choose a combat maneuver and gain a +1 insight bonus on either CMB or CMD for it; +2 while unarmored.","choiceRequired":true,"optionGroupId":"brutal-pugilist-maneuvers","progressionKey":"brutal-pugilist-pit-fighter"},
-{"id":"brutal-pugilist-pit-fighter-6","name":"Pit Fighter","level":6,"type":"selectable","summary":"Choose another combat maneuver CMB or CMD specialization.","choiceRequired":true,"optionGroupId":"brutal-pugilist-maneuvers","progressionKey":"brutal-pugilist-pit-fighter"},
-{"id":"brutal-pugilist-pit-fighter-9","name":"Pit Fighter","level":9,"type":"selectable","summary":"Choose another combat maneuver CMB or CMD specialization.","choiceRequired":true,"optionGroupId":"brutal-pugilist-maneuvers","progressionKey":"brutal-pugilist-pit-fighter"},
-{"id":"brutal-pugilist-pit-fighter-12","name":"Pit Fighter","level":12,"type":"selectable","summary":"Choose another combat maneuver CMB or CMD specialization.","choiceRequired":true,"optionGroupId":"brutal-pugilist-maneuvers","progressionKey":"brutal-pugilist-pit-fighter"},
-{"id":"brutal-pugilist-pit-fighter-15","name":"Pit Fighter","level":15,"type":"selectable","summary":"Choose another combat maneuver CMB or CMD specialization.","choiceRequired":true,"optionGroupId":"brutal-pugilist-maneuvers","progressionKey":"brutal-pugilist-pit-fighter"},
-{"id":"brutal-pugilist-pit-fighter-18","name":"Pit Fighter","level":18,"type":"selectable","summary":"Choose another combat maneuver CMB or CMD specialization.","choiceRequired":true,"optionGroupId":"brutal-pugilist-maneuvers","progressionKey":"brutal-pugilist-pit-fighter"}]},
-{"featureIds":["improved-uncanny-dodge-5"],"features":[{"id":"brutal-pugilist-improved-savage-grapple-5","name":"Improved Savage Grapple","level":5,"type":"core","summary":"Take no grappled-condition penalties and count as one size larger against grab and swallow whole."}]}],
-"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"}}
+{
+  "id": "barbarian-brutal-pugilist",
+  "name": "Brutal Pugilist",
+  "classId": "barbarian",
+  "summary": "A close-quarters barbarian trained to dominate grapples and specialize in combat maneuvers.",
+  "replacements": [
+    {
+      "featureIds": [
+        "uncanny-dodge-2"
+      ],
+      "features": [
+        {
+          "id": "brutal-pugilist-savage-grapple-2",
+          "name": "Savage Grapple",
+          "level": 2,
+          "type": "core",
+          "summary": "Halve grappled-condition penalties and threaten creatures attempting to grapple you; a successful attack of opportunity grants +2 CMD against that attempt."
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "trap-sense"
+      ],
+      "features": [
+        {
+          "id": "brutal-pugilist-pit-fighter-3",
+          "name": "Pit Fighter",
+          "level": 3,
+          "type": "selectable",
+          "summary": "Choose a combat maneuver and gain a +1 insight bonus on either CMB or CMD for it; +2 while unarmored.",
+          "choiceRequired": true,
+          "optionGroupId": "brutal-pugilist-maneuvers",
+          "progressionKey": "brutal-pugilist-pit-fighter"
+        },
+        {
+          "id": "brutal-pugilist-pit-fighter-6",
+          "name": "Pit Fighter",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver CMB or CMD specialization.",
+          "choiceRequired": true,
+          "optionGroupId": "brutal-pugilist-maneuvers",
+          "progressionKey": "brutal-pugilist-pit-fighter"
+        },
+        {
+          "id": "brutal-pugilist-pit-fighter-9",
+          "name": "Pit Fighter",
+          "level": 9,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver CMB or CMD specialization.",
+          "choiceRequired": true,
+          "optionGroupId": "brutal-pugilist-maneuvers",
+          "progressionKey": "brutal-pugilist-pit-fighter"
+        },
+        {
+          "id": "brutal-pugilist-pit-fighter-12",
+          "name": "Pit Fighter",
+          "level": 12,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver CMB or CMD specialization.",
+          "choiceRequired": true,
+          "optionGroupId": "brutal-pugilist-maneuvers",
+          "progressionKey": "brutal-pugilist-pit-fighter"
+        },
+        {
+          "id": "brutal-pugilist-pit-fighter-15",
+          "name": "Pit Fighter",
+          "level": 15,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver CMB or CMD specialization.",
+          "choiceRequired": true,
+          "optionGroupId": "brutal-pugilist-maneuvers",
+          "progressionKey": "brutal-pugilist-pit-fighter"
+        },
+        {
+          "id": "brutal-pugilist-pit-fighter-18",
+          "name": "Pit Fighter",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose another combat maneuver CMB or CMD specialization.",
+          "choiceRequired": true,
+          "optionGroupId": "brutal-pugilist-maneuvers",
+          "progressionKey": "brutal-pugilist-pit-fighter"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "improved-uncanny-dodge-5"
+      ],
+      "features": [
+        {
+          "id": "brutal-pugilist-improved-savage-grapple-5",
+          "name": "Improved Savage Grapple",
+          "level": 5,
+          "type": "core",
+          "summary": "Take no grappled-condition penalties and count as one size larger against grab and swallow whole."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  },
+  "mechanicalCoverage": "full"
+}

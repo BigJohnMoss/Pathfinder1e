@@ -5,24 +5,168 @@
   "summary": "A guardian of rivers, lakes, and oceans who adapts to aquatic terrain and the crushing deep.",
   "wildShapeLevelAdjustment": -2,
   "featureOverrides": [
-    {"featureId":"druid-wild-empathy-1","summary":"Influence creatures with a swim speed or the aquatic or water subtype, including mindless creatures with Intelligence 2 or less."}
+    {
+      "featureId": "druid-wild-empathy-1",
+      "summary": "Influence creatures with a swim speed or the aquatic or water subtype, including mindless creatures with Intelligence 2 or less."
+    }
   ],
   "replacements": [
-    {"featureIds":["druid-woodland-stride-2"],"features":[{"id":"aquatic-druid-adaptation-2","name":"Aquatic Adaptation","level":2,"type":"scaling","summary":"In aquatic terrain, add half Druid level to initiative and key exploration skills and leave no trail.","scaling":"half Druid level"}]},
-    {"featureIds":["druid-trackless-step-3"],"features":[{"id":"aquatic-druid-natural-swimmer-3","name":"Natural Swimmer","level":3,"type":"core","summary":"Gain a swim speed equal to half your land speed."}]},
-    {"featureIds":["druid-resist-natures-lure-4"],"features":[{"id":"aquatic-druid-resist-oceans-fury-4","name":"Resist Ocean's Fury","level":4,"type":"core","summary":"Gain +4 on saves against water spells and abilities of aquatic or water creatures."}]},
-    {"progressionKeys":["druid-wild-shape"],"features":[
-      {"id":"aquatic-druid-wild-shape-6","name":"Wild Shape","level":6,"type":"scaling","summary":"Gain Wild Shape using an effective Druid level two lower.","scaling":"1 use per day; effective Druid level -2","uses":"1 per day"},
-      {"id":"aquatic-druid-wild-shape-8","name":"Wild Shape","level":8,"type":"scaling","summary":"Gain a second daily use and forms available to a 6th-level Druid.","scaling":"2 uses","uses":"2 per day"},
-      {"id":"aquatic-druid-wild-shape-10","name":"Wild Shape","level":10,"type":"scaling","summary":"Gain a third daily use and forms available to an 8th-level Druid.","scaling":"3 uses","uses":"3 per day"},
-      {"id":"aquatic-druid-wild-shape-12","name":"Wild Shape","level":12,"type":"scaling","summary":"Gain a fourth daily use and forms available to a 10th-level Druid.","scaling":"4 uses","uses":"4 per day"},
-      {"id":"aquatic-druid-wild-shape-14","name":"Wild Shape","level":14,"type":"scaling","summary":"Gain a fifth daily use and forms available to a 12th-level Druid.","scaling":"5 uses","uses":"5 per day"},
-      {"id":"aquatic-druid-wild-shape-16","name":"Wild Shape","level":16,"type":"scaling","summary":"Gain a sixth daily use.","scaling":"6 uses","uses":"6 per day"},
-      {"id":"aquatic-druid-wild-shape-18","name":"Wild Shape","level":18,"type":"scaling","summary":"Gain a seventh daily use.","scaling":"7 uses","uses":"7 per day"},
-      {"id":"aquatic-druid-wild-shape-20","name":"Wild Shape","level":20,"type":"scaling","summary":"Gain an eighth daily use; the reduced effective level does not reach at-will Wild Shape.","scaling":"8 uses","uses":"8 per day"}
-    ]},
-    {"featureIds":["druid-venom-immunity-9"],"features":[{"id":"aquatic-druid-seaborn-9","name":"Seaborn","level":9,"type":"core","summary":"Gain the aquatic subtype, amphibious trait, a full land-speed swim speed, and protection from cold climates."}]},
-    {"featureIds":["druid-thousand-faces-13"],"features":[{"id":"aquatic-druid-deep-diver-13","name":"Deep Diver","level":13,"type":"scaling","summary":"Gain DR against slashing, piercing, grappling, and crushing damage and ignore deep-water pressure.","scaling":"DR equal to half Druid level"}]}
+    {
+      "featureIds": [
+        "druid-woodland-stride-2"
+      ],
+      "features": [
+        {
+          "id": "aquatic-druid-adaptation-2",
+          "name": "Aquatic Adaptation",
+          "level": 2,
+          "type": "scaling",
+          "summary": "In aquatic terrain, add half Druid level to initiative and key exploration skills and leave no trail.",
+          "scaling": "half Druid level"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-trackless-step-3"
+      ],
+      "features": [
+        {
+          "id": "aquatic-druid-natural-swimmer-3",
+          "name": "Natural Swimmer",
+          "level": 3,
+          "type": "core",
+          "summary": "Gain a swim speed equal to half your land speed."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-resist-natures-lure-4"
+      ],
+      "features": [
+        {
+          "id": "aquatic-druid-resist-oceans-fury-4",
+          "name": "Resist Ocean's Fury",
+          "level": 4,
+          "type": "core",
+          "summary": "Gain +4 on saves against water spells and abilities of aquatic or water creatures."
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "druid-wild-shape"
+      ],
+      "features": [
+        {
+          "id": "aquatic-druid-wild-shape-6",
+          "name": "Wild Shape",
+          "level": 6,
+          "type": "scaling",
+          "summary": "Gain Wild Shape using an effective Druid level two lower.",
+          "scaling": "1 use per day; effective Druid level -2",
+          "uses": "1 per day"
+        },
+        {
+          "id": "aquatic-druid-wild-shape-8",
+          "name": "Wild Shape",
+          "level": 8,
+          "type": "scaling",
+          "summary": "Gain a second daily use and forms available to a 6th-level Druid.",
+          "scaling": "2 uses",
+          "uses": "2 per day"
+        },
+        {
+          "id": "aquatic-druid-wild-shape-10",
+          "name": "Wild Shape",
+          "level": 10,
+          "type": "scaling",
+          "summary": "Gain a third daily use and forms available to an 8th-level Druid.",
+          "scaling": "3 uses",
+          "uses": "3 per day"
+        },
+        {
+          "id": "aquatic-druid-wild-shape-12",
+          "name": "Wild Shape",
+          "level": 12,
+          "type": "scaling",
+          "summary": "Gain a fourth daily use and forms available to a 10th-level Druid.",
+          "scaling": "4 uses",
+          "uses": "4 per day"
+        },
+        {
+          "id": "aquatic-druid-wild-shape-14",
+          "name": "Wild Shape",
+          "level": 14,
+          "type": "scaling",
+          "summary": "Gain a fifth daily use and forms available to a 12th-level Druid.",
+          "scaling": "5 uses",
+          "uses": "5 per day"
+        },
+        {
+          "id": "aquatic-druid-wild-shape-16",
+          "name": "Wild Shape",
+          "level": 16,
+          "type": "scaling",
+          "summary": "Gain a sixth daily use.",
+          "scaling": "6 uses",
+          "uses": "6 per day"
+        },
+        {
+          "id": "aquatic-druid-wild-shape-18",
+          "name": "Wild Shape",
+          "level": 18,
+          "type": "scaling",
+          "summary": "Gain a seventh daily use.",
+          "scaling": "7 uses",
+          "uses": "7 per day"
+        },
+        {
+          "id": "aquatic-druid-wild-shape-20",
+          "name": "Wild Shape",
+          "level": 20,
+          "type": "scaling",
+          "summary": "Gain an eighth daily use; the reduced effective level does not reach at-will Wild Shape.",
+          "scaling": "8 uses",
+          "uses": "8 per day"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-venom-immunity-9"
+      ],
+      "features": [
+        {
+          "id": "aquatic-druid-seaborn-9",
+          "name": "Seaborn",
+          "level": 9,
+          "type": "core",
+          "summary": "Gain the aquatic subtype, amphibious trait, a full land-speed swim speed, and protection from cold climates."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-thousand-faces-13"
+      ],
+      "features": [
+        {
+          "id": "aquatic-druid-deep-diver-13",
+          "name": "Deep Diver",
+          "level": 13,
+          "type": "scaling",
+          "summary": "Gain DR against slashing, piercing, grappling, and crushing damage and ignore deep-water pressure.",
+          "scaling": "DR equal to half Druid level"
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"
+  },
+  "mechanicalCoverage": "full"
 }

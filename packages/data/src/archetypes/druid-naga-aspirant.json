@@ -65,5 +65,12 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Naga%20Aspirant"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "manualRequirements": [
+    "Restricted to Nagaji characters; that ancestry is not yet available in this builder."
+  ]
 }

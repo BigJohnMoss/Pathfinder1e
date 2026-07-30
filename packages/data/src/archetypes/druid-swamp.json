@@ -1,14 +1,73 @@
 {
-  "id":"druid-swamp",
-  "name":"Swamp Druid",
-  "classId":"druid",
-  "summary":"A marshland guardian who crosses bogs freely, resists disease and swarms, and ultimately becomes impossible to restrain.",
-  "wildShapeLevelAdjustment":-2,
-  "replacements":[
-    {"featureIds":["druid-woodland-stride-2"],"features":[{"id":"swamp-druid-marshwight-2","name":"Marshwight","level":2,"type":"scaling","summary":"In swamp terrain, add half Druid level to initiative, Swim, and key exploration skills and leave no trail.","scaling":"half Druid level"}]},
-    {"featureIds":["druid-trackless-step-3"],"features":[{"id":"swamp-druid-strider-3","name":"Swamp Strider","level":3,"type":"core","summary":"Ignore movement, Acrobatics, and Stealth penalties in bogs and undergrowth."}]},
-    {"featureIds":["druid-resist-natures-lure-4"],"features":[{"id":"swamp-druid-pond-scum-4","name":"Pond Scum","level":4,"type":"scaling","summary":"Gain +4 against disease and monstrous-humanoid abilities, plus DR against swarms that also blocks their special attacks.","scaling":"swarm DR equal to half Druid level"}]},
-    {"featureIds":["druid-thousand-faces-13"],"features":[{"id":"swamp-druid-slippery-13","name":"Slippery","level":13,"type":"core","summary":"Gain continuous freedom of movement."}]}
+  "id": "druid-swamp",
+  "name": "Swamp Druid",
+  "classId": "druid",
+  "summary": "A marshland guardian who crosses bogs freely, resists disease and swarms, and ultimately becomes impossible to restrain.",
+  "wildShapeLevelAdjustment": -2,
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-woodland-stride-2"
+      ],
+      "features": [
+        {
+          "id": "swamp-druid-marshwight-2",
+          "name": "Marshwight",
+          "level": 2,
+          "type": "scaling",
+          "summary": "In swamp terrain, add half Druid level to initiative, Swim, and key exploration skills and leave no trail.",
+          "scaling": "half Druid level"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-trackless-step-3"
+      ],
+      "features": [
+        {
+          "id": "swamp-druid-strider-3",
+          "name": "Swamp Strider",
+          "level": 3,
+          "type": "core",
+          "summary": "Ignore movement, Acrobatics, and Stealth penalties in bogs and undergrowth."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-resist-natures-lure-4"
+      ],
+      "features": [
+        {
+          "id": "swamp-druid-pond-scum-4",
+          "name": "Pond Scum",
+          "level": 4,
+          "type": "scaling",
+          "summary": "Gain +4 against disease and monstrous-humanoid abilities, plus DR against swarms that also blocks their special attacks.",
+          "scaling": "swarm DR equal to half Druid level"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-thousand-faces-13"
+      ],
+      "features": [
+        {
+          "id": "swamp-druid-slippery-13",
+          "name": "Slippery",
+          "level": 13,
+          "type": "core",
+          "summary": "Gain continuous freedom of movement."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"
+  },
+  "mechanicalCoverage": "full"
 }

@@ -5,33 +5,129 @@
   "summary": "A crossbow specialist who trades armor and weapon training for readied-shot precision, fast sniping, and penetrating bolts.",
   "replacements": [
     {
-      "progressionKeys": ["armor-training"],
+      "progressionKeys": [
+        "armor-training"
+      ],
       "features": [
-        {"id":"crossbowman-deadshot-3","name":"Deadshot","level":3,"type":"core","summary":"When you attack with a crossbow as a readied action, add half your Dexterity bonus (minimum +1) to damage."},
-        {"id":"crossbowman-improved-deadshot-7","name":"Improved Deadshot","level":7,"type":"core","summary":"A target of your readied crossbow attack is denied its Dexterity bonus to AC."},
-        {"id":"crossbowman-greater-deadshot-11","name":"Greater Deadshot","level":11,"type":"core","summary":"When you attack with a crossbow as a readied action, add your full Dexterity bonus (minimum +1) to damage."},
-        {"id":"crossbowman-pinpoint-targeting-15","name":"Pinpoint Targeting","level":15,"type":"bonus-feat","summary":"Gain Pinpoint Targeting as a bonus feat."}
+        {
+          "id": "crossbowman-deadshot-3",
+          "name": "Deadshot",
+          "level": 3,
+          "type": "core",
+          "summary": "When you attack with a crossbow as a readied action, add half your Dexterity bonus (minimum +1) to damage."
+        },
+        {
+          "id": "crossbowman-improved-deadshot-7",
+          "name": "Improved Deadshot",
+          "level": 7,
+          "type": "core",
+          "summary": "A target of your readied crossbow attack is denied its Dexterity bonus to AC."
+        },
+        {
+          "id": "crossbowman-greater-deadshot-11",
+          "name": "Greater Deadshot",
+          "level": 11,
+          "type": "core",
+          "summary": "When you attack with a crossbow as a readied action, add your full Dexterity bonus (minimum +1) to damage."
+        },
+        {
+          "id": "crossbowman-pinpoint-targeting-15",
+          "name": "Pinpoint Targeting",
+          "level": 15,
+          "type": "bonus-feat",
+          "summary": "Gain Pinpoint Targeting as a bonus feat."
+        }
       ]
     },
     {
-      "progressionKeys": ["weapon-training"],
+      "progressionKeys": [
+        "weapon-training"
+      ],
       "features": [
-        {"id":"crossbowman-expert-5","name":"Crossbow Expert +1","level":5,"type":"scaling","summary":"Gain +1 on attack and damage rolls with crossbows.","progressionKey":"crossbowman-expert","scaling":"+1"},
-        {"id":"crossbowman-quick-sniper-9","name":"Quick Sniper","level":9,"type":"core","summary":"Add half your fighter level to Stealth checks when sniping. When hit by a ranged attack, you can immediately shoot a loaded crossbow at the attacker."},
-        {"id":"crossbowman-expert-9","name":"Crossbow Expert +2","level":9,"type":"scaling","summary":"Gain +2 on attack and damage rolls with crossbows.","progressionKey":"crossbowman-expert","scaling":"+2"},
-        {"id":"crossbowman-safe-shot-13","name":"Safe Shot","level":13,"type":"core","summary":"Crossbow ranged attacks no longer provoke attacks of opportunity."},
-        {"id":"crossbowman-expert-13","name":"Crossbow Expert +3","level":13,"type":"scaling","summary":"Gain +3 on attack and damage rolls with crossbows.","progressionKey":"crossbowman-expert","scaling":"+3"},
-        {"id":"crossbowman-meteor-shot-17","name":"Meteor Shot","level":17,"type":"core","summary":"As a standard action, make a crossbow attack at -4; on a hit, also attempt a bull rush or trip using the attack roll as the combat maneuver check."},
-        {"id":"crossbowman-expert-17","name":"Crossbow Expert +4","level":17,"type":"scaling","summary":"Gain +4 on attack and damage rolls with crossbows.","progressionKey":"crossbowman-expert","scaling":"+4"}
+        {
+          "id": "crossbowman-expert-5",
+          "name": "Crossbow Expert +1",
+          "level": 5,
+          "type": "scaling",
+          "summary": "Gain +1 on attack and damage rolls with crossbows.",
+          "progressionKey": "crossbowman-expert",
+          "scaling": "+1"
+        },
+        {
+          "id": "crossbowman-quick-sniper-9",
+          "name": "Quick Sniper",
+          "level": 9,
+          "type": "core",
+          "summary": "Add half your fighter level to Stealth checks when sniping. When hit by a ranged attack, you can immediately shoot a loaded crossbow at the attacker."
+        },
+        {
+          "id": "crossbowman-expert-9",
+          "name": "Crossbow Expert +2",
+          "level": 9,
+          "type": "scaling",
+          "summary": "Gain +2 on attack and damage rolls with crossbows.",
+          "progressionKey": "crossbowman-expert",
+          "scaling": "+2"
+        },
+        {
+          "id": "crossbowman-safe-shot-13",
+          "name": "Safe Shot",
+          "level": 13,
+          "type": "core",
+          "summary": "Crossbow ranged attacks no longer provoke attacks of opportunity."
+        },
+        {
+          "id": "crossbowman-expert-13",
+          "name": "Crossbow Expert +3",
+          "level": 13,
+          "type": "scaling",
+          "summary": "Gain +3 on attack and damage rolls with crossbows.",
+          "progressionKey": "crossbowman-expert",
+          "scaling": "+3"
+        },
+        {
+          "id": "crossbowman-meteor-shot-17",
+          "name": "Meteor Shot",
+          "level": 17,
+          "type": "core",
+          "summary": "As a standard action, make a crossbow attack at -4; on a hit, also attempt a bull rush or trip using the attack roll as the combat maneuver check."
+        },
+        {
+          "id": "crossbowman-expert-17",
+          "name": "Crossbow Expert +4",
+          "level": 17,
+          "type": "scaling",
+          "summary": "Gain +4 on attack and damage rolls with crossbows.",
+          "progressionKey": "crossbowman-expert",
+          "scaling": "+4"
+        }
       ]
     },
     {
-      "featureIds": ["armor-mastery-19"],
+      "featureIds": [
+        "armor-mastery-19"
+      ],
       "features": [
-        {"id":"crossbowman-penetrating-shot-19","name":"Penetrating Shot","level":19,"type":"core","summary":"A confirmed crossbow critical can pierce the target and attack additional creatures in line, with a cumulative -4 penalty per secondary attack."}
+        {
+          "id": "crossbowman-penetrating-shot-19",
+          "name": "Penetrating Shot",
+          "level": 19,
+          "type": "core",
+          "summary": "A confirmed crossbow critical can pierce the target and attack additional creatures in line, with a cumulative -4 penalty per secondary attack."
+        }
       ]
     }
   ],
-  "featureOverrides": [{"featureId":"weapon-mastery-20","summary":"Master one type of crossbow and improve its critical performance."}],
-  "source":{"title":"Advanced Player's Guide","page":104,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#crossbowman"}
+  "featureOverrides": [
+    {
+      "featureId": "weapon-mastery-20",
+      "summary": "Master one type of crossbow and improve its critical performance."
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 104,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#crossbowman"
+  },
+  "mechanicalCoverage": "full"
 }

@@ -48,5 +48,12 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Oracle%20Reincarnated%20Oracle"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "manualRequirements": [
+    "Restricted to Samsaran characters; that ancestry is not yet available in this builder."
+  ]
 }

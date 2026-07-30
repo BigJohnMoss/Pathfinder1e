@@ -5,39 +5,197 @@
   "summary": "A bow specialist who exchanges bravery, armor training, weapon training, and armor mastery for ranged mastery.",
   "replacements": [
     {
-      "progressionKeys": ["bravery"],
+      "progressionKeys": [
+        "bravery"
+      ],
       "features": [
-        {"id":"archer-hawkeye-2","name":"Hawkeye +1","level":2,"type":"scaling","summary":"Gain +1 Perception and increase bow range increments by 5 feet.","progressionKey":"archer-hawkeye","scaling":"+1 / +5 ft."},
-        {"id":"archer-hawkeye-6","name":"Hawkeye +2","level":6,"type":"scaling","summary":"Gain +2 Perception and increase bow range increments by 10 feet.","progressionKey":"archer-hawkeye","scaling":"+2 / +10 ft."},
-        {"id":"archer-hawkeye-10","name":"Hawkeye +3","level":10,"type":"scaling","summary":"Gain +3 Perception and increase bow range increments by 15 feet.","progressionKey":"archer-hawkeye","scaling":"+3 / +15 ft."},
-        {"id":"archer-hawkeye-14","name":"Hawkeye +4","level":14,"type":"scaling","summary":"Gain +4 Perception and increase bow range increments by 20 feet.","progressionKey":"archer-hawkeye","scaling":"+4 / +20 ft."},
-        {"id":"archer-hawkeye-18","name":"Hawkeye +5","level":18,"type":"scaling","summary":"Gain +5 Perception and increase bow range increments by 25 feet.","progressionKey":"archer-hawkeye","scaling":"+5 / +25 ft."}
+        {
+          "id": "archer-hawkeye-2",
+          "name": "Hawkeye +1",
+          "level": 2,
+          "type": "scaling",
+          "summary": "Gain +1 Perception and increase bow range increments by 5 feet.",
+          "progressionKey": "archer-hawkeye",
+          "scaling": "+1 / +5 ft."
+        },
+        {
+          "id": "archer-hawkeye-6",
+          "name": "Hawkeye +2",
+          "level": 6,
+          "type": "scaling",
+          "summary": "Gain +2 Perception and increase bow range increments by 10 feet.",
+          "progressionKey": "archer-hawkeye",
+          "scaling": "+2 / +10 ft."
+        },
+        {
+          "id": "archer-hawkeye-10",
+          "name": "Hawkeye +3",
+          "level": 10,
+          "type": "scaling",
+          "summary": "Gain +3 Perception and increase bow range increments by 15 feet.",
+          "progressionKey": "archer-hawkeye",
+          "scaling": "+3 / +15 ft."
+        },
+        {
+          "id": "archer-hawkeye-14",
+          "name": "Hawkeye +4",
+          "level": 14,
+          "type": "scaling",
+          "summary": "Gain +4 Perception and increase bow range increments by 20 feet.",
+          "progressionKey": "archer-hawkeye",
+          "scaling": "+4 / +20 ft."
+        },
+        {
+          "id": "archer-hawkeye-18",
+          "name": "Hawkeye +5",
+          "level": 18,
+          "type": "scaling",
+          "summary": "Gain +5 Perception and increase bow range increments by 25 feet.",
+          "progressionKey": "archer-hawkeye",
+          "scaling": "+5 / +25 ft."
+        }
       ]
     },
     {
-      "progressionKeys": ["armor-training"],
+      "progressionKeys": [
+        "armor-training"
+      ],
       "features": [
-        {"id":"archer-trick-shot-3","name":"Trick Shot","level":3,"type":"scaling","summary":"Use a bow within 30 feet to disarm, feint, or sunder at a -4 CMB penalty.","progressionKey":"archer-trick-shot","scaling":"1 trick"},
-        {"id":"archer-trick-shot-7","name":"Trick Shot","level":7,"type":"scaling","summary":"Learn a second ranged trick shot.","progressionKey":"archer-trick-shot","scaling":"2 tricks"},
-        {"id":"archer-trick-shot-11","name":"Greater Trick Shot","level":11,"type":"scaling","summary":"Learn a third trick; bull rush, grapple, and trip become available.","progressionKey":"archer-trick-shot","scaling":"3 tricks"},
-        {"id":"archer-trick-shot-15","name":"Trick Shot","level":15,"type":"scaling","summary":"Learn a fourth ranged trick shot.","progressionKey":"archer-trick-shot","scaling":"4 tricks"}
+        {
+          "id": "archer-trick-shot-3",
+          "name": "Trick Shot",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Use a bow within 30 feet to disarm, feint, or sunder at a -4 CMB penalty.",
+          "progressionKey": "archer-trick-shot",
+          "scaling": "1 trick"
+        },
+        {
+          "id": "archer-trick-shot-7",
+          "name": "Trick Shot",
+          "level": 7,
+          "type": "scaling",
+          "summary": "Learn a second ranged trick shot.",
+          "progressionKey": "archer-trick-shot",
+          "scaling": "2 tricks"
+        },
+        {
+          "id": "archer-trick-shot-11",
+          "name": "Greater Trick Shot",
+          "level": 11,
+          "type": "scaling",
+          "summary": "Learn a third trick; bull rush, grapple, and trip become available.",
+          "progressionKey": "archer-trick-shot",
+          "scaling": "3 tricks"
+        },
+        {
+          "id": "archer-trick-shot-15",
+          "name": "Trick Shot",
+          "level": 15,
+          "type": "scaling",
+          "summary": "Learn a fourth ranged trick shot.",
+          "progressionKey": "archer-trick-shot",
+          "scaling": "4 tricks"
+        }
       ]
     },
     {
-      "featureIds": ["weapon-training-5","weapon-training-9","weapon-training-13","weapon-training-17","armor-mastery-19"],
+      "featureIds": [
+        "weapon-training-5",
+        "weapon-training-9",
+        "weapon-training-13",
+        "weapon-training-17",
+        "armor-mastery-19"
+      ],
       "features": [
-        {"id":"archer-expert-5","name":"Expert Archer +1","level":5,"type":"scaling","summary":"Gain +1 on attack and damage rolls with bows.","progressionKey":"archer-expert","scaling":"+1"},
-        {"id":"archer-safe-shot-9","name":"Safe Shot","level":9,"type":"core","summary":"Bow ranged attacks no longer provoke attacks of opportunity."},
-        {"id":"archer-expert-9","name":"Expert Archer +2","level":9,"type":"scaling","summary":"Gain +2 on attack and damage rolls with bows.","progressionKey":"archer-expert","scaling":"+2"},
-        {"id":"archer-evasive-13","name":"Evasive Archer +2","level":13,"type":"scaling","summary":"Gain +2 dodge AC against ranged attacks.","progressionKey":"archer-evasive","scaling":"+2"},
-        {"id":"archer-expert-13","name":"Expert Archer +3","level":13,"type":"scaling","summary":"Gain +3 on attack and damage rolls with bows.","progressionKey":"archer-expert","scaling":"+3"},
-        {"id":"archer-volley-17","name":"Volley","level":17,"type":"core","summary":"As a full-round action, make one bow attack against every creature in a 15-foot-radius burst."},
-        {"id":"archer-evasive-17","name":"Evasive Archer +4","level":17,"type":"scaling","summary":"Gain +4 dodge AC against ranged attacks.","progressionKey":"archer-evasive","scaling":"+4"},
-        {"id":"archer-expert-17","name":"Expert Archer +4","level":17,"type":"scaling","summary":"Gain +4 on attack and damage rolls with bows.","progressionKey":"archer-expert","scaling":"+4"},
-        {"id":"archer-ranged-defense-19","name":"Ranged Defense","level":19,"type":"core","summary":"Gain DR 5/- against ranged attacks and catch and return arrows as an immediate action."}
+        {
+          "id": "archer-expert-5",
+          "name": "Expert Archer +1",
+          "level": 5,
+          "type": "scaling",
+          "summary": "Gain +1 on attack and damage rolls with bows.",
+          "progressionKey": "archer-expert",
+          "scaling": "+1"
+        },
+        {
+          "id": "archer-safe-shot-9",
+          "name": "Safe Shot",
+          "level": 9,
+          "type": "core",
+          "summary": "Bow ranged attacks no longer provoke attacks of opportunity."
+        },
+        {
+          "id": "archer-expert-9",
+          "name": "Expert Archer +2",
+          "level": 9,
+          "type": "scaling",
+          "summary": "Gain +2 on attack and damage rolls with bows.",
+          "progressionKey": "archer-expert",
+          "scaling": "+2"
+        },
+        {
+          "id": "archer-evasive-13",
+          "name": "Evasive Archer +2",
+          "level": 13,
+          "type": "scaling",
+          "summary": "Gain +2 dodge AC against ranged attacks.",
+          "progressionKey": "archer-evasive",
+          "scaling": "+2"
+        },
+        {
+          "id": "archer-expert-13",
+          "name": "Expert Archer +3",
+          "level": 13,
+          "type": "scaling",
+          "summary": "Gain +3 on attack and damage rolls with bows.",
+          "progressionKey": "archer-expert",
+          "scaling": "+3"
+        },
+        {
+          "id": "archer-volley-17",
+          "name": "Volley",
+          "level": 17,
+          "type": "core",
+          "summary": "As a full-round action, make one bow attack against every creature in a 15-foot-radius burst."
+        },
+        {
+          "id": "archer-evasive-17",
+          "name": "Evasive Archer +4",
+          "level": 17,
+          "type": "scaling",
+          "summary": "Gain +4 dodge AC against ranged attacks.",
+          "progressionKey": "archer-evasive",
+          "scaling": "+4"
+        },
+        {
+          "id": "archer-expert-17",
+          "name": "Expert Archer +4",
+          "level": 17,
+          "type": "scaling",
+          "summary": "Gain +4 on attack and damage rolls with bows.",
+          "progressionKey": "archer-expert",
+          "scaling": "+4"
+        },
+        {
+          "id": "archer-ranged-defense-19",
+          "name": "Ranged Defense",
+          "level": 19,
+          "type": "core",
+          "summary": "Gain DR 5/- against ranged attacks and catch and return arrows as an immediate action."
+        }
       ]
     }
   ],
-  "featureOverrides": [{"featureId":"weapon-mastery-20","summary":"Master one type of bow and improve its critical performance."}],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html"}
+  "featureOverrides": [
+    {
+      "featureId": "weapon-mastery-20",
+      "summary": "Master one type of bow and improve its critical performance."
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html"
+  },
+  "mechanicalCoverage": "full"
 }

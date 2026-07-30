@@ -1,22 +1,144 @@
 {
-  "id":"fighter-savage-warrior","name":"Savage Warrior","classId":"fighter",
-  "summary":"A natural-weapon specialist who channels fang, claw, horn, and hoof into devastating charges and resilient attacks.",
-  "replacements":[
-    {"progressionKeys":["bravery"],"features":[
-      {"id":"savage-spark-life-2","name":"Spark of Life +1","level":2,"type":"scaling","summary":"Gain +1 on saves against energy drain and death effects.","progressionKey":"savage-spark-life","scaling":"+1"},
-      {"id":"savage-spark-life-6","name":"Spark of Life +2","level":6,"type":"scaling","summary":"Increase Spark of Life to +2.","progressionKey":"savage-spark-life","scaling":"+2"},
-      {"id":"savage-spark-life-10","name":"Spark of Life +3","level":10,"type":"scaling","summary":"Increase Spark of Life to +3.","progressionKey":"savage-spark-life","scaling":"+3"},
-      {"id":"savage-spark-life-14","name":"Spark of Life +4","level":14,"type":"scaling","summary":"Increase Spark of Life to +4.","progressionKey":"savage-spark-life","scaling":"+4"},
-      {"id":"savage-spark-life-18","name":"Spark of Life +5","level":18,"type":"scaling","summary":"Increase Spark of Life to +5.","progressionKey":"savage-spark-life","scaling":"+5"}]},
-    {"progressionKeys":["weapon-training"],"features":[
-      {"id":"savage-natural-savagery-5","name":"Natural Savagery +1","level":5,"type":"scaling","summary":"Gain +1 on natural-weapon attack and damage rolls and grapple CMB and CMD.","progressionKey":"savage-natural-savagery","scaling":"+1"},
-      {"id":"savage-charge-9","name":"Savage Charge","level":9,"type":"core","summary":"On a natural-weapon charge, replace the normal modifiers with an attack and applicable maneuver bonus equal to half fighter level and an equal AC penalty."},
-      {"id":"savage-natural-savagery-9","name":"Natural Savagery +2","level":9,"type":"scaling","summary":"Increase Natural Savagery to +2.","progressionKey":"savage-natural-savagery","scaling":"+2"},
-      {"id":"savage-careful-claw-13","name":"Careful Claw","level":13,"type":"core","summary":"Reduce retaliatory damage from fire shield and similar effects by half your fighter level when attacking with natural weapons."},
-      {"id":"savage-natural-savagery-13","name":"Natural Savagery +3","level":13,"type":"scaling","summary":"Increase Natural Savagery to +3.","progressionKey":"savage-natural-savagery","scaling":"+3"},
-      {"id":"savage-greater-charge-17","name":"Greater Savage Charge","level":17,"type":"core","summary":"Reduce Savage Charge's AC penalty to one-quarter fighter level and charge through allies and difficult terrain."},
-      {"id":"savage-natural-savagery-17","name":"Natural Savagery +4","level":17,"type":"scaling","summary":"Increase Natural Savagery to +4.","progressionKey":"savage-natural-savagery","scaling":"+4"}]},
-    {"featureIds":["weapon-mastery-20"],"features":[{"id":"savage-natural-mastery-20","name":"Natural Weapon Mastery","level":20,"type":"capstone","summary":"Choose one natural weapon as your mastered weapon and improve its critical performance."}]}
+  "id": "fighter-savage-warrior",
+  "name": "Savage Warrior",
+  "classId": "fighter",
+  "summary": "A natural-weapon specialist who channels fang, claw, horn, and hoof into devastating charges and resilient attacks.",
+  "replacements": [
+    {
+      "progressionKeys": [
+        "bravery"
+      ],
+      "features": [
+        {
+          "id": "savage-spark-life-2",
+          "name": "Spark of Life +1",
+          "level": 2,
+          "type": "scaling",
+          "summary": "Gain +1 on saves against energy drain and death effects.",
+          "progressionKey": "savage-spark-life",
+          "scaling": "+1"
+        },
+        {
+          "id": "savage-spark-life-6",
+          "name": "Spark of Life +2",
+          "level": 6,
+          "type": "scaling",
+          "summary": "Increase Spark of Life to +2.",
+          "progressionKey": "savage-spark-life",
+          "scaling": "+2"
+        },
+        {
+          "id": "savage-spark-life-10",
+          "name": "Spark of Life +3",
+          "level": 10,
+          "type": "scaling",
+          "summary": "Increase Spark of Life to +3.",
+          "progressionKey": "savage-spark-life",
+          "scaling": "+3"
+        },
+        {
+          "id": "savage-spark-life-14",
+          "name": "Spark of Life +4",
+          "level": 14,
+          "type": "scaling",
+          "summary": "Increase Spark of Life to +4.",
+          "progressionKey": "savage-spark-life",
+          "scaling": "+4"
+        },
+        {
+          "id": "savage-spark-life-18",
+          "name": "Spark of Life +5",
+          "level": 18,
+          "type": "scaling",
+          "summary": "Increase Spark of Life to +5.",
+          "progressionKey": "savage-spark-life",
+          "scaling": "+5"
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "weapon-training"
+      ],
+      "features": [
+        {
+          "id": "savage-natural-savagery-5",
+          "name": "Natural Savagery +1",
+          "level": 5,
+          "type": "scaling",
+          "summary": "Gain +1 on natural-weapon attack and damage rolls and grapple CMB and CMD.",
+          "progressionKey": "savage-natural-savagery",
+          "scaling": "+1"
+        },
+        {
+          "id": "savage-charge-9",
+          "name": "Savage Charge",
+          "level": 9,
+          "type": "core",
+          "summary": "On a natural-weapon charge, replace the normal modifiers with an attack and applicable maneuver bonus equal to half fighter level and an equal AC penalty."
+        },
+        {
+          "id": "savage-natural-savagery-9",
+          "name": "Natural Savagery +2",
+          "level": 9,
+          "type": "scaling",
+          "summary": "Increase Natural Savagery to +2.",
+          "progressionKey": "savage-natural-savagery",
+          "scaling": "+2"
+        },
+        {
+          "id": "savage-careful-claw-13",
+          "name": "Careful Claw",
+          "level": 13,
+          "type": "core",
+          "summary": "Reduce retaliatory damage from fire shield and similar effects by half your fighter level when attacking with natural weapons."
+        },
+        {
+          "id": "savage-natural-savagery-13",
+          "name": "Natural Savagery +3",
+          "level": 13,
+          "type": "scaling",
+          "summary": "Increase Natural Savagery to +3.",
+          "progressionKey": "savage-natural-savagery",
+          "scaling": "+3"
+        },
+        {
+          "id": "savage-greater-charge-17",
+          "name": "Greater Savage Charge",
+          "level": 17,
+          "type": "core",
+          "summary": "Reduce Savage Charge's AC penalty to one-quarter fighter level and charge through allies and difficult terrain."
+        },
+        {
+          "id": "savage-natural-savagery-17",
+          "name": "Natural Savagery +4",
+          "level": 17,
+          "type": "scaling",
+          "summary": "Increase Natural Savagery to +4.",
+          "progressionKey": "savage-natural-savagery",
+          "scaling": "+4"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "savage-natural-mastery-20",
+          "name": "Natural Weapon Mastery",
+          "level": 20,
+          "type": "capstone",
+          "summary": "Choose one natural weapon as your mastered weapon and improve its critical performance."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":108,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#savage-warrior"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 108,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#savage-warrior"
+  },
+  "mechanicalCoverage": "full"
 }

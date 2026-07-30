@@ -1,13 +1,74 @@
 {
-  "id":"monk-lotus",
-  "name":"Monk of the Lotus",
-  "classId":"monk",
-  "summary":"A peaceful master who replaces lethal vibrations and supernatural travel with serenity, surrender, lasting peace, and learned wisdom.",
-  "replacements":[
-    {"featureIds":["monk-stunning-fist-1"],"features":[{"id":"lotus-touch-of-serenity-1","name":"Touch of Serenity","level":1,"type":"bonus-feat","summary":"Gain Touch of Serenity without meeting its prerequisites; its duration increases at 6th, 12th, and 18th level.","grantedFeatId":"touch-of-serenity","scaling":"1 round; +1 round every 6 levels"}]},
-    {"featureIds":["monk-abundant-step-12"],"features":[{"id":"lotus-touch-of-surrender-12","name":"Touch of Surrender","level":12,"type":"core","summary":"When a melee attack would reduce a creature to 0 hit points, spend 6 ki to leave it disabled and charmed without a save.","uses":"6 ki"}]},
-    {"featureIds":["monk-quivering-palm-15"],"features":[{"id":"lotus-touch-of-peace-15","name":"Touch of Peace","level":15,"type":"core","summary":"Once per day, make a harmless melee touch that charms the target for 1 day per Monk level without a save.","uses":"once per day"}]},
-    {"featureIds":["monk-tongue-of-sun-and-moon-17"],"features":[{"id":"lotus-learned-master-17","name":"Learned Master","level":17,"type":"core","summary":"All Knowledge skills and Linguistics become class skills and use Wisdom instead of Intelligence."}]}
+  "id": "monk-lotus",
+  "name": "Monk of the Lotus",
+  "classId": "monk",
+  "summary": "A peaceful master who replaces lethal vibrations and supernatural travel with serenity, surrender, lasting peace, and learned wisdom.",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-stunning-fist-1"
+      ],
+      "features": [
+        {
+          "id": "lotus-touch-of-serenity-1",
+          "name": "Touch of Serenity",
+          "level": 1,
+          "type": "bonus-feat",
+          "summary": "Gain Touch of Serenity without meeting its prerequisites; its duration increases at 6th, 12th, and 18th level.",
+          "grantedFeatId": "touch-of-serenity",
+          "scaling": "1 round; +1 round every 6 levels"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-abundant-step-12"
+      ],
+      "features": [
+        {
+          "id": "lotus-touch-of-surrender-12",
+          "name": "Touch of Surrender",
+          "level": 12,
+          "type": "core",
+          "summary": "When a melee attack would reduce a creature to 0 hit points, spend 6 ki to leave it disabled and charmed without a save.",
+          "uses": "6 ki"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-quivering-palm-15"
+      ],
+      "features": [
+        {
+          "id": "lotus-touch-of-peace-15",
+          "name": "Touch of Peace",
+          "level": 15,
+          "type": "core",
+          "summary": "Once per day, make a harmless melee touch that charms the target for 1 day per Monk level without a save.",
+          "uses": "once per day"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-tongue-of-sun-and-moon-17"
+      ],
+      "features": [
+        {
+          "id": "lotus-learned-master-17",
+          "name": "Learned Master",
+          "level": 17,
+          "type": "core",
+          "summary": "All Knowledge skills and Linguistics become class skills and use Wisdom instead of Intelligence."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"
+  },
+  "mechanicalCoverage": "full"
 }

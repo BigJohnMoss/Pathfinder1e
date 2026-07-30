@@ -1,20 +1,103 @@
 {
-  "id":"ranger-skirmisher",
-  "name":"Skirmisher",
-  "classId":"ranger",
-  "summary":"A spell-less Ranger who replaces divine magic with a growing repertoire of practical hunter's tricks.",
-  "removesSpellcasting":true,
-  "replacements":[
-    {"progressionKeys":["ranger-spellcasting"],"features":[
-      {"id":"skirmisher-hunter-trick-5","name":"Hunter's Trick 1","level":5,"type":"selectable","summary":"Choose a hunter's trick.","choiceRequired":true,"optionGroupId":"ranger-hunter-tricks","progressionKey":"skirmisher-hunter-tricks","uses":"shared pool: half Ranger level + Wisdom modifier/day"},
-      {"id":"skirmisher-hunter-trick-7","name":"Hunter's Trick 2","level":7,"type":"selectable","summary":"Choose another hunter's trick.","choiceRequired":true,"optionGroupId":"ranger-hunter-tricks","progressionKey":"skirmisher-hunter-tricks"},
-      {"id":"skirmisher-hunter-trick-9","name":"Hunter's Trick 3","level":9,"type":"selectable","summary":"Choose another hunter's trick.","choiceRequired":true,"optionGroupId":"ranger-hunter-tricks","progressionKey":"skirmisher-hunter-tricks"},
-      {"id":"skirmisher-hunter-trick-11","name":"Hunter's Trick 4","level":11,"type":"selectable","summary":"Choose another hunter's trick.","choiceRequired":true,"optionGroupId":"ranger-hunter-tricks","progressionKey":"skirmisher-hunter-tricks"},
-      {"id":"skirmisher-hunter-trick-13","name":"Hunter's Trick 5","level":13,"type":"selectable","summary":"Choose another hunter's trick.","choiceRequired":true,"optionGroupId":"ranger-hunter-tricks","progressionKey":"skirmisher-hunter-tricks"},
-      {"id":"skirmisher-hunter-trick-15","name":"Hunter's Trick 6","level":15,"type":"selectable","summary":"Choose another hunter's trick.","choiceRequired":true,"optionGroupId":"ranger-hunter-tricks","progressionKey":"skirmisher-hunter-tricks"},
-      {"id":"skirmisher-hunter-trick-17","name":"Hunter's Trick 7","level":17,"type":"selectable","summary":"Choose another hunter's trick.","choiceRequired":true,"optionGroupId":"ranger-hunter-tricks","progressionKey":"skirmisher-hunter-tricks"},
-      {"id":"skirmisher-hunter-trick-19","name":"Hunter's Trick 8","level":19,"type":"selectable","summary":"Choose another hunter's trick.","choiceRequired":true,"optionGroupId":"ranger-hunter-tricks","progressionKey":"skirmisher-hunter-tricks"}
-    ]}
+  "id": "ranger-skirmisher",
+  "name": "Skirmisher",
+  "classId": "ranger",
+  "summary": "A spell-less Ranger who replaces divine magic with a growing repertoire of practical hunter's tricks.",
+  "removesSpellcasting": true,
+  "replacements": [
+    {
+      "progressionKeys": [
+        "ranger-spellcasting"
+      ],
+      "features": [
+        {
+          "id": "skirmisher-hunter-trick-5",
+          "name": "Hunter's Trick 1",
+          "level": 5,
+          "type": "selectable",
+          "summary": "Choose a hunter's trick.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-hunter-tricks",
+          "progressionKey": "skirmisher-hunter-tricks",
+          "uses": "shared pool: half Ranger level + Wisdom modifier/day"
+        },
+        {
+          "id": "skirmisher-hunter-trick-7",
+          "name": "Hunter's Trick 2",
+          "level": 7,
+          "type": "selectable",
+          "summary": "Choose another hunter's trick.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-hunter-tricks",
+          "progressionKey": "skirmisher-hunter-tricks"
+        },
+        {
+          "id": "skirmisher-hunter-trick-9",
+          "name": "Hunter's Trick 3",
+          "level": 9,
+          "type": "selectable",
+          "summary": "Choose another hunter's trick.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-hunter-tricks",
+          "progressionKey": "skirmisher-hunter-tricks"
+        },
+        {
+          "id": "skirmisher-hunter-trick-11",
+          "name": "Hunter's Trick 4",
+          "level": 11,
+          "type": "selectable",
+          "summary": "Choose another hunter's trick.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-hunter-tricks",
+          "progressionKey": "skirmisher-hunter-tricks"
+        },
+        {
+          "id": "skirmisher-hunter-trick-13",
+          "name": "Hunter's Trick 5",
+          "level": 13,
+          "type": "selectable",
+          "summary": "Choose another hunter's trick.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-hunter-tricks",
+          "progressionKey": "skirmisher-hunter-tricks"
+        },
+        {
+          "id": "skirmisher-hunter-trick-15",
+          "name": "Hunter's Trick 6",
+          "level": 15,
+          "type": "selectable",
+          "summary": "Choose another hunter's trick.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-hunter-tricks",
+          "progressionKey": "skirmisher-hunter-tricks"
+        },
+        {
+          "id": "skirmisher-hunter-trick-17",
+          "name": "Hunter's Trick 7",
+          "level": 17,
+          "type": "selectable",
+          "summary": "Choose another hunter's trick.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-hunter-tricks",
+          "progressionKey": "skirmisher-hunter-tricks"
+        },
+        {
+          "id": "skirmisher-hunter-trick-19",
+          "name": "Hunter's Trick 8",
+          "level": 19,
+          "type": "selectable",
+          "summary": "Choose another hunter's trick.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-hunter-tricks",
+          "progressionKey": "skirmisher-hunter-tricks"
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"
+  },
+  "mechanicalCoverage": "full"
 }

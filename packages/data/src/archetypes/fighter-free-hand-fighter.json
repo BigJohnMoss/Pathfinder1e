@@ -1,25 +1,171 @@
 {
-  "id":"fighter-free-hand-fighter","name":"Free Hand Fighter","classId":"fighter",
-  "summary":"A one-handed weapon specialist who keeps the other hand free to deceive, unbalance, and redirect opponents.",
-  "replacements":[
-    {"progressionKeys":["bravery"],"features":[
-      {"id":"free-hand-deceptive-strike-2","name":"Deceptive Strike +1","level":2,"type":"scaling","summary":"Gain +1 to CMB and CMD on disarm checks and Bluff checks to feint or create a diversion.","progressionKey":"free-hand-deceptive-strike","scaling":"+1"},
-      {"id":"free-hand-deceptive-strike-6","name":"Deceptive Strike +2","level":6,"type":"scaling","summary":"Increase Deceptive Strike to +2.","progressionKey":"free-hand-deceptive-strike","scaling":"+2"},
-      {"id":"free-hand-deceptive-strike-10","name":"Deceptive Strike +3","level":10,"type":"scaling","summary":"Increase Deceptive Strike to +3.","progressionKey":"free-hand-deceptive-strike","scaling":"+3"},
-      {"id":"free-hand-deceptive-strike-14","name":"Deceptive Strike +4","level":14,"type":"scaling","summary":"Increase Deceptive Strike to +4.","progressionKey":"free-hand-deceptive-strike","scaling":"+4"},
-      {"id":"free-hand-deceptive-strike-18","name":"Deceptive Strike +5","level":18,"type":"scaling","summary":"Increase Deceptive Strike to +5.","progressionKey":"free-hand-deceptive-strike","scaling":"+5"}]},
-    {"progressionKeys":["armor-training"],"features":[
-      {"id":"free-hand-elusive-3","name":"Elusive +1","level":3,"type":"scaling","summary":"Gain +1 dodge AC while in light or no armor, carrying no more than a light load, and keeping one hand free.","progressionKey":"free-hand-elusive","scaling":"+1"},
-      {"id":"free-hand-elusive-7","name":"Elusive +2","level":7,"type":"scaling","summary":"Increase Elusive to +2.","progressionKey":"free-hand-elusive","scaling":"+2"},
-      {"id":"free-hand-elusive-11","name":"Elusive +3","level":11,"type":"scaling","summary":"Increase Elusive to +3.","progressionKey":"free-hand-elusive","scaling":"+3"},
-      {"id":"free-hand-elusive-15","name":"Elusive +4","level":15,"type":"scaling","summary":"Increase Elusive to +4.","progressionKey":"free-hand-elusive","scaling":"+4"}]},
-    {"progressionKeys":["weapon-training"],"features":[
-      {"id":"free-hand-singleton-5","name":"Singleton +1","level":5,"type":"scaling","summary":"Gain +1 on attack and damage rolls with a one-handed melee weapon while the other hand is free.","progressionKey":"free-hand-singleton","scaling":"+1"},
-      {"id":"free-hand-timely-tip-9","name":"Timely Tip","level":9,"type":"core","summary":"As a move action, disarm a threatened target to suppress its shield bonus against your next attack."},
-      {"id":"free-hand-singleton-11","name":"Singleton +2","level":11,"type":"scaling","summary":"Increase Singleton to +2.","progressionKey":"free-hand-singleton","scaling":"+2"},
-      {"id":"free-hand-interference-13","name":"Interference","level":13,"type":"core","summary":"As a move action, disarm or trip a threatened target to make it flat-footed until struck or your next turn."},
-      {"id":"free-hand-singleton-17","name":"Singleton +3","level":17,"type":"scaling","summary":"Increase Singleton to +3.","progressionKey":"free-hand-singleton","scaling":"+3"}]},
-    {"featureIds":["armor-mastery-19"],"features":[{"id":"free-hand-reversal-19","name":"Reversal","level":19,"type":"core","summary":"When targeted by a melee attack, immediately disarm a threatened creature to redirect the attack to it."}]}
+  "id": "fighter-free-hand-fighter",
+  "name": "Free Hand Fighter",
+  "classId": "fighter",
+  "summary": "A one-handed weapon specialist who keeps the other hand free to deceive, unbalance, and redirect opponents.",
+  "replacements": [
+    {
+      "progressionKeys": [
+        "bravery"
+      ],
+      "features": [
+        {
+          "id": "free-hand-deceptive-strike-2",
+          "name": "Deceptive Strike +1",
+          "level": 2,
+          "type": "scaling",
+          "summary": "Gain +1 to CMB and CMD on disarm checks and Bluff checks to feint or create a diversion.",
+          "progressionKey": "free-hand-deceptive-strike",
+          "scaling": "+1"
+        },
+        {
+          "id": "free-hand-deceptive-strike-6",
+          "name": "Deceptive Strike +2",
+          "level": 6,
+          "type": "scaling",
+          "summary": "Increase Deceptive Strike to +2.",
+          "progressionKey": "free-hand-deceptive-strike",
+          "scaling": "+2"
+        },
+        {
+          "id": "free-hand-deceptive-strike-10",
+          "name": "Deceptive Strike +3",
+          "level": 10,
+          "type": "scaling",
+          "summary": "Increase Deceptive Strike to +3.",
+          "progressionKey": "free-hand-deceptive-strike",
+          "scaling": "+3"
+        },
+        {
+          "id": "free-hand-deceptive-strike-14",
+          "name": "Deceptive Strike +4",
+          "level": 14,
+          "type": "scaling",
+          "summary": "Increase Deceptive Strike to +4.",
+          "progressionKey": "free-hand-deceptive-strike",
+          "scaling": "+4"
+        },
+        {
+          "id": "free-hand-deceptive-strike-18",
+          "name": "Deceptive Strike +5",
+          "level": 18,
+          "type": "scaling",
+          "summary": "Increase Deceptive Strike to +5.",
+          "progressionKey": "free-hand-deceptive-strike",
+          "scaling": "+5"
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "armor-training"
+      ],
+      "features": [
+        {
+          "id": "free-hand-elusive-3",
+          "name": "Elusive +1",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Gain +1 dodge AC while in light or no armor, carrying no more than a light load, and keeping one hand free.",
+          "progressionKey": "free-hand-elusive",
+          "scaling": "+1"
+        },
+        {
+          "id": "free-hand-elusive-7",
+          "name": "Elusive +2",
+          "level": 7,
+          "type": "scaling",
+          "summary": "Increase Elusive to +2.",
+          "progressionKey": "free-hand-elusive",
+          "scaling": "+2"
+        },
+        {
+          "id": "free-hand-elusive-11",
+          "name": "Elusive +3",
+          "level": 11,
+          "type": "scaling",
+          "summary": "Increase Elusive to +3.",
+          "progressionKey": "free-hand-elusive",
+          "scaling": "+3"
+        },
+        {
+          "id": "free-hand-elusive-15",
+          "name": "Elusive +4",
+          "level": 15,
+          "type": "scaling",
+          "summary": "Increase Elusive to +4.",
+          "progressionKey": "free-hand-elusive",
+          "scaling": "+4"
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "weapon-training"
+      ],
+      "features": [
+        {
+          "id": "free-hand-singleton-5",
+          "name": "Singleton +1",
+          "level": 5,
+          "type": "scaling",
+          "summary": "Gain +1 on attack and damage rolls with a one-handed melee weapon while the other hand is free.",
+          "progressionKey": "free-hand-singleton",
+          "scaling": "+1"
+        },
+        {
+          "id": "free-hand-timely-tip-9",
+          "name": "Timely Tip",
+          "level": 9,
+          "type": "core",
+          "summary": "As a move action, disarm a threatened target to suppress its shield bonus against your next attack."
+        },
+        {
+          "id": "free-hand-singleton-11",
+          "name": "Singleton +2",
+          "level": 11,
+          "type": "scaling",
+          "summary": "Increase Singleton to +2.",
+          "progressionKey": "free-hand-singleton",
+          "scaling": "+2"
+        },
+        {
+          "id": "free-hand-interference-13",
+          "name": "Interference",
+          "level": 13,
+          "type": "core",
+          "summary": "As a move action, disarm or trip a threatened target to make it flat-footed until struck or your next turn."
+        },
+        {
+          "id": "free-hand-singleton-17",
+          "name": "Singleton +3",
+          "level": 17,
+          "type": "scaling",
+          "summary": "Increase Singleton to +3.",
+          "progressionKey": "free-hand-singleton",
+          "scaling": "+3"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "armor-mastery-19"
+      ],
+      "features": [
+        {
+          "id": "free-hand-reversal-19",
+          "name": "Reversal",
+          "level": 19,
+          "type": "core",
+          "summary": "When targeted by a melee attack, immediately disarm a threatened creature to redirect the attack to it."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":105,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#free-hand-fighter"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": 105,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/fighter.html#free-hand-fighter"
+  },
+  "mechanicalCoverage": "full"
 }

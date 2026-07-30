@@ -1,26 +1,94 @@
 {
-  "id":"ranger-urban-ranger",
-  "name":"Urban Ranger",
-  "classId":"ranger",
-  "summary":"A city hunter who treats streets and settlements as favored ground, finds traps, and disappears into a crowd.",
-  "classSkillAdditions":["Disable Device","Knowledge (local)"],
-  "classSkillRemovals":["Handle Animal","Knowledge (nature)"],
-  "replacements":[
-    {"progressionKeys":["ranger-favored-terrain"],"features":[
-      {"id":"urban-ranger-favored-community-3","name":"Favored Community","level":3,"type":"scaling","summary":"Choose a settlement and gain +2 initiative and bonuses on Knowledge (local), Perception, Stealth, and Survival there.","scaling":"one additional community at 8th and every 5 levels; increase one bonus by +2 each time"}
-    ]},
-    {"featureIds":["ranger-endurance-3"],"features":[
-      {"id":"urban-ranger-trapfinding-3","name":"Trapfinding","level":3,"type":"core","summary":"Add half Ranger level to Perception checks to find traps and Disable Device checks, and disarm magical traps."}
-    ]},
-    {"featureIds":["ranger-woodland-stride-7"],"features":[
-      {"id":"urban-ranger-push-through-7","name":"Push Through","level":7,"type":"core","summary":"Ignore difficult terrain and move through harmless citizens in favored communities."}
-    ]},
-    {"featureIds":["ranger-camouflage-12"],"features":[
-      {"id":"urban-ranger-blend-in-12","name":"Blend In","level":12,"type":"core","summary":"Use Stealth in place of Disguise to vanish among citizens of a favored community."}
-    ]},
-    {"featureIds":["ranger-hide-in-plain-sight-17"],"features":[
-      {"id":"urban-ranger-invisibility-trick-17","name":"Invisibility Trick","level":17,"type":"core","summary":"Cast greater invisibility on yourself as a swift action at a caster level equal to Ranger level.","uses":"Wisdom modifier/day, minimum 1"}
-    ]}
+  "id": "ranger-urban-ranger",
+  "name": "Urban Ranger",
+  "classId": "ranger",
+  "summary": "A city hunter who treats streets and settlements as favored ground, finds traps, and disappears into a crowd.",
+  "classSkillAdditions": [
+    "Disable Device",
+    "Knowledge (local)"
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}
+  "classSkillRemovals": [
+    "Handle Animal",
+    "Knowledge (nature)"
+  ],
+  "replacements": [
+    {
+      "progressionKeys": [
+        "ranger-favored-terrain"
+      ],
+      "features": [
+        {
+          "id": "urban-ranger-favored-community-3",
+          "name": "Favored Community",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Choose a settlement and gain +2 initiative and bonuses on Knowledge (local), Perception, Stealth, and Survival there.",
+          "scaling": "one additional community at 8th and every 5 levels; increase one bonus by +2 each time"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "ranger-endurance-3"
+      ],
+      "features": [
+        {
+          "id": "urban-ranger-trapfinding-3",
+          "name": "Trapfinding",
+          "level": 3,
+          "type": "core",
+          "summary": "Add half Ranger level to Perception checks to find traps and Disable Device checks, and disarm magical traps."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "ranger-woodland-stride-7"
+      ],
+      "features": [
+        {
+          "id": "urban-ranger-push-through-7",
+          "name": "Push Through",
+          "level": 7,
+          "type": "core",
+          "summary": "Ignore difficult terrain and move through harmless citizens in favored communities."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "ranger-camouflage-12"
+      ],
+      "features": [
+        {
+          "id": "urban-ranger-blend-in-12",
+          "name": "Blend In",
+          "level": 12,
+          "type": "core",
+          "summary": "Use Stealth in place of Disguise to vanish among citizens of a favored community."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "ranger-hide-in-plain-sight-17"
+      ],
+      "features": [
+        {
+          "id": "urban-ranger-invisibility-trick-17",
+          "name": "Invisibility Trick",
+          "level": 17,
+          "type": "core",
+          "summary": "Cast greater invisibility on yourself as a swift action at a caster level equal to Ranger level.",
+          "uses": "Wisdom modifier/day, minimum 1"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"
+  },
+  "mechanicalCoverage": "full"
 }

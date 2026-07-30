@@ -89,5 +89,15 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Foehammer"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "requirements": [
+    {
+      "type": "ancestry",
+      "id": "dwarf"
+    }
+  ]
 }

@@ -56,5 +56,12 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Monk%20Nimble%20Guardian"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "manualRequirements": [
+    "Restricted to Catfolk characters; that ancestry is not yet available in this builder."
+  ]
 }

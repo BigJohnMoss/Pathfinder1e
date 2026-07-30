@@ -1,1 +1,43 @@
-{"id":"rogue-sniper","name":"Sniper","classId":"rogue","summary":"A hidden ranged killer who ignores much of long-range inaccuracy and extends sneak attack distance.","replacements":[{"featureIds":["trapfinding-1"],"features":[{"id":"sniper-accuracy-1","name":"Accuracy","level":1,"type":"core","summary":"Halve range-increment penalties with bows and crossbows."}]},{"progressionKeys":["rogue-trap-sense"],"features":[{"id":"sniper-deadly-range-3","name":"Deadly Range","level":3,"type":"scaling","summary":"Increase the maximum range for ranged sneak attacks by 10 feet.","scaling":"+10 feet every 3 levels"}]}],"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"}}
+{
+  "id": "rogue-sniper",
+  "name": "Sniper",
+  "classId": "rogue",
+  "summary": "A hidden ranged killer who ignores much of long-range inaccuracy and extends sneak attack distance.",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1"
+      ],
+      "features": [
+        {
+          "id": "sniper-accuracy-1",
+          "name": "Accuracy",
+          "level": 1,
+          "type": "core",
+          "summary": "Halve range-increment penalties with bows and crossbows."
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "rogue-trap-sense"
+      ],
+      "features": [
+        {
+          "id": "sniper-deadly-range-3",
+          "name": "Deadly Range",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Increase the maximum range for ranged sneak attacks by 10 feet.",
+          "scaling": "+10 feet every 3 levels"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"
+  },
+  "mechanicalCoverage": "full"
+}

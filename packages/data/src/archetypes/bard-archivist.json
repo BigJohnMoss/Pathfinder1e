@@ -5,7 +5,9 @@
   "summary": "A scholarly bard who turns exhaustive study into tactical insight, magical expertise, and reliable predictions.",
   "replacements": [
     {
-      "progressionKeys": ["bard-inspire-courage"],
+      "progressionKeys": [
+        "bard-inspire-courage"
+      ],
       "features": [
         {
           "id": "archivist-naturalist-1",
@@ -20,7 +22,9 @@
       ]
     },
     {
-      "featureIds": ["bard-suggestion-6"],
+      "featureIds": [
+        "bard-suggestion-6"
+      ],
       "features": [
         {
           "id": "archivist-lamentable-belaborment-6",
@@ -33,7 +37,9 @@
       ]
     },
     {
-      "featureIds": ["bard-mass-suggestion-18"],
+      "featureIds": [
+        "bard-mass-suggestion-18"
+      ],
       "features": [
         {
           "id": "archivist-pedantic-lecture-18",
@@ -46,7 +52,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-versatile-performance"],
+      "progressionKeys": [
+        "bard-versatile-performance"
+      ],
       "features": [
         {
           "id": "archivist-lore-master-2",
@@ -60,7 +68,9 @@
       ]
     },
     {
-      "featureIds": ["bard-well-versed-2"],
+      "featureIds": [
+        "bard-well-versed-2"
+      ],
       "features": [
         {
           "id": "archivist-magic-lore-2",
@@ -73,7 +83,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-lore-master"],
+      "progressionKeys": [
+        "bard-lore-master"
+      ],
       "features": [
         {
           "id": "archivist-jack-of-all-trades-5",
@@ -102,7 +114,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-jack-of-all-trades"],
+      "progressionKeys": [
+        "bard-jack-of-all-trades"
+      ],
       "features": [
         {
           "id": "archivist-probable-path-10",
@@ -120,5 +134,6 @@
     "title": "Advanced Player's Guide",
     "page": null,
     "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
-  }
+  },
+  "mechanicalCoverage": "full"
 }

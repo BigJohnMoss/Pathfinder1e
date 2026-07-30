@@ -1,1 +1,43 @@
-{"id":"rogue-thug","name":"Thug","classId":"rogue","summary":"A brutal intimidator who prolongs fear and turns sneak attacks into sickening beatings.","replacements":[{"featureIds":["trapfinding-1"],"features":[{"id":"thug-frightening-1","name":"Frightening","level":1,"type":"core","summary":"Extend demoralize by 1 round and optionally turn 4 or more shaken rounds into 1 frightened round."}]},{"progressionKeys":["rogue-trap-sense"],"features":[{"id":"thug-brutal-beating-3","name":"Brutal Beating","level":3,"type":"scaling","summary":"Forgo 1d6 sneak attack damage to sicken the target.","scaling":"half Rogue level rounds"}]}],"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"}}
+{
+  "id": "rogue-thug",
+  "name": "Thug",
+  "classId": "rogue",
+  "summary": "A brutal intimidator who prolongs fear and turns sneak attacks into sickening beatings.",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1"
+      ],
+      "features": [
+        {
+          "id": "thug-frightening-1",
+          "name": "Frightening",
+          "level": 1,
+          "type": "core",
+          "summary": "Extend demoralize by 1 round and optionally turn 4 or more shaken rounds into 1 frightened round."
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "rogue-trap-sense"
+      ],
+      "features": [
+        {
+          "id": "thug-brutal-beating-3",
+          "name": "Brutal Beating",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Forgo 1d6 sneak attack damage to sicken the target.",
+          "scaling": "half Rogue level rounds"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"
+  },
+  "mechanicalCoverage": "full"
+}

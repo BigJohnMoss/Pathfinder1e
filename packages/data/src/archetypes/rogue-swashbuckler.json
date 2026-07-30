@@ -1,1 +1,43 @@
-{"id":"rogue-swashbuckler","name":"Swashbuckler","classId":"rogue","summary":"A mobile swordfighter who learns a martial weapon and develops fearless acrobatic daring.","replacements":[{"featureIds":["trapfinding-1"],"features":[{"id":"swashbuckler-martial-training-1","name":"Martial Training","level":1,"type":"core","summary":"Gain proficiency with one martial weapon and may select Combat Trick twice."}]},{"progressionKeys":["rogue-trap-sense"],"features":[{"id":"swashbuckler-daring-3","name":"Daring","level":3,"type":"scaling","summary":"Gain +1 morale on Acrobatics and saves against fear.","scaling":"+1 every 3 levels"}]}],"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"}}
+{
+  "id": "rogue-swashbuckler",
+  "name": "Swashbuckler",
+  "classId": "rogue",
+  "summary": "A mobile swordfighter who learns a martial weapon and develops fearless acrobatic daring.",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1"
+      ],
+      "features": [
+        {
+          "id": "swashbuckler-martial-training-1",
+          "name": "Martial Training",
+          "level": 1,
+          "type": "core",
+          "summary": "Gain proficiency with one martial weapon and may select Combat Trick twice."
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "rogue-trap-sense"
+      ],
+      "features": [
+        {
+          "id": "swashbuckler-daring-3",
+          "name": "Daring",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Gain +1 morale on Acrobatics and saves against fear.",
+          "scaling": "+1 every 3 levels"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"
+  },
+  "mechanicalCoverage": "full"
+}

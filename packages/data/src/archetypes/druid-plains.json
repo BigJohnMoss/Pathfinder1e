@@ -1,15 +1,86 @@
 {
-  "id":"druid-plains",
-  "name":"Plains Druid",
-  "classId":"druid",
-  "summary":"A far-ranging grassland guardian who runs with the wind, ambushes from cover, turns while charging, and evades danger.",
-  "wildShapeLevelAdjustment":-2,
-  "replacements":[
-    {"featureIds":["druid-woodland-stride-2"],"features":[{"id":"plains-druid-traveler-2","name":"Plains Traveler","level":2,"type":"scaling","summary":"In plains terrain, add half Druid level to initiative and key exploration skills and leave no trail.","scaling":"half Druid level"}]},
-    {"featureIds":["druid-trackless-step-3"],"features":[{"id":"plains-druid-run-like-wind-3","name":"Run Like the Wind","level":3,"type":"core","summary":"Gain +10 feet of lightly armored land speed and periodically run or charge at double normal speed."}]},
-    {"featureIds":["druid-resist-natures-lure-4"],"features":[{"id":"plains-druid-savanna-ambush-4","name":"Savanna Ambush","level":4,"type":"core","summary":"Gain concealment and improved Stealth while prone in nature and stand during a surprise round as an immediate action."}]},
-    {"featureIds":["druid-venom-immunity-9"],"features":[{"id":"plains-druid-canny-charger-9","name":"Canny Charger","level":9,"type":"core","summary":"Charge through allies and turn once, gain +4 AC against charges, and deal +4 damage with readied attacks against chargers."}]},
-    {"featureIds":["druid-thousand-faces-13"],"features":[{"id":"plains-druid-evasion-13","name":"Evasion","level":13,"type":"core","summary":"Gain Evasion while in light or no armor and carrying a light load."}]}
+  "id": "druid-plains",
+  "name": "Plains Druid",
+  "classId": "druid",
+  "summary": "A far-ranging grassland guardian who runs with the wind, ambushes from cover, turns while charging, and evades danger.",
+  "wildShapeLevelAdjustment": -2,
+  "replacements": [
+    {
+      "featureIds": [
+        "druid-woodland-stride-2"
+      ],
+      "features": [
+        {
+          "id": "plains-druid-traveler-2",
+          "name": "Plains Traveler",
+          "level": 2,
+          "type": "scaling",
+          "summary": "In plains terrain, add half Druid level to initiative and key exploration skills and leave no trail.",
+          "scaling": "half Druid level"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-trackless-step-3"
+      ],
+      "features": [
+        {
+          "id": "plains-druid-run-like-wind-3",
+          "name": "Run Like the Wind",
+          "level": 3,
+          "type": "core",
+          "summary": "Gain +10 feet of lightly armored land speed and periodically run or charge at double normal speed."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-resist-natures-lure-4"
+      ],
+      "features": [
+        {
+          "id": "plains-druid-savanna-ambush-4",
+          "name": "Savanna Ambush",
+          "level": 4,
+          "type": "core",
+          "summary": "Gain concealment and improved Stealth while prone in nature and stand during a surprise round as an immediate action."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-venom-immunity-9"
+      ],
+      "features": [
+        {
+          "id": "plains-druid-canny-charger-9",
+          "name": "Canny Charger",
+          "level": 9,
+          "type": "core",
+          "summary": "Charge through allies and turn once, gain +4 AC against charges, and deal +4 damage with readied attacks against chargers."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "druid-thousand-faces-13"
+      ],
+      "features": [
+        {
+          "id": "plains-druid-evasion-13",
+          "name": "Evasion",
+          "level": 13,
+          "type": "core",
+          "summary": "Gain Evasion while in light or no armor and carrying a light load."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"
+  },
+  "mechanicalCoverage": "full"
 }

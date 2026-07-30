@@ -5,7 +5,9 @@
   "summary": "A polished courtier who weaponizes etiquette, ridicule, scandal, and a commanding public presence.",
   "replacements": [
     {
-      "progressionKeys": ["bard-inspire-courage"],
+      "progressionKeys": [
+        "bard-inspire-courage"
+      ],
       "features": [
         {
           "id": "court-bard-satire-1",
@@ -20,7 +22,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-inspire-competence"],
+      "progressionKeys": [
+        "bard-inspire-competence"
+      ],
       "features": [
         {
           "id": "court-bard-mockery-3",
@@ -35,7 +39,9 @@
       ]
     },
     {
-      "featureIds": ["bard-dirge-of-doom-8"],
+      "featureIds": [
+        "bard-dirge-of-doom-8"
+      ],
       "features": [
         {
           "id": "court-bard-glorious-epic-8",
@@ -48,7 +54,9 @@
       ]
     },
     {
-      "featureIds": ["bard-frightening-tune-14"],
+      "featureIds": [
+        "bard-frightening-tune-14"
+      ],
       "features": [
         {
           "id": "court-bard-scandal-14",
@@ -61,7 +69,9 @@
       ]
     },
     {
-      "featureIds": ["bardic-knowledge-1"],
+      "featureIds": [
+        "bardic-knowledge-1"
+      ],
       "features": [
         {
           "id": "court-bard-heraldic-expertise-1",
@@ -74,7 +84,10 @@
       ]
     },
     {
-      "progressionKeys": ["bard-lore-master", "bard-jack-of-all-trades"],
+      "progressionKeys": [
+        "bard-lore-master",
+        "bard-jack-of-all-trades"
+      ],
       "features": [
         {
           "id": "court-bard-wide-audience-5",
@@ -91,5 +104,6 @@
     "title": "Advanced Player's Guide",
     "page": null,
     "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
-  }
+  },
+  "mechanicalCoverage": "full"
 }

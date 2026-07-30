@@ -1,15 +1,45 @@
 {
-  "id":"ranger-spirit-ranger",
-  "name":"Spirit Ranger",
-  "classId":"ranger",
-  "summary":"A mystic wilderness guardian who communes with nature spirits for omens and unprepared Ranger magic.",
-  "replacements":[
-    {"featureIds":["ranger-hunters-bond-4","ranger-animal-companion-4"],"features":[
-      {"id":"spirit-ranger-spirit-bond-4","name":"Spirit Bond","level":4,"type":"scaling","summary":"In favored terrain, use augury and spontaneously cast one Ranger spell you are capable of casting without preparing it.","scaling":"one additional spontaneous Ranger spell at 8th and every 4 levels","uses":"augury and 1 spontaneous spell/day"}
-    ]},
-    {"featureIds":["ranger-camouflage-12"],"features":[
-      {"id":"spirit-ranger-wisdom-spirits-12","name":"Wisdom of the Spirits","level":12,"type":"core","summary":"Use augury outside favored terrain or divination while within favored terrain, at a caster level equal to Ranger level."}
-    ]}
+  "id": "ranger-spirit-ranger",
+  "name": "Spirit Ranger",
+  "classId": "ranger",
+  "summary": "A mystic wilderness guardian who communes with nature spirits for omens and unprepared Ranger magic.",
+  "replacements": [
+    {
+      "featureIds": [
+        "ranger-hunters-bond-4",
+        "ranger-animal-companion-4"
+      ],
+      "features": [
+        {
+          "id": "spirit-ranger-spirit-bond-4",
+          "name": "Spirit Bond",
+          "level": 4,
+          "type": "scaling",
+          "summary": "In favored terrain, use augury and spontaneously cast one Ranger spell you are capable of casting without preparing it.",
+          "scaling": "one additional spontaneous Ranger spell at 8th and every 4 levels",
+          "uses": "augury and 1 spontaneous spell/day"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "ranger-camouflage-12"
+      ],
+      "features": [
+        {
+          "id": "spirit-ranger-wisdom-spirits-12",
+          "name": "Wisdom of the Spirits",
+          "level": 12,
+          "type": "core",
+          "summary": "Use augury outside favored terrain or divination while within favored terrain, at a caster level equal to Ranger level."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/ranger.html"
+  },
+  "mechanicalCoverage": "full"
 }

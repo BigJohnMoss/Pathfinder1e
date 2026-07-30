@@ -16,6 +16,7 @@ export interface CharacterDraftV1 {
   classLevels: CharacterClassLevel[];
   archetypeId: string;
   archetypeIdsByClass: Record<string, string>;
+  archetypeStacksByClass?: Record<string, string[]>;
   prestigeSpellcastingTargets: Record<string, string[]>;
   ancestryId: string;
   selectedAlternateRacialTraitIds: string[];
@@ -105,6 +106,10 @@ export interface CharacterArchetype {
   summary: string;
   replacesText?: string;
   nestedReplacements?: string[];
+  requirements?: Prerequisite[];
+  manualRequirements?: string[];
+  mechanicalCoverage?: "full" | "partial" | "descriptive";
+  mechanicalNotes?: string[];
   replacements: Array<{
     featureIds?: string[];
     progressionKeys?: string[];

@@ -1,17 +1,93 @@
 {
-  "id":"monk-weapon-adept",
-  "name":"Weapon Adept",
-  "classId":"monk",
-  "summary":"A weapon-focused ascetic who perfects a chosen Monk weapon, controls initiative, and culminates in pure physical and mental power.",
-  "replacements":[
-    {"featureIds":["monk-stunning-fist-1"],"features":[{"id":"weapon-adept-perfect-strike-1","name":"Perfect Strike","level":1,"type":"bonus-feat","summary":"Gain Perfect Strike without meeting its prerequisites; at 10th level roll three attack dice and keep the highest.","grantedFeatId":"perfect-strike","scaling":"three rolls at 10th"}]},
-    {"featureIds":["monk-evasion-2"],"features":[
-      {"id":"weapon-adept-way-weapon-master-2","name":"Way of the Weapon Master (Weapon Focus)","level":2,"type":"bonus-feat","summary":"Gain Weapon Focus with one Monk weapon without meeting prerequisites."},
-      {"id":"weapon-adept-way-weapon-master-6","name":"Way of the Weapon Master (Weapon Specialization)","level":6,"type":"bonus-feat","summary":"Gain Weapon Specialization with the same Monk weapon without meeting prerequisites."}
-    ]},
-    {"featureIds":["monk-improved-evasion-9"],"features":[{"id":"weapon-adept-evasion-9","name":"Evasion","level":9,"type":"core","summary":"Gain Evasion at 9th level instead of Improved Evasion."}]},
-    {"featureIds":["monk-timeless-body-17"],"features":[{"id":"weapon-adept-uncanny-initiative-17","name":"Uncanny Initiative","level":17,"type":"core","summary":"Choose any result from 1 to 20 instead of rolling initiative."}]},
-    {"featureIds":["monk-perfect-self-20"],"features":[{"id":"weapon-adept-pure-power-20","name":"Pure Power","level":20,"type":"capstone","summary":"Gain +2 Strength, Dexterity, and Wisdom."}]}
+  "id": "monk-weapon-adept",
+  "name": "Weapon Adept",
+  "classId": "monk",
+  "summary": "A weapon-focused ascetic who perfects a chosen Monk weapon, controls initiative, and culminates in pure physical and mental power.",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-stunning-fist-1"
+      ],
+      "features": [
+        {
+          "id": "weapon-adept-perfect-strike-1",
+          "name": "Perfect Strike",
+          "level": 1,
+          "type": "bonus-feat",
+          "summary": "Gain Perfect Strike without meeting its prerequisites; at 10th level roll three attack dice and keep the highest.",
+          "grantedFeatId": "perfect-strike",
+          "scaling": "three rolls at 10th"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-evasion-2"
+      ],
+      "features": [
+        {
+          "id": "weapon-adept-way-weapon-master-2",
+          "name": "Way of the Weapon Master (Weapon Focus)",
+          "level": 2,
+          "type": "bonus-feat",
+          "summary": "Gain Weapon Focus with one Monk weapon without meeting prerequisites."
+        },
+        {
+          "id": "weapon-adept-way-weapon-master-6",
+          "name": "Way of the Weapon Master (Weapon Specialization)",
+          "level": 6,
+          "type": "bonus-feat",
+          "summary": "Gain Weapon Specialization with the same Monk weapon without meeting prerequisites."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-improved-evasion-9"
+      ],
+      "features": [
+        {
+          "id": "weapon-adept-evasion-9",
+          "name": "Evasion",
+          "level": 9,
+          "type": "core",
+          "summary": "Gain Evasion at 9th level instead of Improved Evasion."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-timeless-body-17"
+      ],
+      "features": [
+        {
+          "id": "weapon-adept-uncanny-initiative-17",
+          "name": "Uncanny Initiative",
+          "level": 17,
+          "type": "core",
+          "summary": "Choose any result from 1 to 20 instead of rolling initiative."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-perfect-self-20"
+      ],
+      "features": [
+        {
+          "id": "weapon-adept-pure-power-20",
+          "name": "Pure Power",
+          "level": 20,
+          "type": "capstone",
+          "summary": "Gain +2 Strength, Dexterity, and Wisdom."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"
+  },
+  "mechanicalCoverage": "full"
 }

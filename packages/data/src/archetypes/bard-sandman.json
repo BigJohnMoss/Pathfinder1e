@@ -5,7 +5,9 @@
   "summary": "A stealthy spell-thief who combines performance, deception, trapcraft, and precise magical attacks.",
   "replacements": [
     {
-      "progressionKeys": ["bard-inspire-courage"],
+      "progressionKeys": [
+        "bard-inspire-courage"
+      ],
       "features": [
         {
           "id": "sandman-stealspell-1",
@@ -18,7 +20,9 @@
       ]
     },
     {
-      "featureIds": ["bard-suggestion-6"],
+      "featureIds": [
+        "bard-suggestion-6"
+      ],
       "features": [
         {
           "id": "sandman-slumber-song-6",
@@ -31,7 +35,9 @@
       ]
     },
     {
-      "featureIds": ["bard-inspire-greatness-9"],
+      "featureIds": [
+        "bard-inspire-greatness-9"
+      ],
       "features": [
         {
           "id": "sandman-dramatic-subtext-9",
@@ -44,7 +50,9 @@
       ]
     },
     {
-      "featureIds": ["bard-inspire-heroics-15"],
+      "featureIds": [
+        "bard-inspire-heroics-15"
+      ],
       "features": [
         {
           "id": "sandman-greater-stealspell-15",
@@ -57,7 +65,9 @@
       ]
     },
     {
-      "featureIds": ["bard-mass-suggestion-18"],
+      "featureIds": [
+        "bard-mass-suggestion-18"
+      ],
       "features": [
         {
           "id": "sandman-mass-slumber-song-18",
@@ -70,7 +80,9 @@
       ]
     },
     {
-      "featureIds": ["bard-deadly-performance-20"],
+      "featureIds": [
+        "bard-deadly-performance-20"
+      ],
       "features": [
         {
           "id": "sandman-spell-catching-20",
@@ -83,7 +95,9 @@
       ]
     },
     {
-      "featureIds": ["bardic-knowledge-1"],
+      "featureIds": [
+        "bardic-knowledge-1"
+      ],
       "features": [
         {
           "id": "sandman-master-of-deception-1",
@@ -96,7 +110,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-versatile-performance"],
+      "progressionKeys": [
+        "bard-versatile-performance"
+      ],
       "features": [
         {
           "id": "sandman-sneakspell-2",
@@ -117,7 +133,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-inspire-competence"],
+      "progressionKeys": [
+        "bard-inspire-competence"
+      ],
       "features": [
         {
           "id": "sandman-trap-sense-3",
@@ -130,7 +148,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-lore-master"],
+      "progressionKeys": [
+        "bard-lore-master"
+      ],
       "features": [
         {
           "id": "sandman-sneak-attack-5",
@@ -147,5 +167,6 @@
     "title": "Advanced Player's Guide",
     "page": null,
     "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
-  }
+  },
+  "mechanicalCoverage": "full"
 }

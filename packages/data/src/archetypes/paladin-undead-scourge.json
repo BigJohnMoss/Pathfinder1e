@@ -1,14 +1,49 @@
 {
-  "id":"paladin-undead-scourge",
-  "name":"Undead Scourge",
-  "classId":"paladin",
-  "summary":"A relentless destroyer of undead whose smite, life-giving aura, and annihilating strike are specialized against the unliving.",
-  "featureOverrides":[
-    {"featureId":"paladin-smite-evil-1","summary":"Smite Evil deals double Paladin-level damage on every smite attack against evil undead, but not on the first attack against evil dragons or outsiders."}
+  "id": "paladin-undead-scourge",
+  "name": "Undead Scourge",
+  "classId": "paladin",
+  "summary": "A relentless destroyer of undead whose smite, life-giving aura, and annihilating strike are specialized against the unliving.",
+  "featureOverrides": [
+    {
+      "featureId": "paladin-smite-evil-1",
+      "summary": "Smite Evil deals double Paladin-level damage on every smite attack against evil undead, but not on the first attack against evil dragons or outsiders."
+    }
   ],
-  "replacements":[
-    {"featureIds":["paladin-aura-of-resolve-8"],"features":[{"id":"undead-scourge-aura-of-life-8","name":"Aura of Life","level":8,"type":"core","summary":"Undead within 10 feet take –4 on Will saves against positive energy and cannot heal from channeled negative energy."}]},
-    {"featureIds":["paladin-aura-of-justice-11"],"features":[{"id":"undead-scourge-annihilation-11","name":"Undead Annihilation","level":11,"type":"core","summary":"Spend one smite use to make a melee attack that destroys an undead target on a failed Will save unless it has at least twice your Hit Dice.","uses":"1 smite evil use"}]}
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-aura-of-resolve-8"
+      ],
+      "features": [
+        {
+          "id": "undead-scourge-aura-of-life-8",
+          "name": "Aura of Life",
+          "level": 8,
+          "type": "core",
+          "summary": "Undead within 10 feet take –4 on Will saves against positive energy and cannot heal from channeled negative energy."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "paladin-aura-of-justice-11"
+      ],
+      "features": [
+        {
+          "id": "undead-scourge-annihilation-11",
+          "name": "Undead Annihilation",
+          "level": 11,
+          "type": "core",
+          "summary": "Spend one smite use to make a melee attack that destroys an undead target on a failed Will save unless it has at least twice your Hit Dice.",
+          "uses": "1 smite evil use"
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"
+  },
+  "mechanicalCoverage": "full"
 }

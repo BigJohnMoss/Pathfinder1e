@@ -1,48 +1,119 @@
 {
-  "id":"druid-urban",
-  "name":"Urban Druid",
-  "classId":"druid",
-  "summary":"A guardian of streets and settlements who draws power from civilization, resists social influence, and assumes animal forms later than other Druids.",
-  "wildShapeLevelAdjustment":-4,
-  "druidDomainIds":["domain-charm","domain-community","domain-knowledge","domain-nobility","domain-protection","domain-repose","domain-rune","domain-weather"],
-  "classSkillAdditions":["Diplomacy","Knowledge (history)","Knowledge (local)","Knowledge (nobility)"],
-  "replacements":[
+  "id": "druid-urban",
+  "name": "Urban Druid",
+  "classId": "druid",
+  "summary": "A guardian of streets and settlements who draws power from civilization, resists social influence, and assumes animal forms later than other Druids.",
+  "wildShapeLevelAdjustment": -4,
+  "druidDomainIds": [
+    "domain-charm",
+    "domain-community",
+    "domain-knowledge",
+    "domain-nobility",
+    "domain-protection",
+    "domain-repose",
+    "domain-rune",
+    "domain-weather"
+  ],
+  "classSkillAdditions": [
+    "Diplomacy",
+    "Knowledge (history)",
+    "Knowledge (local)",
+    "Knowledge (nobility)"
+  ],
+  "replacements": [
     {
-      "featureIds":["druid-nature-bond-1","druid-animal-companion-1"],
-      "features":[
-        {"id":"druid-nature-bond-1","name":"Urban Nature Bond","level":1,"type":"selectable","summary":"Choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather as your domain.","choiceRequired":true,"optionGroupId":"urban-druid-nature-bonds"}
+      "featureIds": [
+        "druid-nature-bond-1",
+        "druid-animal-companion-1"
+      ],
+      "features": [
+        {
+          "id": "druid-nature-bond-1",
+          "name": "Urban Nature Bond",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose Charm, Community, Knowledge, Nobility, Protection, Repose, Rune, or Weather as your domain.",
+          "choiceRequired": true,
+          "optionGroupId": "urban-druid-nature-bonds"
+        }
       ]
     },
     {
-      "featureIds":["druid-spontaneous-casting-1"],
-      "features":[
-        {"id":"urban-druid-spontaneous-casting-1","name":"Urban Spontaneous Casting","level":1,"type":"spellcasting","summary":"Convert a prepared spell into a spell of the same level or lower from your selected urban domain."}
+      "featureIds": [
+        "druid-spontaneous-casting-1"
+      ],
+      "features": [
+        {
+          "id": "urban-druid-spontaneous-casting-1",
+          "name": "Urban Spontaneous Casting",
+          "level": 1,
+          "type": "spellcasting",
+          "summary": "Convert a prepared spell into a spell of the same level or lower from your selected urban domain."
+        }
       ]
     },
     {
-      "featureIds":["druid-woodland-stride-2","druid-trackless-step-3"],
-      "features":[
-        {"id":"urban-druid-lorekeeper-2","name":"Lorekeeper","level":2,"type":"core","summary":"Gain Diplomacy and Knowledge (history, local, and nobility) as class skills and a +2 bonus on those checks."}
+      "featureIds": [
+        "druid-woodland-stride-2",
+        "druid-trackless-step-3"
+      ],
+      "features": [
+        {
+          "id": "urban-druid-lorekeeper-2",
+          "name": "Lorekeeper",
+          "level": 2,
+          "type": "core",
+          "summary": "Gain Diplomacy and Knowledge (history, local, and nobility) as class skills and a +2 bonus on those checks."
+        }
       ]
     },
     {
-      "featureIds":["druid-resist-natures-lure-4"],
-      "features":[
-        {"id":"urban-druid-resist-temptation-4","name":"Resist Temptation","level":4,"type":"core","summary":"Gain +2 on saves against enchantment and divination effects."}
+      "featureIds": [
+        "druid-resist-natures-lure-4"
+      ],
+      "features": [
+        {
+          "id": "urban-druid-resist-temptation-4",
+          "name": "Resist Temptation",
+          "level": 4,
+          "type": "core",
+          "summary": "Gain +2 on saves against enchantment and divination effects."
+        }
       ]
     },
     {
-      "featureIds":["druid-venom-immunity-9"],
-      "features":[
-        {"id":"urban-druid-mental-strength-9","name":"Mental Strength","level":9,"type":"core","summary":"Become immune to charm and compulsion effects."}
+      "featureIds": [
+        "druid-venom-immunity-9"
+      ],
+      "features": [
+        {
+          "id": "urban-druid-mental-strength-9",
+          "name": "Mental Strength",
+          "level": 9,
+          "type": "core",
+          "summary": "Become immune to charm and compulsion effects."
+        }
       ]
     },
     {
-      "featureIds":["druid-thousand-faces-13"],
-      "features":[
-        {"id":"urban-druid-thousand-faces-6","name":"A Thousand Faces","level":6,"type":"core","summary":"Alter your appearance at will while in your normal form."}
+      "featureIds": [
+        "druid-thousand-faces-13"
+      ],
+      "features": [
+        {
+          "id": "urban-druid-thousand-faces-6",
+          "name": "A Thousand Faces",
+          "level": 6,
+          "type": "core",
+          "summary": "Alter your appearance at will while in your normal form."
+        }
       ]
     }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/druid.html"
+  },
+  "mechanicalCoverage": "full"
 }

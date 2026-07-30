@@ -1,1 +1,43 @@
-{"id":"rogue-spy","name":"Spy","classId":"rogue","summary":"A consummate deceiver trained to maintain false identities and handle poison safely.","replacements":[{"featureIds":["trapfinding-1"],"features":[{"id":"spy-skilled-liar-1","name":"Skilled Liar","level":1,"type":"scaling","summary":"Add half Rogue level, minimum +1, on Bluff checks to deceive, excluding feints and secret messages.","scaling":"half Rogue level"}]},{"progressionKeys":["rogue-trap-sense"],"features":[{"id":"spy-poison-use-3","name":"Poison Use","level":3,"type":"core","summary":"Never accidentally poison yourself while applying poison to a weapon."}]}],"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"}}
+{
+  "id": "rogue-spy",
+  "name": "Spy",
+  "classId": "rogue",
+  "summary": "A consummate deceiver trained to maintain false identities and handle poison safely.",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1"
+      ],
+      "features": [
+        {
+          "id": "spy-skilled-liar-1",
+          "name": "Skilled Liar",
+          "level": 1,
+          "type": "scaling",
+          "summary": "Add half Rogue level, minimum +1, on Bluff checks to deceive, excluding feints and secret messages.",
+          "scaling": "half Rogue level"
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "rogue-trap-sense"
+      ],
+      "features": [
+        {
+          "id": "spy-poison-use-3",
+          "name": "Poison Use",
+          "level": 3,
+          "type": "core",
+          "summary": "Never accidentally poison yourself while applying poison to a weapon."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"
+  },
+  "mechanicalCoverage": "full"
+}

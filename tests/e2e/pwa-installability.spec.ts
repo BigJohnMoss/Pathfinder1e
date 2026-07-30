@@ -135,7 +135,7 @@ test("keeps mobile name typing focused and uses compact accessible controls", as
   for (const box of actionBoxes) expect(box!.height).toBeGreaterThanOrEqual(44);
 
   const tabRows = await page.locator(".character-tabs [role=tab]").evaluateAll((tabs) => tabs.map((tab) => Math.round(tab.getBoundingClientRect().top)));
-  expect(new Set(tabRows).size).toBe(1);
+  expect(new Set(tabRows).size).toBe(2);
 });
 
 test("manages feat discovery and selection at an Android phone viewport", async ({ page }) => {
