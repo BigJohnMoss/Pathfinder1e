@@ -4,16 +4,24 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Con"
-    },
-    {
-      "type": "rule",
-      "description": "Dex"
-    },
-    {
-      "type": "rule",
-      "description": "or Wis 13"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ability",
+          "key": "constitution",
+          "minimum": 13
+        },
+        {
+          "type": "ability",
+          "key": "dexterity",
+          "minimum": 13
+        },
+        {
+          "type": "ability",
+          "key": "wisdom",
+          "minimum": 13
+        }
+      ]
     }
   ],
   "benefit": "+2 bonus on all saving throws versus a specific school",

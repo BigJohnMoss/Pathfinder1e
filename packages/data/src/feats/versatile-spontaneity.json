@@ -4,8 +4,19 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Int 13 or Wis 13 (see Special)"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ability",
+          "key": "intelligence",
+          "minimum": 13
+        },
+        {
+          "type": "ability",
+          "key": "wisdom",
+          "minimum": 13
+        }
+      ]
     },
     {
       "type": "spell-level",

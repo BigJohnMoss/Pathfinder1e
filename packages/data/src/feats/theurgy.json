@@ -9,8 +9,19 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Int or Cha 13"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ability",
+          "key": "intelligence",
+          "minimum": 13
+        },
+        {
+          "type": "ability",
+          "key": "charisma",
+          "minimum": 13
+        }
+      ]
     },
     {
       "type": "spell-access",

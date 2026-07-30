@@ -74,6 +74,16 @@ const parseAtomicRule = (description) => {
   if (match) return { type: "save", key: saveKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
   match = text.match(/^(Str|Dex|Con|Int|Wis|Cha)\s*(\d+)$/i);
   if (match) return { type: "ability", key: abilityKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
+  match = text.match(/^(Str|Dex|Con|Int|Wis|Cha)\s+or\s+(Str|Dex|Con|Int|Wis|Cha)\s*(\d+)$/i);
+  if (match) return { type: "any", prerequisites: [
+    { type: "ability", key: abilityKeys[match[1].toLocaleLowerCase()], minimum: Number(match[3]) },
+    { type: "ability", key: abilityKeys[match[2].toLocaleLowerCase()], minimum: Number(match[3]) },
+  ] };
+  match = text.match(/^(Str|Dex|Con|Int|Wis|Cha)\s*(\d+)\s+or\s+(Str|Dex|Con|Int|Wis|Cha)\s*(\d+)(?:\s+\(see special\))?$/i);
+  if (match) return { type: "any", prerequisites: [
+    { type: "ability", key: abilityKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) },
+    { type: "ability", key: abilityKeys[match[3].toLocaleLowerCase()], minimum: Number(match[4]) },
+  ] };
   match = text.match(/^(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s*(\d+)$/i);
   if (match) return { type: "ability", key: fullAbilityKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
   match = text.match(/^([A-Za-z]+) level\s*(\d+)(?:st|nd|rd|th)?$/i);
@@ -139,6 +149,32 @@ const repairSplitBrawlerMonkAlternative = (prerequisites) => {
   return prerequisites.flatMap((prerequisite, index) => index === insertionIndex ? [alternative] : removed.has(index) ? [] : [prerequisite]);
 };
 
+const repairSplitAbilityAlternative = (prerequisites) => {
+  const terminalIndex = prerequisites.findIndex((prerequisite) => prerequisite.type === "rule" && /^or (Str|Dex|Con|Int|Wis|Cha) \d+(?:\s+\(see special\))?$/i.test(prerequisite.description));
+  if (terminalIndex === -1) return prerequisites;
+  const match = prerequisites[terminalIndex].description.match(/^or (Str|Dex|Con|Int|Wis|Cha) (\d+)/i);
+  const minimum = Number(match?.[2]);
+  const alternatives = [{ type: "ability", key: abilityKeys[match?.[1].toLocaleLowerCase()], minimum }];
+  const removed = new Set([terminalIndex]);
+  for (let index = terminalIndex - 1; index >= 0; index -= 1) {
+    const prerequisite = prerequisites[index];
+    if (prerequisite.type === "ability" && prerequisite.minimum === minimum) {
+      alternatives.unshift(prerequisite);
+      removed.add(index);
+      continue;
+    }
+    if (prerequisite.type === "rule" && abilityKeys[prerequisite.description.toLocaleLowerCase()]) {
+      alternatives.unshift({ type: "ability", key: abilityKeys[prerequisite.description.toLocaleLowerCase()], minimum });
+      removed.add(index);
+      continue;
+    }
+    break;
+  }
+  if (alternatives.length < 2) return prerequisites;
+  const insertionIndex = Math.min(...removed);
+  return prerequisites.flatMap((prerequisite, index) => index === insertionIndex ? [{ type: "any", prerequisites: alternatives }] : removed.has(index) ? [] : [prerequisite]);
+};
+
 let convertedRules = 0;
 let changedFeats = 0;
 const remainingRules = [];
@@ -162,7 +198,8 @@ for (const feat of feats) {
       prerequisites.push(prerequisite);
     }
   }
-  const repairedPrerequisites = repairSplitBrawlerMonkAlternative(prerequisites);
+  const brawlerRepairedPrerequisites = repairSplitBrawlerMonkAlternative(prerequisites);
+  const repairedPrerequisites = repairSplitAbilityAlternative(brawlerRepairedPrerequisites);
   if (repairedPrerequisites !== prerequisites) {
     changed = true;
     convertedRules += 1;

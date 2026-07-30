@@ -19,9 +19,9 @@ This report is generated from the application's source data by `npm run coverage
 
 | Coverage | Count |
 |---|---:|
-| Structured prerequisite rules | 6430 |
-| Manual-review prerequisite rules | 2072 |
-| Feats containing a manual-review rule | 1522 |
+| Structured prerequisite rules | 6451 |
+| Manual-review prerequisite rules | 2063 |
+| Feats containing a manual-review rule | 1518 |
 
 Manual-review rules remain visibly locked in the builder. They are not silently treated as satisfied.
 
