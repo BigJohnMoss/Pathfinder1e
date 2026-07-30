@@ -1,0 +1,17 @@
+{
+  "id": "aligned-crafting",
+  "name": "Aligned Crafting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Craft Magic Arms and Armor or Craft Wondrous Item"
+    }
+  ],
+  "benefit": "Create magic items infused with your alignment",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aligned%20Crafting"
+  }
+}

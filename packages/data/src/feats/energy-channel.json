@@ -1,0 +1,33 @@
+{
+  "id": "energy-channel",
+  "name": "Energy Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "Air"
+    },
+    {
+      "type": "rule",
+      "description": "Earth"
+    },
+    {
+      "type": "rule",
+      "description": "Fire"
+    },
+    {
+      "type": "rule",
+      "description": "or Water domain or blessing"
+    }
+  ],
+  "benefit": "Spend channel energy to deal extra energy damage with weapon attacks",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 146,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Energy%20Channel"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "variant-prayer-scroll",
+  "name": "Variant Prayer Scroll",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Jiang-shi"
+    }
+  ],
+  "benefit": "Change the powers granted by your prayer-scroll",
+  "source": {
+    "title": "Blood of the Night",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Variant%20Prayer%20Scroll"
+  }
+}

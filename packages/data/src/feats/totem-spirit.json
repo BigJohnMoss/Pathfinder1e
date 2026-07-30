@@ -1,0 +1,17 @@
+{
+  "id": "totem-spirit",
+  "name": "Totem Spirit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Member of a Shoanti tribe"
+    }
+  ],
+  "benefit": "Gain a boon related to your tribe’s theme",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 289,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Totem%20Spirit"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "worldwound-walker",
+  "name": "Worldwound Walker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "5 or more Hit Dice"
+    },
+    {
+      "type": "rule",
+      "description": "good alignment"
+    }
+  ],
+  "benefit": "Protect yourself from effects which target good creatures",
+  "source": {
+    "title": "Champions of Purity",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Worldwound%20Walker"
+  }
+}

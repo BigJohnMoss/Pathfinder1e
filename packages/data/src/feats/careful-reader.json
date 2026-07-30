@@ -1,0 +1,23 @@
+{
+  "id": "careful-reader",
+  "name": "Careful Reader",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Linguistics",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 3
+    }
+  ],
+  "benefit": "+4 save versus written magical effects",
+  "source": {
+    "title": "Occult Origins",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Careful%20Reader"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "vile-leadership",
+  "name": "Vile Leadership",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any evil alignment"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    }
+  ],
+  "benefit": "As Leadership , but more appropriate for Evil characters",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 135,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vile%20Leadership"
+  }
+}

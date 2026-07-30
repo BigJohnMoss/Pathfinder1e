@@ -1,0 +1,26 @@
+{
+  "id": "caustic-slur",
+  "name": "Caustic Slur",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "feature",
+      "id": "favored-enemy"
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    }
+  ],
+  "benefit": "Insult your favored enemies to anger them",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Caustic%20Slur"
+  }
+}

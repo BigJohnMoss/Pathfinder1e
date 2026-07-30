@@ -1,0 +1,34 @@
+{
+  "id": "grabbing-drag",
+  "name": "Grabbing Drag",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "grabbing-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "class-level",
+      "classId": "brawler",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "or monk level 4th"
+    }
+  ],
+  "benefit": "Move farther with dragged foes",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 148,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grabbing%20Drag"
+  }
+}

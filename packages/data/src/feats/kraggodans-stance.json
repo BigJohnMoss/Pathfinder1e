@@ -1,0 +1,22 @@
+{
+  "id": "kraggodans-stance",
+  "name": "Kraggodan's Stance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with heavy armor and shields"
+    }
+  ],
+  "benefit": "Interlock your armor and shield, gaining +2 AC until you move",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kraggodan's%20Stance"
+  }
+}

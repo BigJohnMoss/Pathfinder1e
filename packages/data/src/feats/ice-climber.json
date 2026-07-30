@@ -1,0 +1,17 @@
+{
+  "id": "ice-climber",
+  "name": "Ice Climber",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Arctic Adaptation or Mountaineer; Climb 2 ranks"
+    }
+  ],
+  "benefit": "Gain bonuses to climb on or move across slippery surfaces and to noitce and avoid avalanches",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ice%20Climber"
+  }
+}

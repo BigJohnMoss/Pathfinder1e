@@ -1,0 +1,22 @@
+{
+  "id": "symbiotic-resilience",
+  "name": "Symbiotic Resilience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Reduce the impact of some conditions that restrict your movement",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Symbiotic%20Resilience"
+  }
+}

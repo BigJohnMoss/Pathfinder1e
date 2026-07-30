@@ -1,0 +1,38 @@
+{
+  "id": "improved-studied-combatant",
+  "name": "Improved Studied Combatant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "amateur-investigator"
+    },
+    {
+      "type": "feat",
+      "id": "studied-combatant"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "1 rank in at least one Knowledge skill"
+    },
+    {
+      "type": "feature",
+      "id": "no-levels-in-a-class-that-has-the-inspiration"
+    }
+  ],
+  "benefit": "Studied strike grants a +4 bonus on attack rolls and damage rolls",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 150,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Studied%20Combatant"
+  }
+}

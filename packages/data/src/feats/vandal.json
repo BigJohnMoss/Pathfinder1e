@@ -1,0 +1,21 @@
+{
+  "id": "vandal",
+  "name": "Vandal",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    },
+    {
+      "type": "feature",
+      "id": "sneak-attack"
+    }
+  ],
+  "benefit": "Use half of your sneak attack damage against unattended objects.",
+  "source": {
+    "title": "Goblins of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vandal"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "ghost-hunting-team",
+  "name": "Ghost Hunting Team",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duskwalker"
+    },
+    {
+      "type": "rule",
+      "description": "ghost hunter racial trait"
+    }
+  ],
+  "benefit": "You can grant the ghost touch property to your allies weapons",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ghost%20Hunting%20Team"
+  }
+}

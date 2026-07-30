@@ -1,0 +1,18 @@
+{
+  "id": "tavern-regular",
+  "name": "Tavern Regular",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 14
+    }
+  ],
+  "benefit": "Gain benefits when you are in a tavern you frequent",
+  "source": {
+    "title": "Inner Sea Taverns",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tavern%20Regular"
+  }
+}

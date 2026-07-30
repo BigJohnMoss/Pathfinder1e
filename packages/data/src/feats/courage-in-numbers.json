@@ -1,0 +1,17 @@
+{
+  "id": "courage-in-numbers",
+  "name": "Courage in Numbers",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "+2 save vs. fear for each nearby ally with this feat",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Courage%20in%20Numbers"
+  }
+}

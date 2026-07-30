@@ -1,0 +1,21 @@
+{
+  "id": "great-hatred",
+  "name": "Great Hatred",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Gnome"
+    },
+    {
+      "type": "rule",
+      "description": "hatred racial trait"
+    }
+  ],
+  "benefit": "Additional +1 attack against targets of your hatred",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 37,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Great%20Hatred"
+  }
+}

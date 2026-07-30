@@ -1,0 +1,17 @@
+{
+  "id": "split-trick",
+  "name": "Split Trick",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "mesmerist-trick"
+    }
+  ],
+  "benefit": "Split a trick among two creatures",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Split%20Trick"
+  }
+}

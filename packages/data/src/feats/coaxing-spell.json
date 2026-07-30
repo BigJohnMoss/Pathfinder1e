@@ -1,0 +1,26 @@
+{
+  "id": "coaxing-spell",
+  "name": "Coaxing Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(enchantment)"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (dungeoneering)",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Use mind-affecting spells to affect mindless oozes or vermin",
+  "source": {
+    "title": "Dungeoneer's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Coaxing%20Spell"
+  }
+}

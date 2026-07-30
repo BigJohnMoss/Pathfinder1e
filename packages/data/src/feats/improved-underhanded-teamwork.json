@@ -1,0 +1,29 @@
+{
+  "id": "improved-underhanded-teamwork",
+  "name": "Improved Underhanded Teamwork",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-dirty-trick"
+    },
+    {
+      "type": "feat",
+      "id": "underhanded-teamwork"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Attempt a dirty trick when a nearby ally does so",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Underhanded%20Teamwork"
+  }
+}

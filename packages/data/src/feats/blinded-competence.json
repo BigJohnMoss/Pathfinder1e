@@ -1,0 +1,34 @@
+{
+  "id": "blinded-competence",
+  "name": "Blinded Competence",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blinded-blade-style"
+    },
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "improved-blind-fight"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Pinpoint creatures without a check while using Blinded Blade Style",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blinded%20Competence"
+  }
+}

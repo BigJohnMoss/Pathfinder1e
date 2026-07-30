@@ -1,0 +1,42 @@
+{
+  "id": "terrorizing-display",
+  "name": "Terrorizing Display",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    },
+    {
+      "type": "feat",
+      "id": "demoralizing-lash"
+    },
+    {
+      "type": "feat",
+      "id": "taskmaster"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with selected weapon"
+    }
+  ],
+  "benefit": "Spur nearby allies with Taskmaster when using Dazzling Display",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Terrorizing%20Display"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "profane-studies",
+  "name": "Profane Studies",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 4
+    },
+    {
+      "type": "spell-access",
+      "id": "a-summon-monster-spell"
+    }
+  ],
+  "benefit": "Gain +5 on Knowledge checks and +2 CL on durations involving evil outsiders",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 91,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Profane%20Studies"
+  }
+}

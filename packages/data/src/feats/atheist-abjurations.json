@@ -1,0 +1,17 @@
+{
+  "id": "atheist-abjurations",
+  "name": "Atheist Abjurations",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "divine-defiance"
+    }
+  ],
+  "benefit": "+2 caster level to dispel/counter divine spells and dismiss divine creatures",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Atheist%20Abjurations"
+  }
+}

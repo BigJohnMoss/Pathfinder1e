@@ -1,0 +1,22 @@
+{
+  "id": "brilliant-spell-preparation",
+  "name": "Brilliant Spell Preparation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "ability to prepare 3rd-level spells"
+    }
+  ],
+  "benefit": "Prepare spells faster in a reserved slot",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brilliant%20Spell%20Preparation"
+  }
+}

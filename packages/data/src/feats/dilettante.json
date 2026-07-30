@@ -1,0 +1,17 @@
+{
+  "id": "dilettante",
+  "name": "Dilettante",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "2 ranks each in 5 different Knowledge skills"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Knowledge checks with 1-5 ranks",
+  "source": {
+    "title": "Seekers of Secrets",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dilettante"
+  }
+}

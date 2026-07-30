@@ -1,0 +1,22 @@
+{
+  "id": "fighting-frenzy",
+  "name": "Fighting Frenzy",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Avoid an AC penalty while in rage if allies are close by",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fighting%20Frenzy"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "dolphin-circle",
+  "name": "Dolphin Circle",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dolphin-dart"
+    },
+    {
+      "type": "feat",
+      "id": "dolphin-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +10 or monk level 10th"
+    }
+  ],
+  "benefit": "Be treated as though you are in mulitple squares for threatening squares, flanking, and being attacked",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dolphin%20Circle"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "octopus-thrash",
+  "name": "Octopus Thrash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "feat",
+      "id": "octopus-focus"
+    },
+    {
+      "type": "feat",
+      "id": "octopus-style"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 7
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Trip two adjacent creatures in Octopus Style",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Octopus%20Thrash"
+  }
+}

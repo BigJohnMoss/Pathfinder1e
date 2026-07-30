@@ -1,0 +1,17 @@
+{
+  "id": "expert-explorer",
+  "name": "Expert Explorer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Knowledge (nature) or Survival 5 ranks"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on skills checks when using the discovery rules",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 110,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expert%20Explorer"
+  }
+}

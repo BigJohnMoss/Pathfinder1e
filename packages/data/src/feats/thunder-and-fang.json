@@ -1,0 +1,38 @@
+{
+  "id": "thunder-and-fang",
+  "name": "Thunder and Fang",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(earth breaker)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(klar"
+    }
+  ],
+  "benefit": "Fight with increased effectiveness when wielding an earth-breaker and klar.",
+  "source": {
+    "title": "Varisia, Birthplace of Legends",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Thunder%20and%20Fang"
+  }
+}

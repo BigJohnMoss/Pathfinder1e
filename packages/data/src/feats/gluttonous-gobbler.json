@@ -1,0 +1,25 @@
+{
+  "id": "gluttonous-gobbler",
+  "name": "Gluttonous Gobbler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Both Improved Unarmed Strike and Improved Grapple or the grab ability"
+    },
+    {
+      "type": "rule",
+      "description": "ogre"
+    },
+    {
+      "type": "rule",
+      "description": "size Large or larger"
+    }
+  ],
+  "benefit": "Grapple smaller creatures in your mouth",
+  "source": {
+    "title": "Monster Codex",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gluttonous%20Gobbler"
+  }
+}

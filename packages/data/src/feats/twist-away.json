@@ -1,0 +1,17 @@
+{
+  "id": "twist-away",
+  "name": "Twist Away",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Evasion"
+    }
+  ],
+  "benefit": "Use Reflex in place of Fortitude as an immediate action",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 158,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Twist%20Away"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "truth-seeker",
+  "name": "Truth-Seeker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have visited a ruin or forgotten place that has been abandoned for at least five times as long as you’ve been alive"
+    }
+  ],
+  "benefit": "Learn more about history, find secret doors with ease",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Truth-Seeker"
+  }
+}

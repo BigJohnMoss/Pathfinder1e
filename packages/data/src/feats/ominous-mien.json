@@ -1,0 +1,21 @@
+{
+  "id": "ominous-mien",
+  "name": "Ominous Mien",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Hellknight rank"
+    },
+    {
+      "type": "rule",
+      "description": "Hellknight 10 TPA"
+    }
+  ],
+  "benefit": "Add +1 to DC of compulsion, fear, phantasm, and shadow spells",
+  "source": {
+    "title": "Faction Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ominous%20Mien"
+  }
+}

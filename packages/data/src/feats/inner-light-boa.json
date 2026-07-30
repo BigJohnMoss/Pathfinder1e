@@ -1,0 +1,21 @@
+{
+  "id": "inner-light-boa",
+  "name": "Inner Light (BoA)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "daylight spell-like ability"
+    }
+  ],
+  "benefit": "Enhance your daylight spell's power.",
+  "source": {
+    "title": "Blood of Angels",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inner%20Light%20(BoA)"
+  }
+}

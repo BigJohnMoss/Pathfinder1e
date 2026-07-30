@@ -1,0 +1,21 @@
+{
+  "id": "resolute-rager",
+  "name": "Resolute Rager",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Orc"
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Resist fear while in a rage",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 142,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Resolute%20Rager"
+  }
+}

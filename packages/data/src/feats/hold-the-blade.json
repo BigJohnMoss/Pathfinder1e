@@ -1,0 +1,21 @@
+{
+  "id": "hold-the-blade",
+  "name": "Hold the Blade",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-disarm"
+    },
+    {
+      "type": "bab",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Disarm an opponent after being attacked.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hold%20the%20Blade"
+  }
+}

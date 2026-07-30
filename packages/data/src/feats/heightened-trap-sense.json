@@ -1,0 +1,22 @@
+{
+  "id": "heightened-trap-sense",
+  "name": "Heightened Trap Sense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Search",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "trap sense +1"
+    }
+  ],
+  "benefit": "Make automatic Search checks when near traps",
+  "source": {
+    "title": "Osirion, Land of the Pharaohs",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Heightened%20Trap%20Sense"
+  }
+}

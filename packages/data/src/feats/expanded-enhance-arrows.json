@@ -1,0 +1,17 @@
+{
+  "id": "expanded-enhance-arrows",
+  "name": "Expanded Enhance Arrows",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "enhance-arrows"
+    }
+  ],
+  "benefit": "Add additional magic weapon properties to your enhance arrows ability",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Enhance%20Arrows"
+  }
+}

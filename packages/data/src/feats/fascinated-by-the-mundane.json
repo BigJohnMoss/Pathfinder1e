@@ -1,0 +1,29 @@
+{
+  "id": "fascinated-by-the-mundane",
+  "name": "Fascinated by the Mundane",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have a fey ancestor somewhere in your family line"
+    },
+    {
+      "type": "rule",
+      "description": "and you must have the Adopted by the Fey"
+    },
+    {
+      "type": "rule",
+      "description": "Fey Meeting"
+    },
+    {
+      "type": "rule",
+      "description": "or Met a Fantastic Creature background ( Ultimate Campaign 21, 30, and 24, respectively)"
+    }
+  ],
+  "benefit": "See text",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fascinated%20by%20the%20Mundane"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "improved-collectors-boon",
+  "name": "Improved Collector's Boon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "collectors-boon"
+    },
+    {
+      "type": "level",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Gain a greater benefit when wearing an equipment set",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Collector's%20Boon"
+  }
+}

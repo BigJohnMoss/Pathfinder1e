@@ -1,0 +1,23 @@
+{
+  "id": "animal-call",
+  "name": "Animal Call",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Make convincing animals sounds with Bluff checks",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Animal%20Call"
+  }
+}

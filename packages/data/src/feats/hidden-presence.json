@@ -1,0 +1,21 @@
+{
+  "id": "hidden-presence-feat",
+  "name": "Hidden Presence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int or Cha 17"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast possession or greater possession"
+    }
+  ],
+  "benefit": "Abjurations and divinations treat you as the possessed creature",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 135,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hidden%20Presence"
+  }
+}

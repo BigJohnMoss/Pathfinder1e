@@ -1,0 +1,17 @@
+{
+  "id": "contingent-trick",
+  "name": "Contingent Trick",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any two trick feats"
+    }
+  ],
+  "benefit": "Implant a flexible trick that has multiple options",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Contingent%20Trick"
+  }
+}

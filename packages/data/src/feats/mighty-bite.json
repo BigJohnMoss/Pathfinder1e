@@ -1,0 +1,29 @@
+{
+  "id": "mighty-bite",
+  "name": "Mighty Bite",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "bite attack"
+    },
+    {
+      "type": "rule",
+      "description": "rend"
+    },
+    {
+      "type": "rule",
+      "description": "troll"
+    }
+  ],
+  "benefit": "Increase the critical threat of your bite by rending",
+  "source": {
+    "title": "Monster Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mighty%20Bite"
+  }
+}

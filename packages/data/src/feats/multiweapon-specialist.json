@@ -1,0 +1,22 @@
+{
+  "id": "multiweapon-specialist",
+  "name": "Multiweapon Specialist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Three or more arms"
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 21
+    }
+  ],
+  "benefit": "Gain bonus damage when the weapons you wield are from the same group.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 38,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Multiweapon%20Specialist"
+  }
+}

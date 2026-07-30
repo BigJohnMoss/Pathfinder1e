@@ -1,0 +1,17 @@
+{
+  "id": "steam-caster",
+  "name": "Steam Caster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Undine"
+    }
+  ],
+  "benefit": "Cast fire spells underwater as superheated steam",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 178,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Steam%20Caster"
+  }
+}

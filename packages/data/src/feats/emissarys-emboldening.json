@@ -1,0 +1,21 @@
+{
+  "id": "emissarys-emboldening",
+  "name": "Emissary's Emboldening",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "page"
+    },
+    {
+      "type": "rule",
+      "description": "Must have a familiar with the emissary archetype (see 10)"
+    }
+  ],
+  "benefit": "Resist fear effects when your familiar is near",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Emissary's%20Emboldening"
+  }
+}

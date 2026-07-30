@@ -1,0 +1,34 @@
+{
+  "id": "verbose-performer",
+  "name": "Verbose Performer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "feat",
+      "id": "extra-performance"
+    },
+    {
+      "type": "feat",
+      "id": "master-performer"
+    },
+    {
+      "type": "class-level",
+      "classId": "bard",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "Kitharodian Academy 15 TPA"
+    }
+  ],
+  "benefit": "Double the range of your bardic performances",
+  "source": {
+    "title": "Faction Guide",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Verbose%20Performer"
+  }
+}

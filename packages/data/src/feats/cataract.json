@@ -1,0 +1,28 @@
+{
+  "id": "cataract",
+  "name": "Cataract",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Blood curse causes creature to miss on ranged touch attacks",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cataract"
+  }
+}

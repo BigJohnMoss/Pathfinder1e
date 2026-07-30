@@ -1,0 +1,21 @@
+{
+  "id": "strongarm",
+  "name": "Strongarm",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    },
+    {
+      "type": "rule",
+      "description": "member of the Lumber Consortium"
+    }
+  ],
+  "benefit": "Improve an attitude with intimidate for much longer than normal",
+  "source": {
+    "title": "Andoran, Birthplace of Freedom",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Strongarm"
+  }
+}

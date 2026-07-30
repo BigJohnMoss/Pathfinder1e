@@ -1,0 +1,25 @@
+{
+  "id": "tower-shield-specialist",
+  "name": "Tower Shield Specialist*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "tower-shield-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or fighter level 8th"
+    }
+  ],
+  "benefit": "Reduce the armor check penalty of a tower shield",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tower%20Shield%20Specialist*"
+  }
+}

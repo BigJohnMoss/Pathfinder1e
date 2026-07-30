@@ -1,0 +1,17 @@
+{
+  "id": "change-of-heart",
+  "name": "Change of Heart",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Instead of killing a creature, you can attempt a Diplomacy check to change their attitude",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Change%20of%20Heart"
+  }
+}

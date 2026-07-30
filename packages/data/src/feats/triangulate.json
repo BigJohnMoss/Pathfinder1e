@@ -1,0 +1,34 @@
+{
+  "id": "triangulate",
+  "name": "Triangulate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "greater-blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "improved-blind-fight"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "human (Kellid)"
+    }
+  ],
+  "benefit": "Automatically pinpoint invisible foes and reroll misses due to concealment when you and an ally who has this feat are within 30 feet",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Triangulate"
+  }
+}

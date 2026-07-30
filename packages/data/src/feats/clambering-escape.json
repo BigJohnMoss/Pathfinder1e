@@ -1,0 +1,34 @@
+{
+  "id": "clambering-escape",
+  "name": "Clambering Escape",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-reposition"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feature",
+      "id": "evasion"
+    }
+  ],
+  "benefit": "After evading, reposition a foe into the blast",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Clambering%20Escape"
+  }
+}

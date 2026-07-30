@@ -1,0 +1,26 @@
+{
+  "id": "corrupted-flesh",
+  "name": "Corrupted Flesh",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "6 HD"
+    },
+    {
+      "type": "rule",
+      "description": "ogre"
+    }
+  ],
+  "benefit": "Gain the stench special ability",
+  "source": {
+    "title": "Monster Codex",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Corrupted%20Flesh"
+  }
+}

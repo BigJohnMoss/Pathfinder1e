@@ -1,0 +1,22 @@
+{
+  "id": "child-of-two-fates",
+  "name": "Child of Two Fates",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (local)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "half-elf"
+    }
+  ],
+  "benefit": "Gain a human or elf ally’s teamwork feat temporarily",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 204,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Child%20of%20Two%20Fates"
+  }
+}

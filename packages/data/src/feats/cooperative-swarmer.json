@@ -1,0 +1,17 @@
+{
+  "id": "cooperative-swarmer",
+  "name": "Cooperative Swarmer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Swarming racial trait"
+    }
+  ],
+  "benefit": "Can share space with an ally your size or larger",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cooperative%20Swarmer"
+  }
+}

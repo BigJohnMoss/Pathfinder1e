@@ -1,0 +1,34 @@
+{
+  "id": "orc-fury-style",
+  "name": "Orc Fury Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bullying-blow"
+    },
+    {
+      "type": "rule",
+      "description": "ARG"
+    },
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "weapon familiarity racial trait"
+    }
+  ],
+  "benefit": "Use Bullying Blow with the first attack each round",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Orc%20Fury%20Style"
+  }
+}

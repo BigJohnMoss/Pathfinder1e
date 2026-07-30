@@ -1,0 +1,21 @@
+{
+  "id": "city-locked",
+  "name": "City-Locked",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must permanently dwell in a settlement at least as large as a large town. You must also have a fey ancestor somewhere in your family line"
+    },
+    {
+      "type": "rule",
+      "description": "or have The Wanderer background ( Ultimate Campaign 45 )"
+    }
+  ],
+  "benefit": "See text",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=City-Locked"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "focused-vermin-expertise",
+  "name": "Focused Vermin Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-vermin"
+    }
+  ],
+  "benefit": "Gain damage reduction against vermin and swarms",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Vermin%20Expertise"
+  }
+}

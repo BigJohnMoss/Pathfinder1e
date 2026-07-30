@@ -1,0 +1,27 @@
+{
+  "id": "beastmaster-style",
+  "name": "Beastmaster Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "must have an animal companion"
+    }
+  ],
+  "benefit": "Use Handle Animal to attempt to negate a hit on your adjacent animal companion",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 107,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beastmaster%20Style"
+  }
+}

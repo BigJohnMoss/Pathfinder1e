@@ -1,0 +1,29 @@
+{
+  "id": "supernatural-spy",
+  "name": "Supernatural Spy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Alchemist discovery"
+    },
+    {
+      "type": "rule",
+      "description": "arcane discovery"
+    },
+    {
+      "type": "rule",
+      "description": "arcanist exploit"
+    },
+    {
+      "type": "rule",
+      "description": "or magus arcana class feature and you must either have observed a created magical effect you could not understand or have the Master Craftsman UCA or the Unquenchable Hunger for Knowledge UCA background"
+    }
+  ],
+  "benefit": "Increase your ability modifier for calculating the effects and save DCs of one of your class features.",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Supernatural%20Spy"
+  }
+}

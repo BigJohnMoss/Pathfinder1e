@@ -1,0 +1,33 @@
+{
+  "id": "stag-submission",
+  "name": "Stag Submission",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "charging-stag-style"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "feat",
+      "id": "stag-horns"
+    }
+  ],
+  "benefit": "After successfully pinning an opponent with charging stag style, additionally knock them prone or deal more damage",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stag%20Submission"
+  }
+}

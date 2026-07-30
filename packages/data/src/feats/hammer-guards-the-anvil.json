@@ -1,0 +1,12 @@
+{
+  "id": "hammer-guards-the-anvil",
+  "name": "Hammer Guards the Anvil",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Limit when a foe can make an attack of opportunity against you",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hammer%20Guards%20the%20Anvil"
+  }
+}

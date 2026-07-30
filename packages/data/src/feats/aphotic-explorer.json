@@ -1,0 +1,21 @@
+{
+  "id": "aphotic-explorer",
+  "name": "Aphotic Explorer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "rule",
+      "description": "gillman"
+    }
+  ],
+  "benefit": "Gain cold resistance while in dim light or darkness",
+  "source": {
+    "title": "Blood of the Sea",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aphotic%20Explorer"
+  }
+}

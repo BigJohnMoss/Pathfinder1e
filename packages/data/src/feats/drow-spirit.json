@@ -1,0 +1,17 @@
+{
+  "id": "drow-spirit",
+  "name": "Drow Spirit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-elf"
+    }
+  ],
+  "benefit": "Gain spell-like abilities from your drow heritage",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Drow%20Spirit"
+  }
+}

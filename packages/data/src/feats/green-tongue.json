@@ -1,0 +1,26 @@
+{
+  "id": "green-tongue",
+  "name": "Green Tongue",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Gain speak with plants as a spell-like ability",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Green%20Tongue"
+  }
+}

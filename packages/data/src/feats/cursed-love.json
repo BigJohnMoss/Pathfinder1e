@@ -1,0 +1,21 @@
+{
+  "id": "cursed-love",
+  "name": "Cursed Love",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have a romantic interest who has fallen to some dark influence and rejects you out of shame or fear of newfound capabilities"
+    },
+    {
+      "type": "rule",
+      "description": "or must have the Bad Romance or Temptation background"
+    }
+  ],
+  "benefit": "Bonus when dealing with certain creatures",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cursed%20Love"
+  }
+}

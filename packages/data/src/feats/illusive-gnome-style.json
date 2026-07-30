@@ -1,0 +1,42 @@
+{
+  "id": "illusive-gnome-style",
+  "name": "Illusive Gnome Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "gnome-weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "ARG"
+    },
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "gnome magic and weapon familiarity racial traits"
+    }
+  ],
+  "benefit": "Sacrifice spells to gain a bonus when feinting",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Illusive%20Gnome%20Style"
+  }
+}

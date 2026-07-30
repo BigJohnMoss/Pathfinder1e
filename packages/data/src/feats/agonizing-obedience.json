@@ -1,0 +1,17 @@
+{
+  "id": "agonizing-obedience",
+  "name": "Agonizing Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "3 ranks in Heal"
+    }
+  ],
+  "benefit": "Physically defile yourself to gain special boons",
+  "source": {
+    "title": "Occult Mysteries",
+    "page": 45,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Agonizing%20Obedience"
+  }
+}

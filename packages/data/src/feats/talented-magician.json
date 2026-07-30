@@ -1,0 +1,21 @@
+{
+  "id": "talented-magician",
+  "name": "Talented Magician",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Major magic rogue talent"
+    },
+    {
+      "type": "rule",
+      "description": "minor magic rogue talent"
+    }
+  ],
+  "benefit": "Gain additional uses of spell-like abilities",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 158,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Talented%20Magician"
+  }
+}

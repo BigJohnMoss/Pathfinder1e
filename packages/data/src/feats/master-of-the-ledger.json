@@ -1,0 +1,23 @@
+{
+  "id": "master-of-the-ledger",
+  "name": "Master of the Ledger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Appraise",
+      "minimum": 6
+    },
+    {
+      "type": "skill",
+      "key": "Profession (any one)",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Learn how to make investments in businesses, earning monthly profits",
+  "source": {
+    "title": "Taldor, Echoes of Glory",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20of%20the%20Ledger"
+  }
+}

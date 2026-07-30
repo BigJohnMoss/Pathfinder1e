@@ -1,0 +1,29 @@
+{
+  "id": "cannon-master",
+  "name": "Cannon Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "siege-engineer"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    },
+    {
+      "type": "rule",
+      "description": "Knowledge (engineering) or Profession (siege engineer) 7 ranks"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with at least one firearm siege engine"
+    }
+  ],
+  "benefit": "Learn to repair siege weapons with greater efficiency",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cannon%20Master"
+  }
+}

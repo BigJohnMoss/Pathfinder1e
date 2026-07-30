@@ -1,0 +1,25 @@
+{
+  "id": "deconstruct-spell",
+  "name": "Deconstruct Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Improved Counterspell or ability to cast dispel magic or greater dispel magic"
+    },
+    {
+      "type": "rule",
+      "description": "aphorite"
+    },
+    {
+      "type": "rule",
+      "description": "crystalline dust racial trait"
+    }
+  ],
+  "benefit": "Regain uses of crystalline dust when you counterspell or dispel a spell",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deconstruct%20Spell"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "crepuscular-cowl",
+  "name": "Crepuscular Cowl",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "shadow blending racial trait or shadow call shadowdancer prestige class feature"
+    }
+  ],
+  "benefit": "Grant yourself concealment in the light",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crepuscular%20Cowl"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "improved-disarm-partner",
+  "name": "Improved Disarm Partner",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "disarm-partner"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Make attacks of opportunity and disarm checks when an ally fails to disarm someone",
+  "source": {
+    "title": "Monster Codex",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Disarm%20Partner"
+  }
+}

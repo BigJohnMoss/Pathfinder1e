@@ -1,0 +1,22 @@
+{
+  "id": "ammo-drop",
+  "name": "Ammo Drop",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "proficient with sling"
+    }
+  ],
+  "benefit": "Load slings as a swift action",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ammo%20Drop"
+  }
+}

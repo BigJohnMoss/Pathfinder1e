@@ -1,0 +1,27 @@
+{
+  "id": "helpless-prisoner",
+  "name": "Helpless Prisoner",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Escape Artist",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    }
+  ],
+  "benefit": "Bluff your captors into loosening your restraints",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Helpless%20Prisoner"
+  }
+}

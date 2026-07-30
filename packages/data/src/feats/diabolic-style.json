@@ -1,0 +1,17 @@
+{
+  "id": "diabolic-style",
+  "name": "Diabolic Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Combat Reflexes; Improved Unarmed Strike or Weapon Focus (unarmed strike); base attack bonus +2 or monk level 1st"
+    }
+  ],
+  "benefit": "Humiliate targets that provoke attacks of opportun",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diabolic%20Style"
+  }
+}

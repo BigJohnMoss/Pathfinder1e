@@ -1,0 +1,17 @@
+{
+  "id": "inspirational-commander",
+  "name": "Inspirational Commander",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Charisma 13"
+    }
+  ],
+  "benefit": "Increase the morale of men under your command",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inspirational%20Commander"
+  }
+}

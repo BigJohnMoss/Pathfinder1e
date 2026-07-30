@@ -1,0 +1,21 @@
+{
+  "id": "disassemble-magic-item",
+  "name": "Disassemble Magic Item",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any item creation feat"
+    },
+    {
+      "type": "rule",
+      "description": "Aspis Consortium 20 TPA"
+    }
+  ],
+  "benefit": "Break a magic item down into its component pieces",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Disassemble%20Magic%20Item"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "stone-magic",
+  "name": "Stone Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 17
+    },
+    {
+      "type": "rule",
+      "description": "stone giant elder (age 700 years or older)"
+    }
+  ],
+  "benefit": "Learn new spell-like abilities.",
+  "source": {
+    "title": "Giants Revisited",
+    "page": 49,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Magic"
+  }
+}

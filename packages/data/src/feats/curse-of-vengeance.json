@@ -1,0 +1,21 @@
+{
+  "id": "curse-of-vengeance",
+  "name": "Curse of Vengeance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast at least one spell or spell-like ability with the curse descriptor"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Calistria"
+    }
+  ],
+  "benefit": "Cast an immediate curse when you become helpless or are killed",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Curse%20of%20Vengeance"
+  }
+}

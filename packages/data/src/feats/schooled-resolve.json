@@ -1,0 +1,17 @@
+{
+  "id": "schooled-resolve",
+  "name": "Schooled Resolve",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bravery"
+    }
+  ],
+  "benefit": "Add your bravery bonus against mind-affecting spells and effects from vampires",
+  "source": {
+    "title": "Blood of the Night",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Schooled%20Resolve"
+  }
+}

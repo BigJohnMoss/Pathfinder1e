@@ -1,0 +1,21 @@
+{
+  "id": "giant-bane-caster",
+  "name": "Giant-Bane Caster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 4
+    },
+    {
+      "type": "feature",
+      "id": "favored-enemy-giants"
+    }
+  ],
+  "benefit": "Giants have a harder time resisting your spells",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Giant-Bane%20Caster"
+  }
+}

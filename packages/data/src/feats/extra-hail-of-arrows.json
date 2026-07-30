@@ -1,0 +1,17 @@
+{
+  "id": "extra-hail-of-arrows",
+  "name": "Extra Hail of Arrows",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hail-of-arrows"
+    }
+  ],
+  "benefit": "Gain an additional use of hail of arrows",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Hail%20of%20Arrows"
+  }
+}

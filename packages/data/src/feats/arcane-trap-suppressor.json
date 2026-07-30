@@ -1,0 +1,17 @@
+{
+  "id": "arcane-trap-suppressor",
+  "name": "Arcane Trap Suppressor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast dispel magic or greater dispel magic as a spell or spell-like ability"
+    }
+  ],
+  "benefit": "Use dispel magic to suppress magical traps for longer than usual",
+  "source": {
+    "title": "Dungeoneer's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20Trap%20Suppressor"
+  }
+}

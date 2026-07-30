@@ -1,0 +1,17 @@
+{
+  "id": "slurk-rider",
+  "name": "Slurk Rider",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Kobold"
+    }
+  ],
+  "benefit": "You are skilled at riding slurks into battle",
+  "source": {
+    "title": "Monster Codex",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Slurk%20Rider"
+  }
+}

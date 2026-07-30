@@ -1,0 +1,26 @@
+{
+  "id": "demoralizing-lash",
+  "name": "Demoralizing Lash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "Strike a demoralized foe with a whip to increase the demoralized duration",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demoralizing%20Lash"
+  }
+}

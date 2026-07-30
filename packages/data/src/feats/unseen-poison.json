@@ -1,0 +1,27 @@
+{
+  "id": "unseen-poison",
+  "name": "Unseen Poison",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Craft (poison)",
+      "minimum": 5
+    },
+    {
+      "type": "spell-access",
+      "id": "nondetection"
+    }
+  ],
+  "benefit": "Conceal the aura of poisons you carry",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unseen%20Poison"
+  }
+}

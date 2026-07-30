@@ -1,0 +1,12 @@
+{
+  "id": "steam-spell",
+  "name": "Steam Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Use fire spells underwater without a caster level check",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Steam%20Spell"
+  }
+}

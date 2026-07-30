@@ -1,0 +1,12 @@
+{
+  "id": "seeking-spell",
+  "name": "Seeking Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Allow spells to bend around barriers",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Seeking%20Spell"
+  }
+}

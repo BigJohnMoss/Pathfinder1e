@@ -1,0 +1,22 @@
+{
+  "id": "fast-learner",
+  "name": "Fast Learner",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "human"
+    }
+  ],
+  "benefit": "Gain both +1 HP and +1 skill point when leveling in a favored class",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 77,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fast%20Learner"
+  }
+}

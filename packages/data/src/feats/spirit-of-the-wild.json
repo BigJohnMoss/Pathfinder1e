@@ -1,0 +1,25 @@
+{
+  "id": "spirit-of-the-wild",
+  "name": "Spirit of the Wild",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "attuned-to-the-wild"
+    },
+    {
+      "type": "feat",
+      "id": "guardian-of-the-wild"
+    },
+    {
+      "type": "rule",
+      "description": "elf"
+    }
+  ],
+  "benefit": "Become more perceptive within a specific terrain",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20of%20the%20Wild"
+  }
+}

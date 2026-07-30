@@ -1,0 +1,21 @@
+{
+  "id": "casual-illusionist",
+  "name": "Casual Illusionist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Gnome"
+    },
+    {
+      "type": "rule",
+      "description": "gnome magic racial trait"
+    }
+  ],
+  "benefit": "Gain a bonus to Bluff, Disguise, and Sleight of Hand as long as you have unused spell-like illusions",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 37,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Casual%20Illusionist"
+  }
+}

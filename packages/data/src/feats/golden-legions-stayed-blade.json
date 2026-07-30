@@ -1,0 +1,17 @@
+{
+  "id": "golden-legions-stayed-blade",
+  "name": "Golden Legion's Stayed Blade",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Keep a creature alive when your attack would otherwise kill it",
+  "source": {
+    "title": "Champions of Purity",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Golden%20Legion's%20Stayed%20Blade"
+  }
+}

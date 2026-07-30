@@ -1,0 +1,17 @@
+{
+  "id": "extra-inspiration",
+  "name": "Extra Inspiration",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Investigator or inspiration class feature"
+    }
+  ],
+  "benefit": "Gain three uses of inspiration",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Inspiration"
+  }
+}

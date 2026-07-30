@@ -1,0 +1,34 @@
+{
+  "id": "shielded-staff-master",
+  "name": "Shielded Staff Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "improved-two-weapon-fighting"
+    },
+    {
+      "type": "feat",
+      "id": "shielded-staff-style"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Add your shield's enhancement bonus to your shieled staff's shield bonus",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shielded%20Staff%20Master"
+  }
+}

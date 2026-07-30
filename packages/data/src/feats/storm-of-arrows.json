@@ -1,0 +1,17 @@
+{
+  "id": "storm-of-arrows",
+  "name": "Storm of Arrows",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hail-of-arrows"
+    }
+  ],
+  "benefit": "Target more creatures with hail of arrows",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Storm%20of%20Arrows"
+  }
+}

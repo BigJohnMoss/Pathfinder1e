@@ -1,0 +1,22 @@
+{
+  "id": "uncivilized-tactics",
+  "name": "Uncivilized Tactics",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Prevent a target from using certain limbs/attacks with combat maneuvers",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Uncivilized%20Tactics"
+  }
+}

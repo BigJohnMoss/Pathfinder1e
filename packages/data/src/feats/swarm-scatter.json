@@ -1,0 +1,12 @@
+{
+  "id": "swarm-scatter",
+  "name": "Swarm Scatter",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+1 AC for adjacent allies, immune to swarm attack/distraction of rat swarms",
+  "source": {
+    "title": "Blood of the Moon",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swarm%20Scatter"
+  }
+}

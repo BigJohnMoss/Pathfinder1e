@@ -1,0 +1,17 @@
+{
+  "id": "indigestible",
+  "name": "Indigestible",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Favored enemy (ooze) or survived engulfing by an ooze"
+    }
+  ],
+  "benefit": "Gain acid resistance 5",
+  "source": {
+    "title": "Dungeon Denizens Revisited",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Indigestible"
+  }
+}

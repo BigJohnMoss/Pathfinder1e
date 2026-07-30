@@ -1,0 +1,29 @@
+{
+  "id": "never-conquered-forever-feared",
+  "name": "Never Conquered, Forever Feared",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Be a member of House Heskillar"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Adopted by Dragons"
+    },
+    {
+      "type": "rule",
+      "description": "Path of Righteous Rage"
+    },
+    {
+      "type": "rule",
+      "description": "or Proud Heritage background"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Intimidate checks and on saving throws against paralysis and sleep",
+  "source": {
+    "title": "Pathfinder #131: The Reaper's Right Hand",
+    "page": 78,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Never%20Conquered%2C%20Forever%20Feared"
+  }
+}

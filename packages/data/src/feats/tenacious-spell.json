@@ -1,0 +1,12 @@
+{
+  "id": "tenacious-spell",
+  "name": "Tenacious Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Spell is difficult to dispel and remains for 1d4 rounds",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tenacious%20Spell"
+  }
+}

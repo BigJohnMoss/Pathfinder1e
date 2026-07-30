@@ -1,0 +1,27 @@
+{
+  "id": "convincing-persona",
+  "name": "Convincing Persona",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Perform (act)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "or dual identity UI class feature"
+    }
+  ],
+  "benefit": "Benefit from your dual identity even if people know your identity",
+  "source": {
+    "title": "Inner Sea Intrigue",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Convincing%20Persona"
+  }
+}

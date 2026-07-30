@@ -1,0 +1,25 @@
+{
+  "id": "improved-outflank",
+  "name": "Improved Outflank",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "outflank"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Flank foe without having to be on opposite sides",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Outflank"
+  }
+}

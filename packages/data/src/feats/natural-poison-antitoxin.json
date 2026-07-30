@@ -1,0 +1,27 @@
+{
+  "id": "natural-poison-antitoxin",
+  "name": "Natural Poison Antitoxin",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "natural-poison-harvester"
+    },
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 8
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 8
+    }
+  ],
+  "benefit": "When you create an antitoxin, it has a duration of 4 hours or more",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 115,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Natural%20Poison%20Antitoxin"
+  }
+}

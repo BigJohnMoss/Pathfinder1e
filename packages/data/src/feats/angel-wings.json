@@ -1,0 +1,25 @@
+{
+  "id": "angel-wings",
+  "name": "Angel Wings",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "angelic-blood"
+    },
+    {
+      "type": "rule",
+      "description": "aasimar"
+    },
+    {
+      "type": "level",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Gain a pair of wings and a fly speed",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Angel%20Wings"
+  }
+}

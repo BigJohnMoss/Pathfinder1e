@@ -1,0 +1,34 @@
+{
+  "id": "greater-awesome-blow",
+  "name": "Greater Awesome Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 25
+    },
+    {
+      "type": "feat",
+      "id": "awesome-blow"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "size Large or larger"
+    }
+  ],
+  "benefit": "Your awesome blows send enemies further",
+  "source": {
+    "title": "Pathfinder #91: Battle of Bloodmarch Hills",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Awesome%20Blow"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "summon-neutral-monster",
+  "name": "Summon Neutral Monster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Chaotic neutral"
+    },
+    {
+      "type": "rule",
+      "description": "lawful neutral"
+    },
+    {
+      "type": "rule",
+      "description": "or neutral alignment"
+    }
+  ],
+  "benefit": "Summon creatures that embody the forces of balance",
+  "source": {
+    "title": "Champions of Balance",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Summon%20Neutral%20Monster"
+  }
+}

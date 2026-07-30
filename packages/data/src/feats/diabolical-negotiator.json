@@ -1,0 +1,25 @@
+{
+  "id": "diabolical-negotiator",
+  "name": "Diabolical Negotiator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Diplomacy)"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Asmodeus"
+    }
+  ],
+  "benefit": "Diplomacy checks are based on Intelligence or Wisdom",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 210,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diabolical%20Negotiator"
+  }
+}

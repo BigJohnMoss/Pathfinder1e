@@ -1,0 +1,30 @@
+{
+  "id": "wyvern-fury-style",
+  "name": "Wyvern Fury Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(whip)"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "brawler’s flurry ACG class feature or flurry of blows class feature"
+    }
+  ],
+  "benefit": "Use daggers and whips with your flurry.",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wyvern%20Fury%20Style"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "beacon-of-hope",
+  "name": "Beacon of Hope",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 3d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Milani"
+    }
+  ],
+  "benefit": "Channel positive energy to heal creatures and grant +2 morale bonus",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beacon%20of%20Hope"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "stubborn-curse",
+  "name": "Stubborn Curse",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast a spell or spell-like ability with the curse UM descriptor"
+    },
+    {
+      "type": "rule",
+      "description": "or a special ability with a curse effect"
+    }
+  ],
+  "benefit": "Creatures roll twice to remove your curses",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stubborn%20Curse"
+  }
+}

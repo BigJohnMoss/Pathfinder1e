@@ -1,0 +1,17 @@
+{
+  "id": "graverisen",
+  "name": "Graverisen",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Die and be brought back at least twice"
+    }
+  ],
+  "benefit": "Gain a supernatural ability to save yourself from death",
+  "source": {
+    "title": "Legacy of Fire Player's Guide",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Graverisen"
+  }
+}

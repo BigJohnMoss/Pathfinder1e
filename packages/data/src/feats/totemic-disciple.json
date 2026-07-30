@@ -1,0 +1,30 @@
+{
+  "id": "totemic-disciple",
+  "name": "Totemic Disciple",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "athletic"
+    },
+    {
+      "type": "rule",
+      "description": "Dex 13"
+    },
+    {
+      "type": "rule",
+      "description": "Totemic Initiate; base attack bonus +9; no barbarian totem rage powers except those chosen with this feat or Totemic Initiate; nonlawful alignment"
+    }
+  ],
+  "benefit": "Gain benefits of a rage power linked to your chosen totem",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Totemic%20Disciple"
+  }
+}

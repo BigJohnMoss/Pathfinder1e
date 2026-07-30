@@ -1,0 +1,29 @@
+{
+  "id": "aldori-artistry",
+  "name": "Aldori Artistry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "bab",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Gain a+2 bonus on a combat maneuver when using an Aldori dueling sword",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aldori%20Artistry"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "knocking-blows",
+  "name": "Knocking Blows*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Intense Blows"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or fighter level 8th"
+    },
+    {
+      "type": "feature",
+      "id": "armor-training"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with heavy armor"
+    }
+  ],
+  "benefit": "Creatures you Power Attack take a penalty to CMD for 1 round",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Knocking%20Blows*"
+  }
+}

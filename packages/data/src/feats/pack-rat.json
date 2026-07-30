@@ -1,0 +1,17 @@
+{
+  "id": "pack-rat",
+  "name": "Pack Rat",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ratfolk"
+    }
+  ],
+  "benefit": "Locate random items on your person when needed",
+  "source": {
+    "title": "Monster Codex",
+    "page": 176,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pack%20Rat"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "channeling-force",
+  "name": "Channeling Force",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "at-least-one-force-spell"
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Spend channel energy to deal extra force damage with weapon attacks",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 143,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channeling%20Force"
+  }
+}

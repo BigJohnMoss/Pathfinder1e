@@ -1,0 +1,21 @@
+{
+  "id": "rapid-focus-shift",
+  "name": "Rapid Focus Shift",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "mental focus class ability"
+    }
+  ],
+  "benefit": "Shift mental focus more quickly 1/day",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rapid%20Focus%20Shift"
+  }
+}

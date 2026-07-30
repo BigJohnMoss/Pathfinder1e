@@ -1,0 +1,34 @@
+{
+  "id": "greater-ray-shield",
+  "name": "Greater Ray Shield*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "missile-shield"
+    },
+    {
+      "type": "feat",
+      "id": "ray-shield"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "spellbreaker"
+    }
+  ],
+  "benefit": "Your shield is unaffected when using Ray Shield",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Ray%20Shield*"
+  }
+}

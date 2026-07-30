@@ -1,0 +1,25 @@
+{
+  "id": "spell-sponge",
+  "name": "Spell Sponge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal companion or familiar"
+    },
+    {
+      "type": "feat",
+      "id": "share-spells"
+    },
+    {
+      "type": "rule",
+      "description": "ability"
+    }
+  ],
+  "benefit": "Harmless spells cast on you by your master are automatically extended",
+  "source": {
+    "title": "Animal Archive",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Sponge"
+  }
+}

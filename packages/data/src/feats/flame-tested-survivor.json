@@ -1,0 +1,17 @@
+{
+  "id": "flame-tested-survivor",
+  "name": "Flame-Tested Survivor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Knocked unconscious or killed by fire damage at least 10 times"
+    }
+  ],
+  "benefit": "Gain fire resistance 5 and +2 save vs. all fire effects",
+  "source": {
+    "title": "Legacy of Fire Player's Guide",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flame-Tested%20Survivor"
+  }
+}

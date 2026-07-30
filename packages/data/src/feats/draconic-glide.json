@@ -1,0 +1,21 @@
+{
+  "id": "draconic-glide",
+  "name": "Draconic Glide",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "draconic-aspect"
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "+2 save vs. sleep/paralysis, grow a pair of wings for gliding",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 136,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Draconic%20Glide"
+  }
+}

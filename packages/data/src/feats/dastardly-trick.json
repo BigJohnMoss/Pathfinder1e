@@ -1,0 +1,17 @@
+{
+  "id": "dastardly-trick",
+  "name": "Dastardly Trick",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int 13; Amateur Swashbuckler ACG or panache ACG class feature; Combat Expertise; Improved Dirty Trick APG"
+    }
+  ],
+  "benefit": "Your dirty tricks are harder to remove",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dastardly%20Trick"
+  }
+}

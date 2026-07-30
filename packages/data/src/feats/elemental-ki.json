@@ -1,0 +1,30 @@
+{
+  "id": "elemental-ki",
+  "name": "Elemental Ki",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Brawler’s flurry or flurry of blows class feature"
+    },
+    {
+      "type": "feature",
+      "id": "burn"
+    },
+    {
+      "type": "rule",
+      "description": "kinetic fist wild talent"
+    },
+    {
+      "type": "class-level",
+      "classId": "kineticist",
+      "minimum": 4
+    }
+  ],
+  "benefit": "You can accept burn to gain the benefits of ki.",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Ki"
+  }
+}

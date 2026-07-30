@@ -1,0 +1,34 @@
+{
+  "id": "juke",
+  "name": "Juke",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "feat",
+      "id": "sidestep"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    }
+  ],
+  "benefit": "Dodge charging opponents",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Juke"
+  }
+}

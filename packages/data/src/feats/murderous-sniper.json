@@ -1,0 +1,17 @@
+{
+  "id": "murderous-sniper",
+  "name": "Murderous Sniper",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "death-attack"
+    }
+  ],
+  "benefit": "You can make a death attack from range",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Murderous%20Sniper"
+  }
+}

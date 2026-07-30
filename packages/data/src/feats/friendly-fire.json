@@ -1,0 +1,17 @@
+{
+  "id": "friendly-fire",
+  "name": "Friendly Fire",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    }
+  ],
+  "benefit": "Increase your ability to attack in ranged combat by not caring if you hit your allies",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Friendly%20Fire"
+  }
+}

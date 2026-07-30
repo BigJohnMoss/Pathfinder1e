@@ -1,0 +1,12 @@
+{
+  "id": "fleeting-spell",
+  "name": "Fleeting Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Dismiss spell more easily",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fleeting%20Spell"
+  }
+}

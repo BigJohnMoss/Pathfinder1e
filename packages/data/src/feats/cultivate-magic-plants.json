@@ -1,0 +1,26 @@
+{
+  "id": "cultivate-magic-plants",
+  "name": "Cultivate Magic Plants",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "brew-potion"
+    },
+    {
+      "type": "feat",
+      "id": "craft-wondrous-item"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Grow magical plants",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 109,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cultivate%20Magic%20Plants"
+  }
+}

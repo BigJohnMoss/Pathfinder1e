@@ -1,0 +1,29 @@
+{
+  "id": "casterbane-shot",
+  "name": "Casterbane Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Gunslinger UC or the grit class feature"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Make it harder for spellcasters to concentrate while under fire",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Casterbane%20Shot"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "arcane-insight",
+  "name": "Arcane Insight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-shield"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "rule",
+      "description": "arcane spellcaster"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Nethys"
+    }
+  ],
+  "benefit": "+1 bonus to AC when using Arcane Shield",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20Insight"
+  }
+}

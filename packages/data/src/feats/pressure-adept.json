@@ -1,0 +1,18 @@
+{
+  "id": "pressure-adept",
+  "name": "Pressure Adept",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Adapt to pressure changes more efficiently",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pressure%20Adept"
+  }
+}

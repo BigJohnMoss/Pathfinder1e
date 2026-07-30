@@ -1,0 +1,38 @@
+{
+  "id": "counter-reflexes",
+  "name": "Counter Reflexes",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "anticipate-dodge"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "class-level",
+      "classId": "brawler",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "or monk level 6th"
+    }
+  ],
+  "benefit": "Opponents with Mobility do not gain a bonus when they provoke attacks of opportunity from you",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 144,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Counter%20Reflexes"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "stick-together",
+  "name": "Stick Together",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Gain extra movement when a nearby ally moves",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stick%20Together"
+  }
+}

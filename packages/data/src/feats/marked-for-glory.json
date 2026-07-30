@@ -1,0 +1,25 @@
+{
+  "id": "marked-for-glory",
+  "name": "Marked for Glory",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "great-fortitude"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "or Lightning Reflexes"
+    }
+  ],
+  "benefit": "Gain extra surge use",
+  "source": {
+    "title": "Mythic Adventures",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Marked%20for%20Glory"
+  }
+}

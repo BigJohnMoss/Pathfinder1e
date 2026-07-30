@@ -1,0 +1,25 @@
+{
+  "id": "monstrous-crafter",
+  "name": "Monstrous Crafter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "craft-wondrous-item"
+    },
+    {
+      "type": "feat",
+      "id": "grisly-ornament"
+    },
+    {
+      "type": "feat",
+      "id": "harvest-parts"
+    }
+  ],
+  "benefit": "Integrate an ornament into a magic item to gain its benefit once per day",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monstrous%20Crafter"
+  }
+}

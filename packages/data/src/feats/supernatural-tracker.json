@@ -1,0 +1,22 @@
+{
+  "id": "supernatural-tracker",
+  "name": "Supernatural Tracker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 1
+    },
+    {
+      "type": "spell-access",
+      "id": "a-detect-spell"
+    }
+  ],
+  "benefit": "Use certain detection spells to augment your tracking abilities",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Supernatural%20Tracker"
+  }
+}

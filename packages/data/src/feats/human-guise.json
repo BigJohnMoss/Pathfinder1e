@@ -1,0 +1,25 @@
+{
+  "id": "human-guise",
+  "name": "Human Guise",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Change shape ability"
+    },
+    {
+      "type": "rule",
+      "description": "shapechanger subtype"
+    },
+    {
+      "type": "rule",
+      "description": "must be able to change shape into a human or must have a true form that appears human"
+    }
+  ],
+  "benefit": "Count as a human for all abilities, effects, and prerequisites",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Human%20Guise"
+  }
+}

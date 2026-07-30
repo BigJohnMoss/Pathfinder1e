@@ -1,0 +1,25 @@
+{
+  "id": "kinetic-counter",
+  "name": "Kinetic Counter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cold simple blast"
+    },
+    {
+      "type": "rule",
+      "description": "fire simple blast"
+    },
+    {
+      "type": "rule",
+      "description": "or water simple blast; kinetic blast class feature"
+    }
+  ],
+  "benefit": "Use kinetic blast to counter an opposing element",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 136,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kinetic%20Counter"
+  }
+}

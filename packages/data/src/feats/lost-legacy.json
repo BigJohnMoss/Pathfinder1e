@@ -1,0 +1,21 @@
+{
+  "id": "lost-legacy-feat",
+  "name": "Lost Legacy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Your family must have claim to an inherited title or position that no longer belongs to them"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Dishonored Family background. You can take this feat even if you have no knowledge of this lost family title"
+    }
+  ],
+  "benefit": "Gain bonuses to Charisma and Wisdom based checks",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 70,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lost%20Legacy"
+  }
+}

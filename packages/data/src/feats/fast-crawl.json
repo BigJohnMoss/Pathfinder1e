@@ -1,0 +1,12 @@
+{
+  "id": "fast-crawl",
+  "name": "Fast Crawl",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Move faster while prone",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fast%20Crawl"
+  }
+}

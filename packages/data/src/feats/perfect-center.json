@@ -1,0 +1,30 @@
+{
+  "id": "perfect-center",
+  "name": "Perfect Center",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 21
+    },
+    {
+      "type": "feat",
+      "id": "combat-meditation"
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    },
+    {
+      "type": "level",
+      "minimum": 17
+    }
+  ],
+  "benefit": "Take 10 on any skill check/concentration check, even if not normally allowed.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Perfect%20Center"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "taldan-duelist",
+  "name": "Taldan Duelist",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(falcata)"
+    },
+    {
+      "type": "feat",
+      "id": "shield-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(buckler)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(falcata)"
+    }
+  ],
+  "benefit": "Gain +1 shield bonus to AC, +2 on Acrobatics checks",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 289,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Taldan%20Duelist"
+  }
+}

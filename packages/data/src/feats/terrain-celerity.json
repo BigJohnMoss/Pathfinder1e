@@ -1,0 +1,21 @@
+{
+  "id": "terrain-celerity",
+  "name": "Terrain Celerity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy"
+    },
+    {
+      "type": "feature",
+      "id": "favored-terrain"
+    }
+  ],
+  "benefit": "Increase your speed in your favored terrain",
+  "source": {
+    "title": "Heroes of the Darklands",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Terrain%20Celerity"
+  }
+}

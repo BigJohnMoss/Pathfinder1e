@@ -1,0 +1,17 @@
+{
+  "id": "willing-death",
+  "name": "Willing Death",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duskwalker"
+    }
+  ],
+  "benefit": "You can cast paladin's sacrifice to prevent an ally from dying",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Willing%20Death"
+  }
+}

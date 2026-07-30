@@ -1,0 +1,21 @@
+{
+  "id": "acute-shot",
+  "name": "Acute Shot",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "far-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    }
+  ],
+  "benefit": "Deduct range penalties from damage rolls instead of attack rolls",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Acute%20Shot"
+  }
+}

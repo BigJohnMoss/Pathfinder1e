@@ -1,0 +1,26 @@
+{
+  "id": "recall-ammunition",
+  "name": "Recall Ammunition",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Gunslinger feat or grit class feature"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    }
+  ],
+  "benefit": "You can spend grit to teleport a missed bullet back into your gun",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Recall%20Ammunition"
+  }
+}

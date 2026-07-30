@@ -1,0 +1,17 @@
+{
+  "id": "spirit-focus",
+  "name": "Spirit Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "spirit-bonus"
+    }
+  ],
+  "benefit": "Increase spirit bonus from one legend by 1",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 140,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Focus"
+  }
+}

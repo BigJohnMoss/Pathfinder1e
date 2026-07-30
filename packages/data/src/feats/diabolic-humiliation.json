@@ -1,0 +1,21 @@
+{
+  "id": "diabolic-humiliation",
+  "name": "Diabolic Humiliation",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "rule",
+      "description": "Diabolic Style; Vital Strike; Improved Unarmed Strike or Weapon Focus (unarmed strike); base attack bonus +8 or monk level 7th"
+    }
+  ],
+  "benefit": "Gain enhanced effects when you use Diabolic Style to humiliate a target",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diabolic%20Humiliation"
+  }
+}

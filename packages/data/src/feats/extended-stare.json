@@ -1,0 +1,17 @@
+{
+  "id": "extended-stare",
+  "name": "Extended Stare",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hypnotic-stare"
+    }
+  ],
+  "benefit": "Increase hypnotic stare’s range by 10 feet",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extended%20Stare"
+  }
+}

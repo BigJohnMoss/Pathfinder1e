@@ -1,0 +1,17 @@
+{
+  "id": "touvette-defender",
+  "name": "Touvette Defender",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Touvette affinity"
+    }
+  ],
+  "benefit": "Smite an enemy of Touvette once per day",
+  "source": {
+    "title": "Guide to the River Kingdoms",
+    "page": 55,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Touvette%20Defender"
+  }
+}

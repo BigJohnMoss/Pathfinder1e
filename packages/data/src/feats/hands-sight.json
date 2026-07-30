@@ -1,0 +1,17 @@
+{
+  "id": "hands-sight",
+  "name": "Hand's Sight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "possessed-hand"
+    }
+  ],
+  "benefit": "Gain darkvision 60ft and cannot be flanked",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hand's%20Sight"
+  }
+}

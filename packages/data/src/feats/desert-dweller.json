@@ -1,0 +1,17 @@
+{
+  "id": "desert-dweller",
+  "name": "Desert Dweller",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-terrain-desert"
+    }
+  ],
+  "benefit": "Treat hot environments as one step less severe; reduced penalties for thirst and +4 bonus on saves to avoid desert-related visual hazards such as mirages",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 109,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Desert%20Dweller"
+  }
+}

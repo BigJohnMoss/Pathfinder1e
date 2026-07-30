@@ -1,0 +1,25 @@
+{
+  "id": "storm-of-blades-feat",
+  "name": "Storm of Blades",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with slashing weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Deal damage to all adjacent creatures with a slashing weapon",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Storm%20of%20Blades"
+  }
+}

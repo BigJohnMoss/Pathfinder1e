@@ -1,0 +1,23 @@
+{
+  "id": "dragon-gold-crown",
+  "name": "Dragon Gold Crown",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Create a headband of alluring charsima from the remains of a dragon or magical beast",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dragon%20Gold%20Crown"
+  }
+}

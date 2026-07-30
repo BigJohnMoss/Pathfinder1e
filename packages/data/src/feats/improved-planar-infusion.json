@@ -1,0 +1,21 @@
+{
+  "id": "improved-planar-infusion",
+  "name": "Improved Planar Infusion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "planar-infusion"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Gain an improved infusion from a plane",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Planar%20Infusion"
+  }
+}

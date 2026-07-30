@@ -1,0 +1,35 @@
+{
+  "id": "stylized-spell-mastery",
+  "name": "Stylized Spell Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-mastery"
+    },
+    {
+      "type": "feat",
+      "id": "stylized-spell"
+    },
+    {
+      "type": "rule",
+      "description": "UI"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Your mastered spells take no effort to alter",
+  "source": {
+    "title": "Inner Sea Intrigue",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stylized%20Spell%20Mastery"
+  }
+}

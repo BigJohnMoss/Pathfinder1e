@@ -1,0 +1,41 @@
+{
+  "id": "swordplay-deflection",
+  "name": "Swordplay Deflection",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    },
+    {
+      "type": "feat",
+      "id": "swordplay-style"
+    },
+    {
+      "type": "feat",
+      "id": "swordplay-upset"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Forgo an attack to disrupt an enemy’s",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swordplay%20Deflection"
+  }
+}

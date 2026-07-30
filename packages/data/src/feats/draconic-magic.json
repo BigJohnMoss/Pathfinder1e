@@ -1,0 +1,25 @@
+{
+  "id": "draconic-magic",
+  "name": "Draconic Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "draconic-aspect"
+    },
+    {
+      "type": "rule",
+      "description": "ARG"
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "Gain additional spell-like abilities from your draconic heritage",
+  "source": {
+    "title": "Monster Codex",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Draconic%20Magic"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "disciplinary-devotee",
+  "name": "Disciplinary Devotee",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "psychic-discipline"
+    }
+  ],
+  "benefit": "Gain +1 on caster level checks, concentration checks, and saving throws for discipline spells",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Disciplinary%20Devotee"
+  }
+}

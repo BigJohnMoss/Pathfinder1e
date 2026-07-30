@@ -1,0 +1,29 @@
+{
+  "id": "cloven-helm",
+  "name": "Cloven Helm",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dented-helm"
+    },
+    {
+      "type": "feat",
+      "id": "hard-headed"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    }
+  ],
+  "benefit": "+1 AC vs. critical hits with helms, apply damage to helmet during a critical hit",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cloven%20Helm"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "exceptional-pull",
+  "name": "Exceptional Pull",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "deadly-aim"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Get more out of a weapon’s str rating, use them with a lower str modifier",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Exceptional%20Pull"
+  }
+}

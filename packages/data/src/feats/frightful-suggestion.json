@@ -1,0 +1,21 @@
+{
+  "id": "frightful-suggestion",
+  "name": "Frightful Suggestion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Frightful presence"
+    },
+    {
+      "type": "rule",
+      "description": "true dragon"
+    }
+  ],
+  "benefit": "Make suggestions to those affected by your fightful presence",
+  "source": {
+    "title": "Guardians of Dragonfall",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Frightful%20Suggestion"
+  }
+}

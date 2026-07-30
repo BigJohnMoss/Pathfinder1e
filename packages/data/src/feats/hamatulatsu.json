@@ -1,0 +1,25 @@
+{
+  "id": "hamatulatsu",
+  "name": "Hamatulatsu",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(unarmed strike)"
+    }
+  ],
+  "benefit": "Unarmed attacks can inflict piercing damage and sicken foes",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 287,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hamatulatsu"
+  }
+}

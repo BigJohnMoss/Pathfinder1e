@@ -1,0 +1,17 @@
+{
+  "id": "forester",
+  "name": "Forester",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-terrain-forest"
+    }
+  ],
+  "benefit": "Ignore difficult terrain from undergrowth and use trees to protect from attacks",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 112,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Forester"
+  }
+}

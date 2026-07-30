@@ -1,0 +1,17 @@
+{
+  "id": "silent-kill",
+  "name": "Silent Kill",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Stealth 12 ranks; assassinate advanced slayer talent or ninja master trick"
+    }
+  ],
+  "benefit": "Kill during the surprise round and slip back into shadows",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Silent%20Kill"
+  }
+}

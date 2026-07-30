@@ -1,0 +1,30 @@
+{
+  "id": "bulette-charge-style",
+  "name": "Bulette Charge Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-overrun"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with heavy armor"
+    }
+  ],
+  "benefit": "Gain a +4 bonus to overrun maneuvers",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bulette%20Charge%20Style"
+  }
+}

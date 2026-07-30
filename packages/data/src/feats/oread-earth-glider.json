@@ -1,0 +1,29 @@
+{
+  "id": "oread-earth-glider",
+  "name": "Oread Earth Glider",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "oread-burrower"
+    },
+    {
+      "type": "feat",
+      "id": "stony-step"
+    },
+    {
+      "type": "level",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "oread"
+    }
+  ],
+  "benefit": "Gain the earth glide ability",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Oread%20Earth%20Glider"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "grand-duchy-familiarity",
+  "name": "Grand Duchy Familiarity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with at least one firearm"
+    }
+  ],
+  "benefit": "Reroll a missed attack once per day",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grand%20Duchy%20Familiarity"
+  }
+}

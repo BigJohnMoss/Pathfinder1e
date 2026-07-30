@@ -1,0 +1,22 @@
+{
+  "id": "winters-strike",
+  "name": "Winter's Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Nature Magic or the ability to cast druid or ranger spells; Vital Strike"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Target of your Vital Strike must successfully save or become fatigued",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Winter's%20Strike"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "flinging-charge",
+  "name": "Flinging Charge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "quick-draw"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Attack with a thrown weapon during a charge and then end the charge with a melee weapon attack",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flinging%20Charge"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "orc-hewer",
+  "name": "Orc Hewer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "cleave"
+    },
+    {
+      "type": "feat",
+      "id": "goblin-cleaver"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    }
+  ],
+  "benefit": "+2 bonus to attack when cleaving orcs",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Orc%20Hewer"
+  }
+}

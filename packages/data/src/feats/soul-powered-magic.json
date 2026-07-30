@@ -1,0 +1,21 @@
+{
+  "id": "soul-powered-magic",
+  "name": "Soul-Powered Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any evil alignment"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use a captured soul as an expensive material component to cast a spell",
+  "source": {
+    "title": "Book of the Damned",
+    "page": 179,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Soul-Powered%20Magic"
+  }
+}

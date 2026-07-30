@@ -1,0 +1,21 @@
+{
+  "id": "tengu-wings",
+  "name": "Tengu Wings",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "tengu"
+    }
+  ],
+  "benefit": "Grow wings 1/day",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 165,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tengu%20Wings"
+  }
+}

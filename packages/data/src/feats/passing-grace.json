@@ -1,0 +1,12 @@
+{
+  "id": "passing-grace",
+  "name": "Passing Grace",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your bond with your allies allows you to share positive energy between yourselves",
+  "source": {
+    "title": "Distant Realms",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Passing%20Grace"
+  }
+}

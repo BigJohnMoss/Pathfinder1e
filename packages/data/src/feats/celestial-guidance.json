@@ -1,0 +1,12 @@
+{
+  "id": "celestial-guidance",
+  "name": "Celestial Guidance",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Increase your knowledge about the stars and planets",
+  "source": {
+    "title": "People of the Stars",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Celestial%20Guidance"
+  }
+}

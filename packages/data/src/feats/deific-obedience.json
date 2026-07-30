@@ -1,0 +1,22 @@
+{
+  "id": "deific-obedience",
+  "name": "Deific Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must worship a deity"
+    }
+  ],
+  "benefit": "Gain spell-like and other abilities in exchange for performing a daily obedience",
+  "source": {
+    "title": "Faiths of Golarion",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deific%20Obedience"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "kudzu-takeover",
+  "name": "Kudzu Takeover",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
+    },
+    {
+      "type": "feat",
+      "id": "greater-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "kudzu-grappler"
+    },
+    {
+      "type": "feat",
+      "id": "kudzu-invasion"
+    },
+    {
+      "type": "rule",
+      "description": "vine leshy"
+    }
+  ],
+  "benefit": "Increase the miss chance inflicted with Kudzu Grappler",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kudzu%20Takeover"
+  }
+}

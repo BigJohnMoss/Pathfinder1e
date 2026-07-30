@@ -1,0 +1,17 @@
+{
+  "id": "expressionless",
+  "name": "Expressionless",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wyrwood"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Bluff checks against non wyrwood",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expressionless"
+  }
+}

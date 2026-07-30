@@ -1,0 +1,17 @@
+{
+  "id": "reckless-rage",
+  "name": "Reckless Rage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Power Attack; rage or raging song class feature"
+    }
+  ],
+  "benefit": "Take a penalty on attack rolls to deal more damage while raging",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reckless%20Rage"
+  }
+}

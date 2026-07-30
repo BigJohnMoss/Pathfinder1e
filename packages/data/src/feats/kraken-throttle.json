@@ -1,0 +1,34 @@
+{
+  "id": "kraken-throttle",
+  "name": "Kraken Throttle",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "kraken-style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +5 or monk level 5th"
+    }
+  ],
+  "benefit": "Choke your opponent while grappling",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kraken%20Throttle"
+  }
+}

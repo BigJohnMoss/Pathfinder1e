@@ -1,0 +1,17 @@
+{
+  "id": "fey-guarded",
+  "name": "Fey-Guarded",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Knowledge (nature) or Knowledge (planes) 3 ranks"
+    }
+  ],
+  "benefit": "Gain a +2 morale bonus against enchantment and illusion effects from fey",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fey-Guarded"
+  }
+}

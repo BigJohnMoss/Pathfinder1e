@@ -1,0 +1,17 @@
+{
+  "id": "grenade-expert",
+  "name": "Grenade Expert",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "throw-anything"
+    }
+  ],
+  "benefit": "Decide exactly when one of your alchemical grenades explodes",
+  "source": {
+    "title": "Pathfinder #115: Trail of the Hunted",
+    "page": 74,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grenade%20Expert"
+  }
+}

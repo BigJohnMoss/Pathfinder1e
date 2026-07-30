@@ -1,0 +1,30 @@
+{
+  "id": "skyseeker-thrash",
+  "name": "Skyseeker Thrash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "skyseeker-style"
+    },
+    {
+      "type": "feat",
+      "id": "step-up"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Gain a damage bonus against larger creatures",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Skyseeker%20Thrash"
+  }
+}

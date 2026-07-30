@@ -1,0 +1,22 @@
+{
+  "id": "bullying-blow",
+  "name": "Bullying Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "orc"
+    }
+  ],
+  "benefit": "Intimidate creatures while attacking them",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bullying%20Blow"
+  }
+}

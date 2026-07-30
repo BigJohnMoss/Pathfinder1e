@@ -1,0 +1,34 @@
+{
+  "id": "infused-spell-cartridges",
+  "name": "Infused Spell Cartridges",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "feat",
+      "id": "spell-cartridges"
+    },
+    {
+      "type": "spell-access",
+      "id": "4th-level-arcane-spells"
+    },
+    {
+      "type": "rule",
+      "description": "proficient with firearms"
+    }
+  ],
+  "benefit": "You can deliver a touch spell through a force bullet",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Infused%20Spell%20Cartridges"
+  }
+}

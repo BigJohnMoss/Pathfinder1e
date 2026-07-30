@@ -1,0 +1,27 @@
+{
+  "id": "stalkers-focus",
+  "name": "Stalker's Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "no-levels-in-a-class-that-has-the-animal-focus"
+    }
+  ],
+  "benefit": "Gain an animal focus for you or your animal companion",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 157,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stalker's%20Focus"
+  }
+}

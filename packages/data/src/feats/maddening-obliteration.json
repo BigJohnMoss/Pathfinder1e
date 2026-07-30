@@ -1,0 +1,52 @@
+{
+  "id": "maddening-obliteration",
+  "name": "Maddening Obliteration",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 19
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "maddening-strike"
+    },
+    {
+      "type": "feat",
+      "id": "maddening-style"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 10
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    },
+    {
+      "type": "rule",
+      "description": "nongood alignment"
+    }
+  ],
+  "benefit": "Your unarmed strikes weaken foes against madness and can disintegrate the fallen",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Maddening%20Obliteration"
+  }
+}

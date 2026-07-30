@@ -1,0 +1,17 @@
+{
+  "id": "infernal-legist",
+  "name": "Infernal Legist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Devil subtype"
+    }
+  ],
+  "benefit": "You can instantly create a diabolic contact.",
+  "source": {
+    "title": "Book of the Damned",
+    "page": 203,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Infernal%20Legist"
+  }
+}

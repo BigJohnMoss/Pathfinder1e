@@ -1,0 +1,17 @@
+{
+  "id": "natures-freedom",
+  "name": "Nature's Freedom",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal or Plant domain; channel energy class feature"
+    }
+  ],
+  "benefit": "Allow creatures of your choice the ability to move throught dense undergrowth with ease",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Nature's%20Freedom"
+  }
+}

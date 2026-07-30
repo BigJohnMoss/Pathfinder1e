@@ -1,0 +1,43 @@
+{
+  "id": "kyton-shield",
+  "name": "Kyton Shield",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(spiked chain)"
+    },
+    {
+      "type": "feat",
+      "id": "kyton-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    }
+  ],
+  "benefit": "Spiked chain acts as both weapon and shield",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kyton%20Shield"
+  }
+}

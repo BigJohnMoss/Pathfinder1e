@@ -1,0 +1,23 @@
+{
+  "id": "ironclad-logic",
+  "name": "Ironclad Logic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 19
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain a +4 bonus on Diplomacy checks and use Intelligence in verbal duels",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ironclad%20Logic"
+  }
+}

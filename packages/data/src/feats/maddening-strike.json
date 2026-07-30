@@ -1,0 +1,52 @@
+{
+  "id": "maddening-strike",
+  "name": "Maddening Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "maddening-style"
+    },
+    {
+      "type": "rule",
+      "description": "†"
+    },
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 8
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    },
+    {
+      "type": "rule",
+      "description": "nongood alignment"
+    }
+  ],
+  "benefit": "Use ki to deal substantial Wisdom/sanity damage",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 90,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Maddening%20Strike"
+  }
+}

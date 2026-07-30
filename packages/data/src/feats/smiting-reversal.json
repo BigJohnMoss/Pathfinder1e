@@ -1,0 +1,21 @@
+{
+  "id": "smiting-reversal",
+  "name": "Smiting Reversal",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "toughness"
+    }
+  ],
+  "benefit": "Get an attack of opportunity when targeted with a smite attack",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Smiting%20Reversal"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "masked-symbol",
+  "name": "Masked Symbol",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Disguise 1 rank or dual identity UI class feature"
+    }
+  ],
+  "benefit": "Embody a certain symbol, gaining a relevent bonus",
+  "source": {
+    "title": "Inner Sea Intrigue",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Masked%20Symbol"
+  }
+}

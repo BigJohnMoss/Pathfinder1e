@@ -1,0 +1,17 @@
+{
+  "id": "improved-gaseous-form",
+  "name": "Improved Gaseous Form",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Vampire"
+    }
+  ],
+  "benefit": "Increase the strength and mobility of your gaseous form",
+  "source": {
+    "title": "Blood of the Night",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Gaseous%20Form"
+  }
+}

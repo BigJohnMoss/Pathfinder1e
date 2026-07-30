@@ -1,0 +1,21 @@
+{
+  "id": "measured-response",
+  "name": "Measured Response",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Abadar"
+    }
+  ],
+  "benefit": "When you hit with a melee or ranged weapon attack, you can choose to deal the average amount of damage",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 213,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Measured%20Response"
+  }
+}

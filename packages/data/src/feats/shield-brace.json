@@ -1,0 +1,25 @@
+{
+  "id": "shield-brace",
+  "name": "Shield Brace*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Shield Focus; base attack bonus +3 or fighter level 1st; proficiency with light shields"
+    },
+    {
+      "type": "rule",
+      "description": "heavy shields"
+    },
+    {
+      "type": "rule",
+      "description": "or tower shields"
+    }
+  ],
+  "benefit": "Wield a polearm or spear while using a shield",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Brace*"
+  }
+}

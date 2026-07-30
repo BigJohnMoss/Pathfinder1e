@@ -1,0 +1,21 @@
+{
+  "id": "ostentatious-weakness",
+  "name": "Ostentatious Weakness",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "favored-enemy"
+    }
+  ],
+  "benefit": "Add favored enemy bonuses to performance checks",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ostentatious%20Weakness"
+  }
+}

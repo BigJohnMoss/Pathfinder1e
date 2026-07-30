@@ -1,0 +1,34 @@
+{
+  "id": "street-style",
+  "name": "Street Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +4 or monk level 3rd"
+    }
+  ],
+  "benefit": "Deal extra damage and bullrush in urban areas",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 92,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Street%20Style"
+  }
+}

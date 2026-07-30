@@ -1,0 +1,12 @@
+{
+  "id": "street-smarts",
+  "name": "Street Smarts",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+2 bonus on Knowledge (local) and Sense Motive checks",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 92,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Street%20Smarts"
+  }
+}

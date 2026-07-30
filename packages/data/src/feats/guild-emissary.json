@@ -1,0 +1,17 @@
+{
+  "id": "guild-emissary",
+  "name": "Guild Emissary",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Leadership or Underworld Connections (see below)"
+    }
+  ],
+  "benefit": "Utilize local contacts to gather information for you",
+  "source": {
+    "title": "Heroes of the Streets",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Guild%20Emissary"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "fox-shape",
+  "name": "Fox Shape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "kitsune"
+    }
+  ],
+  "benefit": "Change into a fox.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fox%20Shape"
+  }
+}

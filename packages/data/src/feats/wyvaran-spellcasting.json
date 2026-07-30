@@ -1,0 +1,22 @@
+{
+  "id": "wyvaran-spellcasting",
+  "name": "Wyvaran Spellcasting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "wyvaran"
+    }
+  ],
+  "benefit": "Gain a draconic spell-like abilitiy.",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wyvaran%20Spellcasting"
+  }
+}

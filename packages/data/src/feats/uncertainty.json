@@ -1,0 +1,31 @@
+{
+  "id": "uncertainty",
+  "name": "Uncertainty",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Bluff"
+    },
+    {
+      "type": "rule",
+      "description": "Diplomacy"
+    },
+    {
+      "type": "skill",
+      "key": "and Intimidate",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Blood curse causes creature to take -6 penalty to a social skill",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Uncertainty"
+  }
+}

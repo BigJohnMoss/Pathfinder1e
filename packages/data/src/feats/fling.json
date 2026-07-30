@@ -1,0 +1,29 @@
+{
+  "id": "fling",
+  "name": "Fling",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "flyby-attack"
+    },
+    {
+      "type": "feat",
+      "id": "powerful-wings"
+    },
+    {
+      "type": "feat",
+      "id": "snatch-and-drop"
+    },
+    {
+      "type": "feat",
+      "id": "throw-anything"
+    }
+  ],
+  "benefit": "Throw grappled enemies a short distance",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 53,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fling"
+  }
+}

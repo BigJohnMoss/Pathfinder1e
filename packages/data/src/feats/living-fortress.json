@@ -1,0 +1,21 @@
+{
+  "id": "living-fortress",
+  "name": "Living Fortress",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dwarf"
+    },
+    {
+      "type": "rule",
+      "description": "hardy racial trait"
+    }
+  ],
+  "benefit": "Racial bonus on saves against spells and spell-like abilities increases by 2 when you’re adjacent to an ally who has this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Living%20Fortress"
+  }
+}

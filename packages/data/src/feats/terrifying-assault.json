@@ -1,0 +1,22 @@
+{
+  "id": "terrifying-assault",
+  "name": "Terrifying Assault",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "frightening-ambush"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Make a target frightened instead of shaken when demoralizing",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Terrifying%20Assault"
+  }
+}

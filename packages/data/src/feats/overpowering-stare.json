@@ -1,0 +1,22 @@
+{
+  "id": "overpowering-stare",
+  "name": "Overpowering Stare",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 11
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Your painful stare can confuse your target",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Overpowering%20Stare"
+  }
+}

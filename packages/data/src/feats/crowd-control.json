@@ -1,0 +1,17 @@
+{
+  "id": "crowd-control",
+  "name": "Crowd Control",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "You gain a +2 competence bonus to your CMD when an enemy uses Acrobatics to move through a square you threaten.",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crowd%20Control"
+  }
+}

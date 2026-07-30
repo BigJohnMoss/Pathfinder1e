@@ -1,0 +1,21 @@
+{
+  "id": "thrill-of-the-kill",
+  "name": "Thrill of the Kill",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Regain rage by killing or knocking out an enemy",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Thrill%20of%20the%20Kill"
+  }
+}

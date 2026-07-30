@@ -1,0 +1,17 @@
+{
+  "id": "furys-fall",
+  "name": "Fury's Fall",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    }
+  ],
+  "benefit": "Add your dexterity bonus to your CMB when making a trip attempt",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fury's%20Fall"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "betraying-blow",
+  "name": "Betraying Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "solo-maneuvers"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Deal extra nonlethal damage by bluffing your opponent",
+  "source": {
+    "title": "Bastards of Golarion",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Betraying%20Blow"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "skaveling-companion",
+  "name": "Skaveling Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "7th level in a class that grants an animal companion or mount"
+    },
+    {
+      "type": "rule",
+      "description": "urdefhan"
+    }
+  ],
+  "benefit": "Gain a skaveling companion",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Skaveling%20Companion"
+  }
+}

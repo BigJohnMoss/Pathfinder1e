@@ -1,0 +1,21 @@
+{
+  "id": "channel-force",
+  "name": "Channel Force",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "channel energy 2d6"
+    }
+  ],
+  "benefit": "Push or pull a single target when you channel energy to harm",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channel%20Force"
+  }
+}

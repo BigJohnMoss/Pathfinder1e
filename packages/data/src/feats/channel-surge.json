@@ -1,0 +1,17 @@
+{
+  "id": "channel-surge",
+  "name": "Channel Surge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy or lay on hands class feature"
+    }
+  ],
+  "benefit": "Expend two uses of channel or lay on hands to empower the healing",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channel%20Surge"
+  }
+}

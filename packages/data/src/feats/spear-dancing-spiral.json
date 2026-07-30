@@ -1,0 +1,38 @@
+{
+  "id": "spear-dancing-spiral",
+  "name": "Spear Dancing Spiral",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "spear-dancing-style"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    }
+  ],
+  "benefit": "Gain Weapon Finesse while using Spear Dancing Style",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spear%20Dancing%20Spiral"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "deft-catcher",
+  "name": "Deft Catcher",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Sleight of Hand)"
+    }
+  ],
+  "benefit": "Use Sleight of Hand to avoid dropping an item",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 82,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deft%20Catcher"
+  }
+}

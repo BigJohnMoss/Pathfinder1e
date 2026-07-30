@@ -1,0 +1,12 @@
+{
+  "id": "elongated-cranium",
+  "name": "Elongated Cranium",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain bonuses and penalties based on head shape",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 132,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elongated%20Cranium"
+  }
+}

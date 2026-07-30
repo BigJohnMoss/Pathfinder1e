@@ -1,0 +1,17 @@
+{
+  "id": "resilient-brute",
+  "name": "Resilient Brute",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    }
+  ],
+  "benefit": "Treat half the damage of a critical hit as nonlethal damage",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Resilient%20Brute"
+  }
+}

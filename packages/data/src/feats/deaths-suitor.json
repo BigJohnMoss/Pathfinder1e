@@ -1,0 +1,17 @@
+{
+  "id": "deaths-suitor",
+  "name": "Death's Suitor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Risen Guard 20 TPA"
+    }
+  ],
+  "benefit": "Reroll a save or skill check if failure could kill you",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Death's%20Suitor"
+  }
+}

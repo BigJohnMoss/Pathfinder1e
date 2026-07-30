@@ -1,0 +1,25 @@
+{
+  "id": "threatening-illusion",
+  "name": "Threatening Illusion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(illusion)"
+    },
+    {
+      "type": "rule",
+      "description": "Gnome"
+    }
+  ],
+  "benefit": "Force enemies to think of your illusions as real threats",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Threatening%20Illusion"
+  }
+}

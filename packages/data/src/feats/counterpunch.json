@@ -1,0 +1,30 @@
+{
+  "id": "counterpunch",
+  "name": "Counterpunch",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 18
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "Weapon Focus (unarmed strike); base attack bonus +16 or brawler level 12th"
+    }
+  ],
+  "benefit": "When you fight unarmed and a foe misses with all melee attacks, it provokes attacks of opportunity from you",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 144,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Counterpunch"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "occult-conduit",
+  "name": "Occult Conduit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "implements"
+    },
+    {
+      "type": "feature",
+      "id": "mental-focus"
+    },
+    {
+      "type": "rule",
+      "description": "wyrwood"
+    }
+  ],
+  "benefit": "Gain the ability to invest mental focus in your body instead of an implement",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Occult%20Conduit"
+  }
+}

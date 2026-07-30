@@ -1,0 +1,18 @@
+{
+  "id": "conduit-casting",
+  "name": "Conduit Casting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use your ally as the origin of your spell",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Conduit%20Casting"
+  }
+}

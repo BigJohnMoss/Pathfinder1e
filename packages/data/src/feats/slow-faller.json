@@ -1,0 +1,17 @@
+{
+  "id": "slow-faller",
+  "name": "Slow Faller",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Acrobatics 5 ranks or slow fall class feature"
+    }
+  ],
+  "benefit": "Gain or improve the slow fall ability",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Slow%20Faller"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "intoxicating-flattery",
+  "name": "Intoxicating Flattery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deceitful"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Flatter someone to weaken Wisdom-based checks",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Intoxicating%20Flattery"
+  }
+}

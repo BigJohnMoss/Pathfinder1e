@@ -1,0 +1,18 @@
+{
+  "id": "ground-grabber",
+  "name": "Ground-Grabber",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    }
+  ],
+  "benefit": "+2 CMD against larger enemies",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ground-Grabber"
+  }
+}

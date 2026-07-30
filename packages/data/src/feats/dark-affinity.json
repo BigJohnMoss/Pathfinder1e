@@ -1,0 +1,21 @@
+{
+  "id": "dark-affinity",
+  "name": "Dark Affinity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must have visited the Hao Jin Tapestry"
+    }
+  ],
+  "benefit": "Cast darkness as a spell-like ability once per day",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dark%20Affinity"
+  }
+}

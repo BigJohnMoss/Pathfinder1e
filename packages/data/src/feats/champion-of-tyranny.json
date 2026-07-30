@@ -1,0 +1,21 @@
+{
+  "id": "champion-of-tyranny",
+  "name": "Champion of Tyranny",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "10 Hit Dice"
+    },
+    {
+      "type": "rule",
+      "description": "lawful evil alignment"
+    }
+  ],
+  "benefit": "You must beat down the masses to have true order.",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 99,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Tyranny"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "underworld-connections",
+  "name": "Underworld Connections",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Learn more about the underworld and crime syndicates",
+  "source": {
+    "title": "Heroes of the Streets",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Underworld%20Connections"
+  }
+}

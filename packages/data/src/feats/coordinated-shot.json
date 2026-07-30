@@ -1,0 +1,17 @@
+{
+  "id": "coordinated-shot",
+  "name": "Coordinated Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    }
+  ],
+  "benefit": "When an ally with this feat threatens a foe, gain a +1 bonus on ranged attack rolls, or +2 if that ally is flanking the foe",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 144,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Coordinated%20Shot"
+  }
+}

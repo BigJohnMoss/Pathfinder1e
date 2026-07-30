@@ -1,0 +1,17 @@
+{
+  "id": "purging-emesis",
+  "name": "Purging Emesis",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "great-fortitude"
+    }
+  ],
+  "benefit": "Vomit an ingested poison",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 91,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Purging%20Emesis"
+  }
+}

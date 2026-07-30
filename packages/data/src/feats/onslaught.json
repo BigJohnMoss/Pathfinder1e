@@ -1,0 +1,30 @@
+{
+  "id": "onslaught",
+  "name": "Onslaught",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "feature",
+      "id": "sneak-attack"
+    }
+  ],
+  "benefit": "Get sneak attack damage on your first power attack during a surprise round",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Onslaught"
+  }
+}

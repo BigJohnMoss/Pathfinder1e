@@ -1,0 +1,12 @@
+{
+  "id": "undermine",
+  "name": "Undermine",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Create difficult terrain by using combat maneuvers on your enemies",
+  "source": {
+    "title": "People of the Sands",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Undermine"
+  }
+}

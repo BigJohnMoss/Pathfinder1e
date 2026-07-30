@@ -1,0 +1,12 @@
+{
+  "id": "siphon-poison",
+  "name": "Siphon Poison",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Learn to quickly remove poison from others",
+  "source": {
+    "title": "Champions of Purity",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Siphon%20Poison"
+  }
+}

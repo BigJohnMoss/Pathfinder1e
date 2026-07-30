@@ -1,0 +1,22 @@
+{
+  "id": "cloak-of-feathers",
+  "name": "Cloak of Feathers",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "strix"
+    }
+  ],
+  "benefit": "Fold your wings to resemble a cloak or robe, aiding in a disguise",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 53,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cloak%20of%20Feathers"
+  }
+}

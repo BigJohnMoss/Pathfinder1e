@@ -1,0 +1,17 @@
+{
+  "id": "aquatic-ancestry",
+  "name": "Aquatic Ancestry",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Undine"
+    }
+  ],
+  "benefit": "Gain the amphibious quality and increase your swim speed",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 177,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aquatic%20Ancestry"
+  }
+}

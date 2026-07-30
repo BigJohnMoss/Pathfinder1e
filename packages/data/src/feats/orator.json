@@ -1,0 +1,21 @@
+{
+  "id": "orator",
+  "name": "Orator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Linguistics)"
+    }
+  ],
+  "benefit": "Use Linguistics instead of Bluff, Diplomacy, and Intimidate in some instances",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Orator"
+  }
+}

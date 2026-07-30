@@ -1,0 +1,31 @@
+{
+  "id": "owl-style",
+  "name": "Owl Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Stealth)"
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Use Stealth with martial training and charge with Stealth",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Owl%20Style"
+  }
+}

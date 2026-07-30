@@ -1,0 +1,41 @@
+{
+  "id": "demonic-slaughter",
+  "name": "Demonic Slaughter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cleave"
+    },
+    {
+      "type": "feat",
+      "id": "demonic-momentum"
+    },
+    {
+      "type": "feat",
+      "id": "demonic-style"
+    },
+    {
+      "type": "feat",
+      "id": "great-cleave"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Use Great Cleave as part of a charge",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demonic%20Slaughter"
+  }
+}

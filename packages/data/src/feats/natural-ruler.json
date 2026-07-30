@@ -1,0 +1,25 @@
+{
+  "id": "natural-ruler",
+  "name": "Natural Ruler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "leadership"
+    },
+    {
+      "type": "feat",
+      "id": "run"
+    },
+    {
+      "type": "rule",
+      "description": "Hold a role related to ning a kingdom"
+    }
+  ],
+  "benefit": "+2 bonus to a relevant leadership score in your kingdom",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Natural%20Ruler"
+  }
+}

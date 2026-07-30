@@ -1,0 +1,29 @@
+{
+  "id": "covering-fire-vc",
+  "name": "Covering Fire (VC)",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(firearms) UC"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(at least one firearm)"
+    }
+  ],
+  "benefit": "Targets you hit take an attack roll penalty against your allies",
+  "source": {
+    "title": "Villain Codex",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Covering%20Fire%20(VC)"
+  }
+}

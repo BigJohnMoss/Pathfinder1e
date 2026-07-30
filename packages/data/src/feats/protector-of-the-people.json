@@ -1,0 +1,17 @@
+{
+  "id": "protector-of-the-people",
+  "name": "Protector of the People",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "See text"
+    }
+  ],
+  "benefit": "Gain the ability to make a golem protector, and on completion, gain Craft Construct at a conditional 10% discount",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 91,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Protector%20of%20the%20People"
+  }
+}

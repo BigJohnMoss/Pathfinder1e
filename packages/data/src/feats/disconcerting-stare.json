@@ -1,0 +1,22 @@
+{
+  "id": "disconcerting-stare",
+  "name": "Disconcerting Stare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare-oa"
+    }
+  ],
+  "benefit": "Your painful stare causes creatures to be more vulnerable to traps",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Disconcerting%20Stare"
+  }
+}

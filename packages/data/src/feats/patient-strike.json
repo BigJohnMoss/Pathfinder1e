@@ -1,0 +1,18 @@
+{
+  "id": "patient-strike",
+  "name": "Patient Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Ready an attack as a full-round action for a +2 bonus on the attack",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Patient%20Strike"
+  }
+}

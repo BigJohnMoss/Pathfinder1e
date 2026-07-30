@@ -1,0 +1,17 @@
+{
+  "id": "beast-hunter",
+  "name": "Beast Hunter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base attack bonus +1; Knowledge (nature) or Survival 1 rank"
+    }
+  ],
+  "benefit": "+2 bonus to track and +1 bonus to AC and on attacks against larger animals in chosen terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beast%20Hunter"
+  }
+}

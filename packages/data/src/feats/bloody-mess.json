@@ -1,0 +1,21 @@
+{
+  "id": "bloody-mess",
+  "name": "Bloody Mess",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Intimidate)"
+    }
+  ],
+  "benefit": "Once per round, demoralize a creature that made you bleed as an immediate action",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bloody%20Mess"
+  }
+}

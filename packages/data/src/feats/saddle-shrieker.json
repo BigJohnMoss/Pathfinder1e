@@ -1,0 +1,22 @@
+{
+  "id": "saddle-shrieker",
+  "name": "Saddle Shrieker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Take a penalty on attacks to grant your mount a bonus to attack and damage.",
+  "source": {
+    "title": "Goblins of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Saddle%20Shrieker"
+  }
+}

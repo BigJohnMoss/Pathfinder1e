@@ -1,0 +1,21 @@
+{
+  "id": "mage-of-the-wild",
+  "name": "Mage of the Wild",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "attuned-to-the-wild"
+    },
+    {
+      "type": "rule",
+      "description": "elf"
+    }
+  ],
+  "benefit": "Bonus while casting within a specific terrain",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mage%20of%20the%20Wild"
+  }
+}

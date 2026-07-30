@@ -1,0 +1,25 @@
+{
+  "id": "mask-focus",
+  "name": "Mask Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "extend-spell"
+    },
+    {
+      "type": "feat",
+      "id": "nameless-one"
+    },
+    {
+      "type": "spell-access",
+      "id": "3rd-level-arcane-spells"
+    }
+  ],
+  "benefit": "Use your mask as a focus component or to extend spells",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mask%20Focus"
+  }
+}

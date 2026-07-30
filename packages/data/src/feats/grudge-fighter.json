@@ -1,0 +1,17 @@
+{
+  "id": "grudge-fighter",
+  "name": "Grudge Fighter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Orc"
+    }
+  ],
+  "benefit": "+1 attack/damage against those who attack you",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grudge%20Fighter"
+  }
+}

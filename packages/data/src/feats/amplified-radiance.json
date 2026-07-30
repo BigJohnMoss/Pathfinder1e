@@ -1,0 +1,21 @@
+{
+  "id": "amplified-radiance",
+  "name": "Amplified Radiance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "daylight racial spell-like ability"
+    }
+  ],
+  "benefit": "Shed an aura of light when near allies who share this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 201,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Amplified%20Radiance"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "confounding-tumble-deed",
+  "name": "Confounding Tumble Deed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Swashbuckler feat or panache class feature"
+    },
+    {
+      "type": "feat",
+      "id": "canny-tumble"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 7
+    }
+  ],
+  "benefit": "When you avoid attacks of opportunity and hit a foe, you can deny it its Dex bonus to AC for 1 round",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 143,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Confounding%20Tumble%20Deed"
+  }
+}

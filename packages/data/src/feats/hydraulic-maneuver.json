@@ -1,0 +1,21 @@
+{
+  "id": "hydraulic-maneuver",
+  "name": "Hydraulic Maneuver",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Hydraulic push spell-like ability"
+    },
+    {
+      "type": "rule",
+      "description": "undine"
+    }
+  ],
+  "benefit": "Use hydraulic push with more combat maneuvers",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 177,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hydraulic%20Maneuver"
+  }
+}

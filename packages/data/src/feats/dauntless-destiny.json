@@ -1,0 +1,31 @@
+{
+  "id": "dauntless-destiny",
+  "name": "Dauntless Destiny",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "fearless-curiosity"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "human"
+    }
+  ],
+  "benefit": "+1 save vs. emotion spells, reroll a natural 1 1/day, get free Intimidate if new roll succeeds",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 77,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dauntless%20Destiny"
+  }
+}

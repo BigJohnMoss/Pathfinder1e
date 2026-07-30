@@ -1,0 +1,17 @@
+{
+  "id": "extra-elemental-assault",
+  "name": "Extra Elemental Assault",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Suli"
+    }
+  ],
+  "benefit": "Increase elemental assault ability by 2 rounds",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 203,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Elemental%20Assault"
+  }
+}

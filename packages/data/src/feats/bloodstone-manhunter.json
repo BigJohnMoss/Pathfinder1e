@@ -1,0 +1,17 @@
+{
+  "id": "bloodstone-manhunter",
+  "name": "Bloodstone Manhunter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bloodstone Swords 10 TPA"
+    }
+  ],
+  "benefit": "Become better skilled at fighting criminal humans",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bloodstone%20Manhunter"
+  }
+}

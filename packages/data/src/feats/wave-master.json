@@ -1,0 +1,17 @@
+{
+  "id": "wave-master",
+  "name": "Wave Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Worshiper of Gozreh"
+    }
+  ],
+  "benefit": "When you succeed at a Swim check you can move your full speed as a full-round action, or half your speed as a move action",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 217,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wave%20Master"
+  }
+}

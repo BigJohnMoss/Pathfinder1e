@@ -1,0 +1,25 @@
+{
+  "id": "compelling-harmonies",
+  "name": "Compelling Harmonies",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "basic-harmony"
+    },
+    {
+      "type": "rule",
+      "description": "Perform (keyboard, percussion, sing, string, or wind) 10 ranks"
+    },
+    {
+      "type": "rule",
+      "description": "bardic performance or raging song"
+    }
+  ],
+  "benefit": "Expend a round of performance to boost another ally’s performance",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Compelling%20Harmonies"
+  }
+}

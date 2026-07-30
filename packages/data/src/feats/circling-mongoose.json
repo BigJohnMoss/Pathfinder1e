@@ -1,0 +1,34 @@
+{
+  "id": "circling-mongoose",
+  "name": "Circling Mongoose",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "feat",
+      "id": "spring-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Circle your opponent while attacking",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Circling%20Mongoose"
+  }
+}

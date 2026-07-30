@@ -1,0 +1,21 @@
+{
+  "id": "press-to-the-wall",
+  "name": "Press to the Wall",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "step-up"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain flank bonuses when your opponent is up against an object",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Press%20to%20the%20Wall"
+  }
+}

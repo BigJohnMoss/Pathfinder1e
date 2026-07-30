@@ -1,0 +1,23 @@
+{
+  "id": "deadly-trap",
+  "name": "Deadly Trap",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (traps)",
+      "minimum": 8
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Increase one of your trap's critical threat multipier by one or give it a +4 bonus on rolls to confirm critical hits",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 109,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deadly%20Trap"
+  }
+}

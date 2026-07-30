@@ -1,0 +1,21 @@
+{
+  "id": "slipslinger-style",
+  "name": "Slipslinger Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Weapon Focus (sling) or weapon training (thrown) class feature"
+    },
+    {
+      "type": "rule",
+      "description": "warslinger racial trait ARG"
+    }
+  ],
+  "benefit": "+1 damage with slings, do not provoke attacks of opportunity when reloading",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Slipslinger%20Style"
+  }
+}

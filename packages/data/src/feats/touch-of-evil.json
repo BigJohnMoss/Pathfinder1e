@@ -1,0 +1,21 @@
+{
+  "id": "touch-of-evil",
+  "name": "Touch of Evil",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel negative energy 6d6"
+    },
+    {
+      "type": "rule",
+      "description": "evil alignment"
+    }
+  ],
+  "benefit": "With a touch, compel other toward evil acts",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Touch%20of%20Evil"
+  }
+}

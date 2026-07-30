@@ -1,0 +1,21 @@
+{
+  "id": "swing-about",
+  "name": "Swing About",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "escape-route"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    }
+  ],
+  "benefit": "Help move allies around without provoking",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swing%20About"
+  }
+}

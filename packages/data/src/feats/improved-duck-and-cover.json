@@ -1,0 +1,17 @@
+{
+  "id": "improved-duck-and-cover",
+  "name": "Improved Duck and Cover",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "duck-and-cover"
+    }
+  ],
+  "benefit": "When you use Duck and Cover, an ally with evasion or improved evasion takes some of the damage",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 150,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Duck%20and%20Cover"
+  }
+}

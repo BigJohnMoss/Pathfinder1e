@@ -1,0 +1,22 @@
+{
+  "id": "wounded-paw-gambit",
+  "name": "Wounded Paw Gambit",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "broken-wing-gambit"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    }
+  ],
+  "benefit": "When you use Broken Wing Gambit, nearby allies can attempt a ranged attack against the attacker",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wounded%20Paw%20Gambit"
+  }
+}

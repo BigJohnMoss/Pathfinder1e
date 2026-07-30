@@ -1,0 +1,12 @@
+{
+  "id": "read-spell-traces",
+  "name": "Read Spell Traces",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Learn more from magic auras",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 90,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Read%20Spell%20Traces"
+  }
+}

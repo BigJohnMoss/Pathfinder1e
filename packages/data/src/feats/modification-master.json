@@ -1,0 +1,43 @@
+{
+  "id": "modification-master",
+  "name": "Modification Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "creative-armorsmith"
+    },
+    {
+      "type": "feat",
+      "id": "armor-adept"
+    },
+    {
+      "type": "skill",
+      "key": "and Craft (armor)",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "or Creative Weaponsmith"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-adept"
+    },
+    {
+      "type": "skill",
+      "key": "and Craft (weapons)",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "Knowledge (engineering) 7 ranks"
+    }
+  ],
+  "benefit": "You can add an armor or weapon modification to an item that already has a modification",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Modification%20Master"
+  }
+}

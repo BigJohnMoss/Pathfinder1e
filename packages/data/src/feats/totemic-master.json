@@ -1,0 +1,46 @@
+{
+  "id": "totemic-master",
+  "name": "Totemic Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "totemic-disciple"
+    },
+    {
+      "type": "feat",
+      "id": "totemic-initiate"
+    },
+    {
+      "type": "feat",
+      "id": "athletic"
+    },
+    {
+      "type": "rule",
+      "description": "Dex 13; Wis 13; ; ; ; ; no barbarian totem rage powers except those chosen with this feat"
+    },
+    {
+      "type": "feat",
+      "id": "totemic-disciple"
+    },
+    {
+      "type": "rule",
+      "description": "or Totemic Initiate; nonlawful alignment"
+    }
+  ],
+  "benefit": "Gain benefits of a greater rage power linked to your chosen totem",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Totemic%20Master"
+  }
+}

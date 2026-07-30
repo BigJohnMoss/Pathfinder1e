@@ -1,0 +1,26 @@
+{
+  "id": "psychic-disciple",
+  "name": "Psychic Disciple",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "psychic-adept"
+    },
+    {
+      "type": "feat",
+      "id": "psychic-sensitivity"
+    }
+  ],
+  "benefit": "Cast a 1st-level psychic spell 2/day as a spell-like ability",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychic%20Disciple"
+  }
+}

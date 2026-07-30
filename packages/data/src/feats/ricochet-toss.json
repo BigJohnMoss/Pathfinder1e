@@ -1,0 +1,29 @@
+{
+  "id": "ricochet-toss",
+  "name": "Ricochet Toss",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "quick-draw"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a ranged weapon"
+    }
+  ],
+  "benefit": "Angle your throwing weapons so they return to you",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ricochet%20Toss"
+  }
+}

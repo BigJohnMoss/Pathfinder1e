@@ -1,0 +1,22 @@
+{
+  "id": "possess-object-feat",
+  "name": "Possess Object",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 18
+    },
+    {
+      "type": "rule",
+      "description": "any evil outsider with 9 or more Hit Dice"
+    }
+  ],
+  "benefit": "Some fiends have the ability to merge with an object and spread their foul influence",
+  "source": {
+    "title": "Pathfinder #28: The Infernal Syndrome",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Possess%20Object"
+  }
+}

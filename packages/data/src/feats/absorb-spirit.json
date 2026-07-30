@@ -1,0 +1,22 @@
+{
+  "id": "absorb-spirit",
+  "name": "Absorb Spirit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "died or possessed by an undead"
+    }
+  ],
+  "benefit": "Temporarily absorb a spirit to prevent rejuvenation",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Absorb%20Spirit"
+  }
+}

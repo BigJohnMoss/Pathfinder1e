@@ -1,0 +1,25 @@
+{
+  "id": "eclipse-strike",
+  "name": "Eclipse Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Tie"
+    },
+    {
+      "type": "rule",
+      "description": "darkness racial spell-like ability"
+    }
+  ],
+  "benefit": "When flanking with another ally who has this feat, make an eclipse strike to blind a target",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 205,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eclipse%20Strike"
+  }
+}

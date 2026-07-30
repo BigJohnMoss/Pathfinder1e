@@ -1,0 +1,38 @@
+{
+  "id": "signature-strike-triumph",
+  "name": "Signature Strike Triumph",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "feat",
+      "id": "signature-strike-style"
+    },
+    {
+      "type": "feat",
+      "id": "signature-strike-taunt"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Inspire your allies when you use Signature Strike Style",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Signature%20Strike%20Triumph"
+  }
+}

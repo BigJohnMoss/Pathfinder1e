@@ -1,0 +1,25 @@
+{
+  "id": "chakra-master",
+  "name": "Chakra Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "chakra-adept"
+    },
+    {
+      "type": "feat",
+      "id": "chakra-initiate"
+    },
+    {
+      "type": "rule",
+      "description": "ability to awaken the crown chakra"
+    }
+  ],
+  "benefit": "Gain 5 serpent-fire ki for chakras, can spend more ki to gain two chakra benefits",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chakra%20Master"
+  }
+}

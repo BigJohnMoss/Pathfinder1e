@@ -1,0 +1,17 @@
+{
+  "id": "extra-item-slot",
+  "name": "Extra Item Slot",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Non-humanoid body shape"
+    }
+  ],
+  "benefit": "Learn to wear other magical items",
+  "source": {
+    "title": "Animal Archive",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Item%20Slot"
+  }
+}

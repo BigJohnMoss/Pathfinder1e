@@ -1,0 +1,43 @@
+{
+  "id": "linnorm-hunter-coordination",
+  "name": "Linnorm Hunter Coordination",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "linnorm-hunter-retreat"
+    },
+    {
+      "type": "feat",
+      "id": "linnorm-hunter-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "must have or be an animal companion"
+    }
+  ],
+  "benefit": "As a full-round action, you can make a single attack that deals extra damage",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Linnorm%20Hunter%20Coordination"
+  }
+}

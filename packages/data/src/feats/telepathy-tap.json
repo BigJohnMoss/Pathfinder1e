@@ -1,0 +1,22 @@
+{
+  "id": "telepathy-tap",
+  "name": "Telepathy Tap",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast detect thoughts or telepathy OA as a spell or spell-like ability or telepathy supernatural ability"
+    }
+  ],
+  "benefit": "Eavesdrop on telepathic communication",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Telepathy%20Tap"
+  }
+}

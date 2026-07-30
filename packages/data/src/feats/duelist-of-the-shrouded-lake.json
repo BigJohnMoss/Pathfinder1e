@@ -1,0 +1,41 @@
+{
+  "id": "duelist-of-the-shrouded-lake",
+  "name": "Duelist of the Shrouded Lake",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "aldori-dueling-disciple"
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain offensive and defensive bonuses with certain combat maneuvers",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Duelist%20of%20the%20Shrouded%20Lake"
+  }
+}

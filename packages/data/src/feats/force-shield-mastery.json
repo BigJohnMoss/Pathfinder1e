@@ -1,0 +1,22 @@
+{
+  "id": "force-shield-mastery",
+  "name": "Force Shield Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude saving throw bonus +3"
+    }
+  ],
+  "benefit": "Cast shield with an abjuration-crafted item",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Force%20Shield%20Mastery"
+  }
+}

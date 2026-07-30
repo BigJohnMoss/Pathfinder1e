@@ -1,0 +1,22 @@
+{
+  "id": "planar-hunter",
+  "name": "Planar Hunter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "favored-terrain-any-plane"
+    }
+  ],
+  "benefit": "+2 attack bonus and ability to ignore some DR when fighting outsiders native to a favored plane",
+  "source": {
+    "title": "Champions of Balance",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Hunter"
+  }
+}

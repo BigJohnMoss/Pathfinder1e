@@ -1,0 +1,21 @@
+{
+  "id": "recalcitrant",
+  "name": "Recalcitrant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "You better resist attempts to control or manipulate you",
+  "source": {
+    "title": "Pathfinder #115: Trail of the Hunted",
+    "page": 74,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Recalcitrant"
+  }
+}

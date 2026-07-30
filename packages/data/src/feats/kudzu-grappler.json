@@ -1,0 +1,38 @@
+{
+  "id": "kudzu-grappler",
+  "name": "Kudzu Grappler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "greater-grapple"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "vine leshy"
+    }
+  ],
+  "benefit": "Learn to blind creatures when grappling them",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kudzu%20Grappler"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "jabbing-master",
+  "name": "Jabbing Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "jabbing-dancer"
+    },
+    {
+      "type": "feat",
+      "id": "jabbing-style"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "class-level",
+      "classId": "brawler",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "or monk level 8th"
+    }
+  ],
+  "benefit": "Increase the damage dealt with Jabbing Style",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Jabbing%20Master"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "mascots-affection",
+  "name": "Mascot's Affection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "page"
+    },
+    {
+      "type": "rule",
+      "description": "Must have a familiar with the mascot archetype (see 11)"
+    }
+  ],
+  "benefit": "Your familiar can have more team members",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mascot's%20Affection"
+  }
+}

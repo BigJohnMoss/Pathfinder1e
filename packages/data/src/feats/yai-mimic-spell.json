@@ -1,0 +1,22 @@
+{
+  "id": "yai-mimic-spell",
+  "name": "Yai-Mimic Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "still-spell"
+    }
+  ],
+  "benefit": "Modify a ray spell to fire from your forehead, granting you brief regeneration",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Yai-Mimic%20Spell"
+  }
+}

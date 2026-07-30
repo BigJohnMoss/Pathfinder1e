@@ -1,0 +1,27 @@
+{
+  "id": "lovable-scoundrel",
+  "name": "Lovable Scoundrel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "tengu"
+    }
+  ],
+  "benefit": "Use Diplomacy to offset the reprecussions of a failed Bluff, Intimidate, or Sleight of Hands results",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lovable%20Scoundrel"
+  }
+}

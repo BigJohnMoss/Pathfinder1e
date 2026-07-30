@@ -1,0 +1,17 @@
+{
+  "id": "expanded-hunter-tactics",
+  "name": "Expanded Hunter Tactics",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hunter-tactics-acg"
+    }
+  ],
+  "benefit": "Grant teamwork feats to allies",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Hunter%20Tactics"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "exceptional-aid",
+  "name": "Exceptional Aid",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bonded-mind"
+    }
+  ],
+  "benefit": "Aid Another increases to +4",
+  "source": {
+    "title": "Distant Shores",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Exceptional%20Aid"
+  }
+}

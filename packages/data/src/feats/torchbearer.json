@@ -1,0 +1,17 @@
+{
+  "id": "torchbearer",
+  "name": "Torchbearer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain the services of a professional torchbearer",
+  "source": {
+    "title": "Dungeoneer's Handbook",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Torchbearer"
+  }
+}

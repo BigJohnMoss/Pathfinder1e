@@ -1,0 +1,26 @@
+{
+  "id": "improved-mounted-archery",
+  "name": "Improved Mounted Archery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mounted-archery"
+    },
+    {
+      "type": "feat",
+      "id": "mounted-combat"
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Become better at mounted archery",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Mounted%20Archery"
+  }
+}

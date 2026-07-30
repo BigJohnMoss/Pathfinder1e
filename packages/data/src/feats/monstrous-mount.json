@@ -1,0 +1,30 @@
+{
+  "id": "monstrous-mount",
+  "name": "Monstrous Mount",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "Ride 4 ranks; divine bond (mount)"
+    },
+    {
+      "type": "rule",
+      "description": "hunter’s bond (animal companion)"
+    },
+    {
+      "type": "rule",
+      "description": "or mount class feature with an effective druid level of 4"
+    }
+  ],
+  "benefit": "Gain an exotic beast as your companion",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monstrous%20Mount"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "regenerate-muscles",
+  "name": "Regenerate Muscles",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "regeneration"
+    },
+    {
+      "type": "rule",
+      "description": "troll"
+    }
+  ],
+  "benefit": "Leech strength from your regeneration",
+  "source": {
+    "title": "Monster Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Regenerate%20Muscles"
+  }
+}

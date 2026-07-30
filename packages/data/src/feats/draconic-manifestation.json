@@ -1,0 +1,21 @@
+{
+  "id": "draconic-manifestation",
+  "name": "Draconic Manifestation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Access to natural claw attacks"
+    },
+    {
+      "type": "rule",
+      "description": "bloodrager or sorcerer with the draconic bloodline"
+    }
+  ],
+  "benefit": "Gain an additional benefit when manifesting your draconic claws",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Draconic%20Manifestation"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "shikigami-mimicry",
+  "name": "Shikigami Mimicry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Catch Off-Guard or Throw Anything"
+    },
+    {
+      "type": "feat",
+      "id": "shikigami-style"
+    }
+  ],
+  "benefit": "Add weapon properties to a wielded improvised weapon",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shikigami%20Mimicry"
+  }
+}

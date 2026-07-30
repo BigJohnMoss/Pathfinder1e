@@ -1,0 +1,30 @@
+{
+  "id": "goblin-cleaver",
+  "name": "Goblin Cleaver",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "cleave"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    }
+  ],
+  "benefit": "Target additional creatures during cleave if smaller than you, gain +2 attack against them",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Goblin%20Cleaver"
+  }
+}

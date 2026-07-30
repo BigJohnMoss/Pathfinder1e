@@ -1,0 +1,21 @@
+{
+  "id": "biological-lattice",
+  "name": "Biological Lattice",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Gathlain"
+    },
+    {
+      "type": "rule",
+      "description": "racial fly speed"
+    }
+  ],
+  "benefit": "Store a held item in your wings",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Biological%20Lattice"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "light-bearer",
+  "name": "Light Bearer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 4
+    }
+  ],
+  "benefit": "You recruit a torchbearer who joins you on your adventures to help illuminate even the darkest dungeons.",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 134,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Light%20Bearer"
+  }
+}

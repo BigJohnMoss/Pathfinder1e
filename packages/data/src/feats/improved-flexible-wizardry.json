@@ -1,0 +1,26 @@
+{
+  "id": "improved-flexible-wizardry",
+  "name": "Improved Flexible Wizardry",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "flexible-wizardry"
+    },
+    {
+      "type": "feat",
+      "id": "spell-mastery"
+    },
+    {
+      "type": "class-level",
+      "classId": "wizard",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Flexibly prepare more spells",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 150,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Flexible%20Wizardry"
+  }
+}

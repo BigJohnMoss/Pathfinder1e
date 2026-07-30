@@ -1,0 +1,29 @@
+{
+  "id": "improved-spell-sharing",
+  "name": "Improved Spell Sharing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to acquire an animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "eidolon"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    },
+    {
+      "type": "rule",
+      "description": "or special mount"
+    }
+  ],
+  "benefit": "Divide spell duration with the companion creature",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 150,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Spell%20Sharing"
+  }
+}

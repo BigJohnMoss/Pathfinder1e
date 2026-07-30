@@ -1,0 +1,21 @@
+{
+  "id": "snatch-and-drop",
+  "name": "Snatch and Drop",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "flyby-attack"
+    },
+    {
+      "type": "feat",
+      "id": "powerful-wings"
+    }
+  ],
+  "benefit": "Fly grappled targets into the air in order to drop them",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 53,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Snatch%20and%20Drop"
+  }
+}

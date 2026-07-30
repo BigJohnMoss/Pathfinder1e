@@ -1,0 +1,18 @@
+{
+  "id": "careful-speaker",
+  "name": "Careful Speaker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    }
+  ],
+  "benefit": "+2 bonus on some Bluff checks and some Will saves",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 284,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Careful%20Speaker"
+  }
+}

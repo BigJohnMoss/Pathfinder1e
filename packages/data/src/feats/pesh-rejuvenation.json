@@ -1,0 +1,17 @@
+{
+  "id": "pesh-rejuvenation",
+  "name": "Pesh Rejuvenation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Sahir-Afiyun or pesh addict"
+    }
+  ],
+  "benefit": "Convert pesh into extra health when dropping unconscious",
+  "source": {
+    "title": "Black Markets",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pesh%20Rejuvenation"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "pantheistic-blessing",
+  "name": "Pantheistic Blessing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "must worship a pantheon of deities"
+    }
+  ],
+  "benefit": "Gain a spell-like ability related to the pantheon you worship",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pantheistic%20Blessing"
+  }
+}

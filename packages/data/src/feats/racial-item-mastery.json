@@ -1,0 +1,22 @@
+{
+  "id": "racial-item-mastery",
+  "name": "Racial Item Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude saving throw bonus +3"
+    }
+  ],
+  "benefit": "Use a magic item to recharge your racial spell-like abilities.",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Racial%20Item%20Mastery"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "channel-deific-essence",
+  "name": "Channel Deific Essence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alignment-channel"
+    },
+    {
+      "type": "rule",
+      "description": "channel energy 5d6"
+    },
+    {
+      "type": "feature",
+      "id": "domain"
+    },
+    {
+      "type": "rule",
+      "description": "same alignment as patron deity"
+    }
+  ],
+  "benefit": "Expend a use of channel energy to gain a boon associated with your deity",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channel%20Deific%20Essence"
+  }
+}

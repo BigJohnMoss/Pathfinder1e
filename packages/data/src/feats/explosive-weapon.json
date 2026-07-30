@@ -1,0 +1,21 @@
+{
+  "id": "explosive-weapon",
+  "name": "Explosive Weapon",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcing-weapon"
+    },
+    {
+      "type": "feature",
+      "id": "diverse-training"
+    }
+  ],
+  "benefit": "Channel an area spell through your weapon",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Explosive%20Weapon"
+  }
+}

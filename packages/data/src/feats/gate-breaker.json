@@ -1,0 +1,30 @@
+{
+  "id": "gate-breaker",
+  "name": "Gate Breaker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-sunder"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Deal bonus damage to objects",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 38,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gate%20Breaker"
+  }
+}

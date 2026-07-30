@@ -1,0 +1,22 @@
+{
+  "id": "inspiring-bravery",
+  "name": "Inspiring Bravery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "bravery"
+    }
+  ],
+  "benefit": "Grant your bravery to allies within 30 feet",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inspiring%20Bravery"
+  }
+}

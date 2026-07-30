@@ -1,0 +1,17 @@
+{
+  "id": "flying-tackle",
+  "name": "Flying Tackle",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-overrun"
+    }
+  ],
+  "benefit": "Fall prone with a target during overrun in order to grapple them",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flying%20Tackle"
+  }
+}

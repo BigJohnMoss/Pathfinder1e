@@ -1,0 +1,12 @@
+{
+  "id": "torch-handling",
+  "name": "Torch Handling",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain multiple benefits while using a torch (must be taken by Torchbearers - see Torchbearer feat)",
+  "source": {
+    "title": "Dungeoneer's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Torch%20Handling"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "dramatic-slam",
+  "name": "Dramatic Slam",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dazzling-display"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "savage-slam"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 6th"
+    }
+  ],
+  "benefit": "Demoralize as a swift action when you successfully use Savage Slam",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dramatic%20Slam"
+  }
+}

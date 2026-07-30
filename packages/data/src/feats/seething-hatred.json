@@ -1,0 +1,17 @@
+{
+  "id": "seething-hatred",
+  "name": "Seething Hatred",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "studied-target"
+    }
+  ],
+  "benefit": "Select a favored enemy and gain greater benefits when such a creature is your studied target",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Seething%20Hatred"
+  }
+}

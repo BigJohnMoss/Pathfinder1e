@@ -1,0 +1,22 @@
+{
+  "id": "ghostslayer",
+  "name": "Ghostslayer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Damage incorporeal creatures as though weapon were magical or Ghost Touch",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ghostslayer"
+  }
+}

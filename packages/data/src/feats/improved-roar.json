@@ -1,0 +1,26 @@
+{
+  "id": "improved-roar",
+  "name": "Improved Roar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 17
+    },
+    {
+      "type": "rule",
+      "description": "bunyip"
+    },
+    {
+      "type": "rule",
+      "description": "roar special attack"
+    }
+  ],
+  "benefit": "Increase the power and range of the bunyip’s roar",
+  "source": {
+    "title": "Mystery Monsters Revisited",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Roar"
+  }
+}

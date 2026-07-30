@@ -1,0 +1,30 @@
+{
+  "id": "staggering-blow",
+  "name": "Staggering Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Use your vital strike to stagger an opponent",
+  "source": {
+    "title": "Monster Codex",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Staggering%20Blow"
+  }
+}

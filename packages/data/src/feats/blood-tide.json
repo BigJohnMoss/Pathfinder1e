@@ -1,0 +1,33 @@
+{
+  "id": "blood-tide",
+  "name": "Blood Tide",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "greater-blood-frenzy"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "blood frenzy ability"
+    },
+    {
+      "type": "rule",
+      "description": "sahuagin"
+    }
+  ],
+  "benefit": "Give up normal attacks to make extra ones against bleeding/wounded opponents",
+  "source": {
+    "title": "Monster Codex",
+    "page": 189,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Tide"
+  }
+}

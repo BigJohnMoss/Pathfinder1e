@@ -1,0 +1,21 @@
+{
+  "id": "amplified-rage",
+  "name": "Amplified Rage",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Make your rage more powerful when near others raging",
+  "source": {
+    "title": "Orcs of Golarion",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Amplified%20Rage"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "liberating-shot",
+  "name": "Liberating Shot",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "deadly-aim"
+    },
+    {
+      "type": "bab",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a ranged weapon"
+    }
+  ],
+  "benefit": "Help grappled allies escape by shooting the opponent",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Liberating%20Shot"
+  }
+}

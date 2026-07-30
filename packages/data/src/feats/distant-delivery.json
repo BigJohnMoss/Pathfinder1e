@@ -1,0 +1,21 @@
+{
+  "id": "distant-delivery",
+  "name": "Distant Delivery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "phantom"
+    },
+    {
+      "type": "rule",
+      "description": "phantom with the deliver touch spells ability"
+    }
+  ],
+  "benefit": "Phantom can deliver touch spells 20 feet farther",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 132,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Distant%20Delivery"
+  }
+}

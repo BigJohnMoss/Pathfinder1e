@@ -1,0 +1,22 @@
+{
+  "id": "earthtouched",
+  "name": "Earthtouched",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "stone giant"
+    }
+  ],
+  "benefit": "Increase saving throw DC for earth spells, learn new earth spells.",
+  "source": {
+    "title": "Giants Revisited",
+    "page": 49,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Earthtouched"
+  }
+}

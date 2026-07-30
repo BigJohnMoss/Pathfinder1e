@@ -1,0 +1,25 @@
+{
+  "id": "otherworldly-influence",
+  "name": "Otherworldly Influence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have refused an evil creature with at least 15 Hit Dice who offered gifts or assistance"
+    },
+    {
+      "type": "rule",
+      "description": "have refused an evil creature offering to cast a spell of 7th-level or higher on your behalf"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Planar Offering background"
+    }
+  ],
+  "benefit": "Bonus on negotiations with evil outsiders",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Otherworldly%20Influence"
+  }
+}

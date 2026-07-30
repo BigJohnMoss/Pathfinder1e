@@ -1,0 +1,23 @@
+{
+  "id": "train-plants",
+  "name": "Train Plants",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Teach unintelligent plant creatures to follow simple commands",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Train%20Plants"
+  }
+}

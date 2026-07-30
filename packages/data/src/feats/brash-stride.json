@@ -1,0 +1,26 @@
+{
+  "id": "brash-stride",
+  "name": "Brash Stride",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "acrobatic-steps"
+    },
+    {
+      "type": "feat",
+      "id": "nimble-moves"
+    }
+  ],
+  "benefit": "Ignore difficult terrain when you charge or run",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brash%20Stride"
+  }
+}

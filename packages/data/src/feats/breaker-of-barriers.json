@@ -1,0 +1,22 @@
+{
+  "id": "breaker-of-barriers",
+  "name": "Breaker of Barriers",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 17
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Rovagug"
+    }
+  ],
+  "benefit": "+2 bonus on checks to break barriers, bull rush, and overrun",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Breaker%20of%20Barriers"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "greater-weapon-of-the-chosen",
+  "name": "Greater Weapon of the Chosen",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-weapon-of-the-chosen"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with deity’s favored weapon"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-of-the-chosen"
+    },
+    {
+      "type": "rule",
+      "description": "worship and receive spells from a deity"
+    }
+  ],
+  "benefit": "Roll twice with your favored weapon and take the better roll",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 149,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Weapon%20of%20the%20Chosen"
+  }
+}

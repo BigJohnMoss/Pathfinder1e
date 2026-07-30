@@ -1,0 +1,22 @@
+{
+  "id": "wilding-senses",
+  "name": "Wilding Senses",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "wilding"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Perception checks (increases to +4 when determining if you can act in a surprise round)",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 120,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wilding%20Senses"
+  }
+}

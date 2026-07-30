@@ -1,0 +1,23 @@
+{
+  "id": "creative-armorsmith",
+  "name": "Creative Armorsmith",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (armor)",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "You can add temporary modifications to your armor",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Creative%20Armorsmith"
+  }
+}

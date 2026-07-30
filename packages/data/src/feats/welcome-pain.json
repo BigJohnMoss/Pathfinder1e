@@ -1,0 +1,21 @@
+{
+  "id": "welcome-pain",
+  "name": "Welcome Pain",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Zon-Kuthon"
+    }
+  ],
+  "benefit": "Shed conditions before they would bring you unconscious.",
+  "source": {
+    "title": "Faiths of Corruption",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Welcome%20Pain"
+  }
+}

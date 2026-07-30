@@ -1,0 +1,32 @@
+{
+  "id": "extra-blood-hex",
+  "name": "Extra Blood Hex",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "two or more blood hex feats"
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use blood hexes more often",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Blood%20Hex"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "lone-wolf",
+  "name": "Lone Wolf",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "1st-level character"
+    },
+    {
+      "type": "rule",
+      "description": "cannot have City Born or Country Born"
+    }
+  ],
+  "benefit": "Stabilize easier when dying and gain a +1 bonus to Fortitude saves",
+  "source": {
+    "title": "Rise of the Runelords Player's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lone%20Wolf"
+  }
+}

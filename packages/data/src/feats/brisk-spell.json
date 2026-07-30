@@ -1,0 +1,22 @@
+{
+  "id": "brisk-spell",
+  "name": "Brisk Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "+"
+    }
+  ],
+  "benefit": "Increase the speed of a granted movement type",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brisk%20Spell"
+  }
+}

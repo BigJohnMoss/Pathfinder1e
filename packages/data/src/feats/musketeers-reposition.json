@@ -1,0 +1,30 @@
+{
+  "id": "musketeers-reposition",
+  "name": "Musketeer's Reposition",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(firearms) UC"
+    },
+    {
+      "type": "class-level",
+      "classId": "gunslinger",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "pistol-whip deed"
+    }
+  ],
+  "benefit": "When you use the pistol-whip deed, you can reposition instead of tripping",
+  "source": {
+    "title": "Villain Codex",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Musketeer's%20Reposition"
+  }
+}

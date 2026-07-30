@@ -1,0 +1,17 @@
+{
+  "id": "raging-concentration",
+  "name": "Raging Concentration",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "blood-casting"
+    }
+  ],
+  "benefit": "While bloodraging, add your morale bonus to Constitution to concentration checks",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Raging%20Concentration"
+  }
+}

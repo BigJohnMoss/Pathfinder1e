@@ -1,0 +1,25 @@
+{
+  "id": "steady-engagement",
+  "name": "Steady Engagement",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "stand-still"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Irori"
+    }
+  ],
+  "benefit": "When you use Stand Still, you can attempt to disarm or trip as an immediate action",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 216,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Steady%20Engagement"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "improved-awesome-blow",
+  "name": "Improved Awesome Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Str 13; Awesome Blow or awesome blow class feature; Power Attac"
+    }
+  ],
+  "benefit": "+2 on awesome blow combat maneuver checks and to CMD against such attacks, and movement due to awesome blow provokes from allies",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 150,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Awesome%20Blow"
+  }
+}

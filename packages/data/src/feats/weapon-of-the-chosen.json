@@ -1,0 +1,25 @@
+{
+  "id": "weapon-of-the-chosen",
+  "name": "Weapon of the Chosen",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with deity’s favored weapon"
+    },
+    {
+      "type": "rule",
+      "description": "must worship and receive spells from a deity"
+    }
+  ],
+  "benefit": "As a swift action, your first attack with weapon counts as magical",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20of%20the%20Chosen"
+  }
+}

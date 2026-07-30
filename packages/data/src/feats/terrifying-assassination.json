@@ -1,0 +1,25 @@
+{
+  "id": "terrifying-assassination",
+  "name": "Terrifying Assassination",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Assassinate UC ninja master trick"
+    },
+    {
+      "type": "rule",
+      "description": "assassinate slayer ACG advanced talent"
+    },
+    {
+      "type": "rule",
+      "description": "or death attack"
+    }
+  ],
+  "benefit": "Targets of your assassination attempts that survive are shaken",
+  "source": {
+    "title": "Villain Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Terrifying%20Assassination"
+  }
+}

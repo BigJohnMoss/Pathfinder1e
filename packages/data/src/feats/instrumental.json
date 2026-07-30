@@ -1,0 +1,22 @@
+{
+  "id": "instrumental",
+  "name": "Instrumental",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "skill",
+      "key": "Perform (any instrument)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Start bardic performances with free when activating magical instruments",
+  "source": {
+    "title": "Classic Treasures Revisited",
+    "page": 38,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Instrumental"
+  }
+}

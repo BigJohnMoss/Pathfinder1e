@@ -1,0 +1,17 @@
+{
+  "id": "scavengers-eye",
+  "name": "Scavenger's Eye",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Tengu"
+    }
+  ],
+  "benefit": "Quickly identify the most valuable item in a hoard, +2 to all Appraise checks",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 165,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scavenger's%20Eye"
+  }
+}

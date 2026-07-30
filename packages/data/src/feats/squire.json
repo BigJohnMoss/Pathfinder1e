@@ -1,0 +1,21 @@
+{
+  "id": "squire",
+  "name": "Squire",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "proficient with all martial weapons"
+    }
+  ],
+  "benefit": "Attract a squire to aid in your knightly endeavors.",
+  "source": {
+    "title": "Knights of the Inner Sea",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Squire"
+  }
+}

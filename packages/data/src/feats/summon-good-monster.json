@@ -1,0 +1,17 @@
+{
+  "id": "summon-good-monster",
+  "name": "Summon Good Monster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Good alignment"
+    }
+  ],
+  "benefit": "Expand your summoning options with the forces of good",
+  "source": {
+    "title": "Champions of Purity",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Summon%20Good%20Monster"
+  }
+}

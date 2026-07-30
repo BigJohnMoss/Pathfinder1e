@@ -1,0 +1,25 @@
+{
+  "id": "armor-material-mastery",
+  "name": "Armor Material Mastery*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Armor Material Expertise"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or fighter level 8th"
+    },
+    {
+      "type": "feature",
+      "id": "armor-training"
+    }
+  ],
+  "benefit": "Use Armor Material Expertise two additional times per day",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Armor%20Material%20Mastery*"
+  }
+}

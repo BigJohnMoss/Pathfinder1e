@@ -1,0 +1,17 @@
+{
+  "id": "weapon-shift",
+  "name": "Weapon Shift",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "When wild shaped, your natural attacks have the damage type and properties of your weapon",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20Shift"
+  }
+}

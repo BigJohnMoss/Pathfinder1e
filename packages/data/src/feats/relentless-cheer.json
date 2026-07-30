@@ -1,0 +1,29 @@
+{
+  "id": "relentless-cheer",
+  "name": "Relentless Cheer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "fearless and hal luck racial traits"
+    }
+  ],
+  "benefit": "+1 on all saves, increasing to +3 vs. fear, when adjacent to allies who have this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Relentless%20Cheer"
+  }
+}

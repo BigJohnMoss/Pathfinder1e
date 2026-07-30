@@ -1,0 +1,18 @@
+{
+  "id": "advance-warning",
+  "name": "Advance Warning",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    }
+  ],
+  "benefit": "Help allies avoid being surprised",
+  "source": {
+    "title": "Pathfinder #22: The End of Eternity",
+    "page": 75,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Advance%20Warning"
+  }
+}

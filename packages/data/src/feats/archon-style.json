@@ -1,0 +1,17 @@
+{
+  "id": "archon-style",
+  "name": "Archon Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Combat Expertise; Combat Reflexes; base attack bonus +2 or monk level 1st"
+    }
+  ],
+  "benefit": "Grant bonus to AC to allies against single opponent's attacks",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Archon%20Style"
+  }
+}

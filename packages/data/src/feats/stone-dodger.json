@@ -1,0 +1,12 @@
+{
+  "id": "stone-dodger",
+  "name": "Stone Dodger",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Allied warnings help you avoid large thrown objects",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Dodger"
+  }
+}

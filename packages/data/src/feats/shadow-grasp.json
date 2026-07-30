@@ -1,0 +1,21 @@
+{
+  "id": "shadow-grasp",
+  "name": "Shadow Grasp",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "tenebrous-spell"
+    },
+    {
+      "type": "feat",
+      "id": "umbral-spell"
+    }
+  ],
+  "benefit": "Entangle creatures caught within your darkness spells",
+  "source": {
+    "title": "Inner Sea Magic",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shadow%20Grasp"
+  }
+}

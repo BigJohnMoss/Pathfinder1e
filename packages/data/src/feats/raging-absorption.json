@@ -1,0 +1,21 @@
+{
+  "id": "raging-absorption",
+  "name": "Raging Absorption",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "2nd-level-bloodrager-spells"
+    },
+    {
+      "type": "feature",
+      "id": "bloodrage"
+    }
+  ],
+  "benefit": "Absorb arcane energy from damaging spells to refuel bloodrage",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Raging%20Absorption"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "xenoglossy",
+  "name": "Xenoglossy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Linguistics",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use Linguistics to communicate with creatures with which you don’t share a language",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Xenoglossy"
+  }
+}

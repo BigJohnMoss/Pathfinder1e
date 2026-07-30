@@ -1,0 +1,30 @@
+{
+  "id": "greater-meditation-master",
+  "name": "Greater Meditation Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "combat-meditation"
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    },
+    {
+      "type": "level",
+      "minimum": 11
+    }
+  ],
+  "benefit": "After meditating, either gain a +2 insight bonus to one roll or a +1 insight bonus to 2 rolls.",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Meditation%20Master"
+  }
+}

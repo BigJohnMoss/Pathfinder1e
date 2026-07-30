@@ -1,0 +1,23 @@
+{
+  "id": "masked-renown",
+  "name": "Masked Renown",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Disguise",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Gain the renown social talent",
+  "source": {
+    "title": "Inner Sea Intrigue",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Masked%20Renown"
+  }
+}

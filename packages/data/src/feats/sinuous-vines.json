@@ -1,0 +1,34 @@
+{
+  "id": "sinuous-vines",
+  "name": "Sinuous Vines",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Gain a +2 on checks to grapple and use your wings as a free hand",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sinuous%20Vines"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "infuse-poison",
+  "name": "Infuse Poison",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "brew-potion"
+    },
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 5
+    },
+    {
+      "type": "caster-level",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Infuse poisons with other spells",
+  "source": {
+    "title": "Black Markets",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Infuse%20Poison"
+  }
+}

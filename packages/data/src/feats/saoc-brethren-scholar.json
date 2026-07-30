@@ -1,0 +1,32 @@
+{
+  "id": "saoc-brethren-scholar",
+  "name": "Saoc Brethren Scholar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "saoc-brethren-initiate"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Increase the duration of astrological events",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Saoc%20Brethren%20Scholar"
+  }
+}

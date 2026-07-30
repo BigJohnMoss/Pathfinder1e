@@ -1,0 +1,36 @@
+{
+  "id": "octopus-focus",
+  "name": "Octopus Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "octopus-style"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain a bonus on attack rolls equal to the number of enemies that threaten you",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Octopus%20Focus"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "improvised-defenses",
+  "name": "Improvised Defenses",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Catch Off-Guard or Throw Anything"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Gain a +1 shield bonus to AC when wielding an improvised weapon",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improvised%20Defenses"
+  }
+}

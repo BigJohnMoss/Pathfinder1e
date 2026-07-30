@@ -1,0 +1,40 @@
+{
+  "id": "improved-conceal-spell",
+  "name": "Improved Conceal Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "conceal-spell"
+    },
+    {
+      "type": "feat",
+      "id": "deceitful"
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Disguise",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast 3rd-level spells or use a 3rd-level spell-like ability"
+    }
+  ],
+  "benefit": "Hide powerful spells more easily",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Conceal%20Spell"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "purifying-channel",
+  "name": "Purifying Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "selective-channeling"
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Burn a foe when you heal allies",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Purifying%20Channel"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "swift-refuge",
+  "name": "Swift Refuge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "swift-iron-style"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with medium armor"
+    }
+  ],
+  "benefit": "Take minimum damage from an attack",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swift%20Refuge"
+  }
+}

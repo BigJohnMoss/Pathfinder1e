@@ -1,0 +1,17 @@
+{
+  "id": "gifts-from-the-sea",
+  "name": "Gifts from the Sea",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Shoreborn half-elf"
+    }
+  ],
+  "benefit": "Create a 1st-level potion from fresh water",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gifts%20from%20the%20Sea"
+  }
+}

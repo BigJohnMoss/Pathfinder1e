@@ -1,0 +1,17 @@
+{
+  "id": "reap-the-infirm",
+  "name": "Reap the Infirm",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Deal extra damage to diseased creatures",
+  "source": {
+    "title": "Villain Codex",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reap%20the%20Infirm"
+  }
+}

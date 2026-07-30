@@ -1,0 +1,21 @@
+{
+  "id": "weapon-bearer",
+  "name": "Weapon Bearer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "proficient with all martial weapons"
+    }
+  ],
+  "benefit": "You attract a weapon bearer to aid you in your endeavors.",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 135,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20Bearer"
+  }
+}

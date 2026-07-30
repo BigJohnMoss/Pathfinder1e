@@ -1,0 +1,28 @@
+{
+  "id": "willing-accomplice",
+  "name": "Willing Accomplice",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Use Bluff to aid ally's Disguise",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 95,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Willing%20Accomplice"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "command-animals",
+  "name": "Command Animals",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal domain"
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Use channeled energy to control animals",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 108,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Command%20Animals"
+  }
+}

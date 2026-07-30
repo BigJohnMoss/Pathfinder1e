@@ -1,0 +1,34 @@
+{
+  "id": "burrowing-shot",
+  "name": "Burrowing Shot",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "deadly-aim"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a ranged weapon"
+    }
+  ],
+  "benefit": "Lodge a ranged attack within someone’s body",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Burrowing%20Shot"
+  }
+}

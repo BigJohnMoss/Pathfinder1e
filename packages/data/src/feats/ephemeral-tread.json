@@ -1,0 +1,27 @@
+{
+  "id": "ephemeral-tread",
+  "name": "Ephemeral Tread",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "lucid-dreamer"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "While in the Dimension of Dreams with a physical body, perform an impossible action as a standard action",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ephemeral%20Tread"
+  }
+}

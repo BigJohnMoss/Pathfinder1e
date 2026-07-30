@@ -1,0 +1,25 @@
+{
+  "id": "dawns-blessing",
+  "name": "Dawn's Blessing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "divine-spells"
+    },
+    {
+      "type": "rule",
+      "description": "sandkin half-orc"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Sarenrae"
+    }
+  ],
+  "benefit": "Improve your caster level when in bright light",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dawn's%20Blessing"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "divine-deception",
+  "name": "Divine Deception",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain +5 bonus on UMD checks with divine items",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Deception"
+  }
+}

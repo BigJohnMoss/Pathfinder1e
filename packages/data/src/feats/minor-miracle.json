@@ -1,0 +1,27 @@
+{
+  "id": "minor-miracle",
+  "name": "Minor Miracle",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 12
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "alignment must match that of your worshiped deity"
+    }
+  ],
+  "benefit": "Gain a spell-like ability from one of your deities domains",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Minor%20Miracle"
+  }
+}

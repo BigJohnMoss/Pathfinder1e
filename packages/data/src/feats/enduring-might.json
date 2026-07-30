@@ -1,0 +1,26 @@
+{
+  "id": "enduring-might",
+  "name": "Enduring Might",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "gather-might"
+    },
+    {
+      "type": "feature",
+      "id": "gather-power"
+    },
+    {
+      "type": "class-level",
+      "classId": "kineticist",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Gather Might lasts until the start of your next turn",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Enduring%20Might"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "shifters-rush",
+  "name": "Shifter's Rush",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    },
+    {
+      "type": "rule",
+      "description": "shifter level 4t"
+    }
+  ],
+  "benefit": "Use wild shape as a free action when you charge or move more than 10 feet",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shifter's%20Rush"
+  }
+}

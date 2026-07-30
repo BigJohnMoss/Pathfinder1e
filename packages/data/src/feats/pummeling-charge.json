@@ -1,0 +1,34 @@
+{
+  "id": "pummeling-charge",
+  "name": "Pummeling Charge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    },
+    {
+      "type": "feat",
+      "id": "pummeling-style"
+    },
+    {
+      "type": "class-level",
+      "classId": "brawler",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "or monk level 8th"
+    }
+  ],
+  "benefit": "Pummel after a charge",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pummeling%20Charge"
+  }
+}

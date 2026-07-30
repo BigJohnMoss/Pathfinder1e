@@ -1,0 +1,25 @@
+{
+  "id": "improved-fiendish-sorcery",
+  "name": "Improved Fiendish Sorcery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fiendish sorcery racial trait"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "tie"
+    }
+  ],
+  "benefit": "Treat your Charisma as 2 higher with the Rakshasa or Shadow bloodlines.",
+  "source": {
+    "title": "Blood of Fiends",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Fiendish%20Sorcery"
+  }
+}

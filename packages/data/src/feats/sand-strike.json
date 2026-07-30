@@ -1,0 +1,25 @@
+{
+  "id": "sand-strike",
+  "name": "Sand Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with the cestus"
+    }
+  ],
+  "benefit": "Increase the durability of your cestus and use dirty tricks to blind your opponents",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sand%20Strike"
+  }
+}

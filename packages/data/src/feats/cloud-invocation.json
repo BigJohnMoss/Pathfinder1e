@@ -1,0 +1,17 @@
+{
+  "id": "cloud-invocation",
+  "name": "Cloud Invocation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Mbe’ke dwarf"
+    }
+  ],
+  "benefit": "Gain obscuring mist as a spell-like ability",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cloud%20Invocation"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "beliers-bite",
+  "name": "Belier's Bite",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Deal 1d4 bleed damage with your unarmed strikes",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Belier's%20Bite"
+  }
+}

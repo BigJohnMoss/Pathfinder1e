@@ -1,0 +1,17 @@
+{
+  "id": "disarm-partner",
+  "name": "Disarm Partner",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Attempt a disarm when an ally fails at one",
+  "source": {
+    "title": "Monster Codex",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Disarm%20Partner"
+  }
+}

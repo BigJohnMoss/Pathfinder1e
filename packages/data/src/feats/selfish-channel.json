@@ -1,0 +1,17 @@
+{
+  "id": "selfish-channel",
+  "name": "Selfish Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Heal +50% if you are the only creature healed by channeled energy",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Selfish%20Channel"
+  }
+}

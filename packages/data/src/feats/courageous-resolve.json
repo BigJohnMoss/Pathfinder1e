@@ -1,0 +1,25 @@
+{
+  "id": "courageous-resolve",
+  "name": "Courageous Resolve",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Craven racial trait or fearless racial trait"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "hal"
+    }
+  ],
+  "benefit": "Increase your resistance to fear",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 66,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Courageous%20Resolve"
+  }
+}

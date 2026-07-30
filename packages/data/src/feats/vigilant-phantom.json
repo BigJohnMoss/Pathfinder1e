@@ -1,0 +1,17 @@
+{
+  "id": "vigilant-phantom",
+  "name": "Vigilant Phantom",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "phantom"
+    }
+  ],
+  "benefit": "+4 on Perception checks within arm’s reach of active phantom",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vigilant%20Phantom"
+  }
+}

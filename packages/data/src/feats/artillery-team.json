@@ -1,0 +1,25 @@
+{
+  "id": "artillery-team",
+  "name": "Artillery Team",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Proficiency with light crossbow"
+    },
+    {
+      "type": "rule",
+      "description": "heavy crossbow"
+    },
+    {
+      "type": "rule",
+      "description": "or musket; size Small or Medium"
+    }
+  ],
+  "benefit": "Ally with this feat can help you load and fire a Large light crossbow, heavy crossbow, or musket",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 201,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Artillery%20Team"
+  }
+}

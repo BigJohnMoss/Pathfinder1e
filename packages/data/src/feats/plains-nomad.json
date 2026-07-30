@@ -1,0 +1,17 @@
+{
+  "id": "plains-nomad",
+  "name": "Plains Nomad",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-terrain-plains"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Constitution checks attempted as a result of a forced march; bonus is doubled and applies on other checks in plains terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Plains%20Nomad"
+  }
+}

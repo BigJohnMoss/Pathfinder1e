@@ -1,0 +1,30 @@
+{
+  "id": "extended-combat-meditation",
+  "name": "Extended Combat Meditation",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-meditation"
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    },
+    {
+      "type": "level",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Increase the duration of Combat Meditation by your Wisdom modifier",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extended%20Combat%20Meditation"
+  }
+}

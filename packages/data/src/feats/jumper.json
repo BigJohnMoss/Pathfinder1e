@@ -1,0 +1,22 @@
+{
+  "id": "jumper",
+  "name": "Jumper",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "creature type other than humanoid or outsider"
+    }
+  ],
+  "benefit": "Jump with greater ease",
+  "source": {
+    "title": "Animal Archive",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Jumper"
+  }
+}

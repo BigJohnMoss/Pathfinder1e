@@ -1,0 +1,21 @@
+{
+  "id": "cerberus-snare",
+  "name": "Cerberus Snare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cerberus-style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 9th"
+    }
+  ],
+  "benefit": "When you damage a creature in Ceberus Style, it cannot 5 ft. step or use dimensional travel",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cerberus%20Snare"
+  }
+}

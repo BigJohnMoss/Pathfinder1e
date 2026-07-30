@@ -1,0 +1,25 @@
+{
+  "id": "inner-flame",
+  "name": "Inner Flame",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "scorching-weapons"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "ifrit"
+    }
+  ],
+  "benefit": "+4 save vs. fire/light spells, deal extra damage with Scorching Weapons",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 130,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inner%20Flame"
+  }
+}

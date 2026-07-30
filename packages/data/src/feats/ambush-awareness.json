@@ -1,0 +1,17 @@
+{
+  "id": "ambush-awareness",
+  "name": "Ambush Awareness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alertness"
+    }
+  ],
+  "benefit": "Take total defense action when surprised",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ambush%20Awareness"
+  }
+}

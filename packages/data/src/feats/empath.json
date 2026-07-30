@@ -1,0 +1,21 @@
+{
+  "id": "empath",
+  "name": "Empath",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or ability to cast psychic spells"
+    },
+    {
+      "type": "rule",
+      "description": "Perception 1 rank or Sense Motive 1 rank"
+    }
+  ],
+  "benefit": "Read emotions quickly and often, but open your mind to risk",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 132,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Empath"
+  }
+}

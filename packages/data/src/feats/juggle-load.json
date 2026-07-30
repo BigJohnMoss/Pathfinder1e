@@ -1,0 +1,26 @@
+{
+  "id": "juggle-load",
+  "name": "Juggle Load",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "ammo-drop"
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "proficient with sling"
+    }
+  ],
+  "benefit": "Load slings as a free action",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Juggle%20Load"
+  }
+}

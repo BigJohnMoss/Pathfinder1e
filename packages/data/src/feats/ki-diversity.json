@@ -1,0 +1,26 @@
+{
+  "id": "ki-diversity",
+  "name": "Ki Diversity",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Kusari-Gama 25 TPA"
+    }
+  ],
+  "benefit": "Learn to channel your ki into a new ability",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ki%20Diversity"
+  }
+}

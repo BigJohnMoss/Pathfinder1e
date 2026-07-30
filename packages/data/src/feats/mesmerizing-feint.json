@@ -1,0 +1,17 @@
+{
+  "id": "mesmerizing-feint",
+  "name": "Mesmerizing Feint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hypnotic-stare"
+    }
+  ],
+  "benefit": "Lower penalties for feinting against creatures of other types",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 137,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mesmerizing%20Feint"
+  }
+}

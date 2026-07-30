@@ -1,0 +1,17 @@
+{
+  "id": "swamper",
+  "name": "Swamper",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-terrain-swamp"
+    }
+  ],
+  "benefit": "+2 bonus on Swim checks, Climb checks, and some Arobatics checks on slippery surfaces; move at full speed through bogs and see twice as far in fog",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swamper"
+  }
+}

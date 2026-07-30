@@ -1,0 +1,25 @@
+{
+  "id": "concentrated-fire",
+  "name": "Concentrated Fire",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "rule",
+      "description": "elf"
+    },
+    {
+      "type": "rule",
+      "description": "weapon familiarity racial trait"
+    }
+  ],
+  "benefit": "When you and an ally with this feat both ready actions to make ranged attacks, use the highest attack roll for both attacks",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 204,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Concentrated%20Fire"
+  }
+}

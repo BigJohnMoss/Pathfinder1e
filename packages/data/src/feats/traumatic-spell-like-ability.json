@@ -1,0 +1,17 @@
+{
+  "id": "traumatic-spell-like-ability",
+  "name": "Traumatic Spell-Like Ability",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Spell-like ability at caster level 6th or higher"
+    }
+  ],
+  "benefit": "Spell-like ability causes nightmares",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 95,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Traumatic%20Spell-Like%20Ability"
+  }
+}

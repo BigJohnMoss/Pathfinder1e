@@ -1,0 +1,17 @@
+{
+  "id": "battering-ram",
+  "name": "Battering Ram",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Craft (alchemy) 3 ranks; grit class feature or Amateur Gunslinger; pistol-whip gunslinger deed; quick clear gunslinger deed"
+    }
+  ],
+  "benefit": "Use the pistol-whip deed to remove your gun's broken condition after a misfire",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Battering%20Ram"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "potent-holy-symbol",
+  "name": "Potent Holy Symbol",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Good alignment"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of a good deity"
+    }
+  ],
+  "benefit": "Keep vampires at bay with your holy symbol while still casting spells or channeling energy",
+  "source": {
+    "title": "Blood of the Night",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Potent%20Holy%20Symbol"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "blight-guide",
+  "name": "Blight Guide",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blight-survivalist"
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Survival)"
+    }
+  ],
+  "benefit": "Blight Survivalist extends to nearby allies; also gain a 1/day reroll when saving against environmental/weather effects",
+  "source": {
+    "title": "Pathfinder #119: Prisoners of the Blight",
+    "page": 61,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blight%20Guide"
+  }
+}

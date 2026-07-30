@@ -1,0 +1,22 @@
+{
+  "id": "upsetting-shield-style",
+  "name": "Upsetting Shield Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with bucklers"
+    }
+  ],
+  "benefit": "Use a buckler to shield bash",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Upsetting%20Shield%20Style"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "banner-of-doom",
+  "name": "Banner of Doom",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 8
+    },
+    {
+      "type": "feature",
+      "id": "banner"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "tie"
+    }
+  ],
+  "benefit": "Penalize enemies' saving throws with fear when your banner is in sight.",
+  "source": {
+    "title": "Blood of Fiends",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Banner%20of%20Doom"
+  }
+}

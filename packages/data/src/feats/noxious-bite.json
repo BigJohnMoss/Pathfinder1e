@@ -1,0 +1,21 @@
+{
+  "id": "noxious-bite",
+  "name": "Noxious Bite",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Acidic breath weapon"
+    },
+    {
+      "type": "rule",
+      "description": "bite attack"
+    }
+  ],
+  "benefit": "Nauseate creatures with your bite",
+  "source": {
+    "title": "Dragons Revisited",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Noxious%20Bite"
+  }
+}

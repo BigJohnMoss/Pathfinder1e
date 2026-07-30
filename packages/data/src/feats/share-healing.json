@@ -1,0 +1,29 @@
+{
+  "id": "share-healing",
+  "name": "Share Healing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to acquire an animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "eidolon"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    },
+    {
+      "type": "rule",
+      "description": "or special mount"
+    }
+  ],
+  "benefit": "Share healing with your companion creature",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Share%20Healing"
+  }
+}

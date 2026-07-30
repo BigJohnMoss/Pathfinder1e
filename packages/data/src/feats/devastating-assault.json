@@ -1,0 +1,25 @@
+{
+  "id": "devastating-assault",
+  "name": "Devastating Assault",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a melee weapon"
+    }
+  ],
+  "benefit": "Batter through an opponent’s defenses",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Devastating%20Assault"
+  }
+}

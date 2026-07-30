@@ -1,0 +1,22 @@
+{
+  "id": "coven-touched",
+  "name": "Coven-Touched",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "changeling"
+    }
+  ],
+  "benefit": "You have a natural affinity for coven magic",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Coven-Touched"
+  }
+}

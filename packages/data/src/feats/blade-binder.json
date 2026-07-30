@@ -1,0 +1,21 @@
+{
+  "id": "blade-binder",
+  "name": "Blade Binder",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with khopesh or temple sword"
+    }
+  ],
+  "benefit": "Improve your skill with blade binding",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blade%20Binder"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "craft-ooze",
+  "name": "Craft Ooze",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "brew-potion"
+    },
+    {
+      "type": "feat",
+      "id": "craft-wondrous-item"
+    },
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 3
+    },
+    {
+      "type": "caster-level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "You can use alchemy to create dangerous ooze creatures",
+  "source": {
+    "title": "Alchemy Manual",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Ooze"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "subtle-enchantments",
+  "name": "Subtle Enchantments",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deceitful"
+    },
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(enchantment)"
+    }
+  ],
+  "benefit": "Victims and observers might not notice your enchantments",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Subtle%20Enchantments"
+  }
+}

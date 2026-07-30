@@ -1,0 +1,12 @@
+{
+  "id": "insidious-healing",
+  "name": "Insidious Healing",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Creatures who accept your healing a more vulnerable to your spells",
+  "source": {
+    "title": "Healer's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Insidious%20Healing"
+  }
+}

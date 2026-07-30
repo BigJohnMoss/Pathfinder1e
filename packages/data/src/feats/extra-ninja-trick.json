@@ -1,0 +1,17 @@
+{
+  "id": "extra-ninja-trick",
+  "name": "Extra Ninja Trick",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "ninja-trick-uc"
+    }
+  ],
+  "benefit": "Gain an additional ninja trick",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Ninja%20Trick"
+  }
+}

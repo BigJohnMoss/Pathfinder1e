@@ -1,0 +1,18 @@
+{
+  "id": "turbulent-takeoff",
+  "name": "Turbulent Takeoff",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Fly",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Prevent creatures from gaining an attack of opportunity when you takeoff",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Turbulent%20Takeoff"
+  }
+}

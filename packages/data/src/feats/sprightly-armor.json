@@ -1,0 +1,30 @@
+{
+  "id": "sprightly-armor",
+  "name": "Sprightly Armor*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +11 or fighter level 8th"
+    },
+    {
+      "type": "feature",
+      "id": "armor-training"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with light armor"
+    }
+  ],
+  "benefit": "Gain your armor's enhancement bonus to initiative",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sprightly%20Armor*"
+  }
+}

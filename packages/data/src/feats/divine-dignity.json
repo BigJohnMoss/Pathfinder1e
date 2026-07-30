@@ -1,0 +1,25 @@
+{
+  "id": "divine-dignity",
+  "name": "Divine Dignity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-casting"
+    },
+    {
+      "type": "spell-access",
+      "id": "divine-spells"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Abadar"
+    }
+  ],
+  "benefit": "Cast harmless spells without provoking attacks of opportunity",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 210,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Dignity"
+  }
+}

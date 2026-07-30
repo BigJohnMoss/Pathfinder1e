@@ -1,0 +1,30 @@
+{
+  "id": "slashing-grace",
+  "name": "Slashing Grace",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with chosen weapon"
+    }
+  ],
+  "benefit": "Treat a slashing weapon as a piercing melee weapon",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Slashing%20Grace"
+  }
+}

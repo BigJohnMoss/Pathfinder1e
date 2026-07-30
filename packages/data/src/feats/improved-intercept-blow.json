@@ -1,0 +1,25 @@
+{
+  "id": "improved-intercept-blow",
+  "name": "Improved Intercept Blow",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "intercept-blow"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "animal companion"
+    }
+  ],
+  "benefit": "Further reduce damage while using Intercept Blows",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 218,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Intercept%20Blow"
+  }
+}

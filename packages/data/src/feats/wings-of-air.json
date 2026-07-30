@@ -1,0 +1,25 @@
+{
+  "id": "wings-of-air",
+  "name": "Wings of Air",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "airy-step"
+    },
+    {
+      "type": "level",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "sylph"
+    }
+  ],
+  "benefit": "Increased save against air/electricity effects, gain a supernatural fly speed",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wings%20of%20Air"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "flight-mastery",
+  "name": "Flight Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude save bonus +6"
+    }
+  ],
+  "benefit": "Cast fly with a transmutation-crafted item",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flight%20Mastery"
+  }
+}

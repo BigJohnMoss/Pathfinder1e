@@ -1,0 +1,31 @@
+{
+  "id": "wily-warrior",
+  "name": "Wily Warrior",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 1
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "or you must have the Military Strategist background (page 5)"
+    }
+  ],
+  "benefit": "Use your ranks in Sense Motive in place of your Will save.",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wily%20Warrior"
+  }
+}

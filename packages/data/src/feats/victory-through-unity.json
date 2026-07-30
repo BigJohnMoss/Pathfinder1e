@@ -1,0 +1,21 @@
+{
+  "id": "victory-through-unity",
+  "name": "Victory Through Unity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have a familiar"
+    },
+    {
+      "type": "rule",
+      "description": "and you must either be a member of House Merrosett or have the Initiated or Storied Lineage background"
+    }
+  ],
+  "benefit": "Grant your familiar one of the hunter's animal aspects",
+  "source": {
+    "title": "Pathfinder #131: The Reaper's Right Hand",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Victory%20Through%20Unity"
+  }
+}

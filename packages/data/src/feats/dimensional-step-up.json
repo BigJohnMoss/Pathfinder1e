@@ -1,0 +1,33 @@
+{
+  "id": "dimensional-step-up",
+  "name": "Dimensional Step Up",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dimensional-agility"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    },
+    {
+      "type": "feat",
+      "id": "step-up"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    },
+    {
+      "type": "rule",
+      "description": "abundant step class feature or ability to cast dimension door"
+    }
+  ],
+  "benefit": "Follow a creature that teleports away",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dimensional%20Step%20Up"
+  }
+}

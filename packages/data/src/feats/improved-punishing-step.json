@@ -1,0 +1,30 @@
+{
+  "id": "improved-punishing-step",
+  "name": "Improved Punishing Step",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "punishing-step"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Creature's that charge you and miss are flat-footed against your attacks",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Punishing%20Step"
+  }
+}

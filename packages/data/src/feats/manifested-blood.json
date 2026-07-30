@@ -1,0 +1,17 @@
+{
+  "id": "manifested-blood",
+  "name": "Manifested Blood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cha 13; draconic or elemental bloodline"
+    }
+  ],
+  "benefit": "Surround yourself with an element associated with your bloodline to gain resistance against its energy and deal damage to attackers",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Manifested%20Blood"
+  }
+}

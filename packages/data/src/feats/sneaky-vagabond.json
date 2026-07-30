@@ -1,0 +1,12 @@
+{
+  "id": "sneaky-vagabond",
+  "name": "Sneaky Vagabond",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Get a bonus to Hide while being pursued or in crowds and on other checks relating to hiding",
+  "source": {
+    "title": "Taldor, Echoes of Glory",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sneaky%20Vagabond"
+  }
+}

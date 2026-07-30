@@ -1,0 +1,21 @@
+{
+  "id": "eagle-knight-candidate",
+  "name": "Eagle Knight Candidate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "convince four different Eagle Knights and either a member of the People’s Council or an Andoran town mayor to write letters of commendation on your behalf"
+    }
+  ],
+  "benefit": "Join the Eagle Knights, gaining a unique benefit",
+  "source": {
+    "title": "Andoran, Spirit of Liberty",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eagle%20Knight%20Candidate"
+  }
+}

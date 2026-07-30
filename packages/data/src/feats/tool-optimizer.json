@@ -1,0 +1,27 @@
+{
+  "id": "tool-optimizer",
+  "name": "Tool Optimizer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (any)",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "or Profession (any) 1 rank"
+    }
+  ],
+  "benefit": "Take no penalty for using improvesed tools",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tool%20Optimizer"
+  }
+}

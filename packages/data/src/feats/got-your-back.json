@@ -1,0 +1,22 @@
+{
+  "id": "got-your-back",
+  "name": "Got Your Back",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    }
+  ],
+  "benefit": "Use aid another to prevent allies from becoming flanked or flat-footed",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Got%20Your%20Back"
+  }
+}

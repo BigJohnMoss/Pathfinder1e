@@ -1,0 +1,22 @@
+{
+  "id": "warped-mind",
+  "name": "Warped Mind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "Worldwound affinity"
+    }
+  ],
+  "benefit": "Resist those that attempt to read your thoughts",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Warped%20Mind"
+  }
+}

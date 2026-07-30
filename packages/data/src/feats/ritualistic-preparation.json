@@ -1,0 +1,32 @@
+{
+  "id": "ritualistic-preparation",
+  "name": "Ritualistic Preparation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Linguistics",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 1
+    },
+    {
+      "type": "spell-access",
+      "id": "read-magic"
+    }
+  ],
+  "benefit": "Treat spellbooks with preparation rituals as if they were prayer books or meditation books",
+  "source": {
+    "title": "Arcane Anthology",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ritualistic%20Preparation"
+  }
+}

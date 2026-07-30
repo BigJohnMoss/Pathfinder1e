@@ -1,0 +1,17 @@
+{
+  "id": "lifes-blood",
+  "name": "Life's Blood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Samsaran"
+    }
+  ],
+  "benefit": "Sacrifice your own vitality to heal another creature",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 199,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Life's%20Blood"
+  }
+}

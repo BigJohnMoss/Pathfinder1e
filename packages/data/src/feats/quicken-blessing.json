@@ -1,0 +1,21 @@
+{
+  "id": "quicken-blessing",
+  "name": "Quicken Blessing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Access to a blessing’s major power"
+    },
+    {
+      "type": "feature",
+      "id": "blessings"
+    }
+  ],
+  "benefit": "Choose a blessing and spend two uses to call upon it as a swift action",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quicken%20Blessing"
+  }
+}

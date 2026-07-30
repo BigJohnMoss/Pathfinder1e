@@ -1,0 +1,21 @@
+{
+  "id": "vengeful-banisher",
+  "name": "Vengeful Banisher",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You witnessed at least one family member or a close friend being killed by demons or demonic cultists"
+    },
+    {
+      "type": "rule",
+      "description": "or you have the Hated Foe or An Eye for an Eye background (see Ultimate Campaign )"
+    }
+  ],
+  "benefit": "+2 save vs. spells/effects from demons and their worshipers",
+  "source": {
+    "title": "Demon Hunter's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vengeful%20Banisher"
+  }
+}

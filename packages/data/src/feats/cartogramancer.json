@@ -1,0 +1,22 @@
+{
+  "id": "cartogramancer",
+  "name": "Cartogramancer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (geography)",
+      "minimum": 10
+    },
+    {
+      "type": "spell-access",
+      "id": "greater-teleport"
+    }
+  ],
+  "benefit": "Use Knowledge to find a destination for greater teleport",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cartogramancer"
+  }
+}

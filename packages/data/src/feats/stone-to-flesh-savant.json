@@ -1,0 +1,26 @@
+{
+  "id": "stone-to-flesh-savant",
+  "name": "Stone to Flesh Savant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "paladin",
+      "minimum": 12
+    },
+    {
+      "type": "feature",
+      "id": "lay-on-hands"
+    },
+    {
+      "type": "feature",
+      "id": "mercy"
+    }
+  ],
+  "benefit": "Restore petrified targets with lay on hands",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20to%20Flesh%20Savant"
+  }
+}

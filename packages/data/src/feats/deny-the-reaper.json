@@ -1,0 +1,29 @@
+{
+  "id": "deny-the-reaper",
+  "name": "Deny the Reaper",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have witnessed the death of a close companion in battle—a death that could have been prevented"
+    },
+    {
+      "type": "rule",
+      "description": "such as from bleeding"
+    },
+    {
+      "type": "rule",
+      "description": "failure to stabilize"
+    },
+    {
+      "type": "rule",
+      "description": "or ongoing poison damage—or have the Death in the Family or The War background"
+    }
+  ],
+  "benefit": "+2 bonus on Heal, apply first aid as move action",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deny%20the%20Reaper"
+  }
+}

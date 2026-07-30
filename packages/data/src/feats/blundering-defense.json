@@ -1,0 +1,25 @@
+{
+  "id": "blundering-defense",
+  "name": "Blundering Defense",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cautious-fighter"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "hal"
+    }
+  ],
+  "benefit": "Grant allies a luck bonus to AC/CMD when you fight defensively or use total defense",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 66,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blundering%20Defense"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "survivor",
+  "name": "Survivor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "diehard"
+    },
+    {
+      "type": "feat",
+      "id": "endurance"
+    }
+  ],
+  "benefit": "When you’re dying, you stabilize more easily",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 289,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Survivor"
+  }
+}

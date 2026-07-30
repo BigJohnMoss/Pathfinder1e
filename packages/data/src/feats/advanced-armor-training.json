@@ -1,0 +1,22 @@
+{
+  "id": "advanced-armor-training",
+  "name": "Advanced Armor Training",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "armor-training"
+    },
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain an advanced armor training option",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Advanced%20Armor%20Training"
+  }
+}

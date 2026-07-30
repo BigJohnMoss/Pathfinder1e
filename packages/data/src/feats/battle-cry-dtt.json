@@ -1,0 +1,17 @@
+{
+  "id": "battle-cry-dtt",
+  "name": "Battle Cry (DTT)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    }
+  ],
+  "benefit": "Bardic performances used during the surprise round do not count towards the total number per day",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Battle%20Cry%20(DTT)"
+  }
+}

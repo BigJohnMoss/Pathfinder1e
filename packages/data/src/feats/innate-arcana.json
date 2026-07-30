@@ -1,0 +1,25 @@
+{
+  "id": "innate-arcana",
+  "name": "Innate Arcana",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Arcane spellcaster"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "serpentfolk"
+    }
+  ],
+  "benefit": "Expend prepared arcane magic to re-use a spell-like ability",
+  "source": {
+    "title": "Monster Codex",
+    "page": 200,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Innate%20Arcana"
+  }
+}

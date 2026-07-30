@@ -1,0 +1,30 @@
+{
+  "id": "cornugon-trip",
+  "name": "Cornugon Trip",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(spiked chain)"
+    }
+  ],
+  "benefit": "Make trip attempts with a thrown spiked chain",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cornugon%20Trip"
+  }
+}

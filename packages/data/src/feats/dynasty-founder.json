@@ -1,0 +1,17 @@
+{
+  "id": "dynasty-founder",
+  "name": "Dynasty Founder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have lived in the chosen city for at least 1 year or be the heir of a former city leader"
+    }
+  ],
+  "benefit": "Exert your control over a city's policies and politics",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dynasty%20Founder"
+  }
+}

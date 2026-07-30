@@ -1,0 +1,17 @@
+{
+  "id": "coordinated-reposition",
+  "name": "Coordinated Reposition",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Step-Up"
+    }
+  ],
+  "benefit": "Take 5 ft. steps when allies do",
+  "source": {
+    "title": "Monster Codex",
+    "page": 92,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Coordinated%20Reposition"
+  }
+}

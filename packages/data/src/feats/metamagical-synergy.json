@@ -1,0 +1,17 @@
+{
+  "id": "metamagical-synergy",
+  "name": "Metamagical Synergy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "allied-spellcaster"
+    }
+  ],
+  "benefit": "You and the other members of your coven can weave your spells together to great effect",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Metamagical%20Synergy"
+  }
+}

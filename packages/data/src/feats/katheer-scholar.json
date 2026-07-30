@@ -1,0 +1,22 @@
+{
+  "id": "katheer-scholar",
+  "name": "Katheer Scholar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "Qadira affinity"
+    }
+  ],
+  "benefit": "Gain bonus damage using your Knowledge skills",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 121,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Katheer%20Scholar"
+  }
+}

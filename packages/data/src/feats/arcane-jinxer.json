@@ -1,0 +1,25 @@
+{
+  "id": "arcane-jinxer",
+  "name": "Arcane Jinxer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Arcane spellcaster"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Sacrifice arcane spells to make your jinxes harder to resist",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Arcane%20Jinxer"
+  }
+}

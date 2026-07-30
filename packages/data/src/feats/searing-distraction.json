@@ -1,0 +1,17 @@
+{
+  "id": "searing-distraction",
+  "name": "Searing Distraction",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "catch-off-guard"
+    }
+  ],
+  "benefit": "Blind and dazzle creatures with a torch",
+  "source": {
+    "title": "Heroes of the Darklands",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Searing%20Distraction"
+  }
+}

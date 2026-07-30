@@ -1,0 +1,17 @@
+{
+  "id": "giant-vendetta",
+  "name": "Giant Vendetta",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have been knocked unconscious in an encounter with a challenging giant foe or have a regional background trait tied to giants (such as those presented in this section)"
+    }
+  ],
+  "benefit": "Bonus against fighting and researching giants",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Giant%20Vendetta"
+  }
+}

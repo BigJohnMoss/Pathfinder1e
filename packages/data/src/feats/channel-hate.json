@@ -1,0 +1,21 @@
+{
+  "id": "channel-hate",
+  "name": "Channel Hate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 6d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Gyronna"
+    }
+  ],
+  "benefit": "Expend a use of channel energy to affect creatures with vengeful outrage UM",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channel%20Hate"
+  }
+}

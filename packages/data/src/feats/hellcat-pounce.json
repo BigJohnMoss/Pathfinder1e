@@ -1,0 +1,29 @@
+{
+  "id": "hellcat-pounce",
+  "name": "Hellcat Pounce",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "hellcat-stealth"
+    },
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Stealth)"
+    },
+    {
+      "type": "rule",
+      "description": "sneak attack +2d6"
+    }
+  ],
+  "benefit": "Make a second attack in the surprise round",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hellcat%20Pounce"
+  }
+}

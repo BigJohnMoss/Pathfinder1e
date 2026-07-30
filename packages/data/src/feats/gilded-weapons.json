@@ -1,0 +1,25 @@
+{
+  "id": "gilded-weapons",
+  "name": "Gilded Weapons",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aphorite"
+    },
+    {
+      "type": "rule",
+      "description": "crystalline dust racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "nonchaotic alignment"
+    }
+  ],
+  "benefit": "Expend uses of crystalline dust to deal extra damage to chaotic creatures",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gilded%20Weapons"
+  }
+}

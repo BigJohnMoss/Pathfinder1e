@@ -1,0 +1,41 @@
+{
+  "id": "special-delivery",
+  "name": "Special Delivery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bonded-mind"
+    },
+    {
+      "type": "feat",
+      "id": "share-spells"
+    },
+    {
+      "type": "rule",
+      "description": "ability to deliver spells through an animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "eidolon"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    },
+    {
+      "type": "rule",
+      "description": "or phantom"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Allow your allies to carry your touch spells",
+  "source": {
+    "title": "Distant Shores",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Special%20Delivery"
+  }
+}

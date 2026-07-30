@@ -1,0 +1,21 @@
+{
+  "id": "extend-resonant-power",
+  "name": "Extend Resonant Power",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "mental-focus"
+    }
+  ],
+  "benefit": "Share resonant powers with an ally",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extend%20Resonant%20Power"
+  }
+}

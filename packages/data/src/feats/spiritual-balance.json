@@ -1,0 +1,21 @@
+{
+  "id": "spiritual-balance",
+  "name": "Spiritual Balance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    },
+    {
+      "type": "feature",
+      "id": "still-mind"
+    }
+  ],
+  "benefit": "Still mind applies against possession, spend ki to double the bonus",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 140,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spiritual%20Balance"
+  }
+}

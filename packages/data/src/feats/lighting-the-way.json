@@ -1,0 +1,33 @@
+{
+  "id": "lighting-the-way",
+  "name": "Lighting the Way",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Be a member of House Zespire"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Devoted"
+    },
+    {
+      "type": "rule",
+      "description": "Exemplar"
+    },
+    {
+      "type": "rule",
+      "description": "Marked by the Gods"
+    },
+    {
+      "type": "rule",
+      "description": "or Righteous Mentor background"
+    }
+  ],
+  "benefit": "Once per day, grant your allies a +1 bonus on attack rolls and saving throws against mind-affecting effects",
+  "source": {
+    "title": "Pathfinder #131: The Reaper's Right Hand",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lighting%20the%20Way"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "focused-inspiration",
+  "name": "Focused Inspiration",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "inspiration"
+    },
+    {
+      "type": "feature",
+      "id": "keen-recollection"
+    }
+  ],
+  "benefit": "Roll d8s or higher when you use inspiration on chosen skills",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 148,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Inspiration"
+  }
+}

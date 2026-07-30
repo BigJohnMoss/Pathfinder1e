@@ -1,0 +1,17 @@
+{
+  "id": "extra-shadow-jump",
+  "name": "Extra Shadow Jump",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "shadow-jump-shadowdancer"
+    }
+  ],
+  "benefit": "Add 10 feet to the total distance you can shadow jump each day",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Shadow%20Jump"
+  }
+}

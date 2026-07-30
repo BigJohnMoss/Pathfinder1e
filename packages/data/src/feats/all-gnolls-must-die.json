@@ -1,0 +1,17 @@
+{
+  "id": "all-gnolls-must-die",
+  "name": "All Gnolls Must Die",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Deliver the killing blow to 20 gnolls (or similar)"
+    }
+  ],
+  "benefit": "Gain a morale bonus on Will saves and a bonus to attack/damage gnolls and similar creatures",
+  "source": {
+    "title": "Legacy of Fire Player's Guide",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=All%20Gnolls%20Must%20Die"
+  }
+}

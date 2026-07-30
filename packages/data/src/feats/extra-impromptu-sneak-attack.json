@@ -1,0 +1,17 @@
+{
+  "id": "extra-impromptu-sneak-attack",
+  "name": "Extra Impromptu Sneak Attack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "impromptu-sneak-attack"
+    }
+  ],
+  "benefit": "Gain one additional impromptu sneak attack per day",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Impromptu%20Sneak%20Attack"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "tempting-bargain",
+  "name": "Tempting Bargain",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "summoner",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "Unchained"
+    },
+    {
+      "type": "feature",
+      "id": "eidolon"
+    }
+  ],
+  "benefit": "You can select an eidolon of any alignment, but it tempts you to change alignment over time",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tempting%20Bargain"
+  }
+}

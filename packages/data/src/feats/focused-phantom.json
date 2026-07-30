@@ -1,0 +1,17 @@
+{
+  "id": "focused-phantom",
+  "name": "Focused Phantom",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "spiritual-interference"
+    }
+  ],
+  "benefit": "Gain +4 on concentration checks while phantom is adjacent or within your consciousness",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 134,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Phantom"
+  }
+}

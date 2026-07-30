@@ -1,0 +1,21 @@
+{
+  "id": "thrune-trusted-agent",
+  "name": "Thrune Trusted Agent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "run"
+    },
+    {
+      "type": "rule",
+      "description": "Th e Loyal Agent trait"
+    }
+  ],
+  "benefit": "Bolster your allies with the power of House Thrune",
+  "source": {
+    "title": "Pathfinder #105: The Inferno Gate",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Thrune%20Trusted%20Agent"
+  }
+}

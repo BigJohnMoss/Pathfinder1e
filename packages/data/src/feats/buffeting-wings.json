@@ -1,0 +1,21 @@
+{
+  "id": "buffeting-wings",
+  "name": "Buffeting Wings",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "hover"
+    },
+    {
+      "type": "feat",
+      "id": "powerful-wings"
+    }
+  ],
+  "benefit": "Use your wings to create a gust of wind",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 53,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Buffeting%20Wings"
+  }
+}

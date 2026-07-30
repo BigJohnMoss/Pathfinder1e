@@ -1,0 +1,29 @@
+{
+  "id": "cudgeler-sweep",
+  "name": "Cudgeler Sweep",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bludgeoner"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    },
+    {
+      "type": "feat",
+      "id": "cudgeler-style"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +5 or monk level 5th"
+    }
+  ],
+  "benefit": "Attempt to trip your foes on a charge with Cudgeler Style",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cudgeler%20Sweep"
+  }
+}

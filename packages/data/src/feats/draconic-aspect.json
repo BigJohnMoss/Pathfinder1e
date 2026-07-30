@@ -1,0 +1,17 @@
+{
+  "id": "draconic-aspect",
+  "name": "Draconic Aspect",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Kobold"
+    }
+  ],
+  "benefit": "Gain energy resistance 5, or +1 natural armor if already possessing the dragon-scaled trait",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 136,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Draconic%20Aspect"
+  }
+}

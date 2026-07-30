@@ -1,0 +1,26 @@
+{
+  "id": "linnorm-style",
+  "name": "Linnorm Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +3 or monk level 3rd"
+    }
+  ],
+  "benefit": "Retaliate against attackers",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Linnorm%20Style"
+  }
+}

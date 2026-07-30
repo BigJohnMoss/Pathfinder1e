@@ -1,0 +1,25 @@
+{
+  "id": "horrific-gorging",
+  "name": "Horrific Gorging",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bite attack"
+    },
+    {
+      "type": "rule",
+      "description": "Large or larger"
+    },
+    {
+      "type": "rule",
+      "description": "swallow whole universal monster ability"
+    }
+  ],
+  "benefit": "Swallow one foe to make its allies shaken",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Horrific%20Gorging"
+  }
+}

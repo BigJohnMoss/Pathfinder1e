@@ -1,0 +1,32 @@
+{
+  "id": "cypher-script",
+  "name": "Cypher Script",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Linguistics",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 1
+    },
+    {
+      "type": "feature",
+      "id": "spellbook"
+    }
+  ],
+  "benefit": "Scribe spells into your spellbook cheaper and faster",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 60,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cypher%20Script"
+  }
+}

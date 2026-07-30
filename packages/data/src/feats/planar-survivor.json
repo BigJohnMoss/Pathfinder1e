@@ -1,0 +1,23 @@
+{
+  "id": "planar-survivor",
+  "name": "Planar Survivor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain +2 on Survival on other planes and +2 on saves against planar hazards",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Survivor"
+  }
+}

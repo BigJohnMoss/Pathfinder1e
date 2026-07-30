@@ -1,0 +1,17 @@
+{
+  "id": "inured-to-draconic-majesty",
+  "name": "Inured to Draconic Majesty",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Favored enemy (dragon) or Knowledge (arcana) 1 rank"
+    }
+  ],
+  "benefit": "Gain a +4 bonus to saves against fear effects",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inured%20to%20Draconic%20Majesty"
+  }
+}

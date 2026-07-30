@@ -1,0 +1,29 @@
+{
+  "id": "hamatula-grasp",
+  "name": "Hamatula Grasp",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "hamatula-strike"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "rule",
+      "description": "Strength 13"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Lower the penalty to attack an impaled creature and deal more damage",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hamatula%20Grasp"
+  }
+}

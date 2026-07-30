@@ -1,0 +1,22 @@
+{
+  "id": "walking-sleight",
+  "name": "Walking Sleight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deft-hands"
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use Sleight of Hand as a move action or during a move",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 95,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Walking%20Sleight"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "hellish-shackles",
+  "name": "Hellish Shackles",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 5d6; worshiper of an archdevil"
+    },
+    {
+      "type": "rule",
+      "description": "infernal duke"
+    },
+    {
+      "type": "rule",
+      "description": "malbranche"
+    },
+    {
+      "type": "rule",
+      "description": "or whore queen"
+    }
+  ],
+  "benefit": "Affect those damaged by your channeled energy with dimensional anchor",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 212,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hellish%20Shackles"
+  }
+}

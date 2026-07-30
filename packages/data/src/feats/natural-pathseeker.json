@@ -1,0 +1,17 @@
+{
+  "id": "natural-pathseeker",
+  "name": "Natural Pathseeker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-terrain"
+    }
+  ],
+  "benefit": "Gain a bonus to Acrobatics, Climb, and Swim in favored terrains",
+  "source": {
+    "title": "Heroes of the Darklands",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Natural%20Pathseeker"
+  }
+}

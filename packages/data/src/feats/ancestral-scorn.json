@@ -1,0 +1,26 @@
+{
+  "id": "ancestral-scorn",
+  "name": "Ancestral Scorn",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "tie"
+    }
+  ],
+  "benefit": "Sicken enemies when you demoralize them.",
+  "source": {
+    "title": "Blood of Fiends",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ancestral%20Scorn"
+  }
+}

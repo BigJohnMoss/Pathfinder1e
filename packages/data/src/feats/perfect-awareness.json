@@ -1,0 +1,30 @@
+{
+  "id": "perfect-awareness",
+  "name": "Perfect Awareness",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "combat-meditation"
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    },
+    {
+      "type": "level",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Take 20 on Perception 1/day.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Perfect%20Awareness"
+  }
+}

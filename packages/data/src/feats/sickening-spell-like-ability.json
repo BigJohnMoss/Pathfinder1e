@@ -1,0 +1,17 @@
+{
+  "id": "sickening-spell-like-ability",
+  "name": "Sickening Spell-Like Ability",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Spell-like ability at caster level 6th or higher"
+    }
+  ],
+  "benefit": "Spell-like ability sickens damaged foes",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sickening%20Spell-Like%20Ability"
+  }
+}

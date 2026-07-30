@@ -1,0 +1,12 @@
+{
+  "id": "jackal-blood",
+  "name": "Jackal Blood",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+4 save vs. sleep effects, +2 Listen checks",
+  "source": {
+    "title": "Dark Markets - A Guide to Katapesh",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Jackal%20Blood"
+  }
+}

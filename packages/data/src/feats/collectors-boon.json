@@ -1,0 +1,17 @@
+{
+  "id": "collectors-boon",
+  "name": "Collector's Boon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain the benefit of an equipment set",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Collector's%20Boon"
+  }
+}

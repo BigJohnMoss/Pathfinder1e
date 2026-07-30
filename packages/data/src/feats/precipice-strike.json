@@ -1,0 +1,26 @@
+{
+  "id": "precipice-strike",
+  "name": "Precipice Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "cragkin half-orc"
+    }
+  ],
+  "benefit": "Treat creatures as flat-footed if you are both in difficult terrain",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Precipice%20Strike"
+  }
+}

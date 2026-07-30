@@ -1,0 +1,30 @@
+{
+  "id": "reverse-somersault-throw",
+  "name": "Reverse Somersault Throw",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-drag"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 3rd"
+    }
+  ],
+  "benefit": "You can end a drag manuever by launching the creature over your head",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reverse%20Somersault%20Throw"
+  }
+}

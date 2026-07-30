@@ -1,0 +1,21 @@
+{
+  "id": "shielded-stand",
+  "name": "Shielded Stand*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +3 or fighter level 1st"
+    }
+  ],
+  "benefit": "Guard yourself or an ally while standing up",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shielded%20Stand*"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "opportunistic-grappler",
+  "name": "Opportunistic Grappler",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Make a dirty trick manuever against a creature grappling you",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Opportunistic%20Grappler"
+  }
+}

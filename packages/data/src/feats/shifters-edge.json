@@ -1,0 +1,26 @@
+{
+  "id": "shifters-edge",
+  "name": "Shifter's Edge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feature",
+      "id": "shifter-claws"
+    }
+  ],
+  "benefit": "Add half your shifter level to damage with your claws when you use Weapon Finesse",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shifter's%20Edge"
+  }
+}

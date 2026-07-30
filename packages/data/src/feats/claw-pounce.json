@@ -1,0 +1,39 @@
+{
+  "id": "claw-pounce",
+  "name": "Claw Pounce",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "nimble-striker"
+    },
+    {
+      "type": "bab",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "catfolk"
+    },
+    {
+      "type": "rule",
+      "description": "cat’s claws racial trait or Aspect of the Beast (claws of the beast manifestation)"
+    }
+  ],
+  "benefit": "Make a full attack with your claws on a charge",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Claw%20Pounce"
+  }
+}

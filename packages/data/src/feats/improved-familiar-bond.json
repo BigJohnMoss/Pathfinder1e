@@ -1,0 +1,21 @@
+{
+  "id": "improved-familiar-bond",
+  "name": "Improved Familiar Bond",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "familiar-bond"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Your familiar advances in power",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Familiar%20Bond"
+  }
+}

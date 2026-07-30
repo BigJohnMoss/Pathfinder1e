@@ -1,0 +1,22 @@
+{
+  "id": "tree-hanger",
+  "name": "Tree Hanger",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "vanara"
+    }
+  ],
+  "benefit": "Use your tail to defend against trips and hang from nearby objects",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tree%20Hanger"
+  }
+}

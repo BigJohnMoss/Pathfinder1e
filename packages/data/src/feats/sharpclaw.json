@@ -1,0 +1,17 @@
+{
+  "id": "sharpclaw",
+  "name": "Sharpclaw",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ratfolk"
+    }
+  ],
+  "benefit": "Gain two claw attacks",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sharpclaw"
+  }
+}

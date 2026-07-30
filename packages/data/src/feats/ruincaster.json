@@ -1,0 +1,26 @@
+{
+  "id": "ruincaster",
+  "name": "Ruincaster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "spell-access",
+      "id": "spells"
+    },
+    {
+      "type": "rule",
+      "description": "Mwangi Expanse affinity"
+    }
+  ],
+  "benefit": "Tap into the latent energies of Mwangi ruins",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 107,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ruincaster"
+  }
+}

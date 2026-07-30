@@ -1,0 +1,21 @@
+{
+  "id": "critical-conduit",
+  "name": "Critical Conduit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Deliver touch spells ability"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    }
+  ],
+  "benefit": "Increase critical threat range when delivering touch spells for your master",
+  "source": {
+    "title": "Animal Archive",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Critical%20Conduit"
+  }
+}

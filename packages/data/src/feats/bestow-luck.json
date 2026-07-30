@@ -1,0 +1,25 @@
+{
+  "id": "bestow-luck",
+  "name": "Bestow Luck",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "defiant-luck"
+    },
+    {
+      "type": "feat",
+      "id": "inexplicable-luck"
+    },
+    {
+      "type": "rule",
+      "description": "human"
+    }
+  ],
+  "benefit": "+1 use of Defiant Luck, use Inexplicable Luck for an ally’s benefit",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bestow%20Luck"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "upsetting-strike",
+  "name": "Upsetting Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "improved-shield-bash"
+    },
+    {
+      "type": "feat",
+      "id": "upsetting-shield-style"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with bucklers"
+    }
+  ],
+  "benefit": "Foes that miss you provoke an attack of opportunity",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Upsetting%20Strike"
+  }
+}

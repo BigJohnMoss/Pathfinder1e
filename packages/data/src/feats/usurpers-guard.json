@@ -1,0 +1,17 @@
+{
+  "id": "usurpers-guard",
+  "name": "Usurper's Guard",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base attack bonus +3 or ability to cast 2nd-level spells"
+    }
+  ],
+  "benefit": "You can guard your ally while they make a concentration check",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Usurper's%20Guard"
+  }
+}

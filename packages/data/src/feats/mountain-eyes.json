@@ -1,0 +1,22 @@
+{
+  "id": "mountain-eyes",
+  "name": "Mountain Eyes",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Overcome vision penalties due to gases and weather effects",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mountain%20Eyes"
+  }
+}

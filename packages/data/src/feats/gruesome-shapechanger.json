@@ -1,0 +1,17 @@
+{
+  "id": "gruesome-shapechanger",
+  "name": "Gruesome Shapechanger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Shapechanger subtype"
+    }
+  ],
+  "benefit": "Bloody transformation sickens foes and makes area slippery",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gruesome%20Shapechanger"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "incite-paranoia",
+  "name": "Incite Paranoia",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "deceitful"
+    },
+    {
+      "type": "feat",
+      "id": "greater-feint"
+    },
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Ruin your foes' teamwork and spread doubt among them",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Incite%20Paranoia"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "guardian-of-tradition",
+  "name": "Guardian of Tradition",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "domain"
+    },
+    {
+      "type": "rule",
+      "description": "girtablilu"
+    }
+  ],
+  "benefit": "Replace one of the available domains with a druid domain",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 35,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Guardian%20of%20Tradition"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "dual-enhancement",
+  "name": "Dual Enhancement",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Two-Weapon Fighting; divine bond (weapon) or sacred weapon class feature"
+    }
+  ],
+  "benefit": "Imbue two weapons with divine bond or sacred weapon instead of just one",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 145,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dual%20Enhancement"
+  }
+}

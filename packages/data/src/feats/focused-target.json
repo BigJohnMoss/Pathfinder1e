@@ -1,0 +1,21 @@
+{
+  "id": "focused-target",
+  "name": "Focused Target",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "studied-target-acg"
+    },
+    {
+      "type": "rule",
+      "description": "(second studied target)"
+    }
+  ],
+  "benefit": "Reduce the number of focused targets you have to increase the bonuses against one creature",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Target"
+  }
+}

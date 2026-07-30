@@ -1,0 +1,33 @@
+{
+  "id": "night-stalker",
+  "name": "Night Stalker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Stealth)"
+    },
+    {
+      "type": "rule",
+      "description": "darkvision"
+    },
+    {
+      "type": "rule",
+      "description": "half-ogre or ogre"
+    },
+    {
+      "type": "rule",
+      "description": "size Large or larger"
+    }
+  ],
+  "benefit": "Ignore size penalties on Stealth while in darkness",
+  "source": {
+    "title": "Monster Codex",
+    "page": 153,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Night%20Stalker"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "ferocious-action",
+  "name": "Ferocious Action",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ferocity racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "orc"
+    }
+  ],
+  "benefit": "Avoid being staggered when in negative hit points at the cost of losing them faster",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ferocious%20Action"
+  }
+}

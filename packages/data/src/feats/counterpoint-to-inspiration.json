@@ -1,0 +1,29 @@
+{
+  "id": "counterpoint-to-inspiration",
+  "name": "Counterpoint to Inspiration",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "basic-harmony"
+    },
+    {
+      "type": "rule",
+      "description": "Compelling Harmony"
+    },
+    {
+      "type": "rule",
+      "description": "Perform (keyboard, percussion, sing, string, or wind) 10 ranks"
+    },
+    {
+      "type": "rule",
+      "description": "bardic performance or raging song"
+    }
+  ],
+  "benefit": "Increase the bonus of a performance by aiding with your own",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Counterpoint%20to%20Inspiration"
+  }
+}

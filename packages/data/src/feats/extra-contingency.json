@@ -1,0 +1,17 @@
+{
+  "id": "extra-contingency",
+  "name": "Extra Contingency",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 19
+    }
+  ],
+  "benefit": "Have two active contingency effects",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 82,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Contingency"
+  }
+}

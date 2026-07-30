@@ -1,0 +1,42 @@
+{
+  "id": "elven-battle-focus",
+  "name": "Elven Battle Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "elven-battle-style"
+    },
+    {
+      "type": "feat",
+      "id": "elven-battle-training"
+    },
+    {
+      "type": "rule",
+      "description": "ARG"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "weapon familiarity racial trait"
+    }
+  ],
+  "benefit": "Add INT modifier to weapon damage when using Elven Battle Style",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elven%20Battle%20Focus"
+  }
+}

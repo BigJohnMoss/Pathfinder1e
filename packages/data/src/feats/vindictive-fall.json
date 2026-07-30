@@ -1,0 +1,17 @@
+{
+  "id": "vindictive-fall",
+  "name": "Vindictive Fall",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "lightning-reflexes"
+    }
+  ],
+  "benefit": "When you are knocked prone, drag an enemy within reach down with you",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vindictive%20Fall"
+  }
+}

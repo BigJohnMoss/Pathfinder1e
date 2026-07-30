@@ -1,0 +1,36 @@
+{
+  "id": "beastmaster-salvation",
+  "name": "Beastmaster Salvation",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "feat",
+      "id": "beastmaster-style"
+    },
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use your Handle Animal check in place of an adjacent animal companion's saving throw",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 107,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beastmaster%20Salvation"
+  }
+}

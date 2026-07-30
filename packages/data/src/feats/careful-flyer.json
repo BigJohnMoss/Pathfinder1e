@@ -1,0 +1,22 @@
+{
+  "id": "careful-flyer",
+  "name": "Careful Flyer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "acrobatic"
+    },
+    {
+      "type": "skill",
+      "key": "Fly",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Avoid Fly checks and attacks of opportunity when flying slowly",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 79,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Careful%20Flyer"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "hunter-of-dahak",
+  "name": "Hunter of Dahak",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Favored enemy (dragon)"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Dahak"
+    }
+  ],
+  "benefit": "Your favored enemy bonuses increase by 2 against metallic dragons",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 213,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hunter%20of%20Dahak"
+  }
+}

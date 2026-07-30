@@ -1,0 +1,18 @@
+{
+  "id": "toxicological-timing",
+  "name": "Toxicological Timing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (alchemy)",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Increase or decrease the frequency a poison affects someone",
+  "source": {
+    "title": "Alchemy Manual",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Toxicological%20Timing"
+  }
+}

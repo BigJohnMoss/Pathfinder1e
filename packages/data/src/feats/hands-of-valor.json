@@ -1,0 +1,21 @@
+{
+  "id": "hands-of-valor",
+  "name": "Hands of Valor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "lay-on-hands"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Iomedae"
+    }
+  ],
+  "benefit": "Lay on hands to grant bonus on attacks and saves against fear",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 212,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hands%20of%20Valor"
+  }
+}

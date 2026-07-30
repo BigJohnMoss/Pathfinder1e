@@ -1,0 +1,30 @@
+{
+  "id": "aural-insight",
+  "name": "Aural Insight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "improved-blind-fight"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Use echolocation to gain blindsense 30 feet for a round",
+  "source": {
+    "title": "Heroes of the Darklands",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aural%20Insight"
+  }
+}

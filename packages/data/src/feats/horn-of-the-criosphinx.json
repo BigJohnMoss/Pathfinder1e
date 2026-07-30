@@ -1,0 +1,17 @@
+{
+  "id": "horn-of-the-criosphinx",
+  "name": "Horn of the Criosphinx",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Add double your Strength bonus to damage when charging with a two-handed weapon",
+  "source": {
+    "title": "People of the Sands",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Horn%20of%20the%20Criosphinx"
+  }
+}

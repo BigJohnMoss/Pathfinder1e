@@ -1,0 +1,21 @@
+{
+  "id": "ritual-mask",
+  "name": "Ritual Mask",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "nameless-one"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast one or more occult rituals ( Pathfinder RPG Occult Adventures 208)"
+    }
+  ],
+  "benefit": "Spirit class feature and ritual use bolstered",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 125,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ritual%20Mask"
+  }
+}

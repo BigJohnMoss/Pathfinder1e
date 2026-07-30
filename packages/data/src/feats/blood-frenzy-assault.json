@@ -1,0 +1,46 @@
+{
+  "id": "blood-frenzy-assault",
+  "name": "Blood Frenzy Assault",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "blood-frenzy-strike"
+    },
+    {
+      "type": "feat",
+      "id": "blood-frenzy-style"
+    },
+    {
+      "type": "feat",
+      "id": "bloody-assault"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "aquatic subtype"
+    }
+  ],
+  "benefit": "Gain additional attacks per round against bleeding creatures when using Bloody Frenzy Style",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20Frenzy%20Assault"
+  }
+}

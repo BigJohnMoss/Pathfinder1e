@@ -1,0 +1,30 @@
+{
+  "id": "greater-spelleater",
+  "name": "Greater Spelleater",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "ghoran"
+    },
+    {
+      "type": "rule",
+      "description": "spelleater racial trait"
+    }
+  ],
+  "benefit": "Improve your ability to overcome magic",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Spelleater"
+  }
+}

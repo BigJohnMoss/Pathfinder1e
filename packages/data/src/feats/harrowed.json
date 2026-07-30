@@ -1,0 +1,12 @@
+{
+  "id": "harrowed",
+  "name": "Harrowed",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+1 on saves vs. enchantment; can draw Harrow cards for bonuses",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 287,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Harrowed"
+  }
+}

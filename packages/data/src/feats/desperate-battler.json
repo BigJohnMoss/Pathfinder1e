@@ -1,0 +1,12 @@
+{
+  "id": "desperate-battler",
+  "name": "Desperate Battler",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Gain +1 morale bonus on melee attack and damage when alone",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 286,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Desperate%20Battler"
+  }
+}

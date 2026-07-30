@@ -1,0 +1,23 @@
+{
+  "id": "expert-salvager",
+  "name": "Expert Salvager",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Craft (any)",
+      "minimum": 2
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Gain a +4 bonus on Craft checks for certain actions while foraging or salvaging",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expert%20Salvager"
+  }
+}

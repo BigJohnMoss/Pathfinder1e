@@ -1,0 +1,12 @@
+{
+  "id": "intercept-charge",
+  "name": "Intercept Charge",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Move up to your speed to intercept charging foe as an immediate action",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Intercept%20Charge"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "tribal-hunter",
+  "name": "Tribal Hunter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "animal-affinity"
+    }
+  ],
+  "benefit": "Flank large creatures easier when you are adjacent to the target with a friend",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tribal%20Hunter"
+  }
+}

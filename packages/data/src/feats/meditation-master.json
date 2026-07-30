@@ -1,0 +1,12 @@
+{
+  "id": "meditation-master",
+  "name": "Meditation Master",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Meditate for an hour to gain unique benefits.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Meditation%20Master"
+  }
+}

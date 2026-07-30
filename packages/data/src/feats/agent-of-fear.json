@@ -1,0 +1,21 @@
+{
+  "id": "agent-of-fear",
+  "name": "Agent of Fear",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "persuasive"
+    },
+    {
+      "type": "feature",
+      "id": "frightening-appearance"
+    }
+  ],
+  "benefit": "Target a creature more often with appearances",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 75,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Agent%20of%20Fear"
+  }
+}

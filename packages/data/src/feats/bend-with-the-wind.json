@@ -1,0 +1,30 @@
+{
+  "id": "bend-with-the-wind",
+  "name": "Bend with the Wind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "body-control"
+    },
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    }
+  ],
+  "benefit": "Gain cold and fire resist 5.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bend%20with%20the%20Wind"
+  }
+}

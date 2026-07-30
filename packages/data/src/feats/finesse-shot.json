@@ -1,0 +1,29 @@
+{
+  "id": "finesse-shot",
+  "name": "Finesse Shot",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Marksman’s Utility"
+    },
+    {
+      "type": "bab",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a ranged weapon"
+    }
+  ],
+  "benefit": "Gain new utility shots",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Finesse%20Shot"
+  }
+}

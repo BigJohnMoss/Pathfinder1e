@@ -1,0 +1,21 @@
+{
+  "id": "proxy-summoning",
+  "name": "Proxy Summoning",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast conjuration (summoning) spells or a conjuration (summoning) spell-like ability"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Grant the share spells ability to summoned creatures",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Proxy%20Summoning"
+  }
+}

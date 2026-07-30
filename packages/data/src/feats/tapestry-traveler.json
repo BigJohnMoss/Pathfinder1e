@@ -1,0 +1,17 @@
+{
+  "id": "tapestry-traveler",
+  "name": "Tapestry Traveler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Cast teleporation spells with a higher CL, treat Pathfinder lodges as more familiar territory.",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tapestry%20Traveler"
+  }
+}

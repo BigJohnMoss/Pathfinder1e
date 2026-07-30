@@ -1,0 +1,23 @@
+{
+  "id": "forest-ambush",
+  "name": "Forest Ambush",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Learn better ways to hide in natural environments and gain extra precision damage when attacking out of your hiding spot",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Forest%20Ambush"
+  }
+}

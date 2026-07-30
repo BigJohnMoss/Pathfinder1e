@@ -1,0 +1,29 @@
+{
+  "id": "evolved-summoned-monster",
+  "name": "Evolved Summoned Monster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Augmented Summoning"
+    },
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(conjuration)"
+    },
+    {
+      "type": "spell-access",
+      "id": "summon-monster-i"
+    }
+  ],
+  "benefit": "Summoned monster gains a 1-point eidolon evolution",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 146,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Evolved%20Summoned%20Monster"
+  }
+}

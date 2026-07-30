@@ -1,0 +1,22 @@
+{
+  "id": "coordinated-blast",
+  "name": "Coordinated Blast",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "any racial spell-like ability"
+    }
+  ],
+  "benefit": "Exclude allies with this feat from area spells and abilities",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 204,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Coordinated%20Blast"
+  }
+}

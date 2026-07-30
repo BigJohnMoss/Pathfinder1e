@@ -1,0 +1,17 @@
+{
+  "id": "witchbreaker",
+  "name": "Witchbreaker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on saves against effects from hags and witches; can potentially break their mind-affecting effects on allies with successful critical hits",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 120,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Witchbreaker"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "covering-fire-rtt",
+  "name": "Covering Fire (RTT)",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    }
+  ],
+  "benefit": "Use aid another with ranged attacks against distant opponents",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Covering%20Fire%20(RTT)"
+  }
+}

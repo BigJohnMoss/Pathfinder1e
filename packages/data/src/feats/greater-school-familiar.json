@@ -1,0 +1,26 @@
+{
+  "id": "greater-school-familiar",
+  "name": "Greater School Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "school-familiar"
+    },
+    {
+      "type": "class-level",
+      "classId": "wizard",
+      "minimum": 10
+    },
+    {
+      "type": "feature",
+      "id": "specialized-arcane-school"
+    }
+  ],
+  "benefit": "School Familiar gains access to its greater school power",
+  "source": {
+    "title": "Familiar Folio",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20School%20Familiar"
+  }
+}

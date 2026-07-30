@@ -1,0 +1,26 @@
+{
+  "id": "mounted-blade",
+  "name": "Mounted Blade",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mounted-combat"
+    },
+    {
+      "type": "feat",
+      "id": "ride-by-attack"
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Attack an adjacent foe with Ride-By-Attack",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mounted%20Blade"
+  }
+}

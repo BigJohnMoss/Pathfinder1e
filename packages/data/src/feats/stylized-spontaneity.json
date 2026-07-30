@@ -1,0 +1,23 @@
+{
+  "id": "stylized-spontaneity",
+  "name": "Stylized Spontaneity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Add additional stylized spell modifications, but risk the spell failing entirely",
+  "source": {
+    "title": "Inner Sea Intrigue",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stylized%20Spontaneity"
+  }
+}

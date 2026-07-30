@@ -1,0 +1,33 @@
+{
+  "id": "azata-mischief",
+  "name": "Azata Mischief",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "agile-maneuvers"
+    },
+    {
+      "type": "feat",
+      "id": "azata-style"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "You can trip those whose attacks of opportunity against you miss",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Azata%20Mischief"
+  }
+}

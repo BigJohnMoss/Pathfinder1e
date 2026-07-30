@@ -1,0 +1,12 @@
+{
+  "id": "ostentatious-display",
+  "name": "Ostentatious Display",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain bonuses from wearing valuable nonmagical items",
+  "source": {
+    "title": "Dungeoneer's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ostentatious%20Display"
+  }
+}

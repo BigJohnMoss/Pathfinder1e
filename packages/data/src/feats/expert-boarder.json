@@ -1,0 +1,17 @@
+{
+  "id": "expert-boarder",
+  "name": "Expert Boarder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Affiliated with the Gray Corsairs"
+    }
+  ],
+  "benefit": "Gain bonuses on Acrobatics and Climb",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expert%20Boarder"
+  }
+}

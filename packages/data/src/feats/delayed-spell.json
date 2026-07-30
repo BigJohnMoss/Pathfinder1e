@@ -1,0 +1,12 @@
+{
+  "id": "delayed-spell",
+  "name": "Delayed Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Set a spell to trigger on a delay",
+  "source": {
+    "title": "Pathfinder #116: Fangs of War",
+    "page": 67,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Delayed%20Spell"
+  }
+}

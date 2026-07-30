@@ -1,0 +1,21 @@
+{
+  "id": "conversion-channel",
+  "name": "Conversion Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 7d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Asmodeus"
+    }
+  ],
+  "benefit": "Channel negative energy to heal undead, Asmodeans, and creatures who convert",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Conversion%20Channel"
+  }
+}

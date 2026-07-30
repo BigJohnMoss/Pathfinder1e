@@ -1,0 +1,21 @@
+{
+  "id": "burn-it-down",
+  "name": "Burn It Down!",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "goblin"
+    }
+  ],
+  "benefit": "Nearby allies with this feat grant a cumulative +1 bonus (max +4) on damage with certain fire attacks",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 201,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Burn%20It%20Down!"
+  }
+}

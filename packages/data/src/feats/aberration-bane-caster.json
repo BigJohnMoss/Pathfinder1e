@@ -1,0 +1,25 @@
+{
+  "id": "aberration-bane-caster",
+  "name": "Aberration-Bane Caster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "gillman"
+    },
+    {
+      "type": "feature",
+      "id": "favored-enemy-aberrations"
+    }
+  ],
+  "benefit": "Increase the save DC of your spells that target aberrations",
+  "source": {
+    "title": "Blood of the Sea",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aberration-Bane%20Caster"
+  }
+}

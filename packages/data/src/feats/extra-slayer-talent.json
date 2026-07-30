@@ -1,0 +1,17 @@
+{
+  "id": "extra-slayer-talent",
+  "name": "Extra Slayer Talent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "slayer-talent"
+    }
+  ],
+  "benefit": "Gain an additional slayer talent",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Slayer%20Talent"
+  }
+}

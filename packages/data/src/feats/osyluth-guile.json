@@ -1,0 +1,22 @@
+{
+  "id": "osyluth-guile",
+  "name": "Osyluth Guile",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 8
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    }
+  ],
+  "benefit": "Add your Charisma bonus to AC when fighting defensively",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Osyluth%20Guile"
+  }
+}

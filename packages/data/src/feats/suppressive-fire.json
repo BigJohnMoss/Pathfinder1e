@@ -1,0 +1,29 @@
+{
+  "id": "suppressive-fire",
+  "name": "Suppressive Fire",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "far-shot"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "rule",
+      "description": "keen senses racial trait"
+    }
+  ],
+  "benefit": "When you damage a target with a ranged attack, it can’t make attacks of opportunity against allies who have this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Suppressive%20Fire"
+  }
+}

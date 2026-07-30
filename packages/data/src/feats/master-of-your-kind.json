@@ -1,0 +1,21 @@
+{
+  "id": "master-of-your-kind",
+  "name": "Master of Your Kind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Familiar"
+    },
+    {
+      "type": "rule",
+      "description": "speak with animals of its kind ability"
+    }
+  ],
+  "benefit": "Influence other animals of your kind with new spell-like abilities",
+  "source": {
+    "title": "Animal Archive",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20of%20Your%20Kind"
+  }
+}

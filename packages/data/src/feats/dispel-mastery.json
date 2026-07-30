@@ -1,0 +1,22 @@
+{
+  "id": "dispel-mastery",
+  "name": "Dispel Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude save bonus +6"
+    }
+  ],
+  "benefit": "Cast dispel magic with an abjuration-crafted item",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dispel%20Mastery"
+  }
+}

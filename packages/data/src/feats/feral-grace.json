@@ -1,0 +1,25 @@
+{
+  "id": "feral-grace",
+  "name": "Feral Grace",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "animal companion"
+    }
+  ],
+  "benefit": "Gain bonus to damage from fighting with finesse",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 218,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Feral%20Grace"
+  }
+}

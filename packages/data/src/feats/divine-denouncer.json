@@ -1,0 +1,17 @@
+{
+  "id": "divine-denouncer",
+  "name": "Divine Denouncer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "divine-defiance"
+    }
+  ],
+  "benefit": "Gain a bonus to certain skills involving divine spellcasters or outsiders",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Denouncer"
+  }
+}

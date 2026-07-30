@@ -1,0 +1,17 @@
+{
+  "id": "pursuit-of-glory",
+  "name": "Pursuit of Glory",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Human (Ulfen)"
+    }
+  ],
+  "benefit": "Gain a +2 morale bonus on one attack roll made as part of a charge if you start or end the charge adjacent to an ally",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pursuit%20of%20Glory"
+  }
+}

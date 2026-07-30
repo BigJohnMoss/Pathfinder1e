@@ -1,0 +1,27 @@
+{
+  "id": "grow-plant-creature",
+  "name": "Grow Plant Creature",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "train-plants"
+    },
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Learn to cultivate and raise plant creatures",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grow%20Plant%20Creature"
+  }
+}

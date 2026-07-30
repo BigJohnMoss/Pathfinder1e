@@ -1,0 +1,25 @@
+{
+  "id": "bladed-brush",
+  "name": "Bladed Brush",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(glaive)"
+    },
+    {
+      "type": "rule",
+      "description": "must be a worshiper of Shelyn"
+    }
+  ],
+  "benefit": "Use Dexterity for attack rolls with a glaive, counts as a swashbuckler weapon",
+  "source": {
+    "title": "Paths of the Righteous",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bladed%20Brush"
+  }
+}

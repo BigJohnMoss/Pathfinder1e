@@ -1,0 +1,22 @@
+{
+  "id": "planar-focus",
+  "name": "Planar Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "animal-focus-acg"
+    }
+  ],
+  "benefit": "Gain a unique outsider-like benefit based on your studies",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Focus"
+  }
+}

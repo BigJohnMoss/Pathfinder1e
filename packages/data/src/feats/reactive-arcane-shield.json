@@ -1,0 +1,29 @@
+{
+  "id": "reactive-arcane-shield",
+  "name": "Reactive Arcane Shield",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-shield"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "rule",
+      "description": "arcane spellcaster"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 12
+    }
+  ],
+  "benefit": "Quickly activate Arcane Shield, grant allies an AC bonus",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reactive%20Arcane%20Shield"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "expert-trainer",
+  "name": "Expert Trainer",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "You find it easier to retrain into other classes",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expert%20Trainer"
+  }
+}

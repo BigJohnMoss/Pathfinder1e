@@ -1,0 +1,25 @@
+{
+  "id": "incorporeal-intuition",
+  "name": "Incorporeal Intuition",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity OA or the ability to cast psychic spells"
+    },
+    {
+      "type": "feat",
+      "id": "spirit-sense"
+    },
+    {
+      "type": "rule",
+      "description": "OA"
+    }
+  ],
+  "benefit": "Notice adjacent incorporeal creatures inside walls",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Incorporeal%20Intuition"
+  }
+}

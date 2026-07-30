@@ -1,0 +1,45 @@
+{
+  "id": "true-love",
+  "name": "True Love",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have found love with a person you can’t be with"
+    },
+    {
+      "type": "rule",
+      "description": "have a current lover"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Current Lover"
+    },
+    {
+      "type": "rule",
+      "description": "For Love"
+    },
+    {
+      "type": "rule",
+      "description": "or The Lover background. Possible complications include distance"
+    },
+    {
+      "type": "rule",
+      "description": "your love being with another"
+    },
+    {
+      "type": "rule",
+      "description": "your feelings being unrequited"
+    },
+    {
+      "type": "rule",
+      "description": "or your relationship being forbidden"
+    }
+  ],
+  "benefit": "Increase your skill with emotion spells and Sense Motive",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=True%20Love"
+  }
+}

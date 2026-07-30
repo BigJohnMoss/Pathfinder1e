@@ -1,0 +1,22 @@
+{
+  "id": "one-eye-open",
+  "name": "One Eye Open",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "alertness"
+    }
+  ],
+  "benefit": "The DCs of your Perception checks don't increase when you sleep",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 116,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=One%20Eye%20Open"
+  }
+}

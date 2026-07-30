@@ -1,0 +1,17 @@
+{
+  "id": "fire-hand",
+  "name": "Fire Hand",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    }
+  ],
+  "benefit": "Wield torches as weapons, +1 attack with fire in melee",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fire%20Hand"
+  }
+}

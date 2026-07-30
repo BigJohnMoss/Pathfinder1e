@@ -1,0 +1,26 @@
+{
+  "id": "divine-expression",
+  "name": "Divine Expression",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "bard",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "cleric or oracle level 1st"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Shelyn"
+    }
+  ],
+  "benefit": "Add cleric or oracle levels to bard levels to determine rounds and actions for bardic performance",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 211,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Expression"
+  }
+}

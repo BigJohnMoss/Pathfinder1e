@@ -1,0 +1,22 @@
+{
+  "id": "spectrum-sight",
+  "name": "Spectrum Sight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Learn to read the auras of others",
+  "source": {
+    "title": "Occult Origins",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spectrum%20Sight"
+  }
+}

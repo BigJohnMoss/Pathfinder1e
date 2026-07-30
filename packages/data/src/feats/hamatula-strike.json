@@ -1,0 +1,25 @@
+{
+  "id": "hamatula-strike",
+  "name": "Hamatula Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "rule",
+      "description": "Strength 13"
+    },
+    {
+      "type": "bab",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Impale creatures with piercing weapons",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hamatula%20Strike"
+  }
+}

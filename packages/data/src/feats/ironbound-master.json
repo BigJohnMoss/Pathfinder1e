@@ -1,0 +1,22 @@
+{
+  "id": "ironbound-master",
+  "name": "Ironbound Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "cleric",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Gorum"
+    }
+  ],
+  "benefit": "Gain armor training as a fighter",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 213,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ironbound%20Master"
+  }
+}

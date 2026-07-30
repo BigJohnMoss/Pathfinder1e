@@ -1,0 +1,21 @@
+{
+  "id": "distracting-explosion",
+  "name": "Distracting Explosion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bomb"
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "Reduce your bomb’s damage for an opportunity at distraction",
+  "source": {
+    "title": "Pathfinder #115: Trail of the Hunted",
+    "page": 74,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Distracting%20Explosion"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "strong-implement-link",
+  "name": "Strong Implement Link",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "implements"
+    }
+  ],
+  "benefit": "Cast spells away from an implement more easily",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Strong%20Implement%20Link"
+  }
+}

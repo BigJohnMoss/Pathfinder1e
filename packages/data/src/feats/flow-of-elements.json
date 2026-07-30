@@ -1,0 +1,29 @@
+{
+  "id": "flow-of-elements",
+  "name": "Flow of Elements",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "spells-ifrit"
+    },
+    {
+      "type": "rule",
+      "description": "oread"
+    },
+    {
+      "type": "rule",
+      "description": "sylph"
+    },
+    {
+      "type": "rule",
+      "description": "or undine"
+    }
+  ],
+  "benefit": "Change all or part of a spell’s damage to the energy type associated with the race of an adjacent ally who has this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 206,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flow%20of%20Elements"
+  }
+}

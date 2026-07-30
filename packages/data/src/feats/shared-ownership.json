@@ -1,0 +1,34 @@
+{
+  "id": "shared-ownership",
+  "name": "Shared Ownership",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "well-prepared"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 1
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "hal"
+    }
+  ],
+  "benefit": "You can draw an item in an ally’s possession as a move action as long as the ally is within 30 feet and has this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shared%20Ownership"
+  }
+}

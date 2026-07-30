@@ -1,0 +1,21 @@
+{
+  "id": "fire-gods-blessing",
+  "name": "Fire God's Blessing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of the Fire God"
+    }
+  ],
+  "benefit": "Heal your wounds if you deal fire damage to an enemy",
+  "source": {
+    "title": "Orcs of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fire%20God's%20Blessing"
+  }
+}

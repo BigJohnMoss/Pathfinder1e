@@ -1,0 +1,25 @@
+{
+  "id": "verify",
+  "name": "Verify",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "1st-level-spells"
+    },
+    {
+      "type": "rule",
+      "description": "lawful evil alignment"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Asmodeus"
+    }
+  ],
+  "benefit": "Better tell when a creature lies as it relates to contracts or deals",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Verify"
+  }
+}

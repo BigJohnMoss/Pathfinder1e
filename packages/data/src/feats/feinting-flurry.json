@@ -1,0 +1,26 @@
+{
+  "id": "feinting-flurry",
+  "name": "Feinting Flurry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feature",
+      "id": "flurry-of-blows"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    }
+  ],
+  "benefit": "Weave a feint attempt with your flurry of blows.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Feinting%20Flurry"
+  }
+}

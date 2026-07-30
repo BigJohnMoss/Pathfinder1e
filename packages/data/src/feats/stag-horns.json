@@ -1,0 +1,34 @@
+{
+  "id": "stag-horns",
+  "name": "Stag Horns",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "charging-stag-style"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    }
+  ],
+  "benefit": "Attempt a free grapple check at the end of an unarmed attack with charging stag style",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stag%20Horns"
+  }
+}

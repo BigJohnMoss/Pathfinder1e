@@ -1,0 +1,25 @@
+{
+  "id": "extreme-prejudice",
+  "name": "Extreme Prejudice",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "seething-hatred"
+    },
+    {
+      "type": "rule",
+      "description": "sneak attack +3d6"
+    },
+    {
+      "type": "feature",
+      "id": "studied-target"
+    }
+  ],
+  "benefit": "When you succeed at a sneak attack with Seething Hatred, roll d8s for damage instead of d6s",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 147,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extreme%20Prejudice"
+  }
+}

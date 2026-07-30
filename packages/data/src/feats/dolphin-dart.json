@@ -1,0 +1,30 @@
+{
+  "id": "dolphin-dart",
+  "name": "Dolphin Dart",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dolphin-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Swim before and after melee attack",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dolphin%20Dart"
+  }
+}

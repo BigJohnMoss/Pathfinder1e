@@ -1,0 +1,17 @@
+{
+  "id": "talmandors-lifting",
+  "name": "Talmandor's Lifting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Take at least 10d6 falling damage on three different occasions and survive"
+    }
+  ],
+  "benefit": "Cast a healing spell on an undamaged person, allowing them to trigger it at a later time",
+  "source": {
+    "title": "Andoran, Spirit of Liberty",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Talmandor's%20Lifting"
+  }
+}

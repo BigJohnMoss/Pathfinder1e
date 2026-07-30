@@ -1,0 +1,17 @@
+{
+  "id": "godless-healing",
+  "name": "Godless Healing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cannot have a patron deity"
+    }
+  ],
+  "benefit": "Heal yourself 1d8 + level hp 1/day",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 287,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Godless%20Healing"
+  }
+}

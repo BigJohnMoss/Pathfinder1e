@@ -1,0 +1,29 @@
+{
+  "id": "intrusive-presence",
+  "name": "Intrusive Presence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int or Cha 21"
+    },
+    {
+      "type": "feat",
+      "id": "hidden-presence-feat"
+    },
+    {
+      "type": "feat",
+      "id": "manipulative-presence"
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast possession or greater possession"
+    }
+  ],
+  "benefit": "Read the mind of a possessed creature",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 135,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Intrusive%20Presence"
+  }
+}

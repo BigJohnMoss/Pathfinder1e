@@ -1,0 +1,17 @@
+{
+  "id": "self-exiled-noble",
+  "name": "Self-Exiled Noble",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have intentionally left your noble family and changed your name or appearance afterward"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Disguise and a +1 bonus on attack and damage against family members",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Self-Exiled%20Noble"
+  }
+}

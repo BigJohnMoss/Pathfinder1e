@@ -1,0 +1,12 @@
+{
+  "id": "intuitive-spell",
+  "name": "Intuitive Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Cast spell without thought components",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 136,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Intuitive%20Spell"
+  }
+}

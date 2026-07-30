@@ -1,0 +1,21 @@
+{
+  "id": "expanded-fiendish-resistance",
+  "name": "Expanded Fiendish Resistance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Tie"
+    }
+  ],
+  "benefit": "Gain extra fiendish resistances",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 174,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Fiendish%20Resistance"
+  }
+}

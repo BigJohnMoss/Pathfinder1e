@@ -1,0 +1,25 @@
+{
+  "id": "gnome-weapon-focus",
+  "name": "Gnome Weapon Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    },
+    {
+      "type": "rule",
+      "description": "proficient with all martial weapons"
+    }
+  ],
+  "benefit": "+1 attack with all gnome weapons",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 37,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gnome%20Weapon%20Focus"
+  }
+}

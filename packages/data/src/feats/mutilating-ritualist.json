@@ -1,0 +1,28 @@
+{
+  "id": "mutilating-ritualist",
+  "name": "Mutilating Ritualist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Mutilate yourself to enhance a ritual",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 91,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mutilating%20Ritualist"
+  }
+}

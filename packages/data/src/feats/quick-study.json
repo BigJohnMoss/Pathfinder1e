@@ -1,0 +1,27 @@
+{
+  "id": "quick-study-feat",
+  "name": "Quick Study",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "bravery-3"
+    },
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Study with an ally to learn a combat feat",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quick%20Study"
+  }
+}

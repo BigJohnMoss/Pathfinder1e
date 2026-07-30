@@ -1,0 +1,17 @@
+{
+  "id": "mind-strike",
+  "name": "Mind Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "ranged-legerdemain"
+    }
+  ],
+  "benefit": "Inflict a penalty to Will saving throws with sneak attack damage",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mind%20Strike"
+  }
+}

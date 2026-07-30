@@ -1,0 +1,46 @@
+{
+  "id": "spring-heeled-reaping",
+  "name": "Spring-Heeled Reaping",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "rule",
+      "description": "Shot on the Run or Spring Attack"
+    },
+    {
+      "type": "feat",
+      "id": "spring-heeled-sprint"
+    },
+    {
+      "type": "feat",
+      "id": "spring-heeled-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with light armor"
+    }
+  ],
+  "benefit": "Attack two creatures when using Shot on the Run or Spring Attack",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spring-Heeled%20Reaping"
+  }
+}

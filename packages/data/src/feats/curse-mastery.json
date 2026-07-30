@@ -1,0 +1,22 @@
+{
+  "id": "curse-mastery",
+  "name": "Curse Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "base Fortitude save bonus +6"
+    }
+  ],
+  "benefit": "Cast bestow curse with a necromancy-crafted item",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Curse%20Mastery"
+  }
+}

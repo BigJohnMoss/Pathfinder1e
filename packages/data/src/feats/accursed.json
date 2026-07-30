@@ -1,0 +1,21 @@
+{
+  "id": "accursed",
+  "name": "Accursed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must carry a curse that can be lifted only by a quest or similar great undertaking"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Cursed Birth background"
+    }
+  ],
+  "benefit": "Gain SR 5 + level, cannot be lowered",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 67,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Accursed"
+  }
+}

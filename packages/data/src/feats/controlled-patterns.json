@@ -1,0 +1,29 @@
+{
+  "id": "controlled-patterns",
+  "name": "Controlled Patterns",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "pattern-message"
+    },
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(illusion)"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Make your pattern spells less effective against certain creature types",
+  "source": {
+    "title": "Distant Realms",
+    "page": 42,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Controlled%20Patterns"
+  }
+}

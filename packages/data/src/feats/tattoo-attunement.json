@@ -1,0 +1,17 @@
+{
+  "id": "tattoo-attunement",
+  "name": "Tattoo Attunement",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Inscribe Magical Tattoo ISM or Varisian Tattoo ISWG ; Spellcraft 5 ranks"
+    }
+  ],
+  "benefit": "Transform a summoned creature into a magical tattoo",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tattoo%20Attunement"
+  }
+}

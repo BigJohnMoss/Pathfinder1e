@@ -1,0 +1,30 @@
+{
+  "id": "wheeling-charge",
+  "name": "Wheeling Charge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mounted-combat"
+    },
+    {
+      "type": "feat",
+      "id": "ride-by-attack"
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "Lastwall affinity"
+    }
+  ],
+  "benefit": "Turn your mount while charging",
+  "source": {
+    "title": "Cities of Golarion",
+    "page": 50,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wheeling%20Charge"
+  }
+}

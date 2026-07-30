@@ -1,0 +1,25 @@
+{
+  "id": "blessed-hammer",
+  "name": "Blessed Hammer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "3rd-level-divine-spells"
+    },
+    {
+      "type": "rule",
+      "description": "proficient with warhammer"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Torag"
+    }
+  ],
+  "benefit": "Use warhammer as holy symbol and cast touch spells through it",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blessed%20Hammer"
+  }
+}

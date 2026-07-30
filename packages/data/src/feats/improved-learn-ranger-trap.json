@@ -1,0 +1,22 @@
+{
+  "id": "improved-learn-ranger-trap",
+  "name": "Improved Learn Ranger Trap",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "learn-ranger-trap"
+    },
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Learn a new ranger trap and the ability to use both Ex and Su versions of traps you know",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Learn%20Ranger%20Trap"
+  }
+}

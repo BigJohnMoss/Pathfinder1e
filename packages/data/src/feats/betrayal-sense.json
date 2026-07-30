@@ -1,0 +1,27 @@
+{
+  "id": "betrayal-sense",
+  "name": "Betrayal Sense",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "class-level",
+      "classId": "rogue",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "trap-sense"
+    }
+  ],
+  "benefit": "Apply trap sense on checks to see through disguises and avoid surprise attacks",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 75,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Betrayal%20Sense"
+  }
+}

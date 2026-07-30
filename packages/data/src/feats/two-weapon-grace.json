@@ -1,0 +1,38 @@
+{
+  "id": "two-weapon-grace",
+  "name": "Two-Weapon Grace",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "fencing-grace"
+    },
+    {
+      "type": "rule",
+      "description": "UI"
+    },
+    {
+      "type": "feat",
+      "id": "slashing-grace"
+    },
+    {
+      "type": "rule",
+      "description": "ACG"
+    },
+    {
+      "type": "rule",
+      "description": "or Starry Grace UI ; Two-Weapon Fighting; Weapon Finesse"
+    }
+  ],
+  "benefit": "Use Fencing Grace, Slashing Grace, or Starry Grace while dual-wielding",
+  "source": {
+    "title": "Villain Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Two-Weapon%20Grace"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "nation-builder",
+  "name": "Nation Builder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have explored and claimed an area of at least 100 square miles"
+    }
+  ],
+  "benefit": "Bonus to various skills while in unclaimed wilderness or your own land",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 71,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Nation%20Builder"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "fabulist",
+  "name": "Fabulist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Gunslinger UC feat or grit class feature"
+    }
+  ],
+  "benefit": "Bonus to Perform checks, regain grit by successfully lying",
+  "source": {
+    "title": "Champions of Balance",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fabulist"
+  }
+}

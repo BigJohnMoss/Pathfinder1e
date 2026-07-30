@@ -1,0 +1,12 @@
+{
+  "id": "hinderance-dismissal",
+  "name": "Hinderance Dismissal",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "You can dismiss any pit and wall spells",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hinderance%20Dismissal"
+  }
+}

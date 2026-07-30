@@ -1,0 +1,25 @@
+{
+  "id": "experienced-ghost-hunter",
+  "name": "Experienced Ghost Hunter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "duskwalker"
+    },
+    {
+      "type": "rule",
+      "description": "ghost hunter racial trait"
+    }
+  ],
+  "benefit": "You can use ghost hunter as a swift action",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Experienced%20Ghost%20Hunter"
+  }
+}

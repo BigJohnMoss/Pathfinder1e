@@ -1,0 +1,33 @@
+{
+  "id": "balor-whip",
+  "name": "Balor Whip",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(whip)"
+    },
+    {
+      "type": "feat",
+      "id": "whip-mastery"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Drag foes adjacent to you with a whip",
+  "source": {
+    "title": "Villain Codex",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Balor%20Whip"
+  }
+}

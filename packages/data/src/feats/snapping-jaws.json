@@ -1,0 +1,21 @@
+{
+  "id": "snapping-jaws",
+  "name": "Snapping Jaws",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "gnoll"
+    }
+  ],
+  "benefit": "Use your bite as a natural weapon",
+  "source": {
+    "title": "Monster Codex",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Snapping%20Jaws"
+  }
+}

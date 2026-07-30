@@ -1,0 +1,17 @@
+{
+  "id": "diva-style",
+  "name": "Diva Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cha 13; base attack bonus +1 or bard level 1st"
+    }
+  ],
+  "benefit": "Use Perform instead of Bluff to feint",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 176,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diva%20Style"
+  }
+}

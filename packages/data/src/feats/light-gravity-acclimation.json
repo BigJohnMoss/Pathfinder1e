@@ -1,0 +1,23 @@
+{
+  "id": "light-gravity-acclimation",
+  "name": "Light Gravity Acclimation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 3
+    }
+  ],
+  "benefit": "You are faster and harder to hit on light gravity planes, and you gain +2 on Acrobatics checks",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Light%20Gravity%20Acclimation"
+  }
+}

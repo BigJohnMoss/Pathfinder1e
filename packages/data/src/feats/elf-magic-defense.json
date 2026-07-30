@@ -1,0 +1,21 @@
+{
+  "id": "elf-magic-defense",
+  "name": "Elf-Magic Defense",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy"
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "Improve your resistance against spells from your hated foe",
+  "source": {
+    "title": "Pathfinder #115: Trail of the Hunted",
+    "page": 74,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elf-Magic%20Defense"
+  }
+}

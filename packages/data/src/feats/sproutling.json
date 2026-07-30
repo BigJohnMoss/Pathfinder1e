@@ -1,0 +1,26 @@
+{
+  "id": "sproutling",
+  "name": "Sproutling",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "seed racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "ghoran"
+    }
+  ],
+  "benefit": "Speed up your seed ability to grow a new body",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sproutling"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "traumatic-spell",
+  "name": "Traumatic Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Emotion or fear spell causes nightmares",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Traumatic%20Spell"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "craft-pharmaceutical",
+  "name": "Craft Pharmaceutical",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "technologist"
+    },
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 9
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Create pharmaceutical items",
+  "source": {
+    "title": "Technology Guide",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Pharmaceutical"
+  }
+}

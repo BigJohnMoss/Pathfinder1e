@@ -1,0 +1,12 @@
+{
+  "id": "river-raider",
+  "name": "River Raider",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "+2 bonus on Swim and Stealth checks in non-stormy water, can take more actions than normal in surprisse rounds where you're in water",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=River%20Raider"
+  }
+}

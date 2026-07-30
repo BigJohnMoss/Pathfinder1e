@@ -1,0 +1,25 @@
+{
+  "id": "stumbling-bash",
+  "name": "Stumbling Bash*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-shield-bash"
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or fighter level 4th"
+    }
+  ],
+  "benefit": "Creatures you shield bash take an AC penalty for 1 round",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stumbling%20Bash*"
+  }
+}

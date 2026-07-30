@@ -1,0 +1,26 @@
+{
+  "id": "reactive-reversion",
+  "name": "Reactive Reversion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "change shape ability"
+    },
+    {
+      "type": "rule",
+      "description": "leshy subtype"
+    }
+  ],
+  "benefit": "Shift back to your natural form as an immediate action",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reactive%20Reversion"
+  }
+}

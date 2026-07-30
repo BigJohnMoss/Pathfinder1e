@@ -1,0 +1,17 @@
+{
+  "id": "new-thassilonian-magic",
+  "name": "New Thassilonian Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Thassilonian specialization ( Pathfinder Campaign Setting: Inner Sea Magic 17 )"
+    }
+  ],
+  "benefit": "Choose one of your barred schools and gain Thassilonian as a bonus langauge",
+  "source": {
+    "title": "Paths of the Righteous",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=New%20Thassilonian%20Magic"
+  }
+}

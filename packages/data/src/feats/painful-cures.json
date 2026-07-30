@@ -1,0 +1,17 @@
+{
+  "id": "painful-cures",
+  "name": "Painful Cures",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Evil alignment"
+    }
+  ],
+  "benefit": "Inflict nonlethal damage when you heal a creature",
+  "source": {
+    "title": "Healer's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Painful%20Cures"
+  }
+}

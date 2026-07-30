@@ -1,0 +1,22 @@
+{
+  "id": "multiweapon-fighting",
+  "name": "Multiweapon Fighting",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "three or more hands"
+    }
+  ],
+  "benefit": "Reduce the penalties for fighting with multiple weapons from -6/-10 to -2/-6.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 315,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Multiweapon%20Fighting"
+  }
+}

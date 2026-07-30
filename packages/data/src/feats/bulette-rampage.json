@@ -1,0 +1,38 @@
+{
+  "id": "bulette-rampage",
+  "name": "Bulette Rampage",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "bulette-charge-style"
+    },
+    {
+      "type": "feat",
+      "id": "bulette-leap"
+    },
+    {
+      "type": "feat",
+      "id": "improved-overrun"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with heavy armor"
+    }
+  ],
+  "benefit": "Deal damage on a successful overrun manuever",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bulette%20Rampage"
+  }
+}

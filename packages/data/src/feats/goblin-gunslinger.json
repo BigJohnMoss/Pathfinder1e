@@ -1,0 +1,17 @@
+{
+  "id": "goblin-gunslinger",
+  "name": "Goblin Gunslinger",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Goblin"
+    }
+  ],
+  "benefit": "Wield Medium firearms without penalty",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Goblin%20Gunslinger"
+  }
+}

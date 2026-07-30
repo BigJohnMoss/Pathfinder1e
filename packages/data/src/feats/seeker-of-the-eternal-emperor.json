@@ -1,0 +1,21 @@
+{
+  "id": "seeker-of-the-eternal-emperor",
+  "name": "Seeker of the Eternal Emperor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Enlarge Spell or Extend Spell"
+    },
+    {
+      "type": "feature",
+      "id": "oracles-curse"
+    }
+  ],
+  "benefit": "Cast divination spells augmented with metamagic as a standard action",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Seeker%20of%20the%20Eternal%20Emperor"
+  }
+}

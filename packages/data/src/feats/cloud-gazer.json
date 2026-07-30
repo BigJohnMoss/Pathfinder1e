@@ -1,0 +1,17 @@
+{
+  "id": "cloud-gazer",
+  "name": "Cloud Gazer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Sylph"
+    }
+  ],
+  "benefit": "See through fog, mist, and clouds",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 159,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cloud%20Gazer"
+  }
+}

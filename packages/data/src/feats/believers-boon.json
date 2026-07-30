@@ -1,0 +1,22 @@
+{
+  "id": "believers-boon",
+  "name": "Believer's Boon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "alignment must be within one step of your deity’s"
+    }
+  ],
+  "benefit": "Gain that use of a 1st-level cleric domain ability",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 142,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Believer's%20Boon"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "knotted-nets",
+  "name": "Knotted Nets",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(net)"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Work together with multiple allies to use nets against larger creatures",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Knotted%20Nets"
+  }
+}

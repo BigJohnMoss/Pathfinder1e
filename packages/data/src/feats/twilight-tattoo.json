@@ -1,0 +1,22 @@
+{
+  "id": "twilight-tattoo",
+  "name": "Twilight Tattoo",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "affiliated with the Twilight Talons"
+    }
+  ],
+  "benefit": "Gain a magic tattoo that grants benefits",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 76,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Twilight%20Tattoo"
+  }
+}

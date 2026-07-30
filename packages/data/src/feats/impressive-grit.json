@@ -1,0 +1,25 @@
+{
+  "id": "impressive-grit",
+  "name": "Impressive Grit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a ranged weapon"
+    }
+  ],
+  "benefit": "Gain a gunslinger deed or reduce the grit it takes to use one",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Impressive%20Grit"
+  }
+}

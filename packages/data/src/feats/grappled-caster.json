@@ -1,0 +1,17 @@
+{
+  "id": "grappled-caster",
+  "name": "Grappled Caster",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-casting"
+    }
+  ],
+  "benefit": "+4 bonus to cast while grappled",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grappled%20Caster"
+  }
+}

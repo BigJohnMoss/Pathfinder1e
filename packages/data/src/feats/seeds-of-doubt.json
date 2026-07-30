@@ -1,0 +1,21 @@
+{
+  "id": "seeds-of-doubt",
+  "name": "Seeds of Doubt",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hex"
+    },
+    {
+      "type": "feat",
+      "id": "divine-defiance"
+    }
+  ],
+  "benefit": "Your hexes cause doubt in divine magic",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Seeds%20of%20Doubt"
+  }
+}

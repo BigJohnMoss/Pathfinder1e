@@ -1,0 +1,38 @@
+{
+  "id": "indomitable-mountain-avalanche",
+  "name": "Indomitable Mountain Avalanche",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "indomitable-mountain-peak"
+    },
+    {
+      "type": "feat",
+      "id": "indomitable-mountain-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Make attack of opportunity to push back a foe when a foe fails a combat maneuver against you",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 114,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Indomitable%20Mountain%20Avalanche"
+  }
+}

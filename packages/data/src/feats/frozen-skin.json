@@ -1,0 +1,22 @@
+{
+  "id": "frozen-skin",
+  "name": "Frozen Skin",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "frostkin half-orc"
+    }
+  ],
+  "benefit": "Increase your cold resistance by 3",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Frozen%20Skin"
+  }
+}

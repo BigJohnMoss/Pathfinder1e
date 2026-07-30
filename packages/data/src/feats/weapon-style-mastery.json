@@ -1,0 +1,29 @@
+{
+  "id": "weapon-style-mastery",
+  "name": "Weapon Style Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any two style feats from different styles"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a melee weapon"
+    }
+  ],
+  "benefit": "Have two weapon styles active at once",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weapon%20Style%20Mastery"
+  }
+}

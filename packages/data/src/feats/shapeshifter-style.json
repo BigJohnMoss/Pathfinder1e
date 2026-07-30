@@ -1,0 +1,25 @@
+{
+  "id": "shapeshifter-style",
+  "name": "Shapeshifter Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "change shape ability"
+    },
+    {
+      "type": "rule",
+      "description": "shapechanger subtype"
+    }
+  ],
+  "benefit": "You can slightly alter your body to gain one of a number of benefits",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shapeshifter%20Style"
+  }
+}

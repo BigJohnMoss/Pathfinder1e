@@ -1,0 +1,21 @@
+{
+  "id": "extra-light-and-dark",
+  "name": "Extra Light and Dark",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Light and dark racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "wayang"
+    }
+  ],
+  "benefit": "Extend the duration of Light and Dark",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Light%20and%20Dark"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "spirit-rebuke",
+  "name": "Spirit Rebuke",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wis 17; Iron Will; Spirit Beacon; Diplomacy 5 ranks or Intimidate 5 ranks"
+    }
+  ],
+  "benefit": "Dispel magical spirit effects or damage spirits",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 169,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Rebuke"
+  }
+}

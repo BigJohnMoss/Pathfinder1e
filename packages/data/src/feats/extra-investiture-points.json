@@ -1,0 +1,17 @@
+{
+  "id": "extra-investiture-points",
+  "name": "Extra Investiture Points",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "investiture"
+    }
+  ],
+  "benefit": "Gain two additional points of investiture",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Investiture%20Points"
+  }
+}

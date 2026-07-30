@@ -1,0 +1,21 @@
+{
+  "id": "monstrous-mount-mastery",
+  "name": "Monstrous Mount Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "monstrous-mount"
+    },
+    {
+      "type": "rule",
+      "description": "character level equal to or higher than that listed in your mount’s Mastery entry"
+    }
+  ],
+  "benefit": "Gain the Mastery ability for your exotic mount",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monstrous%20Mount%20Mastery"
+  }
+}

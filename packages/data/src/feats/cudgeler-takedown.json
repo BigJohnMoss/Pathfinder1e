@@ -1,0 +1,33 @@
+{
+  "id": "cudgeler-takedown",
+  "name": "Cudgeler Takedown",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bludgeoner"
+    },
+    {
+      "type": "rule",
+      "description": "UC"
+    },
+    {
+      "type": "feat",
+      "id": "cudgeler-style"
+    },
+    {
+      "type": "feat",
+      "id": "cudgeler-sweep"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +9 or monk level 9th"
+    }
+  ],
+  "benefit": "Improve your Cudgeler Style and Sweep",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cudgeler%20Takedown"
+  }
+}

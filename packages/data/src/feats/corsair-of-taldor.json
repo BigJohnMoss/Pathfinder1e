@@ -1,0 +1,17 @@
+{
+  "id": "corsair-of-taldor",
+  "name": "Corsair of Taldor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Spent at least 1 month working on a ship for Jean Coremont"
+    }
+  ],
+  "benefit": "+2 initiative and +1 damage while on a ship",
+  "source": {
+    "title": "Cities of Golarion",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Corsair%20of%20Taldor"
+  }
+}

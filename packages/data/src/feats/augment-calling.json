@@ -1,0 +1,33 @@
+{
+  "id": "augment-calling",
+  "name": "Augment Calling",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "lesser-planar-ally"
+    },
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(conjuration)"
+    },
+    {
+      "type": "rule",
+      "description": "lesser planar binding"
+    },
+    {
+      "type": "rule",
+      "description": "or a higher-level version of these spells"
+    }
+  ],
+  "benefit": "Bind/call a specific type of outsider with greater ease",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Augment%20Calling"
+  }
+}

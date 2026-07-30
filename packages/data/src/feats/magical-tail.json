@@ -1,0 +1,17 @@
+{
+  "id": "magical-tail",
+  "name": "Magical Tail",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Kitsune"
+    }
+  ],
+  "benefit": "Grow an extra tail that increases your spell-like abilities",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 193,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Magical%20Tail"
+  }
+}

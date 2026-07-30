@@ -1,0 +1,22 @@
+{
+  "id": "primal-ancestry",
+  "name": "Primal Ancestry",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "member of the Primordial One"
+    }
+  ],
+  "benefit": "Tap into the essence of the First World to gain DR/cold iron",
+  "source": {
+    "title": "Andoran, Birthplace of Freedom",
+    "page": 34,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Primal%20Ancestry"
+  }
+}

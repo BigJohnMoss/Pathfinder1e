@@ -1,0 +1,21 @@
+{
+  "id": "lay-of-the-land",
+  "name": "Lay of the Land",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "animal-focus"
+    },
+    {
+      "type": "feature",
+      "id": "wild-empathy"
+    }
+  ],
+  "benefit": "Gain lesser version of favored terrain class feature",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lay%20of%20the%20Land"
+  }
+}

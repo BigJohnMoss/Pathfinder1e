@@ -1,0 +1,43 @@
+{
+  "id": "deadhand-master",
+  "name": "Deadhand Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 23
+    },
+    {
+      "type": "feat",
+      "id": "deadhand-initiate"
+    },
+    {
+      "type": "feat",
+      "id": "deadhand-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 14
+    },
+    {
+      "type": "feature",
+      "id": "ki-pool"
+    },
+    {
+      "type": "rule",
+      "description": "nongood alignment"
+    }
+  ],
+  "benefit": "Your unarmed strikes inflict negative levels",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deadhand%20Master"
+  }
+}

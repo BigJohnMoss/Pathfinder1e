@@ -1,0 +1,25 @@
+{
+  "id": "spell-cartridges",
+  "name": "Spell Cartridges",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "spell-access",
+      "id": "arcane-spells"
+    },
+    {
+      "type": "rule",
+      "description": "proficient with firearms"
+    }
+  ],
+  "benefit": "Shoot force bullets instead of mundane ammunition",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spell%20Cartridges"
+  }
+}

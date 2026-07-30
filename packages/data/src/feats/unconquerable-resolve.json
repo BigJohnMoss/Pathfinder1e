@@ -1,0 +1,26 @@
+{
+  "id": "unconquerable-resolve",
+  "name": "Unconquerable Resolve",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "resolve"
+    },
+    {
+      "type": "class-level",
+      "classId": "samurai",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "( Pathfinder RPG Ultimate Combat 18 )"
+    }
+  ],
+  "benefit": "Gain temporary hit points whenever you use resolve",
+  "source": {
+    "title": "Healer's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unconquerable%20Resolve"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "assured-destruction",
+  "name": "Assured Destruction",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "empowered-daemonic-pact"
+    },
+    {
+      "type": "rule",
+      "description": "urdefhan"
+    }
+  ],
+  "benefit": "Your daemonic pact does more damage and is harder to avoid",
+  "source": {
+    "title": "Inner Sea Monster Codex",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Assured%20Destruction"
+  }
+}

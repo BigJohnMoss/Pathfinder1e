@@ -1,0 +1,21 @@
+{
+  "id": "armor-proficiency-medium-prpg-core-rulebook",
+  "name": "Armor Proficiency, Medium",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Armor Proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "Light"
+    }
+  ],
+  "benefit": "No penalties on attack rolls while wearing medium armor",
+  "source": {
+    "title": "Core Rulebook",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Armor%20Proficiency%2C%20Medium"
+  }
+}

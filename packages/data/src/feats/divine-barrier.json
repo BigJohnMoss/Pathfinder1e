@@ -1,0 +1,21 @@
+{
+  "id": "divine-barrier",
+  "name": "Divine Barrier",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Apsu"
+    }
+  ],
+  "benefit": "Expend a use of channel energy to protect allies from energy damage",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 210,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Barrier"
+  }
+}

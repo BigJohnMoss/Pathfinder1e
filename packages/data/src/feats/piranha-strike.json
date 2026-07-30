@@ -1,0 +1,21 @@
+{
+  "id": "piranha-strike",
+  "name": "Piranha Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Take a -1 penalty to attacks to get a +2 bonus to damage with light weapons (scales with BAB)",
+  "source": {
+    "title": "Sargava, the Lost Colony",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Piranha%20Strike"
+  }
+}

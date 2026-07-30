@@ -1,0 +1,18 @@
+{
+  "id": "wanderers-fortune",
+  "name": "Wanderer's Fortune",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Gain freedom of movement to escape a grapple or magical restraint",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wanderer's%20Fortune"
+  }
+}

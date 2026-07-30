@@ -1,0 +1,17 @@
+{
+  "id": "masked-by-fear",
+  "name": "Masked by Fear",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Nameless One; base Will save bonus +6 or bravery class feature"
+    }
+  ],
+  "benefit": "Fear effects are less effective agaisnt you",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Masked%20by%20Fear"
+  }
+}

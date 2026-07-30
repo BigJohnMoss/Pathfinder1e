@@ -1,0 +1,21 @@
+{
+  "id": "wild-speaker",
+  "name": "Wild Speaker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bleachling racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    }
+  ],
+  "benefit": "You can use speak with animals at will",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wild%20Speaker"
+  }
+}

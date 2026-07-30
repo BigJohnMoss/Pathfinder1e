@@ -1,0 +1,17 @@
+{
+  "id": "born-alone",
+  "name": "Born Alone",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Orc"
+    }
+  ],
+  "benefit": "Gain temporary hit points by killing or knocking creatures unconscious",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Born%20Alone"
+  }
+}

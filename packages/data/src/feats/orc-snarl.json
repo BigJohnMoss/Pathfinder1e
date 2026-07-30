@@ -1,0 +1,42 @@
+{
+  "id": "orc-snarl",
+  "name": "Orc Snarl",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "bullying-blow"
+    },
+    {
+      "type": "rule",
+      "description": "ARG"
+    },
+    {
+      "type": "feat",
+      "id": "intimidating-prowess"
+    },
+    {
+      "type": "feat",
+      "id": "orc-fury-style"
+    },
+    {
+      "type": "feat",
+      "id": "orc-rampage"
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "weapon familiarity racial trait"
+    }
+  ],
+  "benefit": "+4 save vs. effects created by shaken foes",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Orc%20Snarl"
+  }
+}

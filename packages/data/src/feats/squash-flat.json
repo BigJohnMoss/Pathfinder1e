@@ -1,0 +1,25 @@
+{
+  "id": "squash-flat",
+  "name": "Squash Flat",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "merciless-rush"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Rovagug"
+    }
+  ],
+  "benefit": "Whenever you exceed a bull rush attempt by 5 or more, trip the target as a free action",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 216,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Squash%20Flat"
+  }
+}

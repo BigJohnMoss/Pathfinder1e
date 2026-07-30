@@ -1,0 +1,34 @@
+{
+  "id": "sisterhood-style",
+  "name": "Sisterhood Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(longsword)"
+    },
+    {
+      "type": "bab",
+      "minimum": 2
+    }
+  ],
+  "benefit": "+1 on Reflex and Will saves and use teamwork feats more easily",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 86,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sisterhood%20Style"
+  }
+}

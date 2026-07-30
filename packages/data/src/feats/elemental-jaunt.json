@@ -1,0 +1,33 @@
+{
+  "id": "elemental-jaunt",
+  "name": "Elemental Jaunt",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "ifrit"
+    },
+    {
+      "type": "rule",
+      "description": "oread"
+    },
+    {
+      "type": "rule",
+      "description": "sylph"
+    },
+    {
+      "type": "rule",
+      "description": "or undine"
+    }
+  ],
+  "benefit": "Cast plane shift 1/day to return to the plane of your ancestors",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 130,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Jaunt"
+  }
+}

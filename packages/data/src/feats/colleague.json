@@ -1,0 +1,17 @@
+{
+  "id": "colleague",
+  "name": "Colleague",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "See text"
+    }
+  ],
+  "benefit": "",
+  "source": {
+    "title": "Qadira, Jewel of the East",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Colleague"
+  }
+}

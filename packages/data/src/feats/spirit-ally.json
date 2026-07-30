@@ -1,0 +1,17 @@
+{
+  "id": "spirit-ally",
+  "name": "Spirit Ally",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Gain a permanent unseen servent",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Ally"
+  }
+}

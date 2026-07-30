@@ -1,0 +1,29 @@
+{
+  "id": "strangler-mc",
+  "name": "Strangler (MC)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(lasso)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(lasso)"
+    }
+  ],
+  "benefit": "Choke foes with a lasso, preventing them from speaking",
+  "source": {
+    "title": "Monster Codex",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Strangler%20(MC)"
+  }
+}

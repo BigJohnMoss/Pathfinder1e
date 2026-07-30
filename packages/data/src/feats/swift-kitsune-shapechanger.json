@@ -1,0 +1,26 @@
+{
+  "id": "swift-kitsune-shapechanger",
+  "name": "Swift Kitsune Shapechanger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "kitsune"
+    }
+  ],
+  "benefit": "Assume one of your forms as a swift action.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swift%20Kitsune%20Shapechanger"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "experienced-vagabond",
+  "name": "Experienced Vagabond",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 2
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (local)",
+      "minimum": 2
+    },
+    {
+      "type": "rule",
+      "description": "member of an underclass"
+    }
+  ],
+  "benefit": "Gain bonuses when dealing with criminals and vagabonds",
+  "source": {
+    "title": "Taldor, Echoes of Glory",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Experienced%20Vagabond"
+  }
+}

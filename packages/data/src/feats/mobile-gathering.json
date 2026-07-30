@@ -1,0 +1,22 @@
+{
+  "id": "mobile-gathering",
+  "name": "Mobile Gathering",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "kineticist",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "kinetic-blast"
+    }
+  ],
+  "benefit": "Move up to half your speed while gathering power as a full-round action",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mobile%20Gathering"
+  }
+}

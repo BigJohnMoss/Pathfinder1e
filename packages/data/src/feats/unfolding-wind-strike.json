@@ -1,0 +1,17 @@
+{
+  "id": "unfolding-wind-strike",
+  "name": "Unfolding Wind Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dex 13; Wis 13; Perfect Style; Quick Draw; base attack bonus +9 or monk level 9th"
+    }
+  ],
+  "benefit": "Double range increment of thrown weapons",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unfolding%20Wind%20Strike"
+  }
+}

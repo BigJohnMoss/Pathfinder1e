@@ -1,0 +1,29 @@
+{
+  "id": "object-of-legend",
+  "name": "Object of Legend",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "betrayer"
+    },
+    {
+      "type": "rule",
+      "description": "You must have some highly personal stake in attaining the object of your quest as determined collectively by you and the GM—such as needing an ancestral weapon to exact your revenge against a known"
+    },
+    {
+      "type": "rule",
+      "description": "seeking to destroy the artifact that caused your family’s downfall generations ago"
+    },
+    {
+      "type": "rule",
+      "description": "or attempting to behead a monster that ravaged your homeland during your youth"
+    }
+  ],
+  "benefit": "Acquire great power and skill",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Object%20of%20Legend"
+  }
+}

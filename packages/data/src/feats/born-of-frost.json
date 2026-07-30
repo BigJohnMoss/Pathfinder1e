@@ -1,0 +1,17 @@
+{
+  "id": "born-of-frost",
+  "name": "Born of Frost",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Frost giant"
+    }
+  ],
+  "benefit": "Your natural weapons deal cold damage",
+  "source": {
+    "title": "Monster Codex",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Born%20of%20Frost"
+  }
+}

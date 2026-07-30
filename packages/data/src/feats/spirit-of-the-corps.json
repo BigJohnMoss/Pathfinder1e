@@ -1,0 +1,12 @@
+{
+  "id": "spirit-of-the-corps",
+  "name": "Spirit of the Corps",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Duplicate morale bonuses from teammates",
+  "source": {
+    "title": "Monster Codex",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20of%20the%20Corps"
+  }
+}

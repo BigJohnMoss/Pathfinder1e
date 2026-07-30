@@ -1,0 +1,17 @@
+{
+  "id": "bookish-rogue",
+  "name": "Bookish Rogue",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Minor magic rogue talent"
+    }
+  ],
+  "benefit": "Change your rogue talent spell-like abilities with study",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 143,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bookish%20Rogue"
+  }
+}

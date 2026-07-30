@@ -1,0 +1,21 @@
+{
+  "id": "tail-weapon",
+  "name": "Tail Weapon",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "serpentfolk"
+    }
+  ],
+  "benefit": "Gain a tail slap attack with your tail",
+  "source": {
+    "title": "Monster Codex",
+    "page": 200,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tail%20Weapon"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "vigilant-charger",
+  "name": "Vigilant Charger",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    }
+  ],
+  "benefit": "Ready an action to charge an enemy",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vigilant%20Charger"
+  }
+}

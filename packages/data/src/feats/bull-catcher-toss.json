@@ -1,0 +1,47 @@
+{
+  "id": "bull-catcher-toss",
+  "name": "Bull-Catcher Toss",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "bull-catcher-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "class-level",
+      "classId": "acg",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "brawler"
+    },
+    {
+      "type": "rule",
+      "description": "or monk level 4th"
+    }
+  ],
+  "benefit": "Reposition creatures you grab a crature with Bull-Catcher Style",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bull-Catcher%20Toss"
+  }
+}

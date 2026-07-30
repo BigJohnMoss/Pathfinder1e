@@ -1,0 +1,32 @@
+{
+  "id": "demon-grafter",
+  "name": "Demon Grafter",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "demonologist"
+    },
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Learn how to implant demonic tissue into mortal flesh",
+  "source": {
+    "title": "Pathfinder #74: Sword of Valor",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demon%20Grafter"
+  }
+}

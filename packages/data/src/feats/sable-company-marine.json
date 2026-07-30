@@ -1,0 +1,23 @@
+{
+  "id": "sable-company-marine",
+  "name": "Sable Company Marine",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 6
+    },
+    {
+      "type": "class-level",
+      "classId": "ranger",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Gain a hippogriff as your animal companion",
+  "source": {
+    "title": "Guide to Korvosa",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sable%20Company%20Marine"
+  }
+}

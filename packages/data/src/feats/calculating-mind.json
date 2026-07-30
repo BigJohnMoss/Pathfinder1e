@@ -1,0 +1,22 @@
+{
+  "id": "calculating-mind",
+  "name": "Calculating Mind",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "sacred-geometry"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Increase your dice pool range with Sacred Geometry",
+  "source": {
+    "title": "Occult Mysteries",
+    "page": 49,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Calculating%20Mind"
+  }
+}

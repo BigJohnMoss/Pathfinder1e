@@ -1,0 +1,25 @@
+{
+  "id": "bolster-jinx",
+  "name": "Bolster Jinx",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "great-fortitude"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "or Lightning Reflexes; Halfling Jinx trait"
+    }
+  ],
+  "benefit": "Increase a jinxed target's penalty to a save if you have a bonus to that save",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bolster%20Jinx"
+  }
+}

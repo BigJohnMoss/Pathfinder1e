@@ -1,0 +1,21 @@
+{
+  "id": "cushioning-armor",
+  "name": "Cushioning Armor*",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "armor-training"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with medium or heavy armor"
+    }
+  ],
+  "benefit": "Tranfer half your falling damage to your armor",
+  "source": {
+    "title": "Unknown source",
+    "page": null,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cushioning%20Armor*"
+  }
+}

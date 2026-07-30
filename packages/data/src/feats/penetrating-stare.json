@@ -1,0 +1,22 @@
+{
+  "id": "penetrating-stare",
+  "name": "Penetrating Stare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Painful stare ignores damage reduction",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Penetrating%20Stare"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "persuasive-performer",
+  "name": "Persuasive Performer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "versatile-performance"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Shelyn"
+    }
+  ],
+  "benefit": "Use any Perform skill in place of Diplomacy",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Persuasive%20Performer"
+  }
+}

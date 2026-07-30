@@ -1,0 +1,29 @@
+{
+  "id": "fearless-zeal",
+  "name": "Fearless Zeal",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must be ordained as a sacred (or profane) champion of your faith by a high-ranking member of its clergy"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Devoted"
+    },
+    {
+      "type": "rule",
+      "description": "Faith-Bringer"
+    },
+    {
+      "type": "rule",
+      "description": "or Moral Debt background. Such an honor goes above and beyond the normal oaths required of a cleric or paladin"
+    }
+  ],
+  "benefit": "Become a living symbol of your faith",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fearless%20Zeal"
+  }
+}

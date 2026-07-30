@@ -1,0 +1,21 @@
+{
+  "id": "gift-of-sight",
+  "name": "Gift of Sight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Troll"
+    },
+    {
+      "type": "rule",
+      "description": "patron deity Urxehl"
+    }
+  ],
+  "benefit": "Read the future within your entrails",
+  "source": {
+    "title": "Classic Monsters Revisited",
+    "page": 62,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gift%20of%20Sight"
+  }
+}

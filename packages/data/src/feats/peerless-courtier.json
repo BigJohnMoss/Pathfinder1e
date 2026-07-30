@@ -1,0 +1,22 @@
+{
+  "id": "peerless-courtier",
+  "name": "Peerless Courtier",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Bluff, Diplomacy, or Sense Motive with your martial training",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Peerless%20Courtier"
+  }
+}

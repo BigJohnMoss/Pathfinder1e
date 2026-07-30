@@ -1,0 +1,17 @@
+{
+  "id": "archon-justice",
+  "name": "Archon Justice",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Archon Diversion; Archon Style; Combat Expertise; Combat Reflexes; base attack bonus +8 or monk level 7th"
+    }
+  ],
+  "benefit": "Redirect an attack from an opponent to yourself to grant several allies attacks of opporunity",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Archon%20Justice"
+  }
+}

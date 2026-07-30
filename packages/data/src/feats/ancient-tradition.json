@@ -1,0 +1,22 @@
+{
+  "id": "ancient-tradition",
+  "name": "Ancient Tradition",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (history)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must have a connection to a lost culture"
+    }
+  ],
+  "benefit": "Gain powerful boons by adhering to ancient traditions",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ancient%20Tradition"
+  }
+}

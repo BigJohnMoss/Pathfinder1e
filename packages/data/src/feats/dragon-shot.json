@@ -1,0 +1,22 @@
+{
+  "id": "dragon-shot",
+  "name": "Dragon Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Amateur Gunslinger feat or grit class feature"
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Spend grit to change the damage type of your gun to energy damage",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dragon%20Shot"
+  }
+}

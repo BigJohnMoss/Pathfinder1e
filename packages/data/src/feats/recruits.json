@@ -1,0 +1,22 @@
+{
+  "id": "recruits",
+  "name": "Recruits",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "You have access to a small set of dedicated servants.",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 134,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Recruits"
+  }
+}

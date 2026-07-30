@@ -1,0 +1,22 @@
+{
+  "id": "dispelling-blood",
+  "name": "Dispelling Blood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "vishkanya"
+    }
+  ],
+  "benefit": "Your venomous blood can dispel magic",
+  "source": {
+    "title": "Potions and Poisons",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dispelling%20Blood"
+  }
+}

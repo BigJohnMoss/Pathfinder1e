@@ -1,0 +1,34 @@
+{
+  "id": "giants-wallop",
+  "name": "Giant's Wallop",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "rule",
+      "description": "giant subtype"
+    }
+  ],
+  "benefit": "Daze smaller creatures when using power attack and vital strike",
+  "source": {
+    "title": "Pathfinder #91: Battle of Bloodmarch Hills",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Giant's%20Wallop"
+  }
+}

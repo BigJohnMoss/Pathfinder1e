@@ -1,0 +1,25 @@
+{
+  "id": "cerberus-style",
+  "name": "Cerberus Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cleave"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "You can attack three targets at once within your reach",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cerberus%20Style"
+  }
+}

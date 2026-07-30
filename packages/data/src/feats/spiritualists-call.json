@@ -1,0 +1,17 @@
+{
+  "id": "spiritualists-call",
+  "name": "Spiritualist's Call",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "phantom"
+    }
+  ],
+  "benefit": "Phantom gets a bonus when summoned",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 140,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spiritualist's%20Call"
+  }
+}

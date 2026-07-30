@@ -1,0 +1,12 @@
+{
+  "id": "burning-amplification",
+  "name": "Burning Amplification",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your fire spells cause creatures to catch on fire",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Burning%20Amplification"
+  }
+}

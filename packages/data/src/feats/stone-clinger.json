@@ -1,0 +1,17 @@
+{
+  "id": "stone-clinger",
+  "name": "Stone Clinger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Roper"
+    }
+  ],
+  "benefit": "Gain a climb speed and learn to attack from the ceiling",
+  "source": {
+    "title": "Dungeon Denizens Revisited",
+    "page": 49,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stone%20Clinger"
+  }
+}

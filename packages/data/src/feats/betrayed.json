@@ -1,0 +1,25 @@
+{
+  "id": "betrayed",
+  "name": "Betrayed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have had a valuable item (worth at least 1,000 gp per character level) stolen by a former ally"
+    },
+    {
+      "type": "rule",
+      "description": "have been left for dead by a former ally"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Wrong Enemy background"
+    }
+  ],
+  "benefit": "Avoid harmful effects from allies, better ignore their presence in combat",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Betrayed"
+  }
+}

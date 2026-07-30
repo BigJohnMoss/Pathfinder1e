@@ -1,0 +1,21 @@
+{
+  "id": "kobold-confidence",
+  "name": "Kobold Confidence",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Charisma 13"
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "Use your Cha, Int, or Wis in place of Con for Fort saves and max negative HP before death",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kobold%20Confidence"
+  }
+}

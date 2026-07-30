@@ -1,0 +1,21 @@
+{
+  "id": "extra-stamina",
+  "name": "Extra Stamina",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-stamina"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Increase your stamina pool by 3 points",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Stamina"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "tattoo-conversion",
+  "name": "Tattoo Conversion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Inscribe Magical Tattoo ISM or Varisian Tattoo ISWG ; Tattoo Attunement; Spellcraft 15 ranks; ability to cast control summoned creature UM"
+    }
+  ],
+  "benefit": "Transform a hostile summoned creature into a tattoo to take control of it",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tattoo%20Conversion"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "massed-charge",
+  "name": "Massed Charge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mounted-combat"
+    },
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "Lastwall affinity"
+    }
+  ],
+  "benefit": "Suffer no penalites when squeezing with other riders and gain bonuses to combat maneuvers",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 90,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Massed%20Charge"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "directed-disarm",
+  "name": "Directed Disarm",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "greater-disarm"
+    },
+    {
+      "type": "feat",
+      "id": "improved-disarm"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Disarmed weapons land farther from the wielder",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Directed%20Disarm"
+  }
+}

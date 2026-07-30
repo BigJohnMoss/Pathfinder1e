@@ -1,0 +1,25 @@
+{
+  "id": "block-chakras",
+  "name": "Block Chakras",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Psychic Sensitivity or levels in an occult class"
+    },
+    {
+      "type": "rule",
+      "description": "brawler’s flurry or flurry of blows class feature"
+    },
+    {
+      "type": "rule",
+      "description": "ki pool"
+    }
+  ],
+  "benefit": "Block a creature's chakra with an unarmed strike",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Block%20Chakras"
+  }
+}

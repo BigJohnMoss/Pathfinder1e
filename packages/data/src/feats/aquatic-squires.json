@@ -1,0 +1,25 @@
+{
+  "id": "aquatic-squires",
+  "name": "Aquatic Squires",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Triton"
+    },
+    {
+      "type": "rule",
+      "description": "summon nature’s ally II spell-like ability"
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Your racial summon nature's ally spell-like ability lasts longer",
+  "source": {
+    "title": "Blood of the Sea",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aquatic%20Squires"
+  }
+}

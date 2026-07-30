@@ -1,0 +1,17 @@
+{
+  "id": "brutal-grappler",
+  "name": "Brutal Grappler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    }
+  ],
+  "benefit": "Help an ally grapple a creature",
+  "source": {
+    "title": "Orcs of Golarion",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brutal%20Grappler"
+  }
+}

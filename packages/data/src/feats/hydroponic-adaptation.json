@@ -1,0 +1,21 @@
+{
+  "id": "hydroponic-adaptation",
+  "name": "Hydroponic Adaptation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Gathlain"
+    },
+    {
+      "type": "rule",
+      "description": "racial fly speed"
+    }
+  ],
+  "benefit": "Once a day, convert your fly speed into a swim speed for 1 round",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hydroponic%20Adaptation"
+  }
+}

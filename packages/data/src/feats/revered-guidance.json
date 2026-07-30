@@ -1,0 +1,21 @@
+{
+  "id": "revered-guidance",
+  "name": "Revered Guidance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "must be taken at 1st level"
+    }
+  ],
+  "benefit": "+4 Diplomacy with a chosen race.",
+  "source": {
+    "title": "Blood of Angels",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Revered%20Guidance"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "relic-familiarity",
+  "name": "Relic Familiarity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wyvaran"
+    }
+  ],
+  "benefit": "Gain a bonus on checks to determine an item’s value and magic properties.",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Relic%20Familiarity"
+  }
+}

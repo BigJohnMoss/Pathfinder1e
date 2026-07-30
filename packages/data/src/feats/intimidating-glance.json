@@ -1,0 +1,17 @@
+{
+  "id": "intimidating-glance",
+  "name": "Intimidating Glance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hypnotic-stare"
+    }
+  ],
+  "benefit": "Demoralize hypnotic stare target as a swift action",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 135,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Intimidating%20Glance"
+  }
+}

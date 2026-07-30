@@ -1,0 +1,34 @@
+{
+  "id": "silent-performer",
+  "name": "Silent Performer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "feat",
+      "id": "extra-performance"
+    },
+    {
+      "type": "feat",
+      "id": "master-performer"
+    },
+    {
+      "type": "class-level",
+      "classId": "bard",
+      "minimum": 12
+    },
+    {
+      "type": "rule",
+      "description": "Kitharodian Academy 15 TPA"
+    }
+  ],
+  "benefit": "Use bardic performance without making a sound",
+  "source": {
+    "title": "Faction Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Silent%20Performer"
+  }
+}

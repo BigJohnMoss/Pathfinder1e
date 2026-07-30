@@ -1,0 +1,17 @@
+{
+  "id": "sinister-reputation",
+  "name": "Sinister Reputation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cha 13; Intimidate 5 ranks; Persuasive or renown social talent UI"
+    }
+  ],
+  "benefit": "Establish a fearsome reputation in a settlement",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 35,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sinister%20Reputation"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "awesome-throw",
+  "name": "Awesome Throw",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 25
+    },
+    {
+      "type": "rule",
+      "description": "Throw Anything or rock throwing"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "rule",
+      "description": "size Large or larger"
+    }
+  ],
+  "benefit": "Learn the awesome throw combat maneuver",
+  "source": {
+    "title": "Pathfinder #91: Battle of Bloodmarch Hills",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Awesome%20Throw"
+  }
+}

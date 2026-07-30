@@ -1,0 +1,17 @@
+{
+  "id": "relentless-butcher",
+  "name": "Relentless Butcher",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Confirm at least 50 critical hits"
+    }
+  ],
+  "benefit": "Stun your opponents when you critically hit",
+  "source": {
+    "title": "Legacy of Fire Player's Guide",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Relentless%20Butcher"
+  }
+}

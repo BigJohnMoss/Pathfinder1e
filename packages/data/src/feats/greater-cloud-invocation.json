@@ -1,0 +1,21 @@
+{
+  "id": "greater-cloud-invocation",
+  "name": "Greater Cloud Invocation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cloud-invocation"
+    },
+    {
+      "type": "rule",
+      "description": "Mbe’ke dwarf"
+    }
+  ],
+  "benefit": "Gain more control over your obscuring mist spell like ability",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Cloud%20Invocation"
+  }
+}

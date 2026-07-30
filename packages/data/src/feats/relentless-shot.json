@@ -1,0 +1,21 @@
+{
+  "id": "relentless-shot",
+  "name": "Relentless Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Continue to threaten an opponent you trip with ranged attacks",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Relentless%20Shot"
+  }
+}

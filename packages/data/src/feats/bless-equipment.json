@@ -1,0 +1,21 @@
+{
+  "id": "bless-equipment",
+  "name": "Bless Equipment",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    }
+  ],
+  "benefit": "Bless armor and weapons to inscribe them with magical properties",
+  "source": {
+    "title": "Undead Slayer's Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bless%20Equipment"
+  }
+}

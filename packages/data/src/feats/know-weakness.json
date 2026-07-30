@@ -1,0 +1,17 @@
+{
+  "id": "know-weakness",
+  "name": "Know Weakness",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-knowledge"
+    }
+  ],
+  "benefit": "+1 attack/damage against creatures you make a Knowledge check against",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Know%20Weakness"
+  }
+}

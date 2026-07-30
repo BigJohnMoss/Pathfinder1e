@@ -1,0 +1,28 @@
+{
+  "id": "quiet-death",
+  "name": "Quiet Death",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 19
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 10
+    },
+    {
+      "type": "class-level",
+      "classId": "rogue",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Drop your foes before they make a sound",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quiet%20Death"
+  }
+}

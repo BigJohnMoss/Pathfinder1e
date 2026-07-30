@@ -1,0 +1,12 @@
+{
+  "id": "snuffing-spell",
+  "name": "Snuffing Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Modify your magic to extinguish light sources",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Snuffing%20Spell"
+  }
+}

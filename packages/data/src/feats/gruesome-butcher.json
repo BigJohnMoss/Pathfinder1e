@@ -1,0 +1,17 @@
+{
+  "id": "gruesome-butcher",
+  "name": "Gruesome Butcher",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have been rendered unconscious and left for dead on a battlefield between warring factions or have the Child Soldier or Drafted background"
+    }
+  ],
+  "benefit": "Gain ranger-like bonuses against a specific enemy group",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gruesome%20Butcher"
+  }
+}

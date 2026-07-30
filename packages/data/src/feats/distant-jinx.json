@@ -1,0 +1,21 @@
+{
+  "id": "distant-jinx",
+  "name": "Distant Jinx",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Increase your jinx range by 30 ft.",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Distant%20Jinx"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "empathy",
+  "name": "Empathy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "android"
+    }
+  ],
+  "benefit": "Learn to experience emotion",
+  "source": {
+    "title": "Pathfinder #85: Fires of Creation",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Empathy"
+  }
+}

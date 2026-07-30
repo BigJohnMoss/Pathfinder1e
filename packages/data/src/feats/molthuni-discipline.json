@@ -1,0 +1,17 @@
+{
+  "id": "molthuni-discipline",
+  "name": "Molthuni Discipline",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Molthune affinity"
+    }
+  ],
+  "benefit": "Learn to resist fear effects",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 103,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Molthuni%20Discipline"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "mutated-shape",
+  "name": "Mutated Shape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 19
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "Grow an additional limb to make a natural attack in wild shape form",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 115,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mutated%20Shape"
+  }
+}

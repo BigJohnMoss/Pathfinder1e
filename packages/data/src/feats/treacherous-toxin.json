@@ -1,0 +1,21 @@
+{
+  "id": "treacherous-toxin",
+  "name": "Treacherous Toxin",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "sneak-attack"
+    }
+  ],
+  "benefit": "Forgo sneak attack damage to increase the DC of a poison",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Treacherous%20Toxin"
+  }
+}

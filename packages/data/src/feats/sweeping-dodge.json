@@ -1,0 +1,22 @@
+{
+  "id": "sweeping-dodge",
+  "name": "Sweeping Dodge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    }
+  ],
+  "benefit": "Gain evasion when making a dueling dodge while wearing a cloak",
+  "source": {
+    "title": "People of the River",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sweeping%20Dodge"
+  }
+}

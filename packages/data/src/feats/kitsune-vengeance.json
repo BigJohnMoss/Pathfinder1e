@@ -1,0 +1,17 @@
+{
+  "id": "kitsune-vengeance",
+  "name": "Kitsune Vengeance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int 13; Combat Expertise; Improved Dirty Trick APG ; Kitsune Style; Kitsune Tricks; base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Use dirty tricks with attacks of opportunity",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kitsune%20Vengeance"
+  }
+}

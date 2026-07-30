@@ -1,0 +1,32 @@
+{
+  "id": "sacrificial-ritualist",
+  "name": "Sacrificial Ritualist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "mutilating-ritualist"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Kill sentient creatures to enhance your ritual",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 92,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sacrificial%20Ritualist"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "undersized-mount",
+  "name": "Undersized Mount",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Ride",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Ride creatures of your size",
+  "source": {
+    "title": "Gallows of Madness",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Undersized%20Mount"
+  }
+}

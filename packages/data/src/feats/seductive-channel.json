@@ -1,0 +1,21 @@
+{
+  "id": "seductive-channel",
+  "name": "Seductive Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-positive-energy"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Calistria"
+    }
+  ],
+  "benefit": "Creatures healed by your channeled energy may accept extra healing in exchange for susceptibility to your charms",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Seductive%20Channel"
+  }
+}

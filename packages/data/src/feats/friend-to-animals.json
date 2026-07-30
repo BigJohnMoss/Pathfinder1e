@@ -1,0 +1,22 @@
+{
+  "id": "friend-to-animals",
+  "name": "Friend to Animals",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "nature-soul"
+    },
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Stop animals from attacking you.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Friend%20to%20Animals"
+  }
+}

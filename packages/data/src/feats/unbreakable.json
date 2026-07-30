@@ -1,0 +1,31 @@
+{
+  "id": "unbreakable",
+  "name": "Unbreakable",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "feat",
+      "id": "toughness"
+    },
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Gain additional hp from favored classes",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 86,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unbreakable"
+  }
+}

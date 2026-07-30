@@ -1,0 +1,30 @@
+{
+  "id": "spirit-strike",
+  "name": "Spirit Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 5
+    },
+    {
+      "type": "feat",
+      "id": "turn-undead"
+    },
+    {
+      "type": "rule",
+      "description": "ability to"
+    },
+    {
+      "type": "rule",
+      "description": "at least one favored enemy"
+    }
+  ],
+  "benefit": "Expend turn undead uses to imbue weapons with bane",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 219,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Strike"
+  }
+}

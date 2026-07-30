@@ -1,0 +1,12 @@
+{
+  "id": "ursurping-spell",
+  "name": "Ursurping Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Targets that fail their saving throw flank with you and can't make attacks of opportunity against you",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ursurping%20Spell"
+  }
+}

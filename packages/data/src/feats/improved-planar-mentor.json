@@ -1,0 +1,21 @@
+{
+  "id": "improved-planar-mentor",
+  "name": "Improved Planar Mentor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "planar-mentor"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Gain access to several spell-like abilities while benefiting from Planar Mentor",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Planar%20Mentor"
+  }
+}

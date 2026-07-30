@@ -1,0 +1,21 @@
+{
+  "id": "enhanced-coven",
+  "name": "Enhanced Coven",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Changeling"
+    },
+    {
+      "type": "rule",
+      "description": "coven hex or Coven-Touched"
+    }
+  ],
+  "benefit": "Cast more spell-like abilities per day",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Enhanced%20Coven"
+  }
+}

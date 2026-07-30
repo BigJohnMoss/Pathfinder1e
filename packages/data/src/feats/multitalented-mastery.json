@@ -1,0 +1,25 @@
+{
+  "id": "multitalented-mastery",
+  "name": "Multitalented Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "half-elf"
+    },
+    {
+      "type": "rule",
+      "description": "multitalented racial trait"
+    }
+  ],
+  "benefit": "Consider all classes as favored classes",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 47,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Multitalented%20Mastery"
+  }
+}

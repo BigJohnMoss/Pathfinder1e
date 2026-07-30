@@ -1,0 +1,17 @@
+{
+  "id": "focused-plant-expertise",
+  "name": "Focused Plant Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-plant"
+    }
+  ],
+  "benefit": "Gain a bonus to Reflex saving throws and CMD against binding effects",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Plant%20Expertise"
+  }
+}

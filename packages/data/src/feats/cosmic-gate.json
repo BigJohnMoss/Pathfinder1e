@@ -1,0 +1,22 @@
+{
+  "id": "cosmic-gate",
+  "name": "Cosmic Gate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Lady Luck’s Guidance"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 10
+    }
+  ],
+  "benefit": "You can use teleport once per day",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cosmic%20Gate"
+  }
+}

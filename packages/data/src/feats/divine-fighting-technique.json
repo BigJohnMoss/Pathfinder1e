@@ -1,0 +1,17 @@
+{
+  "id": "divine-fighting-technique",
+  "name": "Divine Fighting Technique",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must worship a single patron deity that has an established divine fighting technique"
+    }
+  ],
+  "benefit": "Gain a deity’s fighting technique",
+  "source": {
+    "title": "Divine Anthology",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Fighting%20Technique"
+  }
+}

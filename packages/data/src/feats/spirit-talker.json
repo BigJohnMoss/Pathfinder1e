@@ -1,0 +1,17 @@
+{
+  "id": "spirit-talker",
+  "name": "Spirit Talker",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Hex class feature; shaman level 6th or witch level 6th"
+    }
+  ],
+  "benefit": "Commune with a spirit to gain temporary use of one of its hexes",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spirit%20Talker"
+  }
+}

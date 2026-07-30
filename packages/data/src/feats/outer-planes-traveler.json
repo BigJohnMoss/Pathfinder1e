@@ -1,0 +1,22 @@
+{
+  "id": "outer-planes-traveler",
+  "name": "Outer Planes Traveler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast plane shift or gate as a spell or spell-like ability"
+    }
+  ],
+  "benefit": "Improve your casting ability and resistance with a type of spell familiar to a specific plane.",
+  "source": {
+    "title": "Demon Hunter's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Outer%20Planes%20Traveler"
+  }
+}

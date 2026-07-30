@@ -1,0 +1,22 @@
+{
+  "id": "hellknight-obedience",
+  "name": "Hellknight Obedience",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "must swear allegiance to a single Hellknight order"
+    }
+  ],
+  "benefit": "Performing daily Hellknight reckonings grants you special boons.",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 62,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hellknight%20Obedience"
+  }
+}

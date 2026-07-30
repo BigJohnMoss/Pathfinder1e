@@ -1,0 +1,22 @@
+{
+  "id": "musketeers-sidestep",
+  "name": "Musketeer's Sidestep",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dodging panache deed"
+    },
+    {
+      "type": "class-level",
+      "classId": "swashbuckler",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Increase the bonus from dodging panahce and your movement doesn't provoke",
+  "source": {
+    "title": "Villain Codex",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Musketeer's%20Sidestep"
+  }
+}

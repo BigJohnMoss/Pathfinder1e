@@ -1,0 +1,17 @@
+{
+  "id": "skilled-rager",
+  "name": "Skilled Rager",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Pick a skill and use it while raging",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 156,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Skilled%20Rager"
+  }
+}

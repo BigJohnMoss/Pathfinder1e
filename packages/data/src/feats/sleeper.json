@@ -1,0 +1,21 @@
+{
+  "id": "sleeper",
+  "name": "Sleeper",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "warren-digger"
+    },
+    {
+      "type": "rule",
+      "description": "ghoul"
+    }
+  ],
+  "benefit": "Gain fast healing when surrounded by dirt or stone",
+  "source": {
+    "title": "Monster Codex",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sleeper"
+  }
+}

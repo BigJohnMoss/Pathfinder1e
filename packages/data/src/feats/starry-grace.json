@@ -1,0 +1,30 @@
+{
+  "id": "starry-grace",
+  "name": "Starry Grace",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(starknife)"
+    }
+  ],
+  "benefit": "Use Dexterity on starknife damage rolls",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 92,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Starry%20Grace"
+  }
+}

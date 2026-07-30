@@ -1,0 +1,21 @@
+{
+  "id": "greater-serpent-lash",
+  "name": "Greater Serpent Lash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "serpent-lash"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Reposition enemies with Serpent Lash",
+  "source": {
+    "title": "Rival Guide",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Serpent%20Lash"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "close-call",
+  "name": "Close Call",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deft-hands"
+    }
+  ],
+  "benefit": "Reroll a disable device check 1/day",
+  "source": {
+    "title": "Dungeoneer's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Close%20Call"
+  }
+}

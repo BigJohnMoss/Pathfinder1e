@@ -1,0 +1,12 @@
+{
+  "id": "fiendskin",
+  "name": "Fiendskin",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Gain defensive abilities related to your patron’s outsider subtype",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fiendskin"
+  }
+}

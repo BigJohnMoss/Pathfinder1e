@@ -1,0 +1,30 @@
+{
+  "id": "greater-uncivilized-tactics",
+  "name": "Greater Uncivilized Tactics",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-uncivilized-tactics"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "uncivilized-tactics"
+    }
+  ],
+  "benefit": "+2 bonus to use Uncivilized Tactics, foes take longer to recover limbs or attacks affected",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Uncivilized%20Tactics"
+  }
+}

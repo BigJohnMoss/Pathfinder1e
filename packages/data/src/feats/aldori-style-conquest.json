@@ -1,0 +1,49 @@
+{
+  "id": "aldori-style-conquest",
+  "name": "Aldori Style Conquest",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "aldori-style"
+    },
+    {
+      "type": "feat",
+      "id": "aldori-style-aegis"
+    },
+    {
+      "type": "feat",
+      "id": "alertness"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Aldori dueling sword)"
+    }
+  ],
+  "benefit": "Take no penalties on attack rolls when using Aldori Style Aegis to parry an attack",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aldori%20Style%20Conquest"
+  }
+}

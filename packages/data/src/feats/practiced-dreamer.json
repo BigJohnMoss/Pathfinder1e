@@ -1,0 +1,27 @@
+{
+  "id": "practiced-dreamer",
+  "name": "Practiced Dreamer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "lucid-dreamer"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Reroll an attempt at an impossible action in the Dimension of Dreams once per day",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Practiced%20Dreamer"
+  }
+}

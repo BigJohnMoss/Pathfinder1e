@@ -1,0 +1,21 @@
+{
+  "id": "champion-of-tranquility",
+  "name": "Champion of Tranquility",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "10 Hit Dice"
+    },
+    {
+      "type": "rule",
+      "description": "lawful neutral alignment"
+    }
+  ],
+  "benefit": "The harmony of law is your highest ideal.",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 99,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Champion%20of%20Tranquility"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "blood-for-the-empire",
+  "name": "Blood for the Empire",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "+2 attack and damage against creatures damage by your allies in the last round",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blood%20for%20the%20Empire"
+  }
+}

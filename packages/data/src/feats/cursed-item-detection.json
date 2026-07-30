@@ -1,0 +1,22 @@
+{
+  "id": "cursed-item-detection",
+  "name": "Cursed Item Detection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "ability to cast detect magic as a spell or spell-like ability"
+    }
+  ],
+  "benefit": "+2 to identify magic items, less DC to determine cursed items",
+  "source": {
+    "title": "Dungeoneer's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cursed%20Item%20Detection"
+  }
+}

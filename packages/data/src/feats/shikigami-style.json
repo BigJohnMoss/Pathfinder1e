@@ -1,0 +1,17 @@
+{
+  "id": "shikigami-style",
+  "name": "Shikigami Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Catch Off-Guard or Throw Anything"
+    }
+  ],
+  "benefit": "Deal damage with improvised weapons as though they were larger",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shikigami%20Style"
+  }
+}

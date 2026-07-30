@@ -1,0 +1,17 @@
+{
+  "id": "focused-fey-expertise",
+  "name": "Focused Fey Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-fey"
+    }
+  ],
+  "benefit": "Gain a bonus on attack rolls to confirm critical hits",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Fey%20Expertise"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "masterful-flourish",
+  "name": "Masterful Flourish",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    }
+  ],
+  "benefit": "Add weapon training to performance checks",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Masterful%20Flourish"
+  }
+}

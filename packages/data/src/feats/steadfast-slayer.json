@@ -1,0 +1,12 @@
+{
+  "id": "steadfast-slayer",
+  "name": "Steadfast Slayer",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Gain bonuses to damage based on your size",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Steadfast%20Slayer"
+  }
+}

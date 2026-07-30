@@ -1,0 +1,17 @@
+{
+  "id": "gloom-sight",
+  "name": "Gloom Sight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fetchling"
+    }
+  ],
+  "benefit": "Gain darkvision 90 ft. at the cost of light sensitivity",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gloom%20Sight"
+  }
+}

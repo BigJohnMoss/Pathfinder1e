@@ -1,0 +1,22 @@
+{
+  "id": "brilliant-planner",
+  "name": "Brilliant Planner",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use gold to fund unspecified plans",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 75,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Brilliant%20Planner"
+  }
+}

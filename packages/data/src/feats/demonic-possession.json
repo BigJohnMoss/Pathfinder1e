@@ -1,0 +1,27 @@
+{
+  "id": "demonic-possession",
+  "name": "Demonic Possession",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Demon or half-demon"
+    },
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 21
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    }
+  ],
+  "benefit": "Learn the spell magic jar to aid in possessing other creatures.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demonic%20Possession"
+  }
+}

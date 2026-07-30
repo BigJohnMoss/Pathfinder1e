@@ -1,0 +1,23 @@
+{
+  "id": "drunken-sing-along",
+  "name": "Drunken Sing-Along",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Performance (sing)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Lead a sing-along to improve the mood of a crowd",
+  "source": {
+    "title": "Inner Sea Taverns",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Drunken%20Sing-Along"
+  }
+}

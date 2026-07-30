@@ -1,0 +1,21 @@
+{
+  "id": "solid-shadows",
+  "name": "Solid Shadows",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(illusion)"
+    }
+  ],
+  "benefit": "Your shadow spells are 20% more real than normal",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Solid%20Shadows"
+  }
+}

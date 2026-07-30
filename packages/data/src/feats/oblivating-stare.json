@@ -1,0 +1,30 @@
+{
+  "id": "oblivating-stare",
+  "name": "Oblivating Stare",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Allure bold stare improvement ( Pathfinder RPG Occult Adventures 42 )"
+    },
+    {
+      "type": "feature",
+      "id": "hypnotic-stare"
+    },
+    {
+      "type": "rule",
+      "description": "( Occult Adventures 39 )"
+    },
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Your stare can cause a target to lose track of someone.",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Oblivating%20Stare"
+  }
+}

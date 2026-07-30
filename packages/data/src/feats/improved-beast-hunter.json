@@ -1,0 +1,17 @@
+{
+  "id": "improved-beast-hunter",
+  "name": "Improved Beast Hunter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Beast Hunter; base attack bonus +3; Knowledge (nature) or Survival 3 ranks"
+    }
+  ],
+  "benefit": "Gain bonuses on combat maneuver checks, CMD, and Reflex saves when fighting animals larger than you in chosen terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 113,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Beast%20Hunter"
+  }
+}

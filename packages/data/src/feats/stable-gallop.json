@@ -1,0 +1,17 @@
+{
+  "id": "stable-gallop",
+  "name": "Stable Gallop",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal or magical beast"
+    }
+  ],
+  "benefit": "Your rider takes less penalties on ranged attacks while you move",
+  "source": {
+    "title": "Animal Archive",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stable%20Gallop"
+  }
+}

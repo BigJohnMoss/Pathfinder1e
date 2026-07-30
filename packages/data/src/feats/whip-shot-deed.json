@@ -1,0 +1,21 @@
+{
+  "id": "whip-shot-deed",
+  "name": "Whip-Shot Deed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grit class feature or Amateur Gunslinger UC feat"
+    },
+    {
+      "type": "rule",
+      "description": "pistol-whip deed"
+    }
+  ],
+  "benefit": "Fire your gun at the same time you use pistol-whip",
+  "source": {
+    "title": "Magical Marketplace",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Whip-Shot%20Deed"
+  }
+}

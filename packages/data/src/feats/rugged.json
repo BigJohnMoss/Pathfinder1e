@@ -1,0 +1,21 @@
+{
+  "id": "rugged",
+  "name": "Rugged",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "rule",
+      "description": "member of a Mammoth Lord’s following"
+    }
+  ],
+  "benefit": "Resist cold attacks and move normally across ice",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rugged"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "elemental-commixture",
+  "name": "Elemental Commixture",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Combine elemental spells with allies’ to create synergistic effects",
+  "source": {
+    "title": "Blood of the Elements",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Commixture"
+  }
+}

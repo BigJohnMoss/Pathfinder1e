@@ -1,0 +1,25 @@
+{
+  "id": "aquadynamic-shot",
+  "name": "Aquadynamic Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "far-shot"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Halve penalties for using projectile weapons underwater",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aquadynamic%20Shot"
+  }
+}

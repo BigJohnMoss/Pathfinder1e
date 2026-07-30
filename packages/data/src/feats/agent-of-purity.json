@@ -1,0 +1,21 @@
+{
+  "id": "agent-of-purity",
+  "name": "Agent of Purity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "A friend or ally must have been significantly corrupted by a specific natural or supernatural blight"
+    },
+    {
+      "type": "rule",
+      "description": "or you must have a regional background trait tied to a specific blight"
+    }
+  ],
+  "benefit": "Gain combat bonuses against blighted creatures",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Agent%20of%20Purity"
+  }
+}

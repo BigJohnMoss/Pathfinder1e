@@ -1,0 +1,23 @@
+{
+  "id": "out-of-the-sun",
+  "name": "Out of the Sun",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Feint a target but allow an ally to gain the benefits of that feint; works better in bright light or sunlight",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Out%20of%20the%20Sun"
+  }
+}

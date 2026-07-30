@@ -1,0 +1,42 @@
+{
+  "id": "street-carnage",
+  "name": "Street Carnage",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "street-style"
+    },
+    {
+      "type": "feat",
+      "id": "street-sweep"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +8 or monk level 7th"
+    }
+  ],
+  "benefit": "Gain x3 critical multiplier with unamed strike",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 92,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Street%20Carnage"
+  }
+}

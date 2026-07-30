@@ -1,0 +1,21 @@
+{
+  "id": "let-them-come",
+  "name": "Let Them Come",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Dwarf"
+    },
+    {
+      "type": "rule",
+      "description": "Ninth Battalion TPA 25"
+    }
+  ],
+  "benefit": "Treat all one- or two-handed melee weapons as if they had the brace special feature",
+  "source": {
+    "title": "Faction Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Let%20Them%20Come"
+  }
+}

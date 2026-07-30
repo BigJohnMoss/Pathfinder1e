@@ -1,0 +1,25 @@
+{
+  "id": "master-of-wonders",
+  "name": "Master of Wonders",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "Wonderseeker faction"
+    },
+    {
+      "type": "rule",
+      "description": "gnome"
+    }
+  ],
+  "benefit": "Roll twice when using a rod of wonder",
+  "source": {
+    "title": "Gnomes of Golarion",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Master%20of%20Wonders"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "elemental-knowledge",
+  "name": "Elemental Knowledge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "expanded-element"
+    }
+  ],
+  "benefit": "Gain class skills from your secondary elements",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Elemental%20Knowledge"
+  }
+}

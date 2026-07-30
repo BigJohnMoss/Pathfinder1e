@@ -1,0 +1,21 @@
+{
+  "id": "share-feature",
+  "name": "Share Feature",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal companion"
+    },
+    {
+      "type": "feature",
+      "id": "master-must-have-the-chosen"
+    }
+  ],
+  "benefit": "Gain a class feature from master",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 219,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Share%20Feature"
+  }
+}

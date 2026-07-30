@@ -1,0 +1,21 @@
+{
+  "id": "small-but-deadly",
+  "name": "Small But Deadly",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Weapon Focus or natural weapon"
+    },
+    {
+      "type": "rule",
+      "description": "Small size or smaller"
+    }
+  ],
+  "benefit": "Ignore strength penalty to damage with racial natural weapons and Weapon Focused weapons",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Small%20But%20Deadly"
+  }
+}

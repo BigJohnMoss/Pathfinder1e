@@ -1,0 +1,21 @@
+{
+  "id": "two-weapon-drunkard",
+  "name": "Two-Weapon Drunkard",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "catch-off-guard"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    }
+  ],
+  "benefit": "Use a tankard as a mace and holy symbol",
+  "source": {
+    "title": "Paths of the Righteous",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Two-Weapon%20Drunkard"
+  }
+}

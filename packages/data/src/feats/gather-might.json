@@ -1,0 +1,22 @@
+{
+  "id": "gather-might",
+  "name": "Gather Might",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "gather-power"
+    },
+    {
+      "type": "class-level",
+      "classId": "kineticist",
+      "minimum": 8
+    }
+  ],
+  "benefit": "You can use gather power to increasing your physical ability scores",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gather%20Might"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "legacy-of-ozem",
+  "name": "Legacy of Ozem",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "good alignment"
+    }
+  ],
+  "benefit": "+1 damage when using good-aligned weapons",
+  "source": {
+    "title": "Champions of Purity",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Legacy%20of%20Ozem"
+  }
+}

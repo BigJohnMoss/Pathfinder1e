@@ -1,0 +1,21 @@
+{
+  "id": "throat-pouch",
+  "name": "Throat Pouch",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Boggard"
+    },
+    {
+      "type": "rule",
+      "description": "terrifying croak"
+    }
+  ],
+  "benefit": "Increase the range of your terrifying croak",
+  "source": {
+    "title": "Monster Codex",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Throat%20Pouch"
+  }
+}

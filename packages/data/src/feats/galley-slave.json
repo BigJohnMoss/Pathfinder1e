@@ -1,0 +1,22 @@
+{
+  "id": "galley-slave",
+  "name": "Galley Slave",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Profession (sailor)",
+      "minimum": 2
+    },
+    {
+      "type": "rule",
+      "description": "current or former galley slave"
+    }
+  ],
+  "benefit": "Gain bonuses while aboard a ship",
+  "source": {
+    "title": "Taldor, Echoes of Glory",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Galley%20Slave"
+  }
+}

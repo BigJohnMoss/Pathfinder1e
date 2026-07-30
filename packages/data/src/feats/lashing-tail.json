@@ -1,0 +1,21 @@
+{
+  "id": "lashing-tail",
+  "name": "Lashing Tail",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "grasping-tail"
+    },
+    {
+      "type": "rule",
+      "description": "you must have a tail"
+    }
+  ],
+  "benefit": "Gain a tail slap natural attack",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lashing%20Tail"
+  }
+}

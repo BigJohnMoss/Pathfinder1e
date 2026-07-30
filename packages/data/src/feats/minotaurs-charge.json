@@ -1,0 +1,26 @@
+{
+  "id": "minotaurs-charge",
+  "name": "Minotaur's Charge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "rule",
+      "description": "powerful charge"
+    }
+  ],
+  "benefit": "Initiate a bull rush with a charge attack",
+  "source": {
+    "title": "Classic Monsters Revisited",
+    "page": 43,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Minotaur's%20Charge"
+  }
+}

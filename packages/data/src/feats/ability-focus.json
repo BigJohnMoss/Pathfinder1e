@@ -1,0 +1,17 @@
+{
+  "id": "ability-focus",
+  "name": "Ability Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Special attack"
+    }
+  ],
+  "benefit": "Increase the DC of a special attack by 2.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 314,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ability%20Focus"
+  }
+}

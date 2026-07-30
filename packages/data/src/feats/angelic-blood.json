@@ -1,0 +1,22 @@
+{
+  "id": "angelic-blood",
+  "name": "Angelic Blood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "aasimar"
+    }
+  ],
+  "benefit": "+2 save vs. evil effects and Con checks to stabilize, nearby evil creatures take damage when you bleed",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Angelic%20Blood"
+  }
+}

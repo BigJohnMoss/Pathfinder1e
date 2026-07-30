@@ -1,0 +1,21 @@
+{
+  "id": "dark-sight",
+  "name": "Dark Sight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "gloom-sight"
+    },
+    {
+      "type": "rule",
+      "description": "fetchling"
+    }
+  ],
+  "benefit": "See a small distance within magical darkness",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dark%20Sight"
+  }
+}

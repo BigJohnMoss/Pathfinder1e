@@ -1,0 +1,17 @@
+{
+  "id": "aspiring-noble",
+  "name": "Aspiring Noble",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must be a member of an established family that is yet unrecognized as nobility"
+    }
+  ],
+  "benefit": "Gain a bonus on Diplomacy or Intimidate in a certain settlement",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 4,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aspiring%20Noble"
+  }
+}

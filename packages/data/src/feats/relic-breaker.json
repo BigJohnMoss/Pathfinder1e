@@ -1,0 +1,34 @@
+{
+  "id": "relic-breaker",
+  "name": "Relic Breaker",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "gate-breaker"
+    },
+    {
+      "type": "feat",
+      "id": "improved-sunder"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "When you sunder objects, creature holding them catches of fire",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 39,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Relic%20Breaker"
+  }
+}

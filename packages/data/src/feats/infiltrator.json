@@ -1,0 +1,17 @@
+{
+  "id": "infiltrator",
+  "name": "Infiltrator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must have adopted an assumed or secret identity associated with an enemy organization"
+    }
+  ],
+  "benefit": "Make a divination spell return false information",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Infiltrator"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "sympathetic-rage",
+  "name": "Sympathetic Rage",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    },
+    {
+      "type": "rule",
+      "description": "nonlawful"
+    }
+  ],
+  "benefit": "Enter a rage-like state when a nearby ally rages",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sympathetic%20Rage"
+  }
+}

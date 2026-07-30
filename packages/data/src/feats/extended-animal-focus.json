@@ -1,0 +1,17 @@
+{
+  "id": "extended-animal-focus",
+  "name": "Extended Animal Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "animal-focus"
+    }
+  ],
+  "benefit": "Add Wisdom bonus to minutes usable per day for your animal focus ability",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extended%20Animal%20Focus"
+  }
+}

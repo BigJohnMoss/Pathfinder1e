@@ -1,0 +1,17 @@
+{
+  "id": "improved-position-of-strength",
+  "name": "Improved Position of Strength",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Position of Strength; Two-Weapon Fighting or Multiattack; Intimidate 5 ranks"
+    }
+  ],
+  "benefit": "Gain the bonus from Position of Strength even when target is armed",
+  "source": {
+    "title": "Villain Codex",
+    "page": 188,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Position%20of%20Strength"
+  }
+}

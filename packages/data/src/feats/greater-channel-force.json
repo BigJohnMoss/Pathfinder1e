@@ -1,0 +1,29 @@
+{
+  "id": "greater-channel-force",
+  "name": "Greater Channel Force",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "channel-force"
+    },
+    {
+      "type": "feat",
+      "id": "improved-channel-force"
+    },
+    {
+      "type": "rule",
+      "description": "aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "channel energy 6d6"
+    }
+  ],
+  "benefit": "As Channel Force, but affect every creature within 30 feet instead of just one",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Channel%20Force"
+  }
+}

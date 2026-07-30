@@ -1,0 +1,38 @@
+{
+  "id": "blinded-master",
+  "name": "Blinded Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "blinded-competence"
+    },
+    {
+      "type": "feat",
+      "id": "blinded-blade-style"
+    },
+    {
+      "type": "feat",
+      "id": "greater-blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "improved-blind-fight"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 15
+    }
+  ],
+  "benefit": "Improve your ability to pinpoint creatures with Blinded Blade Style",
+  "source": {
+    "title": "Blood of Shadows",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blinded%20Master"
+  }
+}

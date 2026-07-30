@@ -1,0 +1,17 @@
+{
+  "id": "sly-draw",
+  "name": "Sly Draw",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "quick-draw"
+    }
+  ],
+  "benefit": "Use Sleight of Hand in place of Bluff to feint",
+  "source": {
+    "title": "Adventurer's Armory",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sly%20Draw"
+  }
+}

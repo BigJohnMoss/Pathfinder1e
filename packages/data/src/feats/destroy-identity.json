@@ -1,0 +1,25 @@
+{
+  "id": "destroy-identity",
+  "name": "Destroy Identity",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Lamashtu"
+    }
+  ],
+  "benefit": "Deal Charisma damage and stagger target on a critical hit",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 210,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Destroy%20Identity"
+  }
+}

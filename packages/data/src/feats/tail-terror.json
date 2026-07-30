@@ -1,0 +1,21 @@
+{
+  "id": "tail-terror",
+  "name": "Tail Terror",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "Use your tail as a weapon, learn to use tail attachments",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 137,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tail%20Terror"
+  }
+}

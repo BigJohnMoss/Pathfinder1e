@@ -1,0 +1,17 @@
+{
+  "id": "taldan-conscript",
+  "name": "Taldan Conscript",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Taldan serf in service to a lord"
+    }
+  ],
+  "benefit": "+1 to damage when using a farm implement, +1 initiative when with other conscripts",
+  "source": {
+    "title": "Taldor, Echoes of Glory",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Taldan%20Conscript"
+  }
+}

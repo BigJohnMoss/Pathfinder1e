@@ -1,0 +1,21 @@
+{
+  "id": "marcher-lord-of-the-cerulean-abyss",
+  "name": "Marcher-Lord of the Cerulean Abyss",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fey creature type or Fey Obedience (Ragadahn)"
+    },
+    {
+      "type": "rule",
+      "description": "you must have carved your name and Ragadahn's holy symbol on the hide of a living dragon or outsider with either the aquatic or water subtype and a CR at least 2 higher than your level when you took the feat"
+    }
+  ],
+  "benefit": "Creatures you hit take a -2 penalty to CMB and CMD for one round",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Marcher-Lord%20of%20the%20Cerulean%20Abyss"
+  }
+}

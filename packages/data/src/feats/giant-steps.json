@@ -1,0 +1,21 @@
+{
+  "id": "giant-steps",
+  "name": "Giant Steps",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duergar"
+    },
+    {
+      "type": "rule",
+      "description": "slow and steady racial trait"
+    }
+  ],
+  "benefit": "Increase your speed when you increase your size",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 187,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Giant%20Steps"
+  }
+}

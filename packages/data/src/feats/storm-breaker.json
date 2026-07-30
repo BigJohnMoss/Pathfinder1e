@@ -1,0 +1,12 @@
+{
+  "id": "storm-breaker",
+  "name": "Storm Breaker",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "You are treated as 2 size categories larger for wind and current effects",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Storm%20Breaker"
+  }
+}

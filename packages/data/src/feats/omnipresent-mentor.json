@@ -1,0 +1,26 @@
+{
+  "id": "omnipresent-mentor",
+  "name": "Omnipresent Mentor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "inspiring-mentor"
+    },
+    {
+      "type": "rule",
+      "description": "inspire competence bardic performance"
+    }
+  ],
+  "benefit": "Inspire competence affects one ally for 24 hours",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Omnipresent%20Mentor"
+  }
+}

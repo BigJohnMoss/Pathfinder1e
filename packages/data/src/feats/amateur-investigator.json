@@ -1,0 +1,26 @@
+{
+  "id": "amateur-investigator",
+  "name": "Amateur Investigator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "1 rank in at least one Knowledge skill"
+    },
+    {
+      "type": "feature",
+      "id": "no-levels-in-a-class-that-has-the-inspiration"
+    }
+  ],
+  "benefit": "Gain a minor pool of inspiration for use with Knowledge, Linguistics, or Spellcraft checks",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Amateur%20Investigator"
+  }
+}

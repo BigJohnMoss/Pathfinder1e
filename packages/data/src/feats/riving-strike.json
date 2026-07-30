@@ -1,0 +1,21 @@
+{
+  "id": "riving-strike",
+  "name": "Riving Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "spell-access",
+      "id": "arcane-spells"
+    }
+  ],
+  "benefit": "Those damaged by your Arcane Strike take a penalty on saves against spells and spell-like abilities",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 155,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Riving%20Strike"
+  }
+}

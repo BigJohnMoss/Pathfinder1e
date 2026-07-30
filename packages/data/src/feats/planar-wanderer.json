@@ -1,0 +1,31 @@
+{
+  "id": "planar-wanderer",
+  "name": "Planar Wanderer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "cartogramancer"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (geography)",
+      "minimum": 10
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 10
+    },
+    {
+      "type": "spell-access",
+      "id": "greater-teleport-and-plane-shift"
+    }
+  ],
+  "benefit": "Arrive more accurately with plane shift",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Planar%20Wanderer"
+  }
+}

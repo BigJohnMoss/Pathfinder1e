@@ -1,0 +1,17 @@
+{
+  "id": "scorching-weapons",
+  "name": "Scorching Weapons",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ifrit"
+    }
+  ],
+  "benefit": "+2 save vs. fire/light spells, deal fire damage with weapons you wield",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 130,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scorching%20Weapons"
+  }
+}

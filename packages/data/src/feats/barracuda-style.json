@@ -1,0 +1,32 @@
+{
+  "id": "barracuda-style",
+  "name": "Barracuda Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 3
+    }
+  ],
+  "benefit": "You can make unarmed attacks underwater without penalty",
+  "source": {
+    "title": "Pathfinder #124: City in the Deep",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Barracuda%20Style"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "furious-spell",
+  "name": "Furious Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Spell deals more damage and can be cast while in a rage",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 134,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Furious%20Spell"
+  }
+}

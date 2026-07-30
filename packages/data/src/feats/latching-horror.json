@@ -1,0 +1,17 @@
+{
+  "id": "latching-horror",
+  "name": "Latching Horror",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Attach universal monster ability"
+    }
+  ],
+  "benefit": "A foe is shaken when you attach to it",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Latching%20Horror"
+  }
+}

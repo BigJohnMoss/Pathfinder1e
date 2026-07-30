@@ -1,0 +1,29 @@
+{
+  "id": "riptide-attack",
+  "name": "Riptide Attack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-drag"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Gozreh"
+    }
+  ],
+  "benefit": "Drag tripped foes as a swift action",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Riptide%20Attack"
+  }
+}

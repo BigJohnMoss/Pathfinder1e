@@ -1,0 +1,21 @@
+{
+  "id": "golden-league-tattoos",
+  "name": "Golden League Tattoos",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "associate"
+    },
+    {
+      "type": "rule",
+      "description": "Regional trait d with one of the Dragon Empires nations ( Pathfinder Player Companion: Dragon Empires Primer )"
+    }
+  ],
+  "benefit": "Take 10 on Intimidate checks against creatures able to see your tattoos.",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Golden%20League%20Tattoos"
+  }
+}

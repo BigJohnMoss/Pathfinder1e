@@ -1,0 +1,18 @@
+{
+  "id": "casting-conduit",
+  "name": "Casting Conduit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 1
+    }
+  ],
+  "benefit": "When casting a touch spell, adjacent ally can take minimum damage to make an identical attack",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Casting%20Conduit"
+  }
+}

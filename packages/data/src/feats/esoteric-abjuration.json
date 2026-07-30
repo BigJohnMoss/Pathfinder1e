@@ -1,0 +1,12 @@
+{
+  "id": "esoteric-abjuration",
+  "name": "Esoteric Abjuration",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your abjuration spells give the target a +1 competence bonus to a single saving throw for the duration of the spell",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Esoteric%20Abjuration"
+  }
+}

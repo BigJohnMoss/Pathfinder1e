@@ -1,0 +1,23 @@
+{
+  "id": "divine-protection",
+  "name": "Divine Protection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain a bonus equal to your Charisma bonus on a saving throw",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 144,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Divine%20Protection"
+  }
+}

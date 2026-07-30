@@ -1,0 +1,17 @@
+{
+  "id": "extended-scrying",
+  "name": "Extended Scrying",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "a-spell-of-the-scrying-subschool"
+    }
+  ],
+  "benefit": "Scrying spells have decreased cast times and increased durations",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extended%20Scrying"
+  }
+}

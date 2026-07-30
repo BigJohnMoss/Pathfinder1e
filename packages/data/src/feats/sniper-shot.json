@@ -1,0 +1,43 @@
+{
+  "id": "sniper-shot",
+  "name": "Sniper Shot",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "far-shot"
+    },
+    {
+      "type": "feat",
+      "id": "focused-shot"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "rule",
+      "description": "Kyonin affinity"
+    }
+  ],
+  "benefit": "Deal extra damage with ranged weapons based on distance",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 89,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sniper%20Shot"
+  }
+}

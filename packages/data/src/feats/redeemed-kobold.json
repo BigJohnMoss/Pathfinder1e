@@ -1,0 +1,21 @@
+{
+  "id": "redeemed-kobold",
+  "name": "Redeemed Kobold",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Good alignment"
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "Bonus to Diplomacy and channel energy",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Redeemed%20Kobold"
+  }
+}

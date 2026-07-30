@@ -1,0 +1,17 @@
+{
+  "id": "focused-outsider-expertise",
+  "name": "Focused Outsider Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-outsider"
+    }
+  ],
+  "benefit": "Ignore an amount of alignment-based damage reduction",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Outsider%20Expertise"
+  }
+}

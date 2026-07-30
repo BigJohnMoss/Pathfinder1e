@@ -1,0 +1,21 @@
+{
+  "id": "courage-in-a-bottle",
+  "name": "Courage in a Bottle",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bravery"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Cayden Cailean"
+    }
+  ],
+  "benefit": "Alcohol increases effects of your bravery class feature",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Courage%20in%20a%20Bottle"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "whispering-way-disciple",
+  "name": "Whispering Way Disciple",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "associate"
+    },
+    {
+      "type": "rule",
+      "description": "(Whispering Way)"
+    }
+  ],
+  "benefit": "Get access to unholy magic from the Whispering Way",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Whispering%20Way%20Disciple"
+  }
+}

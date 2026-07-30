@@ -1,0 +1,17 @@
+{
+  "id": "sleep-venom",
+  "name": "Sleep Venom",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Vishkanya"
+    }
+  ],
+  "benefit": "Alter your poison to put enemies to sleep",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sleep%20Venom"
+  }
+}

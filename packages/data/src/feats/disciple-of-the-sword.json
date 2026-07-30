@@ -1,0 +1,29 @@
+{
+  "id": "disciple-of-the-sword",
+  "name": "Disciple of the Sword",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(longsword)"
+    },
+    {
+      "type": "rule",
+      "description": "cleric or inquisitor level 4th"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Iomedae"
+    }
+  ],
+  "benefit": "Gain benefits of Weapon Specialization (longsword)",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 210,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Disciple%20of%20the%20Sword"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "acadamae-graduate",
+  "name": "Acadamae Graduate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Specialist wizard 1st; cannot have conjuration as a forbidden school"
+    }
+  ],
+  "benefit": "Cast conjuration (summoning) spells faster",
+  "source": {
+    "title": "Curse of the Crimson Throne Player's Guide",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Acadamae%20Graduate"
+  }
+}

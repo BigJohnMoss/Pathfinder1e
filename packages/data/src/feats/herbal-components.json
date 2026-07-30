@@ -1,0 +1,17 @@
+{
+  "id": "herbal-components",
+  "name": "Herbal Components",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "eschew-materials"
+    }
+  ],
+  "benefit": "Use herbalism to replace some of the cheaper spell components",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Herbal%20Components"
+  }
+}

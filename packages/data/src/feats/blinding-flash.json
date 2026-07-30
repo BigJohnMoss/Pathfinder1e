@@ -1,0 +1,22 @@
+{
+  "id": "blinding-flash",
+  "name": "Blinding Flash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    }
+  ],
+  "benefit": "Angle the light's reflection into your opponent's eyes to dazzle them.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blinding%20Flash"
+  }
+}

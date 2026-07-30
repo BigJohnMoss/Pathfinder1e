@@ -1,0 +1,17 @@
+{
+  "id": "subtle-devices",
+  "name": "Subtle Devices",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stealthy"
+    }
+  ],
+  "benefit": "Use Stealth to conceal spell-trigger items during use",
+  "source": {
+    "title": "Heroes of the Streets",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Subtle%20Devices"
+  }
+}

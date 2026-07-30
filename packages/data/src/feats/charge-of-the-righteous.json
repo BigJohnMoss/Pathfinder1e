@@ -1,0 +1,21 @@
+{
+  "id": "charge-of-the-righteous",
+  "name": "Charge of the Righteous",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "any good alignment"
+    }
+  ],
+  "benefit": "When charging an undead creature, you don’t take the –2 penalty to AC",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Charge%20of%20the%20Righteous"
+  }
+}

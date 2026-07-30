@@ -1,0 +1,17 @@
+{
+  "id": "mountaineer",
+  "name": "Mountaineer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-terrain-mountains"
+    }
+  ],
+  "benefit": "Gain +2 on Climb checks and +4 on saves to avoid high altitude effects; you acclimate to altitudes more quickly",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 115,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mountaineer"
+  }
+}

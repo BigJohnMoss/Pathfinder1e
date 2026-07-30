@@ -1,0 +1,22 @@
+{
+  "id": "psychic-adept",
+  "name": "Psychic Adept",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 11
+    },
+    {
+      "type": "feat",
+      "id": "psychic-sensitivity"
+    }
+  ],
+  "benefit": "Cast a psychic knack 3/day as a spell-like ability",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 137,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychic%20Adept"
+  }
+}

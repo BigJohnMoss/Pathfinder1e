@@ -1,0 +1,25 @@
+{
+  "id": "jinxed-spell",
+  "name": "Jinxed Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any two metamagic feats"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Combine your jinxes with spells",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Jinxed%20Spell"
+  }
+}

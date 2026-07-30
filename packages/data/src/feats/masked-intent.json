@@ -1,0 +1,17 @@
+{
+  "id": "masked-intent",
+  "name": "Masked Intent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "nameless-one"
+    }
+  ],
+  "benefit": "Your intentions become more difficult to read",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Masked%20Intent"
+  }
+}

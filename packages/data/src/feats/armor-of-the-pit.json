@@ -1,0 +1,21 @@
+{
+  "id": "armor-of-the-pit",
+  "name": "Armor of the Pit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Tie"
+    }
+  ],
+  "benefit": "+2 natural armor bonus or resistance 5 to two energy types",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 173,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Armor%20of%20the%20Pit"
+  }
+}

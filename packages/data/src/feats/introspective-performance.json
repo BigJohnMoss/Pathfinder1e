@@ -1,0 +1,22 @@
+{
+  "id": "introspective-performance",
+  "name": "Introspective Performance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Perform (any)",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "bardic performance or raging song class feature"
+    }
+  ],
+  "benefit": "Increase your effective level when you are the only creature benefiting from a performance",
+  "source": {
+    "title": "Legacy of the First World",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Introspective%20Performance"
+  }
+}

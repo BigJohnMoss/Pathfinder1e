@@ -1,0 +1,12 @@
+{
+  "id": "respectful-prey",
+  "name": "Respectful Prey",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Give a creature food to make it friendly",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Respectful%20Prey"
+  }
+}

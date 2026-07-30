@@ -1,0 +1,17 @@
+{
+  "id": "joined-wings",
+  "name": "Joined Wings",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fervor or lay on hands class feature"
+    }
+  ],
+  "benefit": "Use fervor or lay on hands on allies as a swift action",
+  "source": {
+    "title": "Distant Realms",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Joined%20Wings"
+  }
+}

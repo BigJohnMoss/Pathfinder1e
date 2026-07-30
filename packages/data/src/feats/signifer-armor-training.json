@@ -1,0 +1,33 @@
+{
+  "id": "signifer-armor-training",
+  "name": "Signifer Armor Training",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-armor-mastery"
+    },
+    {
+      "type": "feat",
+      "id": "arcane-armor-training"
+    },
+    {
+      "type": "rule",
+      "description": "Heavy Armor Proficiency"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "must swear allegiance to a single Hellknight order"
+    }
+  ],
+  "benefit": "Reduce the arcane spell failure chance for your Hellknight armor by 30%",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 62,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Signifer%20Armor%20Training"
+  }
+}

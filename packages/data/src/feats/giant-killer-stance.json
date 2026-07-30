@@ -1,0 +1,17 @@
+{
+  "id": "giant-killer-stance",
+  "name": "Giant-Killer Stance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Treat reach weapons as if they had the brace quality against larger opponents",
+  "source": {
+    "title": "Giant Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Giant-Killer%20Stance"
+  }
+}

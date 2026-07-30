@@ -1,0 +1,17 @@
+{
+  "id": "improved-dirge-of-doom",
+  "name": "Improved Dirge of Doom",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to perform dirge of doom"
+    }
+  ],
+  "benefit": "Dirge of doom expands to 60 feet and can cause fear up to frightened",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 150,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Dirge%20of%20Doom"
+  }
+}

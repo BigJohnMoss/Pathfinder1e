@@ -1,0 +1,26 @@
+{
+  "id": "primal-strike",
+  "name": "Primal Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Confuse your target on a successful unarmed strike",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Primal%20Strike"
+  }
+}

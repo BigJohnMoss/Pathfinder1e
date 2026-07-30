@@ -1,0 +1,17 @@
+{
+  "id": "battle-planner",
+  "name": "Battle Planner",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "inspire-action"
+    }
+  ],
+  "benefit": "Affect more allies with inspire action",
+  "source": {
+    "title": "Chronicle of Legends",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Battle%20Planner"
+  }
+}

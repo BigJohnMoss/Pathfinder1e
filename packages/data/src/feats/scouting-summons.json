@@ -1,0 +1,25 @@
+{
+  "id": "scouting-summons",
+  "name": "Scouting Summons",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(conjuration)"
+    },
+    {
+      "type": "spell-access",
+      "id": "magic-jar"
+    }
+  ],
+  "benefit": "Possess a summoned creature",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scouting%20Summons"
+  }
+}

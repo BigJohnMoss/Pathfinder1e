@@ -1,0 +1,22 @@
+{
+  "id": "diplomatic-ruse",
+  "name": "Diplomatic Ruse",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "human (Keleshite)"
+    }
+  ],
+  "benefit": "Take a free action as part of your initiative check",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 205,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Diplomatic%20Ruse"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "darting-viper",
+  "name": "Darting Viper",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with the dwarven dorn-dergar"
+    }
+  ],
+  "benefit": "Switch between reach and normal with the dorn-dergar as a swift action",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Darting%20Viper"
+  }
+}

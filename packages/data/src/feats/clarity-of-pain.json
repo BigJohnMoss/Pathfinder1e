@@ -1,0 +1,26 @@
+{
+  "id": "clarity-of-pain",
+  "name": "Clarity of Pain",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-iron-will"
+    },
+    {
+      "type": "feat",
+      "id": "iron-will"
+    }
+  ],
+  "benefit": "Damage yourself to fight off a charm or compulsion",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 83,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Clarity%20of%20Pain"
+  }
+}

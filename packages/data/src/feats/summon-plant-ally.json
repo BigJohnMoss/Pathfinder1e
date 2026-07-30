@@ -1,0 +1,22 @@
+{
+  "id": "summon-plant-ally",
+  "name": "Summon Plant Ally",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 1
+    },
+    {
+      "type": "spell-access",
+      "id": "summon-natures-ally-spells"
+    }
+  ],
+  "benefit": "Summon new plant creatures when using summon nature’s ally",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Summon%20Plant%20Ally"
+  }
+}

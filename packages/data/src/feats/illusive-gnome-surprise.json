@@ -1,0 +1,38 @@
+{
+  "id": "illusive-gnome-surprise",
+  "name": "Illusive Gnome Surprise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "gnome-weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "ARG"
+    },
+    {
+      "type": "feat",
+      "id": "illusive-gnome-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-feint"
+    }
+  ],
+  "benefit": "+2 bonus on dirty tricks and Bluff checks to feint; additional benefits with Illusive Gnome Style",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Illusive%20Gnome%20Surprise"
+  }
+}

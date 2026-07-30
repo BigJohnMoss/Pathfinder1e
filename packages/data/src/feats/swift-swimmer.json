@@ -1,0 +1,21 @@
+{
+  "id": "swift-swimmer",
+  "name": "Swift Swimmer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Lizardfolk"
+    },
+    {
+      "type": "rule",
+      "description": "swim speed"
+    }
+  ],
+  "benefit": "+15 ft. to your swim speed",
+  "source": {
+    "title": "Monster Codex",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swift%20Swimmer"
+  }
+}

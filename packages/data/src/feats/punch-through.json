@@ -1,0 +1,17 @@
+{
+  "id": "punch-through",
+  "name": "Punch Through",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Help your allies ignore a target’s damage reduction.",
+  "source": {
+    "title": "Demon Hunter's Handbook",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Punch%20Through"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "quah-bond",
+  "name": "Quah Bond",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "totem-spirit"
+    },
+    {
+      "type": "rule",
+      "description": "( The Inner Sea World Guide 289)"
+    },
+    {
+      "type": "rule",
+      "description": "human (Shoanti)"
+    }
+  ],
+  "benefit": "Double benefits granted by your Totem Spirit feat when an ally from the same quah with this feat is within 30 feet",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 208,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quah%20Bond"
+  }
+}

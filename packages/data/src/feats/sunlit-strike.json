@@ -1,0 +1,21 @@
+{
+  "id": "sunlit-strike",
+  "name": "Sunlit Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "rule",
+      "description": "able to prepare or cast daylight"
+    }
+  ],
+  "benefit": "Deal more damage to enemies vulnerable to light.",
+  "source": {
+    "title": "Blood of Angels",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sunlit%20Strike"
+  }
+}

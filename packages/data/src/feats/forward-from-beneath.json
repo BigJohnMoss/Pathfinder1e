@@ -1,0 +1,25 @@
+{
+  "id": "forward-from-beneath",
+  "name": "Forward from Beneath",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Be a member of House Kastner"
+    },
+    {
+      "type": "rule",
+      "description": "be a good-aligned member of a family or organization whose secret evil has been publicly revealed"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Dishonored Family or Betrayal backgrounds"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on Disguise checks and the ability to fake an evil alignment for detection spells",
+  "source": {
+    "title": "Pathfinder #131: The Reaper's Right Hand",
+    "page": 78,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Forward%20from%20Beneath"
+  }
+}

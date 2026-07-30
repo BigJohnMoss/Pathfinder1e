@@ -1,0 +1,35 @@
+{
+  "id": "wolf-savage",
+  "name": "Wolf Savage",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "wolf-style"
+    },
+    {
+      "type": "feat",
+      "id": "wolf-trip"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Do ability damage or fatigue prone foe when you deal at least 10 points of damage to it with a natural weapon or unarmed strike",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 120,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wolf%20Savage"
+  }
+}

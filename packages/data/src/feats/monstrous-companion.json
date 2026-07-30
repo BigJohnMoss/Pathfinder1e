@@ -1,0 +1,26 @@
+{
+  "id": "monstrous-companion",
+  "name": "Monstrous Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Handle Animal",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "class-feature-that-functions-as-the-druid-animal-companion-ability-including-animal-companion-divine-bond-mount-hunters-bond-animal-companion-natures-bond-animal-companion-and-the-mount"
+    },
+    {
+      "type": "rule",
+      "description": ") with an effective druid level of 7"
+    }
+  ],
+  "benefit": "Gain an exotic monstrous cohort",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Monstrous%20Companion"
+  }
+}

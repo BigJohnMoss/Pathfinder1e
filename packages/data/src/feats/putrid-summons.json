@@ -1,0 +1,17 @@
+{
+  "id": "putrid-summons",
+  "name": "Putrid Summons",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Spell Focus (conjuration); ability to cast summon monster or summon nature’s ally"
+    }
+  ],
+  "benefit": "Summon a single weaker creature that has a horrific stench",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 91,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Putrid%20Summons"
+  }
+}

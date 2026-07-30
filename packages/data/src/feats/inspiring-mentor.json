@@ -1,0 +1,22 @@
+{
+  "id": "inspiring-mentor",
+  "name": "Inspiring Mentor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "inspire competence bardic performance"
+    }
+  ],
+  "benefit": "Inspire competence affects allies within 30 feet",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inspiring%20Mentor"
+  }
+}

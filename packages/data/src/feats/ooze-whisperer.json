@@ -1,0 +1,17 @@
+{
+  "id": "ooze-whisperer",
+  "name": "Ooze Whisperer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "wild-empathy"
+    }
+  ],
+  "benefit": "Learn to use your magic and empathy to influence oozes",
+  "source": {
+    "title": "Dungeon Denizens Revisited",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ooze%20Whisperer"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "twisted-flesh",
+  "name": "Twisted Flesh",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 15
+    },
+    {
+      "type": "rule",
+      "description": "Worldwound affinity"
+    }
+  ],
+  "benefit": "+1 natural armor, resistance 2 to cold, electricity, fire, and +1 intimidate",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 151,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Twisted%20Flesh"
+  }
+}

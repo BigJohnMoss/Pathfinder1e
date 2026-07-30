@@ -1,0 +1,21 @@
+{
+  "id": "wasp-familiar",
+  "name": "Wasp Familiar",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Chaotic neutral alignment"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Calistria"
+    }
+  ],
+  "benefit": "Gain a wasp familiar loyal to Calistria",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wasp%20Familiar"
+  }
+}

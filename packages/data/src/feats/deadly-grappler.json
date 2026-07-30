@@ -1,0 +1,26 @@
+{
+  "id": "deadly-grappler",
+  "name": "Deadly Grappler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Deal more damage with attacks during a grapple",
+  "source": {
+    "title": "Melee Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deadly%20Grappler"
+  }
+}

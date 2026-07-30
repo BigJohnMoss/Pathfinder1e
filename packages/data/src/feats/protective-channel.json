@@ -1,0 +1,21 @@
+{
+  "id": "protective-channel",
+  "name": "Protective Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 7d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Iomedae"
+    }
+  ],
+  "benefit": "Affect those healed by your channeled energy with protection from evil",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Protective%20Channel"
+  }
+}

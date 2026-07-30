@@ -1,0 +1,23 @@
+{
+  "id": "encouraging-spell",
+  "name": "Encouraging Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Increase a granted moral bonus",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Encouraging%20Spell"
+  }
+}

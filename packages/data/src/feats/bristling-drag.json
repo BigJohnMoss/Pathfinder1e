@@ -1,0 +1,30 @@
+{
+  "id": "bristling-drag",
+  "name": "Bristling Drag",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-drag"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Deal additional damage to a foe when you drag it through difficult terrain",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 108,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bristling%20Drag"
+  }
+}

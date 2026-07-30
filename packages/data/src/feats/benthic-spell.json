@@ -1,0 +1,12 @@
+{
+  "id": "benthic-spell",
+  "name": "Benthic Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Modify a spell to inflict damage with pressurized water",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Benthic%20Spell"
+  }
+}

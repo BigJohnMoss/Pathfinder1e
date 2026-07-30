@@ -1,0 +1,41 @@
+{
+  "id": "empty-quiver-flurry",
+  "name": "Empty Quiver Flurry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "empty-quiver-flexibility"
+    },
+    {
+      "type": "feat",
+      "id": "empty-quiver-style"
+    },
+    {
+      "type": "feat",
+      "id": "rapid-shot"
+    },
+    {
+      "type": "feat",
+      "id": "stabbing-shot"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    }
+  ],
+  "benefit": "Use ranged weaons to make melee attacks and avoid attacks of opportunity",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Empty%20Quiver%20Flurry"
+  }
+}

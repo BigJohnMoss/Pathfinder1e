@@ -1,0 +1,18 @@
+{
+  "id": "callous-casting",
+  "name": "Callous Casting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Include allies in the area of your spells to dishearten your enemies",
+  "source": {
+    "title": "Champions of Corruption",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Callous%20Casting"
+  }
+}

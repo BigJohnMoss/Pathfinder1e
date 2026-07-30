@@ -1,0 +1,12 @@
+{
+  "id": "bilge-rat",
+  "name": "Bilge Rat",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Use an eyepatch to mitigate being dazzled of blinded",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bilge%20Rat"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "expansive-trap-ability",
+  "name": "Expansive Trap Ability",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to use ranger traps ( Pathfinder RPG Ultimate Magic 64) or land mines ( Pathfinder Player Companion: Dungeoneer’s Handbook 23)"
+    }
+  ],
+  "benefit": "Expand your ranger traps and land mines to a larger area",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expansive%20Trap%20Ability"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "bounteous-body",
+  "name": "Bounteous Body",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "grapevine or natural magic racial trait"
+    }
+  ],
+  "benefit": "Create fruit that mimics the effects of lesser restoration",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bounteous%20Body"
+  }
+}

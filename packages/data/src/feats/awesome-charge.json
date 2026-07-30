@@ -1,0 +1,30 @@
+{
+  "id": "awesome-charge",
+  "name": "Awesome Charge",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 25
+    },
+    {
+      "type": "feat",
+      "id": "awesome-blow"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    }
+  ],
+  "benefit": "Use awesome blow as part of a successful charge attack",
+  "source": {
+    "title": "Monster Codex",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Awesome%20Charge"
+  }
+}

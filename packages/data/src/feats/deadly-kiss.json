@@ -1,0 +1,21 @@
+{
+  "id": "deadly-kiss",
+  "name": "Deadly Kiss",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Toxic racial trait ARG"
+    },
+    {
+      "type": "rule",
+      "description": "vishkanya ARG"
+    }
+  ],
+  "benefit": "Change your racial venom into a contact poison",
+  "source": {
+    "title": "Villain Codex",
+    "page": 224,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deadly%20Kiss"
+  }
+}

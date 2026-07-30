@@ -1,0 +1,22 @@
+{
+  "id": "bat-shape",
+  "name": "Bat Shape",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "werebat-kin"
+    }
+  ],
+  "benefit": "Change shape into a full bat",
+  "source": {
+    "title": "Blood of the Moon",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bat%20Shape"
+  }
+}

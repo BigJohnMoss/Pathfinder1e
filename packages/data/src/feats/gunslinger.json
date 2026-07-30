@@ -1,0 +1,29 @@
+{
+  "id": "gunslinger",
+  "name": "Gunslinger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(any firearm)"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with any firearm"
+    }
+  ],
+  "benefit": "Stop provoking attacks of opportunity with firearms",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gunslinger"
+  }
+}

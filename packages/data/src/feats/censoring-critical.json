@@ -1,0 +1,21 @@
+{
+  "id": "censoring-critical",
+  "name": "Censoring Critical",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "critical-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 15
+    }
+  ],
+  "benefit": "Critical hit silences target",
+  "source": {
+    "title": "Path of the Hellknight",
+    "page": 45,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Censoring%20Critical"
+  }
+}

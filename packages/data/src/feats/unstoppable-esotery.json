@@ -1,0 +1,12 @@
+{
+  "id": "unstoppable-esotery",
+  "name": "Unstoppable Esotery",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your spells that use esoteric material components are harder to stop or remove",
+  "source": {
+    "title": "Pathfinder Unchained",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unstoppable%20Esotery"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "channel-endurance",
+  "name": "Channel Endurance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel positive energy 3d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Gozreh"
+    }
+  ],
+  "benefit": "Affect those healed by your channeled energy with endure elements",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Channel%20Endurance"
+  }
+}

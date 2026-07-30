@@ -1,0 +1,17 @@
+{
+  "id": "nerve-racking-negotiator",
+  "name": "Nerve-Racking Negotiator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "persuasive"
+    }
+  ],
+  "benefit": "Target of Intimidate doesn't turn against you later",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Nerve-Racking%20Negotiator"
+  }
+}

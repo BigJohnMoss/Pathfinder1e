@@ -1,0 +1,37 @@
+{
+  "id": "lantern-glare",
+  "name": "Lantern Glare",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "lantern-light"
+    },
+    {
+      "type": "feat",
+      "id": "lantern-style"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "rule",
+      "description": "good or lawful alignment"
+    },
+    {
+      "type": "rule",
+      "description": "caster level 11th or monk level 11th"
+    }
+  ],
+  "benefit": "Creatures you attack with Lantern Style are shaken",
+  "source": {
+    "title": "Distant Realms",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lantern%20Glare"
+  }
+}

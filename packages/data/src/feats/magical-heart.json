@@ -1,0 +1,25 @@
+{
+  "id": "magical-heart",
+  "name": "Magical Heart",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "wyrwood"
+    }
+  ],
+  "benefit": "Gain temp hp when you use Arcane Strike on your unarmed strikes",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Magical%20Heart"
+  }
+}

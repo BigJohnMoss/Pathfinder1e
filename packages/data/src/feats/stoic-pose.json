@@ -1,0 +1,17 @@
+{
+  "id": "stoic-pose",
+  "name": "Stoic Pose",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Svirfneblin"
+    }
+  ],
+  "benefit": "Conceal yourself to appear as a small pile of rocks",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 205,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stoic%20Pose"
+  }
+}

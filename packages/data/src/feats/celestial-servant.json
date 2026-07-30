@@ -1,0 +1,29 @@
+{
+  "id": "celestial-servant",
+  "name": "Celestial Servant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Aasimar"
+    },
+    {
+      "type": "rule",
+      "description": "animal companion"
+    },
+    {
+      "type": "rule",
+      "description": "familiar"
+    },
+    {
+      "type": "rule",
+      "description": "or mount class feature"
+    }
+  ],
+  "benefit": "Enhance your companion with the celestial template",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Celestial%20Servant"
+  }
+}

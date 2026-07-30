@@ -1,0 +1,12 @@
+{
+  "id": "conditional-spell",
+  "name": "Conditional Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Apply conditional favor to a spell you cast",
+  "source": {
+    "title": "Healer's Handbook",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Conditional%20Spell"
+  }
+}

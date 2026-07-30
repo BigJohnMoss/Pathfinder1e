@@ -1,0 +1,35 @@
+{
+  "id": "versatile-summon-natures-ally",
+  "name": "Versatile Summon Nature's Ally",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "augment-summoning"
+    },
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(conjuration)"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Apply new templates to your summoned creatures",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Versatile%20Summon%20Nature's%20Ally"
+  }
+}

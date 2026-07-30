@@ -1,0 +1,17 @@
+{
+  "id": "vestigial-head",
+  "name": "Vestigial Head",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ogre"
+    }
+  ],
+  "benefit": "A stunted vestigal head helps by taking some Will save effects that would otherwise have targeted you",
+  "source": {
+    "title": "Monster Codex",
+    "page": 153,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vestigial%20Head"
+  }
+}

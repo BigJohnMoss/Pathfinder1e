@@ -1,0 +1,17 @@
+{
+  "id": "concilator",
+  "name": "Concilator",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must have successfully requested that the opposing sides of a violent encounter pause for parley"
+    }
+  ],
+  "benefit": "You can make a Diplomacy check to parley with a hostile enemy",
+  "source": {
+    "title": "Spymaster's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Concilator"
+  }
+}

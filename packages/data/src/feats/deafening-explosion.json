@@ -1,0 +1,21 @@
+{
+  "id": "deafening-explosion",
+  "name": "Deafening Explosion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bomb"
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "Reduce bomb damage to deafen those hit",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deafening%20Explosion"
+  }
+}

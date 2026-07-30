@@ -1,0 +1,38 @@
+{
+  "id": "upsetting-vengeance",
+  "name": "Upsetting Vengeance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "improved-shield-bash"
+    },
+    {
+      "type": "feat",
+      "id": "upsetting-shield-style"
+    },
+    {
+      "type": "feat",
+      "id": "upsetting-strike"
+    },
+    {
+      "type": "rule",
+      "description": "proficiency with bucklers"
+    }
+  ],
+  "benefit": "Use Upsetting Strike against foes attacking your allies",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Upsetting%20Vengeance"
+  }
+}

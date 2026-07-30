@@ -1,0 +1,21 @@
+{
+  "id": "icy-stare",
+  "name": "Icy Stare",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "born-of-frost"
+    },
+    {
+      "type": "rule",
+      "description": "frost giant"
+    }
+  ],
+  "benefit": "Your stare can deal cold damage",
+  "source": {
+    "title": "Monster Codex",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Icy%20Stare"
+  }
+}

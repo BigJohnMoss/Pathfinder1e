@@ -1,0 +1,38 @@
+{
+  "id": "grabbing-master",
+  "name": "Grabbing Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "grabbing-drag"
+    },
+    {
+      "type": "feat",
+      "id": "grabbing-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 12
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "class-level",
+      "classId": "brawler",
+      "minimum": 8
+    },
+    {
+      "type": "rule",
+      "description": "or monk level 8th"
+    }
+  ],
+  "benefit": "Grab two foes instead of just one",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 148,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Grabbing%20Master"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "devilish-pride",
+  "name": "Devilish Pride",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Asmodeus"
+    }
+  ],
+  "benefit": "Roll twice and take the better result on saves against the compulsions and charms of non-Asmodeans",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 210,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Devilish%20Pride"
+  }
+}

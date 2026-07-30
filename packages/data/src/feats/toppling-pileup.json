@@ -1,0 +1,26 @@
+{
+  "id": "toppling-pileup",
+  "name": "Toppling Pileup",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "improved-trip"
+    }
+  ],
+  "benefit": "Make an additional trip maneuver if the first one is successful",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Toppling%20Pileup"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "profits-of-kalistrade",
+  "name": "Profits of Kalistrade",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "Druma affinity"
+    }
+  ],
+  "benefit": "Gain a unique resource pool to access",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Profits%20of%20Kalistrade"
+  }
+}

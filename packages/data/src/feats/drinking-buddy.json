@@ -1,0 +1,12 @@
+{
+  "id": "drinking-buddy",
+  "name": "Drinking Buddy",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "If you and your ally are drunk, you can reroll any d20 roll once per day",
+  "source": {
+    "title": "Inner Sea Taverns",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Drinking%20Buddy"
+  }
+}

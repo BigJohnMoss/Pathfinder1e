@@ -1,0 +1,30 @@
+{
+  "id": "charging-stag-style",
+  "name": "Charging Stag Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    }
+  ],
+  "benefit": "Charge through difficult terrain and allied spaces, make a turn while charging",
+  "source": {
+    "title": "Heroes of the Wild",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Charging%20Stag%20Style"
+  }
+}

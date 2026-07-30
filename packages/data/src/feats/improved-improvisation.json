@@ -1,0 +1,30 @@
+{
+  "id": "improved-improvisation",
+  "name": "Improved Improvisation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "fast-learner"
+    },
+    {
+      "type": "feat",
+      "id": "improvisation"
+    },
+    {
+      "type": "rule",
+      "description": "human"
+    }
+  ],
+  "benefit": "Halve nonproficiency penalty, gain +4 bonus when using Improvisation instead of +2",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 77,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Improvisation"
+  }
+}

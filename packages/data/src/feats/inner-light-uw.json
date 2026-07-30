@@ -1,0 +1,22 @@
+{
+  "id": "inner-light-uw",
+  "name": "Inner Light (UW)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "ghoran"
+    }
+  ],
+  "benefit": "Gain daylight 1/day",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inner%20Light%20(UW)"
+  }
+}

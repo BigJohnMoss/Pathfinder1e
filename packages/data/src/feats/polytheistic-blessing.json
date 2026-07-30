@@ -1,0 +1,22 @@
+{
+  "id": "polytheistic-blessing",
+  "name": "Polytheistic Blessing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "must worship a pantheon"
+    }
+  ],
+  "benefit": "Gain a small bit of divine power by worshipping a pantheon",
+  "source": {
+    "title": "Tombs of Golarion",
+    "page": 63,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Polytheistic%20Blessing"
+  }
+}

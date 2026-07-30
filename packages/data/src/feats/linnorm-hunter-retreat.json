@@ -1,0 +1,39 @@
+{
+  "id": "linnorm-hunter-retreat",
+  "name": "Linnorm Hunter Retreat",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "linnorm-hunter-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "must have or be an animal companion"
+    }
+  ],
+  "benefit": "Move 5 ft. as an immediate action when your ally attacks",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Linnorm%20Hunter%20Retreat"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "take-this",
+  "name": "Take This",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "You can quickly take items from a fallen allies body",
+  "source": {
+    "title": "Antihero's Handbook",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Take%20This"
+  }
+}

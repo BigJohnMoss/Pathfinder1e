@@ -1,0 +1,22 @@
+{
+  "id": "dragonslayer",
+  "name": "Dragonslayer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 4
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Forgo critical hit damage in order to prevent the enemy from using its breath weapon",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Dragonslayer"
+  }
+}

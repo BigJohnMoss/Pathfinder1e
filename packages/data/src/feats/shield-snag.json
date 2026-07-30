@@ -1,0 +1,29 @@
+{
+  "id": "shield-snag",
+  "name": "Shield Snag",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-shield-bash"
+    },
+    {
+      "type": "feat",
+      "id": "shield-proficiency"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "bab",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Disarm enemies with your shield and use it to stabilize yourself",
+  "source": {
+    "title": "Magical Marketplace",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shield%20Snag"
+  }
+}

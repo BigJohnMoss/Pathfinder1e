@@ -1,0 +1,34 @@
+{
+  "id": "heroic-interposition",
+  "name": "Heroic Interposition",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-initiative"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of an empyreal lord"
+    }
+  ],
+  "benefit": "Move your speed as an immediate action to move next to an enemy attacking an ally",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 212,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Heroic%20Interposition"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "scurrying-swarmer",
+  "name": "Scurrying Swarmer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ratfolk"
+    },
+    {
+      "type": "rule",
+      "description": "swarming racial trait"
+    }
+  ],
+  "benefit": "Use allies with swarming and teamwork feats",
+  "source": {
+    "title": "Dirty Tactics Toolbox",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scurrying%20Swarmer"
+  }
+}

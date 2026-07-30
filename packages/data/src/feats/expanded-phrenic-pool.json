@@ -1,0 +1,17 @@
+{
+  "id": "expanded-phrenic-pool",
+  "name": "Expanded Phrenic Pool",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "phrenic-pool"
+    }
+  ],
+  "benefit": "Gain 2 additional phrenic pool points",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Phrenic%20Pool"
+  }
+}

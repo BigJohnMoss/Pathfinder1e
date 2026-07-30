@@ -1,0 +1,18 @@
+{
+  "id": "false-trail",
+  "name": "False Trail",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Survival",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Create false trail in the wild to deceive creatures tracking you",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=False%20Trail"
+  }
+}

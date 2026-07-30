@@ -1,0 +1,22 @@
+{
+  "id": "mindful-meditation",
+  "name": "Mindful Meditation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 11
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    }
+  ],
+  "benefit": "Gain a bonus on Will saving throws vs charm, compuslsion, emotion, and fear effects",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mindful%20Meditation"
+  }
+}

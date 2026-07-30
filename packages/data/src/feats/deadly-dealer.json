@@ -1,0 +1,22 @@
+{
+  "id": "deadly-dealer",
+  "name": "Deadly Dealer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "arcane-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Sleight of Hand",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Use a card as if it were a weapon",
+  "source": {
+    "title": "The Harrow Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deadly%20Dealer"
+  }
+}

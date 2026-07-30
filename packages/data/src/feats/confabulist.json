@@ -1,0 +1,23 @@
+{
+  "id": "confabulist",
+  "name": "Confabulist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 9
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Follow a failed lie with another lie",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Confabulist"
+  }
+}

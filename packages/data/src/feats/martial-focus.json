@@ -1,0 +1,17 @@
+{
+  "id": "martial-focus",
+  "name": "Martial Focus",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "+1 damage with a weapon group; access Weapon Mastery for that group",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Martial%20Focus"
+  }
+}

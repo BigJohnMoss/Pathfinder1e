@@ -1,0 +1,26 @@
+{
+  "id": "ferocious-resolve",
+  "name": "Ferocious Resolve",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "half-orc"
+    },
+    {
+      "type": "rule",
+      "description": "orc ferocity racial trait"
+    }
+  ],
+  "benefit": "Gain the Ferocity ability",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ferocious%20Resolve"
+  }
+}

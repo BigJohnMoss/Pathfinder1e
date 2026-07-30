@@ -1,0 +1,22 @@
+{
+  "id": "berserkers-cry",
+  "name": "Berserker's Cry",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Linnorm Kings affinity"
+    }
+  ],
+  "benefit": "Improve ally morale with a scream of fury",
+  "source": {
+    "title": "Pathfinder Campaign Setting",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Berserker's%20Cry"
+  }
+}

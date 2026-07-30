@@ -1,0 +1,26 @@
+{
+  "id": "worst-case-jinx",
+  "name": "Worst Case Jinx",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (arcana)",
+      "minimum": 5
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Hinder the effects of beneficial spells with your jinx",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Worst%20Case%20Jinx"
+  }
+}

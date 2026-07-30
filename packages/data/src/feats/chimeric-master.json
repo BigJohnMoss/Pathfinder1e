@@ -1,0 +1,25 @@
+{
+  "id": "chimeric-master",
+  "name": "Chimeric Master",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "chimeric-adept"
+    },
+    {
+      "type": "feature",
+      "id": "greater-chimeric-aspect"
+    },
+    {
+      "type": "feature",
+      "id": "wild-shape"
+    }
+  ],
+  "benefit": "Gain some benefits from the major form of a second aspect",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chimeric%20Master"
+  }
+}

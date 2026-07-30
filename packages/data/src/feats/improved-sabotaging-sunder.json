@@ -1,0 +1,35 @@
+{
+  "id": "improved-sabotaging-sunder",
+  "name": "Improved Sabotaging Sunder",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-sunder"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "sabotaging-sunder"
+    },
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Use Sabotaging Sunder on more objects and without provoking attacks of opportunity",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Sabotaging%20Sunder"
+  }
+}

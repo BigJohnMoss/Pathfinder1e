@@ -1,0 +1,17 @@
+{
+  "id": "aversion-tolerance",
+  "name": "Aversion Tolerance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Vampire"
+    }
+  ],
+  "benefit": "+2 bonus on saves to resist aversions",
+  "source": {
+    "title": "Monster Codex",
+    "page": 237,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aversion%20Tolerance"
+  }
+}

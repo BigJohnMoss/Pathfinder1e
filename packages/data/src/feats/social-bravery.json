@@ -1,0 +1,22 @@
+{
+  "id": "social-bravery",
+  "name": "Social Bravery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "feature",
+      "id": "bravery"
+    }
+  ],
+  "benefit": "Apply bravery against various social acts",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 92,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Social%20Bravery"
+  }
+}

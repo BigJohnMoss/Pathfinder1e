@@ -1,0 +1,21 @@
+{
+  "id": "stick-fighting-counter",
+  "name": "Stick-Fighting Counter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stick-fighting-style"
+    },
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "One opponent who misses you provokes an attack of opportunity",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stick-Fighting%20Counter"
+  }
+}

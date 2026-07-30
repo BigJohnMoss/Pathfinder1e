@@ -1,0 +1,21 @@
+{
+  "id": "eldritch-assault",
+  "name": "Eldritch Assault",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "improved-initiative"
+    }
+  ],
+  "benefit": "Automatically confirm a critical hit when attacking from magical concealment",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eldritch%20Assault"
+  }
+}

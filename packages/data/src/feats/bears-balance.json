@@ -1,0 +1,21 @@
+{
+  "id": "bears-balance",
+  "name": "Bear's Balance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "iron-will"
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Enter a rage rather than succumb to fear",
+  "source": {
+    "title": "The Harrow Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Bear's%20Balance"
+  }
+}

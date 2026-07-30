@@ -1,0 +1,26 @@
+{
+  "id": "verdant-spell",
+  "name": "Verdant Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(enchantment)"
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (nature)",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Your spells can affect plant creatures",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 119,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Verdant%20Spell"
+  }
+}

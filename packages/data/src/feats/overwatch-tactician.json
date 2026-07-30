@@ -1,0 +1,33 @@
+{
+  "id": "overwatch-tactician",
+  "name": "Overwatch Tactician",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "overwatch-style"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "feat",
+      "id": "rapid-shot"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    }
+  ],
+  "benefit": "Ready two ranged attacks as a standard action instead of full-round",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Overwatch%20Tactician"
+  }
+}

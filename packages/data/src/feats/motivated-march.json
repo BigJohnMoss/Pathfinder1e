@@ -1,0 +1,12 @@
+{
+  "id": "motivated-march",
+  "name": "Motivated March",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Reduce damage when leading a forced march",
+  "source": {
+    "title": "Monster Codex",
+    "page": 117,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Motivated%20March"
+  }
+}

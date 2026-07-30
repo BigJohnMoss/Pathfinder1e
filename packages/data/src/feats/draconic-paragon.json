@@ -1,0 +1,33 @@
+{
+  "id": "draconic-paragon",
+  "name": "Draconic Paragon",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "draconic-aspect"
+    },
+    {
+      "type": "feat",
+      "id": "draconic-breath"
+    },
+    {
+      "type": "feat",
+      "id": "draconic-glide"
+    },
+    {
+      "type": "level",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "+2 save vs. sleep/paralysis, breath weapon increases in potential",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 137,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Draconic%20Paragon"
+  }
+}

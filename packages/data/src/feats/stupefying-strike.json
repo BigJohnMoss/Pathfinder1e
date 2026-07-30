@@ -1,0 +1,31 @@
+{
+  "id": "stupefying-strike",
+  "name": "Stupefying Strike",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "On a successful unarmed strike, the target temporarily loses their skill ranks and feats",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stupefying%20Strike"
+  }
+}

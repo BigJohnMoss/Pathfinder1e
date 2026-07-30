@@ -1,0 +1,17 @@
+{
+  "id": "loyal-to-the-death",
+  "name": "Loyal to the Death",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Human (Tian)"
+    }
+  ],
+  "benefit": "You can become the target of an attack directed against an adjacent ally who has this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 207,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Loyal%20to%20the%20Death"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "deaths-host",
+  "name": "Death's Host",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(necromancy)"
+    }
+  ],
+  "benefit": "+4 saves vs death effects when possessed by an undead creature.",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Death's%20Host"
+  }
+}

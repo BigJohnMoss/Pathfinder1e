@@ -1,0 +1,22 @@
+{
+  "id": "free-spirit",
+  "name": "Free Spirit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "any chaotic alignment"
+    }
+  ],
+  "benefit": "+2 bonus on saves vs. mind-affecting and on escape attempts",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 287,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Free%20Spirit"
+  }
+}

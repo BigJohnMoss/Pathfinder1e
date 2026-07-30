@@ -1,0 +1,17 @@
+{
+  "id": "pao-lung-self-improvement",
+  "name": "Pao-Lung Self-Improvement",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Must be devoted to the philosophy of Pao- Lung and not worship any deities"
+    }
+  ],
+  "benefit": "Gain an cumulative bonus everytime you fail a specific ability check, caster level check, saving throw, or skill check",
+  "source": {
+    "title": "Blood of the Ancients",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pao-Lung%20Self-Improvement"
+  }
+}

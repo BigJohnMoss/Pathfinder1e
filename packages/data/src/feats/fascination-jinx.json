@@ -1,0 +1,25 @@
+{
+  "id": "fascination-jinx",
+  "name": "Fascination Jinx",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bardic-performance"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Combine the effects of your jinx with a bard's fascinate ability",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fascination%20Jinx"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "sunder-blessing",
+  "name": "Sunder Blessing",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "disruptive"
+    },
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Sunder ongoing divine spells or effects",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sunder%20Blessing"
+  }
+}

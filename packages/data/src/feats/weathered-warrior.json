@@ -1,0 +1,17 @@
+{
+  "id": "weathered-warrior",
+  "name": "Weathered Warrior",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    }
+  ],
+  "benefit": "Avoid some penalties on your ranged attacks in strong or severe winds",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Weathered%20Warrior"
+  }
+}

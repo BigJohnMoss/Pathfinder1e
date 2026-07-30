@@ -1,0 +1,21 @@
+{
+  "id": "mixed-scales",
+  "name": "Mixed Scales",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Draconic Aspect ARG or dragon-scaled racial trait ARG"
+    },
+    {
+      "type": "rule",
+      "description": "kobold"
+    }
+  ],
+  "benefit": "Gain the powers of two scale colors",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mixed%20Scales"
+  }
+}

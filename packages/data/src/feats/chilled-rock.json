@@ -1,0 +1,21 @@
+{
+  "id": "chilled-rock",
+  "name": "Chilled Rock",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "born-of-frost"
+    },
+    {
+      "type": "rule",
+      "description": "frost giant"
+    }
+  ],
+  "benefit": "Any items thrown with rock throwing deal extra cold damage",
+  "source": {
+    "title": "Monster Codex",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chilled%20Rock"
+  }
+}

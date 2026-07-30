@@ -1,0 +1,12 @@
+{
+  "id": "logical-spell",
+  "name": "Logical Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Cast spell without emotion components",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 137,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Logical%20Spell"
+  }
+}

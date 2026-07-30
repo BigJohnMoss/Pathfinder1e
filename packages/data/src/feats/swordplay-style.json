@@ -1,0 +1,29 @@
+{
+  "id": "swordplay-style",
+  "name": "Swordplay Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "rule",
+      "description": "with the chosen weapon"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "+1 shield bonus to AC when fighting defensively, avoid the penalty on the first attack with Combat Expertise",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swordplay%20Style"
+  }
+}

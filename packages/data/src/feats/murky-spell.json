@@ -1,0 +1,12 @@
+{
+  "id": "murky-spell",
+  "name": "Murky Spell",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Cloud effects work underwater, with penalties",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Murky%20Spell"
+  }
+}

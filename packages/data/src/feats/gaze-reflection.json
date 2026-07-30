@@ -1,0 +1,22 @@
+{
+  "id": "gaze-reflection",
+  "name": "Gaze Reflection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "bold stare OA and mesmerist tricks OA class features"
+    }
+  ],
+  "benefit": "Use your stare to ignore or reflect gaze attacks",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 84,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Gaze%20Reflection"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "improved-swap-places",
+  "name": "Improved Swap Places",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "swap-places"
+    }
+  ],
+  "benefit": "When you use Swap Places, your ally can be smaller or larger and your movement does not provoke attacks of opportunity",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 150,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Swap%20Places"
+  }
+}

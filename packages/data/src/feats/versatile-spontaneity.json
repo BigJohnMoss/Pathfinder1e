@@ -1,0 +1,21 @@
+{
+  "id": "versatile-spontaneity",
+  "name": "Versatile Spontaneity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Int 13 or Wis 13 (see Special)"
+    },
+    {
+      "type": "rule",
+      "description": "ability to spontaneously cast 2nd-level spells"
+    }
+  ],
+  "benefit": "Gain temporary access to a spell you otherwise don’t know",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Versatile%20Spontaneity"
+  }
+}

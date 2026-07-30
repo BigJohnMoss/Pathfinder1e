@@ -1,0 +1,27 @@
+{
+  "id": "sabotage-magic-item",
+  "name": "Sabotage Magic Item",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "magical-aptitude"
+    },
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Sabotage an item to cause a mishap",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 90,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sabotage%20Magic%20Item"
+  }
+}

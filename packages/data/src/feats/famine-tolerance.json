@@ -1,0 +1,17 @@
+{
+  "id": "famine-tolerance",
+  "name": "Famine Tolerance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Moroi or nosferatu"
+    }
+  ],
+  "benefit": "Increase the length of time you can go between feedings",
+  "source": {
+    "title": "Blood of the Night",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Famine%20Tolerance"
+  }
+}

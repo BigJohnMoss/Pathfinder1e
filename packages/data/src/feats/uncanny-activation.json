@@ -1,0 +1,18 @@
+{
+  "id": "uncanny-activation",
+  "name": "Uncanny Activation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Use Magic Device",
+      "minimum": 12
+    }
+  ],
+  "benefit": "Increase the caster level of an item by exceeding its UMD DC",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Uncanny%20Activation"
+  }
+}

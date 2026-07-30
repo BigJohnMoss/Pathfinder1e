@@ -1,0 +1,21 @@
+{
+  "id": "ferocious-horde",
+  "name": "Ferocious Horde",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Orc"
+    },
+    {
+      "type": "rule",
+      "description": "ferocity racial trait"
+    }
+  ],
+  "benefit": "Gain +2 morale bonus on attack rolls when you and an ally with this feat are both at or below half hit points",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 206,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ferocious%20Horde"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "totemic-initiate",
+  "name": "Totemic Initiate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 5
+    },
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "athletic"
+    },
+    {
+      "type": "rule",
+      "description": "Dex 13; ; ; no barbarian totem rage powers except the one you choose with this feat; nonlawful alignment"
+    }
+  ],
+  "benefit": "Gain benefits of a barbarian lesser totem rage power",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 118,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Totemic%20Initiate"
+  }
+}

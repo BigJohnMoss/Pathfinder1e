@@ -1,0 +1,21 @@
+{
+  "id": "steelskin-channel",
+  "name": "Steelskin Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 7d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Torag"
+    }
+  ],
+  "benefit": "Grant DR to creatures healed by your channeled positive energy",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 216,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Steelskin%20Channel"
+  }
+}

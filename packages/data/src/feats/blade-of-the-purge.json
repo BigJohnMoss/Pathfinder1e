@@ -1,0 +1,17 @@
+{
+  "id": "blade-of-the-purge",
+  "name": "Blade of the Purge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "bane"
+    }
+  ],
+  "benefit": "When you use the bane class feature, you can apply it to followers of a certain deity",
+  "source": {
+    "title": "Pathfinder #132: The Six-Legend Soul",
+    "page": 72,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blade%20of%20the%20Purge"
+  }
+}

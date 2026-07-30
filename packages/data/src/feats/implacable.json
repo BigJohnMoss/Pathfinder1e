@@ -1,0 +1,12 @@
+{
+  "id": "implacable",
+  "name": "Implacable",
+  "type": "combat",
+  "prerequisites": [],
+  "benefit": "Bonus on saving throws against pain, DR/piercing or slashing drunk",
+  "source": {
+    "title": "Inner Sea Taverns",
+    "page": 59,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Implacable"
+  }
+}

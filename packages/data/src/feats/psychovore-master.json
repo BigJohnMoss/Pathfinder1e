@@ -1,0 +1,30 @@
+{
+  "id": "psychovore-master",
+  "name": "Psychovore Master",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "psychovore-strike"
+    },
+    {
+      "type": "feat",
+      "id": "psychovore-style"
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motives",
+      "minimum": 15
+    }
+  ],
+  "benefit": "Inflict Intelligence and Wisdom damage when you confirm a critical hit while using Psychovore Style",
+  "source": {
+    "title": "Pathfinder: Spiral of Bones #3",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Psychovore%20Master"
+  }
+}

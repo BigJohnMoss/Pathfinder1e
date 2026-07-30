@@ -1,0 +1,17 @@
+{
+  "id": "retributive-summoning",
+  "name": "Retributive Summoning",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Spell Focus (conjuration) or counter-summons class feature"
+    }
+  ],
+  "benefit": "Summon your own creatures when you counterspell your opponent's summoning spell",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Retributive%20Summoning"
+  }
+}

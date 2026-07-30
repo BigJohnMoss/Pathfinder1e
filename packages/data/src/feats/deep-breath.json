@@ -1,0 +1,17 @@
+{
+  "id": "deep-breath",
+  "name": "Deep Breath",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Constitution 15"
+    }
+  ],
+  "benefit": "You can hold your breath for twice as long.",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Deep%20Breath"
+  }
+}

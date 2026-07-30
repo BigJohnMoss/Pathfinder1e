@@ -1,0 +1,17 @@
+{
+  "id": "ready-for-battle",
+  "name": "Ready for Battle",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "mesmerist-trick"
+    }
+  ],
+  "benefit": "+2 on initiative rolls for allies with implanted tricks",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 138,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ready%20for%20Battle"
+  }
+}

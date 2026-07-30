@@ -1,0 +1,30 @@
+{
+  "id": "aura-flare",
+  "name": "Aura Flare",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "aura"
+    },
+    {
+      "type": "rule",
+      "description": "aura of good"
+    },
+    {
+      "type": "rule",
+      "description": "or aura of evil class feature; channel energy 4d6; strong or overwhelming good or evil aura"
+    }
+  ],
+  "benefit": "Flare your alignment aura to fatigue or stagger those who oppose it",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 82,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aura%20Flare"
+  }
+}

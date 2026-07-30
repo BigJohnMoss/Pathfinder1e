@@ -1,0 +1,21 @@
+{
+  "id": "protective-line",
+  "name": "Protective Line",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "exotic-weapon-proficiency"
+    },
+    {
+      "type": "rule",
+      "description": "(firearms) UC"
+    }
+  ],
+  "benefit": "Don't provoke attacks of opportunity while reloading a firearm",
+  "source": {
+    "title": "Villain Codex",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Protective%20Line"
+  }
+}

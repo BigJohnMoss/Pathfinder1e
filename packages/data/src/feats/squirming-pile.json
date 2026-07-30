@@ -1,0 +1,22 @@
+{
+  "id": "squirming-pile",
+  "name": "Squirming Pile",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Acrobatics",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "swarming racial trait"
+    }
+  ],
+  "benefit": "While swarming, gain fortification against critical hits and sneak attack",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Squirming%20Pile"
+  }
+}

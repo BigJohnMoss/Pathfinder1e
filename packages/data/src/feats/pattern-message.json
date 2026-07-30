@@ -1,0 +1,17 @@
+{
+  "id": "pattern-message",
+  "name": "Pattern Message",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "caster-level",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Give a secret message to creatures affected by one of your pattern spells",
+  "source": {
+    "title": "Distant Realms",
+    "page": 42,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Pattern%20Message"
+  }
+}

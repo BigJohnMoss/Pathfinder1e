@@ -1,0 +1,17 @@
+{
+  "id": "ascetic-form",
+  "name": "Ascetic Form",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ascetic Style; Weapon Focus with the chosen melee weapon; base attack bonus +5 or monk level 5th"
+    }
+  ],
+  "benefit": "Use a new melee weapon with unarmed class abilities",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ascetic%20Form"
+  }
+}

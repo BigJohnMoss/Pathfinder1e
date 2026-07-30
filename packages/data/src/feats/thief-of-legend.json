@@ -1,0 +1,25 @@
+{
+  "id": "thief-of-legend",
+  "name": "Thief of Legend",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "You must have stolen at least 1"
+    },
+    {
+      "type": "rule",
+      "description": "000 gp worth of treasure without being caught and kept mementos of these thefts worth at least 500 gp"
+    },
+    {
+      "type": "rule",
+      "description": "or have the Greed background"
+    }
+  ],
+  "benefit": "Master the ability to handle traps and locks",
+  "source": {
+    "title": "Ultimate Campaign",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Thief%20of%20Legend"
+  }
+}

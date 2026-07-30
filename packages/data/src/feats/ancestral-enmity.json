@@ -1,0 +1,17 @@
+{
+  "id": "ancestral-enmity",
+  "name": "Ancestral Enmity",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Giant subtype"
+    }
+  ],
+  "benefit": "+2 bonus on melee attack against dwarves and gnomes",
+  "source": {
+    "title": "Monster Codex",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ancestral%20Enmity"
+  }
+}

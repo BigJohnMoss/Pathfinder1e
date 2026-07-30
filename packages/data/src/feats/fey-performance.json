@@ -1,0 +1,17 @@
+{
+  "id": "fey-performance",
+  "name": "Fey Performance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Bardic performance class ability"
+    }
+  ],
+  "benefit": "Nature enhances your bardic performances",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 111,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fey%20Performance"
+  }
+}

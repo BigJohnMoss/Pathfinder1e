@@ -1,0 +1,22 @@
+{
+  "id": "improved-natural-armor",
+  "name": "Improved Natural Armor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Natural armor"
+    },
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Increase your natural armor by 1.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 315,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Natural%20Armor"
+  }
+}

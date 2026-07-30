@@ -1,0 +1,17 @@
+{
+  "id": "harvest-parts",
+  "name": "Harvest Parts",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Craft (any) 1 rank or Heal 1 rank"
+    }
+  ],
+  "benefit": "Harvest parts from a creature to be used for crafting",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Harvest%20Parts"
+  }
+}

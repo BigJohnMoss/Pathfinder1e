@@ -1,0 +1,17 @@
+{
+  "id": "horn-rider",
+  "name": "Horn Rider",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Defend yourself using the horn/tusk of your mount",
+  "source": {
+    "title": "Monster Codex",
+    "page": 164,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Horn%20Rider"
+  }
+}

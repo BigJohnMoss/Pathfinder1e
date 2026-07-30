@@ -1,0 +1,21 @@
+{
+  "id": "messenger-of-fate",
+  "name": "Messenger of Fate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "augury"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Pharasma"
+    }
+  ],
+  "benefit": "Cast divination spells at +1 caster level, and increase your chance for correct divination",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 214,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Messenger%20of%20Fate"
+  }
+}

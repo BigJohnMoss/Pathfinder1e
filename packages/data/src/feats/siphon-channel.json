@@ -1,0 +1,21 @@
+{
+  "id": "siphon-channel",
+  "name": "Siphon Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 3d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Ghlaunder"
+    }
+  ],
+  "benefit": "Gain temporary hit points when you deal damage with channeled negative energy",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 216,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Siphon%20Channel"
+  }
+}

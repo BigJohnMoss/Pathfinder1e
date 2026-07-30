@@ -1,0 +1,22 @@
+{
+  "id": "intense-pain",
+  "name": "Intense Pain",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 7
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Painful stare deals more damage",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 135,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Intense%20Pain"
+  }
+}

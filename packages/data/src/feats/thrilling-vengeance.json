@@ -1,0 +1,21 @@
+{
+  "id": "thrilling-vengeance",
+  "name": "Thrilling Vengeance",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 3
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Bonus to performance combat check while raging if you’ve recently dealt damage",
+  "source": {
+    "title": "Inner Sea Combat",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Thrilling%20Vengeance"
+  }
+}

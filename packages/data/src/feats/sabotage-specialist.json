@@ -1,0 +1,22 @@
+{
+  "id": "sabotage-specialist",
+  "name": "Sabotage Specialist",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "deft-hands"
+    },
+    {
+      "type": "skill",
+      "key": "Disable Device",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Items you sabotage fail at a more precise time",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 90,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sabotage%20Specialist"
+  }
+}

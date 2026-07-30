@@ -1,0 +1,12 @@
+{
+  "id": "banish-possessor",
+  "name": "Banish Possessor",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Aid creatures with throwing off possession",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Banish%20Possessor"
+  }
+}

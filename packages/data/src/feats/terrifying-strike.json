@@ -1,0 +1,21 @@
+{
+  "id": "terrifying-strike",
+  "name": "Terrifying Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Despair special ability"
+    },
+    {
+      "type": "rule",
+      "description": "mummy"
+    }
+  ],
+  "benefit": "Cause fear on those you strike",
+  "source": {
+    "title": "Pathfinder #81: Shifting Sands",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Terrifying%20Strike"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "kobold-flood",
+  "name": "Kobold Flood",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "kobold-groundling"
+    },
+    {
+      "type": "feat",
+      "id": "kobold-style"
+    },
+    {
+      "type": "rule",
+      "description": "Small size or smaller"
+    }
+  ],
+  "benefit": "Grapple opponents to keep them prone",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kobold%20Flood"
+  }
+}

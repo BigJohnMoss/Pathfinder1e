@@ -1,0 +1,25 @@
+{
+  "id": "jinx-alchemy",
+  "name": "Jinx Alchemy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "swift-alchemy"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Prevent jinxed creatures from benefiting from potions and other alchemical substances",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Jinx%20Alchemy"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "edge-runner",
+  "name": "Edge Runner",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Move quicker on narrow surfaces",
+  "source": {
+    "title": "Heroes of the Streets",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Edge%20Runner"
+  }
+}

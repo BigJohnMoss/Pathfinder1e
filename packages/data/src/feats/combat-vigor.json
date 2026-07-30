@@ -1,0 +1,18 @@
+{
+  "id": "combat-vigor",
+  "name": "Combat Vigor",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Gain a vigor pool and heal yourself without magic",
+  "source": {
+    "title": "Healer's Handbook",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Combat%20Vigor"
+  }
+}

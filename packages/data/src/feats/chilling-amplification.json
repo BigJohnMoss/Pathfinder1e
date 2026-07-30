@@ -1,0 +1,12 @@
+{
+  "id": "chilling-amplification",
+  "name": "Chilling Amplification",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Your cold spells cause creatures to become sluggish",
+  "source": {
+    "title": "Magic Tactics Toolbox",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chilling%20Amplification"
+  }
+}

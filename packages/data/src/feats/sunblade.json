@@ -1,0 +1,30 @@
+{
+  "id": "sunblade",
+  "name": "Sunblade",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "word-of-healing"
+    },
+    {
+      "type": "rule",
+      "description": "UM"
+    },
+    {
+      "type": "class-level",
+      "classId": "paladin",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of a deity that grants the Fire or Sun domain"
+    }
+  ],
+  "benefit": "Launch a blast of fire from your sword",
+  "source": {
+    "title": "Elemental Master's Handbook",
+    "page": 7,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sunblade"
+  }
+}

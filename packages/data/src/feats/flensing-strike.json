@@ -1,0 +1,21 @@
+{
+  "id": "flensing-strike",
+  "name": "Flensing Strike",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Sneak attack +3d6"
+    },
+    {
+      "type": "rule",
+      "description": "bleeding sneak attack rogue trick or bleed universal monster ability"
+    }
+  ],
+  "benefit": "Strip away natural armor with your sneak attacks.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flensing%20Strike"
+  }
+}

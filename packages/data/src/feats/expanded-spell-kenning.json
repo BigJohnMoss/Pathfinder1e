@@ -1,0 +1,17 @@
+{
+  "id": "expanded-spell-kenning",
+  "name": "Expanded Spell Kenning",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "spell-kenning"
+    }
+  ],
+  "benefit": "Add druid or witch spells to your spell kenning",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Expanded%20Spell%20Kenning"
+  }
+}

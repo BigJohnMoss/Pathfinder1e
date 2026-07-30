@@ -1,0 +1,22 @@
+{
+  "id": "consume-undeath",
+  "name": "Consume Undeath",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Nabasu"
+    },
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 23
+    }
+  ],
+  "benefit": "Consume the undead to gain their abilities.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 44,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Consume%20Undeath"
+  }
+}

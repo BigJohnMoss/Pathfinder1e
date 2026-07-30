@@ -1,0 +1,17 @@
+{
+  "id": "carrion-feeder",
+  "name": "Carrion Feeder",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Tengu"
+    }
+  ],
+  "benefit": "+2 save vs. disease and ingested poison, +2 Survival to find food for yourself",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 165,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Carrion%20Feeder"
+  }
+}

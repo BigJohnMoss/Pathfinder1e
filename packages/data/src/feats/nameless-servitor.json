@@ -1,0 +1,21 @@
+{
+  "id": "nameless-servitor",
+  "name": "Nameless Servitor",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Risen Guard rank"
+    },
+    {
+      "type": "rule",
+      "description": "Risen Guard 10 TPA"
+    }
+  ],
+  "benefit": "Block attempts to learn personal information about you through divination magic",
+  "source": {
+    "title": "Faction Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Nameless%20Servitor"
+  }
+}

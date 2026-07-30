@@ -1,0 +1,21 @@
+{
+  "id": "prophet",
+  "name": "Prophet",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "divine-spells"
+    },
+    {
+      "type": "rule",
+      "description": "and you must either have received a vision from your god (or another appropriate supernatural entity) or have the Marked by the Gods background (see Ultimate Campaign )"
+    }
+  ],
+  "benefit": "Increase your defenses when buffing allies",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Prophet"
+  }
+}

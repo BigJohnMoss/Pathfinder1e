@@ -1,0 +1,17 @@
+{
+  "id": "wingover",
+  "name": "Wingover",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fly speed"
+    }
+  ],
+  "benefit": "Turn up to 180 degrees while flying once per round without the need of a fly check.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 316,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Wingover"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "crashing-wave-style",
+  "name": "Crashing Wave Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-drag"
+    },
+    {
+      "type": "feat",
+      "id": "improved-reposition"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Move 5 feet when you drag or reposition an opponent",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 109,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Crashing%20Wave%20Style"
+  }
+}

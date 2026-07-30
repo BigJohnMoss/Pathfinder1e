@@ -1,0 +1,43 @@
+{
+  "id": "spellcut",
+  "name": "Spellcut",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "cut-from-the-air"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 1
+    },
+    {
+      "type": "feature",
+      "id": "weapon-training"
+    },
+    {
+      "type": "rule",
+      "description": "with a melee weapon"
+    }
+  ],
+  "benefit": "Use your BAB in place of a saving throw against an effect",
+  "source": {
+    "title": "Weapon Master's Handbook",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spellcut"
+  }
+}

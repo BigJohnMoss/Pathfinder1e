@@ -1,0 +1,41 @@
+{
+  "id": "azata-sprint",
+  "name": "Azata Sprint",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "agile-maneuvers"
+    },
+    {
+      "type": "feat",
+      "id": "azata-mischief"
+    },
+    {
+      "type": "feat",
+      "id": "azata-style"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "mobility"
+    },
+    {
+      "type": "feat",
+      "id": "wind-stance"
+    },
+    {
+      "type": "bab",
+      "minimum": 10
+    }
+  ],
+  "benefit": "Your base speed increases by 10 feet and you ignore the first 10 feet of difficult terrain in a round",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Azata%20Sprint"
+  }
+}

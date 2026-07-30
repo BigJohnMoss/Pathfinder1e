@@ -1,0 +1,27 @@
+{
+  "id": "craft-technological-item",
+  "name": "Craft Technological Item",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "technologist"
+    },
+    {
+      "type": "skill",
+      "key": "Craft (mechanical)",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Create technological items",
+  "source": {
+    "title": "Technology Guide",
+    "page": 6,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Craft%20Technological%20Item"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "amplified-hex",
+  "name": "Amplified Hex",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "hex"
+    }
+  ],
+  "benefit": "Augment your hexes by expending spell power",
+  "source": {
+    "title": "Advanced Class Origins",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Amplified%20Hex"
+  }
+}

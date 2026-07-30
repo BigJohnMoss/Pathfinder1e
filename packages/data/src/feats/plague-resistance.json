@@ -1,0 +1,17 @@
+{
+  "id": "plague-resistance",
+  "name": "Plague Resistance",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Constitution 13"
+    }
+  ],
+  "benefit": "Roll damage from diseases twice and take the lower result",
+  "source": {
+    "title": "Villain Codex",
+    "page": 68,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Plague%20Resistance"
+  }
+}

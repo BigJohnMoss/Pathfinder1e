@@ -1,0 +1,27 @@
+{
+  "id": "cat-and-mouse",
+  "name": "Cat and Mouse",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "opportune parry and riposte deed ACG"
+    }
+  ],
+  "benefit": "Hold your riposte to gain an advantage",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cat%20and%20Mouse"
+  }
+}

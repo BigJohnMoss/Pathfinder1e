@@ -1,0 +1,21 @@
+{
+  "id": "favored-animal-focus",
+  "name": "Favored Animal Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "animal-companion"
+    },
+    {
+      "type": "feature",
+      "id": "animal-focus"
+    }
+  ],
+  "benefit": "Your companion gains a greater benefit from one of your animal aspects",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Favored%20Animal%20Focus"
+  }
+}

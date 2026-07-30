@@ -1,0 +1,12 @@
+{
+  "id": "big-game-hunter",
+  "name": "Big Game Hunter",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+1 attack and +2 damage vs. Large or larger creatures",
+  "source": {
+    "title": "Rise of the Runelords Player's Guide",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Big%20Game%20Hunter"
+  }
+}

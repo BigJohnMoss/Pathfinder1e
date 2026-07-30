@@ -1,0 +1,12 @@
+{
+  "id": "splash-weapon-mastery",
+  "name": "Splash Weapon Mastery",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Throw splash weapons farther and more accurately",
+  "source": {
+    "title": "Adventurer's Armory",
+    "page": 31,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Splash%20Weapon%20Mastery"
+  }
+}

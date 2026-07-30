@@ -1,0 +1,21 @@
+{
+  "id": "first-general-of-the-east",
+  "name": "First General of the East",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "level",
+      "minimum": 5
+    },
+    {
+      "type": "rule",
+      "description": "shabti"
+    }
+  ],
+  "benefit": "gain greater magic weapon as a spell-like ability",
+  "source": {
+    "title": "Pathfinder #139: The Dead Roads",
+    "page": 73,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=First%20General%20of%20the%20East"
+  }
+}

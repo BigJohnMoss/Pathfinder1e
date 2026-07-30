@@ -1,0 +1,17 @@
+{
+  "id": "focused-animal-expertise",
+  "name": "Focused Animal Expertise",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "favored-enemy-animal"
+    }
+  ],
+  "benefit": "Gain a bonus on Stealth checks",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focused%20Animal%20Expertise"
+  }
+}

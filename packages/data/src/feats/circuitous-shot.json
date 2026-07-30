@@ -1,0 +1,38 @@
+{
+  "id": "circuitous-shot",
+  "name": "Circuitous Shot",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 19
+    },
+    {
+      "type": "feat",
+      "id": "blind-fight"
+    },
+    {
+      "type": "feat",
+      "id": "improved-precise-shot"
+    },
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "bab",
+      "minimum": 11
+    }
+  ],
+  "benefit": "Bounce ranged attacks to avoid total cover",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 80,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Circuitous%20Shot"
+  }
+}

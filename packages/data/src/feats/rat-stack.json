@@ -1,0 +1,22 @@
+{
+  "id": "rat-stack",
+  "name": "Rat Stack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "swarming racial trait"
+    }
+  ],
+  "benefit": "You and two allies can share the same space",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rat%20Stack"
+  }
+}

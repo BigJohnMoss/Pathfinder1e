@@ -1,0 +1,34 @@
+{
+  "id": "all-consuming-swing",
+  "name": "All-Consuming Swing",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "feat",
+      "id": "cleave"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 8
+    }
+  ],
+  "benefit": "Apply Vital Strike to a Cleave attack, but take the Vital Strike damage yourself as well",
+  "source": {
+    "title": "The Harrow Handbook",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=All-Consuming%20Swing"
+  }
+}

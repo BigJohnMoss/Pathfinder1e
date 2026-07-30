@@ -1,0 +1,17 @@
+{
+  "id": "extra-mental-focus",
+  "name": "Extra Mental Focus",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "mental-focus"
+    }
+  ],
+  "benefit": "Gain 2 additional points of mental focus",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 133,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Mental%20Focus"
+  }
+}

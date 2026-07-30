@@ -1,0 +1,21 @@
+{
+  "id": "greater-blood-frenzy",
+  "name": "Greater Blood Frenzy",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Blood frenzy ability"
+    },
+    {
+      "type": "rule",
+      "description": "sahuagin"
+    }
+  ],
+  "benefit": "No penalty to AC and gain rend while in blood frenzy",
+  "source": {
+    "title": "Monster Codex",
+    "page": 189,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Greater%20Blood%20Frenzy"
+  }
+}

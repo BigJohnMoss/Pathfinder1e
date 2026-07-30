@@ -1,0 +1,17 @@
+{
+  "id": "ghost-guide",
+  "name": "Ghost Guide",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "See text"
+    }
+  ],
+  "benefit": "Gain a bonus on social skills against spirits, and on completion, gain benefits with spirit-talking spells",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ghost%20Guide"
+  }
+}

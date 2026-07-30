@@ -1,0 +1,25 @@
+{
+  "id": "improved-death-stealing",
+  "name": "Improved Death-Stealing",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Nabasu"
+    },
+    {
+      "type": "feat",
+      "id": "ability-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(death-stealing gaze"
+    }
+  ],
+  "benefit": "Your undead spawn rise as more powerful creatures.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 44,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Improved%20Death-Stealing"
+  }
+}

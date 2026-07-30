@@ -1,0 +1,17 @@
+{
+  "id": "chance-death",
+  "name": "Chance Death",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Duskwalker"
+    }
+  ],
+  "benefit": "Reroll a failed attack or saving throw that would have resulted in your death",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chance%20Death"
+  }
+}

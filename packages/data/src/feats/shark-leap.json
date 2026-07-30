@@ -1,0 +1,34 @@
+{
+  "id": "shark-leap",
+  "name": "Shark Leap",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "feat",
+      "id": "shark-style"
+    },
+    {
+      "type": "feat",
+      "id": "shark-tear"
+    },
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +10 or monk level 10th"
+    }
+  ],
+  "benefit": "Make a special charge while underater that deals bonus damage and knows the target off-balance",
+  "source": {
+    "title": "Aquatic Adventures",
+    "page": 58,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shark%20Leap"
+  }
+}

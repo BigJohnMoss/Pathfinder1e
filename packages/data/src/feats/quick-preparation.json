@@ -1,0 +1,17 @@
+{
+  "id": "quick-preparation",
+  "name": "Quick Preparation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to prepare spells"
+    }
+  ],
+  "benefit": "Prepare spells in half the time",
+  "source": {
+    "title": "Pathfinder Society Primer",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quick%20Preparation"
+  }
+}

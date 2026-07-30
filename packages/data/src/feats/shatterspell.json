@@ -1,0 +1,29 @@
+{
+  "id": "shatterspell",
+  "name": "Shatterspell",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "disruptive"
+    },
+    {
+      "type": "feat",
+      "id": "spellbreaker"
+    },
+    {
+      "type": "rule",
+      "description": "dwarf"
+    },
+    {
+      "type": "rule",
+      "description": "10th-level fighter"
+    }
+  ],
+  "benefit": "Sunder ongoing spell effects",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shatterspell"
+  }
+}

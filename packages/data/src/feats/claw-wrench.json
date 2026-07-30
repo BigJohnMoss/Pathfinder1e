@@ -1,0 +1,26 @@
+{
+  "id": "claw-wrench",
+  "name": "Claw Wrench",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    }
+  ],
+  "benefit": "Grapple a creautre to break its own grab or negate bite attacks",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 9,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Claw%20Wrench"
+  }
+}

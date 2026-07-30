@@ -1,0 +1,38 @@
+{
+  "id": "find-the-flaw",
+  "name": "Find the Flaw",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-sunder"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "Craft (armor or weapons) 5 ranks"
+    },
+    {
+      "type": "rule",
+      "description": "aphorite"
+    }
+  ],
+  "benefit": "Ignore some hardness when you sunder",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Find%20the%20Flaw"
+  }
+}

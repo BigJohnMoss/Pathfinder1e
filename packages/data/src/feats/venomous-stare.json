@@ -1,0 +1,22 @@
+{
+  "id": "venomous-stare",
+  "name": "Venomous Stare",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "mesmerist",
+      "minimum": 11
+    },
+    {
+      "type": "feature",
+      "id": "painful-stare"
+    }
+  ],
+  "benefit": "Target of painful stare is poisoned",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Venomous%20Stare"
+  }
+}

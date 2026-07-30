@@ -1,0 +1,17 @@
+{
+  "id": "barroom-brawler",
+  "name": "Barroom Brawler",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Once per day, gain the use of a combat feat you don’t possess for 1 minute",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Barroom%20Brawler"
+  }
+}

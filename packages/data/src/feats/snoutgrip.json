@@ -1,0 +1,33 @@
+{
+  "id": "snoutgrip",
+  "name": "Snoutgrip",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +12 or 10th-level monk"
+    }
+  ],
+  "benefit": "Use your grappling prowess to keep an enemy from opening its mouth",
+  "source": {
+    "title": "Dragonslayer's Handbook",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Snoutgrip"
+  }
+}

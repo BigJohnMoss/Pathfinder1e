@@ -1,0 +1,17 @@
+{
+  "id": "battle-cry",
+  "name": "Battle Cry",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Cha 13; base attack bonus +5 or Perform (act, oratory, or sing) 5 ranks"
+    }
+  ],
+  "benefit": "Let out a cry that grants allies a +1 bonus on attack rolls and +4 bonus on saves against fear",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Battle%20Cry"
+  }
+}

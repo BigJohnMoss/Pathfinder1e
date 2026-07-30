@@ -1,0 +1,25 @@
+{
+  "id": "malicious-eye",
+  "name": "Malicious Eye",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Evil eye witch hex"
+    },
+    {
+      "type": "feat",
+      "id": "fling"
+    },
+    {
+      "type": "rule",
+      "description": "Hal Jinx trait"
+    }
+  ],
+  "benefit": "Combine your evil eye with your jinx",
+  "source": {
+    "title": "Halflings of Golarion",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Malicious%20Eye"
+  }
+}

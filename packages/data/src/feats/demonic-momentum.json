@@ -1,0 +1,29 @@
+{
+  "id": "demonic-momentum",
+  "name": "Demonic Momentum",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "demonic-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-bull-rush"
+    },
+    {
+      "type": "feat",
+      "id": "power-attack"
+    },
+    {
+      "type": "bab",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Gain damage bonus based on how far you charge when you bull rush",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demonic%20Momentum"
+  }
+}

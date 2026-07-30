@@ -1,0 +1,17 @@
+{
+  "id": "curious-companion",
+  "name": "Curious Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "animal-companion"
+    }
+  ],
+  "benefit": "You can gain a plant or vermin companion",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Curious%20Companion"
+  }
+}

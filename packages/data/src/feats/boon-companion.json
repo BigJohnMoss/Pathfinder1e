@@ -1,0 +1,17 @@
+{
+  "id": "boon-companion",
+  "name": "Boon Companion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Animal companion class feature or familiar class feature"
+    }
+  ],
+  "benefit": "Companion or familiar abilities are treated as though you were a higher level",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 217,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Boon%20Companion"
+  }
+}

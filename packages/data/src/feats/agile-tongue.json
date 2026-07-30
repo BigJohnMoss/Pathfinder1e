@@ -1,0 +1,17 @@
+{
+  "id": "agile-tongue",
+  "name": "Agile Tongue",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Grippli"
+    }
+  ],
+  "benefit": "Your tongue becomes capable of manipulating small items or stealing objects",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 191,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Agile%20Tongue"
+  }
+}

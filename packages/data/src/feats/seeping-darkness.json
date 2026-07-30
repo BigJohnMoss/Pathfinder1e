@@ -1,0 +1,21 @@
+{
+  "id": "seeping-darkness",
+  "name": "Seeping Darkness",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Drow"
+    },
+    {
+      "type": "rule",
+      "description": "darkness racial spell-like ability"
+    }
+  ],
+  "benefit": "Gain concealment when adjacent to an ally with this feat",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Seeping%20Darkness"
+  }
+}

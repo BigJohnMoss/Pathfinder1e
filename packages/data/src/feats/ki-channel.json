@@ -1,0 +1,21 @@
+{
+  "id": "ki-channel",
+  "name": "Ki Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-positive-energy"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Irori"
+    }
+  ],
+  "benefit": "Channel positive energy to either heal creatures or replenish their ki points",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 213,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ki%20Channel"
+  }
+}

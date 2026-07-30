@@ -1,0 +1,21 @@
+{
+  "id": "destroyers-blessing",
+  "name": "Destroyer's Blessing",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Half-orc or orc"
+    },
+    {
+      "type": "feature",
+      "id": "rage"
+    }
+  ],
+  "benefit": "Regain rage and heal by sundering in combat",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Destroyer's%20Blessing"
+  }
+}

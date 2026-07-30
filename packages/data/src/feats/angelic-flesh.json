@@ -1,0 +1,21 @@
+{
+  "id": "angelic-flesh",
+  "name": "Angelic Flesh",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "angelic-blood"
+    },
+    {
+      "type": "rule",
+      "description": "aasimar"
+    }
+  ],
+  "benefit": "-2 Disguise and Stealth, but gain a benefit based on metallic affinity of your flesh",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Angelic%20Flesh"
+  }
+}

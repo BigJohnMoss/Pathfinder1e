@@ -1,0 +1,22 @@
+{
+  "id": "formula-recollection",
+  "name": "Formula Recollection",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    },
+    {
+      "type": "feature",
+      "id": "keen-recollection"
+    }
+  ],
+  "benefit": "When a spell is cast, record its formula later",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 148,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Formula%20Recollection"
+  }
+}

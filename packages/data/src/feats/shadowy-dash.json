@@ -1,0 +1,17 @@
+{
+  "id": "shadowy-dash",
+  "name": "Shadowy Dash",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Wayang"
+    }
+  ],
+  "benefit": "Move at full speed using Stealth without penalty when in dim light or darkness",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 211,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Shadowy%20Dash"
+  }
+}

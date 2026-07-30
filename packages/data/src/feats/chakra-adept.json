@@ -1,0 +1,21 @@
+{
+  "id": "chakra-adept",
+  "name": "Chakra Adept",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "chakra-initiate"
+    },
+    {
+      "type": "rule",
+      "description": "ability to awaken the heart chakra"
+    }
+  ],
+  "benefit": "Gain 4 serpent-fire ki points for chakras, attempt one save to maintain chakras, and gain lingering benefits",
+  "source": {
+    "title": "Occult Adventures",
+    "page": 129,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Chakra%20Adept"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "true-breed",
+  "name": "True Breed",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Two subtypes"
+    },
+    {
+      "type": "rule",
+      "description": "elf blood or orc blood racial trait"
+    }
+  ],
+  "benefit": "You count as neither of your subtypes for the purposes of effects related to subtype",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 209,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=True%20Breed"
+  }
+}

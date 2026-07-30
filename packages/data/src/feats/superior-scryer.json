@@ -1,0 +1,29 @@
+{
+  "id": "superior-scryer",
+  "name": "Superior Scryer",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(divination)"
+    },
+    {
+      "type": "spell-access",
+      "id": "at-least-one-spell-of-the-scrying-subschool"
+    },
+    {
+      "type": "rule",
+      "description": "the"
+    }
+  ],
+  "benefit": "Improve various effects of scrying spells",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 94,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Superior%20Scryer"
+  }
+}

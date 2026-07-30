@@ -1,0 +1,17 @@
+{
+  "id": "associate",
+  "name": "Associate",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Maintain a positive relationship with an organization for at least 6 months or achieve a major accomplishment on behalf of an organization"
+    }
+  ],
+  "benefit": "Ally with an organization, gaining bonuses when associating with that group",
+  "source": {
+    "title": "Agents of Evil",
+    "page": 13,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Associate"
+  }
+}

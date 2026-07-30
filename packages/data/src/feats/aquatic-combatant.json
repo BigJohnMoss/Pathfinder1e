@@ -1,0 +1,18 @@
+{
+  "id": "aquatic-combatant",
+  "name": "Aquatic Combatant",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Swim",
+      "minimum": 1
+    }
+  ],
+  "benefit": "+2 bonus to Swim checks; avoid normal penalties on melee attack rolls underwater",
+  "source": {
+    "title": "Ultimate Wilderness",
+    "page": 106,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Aquatic%20Combatant"
+  }
+}

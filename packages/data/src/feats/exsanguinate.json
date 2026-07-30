@@ -1,0 +1,21 @@
+{
+  "id": "exsanguinate",
+  "name": "Exsanguinate",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Blood drain universal monster ability"
+    },
+    {
+      "type": "rule",
+      "description": "grab universal monster ability"
+    }
+  ],
+  "benefit": "Double blood drain damage once per round",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 87,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Exsanguinate"
+  }
+}

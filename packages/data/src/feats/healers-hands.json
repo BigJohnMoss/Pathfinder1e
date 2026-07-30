@@ -1,0 +1,23 @@
+{
+  "id": "healers-hands",
+  "name": "Healer's Hands",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Heal",
+      "minimum": 1
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Treat deadly wounds with the Heal skill more efficiently and more often",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 28,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Healer's%20Hands"
+  }
+}

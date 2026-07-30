@@ -1,0 +1,21 @@
+{
+  "id": "kobold-style",
+  "name": "Kobold Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "rule",
+      "description": "Small size or smaller"
+    }
+  ],
+  "benefit": "+4 CMB vs. enemies denied their Dex bonus to AC",
+  "source": {
+    "title": "Kobolds of Golarion",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kobold%20Style"
+  }
+}

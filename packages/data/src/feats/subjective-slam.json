@@ -1,0 +1,17 @@
+{
+  "id": "subjective-slam",
+  "name": "Subjective Slam",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Con 13; Wis 13; Subjective Mobility; base attack bonus +4 or monk level 3rd"
+    }
+  ],
+  "benefit": "Take half falling damage and you can intentionally fall against targets to damage them while on planes with subjective directional gravity",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 32,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Subjective%20Slam"
+  }
+}

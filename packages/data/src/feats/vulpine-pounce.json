@@ -1,0 +1,25 @@
+{
+  "id": "vulpine-pounce",
+  "name": "Vulpine Pounce",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "swift-kitsune-shapechanger"
+    },
+    {
+      "type": "bab",
+      "minimum": 10
+    },
+    {
+      "type": "rule",
+      "description": "kitsune"
+    }
+  ],
+  "benefit": "Gain pounce when charging and shifting in the same round.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Vulpine%20Pounce"
+  }
+}

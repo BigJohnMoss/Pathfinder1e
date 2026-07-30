@@ -1,0 +1,17 @@
+{
+  "id": "countering-loophole",
+  "name": "Countering Loophole",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "improved-counterspell"
+    }
+  ],
+  "benefit": "Redirect a countered charm or compulsion back at the caster",
+  "source": {
+    "title": "Heroes of the High Court",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Countering%20Loophole"
+  }
+}

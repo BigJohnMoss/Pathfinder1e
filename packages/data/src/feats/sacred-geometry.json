@@ -1,0 +1,23 @@
+{
+  "id": "sacred-geometry",
+  "name": "Sacred Geometry",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 13
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (engineering)",
+      "minimum": 2
+    }
+  ],
+  "benefit": "Add metamagic effects to your spells without using a higher-level spell slot",
+  "source": {
+    "title": "Occult Mysteries",
+    "page": 49,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sacred%20Geometry"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "black-cat",
+  "name": "Black Cat",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Catfolk"
+    }
+  ],
+  "benefit": "1/day, force opponent to reroll a successful attack with a penalty",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Black%20Cat"
+  }
+}

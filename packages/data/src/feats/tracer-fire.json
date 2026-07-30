@@ -1,0 +1,21 @@
+{
+  "id": "tracer-fire",
+  "name": "Tracer Fire",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    }
+  ],
+  "benefit": "Glowing ammunition makes an enemy easier to hit",
+  "source": {
+    "title": "Heroes of the Darklands",
+    "page": 5,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tracer%20Fire"
+  }
+}

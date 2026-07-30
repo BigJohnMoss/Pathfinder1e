@@ -1,0 +1,17 @@
+{
+  "id": "rage-casting",
+  "name": "Rage Casting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "blood-casting"
+    }
+  ],
+  "benefit": "Sacrifice hit points for bloodrager spell potency",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 154,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Rage%20Casting"
+  }
+}

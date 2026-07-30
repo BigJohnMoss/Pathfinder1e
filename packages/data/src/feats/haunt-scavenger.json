@@ -1,0 +1,17 @@
+{
+  "id": "haunt-scavenger",
+  "name": "Haunt Scavenger",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Any one item creation feat or Craft (alchemy) 3 ranks"
+    }
+  ],
+  "benefit": "Syphon ectoplasm from haunts to use in crafting magic items",
+  "source": {
+    "title": "Haunted Heroes Handbook",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Haunt%20Scavenger"
+  }
+}

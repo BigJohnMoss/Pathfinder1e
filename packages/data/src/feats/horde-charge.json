@@ -1,0 +1,21 @@
+{
+  "id": "horde-charge",
+  "name": "Horde Charge",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "bab",
+      "minimum": 1
+    },
+    {
+      "type": "rule",
+      "description": "half-orc or orc"
+    }
+  ],
+  "benefit": "+2 attack/damage when charging at the same time",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 57,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Horde%20Charge"
+  }
+}

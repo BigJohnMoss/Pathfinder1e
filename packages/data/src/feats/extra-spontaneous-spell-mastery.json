@@ -1,0 +1,17 @@
+{
+  "id": "extra-spontaneous-spell-mastery",
+  "name": "Extra Spontaneous Spell Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "magaambyan-arcanist-spontaneous-spell-mastery"
+    }
+  ],
+  "benefit": "Gain one additional use of spontaneous spell mastery",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Extra%20Spontaneous%20Spell%20Mastery"
+  }
+}

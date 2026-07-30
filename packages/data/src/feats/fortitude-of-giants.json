@@ -1,0 +1,26 @@
+{
+  "id": "fortitude-of-giants",
+  "name": "Fortitude of Giants",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 14
+    },
+    {
+      "type": "feat",
+      "id": "great-fortitude"
+    },
+    {
+      "type": "rule",
+      "description": "giant subtype"
+    }
+  ],
+  "benefit": "Throw off the fatigued condition with greater ease",
+  "source": {
+    "title": "Pathfinder #91: Battle of Bloodmarch Hills",
+    "page": 69,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Fortitude%20of%20Giants"
+  }
+}

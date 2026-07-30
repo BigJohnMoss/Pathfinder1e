@@ -1,0 +1,21 @@
+{
+  "id": "foment-the-blood",
+  "name": "Foment the Blood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "channel-energy"
+    },
+    {
+      "type": "rule",
+      "description": "orc"
+    }
+  ],
+  "benefit": "Give orcs a bonus on weapon damage and critical confirmation rolls instead of affecting them normally with your channel",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 141,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Foment%20the%20Blood"
+  }
+}

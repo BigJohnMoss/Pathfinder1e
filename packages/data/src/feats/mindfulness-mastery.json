@@ -1,0 +1,30 @@
+{
+  "id": "mindfulness-mastery",
+  "name": "Mindfulness Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 19
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    },
+    {
+      "type": "feat",
+      "id": "mindful-meditation"
+    },
+    {
+      "type": "level",
+      "minimum": 13
+    }
+  ],
+  "benefit": "Gain a second chance at saving against a failed charm, compulsion, emotion, or fear effect",
+  "source": {
+    "title": "Blood of the Beast",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mindfulness%20Mastery"
+  }
+}

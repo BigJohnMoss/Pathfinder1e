@@ -1,0 +1,22 @@
+{
+  "id": "overwhelming-phantom",
+  "name": "Overwhelming Phantom",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "phantom"
+    },
+    {
+      "type": "class-level",
+      "classId": "spiritualist",
+      "minimum": 15
+    }
+  ],
+  "benefit": "Your phantom can try to take control of living creatures",
+  "source": {
+    "title": "Occult Origins",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Overwhelming%20Phantom"
+  }
+}

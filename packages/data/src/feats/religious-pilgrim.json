@@ -1,0 +1,23 @@
+{
+  "id": "religious-pilgrim",
+  "name": "Religious Pilgrim",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (geography)",
+      "minimum": 2
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Gain bonuses to Will saves, Diplomacy checks, and Survival checks. Also buy non-magical religious items at a discount",
+  "source": {
+    "title": "Osirion, Land of the Pharaohs",
+    "page": 29,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Religious%20Pilgrim"
+  }
+}

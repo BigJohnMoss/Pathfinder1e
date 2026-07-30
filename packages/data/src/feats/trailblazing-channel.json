@@ -1,0 +1,21 @@
+{
+  "id": "trailblazing-channel",
+  "name": "Trailblazing Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Channel energy 3d6"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Desna"
+    }
+  ],
+  "benefit": "Creatures healed by your channeled energy are not impeded by difficult terrain",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 217,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Trailblazing%20Channel"
+  }
+}

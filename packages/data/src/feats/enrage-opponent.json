@@ -1,0 +1,26 @@
+{
+  "id": "enrage-opponent",
+  "name": "Enrage Opponent",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Amateur Swashbuckler ACG or panache class feature ACG"
+    },
+    {
+      "type": "feat",
+      "id": "persuasive"
+    }
+  ],
+  "benefit": "Lower angered opponent's defenses until she attacks you",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 82,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Enrage%20Opponent"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "signature-strike-taunt",
+  "name": "Signature Strike Taunt",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "precise-shot"
+    },
+    {
+      "type": "feat",
+      "id": "signature-strike-style"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-focus"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 9
+    }
+  ],
+  "benefit": "Inflict an AC penalty when you use Signature Strike Style",
+  "source": {
+    "title": "People of the Wastes",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Signature%20Strike%20Taunt"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "eternal-enmity",
+  "name": "Eternal Enmity",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "(see special)"
+    },
+    {
+      "type": "rule",
+      "description": "hatred racial trait"
+    }
+  ],
+  "benefit": "Deal +1d6 precision damage against hated foes",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 205,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eternal%20Enmity"
+  }
+}

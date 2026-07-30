@@ -1,0 +1,30 @@
+{
+  "id": "body-mastery",
+  "name": "Body Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "wisdom",
+      "minimum": 19
+    },
+    {
+      "type": "feat",
+      "id": "body-control"
+    },
+    {
+      "type": "feat",
+      "id": "meditation-master"
+    },
+    {
+      "type": "level",
+      "minimum": 15
+    }
+  ],
+  "benefit": "Gain DR 2/—.",
+  "source": {
+    "title": "Faiths and Philosophies",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Body%20Mastery"
+  }
+}

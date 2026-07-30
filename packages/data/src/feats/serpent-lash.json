@@ -1,0 +1,21 @@
+{
+  "id": "serpent-lash",
+  "name": "Serpent Lash",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
+    },
+    {
+      "type": "rule",
+      "description": "proficient in whip"
+    }
+  ],
+  "benefit": "Make additional disarm/trip attempts with a whip after you successfully disarm/trip",
+  "source": {
+    "title": "Rival Guide",
+    "page": 23,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Serpent%20Lash"
+  }
+}

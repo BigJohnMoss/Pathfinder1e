@@ -1,0 +1,22 @@
+{
+  "id": "martial-versatility",
+  "name": "Martial Versatility",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 4
+    },
+    {
+      "type": "rule",
+      "description": "human"
+    }
+  ],
+  "benefit": "One combat feat can be applied to all weapons within the same weapon group",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 78,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Martial%20Versatility"
+  }
+}

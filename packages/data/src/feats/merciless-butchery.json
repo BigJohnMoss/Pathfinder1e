@@ -1,0 +1,25 @@
+{
+  "id": "merciless-butchery",
+  "name": "Merciless Butchery",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dastardly-finish"
+    },
+    {
+      "type": "rule",
+      "description": "sneak attack +5d6"
+    },
+    {
+      "type": "feature",
+      "id": "studied-target"
+    }
+  ],
+  "benefit": "Attempt a coup de grace against a cowering, helpless, or stunned studied target as a standard action",
+  "source": {
+    "title": "Advanced Class Guide",
+    "page": 152,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Merciless%20Butchery"
+  }
+}

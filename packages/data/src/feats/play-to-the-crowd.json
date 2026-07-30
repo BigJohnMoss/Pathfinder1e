@@ -1,0 +1,32 @@
+{
+  "id": "play-to-the-crowd",
+  "name": "Play to the Crowd",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 19
+    },
+    {
+      "type": "feat",
+      "id": "ironclad-logic"
+    },
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Learn biases to assist your Diplomacy",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 88,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Play%20to%20the%20Crowd"
+  }
+}

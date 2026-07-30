@@ -1,0 +1,22 @@
+{
+  "id": "strength-of-wood",
+  "name": "Strength of Wood",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "constitution",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "gathlain"
+    }
+  ],
+  "benefit": "Once per day, gain DR 5/slashing for 1 minute",
+  "source": {
+    "title": "Wilderness Origins",
+    "page": 10,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Strength%20of%20Wood"
+  }
+}

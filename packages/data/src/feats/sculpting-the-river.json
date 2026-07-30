@@ -1,0 +1,25 @@
+{
+  "id": "sculpting-the-river",
+  "name": "Sculpting the River",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "dodge"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "rule",
+      "description": "base attack bonus +6 or monk level 6th"
+    }
+  ],
+  "benefit": "Use unarmed strikes to reduce a creature's attack bonus against creatures other than you",
+  "source": {
+    "title": "Martial Arts Handbook",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sculpting%20the%20River"
+  }
+}

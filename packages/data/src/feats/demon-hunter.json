@@ -1,0 +1,18 @@
+{
+  "id": "demon-hunter",
+  "name": "Demon Hunter",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Gain Knowledge and combat bonuses vs. demons",
+  "source": {
+    "title": "Inner Sea World Guide",
+    "page": 286,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Demon%20Hunter"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "stormstruck-shambler",
+  "name": "Stormstruck Shambler",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Shambling mound"
+    },
+    {
+      "type": "rule",
+      "description": "must have been struck by lightning"
+    }
+  ],
+  "benefit": "Charge your limbs with electricity",
+  "source": {
+    "title": "Dungeon Denizens Revisited",
+    "page": 61,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stormstruck%20Shambler"
+  }
+}

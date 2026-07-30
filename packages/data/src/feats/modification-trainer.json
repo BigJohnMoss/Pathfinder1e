@@ -1,0 +1,27 @@
+{
+  "id": "modification-trainer",
+  "name": "Modification Trainer",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "charisma",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "Armor Adept or Weapon Adept"
+    },
+    {
+      "type": "class-level",
+      "classId": "fighter",
+      "minimum": 4
+    }
+  ],
+  "benefit": "You can train others to use modified armor or weapons",
+  "source": {
+    "title": "Adventurer's Armory 2",
+    "page": 11,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Modification%20Trainer"
+  }
+}

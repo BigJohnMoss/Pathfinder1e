@@ -1,0 +1,18 @@
+{
+  "id": "kinetic-crafting",
+  "name": "Kinetic Crafting",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "class-level",
+      "classId": "kineticist",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Use your wild talents to craft magical items",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 24,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Kinetic%20Crafting"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "mobile-stronghold",
+  "name": "Mobile Stronghold",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 17
+    },
+    {
+      "type": "feat",
+      "id": "mobile-bulwark-style"
+    },
+    {
+      "type": "feat",
+      "id": "mobile-fortress"
+    },
+    {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "feat",
+      "id": "tower-shield-proficiency"
+    },
+    {
+      "type": "bab",
+      "minimum": 7
+    }
+  ],
+  "benefit": "Gain cover vs spells and total cover vs one attack as an immediate action",
+  "source": {
+    "title": "Armor Master's Handbook",
+    "page": 12,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Mobile%20Stronghold"
+  }
+}

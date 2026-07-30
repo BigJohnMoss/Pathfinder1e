@@ -1,0 +1,22 @@
+{
+  "id": "cypher-magic",
+  "name": "Cypher Magic",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "intelligence",
+      "minimum": 15
+    },
+    {
+      "type": "feat",
+      "id": "scribe-scroll"
+    }
+  ],
+  "benefit": "Cast spells from scrolls at +1 caster level",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 60,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cypher%20Magic"
+  }
+}

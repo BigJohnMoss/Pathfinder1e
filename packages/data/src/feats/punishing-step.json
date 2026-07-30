@@ -1,0 +1,22 @@
+{
+  "id": "punishing-step",
+  "name": "Punishing Step",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
+    }
+  ],
+  "benefit": "Gain a +2 circumstance bonus to attack against creatures that fail to use a maneuver on you",
+  "source": {
+    "title": "Monster Hunter's Handbook",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Punishing%20Step"
+  }
+}

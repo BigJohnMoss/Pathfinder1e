@@ -1,0 +1,12 @@
+{
+  "id": "cursed-conduit",
+  "name": "Cursed Conduit",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Resist the allure of cursed magic items",
+  "source": {
+    "title": "Blood of the Coven",
+    "page": 20,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cursed%20Conduit"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "advanced-defensive-combat-training",
+  "name": "Advanced Defensive Combat Training",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "defensive-combat-training"
+    },
+    {
+      "type": "rule",
+      "description": "Bellflower Network 10 TPA"
+    }
+  ],
+  "benefit": "Gain a +4 bonus to your CMD",
+  "source": {
+    "title": "Faction Guide",
+    "page": 56,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Advanced%20Defensive%20Combat%20Training"
+  }
+}

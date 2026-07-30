@@ -1,0 +1,26 @@
+{
+  "id": "hellcat-stealth",
+  "name": "Hellcat Stealth",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "skill-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(Stealth)"
+    },
+    {
+      "type": "skill",
+      "key": "Stealth",
+      "minimum": 6
+    }
+  ],
+  "benefit": "Make stealth checks in normal or bright light, even while observed",
+  "source": {
+    "title": "Cheliax, Empire of Devils",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Hellcat%20Stealth"
+  }
+}

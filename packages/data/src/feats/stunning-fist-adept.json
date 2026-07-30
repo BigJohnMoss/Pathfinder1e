@@ -1,0 +1,21 @@
+{
+  "id": "stunning-fist-adept",
+  "name": "Stunning Fist Adept",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "stunning-fist"
+    },
+    {
+      "type": "bab",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Add +1 to the saving throw DC of stunning fist.",
+  "source": {
+    "title": "Dragon Empires Primer",
+    "page": 25,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stunning%20Fist%20Adept"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "combat-advice",
+  "name": "Combat Advice",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "Aid another ally at a distance",
+  "source": {
+    "title": "Ranged Tactics Toolbox",
+    "page": 14,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Combat%20Advice"
+  }
+}

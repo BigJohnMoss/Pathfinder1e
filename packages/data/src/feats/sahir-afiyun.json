@@ -1,0 +1,25 @@
+{
+  "id": "sahir-afiyun",
+  "name": "Sahir-Afiyun",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "spell-focus"
+    },
+    {
+      "type": "rule",
+      "description": "(any)"
+    },
+    {
+      "type": "spell-access",
+      "id": "2nd-level-spells"
+    }
+  ],
+  "benefit": "Add pesh-related spells to your own",
+  "source": {
+    "title": "Black Markets",
+    "page": 18,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Sahir-Afiyun"
+  }
+}

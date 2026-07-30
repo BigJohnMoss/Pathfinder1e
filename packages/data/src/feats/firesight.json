@@ -1,0 +1,17 @@
+{
+  "id": "firesight",
+  "name": "Firesight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ifrit"
+    }
+  ],
+  "benefit": "See through fire and smoke without penalty",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 130,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Firesight"
+  }
+}

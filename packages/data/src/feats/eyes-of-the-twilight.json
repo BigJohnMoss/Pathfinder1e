@@ -1,0 +1,34 @@
+{
+  "id": "eyes-of-the-twilight",
+  "name": "Eyes of the Twilight",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "sharp-senses"
+    },
+    {
+      "type": "rule",
+      "description": "APG"
+    },
+    {
+      "type": "skill",
+      "key": "Perception",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "keen senses racial trait"
+    },
+    {
+      "type": "rule",
+      "description": "low-light vision"
+    }
+  ],
+  "benefit": "Creatures in dim light don’t gain concealment from you",
+  "source": {
+    "title": "Inner Sea Races",
+    "page": 206,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Eyes%20of%20the%20Twilight"
+  }
+}

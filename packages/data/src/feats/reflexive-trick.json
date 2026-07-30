@@ -1,0 +1,17 @@
+{
+  "id": "reflexive-trick",
+  "name": "Reflexive Trick",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feature",
+      "id": "mesmerist-tricks"
+    }
+  ],
+  "benefit": "Implant a new trick in yourself when you trigger a trick",
+  "source": {
+    "title": "Psychic Anthology",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Reflexive%20Trick"
+  }
+}

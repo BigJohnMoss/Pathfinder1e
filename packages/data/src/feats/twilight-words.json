@@ -1,0 +1,22 @@
+{
+  "id": "twilight-words",
+  "name": "Twilight Words",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 3
+    },
+    {
+      "type": "rule",
+      "description": "snowborn half-elf"
+    }
+  ],
+  "benefit": "Improve a creature's attuide using Diplomacy without sharing a language",
+  "source": {
+    "title": "Heroes from the Fringe",
+    "page": 22,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Twilight%20Words"
+  }
+}

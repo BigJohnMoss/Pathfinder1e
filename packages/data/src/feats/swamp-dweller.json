@@ -1,0 +1,22 @@
+{
+  "id": "swamp-dweller",
+  "name": "Swamp Dweller",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "strength",
+      "minimum": 13
+    },
+    {
+      "type": "rule",
+      "description": "must have visited the Hao Jin Tapestry"
+    }
+  ],
+  "benefit": "Gain a +2 bonus on swim checks, which doubles in marshy terrain",
+  "source": {
+    "title": "Plane-Hopper's Handbook",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swamp%20Dweller"
+  }
+}

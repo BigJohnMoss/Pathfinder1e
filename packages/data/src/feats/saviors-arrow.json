@@ -1,0 +1,25 @@
+{
+  "id": "saviors-arrow",
+  "name": "Savior's Arrow",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "spell-access",
+      "id": "cure-spells"
+    },
+    {
+      "type": "rule",
+      "description": "proficient with longbow"
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Erastil"
+    }
+  ],
+  "benefit": "Once per day, shoot an arrow that heals the target",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 215,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Savior's%20Arrow"
+  }
+}

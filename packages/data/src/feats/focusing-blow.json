@@ -1,0 +1,21 @@
+{
+  "id": "focusing-blow",
+  "name": "Focusing Blow",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "hobgoblin-discipline"
+    },
+    {
+      "type": "rule",
+      "description": "hobgoblin"
+    }
+  ],
+  "benefit": "Cause damage to break an ally from an ongoing mind-affecting effect",
+  "source": {
+    "title": "Advanced Race Guide",
+    "page": 124,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Focusing%20Blow"
+  }
+}

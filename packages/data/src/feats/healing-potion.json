@@ -1,0 +1,21 @@
+{
+  "id": "healing-potion",
+  "name": "Healing Potion",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "brew-potion"
+    },
+    {
+      "type": "spell-access",
+      "id": "cure-serious-wounds"
+    }
+  ],
+  "benefit": "Attach a healing effect to potions you create",
+  "source": {
+    "title": "Potions and Poisons",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Healing%20Potion"
+  }
+}

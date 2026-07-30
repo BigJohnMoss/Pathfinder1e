@@ -1,0 +1,21 @@
+{
+  "id": "inscribe-magical-tattoo",
+  "name": "Inscribe Magical Tattoo",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Craft (calligraphy, paintings, or tattoos) 5 ranks"
+    },
+    {
+      "type": "caster-level",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Learn to craft magical tattoos",
+  "source": {
+    "title": "Inner Sea Magic",
+    "page": 16,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Inscribe%20Magical%20Tattoo"
+  }
+}

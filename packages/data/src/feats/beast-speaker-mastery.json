@@ -1,0 +1,21 @@
+{
+  "id": "beast-speaker-mastery",
+  "name": "Beast Speaker Mastery",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "beast-speaker"
+    },
+    {
+      "type": "rule",
+      "description": "character level equal to or higher than that listed in your companion’s mastery entry"
+    }
+  ],
+  "benefit": "Your magical beast companion improves in power",
+  "source": {
+    "title": "Heroes of Golarion",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Beast%20Speaker%20Mastery"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "unspoken-bond",
+  "name": "Unspoken Bond",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 4
+    },
+    {
+      "type": "skill",
+      "key": "Sense Motive",
+      "minimum": 4
+    }
+  ],
+  "benefit": "Communicate simple thoughts without words",
+  "source": {
+    "title": "Druma, Profit and Prophecy",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unspoken%20Bond"
+  }
+}

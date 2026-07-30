@@ -1,0 +1,12 @@
+{
+  "id": "scholar",
+  "name": "Scholar",
+  "type": "general",
+  "prerequisites": [],
+  "benefit": "+2 on checks with two Knowledge skills",
+  "source": {
+    "title": "Adventurer's Guide",
+    "page": 125,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Scholar"
+  }
+}

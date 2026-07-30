@@ -1,0 +1,23 @@
+{
+  "id": "stylized-spell",
+  "name": "Stylized Spell",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Bluff",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Spellcraft",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Spell is difficult to identify and might be mistaken for a similar spell",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 93,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Stylized%20Spell"
+  }
+}

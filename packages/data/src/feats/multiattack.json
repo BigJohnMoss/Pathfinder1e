@@ -1,0 +1,17 @@
+{
+  "id": "multiattack",
+  "name": "Multiattack",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Three or more natural attacks"
+    }
+  ],
+  "benefit": "Reduce the penalty of your secondary attacks from -5 to -2.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 315,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Multiattack"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "babau-rogue-talent",
+  "name": "Babau Rogue Talent",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 17
+    },
+    {
+      "type": "rule",
+      "description": "babau"
+    }
+  ],
+  "benefit": "Gain a new rogue talent that helps with sneak attacks.",
+  "source": {
+    "title": "Demons Revisited",
+    "page": 8,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Babau%20Rogue%20Talent"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "lantern-style",
+  "name": "Lantern Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "point-blank-shot"
+    },
+    {
+      "type": "rule",
+      "description": "good or lawful alignment"
+    },
+    {
+      "type": "rule",
+      "description": "caster level 1st or monk level 1st"
+    }
+  ],
+  "benefit": "Your thrown weapons shed light for one round",
+  "source": {
+    "title": "Distant Realms",
+    "page": 33,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Lantern%20Style"
+  }
+}

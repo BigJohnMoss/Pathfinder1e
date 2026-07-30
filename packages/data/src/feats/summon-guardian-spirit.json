@@ -1,0 +1,17 @@
+{
+  "id": "summon-guardian-spirit",
+  "name": "Summon Guardian Spirit",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Ability to cast summon monster III or summon nature’s ally III"
+    }
+  ],
+  "benefit": "Learn to summon a guardian spirit, a longer lasting and more powerful summoned creature",
+  "source": {
+    "title": "Monster Summoner's Handbook",
+    "page": 26,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Summon%20Guardian%20Spirit"
+  }
+}

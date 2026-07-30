@@ -1,0 +1,21 @@
+{
+  "id": "blazing-channel",
+  "name": "Blazing Channel",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "turn-undead"
+    },
+    {
+      "type": "feature",
+      "id": "channel-positive-energy"
+    }
+  ],
+  "benefit": "Undead failing to save against your channel catch on fire",
+  "source": {
+    "title": "Cohorts and Companions",
+    "page": 15,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Blazing%20Channel"
+  }
+}

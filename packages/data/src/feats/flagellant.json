@@ -1,0 +1,25 @@
+{
+  "id": "flagellant",
+  "name": "Flagellant",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "endurance"
+    },
+    {
+      "type": "level",
+      "minimum": 7
+    },
+    {
+      "type": "rule",
+      "description": "worshiper of Zon-Kuthon"
+    }
+  ],
+  "benefit": "Gain a +4 bonus on saving throws against pain effects and nonlethal damage has a lesser effect on you",
+  "source": {
+    "title": "Inner Sea Gods",
+    "page": 212,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Flagellant"
+  }
+}

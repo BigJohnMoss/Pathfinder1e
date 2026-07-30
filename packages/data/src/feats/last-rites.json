@@ -1,0 +1,23 @@
+{
+  "id": "last-rites",
+  "name": "Last Rites",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Knowledge (planes)",
+      "minimum": 3
+    },
+    {
+      "type": "skill",
+      "key": "Knowledge (religion)",
+      "minimum": 3
+    }
+  ],
+  "benefit": "Damage haunts or undead that are vulnerable to ressurection with a touch attack",
+  "source": {
+    "title": "Planar Adventures",
+    "page": 30,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Last%20Rites"
+  }
+}

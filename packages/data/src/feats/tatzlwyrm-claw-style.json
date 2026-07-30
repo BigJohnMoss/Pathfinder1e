@@ -1,0 +1,31 @@
+{
+  "id": "tatzlwyrm-claw-style",
+  "name": "Tatzlwyrm Claw Style",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "ability",
+      "key": "dexterity",
+      "minimum": 13
+    },
+    {
+      "type": "feat",
+      "id": "improved-grapple"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "skill",
+      "key": "Escape Artist",
+      "minimum": 1
+    }
+  ],
+  "benefit": "Unarmed attacks deal slashing damage, force a creature to release a grappled ally.",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 21,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tatzlwyrm%20Claw%20Style"
+  }
+}

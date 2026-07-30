@@ -1,0 +1,29 @@
+{
+  "id": "disrupting-fist",
+  "name": "Disrupting Fist",
+  "type": "combat",
+  "prerequisites": [
+    {
+      "type": "feat",
+      "id": "channel-smite"
+    },
+    {
+      "type": "feat",
+      "id": "improved-unarmed-strike"
+    },
+    {
+      "type": "bab",
+      "minimum": 9
+    },
+    {
+      "type": "rule",
+      "description": "channel positive energy 4d6"
+    }
+  ],
+  "benefit": "Destroy an undead on a critical unarmed strike",
+  "source": {
+    "title": "Horror Adventures",
+    "page": 85,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Disrupting%20Fist"
+  }
+}

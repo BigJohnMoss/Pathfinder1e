@@ -1,0 +1,17 @@
+{
+  "id": "unusual-heritage-fetchling",
+  "name": "Unusual Heritage (Fetchling)",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Fetchling"
+    }
+  ],
+  "benefit": "Create a magical sensor while you sleep that can see into the Shadow Plane",
+  "source": {
+    "title": "Bastards of Golarion",
+    "page": 17,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Unusual%20Heritage%20(Fetchling)"
+  }
+}

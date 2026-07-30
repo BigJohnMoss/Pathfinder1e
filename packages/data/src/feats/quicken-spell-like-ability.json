@@ -1,0 +1,17 @@
+{
+  "id": "quicken-spell-like-ability",
+  "name": "Quicken Spell-Like Ability",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Spell-like ability at CL 10th or higher"
+    }
+  ],
+  "benefit": "Gain more uses with a spell-like ability as a Quickened version.",
+  "source": {
+    "title": "Pathfinder RPG Bestiary",
+    "page": 315,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Quicken%20Spell-Like%20Ability"
+  }
+}

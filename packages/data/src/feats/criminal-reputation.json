@@ -1,0 +1,23 @@
+{
+  "id": "criminal-reputation",
+  "name": "Criminal Reputation",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "skill",
+      "key": "Diplomacy",
+      "minimum": 5
+    },
+    {
+      "type": "skill",
+      "key": "Intimidate",
+      "minimum": 5
+    }
+  ],
+  "benefit": "Influence criminals more easily",
+  "source": {
+    "title": "Ultimate Intrigue",
+    "page": 81,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Criminal%20Reputation"
+  }
+}

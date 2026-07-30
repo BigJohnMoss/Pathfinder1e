@@ -1,0 +1,17 @@
+{
+  "id": "precocious-youth",
+  "name": "Precocious Youth",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Young age category"
+    }
+  ],
+  "benefit": "Lose a penalty for being young",
+  "source": {
+    "title": "Quests & Campaigns",
+    "page": 27,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Precocious%20Youth"
+  }
+}

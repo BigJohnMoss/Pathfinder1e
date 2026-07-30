@@ -1,0 +1,21 @@
+{
+  "id": "draconian-law",
+  "name": "Draconian Law",
+  "type": "general",
+  "prerequisites": [
+    {
+      "type": "rule",
+      "description": "Lawful alignment"
+    },
+    {
+      "type": "rule",
+      "description": "wyvaran"
+    }
+  ],
+  "benefit": "Gain a bonus to attack and damage when fighting a known lawbreaker.",
+  "source": {
+    "title": "Legacy of Dragons",
+    "page": 19,
+    "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Draconian%20Law"
+  }
+}
