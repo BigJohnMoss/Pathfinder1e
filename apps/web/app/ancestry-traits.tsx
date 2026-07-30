@@ -21,10 +21,10 @@ export function AncestryTraits({ ancestry, selectedIds, onChange }: {
         const conflicts = !checked && trait.replaces.some((id) => replacedIds.has(id));
         const replacedNames = trait.replaces.map((id) => ancestry.traits.find((base) => base.id === id)?.name ?? id).join(", ");
         return <label className="feature-row" key={trait.id}>
-          <span>
+          <span className="feature-row-copy">
             <strong>{trait.name}</strong>
-            <small>{trait.summary}</small>
-            <small>Replaces: {replacedNames}</small>
+            <small className="feature-row-summary">{trait.summary}</small>
+            <small className="feature-row-replaces"><b>Replaces:</b> {replacedNames}</small>
           </span>
           <input aria-label={trait.name} type="checkbox" checked={checked} disabled={conflicts}
             onChange={() => onChange(checked ? selectedIds.filter((id) => id !== trait.id) : [...selectedIds, trait.id])} />
