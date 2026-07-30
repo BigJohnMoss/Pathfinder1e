@@ -63,5 +63,12 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Wizard%20Wind%20Listener"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "manualRequirements": [
+    "Restricted to Sylph characters; that ancestry is not yet available in this builder."
+  ]
 }

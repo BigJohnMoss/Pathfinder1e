@@ -53,5 +53,12 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Dirty%20Fighter"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "manualRequirements": [
+    "Restricted to Orc characters; that ancestry is not yet available in this builder."
+  ]
 }

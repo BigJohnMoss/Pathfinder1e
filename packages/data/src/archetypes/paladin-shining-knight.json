@@ -1,12 +1,57 @@
 {
-  "id":"paladin-shining-knight",
-  "name":"Shining Knight",
-  "classId":"paladin",
-  "summary":"A consummate mounted champion whose divine grace protects her steed and whose charge terrifies smitten foes.",
-  "replacements":[
-    {"featureIds":["paladin-divine-health-3"],"features":[{"id":"shining-knight-skilled-rider-3","name":"Skilled Rider","level":3,"type":"core","summary":"Ignore armor check penalties on Ride checks and grant a ridden mount the benefit of Divine Grace."}]},
-    {"featureIds":["paladin-divine-bond-5"],"features":[{"id":"shining-knight-mounted-bond-5","name":"Bonded Mount","level":5,"type":"core","summary":"The Divine Bond must be a loyal celestial mount and otherwise advances as the standard Paladin mount bond.","uses":"once per day plus one every 4 levels after 5th"}]},
-    {"featureIds":["paladin-aura-of-justice-11"],"features":[{"id":"shining-knight-knights-charge-11","name":"Knight's Charge","level":11,"type":"core","summary":"Mounted charges do not provoke; a hit against a smite target forces a Will save or panics it for half Paladin level rounds."}]}
+  "id": "paladin-shining-knight",
+  "name": "Shining Knight",
+  "classId": "paladin",
+  "summary": "A consummate mounted champion whose divine grace protects her steed and whose charge terrifies smitten foes.",
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-divine-health-3"
+      ],
+      "features": [
+        {
+          "id": "shining-knight-skilled-rider-3",
+          "name": "Skilled Rider",
+          "level": 3,
+          "type": "core",
+          "summary": "Ignore armor check penalties on Ride checks and grant a ridden mount the benefit of Divine Grace."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "paladin-divine-bond-5"
+      ],
+      "features": [
+        {
+          "id": "shining-knight-mounted-bond-5",
+          "name": "Bonded Mount",
+          "level": 5,
+          "type": "core",
+          "summary": "The Divine Bond must be a loyal celestial mount and otherwise advances as the standard Paladin mount bond.",
+          "uses": "once per day plus one every 4 levels after 5th"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "paladin-aura-of-justice-11"
+      ],
+      "features": [
+        {
+          "id": "shining-knight-knights-charge-11",
+          "name": "Knight's Charge",
+          "level": 11,
+          "type": "core",
+          "summary": "Mounted charges do not provoke; a hit against a smite target forces a Will save or panics it for half Paladin level rounds."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"
+  },
+  "mechanicalCoverage": "full"
 }

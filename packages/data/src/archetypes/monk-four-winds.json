@@ -1,13 +1,75 @@
 {
-  "id":"monk-four-winds",
-  "name":"Monk of the Four Winds",
-  "classId":"monk",
-  "summary":"An elemental mystic who strikes with primal energy, slows time, assumes a great spirit's aspect, and reincarnates after death.",
-  "replacements":[
-    {"featureIds":["monk-stunning-fist-1"],"features":[{"id":"four-winds-elemental-fist-1","name":"Elemental Fist","level":1,"type":"bonus-feat","summary":"Gain Elemental Fist without meeting its prerequisites and increase its energy damage every 5 levels.","grantedFeatId":"elemental-fist","scaling":"1d6; +1d6 at 5th and every 5 levels"}]},
-    {"featureIds":["monk-abundant-step-12"],"features":[{"id":"four-winds-slow-time-12","name":"Slow Time","level":12,"type":"core","summary":"Spend 6 ki as a swift action to take three restricted standard actions during the turn; movement does not provoke.","uses":"6 ki"}]},
-    {"featureIds":["monk-timeless-body-17"],"features":[{"id":"four-winds-aspect-master-17","name":"Aspect Master","level":17,"type":"selectable","summary":"Permanently choose the Carp, Ki-Rin, Monkey, Oni, Owl, or Tiger spirit aspect.","choiceRequired":true,"optionGroupId":"four-winds-aspects"}]},
-    {"featureIds":["monk-perfect-self-20"],"features":[{"id":"four-winds-immortality-20","name":"Immortality","level":20,"type":"capstone","summary":"Stop aging and spontaneously reincarnate 24 hours after death at a previously visited place within 20 miles."}]}
+  "id": "monk-four-winds",
+  "name": "Monk of the Four Winds",
+  "classId": "monk",
+  "summary": "An elemental mystic who strikes with primal energy, slows time, assumes a great spirit's aspect, and reincarnates after death.",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-stunning-fist-1"
+      ],
+      "features": [
+        {
+          "id": "four-winds-elemental-fist-1",
+          "name": "Elemental Fist",
+          "level": 1,
+          "type": "bonus-feat",
+          "summary": "Gain Elemental Fist without meeting its prerequisites and increase its energy damage every 5 levels.",
+          "grantedFeatId": "elemental-fist",
+          "scaling": "1d6; +1d6 at 5th and every 5 levels"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-abundant-step-12"
+      ],
+      "features": [
+        {
+          "id": "four-winds-slow-time-12",
+          "name": "Slow Time",
+          "level": 12,
+          "type": "core",
+          "summary": "Spend 6 ki as a swift action to take three restricted standard actions during the turn; movement does not provoke.",
+          "uses": "6 ki"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-timeless-body-17"
+      ],
+      "features": [
+        {
+          "id": "four-winds-aspect-master-17",
+          "name": "Aspect Master",
+          "level": 17,
+          "type": "selectable",
+          "summary": "Permanently choose the Carp, Ki-Rin, Monkey, Oni, Owl, or Tiger spirit aspect.",
+          "choiceRequired": true,
+          "optionGroupId": "four-winds-aspects"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-perfect-self-20"
+      ],
+      "features": [
+        {
+          "id": "four-winds-immortality-20",
+          "name": "Immortality",
+          "level": 20,
+          "type": "capstone",
+          "summary": "Stop aging and spontaneously reincarnate 24 hours after death at a previously visited place within 20 miles."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"
+  },
+  "mechanicalCoverage": "full"
 }

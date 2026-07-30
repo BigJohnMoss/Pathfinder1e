@@ -277,8 +277,17 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
   const normalizedArchetypeIdsByClass = Object.fromEntries(Object.entries(isStringRecord(draft.archetypeIdsByClass)).filter(([selectedClassId, selectedArchetypeId]) =>
     validClassIds.has(selectedClassId) && (!archetypeIdsByClass || archetypeIdsByClass[selectedClassId]?.includes(selectedArchetypeId))
   ));
+  const normalizedArchetypeStacksByClass = Object.fromEntries(Object.entries(isStringArrayRecord(draft.archetypeStacksByClass, validClassIds)).flatMap(([selectedClassId, selectedArchetypeIds]) => {
+    const validIds = [...new Set(selectedArchetypeIds.filter(selectedArchetypeId =>
+      !archetypeIdsByClass || archetypeIdsByClass[selectedClassId]?.includes(selectedArchetypeId)
+    ))];
+    return validIds.length ? [[selectedClassId, validIds]] : [];
+  }));
   const legacyArchetypeId = typeof draft.archetypeId === "string" && (!archetypeIds || archetypeIds.includes(draft.archetypeId)) ? draft.archetypeId : "";
   if (!normalizedArchetypeIdsByClass[draft.classId] && legacyArchetypeId) normalizedArchetypeIdsByClass[draft.classId] = legacyArchetypeId;
+  for (const [selectedClassId, selectedArchetypeId] of Object.entries(normalizedArchetypeIdsByClass)) {
+    normalizedArchetypeStacksByClass[selectedClassId] = [...new Set([selectedArchetypeId, ...(normalizedArchetypeStacksByClass[selectedClassId] ?? [])])];
+  }
   const preparedSpellsByClass = isStringArrayRecord(draft.preparedSpellsByClass, validClassIds);
   const spellSlotUsesByClass = isNestedRankRecord(draft.spellSlotUsesByClass, validClassIds);
   const prestigeSpellcastingTargets = Object.fromEntries(Object.entries(isStringArrayRecord(draft.prestigeSpellcastingTargets, validClassIds)).map(([prestigeClassId, targetIds]) => [prestigeClassId, [...new Set(targetIds.filter(classId => validClassIds.has(classId) && classId !== prestigeClassId))].slice(0, 2)]));
@@ -303,6 +312,7 @@ export function normalizeCharacterDraft(value, { classIds = null, ancestryIds = 
     classLevels: normalizedClassLevels,
     archetypeId: normalizedArchetypeIdsByClass[draft.classId] ?? legacyArchetypeId,
     archetypeIdsByClass: normalizedArchetypeIdsByClass,
+    archetypeStacksByClass: normalizedArchetypeStacksByClass,
     prestigeSpellcastingTargets,
     ancestryId: typeof draft.ancestryId === "string" && (!ancestryIds || ancestryIds.includes(draft.ancestryId)) ? draft.ancestryId : "human",
     selectedAlternateRacialTraitIds: Array.isArray(draft.selectedAlternateRacialTraitIds) ? draft.selectedAlternateRacialTraitIds.filter(id => typeof id === "string") : [],
@@ -367,6 +377,43 @@ export function applyArchetype(characterClass, archetype) {
     classSkills: [...new Set(characterClass.classSkills.filter(skill => !(archetype.classSkillRemovals ?? []).includes(skill)).concat(archetype.classSkillAdditions ?? []))],
     features: [...retained, ...replacements].sort((left, right) => left.level - right.level || left.name.localeCompare(right.name))
   };
+}
+
+function archetypeReplacementKeys(archetype) {
+  return new Set(archetype?.replacements?.flatMap(replacement => [
+    ...(replacement.featureIds ?? []).map(id => `feature:${id}`),
+    ...(replacement.progressionKeys ?? []).map(key => `progression:${key}`)
+  ]).filter(key => !key.startsWith("feature:nested-")) ?? []);
+}
+
+export function archetypeConflictReasons(left, right) {
+  if (!left || !right) return [];
+  if (left.classId !== right.classId) return ["Archetypes belong to different classes."];
+  const leftKeys = archetypeReplacementKeys(left);
+  const conflicts = [...archetypeReplacementKeys(right)].filter(key => leftKeys.has(key));
+  const nested = (left.nestedReplacements ?? []).filter(replacement =>
+    (right.nestedReplacements ?? []).some(candidate => candidate.toLowerCase() === replacement.toLowerCase())
+  );
+  return [
+    ...conflicts.map(key => `Both replace ${key.replace(/^(feature|progression):/, "").replace(/-/g, " ")}.`),
+    ...nested.map(replacement => `Both replace ${replacement}.`)
+  ];
+}
+
+export function compatibleArchetypes(selected, candidate) {
+  return !selected.some(archetype => archetypeConflictReasons(archetype, candidate).length > 0);
+}
+
+export function applyArchetypes(characterClass, archetypes = []) {
+  const selected = archetypes.filter(archetype => archetype?.classId === characterClass.id);
+  for (let index = 0; index < selected.length; index += 1) {
+    for (let other = index + 1; other < selected.length; other += 1) {
+      const conflicts = archetypeConflictReasons(selected[index], selected[other]);
+      if (conflicts.length) throw new Error(`${selected[index].name} conflicts with ${selected[other].name}: ${conflicts.join(" ")}`);
+    }
+  }
+  const applied = selected.reduce((current, archetype) => applyArchetype(current, archetype), characterClass);
+  return selected.length ? { ...applied, name: `${characterClass.name} (${selected.map(archetype => archetype.name).join(" + ")})` } : applied;
 }
 
 export function normalizeSelectedTraits(selectedTraitIds, traits, slotCount = 2) {

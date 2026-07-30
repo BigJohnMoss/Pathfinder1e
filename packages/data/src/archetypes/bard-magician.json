@@ -5,7 +5,9 @@
   "summary": "A spell-focused performer who manipulates magical energy, counterspells, and an expanded arcane repertoire.",
   "replacements": [
     {
-      "progressionKeys": ["bard-inspire-courage"],
+      "progressionKeys": [
+        "bard-inspire-courage"
+      ],
       "features": [
         {
           "id": "magician-dweomercraft-1",
@@ -19,7 +21,9 @@
       ]
     },
     {
-      "featureIds": ["bard-dirge-of-doom-8"],
+      "featureIds": [
+        "bard-dirge-of-doom-8"
+      ],
       "features": [
         {
           "id": "magician-spell-suppression-8",
@@ -33,7 +37,9 @@
       ]
     },
     {
-      "featureIds": ["bard-frightening-tune-14"],
+      "featureIds": [
+        "bard-frightening-tune-14"
+      ],
       "features": [
         {
           "id": "magician-metamagic-mastery-14",
@@ -46,7 +52,9 @@
       ]
     },
     {
-      "featureIds": ["bardic-knowledge-1"],
+      "featureIds": [
+        "bardic-knowledge-1"
+      ],
       "features": [
         {
           "id": "magician-magical-talent-1",
@@ -59,7 +67,9 @@
       ]
     },
     {
-      "featureIds": ["bard-countersong-1"],
+      "featureIds": [
+        "bard-countersong-1"
+      ],
       "features": [
         {
           "id": "magician-improved-counterspell-1",
@@ -72,7 +82,9 @@
       ]
     },
     {
-      "featureIds": ["bard-well-versed-2"],
+      "featureIds": [
+        "bard-well-versed-2"
+      ],
       "features": [
         {
           "id": "magician-extended-performance-2",
@@ -84,17 +96,61 @@
       ]
     },
     {
-      "progressionKeys": ["bard-versatile-performance"],
+      "progressionKeys": [
+        "bard-versatile-performance"
+      ],
       "features": [
-        {"id":"magician-expanded-repertoire-2","name":"Expanded Repertoire Spell 1","level":2,"type":"selectable","summary":"Add one spell you can cast from any arcane spell list to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"},
-        {"id":"magician-expanded-repertoire-6","name":"Expanded Repertoire Spell 2","level":6,"type":"selectable","summary":"Add another legal arcane spell to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"},
-        {"id":"magician-expanded-repertoire-10","name":"Expanded Repertoire Spell 3","level":10,"type":"selectable","summary":"Add another legal arcane spell to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"},
-        {"id":"magician-expanded-repertoire-14","name":"Expanded Repertoire Spell 4","level":14,"type":"selectable","summary":"Add another legal arcane spell to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"},
-        {"id":"magician-expanded-repertoire-18","name":"Expanded Repertoire Spell 5","level":18,"type":"selectable","summary":"Add another legal arcane spell to your spells known.","choiceRequired":true,"optionGroupId":"magician-expanded-repertoire"}
+        {
+          "id": "magician-expanded-repertoire-2",
+          "name": "Expanded Repertoire Spell 1",
+          "level": 2,
+          "type": "selectable",
+          "summary": "Add one spell you can cast from any arcane spell list to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "magician-expanded-repertoire"
+        },
+        {
+          "id": "magician-expanded-repertoire-6",
+          "name": "Expanded Repertoire Spell 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Add another legal arcane spell to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "magician-expanded-repertoire"
+        },
+        {
+          "id": "magician-expanded-repertoire-10",
+          "name": "Expanded Repertoire Spell 3",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Add another legal arcane spell to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "magician-expanded-repertoire"
+        },
+        {
+          "id": "magician-expanded-repertoire-14",
+          "name": "Expanded Repertoire Spell 4",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Add another legal arcane spell to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "magician-expanded-repertoire"
+        },
+        {
+          "id": "magician-expanded-repertoire-18",
+          "name": "Expanded Repertoire Spell 5",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Add another legal arcane spell to your spells known.",
+          "choiceRequired": true,
+          "optionGroupId": "magician-expanded-repertoire"
+        }
       ]
     },
     {
-      "progressionKeys": ["bard-lore-master"],
+      "progressionKeys": [
+        "bard-lore-master"
+      ],
       "features": [
         {
           "id": "magician-arcane-bond-5",
@@ -109,7 +165,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-jack-of-all-trades"],
+      "progressionKeys": [
+        "bard-jack-of-all-trades"
+      ],
       "features": [
         {
           "id": "magician-wand-mastery-10",
@@ -132,5 +190,6 @@
     "title": "Advanced Player's Guide",
     "page": null,
     "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
-  }
+  },
+  "mechanicalCoverage": "full"
 }

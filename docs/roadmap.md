@@ -79,8 +79,10 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - archetypes and class paths — catalogue complete for all 624 published entries across
   the 13 supported classes: 623 selectors plus Totem Warrior's rage-power representation,
   with sourced rules text, reusable replacement progressions, persistence, and
-  nested domain/school-power filtering. Bespoke effects without an existing
-  builder subsystem remain descriptive.
+  nested domain/school-power filtering. The selector is searchable, compatible
+  archetypes can stack, conflicting replacements and ancestry restrictions are
+  enforced, and every entry has an explicit mechanical-coverage status. Bespoke
+  effects without an existing builder subsystem remain descriptive.
 - subdomains - complete: all 66 unique APG subdomains, including Cloud, Wind, Caves, Metal, Feather,
   Fur, Construct, Toil, Protean, Love, Lust, Family, Home, Loss, Night, Murder,
   Undead, Catastrophe, Rage, Daemon, Demon, Devil, Ash, Smoke, Agathion, Archon,

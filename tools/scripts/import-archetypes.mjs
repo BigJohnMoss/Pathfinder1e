@@ -180,6 +180,8 @@ for (const [index, entry] of entries.entries()) {
     classId,
     summary: entry.summary,
     replacesText: entry.replacesText,
+    mechanicalCoverage: "partial",
+    mechanicalNotes: ["Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."],
     nestedReplacements: nestedReplacements.length ? nestedReplacements : featureIds.length ? undefined : [entry.replacesText],
     replacements: [{ featureIds: featureIds.length ? featureIds : [`nested-${slug(entry.replacesText)}`], features }],
     source: { title: "Archives of Nethys", page: null, url: entry.url }

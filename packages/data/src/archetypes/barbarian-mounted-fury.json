@@ -1,4 +1,45 @@
-{"id":"barbarian-mounted-fury","name":"Mounted Fury","classId":"barbarian","summary":"A mounted barbarian whose speed and rage empower a loyal feral mount.","replacements":[
-{"featureIds":["fast-movement-1"],"features":[{"id":"mounted-fury-fast-rider-1","name":"Fast Rider","level":1,"type":"core","summary":"Increase the speed of any mount you ride by 10 feet."}]},
-{"featureIds":["uncanny-dodge-2","improved-uncanny-dodge-5"],"features":[{"id":"mounted-fury-bestial-mount-5","name":"Bestial Mount","level":5,"type":"selectable","summary":"Gain a rideable animal companion using your barbarian level –4 as effective druid level; it gains +2 Strength while you rage mounted.","choiceRequired":true,"optionGroupId":"mounted-fury-mounts"}]}],
-"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"}}
+{
+  "id": "barbarian-mounted-fury",
+  "name": "Mounted Fury",
+  "classId": "barbarian",
+  "summary": "A mounted barbarian whose speed and rage empower a loyal feral mount.",
+  "replacements": [
+    {
+      "featureIds": [
+        "fast-movement-1"
+      ],
+      "features": [
+        {
+          "id": "mounted-fury-fast-rider-1",
+          "name": "Fast Rider",
+          "level": 1,
+          "type": "core",
+          "summary": "Increase the speed of any mount you ride by 10 feet."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "uncanny-dodge-2",
+        "improved-uncanny-dodge-5"
+      ],
+      "features": [
+        {
+          "id": "mounted-fury-bestial-mount-5",
+          "name": "Bestial Mount",
+          "level": 5,
+          "type": "selectable",
+          "summary": "Gain a rideable animal companion using your barbarian level –4 as effective druid level; it gains +2 Strength while you rage mounted.",
+          "choiceRequired": true,
+          "optionGroupId": "mounted-fury-mounts"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/barbarian.html"
+  },
+  "mechanicalCoverage": "full"
+}

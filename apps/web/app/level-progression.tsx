@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type ProgressionFeature = {
   id: string;
   name: string;
@@ -24,6 +26,11 @@ export function LevelProgression({
   onReviewSection: (section: "overview" | "skills" | "feats" | "features" | "spells") => void;
 }) {
   const levels = Array.from({ length: 20 }, (_, index) => index + 1);
+  const [showAllLevels, setShowAllLevels] = useState(false);
+  const visibleLevels = showAllLevels ? levels : levels.filter(level =>
+    level === selectedLevel || level === currentLevel || level === Math.min(20, currentLevel + 1) ||
+    features.some(feature => feature.level === level && feature.choiceRequired && level <= currentLevel && !selectedOptions[feature.id])
+  );
   const selectedFeatures = features.filter((feature) => feature.level === selectedLevel);
   const requiredFeatures = selectedFeatures.filter((feature) => feature.choiceRequired);
   const unresolvedFeatures = requiredFeatures.filter((feature) => !selectedOptions[feature.id]);
@@ -39,10 +46,10 @@ export function LevelProgression({
     <div className="sidebar-section-heading">
       <p className="eyebrow">PROGRESSION</p>
       <h2 id="level-progression-heading">Levels 1–20</h2>
-      <p>Select any level to review what it grants. Character level changes remain in the details above.</p>
+      <p>Review the current level, the next level, and any unresolved choices. Expand the full timeline when needed.</p>
     </div>
     <ol className="level-track" aria-label="Character advancement steps">
-      {levels.map((level) => {
+      {visibleLevels.map((level) => {
         const levelFeatures = features.filter((feature) => feature.level === level);
         const needsChoice = levelFeatures.some((feature) => feature.choiceRequired && !selectedOptions[feature.id]);
         const state = level < currentLevel ? "complete" : level === currentLevel ? needsChoice ? "attention" : "current" : "upcoming";
@@ -70,6 +77,9 @@ export function LevelProgression({
         </li>;
       })}
     </ol>
+    <button type="button" className="level-track-toggle" aria-expanded={showAllLevels} onClick={() => setShowAllLevels(current => !current)}>
+      {showAllLevels ? "Show relevant levels" : "View all 20 levels"}
+    </button>
     <article className="level-detail" aria-live="polite">
       <p className="eyebrow">LEVEL {selectedLevel}</p>
       <h3>{selectedState}</h3>

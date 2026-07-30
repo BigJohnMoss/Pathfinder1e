@@ -5,7 +5,9 @@
   "summary": "A fierce tribal war-singer who turns critical blows, rage, and heroic summons into battle performances.",
   "replacements": [
     {
-      "featureIds": ["bard-fascinate-1"],
+      "featureIds": [
+        "bard-fascinate-1"
+      ],
       "features": [
         {
           "id": "savage-skald-inspiring-blow-1",
@@ -18,7 +20,9 @@
       ]
     },
     {
-      "featureIds": ["bard-suggestion-6"],
+      "featureIds": [
+        "bard-suggestion-6"
+      ],
       "features": [
         {
           "id": "savage-skald-incite-rage-6",
@@ -31,7 +35,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-jack-of-all-trades"],
+      "progressionKeys": [
+        "bard-jack-of-all-trades"
+      ],
       "features": [
         {
           "id": "savage-skald-song-of-the-fallen-10",
@@ -45,7 +51,9 @@
       ]
     },
     {
-      "featureIds": ["bard-soothing-performance-12"],
+      "featureIds": [
+        "bard-soothing-performance-12"
+      ],
       "features": [
         {
           "id": "savage-skald-berserkergang-12",
@@ -59,7 +67,9 @@
       ]
     },
     {
-      "featureIds": ["bard-mass-suggestion-18"],
+      "featureIds": [
+        "bard-mass-suggestion-18"
+      ],
       "features": [
         {
           "id": "savage-skald-battle-song-18",
@@ -76,5 +86,6 @@
     "title": "Advanced Player's Guide",
     "page": null,
     "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
-  }
+  },
+  "mechanicalCoverage": "full"
 }

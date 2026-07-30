@@ -1,1 +1,42 @@
-{"id":"rogue-scout","name":"Scout","classId":"rogue","summary":"A mobile wilderness rogue who creates sneak-attack openings by charging and skirmishing.","replacements":[{"featureIds":["uncanny-dodge-4"],"features":[{"id":"scout-charge-4","name":"Scout's Charge","level":4,"type":"core","summary":"Your charge attack deals sneak attack damage as though the target were flat-footed, unless it has uncanny dodge."}]},{"featureIds":["improved-uncanny-dodge-8"],"features":[{"id":"scout-skirmisher-8","name":"Skirmisher","level":8,"type":"core","summary":"After moving more than 10 feet, your first attack deals sneak attack as though the target were flat-footed, unless it has uncanny dodge."}]}],"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"}}
+{
+  "id": "rogue-scout",
+  "name": "Scout",
+  "classId": "rogue",
+  "summary": "A mobile wilderness rogue who creates sneak-attack openings by charging and skirmishing.",
+  "replacements": [
+    {
+      "featureIds": [
+        "uncanny-dodge-4"
+      ],
+      "features": [
+        {
+          "id": "scout-charge-4",
+          "name": "Scout's Charge",
+          "level": 4,
+          "type": "core",
+          "summary": "Your charge attack deals sneak attack damage as though the target were flat-footed, unless it has uncanny dodge."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "improved-uncanny-dodge-8"
+      ],
+      "features": [
+        {
+          "id": "scout-skirmisher-8",
+          "name": "Skirmisher",
+          "level": 8,
+          "type": "core",
+          "summary": "After moving more than 10 feet, your first attack deals sneak attack as though the target were flat-footed, unless it has uncanny dodge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"
+  },
+  "mechanicalCoverage": "full"
+}

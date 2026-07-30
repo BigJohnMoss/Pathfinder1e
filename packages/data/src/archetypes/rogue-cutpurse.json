@@ -1,1 +1,42 @@
-{"id":"rogue-cutpurse","name":"Cutpurse","classId":"rogue","summary":"A practiced street thief who sizes up marks and steals during a sudden attack.","replacements":[{"featureIds":["trapfinding-1"],"features":[{"id":"cutpurse-measure-mark-1","name":"Measure the Mark","level":1,"type":"core","summary":"Learn a target's Perception result before deciding whether to attempt Sleight of Hand, and Bluff away an aborted attempt."}]},{"progressionKeys":["rogue-trap-sense"],"features":[{"id":"cutpurse-stab-grab-3","name":"Stab and Grab","level":3,"type":"core","summary":"As a full-round action, attack and steal from the target; sneak attack enables this during normal combat and imposes –5 Perception."}]}],"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"}}
+{
+  "id": "rogue-cutpurse",
+  "name": "Cutpurse",
+  "classId": "rogue",
+  "summary": "A practiced street thief who sizes up marks and steals during a sudden attack.",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1"
+      ],
+      "features": [
+        {
+          "id": "cutpurse-measure-mark-1",
+          "name": "Measure the Mark",
+          "level": 1,
+          "type": "core",
+          "summary": "Learn a target's Perception result before deciding whether to attempt Sleight of Hand, and Bluff away an aborted attempt."
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "rogue-trap-sense"
+      ],
+      "features": [
+        {
+          "id": "cutpurse-stab-grab-3",
+          "name": "Stab and Grab",
+          "level": 3,
+          "type": "core",
+          "summary": "As a full-round action, attack and steal from the target; sneak attack enables this during normal combat and imposes –5 Perception."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"
+  },
+  "mechanicalCoverage": "full"
+}

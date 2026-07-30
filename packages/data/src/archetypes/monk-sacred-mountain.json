@@ -1,14 +1,90 @@
 {
-  "id":"monk-sacred-mountain",
-  "name":"Monk of the Sacred Mountain",
-  "classId":"monk",
-  "summary":"An immovable ascetic who trades agility for natural armor, rooted defense, damage reduction, and a supernatural vow of silence.",
-  "replacements":[
-    {"featureIds":["monk-evasion-2"],"features":[{"id":"sacred-mountain-iron-monk-2","name":"Iron Monk","level":2,"type":"bonus-feat","summary":"Gain Toughness without meeting its prerequisites and gain +1 natural armor.","grantedFeatId":"toughness","scaling":"+1 natural armor"}]},
-    {"progressionKeys":["slow-fall"],"features":[{"id":"sacred-mountain-bastion-stance-4","name":"Bastion Stance","level":4,"type":"scaling","summary":"If you begin and end your turn in the same space, resist being knocked prone or forcibly moved.","scaling":"immune to forced movement at 16th"}]},
-    {"featureIds":["monk-high-jump-5"],"features":[{"id":"sacred-mountain-iron-limb-defense-5","name":"Iron Limb Defense","level":5,"type":"core","summary":"While remaining in place, gain +2 shield AC and CMD, or spend 1 ki for +4 until next turn.","uses":"1 ki for improved bonus"}]},
-    {"featureIds":["monk-improved-evasion-9"],"features":[{"id":"sacred-mountain-adamantine-monk-9","name":"Adamantine Monk DR 1/—","level":9,"type":"scaling","summary":"Gain scaling damage reduction and spend 1 ki to double it until the next turn.","scaling":"DR +1 every 3 levels after 9th","uses":"1 ki to double"}]},
-    {"featureIds":["monk-tongue-of-sun-and-moon-17"],"features":[{"id":"sacred-mountain-vow-of-silence-17","name":"Vow of Silence","level":17,"type":"core","summary":"While maintaining silence, gain +2 insight AC and CMD and +4 on Sense Motive, Stealth, and Perception; speaking suppresses it for 24 hours."}]}
+  "id": "monk-sacred-mountain",
+  "name": "Monk of the Sacred Mountain",
+  "classId": "monk",
+  "summary": "An immovable ascetic who trades agility for natural armor, rooted defense, damage reduction, and a supernatural vow of silence.",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-evasion-2"
+      ],
+      "features": [
+        {
+          "id": "sacred-mountain-iron-monk-2",
+          "name": "Iron Monk",
+          "level": 2,
+          "type": "bonus-feat",
+          "summary": "Gain Toughness without meeting its prerequisites and gain +1 natural armor.",
+          "grantedFeatId": "toughness",
+          "scaling": "+1 natural armor"
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "slow-fall"
+      ],
+      "features": [
+        {
+          "id": "sacred-mountain-bastion-stance-4",
+          "name": "Bastion Stance",
+          "level": 4,
+          "type": "scaling",
+          "summary": "If you begin and end your turn in the same space, resist being knocked prone or forcibly moved.",
+          "scaling": "immune to forced movement at 16th"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-high-jump-5"
+      ],
+      "features": [
+        {
+          "id": "sacred-mountain-iron-limb-defense-5",
+          "name": "Iron Limb Defense",
+          "level": 5,
+          "type": "core",
+          "summary": "While remaining in place, gain +2 shield AC and CMD, or spend 1 ki for +4 until next turn.",
+          "uses": "1 ki for improved bonus"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-improved-evasion-9"
+      ],
+      "features": [
+        {
+          "id": "sacred-mountain-adamantine-monk-9",
+          "name": "Adamantine Monk DR 1/—",
+          "level": 9,
+          "type": "scaling",
+          "summary": "Gain scaling damage reduction and spend 1 ki to double it until the next turn.",
+          "scaling": "DR +1 every 3 levels after 9th",
+          "uses": "1 ki to double"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-tongue-of-sun-and-moon-17"
+      ],
+      "features": [
+        {
+          "id": "sacred-mountain-vow-of-silence-17",
+          "name": "Vow of Silence",
+          "level": 17,
+          "type": "core",
+          "summary": "While maintaining silence, gain +2 insight AC and CMD and +4 on Sense Motive, Stealth, and Perception; speaking suppresses it for 24 hours."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"
+  },
+  "mechanicalCoverage": "full"
 }

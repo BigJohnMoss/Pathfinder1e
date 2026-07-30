@@ -1,18 +1,77 @@
 {
-  "id":"paladin-warrior-holy-light",
-  "name":"Warrior of the Holy Light",
-  "classId":"paladin",
-  "summary":"A spell-less Paladin who converts lay on hands into an expanding nimbus of protection, healing, energy resistance, and holy radiance.",
-  "removesSpellcasting":true,
-  "replacements":[
-    {"progressionKeys":["paladin-spellcasting"],"features":[
-      {"id":"holy-light-power-faith-4","name":"Power of Faith","level":4,"type":"scaling","summary":"Gain an extra lay on hands use and spend one use to create a 30-foot, 1-minute nimbus granting allies +1 morale AC, attacks, damage, and fear saves.","scaling":"one additional lay on hands use every 4 levels"},
-      {"id":"holy-light-power-faith-8","name":"Power of Faith (Restoration)","level":8,"type":"scaling","summary":"The nimbus heals 1d4 ability damage from each ally once per day.","scaling":"2d4 at 20th"},
-      {"id":"holy-light-power-faith-12","name":"Power of Faith (Daylight)","level":12,"type":"scaling","summary":"The nimbus functions as daylight and grants resistance 10 against one selected energy type.","scaling":"resistance 20 at 20th"},
-      {"id":"holy-light-power-faith-16","name":"Power of Faith (Fortification)","level":16,"type":"scaling","summary":"The nimbus gives allies a 25% chance to negate critical hits.","scaling":"50% at 20th"},
-      {"id":"holy-light-power-faith-20","name":"Power of Faith (Perfect Nimbus)","level":20,"type":"capstone","summary":"The nimbus expands to 60 feet and improves its morale bonus, restoration, energy resistance, and critical-hit protection."}
-    ]},
-    {"featureIds":["paladin-aura-of-faith-14"],"features":[{"id":"holy-light-shining-light-14","name":"Shining Light","level":14,"type":"scaling","summary":"Burst holy light in 30 feet to damage and blind evil creatures while healing and blessing good creatures.","scaling":"1d6 per 2 Paladin levels","uses":"once per day; +1 at 17th and 20th"}]}
+  "id": "paladin-warrior-holy-light",
+  "name": "Warrior of the Holy Light",
+  "classId": "paladin",
+  "summary": "A spell-less Paladin who converts lay on hands into an expanding nimbus of protection, healing, energy resistance, and holy radiance.",
+  "removesSpellcasting": true,
+  "replacements": [
+    {
+      "progressionKeys": [
+        "paladin-spellcasting"
+      ],
+      "features": [
+        {
+          "id": "holy-light-power-faith-4",
+          "name": "Power of Faith",
+          "level": 4,
+          "type": "scaling",
+          "summary": "Gain an extra lay on hands use and spend one use to create a 30-foot, 1-minute nimbus granting allies +1 morale AC, attacks, damage, and fear saves.",
+          "scaling": "one additional lay on hands use every 4 levels"
+        },
+        {
+          "id": "holy-light-power-faith-8",
+          "name": "Power of Faith (Restoration)",
+          "level": 8,
+          "type": "scaling",
+          "summary": "The nimbus heals 1d4 ability damage from each ally once per day.",
+          "scaling": "2d4 at 20th"
+        },
+        {
+          "id": "holy-light-power-faith-12",
+          "name": "Power of Faith (Daylight)",
+          "level": 12,
+          "type": "scaling",
+          "summary": "The nimbus functions as daylight and grants resistance 10 against one selected energy type.",
+          "scaling": "resistance 20 at 20th"
+        },
+        {
+          "id": "holy-light-power-faith-16",
+          "name": "Power of Faith (Fortification)",
+          "level": 16,
+          "type": "scaling",
+          "summary": "The nimbus gives allies a 25% chance to negate critical hits.",
+          "scaling": "50% at 20th"
+        },
+        {
+          "id": "holy-light-power-faith-20",
+          "name": "Power of Faith (Perfect Nimbus)",
+          "level": 20,
+          "type": "capstone",
+          "summary": "The nimbus expands to 60 feet and improves its morale bonus, restoration, energy resistance, and critical-hit protection."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "paladin-aura-of-faith-14"
+      ],
+      "features": [
+        {
+          "id": "holy-light-shining-light-14",
+          "name": "Shining Light",
+          "level": 14,
+          "type": "scaling",
+          "summary": "Burst holy light in 30 feet to damage and blind evil creatures while healing and blessing good creatures.",
+          "scaling": "1d6 per 2 Paladin levels",
+          "uses": "once per day; +1 at 17th and 20th"
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"
+  },
+  "mechanicalCoverage": "full"
 }

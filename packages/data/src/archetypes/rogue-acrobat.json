@@ -1,1 +1,44 @@
-{"id":"rogue-acrobat","name":"Acrobat","classId":"rogue","summary":"A lightly armored daredevil who turns mobility training into reliable second chances.","replacements":[{"featureIds":["trapfinding-1"],"features":[{"id":"acrobat-expert-acrobat-1","name":"Expert Acrobat","level":1,"type":"core","summary":"Ignore light-armor check penalties on key mobility skills; while unarmored gain +2 Acrobatics and Fly."}]},{"progressionKeys":["rogue-trap-sense"],"features":[{"id":"acrobat-second-chance-3","name":"Second Chance","level":3,"type":"scaling","summary":"Reroll a failed Acrobatics, Climb, or Fly check at –5 and keep the second result.","scaling":"one additional daily use every 3 levels","uses":"1/day"}]}],"source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"}}
+{
+  "id": "rogue-acrobat",
+  "name": "Acrobat",
+  "classId": "rogue",
+  "summary": "A lightly armored daredevil who turns mobility training into reliable second chances.",
+  "replacements": [
+    {
+      "featureIds": [
+        "trapfinding-1"
+      ],
+      "features": [
+        {
+          "id": "acrobat-expert-acrobat-1",
+          "name": "Expert Acrobat",
+          "level": 1,
+          "type": "core",
+          "summary": "Ignore light-armor check penalties on key mobility skills; while unarmored gain +2 Acrobatics and Fly."
+        }
+      ]
+    },
+    {
+      "progressionKeys": [
+        "rogue-trap-sense"
+      ],
+      "features": [
+        {
+          "id": "acrobat-second-chance-3",
+          "name": "Second Chance",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Reroll a failed Acrobatics, Climb, or Fly check at –5 and keep the second result.",
+          "scaling": "one additional daily use every 3 levels",
+          "uses": "1/day"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/rogue.html"
+  },
+  "mechanicalCoverage": "full"
+}

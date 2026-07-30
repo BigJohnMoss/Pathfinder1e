@@ -1,14 +1,52 @@
 {
-  "id":"paladin-hospitaler",
-  "name":"Hospitaler",
-  "classId":"paladin",
-  "summary":"A charitable healer who trades frequent smites and Aura of Justice for independent channeling and a restorative aura.",
-  "featureOverrides":[
-    {"featureId":"paladin-smite-evil-1","summary":"Smite evil once per day, gaining one additional daily use at 7th level and every 6 levels thereafter.","scaling":"additional use at 7th and every 6 levels"}
+  "id": "paladin-hospitaler",
+  "name": "Hospitaler",
+  "classId": "paladin",
+  "summary": "A charitable healer who trades frequent smites and Aura of Justice for independent channeling and a restorative aura.",
+  "featureOverrides": [
+    {
+      "featureId": "paladin-smite-evil-1",
+      "summary": "Smite evil once per day, gaining one additional daily use at 7th level and every 6 levels thereafter.",
+      "scaling": "additional use at 7th and every 6 levels"
+    }
   ],
-  "replacements":[
-    {"featureIds":["paladin-channel-positive-energy-4"],"features":[{"id":"hospitaler-channel-positive-energy-4","name":"Hospitaler Channel Energy","level":4,"type":"scaling","summary":"Channel positive energy as a Cleric of Paladin level –3 without expending lay on hands.","scaling":"effective Cleric level Paladin level –3","uses":"3 + Charisma modifier per day"}]},
-    {"featureIds":["paladin-aura-of-justice-11"],"features":[{"id":"hospitaler-aura-of-healing-11","name":"Aura of Healing","level":11,"type":"core","summary":"Spend one channel use to create a 30-foot aura for Paladin-level rounds that stabilizes, prevents bleed, heals each ally once, and grants one extra affliction save.","uses":"1 channel energy use"}]}
+  "replacements": [
+    {
+      "featureIds": [
+        "paladin-channel-positive-energy-4"
+      ],
+      "features": [
+        {
+          "id": "hospitaler-channel-positive-energy-4",
+          "name": "Hospitaler Channel Energy",
+          "level": 4,
+          "type": "scaling",
+          "summary": "Channel positive energy as a Cleric of Paladin level –3 without expending lay on hands.",
+          "scaling": "effective Cleric level Paladin level –3",
+          "uses": "3 + Charisma modifier per day"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "paladin-aura-of-justice-11"
+      ],
+      "features": [
+        {
+          "id": "hospitaler-aura-of-healing-11",
+          "name": "Aura of Healing",
+          "level": 11,
+          "type": "core",
+          "summary": "Spend one channel use to create a 30-foot aura for Paladin-level rounds that stabilizes, prevents bleed, heals each ally once, and grants one extra affliction save.",
+          "uses": "1 channel energy use"
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/paladin.html"
+  },
+  "mechanicalCoverage": "full"
 }

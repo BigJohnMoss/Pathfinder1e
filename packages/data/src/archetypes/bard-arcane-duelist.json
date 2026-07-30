@@ -5,7 +5,9 @@
   "summary": "A martial bard who blends weapon mastery, protective performance, and arcane spellcraft.",
   "replacements": [
     {
-      "featureIds": ["bardic-knowledge-1"],
+      "featureIds": [
+        "bardic-knowledge-1"
+      ],
       "features": [
         {
           "id": "arcane-duelist-arcane-strike-1",
@@ -18,7 +20,9 @@
       ]
     },
     {
-      "featureIds": ["bard-countersong-1"],
+      "featureIds": [
+        "bard-countersong-1"
+      ],
       "features": [
         {
           "id": "arcane-duelist-rallying-cry-1",
@@ -31,7 +35,9 @@
       ]
     },
     {
-      "featureIds": ["bard-suggestion-6"],
+      "featureIds": [
+        "bard-suggestion-6"
+      ],
       "features": [
         {
           "id": "arcane-duelist-bladethirst-6",
@@ -46,7 +52,9 @@
       ]
     },
     {
-      "featureIds": ["bard-mass-suggestion-18"],
+      "featureIds": [
+        "bard-mass-suggestion-18"
+      ],
       "features": [
         {
           "id": "arcane-duelist-mass-bladethirst-18",
@@ -59,8 +67,12 @@
       ]
     },
     {
-      "featureIds": ["bard-well-versed-2"],
-      "progressionKeys": ["bard-versatile-performance"],
+      "featureIds": [
+        "bard-well-versed-2"
+      ],
+      "progressionKeys": [
+        "bard-versatile-performance"
+      ],
       "features": [
         {
           "id": "arcane-duelist-combat-casting-2",
@@ -105,7 +117,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-lore-master"],
+      "progressionKeys": [
+        "bard-lore-master"
+      ],
       "features": [
         {
           "id": "arcane-duelist-arcane-bond-5",
@@ -118,7 +132,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-jack-of-all-trades"],
+      "progressionKeys": [
+        "bard-jack-of-all-trades"
+      ],
       "features": [
         {
           "id": "arcane-duelist-arcane-armor-medium-10",
@@ -143,5 +159,6 @@
     "title": "Advanced Player's Guide",
     "page": null,
     "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
-  }
+  },
+  "mechanicalCoverage": "full"
 }

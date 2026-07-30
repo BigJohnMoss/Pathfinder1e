@@ -68,5 +68,15 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Hateful%20Rager"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "requirements": [
+    {
+      "type": "ancestry",
+      "id": "half-orc"
+    }
+  ]
 }

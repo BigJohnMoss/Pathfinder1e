@@ -862,13 +862,30 @@ test("exposes the complete archetype catalogue for every supported base class", 
   for (const [classId, count] of Object.entries(expected)) {
     await user.selectOptions(classSelect, classId);
     assert.equal([...archetype.options].filter((option) => option.value).length, count, classId);
-    const first = [...archetype.options].find((option) => option.value);
+    const first = [...archetype.options].find((option) => option.value && !option.disabled);
     assert.ok(first);
     await user.selectOptions(archetype, first.value);
     assert.equal(archetype.value, first.value);
   }
   await user.click(screen.getByRole("button", { name: "Save" }));
   assert.ok(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId);
+});
+
+test("stacks compatible archetypes and restores the complete stack", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "fighter-archer");
+  const additional = screen.getByLabelText("Add compatible archetype") as HTMLSelectElement;
+  const compatible = [...additional.options].find(option => option.value && !option.disabled);
+  assert.ok(compatible);
+  await user.selectOptions(additional, compatible.value);
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.deepEqual(saved.archetypeStacksByClass.fighter, ["fighter-archer", compatible.value]);
+  await user.click(screen.getByRole("button", { name: "Reset" }));
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  assert.equal(document.querySelectorAll(".selected-archetypes article").length, 2);
 });
 
 test("makes Wizard selectable with prepared arcane spells and class features", async () => {
@@ -1278,6 +1295,7 @@ test("reviews any level without changing the character level", async () => {
   const user = userEvent.setup();
   render(<Home />);
   const characterLevel = screen.getByLabelText("Level") as HTMLInputElement;
+  await user.click(screen.getByRole("button", { name: "View all 20 levels" }));
   await user.click(screen.getByRole("button", { name: /^Advancement step 10\b/ }));
   assert.ok(screen.getByRole("heading", { name: "Upcoming level" }));
   assert.equal(characterLevel.value, "1");

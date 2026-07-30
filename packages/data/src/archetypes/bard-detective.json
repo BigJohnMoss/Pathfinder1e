@@ -22,7 +22,9 @@
   },
   "replacements": [
     {
-      "progressionKeys": ["bard-inspire-courage"],
+      "progressionKeys": [
+        "bard-inspire-courage"
+      ],
       "features": [
         {
           "id": "detective-careful-teamwork-1",
@@ -36,7 +38,9 @@
       ]
     },
     {
-      "featureIds": ["bard-inspire-greatness-9"],
+      "featureIds": [
+        "bard-inspire-greatness-9"
+      ],
       "features": [
         {
           "id": "detective-true-confession-9",
@@ -50,7 +54,9 @@
       ]
     },
     {
-      "featureIds": ["bard-inspire-heroics-15"],
+      "featureIds": [
+        "bard-inspire-heroics-15"
+      ],
       "features": [
         {
           "id": "detective-show-yourselves-15",
@@ -63,7 +69,9 @@
       ]
     },
     {
-      "featureIds": ["bardic-knowledge-1"],
+      "featureIds": [
+        "bardic-knowledge-1"
+      ],
       "features": [
         {
           "id": "detective-eye-for-detail-1",
@@ -76,7 +84,9 @@
       ]
     },
     {
-      "featureIds": ["bard-well-versed-2"],
+      "featureIds": [
+        "bard-well-versed-2"
+      ],
       "features": [
         {
           "id": "detective-arcane-insight-2",
@@ -88,7 +98,9 @@
       ]
     },
     {
-      "progressionKeys": ["bard-versatile-performance"],
+      "progressionKeys": [
+        "bard-versatile-performance"
+      ],
       "features": [
         {
           "id": "detective-arcane-investigation-2",
@@ -142,5 +154,6 @@
     "title": "Advanced Player's Guide",
     "page": null,
     "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/bard.html"
-  }
+  },
+  "mechanicalCoverage": "full"
 }

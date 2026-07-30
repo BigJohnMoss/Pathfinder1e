@@ -1,15 +1,67 @@
 {
-  "id":"monk-healing-hand",
-  "name":"Monk of the Healing Hand",
-  "classId":"monk",
-  "summary":"A selfless ki healer who restores allies, returns the dead to life, and can ultimately sacrifice all trace of himself to resurrect his companions.",
-  "replacements":[
-    {"featureIds":["monk-wholeness-of-body-7"],"features":[{"id":"healing-hand-ancient-healing-hand-7","name":"Ancient Healing Hand","level":7,"type":"core","summary":"Spend 2 ki in a full-round action to heal another creature for hit points equal to Monk level.","uses":"2 ki"}]},
-    {"featureIds":["monk-diamond-body-11","monk-quivering-palm-15"],"features":[
-      {"id":"healing-hand-ki-sacrifice-11","name":"Ki Sacrifice (Raise Dead)","level":11,"type":"core","summary":"Spend the entire ki pool in a 1-hour ritual to cast raise dead without material components; ki does not replenish for 24 hours.","uses":"entire pool; minimum 6 ki"},
-      {"id":"healing-hand-ki-sacrifice-15","name":"Ki Sacrifice (Resurrection)","level":15,"type":"scaling","summary":"The Ki Sacrifice ritual may instead cast resurrection without material components.","uses":"entire pool; minimum 8 ki"}
-    ]},
-    {"featureIds":["monk-perfect-self-20"],"features":[{"id":"healing-hand-true-sacrifice-20","name":"True Sacrifice","level":20,"type":"capstone","summary":"Destroy yourself beyond restoration to return every dead ally within 50 feet to life as true resurrection."}]}
+  "id": "monk-healing-hand",
+  "name": "Monk of the Healing Hand",
+  "classId": "monk",
+  "summary": "A selfless ki healer who restores allies, returns the dead to life, and can ultimately sacrifice all trace of himself to resurrect his companions.",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-wholeness-of-body-7"
+      ],
+      "features": [
+        {
+          "id": "healing-hand-ancient-healing-hand-7",
+          "name": "Ancient Healing Hand",
+          "level": 7,
+          "type": "core",
+          "summary": "Spend 2 ki in a full-round action to heal another creature for hit points equal to Monk level.",
+          "uses": "2 ki"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-diamond-body-11",
+        "monk-quivering-palm-15"
+      ],
+      "features": [
+        {
+          "id": "healing-hand-ki-sacrifice-11",
+          "name": "Ki Sacrifice (Raise Dead)",
+          "level": 11,
+          "type": "core",
+          "summary": "Spend the entire ki pool in a 1-hour ritual to cast raise dead without material components; ki does not replenish for 24 hours.",
+          "uses": "entire pool; minimum 6 ki"
+        },
+        {
+          "id": "healing-hand-ki-sacrifice-15",
+          "name": "Ki Sacrifice (Resurrection)",
+          "level": 15,
+          "type": "scaling",
+          "summary": "The Ki Sacrifice ritual may instead cast resurrection without material components.",
+          "uses": "entire pool; minimum 8 ki"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-perfect-self-20"
+      ],
+      "features": [
+        {
+          "id": "healing-hand-true-sacrifice-20",
+          "name": "True Sacrifice",
+          "level": 20,
+          "type": "capstone",
+          "summary": "Destroy yourself beyond restoration to return every dead ally within 50 feet to life as true resurrection."
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"
+  },
+  "mechanicalCoverage": "full"
 }

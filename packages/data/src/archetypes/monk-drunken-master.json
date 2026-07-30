@@ -1,14 +1,90 @@
 {
-  "id":"monk-drunken-master",
-  "name":"Drunken Master",
-  "classId":"monk",
-  "summary":"A deliberately intoxicated martial artist who converts drink into fleeting ki, strength, courage, resilience, and fire.",
-  "replacements":[
-    {"featureIds":["monk-still-mind-3"],"features":[{"id":"drunken-master-drunken-ki-3","name":"Drunken Ki","level":3,"type":"scaling","summary":"Drink alcohol as a standard action to gain a temporary ki point lasting up to 1 hour; while any remains, spend ki to take a safe 5-foot step.","scaling":"maximum 1 point plus 1 every 2 levels after 3rd","uses":"temporary ki"}]},
-    {"featureIds":["monk-purity-of-body-5"],"features":[{"id":"drunken-master-drunken-strength-5","name":"Drunken Strength +1d6","level":5,"type":"scaling","summary":"Spend drunken ki after a successful melee attack to add damage.","scaling":"+1d6 at 5th; +2d6 at 10th; +3d6 at 15th; +4d6 at 20th","uses":"1 to 4 drunken ki"}]},
-    {"featureIds":["monk-diamond-body-11"],"features":[{"id":"drunken-master-drunken-courage-11","name":"Drunken Courage","level":11,"type":"core","summary":"Remain immune to fear while at least 1 drunken ki point remains."}]},
-    {"featureIds":["monk-diamond-soul-13"],"features":[{"id":"drunken-master-drunken-resilience-13","name":"Drunken Resilience DR 1/—","level":13,"type":"scaling","summary":"Gain damage reduction while at least 1 drunken ki point remains.","scaling":"DR 1/—; DR 2/— at 16th; DR 3/— at 19th"}]},
-    {"featureIds":["monk-empty-body-19"],"features":[{"id":"drunken-master-firewater-breath-19","name":"Firewater Breath","level":19,"type":"core","summary":"Drink and spend 4 ki to breathe a 30-foot cone dealing 20d6 fire damage, with a Reflex save for half.","uses":"4 ki"}]}
+  "id": "monk-drunken-master",
+  "name": "Drunken Master",
+  "classId": "monk",
+  "summary": "A deliberately intoxicated martial artist who converts drink into fleeting ki, strength, courage, resilience, and fire.",
+  "replacements": [
+    {
+      "featureIds": [
+        "monk-still-mind-3"
+      ],
+      "features": [
+        {
+          "id": "drunken-master-drunken-ki-3",
+          "name": "Drunken Ki",
+          "level": 3,
+          "type": "scaling",
+          "summary": "Drink alcohol as a standard action to gain a temporary ki point lasting up to 1 hour; while any remains, spend ki to take a safe 5-foot step.",
+          "scaling": "maximum 1 point plus 1 every 2 levels after 3rd",
+          "uses": "temporary ki"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-purity-of-body-5"
+      ],
+      "features": [
+        {
+          "id": "drunken-master-drunken-strength-5",
+          "name": "Drunken Strength +1d6",
+          "level": 5,
+          "type": "scaling",
+          "summary": "Spend drunken ki after a successful melee attack to add damage.",
+          "scaling": "+1d6 at 5th; +2d6 at 10th; +3d6 at 15th; +4d6 at 20th",
+          "uses": "1 to 4 drunken ki"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-diamond-body-11"
+      ],
+      "features": [
+        {
+          "id": "drunken-master-drunken-courage-11",
+          "name": "Drunken Courage",
+          "level": 11,
+          "type": "core",
+          "summary": "Remain immune to fear while at least 1 drunken ki point remains."
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-diamond-soul-13"
+      ],
+      "features": [
+        {
+          "id": "drunken-master-drunken-resilience-13",
+          "name": "Drunken Resilience DR 1/—",
+          "level": 13,
+          "type": "scaling",
+          "summary": "Gain damage reduction while at least 1 drunken ki point remains.",
+          "scaling": "DR 1/—; DR 2/— at 16th; DR 3/— at 19th"
+        }
+      ]
+    },
+    {
+      "featureIds": [
+        "monk-empty-body-19"
+      ],
+      "features": [
+        {
+          "id": "drunken-master-firewater-breath-19",
+          "name": "Firewater Breath",
+          "level": 19,
+          "type": "core",
+          "summary": "Drink and spend 4 ki to breathe a 30-foot cone dealing 20d6 fire damage, with a Reflex save for half.",
+          "uses": "4 ki"
+        }
+      ]
+    }
   ],
-  "source":{"title":"Advanced Player's Guide","page":null,"url":"https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"}
+  "source": {
+    "title": "Advanced Player's Guide",
+    "page": null,
+    "url": "https://legacy.aonprd.com/advancedPlayersGuide/coreClasses/monk.html"
+  },
+  "mechanicalCoverage": "full"
 }
