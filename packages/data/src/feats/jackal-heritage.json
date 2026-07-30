@@ -8,8 +8,8 @@
       "description": "Humanoid"
     },
     {
-      "type": "rule",
-      "description": "must be taken at 1st level"
+      "type": "level",
+      "maximum": 1
     }
   ],
   "benefit": "Gain a bonus on saves against mind-affecting effects and a bonus to Perception checks",

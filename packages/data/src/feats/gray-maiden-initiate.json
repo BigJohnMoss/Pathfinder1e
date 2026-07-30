@@ -8,8 +8,8 @@
       "description": "Female"
     },
     {
-      "type": "rule",
-      "description": "must be taken at 1st level"
+      "type": "level",
+      "maximum": 1
     }
   ],
   "benefit": "Become affiliated with Gray Maidens and gain two benefits of your choice",

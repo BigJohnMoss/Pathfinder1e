@@ -8,8 +8,8 @@
       "description": "Charisma 13 or Child of Oppara trait"
     },
     {
-      "type": "rule",
-      "description": "must be taken at 1st level"
+      "type": "level",
+      "maximum": 1
     }
   ],
   "benefit": "You are a member of a Taldan noble house",

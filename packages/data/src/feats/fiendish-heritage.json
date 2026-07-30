@@ -12,8 +12,8 @@
       "description": "Tie"
     },
     {
-      "type": "rule",
-      "description": "must be taken at 1st level"
+      "type": "level",
+      "maximum": 1
     }
   ],
   "benefit": "Choose a different Tiefling heritage",

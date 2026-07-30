@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "1st-level character"
+      "type": "level",
+      "maximum": 1
     },
     {
       "type": "rule",

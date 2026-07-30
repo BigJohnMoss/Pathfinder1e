@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Must be taken at 1st level"
+      "type": "level",
+      "maximum": 1
     },
     {
       "type": "feat",

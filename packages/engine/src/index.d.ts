@@ -27,7 +27,8 @@ export interface CharacterCombatStats {
   averageHitPoints: number;
 }
 export type Prerequisite =
-  | { type: "level" | "bab" | "caster-level"; minimum: number }
+  | { type: "level"; minimum?: number; maximum?: number }
+  | { type: "bab" | "caster-level"; minimum: number }
   | { type: "class-level"; classId: string; minimum: number }
   | { type: "ability" | "skill"; key: string; minimum: number }
   | { type: "save"; key: "fortitude" | "reflex" | "will"; minimum: number }
@@ -39,7 +40,7 @@ export type Prerequisite =
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface PrerequisiteResult { prerequisite: Prerequisite; met: boolean }
-export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; size?: string; classLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; spellIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
+export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; size?: string; classLevel?: number; acquisitionLevel?: number; casterLevel?: number; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; spellIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
 
 export function abilityModifier(score: number): number;
 export const abilityNames: AbilityName[];
@@ -55,7 +56,7 @@ export function carryingCapacity(strength: number): { light: number; medium: num
 export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
 export function spellsAvailableToClass<T extends { id: string; name: string; levelByClass: Record<string, number> }>(spells: T[], classId: string, maximumSpellLevel: number, spellListAdditions?: Record<string, number>): T[];
 export function normalizePreparedSpells<T extends { id: string; levelByClass: Record<string, number> }>(preparedSpellIds: string[], spells: T[], classId: string, preparedLimits: Array<{ level: number; count: number }>): string[];
-export function normalizeSelectedFeats<T extends { id: string; prerequisites: Prerequisite[] }>(selectedFeatIds: string[], feats: T[], context: PrerequisiteContext, slotCount: number): string[];
+export function normalizeSelectedFeats<T extends { id: string; prerequisites: Prerequisite[] }>(selectedFeatIds: string[], feats: T[], context: PrerequisiteContext, slotCount: number, slotLevels?: number[]): string[];
 export function normalizeSelectedFeatChoices<T extends { id: string; choice?: { options?: Array<{ id: string }>; allowCustom?: boolean } }>(selectedFeatChoices: Record<string, string> | null | undefined, selectedFeatIds: string[], feats: T[]): Record<string, string>;
 export function normalizeSelectedTraits(selectedTraitIds: unknown, traits: CharacterTrait[], slotCount?: number): string[];
 export function normalizeSelectedAlternateRacialTraits(selectedIds: string[], alternateTraits?: Array<{ id: string; replaces: string[] }>): string[];

@@ -700,16 +700,16 @@ export function featPrerequisiteResults(feat, context) {
   }));
 }
 
-export function normalizeSelectedFeats(selectedFeatIds, feats, context, slotCount) {
+export function normalizeSelectedFeats(selectedFeatIds, feats, context, slotCount, slotLevels = []) {
   if (!Array.isArray(selectedFeatIds) || !Number.isInteger(slotCount) || slotCount < 0) return [];
   const byId = new Map(feats.map(feat => [feat.id, feat]));
   let result = selectedFeatIds.filter((id, index, ids) => typeof id === "string" && ids.indexOf(id) === index && byId.has(id)).slice(0, slotCount);
   let changed = true;
   while (changed) {
     changed = false;
-    const next = result.filter(id => {
+    const next = result.filter((id, index) => {
       const feat = byId.get(id);
-      const eligible = prerequisitesMet(feat.prerequisites, { ...context, candidateId: id, selectedIds: result.filter(otherId => otherId !== id) });
+      const eligible = prerequisitesMet(feat.prerequisites, { ...context, acquisitionLevel: slotLevels[index], candidateId: id, selectedIds: result.filter(otherId => otherId !== id) });
       if (!eligible) changed = true;
       return eligible;
     });
@@ -734,7 +734,13 @@ export function prerequisitesMet(prerequisites, context) {
 }
 
 function prerequisiteMet(prerequisite, context) {
-  if (prerequisite.type === "level") return context.classLevel >= prerequisite.minimum;
+  if (prerequisite.type === "level") {
+    const level = context.classLevel;
+    const ceilingLevel = context.acquisitionLevel ?? level;
+    return Number.isInteger(level)
+      && (prerequisite.minimum === undefined || level >= prerequisite.minimum)
+      && (prerequisite.maximum === undefined || ceilingLevel <= prerequisite.maximum);
+  }
   if (prerequisite.type === "class-level") return (context.classLevels?.[prerequisite.classId] ?? (context.classId === prerequisite.classId ? context.classLevel : 0)) >= prerequisite.minimum;
   if (prerequisite.type === "ancestry") return context.ancestryId === prerequisite.id;
   if (prerequisite.type === "size") {

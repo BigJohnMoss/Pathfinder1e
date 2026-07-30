@@ -127,7 +127,8 @@ export interface CharacterArchetype {
   source: SourceRef;
 }
 export type Prerequisite =
-  | { type: "level"|"bab"|"caster-level"; minimum: number }
+  | { type: "level"; minimum?: number; maximum?: number }
+  | { type: "bab"|"caster-level"; minimum: number }
   | { type: "class-level"; classId: string; minimum: number }
   | { type: "ability"|"skill"; key: string; minimum: number }
   | { type: "save"; key: "fortitude"|"reflex"|"will"; minimum: number }

@@ -51,6 +51,11 @@ const parseAtomicRule = (description) => {
   if (match) return { type: "caster-level", minimum: Number(match[1]) };
   match = text.match(/^character level\s*(\d+)(?:st|nd|rd|th)?$/i);
   if (match) return { type: "level", minimum: Number(match[1]) };
+  match = text.match(/^(?:must be taken|may only be taken|you may only (?:gain|select) this feat) at (?:the )?(\d+)(?:st|nd|rd|th) level$/i);
+  if (match) return { type: "level", maximum: Number(match[1]) };
+  if (/^may only be taken at first level$/i.test(text)) return { type: "level", maximum: 1 };
+  match = text.match(/^(\d+)(?:st|nd|rd|th)-level character$/i);
+  if (match) return { type: "level", maximum: Number(match[1]) };
   match = text.match(/^(\d+)\s+(?:or more\s+)?Hit Dice$/i);
   if (match) return { type: "level", minimum: Number(match[1]) };
   match = text.match(/^base (Fortitude|Reflex|Will) (?:saving throw|save) bonus\s*\+?(\d+)$/i);

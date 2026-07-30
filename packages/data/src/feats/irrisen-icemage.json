@@ -12,8 +12,8 @@
       "description": "Irrisen affinity"
     },
     {
-      "type": "rule",
-      "description": "may only be taken at first level"
+      "type": "level",
+      "maximum": 1
     }
   ],
   "benefit": "Cast cold spells at higher levels, change normal spells to cold",

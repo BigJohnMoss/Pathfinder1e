@@ -28,7 +28,11 @@ const prerequisiteLabel = (prerequisite: Prerequisite, featNames: Map<string, st
   if (prerequisite.type === "matching-choice") return `Matching ${prerequisite.key} for ${featNames.get(prerequisite.featId) ?? prerequisite.featId}`;
   if (prerequisite.type === "choice-value") return `${prerequisite.key} for ${featNames.get(prerequisite.featId) ?? prerequisite.featId}: ${prerequisite.value}`;
   if (prerequisite.type === "any") return `One of: ${prerequisite.prerequisites.map((item) => prerequisiteLabel(item, featNames)).join("; ")}`;
-  if (prerequisite.type === "level") return `Character level ${prerequisite.minimum}+`;
+  if (prerequisite.type === "level") {
+    if (prerequisite.minimum !== undefined && prerequisite.maximum !== undefined) return `Character level ${prerequisite.minimum}–${prerequisite.maximum}`;
+    if (prerequisite.maximum !== undefined) return `Character level ${prerequisite.maximum} or lower`;
+    return `Character level ${prerequisite.minimum}+`;
+  }
   if (prerequisite.type === "size") return `Size ${prerequisite.maximum ? `${prerequisite.maximum} or smaller` : `${prerequisite.minimum} or larger`}`;
   if (prerequisite.type === "feat") return featNames.get(prerequisite.id) ?? prerequisite.id;
   if (prerequisite.type === "feature") return `Feature: ${prerequisite.id}`;
