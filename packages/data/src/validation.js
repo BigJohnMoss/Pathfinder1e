@@ -1,5 +1,5 @@
 const abilityNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
-const prerequisiteTypes = ["level", "class-level", "caster-level", "ability", "bab", "skill", "save", "feat", "feature", "spell-access", "rule", "ancestry", "size", "matching-choice", "choice-value", "any"];
+const prerequisiteTypes = ["level", "class-level", "caster-level", "spell-level", "ability", "bab", "skill", "save", "feat", "feature", "spell-access", "rule", "ancestry", "size", "matching-choice", "choice-value", "any"];
 const sizes = ["fine", "diminutive", "tiny", "small", "medium", "large", "huge", "gargantuan", "colossal"];
 const idPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -9,7 +9,8 @@ export function validatePrerequisites(prerequisites, { nested = false } = {}) {
   for (const prerequisite of prerequisites) {
     if (!prerequisite || typeof prerequisite !== "object" || Array.isArray(prerequisite)) { errors.push("prerequisite must be an object"); continue; }
     if (!prerequisiteTypes.includes(prerequisite.type)) { errors.push("prerequisite has an unknown type"); continue; }
-    if (["class-level", "caster-level", "bab", "ability", "skill", "save"].includes(prerequisite.type) && (!Number.isInteger(prerequisite.minimum) || prerequisite.minimum < 1)) errors.push(`${prerequisite.type} prerequisite needs a positive integer minimum`);
+    if (["class-level", "caster-level", "spell-level", "bab", "ability", "skill", "save"].includes(prerequisite.type) && (!Number.isInteger(prerequisite.minimum) || prerequisite.minimum < 1)) errors.push(`${prerequisite.type} prerequisite needs a positive integer minimum`);
+    if (prerequisite.type === "spell-level" && prerequisite.castingType !== undefined && !["prepared", "spontaneous"].includes(prerequisite.castingType)) errors.push("spell-level prerequisite has an invalid casting type");
     if (prerequisite.type === "level") {
       if (prerequisite.minimum === undefined && prerequisite.maximum === undefined) errors.push("level prerequisite needs a minimum or maximum");
       if (prerequisite.minimum !== undefined && (!Number.isInteger(prerequisite.minimum) || prerequisite.minimum < 1)) errors.push("level prerequisite has an invalid minimum");

@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Base attack bonus +3 or ability to cast 2nd-level spells"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 3
+        },
+        {
+          "type": "spell-level",
+          "minimum": 2
+        }
+      ]
     }
   ],
   "benefit": "You can guard your ally while they make a concentration check",

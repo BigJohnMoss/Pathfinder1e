@@ -27,8 +27,17 @@
       "minimum": 10
     },
     {
-      "type": "rule",
-      "description": "ability to cast 3rd-level spells or use a 3rd-level spell-like ability"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "spell-level",
+          "minimum": 3
+        },
+        {
+          "type": "rule",
+          "description": "Use a 3rd-level spell-like ability"
+        }
+      ]
     }
   ],
   "benefit": "Hide powerful spells more easily",

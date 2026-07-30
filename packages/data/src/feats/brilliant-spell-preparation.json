@@ -9,8 +9,9 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "ability to prepare 3rd-level spells"
+      "type": "spell-level",
+      "minimum": 3,
+      "castingType": "prepared"
     }
   ],
   "benefit": "Prepare spells faster in a reserved slot",
