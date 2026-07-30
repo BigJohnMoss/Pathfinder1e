@@ -1,4 +1,6 @@
-import { encumbrance } from "../../../packages/engine/src/index.js";
+﻿import { encumbrance } from "../../../packages/engine/src/index.js";
+import coreEquipment from "../../../packages/data/src/equipment/core-equipment.json";
+import { useMemo, useState } from "react";
 
 export type InventoryEntry = { itemId: string; quantity: number; equipped: boolean; enhancementBonus?: number };
 export type CoinPurse = { cp: number; sp: number; gp: number; pp: number };
@@ -16,38 +18,7 @@ type EquipmentItem = {
   magicBonus?: { armorClass?: { deflection?: number; natural?: number }; saves?: number };
 };
 
-export const equipmentItems: EquipmentItem[] = [
-  { id: "backpack", name: "Backpack", category: "gear", costGp: 2, weight: 2 },
-  { id: "bedroll", name: "Bedroll", category: "gear", costGp: 0.1, weight: 5 },
-  { id: "rope-hemp-50", name: "Rope, hemp (50 ft.)", category: "gear", costGp: 1, weight: 10 },
-  { id: "torch", name: "Torch", category: "gear", costGp: 0.01, weight: 1 },
-  { id: "trail-rations", name: "Trail rations (1 day)", category: "gear", costGp: 0.5, weight: 1 },
-  { id: "waterskin", name: "Waterskin", category: "gear", costGp: 1, weight: 4 },
-  { id: "dagger", name: "Dagger", category: "weapon", costGp: 2, weight: 1, damage: "1d4", critical: "19–20/×2", range: 10 },
-  { id: "shortsword", name: "Shortsword", category: "weapon", costGp: 10, weight: 2, damage: "1d6", critical: "19–20/×2" },
-  { id: "rapier", name: "Rapier", category: "weapon", costGp: 20, weight: 2, damage: "1d6", critical: "18–20/×2" },
-  { id: "longsword", name: "Longsword", category: "weapon", costGp: 15, weight: 4, damage: "1d8", critical: "19–20/×2" },
-  { id: "greatsword", name: "Greatsword", category: "weapon", costGp: 50, weight: 8, damage: "2d6", critical: "19–20/×2" },
-  { id: "greataxe", name: "Greataxe", category: "weapon", costGp: 20, weight: 12, damage: "1d12", critical: "×3" },
-  { id: "light-crossbow", name: "Light crossbow", category: "weapon", costGp: 35, weight: 4, damage: "1d8", critical: "19–20/×2", range: 80, ranged: true },
-  { id: "longbow", name: "Longbow", category: "weapon", costGp: 75, weight: 3, damage: "1d8", critical: "×3", range: 100, ranged: true },
-  { id: "padded-armor", name: "Padded armor", category: "armor", costGp: 5, weight: 10, armorBonus: 1 },
-  { id: "leather-armor", name: "Leather armor", category: "armor", costGp: 10, weight: 15, armorBonus: 2 },
-  { id: "studded-leather", name: "Studded leather", category: "armor", costGp: 25, weight: 20, armorBonus: 3 },
-  { id: "chain-shirt", name: "Chain shirt", category: "armor", costGp: 100, weight: 25, armorBonus: 4 },
-  { id: "breastplate", name: "Breastplate", category: "armor", costGp: 200, weight: 30, armorBonus: 6 },
-  { id: "full-plate", name: "Full plate", category: "armor", costGp: 1500, weight: 50, armorBonus: 9 },
-  { id: "light-wooden-shield", name: "Light wooden shield", category: "shield", costGp: 3, weight: 5, armorBonus: 1 },
-  { id: "heavy-wooden-shield", name: "Heavy wooden shield", category: "shield", costGp: 7, weight: 10, armorBonus: 2 },
-  { id: "cloak-resistance-1", name: "Cloak of resistance +1", category: "magic", costGp: 1000, weight: 1, magicBonus: { saves: 1 } },
-  { id: "cloak-resistance-2", name: "Cloak of resistance +2", category: "magic", costGp: 4000, weight: 1, magicBonus: { saves: 2 } },
-  { id: "cloak-resistance-3", name: "Cloak of resistance +3", category: "magic", costGp: 9000, weight: 1, magicBonus: { saves: 3 } },
-  { id: "ring-protection-1", name: "Ring of protection +1", category: "magic", costGp: 2000, weight: 0, magicBonus: { armorClass: { deflection: 1 } } },
-  { id: "ring-protection-2", name: "Ring of protection +2", category: "magic", costGp: 8000, weight: 0, magicBonus: { armorClass: { deflection: 2 } } },
-  { id: "ring-protection-3", name: "Ring of protection +3", category: "magic", costGp: 18000, weight: 0, magicBonus: { armorClass: { deflection: 3 } } },
-  { id: "amulet-natural-armor-1", name: "Amulet of natural armor +1", category: "magic", costGp: 2000, weight: 0, magicBonus: { armorClass: { natural: 1 } } },
-  { id: "amulet-natural-armor-2", name: "Amulet of natural armor +2", category: "magic", costGp: 8000, weight: 0, magicBonus: { armorClass: { natural: 2 } } }
-];
+export const equipmentItems = coreEquipment.items as EquipmentItem[];
 
 export const equipmentMarketPrice = (entry: InventoryEntry) => {
   const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
@@ -95,6 +66,12 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
   onInventoryChange: (inventory: InventoryEntry[]) => void;
   onCoinsChange: (coins: CoinPurse) => void;
 }) {
+  const [catalogueQuery, setCatalogueQuery] = useState("");
+  const [catalogueCategory, setCatalogueCategory] = useState<EquipmentItem["category"] | "all">("all");
+  const filteredEquipment = useMemo(() => {
+    const query = catalogueQuery.trim().toLocaleLowerCase();
+    return equipmentItems.filter((item) => (catalogueCategory === "all" || item.category === catalogueCategory) && (!query || item.name.toLocaleLowerCase().includes(query)));
+  }, [catalogueCategory, catalogueQuery]);
   const carried = inventory.flatMap((entry) => {
     const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
     return item ? [{ weight: item.weight, quantity: entry.quantity }] : [];
@@ -119,7 +96,11 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
   return <section className="equipment-panel">
     <div><p className="eyebrow">STORAGE</p><h2>Equipment and carried items</h2><p>Add Core adventuring gear, track money and weight, and equip armor, shields, and weapons.</p></div>
     <div className="coin-purse" aria-label="Coin purse">{(["cp", "sp", "gp", "pp"] as const).map((coin) => <label key={coin}>{coin.toUpperCase()}<input type="number" min="0" value={coins[coin]} onChange={(event) => onCoinsChange({ ...coins, [coin]: Math.max(0, Number.parseInt(event.target.value, 10) || 0) })} /></label>)}</div>
-    <div className="equipment-add"><label>Add item<select aria-label="Equipment catalogue" defaultValue="" onChange={(event) => { addItem(event.target.value); event.target.value = ""; }}><option value="">Choose equipment</option>{equipmentItems.map((item) => <option key={item.id} value={item.id}>{item.name} — {item.costGp} gp, {item.weight} lb.</option>)}</select></label></div>
+    <div className="equipment-add">
+      <label>Find equipment<input type="search" value={catalogueQuery} onChange={(event) => setCatalogueQuery(event.target.value)} placeholder="Search by name" /></label>
+      <label>Category<select aria-label="Equipment category" value={catalogueCategory} onChange={(event) => setCatalogueCategory(event.target.value as typeof catalogueCategory)}><option value="all">All categories</option><option value="weapon">Weapons</option><option value="armor">Armor</option><option value="shield">Shields</option><option value="gear">Adventuring gear</option><option value="magic">Magic items</option></select></label>
+      <label>Add item<select aria-label="Equipment catalogue" value="" onChange={(event) => addItem(event.target.value)}><option value="">{filteredEquipment.length ? `Choose from ${filteredEquipment.length} items` : "No matching equipment"}</option>{filteredEquipment.map((item) => <option key={item.id} value={item.id}>{item.name} — {item.costGp} gp, {item.weight} lb.</option>)}</select></label>
+    </div>
     <div className={`load-summary ${load.load}`}><strong>{load.carriedWeight} lb. carried — {load.load} load</strong><span>Light {load.capacity.light} lb. · Medium {load.capacity.medium} lb. · Heavy {load.capacity.heavy} lb.</span></div>
     {inventory.length === 0 ? <p className="empty-tab">No equipment added yet.</p> : <div className="inventory-list">{inventory.map((entry) => {
       const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);

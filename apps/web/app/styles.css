@@ -1277,3 +1277,40 @@ main#character-builder-main {
     display: none;
   }
 }
+
+.equipment-add {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(150px, .55fr) minmax(240px, 1.4fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.equipment-add label {
+  display: grid;
+  gap: 6px;
+  color: #726c61;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.equipment-add input,
+.equipment-add select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #a29a89;
+  border-radius: 8px;
+  background: #fff;
+  color: #252018;
+  font: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+@media(max-width:700px) {
+  .equipment-add {
+    grid-template-columns: 1fr;
+  }
+}

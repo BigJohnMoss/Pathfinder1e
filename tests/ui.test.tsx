@@ -1,4 +1,4 @@
-import test from "node:test";
+﻿import test from "node:test";
 import assert from "node:assert/strict";
 import React from "react";
 import { JSDOM } from "jsdom";
@@ -20,7 +20,6 @@ test.before(async () => {
   userEvent = (await import("@testing-library/user-event")).default;
   Home = (await import("../apps/web/app/page")).default;
 });
-
 test.afterEach(() => { cleanup(); localStorage.clear(); });
 
 const chooseFeat = async (user: ReturnType<typeof userEvent.setup>, slotName: string, featName: string) => {
@@ -583,7 +582,7 @@ test("prevents duplicate feats and manages prepared spell counts", async () => {
   await user.click(screen.getByRole("button", { name: "Cast Mage Armor" }));
   assert.match(screen.getByText(/2\/3 1st-level/).textContent ?? "", /2\/3/);
   assert.equal((screen.getByRole("button", { name: "Add Shield" }) as HTMLButtonElement).disabled, true);
-  assert.match(screen.getByText("Color Spray").closest("article")?.textContent ?? "", /level 1 · DC 12/);
+  assert.match(screen.getByText("Color Spray").closest("article")?.textContent ?? "", /level 1 Â· DC 12/);
   await user.click(screen.getByRole("button", { name: "Remove Magic Missile" }));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "2");
@@ -975,8 +974,8 @@ test("lists conditional trait modifiers without applying them as permanent saves
   await userEvent.selectOptions(screen.getByLabelText("Trait 2"), "birthmark");
   await userEvent.click(screen.getByRole("tab", { name: "Actions" }));
   const modifiers = screen.getByText("Conditional trait modifiers").closest("section");
-  assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects · Courageous/);
-  assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus · Birthmark/);
+  assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects Â· Courageous/);
+  assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus Â· Birthmark/);
   await userEvent.click(screen.getByRole("tab", { name: "Basic info" }));
   assert.equal(screen.getByText("Fortitude").closest("article")?.querySelector("strong")?.textContent, "+0");
 });
@@ -1023,11 +1022,16 @@ test("tracks persistent equipment, encumbrance, currency, and equipped armor", a
   render(<Home />);
   await user.click(screen.getByRole("tab", { name: "Storage" }));
   const catalogue = screen.getByLabelText("Equipment catalogue");
+  assert.equal((catalogue as HTMLSelectElement).options.length, 81);
+  await user.type(screen.getByLabelText("Find equipment"), "spyglass");
+  assert.equal((catalogue as HTMLSelectElement).options.length, 2);
+  assert.equal((catalogue as HTMLSelectElement).options[1].value, "spyglass");
+  await user.clear(screen.getByLabelText("Find equipment"));
   await user.selectOptions(catalogue, "longbow");
-  assert.ok(screen.getByText(/Critical ×3 · Range 100 ft\./));
+  assert.ok(screen.getByText(/Critical .* Range 100 ft\./));
   await user.click(screen.getByRole("button", { name: "Remove" }));
   await user.selectOptions(catalogue, "chain-shirt");
-  assert.ok(screen.getByText(/25 lb. carried — light load/));
+  assert.ok(screen.getByText((content) => content.includes("25 lb. carried") && content.includes("light load")));
   await user.click(screen.getByLabelText("Equipped"));
   fireEvent.change(screen.getByLabelText("GP"), { target: { value: "125" } });
   await user.click(screen.getByRole("tab", { name: "Actions" }));
@@ -1039,7 +1043,7 @@ test("tracks persistent equipment, encumbrance, currency, and equipped armor", a
   await user.click(screen.getByRole("button", { name: "Load" }));
   assert.equal((screen.getByLabelText("GP") as HTMLInputElement).value, "125");
   assert.equal((screen.getByLabelText("Equipped") as HTMLInputElement).checked, true);
-  assert.ok(screen.getByText(/25 lb. carried — light load/));
+  assert.ok(screen.getByText((content) => content.includes("25 lb. carried") && content.includes("light load")));
 });
 
 test("applies, prices, and restores magic equipment without stacking like bonuses", async () => {
@@ -1050,7 +1054,7 @@ test("applies, prices, and restores magic equipment without stacking like bonuse
   await user.selectOptions(catalogue, "longsword");
   await user.selectOptions(screen.getByLabelText("Longsword enhancement"), "2");
   assert.match(screen.getByText("Longsword +2").closest("article")?.textContent ?? "", /8315 gp/);
-  assert.match(screen.getByText("Longsword +2").closest("article")?.textContent ?? "", /Attack \+2 · Damage 1d8 \+2/);
+  assert.match(screen.getByText("Longsword +2").closest("article")?.textContent ?? "", /Attack \+2 .* Damage 1d8 \+2/);
 
   await user.selectOptions(catalogue, "chain-shirt");
   await user.selectOptions(screen.getByLabelText("Chain shirt enhancement"), "2");
@@ -1155,7 +1159,7 @@ test("switches among the remaining progression-only Barbarian archetypes", async
   await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-savage-barbarian");
   assert.ok(screen.getByText("Natural Toughness"));
   await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-superstitious");
-  assert.ok(screen.getByText("Keen Senses — Blindsight"));
+  assert.ok(screen.getByText("Keen Senses â€” Blindsight"));
   assert.equal(screen.queryByText("Damage Reduction 5/-"), null);
 });
 
@@ -1272,3 +1276,4 @@ test("opens and closes the responsive character drawer", async () => {
   await user.click(screen.getByRole("button", { name: "Close" }));
   assert.equal(trigger.getAttribute("aria-expanded"), "false");
 });
+
