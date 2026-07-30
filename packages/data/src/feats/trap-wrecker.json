@@ -13,8 +13,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "orc"
+      "type": "ancestry",
+      "id": "orc"
     }
   ],
   "benefit": "Smash traps instead of disarming them",

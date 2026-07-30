@@ -12,8 +12,19 @@
       "description": "(longsword)"
     },
     {
-      "type": "rule",
-      "description": "cleric or inquisitor level 4th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "class-level",
+          "classId": "cleric",
+          "minimum": 4
+        },
+        {
+          "type": "class-level",
+          "classId": "inquisitor",
+          "minimum": 4
+        }
+      ]
     },
     {
       "type": "rule",

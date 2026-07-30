@@ -8,8 +8,8 @@
       "id": "channel-energy"
     },
     {
-      "type": "rule",
-      "description": "orc"
+      "type": "ancestry",
+      "id": "orc"
     }
   ],
   "benefit": "Give orcs a bonus on weapon damage and critical confirmation rolls instead of affecting them normally with your channel",

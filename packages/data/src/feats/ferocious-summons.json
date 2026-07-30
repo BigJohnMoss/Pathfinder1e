@@ -16,8 +16,17 @@
       "description": "(conjuration)"
     },
     {
-      "type": "rule",
-      "description": "half-orc or orc"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "half-orc"
+        },
+        {
+          "type": "ancestry",
+          "id": "orc"
+        }
+      ]
     }
   ],
   "benefit": "Creatures you summon gain the Ferocity ability",

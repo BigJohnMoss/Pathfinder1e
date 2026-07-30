@@ -8,8 +8,8 @@
       "description": "Ferocity racial trait"
     },
     {
-      "type": "rule",
-      "description": "orc"
+      "type": "ancestry",
+      "id": "orc"
     }
   ],
   "benefit": "Avoid being staggered when in negative hit points at the cost of losing them faster",

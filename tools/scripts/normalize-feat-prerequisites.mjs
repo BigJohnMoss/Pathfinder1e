@@ -11,7 +11,7 @@ const feats = await Promise.all(files.map(async (file) => ({
 const classes = await Promise.all((await readdir(classDirectory))
   .filter((file) => file.endsWith(".json"))
   .map(async (file) => JSON.parse(await readFile(new URL(file, classDirectory), "utf8"))));
-const classIds = new Set(["arcanist", "barbarian", "bard", "cleric", "druid", "fighter", "monk", "oracle", "paladin", "ranger", "rogue", "sorcerer", "wizard"]);
+const classIds = new Set([...classes.map((characterClass) => characterClass.id), "brawler", "inquisitor", "ninja"]);
 const abilityKeys = { str: "strength", dex: "dexterity", con: "constitution", int: "intelligence", wis: "wisdom", cha: "charisma" };
 const fullAbilityKeys = Object.fromEntries(Object.values(abilityKeys).map((key) => [key, key]));
 const ancestryIds = new Map([
@@ -22,6 +22,7 @@ const ancestryIds = new Map([
   ["half-orc", "half-orc"],
   ["halfling", "halfling"],
   ["human", "human"],
+  ["orc", "orc"],
 ]);
 const sizeIds = new Map([
   ["fine", "fine"],
@@ -66,6 +67,13 @@ const parseAtomicRule = (description) => {
   if (match) return { type: "ability", key: fullAbilityKeys[match[1].toLocaleLowerCase()], minimum: Number(match[2]) };
   match = text.match(/^([A-Za-z]+) level\s*(\d+)(?:st|nd|rd|th)?$/i);
   if (match && classIds.has(match[1].toLocaleLowerCase())) return { type: "class-level", classId: match[1].toLocaleLowerCase(), minimum: Number(match[2]) };
+  match = text.match(/^([A-Za-z]+) or ([A-Za-z]+) level\s*(\d+)(?:st|nd|rd|th)?$/i);
+  if (match && classIds.has(match[1].toLocaleLowerCase()) && classIds.has(match[2].toLocaleLowerCase())) {
+    return { type: "any", prerequisites: [
+      { type: "class-level", classId: match[1].toLocaleLowerCase(), minimum: Number(match[3]) },
+      { type: "class-level", classId: match[2].toLocaleLowerCase(), minimum: Number(match[3]) },
+    ] };
+  }
   match = text.match(/^(\d+)(?:st|nd|rd|th)-level\s+([A-Za-z]+)$/i);
   if (match && classIds.has(match[2].toLocaleLowerCase())) return { type: "class-level", classId: match[2].toLocaleLowerCase(), minimum: Number(match[1]) };
   match = text.match(/^(\d+)\s+ranks?\s+in\s+(.+)$/i);

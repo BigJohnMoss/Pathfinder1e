@@ -9,8 +9,19 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "cleric or oracle level 1st"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "class-level",
+          "classId": "cleric",
+          "minimum": 1
+        },
+        {
+          "type": "class-level",
+          "classId": "oracle",
+          "minimum": 1
+        }
+      ]
     },
     {
       "type": "rule",

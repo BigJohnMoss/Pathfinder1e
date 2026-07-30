@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Orc"
+      "type": "ancestry",
+      "id": "orc"
     }
   ],
   "benefit": "Gain temporary hit points by killing or knocking creatures unconscious",
