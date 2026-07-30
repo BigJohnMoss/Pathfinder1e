@@ -9,20 +9,30 @@
       "minimum": 15
     },
     {
-      "type": "rule",
-      "description": "Combat Expertise"
+      "type": "feat",
+      "id": "combat-expertise"
     },
     {
-      "type": "rule",
-      "description": "Diva Style"
+      "type": "feat",
+      "id": "diva-style"
     },
     {
-      "type": "rule",
-      "description": "Improved Feint"
+      "type": "feat",
+      "id": "improved-feint"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +7 or bard level 7th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 7
+        },
+        {
+          "type": "class-level",
+          "classId": "bard",
+          "minimum": 7
+        }
+      ]
     }
   ],
   "benefit": "Deal additional damage t o a target that is denied its Dex bonus to AC",

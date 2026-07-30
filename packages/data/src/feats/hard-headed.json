@@ -8,8 +8,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "+1 attack/CMB/CMD when using a helmet, +2 save vs. staggered or stunned effects",

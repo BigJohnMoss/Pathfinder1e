@@ -8,8 +8,8 @@
       "id": "defiant-luck"
     },
     {
-      "type": "rule",
-      "description": "human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "1/day, +8 bonus before a roll is made or +4 after",

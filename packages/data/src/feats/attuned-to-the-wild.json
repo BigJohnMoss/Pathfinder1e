@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Elf"
+      "type": "ancestry",
+      "id": "elf"
     }
   ],
   "benefit": "Heal faster within a specific terrain",

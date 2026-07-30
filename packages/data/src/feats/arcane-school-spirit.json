@@ -13,8 +13,8 @@
       "id": "arcane-school"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Talk up your spells, making them harder to resist",

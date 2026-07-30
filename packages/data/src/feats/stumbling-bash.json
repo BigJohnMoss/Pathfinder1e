@@ -12,8 +12,18 @@
       "id": "shield-focus"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or fighter level 4th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "fighter",
+          "minimum": 4
+        }
+      ]
     }
   ],
   "benefit": "Creatures you shield bash take an AC penalty for 1 round",

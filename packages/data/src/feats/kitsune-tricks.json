@@ -9,20 +9,30 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Combat Expertise"
+      "type": "feat",
+      "id": "combat-expertise"
     },
     {
       "type": "rule",
       "description": "Improved Dirty Trick APG"
     },
     {
-      "type": "rule",
-      "description": "Kitsune Style"
+      "type": "feat",
+      "id": "kitsune-style"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +3 or monk level 3rd"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 3
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 3
+        }
+      ]
     }
   ],
   "benefit": "Apply two conditions with a single dirty trick",

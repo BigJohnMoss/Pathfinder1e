@@ -29,8 +29,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "Trip opponents with a thrown bludgeoning weapon",

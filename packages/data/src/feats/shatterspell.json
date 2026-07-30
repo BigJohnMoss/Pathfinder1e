@@ -12,8 +12,8 @@
       "id": "spellbreaker"
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     },
     {
       "type": "rule",

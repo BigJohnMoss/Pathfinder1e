@@ -13,8 +13,8 @@
       "minimum": 4
     },
     {
-      "type": "rule",
-      "description": "half-orc"
+      "type": "ancestry",
+      "id": "half-orc"
     }
   ],
   "benefit": "Deal extra damage when you have no allies within 30 ft.",

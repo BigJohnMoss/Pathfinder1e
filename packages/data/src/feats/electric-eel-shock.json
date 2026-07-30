@@ -25,8 +25,18 @@
       "id": "improved-unarmed-strike"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +11 or monk level 7th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 11
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 7
+        }
+      ]
     }
   ],
   "benefit": "Stagger foes you hit with Elemental Fist",

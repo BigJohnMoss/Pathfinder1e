@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Half-elf"
+      "type": "ancestry",
+      "id": "half-elf"
     }
   ],
   "benefit": "Reroll Will saves against enchantment effects",

@@ -12,8 +12,18 @@
       "description": "good or lawful alignment"
     },
     {
-      "type": "rule",
-      "description": "caster level 1st or monk level 1st"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "caster-level",
+          "minimum": 1
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "Your thrown weapons shed light for one round",

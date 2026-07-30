@@ -18,7 +18,11 @@
     },
     {
       "type": "rule",
-      "description": "or mount class feature; human"
+      "description": "or mount class feature"
+    },
+    {
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "+2 Handle Animal and Knowledge (nature) with chosen animal, +1 level higher for animal companion abilities",

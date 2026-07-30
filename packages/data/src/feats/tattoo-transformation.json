@@ -8,8 +8,8 @@
       "description": "Inscribe Magical Tattoo ISM or Varisian Tattoo ISWG"
     },
     {
-      "type": "rule",
-      "description": "Tattoo Attunement"
+      "type": "feat",
+      "id": "tattoo-attunement"
     },
     {
       "type": "skill",

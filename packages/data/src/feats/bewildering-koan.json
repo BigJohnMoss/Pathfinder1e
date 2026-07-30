@@ -13,8 +13,8 @@
       "id": "ki-pool"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Pose unanswerable questions to distract your enemies",

@@ -17,16 +17,16 @@
       ]
     },
     {
-      "type": "rule",
-      "description": "Banishing Critical"
+      "type": "feat",
+      "id": "banishing-critical"
     },
     {
-      "type": "rule",
-      "description": "Combat Reflexes"
+      "type": "feat",
+      "id": "combat-reflexes"
     },
     {
-      "type": "rule",
-      "description": "Dimensional Awareness"
+      "type": "feat",
+      "id": "dimensional-awareness"
     },
     {
       "type": "skill",

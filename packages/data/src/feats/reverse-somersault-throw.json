@@ -17,8 +17,18 @@
       "id": "power-attack"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or monk level 3rd"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 3
+        }
+      ]
     }
   ],
   "benefit": "You can end a drag manuever by launching the creature over your head",

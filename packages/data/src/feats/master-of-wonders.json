@@ -12,8 +12,8 @@
       "description": "Wonderseeker faction"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Roll twice when using a rod of wonder",

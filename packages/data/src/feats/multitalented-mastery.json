@@ -8,8 +8,8 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "half-elf"
+      "type": "ancestry",
+      "id": "half-elf"
     },
     {
       "type": "rule",

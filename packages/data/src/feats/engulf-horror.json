@@ -4,8 +4,12 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "engulf-revulsion"
+    },
+    {
       "type": "rule",
-      "description": "Engulf Revulsion; engulf or smother universal monster ability"
+      "description": "engulf or smother universal monster ability"
     }
   ],
   "benefit": "Engulfed or smothered foes are staggered",

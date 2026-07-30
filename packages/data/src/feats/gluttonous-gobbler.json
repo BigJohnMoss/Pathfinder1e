@@ -12,8 +12,8 @@
       "description": "ogre"
     },
     {
-      "type": "rule",
-      "description": "size Large or larger"
+      "type": "size",
+      "minimum": "large"
     }
   ],
   "benefit": "Grapple smaller creatures in your mouth",

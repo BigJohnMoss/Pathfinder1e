@@ -8,8 +8,8 @@
       "id": "attuned-to-the-wild"
     },
     {
-      "type": "rule",
-      "description": "elf"
+      "type": "ancestry",
+      "id": "elf"
     }
   ],
   "benefit": "Bonus while casting within a specific terrain",

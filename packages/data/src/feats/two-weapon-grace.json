@@ -26,7 +26,15 @@
     },
     {
       "type": "rule",
-      "description": "or Starry Grace UI ; Two-Weapon Fighting; Weapon Finesse"
+      "description": "or Starry Grace UI"
+    },
+    {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
+      "type": "feat",
+      "id": "weapon-finesse"
     }
   ],
   "benefit": "Use Fencing Grace, Slashing Grace, or Starry Grace while dual-wielding",

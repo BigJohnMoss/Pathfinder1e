@@ -14,8 +14,8 @@
       "minimum": 3
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     },
     {
       "type": "rule",

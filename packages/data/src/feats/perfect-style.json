@@ -9,8 +9,18 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +5 or monk level 5th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 5
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 5
+        }
+      ]
     }
   ],
   "benefit": "Gain energy resistance 5",

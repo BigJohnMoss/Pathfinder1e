@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "1/day, reroll a natural 1",

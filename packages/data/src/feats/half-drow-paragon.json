@@ -8,8 +8,8 @@
       "description": "Drow-blooded and drow magic racial traits"
     },
     {
-      "type": "rule",
-      "description": "half-elf"
+      "type": "ancestry",
+      "id": "half-elf"
     }
   ],
   "benefit": "Count as Drow for race-related effects",

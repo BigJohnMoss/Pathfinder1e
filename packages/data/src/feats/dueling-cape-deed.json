@@ -5,7 +5,11 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Amateur Swashbuckler† or panache† class feature; Dodge"
+      "description": "Amateur Swashbuckler† or panache† class feature"
+    },
+    {
+      "type": "feat",
+      "id": "dodge"
     },
     {
       "type": "skill",

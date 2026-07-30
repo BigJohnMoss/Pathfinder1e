@@ -8,8 +8,8 @@
       "id": "improved-unarmed-strike"
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     },
     {
       "type": "rule",

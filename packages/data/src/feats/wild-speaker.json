@@ -8,8 +8,8 @@
       "description": "Bleachling racial trait"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "You can use speak with animals at will",

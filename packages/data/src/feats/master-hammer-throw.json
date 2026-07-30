@@ -37,8 +37,8 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "Trip multiple creatures per round when using Hammer Throw",

@@ -8,8 +8,8 @@
       "description": "Bleachling racial trait"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Gain a +4 bonus to saving throws against emotion effects",

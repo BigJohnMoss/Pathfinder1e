@@ -16,8 +16,18 @@
       "description": "Stumbling Bash"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +11 or fighter level 8th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 11
+        },
+        {
+          "type": "class-level",
+          "classId": "fighter",
+          "minimum": 8
+        }
+      ]
     }
   ],
   "benefit": "Trip creatures you shield bash as a swift action",

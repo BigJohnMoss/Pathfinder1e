@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "Gain access to options available to a type of native outsider",

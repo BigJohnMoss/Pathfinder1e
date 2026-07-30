@@ -9,24 +9,34 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Combat Expertise"
+      "type": "feat",
+      "id": "combat-expertise"
     },
     {
       "type": "rule",
       "description": "Improved Dirty Trick APG"
     },
     {
-      "type": "rule",
-      "description": "Kitsune Style"
+      "type": "feat",
+      "id": "kitsune-style"
     },
     {
-      "type": "rule",
-      "description": "Kitsune Tricks"
+      "type": "feat",
+      "id": "kitsune-tricks"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or monk level 6th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 6
+        }
+      ]
     }
   ],
   "benefit": "Use dirty tricks with attacks of opportunity",

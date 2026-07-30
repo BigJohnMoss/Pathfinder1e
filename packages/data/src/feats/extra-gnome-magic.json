@@ -9,8 +9,8 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Gain additional uses of your spell-like abilities",

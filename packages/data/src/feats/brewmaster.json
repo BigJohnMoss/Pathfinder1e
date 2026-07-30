@@ -14,8 +14,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "+2 Craft (alchemy) and Profession (brewer), +1 poison DC",

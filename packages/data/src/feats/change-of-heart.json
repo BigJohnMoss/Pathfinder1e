@@ -4,8 +4,18 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Base attack bonus +6 or monk level 6th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 6
+        }
+      ]
     }
   ],
   "benefit": "Instead of killing a creature, you can attempt a Diplomacy check to change their attitude",

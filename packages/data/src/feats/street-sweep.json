@@ -25,8 +25,18 @@
       "id": "street-style"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or monk level 5th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 5
+        }
+      ]
     }
   ],
   "benefit": "Follow up attack to knock bull-rushed foes prone",

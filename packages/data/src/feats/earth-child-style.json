@@ -22,8 +22,17 @@
       "description": "defensive training racial trait"
     },
     {
-      "type": "rule",
-      "description": "dwarf or gnome"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "dwarf"
+        },
+        {
+          "type": "ancestry",
+          "id": "gnome"
+        }
+      ]
     }
   ],
   "benefit": "Defensive training AC increases to +6 against giants",

@@ -5,7 +5,11 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Nature Magic or the ability to cast druid or ranger spells; Vital Strike"
+      "description": "Nature Magic or the ability to cast druid or ranger spells"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
     },
     {
       "type": "skill",

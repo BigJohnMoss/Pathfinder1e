@@ -24,8 +24,18 @@
       "id": "ready-for-anything"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +13 or rogue level 13th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 13
+        },
+        {
+          "type": "class-level",
+          "classId": "rogue",
+          "minimum": 13
+        }
+      ]
     },
     {
       "type": "skill",

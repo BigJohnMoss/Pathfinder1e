@@ -5,7 +5,21 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Weapon Focus with the chosen melee weapon; base attack bonus +1 or monk level 1st"
+      "description": "Weapon Focus with the chosen melee weapon"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 1
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "Use weapons with unarmed strike abilities",

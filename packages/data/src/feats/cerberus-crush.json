@@ -16,8 +16,18 @@
       "id": "vital-strike"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +13 or monk level 13th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 13
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 13
+        }
+      ]
     }
   ],
   "benefit": "You can apply Vital Strike to attacks made in Cerberus Style",

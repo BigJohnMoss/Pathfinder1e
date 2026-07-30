@@ -13,8 +13,17 @@
       "id": "bardic-performance"
     },
     {
-      "type": "rule",
-      "description": "elf or half-elf"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "elf"
+        },
+        {
+          "type": "ancestry",
+          "id": "half-elf"
+        }
+      ]
     }
   ],
   "benefit": "Gain benefits to bardic performance in forests and against fey",

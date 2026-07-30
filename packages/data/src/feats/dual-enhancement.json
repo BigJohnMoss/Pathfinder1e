@@ -4,8 +4,12 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "two-weapon-fighting"
+    },
+    {
       "type": "rule",
-      "description": "Two-Weapon Fighting; divine bond (weapon) or sacred weapon class feature"
+      "description": "divine bond (weapon) or sacred weapon class feature"
     }
   ],
   "benefit": "Imbue two weapons with divine bond or sacred weapon instead of just one",

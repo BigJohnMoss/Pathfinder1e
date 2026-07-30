@@ -21,8 +21,8 @@
       "description": "ogre"
     },
     {
-      "type": "rule",
-      "description": "size Large or larger"
+      "type": "size",
+      "minimum": "large"
     }
   ],
   "benefit": "Increase unarmed damage while grappling, gain the constrict ability",

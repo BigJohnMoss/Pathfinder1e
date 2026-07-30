@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "+2 bonus on a single roll each time you confirm a critical hit or roll a natural 20 saving throw",

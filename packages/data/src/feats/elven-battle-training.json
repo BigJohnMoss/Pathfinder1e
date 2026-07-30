@@ -8,8 +8,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "elf"
+      "type": "ancestry",
+      "id": "elf"
     }
   ],
   "benefit": "Gain bonuses with traditional elven weapons",

@@ -16,8 +16,8 @@
       "minimum": 11
     },
     {
-      "type": "rule",
-      "description": "half-elf"
+      "type": "ancestry",
+      "id": "half-elf"
     }
   ],
   "benefit": "Ignore harmful effects that target humans or elves",

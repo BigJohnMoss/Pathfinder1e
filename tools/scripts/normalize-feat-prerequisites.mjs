@@ -9,6 +9,26 @@ const feats = await Promise.all(files.map(async (file) => ({
 })));
 const classIds = new Set(["arcanist", "barbarian", "bard", "cleric", "druid", "fighter", "monk", "oracle", "paladin", "ranger", "rogue", "sorcerer", "wizard"]);
 const abilityKeys = { str: "strength", dex: "dexterity", con: "constitution", int: "intelligence", wis: "wisdom", cha: "charisma" };
+const ancestryIds = new Map([
+  ["dwarf", "dwarf"],
+  ["elf", "elf"],
+  ["gnome", "gnome"],
+  ["half-elf", "half-elf"],
+  ["half-orc", "half-orc"],
+  ["halfling", "halfling"],
+  ["human", "human"],
+]);
+const sizeIds = new Map([
+  ["fine", "fine"],
+  ["diminutive", "diminutive"],
+  ["tiny", "tiny"],
+  ["small", "small"],
+  ["medium", "medium"],
+  ["large", "large"],
+  ["huge", "huge"],
+  ["gargantuan", "gargantuan"],
+  ["colossal", "colossal"],
+]);
 const featIdByName = new Map(feats.map(({ value }) => [value.name.toLocaleLowerCase(), value.id]));
 
 const parseAtomicRule = (description) => {
@@ -28,10 +48,24 @@ const parseAtomicRule = (description) => {
   if (match) return { type: "skill", key: match[2].trim(), minimum: Number(match[1]) };
   match = text.match(/^(.+?)\s+(\d+)\s+ranks?$/i);
   if (match) return { type: "skill", key: match[1].trim(), minimum: Number(match[2]) };
+  match = text.match(/^size\s+([A-Za-z]+)\s+or\s+larger$/i);
+  if (match && sizeIds.has(match[1].toLocaleLowerCase())) {
+    return { type: "size", minimum: sizeIds.get(match[1].toLocaleLowerCase()) };
+  }
+  match = text.match(/^([A-Za-z]+)\s+size\s+or\s+smaller$/i);
+  if (match && sizeIds.has(match[1].toLocaleLowerCase())) {
+    return { type: "size", maximum: sizeIds.get(match[1].toLocaleLowerCase()) };
+  }
+  const ancestryId = ancestryIds.get(text.toLocaleLowerCase());
+  if (ancestryId) return { type: "ancestry", id: ancestryId };
+  const featId = featIdByName.get(text.toLocaleLowerCase());
+  if (featId) return { type: "feat", id: featId };
   const alternatives = text.split(/\s+or\s+/i);
   if (alternatives.length > 1) {
-    const ids = alternatives.map((name) => featIdByName.get(name.trim().toLocaleLowerCase()));
-    if (ids.every(Boolean)) return { type: "any", prerequisites: ids.map((id) => ({ type: "feat", id })) };
+    const parsed = alternatives.map(parseAtomicRule);
+    if (parsed.every(Boolean) && parsed.every((prerequisite) => prerequisite.type !== "any")) {
+      return { type: "any", prerequisites: parsed };
+    }
   }
   return null;
 };

@@ -14,16 +14,26 @@
       "minimum": 15
     },
     {
-      "type": "rule",
-      "description": "Subjective Mobility"
+      "type": "feat",
+      "id": "subjective-mobility"
     },
     {
-      "type": "rule",
-      "description": "Subjective Slam"
+      "type": "feat",
+      "id": "subjective-slam"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +8 or monk level 7th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 8
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 7
+        }
+      ]
     }
   ],
   "benefit": "Lessen check penalty and increase maximum damage when using Subjective Slam",

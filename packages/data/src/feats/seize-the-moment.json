@@ -8,8 +8,8 @@
       "id": "combat-reflexes"
     },
     {
-      "type": "rule",
-      "description": "Improved Critical"
+      "type": "feat",
+      "id": "improved-critical"
     }
   ],
   "benefit": "When ally confirms a critical threat, you gain an attack of opportunity",

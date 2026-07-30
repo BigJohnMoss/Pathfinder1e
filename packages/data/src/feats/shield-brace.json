@@ -4,8 +4,26 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "shield-focus"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 3
+        },
+        {
+          "type": "class-level",
+          "classId": "fighter",
+          "minimum": 1
+        }
+      ]
+    },
+    {
       "type": "rule",
-      "description": "Shield Focus; base attack bonus +3 or fighter level 1st; proficiency with light shields"
+      "description": "proficiency with light shields"
     },
     {
       "type": "rule",

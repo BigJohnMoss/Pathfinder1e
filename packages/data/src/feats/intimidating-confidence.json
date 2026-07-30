@@ -18,8 +18,8 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "+1 save vs. emotion spells, make free Intimidate checks when confirming critical hits",

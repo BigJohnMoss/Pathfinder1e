@@ -13,8 +13,8 @@
       "description": "Amateur Swashbuckler ACG or panache ACG class feature"
     },
     {
-      "type": "rule",
-      "description": "Combat Expertise"
+      "type": "feat",
+      "id": "combat-expertise"
     },
     {
       "type": "rule",

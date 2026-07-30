@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Beast Hunter"
+      "type": "feat",
+      "id": "beast-hunter"
     },
     {
       "type": "bab",

@@ -16,8 +16,18 @@
       "id": "savage-slam"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +12 or monk level 10th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 12
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 10
+        }
+      ]
     }
   ],
   "benefit": "You can move half your speed when using Savage Slam",

@@ -13,8 +13,8 @@
       "id": "rage"
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Use the Bluff skill to feint while raging",

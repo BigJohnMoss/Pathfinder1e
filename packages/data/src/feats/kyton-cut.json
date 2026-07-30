@@ -25,8 +25,18 @@
       "id": "kyton-style"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +8 or monk level 6th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 8
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 6
+        }
+      ]
     },
     {
       "type": "skill",

@@ -21,8 +21,8 @@
       "description": "Throw Anything or rock throwing"
     },
     {
-      "type": "rule",
-      "description": "size Large or larger"
+      "type": "size",
+      "minimum": "large"
     }
   ],
   "benefit": "Your awesome throws knock enemies back farther",

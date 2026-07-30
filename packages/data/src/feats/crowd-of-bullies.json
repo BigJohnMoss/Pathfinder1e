@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Half-orc"
+      "type": "ancestry",
+      "id": "half-orc"
     }
   ],
   "benefit": "Allies with this feat gain a +2 bonus on combat maneuver checks after you fail a combat maneuver check",

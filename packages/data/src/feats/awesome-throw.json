@@ -17,8 +17,8 @@
       "id": "improved-bull-rush"
     },
     {
-      "type": "rule",
-      "description": "size Large or larger"
+      "type": "size",
+      "minimum": "large"
     }
   ],
   "benefit": "Learn the awesome throw combat maneuver",

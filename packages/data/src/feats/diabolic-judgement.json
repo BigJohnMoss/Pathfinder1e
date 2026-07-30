@@ -4,8 +4,42 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "feat",
+      "id": "diabolic-humiliation"
+    },
+    {
+      "type": "feat",
+      "id": "diabolic-style"
+    },
+    {
+      "type": "feat",
+      "id": "improved-vital-strike"
+    },
+    {
+      "type": "feat",
+      "id": "vital-strike"
+    },
+    {
       "type": "rule",
-      "description": "Combat Reflexes; Diabolic Humiliation; Diabolic Style; Improved Vital Strike; Vital Strike; Improved Unarmed Strike or Weapon Focus (unarmed strike); base attack bonus +12 or monk level 11th"
+      "description": "Improved Unarmed Strike or Weapon Focus (unarmed strike)"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 12
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 11
+        }
+      ]
     }
   ],
   "benefit": "Apply Vital Strike on attacks of opportunity",

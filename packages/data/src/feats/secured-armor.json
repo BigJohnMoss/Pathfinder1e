@@ -4,8 +4,18 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Base attack bonus +11 or fighter level 8th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 11
+        },
+        {
+          "type": "class-level",
+          "classId": "fighter",
+          "minimum": 8
+        }
+      ]
     },
     {
       "type": "feature",

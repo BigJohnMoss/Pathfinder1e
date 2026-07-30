@@ -8,8 +8,18 @@
       "id": "cerberus-style"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +9 or monk level 9th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 9
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 9
+        }
+      ]
     }
   ],
   "benefit": "When you damage a creature in Ceberus Style, it cannot 5 ft. step or use dimensional travel",

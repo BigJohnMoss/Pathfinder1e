@@ -25,8 +25,18 @@
       "id": "improved-feint"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +11 or bard level 11th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 11
+        },
+        {
+          "type": "class-level",
+          "classId": "bard",
+          "minimum": 11
+        }
+      ]
     }
   ],
   "benefit": "You don't provoke attacks of opportunity from foes you feinted against",

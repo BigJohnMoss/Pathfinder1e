@@ -20,8 +20,18 @@
       "id": "cudgeler-sweep"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +9 or monk level 9th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 9
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 9
+        }
+      ]
     }
   ],
   "benefit": "Improve your Cudgeler Style and Sweep",

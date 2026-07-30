@@ -4,8 +4,30 @@
   "type": "combat",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "ascetic-form"
+    },
+    {
+      "type": "feat",
+      "id": "ascetic-style"
+    },
+    {
       "type": "rule",
-      "description": "Ascetic Form; Ascetic Style; Weapon Focus with the chosen weapon; base attack bonus +7 or monk level 7th"
+      "description": "Weapon Focus with the chosen weapon"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 7
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 7
+        }
+      ]
     }
   ],
   "benefit": "Use unarmed damage of a lower level monk instead of the weapon’s base damage",

@@ -14,12 +14,22 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Subjective Mobility"
+      "type": "feat",
+      "id": "subjective-mobility"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +4 or monk level 3rd"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 4
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 3
+        }
+      ]
     }
   ],
   "benefit": "Take half falling damage and you can intentionally fall against targets to damage them while on planes with subjective directional gravity",

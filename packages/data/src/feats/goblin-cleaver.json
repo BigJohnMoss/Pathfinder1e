@@ -17,8 +17,8 @@
       "id": "power-attack"
     },
     {
-      "type": "rule",
-      "description": "dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     }
   ],
   "benefit": "Target additional creatures during cleave if smaller than you, gain +2 attack against them",

@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Elf or half-elf"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "ancestry",
+          "id": "elf"
+        },
+        {
+          "type": "ancestry",
+          "id": "half-elf"
+        }
+      ]
     },
     {
       "type": "rule",

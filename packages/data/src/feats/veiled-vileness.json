@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Half-orc"
+      "type": "ancestry",
+      "id": "half-orc"
     }
   ],
   "benefit": "Hide any signs of your orcish heritage, +1 Diplomacy, Intimidate, Will saves",

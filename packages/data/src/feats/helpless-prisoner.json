@@ -14,8 +14,8 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "gnome"
+      "type": "ancestry",
+      "id": "gnome"
     }
   ],
   "benefit": "Bluff your captors into loosening your restraints",

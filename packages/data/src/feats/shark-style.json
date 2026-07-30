@@ -13,8 +13,18 @@
       "minimum": 3
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +3 or monk level 3rd"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 3
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 3
+        }
+      ]
     }
   ],
   "benefit": "Can use your unarmed strikes to deal piercing damage and bleed damage",

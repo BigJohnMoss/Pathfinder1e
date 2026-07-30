@@ -4,8 +4,12 @@
   "type": "general",
   "prerequisites": [
     {
+      "type": "feat",
+      "id": "nameless-one"
+    },
+    {
       "type": "rule",
-      "description": "Nameless One; base Will save bonus +6 or bravery class feature"
+      "description": "base Will save bonus +6 or bravery class feature"
     }
   ],
   "benefit": "Fear effects are less effective agaisnt you",

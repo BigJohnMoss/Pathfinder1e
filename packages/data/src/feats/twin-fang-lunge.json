@@ -9,20 +9,20 @@
       "minimum": 15
     },
     {
-      "type": "rule",
-      "description": "Quick Draw"
+      "type": "feat",
+      "id": "quick-draw"
     },
     {
-      "type": "rule",
-      "description": "Twin Fang Strike"
+      "type": "feat",
+      "id": "twin-fang-strike"
     },
     {
-      "type": "rule",
-      "description": "Twin Fang Style"
+      "type": "feat",
+      "id": "twin-fang-style"
     },
     {
-      "type": "rule",
-      "description": "Two-Weapon Fighting"
+      "type": "feat",
+      "id": "two-weapon-fighting"
     },
     {
       "type": "skill",
@@ -30,8 +30,18 @@
       "minimum": 8
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +8 or monk level 8th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 8
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 8
+        }
+      ]
     }
   ],
   "benefit": "Move up to twice your speed and use Twin Fang Strike",

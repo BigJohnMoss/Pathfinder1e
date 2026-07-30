@@ -8,8 +8,18 @@
       "id": "shield-focus"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or fighter level 4th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "fighter",
+          "minimum": 4
+        }
+      ]
     }
   ],
   "benefit": "Don't provoke for making a bull rush or overrun at the end of a charge",

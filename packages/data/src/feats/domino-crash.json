@@ -21,8 +21,18 @@
       "id": "whipcrack"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or monk level 3rd"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 3
+        }
+      ]
     }
   ],
   "benefit": "You can reposition a creature into an occupied square",

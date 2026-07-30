@@ -8,8 +8,8 @@
       "id": "true-healer"
     },
     {
-      "type": "rule",
-      "description": "Selective Channeling"
+      "type": "feat",
+      "id": "selective-channeling"
     }
   ],
   "benefit": "May transfer positive energy to ally who can use it to heal",

@@ -17,8 +17,18 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or monk level 6th"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 6
+        }
+      ]
     }
   ],
   "benefit": "Swim before and after melee attack",

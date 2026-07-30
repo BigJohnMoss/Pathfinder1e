@@ -17,8 +17,18 @@
       "id": "improved-reposition"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +3 or monk level 1st"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 3
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 1
+        }
+      ]
     }
   ],
   "benefit": "You can use a reposition manuever to throw the creature",

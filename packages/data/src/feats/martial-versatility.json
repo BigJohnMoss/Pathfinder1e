@@ -9,8 +9,8 @@
       "minimum": 4
     },
     {
-      "type": "rule",
-      "description": "human"
+      "type": "ancestry",
+      "id": "human"
     }
   ],
   "benefit": "One combat feat can be applied to all weapons within the same weapon group",

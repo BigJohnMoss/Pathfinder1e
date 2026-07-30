@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Dwarf"
+      "type": "ancestry",
+      "id": "dwarf"
     },
     {
       "type": "rule",

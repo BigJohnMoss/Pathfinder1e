@@ -4,8 +4,34 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Archon Diversion; Archon Style; Combat Expertise; Combat Reflexes; base attack bonus +8 or monk level 7th"
+      "type": "feat",
+      "id": "archon-diversion"
+    },
+    {
+      "type": "feat",
+      "id": "archon-style"
+    },
+    {
+      "type": "feat",
+      "id": "combat-expertise"
+    },
+    {
+      "type": "feat",
+      "id": "combat-reflexes"
+    },
+    {
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 8
+        },
+        {
+          "type": "class-level",
+          "classId": "monk",
+          "minimum": 7
+        }
+      ]
     }
   ],
   "benefit": "Redirect an attack from an opponent to yourself to grant several allies attacks of opporunity",
