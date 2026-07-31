@@ -27,8 +27,10 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "(klar"
+      "type": "choice-value",
+      "featId": "weapon-focus",
+      "key": "weapon",
+      "value": "klar"
     }
   ],
   "benefit": "Fight with increased effectiveness when wielding an earth-breaker and klar.",

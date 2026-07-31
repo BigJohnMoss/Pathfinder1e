@@ -10,10 +10,6 @@
     {
       "type": "feat",
       "id": "ki-throw"
-    },
-    {
-      "type": "rule",
-      "description": "(see the Pathfinder RPG Advanced Player’s Guide )"
     }
   ],
   "benefit": "Spend 1 ki point to deal damage when throwing an opponent to the ground.",

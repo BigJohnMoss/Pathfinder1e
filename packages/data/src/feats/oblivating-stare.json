@@ -12,10 +12,6 @@
       "id": "hypnotic-stare"
     },
     {
-      "type": "rule",
-      "description": "( Occult Adventures 39 )"
-    },
-    {
       "type": "class-level",
       "classId": "mesmerist",
       "minimum": 5

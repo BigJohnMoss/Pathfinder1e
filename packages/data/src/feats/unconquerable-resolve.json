@@ -11,10 +11,6 @@
       "type": "class-level",
       "classId": "samurai",
       "minimum": 1
-    },
-    {
-      "type": "rule",
-      "description": "( Pathfinder RPG Ultimate Combat 18 )"
     }
   ],
   "benefit": "Gain temporary hit points whenever you use resolve",
