@@ -21,8 +21,8 @@
       ]
     },
     {
-      "type": "rule",
-      "description": "ki pool"
+      "type": "feature",
+      "id": "ki-pool"
     }
   ],
   "benefit": "Block a creature's chakra with an unarmed strike",

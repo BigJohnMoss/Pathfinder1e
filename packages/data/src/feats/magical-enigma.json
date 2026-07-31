@@ -20,8 +20,8 @@
       "description": "phantom"
     },
     {
-      "type": "rule",
-      "description": "spirit animal"
+      "type": "feature",
+      "id": "spirit-animal"
     },
     {
       "type": "rule",

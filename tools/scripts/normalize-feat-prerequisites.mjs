@@ -74,6 +74,12 @@ const supportedFeatureAliases = new Map([
   ["summon-familiar", "familiar"],
   ["ki-strike", "monk-ki-pool-4"],
   ["mount", "mount"],
+  ["touch-of-corruption", "touch-of-corruption"],
+  ["spirit-animal", "spirit-animal"],
+  ["fervor", "fervor"],
+  ["martial-flexibility", "martial-flexibility"],
+  ["slow-fall", "slow-fall"],
+  ["ki-pool", "ki-pool"],
 ]);
 
 const parseAtomicRule = (description) => {
