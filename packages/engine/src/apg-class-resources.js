@@ -38,6 +38,8 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
         panache: Math.max(1, nonNegativeModifier(abilityModifiers.charisma)),
         ...(classLevel >= 2 ? { charmedLife: 3 + Math.floor((classLevel - 2) / 4) } : {})
       };
+    case "bloodrager":
+      return { bloodrageRounds: Math.max(1, 4 + nonNegativeModifier(abilityModifiers.constitution) + 2 * (classLevel - 1)) };
     default:
       return {};
   }

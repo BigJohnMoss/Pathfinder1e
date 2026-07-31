@@ -1,0 +1,27 @@
+{
+  "id":"bloodrager","name":"Bloodrager","classType":"hybrid","hitDie":10,"babProgression":"full",
+  "saves":{"fortitude":"good","reflex":"poor","will":"poor"},"skillRanksPerLevel":4,
+  "classSkills":["Acrobatics","Climb","Craft","Handle Animal","Intimidate","Knowledge (arcana)","Perception","Ride","Spellcraft","Survival","Swim"],
+  "spellcasting":{"ability":"charisma","tradition":"arcane","castingType":"spontaneous","spellLevelUnlocks":[4,8,12,16],"slotsByLevel":[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,0,0,0],[4,0,0,0,0,0,0,0,0],[4,1,0,0,0,0,0,0,0],[5,2,0,0,0,0,0,0,0],[5,3,0,0,0,0,0,0,0],[5,4,0,0,0,0,0,0,0],[6,4,1,0,0,0,0,0,0],[6,5,2,0,0,0,0,0,0],[6,5,3,0,0,0,0,0,0],[6,5,4,0,0,0,0,0,0],[6,6,4,1,0,0,0,0,0],[6,6,5,2,0,0,0,0,0],[6,6,5,3,0,0,0,0,0],[6,6,5,4,0,0,0,0,0],[6,6,6,4,0,0,0,0,0]],"knownByLevel":[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,2,0,0,0,0,0,0,0,0],[0,3,0,0,0,0,0,0,0,0],[0,4,0,0,0,0,0,0,0,0],[0,4,0,0,0,0,0,0,0,0],[0,4,2,0,0,0,0,0,0,0],[0,5,3,0,0,0,0,0,0,0],[0,5,4,0,0,0,0,0,0,0],[0,5,4,0,0,0,0,0,0,0],[0,6,4,2,0,0,0,0,0,0],[0,6,5,3,0,0,0,0,0,0],[0,6,5,4,0,0,0,0,0,0],[0,6,5,4,0,0,0,0,0,0],[0,6,6,4,2,0,0,0,0,0],[0,6,6,5,3,0,0,0,0,0],[0,6,6,5,4,0,0,0,0,0],[0,6,6,5,4,0,0,0,0,0],[0,6,6,6,4,0,0,0,0,0]]},
+  "source":{"title":"Advanced Class Guide","page":15,"url":"https://legacy.aonprd.com/advancedClassGuide/classes/bloodrager.html"},
+  "features":[
+    {"id":"bloodrager-bloodline-1","name":"Bloodline","level":1,"type":"selectable","summary":"Choose the supernatural bloodline that grants powers while bloodraging.","choiceRequired":true,"optionGroupId":"bloodrager-bloodlines","progressionKey":"bloodrager-bloodline"},
+    {"id":"bloodrager-bloodrage-1","name":"Bloodrage","level":1,"type":"resource","summary":"Enter a bloodrage for Strength, Constitution, and Will bonuses with an AC penalty.","uses":"4 + Constitution modifier rounds, +2 per later level","progressionKey":"bloodrager-bloodrage"},
+    {"id":"bloodrager-fast-movement-1","name":"Fast Movement","level":1,"type":"core","summary":"Gain +10 feet land speed while not in heavy armour or carrying a heavy load."},
+    {"id":"bloodrager-uncanny-dodge-2","name":"Uncanny Dodge","level":2,"type":"core","summary":"Retain Dexterity to AC while flat-footed and against invisible attackers."},
+    {"id":"bloodrager-blood-sanctuary-3","name":"Blood Sanctuary","level":3,"type":"core","summary":"Gain a bonus on saves against spells cast by the Bloodrager or allies while bloodraging."},
+    {"id":"bloodrager-blood-casting-4","name":"Blood Casting","level":4,"type":"spellcasting","summary":"Cast Bloodrager spells even while bloodraging and ignore arcane spell failure in light or medium armour."},
+    {"id":"bloodrager-eschew-materials-4","name":"Eschew Materials","level":4,"type":"core","summary":"Gain Eschew Materials as a bonus feat."},
+    {"id":"bloodrager-improved-uncanny-dodge-5","name":"Improved Uncanny Dodge","level":5,"type":"core","summary":"Cannot be flanked except by a sufficiently experienced sneak attacker."},
+    {"id":"bloodrager-bloodline-feat-6","name":"Bloodline Feat","level":6,"type":"bonus-feat","summary":"Choose a bonus feat from the selected bloodline.","progressionKey":"bloodrager-bloodline-feat"},
+    {"id":"bloodrager-damage-reduction-7","name":"Damage Reduction","level":7,"type":"scaling","summary":"Gain DR 1/—, improving by 1 every 3 Bloodrager levels."},
+    {"id":"bloodrager-bloodline-feat-9","name":"Bloodline Feat","level":9,"type":"bonus-feat","summary":"Choose another bloodline bonus feat.","progressionKey":"bloodrager-bloodline-feat"},
+    {"id":"bloodrager-greater-bloodrage-11","name":"Greater Bloodrage","level":11,"type":"scaling","summary":"Bloodrage bonuses increase and entering bloodrage can apply a qualifying personal spell."},
+    {"id":"bloodrager-bloodline-feat-12","name":"Bloodline Feat","level":12,"type":"bonus-feat","summary":"Choose another bloodline bonus feat.","progressionKey":"bloodrager-bloodline-feat"},
+    {"id":"bloodrager-indomitable-will-14","name":"Indomitable Will","level":14,"type":"core","summary":"Gain +4 on Will saves against enchantment spells while bloodraging."},
+    {"id":"bloodrager-bloodline-feat-15","name":"Bloodline Feat","level":15,"type":"bonus-feat","summary":"Choose another bloodline bonus feat.","progressionKey":"bloodrager-bloodline-feat"},
+    {"id":"bloodrager-tireless-bloodrage-17","name":"Tireless Bloodrage","level":17,"type":"core","summary":"No longer become fatigued when bloodrage ends."},
+    {"id":"bloodrager-bloodline-feat-18","name":"Bloodline Feat","level":18,"type":"bonus-feat","summary":"Choose another bloodline bonus feat.","progressionKey":"bloodrager-bloodline-feat"},
+    {"id":"bloodrager-mighty-bloodrage-20","name":"Mighty Bloodrage","level":20,"type":"capstone","summary":"Bloodrage bonuses increase again and entering it can apply a broader personal spell."}
+  ]
+}

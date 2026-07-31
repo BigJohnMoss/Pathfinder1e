@@ -21,3 +21,12 @@ test("Brawler and Swashbuckler daily resources scale and remain bounded", () => 
   assert.deepEqual(apgClassResourceMaximums("swashbuckler", 1, { charisma: 4 }), { panache: 4 });
   assert.deepEqual(apgClassResourceMaximums("swashbuckler", 20, { charisma: 4 }), { panache: 4, charmedLife: 7 });
 });
+
+test("Bloodrager reaches mighty bloodrage with four spell levels and a bounded rage pool", async () => {
+  const entry = await load("bloodrager");
+  assert.equal(entry.spellcasting.castingType, "spontaneous");
+  assert.deepEqual(entry.spellcasting.spellLevelUnlocks, [4, 8, 12, 16]);
+  assert.equal(entry.features.at(-1).id, "bloodrager-mighty-bloodrage-20");
+  assert.deepEqual(apgClassResourceMaximums("bloodrager", 1, { constitution: 3 }), { bloodrageRounds: 7 });
+  assert.deepEqual(apgClassResourceMaximums("bloodrager", 20, { constitution: 3 }), { bloodrageRounds: 45 });
+});

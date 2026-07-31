@@ -1909,6 +1909,7 @@ export default function Home() {
     knockout: ["Knockout", "use"],
     panache: ["Panache", "point"],
     charmedLife: ["Charmed Life", "use"],
+    bloodrageRounds: ["Bloodrage", "round"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>
