@@ -24,8 +24,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     }
   ],
   "benefit": "Use ranged weaons to make melee attacks and avoid attacks of opportunity",
@@ -33,5 +34,10 @@
     "title": "Weapon Master's Handbook",
     "page": 14,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Empty%20Quiver%20Flurry"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

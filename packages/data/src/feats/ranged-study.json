@@ -8,8 +8,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     },
     {
       "type": "feature",
@@ -21,5 +22,10 @@
     "title": "Advanced Class Guide",
     "page": 155,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Ranged%20Study"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

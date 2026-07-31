@@ -21,8 +21,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     }
   ],
   "benefit": "Make an extra attack with thrown weapon as a standard action",
@@ -30,5 +31,10 @@
     "title": "Weapon Master's Handbook",
     "page": 15,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Startoss%20Comet"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

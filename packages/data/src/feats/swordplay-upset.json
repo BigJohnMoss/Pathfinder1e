@@ -20,8 +20,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     },
     {
       "type": "bab",
@@ -33,5 +34,10 @@
     "title": "Weapon Master's Handbook",
     "page": 17,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Swordplay%20Upset"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

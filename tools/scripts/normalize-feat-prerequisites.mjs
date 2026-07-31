@@ -226,6 +226,17 @@ const repairParentheticalChoices = (prerequisites) => {
   return changed ? repaired : prerequisites;
 };
 
+const repairChosenWeapon = (feat, prerequisites) => {
+  const ruleIndex = prerequisites.findIndex((prerequisite) => prerequisite.type === "rule" && /^with the chosen weapon$/i.test(prerequisite.description));
+  if (ruleIndex === -1 || !prerequisites.some((prerequisite) => prerequisite.type === "feat" && prerequisite.id === "weapon-focus")) {
+    return prerequisites;
+  }
+  feat.choice ??= { key: "weapon", label: "Weapon", allowCustom: true };
+  return prerequisites.map((prerequisite, index) => index === ruleIndex
+    ? { type: "matching-choice", featId: "weapon-focus", key: "weapon" }
+    : prerequisite);
+};
+
 let convertedRules = 0;
 let changedFeats = 0;
 const remainingRules = [];
@@ -251,7 +262,8 @@ for (const feat of feats) {
   }
   const brawlerRepairedPrerequisites = repairSplitBrawlerMonkAlternative(prerequisites);
   const abilityRepairedPrerequisites = repairSplitAbilityAlternative(brawlerRepairedPrerequisites);
-  const repairedPrerequisites = repairParentheticalChoices(abilityRepairedPrerequisites);
+  const parentheticalRepairedPrerequisites = repairParentheticalChoices(abilityRepairedPrerequisites);
+  const repairedPrerequisites = repairChosenWeapon(feat.value, parentheticalRepairedPrerequisites);
   if (repairedPrerequisites !== prerequisites) {
     changed = true;
     convertedRules += 1;
