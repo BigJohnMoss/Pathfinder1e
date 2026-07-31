@@ -8,8 +8,17 @@
       "id": "divine-spells"
     },
     {
-      "type": "rule",
-      "description": "domain or mystery class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "domain"
+        },
+        {
+          "type": "feature",
+          "id": "mystery"
+        }
+      ]
     }
   ],
   "benefit": "+1 bonus to initiative and +2 on concentration checks when casting defensively",
