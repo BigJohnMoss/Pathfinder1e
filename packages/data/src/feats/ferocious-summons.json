@@ -12,8 +12,10 @@
       "id": "spell-focus"
     },
     {
-      "type": "rule",
-      "description": "(conjuration)"
+      "type": "choice-value",
+      "featId": "spell-focus",
+      "key": "school",
+      "value": "conjuration"
     },
     {
       "type": "any",

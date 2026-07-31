@@ -6,10 +6,6 @@
     {
       "type": "feat",
       "id": "spell-focus"
-    },
-    {
-      "type": "rule",
-      "description": "(any school)"
     }
   ],
   "benefit": "Learn the basics of the ancient art of hemotheurgy",

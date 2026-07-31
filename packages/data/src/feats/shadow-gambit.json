@@ -8,8 +8,10 @@
       "id": "spell-focus"
     },
     {
-      "type": "rule",
-      "description": "(illusion)"
+      "type": "choice-value",
+      "featId": "spell-focus",
+      "key": "school",
+      "value": "illusion"
     },
     {
       "type": "caster-level",

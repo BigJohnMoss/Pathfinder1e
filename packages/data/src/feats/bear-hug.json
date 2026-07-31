@@ -17,8 +17,10 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "(bite)"
+      "type": "choice-value",
+      "featId": "weapon-focus",
+      "key": "weapon",
+      "value": "bite"
     },
     {
       "type": "bab",

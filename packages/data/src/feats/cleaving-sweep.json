@@ -21,8 +21,10 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "(greataxe)"
+      "type": "choice-value",
+      "featId": "weapon-focus",
+      "key": "weapon",
+      "value": "greataxe"
     },
     {
       "type": "bab",

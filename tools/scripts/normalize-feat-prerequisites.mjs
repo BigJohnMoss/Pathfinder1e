@@ -38,6 +38,7 @@ const sizeIds = new Map([
 const sourceCitationTokens = new Set(["ACG", "APG", "ARG", "ISG", "ISWG", "OA", "TG", "UC", "UI", "UM"]);
 const saveKeys = { fortitude: "fortitude", reflex: "reflex", will: "will" };
 const featIdByName = new Map(feats.map(({ value }) => [value.name.toLocaleLowerCase(), value.id]));
+const featChoiceKeyById = new Map(feats.flatMap(({ value }) => value.choice?.key ? [[value.id, value.choice.key]] : []));
 const featureKey = (value) => value.toLocaleLowerCase().replace(/[’']/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const classFeatureKeys = new Set(classes.flatMap((characterClass) => characterClass.features.flatMap((feature) => {
   const key = featureKey(feature.name);
@@ -196,6 +197,26 @@ const repairSplitAbilityAlternative = (prerequisites) => {
   return prerequisites.flatMap((prerequisite, index) => index === insertionIndex ? [{ type: "any", prerequisites: alternatives }] : removed.has(index) ? [] : [prerequisite]);
 };
 
+const repairParentheticalChoices = (prerequisites) => {
+  let changed = false;
+  const repaired = prerequisites.flatMap((prerequisite, index) => {
+    if (prerequisite.type !== "rule") return [prerequisite];
+    const match = prerequisite.description.match(/^\(([^)]+)\)(?:\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM))?$/i);
+    const selectedFeat = prerequisites[index - 1];
+    const key = selectedFeat?.type === "feat" ? featChoiceKeyById.get(selectedFeat.id) : undefined;
+    if (!match || !key) return [prerequisite];
+    const value = match[1].trim().toLocaleLowerCase();
+    if (value === "any" || value === "any school") {
+      changed = true;
+      return [];
+    }
+    if (/\bany\b|at least|\[|^natural weapon$/i.test(value)) return [prerequisite];
+    changed = true;
+    return [{ type: "choice-value", featId: selectedFeat.id, key, value }];
+  });
+  return changed ? repaired : prerequisites;
+};
+
 let convertedRules = 0;
 let changedFeats = 0;
 const remainingRules = [];
@@ -220,7 +241,8 @@ for (const feat of feats) {
     }
   }
   const brawlerRepairedPrerequisites = repairSplitBrawlerMonkAlternative(prerequisites);
-  const repairedPrerequisites = repairSplitAbilityAlternative(brawlerRepairedPrerequisites);
+  const abilityRepairedPrerequisites = repairSplitAbilityAlternative(brawlerRepairedPrerequisites);
+  const repairedPrerequisites = repairParentheticalChoices(abilityRepairedPrerequisites);
   if (repairedPrerequisites !== prerequisites) {
     changed = true;
     convertedRules += 1;

@@ -8,8 +8,10 @@
       "id": "spell-focus"
     },
     {
-      "type": "rule",
-      "description": "(necromancy)"
+      "type": "choice-value",
+      "featId": "spell-focus",
+      "key": "school",
+      "value": "necromancy"
     }
   ],
   "benefit": "+4 saves vs death effects when possessed by an undead creature.",

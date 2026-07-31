@@ -8,8 +8,10 @@
       "id": "exotic-weapon-proficiency"
     },
     {
-      "type": "rule",
-      "description": "(net)"
+      "type": "choice-value",
+      "featId": "exotic-weapon-proficiency",
+      "key": "weapon",
+      "value": "net"
     },
     {
       "type": "bab",

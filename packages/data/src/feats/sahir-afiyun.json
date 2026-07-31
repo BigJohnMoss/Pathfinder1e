@@ -8,10 +8,6 @@
       "id": "spell-focus"
     },
     {
-      "type": "rule",
-      "description": "(any)"
-    },
-    {
       "type": "spell-access",
       "id": "2nd-level-spells"
     }

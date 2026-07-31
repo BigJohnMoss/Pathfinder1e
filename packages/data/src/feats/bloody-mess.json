@@ -8,8 +8,10 @@
       "id": "skill-focus"
     },
     {
-      "type": "rule",
-      "description": "(Intimidate)"
+      "type": "choice-value",
+      "featId": "skill-focus",
+      "key": "skill",
+      "value": "intimidate"
     }
   ],
   "benefit": "Once per round, demoralize a creature that made you bleed as an immediate action",

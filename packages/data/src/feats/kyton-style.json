@@ -13,8 +13,10 @@
       "id": "exotic-weapon-proficiency"
     },
     {
-      "type": "rule",
-      "description": "(spiked chain)"
+      "type": "choice-value",
+      "featId": "exotic-weapon-proficiency",
+      "key": "weapon",
+      "value": "spiked chain"
     },
     {
       "type": "skill",

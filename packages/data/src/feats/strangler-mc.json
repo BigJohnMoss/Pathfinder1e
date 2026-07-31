@@ -8,16 +8,20 @@
       "id": "exotic-weapon-proficiency"
     },
     {
-      "type": "rule",
-      "description": "(lasso)"
+      "type": "choice-value",
+      "featId": "exotic-weapon-proficiency",
+      "key": "weapon",
+      "value": "lasso"
     },
     {
       "type": "feat",
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "(lasso)"
+      "type": "choice-value",
+      "featId": "weapon-focus",
+      "key": "weapon",
+      "value": "lasso"
     }
   ],
   "benefit": "Choke foes with a lasso, preventing them from speaking",

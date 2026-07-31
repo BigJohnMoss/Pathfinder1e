@@ -8,8 +8,10 @@
       "id": "spell-focus"
     },
     {
-      "type": "rule",
-      "description": "(divination)"
+      "type": "choice-value",
+      "featId": "spell-focus",
+      "key": "school",
+      "value": "divination"
     },
     {
       "type": "spell-access",
