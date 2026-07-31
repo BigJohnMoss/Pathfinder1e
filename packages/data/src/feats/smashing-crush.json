@@ -21,8 +21,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     }
   ],
   "benefit": "Reduce the hardness of objects you sunder",
@@ -30,5 +31,10 @@
     "title": "Weapon Master's Handbook",
     "page": 16,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Smashing%20Crush"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

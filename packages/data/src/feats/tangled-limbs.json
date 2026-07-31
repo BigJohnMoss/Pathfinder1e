@@ -21,8 +21,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     }
   ],
   "benefit": "When you use a reach weapon to trip a creature, it doesn't get a bonus to its CMD for having more than 2 legs",
@@ -30,5 +31,10 @@
     "title": "Martial Arts Handbook",
     "page": 25,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Tangled%20Limbs"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

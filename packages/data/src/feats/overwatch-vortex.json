@@ -24,8 +24,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     },
     {
       "type": "bab",
@@ -37,5 +38,10 @@
     "title": "Weapon Master's Handbook",
     "page": 15,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Overwatch%20Vortex"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

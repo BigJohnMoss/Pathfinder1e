@@ -25,8 +25,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     }
   ],
   "benefit": "Gain Weapon Finesse while using Spear Dancing Style",
@@ -34,5 +35,10 @@
     "title": "Weapon Master's Handbook",
     "page": 17,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Spear%20Dancing%20Spiral"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

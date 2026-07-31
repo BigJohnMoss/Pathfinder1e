@@ -33,8 +33,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     },
     {
       "type": "bab",
@@ -46,5 +47,10 @@
     "title": "Blood of Shadows",
     "page": 25,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Cloak%20and%20Dagger%20Tactics"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

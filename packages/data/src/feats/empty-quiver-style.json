@@ -8,8 +8,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     }
   ],
   "benefit": "Fight in melee with your ranged weapon",
@@ -17,5 +18,10 @@
     "title": "Weapon Master's Handbook",
     "page": 14,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Empty%20Quiver%20Style"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }

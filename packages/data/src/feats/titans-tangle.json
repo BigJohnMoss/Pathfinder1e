@@ -25,8 +25,9 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "with the chosen weapon"
+      "type": "matching-choice",
+      "featId": "weapon-focus",
+      "key": "weapon"
     }
   ],
   "benefit": "Trip larger creatures when using a reach weapon",
@@ -34,5 +35,10 @@
     "title": "Martial Arts Handbook",
     "page": 25,
     "url": "https://www.aonprd.com/FeatDisplay.aspx?ItemName=Titan's%20Tangle"
+  },
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
   }
 }
