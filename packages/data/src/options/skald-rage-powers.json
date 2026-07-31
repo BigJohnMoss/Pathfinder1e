@@ -1,0 +1,1 @@
+{"id":"skald-rage-powers","name":"Skald Rage Powers","classIds":["skald"],"inheritsOptionsFrom":"rage-powers","optionDefaults":{"groupId":"skald-rage-powers","classIds":["skald"],"minimumLevel":3,"prerequisites":[],"source":{"title":"Advanced Class Guide","page":50,"url":"https://legacy.aonprd.com/advancedClassGuide/classes/skald.html#rage-powers"}},"options":[]}

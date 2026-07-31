@@ -1750,7 +1750,7 @@ export default function Home() {
     );
     return {
       label:
-        selectedClassId === "alchemist" ? "Formula book" : "Familiar spellbook",
+        selectedClassId === "alchemist" || selectedClassId === "investigator" ? "Formula book" : "Familiar spellbook",
       catalogue,
       knownSpellIds,
       automaticSpellIds,
@@ -1845,12 +1845,14 @@ export default function Home() {
     };
     add("eidolon", "eidolon", eidolonBaseFormId, "Eidolon", summonerClassLevel, { bonusHitPoints: reward("gnome-summoner-eidolon-hp"), bonusSkillRanks: reward("halfling-summoner-eidolon-skill") });
     add("witch-familiar", "familiar", selectedValue("witch-familiar-"), "Witch familiar", classLevelMap.witch ?? 0, { bonusSkillRanks: reward("half-orc-witch-familiar") });
+    add("shaman-spirit-animal", "familiar", selectedValue("shaman-spirit-animal-"), "Spirit animal", classLevelMap.shaman ?? 0);
     if (selectedValue("wizard-arcane-bond-") === "wizard-arcane-bond-familiar")
       add("wizard-familiar", "familiar", selectedValue("wizard-familiar-"), "Wizard familiar", classLevelMap.wizard ?? 0);
     if (selectedValue("druid-nature-bond-") === "druid-nature-bond-animal")
       add("druid-companion", "animal", selectedValue("druid-animal-companion-"), "Animal companion", classLevelMap.druid ?? 0);
     if (selectedValue("ranger-hunters-bond-") === "ranger-hunters-bond-animal")
       add("ranger-companion", "animal", selectedValue("ranger-animal-companion-"), "Animal companion", Math.max(1, (classLevelMap.ranger ?? 0) - 3), { bonusHitPoints: reward("half-orc-ranger-companion"), bonusSkillRanks: reward("half-elf-ranger-companion") });
+    add("hunter-companion", "animal", selectedValue("hunter-animal-companion-"), "Hunter companion", classLevelMap.hunter ?? 0);
     if (selectedValue("paladin-divine-bond-") === "paladin-divine-bond-mount")
       descriptors.push({ id: "paladin-mount", kind: "mount", optionId: "paladin-divine-bond-mount", label: "Bonded mount", effectiveLevel: classLevelMap.paladin ?? 1 });
     add("cavalier-mount", "mount", selectedValue("cavalier-mount-"), "Cavalier mount", classLevelMap.cavalier ?? 0, { bonusHitPoints: reward("elf-cavalier-mount") });
@@ -1905,6 +1907,16 @@ export default function Home() {
     arcanePool: ["Arcane Pool", "point"],
     grit: ["Grit", "point"],
     resolve: ["Resolve", "use"],
+    martialFlexibility: ["Martial Flexibility", "use"],
+    knockout: ["Knockout", "use"],
+    panache: ["Panache", "point"],
+    charmedLife: ["Charmed Life", "use"],
+    bloodrageRounds: ["Bloodrage", "round"],
+    inspiration: ["Inspiration", "point"],
+    ragingSongRounds: ["Raging Song", "round"],
+    spellKenning: ["Spell Kenning", "use"],
+    blessingUses: ["Blessings", "use"],
+    fervor: ["Fervor", "use"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>

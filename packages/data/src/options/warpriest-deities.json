@@ -1,0 +1,1 @@
+{"id":"warpriest-deities","name":"Warpriest Deities","classIds":["warpriest"],"inheritsOptionsFrom":"cleric-deities","optionDefaults":{"groupId":"warpriest-deities","classIds":["warpriest"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Advanced Class Guide","page":60,"url":"https://legacy.aonprd.com/advancedClassGuide/classes/warpriest.html#deity"}},"options":[]}

@@ -1,0 +1,25 @@
+{
+ "id":"shaman","name":"Shaman","classType":"hybrid","hitDie":8,"babProgression":"three-quarters","saves":{"fortitude":"poor","reflex":"poor","will":"good"},"skillRanksPerLevel":4,
+ "classSkills":["Craft","Diplomacy","Fly","Handle Animal","Heal","Knowledge (nature)","Knowledge (planes)","Knowledge (religion)","Profession","Ride","Spellcraft","Survival"],
+ "spellcasting":{"ability":"wisdom","tradition":"divine","castingType":"prepared","preparesFromSlots":true,"spellLevelUnlocks":[1,3,5,7,9,11,13,15,17],"slotsByLevel":[[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[2,1,0,0,0,0,0,0,0],[3,2,0,0,0,0,0,0,0],[3,2,1,0,0,0,0,0,0],[3,3,2,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0],[4,3,3,2,0,0,0,0,0],[4,4,3,2,1,0,0,0,0],[4,4,3,3,2,0,0,0,0],[4,4,4,3,2,1,0,0,0],[4,4,4,3,3,2,0,0,0],[4,4,4,4,3,2,1,0,0],[4,4,4,4,3,3,2,0,0],[4,4,4,4,4,3,2,1,0],[4,4,4,4,4,3,3,2,0],[4,4,4,4,4,4,3,2,1],[4,4,4,4,4,4,3,3,2],[4,4,4,4,4,4,4,3,3],[4,4,4,4,4,4,4,4,4]],"preparedByLevel":[[3,1,0,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0,0],[4,2,1,0,0,0,0,0,0,0],[4,3,2,0,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0,0],[4,3,3,2,0,0,0,0,0,0],[4,4,3,2,1,0,0,0,0,0],[4,4,3,3,2,0,0,0,0,0],[4,4,4,3,2,1,0,0,0,0],[4,4,4,3,3,2,0,0,0,0],[4,4,4,4,3,2,1,0,0,0],[4,4,4,4,3,3,2,0,0,0],[4,4,4,4,4,3,2,1,0,0],[4,4,4,4,4,3,3,2,0,0],[4,4,4,4,4,4,3,2,1,0],[4,4,4,4,4,4,3,3,2,0],[4,4,4,4,4,4,4,3,2,1],[4,4,4,4,4,4,4,3,3,2],[4,4,4,4,4,4,4,4,3,3],[4,4,4,4,4,4,4,4,4,4]]},
+ "source":{"title":"Advanced Class Guide","page":35,"url":"https://legacy.aonprd.com/advancedClassGuide/classes/shaman.html"},
+ "features":[
+  {"id":"shaman-spirit-1","name":"Spirit","level":1,"type":"selectable","summary":"Choose a spirit that grants spirit magic, a spirit ability, hex choices, and a manifestation.","choiceRequired":true,"optionGroupId":"shaman-spirits","progressionKey":"shaman-spirit"},
+  {"id":"shaman-spirit-animal-1","name":"Spirit Animal","level":1,"type":"selectable","summary":"Choose a familiar-like spirit animal that advances with Shaman level.","choiceRequired":true,"optionGroupId":"shaman-spirit-animals","progressionKey":"shaman-spirit-animal"},
+  {"id":"shaman-spirit-magic-1","name":"Spirit Magic","level":1,"type":"spellcasting","summary":"Prepare the selected spirit's bonus spells in dedicated spirit-magic slots."},
+  {"id":"shaman-hex-2","name":"Hex","level":2,"type":"selectable","summary":"Choose a general or spirit hex.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-hex"},
+  {"id":"shaman-wandering-spirit-4","name":"Wandering Spirit","level":4,"type":"selectable","summary":"Choose a second spirit each day and gain its spirit ability and spirit-magic spells.","choiceRequired":true,"optionGroupId":"shaman-spirits","progressionKey":"shaman-wandering-spirit"},
+  {"id":"shaman-hex-4","name":"Hex","level":4,"type":"selectable","summary":"Choose another hex.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-hex"},
+  {"id":"shaman-wandering-hex-6","name":"Wandering Hex","level":6,"type":"selectable","summary":"Choose a temporary hex from the wandering spirit each day.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-wandering-hex"},
+  {"id":"shaman-hex-8","name":"Hex","level":8,"type":"selectable","summary":"Choose another hex.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-hex"},
+  {"id":"shaman-hex-10","name":"Hex","level":10,"type":"selectable","summary":"Choose another hex.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-hex"},
+  {"id":"shaman-greater-spirit-10","name":"Greater Spirit Ability","level":10,"type":"scaling","summary":"Gain the greater ability of the selected spirit."},
+  {"id":"shaman-hex-12","name":"Hex","level":12,"type":"selectable","summary":"Choose another hex.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-hex"},
+  {"id":"shaman-wandering-hex-14","name":"Wandering Hex","level":14,"type":"selectable","summary":"Maintain two wandering hex choices each day.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-wandering-hex"},
+  {"id":"shaman-true-spirit-16","name":"True Spirit Ability","level":16,"type":"scaling","summary":"Gain the true ability of the selected spirit."},
+  {"id":"shaman-hex-16","name":"Hex","level":16,"type":"selectable","summary":"Choose another hex.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-hex"},
+  {"id":"shaman-hex-18","name":"Hex","level":18,"type":"selectable","summary":"Choose another hex.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-hex"},
+  {"id":"shaman-manifestation-20","name":"Manifestation","level":20,"type":"capstone","summary":"Gain the manifestation granted by the Shaman's primary spirit."},
+  {"id":"shaman-hex-20","name":"Hex","level":20,"type":"selectable","summary":"Choose another hex.","choiceRequired":true,"optionGroupId":"shaman-hexes","progressionKey":"shaman-hex"}
+ ]
+}

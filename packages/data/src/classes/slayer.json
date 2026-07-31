@@ -1,0 +1,26 @@
+{
+  "id":"slayer","name":"Slayer","classType":"hybrid","hitDie":10,"babProgression":"full",
+  "saves":{"fortitude":"good","reflex":"good","will":"poor"},"skillRanksPerLevel":6,
+  "classSkills":["Acrobatics","Bluff","Climb","Craft","Disguise","Escape Artist","Heal","Intimidate","Knowledge (dungeoneering)","Knowledge (geography)","Knowledge (local)","Perception","Profession","Ride","Sense Motive","Stealth","Survival","Swim"],
+  "source":{"title":"Advanced Class Guide","page":53,"url":"https://legacy.aonprd.com/advancedClassGuide/classes/slayer.html"},
+  "features":[
+    {"id":"slayer-studied-target-1","name":"Studied Target","level":1,"type":"scaling","summary":"Study a foe to gain +1 on weapon attack and damage rolls and selected skill checks against it; the bonus and simultaneous targets scale with level.","progressionKey":"slayer-studied-target"},
+    {"id":"slayer-track-1","name":"Track","level":1,"type":"scaling","summary":"Add half Slayer level to Survival checks made to follow tracks."},
+    {"id":"slayer-talent-2","name":"Slayer Talent","level":2,"type":"selectable","summary":"Choose a Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-sneak-attack-3","name":"Sneak Attack","level":3,"type":"scaling","summary":"Deal +1d6 precision damage; increases by +1d6 every 3 Slayer levels thereafter.","progressionKey":"slayer-sneak-attack"},
+    {"id":"slayer-talent-4","name":"Slayer Talent","level":4,"type":"selectable","summary":"Choose another Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-stalker-7","name":"Stalker","level":7,"type":"core","summary":"Add the studied-target bonus on Disguise, Intimidate, and Stealth checks against studied targets."},
+    {"id":"slayer-talent-6","name":"Slayer Talent","level":6,"type":"selectable","summary":"Choose another Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-talent-8","name":"Slayer Talent","level":8,"type":"selectable","summary":"Choose another Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-talent-10","name":"Advanced Slayer Talent","level":10,"type":"selectable","summary":"Choose a Slayer talent, including advanced talents.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-swift-tracker-11","name":"Swift Tracker","level":11,"type":"core","summary":"Track at normal speed without penalty and at double speed with only a -10 penalty."},
+    {"id":"slayer-talent-12","name":"Advanced Slayer Talent","level":12,"type":"selectable","summary":"Choose another Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-quarry-14","name":"Quarry","level":14,"type":"core","summary":"As a standard action, designate a studied target as quarry to track at full speed and gain attack benefits."},
+    {"id":"slayer-talent-14","name":"Advanced Slayer Talent","level":14,"type":"selectable","summary":"Choose another Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-talent-16","name":"Advanced Slayer Talent","level":16,"type":"selectable","summary":"Choose another Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-talent-18","name":"Advanced Slayer Talent","level":18,"type":"selectable","summary":"Choose another Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"},
+    {"id":"slayer-improved-quarry-19","name":"Improved Quarry","level":19,"type":"scaling","summary":"Select quarry as a free action and gain an increased attack bonus against it."},
+    {"id":"slayer-master-slayer-20","name":"Master Slayer","level":20,"type":"capstone","summary":"A studied-target attack can force a Fortitude save or kill, paralyse, or knock the target unconscious."},
+    {"id":"slayer-talent-20","name":"Advanced Slayer Talent","level":20,"type":"selectable","summary":"Choose another Slayer talent.","choiceRequired":true,"optionGroupId":"slayer-talents","progressionKey":"slayer-talent"}
+  ]
+}

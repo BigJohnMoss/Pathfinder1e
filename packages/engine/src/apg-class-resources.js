@@ -28,6 +28,30 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
       return { grit: Math.max(1, nonNegativeModifier(abilityModifiers.wisdom)) };
     case "samurai":
       return { challenges: Math.min(7, 1 + Math.floor((classLevel - 1) / 3)), resolve: Math.max(1, Math.floor(classLevel / 2)) };
+    case "brawler":
+      return {
+        martialFlexibility: 3 + Math.floor(classLevel / 2),
+        ...(classLevel >= 4 ? { knockout: 1 + (classLevel >= 10 ? 1 : 0) + (classLevel >= 16 ? 1 : 0) } : {})
+      };
+    case "swashbuckler":
+      return {
+        panache: Math.max(1, nonNegativeModifier(abilityModifiers.charisma)),
+        ...(classLevel >= 2 ? { charmedLife: 3 + Math.floor((classLevel - 2) / 4) } : {})
+      };
+    case "bloodrager":
+      return { bloodrageRounds: Math.max(1, 4 + nonNegativeModifier(abilityModifiers.constitution) + 2 * (classLevel - 1)) };
+    case "investigator":
+      return { inspiration: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.intelligence)) };
+    case "skald":
+      return {
+        ragingSongRounds: Math.max(1, 3 + nonNegativeModifier(abilityModifiers.charisma) + 2 * (classLevel - 1)),
+        ...(classLevel >= 5 ? { spellKenning: classLevel >= 17 ? 3 : classLevel >= 11 ? 2 : 1 } : {})
+      };
+    case "warpriest":
+      return {
+        blessingUses: 3 + Math.floor(classLevel / 2),
+        ...(classLevel >= 2 ? { fervor: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.wisdom)) } : {})
+      };
     default:
       return {};
   }
