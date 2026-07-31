@@ -17,10 +17,6 @@
       "id": "ranged-trip"
     },
     {
-      "type": "rule",
-      "description": "( Ranged Tactics Toolbox 9)"
-    },
-    {
       "type": "bab",
       "minimum": 6
     },

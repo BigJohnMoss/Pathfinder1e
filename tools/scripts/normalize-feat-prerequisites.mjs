@@ -210,7 +210,7 @@ const repairParentheticalChoices = (prerequisites) => {
   let changed = false;
   const repaired = prerequisites.flatMap((prerequisite, index) => {
     if (prerequisite.type !== "rule") return [prerequisite];
-    const match = prerequisite.description.match(/^\(([^)]+)\)(?:\s+(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM))?$/i);
+    const match = prerequisite.description.match(/^\(([^)]+)\)?(?:\s+(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM))?$/i);
     const selectedFeat = prerequisites[index - 1];
     const key = selectedFeat?.type === "feat" ? featChoiceKeyById.get(selectedFeat.id) : undefined;
     if (!match || !key) return [prerequisite];
@@ -224,6 +224,14 @@ const repairParentheticalChoices = (prerequisites) => {
     return [{ type: "choice-value", featId: selectedFeat.id, key, value }];
   });
   return changed ? repaired : prerequisites;
+};
+
+const removeCitationRules = (prerequisites) => {
+  const repaired = prerequisites.filter((prerequisite) => prerequisite.type !== "rule" || !(
+    /^\(\s*(?:(?:Pathfinder Campaign Setting:\s*)|(?:Pathfinder RPG\s*))?(?:Ranged Tactics Toolbox|The Inner Sea World Guide|Occult Adventures|Ultimate Combat)\s+\d+\s*\)$/i.test(prerequisite.description)
+    || /^\(see the Pathfinder RPG Advanced Player(?:â€™|’|'|&apos;)s Guide\s*\)$/i.test(prerequisite.description)
+  ));
+  return repaired.length === prerequisites.length ? prerequisites : repaired;
 };
 
 const repairChosenWeapon = (feat, prerequisites) => {
@@ -262,7 +270,8 @@ for (const feat of feats) {
   }
   const brawlerRepairedPrerequisites = repairSplitBrawlerMonkAlternative(prerequisites);
   const abilityRepairedPrerequisites = repairSplitAbilityAlternative(brawlerRepairedPrerequisites);
-  const parentheticalRepairedPrerequisites = repairParentheticalChoices(abilityRepairedPrerequisites);
+  const citationRepairedPrerequisites = removeCitationRules(abilityRepairedPrerequisites);
+  const parentheticalRepairedPrerequisites = repairParentheticalChoices(citationRepairedPrerequisites);
   const repairedPrerequisites = repairChosenWeapon(feat.value, parentheticalRepairedPrerequisites);
   if (repairedPrerequisites !== prerequisites) {
     changed = true;

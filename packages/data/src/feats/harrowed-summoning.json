@@ -6,10 +6,6 @@
     {
       "type": "feat",
       "id": "harrowed"
-    },
-    {
-      "type": "rule",
-      "description": "( Pathfinder Campaign Setting: The Inner Sea World Guide 287)"
     }
   ],
   "benefit": "Increase a summoned creature’s abilities by enhancing them with harrow cards",

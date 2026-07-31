@@ -17,10 +17,6 @@
       "id": "ranged-disarm"
     },
     {
-      "type": "rule",
-      "description": "( Ranged Tactics Toolbox 8)"
-    },
-    {
       "type": "bab",
       "minimum": 6
     },
