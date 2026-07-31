@@ -6,10 +6,10 @@ This report is generated from the application's source data by `npm run coverage
 
 | Area | Records |
 |---|---:|
-| Classes | 40 |
+| Classes | 46 |
 | Archetypes | 825 |
 | Ancestries | 7 |
-| Option groups | 75 |
+| Option groups | 89 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2073 |
@@ -57,13 +57,18 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Hunter | 22 | 20 | 0 |
 | Inquisitor | 25 | 20 | 38 |
 | Investigator | 22 | 20 | 0 |
+| Kineticist | 30 | 20 | 0 |
 | Loremaster | 20 | 10 | 0 |
 | Magus | 23 | 20 | 0 |
+| Medium | 14 | 20 | 0 |
+| Mesmerist | 9 | 20 | 0 |
 | Monk | 31 | 20 | 56 |
 | Mystic Theurge | 16 | 10 | 0 |
+| Occultist | 11 | 20 | 0 |
 | Oracle | 14 | 20 | 26 |
 | Paladin | 21 | 20 | 47 |
 | Pathfinder Chronicler | 14 | 10 | 0 |
+| Psychic | 8 | 20 | 0 |
 | Ranger | 30 | 20 | 62 |
 | Rogue | 31 | 20 | 78 |
 | Samurai | 16 | 20 | 0 |
@@ -72,6 +77,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Skald | 21 | 20 | 0 |
 | Slayer | 18 | 20 | 0 |
 | Sorcerer | 22 | 20 | 13 |
+| Spiritualist | 11 | 20 | 0 |
 | Summoner | 14 | 20 | 22 |
 | Swashbuckler | 15 | 20 | 0 |
 | Warpriest | 18 | 20 | 0 |

@@ -1917,6 +1917,12 @@ export default function Home() {
     spellKenning: ["Spell Kenning", "use"],
     blessingUses: ["Blessings", "use"],
     fervor: ["Fervor", "use"],
+    burn: ["Burn accepted", "point"],
+    influence: ["Spirit Influence", "point"],
+    mesmeristTrick: ["Mesmerist Tricks", "implant"],
+    mentalFocus: ["Mental Focus", "point"],
+    phrenicPool: ["Phrenic Pool", "point"],
+    bondedManifestation: ["Bonded Manifestation", "round"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>

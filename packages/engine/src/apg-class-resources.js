@@ -52,6 +52,18 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
         blessingUses: 3 + Math.floor(classLevel / 2),
         ...(classLevel >= 2 ? { fervor: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.wisdom)) } : {})
       };
+    case "kineticist":
+      return { burn: Math.max(1, 3 + nonNegativeModifier(abilityModifiers.constitution)) };
+    case "medium":
+      return { influence: 5 };
+    case "mesmerist":
+      return { mesmeristTrick: Math.max(1, 3 + nonNegativeModifier(abilityModifiers.charisma)) };
+    case "occultist":
+      return { mentalFocus: Math.max(1, classLevel + nonNegativeModifier(abilityModifiers.intelligence)) };
+    case "psychic":
+      return { phrenicPool: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.intelligence)) };
+    case "spiritualist":
+      return { bondedManifestation: Math.max(1, 3 + classLevel) };
     default:
       return {};
   }

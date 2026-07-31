@@ -1,0 +1,19 @@
+{
+ "id":"occultist","name":"Occultist","classType":"base","hitDie":8,"babProgression":"three-quarters","saves":{"fortitude":"good","reflex":"poor","will":"good"},"skillRanksPerLevel":4,
+ "classSkills":["Appraise","Craft","Diplomacy","Disable Device","Disguise","Fly","Knowledge","Linguistics","Perception","Profession","Sense Motive","Spellcraft","Use Magic Device"],
+ "spellcasting":{"ability":"intelligence","tradition":"psychic","castingType":"spontaneous","spellLevelUnlocks":[1,4,7,10,13,16],"slotsByLevel":[[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,0,0,0],[3,1,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0],[4,3,1,0,0,0,0,0,0],[4,4,2,0,0,0,0,0,0],[5,4,3,0,0,0,0,0,0],[5,4,3,1,0,0,0,0,0],[5,4,4,2,0,0,0,0,0],[5,5,4,3,0,0,0,0,0],[5,5,4,3,1,0,0,0,0],[5,5,4,4,2,0,0,0,0],[5,5,5,4,3,0,0,0,0],[5,5,5,4,3,1,0,0,0],[5,5,5,4,4,2,0,0,0],[5,5,5,5,4,3,0,0,0],[5,5,5,5,5,4,0,0,0],[5,5,5,5,5,5,0,0,0]],"knownByLevel":[[0,2,0,0,0,0,0,0,0,0],[0,3,0,0,0,0,0,0,0,0],[0,4,0,0,0,0,0,0,0,0],[0,4,2,0,0,0,0,0,0,0],[0,4,3,0,0,0,0,0,0,0],[0,4,4,0,0,0,0,0,0,0],[0,5,4,2,0,0,0,0,0,0],[0,5,4,3,0,0,0,0,0,0],[0,5,4,4,0,0,0,0,0,0],[0,5,5,4,2,0,0,0,0,0],[0,6,5,4,3,0,0,0,0,0],[0,6,5,4,4,0,0,0,0,0],[0,6,5,5,4,2,0,0,0,0],[0,6,6,5,4,3,0,0,0,0],[0,6,6,5,4,4,0,0,0,0],[0,6,6,5,5,4,2,0,0,0],[0,6,6,6,5,4,3,0,0,0],[0,6,6,6,5,4,4,0,0,0],[0,6,6,6,5,5,4,0,0,0],[0,6,6,6,6,5,5,0,0,0]]},
+ "source":{"title":"Occult Adventures","page":46,"url":"https://legacy.aonprd.com/occultAdventures/classes/occultist.html"},
+ "features":[
+  {"id":"occultist-implements-1","name":"Implements","level":1,"type":"selectable","summary":"Choose two implement schools and physical objects through which you cast their spells and resonant powers.","choiceRequired":true,"optionGroupId":"occultist-implements","progressionKey":"occultist-implement"},
+  {"id":"occultist-mental-focus-1","name":"Mental Focus","level":1,"type":"resource","summary":"Invest psychic energy in implements to activate resonant and focus powers.","uses":"Occultist level + Intelligence modifier points per day"},
+  {"id":"occultist-focus-power-1","name":"Focus Power","level":1,"type":"selectable","summary":"Learn a focus power belonging to one of your implement schools.","choiceRequired":true,"optionGroupId":"occultist-focus-powers","progressionKey":"occultist-focus-power"},
+  {"id":"occultist-magic-item-skill-2","name":"Magic Item Skill","level":2,"type":"scaling","summary":"Add half your Occultist level to Use Magic Device checks."},
+  {"id":"occultist-object-reading-2","name":"Object Reading","level":2,"type":"scaling","summary":"Learn information from an object's psychic impressions."},
+  {"id":"occultist-shift-focus-4","name":"Shift Focus","level":4,"type":"core","summary":"Move mental focus between implements while retaining part of the invested energy."},
+  {"id":"occultist-aura-sight-7","name":"Aura Sight","level":7,"type":"core","summary":"Read magical auras as an enhanced detect magic effect."},
+  {"id":"occultist-outsider-contact-8","name":"Outside Contact","level":8,"type":"resource","summary":"Use an implement to contact an outsider for knowledge or service."},
+  {"id":"occultist-binding-circles-12","name":"Binding Circles","level":12,"type":"core","summary":"Create magic circles capable of binding called outsiders."},
+  {"id":"occultist-fast-circles-16","name":"Fast Circles","level":16,"type":"core","summary":"Create binding circles much more quickly."},
+  {"id":"occultist-implement-mastery-20","name":"Implement Mastery","level":20,"type":"capstone","summary":"Master one implement school, expanding its focus and improving every power from it."}
+ ]
+}

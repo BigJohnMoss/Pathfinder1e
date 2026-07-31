@@ -1,0 +1,19 @@
+{
+ "id":"spiritualist","name":"Spiritualist","classType":"base","hitDie":8,"babProgression":"three-quarters","saves":{"fortitude":"good","reflex":"poor","will":"good"},"skillRanksPerLevel":4,
+ "classSkills":["Craft","Fly","Heal","Intimidate","Knowledge","Linguistics","Perception","Profession","Sense Motive","Spellcraft","Use Magic Device"],
+ "spellcasting":{"ability":"wisdom","tradition":"psychic","castingType":"spontaneous","spellLevelUnlocks":[1,4,7,10,13,16],"slotsByLevel":[[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,0,0,0],[3,1,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0],[4,3,1,0,0,0,0,0,0],[4,4,2,0,0,0,0,0,0],[5,4,3,0,0,0,0,0,0],[5,4,3,1,0,0,0,0,0],[5,4,4,2,0,0,0,0,0],[5,5,4,3,0,0,0,0,0],[5,5,4,3,1,0,0,0,0],[5,5,4,4,2,0,0,0,0],[5,5,5,4,3,0,0,0,0],[5,5,5,4,3,1,0,0,0],[5,5,5,4,4,2,0,0,0],[5,5,5,5,4,3,0,0,0],[5,5,5,5,5,4,0,0,0],[5,5,5,5,5,5,0,0,0]],"knownByLevel":[[4,2,0,0,0,0,0,0,0,0],[5,3,0,0,0,0,0,0,0,0],[6,4,0,0,0,0,0,0,0,0],[6,4,2,0,0,0,0,0,0,0],[6,4,3,0,0,0,0,0,0,0],[6,4,4,0,0,0,0,0,0,0],[6,5,4,2,0,0,0,0,0,0],[6,5,4,3,0,0,0,0,0,0],[6,5,4,4,0,0,0,0,0,0],[6,5,5,4,2,0,0,0,0,0],[6,6,5,4,3,0,0,0,0,0],[6,6,5,4,4,0,0,0,0,0],[6,6,5,5,4,2,0,0,0,0],[6,6,6,5,4,3,0,0,0,0],[6,6,6,5,4,4,0,0,0,0],[6,6,6,5,5,4,2,0,0,0],[6,6,6,6,5,4,3,0,0,0],[6,6,6,6,5,4,4,0,0,0],[6,6,6,6,5,5,4,0,0,0],[6,6,6,6,6,5,5,0,0,0]]},
+ "source":{"title":"Occult Adventures","page":72,"url":"https://legacy.aonprd.com/occultAdventures/classes/spiritualist.html"},
+ "features":[
+  {"id":"spiritualist-phantom-1","name":"Phantom","level":1,"type":"selectable","summary":"Bond with a phantom whose emotional focus determines its skills, abilities, and manifestations.","choiceRequired":true,"optionGroupId":"spiritualist-emotional-focuses","progressionKey":"spiritualist-phantom"},
+  {"id":"spiritualist-etheric-tether-1","name":"Etheric Tether","level":1,"type":"core","summary":"Keep the manifested phantom bound within a limited distance."},
+  {"id":"spiritualist-shared-consciousness-1","name":"Shared Consciousness","level":1,"type":"core","summary":"While the phantom resides in your consciousness, gain mental protection and its Skill Focus feats."},
+  {"id":"spiritualist-bonded-manifestation-3","name":"Bonded Manifestation","level":3,"type":"resource","summary":"Partially manifest the phantom through your body for defensive and offensive benefits.","uses":"3 + Spiritualist level rounds per day"},
+  {"id":"spiritualist-spiritual-interference-4","name":"Spiritual Interference","level":4,"type":"scaling","summary":"The phantom protects nearby allies with a shield bonus to AC and saving throws."},
+  {"id":"spiritualist-detect-undead-5","name":"Detect Undead","level":5,"type":"core","summary":"Detect undead at will and gain improved awareness of haunts."},
+  {"id":"spiritualist-phantom-recall-6","name":"Phantom Recall","level":6,"type":"scaling","summary":"Call your manifested phantom back to your side a limited number of times per day."},
+  {"id":"spiritualist-fused-consciousness-10","name":"Fused Consciousness","level":10,"type":"core","summary":"Retain shared-consciousness benefits while the phantom is manifested."},
+  {"id":"spiritualist-spiritual-bond-14","name":"Spiritual Bond","level":14,"type":"core","summary":"Transfer damage between yourself and your phantom to keep either partner standing."},
+  {"id":"spiritualist-dual-bond-17","name":"Dual Bond","level":17,"type":"core","summary":"Gain the benefits of bonded manifestation while the phantom remains separately manifested."},
+  {"id":"spiritualist-empowered-consciousness-20","name":"Empowered Consciousness","level":20,"type":"capstone","summary":"The phantom permanently strengthens your mind and can return quickly after destruction."}
+ ]
+}

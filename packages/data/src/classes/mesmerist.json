@@ -1,0 +1,17 @@
+{
+ "id":"mesmerist","name":"Mesmerist","classType":"base","hitDie":8,"babProgression":"three-quarters","saves":{"fortitude":"poor","reflex":"good","will":"good"},"skillRanksPerLevel":6,
+ "classSkills":["Acrobatics","Appraise","Bluff","Craft","Diplomacy","Disable Device","Disguise","Escape Artist","Intimidate","Knowledge","Linguistics","Perception","Perform","Profession","Sense Motive","Sleight of Hand","Spellcraft","Stealth","Use Magic Device"],
+ "spellcasting":{"ability":"charisma","tradition":"psychic","castingType":"spontaneous","spellLevelUnlocks":[1,4,7,10,13,16],"slotsByLevel":[[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,0,0,0],[3,1,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0],[4,3,1,0,0,0,0,0,0],[4,4,2,0,0,0,0,0,0],[5,4,3,0,0,0,0,0,0],[5,4,3,1,0,0,0,0,0],[5,4,4,2,0,0,0,0,0],[5,5,4,3,0,0,0,0,0],[5,5,4,3,1,0,0,0,0],[5,5,4,4,2,0,0,0,0],[5,5,5,4,3,0,0,0,0],[5,5,5,4,3,1,0,0,0],[5,5,5,4,4,2,0,0,0],[5,5,5,5,4,3,0,0,0],[5,5,5,5,5,4,0,0,0],[5,5,5,5,5,5,0,0,0]],"knownByLevel":[[4,2,0,0,0,0,0,0,0,0],[5,3,0,0,0,0,0,0,0,0],[6,4,0,0,0,0,0,0,0,0],[6,4,2,0,0,0,0,0,0,0],[6,4,3,0,0,0,0,0,0,0],[6,4,4,0,0,0,0,0,0,0],[6,5,4,2,0,0,0,0,0,0],[6,5,4,3,0,0,0,0,0,0],[6,5,4,4,0,0,0,0,0,0],[6,5,5,4,2,0,0,0,0,0],[6,6,5,4,3,0,0,0,0,0],[6,6,5,4,4,0,0,0,0,0],[6,6,5,5,4,2,0,0,0,0],[6,6,6,5,4,3,0,0,0,0],[6,6,6,5,4,4,0,0,0,0],[6,6,6,5,5,4,2,0,0,0],[6,6,6,6,5,4,3,0,0,0],[6,6,6,6,5,4,4,0,0,0],[6,6,6,6,5,5,4,0,0,0],[6,6,6,6,6,5,5,0,0,0]]},
+ "source":{"title":"Occult Adventures","page":38,"url":"https://legacy.aonprd.com/occultAdventures/classes/mesmerist.html"},
+ "features":[
+  {"id":"mesmerist-consummate-liar-1","name":"Consummate Liar","level":1,"type":"scaling","summary":"Add half your Mesmerist level to Bluff checks, with a minimum bonus of +1."},
+  {"id":"mesmerist-hypnotic-stare-1","name":"Hypnotic Stare","level":1,"type":"core","summary":"Fix your gaze on one creature, penalizing its Will saves without allowing a saving throw."},
+  {"id":"mesmerist-painful-stare-1","name":"Painful Stare","level":1,"type":"scaling","summary":"Deal extra damage when an attack damages the target of your hypnotic stare."},
+  {"id":"mesmerist-trick-1","name":"Mesmerist Trick","level":1,"type":"selectable","summary":"Learn and implant a mental trick in yourself or an ally.","choiceRequired":true,"optionGroupId":"mesmerist-tricks","progressionKey":"mesmerist-trick"},
+  {"id":"mesmerist-bold-stare-3","name":"Bold Stare","level":3,"type":"selectable","summary":"Choose an additional penalty imposed by hypnotic stare.","choiceRequired":true,"optionGroupId":"mesmerist-bold-stares","progressionKey":"mesmerist-bold-stare"},
+  {"id":"mesmerist-touch-treatment-3","name":"Touch Treatment","level":3,"type":"selectable","summary":"Remove a mental condition by touch; later breakthroughs treat stronger conditions.","choiceRequired":true,"optionGroupId":"mesmerist-touch-treatments","progressionKey":"mesmerist-touch-treatment"},
+  {"id":"mesmerist-manifold-tricks-5","name":"Manifold Tricks","level":5,"type":"scaling","summary":"Maintain more than one implanted trick at a time as you gain levels."},
+  {"id":"mesmerist-glib-lie-11","name":"Glib Lie","level":11,"type":"core","summary":"Protect your lies from magical truth detection and force opposed caster-level checks."},
+  {"id":"mesmerist-rule-minds-20","name":"Rule Minds","level":20,"type":"capstone","summary":"Permanently enslave a creature under your hypnotic stare once per day."}
+ ]
+}
