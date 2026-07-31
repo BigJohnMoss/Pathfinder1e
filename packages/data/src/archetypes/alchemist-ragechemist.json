@@ -1,0 +1,54 @@
+{
+  "id": "alchemist-ragechemist",
+  "name": "Ragechemist",
+  "classId": "alchemist",
+  "summary": "Some alchemists create mutagens that tap into a primal anger that fuels their physical transformation.",
+  "replacesText": "Poison Use; Swift Poisoning; Poison Immunity",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-swift-poisoning-6",
+        "alchemist-poison-immunity-10"
+      ],
+      "features": [
+        {
+          "id": "alchemist-ragechemist-rage-mutagen-2",
+          "name": "Rage Mutagen",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, whenever a ragechemist creates a mutagen that improves his Strength, that mutagen's bonus to Strength increases by +2 and penalizes the alchemist's Intelligence score. Furthermore, while under the effects of this mutagen, whenever the alchemist takes damage, his rage grows, with detrimental effects. At the end of each turn that he takes hit point damage, the ragechemist must succeed at a Will saving throw (DC 15, or DC 20 if any of the damage came from a critical hit that turn) or take a –2 penalty on Will saving throws and to Intelligence. These penalties end 1 hour after the mutagen ends and stack with themselves. If the penalty lowers the ragechemist’s Intelligence score to 0, the ragechemist is comatose until 1 hour after the mutagen expires. This ability replaces poison use."
+        },
+        {
+          "id": "alchemist-ragechemist-sturdy-rage-6",
+          "name": "Sturdy Rage",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, whenever a ragechemist uses his rage mutagen, he also gains a +4 bonus to natural armor, but the penalty on Will saving throws and to Intelligence for taking damage increases to –4. This ability replaces swift poisoning."
+        },
+        {
+          "id": "alchemist-ragechemist-lumbering-rage-10",
+          "name": "Lumbering Rage",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, whenever a ragechemist uses his rage mutagen ability, he may have the mutagen also give him a +2 morale bonus to Constitution, but when he takes a penalty on Will saving throws and to Intelligence, he also takes a –1 penalty to Dexterity. This ability replaces poison immunity."
+        },
+        {
+          "id": "alchemist-ragechemist-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the ragechemist: feral mutagen, grand mutagen, greater mutagen, infuse mutagen, tentacle, and vestigial arm."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Ragechemist"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "alchemist-fire-bomber",
+  "name": "Fire Bomber",
+  "classId": "alchemist",
+  "summary": "(Goblin Only) Fire bombers are exceptionally good at using bombs to burn creatures and blow things up, but are not quite as good at creating other types of bombs or extracts.",
+  "replacesText": "Weapon/Armor Proficiency; Bomb; Throw Anything; 4th-level Discovery; Poison Resistance +6; Poison Immunity; Persistent Mutagen",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-bomb-1",
+        "alchemist-throw-anything-1",
+        "alchemist-discovery-4",
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10",
+        "alchemist-mutagen-1",
+        "alchemist-persistent-mutagen-14"
+      ],
+      "features": [
+        {
+          "id": "alchemist-fire-bomber-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A fire bomber treats torches as a simple weapon."
+        },
+        {
+          "id": "alchemist-fire-bomber-fire-bombardier-su-or-ex-1",
+          "name": "Fire Bombardier (Su or Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, when a fire bomber throws a bomb that deals fire damage, all creatures in the splash radius take an additional point of damage per die of fire damage dealt. Fire bombers only add their Intelligence bonus to damage from bombs or alchemical substances that deal fire damage. This otherwise works like the alchemist’s bomb and throw anything abilities. This ability alters bomb and throw anything."
+        },
+        {
+          "id": "alchemist-fire-bomber-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A fire bomber can select the Burn! Burn! Burn! , Fire Tamer , or Flame Heart feat in place of a discovery."
+        },
+        {
+          "id": "alchemist-fire-bomber-fiery-cocktail-su-4",
+          "name": "Fiery Cocktail (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, whenever a fire bomber uses a discovery that deals damage other than fire damage, he can split the damage dice evenly between the bomb’s primary damage type and 1d6 points of fire damage; when there is an odd number of damage dice, the odd die of damage comes from the primary damage type. For example, an 8th-level fire bomber could throw a concussive bomb that deals 2d6 points of fire damage and 3d4 points of sonic damage. Additional effects from the bomb still apply, but the save DC for admixture bombs is reduced by 2. This replaces the alchemist’s 4th-level discovery."
+        },
+        {
+          "id": "alchemist-fire-bomber-fire-body-ex-8",
+          "name": "Fire Body (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a fire bomber adds elemental body I to his extract list as a 3rd-level extract. Elemental body extracts prepared using fire body are limited to fire elementals only. This ability replaces poison resistance +6."
+        },
+        {
+          "id": "alchemist-fire-bomber-improved-fire-body-ex-10",
+          "name": "Improved Fire Body (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, fire bombers add elemental body II to their spell list as a 4th-level extract. Elemental body extracts prepared using improved fire body are limited to fire elementals only. This ability replaces poison immunity."
+        },
+        {
+          "id": "alchemist-fire-bomber-greater-fire-body-ex-14",
+          "name": "Greater Fire Body (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, fire bombers add elemental body IV to their spell list as a 5th-level extract. Elemental body extracts prepared using greater fire body are limited to fire elementals only. This ability replaces persistent mutagen."
+        },
+        {
+          "id": "alchemist-fire-bomber-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the fire bomber archetype: fire brand, rocket bomb ; explosive bombs, fast bombs, inferno bomb, precise bombs breath weapon bomb, explosive missile, immolation bomb ; bottled ooze, confusion bomb, strafe bomb ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Fire%20Bomber"
+  },
+  "manualRequirements": [
+    "Restricted to Goblin characters; that ancestry is not yet available in this builder."
+  ]
+}

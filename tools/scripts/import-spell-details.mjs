@@ -75,6 +75,11 @@ const duration = (a) => {
   if (value && (a.durD || a.drD)) value += " (D)";
   return value;
 };
+const APG_CLASS_CODES = { alc: "alchemist", inq: "inquisitor", sum: "summoner", wit: "witch" };
+const classLevelOverlay = (attributes) => Object.fromEntries(Object.entries(APG_CLASS_CODES).flatMap(([code, classId]) => {
+  const level = Number(attributes[code]);
+  return Number.isInteger(level) && level >= 0 && level <= 9 ? [[classId, level]] : [];
+}));
 const savingThrow = (a) => {
   let value = a.save ?? (a.saveNo ? "none" : a.fort ? "Fortitude negates" : a.fortHalf ? "Fortitude half" : a.fortPartial ? "Fortitude partial" : a.refl ? "Reflex negates" : a.reflHalf ? "Reflex half" : a.reflPartial ? "Reflex partial" : a.will ? "Will negates" : a.willHalf ? "Will half" : a.willPartial ? "Will partial" : a.willDisbelief ? "Will disbelief" : undefined);
   if (value && (a.svHarmless || a.harmless)) value += " (harmless)";
@@ -162,6 +167,7 @@ for (const spell of sourceSpells) {
   const page = sourceMatch ? Number(sourceMatch[2]) : spell.source?.page;
   details.push({
     id: spell.id,
+    classLevelOverlay: classLevelOverlay(a),
     description: cleanRulesText(variant.lines),
     ...(castingTime(a) ? { castingTime: castingTime(a) } : {}),
     ...(components(a) ? { components: components(a) } : {}),

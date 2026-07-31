@@ -1,0 +1,61 @@
+{
+  "id": "alchemist-mindchemist",
+  "name": "Mindchemist",
+  "classId": "alchemist",
+  "summary": "A mindchemist can reach incredible levels of mental acuity, but suffers lingering debilitating effects to his physique.",
+  "replacesText": "Mutagen; Poison Use",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-mutagen-1",
+        "alchemist-persistent-mutagen-14"
+      ],
+      "features": [
+        {
+          "id": "alchemist-mindchemist-cognatogen-1",
+          "name": "Cognatogen",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a mindchemist learns how to create a cognatogen, as per the cognatogen discovery. This ability replaces the mutagen class ability (a mindchemist cannot create mutagens unless he selects mutagen* as a discovery)."
+        },
+        {
+          "id": "alchemist-mindchemist-perfect-recall-2",
+          "name": "Perfect Recall",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a mindchemist has honed his memory. When making a Knowledge check, he may add his Intelligence bonus on the check a second time. Thus, a mindchemist with 5 ranks in Knowledge (history) and a +2 Intelligence bonus has a total skill bonus of +9 (5 + 2 + 2) using this ability. The mindchemist can also use this ability when making an Intelligence check to remember something. This ability replaces poison use."
+        },
+        {
+          "id": "alchemist-mindchemist-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mindchemist may select Skill Focus (Disable Device, Disguise, Heal, any Knowledge skill, Sense Motive, or Spellcraft) in place of a discovery."
+        },
+        {
+          "id": "alchemist-mindchemist-languages-1",
+          "name": "Languages",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mindchemist may learn three languages in place of a discovery."
+        },
+        {
+          "id": "alchemist-mindchemist-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the mindchemist archetype: grand cognatogen, greater cognatogen, infuse mutagen."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Mindchemist"
+  }
+}

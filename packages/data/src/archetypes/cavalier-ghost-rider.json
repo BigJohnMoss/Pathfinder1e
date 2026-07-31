@@ -1,0 +1,109 @@
+{
+  "id": "cavalier-ghost-rider",
+  "name": "Ghost Rider",
+  "classId": "cavalier",
+  "summary": "Ghost riders are conflicted warriors who use the powers of the phantasmal dead even while seeking out and banishing the corruption of undeath from plagued communities.",
+  "replacesText": "Mount; Tactician; Greater Tactician; Master Tactician; Cavalier’s Charge; Expert Trainer; Banner; Mighty Charge; Greater Banner",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-mount-1",
+        "cavalier-tactician-1",
+        "cavalier-greater-tactician-9",
+        "cavalier-master-tactician-17",
+        "cavalier-charge-3",
+        "cavalier-expert-trainer-4",
+        "cavalier-banner-5",
+        "cavalier-mighty-charge-11"
+      ],
+      "features": [
+        {
+          "id": "cavalier-ghost-rider-ghost-mount-su-1",
+          "name": "Ghost Mount (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a ghost rider gains the ability to manifest a special mount of conjured ectoplasm rather than one of flesh and bone. This spectral companion functions like a spiritualist’s phantom companion , using the ghost rider’s cavalier level as her effective spiritualist level. The phantom takes the form of a ghostly creature analogous to one of a cavalier’s normal mount options for her size and class level, such as a Large horse for a Medium ghost rider or a wolf for a Small ghost rider. A ghost rider must choose a mount that is capable of bearing her weight, that has four or more legs, and that lacks a fly speed (although the GM may allow mounts with a swim speed in certain environments). The GM might approve other animals as suitable mounts. The ghost rider can manifest her ghost mount only in ectoplasmic form, and she gains the spiritualist’s etheric tether class feature, applied to her ghost mount. The mount shares the cavalier’s alignment. Though the mount cannot speak, it understands its master’s verbal commands and gains the phantom’s link ability. The ghost mount has good Fortitude and Reflex saves, and can have ranks in any of the following skills: Acrobatics (Dex), Climb (Str), Escape Artist (Dex), Fly (Dex), Intimidate (Cha), Perception (Wis), Stealth (Dex), Survival (Wis), and Swim (Str). The ghost rider’s ghost mount does not gain the share spells, deliver touch spells, or incorporeal flight abilities. Ghost mounts do not gain emotional focus abilities. The ghost rider does not take an armor check penalty on Ride checks while riding her mount. The mount is always considered combat trained, and begins play with Endurance as a bonus feat. Ghost Mount Starting Statistics :"
+        },
+        {
+          "id": "cavalier-ghost-rider-type-1",
+          "name": "Type",
+          "level": 1,
+          "type": "archetype",
+          "summary": "animal (phantom);"
+        },
+        {
+          "id": "cavalier-ghost-rider-size-1",
+          "name": "Size",
+          "level": 1,
+          "type": "archetype",
+          "summary": "one size category larger than the ghost rider;"
+        },
+        {
+          "id": "cavalier-ghost-rider-speed-1",
+          "name": "Speed",
+          "level": 1,
+          "type": "archetype",
+          "summary": "50 ft.;"
+        },
+        {
+          "id": "cavalier-ghost-rider-ac-1",
+          "name": "AC",
+          "level": 1,
+          "type": "archetype",
+          "summary": "+4 natural armor;"
+        },
+        {
+          "id": "cavalier-ghost-rider-attack-1",
+          "name": "Attack",
+          "level": 1,
+          "type": "archetype",
+          "summary": "bite (1d4), 2 hooves (1d6; this is a secondary natural attack);"
+        },
+        {
+          "id": "cavalier-ghost-rider-ability-scores-1",
+          "name": "Ability Scores",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Str 16, Dex 13, Con 15, Int 2, Wis 12, Cha 6. This ability replaces mount."
+        },
+        {
+          "id": "cavalier-ghost-rider-frightful-gaze-su-1",
+          "name": "Frightful Gaze (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a ghost rider can use this ability on opponents within 30 feet as a standard action, which acts as a gaze attack until the ghost rider’s next turn. Creatures within range that meet the ghost rider’s gaze must succeed at a Will saving throw (DC = 10 + 1/2 the ghost rider’s class level + the ghost rider’s Charisma modifier) or stand paralyzed in fear for 1 round. This is a mind-affecting fear effect. Creatures that successfully save against that ghost rider’s frightful gaze are immune to it for 24 hours. At 9th level, this ability can affect creatures that are mindless or immune to mind-affecting effects, though it still counts as a fear effect. The ghost rider can use this ability a number of times each day equal to her Charisma modifier. This ability replaces tactician, greater tactician, and master tactician."
+        },
+        {
+          "id": "cavalier-ghost-rider-fearless-su-3",
+          "name": "Fearless (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a ghost rider becomes immune to fear. Each ally within 10 feet of the ghost rider gains a +4 morale bonus on saving throws against fear effects. This ability functions only while the ghost rider is conscious, not if she is unconscious or dead. This ability replaces cavalier’s charge."
+        },
+        {
+          "id": "cavalier-ghost-rider-spirited-mount-su-5",
+          "name": "Spirited Mount (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the ghost rider’s mount ignores difficult terrain. At 8th level, it gains the ability to use water walk at will. This ability replaces expert trainer and banner."
+        },
+        {
+          "id": "cavalier-ghost-rider-ghost-wind-su-11",
+          "name": "Ghost Wind (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, the ghost rider’s ghost mount can use air walk (as the spell, no action required) at will for up to 1 round at a time, after which it falls to the ground. At 14th level, the mount can fly at its speed with a bonus on Fly skill checks equal to the ghost rider’s class level. This ability replaces mighty charge and greater banner."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Ghost%20Rider"
+  }
+}

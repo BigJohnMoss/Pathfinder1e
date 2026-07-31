@@ -1,0 +1,100 @@
+{
+  "id": "cavalier-green-knight",
+  "name": "Green Knight",
+  "classId": "cavalier",
+  "summary": "Some knights serve nature itself and can be found protecting unspoiled natural places or serving fey beings.",
+  "replacesText": "Tactician; Mount; Order; Cavalier’s Charge; Expert Trainer; Banner; Greater Tactician; Mighty Charge; Greater Banner; Master Tactician; Supreme Charge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-tactician-1",
+        "cavalier-greater-tactician-9",
+        "cavalier-master-tactician-17",
+        "cavalier-mount-1",
+        "cavalier-order-1",
+        "cavalier-order-ability-2",
+        "cavalier-order-ability-8",
+        "cavalier-order-ability-15",
+        "cavalier-charge-3",
+        "cavalier-expert-trainer-4",
+        "cavalier-banner-5",
+        "cavalier-mighty-charge-11",
+        "cavalier-supreme-charge-20"
+      ],
+      "features": [
+        {
+          "id": "cavalier-green-knight-beast-tongue-ex-1",
+          "name": "Beast Tongue (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A green knight can use Diplomacy to improve an animal’s attitude. Beast tongue otherwise functions like the druid’s wild empathy ability, using the green knight’s Diplomacy modifier and using her cavalier level as her effective druid level, and it counts as that ability for the purpose of other effects (such as feat prerequisites or effects that alter or improve wild empathy). This replaces tactician."
+        },
+        {
+          "id": "cavalier-green-knight-implacable-knight-ex-1",
+          "name": "Implacable Knight (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A green knight gains Endurance and Diehard as bonus feats. This replaces mount."
+        },
+        {
+          "id": "cavalier-green-knight-nature-s-servant-ex-1",
+          "name": "Nature’s Servant (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A green knight must select the order of the Green . This alters order."
+        },
+        {
+          "id": "cavalier-green-knight-ferocious-ex-3",
+          "name": "Ferocious (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a green knight is not staggered when below 0 hit points. At 9th level, taking actions when below 0 hit points does not cause her to lose hit points. This replaces cavalier’s charge."
+        },
+        {
+          "id": "cavalier-green-knight-woodland-stride-ex-4",
+          "name": "Woodland Stride (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a green knight gains the druid’s woodland stride ability. This replaces expert trainer and banner."
+        },
+        {
+          "id": "cavalier-green-knight-stalwart-ex-9",
+          "name": "Stalwart (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, whenever a green knight succeeds at a Fortitude or Will save against an effect that has a reduced effect on a successful save, she instead negates the effect. This replaces greater tactician."
+        },
+        {
+          "id": "cavalier-green-knight-oaken-vitality-su-11",
+          "name": "Oaken Vitality (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, nature protects a green knight from many afflictions. The green knight becomes immune to disease, infestations , and poison. This replaces mighty charge and greater banner."
+        },
+        {
+          "id": "cavalier-green-knight-take-their-heads-su-17",
+          "name": "Take Their Heads (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "A green knight’s blade is blessed by mighty fey powers and unerringly seeks out foes’ necks. At 17th level, any slashing weapon a green knight wields gains the vorpal weapon special ability. This replaces master tactician."
+        },
+        {
+          "id": "cavalier-green-knight-indestructible-su-20",
+          "name": "Indestructible (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a green knight is virtually impervious to death. She gains a +6 bonus to her Constitution score. In addition, the green knight becomes immune to death effects and to effects that would kill her without reducing her to 0 hit points, unless the effect involves decapitation. If she is decapitated, the green knight can continue to act normally. Reattachment requires the head and body to be joined and the application of any effect that restores hit points. This replaces supreme charge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Green%20Knight"
+  }
+}

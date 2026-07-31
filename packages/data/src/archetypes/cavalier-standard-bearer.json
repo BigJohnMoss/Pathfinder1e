@@ -1,0 +1,56 @@
+{
+  "id": "cavalier-standard-bearer",
+  "name": "Standard Bearer",
+  "classId": "cavalier",
+  "summary": "Some cavaliers prefer to stand away from the fray, their banners a beacon shining brightly over the battlefield, rallying their troops to victory.",
+  "replacesText": "Mount; Banner; Mighty Charge; Supreme Charge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-mount-1",
+        "cavalier-banner-5",
+        "cavalier-mighty-charge-11",
+        "cavalier-supreme-charge-20"
+      ],
+      "features": [
+        {
+          "id": "cavalier-standard-bearer-banner-ex-1",
+          "name": "Banner (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a standard bearer gains the banner ability. This ability is identical to the standard cavalier’s banner ability, except that the morale bonuses on saving throws against fear effects and on attack rolls made as part of a charge increase at 5th level, and every five levels thereafter. This ability replaces the standard cavalier’s mount ability."
+        },
+        {
+          "id": "cavalier-standard-bearer-mount-ex-5",
+          "name": "Mount (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a standard bearer gains the service of a loyal and trusted mount. This mount is identical in all ways to the standard cavalier’s mount. This ability replaces the standard cavalier’s banner ability."
+        },
+        {
+          "id": "cavalier-standard-bearer-banner-of-solace-ex-11",
+          "name": "Banner of Solace (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a standard bearer’s banner becomes an even more potent symbol of protection and inspiration to those around him. Once per day, while his banner is displayed, the standard bearer can wave it through the air as a full-round action, granting all allies within 60 feet temporary hit points equal to 1/2 his cavalier level, and a +2 morale bonus on their next damage rolls. At 15th level, and every four levels thereafter, this bonus increases by +1 (to a maximum of +4 at 19th level). The temporary hit points last for 10 minutes or until depleted, whichever occurs first. This ability replaces mighty charge."
+        },
+        {
+          "id": "cavalier-standard-bearer-awesome-pennon-ex-20",
+          "name": "Awesome Pennon (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a standard bearer’s banner has become a powerful rallying point to his allies, and a bane to his foes. Whenever his banner is visible, allies of the standard bearer within 60 feet gain a +1 morale bonus on attack rolls, immunity to fear effects, and a +3 morale bonus on saving throws against mind-affecting effects. This ability replaces supreme charge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Standard%20Bearer"
+  }
+}

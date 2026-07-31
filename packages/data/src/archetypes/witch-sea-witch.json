@@ -1,0 +1,75 @@
+{
+  "id": "witch-sea-witch",
+  "name": "Sea Witch",
+  "classId": "witch",
+  "summary": "A sea witch’s affinities are tied to the vast oceans and the rolling waves.",
+  "replacesText": "Patron Spells; 1st-level Hex",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-patron-1",
+        "witch-hex-1"
+      ],
+      "features": [
+        {
+          "id": "witch-sea-witch-patron-1",
+          "name": "Patron",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sea witch cannot choose a patron whose interests or theme opposes that of water (for example, earth or fire)."
+        },
+        {
+          "id": "witch-sea-witch-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sea witch replaces some of her patron spells with the following: 2nd— touch of sea , 4th— gust of wind , 6th— water breathing , 8th— control water , 10th— cloudkill , 12th— control wind , 14th— control weather , 16th— vortex , 18th— tsunami ."
+        },
+        {
+          "id": "witch-sea-witch-know-direction-sp-1",
+          "name": "Know Direction (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "So long as she near a sizable body of water (at least a lake with a diameter of 1 mile or more), a sea witch may cast know direction at will as a spell-like ability."
+        },
+        {
+          "id": "witch-sea-witch-sea-creature-empathy-ex-1",
+          "name": "Sea Creature Empathy (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sea witch can influence the attitude of water-dwelling animals and animals that live along coasts and shores, including birds, as if using wild empathy. The sea witch uses her witch level as her druid level for this ability. If the sea witch has wild empathy from another class, her witch levels stack with the other class’s levels to determine her wild empathy bonus for these kinds of creatures. This ability replaces the witch’s 1st-level hex."
+        },
+        {
+          "id": "witch-sea-witch-hexes-1",
+          "name": "Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following witch hexes complement the sea witch archetype: charm, flight, water lung."
+        },
+        {
+          "id": "witch-sea-witch-major-hexes-1",
+          "name": "Major Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following major hexes complement the sea witch archetype: hag eye, hidden home, weather control."
+        },
+        {
+          "id": "witch-sea-witch-grand-hexes-1",
+          "name": "Grand Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following grand hex complements the sea witch archetype: natural disaster."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Sea%20Witch"
+  }
+}

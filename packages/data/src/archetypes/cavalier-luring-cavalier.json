@@ -1,0 +1,64 @@
+{
+  "id": "cavalier-luring-cavalier",
+  "name": "Luring Cavalier",
+  "classId": "cavalier",
+  "summary": "Those who study the perfection of strategy and tactics know that picking the battlefield can grant advantages that only overwhelming numbers of allies can eclipse.",
+  "replacesText": "Challenge; Cavalier’s Charge; Mighty Charge; Demanding Challenge; Supreme Charge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-challenge-1",
+        "cavalier-demanding-challenge-12",
+        "cavalier-charge-3",
+        "cavalier-mighty-charge-11",
+        "cavalier-supreme-charge-20"
+      ],
+      "features": [
+        {
+          "id": "cavalier-luring-cavalier-far-challenge-ex-1",
+          "name": "Far Challenge (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Once per day, a luring cavalier can use his far challenge ability as a swift action. When he does, the luring cavalier chooses one target within sight to challenge. The luring cavalier’s ranged attacks deal extra damage whenever the attacks are made against the target of his challenge. This extra damage is equal to the luring cavalier’s level. The luring cavalier can use this ability once per day at 1st level, plus one additional time per day for every three levels beyond 1st, to a maximum of seven times per day at 19th level. Furthermore, once per day, the luring cavalier may spend a use of his far challenge ability to double the potential extra damage of his ranged attack. Before making the attack roll, he can choose to spend a use of his challenge to deal twice his cavalier level in extra damage on a successful hit instead of just his cavalier level in extra damage. If the attack misses, the use of the challenge is wasted. Challenging a foe requires subtle deceits and strategies. The cavalier must make it look like he is a soft target. The subject of the far challenge gains a +4 bonus on attack rolls made against him. This challenge remains in effect until the target is dead or unconscious, until the target hits the luring cavalier with a melee attack, or until the combat ends. If this challenge ends because the target hits the luring cavalier with a melee attack, this challenge changes to the effects of the normal cavalier challenge, and gains any order benefit the luring cavalier has. Far challenge replaces the challenge ability."
+        },
+        {
+          "id": "cavalier-luring-cavalier-careful-aim-ex-3",
+          "name": "Careful Aim (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, when a luring cavalier makes a ranged attack with his highest base attack bonus, he can ignore the penalties for firing up to three range increments away. If he is using a firearm, he can target touch AC up to two range increments away. This effect stacks with effects that allow the cavalier to make ranged attacks farther without penalty or that allow him to target touch AC with a firearm beyond the first range increment. This ability replaces cavalier’s charge."
+        },
+        {
+          "id": "cavalier-luring-cavalier-infuriating-aim-ex-11",
+          "name": "Infuriating Aim (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, when a luring cavalier confirms a critical hit with a ranged attack made at his highest base attack bonus against the target of a far challenge, the target becomes infuriated for 1 round. While infuriated, the target must spend its turn moving closer to the cavalier, making move, run, or charge actions only (challenged creature’s choice). This is a mind-affecting effect. This ability replaces mighty charge."
+        },
+        {
+          "id": "cavalier-luring-cavalier-versatile-challenge-ex-12",
+          "name": "Versatile Challenge (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a luring cavalier can expend a use of his challenge to gain the benefit of far challenge or the normal cavalier challenge. He can even change the type of challenge an opponent is under the effects of as a swift action, as long as the target of the challenge is within line of sight. This ability replaces demanding challenge."
+        },
+        {
+          "id": "cavalier-luring-cavalier-supreme-aim-ex-20",
+          "name": "Supreme Aim (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, the luring cavalier gains the careful aim bonus and the effect of infuriating aim on all ranged attacks. This ability replaces supreme charge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Luring%20Cavalier"
+  }
+}

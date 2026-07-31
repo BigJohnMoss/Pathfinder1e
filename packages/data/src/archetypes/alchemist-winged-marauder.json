@@ -1,0 +1,50 @@
+{
+  "id": "alchemist-winged-marauder",
+  "name": "Winged Marauder",
+  "classId": "alchemist",
+  "summary": "(Goblin Only) Goblin alchemists have created a mixture of pheromones that they use to manipulate and entice giant vultures or dire bats to do their bidding.",
+  "replacesText": "Class Skills; Mutagen; Persistent Mutagen",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-mutagen-1",
+        "alchemist-persistent-mutagen-14"
+      ],
+      "features": [
+        {
+          "id": "alchemist-winged-marauder-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A winged marauder gains Acrobatics, Handle Animal, and Ride as class skills. These replace Disable Device, Sleight of Hand, and Use Magic Device as class skills."
+        },
+        {
+          "id": "alchemist-winged-marauder-flying-beast-tamer-ex-1",
+          "name": "Flying Beast Tamer (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a winged marauder acquires a flying mount as an animal companion. This works as the druid animal companion class feature , except the marauder must select a dire bat or giant vulture . The marauder’s effective druid level is equal to his alchemist level. A marauder and his companion don’t gain the share spells ability. This ability replaces the mutagen and persistent mutagen class features."
+        },
+        {
+          "id": "alchemist-winged-marauder-discovery-1",
+          "name": "Discovery",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A winged marauder can select the following additional discovery. Sipping Pet (Ex) : As a standard action, the marauder can administer a dose of a liquid (such as an extract, infusion, potion, or an alchemical liquid like antitoxin) to his animal companion, even if the companion is unconscious. The alchemist must be adjacent to or riding the companion to use this ability. An alchemist must have the infusion discovery to select this discovery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Winged%20Marauder"
+  },
+  "manualRequirements": [
+    "Restricted to Goblin characters; that ancestry is not yet available in this builder."
+  ]
+}

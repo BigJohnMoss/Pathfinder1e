@@ -1,0 +1,69 @@
+{
+  "id": "alchemist-clone-master",
+  "name": "Clone Master",
+  "classId": "alchemist",
+  "summary": "Clone masters practice duplicating existing creatures in order to better understand how to create new life.",
+  "replacesText": "Bomb; Poison Resistance +6; Poison Immunity",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-bomb-1",
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10"
+      ],
+      "features": [
+        {
+          "id": "alchemist-clone-master-bomb-1",
+          "name": "Bomb",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A clone master’s bombs deal damage one die step lower than normal (regular bombs deal d4s, concussive bombs deal 1d3s, and so on). This otherwise functions as and replaces the standard alchemist bomb class feature."
+        },
+        {
+          "id": "alchemist-clone-master-lesser-simulacrum-7",
+          "name": "Lesser Simulacrum",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a clone master adds lesser simulacrum to his formula book as a 3rd-level extract."
+        },
+        {
+          "id": "alchemist-clone-master-rebirth-8",
+          "name": "Rebirth",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a clone master can prepare a clone of himself that awakens if he is slain. Creating the clone costs 5,000 gp, takes 1 week of work, and requires 3 additional weeks for the clone to grow to maturity. If he dies, the clone awakens as if the alchemist had used the clone spell on himself. He can have one inert of himself at a time. Unused clones created by a clone master do not rot. This ability replaces poison resistance +6 and poison immunity."
+        },
+        {
+          "id": "alchemist-clone-master-simulacrum-13",
+          "name": "Simulacrum",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a clone master adds simulacrum to his formula book as a 5th-level extract."
+        },
+        {
+          "id": "alchemist-clone-master-clone-16",
+          "name": "Clone",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, a clone master adds clone to his formula book as a 6th-level extract."
+        },
+        {
+          "id": "alchemist-clone-master-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the clone master archetype: alchemical simulacrum, doppelganger simulacrum, preserve organs, and parasitic twin."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Clone%20Master"
+  }
+}

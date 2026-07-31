@@ -1,0 +1,94 @@
+{
+  "id": "witch-dreamweaver",
+  "name": "Dreamweaver",
+  "classId": "witch",
+  "summary": "(Changeling Only) A changeling dreamweaver draws upon her hag heritage to ply the dream realms in order to touch mortal minds and souls, for good or ill.",
+  "replacesText": "Class Skills; Patron Spells; 2nd, 6th, 10th-level Hexes",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-patron-1",
+        "witch-hex-2",
+        "witch-hex-6",
+        "witch-major-hex-10"
+      ],
+      "features": [
+        {
+          "id": "witch-dreamweaver-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The dreamweaver adds Sense Motive to her list of class skills and removes Healing from her list of class skills."
+        },
+        {
+          "id": "witch-dreamweaver-patron-1",
+          "name": "Patron",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dreamweaver’s patron is normally portents or stars ."
+        },
+        {
+          "id": "witch-dreamweaver-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dreamweaver replaces some of her patron’s spells with the following: 2nd— sow thoughts (see below), 4th— dust of twilight , 6th— deep slumber , 8th— modify memory , 10th— dream , 12th— cloak of dreams , 14th— ethereal jaunt , 16th— moment of prescience , 18th— astral projection ."
+        },
+        {
+          "id": "witch-dreamweaver-dream-spinner-su-2",
+          "name": "Dream Spinner (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, when a dreamweaver casts a mind-affecting spell on a target that is sleeping because of her slumber hex or a spell she cast, she adds +1 to the mind-affecting spell’s DC. If the target succeeds at the saving throw against the spell, it does not wake up, nor does it have any recollection of having resisted a spell. If appropriate, the dreamweaver may incorporate elements of a mind-affecting spell (i.e., sow thought , suggestion , and so on) into the target’s subconscious so it believes the spell’s effects originated in its dreams (the details of how these elements fit into the dream is up to the GM). This ability replaces the witch’s hex gained at 2nd level."
+        },
+        {
+          "id": "witch-dreamweaver-dream-thief-su-6",
+          "name": "Dream Thief (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a dreamweaver can alter the sleeping mind of any creature that is sleeping because of her slumber hex or a spell she cast. She can reshape one of the target’s memories as if using modify memory . Alternatively, she may insert herself into the dreaming memories of the target, prompting the target’s mind to show her some specific information; the dreamer’s subconscious may resist, or try to deceive her with out-of-context memories, similar to the way a corpse can resist when questioned with speak with dead . A Will save negates either effect (DC equal to that of the witch’s hex). Whether or not the save is successful, a creature cannot be the target of this hex again for 1 day. This ability replaces the witch’s hex gained at 6th level."
+        },
+        {
+          "id": "witch-dreamweaver-dream-possession-su-10",
+          "name": "Dream Possession (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a dreamweaver can take control of any creature that is sleeping because of her slumber hex or a spell she cast. This effect functions as magic jar , using the witch’s familiar acting as the soul receptacle. A Will save negates either effect (DC equal to that of the witch’s hex). Whether or not the save is successful, a creature cannot be the target of this hex again for 1 day. This ability replaces the witch’s hex gained at 10th level."
+        },
+        {
+          "id": "witch-dreamweaver-hexes-1",
+          "name": "Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following hexes complement the dreamweaver archetype: charm, slumber ; beast of ill-omen ."
+        },
+        {
+          "id": "witch-dreamweaver-major-hexes-1",
+          "name": "Major Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following major hexes complement the dreamweaver archetype: nightmare, vision ."
+        },
+        {
+          "id": "witch-dreamweaver-grand-hexes-1",
+          "name": "Grand Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following major hexes complement the dreamweaver archetype: eternal slumber ; dire prophecy ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Dreamweaver"
+  },
+  "manualRequirements": [
+    "Restricted to Changeling characters; that ancestry is not yet available in this builder."
+  ]
+}

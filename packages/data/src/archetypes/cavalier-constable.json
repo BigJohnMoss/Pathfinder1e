@@ -1,0 +1,79 @@
+{
+  "id": "cavalier-constable",
+  "name": "Constable",
+  "classId": "cavalier",
+  "summary": "Constables keep order in the narrow streets and dark alleys of settlements.",
+  "replacesText": "Class Skills; Mount; Cavalier’s Charge; Expert Trainer; Banner; Mighty Charge; Supreme Charge; Greater Banner",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-mount-1",
+        "cavalier-charge-3",
+        "cavalier-expert-trainer-4",
+        "cavalier-banner-5",
+        "cavalier-mighty-charge-11",
+        "cavalier-supreme-charge-20"
+      ],
+      "features": [
+        {
+          "id": "cavalier-constable-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Perception is a class skill for constables. This alters the cavalier’s class skills."
+        },
+        {
+          "id": "cavalier-constable-apprehend-ex-2",
+          "name": "Apprehend (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A constable gains Improved Unarmed Strike as a bonus feat and can attempt a grapple combat maneuver check in place of the attack at the end of a charge. At 2nd level, the constable receives a +1 bonus on Perception checks and combat maneuver checks to disarm, grapple, or trip opponents. At 7th level and every 5 levels thereafter, this bonus improves by 1. At 4th level, the constable does not treat crowds as difficult terrain. This ability replaces mount."
+        },
+        {
+          "id": "cavalier-constable-squad-commander-ex-3",
+          "name": "Squad Commander (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a constable can spend 1 minute laying out a plan to activate the tactician ability without having it count against his number of uses per day. The ability must be triggered within 1 hour of the plan being made, and the benefits last for 1 minute per cavalier level he has. The constable can have only one plan at a time, and if a new plan is made, any old plan is lost. This ability replaces cavalier’s charge."
+        },
+        {
+          "id": "cavalier-constable-quick-interrogator-ex-4",
+          "name": "Quick Interrogator (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a constable can attempt a Diplomacy check to gather information in 1d6 Ã— 5 minutes and attempt a Diplomacy or Intimidate check to change someone’s attitude in 5 rounds. This ability replaces expert trainer."
+        },
+        {
+          "id": "cavalier-constable-badge-ex-5",
+          "name": "Badge (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a constable’s badge becomes a powerful symbol of rules and authority. As long as he wears his badge, allies within 30 feet who can see him gain a +2 morale bonus on saving throws against charm, compulsion, and fear effects and a +1 morale bonus on attack rolls against targets the constable has challenged. At 10th level and every 5 levels thereafter, the bonuses increase by 1. This ability replaces banner."
+        },
+        {
+          "id": "cavalier-constable-instant-order-ex-11",
+          "name": "Instant Order (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a constable can bark an order to an ally within 30 feet as a standard action. That ally can instantly take a single move or standard action to comply with the order. Taking the action dazes the ally for 1 round afterward. At 20th level, the constable can use this ability as a move action, but no more than once per round. This ability replaces mighty charge and supreme charge."
+        },
+        {
+          "id": "cavalier-constable-greater-badge-ex-14",
+          "name": "Greater Badge (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, a constable can hold his badge aloft as a standard action to inspire his allies to be steadfast. All allies within 30 feet gain a number of temporary hit points equal to twice the constable’s cavalier level for 10 minutes. A given ally can benefit from this ability only once per day. This ability replaces greater banner."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Constable"
+  }
+}

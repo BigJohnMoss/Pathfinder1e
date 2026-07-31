@@ -1,0 +1,74 @@
+{
+  "id": "alchemist-vivisectionist",
+  "name": "Vivisectionist",
+  "classId": "alchemist",
+  "summary": "A vivisectionist studies bodies to better understand their function.",
+  "replacesText": "Bomb",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-bomb-1"
+      ],
+      "features": [
+        {
+          "id": "alchemist-vivisectionist-sneak-attack-1",
+          "name": "Sneak Attack",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a vivisectionist gains the sneak attack ability as a rogue of the same level. If a character already has sneak attack from another class, the levels from the classes that grant sneak attack stack to determine the effective rogue level for the sneak attack’s extra damage dice (so an alchemist 1/rogue 1 has a +1d6 sneak attack like a 2nd-level rogue, an alchemist 2/rogue 1 has a +2d6 sneak attack like a 3rd-level rogue, and so on). This ability replaces bomb."
+        },
+        {
+          "id": "alchemist-vivisectionist-torturer-s-eye-2",
+          "name": "Torturer’s Eye",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a vivisectionist adds deathwatch to his formula book as a 1st-level extract."
+        },
+        {
+          "id": "alchemist-vivisectionist-cruel-anatomist-3",
+          "name": "Cruel Anatomist",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a vivisectionist may use his Knowledge (nature) skill bonus in place of his Heal skill bonus."
+        },
+        {
+          "id": "alchemist-vivisectionist-torturous-transformation-7",
+          "name": "Torturous Transformation",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a vivisectionist adds anthropomorphic animal to his formula book as a 2nd-level extract. When he uses this extract, he injects it into an animal as part of a 2-hour surgical procedure. By using multiple doses of this extract as part of the surgery, he multiplies the duration by the number of extracts used. At 9th level, a vivisectionist adds awaken and baleful polymorph to his formula book as 3rd-level extracts. When he uses the awaken or baleful polymorph extract, he injects it into the target (not a plant) as part of a 24-hour surgical procedure. He can make anthropomorphic animal permanent on a creature by spending 7,500 gp. At 15th level, a vivisectionist adds regenerate to his formula book as a 5th-level extract."
+        },
+        {
+          "id": "alchemist-vivisectionist-bleeding-attack-1",
+          "name": "Bleeding Attack",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A vivisectionist may select the bleeding attack rogue talent in place of a discovery."
+        },
+        {
+          "id": "alchemist-vivisectionist-crippling-strike-10",
+          "name": "Crippling Strike",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level or later, a vivisectionist may select the crippling strike rogue talent in place of a discovery."
+        },
+        {
+          "id": "alchemist-vivisectionist-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the vivisectionist archetype: alchemical simulacrum, concentrate poison, doppelganger simulacrum, feral mutagen, parasitic twin, preserve organs, tentacle, tumor familiar, vestigial arm, and wings."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Vivisectionist"
+  }
+}

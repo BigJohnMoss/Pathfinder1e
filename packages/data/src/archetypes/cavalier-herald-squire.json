@@ -1,0 +1,50 @@
+{
+  "id": "cavalier-herald-squire",
+  "name": "Herald Squire",
+  "classId": "cavalier",
+  "summary": "The herald squire is the eyes and ears of a traveling knight.",
+  "replacesText": "Tactician; 2nd-level Order Ability; Cavalier's Charge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-tactician-1",
+        "cavalier-greater-tactician-9",
+        "cavalier-master-tactician-17",
+        "cavalier-order-ability-2",
+        "cavalier-charge-3"
+      ],
+      "features": [
+        {
+          "id": "cavalier-herald-squire-introduction-ex-1",
+          "name": "Introduction (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, whenever a herald squire tries to influence a creature’s attitude with the Diplomacy skill for the first time, she may roll her Diplomacy check twice and take the best result. In addition, any improvement of a creature’s attitude toward the herald squire also applies to her knight. This ability replaces tactician."
+        },
+        {
+          "id": "cavalier-herald-squire-fleet-of-foot-ex-2",
+          "name": "Fleet of Foot (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a herald squire gains fast movement, as the barbarian class feature of the same name . If the herald squire gains fast movement from another class, the bonuses to her speed do not stack. Whenever she makes long overland journeys alone or with only her mount, the distance a herald squire can travel each day increases by 20%. This ability replaces the 2nd-level order ability."
+        },
+        {
+          "id": "cavalier-herald-squire-transcend-language-sp-3",
+          "name": "Transcend Language (Sp)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, three times per day, a herald squire can cast tongues on herself, using her herald squire level as her caster level. The effects of this ability last for a number of rounds equal to her herald squire level. This ability replaces cavalier’s charge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Herald%20Squire"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "alchemist-dimensional-excavator",
+  "name": "Dimensional Excavator",
+  "classId": "alchemist",
+  "summary": "Dimensional excavators have discovered and recorded ways to cause their bombs to create minor tears in the fabric of reality, forming extradimensional pits to vex their foes.",
+  "replacesText": "4th-level Discovery",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-discovery-4"
+      ],
+      "features": [
+        {
+          "id": "alchemist-dimensional-excavator-extradimensional-extract-su-4",
+          "name": "Extradimensional Extract (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "The intense study a dimensional excavator applies to dimensional forces causes him to treat his class level as 2 lower when qualifying for alchemist discoveries other than those granted by Precipitous Discoveries (see below). At 4th level, the dimensional excavator adds create pit to his list of extracts known, treating it as a 2nd-level alchemist extract. He can create an extract of this spell, which can then be thrown as a ranged attack, targeting a creature or square. If it strikes a square, the pit manifests in that area and all nearby creatures are affected normally. If a creature is struck, the pit manifests in the creature’s location, and the struck creature must succeed at a Reflex save with a –2 penalty or fall into the pit. This alters the discovery ability, and replaces the discovery gained at 4th level."
+        },
+        {
+          "id": "alchemist-dimensional-excavator-precipitous-discoveries-su-6",
+          "name": "Precipitous Discoveries (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a dimensional excavator can choose to learn an additional pit spell in place of learning a new discovery. The alchemist must be able to use an extract of the appropriate level to select a pit spell as an extract. He can add the following spells to his extracts known, and use them as per the extradimensional extract ability: spiked pit (3rd-level extract), acid pit (4th-level extract), hungry pit (5th-level extract). This alters the discovery ability."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Dimensional%20Excavator"
+  }
+}

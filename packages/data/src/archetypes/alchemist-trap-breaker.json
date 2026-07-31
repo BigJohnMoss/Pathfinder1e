@@ -1,0 +1,55 @@
+{
+  "id": "alchemist-trap-breaker",
+  "name": "Trap Breaker",
+  "classId": "alchemist",
+  "summary": "Trap breakers forgo the study of poison to instead master the construction and deployment of traps, using their nimble fingers to disable dangerous devices and their alchemical knowledge to create devastating land mines.",
+  "replacesText": "Poison Use; Poison Resistance +2, +4, +6; Swift Poisoning; Poison Immunity",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10",
+        "alchemist-swift-poisoning-6"
+      ],
+      "features": [
+        {
+          "id": "alchemist-trap-breaker-trapfinding-ex-2",
+          "name": "Trapfinding (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "Starting at 2nd level, a trap breaker adds 1/2 his alchemist level on Perception checks made to locate traps and on Disable Device checks. A trap breaker can use Disable Device to disarm magic traps. This ability replaces poison use and poison resistance +2."
+        },
+        {
+          "id": "alchemist-trap-breaker-explosive-disarm-ex-5",
+          "name": "Explosive Disarm (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a trap breaker can attempt to disarm a mechanical trap by detonating it rather than disarming it with a Disable Device check. As a fullround action, a trap breaker may expend one of his bombs to make a ranged touch attack against a trap, using the trap’s Disable Device DC as its AC. If the attack misses, the bomb’s splash damage activates the trap. If the attack hits, the bomb deactivates the trap without setting it off. The trap breaker must both know the location of the trap and be able to reach the trap’s trigger with a ranged touch attack in order to use this ability. At 8th level, a trap breaker can disarm magic traps with this ability. This ability replaces poison resistance +4 and poison resistance +6."
+        },
+        {
+          "id": "alchemist-trap-breaker-land-mine-ex-6",
+          "name": "Land Mine (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a trap breaker can turn his bombs into land mines. Setting a land mine is a fullround action that provokes attacks of opportunity. The land mine fills a single 5-foot square, and can’t be placed in the same space as another trap, land mine, or magic trap. The trap breaker can arm the land mine with any bomb he is eligible to use, and the effects of this bomb are immediately transferred to the land mine. Creating a land mine uses up two of the alchemist’s bombs per day. The DCs for Perception checks to notice the land mine, Disable Device checks to disable it, and saving throws to avoid its effects are equal to 10 + 1/2 the alchemist’s level + his Intelligence modifier. All alchemist land mines are mechanical traps with the qualities Trigger : location and Reset : none. Land mines last for 1 day per alchemist level or until they are triggered, whichever comes first. This ability replaces swift poisoning."
+        },
+        {
+          "id": "alchemist-trap-breaker-mine-engineering-ex-10",
+          "name": "Mine Engineering (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a trap breaker’s expertise in improving explosives allows him to create land mines with minimal expense. Creating a land mine uses up only one of the alchemist’s bombs per day. This ability replaces poison immunity."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Trap%20Breaker"
+  }
+}

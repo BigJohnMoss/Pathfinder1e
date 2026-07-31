@@ -1,0 +1,15 @@
+{
+  "id":"inquisitor-domains","name":"Domain or Inquisition","classIds":["inquisitor"],"inheritsOptionsFrom":"cleric-domains",
+  "optionDefaults":{"groupId":"inquisitor-domains","classIds":["inquisitor"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Advanced Player's Guide","page":39,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/inquisitor.html#domain"}},
+  "options":[
+    {"id":"inquisition-conversion","name":"Conversion Inquisition","benefit":"Use Wisdom instead of Charisma for Bluff, Diplomacy, and Intimidate and gain a conversion power."},
+    {"id":"inquisition-heresy","name":"Heresy Inquisition","benefit":"Become exceptionally skilled at exposing lies and resisting hostile divine magic."},
+    {"id":"inquisition-imprisonment","name":"Imprisonment Inquisition","benefit":"Gain powers for binding, restraining, and tracking prisoners."},
+    {"id":"inquisition-justice","name":"Justice Inquisition","benefit":"Gain a scaling attack bonus against a creature that harmed you or an ally."},
+    {"id":"inquisition-persistence","name":"Persistence Inquisition","benefit":"Gain relentless footing, rerolls, and resistance to debilitating effects."},
+    {"id":"inquisition-tactics","name":"Tactics Inquisition","benefit":"Improve initiative and reposition yourself and allies tactically."},
+    {"id":"inquisition-torture","name":"Torture Inquisition","benefit":"Use pain to improve Intimidate and impair resistant foes."},
+    {"id":"inquisition-valor","name":"Valor Inquisition","benefit":"Bolster courage and punish creatures that use fear."},
+    {"id":"inquisition-zeal","name":"Zeal Inquisition","benefit":"Act quickly and deliver zealous attacks against designated foes."}
+  ]
+}

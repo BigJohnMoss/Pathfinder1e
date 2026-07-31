@@ -1,7 +1,19 @@
 export type Progression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
-export type FeatureType = "core" | "selectable" | "scaling" | "bonus-feat" | "capstone" | "spellcasting";
-export type AbilityName = "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
+export type FeatureType =
+  | "core"
+  | "selectable"
+  | "scaling"
+  | "bonus-feat"
+  | "capstone"
+  | "spellcasting";
+export type AbilityName =
+  | "strength"
+  | "dexterity"
+  | "constitution"
+  | "intelligence"
+  | "wisdom"
+  | "charisma";
 export type AbilityScores = Record<AbilityName, number>;
 export interface CharacterClassLevel {
   classId: string;
@@ -36,20 +48,29 @@ export interface CharacterDraftV1 {
   selectedOptions: Record<string, string>;
   preparedSpells: string[];
   preparedSpellsByClass: Record<string, string[]>;
+  knownPreparedSpellsByClass?: Record<string, string[]>;
   spellSlotUses: Record<string, number>;
   spellSlotUsesByClass: Record<string, Record<string, number>>;
+  classResourceUsesByClass?: Record<string, Record<string, number>>;
+  eidolon?: { size: "Small" | "Medium"; evolutionIds: string[] };
   arcaneReservoir: number | null;
   bardicPerformanceUsed: number;
   wildShapeUsed: number;
   currentHitPoints: number | null;
   temporaryHitPoints: number;
   activeEffects: ActiveEffect[];
-  inventory: Array<{ itemId: string; quantity: number; equipped: boolean; enhancementBonus?: number }>;
+  inventory: Array<{
+    itemId: string;
+    quantity: number;
+    equipped: boolean;
+    enhancementBonus?: number;
+  }>;
   coins: { cp: number; sp: number; gp: number; pp: number };
 }
 
 export type CharacterDraft = CharacterDraftV1;
-export type ActiveEffectTarget = "initiative" | "armorClass" | "fortitude" | "reflex" | "will";
+export type ActiveEffectTarget =
+  "initiative" | "armorClass" | "fortitude" | "reflex" | "will";
 export interface ActiveEffect {
   id: string;
   name: string;
@@ -58,17 +79,39 @@ export interface ActiveEffect {
   roundsRemaining: number;
 }
 
-export interface SourceRef { title: string; page?: number | null; url: string; }
+export interface SourceRef {
+  title: string;
+  page?: number | null;
+  url: string;
+}
 export interface ClassFeatureOccurrence {
-  id: string; name: string; level: number; type: FeatureType;
-  summary: string; description?: string; progressionKey?: string | null;
-  scaling?: string | null; uses?: string | null; choiceRequired?: boolean;
-  optionGroupId?: string | null; grantedFeatId?: string; source?: SourceRef;
-  requiredOptionId?: string; requiredOptionMessage?: string;
+  id: string;
+  name: string;
+  level: number;
+  type: FeatureType;
+  summary: string;
+  description?: string;
+  progressionKey?: string | null;
+  scaling?: string | null;
+  uses?: string | null;
+  choiceRequired?: boolean;
+  optionGroupId?: string | null;
+  grantedFeatId?: string;
+  source?: SourceRef;
+  requiredOptionId?: string;
+  requiredOptionMessage?: string;
 }
 export interface CharacterClass {
-  id: string; name: string; classType: string; hitDie: 6|8|10|12;
-  babProgression: Progression; saves: {fortitude: SaveProgression; reflex: SaveProgression; will: SaveProgression};
+  id: string;
+  name: string;
+  classType: string;
+  hitDie: 6 | 8 | 10 | 12;
+  babProgression: Progression;
+  saves: {
+    fortitude: SaveProgression;
+    reflex: SaveProgression;
+    will: SaveProgression;
+  };
   maximumLevel?: number;
   baseAttackBonusByLevel?: number[];
   savesByLevel?: Array<{ fortitude: number; reflex: number; will: number }>;
@@ -79,7 +122,9 @@ export interface CharacterClass {
     targetCount?: number;
     targetTraditions?: Array<"arcane" | "divine">;
   };
-  skillRanksPerLevel: number; classSkills: string[]; source: SourceRef;
+  skillRanksPerLevel: number;
+  classSkills: string[];
+  source: SourceRef;
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
   wildShapeLevelAdjustment?: number;
@@ -128,27 +173,53 @@ export interface CharacterArchetype {
 }
 export type Prerequisite =
   | { type: "level"; minimum?: number; maximum?: number }
-  | { type: "bab"|"caster-level"; minimum: number }
+  | { type: "bab" | "caster-level"; minimum: number }
   | { type: "class-level"; classId: string; minimum: number }
-  | { type: "spell-level"; minimum: number; castingType?: "prepared"|"spontaneous" }
-  | { type: "ability"|"skill"; key: string; minimum: number }
-  | { type: "save"; key: "fortitude"|"reflex"|"will"; minimum: number }
-  | { type: "feat"|"feature"|"spell-access"; id: string }
+  | {
+      type: "spell-level";
+      minimum: number;
+      castingType?: "prepared" | "spontaneous";
+    }
+  | { type: "ability" | "skill"; key: string; minimum: number }
+  | { type: "save"; key: "fortitude" | "reflex" | "will"; minimum: number }
+  | { type: "feat" | "feature" | "spell-access"; id: string }
   | { type: "rule"; description: string }
   | { type: "ancestry"; id: string }
-  | { type: "size"; minimum?: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal"; maximum?: "fine"|"diminutive"|"tiny"|"small"|"medium"|"large"|"huge"|"gargantuan"|"colossal" }
+  | {
+      type: "size";
+      minimum?:
+        | "fine"
+        | "diminutive"
+        | "tiny"
+        | "small"
+        | "medium"
+        | "large"
+        | "huge"
+        | "gargantuan"
+        | "colossal";
+      maximum?:
+        | "fine"
+        | "diminutive"
+        | "tiny"
+        | "small"
+        | "medium"
+        | "large"
+        | "huge"
+        | "gargantuan"
+        | "colossal";
+    }
   | { type: "matching-choice"; featId: string; key: string }
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface SelectableOption {
-  id:string;
-  groupId:string;
-  name:string;
-  classIds:string[];
-  minimumLevel:number;
-  prerequisites:Prerequisite[];
-  benefit:string;
-  source:SourceRef;
+  id: string;
+  groupId: string;
+  name: string;
+  classIds: string[];
+  minimumLevel: number;
+  prerequisites: Prerequisite[];
+  benefit: string;
+  source: SourceRef;
   featId?: string;
   spellId?: string;
   spellLevel?: number;
@@ -242,24 +313,31 @@ export interface CharacterTrait {
       spellLikeAbilityUses?: number;
     };
   };
-  choice?: {
-    key: "classSkill";
-    label: string;
-    options: string[];
-  } | {
-    key: "spell";
-    label: string;
-    optionSource: "spells";
-    maximumSpellLevel?: number;
-  } | {
-    key: "class";
-    label: string;
-    optionSource: "classes";
-  };
+  choice?:
+    | {
+        key: "classSkill";
+        label: string;
+        options: string[];
+      }
+    | {
+        key: "spell";
+        label: string;
+        optionSource: "spells";
+        maximumSpellLevel?: number;
+      }
+    | {
+        key: "class";
+        label: string;
+        optionSource: "classes";
+      };
   source: SourceRef;
 }
 
 export interface CharacterOption extends SelectableOption {
+  cost?: number;
+  baseForms?: string[];
+  requiredEvolutionIds?: string[];
+  patronSpells?: string[];
   associatedSchool?: string;
   elementalOppositionSchool?: string;
   elementalSpellIdsByLevel?: Record<string, string[]>;
@@ -271,16 +349,35 @@ export interface CharacterOption extends SelectableOption {
   domains?: string[];
   classSkill?: string;
   classSkillChoices?: string[];
-  variants?: Array<{ id: string; name: string; energyType: string; breathShape?: string; movement?: string }>;
+  variants?: Array<{
+    id: string;
+    name: string;
+    energyType: string;
+    breathShape?: string;
+    movement?: string;
+  }>;
   arcana?: string;
-  bonusSpells?: Array<{ sorcererLevel: number; spellLevel: number; name: string }>;
+  bonusSpells?: Array<{
+    sorcererLevel: number;
+    spellLevel: number;
+    name: string;
+  }>;
   bonusFeats?: string[];
   powers?: Array<{ name: string; level: number; summary: string }>;
   domainSpells?: Array<{ level: number; name: string }>;
   mysteryId?: string;
   incompatibleOptionIds?: string[];
-  mysterySpells?: Array<{ oracleLevel: number; spellLevel: number; name: string }>;
-  revelations?: Array<{ id: string; name: string; minimumLevel: number; summary: string }>;
+  mysterySpells?: Array<{
+    oracleLevel: number;
+    spellLevel: number;
+    name: string;
+  }>;
+  revelations?: Array<{
+    id: string;
+    name: string;
+    minimumLevel: number;
+    summary: string;
+  }>;
   finalRevelation?: string;
 }
 
@@ -300,24 +397,24 @@ export interface CharacterOptionGroup {
 }
 
 export interface CharacterSpell {
-    id: string;
-    name: string;
-    school?: string;
-    schools?: string[];
-    levelByClass: Record<string, number>;
-    summary: string;
-    description?: string;
-    components?: string[];
-    castingTime?: string;
-    range?: string;
-    target?: string;
-    area?: string;
-    effect?: string;
-    duration?: string;
-    savingThrow?: string;
-    spellResistance?: string;
-    source?: SourceRef;
-  }
+  id: string;
+  name: string;
+  school?: string;
+  schools?: string[];
+  levelByClass: Record<string, number>;
+  summary: string;
+  description?: string;
+  components?: string[];
+  castingTime?: string;
+  range?: string;
+  target?: string;
+  area?: string;
+  effect?: string;
+  duration?: string;
+  savingThrow?: string;
+  spellResistance?: string;
+  source?: SourceRef;
+}
 
 export interface GeneratedDataBundle {
   generatedAt: string;

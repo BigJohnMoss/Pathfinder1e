@@ -1,0 +1,39 @@
+{
+  "id": "cavalier-wave-rider",
+  "name": "Wave Rider",
+  "classId": "cavalier",
+  "summary": "Throughout the Inner Sea region, wave riders patrol harbors, keeping them safe from dangerous sea creatures and watching for smugglers. The most famous of these is the hippocampus-riding Sea Cavalry of Absalom.",
+  "replacesText": "Weapon/Armor Proficiency; Mount",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-mount-1"
+      ],
+      "features": [
+        {
+          "id": "cavalier-wave-rider-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Wave riders are proficient with all simple and martial weapons and with light and medium armor, but not with shields. This replaces the cavalier’s weapon and armor proficiencies."
+        },
+        {
+          "id": "cavalier-wave-rider-seafaring-companion-1",
+          "name": "Seafaring Companion",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a wave rider gains Monstrous Mount as a bonus feat. The wave rider can use this feat only to select a hippocampus mount . Otherwise, this ability functions identically to and replaces the cavalier’s mount ability."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Wave%20Rider"
+  }
+}

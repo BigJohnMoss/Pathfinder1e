@@ -1,0 +1,50 @@
+{
+  "id": "cavalier-gallant",
+  "name": "Gallant",
+  "classId": "cavalier",
+  "summary": "Gallants embody the virtues of honor, generosity, and civility. Their personal symbol serves as an inspiration to others in a courtly setting as much as on a battlefield.",
+  "replacesText": "Order; Banner; Greater Banner",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-order-1",
+        "cavalier-order-ability-2",
+        "cavalier-order-ability-8",
+        "cavalier-order-ability-15",
+        "cavalier-banner-5"
+      ],
+      "features": [
+        {
+          "id": "cavalier-gallant-code-of-gallantry-1",
+          "name": "Code of Gallantry",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A gallant must belong to either the order of the blue rose , the order of the guard , the order of the lion , or the order of the sword . A gallant must also be of lawful good or neutral good alignment. A gallant who ceases to be lawful good or neutral good, or who violates his order’s edicts, loses all class features except armor and weapon proficiencies until he restores his alignment or atones for his violation (see the atonement spell), as appropriate. This alters the cavalier’s order."
+        },
+        {
+          "id": "cavalier-gallant-symbol-of-inspiration-ex-5",
+          "name": "Symbol of Inspiration (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the gallant’s personal crest becomes an inspirational symbol of his chivalrous ideals. As long as he displays his crest on his tabard, banner, or similar item, allies within 60 feet who can see him gain a +2 morale bonus on saving throws against charm, compulsion, and fear effects, and a +2 bonus on damage rolls to deal nonlethal damage. At 10th level and every 5 cavalier levels thereafter, these bonuses increase by 1. This ability replaces banner."
+        },
+        {
+          "id": "cavalier-gallant-symbol-of-resilience-su-14",
+          "name": "Symbol of Resilience (Su)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, the gallant’s personal crest empowers his allies to stand firm against evil. While his personal crest is displayed, the gallant can bolster his allies’ resilience as a standard action. All allies within 60 feet of the gallant gain DR 5/evil for 1 minute. An ally cannot benefit from this ability more than once per day. This ability replaces greater banner."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Gallant"
+  }
+}

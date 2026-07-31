@@ -1,0 +1,40 @@
+{
+  "id": "cavalier-oceanrider",
+  "name": "Oceanrider",
+  "classId": "cavalier",
+  "summary": "Oceanriders are underwater cavaliers who ride dolphins, orcas, or seahorses.",
+  "replacesText": "Armor Proficiency; Mount; Expert Trainer",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-mount-1",
+        "cavalier-expert-trainer-4"
+      ],
+      "features": [
+        {
+          "id": "cavalier-oceanrider-armor-proficiency-1",
+          "name": "Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An oceanrider is proficient with light and medium armor, and with shields (but not tower shields) . This alters armor proficiency."
+        },
+        {
+          "id": "cavalier-oceanrider-aquatic-mount-1",
+          "name": "Aquatic Mount",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Medium oceanrider can ride either a seahorse or an orca (unlike most orcas, this one starts at size Large with none of the other level 7 abilities until level 7) instead of the normal options, while a Small oceanrider can ride a dolphin . This alters mount and replaces expert trainer."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Oceanrider"
+  }
+}

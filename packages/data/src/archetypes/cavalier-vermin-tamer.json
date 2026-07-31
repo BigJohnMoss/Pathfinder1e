@@ -1,0 +1,49 @@
+{
+  "id": "cavalier-vermin-tamer",
+  "name": "Vermin Tamer",
+  "classId": "cavalier",
+  "summary": "Due to the strange terrain, the lack of sunlight, and numerous other hazards, keeping a traditional mount in the Darklands can prove difficult. Cavaliers native to or traveling the region may choose to tame local creatures instead.",
+  "replacesText": "Mount; Expert Trainer; Demanding Challenge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-mount-1",
+        "cavalier-expert-trainer-4",
+        "cavalier-challenge-1",
+        "cavalier-demanding-challenge-12"
+      ],
+      "features": [
+        {
+          "id": "cavalier-vermin-tamer-darklands-mount-ex-1",
+          "name": "Darklands Mount (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a vermin tamer chooses a creature native to the Darklands as his mount. This functions as a cavalier’s mount. He can choose a giant beetle , giant centipede , giant gecko , giant slug , or giant spider as his mount. These mounts (except the giant gecko) and the rules for vermin companions are detailed here, under Vermin Companions . The selected mount is combat trained. The vermin trainer does not take an armor check penalty on Ride checks while riding his mount. If the vermin tamer’s starting mount is large enough to act as a mount, it gains Light Armor Proficiency as a bonus feat. If the selected animal companion is too small to act as a proper mount, then the vermin tamer gains Undersized Mount as a bonus feat. This ability alters mount."
+        },
+        {
+          "id": "cavalier-vermin-tamer-stuck-in-the-saddle-ex-4",
+          "name": "Stuck in the Saddle (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A practiced vermin tamer can remain steady in the saddle even in unconventional situations. At 4th level, he gains a +4 circumstance bonus on any checks to stay in the saddle when his mount is climbing walls or flying. At 8th level, this bonus increases to +8, and he never falls off his mount when he is rendered unconscious. This replaces expert training."
+        },
+        {
+          "id": "cavalier-vermin-tamer-disorienting-challenge-ex-12",
+          "name": "Disorienting Challenge (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, whenever a vermin tamer declares a challenge, he can confound his target with the erratic movements of his mount. As long as the vermin tamer begins his turn mounted, with his mount climbing or flying at a higher location than his target, the target of his challenge takes a –2 penalty to its AC. This replaces demanding challenge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Vermin%20Tamer"
+  }
+}

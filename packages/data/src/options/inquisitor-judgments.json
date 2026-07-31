@@ -1,0 +1,11 @@
+{"id":"inquisitor-judgments","name":"Inquisitor Judgments","classIds":["inquisitor"],"optionDefaults":{"groupId":"inquisitor-judgments","classIds":["inquisitor"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Advanced Player's Guide","page":40,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/inquisitor.html#judgment"}},"options":[
+ {"id":"judgment-destruction","name":"Destruction","benefit":"Gain a scaling sacred bonus on weapon damage rolls."},
+ {"id":"judgment-healing","name":"Healing","benefit":"Gain fast healing that scales with Inquisitor level."},
+ {"id":"judgment-justice","name":"Justice","benefit":"Gain a scaling sacred bonus on attack rolls."},
+ {"id":"judgment-piercing","name":"Piercing","benefit":"Gain scaling bonuses on concentration and caster-level checks against spell resistance."},
+ {"id":"judgment-protection","name":"Protection","benefit":"Gain a scaling sacred bonus to Armor Class."},
+ {"id":"judgment-purity","name":"Purity","benefit":"Gain a scaling sacred bonus on saving throws."},
+ {"id":"judgment-resiliency","name":"Resiliency","benefit":"Gain scaling damage reduction."},
+ {"id":"judgment-resistance","name":"Resistance","benefit":"Gain scaling resistance against one selected energy type."},
+ {"id":"judgment-smiting","name":"Smiting","benefit":"Make weapons count as magic, aligned, and eventually adamantine for overcoming damage reduction."}
+]}

@@ -1,0 +1,56 @@
+{
+  "id": "cavalier-drakerider",
+  "name": "Drakerider",
+  "classId": "cavalier",
+  "summary": "While many cavaliers dream of riding a dragon into battle, drakeriders come to learn that the reality involves far more effort than they had expected.",
+  "replacesText": "Mount; Tactcian; Expert Trainer; Banner; Greater Tactician; Greater Banner; Master Tactician;",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-mount-1",
+        "cavalier-expert-trainer-4",
+        "cavalier-banner-5",
+        "cavalier-tactician-1",
+        "cavalier-greater-tactician-9",
+        "cavalier-master-tactician-17",
+        "cavalier-challenge-1",
+        "cavalier-order-1",
+        "cavalier-order-ability-2",
+        "cavalier-charge-3",
+        "cavalier-bonus-feat-6",
+        "cavalier-order-ability-8",
+        "cavalier-mighty-charge-11",
+        "cavalier-demanding-challenge-12",
+        "cavalier-bonus-feat-12",
+        "cavalier-order-ability-15",
+        "cavalier-bonus-feat-18",
+        "cavalier-supreme-charge-20"
+      ],
+      "features": [
+        {
+          "id": "cavalier-drakerider-drake-mount-9",
+          "name": "Drake Mount",
+          "level": 9,
+          "type": "archetype",
+          "summary": "A drakerider gains a drake companion instead of a mount. She gains cavalier’s charge at 9th level instead of 3rd. This ability replaces mount, tactician, expert trainer, banner, greater tactician, greater banner, and master tactician and alters cavalier’s charge."
+        },
+        {
+          "id": "cavalier-drakerider-approved-order-1",
+          "name": "Approved Order",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A drakerider can join only an order approved by its mount. Suitable orders include order of the beast (ISC) , order of the cockatrice , and order of the dragon , as well as other fitting orders at the GM’s discretion."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Drakerider"
+  }
+}

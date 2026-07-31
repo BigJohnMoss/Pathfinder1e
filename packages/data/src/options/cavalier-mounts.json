@@ -1,0 +1,5 @@
+{"id":"cavalier-mounts","name":"Cavalier Mounts","classIds":["cavalier"],"optionDefaults":{"groupId":"cavalier-mounts","classIds":["cavalier"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Advanced Player's Guide","page":33,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/cavalier.html#mount"}},"options":[
+ {"id":"cavalier-mount-horse","name":"Horse","benefit":"Gain a horse mount advancing as a full-level animal companion."},
+ {"id":"cavalier-mount-pony","name":"Pony","benefit":"A Small Cavalier gains a pony mount advancing as a full-level animal companion."},
+ {"id":"cavalier-mount-camel","name":"Camel","benefit":"With GM approval, gain a camel suited to the campaign environment."}
+]}

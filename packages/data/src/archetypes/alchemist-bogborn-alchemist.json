@@ -1,0 +1,56 @@
+{
+  "id": "alchemist-bogborn-alchemist",
+  "name": "Bogborn Alchemist",
+  "classId": "alchemist",
+  "summary": "(Grippli Only) Some grippli alchemists are particularly attuned to the swamps and the dangerous creatures that inhabit them; these serve as their laboratories and research subjects, respectively.",
+  "replacesText": "Class Skills; Throw Anything",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-throw-anything-1"
+      ],
+      "features": [
+        {
+          "id": "alchemist-bogborn-alchemist-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A bogborn alchemist adds Swim to his list of class skills."
+        },
+        {
+          "id": "alchemist-bogborn-alchemist-amphibious-mutagen-ex-1",
+          "name": "Amphibious Mutagen (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, when a bogborn alchemist uses a mutagen, he may choose to have his mutagen form enhanced for aquatic movement. This gives him the amphibious special quality, his feet elongate, and the webbing between his fingers and toes expands, granting a swim speed of 15 feet. This replaces throw anything."
+        },
+        {
+          "id": "alchemist-bogborn-alchemist-discovery-options-1",
+          "name": "Discovery Options",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A bogborn alchemist can select the toxic skin grippli racial trait in place of an alchemical discovery."
+        },
+        {
+          "id": "alchemist-bogborn-alchemist-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the bogborn alchemist archetype: chameleon; concentrate poison, sticky poison ; nauseating flesh, poison conversion; bottled ooze, tanglefoot bomb, tentacle ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Bogborn%20Alchemist"
+  },
+  "manualRequirements": [
+    "Restricted to Grippli characters; that ancestry is not yet available in this builder."
+  ]
+}

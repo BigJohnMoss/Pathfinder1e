@@ -1,0 +1,49 @@
+{
+  "id": "summoner-story-summoner",
+  "name": "Story Summoner",
+  "classId": "summoner",
+  "summary": "Story summoners rely on the harrow to weave the paths they walk, turning their tales into reality. They channel magic through their harrow decks to influence the strange extraplanar beings they summon, bringing familiar and fateful characters to life.",
+  "replacesText": "Eidolon; Bond Senses; Transposition",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-eidolon-1",
+        "summoner-twin-eidolon-20",
+        "summoner-bond-senses-2",
+        "summoner-transposition-8"
+      ],
+      "features": [
+        {
+          "id": "summoner-story-summoner-storykin-eidolon-1",
+          "name": "Storykin Eidolon",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Unlike most eidolons, a story summoner’s eidolon cannot touch or attack creatures warded by protection from evil and similar effects that prevent contact with summoned creatures. As a standard action while his eidolon is summoned, the story summoner can draw a random card from a complete harrow deck he owns. For a number of rounds equal to 1/2 the summoner’s class level (minimum 1), the eidolon’s alignment changes to match that of the harrow card drawn, and the eidolon gains a +4 enhancement bonus on the ability score linked to the drawn card’s suit. The eidolon continues to follow its summoner’s orders regardless of its alignment. The story summoner can use this ability a number of times per day equal to 3 + his Charisma modifier."
+        },
+        {
+          "id": "summoner-story-summoner-summon-arcana-2",
+          "name": "Summon Arcana",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a story summoner can use a complete harrow deck he owns as an additional focus component for his summon monster spell-like ability. When he does so, the summoner draws a random card from the deck and applies a simple template to the summoned monster based on the card’s alignment: celestial (any good), fiendish (any evil), resolute (any lawful), or entropic (any chaotic). If a card has more than one alignment—such as a lawful evil or chaotic good card—the summoner can choose which template to apply to the summoned creature. This ability allows a story summoner to summon and command creatures normally prohibited by their alignment. This ability replaces bond senses."
+        },
+        {
+          "id": "summoner-story-summoner-evolve-base-form-su-8",
+          "name": "Evolve Base Form (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "Starting at 8th level, whenever he gains a level, the story summoner can change his eidolon’s base form to a new base form. Once chosen, this base form is set until the story summoner gains another summoner level. This ability replaces transposition."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20Story%20Summoner"
+  }
+}

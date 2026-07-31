@@ -1,0 +1,62 @@
+{
+  "id": "inquisitor-cloaked-wolf",
+  "name": "Cloaked Wolf",
+  "classId": "inquisitor",
+  "summary": "Some inquisitors are adept at appearing harmless until they throw off their unassuming facades and take their enemies by surprise.",
+  "replacesText": "Class Skills; Stern Gaze; Cunning Initiative; Monster Lore; Solo Tactics; Teamwork Feats",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-stern-gaze-1",
+        "inquisitor-cunning-initiative-2",
+        "inquisitor-monster-lore-1",
+        "inquisitor-solo-tactics-3",
+        "inquisitor-teamwork-3",
+        "inquisitor-teamwork-6",
+        "inquisitor-teamwork-9",
+        "inquisitor-teamwork-12",
+        "inquisitor-teamwork-15",
+        "inquisitor-teamwork-18"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-cloaked-wolf-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A cloaked wolf adds Sleight of Hand to her list of class skills, instead of Intimidate. This alters the inquisitor’s class skills."
+        },
+        {
+          "id": "inquisitor-cloaked-wolf-lure-prey-ex-1",
+          "name": "Lure Prey (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Cloaked wolves are skilled at maintaining a harmless guise even while they silently prepare to strike against their enemies. Starting at 1st level, a cloaked wolf receives a morale bonus on all Disguise and Sleight of Hand checks equal to half her inquisitor level (minimum +1). When a cloaked wolf uses Sleight of Hand to draw a hidden weapon, this bonus doubles. This ability replaces stern gaze."
+        },
+        {
+          "id": "inquisitor-cloaked-wolf-always-wary-ex-2",
+          "name": "Always Wary (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A cloaked wolf is always ready for betrayal and subterfuge. Whenever she attempts a Sense Motive check to avoid being surprised by a foe using Bluff to conceal the attack, the cloaked wolf can always act during the surprise round, regardless of the result of the check. At 2nd level, she adds her Wisdom modifier (in addition to her Dexterity modifier) to her initiative checks during any such encounter. This ability alters cunning initiative and replaces monster lore."
+        },
+        {
+          "id": "inquisitor-cloaked-wolf-unleashed-fury-ex-3",
+          "name": "Unleashed Fury (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a cloaked wolf can transition between parley and combat in the blink of an eye. She gains Quick Draw as a bonus feat. Additionally, at 6th level and every 3 inquisitor levels thereafter, she gains a bonus feat from the following list: Alertness, Catch Off-Guard, Deceitful, Deft Hands, Dodge, Improved Initiative, Improved Unarmed Strike, Improvised Weapon Mastery, Lookout APG , Mobility, Spring Attack, Stunning Fist, and Throw Anything. She must meet the prerequisites of the selected bonus feat. As a standard action, a cloaked wolf can choose to learn a new bonus feat from the above list in place of the most recent bonus feat she has already learned. In effect, the cloaked wolf loses the bonus feat in exchange for the new one. She can only change the most recent bonus feat gained. Whenever she gains a new bonus feat, the previous bonus feat becomes set and cannot be changed again. A cloaked wolf can change her most recent bonus feat a number of times per day equal to her Wisdom modifier (minimum 1). This ability replaces solo tactics and teamwork feats."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Cloaked%20Wolf"
+  }
+}

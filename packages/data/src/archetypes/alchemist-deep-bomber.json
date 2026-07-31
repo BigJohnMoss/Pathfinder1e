@@ -1,0 +1,58 @@
+{
+  "id": "alchemist-deep-bomber",
+  "name": "Deep Bomber",
+  "classId": "alchemist",
+  "summary": "(Svirfneblin Only) Consumed with keeping hidden from the horrors below the surface, svirfneblin use their racial proclivity for alchemy and their inherent talent for obfuscation to strike their enemies from the darkness and retreat unseen.",
+  "replacesText": "Poison Use; Swift Alchemy; Instant Alchemy; Swift Poisoning",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-swift-alchemy-3",
+        "alchemist-instant-alchemy-18",
+        "alchemist-swift-poisoning-6"
+      ],
+      "features": [
+        {
+          "id": "alchemist-deep-bomber-silent-bomb-2",
+          "name": "Silent Bomb",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, when the deep bomber creates a bomb, he can choose to have it explode without making any noise, although those damaged by it may cry out. This ability replaces poison use."
+        },
+        {
+          "id": "alchemist-deep-bomber-targeting-bomb-3",
+          "name": "Targeting Bomb*",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, when the deep bomber creates a bomb, he can choose to have its detonation include a faerie fire effect that applies to all creatures within the splash radius (including the target, if any). This ability replaces swift alchemy (the deep bomber gains swift alchemy at 18th level and never gains instant alchemy)."
+        },
+        {
+          "id": "alchemist-deep-bomber-stonekin-6",
+          "name": "Stonekin",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the deep bomber automatically learns tree shape as a 2nd-level extract, except instead of a tree, he takes the form of a stalagmite that is the same size as his current size. At 7th level, he automatically learns meld into stone as a 3rd-level extract. This ability replaces swift poisoning."
+        },
+        {
+          "id": "alchemist-deep-bomber-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the deep bomber archetype: delayed bomb, dispelling bomb, fast bombs, infusion, madness bomb, poison bomb."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Deep%20Bomber"
+  },
+  "manualRequirements": [
+    "Restricted to Svirfneblin characters; that ancestry is not yet available in this builder."
+  ]
+}

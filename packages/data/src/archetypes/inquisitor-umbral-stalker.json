@@ -1,0 +1,60 @@
+{
+  "id": "inquisitor-umbral-stalker",
+  "name": "Umbral Stalker",
+  "classId": "inquisitor",
+  "summary": "As a consummate lurker in the shadows, an umbral stalker observes the enemies of her faith and strikes before the unfortunate victims even know she is skulking nearby.",
+  "replacesText": "Class Skills; Domain; Justice Judgement",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-domain-1"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-umbral-stalker-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An umbral stalker adds Acrobatics to her list of class skills, instead of Diplomacy. This alters the inquisitor’s class skills."
+        },
+        {
+          "id": "inquisitor-umbral-stalker-dark-descent-su-1",
+          "name": "Dark Descent (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An umbral stalker gains the Darkness domain with the Night subdomain APG , even if her deity normally doesn’t offer it. This ability alters domain."
+        },
+        {
+          "id": "inquisitor-umbral-stalker-judgment-1",
+          "name": "Judgment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Umbral stalkers are most effective when they get the drop on an opponent. An umbral stalker gains access to the following judgment. Stalking : The umbral stalker gains a +2 sacred bonus on attack rolls against creatures that are unaware of her presence (typically because she is invisible or using Stealth). This bonus increases by 2 for every 5 inquisitor levels she has. This ability replaces the justice judgment."
+        },
+        {
+          "id": "inquisitor-umbral-stalker-swift-and-silent-ex-1",
+          "name": "Swift and Silent (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Umbral stalkers often descend upon their prey with deadly grace and efficiency. An umbral stalker gains a morale bonus on all Acrobatics and Stealth checks equal to half her inquisitor level (minimum +1). This ability replaces stern gaze."
+        },
+        {
+          "id": "inquisitor-umbral-stalker-deadly-efficiency-ex-14",
+          "name": "Deadly Efficiency (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, an umbral stalker becomes even deadlier against enemies who haven’t yet noticed her in the shadows. Whenever she confirms a critical hit against a foe that is unaware of her presence, she ignores any damage reduction the target might have and adds her Wisdom bonus to her damage roll (this multiplies on the critical hit as normal); in addition, if the target has regeneration, the creature loses regeneration on the round following the critical hit and can die normally during that round. Creatures whose regeneration always functions are immune to this ability. Finally, if the umbral stalker deals energy damage to a creature unaware of her presence with vulnerability to that energy type, she deals 2 extra points of damage per die rolled. This ability alters exploit weakness."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Umbral%20Stalker"
+  }
+}

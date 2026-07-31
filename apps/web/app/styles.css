@@ -440,6 +440,12 @@ a:focus-visible,
   justify-self: start;
 }
 
+.prepared-source-book { margin: 18px 0; border: 1px solid #e3ddd0; border-radius: 12px; padding: 14px; background: #fbf8f1; }
+.prepared-source-book summary { display: flex; justify-content: space-between; gap: 12px; cursor: pointer; }
+.prepared-source-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 8px; max-height: 320px; overflow: auto; padding: 6px 2px; }
+.prepared-source-list label { display: flex; gap: 9px; align-items: flex-start; padding: 9px; border: 1px solid #e3ddd0; border-radius: 8px; background: #fff; }
+.prepared-source-list span,.prepared-source-list small { display: block; }
+.prepared-source-list small { color: #726c61; margin-top: 2px; }
 .prepared-summary {
   background: #faf6ee;
   border: 1px solid #ddcfba;

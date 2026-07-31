@@ -1,0 +1,63 @@
+{
+  "id": "alchemist-grenadier-mc",
+  "name": "Grenadier [MC]",
+  "classId": "alchemist",
+  "summary": "Grenadiers train to exercise their talents in the thick of battle, even when not under the influence of their mutagens. They learn methods of combining weapon attacks with their alchemical magic, and sacrifice skill with poisons in order to become more adept at using alchemical bombs or using alchemical items in conjunction with their martial skills.",
+  "replacesText": "Brew Potion; Poison Resistance; Poison Use; Swift Poisoning; Poison Immunity",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-brew-potion-1",
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10",
+        "alchemist-swift-poisoning-6"
+      ],
+      "features": [
+        {
+          "id": "alchemist-grenadier-mc-martial-weapon-proficiency-1",
+          "name": "Martial Weapon Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a grenadier picks one martial weapon and becomes proficient in its use. This ability replaces Brew Potion."
+        },
+        {
+          "id": "alchemist-grenadier-mc-alchemical-weapon-su-2",
+          "name": "Alchemical Weapon (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a grenadier can infuse a weapon or piece of ammunition with a single harmful alchemical liquid or powder, such as alchemist’s fire or sneezing powder, as a move action. This action consumes the alchemical item, but transfers its effect to the weapon in question. The alchemical item takes full effect on the next creature struck by the weapon, but does not splash, spread, affect additional targets, or benefit from any other effects that specifically affect splash weapons. Any extra damage added is not doubled on a critical hit. The alchemical treatment causes no harm to the weapon treated, and wears off 1 minute after being applied if no blow is struck. Infusing a new alchemical item also removes the effect of any alchemical liquid or powder previously applied with this ability. At 6th level, a grenadier can use her alchemical weapon ability as a swift action. At 15th level, this ability becomes a free action. This ability replaces poison resistance."
+        },
+        {
+          "id": "alchemist-grenadier-mc-precise-bombs-ex-2",
+          "name": "Precise Bombs (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a grenadier gains the precise bombs alchemist discovery as a bonus discovery. This ability replaces poison use."
+        },
+        {
+          "id": "alchemist-grenadier-mc-directed-blast-su-6",
+          "name": "Directed Blast (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a grenadier can detonate a bomb so that it splashes in a 20-foot cone rather than affecting a radius. The cone starts at the alchemist and extends away from her in the direction she chooses. The alchemist designates one creature in the squares affected by the cone to be the target of the bomb and makes her attack roll against that creature; all other squares in the cone take splash damage. If the alchemist has the explosive bomb discovery and throws an explosive directed blast, the cone of splash damage is 30 feet long instead of 20 feet. This ability replaces swift poisoning."
+        },
+        {
+          "id": "alchemist-grenadier-mc-staggering-blast-su-10",
+          "name": "Staggering Blast (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a grenadier’s bombs become particularly overwhelming when they explode. Whenever a grenadier confirms a critical hit with a bomb, the creature directly struck by that bomb is staggered for 1d4+1 rounds. A successful Fortitude saving throw (DC equals the bomb’s Reflex save DC to avoid splash damage) reduces the duration to 1 round. The effects of this ability stack with a frost bomb’s staggering effect, but not with the effects of the Staggering Critical feat. Additional critical hits with bombs add to any duration remaining from previous ones. This ability replaces poison immunity."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Grenadier%20[MC]"
+  }
+}

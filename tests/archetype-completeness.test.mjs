@@ -9,23 +9,28 @@ const archetypes = await Promise.all((await readdir(archetypeDirectory))
   .filter((name) => name.endsWith(".json"))
   .map(async (name) => JSON.parse(await readFile(new URL(name, archetypeDirectory), "utf8"))));
 const expectedCounts = {
+  alchemist: 63,
   arcanist: 15,
   barbarian: 41,
   bard: 73,
+  cavalier: 37,
   cleric: 35,
   druid: 75,
   fighter: 67,
+  inquisitor: 38,
   monk: 56,
   oracle: 26,
   paladin: 47,
   ranger: 62,
   rogue: 78,
   sorcerer: 13,
+  summoner: 22,
+  witch: 42,
   wizard: 35
 };
 
 test("the archetype catalogue covers every published supported-class entry", () => {
-  assert.equal(archetypes.length, 623);
+  assert.equal(archetypes.length, 825);
   for (const [classId, expected] of Object.entries(expectedCounts)) {
     const records = archetypes.filter((archetype) => archetype.classId === classId);
     assert.equal(records.length, expected, `${classId} archetype count`);

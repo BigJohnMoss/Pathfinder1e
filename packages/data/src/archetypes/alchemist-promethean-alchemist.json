@@ -1,0 +1,155 @@
+{
+  "id": "alchemist-promethean-alchemist",
+  "name": "Promethean Alchemist",
+  "classId": "alchemist",
+  "summary": "Obsessed with discovering the origins of life, promethean alchemists build constructs they gradually endow with life.",
+  "replacesText": "Brew Potion; Throw Anything; Bombs; Mutagen",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-brew-potion-1",
+        "alchemist-throw-anything-1",
+        "alchemist-bomb-1",
+        "alchemist-mutagen-1",
+        "alchemist-persistent-mutagen-14"
+      ],
+      "features": [
+        {
+          "id": "alchemist-promethean-alchemist-craft-construct-1",
+          "name": "Craft Construct",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a promethean alchemist gains the promethean disciple discovery. This ability replaces Brew Potion and Throw Anything."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-homunculus-companion-ex-1",
+          "name": "Homunculus Companion (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a promethean alchemist gains the service of a homunculus companion. The means for creating this special homunculus are more exotic than normal and require investiture of the promethean alchemist’s own life essence into the homunculus. This construct generally resembles a small humanoid or child when first created; the specific appearance is up to its creator, though a homunculus is always humanoid in shape and obviously unnatural on close inspection. While every homunculus companion is absolutely devoted to its master, some homunculi’s loyalty borders on the unsettling; such companions jealously protect their masters from threats or construct strange shrines in their masters’ honor. A homunculus companion can be of any alignment, even one that is different from its master’s. A destroyed homunculus companion can be restored to life by performing a ritual with its corpse that requires 1 pint of its creator’s blood per Hit Die of the homunculus and rare materials worth 100 gp per Hit Die of the homunculus. Performing this ritual takes 1 hour (though it may take some time to gather enough blood at higher levels, so many promethean alchemists keep chilled blood samples in storage just in case). A promethean alchemist can’t take the mutagen or cognatogen discoveries. This ability replaces bombs and mutagen."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement this archetype: alchemical simulacrum, doppelganger simulacrum, and greater alchemical simulacrum. Homunculus Companion Base Statistics A homunculus companion has the following features, as described on Table 2-2 on page 114. LevelHDBABSavesSkillsFeatsStr/Dex BonusSpecial 1st1+1+021+0Darkvision, low-light vision, sympathetic alchemy, telepathic link, weapon and armor proficiency 2nd2+2+041+0- 3rd3+3+182+1Evasion 4th3+3+182+1- 5th4+4+1102+1Ability score increase 6th5+5+1123+2Speech 7th6+6+2143+2- 8th6+6+2143+2- 9th7+7+2164+3Spell resistance 10th8+8+2184+3Ability score increase 11th9+9+3205+3- 12th9+9+3205+4- 13th10+10+3225+4- 14th11+11+3246+4- 15th12+12+4266+5Ability score increase, improved evasion 16th12+12+4266+5- 17th13+13+4287+5- 18th14+14+4307+6- 19th15+15+5328+6- 20th15+15+5328+6Ability score increase"
+        },
+        {
+          "id": "alchemist-promethean-alchemist-level-1",
+          "name": "Level",
+          "level": 1,
+          "type": "archetype",
+          "summary": "This is the homunculus’s master’s alchemist level."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-hd-1",
+          "name": "HD",
+          "level": 1,
+          "type": "archetype",
+          "summary": "This is the homunculus’s total number of 10-sided (d10) Hit Dice. The homunculus doesn’t have a Constitution score, but it gains bonus hit points based on its size."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-bab-1",
+          "name": "BAB",
+          "level": 1,
+          "type": "archetype",
+          "summary": "This is the base attack bonus of the homunculus, which is equal to its number of Hit Dice."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-saves-1",
+          "name": "Saves",
+          "level": 1,
+          "type": "archetype",
+          "summary": "These are the base saving throw bonuses of the homunculus."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-skills-1",
+          "name": "Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "This entry lists the homunculus’s total number of skill ranks. A homunculus with a high Intelligence score modifies these totals as normal (the homunculus gains a number of skill ranks equal to 2 + its Intelligence modifier per HD). A homunculus can’t have more ranks in a skill than it has Hit Dice. Homunculus Class Skills : The following skills are class skills for a homunculus: Bluff (Cha), Craft (Int), Fly (Dex), Knowledge (arcana) (Int), Perception (Wis), Sense Motive (Wis), and Stealth (Dex). In addition, at 1st level, a promethean alchemist can choose two additional skills to be class skills for his homunculus."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-feats-1",
+          "name": "Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "This is the total number of feats the homunculus has. A homunculus can select any feats it qualifies for, but must possess the appropriate appendages in order to use some feats."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-str-dex-bonus-1",
+          "name": "Str/Dex Bonus",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Add this modifier to the homunculus’s Strength and Dexterity."
+        },
+        {
+          "id": "alchemist-promethean-alchemist-special-3",
+          "name": "Special",
+          "level": 3,
+          "type": "archetype",
+          "summary": "As the homunculus increases in power, it gains the special abilities described below. Darkvision (Ex) : The homunculus has darkvision out to a range of 60 feet. Low-Light Vision (Ex) : Homunculi see twice as far as humans in dim light. Sympathetic Alchemy (Su) : The bond between a promethean alchemist and his homunculus is so close that the alchemist’s extracts function for the homunculus as if it were the alchemist, allowing the homunculus companion to benefit from extracts without the alchemist needing the infusion discovery. The homunculus is treated as a humanoid or a construct-whichever is more beneficial-for the purposes of what extracts can affect it. Additionally, the homunculus can prepare its master’s extracts from his formula book for him each day, as long as it’s within the range of its telepathic link. Telepathic Link (Su) : A homunculus can’t initially speak, but shares a telepathic link with its creator. It knows what its master knows and can convey to him everything it sees and hears, out to a range of 1,500 feet. Weapon and Armor Proficiency (Ex) : A homunculus is proficient with simple weapons, but not armor or shields. Evasion (Ex) : At 3rd level, if a homunculus is subjected to an attack that normally allows a Reflex save for half damage, it takes no damage if it succeeds at its saving throw. Ability Score Increase (Ex) : The homunculus adds 1 to one of its ability scores at 5th level and every 5 levels thereafter. Speech (Ex) : At 6th level, the homunculus gains the ability to speak any languages it knows. Spell Resistance (Su) : At 9th level, the homunculus gains spell resistance equal to 11 + its master’s alchemist level. Improved Evasion (Ex) : At 15th level, when subjected to an attack that allows a Reflex save for half damage, the homunculus takes no damage if it succeeds at the saving throw and only half damage if it fails the saving throw. Homunculus Starting Statistics"
+        },
+        {
+          "id": "alchemist-promethean-alchemist-size-1",
+          "name": "Size",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Small;"
+        },
+        {
+          "id": "alchemist-promethean-alchemist-speed-1",
+          "name": "Speed",
+          "level": 1,
+          "type": "archetype",
+          "summary": "20 ft., fly 30 ft. (poor); AC +2 natural armor;"
+        },
+        {
+          "id": "alchemist-promethean-alchemist-attack-1",
+          "name": "Attack",
+          "level": 1,
+          "type": "archetype",
+          "summary": "bite (1d4);"
+        },
+        {
+          "id": "alchemist-promethean-alchemist-ability-scores-1",
+          "name": "Ability Scores",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Str 10, Dex 15, Con -, Int 10, Wis 12, Cha 7;"
+        },
+        {
+          "id": "alchemist-promethean-alchemist-special-qualities-1",
+          "name": "Special Qualities",
+          "level": 1,
+          "type": "archetype",
+          "summary": "darkvision, low-light vision;"
+        },
+        {
+          "id": "alchemist-promethean-alchemist-languages-1",
+          "name": "Languages",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Common (can’t speak). 4th-Level Advancement"
+        },
+        {
+          "id": "alchemist-promethean-alchemist-special-attacks-1",
+          "name": "Special Attacks",
+          "level": 1,
+          "type": "archetype",
+          "summary": "poison (bite-injury frequency 1/minute for 60 minutes, effect sleep for 1 minute, cure 1 save, Con-based DC with a +2 racial bonus)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Promethean%20Alchemist"
+  }
+}

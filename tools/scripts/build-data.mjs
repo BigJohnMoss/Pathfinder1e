@@ -18,16 +18,24 @@ const bloodlineDetailFiles=await loadDir('bloodline-details');
 const bloodlineDetails=new Map(bloodlineDetailFiles.flatMap(file=>file.bloodlines).map(bloodline=>[bloodline.id,bloodline]));
 const mysteryDetailFiles=await loadDir('mystery-details');
 const mysteryDetails=new Map(mysteryDetailFiles.flatMap(file=>file.mysteries).map(mystery=>[mystery.id,mystery]));
-const rawOptionGroups=(await loadDir('options')).map(group=>({...group,options:[...group.options.map(option=>({...group.optionDefaults,...option,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})})),...(group.id==="cleric-domains"?subdomains:[])]}));
+const sourceOptionGroups=await loadDir('options');
+const optionGroupById=new Map(sourceOptionGroups.map(group=>[group.id,group]));
+const rawOptionGroups=sourceOptionGroups.map(group=>{
+  const inherited=group.inheritsOptionsFrom ? optionGroupById.get(group.inheritsOptionsFrom)?.options??[] : [];
+  const options=[...inherited,...group.options].map(option=>({...group.optionDefaults,...option,groupId:group.id,classIds:group.classIds,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})}));
+  return {...group,options:[...options,...(group.id==="cleric-domains"?subdomains:[])]};
+});
 const spellDetailFiles=await loadDir('spell-details').catch(()=>[]);
 const spellDetailsById=new Map(spellDetailFiles.flatMap(file=>file.spells??[]).map(detail=>[detail.id,detail]));
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
 const spells=sourceSpells.map(sourceSpell=>{
-  const spell={...sourceSpell,...(spellDetailsById.get(sourceSpell.id)??{})};
+  const detail=spellDetailsById.get(sourceSpell.id)??{};
+  const {classLevelOverlay,...spellDetail}=detail;
+  const spell={...sourceSpell,...spellDetail};
   const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
   const sharedArcaneLevel=withWizard?.wizard??withWizard?.arcanist;
   const sharedLevelByClass=sharedArcaneLevel!==undefined&&withWizard?.sorcerer===undefined?{...withWizard,sorcerer:sharedArcaneLevel}:withWizard;
-  const withClassOverlays={...sharedLevelByClass,...(spellClassLevels[spell.id]??{})};
+  const withClassOverlays={...sharedLevelByClass,...(classLevelOverlay??{}),...(spellClassLevels[spell.id]??{})};
   const levelByClass=withClassOverlays.cleric!==undefined&&withClassOverlays.oracle===undefined?{...withClassOverlays,oracle:withClassOverlays.cleric}:withClassOverlays;
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);

@@ -1,0 +1,42 @@
+{
+  "id": "cavalier-gendarme",
+  "name": "Gendarme",
+  "classId": "cavalier",
+  "summary": "The gendarme cares less for the finer points of tactical precision than he does for the exhilaration of the charge: the rush of wind through the visor of his helmet, the feel of his couched lance, the satisfying shriek of armor giving way before his weapon’s force as the point drives past metal into his foes.",
+  "replacesText": "Tactician; Greater Tactician; Master Tactician; Supreme Charge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-tactician-1",
+        "cavalier-greater-tactician-9",
+        "cavalier-master-tactician-17",
+        "cavalier-supreme-charge-20"
+      ],
+      "features": [
+        {
+          "id": "cavalier-gendarme-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A gendarme trains to be a mounted terror, almost to the exclusion of all other abilities. He gains bonus feats at 1st level, 5th level, and then every three levels thereafter, but must select these bonus feats from the following list: Improved Bull Rush , Mounted Combat , Power Attack , Ride-By Attack , Spirited Charge , Spring Attack , and Unseat . If the gendarme has already selected all of the listed feats, then he may select his bonus feats from those feats listed as combat feats. This ability replaces tactician, greater tactician, master tactician, and the standard cavalier’s selection of bonus feats."
+        },
+        {
+          "id": "cavalier-gendarme-transfixing-charge-ex-20",
+          "name": "Transfixing Charge (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a gendarme represents the epitome of mounted combat. Whenever he makes a charge attack while mounted, he deals triple the normal damage (quadruple if using a lance); this damage includes all increases from the Spirited Charge feat and from the use of a lance. In addition, if the gendarme confirms a critical hit on a charge attack while mounted, the attack deals maximum damage for the weapon wielded. Additional damage from weapon properties, magic effects, precision-based bonuses, or other increases are rolled normally. This ability replaces supreme charge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Gendarme"
+  }
+}

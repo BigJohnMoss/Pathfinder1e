@@ -1,0 +1,68 @@
+{
+  "id": "witch-veneficus-witch",
+  "name": "Veneficus Witch",
+  "classId": "witch",
+  "summary": "Veneficus witches specialize in poisons—brewing both magical and traditional concoctions, and applying them to weapons, traps or even her potent hexes.",
+  "replacesText": "2nd and 10th-level Hexes",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-hex-2",
+        "witch-major-hex-10"
+      ],
+      "features": [
+        {
+          "id": "witch-veneficus-witch-poisoner-1",
+          "name": "Poisoner",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A veneficus witch can select the following alchemist discoveries as hexes, major hexes, or grand hexes, as indicated below. The witch’s effective alchemist level is equal to her witch level for the purpose of qualifying for these discoveries. Unless otherwise noted, these alchemist discoveries can be located in the Pathfinder RPG Advanced Player’s Guide . Hexes : Concentrate poison, poison conversion ( Pathfinder RPG Ultimate Combat 24), sticky poison. Major Hexes : Malignant poison ( Pathfinder Player Companion: Dungeoneer’s Handbook 27), nauseating flesh ( Ultimate Combat 24). Grand Hexes : Poison touch (grand discovery)."
+        },
+        {
+          "id": "witch-veneficus-witch-poison-use-ex-2",
+          "name": "Poison Use (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a veneficus witch cannot accidentally poison herself when applying poison to a weapon."
+        },
+        {
+          "id": "witch-veneficus-witch-toxic-words-ex-2",
+          "name": "Toxic Words (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, whenever a veneficus witch targets a single creature with a hex, she can imbue her hex with a dose of injury or contact poison she is holding. The DCs of her hex and the poison are each reduced by 2; if the creature fails its save against the hex, the poison is expended and the creature must succeed at a Fortitude save against the poison or become poisoned. At 10th level, the DC of the witch’s hex and poison are each reduced by only 1 and the witch can imbue her hexes with inhaled and ingested poisons as well. This ability replaces the witch’s 2nd- and 10th-level hexes."
+        },
+        {
+          "id": "witch-veneficus-witch-hexes-1",
+          "name": "Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following witch hexes complement the veneficus witch archetype: blight, cauldron, disguise, poison steep."
+        },
+        {
+          "id": "witch-veneficus-witch-major-hexes-1",
+          "name": "Major Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following major hexes complement the veneficus witch archetype: cook people, witch’s brew."
+        },
+        {
+          "id": "witch-veneficus-witch-grand-hex-1",
+          "name": "Grand Hex",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following grand hex complements the veneficus witch archetype: eternal slumber."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Veneficus%20Witch"
+  }
+}

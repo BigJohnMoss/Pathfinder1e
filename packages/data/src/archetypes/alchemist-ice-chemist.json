@@ -1,0 +1,49 @@
+{
+  "id": "alchemist-ice-chemist",
+  "name": "Ice Chemist",
+  "classId": "alchemist",
+  "summary": "Reclusive alchemists who dwell in the highest mountains or on the frozen tundra devote their skills to mastering the cold.",
+  "replacesText": "Bomb; Poison Resistance; Poison Immunity; 2nd-level Discovery",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-bomb-1",
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10",
+        "alchemist-discovery-2"
+      ],
+      "features": [
+        {
+          "id": "alchemist-ice-chemist-icy-bombs-su-1",
+          "name": "Icy Bombs (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An ice chemist’s bombs deal cold damage instead of fire damage. In place of an alchemist discovery, she can learn to create bombs that deal fire damage like normal alchemist bombs do, though she can’t apply discoveries that modify bombs to such fire bombs that she creates. An ice alchemist’s icy bombs can still be poisonous or create thick vapors similar to smoke, but she cannot apply the explosive or inferno bomb discoveries to them. This alters the bomb class feature."
+        },
+        {
+          "id": "alchemist-ice-chemist-cold-sweat-su-2",
+          "name": "Cold Sweat (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an ice chemist channels her affinity for cold energy into her personal space, keeping herself and her gear cool. She gains cold resistance equal to her alchemist level and can survive comfortably in temperatures as low as –50Âº Fahrenheit. This replaces poison resistance and poison immunity."
+        },
+        {
+          "id": "alchemist-ice-chemist-frost-bomb-su-2",
+          "name": "Frost Bomb (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an ice chemist gains the frost bomb discovery. This replaces the discovery that the alchemist normally gains at 2nd level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Ice%20Chemist"
+  }
+}

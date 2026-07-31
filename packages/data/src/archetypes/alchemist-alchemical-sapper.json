@@ -1,0 +1,87 @@
+{
+  "id": "alchemist-alchemical-sapper",
+  "name": "Alchemical Sapper",
+  "classId": "alchemist",
+  "summary": "Alchemical sappers are trained to create explosives.",
+  "replacesText": "Class Skills; Bomb; Mutagen; Poison Resistance; Swift Alchemy; 6th-level Discovery; Poison Immunity",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-bomb-1",
+        "alchemist-mutagen-1",
+        "alchemist-persistent-mutagen-14",
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10",
+        "alchemist-swift-alchemy-3",
+        "alchemist-discovery-6"
+      ],
+      "features": [
+        {
+          "id": "alchemist-alchemical-sapper-diminished-alchemy-1",
+          "name": "Diminished Alchemy",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An alchemical sapper can prepare one fewer extract of each level than normal. If this reduces the number to 0, he can prepare extracts of that level only if his Intelligence allows bonus extracts of that level."
+        },
+        {
+          "id": "alchemist-alchemical-sapper-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An alchemical sapper adds Knowledge (engineering) and Stealth to his list of class skills. This alters the alchemist’s class skills."
+        },
+        {
+          "id": "alchemist-alchemical-sapper-demolition-bomb-su-1",
+          "name": "Demolition Bomb (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an alchemical sapper can create a demolition bomb. This bomb deals double his normal bomb damage, half of which is bludgeoning and piercing damage, the other half of which is fire damage. This bomb ignores a number of points of hardness up to 1/2 the alchemical sapper’s level (minimum 1). This counts as an ability that modifies the alchemical sapper’s bomb, so it doesn’t stack with other discoveries that modify bombs. The alchemical sapper can’t use his demolition bomb with the fast bombs discovery. An alchemical sapper can only expend one use of his bomb class feature to create a demolition bomb once per day. He can create one additional demolition bomb per day at 5th level and every 4 alchemist levels thereafter. This ability modifies bomb."
+        },
+        {
+          "id": "alchemist-alchemical-sapper-delayed-bomb-su-1",
+          "name": "Delayed Bomb (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An alchemical sapper gains the delayed bomb discovery at 1st level. He does not qualify for the mutagen or cognatogen discoveries until 8th level. This ability replaces mutagen."
+        },
+        {
+          "id": "alchemist-alchemical-sapper-master-engineer-ex-2",
+          "name": "Master Engineer (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an alchemical sapper adds 1/2 his alchemist level to Knowledge (engineering) checks, Craft (stonemasonry) checks, and Craft (traps) checks. This ability replaces poison resistance."
+        },
+        {
+          "id": "alchemist-alchemical-sapper-camouflage-bomb-ex-3",
+          "name": "Camouflage Bomb (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, an alchemical sapper becomes skilled at hiding his bombs. When deploying a delayed bomb or trip mine (see below), the alchemical sapper can camouflage the bomb by taking an additional full-round action. Creatures searching for traps must succeed at a Perception check (DC = 10 + the alchemical sapper’s alchemist level + his Intelligence modifier) to notice a camouflaged bomb. This ability replaces swift alchemy."
+        },
+        {
+          "id": "alchemist-alchemical-sapper-trip-mine-su-6",
+          "name": "Trip Mine (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, an alchemical sapper can expend two uses of his bomb class feature to prepare a special kind of trap called a trip mine. This special bomb remains inert until 1 round after it leaves the alchemical sapper’s possession, after which time it becomes armed. When a creature enters a square containing an armed trip mine, it explodes, dealing normal bomb damage to all creatures in its square (DC = 10 + 1/2 the alchemical sapper’s alchemist level + his Intelligence modifier; Reflex half ) and splash damage to every creature adjacent to that square. A trip mine can be disarmed with a successful Disable Device check (with a DC equal to the trip mine’s save DC); otherwise, it lasts until the next time the alchemical sapper refreshes his daily bombs. If the alchemical sapper expends four uses of his bomb class feature, his trip mine deals damage as per a demolition bomb; this does not count against his daily uses of the demolition bomb ability. Other than demolition bomb, discoveries that modify bombs cannot apply to trip mine. This ability replaces the discovery gained at 6th level."
+        },
+        {
+          "id": "alchemist-alchemical-sapper-selective-detonation-su-10",
+          "name": "Selective Detonation (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, when an alchemical sapper plants a trip mine, he can designate a number of allies up to his Intelligence modifier, allowing the designated allies to pass safely through an armed trip mine’s square without causing it to detonate. If another creature triggers the trip mine while an ally is nearby, the ally still takes damage as normal. This ability replaces poison immunity."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Alchemical%20Sapper"
+  }
+}

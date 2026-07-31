@@ -1,0 +1,76 @@
+{
+  "id": "alchemist-psychonaut",
+  "name": "Psychonaut",
+  "classId": "alchemist",
+  "summary": "A psychonaut uses his knowledge to explore altered states of consciousness and even other planes of existence.",
+  "replacesText": "Bomb; Poison Resistance +4; Poison Resistance +6; Poison Immunity; 15th-level Bomb Damage Increase; 17th-level Bomb Damage Increase",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-bomb-1",
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10"
+      ],
+      "features": [
+        {
+          "id": "alchemist-psychonaut-bomb-1",
+          "name": "Bomb",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A psychonaut’s bombs deal damage one die step lower than normal (regular bombs deal d4s, concussive bombs deal 1d3s, and so on). This ability otherwise functions as and replaces the standard alchemist bomb class feature."
+        },
+        {
+          "id": "alchemist-psychonaut-precognition-5",
+          "name": "Precognition",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a psychonaut adds augury to his formula book as a 2nd-level extract (this extract does not require a divine focus component). This replaces poison resistance +4."
+        },
+        {
+          "id": "alchemist-psychonaut-psychic-senses-8",
+          "name": "Psychic Senses",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a psychonaut adds clairaudience/clairvoyance , detect scrying , scrying , and speak with dead to his formula book as 3rd-level extracts (a scrying extract does not require a focus or divine focus component). When a psychonaut uses a speak with dead extract, he gains the power to hear the lingering spirit within a corpse rather than enabling the corpse to audibly speak, but the extract otherwise works as the spell. This ability replaces poison resistance +6."
+        },
+        {
+          "id": "alchemist-psychonaut-remote-consciousness-10",
+          "name": "Remote Consciousness",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a psychonaut adds dream , lesser astral projection , nightmare , plane shift , sending , and telepathic bond to his formula book as 4th-level extracts (a plane shift extract does not require a focus component). This ability replaces poison immunity."
+        },
+        {
+          "id": "alchemist-psychonaut-greater-precognition-15",
+          "name": "Greater Precognition",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a psychonaut adds moment of prescience to his formula book as a 5th-level extract. This ability replaces the increase to bomb damage at this level."
+        },
+        {
+          "id": "alchemist-psychonaut-master-precognition-17",
+          "name": "Master Precognition",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a psychonaut adds foresight to his formula book as a 6th-level extract. This ability replaces the increase to bomb damage at this level."
+        },
+        {
+          "id": "alchemist-psychonaut-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the psychonaut archetype: confusion bomb, eternal potion, extend potion, lingering spirit, and madness bomb."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Psychonaut"
+  }
+}

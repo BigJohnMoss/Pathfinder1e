@@ -76,8 +76,8 @@ Native store packages for Microsoft Store or Google Play are optional later work
 - traits — complete: all 40 sourced APG basic traits, trait-specific class-skill
   and spell choices, conditional spell modifiers, selection rules, mechanical
   bonuses, persistence, and browser coverage delivered
-- archetypes and class paths — catalogue complete for all 624 published entries across
-  the 13 supported classes: 623 selectors plus Totem Warrior's rage-power representation,
+- archetypes and class paths — catalogue complete for all 826 published entries across
+  the 18 supported classes: 825 selectors plus Totem Warrior's rage-power representation,
   with sourced rules text, reusable replacement progressions, persistence, and
   nested domain/school-power filtering. The selector is searchable, compatible
   archetypes can stack, conflicting replacements and ancestry restrictions are
@@ -157,6 +157,42 @@ Native store packages for Microsoft Store or Google Play are optional later work
   each spell detail view matching the feat catalogue experience; keep the large
   descriptions out of the initial client bundle where practical and add data,
   UI, mobile-layout, and source-link regression coverage
+
+## Active milestone: Advanced Player's Guide Classes
+
+Add the five remaining Advanced Player's Guide base classes—Alchemist,
+Cavalier, Inquisitor, Summoner, and Witch—while preserving the completed Oracle
+implementation and every existing Core, multiclass, prestige-class, archetype,
+equipment, feat, spell, and installable-application workflow.
+
+### Delivery phases
+
+1. Shared foundations: reusable class resources, formula and familiar spellbooks,
+   selectable class progressions, linked companions, and multiclass persistence.
+2. Alchemist: complete level 1–20 chassis, extracts and formula book, bombs,
+   mutagen, poison features, discoveries, and daily resources.
+3. Cavalier: complete level 1–20 chassis, challenge, mount, orders, tactician,
+   teamwork feats, banner, and greater banner.
+4. Inquisitor: complete level 1–20 chassis and spellcasting, domain or
+   inquisition selection, judgments, bane, teamwork feats, and Solo Tactics.
+5. Witch: complete level 1–20 chassis, familiar spellbook, patrons and patron
+   spells, hexes, major hexes, and grand hexes.
+6. Summoner: complete level 1–20 chassis and spellcasting, summon-monster
+   resources, and a scalable eidolon builder with base forms and evolutions.
+7. Content completion: published archetypes, ancestry-specific favoured-class
+   rewards, related feats, spells, equipment, complete rules text, and source
+   links for all five classes.
+
+### Completion criteria
+
+- [x] all five classes are selectable and mechanically playable through level 20
+- [x] defining class resources and dependent choices enforce their published limits
+- [x] starting-class, multiclass, level-up, save/load, export, and recovery paths work
+- [x] companion, familiar, eidolon, extract, prepared, and spontaneous spell data persist
+- [x] class archetypes expose sourced replacement progressions and coverage status
+- [x] mobile layouts remain readable and keyboard/touch accessible
+- [x] representative level-20 data, engine, UI, and browser journeys pass for every class
+- [x] production build, installability, offline behavior, and deployment validation pass
 
 ## Working rule
 
