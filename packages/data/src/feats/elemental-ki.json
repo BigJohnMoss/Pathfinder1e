@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Brawler’s flurry or flurry of blows class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "brawlers-flurry"
+        },
+        {
+          "type": "feature",
+          "id": "flurry-of-blows"
+        }
+      ]
     },
     {
       "type": "feature",

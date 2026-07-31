@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Grit class feature or Amateur Gunslinger UC feat"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "grit"
+        },
+        {
+          "type": "feat",
+          "id": "amateur-gunslinger"
+        }
+      ]
     },
     {
       "type": "rule",

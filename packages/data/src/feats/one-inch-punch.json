@@ -12,8 +12,17 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "brawler’s flurry class feature or flurry of blows class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "brawlers-flurry"
+        },
+        {
+          "type": "feature",
+          "id": "flurry-of-blows"
+        }
+      ]
     }
   ],
   "benefit": "Forgo multiple attacks to make a single attack that deals increased damage and bull rushes",

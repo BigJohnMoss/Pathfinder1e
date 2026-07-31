@@ -9,8 +9,17 @@
       "minimum": 3
     },
     {
-      "type": "rule",
-      "description": "grit class feature or Amateur Gunslinger"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "grit"
+        },
+        {
+          "type": "feat",
+          "id": "amateur-gunslinger"
+        }
+      ]
     },
     {
       "type": "rule",
