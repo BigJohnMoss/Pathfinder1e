@@ -1,0 +1,22 @@
+{
+ "id":"medium","name":"Medium","classType":"base","hitDie":8,"babProgression":"three-quarters","saves":{"fortitude":"poor","reflex":"poor","will":"good"},"skillRanksPerLevel":4,
+ "classSkills":["Bluff","Craft","Diplomacy","Fly","Handle Animal","Heal","Intimidate","Knowledge","Linguistics","Perception","Perform","Profession","Sense Motive","Spellcraft","Use Magic Device"],
+ "spellcasting":{"ability":"charisma","tradition":"psychic","castingType":"spontaneous","spellLevelUnlocks":[1,4,7,10],"slotsByLevel":[[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,0,0,0],[3,1,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0],[4,3,1,0,0,0,0,0,0],[4,4,2,0,0,0,0,0,0],[5,4,3,0,0,0,0,0,0],[5,4,3,1,0,0,0,0,0],[5,4,4,2,0,0,0,0,0],[5,5,4,3,0,0,0,0,0],[5,5,4,3,0,0,0,0,0],[5,5,4,4,0,0,0,0,0],[5,5,5,4,0,0,0,0,0],[5,5,5,4,0,0,0,0,0],[5,5,5,5,0,0,0,0,0],[5,5,5,5,0,0,0,0,0],[5,5,5,5,0,0,0,0,0],[5,5,5,5,0,0,0,0,0]],"knownByLevel":[[4,2,0,0,0,0,0,0,0,0],[5,3,0,0,0,0,0,0,0,0],[6,4,0,0,0,0,0,0,0,0],[6,4,2,0,0,0,0,0,0,0],[6,4,3,0,0,0,0,0,0,0],[6,4,4,0,0,0,0,0,0,0],[6,5,4,2,0,0,0,0,0,0],[6,5,4,3,0,0,0,0,0,0],[6,5,4,4,0,0,0,0,0,0],[6,5,5,4,2,0,0,0,0,0],[6,6,5,4,3,0,0,0,0,0],[6,6,5,4,4,0,0,0,0,0],[6,6,5,5,4,0,0,0,0,0],[6,6,6,5,4,0,0,0,0,0],[6,6,6,5,4,0,0,0,0,0],[6,6,6,5,5,0,0,0,0,0],[6,6,6,6,5,0,0,0,0,0],[6,6,6,6,5,0,0,0,0,0],[6,6,6,6,6,0,0,0,0,0],[6,6,6,6,6,0,0,0,0,0]]},
+ "source":{"title":"Occult Adventures","page":30,"url":"https://legacy.aonprd.com/occultAdventures/classes/medium.html"},
+ "features":[
+  {"id":"medium-spirit-1","name":"Spirit","level":1,"type":"selectable","summary":"Channel one legendary spirit each day, gaining its spirit bonus, séance boon, powers, and spell access.","choiceRequired":true,"optionGroupId":"medium-spirits","progressionKey":"medium-spirit"},
+  {"id":"medium-spirit-bonus-1","name":"Spirit Bonus","level":1,"type":"scaling","summary":"Gain the channeled legend's bonus on its associated checks, increasing every 4 levels."},
+  {"id":"medium-spirit-surge-1","name":"Spirit Surge","level":1,"type":"resource","summary":"Allow the spirit 1 influence to add 1d6 to a failed associated d20 roll; the die improves with level.","uses":"adds 1 influence per use","progressionKey":"medium-influence"},
+  {"id":"medium-shared-seance-1","name":"Shared Séance","level":1,"type":"core","summary":"Grant the spirit's séance boon to participating allies."},
+  {"id":"medium-taboo-2","name":"Taboo","level":2,"type":"selectable","summary":"Accept a spirit taboo to gain two additional spirit-surge uses before increasing influence.","choiceRequired":true,"optionGroupId":"medium-taboos"},
+  {"id":"medium-haunt-channeler-3","name":"Haunt Channeler","level":3,"type":"scaling","summary":"Channel a haunt into yourself, gaining information and making the haunt easier to destroy."},
+  {"id":"medium-location-channel-5","name":"Location Channel","level":5,"type":"core","summary":"Contact a legendary spirit without a suitable séance location by accepting additional influence."},
+  {"id":"medium-connection-channel-7","name":"Connection Channel","level":7,"type":"core","summary":"Use a personal connection to channel a specific spirit associated with a legend."},
+  {"id":"medium-propitiation-9","name":"Propitiation","level":9,"type":"resource","summary":"Perform a costly ritual to reduce spirit influence by 1 once per day.","uses":"1 use per day"},
+  {"id":"medium-astral-journey-13","name":"Astral Journey","level":13,"type":"resource","summary":"Travel to the Astral Plane using a séance ritual.","uses":"1 use per day"},
+  {"id":"medium-trance-three-17","name":"Trance of Three","level":17,"type":"core","summary":"Temporarily access a lesser power from a second legendary spirit."},
+  {"id":"medium-spacious-soul-18","name":"Spacious Soul","level":18,"type":"scaling","summary":"Accept more influence before losing control and gain improved protection against possession."},
+  {"id":"medium-spirit-mastery-19","name":"Spirit Mastery","level":19,"type":"core","summary":"Use spirit surge without increasing influence once each round."},
+  {"id":"medium-astral-beacon-20","name":"Astral Beacon","level":20,"type":"capstone","summary":"Channel spirits without a séance and share multiple spirit benefits with allies."}
+ ]
+}

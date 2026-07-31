@@ -1918,6 +1918,7 @@ export default function Home() {
     blessingUses: ["Blessings", "use"],
     fervor: ["Fervor", "use"],
     burn: ["Burn accepted", "point"],
+    influence: ["Spirit Influence", "point"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>

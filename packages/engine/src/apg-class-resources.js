@@ -54,6 +54,8 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
       };
     case "kineticist":
       return { burn: Math.max(1, 3 + nonNegativeModifier(abilityModifiers.constitution)) };
+    case "medium":
+      return { influence: 5 };
     default:
       return {};
   }
