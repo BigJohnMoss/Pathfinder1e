@@ -275,6 +275,9 @@ test("builds, calculates, and restores a multiclass character", async () => {
   assert.equal(screen.queryByLabelText("Spellcasting class"), null);
   await user.selectOptions(screen.getByLabelText("Spell level filter"), "1");
   await user.type(screen.getByLabelText("Search spells"), "mage armor");
+  const fullRules = await screen.findByText("View full rules", {}, { timeout: 10_000 });
+  await user.click(fullRules);
+  assert.ok(screen.getByRole("link", { name: /Rules source/ }).getAttribute("href")?.includes("SpellDisplay"));
   await user.click(screen.getByRole("button", { name: "Add Mage Armor" }));
   assert.equal(screen.getByLabelText("Mage Armor prepared").textContent, "1");
 

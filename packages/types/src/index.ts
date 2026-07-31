@@ -300,14 +300,24 @@ export interface CharacterOptionGroup {
 }
 
 export interface CharacterSpell {
-  id: string;
-  name: string;
-  school?: string;
-  schools?: string[];
-  levelByClass: Record<string, number>;
-  summary: string;
-  source?: SourceRef;
-}
+    id: string;
+    name: string;
+    school?: string;
+    schools?: string[];
+    levelByClass: Record<string, number>;
+    summary: string;
+    description?: string;
+    components?: string[];
+    castingTime?: string;
+    range?: string;
+    target?: string;
+    area?: string;
+    effect?: string;
+    duration?: string;
+    savingThrow?: string;
+    spellResistance?: string;
+    source?: SourceRef;
+  }
 
 export interface GeneratedDataBundle {
   generatedAt: string;

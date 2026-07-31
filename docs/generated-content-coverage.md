@@ -25,6 +25,14 @@ This report is generated from the application's source data by `npm run coverage
 
 Manual-review rules remain visibly locked in the builder. They are not silently treated as satisfied.
 
+## Spell details
+
+| Coverage | Count |
+|---|---:|
+| Full rules descriptions | 2069 |
+| Rules source links | 2069 |
+| Core casting statistics | 2069 |
+
 ## Class progression
 
 | Class | Features | Highest feature level | Archetypes |
