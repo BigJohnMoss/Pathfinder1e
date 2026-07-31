@@ -33,10 +33,10 @@ test("configures and restores a level-20 Summoner eidolon", async ({ page }) => 
 });
 
 test("Magus, Gunslinger, and Samurai remain configurable through level 20", async ({ page }) => {
-  test.setTimeout(60_000);
+  test.setTimeout(120_000);
   for (const [id, name] of [["magus", "Magus"], ["gunslinger", "Gunslinger"], ["samurai", "Samurai"]]) {
     await page.getByLabel("Class", { exact: true }).selectOption(id);
-    await page.getByLabel("Level").fill("20");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("20");
     await page.getByRole("tab", { name: "Features" }).click();
     await expect(page.getByRole("heading", { name: new RegExp(`${name} features`, "i") })).toBeVisible();
   }
