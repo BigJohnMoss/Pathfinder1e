@@ -1845,6 +1845,7 @@ export default function Home() {
     };
     add("eidolon", "eidolon", eidolonBaseFormId, "Eidolon", summonerClassLevel, { bonusHitPoints: reward("gnome-summoner-eidolon-hp"), bonusSkillRanks: reward("halfling-summoner-eidolon-skill") });
     add("witch-familiar", "familiar", selectedValue("witch-familiar-"), "Witch familiar", classLevelMap.witch ?? 0, { bonusSkillRanks: reward("half-orc-witch-familiar") });
+    add("shaman-spirit-animal", "familiar", selectedValue("shaman-spirit-animal-"), "Spirit animal", classLevelMap.shaman ?? 0);
     if (selectedValue("wizard-arcane-bond-") === "wizard-arcane-bond-familiar")
       add("wizard-familiar", "familiar", selectedValue("wizard-familiar-"), "Wizard familiar", classLevelMap.wizard ?? 0);
     if (selectedValue("druid-nature-bond-") === "druid-nature-bond-animal")

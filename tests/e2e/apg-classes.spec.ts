@@ -41,3 +41,17 @@ test("Magus, Gunslinger, and Samurai remain configurable through level 20", asyn
     await expect(page.getByRole("heading", { name: new RegExp(`${name} features`, "i") })).toBeVisible();
   }
 });
+
+test("Advanced Class Guide hybrid classes remain configurable through level 20", async ({ page }) => {
+  test.setTimeout(120_000);
+  for (const [id, name] of [
+    ["bloodrager", "Bloodrager"], ["brawler", "Brawler"], ["hunter", "Hunter"],
+    ["investigator", "Investigator"], ["shaman", "Shaman"], ["skald", "Skald"],
+    ["slayer", "Slayer"], ["swashbuckler", "Swashbuckler"], ["warpriest", "Warpriest"],
+  ]) {
+    await page.getByLabel("Class", { exact: true }).selectOption(id);
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("20");
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByRole("heading", { name: new RegExp(`${name} features`, "i") })).toBeVisible();
+  }
+});

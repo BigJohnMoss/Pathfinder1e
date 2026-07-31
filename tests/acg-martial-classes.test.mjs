@@ -68,3 +68,12 @@ test("Warpriest integrates prepared divine casting, two blessings, fervor, and A
   assert.deepEqual(apgClassResourceMaximums("warpriest", 1, { wisdom: 4 }), { blessingUses: 3 });
   assert.deepEqual(apgClassResourceMaximums("warpriest", 20, { wisdom: 4 }), { blessingUses: 13, fervor: 14 });
 });
+
+test("Shaman completes the ACG batch with spirits, spirit animal, hexes, and manifestation", async () => {
+  const entry = await load("shaman");
+  assert.equal(entry.spellcasting.castingType, "prepared");
+  assert.deepEqual(entry.spellcasting.spellLevelUnlocks, [1, 3, 5, 7, 9, 11, 13, 15, 17]);
+  assert.ok(entry.features.some(feature => feature.optionGroupId === "shaman-spirit-animals"));
+  assert.equal(entry.features.filter(feature => feature.optionGroupId === "shaman-hexes").length, 10);
+  assert.ok(entry.features.some(feature => feature.id === "shaman-manifestation-20"));
+});

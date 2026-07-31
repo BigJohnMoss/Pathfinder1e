@@ -6,10 +6,10 @@ This report is generated from the application's source data by `npm run coverage
 
 | Area | Records |
 |---|---:|
-| Classes | 31 |
+| Classes | 40 |
 | Archetypes | 825 |
 | Ancestries | 7 |
-| Option groups | 62 |
+| Option groups | 75 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2073 |
@@ -44,6 +44,8 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Assassin | 20 | 10 | 0 |
 | Barbarian | 24 | 20 | 41 |
 | Bard | 39 | 20 | 73 |
+| Bloodrager | 18 | 20 | 0 |
+| Brawler | 17 | 20 | 0 |
 | Cavalier | 18 | 20 | 37 |
 | Cleric | 19 | 17 | 35 |
 | Dragon Disciple | 25 | 10 | 0 |
@@ -52,7 +54,9 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Eldritch Knight | 14 | 10 | 0 |
 | Fighter | 26 | 20 | 67 |
 | Gunslinger | 18 | 20 | 0 |
+| Hunter | 22 | 20 | 0 |
 | Inquisitor | 25 | 20 | 38 |
+| Investigator | 22 | 20 | 0 |
 | Loremaster | 20 | 10 | 0 |
 | Magus | 23 | 20 | 0 |
 | Monk | 31 | 20 | 56 |
@@ -64,7 +68,12 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Rogue | 31 | 20 | 78 |
 | Samurai | 16 | 20 | 0 |
 | Shadowdancer | 20 | 10 | 0 |
+| Shaman | 17 | 20 | 0 |
+| Skald | 21 | 20 | 0 |
+| Slayer | 18 | 20 | 0 |
 | Sorcerer | 22 | 20 | 13 |
 | Summoner | 14 | 20 | 22 |
+| Swashbuckler | 15 | 20 | 0 |
+| Warpriest | 18 | 20 | 0 |
 | Witch | 14 | 20 | 42 |
 | Wizard | 23 | 20 | 35 |
