@@ -12,8 +12,17 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "ki pool or martial flexibility class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "ki-pool"
+        },
+        {
+          "type": "feature",
+          "id": "martial-flexibility"
+        }
+      ]
     }
   ],
   "benefit": "You can use a limited form of the swashbuckler's targeted strike deed",

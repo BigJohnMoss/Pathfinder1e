@@ -4,8 +4,18 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Acrobatics 5 ranks or slow fall class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "skill",
+          "key": "Acrobatics",
+          "minimum": 5
+        },
+        {
+          "type": "feature",
+          "id": "slow-fall"
+        }
+      ]
     }
   ],
   "benefit": "Gain or improve the slow fall ability",

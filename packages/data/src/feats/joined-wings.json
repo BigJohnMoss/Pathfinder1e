@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Fervor or lay on hands class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "fervor"
+        },
+        {
+          "type": "feature",
+          "id": "lay-on-hands"
+        }
+      ]
     }
   ],
   "benefit": "Use fervor or lay on hands on allies as a swift action",

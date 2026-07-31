@@ -4,8 +4,17 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Lay on hands or touch of corruption class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "lay-on-hands"
+        },
+        {
+          "type": "feature",
+          "id": "touch-of-corruption"
+        }
+      ]
     },
     {
       "type": "feat",

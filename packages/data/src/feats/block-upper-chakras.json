@@ -25,8 +25,8 @@
       ]
     },
     {
-      "type": "rule",
-      "description": "ki pool"
+      "type": "feature",
+      "id": "ki-pool"
     },
     {
       "type": "level",

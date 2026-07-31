@@ -17,8 +17,17 @@
       ]
     },
     {
-      "type": "rule",
-      "description": "familiar or spirit animal class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "familiar"
+        },
+        {
+          "type": "feature",
+          "id": "spirit-animal"
+        }
+      ]
     },
     {
       "type": "class-level",
