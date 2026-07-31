@@ -1,0 +1,106 @@
+{
+  "id": "cavalier-spellscar-drifter",
+  "name": "Spellscar Drifter",
+  "classId": "cavalier",
+  "summary": "Spellscar drifters are self-reliant and always keep their firearms loaded—in the Spellscar Desert, a rider with a slow draw doesn’t live long.",
+  "replacesText": "Weapon/Armor Proficiency; Tactician; Cavalier’s Charge; Banner Cavalier; Bonus Feats; Greater Tactician; Mighty Charge; Demanding Challenge; Master Tactician; Supreme Charge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-tactician-1",
+        "cavalier-greater-tactician-9",
+        "cavalier-master-tactician-17",
+        "cavalier-charge-3",
+        "cavalier-banner-5",
+        "cavalier-bonus-feat-6",
+        "cavalier-bonus-feat-12",
+        "cavalier-bonus-feat-18",
+        "cavalier-mighty-charge-11",
+        "cavalier-challenge-1",
+        "cavalier-demanding-challenge-12",
+        "cavalier-supreme-charge-20"
+      ],
+      "features": [
+        {
+          "id": "cavalier-spellscar-drifter-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Spellscar drifters are proficient with all simple and martial weapons, the whip, and with all firearms. They are proficient with all light armor. This replaces the cavalier’s normal weapon and armor proficiencies."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-have-gun-1",
+          "name": "Have Gun",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the Spellscar drifter gains Amateur Gunslinger and Gunsmithing as bonus feats. The Spellscar drifter uses his Charisma modifier (minimum 1) in place of his Wisdom modifier when determining his maximum grit points and for any other abilities which use grit. Additionally, he also gains a battered gun identical to the one gained by the gunslinger. This ability replaces tactician."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-daring-deeds-ex-3",
+          "name": "Daring Deeds (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a Spellscar drifter gains Rapid Reload as a bonus feat. The Spellscar drifter must choose a firearm to associate with this feat. Additionally, the Spellscar drifter can select one additional 1st-level gunslinger deed which he can use with his Amateur Gunslinger feat. This ability replaces cavalier’s charge."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-worn-banner-ex-5",
+          "name": "Worn Banner (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a Spellscar drifter can choose to use his hat as his banner. If the drifter does not wear a hat, another iconic accessory—such as an eyemask, bandana, or distinguishing coat—can instead serve as his banner. In all other ways, this ability functions as and replaces the banner cavalier ability."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-bonus-feats-6",
+          "name": "Bonus Feats",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, and at every 6 levels thereafter, a Spellscar drifter gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be either combat or grit feats , and the Spellscar drifter must meet the prerequisites as normal. This replaces the cavalier’s normal bonus feats."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-notorious-deeds-ex-9",
+          "name": "Notorious Deeds (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a Spellscar drifter can select two additional gunslinger deeds which he can use with his Amateur Gunslinger feat. The Spellscar drifter can choose one deed from the list of deeds available to 3rd-level gunslingers and one from the list available to 7th-level gunslingers. This ability replaces greater tactician."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-old-reliable-ex-11",
+          "name": "Old Reliable (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, whenever a Spellscar drifter declares a challenge, the threat range of the Spellscar drifter’s firearm is doubled against the target of his challenge. This increase only affects one weapon and does not stack with other effects that increase the threat range of the weapon. In addition, if the Spellscar drifter rolls a misfire during his challenge, the Spellscar drifter can spend 1 grit point to reroll the attack roll. The Spellscar drifter must accept the results of the second roll, even if it is worse. This ability replaces mighty charge."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-spell-severed-ex-12",
+          "name": "Spell Severed (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a Spellscar drifter becomes permanently marked by long exposure to the Spellscar Desert. The Spellscar drifter gains spell resistance equal to 10 + his character level. The Spellscar drifter can drop this spell resistance for 1 round as a standard action, or he can spend 1 grit point to drop it as a swift action. This ability replaces demanding challenge."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-infamous-deeds-ex-17",
+          "name": "Infamous Deeds (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a Spellscar drifter can select two additional gunslinger deeds which he can use with his Amateur Gunslinger feat. The Spellscar drifter can choose one deed from the list of deeds available to 7th-level gunslingers and one from the list available to 11th-level gunslingers. This ability replaces master tactician."
+        },
+        {
+          "id": "cavalier-spellscar-drifter-tough-as-nails-ex-20",
+          "name": "Tough as Nails (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a Spellscar drifter is able to select three additional deeds for use with his Amateur Gunslinger feat—two from the list of deeds available to 15th-level gunslingers, and one from the list available to 19th-level gunslingers. In addition, if the Spellscar drifter confirms a critical hit on an attack made with a firearm, the target is stunned for 1d4 rounds. A successful Will saving throw (DC = 10 + the Spellscar drifter’s base attack bonus) reduces this effect to staggered instead of stunned. This ability replaces supreme charge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Spellscar%20Drifter"
+  }
+}

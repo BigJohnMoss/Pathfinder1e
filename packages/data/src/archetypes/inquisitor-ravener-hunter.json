@@ -1,0 +1,63 @@
+{
+  "id": "inquisitor-ravener-hunter",
+  "name": "Ravener Hunter",
+  "classId": "inquisitor",
+  "summary": "For generations, the catfolk of Murraseth have viewed the cults of Angazhan with loathing and hatred, and they believe it is their sacred duty to hunt down the followers of the Ravener King and expel them from the Material Plane",
+  "replacesText": "Alignment; Domain; Spells; 3rd-level Teamwork Feat",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-detect-alignment-2",
+        "inquisitor-domain-1",
+        "inquisitor-spellcasting-1",
+        "inquisitor-teamwork-3"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-ravener-hunter-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Any nonevil."
+        },
+        {
+          "id": "inquisitor-ravener-hunter-charged-by-nature-1",
+          "name": "Charged by Nature",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Rather than having a deity patron, a ravener hunter is charged by the spirits of the Mwangi to eradicate evil wherever it appears. At 1st level, a ravener hunter chooses an oracle mystery from the following list: ancestor UM , battle APG , flame APG , heavens APG , life APG , lunar ( Pathfinder Player Companion: Blood of the Moon 28 ), nature APG , solar ( Pathfinder Player Companion: Harrow Handbook 26 ), stone APG , time UM , volcano ( Pathfinder Adventure Path #95: Anvil of Fire 72 ), waves APG , wind APG , or wood UM . She gains one revelation from her chosen mystery. She must meet the revelation’s prerequisites, using her inquisitor level as her effective oracle level to determine the revelation’s effects, and she never qualifies for the Extra Revelation APG feat. The ravener hunter gains a second revelation from her chosen mystery at 8th level. This ability replaces domain."
+        },
+        {
+          "id": "inquisitor-ravener-hunter-holy-magic-1",
+          "name": "Holy Magic",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A ravener hunter adds all spells of 6th-level and lower on the cleric spell list with the good descriptor to her inquisitor spell list as inquisitor spells of the same level. If a spell appears on both the cleric and inquisitor spell lists, the ravener hunter uses the lower of the two spell levels listed for the spell. She cannot cast 2 with the chaotic, evil, or lawful descriptors, even from spell trigger or spell completion items. This ability alters the inquisitor’s spells."
+        },
+        {
+          "id": "inquisitor-ravener-hunter-demon-hunter-3",
+          "name": "Demon Hunter",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a ravener hunter gains Demon Hunter ( Pathfinder Campaign Setting: The Inner Sea World Guide 286 ) as a bonus feat, ignoring its prerequisites. She also gains a +2 bonus on Knowledge (religion) checks to recognize the worshipers of any deity with the Demon APG subdomain, as well as a +2 morale bonus on attack rolls and caster level checks to overcome spell resistance of creatures that she recognizes as followers of such a deity. This ability replaces the teamwork feat gained at 3rd level."
+        },
+        {
+          "id": "inquisitor-ravener-hunter-solo-tactics-ex-6",
+          "name": "Solo Tactics (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "A ravener hunter gains this ability at 6th level instead of 3rd level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Ravener%20Hunter"
+  }
+}

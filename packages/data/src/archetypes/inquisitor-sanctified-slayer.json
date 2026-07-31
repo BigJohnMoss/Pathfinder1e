@@ -1,0 +1,50 @@
+{
+  "id": "inquisitor-sanctified-slayer",
+  "name": "Sanctified Slayer",
+  "classId": "inquisitor",
+  "summary": "While all inquisitors root out enemies of the faith, in many orders and churches there’s a select group of these religious hunters devoted to one goal, and one goal alone—to terminate the enemies of the faith wherever they can be found.",
+  "replacesText": "Judgment; Second Judgment; Third Judgment; Slayer; True Judgment",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-judgment-1",
+        "inquisitor-second-judgment-8",
+        "inquisitor-third-judgment-16",
+        "inquisitor-true-judgment-20",
+        "inquisitor-slayer-17"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-sanctified-slayer-studied-target-ex-1",
+          "name": "Studied Target (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a sanctified slayer gains the slayer’s studied target class feature. She uses her inquisitor level as her effective slayer level to determine the effects of studied target. This ability replaces judgment 1/day."
+        },
+        {
+          "id": "inquisitor-sanctified-slayer-sneak-attack-ex-4",
+          "name": "Sneak Attack (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, if a sanctified slayer catches an opponent unable to defend itself effectively from her attack, she can strike a vital spot to deal extra damage. The sanctified slayer’s attack deals additional damage anytime her target would be denied a Dexterity bonus to AC (whether or not the target actually has a Dexterity bonus), or when the sanctified slayer flanks her target. This additional damage is 1d6 at 4th level, and increases by 1d6 every 3 levels thereafter. Should a sanctified slayer score a critical hit with the sneak attack, this extra damage is not multiplied. Ranged attacks can count as sneak attacks only if the target is within 30 feet. With a weapon that deals nonlethal damage (such as a sap, whip, or an unarmed strike), a sanctified slayer can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, even with the usual –4 penalty. A sanctified slayer must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A sanctified slayer cannot use sneak attack while striking a creature with concealment. This ability replaces the later iterations of the judgment ability."
+        },
+        {
+          "id": "inquisitor-sanctified-slayer-talented-slayer-ex-1",
+          "name": "Talented Slayer (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 8th, 16th, 17th, and 20th levels, a sanctified slayer can gain a single slayer talent, including those from the list of rogue talents that a slayer can take, but not an advanced slayer talent. This ability replaces second judgment, third judgment, slayer, and true judgment."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Sanctified%20Slayer"
+  }
+}

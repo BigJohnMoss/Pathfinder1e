@@ -1,0 +1,74 @@
+{
+  "id": "witch-hagbound",
+  "name": "Hagbound",
+  "classId": "witch",
+  "summary": "Whether a changeling in the process of succumbing to her mother’s call, a witch cursed by a hag to become her instrument of torment, a vain and petty witch overeager for power, or some other unfortunate soul, a hagbound witch finds its soul has been infected by a hag’s spite and powerful, corrupt arcane magic.",
+  "replacesText": "1st, 2nd, 4th, 8th, 10th, 12th, 14th, and 20th--level Hexes",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-hex-1",
+        "witch-hex-2",
+        "witch-hex-4",
+        "witch-hex-8",
+        "witch-major-hex-10",
+        "witch-major-hex-12",
+        "witch-major-hex-14",
+        "witch-grand-hex-20"
+      ],
+      "features": [
+        {
+          "id": "witch-hagbound-hagbound-1",
+          "name": "Hagbound",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A hagbound can take this archetype only if her first character level is a witch level, and she must select one of the following patrons: Deception, Jynx, Moon, Occult, Plague, Shadow, Strength, Vengeance, or Winter. She can escape her inevitable fate only by removing the hag’s hold on her soul, typically with miracle or an effect of similar power. Until then, she can’t take levels in any class other than witch and her alignment can never become good. Removing the hag’s hold causes her to lose this archetype and become a normal witch."
+        },
+        {
+          "id": "witch-hagbound-hag-s-claws-ex-1",
+          "name": "Hag’s Claws (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A hagbound’s hands grow into a pair of hideous claws that deal 1d4 points of damage for a Medium hagbound (1d3 for a Small creature). This replaces the hex gained at 1st level."
+        },
+        {
+          "id": "witch-hagbound-hunched-muscle-ex-2",
+          "name": "Hunched Muscle (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, warty growths and knobby muscles twist the hagbound’s body. She gains a +2 size bonus to her Strength score. This bonus increases by 2 at 8th level and 14th level, to a maximum of +6. This replaces the hexes gained at 2nd, 8th, and 14th levels."
+        },
+        {
+          "id": "witch-hagbound-vain-glamour-sp-4",
+          "name": "Vain Glamour (Sp)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the hagbound gains the ability to disguise her hideous form behind various pleasing shapes. This allows her to magically disguise herself at will, as per disguise self . At 12th level, she can transform herself at will rather than spin illusions, as per alter self . This replaces the hexes gained at 4th and 12th levels."
+        },
+        {
+          "id": "witch-hagbound-vile-curse-sp-10",
+          "name": "Vile Curse (Sp)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, the hagbound becomes exceptionally skilled at cursing others. She can cast bestow curse at will, but its duration becomes 24 hours. Once a creature has been affected by this ability, it is immune to the witch’s vile curse ability for 24 hours. If the witch learns some secret fear or vulnerability of her target and tailors the curse to exploit this, her target takes a –2 penalty on its Will saving throw against the effect. This replaces the hex gained at 10th level."
+        },
+        {
+          "id": "witch-hagbound-hag-transformation-20",
+          "name": "Hag Transformation",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, the hagbound transforms into a true hag, purging all goodness and light from her in exchange for dark power. Her alignment becomes evil if it isn’t already. Her type changes to monstrous humanoid, and she gains darkvision 60 feet; immunity to charm, fear, and spell effects; and the ability to join a coven. She gains spell resistance 31, and she grants this benefit to her other coven members. This replaces the hex gained at 20th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Hagbound"
+  }
+}

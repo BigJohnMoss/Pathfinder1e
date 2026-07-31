@@ -6,13 +6,13 @@ This report is generated from the application's source data by `npm run coverage
 
 | Area | Records |
 |---|---:|
-| Classes | 23 |
-| Archetypes | 623 |
+| Classes | 28 |
+| Archetypes | 825 |
 | Ancestries | 7 |
-| Option groups | 43 |
+| Option groups | 56 |
 | Feats | 3447 |
 | Traits | 40 |
-| Spells | 2069 |
+| Spells | 2073 |
 | Equipment | 80 |
 
 ## Feat prerequisites
@@ -29,26 +29,29 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Coverage | Count |
 |---|---:|
-| Full rules descriptions | 2069 |
-| Rules source links | 2069 |
-| Core casting statistics | 2069 |
+| Full rules descriptions | 2073 |
+| Rules source links | 2073 |
+| Core casting statistics | 2073 |
 
 ## Class progression
 
 | Class | Features | Highest feature level | Archetypes |
 |---|---:|---:|---:|
+| Alchemist | 21 | 20 | 63 |
 | Arcane Archer | 17 | 10 | 0 |
 | Arcane Trickster | 21 | 10 | 0 |
 | Arcanist | 14 | 20 | 15 |
 | Assassin | 20 | 10 | 0 |
 | Barbarian | 24 | 20 | 41 |
 | Bard | 39 | 20 | 73 |
+| Cavalier | 18 | 20 | 37 |
 | Cleric | 19 | 17 | 35 |
 | Dragon Disciple | 25 | 10 | 0 |
 | Druid | 32 | 20 | 75 |
 | Duelist | 14 | 10 | 0 |
 | Eldritch Knight | 14 | 10 | 0 |
 | Fighter | 26 | 20 | 67 |
+| Inquisitor | 25 | 20 | 38 |
 | Loremaster | 20 | 10 | 0 |
 | Monk | 31 | 20 | 56 |
 | Mystic Theurge | 16 | 10 | 0 |
@@ -59,4 +62,6 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Rogue | 31 | 20 | 78 |
 | Shadowdancer | 20 | 10 | 0 |
 | Sorcerer | 22 | 20 | 13 |
+| Summoner | 14 | 20 | 22 |
+| Witch | 14 | 20 | 42 |
 | Wizard | 23 | 20 | 35 |

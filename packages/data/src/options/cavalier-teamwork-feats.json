@@ -1,0 +1,10 @@
+{"id":"cavalier-teamwork-feats","name":"Cavalier Teamwork Feats","classIds":["cavalier"],"optionDefaults":{"groupId":"cavalier-teamwork-feats","classIds":["cavalier"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Advanced Player's Guide","page":34,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/cavalier.html#tactician"}},"options":[
+ {"id":"cavalier-allied-spellcaster","name":"Allied Spellcaster","featId":"allied-spellcaster","benefit":"Improve allied concentration and spell-resistance checks."},
+ {"id":"cavalier-back-to-back","name":"Back to Back","featId":"back-to-back","benefit":"Improve AC against flanking attacks while adjacent to an ally."},
+ {"id":"cavalier-lookout","name":"Lookout","featId":"lookout","benefit":"Act in surprise rounds alongside an adjacent ally."},
+ {"id":"cavalier-outflank","name":"Outflank","featId":"outflank","minimumLevel":4,"benefit":"Gain stronger flanking bonuses and trigger allied attacks on critical hits."},
+ {"id":"cavalier-paired-opportunists","name":"Paired Opportunists","featId":"paired-opportunists","benefit":"Improve and share adjacent attacks of opportunity."},
+ {"id":"cavalier-precise-strike","name":"Precise Strike","featId":"precise-strike","benefit":"Deal extra precision damage while flanking with an ally."},
+ {"id":"cavalier-shield-wall","name":"Shield Wall","featId":"shield-wall","benefit":"Combine shields with an adjacent ally for better AC."},
+ {"id":"cavalier-swap-places","name":"Swap Places","featId":"swap-places","benefit":"Exchange spaces with an adjacent ally without provoking."}
+]}

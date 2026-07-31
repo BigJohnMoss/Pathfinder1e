@@ -1,0 +1,57 @@
+{
+  "id": "inquisitor-exorcist",
+  "name": "Exorcist",
+  "classId": "inquisitor",
+  "summary": "Some inquisitors, as they learn more about the threat of possession and the machinations of the planes, task themselves to expel possessing spirits and conniving outsiders from the world whenever possible.",
+  "replacesText": "Second Judgment; Third Judgment; Slayer; True Judgment",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-judgment-1",
+        "inquisitor-second-judgment-8",
+        "inquisitor-third-judgment-16",
+        "inquisitor-slayer-17",
+        "inquisitor-true-judgment-20"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-exorcist-verdict-of-exorcism-su-8",
+          "name": "Verdict of Exorcism (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, an inquisitor using judgment can unleash the verdict of exorcism on a creature. When she does, her judgment ends, but the creature is dazed for 1 round (Will negates); if the creature is possessed, the possessing entity must succeed at a Will saving throw (DC 10 + 1/2 inquisitor level + inquisitor’s Wisdom bonus), or be exorcised and never again allowed in that same body. This ability replaces second judgment."
+        },
+        {
+          "id": "inquisitor-exorcist-verdict-of-exile-su-16",
+          "name": "Verdict of Exile (Su)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, an inquisitor using judgment can unleash the verdict of exile on a creature. When she does, her judgment ends, but the creature subject to that judgment is dazed for 1 round (Will negates, DC of 10 + 1/2 inquisitor level + Wisdom bonus). If the creature is possessed or an outsider, the possessing entity or the outsider is affected by dismissal (Will negates). This ability replaces third judgment."
+        },
+        {
+          "id": "inquisitor-exorcist-closed-mind-su-17",
+          "name": "Closed Mind (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "An exorcist inquisitor must close off her mind to deny her enemies even a foothold. At 17th level, the inquisitor becomes immune to compulsion effects and possession attempts (including magic jar ). This ability replaces slayer."
+        },
+        {
+          "id": "inquisitor-exorcist-verdict-of-anathema-su-20",
+          "name": "Verdict of Anathema (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, an inquisitor using judgment can unleash the verdict of anathema on her enemies. When she does, her judgment ends, and all enemy creatures within 10 feet are affected by her verdict of exorcism. This ability replaces true judgement."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Exorcist"
+  }
+}

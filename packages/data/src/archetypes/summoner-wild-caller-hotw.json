@@ -1,0 +1,113 @@
+{
+  "id": "summoner-wild-caller-hotw",
+  "name": "Wild Caller (HotW)",
+  "classId": "summoner",
+  "summary": "A wild caller summons creatures from the First World and forges a bond with an eidolon with a plant body.",
+  "replacesText": "Eidolon; Summon Monster; Aspect; Greater Aspect",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-eidolon-1",
+        "summoner-twin-eidolon-20",
+        "summoner-monster-1",
+        "summoner-aspect-10",
+        "summoner-greater-aspect-18"
+      ],
+      "features": [
+        {
+          "id": "summoner-wild-caller-hotw-plant-eidolon-1",
+          "name": "Plant Eidolon",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When a wild caller summons his eidolon, the eidolon’s body is created from extraplanar plant material and imbued with the intelligence of a being from the First World. Its statistics are changed from a standard eidolon as follows. Type : The eidolon has the plant creature type and extraplanar subtype. Unlike other plant creatures, the eidolon is not immune to mind-affecting or polymorph effects, though it does gain immunity to paralysis, poison, sleep effects, and stunning. Base Form : The wild caller chooses one of the base forms listed below for his plant eidolon. When the eidolon is summoned in an environment matching one of these base forms, the wild caller can choose to change the eidolon’s base form to the matching form by sacrificing one daily use of his summon nature’s ally ability as a free action. Plant eidolon base forms are as follows. Cactus (desert) :"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-size-1",
+          "name": "Size",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Medium;"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-speed-1",
+          "name": "Speed",
+          "level": 1,
+          "type": "archetype",
+          "summary": "30 ft.;"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-ac-1",
+          "name": "AC",
+          "level": 1,
+          "type": "archetype",
+          "summary": "+2 natural armor;"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-saves-1",
+          "name": "Saves",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Fort (good), Ref (good), Will (bad);"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-attacks-1",
+          "name": "Attacks",
+          "level": 1,
+          "type": "archetype",
+          "summary": "slam (1d8), sting (1d4);"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-ability-scores-1",
+          "name": "Ability Scores",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Str 14, Dex 14, Con 13, Int 7, Wis 10, Cha 11;"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-free-evolutions-1",
+          "name": "Free Evolutions",
+          "level": 1,
+          "type": "archetype",
+          "summary": "limbs (arms), limbs (legs), sting, tail. Conifer (forest, mountain) :"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-resist-1",
+          "name": "Resist",
+          "level": 1,
+          "type": "archetype",
+          "summary": "cold 10;"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-attack-1",
+          "name": "Attack",
+          "level": 1,
+          "type": "archetype",
+          "summary": "bite (1d6) plus poison;"
+        },
+        {
+          "id": "summoner-wild-caller-hotw-summon-nature-s-ally-sp-19",
+          "name": "Summon Nature’s Ally (Sp)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "A wild caller can cast summon nature’s ally as a spell-like ability a number of times per day equal to 3 + his Charisma modifier. At levels where a regular summoner would gain access to a new level of summon monster as a spell-like ability, the wild caller instead gains the equivalent summon nature’s ally spell; at 19th level, he can use summon nature’s ally IX or gate. When a wild caller gains a summon nature’s ally spell as a spell-like ability, he adds it to his class spell list (though he must still select it as a spell known if he wants to gain the ability to cast it as a normal spell). This ability alters the summon monster ability."
+        },
+        {
+          "id": "summoner-wild-caller-hotw-fey-friend-ex-10",
+          "name": "Fey Friend (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, the wild caller gains a +4 bonus on Bluff, Diplomacy, and Sense Motive checks against fey. This ability replaces aspect, which is instead gained at 18th level in place of greater aspect."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20Wild%20Caller%20(HotW)"
+  }
+}

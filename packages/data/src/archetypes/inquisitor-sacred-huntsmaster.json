@@ -1,0 +1,79 @@
+{
+  "id": "inquisitor-sacred-huntsmaster",
+  "name": "Sacred Huntsmaster",
+  "classId": "inquisitor",
+  "summary": "Some inquisitors create a strong bond with an animal companion, and they hunt and punish threats to the faith as an awe-inspiring duo.",
+  "replacesText": "Judgment; Solo Tactics; Second Judgment; Third Judgment; Slayer; True Judgment",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-judgment-1",
+        "inquisitor-second-judgment-8",
+        "inquisitor-third-judgment-16",
+        "inquisitor-true-judgment-20",
+        "inquisitor-solo-tactics-3",
+        "inquisitor-slayer-17"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-sacred-huntsmaster-animal-companion-ex-1",
+          "name": "Animal Companion (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a sacred huntsmaster forms a bond with an animal companion. This ability works as the hunter class feature of the same name, using her inquisitor level as her hunter level. This ability replaces judgment 1/day."
+        },
+        {
+          "id": "inquisitor-sacred-huntsmaster-hunter-tactics-ex-3",
+          "name": "Hunter Tactics (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a sacred huntsmaster automatically grants her teamwork feats to her animal companion. The companion doesn’t need to meet the prerequisites of these teamwork feats. This ability replaces solo tactics."
+        },
+        {
+          "id": "inquisitor-sacred-huntsmaster-animal-focus-su-4",
+          "name": "Animal Focus (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a sacred huntsmaster can take on the aspects of an animal as a swift action. This ability works as the hunter’s animal focus class feature, with her inquisitor level serving as her hunter level. This ability replaces later iterations of the judgment ability."
+        },
+        {
+          "id": "inquisitor-sacred-huntsmaster-improved-empathic-link-su-8",
+          "name": "Improved Empathic Link (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, the sacred huntsmaster gains an empathic link with her animal companion. This functions like an empathic link with a familiar, except the sacred huntsmaster can also see through a companion’s eyes as a swift action, maintaining this connection as long as she likes (as long as the companion is within 1 mile) and ending it as a free action. The sacred huntsmaster is blinded while maintaining this connection. This ability replaces second judgment."
+        },
+        {
+          "id": "inquisitor-sacred-huntsmaster-raise-animal-companion-sp-16",
+          "name": "Raise Animal Companion (Sp)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, a sacred huntsmaster gains raise animal companion UM as a spell-like ability (not restricted to her own animal companion). Using this ability gives the sacred huntsmaster a negative level that cannot be overcome in any way (including by restoration ), but automatically ends after 24 hours. At 16th level, this functions as resurrection instead of raise dead , but otherwise operates as normal. This ability replaces third judgment."
+        },
+        {
+          "id": "inquisitor-sacred-huntsmaster-second-animal-focus-ex-17",
+          "name": "Second Animal Focus (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, whenever a sacred huntsmaster uses her animal focus ability, she selects two different animal aspects for herself instead of one, and can assign two aspects to her companion instead of one. As with the companion’s previous aspect, the second one does not count against the minutes per day a sacred huntsmaster can take on an aspect. If her animal companion is dead and the sacred huntsmaster has applied that aspect to herself, that aspect counts toward her maximum of two aspects at once. The sacred huntsmaster can still only apply one of her dead companion’s to herself, not both. This ability replaces slayer."
+        },
+        {
+          "id": "inquisitor-sacred-huntsmaster-greater-empathic-link-su-20",
+          "name": "Greater Empathic Link (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, the range of a sacred huntsmaster’s empathic link with her animal companion increases to 10 miles. If the animal companion is within 1 mile, it and the sacred huntsmaster can communicate telepathically. This ability replaces true judgment."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Sacred%20Huntsmaster"
+  }
+}

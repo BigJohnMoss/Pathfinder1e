@@ -1,0 +1,56 @@
+{
+  "id": "inquisitor-infiltrator",
+  "name": "Infiltrator",
+  "classId": "inquisitor",
+  "summary": "This inquisitor uses guile and deception to blend in among the enemies of the faith rather than confronting them head-on.",
+  "replacesText": "Stern Gaze; Monster Lore; Track; Discern Lies",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-stern-gaze-1",
+        "inquisitor-monster-lore-1",
+        "inquisitor-track-2",
+        "inquisitor-discern-lies-5"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-infiltrator-misdirection-sp-1",
+          "name": "Misdirection (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, each day when the infiltrator prepares spells, she may choose an alignment. She detects as that alignment as if she had used misdirection on a creature with that alignment (this does not change any divination results about her other than her alignment). This power replaces stern gaze."
+        },
+        {
+          "id": "inquisitor-infiltrator-guileful-lore-ex-1",
+          "name": "Guileful Lore (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the infiltrator’s will is bent toward subterfuge and deception. She adds her Wisdom modifier on Bluff and Diplomacy skill checks in addition to the normal ability score modifiers. This ability replaces monster lore."
+        },
+        {
+          "id": "inquisitor-infiltrator-forbidden-lore-ex-1",
+          "name": "Forbidden Lore (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "While other inquisitors learned to track unbelievers, an infiltrator learns how to cast their spells. An infiltrator can cast spells of an alignment opposed to her or her deity (ignoring the restriction in the Chaotic, Evil, Good, and Lawful Spells class ability). This ability replaces track."
+        },
+        {
+          "id": "inquisitor-infiltrator-necessary-lies-su-1",
+          "name": "Necessary Lies (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An infiltrator adds her class level on saving throws against abilities that detect lies or reveal or force the truth, such as detect lies and zone of truth . This power replaces discern lies."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Infiltrator"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id":"alchemist-grand-discoveries","name":"Alchemist Grand Discoveries","classIds":["alchemist"],
+  "optionDefaults":{"groupId":"alchemist-grand-discoveries","classIds":["alchemist"],"minimumLevel":20,"prerequisites":[],"source":{"title":"Advanced Player's Guide","page":31,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/alchemist.html#grand-discovery"}},
+  "options":[
+    {"id":"awakened-intellect","name":"Awakened Intellect","benefit":"Permanently increase Intelligence by 2."},
+    {"id":"eternal-youth","name":"Eternal Youth","benefit":"Stop aging and become immune to magical aging."},
+    {"id":"fast-healing-grand-discovery","name":"Fast Healing","benefit":"Gain fast healing 5 while conscious and alive."},
+    {"id":"grand-mutagen","name":"Grand Mutagen","prerequisites":[{"type":"feature","id":"greater-mutagen"}],"benefit":"Mutagens improve three physical abilities and grant +6 natural armour."},
+    {"id":"philosophers-stone","name":"Philosopher's Stone","benefit":"Create a philosopher's stone once per month at no material cost."},
+    {"id":"poison-touch","name":"Poison Touch","benefit":"Gain a deadly poisonous touch usable once per minute."},
+    {"id":"true-mutagen","name":"True Mutagen","benefit":"Gain exceptional physical enhancement and natural armour from mutagens."}
+  ]
+}

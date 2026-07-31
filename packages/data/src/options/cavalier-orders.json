@@ -1,0 +1,8 @@
+{"id":"cavalier-orders","name":"Cavalier Orders","classIds":["cavalier"],"optionDefaults":{"groupId":"cavalier-orders","classIds":["cavalier"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Advanced Player's Guide","page":35,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/cavalier.html#orders"}},"options":[
+ {"id":"order-of-the-cockatrice","name":"Order of the Cockatrice","benefit":"Pursue personal glory; gain Braggart, Steal Glory, and Moment of Triumph."},
+ {"id":"order-of-the-dragon","name":"Order of the Dragon","benefit":"Serve loyal allies; gain Aid Allies, Strategy, and Act as One."},
+ {"id":"order-of-the-lion","name":"Order of the Lion","benefit":"Serve a sovereign; gain Lion's Call, For the King, and Shield of the Liege."},
+ {"id":"order-of-the-shield","name":"Order of the Shield","benefit":"Protect common folk; gain Resolute, Stem the Tide, and Retribution."},
+ {"id":"order-of-the-star","name":"Order of the Star","benefit":"Serve a faith; gain Calling, For the Faith, and Retribution."},
+ {"id":"order-of-the-sword","name":"Order of the Sword","benefit":"Uphold honour; gain By My Honor, Mounted Mastery, and Knight's Challenge."}
+]}

@@ -1,0 +1,89 @@
+{
+  "id": "witch-scarred-witch-doctor",
+  "name": "Scarred Witch Doctor",
+  "classId": "witch",
+  "summary": "(Orc Only) The scarred witch doctor draws power from her ability to endure pain and suffering.",
+  "replacesText": "Spellcasting; Hexes; Familiar; 1st-level Hex",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-spellcasting-1",
+        "witch-hex-1",
+        "witch-hex-2",
+        "witch-hex-4",
+        "witch-hex-6",
+        "witch-hex-8",
+        "witch-major-hex-10",
+        "witch-major-hex-12",
+        "witch-major-hex-14",
+        "witch-major-hex-16",
+        "witch-grand-hex-18",
+        "witch-grand-hex-20",
+        "witch-familiar-1"
+      ],
+      "features": [
+        {
+          "id": "witch-scarred-witch-doctor-fierce-intelligence-1",
+          "name": "Fierce Intelligence",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A scarred witch doctor treats her Intelligence score as 2 points higher when determining the highest level of spells she can cast, the number of spells she can cast per day, her spell save DCs, her number of spells known at 1st level, and any effects of her hexes determined by her Intelligence."
+        },
+        {
+          "id": "witch-scarred-witch-doctor-hex-scar-1",
+          "name": "Hex Scar",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Whenever a scarred witch doctor learns a hex, she must carve or brand a symbol in her flesh to represent this hex. She can disguise these scars with mundane or magical means, but they cannot be permanently removed."
+        },
+        {
+          "id": "witch-scarred-witch-doctor-fetish-mask-su-1",
+          "name": "Fetish Mask (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a scarred witch doctor forms a bond with a wooden mask. As she gains power, her connection to this mask causes it to grow ever more hideous and grotesque as it absorbs the weight of the self-induced pain that underlies her magic. Her spells derive from the insights her patron grants her while she’s enduring the cuts, burns, and other sorts of mutilations she inflicts upon herself. Her fetish mask acts in all ways like a witch’s familiar for the purpose of preparing and gaining spells. Rather than communing with a familiar to prepare spells each day, a scarred witch doctor hangs her mask on a wall, tree branch, or something similar and contemplates the agony it represents. When wearing her fetish mask, a scarred witch doctor gains a +2 circumstance bonus on Heal and Intimidate checks and gains a +2 bonus on saving throws against effects that specifically cause pain or have the pain descriptor. If the mask is destroyed, the witch doctor can create another fetish mask (which almost immediately adopts the shocking appearance of the original) for the same price and time it takes a witch to replace a dead familiar. At 5th level, the scarred witch doctor gains the ability to add magical abilities to her mask as if she had the Craft Wondrous Item feat. This ability otherwise functions like and replaces the standard witch familiar."
+        },
+        {
+          "id": "witch-scarred-witch-doctor-scarshield-su-1",
+          "name": "Scarshield (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a scarred witch doctor learns how to harden her mutilated skin, gaining an enhancement bonus to her natural armor bonus equal to 1/2 her class level (minimum +1). She can use this ability for a number of minutes per day equal to her class level. These minutes do not need to be consecutive but she must spend them in 1-minute increments. This ability replaces the witch’s 1st-level hex."
+        },
+        {
+          "id": "witch-scarred-witch-doctor-hexes-1",
+          "name": "Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following hexes complement the scarred witch doctor archetype: evil eye, misfortune scar, unnerve beasts."
+        },
+        {
+          "id": "witch-scarred-witch-doctor-major-hexes-1",
+          "name": "Major Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following major hexes complement the scarred witch doctor archetype: agony, nightmare cook people, infected wounds."
+        },
+        {
+          "id": "witch-scarred-witch-doctor-grand-hexes-1",
+          "name": "Grand Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following grand hexes complement the scarred witch doctor archetype: death curse, natural disaster dire prophecy."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Scarred%20Witch%20Doctor"
+  },
+  "manualRequirements": [
+    "Restricted to Orc characters; that ancestry is not yet available in this builder."
+  ]
+}

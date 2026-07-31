@@ -1,0 +1,24 @@
+{
+ "id":"witch","name":"Witch","classType":"base","hitDie":6,"babProgression":"half","saves":{"fortitude":"poor","reflex":"poor","will":"good"},"skillRanksPerLevel":2,
+ "classSkills":["Craft","Fly","Heal","Intimidate","Knowledge (arcana)","Knowledge (history)","Knowledge (nature)","Knowledge (planes)","Profession","Spellcraft","Use Magic Device"],
+ "spellcasting":{"ability":"intelligence","castingType":"prepared","preparesFromSlots":true,"spellLevelUnlocks":[1,3,5,7,9,11,13,15,17],
+ "slotsByLevel":[[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[2,1,0,0,0,0,0,0,0],[3,2,0,0,0,0,0,0,0],[3,2,1,0,0,0,0,0,0],[3,3,2,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0],[4,3,3,2,0,0,0,0,0],[4,4,3,2,1,0,0,0,0],[4,4,3,3,2,0,0,0,0],[4,4,4,3,2,1,0,0,0],[4,4,4,3,3,2,0,0,0],[4,4,4,4,3,2,1,0,0],[4,4,4,4,3,3,2,0,0],[4,4,4,4,4,3,2,1,0],[4,4,4,4,4,3,3,2,0],[4,4,4,4,4,4,3,2,1],[4,4,4,4,4,4,3,3,2],[4,4,4,4,4,4,4,3,3],[4,4,4,4,4,4,4,4,4]],
+ "preparedByLevel":[[3,1,0,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0,0],[4,2,1,0,0,0,0,0,0,0],[4,3,2,0,0,0,0,0,0,0],[4,3,2,1,0,0,0,0,0,0],[4,3,3,2,0,0,0,0,0,0],[4,4,3,2,1,0,0,0,0,0],[4,4,3,3,2,0,0,0,0,0],[4,4,4,3,2,1,0,0,0,0],[4,4,4,3,3,2,0,0,0,0],[4,4,4,4,3,2,1,0,0,0],[4,4,4,4,3,3,2,0,0,0],[4,4,4,4,4,3,2,1,0,0],[4,4,4,4,4,3,3,2,0,0],[4,4,4,4,4,4,3,2,1,0],[4,4,4,4,4,4,3,3,2,0],[4,4,4,4,4,4,4,3,2,1],[4,4,4,4,4,4,4,3,3,2],[4,4,4,4,4,4,4,4,3,3],[4,4,4,4,4,4,4,4,4,4]]},
+ "source":{"title":"Advanced Player's Guide","page":65,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/witch.html"},
+ "features":[
+  {"id":"witch-spellcasting-1","name":"Witch Spellcasting","level":1,"type":"spellcasting","summary":"Prepare arcane spells stored by a familiar using Intelligence.","choiceRequired":false,"optionGroupId":null,"progressionKey":"witch-spellcasting","scaling":"0th–9th-level spells","uses":null},
+  {"id":"witch-familiar-1","name":"Witch's Familiar","level":1,"type":"selectable","summary":"Choose a familiar that stores Witch spells and advances with Witch level.","choiceRequired":true,"optionGroupId":"witch-familiars","progressionKey":"witch-familiar","scaling":"two added spells each Witch level","uses":null},
+  {"id":"witch-patron-1","name":"Patron","level":1,"type":"selectable","summary":"Choose a patron theme that grants a bonus spell every even Witch level.","choiceRequired":true,"optionGroupId":"witch-patrons","progressionKey":"witch-patron","scaling":"patron spells at levels 2–18","uses":null},
+  {"id":"witch-hex-1","name":"Hex","level":1,"type":"selectable","summary":"Choose a Witch hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-hex-2","name":"Hex","level":2,"type":"selectable","summary":"Choose another Witch hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":"every even level","uses":null},
+  {"id":"witch-hex-4","name":"Hex","level":4,"type":"selectable","summary":"Choose another Witch hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-hex-6","name":"Hex","level":6,"type":"selectable","summary":"Choose another Witch hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-hex-8","name":"Hex","level":8,"type":"selectable","summary":"Choose another Witch hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-major-hex-10","name":"Major Hex","level":10,"type":"selectable","summary":"Choose a hex or major hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-major-hex-12","name":"Major Hex","level":12,"type":"selectable","summary":"Choose another hex or major hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-major-hex-14","name":"Major Hex","level":14,"type":"selectable","summary":"Choose another hex or major hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-major-hex-16","name":"Major Hex","level":16,"type":"selectable","summary":"Choose another hex or major hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-grand-hex-18","name":"Grand Hex","level":18,"type":"selectable","summary":"Choose a hex, major hex, or grand hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null},
+  {"id":"witch-grand-hex-20","name":"Grand Hex","level":20,"type":"selectable","summary":"Choose another hex, major hex, or grand hex.","choiceRequired":true,"optionGroupId":"witch-hexes","progressionKey":"witch-hexes","scaling":null,"uses":null}
+ ]
+}

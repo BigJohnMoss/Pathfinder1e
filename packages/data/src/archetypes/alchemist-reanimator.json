@@ -1,0 +1,60 @@
+{
+  "id": "alchemist-reanimator",
+  "name": "Reanimator",
+  "classId": "alchemist",
+  "summary": "A reanimator is an alchemist who has discovered how to infuse a corpse with a semblance of life.",
+  "replacesText": "Bomb; 7th-level Bomb Damage Increase; 13th-level Bomb Damage Increase; 15th-level Bomb Damage Increase",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-bomb-1"
+      ],
+      "features": [
+        {
+          "id": "alchemist-reanimator-bomb-1",
+          "name": "Bomb",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reanimator’s bombs deal damage one die step lower than normal (regular bombs deal d4s, concussive bombs deal 1d3s, and so on). This ability otherwise functions as and replaces the standard alchemist bomb class feature."
+        },
+        {
+          "id": "alchemist-reanimator-simple-reanimation-7",
+          "name": "Simple Reanimation",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a reanimator adds lesser animate dead to his formula book as a 3rd-level extract. When he uses that extract, rather than drinking it, he injects it into the corpse he intends to animate, which rises as an undead creature under his control 1 hour later. The extract can only create zombies (including variant zombies). This ability replaces the increase to bomb damage at this level."
+        },
+        {
+          "id": "alchemist-reanimator-create-undead-13",
+          "name": "Create Undead",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a reanimator adds create undead to his formula book as a 4th-level extract. When he uses that extract, rather than drinking it, he injects it into the corpse he intends to animate, which rises as an uncontrolled undead 1 hour later. The extract can only create corporeal undead. This ability replaces the increase to bomb damage at this level."
+        },
+        {
+          "id": "alchemist-reanimator-create-greater-undead-15",
+          "name": "Create Greater Undead",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a reanimator adds create greater undead to his formula book as a 5th-level extract. This otherwise acts similarly to a create undead extract. This ability replaces the increase to bomb damage at this level."
+        },
+        {
+          "id": "alchemist-reanimator-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the reanimator archetype: alchemical zombie, elixir of life, eternal potion, mummification, and preserve organs."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Reanimator"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "summoner-leshy-caller",
+  "name": "Leshy Caller",
+  "classId": "summoner",
+  "summary": "A leshy caller summons creatures from the First World and forges a bond with a leshy eidolon.",
+  "replacesText": "Eidolon; Summon Monster",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-eidolon-1",
+        "summoner-twin-eidolon-20",
+        "summoner-monster-1"
+      ],
+      "features": [
+        {
+          "id": "summoner-leshy-caller-leshy-eidolon-1",
+          "name": "Leshy Eidolon",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When a leshy caller summons her eidolon, the eidolon’s body is created from extraplanar plant material and imbued with the intelligence of a leshy spirit. Its statistics are changed from those of a standard eidolon as follows. An unchained summoner uses the plant eidolon subtype instead of one of the subtypes listed in Pathfinder RPG Pathfinder Unchained ."
+        },
+        {
+          "id": "summoner-leshy-caller-type-1",
+          "name": "Type",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The eidolon is still an outsider, and its statistics don’t change, but it also counts as a plant. As it isn’t truly a plant, it doesn’t gain the plant immunities."
+        },
+        {
+          "id": "summoner-leshy-caller-base-form-1",
+          "name": "Base Form",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The leshy caller chooses one of the base forms listed below for her eidolon. When the eidolon is summoned in an environment matching one of these base forms, the leshy caller can change the eidolon’s base form to the matching form by sacrificing one daily use of her summon nature’s ally ability as a free action. Plant eidolon base forms are as follows. Cactus (Desert) :"
+        },
+        {
+          "id": "summoner-leshy-caller-size-1",
+          "name": "Size",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Medium;"
+        },
+        {
+          "id": "summoner-leshy-caller-speed-1",
+          "name": "Speed",
+          "level": 1,
+          "type": "archetype",
+          "summary": "30 ft.;"
+        },
+        {
+          "id": "summoner-leshy-caller-ac-1",
+          "name": "AC",
+          "level": 1,
+          "type": "archetype",
+          "summary": "+2 natural armor;"
+        },
+        {
+          "id": "summoner-leshy-caller-saves-1",
+          "name": "Saves",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Fort (good), Ref (good), Will (bad);"
+        },
+        {
+          "id": "summoner-leshy-caller-attack-1",
+          "name": "Attack",
+          "level": 1,
+          "type": "archetype",
+          "summary": "sting (1d4);"
+        },
+        {
+          "id": "summoner-leshy-caller-ability-scores-1",
+          "name": "Ability Scores",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Str 14, Dex 14, Con 13, Int 7, Wis 10, Cha 11;"
+        },
+        {
+          "id": "summoner-leshy-caller-free-evolutions-1",
+          "name": "Free Evolutions",
+          "level": 1,
+          "type": "archetype",
+          "summary": "limbs (arms), limbs (legs), sting. Conifer (Forest, Mountain) :"
+        },
+        {
+          "id": "summoner-leshy-caller-free-1",
+          "name": "Free",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Evolutions claws, limbs (arms), limbs (legs). Fungus (Swamp, Underground) :"
+        },
+        {
+          "id": "summoner-leshy-caller-summon-nature-s-ally-sp-19",
+          "name": "Summon Nature’s Ally (Sp)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "A leshy caller can cast summon nature’s ally as a spell-like ability a number of times per day equal to 3 + her Charisma modifier. At levels where a regular summoner would gain access to a new level of summon monster as a spell-like ability, the leshy caller instead gains the equivalent summon nature’s ally spell; at 19th level, she can cast summon nature’s ally IX or gate . When a leshy caller gains a summon nature’s ally spell as a spell-like ability, she adds it to her class spell list (though she must still select it as a spell known if she wants to gain the ability to cast it as a normal spell). She adds leaf leshys, gourd leshys, fungus leshys, seaweed leshys, and lotus leshys to her list of creatures for summon nature’s ally I , II , III , IV , and V , respectively. This alters summon monster."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20Leshy%20Caller"
+  }
+}

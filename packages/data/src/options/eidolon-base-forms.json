@@ -1,0 +1,3 @@
+{"id":"eidolon-base-forms","name":"Eidolon Base Forms","classIds":["summoner"],"optionDefaults":{"groupId":"eidolon-base-forms","classIds":["summoner"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Advanced Player's Guide","page":58,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/summoner.html#eidolons"}},"options":[
+ {"id":"eidolon-biped","name":"Biped","benefit":"Strong humanoid form with claws, arms, legs, and good Fortitude and Will saves."},{"id":"eidolon-quadruped","name":"Quadruped","benefit":"Fast four-legged form with a bite and good Fortitude and Reflex saves."},{"id":"eidolon-serpentine","name":"Serpentine","benefit":"Agile limbless form with bite, reach, tail slap, and good Reflex and Will saves."}
+]}

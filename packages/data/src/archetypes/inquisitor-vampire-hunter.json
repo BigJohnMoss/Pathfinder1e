@@ -1,0 +1,58 @@
+{
+  "id": "inquisitor-vampire-hunter",
+  "name": "Vampire Hunter",
+  "classId": "inquisitor",
+  "summary": "The vampire hunter believes that the worst of undead are the ones with unnatural appetities for flesh and blood.",
+  "replacesText": "Altered Judgments (Purity, Smiting); Detect Alignment; Altered Bane",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-judgment-1",
+        "inquisitor-second-judgment-8",
+        "inquisitor-third-judgment-16",
+        "inquisitor-detect-alignment-2",
+        "inquisitor-bane-5",
+        "inquisitor-greater-bane-12"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-vampire-hunter-judgment-10",
+          "name": "Judgment",
+          "level": 10,
+          "type": "archetype",
+          "summary": "The following vampire hunter judgments work differently than those of a standard inquisitor. Purity : At 10th level, the judgment bonus is doubled against diseases and energy drain saving throws, but not curses or poisons. Smiting : At 6th level, the vampire hunter’s weapons count as silver instead of an alignment type."
+        },
+        {
+          "id": "inquisitor-vampire-hunter-silversmith-2",
+          "name": "Silversmith",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a vampire hunter learns the secrets of crafting silver into dangerous weapons. She adds a bonus equal to her class level on any Craft or Spellcraft check made to create a silver item that bypasses DR/silver, such as alchemical silver, silversheen , or silver weapon blanch (see the Advanced Player’s Guide ). This ability replaces detect alignment."
+        },
+        {
+          "id": "inquisitor-vampire-hunter-bane-su-1",
+          "name": "Bane (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A vampire hunter can only imbue her weapons with the undead-bane ability, but it persists even when she isn’t holding the weapon."
+        },
+        {
+          "id": "inquisitor-vampire-hunter-sun-strike-su-5",
+          "name": "Sun Strike (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a vampire hunter can infuse a single weapon she wields with the purifying light of the sun as a swift action for a number of rounds per day equal to her inquisitor level. These rounds do not need to be consecutive. While a weapon is infused with the sun, it deals +1d6 points of damage to any creature that is susceptible or vulnerable to sunlight, including many types of undead (particularly spectres, vampires, and wraiths). This additional damage also applies to oozes and fungus-based monsters. A weapon infused with sun strike sheds illumination as if it were a sunrod."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Vampire%20Hunter"
+  }
+}

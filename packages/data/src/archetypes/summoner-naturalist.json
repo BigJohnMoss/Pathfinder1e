@@ -1,0 +1,65 @@
+{
+  "id": "summoner-naturalist",
+  "name": "Naturalist",
+  "classId": "summoner",
+  "summary": "A naturalist is a summoner who is in tune with the natural world, using his magic like a lens to focus various animal aspects onto his eidolon.",
+  "replacesText": "Summon Monster; Shield Ally; Greater Shield Ally; Aspect Summoner; Life Bond; Greater Aspect",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-monster-1",
+        "summoner-shield-ally-4",
+        "summoner-greater-shield-12",
+        "summoner-aspect-10",
+        "summoner-greater-aspect-18",
+        "summoner-life-bond-14"
+      ],
+      "features": [
+        {
+          "id": "summoner-naturalist-nature-s-call-sp-1",
+          "name": "Nature’s Call (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Starting at 1st level, the naturalist can cast summon nature’s ally I as a spell like ability a number of times per day equal to 3 + his Charisma modifier. He can only use this ability to summon creatures of the animal, magical beast, or vermin type. This ability otherwise functions as the summon monster I class feature (increasing in level as the naturalist goes up in level and with the same restrictions). This ability replaces summon monster I ."
+        },
+        {
+          "id": "summoner-naturalist-animal-focus-su-4",
+          "name": "Animal Focus (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, as a swift action a naturalist can enhance his eidolon with the aspect of an animal. Each time he uses this ability, he can select a hunter’s animal aspect (see page 27) and apply it to his eidolon. His hunter level for this ability is equal to his summoner level – 2. He does not gain the ability to add an animal aspect to himself (see Shared Focus, below). This effect lasts until the eidolon is dismissed or sent back to its home plane. When an animal aspect is applied to an eidolon, its form is altered by superficial physical changes appropriate to that aspect. For example, using aspect of the bat might give the eidolon larger ears and eyes and perhaps membranes of skin connecting its limbs to its body, while using aspect of the stag might give the eidolon antlers and hooflike nails on its feat. None of these changes interfere with any of the eidolon’s natural or magical abilities. This ability replaces shield ally and greater shield ally."
+        },
+        {
+          "id": "summoner-naturalist-second-animal-focus-su-10",
+          "name": "Second Animal Focus (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, whenever a naturalist uses animal focus, he may apply two different animal aspects to his eidolon. The eidolon’s form gains superficial physical charges appropriate to the chosen aspect. This replaces the aspect summoner class ability."
+        },
+        {
+          "id": "summoner-naturalist-shared-focus-su-14",
+          "name": "Shared Focus (Su)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, the naturalist begins to take on some of the feral nature of his eidolon. Whenever the naturalist uses animal focus to grant an aspect to his eidolon, he also gains the effects of the chosen aspect. The naturalist keeps this aspect until his eidolon is dismissed or sent back to its home plane. The naturalist gains the effects of only one aspect, even if the eidolon gains more than one (naturalist’s choice). This ability replaces life bond."
+        },
+        {
+          "id": "summoner-naturalist-third-animal-focus-su-18",
+          "name": "Third Animal Focus (Su)",
+          "level": 18,
+          "type": "archetype",
+          "summary": "At 18th level, whenever a naturalist uses his animal focus ability, he can apply three different animal aspects to his eidolon (one of which lasts until he decides to change it). This ability replaces greater aspect."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20Naturalist"
+  }
+}

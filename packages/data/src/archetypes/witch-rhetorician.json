@@ -1,0 +1,47 @@
+{
+  "id": "witch-rhetorician",
+  "name": "Rhetorician",
+  "classId": "witch",
+  "summary": "Rhetoricians feel driven to engage in debate, learn as much as they can about their potential foes, and seek ways to use information and quick talking to handle problems before resorting to raw violence.",
+  "replacesText": "1st-level Hex; Spells",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-hex-1",
+        "witch-spellcasting-1"
+      ],
+      "features": [
+        {
+          "id": "witch-rhetorician-debater-ex-1",
+          "name": "Debater (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A rhetorician is an expert at making counterarguments and treating everything as a debate. When an opponent attempts a Diplomacy check to change another target’s attitude or request aid, the rhetorician can attempt to make a counterargument to negate the opponent’s efforts. The rhetorician attempts a Diplomacy check as an immediate action, with a DC equal to the result of the opponent’s Diplomacy check. The target of the opponent’s Diplomacy check must be able to see and hear the rhetorician. If the rhetorician’s Diplomacy check is successful, the opponent’s Diplomacy check fails. This ability replaces the hex gained at 1st level."
+        },
+        {
+          "id": "witch-rhetorician-eldritch-glibness-2",
+          "name": "Eldritch Glibness",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level and every two witch levels thereafter, a rhetorician gains the following spells as spells known at the spell levels listed in parentheses. These spells are automatically added to the list of spells stored by her familiar. She treats these as being on the witch class spell list: 2nd— confusion, lesser (1st), 4th— detect thoughts (2nd), 6th— glibness (3rd), 8th— sculpt sound (4th), 10th— modify memory (5th), 12th— symbol of persuasion (6th), 14th— song of discord (7th), 16th— greater shout (8th), 18th— weird (9th). This ability replaces all the spells the witch gains from her patron."
+        },
+        {
+          "id": "witch-rhetorician-public-speaker-ex-1",
+          "name": "Public Speaker (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A rhetorician gains Perform as a class skill. In addition, she is trained to project her voice with great skill and effect; the DC to hear her speak in difficult conditions is reduced by an amount equal to her class level + her Intelligence modifier (minimum 0)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Rhetorician"
+  }
+}

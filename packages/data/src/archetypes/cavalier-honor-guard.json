@@ -1,0 +1,56 @@
+{
+  "id": "cavalier-honor-guard",
+  "name": "Honor Guard",
+  "classId": "cavalier",
+  "summary": "Certain cavaliers are trained not as advance combatants, but as loyal guards, standing as firm defenders in the face of threats to their chosen charge.",
+  "replacesText": "Challenge; Cavalier’s Charge; Mighty Charge; Demanding Challenge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-challenge-1",
+        "cavalier-demanding-challenge-12",
+        "cavalier-charge-3",
+        "cavalier-mighty-charge-11"
+      ],
+      "features": [
+        {
+          "id": "cavalier-honor-guard-sworn-defense-ex-1",
+          "name": "Sworn Defense (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, whenever an honor guard issues a challenge, he can select one ally as his ward for the duration of the challenge. Whenever the honor guard is adjacent to his ward, he takes a –1 penalty to Armor Class, and the ward receives a +1 dodge bonus to AC. This modifies the challenge ability"
+        },
+        {
+          "id": "cavalier-honor-guard-intercept-ex-3",
+          "name": "Intercept (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, an honor guard learns to better disrupt the attacks of his enemies. He gains Bodyguard as a bonus feat, even if he does not meet the prerequisite. In addition, whenever the honor guard uses the aid another action to increase an ally’s Armor Class, the bonus to Armor Class granted by the aid another action increases by +1. This ability replaces cavalier’s charge."
+        },
+        {
+          "id": "cavalier-honor-guard-warding-charge-ex-11",
+          "name": "Warding Charge (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, an honor guard can flash across the battlefield to protect his ward against the target of his challenge. Whenever the target of the honor guard’s challenge makes an attack against his ward, the honor guard can move up to his speed and make a single melee attack against the target of his challenge as an immediate action. This movement and attack can be made as a charge if the movement qualifies. This ability replaces mighty charge."
+        },
+        {
+          "id": "cavalier-honor-guard-defensive-challenge-ex-12",
+          "name": "Defensive Challenge (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, whenever an honor guard declares a challenge, his target must pay particular attention to him and his ability to intercept attacks. As long as the target is within the threatened area of the cavalier, it takes a –2 penalty on attack rolls against anyone other than the honor guard. This ability replaces demanding challenge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Honor%20Guard"
+  }
+}

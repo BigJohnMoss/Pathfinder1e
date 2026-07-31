@@ -1,0 +1,54 @@
+{
+  "id": "witch-season-witch",
+  "name": "Season Witch",
+  "classId": "witch",
+  "summary": "Season witches gain their power from the cyclical and mystical exchange of energy passed from one season of nature to another.",
+  "replacesText": "Patron; 1st-level Hex",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-patron-1",
+        "witch-hex-1"
+      ],
+      "features": [
+        {
+          "id": "witch-season-witch-season-of-the-witch-su-1",
+          "name": "Season of the Witch (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A season witch observes the cycles of life through symbolic festivals and the very real passage of time. Their covens celebrate the seasons and their impact on magic. These seasonal cycles alter their magic and mind-set, focusing their spells and hexes on a predominant energy type and philosophy. A season witch makes a commitment to embody the sacred symbolism of a season year round, and learns her spells through communion with nature, divining secrets from shapes in the clouds or the play of leaves on the wind. At 1st level, a season witch chooses the season that defines her abilities as her patron; this choice also provides her certain benefits. A spring witch has dominion over the renewing spirit of life and youth. The save DCs of her spells that deal electricity damage increase by 1. At 1st level, she gains either the charm hex or disguise hex as a bonus hex. A summer witch has dominion over growth, the harvest, and toil. The save DCs of her spells that deal fire damage increase by 1. At 1st level, she gains either the fortune hex or misfortune hex as a bonus hex. An autumn witch has dominion over the provision of the land and the passing of life. The save DCs of her spells that deal acid damage increase by 1. At 1st level, she gains either the blight hex or slumber hex as a bonus hex. A winter witch has dominion over hearth and home. The save DCs of her spells that deal cold damage increase by 1. At 1st level, she gains either the healing hex or ward hex as a bonus hex. This alters patron and the hex gained at 1st level."
+        },
+        {
+          "id": "witch-season-witch-hexes-1",
+          "name": "Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following hexes complement the season witch archetype: flight (spring), summer’s heat (summer), poison steep (autumn), no place like home (winter)."
+        },
+        {
+          "id": "witch-season-witch-major-hexes-1",
+          "name": "Major Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following major hexes complement the season witch archetype: speak in dreams (spring), agony (summer), hoarfrost (autumn), major healing (winter)."
+        },
+        {
+          "id": "witch-season-witch-grand-hexes-1",
+          "name": "Grand Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following grand hexes complement the season witch archetype: forced reincarnation (spring), natural disaster (summer), death curse (autumn), life giver (winter)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Season%20Witch"
+  }
+}

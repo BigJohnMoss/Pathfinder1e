@@ -1,0 +1,76 @@
+{
+  "id": "inquisitor-sworn-of-the-eldest",
+  "name": "Sworn of the Eldest",
+  "classId": "inquisitor",
+  "summary": "Although the Eldest rarely have adherents as other deities do, they still occasionally require mortal agents to advance their aims.",
+  "replacesText": "Deity; Domain; Monster Lore; Stern Gaze; Solo Tactics; Teamwork Feats",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-domain-1",
+        "inquisitor-monster-lore-1",
+        "inquisitor-stern-gaze-1",
+        "inquisitor-solo-tactics-3",
+        "inquisitor-teamwork-3",
+        "inquisitor-teamwork-6",
+        "inquisitor-teamwork-9",
+        "inquisitor-teamwork-12",
+        "inquisitor-teamwork-15",
+        "inquisitor-teamwork-18"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-sworn-of-the-eldest-whimsical-worship-ex-1",
+          "name": "Whimsical Worship (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sworn of the Eldest uses her Charisma modifier, rather than her Wisdom modifier, to determine all class features and effects relating to her inquisitor class, including her spells, cunning initiative, and true judgment abilities."
+        },
+        {
+          "id": "inquisitor-sworn-of-the-eldest-deity-1",
+          "name": "Deity",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sworn of the Eldest must select one of the Eldest as a deity and must select a domain or subdomain of that Eldest for her domain ability; she cannot be devoted to an ideal or philosophy. This alters domain."
+        },
+        {
+          "id": "inquisitor-sworn-of-the-eldest-disarming-discernment-ex-1",
+          "name": "Disarming Discernment (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sworn of the Eldest adds her Charisma modifier on Sense Motive skill checks, in addition to her Wisdom modifier. This replaces monster lore."
+        },
+        {
+          "id": "inquisitor-sworn-of-the-eldest-feytongue-ex-1",
+          "name": "Feytongue (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sworn of the Eldest receives a morale bonus equal to half her inquisitor level (minimum +1) on Bluff and Diplomacy checks. This replaces stern gaze."
+        },
+        {
+          "id": "inquisitor-sworn-of-the-eldest-feywatcher-ex-1",
+          "name": "Feywatcher (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Resistant to the tricky ways of other fey, a sworn of the Eldest gains the resist nature’s lure druid class feature . This replaces solo tactics."
+        },
+        {
+          "id": "inquisitor-sworn-of-the-eldest-magic-of-the-eldest-3",
+          "name": "Magic of the Eldest",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level and every 3 levels thereafter, a sworn of the Eldest gains a bonus spell slot of the highest spell level she can cast, and she learns the corresponding spell listed for her domain as a bonus spell known. She can use this bonus spell slot only to cast the domain spell of that level. This replaces all teamwork feats."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Sworn%20of%20the%20Eldest"
+  }
+}

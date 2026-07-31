@@ -1,0 +1,50 @@
+{
+  "id": "alchemist-homunculist",
+  "name": "Homunculist",
+  "classId": "alchemist",
+  "summary": "One of the grand goals of alchemy is the ability to create new life. A homunculist has made this dream a reality, growing and modifying a familiar in his own laboratory.",
+  "replacesText": "Poison Use; Poison Resistance; Poison Immunity; Swift Poisoning; Mutagen",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10",
+        "alchemist-swift-poisoning-6",
+        "alchemist-mutagen-1",
+        "alchemist-persistent-mutagen-14"
+      ],
+      "features": [
+        {
+          "id": "alchemist-homunculist-diminished-poisoning-1",
+          "name": "Diminished Poisoning",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A homunculist doesn’t gain the poison use, poison resistance, poison immunity, or swift poisoning class features."
+        },
+        {
+          "id": "alchemist-homunculist-homunculus-familiar-ex-1",
+          "name": "Homunculus Familiar (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The homunculist has created a living homunculus in the shape of an animal or vermin. It functions in all ways as a familiar, treating the homunculist’s alchemist level as his effective wizard level. This ability replaces mutagen."
+        },
+        {
+          "id": "alchemist-homunculist-experimentation-ex-4",
+          "name": "Experimentation (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A homunculist is constantly experimenting on his familiar to give it new and unusual features and abilities. At 4th level, the homunculist can grant his familiar 1 evolution point worth of eidolon evolutions for every 4 alchemist levels he possesses, though he can’t select any evolutions that require a particular base form. Each time the homunculist gains a level, he can change his familiar’s evolutions. These evolutions stack with those from the Evolved Familiar feat. The homunculist can select the Evolved Familiar feat as an alchemist discovery if he meets its prerequisites."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Homunculist"
+  }
+}

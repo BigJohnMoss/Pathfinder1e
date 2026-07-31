@@ -1,0 +1,78 @@
+{
+  "id": "cavalier-emissary",
+  "name": "Emissary",
+  "classId": "cavalier",
+  "summary": "Some cavaliers focus more on speed and mobility than they do on the raw power of the mounted charge.",
+  "replacesText": "Tactician; Banner; Greater Tactician; Greater Banner; Supreme Charge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-tactician-1",
+        "cavalier-greater-tactician-9",
+        "cavalier-master-tactician-17",
+        "cavalier-banner-5",
+        "cavalier-supreme-charge-20"
+      ],
+      "features": [
+        {
+          "id": "cavalier-emissary-armor-proficiency-1",
+          "name": "Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An emissary does not gain proficiency with heavy armor."
+        },
+        {
+          "id": "cavalier-emissary-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An emissary can select Endurance , Fleet , or Run in addition to the list of combat feats whenever he gains a bonus feat."
+        },
+        {
+          "id": "cavalier-emissary-in-or-out-of-the-saddle-ex-1",
+          "name": "In or Out of the Saddle (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an emissary gains Mounted Combat as a bonus feat. In addition, he can move at normal speed when wearing medium armor. This ability replaces tactician."
+        },
+        {
+          "id": "cavalier-emissary-battlefield-agility-ex-5",
+          "name": "Battlefield Agility (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, an emissary learns to be more aware of the threats that surround him in combat, and shares this awareness with his loyal steed. Both the emissary and his mount gain Mobility as a bonus feat. This ability replaces banner."
+        },
+        {
+          "id": "cavalier-emissary-mounted-acrobatics-ex-9",
+          "name": "Mounted Acrobatics (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, an emissary is even more adept at hopping on and off his steed, and even dropping alongside its flanks mid-gallop. He gains Trick Riding as a bonus feat, even if he does not meet the prerequisites. The emissary can employ this feat even when wearing medium armor. This ability replaces greater tactician."
+        },
+        {
+          "id": "cavalier-emissary-mounted-dervish-ex-14",
+          "name": "Mounted Dervish (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, an emissary becomes a fearsome, mobile foe on the battlefield. He gains Mounted Skirmisher as a bonus feat, even if he does not meet the prerequisites. In addition, whenever the emissary is mounted and takes the charge action, he adds 10 feet to his mount’s speed. This ability replaces greater banner."
+        },
+        {
+          "id": "cavalier-emissary-erratic-charge-ex-20",
+          "name": "Erratic Charge (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, an emissary learns to ride through the thick of combat, striking and then moving away with blinding speed. Whenever the emissary is mounted and takes the charge action, he can first move 10 feet and make a melee attack. This first attack is not a charge, but a regular melee attack, and the movement counts toward the total allowed movement for the round. After making this attack, the emissary must still move in a straight line to reach the target of his charge, and he takes a –5 penalty on the attack roll for the attack at the end of his charge. This ability replaces supreme charge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Emissary"
+  }
+}

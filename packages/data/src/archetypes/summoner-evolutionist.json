@@ -1,0 +1,49 @@
+{
+  "id": "summoner-evolutionist",
+  "name": "Evolutionist",
+  "classId": "summoner",
+  "summary": "An evolutionist possesses greater power over his eidolon’s form, and is able to evolve his eidolon and its abilities to meet any challenge or face any threat as it comes up, seemingly on a whim.",
+  "replacesText": "Maker’s Call; Transposition; Greater Shield Ally",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-makers-call-6",
+        "summoner-transposition-8",
+        "summoner-shield-ally-4",
+        "summoner-greater-shield-12"
+      ],
+      "features": [
+        {
+          "id": "summoner-evolutionist-mutate-eidolon-su-6",
+          "name": "Mutate Eidolon (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, an evolutionist can change his eidolon’s evolutions as if he had gained a level. To mutate his eidolon, the evolutionist must perform an arcane ritual that requires 24 hours of uninterrupted concentration and costs 200 gp per summoner level in material components. This ability replaces maker’s call."
+        },
+        {
+          "id": "summoner-evolutionist-evolve-base-form-su-8",
+          "name": "Evolve Base Form (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "Starting at 8th level, whenever he gains a level, the evolutionist can change his eidolon’s base form to a new base form. Once chosen, this base form is set until the evolutionist gains another summoner level. This ability replaces transposition."
+        },
+        {
+          "id": "summoner-evolutionist-transmogrify-sp-12",
+          "name": "Transmogrify (Sp)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, the evolutionist can cast transmogrify as a spell-like ability once per day without the need for a material component. This ability has a casting time of 1 minute. This ability replaces greater shield ally."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20Evolutionist"
+  }
+}

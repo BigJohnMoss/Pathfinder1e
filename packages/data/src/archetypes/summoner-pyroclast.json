@@ -1,0 +1,57 @@
+{
+  "id": "summoner-pyroclast",
+  "name": "Pyroclast",
+  "classId": "summoner",
+  "summary": "Pyroclasts harness the primal elemental energy of magma. Their eidolons often resemble elemental beings.",
+  "replacesText": "Spellcasting; Eidolon; Maker’s Call; Transposition",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-spellcasting-1",
+        "summoner-eidolon-1",
+        "summoner-twin-eidolon-20",
+        "summoner-makers-call-6",
+        "summoner-transposition-8"
+      ],
+      "features": [
+        {
+          "id": "summoner-pyroclast-diminished-spellcasting-1",
+          "name": "Diminished Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pyroclast receives one fewer spell per day of each level than normal. If this reduces the number of spells for a level to 0, he can cast spells of that level only if his Charisma score grants him bonus spells of that level. This alters the summoner’s spells."
+        },
+        {
+          "id": "summoner-pyroclast-bound-to-fire-ex-1",
+          "name": "Bound to Fire (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pyroclast’s eidolon begins with resist fire 10 and vulnerability to cold. This improves to resist fire 20 when the pyroclast reaches 5th level. A pyroclast’s eidolon gains the fire subtype and immunity to fire when he reaches 10th level. This ability permanently reduces the eidolon’s evolution pool by 1 point."
+        },
+        {
+          "id": "summoner-pyroclast-detonate-su-6",
+          "name": "Detonate (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a pyroclast can banish his eidolon in an explosion of fiery shards. This slays the eidolon and deals 1d6 points of damage per Hit Die of the eidolon to every creature in a 20-foot-radius burst (Reflex half, DC = 10 + 1/2 his summoner level + his Charisma modifier). Half of this damage is fire, and the other half is piercing. At 12th level, the pyroclast can reduce the damage by 4d6 to increase the burst radius to 40 feet. The pyroclast can use this ability once per day. This ability replaces maker’s call."
+        },
+        {
+          "id": "summoner-pyroclast-heart-of-earth-and-fire-ex-8",
+          "name": "Heart of Earth and Fire (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a pyroclast grants any of his summoned creatures with the earth or fire subtypes a +1 morale bonus on attack rolls, saving throws, and weapon damage rolls when he is within 30 feet. At 10th level, the pyroclast also grants these bonuses to his eidolon. This ability replaces transposition."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20Pyroclast"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "inquisitor-monster-tactician",
+  "name": "Monster Tactician",
+  "classId": "inquisitor",
+  "summary": "While most inquisitors have learned to take advantage of the movements of their opponents and allies in combat, some instead summon creatures as a means of claiming strategic advantage, exploiting the mystic connection between themselves and their summoned creatures to impart a bit of their own tactical knowledge.",
+  "replacesText": "Judgment; Discern Lies; Second Judgment; Third Judgment; Slayer; True Judgment",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-judgment-1",
+        "inquisitor-second-judgment-8",
+        "inquisitor-third-judgment-16",
+        "inquisitor-true-judgment-20",
+        "inquisitor-discern-lies-5",
+        "inquisitor-slayer-17"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-monster-tactician-summon-monster-sp-1",
+          "name": "Summon Monster (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Starting at 1st level, a monster tactician can cast summon monster I as a spell-like ability a number of times per day equal to 3 + her Wisdom modifier. She can cast this spell as a standard action, and the creatures remain for 1 minute per level (instead of 1 round per level). At 3rd level and every 2 inquisitor levels thereafter, the power of this ability increases by 1 spell level, allowing her to summon more powerful creatures (to a maximum of summon monster IX at 17th level). A monster tactician cannot have more than one summon monster spell active in this way at a time; if she uses another, any existing summon monster immediately ends. These summon monster spells are considered to be part of the monster tactician’s spell list for the purposes of spell trigger and spell completion items. In addition, she can expend uses of this ability to fulfill the construction requirements of any magic items she creates, so long as she can use this ability to cast the required spells. At 2nd level and each level thereafter, the monster tactician can add one monster from the expanded summon monster list (see pages 28–29) to her list of available summoned creatures. She can add a new option to any summon monster spell she can cast at the time she chooses the monster; once made, these choices cannot be changed. This ability replaces judgment."
+        },
+        {
+          "id": "inquisitor-monster-tactician-summon-tactics-su-5",
+          "name": "Summon Tactics (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, every time a monster tactician casts a summoning spell, she can choose any one teamwork feat she knows. All creatures summoned by the spell are treated as if they had the chosen feat for all purposes, without needing to meet any prerequisites. At 8th level and again at 16th level, the number of teamwork feats that she can choose when casting a summoning spell increases by 1. She cannot choose the same feat twice. At 20th level, all creatures summoned by the spell are treated as if they knew all of the monster tactician’s teamwork feats. This ability replaces discern lies , second judgment, third judgment, slayer, and true judgment."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Monster%20Tactician"
+  }
+}

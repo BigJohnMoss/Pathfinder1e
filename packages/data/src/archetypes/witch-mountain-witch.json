@@ -1,0 +1,78 @@
+{
+  "id": "witch-mountain-witch",
+  "name": "Mountain Witch",
+  "classId": "witch",
+  "summary": "Mountains can be sanctuaries for witches hunted by society. Here they form bonds with the spirits of the lofty reaches.",
+  "replacesText": "Spells; Hex; 2nd-level Hex",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-spellcasting-1",
+        "witch-hex-1",
+        "witch-hex-2",
+        "witch-hex-4",
+        "witch-hex-6",
+        "witch-hex-8",
+        "witch-major-hex-10",
+        "witch-major-hex-12",
+        "witch-major-hex-14",
+        "witch-major-hex-16",
+        "witch-grand-hex-18",
+        "witch-grand-hex-20"
+      ],
+      "features": [
+        {
+          "id": "witch-mountain-witch-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mountain witch replaces some of her patron spells with the following: 2nd— magic stone , 4th— stone call APG , 6th— meld into stone , 8th— stoneskin , 10th— wall of stone , 12th— stone tell , 14th— statue , 16th— repel metal or stone , 18th— clashing rocks APG ."
+        },
+        {
+          "id": "witch-mountain-witch-stone-spirit-hex-1",
+          "name": "Stone Spirit Hex",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A mountain witch can select hexes from the shaman’s stone spirit (see page 44) as if they were witch hexes. She uses her witch level as her shaman level to determine the effect of the hex, and Intelligence instead of Wisdom to determine its DC. This ability alters hex."
+        },
+        {
+          "id": "witch-mountain-witch-mountain-beast-empathy-ex-2",
+          "name": "Mountain Beast Empathy (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a mountain witch can influence the attitude of mountain-dwelling animals, as the druid’s wild empathy class feature but only on animals native to mountainous environments. The mountain witch uses her witch level as her druid level for this ability. This ability replaces the hex gained at 2nd level."
+        },
+        {
+          "id": "witch-mountain-witch-hexes-1",
+          "name": "Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following witch hexes complement the mountain witch archetype: beast of ill-omen UM , crystal sight*, lodestone*, metal curse*, stone stability*, and ward of stone*. (Those with asterisks [*] are detailed in the shaman class.)"
+        },
+        {
+          "id": "witch-mountain-witch-major-hexes-1",
+          "name": "Major Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following major hexes complement the mountain witch archetype: beast eye UM , hidden home UM , hoarfrost UM , and weather control."
+        },
+        {
+          "id": "witch-mountain-witch-grand-hexes-1",
+          "name": "Grand Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following grand hexes complement the mountain witch archetype: eternal slumber, natural disaster, and witch’s hut UM ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Mountain%20Witch"
+  }
+}

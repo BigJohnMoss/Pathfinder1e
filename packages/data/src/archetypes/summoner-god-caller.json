@@ -1,0 +1,72 @@
+{
+  "id": "summoner-god-caller",
+  "name": "God Caller",
+  "classId": "summoner",
+  "summary": "God callers follow a fractured tradition that originated in the now-lost nation of Sarkoris. They speak to an assortment of ancient divine powers to lead their communities and sometimes stir up reformations in faiths with ideals similar to their personal convictions.",
+  "replacesText": "Class Skills; Life Link; Transposition; Aspect; Greater Aspect; Twin Eidolon",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-life-link-1",
+        "summoner-transposition-8",
+        "summoner-aspect-10",
+        "summoner-greater-aspect-18",
+        "summoner-eidolon-1",
+        "summoner-twin-eidolon-20"
+      ],
+      "features": [
+        {
+          "id": "summoner-god-caller-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A god caller adds Diplomacy and Intimidate to his list of class skills, instead of Knowledge (dungeoneering, engineering, geography, and nature) and Use Magic Device. This ability alters the summoner’s class skills."
+        },
+        {
+          "id": "summoner-god-caller-guidance-sp-1",
+          "name": "Guidance (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A god caller’s eidolon has a tiny spark of divinity. It can use guidance as a spell-like ability at will. However, the eidolon and the god caller must remain within 50 feet of one another for the eidolon to remain at full strength. If the eidolon is beyond 50 feet but closer than 1,000 feet, its current and maximum hit point totals are reduced by half. This ability alters life link."
+        },
+        {
+          "id": "summoner-god-caller-divine-word-ex-8",
+          "name": "Divine Word (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, if a god caller’s eidolon would grant him a bonus with the aid another action on a Diplomacy or Intimidate check, the god caller can instead choose to roll twice and take the better result. He makes the choice before rolling. Once per day while his eidolon uses the aid another action to assist him in such a check, if the god caller would improve a target’s attitude toward him, or gain a success if using the individual influence rules ( Ultimate Intrigue 102 ), he instead improves that target’s attitude by 2 steps or it counts as 2 successes. This ability replaces transposition."
+        },
+        {
+          "id": "summoner-god-caller-divine-awareness-sp-10",
+          "name": "Divine Awareness (Sp)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, after 10 minutes of concentration, a god caller’s eidolon can see from afar as per clairaudience/clairvoyance . The eidolon can do this once per day at 10th level, and an additional time per day every 4 summoner levels thereafter (maximum of 3 times per day at 18th level). This ability replaces aspect."
+        },
+        {
+          "id": "summoner-god-caller-divine-might-ex-18",
+          "name": "Divine Might (Ex)",
+          "level": 18,
+          "type": "archetype",
+          "summary": "At 18th level, a god caller’s eidolon’s attacks are treated as epic for the purpose of overcoming damage reduction and harming mythic creatures. This ability replaces greater aspect."
+        },
+        {
+          "id": "summoner-god-caller-overwhelming-presence-sp-20",
+          "name": "Overwhelming Presence (Sp)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a god caller’s eidolon can use overwhelming presence ( Pathfinder RPG Ultimate Magic 230 ) three times per day. The save DC is equal to 19 + the eidolon’s Charisma modifier. This ability replaces twin eidolon."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20God%20Caller"
+  }
+}

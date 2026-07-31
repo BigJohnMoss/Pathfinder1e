@@ -1,0 +1,55 @@
+{
+  "id": "alchemist-vaultbreaker",
+  "name": "Vaultbreaker",
+  "classId": "alchemist",
+  "summary": "The vaultbreaker combines stealth with his bomb-making talents to construct special focused charges that can disable or destroy hinges, locks, and similar mechanisms.",
+  "replacesText": "Brew Potion; Bombs; Throw Anything; Poison Use",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-brew-potion-1",
+        "alchemist-bomb-1",
+        "alchemist-throw-anything-1"
+      ],
+      "features": [
+        {
+          "id": "alchemist-vaultbreaker-breaking-and-entering-ex-1",
+          "name": "Breaking and Entering (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A vaultbreaker gains Stealth as a class skill and can disarm magical traps as if he were a rogue with the trapfinding ability . This ability replaces the Brew Potion bonus feat."
+        },
+        {
+          "id": "alchemist-vaultbreaker-rogue-talents-1",
+          "name": "Rogue Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A vaultbreaker can choose any of the following rogue talents in place of a discovery: expert leaper, fast stealth, ledge walker, nimble climber, or wall scramble. This ability alters discoveries."
+        },
+        {
+          "id": "alchemist-vaultbreaker-safecracking-ex-1",
+          "name": "Safecracking (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a vaultbreaker’s bombs can help him disable locks. He gains penetrating charge as a bonus discovery. Because this ability replaces Throw Anything , the vaultbreaker’s bombs do not add his Intelligence bonus to damage rolls. This ability alters bombs and replaces the Throw Anything bonus feat."
+        },
+        {
+          "id": "alchemist-vaultbreaker-enhanced-safecracking-ex-3",
+          "name": "Enhanced Safecracking (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a vaultbreaker gains incendiary charge as a bonus discovery, and his incendiary charges ignore 10 points of an object’s hardness instead of 5. This ability alters bombs and replaces the poison use class ability."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Vaultbreaker"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "witch-cartomancer",
+  "name": "Cartomancer",
+  "classId": "witch",
+  "summary": "A witch who serves the spirits of the harrow in exchange for mystical power is known as a cartomancer.",
+  "replacesText": "Familiar; 2nd-level Hex",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-familiar-1",
+        "witch-hex-2"
+      ],
+      "features": [
+        {
+          "id": "witch-cartomancer-spell-deck-3",
+          "name": "Spell Deck",
+          "level": 3,
+          "type": "archetype",
+          "summary": "Each cartomancer carries a special harrow deck that allows her to communicate with her patron. Its ability to hold spells functions identically to the way a witch’s spells are granted by her familiar. The cartomancer must consult her harrow deck each day to prepare her spells and cannot prepare spells that are not stored in the deck. The spell deck cannot be used for this purpose if any cards are missing. This ability replaces the witch’s familiar. The following familiar ability works differently for a cartomancer. Deliver Touch Spells (Su) : At 3rd level, when the cartomancer uses the Deadly Dealer feat with a card from her spell deck, the card is not destroyed and gains the returning weapon special ability. In addition, the cartomancer can deliver a touch spell with a thrown card. This uses the Deadly Dealer feat (see below), except the attack is resolved as a ranged touch attack and the card deals no damage of its own. This ability can be used with any card (not just one from the cartomancer’s spell deck)."
+        },
+        {
+          "id": "witch-cartomancer-deadly-dealer-2",
+          "name": "Deadly Dealer",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a cartomancer gains the Deadly Dealer feat (see sidebar) as a bonus feat, even if she does not meet the prerequisites. The cartomancer gains the benefits of the Arcane Strike feat, but only for the purposes of using Deadly Dealer. This replaces the witch’s 2nd-level hex."
+        },
+        {
+          "id": "witch-cartomancer-hexes-1",
+          "name": "Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following witch hexes complement the cartomancer archetype: evil eye APG , fortune APG , misfortune APG , soothsayer (see below)."
+        },
+        {
+          "id": "witch-cartomancer-major-hexes-1",
+          "name": "Major Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following major hexes complement the cartomancer archetype: harrowing curse (see below), vision APG ."
+        },
+        {
+          "id": "witch-cartomancer-grand-hexes-1",
+          "name": "Grand Hexes",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following grand hex complements the cartomancer archetype: dire prophecy UM ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Cartomancer"
+  }
+}

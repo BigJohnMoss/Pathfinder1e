@@ -1,0 +1,48 @@
+{
+  "id": "witch-venom-siphoner",
+  "name": "Venom Siphoner",
+  "classId": "witch",
+  "summary": "Witches are no strangers to poisons, using them alongside their various brews, curses, spells, and other tools of the trade.",
+  "replacesText": "1st, 2nd, 6th-level Hex; Alertness",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-hex-1",
+        "witch-hex-2",
+        "witch-hex-6"
+      ],
+      "features": [
+        {
+          "id": "witch-venom-siphoner-poisonous-familiar-ex-1",
+          "name": "Poisonous Familiar (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The venom siphoner chooses either her familiar’s bite attack or its claw attacks; once chosen, this selection can’t be changed. The chosen natural attack gains the following poison ability: Siphoner Poison : Natural attack—injury; save Fort DC 10 + half the witch’s level + the witch’s Intelligence modifier; frequency 1/round for 6 rounds; effect 1d2 Dex; cure 1 save. Familiars without an appropriate natural attack instead gain the ability to spit the poison as a ranged touch attack. This spit attack deals no damage, but it exposes the struck creature to the poison, forcing it to attempt a saving throw to resist the poison as normal. If the familiar already has a poison, the witch can instead empower its poison. An empowered poison’s frequency increases by 50%. If the witch ever replaces her familiar, she must choose how this ability applies to her new familiar as soon as she receives it. This replaces the hex gained at 1st level and the familiar’s alertness special ability."
+        },
+        {
+          "id": "witch-venom-siphoner-venom-expert-ex-2",
+          "name": "Venom Expert (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a venom siphoner does not risk exposure to her familiar’s poison when attempting to milk venom from it (see page 142 of Pathfinder RPG Ultimate Wilderness ). This replaces the hex gained at 2nd level."
+        },
+        {
+          "id": "witch-venom-siphoner-toxic-blood-ex-6",
+          "name": "Toxic Blood (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the venom siphoner’s blood becomes toxic, empowering her abilities. Any creature that deals bleed damage to her with a natural, light, or one-handed weapon is automatically exposed to the same poison granted to her familiar and must succeed at the save or be affected by the poison. Additionally, when casting spells that have a single target and require a Fortitude save, she can cause the spell to deliver this poison as a free action; a target who succeeds at the save against the spell also avoids being affected by the poison. She can cause spells to deliver poison in this way a number of times per day equal to 3 + her Intelligence modifier. This ability refreshes when the venom siphoner communes with her familiar to prepare her daily spells. This replaces the hex gained at 6th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Venom%20Siphoner"
+  }
+}

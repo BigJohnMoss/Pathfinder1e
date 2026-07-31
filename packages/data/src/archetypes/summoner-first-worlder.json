@@ -1,0 +1,48 @@
+{
+  "id": "summoner-first-worlder",
+  "name": "First Worlder",
+  "classId": "summoner",
+  "summary": "A first worlder summoner has a more primal connection to nature, their power being tied to the First World.",
+  "replacesText": "Summon Monster I; Eidolon",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-monster-1",
+        "summoner-eidolon-1",
+        "summoner-twin-eidolon-20"
+      ],
+      "features": [
+        {
+          "id": "summoner-first-worlder-summon-nature-s-ally-sp-1",
+          "name": "Summon Nature’s Ally (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Starting at 1st level, a first worlder can cast summon nature’s ally a number of times per day equal to 3 + his Charisma modifier. At levels where a summoner would gain a more powerful summon monster spell as a spell-like ability, he instead gains the equivalent summon nature’s ally spell (at 19th level, he can use summon nature’s ally IX or gate ). When a first worlder gains a summon nature’s ally spell as a spell-like ability, he adds it to his class spell list (he must still select it as a spell known if he wants to cast it as an actual spell). This ability otherwise replaces the summon monster ability of a normal summoner."
+        },
+        {
+          "id": "summoner-first-worlder-fey-summons-su-3",
+          "name": "Fey Summons (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a first worlder adds the following creatures to the lists of what he can summon with his summon nature’s ally spell-like ability: Summon nature’s ally II : gremlin ( jinkin, pugwampi, or vexgit, see Bestiary 2). Summon nature’s ally III : gremlin (nuglub, see Bestiary 2). Summon nature’s ally IV : unicorn. Summon nature’s ally V : pixie, satyr. Summon nature’s ally VII : nymph."
+        },
+        {
+          "id": "summoner-first-worlder-eidolon-1",
+          "name": "Eidolon",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Instead of an outsider, a first worlder’s eidolon has the fey creature type and the extraplanar subtype. Its statistics are changed from a standard eidolon as follows: Hit Dice : d6 Hit Die (instead of d10). BAB : Equal to 1/2 the eidolon’s Hit Dice. Good/Bad Saves : The eidolon’s good saves area always Reflex and Will. Skills : The eidolon’s class skills are Acrobatics, Bluff, Climb, Craft, Diplomacy, Disguise, Escape Artist, Fly, Knowledge (geography), Knowledge (nature), Perception, Perform, Sense Motive, Sleight of Hand, Stealth, Swim, and Use Magic Device. Senses : The eidolon gains low-light vision instead of darkvision. The summoner can grant the eidolon darkvision 60 ft. as a 1-point evolution. Damage Reduction : If the first worlder chooses this evolution, he may select DR/cold iron instead of one of the alignment-based types of damage reduction. This otherwise works like and replaces the eidolon ability of a normal summoner."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20First%20Worlder"
+  }
+}

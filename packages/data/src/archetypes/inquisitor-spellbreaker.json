@@ -1,0 +1,63 @@
+{
+  "id": "inquisitor-spellbreaker",
+  "name": "Spellbreaker",
+  "classId": "inquisitor",
+  "summary": "The world is full of dangerous magic, and many recoil in the face of such power. The spellbreaker, by contrast, learns to recognize and resist certain types of magic, wading through waves of magic to reach her foes.",
+  "replacesText": "Monster Lore; Bonus Teamwork Feats; Solo Tactics; Final Judgment",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-monster-lore-1",
+        "inquisitor-teamwork-3",
+        "inquisitor-teamwork-6",
+        "inquisitor-teamwork-9",
+        "inquisitor-teamwork-12",
+        "inquisitor-teamwork-15",
+        "inquisitor-teamwork-18",
+        "inquisitor-solo-tactics-3",
+        "inquisitor-judgment-1",
+        "inquisitor-second-judgment-8",
+        "inquisitor-third-judgment-16"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-spellbreaker-strong-willed-ex-1",
+          "name": "Strong-Willed (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a spellbreaker is able to stand strong against magical effects that seek to control, compel, or persuade her. The spellbreaker rolls twice and takes the best result when making a Will saving throw against a mind-affecting effect. This ability replaces monster lore."
+        },
+        {
+          "id": "inquisitor-spellbreaker-defense-against-magic-ex-3",
+          "name": "Defense against Magic (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a spellbreaker picks a single wizard school. She gains a +1 bonus on saving throws against arcane spells of that school. Every four levels beyond 3rd, the spellbreaker picks a new school and gains this bonus against arcane spells of that school (to a maximum of five schools of magic at 19th level). Furthermore, each time the spellbreaker picks a new school, the bonuses for the schools she has already chosen increase by 1. This ability replaces all bonus teamwork feats."
+        },
+        {
+          "id": "inquisitor-spellbreaker-foil-casting-su-3",
+          "name": "Foil Casting (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, when an opponent tries to cast an arcane spell within a spellbreaker’s threatened area, the DC for that caster to cast defensively increases by 2. This increase stacks with the effects of the Disruptive feat. Furthermore, the spellbreaker knows where to hit foes to foil casting from a distance. Each time she hits an arcane spellcaster or a creature that uses spell-like abilities with a ranged weapon attack, the DC of any Concentration checks the caster makes increases by 2 for 1 round. This ability replaces solo tactics."
+        },
+        {
+          "id": "inquisitor-spellbreaker-impervious-ex-20",
+          "name": "Impervious (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a spellbreaker becomes immune to the effects of a single school of arcane magic. That school of magic must be the first one she picked for defense against magic (see above). Neither harmful nor helpful arcane spells of that school have an effect on the spellbreaker. If a spell of that school is an area of effect spell, the spell goes off as normal, but the spellbreaker is untouched by its effects. Once per day, as a swift action, the spellbreaker can grant this imperviousness to all allies in a 60-foot burst for 1 minute. This ability replaces final judgment."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Spellbreaker"
+  }
+}

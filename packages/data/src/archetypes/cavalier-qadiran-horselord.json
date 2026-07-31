@@ -1,0 +1,79 @@
+{
+  "id": "cavalier-qadiran-horselord",
+  "name": "Qadiran Horselord",
+  "classId": "cavalier",
+  "summary": "Much like the breed of horses they ride, Qadiran horselords pride themselves on their mobility and endurance.",
+  "replacesText": "Weapon and Armor Proficiency; Mount; Tactician; Cavalier's Charge; 6th-level Bonus Feat; Greater Tactician; Master Tactician",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-mount-1",
+        "cavalier-tactician-1",
+        "cavalier-greater-tactician-9",
+        "cavalier-master-tactician-17",
+        "cavalier-charge-3",
+        "cavalier-bonus-feat-6"
+      ],
+      "features": [
+        {
+          "id": "cavalier-qadiran-horselord-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Qadiran horselord is proficient with all simple and martial weapons, with light and medium armor, and with shields (except tower shields). This replaces the cavalier’s normal weapon and armor proficiencies."
+        },
+        {
+          "id": "cavalier-qadiran-horselord-mount-ex-1",
+          "name": "Mount (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Qadiran horselord must select a horse or pony as his mount. At the GM’s discretion, a different mount can be selected. This ability alters the cavalier mount class feature."
+        },
+        {
+          "id": "cavalier-qadiran-horselord-desert-wind-ex-5",
+          "name": "Desert Wind (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "The speed of a Qadiran horselord’s mount increases by 5 feet. Its speed increases by an additional 5 feet at 5th level and every 5 cavalier levels thereafter. This ability replaces tactician."
+        },
+        {
+          "id": "cavalier-qadiran-horselord-desert-mastery-ex-3",
+          "name": "Desert Mastery (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a Qadiran horselord gains favored terrain (desert) as per the ranger ability of the same name . At 8th level and every 5 levels thereafter, the granted bonus on initiative and skill checks increases by 2, but the Qadiran horselord never selects additional favored terrains. Additionally, his mount gains all the benefits of the favored terrain ability. This ability replaces cavalier’s charge."
+        },
+        {
+          "id": "cavalier-qadiran-horselord-sand-storm-ex-6",
+          "name": "Sand Storm (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a Qadiran horselord gains the benefits of the Mobility feat so long as he is mounted. Additionally, he deals double damage while using a one-handed slashing weapon from the back of a charging mount, as though using a lance. This ability replaces the bonus feat gained at 6th level."
+        },
+        {
+          "id": "cavalier-qadiran-horselord-as-one-ex-9",
+          "name": "As One (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a Qadiran horselord gains the benefits of the Spring Attack feat so long as he is mounted. He uses his mount’s movement for this action, and neither he nor his mount provokes attacks of opportunity from the target. When he makes a single attack with a one-handed slashing weapon in this way, the attack deals 1d6 additional points of damage. This bonus damage increases to 3d6 at 17th level. This ability counts as the Spring Attack feat for the purpose of meeting feat prerequisites, but only while the Qadiran horselord is mounted. This replaces greater tactician."
+        },
+        {
+          "id": "cavalier-qadiran-horselord-sand-scourge-ex-17",
+          "name": "Sand Scourge (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a Qadiran horselord and his mount can make a tactical rush through enemy ranks as a full-round action. His mount can move up to twice its normal speed in a straight line. The Qadiran horselord can make a single attack against each creature he threatens during his mount’s movement, up to his normal number of attacks per round. These attacks use his full base attack bonus and take a –2 penalty; this is not a charge, and these attacks deal normal damage. The Qadiran horselord provokes attacks of opportunity during this movement, but his mount does not. This ability replaces master tactician."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Qadiran%20Horselord"
+  }
+}

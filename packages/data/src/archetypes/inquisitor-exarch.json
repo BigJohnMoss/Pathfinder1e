@@ -1,0 +1,86 @@
+{
+  "id": "inquisitor-exarch",
+  "name": "Exarch",
+  "classId": "inquisitor",
+  "summary": "(Dwarf Only) The gruff traditionalism of most dwarves finds its apex in those who adhere to a strict orthodoxy rooted in ancient principles and practices and who are not amenable whatsoever to change or innovation.",
+  "replacesText": "Monster Lore; Detect Alignment; Bane; Second Judgment; Greater Bane; Third Judgment",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "inquisitor-monster-lore-1",
+        "inquisitor-detect-alignment-2",
+        "inquisitor-bane-5",
+        "inquisitor-greater-bane-12",
+        "inquisitor-judgment-1",
+        "inquisitor-second-judgment-8",
+        "inquisitor-third-judgment-16"
+      ],
+      "features": [
+        {
+          "id": "inquisitor-exarch-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Exarchs cannot cast spells with the chaotic descriptor."
+        },
+        {
+          "id": "inquisitor-exarch-inflexible-will-ex-1",
+          "name": "Inflexible Will (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an exarch gains a +2 bonus on saving throws against confusion and insanity effects and effects with the chaotic descriptor. This ability replaces monster lore."
+        },
+        {
+          "id": "inquisitor-exarch-detect-chaos-sp-1",
+          "name": "Detect Chaos (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At will, an exarch can use detect chaos . This ability replaces detect alignment."
+        },
+        {
+          "id": "inquisitor-exarch-fearsome-jurist-su-5",
+          "name": "Fearsome Jurist (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, an exarch can imbue one of her weapons with the jurist or menacing weapon special ability as a swift action, and may switch between these properties as a swift action. When using either special ability, her weapon’s critical threat range doubles against chaotic creatures. This does not stack with keen edge , Improved Critical, or similar effects. This ability otherwise functions as and replaces bane."
+        },
+        {
+          "id": "inquisitor-exarch-aura-of-repetition-su-8",
+          "name": "Aura of Repetition (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, once per day while using her judgment, an exarch can project an aura of repetition, as the Toil subdomain power. If the exarch takes Artifice (Toil) as her domain, the save DC of her aura increases by 2 but its duration does not increase. This ability replaces her second judgment."
+        },
+        {
+          "id": "inquisitor-exarch-double-jeopardy-su-12",
+          "name": "Double Jeopardy (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, whenever an exarch uses her fearsome jurist ability, she may choose to affect two weapons, with one gaining the jurist weapon special ability and the other the menacing special ability as above. Both special abilities may be combined in a single weapon, whose critical threat range doubles. This does not stack with keen edge , Improved Critical, or similar effects. This ability replaces greater bane."
+        },
+        {
+          "id": "inquisitor-exarch-aura-of-reversion-su-16",
+          "name": "Aura of Reversion (Su)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, while using her judgment, an exarch can project a 30-foot-radius emanation for a number of rounds per day equal to her inquisitor level. Any creature other than the exarch that is using a transmutation effect within this aura at the beginning of its turn becomes sickened, or sickened and nauseated if using a polymorph effect, including the change shape ability (Fortitude negates; DC 10 + 1/2 the exarch’s level + her Wisdom modifier). Continuous effects from permanent magical items do not cause this effect. Within the aura, dispel checks against transmutation effects gain a +4 bonus. This ability cannot be used simultaneously with aura of repetition. This ability replaces her third judgment."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Inquisitor%20Exarch"
+  },
+  "requirements": [
+    {
+      "type": "ancestry",
+      "id": "dwarf"
+    }
+  ]
+}

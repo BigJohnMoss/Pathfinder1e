@@ -1,0 +1,39 @@
+{
+  "id": "alchemist-ectoplasm-master",
+  "name": "Ectoplasm Master",
+  "classId": "alchemist",
+  "summary": "Alchemists capable of distilling spectral horrors into alchemical reagents.",
+  "replacesText": "Brew Potion",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-brew-potion-1"
+      ],
+      "features": [
+        {
+          "id": "alchemist-ectoplasm-master-ectoplasmic-extracts-su-1",
+          "name": "Ectoplasmic Extracts (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Instead of using alchemical reagents in order to create alchemical items (including his bombs, extracts, and mutagens), an ectoplasm master uses reagents such as corpse dust, crystallized ectoplasm, and similar reagents as alchemical catalysts. Just as with standard alchemists, the costs of these materials are insignificant and are comparable to the costs of the valueless material components of most spells. As a result of his eccentric techniques and use of odd alchemical components, an ectoplasm master has an expanded formula list. He adds all sorcerer/wizard spells of 6th level or lower from the necromancy school to his alchemist formula list (but must still learn each of these spells normally). If a spell appears on both the alchemist formula list and the sorcerer/wizard spell list, the ectoplasm master uses the lower of the two spell levels listed for the spell. This ability alters extracts and replaces Brew Potion."
+        },
+        {
+          "id": "alchemist-ectoplasm-master-ectoplasm-master-discoveries-su-1",
+          "name": "Ectoplasm Master Discoveries (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An ectoplasm master is able to select the following alchemist discoveries, in addition to general discoveries. Ectoplasmic Mutagen : Whenever the ectoplasm master imbibes a mutagen, his living flesh transmutes into ectoplasm, causing him to take on a semiliquid form. He no longer gains a natural armor bonus from his mutagen, but instead becomes immune to critical hits and precision damage (such as sneak attacks) while under the mutagen’s effects. An ectoplasm master must be at least 6th level to learn this discovery. Ectoplasmic Servant : An ectoplasm master who selects this discovery adds all summon monster spells of 6th level or lower to his alchemist formula list as ectoplasmic extracts. Whenever he summons a creature using an ectoplasmic extract, the creature must appear in a square adjacent to his own, and it gains the ectoplasmic creature template . Creatures summoned using ectoplasmic extracts cannot have templates other than the ectoplasmic creature template. Siphon Bomb : The ectoplasm master’s bombs can be modified to neutralize and crystallize the ectoplasmic energy of haunts and incorporeal undead. A siphon bomb deals full damage to incorporeal creatures as if it were a force effect, but deals only nonlethal damage to corporeal creatures. A siphon bomb also damages haunts, provided the siphon bomb explodes within a haunt’s area of effect. This discovery modifies the alchemist’s bombs and doesn’t stack with other discoveries that modify bombs."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Ectoplasm%20Master"
+  }
+}

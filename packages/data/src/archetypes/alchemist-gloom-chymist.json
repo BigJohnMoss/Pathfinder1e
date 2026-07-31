@@ -1,0 +1,42 @@
+{
+  "id": "alchemist-gloom-chymist",
+  "name": "Gloom Chymist",
+  "classId": "alchemist",
+  "summary": "A breakthrough in Nidalese alchemy led to the creation of glooms, magical fields of darkness from the Shadow Plane that can be momentarily animated with the use of strange compounds.",
+  "replacesText": "Bomb; Poison Resistance; Poison Use; Swift Poisoning",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-bomb-1",
+        "alchemist-poison-resistance-2",
+        "alchemist-poison-immunity-10",
+        "alchemist-swift-poisoning-6"
+      ],
+      "features": [
+        {
+          "id": "alchemist-gloom-chymist-gloom-su-1",
+          "name": "Gloom (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A gloom chymist is skilled at mixing potent concoctions known as glooms, which are infused with shadow energy. A gloom is identical to a bomb except that it deals 1d6 points of cold damage + additional damage equal to the gloom chymist’s Intelligence modifier. This damage increases by 1d6 for every 2 alchemist levels beyond 1st the gloom chymist has. A gloom does not qualify as a bomb for the purposes of feats or discoveries. This ability replaces bomb."
+        },
+        {
+          "id": "alchemist-gloom-chymist-umbral-gloom-su-2",
+          "name": "Umbral Gloom (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, whenever a gloom chymist makes a gloom, he can have it increase or decrease the light level by one step within its splash radius, in addition to its other effects. This change lasts for a number of rounds equal to the gloom chymist’s Intelligence modifier. At 8th level, the gloom chymist expend two uses of his daily glooms to increase or decrease light levels as per daylight or deeper darkness , respectively, using his alchemist level as the caster level. This ability replaces poison resistance, poison use, and swift poisoning."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Gloom%20Chymist"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "cavalier-strategist",
+  "name": "Strategist",
+  "classId": "cavalier",
+  "summary": "Some cavaliers make a lifelong mission out of their exceptional ability to direct troops on the battlefield, combining tactical insight with a preternatural skill at improving the teamwork of their allies in order to win the day.",
+  "replacesText": "Expert Trainer; Greater Banner; 18th-level Bonus Feat",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "cavalier-expert-trainer-4",
+        "cavalier-banner-5",
+        "cavalier-bonus-feat-18"
+      ],
+      "features": [
+        {
+          "id": "cavalier-strategist-tactician-ex-1",
+          "name": "Tactician (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "As the cavalier class feature, except that a strategist can use this ability once per day at 1st level, plus one additional time per day at 5th level and for every four levels thereafter (to a maximum of five times per day at 17th level)."
+        },
+        {
+          "id": "cavalier-strategist-drill-instructor-ex-4",
+          "name": "Drill Instructor (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a strategist learns to train his fellow adventurers in the nuances of squad combat. By spending 10 minutes and expending 1 use of his challenge ability, the strategist can grant the use of a teamwork feat that he knows to up to four of his allies, similar to the tactician ability. As with tactician, allies need not meet the prerequisites of the granted feat, but they retain the use of this feat for 10 minutes plus 1 minute for every two levels the cavalier possesses, as long as the cavalier is visible and can be heard by his allies. If the cavalier falls unconscious or cannot be both seen and heard, his allies lose the benefit of the granted feat until the condition is remedied. This ability replaces expert trainer."
+        },
+        {
+          "id": "cavalier-strategist-tactical-advantage-ex-14",
+          "name": "Tactical Advantage (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, whenever a strategist uses his tactician ability to grant the use of a teamwork feat to his allies, he can move up to his speed as a free action either before or after granting the feat. This movement provokes attacks of opportunity normally. This ability replaces greater banner."
+        },
+        {
+          "id": "cavalier-strategist-strategic-supremacy-ex-18",
+          "name": "Strategic Supremacy (Ex)",
+          "level": 18,
+          "type": "archetype",
+          "summary": "At 18th level, a strategist gains the ability not only to improve his allies’ abilities, but also to disrupt the teamwork of his enemies. Whenever the strategist uses the tactician ability, he can choose to cancel out the effects of one teamwork feat employed by any of his opponents within 30 feet instead of granting the use of a teamwork feat to his allies. This ability replaces the cavalier’s 18th-level bonus feat."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Strategist"
+  }
+}

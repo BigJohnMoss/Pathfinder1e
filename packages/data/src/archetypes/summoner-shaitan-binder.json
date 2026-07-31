@@ -1,0 +1,68 @@
+{
+  "id": "summoner-shaitan-binder",
+  "name": "Shaitan Binder",
+  "classId": "summoner",
+  "summary": "(Oread Only) Shaitan binders call upon a reflection of their genie ancestors to serve as their eidolons.",
+  "replacesText": "Share Spells; Shield Ally; Greater Shield Ally; Aspect; Greater Aspect; Twin Eidolon",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "summoner-shield-ally-4",
+        "summoner-greater-shield-12",
+        "summoner-aspect-10",
+        "summoner-greater-aspect-18",
+        "summoner-eidolon-1",
+        "summoner-twin-eidolon-20"
+      ],
+      "features": [
+        {
+          "id": "summoner-shaitan-binder-base-form-1",
+          "name": "Base Form",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, if a shaitan binder’s eidolon has the biped base form, it gains a +2 bonus to one ability score. The shaitan binder must make this choice at 1st level. If at any time the shaitan binder’s eidolon has another base form, it loses this bonus until it returns to biped form. A shaitan binder’s eidolon does not gain the share spells ability."
+        },
+        {
+          "id": "summoner-shaitan-binder-shaitan-magic-su-4",
+          "name": "Shaitan Magic (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a shaitan binder’s eidolon gains the basic magic evolution as a free evolution. At 6th level, it gains the minor magic evolution. At 8th level, it gains the major magic evolution as a free evolution, and adds the following to the list of available spells for that evolution: glitterdust and soften earth and stone . At 12th level, it gains the ultimate magic evolution as a free evolution, and adds the following to the list of available spells for that evolution: meld into stone and stone shape . Although the shaitan binder gains the standard versions of these evolutions for free, he must pay the normal cost to upgrade them to the improved versions. This ability replaces shield ally and greater shield ally."
+        },
+        {
+          "id": "summoner-shaitan-binder-earth-glide-su-10",
+          "name": "Earth Glide (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, if a shaitan binder’s eidolon has the burrow evolution, it gains the earth glide universal monster ability and can use this ability to travel at its full base speed. This ability replaces aspect."
+        },
+        {
+          "id": "summoner-shaitan-binder-stone-curse-su-18",
+          "name": "Stone Curse (Su)",
+          "level": 18,
+          "type": "archetype",
+          "summary": "At 18th level, a shaitan binder may select stone curse as a 4-point evolution. This allows the eidolon to trap creatures in stone like the shaitan stone curse ability. The DC to resist or break free of the stone curse is 10 + 1/2 the eidolon’s Hit Dice + the eidolon’s Strength score. This ability replaces greater aspect."
+        },
+        {
+          "id": "summoner-shaitan-binder-noble-eidolon-sp-20",
+          "name": "Noble Eidolon (Sp)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a shaitan binder’s eidolon gains the ability to grant its summoner’s wishes. Once per day, the eidolon can cast limited wish as a spell-like ability. The eidolon’s caster level is equal to its level. The wish must be spoken aloud by the shaitan binder, beginning with the words \"I wish,\" and cannot duplicate a wish the eidolon has granted within the past 24 hours. If the eidolon uses this ability to duplicate a spell with a costly material component, the shaitan binder must provide that component. This ability replaces twin eidolon."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Summoner%20Shaitan%20Binder"
+  },
+  "manualRequirements": [
+    "Restricted to Oread characters; that ancestry is not yet available in this builder."
+  ]
+}

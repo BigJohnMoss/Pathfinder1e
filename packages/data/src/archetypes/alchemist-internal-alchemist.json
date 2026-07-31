@@ -1,0 +1,62 @@
+{
+  "id": "alchemist-internal-alchemist",
+  "name": "Internal Alchemist",
+  "classId": "alchemist",
+  "summary": "An internal alchemist studies medicine, diet, and the living body to purify the self in the hope of gaining immortality.",
+  "replacesText": "Throw Anything; Swift Alchemy; Swift Poisoning",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-throw-anything-1",
+        "alchemist-swift-alchemy-3",
+        "alchemist-swift-poisoning-6"
+      ],
+      "features": [
+        {
+          "id": "alchemist-internal-alchemist-breath-mastery-1",
+          "name": "Breath Mastery",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the internal alchemist can control his breath and the flow of vital energy within his body. Without preparation, he can hold his breath for a number of minutes equal to his Constitution score (after this, he must begin making Constitution checks or risk suffocation); by spending a full-round action preparing himself, he can increase this duration to 1 hour per point of Constitution. The alchemist can survive twice as long as normal without food or water before he starts to take penalties. He can put himself into a state of suspended animation as a move action, and is then unconscious and appears completely dead; he awakens at a preset time or in response to a condition set by him when he enters this state. This ability replaces Throw Anything."
+        },
+        {
+          "id": "alchemist-internal-alchemist-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An internal alchemist can select Alertness , Extra Ki , Great Fortitude , Improved Critical (unarmed strike) , Improved Initiative , Improved Unarmed Strike , Iron Will , Lighting Reflexes , Stunning Fist , or Weapon Focus (unarmed strike) in place of an alchemical discovery."
+        },
+        {
+          "id": "alchemist-internal-alchemist-disease-resistance-3",
+          "name": "Disease Resistance",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, an internal alchemist gains a bonus on all saving throws against disease equal to his alchemist class bonus against poison. When he gains the poison immunity alchemist class ability, he becomes immune to disease as well. This ability replaces swift alchemy."
+        },
+        {
+          "id": "alchemist-internal-alchemist-uncanny-dodge-6",
+          "name": "Uncanny Dodge",
+          "level": 6,
+          "type": "archetype",
+          "summary": "Starting at 6th level, an internal alchemist can react to danger before his senses would normally allow him to do so. He cannot be caught flat-footed, nor does he lose his Dexterity bonus to AC if the attacker is invisible. However, he still loses his Dexterity bonus to AC if he is immobilized, or if an opponent successfully uses the feint action (see Bluff) against him. If the internal alchemist already has uncanny dodge from a different class, he automatically gains improved uncanny dodge (as a rogue) instead. This ability replaces swift poisoning."
+        },
+        {
+          "id": "alchemist-internal-alchemist-discoveries-1",
+          "name": "Discoveries",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following discoveries complement the internal alchemist archetype: cognatogen, elixir of life, grand cognatogen, greater cognatogen, lingering spirit, mummification, and spontaneous healing."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Internal%20Alchemist"
+  }
+}

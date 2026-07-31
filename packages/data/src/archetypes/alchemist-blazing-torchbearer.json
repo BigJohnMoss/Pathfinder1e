@@ -1,0 +1,47 @@
+{
+  "id": "alchemist-blazing-torchbearer",
+  "name": "Blazing Torchbearer",
+  "classId": "alchemist",
+  "summary": "The blazing torchbearer is especially adept at manipulating flames of all kinds.",
+  "replacesText": "Brew Potion; Poison Use; 4th-level Discovery",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "alchemist-brew-potion-1",
+        "alchemist-discovery-4"
+      ],
+      "features": [
+        {
+          "id": "alchemist-blazing-torchbearer-everburning-flame-ex-1",
+          "name": "Everburning Flame (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Any torch held by a blazing torchbearer is considered to be an everburning torch , although it still sheds heat and can be used as a weapon. In addition, a blazing torchbearer can cast spark as a spell-like ability at will. This ability replaces Brew Potion."
+        },
+        {
+          "id": "alchemist-blazing-torchbearer-intense-light-ex-2",
+          "name": "Intense Light (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a blazing torchbearer has mastered lighting and holding a torch to the point that it sheds more light than those carried by his peers. The radius of normal and increased illumination of any torch held by a blazing torchbearer increases by 10 feet. Once per day as a standard action, the blazing torchbearer can create a brilliant flash of light that blinds everyone within 10 feet (including the torchbearer) for 1 round. This ability replaces poison use."
+        },
+        {
+          "id": "alchemist-blazing-torchbearer-explosive-torch-ex-4",
+          "name": "Explosive Torch (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, as a standard action, a blazing torchbearer can drop a special blend of explosive powders onto his torch before using it as a weapon. His next successful melee attack with the torch deals an additional 2d6 points of fire damage and sets the target on fire. This attack must be made within 1d4 rounds or the torch prematurely explodes at the end of the blazing torchbearer’s turn, dealing damage to the blazing torchbearer and setting him on fire. This ability replaces the alchemist’s 4th-level discovery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Blazing%20Torchbearer"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "witch-white-haired-witch",
+  "name": "White-Haired Witch",
+  "classId": "witch",
+  "summary": "A white-haired witch concentrates her mysterious powers on improving her prowess in melee, using feats of agility and her prehensile hair to deal extreme damage.",
+  "replacesText": "Hex; Major Hex; Grand Hex",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "witch-hex-1",
+        "witch-hex-2",
+        "witch-hex-4",
+        "witch-hex-6",
+        "witch-hex-8",
+        "witch-major-hex-10",
+        "witch-major-hex-12",
+        "witch-major-hex-14",
+        "witch-major-hex-16",
+        "witch-grand-hex-18",
+        "witch-grand-hex-20"
+      ],
+      "features": [
+        {
+          "id": "witch-white-haired-witch-white-hair-su-1",
+          "name": "White Hair (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a white-haired witch gains the ability to use her hair as a weapon. This functions as a primary natural attack with a reach of 5 feet. The hair deals 1d4 points of damage (1d3 for a Small witch) plus the witch’s Intelligence modifier. In addition, whenever the hair strikes a foe, the witch can attempt to grapple that foe with her hair as a free action without provoking an attack of opportunity, using her Intelligence modifier in place of her Strength modifier when making the combat maneuver check. When a white-haired witch grapples a foe in this way, she does not gain the grappled condition. At 4th level and every four levels thereafter, a whitehaired witch’s hair adds 5 feet to its reach, to a maximum of 30 feet at 20th level. The hair cannot be sundered or attacked as a separate creature. In addition, a white-haired witch further improves her ability to control her hair as she progresses in level, gaining the following abilities. Constrict (Ex) : At 2nd level, when the white-haired witch’s hair successfully grapples an opponent, it can begin constricting her victim as a free action, dealing damage equal to that of its attack. Trip (Ex) : At 4th level, a white-haired witch who successfully strikes a foe with her hair can attempt a combat maneuver check to trip the creature as a free action. Pull (Ex) : At 6th level, a white-haired witch who successfully strikes a foe with her hair can attempt a combat maneuver check to pull the creature 5 feet closer to her as a free action. Strangle (Ex) : At 8th level, when the white-haired witch’s hair is grappling with an opponent, that creature is considered strangled, and cannot speak or cast spells with verbal components. This ability replaces hex."
+        },
+        {
+          "id": "witch-white-haired-witch-rogue-talents-10",
+          "name": "Rogue Talents",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a white-haired witch learns a rogue talent, using her white-haired witch level in place of her rogue level. At 12th level and for every two levels thereafter, she gains an additional rogue talent. A whitehaired witch cannot select an individual rogue talent more than once, and can select from among the following: assault leader*, combat trick, finesse rogue, major magic, minor magic, positioning attack*, resiliency, surprise attack, and weapon training. At 18th level and 20th level, a white-haired witch can choose from among the following advanced rogue talents: another day*, defensive roll, improved evasion, opportunist, redirect attack*, slippery mind, and thoughtful reexamining*. This ability replaces major hex and grand hex."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20White-Haired%20Witch"
+  }
+}
