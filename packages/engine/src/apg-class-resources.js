@@ -28,6 +28,16 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
       return { grit: Math.max(1, nonNegativeModifier(abilityModifiers.wisdom)) };
     case "samurai":
       return { challenges: Math.min(7, 1 + Math.floor((classLevel - 1) / 3)), resolve: Math.max(1, Math.floor(classLevel / 2)) };
+    case "brawler":
+      return {
+        martialFlexibility: 3 + Math.floor(classLevel / 2),
+        ...(classLevel >= 4 ? { knockout: 1 + (classLevel >= 10 ? 1 : 0) + (classLevel >= 16 ? 1 : 0) } : {})
+      };
+    case "swashbuckler":
+      return {
+        panache: Math.max(1, nonNegativeModifier(abilityModifiers.charisma)),
+        ...(classLevel >= 2 ? { charmedLife: 3 + Math.floor((classLevel - 2) / 4) } : {})
+      };
     default:
       return {};
   }

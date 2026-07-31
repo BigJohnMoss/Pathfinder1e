@@ -1905,6 +1905,10 @@ export default function Home() {
     arcanePool: ["Arcane Pool", "point"],
     grit: ["Grit", "point"],
     resolve: ["Resolve", "use"],
+    martialFlexibility: ["Martial Flexibility", "use"],
+    knockout: ["Knockout", "use"],
+    panache: ["Panache", "point"],
+    charmedLife: ["Charmed Life", "use"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>
