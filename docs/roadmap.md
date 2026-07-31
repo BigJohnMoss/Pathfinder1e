@@ -194,9 +194,7 @@ equipment, feat, spell, and installable-application workflow.
 - [x] representative level-20 data, engine, UI, and browser journeys pass for every class
 - [x] production build, installability, offline behavior, and deployment validation pass
 
-## Working rule
-
-## Active milestone: Builder Expansion
+## Completed milestone: Builder Expansion
 
 Expand the completed Core and APG builder through shared mechanics first, then
 add later class families without weakening existing save files or mobile paths.
@@ -204,27 +202,41 @@ add later class families without weakening existing save files or mobile paths.
 1. [x] Unified companion foundation: persistent, level-scaled sheets for animal
    companions, mounts, familiars, and eidolons, including current HP and the
    published advancement statistics and abilities.
-2. [ ] Archetype automation: connect descriptive replacement features to shared
+2. [x] Archetype automation: connect descriptive replacement features to shared
    companion, resource, spellcasting, feat, skill, and combat mechanics.
-3. [ ] Favoured-class mechanics: apply every supported alternate reward directly
+3. [x] Favoured-class mechanics: apply every supported alternate reward directly
    to its target statistic or class resource, including fractional thresholds.
-4. [ ] Formula, familiar, and prepared-source acquisition: improve learn/copy,
+4. [x] Formula, familiar, and prepared-source acquisition: improve learn/copy,
    known, prepared, and daily-use workflows while keeping each list distinct.
-5. [ ] Performance: split large option and rules catalogues by active class and
+5. [x] Performance: split large option and rules catalogues by active class and
    screen, virtualise long result lists, and measure mobile interaction cost.
-6. [ ] Browser journeys: cover representative single-class and multiclass builds
+6. [x] Browser journeys: cover representative single-class and multiclass builds
    through level 20, save/load, offline launch, and narrow touch layouts.
-7. [ ] Later classes: add Magus, Gunslinger, and Samurai before the Advanced
+7. [x] Later classes: add Magus, Gunslinger, and Samurai before the Advanced
    Class Guide and Occult Adventures class families.
 
 ### Expansion completion criteria
 
-- [ ] every supported companion and alternate favoured-class reward is mechanical
-- [ ] partial archetypes expose an explicit automation status and no silent effects
-- [ ] spell-source books distinguish acquisition, preparation, and expenditure
-- [ ] level-20 journeys pass on desktop and narrow mobile viewports
-- [ ] production bundle and interaction performance remain within recorded budgets
-- [ ] all later-class chassis are selectable, persistent, and playable to level 20
+- [x] every supported companion and alternate favoured-class reward is mechanical
+- [x] partial archetypes expose an explicit automation status and no silent effects
+- [x] spell-source books distinguish acquisition, preparation, and expenditure
+- [x] level-20 journeys pass on desktop and narrow mobile viewports
+- [x] production bundle and interaction performance remain within recorded budgets
+- [x] all later-class chassis are selectable, persistent, and playable to level 20
+
+### Later-class families delivered
+
+- Ultimate classes: Magus, Gunslinger, and Samurai, each with defining choices,
+  class resources, sourced level 1-20 features, persistence, and browser coverage.
+- Advanced Class Guide hybrid classes: Bloodrager, Brawler, Hunter,
+  Investigator, Shaman, Skald, Slayer, Swashbuckler, and Warpriest.
+- Occult Adventures classes: Kineticist, Medium, Mesmerist, Occultist, Psychic,
+  and Spiritualist, including their core selectable systems, psychic spell
+  progressions, bounded resources, capstones, and level-20 browser coverage.
+
+The generated catalogue now contains 46 playable classes, 89 option groups,
+3,447 feats, 40 traits, and 2,073 spells. The production bundle remains within
+the recorded client-size budget.
 
 Future work should be selected as a new, deliberately scoped milestone while
 preserving the completed Core, Expanded Character Options, Installable

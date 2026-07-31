@@ -55,3 +55,16 @@ test("Advanced Class Guide hybrid classes remain configurable through level 20",
     await expect(page.getByRole("heading", { name: new RegExp(`${name} features`, "i") })).toBeVisible();
   }
 });
+
+test("Occult Adventures classes remain configurable through level 20", async ({ page }) => {
+  test.setTimeout(120_000);
+  for (const [id, name] of [
+    ["kineticist", "Kineticist"], ["medium", "Medium"], ["mesmerist", "Mesmerist"],
+    ["occultist", "Occultist"], ["psychic", "Psychic"], ["spiritualist", "Spiritualist"],
+  ]) {
+    await page.getByLabel("Class", { exact: true }).selectOption(id);
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("20");
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByRole("heading", { name: new RegExp(`${name} features`, "i") })).toBeVisible();
+  }
+});
