@@ -1,0 +1,14 @@
+{"id":"magus-arcana","name":"Magus Arcana","classIds":["magus"],"optionDefaults":{"groupId":"magus-arcana","classIds":["magus"],"minimumLevel":3,"prerequisites":[],"source":{"title":"Ultimate Magic","page":11,"url":"https://legacy.aonprd.com/ultimateMagic/spellcastingClassOptions/magus.html#magus-arcana"}},"options":[
+{"id":"magus-arcana-arcane-accuracy","name":"Arcane Accuracy","benefit":"Spend 1 arcane-pool point as a swift action to add Intelligence to attack rolls until the end of the turn."},
+{"id":"magus-arcana-broad-study","name":"Broad Study","minimumLevel":6,"benefit":"Use spell combat and spellstrike with spells from one other spellcasting class."},
+{"id":"magus-arcana-close-range","name":"Close Range","benefit":"Deliver a ranged-touch spell through spellstrike as a melee touch spell."},
+{"id":"magus-arcana-critical-strike","name":"Critical Strike","minimumLevel":12,"benefit":"After confirming a critical hit, cast a touch spell as a swift action without provoking."},
+{"id":"magus-arcana-dispelling-strike","name":"Dispelling Strike","minimumLevel":9,"benefit":"Spend arcane-pool points after a weapon hit to apply dispel magic to the target."},
+{"id":"magus-arcana-empowered-magic","name":"Empowered Magic","minimumLevel":6,"benefit":"Once per day cast one spell as though using Empower Spell without increasing its slot."},
+{"id":"magus-arcana-familiar","name":"Familiar","minimumLevel":3,"benefit":"Gain a familiar using Magus level as Wizard level."},
+{"id":"magus-arcana-hasted-assault","name":"Hasted Assault","minimumLevel":9,"benefit":"Spend 1 arcane-pool point to gain haste for a number of rounds equal to Intelligence modifier."},
+{"id":"magus-arcana-maximized-magic","name":"Maximized Magic","minimumLevel":12,"benefit":"Once per day cast one spell as though using Maximize Spell without increasing its slot."},
+{"id":"magus-arcana-prescient-attack","name":"Prescient Attack","minimumLevel":6,"benefit":"Spend 1 arcane-pool point after a hit to deny the target Dexterity to AC against your attacks for the turn."},
+{"id":"magus-arcana-reflection","name":"Reflection","minimumLevel":15,"benefit":"Spend arcane-pool points to reflect a spell that fails to overcome your spell resistance."},
+{"id":"magus-arcana-wand-wielder","name":"Wand Wielder","benefit":"Use a wand or staff in place of casting a spell during spell combat."}
+]}

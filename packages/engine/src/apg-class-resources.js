@@ -22,6 +22,12 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
         ...(classLevel >= 2 ? { bondSensesRounds: classLevel } : {}),
         ...(classLevel >= 6 ? { makersCall: 1 + Math.floor((classLevel - 6) / 4) } : {})
       };
+    case "magus":
+      return { arcanePool: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.intelligence)) };
+    case "gunslinger":
+      return { grit: Math.max(1, nonNegativeModifier(abilityModifiers.wisdom)) };
+    case "samurai":
+      return { challenges: Math.min(7, 1 + Math.floor((classLevel - 1) / 3)), resolve: Math.max(1, Math.floor(classLevel / 2)) };
     default:
       return {};
   }

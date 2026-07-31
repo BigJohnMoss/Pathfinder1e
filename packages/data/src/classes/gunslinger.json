@@ -1,0 +1,26 @@
+{
+  "id":"gunslinger","name":"Gunslinger","classType":"base","hitDie":10,"babProgression":"full",
+  "saves":{"fortitude":"good","reflex":"good","will":"poor"},"skillRanksPerLevel":4,
+  "classSkills":["Acrobatics","Bluff","Climb","Craft","Handle Animal","Heal","Intimidate","Knowledge (engineering)","Knowledge (local)","Perception","Profession","Ride","Sleight of Hand","Survival","Swim"],
+  "source":{"title":"Ultimate Combat","page":9,"url":"https://legacy.aonprd.com/ultimateCombat/classes/gunslinger.html"},
+  "features":[
+    {"id":"gunslinger-deeds-1","name":"Grit and Deeds","level":1,"type":"selectable","summary":"Gain grit equal to Wisdom modifier and spend it on 1st-level deeds: deadeye, gunslinger's dodge, and quick clear.","choiceRequired":false,"progressionKey":"gunslinger-deeds","uses":"Wisdom modifier grit points"},
+    {"id":"gunslinger-gunsmith-1","name":"Gunsmith","level":1,"type":"core","summary":"Gain a battered firearm and Gunsmithing as a bonus feat."},
+    {"id":"gunslinger-deeds-3","name":"3rd-level Deeds","level":3,"type":"core","summary":"Gain gunslinger initiative, pistol-whip, utility shot, and dead shot.","progressionKey":"gunslinger-deeds"},
+    {"id":"gunslinger-nimble-2","name":"Nimble","level":2,"type":"scaling","summary":"Gain +1 dodge bonus to AC while wearing light or no armour; increases every 4 levels.","progressionKey":"gunslinger-nimble","scaling":"+1 at 2nd, +1 every 4 levels"},
+    {"id":"gunslinger-bonus-feat-4","name":"Bonus Feat","level":4,"type":"selectable","summary":"Choose a combat or grit feat.","choiceRequired":true,"optionGroupId":"gunslinger-bonus-feats","progressionKey":"gunslinger-bonus-feats"},
+    {"id":"gunslinger-gun-training-5","name":"Gun Training","level":5,"type":"selectable","summary":"Choose one firearm type; add Dexterity to damage and reduce misfire by 1.","choiceRequired":true,"optionGroupId":"gunslinger-firearm-training","progressionKey":"gunslinger-gun-training"},
+    {"id":"gunslinger-deeds-7","name":"7th-level Deeds","level":7,"type":"core","summary":"Gain startling shot, targeting, and expert loading.","progressionKey":"gunslinger-deeds"},
+    {"id":"gunslinger-bonus-feat-8","name":"Bonus Feat","level":8,"type":"selectable","summary":"Choose another combat or grit feat.","choiceRequired":true,"optionGroupId":"gunslinger-bonus-feats","progressionKey":"gunslinger-bonus-feats"},
+    {"id":"gunslinger-gun-training-9","name":"Gun Training","level":9,"type":"selectable","summary":"Choose another firearm type.","choiceRequired":true,"optionGroupId":"gunslinger-firearm-training","progressionKey":"gunslinger-gun-training"},
+    {"id":"gunslinger-deeds-11","name":"11th-level Deeds","level":11,"type":"core","summary":"Gain bleeding wound, lightning reload, and signature deed.","progressionKey":"gunslinger-deeds"},
+    {"id":"gunslinger-bonus-feat-12","name":"Bonus Feat","level":12,"type":"selectable","summary":"Choose another combat or grit feat.","choiceRequired":true,"optionGroupId":"gunslinger-bonus-feats","progressionKey":"gunslinger-bonus-feats"},
+    {"id":"gunslinger-gun-training-13","name":"Gun Training","level":13,"type":"selectable","summary":"Choose another firearm type.","choiceRequired":true,"optionGroupId":"gunslinger-firearm-training","progressionKey":"gunslinger-gun-training"},
+    {"id":"gunslinger-deeds-15","name":"15th-level Deeds","level":15,"type":"core","summary":"Gain evasive, menacing shot, and sling free.","progressionKey":"gunslinger-deeds"},
+    {"id":"gunslinger-bonus-feat-16","name":"Bonus Feat","level":16,"type":"selectable","summary":"Choose another combat or grit feat.","choiceRequired":true,"optionGroupId":"gunslinger-bonus-feats","progressionKey":"gunslinger-bonus-feats"},
+    {"id":"gunslinger-gun-training-17","name":"Gun Training","level":17,"type":"selectable","summary":"Choose another firearm type.","choiceRequired":true,"optionGroupId":"gunslinger-firearm-training","progressionKey":"gunslinger-gun-training"},
+    {"id":"gunslinger-deeds-19","name":"19th-level Deeds","level":19,"type":"core","summary":"Gain cheat death, death's shot, and stunning shot.","progressionKey":"gunslinger-deeds"},
+    {"id":"gunslinger-bonus-feat-20","name":"Bonus Feat","level":20,"type":"selectable","summary":"Choose another combat or grit feat.","choiceRequired":true,"optionGroupId":"gunslinger-bonus-feats","progressionKey":"gunslinger-bonus-feats"},
+    {"id":"gunslinger-true-grit-20","name":"True Grit","level":20,"type":"capstone","summary":"Choose two deeds and reduce their grit cost by 1, to a minimum of 0."}
+  ]
+}

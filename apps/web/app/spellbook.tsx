@@ -47,6 +47,7 @@ export function Spellbook({
     knownSpellIds: string[];
     automaticSpellIds: string[];
     capacity: number;
+    bonusCapacity?: number;
     onChange: (ids: string[]) => void;
   };
   spellTraitBonuses?: SpellTraitBonuses;
@@ -68,6 +69,9 @@ export function Spellbook({
   oppositionSpellIds?: string[];
 }) {
   const [query, setQuery] = useState("");
+  const [sourceQuery, setSourceQuery] = useState("");
+  const [sourceLevel, setSourceLevel] = useState("all");
+  const [visibleLimit, setVisibleLimit] = useState(250);
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   useEffect(
     () => setLevelFilter(String(maximumSpellLevel)),
@@ -133,7 +137,7 @@ export function Spellbook({
   );
   const groupedSpells = useMemo(
     () =>
-      filteredSpells.reduce(
+      filteredSpells.slice(0, visibleLimit).reduce(
         (groups, spell) => {
           const level = spell.levelByClass[classId];
           (groups[level] ??= []).push(spell);
@@ -141,8 +145,9 @@ export function Spellbook({
         },
         {} as Record<number, Spell[]>,
       ),
-    [classId, filteredSpells],
+    [classId, filteredSpells, visibleLimit],
   );
+  useEffect(() => setVisibleLimit(250), [query, levelFilter, classId]);
 
   return (
     <section className="spell-panel">
@@ -200,15 +205,24 @@ export function Spellbook({
             <strong>{sourceBook.label}</strong>{" "}
             <span>
               {sourceBook.knownSpellIds.length}/{sourceBook.capacity} chosen
+              {sourceBook.bonusCapacity ? ` · ${sourceBook.bonusCapacity} favoured-class` : ""}
             </span>
           </summary>
           <p className="hint">
-            Choose which spells are recorded here before preparing them.
+            Learn or copy spells here before preparing them.
             Cantrips and patron spells are included automatically.
           </p>
+          <div className="prepared-source-filters">
+            <label>Search {sourceBook.label}<input type="search" aria-label={`Search ${sourceBook.label}`} value={sourceQuery} placeholder="Spell name or effect" onChange={event => setSourceQuery(event.target.value)} /></label>
+            <label>Spell level<select aria-label={`${sourceBook.label} spell level`} value={sourceLevel} onChange={event => setSourceLevel(event.target.value)}><option value="all">All levels</option>{Array.from({ length: maximumSpellLevel }, (_, index) => index + 1).map(level => <option key={level} value={level}>{levelLabel(level)}</option>)}</select></label>
+          </div>
+          {sourceBook.knownSpellIds.length > 0 && <div className="recorded-spells" aria-label={`${sourceBook.label} recorded spells`}><strong>Recorded spells</strong><div>{sourceBook.knownSpellIds.map(id => sourceBook.catalogue.find(spell => spell.id === id)).filter((spell): spell is Spell => Boolean(spell)).map(spell => <button type="button" key={spell.id} onClick={() => sourceBook.onChange(sourceBook.knownSpellIds.filter(id => id !== spell.id))} aria-label={`Remove ${spell.name} from ${sourceBook.label}`}>{spell.name} ×</button>)}</div></div>}
           <div className="prepared-source-list">
             {sourceBook.catalogue
               .filter((spell) => (spell.levelByClass[classId] ?? 0) > 0)
+              .filter((spell) => sourceLevel === "all" || spell.levelByClass[classId] === Number(sourceLevel))
+              .filter((spell) => !sourceQuery.trim() || `${spell.name} ${spell.summary}`.toLowerCase().includes(sourceQuery.trim().toLowerCase()))
+              .slice(0, 500)
               .map((spell) => {
                 const known = sourceBook.knownSpellIds.includes(spell.id);
                 const automatic = sourceBook.automaticSpellIds.includes(
@@ -372,7 +386,7 @@ export function Spellbook({
       {filteredSpells.length === 0 ? (
         <p className="hint">No spells match this search.</p>
       ) : (
-        Object.entries(groupedSpells).map(([rawLevel, spellsAtLevel]) => {
+        <>{Object.entries(groupedSpells).map(([rawLevel, spellsAtLevel]) => {
           const level = Number(rawLevel);
           return (
             <section className="spell-level" key={level}>
@@ -468,7 +482,7 @@ export function Spellbook({
               </div>
             </section>
           );
-        })
+        })}{visibleLimit < filteredSpells.length && <button type="button" className="spell-show-more" onClick={() => setVisibleLimit(current => current + 100)}>Show 100 more spells</button>}</>
       )}
     </section>
   );

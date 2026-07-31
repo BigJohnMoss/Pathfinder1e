@@ -21,6 +21,7 @@
     "coverage:archetypes": "node tools/scripts/annotate-archetype-coverage.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
+    "performance:check": "node tools/scripts/check-client-budgets.mjs",
     "generate:icons": "node tools/scripts/generate-app-icons.mjs",
     "check": "npm run validate && npm test && npm run test:ui && npm run build:data && npm run coverage:check",
     "dev": "npm --workspace @pf1e/web run dev",

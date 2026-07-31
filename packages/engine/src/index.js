@@ -976,6 +976,32 @@ export function applyArchetypes(characterClass, archetypes = []) {
     : applied;
 }
 
+export function archetypeAutomationSummary(archetype) {
+  if (!archetype) return { automated: [], manual: [] };
+  const automated = [];
+  if ((archetype.replacements ?? []).some(item => item.featureIds?.length || item.progressionKeys?.length))
+    automated.push("Base feature replacements and level progression");
+  if (archetype.featureOverrides?.length) automated.push("Feature rules overrides");
+  if (archetype.spellListAdditions && Object.keys(archetype.spellListAdditions).length) automated.push("Spell-list additions");
+  if (archetype.removesSpellcasting) automated.push("Spellcasting removal");
+  if (archetype.wildShapeLevelAdjustment) automated.push("Wild shape effective level");
+  if (archetype.druidDomainIds?.length) automated.push("Available druid domains");
+  if (archetype.rangerCombatStyleIds?.length) automated.push("Available ranger combat styles");
+  if (archetype.mountedCompanionOnly) automated.push("Mounted companion restriction");
+  if (archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length) automated.push("Class skill changes");
+  if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
+  const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
+  const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);
+  if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
+  const manualFeatures = replacementFeatures
+    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId)
+    .map(feature => `${feature.name} (level ${feature.level})`);
+  const manual = archetype.mechanicalCoverage === "full"
+    ? []
+    : [...new Set([...(archetype.manualRequirements ?? []), ...manualFeatures])];
+  return { automated: [...new Set(automated)], manual };
+}
+
 export function normalizeSelectedTraits(
   selectedTraitIds,
   traits,

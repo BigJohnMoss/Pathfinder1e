@@ -1,0 +1,32 @@
+{
+  "id":"magus","name":"Magus","classType":"base","hitDie":8,"babProgression":"three-quarters",
+  "saves":{"fortitude":"good","reflex":"poor","will":"good"},"skillRanksPerLevel":2,
+  "classSkills":["Climb","Craft","Fly","Intimidate","Knowledge (arcana)","Knowledge (dungeoneering)","Knowledge (planes)","Profession","Ride","Spellcraft","Swim","Use Magic Device"],
+  "spellcasting":{"ability":"intelligence","tradition":"arcane","castingType":"prepared","spellLevelUnlocks":[1,4,7,10,13,16],"slotsByLevel":[[3,1,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0],[4,3,1,0,0,0,0,0,0],[4,4,2,0,0,0,0,0,0],[5,4,3,0,0,0,0,0,0],[5,4,3,1,0,0,0,0,0],[5,4,4,2,0,0,0,0,0],[5,5,4,3,0,0,0,0,0],[5,5,4,3,1,0,0,0,0],[5,5,4,4,2,0,0,0,0],[5,5,5,4,3,0,0,0,0],[5,5,5,4,3,1,0,0,0],[5,5,5,4,4,2,0,0,0],[5,5,5,5,4,3,0,0,0],[5,5,5,5,4,3,1,0,0],[5,5,5,5,4,4,2,0,0],[5,5,5,5,5,4,3,0,0],[5,5,5,5,5,5,4,0,0],[5,5,5,5,5,5,5,0,0]],"preparedByLevel":[[3,1,0,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0,0],[4,3,1,0,0,0,0,0,0,0],[4,4,2,0,0,0,0,0,0,0],[5,4,3,0,0,0,0,0,0,0],[5,4,3,1,0,0,0,0,0,0],[5,4,4,2,0,0,0,0,0,0],[5,5,4,3,0,0,0,0,0,0],[5,5,4,3,1,0,0,0,0,0],[5,5,4,4,2,0,0,0,0,0],[5,5,5,4,3,0,0,0,0,0],[5,5,5,4,3,1,0,0,0,0],[5,5,5,4,4,2,0,0,0,0],[5,5,5,5,4,3,0,0,0,0],[5,5,5,5,4,3,1,0,0,0],[5,5,5,5,4,4,2,0,0,0],[5,5,5,5,5,4,3,0,0,0],[5,5,5,5,5,5,4,0,0,0],[5,5,5,5,5,5,5,0,0,0]]},
+  "source":{"title":"Ultimate Magic","page":9,"url":"https://legacy.aonprd.com/ultimateMagic/spellcastingClassOptions/magus.html"},
+  "features":[
+    {"id":"magus-spell-combat-1","name":"Spell Combat","level":1,"type":"core","summary":"Cast a Magus spell and make a full attack with a light or one-handed melee weapon as a full-round action, taking a -2 penalty on attacks.","progressionKey":"magus-spell-combat"},
+    {"id":"magus-arcane-pool-1","name":"Arcane Pool","level":1,"type":"scaling","summary":"Spend points to enhance a held weapon for 1 minute per Magus level.","uses":"half Magus level + Intelligence modifier points per day","progressionKey":"magus-arcane-pool"},
+    {"id":"magus-cantrips-1","name":"Cantrips and Spellbook","level":1,"type":"spellcasting","summary":"Prepare arcane spells from a spellbook and cast prepared cantrips without expending them."},
+    {"id":"magus-spellstrike-2","name":"Spellstrike","level":2,"type":"core","summary":"Deliver a touch spell through a weapon attack using the weapon's critical range."},
+    {"id":"magus-arcana-3","name":"Magus Arcana","level":3,"type":"selectable","summary":"Choose a Magus arcana.","choiceRequired":true,"optionGroupId":"magus-arcana","progressionKey":"magus-arcana"},
+    {"id":"magus-spell-recall-4","name":"Spell Recall","level":4,"type":"core","summary":"Spend arcane-pool points to recall a spell already cast that day."},
+    {"id":"magus-bonus-feat-5","name":"Bonus Feat","level":5,"type":"bonus-feat","summary":"Gain a combat, item creation, or metamagic feat."},
+    {"id":"magus-arcana-6","name":"Magus Arcana","level":6,"type":"selectable","summary":"Choose another Magus arcana.","choiceRequired":true,"optionGroupId":"magus-arcana","progressionKey":"magus-arcana"},
+    {"id":"magus-medium-armour-7","name":"Medium Armour","level":7,"type":"core","summary":"Gain medium armour proficiency and cast Magus spells in medium armour without arcane spell failure."},
+    {"id":"magus-improved-spell-combat-8","name":"Improved Spell Combat","level":8,"type":"scaling","summary":"Gain +2 on concentration checks made as part of spell combat."},
+    {"id":"magus-arcana-9","name":"Magus Arcana","level":9,"type":"selectable","summary":"Choose another Magus arcana.","choiceRequired":true,"optionGroupId":"magus-arcana","progressionKey":"magus-arcana"},
+    {"id":"magus-fighter-training-10","name":"Fighter Training","level":10,"type":"core","summary":"Count half Magus level as Fighter levels for feat prerequisites."},
+    {"id":"magus-improved-spell-recall-11","name":"Improved Spell Recall","level":11,"type":"core","summary":"Recall spells at a reduced arcane-pool cost or prepare spells into empty slots."},
+    {"id":"magus-bonus-feat-11","name":"Bonus Feat","level":11,"type":"bonus-feat","summary":"Gain another qualifying bonus feat."},
+    {"id":"magus-arcana-12","name":"Magus Arcana","level":12,"type":"selectable","summary":"Choose another Magus arcana.","choiceRequired":true,"optionGroupId":"magus-arcana","progressionKey":"magus-arcana"},
+    {"id":"magus-heavy-armour-13","name":"Heavy Armour","level":13,"type":"core","summary":"Gain heavy armour proficiency and cast Magus spells in heavy armour without arcane spell failure."},
+    {"id":"magus-greater-spell-combat-14","name":"Greater Spell Combat","level":14,"type":"scaling","summary":"Gain +4 on concentration checks made as part of spell combat."},
+    {"id":"magus-arcana-15","name":"Magus Arcana","level":15,"type":"selectable","summary":"Choose another Magus arcana.","choiceRequired":true,"optionGroupId":"magus-arcana","progressionKey":"magus-arcana"},
+    {"id":"magus-counterstrike-16","name":"Counterstrike","level":16,"type":"core","summary":"Make an attack of opportunity against an adjacent creature casting defensively."},
+    {"id":"magus-bonus-feat-17","name":"Bonus Feat","level":17,"type":"bonus-feat","summary":"Gain another qualifying bonus feat."},
+    {"id":"magus-arcana-18","name":"Magus Arcana","level":18,"type":"selectable","summary":"Choose another Magus arcana.","choiceRequired":true,"optionGroupId":"magus-arcana","progressionKey":"magus-arcana"},
+    {"id":"magus-greater-spell-access-19","name":"Greater Spell Access","level":19,"type":"spellcasting","summary":"Add six Wizard spells of 6th level or lower to the Magus spellbook."},
+    {"id":"magus-true-magus-20","name":"True Magus","level":20,"type":"capstone","summary":"Ignore spell-combat concentration checks, improve its attack penalty and DC, and choose whether spells or attacks resolve first."}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id":"samurai","name":"Samurai","classType":"base","hitDie":10,"babProgression":"full",
+  "saves":{"fortitude":"good","reflex":"poor","will":"poor"},"skillRanksPerLevel":4,
+  "classSkills":["Bluff","Climb","Craft","Diplomacy","Handle Animal","Intimidate","Profession","Ride","Sense Motive","Swim"],
+  "source":{"title":"Ultimate Combat","page":18,"url":"https://legacy.aonprd.com/ultimateCombat/classes/samurai.html"},
+  "features":[
+    {"id":"samurai-challenge-1","name":"Challenge","level":1,"type":"scaling","summary":"Challenge a visible foe, dealing extra damage equal to Samurai level while accepting reduced AC against other foes.","progressionKey":"samurai-challenge","uses":"1/day plus one per 3 levels"},
+    {"id":"samurai-mount-1","name":"Mount","level":1,"type":"selectable","summary":"Choose a loyal mount advancing as a full-level animal companion.","choiceRequired":true,"optionGroupId":"samurai-mounts","progressionKey":"samurai-mount"},
+    {"id":"samurai-order-1","name":"Order","level":1,"type":"selectable","summary":"Join a Samurai or Cavalier order and gain its edicts, skills, challenge benefit, and abilities.","choiceRequired":true,"optionGroupId":"samurai-orders","progressionKey":"samurai-order"},
+    {"id":"samurai-resolve-1","name":"Resolve","level":1,"type":"core","summary":"Spend resolve to become resolute, determined, or unstoppable.","progressionKey":"samurai-resolve","uses":"half Samurai level per day, minimum 1"},
+    {"id":"samurai-weapon-expertise-3","name":"Weapon Expertise","level":3,"type":"selectable","summary":"Choose katana, longbow, naginata, or wakizashi; gain Quick Draw and +2 to confirm critical hits.","choiceRequired":true,"optionGroupId":"samurai-weapon-expertise"},
+    {"id":"samurai-mounted-archer-4","name":"Mounted Archer","level":4,"type":"core","summary":"Halve penalties for ranged attacks while mounted."},
+    {"id":"samurai-banner-5","name":"Banner","level":5,"type":"scaling","summary":"A visible banner grants allies morale bonuses against fear and on charge attacks.","progressionKey":"samurai-banner"},
+    {"id":"samurai-bonus-feat-6","name":"Bonus Feat","level":6,"type":"bonus-feat","summary":"Gain a qualifying combat feat."},
+    {"id":"samurai-greater-resolve-9","name":"Greater Resolve","level":9,"type":"scaling","summary":"Spend resolve to negate a failed Fortitude or Will save; successful critical hits restore resolve."},
+    {"id":"samurai-honourable-stand-11","name":"Honourable Stand","level":11,"type":"core","summary":"While challenging a foe, gain another save against control effects and remain standing below 0 HP."},
+    {"id":"samurai-bonus-feat-12","name":"Bonus Feat","level":12,"type":"bonus-feat","summary":"Gain another qualifying combat feat."},
+    {"id":"samurai-demanding-challenge-12","name":"Demanding Challenge","level":12,"type":"core","summary":"A challenged target takes -2 AC against attacks from your allies."},
+    {"id":"samurai-greater-banner-14","name":"Greater Banner","level":14,"type":"scaling","summary":"The banner bolsters saves against control effects and permits rerolls against such effects."},
+    {"id":"samurai-true-resolve-17","name":"True Resolve","level":17,"type":"core","summary":"Spend resolve to avoid death, or spend all remaining resolve when otherwise slain."},
+    {"id":"samurai-bonus-feat-18","name":"Bonus Feat","level":18,"type":"bonus-feat","summary":"Gain another qualifying combat feat."},
+    {"id":"samurai-last-stand-20","name":"Last Stand","level":20,"type":"capstone","summary":"Once per day challenge every foe within 30 feet and remain conscious and fighting regardless of hit points until the challenge ends."}
+  ]
+}

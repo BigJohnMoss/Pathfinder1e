@@ -1,8 +1,9 @@
-export function preparedSourceSpellCapacity(classId, classLevel, intelligenceModifier) {
+export function preparedSourceSpellCapacity(classId, classLevel, intelligenceModifier, bonusSpells = 0) {
   const level = Math.max(1, Math.min(20, Math.trunc(classLevel) || 1));
   const modifier = Math.max(0, Math.trunc(intelligenceModifier) || 0);
-  if (classId === "alchemist") return level + 1 + modifier;
-  if (classId === "witch") return 3 + modifier + Math.max(0, level - 1) * 2;
+  const bonus = Math.max(0, Math.trunc(Number(bonusSpells) || 0));
+  if (classId === "alchemist") return 2 + modifier + Math.max(0, level - 1) * 2 + bonus;
+  if (classId === "witch") return 3 + modifier + Math.max(0, level - 1) * 2 + bonus;
   return null;
 }
 
