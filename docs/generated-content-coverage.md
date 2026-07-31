@@ -6,10 +6,10 @@ This report is generated from the application's source data by `npm run coverage
 
 | Area | Records |
 |---|---:|
-| Classes | 28 |
+| Classes | 31 |
 | Archetypes | 825 |
 | Ancestries | 7 |
-| Option groups | 56 |
+| Option groups | 62 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2073 |
@@ -51,8 +51,10 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Duelist | 14 | 10 | 0 |
 | Eldritch Knight | 14 | 10 | 0 |
 | Fighter | 26 | 20 | 67 |
+| Gunslinger | 18 | 20 | 0 |
 | Inquisitor | 25 | 20 | 38 |
 | Loremaster | 20 | 10 | 0 |
+| Magus | 23 | 20 | 0 |
 | Monk | 31 | 20 | 56 |
 | Mystic Theurge | 16 | 10 | 0 |
 | Oracle | 14 | 20 | 26 |
@@ -60,6 +62,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Pathfinder Chronicler | 14 | 10 | 0 |
 | Ranger | 30 | 20 | 62 |
 | Rogue | 31 | 20 | 78 |
+| Samurai | 16 | 20 | 0 |
 | Shadowdancer | 20 | 10 | 0 |
 | Sorcerer | 22 | 20 | 13 |
 | Summoner | 14 | 20 | 22 |
