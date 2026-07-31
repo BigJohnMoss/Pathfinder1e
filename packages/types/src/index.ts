@@ -52,6 +52,14 @@ export interface CharacterDraftV1 {
   spellSlotUses: Record<string, number>;
   spellSlotUsesByClass: Record<string, Record<string, number>>;
   classResourceUsesByClass?: Record<string, Record<string, number>>;
+  companions?: Record<string, {
+    kind: "animal" | "mount" | "familiar" | "eidolon";
+    optionId: string;
+    name: string;
+    currentHitPoints: number | null;
+    skillRanks: Record<string, number>;
+    featIds: string[];
+  }>;
   eidolon?: { size: "Small" | "Medium"; evolutionIds: string[] };
   arcaneReservoir: number | null;
   bardicPerformanceUsed: number;
