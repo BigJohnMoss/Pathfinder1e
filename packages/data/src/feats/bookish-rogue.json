@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Minor magic rogue talent"
+      "type": "feature",
+      "id": "minor-magic"
     }
   ],
   "benefit": "Change your rogue talent spell-like abilities with study",

@@ -322,6 +322,7 @@ export default function Home() {
     return levels;
   }, {}), [abilities, classLevelMap, effectiveSpellcastingLevelMap, progressionClasses]);
   const selectedOptionFeatureIds = useMemo(() => Object.values(selectedOptions).flatMap((optionId) => [
+    optionId,
     optionId.includes("animal-companion") ? "animal-companion" : null,
     optionId.includes("familiar") ? "familiar" : null,
   ]).filter((id): id is string => Boolean(id)), [selectedOptions]);

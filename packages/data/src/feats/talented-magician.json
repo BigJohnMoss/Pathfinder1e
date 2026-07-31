@@ -4,12 +4,12 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Major magic rogue talent"
+      "type": "feature",
+      "id": "major-magic"
     },
     {
-      "type": "rule",
-      "description": "minor magic rogue talent"
+      "type": "feature",
+      "id": "minor-magic"
     }
   ],
   "benefit": "Gain additional uses of spell-like abilities",
