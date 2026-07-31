@@ -71,6 +71,8 @@ const supportedFeatureAliases = new Map([
   ["bardic-knowledge-class-ability", "bardic-knowledge"],
   ["domain", "domain"],
   ["mystery", "mystery"],
+  ["summon-familiar", "familiar"],
+  ["ki-strike", "monk-ki-pool-4"],
 ]);
 
 const parseAtomicRule = (description) => {
@@ -150,6 +152,7 @@ const parseAtomicRule = (description) => {
   if (!text.startsWith("(") && classFeatureKeys.has(normalizedFeatureKey)) return { type: "feature", id: normalizedFeatureKey };
   const featureName = text
     .replace(/\s+(?:(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM)\s+)?class feature(?:\s+(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM))?$/i, "")
+    .replace(/\s+class ability$/i, "")
     .replace(/\s+rogue talent$/i, "")
     .replace(/^the\s+/i, "");
   const normalizedNamedFeatureKey = featureKey(featureName);

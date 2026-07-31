@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Bardic performance class ability"
+      "type": "feature",
+      "id": "bardic-performance"
     }
   ],
   "benefit": "Nature enhances your bardic performances",

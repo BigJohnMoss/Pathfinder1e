@@ -8,8 +8,8 @@
       "id": "divine-spells"
     },
     {
-      "type": "rule",
-      "description": "summon familiar class ability"
+      "type": "feature",
+      "id": "familiar"
     },
     {
       "type": "caster-level",
