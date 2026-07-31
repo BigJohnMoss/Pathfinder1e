@@ -41,3 +41,21 @@ test("Occultist integrates implements, focus powers, mental focus, and mastery",
   assert.ok(entry.features.some(feature => feature.id === "occultist-implement-mastery-20"));
   assert.deepEqual(apgClassResourceMaximums("occultist", 12, { intelligence: 5 }), { mentalFocus: 17 });
 });
+
+test("Psychic integrates disciplines, amplifications, phrenic pool, and ninth-level spells", async () => {
+  const entry = JSON.parse(await readFile(new URL("../packages/data/src/classes/psychic.json", import.meta.url), "utf8"));
+  const disciplines = JSON.parse(await readFile(new URL("../packages/data/src/options/psychic-disciplines.json", import.meta.url), "utf8"));
+  assert.equal(disciplines.options.length, 10);
+  assert.deepEqual(entry.spellcasting.spellLevelUnlocks, [1, 4, 6, 8, 10, 12, 14, 16, 18]);
+  assert.ok(entry.features.some(feature => feature.id === "psychic-remade-self-20"));
+  assert.deepEqual(apgClassResourceMaximums("psychic", 20, { intelligence: 7 }), { phrenicPool: 17 });
+});
+
+test("Spiritualist integrates emotional focus, phantom progression, and manifestation", async () => {
+  const entry = JSON.parse(await readFile(new URL("../packages/data/src/classes/spiritualist.json", import.meta.url), "utf8"));
+  const focuses = JSON.parse(await readFile(new URL("../packages/data/src/options/spiritualist-emotional-focuses.json", import.meta.url), "utf8"));
+  assert.equal(focuses.options.length, 7);
+  assert.ok(entry.features.some(feature => feature.optionGroupId === "spiritualist-emotional-focuses"));
+  assert.ok(entry.features.some(feature => feature.id === "spiritualist-empowered-consciousness-20"));
+  assert.deepEqual(apgClassResourceMaximums("spiritualist", 20), { bondedManifestation: 23 });
+});

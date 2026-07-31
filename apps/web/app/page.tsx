@@ -1921,6 +1921,8 @@ export default function Home() {
     influence: ["Spirit Influence", "point"],
     mesmeristTrick: ["Mesmerist Tricks", "implant"],
     mentalFocus: ["Mental Focus", "point"],
+    phrenicPool: ["Phrenic Pool", "point"],
+    bondedManifestation: ["Bonded Manifestation", "round"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>
