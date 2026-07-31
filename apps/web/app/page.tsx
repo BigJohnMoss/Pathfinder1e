@@ -323,6 +323,8 @@ export default function Home() {
   }, {}), [abilities, classLevelMap, effectiveSpellcastingLevelMap, progressionClasses]);
   const selectedOptionFeatureIds = useMemo(() => Object.values(selectedOptions).flatMap((optionId) => [
     optionId,
+    optionId.startsWith("domain-") ? "domain" : null,
+    optionId.startsWith("oracle-mystery-") ? "mystery" : null,
     optionId.includes("animal-companion") ? "animal-companion" : null,
     optionId.includes("familiar") ? "familiar" : null,
   ]).filter((id): id is string => Boolean(id)), [selectedOptions]);

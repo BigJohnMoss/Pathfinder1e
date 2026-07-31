@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Mystery or domain class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "mystery"
+        },
+        {
+          "type": "feature",
+          "id": "domain"
+        }
+      ]
     }
   ],
   "benefit": "Gain a lesser use of the blessings class feature",

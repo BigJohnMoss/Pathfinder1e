@@ -69,6 +69,8 @@ const supportedFeatureAliases = new Map([
   ["knowledge-domain", "domain-knowledge"],
   ["plant-domain", "domain-plant"],
   ["bardic-knowledge-class-ability", "bardic-knowledge"],
+  ["domain", "domain"],
+  ["mystery", "mystery"],
 ]);
 
 const parseAtomicRule = (description) => {
