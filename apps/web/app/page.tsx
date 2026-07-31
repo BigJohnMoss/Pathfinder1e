@@ -1919,6 +1919,7 @@ export default function Home() {
     fervor: ["Fervor", "use"],
     burn: ["Burn accepted", "point"],
     influence: ["Spirit Influence", "point"],
+    mesmeristTrick: ["Mesmerist Tricks", "implant"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>

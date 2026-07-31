@@ -56,6 +56,8 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
       return { burn: Math.max(1, 3 + nonNegativeModifier(abilityModifiers.constitution)) };
     case "medium":
       return { influence: 5 };
+    case "mesmerist":
+      return { mesmeristTrick: Math.max(1, 3 + nonNegativeModifier(abilityModifiers.charisma)) };
     default:
       return {};
   }

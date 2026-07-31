@@ -23,3 +23,12 @@ test("Medium exposes its spirits, psychic spell progression, influence, and caps
   assert.ok(entry.features.some(feature => feature.id === "medium-astral-beacon-20"));
   assert.deepEqual(apgClassResourceMaximums("medium", 20), { influence: 5 });
 });
+
+test("Mesmerist integrates stare choices, tricks, treatments, and daily implants", async () => {
+  const entry = JSON.parse(await readFile(new URL("../packages/data/src/classes/mesmerist.json", import.meta.url), "utf8"));
+  assert.deepEqual(entry.spellcasting.spellLevelUnlocks, [1, 4, 7, 10, 13, 16]);
+  assert.ok(entry.features.some(feature => feature.optionGroupId === "mesmerist-tricks"));
+  assert.ok(entry.features.some(feature => feature.optionGroupId === "mesmerist-bold-stares"));
+  assert.ok(entry.features.some(feature => feature.id === "mesmerist-rule-minds-20"));
+  assert.deepEqual(apgClassResourceMaximums("mesmerist", 10, { charisma: 4 }), { mesmeristTrick: 7 });
+});
