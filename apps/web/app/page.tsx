@@ -1920,6 +1920,7 @@ export default function Home() {
     burn: ["Burn accepted", "point"],
     influence: ["Spirit Influence", "point"],
     mesmeristTrick: ["Mesmerist Tricks", "implant"],
+    mentalFocus: ["Mental Focus", "point"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>

@@ -44,7 +44,8 @@ const spells=sourceSpells.map(sourceSpell=>{
   const withWarpriest=withSkald.cleric!==undefined&&withSkald.cleric<=6?{...withSkald,warpriest:withSkald.cleric}:withSkald;
   const withShaman=withWarpriest.witch!==undefined?{...withWarpriest,shaman:withWarpriest.witch}:withWarpriest;
   const withMedium=withShaman.bard!==undefined&&withShaman.bard<=4?{...withShaman,medium:withShaman.bard}:withShaman;
-  const levelByClass=withMedium.bard!==undefined&&withMedium.bard<=6?{...withMedium,mesmerist:withMedium.bard}:withMedium;
+  const withMesmerist=withMedium.bard!==undefined&&withMedium.bard<=6?{...withMedium,mesmerist:withMedium.bard}:withMedium;
+  const levelByClass=withMesmerist.investigator!==undefined?{...withMesmerist,occultist:withMesmerist.investigator}:withMesmerist;
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);

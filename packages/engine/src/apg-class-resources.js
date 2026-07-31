@@ -58,6 +58,8 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
       return { influence: 5 };
     case "mesmerist":
       return { mesmeristTrick: Math.max(1, 3 + nonNegativeModifier(abilityModifiers.charisma)) };
+    case "occultist":
+      return { mentalFocus: Math.max(1, classLevel + nonNegativeModifier(abilityModifiers.intelligence)) };
     default:
       return {};
   }
