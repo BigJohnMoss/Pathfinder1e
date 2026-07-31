@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Bardic knowledge class ability or Knowledge domain"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "bardic-knowledge"
+        },
+        {
+          "type": "feature",
+          "id": "domain-knowledge"
+        }
+      ]
     },
     {
       "type": "skill",

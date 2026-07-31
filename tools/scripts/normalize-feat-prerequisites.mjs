@@ -62,6 +62,13 @@ const supportedFeatureAliases = new Map([
   ["sorcerer-bloodline", "sorcerer-bloodline"],
   ["minor-magic", "minor-magic"],
   ["major-magic", "major-magic"],
+  ["aberrant-bloodline", "sorcerer-bloodline-aberrant"],
+  ["draconic-bloodline", "sorcerer-bloodline-draconic"],
+  ["elemental-bloodline", "sorcerer-bloodline-elemental"],
+  ["animal-domain", "domain-animal"],
+  ["knowledge-domain", "domain-knowledge"],
+  ["plant-domain", "domain-plant"],
+  ["bardic-knowledge-class-ability", "bardic-knowledge"],
 ]);
 
 const parseAtomicRule = (description) => {
@@ -146,6 +153,12 @@ const parseAtomicRule = (description) => {
   const aliasedFeatureId = supportedFeatureAliases.get(normalizedNamedFeatureKey);
   if (!featureName.startsWith("(") && (classFeatureKeys.has(normalizedNamedFeatureKey) || aliasedFeatureId)) {
     return { type: "feature", id: aliasedFeatureId ?? normalizedNamedFeatureKey };
+  }
+  match = text.match(/^(.+?)\s+or\s+(.+?)\s+(domain|bloodline)$/i);
+  if (match) {
+    const suffix = match[3];
+    const alternatives = [parseAtomicRule(`${match[1]} ${suffix}`), parseAtomicRule(`${match[2]} ${suffix}`)];
+    if (alternatives.every(Boolean)) return { type: "any", prerequisites: alternatives };
   }
   const withoutCitation = text
     .replace(/\s+(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM)(?:\s+feat)?$/i, "")

@@ -8,8 +8,8 @@
       "id": "channel-positive-energy"
     },
     {
-      "type": "rule",
-      "description": "Plant domain"
+      "type": "feature",
+      "id": "domain-plant"
     }
   ],
   "benefit": "Cause grapsing vines under your control to grow from the ground",

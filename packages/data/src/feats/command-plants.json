@@ -8,8 +8,8 @@
       "id": "channel-energy"
     },
     {
-      "type": "rule",
-      "description": "Plant domain"
+      "type": "feature",
+      "id": "domain-plant"
     }
   ],
   "benefit": "Use channeled energy to control plants",

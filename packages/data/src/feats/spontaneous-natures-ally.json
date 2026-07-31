@@ -13,8 +13,17 @@
       "description": "ability to spontaneously cast cure or inflict spells"
     },
     {
-      "type": "rule",
-      "description": "Animal or Plant domain"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "domain-animal"
+        },
+        {
+          "type": "feature",
+          "id": "domain-plant"
+        }
+      ]
     }
   ],
   "benefit": "Lose a spell slot to spontaneous cast a summon nature’s ally spell of the same level",
