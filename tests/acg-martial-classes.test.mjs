@@ -50,3 +50,12 @@ test("Investigator integrates extracts, inspiration, studied combat, and ten tal
   assert.equal(preparedSourceSpellCapacity("investigator", 20, 3), 43);
   assert.deepEqual(apgClassResourceMaximums("investigator", 20, { intelligence: 5 }), { inspiration: 15 });
 });
+
+test("Skald integrates six spell levels, raging song, rage powers, and spell kenning", async () => {
+  const entry = await load("skald");
+  assert.equal(entry.spellcasting.castingType, "spontaneous");
+  assert.equal(entry.features.filter(feature => feature.optionGroupId === "skald-rage-powers").length, 6);
+  assert.ok(entry.features.some(feature => feature.id === "skald-master-skald-20"));
+  assert.deepEqual(apgClassResourceMaximums("skald", 1, { charisma: 3 }), { ragingSongRounds: 6 });
+  assert.deepEqual(apgClassResourceMaximums("skald", 20, { charisma: 3 }), { ragingSongRounds: 44, spellKenning: 3 });
+});

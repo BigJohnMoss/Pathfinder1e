@@ -1912,6 +1912,8 @@ export default function Home() {
     charmedLife: ["Charmed Life", "use"],
     bloodrageRounds: ["Bloodrage", "round"],
     inspiration: ["Inspiration", "point"],
+    ragingSongRounds: ["Raging Song", "round"],
+    spellKenning: ["Spell Kenning", "use"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>

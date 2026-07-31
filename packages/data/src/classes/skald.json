@@ -1,0 +1,29 @@
+{
+ "id":"skald","name":"Skald","classType":"hybrid","hitDie":8,"babProgression":"three-quarters","saves":{"fortitude":"good","reflex":"poor","will":"good"},"skillRanksPerLevel":4,
+ "classSkills":["Acrobatics","Appraise","Bluff","Climb","Craft","Diplomacy","Escape Artist","Intimidate","Knowledge","Linguistics","Perception","Perform","Profession","Ride","Sense Motive","Spellcraft","Swim","Use Magic Device"],
+ "spellcasting":{"ability":"charisma","tradition":"arcane","castingType":"spontaneous","spellLevelUnlocks":[1,4,7,10,13,16],"slotsByLevel":[[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,0,0,0],[3,1,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0],[4,3,1,0,0,0,0,0,0],[4,4,2,0,0,0,0,0,0],[5,4,3,0,0,0,0,0,0],[5,4,3,1,0,0,0,0,0],[5,4,4,2,0,0,0,0,0],[5,5,4,3,0,0,0,0,0],[5,5,4,3,1,0,0,0,0],[5,5,4,4,2,0,0,0,0],[5,5,5,4,3,0,0,0,0],[5,5,5,4,3,1,0,0,0],[5,5,5,4,4,2,0,0,0],[5,5,5,5,4,3,0,0,0],[5,5,5,5,5,4,0,0,0],[5,5,5,5,5,5,0,0,0]],"knownByLevel":[[4,2,0,0,0,0,0,0,0,0],[5,3,0,0,0,0,0,0,0,0],[6,4,0,0,0,0,0,0,0,0],[6,4,2,0,0,0,0,0,0,0],[6,4,3,0,0,0,0,0,0,0],[6,4,4,0,0,0,0,0,0,0],[6,5,4,2,0,0,0,0,0,0],[6,5,4,3,0,0,0,0,0,0],[6,5,4,4,0,0,0,0,0,0],[6,5,5,4,2,0,0,0,0,0],[6,6,5,4,3,0,0,0,0,0],[6,6,5,4,4,0,0,0,0,0],[6,6,5,5,4,2,0,0,0,0],[6,6,6,5,4,3,0,0,0,0],[6,6,6,5,4,4,0,0,0,0],[6,6,6,5,5,4,2,0,0,0],[6,6,6,6,5,4,3,0,0,0],[6,6,6,6,5,4,4,0,0,0],[6,6,6,6,5,5,4,0,0,0],[6,6,6,6,6,5,5,0,0,0]]},
+ "source":{"title":"Advanced Class Guide","page":48,"url":"https://legacy.aonprd.com/advancedClassGuide/classes/skald.html"},
+ "features":[
+  {"id":"skald-raging-song-1","name":"Raging Song","level":1,"type":"resource","summary":"Begin a raging song as a standard action and maintain it for a limited number of rounds each day.","uses":"3 + Charisma modifier rounds, +2 per later level","progressionKey":"skald-raging-song"},
+  {"id":"skald-inspired-rage-1","name":"Inspired Rage","level":1,"type":"scaling","summary":"Grant willing allies Strength and Constitution bonuses and a Will bonus with an AC penalty.","progressionKey":"skald-inspired-rage"},
+  {"id":"skald-scribe-scroll-1","name":"Scribe Scroll","level":1,"type":"bonus-feat","summary":"Gain Scribe Scroll as a bonus feat."},
+  {"id":"skald-well-versed-2","name":"Well-Versed","level":2,"type":"core","summary":"Gain +4 on saves against bardic performance, sonic, and language-dependent effects."},
+  {"id":"skald-uncanny-dodge-2","name":"Uncanny Dodge","level":2,"type":"core","summary":"Retain Dexterity to AC while flat-footed and against invisible attackers."},
+  {"id":"skald-rage-power-3","name":"Rage Power","level":3,"type":"selectable","summary":"Choose a rage power shared through inspired rage.","choiceRequired":true,"optionGroupId":"skald-rage-powers","progressionKey":"skald-rage-power"},
+  {"id":"skald-song-marching-3","name":"Song of Marching","level":3,"type":"core","summary":"Extend allies' overland movement while performing."},
+  {"id":"skald-spell-kenning-5","name":"Spell Kenning","level":5,"type":"resource","summary":"Cast one spell from the Bard, Cleric, or Wizard list using a Skald spell slot.","uses":"1 use per day; +1 at levels 11 and 17"},
+  {"id":"skald-improved-uncanny-dodge-5","name":"Improved Uncanny Dodge","level":5,"type":"core","summary":"Cannot be flanked except by a sufficiently experienced sneak attacker."},
+  {"id":"skald-rage-power-6","name":"Rage Power","level":6,"type":"selectable","summary":"Choose another rage power.","choiceRequired":true,"optionGroupId":"skald-rage-powers","progressionKey":"skald-rage-power"},
+  {"id":"skald-song-strength-6","name":"Song of Strength","level":6,"type":"core","summary":"Grant allies a bonus on Strength checks and Strength-based skill checks."},
+  {"id":"skald-rage-power-9","name":"Rage Power","level":9,"type":"selectable","summary":"Choose another rage power.","choiceRequired":true,"optionGroupId":"skald-rage-powers","progressionKey":"skald-rage-power"},
+  {"id":"skald-damage-reduction-9","name":"Damage Reduction","level":9,"type":"scaling","summary":"Gain DR 1/—, improving every 5 Skald levels."},
+  {"id":"skald-dirge-doom-10","name":"Dirge of Doom","level":10,"type":"core","summary":"Make nearby enemies shaken without allowing a saving throw."},
+  {"id":"skald-greater-rage-11","name":"Greater Inspired Rage","level":11,"type":"scaling","summary":"Increase the bonuses granted by inspired rage."},
+  {"id":"skald-rage-power-12","name":"Rage Power","level":12,"type":"selectable","summary":"Choose another rage power.","choiceRequired":true,"optionGroupId":"skald-rage-powers","progressionKey":"skald-rage-power"},
+  {"id":"skald-song-fallen-14","name":"Song of the Fallen","level":14,"type":"resource","summary":"Temporarily return dead allies to life while the song continues.","uses":"costs 1 additional raging-song round per round"},
+  {"id":"skald-rage-power-15","name":"Rage Power","level":15,"type":"selectable","summary":"Choose another rage power.","choiceRequired":true,"optionGroupId":"skald-rage-powers","progressionKey":"skald-rage-power"},
+  {"id":"skald-rage-power-18","name":"Rage Power","level":18,"type":"selectable","summary":"Choose another rage power.","choiceRequired":true,"optionGroupId":"skald-rage-powers","progressionKey":"skald-rage-power"},
+  {"id":"skald-mighty-rage-20","name":"Mighty Inspired Rage","level":20,"type":"capstone","summary":"Maximise inspired rage bonuses and remove its AC penalty."},
+  {"id":"skald-master-skald-20","name":"Master Skald","level":20,"type":"capstone","summary":"Start raging song as a swift action and cast spells without verbal components while performing."}
+ ]
+}
