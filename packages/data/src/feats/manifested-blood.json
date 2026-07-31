@@ -9,8 +9,17 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "draconic or elemental bloodline"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "sorcerer-bloodline-draconic"
+        },
+        {
+          "type": "feature",
+          "id": "sorcerer-bloodline-elemental"
+        }
+      ]
     }
   ],
   "benefit": "Surround yourself with an element associated with your bloodline to gain resistance against its energy and deal damage to attackers",

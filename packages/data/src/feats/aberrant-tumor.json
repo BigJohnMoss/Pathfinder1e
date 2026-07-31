@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Aberrant bloodline"
+      "type": "feature",
+      "id": "sorcerer-bloodline-aberrant"
     }
   ],
   "benefit": "Gain a tumor familiar",

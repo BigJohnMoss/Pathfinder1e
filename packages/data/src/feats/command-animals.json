@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Animal domain"
+      "type": "feature",
+      "id": "domain-animal"
     },
     {
       "type": "feature",

@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Animal or Plant domain"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "domain-animal"
+        },
+        {
+          "type": "feature",
+          "id": "domain-plant"
+        }
+      ]
     },
     {
       "type": "feature",
