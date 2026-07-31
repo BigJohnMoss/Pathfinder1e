@@ -29,7 +29,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
 }) {
   const [query, setQuery] = useState("");
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
-  const [visibleLimit, setVisibleLimit] = useState(100);
+  const [visibleLimit, setVisibleLimit] = useState(250);
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
 
   const granted = useMemo(() => new Set(grantedSpellIds), [grantedSpellIds]);
@@ -41,13 +41,13 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
     const level = spell.levelByClass[classId];
     const matchesLevel = query ? true : levelFilter === "all" || level === Number(levelFilter);
     return matchesLevel && `${spell.name} ${spell.summary}`.toLowerCase().includes(query.trim().toLowerCase());
-  }), [classId, levelFilter, query, spells]);
+  }).sort((left, right) => Number(granted.has(right.id) || knownSpellIds.includes(right.id)) - Number(granted.has(left.id) || knownSpellIds.includes(left.id))), [classId, granted, knownSpellIds, levelFilter, query, spells]);
   const groupedSpells = useMemo(() => filteredSpells.slice(0, visibleLimit).reduce((groups, spell) => {
     const level = spell.levelByClass[classId];
     (groups[level] ??= []).push(spell);
     return groups;
   }, {} as Record<number, Spell[]>), [classId, filteredSpells, visibleLimit]);
-  useEffect(() => setVisibleLimit(100), [query, levelFilter, classId]);
+  useEffect(() => setVisibleLimit(250), [query, levelFilter, classId]);
 
   return <section className="spell-panel">
     <p className="eyebrow">SPELLS KNOWN</p>

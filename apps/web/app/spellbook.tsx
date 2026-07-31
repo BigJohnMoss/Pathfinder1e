@@ -71,7 +71,7 @@ export function Spellbook({
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
   const [sourceLevel, setSourceLevel] = useState("all");
-  const [visibleLimit, setVisibleLimit] = useState(100);
+  const [visibleLimit, setVisibleLimit] = useState(250);
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   useEffect(
     () => setLevelFilter(String(maximumSpellLevel)),
@@ -147,7 +147,7 @@ export function Spellbook({
       ),
     [classId, filteredSpells, visibleLimit],
   );
-  useEffect(() => setVisibleLimit(100), [query, levelFilter, classId]);
+  useEffect(() => setVisibleLimit(250), [query, levelFilter, classId]);
 
   return (
     <section className="spell-panel">
@@ -222,7 +222,7 @@ export function Spellbook({
               .filter((spell) => (spell.levelByClass[classId] ?? 0) > 0)
               .filter((spell) => sourceLevel === "all" || spell.levelByClass[classId] === Number(sourceLevel))
               .filter((spell) => !sourceQuery.trim() || `${spell.name} ${spell.summary}`.toLowerCase().includes(sourceQuery.trim().toLowerCase()))
-              .slice(0, 100)
+              .slice(0, 500)
               .map((spell) => {
                 const known = sourceBook.knownSpellIds.includes(spell.id);
                 const automatic = sourceBook.automaticSpellIds.includes(
