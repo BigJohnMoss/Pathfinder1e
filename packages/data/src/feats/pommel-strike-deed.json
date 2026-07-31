@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Amateur Swashbuckler or panache class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "amateur-swashbuckler"
+        },
+        {
+          "type": "feature",
+          "id": "panache"
+        }
+      ]
     },
     {
       "type": "bab",

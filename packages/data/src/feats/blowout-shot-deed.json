@@ -9,8 +9,17 @@
       "minimum": 3
     },
     {
-      "type": "rule",
-      "description": "grit class feature or Amateur Gunslinger UC feat"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "grit"
+        },
+        {
+          "type": "feat",
+          "id": "amateur-gunslinger"
+        }
+      ]
     }
   ],
   "benefit": "Create concussive blasts with a specially prepared black powder mix",

@@ -48,6 +48,9 @@ const supportedFeatureAliases = new Map([
   ["familiar", "familiar"],
   ["raging-song", "raging-song"],
   ["brawlers-cunning", "brawlers-cunning"],
+  ["brawlers-flurry", "brawlers-flurry"],
+  ["grit", "grit"],
+  ["panache", "panache"],
 ]);
 
 const parseAtomicRule = (description) => {
@@ -123,13 +126,17 @@ const parseAtomicRule = (description) => {
   if (/^Endurance$/i.test(text)) return { type: "feat", id: "endurance" };
   const normalizedFeatureKey = featureKey(text);
   if (!text.startsWith("(") && classFeatureKeys.has(normalizedFeatureKey)) return { type: "feature", id: normalizedFeatureKey };
-  const featureName = text.replace(/\s+(?:(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)\s+)?class feature$/i, "");
+  const featureName = text
+    .replace(/\s+(?:(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)\s+)?class feature(?:\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM))?$/i, "")
+    .replace(/^the\s+/i, "");
   const normalizedNamedFeatureKey = featureKey(featureName);
   const aliasedFeatureId = supportedFeatureAliases.get(normalizedNamedFeatureKey);
   if (!featureName.startsWith("(") && (classFeatureKeys.has(normalizedNamedFeatureKey) || aliasedFeatureId)) {
     return { type: "feature", id: aliasedFeatureId ?? normalizedNamedFeatureKey };
   }
-  const withoutCitation = text.replace(/\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)$/i, "");
+  const withoutCitation = text
+    .replace(/\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)(?:\s+feat)?$/i, "")
+    .replace(/\s+feat$/i, "");
   const featId = featIdByName.get(withoutCitation.toLocaleLowerCase());
   if (featId) return { type: "feat", id: featId };
   const alternatives = text.split(/\s+or\s+/i);

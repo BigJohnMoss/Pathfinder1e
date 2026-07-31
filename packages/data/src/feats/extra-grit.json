@@ -4,8 +4,17 @@
   "type": "grit",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Grit class feature or Amateur Gunslinger"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "grit"
+        },
+        {
+          "type": "feat",
+          "id": "amateur-gunslinger"
+        }
+      ]
     }
   ],
   "benefit": "Gain 2 extra grit points per day, and maximum grit increases by 2",

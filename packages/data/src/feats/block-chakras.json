@@ -8,8 +8,17 @@
       "description": "Psychic Sensitivity or levels in an occult class"
     },
     {
-      "type": "rule",
-      "description": "brawler’s flurry or flurry of blows class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "brawlers-flurry"
+        },
+        {
+          "type": "feature",
+          "id": "flurry-of-blows"
+        }
+      ]
     },
     {
       "type": "rule",
