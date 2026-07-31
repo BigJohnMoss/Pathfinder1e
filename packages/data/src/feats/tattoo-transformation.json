@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Inscribe Magical Tattoo ISM or Varisian Tattoo ISWG"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "inscribe-magical-tattoo"
+        },
+        {
+          "type": "feat",
+          "id": "varisian-tattoo"
+        }
+      ]
     },
     {
       "type": "feat",

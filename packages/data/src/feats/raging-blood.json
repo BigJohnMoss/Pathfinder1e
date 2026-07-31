@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Eldritch Heritage or sorcerer bloodline class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "eldritch-heritage"
+        },
+        {
+          "type": "feature",
+          "id": "sorcerer-bloodline"
+        }
+      ]
     }
   ],
   "benefit": "Enter a lesser bloodrage",

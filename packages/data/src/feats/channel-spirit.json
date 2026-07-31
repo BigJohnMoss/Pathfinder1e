@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Spirit Ridden or spirit class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "spirit-ridden"
+        },
+        {
+          "type": "feature",
+          "id": "spirit"
+        }
+      ]
     }
   ],
   "benefit": "Channel a medium spirit",

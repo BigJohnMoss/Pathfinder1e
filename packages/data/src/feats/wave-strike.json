@@ -4,8 +4,17 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Weapon expertise class feature or Quick Draw"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "weapon-expertise"
+        },
+        {
+          "type": "feat",
+          "id": "quick-draw"
+        }
+      ]
     },
     {
       "type": "skill",

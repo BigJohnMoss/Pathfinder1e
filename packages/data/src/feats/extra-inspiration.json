@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Amateur Investigator or inspiration class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "amateur-investigator"
+        },
+        {
+          "type": "feature",
+          "id": "inspiration"
+        }
+      ]
     }
   ],
   "benefit": "Gain three uses of inspiration",
