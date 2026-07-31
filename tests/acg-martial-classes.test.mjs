@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFile } from "node:fs/promises";
 import { apgClassResourceMaximums } from "../packages/engine/src/apg-class-resources.js";
+import { preparedSourceSpellCapacity } from "../packages/engine/src/prepared-source-spells.js";
 
 const load = async (name) => JSON.parse(await readFile(new URL(`../packages/data/src/classes/${name}.json`, import.meta.url), "utf8"));
 
@@ -38,4 +39,14 @@ test("Hunter reaches master hunter with its companion, teamwork, focus, and spel
   assert.ok(entry.features.some(feature => feature.optionGroupId === "hunter-animal-companions"));
   assert.equal(entry.features.filter(feature => feature.optionGroupId === "hunter-teamwork-feats").length, 6);
   assert.equal(entry.features.at(-1).id, "hunter-master-hunter-20");
+});
+
+test("Investigator integrates extracts, inspiration, studied combat, and ten talent slots", async () => {
+  const entry = await load("investigator");
+  assert.equal(entry.spellcasting.preparesFromSlots, true);
+  assert.equal(entry.features.filter(feature => feature.optionGroupId === "investigator-talents").length, 9);
+  assert.ok(entry.features.some(feature => feature.id === "investigator-studied-strike-4"));
+  assert.equal(entry.features.at(-1).id, "investigator-true-inspiration-20");
+  assert.equal(preparedSourceSpellCapacity("investigator", 20, 3), 43);
+  assert.deepEqual(apgClassResourceMaximums("investigator", 20, { intelligence: 5 }), { inspiration: 15 });
 });

@@ -1750,7 +1750,7 @@ export default function Home() {
     );
     return {
       label:
-        selectedClassId === "alchemist" ? "Formula book" : "Familiar spellbook",
+        selectedClassId === "alchemist" || selectedClassId === "investigator" ? "Formula book" : "Familiar spellbook",
       catalogue,
       knownSpellIds,
       automaticSpellIds,
@@ -1911,6 +1911,7 @@ export default function Home() {
     panache: ["Panache", "point"],
     charmedLife: ["Charmed Life", "use"],
     bloodrageRounds: ["Bloodrage", "round"],
+    inspiration: ["Inspiration", "point"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>

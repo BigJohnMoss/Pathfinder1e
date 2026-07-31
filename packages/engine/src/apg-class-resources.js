@@ -40,6 +40,8 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
       };
     case "bloodrager":
       return { bloodrageRounds: Math.max(1, 4 + nonNegativeModifier(abilityModifiers.constitution) + 2 * (classLevel - 1)) };
+    case "investigator":
+      return { inspiration: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.intelligence)) };
     default:
       return {};
   }
