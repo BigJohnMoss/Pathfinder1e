@@ -9,8 +9,17 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "animal companion or mount class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "animal-companion"
+        },
+        {
+          "type": "feature",
+          "id": "mount"
+        }
+      ]
     }
   ],
   "benefit": "Your mount has been blessed by genies",

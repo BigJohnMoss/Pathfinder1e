@@ -14,8 +14,17 @@
       "minimum": 4
     },
     {
-      "type": "rule",
-      "description": "animal companion or mount class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "animal-companion"
+        },
+        {
+          "type": "feature",
+          "id": "mount"
+        }
+      ]
     }
   ],
   "benefit": "Animal companion or mount gains Intimidate as a class skill and can demoralize foes",

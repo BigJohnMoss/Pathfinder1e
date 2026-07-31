@@ -21,12 +21,17 @@
       "description": "eidolon"
     },
     {
-      "type": "feature",
-      "id": "familiar"
-    },
-    {
-      "type": "rule",
-      "description": "or mount"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "familiar"
+        },
+        {
+          "type": "feature",
+          "id": "mount"
+        }
+      ]
     }
   ],
   "benefit": "Certain allies do not count as threatening opponents for certain feats",
