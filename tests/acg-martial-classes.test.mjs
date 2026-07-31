@@ -59,3 +59,12 @@ test("Skald integrates six spell levels, raging song, rage powers, and spell ken
   assert.deepEqual(apgClassResourceMaximums("skald", 1, { charisma: 3 }), { ragingSongRounds: 6 });
   assert.deepEqual(apgClassResourceMaximums("skald", 20, { charisma: 3 }), { ragingSongRounds: 44, spellKenning: 3 });
 });
+
+test("Warpriest integrates prepared divine casting, two blessings, fervor, and Aspect of War", async () => {
+  const entry = await load("warpriest");
+  assert.equal(entry.spellcasting.castingType, "prepared");
+  assert.equal(entry.features.filter(feature => feature.optionGroupId === "warpriest-blessings").length, 2);
+  assert.equal(entry.features.at(-1).id, "warpriest-aspect-war-20");
+  assert.deepEqual(apgClassResourceMaximums("warpriest", 1, { wisdom: 4 }), { blessingUses: 3 });
+  assert.deepEqual(apgClassResourceMaximums("warpriest", 20, { wisdom: 4 }), { blessingUses: 13, fervor: 14 });
+});

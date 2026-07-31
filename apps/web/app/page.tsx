@@ -1914,6 +1914,8 @@ export default function Home() {
     inspiration: ["Inspiration", "point"],
     ragingSongRounds: ["Raging Song", "round"],
     spellKenning: ["Spell Kenning", "use"],
+    blessingUses: ["Blessings", "use"],
+    fervor: ["Fervor", "use"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>
