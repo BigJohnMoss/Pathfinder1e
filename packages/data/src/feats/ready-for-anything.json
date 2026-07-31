@@ -20,8 +20,17 @@
       "id": "quick-draw"
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +6 or uncanny dodge class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 6
+        },
+        {
+          "type": "feature",
+          "id": "uncanny-dodge"
+        }
+      ]
     }
   ],
   "benefit": "Always act on the surprise round",

@@ -39,7 +39,16 @@ const sourceCitationTokens = new Set(["ACG", "APG", "ARG", "ISG", "ISWG", "OA", 
 const saveKeys = { fortitude: "fortitude", reflex: "reflex", will: "will" };
 const featIdByName = new Map(feats.map(({ value }) => [value.name.toLocaleLowerCase(), value.id]));
 const featureKey = (value) => value.toLocaleLowerCase().replace(/[’']/g, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const classFeatureKeys = new Set(classes.flatMap((characterClass) => characterClass.features.map((feature) => featureKey(feature.name))));
+const classFeatureKeys = new Set(classes.flatMap((characterClass) => characterClass.features.flatMap((feature) => {
+  const key = featureKey(feature.name);
+  return [key, key.replace(/-\d+$/, "")];
+})));
+const supportedFeatureAliases = new Map([
+  ["animal-companion", "animal-companion"],
+  ["familiar", "familiar"],
+  ["raging-song", "raging-song"],
+  ["brawlers-cunning", "brawlers-cunning"],
+]);
 
 const parseAtomicRule = (description) => {
   const text = description.trim().replace(/\.$/, "");
@@ -111,10 +120,15 @@ const parseAtomicRule = (description) => {
   }
   const ancestryId = ancestryIds.get(text.toLocaleLowerCase());
   if (ancestryId) return { type: "ancestry", id: ancestryId };
+  if (/^Endurance$/i.test(text)) return { type: "feat", id: "endurance" };
   const normalizedFeatureKey = featureKey(text);
   if (!text.startsWith("(") && classFeatureKeys.has(normalizedFeatureKey)) return { type: "feature", id: normalizedFeatureKey };
-  if (/^animal companion$/i.test(text)) return { type: "feature", id: "animal-companion" };
-  if (/^familiar$/i.test(text)) return { type: "feature", id: "familiar" };
+  const featureName = text.replace(/\s+(?:(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)\s+)?class feature$/i, "");
+  const normalizedNamedFeatureKey = featureKey(featureName);
+  const aliasedFeatureId = supportedFeatureAliases.get(normalizedNamedFeatureKey);
+  if (!featureName.startsWith("(") && (classFeatureKeys.has(normalizedNamedFeatureKey) || aliasedFeatureId)) {
+    return { type: "feature", id: aliasedFeatureId ?? normalizedNamedFeatureKey };
+  }
   const withoutCitation = text.replace(/\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)$/i, "");
   const featId = featIdByName.get(withoutCitation.toLocaleLowerCase());
   if (featId) return { type: "feat", id: featId };

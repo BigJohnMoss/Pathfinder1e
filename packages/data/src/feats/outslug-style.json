@@ -9,8 +9,17 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Combat Expertise or brawler’s cunning ACG class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "combat-expertise"
+        },
+        {
+          "type": "feature",
+          "id": "brawlers-cunning"
+        }
+      ]
     },
     {
       "type": "rule",

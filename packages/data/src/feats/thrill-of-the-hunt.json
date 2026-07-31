@@ -9,8 +9,17 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "base attack bonus +4 or track class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "bab",
+          "minimum": 4
+        },
+        {
+          "type": "feature",
+          "id": "track"
+        }
+      ]
     }
   ],
   "benefit": "Designate a creature you are tracking as your prize to gain bonuses against it",

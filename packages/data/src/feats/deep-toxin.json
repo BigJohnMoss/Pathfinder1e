@@ -12,8 +12,18 @@
       "minimum": 6
     },
     {
-      "type": "rule",
-      "description": "Craft (poison) 6 ranks or poison use class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "skill",
+          "key": "Craft (poison)",
+          "minimum": 6
+        },
+        {
+          "type": "feature",
+          "id": "poison-use"
+        }
+      ]
     }
   ],
   "benefit": "Increase poison duration when using vital strike",

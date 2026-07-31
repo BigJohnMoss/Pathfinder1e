@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Damage reduction"
+      "type": "feature",
+      "id": "damage-reduction"
     }
   ],
   "benefit": "Increase DR against a single attack",

@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Channel energy or lay on hands class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "channel-energy"
+        },
+        {
+          "type": "feature",
+          "id": "lay-on-hands"
+        }
+      ]
     }
   ],
   "benefit": "Expend two uses of channel or lay on hands to empower the healing",

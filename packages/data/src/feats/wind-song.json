@@ -9,8 +9,17 @@
       "minimum": 5
     },
     {
-      "type": "rule",
-      "description": "bardic performance or raging song class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "bardic-performance"
+        },
+        {
+          "type": "feature",
+          "id": "raging-song"
+        }
+      ]
     }
   ],
   "benefit": "Echo your performance so that it originates from a square far from you",

@@ -14,8 +14,17 @@
       "minimum": 1
     },
     {
-      "type": "rule",
-      "description": "bardic performance or raging song"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "bardic-performance"
+        },
+        {
+          "type": "feature",
+          "id": "raging-song"
+        }
+      ]
     }
   ],
   "benefit": "Use perform instead of diplomacy to improve an attitude",

@@ -8,8 +8,17 @@
       "id": "power-attack"
     },
     {
-      "type": "rule",
-      "description": "rage or raging song class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "rage"
+        },
+        {
+          "type": "feature",
+          "id": "raging-song"
+        }
+      ]
     }
   ],
   "benefit": "Take a penalty on attack rolls to deal more damage while raging",

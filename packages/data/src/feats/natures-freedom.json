@@ -5,7 +5,11 @@
   "prerequisites": [
     {
       "type": "rule",
-      "description": "Animal or Plant domain; channel energy class feature"
+      "description": "Animal or Plant domain"
+    },
+    {
+      "type": "feature",
+      "id": "channel-energy"
     }
   ],
   "benefit": "Allow creatures of your choice the ability to move throught dense undergrowth with ease",

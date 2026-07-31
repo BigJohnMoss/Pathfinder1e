@@ -4,8 +4,17 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Flurry of blows class feature or Two-Weapon Fighting"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "flurry-of-blows"
+        },
+        {
+          "type": "feat",
+          "id": "two-weapon-fighting"
+        }
+      ]
     },
     {
       "type": "feat",

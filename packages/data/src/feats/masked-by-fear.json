@@ -8,8 +8,18 @@
       "id": "nameless-one"
     },
     {
-      "type": "rule",
-      "description": "base Will save bonus +6 or bravery class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "save",
+          "key": "will",
+          "minimum": 6
+        },
+        {
+          "type": "feature",
+          "id": "bravery"
+        }
+      ]
     }
   ],
   "benefit": "Fear effects are less effective agaisnt you",

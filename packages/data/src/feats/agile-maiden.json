@@ -14,8 +14,17 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Endurance or armor training class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "endurance"
+        },
+        {
+          "type": "feature",
+          "id": "armor-training"
+        }
+      ]
     },
     {
       "type": "rule",
