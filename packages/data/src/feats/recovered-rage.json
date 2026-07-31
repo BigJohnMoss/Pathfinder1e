@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Rage or raging song class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "rage"
+        },
+        {
+          "type": "feature",
+          "id": "raging-song"
+        }
+      ]
     }
   ],
   "benefit": "Regain rage or raging song with each foe you reduce to 0 or fewer hit points",

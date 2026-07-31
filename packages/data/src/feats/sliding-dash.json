@@ -9,8 +9,18 @@
       "minimum": 15
     },
     {
-      "type": "rule",
-      "description": "Acrobatics 10 ranks or acrobatic charge class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "skill",
+          "key": "Acrobatics",
+          "minimum": 10
+        },
+        {
+          "type": "feature",
+          "id": "acrobatic-charge"
+        }
+      ]
     },
     {
       "type": "skill",

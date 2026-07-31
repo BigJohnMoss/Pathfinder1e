@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Bardic performance or raging song"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "bardic-performance"
+        },
+        {
+          "type": "feature",
+          "id": "raging-song"
+        }
+      ]
     }
   ],
   "benefit": "Grant improved bonuses on Perform when aiding another",

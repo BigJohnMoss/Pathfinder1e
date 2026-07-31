@@ -8,8 +8,17 @@
       "id": "adder-strike"
     },
     {
-      "type": "rule",
-      "description": "Two-Weapon Fighting or flurry of blows class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "two-weapon-fighting"
+        },
+        {
+          "type": "feature",
+          "id": "flurry-of-blows"
+        }
+      ]
     },
     {
       "type": "skill",

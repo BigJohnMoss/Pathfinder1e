@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Animal companion class feature or familiar class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "animal-companion"
+        },
+        {
+          "type": "feature",
+          "id": "familiar"
+        }
+      ]
     }
   ],
   "benefit": "Companion or familiar abilities are treated as though you were a higher level",

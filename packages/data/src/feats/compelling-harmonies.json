@@ -13,8 +13,17 @@
       "minimum": 10
     },
     {
-      "type": "rule",
-      "description": "bardic performance or raging song"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "bardic-performance"
+        },
+        {
+          "type": "feature",
+          "id": "raging-song"
+        }
+      ]
     }
   ],
   "benefit": "Expend a round of performance to boost another ally’s performance",

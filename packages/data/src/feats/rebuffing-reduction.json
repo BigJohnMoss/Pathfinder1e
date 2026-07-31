@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Damage reduction"
+      "type": "feature",
+      "id": "damage-reduction"
     },
     {
       "type": "feat",

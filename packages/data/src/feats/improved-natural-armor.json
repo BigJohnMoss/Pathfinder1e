@@ -4,8 +4,8 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Natural armor"
+      "type": "feature",
+      "id": "natural-armor"
     },
     {
       "type": "ability",

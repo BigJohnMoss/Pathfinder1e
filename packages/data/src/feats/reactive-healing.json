@@ -17,8 +17,17 @@
       ]
     },
     {
-      "type": "rule",
-      "description": "channel energy or lay on hands class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "channel-energy"
+        },
+        {
+          "type": "feature",
+          "id": "lay-on-hands"
+        }
+      ]
     }
   ],
   "benefit": "When reduced to 0 hp or fewer, use channel energy or lay on hands to heal yourself as immediate action",
