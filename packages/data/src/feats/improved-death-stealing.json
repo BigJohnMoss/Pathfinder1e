@@ -12,8 +12,10 @@
       "id": "ability-focus"
     },
     {
-      "type": "rule",
-      "description": "(death-stealing gaze"
+      "type": "choice-value",
+      "featId": "ability-focus",
+      "key": "special-attack",
+      "value": "death-stealing gaze"
     }
   ],
   "benefit": "Your undead spawn rise as more powerful creatures.",
