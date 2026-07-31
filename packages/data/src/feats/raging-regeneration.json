@@ -4,8 +4,8 @@
   "type": "combat",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Rage class ability"
+      "type": "feature",
+      "id": "rage"
     },
     {
       "type": "rule",

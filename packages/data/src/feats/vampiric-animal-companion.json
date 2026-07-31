@@ -13,8 +13,8 @@
       "minimum": 18
     },
     {
-      "type": "rule",
-      "description": "animal companion class ability"
+      "type": "feature",
+      "id": "animal-companion"
     },
     {
       "type": "rule",

@@ -30,8 +30,8 @@
       "minimum": 8
     },
     {
-      "type": "rule",
-      "description": "ki strike class ability"
+      "type": "feature",
+      "id": "monk-ki-pool-4"
     }
   ],
   "benefit": "Make stunning fist attacks as melee touch attacks",
