@@ -15,6 +15,9 @@ const manualPrerequisites = prerequisiteRecords.filter((item) => item.type === "
 const featsWithManualPrerequisites = data.feats.filter((feat) =>
   prerequisiteNodes(feat.prerequisites).some((item) => item.type === "rule")
 ).length;
+const spellsWithFullRules = data.spells.filter((spell) => spell.description?.trim()).length;
+const spellsWithSources = data.spells.filter((spell) => spell.source?.url).length;
+const spellsWithCoreStats = data.spells.filter((spell) => spell.castingTime && spell.components?.length && spell.range && spell.duration).length;
 const classRows = [...data.classes]
   .sort((left, right) => left.name.localeCompare(right.name))
   .map((characterClass) => {
@@ -51,6 +54,14 @@ This report is generated from the application's source data by \`npm run coverag
 | Feats containing a manual-review rule | ${featsWithManualPrerequisites} |
 
 Manual-review rules remain visibly locked in the builder. They are not silently treated as satisfied.
+
+## Spell details
+
+| Coverage | Count |
+|---|---:|
+| Full rules descriptions | ${spellsWithFullRules} |
+| Rules source links | ${spellsWithSources} |
+| Core casting statistics | ${spellsWithCoreStats} |
 
 ## Class progression
 

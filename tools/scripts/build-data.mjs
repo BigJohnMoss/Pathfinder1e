@@ -19,8 +19,11 @@ const bloodlineDetails=new Map(bloodlineDetailFiles.flatMap(file=>file.bloodline
 const mysteryDetailFiles=await loadDir('mystery-details');
 const mysteryDetails=new Map(mysteryDetailFiles.flatMap(file=>file.mysteries).map(mystery=>[mystery.id,mystery]));
 const rawOptionGroups=(await loadDir('options')).map(group=>({...group,options:[...group.options.map(option=>({...group.optionDefaults,...option,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})})),...(group.id==="cleric-domains"?subdomains:[])]}));
+const spellDetailFiles=await loadDir('spell-details').catch(()=>[]);
+const spellDetailsById=new Map(spellDetailFiles.flatMap(file=>file.spells??[]).map(detail=>[detail.id,detail]));
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
-const spells=sourceSpells.map(spell=>{
+const spells=sourceSpells.map(sourceSpell=>{
+  const spell={...sourceSpell,...(spellDetailsById.get(sourceSpell.id)??{})};
   const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
   const sharedArcaneLevel=withWizard?.wizard??withWizard?.arcanist;
   const sharedLevelByClass=sharedArcaneLevel!==undefined&&withWizard?.sorcerer===undefined?{...withWizard,sorcerer:sharedArcaneLevel}:withWizard;
@@ -68,13 +71,16 @@ const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classe
 const serialized=JSON.stringify(bundle);
 const compactFeats=bundle.feats.map(({description,rulesSections,...feat})=>({...feat,benefit:"",source:{...feat.source,title:""}}));
 const compactArchetypes=bundle.archetypes.map(archetype=>({...archetype,replacements:[],featureOverrides:undefined,mechanicalNotes:undefined}));
-const clientBundle={...bundle,archetypes:compactArchetypes,feats:compactFeats};
+const compactSpells=bundle.spells.map(({description,components,castingTime,range,target,area,effect,duration,savingThrow,spellResistance,source,...spell})=>spell);
+const clientBundle={...bundle,archetypes:compactArchetypes,feats:compactFeats,spells:compactSpells};
 const serializedClientBundle=JSON.stringify(clientBundle);
 await writeFile(new URL('pf1e-data.json',out),JSON.stringify(bundle,null,2)+'\n');
 await writeFile(new URL('pf1e-data.mjs',out),`const data = JSON.parse(${JSON.stringify(serializedClientBundle)});\nexport default data;\n`);
 await writeFile(new URL('pf1e-data.d.mts',out),'import type { GeneratedDataBundle } from "../packages/types/src/index.js";\ndeclare const data: GeneratedDataBundle;\nexport default data;\n');
 await writeFile(new URL('pf1e-feats.mjs',out),`const feats = JSON.parse(${JSON.stringify(JSON.stringify(bundle.feats))});\nexport default feats;\n`);
 await writeFile(new URL('pf1e-feats.d.mts',out),'import type { CharacterFeat } from "../packages/types/src/index.js";\ndeclare const feats: CharacterFeat[];\nexport default feats;\n');
+await writeFile(new URL('pf1e-spells.mjs',out),`const spells = JSON.parse(${JSON.stringify(JSON.stringify(bundle.spells))});\nexport default spells;\n`);
+await writeFile(new URL('pf1e-spells.d.mts',out),'import type { CharacterSpell } from "../packages/types/src/index.js";\ndeclare const spells: CharacterSpell[];\nexport default spells;\n');
 await writeFile(new URL('pf1e-archetypes.mjs',out),`const archetypes = JSON.parse(${JSON.stringify(JSON.stringify(bundle.archetypes))});\nexport default archetypes;\n`);
 await writeFile(new URL('pf1e-archetypes.d.mts',out),'import type { CharacterArchetype } from "../packages/types/src/index.js";\ndeclare const archetypes: CharacterArchetype[];\nexport default archetypes;\n');
 console.log(`Generated bundle with ${bundle.classes.length} classes, ${bundle.feats.length} feats, ${bundle.traits.length} traits, and ${bundle.spells.length} spells.`);

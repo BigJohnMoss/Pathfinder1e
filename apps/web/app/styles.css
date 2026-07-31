@@ -375,6 +375,71 @@ a:focus-visible,
   flex: 0 0 auto;
 }
 
+.spell-details {
+  flex: 1 0 100%;
+  min-width: 0;
+}
+
+.spell-details > summary {
+  color: #6f2424;
+  cursor: pointer;
+  font-size: .84rem;
+  font-weight: 800;
+  padding: 6px 0;
+  width: fit-content;
+}
+
+.spell-details-body {
+  background: #faf6ee;
+  border: 1px solid #ddcfba;
+  border-radius: 12px;
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+  padding: 16px;
+}
+
+.spell-details-body dl {
+  display: grid;
+  gap: 8px 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.spell-details-body dl div {
+  border-bottom: 1px solid #e5dac8;
+  display: grid;
+  gap: 3px;
+  padding-bottom: 7px;
+}
+
+.spell-details-body dt {
+  color: #726c61;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.spell-details-body dd {
+  line-height: 1.4;
+  margin: 0;
+}
+
+.spell-description p {
+  line-height: 1.55;
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+}
+
+.spell-description p:last-child { margin-bottom: 0; }
+
+.spell-source-link {
+  color: #6f2424;
+  font-weight: 800;
+  justify-self: start;
+}
+
 .prepared-summary {
   background: #faf6ee;
   border: 1px solid #ddcfba;
@@ -504,6 +569,8 @@ a:focus-visible,
     justify-content: space-between;
     width: 100%;
   }
+
+  .spell-details-body dl { grid-template-columns: 1fr; }
 
   .cast-spell-button {
     flex: 0 0 auto;

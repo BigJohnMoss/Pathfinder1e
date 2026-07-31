@@ -93,6 +93,10 @@ test("keeps spell actions separate at an Android phone viewport", async ({ page 
   expect(preparedBox).not.toBeNull();
   expect(refreshBox!.y + refreshBox!.height).toBeLessThanOrEqual(reservoirBox!.y);
   expect(castBox!.x + castBox!.width).toBeLessThanOrEqual(preparedBox!.x);
+  await spell.getByText("View full rules").click();
+  await expect(spell.getByRole("link", { name: /Rules source/ })).toBeVisible();
+  const detailsWidth = await spell.locator(".spell-details-body").evaluate((element) => element.scrollWidth <= element.clientWidth);
+  expect(detailsWidth).toBe(true);
 
   const dimensions = await page.evaluate(() => ({
     bodyWidth: document.body.scrollWidth,

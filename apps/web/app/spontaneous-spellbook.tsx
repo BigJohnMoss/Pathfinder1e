@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { CharacterSpell } from "../../../packages/types/src/index.js";
+import { SpellDetails } from "./spell-details";
 
 type Spell = CharacterSpell;
 type Slot = { level: number; base: number; bonus: number; count: number };
@@ -70,6 +71,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
           return <article key={spell.id}>
             <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}{spellTraitBonuses[spell.id]?.casterLevel ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level` : ""}{spellTraitBonuses[spell.id]?.metamagicLevelAdjustment ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment` : ""}</small></div>
             <div className="spell-actions"><button type="button" className="cast-spell-button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><div className="spell-selection-control"><button type="button" aria-label={`Forget ${spell.name}`} disabled={!learned || isGranted} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{isGranted ? grantedSpellLabel : learned ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div></div>
+            <SpellDetails spell={spell} />
           </article>;
         })}</div>
       </section>;

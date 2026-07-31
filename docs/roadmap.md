@@ -150,7 +150,7 @@ Native store packages for Microsoft Store or Google Play are optional later work
 
 ## Next work queue
 
-- [ ] complete spell rules and source details: replace shortened spell summaries
+- [x] complete spell rules and source details: replace shortened spell summaries
   with the full correct rules description for all 2,069 catalogued spells, retain
   structured casting details such as school, components, range, target, duration,
   saving throw, and spell resistance, and add a visible **Rules source** link to

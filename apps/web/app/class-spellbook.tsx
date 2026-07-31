@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
-import { optionGroups, spells } from "./character-catalogue";
+import { optionGroups } from "./character-catalogue";
 import { Spellbook } from "./spellbook";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
 import { arcaneReservoir, normalizeSpellSlotUses, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
@@ -29,6 +29,7 @@ function mergeSpellLists(baseSpells: CharacterSpell[], grantedSpells: CharacterS
 
 export function ClassSpellbook({
   characterClass,
+  spells,
   classLevel,
   abilities,
   selectedOptions,
@@ -41,6 +42,7 @@ export function ClassSpellbook({
   onReservoirPointsChange
 }: {
   characterClass: CharacterClass;
+  spells: CharacterSpell[];
   classLevel: number;
   abilities: AbilityScores;
   selectedOptions: Record<string, string>;

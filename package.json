@@ -16,6 +16,7 @@
     "test:e2e": "playwright test",
     "build:data": "node tools/scripts/build-data.mjs",
     "import:feat-details": "node tools/scripts/import-feat-details.mjs --all",
+    "import:spell-details": "node tools/scripts/import-spell-details.mjs",
     "import:archetypes": "node tools/scripts/import-archetypes.mjs",
     "coverage:archetypes": "node tools/scripts/annotate-archetype-coverage.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",

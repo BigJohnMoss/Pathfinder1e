@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { preparedSpellSlotUsage, spellPreparationCost } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import type { CharacterSpell } from "../../../packages/types/src/index.js";
+import { SpellDetails } from "./spell-details";
 
 type Spell = CharacterSpell;
 type Slot = { level: number; base: number; bonus: number; count: number };
@@ -86,6 +87,7 @@ export function Spellbook({ spells, spellTraitBonuses = {}, classId, className, 
           return <article key={spell.id}>
             <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}{spellTraitBonuses[spell.id]?.casterLevel ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level` : ""}{spellTraitBonuses[spell.id]?.metamagicLevelAdjustment ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment` : ""}{preparationCost === 2 ? " · opposition school: costs 2 prepared slots" : ""}</small></div>
             <div className="spell-actions"><button type="button" className="cast-spell-button" aria-label={`Cast ${spell.name}`} disabled={prepared === 0 || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><div className="spell-count"><button type="button" aria-label={`Remove ${spell.name}`} disabled={prepared === 0} onClick={() => onPreparedSpellIdsChange(preparedSpellIds.filter((id, index) => id !== spell.id || index !== preparedSpellIds.lastIndexOf(spell.id)))}>-</button><output aria-label={`${spell.name} prepared`}>{prepared}</output><button type="button" aria-label={`Add ${spell.name}`} disabled={full} onClick={() => onPreparedSpellIdsChange([...preparedSpellIds, spell.id])}>+</button></div></div>
+            <SpellDetails spell={spell} />
           </article>;
         })}</div>
       </section>;
