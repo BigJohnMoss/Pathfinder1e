@@ -1917,6 +1917,7 @@ export default function Home() {
     spellKenning: ["Spell Kenning", "use"],
     blessingUses: ["Blessings", "use"],
     fervor: ["Fervor", "use"],
+    burn: ["Burn accepted", "point"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>

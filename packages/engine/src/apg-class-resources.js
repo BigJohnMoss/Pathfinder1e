@@ -52,6 +52,8 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
         blessingUses: 3 + Math.floor(classLevel / 2),
         ...(classLevel >= 2 ? { fervor: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.wisdom)) } : {})
       };
+    case "kineticist":
+      return { burn: Math.max(1, 3 + nonNegativeModifier(abilityModifiers.constitution)) };
     default:
       return {};
   }
