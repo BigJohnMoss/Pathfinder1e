@@ -12,8 +12,8 @@
       "description": "one of your parents was aquatic and the other was a land-dweller. You are mostly a normal member of your race"
     },
     {
-      "type": "rule",
-      "description": "except as stated in this feat. You must select this feat at 1st level"
+      "type": "level",
+      "maximum": 1
     },
     {
       "type": "rule",

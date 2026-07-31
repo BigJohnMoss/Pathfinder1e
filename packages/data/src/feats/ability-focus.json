@@ -9,6 +9,11 @@
     }
   ],
   "benefit": "Increase the DC of a special attack by 2.",
+  "choice": {
+    "key": "special-attack",
+    "label": "Special attack",
+    "allowCustom": true
+  },
   "source": {
     "title": "Pathfinder RPG Bestiary",
     "page": 314,
