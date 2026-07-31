@@ -1,3 +1,7 @@
+import { normalizeCompanionState } from "./companions.js";
+export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
+export { eidolonProgression } from "./eidolon.js";
+
 export function baseAttackBonus(progression, level) {
   assertLevel(level);
   if (progression === "full") return level;
@@ -712,6 +716,7 @@ export function normalizeCharacterDraft(
     spellSlotUses,
     spellSlotUsesByClass,
     classResourceUsesByClass,
+    companions: normalizeCompanionState(draft.companions),
     eidolon: validClassIds.has("summoner")
       ? {
           size: draft.eidolon?.size === "Small" ? "Small" : "Medium",

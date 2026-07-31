@@ -1,21 +1,22 @@
 import type { CharacterOption } from "../../../packages/types/src/index.js";
 import { eidolonBaseForm, validateEidolonEvolutions } from "../../../packages/engine/src/index.js";
 
-export function EidolonBuilder({ level, baseFormId, size, evolutionIds, evolutions, onSizeChange, onEvolutionIdsChange }: {
+export function EidolonBuilder({ level, baseFormId, size, evolutionIds, evolutions, bonusEvolutionPoints = 0, onSizeChange, onEvolutionIdsChange }: {
   level: number;
   baseFormId: string;
   size: "Small" | "Medium";
   evolutionIds: string[];
   evolutions: CharacterOption[];
+  bonusEvolutionPoints?: number;
   onSizeChange: (size: "Small" | "Medium") => void;
   onEvolutionIdsChange: (ids: string[]) => void;
 }) {
   const formId = baseFormId.replace(/^eidolon-/, "");
   const form = eidolonBaseForm(formId, size);
   const validEvolutions = evolutions.filter((evolution): evolution is CharacterOption & { cost: number } => Number.isFinite(evolution.cost));
-  const allocation = validateEidolonEvolutions(evolutionIds, validEvolutions, level, formId);
+  const allocation = validateEidolonEvolutions(evolutionIds, validEvolutions, level, formId, bonusEvolutionPoints);
   const selected = new Set(allocation.selectedIds);
-  const toggle = (id: string) => onEvolutionIdsChange(validateEidolonEvolutions(selected.has(id) ? allocation.selectedIds.filter(item => item !== id) : [...allocation.selectedIds, id], validEvolutions, level, formId).selectedIds);
+  const toggle = (id: string) => onEvolutionIdsChange(validateEidolonEvolutions(selected.has(id) ? allocation.selectedIds.filter(item => item !== id) : [...allocation.selectedIds, id], validEvolutions, level, formId, bonusEvolutionPoints).selectedIds);
 
   return <section className="eidolon-builder" aria-labelledby="eidolon-builder-title">
     <div className="eidolon-heading">
@@ -28,7 +29,7 @@ export function EidolonBuilder({ level, baseFormId, size, evolutionIds, evolutio
         <span><b>{formId[0].toUpperCase() + formId.slice(1)}</b><small>Speed {form.speed} ft. · Armour +{form.armor}</small></span>
         <span><b>STR {form.abilities.strength} · DEX {form.abilities.dexterity} · CON {form.abilities.constitution}</b><small>{form.attacks.join("; ")}</small></span>
       </div>
-      <p className="eidolon-budget">{allocation.remaining} points remaining. Choices that exceed the pool or fail a requirement are disabled.</p>
+      <p className="eidolon-budget">{allocation.remaining} points remaining{bonusEvolutionPoints > 0 ? ` (${bonusEvolutionPoints} from favoured class)` : ""}. Choices that exceed the pool or fail a requirement are disabled.</p>
       <div className="eidolon-evolutions">
         {evolutions.map(evolution => {
           const isSelected = selected.has(evolution.id);

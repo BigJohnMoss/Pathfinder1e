@@ -78,7 +78,8 @@ export function arcaneReservoir(level: number): { maximum: number; dailyRefresh:
 export { bardicPerformanceRounds } from "./bardic-performance.js";
 export { druidWildShapeUses } from "./druid-wild-shape.js";
 export { apgClassResourceMaximums, normalizeClassResourceUses, normalizeClassResourcesByClass } from "./apg-class-resources.js";
-export { eidolonEvolutionPool, eidolonBaseForm, validateEidolonEvolutions } from "./eidolon.js";
+export { eidolonEvolutionPool, eidolonProgression, eidolonBaseForm, validateEidolonEvolutions } from "./eidolon.js";
+export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { witchPatronSpells } from "./witch-patrons.js";
 export { preparedSourceSpellCapacity, normalizePreparedSourceSpells, preparedSourceAvailableSpells } from "./prepared-source-spells.js";
 export function bonusSpellsPerDay(abilityScore: number, maximumSpellLevel: number): Array<{ level: number; count: number }>;

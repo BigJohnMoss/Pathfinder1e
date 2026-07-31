@@ -196,6 +196,36 @@ equipment, feat, spell, and installable-application workflow.
 
 ## Working rule
 
+## Active milestone: Builder Expansion
+
+Expand the completed Core and APG builder through shared mechanics first, then
+add later class families without weakening existing save files or mobile paths.
+
+1. [x] Unified companion foundation: persistent, level-scaled sheets for animal
+   companions, mounts, familiars, and eidolons, including current HP and the
+   published advancement statistics and abilities.
+2. [ ] Archetype automation: connect descriptive replacement features to shared
+   companion, resource, spellcasting, feat, skill, and combat mechanics.
+3. [ ] Favoured-class mechanics: apply every supported alternate reward directly
+   to its target statistic or class resource, including fractional thresholds.
+4. [ ] Formula, familiar, and prepared-source acquisition: improve learn/copy,
+   known, prepared, and daily-use workflows while keeping each list distinct.
+5. [ ] Performance: split large option and rules catalogues by active class and
+   screen, virtualise long result lists, and measure mobile interaction cost.
+6. [ ] Browser journeys: cover representative single-class and multiclass builds
+   through level 20, save/load, offline launch, and narrow touch layouts.
+7. [ ] Later classes: add Magus, Gunslinger, and Samurai before the Advanced
+   Class Guide and Occult Adventures class families.
+
+### Expansion completion criteria
+
+- [ ] every supported companion and alternate favoured-class reward is mechanical
+- [ ] partial archetypes expose an explicit automation status and no silent effects
+- [ ] spell-source books distinguish acquisition, preparation, and expenditure
+- [ ] level-20 journeys pass on desktop and narrow mobile viewports
+- [ ] production bundle and interaction performance remain within recorded budgets
+- [ ] all later-class chassis are selectable, persistent, and playable to level 20
+
 Future work should be selected as a new, deliberately scoped milestone while
 preserving the completed Core, Expanded Character Options, Installable
 Application, and Universal builder systems through their validation and browser

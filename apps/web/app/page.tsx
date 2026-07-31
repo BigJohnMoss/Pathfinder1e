@@ -20,6 +20,7 @@ import { SkillAllocation } from "./skill-allocation";
 import { FeatChoices } from "./feat-choices";
 import { ClassOptions } from "./class-options";
 import { EidolonBuilder } from "./eidolon-builder";
+import { CompanionManager, type CompanionDescriptor } from "./companion-manager";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { CharacterTabs, type CharacterTabId } from "./character-tabs";
 import { TraitChoices } from "./trait-choices";
@@ -288,6 +289,9 @@ export default function Home() {
   const [wildShapeUsed, setWildShapeUsed] = useState(0);
   const [classResourceUsesByClass, setClassResourceUsesByClass] = useState<
     Record<string, Record<string, number>>
+  >({});
+  const [companions, setCompanions] = useState<
+    NonNullable<CharacterDraftV1["companions"]>
   >({});
   const [eidolonSize, setEidolonSize] = useState<"Small" | "Medium">("Medium");
   const [eidolonEvolutionIds, setEidolonEvolutionIds] = useState<string[]>([]);
@@ -1802,6 +1806,42 @@ export default function Home() {
   const eidolonEvolutions =
     optionGroups.find((group) => group.id === "eidolon-evolutions")?.options ??
     [];
+  const halfElfEidolonReward = alternateFavoredClassRewards.find(
+    (reward) => reward.id === "half-elf-summoner-evolutions",
+  );
+  const bonusEidolonEvolutionPoints = halfElfEidolonReward
+    ? alternateRewardValue(
+        halfElfEidolonReward,
+        favoredClassAlternateBonuses[halfElfEidolonReward.id] ?? 0,
+      )
+    : 0;
+  const companionDescriptors = useMemo(() => {
+    const descriptors: CompanionDescriptor[] = [];
+    const selectedValue = (prefix: string) =>
+      Object.entries(selectedOptions).find(([featureId]) =>
+        featureId.startsWith(prefix),
+      )?.[1] ?? "";
+    const optionLabel = (optionId: string, fallback: string) =>
+      optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId)?.name ?? fallback;
+    const reward = (id: string) => {
+      const definition = alternateFavoredClassRewards.find(item => item.id === id);
+      return definition ? alternateRewardValue(definition, favoredClassAlternateBonuses[id] ?? 0) : 0;
+    };
+    const add = (id: string, kind: CompanionDescriptor["kind"], optionId: string, fallback: string, effectiveLevel: number, bonuses: Pick<CompanionDescriptor, "bonusHitPoints" | "bonusSkillRanks"> = {}) => {
+      if (optionId && effectiveLevel > 0) descriptors.push({ id, kind, optionId, label: optionLabel(optionId, fallback), effectiveLevel, ...bonuses });
+    };
+    add("eidolon", "eidolon", eidolonBaseFormId, "Eidolon", summonerClassLevel, { bonusHitPoints: reward("gnome-summoner-eidolon-hp"), bonusSkillRanks: reward("halfling-summoner-eidolon-skill") });
+    add("witch-familiar", "familiar", selectedValue("witch-familiar-"), "Witch familiar", classLevelMap.witch ?? 0, { bonusSkillRanks: reward("half-orc-witch-familiar") });
+    if (selectedValue("wizard-arcane-bond-") === "wizard-arcane-bond-familiar")
+      add("wizard-familiar", "familiar", selectedValue("wizard-familiar-"), "Wizard familiar", classLevelMap.wizard ?? 0);
+    if (selectedValue("druid-nature-bond-") === "druid-nature-bond-animal")
+      add("druid-companion", "animal", selectedValue("druid-animal-companion-"), "Animal companion", classLevelMap.druid ?? 0);
+    if (selectedValue("ranger-hunters-bond-") === "ranger-hunters-bond-animal")
+      add("ranger-companion", "animal", selectedValue("ranger-animal-companion-"), "Animal companion", Math.max(1, (classLevelMap.ranger ?? 0) - 3), { bonusHitPoints: reward("half-orc-ranger-companion"), bonusSkillRanks: reward("half-elf-ranger-companion") });
+    if (selectedValue("paladin-divine-bond-") === "paladin-divine-bond-mount")
+      descriptors.push({ id: "paladin-mount", kind: "mount", optionId: "paladin-divine-bond-mount", label: "Bonded mount", effectiveLevel: classLevelMap.paladin ?? 1 });
+    return descriptors;
+  }, [classLevelMap, eidolonBaseFormId, favoredClassAlternateBonuses, selectedOptions, summonerClassLevel]);
   const validEidolonEvolutions = eidolonEvolutions.filter(
     (evolution): evolution is typeof evolution & { cost: number } =>
       Number.isFinite(evolution.cost),
@@ -2298,6 +2338,7 @@ export default function Home() {
     spellSlotUses: Object.fromEntries(Object.entries(spellSlotUses)),
     spellSlotUsesByClass,
     classResourceUsesByClass,
+    companions,
     eidolon: summonerClassLevel
       ? { size: eidolonSize, evolutionIds: eidolonEvolutionIds }
       : undefined,
@@ -2822,6 +2863,7 @@ export default function Home() {
         },
       ),
     );
+    setCompanions(draft.companions ?? {});
     setEidolonSize(draft.eidolon?.size ?? "Medium");
     setEidolonEvolutionIds(draft.eidolon?.evolutionIds ?? []);
     setSelectedAlternateRacialTraitIds(
@@ -3056,6 +3098,7 @@ export default function Home() {
     setBardicPerformanceUsed(0);
     setWildShapeUsed(0);
     setClassResourceUsesByClass({});
+    setCompanions({});
     setEidolonSize("Medium");
     setEidolonEvolutionIds([]);
     setCurrentHitPoints(null);
@@ -3606,10 +3649,17 @@ export default function Home() {
                   size={eidolonSize}
                   evolutionIds={eidolonEvolutionIds}
                   evolutions={eidolonEvolutions}
+                  bonusEvolutionPoints={bonusEidolonEvolutionPoints}
                   onSizeChange={setEidolonSize}
                   onEvolutionIdsChange={setEidolonEvolutionIds}
                 />
               )}
+              <CompanionManager
+                companions={companionDescriptors}
+                states={companions}
+                masterHitPoints={combat.averageHitPoints}
+                onChange={setCompanions}
+              />
             </div>
           )}
           {activeTab === "options" && (
