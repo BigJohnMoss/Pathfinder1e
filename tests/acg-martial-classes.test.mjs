@@ -30,3 +30,12 @@ test("Bloodrager reaches mighty bloodrage with four spell levels and a bounded r
   assert.deepEqual(apgClassResourceMaximums("bloodrager", 1, { constitution: 3 }), { bloodrageRounds: 7 });
   assert.deepEqual(apgClassResourceMaximums("bloodrager", 20, { constitution: 3 }), { bloodrageRounds: 45 });
 });
+
+test("Hunter reaches master hunter with its companion, teamwork, focus, and spell progressions", async () => {
+  const entry = await load("hunter");
+  assert.equal(entry.spellcasting.castingType, "spontaneous");
+  assert.deepEqual(entry.spellcasting.spellLevelUnlocks, [1, 4, 7, 10, 13, 16]);
+  assert.ok(entry.features.some(feature => feature.optionGroupId === "hunter-animal-companions"));
+  assert.equal(entry.features.filter(feature => feature.optionGroupId === "hunter-teamwork-feats").length, 6);
+  assert.equal(entry.features.at(-1).id, "hunter-master-hunter-20");
+});

@@ -1851,6 +1851,7 @@ export default function Home() {
       add("druid-companion", "animal", selectedValue("druid-animal-companion-"), "Animal companion", classLevelMap.druid ?? 0);
     if (selectedValue("ranger-hunters-bond-") === "ranger-hunters-bond-animal")
       add("ranger-companion", "animal", selectedValue("ranger-animal-companion-"), "Animal companion", Math.max(1, (classLevelMap.ranger ?? 0) - 3), { bonusHitPoints: reward("half-orc-ranger-companion"), bonusSkillRanks: reward("half-elf-ranger-companion") });
+    add("hunter-companion", "animal", selectedValue("hunter-animal-companion-"), "Hunter companion", classLevelMap.hunter ?? 0);
     if (selectedValue("paladin-divine-bond-") === "paladin-divine-bond-mount")
       descriptors.push({ id: "paladin-mount", kind: "mount", optionId: "paladin-divine-bond-mount", label: "Bonded mount", effectiveLevel: classLevelMap.paladin ?? 1 });
     add("cavalier-mount", "mount", selectedValue("cavalier-mount-"), "Cavalier mount", classLevelMap.cavalier ?? 0, { bonusHitPoints: reward("elf-cavalier-mount") });

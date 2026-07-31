@@ -36,7 +36,9 @@ const spells=sourceSpells.map(sourceSpell=>{
   const sharedArcaneLevel=withWizard?.wizard??withWizard?.arcanist;
   const sharedLevelByClass=sharedArcaneLevel!==undefined&&withWizard?.sorcerer===undefined?{...withWizard,sorcerer:sharedArcaneLevel}:withWizard;
   const withClassOverlays={...sharedLevelByClass,...(classLevelOverlay??{}),...(spellClassLevels[spell.id]??{})};
-  const levelByClass=withClassOverlays.cleric!==undefined&&withClassOverlays.oracle===undefined?{...withClassOverlays,oracle:withClassOverlays.cleric}:withClassOverlays;
+  const withOracle=withClassOverlays.cleric!==undefined&&withClassOverlays.oracle===undefined?{...withClassOverlays,oracle:withClassOverlays.cleric}:withClassOverlays;
+  const hunterLevel=Math.min(withOracle.druid??Infinity,withOracle.ranger??Infinity);
+  const levelByClass=Number.isFinite(hunterLevel)&&hunterLevel<=6?{...withOracle,hunter:hunterLevel}:withOracle;
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);
