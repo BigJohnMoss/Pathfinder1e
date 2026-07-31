@@ -148,6 +148,16 @@ Native store packages for Microsoft Store or Google Play are optional later work
     ancestry/class combinations, including fractional benefit summaries and
     direct bardic-performance resource integration
 
+## Next work queue
+
+- [ ] complete spell rules and source details: replace shortened spell summaries
+  with the full correct rules description for all 2,069 catalogued spells, retain
+  structured casting details such as school, components, range, target, duration,
+  saving throw, and spell resistance, and add a visible **Rules source** link to
+  each spell detail view matching the feat catalogue experience; keep the large
+  descriptions out of the initial client bundle where practical and add data,
+  UI, mobile-layout, and source-link regression coverage
+
 ## Working rule
 
 Future work should be selected as a new, deliberately scoped milestone while
