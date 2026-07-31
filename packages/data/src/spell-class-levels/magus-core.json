@@ -1,0 +1,12 @@
+{
+  "source":{"title":"Ultimate Magic: Magus spell list","url":"https://legacy.aonprd.com/ultimateMagic/spellcastingClassOptions/magus.html#magus-spells"},
+  "levelsBySpellId":{
+    "acid-splash":{"magus":0},"arcane-mark":{"magus":0},"dancing-lights":{"magus":0},"daze":{"magus":0},"detect-magic":{"magus":0},"disrupt-undead":{"magus":0},"flare":{"magus":0},"light":{"magus":0},"mage-hand":{"magus":0},"open-close":{"magus":0},"prestidigitation":{"magus":0},"ray-of-frost":{"magus":0},"read-magic":{"magus":0},"spark":{"magus":0},
+    "burning-hands":{"magus":1},"chill-touch":{"magus":1},"color-spray":{"magus":1},"expeditious-retreat":{"magus":1},"feather-fall":{"magus":1},"grease":{"magus":1},"jump":{"magus":1},"long-arm":{"magus":1},"magic-missile":{"magus":1},"magic-weapon":{"magus":1},"obscuring-mist":{"magus":1},"ray-of-enfeeblement":{"magus":1},"shield":{"magus":1},"shocking-grasp":{"magus":1},"true-strike":{"magus":1},
+    "acid-arrow":{"magus":2},"alter-self":{"magus":2},"blur":{"magus":2},"bulls-strength":{"magus":2},"cats-grace":{"magus":2},"darkness":{"magus":2},"glitterdust":{"magus":2},"invisibility":{"magus":2},"mirror-image":{"magus":2},"scorching-ray":{"magus":2},"see-invisibility":{"magus":2},"spider-climb":{"magus":2},
+    "dispel-magic":{"magus":3},"displacement":{"magus":3},"fireball":{"magus":3},"fly":{"magus":3},"haste":{"magus":3},"lightning-bolt":{"magus":3},"magic-weapon-greater":{"magus":3},"ray-of-exhaustion":{"magus":3},"slow":{"magus":3},"vampiric-touch":{"magus":3},
+    "dimension-door":{"magus":4},"fire-shield":{"magus":4},"ice-storm":{"magus":4},"invisibility-greater":{"magus":4},"stoneskin":{"magus":4},"wall-of-fire":{"magus":4},
+    "baleful-polymorph":{"magus":5},"cloudkill":{"magus":5},"cone-of-cold":{"magus":5},"overland-flight":{"magus":5},"teleport":{"magus":5},"wall-of-force":{"magus":5},
+    "chain-lightning":{"magus":6},"disintegrate":{"magus":6},"dispel-magic-greater":{"magus":6},"transformation":{"magus":6},"true-seeing":{"magus":6}
+  }
+}

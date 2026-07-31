@@ -91,6 +91,7 @@ export function archetypeConflictReasons(left?: CharacterArchetype, right?: Char
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];
 export function applyArchetypes(characterClass: CharacterClass, archetypes?: CharacterArchetype[]): CharacterClass;
+export function archetypeAutomationSummary(archetype?: CharacterArchetype): { automated: string[]; manual: string[] };
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function classBaseAttackBonus(characterClass: CharacterClass, level: number): number;

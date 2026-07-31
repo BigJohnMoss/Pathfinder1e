@@ -5,6 +5,8 @@ export interface AlternateFavoredClassReward {
   label: string;
   description: string;
   divisor?: number;
+  increment?: number;
+  maximum?: number;
   resource?: "bardic-performance";
 }
 
@@ -16,19 +18,19 @@ export const alternateFavoredClassRewards: AlternateFavoredClassReward[] = [
   { id: "dwarf-paladin-concentration", ancestryId: "dwarf", classId: "paladin", label: "Concentration", description: "+1 on concentration checks." },
   { id: "dwarf-ranger-wild-empathy", ancestryId: "dwarf", classId: "ranger", label: "Underground empathy", description: "+1/2 on wild empathy checks with underground animals.", divisor: 2 },
   { id: "dwarf-rogue-stone-traps", ancestryId: "dwarf", classId: "rogue", label: "Stone traps", description: "+1/2 on Disable Device and trap sense against stone traps.", divisor: 2 },
-  { id: "elf-barbarian-speed", ancestryId: "elf", classId: "barbarian", label: "Speed", description: "+1 foot to the speed bonus gained while raging (effective in increments of 5)." },
+  { id: "elf-barbarian-speed", ancestryId: "elf", classId: "barbarian", label: "Speed", description: "+1 foot to the speed bonus gained while raging (effective in increments of 5).", divisor: 5, increment: 5 },
   { id: "elf-bard-magic", ancestryId: "elf", classId: "bard", label: "Elven magic", description: "+1 to CMD against disarm and sunder." },
   { id: "elf-cavalier-mount", ancestryId: "elf", classId: "cavalier", label: "Mount vitality", description: "+1 hit point to the cavalier's class mount." },
   { id: "elf-fighter-cmd", ancestryId: "elf", classId: "fighter", label: "Graceful defence", description: "+1 CMD against disarm and sunder." },
-  { id: "elf-ranger-critical", ancestryId: "elf", classId: "ranger", label: "Elven weapon criticals", description: "+1/2 on critical confirmation rolls with one elven weapon (maximum +4).", divisor: 2 },
+  { id: "elf-ranger-critical", ancestryId: "elf", classId: "ranger", label: "Elven weapon criticals", description: "+1/2 on critical confirmation rolls with one elven weapon (maximum +4).", divisor: 2, maximum: 4 },
   { id: "elf-sorcerer-power", ancestryId: "elf", classId: "sorcerer", label: "Bloodline power", description: "+1/2 use of a 1st-level bloodline power.", divisor: 2 },
   { id: "elf-wizard-school", ancestryId: "elf", classId: "wizard", label: "Arcane school", description: "+1/2 use of a 1st-level arcane school power.", divisor: 2 },
   { id: "gnome-bard-performance", ancestryId: "gnome", classId: "bard", label: "Bardic performance", description: "+1 round of bardic performance per day.", resource: "bardic-performance" },
   { id: "gnome-alchemist-bombs", ancestryId: "gnome", classId: "alchemist", label: "Bombs", description: "+1/2 bomb per day.", divisor: 2 },
   { id: "gnome-summoner-eidolon-hp", ancestryId: "gnome", classId: "summoner", label: "Eidolon vitality", description: "+1 hit point to the summoner's eidolon." },
-  { id: "gnome-druid-resistance", ancestryId: "gnome", classId: "druid", label: "Energy resistance", description: "+1 energy resistance to acid, cold, electricity, or fire (maximum 10)." },
+  { id: "gnome-druid-resistance", ancestryId: "gnome", classId: "druid", label: "Energy resistance", description: "+1 energy resistance to acid, cold, electricity, or fire (maximum 10).", maximum: 10 },
   { id: "gnome-oracle-curse", ancestryId: "gnome", classId: "oracle", label: "Oracle curse", description: "+1/2 effective level for the oracle's curse.", divisor: 2 },
-  { id: "gnome-ranger-companion", ancestryId: "gnome", classId: "ranger", label: "Companion defence", description: "+1/2 DR/magic for an animal companion (maximum DR 10/magic).", divisor: 2 },
+  { id: "gnome-ranger-companion", ancestryId: "gnome", classId: "ranger", label: "Companion defence", description: "+1/2 DR/magic for an animal companion (maximum DR 10/magic).", divisor: 2, maximum: 10 },
   { id: "gnome-rogue-writings", ancestryId: "gnome", classId: "rogue", label: "Magical writings", description: "+1 on Disable Device and Use Magic Device checks involving glyphs, symbols, scrolls, and magical writings." },
   { id: "gnome-wizard-school", ancestryId: "gnome", classId: "wizard", label: "Arcane school", description: "+1/2 use of a 1st-level arcane school power.", divisor: 2 },
   { id: "half-elf-bard-performance", ancestryId: "half-elf", classId: "bard", label: "Bardic performance", description: "+1 round of bardic performance per day.", resource: "bardic-performance" },
@@ -52,7 +54,7 @@ export const alternateFavoredClassRewards: AlternateFavoredClassReward[] = [
   { id: "halfling-monk-defence", ancestryId: "halfling", classId: "monk", label: "Grapple defence and stunning fist", description: "+1 CMD against grapple and +1/2 stunning attack per day.", divisor: 2 },
   { id: "halfling-paladin-lay-on-hands", ancestryId: "halfling", classId: "paladin", label: "Lay on hands", description: "+1/2 hit point healed by lay on hands.", divisor: 2 },
   { id: "halfling-ranger-defence", ancestryId: "halfling", classId: "ranger", label: "Favoured enemy defence", description: "+1/3 dodge bonus to AC against favoured enemies.", divisor: 3 },
-  { id: "halfling-rogue-critical", ancestryId: "halfling", classId: "rogue", label: "Halfling weapon criticals", description: "+1/2 on critical confirmation rolls with a sling, dagger, or halfling weapon (maximum +4).", divisor: 2 },
+  { id: "halfling-rogue-critical", ancestryId: "halfling", classId: "rogue", label: "Halfling weapon criticals", description: "+1/2 on critical confirmation rolls with a sling, dagger, or halfling weapon (maximum +4).", divisor: 2, maximum: 4 },
   { id: "human-barbarian-trap-sense", ancestryId: "human", classId: "barbarian", label: "Trap sense", description: "+1/2 to trap sense.", divisor: 2 },
   { id: "human-alchemist-formula", ancestryId: "human", classId: "alchemist", label: "Formula", description: "Add one eligible extract formula to the formula book." },
   { id: "human-cavalier-banner", ancestryId: "human", classId: "cavalier", label: "Banner", description: "+1/4 to the cavalier's banner bonus.", divisor: 4 },
@@ -65,7 +67,7 @@ export const alternateFavoredClassRewards: AlternateFavoredClassReward[] = [
   { id: "human-fighter-cmd", ancestryId: "human", classId: "fighter", label: "Combat manoeuvre defence", description: "+1 CMD against two selected combat manoeuvres." },
   { id: "human-monk-ki", ancestryId: "human", classId: "monk", label: "Ki pool", description: "+1/4 point to the monk's ki pool.", divisor: 4 },
   { id: "human-oracle-spell", ancestryId: "human", classId: "oracle", label: "Spell known", description: "Add one oracle spell known below the highest spell level available." },
-  { id: "human-paladin-resistance", ancestryId: "human", classId: "paladin", label: "Energy resistance", description: "+1 resistance to one energy type (maximum 10)." },
+  { id: "human-paladin-resistance", ancestryId: "human", classId: "paladin", label: "Energy resistance", description: "+1 resistance to one energy type (maximum 10).", maximum: 10 },
   { id: "human-ranger-companion", ancestryId: "human", classId: "ranger", label: "Companion training", description: "+1 hit point or skill rank for an animal companion." },
   { id: "human-rogue-talent", ancestryId: "human", classId: "rogue", label: "Rogue talent", description: "+1/6 of a new rogue talent.", divisor: 6 },
   { id: "human-sorcerer-spell", ancestryId: "human", classId: "sorcerer", label: "Spell known", description: "Add one sorcerer spell known below the highest spell level available." },
@@ -73,7 +75,22 @@ export const alternateFavoredClassRewards: AlternateFavoredClassReward[] = [
 ];
 
 export function alternateRewardValue(reward: AlternateFavoredClassReward, levels: number) {
-  return Math.floor(levels / (reward.divisor ?? 1));
+  const value = Math.floor(levels / (reward.divisor ?? 1)) * (reward.increment ?? 1);
+  return Math.min(reward.maximum ?? Number.POSITIVE_INFINITY, value);
+}
+
+export function activeFavoredClassBenefits(allocations: Record<string, number>) {
+  return alternateFavoredClassRewards.flatMap(reward => {
+    const allocated = allocations[reward.id] ?? 0;
+    if (allocated <= 0) return [];
+    return [{ id: reward.id, label: reward.label, value: alternateRewardValue(reward, allocated), allocated, description: reward.description }];
+  });
+}
+
+export function FavoredClassBenefits({ allocations }: { allocations: Record<string, number> }) {
+  const benefits = activeFavoredClassBenefits(allocations);
+  if (!benefits.length) return null;
+  return <section className="favored-class-benefits" aria-labelledby="favored-benefits-heading"><h3 id="favored-benefits-heading">Active favoured-class benefits</h3><ul>{benefits.map(benefit => <li key={benefit.id}><strong>{benefit.value > 0 ? `+${benefit.value} ${benefit.label}` : `${benefit.label} pending`}</strong><span>{benefit.value > 0 ? benefit.description : `Allocate ${alternateFavoredClassRewards.find(item => item.id === benefit.id)?.divisor ?? 1} levels to unlock the next benefit.`}</span></li>)}</ul></section>;
 }
 
 const allocationValue = (value: number, maximum: number) =>

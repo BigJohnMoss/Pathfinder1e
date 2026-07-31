@@ -1,0 +1,1 @@
+{"id":"samurai-mounts","name":"Samurai Mounts","classIds":["samurai"],"inheritsOptionsFrom":"cavalier-mounts","optionDefaults":{"groupId":"samurai-mounts","classIds":["samurai"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Ultimate Combat","page":19,"url":"https://legacy.aonprd.com/ultimateCombat/classes/samurai.html#mount"}},"options":[]}

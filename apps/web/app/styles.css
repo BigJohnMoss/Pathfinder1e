@@ -144,6 +144,20 @@ a:focus-visible,
   width: auto;
 }
 
+.favored-class-benefits {
+  max-width: 850px;
+  margin-bottom: 24px;
+  padding: 18px;
+  border: 1px solid #d7d0c0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.favored-class-benefits h3 { margin-top: 0; }
+.favored-class-benefits ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.favored-class-benefits li { display: grid; gap: 3px; padding: 10px; border-radius: 8px; background: #f8f5ee; }
+.favored-class-benefits span { color: #5b584f; }
+
 .archetype-picker {
   border: 1px solid #675b4c;
   border-radius: 10px;
@@ -442,6 +456,7 @@ a:focus-visible,
 
 .prepared-source-book { margin: 18px 0; border: 1px solid #e3ddd0; border-radius: 12px; padding: 14px; background: #fbf8f1; }
 .prepared-source-book summary { display: flex; justify-content: space-between; gap: 12px; cursor: pointer; }
+.prepared-source-filters{display:grid;grid-template-columns:2fr 1fr;gap:10px;margin:12px 0}.prepared-source-filters label{display:grid;gap:5px;font-weight:700}.prepared-source-filters input,.prepared-source-filters select{min-width:0;padding:10px;border:1px solid #a29a89;border-radius:8px;background:#fff;font:inherit}.recorded-spells{display:grid;gap:8px;margin:12px 0}.recorded-spells>div{display:flex;flex-wrap:wrap;gap:7px}.recorded-spells button{width:auto;min-height:38px;padding:7px 10px;border-radius:999px;background:#f3e8de;color:#792828}.spell-show-more{width:auto;min-height:44px;margin:16px auto;display:block}@media(max-width:650px){.prepared-source-filters{grid-template-columns:1fr}}
 .prepared-source-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 8px; max-height: 320px; overflow: auto; padding: 6px 2px; }
 .prepared-source-list label { display: flex; gap: 9px; align-items: flex-start; padding: 9px; border: 1px solid #e3ddd0; border-radius: 8px; background: #fff; }
 .prepared-source-list span,.prepared-source-list small { display: block; }

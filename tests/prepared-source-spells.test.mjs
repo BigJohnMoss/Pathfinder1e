@@ -11,7 +11,8 @@ const spells = [
 
 test("Alchemist formula and Witch familiar capacities follow class rules", () => {
   assert.equal(preparedSourceSpellCapacity("alchemist", 1, 3), 5);
-  assert.equal(preparedSourceSpellCapacity("alchemist", 20, 3), 24);
+  assert.equal(preparedSourceSpellCapacity("alchemist", 20, 3), 43);
+  assert.equal(preparedSourceSpellCapacity("alchemist", 20, 3, 4), 47);
   assert.equal(preparedSourceSpellCapacity("witch", 1, 3), 6);
   assert.equal(preparedSourceSpellCapacity("witch", 20, 3), 44);
   assert.equal(preparedSourceSpellCapacity("wizard", 1, 3), null);

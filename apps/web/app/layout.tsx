@@ -11,6 +11,7 @@ import "./trait-choices.css";
 import "./character-library.css";
 import "./eidolon-builder.css";
 import "./companion-manager.css";
+import "./archetype-automation-status.css";
 import type { Metadata, Viewport } from "next";
 import { InstallApp } from "./install-app";
 import { PwaRegistration } from "./pwa-registration";

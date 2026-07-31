@@ -60,6 +60,7 @@ export function ArchetypePicker({ className, archetypes, selectedIds, ancestryId
         <div><strong>{archetype.name}</strong><span className={`coverage-badge coverage-${archetype.mechanicalCoverage ?? "partial"}`}>{coverageLabel(archetype)}</span></div>
         <p>{archetype.summary}</p>
         {archetype.replacesText && <small>Replaces: {archetype.replacesText}</small>}
+        {archetype.mechanicalNotes?.map(note => <small className="archetype-mechanical-note" key={note}>{note}</small>)}
         {requirementIssues(archetype).length > 0 && <ul className="archetype-requirements">{requirementIssues(archetype).map(issue => <li key={issue}>{issue}</li>)}</ul>}
         <button type="button" className="secondary-button" onClick={() => onChange(selectedIds.filter(id => id !== archetype.id))}>Remove {archetype.name}</button>
       </article>)}

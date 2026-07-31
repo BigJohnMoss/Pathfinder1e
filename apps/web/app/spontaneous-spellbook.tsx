@@ -29,6 +29,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
 }) {
   const [query, setQuery] = useState("");
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
+  const [visibleLimit, setVisibleLimit] = useState(100);
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
 
   const granted = useMemo(() => new Set(grantedSpellIds), [grantedSpellIds]);
@@ -41,11 +42,12 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
     const matchesLevel = query ? true : levelFilter === "all" || level === Number(levelFilter);
     return matchesLevel && `${spell.name} ${spell.summary}`.toLowerCase().includes(query.trim().toLowerCase());
   }), [classId, levelFilter, query, spells]);
-  const groupedSpells = useMemo(() => filteredSpells.reduce((groups, spell) => {
+  const groupedSpells = useMemo(() => filteredSpells.slice(0, visibleLimit).reduce((groups, spell) => {
     const level = spell.levelByClass[classId];
     (groups[level] ??= []).push(spell);
     return groups;
-  }, {} as Record<number, Spell[]>), [classId, filteredSpells]);
+  }, {} as Record<number, Spell[]>), [classId, filteredSpells, visibleLimit]);
+  useEffect(() => setVisibleLimit(100), [query, levelFilter, classId]);
 
   return <section className="spell-panel">
     <p className="eyebrow">SPELLS KNOWN</p>
@@ -58,7 +60,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
       <label>Search spells<input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Name or effect" /></label>
       <label>Spell level<select aria-label="Spell level filter" value={levelFilter} disabled={Boolean(query)} onChange={(event) => setLevelFilter(event.target.value)}><option value="all">All levels</option>{Array.from({ length: maximumSpellLevel + 1 }, (_, level) => <option key={level} value={level}>{levelLabel(level)}</option>)}</select></label>
     </div>
-    {filteredSpells.length === 0 ? <p className="hint">No spells match this search.</p> : Object.entries(groupedSpells).map(([rawLevel, spellsAtLevel]) => {
+    {filteredSpells.length === 0 ? <p className="hint">No spells match this search.</p> : <>{Object.entries(groupedSpells).map(([rawLevel, spellsAtLevel]) => {
       const level = Number(rawLevel);
       return <section className="spell-level" key={level}>
         <h3>{levelLabel(level)} <small>{spellsAtLevel.length} spells</small></h3>
@@ -75,6 +77,6 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
           </article>;
         })}</div>
       </section>;
-    })}
+    })}{visibleLimit < filteredSpells.length && <button type="button" className="spell-show-more" onClick={() => setVisibleLimit(current => current + 100)}>Show 100 more spells</button>}</>}
   </section>;
 }

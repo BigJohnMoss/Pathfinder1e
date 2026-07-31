@@ -21,6 +21,7 @@ import { FeatChoices } from "./feat-choices";
 import { ClassOptions } from "./class-options";
 import { EidolonBuilder } from "./eidolon-builder";
 import { CompanionManager, type CompanionDescriptor } from "./companion-manager";
+import { ArchetypeAutomationStatus } from "./archetype-automation-status";
 import { CombatPanel, ProgressionSummary } from "./character-summary";
 import { CharacterTabs, type CharacterTabId } from "./character-tabs";
 import { TraitChoices } from "./trait-choices";
@@ -39,6 +40,7 @@ import {
   alternateFavoredClassRewards,
   alternateRewardValue,
   FavoredClassBonus,
+  FavoredClassBenefits,
 } from "./favored-class-bonus";
 import { AncestryTraits } from "./ancestry-traits";
 import {
@@ -1722,10 +1724,20 @@ export default function Home() {
     catalogue: typeof spells,
     automaticSpellIds: string[],
   ) => {
+    const sourceBookRewardIds = selectedClassId === "alchemist"
+      ? ["human-alchemist-formula"]
+      : selectedClassId === "witch"
+        ? ["human-witch-spell", "half-elf-witch-spell"]
+        : [];
+    const bonusSourceSpells = sourceBookRewardIds.reduce((total, rewardId) => {
+      const reward = alternateFavoredClassRewards.find(item => item.id === rewardId);
+      return total + (reward ? alternateRewardValue(reward, favoredClassAlternateBonuses[rewardId] ?? 0) : 0);
+    }, 0);
     const capacity = preparedSourceSpellCapacity(
       selectedClassId,
       selectedClassLevel,
       combat.abilityModifiers.intelligence,
+      bonusSourceSpells,
     );
     if (capacity === null) return undefined;
     const knownSpellIds = normalizePreparedSourceSpells(
@@ -1743,6 +1755,7 @@ export default function Home() {
       knownSpellIds,
       automaticSpellIds,
       capacity,
+      bonusCapacity: bonusSourceSpells,
       onChange: (ids: string[]) =>
         setKnownPreparedSpellsByClass((current) => ({
           ...current,
@@ -1840,6 +1853,10 @@ export default function Home() {
       add("ranger-companion", "animal", selectedValue("ranger-animal-companion-"), "Animal companion", Math.max(1, (classLevelMap.ranger ?? 0) - 3), { bonusHitPoints: reward("half-orc-ranger-companion"), bonusSkillRanks: reward("half-elf-ranger-companion") });
     if (selectedValue("paladin-divine-bond-") === "paladin-divine-bond-mount")
       descriptors.push({ id: "paladin-mount", kind: "mount", optionId: "paladin-divine-bond-mount", label: "Bonded mount", effectiveLevel: classLevelMap.paladin ?? 1 });
+    add("cavalier-mount", "mount", selectedValue("cavalier-mount-"), "Cavalier mount", classLevelMap.cavalier ?? 0, { bonusHitPoints: reward("elf-cavalier-mount") });
+    add("samurai-mount", "mount", selectedValue("samurai-mount-"), "Samurai mount", classLevelMap.samurai ?? 0);
+    if (selectedValue("magus-arcana-") === "magus-arcana-familiar")
+      descriptors.push({ id: "magus-familiar", kind: "familiar", optionId: "magus-arcana-familiar", label: "Magus familiar", effectiveLevel: classLevelMap.magus ?? 1 });
     return descriptors;
   }, [classLevelMap, eidolonBaseFormId, favoredClassAlternateBonuses, selectedOptions, summonerClassLevel]);
   const validEidolonEvolutions = eidolonEvolutions.filter(
@@ -1885,6 +1902,9 @@ export default function Home() {
     summonMonster: ["Summon Monster", "use"],
     bondSensesRounds: ["Bond Senses", "round"],
     makersCall: ["Maker's Call", "use"],
+    arcanePool: ["Arcane Pool", "point"],
+    grit: ["Grit", "point"],
+    resolve: ["Resolve", "use"],
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) =>
@@ -1894,20 +1914,28 @@ export default function Home() {
           resourceClassLevel,
           combat.abilityModifiers,
         ),
-      ).map(([resourceId, maximum]) => ({
-        label: `${classes.find((item) => item.id === resourceClassId)?.name ?? resourceClassId} ${resourceLabels[resourceId]?.[0] ?? resourceId}`,
-        unit: resourceLabels[resourceId]?.[1] ?? "use",
-        maximum,
-        used: classResourceUsesByClass[resourceClassId]?.[resourceId] ?? 0,
-        onUsedChange: (used: number) =>
-          setClassResourceUsesByClass((current) => ({
-            ...current,
-            [resourceClassId]: {
-              ...(current[resourceClassId] ?? {}),
-              [resourceId]: Math.max(0, Math.min(maximum, used)),
-            },
-          })),
-      })),
+      ).map(([resourceId, maximum]) => {
+        const gnomeBombReward = resourceClassId === "alchemist" && resourceId === "bombs"
+          ? alternateFavoredClassRewards.find(reward => reward.id === "gnome-alchemist-bombs")
+          : undefined;
+        const resourceMaximum = maximum + (gnomeBombReward
+          ? alternateRewardValue(gnomeBombReward, favoredClassAlternateBonuses[gnomeBombReward.id] ?? 0)
+          : 0);
+        return {
+          label: `${classes.find((item) => item.id === resourceClassId)?.name ?? resourceClassId} ${resourceLabels[resourceId]?.[0] ?? resourceId}`,
+          unit: resourceLabels[resourceId]?.[1] ?? "use",
+          maximum: resourceMaximum,
+          used: classResourceUsesByClass[resourceClassId]?.[resourceId] ?? 0,
+          onUsedChange: (used: number) =>
+            setClassResourceUsesByClass((current) => ({
+              ...current,
+              [resourceClassId]: {
+                ...(current[resourceClassId] ?? {}),
+                [resourceId]: Math.max(0, Math.min(resourceMaximum, used)),
+              },
+            })),
+        };
+      }),
   );
   useEffect(
     () =>
@@ -3630,6 +3658,8 @@ export default function Home() {
                 features={progression.features}
                 dailyResources={classDailyResources}
               />
+              <FavoredClassBenefits allocations={favoredClassAlternateBonuses} />
+              <ArchetypeAutomationStatus archetypes={selectedArchetypes} />
               {classOptionChoices.length > 0 && (
                 <ClassOptions
                   choices={classOptionChoices}
