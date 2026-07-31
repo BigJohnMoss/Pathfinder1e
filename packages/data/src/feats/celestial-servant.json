@@ -8,16 +8,21 @@
       "description": "Aasimar"
     },
     {
-      "type": "feature",
-      "id": "animal-companion"
-    },
-    {
-      "type": "feature",
-      "id": "familiar"
-    },
-    {
-      "type": "rule",
-      "description": "or mount class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "animal-companion"
+        },
+        {
+          "type": "feature",
+          "id": "familiar"
+        },
+        {
+          "type": "feature",
+          "id": "mount"
+        }
+      ]
     }
   ],
   "benefit": "Enhance your companion with the celestial template",

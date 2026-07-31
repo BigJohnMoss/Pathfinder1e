@@ -73,6 +73,7 @@ const supportedFeatureAliases = new Map([
   ["mystery", "mystery"],
   ["summon-familiar", "familiar"],
   ["ki-strike", "monk-ki-pool-4"],
+  ["mount", "mount"],
 ]);
 
 const parseAtomicRule = (description) => {
@@ -228,6 +229,22 @@ const repairSplitAbilityAlternative = (prerequisites) => {
   return prerequisites.flatMap((prerequisite, index) => index === insertionIndex ? [{ type: "any", prerequisites: alternatives }] : removed.has(index) ? [] : [prerequisite]);
 };
 
+const repairSplitFeatureAlternative = (prerequisites) => {
+  const repaired = [...prerequisites];
+  let changed = false;
+  for (let index = repaired.length - 1; index > 0; index -= 1) {
+    const rule = repaired[index];
+    if (rule.type !== "rule" || repaired[index - 1].type !== "feature" || !/^or\s+/i.test(rule.description)) continue;
+    const alternative = parseAtomicRule(rule.description.replace(/^or\s+/i, ""));
+    if (alternative?.type !== "feature") continue;
+    let featureStart = index - 1;
+    while (featureStart > 0 && repaired[featureStart - 1].type === "feature") featureStart -= 1;
+    repaired.splice(featureStart, index - featureStart + 1, { type: "any", prerequisites: [...repaired.slice(featureStart, index), alternative] });
+    changed = true;
+  }
+  return changed ? repaired : prerequisites;
+};
+
 const repairParentheticalChoices = (prerequisites) => {
   let changed = false;
   const repaired = prerequisites.flatMap((prerequisite, index) => {
@@ -292,7 +309,8 @@ for (const feat of feats) {
   }
   const brawlerRepairedPrerequisites = repairSplitBrawlerMonkAlternative(prerequisites);
   const abilityRepairedPrerequisites = repairSplitAbilityAlternative(brawlerRepairedPrerequisites);
-  const citationRepairedPrerequisites = removeCitationRules(abilityRepairedPrerequisites);
+  const featureRepairedPrerequisites = repairSplitFeatureAlternative(abilityRepairedPrerequisites);
+  const citationRepairedPrerequisites = removeCitationRules(featureRepairedPrerequisites);
   const parentheticalRepairedPrerequisites = repairParentheticalChoices(citationRepairedPrerequisites);
   const repairedPrerequisites = repairChosenWeapon(feat.value, parentheticalRepairedPrerequisites);
   if (repairedPrerequisites !== prerequisites) {

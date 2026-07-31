@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Animal companion or mount class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "animal-companion"
+        },
+        {
+          "type": "feature",
+          "id": "mount"
+        }
+      ]
     },
     {
       "type": "level",

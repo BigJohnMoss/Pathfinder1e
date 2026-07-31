@@ -12,12 +12,17 @@
       "id": "improved-unarmed-strike"
     },
     {
-      "type": "feature",
-      "id": "brawlers-flurry"
-    },
-    {
-      "type": "rule",
-      "description": "or flurry of blows class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "brawlers-flurry"
+        },
+        {
+          "type": "feature",
+          "id": "flurry-of-blows"
+        }
+      ]
     }
   ],
   "benefit": "Gain bonus damage when two or more unarmed strikes hit the same opponent during your turn",

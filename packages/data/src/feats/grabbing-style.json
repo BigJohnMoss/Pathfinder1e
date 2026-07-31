@@ -12,12 +12,17 @@
       "id": "improved-grapple"
     },
     {
-      "type": "feature",
-      "id": "brawlers-flurry"
-    },
-    {
-      "type": "rule",
-      "description": "or flurry of blows class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "brawlers-flurry"
+        },
+        {
+          "type": "feature",
+          "id": "flurry-of-blows"
+        }
+      ]
     }
   ],
   "benefit": "Take no penalty for grabbing a foe one-handed, retain your Dex bonus to AC when pinning",
