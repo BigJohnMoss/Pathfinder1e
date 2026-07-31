@@ -12,8 +12,10 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "(scimitar)"
+      "type": "choice-value",
+      "featId": "weapon-focus",
+      "key": "weapon",
+      "value": "scimitar"
     },
     {
       "type": "level",

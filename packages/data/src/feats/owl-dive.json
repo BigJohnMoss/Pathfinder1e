@@ -21,8 +21,10 @@
       "id": "skill-focus"
     },
     {
-      "type": "rule",
-      "description": "(Stealth)"
+      "type": "choice-value",
+      "featId": "skill-focus",
+      "key": "skill",
+      "value": "stealth"
     },
     {
       "type": "any",

@@ -13,8 +13,10 @@
       "id": "exotic-weapon-proficiency"
     },
     {
-      "type": "rule",
-      "description": "(sawtooth sabre)"
+      "type": "choice-value",
+      "featId": "exotic-weapon-proficiency",
+      "key": "weapon",
+      "value": "sawtooth sabre"
     },
     {
       "type": "feat",

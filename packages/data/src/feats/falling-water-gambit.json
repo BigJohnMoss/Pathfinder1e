@@ -20,8 +20,10 @@
       "id": "exotic-weapon-proficiency"
     },
     {
-      "type": "rule",
-      "description": "(Aldori dueling sword)"
+      "type": "choice-value",
+      "featId": "exotic-weapon-proficiency",
+      "key": "weapon",
+      "value": "aldori dueling sword"
     },
     {
       "type": "feat",
@@ -32,8 +34,10 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "(Aldori dueling sword)"
+      "type": "choice-value",
+      "featId": "weapon-focus",
+      "key": "weapon",
+      "value": "aldori dueling sword"
     },
     {
       "type": "bab",

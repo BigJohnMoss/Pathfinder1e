@@ -17,8 +17,10 @@
       "id": "weapon-focus"
     },
     {
-      "type": "rule",
-      "description": "(rapier)"
+      "type": "choice-value",
+      "featId": "weapon-focus",
+      "key": "weapon",
+      "value": "rapier"
     }
   ],
   "benefit": "Use Dexterity on rapier damage rolls",

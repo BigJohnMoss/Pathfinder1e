@@ -8,8 +8,10 @@
       "id": "spell-focus"
     },
     {
-      "type": "rule",
-      "description": "(illusion)"
+      "type": "choice-value",
+      "featId": "spell-focus",
+      "key": "school",
+      "value": "illusion"
     }
   ],
   "benefit": "Your shadow spells are 20% more real than normal",

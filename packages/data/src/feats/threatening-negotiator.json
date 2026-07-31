@@ -16,8 +16,10 @@
       "id": "skill-focus"
     },
     {
-      "type": "rule",
-      "description": "(Intimidate)"
+      "type": "choice-value",
+      "featId": "skill-focus",
+      "key": "skill",
+      "value": "intimidate"
     }
   ],
   "benefit": "Increase Intimidate's duration to 2d6 hours",

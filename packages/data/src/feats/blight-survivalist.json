@@ -8,8 +8,10 @@
       "id": "skill-focus"
     },
     {
-      "type": "rule",
-      "description": "(Survival)"
+      "type": "choice-value",
+      "featId": "skill-focus",
+      "key": "skill",
+      "value": "survival"
     }
   ],
   "benefit": "Gain +3 save vs. environmental hazards and weather effects",

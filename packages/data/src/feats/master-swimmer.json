@@ -8,8 +8,10 @@
       "id": "skill-focus"
     },
     {
-      "type": "rule",
-      "description": "(Swim)"
+      "type": "choice-value",
+      "featId": "skill-focus",
+      "key": "skill",
+      "value": "swim"
     },
     {
       "type": "skill",

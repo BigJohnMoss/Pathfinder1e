@@ -8,6 +8,11 @@
       "minimum": 1
     }
   ],
+  "choice": {
+    "key": "weapon",
+    "label": "Weapon",
+    "allowCustom": true
+  },
   "benefit": "No penalty on attacks made with one exotic weapon",
   "source": {
     "title": "Core Rulebook",

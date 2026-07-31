@@ -12,8 +12,10 @@
       "id": "skill-focus"
     },
     {
-      "type": "rule",
-      "description": "(Survival)"
+      "type": "choice-value",
+      "featId": "skill-focus",
+      "key": "skill",
+      "value": "survival"
     }
   ],
   "benefit": "Blight Survivalist extends to nearby allies; also gain a 1/day reroll when saving against environmental/weather effects",

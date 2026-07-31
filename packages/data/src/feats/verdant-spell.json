@@ -8,8 +8,10 @@
       "id": "spell-focus"
     },
     {
-      "type": "rule",
-      "description": "(enchantment)"
+      "type": "choice-value",
+      "featId": "spell-focus",
+      "key": "school",
+      "value": "enchantment"
     },
     {
       "type": "skill",

@@ -8,8 +8,10 @@
       "id": "exotic-weapon-proficiency"
     },
     {
-      "type": "rule",
-      "description": "(firearms) UC"
+      "type": "choice-value",
+      "featId": "exotic-weapon-proficiency",
+      "key": "weapon",
+      "value": "firearms"
     },
     {
       "type": "feat",

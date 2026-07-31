@@ -8,8 +8,10 @@
       "id": "skill-focus"
     },
     {
-      "type": "rule",
-      "description": "(Perception)"
+      "type": "choice-value",
+      "featId": "skill-focus",
+      "key": "skill",
+      "value": "perception"
     },
     {
       "type": "skill",
