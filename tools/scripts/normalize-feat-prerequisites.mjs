@@ -60,6 +60,8 @@ const supportedFeatureAliases = new Map([
   ["weapon-expertise", "weapon-expertise"],
   ["trap", "trap"],
   ["sorcerer-bloodline", "sorcerer-bloodline"],
+  ["minor-magic", "minor-magic"],
+  ["major-magic", "major-magic"],
 ]);
 
 const parseAtomicRule = (description) => {
@@ -138,6 +140,7 @@ const parseAtomicRule = (description) => {
   if (!text.startsWith("(") && classFeatureKeys.has(normalizedFeatureKey)) return { type: "feature", id: normalizedFeatureKey };
   const featureName = text
     .replace(/\s+(?:(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM)\s+)?class feature(?:\s+(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM))?$/i, "")
+    .replace(/\s+rogue talent$/i, "")
     .replace(/^the\s+/i, "");
   const normalizedNamedFeatureKey = featureKey(featureName);
   const aliasedFeatureId = supportedFeatureAliases.get(normalizedNamedFeatureKey);
