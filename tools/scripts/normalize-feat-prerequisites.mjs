@@ -35,7 +35,7 @@ const sizeIds = new Map([
   ["gargantuan", "gargantuan"],
   ["colossal", "colossal"],
 ]);
-const sourceCitationTokens = new Set(["ACG", "APG", "ARG", "ISG", "ISWG", "OA", "TG", "UC", "UI", "UM"]);
+const sourceCitationTokens = new Set(["ACG", "APG", "ARG", "ISG", "ISM", "ISWG", "OA", "TG", "UC", "UI", "UM"]);
 const saveKeys = { fortitude: "fortitude", reflex: "reflex", will: "will" };
 const featIdByName = new Map(feats.map(({ value }) => [value.name.toLocaleLowerCase(), value.id]));
 const featChoiceKeyById = new Map(feats.flatMap(({ value }) => value.choice?.key ? [[value.id, value.choice.key]] : []));
@@ -52,6 +52,14 @@ const supportedFeatureAliases = new Map([
   ["brawlers-flurry", "brawlers-flurry"],
   ["grit", "grit"],
   ["panache", "panache"],
+  ["rock-throwing", "rock-throwing"],
+  ["spirit", "spirit"],
+  ["coven-hex", "coven-hex"],
+  ["inspiration", "inspiration"],
+  ["awesome-blow", "awesome-blow"],
+  ["weapon-expertise", "weapon-expertise"],
+  ["trap", "trap"],
+  ["sorcerer-bloodline", "sorcerer-bloodline"],
 ]);
 
 const parseAtomicRule = (description) => {
@@ -124,11 +132,12 @@ const parseAtomicRule = (description) => {
   }
   const ancestryId = ancestryIds.get(text.toLocaleLowerCase());
   if (ancestryId) return { type: "ancestry", id: ancestryId };
-  if (/^Endurance$/i.test(text)) return { type: "feat", id: "endurance" };
+  const preferredFeatId = featIdByName.get(text.toLocaleLowerCase());
+  if (preferredFeatId && /^(?:Endurance|Awesome Blow)$/i.test(text)) return { type: "feat", id: preferredFeatId };
   const normalizedFeatureKey = featureKey(text);
   if (!text.startsWith("(") && classFeatureKeys.has(normalizedFeatureKey)) return { type: "feature", id: normalizedFeatureKey };
   const featureName = text
-    .replace(/\s+(?:(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)\s+)?class feature(?:\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM))?$/i, "")
+    .replace(/\s+(?:(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM)\s+)?class feature(?:\s+(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM))?$/i, "")
     .replace(/^the\s+/i, "");
   const normalizedNamedFeatureKey = featureKey(featureName);
   const aliasedFeatureId = supportedFeatureAliases.get(normalizedNamedFeatureKey);
@@ -136,7 +145,7 @@ const parseAtomicRule = (description) => {
     return { type: "feature", id: aliasedFeatureId ?? normalizedNamedFeatureKey };
   }
   const withoutCitation = text
-    .replace(/\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM)(?:\s+feat)?$/i, "")
+    .replace(/\s+(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM)(?:\s+feat)?$/i, "")
     .replace(/\s+feat$/i, "");
   const featId = featIdByName.get(withoutCitation.toLocaleLowerCase());
   if (featId) return { type: "feat", id: featId };
@@ -201,7 +210,7 @@ const repairParentheticalChoices = (prerequisites) => {
   let changed = false;
   const repaired = prerequisites.flatMap((prerequisite, index) => {
     if (prerequisite.type !== "rule") return [prerequisite];
-    const match = prerequisite.description.match(/^\(([^)]+)\)(?:\s+(?:ACG|APG|ARG|ISG|ISWG|OA|TG|UC|UI|UM))?$/i);
+    const match = prerequisite.description.match(/^\(([^)]+)\)(?:\s+(?:ACG|APG|ARG|ISG|ISM|ISWG|OA|TG|UC|UI|UM))?$/i);
     const selectedFeat = prerequisites[index - 1];
     const key = selectedFeat?.type === "feat" ? featChoiceKeyById.get(selectedFeat.id) : undefined;
     if (!match || !key) return [prerequisite];

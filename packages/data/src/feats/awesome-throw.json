@@ -9,8 +9,17 @@
       "minimum": 25
     },
     {
-      "type": "rule",
-      "description": "Throw Anything or rock throwing"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "throw-anything"
+        },
+        {
+          "type": "feature",
+          "id": "rock-throwing"
+        }
+      ]
     },
     {
       "type": "feat",

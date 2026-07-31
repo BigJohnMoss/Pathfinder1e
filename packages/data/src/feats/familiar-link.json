@@ -4,8 +4,17 @@
   "type": "general",
   "prerequisites": [
     {
-      "type": "rule",
-      "description": "Coven hex or Coven-Touched"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "coven-hex"
+        },
+        {
+          "type": "feat",
+          "id": "coven-touched"
+        }
+      ]
     },
     {
       "type": "rule",

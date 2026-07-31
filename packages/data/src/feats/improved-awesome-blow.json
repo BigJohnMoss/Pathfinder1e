@@ -9,8 +9,17 @@
       "minimum": 13
     },
     {
-      "type": "rule",
-      "description": "Awesome Blow or awesome blow class feature"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feat",
+          "id": "awesome-blow"
+        },
+        {
+          "type": "feature",
+          "id": "awesome-blow"
+        }
+      ]
     },
     {
       "type": "rule",

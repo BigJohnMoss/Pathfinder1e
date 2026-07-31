@@ -8,8 +8,17 @@
       "description": "Changeling"
     },
     {
-      "type": "rule",
-      "description": "coven hex or Coven-Touched"
+      "type": "any",
+      "prerequisites": [
+        {
+          "type": "feature",
+          "id": "coven-hex"
+        },
+        {
+          "type": "feat",
+          "id": "coven-touched"
+        }
+      ]
     }
   ],
   "benefit": "Cast more spell-like abilities per day",
