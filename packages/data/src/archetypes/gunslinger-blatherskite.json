@@ -8,13 +8,13 @@
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
   ],
-  "nestedReplacements": [
-    "Class Skills; Gunslinger's Dodge; Gunslinger Initiative; Pistol-Whip; Startling Shot"
-  ],
   "replacements": [
     {
       "featureIds": [
-        "nested-class-skills-gunslinger-s-dodge-gunslinger-initiative-pistol-whip-startling-shot"
+        "gunslinger-dodge-1",
+        "gunslinger-initiative-3",
+        "gunslinger-pistol-whip-3",
+        "gunslinger-startling-shot-7"
       ],
       "features": [
         {

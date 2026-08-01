@@ -11,9 +11,11 @@
   "replacements": [
     {
       "featureIds": [
-        "gunslinger-deeds-1",
+        "gunslinger-grit-1",
         "gunslinger-true-grit-20",
         "gunslinger-nimble-2",
+        "gunslinger-deadeye-1",
+        "gunslinger-initiative-3",
         "gunslinger-bonus-feat-4",
         "gunslinger-bonus-feat-8",
         "gunslinger-bonus-feat-12",

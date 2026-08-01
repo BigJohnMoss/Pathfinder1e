@@ -20,6 +20,9 @@ test("Gunslinger reaches true grit with full BAB and tracked grit", () => {
   const progression = classProgression(gunslinger, 20, { intelligenceScore: 10 });
   assert.equal(progression.baseAttackBonus, 20);
   assert.ok(progression.features.some(feature => feature.id === "gunslinger-true-grit-20"));
+  const deeds = progression.features.filter(feature => feature.progressionKey === "gunslinger-deeds");
+  assert.equal(deeds.length, 18);
+  assert.deepEqual([...new Set(deeds.map(feature => feature.level))], [1, 3, 7, 11, 15, 19]);
   assert.deepEqual(apgClassResourceMaximums("gunslinger", 20, { wisdom: 5 }), { grit: 5 });
 });
 

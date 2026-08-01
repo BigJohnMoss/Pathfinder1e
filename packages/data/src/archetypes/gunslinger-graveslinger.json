@@ -11,6 +11,10 @@
   "replacements": [
     {
       "featureIds": [
+        "gunslinger-deadeye-1",
+        "gunslinger-startling-shot-7",
+        "gunslinger-bleeding-wound-11",
+        "gunslinger-menacing-shot-15",
         "gunslinger-bonus-feat-4"
       ],
       "features": [

@@ -8,13 +8,14 @@
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
   ],
-  "nestedReplacements": [
-    "Deadeye; Gunslinger's Dodge; Gunslinger Initiative; Startling Shot; Expert Loading"
-  ],
   "replacements": [
     {
       "featureIds": [
-        "nested-deadeye-gunslinger-s-dodge-gunslinger-initiative-startling-shot-expert-loading"
+        "gunslinger-deadeye-1",
+        "gunslinger-dodge-1",
+        "gunslinger-initiative-3",
+        "gunslinger-startling-shot-7",
+        "gunslinger-expert-loading-11"
       ],
       "features": [
         {

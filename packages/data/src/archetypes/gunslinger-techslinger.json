@@ -11,6 +11,9 @@
   "replacements": [
     {
       "featureIds": [
+        "gunslinger-deadeye-1",
+        "gunslinger-quick-clear-1",
+        "gunslinger-expert-loading-11",
         "gunslinger-gun-training-5",
         "gunslinger-gun-training-9",
         "gunslinger-gun-training-13",

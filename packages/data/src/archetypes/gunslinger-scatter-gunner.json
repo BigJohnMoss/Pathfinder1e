@@ -11,7 +11,11 @@
   "replacements": [
     {
       "featureIds": [
-        "gunslinger-gunsmith-1"
+        "gunslinger-gunsmith-1",
+        "gunslinger-deadeye-1",
+        "gunslinger-utility-shot-3",
+        "gunslinger-dead-shot-7",
+        "gunslinger-targeting-7"
       ],
       "features": [
         {

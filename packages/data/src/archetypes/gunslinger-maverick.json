@@ -8,13 +8,12 @@
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
   ],
-  "nestedReplacements": [
-    "Dodge; Pistol Whip; Gunslinger Initiative"
-  ],
   "replacements": [
     {
       "featureIds": [
-        "nested-dodge-pistol-whip-gunslinger-initiative"
+        "gunslinger-dodge-1",
+        "gunslinger-pistol-whip-3",
+        "gunslinger-initiative-3"
       ],
       "features": [
         {

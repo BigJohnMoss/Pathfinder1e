@@ -11,6 +11,10 @@
   "replacements": [
     {
       "featureIds": [
+        "gunslinger-utility-shot-3",
+        "gunslinger-expert-loading-11",
+        "gunslinger-lightning-reload-11",
+        "gunslinger-slingers-luck-15",
         "gunslinger-bonus-feat-4",
         "gunslinger-gun-training-5",
         "gunslinger-gun-training-9",

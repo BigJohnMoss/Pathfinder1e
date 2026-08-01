@@ -11,8 +11,12 @@
   "replacements": [
     {
       "featureIds": [
-        "gunslinger-deeds-1",
+        "gunslinger-grit-1",
         "gunslinger-true-grit-20",
+        "gunslinger-deadeye-1",
+        "gunslinger-dead-shot-7",
+        "gunslinger-menacing-shot-15",
+        "gunslinger-deaths-shot-19",
         "gunslinger-nimble-2",
         "gunslinger-gun-training-5",
         "gunslinger-gun-training-9",

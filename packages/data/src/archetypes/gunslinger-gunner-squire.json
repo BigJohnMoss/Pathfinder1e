@@ -11,6 +11,8 @@
   "replacements": [
     {
       "featureIds": [
+        "gunslinger-dodge-1",
+        "gunslinger-initiative-3",
         "gunslinger-nimble-2"
       ],
       "features": [

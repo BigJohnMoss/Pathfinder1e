@@ -12,7 +12,9 @@
     {
       "featureIds": [
         "gunslinger-nimble-2",
-        "gunslinger-bonus-feat-4"
+        "gunslinger-bonus-feat-4",
+        "gunslinger-startling-shot-7",
+        "gunslinger-bleeding-wound-11"
       ],
       "features": [
         {
