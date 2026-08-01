@@ -57,6 +57,7 @@
           "name": "Royal Protector (Ex)",
           "level": 4,
           "type": "archetype",
+          "grantedFeatIds": ["bodyguard", "in-harms-way"],
           "summary": "At 4th level, a high guardian gains Bodyguard APG and In Harm’s Way APG as bonus feats, though he can use them only to improve his obligation’s AC or intercept a successful attack against his obligation. This ability replaces the bonus feat gained at 4th level."
         }
       ]

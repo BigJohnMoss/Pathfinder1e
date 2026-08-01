@@ -24,6 +24,7 @@
           "name": "Have Gun",
           "level": 1,
           "type": "archetype",
+          "grantedFeatIds": ["amateur-gunslinger", "gunsmithing"],
           "summary": "At 1st level, the holy gun gains the Amateur Gunslinger feat and Gunsmithing as a bonus feat. She also gains a battered gun identical to the one gained by the gunslinger. This ability replaces detect evil."
         },
         {

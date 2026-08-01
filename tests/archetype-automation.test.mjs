@@ -49,4 +49,21 @@ test("shared archetype feat choices expose every earned selection slot", () => {
 
   const wildborn = archetype("barbarian-wildborn").replacements.flatMap((replacement) => replacement.features);
   assert.deepEqual(wildborn.find((feature) => feature.id === "barbarian-wildborn-weapon-and-armor-proficiencies-1").grantedFeatIds, ["improved-unarmed-strike", "catch-off-guard"]);
+
+  const multipleGrantCases = new Map([
+    ["cavalier-green-knight", ["endurance", "diehard"]],
+    ["cavalier-spellscar-drifter", ["amateur-gunslinger", "gunsmithing"]],
+    ["fighter-high-guardian", ["bodyguard", "in-harms-way"]],
+    ["fighter-unbreakable", ["endurance", "diehard"]],
+    ["inquisitor-expulsionist", ["alignment-channel", "turn-undead"]],
+    ["investigator-steel-hound", ["amateur-gunslinger", "gunsmithing"]],
+    ["magus-spire-defender", ["combat-expertise", "dodge"]],
+    ["monk-serpent-fire-adept", ["chakra-initiate", "psychic-sensitivity"]],
+    ["paladin-holy-gun", ["amateur-gunslinger", "gunsmithing"]],
+    ["rogue-makeshift-scrapper", ["catch-off-guard", "throw-anything"]],
+  ]);
+  for (const [id, expected] of multipleGrantCases) {
+    const grants = archetype(id).replacements.flatMap((replacement) => replacement.features).flatMap((feature) => feature.grantedFeatIds ?? []);
+    assert.deepEqual(grants, expected, `${id} fixed feat grants`);
+  }
 });

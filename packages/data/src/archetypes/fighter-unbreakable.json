@@ -36,6 +36,7 @@
           "name": "Tough as Nails",
           "level": 1,
           "type": "archetype",
+          "grantedFeatIds": ["endurance", "diehard"],
           "summary": "An unbreakable gains Endurance and Die Hard as bonus feats. This ability replaces the fighter’s 1st-level bonus feat."
         },
         {

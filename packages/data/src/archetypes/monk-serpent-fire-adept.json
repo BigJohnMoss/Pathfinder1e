@@ -31,6 +31,7 @@
           "name": "Chakra Training",
           "level": 1,
           "type": "archetype",
+          "grantedFeatIds": ["chakra-initiate", "psychic-sensitivity"],
           "summary": "A serpent-fire adept gains Chakra Initiate and Psychic Sensitivity as bonus feats. She need not meet these feats’ prerequisites, and can use her serpent-fire ki from Chakra Initiate to open and maintain her root chakra, despite not being 2nd level. This ability replaces stunning fist and the bonus feat gained at 1st level."
         },
         {
