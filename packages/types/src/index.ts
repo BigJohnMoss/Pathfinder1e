@@ -144,6 +144,7 @@ export interface CharacterClass {
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
   companionGrants?: ArchetypeCompanionGrant[];
+  companionProgressionAdjustments?: CompanionProgressionAdjustment[];
   wildShapeLevelAdjustment?: number;
   druidDomainIds?: string[];
   rangerCombatStyleIds?: string[];
@@ -184,6 +185,7 @@ export interface CharacterArchetype {
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
   companionGrants?: ArchetypeCompanionGrant[];
+  companionProgressionAdjustments?: CompanionProgressionAdjustment[];
   removesSpellcasting?: boolean;
   wildShapeLevelAdjustment?: number;
   druidDomainIds?: string[];
@@ -214,6 +216,12 @@ export interface ArchetypeCompanionGrant {
   minimumLevel: number;
   effectiveLevelAdjustment?: number;
   stacksWithExisting?: boolean;
+}
+export interface CompanionProgressionAdjustment {
+  companionId: string;
+  multiplier: number;
+  levelAdjustment?: number;
+  minimumEffectiveLevel?: number;
 }
 export type Prerequisite =
   | { type: "level"; minimum?: number; maximum?: number }

@@ -41,6 +41,7 @@
       ]
     }
   ],
+  "companionProgressionAdjustments": [{"companionId":"eidolon","multiplier":0.5,"minimumEffectiveLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

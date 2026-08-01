@@ -2,6 +2,11 @@ import { normalizeCompanionState } from "./companions.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 
+export const adjustedCompanionLevel = (level, adjustment) => Math.max(
+  adjustment.minimumEffectiveLevel ?? 1,
+  Math.floor(level * adjustment.multiplier) + (adjustment.levelAdjustment ?? 0),
+);
+
 export function baseAttackBonus(progression, level) {
   assertLevel(level);
   if (progression === "full") return level;
@@ -892,6 +897,10 @@ export function applyArchetype(characterClass, archetype) {
       ...(characterClass.companionGrants ?? []),
       ...(archetype.companionGrants ?? []),
     ],
+    companionProgressionAdjustments: [
+      ...(characterClass.companionProgressionAdjustments ?? []),
+      ...(archetype.companionProgressionAdjustments ?? []),
+    ],
     wildShapeLevelAdjustment:
       archetype.wildShapeLevelAdjustment ??
       characterClass.wildShapeLevelAdjustment,
@@ -1014,6 +1023,7 @@ export function archetypeAutomationSummary(archetype) {
   if (archetype.bonusSpellAdditions && Object.keys(archetype.bonusSpellAdditions).length) automated.push("Bonus spells known");
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (archetype.companionGrants?.length) automated.push("Companion grants and effective-level progression");
+  if (archetype.companionProgressionAdjustments?.length) automated.push("Companion effective-level adjustments");
   if (archetype.removesSpellcasting) automated.push("Spellcasting removal");
   if (archetype.wildShapeLevelAdjustment) automated.push("Wild shape effective level");
   if (archetype.druidDomainIds?.length) automated.push("Available druid domains");

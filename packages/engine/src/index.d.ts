@@ -1,9 +1,10 @@
-import type { CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterTrait } from "../../types/src/index.js";
+import type { CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
 
 export type CharacterClass = SharedCharacterClass;
+export function adjustedCompanionLevel(level: number, adjustment: CompanionProgressionAdjustment): number;
 
 export interface ClassProgression {
   level: number;

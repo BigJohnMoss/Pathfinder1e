@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { applyArchetype, archetypeAutomationSummary, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -175,4 +175,14 @@ test("elemental ally exposes four independently tracked full-level eidolons", ()
   assert.ok(source.companionGrants.every((grant) => grant.kind === "eidolon" && grant.minimumLevel === 1));
   const applied = applyArchetype({ id: "druid", name: "Druid", features: [], classSkills: [] }, source);
   assert.deepEqual(applied.companionGrants, source.companionGrants);
+});
+
+test("master summoner halves eidolon progression with a minimum effective level of 1", () => {
+  const source = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/summoner-master-summoner.json", import.meta.url), "utf8"));
+  const [adjustment] = source.companionProgressionAdjustments;
+  assert.equal(adjustedCompanionLevel(1, adjustment), 1);
+  assert.equal(adjustedCompanionLevel(9, adjustment), 4);
+  assert.equal(adjustedCompanionLevel(20, adjustment), 10);
+  const applied = applyArchetype({ id: "summoner", name: "Summoner", features: [], classSkills: [] }, source);
+  assert.deepEqual(applied.companionProgressionAdjustments, source.companionProgressionAdjustments);
 });

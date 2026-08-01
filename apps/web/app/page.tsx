@@ -62,6 +62,7 @@ import {
   apgClassResourceMaximums,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
+  adjustedCompanionLevel,
   arcaneReservoir,
   availableOptions,
   bardicPerformanceRounds,
@@ -1944,6 +1945,10 @@ export default function Home() {
           label: grant.label,
           effectiveLevel,
         });
+      }
+      for (const adjustment of progressionClass.companionProgressionAdjustments ?? []) {
+        const companion = descriptors.find((descriptor) => descriptor.id === adjustment.companionId);
+        if (companion) companion.effectiveLevel = adjustedCompanionLevel(companion.effectiveLevel, adjustment);
       }
     }
     return descriptors;
