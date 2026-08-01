@@ -2,6 +2,14 @@
   "id": "bard-animal-speaker",
   "name": "Animal Speaker",
   "classId": "bard",
+  "bonusSpellAdditions": {
+    "summon-natures-ally-1": 1,
+    "summon-natures-ally-2": 2,
+    "summon-natures-ally-3": 3,
+    "summon-natures-ally-4": 4,
+    "summon-natures-ally-5": 5,
+    "summon-natures-ally-6": 6
+  },
   "summary": "An animal speaker focuses not on the ears and minds of humans, but on the creatures of the wild and those in the underbellies of cities.",
   "replacesText": "Fascinate; Well-Versed; Inspire Competence; Suggestion; Mass Suggestion",
   "replacements": [

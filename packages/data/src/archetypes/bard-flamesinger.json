@@ -2,6 +2,14 @@
   "id": "bard-flamesinger",
   "name": "Flamesinger",
   "classId": "bard",
+  "bonusSpellAdditions": {
+    "summon-monster-1": 1,
+    "summon-monster-2": 2,
+    "summon-monster-3": 3,
+    "summon-monster-4": 4,
+    "summon-monster-5": 5,
+    "summon-monster-6": 6
+  },
   "summary": "The flamesinger finds inspiration in the mesmerizing beauty of fire.",
   "replacesText": "Bardic Knowledge; Lore Master; Inspire Courage; Versatile Performance",
   "replacements": [

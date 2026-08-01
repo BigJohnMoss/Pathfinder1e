@@ -196,6 +196,20 @@ function mergeSpellLists<T extends { id: string }>(
   return [...byId.values()];
 }
 
+function spellsFromAdditions<T extends { id: string; levelByClass: Record<string, number> }>(
+  catalogue: T[],
+  additions: Record<string, number> | undefined,
+  classId: string,
+  maximumSpellLevel: number,
+) {
+  return Object.entries(additions ?? {}).flatMap(([spellId, spellLevel]) => {
+    const spell = catalogue.find((candidate) => candidate.id === spellId);
+    return spell && spellLevel <= maximumSpellLevel
+      ? [{ ...spell, levelByClass: { ...spell.levelByClass, [classId]: spellLevel } }]
+      : [];
+  });
+}
+
 function normalizeAdditionalClassLevels(
   entries: CharacterClassLevel[],
   primaryClassId: string,
@@ -381,9 +395,7 @@ export default function Home() {
   );
   const secondaryClassId = additionalClassLevels[0]?.classId ?? "";
   const secondaryClassLevel = additionalClassLevels[0]?.level ?? 0;
-  const secondaryCharacterClass = classes.find(
-    (item) => item.id === secondaryClassId,
-  );
+  const secondaryCharacterClass = additionalCharacterClasses[0];
   const assignedAdditionalLevels = additionalClassLevels.reduce(
     (total, entry) => total + entry.level,
     0,
@@ -1477,14 +1489,19 @@ export default function Home() {
         }),
     [characterClass.id, maximumSpellLevel, selectedOptionSpellChoices, spells],
   );
+  const archetypeBonusSpells = useMemo(
+    () => spellsFromAdditions(spells, characterClass.bonusSpellAdditions, characterClass.id, maximumSpellLevel),
+    [characterClass.bonusSpellAdditions, characterClass.id, maximumSpellLevel, spells],
+  );
   const grantedSpells = useMemo(
     () => [
       ...bloodlineSpells,
       ...mysterySpells,
       ...patronSpells,
       ...selectedOptionSpells,
+      ...archetypeBonusSpells,
     ],
-    [bloodlineSpells, mysterySpells, patronSpells, selectedOptionSpells],
+    [archetypeBonusSpells, bloodlineSpells, mysterySpells, patronSpells, selectedOptionSpells],
   );
   const availableSpells = useMemo(
     () => mergeSpellLists(baseAvailableSpells, grantedSpells),
@@ -1718,12 +1735,16 @@ export default function Home() {
       ...secondaryMysterySpells,
       ...secondaryPatronSpells,
       ...secondarySelectedOptionSpells,
+      ...spellsFromAdditions(spells, secondaryCharacterClass?.bonusSpellAdditions, secondaryCharacterClass?.id ?? "", secondaryMaximumSpellLevel),
     ],
     [
       secondaryBloodlineSpells,
       secondaryMysterySpells,
       secondaryPatronSpells,
       secondarySelectedOptionSpells,
+      secondaryCharacterClass,
+      secondaryMaximumSpellLevel,
+      spells,
     ],
   );
   const secondaryAvailableSpells = useMemo(
@@ -2778,6 +2799,7 @@ export default function Home() {
       ...draftBloodlineSpells,
       ...draftPatronSpells,
       ...draftOptionSpells,
+      ...spellsFromAdditions(spells, draftClass.bonusSpellAdditions, draftClass.id, draftCasting?.maximumSpellLevel ?? 0),
     ];
     const draftSpells = mergeSpellLists(draftBaseSpells, draftGrantedSpells);
     const draftBloodlineSpellIds = draftGrantedSpells.map((spell) => spell.id);
@@ -2912,6 +2934,7 @@ export default function Home() {
       ...draftSecondaryGranted,
       ...draftSecondaryPatronSpells,
       ...draftSecondaryOptionSpells,
+      ...spellsFromAdditions(spells, draftSecondaryClass?.bonusSpellAdditions, draftSecondaryClass?.id ?? "", draftSecondaryCasting?.maximumSpellLevel ?? 0),
     ];
     const draftSecondarySpells = mergeSpellLists(
       draftSecondaryBaseSpells,

@@ -2,6 +2,12 @@
   "id": "bloodrager-greenrager",
   "name": "Greenrager",
   "classId": "bloodrager",
+  "bonusSpellAdditions": {
+    "summon-natures-ally-1": 1,
+    "summon-natures-ally-2": 2,
+    "summon-natures-ally-3": 3,
+    "summon-natures-ally-4": 4
+  },
   "summary": "Typically, nature finds its greatest harmony with divine magic, but sometimes a connection with the natural world manifest itself through the arcane current in the veins of the bloodragers called greenragers.",
   "replacesText": "Blood Sanctuary; 6th and 9th-level Bloodline Feats",
   "mechanicalCoverage": "partial",

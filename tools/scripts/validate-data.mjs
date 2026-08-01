@@ -178,6 +178,13 @@ for (const url of await jsonFiles("archetypes/")) {
       if (!Number.isInteger(spellLevel) || spellLevel < 0 || spellLevel > 9) errors.push(`${file}: spellListAdditions has invalid level for ${spellId}`);
     }
   }
+  if (archetype.bonusSpellAdditions !== undefined) {
+    if (!archetype.bonusSpellAdditions || typeof archetype.bonusSpellAdditions !== "object" || Array.isArray(archetype.bonusSpellAdditions) || Object.keys(archetype.bonusSpellAdditions).length === 0) errors.push(`${file}: bonusSpellAdditions must be a non-empty record`);
+    else for (const [spellId, spellLevel] of Object.entries(archetype.bonusSpellAdditions)) {
+      if (!spellIds.has(spellId)) errors.push(`${file}: bonusSpellAdditions references missing spell ${spellId}`);
+      if (!Number.isInteger(spellLevel) || spellLevel < 0 || spellLevel > 9) errors.push(`${file}: bonusSpellAdditions has invalid level for ${spellId}`);
+    }
+  }
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);
   const resourceIds = new Set();
   for (const adjustment of archetype.resourceAdjustments ?? []) {
