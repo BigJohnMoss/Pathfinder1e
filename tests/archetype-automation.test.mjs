@@ -209,3 +209,12 @@ test("drake archetypes use the dedicated full-BAB d12 progression", () => {
     assert.equal(grant.effectiveLevelAdjustment ?? 0, adjustment, `${id} level adjustment`);
   }
 });
+
+test("fiendish vessel familiar advances with total character level", () => {
+  const source = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/cleric-fiendish-vessel.json", import.meta.url), "utf8"));
+  const [grant] = source.companionGrants;
+  assert.equal(grant.minimumLevel, 3);
+  assert.equal(grant.usesCharacterLevel, true);
+  assert.equal(grant.stacksWithExisting, true);
+  assert.equal(grant.kind, "familiar");
+});

@@ -1929,7 +1929,7 @@ export default function Home() {
       const classLevel = classLevelMap[progressionClass.id] ?? 0;
       for (const grant of progressionClass.companionGrants ?? []) {
         if (classLevel < grant.minimumLevel) continue;
-        const effectiveLevel = Math.max(1, classLevel + (grant.effectiveLevelAdjustment ?? 0));
+        const effectiveLevel = Math.max(1, (grant.usesCharacterLevel ? level : classLevel) + (grant.effectiveLevelAdjustment ?? 0));
         const existing = grant.stacksWithExisting
           ? descriptors.find((descriptor) => descriptor.kind === grant.kind)
           : undefined;
@@ -1952,7 +1952,7 @@ export default function Home() {
       }
     }
     return descriptors;
-  }, [classLevelMap, eidolonBaseFormId, favoredClassAlternateBonuses, progressionClasses, selectedOptions, summonerClassLevel]);
+  }, [classLevelMap, eidolonBaseFormId, favoredClassAlternateBonuses, level, progressionClasses, selectedOptions, summonerClassLevel]);
   const validEidolonEvolutions = eidolonEvolutions.filter(
     (evolution): evolution is typeof evolution & { cost: number } =>
       Number.isFinite(evolution.cost),

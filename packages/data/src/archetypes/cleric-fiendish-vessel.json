@@ -60,6 +60,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"fiendish-familiar","kind":"familiar","label":"Fiendish familiar","optionId":"fiendish-vessel-familiar","minimumLevel":3,"usesCharacterLevel":true,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

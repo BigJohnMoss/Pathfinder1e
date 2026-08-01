@@ -216,6 +216,7 @@ export interface ArchetypeCompanionGrant {
   minimumLevel: number;
   effectiveLevelAdjustment?: number;
   stacksWithExisting?: boolean;
+  usesCharacterLevel?: boolean;
 }
 export interface CompanionProgressionAdjustment {
   companionId: string;
