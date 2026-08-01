@@ -146,6 +146,10 @@ for (const url of await jsonFiles("classes/")) {
   }
 }
 const featIds = new Set(await Promise.all((await jsonFiles("feats/")).map(async url => (await load(url)).id)));
+const spellIds = new Set([
+  ...await Promise.all((await jsonFiles("spells/")).map(async url => (await load(url)).id)),
+  ...(await Promise.all((await jsonFiles("spell-catalogues/")).map(async url => (await load(url)).spells ?? []))).flat().map(spell => spell.id),
+]);
 for (const url of await jsonFiles("archetypes/")) {
   const archetype=await load(url); const file=url.pathname.split('/').pop(); checkId(archetype,file); checkSource(archetype,file);
   if(!classIds.has(archetype.classId)) errors.push(`${file}: references missing class ${archetype.classId}`);
@@ -165,6 +169,13 @@ for (const url of await jsonFiles("archetypes/")) {
         if (feature.featChoiceTypes?.some(type => !["combat", "general", "item-creation", "metamagic", "monster", "story", "style", "teamwork"].includes(type))) errors.push(`${file}: ${feature.id} has an invalid feat choice type`);
         if (feature.ignoreFeatPrerequisites !== undefined && typeof feature.ignoreFeatPrerequisites !== "boolean") errors.push(`${file}: ${feature.id} ignoreFeatPrerequisites must be boolean`);
       }
+    }
+  }
+  if (archetype.spellListAdditions !== undefined) {
+    if (!archetype.spellListAdditions || typeof archetype.spellListAdditions !== "object" || Array.isArray(archetype.spellListAdditions) || Object.keys(archetype.spellListAdditions).length === 0) errors.push(`${file}: spellListAdditions must be a non-empty record`);
+    else for (const [spellId, spellLevel] of Object.entries(archetype.spellListAdditions)) {
+      if (!spellIds.has(spellId)) errors.push(`${file}: spellListAdditions references missing spell ${spellId}`);
+      if (!Number.isInteger(spellLevel) || spellLevel < 0 || spellLevel > 9) errors.push(`${file}: spellListAdditions has invalid level for ${spellId}`);
     }
   }
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);

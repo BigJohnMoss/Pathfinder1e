@@ -2,6 +2,16 @@
   "id": "bard-fortune-teller",
   "name": "Fortune-Teller",
   "classId": "bard",
+  "spellListAdditions": {
+    "guidance": 0,
+    "later-spell-object-reading": 1,
+    "augury": 2,
+    "later-spell-analyze-aura": 3,
+    "divination": 4,
+    "retrocognition": 5,
+    "true-seeing": 6,
+    "vision": 6
+  },
   "summary": "Instead of using song and dance, a fortune-teller influences people by divining their fate.",
   "replacesText": "Spell List; Bardic Performance; Countersong; Distraction; Well-Versed; Dirge of Doom",
   "replacements": [

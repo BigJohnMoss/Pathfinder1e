@@ -2,6 +2,9 @@
   "id": "ranger-summit-sentinel",
   "name": "Summit Sentinel",
   "classId": "ranger",
+  "spellListAdditions": {
+    "stoneskin": 4
+  },
   "summary": "Some rangers eschew the path of the swift skirmisher and embrace the implacable strength of the mountain.",
   "replacesText": "Combat Style; Favored Terrain; Swift Tracker; Hide in Plain Sight",
   "replacements": [
