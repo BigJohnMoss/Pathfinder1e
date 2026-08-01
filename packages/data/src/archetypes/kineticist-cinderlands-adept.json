@@ -2,6 +2,7 @@
   "id": "kineticist-cinderlands-adept",
   "name": "Cinderlands Adept",
   "classId": "kineticist",
+  "companionGrants": [{ "id": "cinderlands-mount", "kind": "mount", "label": "Cinderlands mount (horse or pony)", "optionId": "cinderlands-mount", "minimumLevel": 4, "effectiveLevelAdjustment": -3 }],
   "summary": "These kineticists are skilled riders, able to wield both weapons and fire with deadly skill.",
   "replacesText": "Class Skills; Elemental Focus; Expanded Element; Gather Power; 1st-level Infusion; 4th, 8th, 12th-level Utility Wild Talent",
   "mechanicalCoverage": "partial",

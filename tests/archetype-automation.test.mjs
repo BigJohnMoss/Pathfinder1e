@@ -126,3 +126,25 @@ test("archetype spellcasting adjustments change slots, preparations, and spells 
   assert.deepEqual(eldritchFont.spellcasting.slotsByLevel[9], arcanist.spellcasting.slotsByLevel[9].map((count) => count + 1));
   assert.deepEqual(eldritchFont.spellcasting.preparedByLevel[9], arcanist.spellcasting.preparedByLevel[9].map((count) => Math.max(0, count - 1)));
 });
+
+test("archetype companion grants expose their unlock and effective-level rules", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const cases = new Map([
+    ["alchemist-construct-rider", [1, 0]],
+    ["alchemist-winged-marauder", [1, 0]],
+    ["barbarian-mounted-fury", [5, -4]],
+    ["barbarian-shoanti-burn-rider", [4, -3]],
+    ["bloodrager-bloodrider", [5, -4]],
+    ["druid-sunrider", [1, 0]],
+    ["kineticist-cinderlands-adept", [4, -3]],
+    ["warpriest-divine-commander", [1, 0]],
+  ]);
+  for (const [id, [minimumLevel, adjustment]] of cases) {
+    const source = archetype(id);
+    assert.equal(source.companionGrants.length, 1, `${id} companion count`);
+    assert.equal(source.companionGrants[0].minimumLevel, minimumLevel, `${id} unlock`);
+    assert.equal(source.companionGrants[0].effectiveLevelAdjustment ?? 0, adjustment, `${id} effective level`);
+    const applied = applyArchetype({ id: source.classId, name: "Base", features: [], classSkills: [] }, source);
+    assert.deepEqual(applied.companionGrants, source.companionGrants, `${id} applied companion`);
+  }
+});

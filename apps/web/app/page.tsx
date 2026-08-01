@@ -1924,8 +1924,21 @@ export default function Home() {
     add("samurai-mount", "mount", selectedValue("samurai-mount-"), "Samurai mount", classLevelMap.samurai ?? 0);
     if (selectedValue("magus-arcana-") === "magus-arcana-familiar")
       descriptors.push({ id: "magus-familiar", kind: "familiar", optionId: "magus-arcana-familiar", label: "Magus familiar", effectiveLevel: classLevelMap.magus ?? 1 });
+    for (const progressionClass of progressionClasses) {
+      const classLevel = classLevelMap[progressionClass.id] ?? 0;
+      for (const grant of progressionClass.companionGrants ?? []) {
+        if (classLevel < grant.minimumLevel) continue;
+        descriptors.push({
+          id: `archetype-${progressionClass.id}-${grant.id}`,
+          kind: grant.kind,
+          optionId: grant.optionId,
+          label: grant.label,
+          effectiveLevel: Math.max(1, classLevel + (grant.effectiveLevelAdjustment ?? 0)),
+        });
+      }
+    }
     return descriptors;
-  }, [classLevelMap, eidolonBaseFormId, favoredClassAlternateBonuses, selectedOptions, summonerClassLevel]);
+  }, [classLevelMap, eidolonBaseFormId, favoredClassAlternateBonuses, progressionClasses, selectedOptions, summonerClassLevel]);
   const validEidolonEvolutions = eidolonEvolutions.filter(
     (evolution): evolution is typeof evolution & { cost: number } =>
       Number.isFinite(evolution.cost),

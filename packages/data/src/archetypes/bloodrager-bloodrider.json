@@ -2,6 +2,7 @@
   "id": "bloodrager-bloodrider",
   "name": "Bloodrider",
   "classId": "bloodrager",
+  "companionGrants": [{ "id": "feral-mount", "kind": "mount", "label": "Feral mount", "optionId": "feral-mount", "minimumLevel": 5, "effectiveLevelAdjustment": -4 }],
   "summary": "In the world’s wild lands, a mount is an advantage in both everyday life and the dealing of death",
   "replacesText": "Fast Movement; Uncanny Dodge; Improved Uncanny Dodge; 9th-level Bloodline Feat",
   "mechanicalCoverage": "partial",

@@ -2,6 +2,7 @@
   "id": "alchemist-winged-marauder",
   "name": "Winged Marauder",
   "classId": "alchemist",
+  "companionGrants": [{ "id": "flying-mount", "kind": "mount", "label": "Flying mount (dire bat or giant vulture)", "optionId": "flying-mount", "minimumLevel": 1 }],
   "summary": "(Goblin Only) Goblin alchemists have created a mixture of pheromones that they use to manipulate and entice giant vultures or dire bats to do their bidding.",
   "replacesText": "Class Skills; Mutagen; Persistent Mutagen",
   "mechanicalCoverage": "partial",

@@ -2,6 +2,7 @@
   "id": "druid-sunrider",
   "name": "Sunrider",
   "classId": "druid",
+  "companionGrants": [{ "id": "sunrider-mount", "kind": "mount", "label": "Sunrider mount (horse or pony)", "optionId": "sunrider-mount", "minimumLevel": 1 }],
   "summary": "Sunriders help their allies, be they fellow tribe members or fellow adventurers, to survive in harsh desert terrain, while simultaneously making it even harsher for their foes.",
   "replacesText": "Class Skills; Weapon and Armor Proficiencies; Nature Bond; Woodland Stride; Trackless Step; Resist Nature's Lure; Wild Shape",
   "replacements": [

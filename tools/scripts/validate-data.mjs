@@ -188,6 +188,16 @@ for (const url of await jsonFiles("archetypes/")) {
   for (const key of ["spellSlotAdjustmentPerLevel", "preparedSpellAdjustmentPerLevel", "spellsKnownAdjustmentPerLevel"]) {
     if (archetype[key] !== undefined && (!Number.isInteger(archetype[key]) || archetype[key] === 0 || archetype[key] < -9 || archetype[key] > 9)) errors.push(`${file}: ${key} must be a non-zero integer from -9 to 9`);
   }
+  if (archetype.companionGrants !== undefined) {
+    const grantIds = new Set();
+    if (!Array.isArray(archetype.companionGrants) || archetype.companionGrants.length === 0) errors.push(`${file}: companionGrants must be a non-empty array`);
+    for (const grant of archetype.companionGrants ?? []) {
+      if (!grant || typeof grant.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(grant.id) || grantIds.has(grant.id)) errors.push(`${file}: companion grant has an invalid or duplicate id`); else grantIds.add(grant.id);
+      if (!['animal', 'mount', 'familiar'].includes(grant?.kind) || typeof grant?.label !== "string" || !grant.label.trim() || typeof grant?.optionId !== "string" || !grant.optionId.trim()) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has invalid identity fields`);
+      if (!Number.isInteger(grant?.minimumLevel) || grant.minimumLevel < 1 || grant.minimumLevel > 20) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid minimumLevel`);
+      if (grant?.effectiveLevelAdjustment !== undefined && (!Number.isInteger(grant.effectiveLevelAdjustment) || grant.effectiveLevelAdjustment < -19 || grant.effectiveLevelAdjustment > 19)) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid effectiveLevelAdjustment`);
+    }
+  }
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);
   const resourceIds = new Set();
   for (const adjustment of archetype.resourceAdjustments ?? []) {
