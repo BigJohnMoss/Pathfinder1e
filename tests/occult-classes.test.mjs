@@ -26,8 +26,12 @@ test("Medium exposes its spirits, psychic spell progression, influence, and caps
 
 test("Mesmerist integrates stare choices, tricks, treatments, and daily implants", async () => {
   const entry = JSON.parse(await readFile(new URL("../packages/data/src/classes/mesmerist.json", import.meta.url), "utf8"));
+  const tricks = JSON.parse(await readFile(new URL("../packages/data/src/options/mesmerist-tricks.json", import.meta.url), "utf8"));
   assert.deepEqual(entry.spellcasting.spellLevelUnlocks, [1, 4, 7, 10, 13, 16]);
-  assert.ok(entry.features.some(feature => feature.optionGroupId === "mesmerist-tricks"));
+  assert.equal(entry.features.filter(feature => feature.progressionKey === "mesmerist-trick").length, 11);
+  assert.equal(tricks.options.length, 44);
+  assert.equal(tricks.options.filter(option => option.minimumLevel === 12).length, 14);
+  assert.ok(tricks.options.filter(option => option.minimumLevel === 12).every(option => option.id.startsWith("mesmerist-masterful-trick-")));
   assert.ok(entry.features.some(feature => feature.optionGroupId === "mesmerist-bold-stares"));
   assert.ok(entry.features.some(feature => feature.id === "mesmerist-rule-minds-20"));
   assert.deepEqual(apgClassResourceMaximums("mesmerist", 10, { charisma: 4 }), { mesmeristTrick: 7 });
@@ -45,7 +49,11 @@ test("Occultist integrates implements, focus powers, mental focus, and mastery",
 test("Psychic integrates disciplines, amplifications, phrenic pool, and ninth-level spells", async () => {
   const entry = JSON.parse(await readFile(new URL("../packages/data/src/classes/psychic.json", import.meta.url), "utf8"));
   const disciplines = JSON.parse(await readFile(new URL("../packages/data/src/options/psychic-disciplines.json", import.meta.url), "utf8"));
+  const amplifications = JSON.parse(await readFile(new URL("../packages/data/src/options/psychic-amplifications.json", import.meta.url), "utf8"));
+  const majorAmplifications = JSON.parse(await readFile(new URL("../packages/data/src/options/psychic-major-amplifications.json", import.meta.url), "utf8"));
   assert.equal(disciplines.options.length, 10);
+  assert.equal(amplifications.options.length, 22);
+  assert.equal(majorAmplifications.options.length, 9);
   assert.deepEqual(entry.spellcasting.spellLevelUnlocks, [1, 4, 6, 8, 10, 12, 14, 16, 18]);
   assert.ok(entry.features.some(feature => feature.id === "psychic-remade-self-20"));
   assert.deepEqual(apgClassResourceMaximums("psychic", 20, { intelligence: 7 }), { phrenicPool: 17 });

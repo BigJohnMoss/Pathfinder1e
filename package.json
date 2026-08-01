@@ -19,6 +19,7 @@
     "import:spell-details": "node tools/scripts/import-spell-details.mjs",
     "import:archetypes": "node tools/scripts/import-archetypes.mjs",
     "import:magus-arcana": "node tools/scripts/import-magus-arcana.mjs",
+    "import:psychic-options": "node tools/scripts/import-psychic-options.mjs",
     "coverage:archetypes": "node tools/scripts/annotate-archetype-coverage.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
