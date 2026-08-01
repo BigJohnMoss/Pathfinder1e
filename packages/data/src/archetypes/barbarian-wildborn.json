@@ -52,7 +52,27 @@
           "name": "Bonus Feats",
           "level": 4,
           "type": "archetype",
+          "optionGroupId": "archetype-feats",
+          "featChoiceIds": ["alertness", "animal-affinity", "athletic", "great-fortitude", "improvised-weapon-mastery", "iron-will", "lightning-reflexes", "self-sufficient", "stealthy", "throw-anything"],
           "summary": "At 4th level, 10th level and 16th level, a wildborn can choose a bonus feat from the following rather than select a rage power: Alertness , Animal Affinity , Athletic , Great Fortitude , Improvised Weapon Mastery , Iron Will , Lightning Reflexes , Self-Sufficient , Stealthy , or Throw Anything . This alters rage powers."
+        },
+        {
+          "id": "barbarian-wildborn-bonus-feats-10",
+          "name": "Bonus Feats",
+          "level": 10,
+          "type": "archetype",
+          "optionGroupId": "archetype-feats",
+          "featChoiceIds": ["alertness", "animal-affinity", "athletic", "great-fortitude", "improvised-weapon-mastery", "iron-will", "lightning-reflexes", "self-sufficient", "stealthy", "throw-anything"],
+          "summary": "At 10th level, a wildborn chooses another feat from her archetype's bonus feat list instead of a rage power."
+        },
+        {
+          "id": "barbarian-wildborn-bonus-feats-16",
+          "name": "Bonus Feats",
+          "level": 16,
+          "type": "archetype",
+          "optionGroupId": "archetype-feats",
+          "featChoiceIds": ["alertness", "animal-affinity", "athletic", "great-fortitude", "improvised-weapon-mastery", "iron-will", "lightning-reflexes", "self-sufficient", "stealthy", "throw-anything"],
+          "summary": "At 16th level, a wildborn chooses another feat from her archetype's bonus feat list instead of a rage power."
         },
         {
           "id": "barbarian-wildborn-inexhaustible-ex-7",

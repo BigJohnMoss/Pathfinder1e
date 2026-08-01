@@ -35,6 +35,10 @@ test("shared archetype feat choices expose every earned selection slot", () => {
   assert.deepEqual(featChoices("bard-phrenologist").map((feature) => feature.level), [10]);
   assert.deepEqual(featChoices("cleric-undead-lord").map((feature) => feature.level), [10]);
   assert.deepEqual(featChoices("cleric-mendevian-priest").map((feature) => feature.level), [4, 8]);
+  assert.deepEqual(featChoices("barbarian-wildborn").map((feature) => feature.level), [4, 10, 16]);
+  assert.deepEqual(featChoices("druid-ape-shaman").map((feature) => feature.level), [9, 13, 17]);
+  assert.deepEqual(featChoices("druid-bear-shaman").map((feature) => feature.level), [9, 13, 17]);
+  assert.deepEqual(featChoices("druid-boar-shaman").map((feature) => feature.level), [9, 13, 17]);
 
   const grantedFeats = (id) => archetype(id).replacements
     .flatMap((replacement) => replacement.features)

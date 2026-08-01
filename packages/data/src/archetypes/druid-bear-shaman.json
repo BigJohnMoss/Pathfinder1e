@@ -51,7 +51,17 @@
           "name": "Bonus Feat",
           "level": 9,
           "type": "archetype",
+          "optionGroupId": "archetype-feats",
+          "featChoiceIds": ["diehard", "endurance", "great-fortitude", "improved-great-fortitude", "toughness"],
           "summary": "At 9th level and every 4 levels thereafter, a bear shaman gains one of the following bonus feats: Diehard, Endurance, Great Fortitude, Improved Great Fortitude, Toughness. She must meet the prerequisites for these bonus feats. This ability replaces venom immunity."
+        },
+        {
+          "id": "druid-bear-shaman-bonus-feat-13", "name": "Bonus Feat", "level": 13, "type": "archetype", "optionGroupId": "archetype-feats",
+          "featChoiceIds": ["diehard", "endurance", "great-fortitude", "improved-great-fortitude", "toughness"], "summary": "At 13th level, a bear shaman gains another feat from her totem bonus feat list."
+        },
+        {
+          "id": "druid-bear-shaman-bonus-feat-17", "name": "Bonus Feat", "level": 17, "type": "archetype", "optionGroupId": "archetype-feats",
+          "featChoiceIds": ["diehard", "endurance", "great-fortitude", "improved-great-fortitude", "toughness"], "summary": "At 17th level, a bear shaman gains another feat from her totem bonus feat list."
         }
       ]
     }
