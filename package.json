@@ -21,6 +21,7 @@
     "import:magus-arcana": "node tools/scripts/import-magus-arcana.mjs",
     "import:psychic-options": "node tools/scripts/import-psychic-options.mjs",
     "import:kineticist-options": "node tools/scripts/import-kineticist-options.mjs",
+    "import:psychic-disciplines": "node tools/scripts/import-psychic-disciplines.mjs",
     "coverage:archetypes": "node tools/scripts/annotate-archetype-coverage.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",

@@ -57,7 +57,7 @@ test("Psychic integrates disciplines, amplifications, phrenic pool, and ninth-le
   const disciplines = JSON.parse(await readFile(new URL("../packages/data/src/options/psychic-disciplines.json", import.meta.url), "utf8"));
   const amplifications = JSON.parse(await readFile(new URL("../packages/data/src/options/psychic-amplifications.json", import.meta.url), "utf8"));
   const majorAmplifications = JSON.parse(await readFile(new URL("../packages/data/src/options/psychic-major-amplifications.json", import.meta.url), "utf8"));
-  assert.equal(disciplines.options.length, 10);
+  assert.equal(disciplines.options.length, 23);
   assert.equal(amplifications.options.length, 22);
   assert.equal(majorAmplifications.options.length, 9);
   assert.deepEqual(entry.spellcasting.spellLevelUnlocks, [1, 4, 6, 8, 10, 12, 14, 16, 18]);
@@ -68,7 +68,7 @@ test("Psychic integrates disciplines, amplifications, phrenic pool, and ninth-le
 test("Spiritualist integrates emotional focus, phantom progression, and manifestation", async () => {
   const entry = JSON.parse(await readFile(new URL("../packages/data/src/classes/spiritualist.json", import.meta.url), "utf8"));
   const focuses = JSON.parse(await readFile(new URL("../packages/data/src/options/spiritualist-emotional-focuses.json", import.meta.url), "utf8"));
-  assert.equal(focuses.options.length, 7);
+  assert.equal(focuses.options.length, 15);
   assert.ok(entry.features.some(feature => feature.optionGroupId === "spiritualist-emotional-focuses"));
   assert.ok(entry.features.some(feature => feature.id === "spiritualist-empowered-consciousness-20"));
   assert.deepEqual(apgClassResourceMaximums("spiritualist", 20), { bondedManifestation: 23 });
