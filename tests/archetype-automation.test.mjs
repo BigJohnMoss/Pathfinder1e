@@ -35,6 +35,10 @@ test("shared archetype feat choices expose every earned selection slot", () => {
   assert.deepEqual(featChoices("bard-phrenologist").map((feature) => feature.level), [10]);
   assert.deepEqual(featChoices("cleric-undead-lord").map((feature) => feature.level), [10]);
   assert.deepEqual(featChoices("cleric-mendevian-priest").map((feature) => feature.level), [4, 8]);
+  assert.deepEqual(featChoices("barbarian-wildborn").map((feature) => feature.level), [4, 10, 16]);
+  assert.deepEqual(featChoices("druid-ape-shaman").map((feature) => feature.level), [9, 13, 17]);
+  assert.deepEqual(featChoices("druid-bear-shaman").map((feature) => feature.level), [9, 13, 17]);
+  assert.deepEqual(featChoices("druid-boar-shaman").map((feature) => feature.level), [9, 13, 17]);
 
   const grantedFeats = (id) => archetype(id).replacements
     .flatMap((replacement) => replacement.features)
@@ -42,4 +46,24 @@ test("shared archetype feat choices expose every earned selection slot", () => {
     .filter(Boolean);
   assert.ok(grantedFeats("bard-phrenologist").includes("psychic-sensitivity"));
   assert.ok(grantedFeats("cleric-undead-lord").includes("feat-command-undead"));
+
+  const wildborn = archetype("barbarian-wildborn").replacements.flatMap((replacement) => replacement.features);
+  assert.deepEqual(wildborn.find((feature) => feature.id === "barbarian-wildborn-weapon-and-armor-proficiencies-1").grantedFeatIds, ["improved-unarmed-strike", "catch-off-guard"]);
+
+  const multipleGrantCases = new Map([
+    ["cavalier-green-knight", ["endurance", "diehard"]],
+    ["cavalier-spellscar-drifter", ["amateur-gunslinger", "gunsmithing"]],
+    ["fighter-high-guardian", ["bodyguard", "in-harms-way"]],
+    ["fighter-unbreakable", ["endurance", "diehard"]],
+    ["inquisitor-expulsionist", ["alignment-channel", "turn-undead"]],
+    ["investigator-steel-hound", ["amateur-gunslinger", "gunsmithing"]],
+    ["magus-spire-defender", ["combat-expertise", "dodge"]],
+    ["monk-serpent-fire-adept", ["chakra-initiate", "psychic-sensitivity"]],
+    ["paladin-holy-gun", ["amateur-gunslinger", "gunsmithing"]],
+    ["rogue-makeshift-scrapper", ["catch-off-guard", "throw-anything"]],
+  ]);
+  for (const [id, expected] of multipleGrantCases) {
+    const grants = archetype(id).replacements.flatMap((replacement) => replacement.features).flatMap((feature) => feature.grantedFeatIds ?? []);
+    assert.deepEqual(grants, expected, `${id} fixed feat grants`);
+  }
 });

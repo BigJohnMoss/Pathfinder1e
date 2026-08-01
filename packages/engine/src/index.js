@@ -996,7 +996,7 @@ export function archetypeAutomationSummary(archetype) {
   const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);
   if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
   const manualFeatures = replacementFeatures
-    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId)
+    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length)
     .map(feature => `${feature.name} (level ${feature.level})`);
   const manual = archetype.mechanicalCoverage === "full"
     ? []

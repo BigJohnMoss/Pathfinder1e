@@ -157,6 +157,8 @@ for (const url of await jsonFiles("archetypes/")) {
       if(replacementFeatureIds.has(feature.id)) errors.push(`${file}: duplicate replacement feature ${feature.id}`); replacementFeatureIds.add(feature.id);
       if(!Number.isInteger(feature.level)||feature.level<1||feature.level>20||typeof feature.summary!=="string"||!feature.summary.trim()) errors.push(`${file}: invalid replacement feature ${feature.id}`);
       if(feature.grantedFeatId !== undefined && (typeof feature.grantedFeatId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(feature.grantedFeatId))) errors.push(`${file}: ${feature.id} has invalid grantedFeatId`);
+      if (feature.grantedFeatId && !featIds.has(feature.grantedFeatId)) errors.push(`${file}: ${feature.id} references unknown grantedFeatId ${feature.grantedFeatId}`);
+      if (feature.grantedFeatIds !== undefined && (!Array.isArray(feature.grantedFeatIds) || feature.grantedFeatIds.length === 0 || feature.grantedFeatIds.some(id => typeof id !== "string" || !featIds.has(id)) || new Set(feature.grantedFeatIds).size !== feature.grantedFeatIds.length)) errors.push(`${file}: ${feature.id} has invalid grantedFeatIds`);
       if (feature.optionGroupId === "archetype-feats") {
         if ((!Array.isArray(feature.featChoiceIds) || feature.featChoiceIds.length === 0) && (!Array.isArray(feature.featChoiceTypes) || feature.featChoiceTypes.length === 0)) errors.push(`${file}: ${feature.id} must limit its archetype feat choice`);
         if (feature.featChoiceIds?.some(id => !featIds.has(id))) errors.push(`${file}: ${feature.id} references an unknown feat choice`);

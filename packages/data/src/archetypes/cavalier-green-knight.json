@@ -38,6 +38,7 @@
           "name": "Implacable Knight (Ex)",
           "level": 1,
           "type": "archetype",
+          "grantedFeatIds": ["endurance", "diehard"],
           "summary": "A green knight gains Endurance and Diehard as bonus feats. This replaces mount."
         },
         {

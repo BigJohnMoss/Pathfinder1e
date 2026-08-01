@@ -29,6 +29,7 @@
           "name": "Improvised Weapons (Ex)",
           "level": 1,
           "type": "archetype",
+          "grantedFeatIds": ["catch-off-guard", "throw-anything"],
           "summary": "At 1st level, a makeshift scrapper gains Catch Off-Guard and Throw Anything as bonus feats. This ability replaces trapfinding."
         },
         {

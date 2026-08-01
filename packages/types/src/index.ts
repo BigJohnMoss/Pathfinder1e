@@ -108,6 +108,7 @@ export interface ClassFeatureOccurrence {
   featChoiceTypes?: string[];
   ignoreFeatPrerequisites?: boolean;
   grantedFeatId?: string;
+  grantedFeatIds?: string[];
   source?: SourceRef;
   requiredOptionId?: string;
   requiredOptionMessage?: string;

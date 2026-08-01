@@ -691,7 +691,7 @@ export default function Home() {
   const selectedClassFeatIds = useMemo(
     () => [
       ...progression.features.flatMap((feature) =>
-        feature.grantedFeatId ? [feature.grantedFeatId] : [],
+        [feature.grantedFeatId, ...(feature.grantedFeatIds ?? [])].filter((featId): featId is string => Boolean(featId)),
       ),
       ...Object.entries(selectedOptions).flatMap(([featureId, optionId]) => {
         const feature = progression.features.find((candidate) => candidate.id === featureId);
