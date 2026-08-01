@@ -80,6 +80,7 @@ export { bardicPerformanceRounds } from "./bardic-performance.js";
 export { druidWildShapeUses } from "./druid-wild-shape.js";
 export { apgClassResourceMaximums, applyArchetypeResourceAdjustments, normalizeClassResourceUses, normalizeClassResourcesByClass } from "./apg-class-resources.js";
 export { eidolonEvolutionPool, eidolonProgression, eidolonBaseForm, validateEidolonEvolutions } from "./eidolon.js";
+export { drakeCompanionProgression } from "./drake.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { witchPatronSpells } from "./witch-patrons.js";
 export { preparedSourceSpellCapacity, normalizePreparedSourceSpells, preparedSourceAvailableSpells } from "./prepared-source-spells.js";
