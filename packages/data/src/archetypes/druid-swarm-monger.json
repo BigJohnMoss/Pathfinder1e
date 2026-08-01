@@ -52,7 +52,7 @@
       ]
     }
   ],
-  "companionGrants": [{"id":"fecund-familiar","kind":"familiar","label":"Fecund familiar","optionId":"fecund-familiar","minimumLevel":1}],
+  "companionGrants": [{"id":"fecund-familiar","kind":"familiar","label":"Fecund familiar","optionId":"fecund-familiar","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

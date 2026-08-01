@@ -69,7 +69,7 @@
       ]
     }
   ],
-  "companionGrants": [{"id":"duettist-familiar","kind":"familiar","label":"Duettist familiar","optionId":"duettist-familiar","minimumLevel":1}],
+  "companionGrants": [{"id":"duettist-familiar","kind":"familiar","label":"Duettist familiar","optionId":"duettist-familiar","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

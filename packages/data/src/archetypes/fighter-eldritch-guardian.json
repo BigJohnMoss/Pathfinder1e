@@ -47,6 +47,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"eldritch-guardian-familiar","kind":"familiar","label":"Eldritch guardian familiar","optionId":"eldritch-guardian-familiar","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

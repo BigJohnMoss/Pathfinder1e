@@ -43,7 +43,7 @@
       ]
     }
   ],
-  "companionGrants": [{"id":"blood-familiar","kind":"familiar","label":"Blood familiar","optionId":"blood-familiar","minimumLevel":3}],
+  "companionGrants": [{"id":"blood-familiar","kind":"familiar","label":"Blood familiar","optionId":"blood-familiar","minimumLevel":3,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

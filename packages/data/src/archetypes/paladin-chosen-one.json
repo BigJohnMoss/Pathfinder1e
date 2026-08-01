@@ -66,6 +66,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"divine-emissary","kind":"familiar","label":"Divine emissary familiar","optionId":"divine-emissary-familiar","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

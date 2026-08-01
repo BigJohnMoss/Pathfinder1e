@@ -51,7 +51,7 @@
       ]
     }
   ],
-  "companionGrants": [{"id":"viper-familiar","kind":"familiar","label":"Viper familiar","optionId":"viper-familiar","minimumLevel":1}],
+  "companionGrants": [{"id":"viper-familiar","kind":"familiar","label":"Viper familiar","optionId":"viper-familiar","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

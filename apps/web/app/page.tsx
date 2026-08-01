@@ -1928,12 +1928,21 @@ export default function Home() {
       const classLevel = classLevelMap[progressionClass.id] ?? 0;
       for (const grant of progressionClass.companionGrants ?? []) {
         if (classLevel < grant.minimumLevel) continue;
+        const effectiveLevel = Math.max(1, classLevel + (grant.effectiveLevelAdjustment ?? 0));
+        const existing = grant.stacksWithExisting
+          ? descriptors.find((descriptor) => descriptor.kind === grant.kind)
+          : undefined;
+        if (existing) {
+          existing.effectiveLevel += effectiveLevel;
+          existing.label = `${existing.label} / ${grant.label}`;
+          continue;
+        }
         descriptors.push({
           id: `archetype-${progressionClass.id}-${grant.id}`,
           kind: grant.kind,
           optionId: grant.optionId,
           label: grant.label,
-          effectiveLevel: Math.max(1, classLevel + (grant.effectiveLevelAdjustment ?? 0)),
+          effectiveLevel,
         });
       }
     }

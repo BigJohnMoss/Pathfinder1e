@@ -148,12 +148,22 @@ test("archetype companion and familiar grants expose their unlock and effective-
     ["cleric-demonic-apostle", [1, 0]],
     ["druid-leshy-warden", [1, 0]],
     ["druid-swarm-monger", [1, 0]],
+    ["barbarian-mad-dog", [1, 0]],
+    ["brawler-wild-child", [1, 0]],
+    ["fighter-eldritch-guardian", [1, 0]],
+    ["inquisitor-sacred-huntsmaster", [1, 0]],
+    ["investigator-bonded-investigator", [2, 0]],
+    ["paladin-chosen-one", [1, 0]],
+    ["rogue-carnivalist", [1, 0]],
+    ["sorcerer-tattooed-sorcerer", [1, 0]],
+    ["spiritualist-soul-warden", [1, 0]],
   ]);
   for (const [id, [minimumLevel, adjustment]] of cases) {
     const source = archetype(id);
     assert.equal(source.companionGrants.length, 1, `${id} companion count`);
     assert.equal(source.companionGrants[0].minimumLevel, minimumLevel, `${id} unlock`);
     assert.equal(source.companionGrants[0].effectiveLevelAdjustment ?? 0, adjustment, `${id} effective level`);
+    if (source.companionGrants[0].kind === "familiar") assert.equal(source.companionGrants[0].stacksWithExisting, true, `${id} familiar stacking`);
     const applied = applyArchetype({ id: source.classId, name: "Base", features: [], classSkills: [] }, source);
     assert.deepEqual(applied.companionGrants, source.companionGrants, `${id} applied companion`);
   }
