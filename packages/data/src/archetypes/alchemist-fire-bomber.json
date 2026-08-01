@@ -2,6 +2,10 @@
   "id": "alchemist-fire-bomber",
   "name": "Fire Bomber",
   "classId": "alchemist",
+  "spellListAdditions": {
+    "elemental-body-ii": 4,
+    "elemental-body-iv": 5
+  },
   "summary": "(Goblin Only) Fire bombers are exceptionally good at using bombs to burn creatures and blow things up, but are not quite as good at creating other types of bombs or extracts.",
   "replacesText": "Weapon/Armor Proficiency; Bomb; Throw Anything; 4th-level Discovery; Poison Resistance +6; Poison Immunity; Persistent Mutagen",
   "mechanicalCoverage": "partial",

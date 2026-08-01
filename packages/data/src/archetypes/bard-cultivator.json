@@ -2,6 +2,14 @@
   "id": "bard-cultivator",
   "name": "Cultivator",
   "classId": "bard",
+  "spellListAdditions": {
+    "entangle": 1,
+    "greensight": 2,
+    "plant-growth": 3,
+    "antiplant-shell": 4,
+    "tree-stride": 5,
+    "later-spell-green-caress": 6
+  },
   "summary": "Cultivators use music to promote plant growth and influence the behavior of plants both naturally and supernaturally.",
   "replacesText": "Class Skills; Spells; Bardic Knowledge; Countersong; Well-Versed; Lore Master",
   "replacements": [

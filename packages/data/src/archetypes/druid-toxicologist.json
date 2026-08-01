@@ -2,6 +2,13 @@
   "id": "druid-toxicologist",
   "name": "Toxicologist",
   "classId": "druid",
+  "spellListAdditions": {
+    "poisoned-egg": 1,
+    "later-spell-transmute-potion-to-poison": 2,
+    "stinking-cloud": 3,
+    "toxic-gift": 4,
+    "cloudkill": 5
+  },
   "summary": "Toxicologists specialize in the stealthy application of insidious poisons to their targets, believing word of their foes’ horrifying deaths will deter others from attempting similar desecrations of the natural world.",
   "replacesText": "Spontaneous Casting; Wild Empathy; Woodland Stride; Trackless Step; Resist Nature's Lure; Wild Shape",
   "replacements": [
