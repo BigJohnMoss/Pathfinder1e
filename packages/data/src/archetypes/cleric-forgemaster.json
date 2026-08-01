@@ -2,6 +2,18 @@
   "id": "cleric-forgemaster",
   "name": "Forgemaster",
   "classId": "cleric",
+  "spellListAdditions": {
+    "crafters-curse": 1,
+    "crafters-fortune": 1,
+    "later-spell-lead-blades": 1,
+    "chill-metal": 2,
+    "heat-metal": 2,
+    "shatter": 2,
+    "keen-edge": 3,
+    "versatile-weapon": 3,
+    "iron-body": 8,
+    "repel-metal-or-stone": 8
+  },
   "summary": "(Dwarf Only) Forgemasters are priestly dwarves who are ritual casters and expert enchanters, able to produce their rune-graven armaments with astonishing speed.",
   "replacesText": "Domains; Channel Energy",
   "replacements": [
