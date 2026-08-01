@@ -61,6 +61,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "scoundrelsFortune", "label": "Scoundrel's Fortune", "unit": "use", "operation": "replace", "minimumLevel": 5, "base": 1, "perInterval": 1, "interval": 3, "maximum": 8 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

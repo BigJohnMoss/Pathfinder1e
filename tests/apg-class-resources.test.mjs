@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { apgClassResourceMaximums, normalizeCharacterDraft, normalizeClassResourcesByClass } from "../packages/engine/src/index.js";
+import { apgClassResourceMaximums, applyArchetypeResourceAdjustments, normalizeCharacterDraft, normalizeClassResourcesByClass } from "../packages/engine/src/index.js";
 
 test("APG class resources follow their level and ability limits", () => {
   assert.deepEqual(apgClassResourceMaximums("alchemist", 1, { intelligence: 4 }), { bombs: 5 });
@@ -32,4 +32,15 @@ test("APG resource persistence drops unknown classes and clamps overspending", (
     alchemist: { bombs: 5 },
     cavalier: { challenges: 0, tactician: 1 }
   });
+});
+
+test("archetypes can replace or add bounded reusable class resources", () => {
+  const bouncer = { resourceAdjustments: [{ resourceId: "martialFlexibility", operation: "replace", minimumLevel: 2, base: 3, perInterval: 1, interval: 2 }] };
+  assert.deepEqual(applyArchetypeResourceAdjustments(apgClassResourceMaximums("brawler", 10), [bouncer], 10), {
+    martialFlexibility: 7,
+    knockout: 2,
+  });
+  const healer = { resourceAdjustments: [{ resourceId: "healing", operation: "replace", minimumLevel: 2, base: 1, perInterval: 1, interval: 4, maximum: 5 }] };
+  assert.deepEqual(applyArchetypeResourceAdjustments({}, [healer], 20), { healing: 5 });
+  assert.deepEqual(normalizeClassResourcesByClass({ bard: { healing: 69 } }, [{ classId: "bard", level: 20 }], {}, { bard: [healer] }), { bard: { healing: 5 } });
 });

@@ -158,6 +158,23 @@ for (const url of await jsonFiles("archetypes/")) {
       if(feature.grantedFeatId !== undefined && (typeof feature.grantedFeatId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(feature.grantedFeatId))) errors.push(`${file}: ${feature.id} has invalid grantedFeatId`);
     }
   }
+  if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);
+  const resourceIds = new Set();
+  for (const adjustment of archetype.resourceAdjustments ?? []) {
+    const prefix = `${file}:${adjustment?.resourceId ?? "unknown resource"}`;
+    if (!adjustment || typeof adjustment.resourceId !== "string" || !/^[a-z][A-Za-z0-9]*$/.test(adjustment.resourceId) || resourceIds.has(adjustment.resourceId)) errors.push(`${prefix} has an invalid or duplicate resourceId`);
+    else resourceIds.add(adjustment.resourceId);
+    if (typeof adjustment?.label !== "string" || !adjustment.label.trim() || typeof adjustment?.unit !== "string" || !adjustment.unit.trim()) errors.push(`${prefix} must have a label and unit`);
+    if (adjustment?.operation !== undefined && !["add", "replace"].includes(adjustment.operation)) errors.push(`${prefix} has an invalid operation`);
+    if (!Number.isInteger(adjustment?.base) || adjustment.base < 0) errors.push(`${prefix} base must be a non-negative integer`);
+    if (adjustment?.minimumLevel !== undefined && (!Number.isInteger(adjustment.minimumLevel) || adjustment.minimumLevel < 1 || adjustment.minimumLevel > 20)) errors.push(`${prefix} has an invalid minimumLevel`);
+    if (adjustment?.perInterval !== undefined && (!Number.isInteger(adjustment.perInterval) || adjustment.perInterval < 0)) errors.push(`${prefix} perInterval must be a non-negative integer`);
+    if (adjustment?.interval !== undefined && (!Number.isInteger(adjustment.interval) || adjustment.interval < 1)) errors.push(`${prefix} interval must be a positive integer`);
+    if (adjustment?.perInterval !== undefined && adjustment?.interval === undefined) errors.push(`${prefix} must specify interval when perInterval is present`);
+    if (adjustment?.abilityModifier !== undefined && !["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].includes(adjustment.abilityModifier)) errors.push(`${prefix} has an invalid abilityModifier`);
+    for (const bound of ["minimum", "maximum"]) if (adjustment?.[bound] !== undefined && (!Number.isInteger(adjustment[bound]) || adjustment[bound] < 0)) errors.push(`${prefix} ${bound} must be a non-negative integer`);
+    if (adjustment?.minimum !== undefined && adjustment?.maximum !== undefined && adjustment.minimum > adjustment.maximum) errors.push(`${prefix} minimum cannot exceed maximum`);
+  }
 }
   for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const raw of g.options??[]) {const o={...g.optionDefaults,...raw}; checkId(o,`${file}:${o.id}`); optionIds.add(o.id); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); if(o.featId !== undefined && (typeof o.featId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.featId))) errors.push(`${file}:${o.id} has invalid featId`); if(o.spellId !== undefined && (typeof o.spellId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.spellId))) errors.push(`${file}:${o.id} has invalid spellId`); if(o.spellLevel !== undefined && (!Number.isInteger(o.spellLevel)||o.spellLevel<0||o.spellLevel>9)) errors.push(`${file}:${o.id} has invalid spellLevel`); checkSelectableOption(o, `${file}:${o.id}`); checkPrerequisites(o.prerequisites, `${file}:${o.id}`);} }
 for (const url of await jsonFiles("bloodline-details/")) { const details=await load(url); const file=url.pathname.split('/').pop(); if(!Array.isArray(details.bloodlines)) errors.push(`${file}: bloodlines must be an array`); else for(const bloodline of details.bloodlines) checkBloodlineDetail(bloodline,file); }

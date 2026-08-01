@@ -60,6 +60,7 @@ import {
   abilityBoostCount,
   abilityNames,
   apgClassResourceMaximums,
+  applyArchetypeResourceAdjustments,
   applyArchetypes,
   arcaneReservoir,
   availableOptions,
@@ -1925,14 +1926,20 @@ export default function Home() {
     bondedManifestation: ["Bonded Manifestation", "round"],
   };
   const apgDailyResources = classLevels.flatMap(
-    ({ classId: resourceClassId, level: resourceClassLevel }) =>
-      Object.entries(
-        apgClassResourceMaximums(
-          resourceClassId,
+    ({ classId: resourceClassId, level: resourceClassLevel }) => {
+      const resourceArchetypes = archetypes.filter((archetype) =>
+        archetype.classId === resourceClassId && (archetypeStacksByClass[resourceClassId] ?? []).includes(archetype.id)
+      );
+      const adjustments = resourceArchetypes.flatMap((archetype) => archetype.resourceAdjustments ?? []);
+      return Object.entries(
+        applyArchetypeResourceAdjustments(
+          apgClassResourceMaximums(resourceClassId, resourceClassLevel, combat.abilityModifiers),
+          resourceArchetypes,
           resourceClassLevel,
           combat.abilityModifiers,
-        ),
+        )
       ).map(([resourceId, maximum]) => {
+        const adjustment = adjustments.find((item) => item.resourceId === resourceId);
         const gnomeBombReward = resourceClassId === "alchemist" && resourceId === "bombs"
           ? alternateFavoredClassRewards.find(reward => reward.id === "gnome-alchemist-bombs")
           : undefined;
@@ -1940,8 +1947,8 @@ export default function Home() {
           ? alternateRewardValue(gnomeBombReward, favoredClassAlternateBonuses[gnomeBombReward.id] ?? 0)
           : 0);
         return {
-          label: `${classes.find((item) => item.id === resourceClassId)?.name ?? resourceClassId} ${resourceLabels[resourceId]?.[0] ?? resourceId}`,
-          unit: resourceLabels[resourceId]?.[1] ?? "use",
+          label: `${classes.find((item) => item.id === resourceClassId)?.name ?? resourceClassId} ${adjustment?.label ?? resourceLabels[resourceId]?.[0] ?? resourceId}`,
+          unit: adjustment?.unit ?? resourceLabels[resourceId]?.[1] ?? "use",
           maximum: resourceMaximum,
           used: classResourceUsesByClass[resourceClassId]?.[resourceId] ?? 0,
           onUsedChange: (used: number) =>
@@ -1953,7 +1960,8 @@ export default function Home() {
               },
             })),
         };
-      }),
+      });
+    },
   );
   useEffect(
     () =>
@@ -1962,12 +1970,16 @@ export default function Home() {
           current,
           classLevels,
           combat.abilityModifiers,
+          Object.fromEntries(classLevels.map(({ classId }) => [classId, archetypes.filter((archetype) => archetype.classId === classId && (archetypeStacksByClass[classId] ?? []).includes(archetype.id))])),
         ),
       ),
     [
       classLevels,
       combat.abilityModifiers.charisma,
       combat.abilityModifiers.intelligence,
+      combat.abilityModifiers.constitution,
+      archetypeStacksByClass,
+      archetypes,
     ],
   );
   useEffect(() => {
@@ -2904,9 +2916,11 @@ export default function Home() {
         draft.classResourceUsesByClass,
         draft.classLevels,
         {
+          constitution: Math.floor((draftAbilities.constitution - 10) / 2),
           intelligence: Math.floor((draftAbilities.intelligence - 10) / 2),
           charisma: Math.floor((draftAbilities.charisma - 10) / 2),
         },
+        Object.fromEntries(draft.classLevels.map(({ classId }) => [classId, draftArchetypes(classId)])),
       ),
     );
     setCompanions(draft.companions ?? {});

@@ -75,6 +75,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "tactician", "label": "Tactician", "unit": "use", "operation": "replace", "minimumLevel": 5, "base": 1, "perInterval": 1, "interval": 5, "maximum": 4 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

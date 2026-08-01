@@ -69,6 +69,27 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
   }
 }
 
+export function applyArchetypeResourceAdjustments(maximums, archetypes, level, abilityModifiers = {}) {
+  const classLevel = boundedLevel(level);
+  return (archetypes ?? []).flatMap((archetype) => archetype?.resourceAdjustments ?? []).reduce((current, adjustment) => {
+    if (!adjustment?.resourceId || classLevel < (adjustment.minimumLevel ?? 1)) return current;
+    const interval = Math.max(1, Math.trunc(adjustment.interval ?? 1));
+    const intervals = Math.floor((classLevel - (adjustment.minimumLevel ?? 1)) / interval);
+    const abilityBonus = adjustment.abilityModifier
+      ? nonNegativeModifier(abilityModifiers[adjustment.abilityModifier])
+      : 0;
+    const calculated = Math.max(
+      adjustment.minimum ?? 0,
+      Math.min(adjustment.maximum ?? Number.MAX_SAFE_INTEGER, adjustment.base + intervals * (adjustment.perInterval ?? 0) + abilityBonus),
+    );
+    const previous = current[adjustment.resourceId] ?? 0;
+    return {
+      ...current,
+      [adjustment.resourceId]: adjustment.operation === "add" ? previous + calculated : calculated,
+    };
+  }, { ...maximums });
+}
+
 export function normalizeClassResourceUses(uses, maximums) {
   if (!uses || typeof uses !== "object" || Array.isArray(uses)) return {};
   return Object.fromEntries(Object.entries(maximums).map(([resourceId, maximum]) => {
@@ -77,10 +98,10 @@ export function normalizeClassResourceUses(uses, maximums) {
   }));
 }
 
-export function normalizeClassResourcesByClass(usesByClass, classLevels, abilityModifiers = {}) {
+export function normalizeClassResourcesByClass(usesByClass, classLevels, abilityModifiers = {}, archetypesByClass = {}) {
   if (!usesByClass || typeof usesByClass !== "object" || Array.isArray(usesByClass)) return {};
   return Object.fromEntries(classLevels.flatMap(({ classId, level }) => {
-    const maximums = apgClassResourceMaximums(classId, level, abilityModifiers);
+    const maximums = applyArchetypeResourceAdjustments(apgClassResourceMaximums(classId, level, abilityModifiers), archetypesByClass[classId], level, abilityModifiers);
     return Object.keys(maximums).length > 0
       ? [[classId, normalizeClassResourceUses(usesByClass[classId], maximums)]]
       : [];

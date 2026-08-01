@@ -177,6 +177,19 @@ export interface CharacterArchetype {
   mountedCompanionOnly?: boolean;
   classSkillAdditions?: string[];
   classSkillRemovals?: string[];
+  resourceAdjustments?: Array<{
+    resourceId: string;
+    label: string;
+    unit: string;
+    operation?: "add" | "replace";
+    minimumLevel?: number;
+    base: number;
+    perInterval?: number;
+    interval?: number;
+    abilityModifier?: "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
+    minimum?: number;
+    maximum?: number;
+  }>;
   source: SourceRef;
 }
 export type Prerequisite =

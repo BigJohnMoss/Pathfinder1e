@@ -47,6 +47,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "tactician", "label": "Strategist Tactician", "unit": "use", "operation": "replace", "base": 1, "perInterval": 1, "interval": 4, "maximum": 5 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

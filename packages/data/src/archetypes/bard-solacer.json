@@ -60,6 +60,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "creativeTreatment", "label": "Creative Treatment", "unit": "use", "operation": "replace", "minimumLevel": 2, "base": 1, "perInterval": 1, "interval": 4, "maximum": 5 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
