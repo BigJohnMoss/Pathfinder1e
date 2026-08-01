@@ -38,6 +38,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"drake-mount","kind":"drake","label":"Drake companion","optionId":"silver-champion-drake","minimumLevel":5}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

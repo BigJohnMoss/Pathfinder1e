@@ -1,6 +1,7 @@
 import { normalizeCompanionState } from "./companions.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
+export { drakeCompanionProgression } from "./drake.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
   adjustment.minimumEffectiveLevel ?? 1,

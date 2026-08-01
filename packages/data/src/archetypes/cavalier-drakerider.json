@@ -48,6 +48,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"drake-mount","kind":"drake","label":"Drake companion","optionId":"drakerider-drake","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

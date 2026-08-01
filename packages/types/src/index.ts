@@ -53,7 +53,7 @@ export interface CharacterDraftV1 {
   spellSlotUsesByClass: Record<string, Record<string, number>>;
   classResourceUsesByClass?: Record<string, Record<string, number>>;
   companions?: Record<string, {
-    kind: "animal" | "mount" | "familiar" | "eidolon";
+    kind: "animal" | "mount" | "familiar" | "eidolon" | "drake";
     optionId: string;
     name: string;
     currentHitPoints: number | null;
@@ -210,7 +210,7 @@ export interface CharacterArchetype {
 }
 export interface ArchetypeCompanionGrant {
   id: string;
-  kind: "animal" | "mount" | "familiar" | "eidolon";
+  kind: "animal" | "mount" | "familiar" | "eidolon" | "drake";
   label: string;
   optionId: string;
   minimumLevel: number;

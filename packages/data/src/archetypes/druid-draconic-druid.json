@@ -48,6 +48,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"drake-companion","kind":"drake","label":"Drake companion","optionId":"draconic-druid-drake","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

@@ -1,4 +1,4 @@
-import { animalCompanionProgression, eidolonProgression, familiarProgression } from "../../../packages/engine/src/index.js";
+import { animalCompanionProgression, drakeCompanionProgression, eidolonProgression, familiarProgression } from "../../../packages/engine/src/index.js";
 import type { CharacterDraftV1 } from "../../../packages/types/src/index.js";
 
 type CompanionState = NonNullable<CharacterDraftV1["companions"]>[string];
@@ -25,6 +25,7 @@ export function CompanionManager({ companions, states, masterHitPoints, onChange
       const animal = descriptor.kind === "animal" || descriptor.kind === "mount" ? animalCompanionProgression(descriptor.effectiveLevel) : null;
       const familiar = descriptor.kind === "familiar" ? familiarProgression(descriptor.effectiveLevel, masterHitPoints) : null;
       const eidolon = descriptor.kind === "eidolon" ? eidolonProgression(descriptor.effectiveLevel) : null;
+      const drake = descriptor.kind === "drake" ? drakeCompanionProgression(descriptor.effectiveLevel) : null;
       const suggestedHp = familiar ? familiar.hitPoints + (descriptor.bonusHitPoints ?? 0) : descriptor.bonusHitPoints ?? null;
       return <article className="companion-card" key={descriptor.id}>
         <header><div><strong>{descriptor.label}</strong><small>{descriptor.kind} · effective level {descriptor.effectiveLevel}</small></div></header>
@@ -35,7 +36,8 @@ export function CompanionManager({ companions, states, masterHitPoints, onChange
         {animal && <div className="companion-stats"><span><b>{animal.hitDice}</b> HD</span><span><b>+{animal.baseAttackBonus}</b> BAB</span><span><b>+{animal.naturalArmorBonus}</b> natural armour</span><span><b>{animal.feats}</b> feats</span><span><b>{animal.skillRanks + (descriptor.bonusSkillRanks ?? 0)}</b> skill ranks</span><span><b>{animal.bonusTricks}</b> bonus tricks</span>{Boolean(descriptor.bonusHitPoints) && <span><b>+{descriptor.bonusHitPoints}</b> favoured HP</span>}</div>}
         {familiar && <div className="companion-stats"><span><b>{familiar.hitPoints + (descriptor.bonusHitPoints ?? 0)}</b> max HP</span><span><b>+{familiar.naturalArmorAdjustment}</b> natural armour</span><span><b>{familiar.intelligence}</b> Intelligence</span>{Boolean(descriptor.bonusSkillRanks) && <span><b>+{descriptor.bonusSkillRanks}</b> bonus skill ranks</span>}</div>}
         {eidolon && <div className="companion-stats"><span><b>{eidolon.hitDice}</b> HD</span><span><b>+{eidolon.baseAttackBonus}</b> BAB</span><span><b>+{eidolon.armorBonus}</b> armour</span><span><b>{eidolon.feats}</b> feats</span><span><b>{eidolon.skillRanks + (descriptor.bonusSkillRanks ?? 0)}</b> skill ranks</span><span><b>{eidolon.maxAttacks}</b> max attacks</span>{Boolean(descriptor.bonusHitPoints) && <span><b>+{descriptor.bonusHitPoints}</b> favoured HP</span>}</div>}
-        <details><summary>Level abilities</summary><ul>{(animal?.specialAbilities ?? familiar?.specialAbilities ?? ["Link", "Share spells"]).map(ability => <li key={ability}>{ability}</li>)}</ul></details>
+        {drake && <div className="companion-stats"><span><b>{drake.hitDice}</b> d12 HD</span><span><b>+{drake.baseAttackBonus}</b> BAB</span><span><b>+{drake.baseSaveBonus}</b> saves</span><span><b>+{drake.naturalArmorBonus}</b> natural armour</span><span><b>{drake.feats}</b> feats</span><span><b>{drake.skillRanks}</b> skill ranks</span><span><b>{drake.drakePowers}</b> drake powers</span></div>}
+        <details><summary>Level abilities</summary><ul>{(animal?.specialAbilities ?? familiar?.specialAbilities ?? drake?.specialAbilities ?? ["Link", "Share spells"]).map(ability => <li key={ability}>{ability}</li>)}</ul></details>
       </article>;
     })}</div>
   </section>;

@@ -22,6 +22,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"young-drake","kind":"drake","label":"Young drake","optionId":"drake-warden-drake","minimumLevel":4,"effectiveLevelAdjustment":-3}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

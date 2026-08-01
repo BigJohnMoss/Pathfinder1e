@@ -60,7 +60,7 @@ export function normalizeCompanionState(value) {
   const result = {};
   for (const [key, companion] of Object.entries(value)) {
     if (!key || !companion || typeof companion !== "object") continue;
-    const kind = ["animal", "mount", "familiar", "eidolon"].includes(companion.kind)
+    const kind = ["animal", "mount", "familiar", "eidolon", "drake"].includes(companion.kind)
       ? companion.kind
       : null;
     if (!kind) continue;

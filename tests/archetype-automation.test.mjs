@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -185,4 +185,27 @@ test("master summoner halves eidolon progression with a minimum effective level 
   assert.equal(adjustedCompanionLevel(20, adjustment), 10);
   const applied = applyArchetype({ id: "summoner", name: "Summoner", features: [], classSkills: [] }, source);
   assert.deepEqual(applied.companionProgressionAdjustments, source.companionProgressionAdjustments);
+});
+
+test("drake archetypes use the dedicated full-BAB d12 progression", () => {
+  assert.deepEqual(
+    [1, 3, 5, 9, 20].map((level) => {
+      const progression = drakeCompanionProgression(level);
+      return [progression.hitDice, progression.baseAttackBonus, progression.drakePowers, progression.sizeIncreases];
+    }),
+    [[1, 1, 0, 0], [3, 3, 1, 0], [4, 4, 1, 1], [7, 7, 2, 2], [15, 15, 5, 4]],
+  );
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const cases = new Map([
+    ["druid-draconic-druid", [1, 0]],
+    ["cavalier-drakerider", [1, 0]],
+    ["paladin-silver-champion", [5, 0]],
+    ["ranger-drake-warden", [4, -3]],
+  ]);
+  for (const [id, [minimumLevel, adjustment]] of cases) {
+    const grant = archetype(id).companionGrants[0];
+    assert.equal(grant.kind, "drake", `${id} kind`);
+    assert.equal(grant.minimumLevel, minimumLevel, `${id} unlock`);
+    assert.equal(grant.effectiveLevelAdjustment ?? 0, adjustment, `${id} level adjustment`);
+  }
 });
