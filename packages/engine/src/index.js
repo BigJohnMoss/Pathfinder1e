@@ -862,6 +862,10 @@ export function applyArchetype(characterClass, archetype) {
       ...(characterClass.spellListAdditions ?? {}),
       ...(archetype.spellListAdditions ?? {}),
     },
+    bonusSpellAdditions: {
+      ...(characterClass.bonusSpellAdditions ?? {}),
+      ...(archetype.bonusSpellAdditions ?? {}),
+    },
     spellcasting: archetype.removesSpellcasting
       ? undefined
       : characterClass.spellcasting,
@@ -984,6 +988,7 @@ export function archetypeAutomationSummary(archetype) {
     automated.push("Base feature replacements and level progression");
   if (archetype.featureOverrides?.length) automated.push("Feature rules overrides");
   if (archetype.spellListAdditions && Object.keys(archetype.spellListAdditions).length) automated.push("Spell-list additions");
+  if (archetype.bonusSpellAdditions && Object.keys(archetype.bonusSpellAdditions).length) automated.push("Bonus spells known");
   if (archetype.removesSpellcasting) automated.push("Spellcasting removal");
   if (archetype.wildShapeLevelAdjustment) automated.push("Wild shape effective level");
   if (archetype.druidDomainIds?.length) automated.push("Available druid domains");

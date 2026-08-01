@@ -2,6 +2,14 @@
   "id": "bard-fey-courtier",
   "name": "Fey Courtier",
   "classId": "bard",
+  "bonusSpellAdditions": {
+    "summon-natures-ally-1": 1,
+    "summon-natures-ally-2": 2,
+    "summon-natures-ally-3": 3,
+    "summon-natures-ally-4": 4,
+    "summon-natures-ally-5": 5,
+    "summon-natures-ally-6": 6
+  },
   "summary": "(Gathlain) Fey who associate with courts often become bards skilled at navigating the inhuman societies of the trackless wilds.",
   "replacesText": "Dirge of Doom; Frightening Tune; Inspire Heroics; Versatile Performance: Inspire Competence",
   "replacements": [

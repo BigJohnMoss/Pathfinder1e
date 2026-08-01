@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { archetypeAutomationSummary } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -82,4 +82,23 @@ test("fixed archetype spell-list additions use catalogue spell ids and rule leve
     ["ranger-summit-sentinel", { stoneskin: 4 }],
   ]);
   for (const [id, expected] of cases) assert.deepEqual(archetype(id).spellListAdditions, expected, `${id} spell-list additions`);
+});
+
+test("fixed archetype bonus spells are granted separately from normal spells known", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const cases = new Map([
+    ["bard-animal-speaker", 6],
+    ["bard-brazen-deceiver", 10],
+    ["bard-fey-courtier", 6],
+    ["bard-flame-dancer", 3],
+    ["bard-flamesinger", 6],
+    ["bloodrager-ancestral-harbinger", 4],
+    ["bloodrager-greenrager", 4],
+  ]);
+  for (const [id, expectedCount] of cases) {
+    const bonusSpells = archetype(id).bonusSpellAdditions;
+    assert.equal(Object.keys(bonusSpells).length, expectedCount, `${id} bonus spell count`);
+    const applied = applyArchetype({ id: archetype(id).classId, name: "Base", features: [], classSkills: [] }, archetype(id));
+    assert.deepEqual(applied.bonusSpellAdditions, bonusSpells, `${id} applied bonus spells`);
+  }
 });

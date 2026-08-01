@@ -2,6 +2,11 @@
   "id": "bard-flame-dancer",
   "name": "Flame Dancer",
   "classId": "bard",
+  "bonusSpellAdditions": {
+    "burning-hands": 1,
+    "flaming-sphere": 2,
+    "fireball": 3
+  },
   "summary": "A flame dancer studies the movements of fire, adding its grace to his repertoire.",
   "replacesText": "Countersong; Inspire Competence; Suggestion; Dirge of Doom",
   "replacements": [

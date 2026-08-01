@@ -2,6 +2,12 @@
   "id": "bloodrager-ancestral-harbinger",
   "name": "Ancestral Harbinger",
   "classId": "bloodrager",
+  "bonusSpellAdditions": {
+    "summon-monster-1": 1,
+    "summon-monster-2": 2,
+    "summon-monster-3": 3,
+    "summon-monster-4": 4
+  },
   "summary": "While all bloodragers tap into their bloodlines to fuel the arcane energies they use in battle, some have the ability to call directly to the spirits of their ancestors to aid them, summoning spirits to fight for them or inspire their allies.",
   "replacesText": "Uncanny Dodge; Improved Uncanny Dodge; 6th, 12th, and 18th-level Bloodline Feats",
   "mechanicalCoverage": "partial",

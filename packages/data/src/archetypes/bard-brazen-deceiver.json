@@ -2,6 +2,18 @@
   "id": "bard-brazen-deceiver",
   "name": "Brazen Deceiver",
   "classId": "bard",
+  "bonusSpellAdditions": {
+    "bleed": 0,
+    "touch-of-fatigue": 0,
+    "darkness": 2,
+    "darkvision": 2,
+    "shadow-conjuration": 4,
+    "shadow-step": 4,
+    "shadow-evocation": 5,
+    "shadow-walk": 5,
+    "shadow-conjuration-greater": 6,
+    "shadow-evocation-greater": 6
+  },
   "summary": "Where other thieves use stealth or intimidation to achieve their goals, the brazen deceiver depends on lies backed by powerful shadow magic.",
   "replacesText": "Countersong; Distraction; Bardic Knowledge; Well-Versed; Versatile Performance; Lore Master",
   "replacements": [
