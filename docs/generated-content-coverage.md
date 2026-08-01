@@ -25,6 +25,31 @@ This report is generated from the application's source data by `npm run coverage
 
 Manual-review rules remain visibly locked in the builder. They are not silently treated as satisfied.
 
+## Archetype automation
+
+| Coverage | Count |
+|---|---:|
+| Fully automated | 76 |
+| Partially automated | 1119 |
+| Rules reference only | 0 |
+
+Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
+
+### Partial-archetype automation candidates
+
+These rule-text signals are multi-label: one archetype can contribute to several subsystem queues.
+
+| Candidate subsystem | Partial archetypes |
+|---|---:|
+| Resources and limited uses | 633 |
+| Companions, mounts, familiars, and eidolons | 241 |
+| Spell lists, slots, and casting | 634 |
+| Selectable progressions and dependent choices | 765 |
+| Combat statistics and proficiencies | 854 |
+| Skills | 654 |
+| Feats | 481 |
+| Narrative or uncategorized effects | 2 |
+
 ## Spell details
 
 | Coverage | Count |

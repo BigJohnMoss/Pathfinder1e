@@ -4,14 +4,19 @@ This document distinguishes records present in the data bundle from systems that
 
 ## Current generated catalogue
 
-- 13 selectable classes
+- 46 selectable classes
 - 7 selectable core ancestries
 - 3,447 selectable feats
 - all 40 APG basic traits
-- 623 selectable archetype records covering all 624 published entries for the 13 supported classes; Totem Warrior is represented by the rage-power system because it replaces no class feature
-- 2,063 spells
+- 1,195 selectable archetype records across all supported base classes
+- 2,758 spells with complete rules details and source links
 
-## Playable classes
+## Core and early-expansion class details
+
+All 46 generated classes are selectable. Every supported base class has a
+level-20 chassis; complete class and archetype counts are maintained in
+[generated content coverage](generated-content-coverage.md). The table below
+retains detailed notes for the original Core and early-expansion class batch.
 
 | Class | Status | Notes |
 |---|---|---|
@@ -54,7 +59,7 @@ The catalogue contains 3,447 selectable records and covers every one of the 3,44
 | Guided level progression | Playable |
 | Skills and rank budget | Playable |
 | Feat eligibility and choices | Playable |
-| Class option groups | Playable for supported classes |
+| Class option groups | Playable for all supported base classes |
 | Prepared and spontaneous spellcasting | Playable for supported spellcasters |
 | Combat statistics | Playable |
 | Save, load, import, export and print | Playable |
@@ -68,7 +73,7 @@ The catalogue contains 3,447 selectable records and covers every one of the 3,44
 | Multiclassing | Complete: arbitrary distinct class entries combine progression, class-specific archetypes and choices, independent spellbooks and resources, feat prerequisites, level-up previews, and save/load restoration |
 | Alternate racial traits | All 50 APG options for the seven Core ancestries are selectable with replacement conflicts, derived-stat recalculation, and persistence |
 | Traits | All 40 APG basic traits are playable with category restrictions, skill choices and class-aware spell choices |
-| Archetypes | All 624 published archetype entries for the 13 supported classes are covered by 623 searchable selectors plus the Totem Warrior rage-power representation. The browser filters by mechanical coverage. Compatible archetypes can be stacked, overlapping replacements are blocked, ancestry-only restrictions are enforced again whenever ancestry changes, and stacks persist in saved characters. Each selector reports full, partial, or descriptive mechanical coverage; see `generated-archetype-coverage.md`. Bespoke effects that require a dedicated subsystem remain descriptive until that subsystem exists. |
+| Archetypes | 1,195 sourced archetypes are searchable. Compatible archetypes can be stacked, overlapping replacements are blocked, ancestry restrictions are enforced, and stacks persist. Each selector reports full, partial, or descriptive coverage; current totals are generated in `generated-content-coverage.md`. Bespoke effects that require a dedicated subsystem remain explicitly identified until that subsystem exists. |
 
 ## Definition of playable
 

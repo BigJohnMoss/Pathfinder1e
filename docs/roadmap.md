@@ -238,7 +238,7 @@ The generated catalogue now contains 46 playable classes, 89 option groups,
 3,447 feats, 40 traits, and 2,758 spells. The production bundle remains within
 the recorded client-size budget.
 
-## Active milestone: Later-Class Content Depth
+## Completed milestone: Later-Class Content Depth
 
 Bring the 28 APG, Ultimate, Advanced Class Guide, and Occult Adventures classes
 to the same content depth as the original Core-class experience.
@@ -272,3 +272,34 @@ to the same content depth as the original Core-class experience.
 
 All work must preserve the completed Core, Expanded Character Options,
 Installable Application, Universal Builder, and Builder Expansion milestones.
+
+## Active milestone: Archetype Mechanical Depth
+
+Convert the remaining partially automated archetypes into complete mechanical
+experiences by expanding reusable builder subsystems instead of adding isolated
+one-off controls.
+
+1. [x] Establish an authoritative automation baseline in generated coverage and
+   update user-facing documentation to the current 46-class, 1,195-archetype,
+   3,447-feat, and 2,758-spell catalogue.
+2. [x] Classify partial archetypes by missing subsystem: resource, companion,
+   spell-list, selectable progression, combat statistic, skill, feat, or manual
+   narrative effect.
+3. [ ] Automate the highest-reuse resource and selectable-progression patterns,
+   beginning with classes that currently have no fully automated archetypes.
+4. [ ] Automate shared spell-list, spell-slot, companion, and familiar
+   replacement patterns and migrate every matching archetype.
+5. [ ] Automate shared combat-statistic, proficiency, feat, and skill replacement
+   patterns and migrate every matching archetype.
+6. [ ] Add archetyped level-20 desktop and narrow-mobile regression journeys for
+   each newly supported subsystem, including save/load and multiclass paths.
+7. [ ] Regenerate coverage, enforce a reduced partial-automation baseline, pass
+   the complete CI suite, and deploy the milestone.
+
+### Completion criteria
+
+- [ ] every partial archetype names its exact remaining manual effects
+- [ ] reusable mechanical patterns are automated consistently across classes
+- [ ] coverage checks prevent regressions from full to partial automation
+- [ ] representative archetyped builds persist on desktop and narrow mobile
+- [ ] validation, UI, browser, production, offline, and performance gates pass

@@ -18,6 +18,32 @@ const featsWithManualPrerequisites = data.feats.filter((feat) =>
 const spellsWithFullRules = data.spells.filter((spell) => spell.description?.trim()).length;
 const spellsWithSources = data.spells.filter((spell) => spell.source?.url).length;
 const spellsWithCoreStats = data.spells.filter((spell) => spell.castingTime && spell.components?.length && spell.range && spell.duration).length;
+const archetypeCoverage = Object.fromEntries(["full", "partial", "descriptive"].map((coverage) => [
+  coverage,
+  data.archetypes.filter((archetype) => (archetype.mechanicalCoverage ?? "partial") === coverage).length,
+]));
+const partialArchetypes = data.archetypes.filter((archetype) => (archetype.mechanicalCoverage ?? "partial") === "partial");
+const archetypeText = (archetype) => JSON.stringify({
+  summary: archetype.summary,
+  replacesText: archetype.replacesText,
+  replacements: archetype.replacements,
+  featureOverrides: archetype.featureOverrides,
+  mechanicalNotes: archetype.mechanicalNotes,
+}).toLowerCase();
+const automationSignals = [
+  ["Resources and limited uses", /\b(pool|point|round|use(?:s)? per day|daily|resource)\b/],
+  ["Companions, mounts, familiars, and eidolons", /\b(companion|mount|familiar|eidolon)\b/],
+  ["Spell lists, slots, and casting", /\b(spell|caster|casting|cantrip|extract)\b/],
+  ["Selectable progressions and dependent choices", /\b(choose|choice|select|option|talent|discovery|exploit|hex|revelation|arcana)\b/],
+  ["Combat statistics and proficiencies", /\b(attack|damage|armor|armour|shield|save|initiative|proficien|base attack|ac\b)\b/],
+  ["Skills", /\bskill|acrobatics|perception|stealth|spellcraft|knowledge\b/],
+  ["Feats", /\b(feat|teamwork)\b/],
+];
+const automationCandidateCounts = automationSignals.map(([label, pattern]) => [
+  label,
+  partialArchetypes.filter((archetype) => pattern.test(archetypeText(archetype))).length,
+]);
+const categorizedPartialIds = new Set(partialArchetypes.filter((archetype) => automationSignals.some(([, pattern]) => pattern.test(archetypeText(archetype)))).map((archetype) => archetype.id));
 const classRows = [...data.classes]
   .sort((left, right) => left.name.localeCompare(right.name))
   .map((characterClass) => {
@@ -54,6 +80,25 @@ This report is generated from the application's source data by \`npm run coverag
 | Feats containing a manual-review rule | ${featsWithManualPrerequisites} |
 
 Manual-review rules remain visibly locked in the builder. They are not silently treated as satisfied.
+
+## Archetype automation
+
+| Coverage | Count |
+|---|---:|
+| Fully automated | ${archetypeCoverage.full} |
+| Partially automated | ${archetypeCoverage.partial} |
+| Rules reference only | ${archetypeCoverage.descriptive} |
+
+Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
+
+### Partial-archetype automation candidates
+
+These rule-text signals are multi-label: one archetype can contribute to several subsystem queues.
+
+| Candidate subsystem | Partial archetypes |
+|---|---:|
+${automationCandidateCounts.map(([label, count]) => `| ${label} | ${count} |`).join("\n")}
+| Narrative or uncategorized effects | ${partialArchetypes.length - categorizedPartialIds.size} |
 
 ## Spell details
 
