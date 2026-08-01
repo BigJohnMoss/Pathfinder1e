@@ -5,8 +5,12 @@ import { apgClassResourceMaximums } from "../packages/engine/src/apg-class-resou
 
 test("Kineticist reaches Omnikinesis with complete wild-talent slots and bounded burn", async () => {
   const entry = JSON.parse(await readFile(new URL("../packages/data/src/classes/kineticist.json", import.meta.url), "utf8"));
+  const infusions = JSON.parse(await readFile(new URL("../packages/data/src/options/kineticist-infusions.json", import.meta.url), "utf8"));
+  const utilities = JSON.parse(await readFile(new URL("../packages/data/src/options/kineticist-utility-talents.json", import.meta.url), "utf8"));
   assert.equal(entry.features.filter(feature => feature.optionGroupId === "kineticist-infusions").length, 8);
   assert.equal(entry.features.filter(feature => feature.optionGroupId === "kineticist-utility-talents").length, 10);
+  assert.equal(infusions.options.length, 81);
+  assert.equal(utilities.options.length, 157);
   assert.ok(entry.features.some(feature => feature.id === "kineticist-omnikinesis-20"));
   assert.deepEqual(apgClassResourceMaximums("kineticist", 1, { constitution: 4 }), { burn: 7 });
   assert.deepEqual(apgClassResourceMaximums("kineticist", 20, { constitution: 8 }), { burn: 11 });
