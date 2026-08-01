@@ -145,6 +145,7 @@ for (const url of await jsonFiles("classes/")) {
     if (f.choiceRequired && !f.optionGroupId) errors.push(`${file}: ${f.id} requires a choice but has no optionGroupId`);
   }
 }
+const featIds = new Set(await Promise.all((await jsonFiles("feats/")).map(async url => (await load(url)).id)));
 for (const url of await jsonFiles("archetypes/")) {
   const archetype=await load(url); const file=url.pathname.split('/').pop(); checkId(archetype,file); checkSource(archetype,file);
   if(!classIds.has(archetype.classId)) errors.push(`${file}: references missing class ${archetype.classId}`);
@@ -156,6 +157,12 @@ for (const url of await jsonFiles("archetypes/")) {
       if(replacementFeatureIds.has(feature.id)) errors.push(`${file}: duplicate replacement feature ${feature.id}`); replacementFeatureIds.add(feature.id);
       if(!Number.isInteger(feature.level)||feature.level<1||feature.level>20||typeof feature.summary!=="string"||!feature.summary.trim()) errors.push(`${file}: invalid replacement feature ${feature.id}`);
       if(feature.grantedFeatId !== undefined && (typeof feature.grantedFeatId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(feature.grantedFeatId))) errors.push(`${file}: ${feature.id} has invalid grantedFeatId`);
+      if (feature.optionGroupId === "archetype-feats") {
+        if ((!Array.isArray(feature.featChoiceIds) || feature.featChoiceIds.length === 0) && (!Array.isArray(feature.featChoiceTypes) || feature.featChoiceTypes.length === 0)) errors.push(`${file}: ${feature.id} must limit its archetype feat choice`);
+        if (feature.featChoiceIds?.some(id => !featIds.has(id))) errors.push(`${file}: ${feature.id} references an unknown feat choice`);
+        if (feature.featChoiceTypes?.some(type => !["combat", "general", "item-creation", "metamagic", "monster", "story", "style", "teamwork"].includes(type))) errors.push(`${file}: ${feature.id} has an invalid feat choice type`);
+        if (feature.ignoreFeatPrerequisites !== undefined && typeof feature.ignoreFeatPrerequisites !== "boolean") errors.push(`${file}: ${feature.id} ignoreFeatPrerequisites must be boolean`);
+      }
     }
   }
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);

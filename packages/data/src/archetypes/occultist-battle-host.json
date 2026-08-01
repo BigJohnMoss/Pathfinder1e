@@ -59,11 +59,44 @@
           "summary": "At 2nd level, a battle host can use object reading on only weapons, armor, and shields. This ability alters object reading."
         },
         {
-          "id": "occultist-battle-host-bonus-feats-1",
-          "name": "Bonus Feats",
-          "level": 1,
+          "id": "occultist-battle-host-bonus-feat-4",
+          "name": "Bonus Combat Feat",
+          "level": 4,
           "type": "archetype",
-          "summary": "At 4th, 8th, 12th, and 16th levels, a battle host gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as combat feats. The battle host must meet the prerequisites of these bonus feats. This ability replaces shift focus, magic circles, binding circles, and fast circles."
+          "summary": "Gain a combat feat for which you meet the prerequisites.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["combat"]
+        },
+        {
+          "id": "occultist-battle-host-bonus-feat-8",
+          "name": "Bonus Combat Feat",
+          "level": 8,
+          "type": "archetype",
+          "summary": "Gain another combat feat for which you meet the prerequisites.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["combat"]
+        },
+        {
+          "id": "occultist-battle-host-bonus-feat-12",
+          "name": "Bonus Combat Feat",
+          "level": 12,
+          "type": "archetype",
+          "summary": "Gain another combat feat for which you meet the prerequisites.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["combat"]
+        },
+        {
+          "id": "occultist-battle-host-bonus-feat-16",
+          "name": "Bonus Combat Feat",
+          "level": 16,
+          "type": "archetype",
+          "summary": "Gain another combat feat for which you meet the prerequisites.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["combat"]
         },
         {
           "id": "occultist-battle-host-spirit-warrior-sp-5",

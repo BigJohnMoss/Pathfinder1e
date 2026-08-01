@@ -20,7 +20,10 @@
           "name": "Humble Beginnings (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A hinyasi gains her choice of Catch Off-Guard or Throw Anything as a bonus feat. She is not proficient with shields. This alters the brawler’s armor proficiencies."
+          "summary": "A hinyasi gains her choice of Catch Off-Guard or Throw Anything as a bonus feat. She is not proficient with shields. This alters the brawler’s armor proficiencies.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceIds": ["catch-off-guard", "throw-anything"]
         },
         {
           "id": "brawler-hinyasi-improvisation-training-ex-2",
