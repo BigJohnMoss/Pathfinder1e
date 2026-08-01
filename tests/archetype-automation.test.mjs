@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { applyArchetype, archetypeAutomationSummary } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -101,4 +101,28 @@ test("fixed archetype bonus spells are granted separately from normal spells kno
     const applied = applyArchetype({ id: archetype(id).classId, name: "Base", features: [], classSkills: [] }, archetype(id));
     assert.deepEqual(applied.bonusSpellAdditions, bonusSpells, `${id} applied bonus spells`);
   }
+});
+
+test("archetype spellcasting adjustments change slots, preparations, and spells known", () => {
+  const record = (directory, id) => JSON.parse(readFileSync(new URL(`../packages/data/src/${directory}/${id}.json`, import.meta.url), "utf8"));
+  const adjusted = (classId, archetypeId) => applyArchetype(record("classes", classId), record("archetypes", archetypeId));
+
+  const bard = record("classes", "bard");
+  const arrowsong = adjusted("bard", "bard-arrowsong-minstrel");
+  assert.deepEqual(arrowsong.spellcasting.slotsByLevel[9], bard.spellcasting.slotsByLevel[9].map((count) => Math.max(0, count - 1)));
+  assert.deepEqual(arrowsong.spellcasting.knownByLevel, bard.spellcasting.knownByLevel);
+
+  const cleric = record("classes", "cleric");
+  const crusader = adjusted("cleric", "cleric-crusader");
+  assert.deepEqual(crusader.spellcasting.preparedByLevel[9], cleric.spellcasting.preparedByLevel[9].map((count) => Math.max(0, count - 1)));
+  assert.ok(spellcastingProgression(crusader, 10, { abilityScore: 18 }).slots.every((slot) => slot.count >= slot.bonus));
+
+  const sorcerer = record("classes", "sorcerer");
+  const crossblooded = adjusted("sorcerer", "sorcerer-crossblooded");
+  assert.deepEqual(crossblooded.spellcasting.knownByLevel[9], sorcerer.spellcasting.knownByLevel[9].map((count) => Math.max(0, count - 1)));
+
+  const arcanist = record("classes", "arcanist");
+  const eldritchFont = adjusted("arcanist", "arcanist-eldritch-font");
+  assert.deepEqual(eldritchFont.spellcasting.slotsByLevel[9], arcanist.spellcasting.slotsByLevel[9].map((count) => count + 1));
+  assert.deepEqual(eldritchFont.spellcasting.preparedByLevel[9], arcanist.spellcasting.preparedByLevel[9].map((count) => Math.max(0, count - 1)));
 });

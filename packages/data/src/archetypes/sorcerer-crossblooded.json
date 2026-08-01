@@ -2,6 +2,7 @@
   "id": "sorcerer-crossblooded",
   "name": "Crossblooded",
   "classId": "sorcerer",
+  "spellsKnownAdjustmentPerLevel": -1,
   "summary": "A crossblooded bloodline combines the powers of two distinct heritages.",
   "replacesText": "Spells Known",
   "replacements": [

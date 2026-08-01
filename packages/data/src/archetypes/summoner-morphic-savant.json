@@ -2,6 +2,7 @@
   "id": "summoner-morphic-savant",
   "name": "Morphic Savant",
   "classId": "summoner",
+  "spellsKnownAdjustmentPerLevel": -1,
   "summary": "A morphic savant is an agent of change who draws power from the Abyss, Elysium, or the Maelstrom to fulfill whatever goals strike his fancy.",
   "replacesText": "Eidolon; Summon Monster; Spells",
   "mechanicalCoverage": "partial",

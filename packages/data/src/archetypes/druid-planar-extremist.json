@@ -2,6 +2,7 @@
   "id": "druid-planar-extremist",
   "name": "Planar Extremist",
   "classId": "druid",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "(Ex-druid archetype) Planar extremists are those druids that have lost their neutral stance and find themselves gravitating toward one of the four most extreme alignments",
   "replacesText": "Alignment; Spells; Nature's Bond; Spontaneous Casting; Resist Nature's Lure; Wild Shape",
   "replacements": [

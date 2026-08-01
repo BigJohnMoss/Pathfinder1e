@@ -2,6 +2,7 @@
   "id": "bard-arrowsong-minstrel",
   "name": "Arrowsong Minstrel",
   "classId": "bard",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Arrowsong minstrels combine the elven traditions of archery, song, and spellcasting into a seamless harmony of dazzling magical effects.",
   "replacesText": "Weapon Proficiency; Spellcasting; Bardic Knowledge; Dirge of Doom; Distraction; Fascinate; Inspire Competence; Lore Master; Soothing Performance",
   "replacements": [

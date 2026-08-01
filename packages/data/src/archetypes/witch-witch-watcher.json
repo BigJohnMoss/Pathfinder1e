@@ -2,6 +2,7 @@
   "id": "witch-witch-watcher",
   "name": "Witch-Watcher",
   "classId": "witch",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "For reasons known only to them, witch-watchers offer protection to nobles across Golarion.",
   "replacesText": "Spells per Day",
   "mechanicalCoverage": "partial",

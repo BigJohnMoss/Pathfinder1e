@@ -2,6 +2,7 @@
   "id": "magus-soul-forger",
   "name": "Soul Forger",
   "classId": "magus",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "The soul forger has learned the skill of infusing the raw magical essence of his soul into armaments of surpassing power, combining the mystic arts with the arts of war in a unity of steely perfection.",
   "replacesText": "Spells; Knowledge Pool; Spell Recall; Improved Spell Recall; Counterstrike; Greater Spell Access",
   "mechanicalCoverage": "partial",

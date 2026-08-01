@@ -2,6 +2,7 @@
   "id": "cleric-channeler-of-the-unknown",
   "name": "Channeler of the Unknown",
   "classId": "cleric",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "(Ex-cleric archetype) Channelers of the unknown are those faithless clerics who channel the power of an unknown entity or force of the universe",
   "replacesText": "Weapon and Armor Proficiency; Spells; Aura; Channel Energy; Domains; Spontaneous Casting",
   "replacements": [

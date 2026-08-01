@@ -2,6 +2,7 @@
   "id": "magus-kensai",
   "name": "Kensai",
   "classId": "magus",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "A kensai spends his life focusing his training and meditation into a rapturous perfection of the use of a single weapon, which is usually but not always a sword, channeling his arcane might through it in a dizzying and deadly dance beyond the abilities of even the greatest of mundane warriors.",
   "replacesText": "Weapon/Armor Proficiency; Spells; Spell Recall; Knowledge Pool; Medium Armor; 9th-level Arcana; Improved Spell Recall; Heavy Armor; True Magus",
   "mechanicalCoverage": "partial",

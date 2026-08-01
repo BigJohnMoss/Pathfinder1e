@@ -2,6 +2,8 @@
   "id": "arcanist-eldritch-font",
   "name": "Eldritch Font",
   "classId": "arcanist",
+  "spellSlotAdjustmentPerLevel": 1,
+  "preparedSpellAdjustmentPerLevel": -1,
   "summary": "For some arcanists, the power bubbling up from within is nearly too much to contain.",
   "replacesText": "3rd, 7th, and 13th-level Arcanist Exploits; Magical Supremacy",
   "replacements": [

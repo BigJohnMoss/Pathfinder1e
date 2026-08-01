@@ -2,6 +2,7 @@
   "id": "oracle-purifier",
   "name": "Purifier",
   "classId": "oracle",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "(Aasimar Only) The purifier seeks out signs of possession or mind control that manifest from unwilling (and often unwitting) servants for fiendish corruptors and their mortal minions.",
   "replacesText": "Bonus Spells; Spellcasting; 3rd, 7th, 11th-level Revelation",
   "replacements": [

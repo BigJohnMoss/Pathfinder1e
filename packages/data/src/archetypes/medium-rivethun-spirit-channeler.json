@@ -2,6 +2,7 @@
   "id": "medium-rivethun-spirit-channeler",
   "name": "Rivethun Spirit Channeler",
   "classId": "medium",
+  "spellsKnownAdjustmentPerLevel": -1,
   "summary": "Rivethun spirit channelers are mediums who practice the ancient dwarven philosophy of the rivethun, which teaches that power lies in the connection between physical bodies and immaterial souls.",
   "replacesText": "Spellcasting; Spirit; Spirit Bonus; Spirit Surge; Taboo; Connection Channel",
   "mechanicalCoverage": "partial",
