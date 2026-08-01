@@ -46,6 +46,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"demonic-familiar","kind":"familiar","label":"Demonic familiar","optionId":"demonic-familiar","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

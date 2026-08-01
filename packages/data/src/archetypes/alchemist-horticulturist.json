@@ -58,6 +58,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"plant-familiar","kind":"familiar","label":"Plant familiar","optionId":"plant-familiar","minimumLevel":4}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

@@ -68,6 +68,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"leaf-leshy-familiar","kind":"familiar","label":"Leaf leshy familiar","optionId":"leaf-leshy-familiar","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

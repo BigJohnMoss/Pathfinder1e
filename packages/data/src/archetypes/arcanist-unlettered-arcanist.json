@@ -28,6 +28,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"spellbook-familiar","kind":"familiar","label":"Unlettered arcanist familiar","optionId":"unlettered-arcanist-familiar","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

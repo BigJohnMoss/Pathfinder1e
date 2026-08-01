@@ -42,6 +42,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"homunculus-familiar","kind":"familiar","label":"Homunculus familiar","optionId":"homunculus-familiar","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

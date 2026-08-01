@@ -70,6 +70,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"clockwork-spy-familiar","kind":"familiar","label":"Clockwork spy familiar","optionId":"clockwork-spy-familiar","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
