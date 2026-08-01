@@ -26,24 +26,24 @@ A from-scratch, data-first Pathfinder First Edition character-builder project.
 
 ## Current status
 
-The **Core Character Builder** and **Installable Application** milestones are
-complete. The builder can be installed on supported desktop browsers and
-Android, launched in a standalone window, and reopened offline after its first
-successful load. The current generated catalogue includes:
+The Core, installable application, universal builder, later-class, and
+later-class content-depth milestones are complete. The builder can be installed
+on supported desktop browsers and Android, launched in a standalone window, and
+reopened offline after its first successful load. The generated catalogue includes:
 
-- 12 selectable classes: Arcanist and all eleven Core classes—Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, and Wizard
+- 46 selectable base, hybrid, occult, and prestige classes
 - 7 selectable core ancestries
-- 424 selectable feats
+- 3,447 selectable feats
 - all 40 APG basic traits across combat, faith, magic, and social categories
-- reusable archetype feature replacement with the complete APG Fighter Archer
+- 1,195 sourced archetypes with replacement, restriction, stacking, and persistence support
 - active-play tracking for current and temporary hit points plus round-based combat modifiers
-- 2,048 spells
+- 2,758 spells with full descriptions, casting statistics, and rules-source links
 - structured prerequisite checks, class progression, prepared and spontaneous spellcasting, skills, basic combat statistics, and local character persistence
 
-All eleven Core classes are playable through level 20. Development now proceeds
-through the **Expanded Character Options** milestone. All APG basic traits are playable;
-non-basic trait categories and bespoke automation for rules that lack a dedicated
-builder subsystem remain future work.
+All supported base classes are playable through level 20. Development now
+proceeds through the **Archetype Mechanical Depth** milestone. APG basic traits
+are playable; non-basic trait categories and bespoke archetype rules that lack a
+shared builder subsystem remain future work.
 
 See [the roadmap](docs/roadmap.md) for the development order and [content coverage](docs/content-coverage.md) for the distinction between data present in the repository and systems currently playable in the web application.
 
