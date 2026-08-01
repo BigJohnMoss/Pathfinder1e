@@ -72,6 +72,8 @@
       ]
     }
   ],
+  "skillRanksPerLevel": 4,
+  "classSkillAdditions": ["Acrobatics","Stealth"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

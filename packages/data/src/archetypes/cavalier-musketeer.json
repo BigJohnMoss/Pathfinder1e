@@ -39,6 +39,7 @@
       ]
     }
   ],
+  "proficiencyAdjustments": [{"category":"weapon","operation":"add","proficiencies":["Firearms"]},{"category":"armor","operation":"remove","proficiencies":["Heavy armor"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

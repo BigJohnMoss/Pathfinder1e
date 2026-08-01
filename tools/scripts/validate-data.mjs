@@ -216,6 +216,17 @@ for (const url of await jsonFiles("archetypes/")) {
   }
   const overlappingClassSkills = (archetype.classSkillAdditions ?? []).filter((skill) => (archetype.classSkillRemovals ?? []).includes(skill));
   if (overlappingClassSkills.length) errors.push(`${file}: class skills cannot be both added and removed (${overlappingClassSkills.join(", ")})`);
+  if (archetype.babProgression !== undefined && !["full", "three-quarters", "half"].includes(archetype.babProgression)) errors.push(`${file}: babProgression is invalid`);
+  if (archetype.skillRanksPerLevel !== undefined && (!Number.isInteger(archetype.skillRanksPerLevel) || archetype.skillRanksPerLevel < 1 || archetype.skillRanksPerLevel > 12)) errors.push(`${file}: skillRanksPerLevel is invalid`);
+  if (archetype.hitDie !== undefined && ![6, 8, 10, 12].includes(archetype.hitDie)) errors.push(`${file}: hitDie is invalid`);
+  for (const [save, progression] of Object.entries(archetype.saveProgressionOverrides ?? {})) {
+    if (!["fortitude", "reflex", "will"].includes(save) || !["good", "poor"].includes(progression)) errors.push(`${file}: saveProgressionOverrides contains an invalid save progression`);
+  }
+  if (archetype.proficiencyAdjustments !== undefined && (!Array.isArray(archetype.proficiencyAdjustments) || archetype.proficiencyAdjustments.length === 0)) errors.push(`${file}: proficiencyAdjustments must be a non-empty array`);
+  for (const adjustment of archetype.proficiencyAdjustments ?? []) {
+    if (!["weapon", "armor", "shield"].includes(adjustment?.category) || !["add", "remove", "replace"].includes(adjustment?.operation)) errors.push(`${file}: proficiency adjustment has an invalid category or operation`);
+    if (!Array.isArray(adjustment?.proficiencies) || adjustment.proficiencies.length === 0 || adjustment.proficiencies.some(value => typeof value !== "string" || !value.trim()) || new Set(adjustment.proficiencies).size !== adjustment.proficiencies.length) errors.push(`${file}: proficiency adjustment must contain unique non-empty proficiency names`);
+  }
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);
   const resourceIds = new Set();
   for (const adjustment of archetype.resourceAdjustments ?? []) {

@@ -88,6 +88,9 @@
       ]
     }
   ],
+  "skillRanksPerLevel": 4,
+  "classSkillAdditions": ["Knowledge (arcana)","Spellcraft"],
+  "classSkillRemovals": ["Diplomacy","Disguise"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

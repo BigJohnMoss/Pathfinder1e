@@ -44,6 +44,9 @@
       ]
     }
   ],
+  "babProgression": "half",
+  "skillRanksPerLevel": 6,
+  "classSkillAdditions": ["Bluff","Diplomacy","Disguise","Sense Motive"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

@@ -67,6 +67,7 @@
   ],
   "classSkillAdditions": ["Knowledge (religion)"],
   "classSkillRemovals": ["Knowledge (geography)"],
+  "proficiencyAdjustments": [{"category":"weapon","operation":"add","proficiencies":["Deity's favored weapon"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
