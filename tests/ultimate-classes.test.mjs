@@ -12,6 +12,10 @@ test("Magus has its complete level-20 spell-combat chassis", () => {
   assert.ok(progression.features.some(feature => feature.id === "magus-true-magus-20"));
   assert.equal(spellcastingProgression(magus, 20, { abilityScore: 18 }).maximumSpellLevel, 6);
   assert.ok(spellsAvailableToClass(data.spells, "magus", 6).length >= 60);
+  const arcana = data.optionGroups.find(group => group.id === "magus-arcana");
+  assert.equal(arcana.options.length, 64);
+  assert.equal(arcana.options.find(option => option.id === "magus-arcana-accurate-strike").minimumLevel, 9);
+  assert.ok(arcana.options.every(option => option.source?.url && option.benefit.length > 40));
   assert.deepEqual(apgClassResourceMaximums("magus", 10, { intelligence: 4 }), { arcanePool: 9 });
 });
 
@@ -32,4 +36,7 @@ test("Samurai reaches last stand with challenge and resolve resources", () => {
   assert.equal(progression.baseAttackBonus, 20);
   assert.ok(progression.features.some(feature => feature.id === "samurai-last-stand-20"));
   assert.deepEqual(apgClassResourceMaximums("samurai", 20), { challenges: 7, resolve: 10 });
+  const orders = data.optionGroups.find(group => group.id === "samurai-orders");
+  assert.equal(orders.options.length, 8);
+  assert.ok(orders.options.some(option => option.id === "order-of-the-ronin"));
 });
