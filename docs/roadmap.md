@@ -254,7 +254,7 @@ to the same content depth as the original Core-class experience.
 5. [x] Complete defining option catalogues that are currently representative,
    including arcana, deeds, orders, wild talents, tricks, focus powers,
    amplifications, disciplines, and emotional focuses.
-6. [ ] Replace derived proxy spell lists with exact sourced class spell levels
+6. [x] Replace derived proxy spell lists with exact sourced class spell levels
    for every later spellcasting class.
 7. [ ] Add level-20 desktop and narrow-mobile journeys covering archetype
    selection, dependent choices, persistence, spell use, and class resources.
@@ -266,7 +266,7 @@ to the same content depth as the original Core-class experience.
 - [x] every later base and hybrid class exposes its published archetypes
 - [x] every imported archetype has explicit mechanical coverage and no silent effects
 - [ ] defining class-option catalogues are complete and prerequisite-aware
-- [ ] later-class spell lists use exact sourced levels rather than proxy lists
+- [x] later-class spell lists use exact sourced levels rather than proxy lists
 - [ ] representative archetyped builds persist and reach level 20 on desktop and mobile
 - [ ] validation, UI, browser, production, offline, and performance gates pass
 

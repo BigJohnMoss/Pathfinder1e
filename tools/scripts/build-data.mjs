@@ -5,6 +5,7 @@ async function loadDir(name){const dir=new URL(`${name}/`,base);const files=(awa
 const normalizeName=(name)=>name.normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 const spellCatalogues=await loadDir('spell-catalogues');
 const spellClassLevelFiles=await loadDir('spell-class-levels');
+const exactLaterSpellLevels=spellClassLevelFiles.find(file=>file.source?.title==="Archives of Nethys class spell lists")?.levelsBySpellId??{};
 const spellClassLevels={};
 for(const file of spellClassLevelFiles) for(const [spellId,levels] of Object.entries(file.levelsBySpellId??{})){
   spellClassLevels[spellId]={...(spellClassLevels[spellId]??{}),...levels};
@@ -28,6 +29,7 @@ const rawOptionGroups=sourceOptionGroups.map(group=>{
 const spellDetailFiles=await loadDir('spell-details').catch(()=>[]);
 const spellDetailsById=new Map(spellDetailFiles.flatMap(file=>file.spells??[]).map(detail=>[detail.id,detail]));
 const sourceSpells=[...(await loadDir('spells')),...spellCatalogues.flatMap(catalogue=>catalogue.spells)];
+const exactLaterSpellClasses=new Set(["alchemist","arcanist","bloodrager","hunter","inquisitor","investigator","magus","medium","mesmerist","occultist","oracle","psychic","shaman","skald","spiritualist","summoner","warpriest","witch"]);
 const spells=sourceSpells.map(sourceSpell=>{
   const detail=spellDetailsById.get(sourceSpell.id)??{};
   const {classLevelOverlay,...spellDetail}=detail;
@@ -35,19 +37,11 @@ const spells=sourceSpells.map(sourceSpell=>{
   const withWizard=spell.levelByClass?.arcanist!==undefined&&spell.levelByClass.wizard===undefined?{...spell.levelByClass,wizard:spell.levelByClass.arcanist}:spell.levelByClass;
   const sharedArcaneLevel=withWizard?.wizard??withWizard?.arcanist;
   const sharedLevelByClass=sharedArcaneLevel!==undefined&&withWizard?.sorcerer===undefined?{...withWizard,sorcerer:sharedArcaneLevel}:withWizard;
-  const withClassOverlays={...sharedLevelByClass,...(classLevelOverlay??{}),...(spellClassLevels[spell.id]??{})};
-  const withOracle=withClassOverlays.cleric!==undefined&&withClassOverlays.oracle===undefined?{...withClassOverlays,oracle:withClassOverlays.cleric}:withClassOverlays;
-  const hunterLevel=Math.min(withOracle.druid??Infinity,withOracle.ranger??Infinity);
-  const withHunter=Number.isFinite(hunterLevel)&&hunterLevel<=6?{...withOracle,hunter:hunterLevel}:withOracle;
-  const withInvestigator=withHunter.alchemist!==undefined?{...withHunter,investigator:withHunter.alchemist}:withHunter;
-  const withSkald=withInvestigator.bard!==undefined?{...withInvestigator,skald:withInvestigator.bard}:withInvestigator;
-  const withWarpriest=withSkald.cleric!==undefined&&withSkald.cleric<=6?{...withSkald,warpriest:withSkald.cleric}:withSkald;
-  const withShaman=withWarpriest.witch!==undefined?{...withWarpriest,shaman:withWarpriest.witch}:withWarpriest;
-  const withMedium=withShaman.bard!==undefined&&withShaman.bard<=4?{...withShaman,medium:withShaman.bard}:withShaman;
-  const withMesmerist=withMedium.bard!==undefined&&withMedium.bard<=6?{...withMedium,mesmerist:withMedium.bard}:withMedium;
-  const withOccultist=withMesmerist.investigator!==undefined?{...withMesmerist,occultist:withMesmerist.investigator}:withMesmerist;
-  const withPsychic=withOccultist.sorcerer!==undefined?{...withOccultist,psychic:withOccultist.sorcerer}:withOccultist;
-  const levelByClass=withPsychic.bard!==undefined&&withPsychic.bard<=6?{...withPsychic,spiritualist:withPsychic.bard}:withPsychic;
+  const withoutLegacyLaterLevels=Object.fromEntries(Object.entries(sharedLevelByClass??{}).filter(([classId])=>!exactLaterSpellClasses.has(classId)));
+  const withoutLegacyDetailLevels=Object.fromEntries(Object.entries(classLevelOverlay??{}).filter(([classId])=>!exactLaterSpellClasses.has(classId)));
+  const withoutSupersededFileLevels=Object.fromEntries(Object.entries(spellClassLevels[spell.id]??{}).filter(([classId])=>!exactLaterSpellClasses.has(classId)));
+  const withClassOverlays={...withoutLegacyLaterLevels,...withoutLegacyDetailLevels,...withoutSupersededFileLevels,...(exactLaterSpellLevels[spell.id]??{})};
+  const levelByClass=withClassOverlays;
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);

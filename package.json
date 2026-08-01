@@ -23,6 +23,7 @@
     "import:kineticist-options": "node tools/scripts/import-kineticist-options.mjs",
     "import:psychic-disciplines": "node tools/scripts/import-psychic-disciplines.mjs",
     "import:occultist-focus-powers": "node tools/scripts/import-occultist-focus-powers.mjs",
+    "import:later-spell-lists": "node tools/scripts/import-later-spell-lists.mjs",
     "coverage:archetypes": "node tools/scripts/annotate-archetype-coverage.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",

@@ -7,8 +7,13 @@ const root = new URL("../../", import.meta.url);
 const outputDirectory = new URL("packages/data/src/spell-details/", root);
 const ROMAN_TO_NUMBER = { i: "1", ii: "2", iii: "3", iv: "4", v: "5", vi: "6", vii: "7", viii: "8", ix: "9" };
 const NUMBER_TO_ROMAN = Object.fromEntries(Object.entries(ROMAN_TO_NUMBER).map(([roman, number]) => [number, roman]));
-const MODIFIERS = new Set(["communal", "giant", "greater", "lesser", "major", "mass", "supreme"]);
+const MODIFIERS = new Set(["communal", "giant", "greater", "improved", "lesser", "major", "mass", "supreme"]);
 const MANUAL_DETAILS = {
+  "later-spell-unshakable-zeal": {
+    description: "You fill the target with boundless enthusiasm and faith in its ultimate triumph. Whenever the target fails an attack roll, a save, a skill check, a concentration check, or an ability check, the target receives a +4 morale bonus on its next attempt at the failed check within 1 round (including an attack roll against the same foe or a saving throw against the same ability from the same foe). In addition, when the target would be affected by a fear or emotion effect, it can instead dismiss unshakable zeal without spending an action to negate the effect on itself.",
+    castingTime: "1 standard action", components: ["S", "F (a silver circlet)"], range: "touch", target: "creature touched", duration: "1 hour/level", savingThrow: "Will negates (harmless)", spellResistance: "yes (harmless)",
+    source: { title: "Occult Adventures", page: 190, url: "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unshakable%20Zeal" }
+  },
   "baphomets-blessing": {
     description: "You change the target's head into that of a bull. The creature's Intelligence becomes 2, and it gains a gore melee attack that it can use as a primary or secondary attack. The gore attack uses the creature's base attack bonus, and the creature gains a +2 bonus on attack and damage rolls with the gore attack. The gore attack deals 1d6 + Strength modifier damage if the target is Small, 1d8 + Strength modifier if Medium, and 2d6 + Strength modifier if Large or larger.\n\nThe affected creature retains its type, class, levels, Hit Dice, base attack bonus, base saves, hit points, and class features, and can still cast spells using its modified Intelligence. Items in the head slot meld into its body; passive bonuses continue, but activated abilities do not function.\n\nA target that fails its save is immune to other polymorph spells for the duration. Undead, incorporeal, and gaseous creatures are immune.",
     castingTime: "1 standard action", components: ["V", "M/DF (powdered bull's horn)"], range: "touch", target: "one living creature", duration: "1 round/level", savingThrow: "Fortitude negates", spellResistance: "yes",
