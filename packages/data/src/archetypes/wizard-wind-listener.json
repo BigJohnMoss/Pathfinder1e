@@ -59,6 +59,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "wispyForm", "label": "Wispy Form", "unit": "round", "minimumLevel": 10, "base": 10, "perInterval": 1, "interval": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

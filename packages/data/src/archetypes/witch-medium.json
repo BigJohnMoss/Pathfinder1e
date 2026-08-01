@@ -69,6 +69,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "ectoplasmicAptitude", "label": "Ectoplasmic Aptitude", "unit": "use", "minimumLevel": 2, "base": 0, "abilityModifier": "intelligence" }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

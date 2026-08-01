@@ -43,6 +43,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "healersWay", "label": "Healer's Way", "unit": "use", "minimumLevel": 1, "base": 1, "abilityModifier": "charisma" }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

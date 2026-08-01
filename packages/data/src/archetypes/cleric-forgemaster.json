@@ -67,6 +67,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "runeforger", "label": "Runeforger", "unit": "use", "minimumLevel": 1, "base": 3, "abilityModifier": "intelligence", "minimum": 3 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

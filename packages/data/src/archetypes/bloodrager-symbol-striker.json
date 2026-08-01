@@ -62,6 +62,10 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "weaponRune", "label": "Weapon Rune", "unit": "use", "minimumLevel": 6, "base": 1, "perInterval": 1, "interval": 6, "maximum": 3 },
+    { "resourceId": "runeTrap", "label": "Rune Trap", "unit": "use", "minimumLevel": 9, "base": 3, "abilityModifier": "charisma", "minimum": 3 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
