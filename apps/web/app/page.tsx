@@ -1130,10 +1130,15 @@ export default function Home() {
               : characterClass.id,
           ],
           options: feats
-            .filter((feat) =>
-              (!feature.featChoiceIds?.length || feature.featChoiceIds.includes(feat.id)) &&
-              (!feature.featChoiceTypes?.length || feature.featChoiceTypes.includes(feat.type)),
-            )
+            .filter((feat) => {
+              const allowedIds = feature.featChoiceIds ?? [];
+              const allowedTypes = feature.featChoiceTypes ?? [];
+              return (
+                (allowedIds.length === 0 && allowedTypes.length === 0) ||
+                allowedIds.includes(feat.id) ||
+                allowedTypes.includes(feat.type)
+              );
+            })
             .map((feat) => ({
               id: feat.id,
               name: feat.name,

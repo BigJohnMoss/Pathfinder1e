@@ -29,6 +29,7 @@
           "name": "Phrenological Knowledge (Ex)",
           "level": 1,
           "type": "archetype",
+          "grantedFeatId": "psychic-sensitivity",
           "summary": "A phrenologist is an expert at reading creatures’ skulls. He gains Psychic Sensitivity as a bonus feat, and he can use the phrenology skill unlock even if he is untrained in Knowledge (arcana). He adds half his class level (minimum 1) on all Knowledge (arcana) checks for the phrenology occult skill unlock . This ability replaces bardic knowledge."
         },
         {
@@ -43,6 +44,11 @@
           "name": "Phrenological Savant",
           "level": 10,
           "type": "archetype",
+          "optionGroupId": "archetype-feats",
+          "featChoiceIds": [
+            "psychic-maestro",
+            "psychic-virtuoso"
+          ],
           "summary": "At 10th level, a phrenologist gains either Psychic Maestro or Psychic Virtuoso as a bonus feat. If he chooses Psychic Maestro , he must select phrenology as one of his two skill unlocks to use an additional time. This ability replaces jack-of-all-trades."
         },
         {
