@@ -127,7 +127,7 @@ test("archetype spellcasting adjustments change slots, preparations, and spells 
   assert.deepEqual(eldritchFont.spellcasting.preparedByLevel[9], arcanist.spellcasting.preparedByLevel[9].map((count) => Math.max(0, count - 1)));
 });
 
-test("archetype companion grants expose their unlock and effective-level rules", () => {
+test("archetype companion and familiar grants expose their unlock and effective-level rules", () => {
   const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const cases = new Map([
     ["alchemist-construct-rider", [1, 0]],
@@ -138,6 +138,16 @@ test("archetype companion grants expose their unlock and effective-level rules",
     ["druid-sunrider", [1, 0]],
     ["kineticist-cinderlands-adept", [4, -3]],
     ["warpriest-divine-commander", [1, 0]],
+    ["alchemist-cruorchymist", [3, 0]],
+    ["alchemist-horticulturist", [4, 0]],
+    ["alchemist-homunculist", [1, 0]],
+    ["alchemist-tinkerer", [1, 0]],
+    ["arcanist-unlettered-arcanist", [1, 0]],
+    ["bard-duettist", [1, 0]],
+    ["cleric-asmodean-advocate", [1, 0]],
+    ["cleric-demonic-apostle", [1, 0]],
+    ["druid-leshy-warden", [1, 0]],
+    ["druid-swarm-monger", [1, 0]],
   ]);
   for (const [id, [minimumLevel, adjustment]] of cases) {
     const source = archetype(id);
