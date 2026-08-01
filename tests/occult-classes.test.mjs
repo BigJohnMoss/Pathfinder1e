@@ -46,7 +46,10 @@ test("Mesmerist integrates stare choices, tricks, treatments, and daily implants
 test("Occultist integrates implements, focus powers, mental focus, and mastery", async () => {
   const entry = JSON.parse(await readFile(new URL("../packages/data/src/classes/occultist.json", import.meta.url), "utf8"));
   const implementsGroup = JSON.parse(await readFile(new URL("../packages/data/src/options/occultist-implements.json", import.meta.url), "utf8"));
+  const focusPowers = JSON.parse(await readFile(new URL("../packages/data/src/options/occultist-focus-powers.json", import.meta.url), "utf8"));
   assert.equal(implementsGroup.options.length, 8);
+  assert.equal(focusPowers.options.length, 55);
+  assert.ok(focusPowers.options.every(option => option.prerequisites.some(prerequisite => prerequisite.type === "rule")));
   assert.ok(entry.features.some(feature => feature.optionGroupId === "occultist-focus-powers"));
   assert.ok(entry.features.some(feature => feature.id === "occultist-implement-mastery-20"));
   assert.deepEqual(apgClassResourceMaximums("occultist", 12, { intelligence: 5 }), { mentalFocus: 17 });

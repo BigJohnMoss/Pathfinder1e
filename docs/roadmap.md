@@ -251,7 +251,7 @@ to the same content depth as the original Core-class experience.
 3. [x] Import and validate archetypes for the five APG and nine Advanced Class
    Guide class families.
 4. [x] Import and validate archetypes for all six Occult Adventures classes.
-5. [ ] Complete defining option catalogues that are currently representative,
+5. [x] Complete defining option catalogues that are currently representative,
    including arcana, deeds, orders, wild talents, tricks, focus powers,
    amplifications, disciplines, and emotional focuses.
 6. [ ] Replace derived proxy spell lists with exact sourced class spell levels
