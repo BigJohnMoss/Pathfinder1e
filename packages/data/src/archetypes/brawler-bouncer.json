@@ -55,6 +55,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "martialFlexibility", "label": "Lesser Flexibility", "unit": "use", "operation": "replace", "minimumLevel": 2, "base": 3, "perInterval": 1, "interval": 2 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

@@ -397,6 +397,7 @@ export { bardicPerformanceRounds } from "./bardic-performance.js";
 export { druidWildShapeUses } from "./druid-wild-shape.js";
 export {
   apgClassResourceMaximums,
+  applyArchetypeResourceAdjustments,
   normalizeClassResourceUses,
   normalizeClassResourcesByClass,
 } from "./apg-class-resources.js";
@@ -989,6 +990,7 @@ export function archetypeAutomationSummary(archetype) {
   if (archetype.rangerCombatStyleIds?.length) automated.push("Available ranger combat styles");
   if (archetype.mountedCompanionOnly) automated.push("Mounted companion restriction");
   if (archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length) automated.push("Class skill changes");
+  if (archetype.resourceAdjustments?.length) automated.push(`${archetype.resourceAdjustments.length} tracked class resource adjustment${archetype.resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
   const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);

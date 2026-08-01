@@ -340,6 +340,28 @@ test("allocates ancestry-specific favored class rewards and applies daily resour
   assert.deepEqual(saved.favoredClassAlternateBonuses, { "gnome-bard-performance": 3 });
 });
 
+test("tracks an archetype-adjusted class resource and restores its spent uses", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "brawler");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "brawler-bouncer");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "10" } });
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const remaining = screen.getByLabelText("Brawler Lesser Flexibility remaining");
+  assert.equal(remaining.textContent, "7/7 use remaining");
+  const tracker = remaining.closest(".daily-resource");
+  assert.ok(tracker);
+  await user.click(tracker.querySelector("button") as HTMLButtonElement);
+  assert.equal(remaining.textContent, "6/7 use remaining");
+
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  await user.click(screen.getByRole("button", { name: "Reset" }));
+  await user.click(screen.getByRole("button", { name: "Load" }));
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  assert.equal(screen.getByLabelText("Brawler Lesser Flexibility remaining").textContent, "6/7 use remaining");
+});
+
 test("adds Arcane Archer only as a capped prestige class and shows its entry requirements", async () => {
   const user = userEvent.setup();
   render(<Home />);

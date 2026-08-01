@@ -77,7 +77,7 @@ export function normalizeSpellSlotUses(slotUses: Record<string, number> | null |
 export function arcaneReservoir(level: number): { maximum: number; dailyRefresh: number };
 export { bardicPerformanceRounds } from "./bardic-performance.js";
 export { druidWildShapeUses } from "./druid-wild-shape.js";
-export { apgClassResourceMaximums, normalizeClassResourceUses, normalizeClassResourcesByClass } from "./apg-class-resources.js";
+export { apgClassResourceMaximums, applyArchetypeResourceAdjustments, normalizeClassResourceUses, normalizeClassResourcesByClass } from "./apg-class-resources.js";
 export { eidolonEvolutionPool, eidolonProgression, eidolonBaseForm, validateEidolonEvolutions } from "./eidolon.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { witchPatronSpells } from "./witch-patrons.js";
