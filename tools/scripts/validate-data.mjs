@@ -199,6 +199,16 @@ for (const url of await jsonFiles("archetypes/")) {
       if (grant?.stacksWithExisting !== undefined && typeof grant.stacksWithExisting !== "boolean") errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid stacksWithExisting flag`);
     }
   }
+  if (archetype.companionProgressionAdjustments !== undefined) {
+    if (!Array.isArray(archetype.companionProgressionAdjustments) || archetype.companionProgressionAdjustments.length === 0) errors.push(`${file}: companionProgressionAdjustments must be a non-empty array`);
+    const companionIds = new Set();
+    for (const adjustment of archetype.companionProgressionAdjustments ?? []) {
+      if (!adjustment || typeof adjustment.companionId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(adjustment.companionId) || companionIds.has(adjustment.companionId)) errors.push(`${file}: companion progression adjustment has an invalid or duplicate companionId`); else companionIds.add(adjustment.companionId);
+      if (typeof adjustment?.multiplier !== "number" || !Number.isFinite(adjustment.multiplier) || adjustment.multiplier <= 0 || adjustment.multiplier > 4) errors.push(`${file}: companion progression adjustment ${adjustment?.companionId ?? "unknown"} has an invalid multiplier`);
+      if (adjustment?.levelAdjustment !== undefined && (!Number.isInteger(adjustment.levelAdjustment) || adjustment.levelAdjustment < -19 || adjustment.levelAdjustment > 19)) errors.push(`${file}: companion progression adjustment ${adjustment?.companionId ?? "unknown"} has an invalid levelAdjustment`);
+      if (adjustment?.minimumEffectiveLevel !== undefined && (!Number.isInteger(adjustment.minimumEffectiveLevel) || adjustment.minimumEffectiveLevel < 1 || adjustment.minimumEffectiveLevel > 20)) errors.push(`${file}: companion progression adjustment ${adjustment?.companionId ?? "unknown"} has an invalid minimumEffectiveLevel`);
+    }
+  }
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);
   const resourceIds = new Set();
   for (const adjustment of archetype.resourceAdjustments ?? []) {
