@@ -12,7 +12,7 @@ This report is generated from the application's source data by `npm run coverage
 | Option groups | 89 |
 | Feats | 3447 |
 | Traits | 40 |
-| Spells | 2073 |
+| Spells | 2758 |
 | Equipment | 80 |
 
 ## Feat prerequisites
@@ -29,9 +29,9 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Coverage | Count |
 |---|---:|
-| Full rules descriptions | 2073 |
-| Rules source links | 2073 |
-| Core casting statistics | 2073 |
+| Full rules descriptions | 2758 |
+| Rules source links | 2758 |
+| Core casting statistics | 2758 |
 
 ## Class progression
 
@@ -53,7 +53,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Duelist | 14 | 10 | 0 |
 | Eldritch Knight | 14 | 10 | 0 |
 | Fighter | 26 | 20 | 67 |
-| Gunslinger | 18 | 20 | 23 |
+| Gunslinger | 31 | 20 | 23 |
 | Hunter | 22 | 20 | 21 |
 | Inquisitor | 25 | 20 | 38 |
 | Investigator | 22 | 20 | 37 |
@@ -61,7 +61,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Loremaster | 20 | 10 | 0 |
 | Magus | 23 | 20 | 31 |
 | Medium | 14 | 20 | 15 |
-| Mesmerist | 9 | 20 | 21 |
+| Mesmerist | 19 | 20 | 21 |
 | Monk | 31 | 20 | 56 |
 | Mystic Theurge | 16 | 10 | 0 |
 | Occultist | 11 | 20 | 20 |

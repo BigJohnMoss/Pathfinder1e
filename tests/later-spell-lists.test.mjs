@@ -3,7 +3,7 @@ import test from "node:test";
 import { readFile } from "node:fs/promises";
 
 const expectedCounts = {
-  alchemist: 283, arcanist: 1361, bloodrager: 213, hunter: 604,
+  alchemist: 283, arcanist: 1896, bloodrager: 213, hunter: 604,
   inquisitor: 484, investigator: 280, magus: 327, medium: 308,
   mesmerist: 446, occultist: 479, oracle: 754, psychic: 868,
   shaman: 474, skald: 684, spiritualist: 302, summoner: 319,

@@ -41,7 +41,12 @@ const spells=sourceSpells.map(sourceSpell=>{
   const withoutLegacyDetailLevels=Object.fromEntries(Object.entries(classLevelOverlay??{}).filter(([classId])=>!exactLaterSpellClasses.has(classId)));
   const withoutSupersededFileLevels=Object.fromEntries(Object.entries(spellClassLevels[spell.id]??{}).filter(([classId])=>!exactLaterSpellClasses.has(classId)));
   const withClassOverlays={...withoutLegacyLaterLevels,...withoutLegacyDetailLevels,...withoutSupersededFileLevels,...(exactLaterSpellLevels[spell.id]??{})};
-  const levelByClass=withClassOverlays;
+  // Arcanists prepare directly from the Sorcerer/Wizard spell list.  AoN's
+  // class-search export contains only spells tagged separately for Arcanist,
+  // so treating that export as the whole list silently drops shared staples.
+  const levelByClass=withClassOverlays.wizard===undefined
+    ? withClassOverlays
+    : {...withClassOverlays,arcanist:withClassOverlays.wizard};
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);

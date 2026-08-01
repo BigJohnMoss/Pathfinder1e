@@ -235,7 +235,7 @@ add later class families without weakening existing save files or mobile paths.
   progressions, bounded resources, capstones, and level-20 browser coverage.
 
 The generated catalogue now contains 46 playable classes, 89 option groups,
-3,447 feats, 40 traits, and 2,073 spells. The production bundle remains within
+3,447 feats, 40 traits, and 2,758 spells. The production bundle remains within
 the recorded client-size budget.
 
 ## Active milestone: Later-Class Content Depth
@@ -256,19 +256,19 @@ to the same content depth as the original Core-class experience.
    amplifications, disciplines, and emotional focuses.
 6. [x] Replace derived proxy spell lists with exact sourced class spell levels
    for every later spellcasting class.
-7. [ ] Add level-20 desktop and narrow-mobile journeys covering archetype
+7. [x] Add level-20 desktop and narrow-mobile journeys covering archetype
    selection, dependent choices, persistence, spell use, and class resources.
-8. [ ] Regenerate coverage, enforce performance budgets, pass the complete CI
+8. [x] Regenerate coverage, enforce performance budgets, pass the complete CI
    suite, and deploy the finished milestone.
 
 ### Completion criteria
 
 - [x] every later base and hybrid class exposes its published archetypes
 - [x] every imported archetype has explicit mechanical coverage and no silent effects
-- [ ] defining class-option catalogues are complete and prerequisite-aware
+- [x] defining class-option catalogues are complete and prerequisite-aware
 - [x] later-class spell lists use exact sourced levels rather than proxy lists
-- [ ] representative archetyped builds persist and reach level 20 on desktop and mobile
-- [ ] validation, UI, browser, production, offline, and performance gates pass
+- [x] representative archetyped builds persist and reach level 20 on desktop and mobile
+- [x] validation, UI, browser, production, offline, and performance gates pass
 
 All work must preserve the completed Core, Expanded Character Options,
 Installable Application, Universal Builder, and Builder Expansion milestones.
