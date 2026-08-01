@@ -99,6 +99,7 @@
   ],
   "classSkillAdditions": ["Acrobatics"],
   "classSkillRemovals": ["Fly","Profession"],
+  "proficiencyAdjustments": [{"category":"weapon","operation":"remove","proficiencies":["Scimitar","Scythe","Sickle"]},{"category":"shield","operation":"remove","proficiencies":["All shields"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

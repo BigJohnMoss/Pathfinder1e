@@ -61,6 +61,8 @@
       ]
     }
   ],
+  "skillRanksPerLevel": 4,
+  "classSkillAdditions": ["Knowledge (arcana)","Knowledge (religion)","Linguistics","Spellcraft"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

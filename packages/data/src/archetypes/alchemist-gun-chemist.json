@@ -64,6 +64,7 @@
       ]
     }
   ],
+  "proficiencyAdjustments": [{"category":"weapon","operation":"replace","proficiencies":["All simple weapons","Firearms"]},{"category":"armor","operation":"replace","proficiencies":["Light armor"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

@@ -58,6 +58,7 @@
       ]
     }
   ],
+  "proficiencyAdjustments": [{"category":"armor","operation":"add","proficiencies":["Heavy armor"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

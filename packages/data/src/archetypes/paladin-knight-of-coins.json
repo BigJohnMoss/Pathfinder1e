@@ -37,6 +37,8 @@
       ]
     }
   ],
+  "skillRanksPerLevel": 4,
+  "classSkillAdditions": ["Appraise","Knowledge (local)","Perception","Use Magic Device"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

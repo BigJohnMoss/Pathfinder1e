@@ -47,6 +47,7 @@
       ]
     }
   ],
+  "proficiencyAdjustments": [{"category":"armor","operation":"remove","proficiencies":["All armor"]},{"category":"shield","operation":"remove","proficiencies":["All shields"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

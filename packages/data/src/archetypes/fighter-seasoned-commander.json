@@ -70,6 +70,8 @@
       ]
     }
   ],
+  "skillRanksPerLevel": 4,
+  "classSkillAdditions": ["Diplomacy","Knowledge (geography)","Knowledge (nobility)","Linguistics","Sense Motive"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

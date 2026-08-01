@@ -875,6 +875,18 @@ export function applyArchetype(characterClass, archetype) {
   return {
     ...characterClass,
     name: `${characterClass.name} (${archetype.name})`,
+    babProgression: archetype.babProgression ?? characterClass.babProgression,
+    saves: {
+      ...characterClass.saves,
+      ...(archetype.saveProgressionOverrides ?? {}),
+    },
+    skillRanksPerLevel:
+      archetype.skillRanksPerLevel ?? characterClass.skillRanksPerLevel,
+    hitDie: archetype.hitDie ?? characterClass.hitDie,
+    proficiencyAdjustments: [
+      ...(characterClass.proficiencyAdjustments ?? []),
+      ...(archetype.proficiencyAdjustments ?? []),
+    ],
     spellListAdditions: {
       ...(characterClass.spellListAdditions ?? {}),
       ...(archetype.spellListAdditions ?? {}),
@@ -1031,6 +1043,11 @@ export function archetypeAutomationSummary(archetype) {
   if (archetype.rangerCombatStyleIds?.length) automated.push("Available ranger combat styles");
   if (archetype.mountedCompanionOnly) automated.push("Mounted companion restriction");
   if (archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length) automated.push("Class skill changes");
+  if ([archetype.babProgression, archetype.saveProgressionOverrides, archetype.skillRanksPerLevel, archetype.hitDie].some(value => value !== undefined)) automated.push("Class combat-statistic progression");
+  for (const adjustment of archetype.proficiencyAdjustments ?? []) {
+    const action = adjustment.operation === "add" ? "gain" : adjustment.operation === "remove" ? "lose" : "use only";
+    automated.push(`${adjustment.category[0].toUpperCase()}${adjustment.category.slice(1)} proficiencies: ${action} ${adjustment.proficiencies.join(", ")}`);
+  }
   if (archetype.resourceAdjustments?.length) automated.push(`${archetype.resourceAdjustments.length} tracked class resource adjustment${archetype.resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);

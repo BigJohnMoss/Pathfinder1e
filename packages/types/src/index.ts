@@ -151,6 +151,7 @@ export interface CharacterClass {
   mountedCompanionOnly?: boolean;
   classSkillAdditions?: string[];
   classSkillRemovals?: string[];
+  proficiencyAdjustments?: ProficiencyAdjustment[];
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
     tradition?: "arcane" | "divine";
@@ -193,6 +194,11 @@ export interface CharacterArchetype {
   mountedCompanionOnly?: boolean;
   classSkillAdditions?: string[];
   classSkillRemovals?: string[];
+  babProgression?: Progression;
+  saveProgressionOverrides?: Partial<Record<"fortitude" | "reflex" | "will", SaveProgression>>;
+  skillRanksPerLevel?: number;
+  hitDie?: 6 | 8 | 10 | 12;
+  proficiencyAdjustments?: ProficiencyAdjustment[];
   resourceAdjustments?: Array<{
     resourceId: string;
     label: string;
@@ -207,6 +213,11 @@ export interface CharacterArchetype {
     maximum?: number;
   }>;
   source: SourceRef;
+}
+export interface ProficiencyAdjustment {
+  category: "weapon" | "armor" | "shield";
+  operation: "add" | "remove" | "replace";
+  proficiencies: string[];
 }
 export interface ArchetypeCompanionGrant {
   id: string;

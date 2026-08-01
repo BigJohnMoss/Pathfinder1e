@@ -50,6 +50,9 @@
       ]
     }
   ],
+  "skillRanksPerLevel": 4,
+  "classSkillAdditions": ["Knowledge (nature)","Knowledge (planes)","Perception","Stealth","Survival"],
+  "classSkillRemovals": ["Diplomacy","Handle Animal","Knowledge (nobility)","Ride"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

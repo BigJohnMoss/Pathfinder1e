@@ -75,6 +75,7 @@
       ]
     }
   ],
+  "proficiencyAdjustments": [{"category":"weapon","operation":"add","proficiencies":["Javelin","Shortbow"]},{"category":"weapon","operation":"remove","proficiencies":["Scimitar","Scythe"]},{"category":"armor","operation":"remove","proficiencies":["Medium armor"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

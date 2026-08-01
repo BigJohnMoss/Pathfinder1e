@@ -247,3 +247,33 @@ test("fixed archetype class-skill replacements apply across the migrated catalog
     for (const skill of removals) assert.ok(!applied.classSkills.includes(skill), `${id} removes ${skill}`);
   }
 });
+
+test("archetype combat-statistic and proficiency replacements alter the calculated class chassis", () => {
+  const source = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const cleric = {
+    id: "cleric",
+    name: "Cleric",
+    hitDie: 8,
+    babProgression: "three-quarters",
+    saves: { fortitude: "good", reflex: "poor", will: "good" },
+    skillRanksPerLevel: 2,
+    classSkills: ["Diplomacy"],
+    features: [],
+  };
+  const cardinal = applyArchetype(cleric, source("cleric-cardinal"));
+  assert.equal(cardinal.babProgression, "half");
+  assert.equal(cardinal.skillRanksPerLevel, 6);
+  assert.deepEqual(cardinal.proficiencyAdjustments, [
+    { category: "armor", operation: "replace", proficiencies: ["Light armor"] },
+    { category: "shield", operation: "remove", proficiencies: ["All shields"] },
+  ]);
+
+  const feyspeaker = applyArchetype({ ...cleric, id: "druid", name: "Druid", skillRanksPerLevel: 4 }, source("druid-feyspeaker"));
+  assert.equal(feyspeaker.babProgression, "half");
+  assert.equal(feyspeaker.skillRanksPerLevel, 6);
+  for (const skill of ["Bluff", "Diplomacy", "Disguise", "Sense Motive"]) assert.ok(feyspeaker.classSkills.includes(skill));
+
+  const truePrimitive = applyArchetype({ ...cleric, id: "barbarian", name: "Barbarian" }, source("barbarian-true-primitive"));
+  assert.equal(truePrimitive.proficiencyAdjustments.length, 3);
+  assert.deepEqual(truePrimitive.proficiencyAdjustments.map(item => item.category), ["weapon", "armor", "shield"]);
+});

@@ -69,6 +69,7 @@
     }
   ],
   "classSkillAdditions": ["Diplomacy","Perform","Sense Motive"],
+  "proficiencyAdjustments": [{"category":"weapon","operation":"replace","proficiencies":["Club","Dart","Quarterstaff","Shortspear","Sling","Spear","Natural attacks while wild shaped"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

@@ -64,6 +64,9 @@
       ]
     }
   ],
+  "skillRanksPerLevel": 4,
+  "classSkillAdditions": ["Knowledge (arcana)","Knowledge (dungeoneering)","Knowledge (planes)","Perception","Stealth","Survival","Use Magic Device"],
+  "classSkillRemovals": ["Diplomacy","Handle Animal"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

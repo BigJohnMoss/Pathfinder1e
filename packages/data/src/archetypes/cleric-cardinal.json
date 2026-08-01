@@ -39,6 +39,9 @@
     }
   ],
   "classSkillAdditions": ["Bluff","Intimidate","Knowledge (geography)","Knowledge (local)"],
+  "babProgression": "half",
+  "skillRanksPerLevel": 6,
+  "proficiencyAdjustments": [{"category":"armor","operation":"replace","proficiencies":["Light armor"]},{"category":"shield","operation":"remove","proficiencies":["All shields"]}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
