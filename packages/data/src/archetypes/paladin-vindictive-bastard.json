@@ -75,7 +75,30 @@
           "name": "Teamwork Feat",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level and every 6 levels thereafter, the vindictive bastard gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as teamwork feats. The vindictive bastard must meet the prerequisites of the selected bonus feat. This replaces mercy and channel energy."
+          "summary": "At 3rd level and every 6 levels thereafter, the vindictive bastard gains a bonus feat in addition to those gained from normal advancement. These bonus feats must be selected from those listed as teamwork feats. The vindictive bastard must meet the prerequisites of the selected bonus feat. This replaces mercy and channel energy.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
+        },
+        {
+          "id": "paladin-vindictive-bastard-teamwork-feat-9",
+          "name": "Teamwork Feat",
+          "level": 9,
+          "type": "archetype",
+          "summary": "Gain another teamwork feat for which you meet the prerequisites.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
+        },
+        {
+          "id": "paladin-vindictive-bastard-teamwork-feat-15",
+          "name": "Teamwork Feat",
+          "level": 15,
+          "type": "archetype",
+          "summary": "Gain another teamwork feat for which you meet the prerequisites.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
         },
         {
           "id": "paladin-vindictive-bastard-gang-up-ex-5",

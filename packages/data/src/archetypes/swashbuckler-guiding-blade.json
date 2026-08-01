@@ -28,7 +28,60 @@
           "name": "Daring Teamwork (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A guiding blade uses her panache to inspire her allies to heights of teamwork they could never reach alone. At 1st level, a guiding blade gains a bonus teamwork feat. She gains an additional teamwork feat at 4th level and every 4 swashbuckler levels thereafter. As a standard action, she can spend 1 panache point to grant a teamwork feat she gained from this ability to all allies within 30 feet who can see and hear her. They do not need to meet the feat’s prerequisites. She can use this ability multiple times to grant multiple teamwork feats. This ability lasts for 3 rounds + 1 round for every 2 swashbuckler levels she has, but if the guiding blade ever fails to have at least 1 panache point, all of these durations end immediately. At 7th level, the guiding blade can activate this ability as a swift action. At 15th level, she can grant two teamwork feats each time she activates this ability, and she can grant any teamwork feats she possesses, not just the teamwork feats she gained from this ability. A guiding blade regains panache whenever an ally reduces a creature to 0 or fewer hit points, instead of when she herself does so. She still doesn’t regain panache from unattended objects, helpless or unaware creatures, or opponents with low Hit Dice. This ability replaces bonus feats and the swashbuckler’s 1st-, 7th-, and 15th-level deeds, and it alters panache."
+          "summary": "A guiding blade gains a teamwork feat and can spend panache to grant her teamwork feats to nearby allies. She gains another teamwork feat at 4th level and every 4 levels thereafter. This ability replaces bonus feats and the 1st-, 7th-, and 15th-level deeds, and alters panache.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
+        },
+        {
+          "id": "swashbuckler-guiding-blade-daring-teamwork-4",
+          "name": "Daring Teamwork",
+          "level": 4,
+          "type": "archetype",
+          "summary": "Gain another teamwork feat.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
+        },
+        {
+          "id": "swashbuckler-guiding-blade-daring-teamwork-8",
+          "name": "Daring Teamwork",
+          "level": 8,
+          "type": "archetype",
+          "summary": "Gain another teamwork feat.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
+        },
+        {
+          "id": "swashbuckler-guiding-blade-daring-teamwork-12",
+          "name": "Daring Teamwork",
+          "level": 12,
+          "type": "archetype",
+          "summary": "Gain another teamwork feat.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
+        },
+        {
+          "id": "swashbuckler-guiding-blade-daring-teamwork-16",
+          "name": "Daring Teamwork",
+          "level": 16,
+          "type": "archetype",
+          "summary": "Gain another teamwork feat.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
+        },
+        {
+          "id": "swashbuckler-guiding-blade-daring-teamwork-20",
+          "name": "Daring Teamwork",
+          "level": 20,
+          "type": "archetype",
+          "summary": "Gain another teamwork feat.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": ["teamwork"]
         },
         {
           "id": "swashbuckler-guiding-blade-charmed-guardian-ex-2",

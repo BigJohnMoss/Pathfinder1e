@@ -713,6 +713,26 @@ test("selects and persists the Fighter Archer archetype", async () => {
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").archetypeId, "fighter-archer");
 });
 
+test("selects and persists an archetype-granted feat from the shared feat catalogue", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bloodrager");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "bloodrager-blood-conduit");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+  const choice = screen.getByLabelText("Contact Specialist (Ex) level 1") as HTMLSelectElement;
+  assert.deepEqual([...choice.options].filter((option) => option.value).map((option) => option.text), [
+    "Improved Bull Rush",
+    "Improved Grapple",
+    "Improved Reposition",
+    "Improved Trip",
+    "Improved Unarmed Strike",
+  ]);
+  await user.selectOptions(choice, "improved-grapple");
+  await user.click(screen.getByRole("button", { name: "Save" }));
+  const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
+  assert.equal(saved.selectedOptions["bloodrager-blood-conduit-contact-specialist-ex-1"], "improved-grapple");
+});
+
 test("applies Core save and hit point feat effects with visible sources", async () => {
   const user = userEvent.setup();
   render(<Home />);

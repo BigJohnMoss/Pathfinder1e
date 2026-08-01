@@ -28,7 +28,11 @@
           "name": "Contact Specialist (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a blood conduit selects a bonus feat from the following: Improved Bull Rush , Improved Grapple , Improved Reposition , Improved Trip , and Improved Unarmed Strike . He does not need to meet the prerequisites to take this feat. He also adds those feats to his list of bloodline feats. This ability replaces fast movement and alters bloodline feats."
+          "summary": "At 1st level, a blood conduit selects a bonus feat from the following: Improved Bull Rush , Improved Grapple , Improved Reposition , Improved Trip , and Improved Unarmed Strike . He does not need to meet the prerequisites to take this feat. He also adds those feats to his list of bloodline feats. This ability replaces fast movement and alters bloodline feats.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceIds": ["improved-bull-rush", "improved-grapple", "improved-reposition", "improved-trip", "improved-unarmed-strike"],
+          "ignoreFeatPrerequisites": true
         },
         {
           "id": "bloodrager-blood-conduit-spell-conduit-su-5",

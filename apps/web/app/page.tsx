@@ -693,7 +693,9 @@ export default function Home() {
       ...progression.features.flatMap((feature) =>
         feature.grantedFeatId ? [feature.grantedFeatId] : [],
       ),
-      ...Object.values(selectedOptions).flatMap((optionId) => {
+      ...Object.entries(selectedOptions).flatMap(([featureId, optionId]) => {
+        const feature = progression.features.find((candidate) => candidate.id === featureId);
+        if (feature?.optionGroupId === "archetype-feats" && feats.some((feat) => feat.id === optionId)) return [optionId];
         const option = optionGroups
           .flatMap((group) => group.options)
           .find((candidate) => candidate.id === optionId);
@@ -1118,7 +1120,38 @@ export default function Home() {
     (feature) => feature.choiceRequired && feature.optionGroupId,
   );
   const classOptionChoices = choiceFeatures.map((feature) => {
-    const group = optionGroups.find(
+    const generatedFeatGroup: (typeof optionGroups)[number] | undefined = feature.optionGroupId === "archetype-feats"
+      ? {
+          id: "archetype-feats",
+          name: "Bonus feats",
+          classIds: [
+            "classId" in feature && typeof feature.classId === "string"
+              ? feature.classId
+              : characterClass.id,
+          ],
+          options: feats
+            .filter((feat) =>
+              (!feature.featChoiceIds?.length || feature.featChoiceIds.includes(feat.id)) &&
+              (!feature.featChoiceTypes?.length || feature.featChoiceTypes.includes(feat.type)),
+            )
+            .map((feat) => ({
+              id: feat.id,
+              name: feat.name,
+              groupId: "archetype-feats",
+              classIds: [
+                "classId" in feature && typeof feature.classId === "string"
+                  ? feature.classId
+                  : characterClass.id,
+              ],
+              minimumLevel: 1,
+              prerequisites: feature.ignoreFeatPrerequisites ? [] : feat.prerequisites,
+              benefit: feat.benefit,
+              featId: feat.id,
+              source: feat.source,
+            })),
+        }
+      : undefined;
+    const group = generatedFeatGroup ?? optionGroups.find(
       (item) => item.id === feature.optionGroupId,
     );
     const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)];
@@ -1224,7 +1257,12 @@ export default function Home() {
       feature.requiredOptionId &&
       !selectedIds.includes(feature.requiredOptionId)
         ? []
-        : baseOptions;
+        : feature.optionGroupId === "archetype-feats"
+          ? baseOptions.filter((option) =>
+              option.id === selectedOptions[feature.id] ||
+              !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id),
+            )
+          : baseOptions;
     return {
       id: feature.id,
       name: feature.name,
