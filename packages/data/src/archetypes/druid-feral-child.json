@@ -97,6 +97,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Acrobatics"],
+  "classSkillRemovals": ["Fly","Profession"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

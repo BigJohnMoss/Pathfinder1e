@@ -68,6 +68,7 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Diplomacy","Perform","Sense Motive"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

@@ -58,6 +58,7 @@
     }
   ],
   "companionGrants": [{"id":"wild-child-companion","kind":"animal","label":"Wild child companion","optionId":"wild-child-companion","minimumLevel":1}],
+  "classSkillAdditions": ["Heal"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

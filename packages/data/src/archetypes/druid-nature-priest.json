@@ -65,6 +65,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Knowledge (religion)"],
+  "classSkillRemovals": ["Knowledge (geography)"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

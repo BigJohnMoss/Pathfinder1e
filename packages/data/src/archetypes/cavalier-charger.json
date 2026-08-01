@@ -69,6 +69,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Acrobatics","Knowledge (nature)","Survival"],
+  "classSkillRemovals": ["Climb","Handle Animal","Ride"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

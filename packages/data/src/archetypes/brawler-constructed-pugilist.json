@@ -47,6 +47,7 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Craft"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

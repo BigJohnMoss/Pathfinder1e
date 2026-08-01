@@ -76,6 +76,7 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Diplomacy","Knowledge (arcana)","Knowledge (dungeoneering)","Knowledge (engineering)","Knowledge (geography)","Knowledge (history)","Knowledge (local)","Knowledge (nature)","Knowledge (nobility)","Knowledge (planes)","Knowledge (religion)"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
