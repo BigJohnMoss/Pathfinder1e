@@ -31,6 +31,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Diplomacy", "Knowledge (nobility)"],
+  "classSkillRemovals": ["Knowledge (nature)", "Survival"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

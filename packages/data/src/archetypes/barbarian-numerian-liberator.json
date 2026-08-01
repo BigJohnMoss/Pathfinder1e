@@ -50,6 +50,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Stealth"],
+  "classSkillRemovals": ["Climb"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

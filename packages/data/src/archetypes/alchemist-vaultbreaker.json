@@ -47,6 +47,7 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Stealth"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

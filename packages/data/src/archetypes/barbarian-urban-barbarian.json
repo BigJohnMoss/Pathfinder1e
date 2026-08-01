@@ -62,6 +62,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Diplomacy", "Knowledge (local)", "Knowledge (nobility)", "Linguistics", "Profession"],
+  "classSkillRemovals": ["Handle Animal", "Knowledge (nature)", "Survival"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

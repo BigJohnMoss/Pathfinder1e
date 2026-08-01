@@ -53,6 +53,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Knowledge (engineering)"],
+  "classSkillRemovals": ["Knowledge (nature)"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
