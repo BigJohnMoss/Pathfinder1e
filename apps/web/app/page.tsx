@@ -1257,10 +1257,12 @@ export default function Home() {
       feature.requiredOptionId &&
       !selectedIds.includes(feature.requiredOptionId)
         ? []
-        : baseOptions.filter((option) =>
-            option.id === selectedOptions[feature.id] ||
-            !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id),
-          );
+        : feature.optionGroupId === "archetype-feats"
+          ? baseOptions.filter((option) =>
+              option.id === selectedOptions[feature.id] ||
+              !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id),
+            )
+          : baseOptions;
     return {
       id: feature.id,
       name: feature.name,
