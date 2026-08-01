@@ -218,3 +218,23 @@ test("fiendish vessel familiar advances with total character level", () => {
   assert.equal(grant.stacksWithExisting, true);
   assert.equal(grant.kind, "familiar");
 });
+
+test("fixed archetype class-skill replacements apply across the migrated catalogue batch", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const cases = new Map([
+    ["alchemist-alchemical-sapper", [["Knowledge (engineering)", "Stealth"], []]],
+    ["alchemist-oozemaster", [["Knowledge (dungeoneering)"], ["Knowledge (nature)"]]],
+    ["alchemist-royal-alchemist", [["Diplomacy", "Knowledge (nobility)"], ["Knowledge (nature)", "Survival"]]],
+    ["barbarian-cave-dweller", [["Stealth"], ["Ride"]]],
+    ["barbarian-urban-barbarian", [["Diplomacy", "Knowledge (local)", "Knowledge (nobility)", "Linguistics", "Profession"], ["Handle Animal", "Knowledge (nature)", "Survival"]]],
+    ["bard-solacer", [["Heal"], ["Appraise"]]],
+  ]);
+  for (const [id, [additions, removals]] of cases) {
+    const source = archetype(id);
+    assert.deepEqual(source.classSkillAdditions, additions, `${id} additions`);
+    assert.deepEqual(source.classSkillRemovals ?? [], removals, `${id} removals`);
+    const applied = applyArchetype({ id: source.classId, name: "Base", features: [], classSkills: ["Appraise", "Handle Animal", "Knowledge (nature)", "Ride", "Survival"] }, source);
+    for (const skill of additions) assert.ok(applied.classSkills.includes(skill), `${id} adds ${skill}`);
+    for (const skill of removals) assert.ok(!applied.classSkills.includes(skill), `${id} removes ${skill}`);
+  }
+});

@@ -55,6 +55,7 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Knowledge (history)", "Knowledge (religion)", "Linguistics"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

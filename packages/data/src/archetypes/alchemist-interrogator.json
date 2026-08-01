@@ -40,6 +40,7 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Intimidate", "Sense Motive"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

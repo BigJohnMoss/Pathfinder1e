@@ -54,6 +54,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Stealth"],
+  "classSkillRemovals": ["Ride"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

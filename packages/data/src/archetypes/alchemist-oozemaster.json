@@ -55,6 +55,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Knowledge (dungeoneering)"],
+  "classSkillRemovals": ["Knowledge (nature)"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

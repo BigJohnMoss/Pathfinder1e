@@ -210,6 +210,12 @@ for (const url of await jsonFiles("archetypes/")) {
       if (adjustment?.minimumEffectiveLevel !== undefined && (!Number.isInteger(adjustment.minimumEffectiveLevel) || adjustment.minimumEffectiveLevel < 1 || adjustment.minimumEffectiveLevel > 20)) errors.push(`${file}: companion progression adjustment ${adjustment?.companionId ?? "unknown"} has an invalid minimumEffectiveLevel`);
     }
   }
+  for (const key of ["classSkillAdditions", "classSkillRemovals"]) {
+    if (archetype[key] === undefined) continue;
+    if (!Array.isArray(archetype[key]) || archetype[key].length === 0 || archetype[key].some((skill) => typeof skill !== "string" || !skill.trim()) || new Set(archetype[key]).size !== archetype[key].length) errors.push(`${file}: ${key} must contain unique non-empty skill names`);
+  }
+  const overlappingClassSkills = (archetype.classSkillAdditions ?? []).filter((skill) => (archetype.classSkillRemovals ?? []).includes(skill));
+  if (overlappingClassSkills.length) errors.push(`${file}: class skills cannot be both added and removed (${overlappingClassSkills.join(", ")})`);
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);
   const resourceIds = new Set();
   for (const adjustment of archetype.resourceAdjustments ?? []) {
