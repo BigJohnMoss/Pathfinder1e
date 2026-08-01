@@ -48,6 +48,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "rebukeSpirits", "label": "Rebuke Spirits", "unit": "use", "minimumLevel": 2, "base": 3, "abilityModifier": "charisma" }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

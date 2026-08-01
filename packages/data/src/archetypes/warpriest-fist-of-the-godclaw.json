@@ -67,6 +67,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "detectChaos", "label": "Detect Chaos", "unit": "use", "minimumLevel": 3, "base": 3 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

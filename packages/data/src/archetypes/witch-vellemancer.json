@@ -47,6 +47,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "investedHexes", "label": "Invested Hexes", "unit": "hex", "minimumLevel": 2, "base": 1, "perInterval": 1, "interval": 2, "abilityModifier": "intelligence", "minimum": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

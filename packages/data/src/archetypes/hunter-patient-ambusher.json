@@ -62,6 +62,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "snareTraps", "label": "Hunter Traps", "unit": "use", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 2, "abilityModifier": "wisdom", "minimum": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

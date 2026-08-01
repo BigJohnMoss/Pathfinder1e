@@ -51,6 +51,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "darkCommunion", "label": "Dark Communion", "unit": "use", "minimumLevel": 3, "base": 3, "perInterval": 1, "interval": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

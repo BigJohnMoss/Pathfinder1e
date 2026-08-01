@@ -77,6 +77,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "ectoplasmicBlanche", "label": "Ectoplasmic Blanche", "unit": "use", "minimumLevel": 1, "base": 1, "perInterval": 1, "interval": 1, "abilityModifier": "intelligence", "minimum": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

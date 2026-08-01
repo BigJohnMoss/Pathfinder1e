@@ -35,6 +35,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "symbolism", "label": "Symbolism", "unit": "use", "minimumLevel": 5, "base": 5, "perInterval": 1, "interval": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

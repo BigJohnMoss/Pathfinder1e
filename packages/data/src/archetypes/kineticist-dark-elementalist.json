@@ -40,6 +40,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "soulPower", "label": "Soul Power", "unit": "use", "minimumLevel": 6, "base": 0, "abilityModifier": "intelligence" }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

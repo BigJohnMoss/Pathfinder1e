@@ -46,6 +46,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "phantasmagoricalBreath", "label": "Phantasmagorical Breath", "unit": "use", "minimumLevel": 1, "base": 0, "abilityModifier": "charisma", "minimum": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

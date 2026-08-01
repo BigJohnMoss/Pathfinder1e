@@ -45,6 +45,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "inspiringProwess", "label": "Inspiring Prowess", "unit": "round", "minimumLevel": 3, "base": 3, "perInterval": 1, "interval": 1, "abilityModifier": "charisma", "minimum": 3 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

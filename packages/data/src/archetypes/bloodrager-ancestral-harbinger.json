@@ -35,6 +35,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "spiritGuardian", "label": "Spirit Guardian", "unit": "use", "minimumLevel": 2, "base": 1, "perInterval": 1, "interval": 4 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

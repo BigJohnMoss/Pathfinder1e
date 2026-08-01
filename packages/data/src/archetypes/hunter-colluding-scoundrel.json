@@ -41,6 +41,9 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    { "resourceId": "scapegoat", "label": "Scapegoat", "unit": "use", "minimumLevel": 8, "base": 8, "perInterval": 1, "interval": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
