@@ -1,0 +1,50 @@
+{
+  "id": "magus-elemental-knight",
+  "name": "Elemental Knight",
+  "classId": "magus",
+  "summary": "(Suli Only) Elemental knights are born with elemental energies surging through their blood and discover the secret of reconciling and focusing this primal power into the arcane.",
+  "replacesText": "Spell Recall",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "magus-spell-recall-4",
+        "magus-improved-spell-recall-11"
+      ],
+      "features": [
+        {
+          "id": "magus-elemental-knight-elemental-arcana-su-3",
+          "name": "Elemental Arcana (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, elemental knights may select the following magus arcana available only to them. Assault Synergy (Su) : As a swift action, the elemental knight can expend 1 round of duration from elemental assault to add +1d6 points of energy damage to an offensive spell he casts that round. The spell must have the acid, cold, electricity or fire descriptor. This extra energy damage matches the energy damage of the spell. At 10th level, he may expend 2 rounds instead of 1 to add +2d6 points of energy damage to the spell. Energy Reflection (Su) : This functions like the reflection magus arcana, except it only works on spells that deal acid, cold, electricity, or fire damage. As long as the elemental knight spends at least 1 point from her arcane pool to activate this arcana, he may expend rounds of elemental assault as if they were arcane pool points. For example, the knight could spend 1 arcane pool point and 3 rounds of elemental assault to reflect a spell of 4th-level or lower. The elemental knight must be at least 12th level before selecting this arcana. Energy Resistance Boost (Su) : As a swift action, the elemental knight can expend 1 point from his arcane pool or 1 round of elemental assault to increase all of his racial energy resistances by +5 for 1 round."
+        },
+        {
+          "id": "magus-elemental-knight-elemental-matrix-su-4",
+          "name": "Elemental Matrix (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, an elemental knight gains Incremental Elemental Assault (see below) as a bonus feat. In addition, at 4th level, as a swift action, an elemental knight may expend rounds of duration from her elemental assault ability. For every 4 rounds expended, he gains 1 arcane pool point. This ability replaces spell recall."
+        },
+        {
+          "id": "magus-elemental-knight-magus-arcana-1",
+          "name": "Magus Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following magus arcana complement the elemental knight archetype: empowered magic, pool strike, spell shield."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Elemental%20Knight"
+  },
+  "manualRequirements": [
+    "Restricted to Suli characters; that ancestry is not yet available in this builder."
+  ]
+}

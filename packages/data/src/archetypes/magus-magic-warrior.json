@@ -1,0 +1,71 @@
+{
+  "id": "magus-magic-warrior",
+  "name": "Magic Warrior",
+  "classId": "magus",
+  "summary": "Trained in a tradition stretching back to Old-Mage Jatembe’s Ten Magic Warriors, magic warriors renounce their identities to master magical might and serve as champions of culture and learning across the Mwangi Expanse and beyond.",
+  "replacesText": "Class Skills; 3rd-level Magus Arcana; Improved Spell Combat; Greater Spell Combat; Greater Spell Access",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "magus-arcana-3",
+        "magus-spell-combat-1",
+        "magus-improved-spell-combat-8",
+        "magus-greater-spell-combat-14",
+        "magus-greater-spell-access-19"
+      ],
+      "features": [
+        {
+          "id": "magus-magic-warrior-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Magic Warrior adds Knowledge (history) and Knowledge (nature) to her list of class skills, instead of Knowledge (dungeoneering) and Knowledge (planes). This ability alters the magus’s class skills."
+        },
+        {
+          "id": "magus-magic-warrior-nameless-mask-ex-1",
+          "name": "Nameless Mask (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Magic Warrior gains strength by hiding her identity behind a mask that represents an animal, but also suffers drawbacks from doing so. While wearing her mask, a Magic Warrior gains a +2 bonus on saving throws against divinations in the scrying subschool. However, NPCs who are unfamiliar with or have a poor opinion of the Magic Warrior tradition have a starting attitude of unfriendly toward the Magic Warrior while she wears her mask. If using the influence system ( Pathfinder RPG Ultimate Intrigue 102), she requires one additional success to increase her influence level over such an NPC. The Magic Warrior cannot ever reveal her name or remove her mask in front of anyone who she has never met before. If she violates this important taboo, she must discard her mask and create or obtain a new mask and wear it before she can gain any benefits that result from wearing her mask."
+        },
+        {
+          "id": "magus-magic-warrior-magic-warrior-s-aspect-su-3",
+          "name": "Magic Warrior’s Aspect (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, as a standard action, a Magic Warrior can gain an aspect of an animal’s might by expending 1 point from her arcane pool. The animal must be the same one that the Magic Warrior’s mask represents (the animal can change if the Magic Warrior creates or obtains a new mask). The Magic Warrior gains one ability the animal has from the list of abilities given in beast shape I (this ability doesn’t allow her to change her size). The ability lasts for 1 minute per class level. This ability replaces the magus arcana gained at 3rd level."
+        },
+        {
+          "id": "magus-magic-warrior-nameless-anonymity-su-8",
+          "name": "Nameless Anonymity (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a Magic Warrior’s masked identity further protects her from divinations. Once per day, as long as she is in her masked identity, she can cast nondetection on herself, using her masked warrior level as her caster level. A Magic Warrior gains improved spell combat at 14th level instead of at 8th level. She does not gain the magus’s greater spell combat."
+        },
+        {
+          "id": "magus-magic-warrior-magaambya-spell-access-su-19",
+          "name": "Magaambya Spell Access (Su)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, a Magic Warrior learns ancient secrets to using natural magic. She learns seven spells from the druid’s spell list and places them in her spellbook as magus spells of the same level at which they appear on the druid spell list. She gains one druid spell not on the magus spell list for each of the listed spell levels: 0 level, 1st level, 2nd level, 3rd level, 4th level, 5th level, and 6th level. She can ignore the divine focus component of these spells. This replaces greater spell access."
+        },
+        {
+          "id": "magus-magic-warrior-magus-arcana-1",
+          "name": "Magus Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following magus arcana complement the Magic Warrior archetype: accurate strike UC , arcane accuracy, arcane cloak UC , arcane edge UC , bane blade UC , devoted blade UC , empowered magic, maximized magic, quickened magic, silent magic, spell blending, and still magic."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Magic%20Warrior"
+  }
+}

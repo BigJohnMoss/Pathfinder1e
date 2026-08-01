@@ -1,0 +1,70 @@
+{
+  "id": "gunslinger-musket-master",
+  "name": "Musket Master",
+  "classId": "gunslinger",
+  "summary": "Some gunslingers want a little more firepower and range. These are the musket masters; the best of these gunslingers can reload a musket with dazzling speed, potentially putting even their pistol-wielding brethren to shame.",
+  "replacesText": "Weapon Proficiency; Gunsmith; Gunslinger’s Dodge Deed; Utility Shot Deed; Gun Training 1-4",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "gunslinger-gunsmith-1",
+        "gunslinger-deeds-1",
+        "gunslinger-deeds-3",
+        "gunslinger-deeds-7",
+        "gunslinger-deeds-11",
+        "gunslinger-deeds-15",
+        "gunslinger-deeds-19",
+        "gunslinger-gun-training-5",
+        "gunslinger-gun-training-9",
+        "gunslinger-gun-training-13",
+        "gunslinger-gun-training-17"
+      ],
+      "features": [
+        {
+          "id": "gunslinger-musket-master-weapon-proficiency-1",
+          "name": "Weapon Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Instead of proficiency with all firearms, a musket master only gains proficiency with two-handed firearms. She must take the Exotic Weapon Proficiency (firearm) feat to gain proficiency with one-handed firearms and firearm siege engines."
+        },
+        {
+          "id": "gunslinger-musket-master-gunsmith-1",
+          "name": "Gunsmith",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A musket master must take a musket when she chooses a battered firearm at 1st level."
+        },
+        {
+          "id": "gunslinger-musket-master-deeds-1",
+          "name": "Deeds",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A musket master swaps a pair of deeds for the following. Steady Aim (Ex) : At 1st level, as long as a musket master has at least 1 grit point, she can take a move-equivalent action to increase the accuracy of a two-handed firearm. When she does, she increases the range increment of the firearm she is firing by 10 feet. This stacks with other abilities that increase her range increment. This deed replaces the gunslinger’s dodge deed. Fast Musket (Ex) : At 3rd level, as long as the musket master has 1 grit point, she can reload any two-handed firearm as if it were a one-handed firearm. This deed replaces the utility shot deed."
+        },
+        {
+          "id": "gunslinger-musket-master-rapid-reloader-1",
+          "name": "Rapid Reloader",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a musket master gains Rapid Reload (muskets) as a bonus feat."
+        },
+        {
+          "id": "gunslinger-musket-master-musket-training-ex-5",
+          "name": "Musket Training (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "Starting at 5th level, a musket master increases her skill with two-handed firearms. She gains a bonus on damage rolls equal to her Dexterity modifier, and when she misfires with a two-handed firearm, the misfire value increases by 2 instead of 4. Every four levels thereafter (9th, 13th, and 17th), the bonus on damage rolls increases by +1. This replaces gun training 1, 2, 3, and 4."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Gunslinger%20Musket%20Master"
+  }
+}

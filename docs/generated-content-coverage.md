@@ -7,7 +7,7 @@ This report is generated from the application's source data by `npm run coverage
 | Area | Records |
 |---|---:|
 | Classes | 46 |
-| Archetypes | 825 |
+| Archetypes | 886 |
 | Ancestries | 7 |
 | Option groups | 89 |
 | Feats | 3447 |
@@ -53,13 +53,13 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Duelist | 14 | 10 | 0 |
 | Eldritch Knight | 14 | 10 | 0 |
 | Fighter | 26 | 20 | 67 |
-| Gunslinger | 18 | 20 | 0 |
+| Gunslinger | 18 | 20 | 23 |
 | Hunter | 22 | 20 | 0 |
 | Inquisitor | 25 | 20 | 38 |
 | Investigator | 22 | 20 | 0 |
 | Kineticist | 30 | 20 | 0 |
 | Loremaster | 20 | 10 | 0 |
-| Magus | 23 | 20 | 0 |
+| Magus | 23 | 20 | 31 |
 | Medium | 14 | 20 | 0 |
 | Mesmerist | 9 | 20 | 0 |
 | Monk | 31 | 20 | 56 |
@@ -71,7 +71,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Psychic | 8 | 20 | 0 |
 | Ranger | 30 | 20 | 62 |
 | Rogue | 31 | 20 | 78 |
-| Samurai | 16 | 20 | 0 |
+| Samurai | 16 | 20 | 7 |
 | Shadowdancer | 20 | 10 | 0 |
 | Shaman | 17 | 20 | 0 |
 | Skald | 21 | 20 | 0 |

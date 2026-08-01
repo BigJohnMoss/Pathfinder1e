@@ -1,0 +1,60 @@
+{
+  "id": "magus-staff-magus",
+  "name": "Staff Magus",
+  "classId": "magus",
+  "summary": "While most magi use a one-handed weapon as their melee implement of choice, one group of magi uses the quarterstaff instead.",
+  "replacesText": "Weapon/Armor Proficiencies; Medium Armor; Heavy Armor; Fighter Training",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "magus-fighter-training-10"
+      ],
+      "features": [
+        {
+          "id": "magus-staff-magus-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A staff magus is proficient with simple weapons only. He can cast magus spells while wearing light armor without incurring the normal arcane spell failure chance. Like any other arcane spellcaster, a magus wearing medium armor or heavy armor or using a shield incurs a chance of arcane spell failure if the spell in question has a somatic component. A multiclass magus still incurs the normal arcane spell failure chance for arcane spells received from other classes. This replaces the normal magus weapon and armor proficiency feature."
+        },
+        {
+          "id": "magus-staff-magus-quarterstaff-master-ex-1",
+          "name": "Quarterstaff Master (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the staff magus gains the Quarterstaff Master feat as a bonus feat, even if he does not meet the normal prerequisites. He only gains the benefit of this feat when wearing no armor or light armor."
+        },
+        {
+          "id": "magus-staff-magus-quarterstaff-defense-ex-7",
+          "name": "Quarterstaff Defense (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, while wielding a quarterstaff, the staff magus gains a shield bonus to his Armor Class equal to the enhancement bonus of the quarterstaff, including any enhancement bonus on that staff from his arcane pool class feature. At 13th level, this bonus increases by +3. This ability replaces the medium armor and heavy armor class abilities."
+        },
+        {
+          "id": "magus-staff-magus-staff-weapon-su-10",
+          "name": "Staff Weapon (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a staff magus treats any magical staff he is wielding as a magical quarterstaff with an enhancement bonus to attack and damage equal to the staff’s caster level divided by 4 (minimum +1). The staff must have at least 1 charge for the magus to use this ability. A staff magus can restore 1 charge to a staff by expending a number of points from his arcane pool equal to the level of the highest-level spell cast in the staff, as long as at least one spell in the staff is on the magus spell list. The magus cannot restore charges to more than one staff per day. This ability replaces fighter training."
+        },
+        {
+          "id": "magus-staff-magus-magus-arcana-1",
+          "name": "Magus Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following magus arcana complement the staff magus archetype: critical strike, dispelling strike, maneuver master, and spell shield."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Staff%20Magus"
+  }
+}

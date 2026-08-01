@@ -12,12 +12,15 @@ This report distinguishes selectable replacement integration from bespoke rules 
 | Cleric | 0 | 35 | 0 | 35 |
 | Druid | 10 | 65 | 0 | 75 |
 | Fighter | 12 | 55 | 0 | 67 |
+| Gunslinger | 0 | 23 | 0 | 23 |
 | Inquisitor | 0 | 38 | 0 | 38 |
+| Magus | 0 | 31 | 0 | 31 |
 | Monk | 10 | 46 | 0 | 56 |
 | Oracle | 0 | 26 | 0 | 26 |
 | Paladin | 6 | 41 | 0 | 47 |
 | Ranger | 8 | 54 | 0 | 62 |
 | Rogue | 12 | 66 | 0 | 78 |
+| Samurai | 0 | 7 | 0 | 7 |
 | Sorcerer | 0 | 13 | 0 | 13 |
 | Summoner | 0 | 22 | 0 | 22 |
 | Witch | 0 | 42 | 0 | 42 |

@@ -1,0 +1,85 @@
+{
+  "id": "magus-myrmidarch",
+  "name": "Myrmidarch",
+  "classId": "magus",
+  "summary": "The myrmidarch is a skilled specialist, using magic to supplement and augment his martial mastery.",
+  "replacesText": "Spells; Spell Recall; Improved Spell Recall; 6th, 12th, 18th-level Magus Arcana; Knowledge Pool; Improved Spell Combat; Greater Spell Combat; True Magus",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "magus-spell-combat-1",
+        "magus-cantrips-1",
+        "magus-spellstrike-2",
+        "magus-spell-recall-4",
+        "magus-improved-spell-combat-8",
+        "magus-improved-spell-recall-11",
+        "magus-greater-spell-combat-14",
+        "magus-greater-spell-access-19",
+        "magus-arcana-6",
+        "magus-arcana-12",
+        "magus-arcana-18",
+        "magus-true-magus-20"
+      ],
+      "features": [
+        {
+          "id": "magus-myrmidarch-diminished-spellcasting-1",
+          "name": "Diminished Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Myrmidarchs cast one fewer spell of each level than normal. If this reduces the number to 0, he may cast spells of that level only if his Intelligence allows bonus spells of that level."
+        },
+        {
+          "id": "magus-myrmidarch-ranged-spellstrike-su-4",
+          "name": "Ranged Spellstrike (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a myrmidarch can use spellstrike to cast a single-target touch attack ranged spell and deliver it through a ranged weapon attack. Even if the spell can normally affect multiple targets, only a single missile, ray, or effect accompanies the attack. At 11th level, a myrmidarch can spend a full-round action to cast a spell that includes multiple ranged touch attacks and deliver more than one using ranged attacks. The spell must have a casting time of 1 full-round action or less. This functions similarly to the base ability of ranged spellstrike, but the myrmidarch can deliver a number of missiles, rays, or effect up to the number of attacks he could make with a full attack. Attacks beyond the first take penalties as if the myrmidarch were making a full attack. Any effects not used in the round the spell is cast are lost, as are any additional ranged touch attacks the spell would allow beyond the myrmidarch’s maximum number of attacks. This ability replaces spell recall and improved spell recall."
+        },
+        {
+          "id": "magus-myrmidarch-weapon-training-ex-6",
+          "name": "Weapon Training (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a myrmidarch gains weapon training, as the fighter ability, adding an additional weapon group every six levels after 6th (to a maximum of three groups at 18th level) and increasing the bonus on attack and damage rolls for weapon groups already chosen by +1. This ability replaces the magus arcana normally gained at 6th, 12th, and 18th levels."
+        },
+        {
+          "id": "magus-myrmidarch-fighter-training-ex-7",
+          "name": "Fighter Training (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a myrmidarch counts his magus level –3 as his fighter level for the purpose of qualifying for feats (if he has levels in fighter, these levels stack). At 10th level, the myrmidarch treats his magus levels as fighter levels for the purposes of fighter training. This ability replaces knowledge pool and the fighter training the magus gains at 10th level."
+        },
+        {
+          "id": "magus-myrmidarch-armor-training-ex-8",
+          "name": "Armor Training (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a myrmidarch gains armor training, as the fighter ability. At 14th level, he gains armor training 2. This ability replaces improved spell combat and greater spell combat."
+        },
+        {
+          "id": "magus-myrmidarch-armor-mastery-ex-20",
+          "name": "Armor Mastery (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a myrmidarch gains DR 5/– when wearing armor. This ability replaces true magus."
+        },
+        {
+          "id": "magus-myrmidarch-magus-arcana-1",
+          "name": "Magus Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following magus arcana complement the myrmidarch archetype: accurate strike, arcane edge, lingering pain, prescient attack, prescient defense, spell shield, spellbreaker."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Myrmidarch"
+  }
+}

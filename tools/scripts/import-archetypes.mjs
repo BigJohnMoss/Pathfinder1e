@@ -39,7 +39,15 @@ const singularize = (value) => value.split(" ").map((word) =>
 async function fetchDocument(url) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
-  const html = new TextDecoder("windows-1252").decode(await response.arrayBuffer());
+  const contentType = response.headers.get("content-type") ?? "";
+  const declaredCharset = contentType.match(/charset\s*=\s*["']?([^;"'\s]+)/i)?.[1];
+  const charset = declaredCharset || "utf-8";
+  let html;
+  try {
+    html = new TextDecoder(charset).decode(await response.arrayBuffer());
+  } catch (error) {
+    throw new Error(`${url}: unsupported response charset ${charset}`, { cause: error });
+  }
   return new JSDOM(html).window.document;
 }
 
@@ -159,10 +167,7 @@ if (!entries.length) throw new Error(`${className}: no archetypes found`);
 
 for (const [index, entry] of entries.entries()) {
   const archetypeId = `${classId}-${slug(entry.name)}`;
-  if (/^none$/i.test(entry.replacesText)) {
-    console.log(`No replacement record needed ${index + 1}/${entries.length}: ${entry.name}`);
-    continue;
-  }
+  const additiveArchetype = /^none$/i.test(entry.replacesText);
   const existingRecord = existingRecords.find((record) =>
     record.classId === classId && record.name.localeCompare(entry.name, undefined, { sensitivity: "base" }) === 0
   );
@@ -182,10 +187,10 @@ for (const [index, entry] of entries.entries()) {
     replacesText: entry.replacesText,
     mechanicalCoverage: "partial",
     mechanicalNotes: ["Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."],
-    nestedReplacements: nestedReplacements.length ? nestedReplacements : featureIds.length ? undefined : [entry.replacesText],
-    replacements: [{ featureIds: featureIds.length ? featureIds : [`nested-${slug(entry.replacesText)}`], features }],
+    nestedReplacements: additiveArchetype ? undefined : nestedReplacements.length ? nestedReplacements : featureIds.length ? undefined : [entry.replacesText],
+    replacements: [{ featureIds: additiveArchetype ? ["additive-archetype-features"] : featureIds.length ? featureIds : [`nested-${slug(entry.replacesText)}`], features }],
     source: { title: "Archives of Nethys", page: null, url: entry.url }
   };
   await writeFile(outputFile, `${JSON.stringify(record, null, 2)}\n`);
-  console.log(`Imported ${index + 1}/${entries.length}: ${entry.name}`);
+  console.log(`Imported ${index + 1}/${entries.length}: ${entry.name}${additiveArchetype ? " (additive)" : ""}`);
 }

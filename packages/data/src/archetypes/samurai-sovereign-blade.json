@@ -1,0 +1,57 @@
+{
+  "id": "samurai-sovereign-blade",
+  "name": "Sovereign Blade",
+  "classId": "samurai",
+  "summary": "In Tian Xia, many samurai are tutored in the ways of honor using lessons that originate from sovereign dragons and their dedication to safeguarding harmony.",
+  "replacesText": "Alignment; Mount; Mounted Archer; 6th, 12th, 18th-level bonus feats",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "samurai-mount-1",
+        "samurai-mounted-archer-4",
+        "samurai-bonus-feat-6",
+        "samurai-bonus-feat-12",
+        "samurai-bonus-feat-18"
+      ],
+      "features": [
+        {
+          "id": "samurai-sovereign-blade-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sovereign blade’s alignment must be at least partially neutral. If the sovereign blade’s alignment is not partially neutral, she is treated as if she had violated her order’s edicts each day until her alignment is again partially neutral."
+        },
+        {
+          "id": "samurai-sovereign-blade-dogmatic-denial-ex-1",
+          "name": "Dogmatic Denial (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sovereign blade gains a +2 bonus on saving throws against spells with any of the following descriptors that don’t match part of the character’s own alignment: chaotic, evil, good, or lawful. This ability replaces mount."
+        },
+        {
+          "id": "samurai-sovereign-blade-golden-armor-su-4",
+          "name": "Golden Armor (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a sovereign blade can spend one use of her resolve to cause her armor to become golden for 1 round per class level, gaining energy resistance equal to 1/2 her samurai level against one energy type of her choice. This ability replaces mounted archer."
+        },
+        {
+          "id": "samurai-sovereign-blade-sovereign-breath-sp-6",
+          "name": "Sovereign Breath (Sp)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the sovereign blade can issue forth an immense roar similar to the breath weapon of a sovereign dragon. This functions as dragon’s breathAPG , except it deals sonic damage in a 30-foot cone and has a caster level equal to half the sovereign blade’s samurai level. The sovereign blade can use this ability once per day, plus one additional time per day at 12th and 18th levels. This replaces the bonus feats a samurai gained at 6th, 12th, and 18th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Samurai%20Sovereign%20Blade"
+  }
+}

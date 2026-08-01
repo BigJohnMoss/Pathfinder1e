@@ -1,0 +1,103 @@
+{
+  "id": "magus-soul-forger",
+  "name": "Soul Forger",
+  "classId": "magus",
+  "summary": "The soul forger has learned the skill of infusing the raw magical essence of his soul into armaments of surpassing power, combining the mystic arts with the arts of war in a unity of steely perfection.",
+  "replacesText": "Spells; Knowledge Pool; Spell Recall; Improved Spell Recall; Counterstrike; Greater Spell Access",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "magus-spell-combat-1",
+        "magus-cantrips-1",
+        "magus-spellstrike-2",
+        "magus-spell-recall-4",
+        "magus-improved-spell-combat-8",
+        "magus-improved-spell-recall-11",
+        "magus-greater-spell-combat-14",
+        "magus-greater-spell-access-19",
+        "magus-counterstrike-16"
+      ],
+      "features": [
+        {
+          "id": "magus-soul-forger-diminished-spellcasting-1",
+          "name": "Diminished Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A soul forger casts one fewer spell of each level than normal. If this reduces the number to 0, he may cast spells of that level only if his Intelligence allows bonus spells of that level."
+        },
+        {
+          "id": "magus-soul-forger-arcane-bond-su-1",
+          "name": "Arcane Bond (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a soul forger gains a weapon as an arcane bond item. This is identical to the wizard class ability, but the soul forger must select a weapon."
+        },
+        {
+          "id": "magus-soul-forger-spell-combat-su-1",
+          "name": "Spell Combat (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A soul forger may use this ability only when wielding his bonded weapon."
+        },
+        {
+          "id": "magus-soul-forger-spellstrike-su-1",
+          "name": "Spellstrike (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A soul forger may use this ability only when wielding his bonded weapon."
+        },
+        {
+          "id": "magus-soul-forger-master-smith-ex-7",
+          "name": "Master Smith (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "A soul forger adds his magus class level on Craft checks to manufacture armor, shields, and weapons. This bonus applies on skill checks required when using Craft Magic Arms and Armor. At 7th level, a soul forger uses the 1/10 gp value of armor, shields, and weapons to determine how much time it takes to craft mundane items, and he requires only half the normal amount of time to enchant magical arms and armor. This ability replaces knowledge pool."
+        },
+        {
+          "id": "magus-soul-forger-fortify-bond-su-4",
+          "name": "Fortify Bond (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a soul forger may spend 1 point from his arcane pool to increase the hardness and hit points of his bonded item by an amount equal to his magus level. These hit points last until expended or until the soul forger next prepares spells. Multiple uses of this ability overlap and do not stack. This ability replaces spell recall."
+        },
+        {
+          "id": "magus-soul-forger-reforge-su-11",
+          "name": "Reforge (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, as a standard action, a soul forger can restore a number of hit points equal to his magus level to a damaged object by touching it and spending 1 point from his arcane pool. Repairing a destroyed object takes 1 minute and materials equal to 1/4 the item’s sale value, and restores the object to 1 hit point. Restoring the enchantments of a destroyed magical item requires additional points from the soul forger’s arcane pool equal to the item’s caster level. The soul forger gains one temporary negative level if the item’s caster level is lower than his own, two negative levels if equal or greater (or none if the item is his bonded weapon); the save DC to remove these negative levels is equal to 10 + the item’s caster level. This ability replaces improved spell recall."
+        },
+        {
+          "id": "magus-soul-forger-destructive-counterstrike-su-16",
+          "name": "Destructive Counterstrike (Su)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, an opponent who activates a magical item while threatened by a soul forger provokes an attack of opportunity, either against the target or to sunder the item. If the item is destroyed, its effects are negated. This ability replaces counterstrike."
+        },
+        {
+          "id": "magus-soul-forger-instantaneous-reconstruction-su-19",
+          "name": "Instantaneous Reconstruction (Su)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, a soul forger can reforge a destroyed item by touch as a standard action that does not provoke attacks of opportunity. This ability replaces greater spell access."
+        },
+        {
+          "id": "magus-soul-forger-magus-arcana-1",
+          "name": "Magus Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following magus arcana complement the soul forger archetype: arcane accuracy, bane blade, devoted blade, dispelling strike, enduring blade, and ghost blade."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Soul%20Forger"
+  }
+}

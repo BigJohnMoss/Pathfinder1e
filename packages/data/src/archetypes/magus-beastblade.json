@@ -1,0 +1,55 @@
+{
+  "id": "magus-beastblade",
+  "name": "Beastblade",
+  "classId": "magus",
+  "summary": "Beastblade magi work in tandem with their familiars, using spell, steel, and claw to clear the battlefield of foes.",
+  "replacesText": "3rd-level Magus Arcana; Spell Recall; Knowledge Pool; Improved Spell Recall",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "magus-arcana-3",
+        "magus-spell-recall-4",
+        "magus-improved-spell-recall-11"
+      ],
+      "features": [
+        {
+          "id": "magus-beastblade-familiar-ex-3",
+          "name": "Familiar (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the beastblade gains the familiar magus arcana. This ability replaces the magus arcana gained at 3rd level."
+        },
+        {
+          "id": "magus-beastblade-tandem-touch-su-4",
+          "name": "Tandem Touch (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, while the beastblade’s familiar is holding the charge for a touch spell, the beastblade can cast another spell without discharging the familiar’s held charge. This ability replaces spell recall."
+        },
+        {
+          "id": "magus-beastblade-familiar-pool-su-7",
+          "name": "Familiar Pool (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, when a beastblade prepares his magus spells, he can expend points from his arcane pool (up to a maximum number of points equal to his Intelligence modifier) to empower his familiar. For each point expended in this way, the familiar can cast one magus spell as a spelllike ability once that day. Each spell selected must be 3 spell levels lower than the highest spell level the beastblade can cast, and can’t require a material component that costs more than 1 gp. This ability replaces knowledge pool."
+        },
+        {
+          "id": "magus-beastblade-familiar-spellstrike-su-11",
+          "name": "Familiar Spellstrike (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, whenever a beastblade’s familiar successfully delivers a touch spell against a creature the magus threatens, the target provokes an attack of opportunity from the magus. This ability replaces improved spell recall."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Beastblade"
+  }
+}

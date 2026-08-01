@@ -238,7 +238,37 @@ The generated catalogue now contains 46 playable classes, 89 option groups,
 3,447 feats, 40 traits, and 2,073 spells. The production bundle remains within
 the recorded client-size budget.
 
-Future work should be selected as a new, deliberately scoped milestone while
-preserving the completed Core, Expanded Character Options, Installable
-Application, and Universal builder systems through their validation and browser
-journey suites.
+## Active milestone: Later-Class Content Depth
+
+Bring the 28 APG, Ultimate, Advanced Class Guide, and Occult Adventures classes
+to the same content depth as the original Core-class experience.
+
+1. [ ] Extend the sourced archetype importer and coverage report to every later
+   base and hybrid class, retaining replacements, restrictions, source links,
+   automation status, search, stacking, and persistence.
+2. [x] Import and validate the published Magus, Gunslinger, and Samurai
+   archetype catalogues as the first reusable batch.
+3. [ ] Import and validate archetypes for the five APG and nine Advanced Class
+   Guide class families.
+4. [ ] Import and validate archetypes for all six Occult Adventures classes.
+5. [ ] Complete defining option catalogues that are currently representative,
+   including arcana, deeds, orders, wild talents, tricks, focus powers,
+   amplifications, disciplines, and emotional focuses.
+6. [ ] Replace derived proxy spell lists with exact sourced class spell levels
+   for every later spellcasting class.
+7. [ ] Add level-20 desktop and narrow-mobile journeys covering archetype
+   selection, dependent choices, persistence, spell use, and class resources.
+8. [ ] Regenerate coverage, enforce performance budgets, pass the complete CI
+   suite, and deploy the finished milestone.
+
+### Completion criteria
+
+- [ ] every later base and hybrid class exposes its published archetypes
+- [ ] every imported archetype has explicit mechanical coverage and no silent effects
+- [ ] defining class-option catalogues are complete and prerequisite-aware
+- [ ] later-class spell lists use exact sourced levels rather than proxy lists
+- [ ] representative archetyped builds persist and reach level 20 on desktop and mobile
+- [ ] validation, UI, browser, production, offline, and performance gates pass
+
+All work must preserve the completed Core, Expanded Character Options,
+Installable Application, Universal Builder, and Builder Expansion milestones.
