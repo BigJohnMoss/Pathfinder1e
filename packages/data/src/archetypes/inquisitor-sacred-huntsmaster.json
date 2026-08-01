@@ -71,6 +71,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"sacred-huntsmaster-companion","kind":"animal","label":"Sacred huntsmaster companion","optionId":"sacred-huntsmaster-companion","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

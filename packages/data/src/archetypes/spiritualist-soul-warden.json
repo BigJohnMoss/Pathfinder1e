@@ -60,6 +60,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"nosoi-scribe","kind":"familiar","label":"Nosoi scribe","optionId":"nosoi-scribe","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

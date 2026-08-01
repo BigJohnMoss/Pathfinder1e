@@ -56,6 +56,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"bonded-investigator-familiar","kind":"familiar","label":"Bonded investigator familiar","optionId":"bonded-investigator-familiar","minimumLevel":2,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

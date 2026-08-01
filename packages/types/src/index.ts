@@ -213,6 +213,7 @@ export interface ArchetypeCompanionGrant {
   optionId: string;
   minimumLevel: number;
   effectiveLevelAdjustment?: number;
+  stacksWithExisting?: boolean;
 }
 export type Prerequisite =
   | { type: "level"; minimum?: number; maximum?: number }

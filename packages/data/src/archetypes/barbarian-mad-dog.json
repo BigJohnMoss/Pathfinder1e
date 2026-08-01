@@ -83,6 +83,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"war-beast","kind":"animal","label":"War beast","optionId":"mad-dog-war-beast","minimumLevel":1}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

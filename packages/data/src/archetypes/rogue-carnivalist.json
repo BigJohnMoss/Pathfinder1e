@@ -66,6 +66,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"carnivalist-familiar","kind":"familiar","label":"Carnivalist familiar","optionId":"carnivalist-familiar","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

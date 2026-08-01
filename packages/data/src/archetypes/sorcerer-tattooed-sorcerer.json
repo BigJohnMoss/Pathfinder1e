@@ -52,6 +52,7 @@
       ]
     }
   ],
+  "companionGrants": [{"id":"familiar-tattoo","kind":"familiar","label":"Familiar tattoo","optionId":"tattooed-sorcerer-familiar","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

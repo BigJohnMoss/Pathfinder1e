@@ -196,6 +196,7 @@ for (const url of await jsonFiles("archetypes/")) {
       if (!['animal', 'mount', 'familiar'].includes(grant?.kind) || typeof grant?.label !== "string" || !grant.label.trim() || typeof grant?.optionId !== "string" || !grant.optionId.trim()) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has invalid identity fields`);
       if (!Number.isInteger(grant?.minimumLevel) || grant.minimumLevel < 1 || grant.minimumLevel > 20) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid minimumLevel`);
       if (grant?.effectiveLevelAdjustment !== undefined && (!Number.isInteger(grant.effectiveLevelAdjustment) || grant.effectiveLevelAdjustment < -19 || grant.effectiveLevelAdjustment > 19)) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid effectiveLevelAdjustment`);
+      if (grant?.stacksWithExisting !== undefined && typeof grant.stacksWithExisting !== "boolean") errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid stacksWithExisting flag`);
     }
   }
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);
