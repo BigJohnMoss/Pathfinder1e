@@ -24,8 +24,14 @@ const standardTricks = parse(trickDocument.querySelectorAll('[id^="MainContent_D
 const masterfulTricks = parse(trickDocument.querySelectorAll('[id^="MainContent_DataList2_LabelName_"]'), "mesmerist-masterful-trick", 12, trickUrl);
 await writeGroup("mesmerist-tricks.json", "mesmerist-tricks", "Mesmerist Tricks", "mesmerist", 1, [...standardTricks, ...masterfulTricks], trickUrl);
 
+const stareUrl = "https://www.aonprd.com/MesmeristStares.aspx";
+const stareDocument = await documentFor(stareUrl);
+const boldStares = parse(stareDocument.querySelectorAll('[id^="MainContent_DataListTypes_LabelName_"]'), "mesmerist-bold-stare", 3, stareUrl);
+const devilbaneStares = parse(stareDocument.querySelectorAll('[id^="MainContent_DataList2_LabelName_"]'), "mesmerist-bold-stare", 3, stareUrl);
+await writeGroup("mesmerist-bold-stares.json", "mesmerist-bold-stares", "Bold Stare Improvements", "mesmerist", 3, [...boldStares, ...devilbaneStares], stareUrl);
+
 const amplificationUrl = "https://www.aonprd.com/PhrenicAmplifications.aspx";
 const amplificationDocument = await documentFor(amplificationUrl);
 await writeGroup("psychic-amplifications.json", "psychic-amplifications", "Phrenic Amplifications", "psychic", 1, parse(amplificationDocument.querySelectorAll('[id^="MainContent_DataListTypes_LabelName_"]'), "psychic-amp", 1, amplificationUrl), amplificationUrl);
 await writeGroup("psychic-major-amplifications.json", "psychic-major-amplifications", "Major Phrenic Amplifications", "psychic", 11, parse(amplificationDocument.querySelectorAll('[id^="MainContent_DataList1_LabelName_"]'), "psychic-major-amp", 11, amplificationUrl), amplificationUrl);
-console.log("Imported 30 Mesmerist tricks, 14 masterful tricks, 22 phrenic amplifications, and 9 major amplifications.");
+console.log("Imported 30 Mesmerist tricks, 14 masterful tricks, 24 bold stares, 22 phrenic amplifications, and 9 major amplifications.");
