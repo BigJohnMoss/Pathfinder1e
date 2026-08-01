@@ -1,0 +1,58 @@
+{
+  "id": "medium-voice-of-the-void",
+  "name": "Voice of the Void",
+  "classId": "medium",
+  "summary": "Some mediums delve deeply into the spirit world and make contact with entities that exist outside the boundaries of the sane multiverse.",
+  "replacesText": "Spirit; Taboo; Haunt Channeler",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "medium-spirit-1",
+        "medium-spirit-bonus-1",
+        "medium-spirit-surge-1",
+        "medium-spirit-mastery-19",
+        "medium-taboo-2",
+        "medium-haunt-channeler-3"
+      ],
+      "features": [
+        {
+          "id": "medium-voice-of-the-void-emissary-su-1",
+          "name": "Emissary (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A voice of the void channels entities called emissaries, which emulate the six legends but possess a different kind of inscrutable, alien power. They originate in a place that no mortal mind can comprehend, and their power merely passes through the astral realm to reach the medium. For each point of influence an emissary gains over a medium, the medium takes a –1 penalty on Will saves, Wisdom checks, and Wisdombased skill checks, in addition to the other penalties imposed by the emissary’s influence. If an emissary gains enough influence to take control of him, when the medium awakens, in addition to performing the bidding of the alien entity, he retains faint memories of horrible things in dark places and takes 2d4 points of Wisdom damage. This ability alters spirit."
+        },
+        {
+          "id": "medium-voice-of-the-void-surge-of-the-void-su-1",
+          "name": "Surge of the Void (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The voice of the void can use spirit surge additional times per day without incurring influence, but each time he does, he is confused for 1 round. If this confusion would cause him to babble, he can instead act normally, but his emissary gains 1 point of influence over him. The voice of the void can’t use this ability if he is immune to confusion, but he can remove the confused condition when he is affected by it. This temporary confusion clearly indicates the voice of the void isn’t fully in control, so if he uses this power on a Diplomacy check in a negotiation, for example, it might prejudice the other party against him regardless of his check result. This ability modifies spirit surge."
+        },
+        {
+          "id": "medium-voice-of-the-void-blasphemy-ex-10",
+          "name": "Blasphemy (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "Emissaries demand that a medium perform acts appealing to their alien whims. These work just like taboos for an ordinary medium, but in addition to the base taboo, they require bizarre and alien acts that distance the voice of the void from his own humanity. These blasphemies cause the medium to take a –1 penalty on Charisma checks and Charisma-based skill checks whenever he accepts a taboo. The increased devotion required to maintain a blasphemy reaps a greater reward, however. If the voice of the void is under a blasphemy, the die for his spirit surge changes from 1d6 to 1d8, increasing to 1d10 at 10th level and 1d12 at 20th level. This ability alters taboo."
+        },
+        {
+          "id": "medium-voice-of-the-void-void-channeler-su-3",
+          "name": "Void Channeler (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the voice of the void can funnel energy from the emissaries’ realm through himself. A number of times per day equal to his Charisma modifier, the medium can unleash a burst of energy that damages all other creatures except aberrations within 30 feet of him. The burst deals 1d6 points of damage + 1d6 additional points of damage for every 2 medium levels the medium has beyond 3rd. Creatures receive a Will save to halve the damage (DC = 10 + 1/2 the medium’s level + the medium’s Charisma modifier). Creatures with fewer HD than half the medium’s level who fail the Will save are also confused for 1d4 rounds. This ability replaces haunt channeler."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Medium%20Voice%20of%20the%20Void"
+  }
+}

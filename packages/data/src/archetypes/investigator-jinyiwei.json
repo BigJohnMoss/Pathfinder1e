@@ -1,0 +1,58 @@
+{
+  "id": "investigator-jinyiwei",
+  "name": "Jinyiwei",
+  "classId": "investigator",
+  "summary": "Jinyiwei are a special task force of secret police whose mission is to root out, expose, and counteract their government’s existing wrongdoing.",
+  "replacesText": "Inspiration; Alchemy; Trapfinding; Trap Sense; Swift Alchemy",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-inspiration-1",
+        "investigator-amazing-inspiration-7",
+        "investigator-true-inspiration-20",
+        "investigator-alchemy-1",
+        "investigator-swift-alchemy-4",
+        "investigator-trapfinding-1"
+      ],
+      "features": [
+        {
+          "id": "investigator-jinyiwei-divine-inspiration-1",
+          "name": "Divine Inspiration",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A jinyiwei follows a mandate from Heaven to combat corruption in the mortal world. A jinyiwei adds her Wisdom modifier to her inspiration pool, rather than her Intelligence modifier. Additionally, rather than dabbling in the arcane arts of alchemy, a jinyiwei is empowered by the forces of celestial bureaucracy. She casts spells as an inquisitor of the same level. This alters the inspiration class feature and replaces the alchemy class feature."
+        },
+        {
+          "id": "investigator-jinyiwei-suspicious-mind-ex-1",
+          "name": "Suspicious Mind (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A jinyiwei adds half her level (minimum 1) to Sense Motive checks, Linguistics checks to detect forgeries, and Perception checks to see through disguises, locate creatures using Stealth, or locate a secret door or compartment. This replaces trapfinding."
+        },
+        {
+          "id": "investigator-jinyiwei-celestial-insight-ex-3",
+          "name": "Celestial Insight (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a jinyiwei learns to see through the types of magic that often lead others astray. She gains a +1 competence bonus on saving throws to resist enchantment and illusion effects. At 6th level and every 3 levels thereafter, these bonuses increase by 1 (to a maximum of +6 at 18th level). This replaces trap sense."
+        },
+        {
+          "id": "investigator-jinyiwei-imperial-judgment-su-4",
+          "name": "Imperial Judgment (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a jinyiwei can carry out trial and sentence with her own divine authority. She gains the judgment inquisitor class feature as an inquisitor 3 levels lower than her investigator level, and her investigator levels stack with inquisitor levels for the purposes of determining her judgments’ abilities and number of judgments per day. At 11th level, she gains the second judgment inquisitor class feature, and at 19th level, she gains the third judgment inquisitor class feature. This replaces swift alchemy."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Jinyiwei"
+  }
+}

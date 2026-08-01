@@ -1,0 +1,63 @@
+{
+  "id": "investigator-holomog-demolitionist",
+  "name": "Holomog Demolitionist",
+  "classId": "investigator",
+  "summary": "Holomog is an ancient nation built on even more ancient ruins. Its renowned civil engineers develop skills that allow them to take full advantage of their environments.",
+  "replacesText": "Poison Lore; Poison Resistance; 3rd, 9th-level Investigator Talent; Studied Target",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-poison-lore-2",
+        "investigator-poison-resistance-2",
+        "investigator-talent-3",
+        "investigator-talent-9"
+      ],
+      "features": [
+        {
+          "id": "investigator-holomog-demolitionist-structural-knowledge-ex-2",
+          "name": "Structural Knowledge (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a Holomog demolitionist gains Improved Sunder as a bonus feat, even if he does not meet the prerequisites. This replaces poison lore."
+        },
+        {
+          "id": "investigator-holomog-demolitionist-structural-insight-ex-2",
+          "name": "Structural Insight (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a Holomog demolitionist gains an insight bonus equal to his investigator level on Acrobatics checks to move through difficult terrain. At 5th level, when attempting to damage objects and structures, he ignores the first 5 points of hardness. At 8th level, the Holomog demolitionist gains a +2 insight bonus on attack rolls when attempting to sunder an item. At 11th level, he can attempt a sunder combat maneuver check against a wall no more than 5 feet thick. If the damage from the sunder combat maneuver exceeds the wall’s hardness, the Holomog demolitionist creates a 5-foot opening in the wall, through which a Medium creature can easily pass. This replaces poison resistance."
+        },
+        {
+          "id": "investigator-holomog-demolitionist-ricochet-ex-3",
+          "name": "Ricochet (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level as a standard action, the Holomog demolitionist can attack an adjacent wall or object with a melee weapon. On a hit, he creates a 15-foot-cone of rock shards or splinters that deals 2d6 points of damage to targets in the area of effect. A target can attempt a Reflex save (DC = 10 + half the Holomog demolitionist’s level + his Intelligence modifier) to reduce this damage by half. At 9th level, the damage increases to 4d6, and the investigator can create this effect with a ranged weapon by targeting a wall or object within 30 feet. This replaces the investigator talents gained at 3rd and 9th levels."
+        },
+        {
+          "id": "investigator-holomog-demolitionist-studied-strike-ex-20",
+          "name": "Studied Strike (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "A Holomog demolitionist’s studied strike damage increases every 4 levels, rather than every 2 (to 2d6 at 8th, 3d6 at 12th, 4d6 at 16th, and 5d6 at 20th level). This alters studied strike."
+        },
+        {
+          "id": "investigator-holomog-demolitionist-battlefield-preparation-ex-6",
+          "name": "Battlefield Preparation (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the investigator can create 10 feet of difficult terrain by spending a full-round action to analyze and manipulate his surroundings. This terrain can be in any shape designated by the investigator, but at least 1 square must be adjacent to his position. For every 4 levels he has beyond 6th, the investigator can create an additional 10 feet of difficult terrain, to a maximum of 40 feet at 18th level. This is a physical alteration that remains in place until the surface is altered again (the road is repaved, the floor repaired, etc.), and the Holomog demolitionist ignores the effects of any difficult terrain he creates in this way. At 10th level, the Holomog demolitionist can use this ability to create clouds of dust and rubble that create concealment rather than difficult terrain in the same area. This concealment lasts 1d4 rounds plus 1 round for every 4 investigator levels, and the Holomog demolitionist is affected by the concealment as normal. At 14th level, the difficult terrain the Holomog demolitionist creates provides cover for himself and his allies."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Holomog%20Demolitionist"
+  }
+}

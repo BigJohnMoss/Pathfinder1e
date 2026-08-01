@@ -1,0 +1,71 @@
+{
+  "id": "slayer-vanguard",
+  "name": "Vanguard",
+  "classId": "slayer",
+  "summary": "Vanguards are battlefield commanders who focus on the brutality of combat and lead their allies to bloody victory.",
+  "replacesText": "Track; 2nd and 4th-level Slayer Talents; Stalker",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-track-1",
+        "slayer-swift-tracker-11",
+        "slayer-talent-2",
+        "slayer-talent-4",
+        "slayer-stalker-7"
+      ],
+      "features": [
+        {
+          "id": "slayer-vanguard-lookout-ex-1",
+          "name": "Lookout (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a vanguard adds 1/2 his level (minimum 1) to initiative checks. This ability replaces track."
+        },
+        {
+          "id": "slayer-vanguard-tactician-ex-2",
+          "name": "Tactician (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a vanguard receives a teamwork feat as a bonus feat. He must meet the prerequisites for this feat. Once per day as a standard action, the vanguard can grant one of his teamwork feats to all allies within 30 feet who can see and hear him. Allies retain the use of this bonus feat for 3 rounds plus 1 round for every 2 levels the vanguard possesses. Allies do not need to meet the prerequisites of this bonus feat. Whenever the vanguard is able to select a new slayer talent, he can instead choose to gain an additional use per day of this ability. This ability replaces the slayer talent gained at 2nd level."
+        },
+        {
+          "id": "slayer-vanguard-vanguard-s-bond-ex-4",
+          "name": "Vanguard’s Bond (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a vanguard forms a bond with his fighting companions. As a move action, he can choose one of his current studied targets and grant half his studied target bonus against that target to all allies within 30 feet who can see or hear him. This bonus lasts for a number of rounds equal to the slayer’s Intelligence modifier (minimum 1). This bonus does not stack with any favored enemy or studied target bonuses possessed by his allies; they use whichever bonus is higher. This ability replaces the slayer talent gained at 4th level."
+        },
+        {
+          "id": "slayer-vanguard-ever-ready-ex-7",
+          "name": "Ever Ready (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a vanguard is never considered an unaware combatant ( Core Rulebook 178) and is always able to act in the surprise round. The vanguard is still flat-footed in the surprise round until he acts. This ability replaces stalker."
+        },
+        {
+          "id": "slayer-vanguard-slayer-talents-1",
+          "name": "Slayer Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following slayer talents complement the vanguard archetype: combat trick, finesse rogue, hard to fool APG , rogue crawl, surprise attack, terrain mastery UC , and weapon training."
+        },
+        {
+          "id": "slayer-vanguard-advanced-slayer-talents-1",
+          "name": "Advanced Slayer Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced slayer talents (and advanced rogue talents) complement the vanguard archetype: feat UC , opportunist, slayer camouflage*, and unwitting ally UC . (Those with asterisks [*] are detailed in the slayer class, starting on page 53.)"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Vanguard"
+  }
+}

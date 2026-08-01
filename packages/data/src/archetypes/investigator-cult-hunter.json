@@ -1,0 +1,96 @@
+{
+  "id": "investigator-cult-hunter",
+  "name": "Cult Hunter",
+  "classId": "investigator",
+  "summary": "Cult hunters seek out heretical secret societies, purging their ideological taint and banishing summoned servants.",
+  "replacesText": "Trapfinding; Poison Resistance; Poison Immunity; Poison Lore; Trap Sense; Swift Alchemy; Studied Combat Studied Strike; 7th, 13th-level Investigator Talent",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-trapfinding-1",
+        "investigator-poison-resistance-2",
+        "investigator-poison-immunity-11",
+        "investigator-poison-lore-2",
+        "investigator-swift-alchemy-4",
+        "investigator-studied-combat-4",
+        "investigator-studied-strike-4",
+        "investigator-talent-7",
+        "investigator-talent-13"
+      ],
+      "features": [
+        {
+          "id": "investigator-cult-hunter-sense-madness-ex-1",
+          "name": "Sense Madness (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A cult hunter adds a bonus equal to 1/2 his class level (minimum +1) on Sense Motive checks, or double that bonus to determine whether a creature suffers from natural or magical insanity. This ability replaces trapfinding."
+        },
+        {
+          "id": "investigator-cult-hunter-purify-mind-and-body-ex-2",
+          "name": "Purify Mind and Body (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a cult hunter gains a +1 bonus on saving throws against compulsions and poisons. This bonus increases to +2 at 5th level and +3 at 8th level. At 11th level, a cult hunter who fails a saving throw against a compulsion or poison can expend 1 use of his inspiration to reroll the saving throw (and his inspiration die, if added to the save). He must accept the result of this second roll, even if it is worse. This ability replaces poison resistance and poison immunity."
+        },
+        {
+          "id": "investigator-cult-hunter-student-of-the-beyond-ex-2",
+          "name": "Student of the Beyond (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a cult hunter gains a bonus equal to 1/2 his class level on Knowledge and Spellcraft checks made to recognize any calling and summoning spells, portals, rifts, and planar travel. This ability replaces poison lore."
+        },
+        {
+          "id": "investigator-cult-hunter-ambush-defense-ex-3",
+          "name": "Ambush Defense (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a cult hunter gains a +1 insight bonus during a surprise round triggered by his enemies on Reflex saves and to his AC. This bonus increases by 1 for every 3 investigator levels beyond 3rd. This ability replaces trap sense."
+        },
+        {
+          "id": "investigator-cult-hunter-cultic-study-ex-1",
+          "name": "Cultic Study (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A cult hunter can spend 8 hours studying a specific deity or religion to gain a +1 bonus on Bluff, Intimidate, Knowledge, Perception, and Sense Motive checks against followers of that deity or religion and against extraplanar creatures. These bonuses increase by 1 for every 4 investigator levels beyond 4th. If he studies a new deity or religion, the bonuses replace the former bonuses. This ability replaces swift alchemy."
+        },
+        {
+          "id": "investigator-cult-hunter-cult-combat-ex-1",
+          "name": "Cult Combat (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A cult hunter’s bonuses on attack and damage rolls when using studied combat increase by 1 against followers of the cult he chose with his cultic study ability and decrease by 1 against other targets. This ability alters studied combat."
+        },
+        {
+          "id": "investigator-cult-hunter-cult-strike-ex-1",
+          "name": "Cult Strike (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A cult hunter’s studied strike uses d8s for the bonus damage against targets that belong to the cult he’s studied. Against other targets, his studied strike uses d4s for the bonus damage. This ability alters studied strike."
+        },
+        {
+          "id": "investigator-cult-hunter-summoning-sense-su-7",
+          "name": "Summoning Sense (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a cult hunter gains the benefits of uncanny dodge and improved uncanny dodge against summoned creatures. This ability replaces the 7th-level investigator talent."
+        },
+        {
+          "id": "investigator-cult-hunter-extraplanar-expulsion-sp-13",
+          "name": "Extraplanar Expulsion (Sp)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a cult hunter can grant himself the ability to use dispel chaos, dispel evil, dispel good , or dispel law as a spell-like ability (using his investigator level as his caster level and his Intelligence to determine the DCs) by sacrificing an unused 5th- or 6th-level extract for the day. He is able to use this ability as many times as he likes, but only so long as he continues to have unused 5thor 6th-level extract slots to expend. This replaces the 13th-level investigator talent."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Cult%20Hunter"
+  }
+}

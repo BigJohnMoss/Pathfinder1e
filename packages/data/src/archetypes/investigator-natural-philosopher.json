@@ -1,0 +1,66 @@
+{
+  "id": "investigator-natural-philosopher",
+  "name": "Natural Philosopher",
+  "classId": "investigator",
+  "summary": "Natural philosophers are scholars, explorers, and survivalists who feel at home in nature, seldom longing for the comforts of the city.",
+  "replacesText": "Weapon/Armor Proficiencies; Class Skills; Inspiration; Trapfinding; Alchemy; Trap Sense; 3rd-level Investigator Talent",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-inspiration-1",
+        "investigator-amazing-inspiration-7",
+        "investigator-true-inspiration-20",
+        "investigator-trapfinding-1",
+        "investigator-alchemy-1",
+        "investigator-swift-alchemy-4",
+        "investigator-talent-3"
+      ],
+      "features": [
+        {
+          "id": "investigator-natural-philosopher-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A natural philosopher is proficient with simple weapons, plus the handaxe, kukri, shortbow, throwing axe, and whip. A natural philosopher is proficient with light armor but not with shields. This replaces the investigator’s weapon and armor proficiency."
+        },
+        {
+          "id": "investigator-natural-philosopher-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A natural philosopher gains Survival as a class skill, but doesn’t gain Perform as a class skill. This alters the investigator’s class skills."
+        },
+        {
+          "id": "investigator-natural-philosopher-natural-philosopher-s-inspiration-ex-1",
+          "name": "Natural Philosopher’s Inspiration (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Natural philosophers employ a skill set suited to studying the natural world. A natural philosopher can use inspiration on Heal and Survival checks without expending a use of inspiration, provided he is trained in the skill, but cannot do so for Linguistics or Spellcraft checks. He can later trade an investigator talent for the ability to use inspiration on Linguistics and Spellcraft checks without expending a use of inspiration, provided he is trained in the skill. This alters inspiration."
+        },
+        {
+          "id": "investigator-natural-philosopher-track-ex-1",
+          "name": "Track (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A natural philosopher adds half his level (minimum 1) on Survival checks to follow tracks. This replaces trapfinding."
+        },
+        {
+          "id": "investigator-natural-philosopher-herbalism-su-3",
+          "name": "Herbalism (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a natural philosopher augments his knowledge of alchemy with herbal lore. He gains the infusion discovery and can use Knowledge (nature) in place of Craft (alchemy) and Profession (herbalist) checks. He also gains a competence bonus equal to his class level on Craft (alchemy) checks to create alchemical items, and he gains half that bonus on Profession (herbalist) checks to find herbs (for more information on herbalism, see page 152). This alters alchemy and replaces trap sense and the investigator talent gained at 3rd level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Natural%20Philosopher"
+  }
+}

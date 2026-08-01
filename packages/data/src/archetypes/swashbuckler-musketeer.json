@@ -1,0 +1,47 @@
+{
+  "id": "swashbuckler-musketeer",
+  "name": "Musketeer",
+  "classId": "swashbuckler",
+  "summary": "A number of organizations and kingdoms search for warriors who are brave (or foolish) enough to wield firearms on the battlefield.",
+  "replacesText": "Weapon Proficiencies; Swashbuckler Finesse; Dodging Panache",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "swashbuckler-finesse-1",
+        "swashbuckler-panache-1"
+      ],
+      "features": [
+        {
+          "id": "swashbuckler-musketeer-weapon-proficiency-1",
+          "name": "Weapon Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A musketeer gains proficiency with all simple weapons and martial weapons, as well as onehanded and two-handed firearms. This ability replaces the swashbuckler’s weapon proficiencies."
+        },
+        {
+          "id": "swashbuckler-musketeer-musketeer-instruction-ex-1",
+          "name": "Musketeer Instruction (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a musketeer gains the benefits of the Weapon Finesse feature with the rapier (this counts as having the Weapon Finesse feat for purposes of meeting feat prerequisites), as well as both Rapid Reload (musket) UC and Gunsmithing UC feats as bonus feats. This ability replaces swashbuckler finesse."
+        },
+        {
+          "id": "swashbuckler-musketeer-deed-1",
+          "name": "Deed",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The musketeer gains the following deed, which replaces an existing deed. Quick Clear (Ex) : At 1st level, as a standard action the musketeer can spend 1 panache point to remove the broken condition from a single firearm he is currently wielding, as long as the firearm gained that condition through a misfire. This deed replaces dodging panache."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Swashbuckler%20Musketeer"
+  }
+}

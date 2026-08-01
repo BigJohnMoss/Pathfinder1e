@@ -1,0 +1,72 @@
+{
+  "id": "slayer-sczarni-executioner",
+  "name": "Sczarni Executioner",
+  "classId": "slayer",
+  "summary": "These professional killers are trained and used almost exclusively by the various Sczarni crime families.",
+  "replacesText": "Class Skills; Studied Target; 4th-level Slayer Talent; Swift Tracker; Quarry; Improved Quarry",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-studied-target-1",
+        "slayer-talent-4",
+        "slayer-track-1",
+        "slayer-swift-tracker-11",
+        "slayer-quarry-14",
+        "slayer-improved-quarry-19"
+      ],
+      "features": [
+        {
+          "id": "slayer-sczarni-executioner-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Sczarni executioner doesn’t receive Knowledge (dungeoneering) (Int), Knowledge (geography) (Int), Ride (Dex), or Survival (Wis) as class skills. Instead, he receives Appraise (Int), Diplomacy (Cha), and Escape Artist (Dex) in addition to the other standard slayer class skills."
+        },
+        {
+          "id": "slayer-sczarni-executioner-bloodstained-hands-ex-1",
+          "name": "Bloodstained Hands (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Sczarni executioner must be evil. If he ever becomes nonevil, he loses this archetype and becomes a regular slayer."
+        },
+        {
+          "id": "slayer-sczarni-executioner-focused-killer-ex-1",
+          "name": "Focused Killer (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a Sczarni executioner’s studied target bonuses and the DCs of his slayer abilities increase by 1 against humanoid opponents, but decrease by 1 against non-humanoid targets. This ability alters studied target."
+        },
+        {
+          "id": "slayer-sczarni-executioner-painful-strike-ex-4",
+          "name": "Painful Strike* (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a Sczarni executioner automatically gains this talent. Sczarni executioners are trained to cause excruciating pain when striking targets, often leaving them reeling in agony or completely incapacitated as they slowly bleed out. A creature that takes sneak attack damage from a Sczarni executioner must make a successful a Fortitude save (DC = 10 + 1/2 the Sczarni executioner’s class level + his Intelligence modifier) or become sickened for 1d4 rounds. This ability alters the slayer talent received at 4th level and replaces swift tracker."
+        },
+        {
+          "id": "slayer-sczarni-executioner-assassinate-ex-10",
+          "name": "Assassinate (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a Sczarni executioner must select the assassinate advanced slayer talent."
+        },
+        {
+          "id": "slayer-sczarni-executioner-swift-death-ex-14",
+          "name": "Swift Death (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, once per day a Sczarni executioner can attempt to assassinate a foe without studying his foe beforehand. He must still succeed at a sneak attack against the target. At 19th level, he can make two such attacks per day. This ability replaces quarry and improved quarry."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Sczarni%20Executioner"
+  }
+}

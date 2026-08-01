@@ -1,0 +1,77 @@
+{
+  "id": "slayer-grave-warden",
+  "name": "Grave Warden",
+  "classId": "slayer",
+  "summary": "While paladins and inquisitors use their connection with the divine to fight undead hordes and other horrors of the night, a grave warden relies on knowledge, skill with weapons, and tenacity to put an end to these night-born terrors.",
+  "replacesText": "2nd and 10th-level Slayer Talents; Stalker;",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-talent-2",
+        "slayer-talent-10",
+        "slayer-stalker-7",
+        "slayer-studied-target-1",
+        "slayer-track-1",
+        "slayer-sneak-attack-3",
+        "slayer-talent-4",
+        "slayer-talent-6",
+        "slayer-talent-8",
+        "slayer-swift-tracker-11",
+        "slayer-talent-12",
+        "slayer-quarry-14",
+        "slayer-talent-14",
+        "slayer-talent-16",
+        "slayer-talent-18",
+        "slayer-improved-quarry-19",
+        "slayer-master-slayer-20",
+        "slayer-talent-20"
+      ],
+      "features": [
+        {
+          "id": "slayer-grave-warden-holy-water-sprinkler-ex-2",
+          "name": "Holy Water Sprinkler (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a grave warden can draw a flask of holy water as if it were a weapon (and can thus the Quick Draw feat to draw flasks of holy water). As a swift action, he can open a flask of holy water and pour it onto a held or adjacent melee weapon. If the weapon successfully hits an undead creature before the end of the grave warden’s next turn, the undead takes damage as if it took a direct hit from the holy water, in addition to the damage from the weapon, if any. This ability replaces the slayer talent gained at 2nd level."
+        },
+        {
+          "id": "slayer-grave-warden-death-ward-sp-7",
+          "name": "Death Ward (Sp)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a grave warden learns to perform a short ritual that grants the benefits of death ward , using his slayer level as his caster level. Performing this ritual takes 1 minute and uses 4 flasks of holy water. The grave warden can protect only himself with this ability. This ability replaces stalker."
+        },
+        {
+          "id": "slayer-grave-warden-dustbringer-ex-10",
+          "name": "Dustbringer (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a grave warden can slay a studied undead opponent. This functions as the assassinate slayer talent, except it requires a successful Will saving throw instead of a successful Fortitude save, affects only undead, and destroys the target instead of killing it. If the target succeeds at its saving throw, it becomes immune to that grave warden’s dustbringer ability for 24 hours. This ability replaces the advanced slayer talent gained at 10th level."
+        },
+        {
+          "id": "slayer-grave-warden-slayer-talents-1",
+          "name": "Slayer Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following slayer talents (and rogue talents) complement the grave warden archetype: fast stealth, finesse rogue, surprise attack, swift poison APG , terrain mastery UC , trap spotter, and unwitting ally UC . (Those with asterisks [*] are detailed in the slayer class, starting on page 53.)"
+        },
+        {
+          "id": "slayer-grave-warden-advanced-slayer-talents-1",
+          "name": "Advanced Slayer Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced slayer talents (also available to rogues) complement the grave warden archetype: hunter’s surprise APG , and slayer camouflage*."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Grave%20Warden"
+  }
+}

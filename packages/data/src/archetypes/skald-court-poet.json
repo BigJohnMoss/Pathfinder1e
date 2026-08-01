@@ -1,0 +1,43 @@
+{
+  "id": "skald-court-poet",
+  "name": "Court Poet",
+  "classId": "skald",
+  "summary": "Court poets elevate the skald’s love of history and poetry to an aristocratic ideal, captivating courts with complicated poetic traditions and inspiring others with their craft.",
+  "replacesText": "Inspired Rage; Song of Strength; Well-Versed",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-inspired-rage-1",
+        "skald-greater-rage-11",
+        "skald-mighty-rage-20",
+        "skald-song-strength-6",
+        "skald-well-versed-2"
+      ],
+      "features": [
+        {
+          "id": "skald-court-poet-raging-song-su-1",
+          "name": "Raging Song (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A court poet gains the following raging songs, allowing her to use oratory, music, and other performances to elevate the aesthetic sensibilities of her allies. Insightful Contemplation (Su) : At 1st level, affected allies gain a +2 morale bonus to Intelligence and Charisma and a +1 morale bonus on Will saving throws, but they also take a –1 penalty to AC. While under the effects of insightful contemplation, allies other than the court poet can’t use any Strength-based skills or make any physical effort that requires a Constitution check. At 4th level and every 4 skald levels thereafter, the song’s bonus on Will saves increases by 1; the penalty to AC doesn’t change. At 8th and 16th levels, the song’s bonuses to Intelligence and Charisma increase by 2. (Unlike the barbarian’s rage ability, those affected are not fatigued after the song ends.) This ability replaces inspired rage. Song of Inspiration (Su) : At 6th level, a court poet can use raging song to inspire her allies to greater mental clarity. Once each round while the court poet uses this performance, allies within 60 feet who can hear her can add 1/2 the court poet’s skald level to a single Wisdom check or Wisdom-based skill check. This ability replaces song of strength."
+        },
+        {
+          "id": "skald-court-poet-handling-the-crowd-ex-2",
+          "name": "Handling the Crowd (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a court poet gains a +1 bonus to AC and on Perform checks when adjacent to two or more creatures. In addition, her movement is not impeded by crowds and she gains a bonus equal to 1/2 her skald level on Diplomacy checks to influence crowds. This ability replaces well-versed."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Court%20Poet"
+  }
+}

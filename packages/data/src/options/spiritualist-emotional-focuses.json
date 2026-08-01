@@ -1,1 +1,187 @@
-{"id":"spiritualist-emotional-focuses","name":"Phantom Emotional Focuses","classIds":["spiritualist"],"optionDefaults":{"groupId":"spiritualist-emotional-focuses","classIds":["spiritualist"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Occult Adventures","page":78,"url":"https://legacy.aonprd.com/occultAdventures/classes/spiritualist.html#emotional-focus"}},"options":[{"id":"spiritualist-focus-anger","name":"Anger","benefit":"A powerful phantom driven to violent fury."},{"id":"spiritualist-focus-dedication","name":"Dedication","benefit":"A steadfast phantom committed to protecting its purpose."},{"id":"spiritualist-focus-despair","name":"Despair","benefit":"A mournful phantom that spreads hopelessness."},{"id":"spiritualist-focus-fear","name":"Fear","benefit":"A terrifying phantom that unnerves nearby foes."},{"id":"spiritualist-focus-hatred","name":"Hatred","benefit":"A relentless phantom focused on destroying chosen enemies."},{"id":"spiritualist-focus-jealousy","name":"Jealousy","benefit":"A possessive phantom skilled at disrupting rivals."},{"id":"spiritualist-focus-zeal","name":"Zeal","benefit":"An energetic phantom whose conviction drives swift attacks."}]}
+{
+  "id": "spiritualist-emotional-focuses",
+  "name": "Phantom Emotional Focuses",
+  "classIds": [
+    "spiritualist"
+  ],
+  "optionDefaults": {
+    "groupId": "spiritualist-emotional-focuses",
+    "classIds": [
+      "spiritualist"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/PhantomFocus.aspx"
+    }
+  },
+  "options": [
+    {
+      "id": "spiritualist-focus-anger",
+      "name": "Anger",
+      "minimumLevel": 1,
+      "benefit": "Phantoms with this emotional focus are filled with seething anger from events in their past lives.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Anger"
+      }
+    },
+    {
+      "id": "spiritualist-focus-dedication",
+      "name": "Dedication",
+      "minimumLevel": 1,
+      "benefit": "Either through a sense of love or the desire to finish some unfinished task, a phantom with this emotional focus has an undying devotion to something or someone in the world.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Dedication"
+      }
+    },
+    {
+      "id": "spiritualist-focus-despair",
+      "name": "Despair",
+      "minimumLevel": 1,
+      "benefit": "Some creatures die in such horrific ways, or live such pointless and senseless lives, that despair grips their very beings.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Despair"
+      }
+    },
+    {
+      "id": "spiritualist-focus-desperation",
+      "name": "Desperation",
+      "minimumLevel": 1,
+      "benefit": "A phantom with this emotional focus died desperate and panicking—a victim of drowning, suffocation, or some other inexorable and traumatic death.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Desperation"
+      }
+    },
+    {
+      "id": "spiritualist-focus-fear",
+      "name": "Fear",
+      "minimumLevel": 1,
+      "benefit": "A phantom with this emotional focus suffered from overwhelming fear in life.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Fear"
+      }
+    },
+    {
+      "id": "spiritualist-focus-greed",
+      "name": "Greed",
+      "minimumLevel": 1,
+      "benefit": "A phantom with this focus voraciously coveted gold, gems, and hedonistic possessions in life.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Greed"
+      }
+    },
+    {
+      "id": "spiritualist-focus-hatred",
+      "name": "Hatred",
+      "minimumLevel": 1,
+      "benefit": "Few things draw a spirit toward the Negative Material Plane like the emotion of hatred.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Hatred"
+      }
+    },
+    {
+      "id": "spiritualist-focus-jealousy",
+      "name": "Jealousy",
+      "minimumLevel": 1,
+      "benefit": "A phantom with this emotional focus is covetous of everything—its master, those who wish to do it harm, and any who do not pay attention to it.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Jealousy"
+      }
+    },
+    {
+      "id": "spiritualist-focus-kindness",
+      "name": "Kindness",
+      "minimumLevel": 1,
+      "benefit": "A phantom with this emotional focus was a being with a generous heart in life and continues to remain that way well after death.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Kindness"
+      }
+    },
+    {
+      "id": "spiritualist-focus-lust",
+      "name": "Lust",
+      "minimumLevel": 1,
+      "benefit": "A phantom with this focus aches for the intoxicating pleasures it experienced during life.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Lust"
+      }
+    },
+    {
+      "id": "spiritualist-focus-pride",
+      "name": "Pride",
+      "minimumLevel": 1,
+      "benefit": "No phantom is as arrogant as a pride phantom, which in life was an insufferable braggart and egotist.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Pride"
+      }
+    },
+    {
+      "id": "spiritualist-focus-remorse",
+      "name": "Remorse",
+      "minimumLevel": 1,
+      "benefit": "Spirits of creatures that died with heavy weights upon their consciences manifest with the remorse emotional focus.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Remorse"
+      }
+    },
+    {
+      "id": "spiritualist-focus-suffering",
+      "name": "Suffering",
+      "minimumLevel": 1,
+      "benefit": "Phantoms with this focus stand on trembling legs, with hands quivering and tears constantly streaming from their eyes.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Suffering"
+      }
+    },
+    {
+      "id": "spiritualist-focus-whimsey",
+      "name": "Whimsey",
+      "minimumLevel": 1,
+      "benefit": "Phantoms with this emotional focus carry a simplistic, childlike wonder and are fond of games and playing tricks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Whimsey"
+      }
+    },
+    {
+      "id": "spiritualist-focus-zeal",
+      "name": "Zeal",
+      "minimumLevel": 1,
+      "benefit": "A phantom with this emotional focus fixates on every task given as if it were the phantom’s last.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PhantomFocusDisplay.aspx?ItemName=Zeal"
+      }
+    }
+  ]
+}

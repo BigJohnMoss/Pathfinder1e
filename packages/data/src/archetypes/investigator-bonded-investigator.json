@@ -1,0 +1,64 @@
+{
+  "id": "investigator-bonded-investigator",
+  "name": "Bonded Investigator",
+  "classId": "investigator",
+  "summary": "Bonded investigators use intelligent familiars to assist them in their investigations.",
+  "replacesText": "Poison Lore; Poison Resistance; Poison Immunity; 4th-level Studied Strike, 7th-level Investigator Talent",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-poison-lore-2",
+        "investigator-poison-resistance-2",
+        "investigator-poison-immunity-11",
+        "investigator-studied-strike-4",
+        "investigator-talent-7"
+      ],
+      "features": [
+        {
+          "id": "investigator-bonded-investigator-familiar-ex-2",
+          "name": "Familiar (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a bonded investigator gains a familiar to aid him. This familiar functions as the wizard arcane bond class feature, using the bonded investigator’s class level to determine the familiar’s special abilities. The bonded investigator’s extracts are considered spells for the purposes of familiar abilities like share spell and deliver touch spells. This ability replaces poison lore, poison resistance, and poison immunity."
+        },
+        {
+          "id": "investigator-bonded-investigator-inspired-familiar-ex-4",
+          "name": "Inspired Familiar (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a bonded investigator’s familiar becomes a cunning assistant to the investigator. The familiar can access the investigator’s inspiration pool to augment its own actions; the use of inspiration is deducted from the investigator’s number of daily uses as normal. The familiar can use the inspiration ability (and gains the increased benefits of investigator talents that affect the bonus dice used in this ability) but cannot expend uses of inspiration for other purposes. This ability replaces the studied strike damage gained at 4th level."
+        },
+        {
+          "id": "investigator-bonded-investigator-studied-strike-ex-6",
+          "name": "Studied Strike (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a bonded investigator gains studied strike +1d6. At 10th level and every 4 investigator levels thereafter, this damage increases by +1d6. This ability alters studied strike."
+        },
+        {
+          "id": "investigator-bonded-investigator-improved-familiar-ex-7",
+          "name": "Improved Familiar (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a bonded investigator gains the Improved Familiar feat as a bonus feat, treating his investigator level as his arcane caster level for the purposes of determining what familiars are available to him. This replaces the investigator talent gained at 7th level."
+        },
+        {
+          "id": "investigator-bonded-investigator-investigator-talents-1",
+          "name": "Investigator Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following investigator talents complement the bonded investigator archetype effortless aid ACG , perceptive tracking ACG , tenacious inspiration ACG , and unconventional inspiration ACG ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Bonded%20Investigator"
+  }
+}

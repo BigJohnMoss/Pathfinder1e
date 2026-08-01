@@ -1,0 +1,59 @@
+{
+  "id": "warpriest-liberty-s-blade",
+  "name": "Liberty's Blade",
+  "classId": "warpriest",
+  "summary": "There are some who find in the call to freedom something primal and spiritual, even more so than other Andorens.",
+  "replacesText": "Blessings; Sacred Weapon; Channel Energy; Sacred Armor",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "warpriest-blessing-1a",
+        "warpriest-blessing-1b",
+        "warpriest-major-blessing-10a",
+        "warpriest-major-blessing-10b",
+        "warpriest-sacred-weapon-1",
+        "warpriest-sacred-weapon-enhancement-4",
+        "warpriest-channel-4"
+      ],
+      "features": [
+        {
+          "id": "warpriest-liberty-s-blade-freedom-s-focus-su-1",
+          "name": "Freedom’s Focus (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A liberty’s blade must worship a good deity who grants the Liberation blessing, and he must select the Liberation blessing. He does not gain a second blessing. This ability alters blessings."
+        },
+        {
+          "id": "warpriest-liberty-s-blade-devilslayer-su-4",
+          "name": "Devilslayer (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a liberty’s blade adds devilbane to the list of enhancements he can add to his sacred weapon. This ability alters sacred weapon."
+        },
+        {
+          "id": "warpriest-liberty-s-blade-channel-liberty-su-4",
+          "name": "Channel Liberty (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, when a liberty’s blade channels energy to heal, the effects of his healing is halved, but all creatures affected by his healing instantly benefit as if from a liberating command UC spell at the liberty’s blade’s caster level. When channeling to harm, the liberty’s blade harms devils as if using Alignment Channel instead of harming undead, and she deals double the normal amount of damage. This ability alters channel energy."
+        },
+        {
+          "id": "warpriest-liberty-s-blade-shield-against-hellspawn-su-7",
+          "name": "Shield Against Hellspawn (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a liberty’s blade adds devil-defiant UE to the list of enhancements that he can add to his sacred armor. This ability alters sacred armor."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Warpriest%20Liberty%27s%20Blade"
+  }
+}

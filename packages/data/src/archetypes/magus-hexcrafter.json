@@ -1,0 +1,54 @@
+{
+  "id": "magus-hexcrafter",
+  "name": "Hexcrafter",
+  "classId": "magus",
+  "summary": "A hexcrafter magus has uncovered the secret of using his arcane pool to recreate witch hexes.",
+  "replacesText": "Spell Recall",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "magus-spell-recall-4",
+        "magus-improved-spell-recall-11"
+      ],
+      "features": [
+        {
+          "id": "magus-hexcrafter-hex-magus-su-4",
+          "name": "Hex Magus (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the hexcrafter magus gains access to a small number of witch’s hexes. The hexcrafter magus picks one hex from the witch’s hex class feature. He gains the benefit of or uses that hex as if he were a witch of a level equal to his magus level. This feature replaces spell recall."
+        },
+        {
+          "id": "magus-hexcrafter-hex-arcana-12",
+          "name": "Hex Arcana",
+          "level": 12,
+          "type": "archetype",
+          "summary": "A hexcrafter gains access to the following magus arcana, or may select any witch hex in place of a magus arcana. At 12th level, the hexcrafter may select a hex or major hex in place of a magus arcana. At 18th level, a hexcrafter can select a hex, major hex, or grand hex in place of a magus arcana. He cannot select any hex or arcana more than once. Accursed Strike (Sp) : A hexcrafter magus who can cast bestow curse , major curse , or any spell with the curse descriptor can deliver these prepared spells using the spellstrike ability, even if the spells are not touch attack spells."
+        },
+        {
+          "id": "magus-hexcrafter-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A hexcrafter magus adds the following spells to his magus spell list: bestow curse , major curse , and all other spells of 6th level or lower that have the curse descriptor."
+        },
+        {
+          "id": "magus-hexcrafter-magus-arcana-1",
+          "name": "Magus Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following magus arcana complement the hexcrafter archetype: arcane accuracy, broad study, familiar, and quicken magic."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Hexcrafter"
+  }
+}

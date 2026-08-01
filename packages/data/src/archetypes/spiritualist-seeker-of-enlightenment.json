@@ -1,0 +1,69 @@
+{
+  "id": "spiritualist-seeker-of-enlightenment",
+  "name": "Seeker of Enlightenment",
+  "classId": "spiritualist",
+  "summary": "Sometimes a spiritualist is so haunted by a past life’s failure to reach enlightenment that the past life is reborn not as a new creature but as a phantom in a spiritualist’s consciousness.",
+  "replacesText": "Shared Consciousness; Detect Undead; Calm Spirit; See Invisibility; Fused Consciousness; Call Spirit",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-shared-consciousness-1",
+        "spiritualist-detect-undead-5",
+        "spiritualist-fused-consciousness-10"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-seeker-of-enlightenment-echoes-of-expertise-ex-12",
+          "name": "Echoes of Expertise (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "A seeker of enlightenment gains a bonus equal to her spiritualist level on checks attempted with the two skills determined by her phantom’s emotional focus. When the phantom is confined to the seeker of enlightenment’s consciousness, it grants a +2 bonus on saving throws against mind-affecting effects; at 12th level, this bonus increases to +4. Once per day as a free action, the seeker of enlightenment can attempt a check with any Knowledge skill, including one in which she is not trained, and add her spiritualist level as a bonus on the check. This replaces shared consciousness."
+        },
+        {
+          "id": "spiritualist-seeker-of-enlightenment-words-of-the-past-sp-5",
+          "name": "Words of the Past (Sp)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a seeker of enlightenment’s connection with her past lives becomes so strong that she can cast comprehend languages at will as a spell-like ability, with a caster level equal to her spiritualist level. This replaces detect undead."
+        },
+        {
+          "id": "spiritualist-seeker-of-enlightenment-karmic-insight-sp-7",
+          "name": "Karmic Insight (Sp)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a seeker of enlightenment gains the ability to understand which actions will push her toward ultimate understanding. She can cast augury as a spell-like ability once per day. At 11th level and every 4 levels thereafter, she can use this ability an additional time per day (to a maximum of four times per day at 19th level). This replaces calm spirit."
+        },
+        {
+          "id": "spiritualist-seeker-of-enlightenment-pinpoint-influence-sp-9",
+          "name": "Pinpoint Influence (Sp)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a seeker of enlightenment gains the ability to track objects that are important to her goal of enlightenment. She can cast locate object as a spell-like ability once per day, with a duration of 10 minutes. This replaces see invisibility."
+        },
+        {
+          "id": "spiritualist-seeker-of-enlightenment-echoes-of-mastery-ex-10",
+          "name": "Echoes of Mastery (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a seeker of enlightenment gains the bonus on saving throws from echoes of expertise even when her phantom is manifested. Additionally, once per day, she can take 20 on any Knowledge check, including one in which she is not trained. This replaces fused consciousness."
+        },
+        {
+          "id": "spiritualist-seeker-of-enlightenment-knowledge-of-the-ancestors-sp-16",
+          "name": "Knowledge of the Ancestors (Sp)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, a seeker of enlightenment learns how to tap into the knowledge of her past lives. She can cast legend lore as a spell-like ability once per day. This replaces call spirit."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Seeker%20of%20Enlightenment"
+  }
+}

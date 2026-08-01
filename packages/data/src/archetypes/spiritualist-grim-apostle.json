@@ -1,0 +1,196 @@
+{
+  "id": "spiritualist-grim-apostle",
+  "name": "Grim Apostle",
+  "classId": "spiritualist",
+  "summary": "Some devotees of the Four Horsemen can form spiritual manifestations of the daemonic demigods.",
+  "replacesText": "Phantom; Emotional Focus; Shared Consciousness; Fused Consciousness",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-phantom-1",
+        "spiritualist-phantom-recall-6",
+        "spiritualist-shared-consciousness-1",
+        "spiritualist-fused-consciousness-10"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-grim-apostle-grim-phantom-su-1",
+          "name": "Grim Phantom (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The spirit linked to a grim apostle functions in all respects as a regular spiritualist’s phantom, but each day when the grim apostle regains her daily spell slots, she can choose which Horseman focus (see below) is dominant within the grim phantom. When the grim phantom is banished to the Ethereal Plane, the grim apostle takes an amount of damage equal to 1d4 × the grim phantom’s number of Hit Dice. This ability modifies the phantom ability and replaces the phantom’s emotional focus."
+        },
+        {
+          "id": "spiritualist-grim-apostle-hardened-soul-su-1",
+          "name": "Hardened Soul (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, while a grim phantom is confined in the grim apostle’s consciousness, the grim apostle gains a +4 bonus on saving throws against death effects and effects that would remove or subsume the grim apostle’s soul (such as possession or trap the soul ). At 6th level and every 6 levels thereafter, this bonus increases by 2 (to a maximum of +10 at 18th level). This ability replaces shared consciousness and fused consciousness. Horseman Focus Instead of an emotional focus, a grim phantom has one of the following Horseman foci. The DC for a saving throw against any of the grim phantom’s abilities is equal to 10 + 1/2 the grim phantom’s Hit Dice + the grim phantom’s Charisma modifier. For any spell-like abilities a grim phantom receives, it uses its Hit Dice as its caster level. Death Grim phantoms influenced by Charon , the Horseman of Death, are dark, almost shapeless specters."
+        },
+        {
+          "id": "spiritualist-grim-apostle-skills-1",
+          "name": "Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The grim phantom gains ranks in Knowledge (history) and Stealth equal to its number of Hit Dice."
+        },
+        {
+          "id": "spiritualist-grim-apostle-good-saves-1",
+          "name": "Good Saves",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Fortitude and Will."
+        },
+        {
+          "id": "spiritualist-grim-apostle-fleet-1",
+          "name": "Fleet",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The grim phantom gains Fleet as a bonus feat."
+        },
+        {
+          "id": "spiritualist-grim-apostle-marked-for-death-su-5",
+          "name": "Marked for Death (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "When manifested in ectoplasmic form, the grim phantom gains a +1 bonus on attack rolls against a creature the grim apostle has hit with a melee or ranged attack since its last turn (the phantom’s “marked target”). Additionally, such an attack by the grim phantom deals an additional 1d6 points of negative energy damage. At 5th level and every 5 spiritualist levels thereafter, the negative energy damage increases by 1d6."
+        },
+        {
+          "id": "spiritualist-grim-apostle-fatal-aura-su-7",
+          "name": "Fatal Aura (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, the grim phantom can create a 10-foot-radius aura as a swift action that makes healing more difficult. The DC of Heal checks to provide first aid and treat deadly wounds within the aura is increased by 5. Any creature within the aura that casts a conjuration (healing) spell, or casts another spell or uses an ability that restores hit points, must succeed at a Will saving throw or lose the spell or use of the ability. Ending the aura is a free action."
+        },
+        {
+          "id": "spiritualist-grim-apostle-no-escape-su-12",
+          "name": "No Escape (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, the grim phantom gains the benefits of the Following Step , Step Up , and Step Up and Strike feats but only against its marked target (see above)."
+        },
+        {
+          "id": "spiritualist-grim-apostle-killing-word-sp-17",
+          "name": "Killing Word (Sp)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, the grim phantom can cast power word kill once per day as a spell-like ability. Famine Grim phantoms influenced by Trelmarixian , the Horseman of Famine, are gaunt with jackal-like features."
+        },
+        {
+          "id": "spiritualist-grim-apostle-weapon-finesse-1",
+          "name": "Weapon Finesse",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The grim phantom gains Weapon Finesse as a bonus feat."
+        },
+        {
+          "id": "spiritualist-grim-apostle-ravenous-bite-ex-1",
+          "name": "Ravenous Bite (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The grim phantom’s natural attacks take the form of bites that deal piercing damage as a creature one size category larger than its current size. It also gains Power Attack as a bonus feat."
+        },
+        {
+          "id": "spiritualist-grim-apostle-aura-of-starvation-su-7",
+          "name": "Aura of Starvation (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, the grim phantom can create a 10-foot-radius aura of starvation as a swift action. Enemies within the aura take a –2 penalty on attack and damage rolls. Ending the aura is a free action."
+        },
+        {
+          "id": "spiritualist-grim-apostle-wail-of-the-hungry-sp-12",
+          "name": "Wail of the Hungry (Sp)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, the grim phantom can cast waves of fatigue once per day as a spell-like ability."
+        },
+        {
+          "id": "spiritualist-grim-apostle-distended-gullet-su-17",
+          "name": "Distended Gullet (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, as a swift action, the grim phantom in ectoplasmic form gains the swallow whole ability (4d8 negative energy damage, AC 17, one-tenth the phantom’s total hit points) for a number of rounds equal to its Charisma modifier. This ability can affect creatures no more than two size categories larger than the phantom. Each creature the grim phantom swallows is shunted into an extradimensional space that can hold any number of creatures. When the duration of this ability ends, any creatures still within the extradimensional space appear adjacent to the grim phantom. The grim phantom is exhausted for 1 hour after using this ability and can’t use it again during that time. Pestilence Grim phantoms influenced by Apollyon , the Horseman of Pestilence, often have rams’ skulls for heads."
+        },
+        {
+          "id": "spiritualist-grim-apostle-great-fortitude-1",
+          "name": "Great Fortitude",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The grim phantom gains Great Fortitude as a bonus feat."
+        },
+        {
+          "id": "spiritualist-grim-apostle-weakening-strike-su-1",
+          "name": "Weakening Strike (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A creature hit by the grim phantom’s slam attack must succeed at a Fortitude saving throw or take a –2 penalty on ability checks, attack rolls, saving throws, and skill checks for 1d4 rounds. This is a disease effect. Penalties from multiple hits don’t stack."
+        },
+        {
+          "id": "spiritualist-grim-apostle-aura-of-flies-su-7",
+          "name": "Aura of Flies (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, the grim phantom can surround itself with a cloud of biting flies as a swift action. Any creature that ends its turn adjacent to the grim phantom takes 1d6 piercing damage. This damage increases by 1d6 for every 4 spiritualist levels beyond 7th. Ending the aura is a free action."
+        },
+        {
+          "id": "spiritualist-grim-apostle-contagious-touch-sp-12",
+          "name": "Contagious Touch (Sp)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, the grim phantom can cast contagion three times per day as a spell-like ability."
+        },
+        {
+          "id": "spiritualist-grim-apostle-virulent-attack-su-17",
+          "name": "Virulent Attack (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, any creature under the effects of the grim phantom’s weakening strike becomes a dangerous vector for disease. Any creature that ends its turn adjacent to the target creature is immediately exposed to any diseases the target creature has, no matter the normal method of contracting that disease. The creature must immediately attempt a saving throw against that disease, and the onset period doesn’t apply. War Grim phantoms influenced by Szuriel , the Horseman of War, look like sinister, black-winged angels."
+        },
+        {
+          "id": "spiritualist-grim-apostle-strength-focus-1",
+          "name": "Strength Focus",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The grim phantom gains a +2 bonus to Strength and a –2 penalty to Dexterity. The phantom gains bonuses to Strength instead of Dexterity as the grim apostle gains spiritualist levels."
+        },
+        {
+          "id": "spiritualist-grim-apostle-ruthless-combatant-su-11",
+          "name": "Ruthless Combatant (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "The grim phantom threatens a critical hit with its slam attack on a roll of 19–20. At 11th level, the phantom’s critical modifier with slam attacks increases to ×3. This doesn’t stack with Improved Critical or similar effects."
+        },
+        {
+          "id": "spiritualist-grim-apostle-aura-of-fury-su-7",
+          "name": "Aura of Fury (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, the grim phantom can create a 20-foot-radius aura as a swift action. Creatures within the aura gain a +2 bonus on melee attack rolls but take a –2 penalty to AC. Ending the aura is a free action."
+        },
+        {
+          "id": "spiritualist-grim-apostle-bloodlust-su-12",
+          "name": "Bloodlust (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, the grim phantom regains 1d6 hit points with each successful slam attack it makes."
+        },
+        {
+          "id": "spiritualist-grim-apostle-juggernaut-su-17",
+          "name": "Juggernaut (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, the grim phantom becomes immune to any effects that would cause it to become cowering, exhausted, fatigued, frightened, panicked, shaken, or slowed (as the slow spell)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Grim%20Apostle"
+  }
+}

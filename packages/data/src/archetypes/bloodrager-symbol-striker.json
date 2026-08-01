@@ -1,0 +1,70 @@
+{
+  "id": "bloodrager-symbol-striker",
+  "name": "Symbol Striker",
+  "classId": "bloodrager",
+  "summary": "Symbol strikers are unique form of rune-wielding berserker spellcasters whose tradition originates from Dongun Hold, a Sky Citadel in Alkenstar",
+  "replacesText": "Class Skills; Fast Movement; 6th, 9th, 12th, 18th-level Bloodline Feats;",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "bloodrager-fast-movement-1",
+        "bloodrager-bloodline-feat-6",
+        "bloodrager-bloodline-feat-9",
+        "bloodrager-bloodline-feat-12",
+        "bloodrager-bloodline-feat-18",
+        "bloodrager-bloodline-1",
+        "bloodrager-bloodrage-1",
+        "bloodrager-uncanny-dodge-2",
+        "bloodrager-blood-sanctuary-3",
+        "bloodrager-blood-casting-4",
+        "bloodrager-eschew-materials-4",
+        "bloodrager-improved-uncanny-dodge-5",
+        "bloodrager-damage-reduction-7",
+        "bloodrager-greater-bloodrage-11",
+        "bloodrager-indomitable-will-14",
+        "bloodrager-bloodline-feat-15",
+        "bloodrager-tireless-bloodrage-17",
+        "bloodrager-mighty-bloodrage-20"
+      ],
+      "features": [
+        {
+          "id": "bloodrager-symbol-striker-skills-1",
+          "name": "Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A symbol striker gains Linguistics as a class skill, but does not gain Handle Animal as a class skill. This alters the bloodrager’s class skills."
+        },
+        {
+          "id": "bloodrager-symbol-striker-rune-training-sp-1",
+          "name": "Rune Training (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A symbol striker can cast read magic at will and comprehend languages once per day, but only to decipher written text. A symbol striker also adds arcane mark and erase to his bloodrager spell list as 1st-level spells, though he must select these as spells known to be able to cast them. This replaces fast movement."
+        },
+        {
+          "id": "bloodrager-symbol-striker-weapon-rune-su-6",
+          "name": "Weapon Rune (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, once per day as a standard action, a symbol striker can imbue any spell he knows that has a range of touch or greater and a defined number of targets (rather than an area or other non-target- based effect) into a melee weapon he is holding. The spell forms itself into a brightly glowing rune, which is obvious to a casual observer. This ability functions only while the symbol striker wields the weapon. If dropped or taken, the weapon ceases granting this ability until it is returned to the symbol striker. The symbol striker can have only a single weapon rune active at a time; if he casts an additional weapon rune while a previous rune is active, the earlier rune fades. Weapon runes also fade when the symbol striker regains his spell slots for the day. Otherwise, the rune remains until the spell is discharged or dispelled. At 12th level, a symbol striker can use this ability twice per day. At 18th level, he can use this ability three times per day. As a standard action, the symbol striker can make a melee attack with a weapon that has an active weapon rune and, if the attack is successful, deal normal weapon damage and also expend the weapon rune to discharge the stored spell into the target, as if delivering the spell with the magus spellstrike class feature . This replaces the bloodline feats gained at 6th, 12th, and 18th levels."
+        },
+        {
+          "id": "bloodrager-symbol-striker-rune-trap-sp-9",
+          "name": "Rune Trap (Sp)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, as a standard action, the symbol striker can use a melee weapon to place a rune trap in any adjacent square. Any creature entering a square containing a rune trap takes 1d6 points of damage plus 1 additional point of damage for every 2 bloodrager levels the symbol striker has. This rune deals either acid, cold, electricity, or fire damage, which is decided at the rune’s creation. The rune is clearly visible and lasts a number of minutes equal to the symbol striker’s bloodrager level or until discharged. A symbol striker cannot create a rune trap in a square occupied by another creature. This rune counts as a 1st-level spell for the purpose of dispelling. A creature can disarm the rune by succeeding at a DC 26 Disable Device check. The symbol striker can use this ability a number of times per day equal to 3 plus his Charisma modifier. This replaces the bloodline feat gained at 9th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bloodrager%20Symbol%20Striker"
+  }
+}

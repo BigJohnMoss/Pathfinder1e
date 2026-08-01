@@ -1,0 +1,65 @@
+{
+  "id": "slayer-dune-rider",
+  "name": "Dune Rider",
+  "classId": "slayer",
+  "summary": "Mounted harriers, saboteurs, and skirmishers, dune riders can disrupt even the most organized opposition.",
+  "replacesText": "Track; Swift Tracker; Studied Target; Stalker, 4th, 8th-level Slayer Talent; Master Slayer",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-track-1",
+        "slayer-swift-tracker-11",
+        "slayer-studied-target-1",
+        "slayer-talent-4",
+        "slayer-talent-8",
+        "slayer-master-slayer-20"
+      ],
+      "features": [
+        {
+          "id": "slayer-dune-rider-sand-foot-ex-11",
+          "name": "Sand Foot (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "The dune rider adds half his level as a bonus on Ride checks in warm deserts, hills, and mountains. At 11th level, the dune rider and his mount no longer treat sand or rocky ground as difficult terrain, and they gain a +10-foot enhancement bonus to their base speed in warm deserts, hills, and mountains. This replaces track and fast tracker."
+        },
+        {
+          "id": "slayer-dune-rider-desert-skirmisher-ex-5",
+          "name": "Desert Skirmisher (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "The dune rider excels in combat in warm deserts, hills, and mountains. While in such terrain, he gains a +2 bonus on initiative, Perception, and Stealth checks, and a +1 bonus on attack and damage rolls. At 5th level and every 5 levels thereafter, the bonus on initiative, Perception, and Stealth checks increases by 2 (maximum +10) and the bonus on attack and damage rolls increases by 1 (maximum +5). This replaces studied target."
+        },
+        {
+          "id": "slayer-dune-rider-galloping-fire-ex-4",
+          "name": "Galloping Fire (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the penalties for the dune rider’s ranged attacks while mounted decrease by 2. These penalties decrease by an additional 2 at 7th level. This replaces stalker and the slayer talent normally gained at 4th level."
+        },
+        {
+          "id": "slayer-dune-rider-dust-vision-ex-8",
+          "name": "Dust Vision (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, the dune rider is at home in the desert. He exists comfortably in hot conditions up to 140º Fahrenheit without having to attempt Fortitude saves. His equipment is likewise protected. He takes no penalties on Perception checks from blowing sand, dust, or heat shimmers, nor do these effects grant concealment to the dune rider’s enemies within 30 feet. Effects that would grant total concealment work normally. This replaces the slayer talent normally gained at 8th level."
+        },
+        {
+          "id": "slayer-dune-rider-dunes-of-death-su-20",
+          "name": "Dunes of Death (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a dune rider can use the desert’s heat to finish off his foes. As a standard action, he can make a single attack at his full base attack bonus while in warm desert, hills, or mountains, choosing one of the following effects: kill, knock unconscious for 1d4 hours, or paralyze for 2d6 rounds. If the attack hits, the target takes damage normally and must succeed at a Fortitude save or suffer the additional effect. The DC of this save is 20 + the dune rider’s Intelligence modifier. Whether or not the target succeeds, it can’t be targeted by this ability again for 24 hours. This replaces master slayer."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Dune%20Rider"
+  }
+}

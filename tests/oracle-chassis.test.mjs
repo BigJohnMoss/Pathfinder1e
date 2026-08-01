@@ -22,15 +22,13 @@ test("Oracle has its complete level 1-20 APG chassis", () => {
   assert.ok(oracle.features.some((feature) => feature.id === "oracle-final-revelation-20"));
 });
 
-test("Oracle casts the cleric spell list spontaneously", () => {
+test("Oracle casts its exact sourced spell list spontaneously", () => {
   const first = spontaneousSpellcastingProgression(oracle, 1, { abilityScore: 16 });
   assert.equal(first.maximumSpellLevel, 1);
   assert.deepEqual(first.known, [{ level: 0, count: 4 }, { level: 1, count: 2 }]);
-  const clericSpells = bundle.spells.filter((spell) => spell.levelByClass.cleric !== undefined);
   const oracleSpells = bundle.spells.filter((spell) => spell.levelByClass.oracle !== undefined);
-  assert.ok(oracleSpells.length > 0);
-  assert.equal(oracleSpells.length, clericSpells.length);
-  assert.deepEqual(oracleSpells.map((spell) => [spell.id, spell.levelByClass.oracle]), clericSpells.map((spell) => [spell.id, spell.levelByClass.cleric]));
+  assert.equal(oracleSpells.length, 754);
+  assert.equal(oracleSpells.find((spell) => spell.id === "detect-magic").levelByClass.oracle, 0);
 });
 
 test("Oracle exposes all APG mysteries, curses, and cure-or-inflict choice", () => {

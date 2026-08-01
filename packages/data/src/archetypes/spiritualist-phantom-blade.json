@@ -1,0 +1,76 @@
+{
+  "id": "spiritualist-phantom-blade",
+  "name": "Phantom Blade",
+  "classId": "spiritualist",
+  "summary": "A small selection of spiritualists are connected to spirits of combat and warfare, and manifest a weapon instead of a phantom.",
+  "replacesText": "Weapon and Armor Proficiencies; Phantom; Phantom Recall; Spiritual Bond; Dual Bond; Etheric Tether; Shared Consciousness; Fused Consciousness; Empowered Consciousness; Bonded Senses; Bonded Manifestation; Spiritual Interference; Greater Spiritual Interference",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-phantom-1",
+        "spiritualist-phantom-recall-6",
+        "spiritualist-spiritual-bond-14",
+        "spiritualist-dual-bond-17",
+        "spiritualist-etheric-tether-1",
+        "spiritualist-shared-consciousness-1",
+        "spiritualist-fused-consciousness-10",
+        "spiritualist-empowered-consciousness-20",
+        "spiritualist-bonded-manifestation-3",
+        "spiritualist-spiritual-interference-4"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-phantom-blade-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A phantom blade is proficient with all simple and martial weapons. She is also proficient with light and medium armor. This ability alters the spiritualist’s weapon and armor proficiency."
+        },
+        {
+          "id": "spiritualist-phantom-blade-phantom-weapon-1",
+          "name": "Phantom Weapon",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A phantom blade begins play with an ectoplasmic sentient weapon known as a phantom weapon whose weapon type is chosen by the phantom blade. The weapon type must be one with which the phantom blade is proficient. A phantom weapon functions similarly to the black blade of the bladebound magus archetype ( Pathfinder RPG Ultimate Magic 47 ) except as noted on the Phantom Weapon Progression table on page 6 and in the descriptions below. A phantom blade with this class feature can’t have a phantom of any kind, even from another class. This replaces phantom, phantom recall, spiritual bond, and dual bond."
+        },
+        {
+          "id": "spiritualist-phantom-blade-spell-combat-ex-1",
+          "name": "Spell Combat (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A phantom blade can cast spells and wield her phantom weapon at the same time. This functions as the magus’s spell combat class ability ( Ultimate Magic 10 ). This replaces etheric tether, shared consciousness, fused consciousness, and empowered consciousness."
+        },
+        {
+          "id": "spiritualist-phantom-blade-spellstrike-su-2",
+          "name": "Spellstrike (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a phantom blade can deliver spells through her phantom weapon . This functions like the magus’s spellstrike class ability ( Ultimate Magic 10 ) except the only weapon the spiritualist can use to deliver spells is her phantom weapon . This replaces bonded senses."
+        },
+        {
+          "id": "spiritualist-phantom-blade-spirit-of-war-ex-3",
+          "name": "Spirit of War (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level and every 5 spiritualist levels thereafter, a phantom blade gains a bonus combat feat. The spiritualist must meet the prerequisites for these feats, but she treats her spiritualist level as her base attack bonus (in addition to base attack bonuses gained from other classes and racial Hit Dice) for the purpose of qualifying for these feats. The phantom blade also treats her spiritualist level as her fighter level for the purpose of selecting feats with a minimum number of fighter levels as a prerequisite. This replaces bonded manifestation."
+        },
+        {
+          "id": "spiritualist-phantom-blade-etheric-focus-ex-4",
+          "name": "Etheric Focus (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the phantom blade can use her phantom weapon to aid her in casting spells with thought components. She can center herself ( Pathfinder RPG Occult Adventures 144 ) as a swift action. At 12th level, the spiritualist can center herself as a free action. This ability replaces spiritual interference and greater spiritual interference. Phantom Weapon Ability Descriptions A phantom weapon has special abilities (or imparts abilities to its wielder) depending on the wielder’s spiritualist level. These abilities are cumulative. A phantom weapon normally refuses to use any of its abilities when wielded by anyone other than its phantom blade, and acts as an incorporeal masterwork weapon of its type. Alertness (Ex) : While the phantom blade is wielding or harboring her phantom weapon , she gains the Alertness feat. Phantom Touch (Ex) : A phantom weapon is always treated as a ghost touch weapon, regardless of weapon type or any other abilities modifying the weapon. If the phantom weapon would ever be destroyed, it is instead harbored in the spiritualist’s consciousness for 24 hours. Telepathy (Su) : While the phantom blade is wielding or carrying her phantom weapon , she can communicate telepathically with the weapon. Weapon of the Mind (Ex) : The phantom blade can harbor her phantom weapon in her consciousness or manifest it in its ectoplasmic form. The phantom blade can manifest the weapon through a ritual that takes 1 minute to perform. Harboring the phantom weapon requires a full-round action. While the weapon is harbored, the phantom blade gains Improved Unarmed Strike as a bonus feat and treats her unarmed strike damage as a monk of her level – 2. If the phantom blade already has this feat, she instead gains Weapon Focus (unarmed strike). The phantom blade’s unarmed strikes gain the phantom weapon ’s enhancement bonus and other abilities when the weapon is harbored. The phantom weapon also recovers a number of hit points equal to its ego score every hour that it is harbored. Quick Manifest (Ex) : At 3rd level, the phantom blade can manifest her phantom weapon as a swift action. Ectoplasmic Pool (Ex) : At 5th level, the phantom blade gains a reservoir of excess ethereal energy and ectoplasm that she can draw upon to improve her phantom weapon . This pool has a number of ectoplasmic points equal to half her spiritualist level + her Wisdom modifier. The pool refreshes once per day when the spiritualist refreshes her daily spells. The phantom blade can spend a number of ectoplasmic points to enhance or modify her phantom weapon . As a free action, she can spend 1 point to manifest or harbor her weapon. The spiritualist can also spend 2 ectoplasmic points as a free action to allow attacks made with her phantom weapon to resolve against touch AC for 1 round. As a swift action, she can spend 2 ectoplasmic points to grant the weapon one of the following weapon special abilities for 1 minute: corrosiveUE, defending, flaming, frost, keen, mercifulUE, shock , or throwing . At 11th level, she can spend 3 ectoplasmic points to grant the weapon one of the following weapon special abilities for 1 minute: corrosive burstUE, disruption, flaming burst, holy, icy burst, shocking burst , or unholy . At 15th level, she can spend 5 ectoplasmic points to grant the weapon one of the following weapon special abilities for 1 minute: brilliant energy, dancing , or speed . A phantom blade can spend an appropriate number of points to grant the weapon multiple abilities as one action. A phantom weapon cannot have a modified bonus higher than +10. Reshape (Ex) : At 7th level, a phantom blade can change the weapon type of her phantom weapon when she refreshes her daily spells. Phantom Tether (Su) : At 9th level, a phantom blade can spend 1 ectoplasmic point as a swift action to instantly recall her phantom weapon to her hand or consciousness from as far as 1 mile away. Quick Reshape (Ex) : At 13th level, a phantom blade can spend 1 ectoplasmic point to reshape her phantom weapon as a full-round action, 2 ectoplasmic points to reshape her weapon as a standard action, 3 ectoplasmic points to reshape her weapon as a move action, and 4 ectoplasmic points to reshape her weapon as a swift action. Etheric Strikes (Sp) : At 17th level, a phantom blade can spend 1 ectoplasmic point as a swift action to allow her phantom weapon to ignore a number of points of damage reduction equal to twice her Wisdom modifier or twice the weapon’s Charisma modifier, whichever is higher. Soul Eater (Su) : At 19th level, the phantom blade and her weapon can feast on the energy of departing souls. Each time she kills a living or incorporeal creature with her phantom weapon , she can pick one of the following effects: she gains a +2 bonus on attack and damage rolls for 1 round, she recovers one 1st- or 2nd-level spell slot, or she gains a number of temporary hit points equal to the phantom weapon ’s ego (these temporary hit points last until lost or 1 minute, whichever is shorter). The creature killed must have a number of Hit Dice equal to or greater than half the phantom blade’s spiritualist level for this to occur. Spiritualist Class LevelEnhancement BonusChaInt/WisEgoSpecial 1st-2nd+01065Alertness, Phantom Touch, telepathy, weapon of the mind 3rd-4th+11175Quick manifest 5th-6th+21288Ectoplasmic pool 7th-8th+213910Reshape 9th-10th+3141012Phantom tether 11th-12th+3151114- 13th-14th+4161216Quick Reshape 15th-16th+4171318- 17th-18th+5181422Etheric strikes 19th-20th+5191524Soul eater"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Phantom%20Blade"
+  }
+}

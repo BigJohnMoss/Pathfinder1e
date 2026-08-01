@@ -1,0 +1,66 @@
+{
+  "id": "swashbuckler-azatariel",
+  "name": "Azatariel",
+  "classId": "swashbuckler",
+  "summary": "Azatariels are the champions of Elysium, dedicated to spreading its unpredictable whimsy and capricious goodness across the planes.",
+  "replacesText": "Alignment; Menacing Swordplay; Precise Strike; Targeted Strike; Bleeding Wound; Charmed Life; Nimble; Bonus Feats",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "swashbuckler-charmed-life-2",
+        "swashbuckler-nimble-3",
+        "swashbuckler-bonus-feat-4",
+        "swashbuckler-bonus-feat-8",
+        "swashbuckler-bonus-feat-12",
+        "swashbuckler-bonus-feat-16",
+        "swashbuckler-bonus-feat-20"
+      ],
+      "features": [
+        {
+          "id": "swashbuckler-azatariel-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An azatariel must be chaotic good. If an azatariel changes alignment, she loses all abilities granted by this archetype until her alignment returns to chaotic good."
+        },
+        {
+          "id": "swashbuckler-azatariel-deeds-3",
+          "name": "Deeds",
+          "level": 3,
+          "type": "archetype",
+          "summary": "An azatariel gains the following deeds. Bralani’s Swiftness (Ex) : At 3rd level, while the azatariel has at least 1 point of panache, she ignores movement penalties from difficult terrain. This replaces the menacing swordplay deed. Whimsical Riposte (Ex) : At 3rd level, the azatariel adds her Charisma modifier to attack and damage rolls made with light or one-handed piercing weapons as part of her opportune parry and riposte deed (including when riposting). In addition, whenever the azatariel successfully parries an opponent’s attack, instead of riposting she can redirect that attack to another target as an immediate action. The new target must be within the attacker’s reach, and the attacker uses the original attack roll to determine the attack’s success. This replaces the precise strike deed. Lillend’s Misdirection (Ex) : At 7th level, when a foe flanking the azatariel misses her with a melee attack, the azatariel can spend 2 panache points as an immediate action to attempt a reposition combat maneuver check against the attacking foe. If she succeeds at the combat maneuver check, she and the attacking foe switch positions, and the melee attack roll that missed the azatariel instead targets the flanking opponent that did not make the attack, using the same attack roll result (including the bonus gained from flanking). This replaces the targeted strike deed. Ghaele’s Assault (Ex) : At 11th level, the azatariel can spend 2 panache points when charging. If she does, the AC penalty for charging changes to –4 and she can make a full attack at the end of her charge. This replaces the bleeding wound deed."
+        },
+        {
+          "id": "swashbuckler-azatariel-elysian-conviction-su-2",
+          "name": "Elysian Conviction (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, while she has at least 1 panache point, an azatariel adds her Charisma bonus to her saving throws against mind-affecting effects. This replaces charmed life."
+        },
+        {
+          "id": "swashbuckler-azatariel-battle-dance-ex-3",
+          "name": "Battle Dance (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level and every 4 levels thereafter, an azatariel’s base speed increases by 10 feet. This is an enhancement bonus. An azatariel in medium or heavy armor or carrying a medium or heavy load loses this extra speed. This replaces nimble."
+        },
+        {
+          "id": "swashbuckler-azatariel-affection-of-elysium-su-4",
+          "name": "Affection of Elysium (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "An azatariel’s affection relieves harmful afflictions. At 4th level and every 4 levels thereafter, an azatariel selects a mercy from those available to a paladin whose class level is equal to her swashbuckler level. She can show her affection to a willing, adjacent creature as a standard action to apply the effects of these mercies to the targeted creature, treating her swashbuckler level as her paladin level. An azatariel can use this ability a number of times per day equal to half her swashbuckler level plus her Charisma modifier. This replaces the swashbuckler’s bonus feats."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Swashbuckler%20Azatariel"
+  }
+}

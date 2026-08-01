@@ -1,0 +1,55 @@
+{
+  "id": "kineticist-arakineticist",
+  "name": "Arakineticist",
+  "classId": "kineticist",
+  "summary": "Those of strong will who live under a dark curse long enough might learn to control and channel the corrupt energy afflicting them.",
+  "replacesText": "4th, 6th, 8th, and 13th-level Utility Wild Talents",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "kineticist-utility-4",
+        "kineticist-utility-6",
+        "kineticist-utility-8"
+      ],
+      "features": [
+        {
+          "id": "kineticist-arakineticist-living-curse-1",
+          "name": "Living Curse",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An arakineticist’s curse lives within her, granting her dark powers. She must choose void as her primary element (see Pathfinder Player Companion: Occult Origins ) and negative blast as her first simple blast."
+        },
+        {
+          "id": "kineticist-arakineticist-accursed-shadow-sp-4",
+          "name": "Accursed Shadow (Sp)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, an arakineticist’s curse casts a dark shadow over her soul, shielding her from death magic. She gains a +2 bonus on saving throws against necromancy spells and death effects. This bonus increases by 1 every 4 levels beyond 4th, to a maximum of +6 at 20th level. This replaces the utility wild talent gained at 4th level."
+        },
+        {
+          "id": "kineticist-arakineticist-curse-spinner-sp-6",
+          "name": "Curse Spinner (Sp)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "An arakineticist learns to wield her living curse like a needle to weave and unravel curses. At 6th level, an arakineticist can accept 1 point of burn to cast remove curse as a spell-like ability. At 8th level, she can accept 1 point of burn to curse a target as bestow curse as spell-like ability. Both of these abilities count as 4th-level utility wild talents. This replaces the utility wild talents gained at 6th and 8th levels."
+        },
+        {
+          "id": "kineticist-arakineticist-accursed-infusion-su-13",
+          "name": "Accursed Infusion (Su)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, an arakineticist’s blasts can temporarily curse and bedevil her foe. On a failed Will save, the target takes a –4 penalty on ability checks, attack rolls, saving throws, and skills checks for 1 round as if it were affected by bestow curse . A single creature can’t be affected by more than one curse from this infusion at a time. This is a 6th-level substance infusion that costs 4 points of burn and can be used with negative and void blasts. This replaces the utility wild talent gained at 13th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Kineticist%20Arakineticist"
+  }
+}

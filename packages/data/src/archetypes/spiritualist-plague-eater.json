@@ -1,0 +1,86 @@
+{
+  "id": "spiritualist-plague-eater",
+  "name": "Plague Eater",
+  "classId": "spiritualist",
+  "summary": "A plague eater bears the weight of many souls within her consciousness, spirits that remember the devastation of disease and seek to protect their host from infections, cleanse others of plague, and use disease itself as a weapon.",
+  "replacesText": "Phantom; Shared Consciousness; Spiritual Interference; Detect Undead; Calm Spirit; See Invisibility; Fused Consciousness; Greater Spiritual Interference; Call Spirit",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-phantom-1",
+        "spiritualist-phantom-recall-6",
+        "spiritualist-shared-consciousness-1",
+        "spiritualist-spiritual-interference-4",
+        "spiritualist-detect-undead-5",
+        "spiritualist-fused-consciousness-10"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-plague-eater-plague-ward-12",
+          "name": "Plague Ward",
+          "level": 12,
+          "type": "archetype",
+          "summary": "A plague eater does not bond with a single spirit, but rather a group of spirits gathered around her psychic presence. The spiritualist can meditate on an emotional focus during her 8-hour rest and bond with a spirit from her community with a matching focus. A spirit associated with the chosen emotion links with the spiritualist and acts as her phantom until the plague eater changes her emotional focus with another 8-hour rest. The changing roster of spirits dilutes the bond between the plague eater and her community, and the manifesting phantom has a level 1 lower than the spiritualist’s level (minimum level 1). While a phantom is confined in a plague eater’s consciousness (but not while it’s fully manifested or banished to the Ethereal Plane), it grants a +4 bonus on saving throws against disease. At 12th level, this bonus increases to +8. In addition, the phantom grants the plague eater the Skill Focus feat in one of the skills determined by the phantom’s emotional focus. This skill is chosen by the plague eater the first time she confines the phantom tied to that particular emotional focus. Once this choice is made for a given emotional focus, it cannot be changed. This alters phantom and shared consciousness."
+        },
+        {
+          "id": "spiritualist-plague-eater-spiritual-inoculation-su-4",
+          "name": "Spiritual Inoculation (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, whenever a plague eater is within reach of her ectoplasmic manifested phantom, she gains a +4 circumstance bonus on saving throws against disease. This alters spiritual interference."
+        },
+        {
+          "id": "spiritualist-plague-eater-remove-sickness-sp-5",
+          "name": "Remove Sickness (Sp)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a plague eater’s understanding of disease grows to the point where she can cast remove sickness at will as a spell-like ability with a caster level equal to her spiritualist level. This replaces detect undead."
+        },
+        {
+          "id": "spiritualist-plague-eater-disfiguring-touch-sp-7",
+          "name": "Disfiguring Touch (Sp)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a plague eater can inflict upon others the superficial disfigurement associated with plague by casting disfiguring touch as a spell-like ability once per day. At 11th level and every 4 levels thereafter, the spiritualist can use this ability an additional time per day (to a maximum of four times per day at 19th level). This replaces calm spirit."
+        },
+        {
+          "id": "spiritualist-plague-eater-remove-disease-sp-9",
+          "name": "Remove Disease (Sp)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a plague eater gains the ability to purge disease from herself and others. She gains the ability to cast remove disease as a spell-like ability three times per day. This ability replaces see invisibility"
+        },
+        {
+          "id": "spiritualist-plague-eater-fused-well-being-su-10",
+          "name": "Fused Well-Being (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a plague eater always gains the benefits of bonded senses when her phantom is manifested. She also gains the skill ranks and bonus to resist disease granted by the spirit’s emotional focus, even when her phantom is manifested. This replaces fused consciousness."
+        },
+        {
+          "id": "spiritualist-plague-eater-greater-spiritual-inoculation-su-12",
+          "name": "Greater Spiritual Inoculation (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, the plague eater becomes immune to disease, including supernatural and magical diseases. In addition, whenever a manifested phantom is in ectoplasmic form, each of the plague eater’s allies within the phantom’s reach gains a +4 circumstance bonus on saving throws against disease. This ability alters greater spiritual interference."
+        },
+        {
+          "id": "spiritualist-plague-eater-withdraw-affliction-sp-16",
+          "name": "Withdraw Affliction (Sp)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, a plague eater can reach into a body, remove an affliction directly from the flesh, and use the diseased matter as a weapon. She can cast withdraw affliction once per day as a spell-like ability with a caster level equal to her spiritualist level. This replaces call spirit."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Plague%20Eater"
+  }
+}

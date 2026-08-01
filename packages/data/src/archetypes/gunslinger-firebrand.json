@@ -1,0 +1,73 @@
+{
+  "id": "gunslinger-firebrand",
+  "name": "Firebrand",
+  "classId": "gunslinger",
+  "summary": "Where other gunslingers rely on precision shooting, the firebrand instead masters explosive ordnance.",
+  "replacesText": "Gunsmith; Grit; Deadeye; Dead Shot; Bonus Feats; Gun Training",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "gunslinger-gunsmith-1",
+        "gunslinger-grit-1",
+        "gunslinger-true-grit-20",
+        "gunslinger-deadeye-1",
+        "gunslinger-dead-shot-7",
+        "gunslinger-bonus-feat-4",
+        "gunslinger-bonus-feat-8",
+        "gunslinger-bonus-feat-12",
+        "gunslinger-bonus-feat-16",
+        "gunslinger-bonus-feat-20",
+        "gunslinger-gun-training-5",
+        "gunslinger-gun-training-9",
+        "gunslinger-gun-training-13",
+        "gunslinger-gun-training-17"
+      ],
+      "features": [
+        {
+          "id": "gunslinger-firebrand-gunsmith-1",
+          "name": "Gunsmith",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a firebrand gains a dragon pistol ( Pathfinder RPG Ultimate Equipment 45) as her battered firearm. This ability alters gunsmith."
+        },
+        {
+          "id": "gunslinger-firebrand-wild-card-ex-1",
+          "name": "Wild Card (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A firebrand uses her Charisma instead of Wisdom to determine the number of grit points she gains at the start of each day and to determine the DCs of her gunslinger deeds. A firebrand treats direct hits with her bombs as firearm attacks for the purpose of regaining grit (see the bombs ability on page 5). This ability works in all other ways like the gunslinger’s grit class feature. This ability alters grit."
+        },
+        {
+          "id": "gunslinger-firebrand-deeds-1",
+          "name": "Deeds",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A firebrand gains the following deeds. Dragon Fire (Ex) : A firebrand is a master of the volatile substance known as dragon’s breath. At 1st level, as a swift action, the firebrand can spend 1 grit point to add her Charisma modifier to the DCs of all dragon’s breath cartridges (Ultimate Equipment 42) she fires until the end of her turn. Her attacks with dragon’s breath cartridges misfire only if a 1 is rolled on two or more of the damage dice. This deed replaces the deadeye deed. Big Boom! (Su) : At 7th level, a firebrand can channel her explosive potential into a mighty blast. As a standard action, the firebrand shoots a 30-foot cone of fire from the barrel of her gun. The firebrand designates one creature in the squares affected by the cone to be the target and makes an attack roll with her firearm against that creature; on a hit, the target takes damage as if it were directly hit by both the firebrand’s firearm and her bomb. Creatures in all other squares in the cone (as well as the target’s square, if the gunslinger’s attack missed) take splash damage as if they were in the area of the firebrand’s bomb, with a Reflex saving throw for half damage. (The DC of this saving throw is equal to 10 + half the firebrand’s gunslinger level + the firebrand’s Charisma modifier.) Using this deed costs 2 grit points and expends one of the firebrand’s daily uses of bombs (see the bombs ability on page 5), as well as the appropriate ammunition for the firearm attack; ammunition that does not require an attack roll cannot be used this way. This deed replaces the dead shot deed."
+        },
+        {
+          "id": "gunslinger-firebrand-scorched-earth-ex-4",
+          "name": "Scorched Earth (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "The firebrand knows how to make dragon’s breath burn white-hot. At 4th level and every 4 levels thereafter, the fire damage of the first dragon’s breath cartridge fired by the firebrand each round increases by 1d6 (to a maximum total of 7d6 at 20th level). This ability replaces the gunslinger’s bonus feats gained at 4th, 8th, 12th, 16th, and 20th levels."
+        },
+        {
+          "id": "gunslinger-firebrand-bombs-su-5",
+          "name": "Bombs (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the firebrand gains the bombs ability as an alchemist of her gunslinger level – 4, using her Charisma modifier in place of her Intelligence modifier to determine her number of bombs per day and the DC to avoid splash damage. The firebrand adds her Charisma modifier to her bombs’ damage instead of her Intelligence modifier, even if she has the throw anything class feature. In addition, the firebrand’s bombs are always under the effect of the explosive bombs discovery. Firebrand levels do not stack with levels in other classes with the bombs class feature. This ability replaces gun training."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Gunslinger%20Firebrand"
+  }
+}

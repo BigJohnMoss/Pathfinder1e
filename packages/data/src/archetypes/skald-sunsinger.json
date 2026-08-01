@@ -1,0 +1,66 @@
+{
+  "id": "skald-sunsinger",
+  "name": "Sunsinger",
+  "classId": "skald",
+  "summary": "Qadiran sunsingers are particularly religious skalds of Sarenrae who call down their goddess’s glory to fill soldiers with fire.",
+  "replacesText": "Alignment; Song of Marching; Spell Kenning;",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-song-marching-3",
+        "skald-spell-kenning-5",
+        "skald-raging-song-1",
+        "skald-inspired-rage-1",
+        "skald-scribe-scroll-1",
+        "skald-well-versed-2",
+        "skald-uncanny-dodge-2",
+        "skald-rage-power-3",
+        "skald-improved-uncanny-dodge-5",
+        "skald-rage-power-6",
+        "skald-song-strength-6",
+        "skald-rage-power-9",
+        "skald-damage-reduction-9",
+        "skald-dirge-doom-10",
+        "skald-greater-rage-11",
+        "skald-rage-power-12",
+        "skald-song-fallen-14",
+        "skald-rage-power-15",
+        "skald-rage-power-18",
+        "skald-mighty-rage-20",
+        "skald-master-skald-20"
+      ],
+      "features": [
+        {
+          "id": "skald-sunsinger-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A sunsinger skald must be lawful good, neutral good, or neutral, and must worship Sarenrae."
+        },
+        {
+          "id": "skald-sunsinger-pillar-of-light-su-3",
+          "name": "Pillar of Light (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a sunsinger skald can use her raging song to call upon her goddess to imbue her with glory and make all who see it pay heed. A great beam of sunlight shines down upon the skald, casting bright light in a 30-foot radius, and allows the skald’s raging song to function as the fascinate bardic performance. This ability replaces song of marching."
+        },
+        {
+          "id": "skald-sunsinger-channel-solar-energy-su-5",
+          "name": "Channel Solar Energy (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a sunsinger skald can channel energy as a cleric once per day to heal wounds or harm undead like a good-aligned cleric. When she does so, she fills the area affected by the channeled energy with light, and can outline creatures in the area of effect as per faerie fire . The sunsinger uses her skald level as her effective cleric level when channeling positive energy. Undead who are particularly harmed by sunlight take a –2 penalty on saving throws against this channeled energy, and take 1 additional point of damage per die of damage dealt by the effect. At 11th level, a sunsinger can channel energy twice per day. At 17th level, she can use this ability three times per day. This ability replaces spell kenning."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Sunsinger"
+  }
+}

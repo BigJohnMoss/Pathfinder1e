@@ -1,0 +1,79 @@
+{
+  "id": "skald-twilight-speaker",
+  "name": "Twilight Speaker",
+  "classId": "skald",
+  "summary": "(Elf Only) Twilight speakers are elven skalds of Findeladlara who consider it a sacred duty to seek out and befriend non-elven communities",
+  "replacesText": "Alignment; Deity; Bardic Knowledge; Inspired Rage; Song of Strength; Dirge of Doom; Versatile Performance; Well-Versed; Lore Master; Master Skald",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-inspired-rage-1",
+        "skald-greater-rage-11",
+        "skald-mighty-rage-20",
+        "skald-song-strength-6",
+        "skald-dirge-doom-10",
+        "skald-well-versed-2",
+        "skald-master-skald-20"
+      ],
+      "features": [
+        {
+          "id": "skald-twilight-speaker-devout-1",
+          "name": "Devout",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A twilight speaker must worship the elven goddess Findeladlara, and his alignment must be within one step of chaotic good. A twilight speaker who does not meet these requirements cannot use inspired devotion or Findeladlara’s blessing."
+        },
+        {
+          "id": "skald-twilight-speaker-twilight-envoy-1",
+          "name": "Twilight Envoy",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A twilight speaker gains a bonus equal to half his skald level on Bluff, Diplomacy, and Sense Motive checks. This replaces bardic knowledge."
+        },
+        {
+          "id": "skald-twilight-speaker-raging-song-su-6",
+          "name": "Raging Song (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "A twilight speaker gains the following raging songs. Inspired Devotion (Su) : The twilight speaker inspires fervor rather than fury. Affected allies gain a +1 competence bonus on attack rolls and a +1 morale bonus on saving throws. At 6th, 12th, and 18th levels, these bonuses increase by 1. Song of Understanding (Su) : At 6th level, a twilight speaker can use his raging song to create an aura that allows creatures to speak and understand each others’ languages. By expending 4 rounds of raging song, the twilight speaker creates an aura that grants him and creatures in a 60-foot spread centered on him the effects of tongues. This aura uses the skald’s level as the caster level for all purposes, including duration. A twilight speaker can dismiss this aura as a standard action. Song of Secrecy (Su) : At 10th level, a twilight speaker can use his song to shroud allies from detection. Affected allies gain a bonus equal to half the twilight speaker’s skald level on Stealth checks, and they can attempt such checks without cover or concealment. Song of secrecy is audible only to those affected. This replaces inspired rage, song of strength, and dirge of doom."
+        },
+        {
+          "id": "skald-twilight-speaker-community-domain-2",
+          "name": "Community Domain",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a twilight speaker gains the Community domain and gains the powers and spells of the domain. He treats his skald level as his cleric level, and he uses his Charisma modifier in place of his Wisdom modifier for the purposes of the domain’s abilities. This replaces versatile performance and well-versed."
+        },
+        {
+          "id": "skald-twilight-speaker-findeladlara-s-blessing-su-7",
+          "name": "Findeladlara’s Blessing (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, once per day a twilight speaker can activate any spell trigger or spell completion item as though the spell were on the skald spell list. He can use this ability an additional time per day at 13th and 19th levels. This ability replaces lore master."
+        },
+        {
+          "id": "skald-twilight-speaker-findeladlara-s-hand-20",
+          "name": "Findeladlara’s Hand",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, the twilight speaker can use Findeladlara’s blessing at will. This replaces master skald."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Twilight%20Speaker"
+  },
+  "requirements": [
+    {
+      "type": "ancestry",
+      "id": "elf"
+    }
+  ]
+}

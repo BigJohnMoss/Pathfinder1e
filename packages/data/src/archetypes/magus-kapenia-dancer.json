@@ -1,0 +1,70 @@
+{
+  "id": "magus-kapenia-dancer",
+  "name": "Kapenia Dancer",
+  "classId": "magus",
+  "summary": "The kapenia dancer laces their deadly scarves with powerful magic.",
+  "replacesText": "Weapon/Armor Proficiencies; Diminished Spellcasting",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "nestedReplacements": [
+    "Weapon/Armor Proficiencies; Diminished Spellcasting"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-weapon-armor-proficiencies-diminished-spellcasting"
+      ],
+      "features": [
+        {
+          "id": "magus-kapenia-dancer-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A kapenia dancer is proficient in simple weapons and bladed scarves ( The Inner Sea World Guide 290). Additionally, a kapenia dancer can wield a bladed scarf as a one-handed melee weapon. A kapenia dancer is not proficient with armor or shields and suffers the normal arcane spell failure chance when casting magus spells while armored."
+        },
+        {
+          "id": "magus-kapenia-dancer-diminished-spellcasting-1",
+          "name": "Diminished Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A kapenia dancer can cast one fewer spell of each level than normal. If this reduces the number to 0, he can cast spells of that level only if his Intelligence allows bonus spells of that level."
+        },
+        {
+          "id": "magus-kapenia-dancer-canny-defense-ex-1",
+          "name": "Canny Defense (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, when a kapenia dancer is wielding a bladed scarf, he gains the canny defense ability. This is identical to the duelist prestige class ability of the same name ( Core Rulebook 382), save that his magus level (rather than his duelist level) affects his Armor Class."
+        },
+        {
+          "id": "magus-kapenia-dancer-weapon-focus-ex-1",
+          "name": "Weapon Focus (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a kapenia dancer gains Weapon Focus (bladed scarf ) as a bonus feat."
+        },
+        {
+          "id": "magus-kapenia-dancer-kapenia-dancer-arcana-1",
+          "name": "Kapenia Dancer Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A kapenia dancer gains access to the following magus arcana. He cannot select any arcana more than once. Elasticity (Su) : As a free action, the kapenia dancer can spend 1 point from his arcane pool in order to grant a bladed scarf he’s wielding reach until the end of his turn. A kapenia dancer can use this arcana in tandem with other magus arcana. Kapenia Curse (Su) : Choose an ability score upon taking this arcana. Whenever the kapenia dancer scores a critical hit with a bladed scarf, he may expend 1 point from his arcane pool to deal 1d4 points of damage to that ability score of the creature struck. This arcana can be selected multiple times, but a different ability score must be chosen each time. The kapenia dancer must be at least 9th level before selecting this arcana. Spirit Fingers (Su) : Whenever the kapenia dancer scores a hit with a melee weapon, he can spend 1 point from his arcane pool as a swift action to immediately attempt a steal combat maneuver ( Advanced Player’s Guide 322). Spirit Step (Su) : Whenever the kapenia dancer scores a critical hit with a bladed scarf, he may expend 1 point from his arcane pool to teleport to any point within 30 feet. The kapenia dancer’s turn ends after being teleported. The kapenia dancer must be at least 12th level before selecting this arcana."
+        },
+        {
+          "id": "magus-kapenia-dancer-magus-arcana-1",
+          "name": "Magus Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following magus arcana from Ultimate Combat ( UC ) and Ultimate Magic ( UM ) complement the kapenia dancer archetype: arcane cloak UC , dispelling strike UM , hastened assault UM , maneuver mastery UM , prescient attack UC , prescient defense UM ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Kapenia%20Dancer"
+  }
+}

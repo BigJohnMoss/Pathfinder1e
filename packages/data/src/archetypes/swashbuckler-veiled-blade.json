@@ -1,0 +1,42 @@
+{
+  "id": "swashbuckler-veiled-blade",
+  "name": "Veiled Blade",
+  "classId": "swashbuckler",
+  "summary": "Veiled blades specialize in subtlety, not through clandestine sneaking but simply by appearing to be someone harmless and unarmed.",
+  "replacesText": "Class Skills; Opportune Parry and Riposte; Menacing Swordplay; Swashbuckler's Grace; Swashbuckler's Edge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "nestedReplacements": [
+    "Class Skills; Opportune Parry and Riposte; Menacing Swordplay; Swashbuckler's Grace; Swashbuckler's Edge"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-class-skills-opportune-parry-and-riposte-menacing-swordplay-swashbuckler-s-grace-swashbuckler-s-edge"
+      ],
+      "features": [
+        {
+          "id": "swashbuckler-veiled-blade-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A veiled blade adds Disguise to her list of class skills, instead of Intimidate. This alters the swashbuckler’s class skills."
+        },
+        {
+          "id": "swashbuckler-veiled-blade-deeds-1",
+          "name": "Deeds",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A veiled blade gains the following deeds. Quick Draw (Ex) At 1st level, whenever she has at least 1 panache point, a veiled blade gains the benefits of the Quick Draw feat. This deed replaces the swashbuckler’s opportune parry and riposte deed. Hidden Blade (Ex) At 3rd level, whenever she has at least 1 panache point, a veiled blade can hide any light or onehanded piercing melee weapon using Sleight of Hand, and she receives a +4 insight bonus on her check to hide the weapon. This deed replaces the menacing swordplay deed. Instant Unveil (Ex) At 7th level, when she uses her swashbuckler’s initiative deed to draw a light or onehanded piercing weapon as part of an initiative check, she can draw that weapon even if it is hidden. This deed replaces the swashbuckler’s grace deed. Soul Veil (Sp) At 15th level, a veiled blade can merge a light or one-handed piercing melee weapon with herself, as if using the spell ghost brand , except that it takes only a swift action to manifest or store the weapon. This ability lasts until it is dispelled or until the veiled blade merges with a different light or one-handed piercing melee weapon. This deed replaces the swashbuckler’s edge deed."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Swashbuckler%20Veiled%20Blade"
+  }
+}

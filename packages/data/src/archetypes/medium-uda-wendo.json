@@ -1,0 +1,59 @@
+{
+  "id": "medium-uda-wendo",
+  "name": "Uda Wendo",
+  "classId": "medium",
+  "summary": "Uda wendo are powerful mediums who are sensitive to the presence and desires of the wendo, powerful and mysterious entities that walk Golarion while shaping fate and guiding destiny.",
+  "replacesText": "Class Skills; Spirit; Shared Seance; Haunt Channeler; Location Channel; Connection Channel",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "medium-spirit-1",
+        "medium-spirit-bonus-1",
+        "medium-spirit-surge-1",
+        "medium-spirit-mastery-19",
+        "medium-haunt-channeler-3",
+        "medium-location-channel-5",
+        "medium-connection-channel-7"
+      ],
+      "features": [
+        {
+          "id": "medium-uda-wendo-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An uda wendo adds Knowledge (geography)and Knowledge (nature) to his list of class skills, instead of Perform. This alters the medium’s class skills."
+        },
+        {
+          "id": "medium-uda-wendo-wendo-su-1",
+          "name": "Wendo (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Rather than channeling spirits, an uda wendo channels the wendo, otherworldly entities that walk among mortals. This functions like channeling a spirit, except instead of requiring a favored location to channel a wendo, an uda wendo must offer the wendo a sacrifice worth at least 50 gp per Hit Die the uda wendo has. Alternatively, the uda wendo can instead accept 1 point of burn, as per the kineticist class ability ( Pathfinder RPG Occult Adventures 11 ), instead of sacrificing material wealth. While channeling a wendo, the uda wendo gains the 1st-level domain power of one druid animal or terrain domain (Pathfinder RPG Ultimate Magic 33), or the 1st-level domain power of one of the following cleric domains: Air, Animal, Community, Darkness, Death, Destruction, Earth, Fire, Healing, Knowledge, Protection, Rune, Strength, Sun, Trickery, War, Water, or Weather. The uda wendo has an effective cleric or druid level equal to 1/2 his medium level (minimum 1st) for the purpose of this ability. In addition, he adds all spells from his chosen domain that are of a spell level he can cast (including modifications to the uda wendo’s spellcasting from the archmage arcana or divine surge lesser spirit powers) to his medium spell list and medium spells known as medium spells of their domain spell level. An uda wendo cannot invite allies to a seance to summon a wendo, and by channeling a wendo, the uda wendo allows the entity to gain 2 points of influence over him. If any sentient creature that doesn’t practice juju witnesses the uda wendo’s seance, both creatures become permanently cursed with a –2 penalty on all d20 rolls and checks (as per bestow curse) and the attempt fails. This ability alters spirit."
+        },
+        {
+          "id": "medium-uda-wendo-wendo-s-secrets-ex-2",
+          "name": "Wendo’s Secrets (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an uda wendo learns most of his information through tales and secrets whispered to him by the wendo. He adds his Charisma bonus (if any) to all Knowledge checks that he attempts in addition to his Intelligence modifier. This ability replaces shared seance."
+        },
+        {
+          "id": "medium-uda-wendo-wendo-tongue-su-3",
+          "name": "Wendo Tongue (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, an uda wendo can invoke the wendo to commune with nearby spirits for a number of minutes per day equal to his level. These minutes don’t need to be used consecutively, but they must be spent in 1-minute increments. The uda wendo can use this ability to speak with corpses (as per speak with dead) at 3rd level, with animals and plants (as per speak with animals or speak with plants) at 5th level, and with humanoids (as per tongues) at 7th level. This ability replaces haunt channeler, location channel, and connection channel."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Medium%20Uda%20Wendo"
+  }
+}

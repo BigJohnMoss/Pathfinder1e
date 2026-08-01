@@ -1,0 +1,49 @@
+{
+  "id": "bloodrager-bloodrider",
+  "name": "Bloodrider",
+  "classId": "bloodrager",
+  "summary": "In the world’s wild lands, a mount is an advantage in both everyday life and the dealing of death",
+  "replacesText": "Fast Movement; Uncanny Dodge; Improved Uncanny Dodge; 9th-level Bloodline Feat",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "bloodrager-fast-movement-1",
+        "bloodrager-uncanny-dodge-2",
+        "bloodrager-improved-uncanny-dodge-5",
+        "bloodrager-bloodline-feat-9"
+      ],
+      "features": [
+        {
+          "id": "bloodrager-bloodrider-fast-rider-ex-1",
+          "name": "Fast Rider (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The bloodrider is adept at pushing his mount to its limit. The speed of any mount the bloodrager rides increases by 10 feet. This ability replaces fast movement."
+        },
+        {
+          "id": "bloodrager-bloodrider-feral-mount-ex-5",
+          "name": "Feral Mount (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the bloodrider gains the service of a feral mount. This ability functions as the druid’s animal companion , using the bloodrager’s level – 4 as his effective druid level. This companion must be one he is capable of riding and suitable as a mount. A Medium bloodrider can select a camel or a horse. A Small bloodrider can select a pony or wolf, but can also select a boar or riding dog if he is at least 8th level. Whenever a bloodrider is bloodraging, this feral mount gains a +2 morale bonus to its Strength. This ability replaces uncanny dodge and improved uncanny dodge."
+        },
+        {
+          "id": "bloodrager-bloodrider-blood-bond-su-9",
+          "name": "Blood Bond (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, the bloodrider and his feral mount gain a closer bond that allows the bloodrider to augment his mount based on his bloodline. While the bloodrider is bloodraging and on his feral mount, he grants the mount all the immunities and resistances he gains from bloodline powers. Furthermore, whenever the bloodrager is affected by a spell or spell-like ability with the range of personal while on the feral mount, the feral mount also gains the benefit of that spell. This ability replaces the bloodline feat gained at 9th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bloodrager%20Bloodrider"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "id": "magus-kensai",
+  "name": "Kensai",
+  "classId": "magus",
+  "summary": "A kensai spends his life focusing his training and meditation into a rapturous perfection of the use of a single weapon, which is usually but not always a sword, channeling his arcane might through it in a dizzying and deadly dance beyond the abilities of even the greatest of mundane warriors.",
+  "replacesText": "Weapon/Armor Proficiency; Spells; Spell Recall; Knowledge Pool; Medium Armor; 9th-level Arcana; Improved Spell Recall; Heavy Armor; True Magus",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "magus-spell-combat-1",
+        "magus-cantrips-1",
+        "magus-spellstrike-2",
+        "magus-spell-recall-4",
+        "magus-improved-spell-combat-8",
+        "magus-improved-spell-recall-11",
+        "magus-greater-spell-combat-14",
+        "magus-greater-spell-access-19",
+        "magus-arcana-9",
+        "magus-true-magus-20"
+      ],
+      "features": [
+        {
+          "id": "magus-kensai-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A kensai is proficient in simple weapons and in a single martial or exotic melee weapon of his choice. A kensai is not proficient with armor or shields and suffers normal arcane spell failure chance when casting magus spells while armored."
+        },
+        {
+          "id": "magus-kensai-diminished-spellcasting-1",
+          "name": "Diminished Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A kensai may cast one fewer spell of each level than normal. If this reduces the number to 0, he may cast spells of that level only if his Intelligence allows bonus spells of that level."
+        },
+        {
+          "id": "magus-kensai-canny-defense-ex-1",
+          "name": "Canny Defense (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, when a kensai is wielding his chosen weapon, he gains the canny defense ability. This is identical to the duelist prestige class ability of the same name (Core Rulebook 382), save that his chosen weapon may be of any type."
+        },
+        {
+          "id": "magus-kensai-weapon-focus-ex-1",
+          "name": "Weapon Focus (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a kensai gains Weapon Focus with his chosen weapon as a bonus feat."
+        },
+        {
+          "id": "magus-kensai-perfect-strike-ex-4",
+          "name": "Perfect Strike (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, when a kensai hits with his chosen weapon, he can spend 1 point from his arcane pool in order to maximize his weapon damage. Don’t roll for damage—the weapon deals maximum damage. This affects only the weapon’s base damage dice, not additional damage from sneak attack, magical weapon properties, spellstrike, or critical hits. If the kensai confirms a critical hit, he can instead spend 2 points from his arcane pool to increase his weapon’s critical multiplier by 1. This ability replaces spell recall."
+        },
+        {
+          "id": "magus-kensai-fighter-training-ex-7",
+          "name": "Fighter Training (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "Starting at 7th level, a kensai counts his magus level –3 as his fighter level for the purpose of qualifying for feats (if he has levels in fighter, these levels stack), but forfeits the benefit of such feats with weapons other than his favored weapon. This ability replaces knowledge pool."
+        },
+        {
+          "id": "magus-kensai-iaijutsu-ex-7",
+          "name": "Iaijutsu (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a kensai applies his Intelligence modifier as well as his Dexterity modifier on initiative rolls (minimum 0). A kensai may make attacks of opportunity when flat-footed, and may draw his favored weapon as a free action as part of taking an attack of opportunity. This ability replaces the medium armor ability."
+        },
+        {
+          "id": "magus-kensai-critical-perfection-ex-9",
+          "name": "Critical Perfection (Ex)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a kensai adds his Intelligence bonus (minimum 0) on critical hit confirmation rolls with his favored weapon. In addition, the kensai may use his magus levels in place of his base attack bonuses to qualify for Critical Focus and any feat for which it is a prerequisite; these feats apply only with a kensai’s favored weapon. This ability replaces the magus arcana normally gained at 9th level."
+        },
+        {
+          "id": "magus-kensai-superior-reflexes-ex-11",
+          "name": "Superior Reflexes (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, kensai can make a number of attacks of opportunity in a round equal to his Intelligence modifier (minimum 1). This effect stacks with the Combat Reflexes feat. This ability replaces improved spell recall."
+        },
+        {
+          "id": "magus-kensai-iaijutsu-focus-ex-13",
+          "name": "Iaijutsu Focus (Ex)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a kensai may always act and may draw his weapon as a swift action during a surprise round, though he is considered flat-footed until he acts. During a surprise round or when attacking a flat-footed opponent, he adds his Intelligence modifier on damage with his chosen weapon (minimum 0). This ability replaces heavy armor."
+        },
+        {
+          "id": "magus-kensai-iaijutsu-master-ex-19",
+          "name": "Iaijutsu Master (Ex)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "At 19th level, a kensai’s initiative roll is automatically a natural 20 and he is never surprised. This ability replaces greater spell access."
+        },
+        {
+          "id": "magus-kensai-weapon-mastery-ex-20",
+          "name": "Weapon Mastery (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a kensai gains weapon mastery with his favored weapon, as the fighter class ability. This ability replaces true magus."
+        },
+        {
+          "id": "magus-kensai-magus-arcana-1",
+          "name": "Magus Arcana",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following magus arcana complement the kensai archetype: concentrate, critical strike, deadly follow-up, precise prowess, prescient attack, prescient defense, spell shield."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Magus%20Kensai"
+  }
+}

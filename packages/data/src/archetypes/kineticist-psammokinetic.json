@@ -1,0 +1,98 @@
+{
+  "id": "kineticist-psammokinetic",
+  "name": "Psammokinetic",
+  "classId": "kineticist",
+  "summary": "Psammokinetics are ascetic kineticists who consider the harsh nature of the burning deserts of Osirion to be a tempering fire that can purify all their imperfections.",
+  "replacesText": "Alignment; Elemental Focus, Elemental Overflow; Expanded Element",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "kineticist-elemental-focus-1",
+        "kineticist-elemental-overflow-3",
+        "kineticist-expanded-element-7",
+        "kineticist-expanded-element-15"
+      ],
+      "features": [
+        {
+          "id": "kineticist-psammokinetic-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A psammokinetic kineticist must be lawful in alignment. If the psammokinetic ever becomes nonlawful, she cannot gain any additional levels with this archetype and loses access to the ki pool class feature granted by this archetype."
+        },
+        {
+          "id": "kineticist-psammokinetic-burning-winds-su-1",
+          "name": "Burning Winds (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A psammokinetic must select air as her elemental focus. In place of the air blast and electric blast normally granted to an aerokinetic, the psammokinetic gains a sand blast or sirocco blast. Except as noted below, sand blast functions as air blast, and sirocco blast functions as electric blast (including when determining what infusion wild talents the psammokinetic can use with each blast). The psammokinetic is also treated as having the fire element type for the purposes of meeting the prerequisites for the cold adaptation, flame shield, heat adaptation, and heat wave utility wild talents. A psammokinetic cannot take the chain, magnetic infusion, or thundering infusion wild talents or the aerial adaptation or celerity utility wild talents. Sand Blast"
+        },
+        {
+          "id": "kineticist-psammokinetic-element-1",
+          "name": "Element",
+          "level": 1,
+          "type": "archetype",
+          "summary": "air;"
+        },
+        {
+          "id": "kineticist-psammokinetic-type-1",
+          "name": "Type",
+          "level": 1,
+          "type": "archetype",
+          "summary": "simple blast (Sp);"
+        },
+        {
+          "id": "kineticist-psammokinetic-level-1",
+          "name": "Level",
+          "level": 1,
+          "type": "archetype",
+          "summary": "—;"
+        },
+        {
+          "id": "kineticist-psammokinetic-burn-1",
+          "name": "Burn",
+          "level": 1,
+          "type": "archetype",
+          "summary": "0"
+        },
+        {
+          "id": "kineticist-psammokinetic-blast-type-1",
+          "name": "Blast Type",
+          "level": 1,
+          "type": "archetype",
+          "summary": "physical;"
+        },
+        {
+          "id": "kineticist-psammokinetic-damage-1",
+          "name": "Damage",
+          "level": 1,
+          "type": "archetype",
+          "summary": "slashing You slice at a single foe with a stream of sand. Sirocco Blast"
+        },
+        {
+          "id": "kineticist-psammokinetic-ki-pool-su-3",
+          "name": "Ki Pool (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a psammokinetic gains a pool of ki points, supernatural energy she can use to accomplish amazing feats. The number of points in a psammokinetic’s ki pool is equal to half her kineticist level plus her Constitution modifier. As long as she has at least 1 point in her ki pool, she gains a +1 bonus on damage rolls with kinetic blasts. This bonus increases by 1 for every 3 kineticist levels she has. At 7th level, as long as she has at least 1 point in her ki pool, her sand blast is treated as cold iron for the purpose of overcoming damage reduction (regardless of what infusion it is used with). At 10th level, her sand blast is treated as a lawful weapon, and at 16th level, her sand blast is treated as adamantine for the purpose of overcoming damage reduction and bypassing hardness. The kinetic blade infusion does not add the bonus damage from this ability. By spending 1 point from her ki pool as a swift action, a psammokinetic can do one of the following: Double her bonus (if any) on damage rolls for having at least 1 point in her ki pool, and gain a +1 bonus on attack rolls with her kinetic blasts. This bonus on attack rolls increases by 1 for every 3 kineticist levels she has. This effect remains for 1d4 rounds. Gain a +2 dodge bonus to AC for 1 round. Increase her base speed by 20 feet for 1 round. The ki pool is replenished each morning after 8 hours of rest or meditation; these hours do not need to be consecutive. If the psammokinetic has levels in another class that grants points to a pool of ki points, her psammokinetic levels stack with the levels of that class to determine the total number of ki points in the combined pool, but only one ability score modifier is added to the total. The choice of which score to use is made when the second class ability is gained, and once made, the choice cannot be changed. The psammokinetic can use ki points from this pool to power the abilities of every class she has that grants a ki pool. This replaces elemental overflow."
+        },
+        {
+          "id": "kineticist-psammokinetic-sand-element-su-7",
+          "name": "Sand Element (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level a psammokinetic must select the earth element as her expanded element. She treats her kineticist level as 2 levels lower (rather than 4 levels lower) for the purpose of determining which wild talents she can learn from the earth element. At 15th level, the psammokinetic must choose to expand her mastery of the air element as her expanded element. This alters expanded element."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Kineticist%20Psammokinetic"
+  }
+}

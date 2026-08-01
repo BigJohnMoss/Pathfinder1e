@@ -1,0 +1,40 @@
+{
+  "id": "mesmerist-vizier",
+  "name": "Vizier",
+  "classId": "mesmerist",
+  "summary": "While many mesmerists focus on beguiling their foes or taking overt control of others with their mental powers, viziers carve out a subtler niche for themselves as advisors.",
+  "replacesText": "Consummate Liar; 3rd-level Bold Stare; Towering Ego; Mental Potency",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "mesmerist-consummate-liar-1",
+        "mesmerist-bold-stare-3"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-vizier-insidious-influence-su-3",
+          "name": "Insidious Influence (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A vizier subtly influences his allies and others who trust him, making it more likely they will follow his suggestions. Allies with mesmerist tricks implanted by the vizier take penalties on Will saves made to resist the vizier’s abilities and spells, and on Diplomacy, Intimidate, Sense Motive checks attempted against the vizier. This penalty equals that imposed by the vizier’s hypnotic stare. If the vizier uses his hypnotic stare against such an ally, these penalties stack. At 3rd level, the vizier automatically gains the susceptibility bold stare improvement, and it also applies to the DCs of any influence check to manipulate the target (even if it isn’t Diplomacy or Intimidate). This ability replaces consummate liar and the bold stare improvement gained at 3rd level."
+        },
+        {
+          "id": "mesmerist-vizier-power-behind-the-throne-su-2",
+          "name": "Power Behind the Throne (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the vizier can use his mesmerist powers to make it seem like he is just a hanger-on who isn’t contributing to a combat or social situation. This includes making it seem like one of his allies is casting his spells instead. When the vizier casts a spell, once the vizier’s spell is complete, a glamer subtly alters onlookers’ memories and perception of the spell’s casting such that all the usual manifestations of the spell indicate that the caster was one of the vizier’s allies with an implanted trick. Creatures who observed the spellcasting can attempt a Will save (DC = 10 + 1/2 the vizier’s mesmerist level + his Charisma modifier) to disbelieve the glamer. Since this effect only comes into play after the spell’s casting is complete, any attempts to ready an action against the spellcasting, counterspell, or take attacks of opportunity still work as normal. This ability does not prevent or otherwise hinder creatures from correctly targeting such attacks and abilities against the vizier (for instance, a creature readying an action to shoot an arrow to interrupt the spellcasting would still shoot the vizier). Additionally, when the vizier triggers an ally’s implanted trick, flashy effects make it appear as if the ally was using an activated ability of her own. At 5th level, the vizier doesn’t provoke attacks of opportunity when using power behind the throne, as if under the effects of a constant illusion of calmUC . A creature that disbelieves this second effect becomes immune to that vizier’s illusion of calm for 24 hours. This ability replaces towering ego and mental potency."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Vizier"
+  }
+}

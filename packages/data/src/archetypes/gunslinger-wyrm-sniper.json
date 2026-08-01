@@ -1,0 +1,84 @@
+{
+  "id": "gunslinger-wyrm-sniper",
+  "name": "Wyrm Sniper",
+  "classId": "gunslinger",
+  "summary": "These long-shot artists are masters at taking down\ndragons with sharp shooting and light siege weaponry.",
+  "replacesText": "Class Skills; Starling Shot Deed; Lightning Reload Deed; Menacing Shot Deed",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "gunslinger-deadeye-1",
+        "gunslinger-dodge-1",
+        "gunslinger-quick-clear-1",
+        "gunslinger-initiative-3",
+        "gunslinger-pistol-whip-3",
+        "gunslinger-utility-shot-3",
+        "gunslinger-dead-shot-7",
+        "gunslinger-startling-shot-7",
+        "gunslinger-targeting-7",
+        "gunslinger-bleeding-wound-11",
+        "gunslinger-expert-loading-11",
+        "gunslinger-lightning-reload-11",
+        "gunslinger-evasive-15",
+        "gunslinger-menacing-shot-15",
+        "gunslinger-slingers-luck-15",
+        "gunslinger-cheat-death-19",
+        "gunslinger-deaths-shot-19",
+        "gunslinger-stunning-shot-19"
+      ],
+      "features": [
+        {
+          "id": "gunslinger-wyrm-sniper-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A wyrm sniper adds Knowledge (arcana)\nto her list of class skills, in addition to the normal\ngunslinger class skills."
+        },
+        {
+          "id": "gunslinger-wyrm-sniper-artillery-proficiency-1",
+          "name": "Artillery Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Wyrm snipers\nare proficient with light siege engines, in\naddition to the normal gunslinger weapon\nproficiencies. See page 26 of this book for new\nanti-dragon siege weaponry."
+        },
+        {
+          "id": "gunslinger-wyrm-sniper-deeds-7",
+          "name": "Deeds",
+          "level": 7,
+          "type": "archetype",
+          "summary": "A wyrm sniper swaps a trio of deeds for the\nfollowing deeds.\n\nMunitions Master : At 7th level, a wyrm sniper can spend\n1 grit point to reduce the number of full-round actions (or\nmove actions, if the sniper has the Master Siege Engineer\nfeat) required to load a light siege engine by 1. This deed\nreplaces the gunslinger’s startling shot deed.\n\nSkeleton Crew : At 11th level, as long as a wyrm sniper\nhas at least 1 grit point, she treats all light siege engines\nas requiring a crew of one fewer than normal to operate\n(minimum 1). This deed replaces the gunslinger’s\nlightning reload deed.\n\nAnti-Air Targeting : At 15th level, whenever a wyrm\nsniper targets a creature’s wings with the targeting deed,\nthe wyrm sniper completely disables one of the creature’s\nwings on a successful hit. If the wyrm sniper hits her\ntarget, the creature falls to the ground, regardless of\nits altitude, taking the appropriate amount of falling\ndamage as a result. As long as the target has at least one\nfunctioning wing, it may attempt a DC 20 Fly check to\ngain the benefits of feather fall instead of plummeting to\nthe ground. In either case, it must succeed at a Reflex\nsave (DC 10 + 1/2 the wyrm sniper’s level + the wyrm\nsniper’s Wisdom modifier) or fall prone when reaching\nthe ground. This ability replaces the gunslinger’s\nmenacing shot deed."
+        },
+        {
+          "id": "gunslinger-wyrm-sniper-siege-commander-ex-4",
+          "name": "Siege Commander (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a wyrm sniper may\nselect the Siege Commander combat feat as her bonus\nfeat, even if she does not meet the prerequisites."
+        },
+        {
+          "id": "gunslinger-wyrm-sniper-heavy-gunner-ex-5",
+          "name": "Heavy Gunner (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "Starting at 5th level, a wyrm sniper\nmay select one specific type of light siege weapon (such\nas a ballista or light bombard) in place of a specific type\nof firearm as part of her gun training class ability. Every\n4 levels thereafter (9th, 13th, and 17th), when she can pick\na new type of firearm for the gun training class ability,\nthe gunslinger may again select another type of light\nsiege engine."
+        },
+        {
+          "id": "gunslinger-wyrm-sniper-master-siege-engineer-ex-12",
+          "name": "Master Siege Engineer (Ex)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a wyrm\nsniper may select the Master Siege Engineer combat\nfeat as her bonus feat, even if she does not meet the\nfeat’s prerequisites."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Gunslinger%20Wyrm%20Sniper"
+  }
+}

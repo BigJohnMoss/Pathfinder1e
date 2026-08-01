@@ -1,0 +1,47 @@
+{
+  "id": "skald-augur",
+  "name": "Augur",
+  "classId": "skald",
+  "summary": "Tales of Merivesta Olinchi are surprisingly common among the Bekyar of the Mwangi Expanse, who claim she spent some time studying their traditions and history.",
+  "replacesText": "Well-Versed; Versatile Performance; Spell Kenning",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-well-versed-2",
+        "skald-spell-kenning-5"
+      ],
+      "features": [
+        {
+          "id": "skald-augur-monster-insight-ex-2",
+          "name": "Monster Insight (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the augur applies his Charisma modifier in addition to his Intelligence modifier when attempting Knowledge checks to identify the abilities and weaknesses of creatures. Monster insight counts as the monster lore class feature for prerequisites. This ability replaces well-versed."
+        },
+        {
+          "id": "skald-augur-signs-and-portents-su-2",
+          "name": "Signs and Portents (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an augur can read signs and portents to attempt to ascertain how events in the near future will play out. This allows the augur to cast augury as a spell-like ability. At 7th level, he can instead use signs and portents to cast divination as a spell-like ability, and at 12th level, he can instead cast commune as a spell-like ability. At 17th level, he can use signs and portents twice per day. This ability replaces all types of versatile performance."
+        },
+        {
+          "id": "skald-augur-predictive-strike-su-5",
+          "name": "Predictive Strike (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the augur accurately divines the possible movements of his enemies in combat. Once per day as a free action, he can declare one of his melee attacks to be a predictive strike. Against the augur’s attack, the target is flat-footed and gains no benefits from concealment or cover. Attacks from other creatures are treated normally. The target still benefits from total concealment and total cover normally. At 11th level, the augur can use this ability a total of two attacks per day, and at 17th, three attacks per day. This replaces spell kenning."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Augur"
+  }
+}

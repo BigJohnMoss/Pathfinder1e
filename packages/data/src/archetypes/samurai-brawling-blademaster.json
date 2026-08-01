@@ -1,0 +1,78 @@
+{
+  "id": "samurai-brawling-blademaster",
+  "name": "Brawling Blademaster",
+  "classId": "samurai",
+  "summary": "Brawling blademaster samurai use weapon strikes and unarmed attacks in equal measure",
+  "replacesText": "Weapon and Armor Proficiency; Mount; Weapon Expertise; Mounted Archer; Banner; Greater Banner",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "samurai-mount-1",
+        "samurai-mounted-archer-4",
+        "samurai-weapon-expertise-3",
+        "samurai-banner-5",
+        "samurai-greater-banner-14"
+      ],
+      "features": [
+        {
+          "id": "samurai-brawling-blademaster-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Brawling blademasters are proficient with all simple and martial weapons, plus the katana and wakizashi. Brawling blademasters are proficient with light armor, but not with shields. This alters the samurai’s weapon and armor proficiency."
+        },
+        {
+          "id": "samurai-brawling-blademaster-empty-hand-ex-1",
+          "name": "Empty Hand (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A brawling blademaster gains Improved Unarmed Strike as a bonus feat. She uses her samurai level as her monk level for determining the amount of damage she deals with an unarmed strike. These levels stack with monk levels to determine the brawling blademaster’s unarmed strike damage. This replaces mount."
+        },
+        {
+          "id": "samurai-brawling-blademaster-nimble-ex-2",
+          "name": "Nimble (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a brawling blademaster gains the gunslinger’s nimble class feature , using her samurai level as his gunslinger level."
+        },
+        {
+          "id": "samurai-brawling-blademaster-dual-expertise-ex-3",
+          "name": "Dual Expertise (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a brawling blademaster gains Two-Weapon Fighting as a bonus feat, even if she doesn’t meet the prerequisites. Furthermore, when the brawling blademaster selects a feat with the bonus feat class feature, she can ignore any Dexterity requirements for the feat if its prerequisites include the Two-Weapon Fighting feat. This replaces weapon expertise."
+        },
+        {
+          "id": "samurai-brawling-blademaster-harmonious-flow-ex-4",
+          "name": "Harmonious Flow (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, the brawling blademaster becomes skilled at combining weapon attacks and unarmed strikes into a harmonious combat style. When attacking the target of her challenge, the brawling blademaster doesn’t take the usual –2 penalty on attack rolls associated with attacking with two weapons if her main-hand weapon is a light or one-handed manufactured weapon and her off-hand weapon is an unarmed strike (or vice versa). While she’s using this ability, one of her hands must be empty even if she uses another body part to make an unarmed strike. This replaces mounted archer."
+        },
+        {
+          "id": "samurai-brawling-blademaster-perfect-clarity-ex-5",
+          "name": "Perfect Clarity (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the brawling blademaster sees all her foes with perfect clarity even when focused on one opponent. She no longer takes a penalty to her AC during a challenge. This ability replaces banner."
+        },
+        {
+          "id": "samurai-brawling-blademaster-superior-focus-ex-14",
+          "name": "Superior Focus (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, the brawling blademaster gains a +2 bonus on saving throws during a challenge. This replaces greater banner."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Samurai%20Brawling%20Blademaster"
+  }
+}

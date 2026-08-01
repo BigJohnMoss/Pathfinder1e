@@ -1,0 +1,61 @@
+{
+  "id": "mesmerist-fey-trickster",
+  "name": "Fey Trickster",
+  "classId": "mesmerist",
+  "summary": "Most mesmerists draw psychic power from the Astral Plane, but a few gain their powers in an unusual way: from a brush with the fey.",
+  "replacesText": "Class Skills; Spellcasting; Towering Ego; Touch Treatment; Rule Minds",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "mesmerist-touch-treatment-3",
+        "mesmerist-rule-minds-20"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-fey-trickster-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A fey trickster adds Handle Animal, Knowledge (nature), and Survival to her list of class skills, instead of Appraise, Knowledge (dungeoneering), and Profession. This alters the mesmerist’s class skills."
+        },
+        {
+          "id": "mesmerist-fey-trickster-nature-s-lure-1",
+          "name": "Nature’s Lure",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Rather than casting psychic spells from the mesmerist spell list, a fey trickster casts divine spells drawn from the druid and ranger spell lists, in just the same way as a hunter does. This means that she gains orisons instead of knacks. This doesn’t change her number of spells per day or spells known. The fey trickster’s mesmerist spells and spell-like abilities count as if they were fey spell-like abilities for the purpose of effects like resist nature’s lure that apply against fey spell-like abilities. This alters the mesmerist’s spellcasting."
+        },
+        {
+          "id": "mesmerist-fey-trickster-feytouched-ex-2",
+          "name": "Feytouched (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a fey trickster’s time with the fey has granted her strange powers, as well as resistance to further fey mischief. The fey trickster gains the druid’s resist nature’s lure and woodland stride abilities, and she counts as both fey and her original creature type for the purpose of spells and effects. This ability replaces towering ego."
+        },
+        {
+          "id": "mesmerist-fey-trickster-fey-veil-sp-su-3",
+          "name": "Fey Veil (Sp, Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a fey trickster's physical form begins to shift, as she gains some of the impossible allure of the fey. At the same time, she begins able to use fey veils to assist herself and her allies in befuddling and bewitching their opponents. She can use her fey veils a number of times per day equal to 3 + her Charisma modifier. Using the ability is a standard action (or a swift action if the fey trickster calls up a veil over herself ). If she targets another ally, the fey trickster must be able to contact the ally bodily, usually with a kiss. When she uses her fey veil, the fey trickster subtly alters the appearance and aura of her target, granting one of the powers allowed by her mesmerist level. At 3rd level, she can grant the ally a +2 circumstance bonus on her choice of Diplomacy, Intimidate, or Handle Animal checks for 1 minute. At 6th level, she can change the ally's form so thoroughly that the ally gains a +10 bonus on Disguise checks until the next sunrise (similar to the bonus from disguise self , but it also disguises touch and sound, and it doesn't allow a saving throw to disbelieve). At 10th level, the fey trickster can make the ally and her aura so attractive or repulsive for 10 minutes that the veil automatically adjusts the moods of those who see the ally and fail their saving throw, as telempathic projectionOA . At 14th level, a fey trickster can create a veil so powerful that it fools even reality, granting the full effects of both the 6th-level fey veil and alter self to the target for 1 hour. Each of these abilities, even the 14th-level ability, is an illusion and glamer effect, though the last ability counts as a size-changing polymorph effect for the limit of only one polymorph or size-changing effect on a creature. This ability replaces touch treatment."
+        },
+        {
+          "id": "mesmerist-fey-trickster-one-with-the-fey-20",
+          "name": "One with the Fey",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a fey trickster fully transforms into a fey, though she can still choose to count as her original creature type as well whenever it would be advantageous to her (such as if she is a humanoid and wishes to be affected by reduce person). She gains low-light vision as well as an additional ability depending on which type of fey she chooses to most closely associate with. Some examples follow. Erlking : The fey trickster is constantly under the effects of haste . Nymph : The fey trickster gains the nymph’s unearthly grace ability (Pathfinder RPG Bestiary 217) Quickling : The fey trickster gains the quickling’s supernatural speed ability ( Pathfinder RPG Bestiary 2 227 ). Rusalka : The fey trickster gains the rusalka’s tresses ability and four tress primary natural attacks similar to those of a rusalka ( Pathfinder RPG Bestiary 3 232 ). This ability replaces rule minds."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Fey%20Trickster"
+  }
+}

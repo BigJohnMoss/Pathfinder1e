@@ -1,0 +1,85 @@
+{
+  "id": "hunter-chameleon-adept",
+  "name": "Chameleon Adept",
+  "classId": "hunter",
+  "summary": "Some hunters are masters of blending into every situation, even making their companions appear humanoid for brief periods of time.",
+  "replacesText": "Class Skills; Teamwork Feats; Hunter’s Tactics; Wild Empathy; Precise Companion; Woodland Stride; Raise Animal Companion; One with the Wild",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "hunter-teamwork-3",
+        "hunter-teamwork-6",
+        "hunter-teamwork-9",
+        "hunter-teamwork-12",
+        "hunter-teamwork-15",
+        "hunter-teamwork-18",
+        "hunter-tactics-3",
+        "hunter-wild-empathy-1",
+        "hunter-precise-companion-2",
+        "hunter-woodland-stride-5",
+        "hunter-animal-companion-1",
+        "hunter-raise-companion-10"
+      ],
+      "features": [
+        {
+          "id": "hunter-chameleon-adept-skills-1",
+          "name": "Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A chameleon adept adds Diplomacy to her list of class skills. This alters the hunter’s class skills."
+        },
+        {
+          "id": "hunter-chameleon-adept-shifting-companion-su-3",
+          "name": "Shifting Companion (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level as a standard action, a chameleon adept can cause her companion to assume a humanoid form of the same race as herself. This functions as alter self , except it is used on an adjacent animal companion to have it assume a humanoid form. The companion always assumes the same form, selected when the hunter reaches 3rd level. The hunter can change this form when she gains a new level, but the companion loses the old form and can’t resume it unless the chameleon adept chooses that form when she reaches a new level. The companion is no more intelligent or less savage than normal; the hunter still needs to control it as normal, and it still can’t activate magic items or wield manufactured weapons. The hunter can use this ability for 10 minutes per day per hunter level. This duration does not need to be consecutive, but it must be spent in 10-minute increments. This replaces teamwork feats and hunter’s tactics."
+        },
+        {
+          "id": "hunter-chameleon-adept-terrain-chameleon-su-1",
+          "name": "Terrain Chameleon (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Choose one type of terrain from the ranger’s list of favored terrains. When in the specified type of terrain, a chameleon adept gains a bonus equal to half her hunter level on Stealth checks. This replaces wild empathy."
+        },
+        {
+          "id": "hunter-chameleon-adept-savage-diplomacy-ex-2",
+          "name": "Savage Diplomacy (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, while in humanoid form, a chameleon adept’s animal companion grants its master a +2 circumstance bonus on Diplomacy and Intimidate checks. Savage diplomacy functions only as long as the creature being influenced can see both the companion and the master. This bonus increases by 1 at 5th level and every 4 levels thereafter, to a maximum of +6 at 17th level. This replaces precise companion."
+        },
+        {
+          "id": "hunter-chameleon-adept-animal-shape-su-5",
+          "name": "Animal Shape (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level as a standard action, a chameleon adept can assume a form superficially identical to her animal companion’s animal form. She gains no bonuses or natural attacks while in this form, only forms of movement. Her size category does not change. This is a polymorph effect. She can assume this form for 1 minute per level per day, in 1-minute increments. She can dismiss this ability at any point as a standard action. This replaces woodland stride."
+        },
+        {
+          "id": "hunter-chameleon-adept-improved-shifting-companion-su-10",
+          "name": "Improved Shifting Companion (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a chameleon adept’s animal companion improves its ability to change shape. It can use wild shape, as a druid of half the hunter’s level, to gain the effects of beast shape I . Unlike a druid’s wild shape, this ability does not improve to encompass larger or smaller animals or elementals. This replaces raise animal companion."
+        },
+        {
+          "id": "hunter-chameleon-adept-one-with-the-wild-ex-17",
+          "name": "One with the Wild (Ex)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, when the companion is using wild shape to appear as a different type of animal, it counts as being in that animal focus for the purpose of one with the wild. This alters one with the wild."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Hunter%20Chameleon%20Adept"
+  }
+}

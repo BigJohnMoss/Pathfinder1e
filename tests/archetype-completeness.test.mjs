@@ -13,24 +13,42 @@ const expectedCounts = {
   arcanist: 15,
   barbarian: 41,
   bard: 73,
+  bloodrager: 18,
+  brawler: 19,
   cavalier: 37,
   cleric: 35,
   druid: 75,
   fighter: 67,
+  gunslinger: 23,
+  hunter: 21,
   inquisitor: 38,
+  investigator: 37,
+  kineticist: 19,
   monk: 56,
+  magus: 31,
+  medium: 15,
+  mesmerist: 21,
   oracle: 26,
+  occultist: 20,
   paladin: 47,
   ranger: 62,
   rogue: 78,
+  psychic: 8,
+  samurai: 7,
+  shaman: 17,
+  skald: 26,
+  slayer: 26,
   sorcerer: 13,
+  spiritualist: 24,
   summoner: 22,
+  swashbuckler: 20,
+  warpriest: 18,
   witch: 42,
   wizard: 35
 };
 
 test("the archetype catalogue covers every published supported-class entry", () => {
-  assert.equal(archetypes.length, 825);
+  assert.equal(archetypes.length, Object.values(expectedCounts).reduce((total, count) => total + count, 0));
   for (const [classId, expected] of Object.entries(expectedCounts)) {
     const records = archetypes.filter((archetype) => archetype.classId === classId);
     assert.equal(records.length, expected, `${classId} archetype count`);

@@ -1,0 +1,60 @@
+{
+  "id": "investigator-scavenger",
+  "name": "Scavenger",
+  "classId": "investigator",
+  "summary": "Scavengers are masters of systems: how they fit together, why they work, and how to make the most of their parts.",
+  "replacesText": "Alchemy; Inspiration; Poison Lore; Poison Resistance; Poison Immunity",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-alchemy-1",
+        "investigator-swift-alchemy-4",
+        "investigator-inspiration-1",
+        "investigator-amazing-inspiration-7",
+        "investigator-true-inspiration-20",
+        "investigator-poison-lore-2",
+        "investigator-poison-resistance-2",
+        "investigator-poison-immunity-11"
+      ],
+      "features": [
+        {
+          "id": "investigator-scavenger-gadgetry-su-1",
+          "name": "Gadgetry (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A scavenger is a master of mechanical arts rather than alchemical ones, and he gains a competence bonus on Craft (clockwork) checks equal to his class level. He can use Knowledge (engineering) to identify wondrous items as if using detect magic and Spellcraft. A scavenger does not gain any bonuses to or special uses of the Craft (alchemy) skill. Rather than prepare his extracts as consumable liquids, a scavenger constructs small, single-use devices infused with bits of his own magic aura to achieve the same effects. Alchemist and investigator discoveries that affect extracts result in identical effects on a scavenger’s gadgets (such as the infusion discovery, which would allow another creature to use a gadget, just as it would allow that creature to use an extract). This ability modifies alchemy."
+        },
+        {
+          "id": "investigator-scavenger-mechanical-inspiration-ex-1",
+          "name": "Mechanical Inspiration (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a scavenger can use inspiration to apply a bonus to Appraise, Disable Device, and Knowledge (engineering) checks without expending a use of inspiration, but he must spend a use of inspiration to apply a bonus on Knowledge, Linguistics, and Spellcraft checks. This ability modifies inspiration."
+        },
+        {
+          "id": "investigator-scavenger-jury-rig-ex-2",
+          "name": "Jury-Rig (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "Beginning at 2nd level, a scavenger can sacrifice one of his gadgets to repair or enhance an adjacent mechanical device, such as a lock, trap, or vehicle. Doing so either repairs 1d6 points of damage per extract level of the gadget sacrificed or applies a bonus or penalty to one specific skill check involved in using the device. The scavenger could, for example, sacrifice a gadget to impose a penalty on all Disable Device checks to disarm a trap, add a bonus on all Disable Device checks to open a lock, or add a bonus on all Profession (driver) checks to drive a carriage. This modifier is equal to twice the extract level of the gadget sacrificed, and lasts for 10 minutes per class level. This ability replaces poison lore."
+        },
+        {
+          "id": "investigator-scavenger-construct-mastery-ex-2",
+          "name": "Construct Mastery (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a scavenger gains a +2 bonus on all Craft checks to modify or repair creatures of the construct type, as well as a +2 bonus on all weapon damage rolls against constructs. This bonus increases to +4 at 5th level, and to +6 at 8th level. At 11th level, the scavenger gains Craft Construct as a bonus feat, even if he does not meet the prerequisites. This ability replaces the investigator’s poison resistance and poison immunity."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Scavenger"
+  }
+}

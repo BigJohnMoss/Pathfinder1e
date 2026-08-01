@@ -1,0 +1,77 @@
+{
+  "id": "occultist-reliquarian",
+  "name": "Reliquarian",
+  "classId": "occultist",
+  "summary": "Not all occultists derive their power from psychic impressions left on objects. Some find faith first, and draw out the divine potential in religious relics.",
+  "replacesText": "Weapon Proficiencies; Spells; Focus Powers; Implements; Knacks; Mental Focus",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "occultist-focus-power-1",
+        "occultist-implements-1",
+        "occultist-implement-mastery-20",
+        "occultist-mental-focus-1"
+      ],
+      "features": [
+        {
+          "id": "occultist-reliquarian-faithful-1",
+          "name": "Faithful",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reliquarian must worship a deity, and must be within one step of her deity’s alignment, along either the law/chaos axis or the good/evil axis. A reliquarian is proficient with her deity’s favored weapon in addition to her normal weapon and armor proficiencies."
+        },
+        {
+          "id": "occultist-reliquarian-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reliquarian’s spells are considered divine spells, not psychic spells. The reliquarian’s spells use verbal components instead of thought components, and somatic components instead of emotional components, and she uses a sacred implement (see below) as a divine focus. This ability alters the occultist’s spells."
+        },
+        {
+          "id": "occultist-reliquarian-domain-1",
+          "name": "Domain",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reliquarian gains access to one of her deity’s domains. She treats her occultist level as her cleric level for the purposes of access to domain powers and their strength. Additionally, the reliquarian adds the domain’s spells to her occultist spell list and her spells known."
+        },
+        {
+          "id": "occultist-reliquarian-diminished-focus-power-su-1",
+          "name": "Diminished Focus Power (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reliquarian learns only the base focus power from one implement school at 1st level. She gains additional focus powers as normal. This ability alters focus powers."
+        },
+        {
+          "id": "occultist-reliquarian-sacred-implements-su-1",
+          "name": "Sacred Implements (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reliquarian gains one implement school at 1st level. Additionally, the reliquarian gains a relic of her god, typically a holy symbol of significant age, a fixture from a lost temple, or bone or hair from a prominent historical figure of the religion. This grants the reliquarian access to one of her deity’s domains, as detailed above. Without this implement, the reliquarian cannot use her domain powers and must succeed at a Concentration check to cast spells from her domain. All of a reliquarian’s future implements must be somehow representative of her faith. This ability modifies implements."
+        },
+        {
+          "id": "occultist-reliquarian-orisons-1",
+          "name": "Orisons",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reliquarian gains one orison, or 0-level divine spell, each time she selects an implement school (including when she again selects a school that she has already learned to use.) These orisons otherwise behave as an occultist’s knacks. This ability replaces knacks."
+        },
+        {
+          "id": "occultist-reliquarian-divine-focus-su-1",
+          "name": "Divine Focus (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A reliquarian uses her Wisdom modifier, rather than her Intelligence modifier, to determine the amount of mental focus available to her each day. This ability modifies mental focus."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Occultist%20Reliquarian"
+  }
+}

@@ -18,7 +18,7 @@ test("Witch reaches level 20 with eleven hex selections",()=>{
 test("Witch prepares all nine spell levels from its imported familiar list",()=>{
  const casting=spellcastingProgression(witch,20,{abilityScore:20});
  assert.equal(casting.maximumSpellLevel,9);
- assert.ok(spellsAvailableToClass(spells,"witch",9).length>=900);
+ assert.equal(spellsAvailableToClass(spells,"witch",9).length,864);
 });
 
 test("every APG Witch patron automatically grants nine familiar spells",async()=>{

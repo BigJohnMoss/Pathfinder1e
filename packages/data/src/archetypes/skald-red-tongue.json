@@ -1,0 +1,63 @@
+{
+  "id": "skald-red-tongue",
+  "name": "Red Tongue",
+  "classId": "skald",
+  "summary": "The tengu tendency toward dramatic flourishes and rhetoric creates an environment in which political clubs led by hot-blooded firebrands—referred to as red tongues in polite company—dominate the political scene by swaying emotions in the moment and wielding magic in the shadows.",
+  "replacesText": "Bardic Knowledge; 7th, 12th, 17th-level Versatile Performance",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "nestedReplacements": [
+    "Bardic Knowledge; 7th, 12th, 17th-level Versatile Performance"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-bardic-knowledge-7th-12th-17th-level-versatile-performance"
+      ],
+      "features": [
+        {
+          "id": "skald-red-tongue-great-orator-2",
+          "name": "Great Orator",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A red tongue can activate his raging song performances only by using the Perform (oratory) skill. He must select Perform (oratory) as his versatile performance choice at 2nd level. This ability modifies the raging song and versatile performance abilities."
+        },
+        {
+          "id": "skald-red-tongue-seed-of-discord-su-1",
+          "name": "Seed of Discord (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The fiery outlook of the red tongue imparts instinctual knowledge to invest arcane energy into his proclamations and denouncements. The red tongue gains the following bonus spells known as he reaches the appropriate level to cast each spell: doomAPG (1st), castigateAPG (2nd), charm monster (3rd), denounceAPG (4th), greater command (5th), mass eagle’s splendor (6th)."
+        },
+        {
+          "id": "skald-red-tongue-rile-ex-1",
+          "name": "Rile (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The red tongue is particularly skilled at provoking others to action, even when ignorant on a subject. He adds 1/2 his skald level on Bluff checks to deceive or conceal his motives and on Intimidate checks to improve a creature’s attitude. This ability replaces bardic knowledge."
+        },
+        {
+          "id": "skald-red-tongue-rogue-talents-ex-7",
+          "name": "Rogue Talents (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, the red tongue learns a rogue talent of his choice, treating his skald level as his rogue level. He cannot select a talent that requires or modif ies a class feature he does not have (such as sneak attack), and he must meet all other prerequisites. For every 5 skald levels beyond 7th, he gains a new rogue talent. This ability replaces the versatile performance selections normally gained at 7th, 12th, and 17th levels."
+        },
+        {
+          "id": "skald-red-tongue-duplicitous-rhetoric-su-7",
+          "name": "Duplicitous Rhetoric (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, when a red tongue begins a raging song, he can select a single rogue talent he knows and grant it to all creatures under the influence of his inspired rage. If a rogue talent is limited to a certain number of uses per day, each creature affected is limited to a single use and cannot gain additional uses from a raging song for 24 hours, even if the red tongue ends his raging song and starts again."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Red%20Tongue"
+  }
+}

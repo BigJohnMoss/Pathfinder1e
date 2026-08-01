@@ -1,0 +1,71 @@
+{
+  "id": "mesmerist-dreamstalker",
+  "name": "Dreamstalker",
+  "classId": "mesmerist",
+  "summary": "Many mesmerists concentrate their studies on conscious, rational thought, but dreamstalkers instead delve into the unleashed unconscious mind that wanders free in dreams.",
+  "replacesText": "Painful Stare; 1st-level Mesmerist Trick; Towering Ego; Touch Treatment; Manifold Tricks; Glib Lie",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "mesmerist-painful-stare-1",
+        "mesmerist-trick-1",
+        "mesmerist-touch-treatment-3",
+        "mesmerist-manifold-tricks-5",
+        "mesmerist-glib-lie-11"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-dreamstalker-dreams-of-pain-1",
+          "name": "Dreams of Pain",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dreamstalker’s painful stare deals nonlethal damage. This ability alters painful stare."
+        },
+        {
+          "id": "mesmerist-dreamstalker-somnomancer-1",
+          "name": "Somnomancer",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a dreamstalker gains the slumber APG hex. The dreamstalker’s effective witch level is equal to her mesmerist level, and she can activate them only by expending two daily uses of mesmerist tricks. The save DCs for her hexes are Charisma-based. She can take certain additional hexes in place of mesmerist tricks, selecting nightmares APG or vision APG at 10th level and higher, or eternal slumber APG at 18th level and higher. When she would normally gain a new mesmerist trick, she can learn additional spells instead. Each time she does so, she adds two of the following spells of a level she can currently cast to her list of spells known: 1st— oneiric horrorOA, sleep ; 2nd— detect mindscapeOA, greater oneiric horrorOA, instigate psychic duelOA ; 3rd— deep slumber, minor dreamOA ; 4th— create mindscapeOA, dream, forgetful slumberARG, mindscape doorOA, sleepwalkARG, sleepwalking suggestion (see page 127) ; 5th— cloak of dreams, dream councilOA, dream scanOA, symbol of sleep, waves of fatigue ; 6th— dream travelOA, greater create mindscapeOA, waves of exhaustion . This alters mesmerist tricks and replaces the 1st-level mesmerist trick."
+        },
+        {
+          "id": "mesmerist-dreamstalker-sleepless-ex-2",
+          "name": "Sleepless (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a dreamstalker gains immunity to sleep effects and a bonus equal to her Charisma bonus on saving throws against fatigue and exhaustion. She loses both benefits when under an effect that would prevent her from providing an emotion component ( Pathfinder RPG Occult Adventures 144 ). This replaces towering ego."
+        },
+        {
+          "id": "mesmerist-dreamstalker-touch-of-night-su-1",
+          "name": "Touch of Night (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dreamstalker can’t remove shaken, frightened, sickened, cowering, nauseated, or panicked conditions using her touch treatment. However, she can remove fatigue or magical sleep (other than hard-to-remove magical sleep such as the eternal slumber APG hex) as a minor condition, staggered as a moderate condition, and exhausted as a greater condition. As normal, removing fatigue or exhaustion only removes the condition, not the underlying cause, such as lack of sleep. This ability alters touch treatment."
+        },
+        {
+          "id": "mesmerist-dreamstalker-dreamwalker-su-5",
+          "name": "Dreamwalker (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a dreamstalker treats dreamscapes as a favored terrain, as per the ranger ability, gaining a +2 bonus that increases by 2 every 4 mesmerist levels after 5th. While in a dreamscape, she also treats any creature from the Dimension of Dreams (including dreamed figments) as her favored enemy, with a bonus equal to 1/2 her favored terrain bonus. This ability replaces manifold tricks."
+        },
+        {
+          "id": "mesmerist-dreamstalker-tramautic-spell-11",
+          "name": "Tramautic Spell",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a dreamstalker gains Traumatic Spell OA as a bonus feat. This ability replaces glib lie."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Dreamstalker"
+  }
+}

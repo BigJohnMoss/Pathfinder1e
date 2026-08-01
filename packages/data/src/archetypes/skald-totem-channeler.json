@@ -1,0 +1,53 @@
+{
+  "id": "skald-totem-channeler",
+  "name": "Totem Channeler",
+  "classId": "skald",
+  "summary": "Some Shoanti skalds discover deeper truths in their tribes’ totems. These skalds, known as totem channelers, learn how to share the totems’ gifts with their allies in the heat of battle.",
+  "replacesText": "Bardic Knowledge; Rage Powers; Spell Kenning; Damage Reduction",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-rage-power-3",
+        "skald-rage-power-6",
+        "skald-rage-power-9",
+        "skald-rage-power-12",
+        "skald-rage-power-15",
+        "skald-rage-power-18",
+        "skald-spell-kenning-5",
+        "skald-damage-reduction-9"
+      ],
+      "features": [
+        {
+          "id": "skald-totem-channeler-totemic-versatility-ex-1",
+          "name": "Totemic Versatility (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When a totem channeler learns a new rage power, he can select from more than one group of totem rage powers, even though he normally could not do so. Totem rage powers grant benefits related to a theme, are organized in groups of three, and usually have the word “totem” in their name. When the totem channeler starts an inspired rage raging song, he can add totem rage powers from only one group at a time. He can change the group of added totem rage powers by ending the current inspired rage and starting a new one. This replaces bardic knowledge and alters rage powers."
+        },
+        {
+          "id": "skald-totem-channeler-tandem-totems-ex-5",
+          "name": "Tandem Totems (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, when a totem channeler starts an inspired rage raging song and adds a totem rage power, he can add totem rage powers from a different group. Adding or maintaining totem rage powers from the additional group requires spending 1 additional round of raging song each round. He can activate up to two additional totem groups at 11th level and up to three additional totem groups at 17th level. He must spend 1 additional round of raging song each round for each additional totem group. If the totem channeler does not have enough rounds of raging song remaining to maintain his inspired rage, the song ends. This replaces spell kenning."
+        },
+        {
+          "id": "skald-totem-channeler-totem-s-guidance-su-9",
+          "name": "Totem’s Guidance (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, the totem channeler can draw strength and protection from his totem powers when he wades into battle with song on his lips. When he adds a totem rage power to his inspired rage, he and his allies gain a +1 insight bonus to AC and on saving throws for the duration of the totem channeler’s raging song. At 14th level, this bonus increases to +2. This bonus applies only to the first totem rage power he applies to his inspired rage. This replaces damage reduction."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Totem%20Channeler"
+  }
+}

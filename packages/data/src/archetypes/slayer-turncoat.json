@@ -1,0 +1,50 @@
+{
+  "id": "slayer-turncoat",
+  "name": "Turncoat",
+  "classId": "slayer",
+  "summary": "The turncoat’s natural talents for deception and treachery are fitting when negotiating with the untrustworthy individuals and his ability to adapt allows him to preempt opponents’ schemes.",
+  "replacesText": "Track; Stalker; Quarry; Improved Quarry",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-track-1",
+        "slayer-swift-tracker-11",
+        "slayer-stalker-7",
+        "slayer-quarry-14",
+        "slayer-improved-quarry-19"
+      ],
+      "features": [
+        {
+          "id": "slayer-turncoat-dubious-recognition-ex-1",
+          "name": "Dubious Recognition (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A turncoat adds half his level (minimum 1) to Sense Motive checks to recognize when a creature is lying or attempting to take advantage of the turncoat and his allies. This replaces track."
+        },
+        {
+          "id": "slayer-turncoat-double-speak-ex-7",
+          "name": "Double Speak (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a turncoat can attempt a Bluff check in place of a Diplomacy check against a studied target. The target can attempt an opposed Sense Motive check. This ability replaces stalker."
+        },
+        {
+          "id": "slayer-turncoat-sudden-betrayal-ex-14",
+          "name": "Sudden Betrayal (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, as a standard action a turncoat can choose a single creature within 30 feet. He gains a +4 circumstance bonus on Diplomacy checks against this target. If the target has an attitude of indifferent or better toward him, the first attack roll the turncoat makes against that target is automatically treated as threatening a critical hit. If the target’s attitude is friendly or better, a successful attack is treated as a confirmed critical hit. This ability can be used only once per day. At 19th level, the bonus increases to +6, and the attack is treated as a confirmed critical hit if the target is at least indifferent to the turncoat. This ability replaces quarry and improved quarry."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Turncoat"
+  }
+}

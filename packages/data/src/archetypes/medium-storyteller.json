@@ -1,0 +1,76 @@
+{
+  "id": "medium-storyteller",
+  "name": "Storyteller",
+  "classId": "medium",
+  "summary": "While all mediums connect to legendary spirits, storyteller mediums take their obsession with legends to the extreme, suffusing their lives with epic tales at the cost of some of their spiritual power.",
+  "replacesText": "Spirit; Spirit Bonus; Spirit Surge; Shared Seance; Taboo; Haunt Channeler; Propitiation; Trance of Three; Connection Channel; Spirit Mastery; Astral Beacon",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "medium-spirit-1",
+        "medium-spirit-bonus-1",
+        "medium-spirit-surge-1",
+        "medium-spirit-mastery-19",
+        "medium-taboo-2",
+        "medium-haunt-channeler-3",
+        "medium-propitiation-9",
+        "medium-trance-three-17",
+        "medium-connection-channel-7",
+        "medium-astral-beacon-20"
+      ],
+      "features": [
+        {
+          "id": "medium-storyteller-diminished-spirits-ex-1",
+          "name": "Diminished Spirits (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A storyteller does not receive his spirit’s seance boon. He can’t choose to channel a weaker spirit to reduce his influence from spirit surge. Because of his obsession with legends, he begins with 2 points of influence after a seance rather than 1. This ability alters spirit."
+        },
+        {
+          "id": "medium-storyteller-knowledge-of-tales-ex-1",
+          "name": "Knowledge of Tales (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A storyteller gains a +1 bonus on all Knowledge skill checks with Knowledge skills in which he’s trained. This bonus increases by 1 for every 4 medium levels that he possesses. This ability replaces spirit bonus."
+        },
+        {
+          "id": "medium-storyteller-versatile-surge-su-1",
+          "name": "Versatile Surge (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A storyteller’s spirit surge can be used after the storyteller fails any ability check, skill check, or saving throw. This ability alters spirit surge."
+        },
+        {
+          "id": "medium-storyteller-storyteller-s-performance-su-2",
+          "name": "Storyteller’s Performance (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a storyteller gains the ability to recall snippets of tales that are relevant to the current situation. This ability is similar in all respects to bardic performance as used by a bard of the storyteller’s medium level (including interactions with feats, spells, and other abilities), and uses Perform (act), Perform (comedy), or Perform (oratory) as the storyteller’s performance skill. However, a storyteller gains only the following types of bardic performance: inspire courage (2nd level), inspire competence (3rd level), inspire greatness (9th level), and inspire heroics (15th level). This ability replaces shared seance, taboo, haunt channeler, propitiation, and trance of three."
+        },
+        {
+          "id": "medium-storyteller-learn-the-story-sp-7",
+          "name": "Learn the Story (Sp)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a storyteller becomes a master at learning a place’s tales. He can perform for a full minute, spending 10 rounds of storyteller’s performance, to gain the effects of retrocognition . At 10th level, he can spend 1d4 × 10 minutes and 10 rounds of storyteller’s performance to gain the effects of legend lore . The subject must be at hand for the legend lore to function. At 19th level, the storyteller can spend a standard action and 1 round of storyteller’s performance to gain the effects of vision on any subject. This ability replaces connection channel and spirit mastery."
+        },
+        {
+          "id": "medium-storyteller-living-story-sp-20",
+          "name": "Living Story (Sp)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a storyteller gains the ability to sweep others away into a story of his own making. He must perform for 1 full round, telling a tale to set the snare for his living story and spending 1 round of his storyteller’s performance. At the end of that round, he can affect up to 30 Hit Dice of listeners within range with microcosm . Unlike with a normal microcosm , this is also a sonic and language-dependent ability, and a creature with 16 or more Hit Dice that succeeds at its save is immune to the storyteller’s living story ability for 24 hours. This ability replaces astral beacon."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Medium%20Storyteller"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "id": "investigator-ruthless-agent",
+  "name": "Ruthless Agent",
+  "classId": "investigator",
+  "summary": "Ruthless agents are often called upon for their skills at extracting information by any means necessary.",
+  "replacesText": "Alignment; Inspiration; Trapfinding; Trap Sense; Swift Alchemy; 11th, 17th-level Investigator Talents.",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-inspiration-1",
+        "investigator-amazing-inspiration-7",
+        "investigator-true-inspiration-20",
+        "investigator-trapfinding-1",
+        "investigator-swift-alchemy-4",
+        "investigator-talent-11",
+        "investigator-talent-17"
+      ],
+      "features": [
+        {
+          "id": "investigator-ruthless-agent-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Any nongood. This alters the investigator’s alignment."
+        },
+        {
+          "id": "investigator-ruthless-agent-inspiration-ex-1",
+          "name": "Inspiration (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A ruthless agent focuses on reading motivations and using interrogation tactics. She can use inspiration on Intimidate, Knowledge, and Sense Motive checks without expending a use of inspiration, provided she’s trained in the skill. A ruthless agent can’t spend inspiration on attack rolls or saving throws. This alters inspiration."
+        },
+        {
+          "id": "investigator-ruthless-agent-enhanced-intimidation-ex-1",
+          "name": "Enhanced Intimidation (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A ruthless agent adds half her investigator level (minimum +1) as a bonus on Intimidate checks. When the ruthless agent uses Intimidate to influence an opponent’s attitude, the duration of the attitude shift is 1d6×10 minutes per investigator level (rather than the normal 1d6×10 minutes). Additionally, the ruthless agent is an expert in blending coercion and fear. The first time the ruthless agent attempts to use Intimidate to influence an opponent’s attitude and fails, she can retry it against that same opponent with no increase to the DC. Subsequent attempts to influence the same opponent are subject to increased DCs as normal. This replaces trapfinding."
+        },
+        {
+          "id": "investigator-ruthless-agent-interrogate-su-3",
+          "name": "Interrogate (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level as a full-round action, a ruthless agent can ask a target one question for every 2 investigator levels she has. The target is not compelled to answer truthfully, but the ruthless agent’s implicit or explicit threats and looming manner leads the target to believe the ruthless agent will cause it serious harm if it lies. This imposes a –2 penalty on the target’s Bluff checks to lie when answering the specific questions the ruthless agent asked. At 6th level and every 3 levels thereafter, the penalty increases by 2 (to a maximum of –12 at 18th level). She can use this ability a number of times per day equal to 3 + her Intelligence modifier. This is a mind-affecting fear effect. This replaces trap sense."
+        },
+        {
+          "id": "investigator-ruthless-agent-agonizing-strike-ex-4",
+          "name": "Agonizing Strike (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a ruthless agent has learned how to finesse her attacks to discomfort a foe. When she deals damage using her studied strike, she can make this damage nonlethal (regardless of whether her weapon normally deals lethal or nonlethal damage), forcing the target to succeed at a Fortitude saving throw (DC = 10 + half the ruthless agent’s level + her Intelligence modifier) or be sickened for 1 round and take a –2 penalty on Will saving throws for 1 minute. Multiple agonizing strikes do not worsen the condition or impose an additional penalty on Will saves, but they do increase the duration of both effects. This replaces swift alchemy."
+        },
+        {
+          "id": "investigator-ruthless-agent-concoction-of-truth-su-7",
+          "name": "Concoction of Truth (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a ruthless agent automatically adds discern lies to her list of formulae known. She prepares this as a 3rd-level extract, and she can prepare one discern lies extract each day that does not count against her daily allotment of extracts. This replaces the investigator talent gained at 7th level."
+        },
+        {
+          "id": "investigator-ruthless-agent-compel-obedience-sp-11",
+          "name": "Compel Obedience (Sp)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a ruthless agent can issue a binding command to a creature as a full-round action once per day. This command acts like geas/quest with the creature as the target, using the ruthless agent’s investigator level as the caster level. The ruthless agent can compel obedience from only one creature at a time (as soon as the geas/quest is fulfilled, however, the ruthless agent can use this ability again, as long as she has a use of this ability available). At 17th level, the ruthless agent can compel obedience from two creatures at once, and she is always aware of the targets as if they were under the effects of a status spell (caster level = the ruthless agent’s investigator level). This replaces the investigator talents gained at 11th and 17th levels."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Ruthless%20Agent"
+  }
+}

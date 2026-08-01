@@ -1,0 +1,63 @@
+{
+  "id": "bloodrager-steelblood",
+  "name": "Steelblood",
+  "classId": "bloodrager",
+  "summary": "Most bloodragers prefer light armor, but some learn the secret of using heavy armors.",
+  "replacesText": "Armor Proficiency; Fast Movement; Uncanny Dodge; Improved Uncanny Dodge; Damage Reduction",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "bloodrager-fast-movement-1",
+        "bloodrager-uncanny-dodge-2",
+        "bloodrager-improved-uncanny-dodge-5",
+        "bloodrager-damage-reduction-7"
+      ],
+      "features": [
+        {
+          "id": "bloodrager-steelblood-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A steelblood gains proficiency in heavy armor. A steelblood can cast bloodrager spells while wearing heavy armor without incurring an arcane spell failure chance. This replaces the bloodrager’s armor proficiency."
+        },
+        {
+          "id": "bloodrager-steelblood-indomitable-stance-ex-1",
+          "name": "Indomitable Stance (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a steelblood gains a +1 bonus on combat maneuver checks, to CMD against overrun combat maneuvers, and on Reflex saving throws against trample attacks. He also gains a +1 bonus to his AC against charge attacks and on attack and damage rolls against charging creatures. This ability replaces fast movement."
+        },
+        {
+          "id": "bloodrager-steelblood-armored-swiftness-ex-2",
+          "name": "Armored Swiftness (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a steelblood moves faster in medium and heavy armor. When wearing medium or heavy armor, a steelblood can move 5 feet faster than normal in that armor, to a maximum of his unencumbered speed. This ability replaces uncanny dodge."
+        },
+        {
+          "id": "bloodrager-steelblood-armor-training-ex-5",
+          "name": "Armor Training (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a steelblood learns to be more maneuverable while wearing armor. Whenever he is wearing armor, he reduces the armor check penalty by 1 (to a maximum of 0) and increases the maximum Dexterity bonus allowed by his armor by 1. Every 4 levels thereafter (9th, 13th, and 17th), these bonuses increase by 1, to a maximum 4-point reduction of the armor check penalty and a +4 increase of the maximum Dexterity bonus. This ability stacks with the fighter class feature of the same name. This ability replaces improved uncanny dodge."
+        },
+        {
+          "id": "bloodrager-steelblood-blood-deflection-su-7",
+          "name": "Blood Deflection (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, as an immediate action a steelblood can sacrifice a bloodrager spell slot to gain a deflection bonus to AC equal to the level of the spell sacrificed. The deflection bonus lasts until the start of his next turn. This ability can be applied after an attack roll is made against the steelblood, allowing the steelblood to convert a hit into a miss if the deflection bonus is high enough. This ability replaces damage reduction."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bloodrager%20Steelblood"
+  }
+}

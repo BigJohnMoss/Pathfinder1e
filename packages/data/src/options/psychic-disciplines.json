@@ -1,1 +1,275 @@
-{"id":"psychic-disciplines","name":"Psychic Disciplines","classIds":["psychic"],"optionDefaults":{"groupId":"psychic-disciplines","classIds":["psychic"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Occult Adventures","page":60,"url":"https://legacy.aonprd.com/occultAdventures/classes/psychic.html#psychic-disciplines"}},"options":[{"id":"psychic-discipline-abomination","name":"Abomination","benefit":"Draw power from an alien or monstrous mind."},{"id":"psychic-discipline-faith","name":"Faith","benefit":"Channel conviction and divine insight through psychic magic."},{"id":"psychic-discipline-haunted","name":"Haunted","benefit":"Turn spiritual torment into psychic strength."},{"id":"psychic-discipline-lore","name":"Lore","benefit":"Use encyclopedic knowledge to expand psychic understanding."},{"id":"psychic-discipline-mindtech","name":"Mindtech","benefit":"Fuse technological reasoning with mental power."},{"id":"psychic-discipline-pain","name":"Pain","benefit":"Transform suffering into focus and magical force."},{"id":"psychic-discipline-psychedelia","name":"Psychedelia","benefit":"Alter perception and emotion through ecstatic insight."},{"id":"psychic-discipline-rapport","name":"Rapport","benefit":"Build empathic connections that strengthen magic."},{"id":"psychic-discipline-rebirth","name":"Rebirth","benefit":"Recall fragments of former lives and their magic."},{"id":"psychic-discipline-self-perfection","name":"Self-Perfection","benefit":"Unify body and mind through disciplined practice."}]}
+{
+  "id": "psychic-disciplines",
+  "name": "Psychic Disciplines",
+  "classIds": [
+    "psychic"
+  ],
+  "optionDefaults": {
+    "groupId": "psychic-disciplines",
+    "classIds": [
+      "psychic"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/PsychicDisciplines.aspx"
+    }
+  },
+  "options": [
+    {
+      "id": "psychic-discipline-abomination",
+      "name": "Abomination",
+      "minimumLevel": 1,
+      "benefit": "Your mind is impure, tainted by outside forces.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Abomination"
+      }
+    },
+    {
+      "id": "psychic-discipline-bleaching",
+      "name": "Bleaching",
+      "minimumLevel": 1,
+      "benefit": "You draw power from a void in your emotions, a yawning and empty chasm where your hopes and dreams and fears should be.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Bleaching"
+      }
+    },
+    {
+      "id": "psychic-discipline-dream",
+      "name": "Dream",
+      "minimumLevel": 1,
+      "benefit": "You discover deeper and more powerful corners of your mind through journeys you make in your dreams.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Dream"
+      }
+    },
+    {
+      "id": "psychic-discipline-enlightenment",
+      "name": "Enlightenment",
+      "minimumLevel": 1,
+      "benefit": "Your quest for enlightenment has opened your eyes to new concepts and heights of spiritual awareness.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Enlightenment"
+      }
+    },
+    {
+      "id": "psychic-discipline-faith",
+      "name": "Faith",
+      "minimumLevel": 1,
+      "benefit": "Your belief in a higher power fuels your psychic abilities.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Faith"
+      }
+    },
+    {
+      "id": "psychic-discipline-ferocity",
+      "name": "Ferocity",
+      "minimumLevel": 1,
+      "benefit": "You are in touch with the most primal part of your subconscious.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Ferocity"
+      }
+    },
+    {
+      "id": "psychic-discipline-hag-called",
+      "name": "Hag-Called",
+      "minimumLevel": 1,
+      "benefit": "A hag’s call echoes through your mind like a siren’s song, enticing you to surrender and become something horrible.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Hag-Called"
+      }
+    },
+    {
+      "id": "psychic-discipline-haunted",
+      "name": "Haunted",
+      "minimumLevel": 1,
+      "benefit": "You attract the attention of spirits as naturally as a lodestone attracts iron filings.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Haunted"
+      }
+    },
+    {
+      "id": "psychic-discipline-lore",
+      "name": "Lore",
+      "minimumLevel": 1,
+      "benefit": "By collecting expert information and reading all sorts of treatises and chapbooks on occult subjects, you learn proper techniques and rituals to empower your mental abilities.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Lore"
+      }
+    },
+    {
+      "id": "psychic-discipline-mindtech",
+      "name": "Mindtech",
+      "minimumLevel": 1,
+      "benefit": "You are innately tied to and can communicate with electronic machinery and similar technological objects, through which you can funnel your psychic power like flowing water.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Mindtech"
+      }
+    },
+    {
+      "id": "psychic-discipline-pageantry",
+      "name": "Pageantry",
+      "minimumLevel": 1,
+      "benefit": "The act of ritual, no matter how ostentatious, can be a route to mental strength.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Pageantry"
+      }
+    },
+    {
+      "id": "psychic-discipline-pain",
+      "name": "Pain",
+      "minimumLevel": 1,
+      "benefit": "Mental blocks prevent your immense inborn psychic energies from flowing freely.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Pain"
+      }
+    },
+    {
+      "id": "psychic-discipline-psychedelia",
+      "name": "Psychedelia",
+      "minimumLevel": 1,
+      "benefit": "You ingest hallucinogens to expand your mind.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Psychedelia"
+      }
+    },
+    {
+      "id": "psychic-discipline-rapport",
+      "name": "Rapport",
+      "minimumLevel": 1,
+      "benefit": "Forging a close bond with other people brings out the best in you, making it easier for you to link your mind with theirs.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Rapport"
+      }
+    },
+    {
+      "id": "psychic-discipline-rebirth",
+      "name": "Rebirth",
+      "minimumLevel": 1,
+      "benefit": "Your mind is forged from the most powerful memories of a multitude of lifetimes.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Rebirth"
+      }
+    },
+    {
+      "id": "psychic-discipline-rivethun",
+      "name": "Rivethun",
+      "minimumLevel": 1,
+      "benefit": "You have embraced those aspects of your body that cause you agony, respecting the perspective they grant you if not necessarily the roles they’ve condemned you to in life.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Rivethun"
+      }
+    },
+    {
+      "id": "psychic-discipline-self-perfection",
+      "name": "Self-Perfection",
+      "minimumLevel": 1,
+      "benefit": "You take a holistic view of psychic power, believing that you must hone both your mental and physical attributes to remain in balance.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Self-Perfection"
+      }
+    },
+    {
+      "id": "psychic-discipline-shadow",
+      "name": "Shadow",
+      "minimumLevel": 1,
+      "benefit": "You perceive the space between light and darkness, and draw power from it.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Shadow"
+      }
+    },
+    {
+      "id": "psychic-discipline-sorrow",
+      "name": "Sorrow",
+      "minimumLevel": 1,
+      "benefit": "You draw strength from deep feelings of abandonment, loneliness, and sadness, turning these emotions into a powerful weapon or a barrier that protects you.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Sorrow"
+      }
+    },
+    {
+      "id": "psychic-discipline-superiority",
+      "name": "Superiority",
+      "minimumLevel": 1,
+      "benefit": "You know that you are far better than average creatures of your kind.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Superiority"
+      }
+    },
+    {
+      "id": "psychic-discipline-symbiosis",
+      "name": "Symbiosis",
+      "minimumLevel": 1,
+      "benefit": "Like pollen on the wind or the roots of plants in the ground, your thoughts permeate your surroundings, allowing you to study and manipulate the world around you.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Symbiosis"
+      }
+    },
+    {
+      "id": "psychic-discipline-tranquility",
+      "name": "Tranquility",
+      "minimumLevel": 1,
+      "benefit": "Psychic magic flows through you when you attain a peaceful mental state.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Tranquility"
+      }
+    },
+    {
+      "id": "psychic-discipline-warp",
+      "name": "Warp",
+      "minimumLevel": 1,
+      "benefit": "Ratfolk mythology claims they were appointed by the gods to sniff out the ragged edges of creation.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/PsychicDisciplinesDisplay.aspx?ItemName=Warp"
+      }
+    }
+  ]
+}

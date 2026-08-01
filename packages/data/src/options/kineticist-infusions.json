@@ -1,1 +1,913 @@
-{"id":"kineticist-infusions","name":"Kineticist Infusions","classIds":["kineticist"],"optionDefaults":{"groupId":"kineticist-infusions","classIds":["kineticist"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Occult Adventures","page":17,"url":"https://legacy.aonprd.com/occultAdventures/classes/kineticist.html#infusion"}},"options":[{"id":"kineticist-extended-range","name":"Extended Range","benefit":"Increase blast range to 120 feet."},{"id":"kineticist-kinetic-blade","name":"Kinetic Blade","benefit":"Form the blast into a melee weapon."},{"id":"kineticist-pushing-infusion","name":"Pushing Infusion","benefit":"Bull rush creatures damaged by the blast."},{"id":"kineticist-thundering-infusion","name":"Thundering Infusion","benefit":"Electric blasts can deafen targets."},{"id":"kineticist-burning-infusion","name":"Burning Infusion","benefit":"Fire blasts can ignite targets."},{"id":"kineticist-entangling-infusion","name":"Entangling Infusion","minimumLevel":5,"benefit":"Entangle targets damaged by the blast."},{"id":"kineticist-foe-throw","name":"Foe Throw","minimumLevel":9,"benefit":"Telekinetically throw one creature into another."},{"id":"kineticist-wall","name":"Wall","minimumLevel":11,"benefit":"Shape the blast into a persistent wall."},{"id":"kineticist-cloud","name":"Cloud","minimumLevel":13,"benefit":"Create a persistent damaging cloud."},{"id":"kineticist-deadly-earth","name":"Deadly Earth","minimumLevel":13,"benefit":"Turn terrain into a persistent damaging field."},{"id":"kineticist-pure-flame","name":"Pure-Flame Infusion","minimumLevel":15,"benefit":"Blue flame ignores spell resistance."}]}
+{
+  "id": "kineticist-infusions",
+  "name": "Kineticist Infusions",
+  "classIds": [
+    "kineticist"
+  ],
+  "optionDefaults": {
+    "groupId": "kineticist-infusions",
+    "classIds": [
+      "kineticist"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/KineticistTalents.aspx"
+    }
+  },
+  "options": [
+    {
+      "id": "kineticist-infusion-blade-rush",
+      "name": "Blade Rush",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 2; Burn 2Prerequisite kinetic bladeAssociated Blasts anySaving Throw noneYou use your element’s power to instantly move 30 feet in any direction (even straight up), manifest a kinetic blade, and attack once. You gain a +2 bonus on the attack roll and take a –2 penalty to your AC until the start of your next turn. The movement doesn’t provoke attacks of opportunity, though activating blade rush does. If you have the kinetic whip infusion, you can manifest a kinetic whip instead of a kinetic blade at the end of your movement by increasing the burn cost of this infusion by 1. The blade or whip vanishes instantly after the rush.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-blade-whirlwind",
+      "name": "Blade Whirlwind",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 5; Burn 3Prerequisite kinetic bladeAssociated Blasts anySaving Throw noneYou create a kinetic blade and swing it in an arc around you, making a single attack against all foes within reach as if with kinetic blade. If the result is a critical threat, roll to confirm the critical hit against only the first target you hit. The blade vanishes instantly after the whirlwind.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-bolt",
+      "name": "Bolt",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement air; Type form infusion; Level 3; Burn 2Associated Blasts electric blast, thunderstorm blastSaving Throw Reflex halfYou unleash a bolt of lightning above an enemy within 30 feet and send it spiraling down with tremendous force. Each bolt is a 5-foot-wide, 30-foot-long, vertical bolt, dealing your full blast damage to creatures within the line. If all squares in the bolt’s area are outdoors and in a storm, the blast deals an additional 1 point of damage per die. The saving throw is Dexterity-based.",
+      "source": {
+        "title": "Heroes of Golarion",
+        "page": 26,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-bowling-infusion",
+      "name": "Bowling Infusion",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement aether, earth; Type substance infusion; Level 2; Burn 2Associated Blasts earth, magma, metal, mud, telekineticSaving Throw noneYou bowl your foes over with the sheer mass of your kinetic blast. Attempt a trip combat maneuver check against each target damaged by your infused blast, using your Constitution modifier instead of your Strength modifier to determine your Combat Maneuver Bonus.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 17,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-brilliant-infusion",
+      "name": "Brilliant Infusion",
+      "minimumLevel": 11,
+      "benefit": "Talent Link LinkElement fire; Type substance infusion; Level 6; Burn 4Prerequisite flash infusionAssociated Blasts blue flame, fire, plasmaSaving Throw noneYour kinetic blast leaves an afterglow that banishes the darkness. Treat each square of the path of your ranged attack kinetic blast, the target square of your melee attack kinetic blast, or the area of your area of effect kinetic blast as the center of a continual flame effect that lasts until the end of your next turn. This effect counts as a 6th-level spell with the light descriptor.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 17,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-burning-infusion",
+      "name": "Burning Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement fire; Type substance infusion; Level 1; Burn 1Associated Blasts blue flame, fire, magma, plasmaSaving Throw Reflex negatesYour kinetic blast ignites your foes. Whenever an infused blast hits a foe and penetrates its spell resistance, that foe catches on fire, regardless of whether it takes damage. A foe that catches fire takes 1d6 points of fire damage each round until the fire is extinguished. Against a creature on fire from this infusion, any fire kinetic blasts gain a +2 bonus on attack rolls, to DCs, and on caster level checks to overcome spell resistance.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 17,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-chain",
+      "name": "Chain",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement air; Type form infusion; Level 5; Burn 3Associated Blasts electricSaving Throw noneYour electric blast leaps from target to target. When you hit a target with your infused blast, you can attempt a ranged touch attack against an additional target that is within 30 feet of the first. Each additional attack originates from the previous target, which could alter cover and other conditions. Each additional target takes 1d6 fewer points of damage than the last (for example, 3d6 becomes 2d6), and you can’t chain the blast back to a previous target. You can continue chaining your blasts until a blast misses or fails to deal damage, or until your blast is reduced to a single damage die.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 18,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-chilling-infusion",
+      "name": "Chilling Infusion",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement water; Type substance infusion; Level 5; Burn 3Associated Blasts blizzard, cold, iceSaving Throw Fortitude negatesYour kinetic blast chills your foes to the bone, making their movements sluggish. Whenever an infused blast deals cold damage to a foe, that foe is staggered for 1 round.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 18,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-cloud",
+      "name": "Cloud",
+      "minimumLevel": 13,
+      "benefit": "Talent Link LinkElement air, water; Type form infusion; Level 7; Burn 4Prerequisite extended rangeAssociated Blasts blizzard, sandstorm, steam, thunderstormSaving Throw noneYou release your power in a diffuse cloud. You can center this 20-foot-radius spread anywhere within 120 feet of you. All creatures and objects within the cloud when you create it automatically take 1/4 the normal amount of damage from your blast with no saving throw. Any time a creature enters the cloud, it takes half the normal amount of damage from your blast, as do creatures that end their turns in the cloud. Your cloud obscures vision as obscuring mist. It lasts for a number of rounds equal to your Constitution modifier or until you use the cloud infusion again.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 18,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-cyclone",
+      "name": "Cyclone",
+      "minimumLevel": 7,
+      "benefit": "Talent Link LinkElement air; Type form infusion; Level 4; Burn 3Associated Blasts air, blizzard, sandstorm, thunderstormSaving Throw Reflex halfYou create a circular rush of wind. All creatures and objects within a 20-foot-radius burst centered on you take half your blast’s normal amount of damage. The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 18,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-dampening-infusion",
+      "name": "Dampening Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement void; Type substance infusion; Level 1; Burn 1Associated Blasts negative, voidSaving Throw Will negatesYour kinetic blast swirls with darkness, making it harder for your foes to see. This otherwise functions as dazzling infusion.",
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-darkness-infusion",
+      "name": "Darkness Infusion",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement void; Type substance infusion; Level 3; Burn 2Associated Blasts gravity, negative, voidSaving Throw noneYour kinetic blast creates darkness. Treat each square of the path of your ranged attack kinetic blast, the target square of your melee attack kinetic blast, or the area of your area of effect kinetic blast as the center of a darkness effect that lasts until the end of your next turn. This effect counts as a 3rd-level darkness spell.",
+      "source": {
+        "title": "Occult Origins",
+        "page": 6,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-darkness-infusion-greater",
+      "name": "Darkness Infusion, Greater",
+      "minimumLevel": 11,
+      "benefit": "Talent Link LinkElement void; Type substance infusion; Level 6; Burn 4Prerequisite darkness infusionAssociated Blasts gravity, negative, voidSaving Throw noneYour blast creates supernatural darkness, as per the darkness infusion, except it acts as deeper darkness and counts as a 6th-level darkness spell.",
+      "source": {
+        "title": "Occult Origins",
+        "page": 6,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-dazzling-infusion",
+      "name": "Dazzling Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement fire, wood; Type substance infusion; Level 1; Burn 1Associated Blasts blue flame, fire, plasma, positive, verdantSaving Throw Will negatesYour kinetic blast shines brightly, making it harder for your foes to see. If your blast hits a foe (and penetrates SR if applicable), that foe must succeed at a Will save or be dazzled for 1 minute, whether or not it takes damage from the blast. You can reduce the blast’s damage by half to increase the DC of this save by 2.",
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-deadly-earth",
+      "name": "Deadly Earth",
+      "minimumLevel": 11,
+      "benefit": "Talent Link LinkElement earth, wood; Type form infusion; Level 6; Burn 4Prerequisite extended rangeAssociated Blasts autumn, earth, magma, metal, mud, spring, summer, verdant, winter, wood Saving Throw noneYou infuse the ground in a 20-foot radius anywhere within 120 feet of you on an earthen surface (if you are using a metal blast, this infusion affects a metal surface instead). The ground roils and buckles beneath the affected area. All creatures and objects in contact with the ground within the area when you create it automatically take 1/4 of the normal damage from your blast with no saving throw. Any time a creature enters the area, it takes half the normal damage from your blast, as do creatures that end their turns in the area. The entire area counts as difficult terrain. This infusion lasts for a number of rounds equal to your Constitution modifier or until you use it again.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 18,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-detonation",
+      "name": "Detonation",
+      "minimumLevel": 7,
+      "benefit": "Talent Link LinkElement fire; Type form infusion; Level 4; Burn 3Associated Blasts blue flame, fireSaving Throw Reflex halfFlames explode outward from your body, dealing your blast damage to all creatures and objects within a 20- foot radius.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-disintegrating-infusion",
+      "name": "Disintegrating Infusion",
+      "minimumLevel": 11,
+      "benefit": "Talent Link LinkElement aether; Type substance infusion; Level 6; Burn 4Associated Blasts forceSaving Throw Fortitude partial; see textYou can use force to rip your targets apart. Against creatures, your kinetic blast deals double its normal amount of damage, but targets receive a saving throw to reduce the damage to half the blast’s normal amount of damage (for a total of 1/4 of the blast’s increased damage). Any creature reduced to 0 or fewer hit points by the blast is disintegrated, as the spell disintegrate. You can use the infused blast to destroy force effects or objects as disintegrate, but for each force effect or 10-foot cube of nonliving matter you destroy in this way, you must accept 1 point of burn, which can’t be reduced by effects such as infusion specialization or gather power.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 18,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-draining-infusion",
+      "name": "Draining Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement universal; Type substance infusion; Level 1; Burn 1Associated Blasts any simpleSaving Throw Fortitude partial; see textYou can drain elemental energy and matter from your foes to strengthen your next attack. When you use this infusion, your kinetic blast affects only creatures with a subtype matching your kinetic blast’s element (for instance, a fire blast would damage only creatures of the fire subtype). Against such creatures, your blast targets touch AC (if it requires an attack roll) and always allows spell resistance. Because you are draining energy from the target, your blast doesn’t apply your elemental overflow bonuses or Constitution modifier. The target can attempt a Fortitude save to take 1/4 the normal amount of damage. Draining infusion ignores any damage reduction, resistances, and immunities the creature might possess. If at least one creature fails its saving throw against your draining infusion, you can reduce the total burn cost of any one blast wild talent used before the end of your next turn by 1, or by 2 if you have the supercharge ability. If you use draining infusion again before applying this reduction, you still deal the damage from that draining infusion, but the burn reductions don’t stack.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 18,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-elemental-trap",
+      "name": "Elemental Trap",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 3; Burn 2Associated Blasts anySaving Throw Reflex half, see textYou touch an area of natural ground, drawing up elemental energy that roils just below the surface, ready to explode when stepped on. This 5-foot square detonates when triggered by a weight of 10 pounds or more, affecting all creatures within 10 feet of the trap with your simple blast (or composite blast, if you have it). Any creature other than the one that triggered the elemental trap can attempt a Reflex save for half damage. The elemental trap lasts until the next time you use this wild talent or until it triggers. This counts as a magical trap with a Perception and Disable Device DC equal to 10 + your kineticist level + your Dexterity modifier. You can accept 2 points of burn, which cannot be reduced with gather power, to make a new trap without dismissing any previous traps. If you do, the trap lasts until the next time you recover burn.",
+      "source": {
+        "title": "Wilderness Origins",
+        "page": 28,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-energize-weapon",
+      "name": "Energize Weapon",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement air, fire, void, water; Type form infusion; Level 1; Burn 1Associated Blasts blue flame, cold, electric, fire, negativeSaving Throw noneChoose a manufactured weapon in your hand (not an unarmed strike or natural attack); if the weapon is a double weapon, you must choose one of its ends to receive this benefit. You imbue the chosen weapon with your elemental energy as part of an attack action, charge action, or full-attack action to add extra damage to each of your attacks with that weapon until the beginning of your next turn. Your attacks with the chosen weapon during that action deal 1d6 additional points of damage. At 7th level and every 6 levels thereafter, this bonus damage increases by 1d6 points. Blue flame blasts deal double this additional damage. The additional damage is of the same type as the infused blast’s damage. This additional damage ignores spell resistance and doesn’t apply any modifiers to your kinetic blast’s damage (such as your Constitution modifier).",
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-enervating-infusion",
+      "name": "Enervating Infusion",
+      "minimumLevel": 13,
+      "benefit": "Talent Link LinkElement void; Type substance infusion; Level 7; Burn 4Associated Blasts negative, voidSaving Throw Fortitude negatesYour kinetic blast drains life force. Foes that take damage from your infused blast also take 1 temporary negative level. Negative levels from this infusion fade after 24 hours and never become permanent.",
+      "source": {
+        "title": "Occult Origins",
+        "page": 6,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-entangling-infusion",
+      "name": "Entangling Infusion",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement earth, water, wood; Type substance infusion; Level 2; Burn 2Associated Blasts autumn, blizzard, cold, earth, ice, magma, metal, mud, sandstorm, spring, summer, verdant, winter, woodSaving Throw Reflex negatesYour kinetic blast surrounds your foes in elemental matter. Whenever a blast with this infusion deals damage to a foe, that foe becomes entangled for 1 minute. The foe can remove this condition as a standard action with a successful Escape Artist or Strength check (with the same DC as for saves against your kinetic blast) or by dealing an amount of damage to the entangling matter equal to double your kineticist level (the matter has hardness 0). If the foe was already entangled by this infusion and fails its save against a second instance of this infusion, the increased amount of elemental matter fuses to the ground, causing the foe to be rooted in place as though anchored to an immobile object.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 19,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-eruption",
+      "name": "Eruption",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement fire; Type form infusion; Level 3; Burn 2Prerequisite extended rangeAssociated Blasts blue flame, fire, magma, steamSaving Throw Reflex halfYour kinetic blast erupts from the ground in a pillar centered anywhere within 120 feet of you. The pillar affects all creatures and objects in a 10-foot-radius cylinder that extends 40 feet above the ground. An energy blast infused with eruption deals its normal damage to each target, while a physical blast deals half its normal amount of damage. The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 19,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-explosion",
+      "name": "Explosion",
+      "minimumLevel": 13,
+      "benefit": "Talent Link LinkElement fire; Type form infusion; Level 7; Burn 4Prerequisite extended rangeAssociated Blasts blue flame, fireSaving Throw Reflex halfYou focus your energy on a point in space and create a controlled explosion. You can center the explosion anywhere within 120 feet of you, and you can choose the radius of the spread to be 5, 10, 15, or 20 feet. All creatures and objects within the explosion take your blast’s damage. The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 19,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-extended-range",
+      "name": "Extended Range",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 1; Burn 1Associated Blasts anySaving Throw noneYour kinetic blast can strike any target within 120 feet.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 19,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-extreme-range",
+      "name": "Extreme Range",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 3; Burn 2Prerequisite extended rangeAssociated Blasts anySaving Throw noneYour kinetic blast can strike any target within 480 feet.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 19,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-fan-of-flames",
+      "name": "Fan of Flames",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement fire; Type form infusion; Level 1; Burn 1Associated Blasts blue flame, fireSaving Throw Reflex halfYour kinetic blast extends in a fan of flames, damaging all creatures and objects in a 15-foot cone. The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 19,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-flash-infusion",
+      "name": "Flash Infusion",
+      "minimumLevel": 7,
+      "benefit": "Talent Link LinkElement fire; Type substance infusion; Level 4; Burn 3Associated Blasts blue flame, fire, plasmaSaving Throw Will negatesYour kinetic blast is so bright that it blinds your foes. Whenever an infused blast hits a foe and penetrates its spell resistance, that foe must succeed at a Will save or be blinded for 1 round, regardless of whether it takes damage from the blast. You can reduce the blast’s damage by half to increase the DC of this save by 2.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 19,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-flurry-of-blasts",
+      "name": "Flurry of Blasts",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 3; Burn 2Prerequisite extended rangeAssociated Blasts anySaving Throw noneInstead of a single kinetic blast, you shoot two kinetic blasts at targets within 120 feet that each deal damage as if your kineticist level were 1st (effects or abilities that increase your kinetic blast’s damage don’t apply). At 10th level, you can shoot three blasts with flurry of blasts; this increases to four blasts at 16th level and to five blasts at 20th level. If you are under the effect of haste or similar magic that increases your number of attacks in a fullattack action, the number of kinetic blasts in your flurry of blasts increases by 1. No two targets can be more than 30 feet apart. You must assign the targets of all your blasts before rolling any of the attacks. Any blast beyond the first that hits the same target adds 1d6 points of damage; bonuses and penalties to damage don’t apply. If you are using a substance infusion that requires a saving throw, a target attempts its save only once (even if it was hit multiple times), but it takes a penalty on the save equal to the number of times it was hit beyond the first. If you are using a substance infusion that requires a caster level check or combat maneuver check, you roll the check only once against each target, but you gain a bonus on the check equal to the number of times that target was hit beyond the first. If you are using the pushing substance infusion, the maximum distance of the push increases by 5 feet for each time the target was hit beyond the first.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 19,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-focused-blast",
+      "name": "Focused Blast",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 2; Burn 2Associated Blasts anySaving Throw noneYou focus your blast in a concentrated attack. You gain a +1 enhancement bonus on your attack roll with the blast and your caster level check to overcome spell resistance. You can increase the burn cost of this infusion by 2 to increase the enhancement bonus by 1, to a maximum of +5 for 10 burn. You can reduce your blast’s total damage by half to reduce the burn cost of this infusion by half as well.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-foe-throw",
+      "name": "Foe Throw",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement aether; Type form infusion; Level 3; Burn 2Associated Blasts telekineticSaving Throw Fortitude negates; see textYour telekinetic blast can throw a Large or smaller creature instead of an unattended object; you can increase the burn cost by 1 to affect a creature of a larger size. If the creature you attempt to throw succeeds at a Fortitude save, it negates the blast entirely. Otherwise, if your blast hits, both the thrown creature and the target take the full amount of damage from your telekinetic blast, and the thrown creature falls prone in the last unoccupied space along its path. If your blast misses, the thrown creature can choose to occupy any space within 30 feet of the target, it doesn’t fall prone, and it takes half the normal amount of damage from your blast. The movement doesn’t provoke attacks of opportunity.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-force-hook",
+      "name": "Force Hook",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement aether; Type form infusion; Level 3; Burn 2Associated Blasts forceSaving Throw noneYour force blast hooks onto its target and drags you adjacent to it. This effect functions as force hook chargeUM, except with the range and damage of your force blast.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-foxfire-infusion",
+      "name": "Foxfire Infusion",
+      "minimumLevel": 5,
+      "benefit": ", Psychic Anthology pg. 20Talent Link LinkElement fire, wood; Type substance infusion (Sp); Level 3; Burn 2Prerequisite foxfire or positive blastAssociated Blasts blue flame, fire, positiveSaving Throw Will partialYour blast leaves behind flickering flames that reveal the target’s location as per faerie fire for 1 minute (or until your next turn if the target succeeds at its save). This effect occurs even if the foe doesn’t take damage, as long as the attack overcomes spell resistance (if any). You can reduce the blast’s damage by half to increase the DC of this saving throw by 2. A creature can remove the revealing flames early by taking a full-round action to extinguish them.",
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 58,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-fragmentation",
+      "name": "Fragmentation",
+      "minimumLevel": 13,
+      "benefit": "Talent Link LinkElement earth, water; Type form infusion; Level 7; Burn 4Prerequisite extended rangeAssociated Blasts earth, ice, metalSaving Throw none or Reflex half; see textYou throw a volatile sphere of solid matter that shatters into countless shards. Attempt a ranged attack roll against a target within 120 feet. If you hit, the target takes your kinetic blast damage with no saving throw. All other creatures and objects within a 20-foot burst take half the normal amount of damage and can attempt a Reflex save to reduce that damage by half again. If the attack misses its target, the blast has no effect. The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-grappling-infusion",
+      "name": "Grappling Infusion",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement universal; Type substance infusion; Level 5; Burn 3Associated Blasts anySaving Throw noneYour cloud, deadly earth, or wall blast grows tendrils that hold your enemies in place. Whenever a creature takes damage from the infused blast, you can attempt a combat maneuver check to have the blast grapple that opponent. Your bonus on this check is equal to 2 + your kineticist level + your Constitution modifier (treat the blast as a Huge creature). The blast only grapples opponents; it can’t perform other functions of grapple maneuvers such as pinning or moving the opponent. If the blast is already grappling an opponent, it receives a +5 bonus on its combat maneuver check to maintain the grapple, as normal. You can use this infusion only if you also use the cloud, deadly earth, or wall form infusion.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-gusting-infusion",
+      "name": "Gusting Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement air; Type substance infusion; Level 1; Burn 1Associated Blasts air, blizzard, sandstorm, thunderstormSaving Throw Fortitude negatesThe wind from your infusion causes your blast to act as an instantaneous gust of wind. If your blast has a clear path, you can accept 2 additional points of burn or reduce the damage to 0 in order to cause the gust of wind effect to persist for 1 round along that path.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-impale",
+      "name": "Impale",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement earth, water, wood; Type form infusion; Level 3; Burn 2Associated Blasts autumn, earth, ice, metal, spring, summer, verdant, winter, woodSaving Throw noneYou extend a long, sharp spike of elemental matter along a line, impaling multiple foes. Make a single attack roll against each creature or object in a 30-foot line, starting with the closest target. If the result is a critical threat, roll to confirm against only the first target you hit. Calculate damage against each target you hit, starting from the closest. If your attack hits a target but fails to deal physical damage to that target, the spike fails to penetrate and the infused blast doesn’t continue. A blast with the impale infusion can penetrate solid barriers, but it must deal enough damage to destroy the barrier in order to continue through. Infused earth and metal blasts always deal piercing damage.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-kinetic-blade",
+      "name": "Kinetic Blade",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 1; Burn 1Associated Blasts anySaving Throw noneYou form a weapon using your kinetic abilities. You create a non-reach, light or one-handed weapon in your hand formed of pure energy or elemental matter. (If you’re a telekineticist, you instead transfer the power of your kinetic blast to any object held in one hand.) The kinetic blade’s shape is purely cosmetic and doesn’t affect the damage dice, critical threat range, or critical multiplier of the kinetic blade, nor does it grant the kinetic blade any weapon special features. The object held by a telekineticist for this form infusion doesn’t prevent her from using gather power. You can use this form infusion once as part of an attack action, a charge action, or a full-attack action in order to make melee attacks with your kinetic blade. Since it’s part of another action (and isn’t an action itself), using this wild talent doesn’t provoke any additional attacks of opportunity. The kinetic blade deals your kinetic blast damage on each hit (applying any modifiers to your kinetic blast’s damage as normal, but not your Strength modifier). The blade disappears at the end of your turn. The weapon deals the same damage type that your kinetic blast deals, and it interacts with Armor Class and spell resistance as normal for a blast of its type. Even if a telekineticist uses this power on a magic weapon or another unusual object, the attack doesn’t use any of the magic weapon’s bonuses or effects and simply deals the telekineticist’s blast damage. The kinetic blade doesn’t add the damage bonus from elemental overflow.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-kinetic-fist",
+      "name": "Kinetic Fist",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 1; Burn 1Associated Blasts anySaving Throw noneYou surround your body with energy or elemental matter from your kinetic abilities. You can use this form infusion as part of an attack action, a charge action, or a full-attack action to add damage to each of your natural attacks and unarmed strikes until the beginning of your next turn. Since kinetic fist is part of another action, using this wild talent doesn’t provoke any additional attack of opportunity. You deal an additional 1d6 points of damage per 3 dice of your kinetic blast’s damage (minimum 1d6), and this damage is of the same type as your kinetic blast’s damage. This extra damage ignores spell resistance and doesn’t apply any modifiers to your kinetic blast’s damage, such as your Constitution modifier.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-kinetic-whip",
+      "name": "Kinetic Whip",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 3; Burn 2Prerequisite kinetic bladeAssociated Blasts anySaving Throw noneYou form a long tendril of energy or elemental matter. This functions as kinetic blade but counts as a reach weapon appropriate for your size. Unlike most reach weapons, the kinetic whip can also attack nearby creatures. The kinetic whip disappears at the beginning of your next turn, but in the intervening time, it threatens all squares within its reach, allowing you to make attacks of opportunity that deal the whip’s usual damage.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-kundalini-infusion",
+      "name": "Kundalini Infusion",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement universal; Type substance infusion; Level 2; Burn 0Prerequisite ki pool, kinetic fistAssociated Blasts anySaving Throw Fortitude partialYou infuse your elemental energy with kundalini serpent fire. Choose a chakra you can currently open; you must accept an amount of burn equal to the chakra’s number (1 for root, 2 for sacral, and so on). Your unarmed strikes with the infused blast cause the target to suffer the effects of blocking the chosen chakra as per the Block Chakras or Block Upper Chakras feat. You can use this infusion only while also using the kinetic fist form infusion.",
+      "source": {
+        "title": "Martial Arts Handbook",
+        "page": 29,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-maelstrom",
+      "name": "Maelstrom",
+      "minimumLevel": 15,
+      "benefit": "Talent Link LinkElement water; Type substance infusion; Level 8; Burn 4Prerequisite extended rangeAssociated Blasts charged water, waterSaving Throw Reflex partialYou create a 20-foot-radius whirling maelstrom in a body of water within 120 feet (the area of the maelstrom does not include any squares in the radius that aren’t in the water). Any creature in the maelstrom immediately takes one-quarter your blast’s normal damage regardless of whether it succeeds at its save. A creature that succeeds at its Reflex save can choose to exit the area at the closest space. A creature in the maelstrom must succeed at a DC 35 Swim check in order to swim, and any creature that enters the maelstrom or ends its turn in the maelstrom takes half your blast’s normal damage. As a free action at the beginning of your turn, you can position each creature in the maelstrom anywhere you choose within the affected area. This effect lasts for a number of rounds equal to your Constitution modifier or until you use this infusion again. You can use grappling infusion with this infusion.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 20,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-magnetic-infusion",
+      "name": "Magnetic Infusion",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement air, earth; Type substance infusion; Level 3; Burn 2Associated Blasts charged water, electric, metal, plasma, thunderstormSaving Throw noneYour kinetic blast causes your foes to become mildly magnetic. Whenever an infused blast deals damage to a foe, attacks made with metal weapons (including metal kinetic blasts) against that foe receive a +4 bonus until the end of your next turn, and the foe takes a –4 penalty on Reflex saving throws to avoid metallic objects.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-many-throw",
+      "name": "Many Throw",
+      "minimumLevel": 15,
+      "benefit": "Talent Link LinkElement aether; Type form infusion; Level 8; Burn 4Prerequisite extended rangeAssociated Blasts telekinesisSaving Throw noneYou grab a large number of objects and throw them all at once. You can use your telekinetic blast to make attack rolls against a number of targets equal to your kineticist level within 120 feet, but no two targets can be more than 30 feet apart.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-mobile-blast",
+      "name": "Mobile Blast",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 3; Burn 2Associated Blasts anySaving Throw Reflex negatesYou send an elemental mass, energy ball, or object into a particular square within 30 feet, dealing 1/4 the normal amount of damage (or half the normal amount of damage, for an energy blast) to all creatures in that square. The mobile blast lasts until you dismiss it as a free action, lose consciousness, or move farther than 30 feet from it. Each round on your turn as a move action, you can move the mobile blast to another square within range; either way, it continues to deal damage to all creatures in its final square each round if they fail their saving throws. You can have only a single mobile blast in existence at a time. If the mobile blast’s total burn cost before applying any reduction for gather power is 0, it has no maximum duration. Otherwise, it lasts for a maximum number of rounds equal to your Constitution modifier, and afterward you can’t create another mobile blast for a number of minutes equal to the number of rounds it existed. A mobile blast is always extremely loud and visible. The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-penetrating-infusion",
+      "name": "Penetrating Infusion",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement air, fire, water; Type substance infusion; Level 2; Burn 2Associated Blasts blue flame, cold, electric, fireSaving Throw noneThe intensity of your blasts allows you to break through your foes’ resistances. Treat your foe’s cold, electricity, or fire resistance as if it were 5 lower for the purpose of determining the infused blast’s damage; this doesn’t stack with the reduction from searing flame. You can increase the burn cost of this infusion to further reduce the foe’s resistance against the infused blast by 5 per additional point of burn accepted. This has no effect on creatures with immunity.",
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-photokinetic-infusion",
+      "name": "Photokinetic Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement wood; Type substance infusion; Level 1; Burn 1Prerequisite positive blastAssociated Blasts positiveSaving Throw noneYour blast damages living creatures with light. This deals normal damage to undead creatures but also deals minimum damage (1 point of damage per d6, can’t be increased by the 9th-level improvement to metakinesis) to living creatures. Undead creatures that are particularly vulnerable to sunlight, such as vampires, take 1 extra point of damage per die from the infused blast.",
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 24,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-pulling-infusion",
+      "name": "Pulling Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement void; Type substance infusion; Level 1; Burn 1Associated Blasts gravity, voidSaving Throw noneYour kinetic blast pulls foes toward you. Attempt a dragAPG combat maneuver check against each target damaged by your infused blast (the blast always drags the foe closer to you), using your Constitution modifier instead of your Strength modifier to determine your CMB. This infusion can pull a foe a maximum of 5 feet. You can increase the maximum distance pulled by 5 feet per additional point of burn accepted.",
+      "source": {
+        "title": "Occult Origins",
+        "page": 7,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-pure-flame-infusion",
+      "name": "Pure-Flame Infusion",
+      "minimumLevel": 13,
+      "benefit": "Talent Link LinkElement fire; Type substance infusion; Level 7; Burn 4Associated Blasts blue flameSaving Throw noneYou open a direct conduit to the purest elemental fire and send it surging forth. Your infused blast ignores spell resistance.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-pushing-infusion",
+      "name": "Pushing Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement aether, air, earth, void, water, wood; Type substance infusion; Level 1; Burn 1Associated Blasts air, autumn, blizzard, charged water, earth, gravity, magma, metal, mud, sandstorm, spring, steam, summer, telekinetic, verdant, void, water, winter, woodSaving Throw noneThe momentum of your kinetic blast knocks foes back. Attempt a bull rush combat maneuver check against each target damaged by your infused blast, using your Constitution modifier instead of your Strength modifier to determine your bonus. This infusion can push a foe back by a maximum of 5 feet. You can increase the burn cost of this infusion to increase the maximum distance pushed by 5 feet per additional point of burn accepted. You can’t use this infusion with a form infusion such as cloud that causes your kinetic blast to lack a clear direction to push.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-quenching-infusion",
+      "name": "Quenching Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement water; Type substance infusion; Level 1; Burn 1Associated Blasts charged water, waterSaving Throw noneYour blast puts out nonmagical fires as if they had been touched by a water elemental. If you increase the burn cost to 2 or reduce the damage to 0, it also dispels magical fires as if you were a water elemental with a number of Hit Dice equal to your kineticist level.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-rare-metal-infusion",
+      "name": "Rare-Metal Infusion",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement earth; Type substance infusion; Level 3; Burn 2Associated Blasts metalSaving Throw noneYou can control the properties of metal, allowing your metal blast to bypass damage reduction as if it were adamantine, cold iron, or silver (your choice). If your target has an unusual type of damage reduction that could be overcome with the correct type of metal (such as DR/gold), you can also select that metal for this purpose. The metal you create with this infusion crumbles away shortly thereafter and has no gp value.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-shepherd-of-souls",
+      "name": "Shepherd of Souls",
+      "minimumLevel": 13,
+      "benefit": "Talent Link LinkElement universal; Type substance infusion; Level 7; Burn 4Associated Blasts any simpleSaving Throw Will negatesWhen your blast kills a living creature, it helps shepherd the creature’s soul to the Boneyard, warding against effects of spells that would attempt to restore the creature to life. Spellcasters attempting to bring the creature back from the dead using raise dead or similar magic must succeed at a caster level check (DC = 11 + your kineticist level) or the spell fails and the material component is wasted.",
+      "source": {
+        "title": "Plane-Hopper's Handbook",
+        "page": 8,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-singularity",
+      "name": "Singularity",
+      "minimumLevel": 7,
+      "benefit": "Talent Link LinkElement void; Type form infusion; Level 4; Burn 3Associated Blasts gravity, negative, voidSaving Throw Reflex halfYou create a growing singularity. Choose a grid intersection within 30 feet. All creatures and objects in a 5-foot-radius burst centered on the intersection take 1/4 your blast’s normal amount of damage (or half damage for a negative blast). On your next turn, the singularity deals damage in a 10-foot-radius burst, and on your turn after that, it deals damage in a 15-foot-radius burst. The DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Origins",
+        "page": 7,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-slick-infusion",
+      "name": "Slick Infusion",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement water; Type substance infusion; Level 2; Burn 2Prerequisite slickAssociated Blasts blizzard, charged water, cold, ice, waterSaving Throw Reflex negatesYour blast leaves behind slippery water or ice in its area for as long as the blast is in that area and for 1 round thereafter, making the area difficult terrain and increasing the DC of Acrobatics checks attempted in the area by 5. You can use this infusion only if you also use a form infusion that has an area of effect.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-snake",
+      "name": "Snake",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 3; Burn 2Prerequisite extended rangeAssociated Blasts anySaving Throw noneYou have fine control over your kinetic blast, allowing you to alter its path to avoid obstacles. You can trace out any path no more than 120 feet long for your blast, potentially allowing you to avoid cover (even total cover). You can choose a path that leads into squares you cannot see.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-spindle",
+      "name": "Spindle",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 2; Burn 2Associated Blasts anySaving Throw Reflex negates (see text)You throw a long, roughly 5-foot-by-10-foot spindle of elemental matter or energy (or nearby unattended objects in the case of telekineticists) up to 30 feet away, damaging all creatures and objects within any two adjacent 5-foot squares unless they succeed at a Reflex save. An energy blast infused with spindle deals its normal damage to each target, while a physical blast infused with spindle deals half its normal damage to each target. The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-spore-infusion",
+      "name": "Spore Infusion",
+      "minimumLevel": 9,
+      "benefit": ", Psychic Anthology pg. 21Talent Link LinkElement wood; Type substance infusion; Level 5; Burn 3Associated Blasts autumn, spring, summer, verdant, winter, woodSaving Throw Fortitude negatesCreatures that take piercing or slashing damage from your blast are infected with spores. If a target fails its Fortitude save, it takes 1d6 points of damage per round for 10 rounds as plants and fungi grow out of its body. At the end of that time, the target is exposed to the pulsing puffs disease. This infusion is a disease effect. When using a wood kinetic blast against a creature infected by this infusion, you gain a +2 bonus on attack rolls, to saving throw DCs, and on caster level checks to overcome spell resistance. Pulsing Puffs: Blast—injury; save Fort DC 18; onset 1 minute; frequency 1/day; effect 1d6 Dex damage; cure 2 consecutive saving throws.",
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 60,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-spray",
+      "name": "Spray",
+      "minimumLevel": 7,
+      "benefit": "Talent Link LinkElement water; Type form infusion; Level 4; Burn 3Associated Blasts charged water, waterSaving Throw Reflex halfYou diffuse your kinetic blast to spray out wildly. All creatures and objects in a 30-foot cone take half your normal amount of blast damage. The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-stylish-infusion",
+      "name": "Stylish Infusion",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement universal; Type substance infusion; Level 3; Burn 2Prerequisite brawler's flurry or flurry of blows class feature, kinetic fistAssociated Blasts anySaving Throw noneWhen you learn this infusion, select an unchained monk style strike. You can use that style strike during a flurry of blows with your infused blast, though you must still follow the limitation of one style strike per flurry of blows (or two if you are a 15th-level unchained monk). If you select flying kick, the distance is equal to your elemental overflow bonus on attack rolls × 10 feet. You can use this infusion only while also using the kinetic fist form infusion. Special: You can select this infusion multiple times. Each time, you must select a different style strike.",
+      "source": {
+        "title": "Martial Arts Handbook",
+        "page": 29,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-synaptic-infusion",
+      "name": "Synaptic Infusion",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement air; Type substance infusion; Level 3; Burn 2Associated Blasts electric, charged water, thunderstormSaving Throw Will negatesYour blast sends strange electric signals through the target’s body, scrambling its synapses and causing it to become staggered for 1 round. The target is aware it can choose to take a move action to remove the staggered condition inflicted by this infusion. This infusion is a mind-affecting effect.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-telekinetic-boomerang",
+      "name": "Telekinetic Boomerang",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement aether; Type form infusion; Level 1; Burn 1Associated Blasts telekineticSaving Throw noneThis functions as telekinetic blast, except you maintain an elastic strand of aether attached to the object you throw. This allows you to pull it back to you after the attack and catch it if you have enough free hands (and assuming it is small enough for you to carry). This prevents the object from taking damage, but it also prevents you from loosening the strands of aether (see telekinetic blast). Alternatively, if the attack missed, on your next turn as a standard action, you can you can snap the elastic strand back to make another attack with the same substance infusion and metakinesis, as if using a normal telekinetic blast (at which point the object takes damage and doesn’t return to you, and you can’t try again).",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-thundering-infusion",
+      "name": "Thundering Infusion",
+      "minimumLevel": 1,
+      "benefit": "Talent Link LinkElement air; Type substance infusion; Level 1; Burn 1Associated Blasts electric, thunderstormSaving Throw Fortitude negatesYour lightning brings with it a peal of thunder. Whenever your infused blast hits a foe and penetrates spell resistance, that foe becomes deafened, even if the blast doesn’t deal damage.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-torrent",
+      "name": "Torrent",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement air, fire, water; Type form infusion; Level 3; Burn 2Associated Blasts air, blizzard, blue flame, charged water, electric, fire, magma, mud, plasma, sandstorm, steam, thunderstorm, waterSaving Throw Reflex halfA torrent of energy buffets or burns all foes in a 30-foot line, dealing half your normal amount of blast damage (or full damage for energy blasts). The saving throw DC is Dexterity-based.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-toxic-infusion",
+      "name": "Toxic Infusion",
+      "minimumLevel": 7,
+      "benefit": ", Occult Origins pg. 9Talent Link LinkElement wood; Type substance infusion; Level 4; Burn 3Associated Blasts autumn, spring, summer, verdant, winter, woodSaving Throw Fortitude negatesThe plants in your blast are mildly toxic. All creatures that take piercing or slashing damage from your blast are sickened for 1 round.",
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 61,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-toxic-infusion-greater",
+      "name": "Toxic Infusion, Greater",
+      "minimumLevel": 13,
+      "benefit": ", Occult Origins pg. 9Talent Link LinkElement wood; Type substance infusion; Level 7; Burn 4Prerequisite toxic infusionAssociated Blasts autumn, spring, summer, verdant, winter, woodSaving Throw Fortitude negatesYour plant toxin is more virulent. Each time you use this infusion, choose a physical ability score. Creatures that take piercing or slashing damage from your blast are exposed to your poison. Blast—injury; save Fort; frequency 1/round for 6 rounds; effect 1d2 damage to the chosen ability score; cure 2 consecutive saves.",
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 61,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-tremor",
+      "name": "Tremor",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement earth; Type form infusion; Level 5; Burn 3Associated Blasts earthSaving Throw noneYou send a tremor through the ground or other solid surface with which you are in contact, allowing you to affect a burrowing or incorporeal creature within that same surface with a normal kinetic blast. This infusion doesn’t allow you to attack creatures above the ground if you are burrowing or to ignore total cover provided by factors other than burrowing.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-turning-blast",
+      "name": "Turning Blast",
+      "minimumLevel": 7,
+      "benefit": "Talent Link LinkElement void, wood; Type substance infusion; Level 4; Burn 3Prerequisite duskwalker, or Planar Infusion (Boneyard)Associated Blasts positive, negativeSaving Throw Will negatesUndead that take damage from a turning blast must succeed at a Will save or flee for 1 round. An undead creature that succeeds at its saving throw against a turning blast is immune to this effect for 24 hours.",
+      "source": {
+        "title": "Plane-Hopper's Handbook",
+        "page": 8,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-unblinking-flame-infusion",
+      "name": "Unblinking Flame Infusion",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement fire; Type substance infusion; Level 5; Burn 3Prerequisite kinetic fist, member of the Monastery of Unblinking FlameAssociated Blasts blue flame, fireSaving Throw noneThe flame of your infused blast illuminates and reveals the target as it really is. If you hit the target with an unarmed strike with the infused blast, creatures can see the target as if using true seeing for 1 round, although only the target is revealed in this way. You can use this infusion only while also using the kinetic fist form infusion.",
+      "source": {
+        "title": "Martial Arts Handbook",
+        "page": 30,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-unbreaking-waves-infusion",
+      "name": "Unbreaking Waves Infusion",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement water; Type substance infusion; Level 5; Burn 3Prerequisite kinetic fist, member of the Monastery of Unbreaking Waves (Pathfinder Society Scenario #9–24: Beneath Unbroken Waves)Associated Blasts ice, waterSaving Throw noneYour infused blast buffets and redirects enemies with waves. Attempt a reposition or trip combat maneuver check against each target damaged by your infused blast, using your Constitution modifier instead of your Strength modifier to determine your combat maneuver bonus. You can use this infusion only while also using the kinetic fist form infusion.",
+      "source": {
+        "title": "Martial Arts Handbook",
+        "page": 30,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-unfolding-wind-infusion",
+      "name": "Unfolding Wind Infusion",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement air; Type substance infusion; Level 5; Burn 3Prerequisite kinetic fist, member of the Monastery of Unfolding WindAssociated Blasts air, thunderstormSaving Throw noneUnfolding winds carry you along. Before your first attack and again after each unarmed strike with the infused blast, you can move 5 feet without provoking attacks of opportunity. You can use this infusion only while also using the kinetic fist form infusion.",
+      "source": {
+        "title": "Martial Arts Handbook",
+        "page": 30,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-unnerving-infusion",
+      "name": "Unnerving Infusion",
+      "minimumLevel": 5,
+      "benefit": "Talent Link LinkElement void; Type substance infusion; Level 3; Burn 2Associated Blasts negative, voidSaving Throw Will negatesYour kinetic blast sends the fear of oblivion into your foes. Whenever an infused blast deals negative energy damage to a living foe, it is shaken for 1 round. This shaken condition doesn’t stack with itself.",
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-unraveling-infusion",
+      "name": "Unraveling Infusion",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement fire; Type substance infusion; Level 5; Burn 3Associated Blasts blue flame, fireSaving Throw noneYour kinetic blast burns so hot that it melts away your foe’s magical effects. Whenever your infused blast hits a foe and penetrates its spell resistance, you can attempt a caster level check as if using a targeted dispel magic before determining whether the foe takes damage from the blast. You can choose to reduce the blast’s damage by half to increase your bonus on the caster level check by 2. If you don’t choose a specific spell effect to attempt to dispel, you automatically attempt to dispel effects that would protect the target from fire damage before other spells.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-untwisting-iron-infusion",
+      "name": "Untwisting Iron Infusion",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement earth; Type substance infusion; Level 5; Burn 3Prerequisite kinetic fist, member of the Monastery of Untwisting IronAssociated Blasts earth, metalSaving Throw noneEach time you hit a foe with an unarmed strike with your infused blast, increase your DR/adamantine from flesh of stone by 1 until the start of your next turn. You can use this infusion only while also using the kinetic fist form infusion.",
+      "source": {
+        "title": "Martial Arts Handbook",
+        "page": 30,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-vampiric-infusion",
+      "name": "Vampiric Infusion",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement void; Type substance infusion; Level 5; Burn 3Prerequisite void healerAssociated Blasts negative voidSaving Throw noneYour kinetic blast can drain your foes’ vitality to replenish your own. If your blast hits (or the enemy fails its saving throw against a blast without an attack roll), you can activate the void healer utility wild talent on yourself by accepting its burn cost; you don’t need to take an action to do so. The void healer utility wild talent heals you when used in this way even if you are a living creature.",
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-venom-admixture",
+      "name": "Venom Admixture",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement universal; Type substance infusion; Level 2; Burn 2Prerequisite venom speakerSaving Throw see textYou can infuse your kinetic blast with poison. To use this infusion, you must be holding a dose of poison or have at least one use of a feat or racial trait that produces poison (such as the Spit Venom feat or the toxic skin grippli alternate racial trait). One dose of poison or one use of your feat or racial trait is consumed if applicable, and creatures damaged by the infused blast are affected by the poison. Use the same type, save, save DC, frequency, effect, and cure as the consumed poison.",
+      "source": {
+        "title": "Heroes of Golarion",
+        "page": 26,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-venom-infusion",
+      "name": "Venom Infusion",
+      "minimumLevel": 7,
+      "benefit": "Talent Link LinkElement universal; Type substance infusion; Level 4; Burn 3Prerequisite venom speakerAssociated Blasts any simple or compositeSaving Throw Fortitude negatesAll of your blasts are mildly toxic. Creatures that take damage from your blast are sickened for 1 round.",
+      "source": {
+        "title": "Heroes of Golarion",
+        "page": 26,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-venom-infusion-greater",
+      "name": "Venom Infusion, Greater",
+      "minimumLevel": 13,
+      "benefit": "Talent Link LinkElement universal; Type substance infusion; Level 7; Burn 4Prerequisite venom speaker, venom infusionAssociated Blasts any simple or compositeSaving Throw Fortitude negatesThis talent functions as the greater toxic infusion wild talent, except it affects any creature that takes any type of damage from the blast.",
+      "source": {
+        "title": "Heroes of Golarion",
+        "page": 26,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-wall",
+      "name": "Wall",
+      "minimumLevel": 9,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 5; Burn 3Associated Blasts anySaving Throw noneYou create a wall of churning elements, flensing debris, or roiling energy. The wall appears within 30 feet and can be either up to 10 feet high and up to 120 feet long or up to 20 feet high and up to 60 feet long. All creatures and objects in one of the wall’s squares when you create it take 1/4 the normal damage from your blast with no saving throw (or half the normal damage for an energy blast). Anytime a creature crosses the wall, it takes half the normal damage from your blast (or full damage for an energy blast). The wall is not completely solid, but it does provide cover against attacks from the other side of the wall. The wall lasts for a number of rounds equal to your Constitution modifier or until you use a wall infusion again.",
+      "source": {
+        "title": "Occult Adventures",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-weighing-infusion",
+      "name": "Weighing Infusion",
+      "minimumLevel": 3,
+      "benefit": "Talent Link LinkElement void; Type substance infusion; Level 2; Burn 2Associated Blasts gravity, voidSaving Throw Reflex negatesThis infusion functions as entangling infusion, except it entangles and immobilizes a foe by increasing its weight, rather than surrounding it in elemental matter.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 21,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    },
+    {
+      "id": "kineticist-infusion-whip-hurricane",
+      "name": "Whip Hurricane",
+      "minimumLevel": 11,
+      "benefit": "Talent Link LinkElement universal; Type form infusion; Level 6; Burn 4Prerequisite kinetic blade, kinetic whip, blade whirlwindAssociated Blasts anySaving Throw noneAs blade whirlwind, except it manifests a kinetic whip, and the whip lasts until the beginning of your next turn or until you use any form infusion that creates a blade or whip again, whichever comes first.",
+      "source": {
+        "title": "Psychic Anthology",
+        "page": 22,
+        "url": "https://www.aonprd.com/KineticistTalents.aspx"
+      }
+    }
+  ]
+}
