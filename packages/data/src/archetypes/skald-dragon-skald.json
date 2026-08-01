@@ -1,0 +1,55 @@
+{
+  "id": "skald-dragon-skald",
+  "name": "Dragon Skald",
+  "classId": "skald",
+  "summary": "The Ulfen prize skalds on sea raids and linnorm hunts. Dragon skald performances involve song, whistling, or blowing mighty horns, and viking sailors often talk about having a skald along to whistle up a wind or sing away the mists on the morning of a momentous raid.",
+  "replacesText": "Scribe Scroll; Bardic Knowledge; Well-Versed; Song of Marching",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-scribe-scroll-1",
+        "skald-well-versed-2",
+        "skald-song-marching-3"
+      ],
+      "features": [
+        {
+          "id": "skald-dragon-skald-wind-whistler-su-1",
+          "name": "Wind Whistler (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a dragon skald adds alter winds APG , fog cloud , and obscuring mist to his class spell list, at the same levels the wizard gains them. He still must add these spells to his spells known as normal. This ability replaces Scribe Scroll."
+        },
+        {
+          "id": "skald-dragon-skald-sea-legs-ex-1",
+          "name": "Sea Legs (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dragon skald adds 1/2 his class level (minimum 1) on all Profession (sailor) checks, Survival checks while at sea, Acrobatics and Climb checks made while aboard a boat, and Swim checks. This ability replaces bardic knowledge."
+        },
+        {
+          "id": "skald-dragon-skald-fearless-raider-ex-2",
+          "name": "Fearless Raider (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the dragon skald becomes resistant to fear effects. The dragon skald gains a +4 bonus on saving throws against fear effects, and DCs to affect the dragon skald with the Intimidate skill increase by 4. This ability replaces well-versed."
+        },
+        {
+          "id": "skald-dragon-skald-raging-song-su-3",
+          "name": "Raging Song (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A dragon skald gains access to the following raging song. Glorious Epic (Su) : At 3rd level, a dragon skald learns how to truly extol the virtues and prowess of the heroic figures in his epic tales. By performing for 10 minutes and expending 1 round of raging song, the dragon skald can influence opinions positively towards a heroic subject of the dragon skald’s choice. If the subject of the epic attempts a Diplomacy or Intimidate check against anyone who listened to the full performance, he receives a circumstance bonus on that check equal to the Will save bonus granted by the dragon skald’s inspired rage. This ability replaces song of marching."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Dragon%20Skald"
+  }
+}

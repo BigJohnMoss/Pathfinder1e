@@ -36,6 +36,10 @@ const singularize = (value) => value.split(" ").map((word) =>
   word.endsWith("ies") ? `${word.slice(0, -3)}y` : word.length > 3 && word.endsWith("s") ? word.slice(0, -1) : word
 ).join(" ");
 
+const sourceNameCorrections = new Map([
+  ["kineticist:aquakinetcist", "Aquakineticist"],
+]);
+
 async function fetchDocument(url) {
   const response = await fetch(url);
   if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
@@ -56,10 +60,11 @@ function indexEntries(document) {
     const cells = [...row.querySelectorAll("td")];
     const link = cells[0]?.querySelector('a[href*="ArchetypeDisplay.aspx"]');
     if (!link || cells.length < 3) return [];
+    const sourceName = clean(link.textContent);
     return [{
-      name: clean(link.textContent),
+      name: sourceNameCorrections.get(`${classId}:${sourceName.toLowerCase()}`) ?? sourceName,
       url: new URL(link.getAttribute("href"), "https://www.aonprd.com/").href,
-      replacesText: clean(cells[1].textContent),
+      replacesText: clean(cells[1].textContent).replace(/\b(\d+(?:st|nd|rd|th))-levle\b/gi, "$1-level"),
       summary: clean(cells[2].textContent)
     }];
   });

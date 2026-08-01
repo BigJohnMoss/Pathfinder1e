@@ -1,0 +1,68 @@
+{
+  "id": "shaman-unsworn-shaman",
+  "name": "Unsworn Shaman",
+  "classId": "shaman",
+  "summary": "An unsworn shaman never binds herself to one specific spirit, always making new deals as she deems necessary for the circumstances that she finds herself in.",
+  "replacesText": "Spirit; Hex; Spirit Animal; Wandering Spirit; Wandering Hex; Spirit Magic",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "shaman-spirit-1",
+        "shaman-spirit-animal-1",
+        "shaman-spirit-magic-1",
+        "shaman-wandering-spirit-4",
+        "shaman-greater-spirit-10",
+        "shaman-true-spirit-16",
+        "shaman-hex-2",
+        "shaman-hex-4",
+        "shaman-wandering-hex-6",
+        "shaman-hex-8",
+        "shaman-hex-10",
+        "shaman-hex-12",
+        "shaman-wandering-hex-14",
+        "shaman-hex-16",
+        "shaman-hex-18",
+        "shaman-hex-20"
+      ],
+      "features": [
+        {
+          "id": "shaman-unsworn-shaman-minor-spirit-su-1",
+          "name": "Minor Spirit (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the unsworn shaman also forms a temporary bond with a minor spirit each day, granting her access to a shaman or witch hex of her choosing, but not a major hex or a grand hex. She must make this selection each day when she prepares her spells for the day. Until she changes the minor spirit, she continues to have access to the shaman or witch hex. At 2nd level, she can instead select a hex from one of her wandering spirits selected for that day. If she selects a witch hex, she treats her shaman level as her witch level, and uses her Wisdom in place of her Intelligence for the purpose of that hex. She can make temporary bonds with two minor spirits (thus gaining two hexes) at 4th level, and with one additional minor spirit (and hex) every 4 levels thereafter. This ability replaces spirit and alters hex."
+        },
+        {
+          "id": "shaman-unsworn-shaman-spirit-animal-2",
+          "name": "Spirit Animal",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an unsworn shaman’s spirit animal gains the spirit animal bonus from one of her wandering spirits (see below). This bonus can be changed each day when the shaman prepares spells, but it must correspond to one of the shaman’s wandering spirits. This ability alters spirit animal."
+        },
+        {
+          "id": "shaman-unsworn-shaman-wandering-spirit-su-2",
+          "name": "Wandering Spirit (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the unsworn shaman gains access to the wandering spirit class feature. At 10th level, she gains the abilities listed in the greater version of her wandering spirit. At 18th level, she gains the abilities listed in the true version of her wandering spirit. Additionally, at 6th level, she also gains a second wandering spirit, gaining the abilities listed in the greater version of that spirit at 14th level, and the abilities listed in the true version at 20th level. This ability alters wandering spirit and replaces wandering hex."
+        },
+        {
+          "id": "shaman-unsworn-shaman-spirit-magic-sp-2",
+          "name": "Spirit Magic (Sp)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "The unsworn shaman gains this ability at 2nd level rather than at 1st. This ability alters spirit magic."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Shaman%20Unsworn%20Shaman"
+  }
+}

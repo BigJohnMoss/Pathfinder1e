@@ -1,0 +1,72 @@
+{
+  "id": "spiritualist-priest-of-the-fallen",
+  "name": "Priest of the Fallen",
+  "classId": "spiritualist",
+  "summary": "A priest of the fallen is a spiritualist who channels her land’s legends and provides a vessel for mighty heroes to perform heroic acts once more.",
+  "replacesText": "Phantom; Shared Consciousness; Bonded Manifestation; Phantom Recall; Fused Consciouness; Dual Bond; Empowered Consciousness",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-phantom-1",
+        "spiritualist-phantom-recall-6",
+        "spiritualist-shared-consciousness-1",
+        "spiritualist-bonded-manifestation-3",
+        "spiritualist-dual-bond-17",
+        "spiritualist-empowered-consciousness-20"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-priest-of-the-fallen-mythmaker-su-12",
+          "name": "Mythmaker (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "A priest of the fallen can channel many different hero-god phantoms, though only one at a time. These spirits will not suffer being confined in a mortal’s consciousness and must be manifested in ectoplasmic or incorporeal form or they return to the Ethereal Plane. They each have an emotional focus depending on their personality and retain some of their hero-god powers, determined by their mythic archetype. A priest of the fallen can channel a hero-god phantom with a ritual that takes 1 minute to perform. A priest of the fallen can channel only one herogod phantom per 24 hours, but once channeled, a hero-god phantom remains until a new one is channeled. Archmage : The phantom gains magic missile and sleep as spell-like abilities. It can use each spell-like ability a number of times per day equal to its Hit Dice, which it uses in place of a caster level. At 12th level, it can also cast fireball and hold person each once per day. Champion : The phantom gains Weapon Focus (slam) as a bonus feat. At 12th level, it gains Greater Weapon Focus (slam) and Weapon Specialization (slam) as bonus feats. Guardian : The phantom gains a +2 natural armor bonus when it manifests in its ectoplasmic form, and a +2 deflection bonus to AC when it manifests in its incorporeal form. At 12th level, the phantom increases its maximum hit points by twice its number of Hit Dice. Hierophant : The phantom gains bane and bless as spell-like abilities. It can use each spell-like ability a number of times per day equal to its Hit Dice, which it uses in place of a caster level. At 12th level, it can also cast prayer and searing light each once per day. Marshal : The phantom can fill its allies with its triumphant spirit as a standard action, granting them a +1 morale bonus on saving throws against charm and fear effects and a +1 competence bonus on attack and weapon damage rolls for a number of rounds per day equal to 2 + its Charisma modifier. These rounds need not be consecutive. At 12th level, if the phantom is hit by an attack of opportunity, it can use an immediate action to allow an ally to make an attack of opportunity against the creature that attacked the phantom if it’s within the ally’s melee reach. Trickster : The phantom gains the sneak attack rogue class feature as a rogue of a level equal to the phantom’s Hit Dice. It can use the sneak attack ability a number of times per day equal to its Dexterity modifier (minimum 1). At 12th level, whenever the phantom is in darkness or dim light, it can move at full speed without taking a penalty on Stealth checks. This alters phantom and replaces shared consciousness."
+        },
+        {
+          "id": "spiritualist-priest-of-the-fallen-channel-energy-su-3",
+          "name": "Channel Energy (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a priest of the fallen can channel her phantom’s divine energy. This functions as the cleric’s channel energy class feature, except that the amount of damage dealt or hit points restored is equal to 1d6 points plus an additional 1d6 points for every 2 spiritualist levels beyond 3rd. The priest of the fallen decides to channel positive or negative energy based on her alignment. A neutral priest of the fallen can channel either positive or negative energy, but once this choice is made, it cannot be changed. She can use this ability a number of times per day equal to her Charisma modifier (minimum 1). This replaces bonded manifestation."
+        },
+        {
+          "id": "spiritualist-priest-of-the-fallen-phantom-call-su-6",
+          "name": "Phantom Call (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, once per day, a priest of the fallen can summon a fully manifested hero-god phantom from the Ethereal Plane as a standard action. If she already has a hero-god phantom manifested, that phantom vanishes back to the Ethereal Plane. This replaces phantom recall."
+        },
+        {
+          "id": "spiritualist-priest-of-the-fallen-fused-consciousness-su-10",
+          "name": "Fused Consciousness (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, this ability functions as usual, except the phantom retreats to the Ethereal Plane rather than the priest’s consciousness. This alters fused consciousness."
+        },
+        {
+          "id": "spiritualist-priest-of-the-fallen-masterful-faith-su-17",
+          "name": "Masterful Faith (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a priest of the fallen chooses any two cleric domains and receives their full benefits, treating her spiritualist level as her cleric level. She adds the domain spells to her spells known. This replaces dual bond."
+        },
+        {
+          "id": "spiritualist-priest-of-the-fallen-true-legend-su-20",
+          "name": "True Legend (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a priest of the fallen is strong enough to confine a phantom in her consciousness as a standard action. On the start of her following turn, she gains access to all standard spiritualist abilities involving a confined phantom. She can confine her phantom for a number of rounds per day equal to 4 + her Wisdom modifier. This alters empowered consciousness."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Priest%20of%20the%20Fallen"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "bloodrager-untouchable-rager",
+  "name": "Untouchable Rager",
+  "classId": "bloodrager",
+  "summary": "While most bloodragers are known for their inexplicable ability to focus their bloodline into a horrifying mix of martial terror and spellcasting fury, from time to time a bloodrager’s bloodline acts differently.",
+  "replacesText": "Spells; Blood Casting; Eschew Materials; Bloodline Spells",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "bloodrager-blood-casting-4",
+        "bloodrager-eschew-materials-4",
+        "bloodrager-bloodline-1"
+      ],
+      "features": [
+        {
+          "id": "bloodrager-untouchable-rager-raging-resistance-ex-4",
+          "name": "Raging Resistance (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, instead of gaining spells, a bloodrager becomes resistant to spells. While bloodraging, he gains spell resistance equal to 8 + his bloodrager level. Unlike normal spell resistance, the untouchable rager’s spell resistance cannot be voluntarily lowered. As long as the untouchable is bloodraging, the spell resistance is persistent, and can only be lowered by ending the bloodrage. At 7th, 10th, 13th, and 16th levels (when other bloodragers would gain bloodline spells), an untouchable rager’s spell resistance from raging resistance is increased by 1. This ability replaces the spells, blood casting, eschew materials, and bloodline spells class features."
+        },
+        {
+          "id": "bloodrager-untouchable-rager-resistance-control-ex-14",
+          "name": "Resistance Control (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, an untouchable rager gains the spell resistance from raging resistance even while not in a bloodrage. Additionally, as long as the untouchable rager isn’t bloodraging, he can turn off this spell resistance."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bloodrager%20Untouchable%20Rager"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "id": "occultist-silksworn",
+  "name": "Silksworn",
+  "classId": "occultist",
+  "summary": "Silksworn draw their power from wearing luxurious garments and can be found in many noble courts throughout Golarion",
+  "replacesText": "Spellcasting; Class Skills; Knacks; Implements; Weapon and Armor Proficiency; Outside Contact; Magic Circles; Binding Circles; Fast Circles; Implement Mastery",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "occultist-magic-item-skill-2",
+        "occultist-implements-1",
+        "occultist-implement-mastery-20",
+        "occultist-outsider-contact-8",
+        "occultist-binding-circles-12",
+        "occultist-fast-circles-16"
+      ],
+      "features": [
+        {
+          "id": "occultist-silksworn-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A silksworn adds Bluff and Knowledge (nobility) to his list of class skills, instead of Knowledge (engineering) and Knowledge (planes). This alters the occultist’s class skills."
+        },
+        {
+          "id": "occultist-silksworn-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A silksworn’s spells are considered arcane spells, not psychic spells, and his spells use verbal and somatic components instead of thought and emotion components. This alters the occultist’s spells."
+        },
+        {
+          "id": "occultist-silksworn-implements-1",
+          "name": "Implements",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When a silksworn chooses an implement school, he does not choose a specific object. Instead, a silksworn must be wearing an ostentatious garment or magic item worth 10 gp or more of the appropriate type and in the appropriate slot: abjuration (wrists), conjuration (shoulders), divination (eyes), enchantment (neck), evocation (hands), illusion (head), necromancy (chest), and transmutation (feet). A silksworn who does not meet this requirement is treated as lacking the appropriate implement for the purpose of his class features, including spellcasting. This alters the occultist’s implements."
+        },
+        {
+          "id": "occultist-silksworn-cantrips-1",
+          "name": "Cantrips",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Each time he selects an implement school, a silksworn gains one cantrip, or 0-level arcane spell (including when he selects a school that he has already learned to use). These cantrips otherwise behave as an occultist’s knacks. This ability replaces knacks."
+        },
+        {
+          "id": "occultist-silksworn-mental-focus-su-1",
+          "name": "Mental Focus (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The silksworn’s available mental focus is equal to his occultist level + his Intelligence modifier + his Charisma modifier. This ability alters mental focus."
+        },
+        {
+          "id": "occultist-silksworn-devoted-mystic-1",
+          "name": "Devoted Mystic",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A silksworn is proficient with only simple weapons and isn’t proficient with any armor or shields. At 1st level, the silksworn gains access to four implement schools instead of two. At 2nd level and every 4 occultist levels thereafter, the silksworn gains access to an additional implement school, to a maximum of nine schools at 18th level. At 8th, 12th, and 16th levels, the silksworn increases the number of spells of each level he can cast each day by one. This does not allow the silksworn to cast spells of a level he does not yet have access to. This ability alters implements and the occultist’s weapon and armor proficiencies, and replaces outside contact."
+        },
+        {
+          "id": "occultist-silksworn-silksworn-eloquence-ex-8",
+          "name": "Silksworn Eloquence (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a silksworn gains a +1 bonus on Bluff and Diplomacy checks for each magical article of clothing occupying one of his implement schools’ magic item slots. This ability replaces magic circles."
+        },
+        {
+          "id": "occultist-silksworn-silksworn-deception-su-12",
+          "name": "Silksworn Deception (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "At 12th level, a silksworn can hide his speech and gestures within his extravagant clothing. Whenever the silksworn casts a spell, he can attempt a Bluff check opposed by Sense Motive checks from those observing him. Those who fail are unaware of his spellcasting, unless an effect obviously originates from the silksworn. This ability replaces binding circles."
+        },
+        {
+          "id": "occultist-silksworn-silksworn-arcana-su-16",
+          "name": "Silksworn Arcana (Su)",
+          "level": 16,
+          "type": "archetype",
+          "summary": "At 16th level, when a silksworn casts a spell while wearing a magic article of clothing in the appropriate school’s magic item slot, the spell’s saving throw DC increases by 2. This ability replaces fast circles."
+        },
+        {
+          "id": "occultist-silksworn-implement-mastery-su-20",
+          "name": "Implement Mastery (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a silksworn chooses two implement schools instead of one, and implement mastery’s effects apply to both. The silksworn gains 4 additional points of mental focus for each school’s implement. This alters the occultist’s implement mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Occultist%20Silksworn"
+  }
+}

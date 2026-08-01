@@ -1,0 +1,71 @@
+{
+  "id": "kineticist-kinetic-knight",
+  "name": "Kinetic Knight",
+  "classId": "kineticist",
+  "summary": "A kinetic knight dons armor and wields a blade of elemental energy.",
+  "replacesText": "Class Skills; Kinetic Blast; Infusions; Metakinesis; Metakinetic Master; 3rd-level Infusion; Supercharge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "kineticist-kinetic-blast-1",
+        "kineticist-infusion-1",
+        "kineticist-infusion-3",
+        "kineticist-infusion-5",
+        "kineticist-infusion-specialisation-5",
+        "kineticist-infusion-9",
+        "kineticist-infusion-11",
+        "kineticist-infusion-13",
+        "kineticist-infusion-17",
+        "kineticist-infusion-19",
+        "kineticist-metakinesis-5",
+        "kineticist-supercharge-11"
+      ],
+      "features": [
+        {
+          "id": "kineticist-kinetic-knight-courtly-1",
+          "name": "Courtly",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The kinetic knight adds Diplomacy and Sense Motive to her list of class skills instead of Acrobatics and Stealth. This ability alters the kineticist’s class skills."
+        },
+        {
+          "id": "kineticist-kinetic-knight-elemental-blade-su-1",
+          "name": "Elemental Blade (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a kinetic knight gains the kinetic blade form infusion, and it costs 0 points of burn instead of 1 point. She can’t use her kinetic blast without the kinetic blade form infusion or an infusion that lists kinetic blade as a prerequisite. At 3rd level, the kinetic knight gains the blade rush infusion. At 5th level, she gains the kinetic whip infusion. Her kinetic whip has the disarm, performance UC , and trip weapon qualities. At 9th level, she gains the blade whirlwind infusion. At 11th level, she gains the whip hurricane infusion. At 13th level as a swift action, she can accept 2 points of burn to unleash a kinetic blast with the blade rush infusion. This ability alters kinetic blast and infusions, and replaces metakinesis and metakinetic master."
+        },
+        {
+          "id": "kineticist-kinetic-knight-kinetic-warrior-ex-1",
+          "name": "Kinetic Warrior (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The kinetic knight can use her Constitution score in place of her Intelligence score when qualifying for combat feats. This ability counts as having Combat Expertise for the purpose of feat prerequisites."
+        },
+        {
+          "id": "kineticist-kinetic-knight-elemental-bastion-ex-2",
+          "name": "Elemental Bastion (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the kinetic knight becomes proficient with medium and heavy armor and shields (except tower shields). In addition, the kinetic knight can accept 1 point of burn to attune herself to a specific light or heavy shield until the next time her burn is removed. Wielding an attuned shield doesn’t prevent the kinetic knight from gathering power. A kinetic knight gains the elemental defense ability at 4th level, rather than 2nd, and its benefits apply only while she is wearing heavy armor and wielding an attuned shield. If the kinetic knight selects the expanded defense talent, its benefits also apply only under these conditions. If she has the shroud of water defense wild talent, whenever its bonus would be increased by accepting burn, she instead increases the enhancement bonus of her armor or attuned shield by an equal amount (to a maximum of +5). This ability alters elemental defense."
+        },
+        {
+          "id": "kineticist-kinetic-knight-knight-s-resolve-ex-3",
+          "name": "Knight’s Resolve (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the kinetic knight gains the samurai’s resolve class feature, as a samurai of her kineticist level – 2. At 11th level, she gains the samurai’s greater resolve ability ( Pathfinder RPG Ultimate Combat 20 ). If she also has samurai levels, those levels stack with her kineticist levels to determine the benefits of this ability. This ability replaces the kineticist infusion gained at 3rd level and supercharge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Kineticist%20Kinetic%20Knight"
+  }
+}

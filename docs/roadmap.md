@@ -243,14 +243,14 @@ the recorded client-size budget.
 Bring the 28 APG, Ultimate, Advanced Class Guide, and Occult Adventures classes
 to the same content depth as the original Core-class experience.
 
-1. [ ] Extend the sourced archetype importer and coverage report to every later
+1. [x] Extend the sourced archetype importer and coverage report to every later
    base and hybrid class, retaining replacements, restrictions, source links,
    automation status, search, stacking, and persistence.
 2. [x] Import and validate the published Magus, Gunslinger, and Samurai
    archetype catalogues as the first reusable batch.
-3. [ ] Import and validate archetypes for the five APG and nine Advanced Class
+3. [x] Import and validate archetypes for the five APG and nine Advanced Class
    Guide class families.
-4. [ ] Import and validate archetypes for all six Occult Adventures classes.
+4. [x] Import and validate archetypes for all six Occult Adventures classes.
 5. [ ] Complete defining option catalogues that are currently representative,
    including arcana, deeds, orders, wild talents, tricks, focus powers,
    amplifications, disciplines, and emotional focuses.
@@ -263,8 +263,8 @@ to the same content depth as the original Core-class experience.
 
 ### Completion criteria
 
-- [ ] every later base and hybrid class exposes its published archetypes
-- [ ] every imported archetype has explicit mechanical coverage and no silent effects
+- [x] every later base and hybrid class exposes its published archetypes
+- [x] every imported archetype has explicit mechanical coverage and no silent effects
 - [ ] defining class-option catalogues are complete and prerequisite-aware
 - [ ] later-class spell lists use exact sourced levels rather than proxy lists
 - [ ] representative archetyped builds persist and reach level 20 on desktop and mobile

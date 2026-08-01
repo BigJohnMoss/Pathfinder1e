@@ -1,0 +1,51 @@
+{
+  "id": "hunter-pelagic-hunter",
+  "name": "Pelagic Hunter",
+  "classId": "hunter",
+  "summary": "Pelagic hunters form strong bonds that extend deep beneath the sea.",
+  "replacesText": "Animal Companion; Animal Focus; Woodland Stride",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "hunter-animal-companion-1",
+        "hunter-raise-companion-10",
+        "hunter-animal-focus-1",
+        "hunter-second-animal-focus-8",
+        "hunter-third-animal-focus-15",
+        "hunter-woodland-stride-5"
+      ],
+      "features": [
+        {
+          "id": "hunter-pelagic-hunter-pelagic-companion-1",
+          "name": "Pelagic Companion",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A pelagic hunter must select an aquatic animal companion. This alters animal companion."
+        },
+        {
+          "id": "hunter-pelagic-hunter-pelagic-focus-su-8",
+          "name": "Pelagic Focus (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "Unlike with a normal hunter’s animal focus, pelagic focus allows the hunter to contact magical deep sea creatures instead of animals, using the options below instead of the normal hunter options. This alters animal focus. Aboleth : The creature gains a +1 morale bonus on saves against divine spells and spell-like abilities. This bonus increases to +2 at 8th level and +3 at 15th level. Cetus : The creature gains Lunge as a bonus feat. At 12th level, instead of gaining Lunge, the creature increases its reach by 5 feet. Charybdis : The creature’s attacks ignore the first 5 points of hardness. This improves to ignore the first 7 points of hardness at 8th level and the first 10 points of hardness at 15th level. Deep One : The creature reduces pressure damage it takes (see page 48) by 10. At 12th level, the creature is immune to damage from changing pressure. Hippocampus : The creature gains a +4 competence bonus on Swim checks. This bonus increases to +6 at 8th level and +8 at 15th level. Kraken : The creature gains the jet ability ( Pathfinder RPG Bestiary 2 298) with a speed equal to its unmodified base land speed or four times its swim speed (if it has one), whichever is higher. If it has a swim speed, at 8th level, the jet ability’s speed increases to five times its swim speed, and at 15th level, the speed increases to seven times its swim speed. Reefclaw : The creature gains Diehard as a bonus feat. At 12th level, instead of gaining Diehard, the creature gains the ferocity ability ( Pathfinder RPG Bestiary 300). Scylla : The creature’s attacks deal 1 point of bleed damage in addition to their normal damage. At 8th level, the bleed damage increases to 1d3, and at 15th level, it increases to 1d6. Sea Serpent : The creature is considered to be under a nondetection spell it cast on itself, with a caster level equal to the pelagic hunter’s class level. Selkie : The creature gains a +4 competence bonus on Bluff checks. This bonus increases to +6 at 8th level and +8 at 15th level. Shoggoth : The creature gains a +2 competence bonus on Perception checks and reduces the flanking bonuses of creatures flanking it by 1. This Perception bonus increases to +3 at 8th level and +4 at 15th level. At 12th level, the creature can’t be flanked. Siyokoy : The creature’s attacks deal 1 additional point of electricity damage. At 8th level, the electricity damage increases to 1d3, and at 15th level, it increases to 1d6."
+        },
+        {
+          "id": "hunter-pelagic-hunter-blood-to-water-su-5",
+          "name": "Blood to Water (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, when a pelagic hunter or her animal companion bleeds underwater into the surrounding water (whether from piercing or slashing damage, a bleed effect, or another effect that causes blood to spill), the blood transmutes into ordinary water within 1 round. This prevents sharks and other predators with keen scent from being drawn to the pelagic hunter’s position by the blood and makes it harder for such creatures to track her. This ability replaces woodland stride."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Hunter%20Pelagic%20Hunter"
+  }
+}

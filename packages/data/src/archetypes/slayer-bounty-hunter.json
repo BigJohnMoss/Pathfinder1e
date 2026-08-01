@@ -1,0 +1,69 @@
+{
+  "id": "slayer-bounty-hunter",
+  "name": "Bounty Hunter",
+  "classId": "slayer",
+  "summary": "Whether tasked with bringing in wanted criminals or paid to drag debtors back to their loan sharks, bounty hunters are valued for their ability to capture targets alive.",
+  "replacesText": "Weapon/Armor Proficiencies; 2nd, 6th, and 10th-level Slayer Talents",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-talent-2",
+        "slayer-talent-6",
+        "slayer-talent-10"
+      ],
+      "features": [
+        {
+          "id": "slayer-bounty-hunter-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A bounty hunter is proficient with all simple and martial weapons plus the aklys, bolas, dan bong, lasso, and net. Bounty hunters are proficient with light armor, light shields, and bucklers, but not heavy shields or tower shields. This ability replaces the slayer’s weapon and armor proficiencies."
+        },
+        {
+          "id": "slayer-bounty-hunter-dirty-trick-ex-2",
+          "name": "Dirty Trick (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, anytime a bounty hunter is able to deal sneak attack damage to a studied target, he can instead attempt to hamper the target. The bounty hunter must declare that he’s using this ability before the attack roll is made. If the attack hits, it deals damage normally, but instead of rolling sneak attack damage, the bounty hunter can attempt a dirty trick combat maneuver against the studied target as a free action, adding 1 to the combat maneuver check for each die of the bounty hunter’s sneak attack damage. This combat maneuver does not provoke attacks of opportunity. This ability replaces the slayer talent gained at 2nd level."
+        },
+        {
+          "id": "slayer-bounty-hunter-submission-hold-ex-6",
+          "name": "Submission Hold (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, when a bounty hunter attempts a grapple combat maneuver check to deal damage, he can choose to add his sneak attack damage to the grapple damage for that attack. He takes a –5 penalty on the combat maneuver check if he does this. This sneak attack damage is nonlethal damage, unless the bounty hunter is able to deal normal damage with a grapple and chooses to do so. This ability replaces the slayer talent gained at 6th level."
+        },
+        {
+          "id": "slayer-bounty-hunter-incapacitate-ex-10",
+          "name": "Incapacitate (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a bounty hunter can incapacitate a studied target. This functions like the assassinate slayer talent, except instead of killing the target, the bounty hunter’s successful attack knocks the target unconscious for 1d6 rounds unless it succeeds at its saving throw. If the target does succeed at its saving throw, it still takes the sneak attack damage as normal, but the damage is nonlethal, and the target is immune to that slayer’s incapacitate ability for 24 hours. This ability replaces the advanced slayer talent gained at 10th level."
+        },
+        {
+          "id": "slayer-bounty-hunter-slayer-talents-1",
+          "name": "Slayer Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following slayer talents (and rogue talents) complement the bounty hunter archetype: camouflage APG , fast stealth, hard to fool APG , slowing strike*, snap shot APG , surprise attack, and terrain mastery UC . (Those with asterisks [*] are detailed in the slayer class, starting on page 53.)"
+        },
+        {
+          "id": "slayer-bounty-hunter-advanced-slayer-talents-1",
+          "name": "Advanced Slayer Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following advanced slayer talents (and advanced rogue talents) complement the bounty hunter archetype: hunter’s surprise APG , knock-out blow APG , master of disguise APG , and woodland stride*."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Bounty%20Hunter"
+  }
+}

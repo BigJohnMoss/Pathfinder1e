@@ -1,0 +1,93 @@
+{
+  "id": "spiritualist-shadow-caller",
+  "name": "Shadow Caller",
+  "classId": "spiritualist",
+  "summary": "While most spiritualists form a bond with the remnants of a creature’s soul, some explore ways to bind ephemeral shadows to their own souls in exchange for power.",
+  "replacesText": "Phantom; Emotional Focus; Shared Consciousness; Etheric Tether; Phantom Recall; See Invisibility; Fused Consciousness; Empowered Consciousness",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-phantom-1",
+        "spiritualist-phantom-recall-6",
+        "spiritualist-shared-consciousness-1",
+        "spiritualist-etheric-tether-1",
+        "spiritualist-fused-consciousness-10",
+        "spiritualist-empowered-consciousness-20"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-shadow-caller-shadowcaster-1",
+          "name": "Shadowcaster",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A shadow caller adds darkness and deeper darkness to their class spell list as 2nd- and 3rd-level spells, respectively. When her shade (see below) inhabits her shadow, the shadow caller’s effective caster level is one higher when she casts all spells with the shadow or darkness descriptor. This ability alters the spiritualist’s spellcasting."
+        },
+        {
+          "id": "spiritualist-shadow-caller-shade-1",
+          "name": "Shade",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A shadow caller gains a special kind of phantom known as a shade. A shade functions as a phantom, except as noted below. A shade is from the Shadow Plane instead of the Ethereal Plane. A shade is not confined to the shadow caller’s consciousness, but instead inhabits her shadow. This ability alters phantom."
+        },
+        {
+          "id": "spiritualist-shadow-caller-emotionless-su-1",
+          "name": "Emotionless (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A shadow caller’s shade lacks an emotional focus; it is cold and devoid of all emotions. The shade gains a number of ranks in Intimidate and Stealth equal to its Hit Dice. The shadow caller gains Skill Focus in each of these skills while the shade inhabits her shadow. The shade has good Reflex and Will saves, gains Lightning Reflexes as a bonus feat, and gains the following abilities. Weakening Touch (Su) : A shade’s slam attack causes its victim to take a –2 penalty to Strength for 1 round. As a standard action, a shade in incorporeal form can deliver the penalty as a touch attack. This penalty does not stack with itself. This is a negative energy effect. Umbral Shroud (Su) When the shadow caller reaches 7th level, her shade can emit a 10-foot aura of swirling shadows that grants all allies 20% concealment against creatures without darkvision or the see in darkness ability, and a +4 bonus on Stealth checks. Shadow Caster (Sp) : When the shadow caller reaches 12th level, her shade gains the ability to cast either shadow conjuration or shadow evocation once per day. It uses its Hit Dice as its caster level, and the DC for these spells equals 10 + 1/2 the shade’s Hit Dice + its Charisma modifier. Instead of the normal spell level and percentage of reality for the two spells, the maximum spell level of the duplicated spell is 4th level, and the effects are 40% real. When the shadow caller reaches 18th level, the maximum spell level improves to 6th level and effects are 60% real. Midnight Shroud (Su) : When the shadow caller reaches 17th level, her shade’s umbral shroud also lowers the light level in its range to darkness, regardless of the prevailing conditions; this counts as a 7th-level darkness spell for the purpose of adjudicating light and darkness effects."
+        },
+        {
+          "id": "spiritualist-shadow-caller-inhabit-shadow-su-12",
+          "name": "Inhabit Shadow (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "A shade resides within a shadow caller’s own shadow. When the shade is summoned, the shadow caller does not cast a shadow under any circumstances. Creatures that don’t normally cast shadows (such as vampires) cannot be shadow callers. While the shade inhabits its master’s shadow, the shadow caller gains a +4 circumstance bonus on Stealth checks against creatures without darkvision or the see in darkness ability; at 12th level, this bonus increases to +8. Additionally, the shadow caller gains darkvision 60 feet while her shade inhabits her shadow. If the shadow caller already has darkvision, its range increases by 30 feet. This ability replaces shared consciousness."
+        },
+        {
+          "id": "spiritualist-shadow-caller-shadow-bound-su-1",
+          "name": "Shadow Bound (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A shadow caller’s shade remains stable while adjacent to the shadow caller, or while up to 5 feet away from the shadow caller for every 5 levels the shadow caller possesses. If the shade moves beyond this distance, it is automatically dismissed back to the Shadow Plane (preventing the shade from being summoned back for 24 hours) unless the shadow caller concentrates as per the etheric tether ability. However, if both the shadow caller and shade are in areas of total darkness, the shade can move any distance from the shadow caller. If the shade is beyond its maximum distance and enters an area of dim or brighter illumination, it immediately returns to the Shadow Plane and cannot be summoned for 24 hours. This ability replaces etheric tether."
+        },
+        {
+          "id": "spiritualist-shadow-caller-shadow-jump-su-6",
+          "name": "Shadow Jump (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, when a shadow caller’s shade inhabits her shadow, she can travel between shadows as per the shadowdancer’s shadow jump ability. Each day, she can travel a total of 40 feet per spiritualist level in this way and, as with a shadowdancer, the distance is rounded to the nearest 10-foot increment. This ability replace phantom recall."
+        },
+        {
+          "id": "spiritualist-shadow-caller-see-in-darkness-su-9",
+          "name": "See in Darkness (Su)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, a shadow caller can gain the see in darkness universal monster ability as a standard action. She can use this ability for a number of rounds per day equal to her spiritualist level, though these rounds need not be consecutive. This ability replaces see invisibility ."
+        },
+        {
+          "id": "spiritualist-shadow-caller-umbral-aura-su-sp-10",
+          "name": "Umbral Aura (Su, Sp)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a shadow caller is wreathed in an aura of darkness while her shade inhabits her shadow, gaining 50% concealment against creatures without darkvision or the see in darkness ability. Additionally, the shadow caller’s square and all adjacent squares are treated as areas of dim illumination while she benefits from this ability; this second effect counts as a 4th-level darkness spell for the purpose of adjudicating light and darkness effects. While her shade inhabits her shadow, the shadow caller can hide in plain sight, even if an observing creature has darkvision or see in darkness. This ability replaces fused consciousness."
+        },
+        {
+          "id": "spiritualist-shadow-caller-living-darkness-su-20",
+          "name": "Living Darkness (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a shadow caller becomes a creature of absolute darkness. When using her incorporeal bonded manifestation, she is immune to cold and mind-affecting effects and gains an incorporeal touch attack that she can use as a standard action to deal 20d6 points of negative energy damage. When the shadow caller damages a creature with this ability, she gains 5d6 temporary hit points (Fortitude half; DC = 20 + her Wisdom modifier), so long as she doesn’t already have any temporary hit points gained via this ability). Temporary hit points gained this way disappear after 1 hour. This ability replaces empowered consciousness."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Shadow%20Caller"
+  }
+}

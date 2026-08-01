@@ -1,0 +1,68 @@
+{
+  "id": "spiritualist-soul-warden",
+  "name": "Soul Warden",
+  "classId": "spiritualist",
+  "summary": "Soul wardens have helped their phantoms pass on and have become wardens of the soulstream, serving Pharasma and working with psychopomps to protect vulnerable souls from those who seek to capture, corrupt, or devour them.",
+  "replacesText": "Phantom; Etheric Tether; Shared Consciousness; Spiritual Interference; Fused Consciousness; Greater Spiritual Interference; Bonded Senses; Phantom Recall; Bonded Manifestation; Dual Bond; Empowered Consciousness",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-phantom-1",
+        "spiritualist-phantom-recall-6",
+        "spiritualist-etheric-tether-1",
+        "spiritualist-shared-consciousness-1",
+        "spiritualist-spiritual-interference-4",
+        "spiritualist-fused-consciousness-10",
+        "spiritualist-bonded-manifestation-3",
+        "spiritualist-dual-bond-17",
+        "spiritualist-empowered-consciousness-20"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-soul-warden-nosoi-scribe-1",
+          "name": "Nosoi Scribe",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a soul warden gains a fledgling nosoi familiar. Treat this as a raven familiar until the soul warden reaches 4th level, at which point it is treated as a nosoi (as though the soul warden had taken the Improved Familiar feat). The familiar uses the soul warden’s spiritualist level as its Hit Dice for the purpose of determining the effects and duration of its haunting melody ability and all other effects related to its HD. At 10th level, the nosoi scribe gains the ability to use its touch the spirit world ability three times per day, instead of once per day. At 12th level, it also gains the Repose domain’s ward against death ability. This replaces phantom, etheric tether, shared consciousness, spiritual interference, fused consciousness, and greater spiritual interference."
+        },
+        {
+          "id": "spiritualist-soul-warden-psychopomp-s-bond-su-2",
+          "name": "Psychopomp’s Bond (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "A soul warden’s bond with her nosoi scribe is stronger than usual for a master and familiar. At 2nd level, she can use bonded senses with her nosoi scribe, and at 6th level, she can use phantom recall to recall her nosoi scribe to her side. This alters bonded senses and phantom recall."
+        },
+        {
+          "id": "spiritualist-soul-warden-warding-vessel-su-3",
+          "name": "Warding Vessel (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a soul warden can allow a spirit, soul, or incorporeal creature to hide inside her. While within the soul warden, the warded creature can communicate with the soul warden, and it can be targeted only by effects that could target a creature possessing another creature’s body. The warded creature has no other influence over the soul warden or her body. If the soul warden is reduced below 0 hit points, the warded creature is expelled. This replaces bonded manifestation."
+        },
+        {
+          "id": "spiritualist-soul-warden-phantom-elegy-su-8",
+          "name": "Phantom Elegy (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a soul warden’s nosoi scribe learns to sing elegies that build on the soul warden’s conduit to her former phantom. This allows it to create an effect identical to the 7th-level aura ability of an anger, dedication, despair, fear, hatred, jealousy, or zeal phantom, except that the phantom elegy is also a sonic effect and continues only as long as the nosoi scribe sings. Each round of phantom elegy uses 1 round of the nosoi scribe’s haunting melody. At 17th level, the nosoi scribe can blend any two of the phantom aura abilities into a single phantom elegy, although it uses 3 rounds of its haunting melody for each round it does so. This replaces bonded manifestation increases and dual bond."
+        },
+        {
+          "id": "spiritualist-soul-warden-algea-call-su-20",
+          "name": "Algea Call (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, as a standard action once per hour, a soul warden’s nosoi scribe can summon countless other nosoi, which flock together to form an algea. This transformation lasts for 1 minute, after which the nosoi scribe returns unharmed, unless the algea is brought to 0 hit points or killed, in which case the nosoi scribe returns unconscious at 0 hit points. This is a summoning effect. This replaces empowered consciousness."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Soul%20Warden"
+  }
+}

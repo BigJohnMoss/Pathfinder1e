@@ -1,0 +1,53 @@
+{
+  "id": "bloodrager-crossblooded-rager",
+  "name": "Crossblooded Rager",
+  "classId": "bloodrager",
+  "summary": "While most bloodragers manifest only one bloodline, there are some that, through some quirk of heredity or the conjunction of other powers, manifest two.",
+  "replacesText": "Bonus Feats; Bonus Spells; Bloodline Powers; Saving Throws",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "bloodrager-bloodline-1"
+      ],
+      "features": [
+        {
+          "id": "bloodrager-crossblooded-rager-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A crossblooded rager combines the bonus feat lists from both of his bloodlines and can select his bloodline bonus feats from this combined list."
+        },
+        {
+          "id": "bloodrager-crossblooded-rager-bonus-spells-10",
+          "name": "Bonus Spells",
+          "level": 10,
+          "type": "archetype",
+          "summary": "A crossblooded rager can select his bonus spells from either of his bloodlines. He can also learn a lower-level bonus spell he did not choose in place of the higher-level bonus spell he would normally gain. Lowerlevel bonus spells learned in this manner are always the spell level that they would be if the crossblooded rager had learned them with the appropriate bonus spell. For example: A 7th-level aberrant/abyssal crossblooded rager has the choice of learning enlarge person or ray of enfeeblement as his bloodline bonus spell. If he selected ray of enfeeblement as his 7th-level bonus spell, at 10th level he could use his new bonus spell to learn enlarge person instead of bull’s strength or see invisibility , and he would add it to his list of 1st-level spells known (just as if he had learned it as his 7th-level bonus spell)."
+        },
+        {
+          "id": "bloodrager-crossblooded-rager-bloodline-powers-1",
+          "name": "Bloodline Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st, 4th, 8th, 12th, 16th, and 20th levels, a crossblooded rager gains one of the two new bloodline powers available to him at that level. He can instead select a lower-level bloodline power he did not choose in place of one of these high-level powers."
+        },
+        {
+          "id": "bloodrager-crossblooded-rager-drawbacks-1",
+          "name": "Drawbacks",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The furious mix of arcane power inside a crossblooded rager forces him to constantly expend mental effort to remain focused on his current situation and needs. This leaves him with less mental resolve available to deal with external threats. A crossblooded rager takes a –2 penalty to all Will saving throws at all times, and does not gain the +2 morale bonus on Will saving throws while bloodraging—though he does gain a +1 morale bonus Will saving throws when he gains the greater bloodrage class feature, which increases to a +2 morale bonus on saving throws upon gaining the mighty bloodrage class feature."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bloodrager%20Crossblooded%20Rager"
+  }
+}

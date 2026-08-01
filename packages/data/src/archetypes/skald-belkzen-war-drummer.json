@@ -1,0 +1,61 @@
+{
+  "id": "skald-belkzen-war-drummer",
+  "name": "Belkzen War Drummer",
+  "classId": "skald",
+  "summary": "These fierce drummers are equally adept at tapping out a driving rhythm and rapping enemies upside the head with the same massive clubs they use to beat the crude hidecovered drums they carry into battle.",
+  "replacesText": "Weapon Proficiencies; Bardic Knowledge; Scribe Scroll; Lore Master; 7th-level Versatile Performance",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-scribe-scroll-1",
+        "skald-master-skald-20"
+      ],
+      "features": [
+        {
+          "id": "skald-belkzen-war-drummer-weapon-proficiency-1",
+          "name": "Weapon Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A war drummer is proficient with all simple weapons and the greatclub."
+        },
+        {
+          "id": "skald-belkzen-war-drummer-fearsome-mien-ex-1",
+          "name": "Fearsome Mien (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A war drummer adds 1/2 his class level (minimum 1) to all Intimidate and Bluff skill checks. This ability replaces bardic knowledge."
+        },
+        {
+          "id": "skald-belkzen-war-drummer-deadly-rhythm-ex-1",
+          "name": "Deadly Rhythm (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, during his raging song, a Belkzen war drummer can draw clubs and greatclubs as a free action as if he had the Quick Draw feat. At 3rd level, the war drummer gains a +1 bonus on damage rolls for attacks made with clubs or greatclubs. At 7th level and every 4 levels thereafter, this bonus increases by 1 (to a maximum of +5). At 6th level, the war drummer gains Improved Critical with the club or the greatclub as a bonus feat. This ability replaces Scribe Scroll."
+        },
+        {
+          "id": "skald-belkzen-war-drummer-weapon-master-ex-7",
+          "name": "Weapon Master (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a war drummer gains Craft Magic Arms and Armor as a bonus feat. This ability replaces lore master."
+        },
+        {
+          "id": "skald-belkzen-war-drummer-raging-song-su-7",
+          "name": "Raging Song (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "A war drummer gains access to the following raging song. Siege Drums (Su) : At 7th level, the Belkzen war drummer can shatter massive walls, doors, and other inanimate obstacles using his war drums. This ability works as the shatter spell, except the drummer can increase the amount of damage and size of the object damaged by playing for longer periods. The siege drummer can affect objects weighing up to 10 pounds per level, plus an additional 5 pounds per level for each additional round he plays. The damage dealt increases by 2d6 per round (to a maximum of 20d6 after 10 rounds). The damage is dealt only after the drummer ceases playing. This ability replaces the versatile performance gained benefit at 7th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Belkzen%20War%20Drummer"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "hunter-roof-runner",
+  "name": "Roof Runner",
+  "classId": "hunter",
+  "summary": "Roof runners are skilled ambushers, skirmishers, and spies who eschew heavier types of armor in order to remain light on their feet.",
+  "replacesText": "Class Skills; Armor Proficieny; Track; Woodland Stride; Swift Tracker; Master Hunter",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "hunter-woodland-stride-5",
+        "hunter-master-hunter-20"
+      ],
+      "features": [
+        {
+          "id": "hunter-roof-runner-skilled-ex-1",
+          "name": "Skilled (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A roof runner adds Acrobatics, Escape Artist, and Sleight of Hand to her list of class skills. This alters the hunter’s class skills and replaces the hunter’s proficiency with medium armor and shields."
+        },
+        {
+          "id": "hunter-roof-runner-natural-leaper-ex-2",
+          "name": "Natural Leaper (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a roof runner adds half her hunter level on Acrobatics checks to jump. This ability replaces track."
+        },
+        {
+          "id": "hunter-roof-runner-shingle-stride-ex-5",
+          "name": "Shingle Stride (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a roof runner and her animal companion can move at full speed without penalty when using Acrobatics to cross narrow or uneven surfaces, and climb at half speed (instead of one-quarter speed) without taking the – 5 penalty. This ability replaces woodland stride."
+        },
+        {
+          "id": "hunter-roof-runner-alley-ghost-ex-8",
+          "name": "Alley Ghost (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a roof runner gains the benefits of the fast stealth rogue talent. This ability replaces swift tracker."
+        },
+        {
+          "id": "hunter-roof-runner-master-climber-ex-20",
+          "name": "Master Climber (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a roof runner gains a climb speed equal to her base land speed, instead of being able to move at full speed while tracking. This ability alters master hunter."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Hunter%20Roof%20Runner"
+  }
+}

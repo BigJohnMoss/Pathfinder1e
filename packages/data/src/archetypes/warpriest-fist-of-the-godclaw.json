@@ -1,0 +1,75 @@
+{
+  "id": "warpriest-fist-of-the-godclaw",
+  "name": "Fist of the Godclaw",
+  "classId": "warpriest",
+  "summary": "Devoted to the divine control of law above all else, these zealots seek to establish absolute order.",
+  "replacesText": "Alignment; Deities; Blessings; 3rd, 6th, 12th-level Bonus Feat; Aspect of War",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "warpriest-deity-1",
+        "warpriest-blessing-1a",
+        "warpriest-blessing-1b",
+        "warpriest-major-blessing-10a",
+        "warpriest-major-blessing-10b",
+        "warpriest-bonus-feat-3",
+        "warpriest-bonus-feat-6",
+        "warpriest-bonus-feat-12",
+        "warpriest-aspect-war-20"
+      ],
+      "features": [
+        {
+          "id": "warpriest-fist-of-the-godclaw-alignment-1",
+          "name": "Alignment",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A fist of the Godclaw must be of a lawful alignment. This alters the warpriest’s alignment restriction."
+        },
+        {
+          "id": "warpriest-fist-of-the-godclaw-deities-1",
+          "name": "Deities",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A fist of the Godclaw must worship Abadar, Asmodeus, Iomedae, Irori, or Torag. Alternatively, the fist of the Godclaw must venerate the pantheon of these deities known as the Godclaw."
+        },
+        {
+          "id": "warpriest-fist-of-the-godclaw-blessings-of-the-godclaw-ex-1",
+          "name": "Blessings of the Godclaw (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A fist of the Godclaw must select the Law blessing and the Godclaw blessing. This alters blessings."
+        },
+        {
+          "id": "warpriest-fist-of-the-godclaw-detect-chaos-sp-3",
+          "name": "Detect Chaos (Sp)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a fist of the Godclaw can cast detect chaos three times per day as a spell-like ability, using his warpriest level as his caster level. If the fist of the Godclaw already has, or later gains, the ability to cast detect chaos , then he can cast detect chaos at will as a spell-like ability. This replaces the bonus feat gained at 3rd level."
+        },
+        {
+          "id": "warpriest-fist-of-the-godclaw-alignment-channel-su-6",
+          "name": "Alignment Channel (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a fist of the Godclaw gains Alignment Channel as a bonus feat. When he uses this feat and spends fervor to channel energy, he can harm only outsiders with the chaotic subtype. Additionally, when using this feat, he expends only one use of his fervor to channel energy and deals 1d6 points of damage for every 2 warpriest levels he has. At 12th level, a fist of the Godclaw can expend an additional use of fervor to channel energy as a move action. This replaces the bonus feats gained at 6th level and 12th level."
+        },
+        {
+          "id": "warpriest-fist-of-the-godclaw-aspect-of-law-ex-20",
+          "name": "Aspect of Law (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a fist of the Godclaw can channel an aspect of law, growing even more inflexible. Once per day as a swift action, a warpriest can treat his level as his base attack bonus, gains DR 20/chaotic, and becomes immune to mind-affecting effects. In addition, he can take the average result on any die roll instead of rolling normally. This ability lasts for 1 minute. This replaces aspect of war."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Warpriest%20Fist%20of%20the%20Godclaw"
+  }
+}

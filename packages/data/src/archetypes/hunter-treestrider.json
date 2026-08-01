@@ -1,0 +1,58 @@
+{
+  "id": "hunter-treestrider",
+  "name": "Treestrider",
+  "classId": "hunter",
+  "summary": "Some hunters are masters of the wild. Whether raised by apes or having some other link with simian creatures, these hunters glide through the wilderness with ease.",
+  "replacesText": "Animal Companion; Animal Focus; Second Animal Focus; Precise Companion; Raise Animal Companion",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "hunter-animal-companion-1",
+        "hunter-raise-companion-10",
+        "hunter-animal-focus-1",
+        "hunter-second-animal-focus-8",
+        "hunter-third-animal-focus-15",
+        "hunter-precise-companion-2"
+      ],
+      "features": [
+        {
+          "id": "hunter-treestrider-animal-companion-1",
+          "name": "Animal Companion",
+          "level": 1,
+          "type": "archetype",
+          "summary": "As a free action, a treestrider must select an ape as her animal companion. This alters animal companion."
+        },
+        {
+          "id": "hunter-treestrider-brachiation-ex-8",
+          "name": "Brachiation (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "A treestrider can gain a climb speed equal to half her base speed as a free action for 1 minute per hunter level per day. This duration must be spent in 1-minute increments. In addition, she can use her climb speed to move through the canopies of forests or jungles, provided the limbs of the trees are strong enough to support her weight. The treestrider’s companion gains a +10-foot enhancement bonus to its climb speed. At 8th level, the treestrider’s climb speed increases to equal her base speed, the duration of her brachiation increases to 10 minutes per hunter level per day (usable in 10-minute increments), and the enhancement bonus to her companion’s climb speed increases to +20 feet. At 15th level, she can use brachiation with no limit on the duration. This replaces animal focus and second animal focus."
+        },
+        {
+          "id": "hunter-treestrider-improved-unarmed-strike-ex-2",
+          "name": "Improved Unarmed Strike (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a treestrider gains Improved Unarmed Strike as a bonus feat. This replaces precise companion."
+        },
+        {
+          "id": "hunter-treestrider-tree-stride-sp-10",
+          "name": "Tree Stride (Sp)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a treestrider can use a full-round action to move between two trees, as per the spell tree stride . Unlike the spell, this ability has a duration of instantaneous and the treestrider can make only a single transfer. She can bring her animal companion with her, but if she does, her companion can’t take any actions that round. Tree stride can be used a number of times per day equal to 3 + the hunter’s Wisdom modifier. This replaces raise animal companion."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Hunter%20Treestrider"
+  }
+}

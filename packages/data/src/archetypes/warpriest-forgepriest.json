@@ -1,0 +1,84 @@
+{
+  "id": "warpriest-forgepriest",
+  "name": "Forgepriest",
+  "classId": "warpriest",
+  "summary": "Armorers of exquisite skill, forgepriests take inspiration from their deity to produce the most perfect weapons and armor they can, the better to equip the armies of the faithful.",
+  "replacesText": "Blessings; Spells; Bonus Feats; 3rd and 6th-level Bonus Feats; Channel Energy",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "warpriest-blessing-1a",
+        "warpriest-blessing-1b",
+        "warpriest-major-blessing-10a",
+        "warpriest-major-blessing-10b",
+        "warpriest-bonus-feat-3",
+        "warpriest-bonus-feat-6",
+        "warpriest-bonus-feat-9",
+        "warpriest-bonus-feat-12",
+        "warpriest-bonus-feat-15",
+        "warpriest-bonus-feat-18",
+        "warpriest-channel-4"
+      ],
+      "features": [
+        {
+          "id": "warpriest-forgepriest-blessings-1",
+          "name": "Blessings",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A forgepriest selects only one blessing. This alters the blessings class feature."
+        },
+        {
+          "id": "warpriest-forgepriest-smith-s-spells-1",
+          "name": "Smith’s Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A forgepriest adds the following spells to his spell list: 1st— jury rig UC , shield ; 2nd— heat metal , shatter ; 3rd— keen edge , quench , versatile weapon ; 4th— wreath of blades UC ; 5th— fabricate , major creation ; 6th— mage’s sword ."
+        },
+        {
+          "id": "warpriest-forgepriest-forge-mastery-ex-1",
+          "name": "Forge Mastery (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A 2nd level, the forgepriest adds a bonus equal to half his level to all Craft checks to make metal items, armor, and weapons. (This benefit is gained from the altered version of blessings, above.)"
+        },
+        {
+          "id": "warpriest-forgepriest-bonus-feats-1",
+          "name": "Bonus Feats",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A forgepriest can select item creation feats in addition to combat feats when he gains a bonus feat. This ability alters bonus feats."
+        },
+        {
+          "id": "warpriest-forgepriest-craft-magic-arms-and-armor-3",
+          "name": "Craft Magic Arms and Armor",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a forgepriest gains Craft Magic Arms and Armor as a bonus feat. This ability replaces the bonus feat gained at 3rd level."
+        },
+        {
+          "id": "warpriest-forgepriest-creator-s-bond-su-4",
+          "name": "Creator’s Bond (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, when a forgepriest uses his sacred weapon ability with an item he created personally, he can expend two uses of his fervor ability to increase the bonus granted by 1. Once the forgepriest has the sacred armor ability, he can also use this ability in conjunction with that. This ability replaces channel energy."
+        },
+        {
+          "id": "warpriest-forgepriest-heat-of-the-forge-su-6",
+          "name": "Heat of the Forge (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a forgepriest gains fire resistance 5. At 13th level, this resistance increases to 10. This ability replaces the bonus feat gained at 6th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Warpriest%20Forgepriest"
+  }
+}

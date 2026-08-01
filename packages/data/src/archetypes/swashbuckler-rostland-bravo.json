@@ -1,0 +1,42 @@
+{
+  "id": "swashbuckler-rostland-bravo",
+  "name": "Rostland Bravo",
+  "classId": "swashbuckler",
+  "summary": "While some duelists favor more technical approaches, others study flashier maneuvers, wielding the curved blade with artful flair. Disdainfully called “bravos” by classically trained rivals, students of this approach have claimed the label with pride.",
+  "replacesText": "Class Skills; Armor Proficiency; Menacing Swordplay; Superior Feint; Bleeding Wound; Swashbuckler's Edge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "nestedReplacements": [
+    "Class Skills; Armor Proficiency; Menacing Swordplay; Superior Feint; Bleeding Wound; Swashbuckler's Edge"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-class-skills-armor-proficiency-menacing-swordplay-superior-feint-bleeding-wound-swashbuckler-s-edge"
+      ],
+      "features": [
+        {
+          "id": "swashbuckler-rostland-bravo-aldori-swashbuckler-ex-1",
+          "name": "Aldori Swashbuckler (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Rostland bravo focuses on the Aldori dueling sword (see page 24), scorning the bucklers used by duelists of other styles. In addition, the relative safety and creature comforts allowed by life in the sprawling city of Restov reduces her need for athleticism. A Rostland bravo gains Exotic Weapon Proficiency (Aldori dueling sword) as a bonus feat. The Rostland bravo is not proficient with bucklers, and does not gain Climb or Swim as class skills. This ability alters the swashbuckler’s class skills and armor proficiencies."
+        },
+        {
+          "id": "swashbuckler-rostland-bravo-deeds-3",
+          "name": "Deeds",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A Rostland bravo’s training and personality set her apart from the typical swashbuckler, and as a result of these differences (as well as the impact of her Aldori training), she gains the following deeds. These deeds function only when the bravo is wielding just an Aldori dueling sword. Inevitable Victory (Ex) : The Rostland bravo’s technique is all about flair; a display of her skill is enough to make any Restov brawler reconsider picking a fight. At 3rd level, the Rostland bravo gains Dazzling Display as a bonus feat. She can activate its effect only while wielding an Aldori dueling sword, and she must spend 1 panache point to do so. This deed replaces menacing swordplay. Sweeping Wind Feint (Ex) : At 7th level, the Rostland bravo masters an exotic feinting style, tossing her blade to the other hand and performing a sweeping attack or upward slash before the opponent reacts. Once per round, she can spend 1 point of panache to attempt a feint as a swift action. This deed replaces superior feint. Dragon’s Rage (Ex) : At 11th level, the Rostland bravo can cast aside restraint in favor of a blindingly fast assault of unpredictable strikes inspired in part by the overwhelming brutality of a dragon in combat. Once per round as part of a full attack, the bravo can spend 1 panache point to make an additional attack with her Aldori dueling sword at her highest attack bonus. If she reduces a creature to 0 or fewer hit points with this additional attack, she regains 2 panache points rather than the normal 1 point she would gain from striking a killing blow. This deed replaces bleeding wound. Terror of the Great Wyrm (Ex) : At 15th level, the Rostland bravo can use her inevitable victory deed as part of a full attack or dragon’s rage. If a creature demoralized in this way would be shaken for 3 or more rounds, the Rostland bravo can make the target frightened for 1 round before becoming shaken for the appropriate duration. This deed replaces swashbuckler’s edge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Swashbuckler%20Rostland%20Bravo"
+  }
+}

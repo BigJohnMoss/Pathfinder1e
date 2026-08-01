@@ -1,0 +1,70 @@
+{
+  "id": "investigator-dread-investigator",
+  "name": "Dread Investigator",
+  "classId": "investigator",
+  "summary": "The dread investigator observes human behavior after the fact, honing their intuition by delving into the mysteries of death.",
+  "replacesText": "Inspiration; Studied Combat; Studied Strike; Poison Lore; Poison Resistance; Poison Immunity; 7th, 13th, and 19th-level Talents",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-inspiration-1",
+        "investigator-amazing-inspiration-7",
+        "investigator-true-inspiration-20",
+        "investigator-studied-combat-4",
+        "investigator-studied-strike-4",
+        "investigator-poison-lore-2",
+        "investigator-poison-resistance-2",
+        "investigator-poison-immunity-11",
+        "investigator-talent-7",
+        "investigator-talent-13",
+        "investigator-talent-19"
+      ],
+      "features": [
+        {
+          "id": "investigator-dread-investigator-delayed-inspiration-4",
+          "name": "Delayed Inspiration",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A dread investigator gains inspiration at 4th level instead of 1st and gains studied combat and studied strike at 7th level instead of 4th. A dread investigator’s studied strike deals 1d6 fewer points of damage than normal. This alters inspiration, studied combat, and studied strike."
+        },
+        {
+          "id": "investigator-dread-investigator-embalming-fluids-ex-1",
+          "name": "Embalming Fluids (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dread investigator adds the following spells to his class list of extracts: 1st— hide from undead , sanctify corpse UM ; 2nd— gentle repose , lesser animate dead UM ; 3rd— animate dead , speak with dead ; 4th— rest eternal APG . A dread investigator can use these extracts to affect dead bodies as if using the infusion discovery to affect another creature. This ability replaces poison lore."
+        },
+        {
+          "id": "investigator-dread-investigator-negative-energy-resistance-ex-2",
+          "name": "Negative Energy Resistance (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a dread investigator gains a +2 bonus on saving throws against death effects, energy drain, and negative energy. This bonus increases to +4 at 5th level and +6 at 8th level. At 11th level, effects created by undead that inflict ability drain, ability damage, or energy drain have only half their normal effect on a dread investigator (minimum 1 point of ability damage or ability drain, or 1 negative level). This ability replaces poison resistance and immunity."
+        },
+        {
+          "id": "investigator-dread-investigator-investigator-talent-1",
+          "name": "Investigator Talent",
+          "level": 1,
+          "type": "archetype",
+          "summary": "When a dread investigator selects the alchemical discovery talent, he can select from the following additional discoveries: alchemical zombie UM , mummification UM , or preserve organs UM ."
+        },
+        {
+          "id": "investigator-dread-investigator-reanimation-fluid-ex-7",
+          "name": "Reanimation Fluid (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a dread investigator adds undead anatomy I UM to his formula book, and he can share this extract with an unconscious creature as if he had the infusion discovery. If the creature is dying when it receives the infusion, it stabilizes and gains temporary hit points equal to twice the dread investigator’s level. Rather than having the extract take effect immediately, the dread investigator may choose for the extract to remain latent for up to 10 minutes per level. He can trigger the extract’s effect at any point by touching the creature as a standard action, and it automatically triggers if the creature using it is reduced to 0 or fewer hit points. The dread investigator can also amplify the effect of the extract, allowing it to function as undead anatomy II UM , but this reduces the extract’s duration to 1 round per level and at the end of its duration the creature using the extract is reduced to –1 hit points. At 13th level, a dread investigator adds undead anatomy II to his formula book, and at 19th level undead anatomy III UM , which he can use in the same way, including amplifying the effect of the extract to the next-higher-level undead anatomy spell. This ability replaces the investigator talents gained at 7th, 13th, and 19th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Dread%20Investigator"
+  }
+}

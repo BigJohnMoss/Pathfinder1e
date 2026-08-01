@@ -1,0 +1,72 @@
+{
+  "id": "slayer-spire-diver",
+  "name": "Spire Diver",
+  "classId": "slayer",
+  "summary": "Peerless divers, assassins, and scouts, spire divers operate in and out of water using the same weapons and equipment.",
+  "replacesText": "Studied Target; Stalker; Track; Swift Tracker; Slayer's Advance; Quarry; Improved Quarry",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-studied-target-1",
+        "slayer-stalker-7",
+        "slayer-track-1",
+        "slayer-swift-tracker-11",
+        "slayer-quarry-14",
+        "slayer-improved-quarry-19"
+      ],
+      "features": [
+        {
+          "id": "slayer-spire-diver-studied-target-ex-7",
+          "name": "Studied Target (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "A spire diver does not gain the ability to add her studied target bonus on Bluff and Survival checks against an opponent she has studied. At 7th level, she cannot add her studied target bonus on Disguise checks. Instead, when using any bow or crossbow against her studied target underwater, the spire diver ignores the normal penalty for shooting underwater and instead treats the weapon as though its range increment were 10 feet. At 5th, 10th, 15th, and 20th levels, the range increment increases by 10 feet, to a maximum of 50 feet. When using a bow or crossbow that already has an underwater range increment, such as an underwater crossbow , the spire diver adds the range increment gained from studied target as a bonus to the weapon’s usual underwater range increment, though the combined range increment cannot exceed the weapon’s normal range increment. This alters studied target and stalker."
+        },
+        {
+          "id": "slayer-spire-diver-hold-breath-ex-1",
+          "name": "Hold Breath (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spire diver increases the number of rounds she can hold her breath before she is required to start attempting Constitution checks to avoid drowning by 2 per slayer level she has. This replaces track."
+        },
+        {
+          "id": "slayer-spire-diver-slayer-talents-1",
+          "name": "Slayer Talents",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spire diver can select the strong stroke rogue talent as a slayer talent."
+        },
+        {
+          "id": "slayer-spire-diver-swift-swimmer-ex-11",
+          "name": "Swift Swimmer (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a spire diver gains a swim speed equal to her base speed. This replaces swift tracker."
+        },
+        {
+          "id": "slayer-spire-diver-diver-s-advance-ex-13",
+          "name": "Diver’s Advance (Ex)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, a spire diver can swim up to twice her swim speed once per day as a move action. She can use Stealth as part of this movement but takes a –10 penalty on her check for doing so. At 17th level, she can use this ability twice per day. This replaces slayer’s advance."
+        },
+        {
+          "id": "slayer-spire-diver-diver-s-quarry-ex-14",
+          "name": "Diver’s Quarry (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "A spire diver gains quarry and improved quarry as a normal slayer, but she does not gain the ability to take 10 or take 20 on Survival checks while moving at normal speed without penalty. Instead, at 14th level, a spire diver can take 10 on Knowledge checks to identify a monster she has selected as her quarry. At 19th level, she can take 20 on these checks without spending extra time to do so. The spire diver must be trained in the appropriate Knowledge skill to use this ability. This alters quarry and improved quarry."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Spire%20Diver"
+  }
+}

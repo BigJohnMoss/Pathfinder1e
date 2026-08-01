@@ -1,0 +1,53 @@
+{
+  "id": "mesmerist-vexing-trickster",
+  "name": "Vexing Trickster",
+  "classId": "mesmerist",
+  "summary": "Vexing tricksters indulge in the various hijinks their power enables.",
+  "replacesText": "Consumate Liar, Touch Treatment",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "mesmerist-touch-treatment-3"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-vexing-trickster-consummate-trickster-ex-4",
+          "name": "Consummate Trickster (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A vexing trickster gains a +1 bonus on Bluff, Disguise, Sleight of Hand, and Stealth checks. This bonus increases by 1 at 4th level and every 3 mesmerist levels thereafter (maximum +6). This ability replaces consummate liar."
+        },
+        {
+          "id": "mesmerist-vexing-trickster-trickster-s-ego-ex-2",
+          "name": "Trickster’s Ego (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a vexing trickster gains Combat Expertise as a bonus feat. If his Intelligence score is less than 13, his Intelligence counts as 13 for the purpose of meeting the prerequisites for combat feats. This ability replaces towering ego."
+        },
+        {
+          "id": "mesmerist-vexing-trickster-bonus-feat-ex-3",
+          "name": "Bonus Feat (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a vexing trickster gains a trick feat as a bonus feat. He must meet the feat’s prerequisites. At 10th level, he gains a second trick feat as a bonus feat. This ability replaces touch treatment (minor) and touch treatment (greater)."
+        },
+        {
+          "id": "mesmerist-vexing-trickster-manifold-hijinks-su-6",
+          "name": "Manifold Hijinks (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the vexing trickster learns to implant multiple mesmerist tricks that have been modified by trick feats (henceforth called modified tricks) in his targets’ minds simultaneously. At 6th level, the vexing trickster can implant up to two modified mesmerist tricks in a single target simultaneously. At 14th level, he can implant up to three modified mesmerist tricks in a single target simultaneously. This ability doesn’t allow a mesmerist to apply more than one trick feat to a single mesmerist trick at a time. This ability replaces touch treatment (moderate) and touch treatment (break enchantment)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Vexing%20Trickster"
+  }
+}

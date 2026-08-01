@@ -1,0 +1,73 @@
+{
+  "id": "skald-spell-warrior",
+  "name": "Spell Warrior",
+  "classId": "skald",
+  "summary": "The spell warrior uses his arcane knowledge rather than his rage to turn the tide of battle in favor of himself and his allies.",
+  "replacesText": "Scribe Scroll; Inspired Rage; Spell Kenning; Dirge of Doom; Master Skald",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-scribe-scroll-1",
+        "skald-inspired-rage-1",
+        "skald-greater-rage-11",
+        "skald-mighty-rage-20",
+        "skald-spell-kenning-5",
+        "skald-dirge-doom-10",
+        "skald-master-skald-20"
+      ],
+      "features": [
+        {
+          "id": "skald-spell-warrior-improved-counterspell-1",
+          "name": "Improved Counterspell",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the spell warrior receives the Improved Counterspell feat as a bonus feat. This ability replaces Scribe Scroll."
+        },
+        {
+          "id": "skald-spell-warrior-weapon-song-su-1",
+          "name": "Weapon Song (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spell warrior gains the following raging song, allowing him to grant his ally’s weapons enhancement bonuses and special powers. Enhance Weapons (Su) : At 1st level, the spell warrior can grant a +1 enhancement bonus to the weapons (including ammunition) of allies within 60 feet. At 5th level and every 5 levels thereafter, this enhancement bonus increases by 1. The maximum bonus gained is based upon the number of weapons affected: +5 to one weapon, +4 to two weapons, +3 to three weapons, or +2 to four or more weapons. Fifty pieces of ammunition count as one weapon for this purpose. The wielder of a weapon enhanced by this raging song counts as if he were under the effect of an inspired rage raging song for all purposes involving the skald's rage powers. These bonuses can also be used to add any of the following weapon special abilities to the weapons enhanced by this ability: dancing , defending , distance , flaming , frost , ghost touch , keen , mighty cleaving , returning , shock , seeking , or speed . Adding these weapon special abilities consumes an amount of bonus equal to the special ability’s cost (see Table 15–9: Melee Weapon Special Abilities on page 469 of the Core Rulebook ). These enhancement bonuses and special abilities overlap with any enhancements or special abilities the weapon already has, though duplicate special abilities do not stack. If an affected weapon is not magical, at least a +1 enhancement bonus must be added before any other special abilities can be. The bonus and special abilities granted by this raging song are determined when the song begins, and cannot be changed until the raging song ends and another is begun. These bonuses apply to only one end of a double weapon. This ability replaces the inspired rage raging song."
+        },
+        {
+          "id": "skald-spell-warrior-greater-counterspell-su-5",
+          "name": "Greater Counterspell (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, the spell warrior gains increased versatility when attempting to counteract enemy spellcasting. When counterspelling, he can expend two skald spell slots of the same level or higher than the opponent’s spell, regardless of the school of that spell. At 11th level, when counterspelling an opponent’s spell, the spell warrior only has to expend one skald spell slot of the level of the spell being cast. At 17th level, the spell warrior gains Parry Spell APG as a bonus feat. The skald does not have to meet the prerequisites for this feat. This ability replaces spell kenning."
+        },
+        {
+          "id": "skald-spell-warrior-song-of-arcane-manipulation-su-10",
+          "name": "Song of Arcane Manipulation (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a spell warrior can sacrifice his own rage magic to counter an opponent’s spell. When using raging song, he can counterspell as an immediate action without interrupting his raging song. However, in addition to expending a spell slot (or spell slots) to attempt to counter the opponent’s spell, the skald must expend 1 round of raging song per spell level of the opponent’s spell (for example, if attempting to counterspell a 3rd-level spell, the skald must expend one of his own 3rd-level spell slots and 3 rounds of raging song). This ability replaces the dirge of doom raging song."
+        },
+        {
+          "id": "skald-spell-warrior-spell-tamper-su-20",
+          "name": "Spell Tamper (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, when a spell warrior successfully counterspells an opponent’s spell, the opponent suffers a backlash of magical energy and takes 1d6 points of damage per spell level of the countered spell. If the opponent succeeds at a Will saving throw (DC = 10 + 1/2 the skald’s level + the skald’s Charisma modif ier), the damage is reduced by half. This damage is magical and is not subject to damage reduction or energy resistance. This ability replaces master skald."
+        },
+        {
+          "id": "skald-spell-warrior-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the spell warrior archetype: clear mind, disruptive APG , eater of magic UC , elemental rage APG (lesser, normal, and greater), energy resistance APG , spell sunder UC , spellbreaker APG , sunder enchantment UC , superstition, and witch hunter APG ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Spell%20Warrior"
+  }
+}

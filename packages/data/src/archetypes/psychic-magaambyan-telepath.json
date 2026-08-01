@@ -1,0 +1,56 @@
+{
+  "id": "psychic-magaambyan-telepath",
+  "name": "Magaambyan Telepath",
+  "classId": "psychic",
+  "summary": "Followers of Old-Mage Jatembe’s more esoteric wisdom instead focus on the occult connection between all living creatures and the resonance between the natural and supernatural world.",
+  "replacesText": "Discipline Spells; 1st, 11th-level Phrenic Amplifications; Telepathic Bond; Telepathy",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "psychic-discipline-1",
+        "psychic-amplification-1",
+        "psychic-telepathic-bond-9",
+        "psychic-telepathy-17"
+      ],
+      "features": [
+        {
+          "id": "psychic-magaambyan-telepath-primal-spells-1",
+          "name": "Primal Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A Magaambyan telepath adds one 1st-level spell from the druid spell list to the psychic spell list and her spells known. Each time a Magaambyan telepath gains the ability to cast a new level of spell, she can add one spell of that level from the druid spell list to both the psychic spell list and her spells known. She casts these spells as psychic spells, and once the spells are selected these choices cannot be changed. This replaces discipline spells."
+        },
+        {
+          "id": "psychic-magaambyan-telepath-nature-s-command-ex-11",
+          "name": "Nature’s Command (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "The Magaambyan telepath’s mind-affecting spells can affect even plant creatures. When she casts a mind-affecting spell, the Magaambyan telepath can spend 2 points from her phrenic pool to overcome a plant creature’s immunity to mind-affecting effects for the purposes of that spell. This ability functions even on mindless plant creatures, but it has no effect on creatures that aren’t plants. At 11th level, when the Magaambyan telepath casts a mind-affecting or language-dependent spell, the psychic can spend 2 points from her phrenic pool to cause the spell to affect creatures of the plant and animal types as if they were humanoids that understood her language. This replaces the phrenic amplifications gained at 1st and 11th levels."
+        },
+        {
+          "id": "psychic-magaambyan-telepath-know-the-land-sp-9",
+          "name": "Know the Land (Sp)",
+          "level": 9,
+          "type": "archetype",
+          "summary": "At 9th level, the Magaambyan telepath can cast commune with nature as a spell-like ability once per day, using her psychic level as her caster level. She can also expend any unused spell slot of 5th level or higher to cast commune with nature. This replaces telepathic bond."
+        },
+        {
+          "id": "psychic-magaambyan-telepath-wild-mind-su-17",
+          "name": "Wild Mind (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, when the Magaambyan telepath gains the telepathy ability, she can also mentally communicate with any animal or plant creature as if it had a language. This alters telepathy."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Psychic%20Magaambyan%20Telepath"
+  }
+}

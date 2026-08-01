@@ -1,0 +1,57 @@
+{
+  "id": "shaman-crystal-tender",
+  "name": "Crystal Tender",
+  "classId": "shaman",
+  "summary": "A crystal tender focuses on the spirits of metal and stone, using crystals as a means to focus the power of the spirits she venerates.",
+  "replacesText": "Spirit Animal; Wandering Spirit; 8th-level Shaman Hex; Manifestation",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "shaman-spirit-1",
+        "shaman-spirit-animal-1",
+        "shaman-wandering-spirit-4",
+        "shaman-hex-8",
+        "shaman-manifestation-20"
+      ],
+      "features": [
+        {
+          "id": "shaman-crystal-tender-scion-of-the-stones-ex-1",
+          "name": "Scion of the Stones (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A crystal tender forms a mystic connection with the precious stones and gems she has sworn to protect. Her spirit animal always appears to be composed of a crystalline substance and gains a +2 bonus to its natural armor. Her spirit animal is treated as an outsider with both the earth and native subtypes, and counts as a crystalline creature for the purposes of spells and abilities. The unique nature of her spirit animal increases the cost of replacing it to 750 gp per shaman level. This alters spirit animal."
+        },
+        {
+          "id": "shaman-crystal-tender-reciprocal-resonance-su-4",
+          "name": "Reciprocal Resonance (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a crystal tender learns to form a temporary bond with a spirit of crystal. When selecting her wandering spirit, she can forgo gaining a spirit ability to instead grant herself and her spirit animal DR 1/adamantine as long as they’re within 10 feet of one another. While benefiting from this ability, the crystal tender’s skin takes on a crystalline sheen. The DR gained from this ability increases to 2/ adamantine at 8th level, 3/adamantine at 12th level, 4/adamantine at 16th level, and 5/adamantine at 20th level. This alters wandering spirit."
+        },
+        {
+          "id": "shaman-crystal-tender-invoke-latent-facets-su-8",
+          "name": "Invoke Latent Facets (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, both a crystal tender and her spirit animal gain all of the benefits of any ioun stones worn by one another, as long as they’re within 100 feet of each other. The crystal tender’s spirit animal can also embed a number of ioun stones equal to the crystal tender’s Charisma modifier into its crystalline form. Embedded ioun stones don’t gain any additional abilities, save that they don’t orbit the spirit animal and can’t be separately targeted. A slain or unconscious spirit animal immediately loses all embedded ioun stones, which tumble to the ground beside its body. This replaces the shaman hex gained at 8th level."
+        },
+        {
+          "id": "shaman-crystal-tender-cabochon-form-sp-20",
+          "name": "Cabochon Form (Sp)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, as a standard action, a crystal tender can transform her body into a living gemstone as per iron body with a duration of 12 hours. Instead of being vulnerable to effects that can harm an iron golem while in this form, she is vulnerable to effects that can harm a crystalline creature (such as shatter ). She can use this ability once per day. This replaces manifestation."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Shaman%20Crystal%20Tender"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "bloodrager-bloody-knuckled-rowdy",
+  "name": "Bloody-Knuckled Rowdy",
+  "classId": "bloodrager",
+  "summary": "The bloody-knuckled rowdy focuses on tricks and maneuvers that are quick and effective, duplicating combat styles from professional brawlers, street thugs, and even trapped animals.",
+  "replacesText": "Damage Reduction; Spellcasting; Fast Movement; Uncanny Dodge; Improved Uncanny Dodge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "bloodrager-damage-reduction-7",
+        "bloodrager-fast-movement-1",
+        "bloodrager-uncanny-dodge-2",
+        "bloodrager-improved-uncanny-dodge-5"
+      ],
+      "features": [
+        {
+          "id": "bloodrager-bloody-knuckled-rowdy-bloody-knuckles-1",
+          "name": "Bloody Knuckles",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The bloody-knuckled rowdy does not gain damage reduction."
+        },
+        {
+          "id": "bloodrager-bloody-knuckled-rowdy-reduced-spells-known-1",
+          "name": "Reduced Spells Known",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The bloody-knuckled rowdy focuses more on fighting tactics and less on his natural arcane powers. He receives one fewer spell known at each spell level. This ability modifies bloodrager spellcasting."
+        },
+        {
+          "id": "bloodrager-bloody-knuckled-rowdy-pugilist-ex-1",
+          "name": "Pugilist (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a bloody-knuckled rowdy gains Improved Unarmed Strike as a bonus feat. This ability replaces fast movement."
+        },
+        {
+          "id": "bloodrager-bloody-knuckled-rowdy-combat-style-student-2",
+          "name": "Combat Style Student",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a bloody-knuckled rowdy gains a bonus feat. This bonus feat must be a style feat or a feat with a style feat as a prerequisite. The bloody-knuckled rowdy treats his bloodrager levels as monk levels when qualifying for and calculating the effects of style feats and feats that have style feats as prerequisites. At 5th level, the bloody-knuckled rowdy gains the Combat Style Master feat. He doesn’t need to meet the prerequisites for this feat. This ability replaces uncanny dodge and improved uncanny dodge."
+        },
+        {
+          "id": "bloodrager-bloody-knuckled-rowdy-hand-to-hand-training-ex-3",
+          "name": "Hand-to-Hand Training (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a bloody-knuckled rowdy deals unarmed damage as a monk of a level equal to his bloodrager level – 2."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bloodrager%20Bloody-Knuckled%20Rowdy"
+  }
+}

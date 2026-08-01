@@ -1,0 +1,81 @@
+{
+  "id": "mesmerist-enigma",
+  "name": "Enigma",
+  "classId": "mesmerist",
+  "summary": "An enigma spends his life dedicated to developing psychic abilities that allow him to operate unnoticed.",
+  "replacesText": "Hypnotic Stare; Consummate Liar; Painful Stare; Touch Treatment; Manifold Tricks; Glib Lie; Rule Minds",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "mesmerist-hypnotic-stare-1",
+        "mesmerist-consummate-liar-1",
+        "mesmerist-painful-stare-1",
+        "mesmerist-touch-treatment-3",
+        "mesmerist-trick-1",
+        "mesmerist-manifold-tricks-5",
+        "mesmerist-glib-lie-11",
+        "mesmerist-rule-minds-20"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-enigma-solipsism-su-1",
+          "name": "Solipsism (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, whenever the enigma uses hypnotic stare on a creature, instead of applying a penalty on the creature’s saving throws, the enigma begins to fade from the creature’s view. Until the enigma’s next turn, the enigma gains the effects of concealment against that creature (unless it can see invisible creatures). Starting on the enigma’s next turn, he gains the effect of invisibility against that creature. These effects last as long as the enigma continues to use his hypnotic stare, but if he takes an action that would end invisibility , it ends his hypnotic stare immediately. The enigma can reinstate this effect whenever he wishes, but each time it begins with 1 round of concealment. At 8th level, attacks that would end invisibility do not end the enigma’s hypnotic stare, and after 1 round of concealment, he gains the benef its of greater invisibility against the target of his stare. For the purpose of bold stare improvements, the enigma’s hypnotic stare always has a penalty of –1. This ability alters hypnotic stare."
+        },
+        {
+          "id": "mesmerist-enigma-veiled-steps-1",
+          "name": "Veiled Steps",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An enigma gains a bonus to his Stealth checks equal to 1/4 his mesmerist level (minimum +1). This ability replaces consummate liar."
+        },
+        {
+          "id": "mesmerist-enigma-enigmatic-stare-su-8",
+          "name": "Enigmatic Stare (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "The target of an enigma’s hypnotic stare takes a –4 penalty on Perception checks to notice the enigma. At 8th level, this penalty increases to – 6. This ability replaces painful stare."
+        },
+        {
+          "id": "mesmerist-enigma-transfer-affliction-su-3",
+          "name": "Transfer Affliction (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, the enigma can afflict others with the harmful conditions that he endures. This ability functions as the touch treatment ability, but can only be used to remove harmful conditions from the enigma, not other creatures. In order to remove these harmful effects, the enigma must succeed at a touch attack against another creature. The creature touched gains the chosen harmful effect for whatever duration it would have afflicted the enigma and the effect is removed from the enigma, unless the creature succeeds at a Will save (DC = 10 + 1/2 the enigma’s mesmerist level + his Charisma modifier). Using this ability is always a standard action. At 14th level, the enigma can instead expend one use of touch treatment to replicate the effects of bestow curse, delivered as a touch attack as part of using this ability. Transfer affliction is a mind-affecting effect. This ability alters touch treatment."
+        },
+        {
+          "id": "mesmerist-enigma-sneak-attack-ex-5",
+          "name": "Sneak Attack (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, an enigma gains the sneak attack ability of a rogue. This sneak attack damage is +1d6 at 5th level, and increases by +1d6 every 4 mesmerist levels thereafter. This ability replaces manifold tricks."
+        },
+        {
+          "id": "mesmerist-enigma-detection-void-su-11",
+          "name": "Detection Void (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, an enigma can elude detection spells (spells with “detect” in their name). A creature using this sort of magic against the enigma must succeed at a caster level check against a DC equal to 15 + the enigma’s class level to succeed (as if the enigma was under the effect of a nondetection spell); failure means the magic fails to detect the enigma, as if he did not exist. This ability replaces glib lie."
+        },
+        {
+          "id": "mesmerist-enigma-absentia-su-20",
+          "name": "Absentia (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, all creatures adjacent to the enigma subconsciously ignore him. Adjacent creatures are always treated as flat-footed to the enigma and are not considered to be directly observing the enigma for the purpose of the Stealth skill. This effect ends immediately if the enigma makes a successful attack against any creature, but automatically resumes at the beginning of his next turn. This ability replaces rule minds."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Enigma"
+  }
+}

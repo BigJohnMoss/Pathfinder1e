@@ -1,0 +1,39 @@
+{
+  "id": "spiritualist-fractured-mind",
+  "name": "Fractured Mind",
+  "classId": "spiritualist",
+  "summary": "Most spiritualists harbor the spirits of the deceased in their psyches, but a small number of them—known as fractured minds—draw their powers instead from a fraction of their own souls that resonates with extremely powerful emotions.",
+  "replacesText": "Spellcasting; Detect Undead; Calm Spirit; See Invisibility; Call Spirit",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-detect-undead-5"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-fractured-mind-emotional-spellcasting-1",
+          "name": "Emotional Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A fractured mind’s ability to cast spells is tied to the force of her own spirit rather than her connection to the spirit world. As a result, she uses her Charisma score rather than her Wisdom score to determine the highest spell level she can cast, the saving throw DCs of spells she casts, and her bonus spells per day. This ability alters spellcasting."
+        },
+        {
+          "id": "spiritualist-fractured-mind-emotional-power-sp-5",
+          "name": "Emotional Power (Sp)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "The fractured mind gains a number of spell-like abilities, which are tied to her phantom’s emotional focus. She gains one spell-like ability at 5th level, a second at 7th level, a third at 9th level, and a fourth at 16th level. A fractured mind can use each of these abilities once per day, plus one additional time per day for every 4 spiritualist levels she possesses beyond the level at which she gained the spell-like ability. The saving throw DCs for these spell-like abilities are equal to 10 + 1/2 the fractured mind’s spiritualist class level + the fractured mind’s Charisma modifier, rather than being based on the spell’s level. The spell-like abilities granted by each emotional focus are listed below. Anger : Enlarge person (5th), rage (7th), longstrider (9th), shout (16th). Dedication : Command (5th), spiritual weapon (7th), bless (9th), death ward (16th). Despair : Bungle UM (5th), stricken heart ACG (7th), doom (9th), crushing despair (16th). Fear : Bane (5th), mad hallucination UM (7th), doom (9th), phantasmal killer (16th). Hatred : Doom (5th), inflict moderate wounds (7th), bane (9th), bestow curse (16th). Jealousy : Sanctuary (5th), resist energy (7th), entropic shield (9th), spell immunity (16th). Zeal : Bless (5th), spiritual weapon (7th), divine favor (9th), freedom of movement (16th). This ability replaces detect undead , calm spirit , see invisibility , and call spirit ."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Fractured%20Mind"
+  }
+}

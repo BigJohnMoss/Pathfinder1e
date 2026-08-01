@@ -1,0 +1,52 @@
+{
+  "id": "warpriest-molthuni-arsenal-chaplain",
+  "name": "Molthuni Arsenal Chaplain",
+  "classId": "warpriest",
+  "summary": "Molthuni arsenal chaplains are warpriests trained in the Arsenal District in Korholm. They bolster their nation’s military by focusing on the militant aspects of their gods.",
+  "replacesText": "Blessing; Sacred Armor; Sacred Weapon; Channel Energy",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "warpriest-blessing-1a",
+        "warpriest-blessing-1b",
+        "warpriest-major-blessing-10a",
+        "warpriest-major-blessing-10b",
+        "warpriest-sacred-weapon-1",
+        "warpriest-sacred-weapon-enhancement-4",
+        "warpriest-channel-4"
+      ],
+      "features": [
+        {
+          "id": "warpriest-molthuni-arsenal-chaplain-war-blessing-su-7",
+          "name": "War Blessing (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "A Molthuni arsenal chaplain must choose War as his blessing, and can do so even if it is a domain not normally granted by his deity. He does not receive a second blessing. At 7th level, a Molthuni arsenal chaplain gains Quicken Blessing ACG (War) as a bonus feat even if he does not meet the prerequisites, but cannot grant a War blessing to himself as a swift action with Quicken Blessing until he is at least 10th level. At 13th level, a Molthuni arsenal chaplain can use the War blessing on an ally at a range of up to 30 feet by spending an additional use of the blessing ability. At 16th level, a Molthuni arsenal chaplain can use the War blessing on a second target with a single use of the blessing ability. At 19th level, a Molthuni arsenal chaplain can use the War blessing on any number of targets at once with a single use of the blessing ability. This ability alters blessing and replaces sacred armor."
+        },
+        {
+          "id": "warpriest-molthuni-arsenal-chaplain-sacred-weapon-su-1",
+          "name": "Sacred Weapon (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The base damage of a Molthuni arsenal chaplain’s sacred weapon does not increase above 1d6. This alters sacred weapon."
+        },
+        {
+          "id": "warpriest-molthuni-arsenal-chaplain-weapon-training-ex-5",
+          "name": "Weapon Training (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a Molthuni arsenal chaplain gains weapon training as per the fighter class feature, but the benefits of this weapon training apply only to the his sacred weapons (weapons with which the warpriest has taken Weapon Focus). This ability replaces channel energy."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Warpriest%20Molthuni%20Arsenal%20Chaplain"
+  }
+}

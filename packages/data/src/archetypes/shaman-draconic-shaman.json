@@ -1,0 +1,39 @@
+{
+  "id": "shaman-draconic-shaman",
+  "name": "Draconic Shaman",
+  "classId": "shaman",
+  "summary": "Some shamans draw their powers from the might of dragons. These shamans each gain a powerful drake as an ally, and view caring for that drake as a sacred duty",
+  "replacesText": "Spirit; Spirit Animal; 4th, 10th-level Hexes; Spirit Magic",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "shaman-spirit-1",
+        "shaman-spirit-animal-1",
+        "shaman-spirit-magic-1",
+        "shaman-wandering-spirit-4",
+        "shaman-greater-spirit-10",
+        "shaman-true-spirit-16",
+        "shaman-hex-4",
+        "shaman-hex-10"
+      ],
+      "features": [
+        {
+          "id": "shaman-draconic-shaman-drake-companion-4",
+          "name": "Drake Companion",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A draconic shaman gains a drake companion instead of a spirit animal, and she communes with the drake to prepare her spells just as other shamans commune with their spirit animals. She doesn’t gain a primary spirit, but she still gains wandering spirit at 4th level. She must select all her hexes (other than her wandering hexes) from the list of shaman hexes, and she can’t select the witch hex shaman hex. She doesn’t gain spirit magic slots until 4th level when she gains her wandering spirit. Any ability granted by a wandering spirit that would normally affect a spirit animal (such as nature’s true spirit ability) has no effect for a draconic shaman. This ability replaces spirit, spirit animal, and the hexes gained at 4th and 10th levels and alters spirit magic."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Shaman%20Draconic%20Shaman"
+  }
+}

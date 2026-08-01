@@ -1,0 +1,86 @@
+{
+  "id": "slayer-toxic-sniper",
+  "name": "Toxic Sniper",
+  "classId": "slayer",
+  "summary": "Followers of the daemonic harbinger Cixyron hide throughout the Mana Wastes, scavenging for guns. With significant firepower in hand, the Furious Thunder’s snipers bring poisonous death to the wastes.",
+  "replacesText": "Weapon and Armor Proficiencies; Track; Studied Target; Slayer Talents",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-track-1",
+        "slayer-swift-tracker-11",
+        "slayer-studied-target-1",
+        "slayer-talent-2",
+        "slayer-talent-4",
+        "slayer-talent-6",
+        "slayer-talent-8",
+        "slayer-talent-10",
+        "slayer-talent-12",
+        "slayer-talent-14",
+        "slayer-talent-16",
+        "slayer-talent-18",
+        "slayer-talent-20"
+      ],
+      "features": [
+        {
+          "id": "slayer-toxic-sniper-weapon-and-armor-proficiency-1",
+          "name": "Weapon and Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A toxic sniper is proficient with all simple weapons and firearms. He is proficient with light armor. This alters the toxic sniper’s weapon and armor proficiency."
+        },
+        {
+          "id": "slayer-toxic-sniper-scrapper-s-gun-1",
+          "name": "Scrapper’s Gun",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A toxic sniper gains the Gunsmithing feat, a battered gun identical to that gained by a 1st-level gunslinger, and the ability to restore his battered gun as if he were a gunslinger. This replaces track."
+        },
+        {
+          "id": "slayer-toxic-sniper-sharpshooter-s-study-ex-1",
+          "name": "Sharpshooter’s Study (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A toxic sniper’s focus makes him extremely deadly with ranged weapons. He gains a bonus on attack and damage rolls against his studied target only when attacking with a ranged weapon. This alters studied target."
+        },
+        {
+          "id": "slayer-toxic-sniper-toxic-grit-ex-2",
+          "name": "Toxic Grit (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, the toxic sniper gains the Amateur Gunslinger feat as a bonus feat. This replaces the slayer talent gained at 2nd level."
+        },
+        {
+          "id": "slayer-toxic-sniper-toxic-shots-ex-4",
+          "name": "Toxic Shots (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a toxic sniper can coat his ammunition in poison without requiring a pitted bullet. He is trained in applying poison in this way and cannot accidentally poison himself when applying poison to his ammunition. The toxic sniper can create a number of toxic shots per day equal to half his slayer level plus his Wisdom modifier. The penetrating nature of a toxic shot increases the DC of any poisons applied in this way by 2. A toxic sniper cannot create a toxic shot that is part of an alchemical cartridge. This replaces the slayer talent gained at 4th level."
+        },
+        {
+          "id": "slayer-toxic-sniper-marksman-ex-6",
+          "name": "Marksman (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a toxic sniper reduces the penalty on Stealth checks while sniping by 5. He reduces the penalty by 5 again at 12th level and at 18th level. At 8th level, he increases the distance from which he can deliver a ranged sneak attack against his studied target by 10 feet. This increases by 10 feet again at 14th level and at 20th level. This replaces slayer talents gained at 6th, 8th, 12th, 14th, 16th, 18th, and 20th levels."
+        },
+        {
+          "id": "slayer-toxic-sniper-precise-toxin-ex-10",
+          "name": "Precise Toxin (Ex)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a toxic sniper can deliver a toxic shot to especially vulnerable areas. When he hits an opponent with a toxic shot and deals sneak attack damage, he can forgo all his bonus damage to increase the DC of the his toxic shot’s poison. The DC increases by 1 for every 2d6 points of sneak attack damage he forgoes in this way. This replaces the slayer talent gained at 10th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Toxic%20Sniper"
+  }
+}

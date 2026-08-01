@@ -1,0 +1,37 @@
+{
+  "id": "bloodrager-primalist",
+  "name": "Primalist",
+  "classId": "bloodrager",
+  "summary": "While bloodrage powers come from the very essence of a bloodrager’s being and are often strict and immutable, some bloodragers tap into ancient traditions and primitive wisdom to enhance their rages with something more primal.",
+  "replacesText": "Bloodline",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "bloodrager-bloodline-1",
+        "bloodrager-bloodline-feat-6",
+        "bloodrager-bloodline-feat-9",
+        "bloodrager-bloodline-feat-12",
+        "bloodrager-bloodline-feat-15",
+        "bloodrager-bloodline-feat-18"
+      ],
+      "features": [
+        {
+          "id": "bloodrager-primalist-primal-choices-4",
+          "name": "Primal Choices",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level and every 4 levels thereafter, a primalist can choose to take either his bloodline power or two barbarian rage powers . If the primalist chooses rage powers, those rage powers can be used in conjunction with his bloodrage, and his bloodrager level acts as his barbarian level when determining the effect of those bloodrage powers and any prerequisites. Any other prerequisites for a rage power must be met before a primalist can choose it. This ability does not count as the rage power class feature for determining feat prerequisites and other requirements. This ability alters the bloodline class feature."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bloodrager%20Primalist"
+  }
+}

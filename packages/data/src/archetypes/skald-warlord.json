@@ -1,0 +1,65 @@
+{
+  "id": "skald-warlord",
+  "name": "Warlord",
+  "classId": "skald",
+  "summary": "The warlord wields his force of personality like a weapon, intimidating his allies and ensuring that his followers heed his commands.",
+  "replacesText": "Scribe Scroll; Well-Versed; Spell Kenning; Lore Master; Improved Uncanny Dodge",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-scribe-scroll-1",
+        "skald-well-versed-2",
+        "skald-spell-kenning-5",
+        "skald-master-skald-20",
+        "skald-uncanny-dodge-2",
+        "skald-improved-uncanny-dodge-5"
+      ],
+      "features": [
+        {
+          "id": "skald-warlord-intimidating-prowess-1",
+          "name": "Intimidating Prowess",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A warlord gains Intimidating Prowess as a bonus feat. This feat replaces the Scribe Scroll feat."
+        },
+        {
+          "id": "skald-warlord-unshakable-ex-2",
+          "name": "Unshakable (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a warlord develops an unshakable resolve, gaining a +2 bonus on saving throws against fear effects. This ability replaces well-versed."
+        },
+        {
+          "id": "skald-warlord-raging-song-su-5",
+          "name": "Raging Song (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "A warlord gains the following raging song. Fear Me (Su) : At 5th level, the warlord can remind his allies that failing him is far more frightening than the opposition. This raging song works like distraction, except that it applies to saving throws against fear effects instead of patterns and figments, and the warlord attempts an Intimidate check with a –10 penalty instead of a Perform check. Additionally, the warlord’s allies can use the warlord’s Intimidate check result (with the –10 penalty) as the DC for attempts to demoralize them using Intimidate. This ability replaces spell kenning."
+        },
+        {
+          "id": "skald-warlord-minions-ex-7",
+          "name": "Minions (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a warlord attracts a group of followers through his fearsome reputation and gains the Leadership feat as a bonus feat. This replaces the lore master ability."
+        },
+        {
+          "id": "skald-warlord-intimidated-push-ex-8",
+          "name": "Intimidated Push (Ex)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "At 8th level, a warlord inspires fear in his cohort and followers, ensuring they do not fail and thus suffer his wrath. When he uses inspired rage, his cohort increases her morale bonus on Will saves from inspired rage by 1 and his followers increase their morale bonuses on Will saves from inspired rage by 2. This replaces improved uncanny dodge."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Warlord"
+  }
+}

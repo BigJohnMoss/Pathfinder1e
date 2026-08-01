@@ -1,0 +1,58 @@
+{
+  "id": "hunter-feykiller",
+  "name": "Feykiller",
+  "classId": "hunter",
+  "summary": "Some hunters in fey-plagued regions are dedicated to tracking down and eradicating these threats.",
+  "replacesText": "Animal Focus; Wild Empathy; Speak with Master; Improed Empathic Link; One with the Wild",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "hunter-animal-focus-1",
+        "hunter-second-animal-focus-8",
+        "hunter-third-animal-focus-15",
+        "hunter-wild-empathy-1",
+        "hunter-speak-master-11",
+        "hunter-master-hunter-20"
+      ],
+      "features": [
+        {
+          "id": "hunter-feykiller-animal-focus-su-8",
+          "name": "Animal Focus (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "A feykiller emulates animals that grant her the ability to unmask fey trickery. She adds the following choices to her animal focus ability instead of the bear, frog, monkey, mouse, and snake choices. Crow : The creature gains a +4 competence bonus on Knowledge checks to identify the abilities and weaknesses of creatures. This bonus increases to +6 at 8th level and +8 at 15th level. Goat : The creature gains a +2 competence bonus on saving throws against enchantment spells and spell-like abilities. This bonus increases to +4 at 8th level and +6 at 15th level. Mongoose : The creature gains a +2 competence bonus on grapple combat maneuver checks and on saving throws against poison. These bonuses increase to +4 at 8th level and +6 at 15th level. Shark : The creature gains a +4 competence bonus on Survival checks to track a creature that has taken damage from the hunter or her animal companion in the past 24 hours. This bonus increases to +6 at 8th level and +8 at 15th level. Turtle : The creature gains a +2 enhancement bonus to its natural armor bonus. This bonus increases to +4 at 8th level and +6 at 15th level. (A creature without natural armor has an effective natural armor bonus of +0.) This ability alters animal focus."
+        },
+        {
+          "id": "hunter-feykiller-iron-talons-ex-7",
+          "name": "Iron Talons (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "Through training and prayer, a feykiller imbues her animal companion with an enhanced ability to fight fey. One of the animal companion’s natural attacks, as selected by the feykiller, is treated as cold iron for the purpose of overcoming damage reduction. At 7th level, all of her animal companion’s natural attacks are treated as cold iron. This ability replaces wild empathy and speak with master."
+        },
+        {
+          "id": "hunter-feykiller-resist-nature-s-lure-ex-4",
+          "name": "Resist Nature’s Lure (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a feykiller gains the resist nature’s lure druid class feature whenever her animal companion is within 60 feet. This ability replaces improved empathic link."
+        },
+        {
+          "id": "hunter-feykiller-grounded-su-17",
+          "name": "Grounded (Su)",
+          "level": 17,
+          "type": "archetype",
+          "summary": "At 17th level, a feykiller gains a +4 insight bonus on saving throws against illusion and enchantment effects, and she is immune to illusion and enchantment effects created by fey. This ability functions only when her animal companion is within 60 feet. This ability replaces one with the wild."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Hunter%20Feykiller"
+  }
+}

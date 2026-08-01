@@ -1,0 +1,57 @@
+{
+  "id": "occultist-ancestral-aspirant",
+  "name": "Ancestral Aspirant",
+  "classId": "occultist",
+  "summary": "It is common for a noble to possess a deep pride for his family’s past, but when such self-importance gives way to obsession, an ancestral aspirant is born.",
+  "replacesText": "Class Skills; Implements; Object Reading; Outside Contact",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "occultist-magic-item-skill-2",
+        "occultist-implements-1",
+        "occultist-implement-mastery-20",
+        "occultist-object-reading-2",
+        "occultist-outsider-contact-8"
+      ],
+      "features": [
+        {
+          "id": "occultist-ancestral-aspirant-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An ancestral aspirant adds Bluff and Knowledge (nobility) to his list of class skills, instead of Knowledge (planes) and Profession. This alters the occultist’s class skills."
+        },
+        {
+          "id": "occultist-ancestral-aspirant-family-jewels-1",
+          "name": "Family Jewels",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An ancestral aspirant’s implements are always objects connected to his family history. One of his starting implements must be an implement from the enchantment school. This ability alters implements."
+        },
+        {
+          "id": "occultist-ancestral-aspirant-emotional-reading-su-1",
+          "name": "Emotional Reading (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An ancestral aspirant doesn’t care much about objects that didn’t belong to his ancestors, but he is keenly attuned to his relatives and fellow nobles, allowing him to read the emotions of others. If he spends 1 minute examining a creature, he learns one fact, chosen by the GM, about the creature’s current emotions. Since emotional auras are complex, this ability is unlikely to reveal the secret feelings of a professional spy; instead, it only touches upon surface emotions. This ability replaces object reading."
+        },
+        {
+          "id": "occultist-ancestral-aspirant-courtly-contacts-su-12",
+          "name": "Courtly Contacts (Su)",
+          "level": 12,
+          "type": "archetype",
+          "summary": "Ancestral aspirants have contacts among courtly circles rather than otherworldly circles. This works similarly to outside contact except for the following differences: First, he doesn’t need to use a magic circle or make a payment (though he still expends 1 point of mental focus from his enchantment implement). Second, he can use those contacts to gather information for him (as per the Diplomacy skill to gather information) without spending the time himself, rather than asking a question and receiving a result similar to a divination. He can ask more questions over the same time period at 12th level and every 4 levels thereafter, as normal with outside contact. At 16th level, instead of delivering messages and objects, the courtly contacts can spread vicious rumors and gossip about a target throughout a settlement, causing any creatures in the settlement whose attitude toward the target wasn’t helpful to have its attitude toward the target worsened by one step. These baseless rumors last 1 week or until the target spends 8 hours refuting them and succeeds at a Diplomacy check (DC = 10 + the ancestral aspirant’s occultist level + his Intelligence modifier). This ability replaces outside contact."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Occultist%20Ancestral%20Aspirant"
+  }
+}

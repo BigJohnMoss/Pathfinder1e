@@ -1,0 +1,62 @@
+{
+  "id": "mesmerist-spirit-walker",
+  "name": "Spirit Walker",
+  "classId": "mesmerist",
+  "summary": "Some mesmerists specialize in dominating and controlling undead rather than the living.",
+  "replacesText": "Spells; Consummate Liar; Mental Potency; 3rd, 6th, 10th, and 14th-level Touch Treatments; Rule Minds",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "mesmerist-consummate-liar-1",
+        "mesmerist-touch-treatment-3",
+        "mesmerist-rule-minds-20"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-spirit-walker-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spirit walker adds additional spells to his spell list at the spell levels indicated: hide from undead (1st), command undead (2nd), halt undead (3rd), and speak with haunt ACG (4th). He can choose these as spells known, but doesn’t gain them automatically. This ability alters the mesmerist’s spell list."
+        },
+        {
+          "id": "mesmerist-spirit-walker-undead-inception-su-1",
+          "name": "Undead Inception (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a spirit walker can affect undead creatures with his hypnotic stare as the psychic inception bold stare ability. This allows him to affect only undead; he must actually choose the psychic inception bold stare improvement if he wants to also affect other mindless creatures. At 3rd level when the spirit walker uses this ability, undead targets don’t receive a saving throw bonus (if they did to begin with), have only a 25% chance of ignoring the spirit walker’s mind-affecting spells and abilities, and no longer need to be under the spirit walker’s gaze to be affected. At 5th level, when the spirit walker uses his mind-affecting spells and abilities, they affect all undead normally, with no chance of failure. This ability replaces consummate liar and mental potency."
+        },
+        {
+          "id": "mesmerist-spirit-walker-continued-animation-su-3",
+          "name": "Continued Animation (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, when a spirit walker is using hypnotic stare on a humanoid target and the target dies, as an immediate action the spirit walker can force the target’s soul to remain in the body. The spirit walker can then control the target as if using dominate person for a number of rounds equal to 1/2 the spirit walker’s class level. The creature gains a number of temporary hit points equal to 2 × the spirit walker’s class level and continues acting as though it were alive and conscious until it loses those temporary hit points or the duration expires. During this time, the creature counts as undead, but it can’t be healed by negative energy. The spirit walker can use this ability once per day for every 3 mesmerist levels he possesses. The target receives a Will saving throw (DC = 10 + 1/2 the spirit walker’s class level + his Charisma modifier) to avoid this effect and die normally. This ability ends immediately if at any point the target’s body is completely destroyed (such as by disintegrate ) or restored to life. At 14th level, the spirit walker can apply this ability to any type of target as if using dominate monster . This ability replaces the 3rd- and 14th-level touch treatments."
+        },
+        {
+          "id": "mesmerist-spirit-walker-command-undead-su-6",
+          "name": "Command Undead (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, a spirit walker gains Command Undead as a bonus feat. A spirit walker can use Command Undead a number of times per day equal to 1 + his Charisma modifier (minimum 1), using his mesmerist level as his cleric level. At 10th level, the DC to resist this effect increases by 2. This ability replaces the 6th- and 10th-level touch treatments."
+        },
+        {
+          "id": "mesmerist-spirit-walker-master-of-the-dead-su-20",
+          "name": "Master of the Dead (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a spirit walker gains mastery of the undead. Once per day, a spirit walker can use control undead as a spell-like ability on one target. If that creature fails its saving throw and has 20 or fewer Hit Dice, it falls permanently under the spirit walker’s control until the spirit walker dies. A creature that fails its save but has more than 20 HD suffers the effect of command undead . A creature that succeeds at its save can’t be affected by master of the dead for 24 hours. A spirit walker can control only one undead creature in this fashion at a time. If he permanently controls a new undead creature, the previous one is set free. This ability replaces rule minds."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Spirit%20Walker"
+  }
+}

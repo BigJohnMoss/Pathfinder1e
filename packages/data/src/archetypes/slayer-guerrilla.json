@@ -1,0 +1,50 @@
+{
+  "id": "slayer-guerrilla",
+  "name": "Guerrilla",
+  "classId": "slayer",
+  "summary": "Slayers characterized by cunning and patience, guerrillas specialize in ambush and harassment of enemies.",
+  "replacesText": "Track; Swift Tracker; 6th-level Slayer Talent; Quarry; Improved Quarry",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-track-1",
+        "slayer-swift-tracker-11",
+        "slayer-talent-6",
+        "slayer-quarry-14",
+        "slayer-improved-quarry-19"
+      ],
+      "features": [
+        {
+          "id": "slayer-guerrilla-strike-first-strike-last-ex-1",
+          "name": "Strike First, Strike Last (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A guerrilla adds half his level on Stealth checks when remaining motionless and reduces the penalty on Stealth checks when sniping by an equal amount. He also gains this bonus on his initiative checks in surprise rounds whenever he is aware of the surprise round and at least one enemy is unaware. This replaces track and swift tracker."
+        },
+        {
+          "id": "slayer-guerrilla-quick-start-ex-6",
+          "name": "Quick Start (Ex)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the guerrilla can take a normal charge action during the surprise round, rather than a charge with half the usual distance. This replaces the 6th-level slayer talent."
+        },
+        {
+          "id": "slayer-guerrilla-astonishing-strike-ex-14",
+          "name": "Astonishing Strike (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, when the guerrilla deals sneak attack damage to a target of his studied target ability during the surprise round, that target is denied its Dexterity bonus to AC against attacks from the same guerrilla until the end of the guerrilla’s next turn. When the guerrilla reaches 19th level, this ability works any time he deals sneak attack damage to a target of his studied target ability during the first round of combat, whether or not it’s a surprise round. This replaces quarry and improved quarry."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Guerrilla"
+  }
+}

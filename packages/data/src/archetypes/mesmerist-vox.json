@@ -1,0 +1,54 @@
+{
+  "id": "mesmerist-vox",
+  "name": "Vox",
+  "classId": "mesmerist",
+  "summary": "Most mesmerists practice their mental manipulation through their entrancing gaze, but others have learned to practice their skill through the lilt and intonation of their voice.",
+  "replacesText": "Spellcasting; Towering Ego; 10th-level Mesmerist Trick; Touch Treatment; Hypnotic Stare",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "mesmerist-touch-treatment-3",
+        "mesmerist-hypnotic-stare-1"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-vox-spells-10",
+          "name": "Spells",
+          "level": 10,
+          "type": "archetype",
+          "summary": "A vox adds the following spells to his class list: 1st— ear-piercing screamUM ; 2nd— cacophonous callAPG, disrupt silenceUI, distracting cacophonyUM, piercing shriekUM, sonic screamACG ; 4th— shout, sonic thrustUM, wall of soundUM ; 5th— cacophonous call (mass) APG, echolocationUM, resonating wordUM ; 6th— magnifying chimeACG, shout (greater), sonic formACG . Unlike most psychic spells, a vox’s mesmerist spells use both thought and verbal components; like a bard, a vox cannot remove the verbal components of his spells. This alters the mesmerist’s spellcasting and replaces towering ego, the mesmerist trick normally gained at 10th level, and touch treatment (break enchantment)."
+        },
+        {
+          "id": "mesmerist-vox-compelling-voice-su-1",
+          "name": "Compelling Voice (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A vox can focus the sound of his voice on one creature within 30 feet as a swift action, sapping that target’s willpower and rendering her more vulnerable to mind-affecting powers, rather than using a stare like other mesmerists. A vox can use his compelling voice even while deafened, but it has a 20% chance to fail, just like casting a spell with a verbal component. The target does not need to be able to understand what the vox is saying, but does need to be able to hear the sound of the vox’s voice (for instance, this ability cannot be used if either the vox or his target is in an area of magical silence). Otherwise, the vox’s compelling voice has the effects of the standard mesmerist’s hypnotic stare, and it gains further benefits as normal from abilities like the painful stare and bold stare class features. This ability alters hypnotic stare."
+        },
+        {
+          "id": "mesmerist-vox-wounding-words-su-3",
+          "name": "Wounding Words (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a vox can focus the power of his voice to magnify the force of his blows in melee. As a standard action, a vox can make a melee touch attack that deals 1d6 points of sonic damage plus 1 point per mesmerist level. Alternatively, he can make a single attack with a melee weapon as a standard action, adding the listed sonic damage to the damage dealt by his weapon on a successful attack. He can use this ability a number of times per day equal to 3 + his Charisma modifier. If the target of the vox’s wounding words is also the target of his compelling voice, that creature must succeed at a Will save (DC = 10 + 1/2 the vox’s mesmerist level + his Charisma modifier) or take a –2 penalty on attack rolls, saving throws, skill checks, and ability checks for 1 round. This penalty doesn’t stack with the effects of the Concussive Spell UM metamagic feat. This ability replaces touch treatment (minor) and touch treatment (moderate)."
+        },
+        {
+          "id": "mesmerist-vox-subsonic-strike-su-10",
+          "name": "Subsonic Strike (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a vox is able to unleash a deadly flurry of his wounding words as a standard action. He can target a number of creatures or objects equal to his Charisma modifier (minimum 1) within 30 feet, requiring a ranged touch attack against each target. If the target of his compelling voice is within 30 feet, he can choose to instead target only that creature with a single ranged touch or melee touch attack, dealing double normal damage on a successful attack. Whatever choice he makes, the vox must expend one use of wounding words. This ability replaces touch treatment (major)."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Vox"
+  }
+}

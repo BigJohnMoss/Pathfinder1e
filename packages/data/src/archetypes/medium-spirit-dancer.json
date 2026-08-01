@@ -1,0 +1,74 @@
+{
+  "id": "medium-spirit-dancer",
+  "name": "Spirit Dancer",
+  "classId": "medium",
+  "summary": "A spirit dancer enacts an exuberant dance to the spirits, accepting many roles in the shifting dance and changing dance partners quickly.",
+  "replacesText": "Spirit; Spirit Bonus; Spirit Surge; Taboo; Shared Seance; Trance of Three; Spacious Soul; Astral Beacon",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "medium-spirit-1",
+        "medium-spirit-bonus-1",
+        "medium-spirit-surge-1",
+        "medium-spirit-mastery-19",
+        "medium-taboo-2",
+        "medium-trance-three-17",
+        "medium-spacious-soul-18",
+        "medium-astral-beacon-20"
+      ],
+      "features": [
+        {
+          "id": "medium-spirit-dancer-spirit-dance-su-1",
+          "name": "Spirit Dance (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Each day during his seance, a spirit dancer makes all his spirit power choices as if he were channeling one spirit of each of the six legends. He can’t choose to channel a weaker spirit to reduce his influence from spirit surge. He does not always possess the seance boon, spirit bonus, spirit powers, or spirit surge ability from any of these six spirits. Instead, he can enter a spirit dance as a free action to gain the aforementioned abilities from one of the six spirits he prepared during his seance for the duration of his spirit dance. He can spirit dance for a total number of rounds per day equal to his Charisma modifier + double his medium level; these rounds don’t need to be consecutive. After his spirit dance ends, the spirit dancer takes a –2 penalty on attack rolls, saving throws, and skill checks for 1 minute and can’t enter a spirit dance again during that time. He also can’t enter a spirit dance while shaken, frightened, or panicked. He combines all influence incurred during spirit dances into a single pool. At 3 points of influence or higher, he takes a –2 penalty on initiative checks even when he’s not in a spirit dance, and at 5 points of influence or higher, his current spirit takes control as it would for a normal medium (this control is not limited by rounds of spirit dance). A spirit dancer can accept 1 point of influence to recover 4 rounds of spirit dance, up to his normal daily maximum. A spirit dancer continues to track daily uses of abilities from each of his spirits even while he is not in a spirit dance. A spirit dancer with the supreme spirit power ability can use only one once-per-day ability from the supreme spirit power each day; he can’t use any other spirit’s once-per-day supreme spirit power until after his next seance. This ability alters spirit and replaces spirit bonus and spirit surge."
+        },
+        {
+          "id": "medium-spirit-dancer-nothing-is-taboo-ex-1",
+          "name": "Nothing Is Taboo (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A spirit dancer doesn’t gain the taboo class feature."
+        },
+        {
+          "id": "medium-spirit-dancer-spirit-aura-su-2",
+          "name": "Spirit Aura (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a spirit dancer’s weaving forms create an aura that grants his current seance boon to all allies within 30 feet. When he grants a seance boon that requires a decision, each ally makes the appropriate decision the first time that ally receives that spirit’s aura each day. That decision remains in effect if the ally is affected by that spirit’s aura again later that day. This ability replaces shared seance."
+        },
+        {
+          "id": "medium-spirit-dancer-spirit-troika-su-15",
+          "name": "Spirit Troika (Su)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, a spirit dancer learns to dance with two partners. When using spirit dance, he can choose to spend 3 rounds of spirit dance each round to gain access to the abilities of any two of the six spirits he prepared during his seance for 1 round. This ability replaces trance of three."
+        },
+        {
+          "id": "medium-spirit-dancer-attacca-su-18",
+          "name": "Attacca (Su)",
+          "level": 18,
+          "type": "archetype",
+          "summary": "At 18th level, a spirit dancer learns how to shift rapidly into the next movement of his dance. He no longer takes a penalty after his spirit dance ends and can enter another spirit dance immediately. This ability replaces spacious soul."
+        },
+        {
+          "id": "medium-spirit-dancer-dance-of-infinite-forms-su-20",
+          "name": "Dance of Infinite Forms (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, a spirit dancer has perfected his dance. He can now use each of his supreme spirit powers’ once-per-day abilities one time each day, instead of just one ability. He can use his spirit troika by spending 2 rounds of spirit dance instead of 3. Finally, he can enter a spirit dance with all six of his prepared spirits at once by spending 4 rounds of spirit dance each round. This ability replaces astral beacon."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Medium%20Spirit%20Dancer"
+  }
+}

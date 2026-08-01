@@ -1,0 +1,59 @@
+{
+  "id": "hunter-verminous-hunter",
+  "name": "Verminous Hunter",
+  "classId": "hunter",
+  "summary": "A verminous hunter calls on the ceaseless, single-minded dedication of vermin to hunt and overwhelm her prey.",
+  "replacesText": "Animal Companion; Wild Empathy; Animal Focus; Woodland Stride",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "hunter-animal-companion-1",
+        "hunter-raise-companion-10",
+        "hunter-wild-empathy-1",
+        "hunter-animal-focus-1",
+        "hunter-second-animal-focus-8",
+        "hunter-third-animal-focus-15",
+        "hunter-woodland-stride-5"
+      ],
+      "features": [
+        {
+          "id": "hunter-verminous-hunter-vermin-companion-ex-1",
+          "name": "Vermin Companion (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a verminous hunter must choose a vermin companion instead of an animal companion ( Ultimate Magic 36). This ability alters animal companion. The hunter tactics class ability allows a verminous hunter to grant her teamwork feats to a mindless vermin companion."
+        },
+        {
+          "id": "hunter-verminous-hunter-vermin-empathy-ex-1",
+          "name": "Vermin Empathy (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A verminous hunter gains the wild empathy ability, but can use it only to influence vermin (not animals or magical beasts). This ability alters wild empathy."
+        },
+        {
+          "id": "hunter-verminous-hunter-vermin-focus-su-8",
+          "name": "Vermin Focus (Su)",
+          "level": 8,
+          "type": "archetype",
+          "summary": "A verminous hunter can take on the aspect of a vermin. This functions as animal focus, but allows only the following choices. Ant : The creature gains a +2 enhancement bonus to Strength. This bonus increases to +4 at 8th level and +6 at 15th level. Beetle : The creature gains a +2 enhancement bonus to its natural armor bonus. This bonus increases to +4 at 8th level and +6 at 15th level. (A creature without natural armor has an effective natural armor bonus of +0.) Centipede : The creature gains a +2 competence bonus on Climb checks and a +2 bonus to CMD against pull, push, reposition, and trip combat maneuvers. These bonuses increase to +4 at 8th level and +6 at 15th level. Cockroach : The creature gains a +4 bonus on saves against cold dangers, disease, heat dangers, starvation, thirst, and on Constitution checks to avoid suffocation. These bonuses increase to +6 at 8th level and +8 at 15th level. Crab : The creature gains a +4 competence bonus on Swim checks and a +2 competence bonus on grapple combat maneuver checks. These bonuses increase to +6 and +4 respectively at 8th level, and +8 and +6 at 15th level. Flea : The creature gains a +4 competence bonus on saves against disease and Acrobatics checks to jump. These bonuses increase to +6 at 8th level and +8 at 15th level. Fly : The creature gains a +2 bonus on Perception checks and on Acrobatics checks to balance or fall safely. These bonuses increase to +4 at 8th level and +6 at 15th level. Leech : The creature gains a +2 competence bonus on grapple combat maneuver checks, and deals 1 point of bleed damage every time it succeeds at a grapple combat maneuver check to damage an opponent. These benefits increase to a +4 bonus and 3 points of bleed at 8th level, and a +6 bonus and 5 points of bleed at 15th level. Bleed damage from this ability does not stack with itself. Mantis : The creature gains a +2 bonus on attack of opportunity attack rolls and a +2 competence bonus on grapple combat maneuver checks. These bonuses increase to +4 at 8th level and +6 at 15th level. Moth : The creature gains darkvision to a range of 60 feet. At 8th level, the range increases by 30 feet. At 15th level, the creature gains blindsense to a range of 10 feet. Phasmid : The creature gains low-light vision and a +4 competence bonus on Stealth checks in forests or plains. This bonus increases to +6 at 8th level and +8 at 15th level. Scorpion : The creature gains a +2 competence bonus on Stealth checks and grapple combat maneuver checks. These bonuses increase to +6 and +4 respectively at 8th level, and +8 and +6 at 15th level. Spider : The creature gains a +2 competence bonus on Stealth checks, saving throws against web effects (magical or otherwise), and checks to break free of webs. This bonus increases to +4 at 8th level and +6 at 15th level. Wasp : The creature gains a +4 competence bonus on Perception checks. This bonus increases to +6 at 8th level and +8 at 15th level. Worm : The creature gains a 25% chance to treat any critical hit or sneak attack as a normal hit (as the fortification armor special ability). This increases to 50% at 8th level, and 75% at 15th level. This ability replaces animal focus."
+        },
+        {
+          "id": "hunter-verminous-hunter-swarm-stride-ex-5",
+          "name": "Swarm Stride (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a verminous hunter learns to move through vermin without danger. He can safely pass through swarms of vermin and does not take swarm damage while within a vermin swarm’s space. In addition, he is immune to a swarm’s distraction ability. If the hunter or his animal companion attacks a swarm, they lose this protection against only that swarm. This ability replaces woodland stride."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Hunter%20Verminous%20Hunter"
+  }
+}

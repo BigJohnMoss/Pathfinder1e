@@ -1,0 +1,48 @@
+{
+  "id": "investigator-reckless-epicurean",
+  "name": "Reckless Epicurean",
+  "classId": "investigator",
+  "summary": "Whether an obsessive scientist, a healer determined to ensure the safety of her tinctures, or a seeker of new and interesting potions, a reckless epicurean’s body is saturated with experimental chemicals and magic.",
+  "replacesText": "Trapfinding; 5th, 13th-level Investigator Talent",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-trapfinding-1",
+        "investigator-talent-5",
+        "investigator-talent-13"
+      ],
+      "features": [
+        {
+          "id": "investigator-reckless-epicurean-a-familiar-taste-ex-2",
+          "name": "A Familiar Taste (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a reckless epicurean adds half her level as a bonus on Perception and Spellcraft checks to identify potions. The benefits she receives from poison resistance and poison immunity also apply against harmful potions and other ingested substances with negative effects, such as drugs. This replaces trapfinding."
+        },
+        {
+          "id": "investigator-reckless-epicurean-experimental-potable-su-5",
+          "name": "Experimental Potable (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, once per day, a reckless epicurean can prepare one experimental potable using a formula that she does not know from the alchemist formulae list into an extract slot of the appropriate level. These experimental potables often have side effects. When a creature consumes one of these potables, the investigator must succeed at a Spellcraft check (DC = 15 + the formula’s level). On a failure, she must roll on the Wild Magic Surge table ( Pathfinder RPG Pathfinder Unchained 147) to determine the extra effects. If the wild magic surge effect isn’t possible due to the nature of the spell or effect, roll instead on the Universal Surge Effects table ( Pathfinder Unchained 148). Results concerning the caster affect the drinker of the experimental potable instead. At 8th level, and every 3 levels thereafter, the reckless epicurean can prepare one additional experimental potable per day. This replaces the investigator talent gained at 5th level."
+        },
+        {
+          "id": "investigator-reckless-epicurean-sympathetic-resistance-su-13",
+          "name": "Sympathetic Resistance (Su)",
+          "level": 13,
+          "type": "archetype",
+          "summary": "At 13th level, when a reckless epicurean drinks an extract or a potion, she gains an alchemical bonus on saves against spells and spell-like abilities of the same school as that potion or extract for a number of rounds equal to her Intelligence modifier. This bonus is equal to the level of the spell contained in the extract or potion. The investigator can use this ability a number of times per day equal to her Intelligence modifier (minimum 1). This replaces the investigator talent gained at 13th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Reckless%20Epicurean"
+  }
+}

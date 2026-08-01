@@ -1,0 +1,57 @@
+{
+  "id": "occultist-planar-harmonizer",
+  "name": "Planar Harmonizer",
+  "classId": "occultist",
+  "summary": "Planar harmonizers are masters of the planar symphony, forging bonds with tuning forks to unlock the true potential of these instruments",
+  "replacesText": "Implements; Implement Mastery; Magic Item Skill; Shift Focus; 5th, 7th-level Focus Power; Magic Circles; Aura Sight",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "occultist-implements-1",
+        "occultist-implement-mastery-20",
+        "occultist-magic-item-skill-2",
+        "occultist-shift-focus-4",
+        "occultist-aura-sight-7"
+      ],
+      "features": [
+        {
+          "id": "occultist-planar-harmonizer-conductor-su-14",
+          "name": "Conductor (Su)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "A planar harmonizer gains access to only the conjuration school of implements, gaining a common tuning fork as her implement. She must select conjuration for her implement mastery. Each time she gains an occultist level, a planar harmonizer can add one conjuration spell from the wizard spell list to her occultist spell list and her list of spells known. The planar harmonizer can’t choose a spell of a higher level than she is able to cast, and she adds the spell at the same spell level it appears on the wizard spell list. Additionally, she adds plane shift to her list as a 5th-level occultist spell. At 14th level, she doesn’t gain an additional school of implements. Instead, at 14th level, the DCs of saving throws to resist a planar harmonizer’s conjuration spells and conjuration focus powers increase by 2. All future implements that a planar harmonizer gains are common tuning forks. This alters implements and implement mastery."
+        },
+        {
+          "id": "occultist-planar-harmonizer-planar-scholar-su-2",
+          "name": "Planar Scholar (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a planar harmonizer deepens her knowledge about other worlds. She gains a bonus on Knowledge (planes) checks equal to half her occultist level. This replaces magic item skill."
+        },
+        {
+          "id": "occultist-planar-harmonizer-harmonic-shield-su-4",
+          "name": "Harmonic Shield (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a planar harmonizer learns to cloak herself in the essence of her home plane. She doesn’t take penalties on Intelligence-, Wisdom-, or Charisma-based checks for being on a plane whose alignment traits clash with her own alignment. At 7th level, she can expend 1 point of mental focus to gain the benefits of planar adaptation for 1 minute per occultist level. At 11th level, the duration of this protection extends to 1 hour per occultist level. This replaces shift focus and the focus power gained at 7th level."
+        },
+        {
+          "id": "occultist-planar-harmonizer-outside-messenger-su-5",
+          "name": "Outside Messenger (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a planar harmonizer gains the magic circles class feature. Whenever she creates a magic circle, she can expend 1 additional point of mental focus (either generic focus or focus from any one of her implements) to focus the circle inward and lure that outsider to the circle (similar to using lesser planar binding ). This functions as the outside contact occultist ability, except the information gained can be anything that might be learned through an augury spell. This alters magic circles and replaces aura sight and the focus power gained at 5th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Occultist%20Planar%20Harmonizer"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "medium-relic-channeler",
+  "name": "Relic Channeler",
+  "classId": "medium",
+  "summary": "A relic channeler carries relics of legend around with her.",
+  "replacesText": "Spirit; Haunt Channeler; Location Channel; Connection Channel",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "medium-spirit-1",
+        "medium-spirit-bonus-1",
+        "medium-spirit-surge-1",
+        "medium-spirit-mastery-19",
+        "medium-haunt-channeler-3",
+        "medium-location-channel-5",
+        "medium-connection-channel-7"
+      ],
+      "features": [
+        {
+          "id": "medium-relic-channeler-relics-su-1",
+          "name": "Relics (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A relic channeler begins with one relic for each of the six spirit legends. Each relic corresponds to a specific spirit, and could be any type of psychically resonant item—from a runestone with a symbol related to that spirit to a bone remnant from a legendary hero. Once a relic channeler selects a choice for taboos and spirit powers (such as archmage arcana and legendary champion), those choices remain in effect every time she channels that legend; unlike normal mediums, she can’t select a different option each time. A relic channeler can’t choose to channel a weaker spirit to reduce her influence from spirit surge. She doesn’t need to find an appropriate location to channel her spirits, since she can simply use her relics. If she loses one of her relics, she is incapable of channeling that legend until she recovers the relic. If the relic is destroyed, the relic channeler can use her strong bond with the spirit of that relic to forge a new relic for that spirit from her own essence. The process takes 1 week of intense seances and 500 gp per medium level she possesses. This ability alters spirit."
+        },
+        {
+          "id": "medium-relic-channeler-powerful-bond-su-1",
+          "name": "Powerful Bond (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Because of habitually channeling the same spirits and possessing physical links to the spirits’ former lives and legends, a relic channeler possesses a strong bond with her spirits. She receives the benefit of the Alertness feat whenever she is suffering a spirit’s influence penalty. She chooses two spells of each level with the archmage arcana and divine surge spirit powers instead of one, two exotic weapon proficiencies with champion’s prowess instead of one, three combat feats with legendary champion instead of two, and three skills with trickster’s edge instead of two. This ability alters spirit."
+        },
+        {
+          "id": "medium-relic-channeler-object-reading-su-3",
+          "name": "Object Reading (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a relic channeler gains the occultist’s object reading ability, substituting her medium level for her occultist level for this ability. This ability replaces haunt channeler."
+        },
+        {
+          "id": "medium-relic-channeler-apport-relic-su-5",
+          "name": "Apport Relic (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a relic channeler can call one of her relics to her once per day as though she had cast apport object on it and was mentally completing the spell. Furthermore, if the relic channeler gains the apport object spell, she can use it to receive her relics without casting it on them in advance in the same way. The range at which the relic channeler can apport her relics (both with this ability and the spell) increases by an additional 5 feet for every 2 levels she possesses beyond 5th. This ability replaces location channel."
+        },
+        {
+          "id": "medium-relic-channeler-connection-specialty-sp-7",
+          "name": "Connection Specialty (Sp)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a relic channeler gains connection channel and can use that ability as a normal medium, despite not possessing location channel. She requires familiarity to use this ability, even if she is in an appropriate location. This ability alters connection channel."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Medium%20Relic%20Channeler"
+  }
+}

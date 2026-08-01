@@ -1,0 +1,70 @@
+{
+  "id": "warpriest-shieldbearer",
+  "name": "Shieldbearer",
+  "classId": "warpriest",
+  "summary": "Shieldbearers are divine warriors who stand on the front lines of battle, shoulder to shoulder with the soldiers of their people.",
+  "replacesText": "Focus Weapon; Sacred Weapon; Sacred Armor;",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "warpriest-sacred-weapon-1",
+        "warpriest-sacred-weapon-enhancement-4",
+        "warpriest-deity-1",
+        "warpriest-blessing-1a",
+        "warpriest-blessing-1b",
+        "warpriest-weapon-focus-1",
+        "warpriest-fervor-2",
+        "warpriest-bonus-feat-3",
+        "warpriest-channel-4",
+        "warpriest-bonus-feat-6",
+        "warpriest-sacred-armour-7",
+        "warpriest-bonus-feat-9",
+        "warpriest-major-blessing-10a",
+        "warpriest-major-blessing-10b",
+        "warpriest-bonus-feat-12",
+        "warpriest-bonus-feat-15",
+        "warpriest-bonus-feat-18",
+        "warpriest-aspect-war-20"
+      ],
+      "features": [
+        {
+          "id": "warpriest-shieldbearer-shield-adept-ex-1",
+          "name": "Shield Adept (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a shieldbearer receives Improved Shield Bash as a bonus feat. When carrying a shield, the shieldbearer adds his shield bonus on concentration checks to cast defensively. This ability replaces focus weapon."
+        },
+        {
+          "id": "warpriest-shieldbearer-sacred-weapon-su-19",
+          "name": "Sacred Weapon (Su)",
+          "level": 19,
+          "type": "archetype",
+          "summary": "A shieldbearer treats shields as sacred weapons (instead of his god’s favored weapon), though the shieldbearer can still designate additional weapons as sacred weapons by selecting them with the Weapon Focus feat. The shieldbearer’s sacred weapon damage applies only to attacks made with shields. The shieldbearer does not gain the ability to enhance sacred weapons until 7th level. For every 3 warpriest levels beyond 7th, this bonus increases by 1 (to a maximum of +5 at 19th level). This ability alters sacred weapon and also replaces sacred armor."
+        },
+        {
+          "id": "warpriest-shieldbearer-sacred-shield-su-4",
+          "name": "Sacred Shield (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a shieldbearer gains the ability to enhance his shield with divine power as a swift action. This ability functions as the sacred armor ability, except as follows. This power grants the shield a +1 enhancement bonus (this bonus does not act as an attack or damage bonus when the shield is used in a shield bash). For every 4 warpriest levels beyond 4th, this bonus increases by 1 (to a maximum of +5 at 20th level). The shieldbearer can enhance a shield with any of the following armor special abilities (instead of those listed for sacred armor): arrow deflection, blinding, fortification (heavy, light, or moderate), reflecting, and spell resistance (13, 15, 17, and 19)."
+        },
+        {
+          "id": "warpriest-shieldbearer-channel-energy-su-1",
+          "name": "Channel Energy (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The shieldbearer can channel energy only when carrying a shield, and the ability manifests as a 30-foot-cone burst, rather than as a radius."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Warpriest%20Shieldbearer"
+  }
+}

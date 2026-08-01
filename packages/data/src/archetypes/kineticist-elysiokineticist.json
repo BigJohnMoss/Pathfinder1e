@@ -1,0 +1,63 @@
+{
+  "id": "kineticist-elysiokineticist",
+  "name": "Elysiokineticist",
+  "classId": "kineticist",
+  "summary": "Similar to how phytokineticists draw their power from the First World, elysiokineticists trace their abilities to the riotous wilderness of the plane known as Elysium",
+  "replacesText": "Elemental Focus; Class Skills; Expanded Element; Basic Phytokinesis, 1st-level Infusion; Flesh of Wood",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "kineticist-elemental-focus-1",
+        "kineticist-expanded-element-7",
+        "kineticist-expanded-element-15",
+        "kineticist-infusion-1"
+      ],
+      "features": [
+        {
+          "id": "kineticist-elysiokineticist-elysium-s-soul-7",
+          "name": "Elysium’s Soul",
+          "level": 7,
+          "type": "archetype",
+          "summary": "An elysiokineticist must be chaotic good, and she has alignment auras of chaotic and good as if she were a chaotic good outsider with a number of Hit Dice equal to her kineticist level. She must choose wood as her primary element and positive blast as her first simple blast. At 7th level, she gains verdant blast and wood blast, as well as a 3rd-level or lower wild talent of her choice. At 15th level, she gains a 7th-level wild talent of her choice. She gains Heal and Knowledge (religion) as class skills but does not gain Handle Animal and Knowledge (nature) as class skills. This alters elemental focus and the class skills granted by the wood element, and it replaces expanded element."
+        },
+        {
+          "id": "kineticist-elysiokineticist-basic-elysiokinesis-sp-1",
+          "name": "Basic Elysiokinesis (Sp)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An elysiokineticist can use the power of Elysium to assist others and bolster their vigor, allowing her to cast resistance , stabilize , or virtue as a spell-like ability at will as a standard action. This replaces the basic phytokinesis utility wild talent granted by the wood element."
+        },
+        {
+          "id": "kineticist-elysiokineticist-elysian-infusion-su-1",
+          "name": "Elysian Infusion (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An elysiokineticist can infuse her positive blast with the power of Elysium to battle evil. The infused blast damages evil outsiders as if they were undead and counts as both chaotic and good. This is a 1st-level substance infusion that costs 1 point of burn and can be used with positive blast. This replaces the infusion gained at 1st level."
+        },
+        {
+          "id": "kineticist-elysiokineticist-elysian-aura-su-2",
+          "name": "Elysian Aura (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, an elysiokineticist infuses herself with a holy aura, granting her protection against evil attacks. She gains a +1 deflection bonus to AC and a +1 resistance bonus on saving throws; both apply only against attacks from evil creatures. By accepting 1 point of burn, she can increase both bonuses by 1. At 5th level and every 3 levels thereafter, she can accept 1 additional point of burn to further increase both bonuses by 1 (to a maximum of +7 at 17th level). Whenever she accepts burn while using a wood wild talent, the energy causes her elysian aura bonuses to apply against all attacks for 1 round, and during that time she is protected from evil mental and possession effects, as per protection from evil. She can dismiss or restore this effect as an immediate action. This replaces the flesh of wood defense wild talent granted by the wood element."
+        },
+        {
+          "id": "kineticist-elysiokineticist-ghaelelight-blast-su-15",
+          "name": "Ghaelelight Blast (Su)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "At 15th level, an elysiokineticist gains the ghaelelight composite blast, which costs 2 points of burn. A ghaelelight blast is an energy blast that deals damage as a simple energy blast instead of a composite energy blast and deals chaotic and good damage. It is associated with the same infusions as positive blast."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Kineticist%20Elysiokineticist"
+  }
+}

@@ -7,7 +7,7 @@ This report is generated from the application's source data by `npm run coverage
 | Area | Records |
 |---|---:|
 | Classes | 46 |
-| Archetypes | 886 |
+| Archetypes | 1195 |
 | Ancestries | 7 |
 | Option groups | 89 |
 | Feats | 3447 |
@@ -44,8 +44,8 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Assassin | 20 | 10 | 0 |
 | Barbarian | 24 | 20 | 41 |
 | Bard | 39 | 20 | 73 |
-| Bloodrager | 18 | 20 | 0 |
-| Brawler | 17 | 20 | 0 |
+| Bloodrager | 18 | 20 | 18 |
+| Brawler | 17 | 20 | 19 |
 | Cavalier | 18 | 20 | 37 |
 | Cleric | 19 | 17 | 35 |
 | Dragon Disciple | 25 | 10 | 0 |
@@ -54,32 +54,32 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Eldritch Knight | 14 | 10 | 0 |
 | Fighter | 26 | 20 | 67 |
 | Gunslinger | 18 | 20 | 23 |
-| Hunter | 22 | 20 | 0 |
+| Hunter | 22 | 20 | 21 |
 | Inquisitor | 25 | 20 | 38 |
-| Investigator | 22 | 20 | 0 |
-| Kineticist | 30 | 20 | 0 |
+| Investigator | 22 | 20 | 37 |
+| Kineticist | 30 | 20 | 19 |
 | Loremaster | 20 | 10 | 0 |
 | Magus | 23 | 20 | 31 |
-| Medium | 14 | 20 | 0 |
-| Mesmerist | 9 | 20 | 0 |
+| Medium | 14 | 20 | 15 |
+| Mesmerist | 9 | 20 | 21 |
 | Monk | 31 | 20 | 56 |
 | Mystic Theurge | 16 | 10 | 0 |
-| Occultist | 11 | 20 | 0 |
+| Occultist | 11 | 20 | 20 |
 | Oracle | 14 | 20 | 26 |
 | Paladin | 21 | 20 | 47 |
 | Pathfinder Chronicler | 14 | 10 | 0 |
-| Psychic | 8 | 20 | 0 |
+| Psychic | 8 | 20 | 8 |
 | Ranger | 30 | 20 | 62 |
 | Rogue | 31 | 20 | 78 |
 | Samurai | 16 | 20 | 7 |
 | Shadowdancer | 20 | 10 | 0 |
-| Shaman | 17 | 20 | 0 |
-| Skald | 21 | 20 | 0 |
-| Slayer | 18 | 20 | 0 |
+| Shaman | 17 | 20 | 17 |
+| Skald | 21 | 20 | 26 |
+| Slayer | 18 | 20 | 26 |
 | Sorcerer | 22 | 20 | 13 |
-| Spiritualist | 11 | 20 | 0 |
+| Spiritualist | 11 | 20 | 24 |
 | Summoner | 14 | 20 | 22 |
-| Swashbuckler | 15 | 20 | 0 |
-| Warpriest | 18 | 20 | 0 |
+| Swashbuckler | 15 | 20 | 20 |
+| Warpriest | 18 | 20 | 18 |
 | Witch | 14 | 20 | 42 |
 | Wizard | 23 | 20 | 35 |

@@ -1,0 +1,59 @@
+{
+  "id": "brawler-snakebite-striker",
+  "name": "Snakebite Striker",
+  "classId": "brawler",
+  "summary": "With her lightning quickness and guile, a snakebite striker keeps her foes’ attention focused on her, because any one of her feints might be an actual attack.",
+  "replacesText": "Class Skills; Martial Flexibility; 3rd, 7th, 11th, and 19th-level Maneuver Training",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "brawler-flexibility-1",
+        "brawler-improved-flexibility-9",
+        "brawler-greater-flexibility-15",
+        "brawler-maneuver-training-3",
+        "brawler-maneuver-training-7",
+        "brawler-maneuver-training-11",
+        "brawler-maneuver-training-19"
+      ],
+      "features": [
+        {
+          "id": "brawler-snakebite-striker-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The snakebite striker gains Bluff and Stealth as class skills, but does not gain Intimidate as a class skill."
+        },
+        {
+          "id": "brawler-snakebite-striker-sneak-attack-ex-1",
+          "name": "Sneak Attack (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, the snakebite striker can make a sneak attack. This is as the rogue ability of the same name . At 1st level, her sneak attack damage is +1d6. This increases by 1d6 at 6th, 10th, 12th, and 20th levels. If she gets a sneak attack bonus from another source, the bonuses on damage stack. This ability replaces martial flexibility."
+        },
+        {
+          "id": "brawler-snakebite-striker-snake-feint-ex-3",
+          "name": "Snake Feint (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, a snakebite striker who uses a standard action to move can combine that move with a feint. If she is able to feint as a move action (such as from having the Improved Feint feat), she can combine a move action to move with her feint. At 11th level, once per round she can declare her square and one adjacent square as the origin of her attacks until her next turn (allowing her to use one or both squares to determine whether she or allies are flanking an opponent). At 15th level, she counts an additional adjacent square for this purpose. This ability replaces maneuver training gained at 3rd and 7th levels."
+        },
+        {
+          "id": "brawler-snakebite-striker-opportunist-ex-11",
+          "name": "Opportunist (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, once per round the snakebite striker can make an attack of opportunity against an opponent who has just been struck for damage in melee by another character. This attack counts as an attack of opportunity for that round. She cannot use this ability more than once per round, even if she has the Combat Reflexes feat or a similar ability. At 19th level, she can use this ability twice per round. This ability replaces the maneuver training gained at 11th and 19th levels."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Brawler%20Snakebite%20Striker"
+  }
+}

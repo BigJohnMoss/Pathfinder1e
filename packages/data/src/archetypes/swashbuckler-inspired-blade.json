@@ -1,0 +1,63 @@
+{
+  "id": "swashbuckler-inspired-blade",
+  "name": "Inspired Blade",
+  "classId": "swashbuckler",
+  "summary": "An inspired blade is both a force of personality and a sage of swordplay dedicated to the perfection of combat with the rapier.",
+  "replacesText": "Panache; Swashbuckler Finesse; Bleeding Wound; Swashbuckler Weapon Training; Swashbuckler Weapon Mastery",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "swashbuckler-panache-1",
+        "swashbuckler-finesse-1",
+        "swashbuckler-weapon-training-5",
+        "swashbuckler-weapon-mastery-20"
+      ],
+      "features": [
+        {
+          "id": "swashbuckler-inspired-blade-inspired-panache-ex-1",
+          "name": "Inspired Panache (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Each day, an inspired blade gains a number of panache points equal to her Charisma modifier (minimum 1) and Intelligence modifier (minimum 1), instead of just her Charisma modifier. Unlike other swashbucklers, an inspired blade gains no panache from a killing blow. She gains panache only from scoring a critical hit with a rapier. This ability alters the panache class feature."
+        },
+        {
+          "id": "swashbuckler-inspired-blade-inspired-finesse-ex-1",
+          "name": "Inspired Finesse (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, an inspired blade gains the benefits of Weapon Finesse with the rapier (this ability counts as having the Weapon Finesse feat for the purpose of meeting feat prerequisites) and gains Weapon Focus (rapier) as a bonus feat. This ability replaces swashbuckler finesse."
+        },
+        {
+          "id": "swashbuckler-inspired-blade-deeds-11",
+          "name": "Deeds",
+          "level": 11,
+          "type": "archetype",
+          "summary": "The inspired blade gains the following deeds, each of which replaces an existing deed. Inspired Strike (Ex) : At 11th level, an inspired blade can spend 1 panache point when making an attack with a rapier to gain an insight bonus on that attack roll equal to her Intelligence modifier (minimum +1). When an inspired blade hits with an attack augmented by inspired strike, she can spend 1 additional panache point to make the hit a critical threat, though if she does so, she does not regain panache if she confirms that critical threat. The cost of this deed cannot be reduced by abilities such as Signature Deed UC . This ability replaces bleeding wound."
+        },
+        {
+          "id": "swashbuckler-inspired-blade-rapier-training-ex-5",
+          "name": "Rapier Training (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, an inspired blade gains a +1 bonus on attack rolls and a +2 bonus on damage rolls with rapiers. While wielding a rapier, she gains the benefit of the Improved Critical feat. These attack and damage bonuses increase by 1 for every 4 levels beyond 5th (to a maximum of +4 on attack rolls and +5 on damage rolls at 17th level). This ability replaces swashbuckler weapon training."
+        },
+        {
+          "id": "swashbuckler-inspired-blade-rapier-weapon-mastery-ex-20",
+          "name": "Rapier Weapon Mastery (Ex)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, when an inspired blade threatens a critical hit with a rapier, that critical hit is automatically confirmed. Furthermore, the critical threat range increases by 1 (this increase to the critical threat range stacks with the increase from rapier training, to a total threat range of 14-20), and the critical modifier of the weapon increases by 1 (×2 becomes ×3, for example). This ability replaces swashbuckler weapon mastery."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Swashbuckler%20Inspired%20Blade"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "kineticist-elemental-purist",
+  "name": "Elemental Purist",
+  "classId": "kineticist",
+  "summary": "An elemental purist spurns all elements that are not her own, for utter devotion can allow one to accomplish even seemingly impossible heroics.",
+  "replacesText": "Internal Buffer; Expanded Elements; 11th, 19th-level Infusion; Omnikinesis",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "kineticist-elemental-focus-1",
+        "kineticist-expanded-element-7",
+        "kineticist-expanded-element-15",
+        "kineticist-infusion-11",
+        "kineticist-infusion-19",
+        "kineticist-omnikinesis-20"
+      ],
+      "features": [
+        {
+          "id": "kineticist-elemental-purist-limited-buffer-su-6",
+          "name": "Limited Buffer (Su)",
+          "level": 6,
+          "type": "archetype",
+          "summary": "An elemental purist does not gain internal buffer at 6th level. She instead gains internal buffer at 11th level and treats her kineticist level as 5 lower for the purpose of the ability."
+        },
+        {
+          "id": "kineticist-elemental-purist-elemental-impossibility-su-7",
+          "name": "Elemental Impossibility (Su)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, an elemental purist learns one composite blast as if she had an expanded element that matched her primary element. In addition, she learns one impossible infusion—a form infusion or substance infusion that does not need to be associated with her primary element’s type. If the infusion can be applied to her kinetic blasts normally, she can use it as normal. If the infusion is not an associated infusion, she can accept 1 point of burn as a free action to enter a state of elemental impossibility for one minute. This burn cannot be reduced in any way. While in this state, she can apply her impossible infusions to her kinetic blast, even if it is not an associated infusion for the blast type; however, if an infusion can be applied only to energy blasts or only to physical blasts, she can apply it only to a kinetic blast of that type. The elemental purist learns one additional impossible infusion at 11th, 15th, and 19th levels. This ability replaces expanded element, as well as the 11th- and 19th-level infusions."
+        },
+        {
+          "id": "kineticist-elemental-purist-elemental-apocalypse-su-20",
+          "name": "Elemental Apocalypse (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, an elemental purist learns the apocalypse universal form infusion ("
+        },
+        {
+          "id": "kineticist-elemental-purist-level-1",
+          "name": "Level",
+          "level": 1,
+          "type": "archetype",
+          "summary": "9;"
+        },
+        {
+          "id": "kineticist-elemental-purist-burn-1",
+          "name": "Burn",
+          "level": 1,
+          "type": "archetype",
+          "summary": "5;"
+        },
+        {
+          "id": "kineticist-elemental-purist-associated-blasts-1",
+          "name": "Associated Blasts",
+          "level": 1,
+          "type": "archetype",
+          "summary": "any;"
+        },
+        {
+          "id": "kineticist-elemental-purist-saving-throw-1",
+          "name": "Saving Throw",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Reflex half ) that she can use once per day. The apocalypse form infusion functions as the explosion form infusion, except the elemental purist can center the spread anywhere she can see within 1 mile, and she can choose to set the radius anywhere between 5 feet and 360 feet. This ability replaces omnikinesis."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Kineticist%20Elemental%20Purist"
+  }
+}

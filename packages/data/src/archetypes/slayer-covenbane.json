@@ -1,0 +1,56 @@
+{
+  "id": "slayer-covenbane",
+  "name": "Covenbane",
+  "classId": "slayer",
+  "summary": "Covenbane slayers are scarred by arcane magic at a young age, and that resonance gives them supernatural insight into the psychic bonds between others.",
+  "replacesText": "Track; 2nd-level Slayer Talent; Stalker; Swift Tracker",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-track-1",
+        "slayer-swift-tracker-11",
+        "slayer-talent-2",
+        "slayer-stalker-7"
+      ],
+      "features": [
+        {
+          "id": "slayer-covenbane-hag-sense-su-1",
+          "name": "Hag Sense (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A covenbane’s magical scars throb in the presence of magic. A covenbane adds half his level (minimum +1) on Perception, Sense Motive, and Survival checks to identify, recognize, or track a hag, arcane spellcaster, or creature with spell-like abilities. He can also use his hag sense to recognize whether someone within 30 feet of him is using magic to hide her true form. To do this, he must succeed at a Perception check against a DC equal to 15 + the target’s CR; success indicates the presence of a magical disguise, but it does not reveal the creature’s true form. This replaces track."
+        },
+        {
+          "id": "slayer-covenbane-studied-coven-su-2",
+          "name": "Studied Coven (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a covenbane can designate an entire coven as his studied target by studying any single member. He applies his studied target bonus against all members of the studied creature’s coven, and all members of the coven count as one target for the purposes of determining the maximum number of studied targets a slayer can maintain. This bonus remains even if one or more members of the coven die after the covenbane studies them. Beginning at 7th level, the covenbane can designate other magically linked creatures, such as those bound by a hivemind or a telepathic bond spell, as a coven, but he can target only three members of such a link. Studying a coven always requires a move action, even if the slayer could normally study a target with a swift or immediate action. This replaces the slayer talent gained at 2nd level."
+        },
+        {
+          "id": "slayer-covenbane-disrupt-coven-su-1",
+          "name": "Disrupt Coven (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "Anyone the slayer threatens no longer counts as an ally for the purposes of friendly spellcasting or employing teamwork feats and cannot access any special abilities gained from being part of a coven (including coven spellcasting). This replaces stalker."
+        },
+        {
+          "id": "slayer-covenbane-unseen-sense-su-11",
+          "name": "Unseen Sense (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, the covenbane learns to use his hag sense to help target concealed or invisible opponents in combat. He can use his hag sense to detect invisible opponents as well as magically disguised creatures. He also gains Blind-Fight as a bonus feat but gains its benefits only against spellcasters and creatures with spell-like abilities. This replaces swift tracker."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Covenbane"
+  }
+}

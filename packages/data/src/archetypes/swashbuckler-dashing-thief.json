@@ -1,0 +1,65 @@
+{
+  "id": "swashbuckler-dashing-thief",
+  "name": "Dashing Thief",
+  "classId": "swashbuckler",
+  "summary": "The dashing thief relies on swift swordplay, dazzling charm, and spirited courage to commit audacious acts of thievery.",
+  "replacesText": "Class Skills; Derring-Do; Swashbuckler's Edge; Panache; Bonus Feats; Menacing Swordplay; Dizzying Defense",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "swashbuckler-panache-1",
+        "swashbuckler-bonus-feat-4",
+        "swashbuckler-bonus-feat-8",
+        "swashbuckler-bonus-feat-12",
+        "swashbuckler-bonus-feat-16",
+        "swashbuckler-bonus-feat-20"
+      ],
+      "features": [
+        {
+          "id": "swashbuckler-dashing-thief-bold-thief-ex-1",
+          "name": "Bold Thief (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dashing thief fulfills the Council’s larcenous goals with style. Her derring-do and swashbuckler’s edge deeds apply to Disable Device and Sleight of Hand, but not to Fly and Ride. She adds Disable Device to her list of class skills, but does not have Fly or Ride as class skills. This ability alters the swashbuckler’s class skills and the derring-do and swashbuckler’s edge deeds."
+        },
+        {
+          "id": "swashbuckler-dashing-thief-thief-s-confidence-ex-1",
+          "name": "Thief ’s Confidence (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A dashing thief ’s panache is fueled by bold acts of thievery. Whenever a dashing thief uses the steal APG combat maneuver to steal an object worth at least 100 gp × her class level from an opponent, she regains 1 panache point. She cannot regain panache in this way from a given opponent more than once per day. This ability alters panache and replaces the swashbuckler’s ability to regain panache from a killing blow."
+        },
+        {
+          "id": "swashbuckler-dashing-thief-rogue-talents-4",
+          "name": "Rogue Talents",
+          "level": 4,
+          "type": "archetype",
+          "summary": "Council training grants a dashing thief numerous opportunities to learn trade secrets from fellow scoundrels. At 4th level and every 4 levels thereafter, a dashing thief gains a rogue talent, treating her class level as her rogue level when determining the talents’ benefits. Starting at 12th level, the dashing thief can choose advanced rogue talents. This ability replaces the swashbuckler’s bonus feats."
+        },
+        {
+          "id": "swashbuckler-dashing-thief-dazing-charm-deed-ex-3",
+          "name": "Dazing Charm Deed (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A dashing thief takes foes aback with her forwardness, shocking them into submission long enough to rush past or stage a getaway. At 3rd level, as a free action when she successfully feints against a foe, she can spend 1 panache point to pull the enemy into a quick kiss (or similar gesture). The target is dazed for 1 round unless it succeeds at a Will save (DC = 10 + half the dashing thief ’s class level + her Charisma modifier). A creature dazed this way is immune to that dashing thief ’s dazing charm deed for 24 hours. Whether or not a creature could potentially be affected by a dazing charm deed is ultimately subject to GM adjudication. As a general rule, however, it works on creatures of the dashing thief ’s creature type, or on those of a different type but who share significant thematic similarities (for example, a human dashing thief could use her dazing charm deed on any humanoid, but also potentially on creatures as diverse as dryads, tieflings, or even centaurs or sphinxes). This ability replaces the menacing swordplay deed."
+        },
+        {
+          "id": "swashbuckler-dashing-thief-swaying-charm-deed-su-15",
+          "name": "Swaying Charm Deed (Su)",
+          "level": 15,
+          "type": "archetype",
+          "summary": "A dashing thief eventually becomes truly irresistible. At 15th level, when a dashing thief successfully dazes a creature using her dazing charm deed, she can instead charm the target for 1 day (as per charm monster ). Only one creature can be charmed this way at a time; if the dashing thief charms another creature this way, the first charm effect immediately ends. This ability replaces the dizzying defense deed."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Swashbuckler%20Dashing%20Thief"
+  }
+}

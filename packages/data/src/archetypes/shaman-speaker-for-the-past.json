@@ -1,0 +1,50 @@
+{
+  "id": "shaman-speaker-for-the-past",
+  "name": "Speaker for the Past",
+  "classId": "shaman",
+  "summary": "A speaker for the past is a shaman who specifically serves as the voice for spirits from her people’s history.",
+  "replacesText": "Spirit Familiar; Wandering Spirit; Wandering Hex",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "shaman-spirit-1",
+        "shaman-wandering-spirit-4",
+        "shaman-hex-2",
+        "shaman-hex-4",
+        "shaman-wandering-hex-6",
+        "shaman-hex-8",
+        "shaman-hex-10",
+        "shaman-hex-12",
+        "shaman-wandering-hex-14",
+        "shaman-hex-16",
+        "shaman-hex-18",
+        "shaman-hex-20"
+      ],
+      "features": [
+        {
+          "id": "shaman-speaker-for-the-past-mysteries-of-the-past-1",
+          "name": "Mysteries of the Past",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A speaker for the past gains Linguistics, Knowledge (history), Knowledge (local), Perception, and Use Magic Device as class skills. She also adds the spells from the ancestor UM and time UM oracle mysteries to her class spell list (as the cleric level for those spells). This ability replaces the shaman’s familiar. The speaker for the past must choose a time when she must spend 1 hour each day in quiet contemplation to regain her daily allotment of spells, but does not need to commune with a familiar during this time. Because she has no familiar, she does not gain a spirit familiar feature from any spirit she bonds with."
+        },
+        {
+          "id": "shaman-speaker-for-the-past-revelations-of-the-past-1",
+          "name": "Revelations of the Past",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 4th, 6th, 12th, 14th, and 20th levels, the speaker for the past can select a revelation from the ancestor or time mysteries. She uses her shaman level as her oracle level for these revelations, and uses her Wisdom modifier in place of her Charisma modifier for the purposes of the revelation. This ability replaces wandering spirit and wandering hex."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Shaman%20Speaker%20for%20the%20Past"
+  }
+}

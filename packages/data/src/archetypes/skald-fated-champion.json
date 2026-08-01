@@ -1,0 +1,63 @@
+{
+  "id": "skald-fated-champion",
+  "name": "Fated Champion",
+  "classId": "skald",
+  "summary": "Among cultures where skalds are the keepers of lore and wisdom, there are those who learn to read the winds of fate and take up the mantle of the fated champion, knowing and embracing their destined paths with strength borne of conviction.",
+  "replacesText": "Well-Versed; Spell Kenning; Dirge of Doom; Master Skald",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-well-versed-2",
+        "skald-spell-kenning-5",
+        "skald-dirge-doom-10",
+        "skald-master-skald-20"
+      ],
+      "features": [
+        {
+          "id": "skald-fated-champion-watcher-of-the-weave-ex-2",
+          "name": "Watcher of the Weave (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a fated champion learns to see the tapestry of events moments before it is woven. He gains an insight bonus on initiative checks equal to 1/2 his skald level. This ability replaces well-versed."
+        },
+        {
+          "id": "skald-fated-champion-far-seer-su-5",
+          "name": "Far Seer (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a fated champion learns a method of spell kenning that is especially suited for divining and understanding the future, but not for directly harming opponents. For the purpose of determining what level spell slot he expends when using spell kenning, the skald treats the spell level of spells that predict the future (such as augury and divination ) as one spell level lower (minimum spell level 1st), and treats the spell level of spells that deal damage as one spell level higher. This alters the spell kenning class feature."
+        },
+        {
+          "id": "skald-fated-champion-shield-of-foresight-su-10",
+          "name": "Shield of Foresight (Su)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a fated champion’s certainty of his own fate grants him the ability to stare down fear and remain unbowed. When using raging song, he is immune to fear effects, and allies affected by his raging song gain a +5 bonus on saves attempted against fear effects. This ability replaces the dirge of doom raging song."
+        },
+        {
+          "id": "skald-fated-champion-not-this-day-su-20",
+          "name": "Not This Day (Su)",
+          "level": 20,
+          "type": "archetype",
+          "summary": "At 20th level, the fated champion gains the ability to reweave the strands of fate. As an immediate action, he can expend 10 rounds of raging song to either reroll a saving throw or force an opponent to reroll an attack roll. The decision to use this ability must be made before the results of the initial roll are revealed, and the champion or his opponent must take the result of the reroll. This ability replaces master skald."
+        },
+        {
+          "id": "skald-fated-champion-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the fated champion archetype: boasting taunt APG , clear mind, eater of magic UC , fierce fortitude*, flesh wound APG , guarded life APG , intimidating glare, linnorm death curse* (cairn, tarn), and renewed vitality UC . (Those with asterisks [*] are listed in the rage powers section on the previous page.)"
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Fated%20Champion"
+  }
+}

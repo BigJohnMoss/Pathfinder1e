@@ -1,0 +1,54 @@
+{
+  "id": "mesmerist-mindwyrm-mesmer",
+  "name": "Mindwyrm Mesmer",
+  "classId": "mesmerist",
+  "summary": "Mindwyrm mesmers emulate the confidence, swagger, and fear inspired by dragons to bully and browbeat others into obedience.",
+  "replacesText": "Consummate Liar; Painful Stare",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "mesmerist-consummate-liar-1",
+        "mesmerist-painful-stare-1"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-mindwyrm-mesmer-innate-coercion-1",
+          "name": "Innate Coercion",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a mindwyrm mesmer gains a bonus equal to 1/2 his mesmerist level (minimum 1) on Intimidate checks. In addition, a mindwyrm mesmer never takes penalties on Intimidate checks for being smaller than his target. This ability replaces consummate liar."
+        },
+        {
+          "id": "mesmerist-mindwyrm-mesmer-phantasmagorical-breath-su-1",
+          "name": "Phantasmagorical Breath (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "At 1st level, a mindwyrm mesmer has learned to mimic a true dragon’s destructive breath using his psychic ability. A number of times per day equal to his Charisma bonus (minimum 1 per day), a mindwyrm mesmer can unleash his phantasmagoric breath in either a 30-foot cone or a 60-foot line as a standard action. The breath induces a psychosomatic response in creatures caught in the area, dealing 1d6 points of energy damage at 1st level, plus an additional 1d6 points of energy damage at 3rd level and for every 2 mesmerist levels thereafter. The mindwyrm mesmer selects the type of energy damage this deals (acid, cold, electricity, or fire) when this ability is first gained; once made, this choice can’t be changed. Creatures affected can attempt a Will save (DC = 10 + 1/2 the mindwyrm mesmer’s mesmerist level + his Charisma modifier) to realize the true nature of the attack, which negates all damage. This is a mind-affecting effect. This ability replaces painful stare."
+        },
+        {
+          "id": "mesmerist-mindwyrm-mesmer-draconic-trick-su-1",
+          "name": "Draconic Trick (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following new trick can be selected by a mindwyrm mesmer. Threatening Mien : The subject’s actions appear to be lethal in the extreme. A mindwyrm mesmer can trigger this trick when the subject moves adjacent to an enemy. Enemies adjacent to the subject take a -4 penalty on attacks against targets other than the subject. This trick lasts for 1 round per mindwyrm mesmer’s mesmerist level."
+        },
+        {
+          "id": "mesmerist-mindwyrm-mesmer-masterful-draconic-trick-su-1",
+          "name": "Masterful Draconic Trick (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following new masterful trick can be selected by a mindwyrm mesmer of 12th level or higher. Frightful Countenance : The subject’s appearance changes into that which frightens an attacker to the core. The mindwyrm mesmer can trigger this trick when the subject is targeted by an attack or by a spell that requires an attack roll. The attacker must succeed at a Will save or the attack misses and the attacker immediately becomes shaken for 1d4 rounds. This is a mind-affecting fear effect."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Mindwyrm%20Mesmer"
+  }
+}

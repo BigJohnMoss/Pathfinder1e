@@ -1,0 +1,41 @@
+{
+  "id": "investigator-engineer",
+  "name": "Engineer",
+  "classId": "investigator",
+  "summary": "A number of investigators use their vast knowledge to build machines that replicate the intricacies of the world",
+  "replacesText": "Trapfinding; Poison Lore; Poison Resistance; Trap Sense",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "investigator-trapfinding-1",
+        "investigator-poison-lore-2",
+        "investigator-poison-resistance-2"
+      ],
+      "features": [
+        {
+          "id": "investigator-engineer-custom-mechanism-ex-5",
+          "name": "Custom Mechanism (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "An engineer can create a mechanism, a small device that assists with the execution of an activity. Creating a mechanism requires 1 minute of time and expends 1 use from the engineer’s inspiration pool. An engineer chooses a skill to associate with the mechanism when he creates it. As an immediate action, a mechanism can be activated to grant the engineer’s inspiration die on a check of the associated skill. An engineer can create a mechanism that affects attack rolls or saving throws, but she expends 2 uses from her inspiration pool to do so. Any creature can use a mechanism, but a creature can have only 1 mechanism at a time, as multiple mechanisms interfere with each other while in close proximity. A mechanism remains active for a number of minutes equal to the engineer’s Intelligence modifier (minimum 1). At 5th level, an engineer’s mechanisms remain active for a number of minutes equal to the engineer’s level. At 11th level, an engineer’s mechanisms remain active for a number of hours equal to the engineer’s level. This replaces the trapfinding, poison lore, and poison resistance class features."
+        },
+        {
+          "id": "investigator-engineer-mechanical-understanding-ex-3",
+          "name": "Mechanical Understanding (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, an engineer gains a deeper understanding of constructs and machines. He gains a +1 bonus on Knowledge (arcana) checks to identify constructs and a +1 bonus on Knowledge (engineering) checks. This bonus increases by 1 at 6th level and every 3 levels thereafter. This replaces trap sense."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Investigator%20Engineer"
+  }
+}

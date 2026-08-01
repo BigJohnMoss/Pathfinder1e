@@ -1,0 +1,70 @@
+{
+  "id": "skald-boaster",
+  "name": "Boaster",
+  "classId": "skald",
+  "summary": "Boasters use incredible tales and claims to challenge themselves and their allies to accomplish remarkable feats.",
+  "replacesText": "Scribe Scroll; Uncanny Dodge; Song of Marching; Lore Master; Song of the Fallen; Rage Powers; 6th-level Rage Power",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "skald-scribe-scroll-1",
+        "skald-uncanny-dodge-2",
+        "skald-improved-uncanny-dodge-5",
+        "skald-song-marching-3",
+        "skald-master-skald-20",
+        "skald-rage-power-3",
+        "skald-rage-power-6",
+        "skald-rage-power-9",
+        "skald-rage-power-12",
+        "skald-rage-power-15",
+        "skald-rage-power-18"
+      ],
+      "features": [
+        {
+          "id": "skald-boaster-endurance-1",
+          "name": "Endurance",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The boaster gains Endurance as a bonus feat. This replaces Scribe Scroll."
+        },
+        {
+          "id": "skald-boaster-raging-song-su-3",
+          "name": "Raging Song (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "A boaster gains access to the following raging songs. Song of Endurance (Su) : At 3rd level, the boaster’s raging song can inspire his allies to great feats of endurance. This raging song functions as song of marching except affected allies also gain the benefits of the Endurance feat in addition to the benefits of any of the following feats the boaster has (even if they don’t meet the prerequisites): Deathless Initiate, Deathless Master, Deathless Zealot, Diehard, Fast Healer, Heroic Defiance, and Heroic Recovery. This raging song replaces uncanny dodge and alters song of marching. Song of Surmounting (Su) : At 7th level, the boaster’s raging song can inspire allies to move quickly and easily. By spending 1 round of raging song, the boaster can affect all allies within 90 feet for 1 hour. Affected allies gain a benefit according to the surrounding terrain (the benefits don’t stack): a climb speed equal to half their base speed (forest, jungle, mountain, underground), a swim speed equal to their base speed (swamp, water), or a +10 foot enhancement bonus to their base speed (cold, desert, hill, plains, or urban). The skald must continue to perform the song for the remainder of the hour; otherwise, its effects end, but only 1 round of raging song is expended for that hour. At 13th level, the speed or bonus granted by this ability doubles. At 19th level, this ability grants triple the listed speed or bonus. This raging song replaces lore master. Frightful Boast (Su) : At 14th level, the boaster’s raging song can frighten foes, as per the frightening tune bardic performance. This replaces song of the fallen."
+        },
+        {
+          "id": "skald-boaster-rage-power-ex-1",
+          "name": "Rage Power (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The boaster does not gain this ability until 4th level. This alters the skald’s rage powers."
+        },
+        {
+          "id": "skald-boaster-greater-endurance-6",
+          "name": "Greater Endurance",
+          "level": 6,
+          "type": "archetype",
+          "summary": "At 6th level, the boaster gains a bonus feat that he qualifies for. The feat must have Endurance as a prerequisite (such as Diehard or Fast Healer). This replaces the rage power gained at 6th level."
+        },
+        {
+          "id": "skald-boaster-rage-powers-1",
+          "name": "Rage Powers",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The following rage powers complement the boaster archetype: boasting taunt, come and get me, fearless rage, fierce fortitude, intimidating glare, raging climber, raging flier, raging leaper, raging swimmer, sprint, strength surge, and swift foot."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Boaster"
+  }
+}

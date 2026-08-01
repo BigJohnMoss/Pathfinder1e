@@ -1,0 +1,51 @@
+{
+  "id": "brawler-verdant-grappler",
+  "name": "Verdant Grappler",
+  "classId": "brawler",
+  "summary": "By accepting spirits of nature into her soul, a verdant grappler can entangle her foes with tangled undergrowth.",
+  "replacesText": "2nd and 11th-level Bonus Feats; Maneuver Training; Close Weapon Mastery",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "brawler-maneuver-training-3",
+        "brawler-maneuver-training-7",
+        "brawler-maneuver-training-11",
+        "brawler-maneuver-training-15",
+        "brawler-maneuver-training-19",
+        "brawler-close-mastery-5"
+      ],
+      "features": [
+        {
+          "id": "brawler-verdant-grappler-green-grasp-su-2",
+          "name": "Green Grasp (Su)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a verdant grappler gains Improved Grapple as a bonus feat. At 3rd level, she must choose grapple as her first combat maneuver for maneuver training. When she pins a creature, she can cause roots and vines to burst from the ground (no matter the surrounding terrain), allowing the verdant grappler to attempt to tie up the creature without needing to retrieve rope or use a hand to hold the rope; as usual, a tied-up creature is pinned and not helpless. The verdant grappler must remain within 30 feet of the tied-up creature, or the vines automatically release it. She can tie up only one creature at a time with green grasp. This replaces the bonus feat gained at 2nd level and alters maneuver training."
+        },
+        {
+          "id": "brawler-verdant-grappler-thorny-embrace-su-5",
+          "name": "Thorny Embrace (Su)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, when a verdant grappler uses green grasp to tie up a creature, she can have the roots and vines grow vicious thorns that automatically damage the tiedup creature each round at the start of the verdant grappler’s turn. The thorns deal damage equal to the base unarmed strike damage of a brawler 4 levels lower than the verdant grappler. This replaces close weapon mastery."
+        },
+        {
+          "id": "brawler-verdant-grappler-phytological-anatomy-su-11",
+          "name": "Phytological Anatomy (Su)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, the verdant grappler transforms partially into a plant. She gains a +2 bonus on saving throws against mind-affecting, paralysis, poison, polymorph, sleep, and stunning effects. This replaces the combat feat gained at 11th level."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Brawler%20Verdant%20Grappler"
+  }
+}

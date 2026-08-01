@@ -1,0 +1,49 @@
+{
+  "id": "mesmerist-projectionist",
+  "name": "Projectionist",
+  "classId": "mesmerist",
+  "summary": "Not content to simply command others from afar, a projectionist is able to use his mesmerizing powers to utterly dominate other creatures and objects by projecting his spirit from his body.",
+  "replacesText": "Spellcasting; 4th-level Mesmerist Trick; Mental Potency",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "nestedReplacements": [
+    "Spellcasting; 4th-level Mesmerist Trick; Mental Potency"
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "nested-spellcasting-4th-level-mesmerist-trick-mental-potency"
+      ],
+      "features": [
+        {
+          "id": "mesmerist-projectionist-spells-1",
+          "name": "Spells",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A projectionist’s psychic powers manifest in an almost predictable manner, making them less versatile than other spellcasters. At each of the indicated levels, a projectionist must choose the indicated spell to learn—he cannot choose other spells. The spells that a projectionist must learn (and the level at which he must choose them) are enter imageAPG (4th), lesser object possessionOA (7th), riding possessionOA (10th), object possessionOA (13th), and greater object possessionOA (16th). The projectionist adds greater object possession to his spell list as a 6th-level spell. This ability alters the mesmerist’s spellcasting."
+        },
+        {
+          "id": "mesmerist-projectionist-implant-consciousness-su-4",
+          "name": "Implant Consciousness (Su)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a projectionist can spend one use of his mesmerist trick ability to create a psychic link between himself and one object that bears his likeness, such as a painting or a statue. This functions in all ways like implanting a mesmerist trick in a creature, except the target is an object. The projectionist can trigger the trick as a standard action at any time—upon doing so, his consciousness leaves his body and fills the target object, functioning as described by the “filling an image with your consciousness” use of the enter image spell ( Pathfinder RPG Advanced Player’s Guide 219 ). Use the projectionist’s mesmerist level as the spell’s caster level. While filling an image with his consciousness, the projectionist can use and maintain his hypnotic stare on opponents, and can also trigger his painful stare. At 8th level, he can also use any purely mental action (including casting psychic spells) while filling an object with his consciousness. Once he implants this trick in an object, the projectionist can fill the target with his consciousness whenever he pleases, regardless of distance or whether he is on the same plane as his target. Once he stops concentrating on maintaining the enter image effect, his consciousness returns to his body and he cannot fill the target with his consciousness again until he implants another mesmerist trick in that object. This ability replaces the mesmerist tricks gained at 4th and 8th levels."
+        },
+        {
+          "id": "mesmerist-projectionist-hidden-presence-5",
+          "name": "Hidden Presence",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, a projectionist gains Hidden Presence OA as a bonus feat. He doesn’t need to meet the feat’s prerequisites. He benefits from Hidden Presence and feats that list Hidden Presence as a prerequisite while possessing objects (as with object possessionOA ) or while filling an object with his consciousness (as described in the enter imageAPG spell), as well as when he possesses creatures, provided the feat is applicable. For instance, Intrusive Presence OA cannot be used to read the mind of an inanimate object possessed via enter image or object possession , as objects possess no minds to be read. This ability replaces the mesmerist’s mental potency."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Mesmerist%20Projectionist"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "spiritualist-involutionist",
+  "name": "Involutionist",
+  "classId": "spiritualist",
+  "summary": "Rather than bond with an existing spirit as most Rivethun eventually do, the involutionist creates a spirit from a piece of her own soul.",
+  "replacesText": "Spellcasting; Phantom; Emotional Focus; Bonded Manifestation; Detect Undead, 11th, 15th, 17th-level uses of Calm Spirit",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "spiritualist-phantom-1",
+        "spiritualist-phantom-recall-6",
+        "spiritualist-bonded-manifestation-3"
+      ],
+      "features": [
+        {
+          "id": "spiritualist-involutionist-divine-spellcasting-1",
+          "name": "Divine Spellcasting",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An involutionist is a divine spellcaster. Her spells use verbal components instead of thought components and somatic components instead of emotional components. An involutionist’s spirit phantom is her conduit to the divine, and it serves as her divine focus; the involutionist must either be within 5 feet on her spirit phantom or absorb her phantom into her consciousness to cast spells that require a divine focus. This ability alters spellcasting."
+        },
+        {
+          "id": "spiritualist-involutionist-spirit-phantom-1",
+          "name": "Spirit Phantom",
+          "level": 1,
+          "type": "archetype",
+          "summary": "An involutionist’s phantom is manifested from her own psyche and invested into the spirit-stuff of the world around her. Rather than an emotional focus, the involutionist selects a spirit from those available to the shaman ( Pathfinder RPG Advanced Class Guide 35). A spirit phantom always has good Fortitude and Reflex saves, and it gains a number of ranks equal to the phantom’s Hit Dice in two skills depending on the spirit it represents, as summarized on the table below. SpiritAssociated Skills BattleIntimidate and Sense Motive BonesHeal and Stealth FlameAcrobatics and Intimidate HeavensAcrobatics and Fly LifeDiplomacy and Heal LoreKnowledge (arcana) and Linguistics NatureKnowledge (nature) and Survival StoneAppraise and Knowledge (engineering) WavesDiplomacy and Swim WindBluff and Sense Motive When fully manifested, the involutionist’s spirit phantom gains the special ability normally applied to a shaman’s spirit animal. The spirit phantom also gains a single hex from the list of those provided by that spirit. At 7th, 12th, and 17th levels, the spirit phantom gains one additional hex from this list. This ability alters phantom and replaces its emotional focus abilities."
+        },
+        {
+          "id": "spiritualist-involutionist-spirit-manifestation-su-3",
+          "name": "Spirit Manifestation (Su)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level, when an involutionist uses her bonded manifestation ability, she can instead manifest her spirit phantom’s spirit animal special ability and use her spirit phantom’s hexes as if they were her own. Hexes used during this manifestation count toward any limited number of uses per day. This ability alters bonded manifestation."
+        },
+        {
+          "id": "spiritualist-involutionist-spirit-awareness-sp-5",
+          "name": "Spirit Awareness (Sp)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "At 5th level, an involutionist gains great insight into the spiritual influence people invest into the world around them. She can cast detect psychic significance OA as a spell-like ability at will and analyze aura OA once per day as a spell-like ability (CL = her character level). This ability replaces detect undead."
+        },
+        {
+          "id": "spiritualist-involutionist-involuate-sp-11",
+          "name": "Involuate (Sp)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, an involutionist gains the ability to awaken the latent spiritual energy in inanimate objects. She gains the ability to cast animate objects as a spell-like ability once per day (CL = her character level). At 15th and 19th levels, she can use this ability one additional time per day. This ability replaces the additional uses of calm spirit available at 11th, 15th, and 17th levels."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Spiritualist%20Involutionist"
+  }
+}

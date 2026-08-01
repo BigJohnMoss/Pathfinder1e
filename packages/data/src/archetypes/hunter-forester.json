@@ -1,0 +1,99 @@
+{
+  "id": "hunter-forester",
+  "name": "Forester",
+  "classId": "hunter",
+  "summary": "While all hunters have a bond with the natural world, a forester has a stronger tie to her environment than to the animals within it.",
+  "replacesText": "Animal Focus; Animal Companion; Precise Companion; Hunter Tactics; Improved Empathic Link; Bonus Tricks; Raise Animal Companion; Speak with Master; Greater Empathic Link",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "hunter-animal-focus-1",
+        "hunter-second-animal-focus-8",
+        "hunter-third-animal-focus-15",
+        "hunter-animal-companion-1",
+        "hunter-raise-companion-10",
+        "hunter-precise-companion-2",
+        "hunter-tactics-3",
+        "hunter-improved-empathic-link-4",
+        "hunter-bonus-tricks-7",
+        "hunter-speak-master-11",
+        "hunter-master-hunter-20",
+        "hunter-greater-empathic-link-14"
+      ],
+      "features": [
+        {
+          "id": "hunter-forester-animal-focus-su-1",
+          "name": "Animal Focus (Su)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "As a forester has no animal companion, the aspects granted by this ability always apply to the forester herself, just as if a normal hunter’s companion were dead. This alters animal focus."
+        },
+        {
+          "id": "hunter-forester-favored-terrain-ex-5",
+          "name": "Favored Terrain (Ex)",
+          "level": 5,
+          "type": "archetype",
+          "summary": "A forester gains the ranger’s favored terrain ability. She gains her first favored terrain at 5th level and a new favored terrain every 4 levels thereafter. In addition, at each such interval, the bonuses on initiative checks and skill checks in one favored terrain (including the one just selected, if so desired) increase by 2. Starting at 5th level, a forester adds half her favored terrain bonus on damage rolls while in her favored terrain and fighting a creature native to that terrain. This replaces animal companion."
+        },
+        {
+          "id": "hunter-forester-bonus-feat-ex-2",
+          "name": "Bonus Feat (Ex)",
+          "level": 2,
+          "type": "archetype",
+          "summary": "At 2nd level, a forester gains one bonus combat feat. She must meet the prerequisites for this feat as normal. She gains an additional bonus combat feat at 7th, 13th, and 19th levels. This replaces precise companion."
+        },
+        {
+          "id": "hunter-forester-tactician-ex-3",
+          "name": "Tactician (Ex)",
+          "level": 3,
+          "type": "archetype",
+          "summary": "At 3rd level as a standard action, a forester can grant the benefits of one teamwork feat to all allies within 30 feet who can see and hear her. Allies retain the use of this bonus feat for 3 rounds plus 1 round for every 2 levels the forester has. Allies do not need to meet the prerequisites of these bonus feats. The forester can use this ability once per day at 3rd level, plus one additional time per day at 7th level and every 5 levels thereafter. This replaces hunter tactics."
+        },
+        {
+          "id": "hunter-forester-evasion-ex-4",
+          "name": "Evasion (Ex)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "At 4th level, a forester can avoid even magical and unusual attacks with great agility. If she makes a successful Reflex saving throw against an attack that normally deals half damage on a successful save, she instead takes no damage. Evasion can be used only if the forester is wearing light armor, medium armor, or no armor. A helpless forester does not gain the benefit of evasion. This replaces improved empathic link."
+        },
+        {
+          "id": "hunter-forester-camouflage-ex-7",
+          "name": "Camouflage (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a forester can use the Stealth skill to hide in any of her favored terrains, even if the terrain doesn’t grant cover or concealment. This replaces bonus tricks."
+        },
+        {
+          "id": "hunter-forester-breath-of-life-sp-10",
+          "name": "Breath of Life (Sp)",
+          "level": 10,
+          "type": "archetype",
+          "summary": "At 10th level, a forester can cast breath of life once per day as a spell-like ability. This replaces raise animal companion."
+        },
+        {
+          "id": "hunter-forester-improved-evasion-ex-11",
+          "name": "Improved Evasion (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a forester’s evasion improves. Improved evasion works like evasion, except while the forester still takes no damage on a successful Reflex saving throw against attacks, she takes only half damage on a failed save. A helpless forester does not gain the benefit of improved evasion. This replaces speak with master."
+        },
+        {
+          "id": "hunter-forester-hide-in-plain-sight-ex-14",
+          "name": "Hide in Plain Sight (Ex)",
+          "level": 14,
+          "type": "archetype",
+          "summary": "At 14th level, while in any of her favored terrains, a forester can use the Stealth skill even while being observed. This replaces greater empathic link."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Hunter%20Forester"
+  }
+}

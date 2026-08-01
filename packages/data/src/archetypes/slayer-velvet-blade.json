@@ -1,0 +1,69 @@
+{
+  "id": "slayer-velvet-blade",
+  "name": "Velvet Blade",
+  "classId": "slayer",
+  "summary": "Velvet blades specialize in infiltrating the upper echelons of society, mingling with nobles and courtiers, and killing them.",
+  "replacesText": "Class Skills; Armor Proficiency; Studied Target; Track; Swift Tracker",
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "replacements": [
+    {
+      "featureIds": [
+        "slayer-studied-target-1",
+        "slayer-track-1",
+        "slayer-swift-tracker-11"
+      ],
+      "features": [
+        {
+          "id": "slayer-velvet-blade-class-skills-1",
+          "name": "Class Skills",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A velvet blade adds Diplomacy and Knowledge (nobility) to her list of class skills, instead of Knowledge (dungeoneering). This alters the slayer’s class skills."
+        },
+        {
+          "id": "slayer-velvet-blade-armor-proficiency-1",
+          "name": "Armor Proficiency",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A velvet blade is not proficient with medium armor or shields. This alters the slayer’s armor proficiency."
+        },
+        {
+          "id": "slayer-velvet-blade-studied-socialite-ex-1",
+          "name": "Studied Socialite (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A velvet blade focuses her studies on social infiltration rather than brute force, believing it is easier to kill an opponent quietly and unprepared than in a loud battle. She adds her studied target bonus on Bluff, Diplomacy, Disguise, Intimidate, Knowledge, Perception, Sense Motive, Stealth, and Survival checks against studied opponents, as well as to the DCs of slayer class abilities she uses against such opponents. She never gains a bonus on weapon attack and damage rolls from her studied target ability. This ability alters studied target."
+        },
+        {
+          "id": "slayer-velvet-blade-courtly-graces-ex-1",
+          "name": "Courtly Graces (Ex)",
+          "level": 1,
+          "type": "archetype",
+          "summary": "A velvet blade spends long hours memorizing etiquette and family lineages of royalty and other prominent families. She gains a bonus on Knowledge (nobility checks) equal to half her slayer level (minimum +1). This ability replaces track."
+        },
+        {
+          "id": "slayer-velvet-blade-treacherous-blade-ex-7",
+          "name": "Treacherous Blade (Ex)",
+          "level": 7,
+          "type": "archetype",
+          "summary": "At 7th level, a velvet blade can capitalize on how others underestimate her and allow her close to them, assuming she is harmless. She gains the Betrayer UC feat as a bonus feat, whether or not she meets the prerequisites. Additionally, when making her first attack against a studied target that believes her to be harmless or to be an ally, the attack counts as a sneak attack, even if the target isn’t flanked or denied its Dexterity bonus to AC, and the velvet blade gains +2d6 sneak attack damage, increasing by 1d6 at 10th level and every 5 levels thereafter. Even if she immediately attacks the target again (such as by continuing a full attack), only the first attack gains these benefits, since the target immediately realizes the velvet blade is something more than she seemed."
+        },
+        {
+          "id": "slayer-velvet-blade-silent-dispatch-ex-11",
+          "name": "Silent Dispatch (Ex)",
+          "level": 11,
+          "type": "archetype",
+          "summary": "At 11th level, a velvet blade becomes adept at taking out her targets quietly. She gains the silent dispatch vigilante talent without meeting the talent’s prerequisites. This ability replaces swift tracker."
+        }
+      ]
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Slayer%20Velvet%20Blade"
+  }
+}
