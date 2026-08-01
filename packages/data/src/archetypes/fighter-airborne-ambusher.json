@@ -63,6 +63,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Fly"],
+  "classSkillRemovals": ["Climb"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

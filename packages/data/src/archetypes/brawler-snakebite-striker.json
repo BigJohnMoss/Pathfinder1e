@@ -51,6 +51,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Bluff","Stealth"],
+  "classSkillRemovals": ["Intimidate"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

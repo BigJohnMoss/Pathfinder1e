@@ -61,6 +61,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Perform"],
+  "classSkillRemovals": ["Knowledge (dungeoneering)"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

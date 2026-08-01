@@ -38,6 +38,7 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Bluff","Intimidate","Knowledge (geography)","Knowledge (local)"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

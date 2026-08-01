@@ -228,6 +228,15 @@ test("fixed archetype class-skill replacements apply across the migrated catalog
     ["barbarian-cave-dweller", [["Stealth"], ["Ride"]]],
     ["barbarian-urban-barbarian", [["Diplomacy", "Knowledge (local)", "Knowledge (nobility)", "Linguistics", "Profession"], ["Handle Animal", "Knowledge (nature)", "Survival"]]],
     ["bard-solacer", [["Heal"], ["Appraise"]]],
+    ["bloodrager-symbol-striker", [["Linguistics"], ["Handle Animal"]]],
+    ["brawler-snakebite-striker", [["Bluff", "Stealth"], ["Intimidate"]]],
+    ["cavalier-charger", [["Acrobatics", "Knowledge (nature)", "Survival"], ["Climb", "Handle Animal", "Ride"]]],
+    ["cleric-cardinal", [["Bluff", "Intimidate", "Knowledge (geography)", "Knowledge (local)"], []]],
+    ["druid-feral-child", [["Acrobatics"], ["Fly", "Profession"]]],
+    ["druid-goliath-druid", [["Bluff", "Diplomacy", "Knowledge (local)"], ["Craft", "Profession", "Ride"]]],
+    ["druid-halcyon-druid", [["Diplomacy", "Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)"], []]],
+    ["druid-nithveil-adept", [["Bluff", "Diplomacy", "Disguise", "Perform", "Sense Motive", "Stealth"], []]],
+    ["fighter-cavern-sniper", [["Stealth"], ["Intimidate"]]],
   ]);
   for (const [id, [additions, removals]] of cases) {
     const source = archetype(id);

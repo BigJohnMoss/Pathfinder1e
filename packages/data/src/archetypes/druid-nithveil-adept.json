@@ -51,6 +51,7 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Bluff","Diplomacy","Disguise","Perform","Sense Motive","Stealth"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

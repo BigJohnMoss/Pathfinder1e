@@ -75,6 +75,8 @@
       ]
     }
   ],
+  "classSkillAdditions": ["Knowledge (local)"],
+  "classSkillRemovals": ["Profession"],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
