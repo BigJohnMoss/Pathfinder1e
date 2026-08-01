@@ -2,6 +2,7 @@
   "id": "magus-skirnir",
   "name": "Skirnir",
   "classId": "magus",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Sometimes called a shield-vassal or shieldmaiden, the skirnir has learned to infuse his power into his shield.",
   "replacesText": "Spells; Spell Combat; Spell Recall; Knowledge Pool; Improved Spell Combat; Greater Spell Combat; Greater Spell Access; Counterstrike",
   "mechanicalCoverage": "partial",

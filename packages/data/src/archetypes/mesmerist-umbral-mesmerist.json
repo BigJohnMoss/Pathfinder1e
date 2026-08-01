@@ -2,6 +2,7 @@
   "id": "mesmerist-umbral-mesmerist",
   "name": "Umbral Mesmerist",
   "classId": "mesmerist",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Trained in secret, umbral mesmerists are clandestine weapons who spend years learning how to shape terrifying creatures from the inky darkness in which they revel.",
   "replacesText": "Spellcasting; 1st, 4th, 8th, 12th, 16th, and 20th-level Mesmerist Tricks; Towering Ego; Mental Potency",
   "mechanicalCoverage": "partial",

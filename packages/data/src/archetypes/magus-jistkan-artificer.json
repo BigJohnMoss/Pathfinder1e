@@ -2,6 +2,7 @@
   "id": "magus-jistkan-artificer",
   "name": "Jistkan Artificer",
   "classId": "magus",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "As part of studying the secret methods the original Jistkan artificers used to build golems, these magi graft construct parts onto their own arms.",
   "replacesText": "Spells; Arcane Pool; Cantrips; 3rd-level Magus Arcana; Spellstrike",
   "mechanicalCoverage": "partial",

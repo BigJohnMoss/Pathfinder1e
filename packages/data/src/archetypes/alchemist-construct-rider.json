@@ -2,6 +2,7 @@
   "id": "alchemist-construct-rider",
   "name": "Construct Rider",
   "classId": "alchemist",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "A construct rider creates arcane devices to emulate and surpass weak flesh.",
   "replacesText": "Class Skills; Brew Potion; Mutagen; 4th-level Discovery; Extracts",
   "mechanicalCoverage": "partial",

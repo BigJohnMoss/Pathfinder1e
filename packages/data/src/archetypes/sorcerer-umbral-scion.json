@@ -2,6 +2,7 @@
   "id": "sorcerer-umbral-scion",
   "name": "Umbral Scion",
   "classId": "sorcerer",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Umbral scions are sorcerers who are able to expertly control their especially potent shadow heritage. The majority of umbral sorcerers hail from the Darklands.",
   "replacesText": "Bloodline (Shadow Only); Spellcasting; Shadowstrike Bloodline Power; 7th and 13th-level Bloodline Feats",
   "replacements": [

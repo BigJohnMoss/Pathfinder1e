@@ -2,6 +2,7 @@
   "id": "summoner-pyroclast",
   "name": "Pyroclast",
   "classId": "summoner",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Pyroclasts harness the primal elemental energy of magma. Their eidolons often resemble elemental beings.",
   "replacesText": "Spellcasting; Eidolon; Maker’s Call; Transposition",
   "mechanicalCoverage": "partial",

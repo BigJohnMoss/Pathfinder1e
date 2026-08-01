@@ -185,6 +185,9 @@ for (const url of await jsonFiles("archetypes/")) {
       if (!Number.isInteger(spellLevel) || spellLevel < 0 || spellLevel > 9) errors.push(`${file}: bonusSpellAdditions has invalid level for ${spellId}`);
     }
   }
+  for (const key of ["spellSlotAdjustmentPerLevel", "preparedSpellAdjustmentPerLevel", "spellsKnownAdjustmentPerLevel"]) {
+    if (archetype[key] !== undefined && (!Number.isInteger(archetype[key]) || archetype[key] === 0 || archetype[key] < -9 || archetype[key] > 9)) errors.push(`${file}: ${key} must be a non-zero integer from -9 to 9`);
+  }
   if (archetype.resourceAdjustments !== undefined && !Array.isArray(archetype.resourceAdjustments)) errors.push(`${file}: resourceAdjustments must be an array`);
   const resourceIds = new Set();
   for (const adjustment of archetype.resourceAdjustments ?? []) {

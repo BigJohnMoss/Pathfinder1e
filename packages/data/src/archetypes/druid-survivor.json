@@ -2,6 +2,7 @@
   "id": "druid-survivor",
   "name": "Survivor",
   "classId": "druid",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "The survivor embodies the neutral aspect of the natural world and eschews druidic magic in favor of more pragmatic and worldly survival methods.",
   "replacesText": "Class Skills; Weapon/Armor Proficiencies; Spellcasting; Nature Bond; Resist Nature’s Lure; Wild Shape; Venom Immunity",
   "replacements": [

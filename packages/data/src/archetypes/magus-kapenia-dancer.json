@@ -2,6 +2,7 @@
   "id": "magus-kapenia-dancer",
   "name": "Kapenia Dancer",
   "classId": "magus",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "The kapenia dancer laces their deadly scarves with powerful magic.",
   "replacesText": "Weapon/Armor Proficiencies; Diminished Spellcasting",
   "mechanicalCoverage": "partial",

@@ -2,6 +2,7 @@
   "id": "magus-esoteric",
   "name": "Esoteric",
   "classId": "magus",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Esoterics are drawn to the mysticism of the occult and spend their lives delving into forgotten texts and forbidden tomes.",
   "replacesText": "Weapon/Armor Proficiency; Spellcasting; Arcane Pool; Spellstrike; Spell Recall; Bonus Feats; Medium Armor; Heavy Armor; Improved Spell Recall",
   "mechanicalCoverage": "partial",

@@ -2,6 +2,7 @@
   "id": "bloodrager-bloody-knuckled-rowdy",
   "name": "Bloody-Knuckled Rowdy",
   "classId": "bloodrager",
+  "spellsKnownAdjustmentPerLevel": -1,
   "summary": "The bloody-knuckled rowdy focuses on tricks and maneuvers that are quick and effective, duplicating combat styles from professional brawlers, street thugs, and even trapped animals.",
   "replacesText": "Damage Reduction; Spellcasting; Fast Movement; Uncanny Dodge; Improved Uncanny Dodge",
   "mechanicalCoverage": "partial",

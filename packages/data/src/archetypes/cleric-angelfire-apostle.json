@@ -2,6 +2,7 @@
   "id": "cleric-angelfire-apostle",
   "name": "Angelfire Apostle",
   "classId": "cleric",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Angelfire apostles use the powers of good to avoid violence when possible and cleanse both maladies and evil creatures with blinding flames.",
   "replacesText": "Armor Proficiency; Spellcasting; Alignment; Channel Energy",
   "replacements": [

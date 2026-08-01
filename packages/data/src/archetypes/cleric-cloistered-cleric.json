@@ -2,6 +2,7 @@
   "id": "cleric-cloistered-cleric",
   "name": "Cloistered Cleric",
   "classId": "cleric",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Cloistered clerics typically live in a temple and rarely interact with the outside world. They are bookish and well learned in the lore of the faith, paying less attention to its magical and martial aspects.",
   "replacesText": "Weapon/Armor Proficiencies; Domains; Spells",
   "replacements": [

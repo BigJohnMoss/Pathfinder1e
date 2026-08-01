@@ -2,6 +2,7 @@
   "id": "magus-myrmidarch",
   "name": "Myrmidarch",
   "classId": "magus",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "The myrmidarch is a skilled specialist, using magic to supplement and augment his martial mastery.",
   "replacesText": "Spells; Spell Recall; Improved Spell Recall; 6th, 12th, 18th-level Magus Arcana; Knowledge Pool; Improved Spell Combat; Greater Spell Combat; True Magus",
   "mechanicalCoverage": "partial",

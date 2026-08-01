@@ -2,6 +2,7 @@
   "id": "summoner-unwavering-conduit",
   "name": "Unwavering Conduit",
   "classId": "summoner",
+  "spellsKnownAdjustmentPerLevel": -1,
   "summary": "Unwavering conduits work to keep everything ordered and regimented, drawing on power from the Eternal City of Axis, Heaven, or Hell to enforce whichever laws the summoner finds paramount.",
   "replacesText": "Eidolon; Summon Monster; Spells",
   "mechanicalCoverage": "partial",

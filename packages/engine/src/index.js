@@ -855,6 +855,17 @@ export function applyArchetype(characterClass, archetype) {
   const replacements = archetype.replacements.flatMap(
     (replacement) => replacement.features,
   );
+  const adjustTable = (table, adjustment) =>
+    adjustment === undefined
+      ? table
+      : table?.map((row) => row.map((value) => Math.max(0, value + adjustment)));
+  const baseSpellcasting = archetype.removesSpellcasting
+    ? undefined
+    : characterClass.spellcasting;
+  const preparedAdjustment = archetype.preparedSpellAdjustmentPerLevel ??
+    (baseSpellcasting?.castingType === "prepared" && !baseSpellcasting.preparesFromSlots
+      ? archetype.spellSlotAdjustmentPerLevel
+      : undefined);
   return {
     ...characterClass,
     name: `${characterClass.name} (${archetype.name})`,
@@ -866,9 +877,17 @@ export function applyArchetype(characterClass, archetype) {
       ...(characterClass.bonusSpellAdditions ?? {}),
       ...(archetype.bonusSpellAdditions ?? {}),
     },
-    spellcasting: archetype.removesSpellcasting
-      ? undefined
-      : characterClass.spellcasting,
+    spellcasting: baseSpellcasting
+      ? {
+          ...baseSpellcasting,
+          slotsByLevel: adjustTable(baseSpellcasting.slotsByLevel, archetype.spellSlotAdjustmentPerLevel),
+          preparedByLevel: adjustTable(baseSpellcasting.preparedByLevel, preparedAdjustment),
+          knownByLevel: adjustTable(baseSpellcasting.knownByLevel, archetype.spellsKnownAdjustmentPerLevel),
+        }
+      : undefined,
+    spellSlotAdjustmentPerLevel: archetype.spellSlotAdjustmentPerLevel,
+    preparedSpellAdjustmentPerLevel: archetype.preparedSpellAdjustmentPerLevel,
+    spellsKnownAdjustmentPerLevel: archetype.spellsKnownAdjustmentPerLevel,
     wildShapeLevelAdjustment:
       archetype.wildShapeLevelAdjustment ??
       characterClass.wildShapeLevelAdjustment,
@@ -989,6 +1008,7 @@ export function archetypeAutomationSummary(archetype) {
   if (archetype.featureOverrides?.length) automated.push("Feature rules overrides");
   if (archetype.spellListAdditions && Object.keys(archetype.spellListAdditions).length) automated.push("Spell-list additions");
   if (archetype.bonusSpellAdditions && Object.keys(archetype.bonusSpellAdditions).length) automated.push("Bonus spells known");
+  if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (archetype.removesSpellcasting) automated.push("Spellcasting removal");
   if (archetype.wildShapeLevelAdjustment) automated.push("Wild shape effective level");
   if (archetype.druidDomainIds?.length) automated.push("Available druid domains");

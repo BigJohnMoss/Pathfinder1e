@@ -140,6 +140,9 @@ export interface CharacterClass {
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
   bonusSpellAdditions?: Record<string, number>;
+  spellSlotAdjustmentPerLevel?: number;
+  preparedSpellAdjustmentPerLevel?: number;
+  spellsKnownAdjustmentPerLevel?: number;
   wildShapeLevelAdjustment?: number;
   druidDomainIds?: string[];
   rangerCombatStyleIds?: string[];
@@ -176,6 +179,9 @@ export interface CharacterArchetype {
   featureOverrides?: Array<{ featureId: string; summary: string }>;
   spellListAdditions?: Record<string, number>;
   bonusSpellAdditions?: Record<string, number>;
+  spellSlotAdjustmentPerLevel?: number;
+  preparedSpellAdjustmentPerLevel?: number;
+  spellsKnownAdjustmentPerLevel?: number;
   removesSpellcasting?: boolean;
   wildShapeLevelAdjustment?: number;
   druidDomainIds?: string[];

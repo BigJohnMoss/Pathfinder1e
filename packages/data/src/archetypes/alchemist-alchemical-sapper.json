@@ -2,6 +2,7 @@
   "id": "alchemist-alchemical-sapper",
   "name": "Alchemical Sapper",
   "classId": "alchemist",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Alchemical sappers are trained to create explosives.",
   "replacesText": "Class Skills; Bomb; Mutagen; Poison Resistance; Swift Alchemy; 6th-level Discovery; Poison Immunity",
   "mechanicalCoverage": "partial",

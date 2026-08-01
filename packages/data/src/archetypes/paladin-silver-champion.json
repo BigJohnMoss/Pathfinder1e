@@ -2,6 +2,7 @@
   "id": "paladin-silver-champion",
   "name": "Silver Champion",
   "classId": "paladin",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Drake-riding paladins who serve as priests of Apsu.",
   "replacesText": "Divine Bond; Channel Energy; Aura of Justice; Aura of Righteousness; Spells",
   "replacements": [

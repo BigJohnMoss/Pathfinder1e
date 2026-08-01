@@ -2,6 +2,7 @@
   "id": "magus-iron-ring-striker",
   "name": "Iron-Ring Striker",
   "classId": "magus",
+  "spellSlotAdjustmentPerLevel": -1,
   "summary": "Practitioners of this martial art, powered by arcane magic, wear an iron ring on the finger of one hand.",
   "replacesText": "Weapon Proficiency; Arcane Pool; Spellstrike; 5th-level Bonus Feat; Medium Armor; Heavy Armor; Knowledge Pool; Counterstrike",
   "mechanicalCoverage": "partial",
