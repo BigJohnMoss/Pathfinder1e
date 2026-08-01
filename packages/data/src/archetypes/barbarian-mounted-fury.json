@@ -2,6 +2,7 @@
   "id": "barbarian-mounted-fury",
   "name": "Mounted Fury",
   "classId": "barbarian",
+  "companionGrants": [{ "id": "bestial-mount", "kind": "mount", "label": "Bestial mount", "optionId": "bestial-mount", "minimumLevel": 5, "effectiveLevelAdjustment": -4 }],
   "summary": "A mounted barbarian whose speed and rage empower a loyal feral mount.",
   "replacements": [
     {

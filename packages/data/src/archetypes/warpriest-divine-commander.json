@@ -2,6 +2,7 @@
   "id": "warpriest-divine-commander",
   "name": "Divine Commander",
   "classId": "warpriest",
+  "companionGrants": [{ "id": "divine-commander-mount", "kind": "mount", "label": "Divine commander mount", "optionId": "divine-commander-mount", "minimumLevel": 1 }],
   "summary": "Some warpriests are called to lead great armies and face legions of foes. These divine commanders live for war and fight for glory.",
   "replacesText": "Blessings; 3rd, 6th, 12th, and 15th-level Bonus Feats",
   "mechanicalCoverage": "partial",

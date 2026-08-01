@@ -888,6 +888,10 @@ export function applyArchetype(characterClass, archetype) {
     spellSlotAdjustmentPerLevel: archetype.spellSlotAdjustmentPerLevel,
     preparedSpellAdjustmentPerLevel: archetype.preparedSpellAdjustmentPerLevel,
     spellsKnownAdjustmentPerLevel: archetype.spellsKnownAdjustmentPerLevel,
+    companionGrants: [
+      ...(characterClass.companionGrants ?? []),
+      ...(archetype.companionGrants ?? []),
+    ],
     wildShapeLevelAdjustment:
       archetype.wildShapeLevelAdjustment ??
       characterClass.wildShapeLevelAdjustment,
@@ -1009,6 +1013,7 @@ export function archetypeAutomationSummary(archetype) {
   if (archetype.spellListAdditions && Object.keys(archetype.spellListAdditions).length) automated.push("Spell-list additions");
   if (archetype.bonusSpellAdditions && Object.keys(archetype.bonusSpellAdditions).length) automated.push("Bonus spells known");
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
+  if (archetype.companionGrants?.length) automated.push("Companion grants and effective-level progression");
   if (archetype.removesSpellcasting) automated.push("Spellcasting removal");
   if (archetype.wildShapeLevelAdjustment) automated.push("Wild shape effective level");
   if (archetype.druidDomainIds?.length) automated.push("Available druid domains");
