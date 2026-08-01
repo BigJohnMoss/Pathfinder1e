@@ -46,7 +46,34 @@
           "name": "Teamwork Feat",
           "level": 4,
           "type": "archetype",
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "teamwork"
+          ],
+          "featChoiceIds": [
+            "alignment-channel",
+            "greater-spell-penetration",
+            "leadership",
+            "spell-penetration"
+          ],
           "summary": "At 4th level and 8th level, the Mendevian priest gains a bonus feat. This must be a teamwork feat, Alignment Channel, Greater Spell Penetration, Leadership, or Spell Penetration. The cleric must meet the prerequisites of the selected bonus feat."
+        },
+        {
+          "id": "cleric-mendevian-priest-teamwork-feat-8",
+          "name": "Teamwork Feat",
+          "level": 8,
+          "type": "archetype",
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "teamwork"
+          ],
+          "featChoiceIds": [
+            "alignment-channel",
+            "greater-spell-penetration",
+            "leadership",
+            "spell-penetration"
+          ],
+          "summary": "At 8th level, the Mendevian priest gains another bonus teamwork feat or one of the archetype's named alternatives. The cleric must meet its prerequisites."
         }
       ]
     }

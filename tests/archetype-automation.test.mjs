@@ -32,4 +32,14 @@ test("shared archetype feat choices expose every earned selection slot", () => {
   assert.deepEqual(featChoices("paladin-vindictive-bastard").map((feature) => feature.level), [3, 9, 15]);
   assert.deepEqual(featChoices("occultist-battle-host").map((feature) => feature.level), [4, 8, 12, 16]);
   assert.deepEqual(featChoices("swashbuckler-guiding-blade").map((feature) => feature.level), [1, 4, 8, 12, 16, 20]);
+  assert.deepEqual(featChoices("bard-phrenologist").map((feature) => feature.level), [10]);
+  assert.deepEqual(featChoices("cleric-undead-lord").map((feature) => feature.level), [10]);
+  assert.deepEqual(featChoices("cleric-mendevian-priest").map((feature) => feature.level), [4, 8]);
+
+  const grantedFeats = (id) => archetype(id).replacements
+    .flatMap((replacement) => replacement.features)
+    .map((feature) => feature.grantedFeatId)
+    .filter(Boolean);
+  assert.ok(grantedFeats("bard-phrenologist").includes("psychic-sensitivity"));
+  assert.ok(grantedFeats("cleric-undead-lord").includes("feat-command-undead"));
 });

@@ -35,10 +35,27 @@
           "summary": "With a ritual requiring 8 hours, an undead lord can animate a single skeleton or zombie whose Hit Dice do not exceed her cleric level. This corpse companion automatically follows her commands and does not need to be controlled by her. She cannot have more than one corpse companion at a time. It does not count against the number of Hit Dice of undead controlled by other methods. She can use this ability to create a variant skeleton such as a bloody or burning skeleton, but its Hit Dice cannot exceed half her cleric level. She can dismiss her companion as a standard action, which destroys it."
         },
         {
+          "id": "cleric-undead-lord-command-undead-1",
+          "name": "Command Undead",
+          "level": 1,
+          "type": "archetype",
+          "grantedFeatId": "feat-command-undead",
+          "summary": "All undead lords gain Command Undead as a bonus feat."
+        },
+        {
           "id": "cleric-undead-lord-bonus-feats-10",
           "name": "Bonus Feats",
           "level": 10,
           "type": "archetype",
+          "optionGroupId": "archetype-feats",
+          "featChoiceIds": [
+            "channel-smite",
+            "extra-channel",
+            "improved-channel",
+            "quick-channel",
+            "skeleton-summoner",
+            "undead-master"
+          ],
           "summary": "All undead lords gain Command Undead as a bonus feat. In addition, at 10th level, she may select one of the following as a bonus feat: Channel Smite, Extra Channel, Improved Channel, Quick Channel, Skeleton Summoner, Undead Master."
         },
         {
