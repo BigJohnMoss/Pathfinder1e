@@ -46,4 +46,7 @@ test("shared archetype feat choices expose every earned selection slot", () => {
     .filter(Boolean);
   assert.ok(grantedFeats("bard-phrenologist").includes("psychic-sensitivity"));
   assert.ok(grantedFeats("cleric-undead-lord").includes("feat-command-undead"));
+
+  const wildborn = archetype("barbarian-wildborn").replacements.flatMap((replacement) => replacement.features);
+  assert.deepEqual(wildborn.find((feature) => feature.id === "barbarian-wildborn-weapon-and-armor-proficiencies-1").grantedFeatIds, ["improved-unarmed-strike", "catch-off-guard"]);
 });
