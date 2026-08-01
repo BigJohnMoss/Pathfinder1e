@@ -51,6 +51,12 @@
       ]
     }
   ],
+  "companionGrants": [
+    {"id":"air-elemental-eidolon","kind":"eidolon","label":"Air elemental eidolon","optionId":"eidolon-air","minimumLevel":1},
+    {"id":"earth-elemental-eidolon","kind":"eidolon","label":"Earth elemental eidolon","optionId":"eidolon-earth","minimumLevel":1},
+    {"id":"fire-elemental-eidolon","kind":"eidolon","label":"Fire elemental eidolon","optionId":"eidolon-fire","minimumLevel":1},
+    {"id":"water-elemental-eidolon","kind":"eidolon","label":"Water elemental eidolon","optionId":"eidolon-water","minimumLevel":1}
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

@@ -208,7 +208,7 @@ export interface CharacterArchetype {
 }
 export interface ArchetypeCompanionGrant {
   id: string;
-  kind: "animal" | "mount" | "familiar";
+  kind: "animal" | "mount" | "familiar" | "eidolon";
   label: string;
   optionId: string;
   minimumLevel: number;

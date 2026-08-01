@@ -168,3 +168,11 @@ test("archetype companion and familiar grants expose their unlock and effective-
     assert.deepEqual(applied.companionGrants, source.companionGrants, `${id} applied companion`);
   }
 });
+
+test("elemental ally exposes four independently tracked full-level eidolons", () => {
+  const source = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/druid-elemental-ally.json", import.meta.url), "utf8"));
+  assert.deepEqual(source.companionGrants.map((grant) => grant.optionId), ["eidolon-air", "eidolon-earth", "eidolon-fire", "eidolon-water"]);
+  assert.ok(source.companionGrants.every((grant) => grant.kind === "eidolon" && grant.minimumLevel === 1));
+  const applied = applyArchetype({ id: "druid", name: "Druid", features: [], classSkills: [] }, source);
+  assert.deepEqual(applied.companionGrants, source.companionGrants);
+});
