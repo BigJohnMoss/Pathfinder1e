@@ -318,6 +318,20 @@ outcomes.
 - [x] expanded weapon threat ranges are recognized
 - [x] target resolution remains readable and usable on mobile
 
+## Completed milestone: Critical Confirmation
+
+Complete the Pathfinder 1e critical-hit workflow after target resolution.
+
+1. [x] Automatically roll confirmation when an equipped weapon threatens a
+   critical hit.
+2. [x] Resolve the confirmation against the same target Armor Class with the
+   same calculated attack modifier.
+3. [x] Report confirmed and unconfirmed results separately while preserving the
+   original attack roll.
+4. [x] Show the weapon's critical damage multiplier without automatically
+   applying damage.
+5. [x] Add deterministic regression coverage for confirmation rules and UI.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

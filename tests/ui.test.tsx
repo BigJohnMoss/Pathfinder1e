@@ -1084,9 +1084,16 @@ test("uses equipped attacks and quick hit point controls during combat", async (
   await user.click(screen.getByRole("tab", { name: "Actions" }));
   assert.match(screen.getByText("Longsword").closest("article")?.textContent ?? "", /Attack \+0 · Damage 1d8/);
   fireEvent.change(screen.getByLabelText("Target Armor Class"), { target: { value: "15" } });
-  await user.click(screen.getByRole("button", { name: "Roll Longsword attack" }));
+  const originalRandom = Math.random;
+  Math.random = () => 0.999;
+  try {
+    await user.click(screen.getByRole("button", { name: "Roll Longsword attack" }));
+  } finally {
+    Math.random = originalRandom;
+  }
   assert.ok(screen.getByLabelText("Longsword attack total"));
   assert.match(screen.getByLabelText("Longsword attack total").closest("li")?.textContent ?? "", /(Hit|Miss|Critical threat) against AC 15/);
+  assert.match(screen.getByLabelText("Longsword critical confirmation total").closest("li")?.textContent ?? "", /Critical confirmed.*AC 15/);
   await user.click(screen.getByRole("button", { name: "Roll Longsword damage" }));
   assert.ok(screen.getByLabelText("Longsword damage total"));
   await user.click(screen.getByRole("button", { name: "Initiative roll, modifier +0" }));
@@ -1099,7 +1106,7 @@ test("uses equipped attacks and quick hit point controls during combat", async (
   fireEvent.change(screen.getByLabelText("Custom roll modifier"), { target: { value: "3" } });
   await user.click(screen.getByRole("button", { name: "Roll custom dice" }));
   assert.match(screen.getByLabelText("Custom roll total").closest("li")?.textContent ?? "", /2d6.*3/);
-  assert.equal(screen.getAllByRole("listitem").filter(item => item.closest(".roll-history")).length, 5);
+  assert.equal(screen.getAllByRole("listitem").filter(item => item.closest(".roll-history")).length, 6);
   await user.click(screen.getByRole("button", { name: "Clear rolls" }));
   assert.ok(screen.getByText("Your latest 20 rolls will appear here."));
   fireEvent.change(screen.getByLabelText("Current HP"), { target: { value: "5" } });
