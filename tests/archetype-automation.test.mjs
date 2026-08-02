@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -172,6 +172,26 @@ test("hybrid archetype feat lists include catalogue descendants of a required fe
   assert.deepEqual(choices[0].featChoiceIds, ["endurance", "great-fortitude", "improved-great-fortitude"]);
   assert.deepEqual(choices[0].featChoicePrerequisiteIds, ["endurance"]);
   assert.ok(feats.some(feat => feat.id === "diehard" && feat.prerequisites.some(item => item.type === "feat" && item.id === "endurance")));
+});
+
+test("archetype feat alternatives augment existing class choice slots without granting extras", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const feats = readdirSync(new URL("../packages/data/src/feats/", import.meta.url))
+    .filter(file => file.endsWith(".json"))
+    .map(file => JSON.parse(readFileSync(new URL(`../packages/data/src/feats/${file}`, import.meta.url), "utf8")));
+
+  assert.deepEqual(inferArchetypeFeatAlternatives(archetype("alchemist-fire-bomber"), feats)[0].featChoiceIds, ["burn-burn-burn", "fire-tamer", "flame-heart"]);
+  assert.deepEqual(inferArchetypeFeatAlternatives(archetype("investigator-steel-hound"), feats)[0].featChoiceIds, ["extra-grit", "rapid-reload"]);
+  assert.deepEqual(inferArchetypeFeatAlternatives(archetype("barbarian-pack-hunter"), feats)[0].featChoiceTypes, ["teamwork"]);
+  const skulking = inferArchetypeFeatAlternatives(archetype("rogue-skulking-slayer"), feats);
+  assert.deepEqual(skulking.map(item => [item.minimumLevel, item.featChoiceIds]), [
+    [2, ["surprise-follow-through"]],
+    [10, ["improved-surprise-follow-through"]],
+  ]);
+  const butterfly = inferArchetypeFeatAlternatives(archetype("slayer-butterfly-blade"), feats)[0];
+  assert.equal(butterfly.optionGroupId, "slayer-talents");
+  assert.equal(butterfly.ignoreFeatPrerequisites, true);
+  assert.equal(butterfly.featChoiceIds.length, 5);
 });
 
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {

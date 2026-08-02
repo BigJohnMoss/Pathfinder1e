@@ -96,6 +96,7 @@ export function inferArchetypeSkillRankAdjustment(archetype?: CharacterArchetype
 export function inferArchetypeResourceAdjustments(archetype?: CharacterArchetype): Array<{ resourceId: string; label: string; unit: string; operation: "replace"; minimumLevel: number; base: number; perInterval?: number; interval?: number; levelDivisor?: number; levelMultiplier?: number; abilityModifier?: AbilityName; abilityMultiplier?: number; minimum?: number; maximum?: number }>;
 export function inferArchetypeGrantedFeats(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ featureId: string; featId: string; level: number }>;
 export function inferArchetypeFeatChoices(archetype: CharacterArchetype, feats: CharacterFeat[], maximumLevel?: number): Array<CharacterClass["features"][number] & { classId: string }>;
+export function inferArchetypeFeatAlternatives(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ sourceFeatureId: string; optionGroupId: string; minimumLevel: number; ignoreFeatPrerequisites: boolean; featChoiceIds?: string[]; featChoiceTypes?: string[] }>;
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];

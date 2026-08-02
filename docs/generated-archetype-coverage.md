@@ -55,3 +55,4 @@ This report distinguishes selectable replacement integration from bespoke rules 
 - **Reusable daily resources:** 263 archetypes have bounded fixed, level-scaled, or ability-scaled pools connected to spend, refresh, and persistence controls.
 - **Fixed bonus-feat grants:** 170 archetypes grant exact catalogue feats at their published levels and apply supported feat effects automatically.
 - **Restricted bonus-feat choices:** 38 archetypes expose 124 earned, level-aware selectors limited to their published feat ids, feat categories, or prerequisite-derived families, including recurring and level-expanding named feat lists.
+- **Class-choice feat alternatives:** 5 archetypes add their published feat options to existing discovery, rage-power, investigator-talent, rogue-talent, or slayer-talent slots without granting extra selections.

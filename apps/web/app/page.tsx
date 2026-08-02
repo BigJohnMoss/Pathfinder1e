@@ -72,6 +72,7 @@ import {
   effectiveSpellcastingLevels,
   featBonuses,
   featPrerequisiteResults,
+  inferArchetypeFeatAlternatives,
   inferArchetypeFeatChoices,
   inferArchetypeGrantedFeats,
   inferArchetypeResourceAdjustments,
@@ -638,6 +639,16 @@ export default function Home() {
     }),
     [classLevelMap, selectedArchetypes],
   );
+  const archetypeFeatAlternatives = useMemo(
+    () => selectedArchetypes.flatMap((archetype) => inferArchetypeFeatAlternatives(archetype, feats)),
+    [selectedArchetypes],
+  );
+  const alternativeAllowsFeat = (feature: (typeof progression.features)[number], feat: (typeof feats)[number]) =>
+    archetypeFeatAlternatives.some((alternative) =>
+      alternative.optionGroupId === feature.optionGroupId &&
+      feature.level >= alternative.minimumLevel &&
+      ((alternative.featChoiceIds ?? []).includes(feat.id) || (alternative.featChoiceTypes ?? []).includes(feat.type)),
+    );
   const unresolvedChoiceCount = [...progression.features, ...inferredArchetypeFeatChoices].filter(
     (feature) =>
       feature.level <= level &&
@@ -733,25 +744,26 @@ export default function Home() {
       }),
       ...Object.entries(selectedOptions).flatMap(([featureId, optionId]) => {
         const feature = [...progression.features, ...inferredArchetypeFeatChoices].find((candidate) => candidate.id === featureId);
-        if (feature?.optionGroupId === "archetype-feats" && feats.some((feat) => feat.id === optionId)) return [optionId];
+        const selectedFeat = feats.find((feat) => feat.id === optionId);
+        if (feature && selectedFeat && (feature.optionGroupId === "archetype-feats" || alternativeAllowsFeat(feature, selectedFeat))) return [optionId];
         const option = optionGroups
           .flatMap((group) => group.options)
           .find((candidate) => candidate.id === optionId);
         return option?.featId ? [option.featId] : [];
       }),
     ],
-    [classLevels, inferredArchetypeFeatChoices, progression.features, selectedArchetypes, selectedOptions],
+    [archetypeFeatAlternatives, classLevels, inferredArchetypeFeatChoices, progression.features, selectedArchetypes, selectedOptions],
   );
   const selectedClassFeatChoices = useMemo(
     () => Object.fromEntries(Object.entries(selectedOptions).flatMap(([featureId, featId]) => {
       const feature = [...progression.features, ...inferredArchetypeFeatChoices].find((candidate) => candidate.id === featureId);
-      if (feature?.optionGroupId !== "archetype-feats") return [];
       const feat = feats.find((candidate) => candidate.id === featId);
-      if (!feat?.choice) return [];
+      if (!feature || !feat || (feature.optionGroupId !== "archetype-feats" && !alternativeAllowsFeat(feature, feat))) return [];
+      if (!feat.choice) return [];
       const value = selectedOptions[`${featureId}-${feat.choice.key}`];
       return value ? [[featId, value]] : [];
     })),
-    [inferredArchetypeFeatChoices, progression.features, selectedOptions],
+    [archetypeFeatAlternatives, inferredArchetypeFeatChoices, progression.features, selectedOptions],
   );
   const selectedFeatBonuses = useMemo(
     () =>
@@ -1209,14 +1221,34 @@ export default function Home() {
             })),
         }
       : undefined;
-    const group = generatedFeatGroup ?? optionGroups.find(
-      (item) => item.id === feature.optionGroupId,
-    );
-    const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)];
     const featureClassId =
       "classId" in feature && typeof feature.classId === "string"
         ? feature.classId
         : characterClass.id;
+    const baseGroup = generatedFeatGroup ?? optionGroups.find(
+      (item) => item.id === feature.optionGroupId,
+    );
+    const matchingAlternatives = archetypeFeatAlternatives.filter((alternative) =>
+      alternative.optionGroupId === feature.optionGroupId && feature.level >= alternative.minimumLevel,
+    );
+    const alternativeOptions = feats.filter((feat) => matchingAlternatives.some((alternative) =>
+      (alternative.featChoiceIds ?? []).includes(feat.id) || (alternative.featChoiceTypes ?? []).includes(feat.type),
+    )).map((feat) => ({
+      id: feat.id,
+      name: feat.name,
+      groupId: feature.optionGroupId!,
+      classIds: [featureClassId],
+      minimumLevel: 1,
+      prerequisites: matchingAlternatives.some((alternative) => alternative.ignoreFeatPrerequisites && ((alternative.featChoiceIds ?? []).includes(feat.id) || (alternative.featChoiceTypes ?? []).includes(feat.type))) ? [] : feat.prerequisites,
+      benefit: feat.benefit,
+      featId: feat.id,
+      source: feat.source,
+      choice: feat.choice,
+    }));
+    const group: (typeof optionGroups)[number] | undefined = baseGroup && alternativeOptions.length
+      ? { ...baseGroup, options: [...baseGroup.options, ...alternativeOptions.filter((option) => !baseGroup.options.some((baseOption) => baseOption.id === option.id))] }
+      : baseGroup;
+    const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)];
     const featureClassLevel =
       classLevelMap[featureClassId] ?? primaryClassLevel;
     const featureCharacterClass = progressionClasses.find(
