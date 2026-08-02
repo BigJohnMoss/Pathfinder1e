@@ -297,7 +297,8 @@ export interface SelectableOption {
   choice?: {
     key: string;
     label: string;
-    options: Array<{ id: string; name: string }>;
+    options?: Array<{ id: string; name: string }>;
+    allowCustom?: boolean;
     uniqueAcrossSelections?: boolean;
   };
 }

@@ -733,17 +733,29 @@ export default function Home() {
     ],
     [classLevels, inferredArchetypeFeatChoices, progression.features, selectedArchetypes, selectedOptions],
   );
+  const selectedClassFeatChoices = useMemo(
+    () => Object.fromEntries(Object.entries(selectedOptions).flatMap(([featureId, featId]) => {
+      const feature = [...progression.features, ...inferredArchetypeFeatChoices].find((candidate) => candidate.id === featureId);
+      if (feature?.optionGroupId !== "archetype-feats") return [];
+      const feat = feats.find((candidate) => candidate.id === featId);
+      if (!feat?.choice) return [];
+      const value = selectedOptions[`${featureId}-${feat.choice.key}`];
+      return value ? [[featId, value]] : [];
+    })),
+    [inferredArchetypeFeatChoices, progression.features, selectedOptions],
+  );
   const selectedFeatBonuses = useMemo(
     () =>
       featBonuses(
         [...selectedFeatIds, ...selectedClassFeatIds],
         feats,
-        selectedFeatChoices,
+        { ...selectedFeatChoices, ...selectedClassFeatChoices },
         { level, skillRanks },
       ),
     [
       level,
       selectedClassFeatIds,
+      selectedClassFeatChoices,
       selectedFeatChoices,
       selectedFeatIds,
       skillRanks,
@@ -1182,6 +1194,7 @@ export default function Home() {
               benefit: feat.benefit,
               featId: feat.id,
               source: feat.source,
+              choice: feat.choice,
             })),
         }
       : undefined;

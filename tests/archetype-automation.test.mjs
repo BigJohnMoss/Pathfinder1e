@@ -107,6 +107,27 @@ test("restricted archetype feat wording creates level-aware catalogue choices", 
   assert.ok(archetypeAutomationSummary(archetype("hunter-flood-flourisher"), feats).automated.includes("1 restricted bonus feat choice"));
 });
 
+test("named archetype feat lists create every recurring selection slot", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const feats = readdirSync(new URL("../packages/data/src/feats/", import.meta.url))
+    .filter(file => file.endsWith(".json"))
+    .map(file => JSON.parse(readFileSync(new URL(`../packages/data/src/feats/${file}`, import.meta.url), "utf8")));
+
+  const idRager = inferArchetypeFeatChoices(archetype("bloodrager-id-rager"), feats);
+  assert.deepEqual(idRager.map(choice => choice.level), [6, 9, 12, 15, 18]);
+  assert.equal(idRager[0].featChoiceIds.length, 13);
+
+  const batShaman = inferArchetypeFeatChoices(archetype("druid-bat-shaman"), feats);
+  assert.deepEqual(batShaman.map(choice => choice.level), [9, 13, 17]);
+  assert.deepEqual(batShaman[0].featChoiceIds, [
+    "acrobatic",
+    "agile-maneuvers",
+    "improved-initiative",
+    "lightning-reflexes",
+    "skill-focus",
+  ]);
+});
+
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {
   const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const cases = new Map([

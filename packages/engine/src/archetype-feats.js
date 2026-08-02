@@ -1,8 +1,9 @@
 const sourceSuffix = /\s+(?:APG|ACG|ARG|OA|UC|UI|ISG|UW|HA|WMH|CoP)$/i;
-const choiceNumber = (value) => ({ four: 4, five: 5, six: 6 }[String(value).toLowerCase()] ?? Number(value));
+const choiceNumber = (value) => ({ three: 3, four: 4, five: 5, six: 6 }[String(value).toLowerCase()] ?? Number(value));
 
 const normalizeName = (value) => String(value)
   .replace(sourceSuffix, "")
+  .replace(/\s*\([^)]*\)\s*$/, "")
   .replace(/\s+feat$/i, "")
   .replace(/^(?:a|an|the)\s+/i, "")
   .trim()
@@ -44,10 +45,11 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
   const featIdByName = new Map((feats ?? []).map(feat => [normalizeName(feat.name), feat.id]));
   const choices = [];
   const addChoices = (feature, levels, limits) => {
+    const featureName = feature.name.replace(/\s*\([^)]+\)\s*$/, "");
     for (const [index, level] of [...new Set(levels)].filter(value => value >= 1 && value <= maximumLevel).sort((a, b) => a - b).entries()) {
       choices.push({
         id: `${feature.id}-inferred-feat-${level}-${index + 1}`,
-        name: `${feature.name.replace(/\s*\([^)]+\)\s*$/, "")} bonus feat`,
+        name: /bonus feat/i.test(featureName) ? featureName : `${featureName} bonus feat`,
         level,
         type: "archetype",
         summary: feature.summary,
@@ -68,6 +70,17 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
       const ids = [either[1], either[2]].map(name => featIdByName.get(normalizeName(name)));
       if (ids.every(Boolean)) addChoices(feature, [ordinalLevels(text.slice(0, either.index + either[0].length)).at(-1) ?? feature.level ?? 1], { featChoiceIds: ids });
       continue;
+    }
+    const namedList = text.match(/\bAt\s+(\d+)(?:st|nd|rd|th)?\s+level and every\s+(\d+|three|four)\s+(?:(?:[a-z]+)\s+)?levels? thereafter,[^.]{0,100}?\b(?:gains one|can select one) of the following (?:bonus )?feats?(?: as (?:a )?bonus feat)?\s*:\s*([^.]+)/i);
+    if (namedList) {
+      const names = namedList[3].replace(/\s+(?:or|and)\s+/gi, ",").split(",").map(name => name.trim()).filter(Boolean);
+      const ids = names.map(name => featIdByName.get(normalizeName(name)));
+      if (ids.length > 1 && ids.every(Boolean)) {
+        const base = Number(namedList[1]);
+        const interval = choiceNumber(namedList[2]);
+        addChoices(feature, Array.from({ length: 20 }, (_, index) => base + index * interval).filter(level => level <= maximumLevel), { featChoiceIds: ids });
+        continue;
+      }
     }
     if (!/\b(?:teamwork|item creation) feat as (?:a )?bonus feat/i.test(text) || /^Bonus Feats?$/i.test(feature.name ?? "")) continue;
     const featType = /item creation feat/i.test(text) ? "item-creation" : "teamwork";
