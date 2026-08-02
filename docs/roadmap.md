@@ -285,21 +285,21 @@ one-off controls.
 2. [x] Classify partial archetypes by missing subsystem: resource, companion,
    spell-list, selectable progression, combat statistic, skill, feat, or manual
    narrative effect.
-3. [ ] Automate the highest-reuse resource and selectable-progression patterns,
+3. [x] Automate the highest-reuse resource and selectable-progression patterns,
    beginning with classes that currently have no fully automated archetypes.
-4. [ ] Automate shared spell-list, spell-slot, companion, and familiar
+4. [x] Automate shared spell-list, spell-slot, companion, and familiar
    replacement patterns and migrate every matching archetype.
-5. [ ] Automate shared combat-statistic, proficiency, feat, and skill replacement
+5. [x] Automate shared combat-statistic, proficiency, feat, and skill replacement
    patterns and migrate every matching archetype.
-6. [ ] Add archetyped level-20 desktop and narrow-mobile regression journeys for
+6. [x] Add archetyped level-20 desktop and narrow-mobile regression journeys for
    each newly supported subsystem, including save/load and multiclass paths.
-7. [ ] Regenerate coverage, enforce a reduced partial-automation baseline, pass
+7. [x] Regenerate coverage, enforce a reduced partial-automation baseline, pass
    the complete CI suite, and deploy the milestone.
 
 ### Completion criteria
 
-- [ ] every partial archetype names its exact remaining manual effects
-- [ ] reusable mechanical patterns are automated consistently across classes
-- [ ] coverage checks prevent regressions from full to partial automation
-- [ ] representative archetyped builds persist on desktop and narrow mobile
-- [ ] validation, UI, browser, production, offline, and performance gates pass
+- [x] every partial archetype names its exact remaining manual effects
+- [x] reusable mechanical patterns are automated consistently across classes
+- [x] coverage checks prevent regressions from full to partial automation
+- [x] representative archetyped builds persist on desktop and narrow mobile
+- [x] validation, UI, browser, production, offline, and performance gates pass
