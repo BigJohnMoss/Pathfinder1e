@@ -270,6 +270,31 @@ to the same content depth as the original Core-class experience.
 - [x] representative archetyped builds persist and reach level 20 on desktop and mobile
 - [x] validation, UI, browser, production, offline, and performance gates pass
 
+## Completed milestone: Combat Simulation Foundations
+
+Turn the Actions tab into a practical at-table dice roller while retaining the
+existing hit-point, round, and temporary-effect tools.
+
+1. [x] Add a reusable validated dice engine for bounded dice pools, expressions,
+   modifiers, and natural d20 outcomes.
+2. [x] Roll attacks and weapon damage directly from equipped items using the
+   character's calculated attack and damage modifiers.
+3. [x] Roll initiative, Fortitude, Reflex, Will, and every calculated skill from
+   the current character sheet, including active bonuses.
+4. [x] Add a custom dice pool with common die sizes and a signed modifier.
+5. [x] Keep a readable, clearable session history showing formulas, individual
+   dice, totals, and natural 1 or natural 20 results.
+6. [x] Verify the complete interaction path at desktop and narrow-mobile
+   viewports with no horizontal overflow.
+
+### Completion criteria
+
+- [x] all rolls apply the displayed character modifier
+- [x] equipped weapon attacks and damage use their calculated sheet values
+- [x] dice inputs are bounded and invalid expressions are rejected
+- [x] roll results are announced accessibly and retain the latest 20 entries
+- [x] engine, UI, browser, production, offline, and performance gates pass
+
 All work must preserve the completed Core, Expanded Character Options,
 Installable Application, Universal Builder, and Builder Expansion milestones.
 
