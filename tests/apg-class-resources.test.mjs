@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { apgClassResourceMaximums, applyArchetypeResourceAdjustments, normalizeCharacterDraft, normalizeClassResourcesByClass } from "../packages/engine/src/index.js";
+import { apgClassResourceMaximums, applyArchetypeResourceAdjustments, inferArchetypeResourceAdjustments, normalizeCharacterDraft, normalizeClassResourcesByClass } from "../packages/engine/src/index.js";
 
 test("APG class resources follow their level and ability limits", () => {
   assert.deepEqual(apgClassResourceMaximums("alchemist", 1, { intelligence: 4 }), { bombs: 5 });
@@ -68,4 +68,35 @@ test("archetype resource catalogue covers reusable level and ability progression
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("witch-medium")], 2, { intelligence: 4 }), { ectoplasmicAptitude: 4 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("witch-vellemancer")], 12, { intelligence: 3 }), { investedHexes: 9 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("wizard-wind-listener")], 20), { wispyForm: 20 });
+});
+
+test("archetype resource inference recognizes safe fixed, level, ability, and capped formulas", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const maximums = (id, level, abilities = {}) => applyArchetypeResourceAdjustments({}, [archetype(id)], level, abilities);
+  const onlyMaximum = (id, level, abilities = {}) => Object.values(maximums(id, level, abilities))[0];
+
+  assert.equal(onlyMaximum("alchemist-metamorph", 18), 9);
+  assert.equal(onlyMaximum("bard-arcane-healer", 18), 5);
+  assert.equal(onlyMaximum("cavalier-hooded-knight", 17), 3);
+  assert.equal(onlyMaximum("monk-flowing-monk", 10), 10);
+  assert.equal(onlyMaximum("brawler-wild-child", 10, { constitution: 2 }), 7);
+  assert.equal(onlyMaximum("druid-restorer", 10, { wisdom: 3 }), 6);
+  assert.equal(onlyMaximum("wizard-sword-binder", 11, { intelligence: 4 }), 12);
+
+  assert.deepEqual(inferArchetypeResourceAdjustments(archetype("kineticist-elemental-purist")), []);
+  assert.equal(inferArchetypeResourceAdjustments(archetype("summoner-story-summoner"))[0]?.label, "Storykin Eidolon");
+});
+
+test("inferred archetype resources are bounded during persistence normalization", () => {
+  const archetype = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-metamorph.json", import.meta.url), "utf8"));
+  const resourceId = inferArchetypeResourceAdjustments(archetype)[0].resourceId;
+  assert.deepEqual(
+    normalizeClassResourcesByClass(
+      { alchemist: { [resourceId]: 69 } },
+      [{ classId: "alchemist", level: 18 }],
+      {},
+      { alchemist: [archetype] },
+    ),
+    { alchemist: { bombs: 0, [resourceId]: 9 } },
+  );
 });

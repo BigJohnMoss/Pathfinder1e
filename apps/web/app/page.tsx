@@ -72,6 +72,7 @@ import {
   effectiveSpellcastingLevels,
   featBonuses,
   featPrerequisiteResults,
+  inferArchetypeResourceAdjustments,
   multiclassAverageHitPoints,
   multiclassProgression,
   normalizeAbilityBoosts,
@@ -2021,7 +2022,11 @@ export default function Home() {
       const resourceArchetypes = archetypes.filter((archetype) =>
         archetype.classId === resourceClassId && (archetypeStacksByClass[resourceClassId] ?? []).includes(archetype.id)
       );
-      const adjustments = resourceArchetypes.flatMap((archetype) => archetype.resourceAdjustments ?? []);
+      const adjustments = resourceArchetypes.flatMap((archetype) =>
+        archetype.resourceAdjustments?.length
+          ? archetype.resourceAdjustments
+          : inferArchetypeResourceAdjustments(archetype)
+      );
       return Object.entries(
         applyArchetypeResourceAdjustments(
           apgClassResourceMaximums(resourceClassId, resourceClassLevel, combat.abilityModifiers),

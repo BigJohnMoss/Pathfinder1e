@@ -1,5 +1,5 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
-import { inferArchetypeClassSkillChanges, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment } from "../../packages/engine/src/index.js";
+import { inferArchetypeClassSkillChanges, inferArchetypeProficiencyAdjustments, inferArchetypeResourceAdjustments, inferArchetypeSkillRankAdjustment } from "../../packages/engine/src/index.js";
 
 const root = new URL("../../", import.meta.url);
 const directory = new URL("packages/data/src/archetypes/", root);
@@ -58,6 +58,9 @@ const inferredProficiencyCount = records.filter(archetype =>
 const inferredSkillRankCount = records.filter(archetype =>
   inferArchetypeSkillRankAdjustment(archetype)
 ).length;
+const automatedResourceCount = records.filter(archetype =>
+  (archetype.resourceAdjustments?.length ?? 0) > 0 || inferArchetypeResourceAdjustments(archetype).length > 0
+).length;
 const lines = [
   "# Generated Archetype Mechanical Coverage",
   "",
@@ -80,7 +83,8 @@ const lines = [
   "",
   `- **Class-skill rules:** ${inferredClassSkillCount} archetypes have calculated additions or removals recognized from standard rules text.`,
   `- **Weapon and armor proficiency rules:** ${inferredProficiencyCount} archetypes have calculated grants, losses, or exceptions recognized from standard rules text.`,
-  `- **Skill-rank progression rules:** ${inferredSkillRankCount} archetypes have calculated fixed or additive ranks per level recognized from standard rules text.`
+  `- **Skill-rank progression rules:** ${inferredSkillRankCount} archetypes have calculated fixed or additive ranks per level recognized from standard rules text.`,
+  `- **Reusable daily resources:** ${automatedResourceCount} archetypes have bounded fixed, level-scaled, or ability-scaled pools connected to spend, refresh, and persistence controls.`
 ];
 await writeFile(reportFile, `${lines.join("\n")}\n`);
 console.log(`Annotated ${records.length} archetypes and updated ${reportFile.pathname}.`);

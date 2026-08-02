@@ -380,6 +380,21 @@ text when a hand-authored progression override is absent.
 5. [x] Add full-catalogue, engine, desktop, and narrow-mobile regression
    coverage.
 
+## Completed expansion: Shared Archetype Resource Automation
+
+Turn standard daily-use wording in authoritative archetype features into bounded
+character resources when a hand-authored structured override is absent.
+
+1. [x] Recognize fixed uses and pools based on class level, half or double class
+   level, ability modifiers, and common interval progressions and caps.
+2. [x] Exclude malformed headings, subordinate-creature pools, and multi-ability
+   containers that cannot safely map to one player-character tracker.
+3. [x] Connect inferred resources to existing spend, refresh-day, save/load, and
+   level-change clamping behavior.
+4. [x] Surface readable labels, units, controls, and automation status in the
+   Features tab on desktop and narrow mobile.
+5. [x] Add formula, catalogue-safety, persistence, and browser regression tests.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical
