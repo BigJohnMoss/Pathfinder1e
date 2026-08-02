@@ -439,6 +439,20 @@ Convert recurring published feat lists into earned, level-aware selectors.
 4. [x] Cover the Id Rager and eight animal-shaman progressions with catalogue
    regression tests.
 
+## Completed expansion: Level-Expanding Archetype Feat Lists
+
+Automate published feat lists whose available options increase at later class
+levels.
+
+1. [x] Parse fixed, irregular, and recurring feat-slot levels through level 20.
+2. [x] Add later option-list expansions only to slots at or above their stated
+   unlock level.
+3. [x] Normalize source suffixes, asterisks, split hyphens, and alternate armor
+   proficiency naming against the feat catalogue.
+4. [x] Automate Gendarme, Crusader, Elemental Annihilator, Brazen Disciple, and
+   Divine Guardian progressions without weakening their published lists.
+5. [x] Verify selection and save/load behavior on desktop and narrow mobile.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

@@ -128,6 +128,28 @@ test("named archetype feat lists create every recurring selection slot", () => {
   ]);
 });
 
+test("level-dependent archetype feat lists expand at their published milestones", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const feats = readdirSync(new URL("../packages/data/src/feats/", import.meta.url))
+    .filter(file => file.endsWith(".json"))
+    .map(file => JSON.parse(readFileSync(new URL(`../packages/data/src/feats/${file}`, import.meta.url), "utf8")));
+  const progression = (id) => inferArchetypeFeatChoices(archetype(id), feats);
+
+  assert.deepEqual(progression("cavalier-gendarme").map(choice => choice.level), [1, 5, 8, 11, 14, 17, 20]);
+  assert.deepEqual(progression("paladin-divine-guardian").map(choice => choice.level), [7, 10, 13]);
+  assert.deepEqual(progression("monk-brazen-disciple").map(choice => [choice.level, choice.featChoiceIds.length]), [
+    [2, 6], [10, 16], [14, 16], [18, 16],
+  ]);
+  assert.deepEqual(progression("kineticist-elemental-annihilator").map(choice => [choice.level, choice.featChoiceIds.length]), [
+    [2, 9], [8, 11], [10, 15], [14, 15], [18, 15],
+  ]);
+  const crusader = progression("cleric-crusader");
+  assert.deepEqual(crusader.map(choice => [choice.level, choice.featChoiceIds.length]), [
+    [1, 7], [5, 7], [10, 14], [15, 14], [20, 16],
+  ]);
+  assert.ok(crusader.every(choice => choice.ignoreFeatPrerequisites));
+});
+
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {
   const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const cases = new Map([
