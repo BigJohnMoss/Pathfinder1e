@@ -15,8 +15,10 @@ for (const journey of [
     await page.locator("article").filter({ hasText: "Longsword" }).getByRole("checkbox", { name: "Equipped" }).check();
     await page.getByRole("tab", { name: "Actions" }).click();
 
+    await page.getByLabel("Target Armor Class").fill("15");
     await page.getByRole("button", { name: "Roll Longsword attack" }).click();
     await expect(page.getByLabel("Longsword attack total")).toBeVisible();
+    await expect(page.getByLabel("Longsword attack total").locator("..")).toContainText(/(Hit|Miss|Critical threat) against AC 15/);
     await page.getByRole("button", { name: "Roll Longsword damage" }).click();
     await expect(page.getByLabel("Longsword damage total")).toBeVisible();
     await page.getByRole("button", { name: "Initiative roll, modifier +0" }).click();

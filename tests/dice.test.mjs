@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseDiceExpression, rollD20Check, rollDice, rollDiceExpression } from "../packages/engine/src/index.js";
+import { parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "../packages/engine/src/index.js";
 
 test("rolls bounded dice and applies modifiers", () => {
   assert.deepEqual(rollDice(3, 6, 2, () => 0.5), {
@@ -25,4 +25,15 @@ test("rejects unsafe dice sizes and modifiers", () => {
   assert.throws(() => rollDice(0, 6), /Dice count/);
   assert.throws(() => rollDice(1, 1), /Die sides/);
   assert.throws(() => rollDice(1, 20, 1000), /Modifier/);
+});
+
+test("resolves attacks against Armor Class and weapon threat ranges", () => {
+  const roll = (natural, total = natural) => ({ natural, total, count: 1, sides: 20, modifier: total - natural, rolls: [natural], subtotal: natural, outcome: "normal" });
+  assert.deepEqual(parseCriticalThreatRange("19-20/x2"), { minimum: 19, multiplier: 2 });
+  assert.equal(resolveAttackRoll(roll(10, 17), 18).hit, false);
+  assert.equal(resolveAttackRoll(roll(12, 18), 18).hit, true);
+  assert.equal(resolveAttackRoll(roll(1, 30), 10).hit, false);
+  assert.equal(resolveAttackRoll(roll(20, 18), 30).hit, true);
+  assert.equal(resolveAttackRoll(roll(19, 24), 20, "19-20/x2").criticalThreat, true);
+  assert.throws(() => resolveAttackRoll(roll(10), 0), /Armor Class/);
 });
