@@ -332,6 +332,22 @@ Complete the Pathfinder 1e critical-hit workflow after target resolution.
    applying damage.
 5. [x] Add deterministic regression coverage for confirmation rules and UI.
 
+## Completed expansion: Shared Archetype Class-Skill Automation
+
+Apply standard class-skill changes directly from authoritative archetype rules
+text when a hand-authored structured override is not present.
+
+1. [x] Recognize standard additions, removals, replacements, and “instead of”
+   wording across the archetype catalogue.
+2. [x] Normalize ability annotations and grouped Craft, Perform, Profession, and
+   Knowledge skill names to builder skill groups.
+3. [x] Exclude companion, familiar, eidolon, and homunculus skill lists from the
+   player character's class skills.
+4. [x] Apply inferred changes through the existing archetype stacking engine and
+   expose them in the automation summary.
+5. [x] Add engine and browser regression coverage across multiple classes and rule
+   phrasings.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

@@ -46,3 +46,7 @@ This report distinguishes selectable replacement integration from bespoke rules 
 - **Full:** replacement progression and bespoke selections/effects use existing builder subsystems.
 - **Partial:** replacement progression is automated; one-off effects remain readable rules text.
 - **Descriptive:** the rules are present for reference but require manual handling.
+
+## Shared subsystem automation
+
+- **Class-skill rules:** 220 archetypes have calculated additions or removals recognized from standard rules text.

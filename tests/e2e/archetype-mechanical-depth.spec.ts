@@ -12,6 +12,24 @@ async function openCharacterPanel(page: Page, mobile: boolean) {
 }
 
 for (const journey of journeys) {
+  test(`applies inferred archetype class skills on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("fighter");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("fighter-aerial-assaulter");
+    await expect(page.getByLabel("Archetype", { exact: true })).toHaveValue("fighter-aerial-assaulter");
+    if (journey.mobile) {
+      await page.getByRole("button", { name: "Close", exact: true }).evaluate((button) => button.click());
+    }
+    await page.getByRole("tab", { name: "Skills" }).click();
+    await expect(page.getByLabel("Acrobatics ranks").locator("xpath=ancestor::label")).toContainText("Class skill");
+    await expect(page.getByLabel("Ride ranks").locator("xpath=ancestor::label")).not.toContainText("Class skill");
+    await expect(page.getByLabel("Swim ranks").locator("xpath=ancestor::label")).not.toContainText("Class skill");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);
