@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeProficiencyAdjustments, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -315,6 +315,36 @@ test("inferred proficiency automation stays normalized across the full archetype
       }
     }
   }
+});
+
+test("standard archetype rules text applies per-level skill-rank progression", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const cases = new Map([
+    ["cleric-cloistered-cleric", { adjustment: { operation: "replace", value: 4 }, base: 2, expected: 4 }],
+    ["fighter-lore-warden", { adjustment: { operation: "add", value: 2 }, base: 2, expected: 4 }],
+    ["fighter-opportunist", { adjustment: { operation: "add", value: 2 }, base: 2, expected: 4 }],
+    ["rogue-eldritch-raider", { adjustment: { operation: "replace", value: 6 }, base: 8, expected: 6 }],
+    ["warpriest-cult-leader", { adjustment: { operation: "replace", value: 4 }, base: 2, expected: 4 }],
+  ]);
+  for (const [id, expected] of cases) {
+    const archetype = record(id);
+    assert.deepEqual(inferArchetypeSkillRankAdjustment(archetype), expected.adjustment, `${id} inferred adjustment`);
+    const applied = applyArchetype({ id: archetype.classId, name: "Class", skillRanksPerLevel: expected.base, classSkills: [], features: [] }, archetype);
+    assert.equal(applied.skillRanksPerLevel, expected.expected, `${id} applied ranks`);
+    assert.ok(archetypeAutomationSummary(archetype).automated.some(item => item.startsWith("Class skill-rank progression:")), `${id} summary`);
+  }
+});
+
+test("skill-rank inference covers only explicit player-character progressions", () => {
+  const directory = new URL("../packages/data/src/archetypes/", import.meta.url);
+  const inferred = readdirSync(directory)
+    .filter(file => file.endsWith(".json"))
+    .map(file => JSON.parse(readFileSync(new URL(file, directory), "utf8")))
+    .map(archetype => ({ archetype, adjustment: inferArchetypeSkillRankAdjustment(archetype) }))
+    .filter(item => item.adjustment);
+  assert.equal(inferred.length, 11);
+  assert.ok(inferred.every(item => !/(?:companion|eidolon|familiar|homunculus|phantom|mount)/i.test(item.archetype.name)));
+  assert.ok(inferred.every(item => item.adjustment.value >= 1 && item.adjustment.value <= 12));
 });
 
 test("archetype combat-statistic and proficiency replacements alter the calculated class chassis", () => {

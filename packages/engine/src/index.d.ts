@@ -92,6 +92,7 @@ export function normalizeCharacterDraft(value: unknown, options?: { classIds?: s
 export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype): CharacterClass;
 export function inferArchetypeClassSkillChanges(archetype?: CharacterArchetype): { additions: string[]; removals: string[] };
 export function inferArchetypeProficiencyAdjustments(archetype?: CharacterArchetype): Array<{ category: "weapon" | "armor" | "shield"; operation: "add" | "remove" | "replace"; proficiencies: string[] }>;
+export function inferArchetypeSkillRankAdjustment(archetype?: CharacterArchetype): { operation: "add" | "replace"; value: number } | undefined;
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];

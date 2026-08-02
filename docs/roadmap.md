@@ -364,6 +364,22 @@ authoritative archetype rules text when a hand-authored override is absent.
 5. [x] Add catalogue-audit, engine, desktop, and narrow-mobile regression
    coverage across multiple classes and rule phrasings.
 
+## Completed expansion: Shared Archetype Skill-Rank Progression
+
+Apply explicit skill ranks per level directly from authoritative archetype rules
+text when a hand-authored progression override is absent.
+
+1. [x] Recognize fixed `Skill Ranks per Level` values and additive bonus-rank
+   wording.
+2. [x] Exclude companion, eidolon, familiar, homunculus, phantom, and mount
+   progressions from the player character's chassis.
+3. [x] Apply fixed and additive changes through the existing level and multiclass
+   progression calculations.
+4. [x] Expose the calculated progression in the archetype automation summary and
+   generated coverage report.
+5. [x] Add full-catalogue, engine, desktop, and narrow-mobile regression
+   coverage.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

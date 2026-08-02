@@ -880,6 +880,9 @@ export function applyArchetype(characterClass, archetype) {
   const inferredProficiencies = archetype.proficiencyAdjustments?.length
     ? []
     : inferArchetypeProficiencyAdjustments(archetype);
+  const inferredSkillRanks = archetype.skillRanksPerLevel === undefined
+    ? inferArchetypeSkillRankAdjustment(archetype)
+    : undefined;
   return {
     ...characterClass,
     name: `${characterClass.name} (${archetype.name})`,
@@ -889,7 +892,10 @@ export function applyArchetype(characterClass, archetype) {
       ...(archetype.saveProgressionOverrides ?? {}),
     },
     skillRanksPerLevel:
-      archetype.skillRanksPerLevel ?? characterClass.skillRanksPerLevel,
+      archetype.skillRanksPerLevel ??
+      (inferredSkillRanks?.operation === "replace"
+        ? inferredSkillRanks.value
+        : characterClass.skillRanksPerLevel + (inferredSkillRanks?.value ?? 0)),
     hitDie: archetype.hitDie ?? characterClass.hitDie,
     proficiencyAdjustments: [
       ...(characterClass.proficiencyAdjustments ?? []),
@@ -1079,6 +1085,25 @@ export function inferArchetypeProficiencyAdjustments(archetype) {
   });
 }
 
+export function inferArchetypeSkillRankAdjustment(archetype) {
+  const features = (archetype?.replacements ?? []).flatMap(item => item.features ?? []);
+  for (const feature of features) {
+    const text = `${feature.name ?? ""} ${feature.summary ?? ""}`.replace(/\s+/g, " ");
+    if (/(?:companion|eidolon|familiar|homunculus|phantom|mount).*skill ranks?/i.test(text)) continue;
+    const fixed = text.match(/Skill Ranks per Level\s*:?\s*(\d+)\s*\+\s*(?:Int|Intelligence)\s+modifier/i);
+    if (fixed) {
+      const value = Number(fixed[1]);
+      if (value >= 1 && value <= 12) return { operation: "replace", value };
+    }
+    const additive = text.match(/(?:gains?|receives?)\s+(\d+)\s+(?:additional|bonus) skill ranks?\s+(?:at each|each|per) level/i);
+    if (additive) {
+      const value = Number(additive[1]);
+      if (value >= 1 && value <= 6) return { operation: "add", value };
+    }
+  }
+  return undefined;
+}
+
 function archetypeReplacementKeys(archetype) {
   return new Set(
     archetype?.replacements
@@ -1193,6 +1218,13 @@ export function archetypeAutomationSummary(archetype) {
     const action = adjustment.operation === "add" ? "gain" : adjustment.operation === "remove" ? "lose" : "use only";
     automated.push(`${adjustment.category[0].toUpperCase()}${adjustment.category.slice(1)} proficiencies: ${action} ${adjustment.proficiencies.join(", ")}`);
   }
+  const inferredSkillRanks = archetype.skillRanksPerLevel === undefined
+    ? inferArchetypeSkillRankAdjustment(archetype)
+    : undefined;
+  if (archetype.skillRanksPerLevel !== undefined)
+    automated.push(`Class skill-rank progression: ${archetype.skillRanksPerLevel} + Intelligence per level`);
+  else if (inferredSkillRanks)
+    automated.push(`Class skill-rank progression: ${inferredSkillRanks.operation === "add" ? "+" : ""}${inferredSkillRanks.value} per level${inferredSkillRanks.operation === "replace" ? " + Intelligence" : ""}`);
   if (archetype.resourceAdjustments?.length) automated.push(`${archetype.resourceAdjustments.length} tracked class resource adjustment${archetype.resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
