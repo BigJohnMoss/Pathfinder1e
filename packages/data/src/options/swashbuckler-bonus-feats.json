@@ -1,0 +1,6 @@
+{
+  "id": "swashbuckler-bonus-feats",
+  "name": "Swashbuckler Bonus Feats",
+  "classIds": ["swashbuckler"],
+  "options": []
+}

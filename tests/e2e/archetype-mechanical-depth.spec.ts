@@ -217,6 +217,36 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Swim ranks").locator("xpath=ancestor::label")).not.toContainText("Class skill");
   });
 
+  test(`replaces and expands a core class bonus-feat list on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("monk");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("monk-hamatulatsu-master");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("10");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    const firstChoice = page.getByLabel("Bonus Feat level 1").last();
+    await expect(firstChoice.locator('option[value="catch-off-guard"]')).toHaveCount(0);
+    await expect(firstChoice.locator('option[value="intimidating-prowess"]')).toHaveCount(1);
+    const tenthLevelChoice = page.getByLabel("Bonus Feat level 10");
+    await expect(tenthLevelChoice.locator('option[value="hamatulatsu"]')).toHaveCount(1);
+    await expect(tenthLevelChoice.locator('option[value="impaling-critical"]')).toHaveCount(1);
+    await tenthLevelChoice.selectOption("impaling-critical");
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Bonus Feat level 10")).toHaveValue("impaling-critical");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);

@@ -1,0 +1,6 @@
+{
+  "id": "monk-bonus-feats",
+  "name": "Monk Bonus Feats",
+  "classIds": ["monk"],
+  "options": []
+}

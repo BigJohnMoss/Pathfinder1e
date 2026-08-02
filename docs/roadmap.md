@@ -482,6 +482,21 @@ creating additional selections.
    Butterfly Blade substitutions.
 5. [x] Verify slot counts and save/load behavior on desktop and narrow mobile.
 
+## Completed expansion: Core and Replacement Bonus-Feat Chassis
+
+Make class bonus-feat progressions selectable and let archetypes replace or
+expand those lists without losing the original earned slots.
+
+1. [x] Add level-aware Monk, Warpriest, and Swashbuckler bonus-feat selectors.
+2. [x] Apply each class's published prerequisite handling, including Monk
+   waivers and Warpriest class-level substitutions.
+3. [x] Retain earned class slots when an archetype replaces their option list.
+4. [x] Automate Hamatulatsu Master, Hellcat, and Disenchanter replacement lists
+   and their later-level expansions.
+5. [x] Automate Buccaneer and Daring Infiltrator additions to existing lists.
+6. [x] Verify replacement, expansion, selection, and save/load behavior on
+   desktop and narrow mobile.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

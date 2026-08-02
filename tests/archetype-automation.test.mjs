@@ -192,6 +192,37 @@ test("archetype feat alternatives augment existing class choice slots without gr
   assert.equal(butterfly.optionGroupId, "slayer-talents");
   assert.equal(butterfly.ignoreFeatPrerequisites, true);
   assert.equal(butterfly.featChoiceIds.length, 5);
+
+  const hamatulatsu = inferArchetypeFeatAlternatives(archetype("monk-hamatulatsu-master"), feats);
+  assert.deepEqual(hamatulatsu.map(item => [item.minimumLevel, item.mode]), [[1, "replace"], [6, "augment"], [10, "augment"], [14, "augment"]]);
+  assert.ok(hamatulatsu.find(item => item.minimumLevel === 6).featChoiceIds.includes("gorgons-fist"));
+  assert.ok(hamatulatsu.find(item => item.minimumLevel === 10).featChoiceIds.includes("impaling-critical"));
+  assert.ok(hamatulatsu.find(item => item.minimumLevel === 10).featChoiceIds.includes("medusas-wrath"));
+
+  const hellcat = inferArchetypeFeatAlternatives(archetype("monk-hellcat"), feats);
+  assert.deepEqual(hellcat.map(item => [item.minimumLevel, item.mode]), [[1, "replace"], [6, "augment"], [10, "augment"]]);
+
+  const disenchanter = inferArchetypeFeatAlternatives(archetype("warpriest-disenchanter"), feats);
+  assert.deepEqual(disenchanter.map(item => [item.minimumLevel, item.mode]), [[1, "replace"], [6, "augment"], [12, "augment"]]);
+  assert.equal(disenchanter.every(item => item.ignoreFeatPrerequisites), true);
+
+  const buccaneer = inferArchetypeFeatAlternatives(archetype("gunslinger-buccaneer"), feats)[0];
+  assert.equal(buccaneer.optionGroupId, "gunslinger-bonus-feats");
+  assert.equal(buccaneer.featChoiceIds.length, 5);
+
+  const infiltrator = inferArchetypeFeatAlternatives(archetype("swashbuckler-daring-infiltrator"), feats)[0];
+  assert.equal(infiltrator.optionGroupId, "swashbuckler-bonus-feats");
+  assert.ok(infiltrator.featChoiceIds.includes("antagonize"));
+});
+
+test("core monk, warpriest, and swashbuckler bonus feat milestones expose automated choice groups", () => {
+  const characterClass = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/classes/${id}.json`, import.meta.url), "utf8"));
+  const choices = (id, groupId) => characterClass(id).features.filter(feature => feature.optionGroupId === groupId);
+
+  assert.deepEqual(choices("monk", "monk-bonus-feats").map(feature => feature.level), [1, 2, 6, 10, 14, 18]);
+  assert.deepEqual(choices("warpriest", "warpriest-bonus-feats").map(feature => feature.level), [3, 6, 9, 12, 15, 18]);
+  assert.deepEqual(choices("warpriest", "warpriest-weapon-focus").map(feature => feature.level), [1]);
+  assert.deepEqual(choices("swashbuckler", "swashbuckler-bonus-feats").map(feature => feature.level), [4, 8, 12, 16, 20]);
 });
 
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {

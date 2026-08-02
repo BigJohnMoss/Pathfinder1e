@@ -1,11 +1,12 @@
-const sourceSuffix = /\s+(?:APG|ACG|ARG|OA|UC|UI|ISG|UW|HA|WMH|CoP)$/i;
+const sourceSuffix = /\s+(?:APG|ACG|ARG|OA|UC|UI|UM|ISG|UW|HA|WMH|CoP)$/i;
 const choiceNumber = (value) => ({ three: 3, four: 4, five: 5, six: 6 }[String(value).toLowerCase()] ?? Number(value));
 
 const normalizeName = (value) => String(value)
+  .replace(/’|â€™|Ã¢â‚¬â„¢|ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢|ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢/g, "'")
   .replace(/-\s+/g, "-")
   .replace(/\s*\*+\s*$/, "")
   .replace(sourceSuffix, "")
-  .replace(/\s*\([^)]*\)\s*$/, "")
+  .replace(/(?:\s*\([^)]*\))+\s*$/, "")
   .replace(/\s+feat$/i, "")
   .replace(/^(?:a|an|the)\s+/i, "")
   .trim()
@@ -173,12 +174,37 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
     sourceFeatureId: feature.id,
     optionGroupId,
     minimumLevel,
+    mode: "augment",
     ignoreFeatPrerequisites: /(?:need not|doesn['’]t need to|does not need to|does not|neither[^.]{0,100}?needs? to)\s+meet[^.]{0,100}?prerequisites/i.test(feature.summary ?? ""),
     ...limits,
   });
 
   for (const feature of (archetype?.replacements ?? []).flatMap(item => item.features ?? [])) {
     const text = String(feature.summary ?? "").replace(/\s+/g, " ");
+    const classBonusFeatGroup = {
+      monk: "monk-bonus-feats",
+      warpriest: "warpriest-bonus-feats",
+      gunslinger: "gunslinger-bonus-feats",
+      swashbuckler: "swashbuckler-bonus-feats",
+    }[archetype?.classId];
+    const replacementList = text.match(/(?:replaces? (?:the )?(?:normal )?(?:monk )?bonus feats? with|selects? bonus feats? from|must choose from) the following(?: list)?\s*:\s*([^.]+)/i);
+    if (classBonusFeatGroup && replacementList) {
+      const ids = featIdsFromList(replacementList[1], featIdByName);
+      if (ids.length > 1 && ids.every(Boolean)) {
+        add(feature, classBonusFeatGroup, 1, { mode: "replace", featChoiceIds: ids });
+        for (const expansion of text.matchAll(/At\s+(\d+)(?:st|nd|rd|th)?\s+level,[^.]*?(?:added to|adds?[^.]*?to) (?:the|this) list\s*:\s*([^.]+)/gi)) {
+          const expansionIds = featIdsFromList(expansion[2], featIdByName).filter(Boolean);
+          if (expansionIds.length) add(feature, classBonusFeatGroup, Number(expansion[1]), { featChoiceIds: expansionIds });
+        }
+        continue;
+      }
+    }
+    const additionalBonusFeatList = text.match(/In addition to [^.]*?bonus feats?[^:]*:\s*([^.]+)/i);
+    if (classBonusFeatGroup && additionalBonusFeatList) {
+      const ids = featIdsFromList(additionalBonusFeatList[1], featIdByName).filter(Boolean);
+      if (ids.length) add(feature, classBonusFeatGroup, Math.max(1, Math.trunc(feature.level ?? 1)), { featChoiceIds: ids });
+      continue;
+    }
     const exact = text.match(/\bcan select (?:the )?(.+?) feats? in place of (?:an? )?(discovery|investigator talent)/i);
     if (exact) {
       const ids = featIdsFromList(exact[1], featIdByName);

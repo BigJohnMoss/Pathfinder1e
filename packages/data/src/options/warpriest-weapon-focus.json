@@ -1,0 +1,6 @@
+{
+  "id": "warpriest-weapon-focus",
+  "name": "Warpriest Weapon Focus",
+  "classIds": ["warpriest"],
+  "options": []
+}
