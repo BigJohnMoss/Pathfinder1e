@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -87,6 +87,24 @@ test("standard bonus-feat wording grants exact catalogue feats at the stated lev
     { id: "companion", level: 1, summary: "Her animal companion gains Dodge as a bonus feat." },
   ] }] };
   assert.deepEqual(inferArchetypeGrantedFeats(unsafe, [{ id: "dodge", name: "Dodge" }, { id: "mobility", name: "Mobility" }]), []);
+});
+
+test("restricted archetype feat wording creates level-aware catalogue choices", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const feats = [
+    { id: "athletic", name: "Athletic", type: "general" },
+    { id: "stealthy", name: "Stealthy", type: "general" },
+    { id: "lookout", name: "Lookout", type: "teamwork" },
+    { id: "craft-magic-arms-and-armor", name: "Craft Magic Arms and Armor", type: "item-creation" },
+  ];
+  const flood = inferArchetypeFeatChoices(archetype("hunter-flood-flourisher"), feats);
+  assert.deepEqual(flood.map(choice => ({ level: choice.level, ids: choice.featChoiceIds })), [
+    { level: 3, ids: ["athletic", "stealthy"] },
+  ]);
+  assert.deepEqual(inferArchetypeFeatChoices(archetype("inquisitor-tactical-leader"), feats).map(choice => choice.level), [3, 9, 18]);
+  assert.deepEqual(inferArchetypeFeatChoices(archetype("paladin-holy-tactician"), feats).map(choice => choice.level), [3, 7, 11, 15, 19]);
+  assert.deepEqual(inferArchetypeFeatChoices(archetype("bard-hoaxer"), feats).map(choice => choice.level), [5, 11, 17]);
+  assert.ok(archetypeAutomationSummary(archetype("hunter-flood-flourisher"), feats).automated.includes("1 restricted bonus feat choice"));
 });
 
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {

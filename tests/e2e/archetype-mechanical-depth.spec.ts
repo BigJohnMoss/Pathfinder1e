@@ -12,6 +12,34 @@ async function openCharacterPanel(page: Page, mobile: boolean) {
 }
 
 for (const journey of journeys) {
+  test(`selects and restores inferred restricted archetype feats on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("hunter");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("hunter-flood-flourisher");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("3");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    const choice = page.getByLabel("Skilled Ambusher bonus feat level 3");
+    await expect(choice.locator("option")).toHaveText(["Choose an option", "Athletic", "Stealthy"]);
+    await choice.selectOption("athletic");
+    await expect(page.getByText("1 restricted bonus feat choice")).toBeVisible();
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Skilled Ambusher bonus feat level 3")).toHaveValue("athletic");
+  });
+
   test(`applies inferred archetype bonus feats at their earned level on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

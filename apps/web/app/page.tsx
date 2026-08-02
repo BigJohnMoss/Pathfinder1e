@@ -72,6 +72,7 @@ import {
   effectiveSpellcastingLevels,
   featBonuses,
   featPrerequisiteResults,
+  inferArchetypeFeatChoices,
   inferArchetypeGrantedFeats,
   inferArchetypeResourceAdjustments,
   multiclassAverageHitPoints,
@@ -621,7 +622,14 @@ export default function Home() {
     progressionClasses,
     selectedAlternateRacialTraitIds,
   ]);
-  const unresolvedChoiceCount = progression.features.filter(
+  const inferredArchetypeFeatChoices = useMemo(
+    () => selectedArchetypes.flatMap((archetype) => {
+      const classLevel = classLevelMap[archetype.classId] ?? 0;
+      return inferArchetypeFeatChoices(archetype, feats).filter((feature) => feature.level <= classLevel);
+    }),
+    [classLevelMap, selectedArchetypes],
+  );
+  const unresolvedChoiceCount = [...progression.features, ...inferredArchetypeFeatChoices].filter(
     (feature) =>
       feature.level <= level &&
       feature.choiceRequired &&
@@ -715,7 +723,7 @@ export default function Home() {
           .map((grant) => grant.featId);
       }),
       ...Object.entries(selectedOptions).flatMap(([featureId, optionId]) => {
-        const feature = progression.features.find((candidate) => candidate.id === featureId);
+        const feature = [...progression.features, ...inferredArchetypeFeatChoices].find((candidate) => candidate.id === featureId);
         if (feature?.optionGroupId === "archetype-feats" && feats.some((feat) => feat.id === optionId)) return [optionId];
         const option = optionGroups
           .flatMap((group) => group.options)
@@ -723,7 +731,7 @@ export default function Home() {
         return option?.featId ? [option.featId] : [];
       }),
     ],
-    [classLevels, progression.features, selectedArchetypes, selectedOptions],
+    [classLevels, inferredArchetypeFeatChoices, progression.features, selectedArchetypes, selectedOptions],
   );
   const selectedFeatBonuses = useMemo(
     () =>
@@ -1137,7 +1145,7 @@ export default function Home() {
     [level, progression.skillRanks],
   );
 
-  const choiceFeatures = progression.features.filter(
+  const choiceFeatures = [...progression.features, ...inferredArchetypeFeatChoices].filter(
     (feature) => feature.choiceRequired && feature.optionGroupId,
   );
   const classOptionChoices = choiceFeatures.map((feature) => {

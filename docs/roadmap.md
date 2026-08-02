@@ -410,6 +410,22 @@ hand-authored structured grant is absent.
    equipment calculations and show the result in automation status.
 5. [x] Add catalogue, engine, desktop, and narrow-mobile regression coverage.
 
+## Completed expansion: Shared Archetype Restricted Feat Choices
+
+Convert common restricted bonus-feat wording into earned Features-tab selectors
+when no hand-authored choice progression exists.
+
+1. [x] Recognize exact either/or choices and reusable teamwork and item-creation
+   feat categories.
+2. [x] Expand published fixed and interval progressions into separate level-aware
+   choice slots through level 20.
+3. [x] Preserve prerequisite requirements and only bypass them when the rules
+   text explicitly does so.
+4. [x] Apply selected feat mechanics, include choices in completion guidance,
+   and persist selections across save/load on desktop and mobile.
+5. [x] Exclude companion-owned, unrestricted, and ambiguous list-modification
+   wording for later dedicated automation.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical
