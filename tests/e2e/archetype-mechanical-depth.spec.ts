@@ -12,6 +12,24 @@ async function openCharacterPanel(page: Page, mobile: boolean) {
 }
 
 for (const journey of journeys) {
+  test(`applies inferred archetype skill ranks on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("fighter");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("fighter-lore-warden");
+    await expect(page.getByLabel("Archetype", { exact: true })).toHaveValue("fighter-lore-warden");
+    if (journey.mobile) {
+      await page.getByRole("button", { name: "Close", exact: true }).evaluate((button) => button.click());
+    }
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByText("Class skill-rank progression: +2 per level")).toBeVisible();
+    await page.getByRole("tab", { name: "Basic info" }).click();
+    await expect(page.getByLabel("Character progression summary").getByText("Skill ranks").locator("..")).toContainText("6");
+  });
+
   test(`applies inferred archetype proficiencies on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

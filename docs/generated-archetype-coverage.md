@@ -51,3 +51,4 @@ This report distinguishes selectable replacement integration from bespoke rules 
 
 - **Class-skill rules:** 220 archetypes have calculated additions or removals recognized from standard rules text.
 - **Weapon and armor proficiency rules:** 158 archetypes have calculated grants, losses, or exceptions recognized from standard rules text.
+- **Skill-rank progression rules:** 11 archetypes have calculated fixed or additive ranks per level recognized from standard rules text.
