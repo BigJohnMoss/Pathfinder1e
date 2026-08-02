@@ -56,3 +56,10 @@ export function resolveAttackRoll(roll, armorClass, critical = "20/x2") {
     criticalMultiplier: threat.multiplier,
   };
 }
+
+export function confirmCriticalThreat(attackResolution, confirmationRoll) {
+  if (!attackResolution?.criticalThreat)
+    return { attempted: false, confirmed: false, confirmation: null };
+  const confirmation = resolveAttackRoll(confirmationRoll, attackResolution.armorClass);
+  return { attempted: true, confirmed: confirmation.hit, confirmation };
+}

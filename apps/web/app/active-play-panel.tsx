@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { ActiveEffect, ActiveEffectTarget } from "../../../packages/types/src/index.js";
-import { resolveAttackRoll, rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
+import { confirmCriticalThreat, resolveAttackRoll, rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
 import type { EquipmentAttack } from "./equipment-panel";
 
 type CheckRoll = { id: string; name: string; modifier: number };
@@ -58,6 +58,21 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       ? `Critical threat against AC ${targetArmorClass}`
       : `${resolution.hit ? "Hit" : "Miss"} against AC ${targetArmorClass}`;
     setRollHistory(current => current.map((roll, index) => index === 0 ? { ...roll, verdict, formula: `${roll.formula} · ${verdict}` } : roll));
+    if (resolution.criticalThreat) {
+      const confirmationRoll = rollD20Check(attack.attack);
+      const confirmation = confirmCriticalThreat(resolution, confirmationRoll);
+      const confirmationVerdict = confirmation.confirmed
+        ? `Critical confirmed (×${resolution.criticalMultiplier} damage) against AC ${targetArmorClass}`
+        : `Critical not confirmed; attack remains a hit against AC ${targetArmorClass}`;
+      recordRoll({
+        label: `${attack.name} critical confirmation`,
+        formula: `1d20 ${attack.attack >= 0 ? "+" : "−"} ${Math.abs(attack.attack)} · ${confirmationVerdict}`,
+        rolls: confirmationRoll.rolls,
+        total: confirmationRoll.total,
+        outcome: confirmationRoll.outcome,
+        verdict: confirmationVerdict,
+      });
+    }
   };
   const rollDamage = (attack: EquipmentAttack) => {
     const match = attack.damage.match(/^(\d+)d(\d+)$/i);

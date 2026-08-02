@@ -5,7 +5,7 @@ export type SaveProgression = "good" | "poor";
 
 export type CharacterClass = SharedCharacterClass;
 export function adjustedCompanionLevel(level: number, adjustment: CompanionProgressionAdjustment): number;
-export { parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
+export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
 
 export interface ClassProgression {
   level: number;
