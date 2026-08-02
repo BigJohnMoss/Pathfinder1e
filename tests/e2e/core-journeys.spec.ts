@@ -87,7 +87,7 @@ test("applies and persists background traits", async ({ page }) => {
   await page.getByLabel("Trait 1").selectOption("reactionary");
   await page.getByLabel("Trait 2").selectOption("caretaker");
   await page.getByRole("tab", { name: "Actions" }).click();
-  await expect(page.getByText("+2")).toBeVisible();
+  await expect(page.getByRole("definition").filter({ hasText: "+2" })).toBeVisible();
   await page.getByRole("button", { name: "Save" }).click();
   await page.reload();
   await page.getByRole("button", { name: "Load" }).click();

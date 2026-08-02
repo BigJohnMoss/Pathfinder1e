@@ -3664,6 +3664,13 @@ export default function Home() {
                 currentHitPoints={currentHitPoints ?? combat.averageHitPoints}
                 temporaryHitPoints={temporaryHitPoints}
                 attacks={combatAttacks}
+                checks={[
+                  { id: "initiative", name: "Initiative", modifier: combat.initiative },
+                  { id: "fortitude", name: "Fortitude save", modifier: combat.saves.fortitude },
+                  { id: "reflex", name: "Reflex save", modifier: combat.saves.reflex },
+                  { id: "will", name: "Will save", modifier: combat.saves.will },
+                ]}
+                skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total }))}
                 effects={activeEffects}
                 onCurrentHitPointsChange={setCurrentHitPoints}
                 onTemporaryHitPointsChange={setTemporaryHitPoints}
