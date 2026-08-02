@@ -12,6 +12,23 @@ async function openCharacterPanel(page: Page, mobile: boolean) {
 }
 
 for (const journey of journeys) {
+  test(`applies inferred archetype bonus feats at their earned level on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("ranger");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("ranger-summit-sentinel");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("2");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByText("1 level-aware bonus feat grant")).toBeVisible();
+    await page.getByRole("tab", { name: "Actions" }).click();
+    await expect(page.locator(".combat-panel").getByText("Average HP", { exact: true }).locator("xpath=..")).toContainText("19");
+  });
+
   test(`tracks inferred archetype resources on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

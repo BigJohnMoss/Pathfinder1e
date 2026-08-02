@@ -72,6 +72,7 @@ import {
   effectiveSpellcastingLevels,
   featBonuses,
   featPrerequisiteResults,
+  inferArchetypeGrantedFeats,
   inferArchetypeResourceAdjustments,
   multiclassAverageHitPoints,
   multiclassProgression,
@@ -707,6 +708,12 @@ export default function Home() {
       ...progression.features.flatMap((feature) =>
         [feature.grantedFeatId, ...(feature.grantedFeatIds ?? [])].filter((featId): featId is string => Boolean(featId)),
       ),
+      ...selectedArchetypes.flatMap((archetype) => {
+        const classLevel = classLevels.find((entry) => entry.classId === archetype.classId)?.level ?? 0;
+        return inferArchetypeGrantedFeats(archetype, feats)
+          .filter((grant) => grant.level <= classLevel)
+          .map((grant) => grant.featId);
+      }),
       ...Object.entries(selectedOptions).flatMap(([featureId, optionId]) => {
         const feature = progression.features.find((candidate) => candidate.id === featureId);
         if (feature?.optionGroupId === "archetype-feats" && feats.some((feat) => feat.id === optionId)) return [optionId];
@@ -716,7 +723,7 @@ export default function Home() {
         return option?.featId ? [option.featId] : [];
       }),
     ],
-    [progression.features, selectedOptions],
+    [classLevels, progression.features, selectedArchetypes, selectedOptions],
   );
   const selectedFeatBonuses = useMemo(
     () =>
@@ -3796,7 +3803,7 @@ export default function Home() {
                 dailyResources={classDailyResources}
               />
               <FavoredClassBenefits allocations={favoredClassAlternateBonuses} />
-              <ArchetypeAutomationStatus archetypes={selectedArchetypes} />
+              <ArchetypeAutomationStatus archetypes={selectedArchetypes} feats={feats} />
               {classOptionChoices.length > 0 && (
                 <ClassOptions
                   choices={classOptionChoices}

@@ -1,10 +1,13 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
-import { inferArchetypeClassSkillChanges, inferArchetypeProficiencyAdjustments, inferArchetypeResourceAdjustments, inferArchetypeSkillRankAdjustment } from "../../packages/engine/src/index.js";
+import { inferArchetypeClassSkillChanges, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeResourceAdjustments, inferArchetypeSkillRankAdjustment } from "../../packages/engine/src/index.js";
 
 const root = new URL("../../", import.meta.url);
 const directory = new URL("packages/data/src/archetypes/", root);
+const featDirectory = new URL("packages/data/src/feats/", root);
 const reportFile = new URL("docs/generated-archetype-coverage.md", root);
 const files = (await readdir(directory)).filter(file => file.endsWith(".json")).sort();
+const featFiles = (await readdir(featDirectory)).filter(file => file.endsWith(".json")).sort();
+const feats = (await Promise.all(featFiles.map(async file => JSON.parse(await readFile(new URL(file, featDirectory), "utf8"))))).flat();
 const records = [];
 const ancestryIds = new Map([
   ["Dwarf", "dwarf"],
@@ -61,6 +64,10 @@ const inferredSkillRankCount = records.filter(archetype =>
 const automatedResourceCount = records.filter(archetype =>
   (archetype.resourceAdjustments?.length ?? 0) > 0 || inferArchetypeResourceAdjustments(archetype).length > 0
 ).length;
+const automatedFeatGrantCount = records.filter(archetype => {
+  const features = (archetype.replacements ?? []).flatMap(replacement => replacement.features ?? []);
+  return features.some(feature => feature.grantedFeatId || feature.grantedFeatIds?.length) || inferArchetypeGrantedFeats(archetype, feats).length > 0;
+}).length;
 const lines = [
   "# Generated Archetype Mechanical Coverage",
   "",
@@ -84,7 +91,8 @@ const lines = [
   `- **Class-skill rules:** ${inferredClassSkillCount} archetypes have calculated additions or removals recognized from standard rules text.`,
   `- **Weapon and armor proficiency rules:** ${inferredProficiencyCount} archetypes have calculated grants, losses, or exceptions recognized from standard rules text.`,
   `- **Skill-rank progression rules:** ${inferredSkillRankCount} archetypes have calculated fixed or additive ranks per level recognized from standard rules text.`,
-  `- **Reusable daily resources:** ${automatedResourceCount} archetypes have bounded fixed, level-scaled, or ability-scaled pools connected to spend, refresh, and persistence controls.`
+  `- **Reusable daily resources:** ${automatedResourceCount} archetypes have bounded fixed, level-scaled, or ability-scaled pools connected to spend, refresh, and persistence controls.`,
+  `- **Fixed bonus-feat grants:** ${automatedFeatGrantCount} archetypes grant exact catalogue feats at their published levels and apply supported feat effects automatically.`
 ];
 await writeFile(reportFile, `${lines.join("\n")}\n`);
 console.log(`Annotated ${records.length} archetypes and updated ${reportFile.pathname}.`);

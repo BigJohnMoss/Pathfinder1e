@@ -53,3 +53,4 @@ This report distinguishes selectable replacement integration from bespoke rules 
 - **Weapon and armor proficiency rules:** 158 archetypes have calculated grants, losses, or exceptions recognized from standard rules text.
 - **Skill-rank progression rules:** 11 archetypes have calculated fixed or additive ranks per level recognized from standard rules text.
 - **Reusable daily resources:** 263 archetypes have bounded fixed, level-scaled, or ability-scaled pools connected to spend, refresh, and persistence controls.
+- **Fixed bonus-feat grants:** 170 archetypes grant exact catalogue feats at their published levels and apply supported feat effects automatically.

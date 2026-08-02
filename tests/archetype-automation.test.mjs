@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -66,6 +66,27 @@ test("shared archetype feat choices expose every earned selection slot", () => {
     const grants = archetype(id).replacements.flatMap((replacement) => replacement.features).flatMap((feature) => feature.grantedFeatIds ?? []);
     assert.deepEqual(grants, expected, `${id} fixed feat grants`);
   }
+});
+
+test("standard bonus-feat wording grants exact catalogue feats at the stated level", () => {
+  const juggler = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/bard-juggler.json", import.meta.url), "utf8"));
+  assert.deepEqual(inferArchetypeGrantedFeats(juggler, [
+    { id: "deflect-arrows", name: "Deflect Arrows" },
+    { id: "snatch-arrows", name: "Snatch Arrows" },
+  ]), [
+    { featureId: "bard-juggler-fast-reactions-ex-1", featId: "deflect-arrows", level: 1 },
+    { featureId: "bard-juggler-fast-reactions-ex-1", featId: "snatch-arrows", level: 5 },
+  ]);
+  assert.ok(archetypeAutomationSummary(juggler, [
+    { id: "deflect-arrows", name: "Deflect Arrows" },
+    { id: "snatch-arrows", name: "Snatch Arrows" },
+  ]).automated.includes("2 level-aware bonus feat grants"));
+
+  const unsafe = { replacements: [{ features: [
+    { id: "choice", level: 1, summary: "She gains either Dodge or Mobility as a bonus feat." },
+    { id: "companion", level: 1, summary: "Her animal companion gains Dodge as a bonus feat." },
+  ] }] };
+  assert.deepEqual(inferArchetypeGrantedFeats(unsafe, [{ id: "dodge", name: "Dodge" }, { id: "mobility", name: "Mobility" }]), []);
 });
 
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {

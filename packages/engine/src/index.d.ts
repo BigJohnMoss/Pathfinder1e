@@ -94,11 +94,12 @@ export function inferArchetypeClassSkillChanges(archetype?: CharacterArchetype):
 export function inferArchetypeProficiencyAdjustments(archetype?: CharacterArchetype): Array<{ category: "weapon" | "armor" | "shield"; operation: "add" | "remove" | "replace"; proficiencies: string[] }>;
 export function inferArchetypeSkillRankAdjustment(archetype?: CharacterArchetype): { operation: "add" | "replace"; value: number } | undefined;
 export function inferArchetypeResourceAdjustments(archetype?: CharacterArchetype): Array<{ resourceId: string; label: string; unit: string; operation: "replace"; minimumLevel: number; base: number; perInterval?: number; interval?: number; levelDivisor?: number; levelMultiplier?: number; abilityModifier?: AbilityName; abilityMultiplier?: number; minimum?: number; maximum?: number }>;
+export function inferArchetypeGrantedFeats(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ featureId: string; featId: string; level: number }>;
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];
 export function applyArchetypes(characterClass: CharacterClass, archetypes?: CharacterArchetype[]): CharacterClass;
-export function archetypeAutomationSummary(archetype?: CharacterArchetype): { automated: string[]; manual: string[] };
+export function archetypeAutomationSummary(archetype?: CharacterArchetype, feats?: CharacterFeat[]): { automated: string[]; manual: string[] };
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function classBaseAttackBonus(characterClass: CharacterClass, level: number): number;
