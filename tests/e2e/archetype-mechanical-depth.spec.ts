@@ -12,6 +12,24 @@ async function openCharacterPanel(page: Page, mobile: boolean) {
 }
 
 for (const journey of journeys) {
+  test(`applies inferred archetype proficiencies on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("bard");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("bard-geisha");
+    await expect(page.getByLabel("Archetype", { exact: true })).toHaveValue("bard-geisha");
+    if (journey.mobile) {
+      await page.getByRole("button", { name: "Close", exact: true }).evaluate((button) => button.click());
+    }
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByText("Weapon proficiencies: gain All simple weapons")).toBeVisible();
+    await expect(page.getByText("Armor proficiencies: lose All armor")).toBeVisible();
+    await expect(page.getByText("Shield proficiencies: lose All shields")).toBeVisible();
+  });
+
   test(`applies inferred archetype class skills on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

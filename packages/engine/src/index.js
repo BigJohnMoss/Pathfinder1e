@@ -877,6 +877,9 @@ export function applyArchetype(characterClass, archetype) {
   const inferredClassSkills = hasStructuredClassSkills
     ? { additions: [], removals: [] }
     : inferArchetypeClassSkillChanges(archetype);
+  const inferredProficiencies = archetype.proficiencyAdjustments?.length
+    ? []
+    : inferArchetypeProficiencyAdjustments(archetype);
   return {
     ...characterClass,
     name: `${characterClass.name} (${archetype.name})`,
@@ -890,7 +893,7 @@ export function applyArchetype(characterClass, archetype) {
     hitDie: archetype.hitDie ?? characterClass.hitDie,
     proficiencyAdjustments: [
       ...(characterClass.proficiencyAdjustments ?? []),
-      ...(archetype.proficiencyAdjustments ?? []),
+      ...(archetype.proficiencyAdjustments ?? inferredProficiencies),
     ],
     spellListAdditions: {
       ...(characterClass.spellListAdditions ?? {}),
@@ -978,6 +981,102 @@ export function inferArchetypeClassSkillChanges(archetype) {
   }
   for (const skill of removals) additions.delete(skill);
   return { additions: [...additions], removals: [...removals] };
+}
+
+function namedArchetypeProficiencies(fragment) {
+  const text = String(fragment)
+    .replace(/[“”]/g, '"')
+    .replace(/\s+/g, " ")
+    .trim();
+  const results = [];
+  const add = (category, proficiency) => {
+    if (!results.some(item => item.category === category && item.proficiency === proficiency))
+      results.push({ category, proficiency });
+  };
+  if (/\b(?:all simple weapons?|simple weapons|simple and martial weapons)\b/i.test(text)) add("weapon", "All simple weapons");
+  if (/\b(?:all martial weapons?|martial weapons|simple and martial weapons)\b/i.test(text)) add("weapon", "All martial weapons");
+  if (/\bone martial weapon\b/i.test(text)) add("weapon", "One martial weapon (choice)");
+  if (/\ball thrown weapons\b/i.test(text)) add("weapon", "All thrown weapons");
+  if (/\ball monk weapons\b/i.test(text)) add("weapon", "All monk weapons");
+  if (/\b(?:his|her|their|the) deity(?:'|’|â€™)s favored weapon\b/i.test(text)) add("weapon", "Deity's favored weapon");
+  if (/\b(?:all )?firearms?\b/i.test(text)) add("weapon", "Firearms");
+  for (const armor of ["light", "medium", "heavy", "leather", "hide"])
+    if (new RegExp(`\\b${armor} armors?\\b`, "i").test(text)) add("armor", `${armor[0].toUpperCase()}${armor.slice(1)} armor`);
+  for (const armor of ["light", "medium", "heavy"])
+    if (new RegExp(`\\b${armor}(?:,| and| or)(?: light| medium| heavy)+ armor\\b`, "i").test(text)) add("armor", `${armor[0].toUpperCase()}${armor.slice(1)} armor`);
+  if (/\b(?:any|all) (?:type(?:s)? of )?armors?\b/i.test(text)) add("armor", "All armor");
+  if (/\btower shields?\b/i.test(text) && !/(?:except|but not|not with) tower shields?/i.test(text)) add("shield", "Tower shields");
+  if (/\bbucklers?\b/i.test(text)) add("shield", "Bucklers");
+  if (/\bshields?\b/i.test(text) && !/\b(?:bucklers?|light shields?|heavy shields?|tower shields?)\b/i.test(text))
+    add("shield", "All shields");
+
+  const residual = text
+    .replace(/\([^)]*\)/g, "")
+    .replace(/\b(?:all )?simple and martial weapons?\b/gi, "")
+    .replace(/\b(?:all )?(?:simple|martial) weapons?\b/gi, "")
+    .replace(/\ball (?:thrown|monk) weapons\b/gi, "")
+    .replace(/\b(?:all )?firearms?\b/gi, "")
+    .replace(/\b(?:light|medium|heavy|leather|hide) armors?\b/gi, "")
+    .replace(/\b(?:any|all) (?:type(?:s)? of )?armors?\b/gi, "")
+    .replace(/\b(?:bucklers?|light shields?|heavy shields?|tower shields?|shields?)\b/gi, "");
+  for (const raw of residual.split(/,|\band\b|\bplus\b/gi)) {
+    const value = raw
+      .replace(/^(?:with|the|a|an|one|any|in addition to|proficiency in|proficiency with)\s+/i, "")
+      .replace(/\s+(?:as weapons?|as a weapon)$/i, "")
+      .trim();
+    if (!value || value.length > 45 || /^(?:or|with|only|all|it|its use|light|medium|heavy|one-handed|two-handed)$/i.test(value) || /\bor\b/i.test(value) || /\b(?:armors?|shields?|weapons?|proficien|normal|choos|class|feat|spell|bloodline)\b/i.test(value)) continue;
+    if (/^[a-z][a-z' -]+$/i.test(value)) add("weapon", value.replace(/\b\w/g, letter => letter.toUpperCase()));
+  }
+  return results;
+}
+
+export function inferArchetypeProficiencyAdjustments(archetype) {
+  const grouped = new Map();
+  const record = (operation, fragment) => {
+    const normalizedFragment = String(fragment).replace(/\(except ([^)]+)\)/gi, " but not $1");
+    const exclusion = normalizedFragment.match(/^(.*?)(?:,?\s+(?:but not(?: with)?|except(?: for)?)\s+)(.+)$/i);
+    const includedFragment = exclusion ? exclusion[1] : normalizedFragment;
+    for (const { category, proficiency } of namedArchetypeProficiencies(includedFragment)) {
+      const key = `${category}:${operation}`;
+      if (!grouped.has(key)) grouped.set(key, new Set());
+      grouped.get(key).add(proficiency);
+    }
+    if (exclusion) record(operation === "add" ? "remove" : "add", exclusion[2]);
+  };
+  const features = (archetype?.replacements ?? []).flatMap(item => item.features ?? []);
+  for (const feature of features) {
+    if (!/proficien/i.test(`${feature.name ?? ""} ${feature.summary ?? ""}`)) continue;
+    if (/(?:companion|eidolon|familiar|homunculus|mount).*proficien/i.test(feature.summary ?? "") && !/proficien/i.test(feature.name ?? "")) continue;
+    const text = String(feature.summary ?? "")
+      .replace(/(?:isn|aren|doesn|don)(?:'|’|â€™|Ã¢â‚¬â„¢)t/gi, match => match.toLowerCase().startsWith("isn") ? "is not" : match.toLowerCase().startsWith("aren") ? "are not" : match.toLowerCase().startsWith("doesn") ? "does not" : "do not")
+      .replace(/\s+/g, " ");
+    if (/picks? one martial weapon[^.]{0,100}becomes? proficient/i.test(text))
+      record("add", "one martial weapon");
+    const negativePatterns = [
+      /(?:is|are) not proficient (?:with|in) (.+?)(?:[.;]|$)/gi,
+      /(?:does not|do not) gain (?:weapon |armor |shield )?proficiency (?:with|in) (.+?)(?:(?:,? and must)|[.;]|$)/gi,
+      /loses? (?:his |her |their )?proficiency with (.+?)(?:[.;]|$)/gi,
+      /loses? (.+?) proficiency(?=,? and|[.;]|$)/gi,
+      /replaces? (?:his|her|their|the)?\s*proficiency with (.+?)(?:[.;]|$)/gi,
+      /replaces? [^.]{0,100}?proficiency with (.+?)(?:[.;]|$)/gi,
+    ];
+    const positivePatterns = [
+      /(?:is|are) proficient (?:with|in) (.+?)(?:[.;]|$)/gi,
+      /gains? (?:weapon |armor |shield )?proficiency (?:with|in) (.+?)(?:[.;]|$)/gi,
+      /gains? (.+?) proficiency(?=,? and|[.;]|$)/gi,
+      /becomes? proficient (?:with|in)(?: the use of)? (.+?)(?:[.;]|$)/gi,
+      /treats? (.+?) as (?:a )?simple weapon/gi,
+    ];
+    for (const pattern of negativePatterns) for (const match of text.matchAll(pattern)) record("remove", match[1]);
+    for (const pattern of positivePatterns) for (const match of text.matchAll(pattern)) {
+      if (/(?:does not|do not|is not|are not)\s*$/i.test(text.slice(Math.max(0, match.index - 16), match.index))) continue;
+      record("add", match[1]);
+    }
+  }
+  return [...grouped.entries()].map(([key, proficiencies]) => {
+    const [category, operation] = key.split(":");
+    return { category, operation, proficiencies: [...proficiencies] };
+  });
 }
 
 function archetypeReplacementKeys(archetype) {
@@ -1087,7 +1186,10 @@ export function archetypeAutomationSummary(archetype) {
   const inferredClassSkills = inferArchetypeClassSkillChanges(archetype);
   if (archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length || inferredClassSkills.additions.length || inferredClassSkills.removals.length) automated.push("Class skill changes");
   if ([archetype.babProgression, archetype.saveProgressionOverrides, archetype.skillRanksPerLevel, archetype.hitDie].some(value => value !== undefined)) automated.push("Class combat-statistic progression");
-  for (const adjustment of archetype.proficiencyAdjustments ?? []) {
+  const proficiencyAdjustments = archetype.proficiencyAdjustments?.length
+    ? archetype.proficiencyAdjustments
+    : inferArchetypeProficiencyAdjustments(archetype);
+  for (const adjustment of proficiencyAdjustments) {
     const action = adjustment.operation === "add" ? "gain" : adjustment.operation === "remove" ? "lose" : "use only";
     automated.push(`${adjustment.category[0].toUpperCase()}${adjustment.category.slice(1)} proficiencies: ${action} ${adjustment.proficiencies.join(", ")}`);
   }
