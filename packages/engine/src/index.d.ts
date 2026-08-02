@@ -93,6 +93,7 @@ export function applyArchetype(characterClass: CharacterClass, archetype?: Chara
 export function inferArchetypeClassSkillChanges(archetype?: CharacterArchetype): { additions: string[]; removals: string[] };
 export function inferArchetypeProficiencyAdjustments(archetype?: CharacterArchetype): Array<{ category: "weapon" | "armor" | "shield"; operation: "add" | "remove" | "replace"; proficiencies: string[] }>;
 export function inferArchetypeSkillRankAdjustment(archetype?: CharacterArchetype): { operation: "add" | "replace"; value: number } | undefined;
+export function inferArchetypeResourceAdjustments(archetype?: CharacterArchetype): Array<{ resourceId: string; label: string; unit: string; operation: "replace"; minimumLevel: number; base: number; perInterval?: number; interval?: number; levelDivisor?: number; levelMultiplier?: number; abilityModifier?: AbilityName; abilityMultiplier?: number; minimum?: number; maximum?: number }>;
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];

@@ -12,6 +12,29 @@ async function openCharacterPanel(page: Page, mobile: boolean) {
 }
 
 for (const journey of journeys) {
+  test(`tracks inferred archetype resources on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("alchemist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("alchemist-metamorph");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("18");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+
+    await page.getByRole("tab", { name: "Features" }).click();
+    const shapechangerRemaining = page.getByLabel("Alchemist Shapechanger remaining");
+    const shapechanger = shapechangerRemaining.locator("xpath=ancestor::*[contains(@class, 'daily-resource')]");
+    await expect(shapechangerRemaining).toHaveText("9/9 use remaining");
+    await shapechanger.getByRole("button", { name: "Spend 1 use" }).click();
+    await expect(shapechangerRemaining).toHaveText("8/9 use remaining");
+    await shapechanger.getByRole("button", { name: "Refresh alchemist shapechanger" }).click();
+    await expect(shapechangerRemaining).toHaveText("9/9 use remaining");
+
+    await expect(page.getByText("1 tracked class resource adjustment")).toBeVisible();
+  });
+
   test(`applies inferred archetype skill ranks on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

@@ -1,3 +1,5 @@
+import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
+
 const boundedLevel = (level) => Math.max(1, Math.min(20, Math.trunc(Number(level) || 1)));
 const nonNegativeModifier = (modifier) => Math.max(0, Math.trunc(Number(modifier) || 0));
 
@@ -71,16 +73,21 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
 
 export function applyArchetypeResourceAdjustments(maximums, archetypes, level, abilityModifiers = {}) {
   const classLevel = boundedLevel(level);
-  return (archetypes ?? []).flatMap((archetype) => archetype?.resourceAdjustments ?? []).reduce((current, adjustment) => {
+  return (archetypes ?? []).flatMap((archetype) => archetype?.resourceAdjustments?.length ? archetype.resourceAdjustments : inferArchetypeResourceAdjustments(archetype)).reduce((current, adjustment) => {
     if (!adjustment?.resourceId || classLevel < (adjustment.minimumLevel ?? 1)) return current;
     const interval = Math.max(1, Math.trunc(adjustment.interval ?? 1));
     const intervals = Math.floor((classLevel - (adjustment.minimumLevel ?? 1)) / interval);
     const abilityBonus = adjustment.abilityModifier
-      ? nonNegativeModifier(abilityModifiers[adjustment.abilityModifier])
+      ? nonNegativeModifier(abilityModifiers[adjustment.abilityModifier]) * (adjustment.abilityMultiplier ?? 1)
       : 0;
     const calculated = Math.max(
       adjustment.minimum ?? 0,
-      Math.min(adjustment.maximum ?? Number.MAX_SAFE_INTEGER, adjustment.base + intervals * (adjustment.perInterval ?? 0) + abilityBonus),
+      Math.min(
+        adjustment.maximum ?? Number.MAX_SAFE_INTEGER,
+        adjustment.base +
+          (adjustment.levelDivisor ? Math.floor(classLevel / adjustment.levelDivisor) : adjustment.levelMultiplier ? classLevel * adjustment.levelMultiplier : intervals * (adjustment.perInterval ?? 0)) +
+          abilityBonus,
+      ),
     );
     const previous = current[adjustment.resourceId] ?? 0;
     return {

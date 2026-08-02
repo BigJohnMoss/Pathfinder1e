@@ -1,8 +1,10 @@
 import { normalizeCompanionState } from "./companions.js";
+import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
+export { inferArchetypeResourceAdjustments };
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
   adjustment.minimumEffectiveLevel ?? 1,
@@ -1225,7 +1227,10 @@ export function archetypeAutomationSummary(archetype) {
     automated.push(`Class skill-rank progression: ${archetype.skillRanksPerLevel} + Intelligence per level`);
   else if (inferredSkillRanks)
     automated.push(`Class skill-rank progression: ${inferredSkillRanks.operation === "add" ? "+" : ""}${inferredSkillRanks.value} per level${inferredSkillRanks.operation === "replace" ? " + Intelligence" : ""}`);
-  if (archetype.resourceAdjustments?.length) automated.push(`${archetype.resourceAdjustments.length} tracked class resource adjustment${archetype.resourceAdjustments.length === 1 ? "" : "s"}`);
+  const resourceAdjustments = archetype.resourceAdjustments?.length
+    ? archetype.resourceAdjustments
+    : inferArchetypeResourceAdjustments(archetype);
+  if (resourceAdjustments.length) automated.push(`${resourceAdjustments.length} tracked class resource adjustment${resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
   const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);

@@ -208,7 +208,10 @@ export interface CharacterArchetype {
     base: number;
     perInterval?: number;
     interval?: number;
+    levelDivisor?: number;
+    levelMultiplier?: number;
     abilityModifier?: "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
+    abilityMultiplier?: number;
     minimum?: number;
     maximum?: number;
   }>;
