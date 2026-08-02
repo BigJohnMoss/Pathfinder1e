@@ -1083,8 +1083,10 @@ test("uses equipped attacks and quick hit point controls during combat", async (
   await user.click(screen.getByLabelText("Equipped"));
   await user.click(screen.getByRole("tab", { name: "Actions" }));
   assert.match(screen.getByText("Longsword").closest("article")?.textContent ?? "", /Attack \+0 · Damage 1d8/);
+  fireEvent.change(screen.getByLabelText("Target Armor Class"), { target: { value: "15" } });
   await user.click(screen.getByRole("button", { name: "Roll Longsword attack" }));
   assert.ok(screen.getByLabelText("Longsword attack total"));
+  assert.match(screen.getByLabelText("Longsword attack total").closest("li")?.textContent ?? "", /(Hit|Miss|Critical threat) against AC 15/);
   await user.click(screen.getByRole("button", { name: "Roll Longsword damage" }));
   assert.ok(screen.getByLabelText("Longsword damage total"));
   await user.click(screen.getByRole("button", { name: "Initiative roll, modifier +0" }));

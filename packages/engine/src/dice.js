@@ -36,3 +36,23 @@ export function rollD20Check(modifier = 0, random = Math.random) {
     outcome: result.rolls[0] === 20 ? "natural-20" : result.rolls[0] === 1 ? "natural-1" : "normal",
   };
 }
+
+export function parseCriticalThreatRange(critical) {
+  const match = String(critical).match(/^(?:(\d{1,2})\s*[^0-9]\s*)?20\s*\/\s*[^0-9]?(\d+)$/i);
+  if (!match) return { minimum: 20, multiplier: 2 };
+  return { minimum: match[1] ? Number(match[1]) : 20, multiplier: Number(match[2]) };
+}
+
+export function resolveAttackRoll(roll, armorClass, critical = "20/x2") {
+  if (!Number.isInteger(armorClass) || armorClass < 1 || armorClass > 999)
+    throw new RangeError("Armor Class must be between 1 and 999.");
+  const threat = parseCriticalThreatRange(critical);
+  const hit = roll.natural === 20 || (roll.natural !== 1 && roll.total >= armorClass);
+  return {
+    hit,
+    criticalThreat: hit && roll.natural >= threat.minimum,
+    armorClass,
+    threatMinimum: threat.minimum,
+    criticalMultiplier: threat.multiplier,
+  };
+}

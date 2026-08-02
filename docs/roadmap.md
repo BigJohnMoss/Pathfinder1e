@@ -298,6 +298,26 @@ existing hit-point, round, and temporary-effect tools.
 All work must preserve the completed Core, Expanded Character Options,
 Installable Application, Universal Builder, and Builder Expansion milestones.
 
+## Completed milestone: Combat Target Resolution
+
+Extend the combat dice foundation from raw totals into clear rules-aware attack
+outcomes.
+
+1. [x] Add a bounded target Armor Class control beside equipped attacks.
+2. [x] Resolve ordinary attacks as hits or misses while respecting automatic
+   natural 1 misses and natural 20 hits.
+3. [x] Parse each equipped weapon's threat range and identify critical threats.
+4. [x] Retain the target and outcome in roll history without automatically
+   applying damage.
+5. [x] Cover desktop and narrow-mobile target-resolution journeys.
+
+### Completion criteria
+
+- [x] attack totals are compared against the chosen Armor Class
+- [x] natural attack outcomes follow PF1e automatic hit and miss rules
+- [x] expanded weapon threat ranges are recognized
+- [x] target resolution remains readable and usable on mobile
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

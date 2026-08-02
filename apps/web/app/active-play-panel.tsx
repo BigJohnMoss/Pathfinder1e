@@ -1,10 +1,10 @@
 import { useState } from "react";
 import type { ActiveEffect, ActiveEffectTarget } from "../../../packages/types/src/index.js";
-import { rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
+import { resolveAttackRoll, rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
 import type { EquipmentAttack } from "./equipment-panel";
 
 type CheckRoll = { id: string; name: string; modifier: number };
-type RollHistory = { id: string; label: string; formula: string; rolls: number[]; total: number; outcome?: string };
+type RollHistory = { id: string; label: string; formula: string; rolls: number[]; total: number; outcome?: string; verdict?: string };
 
 const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "initiative", name: "Initiative" },
@@ -37,6 +37,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [customCount, setCustomCount] = useState(1);
   const [customSides, setCustomSides] = useState(20);
   const [customModifier, setCustomModifier] = useState(0);
+  const [targetArmorClass, setTargetArmorClass] = useState(10);
   const recordRoll = (roll: Omit<RollHistory, "id">) =>
     setRollHistory(current => [{ ...roll, id: globalThis.crypto?.randomUUID?.() ?? `roll-${Date.now()}-${Math.random()}` }, ...current].slice(0, 20));
   const advanceRound = () => {
@@ -52,6 +53,11 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const rollAttack = (attack: EquipmentAttack) => {
     const result = rollD20Check(attack.attack);
     recordRoll({ label: `${attack.name} attack`, formula: `1d20 ${attack.attack >= 0 ? "+" : "−"} ${Math.abs(attack.attack)}`, rolls: result.rolls, total: result.total, outcome: result.outcome });
+    const resolution = resolveAttackRoll(result, targetArmorClass, attack.critical);
+    const verdict = resolution.criticalThreat
+      ? `Critical threat against AC ${targetArmorClass}`
+      : `${resolution.hit ? "Hit" : "Miss"} against AC ${targetArmorClass}`;
+    setRollHistory(current => current.map((roll, index) => index === 0 ? { ...roll, verdict, formula: `${roll.formula} · ${verdict}` } : roll));
   };
   const rollDamage = (attack: EquipmentAttack) => {
     const match = attack.damage.match(/^(\d+)d(\d+)$/i);
@@ -91,7 +97,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <small>Damage uses temporary HP before current HP.</small>
     </div>
     <section className="combat-attacks" aria-labelledby="combat-attacks-heading">
-      <div><h4 id="combat-attacks-heading">Equipped attacks</h4><p>Attack values include abilities, enhancement bonuses, and supported feat modifiers.</p></div>
+      <div className="combat-attacks-heading"><div><h4 id="combat-attacks-heading">Equipped attacks</h4><p>Attack values include abilities, enhancement bonuses, and supported feat modifiers.</p></div><label>Target AC<input aria-label="Target Armor Class" type="number" min="1" max="999" value={targetArmorClass} onChange={event => setTargetArmorClass(Math.max(1, Math.min(999, Number(event.target.value) || 1)))} /></label></div>
       {attacks.length === 0 ? <p className="hint">Equip a weapon in Inventory to add it here.</p> : <div>{attacks.map((attack) => <article key={attack.id}>
         <div><strong>{attack.name}</strong><span>Attack {attack.attack >= 0 ? "+" : ""}{attack.attack} · Damage {attack.damage}{attack.damageBonus ? ` ${attack.damageBonus >= 0 ? "+" : ""}${attack.damageBonus}` : ""}</span><small>Critical {attack.critical}{attack.range ? ` · Range ${attack.range} ft.` : ""}</small></div>
         <div className="attack-roll-actions"><button type="button" onClick={() => rollAttack(attack)}>Roll {attack.name} attack</button><button type="button" className="secondary-button" onClick={() => rollDamage(attack)}>Roll {attack.name} damage</button></div>
