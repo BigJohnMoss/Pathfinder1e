@@ -348,6 +348,22 @@ text when a hand-authored structured override is not present.
 5. [x] Add engine and browser regression coverage across multiple classes and rule
    phrasings.
 
+## Completed expansion: Shared Archetype Proficiency Automation
+
+Apply standard weapon, armor, and shield proficiency changes directly from
+authoritative archetype rules text when a hand-authored override is absent.
+
+1. [x] Recognize proficiency grants, losses, replacements, and explicit
+   non-proficiency wording across the archetype catalogue.
+2. [x] Normalize simple and martial weapons, firearms, armor weights, shields,
+   tower-shield exceptions, named weapons, and choice-based martial weapons.
+3. [x] Exclude companion, familiar, eidolon, homunculus, and mount proficiency
+   rules from the player character's calculated chassis.
+4. [x] Apply inferred changes through the existing archetype stacking engine and
+   expose each grant or loss in the automation summary.
+5. [x] Add catalogue-audit, engine, desktop, and narrow-mobile regression
+   coverage across multiple classes and rule phrasings.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

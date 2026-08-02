@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, spellcastingProgression } from "../packages/engine/src/index.js";
+import { readFileSync, readdirSync } from "node:fs";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeProficiencyAdjustments, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -264,6 +264,56 @@ test("standard archetype rules text applies unannotated class-skill replacements
     for (const skill of additions) assert.ok(applied.classSkills.includes(skill), `${id} adds ${skill}`);
     for (const skill of removals) assert.ok(!applied.classSkills.includes(skill), `${id} removes ${skill}`);
     assert.ok(archetypeAutomationSummary(archetype).automated.includes("Class skill changes"), `${id} automation summary`);
+  }
+});
+
+test("standard archetype rules text applies unannotated proficiency changes", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const cases = new Map([
+    ["barbarian-sea-reaver", [{ category: "armor", operation: "remove", proficiencies: ["Medium armor"] }]],
+    ["bard-geisha", [
+      { category: "armor", operation: "remove", proficiencies: ["All armor"] },
+      { category: "shield", operation: "remove", proficiencies: ["All shields"] },
+      { category: "weapon", operation: "add", proficiencies: ["All simple weapons"] },
+    ]],
+    ["bard-dawnflower-dervish", [
+      { category: "weapon", operation: "remove", proficiencies: ["Rapier", "Whip"] },
+      { category: "weapon", operation: "add", proficiencies: ["Scimitar"] },
+    ]],
+    ["fighter-airborne-ambusher", [
+      { category: "armor", operation: "remove", proficiencies: ["Heavy armor"] },
+      { category: "shield", operation: "remove", proficiencies: ["Tower shields"] },
+    ]],
+    ["druid-survivor", [{ category: "weapon", operation: "add", proficiencies: ["Shortbow", "Longbow"] }]],
+  ]);
+  for (const [id, expected] of cases) {
+    const archetype = record(id);
+    assert.deepEqual(inferArchetypeProficiencyAdjustments(archetype), expected, `${id} inferred changes`);
+    assert.deepEqual(applyArchetype({ id: archetype.classId, name: "Class", classSkills: [], features: [] }, archetype).proficiencyAdjustments, expected);
+    assert.ok(archetypeAutomationSummary(archetype).automated.some(item => /proficiencies/.test(item)), `${id} automation summary`);
+  }
+});
+
+test("inferred proficiency automation stays normalized across the full archetype catalogue", () => {
+  const directory = new URL("../packages/data/src/archetypes/", import.meta.url);
+  const records = readdirSync(directory)
+    .filter(file => file.endsWith(".json"))
+    .map(file => JSON.parse(readFileSync(new URL(file, directory), "utf8")));
+  const inferred = records.map(archetype => ({ archetype, adjustments: inferArchetypeProficiencyAdjustments(archetype) }))
+    .filter(item => item.adjustments.length > 0);
+  assert.equal(inferred.length, 158);
+  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 142);
+  for (const { archetype, adjustments } of inferred) {
+    for (const adjustment of adjustments) {
+      assert.ok(["weapon", "armor", "shield"].includes(adjustment.category), `${archetype.id} category`);
+      assert.ok(["add", "remove", "replace"].includes(adjustment.operation), `${archetype.id} operation`);
+      assert.equal(adjustment.proficiencies.length, new Set(adjustment.proficiencies).size, `${archetype.id} duplicates`);
+      for (const proficiency of adjustment.proficiencies) {
+        assert.ok(proficiency.length >= 3, `${archetype.id} short proficiency`);
+        assert.ok(!/^(?:and|or|but|not|only|except|with|it|all)$/i.test(proficiency), `${archetype.id} fragment ${proficiency}`);
+        if (adjustment.category === "weapon") assert.ok(!/armor|shield/i.test(proficiency), `${archetype.id} cross-category ${proficiency}`);
+      }
+    }
   }
 });
 
