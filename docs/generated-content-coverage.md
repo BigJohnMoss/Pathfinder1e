@@ -33,6 +33,16 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Partially automated | 1119 |
 | Rules reference only | 0 |
 
+### Structured automation
+
+| Reusable subsystem | Archetypes |
+|---|---:|
+| Resources and limited uses | 26 |
+| Companions and effective levels | 34 |
+| Spell lists, slots, and casting | 48 |
+| Class skills and skill-rank progressions | 55 |
+| Combat statistics and proficiencies | 17 |
+
 Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
 
 ### Partial-archetype automation candidates

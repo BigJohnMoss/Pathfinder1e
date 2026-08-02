@@ -22,6 +22,14 @@ const archetypeCoverage = Object.fromEntries(["full", "partial", "descriptive"].
   coverage,
   data.archetypes.filter((archetype) => (archetype.mechanicalCoverage ?? "partial") === coverage).length,
 ]));
+const archetypeCoverageBaseline = { full: 76, partial: 1119, descriptive: 0 };
+const structuredArchetypeAutomation = {
+  resources: data.archetypes.filter((archetype) => archetype.resourceAdjustments?.length).length,
+  companions: data.archetypes.filter((archetype) => archetype.companionGrants?.length || archetype.companionProgressionAdjustments?.length).length,
+  spellcasting: data.archetypes.filter((archetype) => archetype.removesSpellcasting || archetype.spellListAdditions || archetype.bonusSpellAdditions || archetype.spellSlotAdjustmentPerLevel !== undefined || archetype.preparedSpellAdjustmentPerLevel !== undefined || archetype.spellsKnownAdjustmentPerLevel !== undefined).length,
+  skills: data.archetypes.filter((archetype) => archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length || archetype.skillRanksPerLevel !== undefined).length,
+  combatAndProficiencies: data.archetypes.filter((archetype) => archetype.babProgression || archetype.saveProgressionOverrides || archetype.hitDie || archetype.proficiencyAdjustments?.length).length,
+};
 const partialArchetypes = data.archetypes.filter((archetype) => (archetype.mechanicalCoverage ?? "partial") === "partial");
 const archetypeText = (archetype) => JSON.stringify({
   summary: archetype.summary,
@@ -89,6 +97,16 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Partially automated | ${archetypeCoverage.partial} |
 | Rules reference only | ${archetypeCoverage.descriptive} |
 
+### Structured automation
+
+| Reusable subsystem | Archetypes |
+|---|---:|
+| Resources and limited uses | ${structuredArchetypeAutomation.resources} |
+| Companions and effective levels | ${structuredArchetypeAutomation.companions} |
+| Spell lists, slots, and casting | ${structuredArchetypeAutomation.spellcasting} |
+| Class skills and skill-rank progressions | ${structuredArchetypeAutomation.skills} |
+| Combat statistics and proficiencies | ${structuredArchetypeAutomation.combatAndProficiencies} |
+
 Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
 
 ### Partial-archetype automation candidates
@@ -117,6 +135,15 @@ ${classRows}
 
 const output = new URL("docs/generated-content-coverage.md", root);
 if (process.argv.includes("--check")) {
+  const coverageRegressions = [
+    archetypeCoverage.full < archetypeCoverageBaseline.full && `fully automated archetypes fell below ${archetypeCoverageBaseline.full}`,
+    archetypeCoverage.partial > archetypeCoverageBaseline.partial && `partial archetypes exceeded ${archetypeCoverageBaseline.partial}`,
+    archetypeCoverage.descriptive > archetypeCoverageBaseline.descriptive && "rules-reference-only archetypes were introduced",
+  ].filter(Boolean);
+  if (coverageRegressions.length) {
+    console.error(`Archetype automation coverage regressed: ${coverageRegressions.join("; ")}.`);
+    process.exitCode = 1;
+  }
   const current = await readFile(output, "utf8").catch(() => "");
   const normalizedCurrent = current.replace(/\r\n/g, "\n");
   if (normalizedCurrent !== report) {
