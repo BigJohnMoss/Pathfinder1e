@@ -2,6 +2,8 @@ const sourceSuffix = /\s+(?:APG|ACG|ARG|OA|UC|UI|ISG|UW|HA|WMH|CoP)$/i;
 const choiceNumber = (value) => ({ three: 3, four: 4, five: 5, six: 6 }[String(value).toLowerCase()] ?? Number(value));
 
 const normalizeName = (value) => String(value)
+  .replace(/-\s+/g, "-")
+  .replace(/\s*\*+\s*$/, "")
   .replace(sourceSuffix, "")
   .replace(/\s*\([^)]*\)\s*$/, "")
   .replace(/\s+feat$/i, "")
@@ -9,8 +11,19 @@ const normalizeName = (value) => String(value)
   .trim()
   .toLowerCase();
 
+const featNameMap = (feats) => {
+  const result = new Map();
+  for (const feat of feats ?? []) {
+    const name = normalizeName(feat.name);
+    result.set(name, feat.id);
+    const armor = name.match(/^armor proficiency,\s*(light|medium|heavy)$/);
+    if (armor) result.set(`${armor[1]} armor proficiency`, feat.id);
+  }
+  return result;
+};
+
 export function inferArchetypeGrantedFeats(archetype, feats) {
-  const featIdByName = new Map((feats ?? []).map(feat => [normalizeName(feat.name), feat.id]));
+  const featIdByName = featNameMap(feats);
   const grants = [];
   const seen = new Set();
   for (const feature of (archetype?.replacements ?? []).flatMap(item => item.features ?? [])) {
@@ -39,10 +52,17 @@ export function inferArchetypeGrantedFeats(archetype, feats) {
   return grants;
 }
 
-const ordinalLevels = (text) => [...String(text).matchAll(/\b(\d+)(?:st|nd|rd|th)?\s+level\b/gi)].map(match => Number(match[1]));
+const ordinalLevels = (text) => {
+  const value = String(text);
+  const levels = [...value.matchAll(/\b(\d+)(?:st|nd|rd|th)?\s+levels?\b/gi)].map(match => Number(match[1]));
+  for (const list of value.matchAll(/\b((?:\d+(?:st|nd|rd|th)?\s*(?:,\s*(?:and\s+)?|and\s+))+\d+(?:st|nd|rd|th)?)\s+levels?\b/gi)) {
+    levels.push(...[...list[1].matchAll(/\d+/g)].map(match => Number(match[0])));
+  }
+  return [...new Set(levels)];
+};
 
 export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
-  const featIdByName = new Map((feats ?? []).map(feat => [normalizeName(feat.name), feat.id]));
+  const featIdByName = featNameMap(feats);
   const choices = [];
   const addChoices = (feature, levels, limits) => {
     const featureName = feature.name.replace(/\s*\([^)]+\)\s*$/, "");
@@ -57,8 +77,8 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
         optionGroupId: "archetype-feats",
         classId: archetype.classId,
         sourceFeatureId: feature.id,
-        ignoreFeatPrerequisites: /(?:need not|doesn't need to|does not need to) meet (?:the )?prerequisites/i.test(feature.summary ?? ""),
-        ...limits,
+        ignoreFeatPrerequisites: /(?:need not|doesn['’]t need to|does not need to)[^.]{0,100}?prerequisites/i.test(feature.summary ?? ""),
+        ...(typeof limits === "function" ? limits(level) : limits),
       });
     }
   };
@@ -80,6 +100,35 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
         const interval = choiceNumber(namedList[2]);
         addChoices(feature, Array.from({ length: 20 }, (_, index) => base + index * interval).filter(level => level <= maximumLevel), { featChoiceIds: ids });
         continue;
+      }
+    }
+    const publishedList = text.match(/\b(?:chosen|select(?:ed)?[^.:]{0,40}) from the following list\s*:\s*([^.]+)/i);
+    if (publishedList && /^Bonus (?:Item Creation )?Feats?$/i.test(feature.name ?? "") && !/must include [^.]+ prerequisite or be selected from/i.test(text)) {
+      const names = publishedList[1].replace(/\s+(?:or|and)\s+/gi, ",").split(",").map(name => name.trim()).filter(Boolean);
+      const baseIds = names.map(name => featIdByName.get(normalizeName(name)));
+      if (baseIds.length > 1 && baseIds.every(Boolean)) {
+        const opening = text.slice(0, publishedList.index);
+        const recurring = opening.match(/\bevery\s+(\d+|three|four|five|six)\s+levels? thereafter/i);
+        let levels = ordinalLevels(recurring ? opening.slice(0, recurring.index) : opening);
+        if (recurring && levels.length) {
+          const interval = choiceNumber(recurring[1]);
+          const base = levels.at(-1);
+          levels = [...levels, ...Array.from({ length: 20 }, (_, index) => base + (index + 1) * interval).filter(level => level <= maximumLevel)];
+        }
+        for (const earned of text.matchAll(/\bgains? an additional bonus feat at ([^.]+)/gi)) levels.push(...ordinalLevels(earned[1]));
+        const additions = [];
+        for (const match of text.slice(publishedList.index + publishedList[0].length).matchAll(/\bAt\s+(\d+)(?:st|nd|rd|th)?\s+level,[^.]{0,100}?(?:also (?:choose|select) from(?: the following feats?)?|following feats? (?:are|is) added to (?:the|this) list)\s*:\s*([^.]+)/gi)) {
+          const ids = match[2].replace(/\s+(?:or|and)\s+/gi, ",").split(",").map(name => name.trim()).filter(Boolean).map(name => featIdByName.get(normalizeName(name)));
+          if (ids.length && ids.every(Boolean)) additions.push({ level: Number(match[1]), ids });
+        }
+        for (const match of text.slice(publishedList.index + publishedList[0].length).matchAll(/\bAt\s+(\d+)(?:st|nd|rd|th)?\s+level,[^.]{0,80}?also (?:choose|select)\s+([^.]+)/gi)) {
+          const ids = match[2].replace(/\s+(?:or|and)\s+/gi, ",").split(",").map(name => name.trim()).filter(Boolean).map(name => featIdByName.get(normalizeName(name)));
+          if (ids.length && ids.every(Boolean) && !additions.some(item => item.level === Number(match[1]))) additions.push({ level: Number(match[1]), ids });
+        }
+        if (levels.length) {
+          addChoices(feature, levels, level => ({ featChoiceIds: [...new Set([baseIds, ...additions.filter(item => item.level <= level).map(item => item.ids)].flat())] }));
+          continue;
+        }
       }
     }
     if (!/\b(?:teamwork|item creation) feat as (?:a )?bonus feat/i.test(text) || /^Bonus Feats?$/i.test(feature.name ?? "")) continue;

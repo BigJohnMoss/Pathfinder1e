@@ -40,6 +40,33 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Skilled Ambusher bonus feat level 3")).toHaveValue("athletic");
   });
 
+  test(`selects and restores an expanding archetype feat list on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("cleric");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("cleric-crusader");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("20");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    const choice = page.getByLabel("Bonus Feat level 20");
+    await expect(choice.locator("option")).toHaveCount(17);
+    await choice.selectOption("greater-shield-specialization");
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Bonus Feat level 20")).toHaveValue("greater-shield-specialization");
+  });
+
   test(`applies inferred archetype bonus feats at their earned level on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");
