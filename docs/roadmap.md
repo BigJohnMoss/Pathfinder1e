@@ -468,6 +468,20 @@ derived families, and nonstandard feature names.
 5. [x] Verify prerequisite-derived selection and persistence on desktop and
    narrow mobile.
 
+## Completed expansion: Archetype Feats in Existing Class Slots
+
+Allow published archetype feats to replace an existing class choice without
+creating additional selections.
+
+1. [x] Represent feat alternatives as option-group augmentations with level and
+   prerequisite rules.
+2. [x] Feed selected alternatives into calculated feat effects and typed feat
+   details.
+3. [x] Remove unavailable alternatives automatically when an archetype changes.
+4. [x] Automate Fire Bomber, Pack Hunter, Steel Hound, Skulking Slayer, and
+   Butterfly Blade substitutions.
+5. [x] Verify slot counts and save/load behavior on desktop and narrow mobile.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

@@ -95,6 +95,34 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Bonus Feat level 7")).toHaveValue("diehard");
   });
 
+  test(`uses an existing class choice slot for an archetype feat on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("slayer");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("slayer-butterfly-blade");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("2");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    const talent = page.getByLabel("Slayer Talent level 2");
+    await expect(talent.locator('option[value="enforcer"]')).toHaveCount(1);
+    await talent.selectOption("enforcer");
+    await expect(page.getByLabel("Slayer Talent level 4")).toHaveCount(0);
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Slayer Talent level 2")).toHaveValue("enforcer");
+  });
+
   test(`applies inferred archetype bonus feats at their earned level on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

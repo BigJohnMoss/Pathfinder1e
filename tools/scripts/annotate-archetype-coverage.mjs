@@ -1,5 +1,5 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
-import { inferArchetypeClassSkillChanges, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeResourceAdjustments, inferArchetypeSkillRankAdjustment } from "../../packages/engine/src/index.js";
+import { inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeResourceAdjustments, inferArchetypeSkillRankAdjustment } from "../../packages/engine/src/index.js";
 
 const root = new URL("../../", import.meta.url);
 const directory = new URL("packages/data/src/archetypes/", root);
@@ -70,7 +70,7 @@ const automatedFeatGrantCount = records.filter(archetype => {
 }).length;
 const automatedFeatChoiceCount = records.filter(archetype => {
   const features = (archetype.replacements ?? []).flatMap(replacement => replacement.features ?? []);
-  return features.some(feature => feature.optionGroupId === "archetype-feats") || inferArchetypeFeatChoices(archetype, feats).length > 0;
+  return features.some(feature => feature.optionGroupId === "archetype-feats") || inferArchetypeFeatChoices(archetype, feats).length > 0 || inferArchetypeFeatAlternatives(archetype, feats).length > 0;
 }).length;
 const lines = [
   "# Generated Archetype Mechanical Coverage",

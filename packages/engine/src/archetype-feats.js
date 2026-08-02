@@ -165,3 +165,40 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
   }
   return choices;
 }
+
+export function inferArchetypeFeatAlternatives(archetype, feats) {
+  const featIdByName = featNameMap(feats);
+  const alternatives = [];
+  const add = (feature, optionGroupId, minimumLevel, limits) => alternatives.push({
+    sourceFeatureId: feature.id,
+    optionGroupId,
+    minimumLevel,
+    ignoreFeatPrerequisites: /(?:need not|doesn['’]t need to|does not need to|does not|neither[^.]{0,100}?needs? to)\s+meet[^.]{0,100}?prerequisites/i.test(feature.summary ?? ""),
+    ...limits,
+  });
+
+  for (const feature of (archetype?.replacements ?? []).flatMap(item => item.features ?? [])) {
+    const text = String(feature.summary ?? "").replace(/\s+/g, " ");
+    const exact = text.match(/\bcan select (?:the )?(.+?) feats? in place of (?:an? )?(discovery|investigator talent)/i);
+    if (exact) {
+      const ids = featIdsFromList(exact[1], featIdByName);
+      if (ids.length && ids.every(Boolean)) add(feature, exact[2].toLowerCase() === "discovery" ? "alchemist-discoveries" : "investigator-talents", exact[2].toLowerCase() === "discovery" ? 2 : 3, { featChoiceIds: ids });
+      continue;
+    }
+    if (/would gain a new rage power,[^.]+instead select a teamwork feat/i.test(text)) {
+      add(feature, "rage-powers", 2, { featChoiceTypes: ["teamwork"] });
+      continue;
+    }
+    const slayerList = text.match(/would gain a slayer talent,[^.]+instead select a feat from the following list\s*:\s*([^.]+)/i);
+    if (slayerList) {
+      const ids = featIdsFromList(slayerList[1], featIdByName);
+      if (ids.length && ids.every(Boolean)) add(feature, "slayer-talents", 2, { featChoiceIds: ids });
+      continue;
+    }
+    for (const match of text.matchAll(/\bAt\s+(\d+)(?:st|nd|rd|th)?\s+level,[^.]+?select (?:the )?(.+?) feat[^.]+?in place of (?:an? )?(?:advanced )?rogue talent/gi)) {
+      const featId = featIdByName.get(normalizeName(match[2]));
+      if (featId) add(feature, "rogue-talents", Number(match[1]), { featChoiceIds: [featId] });
+    }
+  }
+  return alternatives;
+}

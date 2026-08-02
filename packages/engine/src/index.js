@@ -1,6 +1,6 @@
 import { normalizeCompanionState } from "./companions.js";
 import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
-import { inferArchetypeFeatChoices, inferArchetypeGrantedFeats } from "./archetype-feats.js";
+import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats } from "./archetype-feats.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
@@ -8,6 +8,7 @@ export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, r
 export { inferArchetypeResourceAdjustments };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
+export { inferArchetypeFeatAlternatives };
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
   adjustment.minimumEffectiveLevel ?? 1,
@@ -1241,6 +1242,8 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const inferredFeatFeatureIds = new Set(inferredFeatGrants.map(grant => grant.featureId));
   const inferredFeatChoices = inferArchetypeFeatChoices(archetype, feats);
   if (inferredFeatChoices.length) automated.push(`${inferredFeatChoices.length} restricted bonus feat choice${inferredFeatChoices.length === 1 ? "" : "s"}`);
+  const inferredFeatAlternatives = inferArchetypeFeatAlternatives(archetype, feats);
+  if (inferredFeatAlternatives.length) automated.push(`${inferredFeatAlternatives.length} class-choice feat alternative${inferredFeatAlternatives.length === 1 ? "" : "s"}`);
   const inferredFeatChoiceFeatureIds = new Set(inferredFeatChoices.map(choice => choice.sourceFeatureId));
   const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);
   if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
