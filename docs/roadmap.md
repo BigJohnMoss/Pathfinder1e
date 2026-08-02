@@ -426,6 +426,19 @@ when no hand-authored choice progression exists.
 5. [x] Exclude companion-owned, unrestricted, and ambiguous list-modification
    wording for later dedicated automation.
 
+## Completed expansion: Named Archetype Feat Lists
+
+Convert recurring published feat lists into earned, level-aware selectors.
+
+1. [x] Recognize named feat lists with fixed recurring level intervals through
+   level 20.
+2. [x] Resolve list entries to the feat catalogue, including feats whose rules
+   text names a parenthetical sub-choice.
+3. [x] Carry typed feat details such as a Skill Focus skill into calculated feat
+   bonuses and saved character state.
+4. [x] Cover the Id Rager and eight animal-shaman progressions with catalogue
+   regression tests.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical
