@@ -395,6 +395,21 @@ character resources when a hand-authored structured override is absent.
    Features tab on desktop and narrow mobile.
 5. [x] Add formula, catalogue-safety, persistence, and browser regression tests.
 
+## Completed expansion: Shared Archetype Fixed Feat Grants
+
+Apply exact bonus feats from authoritative archetype feature text when a
+hand-authored structured grant is absent.
+
+1. [x] Match exact feat names, common source suffixes, and multiple fixed grants
+   against the complete feat catalogue.
+2. [x] Preserve the level stated in each sentence, including multiple feat
+   unlocks embedded in one replacement feature.
+3. [x] Exclude companion-owned grants and wording that requires an unrestricted
+   or either/or feat choice.
+4. [x] Feed inferred feats into supported combat, save, skill, hit-point, and
+   equipment calculations and show the result in automation status.
+5. [x] Add catalogue, engine, desktop, and narrow-mobile regression coverage.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

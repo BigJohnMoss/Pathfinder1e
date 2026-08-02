@@ -1,12 +1,12 @@
 import { archetypeAutomationSummary } from "../../../packages/engine/src/index.js";
-import type { CharacterArchetype } from "../../../packages/types/src/index.js";
+import type { CharacterArchetype, CharacterFeat } from "../../../packages/types/src/index.js";
 
-export function ArchetypeAutomationStatus({ archetypes }: { archetypes: CharacterArchetype[] }) {
+export function ArchetypeAutomationStatus({ archetypes, feats }: { archetypes: CharacterArchetype[]; feats: CharacterFeat[] }) {
   if (!archetypes.length) return null;
   return <section className="archetype-automation" aria-labelledby="archetype-automation-title">
     <div><p className="eyebrow">Archetype tracking</p><h2 id="archetype-automation-title">Automation status</h2><p>Automated rules are included in the calculated character. Manual items remain visible so they are never silently omitted.</p></div>
     {archetypes.map(archetype => {
-      const summary = archetypeAutomationSummary(archetype);
+      const summary = archetypeAutomationSummary(archetype, feats);
       return <article key={archetype.id}>
         <h3>{archetype.name}</h3>
         <div className="automation-columns">

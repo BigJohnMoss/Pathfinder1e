@@ -1,10 +1,12 @@
 import { normalizeCompanionState } from "./companions.js";
 import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
+import { inferArchetypeGrantedFeats } from "./archetype-feats.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
 export { inferArchetypeResourceAdjustments };
+export { inferArchetypeGrantedFeats };
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
   adjustment.minimumEffectiveLevel ?? 1,
@@ -1194,7 +1196,7 @@ export function applyArchetypes(characterClass, archetypes = []) {
     : applied;
 }
 
-export function archetypeAutomationSummary(archetype) {
+export function archetypeAutomationSummary(archetype, feats = []) {
   if (!archetype) return { automated: [], manual: [] };
   const automated = [];
   if ((archetype.replacements ?? []).some(item => item.featureIds?.length || item.progressionKeys?.length))
@@ -1233,10 +1235,13 @@ export function archetypeAutomationSummary(archetype) {
   if (resourceAdjustments.length) automated.push(`${resourceAdjustments.length} tracked class resource adjustment${resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
+  const inferredFeatGrants = inferArchetypeGrantedFeats(archetype, feats);
+  if (inferredFeatGrants.length) automated.push(`${inferredFeatGrants.length} level-aware bonus feat grant${inferredFeatGrants.length === 1 ? "" : "s"}`);
+  const inferredFeatFeatureIds = new Set(inferredFeatGrants.map(grant => grant.featureId));
   const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);
   if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
   const manualFeatures = replacementFeatures
-    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length)
+    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !inferredFeatFeatureIds.has(feature.id))
     .map(feature => `${feature.name} (level ${feature.level})`);
   const manual = archetype.mechanicalCoverage === "full"
     ? []
