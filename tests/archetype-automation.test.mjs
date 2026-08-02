@@ -148,6 +148,30 @@ test("level-dependent archetype feat lists expand at their published milestones"
     [1, 7], [5, 7], [10, 14], [15, 14], [20, 16],
   ]);
   assert.ok(crusader.every(choice => choice.ignoreFeatPrerequisites));
+
+  assert.deepEqual(progression("inquisitor-cloaked-wolf").map(choice => choice.level), [6, 9, 12, 15, 18]);
+  assert.deepEqual(progression("paladin-tempered-champion").map(choice => choice.level), [4, 8, 12, 16, 20]);
+  assert.deepEqual(progression("ranger-wave-warden").map(choice => [choice.level, choice.featChoiceIds.length]), [
+    [2, 9], [6, 12], [10, 14], [14, 14], [18, 14],
+  ]);
+  const urbanHunter = progression("hunter-urban-hunter");
+  assert.deepEqual(urbanHunter.map(choice => [choice.level, choice.featChoiceIds.length]), [
+    [6, 5], [9, 5], [12, 14], [15, 14], [18, 14],
+  ]);
+  assert.ok(urbanHunter.every(choice => choice.ignoreFeatPrerequisites));
+});
+
+test("hybrid archetype feat lists include catalogue descendants of a required feat", () => {
+  const archetype = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/skald-undying-word.json", import.meta.url), "utf8"));
+  const feats = readdirSync(new URL("../packages/data/src/feats/", import.meta.url))
+    .filter(file => file.endsWith(".json"))
+    .map(file => JSON.parse(readFileSync(new URL(`../packages/data/src/feats/${file}`, import.meta.url), "utf8")));
+  const choices = inferArchetypeFeatChoices(archetype, feats);
+
+  assert.deepEqual(choices.map(choice => choice.level), [1, 7, 13, 19]);
+  assert.deepEqual(choices[0].featChoiceIds, ["endurance", "great-fortitude", "improved-great-fortitude"]);
+  assert.deepEqual(choices[0].featChoicePrerequisiteIds, ["endurance"]);
+  assert.ok(feats.some(feat => feat.id === "diehard" && feat.prerequisites.some(item => item.type === "feat" && item.id === "endurance")));
 });
 
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {

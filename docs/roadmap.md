@@ -453,6 +453,21 @@ levels.
    Divine Guardian progressions without weakening their published lists.
 5. [x] Verify selection and save/load behavior on desktop and narrow mobile.
 
+## Completed expansion: Hybrid Archetype Feat Families
+
+Automate published bonus-feat rules that combine named options, prerequisite-
+derived families, and nonstandard feature names.
+
+1. [x] Include every catalogue feat that directly names a published prerequisite
+   alongside explicitly listed options.
+2. [x] Preserve compound feat names containing “and” while parsing prose lists.
+3. [x] Recognize bonus-feat progressions embedded in named archetype features and
+   apply explicit prerequisite waivers.
+4. [x] Automate Undying Word, Urban Hunter, Cloaked Wolf, Tempered Champion, and
+   Wave Warden progressions through level 20.
+5. [x] Verify prerequisite-derived selection and persistence on desktop and
+   narrow mobile.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

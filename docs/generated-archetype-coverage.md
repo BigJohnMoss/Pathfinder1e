@@ -54,4 +54,4 @@ This report distinguishes selectable replacement integration from bespoke rules 
 - **Skill-rank progression rules:** 11 archetypes have calculated fixed or additive ranks per level recognized from standard rules text.
 - **Reusable daily resources:** 263 archetypes have bounded fixed, level-scaled, or ability-scaled pools connected to spend, refresh, and persistence controls.
 - **Fixed bonus-feat grants:** 170 archetypes grant exact catalogue feats at their published levels and apply supported feat effects automatically.
-- **Restricted bonus-feat choices:** 33 archetypes expose 100 earned, level-aware selectors limited to their published feat ids or feat categories, including recurring and level-expanding named feat lists.
+- **Restricted bonus-feat choices:** 38 archetypes expose 124 earned, level-aware selectors limited to their published feat ids, feat categories, or prerequisite-derived families, including recurring and level-expanding named feat lists.

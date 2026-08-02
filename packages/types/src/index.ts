@@ -106,6 +106,7 @@ export interface ClassFeatureOccurrence {
   optionGroupId?: string | null;
   featChoiceIds?: string[];
   featChoiceTypes?: string[];
+  featChoicePrerequisiteIds?: string[];
   ignoreFeatPrerequisites?: boolean;
   grantedFeatId?: string;
   grantedFeatIds?: string[];

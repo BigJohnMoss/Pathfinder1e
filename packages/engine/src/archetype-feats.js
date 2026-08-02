@@ -22,6 +22,14 @@ const featNameMap = (feats) => {
   return result;
 };
 
+const featIdsFromList = (value, featIdByName) => String(value).split(",").flatMap((part) => {
+  const name = part.replace(/^\s*(?:and|or)\s+/i, "").trim();
+  if (!name) return [];
+  const exact = featIdByName.get(normalizeName(name));
+  if (exact) return [exact];
+  return name.split(/\s+(?:and|or)\s+/i).map(item => featIdByName.get(normalizeName(item.trim())));
+});
+
 export function inferArchetypeGrantedFeats(archetype, feats) {
   const featIdByName = featNameMap(feats);
   const grants = [];
@@ -77,7 +85,7 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
         optionGroupId: "archetype-feats",
         classId: archetype.classId,
         sourceFeatureId: feature.id,
-        ignoreFeatPrerequisites: /(?:need not|doesn['’]t need to|does not need to)[^.]{0,100}?prerequisites/i.test(feature.summary ?? ""),
+        ignoreFeatPrerequisites: /(?:need not|doesn['’]t need to|does not need to|does not|neither[^.]{0,100}?needs? to)\s+meet[^.]{0,100}?prerequisites/i.test(feature.summary ?? ""),
         ...(typeof limits === "function" ? limits(level) : limits),
       });
     }
@@ -93,8 +101,7 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
     }
     const namedList = text.match(/\bAt\s+(\d+)(?:st|nd|rd|th)?\s+level and every\s+(\d+|three|four)\s+(?:(?:[a-z]+)\s+)?levels? thereafter,[^.]{0,100}?\b(?:gains one|can select one) of the following (?:bonus )?feats?(?: as (?:a )?bonus feat)?\s*:\s*([^.]+)/i);
     if (namedList) {
-      const names = namedList[3].replace(/\s+(?:or|and)\s+/gi, ",").split(",").map(name => name.trim()).filter(Boolean);
-      const ids = names.map(name => featIdByName.get(normalizeName(name)));
+      const ids = featIdsFromList(namedList[3], featIdByName);
       if (ids.length > 1 && ids.every(Boolean)) {
         const base = Number(namedList[1]);
         const interval = choiceNumber(namedList[2]);
@@ -102,14 +109,17 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
         continue;
       }
     }
-    const publishedList = text.match(/\b(?:chosen|select(?:ed)?[^.:]{0,40}) from the following list\s*:\s*([^.]+)/i);
-    if (publishedList && /^Bonus (?:Item Creation )?Feats?$/i.test(feature.name ?? "") && !/must include [^.]+ prerequisite or be selected from/i.test(text)) {
-      const names = publishedList[1].replace(/\s+(?:or|and)\s+/gi, ",").split(",").map(name => name.trim()).filter(Boolean);
-      const baseIds = names.map(name => featIdByName.get(normalizeName(name)));
+    const publishedList = text.match(/\b(?:chosen|choos(?:e|en)|select(?:s|ed)?|gains?)[^.:]{0,60}? from the following (?:list|feats?)[^.:]{0,100}:\s*([^.]+)/i);
+    const ownsPublishedList = /^Bonus (?:Item Creation )?Feats?$/i.test(feature.name ?? "") || /\b(?:gains?|selects?) (?:an? |one )?(?:additional )?bonus feat/i.test(text);
+    if (publishedList && ownsPublishedList) {
+      const baseIds = featIdsFromList(publishedList[1], featIdByName);
       if (baseIds.length > 1 && baseIds.every(Boolean)) {
+        const prerequisiteFamilyName = text.match(/must include ([A-Z][A-Za-z' -]+?) as a prerequisite or be selected from/i)?.[1];
+        const prerequisiteFamilyId = prerequisiteFamilyName ? featIdByName.get(normalizeName(prerequisiteFamilyName)) : undefined;
         const opening = text.slice(0, publishedList.index);
-        const recurring = opening.match(/\bevery\s+(\d+|three|four|five|six)\s+levels? thereafter/i);
-        let levels = ordinalLevels(recurring ? opening.slice(0, recurring.index) : opening);
+        const recurring = opening.match(/\bevery\s+(\d+|three|four|five|six)\s+(?:[a-z]+\s+)?levels? thereafter/i);
+        const recurringSentenceStart = recurring ? opening.lastIndexOf(".", recurring.index) + 1 : 0;
+        let levels = ordinalLevels(recurring ? opening.slice(recurringSentenceStart, recurring.index) : opening);
         if (recurring && levels.length) {
           const interval = choiceNumber(recurring[1]);
           const base = levels.at(-1);
@@ -118,15 +128,22 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
         for (const earned of text.matchAll(/\bgains? an additional bonus feat at ([^.]+)/gi)) levels.push(...ordinalLevels(earned[1]));
         const additions = [];
         for (const match of text.slice(publishedList.index + publishedList[0].length).matchAll(/\bAt\s+(\d+)(?:st|nd|rd|th)?\s+level,[^.]{0,100}?(?:also (?:choose|select) from(?: the following feats?)?|following feats? (?:are|is) added to (?:the|this) list)\s*:\s*([^.]+)/gi)) {
-          const ids = match[2].replace(/\s+(?:or|and)\s+/gi, ",").split(",").map(name => name.trim()).filter(Boolean).map(name => featIdByName.get(normalizeName(name)));
+          const ids = featIdsFromList(match[2], featIdByName);
           if (ids.length && ids.every(Boolean)) additions.push({ level: Number(match[1]), ids });
         }
         for (const match of text.slice(publishedList.index + publishedList[0].length).matchAll(/\bAt\s+(\d+)(?:st|nd|rd|th)?\s+level,[^.]{0,80}?also (?:choose|select)\s+([^.]+)/gi)) {
-          const ids = match[2].replace(/\s+(?:or|and)\s+/gi, ",").split(",").map(name => name.trim()).filter(Boolean).map(name => featIdByName.get(normalizeName(name)));
+          const ids = featIdsFromList(match[2], featIdByName);
+          if (ids.length && ids.every(Boolean) && !additions.some(item => item.level === Number(match[1]))) additions.push({ level: Number(match[1]), ids });
+        }
+        for (const match of text.slice(publishedList.index + publishedList[0].length).matchAll(/\bAt\s+(\d+)(?:st|nd|rd|th)?\s+level,[^.]{0,80}?adds?\s+([^.]+?)\s+to (?:the|this) list/gi)) {
+          const ids = featIdsFromList(match[2], featIdByName);
           if (ids.length && ids.every(Boolean) && !additions.some(item => item.level === Number(match[1]))) additions.push({ level: Number(match[1]), ids });
         }
         if (levels.length) {
-          addChoices(feature, levels, level => ({ featChoiceIds: [...new Set([baseIds, ...additions.filter(item => item.level <= level).map(item => item.ids)].flat())] }));
+          addChoices(feature, levels, level => ({
+            featChoiceIds: [...new Set([baseIds, ...additions.filter(item => item.level <= level).map(item => item.ids)].flat())],
+            ...(prerequisiteFamilyId ? { featChoicePrerequisiteIds: [prerequisiteFamilyId] } : {}),
+          }));
           continue;
         }
       }

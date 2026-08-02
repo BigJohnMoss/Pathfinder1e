@@ -115,6 +115,7 @@ import type {
   ActiveEffect,
   CharacterClassLevel,
   CharacterDraftV1,
+  Prerequisite,
 } from "../../../packages/types/src/index.js";
 
 const labels = {
@@ -140,6 +141,14 @@ const prerequisiteFeatureKey = (value: string) =>
     .replace(/&/g, " and ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+const prerequisiteIncludesFeat = (prerequisites: Prerequisite[], featIds: string[]): boolean =>
+  prerequisites.some((prerequisite) =>
+    prerequisite.type === "feat"
+      ? featIds.includes(prerequisite.id)
+      : prerequisite.type === "any"
+        ? prerequisiteIncludesFeat(prerequisite.prerequisites, featIds)
+        : false,
+  );
 const archetypeIdsByClass = Object.fromEntries(
   classes.map((characterClass) => [
     characterClass.id,
@@ -1174,10 +1183,12 @@ export default function Home() {
             .filter((feat) => {
               const allowedIds = feature.featChoiceIds ?? [];
               const allowedTypes = feature.featChoiceTypes ?? [];
+              const prerequisiteIds = feature.featChoicePrerequisiteIds ?? [];
               return (
-                (allowedIds.length === 0 && allowedTypes.length === 0) ||
+                (allowedIds.length === 0 && allowedTypes.length === 0 && prerequisiteIds.length === 0) ||
                 allowedIds.includes(feat.id) ||
-                allowedTypes.includes(feat.type)
+                allowedTypes.includes(feat.type) ||
+                prerequisiteIncludesFeat(feat.prerequisites, prerequisiteIds)
               );
             })
             .map((feat) => ({
