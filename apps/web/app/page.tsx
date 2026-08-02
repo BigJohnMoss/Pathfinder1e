@@ -352,7 +352,7 @@ export default function Home() {
     classes.find((item) => item.id === classId) ?? classes[0];
   const availableArchetypes = useMemo(
     () => archetypes.filter((item) => item.classId === baseCharacterClass.id),
-    [baseCharacterClass.id],
+    [archetypes, baseCharacterClass.id],
   );
   const primaryArchetypeIds =
     archetypeStacksByClass[classId] ?? (archetypeId ? [archetypeId] : []);

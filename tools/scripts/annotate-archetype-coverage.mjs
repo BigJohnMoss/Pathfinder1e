@@ -1,4 +1,5 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
+import { inferArchetypeClassSkillChanges } from "../../packages/engine/src/index.js";
 
 const root = new URL("../../", import.meta.url);
 const directory = new URL("packages/data/src/archetypes/", root);
@@ -47,6 +48,10 @@ for (const file of files) {
 
 const byClass = new Map();
 for (const archetype of records) byClass.set(archetype.classId, [...(byClass.get(archetype.classId) ?? []), archetype]);
+const inferredClassSkillCount = records.filter(archetype => {
+  const inferred = inferArchetypeClassSkillChanges(archetype);
+  return inferred.additions.length > 0 || inferred.removals.length > 0;
+}).length;
 const lines = [
   "# Generated Archetype Mechanical Coverage",
   "",
@@ -63,7 +68,11 @@ const lines = [
   "",
   "- **Full:** replacement progression and bespoke selections/effects use existing builder subsystems.",
   "- **Partial:** replacement progression is automated; one-off effects remain readable rules text.",
-  "- **Descriptive:** the rules are present for reference but require manual handling."
+  "- **Descriptive:** the rules are present for reference but require manual handling.",
+  "",
+  "## Shared subsystem automation",
+  "",
+  `- **Class-skill rules:** ${inferredClassSkillCount} archetypes have calculated additions or removals recognized from standard rules text.`
 ];
 await writeFile(reportFile, `${lines.join("\n")}\n`);
 console.log(`Annotated ${records.length} archetypes and updated ${reportFile.pathname}.`);

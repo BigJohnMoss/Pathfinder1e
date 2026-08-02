@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, spellcastingProgression } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -245,6 +245,25 @@ test("fixed archetype class-skill replacements apply across the migrated catalog
     const applied = applyArchetype({ id: source.classId, name: "Base", features: [], classSkills: ["Appraise", "Handle Animal", "Knowledge (nature)", "Ride", "Survival"] }, source);
     for (const skill of additions) assert.ok(applied.classSkills.includes(skill), `${id} adds ${skill}`);
     for (const skill of removals) assert.ok(!applied.classSkills.includes(skill), `${id} removes ${skill}`);
+  }
+});
+
+test("standard archetype rules text applies unannotated class-skill replacements", () => {
+  const record = (directory, id) => JSON.parse(readFileSync(new URL(`../packages/data/src/${directory}/${id}.json`, import.meta.url), "utf8"));
+  const cases = new Map([
+    ["alchemist-aquachymist", [["Swim"], ["Fly"]]],
+    ["fighter-aerial-assaulter", [["Acrobatics", "Fly"], ["Knowledge (dungeoneering)", "Ride", "Swim"]]],
+    ["gunslinger-commando", [["Knowledge (geography)", "Knowledge (nature)", "Stealth"], ["Knowledge (engineering)", "Knowledge (local)", "Sleight of Hand"]]],
+    ["druid-nature-priest", [["Knowledge (religion)"], ["Knowledge (geography)"]]],
+    ["fighter-warlord", [["Acrobatics", "Knowledge (nobility)"], ["Swim", "Knowledge (dungeoneering)"]]],
+  ]);
+  for (const [id, [additions, removals]] of cases) {
+    const archetype = record("archetypes", id);
+    assert.deepEqual(inferArchetypeClassSkillChanges(archetype), { additions, removals }, `${id} inferred changes`);
+    const applied = applyArchetype(record("classes", archetype.classId), archetype);
+    for (const skill of additions) assert.ok(applied.classSkills.includes(skill), `${id} adds ${skill}`);
+    for (const skill of removals) assert.ok(!applied.classSkills.includes(skill), `${id} removes ${skill}`);
+    assert.ok(archetypeAutomationSummary(archetype).automated.includes("Class skill changes"), `${id} automation summary`);
   }
 });
 

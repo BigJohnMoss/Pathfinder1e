@@ -90,6 +90,7 @@ export function spellSaveDC(abilityScore: number, spellLevel: number): number;
 export function spellcastingProgression(characterClass: CharacterClass & { spellcasting?: { ability: string; castingType: string; slotsByLevel: number[][]; preparedByLevel?: number[][]; spellLevelUnlocks?: number[]; preparesFromSlots?: boolean } }, level: number, options?: { abilityScore?: number }): { ability: string; castingType: string; maximumSpellLevel: number; slots: Array<{ level: number; base: number; bonus: number; count: number }>; prepared: Array<{ level: number; count: number }> } | null;
 export function normalizeCharacterDraft(value: unknown, options?: { classIds?: string[] | null; ancestryIds?: string[] | null; archetypeIds?: string[] | null; archetypeIdsByClass?: Record<string, string[]> | null }): CharacterDraftV1 | null;
 export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype): CharacterClass;
+export function inferArchetypeClassSkillChanges(archetype?: CharacterArchetype): { additions: string[]; removals: string[] };
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];

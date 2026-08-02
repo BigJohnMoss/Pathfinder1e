@@ -873,6 +873,10 @@ export function applyArchetype(characterClass, archetype) {
     (baseSpellcasting?.castingType === "prepared" && !baseSpellcasting.preparesFromSlots
       ? archetype.spellSlotAdjustmentPerLevel
       : undefined);
+  const hasStructuredClassSkills = archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length;
+  const inferredClassSkills = hasStructuredClassSkills
+    ? { additions: [], removals: [] }
+    : inferArchetypeClassSkillChanges(archetype);
   return {
     ...characterClass,
     name: `${characterClass.name} (${archetype.name})`,
@@ -927,9 +931,9 @@ export function applyArchetype(characterClass, archetype) {
       ...new Set(
         characterClass.classSkills
           .filter(
-            (skill) => !(archetype.classSkillRemovals ?? []).includes(skill),
+            (skill) => ![...(archetype.classSkillRemovals ?? []), ...inferredClassSkills.removals].includes(skill),
           )
-          .concat(archetype.classSkillAdditions ?? []),
+          .concat(archetype.classSkillAdditions ?? [], inferredClassSkills.additions),
       ),
     ],
     features: [...retained, ...replacements].sort(
@@ -937,6 +941,43 @@ export function applyArchetype(characterClass, archetype) {
         left.level - right.level || left.name.localeCompare(right.name),
     ),
   };
+}
+
+const archetypeSkillPattern = /Knowledge \((?:all|arcana|dungeoneering|engineering|geography|history|local|nature|nobility|planes|religion)\)|Use Magic Device|Sleight of Hand|Sense Motive|Handle Animal|Disable Device|Escape Artist|Acrobatics|Appraise|Bluff|Climb|Craft(?: \([^)]+\))?|Diplomacy|Disguise|Fly|Heal|Intimidate|Linguistics|Perception|Perform(?: \([^)]+\))?|Profession(?: \([^)]+\))?|Ride|Spellcraft|Stealth|Survival|Swim/gi;
+
+function namedArchetypeSkills(text) {
+  return [...String(text).matchAll(archetypeSkillPattern)].map(match => {
+    const skill = match[0].replace(/^(Craft|Perform|Profession) \([^)]+\)$/i, "$1");
+    return skill.replace(/^Knowledge \(all\)$/i, "Knowledge");
+  });
+}
+
+export function inferArchetypeClassSkillChanges(archetype) {
+  const additions = new Set();
+  const removals = new Set();
+  const summaries = (archetype?.replacements ?? []).flatMap(item => item.features ?? []).map(feature =>
+    String(feature.summary ?? "").replace(/doesn(?:'|’|â€™)t/gi, "does not"),
+  );
+  for (const sentence of summaries.flatMap(summary => summary.split(/(?<=[.!?])\s+/))) {
+    if (sentence.length > 1200) continue;
+    if (!/class skills?/i.test(sentence) || /(?:companion|eidolon|familiar|homunculus).*class skills?/i.test(sentence)) continue;
+    const addPatterns = [
+      /(?:adds?|gains?|has|receives?|treats?)\s+(.+?)\s+(?:to (?:his|her|their|the)?\s*(?:list of )?class skills?|as (?:a )?class skills?)/gi,
+      /(.+?)\s+are (?:all )?class skills for/gi,
+      /(.+?)\s+is a class skill for/gi,
+    ];
+    const removePatterns = [
+      /(?:does not gain|do not gain|doesn't receive|does not receive|removes?|loses?|eliminate)\s+(.+?)(?:\s+(?:as|from).*?class skills|[.;]|$)/gi,
+      /instead of\s+(.+?)(?:\s+as class skills?|[.;]|$)/gi,
+      /replace(?:s)?\s+(.+?)\s+as class skills?/gi,
+      /(.+?)\s+are not class skills/gi,
+      /(?:as )?replacements? for\s+(.+?)(?:[.;]|$)/gi,
+    ];
+    for (const pattern of addPatterns) for (const match of sentence.matchAll(pattern)) for (const skill of namedArchetypeSkills(match[1])) additions.add(skill);
+    for (const pattern of removePatterns) for (const match of sentence.matchAll(pattern)) for (const skill of namedArchetypeSkills(match[1])) removals.add(skill);
+  }
+  for (const skill of removals) additions.delete(skill);
+  return { additions: [...additions], removals: [...removals] };
 }
 
 function archetypeReplacementKeys(archetype) {
@@ -1043,7 +1084,8 @@ export function archetypeAutomationSummary(archetype) {
   if (archetype.druidDomainIds?.length) automated.push("Available druid domains");
   if (archetype.rangerCombatStyleIds?.length) automated.push("Available ranger combat styles");
   if (archetype.mountedCompanionOnly) automated.push("Mounted companion restriction");
-  if (archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length) automated.push("Class skill changes");
+  const inferredClassSkills = inferArchetypeClassSkillChanges(archetype);
+  if (archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length || inferredClassSkills.additions.length || inferredClassSkills.removals.length) automated.push("Class skill changes");
   if ([archetype.babProgression, archetype.saveProgressionOverrides, archetype.skillRanksPerLevel, archetype.hitDie].some(value => value !== undefined)) automated.push("Class combat-statistic progression");
   for (const adjustment of archetype.proficiencyAdjustments ?? []) {
     const action = adjustment.operation === "add" ? "gain" : adjustment.operation === "remove" ? "lose" : "use only";
