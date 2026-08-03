@@ -87,6 +87,8 @@ const optionGroups=rawOptionGroups.map(group=>{
       benefit:`Add ${spell.name} to your spells known as a bonus spell.`,
       spellId:spell.id,
       spellLevel,
+      castsAsPrepared:filter.castsAsPrepared??false,
+      resourceCost:filter.resourceCost,
       source:spell.source??group.source
     };
   }).filter(Boolean);

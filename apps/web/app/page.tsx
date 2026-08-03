@@ -295,6 +295,22 @@ function spellsFromAdditions<T extends { id: string; levelByClass: Record<string
   });
 }
 
+function onDemandSpellCosts(options: CharacterOption[], classId: string) {
+  return Object.fromEntries(options.flatMap((option) => {
+    if (!option.castsAsPrepared || !option.spellId || !option.resourceCost || !option.classIds.includes(classId)) return [];
+    const spellLevel = option.spellLevel ?? 0;
+    const cost = Math.max(
+      option.resourceCost.minimum ?? 0,
+      (option.resourceCost.base ?? 0) + (option.resourceCost.levelDivisor ? Math.floor(spellLevel / option.resourceCost.levelDivisor) : 0),
+    );
+    return [[option.spellId, {
+      resourceId: option.resourceCost.resourceId,
+      cost,
+      label: option.resourceCost.label ?? "Class feature",
+    }]];
+  }));
+}
+
 function normalizeAdditionalClassLevels(
   entries: CharacterClassLevel[],
   primaryClassId: string,
@@ -1726,6 +1742,10 @@ export default function Home() {
     () => oppositionSchoolsFromOptions(classId, selectedOptions),
     [classId, selectedOptions],
   );
+  const primaryOnDemandSpellCosts = useMemo(
+    () => onDemandSpellCosts(selectedOptionSpellChoices, characterClass.id),
+    [characterClass.id, selectedOptionSpellChoices],
+  );
   const elementalMasterPreparation = useMemo(
     () => elementalMasterPreparationFromOptions(characterClass, selectedOptions),
     [characterClass, selectedOptions],
@@ -1980,6 +2000,10 @@ export default function Home() {
         selectedOptions,
       ),
     [secondaryCharacterClass, selectedOptions],
+  );
+  const secondaryOnDemandSpellCosts = useMemo(
+    () => secondaryCharacterClass ? onDemandSpellCosts(selectedOptionSpellChoices, secondaryCharacterClass.id) : {},
+    [secondaryCharacterClass, selectedOptionSpellChoices],
   );
   const secondaryElementalMasterPreparation = useMemo(
     () => elementalMasterPreparationFromOptions(secondaryCharacterClass, selectedOptions),
@@ -2360,7 +2384,7 @@ export default function Home() {
           grantedSpellIds,
         )
       : normalizePreparedSpellsWithOpposition(
-          spellIds,
+          spellIds.filter((id) => !primaryOnDemandSpellCosts[id]),
           primaryPreparedCatalogue,
           characterClass.spellListClassId ?? characterClass.id,
           preparedLimits,
@@ -2382,7 +2406,7 @@ export default function Home() {
             secondaryGrantedSpellIds,
           )
         : normalizePreparedSpellsWithOpposition(
-            spellIds,
+            spellIds.filter((id) => !secondaryOnDemandSpellCosts[id]),
             secondaryPreparedCatalogue,
             secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id,
             secondaryPreparedLimits,
@@ -2537,6 +2561,7 @@ export default function Home() {
       oppositionSchoolIds={oppositionSchoolIds}
       oppositionSpellIds={elementalMasterPreparation?.oppositionSpellIds}
       restrictedBonus={elementalMasterPreparation}
+      onDemandSpellCosts={primaryOnDemandSpellCosts}
     />
   ) : null;
   const secondarySpellbook =
@@ -2597,6 +2622,7 @@ export default function Home() {
         oppositionSchoolIds={secondaryOppositionSchoolIds}
         oppositionSpellIds={secondaryElementalMasterPreparation?.oppositionSpellIds}
         restrictedBonus={secondaryElementalMasterPreparation}
+        onDemandSpellCosts={secondaryOnDemandSpellCosts}
       />
     ) : null;
   const extraActiveClassLevel = additionalClassLevels

@@ -115,3 +115,23 @@ test("Harrowed Society Student grants Psychic Sensitivity and bounded daily read
     Math.max(...spells.filter((option) => option.minimumLevel <= level).map((option) => option.spellLevel))
   ), [2, 3, 4, 5, 6, 6, 8]);
 });
+
+test("Magaambyan Initiate exposes one legal Druid spell choice per class level", () => {
+  const initiate = archetypes.find((archetype) => archetype.id === "arcanist-magaambyan-initiate");
+  const applied = featuresThroughLevel(applyArchetype(arcanist, initiate), 20);
+  const halcyonChoices = applied.filter((feature) => feature.optionGroupId === "magaambyan-halcyon-spells");
+  assert.deepEqual(halcyonChoices.map((feature) => feature.level), Array.from({ length: 20 }, (_, index) => index + 1));
+  assert.ok(halcyonChoices.every((feature) => feature.choiceRequired));
+  assert.equal(applied.find((feature) => feature.id === "arcanist-magaambyan-initiate-spell-mastery-5")?.grantedFeatId, "spell-mastery");
+
+  const spells = generatedData.optionGroups.find((group) => group.id === "magaambyan-halcyon-spells").options;
+  assert.ok(spells.length >= 100);
+  assert.ok(spells.every((option) => option.spellId && option.spellLevel <= 9));
+  assert.ok(spells.every((option) => option.castsAsPrepared));
+  assert.ok(spells.every((option) => option.resourceCost?.resourceId === "arcaneReservoir"));
+  assert.ok(spells.every((option) => option.resourceCost?.levelDivisor === 2 && option.resourceCost?.minimum === 1));
+  assert.ok(spells.every((option) => generatedData.spells.find((spell) => spell.id === option.spellId)?.levelByClass.arcanist === undefined));
+  assert.deepEqual([1, 3, 5, 7, 9, 11, 13, 15, 17].map((level) =>
+    Math.max(...spells.filter((option) => option.minimumLevel <= level).map((option) => option.spellLevel))
+  ), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});

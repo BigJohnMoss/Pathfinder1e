@@ -40,6 +40,7 @@ export function Spellbook({
   oppositionSchoolIds = [],
   oppositionSpellIds = [],
   restrictedBonus = null,
+  onDemandSpellCosts = {},
 }: {
   spells: Spell[];
   sourceBook?: {
@@ -69,6 +70,7 @@ export function Spellbook({
   oppositionSchoolIds?: string[];
   oppositionSpellIds?: string[];
   restrictedBonus?: { eligibleSpellIds: string[]; countPerLevel: number; label: string } | null;
+  onDemandSpellCosts?: Record<string, { resourceId: string; cost: number; label: string }>;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -432,6 +434,8 @@ export function Spellbook({
                   const full =
                     preparedCount(level) + preparationCost > limitFor(level) || restrictedIneligibleFull;
                   const canCast = level === 0 || remainingSlots(level) > 0;
+                  const onDemandCost = onDemandSpellCosts[spell.id];
+                  const canCastOnDemand = Boolean(onDemandCost && reservoir && reservoir.current >= onDemandCost.cost);
                   return (
                     <article key={spell.id}>
                       <div>
@@ -450,6 +454,9 @@ export function Spellbook({
                           {restrictedBonus && restrictedEligibleIds.has(spell.id)
                             ? ` · eligible for ${restrictedBonus.label}`
                             : ""}
+                          {onDemandCost
+                            ? ` · ${onDemandCost.label}: cast on demand for ${onDemandCost.cost} reservoir point${onDemandCost.cost === 1 ? "" : "s"}`
+                            : ""}
                         </small>
                       </div>
                       <div className="spell-actions">
@@ -457,8 +464,10 @@ export function Spellbook({
                           type="button"
                           className="cast-spell-button"
                           aria-label={`Cast ${spell.name}`}
-                          disabled={prepared === 0 || !canCast}
+                          disabled={(prepared === 0 && !canCastOnDemand) || !canCast}
                           onClick={() => {
+                            if (prepared === 0 && onDemandCost && reservoir)
+                              onReservoirChange(reservoir.current - onDemandCost.cost);
                             if (level > 0)
                               onSlotUsesChange({
                                 ...slotUses,
@@ -492,7 +501,7 @@ export function Spellbook({
                           <button
                             type="button"
                             aria-label={`Add ${spell.name}`}
-                            disabled={full}
+                            disabled={full || Boolean(onDemandCost)}
                             onClick={() =>
                               onPreparedSpellIdsChange([
                                 ...preparedSpellIds,

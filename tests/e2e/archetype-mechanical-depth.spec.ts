@@ -564,6 +564,45 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Augury prepared")).toHaveText("1");
   });
 
+  test(`casts Magaambyan Halcyon spells on demand on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-magaambyan-initiate");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("3");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+
+    const first = page.getByLabel("Halcyon Spell Lore (Su) level 1");
+    const second = page.getByLabel("Halcyon Spell Lore level 2");
+    await expect(first.locator('option[value="magaambyan-halcyon-spells-entangle"]')).toHaveCount(1);
+    await first.selectOption("magaambyan-halcyon-spells-entangle");
+    await expect(second.locator('option[value="magaambyan-halcyon-spells-entangle"]')).toHaveAttribute("disabled", "");
+
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await page.getByLabel("Search spells").fill("Entangle");
+    await expect(page.getByRole("button", { name: "Add Entangle", exact: true })).toBeDisabled();
+    await expect(page.getByText(/Halcyon Spell Lore: cast on demand for 1 reservoir point/)).toBeVisible();
+    const reservoir = page.getByLabel("Arcane Reservoir points");
+    const before = Number((await reservoir.textContent())?.split("/")[0]);
+    await page.getByRole("button", { name: "Cast Entangle", exact: true }).click();
+    await expect(reservoir).toHaveText(`${before - 1}/${3 + 3} reservoir`);
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Halcyon Spell Lore (Su) level 1")).toHaveValue("magaambyan-halcyon-spells-entangle");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);
