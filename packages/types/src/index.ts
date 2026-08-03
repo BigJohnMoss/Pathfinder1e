@@ -15,6 +15,34 @@ export type AbilityName =
   | "wisdom"
   | "charisma";
 export type AbilityScores = Record<AbilityName, number>;
+export type SpellDescriptor =
+  | "acid"
+  | "air"
+  | "chaotic"
+  | "cold"
+  | "curse"
+  | "darkness"
+  | "death"
+  | "disease"
+  | "earth"
+  | "electricity"
+  | "emotion"
+  | "evil"
+  | "fear"
+  | "fire"
+  | "force"
+  | "good"
+  | "language-dependent"
+  | "lawful"
+  | "light"
+  | "meditative"
+  | "mind-affecting"
+  | "pain"
+  | "poison"
+  | "ruse"
+  | "shadow"
+  | "sonic"
+  | "water";
 export interface CharacterClassLevel {
   classId: string;
   level: number;
@@ -80,7 +108,7 @@ export type CharacterDraft = CharacterDraftV1;
 export type ActiveEffectTarget =
   | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
-  | "allies";
+  | "allies" | "self" | "area";
 export interface ActiveEffect {
   id: string;
   name: string;
@@ -134,13 +162,17 @@ export interface ClassFeatureOccurrence {
       levelDivisor?: number;
     };
     randomOutcomes?: Array<{ label: string; summary: string }>;
+    modeLabel?: string;
+    modes?: Array<{ id: string; label: string; summary: string }>;
     activeEffect?: {
       name: string;
       targets: ActiveEffectTarget[];
       bonus: number;
+      description?: string;
       improvedAtLevel?: number;
       improvedBonus?: number;
       defaultRounds?: number;
+      fixedRounds?: boolean;
     };
     labelsByUseCount?: string[];
     summary?: string;
@@ -167,6 +199,14 @@ export interface ClassFeatureOccurrence {
       healingDivisor: number;
       durationAbility: AbilityName;
       minimumRounds?: number;
+    };
+    descriptorReservoirBoost?: {
+      label: string;
+      resourceId: string;
+      cost: number;
+      descriptors: SpellDescriptor[];
+      casterLevelBonusByLevel: Array<{ level: number; bonus: number }>;
+      saveDcBonusByLevel: Array<{ level: number; bonus: number }>;
     };
   };
 }
@@ -569,6 +609,7 @@ export interface CharacterSpell {
   name: string;
   school?: string;
   schools?: string[];
+  descriptors?: SpellDescriptor[];
   levelByClass: Record<string, number>;
   summary: string;
   description?: string;

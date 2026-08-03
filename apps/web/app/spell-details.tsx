@@ -2,6 +2,7 @@ import type { CharacterSpell } from "../../../packages/types/src/index.js";
 
 const fields = (spell: CharacterSpell) => [
   ["School", spell.schools?.join(", ") ?? spell.school],
+  ["Descriptors", spell.descriptors?.join(", ")],
   ["Casting time", spell.castingTime],
   ["Components", spell.components?.join(", ")],
   ["Range", spell.range],

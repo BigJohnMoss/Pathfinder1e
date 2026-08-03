@@ -1,4 +1,4 @@
-import type { AbilityName, CharacterClass } from "../../../packages/types/src/index.js";
+import type { AbilityName, CharacterClass, SpellDescriptor } from "../../../packages/types/src/index.js";
 
 export type PreparedSpellAutomation = {
   sharePersonalRange?: {
@@ -23,7 +23,23 @@ export type PreparedSpellAutomation = {
     durationAbility: AbilityName;
     minimumRounds: number;
   };
+  descriptorReservoirBoost?: {
+    label: string;
+    resourceId: string;
+    reservoirCost: number;
+    descriptors: SpellDescriptor[];
+    casterLevelBonus: number;
+    saveDcBonus: number;
+  };
 };
+
+const scalingBonusAtLevel = (
+  entries: Array<{ level: number; bonus: number }>,
+  classLevel: number,
+) => entries
+  .filter((entry) => entry.level <= classLevel)
+  .sort((left, right) => left.level - right.level)
+  .at(-1)?.bonus ?? 0;
 
 export function classSpellAutomation(
   characterClass: CharacterClass,
@@ -48,7 +64,11 @@ export function classSpellAutomation(
     (feature) => feature.spellAutomation?.fastHealingAura,
   );
   const fastHealing = fastHealingFeature?.spellAutomation?.fastHealingAura;
-  if (!share && !extend && !fastHealing) return undefined;
+  const descriptorBoostFeature = availableFeatures.find(
+    (feature) => feature.spellAutomation?.descriptorReservoirBoost,
+  );
+  const descriptorBoost = descriptorBoostFeature?.spellAutomation?.descriptorReservoirBoost;
+  if (!share && !extend && !fastHealing && !descriptorBoost) return undefined;
 
   return {
     ...(share
@@ -82,6 +102,16 @@ export function classSpellAutomation(
           healingDivisor: fastHealing.healingDivisor,
           durationAbility: fastHealing.durationAbility,
           minimumRounds: fastHealing.minimumRounds ?? 1,
+        } }
+      : {}),
+    ...(descriptorBoost
+      ? { descriptorReservoirBoost: {
+          label: descriptorBoost.label,
+          resourceId: descriptorBoost.resourceId,
+          reservoirCost: descriptorBoost.cost,
+          descriptors: descriptorBoost.descriptors,
+          casterLevelBonus: scalingBonusAtLevel(descriptorBoost.casterLevelBonusByLevel, classLevel),
+          saveDcBonus: scalingBonusAtLevel(descriptorBoost.saveDcBonusByLevel, classLevel),
         } }
       : {}),
   };

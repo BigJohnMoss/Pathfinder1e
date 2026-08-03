@@ -7,6 +7,12 @@ export function spellHasSchool(spell, school) {
   return normalizedSchools(spell).includes(String(school).trim().toLowerCase());
 }
 
+export function spellHasDescriptor(spell, descriptor) {
+  return (spell.descriptors ?? [])
+    .map((value) => String(value).trim().toLowerCase())
+    .includes(String(descriptor).trim().toLowerCase());
+}
+
 export function isTransmutationSpell(spell) {
   return spellHasSchool(spell, "transmutation");
 }

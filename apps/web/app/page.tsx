@@ -2418,6 +2418,7 @@ export default function Home() {
             unit: "point",
             maximum: reservoir.maximum,
             used: Math.max(0, reservoir.maximum - reservoirPoints),
+            refreshUsed: reservoir.maximum - reservoir.dailyRefresh,
             onUsedChange: (used: number) =>
               setReservoirPoints(Math.max(0, reservoir.maximum - used)),
           },

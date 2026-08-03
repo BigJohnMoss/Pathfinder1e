@@ -218,7 +218,7 @@ test("Spell Specialist exposes one level-matched signature slot per spell level"
 
 test("reservoir-powered archetype features expose enforceable action costs", () => {
   const expected = new Map([
-    ["arcanist-aeromancer", [["air-mastery-caster-level", 1], ["air-mastery-save-dc", 1], ["wind-s-embrace", 2], ["rebuking-gale", 3]]],
+    ["arcanist-aeromancer", [["wind-s-embrace", 2], ["rebuking-gale", 3]]],
     ["arcanist-brown-fur-transmuter", [["powerful-change", 1]]],
     ["arcanist-arcane-tinkerer", [["manipulate-construct", 1]]],
     ["arcanist-twilight-sage", [["twilight-transfer", 1]]],
@@ -287,12 +287,29 @@ test("Arcane Tinkerer unlocks at 1st level and branches at 7th and 13th", () => 
   assert.deepEqual(thirteenth.options.find((option) => option.id === "arcane-tinkerer-helpless-construct")?.prerequisites, [{ type: "feature", id: "arcane-tinkerer-slow-construct" }]);
 });
 
-test("Aeromancer Air Mastery unlocks and spends reservoir points at 1st level", () => {
+test("Aeromancer automates Air Mastery and its encounter effects", () => {
   const aeromancer = archetypes.find((archetype) => archetype.id === "arcanist-aeromancer");
-  const firstLevel = featuresThroughLevel(applyArchetype(arcanist, aeromancer), 1);
+  const applied = applyArchetype(arcanist, aeromancer);
+  const firstLevel = featuresThroughLevel(applied, 1);
   const mastery = firstLevel.find((feature) => feature.id === "arcanist-aeromancer-air-mastery-su-1");
   assert.equal(mastery?.level, 1);
-  assert.deepEqual(mastery?.resourceActions?.map((action) => action.cost), [1, 1]);
+  assert.deepEqual(mastery?.spellAutomation?.descriptorReservoirBoost?.descriptors, ["air", "cold", "electricity", "sonic"]);
+  assert.deepEqual(mastery?.spellAutomation?.descriptorReservoirBoost?.casterLevelBonusByLevel, [
+    { level: 1, bonus: 2 }, { level: 5, bonus: 3 }, { level: 10, bonus: 4 }, { level: 15, bonus: 5 }, { level: 20, bonus: 6 },
+  ]);
+  const wind = applied.features.find((feature) => feature.id === "arcanist-aeromancer-wind-s-embrace-su-5")?.resourceActions?.[0];
+  assert.deepEqual(wind?.activeEffect, {
+    name: "Wind's Embrace",
+    targets: ["self"],
+    bonus: 0,
+    defaultRounds: 10,
+    fixedRounds: true,
+    description: "Air walk and a protective wind wall surround you and move with you.",
+  });
+  const gale = applied.features.find((feature) => feature.id === "arcanist-aeromancer-rebuking-gale-su-11")?.resourceActions?.[0];
+  assert.deepEqual(gale?.modes?.map((mode) => mode.id), ["burst", "cone"]);
+  assert.equal(gale?.activeEffect?.targets[0], "area");
+  assert.equal(aeromancer.mechanicalCoverage, "full");
 });
 
 test("Eldritch Font tracks surge strain and Bottomless Well recovery", () => {

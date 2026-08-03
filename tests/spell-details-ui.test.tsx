@@ -25,3 +25,9 @@ test("shows full spell statistics, description, and the external rules source", 
   const source = screen.getByRole("link", { name: /Rules source · Core Rulebook p\. 240/ });
   assert.equal(source.getAttribute("href"), "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Alarm");
 });
+
+test("shows spell descriptors used by archetype casting automation", () => {
+  render(<SpellDetails spell={{ id: "lightning-bolt", name: "Lightning Bolt", levelByClass: { wizard: 3 }, summary: "Electricity damages creatures in a line.", school: "evocation", descriptors: ["electricity"], description: "A stroke of electrical energy deals damage to creatures in its path." }} />);
+  assert.ok(screen.getByText("Descriptors"));
+  assert.ok(screen.getByText("electricity"));
+});

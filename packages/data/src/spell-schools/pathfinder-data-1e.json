@@ -3585,5 +3585,4576 @@
     "zone of foul flames": "transmutation",
     "zone of silence": "illusion",
     "zone of truth": "enchantment"
+  },
+  "descriptorsByName": {
+    "abadar s truthtelling": [
+      "mind-affecting"
+    ],
+    "abadars truthtelling": [
+      "mind-affecting"
+    ],
+    "abjuring step": [
+      "force"
+    ],
+    "ablative barrier": [
+      "force"
+    ],
+    "absorbing inhalation": [
+      "air"
+    ],
+    "absurdity": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "accelerate poison": [
+      "poison"
+    ],
+    "accept affliction": [
+      "good"
+    ],
+    "accursed glare": [
+      "curse"
+    ],
+    "acid arrow": [
+      "acid"
+    ],
+    "acid fog": [
+      "acid"
+    ],
+    "acid maw": [
+      "acid"
+    ],
+    "acid pit": [
+      "acid"
+    ],
+    "acid splash": [
+      "acid"
+    ],
+    "acidic spray": [
+      "acid"
+    ],
+    "admonishing ray": [
+      "force"
+    ],
+    "adoration": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "advanced scurvy": [
+      "disease",
+      "evil"
+    ],
+    "aerial tracks": [
+      "air"
+    ],
+    "aggressive thundercloud": [
+      "electricity"
+    ],
+    "aggressive thundercloud greater": [
+      "electricity",
+      "sonic"
+    ],
+    "agonize": [
+      "evil",
+      "pain"
+    ],
+    "agonizing rebuke": [
+      "emotion",
+      "mind-affecting",
+      "pain"
+    ],
+    "aid": [
+      "mind-affecting"
+    ],
+    "air geyser": [
+      "air"
+    ],
+    "air step": [
+      "air"
+    ],
+    "air walk": [
+      "air"
+    ],
+    "air walk communal": [
+      "air"
+    ],
+    "alaznist s jinx": [
+      "curse"
+    ],
+    "alaznists jinx": [
+      "curse"
+    ],
+    "alpha instinct": [
+      "mind-affecting"
+    ],
+    "alter river": [
+      "water"
+    ],
+    "alter winds": [
+      "air"
+    ],
+    "amnesia": [
+      "mind-affecting"
+    ],
+    "angelic aspect": [
+      "good"
+    ],
+    "angelic aspect greater": [
+      "good"
+    ],
+    "angelic aspect lesser": [
+      "good"
+    ],
+    "animal ambassador": [
+      "mind-affecting"
+    ],
+    "animal messenger": [
+      "mind-affecting"
+    ],
+    "animal purpose training": [
+      "mind-affecting"
+    ],
+    "animal trance": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "animate dead": [
+      "evil"
+    ],
+    "animate dead lesser": [
+      "evil"
+    ],
+    "animus mine": [
+      "mind-affecting"
+    ],
+    "animus mine greater": [
+      "mind-affecting"
+    ],
+    "anonymous interaction": [
+      "mind-affecting"
+    ],
+    "anticipate thoughts": [
+      "mind-affecting"
+    ],
+    "antipathy": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "antithetical constraint": [
+      "mind-affecting"
+    ],
+    "apathy": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "aphasia": [
+      "mind-affecting"
+    ],
+    "apparent treachery": [
+      "mind-affecting"
+    ],
+    "appearance of life": [
+      "evil"
+    ],
+    "apsu s shining scales": [
+      "good"
+    ],
+    "apsus shining scales": [
+      "good"
+    ],
+    "aquatic trail": [
+      "water"
+    ],
+    "aqueous orb": [
+      "water"
+    ],
+    "arbitrament": [
+      "sonic"
+    ],
+    "arcane disruption": [
+      "curse",
+      "mind-affecting"
+    ],
+    "archon s aura": [
+      "good",
+      "lawful"
+    ],
+    "archon s trumpet": [
+      "good",
+      "sonic"
+    ],
+    "archons aura": [
+      "good",
+      "lawful"
+    ],
+    "archons trumpet": [
+      "good",
+      "sonic"
+    ],
+    "arrow of law": [
+      "lawful"
+    ],
+    "ash storm": [
+      "fire"
+    ],
+    "assumed likeness": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "audiovisual hallucination": [
+      "mind-affecting"
+    ],
+    "auditory hallucination": [
+      "mind-affecting"
+    ],
+    "aura of cannibalism": [
+      "evil"
+    ],
+    "aura of distraction": [
+      "mind-affecting"
+    ],
+    "aura of doom": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "aura of greater courage": [
+      "emotion"
+    ],
+    "aura of the unremarkable": [
+      "mind-affecting"
+    ],
+    "aversion": [
+      "mind-affecting"
+    ],
+    "awaken the devoured": [
+      "pain"
+    ],
+    "babble": [
+      "mind-affecting"
+    ],
+    "baleful shadow transmutation": [
+      "shadow"
+    ],
+    "ball lightning": [
+      "air",
+      "electricity"
+    ],
+    "ban corruption": [
+      "good"
+    ],
+    "bane": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "banshee blast": [
+      "death",
+      "fear",
+      "mind-affecting",
+      "sonic"
+    ],
+    "barbed chains": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "barghest feast": [
+      "evil"
+    ],
+    "battering blast": [
+      "force"
+    ],
+    "battle trance": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "battlemind link": [
+      "mind-affecting"
+    ],
+    "beacon of guilt": [
+      "curse"
+    ],
+    "befuddled combatant": [
+      "curse",
+      "mind-affecting"
+    ],
+    "beguiling gift": [
+      "mind-affecting"
+    ],
+    "bereave": [
+      "mind-affecting"
+    ],
+    "besmara s grasping depths": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "besmaras grasping depths": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "bestow curse": [
+      "curse"
+    ],
+    "bestow grace of the champion": [
+      "good",
+      "lawful"
+    ],
+    "bestow weapon proficiency": [
+      "mind-affecting"
+    ],
+    "binding": [
+      "mind-affecting"
+    ],
+    "binding earth": [
+      "earth"
+    ],
+    "binding earth mass": [
+      "earth"
+    ],
+    "biting words": [
+      "language-dependent",
+      "sonic"
+    ],
+    "black mark": [
+      "curse",
+      "fear"
+    ],
+    "blacklight": [
+      "darkness"
+    ],
+    "blade barrier": [
+      "force"
+    ],
+    "blade of bright victory": [
+      "good"
+    ],
+    "blade of dark triumph": [
+      "evil"
+    ],
+    "blade of light": [
+      "good"
+    ],
+    "blasphemy": [
+      "evil",
+      "sonic"
+    ],
+    "blast barrier": [
+      "sonic"
+    ],
+    "blast of wind": [
+      "air"
+    ],
+    "blaze of glory": [
+      "good",
+      "mind-affecting"
+    ],
+    "blazing rainbow": [
+      "light"
+    ],
+    "bleaching resistance": [
+      "mind-affecting"
+    ],
+    "bleed for your master": [
+      "mind-affecting"
+    ],
+    "bleed glory": [
+      "curse"
+    ],
+    "bless": [
+      "mind-affecting"
+    ],
+    "bless army": [
+      "mind-affecting"
+    ],
+    "bless water": [
+      "good"
+    ],
+    "blessed fist": [
+      "good"
+    ],
+    "blessing of courage and life": [
+      "emotion"
+    ],
+    "blessing of luck and resolve": [
+      "mind-affecting"
+    ],
+    "blessing of luck and resolve mass": [
+      "mind-affecting"
+    ],
+    "blessing of the watch": [
+      "mind-affecting"
+    ],
+    "blinding ray": [
+      "good",
+      "light"
+    ],
+    "blindness deafness": [
+      "curse"
+    ],
+    "blindness or deafness": [
+      "curse"
+    ],
+    "blistering invective": [
+      "fire",
+      "language-dependent"
+    ],
+    "bloatbomb": [
+      "acid",
+      "death"
+    ],
+    "blood blaze": [
+      "fire"
+    ],
+    "blood crow strike": [
+      "fire"
+    ],
+    "blood in the water": [
+      "emotion"
+    ],
+    "blood mist": [
+      "poison"
+    ],
+    "blood rage": [
+      "mind-affecting"
+    ],
+    "blood ties": [
+      "evil"
+    ],
+    "blood transcription": [
+      "evil"
+    ],
+    "body capacitance": [
+      "electricity"
+    ],
+    "borrow corruption": [
+      "evil"
+    ],
+    "brand": [
+      "curse"
+    ],
+    "brand greater": [
+      "curse"
+    ],
+    "brand of conformity": [
+      "curse"
+    ],
+    "brand of hobbling": [
+      "curse"
+    ],
+    "brand of tracking": [
+      "curse"
+    ],
+    "breeze": [
+      "air"
+    ],
+    "brightest light": [
+      "light"
+    ],
+    "brilliant inspiration": [
+      "language-dependent"
+    ],
+    "burdened thoughts": [
+      "mind-affecting"
+    ],
+    "burn corruption": [
+      "fire",
+      "good"
+    ],
+    "burning arc": [
+      "fire"
+    ],
+    "burning disarm": [
+      "fire"
+    ],
+    "burning gaze": [
+      "fire"
+    ],
+    "burning hands": [
+      "fire"
+    ],
+    "burning sands": [
+      "earth",
+      "fire"
+    ],
+    "burst of force": [
+      "force"
+    ],
+    "burst of glory": [
+      "mind-affecting"
+    ],
+    "burst of nettles": [
+      "acid"
+    ],
+    "burst of radiance": [
+      "good",
+      "light"
+    ],
+    "burst with light": [
+      "light"
+    ],
+    "cacophonous call": [
+      "mind-affecting"
+    ],
+    "cacophonous call mass": [
+      "mind-affecting"
+    ],
+    "caging bomb admixture": [
+      "force"
+    ],
+    "calamitous flailing": [
+      "curse"
+    ],
+    "calcific touch": [
+      "earth"
+    ],
+    "call animal": [
+      "mind-affecting"
+    ],
+    "call lightning": [
+      "electricity"
+    ],
+    "call lightning storm": [
+      "electricity"
+    ],
+    "calm air": [
+      "air"
+    ],
+    "calm animals": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "calm emotions": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "campfire wall": [
+      "fire",
+      "light"
+    ],
+    "canopic conversion": [
+      "death",
+      "evil"
+    ],
+    "carrying wind": [
+      "air"
+    ],
+    "carve passage": [
+      "earth"
+    ],
+    "castigate": [
+      "emotion",
+      "fear",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "castigate mass": [
+      "emotion",
+      "fear",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "cause fear": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "caustic blood": [
+      "acid"
+    ],
+    "caustic eruption": [
+      "acid"
+    ],
+    "caustic safeguard": [
+      "acid"
+    ],
+    "cave fangs": [
+      "earth"
+    ],
+    "celestial healing": [
+      "good"
+    ],
+    "celestial healing greater": [
+      "good"
+    ],
+    "chain lightning": [
+      "electricity"
+    ],
+    "chain of perdition": [
+      "force"
+    ],
+    "chains of fire": [
+      "fire"
+    ],
+    "chains of light": [
+      "good"
+    ],
+    "challenge evil": [
+      "mind-affecting"
+    ],
+    "champion s bout": [
+      "mind-affecting"
+    ],
+    "champions bout": [
+      "mind-affecting"
+    ],
+    "chaos hammer": [
+      "chaotic"
+    ],
+    "charitable impulse": [
+      "mind-affecting"
+    ],
+    "charm animal": [
+      "mind-affecting"
+    ],
+    "charm fey": [
+      "mind-affecting"
+    ],
+    "charm monster": [
+      "mind-affecting"
+    ],
+    "charm monster mass": [
+      "mind-affecting"
+    ],
+    "charm person": [
+      "mind-affecting"
+    ],
+    "charm person mass": [
+      "mind-affecting"
+    ],
+    "charnel house": [
+      "evil",
+      "shadow"
+    ],
+    "chill metal": [
+      "cold"
+    ],
+    "circle of death": [
+      "death"
+    ],
+    "clashing rocks": [
+      "earth"
+    ],
+    "cleansing fire": [
+      "fire",
+      "good"
+    ],
+    "clenched fist": [
+      "force"
+    ],
+    "cloak of chaos": [
+      "chaotic"
+    ],
+    "cloak of dreams": [
+      "mind-affecting"
+    ],
+    "cloak of shadows": [
+      "evil",
+      "shadow"
+    ],
+    "cloak of winds": [
+      "air"
+    ],
+    "cloud of seasickness": [
+      "poison"
+    ],
+    "cloud shape": [
+      "air"
+    ],
+    "cloudkill": [
+      "poison"
+    ],
+    "cognitive block": [
+      "mind-affecting"
+    ],
+    "cold ice strike": [
+      "cold"
+    ],
+    "color spray": [
+      "mind-affecting"
+    ],
+    "command": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "command greater": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "communal air walk": [
+      "air"
+    ],
+    "communal protection from chaos": [
+      "lawful"
+    ],
+    "communal protection from evil": [
+      "good"
+    ],
+    "communal protection from good": [
+      "evil"
+    ],
+    "communal protection from law": [
+      "chaotic"
+    ],
+    "communal water walk": [
+      "water"
+    ],
+    "companion mind link": [
+      "mind-affecting"
+    ],
+    "compassionate ally": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "compel hostility": [
+      "mind-affecting"
+    ],
+    "compel tongue": [
+      "mind-affecting"
+    ],
+    "compel tongue mass": [
+      "mind-affecting"
+    ],
+    "complex hallucination": [
+      "mind-affecting"
+    ],
+    "compulsive liar": [
+      "mind-affecting"
+    ],
+    "conditional curse": [
+      "curse"
+    ],
+    "cone of cold": [
+      "cold"
+    ],
+    "confess": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "confusion": [
+      "mind-affecting"
+    ],
+    "confusion lesser": [
+      "mind-affecting"
+    ],
+    "conjure black pudding": [
+      "acid"
+    ],
+    "consecrate": [
+      "good"
+    ],
+    "constricting coils": [
+      "mind-affecting"
+    ],
+    "contagion": [
+      "disease",
+      "evil"
+    ],
+    "contagion greater": [
+      "disease",
+      "evil"
+    ],
+    "contagious flame": [
+      "fire"
+    ],
+    "contagious suggestion": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "contagious zeal": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "contest of skill": [
+      "curse"
+    ],
+    "contingent venom": [
+      "poison"
+    ],
+    "continual flame": [
+      "light"
+    ],
+    "control summoned creature": [
+      "mind-affecting"
+    ],
+    "control water": [
+      "water"
+    ],
+    "control winds": [
+      "air"
+    ],
+    "controlled fireball": [
+      "fire",
+      "ruse"
+    ],
+    "conversing wind": [
+      "air"
+    ],
+    "corpse lanterns": [
+      "light"
+    ],
+    "corrosive consumption": [
+      "acid"
+    ],
+    "corrosive touch": [
+      "acid"
+    ],
+    "covetous urge": [
+      "curse",
+      "language-dependent"
+    ],
+    "coward s cowl": [
+      "mind-affecting"
+    ],
+    "coward s lament": [
+      "mind-affecting"
+    ],
+    "cowards cowl": [
+      "mind-affecting"
+    ],
+    "cowards lament": [
+      "mind-affecting"
+    ],
+    "crafter s curse": [
+      "curse"
+    ],
+    "crafter s nightmare": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "crafters curse": [
+      "curse"
+    ],
+    "crafters nightmare": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "create greater undead": [
+      "evil"
+    ],
+    "create mindscape": [
+      "mind-affecting"
+    ],
+    "create mindscape greater": [
+      "mind-affecting"
+    ],
+    "create soul gem": [
+      "death",
+      "evil"
+    ],
+    "create undead": [
+      "evil"
+    ],
+    "create variant mummy": [
+      "evil"
+    ],
+    "create water": [
+      "water"
+    ],
+    "creeping ice": [
+      "cold"
+    ],
+    "crime of opportunity": [
+      "mind-affecting"
+    ],
+    "crime wave": [
+      "mind-affecting"
+    ],
+    "cruel jaunt": [
+      "evil",
+      "fear",
+      "mind-affecting"
+    ],
+    "crusader s edge": [
+      "good"
+    ],
+    "crusaders edge": [
+      "good"
+    ],
+    "crushing despair": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "crushing hand": [
+      "force"
+    ],
+    "cup of dust": [
+      "curse"
+    ],
+    "curse item": [
+      "curse"
+    ],
+    "curse major": [
+      "curse"
+    ],
+    "curse of befouled fortune": [
+      "curse"
+    ],
+    "curse of burning sleep": [
+      "curse",
+      "fire"
+    ],
+    "curse of disgust": [
+      "curse",
+      "emotion",
+      "mind-affecting"
+    ],
+    "curse of dragonflies": [
+      "air",
+      "curse"
+    ],
+    "curse of fell seasons": [
+      "curse",
+      "darkness"
+    ],
+    "curse of keeping": [
+      "curse"
+    ],
+    "curse of magic negation": [
+      "curse"
+    ],
+    "curse of night": [
+      "curse",
+      "darkness"
+    ],
+    "curse of the outcast": [
+      "curse",
+      "emotion",
+      "mind-affecting"
+    ],
+    "curse of unexpected death": [
+      "curse",
+      "death"
+    ],
+    "curse terrain": [
+      "curse",
+      "evil"
+    ],
+    "curse terrain greater": [
+      "curse",
+      "evil"
+    ],
+    "curse terrain lesser": [
+      "curse",
+      "evil"
+    ],
+    "curse terrain supreme": [
+      "curse",
+      "evil"
+    ],
+    "curse water": [
+      "evil"
+    ],
+    "cursed earth": [
+      "curse",
+      "evil"
+    ],
+    "cursed treasure": [
+      "curse"
+    ],
+    "cushioning bands": [
+      "force"
+    ],
+    "daggermark s exchange": [
+      "poison"
+    ],
+    "daggermarks exchange": [
+      "poison"
+    ],
+    "dahak s release": [
+      "mind-affecting"
+    ],
+    "dahaks release": [
+      "mind-affecting"
+    ],
+    "damnation": [
+      "good"
+    ],
+    "damnation of memory": [
+      "mind-affecting"
+    ],
+    "damnation stride": [
+      "fire"
+    ],
+    "dancing darkness": [
+      "darkness",
+      "shadow"
+    ],
+    "dancing lantern": [
+      "fire",
+      "light"
+    ],
+    "dancing lights": [
+      "light"
+    ],
+    "dark light": [
+      "light"
+    ],
+    "dark whispers": [
+      "language-dependent",
+      "shadow"
+    ],
+    "darkness": [
+      "darkness"
+    ],
+    "daybreak arrow": [
+      "light"
+    ],
+    "daylight": [
+      "light"
+    ],
+    "daze": [
+      "mind-affecting"
+    ],
+    "daze mass": [
+      "mind-affecting"
+    ],
+    "daze monster": [
+      "mind-affecting"
+    ],
+    "deadeye s arrow": [
+      "electricity"
+    ],
+    "deadeyes arrow": [
+      "electricity"
+    ],
+    "deadly finale": [
+      "sonic"
+    ],
+    "deadly juggernaut": [
+      "death"
+    ],
+    "deafening song bolt": [
+      "sonic"
+    ],
+    "death candle": [
+      "death",
+      "evil",
+      "fire"
+    ],
+    "death clutch": [
+      "death",
+      "evil"
+    ],
+    "death knell": [
+      "death",
+      "evil"
+    ],
+    "death knell aura": [
+      "death",
+      "evil"
+    ],
+    "death knell aura greater": [
+      "death",
+      "evil"
+    ],
+    "death pact": [
+      "mind-affecting"
+    ],
+    "debilitating pain": [
+      "mind-affecting",
+      "pain"
+    ],
+    "debilitating pain mass": [
+      "mind-affecting",
+      "pain"
+    ],
+    "debilitating portent": [
+      "mind-affecting"
+    ],
+    "debilitating speech": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "deep slumber": [
+      "mind-affecting"
+    ],
+    "deeper darkness": [
+      "darkness"
+    ],
+    "defensive shock": [
+      "electricity"
+    ],
+    "defile armor": [
+      "evil"
+    ],
+    "deflect blame": [
+      "mind-affecting"
+    ],
+    "deflection": [
+      "force"
+    ],
+    "deja vu": [
+      "mind-affecting"
+    ],
+    "delay pain": [
+      "emotion"
+    ],
+    "delayed blast fireball": [
+      "fire"
+    ],
+    "delectable flesh": [
+      "mind-affecting"
+    ],
+    "delusional pride": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "demand": [
+      "mind-affecting"
+    ],
+    "demand offering": [
+      "mind-affecting"
+    ],
+    "demanding message": [
+      "mind-affecting"
+    ],
+    "demanding message mass": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "demon dream": [
+      "evil",
+      "mind-affecting"
+    ],
+    "denounce": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "desecrate": [
+      "evil"
+    ],
+    "destruction": [
+      "death"
+    ],
+    "detect anxieties": [
+      "mind-affecting"
+    ],
+    "detect desires": [
+      "mind-affecting"
+    ],
+    "detect thoughts": [
+      "mind-affecting"
+    ],
+    "devil snare": [
+      "good"
+    ],
+    "diamond spray": [
+      "earth"
+    ],
+    "dictum": [
+      "lawful",
+      "sonic"
+    ],
+    "discern next of kin": [
+      "mind-affecting"
+    ],
+    "discordant blast": [
+      "sonic"
+    ],
+    "discovery torch": [
+      "light"
+    ],
+    "disfiguring touch": [
+      "curse"
+    ],
+    "dispel chaos": [
+      "lawful"
+    ],
+    "dispel evil": [
+      "good"
+    ],
+    "dispel good": [
+      "evil"
+    ],
+    "dispel law": [
+      "chaotic"
+    ],
+    "distracting cacophony": [
+      "sonic"
+    ],
+    "distressing tone": [
+      "sonic"
+    ],
+    "divide mind": [
+      "mind-affecting"
+    ],
+    "divine arrow": [
+      "good"
+    ],
+    "dominate animal": [
+      "mind-affecting"
+    ],
+    "dominate monster": [
+      "mind-affecting"
+    ],
+    "dominate person": [
+      "mind-affecting"
+    ],
+    "domination link": [
+      "mind-affecting"
+    ],
+    "doom": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "dousing rain": [
+      "water"
+    ],
+    "drain poison": [
+      "poison"
+    ],
+    "dread bolt": [
+      "evil"
+    ],
+    "dreadscape": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "dream": [
+      "mind-affecting"
+    ],
+    "dream council": [
+      "mind-affecting"
+    ],
+    "dream dalliance": [
+      "mind-affecting"
+    ],
+    "dream reality": [
+      "mind-affecting"
+    ],
+    "dream scan": [
+      "mind-affecting"
+    ],
+    "dream travel": [
+      "mind-affecting"
+    ],
+    "dream voyage": [
+      "mind-affecting"
+    ],
+    "drench": [
+      "water"
+    ],
+    "dust of twilight": [
+      "darkness"
+    ],
+    "eagle aerie": [
+      "good"
+    ],
+    "eaglesoul": [
+      "good"
+    ],
+    "ear piercing scream": [
+      "sonic"
+    ],
+    "earth glide": [
+      "earth"
+    ],
+    "earth tremor": [
+      "earth"
+    ],
+    "earthquake": [
+      "earth"
+    ],
+    "echean s excellent enclosure": [
+      "force"
+    ],
+    "echeans excellent enclosure": [
+      "force"
+    ],
+    "echolocation": [
+      "sonic"
+    ],
+    "ego whip 1": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip 2": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip 3": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip 4": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip 5": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip i": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip ii": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip iii": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip iv": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "ego whip v": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "egorian diplomacy": [
+      "mind-affecting"
+    ],
+    "eldritch fever": [
+      "curse",
+      "disease",
+      "evil"
+    ],
+    "elemental assessor": [
+      "acid",
+      "cold",
+      "electricity",
+      "fire"
+    ],
+    "emergency force sphere": [
+      "force"
+    ],
+    "emotive block": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "empower holy water": [
+      "good"
+    ],
+    "enemy s heart": [
+      "death",
+      "evil"
+    ],
+    "enemys heart": [
+      "death",
+      "evil"
+    ],
+    "enlightened step": [
+      "air",
+      "meditative"
+    ],
+    "enshroud thoughts": [
+      "mind-affecting"
+    ],
+    "enthrall": [
+      "language-dependent",
+      "mind-affecting",
+      "sonic"
+    ],
+    "enticing adulation": [
+      "mind-affecting"
+    ],
+    "entomb": [
+      "earth"
+    ],
+    "envious urge": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "epidemic": [
+      "disease",
+      "evil"
+    ],
+    "eruptive pustules": [
+      "acid"
+    ],
+    "etheric shards": [
+      "force"
+    ],
+    "euphoric cloud": [
+      "poison"
+    ],
+    "euphoric tranquility": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "excruciating deformation": [
+      "evil",
+      "pain"
+    ],
+    "expeditious construction": [
+      "earth"
+    ],
+    "expeditious excavation": [
+      "earth"
+    ],
+    "expel blood": [
+      "evil",
+      "water"
+    ],
+    "explosive runes": [
+      "force"
+    ],
+    "exquisite accompaniment": [
+      "shadow"
+    ],
+    "eyebite": [
+      "emotion",
+      "pain"
+    ],
+    "fable tapestry": [
+      "shadow"
+    ],
+    "faerie fire": [
+      "light"
+    ],
+    "fair is foul": [
+      "curse"
+    ],
+    "fairness": [
+      "mind-affecting"
+    ],
+    "false alibi": [
+      "mind-affecting"
+    ],
+    "false belief": [
+      "mind-affecting"
+    ],
+    "false resurrection": [
+      "chaotic",
+      "evil",
+      "ruse"
+    ],
+    "false resurrection greater": [
+      "evil",
+      "lawful",
+      "ruse"
+    ],
+    "fear": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "feast of ashes": [
+      "curse"
+    ],
+    "feast on fear": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "feeblemind": [
+      "mind-affecting"
+    ],
+    "fickle winds": [
+      "air"
+    ],
+    "fiendish wrath": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "fiery body": [
+      "fire"
+    ],
+    "fiery runes": [
+      "fire"
+    ],
+    "fiery shuriken": [
+      "fire"
+    ],
+    "film of filth": [
+      "poison"
+    ],
+    "finger of death": [
+      "death"
+    ],
+    "fire breath": [
+      "fire"
+    ],
+    "fire of vengeance": [
+      "fire"
+    ],
+    "fire s friend": [
+      "fire"
+    ],
+    "fire seeds": [
+      "fire"
+    ],
+    "fire snake": [
+      "fire"
+    ],
+    "fire sneeze": [
+      "air",
+      "fire"
+    ],
+    "fire storm": [
+      "fire"
+    ],
+    "fire trail": [
+      "fire"
+    ],
+    "fire trap": [
+      "fire"
+    ],
+    "fireball": [
+      "fire"
+    ],
+    "firebrand": [
+      "fire"
+    ],
+    "firefall": [
+      "fire"
+    ],
+    "fires friend": [
+      "fire"
+    ],
+    "firestream": [
+      "fire"
+    ],
+    "firewalker s meditation": [
+      "meditative"
+    ],
+    "firewalkers meditation": [
+      "meditative"
+    ],
+    "flame arrow": [
+      "fire"
+    ],
+    "flame blade": [
+      "fire"
+    ],
+    "flame strike": [
+      "fire"
+    ],
+    "flames of the faithful": [
+      "fire"
+    ],
+    "flaming aura": [
+      "fire"
+    ],
+    "flaming sphere": [
+      "fire"
+    ],
+    "flaming sphere greater": [
+      "fire"
+    ],
+    "flare": [
+      "light"
+    ],
+    "flare burst": [
+      "light"
+    ],
+    "flash flood": [
+      "water"
+    ],
+    "flashfire": [
+      "fire"
+    ],
+    "fleeting memory": [
+      "mind-affecting"
+    ],
+    "fleeting memory mass": [
+      "mind-affecting"
+    ],
+    "flesh puppet": [
+      "evil"
+    ],
+    "flesh puppet horde": [
+      "evil"
+    ],
+    "flesh wall": [
+      "evil"
+    ],
+    "fleshworm infestation": [
+      "evil"
+    ],
+    "flexile curse": [
+      "curse"
+    ],
+    "flickering lights": [
+      "darkness",
+      "light"
+    ],
+    "floating disk": [
+      "force"
+    ],
+    "fluid form": [
+      "water"
+    ],
+    "flurry of snowballs": [
+      "cold",
+      "water"
+    ],
+    "foe to friend": [
+      "mind-affecting"
+    ],
+    "fool s forbiddance": [
+      "mind-affecting"
+    ],
+    "fools forbiddance": [
+      "mind-affecting"
+    ],
+    "forbid action": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "forbid action greater": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "force anchor": [
+      "force"
+    ],
+    "force hook charge": [
+      "force"
+    ],
+    "force punch": [
+      "force"
+    ],
+    "force sword": [
+      "force"
+    ],
+    "forcecage": [
+      "force"
+    ],
+    "forced quiet": [
+      "sonic"
+    ],
+    "forced repentance": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "forceful hand": [
+      "force"
+    ],
+    "forceful strike": [
+      "force"
+    ],
+    "forgetful slumber": [
+      "mind-affecting"
+    ],
+    "foster hatred": [
+      "emotion"
+    ],
+    "freezing sphere": [
+      "cold"
+    ],
+    "frigid souls": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "frigid touch": [
+      "cold"
+    ],
+    "frost fall": [
+      "cold"
+    ],
+    "frost mammoth": [
+      "cold"
+    ],
+    "frostbite": [
+      "cold"
+    ],
+    "frosthammer": [
+      "cold"
+    ],
+    "frosty aura": [
+      "cold"
+    ],
+    "frozen note": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "fumbletongue": [
+      "mind-affecting"
+    ],
+    "fungal infestation": [
+      "disease"
+    ],
+    "furious fire barrage": [
+      "fire"
+    ],
+    "fury of the sun": [
+      "curse",
+      "fire"
+    ],
+    "garden of peril": [
+      "poison"
+    ],
+    "garrulous grin": [
+      "fear",
+      "mind-affecting"
+    ],
+    "geas": [
+      "curse",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "geas lesser": [
+      "curse",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "geas quest": [
+      "curse",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "genius avaricious": [
+      "evil"
+    ],
+    "gentle breeze": [
+      "air"
+    ],
+    "geyser": [
+      "fire",
+      "water"
+    ],
+    "ghost brand": [
+      "shadow"
+    ],
+    "ghoul hunger": [
+      "evil",
+      "mind-affecting"
+    ],
+    "ghoul touch": [
+      "poison"
+    ],
+    "gloomblind bolts": [
+      "shadow"
+    ],
+    "good hope": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "gozreh s trident": [
+      "electricity"
+    ],
+    "gozrehs trident": [
+      "electricity"
+    ],
+    "grand destiny": [
+      "mind-affecting"
+    ],
+    "grasping corpse": [
+      "evil"
+    ],
+    "grasping hand": [
+      "force"
+    ],
+    "grave words": [
+      "language-dependent"
+    ],
+    "gravel vortex": [
+      "earth"
+    ],
+    "greater aggressive thundercloud": [
+      "electricity",
+      "sonic"
+    ],
+    "greater angelic aspect": [
+      "good"
+    ],
+    "greater animus mine": [
+      "mind-affecting"
+    ],
+    "greater brand": [
+      "curse"
+    ],
+    "greater celestial healing": [
+      "good"
+    ],
+    "greater command": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "greater contagion": [
+      "disease",
+      "evil"
+    ],
+    "greater create mindscape": [
+      "mind-affecting"
+    ],
+    "greater curse terrain": [
+      "curse",
+      "evil"
+    ],
+    "greater death knell aura": [
+      "death",
+      "evil"
+    ],
+    "greater false resurrection": [
+      "evil",
+      "lawful",
+      "ruse"
+    ],
+    "greater flaming sphere": [
+      "fire"
+    ],
+    "greater forbid action": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "greater heroism": [
+      "mind-affecting"
+    ],
+    "greater hollow heroism": [
+      "mind-affecting",
+      "ruse"
+    ],
+    "greater hypnotism": [
+      "mind-affecting"
+    ],
+    "greater infernal healing": [
+      "evil"
+    ],
+    "greater interrogation": [
+      "evil",
+      "pain"
+    ],
+    "greater oneiric horror": [
+      "mind-affecting"
+    ],
+    "greater seeds of influence": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "greater shadow conjuration": [
+      "shadow"
+    ],
+    "greater shadow enchantment": [
+      "shadow"
+    ],
+    "greater shadow evocation": [
+      "shadow"
+    ],
+    "greater shadow transmutation": [
+      "shadow"
+    ],
+    "greater shield of the dawnflower": [
+      "fire",
+      "good",
+      "light"
+    ],
+    "greater shout": [
+      "sonic"
+    ],
+    "greater song of discord": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "greater summon cacodaemon": [
+      "evil"
+    ],
+    "greater synaptic pulse": [
+      "mind-affecting"
+    ],
+    "greater thunderstomp": [
+      "earth"
+    ],
+    "greater unhallowed blows": [
+      "evil"
+    ],
+    "grim stalker": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "groundswell": [
+      "earth"
+    ],
+    "gullibility": [
+      "mind-affecting"
+    ],
+    "gust of wind": [
+      "air"
+    ],
+    "gusting sphere": [
+      "air"
+    ],
+    "hag s seasoning": [
+      "curse"
+    ],
+    "hags seasoning": [
+      "curse"
+    ],
+    "hairline fractures": [
+      "earth"
+    ],
+    "hallow": [
+      "good"
+    ],
+    "hallucinogenic smoke": [
+      "poison"
+    ],
+    "harvest knowledge": [
+      "mind-affecting"
+    ],
+    "hasten judgement": [
+      "curse"
+    ],
+    "haunting choir": [
+      "mind-affecting",
+      "pain"
+    ],
+    "haunting mists": [
+      "fear",
+      "shadow"
+    ],
+    "haunting reminder": [
+      "fear",
+      "mind-affecting"
+    ],
+    "haze of dreams": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "healing flames": [
+      "fire",
+      "good"
+    ],
+    "heart of the metal": [
+      "earth"
+    ],
+    "heat metal": [
+      "fire"
+    ],
+    "heatstroke": [
+      "fire"
+    ],
+    "heavy water": [
+      "water"
+    ],
+    "heckle": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "hedging weapons": [
+      "force"
+    ],
+    "hellfire ray": [
+      "evil"
+    ],
+    "heretic s tongue": [
+      "mind-affecting"
+    ],
+    "heretics tongue": [
+      "mind-affecting"
+    ],
+    "hermean potential": [
+      "mind-affecting"
+    ],
+    "heroic finale": [
+      "mind-affecting"
+    ],
+    "heroic invocation": [
+      "mind-affecting"
+    ],
+    "heroism": [
+      "mind-affecting"
+    ],
+    "heroism greater": [
+      "mind-affecting"
+    ],
+    "hex vulnerability": [
+      "curse"
+    ],
+    "hidden presence": [
+      "mind-affecting"
+    ],
+    "hidden speech": [
+      "language-dependent"
+    ],
+    "hidden spring": [
+      "water"
+    ],
+    "hideous laughter": [
+      "mind-affecting"
+    ],
+    "hold animal": [
+      "mind-affecting"
+    ],
+    "hold fey": [
+      "mind-affecting"
+    ],
+    "hold monster": [
+      "mind-affecting"
+    ],
+    "hold monster mass": [
+      "mind-affecting"
+    ],
+    "hold person": [
+      "mind-affecting"
+    ],
+    "hold person mass": [
+      "mind-affecting"
+    ],
+    "hollow heroism": [
+      "mind-affecting",
+      "ruse"
+    ],
+    "hollow heroism greater": [
+      "mind-affecting",
+      "ruse"
+    ],
+    "holy aura": [
+      "good"
+    ],
+    "holy ice": [
+      "cold",
+      "good",
+      "water"
+    ],
+    "holy ice weapon": [
+      "cold",
+      "good",
+      "water"
+    ],
+    "holy javelin": [
+      "good"
+    ],
+    "holy smite": [
+      "good"
+    ],
+    "holy sword": [
+      "good"
+    ],
+    "holy whisper": [
+      "good"
+    ],
+    "holy word": [
+      "good",
+      "sonic"
+    ],
+    "hoodwink": [
+      "mind-affecting"
+    ],
+    "horn of pursuit": [
+      "sonic"
+    ],
+    "horrifying visage": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "howling agony": [
+      "death",
+      "pain"
+    ],
+    "hunger for flesh": [
+      "evil",
+      "mind-affecting"
+    ],
+    "hunger for flesh mass": [
+      "evil",
+      "mind-affecting"
+    ],
+    "hungry darkness": [
+      "darkness",
+      "force"
+    ],
+    "hunter s howl": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "hunters howl": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "hurricane blast": [
+      "air"
+    ],
+    "hydraulic push": [
+      "water"
+    ],
+    "hydraulic torrent": [
+      "water"
+    ],
+    "hydrophobia": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "hymn of mercy": [
+      "good",
+      "mind-affecting"
+    ],
+    "hymn of peace": [
+      "good"
+    ],
+    "hypnotic pattern": [
+      "mind-affecting"
+    ],
+    "hypnotism": [
+      "mind-affecting"
+    ],
+    "hypnotism greater": [
+      "mind-affecting"
+    ],
+    "ice armor": [
+      "cold",
+      "water"
+    ],
+    "ice body": [
+      "cold"
+    ],
+    "ice crystal teleport": [
+      "cold"
+    ],
+    "ice slick": [
+      "cold"
+    ],
+    "ice spears": [
+      "cold"
+    ],
+    "ice storm": [
+      "cold"
+    ],
+    "icicle dagger": [
+      "cold"
+    ],
+    "icy prison": [
+      "cold"
+    ],
+    "icy prison mass": [
+      "cold"
+    ],
+    "id insinuation 1": [
+      "mind-affecting"
+    ],
+    "id insinuation 2": [
+      "mind-affecting"
+    ],
+    "id insinuation 3": [
+      "mind-affecting"
+    ],
+    "id insinuation 4": [
+      "mind-affecting"
+    ],
+    "id insinuation i": [
+      "mind-affecting"
+    ],
+    "id insinuation ii": [
+      "mind-affecting"
+    ],
+    "id insinuation iii": [
+      "mind-affecting"
+    ],
+    "id insinuation iv": [
+      "mind-affecting"
+    ],
+    "ill omen": [
+      "curse",
+      "mind-affecting"
+    ],
+    "illusory hoard": [
+      "mind-affecting"
+    ],
+    "illusory poison": [
+      "mind-affecting"
+    ],
+    "illusory script": [
+      "mind-affecting"
+    ],
+    "implant urge": [
+      "mind-affecting"
+    ],
+    "implanted projection": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "incendiary cloud": [
+      "fire"
+    ],
+    "incendiary runes": [
+      "fire"
+    ],
+    "incorporeal chains": [
+      "force"
+    ],
+    "infernal challenger": [
+      "lawful"
+    ],
+    "infernal healing": [
+      "evil"
+    ],
+    "infernal healing greater": [
+      "evil"
+    ],
+    "inflict pain": [
+      "mind-affecting",
+      "pain"
+    ],
+    "inflict pain mass": [
+      "mind-affecting",
+      "pain"
+    ],
+    "infuse decay": [
+      "evil"
+    ],
+    "infuse effigy": [
+      "curse"
+    ],
+    "inhibiting patterns": [
+      "mind-affecting"
+    ],
+    "insanity": [
+      "mind-affecting"
+    ],
+    "inspiring recovery": [
+      "mind-affecting"
+    ],
+    "instant armor": [
+      "force"
+    ],
+    "instant weapon": [
+      "force"
+    ],
+    "instigate psychic duel": [
+      "mind-affecting"
+    ],
+    "intensify psyche": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "interposing hand": [
+      "force"
+    ],
+    "interrogation": [
+      "evil",
+      "pain"
+    ],
+    "interrogation greater": [
+      "evil",
+      "pain"
+    ],
+    "inveigle monster": [
+      "mind-affecting"
+    ],
+    "inveigle person": [
+      "mind-affecting"
+    ],
+    "investigative mind": [
+      "mind-affecting"
+    ],
+    "ironskin": [
+      "earth"
+    ],
+    "irregular size": [
+      "curse"
+    ],
+    "irresistible dance": [
+      "mind-affecting"
+    ],
+    "itching curse": [
+      "curse"
+    ],
+    "jatembe s ire": [
+      "good"
+    ],
+    "jatembes ire": [
+      "good"
+    ],
+    "jealous rage": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "jitterbugs": [
+      "mind-affecting"
+    ],
+    "jolt": [
+      "electricity"
+    ],
+    "jolting portent": [
+      "electricity"
+    ],
+    "joyful rapture": [
+      "emotion"
+    ],
+    "judgment light": [
+      "light"
+    ],
+    "kalistocrat s nightmare": [
+      "curse"
+    ],
+    "kalistocrats nightmare": [
+      "curse"
+    ],
+    "karmic blessing": [
+      "good"
+    ],
+    "khain s army": [
+      "evil"
+    ],
+    "khains army": [
+      "evil"
+    ],
+    "ki leech": [
+      "evil"
+    ],
+    "ki shout": [
+      "sonic"
+    ],
+    "knell of the depths": [
+      "curse",
+      "water"
+    ],
+    "knight s calling": [
+      "mind-affecting"
+    ],
+    "knights calling": [
+      "mind-affecting"
+    ],
+    "know peerage": [
+      "mind-affecting"
+    ],
+    "lament of summer s last breath": [
+      "fire",
+      "good"
+    ],
+    "lament of summers last breath": [
+      "fire",
+      "good"
+    ],
+    "languid bomb admixture": [
+      "mind-affecting"
+    ],
+    "languid venom": [
+      "poison"
+    ],
+    "lash of the astradaemon": [
+      "evil"
+    ],
+    "last azlanti s defending sword": [
+      "force"
+    ],
+    "last azlanti s defending sword mass": [
+      "force"
+    ],
+    "last azlantis defending sword": [
+      "force"
+    ],
+    "last azlantis defending sword mass": [
+      "force"
+    ],
+    "leashed shackles": [
+      "force"
+    ],
+    "lesser angelic aspect": [
+      "good"
+    ],
+    "lesser animate dead": [
+      "evil"
+    ],
+    "lesser confusion": [
+      "mind-affecting"
+    ],
+    "lesser curse terrain": [
+      "curse",
+      "evil"
+    ],
+    "lesser geas": [
+      "curse",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "life current": [
+      "water"
+    ],
+    "life of crime": [
+      "curse",
+      "mind-affecting"
+    ],
+    "light": [
+      "light"
+    ],
+    "light lance": [
+      "good",
+      "light"
+    ],
+    "light of iomedae": [
+      "good",
+      "light"
+    ],
+    "light prison": [
+      "light"
+    ],
+    "lightning arc": [
+      "electricity"
+    ],
+    "lightning bolt": [
+      "electricity"
+    ],
+    "lightning conductor": [
+      "air"
+    ],
+    "lightning lash": [
+      "electricity"
+    ],
+    "lightning lash bomb admixture": [
+      "electricity"
+    ],
+    "litany of admonition": [
+      "language-dependent"
+    ],
+    "litany of dependability": [
+      "lawful"
+    ],
+    "litany of duty": [
+      "lawful"
+    ],
+    "litany of eloquence": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "litany of entanglement": [
+      "language-dependent"
+    ],
+    "litany of escape": [
+      "language-dependent"
+    ],
+    "litany of madness": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "litany of order": [
+      "language-dependent",
+      "lawful"
+    ],
+    "litany of righteousness": [
+      "good",
+      "language-dependent"
+    ],
+    "litany of sloth": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "litany of thunder": [
+      "language-dependent",
+      "sonic"
+    ],
+    "litany of truth": [
+      "language-dependent"
+    ],
+    "litany of vengeance": [
+      "language-dependent"
+    ],
+    "litany of weakness": [
+      "language-dependent"
+    ],
+    "loathsome veil": [
+      "mind-affecting"
+    ],
+    "lock gaze": [
+      "mind-affecting"
+    ],
+    "lost legacy": [
+      "curse",
+      "mind-affecting"
+    ],
+    "lost locale": [
+      "mind-affecting"
+    ],
+    "lost passage": [
+      "mind-affecting"
+    ],
+    "lover s vengeance": [
+      "mind-affecting"
+    ],
+    "lovers vengeance": [
+      "mind-affecting"
+    ],
+    "lullaby": [
+      "mind-affecting"
+    ],
+    "lunar veil": [
+      "darkness",
+      "shadow"
+    ],
+    "mad sultan s melody": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "mad sultans melody": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "mage armor": [
+      "force"
+    ],
+    "mage s sword": [
+      "force"
+    ],
+    "mages sword": [
+      "force"
+    ],
+    "magic boulder": [
+      "earth"
+    ],
+    "magic circle": [
+      "good"
+    ],
+    "magic circle against chaos": [
+      "lawful"
+    ],
+    "magic circle against chaos evil good law": [
+      "good"
+    ],
+    "magic circle against evil": [
+      "good"
+    ],
+    "magic circle against good": [
+      "evil"
+    ],
+    "magic circle against law": [
+      "chaotic"
+    ],
+    "magic missile": [
+      "force"
+    ],
+    "magnifying chime": [
+      "sonic"
+    ],
+    "major curse": [
+      "curse"
+    ],
+    "major mind swap": [
+      "mind-affecting"
+    ],
+    "major phantom object": [
+      "shadow"
+    ],
+    "make lost": [
+      "mind-affecting"
+    ],
+    "malediction": [
+      "curse",
+      "evil"
+    ],
+    "malediction hero points": [
+      "death",
+      "evil"
+    ],
+    "malicious spite": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "mantle of calm": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "mantle of doubt": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "mantle of the magic warriors": [
+      "good"
+    ],
+    "marid s mastery": [
+      "water"
+    ],
+    "marids mastery": [
+      "water"
+    ],
+    "mark of blood": [
+      "curse"
+    ],
+    "mark of justice": [
+      "curse"
+    ],
+    "mark of obvious ethics": [
+      "curse"
+    ],
+    "mark of the reptile god": [
+      "curse"
+    ],
+    "marks of forbiddance": [
+      "mind-affecting"
+    ],
+    "martial marionette": [
+      "mind-affecting"
+    ],
+    "martyr s bargain": [
+      "good"
+    ],
+    "martyrs bargain": [
+      "good"
+    ],
+    "masochistic shadow": [
+      "evil",
+      "shadow"
+    ],
+    "mass binding earth": [
+      "earth"
+    ],
+    "mass blessing of luck and resolve": [
+      "mind-affecting"
+    ],
+    "mass cacophonous call": [
+      "mind-affecting"
+    ],
+    "mass castigate": [
+      "emotion",
+      "fear",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "mass charm monster": [
+      "mind-affecting"
+    ],
+    "mass charm person": [
+      "mind-affecting"
+    ],
+    "mass compel tongue": [
+      "mind-affecting"
+    ],
+    "mass daze": [
+      "mind-affecting"
+    ],
+    "mass debilitating pain": [
+      "mind-affecting",
+      "pain"
+    ],
+    "mass demanding message": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "mass fleeting memory": [
+      "mind-affecting"
+    ],
+    "mass hold monster": [
+      "mind-affecting"
+    ],
+    "mass hold person": [
+      "mind-affecting"
+    ],
+    "mass hunger for flesh": [
+      "evil",
+      "mind-affecting"
+    ],
+    "mass icy prison": [
+      "cold"
+    ],
+    "mass inflict pain": [
+      "mind-affecting",
+      "pain"
+    ],
+    "mass last azlanti s defending sword": [
+      "force"
+    ],
+    "mass last azlantis defending sword": [
+      "force"
+    ],
+    "mass mydriatic spontaneity": [
+      "darkness",
+      "light"
+    ],
+    "mass pain strike": [
+      "evil",
+      "pain"
+    ],
+    "mass passing fancy": [
+      "mind-affecting"
+    ],
+    "mass spindrift spritz": [
+      "water"
+    ],
+    "mass suggestion": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "mass sun s disdain": [
+      "curse"
+    ],
+    "mass suns disdain": [
+      "curse"
+    ],
+    "mass synesthesia": [
+      "mind-affecting"
+    ],
+    "mass umbral infusion": [
+      "shadow"
+    ],
+    "massacre": [
+      "death"
+    ],
+    "matchmaker": [
+      "mind-affecting"
+    ],
+    "mathematical curse": [
+      "curse"
+    ],
+    "maw of chaos": [
+      "chaotic"
+    ],
+    "maze of madness and suffering": [
+      "evil",
+      "mind-affecting"
+    ],
+    "meld into stone": [
+      "earth"
+    ],
+    "memorize page": [
+      "mind-affecting"
+    ],
+    "memory lapse": [
+      "mind-affecting"
+    ],
+    "mental block": [
+      "mind-affecting"
+    ],
+    "message": [
+      "language-dependent"
+    ],
+    "meteor swarm": [
+      "fire"
+    ],
+    "miasmal dread": [
+      "fear",
+      "mind-affecting"
+    ],
+    "miasmatic form": [
+      "air",
+      "poison"
+    ],
+    "microcosm": [
+      "mind-affecting"
+    ],
+    "mighty fist of the earth": [
+      "earth"
+    ],
+    "mind fog": [
+      "mind-affecting"
+    ],
+    "mind maze": [
+      "mind-affecting"
+    ],
+    "mind probe": [
+      "mind-affecting"
+    ],
+    "mind swap": [
+      "mind-affecting"
+    ],
+    "mind swap major": [
+      "mind-affecting"
+    ],
+    "mind thrust 1": [
+      "mind-affecting"
+    ],
+    "mind thrust i": [
+      "mind-affecting"
+    ],
+    "mindlink": [
+      "mind-affecting"
+    ],
+    "mindlocked messenger": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "mindscape door": [
+      "mind-affecting"
+    ],
+    "mindshock": [
+      "mind-affecting",
+      "pain"
+    ],
+    "mindwipe": [
+      "mind-affecting"
+    ],
+    "minor dream": [
+      "mind-affecting"
+    ],
+    "minor phantom object": [
+      "shadow"
+    ],
+    "mirror mantis": [
+      "mind-affecting"
+    ],
+    "mischievous shadow": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "miserable pity": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "modify memory": [
+      "mind-affecting"
+    ],
+    "molten orb": [
+      "earth",
+      "fire"
+    ],
+    "moment of greatness": [
+      "mind-affecting"
+    ],
+    "moonrise arrow": [
+      "light"
+    ],
+    "moonstruck": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "morning sun": [
+      "light"
+    ],
+    "mortal terror": [
+      "fear",
+      "mind-affecting"
+    ],
+    "motes of dusk and dawn": [
+      "darkness",
+      "light"
+    ],
+    "move earth": [
+      "earth"
+    ],
+    "mudball": [
+      "earth"
+    ],
+    "murderous command": [
+      "mind-affecting"
+    ],
+    "music of the spheres": [
+      "sonic"
+    ],
+    "mydriatic spontaneity": [
+      "darkness",
+      "light"
+    ],
+    "mydriatic spontaneity mass": [
+      "darkness",
+      "light"
+    ],
+    "mythic severance": [
+      "curse"
+    ],
+    "nature s exile": [
+      "curse"
+    ],
+    "natures exile": [
+      "curse"
+    ],
+    "nauseating dart": [
+      "poison"
+    ],
+    "nauseating trail": [
+      "poison"
+    ],
+    "night blindness": [
+      "curse"
+    ],
+    "night terrors": [
+      "emotion",
+      "evil",
+      "mind-affecting"
+    ],
+    "nightmare": [
+      "mind-affecting"
+    ],
+    "nixie s lure": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "nixies lure": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "node of blasting": [
+      "mind-affecting"
+    ],
+    "obsidian flow": [
+      "earth",
+      "fire"
+    ],
+    "old salt s curse": [
+      "curse"
+    ],
+    "old salts curse": [
+      "curse"
+    ],
+    "oneiric horror": [
+      "mind-affecting"
+    ],
+    "oneiric horror greater": [
+      "mind-affecting"
+    ],
+    "open book": [
+      "curse"
+    ],
+    "oppressive boredom": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "oracle s burden": [
+      "curse"
+    ],
+    "oracles burden": [
+      "curse"
+    ],
+    "order s wrath": [
+      "lawful"
+    ],
+    "orders wrath": [
+      "lawful"
+    ],
+    "out of sight": [
+      "mind-affecting"
+    ],
+    "overlook": [
+      "mind-affecting"
+    ],
+    "overwhelming grief": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "overwhelming poison": [
+      "poison"
+    ],
+    "overwhelming presence": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "pain strike": [
+      "evil",
+      "pain"
+    ],
+    "pain strike mass": [
+      "evil",
+      "pain"
+    ],
+    "painful revelation": [
+      "mind-affecting",
+      "pain"
+    ],
+    "pale flame": [
+      "fire"
+    ],
+    "paranoia": [
+      "mind-affecting"
+    ],
+    "parasitic soul": [
+      "death",
+      "evil"
+    ],
+    "passing fancy": [
+      "mind-affecting"
+    ],
+    "passing fancy mass": [
+      "mind-affecting"
+    ],
+    "path of the winds": [
+      "air"
+    ],
+    "peacemaker s parley": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "peacemakers parley": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "penumbra": [
+      "darkness"
+    ],
+    "penumbral disguise": [
+      "shadow"
+    ],
+    "permanent hallucination": [
+      "mind-affecting"
+    ],
+    "pernicious poison": [
+      "poison"
+    ],
+    "persuasive goad": [
+      "pain"
+    ],
+    "pessimism": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "phantasmal affliction": [
+      "mind-affecting"
+    ],
+    "phantasmal asphixiation": [
+      "mind-affecting"
+    ],
+    "phantasmal killer": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "phantasmal putrefaction": [
+      "fear",
+      "mind-affecting"
+    ],
+    "phantasmal reminder": [
+      "mind-affecting"
+    ],
+    "phantasmal revenge": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "phantasmal web": [
+      "mind-affecting"
+    ],
+    "phobia": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "pick your poison": [
+      "mind-affecting"
+    ],
+    "pied piping": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "piercing shriek": [
+      "pain",
+      "sonic"
+    ],
+    "pilfering hand": [
+      "force"
+    ],
+    "pillar of life": [
+      "light"
+    ],
+    "pillow talk": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "placebo effect": [
+      "mind-affecting"
+    ],
+    "plague bearer": [
+      "disease",
+      "evil"
+    ],
+    "plague carrier": [
+      "disease",
+      "evil"
+    ],
+    "plague storm": [
+      "disease",
+      "evil"
+    ],
+    "plundered power": [
+      "evil"
+    ],
+    "poison": [
+      "poison"
+    ],
+    "poison breath": [
+      "poison"
+    ],
+    "poisoned egg": [
+      "poison"
+    ],
+    "poisonous balm": [
+      "poison",
+      "ruse"
+    ],
+    "poisonous cloud": [
+      "poison"
+    ],
+    "polar midnight": [
+      "cold",
+      "darkness"
+    ],
+    "polar ray": [
+      "cold"
+    ],
+    "power word blind": [
+      "mind-affecting"
+    ],
+    "power word kill": [
+      "death",
+      "mind-affecting"
+    ],
+    "power word stun": [
+      "mind-affecting"
+    ],
+    "pox of rumors": [
+      "curse",
+      "mind-affecting"
+    ],
+    "pox pustules": [
+      "disease"
+    ],
+    "prayer": [
+      "mind-affecting"
+    ],
+    "prediction of failure": [
+      "curse",
+      "fear",
+      "mind-affecting"
+    ],
+    "preserve grace": [
+      "good"
+    ],
+    "primal regression": [
+      "mind-affecting"
+    ],
+    "primal scream": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "produce flame": [
+      "fire"
+    ],
+    "profane nimbus": [
+      "evil"
+    ],
+    "project image": [
+      "shadow"
+    ],
+    "project weakness": [
+      "curse",
+      "evil"
+    ],
+    "protection from chaos": [
+      "lawful"
+    ],
+    "protection from chaos communal": [
+      "lawful"
+    ],
+    "protection from chaos evil good law": [
+      "good"
+    ],
+    "protection from evil": [
+      "good"
+    ],
+    "protection from evil communal": [
+      "good"
+    ],
+    "protection from good": [
+      "evil"
+    ],
+    "protection from good communal": [
+      "evil"
+    ],
+    "protection from law": [
+      "chaotic"
+    ],
+    "protection from law communal": [
+      "chaotic"
+    ],
+    "protective penumbra": [
+      "darkness"
+    ],
+    "psychic asylum": [
+      "mind-affecting"
+    ],
+    "psychic crush 1": [
+      "mind-affecting"
+    ],
+    "psychic crush 2": [
+      "mind-affecting"
+    ],
+    "psychic crush 3": [
+      "mind-affecting"
+    ],
+    "psychic crush 4": [
+      "mind-affecting"
+    ],
+    "psychic crush 5": [
+      "mind-affecting"
+    ],
+    "psychic crush i": [
+      "mind-affecting"
+    ],
+    "psychic crush ii": [
+      "mind-affecting"
+    ],
+    "psychic crush iii": [
+      "mind-affecting"
+    ],
+    "psychic crush iv": [
+      "mind-affecting"
+    ],
+    "psychic crush v": [
+      "mind-affecting"
+    ],
+    "psychic leech": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "psychic surgery": [
+      "mind-affecting"
+    ],
+    "psychonaut manifestation": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "pugwampi s grace": [
+      "mind-affecting"
+    ],
+    "pugwampis grace": [
+      "mind-affecting"
+    ],
+    "putrefy food and drink": [
+      "poison"
+    ],
+    "puzzle box": [
+      "curse",
+      "mind-affecting"
+    ],
+    "pyrotechnic eruption": [
+      "fire"
+    ],
+    "qlippoth appearance": [
+      "mind-affecting"
+    ],
+    "qualm": [
+      "mind-affecting"
+    ],
+    "quest": [
+      "curse",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "rage": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "raging rubble": [
+      "earth"
+    ],
+    "rainbow pattern": [
+      "mind-affecting"
+    ],
+    "rally point": [
+      "emotion",
+      "good",
+      "mind-affecting"
+    ],
+    "rampart": [
+      "earth"
+    ],
+    "ray of frost": [
+      "cold"
+    ],
+    "reaper s coterie": [
+      "evil"
+    ],
+    "reapers coterie": [
+      "evil"
+    ],
+    "rebuke": [
+      "sonic"
+    ],
+    "reckless infatuation": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "reflexive barrier": [
+      "force"
+    ],
+    "reinvigorating wind": [
+      "air",
+      "mind-affecting"
+    ],
+    "repel metal or stone": [
+      "earth"
+    ],
+    "repel vermin": [
+      "pain"
+    ],
+    "repress memory": [
+      "mind-affecting"
+    ],
+    "repugnant taste": [
+      "poison"
+    ],
+    "resilient sphere": [
+      "force"
+    ],
+    "resonating word": [
+      "sonic"
+    ],
+    "resounding blow": [
+      "sonic"
+    ],
+    "rest eternal": [
+      "curse"
+    ],
+    "retribution": [
+      "evil",
+      "pain"
+    ],
+    "retributive reparations": [
+      "curse"
+    ],
+    "reveal secrets": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "revealing light": [
+      "light"
+    ],
+    "ride the lightning": [
+      "electricity"
+    ],
+    "ride the waves": [
+      "water"
+    ],
+    "rift of ruin": [
+      "chaotic",
+      "evil"
+    ],
+    "righteous blood": [
+      "good"
+    ],
+    "righteous condemnation": [
+      "good",
+      "lawful"
+    ],
+    "righteous vigor": [
+      "mind-affecting"
+    ],
+    "rigor mortis": [
+      "pain"
+    ],
+    "rising water": [
+      "water"
+    ],
+    "rite of bodily purity": [
+      "meditative"
+    ],
+    "rite of centered mind": [
+      "meditative"
+    ],
+    "river of wind": [
+      "air"
+    ],
+    "river whip": [
+      "water"
+    ],
+    "root": [
+      "earth"
+    ],
+    "rope tornado": [
+      "air"
+    ],
+    "rotting alliance": [
+      "curse",
+      "disease"
+    ],
+    "rune of ruin": [
+      "curse"
+    ],
+    "runic overload": [
+      "sonic"
+    ],
+    "sacred nimbus": [
+      "good"
+    ],
+    "sacred space": [
+      "good"
+    ],
+    "sacrifice": [
+      "mind-affecting"
+    ],
+    "sadomasochism": [
+      "pain"
+    ],
+    "sanctify armor": [
+      "good"
+    ],
+    "sanctify corpse": [
+      "good"
+    ],
+    "saving finale": [
+      "mind-affecting"
+    ],
+    "sawtooth terrain": [
+      "earth"
+    ],
+    "scare": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "scintillating pattern": [
+      "mind-affecting"
+    ],
+    "scintillating wall": [
+      "mind-affecting"
+    ],
+    "scoop": [
+      "force"
+    ],
+    "scorching ash form": [
+      "fire"
+    ],
+    "scorching ray": [
+      "fire"
+    ],
+    "scourge of the horsemen": [
+      "acid",
+      "evil"
+    ],
+    "scouring winds": [
+      "air",
+      "earth"
+    ],
+    "screaming flames": [
+      "evil",
+      "fire",
+      "mind-affecting"
+    ],
+    "screech": [
+      "sonic"
+    ],
+    "scripted hallucination": [
+      "mind-affecting"
+    ],
+    "sea of dust": [
+      "water"
+    ],
+    "sealed sending": [
+      "language-dependent"
+    ],
+    "seamantle": [
+      "water"
+    ],
+    "searching shadows": [
+      "shadow"
+    ],
+    "second wind": [
+      "air"
+    ],
+    "seducer s eyes": [
+      "mind-affecting"
+    ],
+    "seducers eyes": [
+      "mind-affecting"
+    ],
+    "see beyond": [
+      "meditative"
+    ],
+    "seeds of influence": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "seeds of influence greater": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "seek shelter": [
+      "fear",
+      "mind-affecting"
+    ],
+    "seek thoughts": [
+      "mind-affecting"
+    ],
+    "seismic fissure": [
+      "earth"
+    ],
+    "sensory amplifier": [
+      "mind-affecting"
+    ],
+    "sensory overload": [
+      "mind-affecting"
+    ],
+    "sentry skull": [
+      "evil"
+    ],
+    "sepia snake sigil": [
+      "force"
+    ],
+    "sequester thoughts": [
+      "mind-affecting"
+    ],
+    "serenity": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "shades": [
+      "shadow"
+    ],
+    "shadow anchor": [
+      "shadow"
+    ],
+    "shadow barbs": [
+      "darkness"
+    ],
+    "shadow claws": [
+      "shadow"
+    ],
+    "shadow conjuration": [
+      "shadow"
+    ],
+    "shadow conjuration greater": [
+      "shadow"
+    ],
+    "shadow dragon aspect": [
+      "shadow"
+    ],
+    "shadow enchantment": [
+      "shadow"
+    ],
+    "shadow enchantment greater": [
+      "shadow"
+    ],
+    "shadow endurance": [
+      "shadow"
+    ],
+    "shadow evocation": [
+      "shadow"
+    ],
+    "shadow evocation greater": [
+      "shadow"
+    ],
+    "shadow jaunt": [
+      "shadow"
+    ],
+    "shadow of doubt": [
+      "darkness",
+      "emotion",
+      "evil",
+      "mind-affecting"
+    ],
+    "shadow projection": [
+      "evil"
+    ],
+    "shadow step": [
+      "shadow"
+    ],
+    "shadow transmutation": [
+      "shadow"
+    ],
+    "shadow transmutation greater": [
+      "shadow"
+    ],
+    "shadow walk": [
+      "shadow"
+    ],
+    "shadow weapon": [
+      "shadow"
+    ],
+    "shadowbard": [
+      "shadow"
+    ],
+    "shadowform": [
+      "shadow"
+    ],
+    "shamefully overdressed": [
+      "mind-affecting"
+    ],
+    "shard of chaos": [
+      "chaotic"
+    ],
+    "shared sacrifice": [
+      "evil"
+    ],
+    "shared suffering": [
+      "evil"
+    ],
+    "shared training": [
+      "mind-affecting"
+    ],
+    "shared wrath": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "shatter": [
+      "sonic"
+    ],
+    "sheet lightning": [
+      "electricity"
+    ],
+    "shield": [
+      "force"
+    ],
+    "shield of darkness": [
+      "darkness",
+      "shadow"
+    ],
+    "shield of law": [
+      "lawful"
+    ],
+    "shield of the dawnflower": [
+      "fire",
+      "good",
+      "light"
+    ],
+    "shield of the dawnflower greater": [
+      "fire",
+      "good",
+      "light"
+    ],
+    "shield of wings": [
+      "fire"
+    ],
+    "shifting sand": [
+      "earth"
+    ],
+    "shifting shadows": [
+      "darkness"
+    ],
+    "shining cord": [
+      "force"
+    ],
+    "shock shield": [
+      "electricity",
+      "force"
+    ],
+    "shocking grasp": [
+      "electricity"
+    ],
+    "shocking image": [
+      "electricity"
+    ],
+    "shout": [
+      "sonic"
+    ],
+    "shout greater": [
+      "sonic"
+    ],
+    "shroud of darkness": [
+      "darkness"
+    ],
+    "sickening entanglement": [
+      "poison"
+    ],
+    "sickening strikes": [
+      "disease"
+    ],
+    "siege scatter": [
+      "earth"
+    ],
+    "sign of wrath": [
+      "force"
+    ],
+    "signifer s rally": [
+      "evil"
+    ],
+    "signifers rally": [
+      "evil"
+    ],
+    "silverlight": [
+      "light"
+    ],
+    "sirocco": [
+      "air",
+      "fire"
+    ],
+    "skin tag": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "sky swim": [
+      "air"
+    ],
+    "slave to sin": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "slay living": [
+      "death"
+    ],
+    "sleep": [
+      "mind-affecting"
+    ],
+    "sleepwalk": [
+      "mind-affecting"
+    ],
+    "sleepwalking suggestion": [
+      "mind-affecting"
+    ],
+    "sleet storm": [
+      "cold"
+    ],
+    "slipstream": [
+      "water"
+    ],
+    "slough": [
+      "evil"
+    ],
+    "smug narcissism": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "snapdragon fireworks": [
+      "fire",
+      "light"
+    ],
+    "snow shape": [
+      "water"
+    ],
+    "snowball": [
+      "cold",
+      "water"
+    ],
+    "soften earth and stone": [
+      "earth"
+    ],
+    "solidify earth": [
+      "earth"
+    ],
+    "song of discord": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "song of discord greater": [
+      "mind-affecting",
+      "sonic"
+    ],
+    "songbird": [
+      "good"
+    ],
+    "sonic form": [
+      "sonic"
+    ],
+    "sonic scream": [
+      "sonic"
+    ],
+    "sonic thrust": [
+      "sonic"
+    ],
+    "soothing mud": [
+      "earth",
+      "water"
+    ],
+    "sotto voce": [
+      "fear",
+      "mind-affecting",
+      "sonic"
+    ],
+    "soulreaver": [
+      "death"
+    ],
+    "sound burst": [
+      "sonic"
+    ],
+    "sow thought": [
+      "mind-affecting"
+    ],
+    "spark": [
+      "fire"
+    ],
+    "spawn calling": [
+      "chaotic",
+      "evil"
+    ],
+    "speak with dead": [
+      "language-dependent"
+    ],
+    "speak with haunt": [
+      "language-dependent"
+    ],
+    "speak with waves": [
+      "water"
+    ],
+    "spear of purity": [
+      "good"
+    ],
+    "spell gauge": [
+      "mind-affecting"
+    ],
+    "spellcurse": [
+      "curse"
+    ],
+    "spike stones": [
+      "earth"
+    ],
+    "spindrift spritz": [
+      "water"
+    ],
+    "spindrift spritz mass": [
+      "water"
+    ],
+    "spirit bonds": [
+      "meditative"
+    ],
+    "spiritual ally": [
+      "force"
+    ],
+    "spiritual squire": [
+      "force"
+    ],
+    "spiritual weapon": [
+      "force"
+    ],
+    "spit venom": [
+      "poison"
+    ],
+    "spontaneous immolation": [
+      "fire"
+    ],
+    "spore burst": [
+      "poison"
+    ],
+    "spotlight": [
+      "darkness",
+      "light"
+    ],
+    "stage fright": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "stalwart resolve": [
+      "mind-affecting"
+    ],
+    "stay the hand": [
+      "mind-affecting"
+    ],
+    "steal breath": [
+      "air"
+    ],
+    "steam ray fusillade": [
+      "fire",
+      "water"
+    ],
+    "stinking cloud": [
+      "poison"
+    ],
+    "stoke the inner fire": [
+      "fire"
+    ],
+    "stone call": [
+      "earth"
+    ],
+    "stone discus": [
+      "earth"
+    ],
+    "stone fist": [
+      "earth"
+    ],
+    "stone shape": [
+      "earth"
+    ],
+    "stone shield": [
+      "earth"
+    ],
+    "storm step": [
+      "electricity"
+    ],
+    "stormbolts": [
+      "electricity"
+    ],
+    "stricken heart": [
+      "death"
+    ],
+    "stunning finale": [
+      "mind-affecting"
+    ],
+    "subjective reality": [
+      "mind-affecting"
+    ],
+    "suggestion": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "suggestion mass": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "summon accuser": [
+      "evil",
+      "lawful"
+    ],
+    "summon barghest 1": [
+      "evil"
+    ],
+    "summon barghest i": [
+      "evil"
+    ],
+    "summon cacodaemon": [
+      "evil"
+    ],
+    "summon cacodaemon greater": [
+      "evil"
+    ],
+    "summon ceustodaemon": [
+      "evil"
+    ],
+    "summon derghodaemon": [
+      "evil"
+    ],
+    "summon erodaemon": [
+      "evil"
+    ],
+    "summon greater demon": [
+      "chaotic",
+      "evil"
+    ],
+    "summon infernal host": [
+      "evil",
+      "lawful"
+    ],
+    "summon lesser demon": [
+      "chaotic",
+      "evil"
+    ],
+    "summon meladaemon": [
+      "evil"
+    ],
+    "summon thanadaemon": [
+      "evil"
+    ],
+    "sun metal": [
+      "fire"
+    ],
+    "sun s disdain": [
+      "curse"
+    ],
+    "sun s disdain mass": [
+      "curse"
+    ],
+    "sunbeam": [
+      "light"
+    ],
+    "sunburst": [
+      "light"
+    ],
+    "sunder breaker": [
+      "force"
+    ],
+    "suns disdain": [
+      "curse"
+    ],
+    "suns disdain mass": [
+      "curse"
+    ],
+    "supreme curse terrain": [
+      "curse",
+      "evil"
+    ],
+    "sweat poison": [
+      "poison"
+    ],
+    "sword to snake": [
+      "poison"
+    ],
+    "symbol of death": [
+      "death"
+    ],
+    "symbol of debauchery": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "symbol of distraction": [
+      "mind-affecting"
+    ],
+    "symbol of exsanguination": [
+      "evil"
+    ],
+    "symbol of fear": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "symbol of insanity": [
+      "mind-affecting"
+    ],
+    "symbol of laughter": [
+      "mind-affecting"
+    ],
+    "symbol of pain": [
+      "evil",
+      "pain"
+    ],
+    "symbol of persuasion": [
+      "mind-affecting"
+    ],
+    "symbol of sealing": [
+      "force"
+    ],
+    "symbol of sleep": [
+      "mind-affecting"
+    ],
+    "symbol of storms": [
+      "air",
+      "electricity"
+    ],
+    "symbol of strife": [
+      "mind-affecting"
+    ],
+    "symbol of stunning": [
+      "mind-affecting"
+    ],
+    "sympathetic vibration": [
+      "sonic"
+    ],
+    "sympathetic wounds": [
+      "evil"
+    ],
+    "sympathy": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "synapse overload": [
+      "mind-affecting"
+    ],
+    "synaptic pulse": [
+      "mind-affecting"
+    ],
+    "synaptic pulse greater": [
+      "mind-affecting"
+    ],
+    "synaptic scramble": [
+      "mind-affecting"
+    ],
+    "synesthesia": [
+      "mind-affecting"
+    ],
+    "synesthesia mass": [
+      "mind-affecting"
+    ],
+    "tactical acumen": [
+      "mind-affecting"
+    ],
+    "tactical miscalculation": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "tail current": [
+      "water"
+    ],
+    "tailwind": [
+      "air"
+    ],
+    "tamer s lash": [
+      "sonic"
+    ],
+    "tamers lash": [
+      "sonic"
+    ],
+    "tar pool": [
+      "earth",
+      "fire"
+    ],
+    "telekinetic charge": [
+      "force"
+    ],
+    "telekinetic sphere": [
+      "force"
+    ],
+    "telekinetic storm": [
+      "force"
+    ],
+    "telekinetic strikes": [
+      "force"
+    ],
+    "telempathic projection": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "telepathy": [
+      "mind-affecting"
+    ],
+    "teratoid caress": [
+      "chaotic",
+      "curse",
+      "evil"
+    ],
+    "terrain bond": [
+      "mind-affecting"
+    ],
+    "terrible remorse": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "they know": [
+      "emotion",
+      "fear"
+    ],
+    "thorn javelin": [
+      "poison"
+    ],
+    "thought worm 1": [
+      "mind-affecting"
+    ],
+    "thought worm 2": [
+      "mind-affecting"
+    ],
+    "thought worm 3": [
+      "mind-affecting"
+    ],
+    "thought worm 4": [
+      "mind-affecting"
+    ],
+    "thought worm i": [
+      "mind-affecting"
+    ],
+    "thought worm ii": [
+      "mind-affecting"
+    ],
+    "thought worm iii": [
+      "mind-affecting"
+    ],
+    "thought worm iv": [
+      "mind-affecting"
+    ],
+    "thoughtsense": [
+      "mind-affecting"
+    ],
+    "thundering drums": [
+      "sonic"
+    ],
+    "thunderstomp": [
+      "earth"
+    ],
+    "thunderstomp greater": [
+      "earth"
+    ],
+    "tidal surge": [
+      "water"
+    ],
+    "tieldlara s feint": [
+      "mind-affecting"
+    ],
+    "tieldlaras feint": [
+      "mind-affecting"
+    ],
+    "tiny hut": [
+      "force"
+    ],
+    "toilsome chant": [
+      "mind-affecting"
+    ],
+    "tomb legion": [
+      "evil"
+    ],
+    "torpid reanimation": [
+      "evil"
+    ],
+    "torrent of elemental rage": [
+      "air",
+      "earth",
+      "fire",
+      "water"
+    ],
+    "touch of blindness": [
+      "darkness",
+      "shadow"
+    ],
+    "touch of combustion": [
+      "fire"
+    ],
+    "touch of idiocy": [
+      "mind-affecting"
+    ],
+    "touch of mercy": [
+      "good",
+      "mind-affecting"
+    ],
+    "touch of slime": [
+      "disease"
+    ],
+    "touch of slumber": [
+      "mind-affecting"
+    ],
+    "toxic blood": [
+      "poison"
+    ],
+    "toxic gift": [
+      "poison"
+    ],
+    "toxic rupture": [
+      "poison"
+    ],
+    "transmute blood to acid": [
+      "acid",
+      "pain"
+    ],
+    "transmute mud to rock": [
+      "earth"
+    ],
+    "transmute potion to poison": [
+      "poison"
+    ],
+    "transmute rock to mud": [
+      "earth"
+    ],
+    "transplant visage": [
+      "evil"
+    ],
+    "treacherous teleport": [
+      "ruse"
+    ],
+    "trial by fire": [
+      "fire"
+    ],
+    "trial of fire and acid": [
+      "acid",
+      "fire"
+    ],
+    "triggered hallucination": [
+      "mind-affecting"
+    ],
+    "triggered suggestion": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "tsunami": [
+      "water"
+    ],
+    "twilight haze": [
+      "darkness",
+      "shadow"
+    ],
+    "twilight knife": [
+      "force"
+    ],
+    "umbral infusion": [
+      "shadow"
+    ],
+    "umbral infusion mass": [
+      "shadow"
+    ],
+    "umbral strike": [
+      "darkness"
+    ],
+    "umbral weapon": [
+      "cold",
+      "shadow"
+    ],
+    "unadulterated loathing": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "unbearable brightness": [
+      "light"
+    ],
+    "unbreakable heart": [
+      "mind-affecting"
+    ],
+    "unconscious agenda": [
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "undine s curse": [
+      "curse",
+      "evil"
+    ],
+    "undines curse": [
+      "curse",
+      "evil"
+    ],
+    "unflappable mien": [
+      "force"
+    ],
+    "unhallow": [
+      "evil"
+    ],
+    "unhallowed blows": [
+      "evil"
+    ],
+    "unhallowed blows greater": [
+      "evil"
+    ],
+    "unholy aura": [
+      "evil"
+    ],
+    "unholy blight": [
+      "evil"
+    ],
+    "unholy ice": [
+      "cold",
+      "evil",
+      "water"
+    ],
+    "unholy ice weapon": [
+      "cold",
+      "evil",
+      "water"
+    ],
+    "unholy sword": [
+      "evil"
+    ],
+    "unholy ward": [
+      "evil"
+    ],
+    "unleash pandemonium": [
+      "chaotic"
+    ],
+    "unlife current": [
+      "water"
+    ],
+    "unnatural lust": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "unprepared combatant": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "unsettling presence": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "unshakable chill": [
+      "cold"
+    ],
+    "unshakeable zeal": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "untold wonder": [
+      "mind-affecting"
+    ],
+    "unwelcome halo": [
+      "light"
+    ],
+    "unwitting ally": [
+      "mind-affecting"
+    ],
+    "urgathoa s beacon": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "urgathoas beacon": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "utter contempt": [
+      "emotion"
+    ],
+    "vampiric hunger": [
+      "evil"
+    ],
+    "veil of ash": [
+      "fire"
+    ],
+    "veil of heaven": [
+      "good"
+    ],
+    "veil of positive energy": [
+      "good"
+    ],
+    "vengeful comets": [
+      "cold"
+    ],
+    "vengeful outrage": [
+      "emotion",
+      "language-dependent",
+      "mind-affecting"
+    ],
+    "vengeful stinger": [
+      "poison"
+    ],
+    "venomous bite": [
+      "poison"
+    ],
+    "venomous bolt": [
+      "poison"
+    ],
+    "venomous promise": [
+      "language-dependent",
+      "poison"
+    ],
+    "vermicious assumption": [
+      "chaotic",
+      "evil"
+    ],
+    "vexing miscalculation": [
+      "mind-affecting"
+    ],
+    "vile dog transformation": [
+      "evil"
+    ],
+    "village veil": [
+      "mind-affecting"
+    ],
+    "violent accident": [
+      "curse"
+    ],
+    "virulence": [
+      "evil"
+    ],
+    "vision of hell": [
+      "evil",
+      "fear"
+    ],
+    "vision of lamashtu": [
+      "evil",
+      "mind-affecting"
+    ],
+    "visualization of the body": [
+      "meditative"
+    ],
+    "visualization of the mind": [
+      "meditative"
+    ],
+    "vitriolic mist": [
+      "acid"
+    ],
+    "volcanic storm": [
+      "fire"
+    ],
+    "vortex": [
+      "water"
+    ],
+    "wail of the banshee": [
+      "death",
+      "sonic"
+    ],
+    "wake of light": [
+      "good"
+    ],
+    "wall of brine": [
+      "water"
+    ],
+    "wall of fire": [
+      "fire"
+    ],
+    "wall of force": [
+      "force"
+    ],
+    "wall of ice": [
+      "cold"
+    ],
+    "wall of lava": [
+      "earth",
+      "fire"
+    ],
+    "wall of light": [
+      "light"
+    ],
+    "wall of mist": [
+      "air"
+    ],
+    "wall of nausea": [
+      "mind-affecting"
+    ],
+    "wall of silver": [
+      "good"
+    ],
+    "wall of sound": [
+      "sonic"
+    ],
+    "wall of split illumination": [
+      "darkness",
+      "light"
+    ],
+    "wall of stone": [
+      "earth"
+    ],
+    "wandering star motes": [
+      "light",
+      "mind-affecting"
+    ],
+    "warp metal": [
+      "earth"
+    ],
+    "wartrain mount": [
+      "mind-affecting"
+    ],
+    "water shield": [
+      "acid",
+      "water"
+    ],
+    "water walk": [
+      "water"
+    ],
+    "water walk communal": [
+      "water"
+    ],
+    "waterproof": [
+      "water"
+    ],
+    "wave form": [
+      "water"
+    ],
+    "wave shield": [
+      "water"
+    ],
+    "waves of ecstasy": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "weapon of awe": [
+      "emotion"
+    ],
+    "weird": [
+      "emotion",
+      "fear",
+      "mind-affecting"
+    ],
+    "what grows within": [
+      "evil"
+    ],
+    "whirlwind": [
+      "air"
+    ],
+    "whispering wind": [
+      "air"
+    ],
+    "wind blades": [
+      "air"
+    ],
+    "wind walk": [
+      "air"
+    ],
+    "wind wall": [
+      "air"
+    ],
+    "winds of vengeance": [
+      "air"
+    ],
+    "windy escape": [
+      "air"
+    ],
+    "wing thorns": [
+      "poison"
+    ],
+    "winter grasp": [
+      "cold",
+      "water"
+    ],
+    "with the wind": [
+      "air"
+    ],
+    "word of chaos": [
+      "chaotic",
+      "sonic"
+    ],
+    "world wave": [
+      "earth",
+      "water"
+    ],
+    "wracking ray": [
+      "evil",
+      "pain"
+    ],
+    "wrath": [
+      "emotion",
+      "mind-affecting"
+    ],
+    "wrathful mantle": [
+      "force",
+      "light"
+    ],
+    "yellow sign": [
+      "mind-affecting"
+    ],
+    "zephyr s fleetness": [
+      "air"
+    ],
+    "zephyrs fleetness": [
+      "air"
+    ],
+    "zone of truth": [
+      "mind-affecting"
+    ]
   }
 }

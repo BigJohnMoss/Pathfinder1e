@@ -12,6 +12,7 @@ for(const file of spellClassLevelFiles) for(const [spellId,levels] of Object.ent
 }
 const spellSchoolFiles=await loadDir('spell-schools');
 const schoolsByName=Object.assign({},...spellSchoolFiles.map(file=>file.schoolsByName??{}));
+const descriptorsByName=Object.assign({},...spellSchoolFiles.map(file=>file.descriptorsByName??{}));
 const domainDetailFiles=await loadDir('domain-details');
 const domainDetails=new Map(domainDetailFiles.flatMap(file=>file.domains??[]).map(domain=>[domain.id,domain]));
 const subdomains=domainDetailFiles.flatMap(file=>file.subdomains??[]);
@@ -59,7 +60,8 @@ const spells=sourceSpells.map(sourceSpell=>{
   const mappedSchools=schoolsByName[normalizeName(spell.name)];
   const schools=spell.schools??(Array.isArray(mappedSchools)?mappedSchools:undefined);
   const school=spell.school??(schools?"multiple":typeof mappedSchools==="string"?mappedSchools:undefined);
-  return {...spell,...(school?{school}:{}),...(schools?{schools}:{}),levelByClass};
+  const descriptors=spell.descriptors??descriptorsByName[normalizeName(spell.name)];
+  return {...spell,...(school?{school}:{}),...(schools?{schools}:{}),...(descriptors?.length?{descriptors}:{}),levelByClass};
 });
 const classLevelForSpellLevel=(classId,spellLevel)=>classId==="bard"?([1,2,4,7,10,13,16][spellLevel]??20):1;
 const optionGroups=rawOptionGroups.map(group=>{

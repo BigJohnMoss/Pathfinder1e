@@ -17,10 +17,25 @@
           "name": "Air Mastery (Su)",
           "level": 1,
           "type": "archetype",
-          "resourceActions": [
-            {"id":"air-mastery-caster-level","label":"Boost qualifying spell caster level","resourceId":"arcaneReservoir","cost":1,"summary":"Spend 1 reservoir point when casting an air, cold, electricity, or sonic spell; apply Air Mastery's level-scaled caster-level increase."},
-            {"id":"air-mastery-save-dc","label":"Boost qualifying spell save DC","resourceId":"arcaneReservoir","cost":1,"summary":"Spend 1 reservoir point when casting an air, cold, electricity, or sonic spell; apply Air Mastery's save-DC increase."}
-          ],
+          "spellAutomation": {
+            "descriptorReservoirBoost": {
+              "label": "Air Mastery",
+              "resourceId": "arcaneReservoir",
+              "cost": 1,
+              "descriptors": ["air", "cold", "electricity", "sonic"],
+              "casterLevelBonusByLevel": [
+                {"level": 1, "bonus": 2},
+                {"level": 5, "bonus": 3},
+                {"level": 10, "bonus": 4},
+                {"level": 15, "bonus": 5},
+                {"level": 20, "bonus": 6}
+              ],
+              "saveDcBonusByLevel": [
+                {"level": 1, "bonus": 2},
+                {"level": 10, "bonus": 3}
+              ]
+            }
+          },
           "summary": "Aeromancers specialize in magic that manipulates the wind and sky. Whenever an aeromancer expends a point from her arcane reservoir to increase the caster level of a spell with the air, cold, electricity, or sonic descriptor, she increases that bonus by an additional 1. At 5th level, and every 5 levels thereafter, the amount by which she increases the caster level of such spells further increases by an additional 1 (to a maximum additional caster level increase from this ability of 5 at 20th level). Alternatively, if the aeromancer expends a point from her arcane reservoir to increase the saving throw DC of a spell with the air, cold, electricity, or sonic descriptor, she increases it by an additional 1. At 10th level, she increases it by an additional 2 instead. This replaces the arcane exploit gained at 1st level."
         },
         {
@@ -28,7 +43,23 @@
           "name": "Wind’s Embrace (Su)",
           "level": 5,
           "type": "archetype",
-          "resourceActions": [{"id":"wind-s-embrace","label":"Use Wind's Embrace","resourceId":"arcaneReservoir","cost":2,"summary":"Spend 2 reservoir points for air walk and a moving wind wall for 1 minute."}],
+          "resourceActions": [
+            {
+              "id": "wind-s-embrace",
+              "label": "Use Wind's Embrace",
+              "resourceId": "arcaneReservoir",
+              "cost": 2,
+              "activeEffect": {
+                "name": "Wind's Embrace",
+                "targets": ["self"],
+                "bonus": 0,
+                "defaultRounds": 10,
+                "fixedRounds": true,
+                "description": "Air walk and a protective wind wall surround you and move with you."
+              },
+              "summary": "Spend 2 reservoir points for air walk and a moving wind wall for 1 minute."
+            }
+          ],
           "summary": "At 5th level, an aeromancer can expend 2 points from her arcane reservoir to call upon the winds to gently carry her through the air while protecting her from harm. She is affected as though by the spell air walk and is surrounded by protective winds that function similarly to a wind wall spell, except the effect surrounds only the aeromancer and moves with her wherever she goes. Both of these effects last for 1 minute. This replaces the arcane exploit gained at 5th level."
         },
         {
@@ -36,7 +67,28 @@
           "name": "Rebuking Gale (Su)",
           "level": 11,
           "type": "archetype",
-          "resourceActions": [{"id":"rebuking-gale","label":"Use Rebuking Gale","resourceId":"arcaneReservoir","cost":3,"summary":"Spend 3 reservoir points to create the hurricane-force burst or cone for 1 round."}],
+          "resourceActions": [
+            {
+              "id": "rebuking-gale",
+              "label": "Use Rebuking Gale",
+              "resourceId": "arcaneReservoir",
+              "cost": 3,
+              "modeLabel": "Area",
+              "modes": [
+                {"id": "burst", "label": "20-foot-radius burst", "summary": "20-foot-radius burst centered on you."},
+                {"id": "cone", "label": "40-foot cone", "summary": "40-foot cone originating from your space."}
+              ],
+              "activeEffect": {
+                "name": "Rebuking Gale",
+                "targets": ["area"],
+                "bonus": 0,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "description": "Hurricane-force winds prevent normal ranged attacks, impose –8 on siege-weapon ranged attacks and –12 on Fly checks, check Large creatures, and can blow away Medium or smaller creatures."
+              },
+              "summary": "Spend 3 reservoir points, choose a burst or cone, and create hurricane-force winds for 1 round."
+            }
+          ],
           "summary": "At 11th level, by expending 3 points from her arcane reservoir, an aeromancer can release a powerful blast of wind to push back her foes. This takes the form of either a 20-foot-radius burst centered on the aeromancer or a 40-foot cone originating from the aeromancer’s space. She can choose which form the wind takes each time she uses the ability. The affected area is filled with hurricane-force winds (75 mph). This makes normal ranged attacks passing through this area impossible, imposes a –8 penalty on ranged attacks from siege weapons that pass through the area, and imposes a –12 penalty on Fly checks attempted within the area. Additionally, Large creatures in the area are in danger of being checked, and Medium or smaller creatures in the area are in danger of being blown away. The winds created by this ability last for 1 round. This replaces the arcane exploit gained at 11th level."
         }
       ]
@@ -47,8 +99,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Aeromancer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Air Mastery unlocks at 1st level, and the reservoir costs for both Air Mastery modes, Wind's Embrace, and Rebuking Gale are automated. Spell and encounter effects remain descriptive."
+    "Air Mastery identifies qualifying spell descriptors, calculates its level-scaled caster-level and save-DC modes, and spends the reservoir point together with the cast. Wind's Embrace and Rebuking Gale enforce costs, area choice, duration, encounter tracking, and save/load persistence."
   ]
 }

@@ -6,6 +6,7 @@ import {
 import {
   extendedSpellDuration,
   isPersonalRangeSpell,
+  spellHasDescriptor,
   spellHasSchool,
 } from "../../../packages/engine/src/index.js";
 import type { AbilityName, ActiveEffect, CharacterSpell } from "../../../packages/types/src/index.js";
@@ -95,6 +96,7 @@ export function Spellbook({
   const [shareResult, setShareResult] = useState("");
   const [fastHealingSlotLevel, setFastHealingSlotLevel] = useState(0);
   const [fastHealingResult, setFastHealingResult] = useState("");
+  const [descriptorBoostResult, setDescriptorBoostResult] = useState("");
   useEffect(
     () => setLevelFilter(String(maximumSpellLevel)),
     [maximumSpellLevel],
@@ -182,6 +184,17 @@ export function Spellbook({
       reservoir.current >= fastHealingRules.reservoirCost &&
       remainingSlots(selectedFastHealingSlotLevel) > 0,
   );
+  const descriptorBoostRules = spellAutomation?.descriptorReservoirBoost;
+  const qualifyingDescriptor = (spell: Spell) => descriptorBoostRules?.descriptors.find(
+    (descriptor) => spellHasDescriptor(spell, descriptor),
+  );
+  const canUseDescriptorBoost = (spell: Spell, level: number) => Boolean(
+    descriptorBoostRules &&
+      qualifyingDescriptor(spell) &&
+      reservoir &&
+      reservoir.current >= descriptorBoostRules.reservoirCost &&
+      (level === 0 || remainingSlots(level) > 0),
+  );
   const shareRules = spellAutomation?.sharePersonalRange;
   const shareEligible = (spell: Spell) =>
     Boolean(shareRules && spellHasSchool(spell, shareRules.school) && isPersonalRangeSpell(spell));
@@ -226,6 +239,18 @@ export function Spellbook({
       roundsRemaining: fastHealingRounds,
     });
     setFastHealingResult(`${description} for ${fastHealingRounds} round${fastHealingRounds === 1 ? "" : "s"}.`);
+  };
+  const useDescriptorBoost = (spell: Spell, level: number, mode: "casterLevel" | "saveDc") => {
+    if (!descriptorBoostRules || !reservoir || !canUseDescriptorBoost(spell, level)) return;
+    const descriptor = qualifyingDescriptor(spell);
+    if (!descriptor) return;
+    onReservoirChange(reservoir.current - descriptorBoostRules.reservoirCost);
+    useSpellSlot(level);
+    const bonus = mode === "casterLevel"
+      ? descriptorBoostRules.casterLevelBonus
+      : descriptorBoostRules.saveDcBonus;
+    const statistic = mode === "casterLevel" ? "caster level" : "save DC";
+    setDescriptorBoostResult(`Cast ${spell.name} with ${descriptorBoostRules.label}: +${bonus} ${statistic} (${descriptor} descriptor).`);
   };
   const requiredSchoolPrepared = (level: number) => !requiredPreparedSchool || preparedSpellIds.some((id) => {
     const spell = spells.find((candidate) => candidate.id === id);
@@ -347,6 +372,17 @@ export function Spellbook({
             </button>
           </div>
           {fastHealingResult && <output aria-label={`${fastHealingRules.label} result`}>{fastHealingResult}</output>}
+        </section>
+      )}
+      {descriptorBoostRules && (
+        <section className="archetype-spell-controls" aria-label={descriptorBoostRules.label}>
+          <div>
+            <strong>{descriptorBoostRules.label}</strong>
+            <span>
+              Spend {descriptorBoostRules.reservoirCost} reservoir point while casting an eligible spell to apply +{descriptorBoostRules.casterLevelBonus} caster level or +{descriptorBoostRules.saveDcBonus} save DC. Spells with the {descriptorBoostRules.descriptors.join(", ")} descriptors are marked below.
+            </span>
+          </div>
+          {descriptorBoostResult && <output aria-label={`${descriptorBoostRules.label} result`}>{descriptorBoostResult}</output>}
         </section>
       )}
       <div className="spell-day-controls">
@@ -478,6 +514,7 @@ export function Spellbook({
                     {selections.map(({ spell, count }) => {
                       const canCast = level === 0 || remainingSlots(level) > 0;
                       const shareable = shareEligible(spell);
+                      const boostDescriptor = qualifyingDescriptor(spell);
                       const automaticDuration = derivedDuration(spell);
                       const canShare = Boolean(
                         shareable &&
@@ -495,6 +532,7 @@ export function Spellbook({
                               DC {spellDcs[level]} · prepared ×{count}
                               {automaticDuration ? ` · ${spellAutomation!.automaticExtendDuration!.label}: ${automaticDuration}` : ""}
                               {shareable ? ` · ${shareRules!.label}: ${shareRules!.range}` : ""}
+                              {boostDescriptor ? ` · ${descriptorBoostRules!.label}: ${boostDescriptor}` : ""}
                             </small>
                           </span>
                           <div>
@@ -516,6 +554,10 @@ export function Spellbook({
                                 Share
                               </button>
                             )}
+                            {boostDescriptor && <>
+                              <button type="button" className="descriptor-boost-button" aria-label={`Quick cast ${spell.name} with ${descriptorBoostRules!.label} caster level`} disabled={!canUseDescriptorBoost(spell, level)} onClick={() => useDescriptorBoost(spell, level, "casterLevel")}>+{descriptorBoostRules!.casterLevelBonus} CL</button>
+                              <button type="button" className="descriptor-boost-button" aria-label={`Quick cast ${spell.name} with ${descriptorBoostRules!.label} save DC`} disabled={!canUseDescriptorBoost(spell, level)} onClick={() => useDescriptorBoost(spell, level, "saveDc")}>+{descriptorBoostRules!.saveDcBonus} DC</button>
+                            </>}
                             <button
                               type="button"
                               aria-label={`Remove one prepared ${spell.name}`}
@@ -612,6 +654,7 @@ export function Spellbook({
                   const canCastOnDemand = Boolean(onDemandCost && (!onDemandCost.resourceId || (reservoir && reservoir.current >= onDemandCost.cost)));
                   const consumesSpellSlot = onDemandCost?.consumesSpellSlot ?? true;
                   const shareable = shareEligible(spell);
+                  const boostDescriptor = qualifyingDescriptor(spell);
                   const automaticDuration = derivedDuration(spell);
                   const canShare = Boolean(
                     shareable &&
@@ -649,6 +692,9 @@ export function Spellbook({
                           {shareable
                             ? ` · ${shareRules!.label}: ${shareRules!.range}, ${shareRules!.reservoirCost} reservoir point`
                             : ""}
+                          {boostDescriptor
+                            ? ` · ${descriptorBoostRules!.label}: ${boostDescriptor}, +${descriptorBoostRules!.casterLevelBonus} caster level or +${descriptorBoostRules!.saveDcBonus} save DC`
+                            : ""}
                         </small>
                       </div>
                       <div className="spell-actions">
@@ -680,6 +726,10 @@ export function Spellbook({
                             Share
                           </button>
                         )}
+                        {boostDescriptor && <>
+                          <button type="button" className="descriptor-boost-button" aria-label={`Cast ${spell.name} with ${descriptorBoostRules!.label} caster level`} disabled={prepared === 0 || !canUseDescriptorBoost(spell, level) || !requiredSchoolPrepared(level)} onClick={() => useDescriptorBoost(spell, level, "casterLevel")}>+{descriptorBoostRules!.casterLevelBonus} CL</button>
+                          <button type="button" className="descriptor-boost-button" aria-label={`Cast ${spell.name} with ${descriptorBoostRules!.label} save DC`} disabled={prepared === 0 || !canUseDescriptorBoost(spell, level) || !requiredSchoolPrepared(level)} onClick={() => useDescriptorBoost(spell, level, "saveDc")}>+{descriptorBoostRules!.saveDcBonus} DC</button>
+                        </>}
                         <div className="spell-count">
                           <button
                             type="button"
