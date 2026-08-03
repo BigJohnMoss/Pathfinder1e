@@ -122,6 +122,14 @@ export interface ClassFeatureOccurrence {
     cost?: number;
     costs?: Array<{ resourceId: string; cost: number }>;
     changes?: Array<{ resourceId: string; usedDelta: number }>;
+    variableRecovery?: {
+      resourceId: string;
+      label: string;
+      minimum?: number;
+      maximum?: number;
+      levelDivisor?: number;
+    };
+    randomOutcomes?: Array<{ label: string; summary: string }>;
     labelsByUseCount?: string[];
     summary?: string;
   }>;

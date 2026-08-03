@@ -647,16 +647,30 @@ for (const journey of journeys) {
     await openCharacterPanel(page, journey.mobile);
     await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
     await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-harrowed-society-student");
-    await page.locator('input[type="number"][min="1"][max="20"]').fill("7");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("9");
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Features" }).click();
 
     const first = page.getByLabel("Divine the Mysteries (Ex) level 5");
     const second = page.getByLabel("Divine the Mysteries level 7");
     await expect(first.locator('option[value="harrowed-divine-mysteries-augury"]')).toHaveCount(1);
-    await expect(first.locator('option[value="harrowed-divine-mysteries-divination"]')).toHaveCount(0);
+    await expect(first.locator('option[value="harrowed-divine-mysteries-divination"]')).toHaveCount(1);
     await first.selectOption("harrowed-divine-mysteries-augury");
     await expect(second.locator('option[value="harrowed-divine-mysteries-augury"]')).toHaveAttribute("disabled", "");
+
+    const reservoir = page.getByLabel("Arcane Reservoir remaining");
+    const reservoirTracker = reservoir.locator("xpath=ancestor::div[contains(@class, 'daily-resource')]");
+    await reservoirTracker.getByRole("button", { name: "Spend 1 point" }).click();
+    await reservoirTracker.getByRole("button", { name: "Spend 1 point" }).click();
+    await reservoirTracker.getByRole("button", { name: "Spend 1 point" }).click();
+    await expect(reservoir).toContainText("0/");
+    await page.getByLabel("Chosen-suit cards dealt").fill("4");
+    await page.getByRole("button", { name: "Complete Harrow Reading" }).click();
+    await expect(reservoir).toContainText("4/");
+    await expect(page.getByLabel("Harrow Readings remaining")).toContainText("1/2");
+    await page.getByRole("button", { name: "Draw Trump Card" }).click();
+    await expect(reservoir).toContainText("3/");
+    await expect(page.getByLabel("Draw Trump Card result")).toHaveText(/^(Books|Crowns|Hammers|Keys|Shields|Stars):/);
 
     await page.getByRole("tab", { name: "Spells" }).click();
     await page.getByLabel("Search spells").fill("Augury");

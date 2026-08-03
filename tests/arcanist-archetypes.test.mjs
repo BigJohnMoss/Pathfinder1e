@@ -106,6 +106,12 @@ test("Harrowed Society Student grants Psychic Sensitivity and bounded daily read
     applyArchetypeResourceAdjustments({}, [student], level).harrowReadings
   ), [1, 1, 2, 2, 3, 3]);
   const applied = featuresThroughLevel(applyArchetype(arcanist, student), 20);
+  const reading = applied.find((feature) => feature.id === "arcanist-harrowed-society-student-harrow-reservoir-ex-8").resourceActions[0];
+  assert.equal(reading.resourceId, "harrowReadings");
+  assert.deepEqual(reading.variableRecovery, { resourceId: "arcaneReservoir", label: "Chosen-suit cards dealt", minimum: 0, maximum: 9, levelDivisor: 2 });
+  const trump = applied.find((feature) => feature.id === "arcanist-harrowed-society-student-trump-card-su-9").resourceActions[0];
+  assert.equal(trump.cost, 1);
+  assert.deepEqual(trump.randomOutcomes.map((outcome) => outcome.label), ["Books", "Crowns", "Hammers", "Keys", "Shields", "Stars"]);
   const mysteryChoices = applied.filter((feature) => feature.optionGroupId === "harrowed-divine-mysteries");
   assert.deepEqual(mysteryChoices.map((feature) => feature.level), [5, 7, 9, 11, 13, 15, 17, 19]);
   assert.ok(mysteryChoices.every((feature) => feature.choiceRequired));
