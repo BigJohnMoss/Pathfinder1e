@@ -70,7 +70,7 @@ export function Spellbook({
   oppositionSchoolIds?: string[];
   oppositionSpellIds?: string[];
   restrictedBonus?: { eligibleSpellIds: string[]; countPerLevel: number; label: string } | null;
-  onDemandSpellCosts?: Record<string, { resourceId: string; cost: number; label: string }>;
+  onDemandSpellCosts?: Record<string, { resourceId: string; cost: number; label: string; consumesSpellSlot?: boolean }>;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -436,6 +436,7 @@ export function Spellbook({
                   const canCast = level === 0 || remainingSlots(level) > 0;
                   const onDemandCost = onDemandSpellCosts[spell.id];
                   const canCastOnDemand = Boolean(onDemandCost && reservoir && reservoir.current >= onDemandCost.cost);
+                  const consumesSpellSlot = onDemandCost?.consumesSpellSlot ?? true;
                   return (
                     <article key={spell.id}>
                       <div>
@@ -464,11 +465,11 @@ export function Spellbook({
                           type="button"
                           className="cast-spell-button"
                           aria-label={`Cast ${spell.name}`}
-                          disabled={(prepared === 0 && !canCastOnDemand) || !canCast}
+                          disabled={(prepared === 0 && !canCastOnDemand) || (consumesSpellSlot && !canCast)}
                           onClick={() => {
                             if (prepared === 0 && onDemandCost && reservoir)
                               onReservoirChange(reservoir.current - onDemandCost.cost);
-                            if (level > 0)
+                            if (level > 0 && (prepared > 0 || consumesSpellSlot))
                               onSlotUsesChange({
                                 ...slotUses,
                                 [level]: (slotUses[level] ?? 0) + 1,

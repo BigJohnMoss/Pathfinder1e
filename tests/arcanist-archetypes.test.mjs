@@ -152,3 +152,24 @@ test("White Mage automatically grants level-aware on-demand cure spells", () => 
   assert.equal(breathOfLife?.spellLevel, 5);
   assert.equal(breathOfLife?.resourceCost?.base, 5);
 });
+
+test("Occultist grants planar spells and scaling slot-free Conjurer's Focus summons", () => {
+  const occultist = archetypes.find((archetype) => archetype.id === "arcanist-occultist");
+  const applied = featuresThroughLevel(applyArchetype(arcanist, occultist), 20);
+  const focus = applied.find((feature) => feature.id === "arcanist-occultist-conjurer-s-focus-sp-3");
+  assert.equal(focus?.optionGroupId, "occultist-conjurers-focus");
+  assert.equal(focus?.grantsAllOptions, true);
+  assert.deepEqual(occultist.bonusSpellAdditions, {
+    "planar-ally-lesser": 4,
+    "plane-shift": 5,
+    "planar-ally": 6,
+    "later-spell-planar-ally-greater": 8,
+  });
+  const summons = generatedData.optionGroups.find((group) => group.id === "occultist-conjurers-focus").options;
+  assert.equal(summons.length, 9);
+  assert.deepEqual(summons.map((option) => option.minimumLevel).sort((a, b) => a - b), [1, 3, 5, 7, 9, 11, 13, 15, 17]);
+  assert.ok(summons.every((option) => option.ignoresMaximumSpellLevel));
+  assert.ok(summons.every((option) => option.resourceCost?.consumesSpellSlot === false));
+  assert.ok(summons.every((option) => option.resourceCost?.freeAtClassLevel === 20));
+  assert.ok(summons.every((option) => option.resourceCost?.levelDivisor === 1));
+});

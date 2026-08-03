@@ -407,12 +407,15 @@ export interface CharacterTrait {
 
 export interface CharacterOption extends SelectableOption {
   castsAsPrepared?: boolean;
+  ignoresMaximumSpellLevel?: boolean;
   resourceCost?: {
     resourceId: string;
     base?: number;
     levelDivisor?: number;
     minimum?: number;
     label?: string;
+    consumesSpellSlot?: boolean;
+    freeAtClassLevel?: number;
   };
   featIds?: string[];
   cost?: number;
@@ -479,6 +482,7 @@ export interface CharacterOptionGroup {
     excludeClassId?: string;
     minimumClassLevelBySpellLevel?: Record<string, number>;
     castsAsPrepared?: boolean;
+    ignoresMaximumSpellLevel?: boolean;
     resourceCost?: CharacterOption["resourceCost"];
     nameIncludes?: string;
     spellIds?: string[];

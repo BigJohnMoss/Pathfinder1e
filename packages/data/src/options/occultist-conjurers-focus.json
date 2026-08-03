@@ -1,0 +1,53 @@
+{
+  "id": "occultist-conjurers-focus",
+  "name": "Conjurer's Focus",
+  "classIds": ["arcanist"],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Occultist"
+  },
+  "optionDefaults": {
+    "groupId": "occultist-conjurers-focus",
+    "classIds": ["arcanist"],
+    "prerequisites": []
+  },
+  "options": [],
+  "generatedSpellOptions": {
+    "classId": "arcanist",
+    "targetClassId": "arcanist",
+    "spellIds": [
+      "summon-monster-1",
+      "summon-monster-2",
+      "summon-monster-3",
+      "summon-monster-4",
+      "summon-monster-5",
+      "summon-monster-6",
+      "summon-monster-7",
+      "summon-monster-8",
+      "summon-monster-9"
+    ],
+    "maximumSpellLevel": 9,
+    "castsAsPrepared": true,
+    "ignoresMaximumSpellLevel": true,
+    "resourceCost": {
+      "resourceId": "arcaneReservoir",
+      "levelDivisor": 1,
+      "minimum": 1,
+      "consumesSpellSlot": false,
+      "freeAtClassLevel": 20,
+      "label": "Conjurer's Focus"
+    },
+    "minimumClassLevelBySpellLevel": {
+      "1": 1,
+      "2": 3,
+      "3": 5,
+      "4": 7,
+      "5": 9,
+      "6": 11,
+      "7": 13,
+      "8": 15,
+      "9": 17
+    }
+  }
+}
