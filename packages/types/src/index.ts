@@ -411,6 +411,7 @@ export interface CharacterOption extends SelectableOption {
   associatedSchool?: string;
   elementalOppositionSchool?: string;
   elementalSpellIdsByLevel?: Record<string, string[]>;
+  selectedVariant?: { id: string; name: string; energyType: string; breathShape?: string; movement?: string };
   parentDomainId?: string;
   replacesPower?: string;
   classSkills?: string[];

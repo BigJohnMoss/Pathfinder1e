@@ -449,6 +449,52 @@ for (const journey of journeys) {
     await expect(page.getByLabel("1st-level Specialist School Slot level 1")).toHaveValue("burning-hands");
   });
 
+  test(`configures Blood Arcanist without excluded bloodline benefits on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-blood-arcanist");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("9");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+
+    const bloodline = page.getByLabel("Bloodline level 1");
+    await expect(bloodline.locator('option[value="sorcerer-bloodline-draconic-black-dragon"]')).toHaveCount(1);
+    await bloodline.selectOption("sorcerer-bloodline-draconic-black-dragon");
+    await expect(page.getByText("Bloodline arcana:", { exact: true })).toBeVisible();
+    await expect(page.getByText("Bloodline powers", { exact: true })).toBeVisible();
+    await expect(page.getByText("Bloodline class skill:", { exact: true })).toHaveCount(0);
+    await expect(page.getByText("Bloodline bonus spells", { exact: true })).toHaveCount(0);
+    await expect(page.getByText("Bloodline bonus feats", { exact: true })).toHaveCount(0);
+    await expect(page.getByLabel("Arcanist Exploit level 5").locator('option[value="bloodline-development"]')).toHaveCount(0);
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByLabel("Additional class").selectOption("sorcerer");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    const sorcererBloodline = page.getByLabel("Bloodline level 1").first();
+    await expect(sorcererBloodline.locator('option[value="sorcerer-bloodline-arcane"]')).toHaveCount(0);
+    await expect(sorcererBloodline.locator('option[value="sorcerer-bloodline-draconic"]')).toHaveCount(1);
+    await sorcererBloodline.selectOption("sorcerer-bloodline-draconic");
+    await expect(page.getByLabel("Bloodline variant choice")).toHaveValue("black-dragon");
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Bloodline level 1").first()).toHaveValue("sorcerer-bloodline-draconic");
+    await expect(page.getByLabel("Bloodline level 1").last()).toHaveValue("sorcerer-bloodline-draconic-black-dragon");
+    await expect(page.getByLabel("Bloodline variant choice")).toHaveValue("black-dragon");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);

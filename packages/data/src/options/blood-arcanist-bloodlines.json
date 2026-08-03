@@ -1,0 +1,20 @@
+{
+  "id": "blood-arcanist-bloodlines",
+  "name": "Blood Arcanist Bloodlines",
+  "classIds": ["arcanist"],
+  "inheritsOptionsFrom": "sorcerer-bloodlines",
+  "omitOptionFields": ["classSkill", "classSkillChoices", "bonusSpells", "bonusFeats"],
+  "expandVariants": true,
+  "optionDefaults": {
+    "groupId": "blood-arcanist-bloodlines",
+    "classIds": ["arcanist"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Blood%20Arcanist"
+    }
+  },
+  "options": []
+}

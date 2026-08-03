@@ -146,6 +146,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const selectedNatureBond = orderedChoices.find((choice) => choice.id === "druid-nature-bond-1")?.selected;
   const selectedWizardSchool = orderedChoices.find(isArcaneSchoolChoice)?.selected;
   const selectedSorcererBloodline = orderedChoices.find((choice) => choice.id === "sorcerer-bloodline-1")?.selected;
+  const selectedBloodArcanistBloodline = orderedChoices.find((choice) => choice.id === "blood-arcanist-bloodline-1")?.selected;
   const selectedOracleMystery = orderedChoices.find((choice) => choice.id === "oracle-mystery-1")?.selected;
   const selectedDomains = orderedChoices.filter((choice) => choice.id === "cleric-domain-1-first" || choice.id === "cleric-domain-1-second" || choice.id === "druid-domain-1" || choice.id === "sacred-servant-domain-4").flatMap((choice) => choice.selected ? [choice.selected] : []);
   const domainSlotChoices = orderedChoices.filter((choice) => domainSpellLevel(choice) > 0);
@@ -175,6 +176,8 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     return specialistSchoolSpells(characterSpells, selectedWizardSchool, level).map((spell) => spellAsOption(spell, schoolName));
   };
   const optionsFor = (choice: Choice) => {
+    if (choice.id === "blood-arcanist-bloodline-1" && selectedSorcererBloodline) return choice.options.filter((option) => (option.familyId ?? option.id) === selectedSorcererBloodline.id && (!selectedBloodlineVariant || option.selectedVariant?.id === selectedBloodlineVariant.id));
+    if (choice.id === "sorcerer-bloodline-1" && selectedBloodArcanistBloodline) return choice.options.filter((option) => option.id === (selectedBloodArcanistBloodline.familyId ?? selectedBloodArcanistBloodline.id));
     if (choice.id === "cleric-alignment-1") return alignmentsWithinOneStep(choice.options, selectedDeity?.alignment);
     if (choice.id === "cleric-channel-energy-type-1") return channelEnergyChoices(choice.options, selectedAlignment?.alignment, selectedDeity?.alignment);
     if (choice.id === "wizard-familiar-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-familiar");
@@ -257,9 +260,11 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const selectedBloodlineSkill = selectedOptions[bloodlineSkillKey];
     if (selectedBloodlineSkill && !bloodlineSkillChoices.includes(selectedBloodlineSkill)) onOptionChange(bloodlineSkillKey, "");
     const selectedVariantId = selectedOptions[bloodlineVariantKey];
-    if (selectedVariantId && !bloodlineVariants.some((variant) => variant.id === selectedVariantId)) onOptionChange(bloodlineVariantKey, "");
+    if (selectedBloodArcanistBloodline?.selectedVariant?.id && selectedVariantId !== selectedBloodArcanistBloodline.selectedVariant.id) {
+      onOptionChange(bloodlineVariantKey, selectedBloodArcanistBloodline.selectedVariant.id);
+    } else if (selectedVariantId && !bloodlineVariants.some((variant) => variant.id === selectedVariantId)) onOptionChange(bloodlineVariantKey, "");
     if (channelUsed > channelProgression.usesPerDay) onOptionChange(channelUsedKey, String(channelProgression.usesPerDay));
-  }, [choices, selectedDeity?.id, selectedAlignment?.id, selectedArcaneBond?.id, selectedHuntersBond?.id, selectedNatureBond?.id, selectedWizardSchool?.id, selectedSorcererBloodline?.id, selectedOracleMystery?.id, selectedOptions, classLevel, charismaModifier, onOptionChange]);
+  }, [choices, selectedDeity?.id, selectedAlignment?.id, selectedArcaneBond?.id, selectedHuntersBond?.id, selectedNatureBond?.id, selectedWizardSchool?.id, selectedSorcererBloodline?.id, selectedBloodArcanistBloodline?.id, selectedOracleMystery?.id, selectedOptions, classLevel, charismaModifier, onOptionChange]);
 
   const refreshDomainSlots = () => domainSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
   const refreshSpecialistSlots = () => specialistSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));

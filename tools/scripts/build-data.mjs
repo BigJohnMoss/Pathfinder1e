@@ -24,8 +24,15 @@ const optionGroupById=new Map(sourceOptionGroups.map(group=>[group.id,group]));
 const rawOptionGroups=sourceOptionGroups.map(group=>{
   const inheritedSource=group.inheritsOptionsFrom ? optionGroupById.get(group.inheritsOptionsFrom)?.options??[] : [];
   const inheritedIds=group.inheritedOptionIds ? new Set(group.inheritedOptionIds) : null;
-  const inherited=inheritedIds ? inheritedSource.filter(option=>inheritedIds.has(option.id)) : inheritedSource;
-  const options=[...inherited,...group.options].map(option=>({...group.optionDefaults,...option,groupId:group.id,classIds:group.classIds,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})}));
+  const excludedInheritedIds=new Set(group.excludedInheritedOptionIds??[]);
+  const selectedInherited=(inheritedIds ? inheritedSource.filter(option=>inheritedIds.has(option.id)) : inheritedSource).filter(option=>!excludedInheritedIds.has(option.id));
+  const omittedOptionFields=new Set(group.omitOptionFields??[]);
+  const options=[...selectedInherited,...group.options].flatMap(option=>{
+    const enriched={...group.optionDefaults,...option,groupId:group.id,classIds:group.classIds,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})};
+    const cleaned=Object.fromEntries(Object.entries(enriched).filter(([key])=>!omittedOptionFields.has(key)));
+    if(!group.expandVariants||!enriched.variants?.length) return [cleaned];
+    return enriched.variants.map(variant=>({...cleaned,id:`${enriched.id}-${variant.id}`,name:`${enriched.name} (${variant.name})`,benefit:`${enriched.benefit} Selected variant: ${variant.name} (${variant.energyType}${variant.breathShape?`, ${variant.breathShape}`:""}${variant.movement?`, ${variant.movement}`:""}).`,variants:undefined,selectedVariant:variant,familyId:enriched.id}));
+  });
   return {...group,options:[...options,...(group.id==="cleric-domains"?subdomains:[])]};
 });
 const spellDetailFiles=await loadDir('spell-details').catch(()=>[]);
