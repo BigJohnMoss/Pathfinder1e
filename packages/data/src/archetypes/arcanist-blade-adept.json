@@ -23,8 +23,10 @@
           "id": "arcanist-blade-adept-sword-bond-su-1",
           "name": "Sword Bond (Su)",
           "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, a blade adept develops a bond with a blade and infuses it with arcane power. This ability works like a wizard’s arcane bond ability save that the blade adept must bond to a one-handed piercing or slashing melee weapon. Additionally, the blade adept gains proficiency with the weapon if it is a simple or martial weapon. This ability replaces the arcanist exploits gained at 1st and 9th levels."
+          "type": "selectable",
+          "summary": "At 1st level, a blade adept develops a bond with a one-handed piercing or slashing melee weapon and gains proficiency with it if it is simple or martial. The selected blade is also the archetype's bonded object.",
+          "choiceRequired": true,
+          "optionGroupId": "blade-adept-bonded-weapons"
         },
         {
           "id": "arcanist-blade-adept-sentient-sword-su-3",
@@ -55,8 +57,15 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Blade%20Adept"
   },
+  "proficiencyAdjustments": [
+    {
+      "category": "weapon",
+      "operation": "add",
+      "proficiencies": ["Selected bonded weapon (simple or martial)"]
+    }
+  ],
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Replacement progression, bonded-weapon selection and proficiency, exploit prerequisites, bonus feats, and reservoir spending for Arcane Accuracy, Dispelling Strike, and Hasted Assault are automated. Black-blade intelligence, ego, enhancement progression, spellstrike delivery, and Critical Strike's once-per-day trigger remain descriptive."
   ]
 }

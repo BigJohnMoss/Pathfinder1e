@@ -4124,6 +4124,7 @@ export default function Home() {
                   selectedOptions={selectedOptions}
                   classLevel={primaryClassLevel}
                   charismaModifier={combat.abilityModifiers.charisma}
+                  dailyResources={classDailyResources}
                   archetypeReplacesText={
                     selectedArchetypeReplacesText || undefined
                   }

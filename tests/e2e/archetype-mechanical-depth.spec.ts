@@ -125,6 +125,7 @@ for (const journey of journeys) {
     await page.locator('input[type="number"][min="1"][max="20"]').fill("3");
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Features" }).click();
+
     const choice = page.getByLabel("Skilled Ambusher bonus feat level 3");
     await expect(choice.locator("option")).toHaveText(["Choose an option", "Athletic", "Stealthy"]);
     await choice.selectOption("athletic");
@@ -443,6 +444,9 @@ for (const journey of journeys) {
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Features" }).click();
 
+    await page.getByLabel("Sword Bond (Su) level 1").selectOption("blade-adept-bond-rapier");
+    await expect(page.getByText("Weapon proficiencies: gain Selected bonded weapon (simple or martial)")).toBeVisible();
+
     const fifthLevelExploit = page.getByLabel("Arcanist Exploit level 5");
     await expect(fifthLevelExploit.locator('option[value="blade-adept-student-weapon-focus"]')).toHaveCount(1);
     await expect(fifthLevelExploit.locator('option[value="blade-adept-magus-arcana-critical-strike"]')).toHaveCount(1);
@@ -453,6 +457,11 @@ for (const journey of journeys) {
     await expect(seventhLevelExploit.locator('option[value="blade-adept-weapon-specialization"]')).toHaveCount(1);
     await seventhLevelExploit.selectOption("blade-adept-weapon-specialization");
     await page.getByLabel("Arcanist Exploit Bonded weapon").last().fill("rapier");
+
+    await page.getByLabel("Arcanist Exploit level 11").selectOption("blade-adept-magus-arcana-hasted-assault");
+    await expect(page.getByLabel("Arcane Reservoir remaining")).toContainText("3/");
+    await page.getByRole("button", { name: "Use Hasted Assault" }).click();
+    await expect(page.getByLabel("Arcane Reservoir remaining")).toContainText("2/");
 
     if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
     await page.getByRole("button", { name: "Save" }).click();
@@ -465,6 +474,9 @@ for (const journey of journeys) {
     await page.getByRole("tab", { name: "Features" }).click();
     await expect(page.getByLabel("Arcanist Exploit level 5")).toHaveValue("blade-adept-student-weapon-focus");
     await expect(page.getByLabel("Arcanist Exploit level 7")).toHaveValue("blade-adept-weapon-specialization");
+    await expect(page.getByLabel("Sword Bond (Su) level 1")).toHaveValue("blade-adept-bond-rapier");
+    await expect(page.getByLabel("Arcanist Exploit level 11")).toHaveValue("blade-adept-magus-arcana-hasted-assault");
+    await expect(page.getByLabel("Arcane Reservoir remaining")).toContainText("2/");
   });
 
   test(`enforces Elemental Master preparation rules on ${journey.name}`, async ({ page }) => {

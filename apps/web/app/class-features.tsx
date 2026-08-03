@@ -1,5 +1,5 @@
 import type { ClassFeatureOccurrence as Feature } from "../../../packages/types/src/index.js";
-type DailyResource = { id?: string; label: string; unit: string; maximum: number | null; used: number; onUsedChange: (used: number) => void };
+export type DailyResource = { id?: string; label: string; unit: string; maximum: number | null; used: number; onUsedChange: (used: number) => void };
 
 export function ClassFeatures({ level, className, features, dailyResources = [] }: { level: number; className: string; features: Feature[]; dailyResources?: DailyResource[] }) {
   return <section className="features"><div><p className="eyebrow">LEVEL {level}</p><h2>{className} features</h2><p>Review everything earned at this level, then configure required class choices below.</p></div>{dailyResources.map((resource) => {
