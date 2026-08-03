@@ -109,6 +109,7 @@ export type ActiveEffectTarget =
   | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
   | "attackRolls" | "damageRolls" | "spellResistance"
   | "casterLevel" | "spellSaveDc" | "exploitEffectiveLevel"
+  | "casterLevelChecks" | "savingThrows" | "meleeDamageRolls" | "healingReceived" | "skillChecks"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
   | "allies" | "self" | "area" | "enemy";
 export interface ActiveEffect {
@@ -122,6 +123,7 @@ export interface ActiveEffect {
   weaponIds?: string[];
   damageType?: string;
   temporaryHitPointsGranted?: number;
+  consumeOnUse?: boolean;
   d20Check?: { label: string; modifier: number; targetDc: number; maximumSpellLevel?: number };
 }
 
@@ -167,7 +169,19 @@ export interface ClassFeatureOccurrence {
       maximum?: number;
       levelDivisor?: number;
     };
-    randomOutcomes?: Array<{ label: string; summary: string }>;
+    randomOutcomes?: Array<{
+      label: string;
+      summary: string;
+      effect?: { target: ActiveEffectTarget; bonus: number; classLevelBonus?: boolean };
+    }>;
+    randomOutcomeTarget?: {
+      label: string;
+      defaultValue: string;
+      selfModeId: string;
+      allyModeId: string;
+      enemyModeId: string;
+      enemySaveModifier: "fortitude" | "reflex" | "will";
+    };
     modeLabel?: string;
     modes?: Array<{ id: string; label: string; summary: string }>;
     classId?: string;
