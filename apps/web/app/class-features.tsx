@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
 import type { AbilityName, ActiveEffect, ActiveEffectTarget, ClassFeatureOccurrence as Feature } from "../../../packages/types/src/index.js";
 
 export type DailyResource = {
@@ -37,7 +38,10 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   const [actionModes, setActionModes] = useState<Record<string, string>>({});
   const [calculationInputs, setCalculationInputs] = useState<Record<string, number>>({});
   const [targetHitDice, setTargetHitDice] = useState<Record<string, number>>({});
+  const [rerollInputs, setRerollInputs] = useState<Record<string, { original: number; modifier: number; count: number; sides: number }>>({});
   const selectedOptionSet = new Set(selectedOptionIds);
+
+  const effectNamesForResource = (resourceId?: string) => [...new Set(features.flatMap((feature) => feature.resourceActions ?? []).filter((action) => action.resourceId === resourceId).flatMap((action) => [...(action.conditionEffectsByUseCount?.map((step) => step.name) ?? []), ...(action.activeEffect ? [action.activeEffect.name] : [])]))];
 
   return <section className="features">
     <div><p className="eyebrow">LEVEL {level}</p><h2>{className} features</h2><p>Review everything earned at this level, then configure required class choices below.</p></div>
@@ -48,7 +52,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       const refreshUsed = atWill ? 0 : Math.max(0, Math.min(resource.refreshUsed ?? 0, resource.maximum ?? 0));
       return <div className="daily-resource" key={resource.label}>
         <div><strong>{resource.label}</strong><output aria-label={`${resource.label} remaining`}>{atWill ? "At will" : `${remaining}/${resource.maximum} ${resource.unit} remaining`}</output></div>
-        {!atWill && <div><button type="button" onClick={() => resource.onUsedChange(used + 1)} disabled={remaining <= 0}>Spend 1 {resource.unit}</button><button type="button" onClick={() => resource.onUsedChange(refreshUsed)} disabled={used === refreshUsed}>Refresh {resource.label.toLowerCase()}</button></div>}
+        {!atWill && <div><button type="button" onClick={() => resource.onUsedChange(used + 1)} disabled={remaining <= 0}>Spend 1 {resource.unit}</button><button type="button" onClick={() => { resource.onUsedChange(refreshUsed); effectNamesForResource(resource.id).forEach((name) => onRemoveEffectByName?.(name)); }} disabled={used === refreshUsed}>Refresh {resource.label.toLowerCase()}</button></div>}
       </div>;
     })}
     <ol>{features.map((feature) => <li key={feature.id}>
@@ -102,6 +106,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
+        const rerollInput = rerollInputs[action.id] ?? { original: 10, modifier: 0, count: 1, sides: 6 };
+        const conditionStep = action.conditionEffectsByUseCount?.[Math.min(useCount, action.conditionEffectsByUseCount.length - 1)];
         const selectedMode = action.modes?.find((mode) => mode.id === actionModes[action.id]) ?? action.modes?.[0];
         const effectTarget = action.activeEffect ? effectTargets[action.id] ?? action.activeEffect.targets[0] : undefined;
         const effectTargetChoiceLabel = action.activeEffect?.targets.every((target) => abilityEffectTargets.has(target)) ? "Affected ability" : "Affected target";
@@ -144,32 +150,53 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             onTemporaryHitPointsChange?.(temporaryHitPoints);
             if (action.temporaryHitPointsDurationRounds) onAddEffect?.({ id: `${action.id}-temporary-hit-points-${Date.now()}-${Math.random()}`, name: action.label, target: "self", bonus: 0, description: `${temporaryHitPoints} temporary hit points expire when this duration ends if they have not already been spent.`, roundsRemaining: action.temporaryHitPointsDurationRounds, temporaryHitPointsGranted: temporaryHitPoints });
           }
-          if (action.activeEffect && effectTarget && onAddEffect) onAddEffect({
-            id: `${action.id}-${Date.now()}-${Math.random()}`,
-            name: effectName ?? action.activeEffect.name,
-            target: effectTarget,
-            bonus: effectBonus,
-            ...(effectDescription ? { description: effectDescription } : {}),
-            roundsRemaining: rounds,
-            ...(selectedWeapon ? { weaponIds: [selectedWeapon] } : {}),
-            ...(action.activeEffect.usesSelectedModeAsDamageType && selectedMode ? { damageType: selectedMode.id } : {}),
-          });
+          if (conditionStep && onAddEffect) {
+            action.conditionEffectsByUseCount?.forEach((step) => onRemoveEffectByName?.(step.name));
+            conditionStep.effects.forEach((effect, index) => onAddEffect({ id: `${action.id}-condition-${index}-${Date.now()}-${Math.random()}`, name: conditionStep.name, target: effect.target, bonus: effect.bonus, description: effect.description, roundsRemaining: 999 }));
+          }
+          if (action.activeEffect && onAddEffect) {
+            if (action.activeEffect.replaceExisting) onRemoveEffectByName?.(effectName ?? action.activeEffect.name);
+            const targets = action.activeEffect.applyToAllTargets ? action.activeEffect.targets : effectTarget ? [effectTarget] : [];
+            targets.forEach((target) => onAddEffect({
+              id: `${action.id}-${target}-${Date.now()}-${Math.random()}`,
+              name: effectName ?? action.activeEffect!.name,
+              target,
+              bonus: effectBonus,
+              ...(effectDescription ? { description: effectDescription } : {}),
+              roundsRemaining: rounds,
+              ...(selectedWeapon ? { weaponIds: [selectedWeapon] } : {}),
+              ...(action.activeEffect!.usesSelectedModeAsDamageType && selectedMode ? { damageType: selectedMode.id } : {}),
+            }));
+          }
+          if (action.rerollAction?.kind === "d20") {
+            const roll = rollD20Check(rerollInput.modifier);
+            setActionResults((current) => ({ ...current, [action.id]: `${action.rerollAction!.label}: ${roll.natural}${rerollInput.modifier === 0 ? "" : ` ${rerollInput.modifier >= 0 ? "+" : "−"} ${Math.abs(rerollInput.modifier)}`} = ${roll.total}. You must keep this result.` }));
+          } else if (action.rerollAction?.kind === "damage") {
+            const roll = rollDice(rerollInput.count, rerollInput.sides, rerollInput.modifier);
+            setActionResults((current) => ({ ...current, [action.id]: `${action.rerollAction!.label}: ${roll.rolls.join(" + ")}${rerollInput.modifier === 0 ? "" : ` ${rerollInput.modifier >= 0 ? "+" : "−"} ${Math.abs(rerollInput.modifier)}`} = ${roll.total}. You must keep this result.` }));
+          } else if (action.rerollAction?.kind === "lower-d20") {
+            const roll = rollD20Check(rerollInput.modifier);
+            setActionResults((current) => ({ ...current, [action.id]: `${action.rerollAction!.label}: original ${rerollInput.original}; reroll ${roll.natural}${rerollInput.modifier === 0 ? "" : ` ${rerollInput.modifier >= 0 ? "+" : "−"} ${Math.abs(rerollInput.modifier)}`} = ${roll.total}. Use ${Math.min(rerollInput.original, roll.total)}.` }));
+          }
           if (action.randomOutcomes?.length) {
             const outcome = action.randomOutcomes[Math.floor(Math.random() * action.randomOutcomes.length)];
             setActionResults((current) => ({ ...current, [action.id]: `${outcome.label}: ${outcome.summary}` }));
-          } else if (action.activeEffect) setActionResults((current) => ({
+          } else if (action.activeEffect && !action.rerollAction) setActionResults((current) => ({
             ...current,
             [action.id]: `${effectDescription || action.activeEffect!.name} Active for ${rounds} round${rounds === 1 ? "" : "s"}.`,
           }));
           else if (temporaryHitPoints !== undefined) setActionResults((current) => ({ ...current, [action.id]: `Gained ${temporaryHitPoints} temporary hit points.` }));
-          else if (!action.actorSavingThrow) setActionResults((current) => ({ ...current, [action.id]: "Ability used." }));
+          else if (!action.actorSavingThrow && !action.rerollAction) setActionResults((current) => ({ ...current, [action.id]: "Ability used." }));
         };
         return <div className="feature-resource-action" key={action.id}>
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
           {Boolean(action.modes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{action.modes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
           {action.savingThrow && <output aria-label={`${action.label} save DC`}>{action.savingThrow.label} save DC {saveDc}</output>}
           {action.targetHitDiceRequirement && <label>{action.targetHitDiceRequirement.label}<input aria-label={`${action.label} target Hit Dice`} type="number" min="0" max="999" value={enteredTargetHitDice} onChange={(event) => setTargetHitDice((current) => ({ ...current, [action.id]: Math.max(0, Math.min(999, Number(event.target.value) || 0)) }))} /><small>Requires at least {minimumTargetHitDice} Hit Dice.</small></label>}
-          {action.activeEffect && <>{action.activeEffect.targets.length > 1 && <label>{effectTargetChoiceLabel}<select aria-label={`${action.label} ${effectTargetChoiceLabel.toLowerCase()}`} value={effectTarget} onChange={(event) => setEffectTargets((current) => ({ ...current, [action.id]: event.target.value as ActiveEffectTarget }))}>{action.activeEffect.targets.map((target) => <option key={target} value={target}>{effectTargetLabel(target)}</option>)}</select></label>}{action.activeEffect.fixedRounds ? <small>Duration: {rounds} round{rounds === 1 ? "" : "s"}</small> : <label>Rounds<input aria-label={`${action.label} rounds`} type="number" min="1" max="999" value={rounds} onChange={(event) => setEffectRounds((current) => ({ ...current, [action.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label>}</>}
+          {action.rerollAction?.kind === "lower-d20" && <label>Original save total<input aria-label={`${action.label} original save total`} type="number" min="-999" max="999" value={rerollInput.original} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, original: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
+          {(action.rerollAction?.kind === "d20" || action.rerollAction?.kind === "lower-d20") && <label>Modifier<input aria-label={`${action.label} modifier`} type="number" min="-999" max="999" value={rerollInput.modifier} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, modifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
+          {action.rerollAction?.kind === "damage" && <><label>Dice<input aria-label={`${action.label} dice count`} type="number" min="1" max="100" value={rerollInput.count} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, count: Math.max(1, Math.min(100, Number(event.target.value) || 1)) } }))} /></label><label>Die<select aria-label={`${action.label} die sides`} value={rerollInput.sides} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, sides: Number(event.target.value) } }))}>{[4, 6, 8, 10, 12, 20, 100].map((sides) => <option value={sides} key={sides}>d{sides}</option>)}</select></label><label>Modifier<input aria-label={`${action.label} modifier`} type="number" min="-999" max="999" value={rerollInput.modifier} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, modifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label></>}
+          {action.activeEffect && <>{action.activeEffect.targets.length > 1 && !action.activeEffect.applyToAllTargets && <label>{effectTargetChoiceLabel}<select aria-label={`${action.label} ${effectTargetChoiceLabel.toLowerCase()}`} value={effectTarget} onChange={(event) => setEffectTargets((current) => ({ ...current, [action.id]: event.target.value as ActiveEffectTarget }))}>{action.activeEffect.targets.map((target) => <option key={target} value={target}>{effectTargetLabel(target)}</option>)}</select></label>}{action.activeEffect.fixedRounds ? <small>Duration: {rounds} round{rounds === 1 ? "" : "s"}</small> : <label>Rounds<input aria-label={`${action.label} rounds`} type="number" min="1" max="999" value={rounds} onChange={(event) => setEffectRounds((current) => ({ ...current, [action.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label>}</>}
           <button type="button" disabled={(!action.activeEffect && temporaryHitPoints === undefined && appliedChanges.length === 0) || unavailable || !targetEligible} title={blockedByActorCondition ? `Unavailable while ${action.actorSavingThrow?.blockedByActiveEffectName}.` : undefined} onClick={activate}>{label}</button>
           <small>{action.summary ?? costs.map(({ cost }) => `Spend ${cost}`).join(" and ")}</small>
           {result && <output aria-label={`${action.label} result`}>{result}</output>}

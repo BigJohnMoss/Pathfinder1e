@@ -108,6 +108,7 @@ export type CharacterDraft = CharacterDraftV1;
 export type ActiveEffectTarget =
   | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
   | "attackRolls" | "damageRolls" | "spellResistance"
+  | "casterLevel" | "spellSaveDc" | "exploitEffectiveLevel"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
   | "allies" | "self" | "area" | "enemy";
 export interface ActiveEffect {
@@ -190,6 +191,18 @@ export interface ClassFeatureOccurrence {
       repeatedFailureDescription?: string;
       blockedByActiveEffectName?: string;
     };
+    conditionEffectsByUseCount?: Array<{
+      name: string;
+      effects: Array<{
+        target: ActiveEffectTarget;
+        bonus: number;
+        description: string;
+      }>;
+    }>;
+    rerollAction?: {
+      kind: "d20" | "damage" | "lower-d20";
+      label: string;
+    };
     activeEffect?: {
       name: string;
       targets: ActiveEffectTarget[];
@@ -208,6 +221,8 @@ export interface ClassFeatureOccurrence {
       }>;
       weaponSelectionFeatureId?: string;
       usesSelectedModeAsDamageType?: boolean;
+      applyToAllTargets?: boolean;
+      replaceExisting?: boolean;
     };
     labelsByUseCount?: string[];
     summary?: string;

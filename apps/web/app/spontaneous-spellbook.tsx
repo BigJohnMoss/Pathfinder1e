@@ -9,11 +9,12 @@ type SpellTraitBonuses = Record<string, { casterLevel: number; metamagicLevelAdj
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, className, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], grantedSpellLabel = classId === "oracle" ? "Mystery" : "Bloodline", onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
+export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, className, casterLevel, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], grantedSpellLabel = classId === "oracle" ? "Mystery" : "Bloodline", onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
   spells: Spell[];
   spellTraitBonuses?: SpellTraitBonuses;
   classId: string;
   className: string;
+  casterLevel?: number;
   castingAbilityName: string;
   slots: Slot[];
   knownLimits: KnownLimit[];
@@ -52,6 +53,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
   return <section className="spell-panel">
     <p className="eyebrow">SPELLS KNOWN</p>
     <h2>Spontaneous spells</h2>
+    {casterLevel !== undefined && <p><strong>Caster level:</strong> <output aria-label={`${className} caster level`}>{casterLevel}</output></p>}
     <p>{className} slots: {slots.length > 0 ? slots.map((slot) => `${remainingSlots(slot.level)}/${slot.count} ${levelLabel(slot.level)}${slot.bonus ? ` (${slot.base} base + ${slot.bonus} ${castingAbilityName})` : ""}`).join(", ") : "no leveled spell slots available"}.</p>
     <p>{knownLimits.map((limit) => `${knownCount(limit.level)}/${limit.count} known ${levelLabel(limit.level)}${grantedCount(limit.level) ? ` + ${grantedCount(limit.level)} ${grantedSpellLabel.toLowerCase()}` : ""}`).join(" · ")}</p>
     <div className="spell-day-controls"><button type="button" onClick={onRefreshDay}>Refresh day</button></div>

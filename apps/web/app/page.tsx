@@ -601,6 +601,7 @@ export default function Home() {
     effectiveSpellcastingLevelMap[characterClass.id] ?? primaryClassLevel;
   const secondarySpellcastingLevel =
     effectiveSpellcastingLevelMap[secondaryClassId] ?? secondaryClassLevel;
+  const eldritchSurgeCasterLevelBonus = activeEffects.filter((effect) => effect.target === "casterLevel").reduce((total, effect) => total + effect.bonus, 0);
   const ancestry =
     ancestries.find((item) => item.id === ancestryId) ?? ancestries[0];
   const selectedAlternateRacialTraits = (ancestry.alternateTraits ?? []).filter(
@@ -1828,7 +1829,7 @@ export default function Home() {
     ? Object.fromEntries(
         Array.from({ length: Math.max(maximumSpellLevel, ...selectedOptionSpellChoices.filter((option) => option.classIds.includes(characterClass.id)).map((option) => option.spellLevel ?? 0)) + 1 }, (_, spellLevel) => [
           spellLevel,
-          spellSaveDC(castingAbilityScore, spellLevel),
+          spellSaveDC(castingAbilityScore, spellLevel) + activeEffects.filter((effect) => effect.target === "spellSaveDc").reduce((total, effect) => total + effect.bonus, 0),
         ]),
       )
     : {};
@@ -2493,6 +2494,7 @@ export default function Home() {
     if (reservoir) setReservoirPoints(reservoir.dailyRefresh);
     if (classId === "bard") setBardicPerformanceUsed(0);
     if (classId === "druid") setWildShapeUsed(0);
+    setActiveEffects((current) => current.filter((effect) => !["Eldritch Surge fatigue", "Eldritch Surge exhaustion", "Eldritch Surge spell", "Eldritch Surge exploit"].includes(effect.name)));
   };
   const refreshSecondaryDay = () => {
     setSecondarySpellSlotUses({});
@@ -2504,6 +2506,7 @@ export default function Home() {
     if (secondaryReservoir) setReservoirPoints(secondaryReservoir.dailyRefresh);
     if (secondaryCharacterClass?.id === "bard") setBardicPerformanceUsed(0);
     if (secondaryCharacterClass?.id === "druid") setWildShapeUsed(0);
+    setActiveEffects((current) => current.filter((effect) => !["Eldritch Surge fatigue", "Eldritch Surge exhaustion", "Eldritch Surge spell", "Eldritch Surge exploit"].includes(effect.name)));
   };
   const normalizeSelectedSpells = (spellIds: string[]) =>
     isSpontaneous
@@ -2652,6 +2655,7 @@ export default function Home() {
       spellTraitBonuses={selectedTraitBonuses.spellBonuses}
       classId={characterClass.spellListClassId ?? characterClass.id}
       className={characterClass.name}
+      casterLevel={primarySpellcastingLevel + (characterClass.id === "arcanist" ? eldritchSurgeCasterLevelBonus : 0)}
       castingAbilityName={
         castingAbility ? labels[castingAbility] : "casting ability"
       }
@@ -2677,6 +2681,7 @@ export default function Home() {
       spellTraitBonuses={selectedTraitBonuses.spellBonuses}
       classId={characterClass.spellListClassId ?? characterClass.id}
       className={characterClass.name}
+      casterLevel={primarySpellcastingLevel + (characterClass.id === "arcanist" ? eldritchSurgeCasterLevelBonus : 0)}
       castingAbilityName={
         castingAbility ? labels[castingAbility] : "casting ability"
       }
@@ -2711,6 +2716,7 @@ export default function Home() {
         spellTraitBonuses={selectedTraitBonuses.spellBonuses}
         classId={secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id}
         className={secondaryCharacterClass.name}
+        casterLevel={secondarySpellcastingLevel + (secondaryCharacterClass.id === "arcanist" ? eldritchSurgeCasterLevelBonus : 0)}
         castingAbilityName={
           secondaryCastingAbility
             ? labels[secondaryCastingAbility]
@@ -2738,6 +2744,7 @@ export default function Home() {
         spellTraitBonuses={selectedTraitBonuses.spellBonuses}
         classId={secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id}
         className={secondaryCharacterClass.name}
+        casterLevel={secondarySpellcastingLevel + (secondaryCharacterClass.id === "arcanist" ? eldritchSurgeCasterLevelBonus : 0)}
         castingAbilityName={
           secondaryCastingAbility
             ? labels[secondaryCastingAbility]
@@ -4212,7 +4219,7 @@ export default function Home() {
                 <ClassOptions
                   choices={classOptionChoices.map((choice) => ({ ...choice, options: choice.options.filter((option) => !allSelectedArchetypes.some((archetype) => archetype.prohibitedOptionIds?.includes(option.id))) }))}
                   selectedOptions={selectedOptions}
-                  classLevel={primaryClassLevel}
+                  classLevel={primaryClassLevel + activeEffects.filter((effect) => effect.target === "exploitEffectiveLevel").reduce((total, effect) => total + effect.bonus, 0)}
                   charismaModifier={combat.abilityModifiers.charisma}
                   abilityModifiers={combat.abilityModifiers}
                   dailyResources={classDailyResources}
