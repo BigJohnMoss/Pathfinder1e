@@ -98,6 +98,56 @@ test("Elemental Master requires one of four inherited elemental schools", () => 
     "wizard-school-fire",
     "wizard-school-water",
   ]);
+  assert.equal(elementalMaster.mechanicalCoverage, "full");
+
+  const features = featuresThroughLevel(applied, 20);
+  const actions = Object.fromEntries(features.flatMap((feature) =>
+    (feature.resourceActions ?? []).map((action) => [action.id, action])
+  ));
+  assert.deepEqual(Object.keys(actions), [
+    "elemental-master-lightning-lance",
+    "elemental-master-acid-jet",
+    "elemental-master-flame-arc",
+    "elemental-master-ice-missile",
+    "elemental-master-dancing-electricity",
+    "elemental-master-lingering-acid",
+    "elemental-master-burning-flame",
+    "elemental-master-icy-tomb",
+  ]);
+  assert.ok(Object.values(actions).every((action) => action.resourceId === "arcaneReservoir"));
+  assert.deepEqual(Object.values(actions).map((action) => action.requiredOptionId), [
+    "wizard-school-air", "wizard-school-earth", "wizard-school-fire", "wizard-school-water",
+    "wizard-school-air", "wizard-school-earth", "wizard-school-fire", "wizard-school-water",
+  ]);
+  assert.ok(Object.values(actions).slice(0, 4).every((action) => action.cost === 1));
+  assert.ok(Object.values(actions).slice(4).every((action) => action.cost === 2));
+
+  const lightning = actions["elemental-master-lightning-lance"];
+  assert.deepEqual(lightning.combatRoll.damage.diceCountByLevel.map(({ level, count }) => [level, count]), [
+    [3, 2], [5, 3], [7, 4], [9, 5], [10, 6], [12, 7], [14, 8], [16, 9], [18, 10], [20, 11],
+  ]);
+  assert.deepEqual(lightning.combatRoll.damage.dieSidesByLevel, [{ level: 3, sides: 6 }, { level: 9, sides: 8 }]);
+  assert.deepEqual(lightning.combatRoll.rangeByLevel, [{ level: 3, range: "30 feet" }, { level: 9, range: "60 feet" }]);
+  assert.equal(lightning.combatRoll.attack.kind, "ranged-touch");
+  assert.equal(lightning.combatRoll.targetSave.outcome, "negates-riders");
+  assert.deepEqual(actions["elemental-master-acid-jet"].combatRoll.riders[0].duration, { kind: "dice-rounds", count: 1, sides: 4 });
+  assert.equal(actions["elemental-master-flame-arc"].combatRoll.attack, undefined);
+  assert.equal(actions["elemental-master-flame-arc"].combatRoll.targetSave.outcome, "half-damage");
+  assert.equal(actions["elemental-master-ice-missile"].combatRoll.riders[0].duration.rounds, 1);
+
+  const dancing = actions["elemental-master-dancing-electricity"];
+  assert.deepEqual(dancing.combatRoll.secondaryDamage, { label: "Adjacent dancing electricity", divisor: 2, saveModifier: "reflex" });
+  assert.deepEqual(actions["elemental-master-lingering-acid"].combatRoll.riders.at(-1).duration, { kind: "decaying-dice", divisor: 2, sides: 6 });
+  assert.equal(actions["elemental-master-burning-flame"].combatRoll.riders[0].duration.kind, "until-ended");
+  assert.equal(actions["elemental-master-icy-tomb"].combatRoll.riders.at(-1).duration.kind, "level-minutes");
+
+  const movement = features.find((feature) => feature.id === "arcanist-elemental-master-elemental-movement-su-15");
+  assert.deepEqual(movement.progressionProfiles.map((profile) => [profile.requiredOptionId, profile.steps[0].values.movement]), [
+    ["wizard-school-air", "Fly 90 feet (average)"],
+    ["wizard-school-earth", "Burrow 30 feet"],
+    ["wizard-school-fire", "Land speed +30 feet"],
+    ["wizard-school-water", "Swim 60 feet"],
+  ]);
 });
 
 test("School Savant exposes inherited schools, opposition choices, and all nine specialist slots", () => {

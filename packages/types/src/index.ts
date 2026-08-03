@@ -172,6 +172,7 @@ export interface ClassFeatureOccurrence {
     modes?: Array<{ id: string; label: string; summary: string }>;
     classId?: string;
     advancementOptionId?: string;
+    requiredOptionId?: string;
     targetHitDiceRequirement?: { label: string; levelDivisor: number };
     temporaryHitPointsByLevel?: Array<{ level: number; amount: number }>;
     temporaryHitPointsDurationRounds?: number;
@@ -202,6 +203,35 @@ export interface ClassFeatureOccurrence {
     rerollAction?: {
       kind: "d20" | "damage" | "lower-d20";
       label: string;
+    };
+    combatRoll?: {
+      attack?: { kind: "ranged-touch"; label: string };
+      damage: {
+        type: string;
+        diceCountByLevel: Array<{ level: number; count: number }>;
+        dieSidesByLevel: Array<{ level: number; sides: number }>;
+        abilityModifier?: AbilityName;
+      };
+      rangeByLevel: Array<{ level: number; range: string }>;
+      targetSave?: {
+        modifier: "fortitude" | "reflex" | "will";
+        outcome: "half-damage" | "negates-riders" | "half-and-negates-riders";
+      };
+      riders?: Array<{
+        name: string;
+        description: string;
+        duration:
+          | { kind: "fixed-rounds"; rounds: number }
+          | { kind: "dice-rounds"; count: number; sides: number }
+          | { kind: "decaying-dice"; divisor: number; sides: number }
+          | { kind: "level-minutes" }
+          | { kind: "until-ended" };
+      }>;
+      secondaryDamage?: {
+        label: string;
+        divisor: number;
+        saveModifier: "fortitude" | "reflex" | "will";
+      };
     };
     activeEffect?: {
       name: string;
@@ -244,6 +274,7 @@ export interface ClassFeatureOccurrence {
     label: string;
     classId: string;
     advancementOptionId?: string;
+    requiredOptionId?: string;
     usesOwnerSavingThrows?: boolean;
     columns: Array<{ id: string; label: string }>;
     steps: Array<{ level: number; values: Record<string, string | number> }>;

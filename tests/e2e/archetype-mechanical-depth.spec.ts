@@ -615,6 +615,16 @@ for (const journey of journeys) {
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Features" }).click();
     await page.getByLabel("Elemental Focus (Su) level 1").selectOption("wizard-school-fire");
+    await expect(page.getByRole("button", { name: "Use Flame Arc" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Use Lightning Lance" })).toHaveCount(0);
+    await expect(page.getByLabel("Use Flame Arc attack profile")).toContainText("2d6");
+    await expect(page.getByLabel("Use Flame Arc attack profile")).toContainText("30-foot line");
+    await page.getByLabel("Use Flame Arc target reflex modifier").fill("-20");
+    const reservoirBeforeAttack = await page.getByLabel("Arcane Reservoir remaining").textContent();
+    await page.getByRole("button", { name: "Use Flame Arc" }).click();
+    await expect(page.getByLabel("Use Flame Arc result")).toContainText("Range 30-foot line");
+    await expect(page.getByLabel("Use Flame Arc result")).toContainText("Reflex save");
+    await expect(page.getByLabel("Arcane Reservoir remaining")).not.toHaveText(reservoirBeforeAttack ?? "");
 
     await page.getByRole("tab", { name: "Spells" }).click();
     await expect(page.getByText(/Each spell level includes 1 Fire School bonus slot/)).toBeVisible();

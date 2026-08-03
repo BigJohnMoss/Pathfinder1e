@@ -4204,6 +4204,7 @@ export default function Home() {
                 dailyResources={classDailyResources}
                 abilityModifiers={combat.abilityModifiers}
                 saveModifiers={combat.saves}
+                baseAttackBonus={progression.baseAttackBonus}
                 classLevels={classLevelMap}
                 casterLevels={effectiveSpellcastingLevelMap}
                 selectedOptionIds={Object.values(selectedOptions)}
