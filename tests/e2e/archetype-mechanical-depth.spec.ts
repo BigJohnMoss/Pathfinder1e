@@ -365,6 +365,51 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Arcanist Exploit level 7")).toHaveValue("blade-adept-weapon-specialization");
   });
 
+  test(`enforces Elemental Master preparation rules on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-elemental-master");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("3");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await page.getByLabel("Elemental Focus (Su) level 1").selectOption("wizard-school-fire");
+
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await expect(page.getByText(/Each spell level includes 1 Fire School bonus slot/)).toBeVisible();
+    const search = page.getByLabel("Search spells");
+    await search.fill("Shield");
+    const addShield = page.getByRole("button", { name: "Add Shield", exact: true });
+    await addShield.click();
+    await addShield.click();
+    await addShield.click();
+    await expect(addShield).toBeDisabled();
+
+    await search.fill("Burning Hands");
+    const addBurningHands = page.getByRole("button", { name: "Add Burning Hands", exact: true });
+    await expect(addBurningHands).toBeEnabled();
+    await addBurningHands.click();
+    await expect(page.getByLabel("Burning Hands prepared")).toHaveText("1");
+    await expect(page.getByText(/eligible for Fire School bonus slot/)).toBeVisible();
+
+    await search.fill("Hydraulic Push");
+    await expect(page.getByText(/opposition school: costs 2 prepared slots/)).toBeVisible();
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Elemental Focus (Su) level 1")).toHaveValue("wizard-school-fire");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);

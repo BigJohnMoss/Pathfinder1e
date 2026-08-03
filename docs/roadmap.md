@@ -542,6 +542,21 @@ its own level-aware and dependent choices.
 5. [x] Apply and persist chosen-weapon feat details on desktop and narrow
    mobile.
 
+## Completed expansion: Restricted Archetype Spell Preparation
+
+Support archetypes that grant one bonus prepared slot per spell level while
+restricting that slot to a specific, player-selected spell family.
+
+1. [x] Add reusable restricted-bonus-slot normalization alongside weighted
+   opposition preparation costs.
+2. [x] Let inherited option groups select a published subset of a larger shared
+   catalogue without duplicating its rules data.
+3. [x] Add Elemental Master's required air, earth, fire, or water selection.
+4. [x] Enforce one matching elemental bonus preparation per spell level and
+   double-slot costs for the opposed element.
+5. [x] Verify selection, preparation limits, opposition costs, persistence, and
+   explanatory UI on desktop and narrow mobile.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

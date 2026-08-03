@@ -27,19 +27,26 @@ export function preparedSpellSlotUsage(preparedSpellIds, spells, classId, opposi
   }, {});
 }
 
-export function normalizePreparedSpellsWithOpposition(preparedSpellIds, spells, classId, preparedLimits, oppositionSchoolIds = [], oppositionSpellIds = []) {
+export function normalizePreparedSpellsWithOpposition(preparedSpellIds, spells, classId, preparedLimits, oppositionSchoolIds = [], oppositionSpellIds = [], restrictedBonus = null) {
   if (!Array.isArray(preparedSpellIds) || !Array.isArray(spells) || typeof classId !== "string" || !Array.isArray(preparedLimits)) return [];
   const limits = new Map(preparedLimits.map((entry) => [entry.level, entry.count]));
   const available = new Map(spells.filter((spell) => spell.levelByClass?.[classId] !== undefined).map((spell) => [spell.id, spell]));
   const usageByLevel = new Map();
+  const ineligibleUsageByLevel = new Map();
+  const eligibleIds = new Set(restrictedBonus?.eligibleSpellIds ?? []);
+  const bonusPerLevel = Math.max(0, Number(restrictedBonus?.countPerLevel) || 0);
   return preparedSpellIds.filter((id) => {
     const spell = available.get(id);
     if (!spell) return false;
     const level = spell.levelByClass[classId];
     const cost = spellPreparationCost(spell, oppositionSchoolIds, oppositionSpellIds);
     const used = usageByLevel.get(level) ?? 0;
-    if (used + cost > (limits.get(level) ?? 0)) return false;
+    const ineligibleUsed = ineligibleUsageByLevel.get(level) ?? 0;
+    const eligible = eligibleIds.has(id);
+    const baseLimit = limits.get(level) ?? 0;
+    if (used + cost > baseLimit + bonusPerLevel || (!eligible && ineligibleUsed + cost > baseLimit)) return false;
     usageByLevel.set(level, used + cost);
+    if (!eligible) ineligibleUsageByLevel.set(level, ineligibleUsed + cost);
     return true;
   });
 }

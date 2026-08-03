@@ -6,7 +6,8 @@ const spells = [
   { id: "magic-missile", school: "evocation", levelByClass: { wizard: 1 } },
   { id: "mage-armor", school: "conjuration", levelByClass: { wizard: 1 } },
   { id: "lissalan-snake-sigil", school: "multiple", schools: ["abjuration", "enchantment"], levelByClass: { wizard: 1 } },
-  { id: "detect-magic", school: "divination", levelByClass: { wizard: 0 } }
+  { id: "detect-magic", school: "divination", levelByClass: { wizard: 0 } },
+  { id: "shield", school: "abjuration", levelByClass: { wizard: 1 } }
 ];
 
 const limits = [{ level: 0, count: 3 }, { level: 1, count: 2 }];
@@ -46,5 +47,21 @@ test("elemental opposition spell lists consume two prepared slots", () => {
   assert.deepEqual(
     normalizePreparedSpellsWithOpposition(["mage-armor", "magic-missile"], spells, "wizard", limits, ["wizard-opposition-earth"], ["mage-armor"]),
     ["mage-armor"]
+  );
+});
+
+test("restricted bonus slots accept only matching spells beyond the normal limit", () => {
+  const elementalBonus = { eligibleSpellIds: ["magic-missile"], countPerLevel: 1 };
+  assert.deepEqual(
+    normalizePreparedSpellsWithOpposition(["shield", "shield", "shield"], spells, "wizard", limits, [], [], elementalBonus),
+    ["shield", "shield"],
+  );
+  assert.deepEqual(
+    normalizePreparedSpellsWithOpposition(["shield", "shield", "magic-missile"], spells, "wizard", limits, [], [], elementalBonus),
+    ["shield", "shield", "magic-missile"],
+  );
+  assert.deepEqual(
+    normalizePreparedSpellsWithOpposition(["mage-armor", "magic-missile"], spells, "wizard", limits, [], ["mage-armor"], elementalBonus),
+    ["mage-armor", "magic-missile"],
   );
 });

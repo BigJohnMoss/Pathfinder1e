@@ -1,0 +1,24 @@
+{
+  "id": "elemental-master-elements",
+  "name": "Elemental Master Elements",
+  "classIds": ["arcanist"],
+  "inheritsOptionsFrom": "wizard-schools",
+  "inheritedOptionIds": [
+    "wizard-school-air",
+    "wizard-school-earth",
+    "wizard-school-fire",
+    "wizard-school-water"
+  ],
+  "optionDefaults": {
+    "groupId": "elemental-master-elements",
+    "classIds": ["arcanist"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Elemental%20Master"
+    }
+  },
+  "options": []
+}
