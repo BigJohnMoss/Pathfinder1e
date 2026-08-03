@@ -815,13 +815,17 @@ export default function Home() {
     [archetypeFeatAlternatives, classLevels, selectableProgressionFeatures, progression.features, selectedArchetypes, selectedOptions],
   );
   const selectedClassFeatChoices = useMemo(
-    () => Object.fromEntries(Object.entries(selectedOptions).flatMap(([featureId, featId]) => {
+    () => Object.fromEntries(Object.entries(selectedOptions).flatMap(([featureId, optionId]) => {
       const feature = selectableProgressionFeatures.find((candidate) => candidate.id === featureId);
-      const feat = feats.find((candidate) => candidate.id === featId);
-      if (!feature || !feat || (!generatedFeatGroupIds.has(feature.optionGroupId ?? "") && !alternativeAllowsFeat(feature, feat))) return [];
-      if (!feat.choice) return [];
-      const value = selectedOptions[`${featureId}-${feat.choice.key}`];
-      return value ? [[featId, value]] : [];
+      const selectedOption = optionGroups.flatMap((group) => group.options).find((candidate) => candidate.id === optionId);
+      const feat = feats.find((candidate) => candidate.id === optionId || candidate.id === selectedOption?.featId);
+      if (!feature || !feat) return [];
+      const permittedFeatChoice = generatedFeatGroupIds.has(feature.optionGroupId ?? "") || alternativeAllowsFeat(feature, feat) || selectedOption?.featId === feat.id;
+      if (!permittedFeatChoice) return [];
+      const choice = selectedOption?.choice ?? feat.choice;
+      if (!choice) return [];
+      const value = selectedOptions[`${featureId}-${choice.key}`];
+      return value ? [[feat.id, value]] : [];
     })),
     [archetypeFeatAlternatives, selectableProgressionFeatures, selectedOptions],
   );

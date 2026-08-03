@@ -329,6 +329,42 @@ for (const journey of journeys) {
     await expect(featChoice.locator('option[value="weapon-focus"]')).toHaveCount(1);
   });
 
+  test(`configures Blade Adept exploits and dependent weapon feats on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-blade-adept");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("13");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+
+    const fifthLevelExploit = page.getByLabel("Arcanist Exploit level 5");
+    await expect(fifthLevelExploit.locator('option[value="blade-adept-student-weapon-focus"]')).toHaveCount(1);
+    await expect(fifthLevelExploit.locator('option[value="blade-adept-magus-arcana-critical-strike"]')).toHaveCount(1);
+    await fifthLevelExploit.selectOption("blade-adept-student-weapon-focus");
+    await page.getByLabel("Arcanist Exploit Bonded weapon").first().fill("rapier");
+
+    const seventhLevelExploit = page.getByLabel("Arcanist Exploit level 7");
+    await expect(seventhLevelExploit.locator('option[value="blade-adept-weapon-specialization"]')).toHaveCount(1);
+    await seventhLevelExploit.selectOption("blade-adept-weapon-specialization");
+    await page.getByLabel("Arcanist Exploit Bonded weapon").last().fill("rapier");
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Arcanist Exploit level 5")).toHaveValue("blade-adept-student-weapon-focus");
+    await expect(page.getByLabel("Arcanist Exploit level 7")).toHaveValue("blade-adept-weapon-specialization");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);
