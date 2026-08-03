@@ -4081,6 +4081,7 @@ export default function Home() {
                   { id: "fortitude", name: "Fortitude save", modifier: combat.saves.fortitude },
                   { id: "reflex", name: "Reflex save", modifier: combat.saves.reflex },
                   { id: "will", name: "Will save", modifier: combat.saves.will },
+                  { id: "caster-level", name: "Caster level check", modifier: Math.max(0, ...Object.values(effectiveSpellcastingLevelMap)) + eldritchSurgeCasterLevelBonus },
                 ]}
                 skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total }))}
                 effects={activeEffects}

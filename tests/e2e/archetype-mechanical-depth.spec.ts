@@ -802,9 +802,16 @@ for (const journey of journeys) {
     await page.getByRole("button", { name: "Complete Harrow Reading" }).click();
     await expect(reservoir).toContainText("4/");
     await expect(page.getByLabel("Harrow Readings remaining")).toContainText("1/2");
+    await page.evaluate(() => { (window as typeof window & { __originalRandom?: typeof Math.random }).__originalRandom = Math.random; Math.random = () => 0; });
     await page.getByRole("button", { name: "Draw Trump Card" }).click();
     await expect(reservoir).toContainText("3/");
-    await expect(page.getByLabel("Draw Trump Card result")).toHaveText(/^(Books|Crowns|Hammers|Keys|Shields|Stars):/);
+    await expect(page.getByLabel("Draw Trump Card result")).toContainText("Books drawn for Self");
+    await page.getByRole("tab", { name: "Actions" }).click();
+    await expect(page.getByText("Trump Card — Self", { exact: true })).toBeVisible();
+    await page.getByRole("button", { name: /Caster level check roll/ }).click();
+    await expect(page.getByLabel("Caster level check total")).toHaveText("12");
+    await expect(page.getByText("Trump Card — Self", { exact: true })).toHaveCount(0);
+    await page.evaluate(() => { const scopedWindow = window as typeof window & { __originalRandom?: typeof Math.random }; if (scopedWindow.__originalRandom) Math.random = scopedWindow.__originalRandom; });
 
     await page.getByRole("tab", { name: "Spells" }).click();
     await page.getByLabel("Search spells").fill("Augury");

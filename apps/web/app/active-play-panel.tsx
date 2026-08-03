@@ -18,6 +18,11 @@ const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "casterLevel", name: "Caster level" },
   { id: "spellSaveDc", name: "Spell save DC" },
   { id: "exploitEffectiveLevel", name: "Exploit effective level" },
+  { id: "casterLevelChecks", name: "Caster level checks" },
+  { id: "savingThrows", name: "Saving throws" },
+  { id: "meleeDamageRolls", name: "Melee damage rolls" },
+  { id: "healingReceived", name: "Magical healing received" },
+  { id: "skillChecks", name: "Skill checks" },
   { id: "strength", name: "Strength" },
   { id: "dexterity", name: "Dexterity" },
   { id: "constitution", name: "Constitution" },
@@ -65,6 +70,12 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [customModifier, setCustomModifier] = useState(0);
   const [targetArmorClass, setTargetArmorClass] = useState(10);
   const [effectCheckDcs, setEffectCheckDcs] = useState<Record<string, number>>({});
+  const [successfulMeleeAttackIds, setSuccessfulMeleeAttackIds] = useState<string[]>([]);
+  const oneShotEffects = (effectTarget: ActiveEffectTarget) => effects.filter((effect) => effect.consumeOnUse && effect.target === effectTarget);
+  const consumeOneShotEffects = (effectTarget: ActiveEffectTarget) => {
+    const consumedIds = new Set(oneShotEffects(effectTarget).map((effect) => effect.id));
+    if (consumedIds.size) onEffectsChange(effects.filter((effect) => !consumedIds.has(effect.id)));
+  };
   const recordRoll = (roll: Omit<RollHistory, "id">) =>
     setRollHistory(current => [{ ...roll, id: globalThis.crypto?.randomUUID?.() ?? `roll-${Date.now()}-${Math.random()}` }, ...current].slice(0, 20));
   const advanceRound = () => {
@@ -79,10 +90,16 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     onCurrentHitPointsChange(Math.max(0, currentHitPoints - (adjustment - absorbed)));
   };
   const heal = () => onCurrentHitPointsChange(Math.min(maximumHitPoints, currentHitPoints + adjustment));
+  const magicalHealingBonus = oneShotEffects("healingReceived").reduce((total, effect) => total + effect.bonus, 0);
+  const receiveMagicalHealing = () => {
+    onCurrentHitPointsChange(Math.min(maximumHitPoints, currentHitPoints + adjustment + magicalHealingBonus));
+    consumeOneShotEffects("healingReceived");
+  };
   const rollAttack = (attack: EquipmentAttack) => {
     const result = rollD20Check(attack.attack);
     recordRoll({ label: `${attack.name} attack`, formula: `1d20 ${attack.attack >= 0 ? "+" : "−"} ${Math.abs(attack.attack)}`, rolls: result.rolls, total: result.total, outcome: result.outcome });
     const resolution = resolveAttackRoll(result, targetArmorClass, attack.critical);
+    if (attack.range === undefined) setSuccessfulMeleeAttackIds((current) => resolution.hit ? [...new Set([...current, attack.id])] : current.filter((id) => id !== attack.id));
     const verdict = resolution.criticalThreat
       ? `Critical threat against AC ${targetArmorClass}`
       : `${resolution.hit ? "Hit" : "Miss"} against AC ${targetArmorClass}`;
@@ -106,12 +123,21 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const rollDamage = (attack: EquipmentAttack) => {
     const match = attack.damage.match(/^(\d+)d(\d+)$/i);
     if (!match) return;
-    const result = rollDice(Number(match[1]), Number(match[2]), attack.damageBonus);
-    recordRoll({ label: `${attack.name} damage`, formula: `${attack.damage}${attack.damageBonus ? ` ${attack.damageBonus >= 0 ? "+" : "−"} ${Math.abs(attack.damageBonus)}` : ""}`, rolls: result.rolls, total: result.total });
+    const appliesTrumpCard = attack.range === undefined && successfulMeleeAttackIds.includes(attack.id);
+    const modifier = attack.damageBonus + (appliesTrumpCard ? oneShotEffects("meleeDamageRolls").reduce((total, effect) => total + effect.bonus, 0) : 0);
+    const result = rollDice(Number(match[1]), Number(match[2]), modifier);
+    recordRoll({ label: `${attack.name} damage`, formula: `${attack.damage}${modifier ? ` ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}` : ""}`, rolls: result.rolls, total: result.total });
+    if (appliesTrumpCard) {
+      setSuccessfulMeleeAttackIds((current) => current.filter((id) => id !== attack.id));
+      consumeOneShotEffects("meleeDamageRolls");
+    }
   };
-  const rollCheck = (check: CheckRoll) => {
-    const result = rollD20Check(check.modifier);
-    recordRoll({ label: check.name, formula: `1d20 ${check.modifier >= 0 ? "+" : "−"} ${Math.abs(check.modifier)}`, rolls: result.rolls, total: result.total, outcome: result.outcome });
+  const rollCheck = (check: CheckRoll, kind: "standard" | "skill" = "standard") => {
+    const oneShotTarget: ActiveEffectTarget | undefined = kind === "skill" ? "skillChecks" : check.id === "caster-level" ? "casterLevelChecks" : ["fortitude", "reflex", "will"].includes(check.id) ? "savingThrows" : check.id === "initiative" ? "initiative" : undefined;
+    const modifier = check.modifier + (oneShotTarget && oneShotTarget !== "initiative" ? oneShotEffects(oneShotTarget).reduce((total, effect) => total + effect.bonus, 0) : 0);
+    const result = rollD20Check(modifier);
+    recordRoll({ label: check.name, formula: `1d20 ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}`, rolls: result.rolls, total: result.total, outcome: result.outcome });
+    if (oneShotTarget) consumeOneShotEffects(oneShotTarget);
   };
   const rollCustom = () => {
     const result = rollDice(customCount, customSides, customModifier);
@@ -146,6 +172,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <label>Amount<input aria-label="Hit point adjustment" type="number" min="1" max="9999" value={adjustment} onChange={(event) => setAdjustment(Math.max(1, Math.min(9999, Number(event.target.value) || 1)))} /></label>
       <button type="button" className="damage-button" onClick={takeDamage}>Take {adjustment} damage</button>
       <button type="button" onClick={heal}>Heal {adjustment} HP</button>
+      <button type="button" onClick={receiveMagicalHealing}>Receive magical healing ({adjustment}{magicalHealingBonus ? ` + ${magicalHealingBonus} fate` : ""})</button>
       <small>Damage uses temporary HP before current HP.</small>
     </div>
     <section className="combat-attacks" aria-labelledby="combat-attacks-heading">
@@ -160,7 +187,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <div className="quick-rolls">{checks.map(check => <button type="button" key={check.id} aria-label={`${check.name.replace(/ save$/i, "")} roll, modifier ${check.modifier >= 0 ? "+" : ""}${check.modifier}`} onClick={() => rollCheck(check)}>Roll {check.name} <span>{check.modifier >= 0 ? "+" : ""}{check.modifier}</span></button>)}</div>
       <div className="skill-roll">
         <label>Skill<select aria-label="Skill to roll" value={selectedSkill} onChange={event => setSelectedSkill(event.target.value)}>{skills.map(skill => <option key={skill.id} value={skill.id}>{skill.name} ({skill.modifier >= 0 ? "+" : ""}{skill.modifier})</option>)}</select></label>
-        <button type="button" disabled={!selectedSkill} onClick={() => { const skill = skills.find(item => item.id === selectedSkill); if (skill) rollCheck(skill); }}>Roll selected skill</button>
+        <button type="button" disabled={!selectedSkill} onClick={() => { const skill = skills.find(item => item.id === selectedSkill); if (skill) rollCheck(skill, "skill"); }}>Roll selected skill</button>
       </div>
       <div className="custom-roll">
         <label>Dice<input aria-label="Custom dice count" type="number" min="1" max="100" value={customCount} onChange={event => setCustomCount(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label>

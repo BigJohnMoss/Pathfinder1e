@@ -205,6 +205,18 @@ test("Harrowed Society Student grants Psychic Sensitivity and bounded daily read
   const trump = applied.find((feature) => feature.id === "arcanist-harrowed-society-student-trump-card-su-9").resourceActions[0];
   assert.equal(trump.cost, 1);
   assert.deepEqual(trump.randomOutcomes.map((outcome) => outcome.label), ["Books", "Crowns", "Hammers", "Keys", "Shields", "Stars"]);
+  assert.equal(student.mechanicalCoverage, "full");
+  assert.deepEqual(trump.modes.map((mode) => mode.id), ["trump-card-self", "trump-card-ally", "trump-card-enemy"]);
+  assert.equal(trump.savingThrow.label, "Will");
+  assert.equal(trump.randomOutcomeTarget.enemySaveModifier, "will");
+  assert.deepEqual(trump.randomOutcomes.map((outcome) => [outcome.effect.target, outcome.effect.bonus, outcome.effect.classLevelBonus ?? false]), [
+    ["casterLevelChecks", 2, false],
+    ["savingThrows", 2, false],
+    ["meleeDamageRolls", 4, false],
+    ["initiative", 4, false],
+    ["healingReceived", 0, true],
+    ["skillChecks", 4, false],
+  ]);
   const mysteryChoices = applied.filter((feature) => feature.optionGroupId === "harrowed-divine-mysteries");
   assert.deepEqual(mysteryChoices.map((feature) => feature.level), [5, 7, 9, 11, 13, 15, 17, 19]);
   assert.ok(mysteryChoices.every((feature) => feature.choiceRequired));

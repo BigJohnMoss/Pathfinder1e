@@ -41,6 +41,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   const [targetHitDice, setTargetHitDice] = useState<Record<string, number>>({});
   const [rerollInputs, setRerollInputs] = useState<Record<string, { original: number; modifier: number; count: number; sides: number }>>({});
   const [combatInputs, setCombatInputs] = useState<Record<string, { touchArmorClass: number; saveModifier: number; secondarySaveModifier: number }>>({});
+  const [actionTargetNames, setActionTargetNames] = useState<Record<string, string>>({});
   const selectedOptionSet = new Set(selectedOptionIds);
 
   const effectNamesForResource = (resourceId?: string) => [...new Set(features.flatMap((feature) => feature.resourceActions ?? []).filter((action) => action.resourceId === resourceId).flatMap((action) => [...(action.conditionEffectsByUseCount?.map((step) => step.name) ?? []), ...(action.activeEffect ? [action.activeEffect.name] : [])]))];
@@ -112,6 +113,14 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const combatInput = combatInputs[action.id] ?? { touchArmorClass: 10, saveModifier: 0, secondarySaveModifier: 0 };
         const conditionStep = action.conditionEffectsByUseCount?.[Math.min(useCount, action.conditionEffectsByUseCount.length - 1)];
         const selectedMode = action.modes?.find((mode) => mode.id === actionModes[action.id]) ?? action.modes?.[0];
+        const defaultActionTargetName = action.randomOutcomeTarget
+          ? selectedMode?.id === action.randomOutcomeTarget.allyModeId
+            ? "Ally"
+            : selectedMode?.id === action.randomOutcomeTarget.enemyModeId
+              ? "Enemy"
+              : action.randomOutcomeTarget.defaultValue
+          : "";
+        const actionTargetName = actionTargetNames[action.id] ?? defaultActionTargetName;
         const effectTarget = action.activeEffect ? effectTargets[action.id] ?? action.activeEffect.targets[0] : undefined;
         const effectTargetChoiceLabel = action.activeEffect?.targets.every((target) => abilityEffectTargets.has(target)) ? "Affected ability" : "Affected target";
         const rounds = action.activeEffect ? Math.max(1, Math.min(999, effectRounds[action.id] ?? action.activeEffect.defaultRounds ?? 10)) : 0;
@@ -220,7 +229,34 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           }
           if (action.randomOutcomes?.length) {
             const outcome = action.randomOutcomes[Math.floor(Math.random() * action.randomOutcomes.length)];
-            setActionResults((current) => ({ ...current, [action.id]: `${outcome.label}: ${outcome.summary}` }));
+            const targetRules = action.randomOutcomeTarget;
+            const effectName = targetRules ? `Trump Card — ${actionTargetName.trim() || defaultActionTargetName}` : outcome.label;
+            const outcomeBonus = outcome.effect?.classLevelBonus ? actionClassLevel : outcome.effect?.bonus ?? 0;
+            const resolvedOutcomeSummary = outcome.effect?.target === "healingReceived" && outcome.effect.classLevelBonus
+              ? `The next magical healing restores ${actionClassLevel} additional hit points.`
+              : outcome.summary;
+            const inverseOutcomeSummary = outcome.effect?.target === "healingReceived"
+              ? `The next magical healing received is reduced by ${outcomeBonus} hit points.`
+              : resolvedOutcomeSummary.replaceAll("+", "−");
+            if (!targetRules || !outcome.effect) {
+              setActionResults((current) => ({ ...current, [action.id]: `${outcome.label}: ${outcome.summary}` }));
+            } else if (selectedMode?.id === targetRules.enemyModeId && saveDc !== undefined) {
+              const save = rollD20Check(combatInput.saveModifier);
+              const succeeded = save.total >= saveDc;
+              if (!succeeded) {
+                onRemoveEffectByName?.(effectName);
+                onAddEffect?.({ id: `${action.id}-enemy-${Date.now()}-${Math.random()}`, name: effectName, target: "enemy", bonus: 0, description: `${outcome.label} curse: ${inverseOutcomeSummary} The named enemy uses this penalty on its next qualifying roll.`, roundsRemaining: 999 });
+              }
+              setActionResults((current) => ({ ...current, [action.id]: `${outcome.label} drawn for ${actionTargetName.trim() || defaultActionTargetName}. ${targetRules.enemySaveModifier[0].toUpperCase()}${targetRules.enemySaveModifier.slice(1)} save ${save.natural}${combatInput.saveModifier === 0 ? "" : ` ${combatInput.saveModifier >= 0 ? "+" : "−"} ${Math.abs(combatInput.saveModifier)}`} = ${save.total} vs DC ${saveDc} — ${succeeded ? "curse negated" : "curse applied"}.` }));
+            } else if (selectedMode?.id === targetRules.allyModeId) {
+              onRemoveEffectByName?.(effectName);
+              onAddEffect?.({ id: `${action.id}-ally-${Date.now()}-${Math.random()}`, name: effectName, target: "allies", bonus: 0, description: `${outcome.label}: ${resolvedOutcomeSummary} Remove this tracker after the named ally uses it.`, roundsRemaining: 999 });
+              setActionResults((current) => ({ ...current, [action.id]: `${outcome.label} drawn for ${actionTargetName.trim() || defaultActionTargetName}: ${resolvedOutcomeSummary}` }));
+            } else {
+              onRemoveEffectByName?.(effectName);
+              onAddEffect?.({ id: `${action.id}-self-${Date.now()}-${Math.random()}`, name: effectName, target: outcome.effect.target, bonus: outcomeBonus, description: `${outcome.label}: ${resolvedOutcomeSummary}`, roundsRemaining: 999, consumeOnUse: true });
+              setActionResults((current) => ({ ...current, [action.id]: `${outcome.label} drawn for ${actionTargetName.trim() || defaultActionTargetName}: ${resolvedOutcomeSummary} The app will consume it on the next qualifying roll.` }));
+            }
           } else if (action.activeEffect && !action.rerollAction) setActionResults((current) => ({
             ...current,
             [action.id]: `${effectDescription || action.activeEffect!.name} Active for ${rounds} round${rounds === 1 ? "" : "s"}.`,
@@ -230,7 +266,9 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         };
         return <div className="feature-resource-action" key={action.id}>
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
-          {Boolean(action.modes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{action.modes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
+          {Boolean(action.modes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionTargetNames((current) => { const next = { ...current }; delete next[action.id]; return next; }); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{action.modes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
+          {action.randomOutcomeTarget && <label>{action.randomOutcomeTarget.label}<input aria-label={`${action.label} ${action.randomOutcomeTarget.label.toLowerCase()}`} value={actionTargetName} maxLength={80} onChange={(event) => setActionTargetNames((current) => ({ ...current, [action.id]: event.target.value }))} /></label>}
+          {action.randomOutcomeTarget && selectedMode?.id === action.randomOutcomeTarget.enemyModeId && <label>Target {action.randomOutcomeTarget.enemySaveModifier} modifier<input aria-label={`${action.label} target ${action.randomOutcomeTarget.enemySaveModifier} modifier`} type="number" min="-999" max="999" value={combatInput.saveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, saveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
           {action.savingThrow && <output aria-label={`${action.label} save DC`}>{action.savingThrow.label} save DC {saveDc}</output>}
           {action.targetHitDiceRequirement && <label>{action.targetHitDiceRequirement.label}<input aria-label={`${action.label} target Hit Dice`} type="number" min="0" max="999" value={enteredTargetHitDice} onChange={(event) => setTargetHitDice((current) => ({ ...current, [action.id]: Math.max(0, Math.min(999, Number(event.target.value) || 0)) }))} /><small>Requires at least {minimumTargetHitDice} Hit Dice.</small></label>}
           {action.combatRoll && combatDiceCount && combatDieSides && <><output aria-label={`${action.label} attack profile`}>{combatDiceCount}d{combatDieSides}{combatDamageModifier >= 0 ? "+" : ""}{combatDamageModifier} {action.combatRoll.damage.type} · {combatRange}</output>{action.combatRoll.attack && <label>Target touch AC<input aria-label={`${action.label} target touch AC`} type="number" min="1" max="999" value={combatInput.touchArmorClass} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, touchArmorClass: Math.max(1, Math.min(999, Number(event.target.value) || 1)) } }))} /></label>}{action.combatRoll.targetSave && <label>Target {action.combatRoll.targetSave.modifier} modifier<input aria-label={`${action.label} target ${action.combatRoll.targetSave.modifier} modifier`} type="number" min="-999" max="999" value={combatInput.saveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, saveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}{action.combatRoll.secondaryDamage && <label>Adjacent {action.combatRoll.secondaryDamage.saveModifier} modifier<input aria-label={`${action.label} adjacent ${action.combatRoll.secondaryDamage.saveModifier} modifier`} type="number" min="-999" max="999" value={combatInput.secondarySaveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, secondarySaveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}</>}

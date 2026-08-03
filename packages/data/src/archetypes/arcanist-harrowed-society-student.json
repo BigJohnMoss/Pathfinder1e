@@ -129,14 +129,22 @@
               "label": "Draw Trump Card",
               "resourceId": "arcaneReservoir",
               "cost": 1,
+              "modeLabel": "Fate target",
+              "modes": [
+                { "id": "trump-card-self", "label": "This character", "summary": "Apply the drawn fate to this character and consume it automatically on the next qualifying roll." },
+                { "id": "trump-card-ally", "label": "Another ally", "summary": "Track the drawn fate for a named ally within 30 feet." },
+                { "id": "trump-card-enemy", "label": "Enemy curse", "summary": "A named enemy within 30 feet attempts a Will save; failure applies the inverse fate as a curse." }
+              ],
+              "savingThrow": { "label": "Will", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "randomOutcomeTarget": { "label": "Target name", "defaultValue": "Self", "selfModeId": "trump-card-self", "allyModeId": "trump-card-ally", "enemyModeId": "trump-card-enemy", "enemySaveModifier": "will" },
               "summary": "Spend 1 reservoir point and draw a random Harrow suit for the target's next qualifying roll.",
               "randomOutcomes": [
-                {"label":"Books","summary":"+2 insight on the next caster level check."},
-                {"label":"Crowns","summary":"+2 insight on the next saving throw."},
-                {"label":"Hammers","summary":"+4 insight on the next successful melee damage roll."},
-                {"label":"Keys","summary":"+4 insight on the next initiative check."},
-                {"label":"Shields","summary":"The next magical healing restores additional hit points equal to Arcanist level."},
-                {"label":"Stars","summary":"+4 insight on the next skill check."}
+                { "label": "Books", "summary": "+2 insight on the next caster level check.", "effect": { "target": "casterLevelChecks", "bonus": 2 } },
+                { "label": "Crowns", "summary": "+2 insight on the next saving throw.", "effect": { "target": "savingThrows", "bonus": 2 } },
+                { "label": "Hammers", "summary": "+4 insight on the damage roll of the next successful melee attack.", "effect": { "target": "meleeDamageRolls", "bonus": 4 } },
+                { "label": "Keys", "summary": "+4 insight on the next initiative check.", "effect": { "target": "initiative", "bonus": 4 } },
+                { "label": "Shields", "summary": "The next magical healing restores additional hit points equal to Arcanist level.", "effect": { "target": "healingReceived", "bonus": 0, "classLevelBonus": true } },
+                { "label": "Stars", "summary": "+4 insight on the next skill check.", "effect": { "target": "skillChecks", "bonus": 4 } }
               ]
             }
           ],
@@ -163,8 +171,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Harrowed%20Society%20Student"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Psychic Sensitivity, class skills, replacement progression, eight level-aware Divine the Mysteries spell choices, 1/2/3 daily Harrow Readings, level-capped reservoir recovery from the dealt spread, and random Trump Card suits with reservoir spending are automated. Applying the drawn conditional modifier to a future tabletop roll remains manual."
+    "Psychic Sensitivity, class skills, replacement progression, eight level-aware Divine the Mysteries spell choices, 1/2/3 daily Harrow Readings, and level-capped reservoir recovery are automated.",
+    "Trump Card draws a random suit, spends its reservoir point, tracks named allies and enemies, resolves enemy Will saves, and automatically consumes self-targeted fate bonuses on their next qualifying roll."
   ]
 }
