@@ -160,6 +160,30 @@ test("White Mage automatically grants level-aware on-demand cure spells", () => 
   assert.equal(breathOfLife?.minimumLevel, 10);
   assert.equal(breathOfLife?.spellLevel, 5);
   assert.equal(breathOfLife?.resourceCost?.base, 5);
+  assert.deepEqual(whiteMage.optionGroupAugmentations, [{
+    targetGroupId: "arcanist-exploits",
+    sourceGroupId: "white-mage-exploits",
+    minimumFeatureLevel: 11,
+  }]);
+  const fastHealingOption = generatedData.optionGroups
+    .find((group) => group.id === "white-mage-exploits")?.options
+    .find((option) => option.id === "white-mage-fast-healing");
+  assert.equal(fastHealingOption?.minimumLevel, 11);
+  const fastHealing = applied.find((feature) => feature.id === "arcanist-white-mage-greater-exploit-11");
+  assert.equal(fastHealing?.requiredOptionId, "white-mage-fast-healing");
+  assert.deepEqual(fastHealing?.spellAutomation, {
+    fastHealingAura: {
+      label: "Fast Healing",
+      resourceId: "arcaneReservoir",
+      cost: 1,
+      minimumSpellLevel: 2,
+      range: "30 feet",
+      healingDivisor: 2,
+      durationAbility: "charisma",
+      minimumRounds: 1,
+    },
+  });
+  assert.equal(whiteMage.mechanicalCoverage, "full");
 });
 
 test("Occultist grants planar spells and scaling slot-free Conjurer's Focus summons", () => {

@@ -384,7 +384,8 @@ a:focus-visible,
   font-weight: 800;
 }
 
-.archetype-spell-controls input {
+.archetype-spell-controls input,
+.archetype-spell-controls select {
   min-height: 44px;
   min-width: 0;
   padding: 9px 10px;
@@ -395,6 +396,20 @@ a:focus-visible,
   font: inherit;
 }
 
+.archetype-spell-action {
+  align-items: end;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.archetype-spell-action label {
+  min-width: 0;
+}
+
+.archetype-spell-action button {
+  min-height: 44px;
+  white-space: nowrap;
+}
+
 .archetype-spell-controls output {
   grid-column: 1 / -1;
   color: #2e6d45;
@@ -402,6 +417,7 @@ a:focus-visible,
 }
 
 .spell-day-controls > button,
+.archetype-spell-action button,
 .cast-spell-button,
 .share-spell-button,
 .spell-selection-control button {
@@ -417,6 +433,7 @@ a:focus-visible,
 }
 
 .cast-spell-button:disabled,
+.archetype-spell-action button:disabled,
 .share-spell-button:disabled {
   cursor: not-allowed;
   opacity: .5;
@@ -627,6 +644,11 @@ a:focus-visible,
 
   .archetype-spell-controls output {
     grid-column: auto;
+  }
+
+  .archetype-spell-action {
+    align-items: stretch;
+    grid-template-columns: 1fr;
   }
 
   .spell-day-controls {

@@ -774,23 +774,57 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Halcyon Spell Lore (Su) level 1")).toHaveValue("magaambyan-halcyon-spells-entangle");
   });
 
-  test(`casts White Mage cure spells without preparation on ${journey.name}`, async ({ page }) => {
+  test(`casts White Mage healing and tracks Fast Healing on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");
     await page.evaluate(() => localStorage.clear());
     await page.reload();
     await openCharacterPanel(page, journey.mobile);
     await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("11");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Arcanist Exploit level 11").locator('option[value="white-mage-fast-healing"]')).toHaveCount(0);
+    await openCharacterPanel(page, journey.mobile);
     await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-white-mage");
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Basic info" }).click();
+    await page.getByLabel("Charisma base score").fill("16");
+    await page.getByRole("tab", { name: "Features" }).click();
+    const greaterExploit = page.getByLabel("Arcanist Exploit level 11");
+    await expect(greaterExploit.locator('option[value="white-mage-fast-healing"]')).toHaveCount(1);
+    await greaterExploit.selectOption("white-mage-fast-healing");
     await page.getByRole("tab", { name: "Spells" }).click();
     await page.getByLabel("Search spells").fill("Cure Light Wounds");
     await expect(page.getByRole("button", { name: "Add Cure Light Wounds", exact: true })).toBeDisabled();
     await expect(page.getByText(/Spontaneous Healing: cast on demand for 1 reservoir point/).first()).toBeVisible();
     const reservoir = page.getByLabel("Arcane Reservoir points");
-    await expect(reservoir).toHaveText("3/4 reservoir");
+    await expect(reservoir).toHaveText("3/14 reservoir");
     await page.getByRole("button", { name: "Cast Cure Light Wounds", exact: true }).click();
-    await expect(reservoir).toHaveText("2/4 reservoir");
+    await expect(reservoir).toHaveText("2/14 reservoir");
+
+    await expect(page.getByRole("region", { name: "Fast Healing" })).toContainText("for 3 rounds");
+    await page.getByLabel("Fast Healing spell slot").selectOption("4");
+    await page.getByRole("button", { name: "Use Fast Healing" }).click();
+    await expect(page.getByLabel("Fast Healing result")).toHaveText("Allies within 30 feet gain fast healing 2 for 3 rounds.");
+    await expect(reservoir).toHaveText("1/14 reservoir");
+    await expect(page.getByText(/Arcanist \(White Mage\) slots:/)).toContainText("3/4 4th-level");
+
+    await page.getByRole("tab", { name: "Actions" }).click();
+    await expect(page.getByText(/Allies within 30 feet gain fast healing 2/)).toContainText("3 rounds");
+    await page.getByRole("button", { name: "Next round" }).click();
+    await expect(page.getByText(/Allies within 30 feet gain fast healing 2/)).toContainText("2 rounds");
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Actions" }).click();
+    await expect(page.getByText(/Allies within 30 feet gain fast healing 2/)).toContainText("2 rounds");
   });
 
   test(`uses Occultist Conjurer's Focus without spell slots on ${journey.name}`, async ({ page }) => {

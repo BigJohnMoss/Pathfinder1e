@@ -12,6 +12,10 @@ const brownFur = JSON.parse(
   readFileSync(new URL("../packages/data/src/archetypes/arcanist-brown-fur-transmuter.json", import.meta.url), "utf8"),
 ) as CharacterArchetype;
 const applied = applyArchetype(arcanist, brownFur);
+const whiteMage = JSON.parse(
+  readFileSync(new URL("../packages/data/src/archetypes/arcanist-white-mage.json", import.meta.url), "utf8"),
+) as CharacterArchetype;
+const appliedWhiteMage = applyArchetype(arcanist, whiteMage);
 
 test("Brown-Fur spell automation unlocks and improves at the correct levels", () => {
   assert.equal(classSpellAutomation(applied, 8), undefined);
@@ -24,7 +28,6 @@ test("Brown-Fur spell automation unlocks and improves at the correct levels", ()
       range: "touch",
       willingOnly: true,
     },
-    automaticExtendDuration: undefined,
   });
   assert.deepEqual(classSpellAutomation(applied, 20), {
     sharePersonalRange: {
@@ -38,6 +41,23 @@ test("Brown-Fur spell automation unlocks and improves at the correct levels", ()
     automaticExtendDuration: {
       label: "Transmutation Supremacy",
       school: "transmutation",
+    },
+  });
+});
+
+test("White Mage Fast Healing automation requires its greater exploit selection", () => {
+  assert.equal(classSpellAutomation(appliedWhiteMage, 10, ["white-mage-fast-healing"]), undefined);
+  assert.equal(classSpellAutomation(appliedWhiteMage, 11), undefined);
+  assert.deepEqual(classSpellAutomation(appliedWhiteMage, 11, ["white-mage-fast-healing"]), {
+    fastHealingAura: {
+      label: "Fast Healing",
+      resourceId: "arcaneReservoir",
+      reservoirCost: 1,
+      minimumSpellLevel: 2,
+      range: "30 feet",
+      healingDivisor: 2,
+      durationAbility: "charisma",
+      minimumRounds: 1,
     },
   });
 });

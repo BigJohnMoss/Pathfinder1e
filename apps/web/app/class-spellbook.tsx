@@ -5,12 +5,12 @@ import { optionGroups } from "./character-catalogue";
 import { Spellbook } from "./spellbook";
 import { classSpellAutomation } from "./archetype-spell-automation";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
-import { arcaneReservoir, normalizeSpellSlotUses, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
+import { abilityModifiers as calculateAbilityModifiers, arcaneReservoir, normalizeSpellSlotUses, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells } from "../../../packages/engine/src/sorcerer-bloodlines.js";
 import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
-import type { AbilityScores, CharacterClass, CharacterOption, CharacterSpell } from "../../../packages/types/src/index.js";
+import type { AbilityScores, ActiveEffect, CharacterClass, CharacterOption, CharacterSpell } from "../../../packages/types/src/index.js";
 
 type SpellTraitBonuses = Record<string, { casterLevel: number; metamagicLevelAdjustment: number }>;
 
@@ -58,7 +58,8 @@ export function ClassSpellbook({
   slotUses,
   onSlotUsesChange,
   reservoirPoints,
-  onReservoirPointsChange
+  onReservoirPointsChange,
+  onAddEffect,
 }: {
   characterClass: CharacterClass;
   spells: CharacterSpell[];
@@ -72,6 +73,7 @@ export function ClassSpellbook({
   onSlotUsesChange: (uses: Record<number, number>) => void;
   reservoirPoints: number;
   onReservoirPointsChange: (points: number) => void;
+  onAddEffect?: (effect: ActiveEffect) => void;
 }) {
   const spellcasting = characterClass.spellcasting;
   const castingAbility = spellcasting?.ability ?? "intelligence";
@@ -173,5 +175,5 @@ export function ClassSpellbook({
     if (reservoir) onReservoirPointsChange(reservoir.dailyRefresh);
   };
   if (spontaneousCasting) return <SpontaneousSpellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={spontaneousCasting.slots} knownLimits={spontaneousCasting.known} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay} />;
-  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} onDemandSpellCosts={onDemandSpellCosts} requiredPreparedSchool={requiredSchool} spellAutomation={classSpellAutomation(characterClass, classLevel)} />;
+  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} onDemandSpellCosts={onDemandSpellCosts} requiredPreparedSchool={requiredSchool} spellAutomation={classSpellAutomation(characterClass, classLevel, Object.values(selectedOptions))} abilityModifiers={calculateAbilityModifiers(abilities)} onAddEffect={onAddEffect} />;
 }

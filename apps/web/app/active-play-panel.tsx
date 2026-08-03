@@ -20,6 +20,9 @@ const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "charisma", name: "Charisma" }
 ];
 
+const effectTargetName = (target: ActiveEffectTarget) =>
+  target === "allies" ? "Allies" : targets.find(item => item.id === target)?.name;
+
 export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, attacks, checks, skills, effects, onCurrentHitPointsChange, onTemporaryHitPointsChange, onEffectsChange }: {
   maximumHitPoints: number;
   currentHitPoints: number;
@@ -150,7 +153,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <button type="button" onClick={addEffect} disabled={!name.trim()}>Add effect</button>
     </div>
     {effects.length > 0 ? <ul className="active-effect-list">{effects.map(effect => <li key={effect.id}>
-      <div><strong>{effect.name}</strong><span>{effect.bonus >= 0 ? "+" : ""}{effect.bonus} {targets.find(item => item.id === effect.target)?.name} · {effect.roundsRemaining} round{effect.roundsRemaining === 1 ? "" : "s"}</span></div>
+      <div><strong>{effect.name}</strong><span>{effect.description ?? `${effect.bonus >= 0 ? "+" : ""}${effect.bonus} ${effectTargetName(effect.target)}`} · {effect.roundsRemaining} round{effect.roundsRemaining === 1 ? "" : "s"}</span></div>
       <button type="button" aria-label={`Remove ${effect.name}`} onClick={() => onEffectsChange(effects.filter(item => item.id !== effect.id))}>Remove</button>
     </li>)}</ul> : <p className="hint">No temporary effects are active.</p>}
   </section>;

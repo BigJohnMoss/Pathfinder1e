@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ancestries,
   archetypes as compactArchetypes,
@@ -454,6 +454,12 @@ export default function Home() {
   const [currentHitPoints, setCurrentHitPoints] = useState<number | null>(null);
   const [temporaryHitPoints, setTemporaryHitPoints] = useState(0);
   const [activeEffects, setActiveEffects] = useState<ActiveEffect[]>([]);
+  const addActiveEffect = useCallback((effect: ActiveEffect) => {
+    setActiveEffects((current) => [
+      ...current.filter((item) => item.name !== effect.name || item.target !== effect.target),
+      effect,
+    ].slice(-20));
+  }, []);
   const [inventory, setInventory] = useState<InventoryEntry[]>([]);
   const [coins, setCoins] = useState<CoinPurse>({ cp: 0, sp: 0, gp: 0, pp: 0 });
   const [activeTab, setActiveTab] = useState<CharacterTabId>("overview");
@@ -1329,6 +1335,11 @@ export default function Home() {
       "classId" in feature && typeof feature.classId === "string"
         ? feature.classId
         : characterClass.id;
+    const featureClassLevel =
+      classLevelMap[featureClassId] ?? primaryClassLevel;
+    const featureCharacterClass = progressionClasses.find(
+      (item) => item.id === featureClassId,
+    );
     const generatedFeatConfig = (() => {
       if (feature.optionGroupId === "archetype-feats") return {
         ids: feature.featChoiceIds ?? [],
@@ -1395,9 +1406,29 @@ export default function Home() {
             .map(signatureSpellOption),
         }
       : undefined;
-    const baseGroup = generatedFeatGroup ?? signatureGroup ?? optionGroups.find(
+    const rawBaseGroup = generatedFeatGroup ?? signatureGroup ?? optionGroups.find(
       (item) => item.id === feature.optionGroupId,
     );
+    const augmentationOptions = (featureCharacterClass?.optionGroupAugmentations ?? [])
+      .filter((augmentation) =>
+        augmentation.targetGroupId === feature.optionGroupId &&
+        feature.level >= (augmentation.minimumFeatureLevel ?? 1),
+      )
+      .flatMap((augmentation) =>
+        optionGroups.find((group) => group.id === augmentation.sourceGroupId)?.options ?? [],
+      )
+      .map((option) => ({ ...option, groupId: feature.optionGroupId! }));
+    const baseGroup = rawBaseGroup && augmentationOptions.length
+      ? {
+          ...rawBaseGroup,
+          options: [
+            ...rawBaseGroup.options,
+            ...augmentationOptions.filter((option) =>
+              !rawBaseGroup.options.some((baseOption) => baseOption.id === option.id),
+            ),
+          ],
+        }
+      : rawBaseGroup;
     const matchingAlternatives = archetypeFeatAlternatives.filter((alternative) =>
       alternative.optionGroupId === feature.optionGroupId && feature.level >= alternative.minimumLevel,
     );
@@ -1420,11 +1451,6 @@ export default function Home() {
       ? { ...baseGroup, options: [...retainedBaseOptions, ...alternativeOptions.filter((option) => !retainedBaseOptions.some((baseOption) => baseOption.id === option.id))] }
       : baseGroup;
     const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)];
-    const featureClassLevel =
-      classLevelMap[featureClassId] ?? primaryClassLevel;
-    const featureCharacterClass = progressionClasses.find(
-      (item) => item.id === featureClassId,
-    );
     const baseOptions =
       group && feature.id === "sacred-servant-deity-1"
         ? group.options.filter((option) =>
@@ -2642,7 +2668,9 @@ export default function Home() {
       restrictedBonus={elementalMasterPreparation}
       onDemandSpellCosts={primaryOnDemandSpellCosts}
       requiredPreparedSchool={requiredPreparedSchool(characterClass)}
-      spellAutomation={classSpellAutomation(characterClass, primaryClassLevel)}
+      spellAutomation={classSpellAutomation(characterClass, primaryClassLevel, Object.values(selectedOptions))}
+      abilityModifiers={combat.abilityModifiers}
+      onAddEffect={addActiveEffect}
     />
   ) : null;
   const secondarySpellbook =
@@ -2705,7 +2733,9 @@ export default function Home() {
         restrictedBonus={secondaryElementalMasterPreparation}
         onDemandSpellCosts={secondaryOnDemandSpellCosts}
         requiredPreparedSchool={requiredPreparedSchool(secondaryCharacterClass)}
-        spellAutomation={classSpellAutomation(secondaryCharacterClass, secondaryClassLevel)}
+        spellAutomation={classSpellAutomation(secondaryCharacterClass, secondaryClassLevel, Object.values(selectedOptions))}
+        abilityModifiers={combat.abilityModifiers}
+        onAddEffect={addActiveEffect}
       />
     ) : null;
   const extraActiveClassLevel = additionalClassLevels
@@ -2743,6 +2773,7 @@ export default function Home() {
         }
         reservoirPoints={reservoirPoints}
         onReservoirPointsChange={setReservoirPoints}
+        onAddEffect={addActiveEffect}
       />
     ) : null;
 
@@ -4119,7 +4150,7 @@ export default function Home() {
                 }
                 features={progression.features}
                 dailyResources={classDailyResources}
-                onAddEffect={(effect) => setActiveEffects((current) => [...current.filter((item) => item.name !== effect.name || item.target !== effect.target), effect].slice(-20))}
+                onAddEffect={addActiveEffect}
               />
               <FavoredClassBenefits allocations={favoredClassAlternateBonuses} />
               <ArchetypeAutomationStatus archetypes={selectedArchetypes} feats={feats} />
