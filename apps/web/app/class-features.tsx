@@ -15,13 +15,14 @@ export type DailyResource = {
 const effectTargetLabel = (target: ActiveEffectTarget) => target.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
 const abilityEffectTargets = new Set<ActiveEffectTarget>(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
 
-export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], activeEffects = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
+export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, baseAttackBonus = 0, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], activeEffects = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
   level: number;
   className: string;
   features: Feature[];
   dailyResources?: DailyResource[];
   abilityModifiers?: Partial<Record<AbilityName, number>>;
   saveModifiers?: Partial<Record<"fortitude" | "reflex" | "will", number>>;
+  baseAttackBonus?: number;
   classLevels?: Record<string, number>;
   casterLevels?: Record<string, number>;
   selectedOptionIds?: string[];
@@ -39,6 +40,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   const [calculationInputs, setCalculationInputs] = useState<Record<string, number>>({});
   const [targetHitDice, setTargetHitDice] = useState<Record<string, number>>({});
   const [rerollInputs, setRerollInputs] = useState<Record<string, { original: number; modifier: number; count: number; sides: number }>>({});
+  const [combatInputs, setCombatInputs] = useState<Record<string, { touchArmorClass: number; saveModifier: number; secondarySaveModifier: number }>>({});
   const selectedOptionSet = new Set(selectedOptionIds);
 
   const effectNamesForResource = (resourceId?: string) => [...new Set(features.flatMap((feature) => feature.resourceActions ?? []).filter((action) => action.resourceId === resourceId).flatMap((action) => [...(action.conditionEffectsByUseCount?.map((step) => step.name) ?? []), ...(action.activeEffect ? [action.activeEffect.name] : [])]))];
@@ -56,7 +58,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       </div>;
     })}
     <ol>{features.map((feature) => <li key={feature.id}>
-      <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.progressionProfiles?.map((profile) => {
+      <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.progressionProfiles?.filter((profile) => !profile.requiredOptionId || selectedOptionSet.has(profile.requiredOptionId)).map((profile) => {
         const usesCasterLevel = Boolean(profile.advancementOptionId && selectedOptionSet.has(profile.advancementOptionId));
         const advancementLevel = usesCasterLevel ? casterLevels[profile.classId] ?? classLevels[profile.classId] ?? 0 : classLevels[profile.classId] ?? 0;
         const current = profile.steps.filter((step) => step.level <= advancementLevel).sort((left, right) => left.level - right.level).at(-1);
@@ -76,7 +78,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           <output aria-label={calculation.outputLabel}>{calculation.outputLabel}: {base + input}</output>
           {calculation.summary && <small>{calculation.summary}</small>}
         </div>;
-      })}{feature.resourceActions?.map((action) => {
+      })}{feature.resourceActions?.filter((action) => !action.requiredOptionId || selectedOptionSet.has(action.requiredOptionId)).map((action) => {
         const actionClassLevel = action.classId ? classLevels[action.classId] ?? 0 : level;
         const actionLevel = action.advancementOptionId && selectedOptionSet.has(action.advancementOptionId)
           ? casterLevels[action.classId ?? ""] ?? actionClassLevel
@@ -107,6 +109,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
         const rerollInput = rerollInputs[action.id] ?? { original: 10, modifier: 0, count: 1, sides: 6 };
+        const combatInput = combatInputs[action.id] ?? { touchArmorClass: 10, saveModifier: 0, secondarySaveModifier: 0 };
         const conditionStep = action.conditionEffectsByUseCount?.[Math.min(useCount, action.conditionEffectsByUseCount.length - 1)];
         const selectedMode = action.modes?.find((mode) => mode.id === actionModes[action.id]) ?? action.modes?.[0];
         const effectTarget = action.activeEffect ? effectTargets[action.id] ?? action.activeEffect.targets[0] : undefined;
@@ -125,6 +128,11 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const enteredTargetHitDice = Math.max(0, targetHitDice[action.id] ?? minimumTargetHitDice);
         const targetEligible = !action.targetHitDiceRequirement || enteredTargetHitDice >= minimumTargetHitDice;
         const temporaryHitPoints = action.temporaryHitPointsByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.amount;
+        const combatDiceCount = action.combatRoll?.damage.diceCountByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.count;
+        const combatDieSides = action.combatRoll?.damage.dieSidesByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.sides;
+        const combatRange = action.combatRoll?.rangeByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.range;
+        const combatDamageModifier = action.combatRoll?.damage.abilityModifier ? abilityModifiers[action.combatRoll.damage.abilityModifier] ?? 0 : 0;
+        const combatAttackModifier = baseAttackBonus + (abilityModifiers.dexterity ?? 0) + activeEffects.filter((effect) => effect.target === "attackRolls").reduce((total, effect) => total + effect.bonus, 0);
         const selectedWeaponOption = action.activeEffect?.weaponSelectionFeatureId ? selectedOptions[action.activeEffect.weaponSelectionFeatureId] : undefined;
         const selectedWeapon = selectedWeaponOption === "blade-adept-bond-other"
           ? selectedOptions[`${action.activeEffect!.weaponSelectionFeatureId}-weapon`]?.trim().toLowerCase()
@@ -178,6 +186,38 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             const roll = rollD20Check(rerollInput.modifier);
             setActionResults((current) => ({ ...current, [action.id]: `${action.rerollAction!.label}: original ${rerollInput.original}; reroll ${roll.natural}${rerollInput.modifier === 0 ? "" : ` ${rerollInput.modifier >= 0 ? "+" : "−"} ${Math.abs(rerollInput.modifier)}`} = ${roll.total}. Use ${Math.min(rerollInput.original, roll.total)}.` }));
           }
+          if (action.combatRoll && combatDiceCount && combatDieSides) {
+            const attack = action.combatRoll.attack ? rollD20Check(combatAttackModifier) : undefined;
+            const hit = !attack || (attack.natural !== 1 && (attack.natural === 20 || attack.total >= combatInput.touchArmorClass));
+            const parts = [combatRange ? `Range ${combatRange}.` : ""];
+            if (attack) parts.push(`${action.combatRoll.attack!.label}: ${attack.natural}${combatAttackModifier === 0 ? "" : ` ${combatAttackModifier >= 0 ? "+" : "−"} ${Math.abs(combatAttackModifier)}`} = ${attack.total} vs touch AC ${combatInput.touchArmorClass} — ${hit ? "hit" : "miss"}.`);
+            if (hit) {
+              const damage = rollDice(combatDiceCount, combatDieSides, combatDamageModifier);
+              const targetSave = action.combatRoll.targetSave && saveDc !== undefined ? rollD20Check(combatInput.saveModifier) : undefined;
+              const saveSucceeded = Boolean(targetSave && saveDc !== undefined && targetSave.total >= saveDc);
+              const halvesDamage = saveSucceeded && ["half-damage", "half-and-negates-riders"].includes(action.combatRoll.targetSave?.outcome ?? "");
+              const appliedDamage = halvesDamage ? Math.floor(damage.total / 2) : damage.total;
+              parts.push(`${combatDiceCount}d${combatDieSides}${combatDamageModifier === 0 ? "" : combatDamageModifier > 0 ? ` + ${combatDamageModifier}` : ` − ${Math.abs(combatDamageModifier)}`} ${action.combatRoll.damage.type} damage: ${damage.rolls.join(" + ")}${combatDamageModifier === 0 ? "" : combatDamageModifier > 0 ? ` + ${combatDamageModifier}` : ` − ${Math.abs(combatDamageModifier)}`} = ${damage.total}${halvesDamage ? `; save halves to ${appliedDamage}` : ""}.`);
+              if (targetSave && saveDc !== undefined) parts.push(`${action.combatRoll.targetSave!.modifier[0].toUpperCase()}${action.combatRoll.targetSave!.modifier.slice(1)} save: ${targetSave.natural}${combatInput.saveModifier === 0 ? "" : ` ${combatInput.saveModifier >= 0 ? "+" : "−"} ${Math.abs(combatInput.saveModifier)}`} = ${targetSave.total} vs DC ${saveDc} — ${saveSucceeded ? "success" : "failure"}.`);
+              const ridersNegated = saveSucceeded && ["negates-riders", "half-and-negates-riders"].includes(action.combatRoll.targetSave?.outcome ?? "");
+              if (!ridersNegated) action.combatRoll.riders?.forEach((rider, index) => {
+                const decayDivisor = rider.duration.kind === "decaying-dice" ? rider.duration.divisor : 2;
+                const lingeringDice = Array.from({ length: 10 }, (_, step) => Math.max(1, Math.floor(combatDiceCount / (decayDivisor ** (step + 1))))).filter((count, index, values) => index === 0 || count !== values[index - 1]);
+                const rounds = rider.duration.kind === "fixed-rounds" ? rider.duration.rounds : rider.duration.kind === "dice-rounds" ? rollDice(rider.duration.count, rider.duration.sides).total : rider.duration.kind === "decaying-dice" ? lingeringDice.length : rider.duration.kind === "level-minutes" ? Math.min(999, actionLevel * 10) : 999;
+                const lingeringDieSides = rider.duration.kind === "decaying-dice" ? rider.duration.sides : combatDieSides;
+                const description = rider.description.replaceAll("{level}", String(actionLevel)).replaceAll("{breakDc}", String(10 + (abilityModifiers.charisma ?? 0))).replaceAll("{lingeringDice}", lingeringDice.map((count) => `${count}d${lingeringDieSides}`).join(" → "));
+                onAddEffect?.({ id: `${action.id}-rider-${index}-${Date.now()}-${Math.random()}`, name: rider.name, target: "enemy", bonus: 0, description, roundsRemaining: rounds });
+                parts.push(`${rider.name} applied${rider.duration.kind === "until-ended" ? " until ended" : ` for ${rounds} round${rounds === 1 ? "" : "s"}`}.`);
+              });
+              if (action.combatRoll.secondaryDamage && saveDc !== undefined) {
+                const secondaryBase = Math.floor(damage.rolls.reduce((total, roll) => total + roll, 0) / action.combatRoll.secondaryDamage.divisor);
+                const secondarySave = rollD20Check(combatInput.secondarySaveModifier);
+                const secondaryDamage = secondarySave.total >= saveDc ? Math.floor(secondaryBase / 2) : secondaryBase;
+                parts.push(`${action.combatRoll.secondaryDamage.label}: ${secondaryBase} damage; ${action.combatRoll.secondaryDamage.saveModifier} save ${secondarySave.total} vs DC ${saveDc}, ${secondaryDamage} damage after save.`);
+              }
+            }
+            setActionResults((current) => ({ ...current, [action.id]: parts.filter(Boolean).join(" ") }));
+          }
           if (action.randomOutcomes?.length) {
             const outcome = action.randomOutcomes[Math.floor(Math.random() * action.randomOutcomes.length)];
             setActionResults((current) => ({ ...current, [action.id]: `${outcome.label}: ${outcome.summary}` }));
@@ -186,13 +226,14 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             [action.id]: `${effectDescription || action.activeEffect!.name} Active for ${rounds} round${rounds === 1 ? "" : "s"}.`,
           }));
           else if (temporaryHitPoints !== undefined) setActionResults((current) => ({ ...current, [action.id]: `Gained ${temporaryHitPoints} temporary hit points.` }));
-          else if (!action.actorSavingThrow && !action.rerollAction) setActionResults((current) => ({ ...current, [action.id]: "Ability used." }));
+          else if (!action.actorSavingThrow && !action.rerollAction && !action.combatRoll) setActionResults((current) => ({ ...current, [action.id]: "Ability used." }));
         };
         return <div className="feature-resource-action" key={action.id}>
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
           {Boolean(action.modes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{action.modes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
           {action.savingThrow && <output aria-label={`${action.label} save DC`}>{action.savingThrow.label} save DC {saveDc}</output>}
           {action.targetHitDiceRequirement && <label>{action.targetHitDiceRequirement.label}<input aria-label={`${action.label} target Hit Dice`} type="number" min="0" max="999" value={enteredTargetHitDice} onChange={(event) => setTargetHitDice((current) => ({ ...current, [action.id]: Math.max(0, Math.min(999, Number(event.target.value) || 0)) }))} /><small>Requires at least {minimumTargetHitDice} Hit Dice.</small></label>}
+          {action.combatRoll && combatDiceCount && combatDieSides && <><output aria-label={`${action.label} attack profile`}>{combatDiceCount}d{combatDieSides}{combatDamageModifier >= 0 ? "+" : ""}{combatDamageModifier} {action.combatRoll.damage.type} · {combatRange}</output>{action.combatRoll.attack && <label>Target touch AC<input aria-label={`${action.label} target touch AC`} type="number" min="1" max="999" value={combatInput.touchArmorClass} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, touchArmorClass: Math.max(1, Math.min(999, Number(event.target.value) || 1)) } }))} /></label>}{action.combatRoll.targetSave && <label>Target {action.combatRoll.targetSave.modifier} modifier<input aria-label={`${action.label} target ${action.combatRoll.targetSave.modifier} modifier`} type="number" min="-999" max="999" value={combatInput.saveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, saveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}{action.combatRoll.secondaryDamage && <label>Adjacent {action.combatRoll.secondaryDamage.saveModifier} modifier<input aria-label={`${action.label} adjacent ${action.combatRoll.secondaryDamage.saveModifier} modifier`} type="number" min="-999" max="999" value={combatInput.secondarySaveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, secondarySaveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}</>}
           {action.rerollAction?.kind === "lower-d20" && <label>Original save total<input aria-label={`${action.label} original save total`} type="number" min="-999" max="999" value={rerollInput.original} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, original: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
           {(action.rerollAction?.kind === "d20" || action.rerollAction?.kind === "lower-d20") && <label>Modifier<input aria-label={`${action.label} modifier`} type="number" min="-999" max="999" value={rerollInput.modifier} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, modifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
           {action.rerollAction?.kind === "damage" && <><label>Dice<input aria-label={`${action.label} dice count`} type="number" min="1" max="100" value={rerollInput.count} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, count: Math.max(1, Math.min(100, Number(event.target.value) || 1)) } }))} /></label><label>Die<select aria-label={`${action.label} die sides`} value={rerollInput.sides} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, sides: Number(event.target.value) } }))}>{[4, 6, 8, 10, 12, 20, 100].map((sides) => <option value={sides} key={sides}>d{sides}</option>)}</select></label><label>Modifier<input aria-label={`${action.label} modifier`} type="number" min="-999" max="999" value={rerollInput.modifier} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, modifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label></>}

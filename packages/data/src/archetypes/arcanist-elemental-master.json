@@ -29,7 +29,91 @@
           "name": "Elemental Attack (Su)",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, the elemental master gains an arcanist exploit tied to her element. If she selected air, she gains the lightning lance arcanist exploit. If she selected earth, she gains the acid jet arcanist exploit. If she selected fire, she gains the flame arc arcanist exploit. If she selected water, she gains the ice missile arcanist exploit. This ability replaces the arcanist exploit gained at 3rd level."
+          "summary": "At 3rd level, the elemental master gains an arcanist exploit tied to her element. Air grants lightning lance, earth grants acid jet, fire grants flame arc, and water grants ice missile. Each attack spends 1 arcane reservoir point. This ability replaces the arcanist exploit gained at 3rd level.",
+          "resourceActions": [
+            {
+              "id": "elemental-master-lightning-lance",
+              "label": "Use Lightning Lance",
+              "resourceId": "arcaneReservoir",
+              "cost": 1,
+              "requiredOptionId": "wizard-school-air",
+              "savingThrow": { "label": "Fortitude", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Ranged touch attack" },
+                "damage": {
+                  "type": "electricity",
+                  "diceCountByLevel": [{ "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 }, { "level": 9, "count": 5 }, { "level": 10, "count": 6 }, { "level": 12, "count": 7 }, { "level": 14, "count": 8 }, { "level": 16, "count": 9 }, { "level": 18, "count": 10 }, { "level": 20, "count": 11 }],
+                  "dieSidesByLevel": [{ "level": 3, "sides": 6 }, { "level": 9, "sides": 8 }],
+                  "abilityModifier": "charisma"
+                },
+                "rangeByLevel": [{ "level": 3, "range": "30 feet" }, { "level": 9, "range": "60 feet" }],
+                "targetSave": { "modifier": "fortitude", "outcome": "negates-riders" },
+                "riders": [{ "name": "Lightning Lance impaired vision", "description": "Treat all creatures as having concealment (20% miss chance).", "duration": { "kind": "fixed-rounds", "rounds": 1 } }]
+              },
+              "summary": "Make a ranged touch attack. On a hit, deal scaling electricity damage; a Fortitude save negates 1 round of impaired vision."
+            },
+            {
+              "id": "elemental-master-acid-jet",
+              "label": "Use Acid Jet",
+              "resourceId": "arcaneReservoir",
+              "cost": 1,
+              "requiredOptionId": "wizard-school-earth",
+              "savingThrow": { "label": "Fortitude", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Ranged touch attack" },
+                "damage": {
+                  "type": "acid",
+                  "diceCountByLevel": [{ "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 }, { "level": 9, "count": 5 }, { "level": 10, "count": 6 }, { "level": 12, "count": 7 }, { "level": 14, "count": 8 }, { "level": 16, "count": 9 }, { "level": 18, "count": 10 }, { "level": 20, "count": 11 }],
+                  "dieSidesByLevel": [{ "level": 3, "sides": 6 }, { "level": 9, "sides": 8 }],
+                  "abilityModifier": "charisma"
+                },
+                "rangeByLevel": [{ "level": 3, "range": "30 feet" }, { "level": 9, "range": "60 feet" }],
+                "targetSave": { "modifier": "fortitude", "outcome": "negates-riders" },
+                "riders": [{ "name": "Acid Jet sickened", "description": "Sickened by the elemental master's acid jet.", "duration": { "kind": "dice-rounds", "count": 1, "sides": 4 } }]
+              },
+              "summary": "Make a ranged touch attack. On a hit, deal scaling acid damage; a Fortitude save negates being sickened for 1d4 rounds."
+            },
+            {
+              "id": "elemental-master-flame-arc",
+              "label": "Use Flame Arc",
+              "resourceId": "arcaneReservoir",
+              "cost": 1,
+              "requiredOptionId": "wizard-school-fire",
+              "savingThrow": { "label": "Reflex", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "combatRoll": {
+                "damage": {
+                  "type": "fire",
+                  "diceCountByLevel": [{ "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 }, { "level": 9, "count": 5 }, { "level": 10, "count": 6 }, { "level": 12, "count": 7 }, { "level": 14, "count": 8 }, { "level": 16, "count": 9 }, { "level": 18, "count": 10 }, { "level": 20, "count": 11 }],
+                  "dieSidesByLevel": [{ "level": 3, "sides": 6 }, { "level": 9, "sides": 8 }],
+                  "abilityModifier": "charisma"
+                },
+                "rangeByLevel": [{ "level": 3, "range": "30-foot line" }, { "level": 9, "range": "60-foot line" }],
+                "targetSave": { "modifier": "reflex", "outcome": "half-damage" }
+              },
+              "summary": "Deal scaling fire damage to every creature in a line; each creature can attempt a Reflex save for half damage."
+            },
+            {
+              "id": "elemental-master-ice-missile",
+              "label": "Use Ice Missile",
+              "resourceId": "arcaneReservoir",
+              "cost": 1,
+              "requiredOptionId": "wizard-school-water",
+              "savingThrow": { "label": "Fortitude", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Ranged touch attack" },
+                "damage": {
+                  "type": "cold",
+                  "diceCountByLevel": [{ "level": 3, "count": 2 }, { "level": 5, "count": 3 }, { "level": 7, "count": 4 }, { "level": 9, "count": 5 }, { "level": 10, "count": 6 }, { "level": 12, "count": 7 }, { "level": 14, "count": 8 }, { "level": 16, "count": 9 }, { "level": 18, "count": 10 }, { "level": 20, "count": 11 }],
+                  "dieSidesByLevel": [{ "level": 3, "sides": 6 }, { "level": 9, "sides": 8 }],
+                  "abilityModifier": "charisma"
+                },
+                "rangeByLevel": [{ "level": 3, "range": "30 feet" }, { "level": 9, "range": "60 feet" }],
+                "targetSave": { "modifier": "fortitude", "outcome": "negates-riders" },
+                "riders": [{ "name": "Ice Missile staggered", "description": "Staggered by the elemental master's ice missile.", "duration": { "kind": "fixed-rounds", "rounds": 1 } }]
+              },
+              "summary": "Make a ranged touch attack. On a hit, deal scaling cold damage; a Fortitude save negates being staggered for 1 round."
+            }
+          ]
         },
         {
           "id": "arcanist-elemental-master-powerful-exploit-su-9",
@@ -43,14 +127,92 @@
           "name": "Greater Elemental Attack (Su)",
           "level": 11,
           "type": "archetype",
-          "summary": "At 11th level, the elemental master gains a greater arcanist exploit tied to her element. If she selected air, she gains the dancing electricity arcanist exploit. If she selected earth, she gains the lingering acid arcanist exploit. If she selected fire, she gains the burning flame arcanist exploit. If she selected water, she gains the icy tomb arcanist exploit. This ability replaces the arcanist exploit gained at 11th level."
+          "summary": "At 11th level, the elemental master gains a greater version of her elemental attack: dancing electricity, lingering acid, burning flame, or icy tomb. Each greater attack spends 2 arcane reservoir points. This ability replaces the arcanist exploit gained at 11th level.",
+          "resourceActions": [
+            {
+              "id": "elemental-master-dancing-electricity",
+              "label": "Use Dancing Electricity",
+              "resourceId": "arcaneReservoir",
+              "cost": 2,
+              "requiredOptionId": "wizard-school-air",
+              "savingThrow": { "label": "Fortitude", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Ranged touch attack" },
+                "damage": { "type": "electricity", "diceCountByLevel": [{ "level": 11, "count": 6 }, { "level": 12, "count": 7 }, { "level": 14, "count": 8 }, { "level": 16, "count": 9 }, { "level": 18, "count": 10 }, { "level": 20, "count": 11 }], "dieSidesByLevel": [{ "level": 11, "sides": 8 }], "abilityModifier": "charisma" },
+                "rangeByLevel": [{ "level": 11, "range": "60 feet" }],
+                "targetSave": { "modifier": "fortitude", "outcome": "negates-riders" },
+                "riders": [{ "name": "Lightning Lance impaired vision", "description": "Treat all creatures as having concealment (20% miss chance).", "duration": { "kind": "fixed-rounds", "rounds": 1 } }],
+                "secondaryDamage": { "label": "Adjacent dancing electricity", "divisor": 2, "saveModifier": "reflex" }
+              },
+              "summary": "Resolve lightning lance and deal half its rolled electricity damage to every adjacent creature; each adjacent creature makes a Reflex save for half again."
+            },
+            {
+              "id": "elemental-master-lingering-acid",
+              "label": "Use Lingering Acid",
+              "resourceId": "arcaneReservoir",
+              "cost": 2,
+              "requiredOptionId": "wizard-school-earth",
+              "savingThrow": { "label": "Fortitude", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Ranged touch attack" },
+                "damage": { "type": "acid", "diceCountByLevel": [{ "level": 11, "count": 6 }, { "level": 12, "count": 7 }, { "level": 14, "count": 8 }, { "level": 16, "count": 9 }, { "level": 18, "count": 10 }, { "level": 20, "count": 11 }], "dieSidesByLevel": [{ "level": 11, "sides": 8 }], "abilityModifier": "charisma" },
+                "rangeByLevel": [{ "level": 11, "range": "60 feet" }],
+                "targetSave": { "modifier": "fortitude", "outcome": "negates-riders" },
+                "riders": [
+                  { "name": "Acid Jet sickened", "description": "Sickened by the elemental master's acid jet.", "duration": { "kind": "dice-rounds", "count": 1, "sides": 4 } },
+                  { "name": "Lingering Acid", "description": "Take additional acid damage on following rounds: {lingeringDice}. The sequence ends after its 1-die round.", "duration": { "kind": "decaying-dice", "divisor": 2, "sides": 6 } }
+                ]
+              },
+              "summary": "Resolve acid jet; on a failed Fortitude save, also apply the automatically calculated sequence of diminishing acid damage."
+            },
+            {
+              "id": "elemental-master-burning-flame",
+              "label": "Use Burning Flame",
+              "resourceId": "arcaneReservoir",
+              "cost": 2,
+              "requiredOptionId": "wizard-school-fire",
+              "savingThrow": { "label": "Reflex", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "combatRoll": {
+                "damage": { "type": "fire", "diceCountByLevel": [{ "level": 11, "count": 6 }, { "level": 12, "count": 7 }, { "level": 14, "count": 8 }, { "level": 16, "count": 9 }, { "level": 18, "count": 10 }, { "level": 20, "count": 11 }], "dieSidesByLevel": [{ "level": 11, "sides": 8 }], "abilityModifier": "charisma" },
+                "rangeByLevel": [{ "level": 11, "range": "60-foot line" }],
+                "targetSave": { "modifier": "reflex", "outcome": "half-and-negates-riders" },
+                "riders": [{ "name": "Burning Flame", "description": "On fire; take 3d6 fire damage at the start of each turn. A full-round Reflex save or at least 1 gallon of water extinguishes the flames.", "duration": { "kind": "until-ended" } }]
+              },
+              "summary": "Resolve flame arc; each creature that fails its Reflex save catches fire and takes 3d6 fire damage per turn until extinguished."
+            },
+            {
+              "id": "elemental-master-icy-tomb",
+              "label": "Use Icy Tomb",
+              "resourceId": "arcaneReservoir",
+              "cost": 2,
+              "requiredOptionId": "wizard-school-water",
+              "savingThrow": { "label": "Fortitude", "ability": "charisma", "base": 10, "levelDivisor": 2, "classId": "arcanist" },
+              "combatRoll": {
+                "attack": { "kind": "ranged-touch", "label": "Ranged touch attack" },
+                "damage": { "type": "cold", "diceCountByLevel": [{ "level": 11, "count": 6 }, { "level": 12, "count": 7 }, { "level": 14, "count": 8 }, { "level": 16, "count": 9 }, { "level": 18, "count": 10 }, { "level": 20, "count": 11 }], "dieSidesByLevel": [{ "level": 11, "sides": 8 }], "abilityModifier": "charisma" },
+                "rangeByLevel": [{ "level": 11, "range": "60 feet" }],
+                "targetSave": { "modifier": "fortitude", "outcome": "negates-riders" },
+                "riders": [
+                  { "name": "Ice Missile staggered", "description": "Staggered by the elemental master's ice missile.", "duration": { "kind": "fixed-rounds", "rounds": 1 } },
+                  { "name": "Icy Tomb", "description": "Entangled (not anchored) and takes 1 Dexterity damage at the start of each turn. Escape with a standard-action Strength check DC {breakDc}; more than 10 fire damage from one attack also ends the effect.", "duration": { "kind": "level-minutes" } }
+                ]
+              },
+              "summary": "Resolve ice missile; on a failed Fortitude save, encase the target in rime for 1 minute per arcanist level."
+            }
+          ]
         },
         {
           "id": "arcanist-elemental-master-elemental-movement-su-15",
           "name": "Elemental Movement (Su)",
           "level": 15,
           "type": "archetype",
-          "summary": "At 15th level, an elemental master gains an elemental movement. This enhancement is based on her chosen element type. Air grants a fly speed of 90 feet (average maneuverability), earth grants a burrow speed of 30 feet, fire grants a increase of 30 feet to base land speed, and water grants a swim speed of 60 feet. This ability replaces the arcanist exploit gained at 15th level."
+          "summary": "At 15th level, the chosen element permanently grants its matching movement mode. This ability replaces the arcanist exploit gained at 15th level.",
+          "progressionProfiles": [
+            { "id": "elemental-master-air-movement", "label": "Air elemental movement", "classId": "arcanist", "requiredOptionId": "wizard-school-air", "columns": [{ "id": "movement", "label": "Movement" }], "steps": [{ "level": 15, "values": { "movement": "Fly 90 feet (average)" } }], "summary": "Gain a 90-foot fly speed with average maneuverability." },
+            { "id": "elemental-master-earth-movement", "label": "Earth elemental movement", "classId": "arcanist", "requiredOptionId": "wizard-school-earth", "columns": [{ "id": "movement", "label": "Movement" }], "steps": [{ "level": 15, "values": { "movement": "Burrow 30 feet" } }], "summary": "Gain a 30-foot burrow speed." },
+            { "id": "elemental-master-fire-movement", "label": "Fire elemental movement", "classId": "arcanist", "requiredOptionId": "wizard-school-fire", "columns": [{ "id": "movement", "label": "Movement" }], "steps": [{ "level": 15, "values": { "movement": "Land speed +30 feet" } }], "summary": "Increase base land speed by 30 feet." },
+            { "id": "elemental-master-water-movement", "label": "Water elemental movement", "classId": "arcanist", "requiredOptionId": "wizard-school-water", "columns": [{ "id": "movement", "label": "Movement" }], "steps": [{ "level": 15, "values": { "movement": "Swim 60 feet" } }], "summary": "Gain a 60-foot swim speed." }
+          ]
         }
       ]
     }
@@ -60,9 +222,10 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Elemental%20Master"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
     "Element selection, restricted bonus preparation slots, and opposition preparation costs are automated.",
-    "Elemental attack damage, range, and movement are calculated in feature rules but still require manual use on the tabletop."
+    "All four elemental attacks roll their attack, damage, saving throw, and condition riders while spending the correct reservoir cost.",
+    "Powerful Exploit scaling, all four greater exploits, and element-specific movement are applied automatically from the selected element."
   ]
 }
