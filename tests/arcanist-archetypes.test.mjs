@@ -185,7 +185,7 @@ test("Spell Specialist exposes one level-matched signature slot per spell level"
 
 test("reservoir-powered archetype features expose enforceable action costs", () => {
   const expected = new Map([
-    ["arcanist-aeromancer", [["wind-s-embrace", 2], ["rebuking-gale", 3]]],
+    ["arcanist-aeromancer", [["air-mastery-caster-level", 1], ["air-mastery-save-dc", 1], ["wind-s-embrace", 2], ["rebuking-gale", 3]]],
     ["arcanist-brown-fur-transmuter", [["powerful-change", 1], ["share-transmutation", 1]]],
     ["arcanist-arcane-tinkerer", [["manipulate-construct", 1]]],
     ["arcanist-twilight-sage", [["twilight-transfer", 1]]],
@@ -224,4 +224,12 @@ test("Arcane Tinkerer unlocks at 1st level and branches at 7th and 13th", () => 
   const thirteenth = generatedData.optionGroups.find((group) => group.id === "arcane-tinkerer-level-13-choice");
   assert.ok(seventh.options.some((option) => option.id === "arcane-tinkerer-slow-construct"));
   assert.deepEqual(thirteenth.options.find((option) => option.id === "arcane-tinkerer-helpless-construct")?.prerequisites, [{ type: "feature", id: "arcane-tinkerer-slow-construct" }]);
+});
+
+test("Aeromancer Air Mastery unlocks and spends reservoir points at 1st level", () => {
+  const aeromancer = archetypes.find((archetype) => archetype.id === "arcanist-aeromancer");
+  const firstLevel = featuresThroughLevel(applyArchetype(arcanist, aeromancer), 1);
+  const mastery = firstLevel.find((feature) => feature.id === "arcanist-aeromancer-air-mastery-su-1");
+  assert.equal(mastery?.level, 1);
+  assert.deepEqual(mastery?.resourceActions?.map((action) => action.cost), [1, 1]);
 });
