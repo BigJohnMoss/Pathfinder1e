@@ -527,6 +527,21 @@ data-driven selections and reuse them for archetype combinations.
 5. [x] Verify standard and Crossblooded selection paths on desktop and narrow
    mobile, including save and load.
 
+## Completed expansion: Archetype-Specific Inherited Choice Groups
+
+Allow an archetype to retain a class's complete option catalogue while adding
+its own level-aware and dependent choices.
+
+1. [x] Reuse inherited option groups without duplicating the base catalogue.
+2. [x] Restore every remaining Blade Adept exploit slot after its published
+   1st-, 3rd-, and 9th-level replacements.
+3. [x] Add Eldritch Blade, Spell Strike, all five allowed Magus arcana, and all
+   Student of the Blade feat choices.
+4. [x] Enforce Magus arcana levels and require bonded-weapon Weapon Focus before
+   Weapon Specialization.
+5. [x] Apply and persist chosen-weapon feat details on desktop and narrow
+   mobile.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

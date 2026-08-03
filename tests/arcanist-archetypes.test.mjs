@@ -31,5 +31,6 @@ test("Blade Adept replaces the correct exploit levels and exposes its complete r
   for (const id of ["arcanist-exploit-1", "arcanist-exploit-3", "arcanist-exploit-9"]) {
     assert.ok(!features.some((feature) => feature.id === id));
   }
-  assert.ok(features.some((feature) => feature.id === "arcanist-exploit-5"));
+  assert.ok(features.some((feature) => feature.id === "arcanist-blade-adept-exploit-5" && feature.optionGroupId === "blade-adept-exploits"));
+  assert.deepEqual(features.filter((feature) => feature.optionGroupId === "blade-adept-exploits").map((feature) => feature.level), [5, 7, 11, 13, 15, 17, 19]);
 });

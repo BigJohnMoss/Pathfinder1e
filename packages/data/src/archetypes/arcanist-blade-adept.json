@@ -9,7 +9,14 @@
       "featureIds": [
         "arcanist-exploit-1",
         "arcanist-exploit-3",
-        "arcanist-exploit-9"
+        "arcanist-exploit-5",
+        "arcanist-exploit-7",
+        "arcanist-exploit-9",
+        "arcanist-exploit-11",
+        "arcanist-exploit-13",
+        "arcanist-exploit-15",
+        "arcanist-exploit-17",
+        "arcanist-exploit-19"
       ],
       "features": [
         {
@@ -32,7 +39,14 @@
           "level": 1,
           "type": "archetype",
           "summary": "A blade adept can select from the following additional exploits. Eldritch Blade : A blade adept with this exploit uses her caster level instead of her class level for the purpose of advancing her bonded sword’s powers. Magus Arcana : A blade adept can select any of the following magus arcana , using her arcane reservoir in place of the magus’s arcane pool: arcane accuracy, close range, critical strike, dispelling strike, and hasted assault. The blade adept treats her arcanist level as her magus level when determining the effects of magus arcana and when specific arcana are available. A blade adept can take this exploit multiple times. Each time it is taken, it applies to a different magus arcana. Spell Strike (Su) : The blade adept can deliver touch spells with her bonded weapon. This works as the magus ability of the same name. Student of the Blade (Ex) : A blade adept can choose from any of the following bonus feats: Arcane Strike , Weapon Finesse , and Weapon Focus (in the weapon she is bonded to) . This exploit can be taken multiple times. Each time it is taken, it applies to a different feat. Weapon Specialization (Ex) : The arcanist gains Weapon Specialization with her chosen weapon as a bonus feat. The blade adept does not need to meet the prerequisites for this feat, but must have the Weapon Focus feat with her chosen weapon to select this exploit. The arcanist must be at least 5th level to select this exploit."
-        }
+        },
+        {"id":"arcanist-blade-adept-exploit-5","name":"Arcanist Exploit","level":5,"type":"selectable","summary":"Choose an Arcanist exploit or Blade Adept exploit.","choiceRequired":true,"optionGroupId":"blade-adept-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"arcanist-blade-adept-exploit-7","name":"Arcanist Exploit","level":7,"type":"selectable","summary":"Choose another Arcanist exploit or Blade Adept exploit.","choiceRequired":true,"optionGroupId":"blade-adept-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"arcanist-blade-adept-exploit-11","name":"Arcanist Exploit","level":11,"type":"selectable","summary":"Choose another Arcanist exploit, greater exploit, or Blade Adept exploit.","choiceRequired":true,"optionGroupId":"blade-adept-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"arcanist-blade-adept-exploit-13","name":"Arcanist Exploit","level":13,"type":"selectable","summary":"Choose another Arcanist exploit, greater exploit, or Blade Adept exploit.","choiceRequired":true,"optionGroupId":"blade-adept-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"arcanist-blade-adept-exploit-15","name":"Arcanist Exploit","level":15,"type":"selectable","summary":"Choose another Arcanist exploit, greater exploit, or Blade Adept exploit.","choiceRequired":true,"optionGroupId":"blade-adept-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"arcanist-blade-adept-exploit-17","name":"Arcanist Exploit","level":17,"type":"selectable","summary":"Choose another Arcanist exploit, greater exploit, or Blade Adept exploit.","choiceRequired":true,"optionGroupId":"blade-adept-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"arcanist-blade-adept-exploit-19","name":"Arcanist Exploit","level":19,"type":"selectable","summary":"Choose another Arcanist exploit, greater exploit, or Blade Adept exploit.","choiceRequired":true,"optionGroupId":"blade-adept-exploits","progressionKey":"arcanist-exploit"}
       ]
     }
   ],
