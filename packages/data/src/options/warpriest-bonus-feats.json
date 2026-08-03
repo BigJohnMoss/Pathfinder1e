@@ -1,0 +1,6 @@
+{
+  "id": "warpriest-bonus-feats",
+  "name": "Warpriest Bonus Feats",
+  "classIds": ["warpriest"],
+  "options": []
+}

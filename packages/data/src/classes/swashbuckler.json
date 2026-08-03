@@ -9,15 +9,15 @@
     {"id":"swashbuckler-deeds-1","name":"Deeds","level":1,"type":"scaling","summary":"Spend or retain panache to use derring-do, dodging panache, opportune parry and riposte, and precise strike.","progressionKey":"swashbuckler-deeds"},
     {"id":"swashbuckler-charmed-life-2","name":"Charmed Life","level":2,"type":"resource","summary":"Before a saving throw, add Charisma to the result; daily uses increase every 4 levels.","uses":"3 uses per day; +1 every 4 levels"},
     {"id":"swashbuckler-nimble-3","name":"Nimble","level":3,"type":"scaling","summary":"Gain +1 dodge AC in light or no armour; improves by +1 every 4 levels."},
-    {"id":"swashbuckler-bonus-feat-4","name":"Bonus Feat","level":4,"type":"bonus-feat","summary":"Gain a qualifying combat feat.","progressionKey":"swashbuckler-bonus-feat"},
+    {"id":"swashbuckler-bonus-feat-4","name":"Bonus Feat","level":4,"type":"bonus-feat","summary":"Gain a qualifying combat feat.","choiceRequired":true,"optionGroupId":"swashbuckler-bonus-feats","progressionKey":"swashbuckler-bonus-feat"},
     {"id":"swashbuckler-weapon-training-5","name":"Swashbuckler Weapon Training","level":5,"type":"scaling","summary":"Gain +1 attack and damage with light or one-handed piercing melee weapons and Improved Critical at level 9."},
     {"id":"swashbuckler-deeds-7","name":"Advanced Deeds","level":7,"type":"scaling","summary":"Unlock superior feint, targeted strike, and swashbuckler's grace."},
-    {"id":"swashbuckler-bonus-feat-8","name":"Bonus Feat","level":8,"type":"bonus-feat","summary":"Gain another qualifying combat feat.","progressionKey":"swashbuckler-bonus-feat"},
+    {"id":"swashbuckler-bonus-feat-8","name":"Bonus Feat","level":8,"type":"bonus-feat","summary":"Gain another qualifying combat feat.","choiceRequired":true,"optionGroupId":"swashbuckler-bonus-feats","progressionKey":"swashbuckler-bonus-feat"},
     {"id":"swashbuckler-deeds-11","name":"Greater Deeds","level":11,"type":"scaling","summary":"Unlock bleeding wound, evasive, subtle blade, and swashbuckler's initiative."},
-    {"id":"swashbuckler-bonus-feat-12","name":"Bonus Feat","level":12,"type":"bonus-feat","summary":"Gain another qualifying combat feat.","progressionKey":"swashbuckler-bonus-feat"},
+    {"id":"swashbuckler-bonus-feat-12","name":"Bonus Feat","level":12,"type":"bonus-feat","summary":"Gain another qualifying combat feat.","choiceRequired":true,"optionGroupId":"swashbuckler-bonus-feats","progressionKey":"swashbuckler-bonus-feat"},
     {"id":"swashbuckler-deeds-15","name":"Master Deeds","level":15,"type":"scaling","summary":"Unlock dizzying defence, perfect thrust, and swashbuckler's edge."},
-    {"id":"swashbuckler-bonus-feat-16","name":"Bonus Feat","level":16,"type":"bonus-feat","summary":"Gain another qualifying combat feat.","progressionKey":"swashbuckler-bonus-feat"},
+    {"id":"swashbuckler-bonus-feat-16","name":"Bonus Feat","level":16,"type":"bonus-feat","summary":"Gain another qualifying combat feat.","choiceRequired":true,"optionGroupId":"swashbuckler-bonus-feats","progressionKey":"swashbuckler-bonus-feat"},
     {"id":"swashbuckler-weapon-mastery-20","name":"Swashbuckler Weapon Mastery","level":20,"type":"capstone","summary":"Automatically confirm critical threats with qualifying weapons and increase their critical multiplier."},
-    {"id":"swashbuckler-bonus-feat-20","name":"Bonus Feat","level":20,"type":"bonus-feat","summary":"Gain another qualifying combat feat.","progressionKey":"swashbuckler-bonus-feat"}
+    {"id":"swashbuckler-bonus-feat-20","name":"Bonus Feat","level":20,"type":"bonus-feat","summary":"Gain another qualifying combat feat.","choiceRequired":true,"optionGroupId":"swashbuckler-bonus-feats","progressionKey":"swashbuckler-bonus-feat"}
   ]
 }
