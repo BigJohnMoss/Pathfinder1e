@@ -368,4 +368,13 @@ test("Eldritch Font tracks surge strain and Bottomless Well recovery", () => {
   assert.deepEqual(actions.find((action) => action.id === "bottomless-well")?.changes, [{ resourceId: "arcaneReservoir", usedDelta: -10 }]);
   assert.equal(font.spellSlotAdjustmentPerLevel, 1);
   assert.equal(font.preparedSpellAdjustmentPerLevel, -1);
+  const spellSurge = actions.find((action) => action.id === "eldritch-surge-spell");
+  assert.deepEqual(spellSurge?.activeEffect?.targets, ["casterLevel", "spellSaveDc"]);
+  assert.equal(spellSurge?.activeEffect?.applyToAllTargets, true);
+  assert.deepEqual(spellSurge?.conditionEffectsByUseCount?.map((step) => step.effects.map((effect) => effect.bonus)), [[-2, -2], [-6, -6]]);
+  assert.deepEqual(actions.find((action) => action.id === "eldritch-surge-exploit")?.activeEffect?.targets, ["exploitEffectiveLevel"]);
+  assert.equal(actions.find((action) => action.id === "improved-surge-attack")?.rerollAction?.kind, "d20");
+  assert.equal(actions.find((action) => action.id === "improved-surge-damage")?.rerollAction?.kind, "damage");
+  assert.equal(actions.find((action) => action.id === "greater-surge-save")?.rerollAction?.kind, "lower-d20");
+  assert.equal(font.mechanicalCoverage, "full");
 });

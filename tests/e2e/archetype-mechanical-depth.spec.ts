@@ -160,9 +160,19 @@ test(`tracks Eldritch Font surge strain and recovery on ${journey.name}`, async 
   await page.getByRole("tab", { name: "Features" }).click();
   const strain = page.getByLabel("Arcanist Eldritch Surge remaining");
   const reservoir = page.getByLabel("Arcane Reservoir remaining");
+  await page.getByRole("tab", { name: "Basic info" }).click();
+  const strengthTotal = page.getByLabel("Strength base score").locator("xpath=ancestor::label[1]/strong");
+  const dexterityTotal = page.getByLabel("Dexterity base score").locator("xpath=ancestor::label[1]/strong");
+  const originalStrength = Number((await strengthTotal.textContent())?.match(/-?\d+/)?.[0]);
+  const originalDexterity = Number((await dexterityTotal.textContent())?.match(/-?\d+/)?.[0]);
+  await page.getByRole("tab", { name: "Features" }).click();
   await expect(strain).toHaveText("2/2 surge remaining");
   await page.getByRole("button", { name: "Surge a spell — become fatigued" }).click();
   await expect(strain).toHaveText("1/2 surge remaining");
+  await page.getByRole("tab", { name: "Basic info" }).click();
+  await expect(strengthTotal).toContainText(String(originalStrength - 2));
+  await expect(dexterityTotal).toContainText(String(originalDexterity - 2));
+  await page.getByRole("tab", { name: "Features" }).click();
   await page.getByRole("button", { name: "Surge a spell — become exhausted" }).click();
   await expect(strain).toHaveText("0/2 surge remaining");
   await expect(page.getByRole("button", { name: "Surge a spell — become exhausted" })).toBeDisabled();
@@ -171,6 +181,9 @@ test(`tracks Eldritch Font surge strain and recovery on ${journey.name}`, async 
   await expect(reservoir).toHaveText("13/23 point remaining");
   await page.getByRole("button", { name: "Refresh arcanist eldritch surge" }).click();
   await expect(strain).toHaveText("2/2 surge remaining");
+  await page.getByRole("tab", { name: "Basic info" }).click();
+  await expect(strengthTotal).toContainText(String(originalStrength));
+  await expect(dexterityTotal).toContainText(String(originalDexterity));
 });
 }
 

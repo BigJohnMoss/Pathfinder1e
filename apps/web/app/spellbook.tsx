@@ -32,6 +32,7 @@ export function Spellbook({
   spellTraitBonuses = {},
   classId,
   className,
+  casterLevel,
   castingAbilityName,
   slots,
   preparedLimits,
@@ -68,6 +69,7 @@ export function Spellbook({
   spellTraitBonuses?: SpellTraitBonuses;
   classId: string;
   className: string;
+  casterLevel?: number;
   castingAbilityName: string;
   slots: Slot[];
   preparedLimits: PreparedLimit[];
@@ -326,6 +328,7 @@ export function Spellbook({
     <section className="spell-panel">
       <p className="eyebrow">SPELLBOOK</p>
       <h2>Prepared spells</h2>
+      {casterLevel !== undefined && <p><strong>Caster level:</strong> <output aria-label={`${className} caster level`}>{casterLevel}</output></p>}
       <p>
         {className} slots:{" "}
         {slots
