@@ -12,6 +12,7 @@ export type DailyResource = {
 };
 
 const effectTargetLabel = (target: ActiveEffectTarget) => target.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
+const abilityEffectTargets = new Set<ActiveEffectTarget>(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
 
 export function ClassFeatures({ level, className, features, dailyResources = [], onAddEffect }: {
   level: number;
@@ -56,6 +57,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const result = actionResults[action.id];
         const selectedMode = action.modes?.find((mode) => mode.id === actionModes[action.id]) ?? action.modes?.[0];
         const effectTarget = action.activeEffect ? effectTargets[action.id] ?? action.activeEffect.targets[0] : undefined;
+        const effectTargetChoiceLabel = action.activeEffect?.targets.every((target) => abilityEffectTargets.has(target)) ? "Affected ability" : "Affected target";
         const rounds = action.activeEffect ? Math.max(1, Math.min(999, effectRounds[action.id] ?? action.activeEffect.defaultRounds ?? 10)) : 0;
         const effectBonus = action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0;
         const effectDescription = [selectedMode?.summary, action.activeEffect?.description].filter(Boolean).join(" ");
@@ -80,7 +82,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         return <div className="feature-resource-action" key={action.id}>
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
           {Boolean(action.modes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{action.modes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
-          {action.activeEffect && <>{action.activeEffect.targets.length > 1 && <label>Affected target<select aria-label={`${action.label} affected target`} value={effectTarget} onChange={(event) => setEffectTargets((current) => ({ ...current, [action.id]: event.target.value as ActiveEffectTarget }))}>{action.activeEffect.targets.map((target) => <option key={target} value={target}>{effectTargetLabel(target)}</option>)}</select></label>}{action.activeEffect.fixedRounds ? <small>Duration: {rounds} round{rounds === 1 ? "" : "s"}</small> : <label>Rounds<input aria-label={`${action.label} rounds`} type="number" min="1" max="999" value={rounds} onChange={(event) => setEffectRounds((current) => ({ ...current, [action.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label>}</>}
+          {action.activeEffect && <>{action.activeEffect.targets.length > 1 && <label>{effectTargetChoiceLabel}<select aria-label={`${action.label} ${effectTargetChoiceLabel.toLowerCase()}`} value={effectTarget} onChange={(event) => setEffectTargets((current) => ({ ...current, [action.id]: event.target.value as ActiveEffectTarget }))}>{action.activeEffect.targets.map((target) => <option key={target} value={target}>{effectTargetLabel(target)}</option>)}</select></label>}{action.activeEffect.fixedRounds ? <small>Duration: {rounds} round{rounds === 1 ? "" : "s"}</small> : <label>Rounds<input aria-label={`${action.label} rounds`} type="number" min="1" max="999" value={rounds} onChange={(event) => setEffectRounds((current) => ({ ...current, [action.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label>}</>}
           <button type="button" disabled={appliedChanges.length === 0 || unavailable} onClick={activate}>{label}</button>
           <small>{action.summary ?? costs.map(({ cost }) => `Spend ${cost}`).join(" and ")}</small>
           {result && <output aria-label={`${action.label} result`}>{result}</output>}
