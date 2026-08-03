@@ -29,8 +29,8 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Coverage | Count |
 |---|---:|
-| Fully automated | 81 |
-| Partially automated | 1114 |
+| Fully automated | 82 |
+| Partially automated | 1113 |
 | Rules reference only | 0 |
 
 ### Structured automation
@@ -51,12 +51,12 @@ These rule-text signals are multi-label: one archetype can contribute to several
 
 | Candidate subsystem | Partial archetypes |
 |---|---:|
-| Resources and limited uses | 630 |
+| Resources and limited uses | 629 |
 | Companions, mounts, familiars, and eidolons | 240 |
-| Spell lists, slots, and casting | 630 |
-| Selectable progressions and dependent choices | 761 |
-| Combat statistics and proficiencies | 854 |
-| Skills | 652 |
+| Spell lists, slots, and casting | 629 |
+| Selectable progressions and dependent choices | 760 |
+| Combat statistics and proficiencies | 853 |
+| Skills | 651 |
 | Feats | 479 |
 | Narrative or uncategorized effects | 2 |
 

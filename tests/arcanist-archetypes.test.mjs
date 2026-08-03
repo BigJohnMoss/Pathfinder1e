@@ -274,10 +274,12 @@ test("Twilight Sage enforces its mandatory exploit, necromancy focus, and daily 
   assert.equal(twilight.resourceAdjustments.find((resource) => resource.resourceId === "twilightTransfer")?.maximum, 1);
 });
 
-test("Arcane Tinkerer unlocks at 1st level and branches at 7th and 13th", () => {
+test("Arcane Tinkerer automates its construct effects and branches at 7th and 13th", () => {
   const tinkerer = archetypes.find((archetype) => archetype.id === "arcanist-arcane-tinkerer");
   const applied = applyArchetype(arcanist, tinkerer);
-  assert.ok(featuresThroughLevel(applied, 1).some((feature) => feature.id === "arcanist-arcane-tinkerer-manipulate-construct-su-1"));
+  const manipulate = featuresThroughLevel(applied, 1).find((feature) => feature.id === "arcanist-arcane-tinkerer-manipulate-construct-su-1")?.resourceActions?.[0];
+  assert.deepEqual(manipulate?.savingThrow, { label: "Will", ability: "charisma", base: 10, levelDivisor: 2, classId: "arcanist" });
+  assert.deepEqual(manipulate?.activeEffect?.upgrades?.map((upgrade) => upgrade.requiredOptionId), ["arcane-tinkerer-slow-construct", "arcane-tinkerer-helpless-construct"]);
   for (const level of [1, 5, 7, 11, 13]) assert.ok(!applied.features.some((feature) => feature.id === `arcanist-exploit-${level}`));
   const choices = featuresThroughLevel(applied, 13).filter((feature) => feature.optionGroupId?.startsWith("arcane-tinkerer-level-"));
   assert.deepEqual(choices.map((feature) => feature.level), [7, 13]);
@@ -285,6 +287,8 @@ test("Arcane Tinkerer unlocks at 1st level and branches at 7th and 13th", () => 
   const thirteenth = generatedData.optionGroups.find((group) => group.id === "arcane-tinkerer-level-13-choice");
   assert.ok(seventh.options.some((option) => option.id === "arcane-tinkerer-slow-construct"));
   assert.deepEqual(thirteenth.options.find((option) => option.id === "arcane-tinkerer-helpless-construct")?.prerequisites, [{ type: "feature", id: "arcane-tinkerer-slow-construct" }]);
+  assert.deepEqual(applied.features.find((feature) => feature.id === "arcanist-arcane-tinkerer-break-magic-immunity-su-5")?.numericCalculations?.[0]?.baseByLevel, [{ level: 5, value: 15 }, { level: 11, value: 11 }]);
+  assert.equal(tinkerer.mechanicalCoverage, "full");
 });
 
 test("Aeromancer automates Air Mastery and its encounter effects", () => {

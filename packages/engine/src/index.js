@@ -791,6 +791,7 @@ export function normalizeCharacterDraft(
                 "allies",
                 "self",
                 "area",
+                "enemy",
               ].includes(effect.target) &&
               Number.isInteger(effect.bonus) &&
               effect.bonus >= -20 &&
@@ -799,7 +800,7 @@ export function normalizeCharacterDraft(
                 (Number.isInteger(effect.fastHealing) &&
                   effect.fastHealing > 0 &&
                   effect.fastHealing <= 20)) &&
-              (!["self", "area"].includes(effect.target) ||
+              (!["self", "area", "enemy"].includes(effect.target) ||
                 (typeof effect.description === "string" &&
                   effect.description.trim())) &&
               Number.isInteger(effect.roundsRemaining) &&

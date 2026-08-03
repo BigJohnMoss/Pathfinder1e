@@ -2,7 +2,7 @@
   "id": "arcanist-arcane-tinkerer",
   "name": "Arcane Tinkerer",
   "classId": "arcanist",
-  "summary": "Arcane tinkerers use their knowledge and understanding of magic to disrupt or even destroy constructs",
+  "summary": "Arcane tinkerers use their knowledge and understanding of magic to disrupt or even destroy constructs.",
   "replacesText": "1st, 5th, and 11th-level Arcanist Exploits; optionally 7th and 13th-level Arcanist Exploits",
   "replacements": [
     {
@@ -19,7 +19,28 @@
           "name": "Manipulate Construct (Su)",
           "level": 1,
           "type": "archetype",
-          "resourceActions": [{"id":"manipulate-construct","label":"Manipulate Construct","resourceId":"arcaneReservoir","cost":1,"summary":"Spend 1 reservoir point to use the currently unlocked Manipulate Construct effect."}],
+          "resourceActions": [
+            {
+              "id": "manipulate-construct",
+              "label": "Manipulate Construct",
+              "resourceId": "arcaneReservoir",
+              "cost": 1,
+              "savingThrow": {"label":"Will","ability":"charisma","base":10,"levelDivisor":2,"classId":"arcanist"},
+              "activeEffect": {
+                "name": "Manipulate Construct: attack and damage penalty",
+                "targets": ["enemy"],
+                "bonus": -1,
+                "description": "The targeted construct takes a –1 penalty on attack and damage rolls.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "upgrades": [
+                  {"requiredOptionId":"arcane-tinkerer-slow-construct","name":"Manipulate Construct: slow","bonus":0,"description":"The targeted construct is affected by slow."},
+                  {"requiredOptionId":"arcane-tinkerer-helpless-construct","name":"Manipulate Construct: helpless","bonus":0,"description":"The targeted construct becomes helpless."}
+                ]
+              },
+              "summary": "As a standard action, spend 1 reservoir point to affect one construct for 1 round; a Will save negates the effect."
+            }
+          ],
           "summary": "An arcane tinkerer can turn the animating magic of a construct against itself. As a standard action, she can expend 1 point from her arcane reservoir to impose a –1 penalty on a single construct’s attack and damage rolls for 1 round. The target can attempt a Will save to negate this effect (DC = 10 + half the arcane tinkerer’s level + the arcane tinkerer’s Charisma modifier). At 7th level, instead of gaining an arcanist exploit, an arcane tinkerer can improve her manipulate construct ability to instead affect a construct with slow for 1 round. At 13th level, if the arcane tinkerer has previously improved this ability, instead of gaining an arcanist exploit, she can improve this ability again to instead cause a construct to become helpless for 1 round. This replaces the arcanist exploit gained at 1st level."
         },
         {
@@ -37,6 +58,20 @@
           "name": "Break Magic Immunity (Su)",
           "level": 5,
           "type": "archetype",
+          "numericCalculations": [
+            {
+              "id": "break-magic-immunity-spell-resistance",
+              "label": "Break Magic Immunity",
+              "inputLabel": "Target construct CR",
+              "inputMinimum": 0,
+              "inputMaximum": 40,
+              "inputDefault": 5,
+              "outputLabel": "Effective spell resistance",
+              "baseByLevel": [{"level":5,"value":15},{"level":11,"value":11}],
+              "classId": "arcanist",
+              "summary": "Use this spell resistance in place of the construct’s normal immunity to magic when you target it with a spell."
+            }
+          ],
           "summary": "At 5th level, an arcane tinkerer can overcome a construct’s immunity to magic. When targeting a construct with a spell, the construct is instead treated as if it has spell resistance equal to 15 + the construct’s CR. At 11th level, a construct is instead treated as if it has spell resistance equal to 11 + the construct’s CR. This replaces the arcanist exploits gained at 5th and 11th level."
         },
         {
@@ -53,12 +88,12 @@
     }
   ],
   "source": {
-    "title": "Archives of Nethys",
-    "page": null,
+    "title": "Construct Handbook",
+    "page": 10,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Arcane%20Tinkerer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Manipulate Construct unlocks at 1st level; its reservoir cost and mutually exclusive exploit-or-improvement choices at 7th and 13th levels are automated. Saving throws, targets, and Break Magic Immunity remain descriptive."
+    "Manipulate Construct enforces its reservoir cost, calculates its Charisma-based Will save DC, applies the selected base, slow, or helpless effect for 1 round, and persists the tracked construct condition. Break Magic Immunity calculates effective spell resistance from target CR at both scaling thresholds."
   ]
 }

@@ -4151,6 +4151,9 @@ export default function Home() {
                 }
                 features={progression.features}
                 dailyResources={classDailyResources}
+                abilityModifiers={combat.abilityModifiers}
+                classLevels={classLevelMap}
+                selectedOptionIds={Object.values(selectedOptions)}
                 onAddEffect={addActiveEffect}
               />
               <FavoredClassBenefits allocations={favoredClassAlternateBonuses} />
