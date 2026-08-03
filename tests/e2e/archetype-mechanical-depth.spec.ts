@@ -28,6 +28,39 @@ test("spends and enforces Aeromancer feature-action reservoir costs", async ({ p
 });
 
 for (const journey of journeys) {
+test(`enforces Twilight Sage daily transfer and necromancy preparation on ${journey.name}`, async ({ page }) => {
+  await page.setViewportSize(journey.viewport);
+  await page.goto("/");
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await openCharacterPanel(page, journey.mobile);
+  await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+  await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-twilight-sage");
+  await page.locator('input[type="number"][min="1"][max="20"]').fill("11");
+  if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+  await page.getByRole("tab", { name: "Features" }).click();
+  await expect(page.getByText("Granted automatically")).toBeVisible();
+  const reservoir = page.getByLabel("Arcane Reservoir remaining");
+  const transfer = page.getByLabel("Arcanist Twilight Transfer remaining");
+  await expect(transfer).toHaveText("1/1 use remaining");
+  await page.getByRole("button", { name: "Use Twilight Transfer" }).click();
+  await expect(reservoir).toHaveText("2/14 point remaining");
+  await expect(transfer).toHaveText("0/1 use remaining");
+  await expect(page.getByRole("button", { name: "Use Twilight Transfer" })).toBeDisabled();
+
+  await page.getByRole("tab", { name: "Spells" }).click();
+  await expect(page.getByText(/Required preparation: at least one necromancy spell/)).toBeVisible();
+  await page.getByLabel("Search spells").fill("Magic Missile");
+  await page.getByRole("button", { name: "Add Magic Missile" }).click();
+  await expect(page.getByRole("button", { name: "Cast Magic Missile", exact: true })).toBeDisabled();
+  await page.getByLabel("Search spells").fill("Ray of Enfeeblement");
+  await page.getByRole("button", { name: "Add Ray of Enfeeblement" }).click();
+  await page.getByLabel("Search spells").fill("Magic Missile");
+  await expect(page.getByRole("button", { name: "Cast Magic Missile", exact: true })).toBeEnabled();
+});
+}
+
+for (const journey of journeys) {
   test(`selects and restores inferred restricted archetype feats on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

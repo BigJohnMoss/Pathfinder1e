@@ -7,7 +7,8 @@ const spells = [
   { id: "mage-armor", school: "conjuration", levelByClass: { wizard: 1 } },
   { id: "lissalan-snake-sigil", school: "multiple", schools: ["abjuration", "enchantment"], levelByClass: { wizard: 1 } },
   { id: "detect-magic", school: "divination", levelByClass: { wizard: 0 } },
-  { id: "shield", school: "abjuration", levelByClass: { wizard: 1 } }
+  { id: "shield", school: "abjuration", levelByClass: { wizard: 1 } },
+  { id: "ray-of-enfeeblement", school: "necromancy", levelByClass: { wizard: 1 } }
 ];
 
 const limits = [{ level: 0, count: 3 }, { level: 1, count: 2 }];
@@ -63,5 +64,16 @@ test("restricted bonus slots accept only matching spells beyond the normal limit
   assert.deepEqual(
     normalizePreparedSpellsWithOpposition(["mage-armor", "magic-missile"], spells, "wizard", limits, [], ["mage-armor"], elementalBonus),
     ["mage-armor", "magic-missile"],
+  );
+});
+
+test("required-school preparation reserves capacity until a matching spell is prepared", () => {
+  assert.deepEqual(
+    normalizePreparedSpellsWithOpposition(["magic-missile", "shield"], spells, "wizard", limits, [], [], null, "necromancy"),
+    ["magic-missile"],
+  );
+  assert.deepEqual(
+    normalizePreparedSpellsWithOpposition(["magic-missile", "ray-of-enfeeblement"], spells, "wizard", limits, [], [], null, "necromancy"),
+    ["magic-missile", "ray-of-enfeeblement"],
   );
 });

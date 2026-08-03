@@ -194,7 +194,21 @@ test("reservoir-powered archetype features expose enforceable action costs", () 
     const archetype = archetypes.find((candidate) => candidate.id === archetypeId);
     const actual = archetype.replacements.flatMap((replacement) => replacement.features)
       .flatMap((feature) => feature.resourceActions ?? [])
-      .map((action) => [action.id, action.cost]);
+      .map((action) => [action.id, action.cost ?? action.costs?.find((cost) => cost.resourceId === "arcaneReservoir")?.cost]);
     assert.deepEqual(actual, actions);
   }
+});
+
+test("Twilight Sage enforces its mandatory exploit, necromancy focus, and daily transfer", () => {
+  const twilight = archetypes.find((archetype) => archetype.id === "arcanist-twilight-sage");
+  const features = featuresThroughLevel(applyArchetype(arcanist, twilight), 20);
+  const barrier = features.find((feature) => feature.id === "arcanist-twilight-sage-twilight-barrier-ex-1");
+  const transfer = features.find((feature) => feature.id === "arcanist-twilight-sage-twilight-transfer-su-11");
+  assert.equal(barrier?.optionGroupId, "twilight-sage-mandatory-exploit");
+  assert.equal(barrier?.grantsAllOptions, true);
+  assert.deepEqual(transfer?.resourceActions?.[0].costs, [
+    { resourceId: "arcaneReservoir", cost: 1 },
+    { resourceId: "twilightTransfer", cost: 1 },
+  ]);
+  assert.equal(twilight.resourceAdjustments.find((resource) => resource.resourceId === "twilightTransfer")?.maximum, 1);
 });

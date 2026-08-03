@@ -260,6 +260,10 @@ const elementalMasterPreparationFromOptions = (
     label: `${element.name} bonus slot`,
   };
 };
+const requiredPreparedSchool = (characterClass: (typeof classes)[number] | undefined) =>
+  characterClass?.features.some((feature) => feature.id === "arcanist-twilight-sage-necromantic-focus-ex-1")
+    ? "necromancy"
+    : undefined;
 const bloodlineFromOptions = (
   selectedClassId: string,
   options: Record<string, string>,
@@ -2462,6 +2466,7 @@ export default function Home() {
           oppositionSchoolIds,
           elementalMasterPreparation?.oppositionSpellIds ?? [],
           elementalMasterPreparation,
+          requiredPreparedSchool(characterClass),
         );
   const updateSelectedSpells = (spellIds: string[]) =>
     setSelectedSpellIds(normalizeSelectedSpells(spellIds));
@@ -2484,6 +2489,7 @@ export default function Home() {
             secondaryOppositionSchoolIds,
             secondaryElementalMasterPreparation?.oppositionSpellIds ?? [],
             secondaryElementalMasterPreparation,
+            requiredPreparedSchool(secondaryCharacterClass),
           );
   const updateSecondarySelectedSpells = (spellIds: string[]) =>
     setSecondarySelectedSpellIds(normalizeSecondarySelectedSpells(spellIds));
@@ -2633,6 +2639,7 @@ export default function Home() {
       oppositionSpellIds={elementalMasterPreparation?.oppositionSpellIds}
       restrictedBonus={elementalMasterPreparation}
       onDemandSpellCosts={primaryOnDemandSpellCosts}
+      requiredPreparedSchool={requiredPreparedSchool(characterClass)}
     />
   ) : null;
   const secondarySpellbook =
@@ -2694,6 +2701,7 @@ export default function Home() {
         oppositionSpellIds={secondaryElementalMasterPreparation?.oppositionSpellIds}
         restrictedBonus={secondaryElementalMasterPreparation}
         onDemandSpellCosts={secondaryOnDemandSpellCosts}
+        requiredPreparedSchool={requiredPreparedSchool(secondaryCharacterClass)}
       />
     ) : null;
   const extraActiveClassLevel = additionalClassLevels
@@ -3158,6 +3166,9 @@ export default function Home() {
           draftClass.spellListClassId ?? draftClass.id,
           draftPreparedCasting?.prepared ?? [],
           draftOppositionSchoolIds,
+          [],
+          null,
+          requiredPreparedSchool(draftClass),
         );
     const draftSecondaryAbility =
       draftSecondaryClass?.spellcasting &&
@@ -3301,6 +3312,9 @@ export default function Home() {
               draftSecondaryClass.id,
               draft.selectedOptions,
             ),
+            [],
+            null,
+            requiredPreparedSchool(draftSecondaryClass),
           );
     const draftTraitIds = normalizeSelectedTraits(
       draft.selectedTraitIds,

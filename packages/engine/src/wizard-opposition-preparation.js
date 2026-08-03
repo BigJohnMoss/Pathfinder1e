@@ -27,7 +27,7 @@ export function preparedSpellSlotUsage(preparedSpellIds, spells, classId, opposi
   }, {});
 }
 
-export function normalizePreparedSpellsWithOpposition(preparedSpellIds, spells, classId, preparedLimits, oppositionSchoolIds = [], oppositionSpellIds = [], restrictedBonus = null) {
+export function normalizePreparedSpellsWithOpposition(preparedSpellIds, spells, classId, preparedLimits, oppositionSchoolIds = [], oppositionSpellIds = [], restrictedBonus = null, requiredSchool = null) {
   if (!Array.isArray(preparedSpellIds) || !Array.isArray(spells) || typeof classId !== "string" || !Array.isArray(preparedLimits)) return [];
   const limits = new Map(preparedLimits.map((entry) => [entry.level, entry.count]));
   const available = new Map(spells.filter((spell) => spell.levelByClass?.[classId] !== undefined).map((spell) => [spell.id, spell]));
@@ -35,7 +35,7 @@ export function normalizePreparedSpellsWithOpposition(preparedSpellIds, spells, 
   const ineligibleUsageByLevel = new Map();
   const eligibleIds = new Set(restrictedBonus?.eligibleSpellIds ?? []);
   const bonusPerLevel = Math.max(0, Number(restrictedBonus?.countPerLevel) || 0);
-  return preparedSpellIds.filter((id) => {
+  const normalized = preparedSpellIds.filter((id) => {
     const spell = available.get(id);
     if (!spell) return false;
     const level = spell.levelByClass[classId];
@@ -49,4 +49,19 @@ export function normalizePreparedSpellsWithOpposition(preparedSpellIds, spells, 
     if (!eligible) ineligibleUsageByLevel.set(level, ineligibleUsed + cost);
     return true;
   });
+  if (!requiredSchool) return normalized;
+  for (const [level, baseLimit] of limits) {
+    if (baseLimit <= 0) continue;
+    const atLevel = () => normalized.map((id, index) => ({ id, index, spell: available.get(id) }))
+      .filter((entry) => entry.spell?.levelByClass?.[classId] === level);
+    if (atLevel().some((entry) => spellSchools(entry.spell).includes(requiredSchool))) continue;
+    const baseUsage = () => atLevel().filter((entry) => !eligibleIds.has(entry.id))
+      .reduce((total, entry) => total + spellPreparationCost(entry.spell, oppositionSchoolIds, oppositionSpellIds), 0);
+    while (baseUsage() >= baseLimit) {
+      const removable = atLevel().filter((entry) => !eligibleIds.has(entry.id)).at(-1);
+      if (!removable) break;
+      normalized.splice(removable.index, 1);
+    }
+  }
+  return normalized;
 }

@@ -9,7 +9,7 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 7 |
-| Option groups | 106 |
+| Option groups | 107 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2760 |
@@ -37,7 +37,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Reusable subsystem | Archetypes |
 |---|---:|
-| Resources and limited uses | 27 |
+| Resources and limited uses | 28 |
 | Companions and effective levels | 34 |
 | Spell lists, slots, and casting | 49 |
 | Class skills and skill-rank progressions | 55 |
