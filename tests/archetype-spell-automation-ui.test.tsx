@@ -20,6 +20,10 @@ const aeromancer = JSON.parse(
   readFileSync(new URL("../packages/data/src/archetypes/arcanist-aeromancer.json", import.meta.url), "utf8"),
 ) as CharacterArchetype;
 const appliedAeromancer = applyArchetype(arcanist, aeromancer);
+const bladeAdept = JSON.parse(
+  readFileSync(new URL("../packages/data/src/archetypes/arcanist-blade-adept.json", import.meta.url), "utf8"),
+) as CharacterArchetype;
+const appliedBladeAdept = applyArchetype(arcanist, bladeAdept);
 
 test("Brown-Fur spell automation unlocks and improves at the correct levels", () => {
   assert.equal(classSpellAutomation(applied, 8), undefined);
@@ -86,4 +90,17 @@ test("Aeromancer Air Mastery resolves its level-scaled casting bonuses", () => {
     saveDcBonus: 3,
   });
   assert.equal(classSpellAutomation(appliedAeromancer, 20)?.descriptorReservoirBoost?.casterLevelBonus, 6);
+});
+
+test("Blade Adept enables touch Spellstrike and optionally Close Range rays", () => {
+  assert.equal(classSpellAutomation(appliedBladeAdept, 19), undefined);
+  assert.deepEqual(classSpellAutomation(appliedBladeAdept, 19, ["blade-adept-spell-strike"]), {
+    spellstrike: { label: "Spellstrike", closeRange: false },
+  });
+  assert.deepEqual(classSpellAutomation(appliedBladeAdept, 19, ["blade-adept-spell-strike", "blade-adept-magus-arcana-close-range"]), {
+    spellstrike: { label: "Spellstrike", closeRange: true },
+  });
+  assert.deepEqual(classSpellAutomation(appliedBladeAdept, 19, ["blade-adept-magus-arcana-critical-strike"]), {
+    criticalStrike: { label: "Critical Strike" },
+  });
 });

@@ -10,14 +10,11 @@
     "source": {"title":"Advanced Class Guide","page":76,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Blade%20Adept"}
   },
   "options": [
-    {"id":"blade-adept-bond-dagger","name":"Dagger","benefit":"Bond with a dagger, a one-handed piercing or slashing melee weapon."},
-    {"id":"blade-adept-bond-handaxe","name":"Handaxe","benefit":"Bond with a handaxe, a one-handed slashing melee weapon."},
-    {"id":"blade-adept-bond-kukri","name":"Kukri","benefit":"Bond with a kukri, a one-handed slashing melee weapon."},
+    {"id":"blade-adept-bond-battleaxe","name":"Battleaxe","benefit":"Bond with a battleaxe, a one-handed slashing melee weapon."},
     {"id":"blade-adept-bond-longsword","name":"Longsword","benefit":"Bond with a longsword, a one-handed slashing melee weapon."},
     {"id":"blade-adept-bond-rapier","name":"Rapier","benefit":"Bond with a rapier, a one-handed piercing melee weapon."},
     {"id":"blade-adept-bond-scimitar","name":"Scimitar","benefit":"Bond with a scimitar, a one-handed slashing melee weapon."},
-    {"id":"blade-adept-bond-shortsword","name":"Shortsword","benefit":"Bond with a shortsword, a one-handed piercing melee weapon."},
-    {"id":"blade-adept-bond-sickle","name":"Sickle","benefit":"Bond with a sickle, a one-handed slashing melee weapon."},
+    {"id":"blade-adept-bond-shortspear","name":"Shortspear","benefit":"Bond with a shortspear, a one-handed piercing melee weapon."},
     {"id":"blade-adept-bond-other","name":"Other legal bonded blade","choice":{"key":"weapon","label":"One-handed piercing or slashing melee weapon","allowCustom":true},"benefit":"Enter another legal one-handed piercing or slashing melee weapon from an allowed source."}
   ]
 }

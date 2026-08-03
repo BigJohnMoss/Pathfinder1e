@@ -56,11 +56,11 @@ export const equipmentArmorBonus = (inventory: InventoryEntry[]) => equipmentCom
 
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
 
-export const equippedWeaponAttacks = (inventory: InventoryEntry[], baseAttackBonus: number, strengthModifier: number, dexterityModifier: number, weaponBonuses: Record<string, { attack: number; damage: number }> = {}): EquipmentAttack[] => inventory.flatMap((entry) => {
+export const equippedWeaponAttacks = (inventory: InventoryEntry[], baseAttackBonus: number, strengthModifier: number, dexterityModifier: number, weaponBonuses: Record<string, { attack: number; damage: number }> = {}, minimumWeaponEnhancements: Record<string, number> = {}): EquipmentAttack[] => inventory.flatMap((entry) => {
   const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
   if (!item?.damage || !entry.equipped) return [];
   const featBonus = weaponBonuses[item.id] ?? weaponBonuses[item.name.toLowerCase()] ?? { attack: 0, damage: 0 };
-  const enhancement = entry.enhancementBonus ?? 0;
+  const enhancement = Math.max(entry.enhancementBonus ?? 0, minimumWeaponEnhancements[item.id] ?? minimumWeaponEnhancements[item.name.toLowerCase()] ?? 0);
   return [{
     id: item.id,
     name: `${item.name}${enhancement > 0 ? ` +${enhancement}` : ""}`,
@@ -72,12 +72,13 @@ export const equippedWeaponAttacks = (inventory: InventoryEntry[], baseAttackBon
   }];
 });
 
-export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, baseAttackBonus, weaponBonuses = {}, inventory, coins, onInventoryChange, onCoinsChange }: {
+export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, baseAttackBonus, weaponBonuses = {}, minimumWeaponEnhancements = {}, inventory, coins, onInventoryChange, onCoinsChange }: {
   strength: number;
   strengthModifier: number;
   dexterityModifier: number;
   baseAttackBonus: number;
   weaponBonuses?: Record<string, { attack: number; damage: number }>;
+  minimumWeaponEnhancements?: Record<string, number>;
   inventory: InventoryEntry[];
   coins: CoinPurse;
   onInventoryChange: (inventory: InventoryEntry[]) => void;
@@ -124,7 +125,7 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
       if (!item) return null;
       const equippable = item.category !== "gear";
       const featBonus = weaponBonuses[item.id] ?? weaponBonuses[item.name.toLowerCase()] ?? { attack: 0, damage: 0 };
-      const enhancement = entry.enhancementBonus ?? 0;
+      const enhancement = Math.max(entry.enhancementBonus ?? 0, minimumWeaponEnhancements[item.id] ?? minimumWeaponEnhancements[item.name.toLowerCase()] ?? 0);
       const attack = item.damage ? baseAttackBonus + (item.ranged ? dexterityModifier : strengthModifier) + featBonus.attack + enhancement : null;
       const damageBonus = (item.ranged ? 0 : strengthModifier) + featBonus.damage + enhancement;
       const enhanceable = ["weapon", "armor", "shield"].includes(item.category);

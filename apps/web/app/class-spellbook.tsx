@@ -59,6 +59,9 @@ export function ClassSpellbook({
   onSlotUsesChange,
   reservoirPoints,
   onReservoirPointsChange,
+  criticalStrikeResource,
+  bondedObjectCastResource,
+  onRefreshClassResources,
   onAddEffect,
 }: {
   characterClass: CharacterClass;
@@ -73,6 +76,9 @@ export function ClassSpellbook({
   onSlotUsesChange: (uses: Record<number, number>) => void;
   reservoirPoints: number;
   onReservoirPointsChange: (points: number) => void;
+  criticalStrikeResource?: { maximum: number | null; used: number; onUsedChange: (used: number) => void };
+  bondedObjectCastResource?: { label: string; maximum: number | null; used: number; onUsedChange: (used: number) => void };
+  onRefreshClassResources?: () => void;
   onAddEffect?: (effect: ActiveEffect) => void;
 }) {
   const spellcasting = characterClass.spellcasting;
@@ -173,7 +179,8 @@ export function ClassSpellbook({
   const refreshDay = () => {
     onSlotUsesChange({});
     if (reservoir) onReservoirPointsChange(reservoir.dailyRefresh);
+    onRefreshClassResources?.();
   };
   if (spontaneousCasting) return <SpontaneousSpellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={spontaneousCasting.slots} knownLimits={spontaneousCasting.known} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay} />;
-  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} onDemandSpellCosts={onDemandSpellCosts} requiredPreparedSchool={requiredSchool} spellAutomation={classSpellAutomation(characterClass, classLevel, Object.values(selectedOptions))} abilityModifiers={calculateAbilityModifiers(abilities)} onAddEffect={onAddEffect} />;
+  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} onDemandSpellCosts={onDemandSpellCosts} requiredPreparedSchool={requiredSchool} spellAutomation={classSpellAutomation(characterClass, classLevel, Object.values(selectedOptions))} criticalStrikeResource={criticalStrikeResource} bondedObjectCastResource={bondedObjectCastResource} abilityModifiers={calculateAbilityModifiers(abilities)} onAddEffect={onAddEffect} />;
 }

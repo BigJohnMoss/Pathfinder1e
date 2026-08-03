@@ -12,6 +12,9 @@ const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "fortitude", name: "Fortitude" },
   { id: "reflex", name: "Reflex" },
   { id: "will", name: "Will" },
+  { id: "attackRolls", name: "Attack rolls" },
+  { id: "damageRolls", name: "Damage rolls" },
+  { id: "spellResistance", name: "Spell resistance" },
   { id: "strength", name: "Strength" },
   { id: "dexterity", name: "Dexterity" },
   { id: "constitution", name: "Constitution" },
@@ -39,6 +42,13 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   onTemporaryHitPointsChange: (value: number) => void;
   onEffectsChange: (effects: ActiveEffect[]) => void;
 }) {
+  const appliesToAttack = (effect: ActiveEffect, attack: EquipmentAttack) => !effect.weaponIds?.length || effect.weaponIds.includes(attack.id);
+  const activeAttacks = attacks.map((attack) => {
+    const attackRollBonus = effects.filter((effect) => effect.target === "attackRolls" && appliesToAttack(effect, attack)).reduce((total, effect) => total + effect.bonus, 0);
+    const damageEffects = effects.filter((effect) => effect.target === "damageRolls" && appliesToAttack(effect, attack));
+    const damageRollBonus = damageEffects.reduce((total, effect) => total + effect.bonus, 0);
+    return { ...attack, attack: attack.attack + attackRollBonus, damageBonus: attack.damageBonus + damageRollBonus, damageType: damageEffects.findLast((effect) => effect.damageType)?.damageType };
+  });
   const [name, setName] = useState("");
   const [target, setTarget] = useState<ActiveEffectTarget>("armorClass");
   const [bonus, setBonus] = useState(1);
@@ -51,10 +61,13 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [customSides, setCustomSides] = useState(20);
   const [customModifier, setCustomModifier] = useState(0);
   const [targetArmorClass, setTargetArmorClass] = useState(10);
+  const [effectCheckDcs, setEffectCheckDcs] = useState<Record<string, number>>({});
   const recordRoll = (roll: Omit<RollHistory, "id">) =>
     setRollHistory(current => [{ ...roll, id: globalThis.crypto?.randomUUID?.() ?? `roll-${Date.now()}-${Math.random()}` }, ...current].slice(0, 20));
   const advanceRound = () => {
     setCombatRound((current) => current + 1);
+    const expiringTemporaryHitPoints = effects.filter((effect) => effect.roundsRemaining <= 1 && effect.temporaryHitPointsGranted).reduce((maximum, effect) => Math.max(maximum, effect.temporaryHitPointsGranted ?? 0), 0);
+    if (expiringTemporaryHitPoints > 0) onTemporaryHitPointsChange(Math.max(0, temporaryHitPoints - Math.min(temporaryHitPoints, expiringTemporaryHitPoints)));
     onEffectsChange(effects.flatMap(effect => effect.roundsRemaining > 1 ? [{ ...effect, roundsRemaining: effect.roundsRemaining - 1 }] : []));
   };
   const takeDamage = () => {
@@ -101,6 +114,14 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     const result = rollDice(customCount, customSides, customModifier);
     recordRoll({ label: "Custom roll", formula: `${customCount}d${customSides}${customModifier ? ` ${customModifier >= 0 ? "+" : "−"} ${Math.abs(customModifier)}` : ""}`, rolls: result.rolls, total: result.total });
   };
+  const resolveEffectCheck = (effect: ActiveEffect) => {
+    if (!effect.d20Check) return;
+    const targetDc = Math.max(1, Math.min(999, effectCheckDcs[effect.id] ?? effect.d20Check.targetDc));
+    const result = rollD20Check(effect.d20Check.modifier);
+    const success = result.total >= targetDc;
+    recordRoll({ label: effect.d20Check.label, formula: `1d20 ${effect.d20Check.modifier >= 0 ? "+" : "−"} ${Math.abs(effect.d20Check.modifier)} · ${success ? "success" : "failure"} against DC ${targetDc}`, rolls: result.rolls, total: result.total, outcome: result.outcome, verdict: success ? `Dispel check succeeds${effect.d20Check.maximumSpellLevel ? ` against eligible spells of level ${effect.d20Check.maximumSpellLevel} or lower` : ""}.` : "Dispel check fails." });
+    onEffectsChange(effects.filter((item) => item.id !== effect.id));
+  };
   const addEffect = () => {
     if (!name.trim()) return;
     onEffectsChange([...effects, { id: globalThis.crypto?.randomUUID?.() ?? `effect-${Date.now()}`, name: name.trim(), target, bonus, roundsRemaining: rounds }]);
@@ -126,8 +147,8 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     </div>
     <section className="combat-attacks" aria-labelledby="combat-attacks-heading">
       <div className="combat-attacks-heading"><div><h4 id="combat-attacks-heading">Equipped attacks</h4><p>Attack values include abilities, enhancement bonuses, and supported feat modifiers.</p></div><label>Target AC<input aria-label="Target Armor Class" type="number" min="1" max="999" value={targetArmorClass} onChange={event => setTargetArmorClass(Math.max(1, Math.min(999, Number(event.target.value) || 1)))} /></label></div>
-      {attacks.length === 0 ? <p className="hint">Equip a weapon in Inventory to add it here.</p> : <div>{attacks.map((attack) => <article key={attack.id}>
-        <div><strong>{attack.name}</strong><span>Attack {attack.attack >= 0 ? "+" : ""}{attack.attack} · Damage {attack.damage}{attack.damageBonus ? ` ${attack.damageBonus >= 0 ? "+" : ""}${attack.damageBonus}` : ""}</span><small>Critical {attack.critical}{attack.range ? ` · Range ${attack.range} ft.` : ""}</small></div>
+      {activeAttacks.length === 0 ? <p className="hint">Equip a weapon in Inventory to add it here.</p> : <div>{activeAttacks.map((attack) => <article key={attack.id}>
+        <div><strong>{attack.name}</strong><span>Attack {attack.attack >= 0 ? "+" : ""}{attack.attack} · Damage {attack.damage}{attack.damageBonus ? ` ${attack.damageBonus >= 0 ? "+" : ""}${attack.damageBonus}` : ""}{attack.damageType ? ` ${attack.damageType}` : ""}</span><small>Critical {attack.critical}{attack.range ? ` · Range ${attack.range} ft.` : ""}</small></div>
         <div className="attack-roll-actions"><button type="button" onClick={() => rollAttack(attack)}>Roll {attack.name} attack</button><button type="button" className="secondary-button" onClick={() => rollDamage(attack)}>Roll {attack.name} damage</button></div>
       </article>)}</div>}
     </section>
@@ -158,6 +179,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     </div>
     {effects.length > 0 ? <ul className="active-effect-list">{effects.map(effect => <li key={effect.id}>
       <div><strong>{effect.name}</strong><span>{effect.description ?? `${effect.bonus >= 0 ? "+" : ""}${effect.bonus} ${effectTargetName(effect.target)}`} · {effect.roundsRemaining} round{effect.roundsRemaining === 1 ? "" : "s"}</span></div>
+      {effect.d20Check && <div className="effect-check"><label>Target DC<input aria-label={`${effect.name} target DC`} type="number" min="1" max="999" value={effectCheckDcs[effect.id] ?? effect.d20Check.targetDc} onChange={(event) => setEffectCheckDcs((current) => ({ ...current, [effect.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label><button type="button" onClick={() => resolveEffectCheck(effect)}>Roll {effect.d20Check.label}</button></div>}
       <button type="button" aria-label={`Remove ${effect.name}`} onClick={() => onEffectsChange(effects.filter(item => item.id !== effect.id))}>Remove</button>
     </li>)}</ul> : <p className="hint">No temporary effects are active.</p>}
   </section>;

@@ -71,22 +71,26 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
   }
 }
 
-export function applyArchetypeResourceAdjustments(maximums, archetypes, level, abilityModifiers = {}) {
+export function applyArchetypeResourceAdjustments(maximums, archetypes, level, abilityModifiers = {}, context = {}) {
   const classLevel = boundedLevel(level);
   return (archetypes ?? []).flatMap((archetype) => archetype?.resourceAdjustments?.length ? archetype.resourceAdjustments : inferArchetypeResourceAdjustments(archetype)).reduce((current, adjustment) => {
-    if (!adjustment?.resourceId || classLevel < (adjustment.minimumLevel ?? 1)) return current;
+    if (!adjustment?.resourceId || classLevel < (adjustment.minimumLevel ?? 1) || (adjustment.requiredOptionId && !context.selectedOptionIds?.includes(adjustment.requiredOptionId))) return current;
+    const progressionLevel = adjustment.advancementOptionId && context.selectedOptionIds?.includes(adjustment.advancementOptionId)
+      ? boundedLevel(context.casterLevel ?? classLevel)
+      : classLevel;
     const interval = Math.max(1, Math.trunc(adjustment.interval ?? 1));
-    const intervals = Math.floor((classLevel - (adjustment.minimumLevel ?? 1)) / interval);
+    const intervals = Math.floor((progressionLevel - (adjustment.minimumLevel ?? 1)) / interval);
     const abilityBonus = adjustment.abilityModifier
       ? nonNegativeModifier(abilityModifiers[adjustment.abilityModifier]) * (adjustment.abilityMultiplier ?? 1)
       : 0;
+    const tableMaximum = adjustment.maximumByLevel?.filter(entry => entry.level <= progressionLevel).sort((left, right) => left.level - right.level).at(-1)?.maximum;
     const calculated = Math.max(
       adjustment.minimum ?? 0,
       Math.min(
         adjustment.maximum ?? Number.MAX_SAFE_INTEGER,
-        adjustment.base +
-          (adjustment.levelDivisor ? Math.floor(classLevel / adjustment.levelDivisor) : adjustment.levelMultiplier ? classLevel * adjustment.levelMultiplier : intervals * (adjustment.perInterval ?? 0)) +
-          abilityBonus,
+        tableMaximum ?? (adjustment.base +
+          (adjustment.levelDivisor ? Math.floor(progressionLevel / adjustment.levelDivisor) : adjustment.levelMultiplier ? progressionLevel * adjustment.levelMultiplier : intervals * (adjustment.perInterval ?? 0)) +
+          abilityBonus),
       ),
     );
     const previous = current[adjustment.resourceId] ?? 0;
@@ -105,10 +109,10 @@ export function normalizeClassResourceUses(uses, maximums) {
   }));
 }
 
-export function normalizeClassResourcesByClass(usesByClass, classLevels, abilityModifiers = {}, archetypesByClass = {}) {
+export function normalizeClassResourcesByClass(usesByClass, classLevels, abilityModifiers = {}, archetypesByClass = {}, contextsByClass = {}) {
   if (!usesByClass || typeof usesByClass !== "object" || Array.isArray(usesByClass)) return {};
   return Object.fromEntries(classLevels.flatMap(({ classId, level }) => {
-    const maximums = applyArchetypeResourceAdjustments(apgClassResourceMaximums(classId, level, abilityModifiers), archetypesByClass[classId], level, abilityModifiers);
+    const maximums = applyArchetypeResourceAdjustments(apgClassResourceMaximums(classId, level, abilityModifiers), archetypesByClass[classId], level, abilityModifiers, contextsByClass[classId]);
     return Object.keys(maximums).length > 0
       ? [[classId, normalizeClassResourceUses(usesByClass[classId], maximums)]]
       : [];

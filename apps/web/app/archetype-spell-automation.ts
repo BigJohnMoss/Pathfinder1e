@@ -1,6 +1,11 @@
 import type { AbilityName, CharacterClass, SpellDescriptor } from "../../../packages/types/src/index.js";
 
 export type PreparedSpellAutomation = {
+  spellstrike?: {
+    label: string;
+    closeRange: boolean;
+  };
+  criticalStrike?: { label: string };
   sharePersonalRange?: {
     label: string;
     school: string;
@@ -68,9 +73,13 @@ export function classSpellAutomation(
     (feature) => feature.spellAutomation?.descriptorReservoirBoost,
   );
   const descriptorBoost = descriptorBoostFeature?.spellAutomation?.descriptorReservoirBoost;
-  if (!share && !extend && !fastHealing && !descriptorBoost) return undefined;
+  const spellstrike = selectedOptionIds.includes("blade-adept-spell-strike");
+  const criticalStrike = selectedOptionIds.includes("blade-adept-magus-arcana-critical-strike");
+  if (!share && !extend && !fastHealing && !descriptorBoost && !spellstrike && !criticalStrike) return undefined;
 
   return {
+    ...(spellstrike ? { spellstrike: { label: "Spellstrike", closeRange: selectedOptionIds.includes("blade-adept-magus-arcana-close-range") } } : {}),
+    ...(criticalStrike ? { criticalStrike: { label: "Critical Strike" } } : {}),
     ...(share
       ? { sharePersonalRange: {
           label: shareFeature!.name.replace(/\s*\([^)]*\)\s*$/, ""),

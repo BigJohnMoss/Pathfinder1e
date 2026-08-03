@@ -107,6 +107,7 @@ export interface CharacterDraftV1 {
 export type CharacterDraft = CharacterDraftV1;
 export type ActiveEffectTarget =
   | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
+  | "attackRolls" | "damageRolls" | "spellResistance"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
   | "allies" | "self" | "area" | "enemy";
 export interface ActiveEffect {
@@ -117,6 +118,10 @@ export interface ActiveEffect {
   roundsRemaining: number;
   description?: string;
   fastHealing?: number;
+  weaponIds?: string[];
+  damageType?: string;
+  temporaryHitPointsGranted?: number;
+  d20Check?: { label: string; modifier: number; targetDc: number; maximumSpellLevel?: number };
 }
 
 export interface SourceRef {
@@ -164,17 +169,32 @@ export interface ClassFeatureOccurrence {
     randomOutcomes?: Array<{ label: string; summary: string }>;
     modeLabel?: string;
     modes?: Array<{ id: string; label: string; summary: string }>;
+    classId?: string;
+    advancementOptionId?: string;
+    targetHitDiceRequirement?: { label: string; levelDivisor: number };
+    temporaryHitPointsByLevel?: Array<{ level: number; amount: number }>;
+    temporaryHitPointsDurationRounds?: number;
     savingThrow?: {
       label: string;
-      ability: AbilityName;
-      base: number;
-      levelDivisor: number;
+      ability?: AbilityName;
+      base?: number;
+      levelDivisor?: number;
       classId?: string;
+      fixedDcByLevel?: Array<{ level: number; dc: number }>;
+    };
+    actorSavingThrow?: {
+      modifier: "fortitude" | "reflex" | "will";
+      failureName: string;
+      failureDescription: string;
+      repeatedFailureName?: string;
+      repeatedFailureDescription?: string;
+      blockedByActiveEffectName?: string;
     };
     activeEffect?: {
       name: string;
       targets: ActiveEffectTarget[];
       bonus: number;
+      bonusByLevel?: Array<{ level: number; bonus: number }>;
       description?: string;
       improvedAtLevel?: number;
       improvedBonus?: number;
@@ -186,6 +206,8 @@ export interface ClassFeatureOccurrence {
         bonus: number;
         description: string;
       }>;
+      weaponSelectionFeatureId?: string;
+      usesSelectedModeAsDamageType?: boolean;
     };
     labelsByUseCount?: string[];
     summary?: string;
@@ -200,6 +222,16 @@ export interface ClassFeatureOccurrence {
     outputLabel: string;
     baseByLevel: Array<{ level: number; value: number }>;
     classId?: string;
+    summary?: string;
+  }>;
+  progressionProfiles?: Array<{
+    id: string;
+    label: string;
+    classId: string;
+    advancementOptionId?: string;
+    usesOwnerSavingThrows?: boolean;
+    columns: Array<{ id: string; label: string }>;
+    steps: Array<{ level: number; values: Record<string, string | number> }>;
     summary?: string;
   }>;
   spellAutomation?: {
@@ -339,8 +371,13 @@ export interface CharacterArchetype {
     abilityMultiplier?: number;
     minimum?: number;
     maximum?: number;
+    maximumByLevel?: Array<{ level: number; maximum: number }>;
+    advancementOptionId?: string;
+    requiredOptionId?: string;
   }>;
   optionGroupAugmentations?: OptionGroupAugmentation[];
+  prohibitedOptionIds?: string[];
+  prohibitedCompanionKinds?: Array<"animal" | "mount" | "familiar" | "eidolon" | "drake">;
   source: SourceRef;
 }
 export interface OptionGroupAugmentation {
@@ -437,6 +474,26 @@ export interface SelectableOption {
     label: string;
     resourceId: string;
     cost: number;
+    variableCost?: { label: string; minimum: number; maximum?: number };
+    activeEffect?: {
+      name: string;
+      target: ActiveEffectTarget;
+      bonus?: number;
+      bonusAbilityModifier?: AbilityName;
+      description: string;
+      defaultRounds?: number;
+      durationAbilityModifier?: AbilityName;
+      d20Check?: { label: string; modifierClassLevel?: boolean; targetDcDefault: number; maximumSpellLevelFromCost?: boolean };
+    };
+    activeEffects?: Array<{
+      name: string;
+      target: ActiveEffectTarget;
+      bonus: number;
+      description: string;
+      defaultRounds?: number;
+      durationAbilityModifier?: AbilityName;
+      d20Check?: { label: string; modifierClassLevel?: boolean; targetDcDefault: number; maximumSpellLevelFromCost?: boolean };
+    }>;
     summary?: string;
   }>;
 }

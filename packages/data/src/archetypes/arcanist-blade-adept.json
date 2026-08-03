@@ -33,7 +33,181 @@
           "name": "Sentient Sword (Su)",
           "level": 3,
           "type": "archetype",
+          "progressionProfiles": [
+            {
+              "id": "blade-adept-black-blade",
+              "label": "Black blade progression",
+              "classId": "arcanist",
+              "advancementOptionId": "blade-adept-eldritch-blade",
+              "usesOwnerSavingThrows": true,
+              "columns": [
+                {"id":"enhancement","label":"Enhancement"},
+                {"id":"intelligence","label":"Intelligence"},
+                {"id":"wisdomCharisma","label":"Wisdom / Charisma"},
+                {"id":"ego","label":"Ego"},
+                {"id":"arcanePool","label":"Blade pool"},
+                {"id":"bonusLanguages","label":"Bonus languages"},
+                {"id":"knowledgeArcanaRanks","label":"Knowledge (arcana) ranks"},
+                {"id":"special","label":"Newest ability"}
+              ],
+              "steps": [
+                {"level":3,"values":{"enhancement":"+1","intelligence":11,"wisdomCharisma":7,"ego":5,"arcanePool":1,"bonusLanguages":0,"knowledgeArcanaRanks":0,"special":"Alertness, black blade strike, telepathy, unbreakable"}},
+                {"level":5,"values":{"enhancement":"+2","intelligence":12,"wisdomCharisma":8,"ego":8,"arcanePool":2,"bonusLanguages":1,"knowledgeArcanaRanks":1,"special":"Energy attunement"}},
+                {"level":7,"values":{"enhancement":"+2","intelligence":13,"wisdomCharisma":9,"ego":10,"arcanePool":2,"bonusLanguages":2,"knowledgeArcanaRanks":2,"special":"—"}},
+                {"level":9,"values":{"enhancement":"+3","intelligence":14,"wisdomCharisma":10,"ego":12,"arcanePool":3,"bonusLanguages":3,"knowledgeArcanaRanks":3,"special":"Teleport blade"}},
+                {"level":11,"values":{"enhancement":"+3","intelligence":15,"wisdomCharisma":11,"ego":14,"arcanePool":3,"bonusLanguages":4,"knowledgeArcanaRanks":4,"special":"—"}},
+                {"level":13,"values":{"enhancement":"+4","intelligence":16,"wisdomCharisma":12,"ego":16,"arcanePool":4,"bonusLanguages":5,"knowledgeArcanaRanks":5,"special":"Transfer arcana"}},
+                {"level":15,"values":{"enhancement":"+4","intelligence":17,"wisdomCharisma":13,"ego":18,"arcanePool":4,"bonusLanguages":6,"knowledgeArcanaRanks":6,"special":"—"}},
+                {"level":17,"values":{"enhancement":"+5","intelligence":18,"wisdomCharisma":14,"ego":22,"arcanePool":5,"bonusLanguages":7,"knowledgeArcanaRanks":7,"special":"Spell defense"}},
+                {"level":19,"values":{"enhancement":"+5","intelligence":19,"wisdomCharisma":15,"ego":24,"arcanePool":5,"bonusLanguages":8,"knowledgeArcanaRanks":8,"special":"Life drinker"}}
+              ],
+              "summary": "The bonded sword uses Arcanist class level for this table, or Arcanist caster level after selecting Eldritch Blade. Its arcane pool equals 1 plus its Intelligence modifier."
+            }
+          ],
           "summary": "At 3rd level, the blade adept’s bonded sword becomes a powerful, sentient black blade . The blade advances as a black blade using the blade adept’s class level in place of the magus’s class level and points from her arcane reservoir in place of the magus’s arcane pool. A blade adept with this class feature cannot have a familiar of any kind, even from another class. This ability replaces the arcanist exploit gained at 3rd level."
+        },
+        {
+          "id": "arcanist-blade-adept-black-blade-strike-3",
+          "name": "Black Blade Strike (Sp)",
+          "level": 3,
+          "type": "scaling",
+          "resourceActions": [
+            {
+              "id": "black-blade-strike",
+              "label": "Use Black Blade Strike",
+              "resourceId": "blackBladeArcanePool",
+              "cost": 1,
+              "classId": "arcanist",
+              "advancementOptionId": "blade-adept-eldritch-blade",
+              "activeEffect": {
+                "name": "Black Blade Strike",
+                "targets": ["damageRolls"],
+                "bonus": 1,
+                "bonusByLevel": [
+                  {"level":3,"bonus":1},
+                  {"level":5,"bonus":2},
+                  {"level":9,"bonus":3},
+                  {"level":13,"bonus":4},
+                  {"level":17,"bonus":5}
+                ],
+                "defaultRounds": 10,
+                "fixedRounds": true,
+                "description": "Add the displayed bonus to damage rolls made with the bonded black blade."
+                ,"weaponSelectionFeatureId":"arcanist-blade-adept-sword-bond-su-1"
+              },
+              "summary": "As a free action, spend 1 black blade pool point to increase the bonded blade's damage for 1 minute."
+            }
+          ],
+          "summary": "As a free action, spend 1 point from the black blade's arcane pool to grant it a +1 bonus on damage rolls for 1 minute. The bonus increases by +1 for every 4 levels beyond 1st."
+        },
+        {
+          "id": "arcanist-blade-adept-energy-attunement-5",
+          "name": "Energy Attunement (Su)",
+          "level": 5,
+          "type": "scaling",
+          "resourceActions": [
+            {
+              "id": "energy-attunement-elemental",
+              "label": "Attune Elemental Damage",
+              "resourceId": "blackBladeArcanePool",
+              "cost": 1,
+              "modeLabel": "Damage type",
+              "modes": [
+                {"id":"cold","label":"Cold","summary":"The bonded blade deals cold damage instead of its normal weapon damage."},
+                {"id":"electricity","label":"Electricity","summary":"The bonded blade deals electricity damage instead of its normal weapon damage."},
+                {"id":"fire","label":"Fire","summary":"The bonded blade deals fire damage instead of its normal weapon damage."}
+              ],
+              "activeEffect": {"name":"Energy Attunement","targets":["damageRolls"],"bonus":0,"defaultRounds":1,"fixedRounds":true,"description":"The bonded blade's weapon damage uses the selected energy type until the start of your next turn.","weaponSelectionFeatureId":"arcanist-blade-adept-sword-bond-su-1","usesSelectedModeAsDamageType":true},
+              "summary": "As a free action, spend 1 black blade pool point to change its weapon damage to cold, electricity, or fire until your next turn."
+            },
+            {
+              "id": "energy-attunement-advanced",
+              "label": "Attune Sonic or Force Damage",
+              "resourceId": "blackBladeArcanePool",
+              "cost": 2,
+              "modeLabel": "Damage type",
+              "modes": [
+                {"id":"sonic","label":"Sonic","summary":"The bonded blade deals sonic damage instead of its normal weapon damage."},
+                {"id":"force","label":"Force","summary":"The bonded blade deals force damage instead of its normal weapon damage."}
+              ],
+              "activeEffect": {"name":"Advanced Energy Attunement","targets":["damageRolls"],"bonus":0,"defaultRounds":1,"fixedRounds":true,"description":"The bonded blade's weapon damage uses the selected energy type until the start of your next turn.","weaponSelectionFeatureId":"arcanist-blade-adept-sword-bond-su-1","usesSelectedModeAsDamageType":true},
+              "summary": "As a free action, spend 2 black blade pool points to change its weapon damage to sonic or force until your next turn."
+            }
+          ],
+          "summary": "Spend 1 black blade pool point to replace the blade's damage with cold, electricity, or fire, or 2 points for sonic or force, until the start of your next turn."
+        },
+        {
+          "id": "arcanist-blade-adept-teleport-blade-9",
+          "name": "Teleport Blade (Sp)",
+          "level": 9,
+          "type": "scaling",
+          "resourceActions": [
+            {"id":"teleport-blade-own-pool","label":"Teleport Blade using Reservoir","resourceId":"arcaneReservoir","cost":1,"activeEffect":{"name":"Teleport Blade","targets":["self"],"bonus":0,"defaultRounds":1,"fixedRounds":true,"description":"The black blade teleports from up to 1 mile away into your hand."},"summary":"As a standard action, spend 1 reservoir point to call the black blade from up to 1 mile away."},
+            {"id":"teleport-blade-weapon-pool","label":"Teleport Blade using Blade Pool","resourceId":"blackBladeArcanePool","cost":1,"activeEffect":{"name":"Teleport Blade","targets":["self"],"bonus":0,"defaultRounds":1,"fixedRounds":true,"description":"The black blade teleports from up to 1 mile away into your hand."},"summary":"As a standard action, spend 1 black blade pool point to call it from up to 1 mile away."}
+          ],
+          "summary": "As a standard action, spend 1 point from either the arcanist's reservoir or the black blade's pool to call the blade instantaneously from up to 1 mile away."
+        },
+        {
+          "id": "arcanist-blade-adept-transfer-arcana-13",
+          "name": "Transfer Arcana (Su)",
+          "level": 13,
+          "type": "scaling",
+          "resourceActions": [
+            {
+              "id":"transfer-arcana-one",
+              "label":"Transfer 2 Blade Points",
+              "costs":[{"resourceId":"bladeAdeptTransferArcana","cost":1},{"resourceId":"blackBladeArcanePool","cost":2}],
+              "changes":[{"resourceId":"bladeAdeptTransferArcana","usedDelta":1},{"resourceId":"blackBladeArcanePool","usedDelta":2},{"resourceId":"arcaneReservoir","usedDelta":-1}],
+              "classId":"arcanist",
+              "advancementOptionId":"blade-adept-eldritch-blade",
+              "savingThrow":{"label":"Will","fixedDcByLevel":[{"level":13,"dc":16},{"level":15,"dc":18},{"level":17,"dc":22},{"level":19,"dc":24}]},
+              "actorSavingThrow":{"modifier":"will","failureName":"Transfer Arcana fatigue","failureDescription":"The failed attempt leaves you fatigued.","repeatedFailureName":"Transfer Arcana exhaustion","repeatedFailureDescription":"A further failed attempt while fatigued leaves you exhausted.","blockedByActiveEffectName":"Transfer Arcana exhaustion"},
+              "summary":"After succeeding at the displayed Will save, expend 2 blade points to recover 1 reservoir point. The once-per-day use is consumed."
+            },
+            {
+              "id":"transfer-arcana-two",
+              "label":"Transfer 4 Blade Points",
+              "costs":[{"resourceId":"bladeAdeptTransferArcana","cost":1},{"resourceId":"blackBladeArcanePool","cost":4}],
+              "changes":[{"resourceId":"bladeAdeptTransferArcana","usedDelta":1},{"resourceId":"blackBladeArcanePool","usedDelta":4},{"resourceId":"arcaneReservoir","usedDelta":-2}],
+              "classId":"arcanist",
+              "advancementOptionId":"blade-adept-eldritch-blade",
+              "savingThrow":{"label":"Will","fixedDcByLevel":[{"level":13,"dc":16},{"level":15,"dc":18},{"level":17,"dc":22},{"level":19,"dc":24}]},
+              "actorSavingThrow":{"modifier":"will","failureName":"Transfer Arcana fatigue","failureDescription":"The failed attempt leaves you fatigued.","repeatedFailureName":"Transfer Arcana exhaustion","repeatedFailureDescription":"A further failed attempt while fatigued leaves you exhausted.","blockedByActiveEffectName":"Transfer Arcana exhaustion"},
+              "summary":"After succeeding at the displayed Will save, expend 4 blade points to recover 2 reservoir points. The once-per-day use is consumed."
+            }
+          ],
+          "summary": "Once per day as a full-round action, attempt a Will save against the blade's Ego. On success, recover 1 reservoir point per 2 blade pool points spent; failure causes fatigue, or exhaustion if already fatigued."
+        },
+        {
+          "id": "arcanist-blade-adept-spell-defense-17",
+          "name": "Spell Defense (Sp)",
+          "level": 17,
+          "type": "scaling",
+          "resourceActions": [
+            {
+              "id":"black-blade-spell-defense",
+              "label":"Use Spell Defense",
+              "resourceId":"blackBladeArcanePool",
+              "cost":1,
+              "classId":"arcanist",
+              "advancementOptionId":"blade-adept-eldritch-blade",
+              "activeEffect":{"name":"Black Blade Spell Defense","targets":["spellResistance"],"bonus":22,"bonusByLevel":[{"level":17,"bonus":22},{"level":19,"bonus":24}],"defaultRounds":1,"fixedRounds":true,"description":"Your spell resistance equals the black blade's Ego until the start of your next turn."},
+              "summary":"As a free action, spend 1 black blade pool point to gain spell resistance equal to the blade's Ego until your next turn."
+            }
+          ],
+          "summary": "Spend 1 point from the black blade's pool as a free action to gain spell resistance equal to its Ego until the start of your next turn."
+        },
+        {
+          "id": "arcanist-blade-adept-life-drinker-19",
+          "name": "Life Drinker (Su)",
+          "level": 19,
+          "type": "scaling",
+          "resourceActions": [
+            {"id":"life-drinker-blade-two","label":"Restore 2 Blade Points","changes":[{"resourceId":"blackBladeArcanePool","usedDelta":-2}],"targetHitDiceRequirement":{"label":"Defeated creature Hit Dice","levelDivisor":2},"summary":"After the black blade kills an eligible living creature, restore 2 points to its pool."},
+            {"id":"life-drinker-split","label":"Restore Both Pools","changes":[{"resourceId":"blackBladeArcanePool","usedDelta":-1},{"resourceId":"arcaneReservoir","usedDelta":-1}],"targetHitDiceRequirement":{"label":"Defeated creature Hit Dice","levelDivisor":2},"summary":"After an eligible kill, restore 1 point to the blade pool and 1 point to the reservoir."},
+            {"id":"life-drinker-temporary-hit-points","label":"Gain Life Drinker Temporary HP","classId":"arcanist","advancementOptionId":"blade-adept-eldritch-blade","targetHitDiceRequirement":{"label":"Defeated creature Hit Dice","levelDivisor":2},"temporaryHitPointsByLevel":[{"level":19,"amount":24}],"temporaryHitPointsDurationRounds":10,"summary":"After an eligible kill, gain temporary hit points equal to the black blade's Ego for up to 1 minute."}
+          ],
+          "summary": "When the black blade kills a living creature with Hit Dice at least half your character level, restore blade pool points, split recovery between pools, or gain temporary hit points equal to the blade's Ego for 1 minute."
         },
         {
           "id": "arcanist-blade-adept-adept-exploits-1",
@@ -64,8 +238,66 @@
       "proficiencies": ["Selected bonded weapon (simple or martial)"]
     }
   ],
-  "mechanicalCoverage": "partial",
+  "prohibitedOptionIds": [
+    "arcanist-familiar",
+    "wizard-arcane-bond-familiar",
+    "magus-arcana-familiar",
+    "blight-druid-nature-bond-familiar"
+  ],
+  "prohibitedCompanionKinds": ["familiar"],
+  "resourceAdjustments": [
+    {
+      "resourceId": "bladeAdeptSwordBondSpell",
+      "label": "Sword Bond Spell",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 1,
+      "minimum": 1,
+      "maximum": 1
+    },
+    {
+      "resourceId": "blackBladeArcanePool",
+      "label": "Black Blade Arcane Pool",
+      "unit": "point",
+      "operation": "replace",
+      "minimumLevel": 3,
+      "base": 0,
+      "maximumByLevel": [
+        {"level":3,"maximum":1},
+        {"level":5,"maximum":2},
+        {"level":9,"maximum":3},
+        {"level":13,"maximum":4},
+        {"level":17,"maximum":5}
+      ],
+      "advancementOptionId": "blade-adept-eldritch-blade",
+      "minimum": 1,
+      "maximum": 5
+    },
+    {
+      "resourceId": "bladeAdeptTransferArcana",
+      "label": "Transfer Arcana",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 13,
+      "base": 1,
+      "minimum": 1,
+      "maximum": 1
+    },
+    {
+      "resourceId": "bladeAdeptCriticalStrike",
+      "label": "Critical Strike",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 12,
+      "base": 1,
+      "minimum": 1,
+      "maximum": 1,
+      "requiredOptionId": "blade-adept-magus-arcana-critical-strike"
+    }
+  ],
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression, bonded-weapon selection and proficiency, exploit prerequisites, bonus feats, and reservoir spending for Arcane Accuracy, Dispelling Strike, and Hasted Assault are automated. Black-blade intelligence, ego, enhancement progression, spellstrike delivery, and Critical Strike's once-per-day trigger remain descriptive."
+    "Sword-bond legality, proficiency, its daily unprepared spell, familiar prohibition, black-blade statistics and owner saves, enhancement, Alertness, both pools, all black-blade abilities, Transfer Arcana saves and conditions, Life Drinker eligibility and expiry, exploit prerequisites, bonus feats, Magus arcana, Spellstrike, Close Range, and Critical Strike are automated and persist."
   ]
 }

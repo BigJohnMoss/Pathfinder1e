@@ -538,6 +538,19 @@ export default function Home() {
         .filter((item): item is (typeof classes)[number] => Boolean(item)),
     [additionalArchetypeIds, additionalClassLevels, archetypeStacksByClass],
   );
+  const allSelectedArchetypes = useMemo(() => {
+    const selectedIds = new Set([
+      ...primaryArchetypeIds,
+      ...Object.values(archetypeStacksByClass).flat(),
+      ...Object.values(additionalArchetypeIds).filter(Boolean),
+    ]);
+    return archetypes.filter((archetype) => selectedIds.has(archetype.id));
+  }, [
+    additionalArchetypeIds,
+    archetypeStacksByClass,
+    archetypes,
+    primaryArchetypeIds.join("|"),
+  ]);
   const secondaryClassId = additionalClassLevels[0]?.classId ?? "";
   const secondaryClassLevel = additionalClassLevels[0]?.level ?? 0;
   const secondaryCharacterClass = additionalCharacterClasses[0];
@@ -1291,6 +1304,11 @@ export default function Home() {
         [skillName]: Math.max(0, Math.min(level, available, ranks || 0)),
       };
     });
+  const bladeAdeptBondOption = selectedOptions["arcanist-blade-adept-sword-bond-su-1"];
+  const bladeAdeptWeaponKey = bladeAdeptBondOption === "blade-adept-bond-other"
+    ? selectedOptions["arcanist-blade-adept-sword-bond-su-1-weapon"]?.trim().toLowerCase()
+    : bladeAdeptBondOption?.replace("blade-adept-bond-", "");
+  const wieldingBlackBlade = selectedArchetypes.some((archetype) => archetype.id === "arcanist-blade-adept") && (classLevelMap.arcanist ?? 0) >= 3 && Boolean(bladeAdeptWeaponKey) && inventory.some((entry) => entry.equipped && entry.itemId === bladeAdeptWeaponKey);
   const skillEntries = skills.map((skill) => {
     const ranks = skillRanks[skill.name] ?? 0;
     const result = skillTotal(
@@ -1306,7 +1324,8 @@ export default function Home() {
       total:
         result.total +
         (selectedTraitBonuses.skillBonuses[skill.name] ?? 0) +
-        (selectedFeatBonuses.skillBonuses[skill.name] ?? 0),
+        (selectedFeatBonuses.skillBonuses[skill.name] ?? 0) +
+        (wieldingBlackBlade && ["Perception", "Sense Motive"].includes(skill.name) ? (ranks >= 10 ? 4 : 2) : 0),
     };
   });
   useEffect(
@@ -2266,8 +2285,9 @@ export default function Home() {
         if (companion) companion.effectiveLevel = adjustedCompanionLevel(companion.effectiveLevel, adjustment);
       }
     }
-    return descriptors;
-  }, [classLevelMap, eidolonBaseFormId, favoredClassAlternateBonuses, level, progressionClasses, selectedOptions, summonerClassLevel]);
+    const prohibitedKinds = new Set(allSelectedArchetypes.flatMap((archetype) => archetype.prohibitedCompanionKinds ?? []));
+    return descriptors.filter((descriptor) => !prohibitedKinds.has(descriptor.kind));
+  }, [allSelectedArchetypes, classLevelMap, eidolonBaseFormId, favoredClassAlternateBonuses, level, progressionClasses, selectedOptions, summonerClassLevel]);
   const validEidolonEvolutions = eidolonEvolutions.filter(
     (evolution): evolution is typeof evolution & { cost: number } =>
       Number.isFinite(evolution.cost),
@@ -2347,6 +2367,10 @@ export default function Home() {
           resourceArchetypes,
           resourceClassLevel,
           combat.abilityModifiers,
+          {
+            selectedOptionIds: Object.values(selectedOptions),
+            casterLevel: effectiveSpellcastingLevelMap[resourceClassId] ?? resourceClassLevel,
+          },
         )
       ).map(([resourceId, maximum]) => {
         const adjustment = adjustments.find((item) => item.resourceId === resourceId);
@@ -2382,6 +2406,7 @@ export default function Home() {
           classLevels,
           combat.abilityModifiers,
           Object.fromEntries(classLevels.map(({ classId }) => [classId, archetypes.filter((archetype) => archetype.classId === classId && (archetypeStacksByClass[classId] ?? []).includes(archetype.id))])),
+          Object.fromEntries(classLevels.map(({ classId, level: classLevel }) => [classId, { selectedOptionIds: Object.values(selectedOptions), casterLevel: effectiveSpellcastingLevelMap[classId] ?? classLevel }])),
         ),
       ),
     [
@@ -2391,6 +2416,8 @@ export default function Home() {
       combat.abilityModifiers.constitution,
       archetypeStacksByClass,
       archetypes,
+      effectiveSpellcastingLevelMap,
+      selectedOptions,
     ],
   );
   useEffect(() => {
@@ -2670,6 +2697,8 @@ export default function Home() {
       onDemandSpellCosts={primaryOnDemandSpellCosts}
       requiredPreparedSchool={requiredPreparedSchool(characterClass)}
       spellAutomation={classSpellAutomation(characterClass, primaryClassLevel, Object.values(selectedOptions))}
+      criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
+      bondedObjectCastResource={characterClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
       abilityModifiers={combat.abilityModifiers}
       onAddEffect={addActiveEffect}
     />
@@ -2735,6 +2764,8 @@ export default function Home() {
         onDemandSpellCosts={secondaryOnDemandSpellCosts}
         requiredPreparedSchool={requiredPreparedSchool(secondaryCharacterClass)}
         spellAutomation={classSpellAutomation(secondaryCharacterClass, secondaryClassLevel, Object.values(selectedOptions))}
+        criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
+        bondedObjectCastResource={secondaryCharacterClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
         abilityModifiers={combat.abilityModifiers}
         onAddEffect={addActiveEffect}
       />
@@ -2774,6 +2805,9 @@ export default function Home() {
         }
         reservoirPoints={reservoirPoints}
         onReservoirPointsChange={setReservoirPoints}
+        criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
+        bondedObjectCastResource={extraActiveClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
+        onRefreshClassResources={() => setClassResourceUsesByClass((current) => ({ ...current, [extraActiveClass.id]: {} }))}
         onAddEffect={addActiveEffect}
       />
     ) : null;
@@ -2856,12 +2890,20 @@ export default function Home() {
     inventory,
     coins,
   };
+  const bladeAdeptAdvancementLevel = Object.values(selectedOptions).includes("blade-adept-eldritch-blade")
+    ? effectiveSpellcastingLevelMap.arcanist ?? classLevelMap.arcanist ?? 0
+    : classLevelMap.arcanist ?? 0;
+  const bladeAdeptEnhancement = selectedArchetypes.some((archetype) => archetype.id === "arcanist-blade-adept") && bladeAdeptAdvancementLevel >= 3
+    ? bladeAdeptAdvancementLevel >= 17 ? 5 : bladeAdeptAdvancementLevel >= 13 ? 4 : bladeAdeptAdvancementLevel >= 9 ? 3 : bladeAdeptAdvancementLevel >= 5 ? 2 : 1
+    : 0;
+  const intrinsicWeaponEnhancements = bladeAdeptWeaponKey && bladeAdeptEnhancement ? { [bladeAdeptWeaponKey]: bladeAdeptEnhancement } : {};
   const combatAttacks = equippedWeaponAttacks(
     inventory,
     progression.baseAttackBonus,
     combat.abilityModifiers.strength,
     combat.abilityModifiers.dexterity,
     selectedFeatBonuses.weaponBonuses,
+    intrinsicWeaponEnhancements,
   );
   const serializedCharacterDraft = JSON.stringify(characterDraft);
   useEffect(() => {
@@ -3376,6 +3418,7 @@ export default function Home() {
           charisma: Math.floor((draftAbilities.charisma - 10) / 2),
         },
         Object.fromEntries(draft.classLevels.map(({ classId }) => [classId, draftArchetypes(classId)])),
+        Object.fromEntries(draft.classLevels.map(({ classId, level: classLevel }) => [classId, { selectedOptionIds: Object.values(draft.selectedOptions), casterLevel: draftEffectiveSpellcastingLevels[classId] ?? classLevel }])),
       ),
     );
     setCompanions(draft.companions ?? {});
@@ -4061,6 +4104,7 @@ export default function Home() {
                 dexterityModifier={combat.abilityModifiers.dexterity}
                 baseAttackBonus={progression.baseAttackBonus}
                 weaponBonuses={selectedFeatBonuses.weaponBonuses}
+                minimumWeaponEnhancements={intrinsicWeaponEnhancements}
                 inventory={inventory}
                 coins={coins}
                 onInventoryChange={setInventory}
@@ -4152,23 +4196,31 @@ export default function Home() {
                 features={progression.features}
                 dailyResources={classDailyResources}
                 abilityModifiers={combat.abilityModifiers}
+                saveModifiers={combat.saves}
                 classLevels={classLevelMap}
+                casterLevels={effectiveSpellcastingLevelMap}
                 selectedOptionIds={Object.values(selectedOptions)}
+                selectedOptions={selectedOptions}
+                activeEffects={activeEffects}
                 onAddEffect={addActiveEffect}
+                onRemoveEffectByName={(name) => setActiveEffects((current) => current.filter((effect) => effect.name !== name))}
+                onTemporaryHitPointsChange={setTemporaryHitPoints}
               />
               <FavoredClassBenefits allocations={favoredClassAlternateBonuses} />
               <ArchetypeAutomationStatus archetypes={selectedArchetypes} feats={feats} />
               {classOptionChoices.length > 0 && (
                 <ClassOptions
-                  choices={classOptionChoices}
+                  choices={classOptionChoices.map((choice) => ({ ...choice, options: choice.options.filter((option) => !allSelectedArchetypes.some((archetype) => archetype.prohibitedOptionIds?.includes(option.id))) }))}
                   selectedOptions={selectedOptions}
                   classLevel={primaryClassLevel}
                   charismaModifier={combat.abilityModifiers.charisma}
+                  abilityModifiers={combat.abilityModifiers}
                   dailyResources={classDailyResources}
                   archetypeReplacesText={
                     selectedArchetypeReplacesText || undefined
                   }
                   onOptionChange={updateClassOption}
+                  onAddEffect={addActiveEffect}
                 />
               )}
               {summonerClassLevel > 0 && (
