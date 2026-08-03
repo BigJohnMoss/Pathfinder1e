@@ -118,8 +118,9 @@ export interface ClassFeatureOccurrence {
   resourceActions?: Array<{
     id: string;
     label: string;
-    resourceId: string;
-    cost: number;
+    resourceId?: string;
+    cost?: number;
+    costs?: Array<{ resourceId: string; cost: number }>;
     summary?: string;
   }>;
 }

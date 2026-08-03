@@ -41,6 +41,7 @@ export function Spellbook({
   oppositionSpellIds = [],
   restrictedBonus = null,
   onDemandSpellCosts = {},
+  requiredPreparedSchool,
 }: {
   spells: Spell[];
   sourceBook?: {
@@ -71,6 +72,7 @@ export function Spellbook({
   oppositionSpellIds?: string[];
   restrictedBonus?: { eligibleSpellIds: string[]; countPerLevel: number; label: string } | null;
   onDemandSpellCosts?: Record<string, { resourceId?: string; cost: number; label: string; consumesSpellSlot?: boolean; saveDcBonus?: number; concentrationBonus?: number }>;
+  requiredPreparedSchool?: string;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -138,6 +140,12 @@ export function Spellbook({
     const slot = slots.find((entry) => entry.level === level);
     return slot ? slot.count - (slotUses[level] ?? 0) : Infinity;
   };
+  const spellHasSchool = (spell: Spell, school: string) =>
+    (spell.schools?.length ? spell.schools : [spell.school]).includes(school);
+  const requiredSchoolPrepared = (level: number) => !requiredPreparedSchool || preparedSpellIds.some((id) => {
+    const spell = spells.find((candidate) => candidate.id === id);
+    return spell?.levelByClass[classId] === level && spellHasSchool(spell, requiredPreparedSchool);
+  });
   const filteredSpells = useMemo(
     () =>
       spells.filter((spell) => {
@@ -193,6 +201,11 @@ export function Spellbook({
       {restrictedBonus && (
         <p className="hint">
           Each spell level includes 1 {restrictedBonus.label}; preparations beyond the normal limit must match that element.
+        </p>
+      )}
+      {requiredPreparedSchool && (
+        <p className="hint" role="status">
+          Required preparation: at least one {requiredPreparedSchool} spell at every available spell level. Casting remains locked for levels still missing one.
         </p>
       )}
       <div className="spell-day-controls">
@@ -431,9 +444,13 @@ export function Spellbook({
                   const restrictedIneligibleFull = Boolean(restrictedBonus)
                     && !restrictedEligibleIds.has(spell.id)
                     && (restrictedIneligibleUsage[level] ?? 0) + preparationCost > baseLimit;
+                  const reservesRequiredSchoolSlot = Boolean(requiredPreparedSchool)
+                    && !requiredSchoolPrepared(level)
+                    && !spellHasSchool(spell, requiredPreparedSchool!)
+                    && (restrictedIneligibleUsage[level] ?? 0) + preparationCost >= baseLimit;
                   const full =
-                    preparedCount(level) + preparationCost > limitFor(level) || restrictedIneligibleFull;
-                  const canCast = level === 0 || remainingSlots(level) > 0;
+                    preparedCount(level) + preparationCost > limitFor(level) || restrictedIneligibleFull || reservesRequiredSchoolSlot;
+                  const canCast = (level === 0 || remainingSlots(level) > 0) && requiredSchoolPrepared(level);
                   const onDemandCost = onDemandSpellCosts[spell.id];
                   const canCastOnDemand = Boolean(onDemandCost && (!onDemandCost.resourceId || (reservoir && reservoir.current >= onDemandCost.cost)));
                   const consumesSpellSlot = onDemandCost?.consumesSpellSlot ?? true;
