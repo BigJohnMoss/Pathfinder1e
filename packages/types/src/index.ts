@@ -121,6 +121,8 @@ export interface ClassFeatureOccurrence {
     resourceId?: string;
     cost?: number;
     costs?: Array<{ resourceId: string; cost: number }>;
+    changes?: Array<{ resourceId: string; usedDelta: number }>;
+    labelsByUseCount?: string[];
     summary?: string;
   }>;
 }

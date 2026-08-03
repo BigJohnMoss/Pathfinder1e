@@ -4,6 +4,7 @@
   "classId": "arcanist",
   "spellSlotAdjustmentPerLevel": 1,
   "preparedSpellAdjustmentPerLevel": -1,
+  "resourceAdjustments": [{"resourceId":"eldritchSurgeStrain","label":"Eldritch Surge","unit":"surge","operation":"replace","minimumLevel":3,"base":2,"minimum":0,"maximum":2}],
   "summary": "For some arcanists, the power bubbling up from within is nearly too much to contain.",
   "replacesText": "3rd, 7th, and 13th-level Arcanist Exploits; Magical Supremacy",
   "replacements": [
@@ -27,6 +28,10 @@
           "name": "Eldritch Surge (Su)",
           "level": 3,
           "type": "archetype",
+          "resourceActions": [
+            {"id":"eldritch-surge-spell","label":"Surge a spell","resourceId":"eldritchSurgeStrain","cost":1,"labelsByUseCount":["Surge a spell — become fatigued","Surge a spell — become exhausted"],"summary":"Add 2 to both caster level and save DC; this cannot stack with the Arcane Reservoir boost."},
+            {"id":"eldritch-surge-exploit","label":"Surge an exploit","resourceId":"eldritchSurgeStrain","cost":1,"labelsByUseCount":["Surge an exploit — become fatigued","Surge an exploit — become exhausted"],"summary":"Increase effective arcanist level by 2 for one arcanist exploit."}
+          ],
           "summary": "At 3rd level, an eldritch font can, as a swift action, pour more power into her spells and abilities. She can add 2 to the caster level and DC of a spell, or increase her effective arcanist level by 2 when using an arcanist exploit. She becomes fatigued upon using this ability. If she is already fatigued, she becomes exhausted. If she’s already exhausted, or something would prevent her from becoming fatigued or exhausted, she cannot use this ability. This ability does not stack with spending points from her arcane reservoir to increase the spell’s caster level or DC (as the arcane reservoir class feature). Only rest can remove fatigue or exhaustion caused by an eldritch surge—spells and abilities have no effect. This ability replaces the arcanist exploit gained at 3rd level."
         },
         {
@@ -34,6 +39,10 @@
           "name": "Improved Surge (Su)",
           "level": 7,
           "type": "archetype",
+          "resourceActions": [
+            {"id":"improved-surge-attack","label":"Reroll spell or exploit attack","resourceId":"eldritchSurgeStrain","cost":1,"labelsByUseCount":["Reroll attack — become fatigued","Reroll attack — become exhausted"],"summary":"Reroll the attack before its result is revealed and keep the new result."},
+            {"id":"improved-surge-damage","label":"Reroll spell or exploit damage","resourceId":"eldritchSurgeStrain","cost":1,"labelsByUseCount":["Reroll damage — become fatigued","Reroll damage — become exhausted"],"summary":"Reroll all associated damage dice and keep the new result."}
+          ],
           "summary": "At 7th level, an eldritch font can use her eldritch surge ability to reroll an attack roll associated with a spell or arcanist exploit, or to reroll all of the damage dice associated with a spell or arcanist exploit. In the case of attack rolls, this ability must be used after the die is rolled but before the results are revealed. The eldritch font must take the results of the reroll, even if they are lower. This ability replaces the arcanist exploit gained at 7th level."
         },
         {
@@ -41,6 +50,7 @@
           "name": "Greater Surge (Su)",
           "level": 13,
           "type": "archetype",
+          "resourceActions": [{"id":"greater-surge-save","label":"Force saving throw reroll","resourceId":"eldritchSurgeStrain","cost":1,"labelsByUseCount":["Force save reroll — become fatigued","Force save reroll — become exhausted"],"summary":"One target rerolls its save before the result is revealed and takes the lower result."}],
           "summary": "At 13th level, an eldritch font can use her eldritch surge ability to force a creature to reroll a saving throw against one spell or arcanist exploit and take the lower value. The eldritch font must declare the use of this ability before the result of that creature’s saving throw is revealed. If the spell or arcanist exploit affects more than one target, only one target is affected by this ability. This ability replaces the arcanist exploit gained at 13th level."
         },
         {
@@ -48,6 +58,7 @@
           "name": "Bottomless Well",
           "level": 20,
           "type": "archetype",
+          "resourceActions": [{"id":"bottomless-well","label":"Study for 1 hour and refill reservoir","changes":[{"resourceId":"arcaneReservoir","usedDelta":-10}],"summary":"Regain up to 10 Arcane Reservoir points and prepare new spells. Spell slots are not restored."}],
           "summary": "At 20th level, an eldritch font can spend 1 hour studying her spellbook to refuel herself. Doing so allows her to prepare new spells and regain points of arcane reservoir equal to 1/2 her level. She can use this ability multiple times per day, however she still only regains spell slots once per day. This ability replaces magical supremacy."
         }
       ]
@@ -60,6 +71,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Font of Power, the two-step fatigued/exhausted surge limit, every unlocked surge mode, rest recovery, and Bottomless Well reservoir recovery are automated. Combat roll replacement and condition penalties remain descriptive."
   ]
 }
