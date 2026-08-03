@@ -206,6 +206,17 @@ test("reservoir-powered archetype features expose enforceable action costs", () 
       .map((action) => [action.id, action.cost ?? action.costs?.find((cost) => cost.resourceId === "arcaneReservoir")?.cost]);
     assert.deepEqual(actual, actions);
   }
+  const brownFur = archetypes.find((candidate) => candidate.id === "arcanist-brown-fur-transmuter");
+  const powerfulChange = brownFur.replacements.flatMap((replacement) => replacement.features)
+    .find((feature) => feature.id === "arcanist-brown-fur-transmuter-powerful-change-su-3").resourceActions[0];
+  assert.deepEqual(powerfulChange.activeEffect, {
+    name: "Powerful Change",
+    targets: ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"],
+    bonus: 2,
+    improvedAtLevel: 20,
+    improvedBonus: 4,
+    defaultRounds: 10,
+  });
 });
 
 test("Twilight Sage enforces its mandatory exploit, necromancy focus, and daily transfer", () => {

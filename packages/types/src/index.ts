@@ -78,7 +78,8 @@ export interface CharacterDraftV1 {
 
 export type CharacterDraft = CharacterDraftV1;
 export type ActiveEffectTarget =
-  "initiative" | "armorClass" | "fortitude" | "reflex" | "will";
+  | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
+  | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
 export interface ActiveEffect {
   id: string;
   name: string;
@@ -130,6 +131,14 @@ export interface ClassFeatureOccurrence {
       levelDivisor?: number;
     };
     randomOutcomes?: Array<{ label: string; summary: string }>;
+    activeEffect?: {
+      name: string;
+      targets: ActiveEffectTarget[];
+      bonus: number;
+      improvedAtLevel?: number;
+      improvedBonus?: number;
+      defaultRounds?: number;
+    };
     labelsByUseCount?: string[];
     summary?: string;
   }>;
