@@ -511,6 +511,22 @@ archetypes to expand its choices without creating extra feat slots.
    and Skill Focus choices while retaining normal combat-feat choices.
 5. [x] Verify catalogue inference and desktop/narrow-mobile save and load.
 
+## Completed expansion: Bloodrager Bloodline Feat Chassis
+
+Turn the Bloodrager's descriptive bloodline feat milestones into legal,
+data-driven selections and reuse them for archetype combinations.
+
+1. [x] Add five selectable bloodline feat slots at levels 6, 9, 12, 15, and
+   18.
+2. [x] Import the seven published feat choices for each of the ten core
+   Bloodrager bloodlines.
+3. [x] Enforce normal feat prerequisites, unique selections, and the Arcane
+   bloodline's Fighter-level substitution for Disruptive and Spellbreaker.
+4. [x] Add two distinct Crossblooded Rager bloodline selectors and combine
+   their feat lists without duplicating slots.
+5. [x] Verify standard and Crossblooded selection paths on desktop and narrow
+   mobile, including save and load.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

@@ -403,6 +403,7 @@ export interface CharacterTrait {
 }
 
 export interface CharacterOption extends SelectableOption {
+  featIds?: string[];
   cost?: number;
   baseForms?: string[];
   requiredEvolutionIds?: string[];

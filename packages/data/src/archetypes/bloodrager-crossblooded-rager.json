@@ -15,11 +15,22 @@
       ],
       "features": [
         {
-          "id": "bloodrager-crossblooded-rager-bonus-feats-1",
-          "name": "Bonus Feats",
+          "id": "bloodrager-crossblooded-rager-primary-bloodline-1",
+          "name": "Primary Bloodline",
           "level": 1,
-          "type": "archetype",
-          "summary": "A crossblooded rager combines the bonus feat lists from both of his bloodlines and can select his bloodline bonus feats from this combined list."
+          "type": "selectable",
+          "summary": "Choose the first bloodline. Its bonus feats are added to the Crossblooded Rager's combined list.",
+          "choiceRequired": true,
+          "optionGroupId": "bloodrager-bloodlines"
+        },
+        {
+          "id": "bloodrager-crossblooded-rager-secondary-bloodline-1",
+          "name": "Secondary Bloodline",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose a different second bloodline. Its bonus feats are added to the Crossblooded Rager's combined list.",
+          "choiceRequired": true,
+          "optionGroupId": "bloodrager-bloodlines"
         },
         {
           "id": "bloodrager-crossblooded-rager-bonus-spells-10",

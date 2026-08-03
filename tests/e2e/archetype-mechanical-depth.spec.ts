@@ -276,6 +276,59 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Bonus Combat Feat level 2")).toHaveValue("skill-focus");
   });
 
+  test(`selects and restores feats from the chosen Bloodrager bloodline on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("bloodrager");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("18");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await page.getByLabel("Bloodline level 1").selectOption("bloodrager-arcane");
+
+    const sixthLevelChoice = page.getByLabel("Bloodline Feat level 6");
+    await expect(sixthLevelChoice.locator("option")).toHaveCount(6);
+    await expect(sixthLevelChoice.locator('option[value="disruptive"]')).toHaveCount(1);
+    await expect(sixthLevelChoice.locator('option[value="dodge"]')).toHaveCount(0);
+    await sixthLevelChoice.selectOption("disruptive");
+    await page.getByLabel("Bloodline Feat level 9").selectOption("spellbreaker");
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Bloodline Feat level 6")).toHaveValue("disruptive");
+    await expect(page.getByLabel("Bloodline Feat level 9")).toHaveValue("spellbreaker");
+  });
+
+  test(`combines distinct Crossblooded Rager feat lists on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("bloodrager");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("bloodrager-crossblooded-rager");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("9");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+
+    await page.getByLabel("Primary Bloodline level 1").selectOption("bloodrager-arcane");
+    const secondary = page.getByLabel("Secondary Bloodline level 1");
+    await expect(secondary.locator('option[value="bloodrager-arcane"]')).toHaveCount(0);
+    await secondary.selectOption("bloodrager-celestial");
+    const featChoice = page.getByLabel("Bloodline Feat level 6");
+    await expect(featChoice.locator('option[value="disruptive"]')).toHaveCount(1);
+    await expect(featChoice.locator('option[value="weapon-focus"]')).toHaveCount(1);
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);
