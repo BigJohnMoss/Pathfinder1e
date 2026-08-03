@@ -22,8 +22,10 @@ test("spends and enforces Aeromancer feature-action reservoir costs", async ({ p
   await page.getByRole("tab", { name: "Features" }).click();
   const reservoir = page.getByLabel("Arcane Reservoir remaining");
   await expect(reservoir).toHaveText("3/14 point remaining");
+  await page.getByRole("button", { name: "Boost qualifying spell caster level" }).click();
+  await expect(reservoir).toHaveText("2/14 point remaining");
   await page.getByRole("button", { name: "Use Wind's Embrace" }).click();
-  await expect(reservoir).toHaveText("1/14 point remaining");
+  await expect(reservoir).toHaveText("0/14 point remaining");
   await expect(page.getByRole("button", { name: "Use Rebuking Gale" })).toBeDisabled();
 });
 

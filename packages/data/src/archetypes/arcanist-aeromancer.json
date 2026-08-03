@@ -13,10 +13,14 @@
       ],
       "features": [
         {
-          "id": "arcanist-aeromancer-air-mastery-su-5",
+          "id": "arcanist-aeromancer-air-mastery-su-1",
           "name": "Air Mastery (Su)",
-          "level": 5,
+          "level": 1,
           "type": "archetype",
+          "resourceActions": [
+            {"id":"air-mastery-caster-level","label":"Boost qualifying spell caster level","resourceId":"arcaneReservoir","cost":1,"summary":"Spend 1 reservoir point when casting an air, cold, electricity, or sonic spell; apply Air Mastery's level-scaled caster-level increase."},
+            {"id":"air-mastery-save-dc","label":"Boost qualifying spell save DC","resourceId":"arcaneReservoir","cost":1,"summary":"Spend 1 reservoir point when casting an air, cold, electricity, or sonic spell; apply Air Mastery's save-DC increase."}
+          ],
           "summary": "Aeromancers specialize in magic that manipulates the wind and sky. Whenever an aeromancer expends a point from her arcane reservoir to increase the caster level of a spell with the air, cold, electricity, or sonic descriptor, she increases that bonus by an additional 1. At 5th level, and every 5 levels thereafter, the amount by which she increases the caster level of such spells further increases by an additional 1 (to a maximum additional caster level increase from this ability of 5 at 20th level). Alternatively, if the aeromancer expends a point from her arcane reservoir to increase the saving throw DC of a spell with the air, cold, electricity, or sonic descriptor, she increases it by an additional 1. At 10th level, she increases it by an additional 2 instead. This replaces the arcane exploit gained at 1st level."
         },
         {
@@ -45,6 +49,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression and reservoir costs for Wind's Embrace and Rebuking Gale are automated. Air Mastery spell augmentation and the abilities' encounter effects remain descriptive."
+    "Air Mastery unlocks at 1st level, and the reservoir costs for both Air Mastery modes, Wind's Embrace, and Rebuking Gale are automated. Spell and encounter effects remain descriptive."
   ]
 }
