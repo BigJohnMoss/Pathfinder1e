@@ -102,4 +102,16 @@ test("Harrowed Society Student grants Psychic Sensitivity and bounded daily read
   assert.deepEqual([1, 7, 8, 15, 16, 20].map((level) =>
     applyArchetypeResourceAdjustments({}, [student], level).harrowReadings
   ), [1, 1, 2, 2, 3, 3]);
+  const applied = featuresThroughLevel(applyArchetype(arcanist, student), 20);
+  const mysteryChoices = applied.filter((feature) => feature.optionGroupId === "harrowed-divine-mysteries");
+  assert.deepEqual(mysteryChoices.map((feature) => feature.level), [5, 7, 9, 11, 13, 15, 17, 19]);
+  assert.ok(mysteryChoices.every((feature) => feature.choiceRequired));
+
+  const spells = generatedData.optionGroups.find((group) => group.id === "harrowed-divine-mysteries").options;
+  assert.ok(spells.length >= 80);
+  assert.ok(spells.every((option) => option.spellId && option.spellLevel <= 8));
+  assert.ok(spells.every((option) => generatedData.spells.find((spell) => spell.id === option.spellId)?.levelByClass.arcanist === undefined));
+  assert.deepEqual([5, 7, 9, 11, 13, 15, 17].map((level) =>
+    Math.max(...spells.filter((option) => option.minimumLevel <= level).map((option) => option.spellLevel))
+  ), [2, 3, 4, 5, 6, 6, 8]);
 });

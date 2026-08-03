@@ -525,6 +525,45 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Alleviate Addiction prepared")).toHaveText("1");
   });
 
+  test(`selects and restores Harrowed Society divinations on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-harrowed-society-student");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("7");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+
+    const first = page.getByLabel("Divine the Mysteries (Ex) level 5");
+    const second = page.getByLabel("Divine the Mysteries level 7");
+    await expect(first.locator('option[value="harrowed-divine-mysteries-augury"]')).toHaveCount(1);
+    await expect(first.locator('option[value="harrowed-divine-mysteries-divination"]')).toHaveCount(0);
+    await first.selectOption("harrowed-divine-mysteries-augury");
+    await expect(second.locator('option[value="harrowed-divine-mysteries-augury"]')).toHaveAttribute("disabled", "");
+
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await page.getByLabel("Search spells").fill("Augury");
+    await expect(page.getByRole("button", { name: "Add Augury", exact: true })).toBeEnabled();
+    await page.getByRole("button", { name: "Add Augury", exact: true }).click();
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Divine the Mysteries (Ex) level 5")).toHaveValue("harrowed-divine-mysteries-augury");
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await page.getByLabel("Search spells").fill("Augury");
+    await expect(page.getByLabel("Augury prepared")).toHaveText("1");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);
