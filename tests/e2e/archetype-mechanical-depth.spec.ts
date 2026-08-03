@@ -603,6 +603,25 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Halcyon Spell Lore (Su) level 1")).toHaveValue("magaambyan-halcyon-spells-entangle");
   });
 
+  test(`casts White Mage cure spells without preparation on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-white-mage");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await page.getByLabel("Search spells").fill("Cure Light Wounds");
+    await expect(page.getByRole("button", { name: "Add Cure Light Wounds", exact: true })).toBeDisabled();
+    await expect(page.getByText(/Spontaneous Healing: cast on demand for 1 reservoir point/).first()).toBeVisible();
+    const reservoir = page.getByLabel("Arcane Reservoir points");
+    await expect(reservoir).toHaveText("3/4 reservoir");
+    await page.getByRole("button", { name: "Cast Cure Light Wounds", exact: true }).click();
+    await expect(reservoir).toHaveText("2/4 reservoir");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);

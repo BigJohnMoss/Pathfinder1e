@@ -1666,13 +1666,16 @@ export default function Home() {
   );
   const selectedOptionSpellChoices = useMemo(
     () =>
-      Object.values(selectedOptions).flatMap((optionId) => {
+      [...Object.values(selectedOptions).flatMap((optionId) => {
         const option = optionGroups
           .flatMap((group) => group.options)
           .find((candidate) => candidate.id === optionId);
         return option?.spellId ? [option] : [];
-      }),
-    [selectedOptions],
+      }), ...characterClass.features
+        .filter((feature) => feature.level <= primaryClassLevel && feature.grantsAllOptions && feature.optionGroupId)
+        .flatMap((feature) => optionGroups.find((group) => group.id === feature.optionGroupId)?.options ?? [])
+        .filter((option) => option.minimumLevel <= primaryClassLevel)],
+    [characterClass.features, primaryClassLevel, selectedOptions],
   );
   const selectedOptionSpells = useMemo(
     () =>

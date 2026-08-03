@@ -104,6 +104,7 @@ export interface ClassFeatureOccurrence {
   uses?: string | null;
   choiceRequired?: boolean;
   optionGroupId?: string | null;
+  grantsAllOptions?: boolean;
   featChoiceIds?: string[];
   featChoiceTypes?: string[];
   featChoicePrerequisiteIds?: string[];
@@ -479,6 +480,8 @@ export interface CharacterOptionGroup {
     minimumClassLevelBySpellLevel?: Record<string, number>;
     castsAsPrepared?: boolean;
     resourceCost?: CharacterOption["resourceCost"];
+    nameIncludes?: string;
+    spellIds?: string[];
   };
 }
 
