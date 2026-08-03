@@ -405,6 +405,14 @@ export interface CharacterTrait {
 }
 
 export interface CharacterOption extends SelectableOption {
+  castsAsPrepared?: boolean;
+  resourceCost?: {
+    resourceId: string;
+    base?: number;
+    levelDivisor?: number;
+    minimum?: number;
+    label?: string;
+  };
   featIds?: string[];
   cost?: number;
   baseForms?: string[];
@@ -466,6 +474,11 @@ export interface CharacterOptionGroup {
     maximumSpellLevel?: number;
     additionalSpellIds?: string[];
     additionalSpellLevels?: Record<string, number>;
+    anyClassList?: boolean;
+    excludeClassId?: string;
+    minimumClassLevelBySpellLevel?: Record<string, number>;
+    castsAsPrepared?: boolean;
+    resourceCost?: CharacterOption["resourceCost"];
   };
 }
 
