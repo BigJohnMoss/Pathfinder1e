@@ -50,6 +50,8 @@ export function Spellbook({
   onDemandSpellCosts = {},
   requiredPreparedSchool,
   spellAutomation,
+  criticalStrikeResource,
+  bondedObjectCastResource,
   abilityModifiers = {},
   onAddEffect,
 }: {
@@ -84,6 +86,8 @@ export function Spellbook({
   onDemandSpellCosts?: Record<string, { resourceId?: string; cost: number; label: string; consumesSpellSlot?: boolean; saveDcBonus?: number; concentrationBonus?: number }>;
   requiredPreparedSchool?: string;
   spellAutomation?: PreparedSpellAutomation;
+  criticalStrikeResource?: { maximum: number | null; used: number; onUsedChange: (used: number) => void };
+  bondedObjectCastResource?: { label: string; maximum: number | null; used: number; onUsedChange: (used: number) => void };
   abilityModifiers?: Partial<Record<AbilityName, number>>;
   onAddEffect?: (effect: ActiveEffect) => void;
 }) {
@@ -97,6 +101,8 @@ export function Spellbook({
   const [fastHealingSlotLevel, setFastHealingSlotLevel] = useState(0);
   const [fastHealingResult, setFastHealingResult] = useState("");
   const [descriptorBoostResult, setDescriptorBoostResult] = useState("");
+  const [spellstrikeResult, setSpellstrikeResult] = useState("");
+  const [bondedObjectCastResult, setBondedObjectCastResult] = useState("");
   useEffect(
     () => setLevelFilter(String(maximumSpellLevel)),
     [maximumSpellLevel],
@@ -216,6 +222,36 @@ export function Spellbook({
     setShareResult(
       `Shared ${spell.name} with ${shareTarget.trim()} ${shareRules.range === "touch" ? "by touch" : `within ${shareRules.range}`}.`,
     );
+  };
+  const spellstrikeEligible = (spell: Spell) => Boolean(
+    spellAutomation?.spellstrike && (
+      spell.range?.toLowerCase() === "touch" ||
+      (spellAutomation.spellstrike.closeRange && /\bray\b/i.test([spell.name, spell.summary, spell.effect].filter(Boolean).join(" ")))
+    ),
+  );
+  const useSpellstrike = (spell: Spell, level: number) => {
+    if (!spellstrikeEligible(spell) || (level > 0 && remainingSlots(level) <= 0)) return;
+    useSpellSlot(level);
+    const closeRange = spell.range?.toLowerCase() !== "touch";
+    const description = closeRange
+      ? `${spell.name} is converted from a ray to a single melee touch effect and delivered with the bonded weapon; additional rays are lost.`
+      : `${spell.name} is delivered through the bonded weapon as a free melee attack at your highest base attack bonus.`;
+    onAddEffect?.({ id: `spellstrike-${Date.now()}-${Math.random()}`, name: `${spellAutomation!.spellstrike!.label}: ${spell.name}`, target: "self", bonus: 0, description, roundsRemaining: 1 });
+    setSpellstrikeResult(description);
+  };
+  const criticalStrikeEligible = (spell: Spell) => Boolean(spellAutomation?.criticalStrike && spell.range?.toLowerCase() === "touch");
+  const useCriticalStrike = (spell: Spell, level: number) => {
+    if (!criticalStrikeEligible(spell) || !criticalStrikeResource || (criticalStrikeResource.maximum !== null && criticalStrikeResource.used >= criticalStrikeResource.maximum) || (level > 0 && remainingSlots(level) <= 0)) return;
+    useSpellSlot(level);
+    criticalStrikeResource.onUsedChange(criticalStrikeResource.used + 1);
+    const description = `${spell.name} is cast as a swift action after a melee critical hit and delivered against that target with a free touch attack.`;
+    onAddEffect?.({ id: `critical-strike-${Date.now()}-${Math.random()}`, name: `${spellAutomation!.criticalStrike!.label}: ${spell.name}`, target: "self", bonus: 0, description, roundsRemaining: 1 });
+    setSpellstrikeResult(description);
+  };
+  const useBondedObjectCast = (spell: Spell) => {
+    if (!bondedObjectCastResource || (bondedObjectCastResource.maximum !== null && bondedObjectCastResource.used >= bondedObjectCastResource.maximum)) return;
+    bondedObjectCastResource.onUsedChange(bondedObjectCastResource.used + 1);
+    setBondedObjectCastResult(`Cast ${spell.name} from the bonded blade without preparing it or consuming a spell slot.`);
   };
   const useFastHealing = () => {
     if (
@@ -480,6 +516,8 @@ export function Spellbook({
         className="prepared-summary"
         aria-labelledby="prepared-today-heading"
       >
+        {spellstrikeResult && <output aria-label="Spellstrike result">{spellstrikeResult}</output>}
+        {bondedObjectCastResult && <output aria-label={`${bondedObjectCastResource?.label ?? "Bonded object"} result`}>{bondedObjectCastResult}</output>}
         <div className="prepared-summary-heading">
           <div>
             <p className="eyebrow">READY TO CAST</p>
@@ -713,8 +751,11 @@ export function Spellbook({
                               });
                           }}
                         >
-                          Cast
-                        </button>
+                              Cast
+                            </button>
+                            {spellstrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Spellstrike`} disabled={!canCast} onClick={() => useSpellstrike(spell, level)}>Spellstrike</button>}
+                            {criticalStrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Critical Strike`} disabled={!canCast || !criticalStrikeResource || (criticalStrikeResource.maximum !== null && criticalStrikeResource.used >= criticalStrikeResource.maximum)} onClick={() => useCriticalStrike(spell, level)}>Critical Strike</button>}
+                            {bondedObjectCastResource && <button type="button" aria-label={`Cast ${spell.name} with ${bondedObjectCastResource.label}`} disabled={bondedObjectCastResource.maximum !== null && bondedObjectCastResource.used >= bondedObjectCastResource.maximum} onClick={() => useBondedObjectCast(spell)}>{bondedObjectCastResource.label}</button>}
                         {shareable && (
                           <button
                             type="button"

@@ -782,6 +782,9 @@ export function normalizeCharacterDraft(
                 "fortitude",
                 "reflex",
                 "will",
+                "attackRolls",
+                "damageRolls",
+                "spellResistance",
                 "strength",
                 "dexterity",
                 "constitution",
@@ -795,7 +798,7 @@ export function normalizeCharacterDraft(
               ].includes(effect.target) &&
               Number.isInteger(effect.bonus) &&
               effect.bonus >= -20 &&
-              effect.bonus <= 20 &&
+              effect.bonus <= (effect.target === "spellResistance" ? 99 : 20) &&
               (effect.target !== "allies" ||
                 (Number.isInteger(effect.fastHealing) &&
                   effect.fastHealing > 0 &&
@@ -820,6 +823,18 @@ export function normalizeCharacterDraft(
             effect.fastHealing > 0 &&
             effect.fastHealing <= 20
               ? { fastHealing: effect.fastHealing }
+              : {}),
+            ...(Array.isArray(effect.weaponIds)
+              ? { weaponIds: [...new Set(effect.weaponIds.filter((id) => typeof id === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)))].slice(0, 10) }
+              : {}),
+            ...(typeof effect.damageType === "string" && ["cold", "electricity", "fire", "sonic", "force"].includes(effect.damageType)
+              ? { damageType: effect.damageType }
+              : {}),
+            ...(Number.isInteger(effect.temporaryHitPointsGranted) && effect.temporaryHitPointsGranted > 0 && effect.temporaryHitPointsGranted <= 9999
+              ? { temporaryHitPointsGranted: effect.temporaryHitPointsGranted }
+              : {}),
+            ...(effect.d20Check && typeof effect.d20Check.label === "string" && effect.d20Check.label.trim() && Number.isInteger(effect.d20Check.modifier) && effect.d20Check.modifier >= -99 && effect.d20Check.modifier <= 99 && Number.isInteger(effect.d20Check.targetDc) && effect.d20Check.targetDc >= 1 && effect.d20Check.targetDc <= 999
+              ? { d20Check: { label: effect.d20Check.label.trim().slice(0, 80), modifier: effect.d20Check.modifier, targetDc: effect.d20Check.targetDc, ...(Number.isInteger(effect.d20Check.maximumSpellLevel) && effect.d20Check.maximumSpellLevel >= 0 && effect.d20Check.maximumSpellLevel <= 9 ? { maximumSpellLevel: effect.d20Check.maximumSpellLevel } : {}) } }
               : {}),
           }))
       : [],

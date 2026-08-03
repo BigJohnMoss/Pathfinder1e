@@ -34,6 +34,49 @@ test("Blade Adept replaces the correct exploit levels and exposes its complete r
   assert.equal(features.find((feature) => feature.name === "Sword Bond (Su)")?.optionGroupId, "blade-adept-bonded-weapons");
   assert.deepEqual(bladeAdept.proficiencyAdjustments, [{ category: "weapon", operation: "add", proficiencies: ["Selected bonded weapon (simple or martial)"] }]);
   assert.ok(features.some((feature) => feature.name === "Sentient Sword (Su)" && /black blade/.test(feature.summary)));
+  const progression = features.find((feature) => feature.name === "Sentient Sword (Su)")?.progressionProfiles?.[0];
+  assert.equal(progression?.advancementOptionId, "blade-adept-eldritch-blade");
+  assert.deepEqual(progression?.steps.map(({ level, values }) => [level, values.enhancement, values.ego, values.arcanePool]), [
+    [3, "+1", 5, 1],
+    [5, "+2", 8, 2],
+    [7, "+2", 10, 2],
+    [9, "+3", 12, 3],
+    [11, "+3", 14, 3],
+    [13, "+4", 16, 4],
+    [15, "+4", 18, 4],
+    [17, "+5", 22, 5],
+    [19, "+5", 24, 5],
+  ]);
+  assert.deepEqual(bladeAdept.resourceAdjustments.find((adjustment) => adjustment.resourceId === "blackBladeArcanePool").maximumByLevel, [
+    { level: 3, maximum: 1 },
+    { level: 5, maximum: 2 },
+    { level: 9, maximum: 3 },
+    { level: 13, maximum: 4 },
+    { level: 17, maximum: 5 },
+  ]);
+  const actions = Object.fromEntries(features.flatMap((feature) => (feature.resourceActions ?? []).map((action) => [action.id, action])));
+  assert.deepEqual(Object.keys(actions), [
+    "black-blade-strike",
+    "energy-attunement-elemental",
+    "energy-attunement-advanced",
+    "teleport-blade-own-pool",
+    "teleport-blade-weapon-pool",
+    "transfer-arcana-one",
+    "transfer-arcana-two",
+    "black-blade-spell-defense",
+    "life-drinker-blade-two",
+    "life-drinker-split",
+    "life-drinker-temporary-hit-points",
+  ]);
+  assert.equal(actions["black-blade-strike"].activeEffect.bonusByLevel.at(-1).bonus, 5);
+  assert.equal(actions["transfer-arcana-one"].actorSavingThrow.modifier, "will");
+  assert.equal(actions["transfer-arcana-one"].actorSavingThrow.blockedByActiveEffectName, "Transfer Arcana exhaustion");
+  assert.equal(actions["black-blade-spell-defense"].activeEffect.bonusByLevel.at(-1).bonus, 24);
+  assert.equal(actions["life-drinker-temporary-hit-points"].temporaryHitPointsByLevel[0].amount, 24);
+  assert.equal(bladeAdept.resourceAdjustments.find((adjustment) => adjustment.resourceId === "bladeAdeptCriticalStrike").requiredOptionId, "blade-adept-magus-arcana-critical-strike");
+  assert.equal(bladeAdept.resourceAdjustments.find((adjustment) => adjustment.resourceId === "bladeAdeptSwordBondSpell").maximum, 1);
+  assert.deepEqual(bladeAdept.prohibitedCompanionKinds, ["familiar"]);
+  assert.ok(bladeAdept.prohibitedOptionIds.includes("wizard-arcane-bond-familiar"));
   for (const id of ["arcanist-exploit-1", "arcanist-exploit-3", "arcanist-exploit-9"]) {
     assert.ok(!features.some((feature) => feature.id === id));
   }

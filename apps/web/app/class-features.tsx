@@ -14,15 +14,21 @@ export type DailyResource = {
 const effectTargetLabel = (target: ActiveEffectTarget) => target.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
 const abilityEffectTargets = new Set<ActiveEffectTarget>(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
 
-export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, classLevels = {}, selectedOptionIds = [], onAddEffect }: {
+export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], activeEffects = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
   level: number;
   className: string;
   features: Feature[];
   dailyResources?: DailyResource[];
   abilityModifiers?: Partial<Record<AbilityName, number>>;
+  saveModifiers?: Partial<Record<"fortitude" | "reflex" | "will", number>>;
   classLevels?: Record<string, number>;
+  casterLevels?: Record<string, number>;
   selectedOptionIds?: string[];
+  selectedOptions?: Record<string, string>;
+  activeEffects?: ActiveEffect[];
   onAddEffect?: (effect: ActiveEffect) => void;
+  onRemoveEffectByName?: (name: string) => void;
+  onTemporaryHitPointsChange?: (amount: number) => void;
 }) {
   const [variableAmounts, setVariableAmounts] = useState<Record<string, number>>({});
   const [actionResults, setActionResults] = useState<Record<string, string>>({});
@@ -30,6 +36,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   const [effectRounds, setEffectRounds] = useState<Record<string, number>>({});
   const [actionModes, setActionModes] = useState<Record<string, string>>({});
   const [calculationInputs, setCalculationInputs] = useState<Record<string, number>>({});
+  const [targetHitDice, setTargetHitDice] = useState<Record<string, number>>({});
   const selectedOptionSet = new Set(selectedOptionIds);
 
   return <section className="features">
@@ -45,7 +52,18 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       </div>;
     })}
     <ol>{features.map((feature) => <li key={feature.id}>
-      <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.numericCalculations?.map((calculation) => {
+      <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.progressionProfiles?.map((profile) => {
+        const usesCasterLevel = Boolean(profile.advancementOptionId && selectedOptionSet.has(profile.advancementOptionId));
+        const advancementLevel = usesCasterLevel ? casterLevels[profile.classId] ?? classLevels[profile.classId] ?? 0 : classLevels[profile.classId] ?? 0;
+        const current = profile.steps.filter((step) => step.level <= advancementLevel).sort((left, right) => left.level - right.level).at(-1);
+        if (!current) return null;
+        return <div className="feature-progression-profile" role="region" aria-label={profile.label} key={profile.id}>
+          <div><strong>{profile.label}</strong><span>Advancement level {advancementLevel}{usesCasterLevel ? " · caster level" : " · class level"}</span></div>
+          <dl>{profile.columns.map((column) => <div key={column.id}><dt>{column.label}</dt><dd>{current.values[column.id]}</dd></div>)}</dl>
+          {profile.usesOwnerSavingThrows && <p>Saving throws use yours: Fortitude {saveModifiers.fortitude !== undefined && saveModifiers.fortitude >= 0 ? "+" : ""}{saveModifiers.fortitude ?? 0}, Reflex {saveModifiers.reflex !== undefined && saveModifiers.reflex >= 0 ? "+" : ""}{saveModifiers.reflex ?? 0}, Will {saveModifiers.will !== undefined && saveModifiers.will >= 0 ? "+" : ""}{saveModifiers.will ?? 0}.</p>}
+          {profile.summary && <small>{profile.summary}</small>}
+        </div>;
+      })}{feature.numericCalculations?.map((calculation) => {
         const input = Math.max(calculation.inputMinimum, Math.min(calculation.inputMaximum, calculationInputs[calculation.id] ?? calculation.inputDefault ?? calculation.inputMinimum));
         const calculationLevel = calculation.classId ? classLevels[calculation.classId] ?? 0 : level;
         const base = calculation.baseByLevel.filter((step) => step.level <= calculationLevel).sort((left, right) => left.level - right.level).at(-1)?.value ?? 0;
@@ -55,6 +73,10 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {calculation.summary && <small>{calculation.summary}</small>}
         </div>;
       })}{feature.resourceActions?.map((action) => {
+        const actionClassLevel = action.classId ? classLevels[action.classId] ?? 0 : level;
+        const actionLevel = action.advancementOptionId && selectedOptionSet.has(action.advancementOptionId)
+          ? casterLevels[action.classId ?? ""] ?? actionClassLevel
+          : actionClassLevel;
         const costs = action.costs ?? (action.resourceId && action.cost !== undefined ? [{ resourceId: action.resourceId, cost: action.cost }] : []);
         const changes = action.changes ?? costs.map(({ resourceId, cost }) => ({ resourceId, usedDelta: cost }));
         const variableMaximum = action.variableRecovery
@@ -65,7 +87,18 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           ? [...changes, { resourceId: action.variableRecovery.resourceId, usedDelta: -variableAmount }]
           : changes;
         const resources = appliedChanges.map((change) => ({ ...change, resource: dailyResources.find((candidate) => candidate.id === change.resourceId) }));
-        const unavailable = resources.some(({ usedDelta, resource }) => !resource || (usedDelta > 0 && resource.maximum !== null && Math.max(0, resource.maximum - resource.used) < usedDelta) || (usedDelta < 0 && resource.used <= 0 && !action.variableRecovery));
+        const unavailableResource = resources.some(({ resource }) => !resource);
+        const unavailableCost = resources.some(({ usedDelta, resource }) => usedDelta > 0 && resource?.maximum !== null && Math.max(0, (resource?.maximum ?? 0) - (resource?.used ?? 0)) < usedDelta);
+        const recoveries = resources.filter(({ usedDelta }) => usedDelta < 0);
+        const unavailableRecovery = !action.variableRecovery && recoveries.length > 0 && recoveries.every(({ resource }) => (resource?.used ?? 0) <= 0);
+        const blockedByActorCondition = Boolean(
+          action.actorSavingThrow?.blockedByActiveEffectName &&
+          activeEffects.some(
+            (effect) =>
+              effect.name === action.actorSavingThrow?.blockedByActiveEffectName,
+          ),
+        );
+        const unavailable = unavailableResource || unavailableCost || unavailableRecovery || blockedByActorCondition;
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
@@ -75,13 +108,42 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const rounds = action.activeEffect ? Math.max(1, Math.min(999, effectRounds[action.id] ?? action.activeEffect.defaultRounds ?? 10)) : 0;
         const effectUpgrade = action.activeEffect?.upgrades?.filter((upgrade) => selectedOptionSet.has(upgrade.requiredOptionId)).at(-1);
         const effectName = effectUpgrade?.name ?? action.activeEffect?.name;
-        const effectBonus = effectUpgrade?.bonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0);
+        const tableEffectBonus = action.activeEffect?.bonusByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.bonus;
+        const effectBonus = effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0);
         const saveLevel = action.savingThrow?.classId ? classLevels[action.savingThrow.classId] ?? 0 : level;
-        const saveDc = action.savingThrow ? action.savingThrow.base + Math.floor(saveLevel / action.savingThrow.levelDivisor) + (abilityModifiers[action.savingThrow.ability] ?? 0) : undefined;
+        const fixedSaveDc = action.savingThrow?.fixedDcByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.dc;
+        const saveDc = action.savingThrow ? fixedSaveDc ?? (action.savingThrow.base ?? 0) + Math.floor(saveLevel / (action.savingThrow.levelDivisor ?? 1)) + (action.savingThrow.ability ? abilityModifiers[action.savingThrow.ability] ?? 0 : 0) : undefined;
         const saveText = action.savingThrow ? `${action.savingThrow.label} DC ${saveDc} negates.` : undefined;
         const effectDescription = [selectedMode?.summary, effectUpgrade?.description ?? action.activeEffect?.description, saveText].filter(Boolean).join(" ");
+        const minimumTargetHitDice = action.targetHitDiceRequirement ? Math.max(1, Math.ceil(level / action.targetHitDiceRequirement.levelDivisor)) : 0;
+        const enteredTargetHitDice = Math.max(0, targetHitDice[action.id] ?? minimumTargetHitDice);
+        const targetEligible = !action.targetHitDiceRequirement || enteredTargetHitDice >= minimumTargetHitDice;
+        const temporaryHitPoints = action.temporaryHitPointsByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.amount;
+        const selectedWeaponOption = action.activeEffect?.weaponSelectionFeatureId ? selectedOptions[action.activeEffect.weaponSelectionFeatureId] : undefined;
+        const selectedWeapon = selectedWeaponOption === "blade-adept-bond-other"
+          ? selectedOptions[`${action.activeEffect!.weaponSelectionFeatureId}-weapon`]?.trim().toLowerCase()
+          : selectedWeaponOption?.replace(/^blade-adept-bond-/, "");
         const activate = () => {
+          if (action.actorSavingThrow && saveDc !== undefined) {
+            const roll = Math.floor(Math.random() * 20) + 1;
+            const modifier = saveModifiers[action.actorSavingThrow.modifier] ?? 0;
+            const total = roll + modifier;
+            if (total < saveDc) {
+              const repeatedFailure = activeEffects.some((effect) => effect.name === action.actorSavingThrow!.failureName);
+              const failureName = repeatedFailure ? action.actorSavingThrow.repeatedFailureName ?? action.actorSavingThrow.failureName : action.actorSavingThrow.failureName;
+              const failureDescription = repeatedFailure ? action.actorSavingThrow.repeatedFailureDescription ?? action.actorSavingThrow.failureDescription : action.actorSavingThrow.failureDescription;
+              if (repeatedFailure && failureName !== action.actorSavingThrow.failureName) onRemoveEffectByName?.(action.actorSavingThrow.failureName);
+              onAddEffect?.({ id: `${action.id}-failure-${Date.now()}-${Math.random()}`, name: failureName, target: "self", bonus: 0, description: failureDescription, roundsRemaining: 999 });
+              setActionResults((current) => ({ ...current, [action.id]: `Will save ${roll} ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)} = ${total}; failed DC ${saveDc}. No points transferred; ${failureName.toLowerCase()} applied.` }));
+              return;
+            }
+            setActionResults((current) => ({ ...current, [action.id]: `Will save ${roll} ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)} = ${total}; succeeded against DC ${saveDc}.` }));
+          }
           resources.forEach(({ usedDelta, resource }) => resource?.onUsedChange(resource.used + usedDelta));
+          if (temporaryHitPoints !== undefined) {
+            onTemporaryHitPointsChange?.(temporaryHitPoints);
+            if (action.temporaryHitPointsDurationRounds) onAddEffect?.({ id: `${action.id}-temporary-hit-points-${Date.now()}-${Math.random()}`, name: action.label, target: "self", bonus: 0, description: `${temporaryHitPoints} temporary hit points expire when this duration ends if they have not already been spent.`, roundsRemaining: action.temporaryHitPointsDurationRounds, temporaryHitPointsGranted: temporaryHitPoints });
+          }
           if (action.activeEffect && effectTarget && onAddEffect) onAddEffect({
             id: `${action.id}-${Date.now()}-${Math.random()}`,
             name: effectName ?? action.activeEffect.name,
@@ -89,6 +151,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             bonus: effectBonus,
             ...(effectDescription ? { description: effectDescription } : {}),
             roundsRemaining: rounds,
+            ...(selectedWeapon ? { weaponIds: [selectedWeapon] } : {}),
+            ...(action.activeEffect.usesSelectedModeAsDamageType && selectedMode ? { damageType: selectedMode.id } : {}),
           });
           if (action.randomOutcomes?.length) {
             const outcome = action.randomOutcomes[Math.floor(Math.random() * action.randomOutcomes.length)];
@@ -97,13 +161,16 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             ...current,
             [action.id]: `${effectDescription || action.activeEffect!.name} Active for ${rounds} round${rounds === 1 ? "" : "s"}.`,
           }));
+          else if (temporaryHitPoints !== undefined) setActionResults((current) => ({ ...current, [action.id]: `Gained ${temporaryHitPoints} temporary hit points.` }));
+          else if (!action.actorSavingThrow) setActionResults((current) => ({ ...current, [action.id]: "Ability used." }));
         };
         return <div className="feature-resource-action" key={action.id}>
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
           {Boolean(action.modes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{action.modes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
           {action.savingThrow && <output aria-label={`${action.label} save DC`}>{action.savingThrow.label} save DC {saveDc}</output>}
+          {action.targetHitDiceRequirement && <label>{action.targetHitDiceRequirement.label}<input aria-label={`${action.label} target Hit Dice`} type="number" min="0" max="999" value={enteredTargetHitDice} onChange={(event) => setTargetHitDice((current) => ({ ...current, [action.id]: Math.max(0, Math.min(999, Number(event.target.value) || 0)) }))} /><small>Requires at least {minimumTargetHitDice} Hit Dice.</small></label>}
           {action.activeEffect && <>{action.activeEffect.targets.length > 1 && <label>{effectTargetChoiceLabel}<select aria-label={`${action.label} ${effectTargetChoiceLabel.toLowerCase()}`} value={effectTarget} onChange={(event) => setEffectTargets((current) => ({ ...current, [action.id]: event.target.value as ActiveEffectTarget }))}>{action.activeEffect.targets.map((target) => <option key={target} value={target}>{effectTargetLabel(target)}</option>)}</select></label>}{action.activeEffect.fixedRounds ? <small>Duration: {rounds} round{rounds === 1 ? "" : "s"}</small> : <label>Rounds<input aria-label={`${action.label} rounds`} type="number" min="1" max="999" value={rounds} onChange={(event) => setEffectRounds((current) => ({ ...current, [action.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label>}</>}
-          <button type="button" disabled={appliedChanges.length === 0 || unavailable} onClick={activate}>{label}</button>
+          <button type="button" disabled={(!action.activeEffect && temporaryHitPoints === undefined && appliedChanges.length === 0) || unavailable || !targetEligible} title={blockedByActorCondition ? `Unavailable while ${action.actorSavingThrow?.blockedByActiveEffectName}.` : undefined} onClick={activate}>{label}</button>
           <small>{action.summary ?? costs.map(({ cost }) => `Spend ${cost}`).join(" and ")}</small>
           {result && <output aria-label={`${action.label} result`}>{result}</output>}
         </div>;

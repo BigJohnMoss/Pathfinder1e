@@ -46,6 +46,30 @@ test("archetypes can replace or add bounded reusable class resources", () => {
   assert.deepEqual(normalizeClassResourcesByClass({ bard: { healing: 69 } }, [{ classId: "bard", level: 20 }], {}, { bard: [healer] }), { bard: { healing: 5 } });
 });
 
+test("Blade Adept black blade resources follow the exact table and Eldritch Blade caster level", () => {
+  const bladeAdept = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/arcanist-blade-adept.json", import.meta.url), "utf8"));
+  const maximum = (classLevel, context = {}) => applyArchetypeResourceAdjustments({}, [bladeAdept], classLevel, {}, context).blackBladeArcanePool;
+
+  assert.deepEqual(
+    [3, 4, 5, 8, 9, 12, 13, 16, 17, 20].map((level) => maximum(level)),
+    [1, 1, 2, 2, 3, 3, 4, 4, 5, 5],
+  );
+  assert.equal(maximum(3, { selectedOptionIds: ["blade-adept-eldritch-blade"], casterLevel: 9 }), 3);
+  assert.equal(maximum(3, { selectedOptionIds: [], casterLevel: 9 }), 1);
+  assert.equal(applyArchetypeResourceAdjustments({}, [bladeAdept], 12, {}, {}).bladeAdeptCriticalStrike, undefined);
+  assert.equal(applyArchetypeResourceAdjustments({}, [bladeAdept], 12, {}, { selectedOptionIds: ["blade-adept-magus-arcana-critical-strike"] }).bladeAdeptCriticalStrike, 1);
+  assert.deepEqual(
+    normalizeClassResourcesByClass(
+      { arcanist: { blackBladeArcanePool: 69 } },
+      [{ classId: "arcanist", level: 3 }],
+      {},
+      { arcanist: [bladeAdept] },
+      { arcanist: { selectedOptionIds: ["blade-adept-eldritch-blade"], casterLevel: 9 } },
+    ),
+    { arcanist: { bladeAdeptSwordBondSpell: 0, blackBladeArcanePool: 3 } },
+  );
+});
+
 test("archetype resource catalogue covers reusable level and ability progressions", () => {
   const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("alchemist-ectochymist")], 10, { intelligence: 4 }), { ectoplasmicBlanche: 14 });

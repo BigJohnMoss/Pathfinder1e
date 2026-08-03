@@ -507,6 +507,13 @@ for (const journey of journeys) {
 
     await page.getByLabel("Sword Bond (Su) level 1").selectOption("blade-adept-bond-rapier");
     await expect(page.getByText("Weapon proficiencies: gain Selected bonded weapon (simple or martial)")).toBeVisible();
+    await expect(page.getByRole("region", { name: "Black blade progression" })).toContainText("Ego16");
+    await expect(page.getByRole("region", { name: "Black blade progression" })).toContainText("Blade pool4");
+    await expect(page.getByLabel("Arcanist Black Blade Arcane Pool remaining")).toContainText("4/4");
+    await page.getByRole("button", { name: "Use Black Blade Strike" }).click();
+    await expect(page.getByLabel("Arcanist Black Blade Arcane Pool remaining")).toContainText("3/4");
+    await expect(page.getByLabel("Use Black Blade Strike result")).toContainText("Active for 10 rounds");
+    await expect(page.getByLabel("Transfer 2 Blade Points save DC")).toHaveText("Will save DC 16");
 
     const fifthLevelExploit = page.getByLabel("Arcanist Exploit level 5");
     await expect(fifthLevelExploit.locator('option[value="blade-adept-student-weapon-focus"]')).toHaveCount(1);
