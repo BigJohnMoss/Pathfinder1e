@@ -209,12 +209,16 @@ const wizardOppositionFeatureIds = [
   "wizard-opposition-school-1-first",
   "wizard-opposition-school-1-second",
 ] as const;
+const schoolSavantOppositionFeatureIds = [
+  "school-savant-opposition-school-1-first",
+  "school-savant-opposition-school-1-second",
+] as const;
 const oppositionSchoolsFromOptions = (
   selectedClassId: string,
   options: Record<string, string>,
 ) =>
-  selectedClassId === "wizard"
-    ? wizardOppositionFeatureIds
+  selectedClassId === "wizard" || selectedClassId === "arcanist"
+    ? (selectedClassId === "wizard" ? wizardOppositionFeatureIds : schoolSavantOppositionFeatureIds)
         .map((featureId) => options[featureId])
         .filter((id): id is string => typeof id === "string" && id.length > 0)
     : [];

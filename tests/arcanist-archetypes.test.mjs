@@ -6,6 +6,8 @@ import { applyArchetype, featuresThroughLevel } from "../packages/engine/src/ind
 const directory = new URL("../packages/data/src/archetypes/", import.meta.url);
 const arcanist = JSON.parse(await readFile(new URL("../packages/data/src/classes/arcanist.json", import.meta.url), "utf8"));
 const elementalMasterElements = JSON.parse(await readFile(new URL("../packages/data/src/options/elemental-master-elements.json", import.meta.url), "utf8"));
+const schoolSavantSchools = JSON.parse(await readFile(new URL("../packages/data/src/options/school-savant-schools.json", import.meta.url), "utf8"));
+const schoolSavantOppositionSchools = JSON.parse(await readFile(new URL("../packages/data/src/options/school-savant-opposition-schools.json", import.meta.url), "utf8"));
 const archetypes = await Promise.all((await readdir(directory))
   .filter((name) => name.startsWith("arcanist-") && name.endsWith(".json"))
   .map(async (name) => JSON.parse(await readFile(new URL(name, directory), "utf8"))));
@@ -50,4 +52,17 @@ test("Elemental Master requires one of four inherited elemental schools", () => 
     "wizard-school-fire",
     "wizard-school-water",
   ]);
+});
+
+test("School Savant exposes inherited schools, opposition choices, and all nine specialist slots", () => {
+  const schoolSavant = archetypes.find((archetype) => archetype.id === "arcanist-school-savant");
+  const features = featuresThroughLevel(applyArchetype(arcanist, schoolSavant), 20);
+  assert.equal(features.find((feature) => feature.id === "school-savant-school-focus-1")?.optionGroupId, "school-savant-schools");
+  assert.equal(features.filter((feature) => feature.id.startsWith("school-savant-opposition-school-")).length, 2);
+  assert.deepEqual(
+    features.filter((feature) => feature.id.startsWith("school-savant-specialist-spell-")).map((feature) => feature.level),
+    [1, 4, 6, 8, 10, 12, 14, 16, 18],
+  );
+  assert.equal(schoolSavantSchools.inheritsOptionsFrom, "wizard-schools");
+  assert.equal(schoolSavantOppositionSchools.inheritsOptionsFrom, "wizard-opposition-schools");
 });
