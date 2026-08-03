@@ -11,7 +11,7 @@ async function openCharacterPanel(page: Page, mobile: boolean) {
   }
 }
 
-test("spends and enforces Aeromancer feature-action reservoir costs", async ({ page }) => {
+test("tracks Aeromancer Wind's Embrace and Rebuking Gale", async ({ page }) => {
   await page.goto("/");
   await page.evaluate(() => localStorage.clear());
   await page.reload();
@@ -22,14 +22,55 @@ test("spends and enforces Aeromancer feature-action reservoir costs", async ({ p
   await page.getByRole("tab", { name: "Features" }).click();
   const reservoir = page.getByLabel("Arcane Reservoir remaining");
   await expect(reservoir).toHaveText("3/14 point remaining");
-  await page.getByRole("button", { name: "Boost qualifying spell caster level" }).click();
-  await expect(reservoir).toHaveText("2/14 point remaining");
   await page.getByRole("button", { name: "Use Wind's Embrace" }).click();
-  await expect(reservoir).toHaveText("0/14 point remaining");
-  await expect(page.getByRole("button", { name: "Use Rebuking Gale" })).toBeDisabled();
+  await expect(reservoir).toHaveText("1/14 point remaining");
+  await expect(page.getByLabel("Use Wind's Embrace result")).toContainText("10 rounds");
+  await page.getByRole("tab", { name: "Actions" }).click();
+  await expect(page.getByText(/Air walk and a protective wind wall/)).toContainText("10 rounds");
+  await page.getByRole("button", { name: "Next round" }).click();
+  await expect(page.getByText(/Air walk and a protective wind wall/)).toContainText("9 rounds");
+
+  await page.getByRole("tab", { name: "Features" }).click();
+  await page.getByRole("button", { name: "Refresh arcane reservoir" }).click();
+  await expect(reservoir).toHaveText("8/14 point remaining");
+  await page.getByLabel("Use Rebuking Gale mode").selectOption("cone");
+  await page.getByRole("button", { name: "Use Rebuking Gale" }).click();
+  await expect(reservoir).toHaveText("5/14 point remaining");
+  await expect(page.getByLabel("Use Rebuking Gale result")).toContainText("40-foot cone");
+  await page.getByRole("tab", { name: "Actions" }).click();
+  await expect(page.getByText(/40-foot cone originating from your space/)).toContainText("1 round");
 });
 
 for (const journey of journeys) {
+test(`casts descriptor-qualified Aeromancer spells with Air Mastery on ${journey.name}`, async ({ page }) => {
+  await page.setViewportSize(journey.viewport);
+  await page.goto("/");
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await openCharacterPanel(page, journey.mobile);
+  await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+  await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-aeromancer");
+  await page.locator('input[type="number"][min="1"][max="20"]').fill("11");
+  if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+  await page.getByRole("tab", { name: "Basic info" }).click();
+  await page.getByLabel("Intelligence base score").fill("16");
+  await page.getByRole("tab", { name: "Spells" }).click();
+  await expect(page.getByRole("region", { name: "Air Mastery" })).toContainText("+4 caster level or +3 save DC");
+  await page.getByLabel("Search spells").fill("Magic Missile");
+  await expect(page.getByRole("button", { name: /Magic Missile with Air Mastery/ })).toHaveCount(0);
+  await page.getByLabel("Search spells").fill("Lightning Bolt");
+  await page.getByRole("button", { name: "Add Lightning Bolt" }).click();
+  const reservoir = page.getByLabel("Arcane Reservoir points");
+  await expect(reservoir).toHaveText("3/14 reservoir");
+  await page.getByRole("button", { name: "Cast Lightning Bolt with Air Mastery caster level", exact: true }).click();
+  await expect(page.getByLabel("Air Mastery result")).toHaveText("Cast Lightning Bolt with Air Mastery: +4 caster level (electricity descriptor).");
+  await expect(reservoir).toHaveText("2/14 reservoir");
+  await page.getByRole("button", { name: "Cast Lightning Bolt with Air Mastery save DC", exact: true }).click();
+  await expect(page.getByLabel("Air Mastery result")).toHaveText("Cast Lightning Bolt with Air Mastery: +3 save DC (electricity descriptor).");
+  await expect(reservoir).toHaveText("1/14 reservoir");
+  await expect(page.getByText(/Arcanist \(Aeromancer\) slots:/)).toContainText("3/5 3rd-level");
+});
+
 test(`enforces Twilight Sage daily transfer and necromancy preparation on ${journey.name}`, async ({ page }) => {
   await page.setViewportSize(journey.viewport);
   await page.goto("/");

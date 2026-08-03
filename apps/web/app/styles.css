@@ -419,6 +419,7 @@ a:focus-visible,
 .spell-day-controls > button,
 .archetype-spell-action button,
 .cast-spell-button,
+.descriptor-boost-button,
 .share-spell-button,
 .spell-selection-control button {
   background: #fff;
@@ -434,6 +435,7 @@ a:focus-visible,
 
 .cast-spell-button:disabled,
 .archetype-spell-action button:disabled,
+.descriptor-boost-button:disabled,
 .share-spell-button:disabled {
   cursor: not-allowed;
   opacity: .5;
@@ -459,6 +461,8 @@ a:focus-visible,
 
 .spell-actions {
   flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .spell-details {
@@ -613,7 +617,9 @@ a:focus-visible,
 
 .prepared-spell-groups li > div {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
+  justify-content: flex-end;
 }
 
 .prepared-spell-groups button {

@@ -4,6 +4,7 @@ import {
   extendedSpellDuration,
   isPersonalRangeSpell,
   isTransmutationSpell,
+  spellHasDescriptor,
   spellHasSchool,
 } from "../packages/engine/src/index.js";
 
@@ -13,6 +14,8 @@ test("spell schools and personal ranges normalize for archetype automation", () 
   assert.equal(isTransmutationSpell({ school: "evocation" }), false);
   assert.equal(isPersonalRangeSpell({ range: " Personal " }), true);
   assert.equal(isPersonalRangeSpell({ range: "touch" }), false);
+  assert.equal(spellHasDescriptor({ descriptors: ["air", "electricity"] }, "ELECTRICITY"), true);
+  assert.equal(spellHasDescriptor({ descriptors: ["cold"] }, "fire"), false);
 });
 
 test("Extend Spell doubles eligible durations and excludes forbidden durations", () => {

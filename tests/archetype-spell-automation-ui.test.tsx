@@ -16,6 +16,10 @@ const whiteMage = JSON.parse(
   readFileSync(new URL("../packages/data/src/archetypes/arcanist-white-mage.json", import.meta.url), "utf8"),
 ) as CharacterArchetype;
 const appliedWhiteMage = applyArchetype(arcanist, whiteMage);
+const aeromancer = JSON.parse(
+  readFileSync(new URL("../packages/data/src/archetypes/arcanist-aeromancer.json", import.meta.url), "utf8"),
+) as CharacterArchetype;
+const appliedAeromancer = applyArchetype(arcanist, aeromancer);
 
 test("Brown-Fur spell automation unlocks and improves at the correct levels", () => {
   assert.equal(classSpellAutomation(applied, 8), undefined);
@@ -60,4 +64,26 @@ test("White Mage Fast Healing automation requires its greater exploit selection"
       minimumRounds: 1,
     },
   });
+});
+
+test("Aeromancer Air Mastery resolves its level-scaled casting bonuses", () => {
+  assert.deepEqual(classSpellAutomation(appliedAeromancer, 1), {
+    descriptorReservoirBoost: {
+      label: "Air Mastery",
+      resourceId: "arcaneReservoir",
+      reservoirCost: 1,
+      descriptors: ["air", "cold", "electricity", "sonic"],
+      casterLevelBonus: 2,
+      saveDcBonus: 2,
+    },
+  });
+  assert.deepEqual(classSpellAutomation(appliedAeromancer, 11)?.descriptorReservoirBoost, {
+    label: "Air Mastery",
+    resourceId: "arcaneReservoir",
+    reservoirCost: 1,
+    descriptors: ["air", "cold", "electricity", "sonic"],
+    casterLevelBonus: 4,
+    saveDcBonus: 3,
+  });
+  assert.equal(classSpellAutomation(appliedAeromancer, 20)?.descriptorReservoirBoost?.casterLevelBonus, 6);
 });

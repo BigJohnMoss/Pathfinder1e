@@ -9,7 +9,7 @@ export { inferArchetypeResourceAdjustments };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
-export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasSchool } from "./spell-modifiers.js";
+export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
   adjustment.minimumEffectiveLevel ?? 1,
@@ -789,6 +789,8 @@ export function normalizeCharacterDraft(
                 "wisdom",
                 "charisma",
                 "allies",
+                "self",
+                "area",
               ].includes(effect.target) &&
               Number.isInteger(effect.bonus) &&
               effect.bonus >= -20 &&
@@ -797,6 +799,9 @@ export function normalizeCharacterDraft(
                 (Number.isInteger(effect.fastHealing) &&
                   effect.fastHealing > 0 &&
                   effect.fastHealing <= 20)) &&
+              (!["self", "area"].includes(effect.target) ||
+                (typeof effect.description === "string" &&
+                  effect.description.trim())) &&
               Number.isInteger(effect.roundsRemaining) &&
               effect.roundsRemaining > 0,
           )
