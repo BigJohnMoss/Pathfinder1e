@@ -1,0 +1,8 @@
+{
+  "id": "arcane-tinkerer-level-13-choice",
+  "name": "Arcane Tinkerer 13th-Level Choice",
+  "classIds": ["arcanist"],
+  "inheritsOptionsFrom": "arcanist-exploits",
+  "optionDefaults": {"groupId":"arcane-tinkerer-level-13-choice","classIds":["arcanist"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Construct Handbook","page":10,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Arcane%20Tinkerer"}},
+  "options": [{"id":"arcane-tinkerer-helpless-construct","name":"Greater Manipulate Construct (Helpless)","minimumLevel":13,"prerequisites":[{"type":"feature","id":"arcane-tinkerer-slow-construct"}],"benefit":"Manipulate Construct instead renders its target helpless for 1 round."}]
+}

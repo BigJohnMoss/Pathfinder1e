@@ -212,3 +212,16 @@ test("Twilight Sage enforces its mandatory exploit, necromancy focus, and daily 
   ]);
   assert.equal(twilight.resourceAdjustments.find((resource) => resource.resourceId === "twilightTransfer")?.maximum, 1);
 });
+
+test("Arcane Tinkerer unlocks at 1st level and branches at 7th and 13th", () => {
+  const tinkerer = archetypes.find((archetype) => archetype.id === "arcanist-arcane-tinkerer");
+  const applied = applyArchetype(arcanist, tinkerer);
+  assert.ok(featuresThroughLevel(applied, 1).some((feature) => feature.id === "arcanist-arcane-tinkerer-manipulate-construct-su-1"));
+  for (const level of [1, 5, 7, 11, 13]) assert.ok(!applied.features.some((feature) => feature.id === `arcanist-exploit-${level}`));
+  const choices = featuresThroughLevel(applied, 13).filter((feature) => feature.optionGroupId?.startsWith("arcane-tinkerer-level-"));
+  assert.deepEqual(choices.map((feature) => feature.level), [7, 13]);
+  const seventh = generatedData.optionGroups.find((group) => group.id === "arcane-tinkerer-level-7-choice");
+  const thirteenth = generatedData.optionGroups.find((group) => group.id === "arcane-tinkerer-level-13-choice");
+  assert.ok(seventh.options.some((option) => option.id === "arcane-tinkerer-slow-construct"));
+  assert.deepEqual(thirteenth.options.find((option) => option.id === "arcane-tinkerer-helpless-construct")?.prerequisites, [{ type: "feature", id: "arcane-tinkerer-slow-construct" }]);
+});
