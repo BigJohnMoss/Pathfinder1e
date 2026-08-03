@@ -218,6 +218,25 @@ const oppositionSchoolsFromOptions = (
         .map((featureId) => options[featureId])
         .filter((id): id is string => typeof id === "string" && id.length > 0)
     : [];
+const elementalMasterPreparationFromOptions = (
+  characterClass: (typeof classes)[number] | undefined,
+  options: Record<string, string>,
+) => {
+  if (!characterClass?.features.some((feature) => feature.id === "arcanist-elemental-master-elemental-focus-su-1")) return null;
+  const element = optionGroups
+    .find((group) => group.id === "elemental-master-elements")
+    ?.options.find((option) => option.id === options["arcanist-elemental-master-elemental-focus-su-1"]);
+  if (!element) return null;
+  const oppositionElement = optionGroups
+    .find((group) => group.id === "wizard-schools")
+    ?.options.find((option) => option.id === `wizard-school-${element.elementalOppositionSchool}`);
+  return {
+    eligibleSpellIds: Object.values(element.elementalSpellIdsByLevel ?? {}).flat(),
+    oppositionSpellIds: Object.values(oppositionElement?.elementalSpellIdsByLevel ?? {}).flat(),
+    countPerLevel: 1,
+    label: `${element.name} bonus slot`,
+  };
+};
 const bloodlineFromOptions = (
   selectedClassId: string,
   options: Record<string, string>,
@@ -1695,6 +1714,10 @@ export default function Home() {
     () => oppositionSchoolsFromOptions(classId, selectedOptions),
     [classId, selectedOptions],
   );
+  const elementalMasterPreparation = useMemo(
+    () => elementalMasterPreparationFromOptions(characterClass, selectedOptions),
+    [characterClass, selectedOptions],
+  );
   const secondaryCastingAbility =
     secondaryCharacterClass?.spellcasting &&
     abilityNames.includes(
@@ -1944,6 +1967,10 @@ export default function Home() {
         secondaryCharacterClass?.id ?? "",
         selectedOptions,
       ),
+    [secondaryCharacterClass, selectedOptions],
+  );
+  const secondaryElementalMasterPreparation = useMemo(
+    () => elementalMasterPreparationFromOptions(secondaryCharacterClass, selectedOptions),
     [secondaryCharacterClass, selectedOptions],
   );
   const sourceBookFor = (
@@ -2326,6 +2353,8 @@ export default function Home() {
           characterClass.id,
           preparedLimits,
           oppositionSchoolIds,
+          elementalMasterPreparation?.oppositionSpellIds ?? [],
+          elementalMasterPreparation,
         );
   const updateSelectedSpells = (spellIds: string[]) =>
     setSelectedSpellIds(normalizeSelectedSpells(spellIds));
@@ -2346,6 +2375,8 @@ export default function Home() {
             secondaryCharacterClass.id,
             secondaryPreparedLimits,
             secondaryOppositionSchoolIds,
+            secondaryElementalMasterPreparation?.oppositionSpellIds ?? [],
+            secondaryElementalMasterPreparation,
           );
   const updateSecondarySelectedSpells = (spellIds: string[]) =>
     setSecondarySelectedSpellIds(normalizeSecondarySelectedSpells(spellIds));
@@ -2365,6 +2396,7 @@ export default function Home() {
       isSpontaneous,
       knownLimits,
       oppositionSchoolIds,
+      elementalMasterPreparation,
       preparedLimits,
     ],
   );
@@ -2491,6 +2523,8 @@ export default function Home() {
       onReservoirChange={updateReservoir}
       onRefreshDay={refreshDay}
       oppositionSchoolIds={oppositionSchoolIds}
+      oppositionSpellIds={elementalMasterPreparation?.oppositionSpellIds}
+      restrictedBonus={elementalMasterPreparation}
     />
   ) : null;
   const secondarySpellbook =
@@ -2549,6 +2583,8 @@ export default function Home() {
         onReservoirChange={updateSecondaryReservoir}
         onRefreshDay={refreshSecondaryDay}
         oppositionSchoolIds={secondaryOppositionSchoolIds}
+        oppositionSpellIds={secondaryElementalMasterPreparation?.oppositionSpellIds}
+        restrictedBonus={secondaryElementalMasterPreparation}
       />
     ) : null;
   const extraActiveClassLevel = additionalClassLevels

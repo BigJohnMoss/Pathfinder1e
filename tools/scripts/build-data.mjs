@@ -22,7 +22,9 @@ const mysteryDetails=new Map(mysteryDetailFiles.flatMap(file=>file.mysteries).ma
 const sourceOptionGroups=await loadDir('options');
 const optionGroupById=new Map(sourceOptionGroups.map(group=>[group.id,group]));
 const rawOptionGroups=sourceOptionGroups.map(group=>{
-  const inherited=group.inheritsOptionsFrom ? optionGroupById.get(group.inheritsOptionsFrom)?.options??[] : [];
+  const inheritedSource=group.inheritsOptionsFrom ? optionGroupById.get(group.inheritsOptionsFrom)?.options??[] : [];
+  const inheritedIds=group.inheritedOptionIds ? new Set(group.inheritedOptionIds) : null;
+  const inherited=inheritedIds ? inheritedSource.filter(option=>inheritedIds.has(option.id)) : inheritedSource;
   const options=[...inherited,...group.options].map(option=>({...group.optionDefaults,...option,groupId:group.id,classIds:group.classIds,...(domainDetails.get(option.id)??{}),...(bloodlineDetails.get(option.id)??{}),...(mysteryDetails.get(option.id)??{})}));
   return {...group,options:[...options,...(group.id==="cleric-domains"?subdomains:[])]};
 });

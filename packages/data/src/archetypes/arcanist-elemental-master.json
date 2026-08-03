@@ -18,7 +18,10 @@
           "id": "arcanist-elemental-master-elemental-focus-su-1",
           "name": "Elemental Focus (Su)",
           "level": 1,
-          "type": "archetype",
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "elemental-master-elements",
+          "progressionKey": "elemental-master-element",
           "summary": "At 1st level, the elemental master must select one element: air, earth, fire, or water. The arcanist can prepare one additional spell per day of each level she can cast, but it must have the elemental descriptor of her chosen element. In addition, any spell she prepares from the opposite elemental school (air opposes earth, fire opposes water) takes up two of her prepared spell slots. This ability replaces the arcanist exploit gained at 1st level."
         },
         {
@@ -59,6 +62,7 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Element selection, restricted bonus preparation slots, and opposition preparation costs are automated.",
+    "Elemental attack damage, range, and movement are calculated in feature rules but still require manual use on the tabletop."
   ]
 }

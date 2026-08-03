@@ -39,6 +39,7 @@ export function Spellbook({
   onRefreshDay,
   oppositionSchoolIds = [],
   oppositionSpellIds = [],
+  restrictedBonus = null,
 }: {
   spells: Spell[];
   sourceBook?: {
@@ -67,6 +68,7 @@ export function Spellbook({
   onRefreshDay: () => void;
   oppositionSchoolIds?: string[];
   oppositionSpellIds?: string[];
+  restrictedBonus?: { eligibleSpellIds: string[]; countPerLevel: number; label: string } | null;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -113,8 +115,23 @@ export function Spellbook({
       );
   }, [classId, preparedSpellIds, spells]);
   const preparedCount = (level: number) => preparedUsage[level] ?? 0;
+  const restrictedEligibleIds = useMemo(
+    () => new Set(restrictedBonus?.eligibleSpellIds ?? []),
+    [restrictedBonus],
+  );
+  const restrictedIneligibleUsage = useMemo(
+    () => preparedSpellIds.reduce<Record<number, number>>((usage, id) => {
+      if (restrictedEligibleIds.has(id)) return usage;
+      const spell = spells.find((candidate) => candidate.id === id);
+      const level = spell?.levelByClass[classId];
+      if (!spell || !Number.isInteger(level)) return usage;
+      usage[level as number] = (usage[level as number] ?? 0) + spellPreparationCost(spell, oppositionSchoolIds, oppositionSpellIds);
+      return usage;
+    }, {}),
+    [classId, oppositionSchoolIds, oppositionSpellIds, preparedSpellIds, restrictedEligibleIds, spells],
+  );
   const limitFor = (level: number) =>
-    preparedLimits.find((entry) => entry.level === level)?.count ?? 0;
+    (preparedLimits.find((entry) => entry.level === level)?.count ?? 0) + (level > 0 ? restrictedBonus?.countPerLevel ?? 0 : 0);
   const remainingSlots = (level: number) => {
     const slot = slots.find((entry) => entry.level === level);
     return slot ? slot.count - (slotUses[level] ?? 0) : Infinity;
@@ -167,10 +184,15 @@ export function Spellbook({
         {preparedLimits
           .map(
             (limit) =>
-              `${preparedCount(limit.level)}/${limit.count} prepared ${levelLabel(limit.level)}`,
+              `${preparedCount(limit.level)}/${limitFor(limit.level)} prepared ${levelLabel(limit.level)}`,
           )
           .join(" · ")}
       </p>
+      {restrictedBonus && (
+        <p className="hint">
+          Each spell level includes 1 {restrictedBonus.label}; preparations beyond the normal limit must match that element.
+        </p>
+      )}
       <div className="spell-day-controls">
         <button type="button" onClick={onRefreshDay}>
           Refresh day
@@ -403,8 +425,12 @@ export function Spellbook({
                     oppositionSchoolIds,
                     oppositionSpellIds,
                   );
+                  const baseLimit = preparedLimits.find((entry) => entry.level === level)?.count ?? 0;
+                  const restrictedIneligibleFull = Boolean(restrictedBonus)
+                    && !restrictedEligibleIds.has(spell.id)
+                    && (restrictedIneligibleUsage[level] ?? 0) + preparationCost > baseLimit;
                   const full =
-                    preparedCount(level) + preparationCost > limitFor(level);
+                    preparedCount(level) + preparationCost > limitFor(level) || restrictedIneligibleFull;
                   const canCast = level === 0 || remainingSlots(level) > 0;
                   return (
                     <article key={spell.id}>
@@ -420,6 +446,9 @@ export function Spellbook({
                             : ""}
                           {preparationCost === 2
                             ? " · opposition school: costs 2 prepared slots"
+                            : ""}
+                          {restrictedBonus && restrictedEligibleIds.has(spell.id)
+                            ? ` · eligible for ${restrictedBonus.label}`
                             : ""}
                         </small>
                       </div>
