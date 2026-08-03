@@ -92,6 +92,7 @@ const optionGroups=rawOptionGroups.map(group=>{
       spellId:spell.id,
       spellLevel,
       castsAsPrepared:filter.castsAsPrepared??false,
+      ignoresMaximumSpellLevel:filter.ignoresMaximumSpellLevel??false,
       resourceCost:filter.resourceCost,
       source:spell.source??group.source
     };

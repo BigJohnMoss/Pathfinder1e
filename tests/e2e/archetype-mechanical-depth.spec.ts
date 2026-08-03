@@ -622,6 +622,27 @@ for (const journey of journeys) {
     await expect(reservoir).toHaveText("2/4 reservoir");
   });
 
+  test(`uses Occultist Conjurer's Focus without spell slots on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-occultist");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("3");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await page.getByLabel("Search spells").fill("Summon Monster 2");
+    await expect(page.getByRole("button", { name: "Add Summon Monster 2", exact: true })).toBeDisabled();
+    await expect(page.getByText(/Conjurer's Focus: cast on demand for 2 reservoir points/)).toBeVisible();
+    const reservoir = page.getByLabel("Arcane Reservoir points");
+    const before = Number((await reservoir.textContent())?.split("/")[0]);
+    await page.getByRole("button", { name: "Cast Summon Monster 2", exact: true }).click();
+    await expect(reservoir).toHaveText(`${before - 2}/6 reservoir`);
+    await expect(page.getByText(/Arcanist \(Occultist\) slots: 5\/5 1st-level/)).toBeVisible();
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);

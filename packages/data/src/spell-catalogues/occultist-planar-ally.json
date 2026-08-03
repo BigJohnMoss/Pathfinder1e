@@ -1,0 +1,39 @@
+{
+  "source": {
+    "title": "Core Rulebook",
+    "page": null,
+    "url": "https://www.aonprd.com/Spells.aspx?Class=Cleric"
+  },
+  "spells": [
+    {
+      "id": "planar-ally-lesser",
+      "name": "Lesser Planar Ally",
+      "levelByClass": { "cleric": 4 },
+      "school": "conjuration",
+      "summary": "Call an extraplanar ally of up to 6 Hit Dice and bargain for its service.",
+      "description": "You call an extraplanar creature of 6 Hit Dice or less and request its aid. The called creature is free to negotiate payment for the requested service, and returns to its home plane when the service is complete.",
+      "castingTime": "10 minutes",
+      "components": ["V", "S", "DF"],
+      "range": "close (25 ft. + 5 ft./2 levels)",
+      "duration": "instantaneous",
+      "savingThrow": "none",
+      "spellResistance": "no",
+      "source": { "title": "Core Rulebook", "page": null, "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Planar%20Ally,%20Lesser" }
+    },
+    {
+      "id": "planar-ally",
+      "name": "Planar Ally",
+      "levelByClass": { "cleric": 6 },
+      "school": "conjuration",
+      "summary": "Call one or more extraplanar allies totaling up to 12 Hit Dice and bargain for their service.",
+      "description": "This spell functions like lesser planar ally, except you may call one creature of 12 Hit Dice or less or up to three creatures of the same kind whose Hit Dice total no more than 12.",
+      "castingTime": "10 minutes",
+      "components": ["V", "S", "DF"],
+      "range": "close (25 ft. + 5 ft./2 levels)",
+      "duration": "instantaneous",
+      "savingThrow": "none",
+      "spellResistance": "no",
+      "source": { "title": "Core Rulebook", "page": null, "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Planar%20Ally" }
+    }
+  ]
+}

@@ -9,10 +9,10 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 7 |
-| Option groups | 104 |
+| Option groups | 105 |
 | Feats | 3447 |
 | Traits | 40 |
-| Spells | 2758 |
+| Spells | 2760 |
 | Equipment | 80 |
 
 ## Feat prerequisites
@@ -39,7 +39,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 |---|---:|
 | Resources and limited uses | 27 |
 | Companions and effective levels | 34 |
-| Spell lists, slots, and casting | 48 |
+| Spell lists, slots, and casting | 49 |
 | Class skills and skill-rank progressions | 55 |
 | Combat statistics and proficiencies | 17 |
 
@@ -64,9 +64,9 @@ These rule-text signals are multi-label: one archetype can contribute to several
 
 | Coverage | Count |
 |---|---:|
-| Full rules descriptions | 2758 |
-| Rules source links | 2758 |
-| Core casting statistics | 2758 |
+| Full rules descriptions | 2760 |
+| Rules source links | 2760 |
+| Core casting statistics | 2760 |
 
 ## Class progression
 

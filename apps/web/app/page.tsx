@@ -295,11 +295,11 @@ function spellsFromAdditions<T extends { id: string; levelByClass: Record<string
   });
 }
 
-function onDemandSpellCosts(options: CharacterOption[], classId: string) {
+function onDemandSpellCosts(options: CharacterOption[], classId: string, classLevel: number) {
   return Object.fromEntries(options.flatMap((option) => {
     if (!option.castsAsPrepared || !option.spellId || !option.resourceCost || !option.classIds.includes(classId)) return [];
     const spellLevel = option.spellLevel ?? 0;
-    const cost = Math.max(
+    const cost = classLevel >= (option.resourceCost.freeAtClassLevel ?? Number.POSITIVE_INFINITY) ? 0 : Math.max(
       option.resourceCost.minimum ?? 0,
       (option.resourceCost.base ?? 0) + (option.resourceCost.levelDivisor ? Math.floor(spellLevel / option.resourceCost.levelDivisor) : 0),
     );
@@ -307,6 +307,7 @@ function onDemandSpellCosts(options: CharacterOption[], classId: string) {
       resourceId: option.resourceCost.resourceId,
       cost,
       label: option.resourceCost.label ?? "Class feature",
+      consumesSpellSlot: option.resourceCost.consumesSpellSlot ?? true,
     }]];
   }));
 }
@@ -1689,7 +1690,7 @@ export default function Home() {
             option.spellLevel ?? spell?.levelByClass[characterClass.id];
           return spell &&
             spellLevel !== undefined &&
-            spellLevel <= maximumSpellLevel
+            (option.ignoresMaximumSpellLevel || spellLevel <= maximumSpellLevel)
             ? [
                 {
                   ...spell,
@@ -1727,7 +1728,7 @@ export default function Home() {
   );
   const spellDcs = hasSpellcasting
     ? Object.fromEntries(
-        Array.from({ length: maximumSpellLevel + 1 }, (_, spellLevel) => [
+        Array.from({ length: Math.max(maximumSpellLevel, ...selectedOptionSpellChoices.filter((option) => option.classIds.includes(characterClass.id)).map((option) => option.spellLevel ?? 0)) + 1 }, (_, spellLevel) => [
           spellLevel,
           spellSaveDC(castingAbilityScore, spellLevel),
         ]),
@@ -1746,8 +1747,8 @@ export default function Home() {
     [classId, selectedOptions],
   );
   const primaryOnDemandSpellCosts = useMemo(
-    () => onDemandSpellCosts(selectedOptionSpellChoices, characterClass.id),
-    [characterClass.id, selectedOptionSpellChoices],
+    () => onDemandSpellCosts(selectedOptionSpellChoices, characterClass.id, primaryClassLevel),
+    [characterClass.id, primaryClassLevel, selectedOptionSpellChoices],
   );
   const elementalMasterPreparation = useMemo(
     () => elementalMasterPreparationFromOptions(characterClass, selectedOptions),
@@ -2005,8 +2006,8 @@ export default function Home() {
     [secondaryCharacterClass, selectedOptions],
   );
   const secondaryOnDemandSpellCosts = useMemo(
-    () => secondaryCharacterClass ? onDemandSpellCosts(selectedOptionSpellChoices, secondaryCharacterClass.id) : {},
-    [secondaryCharacterClass, selectedOptionSpellChoices],
+    () => secondaryCharacterClass ? onDemandSpellCosts(selectedOptionSpellChoices, secondaryCharacterClass.id, secondaryClassLevel) : {},
+    [secondaryCharacterClass, secondaryClassLevel, selectedOptionSpellChoices],
   );
   const secondaryElementalMasterPreparation = useMemo(
     () => elementalMasterPreparationFromOptions(secondaryCharacterClass, selectedOptions),

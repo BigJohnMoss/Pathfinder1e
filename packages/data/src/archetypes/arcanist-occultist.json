@@ -4,6 +4,12 @@
   "classId": "arcanist",
   "summary": "Not all arcanists peer inward to discern the deepest secrets of magic. Some look outward, connecting with extraplanar creatures and bartering for secrets, power, and favor.",
   "replacesText": "1st and 7th-level Arcanist Exploits; Magical Supremacy",
+  "bonusSpellAdditions": {
+    "planar-ally-lesser": 4,
+    "plane-shift": 5,
+    "planar-ally": 6,
+    "later-spell-planar-ally-greater": 8
+  },
   "replacements": [
     {
       "featureIds": [
@@ -24,6 +30,8 @@
           "name": "Conjurer’s Focus (Sp)",
           "level": 3,
           "type": "archetype",
+          "optionGroupId": "occultist-conjurers-focus",
+          "grantsAllOptions": true,
           "summary": "An occultist can spend 1 point from her arcane reservoir to cast summon monster I . She can cast this spell as a standard action and the summoned creatures remain for 1 minute per level (instead of 1 round per level). At 3rd level and every 2 levels thereafter, the power of this ability increases by one spell level, allowing her to summon more powerful creatures (to a maximum of summon monster IX at 17th level), at the cost of an additional point from her arcane spell reserve per spell level. An occultist cannot have more than one summon monster spell active in this way at one time. If this ability is used again, any existing summon monster immediately ends. This ability replaces the arcanist exploit gained at 1st level."
         },
         {
@@ -50,6 +58,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Replacement progression, planar spell-list additions, and level-scaling Conjurer's Focus summons with reservoir costs and the 20th-level free-use capstone are automated. The one-active-summon restriction, extended summon duration, Planar Contact schedules, and summoned-creature state remain descriptive."
   ]
 }

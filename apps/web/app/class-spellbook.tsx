@@ -72,18 +72,30 @@ export function ClassSpellbook({
   const elementalMasterElement = elementalMaster
     ? selectedOption(characterClass.id, "elemental-master-elements", "arcanist-elemental-master-elemental-focus-su-1", selectedOptions)
     : undefined;
+  const spellOptions = useMemo(() => [
+    ...Object.values(selectedOptions).flatMap((optionId) => optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId) ?? []),
+    ...characterClass.features
+      .filter((feature) => feature.level <= classLevel && feature.grantsAllOptions && feature.optionGroupId)
+      .flatMap((feature) => optionGroups.find((group) => group.id === feature.optionGroupId)?.options ?? [])
+      .filter((option) => option.minimumLevel <= classLevel),
+  ].filter((option) => option.spellId && option.classIds.includes(characterClass.id)), [characterClass.features, characterClass.id, classLevel, selectedOptions]);
   const grantedSpells = useMemo(() => characterClass.id === "sorcerer" && casting
     ? bloodlineBonusSpells(spells, bloodline, classLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
     : characterClass.id === "oracle" && casting
       ? mysteryBonusSpells(spells, mystery, classLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
       : [], [bloodline, casting, characterClass.id, classLevel, maximumSpellLevel, mystery]);
-  const availableSpells = useMemo(() => mergeSpellLists(baseSpells, grantedSpells), [baseSpells, grantedSpells]);
-  const onDemandSpellCosts = useMemo(() => Object.fromEntries(Object.values(selectedOptions).flatMap((optionId) => {
-    const option = optionGroups.flatMap((group) => group.options).find((candidate) => candidate.id === optionId);
+  const optionSpells = useMemo(() => spellOptions.flatMap((option) => {
+    const spell = spells.find((candidate) => candidate.id === option.spellId);
+    return spell && option.spellLevel !== undefined && (option.ignoresMaximumSpellLevel || option.spellLevel <= maximumSpellLevel)
+      ? [{ ...spell, levelByClass: { ...spell.levelByClass, [characterClass.id]: option.spellLevel } }]
+      : [];
+  }), [characterClass.id, maximumSpellLevel, spellOptions, spells]);
+  const availableSpells = useMemo(() => mergeSpellLists(baseSpells, [...grantedSpells, ...optionSpells]), [baseSpells, grantedSpells, optionSpells]);
+  const onDemandSpellCosts = useMemo(() => Object.fromEntries(spellOptions.flatMap((option) => {
     if (!option?.castsAsPrepared || !option.spellId || !option.resourceCost || !option.classIds.includes(characterClass.id)) return [];
-    const cost = Math.max(option.resourceCost.minimum ?? 0, (option.resourceCost.base ?? 0) + (option.resourceCost.levelDivisor ? Math.floor((option.spellLevel ?? 0) / option.resourceCost.levelDivisor) : 0));
-    return [[option.spellId, { resourceId: option.resourceCost.resourceId, cost, label: option.resourceCost.label ?? "Class feature" }]];
-  })), [characterClass.id, selectedOptions]);
+    const cost = classLevel >= (option.resourceCost.freeAtClassLevel ?? Number.POSITIVE_INFINITY) ? 0 : Math.max(option.resourceCost.minimum ?? 0, (option.resourceCost.base ?? 0) + (option.resourceCost.levelDivisor ? Math.floor((option.spellLevel ?? 0) / option.resourceCost.levelDivisor) : 0));
+    return [[option.spellId, { resourceId: option.resourceCost.resourceId, cost, label: option.resourceCost.label ?? "Class feature", consumesSpellSlot: option.resourceCost.consumesSpellSlot ?? true }]];
+  })), [characterClass.id, classLevel, spellOptions]);
   const grantedSpellIds = useMemo(() => grantedSpells.map((spell) => spell.id), [grantedSpells]);
   const oppositionSchoolIds = useMemo(() => {
     const featureIds = characterClass.id === "wizard" ? wizardOppositionFeatureIds : characterClass.id === "arcanist" ? schoolSavantOppositionFeatureIds : [];
@@ -103,7 +115,7 @@ export function ClassSpellbook({
   } : null, [elementalMasterElement]);
   const limits = spontaneousCasting?.known ?? preparedCasting?.prepared ?? [];
   const slots = casting?.slots ?? [];
-  const spellDcs = casting ? Object.fromEntries(Array.from({ length: maximumSpellLevel + 1 }, (_, spellLevel) => [spellLevel, spellSaveDC(abilityScore, spellLevel)])) : {};
+  const spellDcs = casting ? Object.fromEntries(Array.from({ length: Math.max(maximumSpellLevel, ...spellOptions.map((option) => option.spellLevel ?? 0)) + 1 }, (_, spellLevel) => [spellLevel, spellSaveDC(abilityScore, spellLevel)])) : {};
   const reservoir = characterClass.id === "arcanist" ? arcaneReservoir(classLevel) : null;
   const normalizeSelections = (spellIds: string[]) => spontaneous
     ? normalizeKnownSpells(spellIds, availableSpells, spellListClassId, limits, grantedSpellIds)
