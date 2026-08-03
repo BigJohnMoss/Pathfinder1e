@@ -16,12 +16,8 @@ async function buildLevelTwentyPsychic(page: Page, enforceViewportFit: boolean) 
   await page.locator('input[type="number"][min="1"][max="20"]').fill("20");
 
   await page.getByRole("tab", { name: "Features" }).click();
-  const discipline = page.getByLabel(/Psychic Discipline.*level 1/i);
-  const amplification = page.getByLabel(/Phrenic Amplification.*level 1/i);
-  await discipline.selectOption("psychic-discipline-dream");
-  await amplification.selectOption("psychic-amp-biokinetic-healing");
-  await expect(discipline).toHaveValue("psychic-discipline-dream");
-  await expect(amplification).toHaveValue("psychic-amp-biokinetic-healing");
+  await expect(page.getByLabel(/Psychic Discipline.*level 1/i)).toHaveCount(0);
+  await expect(page.getByLabel(/Phrenic Amplification.*level 1/i)).toHaveCount(0);
 
   const pool = page.getByLabel("Psychic Phrenic Pool remaining");
   await expect(pool).toContainText("point remaining");
@@ -48,8 +44,8 @@ async function buildLevelTwentyPsychic(page: Page, enforceViewportFit: boolean) 
 
   if (enforceViewportFit) await page.getByRole("button", { name: "Close", exact: true }).click();
   await page.getByRole("tab", { name: "Features" }).click();
-  await expect(page.getByLabel(/Psychic Discipline.*level 1/i)).toHaveValue("psychic-discipline-dream");
-  await expect(page.getByLabel(/Phrenic Amplification.*level 1/i)).toHaveValue("psychic-amp-biokinetic-healing");
+  await expect(page.getByLabel(/Psychic Discipline.*level 1/i)).toHaveCount(0);
+  await expect(page.getByLabel(/Phrenic Amplification.*level 1/i)).toHaveCount(0);
   await expect(page.getByLabel("Psychic Phrenic Pool remaining")).not.toHaveText(beforeSpend ?? "");
 
   await page.getByRole("tab", { name: "Spells" }).click();
