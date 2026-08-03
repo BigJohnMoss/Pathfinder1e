@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
-import { applyArchetype, featuresThroughLevel } from "../packages/engine/src/index.js";
+import { applyArchetype, applyArchetypeResourceAdjustments, featuresThroughLevel } from "../packages/engine/src/index.js";
 
 const directory = new URL("../packages/data/src/archetypes/", import.meta.url);
 const arcanist = JSON.parse(await readFile(new URL("../packages/data/src/classes/arcanist.json", import.meta.url), "utf8"));
@@ -80,4 +80,26 @@ test("Blood Arcanist inherits only its legal bloodline benefits and exploits", (
   assert.ok(bloodlines.every((option) => option.arcana && option.powers?.length));
   const exploits = generatedData.optionGroups.find((group) => group.id === "blood-arcanist-exploits").options;
   assert.equal(exploits.some((option) => option.id === "bloodline-development"), false);
+});
+
+test("Harrowed Society Student grants Psychic Sensitivity and bounded daily readings", () => {
+  const student = archetypes.find((archetype) => archetype.id === "arcanist-harrowed-society-student");
+  const psychicReader = student.replacements.flatMap((replacement) => replacement.features)
+    .find((feature) => feature.id === "arcanist-harrowed-society-student-psychic-reader-ex-1");
+  assert.equal(psychicReader.grantedFeatId, "psychic-sensitivity");
+  assert.equal(student.replacements.flatMap((replacement) => replacement.features)
+    .find((feature) => feature.id === "arcanist-harrowed-society-student-harrow-reservoir-ex-8").level, 1);
+  assert.deepEqual(student.resourceAdjustments, [{
+    resourceId: "harrowReadings",
+    label: "Harrow Readings",
+    unit: "reading",
+    operation: "add",
+    minimumLevel: 1,
+    base: 1,
+    levelDivisor: 8,
+    maximum: 3,
+  }]);
+  assert.deepEqual([1, 7, 8, 15, 16, 20].map((level) =>
+    applyArchetypeResourceAdjustments({}, [student], level).harrowReadings
+  ), [1, 1, 2, 2, 3, 3]);
 });
