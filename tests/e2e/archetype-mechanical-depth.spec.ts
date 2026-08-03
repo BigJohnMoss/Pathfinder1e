@@ -61,6 +61,29 @@ test(`enforces Twilight Sage daily transfer and necromancy preparation on ${jour
 }
 
 for (const journey of journeys) {
+test(`branches Arcane Tinkerer improvements on ${journey.name}`, async ({ page }) => {
+  await page.setViewportSize(journey.viewport);
+  await page.goto("/");
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await openCharacterPanel(page, journey.mobile);
+  await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+  await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-arcane-tinkerer");
+  await page.locator('input[type="number"][min="1"][max="20"]').fill("13");
+  if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+  await page.getByRole("tab", { name: "Features" }).click();
+  await expect(page.getByText("Manipulate Construct (Su)", { exact: true })).toBeVisible();
+  const slowChoice = page.getByLabel("Arcanist Exploit or Improved Manipulate Construct level 7");
+  const helplessChoice = page.getByLabel("Arcanist Exploit or Greater Manipulate Construct level 13");
+  await expect(helplessChoice.locator('option[value="arcane-tinkerer-helpless-construct"]')).toHaveCount(0);
+  await slowChoice.selectOption("arcane-tinkerer-slow-construct");
+  await expect(helplessChoice.locator('option[value="arcane-tinkerer-helpless-construct"]')).toHaveCount(1);
+  await helplessChoice.selectOption("arcane-tinkerer-helpless-construct");
+  await expect(helplessChoice).toHaveValue("arcane-tinkerer-helpless-construct");
+});
+}
+
+for (const journey of journeys) {
   test(`selects and restores inferred restricted archetype feats on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

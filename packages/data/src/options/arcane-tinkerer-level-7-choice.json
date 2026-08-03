@@ -1,0 +1,8 @@
+{
+  "id": "arcane-tinkerer-level-7-choice",
+  "name": "Arcane Tinkerer 7th-Level Choice",
+  "classIds": ["arcanist"],
+  "inheritsOptionsFrom": "arcanist-exploits",
+  "optionDefaults": {"groupId":"arcane-tinkerer-level-7-choice","classIds":["arcanist"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Construct Handbook","page":10,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Arcane%20Tinkerer"}},
+  "options": [{"id":"arcane-tinkerer-slow-construct","name":"Improved Manipulate Construct (Slow)","minimumLevel":7,"prerequisites":[],"benefit":"Manipulate Construct instead affects its target with slow for 1 round."}]
+}
