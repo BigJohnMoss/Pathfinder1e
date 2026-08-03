@@ -2,6 +2,7 @@
   "id": "arcanist-unlettered-arcanist",
   "name": "Unlettered Arcanist",
   "classId": "arcanist",
+  "spellListClassId": "witch",
   "summary": "Some arcanists store their spells as whispered secrets within familiars instead of on paper.",
   "replacesText": "Spellbooks; Spells",
   "replacements": [
@@ -34,8 +35,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Unlettered%20Arcanist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The Witch spell-list replacement, familiar grant, and replacement progression are automated."
   ]
 }

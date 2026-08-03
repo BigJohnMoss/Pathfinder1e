@@ -63,7 +63,8 @@ export function ClassSpellbook({
   const spontaneousCasting = useMemo(() => spellcasting && spontaneous ? spontaneousSpellcastingProgression(characterClass, classLevel, { abilityScore }) : null, [abilityScore, characterClass, classLevel, spellcasting, spontaneous]);
   const casting = spontaneousCasting ?? preparedCasting;
   const maximumSpellLevel = casting?.maximumSpellLevel ?? 0;
-  const baseSpells = useMemo(() => casting ? spellsAvailableToClass(spells, characterClass.id, maximumSpellLevel) : [], [casting, characterClass.id, maximumSpellLevel]);
+  const spellListClassId = characterClass.spellListClassId ?? characterClass.id;
+  const baseSpells = useMemo(() => casting ? spellsAvailableToClass(spells, spellListClassId, maximumSpellLevel, characterClass.spellListAdditions) : [], [casting, characterClass.spellListAdditions, maximumSpellLevel, spellListClassId, spells]);
   const bloodline = selectedOption(characterClass.id, "sorcerer-bloodlines", "sorcerer-bloodline-1", selectedOptions);
   const mystery = selectedOption(characterClass.id, "oracle-mysteries", "oracle-mystery-1", selectedOptions);
   const wizardSchool = selectedOption(characterClass.id, "wizard-schools", "wizard-arcane-school-1", selectedOptions);
@@ -99,8 +100,8 @@ export function ClassSpellbook({
   const spellDcs = casting ? Object.fromEntries(Array.from({ length: maximumSpellLevel + 1 }, (_, spellLevel) => [spellLevel, spellSaveDC(abilityScore, spellLevel)])) : {};
   const reservoir = characterClass.id === "arcanist" ? arcaneReservoir(classLevel) : null;
   const normalizeSelections = (spellIds: string[]) => spontaneous
-    ? normalizeKnownSpells(spellIds, availableSpells, characterClass.id, limits, grantedSpellIds)
-    : normalizePreparedSpellsWithOpposition(spellIds, availableSpells, characterClass.id, limits, oppositionSchoolIds, oppositionSpellIds, restrictedBonus);
+    ? normalizeKnownSpells(spellIds, availableSpells, spellListClassId, limits, grantedSpellIds)
+    : normalizePreparedSpellsWithOpposition(spellIds, availableSpells, spellListClassId, limits, oppositionSchoolIds, oppositionSpellIds, restrictedBonus);
 
   useEffect(() => {
     const next = normalizeSelections(selectedSpellIds);
@@ -119,6 +120,6 @@ export function ClassSpellbook({
     onSlotUsesChange({});
     if (reservoir) onReservoirPointsChange(reservoir.dailyRefresh);
   };
-  if (spontaneousCasting) return <SpontaneousSpellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={spontaneousCasting.slots} knownLimits={spontaneousCasting.known} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay} />;
-  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={characterClass.id} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedCasting?.prepared ?? []} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} />;
+  if (spontaneousCasting) return <SpontaneousSpellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={spontaneousCasting.slots} knownLimits={spontaneousCasting.known} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay} />;
+  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedCasting?.prepared ?? []} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} />;
 }

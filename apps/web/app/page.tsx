@@ -1002,7 +1002,7 @@ export default function Home() {
           return casting
             ? spellsAvailableToClass(
                 spells,
-                entry.id,
+                entry.spellListClassId ?? entry.id,
                 availableSpellLevel,
                 entry.spellListAdditions,
               ).map((spell) => spell.id)
@@ -1568,13 +1568,14 @@ export default function Home() {
       hasSpellcasting
         ? spellsAvailableToClass(
             spells,
-            characterClass.id,
+            characterClass.spellListClassId ?? characterClass.id,
             maximumSpellLevel,
             characterClass.spellListAdditions,
           )
         : [],
     [
       characterClass.id,
+      characterClass.spellListClassId,
       characterClass.spellListAdditions,
       hasSpellcasting,
       maximumSpellLevel,
@@ -1813,7 +1814,7 @@ export default function Home() {
       secondaryHasSpellcasting && secondaryCharacterClass
         ? spellsAvailableToClass(
             spells,
-            secondaryCharacterClass.id,
+            secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id,
             secondaryMaximumSpellLevel,
             secondaryCharacterClass.spellListAdditions,
           )
@@ -2354,14 +2355,14 @@ export default function Home() {
       ? normalizeKnownSpells(
           spellIds,
           availableSpells,
-          characterClass.id,
+          characterClass.spellListClassId ?? characterClass.id,
           knownLimits,
           grantedSpellIds,
         )
       : normalizePreparedSpellsWithOpposition(
           spellIds,
           primaryPreparedCatalogue,
-          characterClass.id,
+          characterClass.spellListClassId ?? characterClass.id,
           preparedLimits,
           oppositionSchoolIds,
           elementalMasterPreparation?.oppositionSpellIds ?? [],
@@ -2376,14 +2377,14 @@ export default function Home() {
         ? normalizeKnownSpells(
             spellIds,
             secondaryAvailableSpells,
-            secondaryCharacterClass.id,
+            secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id,
             secondaryKnownLimits,
             secondaryGrantedSpellIds,
           )
         : normalizePreparedSpellsWithOpposition(
             spellIds,
             secondaryPreparedCatalogue,
-            secondaryCharacterClass.id,
+            secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id,
             secondaryPreparedLimits,
             secondaryOppositionSchoolIds,
             secondaryElementalMasterPreparation?.oppositionSpellIds ?? [],
@@ -2492,7 +2493,7 @@ export default function Home() {
       key={characterClass.id}
       spells={availableSpells}
       spellTraitBonuses={selectedTraitBonuses.spellBonuses}
-      classId={characterClass.id}
+      classId={characterClass.spellListClassId ?? characterClass.id}
       className={characterClass.name}
       castingAbilityName={
         castingAbility ? labels[castingAbility] : "casting ability"
@@ -2517,7 +2518,7 @@ export default function Home() {
       spells={primaryPreparedCatalogue}
       sourceBook={primarySourceBook}
       spellTraitBonuses={selectedTraitBonuses.spellBonuses}
-      classId={characterClass.id}
+      classId={characterClass.spellListClassId ?? characterClass.id}
       className={characterClass.name}
       castingAbilityName={
         castingAbility ? labels[castingAbility] : "casting ability"
@@ -2544,7 +2545,7 @@ export default function Home() {
         key={secondaryCharacterClass.id}
         spells={secondaryAvailableSpells}
         spellTraitBonuses={selectedTraitBonuses.spellBonuses}
-        classId={secondaryCharacterClass.id}
+        classId={secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id}
         className={secondaryCharacterClass.name}
         castingAbilityName={
           secondaryCastingAbility
@@ -2571,7 +2572,7 @@ export default function Home() {
         spells={secondaryPreparedCatalogue}
         sourceBook={secondarySourceBook}
         spellTraitBonuses={selectedTraitBonuses.spellBonuses}
-        classId={secondaryCharacterClass.id}
+        classId={secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id}
         className={secondaryCharacterClass.name}
         castingAbilityName={
           secondaryCastingAbility
@@ -2937,7 +2938,7 @@ export default function Home() {
     const draftBaseSpells = draftCasting
       ? spellsAvailableToClass(
           spells,
-          draftClass.id,
+          draftClass.spellListClassId ?? draftClass.id,
           draftCasting.maximumSpellLevel,
           draftClass.spellListAdditions,
         )
@@ -3050,14 +3051,14 @@ export default function Home() {
       ? normalizeKnownSpells(
           draftPrimarySelections,
           draftSpells,
-          draftClass.id,
+          draftClass.spellListClassId ?? draftClass.id,
           draftSpontaneousCasting?.known ?? [],
           draftBloodlineSpellIds,
         )
       : normalizePreparedSpellsWithOpposition(
           draftPrimarySelections,
           draftSpells,
-          draftClass.id,
+          draftClass.spellListClassId ?? draftClass.id,
           draftPreparedCasting?.prepared ?? [],
           draftOppositionSchoolIds,
         );
@@ -3096,7 +3097,7 @@ export default function Home() {
       draftSecondaryClass && draftSecondaryCasting
         ? spellsAvailableToClass(
             spells,
-            draftSecondaryClass.id,
+            draftSecondaryClass.spellListClassId ?? draftSecondaryClass.id,
             draftSecondaryCasting.maximumSpellLevel,
             draftSecondaryClass.spellListAdditions,
           )
@@ -3121,7 +3122,7 @@ export default function Home() {
           )
         : draftSecondaryClass?.id === "oracle" && draftSecondaryCasting
           ? mysteryBonusSpells(
-              spells,
+            spells,
               draftSecondaryMystery,
               draftSecondaryLevel?.level ?? 1,
               draftSecondaryClass.id,

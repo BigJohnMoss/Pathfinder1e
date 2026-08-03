@@ -140,6 +140,7 @@ export interface CharacterClass {
   source: SourceRef;
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
+  spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
@@ -182,6 +183,7 @@ export interface CharacterArchetype {
   }>;
   featureOverrides?: Array<{ featureId: string; summary: string }>;
   spellListAdditions?: Record<string, number>;
+  spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;

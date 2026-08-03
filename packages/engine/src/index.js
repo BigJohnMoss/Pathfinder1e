@@ -911,6 +911,7 @@ export function applyArchetype(characterClass, archetype) {
       ...(characterClass.spellListAdditions ?? {}),
       ...(archetype.spellListAdditions ?? {}),
     },
+    spellListClassId: archetype.spellListClassId ?? characterClass.spellListClassId,
     bonusSpellAdditions: {
       ...(characterClass.bonusSpellAdditions ?? {}),
       ...(archetype.bonusSpellAdditions ?? {}),
