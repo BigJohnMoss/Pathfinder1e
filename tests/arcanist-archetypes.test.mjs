@@ -72,6 +72,7 @@ test("School Savant exposes inherited schools, opposition choices, and all nine 
 
 test("Blood Arcanist inherits only its legal bloodline benefits and exploits", () => {
   const bloodArcanist = archetypes.find((archetype) => archetype.id === "arcanist-blood-arcanist");
+  assert.equal(bloodArcanist.mechanicalCoverage, "full");
   const features = featuresThroughLevel(applyArchetype(arcanist, bloodArcanist), 20);
   assert.equal(features.find((feature) => feature.id === "blood-arcanist-bloodline-1")?.optionGroupId, "blood-arcanist-bloodlines");
   assert.deepEqual(features.filter((feature) => feature.optionGroupId === "blood-arcanist-exploits").map((feature) => feature.level), [5, 7, 11, 13, 17, 19]);

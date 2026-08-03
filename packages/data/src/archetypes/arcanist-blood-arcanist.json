@@ -51,9 +51,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Blood%20Arcanist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Bloodline selection, variant identity, bloodline arcana, and level-aware bloodline powers are automated without granting excluded class skills, feats, or spells.",
-    "Cross-class bloodline identity matching remains a displayed multiclass requirement."
+    "Bloodline selection, variant identity, bloodline arcana, level-aware bloodline powers, excluded class skills, feats, and spells, the Bloodline Development prohibition, and matching cross-class bloodlines are fully automated."
   ]
 }
