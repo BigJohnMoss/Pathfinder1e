@@ -15,6 +15,7 @@ type SpellTraitBonuses = Record<string, { casterLevel: number; metamagicLevelAdj
 
 const abilityLabels = { intelligence: "Intelligence", wisdom: "Wisdom", charisma: "Charisma" } as const;
 const wizardOppositionFeatureIds = ["wizard-opposition-school-1-first", "wizard-opposition-school-1-second"];
+const schoolSavantOppositionFeatureIds = ["school-savant-opposition-school-1-first", "school-savant-opposition-school-1-second"];
 
 function selectedOption(classId: string, groupId: string, featureId: string, selectedOptions: Record<string, string>) {
   if (!classId) return undefined;
@@ -77,9 +78,10 @@ export function ClassSpellbook({
       : [], [bloodline, casting, characterClass.id, classLevel, maximumSpellLevel, mystery]);
   const availableSpells = useMemo(() => mergeSpellLists(baseSpells, grantedSpells), [baseSpells, grantedSpells]);
   const grantedSpellIds = useMemo(() => grantedSpells.map((spell) => spell.id), [grantedSpells]);
-  const oppositionSchoolIds = useMemo(() => characterClass.id === "wizard"
-    ? wizardOppositionFeatureIds.map((featureId) => selectedOptions[featureId]).filter((id): id is string => Boolean(id))
-    : [], [characterClass.id, selectedOptions]);
+  const oppositionSchoolIds = useMemo(() => {
+    const featureIds = characterClass.id === "wizard" ? wizardOppositionFeatureIds : characterClass.id === "arcanist" ? schoolSavantOppositionFeatureIds : [];
+    return featureIds.map((featureId) => selectedOptions[featureId]).filter((id): id is string => Boolean(id));
+  }, [characterClass.id, selectedOptions]);
   const oppositionSpellIds = useMemo(() => {
     const oppositionElementId = characterClass.id === "wizard" ? wizardSchool?.elementalOppositionSchool : elementalMasterElement?.elementalOppositionSchool;
     if (!oppositionElementId) return [];

@@ -556,6 +556,10 @@ restricting that slot to a specific, player-selected spell family.
    double-slot costs for the opposed element.
 5. [x] Verify selection, preparation limits, opposition costs, persistence, and
    explanatory UI on desktop and narrow mobile.
+6. [x] Reuse the same school catalogue for School Savant, including subschools,
+   two legal opposition choices, and all nine Arcanist-level specialist slots.
+7. [x] Verify School Savant selection ordering, spell filtering, daily slot use,
+   and save/load on desktop and narrow mobile.
 
 ## Active milestone: Archetype Mechanical Depth
 

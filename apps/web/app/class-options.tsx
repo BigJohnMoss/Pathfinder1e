@@ -14,17 +14,18 @@ type Choice = { id: string; name: string; level: number; classLevel?: number; op
 
 const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const domainSpellLevel = (choice: Choice) => Number(choice.id.match(/^(?:cleric|druid|sacred-servant)-domain-spell-(\d+)$/)?.[1] ?? 0);
-const specialistSpellLevel = (choice: Choice) => Number(choice.id.match(/^wizard-specialist-spell-(\d+)$/)?.[1] ?? 0);
-const isWizardOpposition = (choice: Choice) => choice.id.startsWith("wizard-opposition-school-");
+const specialistSpellLevel = (choice: Choice) => Number(choice.id.match(/^(?:wizard|school-savant)-specialist-spell-(\d+)$/)?.[1] ?? 0);
+const isArcaneSchoolChoice = (choice: Choice) => choice.id === "wizard-arcane-school-1" || choice.id === "school-savant-school-focus-1";
+const isWizardOpposition = (choice: Choice) => choice.id.startsWith("wizard-opposition-school-") || choice.id.startsWith("school-savant-opposition-school-");
 const isPaladinMercy = (choice: Choice) => choice.id.startsWith("paladin-mercy-");
 const isOracleRevelation = (choice: Choice) => choice.id.startsWith("oracle-revelation-");
 const choiceOrder = (choice: Choice) => {
   if (choice.id === "wizard-arcane-bond-1") return 5;
   if (choice.id === "wizard-familiar-1" || choice.id === "wizard-bonded-object-1") return 6;
-  if (choice.id === "cleric-deity-1" || choice.id === "sacred-servant-deity-1" || choice.id === "wizard-arcane-school-1" || choice.id === "sorcerer-bloodline-1") return 10;
+  if (choice.id === "cleric-deity-1" || choice.id === "sacred-servant-deity-1" || isArcaneSchoolChoice(choice) || choice.id === "sorcerer-bloodline-1") return 10;
   if (choice.id === "paladin-divine-bond-5") return 11;
-  if (choice.id === "cleric-alignment-1" || choice.id === "wizard-opposition-school-1-first") return 20;
-  if (choice.id === "wizard-opposition-school-1-second") return 21;
+  if (choice.id === "cleric-alignment-1" || choice.id.endsWith("opposition-school-1-first")) return 20;
+  if (choice.id.endsWith("opposition-school-1-second")) return 21;
   const specialistLevel = specialistSpellLevel(choice);
   if (specialistLevel) return 30 + specialistLevel;
   if (choice.id === "cleric-channel-energy-type-1") return 30;
@@ -143,7 +144,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const selectedArcaneBond = orderedChoices.find((choice) => choice.id === "wizard-arcane-bond-1")?.selected;
   const selectedHuntersBond = orderedChoices.find((choice) => choice.id === "ranger-hunters-bond-4")?.selected;
   const selectedNatureBond = orderedChoices.find((choice) => choice.id === "druid-nature-bond-1")?.selected;
-  const selectedWizardSchool = orderedChoices.find((choice) => choice.id === "wizard-arcane-school-1")?.selected;
+  const selectedWizardSchool = orderedChoices.find(isArcaneSchoolChoice)?.selected;
   const selectedSorcererBloodline = orderedChoices.find((choice) => choice.id === "sorcerer-bloodline-1")?.selected;
   const selectedOracleMystery = orderedChoices.find((choice) => choice.id === "oracle-mystery-1")?.selected;
   const selectedDomains = orderedChoices.filter((choice) => choice.id === "cleric-domain-1-first" || choice.id === "cleric-domain-1-second" || choice.id === "druid-domain-1" || choice.id === "sacred-servant-domain-4").flatMap((choice) => choice.selected ? [choice.selected] : []);
@@ -230,11 +231,11 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
         seenMercies.add(selectedId);
       }
       const options = optionsFor(choice);
-      if (choice.id === "wizard-opposition-school-1-first" && selectedWizardSchool?.elementalOppositionSchool && options.length === 1 && selectedId !== options[0].id) {
+      if (choice.id.endsWith("opposition-school-1-first") && selectedWizardSchool?.elementalOppositionSchool && options.length === 1 && selectedId !== options[0].id) {
         onOptionChange(choice.id, options[0].id);
         continue;
       }
-      if (choice.id === "wizard-opposition-school-1-second" && selectedWizardSchool?.elementalOppositionSchool && selectedId) {
+      if (choice.id.endsWith("opposition-school-1-second") && selectedWizardSchool?.elementalOppositionSchool && selectedId) {
         onOptionChange(choice.id, "");
         continue;
       }
@@ -272,7 +273,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const wizardOpposition = isWizardOpposition(choice);
     const specialistUniversalist = Boolean(specialistLevel) && selectedWizardSchool?.id === "wizard-school-universalist";
     const wizardUniversalist = wizardOpposition && selectedWizardSchool?.id === "wizard-school-universalist";
-    const elementalSecondOpposition = choice.id === "wizard-opposition-school-1-second" && Boolean(selectedWizardSchool?.elementalOppositionSchool);
+    const elementalSecondOpposition = choice.id.endsWith("opposition-school-1-second") && Boolean(selectedWizardSchool?.elementalOppositionSchool);
     const needsWizardSchool = (wizardOpposition || Boolean(specialistLevel)) && !selectedWizardSchool;
     const familiarChoice = choice.id === "wizard-familiar-1";
     const objectChoice = choice.id === "wizard-bonded-object-1";

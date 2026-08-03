@@ -4,31 +4,28 @@
   "classId": "arcanist",
   "summary": "Some arcanists specialize in a school of magic and trade flexibility for focus.",
   "replacesText": "1st, 3rd, and 7th-level Arcanist Exploits",
-  "replacements": [
-    {
-      "featureIds": [
-        "arcanist-exploit-1",
-        "arcanist-exploit-3",
-        "arcanist-exploit-7"
-      ],
-      "features": [
-        {
-          "id": "arcanist-school-savant-school-focus-su-1",
-          "name": "School Focus (Su)",
-          "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, a school savant chooses a school of magic. The arcanist gains the abilities granted by that school, as the arcane school class feature of the wizard , treating her arcanist level as her wizard level for these abilities. She can also further specialize by selecting a subschool. In addition, the arcanist can prepare one additional spell per day of each level she can cast, but this spell must be chosen from the selected school. Finally, the arcanist must select two additional schools of magic as her opposition schools. Whenever she prepares spells from one of her opposition schools, the spell takes up two of her prepared spell slots. In addition, a school savant takes a –4 penalty on any skill checks when crafting a magic item that has a spell from one of her opposition schools as a prerequisite. A school savant cannot select the school understanding arcanist exploit. This ability replaces the arcanist exploits gained at 1st, 3rd, and 7th levels."
-        }
-      ]
-    }
-  ],
-  "source": {
-    "title": "Archives of Nethys",
-    "page": null,
-    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20School%20Savant"
-  },
+  "replacements": [{
+    "featureIds": ["arcanist-exploit-1", "arcanist-exploit-3", "arcanist-exploit-7"],
+    "features": [
+      {"id":"arcanist-school-savant-school-focus-su-1","name":"School Focus Rules (Su)","level":1,"type":"archetype","summary":"Choose a Wizard arcane school or subschool and gain its powers using Arcanist level as Wizard level. Prepare one additional matching school spell of every available spell level, and choose two opposition schools whose spells use two preparation slots. Opposition-school magic-item crafting checks take a -4 penalty, and School Understanding is unavailable."},
+      {"id":"school-savant-school-focus-1","name":"School Focus","level":1,"type":"selectable","summary":"Choose a Wizard arcane school or subschool and gain its powers using Arcanist level as Wizard level.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-school"},
+      {"id":"school-savant-opposition-school-1-first","name":"First Opposition School","level":1,"type":"selectable","summary":"Choose a first opposition school whose spells require two preparation slots.","choiceRequired":true,"optionGroupId":"school-savant-opposition-schools","progressionKey":"school-savant-opposition-schools"},
+      {"id":"school-savant-opposition-school-1-second","name":"Second Opposition School","level":1,"type":"selectable","summary":"Choose a different second opposition school whose spells require two preparation slots.","choiceRequired":true,"optionGroupId":"school-savant-opposition-schools","progressionKey":"school-savant-opposition-schools"},
+      {"id":"school-savant-specialist-spell-1","name":"1st-level Specialist School Slot","level":1,"type":"selectable","summary":"Prepare one additional 1st-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"},
+      {"id":"school-savant-specialist-spell-2","name":"2nd-level Specialist School Slot","level":4,"type":"selectable","summary":"Prepare one additional 2nd-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"},
+      {"id":"school-savant-specialist-spell-3","name":"3rd-level Specialist School Slot","level":6,"type":"selectable","summary":"Prepare one additional 3rd-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"},
+      {"id":"school-savant-specialist-spell-4","name":"4th-level Specialist School Slot","level":8,"type":"selectable","summary":"Prepare one additional 4th-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"},
+      {"id":"school-savant-specialist-spell-5","name":"5th-level Specialist School Slot","level":10,"type":"selectable","summary":"Prepare one additional 5th-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"},
+      {"id":"school-savant-specialist-spell-6","name":"6th-level Specialist School Slot","level":12,"type":"selectable","summary":"Prepare one additional 6th-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"},
+      {"id":"school-savant-specialist-spell-7","name":"7th-level Specialist School Slot","level":14,"type":"selectable","summary":"Prepare one additional 7th-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"},
+      {"id":"school-savant-specialist-spell-8","name":"8th-level Specialist School Slot","level":16,"type":"selectable","summary":"Prepare one additional 8th-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"},
+      {"id":"school-savant-specialist-spell-9","name":"9th-level Specialist School Slot","level":18,"type":"selectable","summary":"Prepare one additional 9th-level spell from the selected school.","choiceRequired":true,"optionGroupId":"school-savant-schools","progressionKey":"school-savant-specialist-spell-slots","uses":"1 slot per day"}
+    ]
+  }],
+  "source": {"title":"Archives of Nethys","page":null,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20School%20Savant"},
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Arcane school powers, two legal opposition schools, and one restricted specialist slot per spell level are automated.",
+    "The -4 opposition-school magic-item crafting penalty remains a displayed conditional rule."
   ]
 }

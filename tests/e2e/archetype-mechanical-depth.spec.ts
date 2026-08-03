@@ -410,6 +410,45 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Elemental Focus (Su) level 1")).toHaveValue("wizard-school-fire");
   });
 
+  test(`configures School Savant schools and specialist slots on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-school-savant");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("4");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+
+    await page.getByLabel("School Focus level 1").selectOption("wizard-school-evocation");
+    const firstOpposition = page.getByLabel("First Opposition School level 1");
+    await expect(firstOpposition.locator('option[value="wizard-opposition-evocation"]')).toHaveCount(0);
+    await firstOpposition.selectOption("wizard-opposition-conjuration");
+    const secondOpposition = page.getByLabel("Second Opposition School level 1");
+    await secondOpposition.selectOption("wizard-opposition-transmutation");
+
+    const firstSpecialist = page.getByLabel("1st-level Specialist School Slot level 1");
+    await expect(firstSpecialist.locator('option[value="burning-hands"]')).toHaveCount(1);
+    await firstSpecialist.selectOption("burning-hands");
+    await page.getByRole("button", { name: "Cast Burning Hands from 1st-level Specialist School Slot" }).click();
+    await expect(page.getByLabel("1st-level Specialist School Slot status")).toHaveText("Used");
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("School Focus level 1")).toHaveValue("wizard-school-evocation");
+    await expect(page.getByLabel("First Opposition School level 1")).toHaveValue("wizard-opposition-conjuration");
+    await expect(page.getByLabel("1st-level Specialist School Slot level 1")).toHaveValue("burning-hands");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);
