@@ -561,6 +561,22 @@ restricting that slot to a specific, player-selected spell family.
 7. [x] Verify School Savant selection ordering, spell filtering, daily slot use,
    and save/load on desktop and narrow mobile.
 
+## Completed expansion: Inherited Rules with Explicit Exclusions
+
+Reuse rich class-choice catalogues while removing benefits an archetype
+explicitly does not receive.
+
+1. [x] Add post-enrichment option-field omission so excluded benefits cannot be
+   reintroduced by detailed catalogue overlays.
+2. [x] Expand bloodline variants into explicit, persisted choices when an
+   archetype has no separate variant control.
+3. [x] Add Blood Arcanist bloodline arcana and powers without class skills,
+   bonus feats, or bonus spells.
+4. [x] Exclude Bloodline Development from every retained Blood Arcanist exploit
+   slot and preserve the six legal exploit milestones.
+5. [x] Enforce matching Sorcerer/Blood Arcanist identities in multiclass option
+   filtering and persist the selected identity on desktop and narrow mobile.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

@@ -116,6 +116,7 @@ import type {
   ActiveEffect,
   CharacterClassLevel,
   CharacterDraftV1,
+  CharacterOption,
   Prerequisite,
 } from "../../../packages/types/src/index.js";
 
@@ -1467,13 +1468,19 @@ export default function Home() {
               !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id),
             )
           : baseOptions;
+    const levelAwareOptions = options.map((option) => {
+      const richOption = option as CharacterOption;
+      return richOption.powers
+        ? { ...option, powers: richOption.powers.filter((power) => power.level <= featureClassLevel) }
+        : option;
+    });
     return {
       id: feature.id,
       name: feature.name,
       level: feature.level,
       classLevel: featureClassLevel,
-      options,
-      selected: options.find(
+      options: levelAwareOptions,
+      selected: levelAwareOptions.find(
         (option) => option.id === selectedOptions[feature.id],
       ),
       requiredOptionId: feature.requiredOptionId,

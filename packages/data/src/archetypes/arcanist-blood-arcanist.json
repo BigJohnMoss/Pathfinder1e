@@ -9,18 +9,40 @@
       "featureIds": [
         "arcanist-exploit-1",
         "arcanist-exploit-3",
+        "arcanist-exploit-5",
+        "arcanist-exploit-7",
         "arcanist-exploit-9",
+        "arcanist-exploit-11",
+        "arcanist-exploit-13",
         "arcanist-exploit-15",
+        "arcanist-exploit-17",
+        "arcanist-exploit-19",
         "magical-supremacy-20"
       ],
       "features": [
         {
           "id": "arcanist-blood-arcanist-bloodline-1",
-          "name": "Bloodline",
+          "name": "Bloodline Rules",
           "level": 1,
           "type": "archetype",
           "summary": "A blood arcanist selects one bloodline from those available through the sorcerer bloodline class feature . The blood arcanist gains the bloodline arcana and bloodline powers of that bloodline, treating her arcanist level as her sorcerer level. The blood arcanist does not gain the class skill, bonus feats, or bonus spells from her bloodline. If the blood arcanist takes levels in another class that grants a bloodline, the bloodlines must be the same type, even if that means that the bloodline of one of her classes must change. Subject to GM discretion, the blood arcanist can change her former bloodline to make them conform. This ability replaces the arcanist exploits gained at 1st, 3rd, 9th, and 15th levels, as well as magical supremacy. A blood arcanist cannot select the bloodline development arcanist exploit."
-        }
+        },
+        {
+          "id": "blood-arcanist-bloodline-1",
+          "name": "Bloodline",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose a Sorcerer bloodline. Gain its arcana and powers using Arcanist level, but not its class skill, bonus feats, or bonus spells.",
+          "choiceRequired": true,
+          "optionGroupId": "blood-arcanist-bloodlines",
+          "progressionKey": "blood-arcanist-bloodline"
+        },
+        {"id":"blood-arcanist-exploit-5","name":"Arcanist Exploit","level":5,"type":"selectable","summary":"Choose an Arcanist exploit other than Bloodline Development.","choiceRequired":true,"optionGroupId":"blood-arcanist-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"blood-arcanist-exploit-7","name":"Arcanist Exploit","level":7,"type":"selectable","summary":"Choose another Arcanist exploit other than Bloodline Development.","choiceRequired":true,"optionGroupId":"blood-arcanist-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"blood-arcanist-exploit-11","name":"Arcanist Exploit","level":11,"type":"selectable","summary":"Choose another Arcanist or greater exploit other than Bloodline Development.","choiceRequired":true,"optionGroupId":"blood-arcanist-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"blood-arcanist-exploit-13","name":"Arcanist Exploit","level":13,"type":"selectable","summary":"Choose another Arcanist or greater exploit other than Bloodline Development.","choiceRequired":true,"optionGroupId":"blood-arcanist-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"blood-arcanist-exploit-17","name":"Arcanist Exploit","level":17,"type":"selectable","summary":"Choose another Arcanist or greater exploit other than Bloodline Development.","choiceRequired":true,"optionGroupId":"blood-arcanist-exploits","progressionKey":"arcanist-exploit"},
+        {"id":"blood-arcanist-exploit-19","name":"Arcanist Exploit","level":19,"type":"selectable","summary":"Choose another Arcanist or greater exploit other than Bloodline Development.","choiceRequired":true,"optionGroupId":"blood-arcanist-exploits","progressionKey":"arcanist-exploit"}
       ]
     }
   ],
@@ -31,6 +53,7 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Bloodline selection, variant identity, bloodline arcana, and level-aware bloodline powers are automated without granting excluded class skills, feats, or spells.",
+    "Cross-class bloodline identity matching remains a displayed multiclass requirement."
   ]
 }
