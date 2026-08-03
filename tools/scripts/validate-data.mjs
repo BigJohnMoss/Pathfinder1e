@@ -169,7 +169,24 @@ for (const url of await jsonFiles("archetypes/")) {
         if (feature.featChoiceTypes?.some(type => !["combat", "general", "item-creation", "metamagic", "monster", "story", "style", "teamwork"].includes(type))) errors.push(`${file}: ${feature.id} has an invalid feat choice type`);
         if (feature.ignoreFeatPrerequisites !== undefined && typeof feature.ignoreFeatPrerequisites !== "boolean") errors.push(`${file}: ${feature.id} ignoreFeatPrerequisites must be boolean`);
       }
+      const fastHealingAura = feature.spellAutomation?.fastHealingAura;
+      if (fastHealingAura) {
+        const validAbility = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].includes(fastHealingAura.durationAbility);
+        if (typeof fastHealingAura.label !== "string" || !fastHealingAura.label.trim()) errors.push(`${file}: ${feature.id} fastHealingAura is missing its label`);
+        if (typeof fastHealingAura.resourceId !== "string" || !/^[a-z][A-Za-z0-9]*$/.test(fastHealingAura.resourceId)) errors.push(`${file}: ${feature.id} fastHealingAura has an invalid resourceId`);
+        if (!Number.isInteger(fastHealingAura.cost) || fastHealingAura.cost < 1) errors.push(`${file}: ${feature.id} fastHealingAura has an invalid cost`);
+        if (!Number.isInteger(fastHealingAura.minimumSpellLevel) || fastHealingAura.minimumSpellLevel < 1 || fastHealingAura.minimumSpellLevel > 9) errors.push(`${file}: ${feature.id} fastHealingAura has an invalid minimumSpellLevel`);
+        if (typeof fastHealingAura.range !== "string" || !fastHealingAura.range.trim()) errors.push(`${file}: ${feature.id} fastHealingAura is missing its range`);
+        if (!Number.isInteger(fastHealingAura.healingDivisor) || fastHealingAura.healingDivisor < 1) errors.push(`${file}: ${feature.id} fastHealingAura has an invalid healingDivisor`);
+        if (!validAbility) errors.push(`${file}: ${feature.id} fastHealingAura has an invalid durationAbility`);
+        if (fastHealingAura.minimumRounds !== undefined && (!Number.isInteger(fastHealingAura.minimumRounds) || fastHealingAura.minimumRounds < 1)) errors.push(`${file}: ${feature.id} fastHealingAura has an invalid minimumRounds`);
+      }
     }
+  }
+  if (archetype.optionGroupAugmentations !== undefined && (!Array.isArray(archetype.optionGroupAugmentations) || archetype.optionGroupAugmentations.length === 0)) errors.push(`${file}: optionGroupAugmentations must be a non-empty array`);
+  for (const augmentation of archetype.optionGroupAugmentations ?? []) {
+    if (!augmentation || typeof augmentation.targetGroupId !== "string" || typeof augmentation.sourceGroupId !== "string") errors.push(`${file}: option group augmentation is missing a target or source group`);
+    if (augmentation?.minimumFeatureLevel !== undefined && (!Number.isInteger(augmentation.minimumFeatureLevel) || augmentation.minimumFeatureLevel < 1 || augmentation.minimumFeatureLevel > 20)) errors.push(`${file}: option group augmentation has an invalid minimumFeatureLevel`);
   }
   if (archetype.spellListAdditions !== undefined) {
     if (!archetype.spellListAdditions || typeof archetype.spellListAdditions !== "object" || Array.isArray(archetype.spellListAdditions) || Object.keys(archetype.spellListAdditions).length === 0) errors.push(`${file}: spellListAdditions must be a non-empty record`);
@@ -253,6 +270,16 @@ for (const url of await jsonFiles("spell-catalogues/")) { const catalogue=await 
 for (const url of await jsonFiles("spell-details/")) { const catalogue=await load(url); const file=url.pathname.split("/").pop(); if(!Array.isArray(catalogue.spells)) { errors.push(`${file}: spell details must be an array`); continue; } const detailIds=new Set(); for(const spell of catalogue.spells) { if(typeof spell.id!=="string"||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(spell.id)||detailIds.has(spell.id)) errors.push(`${file}: invalid or duplicate spell detail id ${spell.id??"unknown"}`); else detailIds.add(spell.id); checkSource(spell,`${file}:${spell.id??"unknown"}`); if(typeof spell.description!=="string"||!spell.description.trim()) errors.push(`${file}:${spell.id??"unknown"} is missing a full description`); for(const key of ["castingTime","range","duration"]) if(typeof spell[key]!=="string"||!spell[key].trim()) errors.push(`${file}:${spell.id??"unknown"} is missing ${key}`); if(!Array.isArray(spell.components)||spell.components.length===0) errors.push(`${file}:${spell.id??"unknown"} is missing components`); } }
 for (const url of await jsonFiles("spell-class-levels/")) { const overlay=await load(url); const file=url.pathname.split("/").pop(); checkSource(overlay,file); if(!overlay.levelsBySpellId||typeof overlay.levelsBySpellId!=="object"||Array.isArray(overlay.levelsBySpellId)) errors.push(`${file}: levelsBySpellId must be an object`); else for(const [spellId,levels] of Object.entries(overlay.levelsBySpellId)) { if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(spellId)||!levels||typeof levels!=="object"||Array.isArray(levels)||Object.values(levels).some(level=>!Number.isInteger(level)||level<0||level>9)) errors.push(`${file}: invalid level overlay for ${spellId}`); else if(!ids.has(spellId)) errors.push(`${file}: references missing spell ${spellId}`); } }
 for (const url of await jsonFiles("classes/")) { const c=await load(url); for (const f of c.features??[]) if(f.optionGroupId && !groupIds.has(f.optionGroupId)) errors.push(`${c.id}:${f.id} references missing option group ${f.optionGroupId}`); }
+for (const url of await jsonFiles("archetypes/")) {
+  const archetype=await load(url); const file=url.pathname.split('/').pop();
+  for (const augmentation of archetype.optionGroupAugmentations ?? []) {
+    if (!groupIds.has(augmentation.targetGroupId)) errors.push(`${file}: option group augmentation references missing target group ${augmentation.targetGroupId}`);
+    if (!groupIds.has(augmentation.sourceGroupId)) errors.push(`${file}: option group augmentation references missing source group ${augmentation.sourceGroupId}`);
+  }
+  for (const feature of (archetype.replacements ?? []).flatMap(replacement => replacement.features ?? [])) {
+    if (feature.requiredOptionId && !optionIds.has(feature.requiredOptionId)) errors.push(`${file}: ${feature.id} references missing required option ${feature.requiredOptionId}`);
+  }
+}
 for (const url of await jsonFiles("equipment/")) {
   const catalogue=await load(url); const file=url.pathname.split("/").pop(); checkSource(catalogue,file);
   const equipmentIds=new Set();

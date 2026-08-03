@@ -25,9 +25,29 @@
           "name": "Greater Exploit",
           "level": 11,
           "type": "archetype",
+          "requiredOptionId": "white-mage-fast-healing",
+          "spellAutomation": {
+            "fastHealingAura": {
+              "label": "Fast Healing",
+              "resourceId": "arcaneReservoir",
+              "cost": 1,
+              "minimumSpellLevel": 2,
+              "range": "30 feet",
+              "healingDivisor": 2,
+              "durationAbility": "charisma",
+              "minimumRounds": 1
+            }
+          },
           "summary": "At 11th level, a white mage can select the following greater exploit. Fast Healing (Su) : A white mage can spend 1 point from her arcane reservoir and expend a spell slot of at least 2nd level to grant her allies the fast healing ability. Allies within 30 feet gain fast healing ( Bestiary 300) equal to 1/2 the level of the spell slot sacrificed. This effect lasts for a number of rounds equal to the arcanist’s Charisma modifier (minimum 1)."
         }
       ]
+    }
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "arcanist-exploits",
+      "sourceGroupId": "white-mage-exploits",
+      "minimumFeatureLevel": 11
     }
   ],
   "source": {
@@ -35,8 +55,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20White%20Mage"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression and on-demand Cleric cure and breath of life casting with spell-slot and arcane-reservoir costs are automated. The Fast Healing greater exploit remains descriptive."
+    "Replacement progression, on-demand Cleric cure and breath of life casting, legal Fast Healing greater-exploit selection, spell-slot and arcane-reservoir costs, scaling fast healing, Charisma-based duration, encounter tracking, and save/load persistence are automated."
   ]
 }

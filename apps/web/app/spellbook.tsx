@@ -8,7 +8,7 @@ import {
   isPersonalRangeSpell,
   spellHasSchool,
 } from "../../../packages/engine/src/index.js";
-import type { CharacterSpell } from "../../../packages/types/src/index.js";
+import type { AbilityName, ActiveEffect, CharacterSpell } from "../../../packages/types/src/index.js";
 import type { PreparedSpellAutomation } from "./archetype-spell-automation";
 import { SpellDetails } from "./spell-details";
 
@@ -49,6 +49,8 @@ export function Spellbook({
   onDemandSpellCosts = {},
   requiredPreparedSchool,
   spellAutomation,
+  abilityModifiers = {},
+  onAddEffect,
 }: {
   spells: Spell[];
   sourceBook?: {
@@ -81,6 +83,8 @@ export function Spellbook({
   onDemandSpellCosts?: Record<string, { resourceId?: string; cost: number; label: string; consumesSpellSlot?: boolean; saveDcBonus?: number; concentrationBonus?: number }>;
   requiredPreparedSchool?: string;
   spellAutomation?: PreparedSpellAutomation;
+  abilityModifiers?: Partial<Record<AbilityName, number>>;
+  onAddEffect?: (effect: ActiveEffect) => void;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -89,6 +93,8 @@ export function Spellbook({
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   const [shareTarget, setShareTarget] = useState("");
   const [shareResult, setShareResult] = useState("");
+  const [fastHealingSlotLevel, setFastHealingSlotLevel] = useState(0);
+  const [fastHealingResult, setFastHealingResult] = useState("");
   useEffect(
     () => setLevelFilter(String(maximumSpellLevel)),
     [maximumSpellLevel],
@@ -150,6 +156,32 @@ export function Spellbook({
     const slot = slots.find((entry) => entry.level === level);
     return slot ? slot.count - (slotUses[level] ?? 0) : Infinity;
   };
+  const fastHealingRules = spellAutomation?.fastHealingAura;
+  const eligibleFastHealingSlots = fastHealingRules
+    ? slots.filter((slot) => slot.level >= fastHealingRules.minimumSpellLevel && slot.count > 0)
+    : [];
+  const selectedFastHealingSlotLevel = eligibleFastHealingSlots.some(
+    (slot) => slot.level === fastHealingSlotLevel,
+  )
+    ? fastHealingSlotLevel
+    : (eligibleFastHealingSlots[0]?.level ?? 0);
+  const fastHealingValue = fastHealingRules && selectedFastHealingSlotLevel
+    ? Math.max(1, Math.floor(selectedFastHealingSlotLevel / fastHealingRules.healingDivisor))
+    : 0;
+  const fastHealingRounds = fastHealingRules
+    ? Math.max(
+        fastHealingRules.minimumRounds,
+        abilityModifiers[fastHealingRules.durationAbility] ?? 0,
+      )
+    : 0;
+  const canUseFastHealing = Boolean(
+    fastHealingRules &&
+      reservoir &&
+      onAddEffect &&
+      selectedFastHealingSlotLevel &&
+      reservoir.current >= fastHealingRules.reservoirCost &&
+      remainingSlots(selectedFastHealingSlotLevel) > 0,
+  );
   const shareRules = spellAutomation?.sharePersonalRange;
   const shareEligible = (spell: Spell) =>
     Boolean(shareRules && spellHasSchool(spell, shareRules.school) && isPersonalRangeSpell(spell));
@@ -171,6 +203,29 @@ export function Spellbook({
     setShareResult(
       `Shared ${spell.name} with ${shareTarget.trim()} ${shareRules.range === "touch" ? "by touch" : `within ${shareRules.range}`}.`,
     );
+  };
+  const useFastHealing = () => {
+    if (
+      !fastHealingRules ||
+      !reservoir ||
+      !onAddEffect ||
+      !selectedFastHealingSlotLevel ||
+      reservoir.current < fastHealingRules.reservoirCost ||
+      remainingSlots(selectedFastHealingSlotLevel) <= 0
+    ) return;
+    onReservoirChange(reservoir.current - fastHealingRules.reservoirCost);
+    useSpellSlot(selectedFastHealingSlotLevel);
+    const description = `Allies within ${fastHealingRules.range} gain fast healing ${fastHealingValue}`;
+    onAddEffect({
+      id: `fast-healing-${Date.now()}-${Math.random()}`,
+      name: fastHealingRules.label,
+      target: "allies",
+      bonus: fastHealingValue,
+      fastHealing: fastHealingValue,
+      description,
+      roundsRemaining: fastHealingRounds,
+    });
+    setFastHealingResult(`${description} for ${fastHealingRounds} round${fastHealingRounds === 1 ? "" : "s"}.`);
   };
   const requiredSchoolPrepared = (level: number) => !requiredPreparedSchool || preparedSpellIds.some((id) => {
     const spell = spells.find((candidate) => candidate.id === id);
@@ -259,6 +314,39 @@ export function Spellbook({
             />
           </label>
           {shareResult && <output aria-label={`${shareRules.label} result`}>{shareResult}</output>}
+        </section>
+      )}
+      {fastHealingRules && (
+        <section className="archetype-spell-controls" aria-label={fastHealingRules.label}>
+          <div>
+            <strong>{fastHealingRules.label}</strong>
+            <span>
+              Spend {fastHealingRules.reservoirCost} reservoir point and a {levelLabel(fastHealingRules.minimumSpellLevel)} or higher slot. Allies within {fastHealingRules.range} gain fast healing equal to half the sacrificed slot level for {fastHealingRounds} round{fastHealingRounds === 1 ? "" : "s"}.
+            </span>
+          </div>
+          <div className="archetype-spell-action">
+            <label>
+              Sacrificed spell slot
+              <select
+                aria-label={`${fastHealingRules.label} spell slot`}
+                value={selectedFastHealingSlotLevel}
+                onChange={(event) => {
+                  setFastHealingSlotLevel(Number(event.target.value));
+                  setFastHealingResult("");
+                }}
+              >
+                {eligibleFastHealingSlots.map((slot) => (
+                  <option key={slot.level} value={slot.level} disabled={remainingSlots(slot.level) <= 0}>
+                    {levelLabel(slot.level)} ({remainingSlots(slot.level)}/{slot.count} remaining) · fast healing {Math.max(1, Math.floor(slot.level / fastHealingRules.healingDivisor))}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button type="button" disabled={!canUseFastHealing} onClick={useFastHealing}>
+              Use {fastHealingRules.label}
+            </button>
+          </div>
+          {fastHealingResult && <output aria-label={`${fastHealingRules.label} result`}>{fastHealingResult}</output>}
         </section>
       )}
       <div className="spell-day-controls">

@@ -79,13 +79,16 @@ export interface CharacterDraftV1 {
 export type CharacterDraft = CharacterDraftV1;
 export type ActiveEffectTarget =
   | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
-  | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma";
+  | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
+  | "allies";
 export interface ActiveEffect {
   id: string;
   name: string;
   target: ActiveEffectTarget;
   bonus: number;
   roundsRemaining: number;
+  description?: string;
+  fastHealing?: number;
 }
 
 export interface SourceRef {
@@ -155,6 +158,16 @@ export interface ClassFeatureOccurrence {
     extendDuration?: {
       school: string;
     };
+    fastHealingAura?: {
+      label: string;
+      resourceId: string;
+      cost: number;
+      minimumSpellLevel: number;
+      range: string;
+      healingDivisor: number;
+      durationAbility: AbilityName;
+      minimumRounds?: number;
+    };
   };
 }
 export interface CharacterClass {
@@ -197,6 +210,7 @@ export interface CharacterClass {
   classSkillAdditions?: string[];
   classSkillRemovals?: string[];
   proficiencyAdjustments?: ProficiencyAdjustment[];
+  optionGroupAugmentations?: OptionGroupAugmentation[];
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
     tradition?: "arcane" | "divine";
@@ -261,7 +275,13 @@ export interface CharacterArchetype {
     minimum?: number;
     maximum?: number;
   }>;
+  optionGroupAugmentations?: OptionGroupAugmentation[];
   source: SourceRef;
+}
+export interface OptionGroupAugmentation {
+  targetGroupId: string;
+  sourceGroupId: string;
+  minimumFeatureLevel?: number;
 }
 export interface ProficiencyAdjustment {
   category: "weapon" | "armor" | "shield";

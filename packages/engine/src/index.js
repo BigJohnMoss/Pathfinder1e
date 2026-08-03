@@ -788,10 +788,15 @@ export function normalizeCharacterDraft(
                 "intelligence",
                 "wisdom",
                 "charisma",
+                "allies",
               ].includes(effect.target) &&
               Number.isInteger(effect.bonus) &&
               effect.bonus >= -20 &&
               effect.bonus <= 20 &&
+              (effect.target !== "allies" ||
+                (Number.isInteger(effect.fastHealing) &&
+                  effect.fastHealing > 0 &&
+                  effect.fastHealing <= 20)) &&
               Number.isInteger(effect.roundsRemaining) &&
               effect.roundsRemaining > 0,
           )
@@ -802,6 +807,14 @@ export function normalizeCharacterDraft(
             target: effect.target,
             bonus: effect.bonus,
             roundsRemaining: Math.min(999, effect.roundsRemaining),
+            ...(typeof effect.description === "string" && effect.description.trim()
+              ? { description: effect.description.trim().slice(0, 240) }
+              : {}),
+            ...(Number.isInteger(effect.fastHealing) &&
+            effect.fastHealing > 0 &&
+            effect.fastHealing <= 20
+              ? { fastHealing: effect.fastHealing }
+              : {}),
           }))
       : [],
     inventory: Array.isArray(draft.inventory)
@@ -913,6 +926,10 @@ export function applyArchetype(characterClass, archetype) {
     proficiencyAdjustments: [
       ...(characterClass.proficiencyAdjustments ?? []),
       ...(archetype.proficiencyAdjustments ?? inferredProficiencies),
+    ],
+    optionGroupAugmentations: [
+      ...(characterClass.optionGroupAugmentations ?? []),
+      ...(archetype.optionGroupAugmentations ?? []),
     ],
     spellListAdditions: {
       ...(characterClass.spellListAdditions ?? {}),
@@ -1244,6 +1261,8 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     : inferArchetypeResourceAdjustments(archetype);
   if (resourceAdjustments.length) automated.push(`${resourceAdjustments.length} tracked class resource adjustment${resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
+  if (archetype.optionGroupAugmentations?.length)
+    automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
   const inferredFeatGrants = inferArchetypeGrantedFeats(archetype, feats);
   if (inferredFeatGrants.length) automated.push(`${inferredFeatGrants.length} level-aware bonus feat grant${inferredFeatGrants.length === 1 ? "" : "s"}`);
@@ -1257,8 +1276,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
   const resourceActions = replacementFeatures.flatMap(feature => feature.resourceActions ?? []);
   if (resourceActions.length) automated.push(`${resourceActions.length} resource-powered feature action${resourceActions.length === 1 ? "" : "s"}`);
+  const spellAutomations = replacementFeatures.filter(feature => feature.spellAutomation);
+  if (spellAutomations.length) automated.push(`${spellAutomations.length} spell-powered archetype action${spellAutomations.length === 1 ? "" : "s"}`);
   const manualFeatures = replacementFeatures
-    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id))
+    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id))
     .map(feature => `${feature.name} (level ${feature.level})`);
   const manual = archetype.mechanicalCoverage === "full"
     ? []
