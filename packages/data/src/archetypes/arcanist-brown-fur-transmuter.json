@@ -25,7 +25,7 @@
           "name": "Share Transmutation (Su)",
           "level": 9,
           "type": "archetype",
-          "resourceActions": [{"id":"share-transmutation","label":"Use Share Transmutation","resourceId":"arcaneReservoir","cost":1,"summary":"Spend 1 reservoir point to change a personal transmutation spell to touch range."}],
+          "spellAutomation": {"sharePersonalRange":{"school":"transmutation","resourceId":"arcaneReservoir","cost":1,"range":"touch","willingOnly":true,"improvedAtLevel":20,"improvedRange":"30 feet"}},
           "summary": "At 9th level, the brown-fur transmuter can target others with her transmutation spells. A brown-fur transmuter can expend 1 point from her arcane reservoir to change any transmutation spell with a range of personal to a range of touch. Such a spell automatically fails on unwilling creatures. This ability replaces the arcanist exploit gained at 9th level."
         },
         {
@@ -33,6 +33,7 @@
           "name": "Transmutation Supremacy (Su)",
           "level": 20,
           "type": "archetype",
+          "spellAutomation": {"extendDuration":{"school":"transmutation"}},
           "summary": "At 20th level, the brown-fur transmuter learns to fully master the power of transmutation. Whenever she casts a transmutation spell, it is treated as it were affected by the Extend Spell feat without altering the casting time or slot used. (She cannot then alter its duration again with the Extend Spell feat). Whenever she uses her powerful change ability, the bonus increases by 4 instead of 2. Her share transmutation ability can now target a willing creature within 30 feet. This ability replaces magical supremacy."
         }
       ]
@@ -43,8 +44,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Brown-Fur%20Transmuter"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression, reservoir costs for Powerful Change and Share Transmutation, Powerful Change's chosen +2 ability effect (+4 at level 20), duration tracking, and save/load persistence are automated. Share Transmutation targeting and Transmutation Supremacy's automatic Extend Spell treatment remain descriptive."
+    "Replacement progression, Powerful Change's reservoir cost and chosen +2 ability effect (+4 at level 20), duration tracking, Share Transmutation's willing-target workflow and touch/30-foot range, Transmutation Supremacy's automatic Extend Spell duration, and save/load persistence are automated."
   ]
 }

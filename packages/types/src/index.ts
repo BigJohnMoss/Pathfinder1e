@@ -142,6 +142,20 @@ export interface ClassFeatureOccurrence {
     labelsByUseCount?: string[];
     summary?: string;
   }>;
+  spellAutomation?: {
+    sharePersonalRange?: {
+      school: string;
+      resourceId: string;
+      cost: number;
+      range: string;
+      willingOnly?: boolean;
+      improvedAtLevel?: number;
+      improvedRange?: string;
+    };
+    extendDuration?: {
+      school: string;
+    };
+  };
 }
 export interface CharacterClass {
   id: string;

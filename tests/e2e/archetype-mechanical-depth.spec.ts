@@ -509,6 +509,17 @@ for (const journey of journeys) {
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Actions" }).click();
     await expect(page.getByText("+4 Strength · 3 rounds", { exact: true })).toBeVisible();
+
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await expect(page.getByRole("region", { name: "Share Transmutation" })).toContainText("within 30 feet");
+    await page.getByLabel("Search spells").fill("Alter Self");
+    await expect(page.getByText(/Transmutation Supremacy: 2 minutes\/level \(D\)/)).toBeVisible();
+    await page.getByRole("button", { name: "Add Alter Self", exact: true }).click();
+    await page.getByLabel("Share Transmutation willing target").fill("Valeros");
+    await page.getByRole("region", { name: "Prepared today" }).getByRole("button", { name: "Share Alter Self", exact: true }).click();
+    await expect(page.getByLabel("Share Transmutation result")).toHaveText("Shared Alter Self with Valeros within 30 feet.");
+    await expect(page.getByLabel("Arcane Reservoir points")).toContainText("1/");
+    await expect(page.getByText(/Arcanist \(Brown-Fur Transmuter\) slots:/)).toContainText("3/4 2nd-level");
   });
 
   test(`enforces Elemental Master preparation rules on ${journey.name}`, async ({ page }) => {
