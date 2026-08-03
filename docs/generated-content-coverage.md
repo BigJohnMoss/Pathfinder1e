@@ -9,7 +9,7 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 7 |
-| Option groups | 93 |
+| Option groups | 94 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2758 |
@@ -80,7 +80,7 @@ These rule-text signals are multi-label: one archetype can contribute to several
 | Barbarian | 24 | 20 | 41 |
 | Bard | 39 | 20 | 73 |
 | Bloodrager | 18 | 20 | 18 |
-| Brawler | 17 | 20 | 19 |
+| Brawler | 24 | 20 | 19 |
 | Cavalier | 18 | 20 | 37 |
 | Cleric | 19 | 17 | 35 |
 | Dragon Disciple | 25 | 10 | 0 |

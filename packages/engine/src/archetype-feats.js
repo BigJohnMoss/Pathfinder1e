@@ -186,6 +186,7 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
       warpriest: "warpriest-bonus-feats",
       gunslinger: "gunslinger-bonus-feats",
       swashbuckler: "swashbuckler-bonus-feats",
+      brawler: "brawler-bonus-feats",
     }[archetype?.classId];
     const replacementList = text.match(/(?:replaces? (?:the )?(?:normal )?(?:monk )?bonus feats? with|selects? bonus feats? from|must choose from) the following(?: list)?\s*:\s*([^.]+)/i);
     if (classBonusFeatGroup && replacementList) {
@@ -202,6 +203,12 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
     const additionalBonusFeatList = text.match(/In addition to [^.]*?bonus feats?[^:]*:\s*([^.]+)/i);
     if (classBonusFeatGroup && additionalBonusFeatList) {
       const ids = featIdsFromList(additionalBonusFeatList[1], featIdByName).filter(Boolean);
+      if (ids.length) add(feature, classBonusFeatGroup, Math.max(1, Math.trunc(feature.level ?? 1)), { featChoiceIds: ids });
+      continue;
+    }
+    const addedToBonusFeatList = text.match(/adds?\s+(.+?)\s+to the list of bonus feats?[^.]*?(?:choose|select)/i);
+    if (classBonusFeatGroup && addedToBonusFeatList) {
+      const ids = featIdsFromList(addedToBonusFeatList[1], featIdByName).filter(Boolean);
       if (ids.length) add(feature, classBonusFeatGroup, Math.max(1, Math.trunc(feature.level ?? 1)), { featChoiceIds: ids });
       continue;
     }

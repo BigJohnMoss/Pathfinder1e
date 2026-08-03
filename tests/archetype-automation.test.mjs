@@ -213,9 +213,19 @@ test("archetype feat alternatives augment existing class choice slots without gr
   const infiltrator = inferArchetypeFeatAlternatives(archetype("swashbuckler-daring-infiltrator"), feats)[0];
   assert.equal(infiltrator.optionGroupId, "swashbuckler-bonus-feats");
   assert.ok(infiltrator.featChoiceIds.includes("antagonize"));
+
+  const constructedPugilist = inferArchetypeFeatAlternatives(archetype("brawler-constructed-pugilist"), feats)[0];
+  assert.deepEqual(constructedPugilist, {
+    sourceFeatureId: "brawler-constructed-pugilist-bonus-item-creation-feats-2",
+    optionGroupId: "brawler-bonus-feats",
+    minimumLevel: 2,
+    mode: "augment",
+    ignoreFeatPrerequisites: false,
+    featChoiceIds: ["craft-magic-arms-and-armor", "master-craftsman", "skill-focus"],
+  });
 });
 
-test("core monk, warpriest, and swashbuckler bonus feat milestones expose automated choice groups", () => {
+test("core monk, warpriest, swashbuckler, and brawler bonus feat milestones expose automated choice groups", () => {
   const characterClass = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/classes/${id}.json`, import.meta.url), "utf8"));
   const choices = (id, groupId) => characterClass(id).features.filter(feature => feature.optionGroupId === groupId);
 
@@ -223,6 +233,7 @@ test("core monk, warpriest, and swashbuckler bonus feat milestones expose automa
   assert.deepEqual(choices("warpriest", "warpriest-bonus-feats").map(feature => feature.level), [3, 6, 9, 12, 15, 18]);
   assert.deepEqual(choices("warpriest", "warpriest-weapon-focus").map(feature => feature.level), [1]);
   assert.deepEqual(choices("swashbuckler", "swashbuckler-bonus-feats").map(feature => feature.level), [4, 8, 12, 16, 20]);
+  assert.deepEqual(choices("brawler", "brawler-bonus-feats").map(feature => feature.level), [2, 5, 8, 11, 14, 17, 20]);
 });
 
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {
