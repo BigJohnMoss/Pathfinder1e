@@ -114,6 +114,7 @@ export interface ClassFeatureOccurrence {
   source?: SourceRef;
   requiredOptionId?: string;
   requiredOptionMessage?: string;
+  requiredSpellLevel?: number;
 }
 export interface CharacterClass {
   id: string;
@@ -408,6 +409,9 @@ export interface CharacterTrait {
 export interface CharacterOption extends SelectableOption {
   castsAsPrepared?: boolean;
   ignoresMaximumSpellLevel?: boolean;
+  preparedCapacityCost?: number;
+  spellSaveDcBonus?: number;
+  concentrationBonus?: { base: number; improvedAtLevel?: number; improved?: number };
   resourceCost?: {
     resourceId: string;
     base?: number;
@@ -483,6 +487,9 @@ export interface CharacterOptionGroup {
     minimumClassLevelBySpellLevel?: Record<string, number>;
     castsAsPrepared?: boolean;
     ignoresMaximumSpellLevel?: boolean;
+    preparedCapacityCost?: number;
+    spellSaveDcBonus?: number;
+    concentrationBonus?: CharacterOption["concentrationBonus"];
     resourceCost?: CharacterOption["resourceCost"];
     nameIncludes?: string;
     spellIds?: string[];

@@ -70,7 +70,7 @@ export function Spellbook({
   oppositionSchoolIds?: string[];
   oppositionSpellIds?: string[];
   restrictedBonus?: { eligibleSpellIds: string[]; countPerLevel: number; label: string } | null;
-  onDemandSpellCosts?: Record<string, { resourceId: string; cost: number; label: string; consumesSpellSlot?: boolean }>;
+  onDemandSpellCosts?: Record<string, { resourceId?: string; cost: number; label: string; consumesSpellSlot?: boolean; saveDcBonus?: number; concentrationBonus?: number }>;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -435,14 +435,14 @@ export function Spellbook({
                     preparedCount(level) + preparationCost > limitFor(level) || restrictedIneligibleFull;
                   const canCast = level === 0 || remainingSlots(level) > 0;
                   const onDemandCost = onDemandSpellCosts[spell.id];
-                  const canCastOnDemand = Boolean(onDemandCost && reservoir && reservoir.current >= onDemandCost.cost);
+                  const canCastOnDemand = Boolean(onDemandCost && (!onDemandCost.resourceId || (reservoir && reservoir.current >= onDemandCost.cost)));
                   const consumesSpellSlot = onDemandCost?.consumesSpellSlot ?? true;
                   return (
                     <article key={spell.id}>
                       <div>
                         <strong>{spell.name}</strong>
                         <small>
-                          level {level} · DC {spellDcs[level]} · {spell.summary}
+                          level {level} · DC {spellDcs[level] + (onDemandCost?.saveDcBonus ?? 0)} · {spell.summary}
                           {spellTraitBonuses[spell.id]?.casterLevel
                             ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level`
                             : ""}
@@ -456,7 +456,7 @@ export function Spellbook({
                             ? ` · eligible for ${restrictedBonus.label}`
                             : ""}
                           {onDemandCost
-                            ? ` · ${onDemandCost.label}: cast on demand for ${onDemandCost.cost} reservoir point${onDemandCost.cost === 1 ? "" : "s"}`
+                            ? ` · ${onDemandCost.label}: cast on demand${onDemandCost.resourceId ? ` for ${onDemandCost.cost} reservoir point${onDemandCost.cost === 1 ? "" : "s"}` : ""}${onDemandCost.concentrationBonus ? ` · +${onDemandCost.concentrationBonus} concentration` : ""}`
                             : ""}
                         </small>
                       </div>
@@ -467,7 +467,7 @@ export function Spellbook({
                           aria-label={`Cast ${spell.name}`}
                           disabled={(prepared === 0 && !canCastOnDemand) || (consumesSpellSlot && !canCast)}
                           onClick={() => {
-                            if (prepared === 0 && onDemandCost && reservoir)
+                            if (prepared === 0 && onDemandCost?.resourceId && reservoir)
                               onReservoirChange(reservoir.current - onDemandCost.cost);
                             if (level > 0 && (prepared > 0 || consumesSpellSlot))
                               onSlotUsesChange({
