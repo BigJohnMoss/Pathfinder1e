@@ -135,3 +135,20 @@ test("Magaambyan Initiate exposes one legal Druid spell choice per class level",
     Math.max(...spells.filter((option) => option.minimumLevel <= level).map((option) => option.spellLevel))
   ), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 });
+
+test("White Mage automatically grants level-aware on-demand cure spells", () => {
+  const whiteMage = archetypes.find((archetype) => archetype.id === "arcanist-white-mage");
+  const applied = featuresThroughLevel(applyArchetype(arcanist, whiteMage), 20);
+  const healing = applied.find((feature) => feature.id === "arcanist-white-mage-spontaneous-healing-su-1");
+  assert.equal(healing?.optionGroupId, "white-mage-cure-spells");
+  assert.equal(healing?.grantsAllOptions, true);
+  const options = generatedData.optionGroups.find((group) => group.id === "white-mage-cure-spells").options;
+  const cures = options.filter((option) => option.spellId !== "breath-of-life");
+  assert.deepEqual(cures.map((option) => option.spellLevel).sort((a, b) => a - b), [1, 2, 3, 4, 5, 6, 7, 8]);
+  assert.ok(cures.every((option) => option.castsAsPrepared && option.resourceCost?.base === 1));
+  assert.deepEqual(cures.map((option) => option.minimumLevel).sort((a, b) => a - b), [1, 3, 5, 7, 9, 11, 13, 15]);
+  const breathOfLife = options.find((option) => option.spellId === "breath-of-life");
+  assert.equal(breathOfLife?.minimumLevel, 10);
+  assert.equal(breathOfLife?.spellLevel, 5);
+  assert.equal(breathOfLife?.resourceCost?.base, 5);
+});

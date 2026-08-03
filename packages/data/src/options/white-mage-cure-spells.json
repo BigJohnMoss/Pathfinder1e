@@ -1,0 +1,83 @@
+{
+  "id": "white-mage-cure-spells",
+  "name": "Spontaneous Healing",
+  "classIds": ["arcanist"],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20White%20Mage"
+  },
+  "optionDefaults": {
+    "groupId": "white-mage-cure-spells",
+    "classIds": ["arcanist"],
+    "prerequisites": []
+  },
+  "options": [
+    {
+      "id": "white-mage-cure-spells-breath-of-life",
+      "name": "Breath of Life",
+      "groupId": "white-mage-cure-spells",
+      "classIds": ["arcanist"],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Cast breath of life on demand by expending a 5th-level spell slot and 5 arcane-reservoir points.",
+      "spellId": "breath-of-life",
+      "spellLevel": 5,
+      "castsAsPrepared": true,
+      "resourceCost": {
+        "resourceId": "arcaneReservoir",
+        "base": 5,
+        "label": "Spontaneous Healing"
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20White%20Mage"
+      }
+    }
+  ],
+  "generatedSpellOptions": {
+    "classId": "cleric",
+    "targetClassId": "arcanist",
+    "anyClassList": true,
+    "spellIds": [
+      "cure-light-wounds",
+      "cure-moderate-wounds",
+      "cure-serious-wounds",
+      "cure-critical-wounds",
+      "cure-light-wounds-mass",
+      "cure-moderate-wounds-mass",
+      "cure-serious-wounds-mass",
+      "cure-critical-wounds-mass"
+    ],
+    "additionalSpellLevels": {
+      "cure-light-wounds": 1,
+      "cure-moderate-wounds": 2,
+      "cure-serious-wounds": 3,
+      "cure-critical-wounds": 4,
+      "cure-light-wounds-mass": 5,
+      "cure-moderate-wounds-mass": 6,
+      "cure-serious-wounds-mass": 7,
+      "cure-critical-wounds-mass": 8
+    },
+    "maximumSpellLevel": 9,
+    "castsAsPrepared": true,
+    "resourceCost": {
+      "resourceId": "arcaneReservoir",
+      "base": 1,
+      "label": "Spontaneous Healing"
+    },
+    "minimumClassLevelBySpellLevel": {
+      "0": 1,
+      "1": 1,
+      "2": 3,
+      "3": 5,
+      "4": 7,
+      "5": 9,
+      "6": 11,
+      "7": 13,
+      "8": 15,
+      "9": 17
+    }
+  }
+}

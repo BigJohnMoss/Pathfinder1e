@@ -66,9 +66,13 @@ const optionGroups=rawOptionGroups.map(group=>{
   const filter=group.generatedSpellOptions;
   if(!filter) return group;
   const additionalIds=new Set(filter.additionalSpellIds??[]);
+  const spellIds=new Set(filter.spellIds??[]);
   const matchesSchool=spell=>!filter.school||spell.school===filter.school||spell.schools?.includes(filter.school);
+  const matchesName=spell=>!filter.nameIncludes||spell.name.toLowerCase().includes(filter.nameIncludes.toLowerCase());
   const generated=spells.filter(spell=>additionalIds.has(spell.id)||(
+    (!spellIds.size||spellIds.has(spell.id))&&
     matchesSchool(spell)&&
+    matchesName(spell)&&
     (filter.anyClassList?Object.keys(spell.levelByClass??{}).length>0:spell.levelByClass?.[filter.classId]!==undefined)&&
     (!filter.excludeClassId||spell.levelByClass?.[filter.excludeClassId]===undefined)
   )).map(spell=>{
