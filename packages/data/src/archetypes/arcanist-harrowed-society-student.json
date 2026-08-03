@@ -26,6 +26,16 @@
           "name": "Harrow Reservoir (Ex)",
           "level": 1,
           "type": "archetype",
+          "resourceActions": [
+            {
+              "id": "perform-harrow-reading",
+              "label": "Complete Harrow Reading",
+              "resourceId": "harrowReadings",
+              "cost": 1,
+              "variableRecovery": {"resourceId":"arcaneReservoir","label":"Chosen-suit cards dealt","minimum":0,"maximum":9,"levelDivisor":2},
+              "summary": "Spend one daily reading and restore reservoir points equal to the chosen-suit cards dealt, capped at 1 per 2 Arcanist levels. Excess points are lost."
+            }
+          ],
           "summary": "Once per day, a Harrowed Society student can perform a harrow reading as a 5-minute ritual. She decides which suit most closely aligns with her task at hand and deals a nine-card spread. Each time that suit appears in her spread, she adds 1 point to her arcane reservoir, to a maximum of 1 point per 2 arcanist levels. Points gained in excess of her reservoir’s maximum are lost. The Harrowed Society student can perform this reading one additional time per day at 8th level and at 16th level. This ability replaces consume spells."
         },
         {
@@ -113,6 +123,23 @@
           "name": "Trump Card (Su)",
           "level": 9,
           "type": "archetype",
+          "resourceActions": [
+            {
+              "id": "draw-trump-card",
+              "label": "Draw Trump Card",
+              "resourceId": "arcaneReservoir",
+              "cost": 1,
+              "summary": "Spend 1 reservoir point and draw a random Harrow suit for the target's next qualifying roll.",
+              "randomOutcomes": [
+                {"label":"Books","summary":"+2 insight on the next caster level check."},
+                {"label":"Crowns","summary":"+2 insight on the next saving throw."},
+                {"label":"Hammers","summary":"+4 insight on the next successful melee damage roll."},
+                {"label":"Keys","summary":"+4 insight on the next initiative check."},
+                {"label":"Shields","summary":"The next magical healing restores additional hit points equal to Arcanist level."},
+                {"label":"Stars","summary":"+4 insight on the next skill check."}
+              ]
+            }
+          ],
           "summary": "At 9th level, a Harrowed Society student can expend 1 point from her arcane reservoir and draw a card from her harrow deck as a standard action to learn her own fate or that of an ally within 30 feet. The target’s fate depends on the suit of the card drawn from the deck. Books : The target gains a +2 insight bonus on her next caster level check. Crowns : The target gains a +2 insight bonus on her next saving throw. Hammers : The target gains a +4 insight bonus on the damage roll of her next successful melee attack. Keys : The target gains a +4 insight bonus on her next initiative check. Shields : The next time the target receives magical healing, she regains an additional number of hit points equal to the Harrowed Society student’s arcanist class level. Stars : The target gains a +4 insight bonus on her next skill check. A creature cannot have more than one trump card in effect at one time; drawing a new trump card for a target negates the effect of the previous trump card. A Harrow Society student can attempt to read the fate of an enemy within 30 feet, resulting in a penalty for that target equal to the bonus granted above, but the target is entitled to a Will save (DC = 10 + 1/2 the Harrowed Society student’s arcanist level + her Charisma modifier) to negate the effect. This is considered a curse effect. A Harrow Society student can have trump cards in effect for multiple creatures at the same time. This ability replaces the 9th-level arcanist exploit."
         }
       ]
@@ -138,6 +165,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Psychic Sensitivity, class skills, replacement progression, eight level-aware Divine the Mysteries spell choices, and the 1/2/3 daily Harrow Reading uses are automated. The cards dealt, reservoir points gained, and Trump Card outcome remain table input."
+    "Psychic Sensitivity, class skills, replacement progression, eight level-aware Divine the Mysteries spell choices, 1/2/3 daily Harrow Readings, level-capped reservoir recovery from the dealt spread, and random Trump Card suits with reservoir spending are automated. Applying the drawn conditional modifier to a future tabletop roll remains manual."
   ]
 }
