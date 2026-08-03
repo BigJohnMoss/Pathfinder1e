@@ -1534,7 +1534,7 @@ export default function Home() {
             : baseOptions;
     const levelAwareOptions = options.map((option) => {
       const richOption = option as CharacterOption;
-      return richOption.powers
+      return richOption.powers && feature.optionGroupId === "blood-arcanist-bloodlines"
         ? { ...option, powers: richOption.powers.filter((power) => power.level <= featureClassLevel) }
         : option;
     });
