@@ -18,12 +18,13 @@
           "name": "Psychic Reader (Ex)",
           "level": 1,
           "type": "archetype",
+          "grantedFeatId": "psychic-sensitivity",
           "summary": "A Harrowed Society student gains Psychic Sensitivity as a bonus feat and adds Diplomacy, Perception, and Sense Motive to her list of class skills. This ability replaces the 1st-level arcanist exploit."
         },
         {
           "id": "arcanist-harrowed-society-student-harrow-reservoir-ex-8",
           "name": "Harrow Reservoir (Ex)",
-          "level": 8,
+          "level": 1,
           "type": "archetype",
           "summary": "Once per day, a Harrowed Society student can perform a harrow reading as a 5-minute ritual. She decides which suit most closely aligns with her task at hand and deals a nine-card spread. Each time that suit appears in her spread, she adds 1 point to her arcane reservoir, to a maximum of 1 point per 2 arcanist levels. Points gained in excess of her reservoir’s maximum are lost. The Harrowed Society student can perform this reading one additional time per day at 8th level and at 16th level. This ability replaces consume spells."
         },
@@ -45,6 +46,18 @@
     }
   ],
   "classSkillAdditions": ["Diplomacy", "Perception", "Sense Motive"],
+  "resourceAdjustments": [
+    {
+      "resourceId": "harrowReadings",
+      "label": "Harrow Readings",
+      "unit": "reading",
+      "operation": "add",
+      "minimumLevel": 1,
+      "base": 1,
+      "levelDivisor": 8,
+      "maximum": 3
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -52,6 +65,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Psychic Sensitivity, class skills, replacement progression, and the 1/2/3 daily Harrow Reading uses are automated. The cards dealt and reservoir points gained remain table input."
   ]
 }
