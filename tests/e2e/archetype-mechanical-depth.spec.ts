@@ -495,6 +495,36 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Bloodline variant choice")).toHaveValue("black-dragon");
   });
 
+  test(`uses and restores the Witch catalogue for Unlettered Arcanist on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-unlettered-arcanist");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Spells" }).click();
+
+    const search = page.getByLabel("Search spells");
+    await search.fill("Alleviate Addiction");
+    await expect(page.getByRole("button", { name: "Add Alleviate Addiction", exact: true })).toBeEnabled();
+    await page.getByRole("button", { name: "Add Alleviate Addiction", exact: true }).click();
+    await search.fill("Mage Armor");
+    await expect(page.getByRole("button", { name: "Add Mage Armor", exact: true })).toHaveCount(0);
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await expect(page.getByLabel("Alleviate Addiction prepared")).toHaveText("1");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);

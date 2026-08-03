@@ -23,6 +23,27 @@ test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
 });
 
+test("Unlettered Arcanist replaces its spell catalogue without changing Arcanist casting progression", () => {
+  const source = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/arcanist-unlettered-arcanist.json", import.meta.url), "utf8"));
+  const base = {
+    id: "arcanist",
+    name: "Arcanist",
+    features: [],
+    classSkills: [],
+    spellcasting: {
+      ability: "intelligence",
+      castingType: "prepared",
+      slotsByLevel: [[2]],
+      preparedByLevel: [[4, 2]],
+    },
+  };
+  const applied = applyArchetype(base, source);
+  assert.equal(applied.spellListClassId, "witch");
+  assert.equal(applied.spellcasting.castingType, "prepared");
+  assert.deepEqual(applied.spellcasting.slotsByLevel, base.spellcasting.slotsByLevel);
+  assert.equal(source.mechanicalCoverage, "full");
+});
+
 test("shared archetype feat choices expose every earned selection slot", () => {
   const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const featChoices = (id) => archetype(id).replacements.flatMap((replacement) => replacement.features).filter((feature) => feature.optionGroupId === "archetype-feats");
