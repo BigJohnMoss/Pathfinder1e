@@ -1,0 +1,6 @@
+{
+  "id": "brawler-bonus-feats",
+  "name": "Brawler Bonus Combat Feats",
+  "classIds": ["brawler"],
+  "options": []
+}

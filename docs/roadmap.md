@@ -497,6 +497,20 @@ expand those lists without losing the original earned slots.
 6. [x] Verify replacement, expansion, selection, and save/load behavior on
    desktop and narrow mobile.
 
+## Completed expansion: Brawler Bonus-Feat Chassis
+
+Restore the Brawler's published bonus combat feat progression and allow
+archetypes to expand its choices without creating extra feat slots.
+
+1. [x] Add selectable Brawler bonus combat feat slots at levels 2, 5, 8, 11,
+   14, 17, and 20.
+2. [x] Count Brawler levels as Fighter and Monk levels when checking feat
+   prerequisites.
+3. [x] Recognize named additions to an existing class bonus-feat list.
+4. [x] Add Constructed Pugilist's Craft Magic Arms and Armor, Master Craftsman,
+   and Skill Focus choices while retaining normal combat-feat choices.
+5. [x] Verify catalogue inference and desktop/narrow-mobile save and load.
+
 ## Active milestone: Archetype Mechanical Depth
 
 Convert the remaining partially automated archetypes into complete mechanical

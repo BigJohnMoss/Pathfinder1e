@@ -156,6 +156,7 @@ const generatedFeatGroupIds = new Set([
   "warpriest-weapon-focus",
   "warpriest-bonus-feats",
   "swashbuckler-bonus-feats",
+  "brawler-bonus-feats",
 ]);
 const monkBonusFeatIds = [
   "catch-off-guard",
@@ -181,6 +182,9 @@ const monkBonusFeatIdsAt10 = [
   "spring-attack",
 ];
 const adaptBonusFeatPrerequisite = (prerequisite: Prerequisite, classId: string): Prerequisite => {
+  if (prerequisite.type === "class-level" && ["fighter", "monk"].includes(prerequisite.classId) && ["brawler"].includes(classId)) {
+    return { ...prerequisite, classId };
+  }
   if (prerequisite.type === "class-level" && prerequisite.classId === "fighter" && ["warpriest", "swashbuckler"].includes(classId)) {
     return { ...prerequisite, classId };
   }
@@ -1255,7 +1259,7 @@ export default function Home() {
         ignorePrerequisites: true,
       };
       if (feature.optionGroupId === "warpriest-weapon-focus") return { ids: ["weapon-focus"], types: [], prerequisiteIds: [], ignorePrerequisites: true };
-      if (feature.optionGroupId === "warpriest-bonus-feats" || feature.optionGroupId === "swashbuckler-bonus-feats") return { ids: [], types: ["combat"], prerequisiteIds: [], ignorePrerequisites: false };
+      if (feature.optionGroupId === "warpriest-bonus-feats" || feature.optionGroupId === "swashbuckler-bonus-feats" || feature.optionGroupId === "brawler-bonus-feats") return { ids: [], types: ["combat"], prerequisiteIds: [], ignorePrerequisites: false };
       return null;
     })();
     const generatedFeatGroup: (typeof optionGroups)[number] | undefined = generatedFeatConfig

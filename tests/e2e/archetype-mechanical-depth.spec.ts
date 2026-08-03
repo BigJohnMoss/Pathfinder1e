@@ -247,6 +247,35 @@ for (const journey of journeys) {
     await expect(page.getByLabel("Bonus Feat level 10")).toHaveValue("impaling-critical");
   });
 
+  test(`adds constructed pugilist feats to brawler bonus-feat slots on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("brawler");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("brawler-constructed-pugilist");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("5");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+
+    const secondLevelChoice = page.getByLabel("Bonus Combat Feat level 2");
+    await expect(secondLevelChoice.locator('option[value="agile-maneuvers"]')).toHaveCount(1);
+    await expect(secondLevelChoice.locator('option[value="skill-focus"]')).toHaveCount(1);
+    await secondLevelChoice.selectOption("skill-focus");
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Bonus Combat Feat level 2")).toHaveValue("skill-focus");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);
