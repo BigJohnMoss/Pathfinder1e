@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { ActiveEffect, ActiveEffectTarget, ClassFeatureOccurrence as Feature } from "../../../packages/types/src/index.js";
+import type { AbilityName, ActiveEffect, ActiveEffectTarget, ClassFeatureOccurrence as Feature } from "../../../packages/types/src/index.js";
 
 export type DailyResource = {
   id?: string;
@@ -14,11 +14,14 @@ export type DailyResource = {
 const effectTargetLabel = (target: ActiveEffectTarget) => target.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
 const abilityEffectTargets = new Set<ActiveEffectTarget>(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
 
-export function ClassFeatures({ level, className, features, dailyResources = [], onAddEffect }: {
+export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, classLevels = {}, selectedOptionIds = [], onAddEffect }: {
   level: number;
   className: string;
   features: Feature[];
   dailyResources?: DailyResource[];
+  abilityModifiers?: Partial<Record<AbilityName, number>>;
+  classLevels?: Record<string, number>;
+  selectedOptionIds?: string[];
   onAddEffect?: (effect: ActiveEffect) => void;
 }) {
   const [variableAmounts, setVariableAmounts] = useState<Record<string, number>>({});
@@ -26,6 +29,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   const [effectTargets, setEffectTargets] = useState<Record<string, ActiveEffectTarget>>({});
   const [effectRounds, setEffectRounds] = useState<Record<string, number>>({});
   const [actionModes, setActionModes] = useState<Record<string, string>>({});
+  const [calculationInputs, setCalculationInputs] = useState<Record<string, number>>({});
+  const selectedOptionSet = new Set(selectedOptionIds);
 
   return <section className="features">
     <div><p className="eyebrow">LEVEL {level}</p><h2>{className} features</h2><p>Review everything earned at this level, then configure required class choices below.</p></div>
@@ -40,7 +45,16 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       </div>;
     })}
     <ol>{features.map((feature) => <li key={feature.id}>
-      <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.resourceActions?.map((action) => {
+      <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.numericCalculations?.map((calculation) => {
+        const input = Math.max(calculation.inputMinimum, Math.min(calculation.inputMaximum, calculationInputs[calculation.id] ?? calculation.inputDefault ?? calculation.inputMinimum));
+        const calculationLevel = calculation.classId ? classLevels[calculation.classId] ?? 0 : level;
+        const base = calculation.baseByLevel.filter((step) => step.level <= calculationLevel).sort((left, right) => left.level - right.level).at(-1)?.value ?? 0;
+        return <div className="feature-rule-calculation" role="group" aria-label={calculation.label} key={calculation.id}>
+          <label>{calculation.inputLabel}<input aria-label={calculation.inputLabel} type="number" min={calculation.inputMinimum} max={calculation.inputMaximum} value={input} onChange={(event) => setCalculationInputs((current) => ({ ...current, [calculation.id]: Math.max(calculation.inputMinimum, Math.min(calculation.inputMaximum, Number(event.target.value) || calculation.inputMinimum)) }))} /></label>
+          <output aria-label={calculation.outputLabel}>{calculation.outputLabel}: {base + input}</output>
+          {calculation.summary && <small>{calculation.summary}</small>}
+        </div>;
+      })}{feature.resourceActions?.map((action) => {
         const costs = action.costs ?? (action.resourceId && action.cost !== undefined ? [{ resourceId: action.resourceId, cost: action.cost }] : []);
         const changes = action.changes ?? costs.map(({ resourceId, cost }) => ({ resourceId, usedDelta: cost }));
         const variableMaximum = action.variableRecovery
@@ -59,13 +73,18 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const effectTarget = action.activeEffect ? effectTargets[action.id] ?? action.activeEffect.targets[0] : undefined;
         const effectTargetChoiceLabel = action.activeEffect?.targets.every((target) => abilityEffectTargets.has(target)) ? "Affected ability" : "Affected target";
         const rounds = action.activeEffect ? Math.max(1, Math.min(999, effectRounds[action.id] ?? action.activeEffect.defaultRounds ?? 10)) : 0;
-        const effectBonus = action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0;
-        const effectDescription = [selectedMode?.summary, action.activeEffect?.description].filter(Boolean).join(" ");
+        const effectUpgrade = action.activeEffect?.upgrades?.filter((upgrade) => selectedOptionSet.has(upgrade.requiredOptionId)).at(-1);
+        const effectName = effectUpgrade?.name ?? action.activeEffect?.name;
+        const effectBonus = effectUpgrade?.bonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0);
+        const saveLevel = action.savingThrow?.classId ? classLevels[action.savingThrow.classId] ?? 0 : level;
+        const saveDc = action.savingThrow ? action.savingThrow.base + Math.floor(saveLevel / action.savingThrow.levelDivisor) + (abilityModifiers[action.savingThrow.ability] ?? 0) : undefined;
+        const saveText = action.savingThrow ? `${action.savingThrow.label} DC ${saveDc} negates.` : undefined;
+        const effectDescription = [selectedMode?.summary, effectUpgrade?.description ?? action.activeEffect?.description, saveText].filter(Boolean).join(" ");
         const activate = () => {
           resources.forEach(({ usedDelta, resource }) => resource?.onUsedChange(resource.used + usedDelta));
           if (action.activeEffect && effectTarget && onAddEffect) onAddEffect({
             id: `${action.id}-${Date.now()}-${Math.random()}`,
-            name: action.activeEffect.name,
+            name: effectName ?? action.activeEffect.name,
             target: effectTarget,
             bonus: effectBonus,
             ...(effectDescription ? { description: effectDescription } : {}),
@@ -82,6 +101,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         return <div className="feature-resource-action" key={action.id}>
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
           {Boolean(action.modes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{action.modes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
+          {action.savingThrow && <output aria-label={`${action.label} save DC`}>{action.savingThrow.label} save DC {saveDc}</output>}
           {action.activeEffect && <>{action.activeEffect.targets.length > 1 && <label>{effectTargetChoiceLabel}<select aria-label={`${action.label} ${effectTargetChoiceLabel.toLowerCase()}`} value={effectTarget} onChange={(event) => setEffectTargets((current) => ({ ...current, [action.id]: event.target.value as ActiveEffectTarget }))}>{action.activeEffect.targets.map((target) => <option key={target} value={target}>{effectTargetLabel(target)}</option>)}</select></label>}{action.activeEffect.fixedRounds ? <small>Duration: {rounds} round{rounds === 1 ? "" : "s"}</small> : <label>Rounds<input aria-label={`${action.label} rounds`} type="number" min="1" max="999" value={rounds} onChange={(event) => setEffectRounds((current) => ({ ...current, [action.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label>}</>}
           <button type="button" disabled={appliedChanges.length === 0 || unavailable} onClick={activate}>{label}</button>
           <small>{action.summary ?? costs.map(({ cost }) => `Spend ${cost}`).join(" and ")}</small>

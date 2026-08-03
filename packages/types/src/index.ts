@@ -108,7 +108,7 @@ export type CharacterDraft = CharacterDraftV1;
 export type ActiveEffectTarget =
   | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
-  | "allies" | "self" | "area";
+  | "allies" | "self" | "area" | "enemy";
 export interface ActiveEffect {
   id: string;
   name: string;
@@ -164,6 +164,13 @@ export interface ClassFeatureOccurrence {
     randomOutcomes?: Array<{ label: string; summary: string }>;
     modeLabel?: string;
     modes?: Array<{ id: string; label: string; summary: string }>;
+    savingThrow?: {
+      label: string;
+      ability: AbilityName;
+      base: number;
+      levelDivisor: number;
+      classId?: string;
+    };
     activeEffect?: {
       name: string;
       targets: ActiveEffectTarget[];
@@ -173,8 +180,26 @@ export interface ClassFeatureOccurrence {
       improvedBonus?: number;
       defaultRounds?: number;
       fixedRounds?: boolean;
+      upgrades?: Array<{
+        requiredOptionId: string;
+        name: string;
+        bonus: number;
+        description: string;
+      }>;
     };
     labelsByUseCount?: string[];
+    summary?: string;
+  }>;
+  numericCalculations?: Array<{
+    id: string;
+    label: string;
+    inputLabel: string;
+    inputMinimum: number;
+    inputMaximum: number;
+    inputDefault?: number;
+    outputLabel: string;
+    baseByLevel: Array<{ level: number; value: number }>;
+    classId?: string;
     summary?: string;
   }>;
   spellAutomation?: {

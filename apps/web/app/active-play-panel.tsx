@@ -24,6 +24,7 @@ const effectTargetName = (target: ActiveEffectTarget) =>
   target === "allies" ? "Allies"
     : target === "self" ? "Self"
       : target === "area" ? "Area"
+        : target === "enemy" ? "Enemy"
         : targets.find(item => item.id === target)?.name;
 
 export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, attacks, checks, skills, effects, onCurrentHitPointsChange, onTemporaryHitPointsChange, onEffectsChange }: {
