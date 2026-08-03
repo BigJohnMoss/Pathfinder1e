@@ -1,0 +1,35 @@
+{
+  "id": "harrowed-divine-mysteries",
+  "name": "Divine the Mysteries Spells",
+  "classIds": ["arcanist"],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Harrowed%20Society%20Student"
+  },
+  "optionDefaults": {
+    "groupId": "harrowed-divine-mysteries",
+    "classIds": ["arcanist"],
+    "prerequisites": []
+  },
+  "options": [],
+  "generatedSpellOptions": {
+    "classId": "arcanist",
+    "targetClassId": "arcanist",
+    "school": "divination",
+    "anyClassList": true,
+    "excludeClassId": "arcanist",
+    "maximumSpellLevel": 8,
+    "minimumClassLevelBySpellLevel": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 7,
+      "4": 9,
+      "5": 11,
+      "6": 13,
+      "7": 15,
+      "8": 17
+    }
+  }
+}

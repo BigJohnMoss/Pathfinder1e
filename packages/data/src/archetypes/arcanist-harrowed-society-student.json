@@ -33,7 +33,80 @@
           "name": "Divine the Mysteries (Ex)",
           "level": 5,
           "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "harrowed-divine-mysteries",
+          "progressionKey": "harrowed-divine-mysteries",
           "summary": "At 5th level and every 2 levels thereafter, a Harrowed Society student can select a divination spell from the spell list of any class, including classes that cast divine or psychic spells, and add it to her list of spells known. This spell must be at least 1 level lower than the highest-level spell she can cast. She casts these spells as arcane spells, using her normal spell slots, but must use a harrow deck as an additional focus component. If such a spell is normally a psychic spell with an emotion or thought component, she must also add that component."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-divine-the-mysteries-ex-7",
+          "name": "Divine the Mysteries",
+          "level": 7,
+          "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "harrowed-divine-mysteries",
+          "progressionKey": "harrowed-divine-mysteries",
+          "summary": "Select another legal divination spell from any class spell list. It must be at least 1 spell level lower than the highest-level spell the arcanist can cast."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-divine-the-mysteries-ex-9",
+          "name": "Divine the Mysteries",
+          "level": 9,
+          "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "harrowed-divine-mysteries",
+          "progressionKey": "harrowed-divine-mysteries",
+          "summary": "Select another legal divination spell from any class spell list. It must be at least 1 spell level lower than the highest-level spell the arcanist can cast."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-divine-the-mysteries-ex-11",
+          "name": "Divine the Mysteries",
+          "level": 11,
+          "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "harrowed-divine-mysteries",
+          "progressionKey": "harrowed-divine-mysteries",
+          "summary": "Select another legal divination spell from any class spell list. It must be at least 1 spell level lower than the highest-level spell the arcanist can cast."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-divine-the-mysteries-ex-13",
+          "name": "Divine the Mysteries",
+          "level": 13,
+          "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "harrowed-divine-mysteries",
+          "progressionKey": "harrowed-divine-mysteries",
+          "summary": "Select another legal divination spell from any class spell list. It must be at least 1 spell level lower than the highest-level spell the arcanist can cast."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-divine-the-mysteries-ex-15",
+          "name": "Divine the Mysteries",
+          "level": 15,
+          "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "harrowed-divine-mysteries",
+          "progressionKey": "harrowed-divine-mysteries",
+          "summary": "Select another legal divination spell from any class spell list. It must be at least 1 spell level lower than the highest-level spell the arcanist can cast."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-divine-the-mysteries-ex-17",
+          "name": "Divine the Mysteries",
+          "level": 17,
+          "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "harrowed-divine-mysteries",
+          "progressionKey": "harrowed-divine-mysteries",
+          "summary": "Select another legal divination spell from any class spell list. It must be at least 1 spell level lower than the highest-level spell the arcanist can cast."
+        },
+        {
+          "id": "arcanist-harrowed-society-student-divine-the-mysteries-ex-19",
+          "name": "Divine the Mysteries",
+          "level": 19,
+          "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "harrowed-divine-mysteries",
+          "progressionKey": "harrowed-divine-mysteries",
+          "summary": "Select another legal divination spell from any class spell list. It must be at least 1 spell level lower than the highest-level spell the arcanist can cast."
         },
         {
           "id": "arcanist-harrowed-society-student-trump-card-su-9",
@@ -65,6 +138,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Psychic Sensitivity, class skills, replacement progression, and the 1/2/3 daily Harrow Reading uses are automated. The cards dealt and reservoir points gained remain table input."
+    "Psychic Sensitivity, class skills, replacement progression, eight level-aware Divine the Mysteries spell choices, and the 1/2/3 daily Harrow Reading uses are automated. The cards dealt, reservoir points gained, and Trump Card outcome remain table input."
   ]
 }

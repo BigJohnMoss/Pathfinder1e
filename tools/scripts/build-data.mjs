@@ -66,16 +66,23 @@ const optionGroups=rawOptionGroups.map(group=>{
   const filter=group.generatedSpellOptions;
   if(!filter) return group;
   const additionalIds=new Set(filter.additionalSpellIds??[]);
-  const generated=spells.filter(spell=>additionalIds.has(spell.id)||(spell.levelByClass?.[filter.classId]!==undefined&&(!filter.school||spell.school===filter.school||spell.schools?.includes(filter.school)))).map(spell=>{
-    const spellLevel=filter.additionalSpellLevels?.[spell.id]??spell.levelByClass?.[filter.classId]??0;
+  const matchesSchool=spell=>!filter.school||spell.school===filter.school||spell.schools?.includes(filter.school);
+  const generated=spells.filter(spell=>additionalIds.has(spell.id)||(
+    matchesSchool(spell)&&
+    (filter.anyClassList?Object.keys(spell.levelByClass??{}).length>0:spell.levelByClass?.[filter.classId]!==undefined)&&
+    (!filter.excludeClassId||spell.levelByClass?.[filter.excludeClassId]===undefined)
+  )).map(spell=>{
+    const publishedLevels=Object.values(spell.levelByClass??{}).filter(Number.isInteger);
+    const spellLevel=filter.additionalSpellLevels?.[spell.id]??(filter.anyClassList?Math.min(...publishedLevels):spell.levelByClass?.[filter.classId])??0;
     if(filter.maximumSpellLevel!==undefined&&spellLevel>filter.maximumSpellLevel) return null;
     const targetClassId=filter.targetClassId??filter.classId;
+    const minimumLevel=filter.minimumClassLevelBySpellLevel?.[spellLevel]??classLevelForSpellLevel(targetClassId,spellLevel);
     return {
       ...group.optionDefaults,
       id:`${group.id}-${spell.id}`,
       name:spell.name,
       classIds:group.classIds,
-      minimumLevel:classLevelForSpellLevel(targetClassId,spellLevel),
+      minimumLevel,
       prerequisites:[],
       benefit:`Add ${spell.name} to your spells known as a bonus spell.`,
       spellId:spell.id,
