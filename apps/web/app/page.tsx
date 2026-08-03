@@ -14,6 +14,7 @@ import { AbilityEditor } from "./ability-editor";
 import { CharacterDetails } from "./character-details";
 import { ClassFeatures } from "./class-features";
 import { Spellbook } from "./spellbook";
+import { classSpellAutomation } from "./archetype-spell-automation";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
 import { ClassSpellbook } from "./class-spellbook";
 import { SkillAllocation } from "./skill-allocation";
@@ -2641,6 +2642,7 @@ export default function Home() {
       restrictedBonus={elementalMasterPreparation}
       onDemandSpellCosts={primaryOnDemandSpellCosts}
       requiredPreparedSchool={requiredPreparedSchool(characterClass)}
+      spellAutomation={classSpellAutomation(characterClass, primaryClassLevel)}
     />
   ) : null;
   const secondarySpellbook =
@@ -2703,13 +2705,14 @@ export default function Home() {
         restrictedBonus={secondaryElementalMasterPreparation}
         onDemandSpellCosts={secondaryOnDemandSpellCosts}
         requiredPreparedSchool={requiredPreparedSchool(secondaryCharacterClass)}
+        spellAutomation={classSpellAutomation(secondaryCharacterClass, secondaryClassLevel)}
       />
     ) : null;
   const extraActiveClassLevel = additionalClassLevels
     .slice(1)
     .find((entry) => entry.classId === activeSpellClassId);
   const extraActiveClass = extraActiveClassLevel
-    ? classes.find((item) => item.id === extraActiveClassLevel.classId)
+    ? additionalCharacterClasses.find((item) => item.id === extraActiveClassLevel.classId)
     : undefined;
   const extraSpellbook =
     extraActiveClass && extraActiveClassLevel ? (

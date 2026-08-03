@@ -9,6 +9,7 @@ export { inferArchetypeResourceAdjustments };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
+export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
   adjustment.minimumEffectiveLevel ?? 1,

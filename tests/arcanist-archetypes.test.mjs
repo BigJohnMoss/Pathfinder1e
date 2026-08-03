@@ -195,7 +195,7 @@ test("Spell Specialist exposes one level-matched signature slot per spell level"
 test("reservoir-powered archetype features expose enforceable action costs", () => {
   const expected = new Map([
     ["arcanist-aeromancer", [["air-mastery-caster-level", 1], ["air-mastery-save-dc", 1], ["wind-s-embrace", 2], ["rebuking-gale", 3]]],
-    ["arcanist-brown-fur-transmuter", [["powerful-change", 1], ["share-transmutation", 1]]],
+    ["arcanist-brown-fur-transmuter", [["powerful-change", 1]]],
     ["arcanist-arcane-tinkerer", [["manipulate-construct", 1]]],
     ["arcanist-twilight-sage", [["twilight-transfer", 1]]],
   ]);
@@ -217,6 +217,23 @@ test("reservoir-powered archetype features expose enforceable action costs", () 
     improvedBonus: 4,
     defaultRounds: 10,
   });
+  const share = brownFur.replacements.flatMap((replacement) => replacement.features)
+    .find((feature) => feature.id === "arcanist-brown-fur-transmuter-share-transmutation-su-9");
+  const supremacy = brownFur.replacements.flatMap((replacement) => replacement.features)
+    .find((feature) => feature.id === "arcanist-brown-fur-transmuter-transmutation-supremacy-su-20");
+  assert.deepEqual(share.spellAutomation, {
+    sharePersonalRange: {
+      school: "transmutation",
+      resourceId: "arcaneReservoir",
+      cost: 1,
+      range: "touch",
+      willingOnly: true,
+      improvedAtLevel: 20,
+      improvedRange: "30 feet",
+    },
+  });
+  assert.deepEqual(supremacy.spellAutomation, { extendDuration: { school: "transmutation" } });
+  assert.equal(brownFur.mechanicalCoverage, "full");
 });
 
 test("Twilight Sage enforces its mandatory exploit, necromancy focus, and daily transfer", () => {

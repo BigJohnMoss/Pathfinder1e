@@ -355,8 +355,55 @@ a:focus-visible,
   margin: 14px 0;
 }
 
+.archetype-spell-controls {
+  align-items: end;
+  background: #faf6ee;
+  border: 1px solid #ddcfba;
+  border-radius: 12px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, .65fr);
+  margin: 14px 0;
+  padding: 14px;
+}
+
+.archetype-spell-controls > div,
+.archetype-spell-controls label {
+  display: grid;
+  gap: 5px;
+}
+
+.archetype-spell-controls span,
+.archetype-spell-controls label {
+  color: #5b584f;
+  font-size: .82rem;
+  line-height: 1.4;
+}
+
+.archetype-spell-controls label {
+  font-weight: 800;
+}
+
+.archetype-spell-controls input {
+  min-height: 44px;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid #a29a89;
+  border-radius: 8px;
+  background: #fff;
+  color: #252018;
+  font: inherit;
+}
+
+.archetype-spell-controls output {
+  grid-column: 1 / -1;
+  color: #2e6d45;
+  font-weight: 800;
+}
+
 .spell-day-controls > button,
 .cast-spell-button,
+.share-spell-button,
 .spell-selection-control button {
   background: #fff;
   border: 1px solid #b7ac99;
@@ -367,6 +414,12 @@ a:focus-visible,
   min-height: 44px;
   padding: 8px 14px;
   width: auto;
+}
+
+.cast-spell-button:disabled,
+.share-spell-button:disabled {
+  cursor: not-allowed;
+  opacity: .5;
 }
 
 .reservoir-control output,
@@ -567,6 +620,15 @@ a:focus-visible,
 }
 
 @media (max-width: 700px) {
+  .archetype-spell-controls {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+  }
+
+  .archetype-spell-controls output {
+    grid-column: auto;
+  }
+
   .spell-day-controls {
     align-items: stretch;
     display: grid;

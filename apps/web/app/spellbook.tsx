@@ -3,7 +3,13 @@ import {
   preparedSpellSlotUsage,
   spellPreparationCost,
 } from "../../../packages/engine/src/wizard-opposition-preparation.js";
+import {
+  extendedSpellDuration,
+  isPersonalRangeSpell,
+  spellHasSchool,
+} from "../../../packages/engine/src/index.js";
 import type { CharacterSpell } from "../../../packages/types/src/index.js";
+import type { PreparedSpellAutomation } from "./archetype-spell-automation";
 import { SpellDetails } from "./spell-details";
 
 type Spell = CharacterSpell;
@@ -42,6 +48,7 @@ export function Spellbook({
   restrictedBonus = null,
   onDemandSpellCosts = {},
   requiredPreparedSchool,
+  spellAutomation,
 }: {
   spells: Spell[];
   sourceBook?: {
@@ -73,12 +80,15 @@ export function Spellbook({
   restrictedBonus?: { eligibleSpellIds: string[]; countPerLevel: number; label: string } | null;
   onDemandSpellCosts?: Record<string, { resourceId?: string; cost: number; label: string; consumesSpellSlot?: boolean; saveDcBonus?: number; concentrationBonus?: number }>;
   requiredPreparedSchool?: string;
+  spellAutomation?: PreparedSpellAutomation;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
   const [sourceLevel, setSourceLevel] = useState("all");
   const [visibleLimit, setVisibleLimit] = useState(250);
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
+  const [shareTarget, setShareTarget] = useState("");
+  const [shareResult, setShareResult] = useState("");
   useEffect(
     () => setLevelFilter(String(maximumSpellLevel)),
     [maximumSpellLevel],
@@ -140,8 +150,28 @@ export function Spellbook({
     const slot = slots.find((entry) => entry.level === level);
     return slot ? slot.count - (slotUses[level] ?? 0) : Infinity;
   };
-  const spellHasSchool = (spell: Spell, school: string) =>
-    (spell.schools?.length ? spell.schools : [spell.school]).includes(school);
+  const shareRules = spellAutomation?.sharePersonalRange;
+  const shareEligible = (spell: Spell) =>
+    Boolean(shareRules && spellHasSchool(spell, shareRules.school) && isPersonalRangeSpell(spell));
+  const derivedDuration = (spell: Spell) =>
+    spellAutomation?.automaticExtendDuration && spellHasSchool(spell, spellAutomation.automaticExtendDuration.school)
+      ? extendedSpellDuration(spell.duration)
+      : null;
+  const useSpellSlot = (level: number) => {
+    if (level > 0)
+      onSlotUsesChange({
+        ...slotUses,
+        [level]: (slotUses[level] ?? 0) + 1,
+      });
+  };
+  const shareSpell = (spell: Spell, level: number) => {
+    if (!shareRules || !reservoir || !shareTarget.trim()) return;
+    onReservoirChange(reservoir.current - shareRules.reservoirCost);
+    useSpellSlot(level);
+    setShareResult(
+      `Shared ${spell.name} with ${shareTarget.trim()} ${shareRules.range === "touch" ? "by touch" : `within ${shareRules.range}`}.`,
+    );
+  };
   const requiredSchoolPrepared = (level: number) => !requiredPreparedSchool || preparedSpellIds.some((id) => {
     const spell = spells.find((candidate) => candidate.id === id);
     return spell?.levelByClass[classId] === level && spellHasSchool(spell, requiredPreparedSchool);
@@ -207,6 +237,29 @@ export function Spellbook({
         <p className="hint" role="status">
           Required preparation: at least one {requiredPreparedSchool} spell at every available spell level. Casting remains locked for levels still missing one.
         </p>
+      )}
+      {shareRules && (
+        <section className="archetype-spell-controls" aria-label={shareRules.label}>
+          <div>
+            <strong>{shareRules.label}</strong>
+            <span>
+              Personal-range {shareRules.school} spells can target one {shareRules.willingOnly ? "willing " : ""}creature {shareRules.range === "touch" ? "by touch" : `within ${shareRules.range}`} for {shareRules.reservoirCost} reservoir point.
+            </span>
+          </div>
+          <label>
+            {shareRules.willingOnly ? "Willing target" : "Target"}
+            <input
+              aria-label={`${shareRules.label} ${shareRules.willingOnly ? "willing " : ""}target`}
+              value={shareTarget}
+              placeholder="Creature name"
+              onChange={(event) => {
+                setShareTarget(event.target.value);
+                setShareResult("");
+              }}
+            />
+          </label>
+          {shareResult && <output aria-label={`${shareRules.label} result`}>{shareResult}</output>}
+        </section>
       )}
       <div className="spell-day-controls">
         <button type="button" onClick={onRefreshDay}>
@@ -336,12 +389,24 @@ export function Spellbook({
                   <ul>
                     {selections.map(({ spell, count }) => {
                       const canCast = level === 0 || remainingSlots(level) > 0;
+                      const shareable = shareEligible(spell);
+                      const automaticDuration = derivedDuration(spell);
+                      const canShare = Boolean(
+                        shareable &&
+                          shareRules &&
+                          reservoir &&
+                          reservoir.current >= shareRules.reservoirCost &&
+                          shareTarget.trim() &&
+                          canCast,
+                      );
                       return (
                         <li key={spell.id}>
                           <span>
                             <strong>{spell.name}</strong>
                             <small>
                               DC {spellDcs[level]} · prepared ×{count}
+                              {automaticDuration ? ` · ${spellAutomation!.automaticExtendDuration!.label}: ${automaticDuration}` : ""}
+                              {shareable ? ` · ${shareRules!.label}: ${shareRules!.range}` : ""}
                             </small>
                           </span>
                           <div>
@@ -349,16 +414,20 @@ export function Spellbook({
                               type="button"
                               aria-label={`Quick cast ${spell.name}`}
                               disabled={!canCast}
-                              onClick={() => {
-                                if (level > 0)
-                                  onSlotUsesChange({
-                                    ...slotUses,
-                                    [level]: (slotUses[level] ?? 0) + 1,
-                                  });
-                              }}
+                              onClick={() => useSpellSlot(level)}
                             >
                               Cast
                             </button>
+                            {shareable && (
+                              <button
+                                type="button"
+                                aria-label={`Share ${spell.name}`}
+                                disabled={!canShare}
+                                onClick={() => shareSpell(spell, level)}
+                              >
+                                Share
+                              </button>
+                            )}
                             <button
                               type="button"
                               aria-label={`Remove one prepared ${spell.name}`}
@@ -454,6 +523,17 @@ export function Spellbook({
                   const onDemandCost = onDemandSpellCosts[spell.id];
                   const canCastOnDemand = Boolean(onDemandCost && (!onDemandCost.resourceId || (reservoir && reservoir.current >= onDemandCost.cost)));
                   const consumesSpellSlot = onDemandCost?.consumesSpellSlot ?? true;
+                  const shareable = shareEligible(spell);
+                  const automaticDuration = derivedDuration(spell);
+                  const canShare = Boolean(
+                    shareable &&
+                      prepared > 0 &&
+                      shareRules &&
+                      reservoir &&
+                      reservoir.current >= shareRules.reservoirCost &&
+                      shareTarget.trim() &&
+                      canCast,
+                  );
                   return (
                     <article key={spell.id}>
                       <div>
@@ -475,6 +555,12 @@ export function Spellbook({
                           {onDemandCost
                             ? ` · ${onDemandCost.label}: cast on demand${onDemandCost.resourceId ? ` for ${onDemandCost.cost} reservoir point${onDemandCost.cost === 1 ? "" : "s"}` : ""}${onDemandCost.concentrationBonus ? ` · +${onDemandCost.concentrationBonus} concentration` : ""}`
                             : ""}
+                          {automaticDuration
+                            ? ` · ${spellAutomation!.automaticExtendDuration!.label}: ${automaticDuration}`
+                            : ""}
+                          {shareable
+                            ? ` · ${shareRules!.label}: ${shareRules!.range}, ${shareRules!.reservoirCost} reservoir point`
+                            : ""}
                         </small>
                       </div>
                       <div className="spell-actions">
@@ -495,6 +581,17 @@ export function Spellbook({
                         >
                           Cast
                         </button>
+                        {shareable && (
+                          <button
+                            type="button"
+                            className="share-spell-button"
+                            aria-label={`Share ${spell.name}`}
+                            disabled={!canShare}
+                            onClick={() => shareSpell(spell, level)}
+                          >
+                            Share
+                          </button>
+                        )}
                         <div className="spell-count">
                           <button
                             type="button"
@@ -531,7 +628,13 @@ export function Spellbook({
                           </button>
                         </div>
                       </div>
-                      <SpellDetails spell={spell} />
+                      <SpellDetails
+                        spell={spell}
+                        derivedDuration={automaticDuration ? {
+                          label: spellAutomation!.automaticExtendDuration!.label,
+                          value: automaticDuration,
+                        } : null}
+                      />
                     </article>
                   );
                 })}

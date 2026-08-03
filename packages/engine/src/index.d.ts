@@ -1,4 +1,4 @@
-import type { CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
+import type { CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
@@ -76,6 +76,10 @@ export function featBonuses(selectedFeatIds: string[], feats: CharacterFeat[], s
   sources: MechanicalBonusSource[];
 };
 export function normalizeSpellSlotUses(slotUses: Record<string, number> | null | undefined, slots: Array<{ level: number; count: number }>): Record<number, number>;
+export function isTransmutationSpell(spell: Pick<CharacterSpell, "school" | "schools">): boolean;
+export function spellHasSchool(spell: Pick<CharacterSpell, "school" | "schools">, school: string): boolean;
+export function isPersonalRangeSpell(spell: Pick<CharacterSpell, "range">): boolean;
+export function extendedSpellDuration(duration?: string | null): string | null;
 export function arcaneReservoir(level: number): { maximum: number; dailyRefresh: number };
 export { bardicPerformanceRounds } from "./bardic-performance.js";
 export { druidWildShapeUses } from "./druid-wild-shape.js";
