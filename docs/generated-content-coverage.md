@@ -9,7 +9,7 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 7 |
-| Option groups | 94 |
+| Option groups | 95 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2758 |
@@ -57,7 +57,7 @@ These rule-text signals are multi-label: one archetype can contribute to several
 | Selectable progressions and dependent choices | 765 |
 | Combat statistics and proficiencies | 854 |
 | Skills | 654 |
-| Feats | 481 |
+| Feats | 480 |
 | Narrative or uncategorized effects | 2 |
 
 ## Spell details

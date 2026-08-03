@@ -236,6 +236,36 @@ test("core monk, warpriest, swashbuckler, and brawler bonus feat milestones expo
   assert.deepEqual(choices("brawler", "brawler-bonus-feats").map(feature => feature.level), [2, 5, 8, 11, 14, 17, 20]);
 });
 
+test("all core Bloodrager bloodlines expose five selections from their published feat lists", () => {
+  const bloodrager = JSON.parse(readFileSync(new URL("../packages/data/src/classes/bloodrager.json", import.meta.url), "utf8"));
+  const bloodlines = JSON.parse(readFileSync(new URL("../packages/data/src/options/bloodrager-bloodlines.json", import.meta.url), "utf8"));
+  const featIds = new Set(readdirSync(new URL("../packages/data/src/feats/", import.meta.url)).filter(file => file.endsWith(".json")).map(file => file.replace(/\.json$/, "")));
+
+  assert.deepEqual(
+    bloodrager.features.filter(feature => feature.optionGroupId === "bloodrager-bloodline-feats").map(feature => feature.level),
+    [6, 9, 12, 15, 18],
+  );
+  assert.equal(bloodlines.options.length, 10);
+  for (const bloodline of bloodlines.options) {
+    assert.equal(bloodline.featIds.length, 7, `${bloodline.name} published feat count`);
+    assert.equal(new Set(bloodline.featIds).size, 7, `${bloodline.name} feat choices are unique`);
+    assert.ok(bloodline.featIds.every(featId => featIds.has(featId)), `${bloodline.name} feat ids resolve`);
+  }
+  assert.deepEqual(bloodlines.options.find(option => option.id === "bloodrager-arcane").featIds, [
+    "combat-reflexes", "disruptive", "improved-initiative", "iron-will", "power-attack", "quick-draw", "spellbreaker",
+  ]);
+});
+
+test("Crossblooded Rager exposes two distinct bloodline selectors for its combined feat list", () => {
+  const crossblooded = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/bloodrager-crossblooded-rager.json", import.meta.url), "utf8"));
+  const selectors = crossblooded.replacements.flatMap(replacement => replacement.features).filter(feature => feature.optionGroupId === "bloodrager-bloodlines");
+  assert.deepEqual(selectors.map(feature => feature.id), [
+    "bloodrager-crossblooded-rager-primary-bloodline-1",
+    "bloodrager-crossblooded-rager-secondary-bloodline-1",
+  ]);
+  assert.ok(selectors.every(feature => feature.choiceRequired && feature.level === 1));
+});
+
 test("fixed archetype spell-list additions use catalogue spell ids and rule levels", () => {
   const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const cases = new Map([

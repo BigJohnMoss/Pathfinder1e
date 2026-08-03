@@ -1,1 +1,24 @@
-{"id":"bloodrager-bloodlines","name":"Bloodrager Bloodlines","classIds":["bloodrager"],"optionDefaults":{"groupId":"bloodrager-bloodlines","classIds":["bloodrager"],"minimumLevel":1,"prerequisites":[],"source":{"title":"Advanced Class Guide","page":17,"url":"https://legacy.aonprd.com/advancedClassGuide/classes/bloodrager.html#bloodlines"}},"options":[{"id":"bloodrager-aberrant","name":"Aberrant","benefit":"Gain abnormal reach, resistance, fortification, and alien transformation powers."},{"id":"bloodrager-abyssal","name":"Abyssal","benefit":"Gain claws, demonic bulk, resistances, and abyssal transformation powers."},{"id":"bloodrager-arcane","name":"Arcane","benefit":"Disrupt hostile spellcasters and surround yourself with protective magic during bloodrage."},{"id":"bloodrager-celestial","name":"Celestial","benefit":"Gain holy attacks, resistances, wings, and celestial transformation powers."},{"id":"bloodrager-destined","name":"Destined","benefit":"Gain luck, armour, critical, and destiny-defying powers."},{"id":"bloodrager-draconic","name":"Draconic","benefit":"Choose a dragon type and gain claws, armour, breath, wings, and dragon form."},{"id":"bloodrager-elemental","name":"Elemental","benefit":"Choose an element and gain elemental strikes, movement, resistance, and transformation."},{"id":"bloodrager-fey","name":"Fey","benefit":"Gain woodland movement, concealment, confusing criticals, and fey transformation."},{"id":"bloodrager-infernal","name":"Infernal","benefit":"Gain hellfire attacks, diabolical resistance, wings, and infernal transformation."},{"id":"bloodrager-undead","name":"Undead","benefit":"Gain fear, ghostly attacks, resistances, and incorporeal transformation powers."}]}
+{
+  "id": "bloodrager-bloodlines",
+  "name": "Bloodrager Bloodlines",
+  "classIds": ["bloodrager"],
+  "optionDefaults": {
+    "groupId": "bloodrager-bloodlines",
+    "classIds": ["bloodrager"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {"title": "Advanced Class Guide", "page": 17, "url": "https://legacy.aonprd.com/advancedClassGuide/classes/bloodrager.html#bloodlines"}
+  },
+  "options": [
+    {"id":"bloodrager-aberrant","name":"Aberrant","benefit":"Gain abnormal reach, resistance, fortification, and alien transformation powers.","featIds":["combat-reflexes","great-fortitude","improved-disarm","improved-grapple","improved-initiative","improved-unarmed-strike","iron-will"]},
+    {"id":"bloodrager-abyssal","name":"Abyssal","benefit":"Gain claws, demonic bulk, resistances, and abyssal transformation powers.","featIds":["cleave","great-fortitude","improved-bull-rush","improved-sunder","intimidating-prowess","power-attack","toughness"]},
+    {"id":"bloodrager-arcane","name":"Arcane","benefit":"Disrupt hostile spellcasters and surround yourself with protective magic during bloodrage.","featIds":["combat-reflexes","disruptive","improved-initiative","iron-will","power-attack","quick-draw","spellbreaker"]},
+    {"id":"bloodrager-celestial","name":"Celestial","benefit":"Gain holy attacks, resistances, wings, and celestial transformation powers.","featIds":["dodge","improved-initiative","iron-will","mobility","mounted-combat","ride-by-attack","weapon-focus"]},
+    {"id":"bloodrager-destined","name":"Destined","benefit":"Gain luck, armour, critical, and destiny-defying powers.","featIds":["diehard","endurance","improved-initiative","intimidating-prowess","leadership","lightning-reflexes","weapon-focus"]},
+    {"id":"bloodrager-draconic","name":"Draconic","benefit":"Choose a dragon type and gain claws, armour, breath, wings, and dragon form.","featIds":["blind-fight","cleave","great-fortitude","improved-initiative","power-attack","skill-focus","toughness"]},
+    {"id":"bloodrager-elemental","name":"Elemental","benefit":"Choose an element and gain elemental strikes, movement, resistance, and transformation.","featIds":["cleave","dodge","great-fortitude","improved-initiative","lightning-reflexes","power-attack","weapon-focus"]},
+    {"id":"bloodrager-fey","name":"Fey","benefit":"Gain woodland movement, concealment, confusing criticals, and fey transformation powers.","featIds":["combat-reflexes","dodge","improved-initiative","lightning-reflexes","mobility","step-up","intimidating-prowess"]},
+    {"id":"bloodrager-infernal","name":"Infernal","benefit":"Gain hellfire attacks, diabolical resistance, wings, and infernal transformation powers.","featIds":["blind-fight","combat-reflexes","deceitful","improved-disarm","improved-sunder","intimidating-prowess","iron-will"]},
+    {"id":"bloodrager-undead","name":"Undead","benefit":"Gain fear, ghostly attacks, resistances, and incorporeal transformation powers.","featIds":["diehard","dodge","endurance","intimidating-prowess","iron-will","mobility","toughness"]}
+  ]
+}

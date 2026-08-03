@@ -157,6 +157,7 @@ const generatedFeatGroupIds = new Set([
   "warpriest-bonus-feats",
   "swashbuckler-bonus-feats",
   "brawler-bonus-feats",
+  "bloodrager-bloodline-feats",
 ]);
 const monkBonusFeatIds = [
   "catch-off-guard",
@@ -185,7 +186,7 @@ const adaptBonusFeatPrerequisite = (prerequisite: Prerequisite, classId: string)
   if (prerequisite.type === "class-level" && ["fighter", "monk"].includes(prerequisite.classId) && ["brawler"].includes(classId)) {
     return { ...prerequisite, classId };
   }
-  if (prerequisite.type === "class-level" && prerequisite.classId === "fighter" && ["warpriest", "swashbuckler"].includes(classId)) {
+  if (prerequisite.type === "class-level" && prerequisite.classId === "fighter" && ["warpriest", "swashbuckler", "bloodrager"].includes(classId)) {
     return { ...prerequisite, classId };
   }
   if (prerequisite.type === "bab" && classId === "warpriest") {
@@ -1259,6 +1260,16 @@ export default function Home() {
         ignorePrerequisites: true,
       };
       if (feature.optionGroupId === "warpriest-weapon-focus") return { ids: ["weapon-focus"], types: [], prerequisiteIds: [], ignorePrerequisites: true };
+      if (feature.optionGroupId === "bloodrager-bloodline-feats") {
+        const selectedBloodlineIds = [
+          selectedOptions["bloodrager-bloodline-1"],
+          selectedOptions["bloodrager-crossblooded-rager-primary-bloodline-1"],
+          selectedOptions["bloodrager-crossblooded-rager-secondary-bloodline-1"],
+        ].filter((id): id is string => Boolean(id));
+        const bloodlineOptions = optionGroups.find((group) => group.id === "bloodrager-bloodlines")?.options ?? [];
+        const bloodlineFeatIds = [...new Set(selectedBloodlineIds.flatMap((id) => bloodlineOptions.find((option) => option.id === id)?.featIds ?? []))];
+        return { ids: bloodlineFeatIds.length ? bloodlineFeatIds : ["bloodline-selection-required"], types: [], prerequisiteIds: [], ignorePrerequisites: false };
+      }
       if (feature.optionGroupId === "warpriest-bonus-feats" || feature.optionGroupId === "swashbuckler-bonus-feats" || feature.optionGroupId === "brawler-bonus-feats") return { ids: [], types: ["combat"], prerequisiteIds: [], ignorePrerequisites: false };
       return null;
     })();
@@ -1416,6 +1427,13 @@ export default function Home() {
       feature.requiredOptionId &&
       !selectedIds.includes(feature.requiredOptionId)
         ? []
+        : feature.optionGroupId === "bloodrager-bloodlines" && feature.id.startsWith("bloodrager-crossblooded-rager-")
+          ? baseOptions.filter((option) =>
+              option.id === selectedOptions[feature.id] ||
+              !Object.entries(selectedOptions).some(([featureId, optionId]) =>
+                featureId !== feature.id && featureId.startsWith("bloodrager-crossblooded-rager-") && optionId === option.id,
+              ),
+            )
         : generatedFeatGroupIds.has(feature.optionGroupId ?? "")
           ? baseOptions.filter((option) =>
               option.id === selectedOptions[feature.id] ||
