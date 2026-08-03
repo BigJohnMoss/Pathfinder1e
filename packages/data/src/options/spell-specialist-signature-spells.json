@@ -1,0 +1,8 @@
+{
+  "id": "spell-specialist-signature-spells",
+  "name": "Signature Spells",
+  "classIds": ["arcanist"],
+  "source": {"title":"Advanced Class Guide","page":78,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Spell%20Specialist"},
+  "optionDefaults": {"groupId":"spell-specialist-signature-spells","classIds":["arcanist"],"prerequisites":[]},
+  "options": []
+}

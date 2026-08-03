@@ -117,6 +117,7 @@ import type {
   CharacterClassLevel,
   CharacterDraftV1,
   CharacterOption,
+  CharacterSpell,
   Prerequisite,
 } from "../../../packages/types/src/index.js";
 
@@ -143,6 +144,23 @@ const prerequisiteFeatureKey = (value: string) =>
     .replace(/&/g, " and ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+
+const signatureSpellOption = (spell: CharacterSpell): CharacterOption => ({
+  id: `spell-specialist-signature-spells-${spell.id}`,
+  name: spell.name,
+  groupId: "spell-specialist-signature-spells",
+  classIds: ["arcanist"],
+  minimumLevel: 1,
+  prerequisites: [],
+  benefit: `Cast ${spell.name} as a signature spell without preparing it. ${spell.summary}`,
+  spellId: spell.id,
+  spellLevel: spell.levelByClass.arcanist,
+  castsAsPrepared: true,
+  preparedCapacityCost: 1,
+  spellSaveDcBonus: 1,
+  concentrationBonus: { base: 2, improvedAtLevel: 10, improved: 4 },
+  source: { title: "Advanced Class Guide", page: 78, url: "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Spell%20Specialist" },
+});
 const prerequisiteIncludesFeat = (prerequisites: Prerequisite[], featIds: string[]): boolean =>
   prerequisites.some((prerequisite) =>
     prerequisite.type === "feat"
@@ -297,19 +315,33 @@ function spellsFromAdditions<T extends { id: string; levelByClass: Record<string
 
 function onDemandSpellCosts(options: CharacterOption[], classId: string, classLevel: number) {
   return Object.fromEntries(options.flatMap((option) => {
-    if (!option.castsAsPrepared || !option.spellId || !option.resourceCost || !option.classIds.includes(classId)) return [];
+    if (!option.castsAsPrepared || !option.spellId || !option.classIds.includes(classId)) return [];
     const spellLevel = option.spellLevel ?? 0;
-    const cost = classLevel >= (option.resourceCost.freeAtClassLevel ?? Number.POSITIVE_INFINITY) ? 0 : Math.max(
-      option.resourceCost.minimum ?? 0,
-      (option.resourceCost.base ?? 0) + (option.resourceCost.levelDivisor ? Math.floor(spellLevel / option.resourceCost.levelDivisor) : 0),
+    const resource = option.resourceCost;
+    const cost = !resource || classLevel >= (resource.freeAtClassLevel ?? Number.POSITIVE_INFINITY) ? 0 : Math.max(
+      resource.minimum ?? 0,
+      (resource.base ?? 0) + (resource.levelDivisor ? Math.floor(spellLevel / resource.levelDivisor) : 0),
     );
+    const concentrationBonus = classLevel >= (option.concentrationBonus?.improvedAtLevel ?? Number.POSITIVE_INFINITY)
+      ? option.concentrationBonus?.improved ?? option.concentrationBonus?.base ?? 0
+      : option.concentrationBonus?.base ?? 0;
     return [[option.spellId, {
-      resourceId: option.resourceCost.resourceId,
+      resourceId: resource?.resourceId,
       cost,
-      label: option.resourceCost.label ?? "Class feature",
-      consumesSpellSlot: option.resourceCost.consumesSpellSlot ?? true,
+      label: resource?.label ?? "Signature Spell",
+      consumesSpellSlot: resource?.consumesSpellSlot ?? true,
+      saveDcBonus: option.spellSaveDcBonus ?? 0,
+      concentrationBonus,
     }]];
   }));
+}
+
+function preparedCapacityCosts(options: CharacterOption[], classId: string) {
+  return options.reduce<Record<number, number>>((costs, option) => {
+    if (!option.classIds.includes(classId) || !option.preparedCapacityCost || option.spellLevel === undefined) return costs;
+    costs[option.spellLevel] = (costs[option.spellLevel] ?? 0) + option.preparedCapacityCost;
+    return costs;
+  }, {});
 }
 
 function normalizeAdditionalClassLevels(
@@ -1349,7 +1381,15 @@ export default function Home() {
             })),
         }
       : undefined;
-    const baseGroup = generatedFeatGroup ?? optionGroups.find(
+    const signatureGroup = feature.optionGroupId === "spell-specialist-signature-spells"
+      ? {
+          ...(optionGroups.find((item) => item.id === feature.optionGroupId)!),
+          options: spells
+            .filter((spell) => spell.levelByClass.arcanist === feature.requiredSpellLevel)
+            .map(signatureSpellOption),
+        }
+      : undefined;
+    const baseGroup = generatedFeatGroup ?? signatureGroup ?? optionGroups.find(
       (item) => item.id === feature.optionGroupId,
     );
     const matchingAlternatives = archetypeFeatAlternatives.filter((alternative) =>
@@ -1484,7 +1524,9 @@ export default function Home() {
               option.id === selectedOptions[feature.id] ||
               !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id),
             )
-          : baseOptions;
+          : feature.requiredSpellLevel !== undefined
+            ? baseOptions.filter((option) => (option as CharacterOption).spellLevel === feature.requiredSpellLevel)
+            : baseOptions;
     const levelAwareOptions = options.map((option) => {
       const richOption = option as CharacterOption;
       return richOption.powers
@@ -1667,16 +1709,21 @@ export default function Home() {
   );
   const selectedOptionSpellChoices = useMemo(
     () =>
-      [...Object.values(selectedOptions).flatMap((optionId) => {
+      [...Object.entries(selectedOptions).flatMap(([featureId, optionId]) => {
         const option = optionGroups
           .flatMap((group) => group.options)
           .find((candidate) => candidate.id === optionId);
-        return option?.spellId ? [option] : [];
+        if (option?.spellId) return [option];
+        if (featureId.startsWith("arcanist-spell-specialist-signature-spells-") && optionId.startsWith("spell-specialist-signature-spells-")) {
+          const spell = spells.find((candidate) => `spell-specialist-signature-spells-${candidate.id}` === optionId);
+          return spell ? [signatureSpellOption(spell)] : [];
+        }
+        return [];
       }), ...characterClass.features
         .filter((feature) => feature.level <= primaryClassLevel && feature.grantsAllOptions && feature.optionGroupId)
         .flatMap((feature) => optionGroups.find((group) => group.id === feature.optionGroupId)?.options ?? [])
         .filter((option) => option.minimumLevel <= primaryClassLevel)],
-    [characterClass.features, primaryClassLevel, selectedOptions],
+    [characterClass.features, primaryClassLevel, selectedOptions, spells],
   );
   const selectedOptionSpells = useMemo(
     () =>
@@ -1735,8 +1782,11 @@ export default function Home() {
       )
     : {};
   const preparedLimits = useMemo(
-    () => preparedCasting?.prepared ?? [],
-    [preparedCasting],
+    () => {
+      const costs = preparedCapacityCosts(selectedOptionSpellChoices, characterClass.id);
+      return (preparedCasting?.prepared ?? []).map((entry) => ({ ...entry, count: Math.max(0, entry.count - (costs[entry.level] ?? 0)) }));
+    },
+    [characterClass.id, preparedCasting, selectedOptionSpellChoices],
   );
   const knownLimits = useMemo(
     () => spontaneousCasting?.known ?? [],
@@ -1979,8 +2029,11 @@ export default function Home() {
     [secondaryGrantedSpells],
   );
   const secondaryPreparedLimits = useMemo(
-    () => secondaryPreparedCasting?.prepared ?? [],
-    [secondaryPreparedCasting],
+    () => {
+      const costs = secondaryCharacterClass ? preparedCapacityCosts(selectedOptionSpellChoices, secondaryCharacterClass.id) : {};
+      return (secondaryPreparedCasting?.prepared ?? []).map((entry) => ({ ...entry, count: Math.max(0, entry.count - (costs[entry.level] ?? 0)) }));
+    },
+    [secondaryCharacterClass, secondaryPreparedCasting, selectedOptionSpellChoices],
   );
   const secondaryKnownLimits = useMemo(
     () => secondarySpontaneousCasting?.known ?? [],

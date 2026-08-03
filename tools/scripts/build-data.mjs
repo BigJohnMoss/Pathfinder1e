@@ -93,6 +93,9 @@ const optionGroups=rawOptionGroups.map(group=>{
       spellLevel,
       castsAsPrepared:filter.castsAsPrepared??false,
       ignoresMaximumSpellLevel:filter.ignoresMaximumSpellLevel??false,
+      preparedCapacityCost:filter.preparedCapacityCost,
+      spellSaveDcBonus:filter.spellSaveDcBonus,
+      concentrationBonus:filter.concentrationBonus,
       resourceCost:filter.resourceCost,
       source:spell.source??group.source
     };

@@ -643,6 +643,49 @@ for (const journey of journeys) {
     await expect(page.getByText(/Arcanist \(Occultist\) slots: 5\/5 1st-level/)).toBeVisible();
   });
 
+  test(`selects and spontaneously casts Spell Specialist signatures on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-spell-specialist");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("4");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+
+    const first = page.getByLabel("Signature Spells level 1");
+    const second = page.getByLabel("2nd-level Signature Spell level 4");
+    await expect(first.locator('option[value="spell-specialist-signature-spells-magic-missile"]')).toHaveCount(1);
+    await expect(first.locator('option[value="spell-specialist-signature-spells-acid-arrow"]')).toHaveCount(0);
+    await first.selectOption("spell-specialist-signature-spells-magic-missile");
+    await expect(second.locator('option[value="spell-specialist-signature-spells-acid-arrow"]')).toHaveCount(1);
+    await expect(second.locator('option[value="spell-specialist-signature-spells-magic-missile"]')).toHaveCount(0);
+    await second.selectOption("spell-specialist-signature-spells-acid-arrow");
+
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await page.getByLabel("Search spells").fill("Magic Missile");
+    await expect(page.getByRole("button", { name: "Add Magic Missile", exact: true })).toBeDisabled();
+    await expect(page.getByText(/Signature Spell: cast on demand · \+2 concentration/)).toBeVisible();
+    await expect(page.getByText(/level 1 · DC 13/)).toBeVisible();
+    await expect(page.getByText(/0\/2 prepared 1st-level/)).toBeVisible();
+    await page.getByRole("button", { name: "Cast Magic Missile", exact: true }).click();
+    await expect(page.getByText(/Arcanist \(Spell Specialist\) slots: 4\/5 1st-level/)).toBeVisible();
+
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Signature Spells level 1")).toHaveValue("spell-specialist-signature-spells-magic-missile");
+    await expect(page.getByLabel("2nd-level Signature Spell level 4")).toHaveValue("spell-specialist-signature-spells-acid-arrow");
+  });
+
   test(`persists a level-20 archetyped multiclass combat chassis on ${journey.name}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize(journey.viewport);

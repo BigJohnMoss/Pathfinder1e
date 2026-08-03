@@ -173,3 +173,12 @@ test("Occultist grants planar spells and scaling slot-free Conjurer's Focus summ
   assert.ok(summons.every((option) => option.resourceCost?.freeAtClassLevel === 20));
   assert.ok(summons.every((option) => option.resourceCost?.levelDivisor === 1));
 });
+
+test("Spell Specialist exposes one level-matched signature slot per spell level", () => {
+  const specialist = archetypes.find((archetype) => archetype.id === "arcanist-spell-specialist");
+  const applied = featuresThroughLevel(applyArchetype(arcanist, specialist), 20);
+  const signatures = applied.filter((feature) => feature.optionGroupId === "spell-specialist-signature-spells");
+  assert.deepEqual(signatures.map((feature) => feature.level), [1, 4, 6, 8, 10, 12, 14, 16, 18]);
+  assert.deepEqual(signatures.map((feature) => feature.requiredSpellLevel), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  assert.ok(signatures.every((feature) => feature.choiceRequired));
+});
