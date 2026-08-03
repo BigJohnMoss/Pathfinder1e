@@ -1248,6 +1248,8 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const inferredFeatChoiceFeatureIds = new Set(inferredFeatChoices.map(choice => choice.sourceFeatureId));
   const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);
   if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
+  const resourceActions = replacementFeatures.flatMap(feature => feature.resourceActions ?? []);
+  if (resourceActions.length) automated.push(`${resourceActions.length} resource-powered feature action${resourceActions.length === 1 ? "" : "s"}`);
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id))
     .map(feature => `${feature.name} (level ${feature.level})`);

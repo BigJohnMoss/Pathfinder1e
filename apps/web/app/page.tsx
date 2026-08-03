@@ -2325,6 +2325,7 @@ export default function Home() {
           ? alternateRewardValue(gnomeBombReward, favoredClassAlternateBonuses[gnomeBombReward.id] ?? 0)
           : 0);
         return {
+          id: resourceId,
           label: `${classes.find((item) => item.id === resourceClassId)?.name ?? resourceClassId} ${adjustment?.label ?? resourceLabels[resourceId]?.[0] ?? resourceId}`,
           unit: adjustment?.unit ?? resourceLabels[resourceId]?.[1] ?? "use",
           maximum: resourceMaximum,
@@ -2377,6 +2378,19 @@ export default function Home() {
     );
   }, [summonerClassLevel, eidolonBaseFormId]);
   const classDailyResources = [
+    ...(reservoir
+      ? [
+          {
+            id: "arcaneReservoir",
+            label: "Arcane Reservoir",
+            unit: "point",
+            maximum: reservoir.maximum,
+            used: Math.max(0, reservoir.maximum - reservoirPoints),
+            onUsedChange: (used: number) =>
+              setReservoirPoints(Math.max(0, reservoir.maximum - used)),
+          },
+        ]
+      : []),
     ...(bardClassLevel > 0
       ? [
           {

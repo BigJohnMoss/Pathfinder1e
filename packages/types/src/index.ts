@@ -115,6 +115,13 @@ export interface ClassFeatureOccurrence {
   requiredOptionId?: string;
   requiredOptionMessage?: string;
   requiredSpellLevel?: number;
+  resourceActions?: Array<{
+    id: string;
+    label: string;
+    resourceId: string;
+    cost: number;
+    summary?: string;
+  }>;
 }
 export interface CharacterClass {
   id: string;

@@ -182,3 +182,19 @@ test("Spell Specialist exposes one level-matched signature slot per spell level"
   assert.deepEqual(signatures.map((feature) => feature.requiredSpellLevel), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
   assert.ok(signatures.every((feature) => feature.choiceRequired));
 });
+
+test("reservoir-powered archetype features expose enforceable action costs", () => {
+  const expected = new Map([
+    ["arcanist-aeromancer", [["wind-s-embrace", 2], ["rebuking-gale", 3]]],
+    ["arcanist-brown-fur-transmuter", [["powerful-change", 1], ["share-transmutation", 1]]],
+    ["arcanist-arcane-tinkerer", [["manipulate-construct", 1]]],
+    ["arcanist-twilight-sage", [["twilight-transfer", 1]]],
+  ]);
+  for (const [archetypeId, actions] of expected) {
+    const archetype = archetypes.find((candidate) => candidate.id === archetypeId);
+    const actual = archetype.replacements.flatMap((replacement) => replacement.features)
+      .flatMap((feature) => feature.resourceActions ?? [])
+      .map((action) => [action.id, action.cost]);
+    assert.deepEqual(actual, actions);
+  }
+});
