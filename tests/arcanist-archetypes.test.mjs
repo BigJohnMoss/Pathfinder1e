@@ -31,6 +31,8 @@ test("Blade Adept replaces the correct exploit levels and exposes its complete r
   const applied = applyArchetype(arcanist, bladeAdept);
   const features = featuresThroughLevel(applied, 20);
   assert.ok(features.some((feature) => feature.name === "Sword Bond (Su)" && /one-handed piercing or slashing/.test(feature.summary)));
+  assert.equal(features.find((feature) => feature.name === "Sword Bond (Su)")?.optionGroupId, "blade-adept-bonded-weapons");
+  assert.deepEqual(bladeAdept.proficiencyAdjustments, [{ category: "weapon", operation: "add", proficiencies: ["Selected bonded weapon (simple or martial)"] }]);
   assert.ok(features.some((feature) => feature.name === "Sentient Sword (Su)" && /black blade/.test(feature.summary)));
   for (const id of ["arcanist-exploit-1", "arcanist-exploit-3", "arcanist-exploit-9"]) {
     assert.ok(!features.some((feature) => feature.id === id));

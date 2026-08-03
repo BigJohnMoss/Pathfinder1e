@@ -316,6 +316,13 @@ export interface SelectableOption {
     allowCustom?: boolean;
     uniqueAcrossSelections?: boolean;
   };
+  resourceActions?: Array<{
+    id: string;
+    label: string;
+    resourceId: string;
+    cost: number;
+    summary?: string;
+  }>;
 }
 
 export interface CharacterAncestry {
