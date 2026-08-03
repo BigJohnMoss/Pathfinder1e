@@ -11,6 +11,22 @@ async function openCharacterPanel(page: Page, mobile: boolean) {
   }
 }
 
+test("spends and enforces Aeromancer feature-action reservoir costs", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await openCharacterPanel(page, false);
+  await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+  await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-aeromancer");
+  await page.locator('input[type="number"][min="1"][max="20"]').fill("11");
+  await page.getByRole("tab", { name: "Features" }).click();
+  const reservoir = page.getByLabel("Arcane Reservoir remaining");
+  await expect(reservoir).toHaveText("3/14 point remaining");
+  await page.getByRole("button", { name: "Use Wind's Embrace" }).click();
+  await expect(reservoir).toHaveText("1/14 point remaining");
+  await expect(page.getByRole("button", { name: "Use Rebuking Gale" })).toBeDisabled();
+});
+
 for (const journey of journeys) {
   test(`selects and restores inferred restricted archetype feats on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
