@@ -781,6 +781,12 @@ export function normalizeCharacterDraft(
                 "fortitude",
                 "reflex",
                 "will",
+                "strength",
+                "dexterity",
+                "constitution",
+                "intelligence",
+                "wisdom",
+                "charisma",
               ].includes(effect.target) &&
               Number.isInteger(effect.bonus) &&
               effect.bonus >= -20 &&

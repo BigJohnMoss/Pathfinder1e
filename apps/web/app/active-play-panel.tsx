@@ -11,7 +11,13 @@ const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "armorClass", name: "Armor Class" },
   { id: "fortitude", name: "Fortitude" },
   { id: "reflex", name: "Reflex" },
-  { id: "will", name: "Will" }
+  { id: "will", name: "Will" },
+  { id: "strength", name: "Strength" },
+  { id: "dexterity", name: "Dexterity" },
+  { id: "constitution", name: "Constitution" },
+  { id: "intelligence", name: "Intelligence" },
+  { id: "wisdom", name: "Wisdom" },
+  { id: "charisma", name: "Charisma" }
 ];
 
 export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, attacks, checks, skills, effects, onCurrentHitPointsChange, onTemporaryHitPointsChange, onEffectsChange }: {

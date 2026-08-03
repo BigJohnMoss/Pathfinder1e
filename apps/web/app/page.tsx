@@ -663,10 +663,11 @@ export default function Home() {
           baseAbilities[ability as keyof typeof baseAbilities] +
             (fixedModifiers[ability as keyof typeof baseAbilities] ?? 0) +
             (choiceAmount && ability === humanAbility ? choiceAmount : 0) +
-            abilityBoosts.filter((boost) => boost === ability).length,
+            abilityBoosts.filter((boost) => boost === ability).length +
+            activeEffects.filter((effect) => effect.target === ability).reduce((total, effect) => total + effect.bonus, 0),
         ]),
       ) as typeof baseAbilities,
-    [abilityBoosts, baseAbilities, choiceAmount, fixedModifiers, humanAbility],
+    [abilityBoosts, activeEffects, baseAbilities, choiceAmount, fixedModifiers, humanAbility],
   );
   const pointBuy = pointBuySummary(baseAbilities, pointBuyBudget);
   useEffect(
@@ -4115,6 +4116,7 @@ export default function Home() {
                 }
                 features={progression.features}
                 dailyResources={classDailyResources}
+                onAddEffect={(effect) => setActiveEffects((current) => [...current.filter((item) => item.name !== effect.name || item.target !== effect.target), effect].slice(-20))}
               />
               <FavoredClassBenefits allocations={favoredClassAlternateBonuses} />
               <ArchetypeAutomationStatus archetypes={selectedArchetypes} feats={feats} />
