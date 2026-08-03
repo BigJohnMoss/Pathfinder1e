@@ -86,6 +86,34 @@ test(`branches Arcane Tinkerer improvements on ${journey.name}`, async ({ page }
 }
 
 for (const journey of journeys) {
+test(`tracks Eldritch Font surge strain and recovery on ${journey.name}`, async ({ page }) => {
+  await page.setViewportSize(journey.viewport);
+  await page.goto("/");
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await openCharacterPanel(page, journey.mobile);
+  await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+  await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-eldritch-font");
+  await page.locator('input[type="number"][min="1"][max="20"]').fill("20");
+  if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+  await page.getByRole("tab", { name: "Features" }).click();
+  const strain = page.getByLabel("Arcanist Eldritch Surge remaining");
+  const reservoir = page.getByLabel("Arcane Reservoir remaining");
+  await expect(strain).toHaveText("2/2 surge remaining");
+  await page.getByRole("button", { name: "Surge a spell — become fatigued" }).click();
+  await expect(strain).toHaveText("1/2 surge remaining");
+  await page.getByRole("button", { name: "Surge a spell — become exhausted" }).click();
+  await expect(strain).toHaveText("0/2 surge remaining");
+  await expect(page.getByRole("button", { name: "Surge a spell — become exhausted" })).toBeDisabled();
+  await expect(reservoir).toHaveText("3/23 point remaining");
+  await page.getByRole("button", { name: "Study for 1 hour and refill reservoir" }).click();
+  await expect(reservoir).toHaveText("13/23 point remaining");
+  await page.getByRole("button", { name: "Refresh arcanist eldritch surge" }).click();
+  await expect(strain).toHaveText("2/2 surge remaining");
+});
+}
+
+for (const journey of journeys) {
   test(`selects and restores inferred restricted archetype feats on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

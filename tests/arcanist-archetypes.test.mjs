@@ -233,3 +233,14 @@ test("Aeromancer Air Mastery unlocks and spends reservoir points at 1st level", 
   assert.equal(mastery?.level, 1);
   assert.deepEqual(mastery?.resourceActions?.map((action) => action.cost), [1, 1]);
 });
+
+test("Eldritch Font tracks surge strain and Bottomless Well recovery", () => {
+  const font = archetypes.find((archetype) => archetype.id === "arcanist-eldritch-font");
+  const features = featuresThroughLevel(applyArchetype(arcanist, font), 20);
+  assert.equal(font.resourceAdjustments.find((resource) => resource.resourceId === "eldritchSurgeStrain")?.maximum, 2);
+  const actions = features.flatMap((feature) => feature.resourceActions ?? []);
+  assert.equal(actions.filter((action) => action.resourceId === "eldritchSurgeStrain").length, 5);
+  assert.deepEqual(actions.find((action) => action.id === "bottomless-well")?.changes, [{ resourceId: "arcaneReservoir", usedDelta: -10 }]);
+  assert.equal(font.spellSlotAdjustmentPerLevel, 1);
+  assert.equal(font.preparedSpellAdjustmentPerLevel, -1);
+});
