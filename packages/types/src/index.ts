@@ -452,7 +452,11 @@ export interface CharacterArchetype {
     base: number;
     perInterval?: number;
     interval?: number;
+    levelDivisor?: number;
+    levelMultiplier?: number;
+    minimum?: number;
     maximum?: number;
+    bonusByLevel?: Array<{ level: number; bonus: number }>;
   }>;
   skillBonusAdjustments?: Array<{
     sourceFeatureId?: string;
@@ -466,6 +470,7 @@ export interface CharacterArchetype {
     levelMultiplier?: number;
     minimum?: number;
     maximum?: number;
+    bonusByLevel?: Array<{ level: number; bonus: number }>;
     condition?: string;
   }>;
   landSpeedAdjustments?: Array<{

@@ -1,4 +1,5 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
+import { mergeArchetypeAutomation } from "../../packages/data/src/archetype-automation.js";
 const base=new URL("../../packages/data/src/",import.meta.url); const out=new URL("../../generated/",import.meta.url);
 await mkdir(out,{recursive:true});
 async function loadDir(name){const dir=new URL(`${name}/`,base);const files=(await readdir(dir)).filter(f=>f.endsWith('.json')).sort();return Promise.all(files.map(async f=>JSON.parse(await readFile(new URL(f,dir),'utf8'))));}
@@ -119,7 +120,8 @@ feats=feats.map(feat=>{
   const fullBenefit=detail.sections?.find(section=>section.label.toLowerCase()==="benefit")?.text??feat.benefit;
   return {...feat,benefit:fullBenefit,description:detail.description,rulesSections:detail.sections};
 });
-const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),archetypes:await loadDir('archetypes'),races:await loadDir('races'),optionGroups,feats,traits:await loadDir('traits'),spells};
+const archetypes=mergeArchetypeAutomation(await loadDir('archetypes'),await loadDir('archetype-automation').catch(()=>[]));
+const bundle={generatedAt:new Date().toISOString(),classes:await loadDir('classes'),archetypes,races:await loadDir('races'),optionGroups,feats,traits:await loadDir('traits'),spells};
 const serialized=JSON.stringify(bundle);
 const compactFeats=bundle.feats.map(({description,rulesSections,...feat})=>({...feat,benefit:"",source:{...feat.source,title:""}}));
 const compactArchetypes=bundle.archetypes.map(archetype=>({...archetype,replacements:[],featureOverrides:undefined,mechanicalNotes:undefined}));

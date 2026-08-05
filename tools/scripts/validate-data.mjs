@@ -1,5 +1,6 @@
 import { readdir, readFile } from "node:fs/promises";
 import { validatePrerequisites } from "../../packages/data/src/validation.js";
+import { archetypeAutomationArrayFields, mergeArchetypeAutomation } from "../../packages/data/src/archetype-automation.js";
 
 const root = new URL("../../packages/data/src/", import.meta.url);
 const errors = [];
@@ -16,6 +17,15 @@ const bloodlineDetailIds = new Set();
 const spellDescriptors = new Set(["acid", "air", "chaotic", "cold", "curse", "darkness", "death", "disease", "earth", "electricity", "emotion", "evil", "fear", "fire", "force", "good", "language-dependent", "lawful", "light", "meditative", "mind-affecting", "pain", "poison", "ruse", "shadow", "sonic", "water"]);
 const abilities = new Set(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
 const activeEffectTargets = new Set(["initiative", "armorClass", "fortitude", "reflex", "will", "attackRolls", "damageRolls", "spellResistance", "casterLevel", "spellSaveDc", "exploitEffectiveLevel", "casterLevelChecks", "savingThrows", "meleeDamageRolls", "healingReceived", "skillChecks", ...abilities, "allies", "self", "area", "enemy"]);
+const archetypeOverlayFiles = await Promise.all((await jsonFiles("archetype-automation/").catch(() => [])).map(load));
+const archetypeOverlays = archetypeOverlayFiles.flatMap(file => file.overlays ?? []);
+const archetypeOverlayIds = new Set();
+for (const [index, overlay] of archetypeOverlays.entries()) {
+  const prefix = `archetype automation overlay ${index + 1}`;
+  if (typeof overlay?.archetypeId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(overlay.archetypeId)) errors.push(`${prefix}: invalid archetypeId`);
+  archetypeOverlayIds.add(overlay.archetypeId);
+  if (!archetypeAutomationArrayFields.some(field => overlay[field]?.length) && !overlay.featurePatches?.length && !overlay.mechanicalCoverage) errors.push(`${prefix}: contains no automation`);
+}
 
 async function jsonFiles(directory) {
   const dir = new URL(directory, root);
@@ -158,8 +168,11 @@ const spellIds = new Set([
   ...await Promise.all((await jsonFiles("spells/")).map(async url => (await load(url)).id)),
   ...(await Promise.all((await jsonFiles("spell-catalogues/")).map(async url => (await load(url)).spells ?? []))).flat().map(spell => spell.id),
 ]);
-for (const url of await jsonFiles("archetypes/")) {
-  const archetype=await load(url); const file=url.pathname.split('/').pop(); checkId(archetype,file); checkSource(archetype,file);
+const archetypeUrls = await jsonFiles("archetypes/");
+const sourceArchetypes = await Promise.all(archetypeUrls.map(load));
+const mergedArchetypes = mergeArchetypeAutomation(sourceArchetypes, archetypeOverlayFiles);
+for (const [index, url] of archetypeUrls.entries()) {
+  const archetype=mergedArchetypes[index]; const file=url.pathname.split('/').pop(); checkId(archetype,file); checkSource(archetype,file);
   if(!classIds.has(archetype.classId)) errors.push(`${file}: references missing class ${archetype.classId}`);
   if(typeof archetype.summary!=="string"||!archetype.summary.trim()||!Array.isArray(archetype.replacements)||archetype.replacements.length===0) errors.push(`${file}: missing summary or replacements`);
   const replacementFeatureIds=new Set();
@@ -335,7 +348,12 @@ for (const url of await jsonFiles("archetypes/")) {
     if (modifier?.perInterval !== undefined && !Number.isInteger(modifier.perInterval)) errors.push(`${prefix} perInterval must be an integer`);
     if (modifier?.interval !== undefined && (!Number.isInteger(modifier.interval) || modifier.interval < 1)) errors.push(`${prefix} interval must be a positive integer`);
     if (modifier?.perInterval !== undefined && modifier?.interval === undefined) errors.push(`${prefix} must specify interval when perInterval is present`);
+    if (modifier?.levelDivisor !== undefined && (!Number.isInteger(modifier.levelDivisor) || modifier.levelDivisor < 1)) errors.push(`${prefix} levelDivisor must be a positive integer`);
+    if (modifier?.levelMultiplier !== undefined && !Number.isInteger(modifier.levelMultiplier)) errors.push(`${prefix} levelMultiplier must be an integer`);
+    if (modifier?.levelMultiplier !== undefined && modifier?.levelDivisor === undefined) errors.push(`${prefix} must specify levelDivisor when levelMultiplier is present`);
+    if (modifier?.minimum !== undefined && !Number.isInteger(modifier.minimum)) errors.push(`${prefix} minimum must be an integer`);
     if (modifier?.maximum !== undefined && !Number.isInteger(modifier.maximum)) errors.push(`${prefix} maximum must be an integer`);
+    if (modifier?.bonusByLevel !== undefined && (!Array.isArray(modifier.bonusByLevel) || modifier.bonusByLevel.length === 0 || modifier.bonusByLevel.some((step, index) => !Number.isInteger(step?.level) || step.level < 1 || step.level > 20 || !Number.isInteger(step?.bonus) || (index > 0 && step.level <= modifier.bonusByLevel[index - 1].level)))) errors.push(`${prefix} has invalid bonusByLevel`);
   }
   if (archetype.skillBonusAdjustments !== undefined && (!Array.isArray(archetype.skillBonusAdjustments) || archetype.skillBonusAdjustments.length === 0)) errors.push(`${file}: skillBonusAdjustments must be a non-empty array`);
   for (const adjustment of archetype.skillBonusAdjustments ?? []) {
@@ -353,6 +371,7 @@ for (const url of await jsonFiles("archetypes/")) {
     if (adjustment?.levelMultiplier !== undefined && adjustment?.levelDivisor === undefined) errors.push(`${prefix} must specify levelDivisor when levelMultiplier is present`);
     if (adjustment?.minimum !== undefined && !Number.isInteger(adjustment.minimum)) errors.push(`${prefix} minimum must be an integer`);
     if (adjustment?.maximum !== undefined && !Number.isInteger(adjustment.maximum)) errors.push(`${prefix} maximum must be an integer`);
+    if (adjustment?.bonusByLevel !== undefined && (!Array.isArray(adjustment.bonusByLevel) || adjustment.bonusByLevel.length === 0 || adjustment.bonusByLevel.some((step, index) => !Number.isInteger(step?.level) || step.level < 1 || step.level > 20 || !Number.isInteger(step?.bonus) || (index > 0 && step.level <= adjustment.bonusByLevel[index - 1].level)))) errors.push(`${prefix} has invalid bonusByLevel`);
     if (adjustment?.condition !== undefined && (typeof adjustment.condition !== "string" || !adjustment.condition.trim())) errors.push(`${prefix} has an invalid condition`);
   }
   if (archetype.landSpeedAdjustments !== undefined && (!Array.isArray(archetype.landSpeedAdjustments) || archetype.landSpeedAdjustments.length === 0)) errors.push(`${file}: landSpeedAdjustments must be a non-empty array`);
@@ -397,6 +416,7 @@ for (const url of await jsonFiles("archetypes/")) {
     }
   }
 }
+for (const archetypeId of archetypeOverlayIds) if (!sourceArchetypes.some(archetype => archetype.id === archetypeId)) errors.push(`archetype automation overlay references missing archetype ${archetypeId}`);
   for (const url of await jsonFiles("options/")) { const g=await load(url); const file=url.pathname.split('/').pop(); checkId(g,file); groupIds.add(g.id); for (const raw of g.options??[]) {const o={...g.optionDefaults,...raw}; checkId(o,`${file}:${o.id}`); optionIds.add(o.id); checkSource(o,`${file}:${o.id}`); if(!Number.isInteger(o.minimumLevel)) errors.push(`${file}:${o.id} missing minimumLevel`); if(o.featId !== undefined && (typeof o.featId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.featId))) errors.push(`${file}:${o.id} has invalid featId`); if(o.spellId !== undefined && (typeof o.spellId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o.spellId))) errors.push(`${file}:${o.id} has invalid spellId`); if(o.spellLevel !== undefined && (!Number.isInteger(o.spellLevel)||o.spellLevel<0||o.spellLevel>9)) errors.push(`${file}:${o.id} has invalid spellLevel`); checkSelectableOption(o, `${file}:${o.id}`); checkPrerequisites(o.prerequisites, `${file}:${o.id}`);} }
 for (const reference of activeEffectUpgradeOptionRefs) if (!optionIds.has(reference.optionId)) errors.push(`${reference.file}: ${reference.featureId} ${reference.actionId} references unknown activeEffect upgrade option ${reference.optionId}`);
 for (const reference of resourceAdvancementOptionRefs) if (!optionIds.has(reference.optionId)) errors.push(`${reference.prefix} references unknown advancement option ${reference.optionId}`);
@@ -410,8 +430,8 @@ for (const url of await jsonFiles("spell-schools/")) { const catalogue=await loa
 for (const url of await jsonFiles("spell-details/")) { const catalogue=await load(url); const file=url.pathname.split("/").pop(); if(!Array.isArray(catalogue.spells)) { errors.push(`${file}: spell details must be an array`); continue; } const detailIds=new Set(); for(const spell of catalogue.spells) { if(typeof spell.id!=="string"||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(spell.id)||detailIds.has(spell.id)) errors.push(`${file}: invalid or duplicate spell detail id ${spell.id??"unknown"}`); else detailIds.add(spell.id); checkSource(spell,`${file}:${spell.id??"unknown"}`); if(typeof spell.description!=="string"||!spell.description.trim()) errors.push(`${file}:${spell.id??"unknown"} is missing a full description`); for(const key of ["castingTime","range","duration"]) if(typeof spell[key]!=="string"||!spell[key].trim()) errors.push(`${file}:${spell.id??"unknown"} is missing ${key}`); if(!Array.isArray(spell.components)||spell.components.length===0) errors.push(`${file}:${spell.id??"unknown"} is missing components`); } }
 for (const url of await jsonFiles("spell-class-levels/")) { const overlay=await load(url); const file=url.pathname.split("/").pop(); checkSource(overlay,file); if(!overlay.levelsBySpellId||typeof overlay.levelsBySpellId!=="object"||Array.isArray(overlay.levelsBySpellId)) errors.push(`${file}: levelsBySpellId must be an object`); else for(const [spellId,levels] of Object.entries(overlay.levelsBySpellId)) { if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(spellId)||!levels||typeof levels!=="object"||Array.isArray(levels)||Object.values(levels).some(level=>!Number.isInteger(level)||level<0||level>9)) errors.push(`${file}: invalid level overlay for ${spellId}`); else if(!ids.has(spellId)) errors.push(`${file}: references missing spell ${spellId}`); } }
 for (const url of await jsonFiles("classes/")) { const c=await load(url); for (const f of c.features??[]) if(f.optionGroupId && !groupIds.has(f.optionGroupId)) errors.push(`${c.id}:${f.id} references missing option group ${f.optionGroupId}`); }
-for (const url of await jsonFiles("archetypes/")) {
-  const archetype=await load(url); const file=url.pathname.split('/').pop();
+for (const [index, url] of archetypeUrls.entries()) {
+  const archetype=mergedArchetypes[index]; const file=url.pathname.split('/').pop();
   for (const augmentation of archetype.optionGroupAugmentations ?? []) {
     if (!groupIds.has(augmentation.targetGroupId)) errors.push(`${file}: option group augmentation references missing target group ${augmentation.targetGroupId}`);
     if (!groupIds.has(augmentation.sourceGroupId)) errors.push(`${file}: option group augmentation references missing source group ${augmentation.sourceGroupId}`);

@@ -40,7 +40,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Resources and limited uses | 31 |
 | Companions and effective levels | 34 |
 | Spell lists, slots, and casting | 49 |
-| Class skills and skill-rank progressions | 55 |
+| Class skills and skill-rank progressions | 56 |
 | Combat statistics and proficiencies | 18 |
 
 Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
