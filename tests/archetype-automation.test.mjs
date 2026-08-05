@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 
@@ -165,6 +165,46 @@ test("combat modifier inference is bounded, normalized, and conservative across 
   assert.ok(armoredHulk);
   assert.equal(archetypeCombatModifierAdjustments(armoredHulk).length, 0);
   assert.equal(archetypeConditionalModifiers([armoredHulk], { barbarian: 3 }).length, 5);
+});
+
+test("archetype senses preserve published alternatives, ranges, and level progression", () => {
+  const mooncaller = catalogueArchetypes.find((archetype) => archetype.id === "druid-mooncaller");
+  assert.ok(mooncaller);
+  assert.deepEqual(archetypeSenses([mooncaller], { druid: 1 }), []);
+  assert.deepEqual(archetypeSenses([mooncaller], { druid: 2 }), [
+    { sense: "low-light-vision", label: "Low-light vision", operation: "grant", source: "Mooncaller" },
+    { sense: "darkvision", label: "Darkvision", operation: "grant", range: 30, condition: "if she already has low-light vision", source: "Mooncaller" },
+    { sense: "darkvision", label: "Darkvision", operation: "increase", range: 30, condition: "if already has darkvision", source: "Mooncaller" },
+  ]);
+
+  const shadowWalker = catalogueArchetypes.find((archetype) => archetype.id === "rogue-shadow-walker");
+  assert.ok(shadowWalker);
+  assert.equal(archetypeSenses([shadowWalker], { rogue: 1 }).find((sense) => sense.operation === "grant")?.range, 30);
+  assert.equal(archetypeSenses([shadowWalker], { rogue: 19 }).find((sense) => sense.operation === "grant")?.range, 120);
+  assert.equal(archetypeSenses([shadowWalker], { rogue: 19 }).find((sense) => sense.operation === "increase")?.range, 100);
+});
+
+test("sense inference remains player-owned, normalized, and bounded across the catalogue", () => {
+  const allowed = new Set(["darkvision", "low-light-vision", "scent", "blindsense", "blindsight", "tremorsense"]);
+  for (const archetype of catalogueArchetypes) {
+    const inferred = inferArchetypeSenseAdjustments(archetype);
+    if (archetype.mechanicalCoverage !== "full") assert.deepEqual(archetypeSenseAdjustments(archetype), inferred, `${archetype.id} exposes inferred senses at runtime`);
+    const signatures = new Set();
+    for (const adjustment of inferred) {
+      assert.ok(allowed.has(adjustment.sense), `${archetype.id} has a supported sense`);
+      assert.ok(["grant", "increase"].includes(adjustment.operation), `${archetype.id} has a supported sense operation`);
+      assert.ok(adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20, `${archetype.id} has a bounded sense level`);
+      assert.ok(!/familiar|companion|eidolon|homunculus/i.test(adjustment.sourceFeatureId), `${archetype.id} excludes subordinate creature senses`);
+      if (adjustment.range !== undefined) assert.ok(adjustment.range > 0 && adjustment.range <= 1000, `${archetype.id} has a bounded sense range`);
+      assert.ok((adjustment.condition?.length ?? 0) <= 200, `${archetype.id} has a readable sense condition`);
+      const steps = adjustment.rangeByLevel ?? [];
+      assert.ok(steps.every((step, index) => step.level >= adjustment.minimumLevel && step.level <= 20 && step.range > 0 && (!index || step.level > steps[index - 1].level)), `${archetype.id} has ordered sense milestones`);
+      const signature = JSON.stringify([adjustment.sourceFeatureId, adjustment.sense, adjustment.operation, adjustment.minimumLevel, adjustment.condition]);
+      assert.ok(!signatures.has(signature), `${archetype.id} has no duplicate sense adjustment`);
+      signatures.add(signature);
+    }
+    if (archetype.mechanicalCoverage === "full") assert.equal(archetypeSenseAdjustments(archetype).length, 0, `${archetype.id} does not duplicate curated full automation`);
+  }
 });
 
 test("common exact skill-bonus rules are inferred conservatively", () => {

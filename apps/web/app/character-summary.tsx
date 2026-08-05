@@ -4,9 +4,10 @@ type Progression = { baseAttackBonus: number; skillRanks: number; featSlots: num
 
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
 
-export function CombatPanel({ combat, landSpeed, modifierSources = [], conditionalModifiers = [] }: {
+export function CombatPanel({ combat, landSpeed, senses = [], modifierSources = [], conditionalModifiers = [] }: {
   combat: CombatStats;
   landSpeed: { speed: number; baseSpeed: number; armorCategory: string; load: string; adjustments: Array<{ label: string; bonus: number; source: string }> };
+  senses?: Array<{ sense: string; label: string; operation: "grant" | "increase"; range?: number; condition?: string; source: string }>;
   modifierSources?: MechanicalBonusSource[];
   conditionalModifiers?: Array<{ label: string; bonus?: number; condition: string; source: string }>;
 }) {
@@ -21,6 +22,13 @@ export function CombatPanel({ combat, landSpeed, modifierSources = [], condition
       <div><dt>Average HP</dt><dd>{combat.averageHitPoints}</dd></div>
     </dl>
     <p className="hint" aria-label="Land speed calculation">Base {landSpeed.baseSpeed} ft. · {landSpeed.armorCategory === "none" ? "no armor" : `${landSpeed.armorCategory} armor`} · {landSpeed.load} load{landSpeed.adjustments.length ? ` · ${landSpeed.adjustments.map((adjustment) => `${adjustment.source}: ${adjustment.label}`).join(", ")}` : ""}</p>
+    {senses.length > 0 && <section className="conditional-modifiers" aria-labelledby="character-senses-title">
+      <h3 id="character-senses-title">Special senses</h3>
+      <ul>{senses.map((sense, index) => <li key={`${sense.source}-${sense.sense}-${index}`}>
+        <strong>{sense.operation === "increase" ? "Increase " : ""}{sense.label}{sense.range ? ` ${sense.range} ft.` : ""}</strong>
+        <span>{sense.condition ? `${sense.condition} · ` : ""}{sense.source}</span>
+      </li>)}</ul>
+    </section>}
     {modifierSources.length > 0 && <section className="conditional-modifiers">
       <h3>Applied feat modifiers</h3>
       <ul>{modifierSources.map((modifier, index) => <li key={`${modifier.source}-${modifier.target}-${index}`}>

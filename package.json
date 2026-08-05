@@ -30,6 +30,7 @@
     "coverage:archetype-initiative": "node tools/scripts/analyze-archetype-initiative-inference.mjs",
     "coverage:archetype-saves": "node tools/scripts/analyze-archetype-save-inference.mjs",
     "coverage:archetype-combat": "node tools/scripts/analyze-archetype-combat-inference.mjs",
+    "coverage:archetype-senses": "node tools/scripts/analyze-archetype-sense-inference.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
     "performance:check": "node tools/scripts/check-client-budgets.mjs",

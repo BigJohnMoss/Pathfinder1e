@@ -5,6 +5,7 @@ import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inf
 import { archetypeInitiativeBonusAdjustments, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
 import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, inferArchetypeSaveBonusAdjustments } from "./archetype-saves.js";
 import { archetypeCombatModifierAdjustments, inferredArchetypeCombatModifierDetails, inferArchetypeCombatModifierAdjustments } from "./archetype-combat.js";
+import { archetypeSenseAdjustments, inferredArchetypeSenseDetails, inferArchetypeSenseAdjustments } from "./archetype-senses.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
@@ -17,6 +18,7 @@ export { archetypeSkillBonusAdjustments, inferArchetypeSkillBonusAdjustments };
 export { archetypeInitiativeBonusAdjustments, inferArchetypeInitiativeBonusAdjustments };
 export { archetypeSaveBonusAdjustments, inferArchetypeSaveBonusAdjustments };
 export { archetypeCombatModifierAdjustments, inferArchetypeCombatModifierAdjustments };
+export { archetypeSenseAdjustments, inferArchetypeSenseAdjustments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
@@ -438,6 +440,24 @@ export function archetypeCombatBonuses(archetypes = [], classLevels = {}) {
     combatManeuverBonus: total("cmb"),
     combatManeuverDefense: total("cmd"),
   };
+}
+
+export function archetypeSenses(archetypes = [], classLevels = {}) {
+  return (archetypes ?? []).flatMap((archetype) => {
+    const level = archetypeLevel(archetype, classLevels);
+    return archetypeSenseAdjustments(archetype).flatMap((adjustment) => {
+      if (!adjustmentAppliesAtLevel(adjustment, level)) return [];
+      const range = adjustment.rangeByLevel?.filter((step) => step.level <= level).sort((left, right) => left.level - right.level).at(-1)?.range ?? adjustment.range;
+      return [{
+        sense: adjustment.sense,
+        label: adjustment.label,
+        operation: adjustment.operation,
+        ...(range ? { range } : {}),
+        ...(adjustment.condition ? { condition: adjustment.condition } : {}),
+        source: archetype.name,
+      }];
+    });
+  });
 }
 
 export function archetypeSkillBonuses(archetypes = [], classLevels = {}) {
@@ -1505,6 +1525,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const combatModifierAdjustments = archetypeCombatModifierAdjustments(archetype);
   if (combatModifierAdjustments.length)
     automated.push(`${combatModifierAdjustments.length} calculated combat modifier${combatModifierAdjustments.length === 1 ? "" : "s"}`);
+  const senseDetails = inferredArchetypeSenseDetails(archetype);
+  const senseAdjustments = archetypeSenseAdjustments(archetype);
+  if (senseAdjustments.length)
+    automated.push(`${senseAdjustments.length} level-aware special sense${senseAdjustments.length === 1 ? "" : "s"}`);
   const skillBonusDetails = inferredArchetypeSkillBonusDetails(archetype);
   const skillBonusAdjustments = archetypeSkillBonusAdjustments(archetype);
   if (skillBonusAdjustments.length)
@@ -1534,6 +1558,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ...initiativeBonusDetails.fullyAutomatedFeatureIds,
     ...saveBonusDetails.fullyAutomatedFeatureIds,
     ...combatModifierDetails.fullyAutomatedFeatureIds,
+    ...senseDetails.fullyAutomatedFeatureIds,
     ...(archetype.skillBonusAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...skillBonusDetails.fullyAutomatedFeatureIds,
     ...(archetype.landSpeedAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
