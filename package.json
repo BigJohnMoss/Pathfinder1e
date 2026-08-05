@@ -28,6 +28,7 @@
     "coverage:archetype-gaps": "node tools/scripts/classify-archetype-gaps.mjs",
     "coverage:archetype-skills": "node tools/scripts/analyze-archetype-skill-inference.mjs",
     "coverage:archetype-initiative": "node tools/scripts/analyze-archetype-initiative-inference.mjs",
+    "coverage:archetype-saves": "node tools/scripts/analyze-archetype-save-inference.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
     "performance:check": "node tools/scripts/check-client-budgets.mjs",

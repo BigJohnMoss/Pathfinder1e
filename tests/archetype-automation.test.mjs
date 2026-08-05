@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 
@@ -64,6 +64,58 @@ test("explicit initiative overlays suppress inferred duplicates", () => {
   assert.ok(castellan);
   assert.equal(archetypeInitiativeBonusAdjustments(castellan).length, 0);
   assert.equal(archetypeConditionalModifiers([castellan], { cavalier: 13 }).filter((modifier) => /initiative/i.test(modifier.label)).length, 1);
+});
+
+test("permanent archetype save bonuses alter only their published save targets", () => {
+  const sanctified = catalogueArchetypes.find((archetype) => archetype.id === "rogue-sanctified-rogue");
+  assert.ok(sanctified);
+  assert.deepEqual(inferArchetypeSaveBonusAdjustments(sanctified), [{
+    sourceFeatureId: "rogue-sanctified-rogue-divine-purpose-su-4",
+    label: "Fortitude and Will saves",
+    saveTargets: ["fortitude", "will"],
+    minimumLevel: 4,
+    base: 1,
+  }]);
+  assert.deepEqual(archetypeSavingThrowBonuses([sanctified], { rogue: 3 }), { fortitude: 0, reflex: 0, will: 0 });
+  assert.deepEqual(archetypeSavingThrowBonuses([sanctified], { rogue: 4 }), { fortitude: 1, reflex: 0, will: 1 });
+  assert.ok(!archetypeAutomationSummary(sanctified).manual.some((item) => item.startsWith("Divine Purpose")));
+});
+
+test("conditional save bonuses retain exact triggers and level scaling", () => {
+  const resistance = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-dragonblood-chymist");
+  assert.ok(resistance);
+  assert.deepEqual(archetypeSavingThrowBonuses([resistance], { alchemist: 10 }), { fortitude: 0, reflex: 0, will: 0 });
+  assert.deepEqual(archetypeConditionalModifiers([resistance], { alchemist: 6 }).find((modifier) => modifier.source === "Dragonblood Chymist"), {
+    label: "Saving throws",
+    condition: "against paralysis and sleep effects",
+    bonus: 4,
+    source: "Dragonblood Chymist",
+  });
+  const dragonHunter = catalogueArchetypes.find((archetype) => archetype.id === "ranger-dragon-hunter");
+  assert.ok(dragonHunter);
+  assert.deepEqual(inferArchetypeSaveBonusAdjustments(dragonHunter).find((adjustment) => adjustment.sourceFeatureId === "ranger-dragon-hunter-undaunted-ex-10")?.saveTargets, ["reflex", "will"]);
+});
+
+test("save inference is normalized, conservative, and duplicate-free across the catalogue", () => {
+  for (const archetype of catalogueArchetypes) {
+    const adjustments = inferArchetypeSaveBonusAdjustments(archetype);
+    assert.equal(new Set(adjustments.map((adjustment) => JSON.stringify(adjustment))).size, adjustments.length, `${archetype.id} has duplicate inferred save rows`);
+    for (const adjustment of adjustments) {
+      assert.ok(adjustment.saveTargets.length >= 1 && adjustment.saveTargets.every((save) => ["fortitude", "reflex", "will"].includes(save)), `${archetype.id} has valid save targets`);
+      assert.ok(adjustment.base >= 0 && adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20, `${archetype.id} has bounded save progression`);
+      assert.ok(!/\+\d+.*\bbonus\b|\bhit points?\b/i.test(adjustment.condition ?? ""), `${archetype.id} does not absorb an unrelated rule into its condition`);
+      const namedTargets = ["fortitude", "reflex", "will"].filter((save) => new RegExp(`\\b${save}\\b`, "i").test(adjustment.condition ?? ""));
+      assert.ok(namedTargets.every((save) => adjustment.saveTargets.includes(save)), `${archetype.id} retains every save named by its condition`);
+      const levels = adjustment.bonusByLevel?.map((step) => step.level) ?? [];
+      assert.equal(new Set(levels).size, levels.length, `${archetype.id} has unique save milestones`);
+    }
+  }
+  const explicit = catalogueArchetypes.find((archetype) => archetype.id === "bard-impervious-messenger");
+  assert.ok(explicit);
+  assert.equal(archetypeSaveBonusAdjustments(explicit).filter((adjustment) => adjustment.sourceFeatureId === "bard-impervious-messenger-cryptic-whisper-ex-2").length, 0);
+  const legacyExplicit = catalogueArchetypes.find((archetype) => archetype.id === "barbarian-armored-hulk");
+  assert.ok(legacyExplicit);
+  assert.equal(archetypeConditionalModifiers([legacyExplicit], { barbarian: 3 }).filter((modifier) => modifier.label === "Reflex saves" && modifier.condition === "against trample attacks").length, 1);
 });
 
 test("common exact skill-bonus rules are inferred conservatively", () => {
