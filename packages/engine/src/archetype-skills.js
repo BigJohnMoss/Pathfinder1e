@@ -76,6 +76,36 @@ function exactSkillsInClause(rawClause) {
   return { skills: [...new Set(skills)], omittedTail };
 }
 
+function exactSkillClause(rawClause) {
+  let clause = String(rawClause).replace(/[â€™]/g, "'").trim().replace(/[.]$/, "");
+  const tail = clause.match(/^(.*?),\s+and\s+(?:(?:he|she|they)\s+)?(?:can|cannot|may|must|also|creates?|takes?|treats?|is|are|has|gains?|receives?|learns?|becomes?)\b/i);
+  const omittedTail = Boolean(tail);
+  if (tail) clause = tail[1].trim();
+  const conditional = clause.match(/^(.*?\bchecks?)(\s+(?:(?:made\s+)?to|when|while|against|during|within|in|involving|regarding|related\s+to|outside\s+of)\b.+)$/i);
+  if (!conditional) {
+    const parsed = exactSkillsInClause(clause);
+    return parsed ? { ...parsed, omittedTail: omittedTail || parsed.omittedTail } : null;
+  }
+  const condition = conditional[2].trim();
+  exactSkillPattern.lastIndex = 0;
+  if (/\bchecks?\b/i.test(condition) || exactSkillPattern.test(condition)) return null;
+  exactSkillPattern.lastIndex = 0;
+  const parsed = exactSkillsInClause(conditional[1]);
+  return parsed ? { ...parsed, condition, omittedTail: omittedTail || parsed.omittedTail } : null;
+}
+
+function leadingConditionInPrefix(rawPrefix) {
+  const prefix = String(rawPrefix)
+    .replace(/^\s*(?:At|Beginning at|Starting at) \d+(?:st|nd|rd|th) level,?\s*/i, "")
+    .trim();
+  const match = prefix.match(/^((?:When|Whenever|While|During|If|As long as)\b.+?),\s*(he|she|they|(?:an?|the) [a-z][a-z' -]{0,60})$/i);
+  if (!match || /\b(?:allies|ally|animals?|companions?|constructs?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(match[2])) return null;
+  const condition = match[1].trim();
+  return condition[0].toLowerCase() + condition.slice(1);
+}
+
+const combinedCondition = (leading, trailing) => [leading, trailing].filter(Boolean).join("; ") || undefined;
+
 const splitSentences = (summary) => String(summary ?? "")
   .replace(/\s+/g, " ")
   .trim()
@@ -97,8 +127,20 @@ function scalingSchedule(sentences) {
   if (/\b(?:if|when|whenever|while|unless)\b/i.test(sentence)) return null;
   const maximumMatch = sentence.match(/maximum(?: bonus)?(?: of)? \+?(\d+)(?: at \d+(?:st|nd|rd|th) level)?/i);
   const maximum = maximumMatch ? Number(maximumMatch[1]) : undefined;
+  const toThenEvery = sentence.match(new RegExp(`increases? to \\+(\\d+) at (\\d+)${ordinal} level and by (?:an additional )?\\+?(\\d+) every (\\d+) [^.]{0,30}?levels? thereafter`, "i"));
+  if (toThenEvery) {
+    const milestones = [];
+    let bonus = Number(toThenEvery[1]);
+    for (let level = Number(toThenEvery[2]); level <= 20; level += Number(toThenEvery[4])) {
+      milestones.push({ level, bonus });
+      bonus = Math.min(maximum ?? Number.POSITIVE_INFINITY, bonus + Number(toThenEvery[3]));
+      if (milestones.at(-1).bonus === maximum) break;
+    }
+    return { index, milestones, maximum };
+  }
   if (/\bincreases? to\b/i.test(sentence)) {
-    const milestones = [...sentence.matchAll(new RegExp(`\\+(\\d+) at (\\d+)${ordinal} level`, "gi"))]
+    const progression = sentence.replace(/(?:,?\s*)?to a maximum(?: bonus)?(?: of)? \+?\d+(?: at \d+(?:st|nd|rd|th) level)?[^.]*[.]?$/i, "");
+    const milestones = [...progression.matchAll(new RegExp(`\\+(\\d+) at (\\d+)${ordinal} level`, "gi"))]
       .map((match) => ({ level: Number(match[2]), bonus: Number(match[1]) }));
     return milestones.length ? { index, milestones, maximum } : null;
   }
@@ -138,7 +180,7 @@ function adjustmentsFromFeature(feature) {
   const adjustments = [];
   let fullyAutomated = true;
   const summary = String(feature.summary ?? "");
-  if (/\b(?:choose|chooses|chosen|select|selects|selected) (?:one|a|an|from)|\bone of the (?:following|options)|\bfollowing (?:abilities|aspects|benefits|blessings|enhancements|mutations|options)\b/i.test(summary))
+  if (/\b(?:choose|chooses|chosen|select|selects|selected) (?:one|a|an|from)|\bone of the (?:following|options)|\bfollowing (?:abilities|aspects|benefits|blessings|enhancements|mutations|options)\b|\bcan select the following (?:discoveries|talents|revelations|deeds|options)\b|\bselects? this (?:discovery|talent|revelation|deed|option)\b/i.test(summary))
     return { adjustments, fullyAutomated: false };
   const sentences = splitSentences(summary);
   const scaling = scalingSchedule(sentences);
@@ -154,14 +196,15 @@ function adjustmentsFromFeature(feature) {
   for (const [sentenceIndex, sentence] of sentences.entries()) {
     if (replacementBoilerplate(sentence)) continue;
     if (sentenceIndex === scaling?.index) continue;
-    const halfLevel = sentence.match(/\b(?:adds?|gains?|receives?) (?:a bonus equal to )?(?:one-)?half (?:of )?(?:his|her|their) (?:\w+ )?class level(?: \(minimum \+?1\)|,? minimum \+?1)? (?:as a bonus )?(?:on|to) (.+?)[.]?$/i);
+    const halfLevel = sentence.match(/\b(?:adds?|gains?|receives?) (?:an? )?(?:bonus equal to )?(?:(?:one-)?half|1\/2) (?:of )?(?:his|her|their) (?:(?:\w+ )?(?:class )?)?level(?: \(minimum \+?1\)|,? minimum \+?1)? (?:as a bonus )?(?:on|to) (.+?)[.]?$/i);
     if (halfLevel) {
       const prefix = sentence.slice(0, halfLevel.index);
-      if (/\b(?:when|whenever|while|if|unless|during|wearing|wielding|under|with at least)\b|\b(?:allies|ally|animals?|companions?|constructs?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(prefix)) {
+      const leadingCondition = leadingConditionInPrefix(prefix);
+      if ((/\b(?:when|whenever|while|if|unless|during|wearing|wielding|under|with at least)\b/i.test(prefix) && !leadingCondition) || /\b(?:allies|ally|animals?|companions?|constructs?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(prefix)) {
         fullyAutomated = false;
         continue;
       }
-      const parsed = exactSkillsInClause(halfLevel[1]);
+      const parsed = exactSkillClause(halfLevel[1]);
       if (parsed) {
         adjustments.push(...parsed.skills.map((skill) => ({
           sourceFeatureId: feature.id,
@@ -170,6 +213,7 @@ function adjustmentsFromFeature(feature) {
           base: 0,
           levelDivisor: 2,
           minimum: 1,
+          ...(combinedCondition(leadingCondition, parsed.condition) ? { condition: combinedCondition(leadingCondition, parsed.condition) } : {}),
         })));
         lastParsedSentenceIndex = sentenceIndex;
         if (parsed.omittedTail) fullyAutomated = false;
@@ -179,17 +223,19 @@ function adjustmentsFromFeature(feature) {
     const fixed = sentence.match(/\b(?:gains?|receives?|has) (?:an? )?\+(\d+) (?:alchemical |circumstance |competence |enhancement |insight |morale |profane |racial |sacred |trait |untyped )?bonus (?:on|to) (.+?)[.]?$/i);
     if (fixed) {
       const prefix = sentence.slice(0, fixed.index);
-      if (/\b(?:when|whenever|while|if|unless|during|wearing|wielding|under|with at least)\b|\b(?:allies|ally|animals?|companions?|constructs?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(prefix)) {
+      const leadingCondition = leadingConditionInPrefix(prefix);
+      if ((/\b(?:when|whenever|while|if|unless|during|wearing|wielding|under|with at least)\b/i.test(prefix) && !leadingCondition) || /\b(?:allies|ally|animals?|companions?|constructs?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(prefix)) {
         fullyAutomated = false;
         continue;
       }
-      const parsed = exactSkillsInClause(fixed[2]);
+      const parsed = exactSkillClause(fixed[2]);
       if (parsed) {
         adjustments.push(...parsed.skills.map((skill) => ({
           sourceFeatureId: feature.id,
           skill,
           minimumLevel: minimumLevelFor(sentence, sentenceIndex),
           base: Number(fixed[1]),
+          ...(combinedCondition(leadingCondition, parsed.condition) ? { condition: combinedCondition(leadingCondition, parsed.condition) } : {}),
         })));
         lastParsedSentenceIndex = sentenceIndex;
         if (parsed.omittedTail) fullyAutomated = false;
@@ -229,9 +275,11 @@ export function inferArchetypeSkillBonusAdjustments(archetype) {
 
 export function archetypeSkillBonusAdjustments(archetype) {
   const explicit = archetype?.skillBonusAdjustments ?? [];
-  const explicitKeys = new Set(explicit.map((adjustment) => `${adjustment.skill}:${adjustment.condition ?? ""}`));
+  const explicitSourceKeys = new Set(explicit.filter((adjustment) => adjustment.sourceFeatureId).map((adjustment) => `${adjustment.sourceFeatureId}:${adjustment.skill}`));
+  const explicitValueKeys = new Set(explicit.map((adjustment) => `${adjustment.skill}:${adjustment.condition ?? ""}`));
   const inferred = inferArchetypeSkillBonusAdjustments(archetype).filter((adjustment) =>
-    !explicitKeys.has(`${adjustment.skill}:${adjustment.condition ?? ""}`),
+    !explicitSourceKeys.has(`${adjustment.sourceFeatureId ?? ""}:${adjustment.skill}`) &&
+    !explicitValueKeys.has(`${adjustment.skill}:${adjustment.condition ?? ""}`),
   );
   return [...explicit, ...inferred];
 }

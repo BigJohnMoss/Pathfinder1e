@@ -52,8 +52,20 @@ test("common exact skill-bonus rules are inferred conservatively", () => {
       summary: "She gains a +4 bonus on Perception checks while underground. This ability replaces arcane bond.",
     }] }],
   };
-  assert.deepEqual(inferArchetypeSkillBonusAdjustments(conditional), []);
-  assert.deepEqual(archetypeAutomationSummary(conditional).manual, ["Conditional Feature (level 1)"]);
+  assert.deepEqual(inferArchetypeSkillBonusAdjustments(conditional), [{
+    sourceFeatureId: "conditional-feature",
+    skill: "Perception",
+    minimumLevel: 1,
+    base: 4,
+    condition: "while underground",
+  }]);
+  assert.deepEqual(archetypeSkillBonuses([conditional], { wizard: 1 }).conditionalModifiers, [{
+    label: "Perception checks",
+    condition: "while underground",
+    bonus: 4,
+    source: "Conditional",
+  }]);
+  assert.deepEqual(archetypeAutomationSummary(conditional).manual, []);
 
   const choice = {
     id: "choice",
@@ -92,6 +104,13 @@ test("inferred bonuses preserve specialized skills and do not duplicate explicit
   const explicit = { ...inferred, skillBonusAdjustments: [{ sourceFeatureId: "planar-knowledge", skill: "Knowledge (planes)", base: 4 }] };
   assert.equal(archetypeSkillBonusAdjustments(explicit).length, 1);
   assert.equal(archetypeSkillBonuses([explicit], { wizard: 1 }).skillBonuses["Knowledge (planes)"], 4);
+
+  const conditionalOverride = {
+    ...inferred,
+    replacements: [{ features: [{ id: "planar-knowledge", name: "Planar Knowledge", level: 1, summary: "You gain a +3 bonus on Knowledge (planes) checks against outsiders." }] }],
+    skillBonusAdjustments: [{ sourceFeatureId: "planar-knowledge", skill: "Knowledge (planes)", base: 5, condition: "identifying outsiders" }],
+  };
+  assert.equal(archetypeSkillBonusAdjustments(conditionalOverride).length, 1);
 });
 
 test("exact skill-bonus scaling language produces published milestone tables", () => {
@@ -104,6 +123,13 @@ test("exact skill-bonus scaling language produces published milestone tables", (
   assert.equal(archetypeSkillBonuses([archetype("rogue-sczarni-swindler")], { rogue: 2 }).skillBonuses.Bluff, undefined);
   assert.equal(archetypeSkillBonuses([archetype("rogue-sczarni-swindler")], { rogue: 18 }).skillBonuses["Profession (gambler)"], 6);
   assert.equal(archetypeSkillBonuses([archetype("swashbuckler-daring-infiltrator")], { swashbuckler: 18 }).skillBonuses.Bluff, 5);
+  assert.deepEqual(inferArchetypeSkillBonusAdjustments(archetype("fighter-dragonheir-scion"))[0].bonusByLevel, [
+    { level: 1, bonus: 1 },
+    { level: 6, bonus: 2 },
+    { level: 10, bonus: 3 },
+    { level: 14, bonus: 4 },
+    { level: 18, bonus: 5 },
+  ]);
   assert.ok(!archetypeAutomationSummary(archetype("mesmerist-vexing-trickster")).manual.some((item) => item.startsWith("Consummate Trickster")));
   assert.ok(!archetypeAutomationSummary(archetype("swashbuckler-daring-infiltrator")).manual.some((item) => item.startsWith("Quick-Tongued")));
 
@@ -126,6 +152,18 @@ test("exact skill-bonus scaling language produces published milestone tables", (
   ]);
 });
 
+test("exact conditional skill bonuses retain their published trigger", () => {
+  const archetype = (id) => catalogueArchetypes.find((item) => item.id === id);
+  assert.deepEqual(archetypeSkillBonuses([archetype("druid-tempest-druid")], { druid: 1 }).conditionalModifiers, [
+    { label: "Knowledge (nature) checks", condition: "in coastal or marshy lands", bonus: 4, source: "Tempest Druid" },
+    { label: "Survival checks", condition: "in coastal or marshy lands", bonus: 4, source: "Tempest Druid" },
+  ]);
+  assert.equal(archetypeSkillBonuses([archetype("gunslinger-commando")], { gunslinger: 10 }).conditionalModifiers[0].bonus, 5);
+  assert.ok(!archetypeAutomationSummary(archetype("gunslinger-commando")).manual.some((item) => item.startsWith("Track")));
+  assert.ok(archetypeAutomationSummary(archetype("druid-aerie-protector")).manual.some((item) => item.startsWith("Sky and Stone")), "an additional untracked benefit keeps the feature manual");
+  assert.ok(!inferArchetypeSkillBonusAdjustments(archetype("slayer-spiritslayer")).some((adjustment) => adjustment.sourceFeatureId === "slayer-spiritslayer-spiritslayer-talents-1"), "optional talents are never granted automatically");
+});
+
 test("skill-bonus inference remains normalized and conservative across the full catalogue", () => {
   const unsafeFeatureIds = new Set([
     "alchemist-tinkerer-tinkering-ex-2",
@@ -134,6 +172,7 @@ test("skill-bonus inference remains normalized and conservative across the full 
     "monk-sin-monk-well-of-sin-su-4",
     "paladin-knight-of-coins-blessing-of-prosperity-su-3",
     "psychic-mutation-mind-improved-bodily-mutations-11",
+    "slayer-spiritslayer-spiritslayer-talents-1",
     "swashbuckler-daring-infiltrator-deeds-3",
   ]);
   let inferredCount = 0;
