@@ -12,7 +12,7 @@ export const archetypeReplacementBoilerplate = (sentence) =>
 
 export function archetypeRuleCondition(sentence, matchEnd) {
   const prefix = sentence.slice(0, Math.max(0, sentence.search(/\b(?:gains?|receives?|adds?|has)\b/i)));
-  const leading = prefix.match(/(?:^(?:At \d+(?:st|nd|rd|th) level,?\s*)?)(When|Whenever|While|During|Within|As long as|If)\s+(.+?),\s*(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z' -]{0,60})\s*$/i);
+  const leading = prefix.match(/(?:^(?:At \d+(?:st|nd|rd|th) level,?\s*)?)(When|Whenever|While|During|Within|As long as|If)\s+(.+?),\s*(?:(?:he|she|they|it)|(?:an?|the)\s+[a-z][a-z' -]{0,60})\s*$/i);
   const suffix = sentence.slice(matchEnd).match(/\b(when|whenever|while|during|within|involving|against|as long as|(?<!as )if)\s+(.+?)(?=,\s+and\b|[.]|$)/i);
   const raw = leading ? `${leading[1]} ${leading[2]}` : suffix ? `${suffix[1]} ${suffix[2]}` : "";
   if (!raw) return undefined;
@@ -20,7 +20,8 @@ export function archetypeRuleCondition(sentence, matchEnd) {
 }
 
 export const archetypeUnsafeSubject = (sentence, matchIndex) =>
-  /\b(?:allies|ally|animal companion|companions?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(sentence.slice(Math.max(0, matchIndex - 100), matchIndex));
+  /\b(?:allies|ally|animal companion|companions?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(sentence.slice(Math.max(0, matchIndex - 100), matchIndex)) ||
+  /\b(?:does?|do|did) not\s+(?:gains?|receives?|has)\s*$/i.test(sentence.slice(Math.max(0, matchIndex - 30), matchIndex + 8));
 
 function adjustmentFromSentence(feature, sentence) {
   const halfPatterns = [
@@ -93,6 +94,22 @@ export function archetypeRuleProgression(adjustment, summary, targetPattern = /\
     (sentences.length === 1 ? sentences[0] : null);
   if (!relevant) return adjustment;
   const maximum = Number(relevant.match(/maximum(?: bonus)?(?: of)? \+?(\d+)/i)?.[1] ?? 0) || undefined;
+
+  const initialMilestone = relevant.match(/increases? to \+(\d+) at (\d+)(?:st|nd|rd|th)(?: level)?/i);
+  const increaseAfterMilestone = relevant.match(/increases? by (?:an additional )?\+?(\d+) every (\d+) levels? thereafter/i);
+  if (initialMilestone && increaseAfterMilestone) {
+    const bonusByLevel = [
+      { level: adjustment.minimumLevel, bonus: adjustment.base },
+      { level: Number(initialMilestone[2]), bonus: Number(initialMilestone[1]) },
+    ];
+    let bonus = Number(initialMilestone[1]);
+    for (let level = Number(initialMilestone[2]) + Number(increaseAfterMilestone[2]); level <= 20; level += Number(increaseAfterMilestone[2])) {
+      bonus = Math.min(maximum ?? Number.POSITIVE_INFINITY, bonus + Number(increaseAfterMilestone[1]));
+      bonusByLevel.push({ level, bonus });
+      if (bonus === maximum) break;
+    }
+    return { ...adjustment, ...(maximum ? { maximum } : {}), bonusByLevel };
+  }
 
   if (/\bincreases? to\b/i.test(relevant)) {
     const milestones = [...relevant.matchAll(/\+(\d+) at (\d+)(?:st|nd|rd|th)(?: level)?/gi)]

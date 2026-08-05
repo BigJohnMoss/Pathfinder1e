@@ -64,6 +64,7 @@ import {
   abilityBoostCount,
   abilityNames,
   apgClassResourceMaximums,
+  archetypeCombatBonuses,
   archetypeConditionalModifiers,
   archetypeInitiativeBonus,
   archetypeSavingThrowBonuses,
@@ -1012,6 +1013,10 @@ export default function Home() {
     () => archetypeSavingThrowBonuses(allSelectedArchetypes, classLevelMap),
     [allSelectedArchetypes, classLevelMap],
   );
+  const selectedArchetypeCombatBonuses = useMemo(
+    () => archetypeCombatBonuses(allSelectedArchetypes, classLevelMap),
+    [allSelectedArchetypes, classLevelMap],
+  );
   const combat = useMemo(() => {
     const equipmentBonuses = equipmentCombatBonuses(inventory);
     const activeBonus = (target: ActiveEffect["target"]) =>
@@ -1052,16 +1057,19 @@ export default function Home() {
       armorClass: {
         normal:
           baseCombat.armorClass.normal +
+          selectedArchetypeCombatBonuses.armorClass.normal +
           equipmentBonuses.armorClass.normal +
           selectedFeatBonuses.armorClass.normal +
           activeBonus("armorClass"),
         touch:
           baseCombat.armorClass.touch +
+          selectedArchetypeCombatBonuses.armorClass.touch +
           equipmentBonuses.armorClass.touch +
           selectedFeatBonuses.armorClass.touch +
           activeBonus("armorClass"),
         flatFooted:
           baseCombat.armorClass.flatFooted +
+          selectedArchetypeCombatBonuses.armorClass.flatFooted +
           equipmentBonuses.armorClass.flatFooted +
           selectedFeatBonuses.armorClass.flatFooted +
           activeBonus("armorClass"),
@@ -1070,6 +1078,12 @@ export default function Home() {
         baseCombat.averageHitPoints +
         selectedFeatBonuses.hitPoints +
         favoredClassHitPoints,
+      combatManeuverBonus:
+        baseCombat.combatManeuverBonus +
+        selectedArchetypeCombatBonuses.combatManeuverBonus,
+      combatManeuverDefense:
+        baseCombat.combatManeuverDefense +
+        selectedArchetypeCombatBonuses.combatManeuverDefense,
     };
   }, [
     activeEffects,
@@ -1077,6 +1091,7 @@ export default function Home() {
     favoredClassHitPoints,
     inventory,
     selectedArchetypeInitiativeBonus,
+    selectedArchetypeCombatBonuses,
     selectedArchetypeSavingThrowBonuses,
     selectedFeatBonuses,
     selectedTraitBonuses,
@@ -3120,7 +3135,11 @@ export default function Home() {
     combat.abilityModifiers.dexterity,
     selectedFeatBonuses.weaponBonuses,
     intrinsicWeaponEnhancements,
-  );
+  ).map((attack) => ({
+    ...attack,
+    attack: attack.attack + selectedArchetypeCombatBonuses.attackRolls,
+    damageBonus: attack.damageBonus + selectedArchetypeCombatBonuses.damageRolls,
+  }));
   const serializedCharacterDraft = JSON.stringify(characterDraft);
   useEffect(() => {
     try {
