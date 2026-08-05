@@ -45,6 +45,21 @@ test("inferred archetype bonuses appear in the live skill totals without an over
     assert.equal(screen.getByText(skill).closest("label")?.querySelector(".skill-total strong")?.textContent, total, `${skill} receives half-level bonus`);
 });
 
+test("inferred scaling archetype bonuses update at their published level milestones", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "3" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "bard-wit");
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+
+  const bluff = screen.getByText("Bluff").closest("label");
+  assert.equal(bluff?.querySelector(".skill-total strong")?.textContent, "+1 class");
+
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "4" } });
+  assert.equal(bluff?.querySelector(".skill-total strong")?.textContent, "+2 class");
+});
+
 test("published conditional skill transitions appear at the correct archetype level", async () => {
   const user = userEvent.setup();
   render(<Home />);

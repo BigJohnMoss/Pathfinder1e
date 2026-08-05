@@ -86,16 +86,74 @@ const replacementBoilerplate = (sentence) =>
   /^(?:This|These) (?:ability|feature|abilities|features)?\s*(?:otherwise )?(?:replaces?|alters?|modifies?|counts? as|functions? as)\b/i.test(sentence) ||
   /^(?:This|These) replaces?\b/i.test(sentence);
 
+const ordinal = "(?:st|nd|rd|th)";
+
+function scalingSchedule(sentences) {
+  const candidates = sentences
+    .map((sentence, index) => ({ sentence, index }))
+    .filter(({ sentence }) => /\bbonus(?:es)?[^.]{0,100}(?:double|increase)/i.test(sentence));
+  if (candidates.length !== 1) return null;
+  const [{ sentence, index }] = candidates;
+  if (/\b(?:if|when|whenever|while|unless)\b/i.test(sentence)) return null;
+  const maximumMatch = sentence.match(/maximum(?: bonus)?(?: of)? \+?(\d+)(?: at \d+(?:st|nd|rd|th) level)?/i);
+  const maximum = maximumMatch ? Number(maximumMatch[1]) : undefined;
+  if (/\bincreases? to\b/i.test(sentence)) {
+    const milestones = [...sentence.matchAll(new RegExp(`\\+(\\d+) at (\\d+)${ordinal} level`, "gi"))]
+      .map((match) => ({ level: Number(match[2]), bonus: Number(match[1]) }));
+    return milestones.length ? { index, milestones, maximum } : null;
+  }
+  const atAndEvery = sentence.match(new RegExp(`At (\\d+)${ordinal} level,?(?: and|, and)? every (\\d+) [^.]{0,40}?levels? thereafter,? (?:this|these|the) bonus(?:es)?[^.]{0,40}?increases? by \\+?(\\d+)`, "i"));
+  if (atAndEvery) return { index, firstLevel: Number(atAndEvery[1]), interval: Number(atAndEvery[2]), increment: Number(atAndEvery[3]), maximum };
+  const increaseAtAndEvery = sentence.match(new RegExp(`(?:this|these|the) bonus(?:es)?[^.]{0,40}?increases? by \\+?(\\d+) at (\\d+)${ordinal} level and (?:again )?every (\\d+) [^.]{0,30}?levels?`, "i"));
+  if (increaseAtAndEvery) return { index, firstLevel: Number(increaseAtAndEvery[2]), interval: Number(increaseAtAndEvery[3]), increment: Number(increaseAtAndEvery[1]), maximum };
+  const everyThereafter = sentence.match(/(?:this|these|the) bonus(?:es)?[^.]{0,40}?increases? by \+?(\d+) every (\d+) [^.]{0,30}?levels? thereafter/i);
+  if (everyThereafter) return { index, interval: Number(everyThereafter[2]), increment: Number(everyThereafter[1]), maximum };
+  const everyLevels = sentence.match(new RegExp(`(?:this|these|the) bonus(?:es)?[^.]{0,40}?increases? by \\+?(\\d+) for every (\\d+) [^.]{0,25}?levels?(?: (?:beyond|after) (\\d+)${ordinal}| that (?:he|she|they) possesses?)`, "i"));
+  if (everyLevels) {
+    const interval = Number(everyLevels[2]);
+    const threshold = everyLevels[3] ? Number(everyLevels[3]) : 0;
+    return { index, firstLevel: threshold ? threshold + interval : interval, interval, increment: Number(everyLevels[1]), maximum };
+  }
+  return null;
+}
+
+function bonusTable(schedule, base, minimumLevel) {
+  if (schedule.milestones) return [
+    { level: minimumLevel, bonus: base },
+    ...schedule.milestones.filter((step) => step.level > minimumLevel),
+  ];
+  const firstLevel = schedule.firstLevel ?? minimumLevel + schedule.interval;
+  if (firstLevel <= minimumLevel || firstLevel > 20 || schedule.interval < 1 || schedule.increment < 1) return null;
+  const steps = [{ level: minimumLevel, bonus: base }];
+  let bonus = base;
+  for (let level = firstLevel; level <= 20; level += schedule.interval) {
+    bonus = Math.min(schedule.maximum ?? Number.POSITIVE_INFINITY, bonus + schedule.increment);
+    steps.push({ level, bonus });
+    if (bonus === schedule.maximum) break;
+  }
+  return steps;
+}
+
 function adjustmentsFromFeature(feature) {
   const adjustments = [];
   let fullyAutomated = true;
   const summary = String(feature.summary ?? "");
-  if (
-    /\b(?:this|the|these|both) bonus(?:es)?[^.]{0,80}(?:double|increase)|\bbonus increases (?:by|to)|\bbonuses increase\b/i.test(summary) ||
-    /\b(?:choose|chooses|chosen|select|selects|selected) (?:one|a|an|from)|\bone of the (?:following|options)|\bfollowing (?:abilities|aspects|benefits|blessings|enhancements|mutations|options)\b/i.test(summary)
-  ) return { adjustments, fullyAutomated: false };
-  for (const sentence of splitSentences(summary)) {
+  if (/\b(?:choose|chooses|chosen|select|selects|selected) (?:one|a|an|from)|\bone of the (?:following|options)|\bfollowing (?:abilities|aspects|benefits|blessings|enhancements|mutations|options)\b/i.test(summary))
+    return { adjustments, fullyAutomated: false };
+  const sentences = splitSentences(summary);
+  const scaling = scalingSchedule(sentences);
+  const hasUnparsedScaling = /\b(?:this|the|these|both) bonus(?:es)?[^.]{0,80}(?:double|increase)|\bbonus increases (?:by|to)|\bbonuses increase\b/i.test(summary) && !scaling;
+  if (hasUnparsedScaling) return { adjustments, fullyAutomated: false };
+  let lastParsedSentenceIndex = -1;
+  const minimumLevelFor = (sentence, sentenceIndex) => {
+    const stated = sentence.match(/^(?:At|Beginning at|Starting at) (\d+)(?:st|nd|rd|th) level\b/i);
+    if (stated) return Number(stated[1]);
+    if (scaling?.firstLevel === feature.level && sentenceIndex < scaling.index) return 1;
+    return feature.level ?? 1;
+  };
+  for (const [sentenceIndex, sentence] of sentences.entries()) {
     if (replacementBoilerplate(sentence)) continue;
+    if (sentenceIndex === scaling?.index) continue;
     const halfLevel = sentence.match(/\b(?:adds?|gains?|receives?) (?:a bonus equal to )?(?:one-)?half (?:of )?(?:his|her|their) (?:\w+ )?class level(?: \(minimum \+?1\)|,? minimum \+?1)? (?:as a bonus )?(?:on|to) (.+?)[.]?$/i);
     if (halfLevel) {
       const prefix = sentence.slice(0, halfLevel.index);
@@ -108,11 +166,12 @@ function adjustmentsFromFeature(feature) {
         adjustments.push(...parsed.skills.map((skill) => ({
           sourceFeatureId: feature.id,
           skill,
-          minimumLevel: feature.level ?? 1,
+          minimumLevel: minimumLevelFor(sentence, sentenceIndex),
           base: 0,
           levelDivisor: 2,
           minimum: 1,
         })));
+        lastParsedSentenceIndex = sentenceIndex;
         if (parsed.omittedTail) fullyAutomated = false;
         continue;
       }
@@ -129,14 +188,24 @@ function adjustmentsFromFeature(feature) {
         adjustments.push(...parsed.skills.map((skill) => ({
           sourceFeatureId: feature.id,
           skill,
-          minimumLevel: feature.level ?? 1,
+          minimumLevel: minimumLevelFor(sentence, sentenceIndex),
           base: Number(fixed[1]),
         })));
+        lastParsedSentenceIndex = sentenceIndex;
         if (parsed.omittedTail) fullyAutomated = false;
         continue;
       }
     }
     fullyAutomated = false;
+  }
+  if (scaling) {
+    if (!adjustments.length || lastParsedSentenceIndex !== scaling.index - 1 || new Set(adjustments.map((adjustment) => adjustment.base)).size !== 1)
+      return { adjustments: [], fullyAutomated: false };
+    for (const adjustment of adjustments) {
+      const table = bonusTable(scaling, adjustment.base, adjustment.minimumLevel);
+      if (!table) return { adjustments: [], fullyAutomated: false };
+      adjustment.bonusByLevel = table;
+    }
   }
   return { adjustments, fullyAutomated: fullyAutomated && adjustments.length > 0 };
 }
