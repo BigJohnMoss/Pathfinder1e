@@ -944,7 +944,7 @@ for (const journey of journeys) {
     await openCharacterPanel(page, journey.mobile);
     await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
     await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-occultist");
-    await page.locator('input[type="number"][min="1"][max="20"]').fill("3");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("7");
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Spells" }).click();
     await page.getByLabel("Search spells").fill("Summon Monster 2");
@@ -953,8 +953,44 @@ for (const journey of journeys) {
     const reservoir = page.getByLabel("Arcane Reservoir points");
     const before = Number((await reservoir.textContent())?.split("/")[0]);
     await page.getByRole("button", { name: "Cast Summon Monster 2", exact: true }).click();
-    await expect(reservoir).toHaveText(`${before - 2}/6 reservoir`);
-    await expect(page.getByText(/Arcanist \(Occultist\) slots: 5\/5 1st-level/)).toBeVisible();
+    await expect(reservoir).toHaveText(`${before - 2}/10 reservoir`);
+    await page.getByRole("tab", { name: "Actions" }).click();
+    await expect(page.getByText(/Summon Monster 2 is active from Conjurer's Focus/)).toContainText("Duration: 70 rounds");
+
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await page.getByLabel("Search spells").fill("Summon Monster 1");
+    await page.getByRole("button", { name: "Cast Summon Monster 1", exact: true }).click();
+    await page.getByRole("tab", { name: "Actions" }).click();
+    await expect(page.getByText(/Summon Monster 1 is active from Conjurer's Focus/)).toBeVisible();
+    await expect(page.getByText(/Summon Monster 2 is active from Conjurer's Focus/)).toHaveCount(0);
+
+    await openCharacterPanel(page, journey.mobile);
+    const save = page.getByRole("button", { name: "Save" });
+    if (journey.mobile) await save.evaluate((button: HTMLButtonElement) => button.click());
+    else await save.click();
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    const load = page.getByRole("button", { name: "Load" });
+    if (journey.mobile) await load.evaluate((button: HTMLButtonElement) => button.click());
+    else await load.click();
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Actions" }).click();
+    await expect(page.getByText(/Summon Monster 1 is active from Conjurer's Focus/)).toBeVisible();
+
+    await page.getByRole("tab", { name: "Features" }).click();
+    const augury = page.getByRole("button", { name: "Cast Augury" });
+    const contact = page.getByRole("button", { name: "Cast Contact Other Plane" });
+    await augury.click();
+    await contact.click();
+    await expect(augury).toBeDisabled();
+    await expect(contact).toBeDisabled();
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await page.getByRole("button", { name: "Refresh day" }).click();
+    await page.getByRole("tab", { name: "Features" }).click();
+    await expect(augury).toBeEnabled();
+    await expect(contact).toBeDisabled();
+    await page.getByRole("button", { name: "Refresh arcanist planar contact — contact other plane" }).click();
+    await expect(contact).toBeEnabled();
   });
 
   test(`selects and spontaneously casts Spell Specialist signatures on ${journey.name}`, async ({ page }) => {

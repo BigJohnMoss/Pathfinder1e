@@ -39,7 +39,23 @@
           "name": "Planar Contact (Sp)",
           "level": 7,
           "type": "archetype",
-          "summary": "At 7th level, an occultist can cast augury once per day and contact other plane once per week, using her arcanist level as her caster level. This ability replaces the arcanist exploit gained at 7th level."
+          "summary": "At 7th level, an occultist can cast augury once per day and contact other plane once per week, using her arcanist level as her caster level. This ability replaces the arcanist exploit gained at 7th level.",
+          "resourceActions": [
+            {
+              "id": "occultist-cast-augury",
+              "label": "Cast Augury",
+              "resourceId": "occultistAugury",
+              "cost": 1,
+              "summary": "Cast augury at your Arcanist caster level; refreshes after daily spell preparation."
+            },
+            {
+              "id": "occultist-cast-contact-other-plane",
+              "label": "Cast Contact Other Plane",
+              "resourceId": "occultistContactOtherPlane",
+              "cost": 1,
+              "summary": "Cast contact other plane at your Arcanist caster level; refreshes after one week."
+            }
+          ]
         },
         {
           "id": "arcanist-occultist-perfect-summoner-20",
@@ -51,13 +67,37 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "occultistAugury",
+      "label": "Planar Contact — Augury",
+      "unit": "cast",
+      "operation": "add",
+      "minimumLevel": 7,
+      "base": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "refreshCadence": "day"
+    },
+    {
+      "resourceId": "occultistContactOtherPlane",
+      "label": "Planar Contact — Contact Other Plane",
+      "unit": "cast",
+      "operation": "add",
+      "minimumLevel": 7,
+      "base": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "refreshCadence": "week"
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Occultist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression, planar spell-list additions, and level-scaling Conjurer's Focus summons with reservoir costs and the 20th-level free-use capstone are automated. The one-active-summon restriction, extended summon duration, Planar Contact schedules, and summoned-creature state remain descriptive."
+    "Planar spell-list additions, level-scaling Conjurer's Focus costs, extended and capstone durations, replacement of the prior active summon, persistent summon state, and separate daily and weekly Planar Contact schedules are automated."
   ]
 }

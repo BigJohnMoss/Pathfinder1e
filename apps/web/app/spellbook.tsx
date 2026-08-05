@@ -56,6 +56,7 @@ export function Spellbook({
   abilityModifiers = {},
   spellMastery,
   onAddEffect,
+  onRemoveEffectByName,
 }: {
   spells: Spell[];
   sourceBook?: {
@@ -86,7 +87,7 @@ export function Spellbook({
   oppositionSchoolIds?: string[];
   oppositionSpellIds?: string[];
   restrictedBonus?: { eligibleSpellIds: string[]; countPerLevel: number; label: string } | null;
-  onDemandSpellCosts?: Record<string, { resourceId?: string; cost: number; label: string; consumesSpellSlot?: boolean; saveDcBonus?: number; concentrationBonus?: number }>;
+  onDemandSpellCosts?: Record<string, { resourceId?: string; cost: number; label: string; consumesSpellSlot?: boolean; saveDcBonus?: number; concentrationBonus?: number; summonTracker?: { name: string; description: string; rounds: number; replaceExisting?: boolean; untilDismissed: boolean } }>;
   requiredPreparedSchool?: string;
   spellAutomation?: PreparedSpellAutomation;
   criticalStrikeResource?: { maximum: number | null; used: number; onUsedChange: (used: number) => void };
@@ -94,6 +95,7 @@ export function Spellbook({
   abilityModifiers?: Partial<Record<AbilityName, number>>;
   spellMastery?: { limit: number; selectedIds: string[]; catalogue: Spell[]; onChange: (spellIds: string[]) => void };
   onAddEffect?: (effect: ActiveEffect) => void;
+  onRemoveEffectByName?: (name: string) => void;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -778,6 +780,18 @@ export function Spellbook({
                                 ...slotUses,
                                 [level]: (slotUses[level] ?? 0) + 1,
                               });
+                            if (onDemandCost?.summonTracker && onAddEffect) {
+                              const tracker = onDemandCost.summonTracker;
+                              if (tracker.replaceExisting) onRemoveEffectByName?.(tracker.name);
+                              onAddEffect({
+                                id: `conjurers-focus-${Date.now()}-${Math.random()}`,
+                                name: tracker.name,
+                                target: "allies",
+                                bonus: 0,
+                                description: `${tracker.description.replaceAll("{spell}", spell.name)} ${tracker.untilDismissed ? "Duration: until dismissed." : `Duration: ${tracker.rounds} rounds.`}`,
+                                roundsRemaining: tracker.rounds,
+                              });
+                            }
                           }}
                         >
                               Cast

@@ -315,6 +315,18 @@ test("Occultist grants planar spells and scaling slot-free Conjurer's Focus summ
   assert.ok(summons.every((option) => option.resourceCost?.consumesSpellSlot === false));
   assert.ok(summons.every((option) => option.resourceCost?.freeAtClassLevel === 20));
   assert.ok(summons.every((option) => option.resourceCost?.levelDivisor === 1));
+  assert.ok(summons.every((option) => option.resourceCost?.summonTracker?.roundsPerClassLevel === 10));
+  assert.ok(summons.every((option) => option.resourceCost?.summonTracker?.replaceExisting));
+  const planarContact = applied.find((feature) => feature.id === "arcanist-occultist-planar-contact-sp-7");
+  assert.deepEqual(planarContact.resourceActions.map((action) => [action.id, action.resourceId, action.cost]), [
+    ["occultist-cast-augury", "occultistAugury", 1],
+    ["occultist-cast-contact-other-plane", "occultistContactOtherPlane", 1],
+  ]);
+  assert.deepEqual(occultist.resourceAdjustments.map((resource) => [resource.resourceId, resource.maximum, resource.refreshCadence]), [
+    ["occultistAugury", 1, "day"],
+    ["occultistContactOtherPlane", 1, "week"],
+  ]);
+  assert.equal(occultist.mechanicalCoverage, "full");
 });
 
 test("Spell Specialist exposes one level-matched signature slot per spell level", () => {

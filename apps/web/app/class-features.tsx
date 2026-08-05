@@ -9,6 +9,7 @@ export type DailyResource = {
   maximum: number | null;
   used: number;
   refreshUsed?: number;
+  refreshCadence?: "day" | "week";
   onUsedChange: (used: number) => void;
 };
 
@@ -55,7 +56,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       const refreshUsed = atWill ? 0 : Math.max(0, Math.min(resource.refreshUsed ?? 0, resource.maximum ?? 0));
       return <div className="daily-resource" key={resource.label}>
         <div><strong>{resource.label}</strong><output aria-label={`${resource.label} remaining`}>{atWill ? "At will" : `${remaining}/${resource.maximum} ${resource.unit} remaining`}</output></div>
-        {!atWill && <div><button type="button" onClick={() => resource.onUsedChange(used + 1)} disabled={remaining <= 0}>Spend 1 {resource.unit}</button><button type="button" onClick={() => { resource.onUsedChange(refreshUsed); effectNamesForResource(resource.id).forEach((name) => onRemoveEffectByName?.(name)); }} disabled={used === refreshUsed}>Refresh {resource.label.toLowerCase()}</button></div>}
+        {!atWill && <div><button type="button" onClick={() => resource.onUsedChange(used + 1)} disabled={remaining <= 0}>Spend 1 {resource.unit}</button><button type="button" onClick={() => { resource.onUsedChange(refreshUsed); effectNamesForResource(resource.id).forEach((name) => onRemoveEffectByName?.(name)); }} disabled={used === refreshUsed}>Refresh {resource.label.toLowerCase()}</button>{resource.refreshCadence === "week" && <small>Refreshes after one week, not on Refresh day.</small>}</div>}
       </div>;
     })}
     <ol>{features.map((feature) => <li key={feature.id}>

@@ -434,6 +434,7 @@ export interface CharacterArchetype {
     maximumByLevel?: Array<{ level: number; maximum: number }>;
     advancementOptionId?: string;
     requiredOptionId?: string;
+    refreshCadence?: "day" | "week";
   }>;
   optionGroupAugmentations?: OptionGroupAugmentation[];
   prohibitedOptionIds?: string[];
@@ -671,6 +672,13 @@ export interface CharacterOption extends SelectableOption {
     label?: string;
     consumesSpellSlot?: boolean;
     freeAtClassLevel?: number;
+    summonTracker?: {
+      name: string;
+      description: string;
+      roundsPerClassLevel: number;
+      untilDismissedAtClassLevel?: number;
+      replaceExisting?: boolean;
+    };
   };
   featIds?: string[];
   cost?: number;
