@@ -65,6 +65,7 @@ import {
   abilityNames,
   apgClassResourceMaximums,
   archetypeConditionalModifiers,
+  archetypeSkillBonusAdjustments,
   archetypeSkillBonuses,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
@@ -523,6 +524,7 @@ export default function Home() {
   } | null>(null);
   const autosaveReady = useRef(false);
   const lastPersistedDraft = useRef("");
+  const skipNextFeatNormalization = useRef(false);
 
   const baseCharacterClass =
     classes.find((item) => item.id === classId) ?? classes[0];
@@ -1306,24 +1308,26 @@ export default function Home() {
         .map((feat) => feat.id),
     };
   });
-  useEffect(
-    () =>
-      setSelectedFeatIds((current) => {
-        const next = normalizeSelectedFeats(
-          current,
-          feats,
-          featContext,
-          featSlots.length,
-          featSlots.map((slot) => slot.level),
-          repeatableFeatIds,
-        );
-        return next.length === current.length &&
-          next.every((id, index) => id === current[index])
-          ? current
-          : next;
-      }),
-    [featContext, featSlots, repeatableFeatIds],
-  );
+  useEffect(() => {
+    if (skipNextFeatNormalization.current) {
+      skipNextFeatNormalization.current = false;
+      return;
+    }
+    setSelectedFeatIds((current) => {
+      const next = normalizeSelectedFeats(
+        current,
+        feats,
+        featContext,
+        featSlots.length,
+        featSlots.map((slot) => slot.level),
+        repeatableFeatIds,
+      );
+      return next.length === current.length &&
+        next.every((id, index) => id === current[index])
+        ? current
+        : next;
+    });
+  }, [featContext, featSlots, repeatableFeatIds]);
   useEffect(
     () =>
       setSelectedFeatChoices((current) => {
@@ -1405,7 +1409,7 @@ export default function Home() {
   const displayedSkills = useMemo(() => {
     const standardNames = new Set(skills.map((skill) => skill.name));
     const specialized = [...new Set(allSelectedArchetypes.flatMap((archetype) =>
-      (archetype.skillBonusAdjustments ?? []).map((adjustment) => adjustment.skill),
+      archetypeSkillBonusAdjustments(archetype).map((adjustment) => adjustment.skill),
     ))].flatMap((name) => {
       const ability = abilityForSpecializedSkill(name);
       return !standardNames.has(name as (typeof skills)[number]["name"]) && ability ? [{ name, ability }] : [];
@@ -3220,6 +3224,10 @@ export default function Home() {
       setSaveNotice("Character file is invalid");
       return null;
     }
+    // Reset and load can queue feat normalization from different renders. Keep
+    // the normalized saved selections intact until the restored class, level,
+    // ancestry, and archetype context have committed together.
+    skipNextFeatNormalization.current = true;
     const draftArchetypes = (selectedClassId: string) =>
       (
         draft.archetypeStacksByClass?.[selectedClassId] ??

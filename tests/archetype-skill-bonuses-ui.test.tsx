@@ -33,6 +33,18 @@ test("generated archetype bonuses appear in the live skill totals", async () => 
   assert.equal(acrobatics?.querySelector(".skill-total strong")?.textContent, "+5 class");
 });
 
+test("inferred archetype bonuses appear in the live skill totals without an overlay", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "9" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "bard-daredevil");
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+
+  for (const [skill, total] of [["Acrobatics", "+4 class"], ["Bluff", "+4 class"], ["Climb", "+5 class"], ["Escape Artist", "+4 class"]])
+    assert.equal(screen.getByText(skill).closest("label")?.querySelector(".skill-total strong")?.textContent, total, `${skill} receives half-level bonus`);
+});
+
 test("published conditional skill transitions appear at the correct archetype level", async () => {
   const user = userEvent.setup();
   render(<Home />);
