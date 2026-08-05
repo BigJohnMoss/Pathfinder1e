@@ -65,6 +65,7 @@ import {
   abilityNames,
   apgClassResourceMaximums,
   archetypeConditionalModifiers,
+  archetypeSkillBonusAdjustments,
   archetypeSkillBonuses,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
@@ -1405,7 +1406,7 @@ export default function Home() {
   const displayedSkills = useMemo(() => {
     const standardNames = new Set(skills.map((skill) => skill.name));
     const specialized = [...new Set(allSelectedArchetypes.flatMap((archetype) =>
-      (archetype.skillBonusAdjustments ?? []).map((adjustment) => adjustment.skill),
+      archetypeSkillBonusAdjustments(archetype).map((adjustment) => adjustment.skill),
     ))].flatMap((name) => {
       const ability = abilityForSpecializedSkill(name);
       return !standardNames.has(name as (typeof skills)[number]["name"]) && ability ? [{ name, ability }] : [];

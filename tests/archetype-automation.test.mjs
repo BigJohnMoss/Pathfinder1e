@@ -1,8 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
+import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -22,6 +23,108 @@ test("archetype automation reports calculated and manual mechanics separately", 
 
 test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
+});
+
+test("common exact skill-bonus rules are inferred conservatively", () => {
+  const exact = {
+    id: "exact",
+    name: "Exact",
+    classId: "bard",
+    replacements: [{ features: [{
+      id: "agile",
+      name: "Agile",
+      level: 1,
+      summary: "A daredevil adds half her class level (minimum 1) on Acrobatics, Bluff, Climb, and Escape Artist checks. This ability replaces bardic knowledge.",
+    }] }],
+  };
+  assert.deepEqual(inferArchetypeSkillBonusAdjustments(exact).map((adjustment) => adjustment.skill), ["Acrobatics", "Bluff", "Climb", "Escape Artist"]);
+  assert.deepEqual(archetypeSkillBonuses([exact], { bard: 9 }).skillBonuses, { Acrobatics: 4, Bluff: 4, Climb: 4, "Escape Artist": 4 });
+  assert.deepEqual(archetypeAutomationSummary(exact).manual, []);
+
+  const conditional = {
+    id: "conditional",
+    name: "Conditional",
+    classId: "wizard",
+    replacements: [{ features: [{
+      id: "conditional-feature",
+      name: "Conditional Feature",
+      level: 1,
+      summary: "She gains a +4 bonus on Perception checks while underground. This ability replaces arcane bond.",
+    }] }],
+  };
+  assert.deepEqual(inferArchetypeSkillBonusAdjustments(conditional), []);
+  assert.deepEqual(archetypeAutomationSummary(conditional).manual, ["Conditional Feature (level 1)"]);
+
+  const choice = {
+    id: "choice",
+    name: "Choice",
+    classId: "hunter",
+    replacements: [{ features: [{
+      id: "focus",
+      name: "Focus",
+      level: 1,
+      summary: "She selects one of the following aspects. Fox: The creature gains a +4 competence bonus on Bluff checks.",
+    }] }],
+  };
+  assert.deepEqual(inferArchetypeSkillBonusAdjustments(choice), []);
+  const scaling = {
+    id: "scaling",
+    name: "Scaling",
+    classId: "bard",
+    replacements: [{ features: [{
+      id: "wit",
+      name: "Wit",
+      level: 1,
+      summary: "A wit gains a +1 bonus on Bluff checks. This bonus increases by 1 at 4th level.",
+    }] }],
+  };
+  assert.deepEqual(inferArchetypeSkillBonusAdjustments(scaling), []);
+});
+
+test("inferred bonuses preserve specialized skills and do not duplicate explicit overlays", () => {
+  const inferred = {
+    id: "planar",
+    name: "Planar Scholar",
+    classId: "wizard",
+    replacements: [{ features: [{ id: "planar-knowledge", name: "Planar Knowledge", level: 1, summary: "You gain a +3 bonus on Knowledge (planes) checks." }] }],
+  };
+  assert.equal(archetypeSkillBonuses([inferred], { wizard: 1 }).skillBonuses["Knowledge (planes)"], 3);
+  const explicit = { ...inferred, skillBonusAdjustments: [{ sourceFeatureId: "planar-knowledge", skill: "Knowledge (planes)", base: 4 }] };
+  assert.equal(archetypeSkillBonusAdjustments(explicit).length, 1);
+  assert.equal(archetypeSkillBonuses([explicit], { wizard: 1 }).skillBonuses["Knowledge (planes)"], 4);
+});
+
+test("skill-bonus inference remains normalized and conservative across the full catalogue", () => {
+  const unsafeFeatureIds = new Set([
+    "alchemist-tinkerer-tinkering-ex-2",
+    "bard-wit-way-with-words-ex-4",
+    "fighter-aerial-assaulter-aerial-expertise-ex-2",
+    "hunter-courtly-hunter-refined-focus-su-8",
+    "monk-sin-monk-well-of-sin-su-4",
+    "paladin-knight-of-coins-blessing-of-prosperity-su-3",
+    "psychic-mutation-mind-improved-bodily-mutations-11",
+    "swashbuckler-daring-infiltrator-deeds-3",
+  ]);
+  let inferredCount = 0;
+  for (const archetype of catalogueArchetypes) {
+    const inferred = inferArchetypeSkillBonusAdjustments(archetype);
+    inferredCount += inferred.length;
+    const keys = new Set();
+    for (const adjustment of inferred) {
+      assert.ok(!unsafeFeatureIds.has(adjustment.sourceFeatureId), `${archetype.id} excludes option, target, condition, and scaling rules`);
+      assert.match(adjustment.skill, /^(?:Acrobatics|Appraise|Bluff|Climb|Craft \([^)]+\)|Diplomacy|Disable Device|Disguise|Escape Artist|Fly|Handle Animal|Heal|Intimidate|Knowledge \([^)]+\)|Linguistics|Perception|Perform \([^)]+\)|Profession \([^)]+\)|Ride|Sense Motive|Sleight of Hand|Spellcraft|Stealth|Survival|Swim|Use Magic Device)$/);
+      assert.ok(Number.isFinite(adjustment.base));
+      assert.ok(adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20);
+      const key = `${adjustment.sourceFeatureId}:${adjustment.skill}`;
+      assert.ok(!keys.has(key), `${archetype.id} has no duplicate inferred adjustment ${key}`);
+      keys.add(key);
+    }
+    const combined = archetypeSkillBonusAdjustments(archetype);
+    const explicitKeys = new Set((archetype.skillBonusAdjustments ?? []).map((adjustment) => `${adjustment.skill}:${adjustment.condition ?? ""}`));
+    for (const key of explicitKeys)
+      assert.equal(combined.filter((adjustment) => `${adjustment.skill}:${adjustment.condition ?? ""}` === key).length, 1, `${archetype.id} explicit adjustment overrides inference for ${key}`);
+  }
+  assert.ok(inferredCount >= 20, "catalogue inference continues to cover a meaningful reusable batch");
 });
 
 test("generated automation overlays merge without mutating sources and calculate level-aware skill bonuses", () => {
