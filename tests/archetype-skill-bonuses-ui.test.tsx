@@ -32,3 +32,17 @@ test("generated archetype bonuses appear in the live skill totals", async () => 
   const acrobatics = screen.getByText("Acrobatics").closest("label");
   assert.equal(acrobatics?.querySelector(".skill-total strong")?.textContent, "+5 class");
 });
+
+test("published conditional skill transitions appear at the correct archetype level", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "17" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "bard-chelish-diva");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const modifiers = screen.getByText("Conditional modifiers").closest("section")?.textContent ?? "";
+  assert.match(modifiers, /\+5 Diplomacy checks/);
+  assert.match(modifiers, /\+5 Intimidate checks/);
+  assert.doesNotMatch(modifiers, /Bluff checks/);
+});
