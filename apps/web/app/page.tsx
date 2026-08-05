@@ -68,6 +68,7 @@ import {
   archetypeConditionalModifiers,
   archetypeInitiativeBonus,
   archetypeSavingThrowBonuses,
+  archetypeSenses,
   archetypeSkillBonusAdjustments,
   archetypeSkillBonuses,
   applyArchetypeResourceAdjustments,
@@ -1015,6 +1016,10 @@ export default function Home() {
   );
   const selectedArchetypeCombatBonuses = useMemo(
     () => archetypeCombatBonuses(allSelectedArchetypes, classLevelMap),
+    [allSelectedArchetypes, classLevelMap],
+  );
+  const selectedArchetypeSenses = useMemo(
+    () => archetypeSenses(allSelectedArchetypes, classLevelMap),
     [allSelectedArchetypes, classLevelMap],
   );
   const combat = useMemo(() => {
@@ -4324,6 +4329,7 @@ export default function Home() {
               <CombatPanel
                 combat={combat}
                 landSpeed={landSpeed}
+                senses={selectedArchetypeSenses}
                 modifierSources={selectedFeatBonuses.sources}
                 conditionalModifiers={[
                   ...(selectedTraitBonuses.conditionalModifiers ?? []),
