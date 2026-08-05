@@ -17,7 +17,10 @@
           "id": "arcanist-magaambyan-initiate-alignment-1",
           "name": "Alignment",
           "level": 1,
-          "type": "archetype",
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "magaambyan-good-alignments",
+          "progressionKey": "magaambyan-alignment",
           "summary": "A Magaambyan initiate must be of a good alignment. This alters the arcanist’s alignment."
         },
         {
@@ -72,8 +75,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Magaambyan%20Initiate"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression, one unique level-aware Druid spell choice at every Magaambyan Initiate level, and on-demand casting with spell-slot and arcane-reservoir costs are automated. Good-descriptor Cleric spell metadata, alignment enforcement, spell exchanges, and Spell Mastery interactions remain pending."
+    "Good alignment, one unique level-aware Druid or good-descriptor Cleric spell at every class level, same-level spell exchanges, on-demand casting costs, Arcanist-as-Wizard feat prerequisites, repeatable Spell Mastery, and persistent mastered-spell choices are automated."
   ]
 }

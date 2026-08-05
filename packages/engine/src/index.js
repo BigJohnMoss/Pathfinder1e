@@ -1810,6 +1810,7 @@ export function normalizeSelectedFeats(
   context,
   slotCount,
   slotLevels = [],
+  repeatableFeatIds = [],
 ) {
   if (
     !Array.isArray(selectedFeatIds) ||
@@ -1818,10 +1819,13 @@ export function normalizeSelectedFeats(
   )
     return [];
   const byId = new Map(feats.map((feat) => [feat.id, feat]));
+  const repeatable = new Set(repeatableFeatIds);
   let result = selectedFeatIds
     .filter(
       (id, index, ids) =>
-        typeof id === "string" && ids.indexOf(id) === index && byId.has(id),
+        typeof id === "string" &&
+        (repeatable.has(id) || ids.indexOf(id) === index) &&
+        byId.has(id),
     )
     .slice(0, slotCount);
   let changed = true;

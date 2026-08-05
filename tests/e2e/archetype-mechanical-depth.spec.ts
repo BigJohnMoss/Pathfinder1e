@@ -841,24 +841,31 @@ for (const journey of journeys) {
     await openCharacterPanel(page, journey.mobile);
     await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
     await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-magaambyan-initiate");
-    await page.locator('input[type="number"][min="1"][max="20"]').fill("3");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("5");
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Features" }).click();
 
     const first = page.getByLabel("Halcyon Spell Lore (Su) level 1");
     const second = page.getByLabel("Halcyon Spell Lore level 2");
+    await page.getByLabel("Alignment level 1").selectOption("magaambyan-alignment-neutral-good");
     await expect(first.locator('option[value="magaambyan-halcyon-spells-entangle"]')).toHaveCount(1);
+    await expect(first.locator('option[value="magaambyan-halcyon-spells-later-spell-blessed-fist"]')).toHaveCount(1);
     await first.selectOption("magaambyan-halcyon-spells-entangle");
     await expect(second.locator('option[value="magaambyan-halcyon-spells-entangle"]')).toHaveAttribute("disabled", "");
 
     await page.getByRole("tab", { name: "Spells" }).click();
+    await expect(page.getByLabel("Spell Mastery selections")).toHaveText("0/1 mastered");
+    await page.getByLabel("Search Spell Mastery spells").fill("Magic Missile");
+    await page.getByRole("button", { name: "Master Magic Missile" }).click();
     await page.getByLabel("Search spells").fill("Entangle");
     await expect(page.getByRole("button", { name: "Add Entangle", exact: true })).toBeDisabled();
     await expect(page.getByText(/Halcyon Spell Lore: cast on demand for 1 reservoir point/)).toBeVisible();
     const reservoir = page.getByLabel("Arcane Reservoir points");
-    const before = Number((await reservoir.textContent())?.split("/")[0]);
+    const [beforeText, maximumText] = (await reservoir.textContent())?.split("/") ?? [];
+    const before = Number(beforeText);
+    const reservoirMaximum = Number(maximumText?.split(" ")[0]);
     await page.getByRole("button", { name: "Cast Entangle", exact: true }).click();
-    await expect(reservoir).toHaveText(`${before - 1}/${3 + 3} reservoir`);
+    await expect(reservoir).toHaveText(`${before - 1}/${reservoirMaximum} reservoir`);
 
     if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
     await page.getByRole("button", { name: "Save" }).click();
@@ -869,7 +876,11 @@ for (const journey of journeys) {
     else await load.click();
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Features" }).click();
+    await expect(page.getByLabel("Alignment level 1")).toHaveValue("magaambyan-alignment-neutral-good");
     await expect(page.getByLabel("Halcyon Spell Lore (Su) level 1")).toHaveValue("magaambyan-halcyon-spells-entangle");
+    await page.getByRole("tab", { name: "Spells" }).click();
+    await expect(page.getByLabel("Spell Mastery selections")).toHaveText("1/1 mastered");
+    await expect(page.getByText(/Magic Missile · 1st-level/)).toBeVisible();
   });
 
   test(`casts White Mage healing and tracks Fast Healing on ${journey.name}`, async ({ page }) => {

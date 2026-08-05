@@ -726,7 +726,11 @@ export interface CharacterOptionGroup {
   classIds: string[];
   options: CharacterOption[];
   generatedSpellOptions?: {
-    classId: string;
+    classId?: string;
+    spellSources?: Array<{
+      classId: string;
+      descriptors?: SpellDescriptor[];
+    }>;
     targetClassId?: string;
     school?: string;
     maximumSpellLevel?: number;

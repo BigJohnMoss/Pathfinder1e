@@ -624,6 +624,50 @@ a:focus-visible,
   justify-content: flex-end;
 }
 
+.spell-mastery-list,
+.spell-mastery-results {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.spell-mastery-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 1px solid #e3ddd0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.spell-mastery-list button,
+.spell-mastery-results button {
+  min-height: 40px;
+  padding: 7px 11px;
+  border: 1px solid #b7ac99;
+  border-radius: 8px;
+  background: #fff;
+  color: #6f2424;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.spell-mastery-results {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.spell-mastery-results button {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: left;
+}
+
 .prepared-spell-groups button {
   background: #fff7e8;
   border: 1px solid #b7ac99;

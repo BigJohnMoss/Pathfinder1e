@@ -14,7 +14,10 @@
   },
   "options": [],
   "generatedSpellOptions": {
-    "classId": "druid",
+    "spellSources": [
+      { "classId": "druid" },
+      { "classId": "cleric", "descriptors": ["good"] }
+    ],
     "targetClassId": "arcanist",
     "excludeClassId": "arcanist",
     "maximumSpellLevel": 9,

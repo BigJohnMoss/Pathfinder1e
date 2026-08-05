@@ -54,6 +54,7 @@ export function Spellbook({
   criticalStrikeResource,
   bondedObjectCastResource,
   abilityModifiers = {},
+  spellMastery,
   onAddEffect,
 }: {
   spells: Spell[];
@@ -91,6 +92,7 @@ export function Spellbook({
   criticalStrikeResource?: { maximum: number | null; used: number; onUsedChange: (used: number) => void };
   bondedObjectCastResource?: { label: string; maximum: number | null; used: number; onUsedChange: (used: number) => void };
   abilityModifiers?: Partial<Record<AbilityName, number>>;
+  spellMastery?: { limit: number; selectedIds: string[]; catalogue: Spell[]; onChange: (spellIds: string[]) => void };
   onAddEffect?: (effect: ActiveEffect) => void;
 }) {
   const [query, setQuery] = useState("");
@@ -103,6 +105,7 @@ export function Spellbook({
   const [fastHealingSlotLevel, setFastHealingSlotLevel] = useState(0);
   const [fastHealingResult, setFastHealingResult] = useState("");
   const [descriptorBoostResult, setDescriptorBoostResult] = useState("");
+  const [masteryQuery, setMasteryQuery] = useState("");
   const [spellstrikeResult, setSpellstrikeResult] = useState("");
   const [bondedObjectCastResult, setBondedObjectCastResult] = useState("");
   useEffect(
@@ -323,6 +326,15 @@ export function Spellbook({
     [classId, filteredSpells, visibleLimit],
   );
   useEffect(() => setVisibleLimit(250), [query, levelFilter, classId]);
+  const masteredSpellIdSet = new Set(spellMastery?.selectedIds ?? []);
+  const masteredSpells = spellMastery?.selectedIds.flatMap((spellId) => {
+    const spell = spellMastery.catalogue.find((candidate) => candidate.id === spellId);
+    return spell ? [spell] : [];
+  }) ?? [];
+  const masteryCandidates = spellMastery?.catalogue
+    .filter((spell) => !masteredSpellIdSet.has(spell.id) && (!masteryQuery.trim() || `${spell.name} ${spell.summary}`.toLowerCase().includes(masteryQuery.trim().toLowerCase())))
+    .sort((left, right) => (left.levelByClass.arcanist ?? 0) - (right.levelByClass.arcanist ?? 0) || left.name.localeCompare(right.name))
+    .slice(0, 30) ?? [];
 
   return (
     <section className="spell-panel">
@@ -339,6 +351,20 @@ export function Spellbook({
           .join(", ")}
         .
       </p>
+      {spellMastery && (
+        <section className="archetype-spell-controls spell-mastery-controls" aria-label="Spell Mastery">
+          <div>
+            <strong>Spell Mastery</strong>
+            <span>Master {spellMastery.limit} Arcanist spell{spellMastery.limit === 1 ? "" : "s"} across your copies of the feat. These spells can be prepared without a spellbook.</span>
+          </div>
+          <output aria-label="Spell Mastery selections">{masteredSpells.length}/{spellMastery.limit} mastered</output>
+          {masteredSpells.length > 0 && <ul className="spell-mastery-list">{masteredSpells.map((spell) => <li key={spell.id}><span>{spell.name} · {levelLabel(spell.levelByClass.arcanist ?? 0)}</span><button type="button" aria-label={`Forget mastered spell ${spell.name}`} onClick={() => spellMastery.onChange(spellMastery.selectedIds.filter((spellId) => spellId !== spell.id))}>Remove</button></li>)}</ul>}
+          {masteredSpells.length < spellMastery.limit && <>
+            <label>Find an Arcanist spell<input type="search" aria-label="Search Spell Mastery spells" value={masteryQuery} placeholder="Spell name or effect" onChange={(event) => setMasteryQuery(event.target.value)} /></label>
+            <div className="spell-mastery-results">{masteryCandidates.map((spell) => <button type="button" key={spell.id} aria-label={`Master ${spell.name}`} onClick={() => spellMastery.onChange([...spellMastery.selectedIds, spell.id])}>{spell.name} <small>{levelLabel(spell.levelByClass.arcanist ?? 0)}</small></button>)}</div>
+          </>}
+        </section>
+      )}
       <p>
         {preparedLimits
           .map(
