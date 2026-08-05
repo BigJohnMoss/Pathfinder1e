@@ -2,6 +2,7 @@ import { normalizeCompanionState } from "./companions.js";
 import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
+import { archetypeInitiativeBonusAdjustments, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
@@ -11,6 +12,7 @@ export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
 export { archetypeSkillBonusAdjustments, inferArchetypeSkillBonusAdjustments };
+export { archetypeInitiativeBonusAdjustments, inferArchetypeInitiativeBonusAdjustments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
@@ -348,7 +350,7 @@ const adjustmentBonusAtLevel = (adjustment, level) => {
 export function archetypeConditionalModifiers(archetypes = [], classLevels = {}) {
   return (archetypes ?? []).flatMap((archetype) => {
     const level = archetypeLevel(archetype, classLevels);
-    return (archetype?.conditionalModifiers ?? []).flatMap((modifier) => {
+    return [...(archetype?.conditionalModifiers ?? []), ...archetypeInitiativeBonusAdjustments(archetype).filter((modifier) => modifier.condition)].flatMap((modifier) => {
       if (!adjustmentAppliesAtLevel(modifier, level)) return [];
       const bonus = adjustmentBonusAtLevel(modifier, level);
       return [{
@@ -359,6 +361,15 @@ export function archetypeConditionalModifiers(archetypes = [], classLevels = {})
       }];
     });
   });
+}
+
+export function archetypeInitiativeBonus(archetypes = [], classLevels = {}) {
+  return (archetypes ?? []).reduce((total, archetype) => {
+    const level = archetypeLevel(archetype, classLevels);
+    return total + archetypeInitiativeBonusAdjustments(archetype)
+      .filter((adjustment) => !adjustment.condition && adjustmentAppliesAtLevel(adjustment, level))
+      .reduce((subtotal, adjustment) => subtotal + adjustmentBonusAtLevel(adjustment, level), 0);
+  }, 0);
 }
 
 export function archetypeSkillBonuses(archetypes = [], classLevels = {}) {
@@ -1414,6 +1425,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (resourceAdjustments.length) automated.push(`${resourceAdjustments.length} tracked class resource adjustment${resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.conditionalModifiers?.length)
     automated.push(`${archetype.conditionalModifiers.length} level-aware conditional modifier${archetype.conditionalModifiers.length === 1 ? "" : "s"}`);
+  const initiativeBonusDetails = inferredArchetypeInitiativeBonusDetails(archetype);
+  const initiativeBonusAdjustments = archetypeInitiativeBonusAdjustments(archetype);
+  if (initiativeBonusAdjustments.length)
+    automated.push(`${initiativeBonusAdjustments.length} calculated initiative bonus${initiativeBonusAdjustments.length === 1 ? "" : "es"}`);
   const skillBonusDetails = inferredArchetypeSkillBonusDetails(archetype);
   const skillBonusAdjustments = archetypeSkillBonusAdjustments(archetype);
   if (skillBonusAdjustments.length)
@@ -1440,6 +1455,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (spellAutomations.length) automated.push(`${spellAutomations.length} spell-powered archetype action${spellAutomations.length === 1 ? "" : "s"}`);
   const adjustmentFeatureIds = new Set([
     ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...initiativeBonusDetails.fullyAutomatedFeatureIds,
     ...(archetype.skillBonusAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...skillBonusDetails.fullyAutomatedFeatureIds,
     ...(archetype.landSpeedAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
