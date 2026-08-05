@@ -3744,10 +3744,19 @@ export default function Home() {
     );
   };
   const loadCharacter = () => {
-    const active = characterLibrary.characters.find(
-      (entry) => entry.id === characterLibrary.activeCharacterId,
+    let latestLibrary = characterLibrary;
+    try {
+      const storedLibrary = localStorage.getItem(characterLibraryKey);
+      if (storedLibrary)
+        latestLibrary = normalizeCharacterLibrary(JSON.parse(storedLibrary));
+    } catch {
+      // Fall back to the last valid in-memory library.
+    }
+    const active = latestLibrary.characters.find(
+      (entry) => entry.id === latestLibrary.activeCharacterId,
     );
     if (active) {
+      if (latestLibrary !== characterLibrary) setCharacterLibrary(latestLibrary);
       applyCharacterDraft(active.draft, "Loaded saved character");
       return;
     }
