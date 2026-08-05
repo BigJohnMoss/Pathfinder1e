@@ -41,6 +41,10 @@
       ]
     }
   ],
+  "skillBonusAdjustments": [
+    { "skill": "Diplomacy", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3, "maximum": 6, "condition": "dealing with officials at a checkpoint, inspection, or similar activity" },
+    { "skill": "Sleight of Hand", "base": 0, "levelDivisor": 2, "minimum": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -48,6 +52,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Bribery and Conceal Item apply their level-scaled skill bonuses. Distraction remains descriptive."
   ]
 }

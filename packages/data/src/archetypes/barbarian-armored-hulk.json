@@ -59,13 +59,24 @@
     }
   ],
   "proficiencyAdjustments": [{"category":"armor","operation":"add","proficiencies":["Heavy armor"]}],
+  "conditionalModifiers": [
+    { "label": "CMB and CMD", "condition": "overrun combat maneuvers", "base": 1 },
+    { "label": "Reflex saves", "condition": "against trample attacks", "base": 1 },
+    { "label": "AC", "condition": "against charge attacks", "base": 1 },
+    { "label": "attack and damage rolls", "condition": "against charging creatures", "base": 1 },
+    { "label": "AC", "condition": "on critical hit confirmation rolls while wearing heavy armor", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3, "maximum": 6 }
+  ],
+  "landSpeedAdjustments": [
+    { "label": "Armored Swiftness", "minimumLevel": 2, "maximumLevel": 4, "bonus": 5, "timing": "afterReduction", "armorCategories": ["medium", "heavy"], "capAtBaseSpeed": true },
+    { "label": "Improved Armored Swiftness", "minimumLevel": 5, "bonus": 10, "timing": "beforeReduction", "prohibitedLoads": ["heavy", "overloaded"] }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Armored%20Hulk"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Heavy armor proficiency, armor- and load-aware land speed, overrun, trample, charge, and critical-confirmation modifiers are automated through shared systems."
   ]
 }

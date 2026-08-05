@@ -11,6 +11,7 @@ export type EquipmentItem = {
   costGp: number;
   weight: number;
   armorBonus?: number;
+  armorCategory?: "light" | "medium" | "heavy";
   damage?: string;
   critical?: string;
   range?: number;
@@ -54,6 +55,19 @@ export const equipmentCombatBonuses = (inventory: InventoryEntry[]) => {
 
 export const equipmentArmorBonus = (inventory: InventoryEntry[]) => equipmentCombatBonuses(inventory).armorClass.normal;
 
+export const equippedArmorCategory = (inventory: InventoryEntry[]): "none" | "light" | "medium" | "heavy" => {
+  const order = { none: 0, light: 1, medium: 2, heavy: 3 } as const;
+  return inventory
+    .filter((entry) => entry.equipped)
+    .map((entry) => equipmentItems.find((item) => item.id === entry.itemId)?.armorCategory ?? "none")
+    .reduce<"none" | "light" | "medium" | "heavy">((heaviest, category) => order[category] > order[heaviest] ? category : heaviest, "none");
+};
+
+export const equipmentEncumbrance = (strength: number, inventory: InventoryEntry[]) => encumbrance(strength, inventory.flatMap((entry) => {
+  const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
+  return item ? [{ weight: item.weight, quantity: entry.quantity }] : [];
+}));
+
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
 
 export const equippedWeaponAttacks = (inventory: InventoryEntry[], baseAttackBonus: number, strengthModifier: number, dexterityModifier: number, weaponBonuses: Record<string, { attack: number; damage: number }> = {}, minimumWeaponEnhancements: Record<string, number> = {}): EquipmentAttack[] => inventory.flatMap((entry) => {
@@ -90,11 +104,7 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
     const query = catalogueQuery.trim().toLocaleLowerCase();
     return equipmentItems.filter((item) => (catalogueCategory === "all" || item.category === catalogueCategory) && (!query || item.name.toLocaleLowerCase().includes(query)));
   }, [catalogueCategory, catalogueQuery]);
-  const carried = inventory.flatMap((entry) => {
-    const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
-    return item ? [{ weight: item.weight, quantity: entry.quantity }] : [];
-  });
-  const load = encumbrance(strength, carried);
+  const load = equipmentEncumbrance(strength, inventory);
   const addItem = (itemId: string) => {
     if (!itemId) return;
     const existing = inventory.find((entry) => entry.itemId === itemId);

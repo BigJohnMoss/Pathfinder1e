@@ -322,6 +322,91 @@ export function encumbrance(strength, items) {
   return { carriedWeight, capacity, load };
 }
 
+const archetypeLevel = (archetype, classLevels = {}) =>
+  Math.max(0, Number(classLevels?.[archetype?.classId]) || 0);
+
+const adjustmentAppliesAtLevel = (adjustment, level) =>
+  level >= (adjustment.minimumLevel ?? 1) &&
+  (adjustment.maximumLevel === undefined || level <= adjustment.maximumLevel);
+
+export function archetypeConditionalModifiers(archetypes = [], classLevels = {}) {
+  return (archetypes ?? []).flatMap((archetype) => {
+    const level = archetypeLevel(archetype, classLevels);
+    return (archetype?.conditionalModifiers ?? []).flatMap((modifier) => {
+      if (!adjustmentAppliesAtLevel(modifier, level)) return [];
+      const interval = Math.max(1, modifier.interval ?? 1);
+      const increases = Math.floor((level - (modifier.minimumLevel ?? 1)) / interval);
+      const bonus = Math.min(
+        modifier.maximum ?? Number.POSITIVE_INFINITY,
+        modifier.base + increases * (modifier.perInterval ?? 0),
+      );
+      return [{
+        label: modifier.label,
+        condition: modifier.condition,
+        bonus,
+        source: archetype.name,
+      }];
+    });
+  });
+}
+
+export function archetypeSkillBonuses(archetypes = [], classLevels = {}) {
+  const result = { skillBonuses: {}, conditionalModifiers: [] };
+  for (const archetype of archetypes ?? []) {
+    const level = archetypeLevel(archetype, classLevels);
+    for (const adjustment of archetype?.skillBonusAdjustments ?? []) {
+      if (!adjustmentAppliesAtLevel(adjustment, level)) continue;
+      const interval = Math.max(1, adjustment.interval ?? 1);
+      const increases = Math.floor((level - (adjustment.minimumLevel ?? 1)) / interval);
+      const calculated = adjustment.levelDivisor
+        ? adjustment.base + Math.floor(level / adjustment.levelDivisor) * (adjustment.levelMultiplier ?? 1)
+        : adjustment.base + increases * (adjustment.perInterval ?? 0);
+      const bonus = Math.min(
+        adjustment.maximum ?? Number.POSITIVE_INFINITY,
+        Math.max(adjustment.minimum ?? Number.NEGATIVE_INFINITY, calculated),
+      );
+      if (adjustment.condition) result.conditionalModifiers.push({
+        label: `${adjustment.skill} checks`,
+        condition: adjustment.condition,
+        bonus,
+        source: archetype.name,
+      });
+      else result.skillBonuses[adjustment.skill] = (result.skillBonuses[adjustment.skill] ?? 0) + bonus;
+    }
+  }
+  return result;
+}
+
+const armorOrLoadReducesSpeed = (armorCategory, load) =>
+  ["medium", "heavy"].includes(armorCategory) || ["medium", "heavy"].includes(load);
+
+const reducedLandSpeed = (speed) => Math.ceil((speed * 2) / 3 / 5) * 5;
+
+export function characterLandSpeed(baseSpeed, armorCategory = "none", load = "light", archetypes = [], classLevels = {}) {
+  if (!Number.isInteger(baseSpeed) || baseSpeed < 0)
+    throw new RangeError("Base land speed must be a non-negative integer.");
+  const adjustments = (archetypes ?? []).flatMap((archetype) => {
+    const level = archetypeLevel(archetype, classLevels);
+    return (archetype?.landSpeedAdjustments ?? [])
+      .filter((adjustment) => adjustmentAppliesAtLevel(adjustment, level))
+      .filter((adjustment) => !adjustment.armorCategories?.length || adjustment.armorCategories.includes(armorCategory))
+      .filter((adjustment) => !adjustment.prohibitedLoads?.includes(load))
+      .map((adjustment) => ({ ...adjustment, source: archetype.name }));
+  });
+  if (load === "overloaded") return { speed: 0, baseSpeed, armorCategory, load, adjustments: [] };
+  const beforeReduction = adjustments
+    .filter((adjustment) => adjustment.timing === "beforeReduction")
+    .reduce((total, adjustment) => total + adjustment.bonus, baseSpeed);
+  let speed = armorOrLoadReducesSpeed(armorCategory, load)
+    ? reducedLandSpeed(beforeReduction)
+    : beforeReduction;
+  for (const adjustment of adjustments.filter((item) => item.timing === "afterReduction")) {
+    speed += adjustment.bonus;
+    if (adjustment.capAtBaseSpeed) speed = Math.min(speed, baseSpeed);
+  }
+  return { speed, baseSpeed, armorCategory, load, adjustments };
+}
+
 export function spellsAvailableToClass(
   spells,
   classId,
@@ -1324,6 +1409,12 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ? archetype.resourceAdjustments
     : inferArchetypeResourceAdjustments(archetype);
   if (resourceAdjustments.length) automated.push(`${resourceAdjustments.length} tracked class resource adjustment${resourceAdjustments.length === 1 ? "" : "s"}`);
+  if (archetype.conditionalModifiers?.length)
+    automated.push(`${archetype.conditionalModifiers.length} level-aware conditional modifier${archetype.conditionalModifiers.length === 1 ? "" : "s"}`);
+  if (archetype.skillBonusAdjustments?.length)
+    automated.push(`${archetype.skillBonusAdjustments.length} level-aware skill bonus${archetype.skillBonusAdjustments.length === 1 ? "" : "es"}`);
+  if (archetype.landSpeedAdjustments?.length)
+    automated.push(`${archetype.landSpeedAdjustments.length} equipment-aware land-speed adjustment${archetype.landSpeedAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   if (archetype.optionGroupAugmentations?.length)
     automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);
@@ -1342,8 +1433,13 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (resourceActions.length) automated.push(`${resourceActions.length} resource-powered feature action${resourceActions.length === 1 ? "" : "s"}`);
   const spellAutomations = replacementFeatures.filter(feature => feature.spellAutomation);
   if (spellAutomations.length) automated.push(`${spellAutomations.length} spell-powered archetype action${spellAutomations.length === 1 ? "" : "s"}`);
+  const adjustmentFeatureIds = new Set([
+    ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...(archetype.skillBonusAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...(archetype.landSpeedAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
+  ].filter(Boolean));
   const manualFeatures = replacementFeatures
-    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id))
+    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))
     .map(feature => `${feature.name} (level ${feature.level})`);
   const manual = archetype.mechanicalCoverage === "full"
     ? []

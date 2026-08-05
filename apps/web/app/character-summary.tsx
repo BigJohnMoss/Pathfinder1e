@@ -4,8 +4,9 @@ type Progression = { baseAttackBonus: number; skillRanks: number; featSlots: num
 
 const signed = (value: number) => value >= 0 ? `+${value}` : `${value}`;
 
-export function CombatPanel({ combat, modifierSources = [], conditionalModifiers = [] }: {
+export function CombatPanel({ combat, landSpeed, modifierSources = [], conditionalModifiers = [] }: {
   combat: CombatStats;
+  landSpeed: { speed: number; baseSpeed: number; armorCategory: string; load: string; adjustments: Array<{ label: string; bonus: number; source: string }> };
   modifierSources?: MechanicalBonusSource[];
   conditionalModifiers?: Array<{ label: string; bonus?: number; condition: string; source: string }>;
 }) {
@@ -16,8 +17,10 @@ export function CombatPanel({ combat, modifierSources = [], conditionalModifiers
       <div><dt>Initiative</dt><dd>{signed(combat.initiative)}</dd></div>
       <div><dt>AC / touch / flat-footed</dt><dd>{combat.armorClass.normal} / {combat.armorClass.touch} / {combat.armorClass.flatFooted}</dd></div>
       <div><dt>CMB / CMD</dt><dd>{signed(combat.combatManeuverBonus)} / {combat.combatManeuverDefense}</dd></div>
+      <div><dt>Land speed</dt><dd>{landSpeed.speed} ft.</dd></div>
       <div><dt>Average HP</dt><dd>{combat.averageHitPoints}</dd></div>
     </dl>
+    <p className="hint" aria-label="Land speed calculation">Base {landSpeed.baseSpeed} ft. · {landSpeed.armorCategory === "none" ? "no armor" : `${landSpeed.armorCategory} armor`} · {landSpeed.load} load{landSpeed.adjustments.length ? ` · ${landSpeed.adjustments.map((adjustment) => `${adjustment.source}: ${adjustment.label}`).join(", ")}` : ""}</p>
     {modifierSources.length > 0 && <section className="conditional-modifiers">
       <h3>Applied feat modifiers</h3>
       <ul>{modifierSources.map((modifier, index) => <li key={`${modifier.source}-${modifier.target}-${index}`}>
@@ -26,7 +29,7 @@ export function CombatPanel({ combat, modifierSources = [], conditionalModifiers
       </li>)}</ul>
     </section>}
     {conditionalModifiers.length > 0 && <section className="conditional-modifiers">
-      <h3>Conditional trait modifiers</h3>
+      <h3>Conditional modifiers</h3>
       <ul>{conditionalModifiers.map((modifier, index) => <li key={`${modifier.source}-${modifier.label}-${index}`}>
         <strong>{modifier.bonus === undefined ? modifier.label : `${signed(modifier.bonus)} ${modifier.label}`}</strong>
         <span>{modifier.condition} · {modifier.source}</span>

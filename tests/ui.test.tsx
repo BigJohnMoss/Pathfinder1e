@@ -1148,7 +1148,7 @@ test("lists conditional trait modifiers without applying them as permanent saves
   await userEvent.selectOptions(screen.getByLabelText("Trait 1"), "courageous");
   await userEvent.selectOptions(screen.getByLabelText("Trait 2"), "birthmark");
   await userEvent.click(screen.getByRole("tab", { name: "Actions" }));
-  const modifiers = screen.getByText("Conditional trait modifiers").closest("section");
+  const modifiers = screen.getByText("Conditional modifiers").closest("section");
   assert.match(modifiers?.textContent ?? "", /\+2 Saving throwsagainst fear effects · Courageous/);
   assert.match(modifiers?.textContent ?? "", /Divine focusthe birthmark can serve as a divine focus · Birthmark/);
   await userEvent.click(screen.getByRole("tab", { name: "Basic info" }));
@@ -1283,6 +1283,49 @@ test("selects and persists the Barbarian Breaker archetype", async () => {
   await user.selectOptions(screen.getByLabelText("Archetype"), "");
   await user.click(screen.getByRole("button", { name: "Load" }));
   assert.equal((screen.getByLabelText("Archetype") as HTMLSelectElement).value, "barbarian-breaker");
+});
+
+test("Armored Hulk updates land speed and conditional defenses from equipped armor", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-armored-hulk");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "2" } });
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
+  await user.selectOptions(screen.getByLabelText("Equipment catalogue"), "full-plate");
+  await user.click(screen.getByLabelText("Equipped"));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.match(screen.getByText("Land speed").parentElement?.textContent ?? "", /25 ft/);
+  assert.match(screen.getByLabelText("Land speed calculation").textContent ?? "", /heavy armor.*Armored Swiftness/);
+  assert.ok(screen.getByText("+1 CMB and CMD"));
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  assert.match(screen.getByText("Land speed").parentElement?.textContent ?? "", /30 ft/);
+  assert.match(screen.getByLabelText("Land speed calculation").textContent ?? "", /Improved Armored Swiftness/);
+  assert.equal(screen.getAllByText("+1 AC", { selector: ".conditional-modifiers strong" }).length, 2);
+});
+
+test("Untamed Rager applies its scaling Intimidate and dirty trick bonuses", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-untamed-rager");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "18" } });
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+  assert.match(screen.getByLabelText("Intimidate ranks").closest("label")?.textContent ?? "", /Total\+6/);
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.ok(screen.getByText("+4 CMB and CMD"));
+  assert.match(screen.getByText("+4 CMB and CMD").parentElement?.textContent ?? "", /dirty trick combat maneuvers/);
+});
+
+test("archetypes add specialized skills and their calculated bonuses to the skill list", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "alchemist");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "alchemist-alchemical-sapper");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "10" } });
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+  assert.match(screen.getByLabelText("Craft (traps) ranks").closest("label")?.textContent ?? "", /Total\+6/);
+  assert.match(screen.getByLabelText("Knowledge (engineering) ranks").closest("label")?.textContent ?? "", /Total\+6/);
 });
 
 test("switches between the Drunken Brute and Hurler archetypes", async () => {
