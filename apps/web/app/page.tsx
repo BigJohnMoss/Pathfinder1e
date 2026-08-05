@@ -338,6 +338,17 @@ function onDemandSpellCosts(options: CharacterOption[], classId: string, classLe
       consumesSpellSlot: resource?.consumesSpellSlot ?? true,
       saveDcBonus: option.spellSaveDcBonus ?? 0,
       concentrationBonus,
+      ...(resource?.summonTracker ? {
+        summonTracker: {
+          name: resource.summonTracker.name,
+          description: resource.summonTracker.description,
+          rounds: classLevel >= (resource.summonTracker.untilDismissedAtClassLevel ?? Number.POSITIVE_INFINITY)
+            ? 999
+            : Math.min(999, classLevel * resource.summonTracker.roundsPerClassLevel),
+          replaceExisting: resource.summonTracker.replaceExisting,
+          untilDismissed: classLevel >= (resource.summonTracker.untilDismissedAtClassLevel ?? Number.POSITIVE_INFINITY),
+        },
+      } : {}),
     }]];
   }));
 }
@@ -2426,10 +2437,12 @@ export default function Home() {
           ? alternateRewardValue(gnomeBombReward, favoredClassAlternateBonuses[gnomeBombReward.id] ?? 0)
           : 0);
         return {
+          classId: resourceClassId,
           id: resourceId,
           label: `${classes.find((item) => item.id === resourceClassId)?.name ?? resourceClassId} ${adjustment?.label ?? resourceLabels[resourceId]?.[0] ?? resourceId}`,
           unit: adjustment?.unit ?? resourceLabels[resourceId]?.[1] ?? "use",
           maximum: resourceMaximum,
+          refreshCadence: adjustment?.refreshCadence ?? "day",
           used: classResourceUsesByClass[resourceClassId]?.[resourceId] ?? 0,
           onUsedChange: (used: number) =>
             setClassResourceUsesByClass((current) => ({
@@ -2532,9 +2545,18 @@ export default function Home() {
     setReservoirPoints(
       Math.max(0, Math.min(secondaryReservoir?.maximum ?? 0, points)),
     );
+  const refreshTrackedClassResources = (resourceClassId: string) =>
+    setClassResourceUsesByClass((current) => ({
+      ...current,
+      [resourceClassId]: Object.fromEntries(
+        Object.entries(current[resourceClassId] ?? {}).filter(([resourceId]) =>
+          apgDailyResources.some((resource) => resource.classId === resourceClassId && resource.id === resourceId && resource.refreshCadence === "week"),
+        ),
+      ),
+    }));
   const refreshDay = () => {
     setSpellSlotUses({});
-    setClassResourceUsesByClass((current) => ({ ...current, [classId]: {} }));
+    refreshTrackedClassResources(classId);
     if (reservoir) setReservoirPoints(reservoir.dailyRefresh);
     if (classId === "bard") setBardicPerformanceUsed(0);
     if (classId === "druid") setWildShapeUsed(0);
@@ -2543,10 +2565,7 @@ export default function Home() {
   const refreshSecondaryDay = () => {
     setSecondarySpellSlotUses({});
     if (secondaryCharacterClass)
-      setClassResourceUsesByClass((current) => ({
-        ...current,
-        [secondaryCharacterClass.id]: {},
-      }));
+      refreshTrackedClassResources(secondaryCharacterClass.id);
     if (secondaryReservoir) setReservoirPoints(secondaryReservoir.dailyRefresh);
     if (secondaryCharacterClass?.id === "bard") setBardicPerformanceUsed(0);
     if (secondaryCharacterClass?.id === "druid") setWildShapeUsed(0);
@@ -2751,6 +2770,7 @@ export default function Home() {
       abilityModifiers={combat.abilityModifiers}
       spellMastery={characterClass.id === "arcanist" && spellMasteryCount > 0 ? { limit: spellMasteryLimit, selectedIds: spellMasterySpellIds, catalogue: spellMasteryCatalogue, onChange: updateSpellMasterySpellIds } : undefined}
       onAddEffect={addActiveEffect}
+      onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
     />
   ) : null;
   const secondarySpellbook =
@@ -2821,6 +2841,7 @@ export default function Home() {
         abilityModifiers={combat.abilityModifiers}
         spellMastery={secondaryCharacterClass.id === "arcanist" && spellMasteryCount > 0 ? { limit: spellMasteryLimit, selectedIds: spellMasterySpellIds, catalogue: spellMasteryCatalogue, onChange: updateSpellMasterySpellIds } : undefined}
         onAddEffect={addActiveEffect}
+        onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
       />
     ) : null;
   const extraActiveClassLevel = additionalClassLevels
@@ -2860,8 +2881,9 @@ export default function Home() {
         onReservoirPointsChange={setReservoirPoints}
         criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
         bondedObjectCastResource={extraActiveClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
-        onRefreshClassResources={() => setClassResourceUsesByClass((current) => ({ ...current, [extraActiveClass.id]: {} }))}
+        onRefreshClassResources={() => refreshTrackedClassResources(extraActiveClass.id)}
         onAddEffect={addActiveEffect}
+        onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
       />
     ) : null;
 

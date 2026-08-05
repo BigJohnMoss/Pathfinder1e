@@ -36,7 +36,14 @@
       "minimum": 1,
       "consumesSpellSlot": false,
       "freeAtClassLevel": 20,
-      "label": "Conjurer's Focus"
+      "label": "Conjurer's Focus",
+      "summonTracker": {
+        "name": "Conjurer's Focus summon",
+        "description": "{spell} is active from Conjurer's Focus. Using Conjurer's Focus again dismisses this summon first.",
+        "roundsPerClassLevel": 10,
+        "untilDismissedAtClassLevel": 20,
+        "replaceExisting": true
+      }
     },
     "minimumClassLevelBySpellLevel": {
       "1": 1,
