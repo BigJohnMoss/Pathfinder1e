@@ -73,3 +73,16 @@ test("published conditional skill transitions appear at the correct archetype le
   assert.match(modifiers, /\+5 Intimidate checks/);
   assert.doesNotMatch(modifiers, /Bluff checks/);
 });
+
+test("inferred conditional skill bonuses appear with their trigger in the live builder", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "druid-tempest-druid");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const modifiers = screen.getByText("Conditional modifiers").closest("section")?.textContent ?? "";
+  assert.match(modifiers, /\+4 Knowledge \(nature\) checks/);
+  assert.match(modifiers, /\+4 Survival checks/);
+  assert.match(modifiers, /in coastal or marshy lands/);
+});
