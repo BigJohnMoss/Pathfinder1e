@@ -43,9 +43,16 @@
       ]
     }
   ],
+  "skillBonusAdjustments": [
+    { "sourceFeatureId": "alchemist-aerochemist-aerodynamic-prowess-su-2", "skill": "Fly", "minimumLevel": 2, "base": 2, "perInterval": 2, "interval": 3, "maximum": 6 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Aerochemist"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Aerodynamic Prowess applies its scaling Fly bonus. Aeromantic Concoction and Bombs Away remain descriptive."
+  ]
 }

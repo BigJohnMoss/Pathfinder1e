@@ -81,9 +81,18 @@
     }
   ],
   "classSkillAdditions": ["Knowledge (engineering)", "Stealth"],
+  "skillBonusAdjustments": [
+    { "sourceFeatureId": "alchemist-alchemical-sapper-master-engineer-ex-2", "skill": "Knowledge (engineering)", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "alchemist-alchemical-sapper-master-engineer-ex-2", "skill": "Craft (stonemasonry)", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "alchemist-alchemical-sapper-master-engineer-ex-2", "skill": "Craft (traps)", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "minimum": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Alchemist%20Alchemical%20Sapper"
-  }
+  },
+  "mechanicalCoverage": "partial",
+  "mechanicalNotes": [
+    "Class skills and Master Engineer skill bonuses are automated. Bomb actions and bespoke trap interactions remain descriptive."
+  ]
 }

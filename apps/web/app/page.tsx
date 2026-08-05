@@ -65,6 +65,7 @@ import {
   abilityNames,
   apgClassResourceMaximums,
   archetypeConditionalModifiers,
+  archetypeSkillBonuses,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
   adjustedCompanionLevel,
@@ -232,6 +233,14 @@ const archetypeIdsByClass = Object.fromEntries(
       .map((archetype) => archetype.id),
   ]),
 );
+const abilityForSpecializedSkill = (name: string) =>
+  name.startsWith("Craft (") || name.startsWith("Knowledge (")
+    ? "intelligence" as const
+    : name.startsWith("Perform (")
+      ? "charisma" as const
+      : name.startsWith("Profession (")
+        ? "wisdom" as const
+        : null;
 const wizardOppositionFeatureIds = [
   "wizard-opposition-school-1-first",
   "wizard-opposition-school-1-second",
@@ -1068,6 +1077,10 @@ export default function Home() {
     () => archetypeConditionalModifiers(allSelectedArchetypes, classLevelMap),
     [allSelectedArchetypes, classLevelMap],
   );
+  const selectedArchetypeSkillBonuses = useMemo(
+    () => archetypeSkillBonuses(allSelectedArchetypes, classLevelMap),
+    [allSelectedArchetypes, classLevelMap],
+  );
   const featSlots = useMemo(
     () =>
       Array.from({ length: progression.featSlots }, (_, index) => {
@@ -1389,7 +1402,17 @@ export default function Home() {
     ? selectedOptions["arcanist-blade-adept-sword-bond-su-1-weapon"]?.trim().toLowerCase()
     : bladeAdeptBondOption?.replace("blade-adept-bond-", "");
   const wieldingBlackBlade = selectedArchetypes.some((archetype) => archetype.id === "arcanist-blade-adept") && (classLevelMap.arcanist ?? 0) >= 3 && Boolean(bladeAdeptWeaponKey) && inventory.some((entry) => entry.equipped && entry.itemId === bladeAdeptWeaponKey);
-  const skillEntries = skills.map((skill) => {
+  const displayedSkills = useMemo(() => {
+    const standardNames = new Set(skills.map((skill) => skill.name));
+    const specialized = [...new Set(allSelectedArchetypes.flatMap((archetype) =>
+      (archetype.skillBonusAdjustments ?? []).map((adjustment) => adjustment.skill),
+    ))].flatMap((name) => {
+      const ability = abilityForSpecializedSkill(name);
+      return !standardNames.has(name as (typeof skills)[number]["name"]) && ability ? [{ name, ability }] : [];
+    });
+    return [...skills, ...specialized].sort((left, right) => left.name.localeCompare(right.name));
+  }, [allSelectedArchetypes]);
+  const skillEntries = displayedSkills.map((skill) => {
     const ranks = skillRanks[skill.name] ?? 0;
     const result = skillTotal(
       skillCharacterClass,
@@ -1405,6 +1428,7 @@ export default function Home() {
         result.total +
         (selectedTraitBonuses.skillBonuses[skill.name] ?? 0) +
         (selectedFeatBonuses.skillBonuses[skill.name] ?? 0) +
+        (selectedArchetypeSkillBonuses.skillBonuses[skill.name] ?? 0) +
         (wieldingBlackBlade && ["Perception", "Sense Motive"].includes(skill.name) ? (ranks >= 10 ? 4 : 2) : 0),
     };
   });
@@ -4261,6 +4285,7 @@ export default function Home() {
                 conditionalModifiers={[
                   ...(selectedTraitBonuses.conditionalModifiers ?? []),
                   ...selectedArchetypeConditionalModifiers,
+                  ...selectedArchetypeSkillBonuses.conditionalModifiers,
                 ]}
               />
               <ActivePlayPanel

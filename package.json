@@ -25,6 +25,7 @@
     "import:occultist-focus-powers": "node tools/scripts/import-occultist-focus-powers.mjs",
     "import:later-spell-lists": "node tools/scripts/import-later-spell-lists.mjs",
     "coverage:archetypes": "node tools/scripts/annotate-archetype-coverage.mjs",
+    "coverage:archetype-gaps": "node tools/scripts/classify-archetype-gaps.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
     "performance:check": "node tools/scripts/check-client-budgets.mjs",

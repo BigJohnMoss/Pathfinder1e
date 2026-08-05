@@ -32,6 +32,13 @@
       ]
     }
   ],
+  "skillBonusAdjustments": [
+    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Knowledge (geography)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Knowledge (local)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Knowledge (nature)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Knowledge (planes)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+    { "sourceFeatureId": "bard-wasteland-chronicler-wasteland-knowledge-ex-1", "skill": "Survival", "base": 0, "levelDivisor": 2, "minimum": 1 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -39,6 +46,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Wasteland Knowledge applies its half-level skill bonuses. Wasteland Specialist remains descriptive."
   ]
 }

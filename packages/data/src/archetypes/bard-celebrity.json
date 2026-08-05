@@ -34,6 +34,10 @@
       ]
     }
   ],
+  "skillBonusAdjustments": [
+    { "skill": "Diplomacy", "minimumLevel": 1, "base": 1, "perInterval": 1, "interval": 4, "maximum": 5, "condition": "within the celebrity's chosen region or influencing people from that region" },
+    { "skill": "Intimidate", "minimumLevel": 1, "base": 1, "perInterval": 1, "interval": 4, "maximum": 5, "condition": "within the celebrity's chosen region or influencing people from that region" }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
@@ -41,6 +45,6 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Famous exposes its level-scaled regional Diplomacy and Intimidate modifiers. Bardic performances remain descriptive."
   ]
 }

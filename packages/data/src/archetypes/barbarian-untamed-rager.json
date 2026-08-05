@@ -48,13 +48,19 @@
       ]
     }
   ],
+  "skillBonusAdjustments": [
+    { "sourceFeatureId": "barbarian-untamed-rager-feral-appearance-ex-3", "skill": "Intimidate", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3 }
+  ],
+  "conditionalModifiers": [
+    { "sourceFeatureId": "barbarian-untamed-rager-dishonorable-ex-7", "label": "CMB and CMD", "condition": "performing or resisting dirty trick combat maneuvers", "minimumLevel": 7, "base": 1, "perInterval": 1, "interval": 3 }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Barbarian%20Untamed%20Rager"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Improved Dirty Trick and Greater Dirty Trick grants, scaling Intimidate bonus, and scaling dirty trick CMB and CMD are automated."
   ]
 }

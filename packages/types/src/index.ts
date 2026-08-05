@@ -444,6 +444,7 @@ export interface CharacterArchetype {
     hidden?: boolean;
   }>;
   conditionalModifiers?: Array<{
+    sourceFeatureId?: string;
     label: string;
     condition: string;
     minimumLevel?: number;
@@ -453,7 +454,22 @@ export interface CharacterArchetype {
     interval?: number;
     maximum?: number;
   }>;
+  skillBonusAdjustments?: Array<{
+    sourceFeatureId?: string;
+    skill: string;
+    minimumLevel?: number;
+    maximumLevel?: number;
+    base: number;
+    perInterval?: number;
+    interval?: number;
+    levelDivisor?: number;
+    levelMultiplier?: number;
+    minimum?: number;
+    maximum?: number;
+    condition?: string;
+  }>;
   landSpeedAdjustments?: Array<{
+    sourceFeatureId?: string;
     minimumLevel?: number;
     maximumLevel?: number;
     bonus: number;

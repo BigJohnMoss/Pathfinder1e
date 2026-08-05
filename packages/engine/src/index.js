@@ -350,6 +350,33 @@ export function archetypeConditionalModifiers(archetypes = [], classLevels = {})
   });
 }
 
+export function archetypeSkillBonuses(archetypes = [], classLevels = {}) {
+  const result = { skillBonuses: {}, conditionalModifiers: [] };
+  for (const archetype of archetypes ?? []) {
+    const level = archetypeLevel(archetype, classLevels);
+    for (const adjustment of archetype?.skillBonusAdjustments ?? []) {
+      if (!adjustmentAppliesAtLevel(adjustment, level)) continue;
+      const interval = Math.max(1, adjustment.interval ?? 1);
+      const increases = Math.floor((level - (adjustment.minimumLevel ?? 1)) / interval);
+      const calculated = adjustment.levelDivisor
+        ? adjustment.base + Math.floor(level / adjustment.levelDivisor) * (adjustment.levelMultiplier ?? 1)
+        : adjustment.base + increases * (adjustment.perInterval ?? 0);
+      const bonus = Math.min(
+        adjustment.maximum ?? Number.POSITIVE_INFINITY,
+        Math.max(adjustment.minimum ?? Number.NEGATIVE_INFINITY, calculated),
+      );
+      if (adjustment.condition) result.conditionalModifiers.push({
+        label: `${adjustment.skill} checks`,
+        condition: adjustment.condition,
+        bonus,
+        source: archetype.name,
+      });
+      else result.skillBonuses[adjustment.skill] = (result.skillBonuses[adjustment.skill] ?? 0) + bonus;
+    }
+  }
+  return result;
+}
+
 const armorOrLoadReducesSpeed = (armorCategory, load) =>
   ["medium", "heavy"].includes(armorCategory) || ["medium", "heavy"].includes(load);
 
@@ -1384,6 +1411,8 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (resourceAdjustments.length) automated.push(`${resourceAdjustments.length} tracked class resource adjustment${resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.conditionalModifiers?.length)
     automated.push(`${archetype.conditionalModifiers.length} level-aware conditional modifier${archetype.conditionalModifiers.length === 1 ? "" : "s"}`);
+  if (archetype.skillBonusAdjustments?.length)
+    automated.push(`${archetype.skillBonusAdjustments.length} level-aware skill bonus${archetype.skillBonusAdjustments.length === 1 ? "" : "es"}`);
   if (archetype.landSpeedAdjustments?.length)
     automated.push(`${archetype.landSpeedAdjustments.length} equipment-aware land-speed adjustment${archetype.landSpeedAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
@@ -1404,8 +1433,13 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (resourceActions.length) automated.push(`${resourceActions.length} resource-powered feature action${resourceActions.length === 1 ? "" : "s"}`);
   const spellAutomations = replacementFeatures.filter(feature => feature.spellAutomation);
   if (spellAutomations.length) automated.push(`${spellAutomations.length} spell-powered archetype action${spellAutomations.length === 1 ? "" : "s"}`);
+  const adjustmentFeatureIds = new Set([
+    ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...(archetype.skillBonusAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...(archetype.landSpeedAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
+  ].filter(Boolean));
   const manualFeatures = replacementFeatures
-    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id))
+    .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))
     .map(feature => `${feature.name} (level ${feature.level})`);
   const manual = archetype.mechanicalCoverage === "full"
     ? []

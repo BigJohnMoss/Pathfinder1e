@@ -327,6 +327,7 @@ for (const url of await jsonFiles("archetypes/")) {
   if (archetype.conditionalModifiers !== undefined && (!Array.isArray(archetype.conditionalModifiers) || archetype.conditionalModifiers.length === 0)) errors.push(`${file}: conditionalModifiers must be a non-empty array`);
   for (const modifier of archetype.conditionalModifiers ?? []) {
     const prefix = `${file}: conditional modifier`;
+    if (modifier?.sourceFeatureId !== undefined && !archetype.replacements?.some(replacement => replacement.features?.some(feature => feature.id === modifier.sourceFeatureId))) errors.push(`${prefix} references unknown sourceFeatureId ${modifier.sourceFeatureId}`);
     if (typeof modifier?.label !== "string" || !modifier.label.trim() || typeof modifier?.condition !== "string" || !modifier.condition.trim()) errors.push(`${prefix} must have a label and condition`);
     if (!Number.isInteger(modifier?.base)) errors.push(`${prefix} base must be an integer`);
     if (modifier?.minimumLevel !== undefined && (!Number.isInteger(modifier.minimumLevel) || modifier.minimumLevel < 1 || modifier.minimumLevel > 20)) errors.push(`${prefix} has an invalid minimumLevel`);
@@ -336,9 +337,28 @@ for (const url of await jsonFiles("archetypes/")) {
     if (modifier?.perInterval !== undefined && modifier?.interval === undefined) errors.push(`${prefix} must specify interval when perInterval is present`);
     if (modifier?.maximum !== undefined && !Number.isInteger(modifier.maximum)) errors.push(`${prefix} maximum must be an integer`);
   }
+  if (archetype.skillBonusAdjustments !== undefined && (!Array.isArray(archetype.skillBonusAdjustments) || archetype.skillBonusAdjustments.length === 0)) errors.push(`${file}: skillBonusAdjustments must be a non-empty array`);
+  for (const adjustment of archetype.skillBonusAdjustments ?? []) {
+    const prefix = `${file}: skill bonus adjustment`;
+    if (adjustment?.sourceFeatureId !== undefined && !archetype.replacements?.some(replacement => replacement.features?.some(feature => feature.id === adjustment.sourceFeatureId))) errors.push(`${prefix} references unknown sourceFeatureId ${adjustment.sourceFeatureId}`);
+    if (typeof adjustment?.skill !== "string" || !adjustment.skill.trim()) errors.push(`${prefix} must name a skill`);
+    if (!Number.isInteger(adjustment?.base)) errors.push(`${prefix} base must be an integer`);
+    if (adjustment?.minimumLevel !== undefined && (!Number.isInteger(adjustment.minimumLevel) || adjustment.minimumLevel < 1 || adjustment.minimumLevel > 20)) errors.push(`${prefix} has an invalid minimumLevel`);
+    if (adjustment?.maximumLevel !== undefined && (!Number.isInteger(adjustment.maximumLevel) || adjustment.maximumLevel < (adjustment.minimumLevel ?? 1) || adjustment.maximumLevel > 20)) errors.push(`${prefix} has an invalid maximumLevel`);
+    if (adjustment?.perInterval !== undefined && !Number.isInteger(adjustment.perInterval)) errors.push(`${prefix} perInterval must be an integer`);
+    if (adjustment?.interval !== undefined && (!Number.isInteger(adjustment.interval) || adjustment.interval < 1)) errors.push(`${prefix} interval must be a positive integer`);
+    if (adjustment?.perInterval !== undefined && adjustment?.interval === undefined) errors.push(`${prefix} must specify interval when perInterval is present`);
+    if (adjustment?.levelDivisor !== undefined && (!Number.isInteger(adjustment.levelDivisor) || adjustment.levelDivisor < 1)) errors.push(`${prefix} levelDivisor must be a positive integer`);
+    if (adjustment?.levelMultiplier !== undefined && !Number.isInteger(adjustment.levelMultiplier)) errors.push(`${prefix} levelMultiplier must be an integer`);
+    if (adjustment?.levelMultiplier !== undefined && adjustment?.levelDivisor === undefined) errors.push(`${prefix} must specify levelDivisor when levelMultiplier is present`);
+    if (adjustment?.minimum !== undefined && !Number.isInteger(adjustment.minimum)) errors.push(`${prefix} minimum must be an integer`);
+    if (adjustment?.maximum !== undefined && !Number.isInteger(adjustment.maximum)) errors.push(`${prefix} maximum must be an integer`);
+    if (adjustment?.condition !== undefined && (typeof adjustment.condition !== "string" || !adjustment.condition.trim())) errors.push(`${prefix} has an invalid condition`);
+  }
   if (archetype.landSpeedAdjustments !== undefined && (!Array.isArray(archetype.landSpeedAdjustments) || archetype.landSpeedAdjustments.length === 0)) errors.push(`${file}: landSpeedAdjustments must be a non-empty array`);
   for (const adjustment of archetype.landSpeedAdjustments ?? []) {
     const prefix = `${file}: land-speed adjustment`;
+    if (adjustment?.sourceFeatureId !== undefined && !archetype.replacements?.some(replacement => replacement.features?.some(feature => feature.id === adjustment.sourceFeatureId))) errors.push(`${prefix} references unknown sourceFeatureId ${adjustment.sourceFeatureId}`);
     if (typeof adjustment?.label !== "string" || !adjustment.label.trim()) errors.push(`${prefix} must have a label`);
     if (!Number.isInteger(adjustment?.bonus)) errors.push(`${prefix} bonus must be an integer`);
     if (!["beforeReduction", "afterReduction"].includes(adjustment?.timing)) errors.push(`${prefix} has invalid timing`);
