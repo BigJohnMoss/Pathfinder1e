@@ -61,6 +61,9 @@ export function archetypeConditionalModifiers(archetypes: CharacterArchetype[], 
 export function archetypeInitiativeBonus(archetypes: CharacterArchetype[], classLevels: Record<string, number>): number;
 export function archetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
 export function inferArchetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
+export function archetypeSavingThrowBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Record<"fortitude" | "reflex" | "will", number>;
+export function archetypeSaveBonusAdjustments(archetype: CharacterArchetype): Array<NonNullable<CharacterArchetype["conditionalModifiers"]>[number] & { saveTargets: Array<"fortitude" | "reflex" | "will"> }>;
+export function inferArchetypeSaveBonusAdjustments(archetype: CharacterArchetype): Array<NonNullable<CharacterArchetype["conditionalModifiers"]>[number] & { saveTargets: Array<"fortitude" | "reflex" | "will"> }>;
 export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): { skillBonuses: Record<string, number>; conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }> };
 export function inferArchetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;
 export function archetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;

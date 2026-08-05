@@ -1,25 +1,25 @@
 import { inferredArchetypeSkillBonusDetails } from "./archetype-skills.js";
 
-const splitSentences = (summary) => String(summary ?? "")
+export const archetypeRuleSentences = (summary) => String(summary ?? "")
   .replace(/\s+/g, " ")
   .trim()
   .split(/(?<=[.!?])\s+/)
   .filter(Boolean);
 
-const replacementBoilerplate = (sentence) =>
+export const archetypeReplacementBoilerplate = (sentence) =>
   /^(?:This|These) (?:ability|feature|abilities|features)?\s*(?:otherwise )?(?:replaces?|alters?|modifies?|counts? as|functions? as)\b/i.test(sentence) ||
   /^(?:This|These) replaces?\b/i.test(sentence);
 
-function conditionFromSentence(sentence, matchEnd) {
+export function archetypeRuleCondition(sentence, matchEnd) {
   const prefix = sentence.slice(0, Math.max(0, sentence.search(/\b(?:gains?|receives?|adds?|has)\b/i)));
   const leading = prefix.match(/(?:^(?:At \d+(?:st|nd|rd|th) level,?\s*)?)(When|Whenever|While|During|Within|As long as|If)\s+(.+?),\s*(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z' -]{0,60})\s*$/i);
-  const suffix = sentence.slice(matchEnd).match(/\b(when|whenever|while|during|within|involving|as long as|if)\s+(.+?)(?=,\s+and\b|[.]|$)/i);
+  const suffix = sentence.slice(matchEnd).match(/\b(when|whenever|while|during|within|involving|against|as long as|(?<!as )if)\s+(.+?)(?=,\s+and\b|[.]|$)/i);
   const raw = leading ? `${leading[1]} ${leading[2]}` : suffix ? `${suffix[1]} ${suffix[2]}` : "";
   if (!raw) return undefined;
   return raw[0].toLowerCase() + raw.slice(1).replace(/[.]$/, "").trim();
 }
 
-const unsafeSubject = (sentence, matchIndex) =>
+export const archetypeUnsafeSubject = (sentence, matchIndex) =>
   /\b(?:allies|ally|animal companion|companions?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(sentence.slice(Math.max(0, matchIndex - 100), matchIndex));
 
 function adjustmentFromSentence(feature, sentence) {
@@ -30,25 +30,25 @@ function adjustmentFromSentence(feature, sentence) {
   ];
   for (const pattern of halfPatterns) {
     const match = pattern.exec(sentence);
-    if (!match || unsafeSubject(sentence, match.index)) continue;
+    if (!match || archetypeUnsafeSubject(sentence, match.index)) continue;
     return {
       sourceFeatureId: feature.id,
       label: "Initiative checks",
-      minimumLevel: Number(sentence.match(/\bAt (\d+)(?:st|nd|rd|th) level\b/i)?.[1] ?? feature.level ?? 1),
+      minimumLevel: Number(sentence.slice(0, match.index).match(/\bAt (\d+)(?:st|nd|rd|th) level\b/i)?.[1] ?? feature.level ?? 1),
       base: 0,
       levelDivisor: 2,
       minimum: 1,
-      ...(conditionFromSentence(sentence, match.index + match[0].length) ? { condition: conditionFromSentence(sentence, match.index + match[0].length) } : {}),
+      ...(archetypeRuleCondition(sentence, match.index + match[0].length) ? { condition: archetypeRuleCondition(sentence, match.index + match[0].length) } : {}),
     };
   }
 
   const fixed = /\b(?:gains?|receives?|has) (?:an? )?\+(\d+) (?:alchemical |circumstance |competence |enhancement |insight |morale |profane |racial |sacred |trait |untyped )?bonus (?:on|to) initiative(?: checks?| rolls?)?/i.exec(sentence);
-  if (!fixed || unsafeSubject(sentence, fixed.index)) return null;
-  const condition = conditionFromSentence(sentence, fixed.index + fixed[0].length);
+  if (!fixed || archetypeUnsafeSubject(sentence, fixed.index)) return null;
+  const condition = archetypeRuleCondition(sentence, fixed.index + fixed[0].length);
   return {
     sourceFeatureId: feature.id,
     label: "Initiative checks",
-    minimumLevel: Number(sentence.match(/\bAt (\d+)(?:st|nd|rd|th) level\b/i)?.[1] ?? feature.level ?? 1),
+    minimumLevel: Number(sentence.slice(0, fixed.index).match(/\bAt (\d+)(?:st|nd|rd|th) level\b/i)?.[1] ?? feature.level ?? 1),
     base: Number(fixed[1]),
     ...(condition ? { condition } : {}),
   };
@@ -83,20 +83,21 @@ function copySkillProgression(adjustment, skillAdjustments) {
 const numberWords = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
 const parsedNumber = (value) => Number(value) || numberWords[String(value).toLowerCase()] || 0;
 
-function progressionFromSummary(adjustment, summary) {
+export function archetypeRuleProgression(adjustment, summary, targetPattern = /\binitiative\b/i) {
   if (adjustment.bonusByLevel || adjustment.interval || adjustment.levelDivisor) return adjustment;
-  const sentences = splitSentences(summary).filter((sentence) =>
+  const sentences = archetypeRuleSentences(summary).filter((sentence) =>
     (/\b(?:bonus|bonuses)\b/i.test(sentence) && /\b(?:increase|increases)\b/i.test(sentence)) ||
     /\bgains? an additional \+\d+ on each of those checks\b/i.test(sentence),
   );
-  const relevant = sentences.find((sentence) => /\binitiative\b/i.test(sentence)) ??
+  const relevant = sentences.find((sentence) => targetPattern.test(sentence)) ??
     (sentences.length === 1 ? sentences[0] : null);
   if (!relevant) return adjustment;
   const maximum = Number(relevant.match(/maximum(?: bonus)?(?: of)? \+?(\d+)/i)?.[1] ?? 0) || undefined;
 
   if (/\bincreases? to\b/i.test(relevant)) {
-    const milestones = [...relevant.matchAll(/\+(\d+) at (\d+)(?:st|nd|rd|th) level/gi)]
-      .map((match) => ({ level: Number(match[2]), bonus: Number(match[1]) }));
+    const milestones = [...relevant.matchAll(/\+(\d+) at (\d+)(?:st|nd|rd|th)(?: level)?/gi)]
+      .map((match) => ({ level: Number(match[2]), bonus: Number(match[1]) }))
+      .filter((step) => step.level > adjustment.minimumLevel);
     if (milestones.length) return { ...adjustment, bonusByLevel: [{ level: adjustment.minimumLevel, bonus: adjustment.base }, ...milestones] };
   }
 
@@ -104,6 +105,7 @@ function progressionFromSummary(adjustment, summary) {
   const everyThereafter = relevant.match(/Every (\d+) [^.]{0,50}?levels? thereafter[^.]{0,100}?bonus(?:es)?[^.]{0,80}?increases? by \+?(\d+)/i);
   const additionalEvery = relevant.match(/Every (\d+) [^.]{0,50}?levels? thereafter[^.]{0,100}?gains? an additional \+(\d+) on each of those checks/i);
   const forEveryAfter = relevant.match(/bonus(?:es)?[^.]{0,60}?increases? by \+?(\d+) for every (\d+|one|two|three|four|five|six) [^.]{0,40}?levels? (?:after|beyond) (\d+)(?:st|nd|rd|th)/i);
+  const increaseAtAndEvery = relevant.match(/bonus(?:es)?[^.]{0,60}?increases? by \+?(\d+) at (\d+)(?:st|nd|rd|th) level(?:,? and| and) (?:again )?every (\d+) [^.]{0,30}?levels?/i);
   let firstLevel;
   let interval;
   let increment;
@@ -124,6 +126,11 @@ function progressionFromSummary(adjustment, summary) {
     increment = Number(forEveryAfter[1]);
     interval = parsedNumber(forEveryAfter[2]);
     firstLevel = Number(forEveryAfter[3]) + interval;
+  } else if (increaseAtAndEvery) {
+    increment = Number(increaseAtAndEvery[1]);
+    firstLevel = Number(increaseAtAndEvery[2]);
+    interval = Number(increaseAtAndEvery[3]);
+    if (firstLevel <= adjustment.minimumLevel) firstLevel = adjustment.minimumLevel + interval;
   }
   if (!firstLevel || !interval || !increment) return adjustment;
   const bonusByLevel = [{ level: adjustment.minimumLevel, bonus: adjustment.base }];
@@ -143,10 +150,10 @@ export function inferredArchetypeInitiativeBonusDetails(archetype) {
   for (const replacement of archetype?.replacements ?? []) {
     for (const feature of replacement.features ?? []) {
       if (/^(?:Deeds?|Bonus Feats?)$/i.test(feature.name ?? "")) continue;
-      const sentences = splitSentences(feature.summary);
+      const sentences = archetypeRuleSentences(feature.summary);
       const parsed = sentences.flatMap((sentence, index) => {
         const adjustment = adjustmentFromSentence(feature, sentence);
-        return adjustment ? [{ index, adjustment: progressionFromSummary(copySkillProgression(adjustment, skillDetails.adjustments), feature.summary) }] : [];
+        return adjustment ? [{ index, adjustment: archetypeRuleProgression(copySkillProgression(adjustment, skillDetails.adjustments), feature.summary) }] : [];
       });
       for (const entry of parsed) {
         if (!entry.adjustment.condition) {
@@ -157,7 +164,7 @@ export function inferredArchetypeInitiativeBonusDetails(archetype) {
       adjustments.push(...parsed.map(({ adjustment }) => adjustment));
       const hasScheduledProgression = parsed.some(({ adjustment }) => adjustment.bonusByLevel || adjustment.interval);
       const remaining = sentences.filter((sentence, index) =>
-        !replacementBoilerplate(sentence) &&
+        !archetypeReplacementBoilerplate(sentence) &&
         !parsed.some((entry) => entry.index === index) &&
         !(hasScheduledProgression && /\b(?:this|the) bonus\b[^.]{0,100}\b(?:increases?|improves?)\b/i.test(sentence)),
       );

@@ -3,6 +3,7 @@ import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
+import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, inferArchetypeSaveBonusAdjustments } from "./archetype-saves.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
@@ -13,6 +14,7 @@ export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
 export { archetypeSkillBonusAdjustments, inferArchetypeSkillBonusAdjustments };
 export { archetypeInitiativeBonusAdjustments, inferArchetypeInitiativeBonusAdjustments };
+export { archetypeSaveBonusAdjustments, inferArchetypeSaveBonusAdjustments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
@@ -350,7 +352,11 @@ const adjustmentBonusAtLevel = (adjustment, level) => {
 export function archetypeConditionalModifiers(archetypes = [], classLevels = {}) {
   return (archetypes ?? []).flatMap((archetype) => {
     const level = archetypeLevel(archetype, classLevels);
-    return [...(archetype?.conditionalModifiers ?? []), ...archetypeInitiativeBonusAdjustments(archetype).filter((modifier) => modifier.condition)].flatMap((modifier) => {
+    return [
+      ...(archetype?.conditionalModifiers ?? []),
+      ...archetypeInitiativeBonusAdjustments(archetype).filter((modifier) => modifier.condition),
+      ...archetypeSaveBonusAdjustments(archetype).filter((modifier) => modifier.condition),
+    ].flatMap((modifier) => {
       if (!adjustmentAppliesAtLevel(modifier, level)) return [];
       const bonus = adjustmentBonusAtLevel(modifier, level);
       return [{
@@ -370,6 +376,19 @@ export function archetypeInitiativeBonus(archetypes = [], classLevels = {}) {
       .filter((adjustment) => !adjustment.condition && adjustmentAppliesAtLevel(adjustment, level))
       .reduce((subtotal, adjustment) => subtotal + adjustmentBonusAtLevel(adjustment, level), 0);
   }, 0);
+}
+
+export function archetypeSavingThrowBonuses(archetypes = [], classLevels = {}) {
+  const saves = { fortitude: 0, reflex: 0, will: 0 };
+  for (const archetype of archetypes ?? []) {
+    const level = archetypeLevel(archetype, classLevels);
+    for (const adjustment of archetypeSaveBonusAdjustments(archetype)) {
+      if (adjustment.condition || !adjustmentAppliesAtLevel(adjustment, level)) continue;
+      const bonus = adjustmentBonusAtLevel(adjustment, level);
+      for (const save of adjustment.saveTargets) saves[save] += bonus;
+    }
+  }
+  return saves;
 }
 
 export function archetypeSkillBonuses(archetypes = [], classLevels = {}) {
@@ -1429,6 +1448,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const initiativeBonusAdjustments = archetypeInitiativeBonusAdjustments(archetype);
   if (initiativeBonusAdjustments.length)
     automated.push(`${initiativeBonusAdjustments.length} calculated initiative bonus${initiativeBonusAdjustments.length === 1 ? "" : "es"}`);
+  const saveBonusDetails = inferredArchetypeSaveBonusDetails(archetype);
+  const saveBonusAdjustments = archetypeSaveBonusAdjustments(archetype);
+  if (saveBonusAdjustments.length)
+    automated.push(`${saveBonusAdjustments.length} calculated saving-throw bonus${saveBonusAdjustments.length === 1 ? "" : "es"}`);
   const skillBonusDetails = inferredArchetypeSkillBonusDetails(archetype);
   const skillBonusAdjustments = archetypeSkillBonusAdjustments(archetype);
   if (skillBonusAdjustments.length)
@@ -1456,6 +1479,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const adjustmentFeatureIds = new Set([
     ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...initiativeBonusDetails.fullyAutomatedFeatureIds,
+    ...saveBonusDetails.fullyAutomatedFeatureIds,
     ...(archetype.skillBonusAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...skillBonusDetails.fullyAutomatedFeatureIds,
     ...(archetype.landSpeedAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),

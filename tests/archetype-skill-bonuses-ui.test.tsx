@@ -35,6 +35,18 @@ test("inferred permanent initiative bonuses update the live combat total", async
   assert.equal(within(panel).getByText("Initiative").closest("div")?.querySelector("dd")?.textContent, "+3");
 });
 
+test("inferred permanent save bonuses update the live quick-roll modifier", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "rogue");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "4" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "rogue-sanctified-rogue");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  assert.ok(screen.getByRole("button", { name: "Fortitude roll, modifier +2" }));
+  assert.ok(screen.getByRole("button", { name: "Will roll, modifier +2" }));
+});
+
 test("generated archetype bonuses appear in the live skill totals", async () => {
   const user = userEvent.setup();
   render(<Home />);
