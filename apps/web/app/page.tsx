@@ -65,6 +65,7 @@ import {
   abilityNames,
   apgClassResourceMaximums,
   archetypeConditionalModifiers,
+  archetypeInitiativeBonus,
   archetypeSkillBonusAdjustments,
   archetypeSkillBonuses,
   applyArchetypeResourceAdjustments,
@@ -1002,6 +1003,10 @@ export default function Home() {
       skillRanks,
     ],
   );
+  const selectedArchetypeInitiativeBonus = useMemo(
+    () => archetypeInitiativeBonus(allSelectedArchetypes, classLevelMap),
+    [allSelectedArchetypes, classLevelMap],
+  );
   const combat = useMemo(() => {
     const equipmentBonuses = equipmentCombatBonuses(inventory);
     const activeBonus = (target: ActiveEffect["target"]) =>
@@ -1014,6 +1019,7 @@ export default function Home() {
         baseCombat.initiative +
         selectedTraitBonuses.initiative +
         selectedFeatBonuses.initiative +
+        selectedArchetypeInitiativeBonus +
         activeBonus("initiative"),
       saves: {
         fortitude:
@@ -1062,6 +1068,7 @@ export default function Home() {
     baseCombat,
     favoredClassHitPoints,
     inventory,
+    selectedArchetypeInitiativeBonus,
     selectedFeatBonuses,
     selectedTraitBonuses,
   ]);

@@ -58,6 +58,9 @@ export function multiclassAverageHitPoints(classes: CharacterClass[], classLevel
 export function carryingCapacity(strength: number): { light: number; medium: number; heavy: number };
 export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
 export function archetypeConditionalModifiers(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<{ label: string; bonus: number; condition: string; source: string }>;
+export function archetypeInitiativeBonus(archetypes: CharacterArchetype[], classLevels: Record<string, number>): number;
+export function archetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
+export function inferArchetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
 export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): { skillBonuses: Record<string, number>; conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }> };
 export function inferArchetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;
 export function archetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;

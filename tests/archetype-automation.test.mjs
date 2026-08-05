@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 
@@ -23,6 +23,47 @@ test("archetype automation reports calculated and manual mechanics separately", 
 
 test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
+});
+
+test("exact archetype initiative bonuses are inferred and scale at published levels", () => {
+  const tactician = catalogueArchetypes.find((archetype) => archetype.id === "fighter-tactician");
+  assert.ok(tactician);
+  assert.deepEqual(inferArchetypeInitiativeBonusAdjustments(tactician), [{
+    sourceFeatureId: "fighter-tactician-tactical-awareness-ex-2",
+    label: "Initiative checks",
+    minimumLevel: 2,
+    base: 1,
+    bonusByLevel: [
+      { level: 2, bonus: 1 },
+      { level: 6, bonus: 2 },
+      { level: 10, bonus: 3 },
+      { level: 14, bonus: 4 },
+      { level: 18, bonus: 5 },
+    ],
+  }]);
+  assert.equal(archetypeInitiativeBonus([tactician], { fighter: 1 }), 0);
+  assert.equal(archetypeInitiativeBonus([tactician], { fighter: 10 }), 3);
+  assert.equal(archetypeInitiativeBonus([tactician], { fighter: 20 }), 5);
+  assert.ok(!archetypeAutomationSummary(tactician).manual.some((item) => item.startsWith("Tactical Awareness")));
+});
+
+test("conditional initiative rules remain separate from the always-applied roll modifier", () => {
+  const deepWalker = catalogueArchetypes.find((archetype) => archetype.id === "ranger-deep-walker");
+  assert.ok(deepWalker);
+  assert.equal(archetypeInitiativeBonus([deepWalker], { ranger: 18 }), 0);
+  assert.deepEqual(archetypeConditionalModifiers([deepWalker], { ranger: 18 }), [{
+    label: "Initiative checks",
+    condition: "while underground (in caves and dungeons)",
+    bonus: 11,
+    source: "Deep Walker",
+  }]);
+});
+
+test("explicit initiative overlays suppress inferred duplicates", () => {
+  const castellan = catalogueArchetypes.find((archetype) => archetype.id === "cavalier-castellan");
+  assert.ok(castellan);
+  assert.equal(archetypeInitiativeBonusAdjustments(castellan).length, 0);
+  assert.equal(archetypeConditionalModifiers([castellan], { cavalier: 13 }).filter((modifier) => /initiative/i.test(modifier.label)).length, 1);
 });
 
 test("common exact skill-bonus rules are inferred conservatively", () => {
@@ -165,7 +206,7 @@ test("exact conditional skill bonuses retain their published trigger", () => {
   assert.equal(archetypeSkillBonuses([archetype("bard-magician")], { bard: 10 }).skillBonuses.Spellcraft, 5);
   assert.equal(archetypeSkillBonuses([archetype("bard-detective")], { bard: 10 }).conditionalModifiers.find((item) => item.label === "Perception checks")?.bonus, 5);
   assert.equal(archetypeSkillBonuses([archetype("barbarian-brutish-swamper")], { barbarian: 20 }).conditionalModifiers.find((item) => item.label === "Survival checks")?.bonus, 8);
-  assert.ok(archetypeAutomationSummary(archetype("barbarian-brutish-swamper")).manual.some((item) => item.startsWith("Home")), "the parallel initiative bonus remains separately manual");
+  assert.ok(!archetypeAutomationSummary(archetype("barbarian-brutish-swamper")).manual.some((item) => item.startsWith("Home")), "the shared skill and initiative progression is now fully calculated");
 });
 
 test("skill-bonus inference remains normalized and conservative across the full catalogue", () => {

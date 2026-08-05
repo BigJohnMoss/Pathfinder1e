@@ -7,6 +7,7 @@ let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
 let cleanup: typeof import("@testing-library/react").cleanup;
 let fireEvent: typeof import("@testing-library/react").fireEvent;
+let within: typeof import("@testing-library/react").within;
 let userEvent: typeof import("@testing-library/user-event").default;
 let Home: typeof import("../apps/web/app/page").default;
 
@@ -14,12 +15,25 @@ test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, localStorage: dom.window.localStorage, React });
   Object.defineProperty(globalThis, "navigator", { configurable: true, value: dom.window.navigator });
-  ({ render, screen, cleanup, fireEvent } = await import("@testing-library/react"));
+  ({ render, screen, cleanup, fireEvent, within } = await import("@testing-library/react"));
   userEvent = (await import("@testing-library/user-event")).default;
   Home = (await import("../apps/web/app/page")).default;
 });
 
 test.afterEach(() => { cleanup(); localStorage.clear(); });
+
+test("inferred permanent initiative bonuses update the live combat total", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "10" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "fighter-tactician");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const panel = screen.getByRole("heading", { name: "Core statistics" }).closest("article");
+  assert.ok(panel);
+  assert.equal(within(panel).getByText("Initiative").closest("div")?.querySelector("dd")?.textContent, "+3");
+});
 
 test("generated archetype bonuses appear in the live skill totals", async () => {
   const user = userEvent.setup();
