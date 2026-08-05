@@ -176,7 +176,7 @@ test("builds a complete Fighter through level 20 and preserves the user journey"
   await expect(coreStatistics.getByText("CMB / CMD").locator("..")).toContainText(
     "+25 / 35",
   );
-  await expect(page.getByRole("heading", { name: "Conditional trait modifiers" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Conditional modifiers" })).toBeVisible();
 
   await page.getByRole("button", { name: "Save" }).click();
   await page.reload();
