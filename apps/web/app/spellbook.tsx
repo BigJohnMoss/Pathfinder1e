@@ -20,11 +20,43 @@ type SpellTraitBonuses = Record<
   string,
   { casterLevel: number; metamagicLevelAdjustment: number }
 >;
+type OnDemandSpellCost = {
+  resourceId?: string;
+  cost: number;
+  label: string;
+  consumesSpellSlot?: boolean;
+  saveDcBonus?: number;
+  concentrationBonus?: number;
+  signatureSpellTechniques?: boolean;
+  summonTracker?: { name: string; description: string; rounds: number; replaceExisting?: boolean; untilDismissed: boolean };
+};
 
 const levelLabel = (level: number) =>
   level === 0
     ? "Cantrips"
     : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
+
+const signatureEffectName = (spell: Spell) => `Signature spell: ${spell.name}`;
+const spellAreaText = (spell: Spell) => (spell.area ?? "").toLowerCase();
+const isLineSpell = (spell: Spell) => /\bline\b/.test(spellAreaText(spell));
+const isConeSpell = (spell: Spell) => /\bcone\b/.test(spellAreaText(spell));
+const isBurstOrSpreadSpell = (spell: Spell) => /\b(?:burst|spread)\b/.test(spellAreaText(spell));
+const spellAreaDimension = (spell: Spell) => {
+  const areaFeet = Number(spell.area?.match(/(\d+)\s*-?\s*ft/i)?.[1] ?? 0);
+  const rangeFeet = Number(spell.range?.match(/(\d+)\s*-?\s*ft/i)?.[1] ?? 0);
+  return Math.max(5, areaFeet || rangeFeet || 5);
+};
+const signatureDurationRounds = (spell: Spell, casterLevel: number) => {
+  const duration = spell.duration?.toLowerCase().trim() ?? "";
+  if (!duration || /instantaneous/.test(duration)) return 0;
+  const amount = Number(duration.match(/(\d+)/)?.[1] ?? 1);
+  if (/rounds?\/level/.test(duration)) return Math.min(999, amount * Math.max(1, casterLevel));
+  if (/minutes?\/level/.test(duration)) return Math.min(999, amount * 10 * Math.max(1, casterLevel));
+  if (/hours?\/level/.test(duration)) return 999;
+  if (/\brounds?\b/.test(duration)) return Math.min(999, amount);
+  if (/\bminutes?\b/.test(duration)) return Math.min(999, amount * 10);
+  return 999;
+};
 
 export function Spellbook({
   spells,
@@ -55,6 +87,7 @@ export function Spellbook({
   bondedObjectCastResource,
   abilityModifiers = {},
   spellMastery,
+  activeEffects = [],
   onAddEffect,
   onRemoveEffectByName,
 }: {
@@ -87,13 +120,14 @@ export function Spellbook({
   oppositionSchoolIds?: string[];
   oppositionSpellIds?: string[];
   restrictedBonus?: { eligibleSpellIds: string[]; countPerLevel: number; label: string } | null;
-  onDemandSpellCosts?: Record<string, { resourceId?: string; cost: number; label: string; consumesSpellSlot?: boolean; saveDcBonus?: number; concentrationBonus?: number; summonTracker?: { name: string; description: string; rounds: number; replaceExisting?: boolean; untilDismissed: boolean } }>;
+  onDemandSpellCosts?: Record<string, OnDemandSpellCost>;
   requiredPreparedSchool?: string;
   spellAutomation?: PreparedSpellAutomation;
   criticalStrikeResource?: { maximum: number | null; used: number; onUsedChange: (used: number) => void };
   bondedObjectCastResource?: { label: string; maximum: number | null; used: number; onUsedChange: (used: number) => void };
   abilityModifiers?: Partial<Record<AbilityName, number>>;
   spellMastery?: { limit: number; selectedIds: string[]; catalogue: Spell[]; onChange: (spellIds: string[]) => void };
+  activeEffects?: ActiveEffect[];
   onAddEffect?: (effect: ActiveEffect) => void;
   onRemoveEffectByName?: (name: string) => void;
 }) {
@@ -110,6 +144,9 @@ export function Spellbook({
   const [masteryQuery, setMasteryQuery] = useState("");
   const [spellstrikeResult, setSpellstrikeResult] = useState("");
   const [bondedObjectCastResult, setBondedObjectCastResult] = useState("");
+  const [signatureTechniqueResults, setSignatureTechniqueResults] = useState<Record<string, string>>({});
+  const [spellwarpModes, setSpellwarpModes] = useState<Record<string, "reduce" | "line">>({});
+  const [spellwarpSizes, setSpellwarpSizes] = useState<Record<string, number>>({});
   useEffect(
     () => setLevelFilter(String(maximumSpellLevel)),
     [maximumSpellLevel],
@@ -722,6 +759,18 @@ export function Spellbook({
                   const onDemandCost = onDemandSpellCosts[spell.id];
                   const canCastOnDemand = Boolean(onDemandCost && (!onDemandCost.resourceId || (reservoir && reservoir.current >= onDemandCost.cost)));
                   const consumesSpellSlot = onDemandCost?.consumesSpellSlot ?? true;
+                  const signatureTechniques = Boolean(onDemandCost?.signatureSpellTechniques);
+                  const signatureRounds = signatureTechniques ? signatureDurationRounds(spell, casterLevel ?? 1) : 0;
+                  const activeSignatureEffect = activeEffects.some((effect) => effect.name === signatureEffectName(spell));
+                  const lineSpell = signatureTechniques && isLineSpell(spell);
+                  const coneSpell = signatureTechniques && isConeSpell(spell);
+                  const canUseSignatureTechnique = Boolean(reservoir && reservoir.current >= 1 && canCast);
+                  const warpMode = spellwarpModes[spell.id] ?? "reduce";
+                  const originalAreaDimension = spellAreaDimension(spell);
+                  const maximumReducedDimension = Math.max(5, originalAreaDimension - 5);
+                  const reducibleArea = originalAreaDimension > 5;
+                  const warpableSpell = signatureTechniques && (coneSpell || (isBurstOrSpreadSpell(spell) && reducibleArea));
+                  const warpSize = Math.max(5, Math.min(maximumReducedDimension, spellwarpSizes[spell.id] ?? maximumReducedDimension));
                   const shareable = shareEligible(spell);
                   const boostDescriptor = qualifyingDescriptor(spell);
                   const automaticDuration = derivedDuration(spell);
@@ -734,6 +783,43 @@ export function Spellbook({
                       shareTarget.trim() &&
                       canCast,
                   );
+                  const recordSignatureDuration = () => {
+                    if (!signatureRounds || !onAddEffect) return;
+                    onAddEffect({
+                      id: `signature-spell-${spell.id}-${Date.now()}-${Math.random()}`,
+                      name: signatureEffectName(spell),
+                      target: "area",
+                      bonus: 0,
+                      description: `${spell.name} is active as a signature spell. Duration: ${spell.duration}. Spell Specialist can dismiss it by spending 1 arcane reservoir point.`,
+                      roundsRemaining: signatureRounds,
+                    });
+                  };
+                  const castSpell = (signatureTechnique?: string) => {
+                    if (signatureTechnique && reservoir)
+                      onReservoirChange(reservoir.current - 1);
+                    else if (prepared === 0 && onDemandCost?.resourceId && reservoir)
+                      onReservoirChange(reservoir.current - onDemandCost.cost);
+                    if (level > 0 && (prepared > 0 || consumesSpellSlot))
+                      onSlotUsesChange({
+                        ...slotUses,
+                        [level]: (slotUses[level] ?? 0) + 1,
+                      });
+                    if (onDemandCost?.summonTracker && onAddEffect) {
+                      const tracker = onDemandCost.summonTracker;
+                      if (tracker.replaceExisting) onRemoveEffectByName?.(tracker.name);
+                      onAddEffect({
+                        id: `conjurers-focus-${Date.now()}-${Math.random()}`,
+                        name: tracker.name,
+                        target: "allies",
+                        bonus: 0,
+                        description: `${tracker.description.replaceAll("{spell}", spell.name)} ${tracker.untilDismissed ? "Duration: until dismissed." : `Duration: ${tracker.rounds} rounds.`}`,
+                        roundsRemaining: tracker.rounds,
+                      });
+                    }
+                    recordSignatureDuration();
+                    if (signatureTechnique)
+                      setSignatureTechniqueResults((current) => ({ ...current, [spell.id]: signatureTechnique }));
+                  };
                   return (
                     <article key={spell.id}>
                       <div>
@@ -772,30 +858,17 @@ export function Spellbook({
                           className="cast-spell-button"
                           aria-label={`Cast ${spell.name}`}
                           disabled={(prepared === 0 && !canCastOnDemand) || (consumesSpellSlot && !canCast)}
-                          onClick={() => {
-                            if (prepared === 0 && onDemandCost?.resourceId && reservoir)
-                              onReservoirChange(reservoir.current - onDemandCost.cost);
-                            if (level > 0 && (prepared > 0 || consumesSpellSlot))
-                              onSlotUsesChange({
-                                ...slotUses,
-                                [level]: (slotUses[level] ?? 0) + 1,
-                              });
-                            if (onDemandCost?.summonTracker && onAddEffect) {
-                              const tracker = onDemandCost.summonTracker;
-                              if (tracker.replaceExisting) onRemoveEffectByName?.(tracker.name);
-                              onAddEffect({
-                                id: `conjurers-focus-${Date.now()}-${Math.random()}`,
-                                name: tracker.name,
-                                target: "allies",
-                                bonus: 0,
-                                description: `${tracker.description.replaceAll("{spell}", spell.name)} ${tracker.untilDismissed ? "Duration: until dismissed." : `Duration: ${tracker.rounds} rounds.`}`,
-                                roundsRemaining: tracker.rounds,
-                              });
-                            }
-                          }}
+                          onClick={() => castSpell()}
                         >
                               Cast
                             </button>
+                            {signatureTechniques && signatureRounds > 0 && <button type="button" aria-label={`Dismiss ${spell.name} with Spell Specialist`} disabled={!activeSignatureEffect || !reservoir || reservoir.current < 1} onClick={() => {
+                              if (!reservoir) return;
+                              onReservoirChange(reservoir.current - 1);
+                              onRemoveEffectByName?.(signatureEffectName(spell));
+                              setSignatureTechniqueResults((current) => ({ ...current, [spell.id]: `${spell.name} dismissed as a swift action. 1 arcane reservoir point spent.` }));
+                            }}>Dismiss</button>}
+                            {lineSpell && <button type="button" aria-label={`Cast ${spell.name} with Spell Bender`} disabled={!canUseSignatureTechnique} onClick={() => castSpell(`${spell.name}'s line bends up to 90 degrees at one chosen point. 1 arcane reservoir point spent.`)}>Bend line</button>}
                             {spellstrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Spellstrike`} disabled={!canCast} onClick={() => useSpellstrike(spell, level)}>Spellstrike</button>}
                             {criticalStrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Critical Strike`} disabled={!canCast || !criticalStrikeResource || (criticalStrikeResource.maximum !== null && criticalStrikeResource.used >= criticalStrikeResource.maximum)} onClick={() => useCriticalStrike(spell, level)}>Critical Strike</button>}
                             {bondedObjectCastResource && <button type="button" aria-label={`Cast ${spell.name} with ${bondedObjectCastResource.label}`} disabled={bondedObjectCastResource.maximum !== null && bondedObjectCastResource.used >= bondedObjectCastResource.maximum} onClick={() => useBondedObjectCast(spell)}>{bondedObjectCastResource.label}</button>}
@@ -814,6 +887,12 @@ export function Spellbook({
                           <button type="button" className="descriptor-boost-button" aria-label={`Cast ${spell.name} with ${descriptorBoostRules!.label} caster level`} disabled={prepared === 0 || !canUseDescriptorBoost(spell, level) || !requiredSchoolPrepared(level)} onClick={() => useDescriptorBoost(spell, level, "casterLevel")}>+{descriptorBoostRules!.casterLevelBonus} CL</button>
                           <button type="button" className="descriptor-boost-button" aria-label={`Cast ${spell.name} with ${descriptorBoostRules!.label} save DC`} disabled={prepared === 0 || !canUseDescriptorBoost(spell, level) || !requiredSchoolPrepared(level)} onClick={() => useDescriptorBoost(spell, level, "saveDc")}>+{descriptorBoostRules!.saveDcBonus} DC</button>
                         </>}
+                        {warpableSpell && <div className="signature-techniques">
+                          {coneSpell && <label>Spellwarp mode<select aria-label={`${spell.name} Spellwarp mode`} value={warpMode} onChange={(event) => setSpellwarpModes((current) => ({ ...current, [spell.id]: event.target.value as "reduce" | "line" }))}><option value="reduce">Shorten cone</option><option value="line">Convert cone to line</option></select></label>}
+                          {warpMode === "reduce" && <label>{coneSpell ? "Cone length" : "Area radius"}<input aria-label={`${spell.name} Spellwarp size`} type="number" min="5" max={maximumReducedDimension} step="5" value={warpSize} disabled={!reducibleArea} onChange={(event) => setSpellwarpSizes((current) => ({ ...current, [spell.id]: Math.max(5, Math.min(maximumReducedDimension, Math.round((Number(event.target.value) || 5) / 5) * 5)) }))} /> ft.</label>}
+                          <button type="button" aria-label={`Cast ${spell.name} with Spellwarp`} disabled={!canUseSignatureTechnique || (warpMode === "reduce" && !reducibleArea)} onClick={() => castSpell(warpMode === "line" && coneSpell ? `${spell.name}'s cone becomes a line with length equal to its ${spell.range ?? "spell range"}. 1 arcane reservoir point spent.` : `${spell.name}'s ${coneSpell ? "cone length" : "area radius"} is reduced to ${warpSize} feet. 1 arcane reservoir point spent.`)}>Spellwarp</button>
+                        </div>}
+                        {signatureTechniqueResults[spell.id] && <output className="signature-technique-result" aria-label={`${spell.name} signature technique result`}>{signatureTechniqueResults[spell.id]}</output>}
                         <div className="spell-count">
                           <button
                             type="button"

@@ -40,8 +40,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Spell%20Specialist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression, one level-matched signature spell for every spell level, spontaneous signature casting, preparation-capacity costs, save DC bonuses, and concentration bonuses are automated. Dismiss, Spell Bender, Spellwarp, and level-up-only exchanges remain descriptive."
+    "Replacement progression, one level-matched signature spell for every spell level, spontaneous signature casting, preparation-capacity costs, save DC bonuses, concentration bonuses, reservoir-paid Dismiss, line-only Spell Bender, area-aware Spellwarp, duration tracking, and one exchange credit per gained Arcanist class level are automated."
   ]
 }

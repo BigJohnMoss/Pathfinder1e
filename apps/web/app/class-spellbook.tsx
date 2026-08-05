@@ -43,6 +43,7 @@ const signatureSpellOption = (spell: CharacterSpell): CharacterOption => ({
   preparedCapacityCost: 1,
   spellSaveDcBonus: 1,
   concentrationBonus: { base: 2, improvedAtLevel: 10, improved: 4 },
+  signatureSpellTechniques: true,
   source: { title: "Advanced Class Guide", page: 78, url: "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Spell%20Specialist" },
 });
 
@@ -62,6 +63,7 @@ export function ClassSpellbook({
   criticalStrikeResource,
   bondedObjectCastResource,
   onRefreshClassResources,
+  activeEffects = [],
   onAddEffect,
   onRemoveEffectByName,
 }: {
@@ -80,6 +82,7 @@ export function ClassSpellbook({
   criticalStrikeResource?: { maximum: number | null; used: number; onUsedChange: (used: number) => void };
   bondedObjectCastResource?: { label: string; maximum: number | null; used: number; onUsedChange: (used: number) => void };
   onRefreshClassResources?: () => void;
+  activeEffects?: ActiveEffect[];
   onAddEffect?: (effect: ActiveEffect) => void;
   onRemoveEffectByName?: (name: string) => void;
 }) {
@@ -132,7 +135,7 @@ export function ClassSpellbook({
     const resource = option.resourceCost;
     const cost = !resource || classLevel >= (resource.freeAtClassLevel ?? Number.POSITIVE_INFINITY) ? 0 : Math.max(resource.minimum ?? 0, (resource.base ?? 0) + (resource.levelDivisor ? Math.floor((option.spellLevel ?? 0) / resource.levelDivisor) : 0));
     const concentrationBonus = classLevel >= (option.concentrationBonus?.improvedAtLevel ?? Number.POSITIVE_INFINITY) ? option.concentrationBonus?.improved ?? option.concentrationBonus?.base ?? 0 : option.concentrationBonus?.base ?? 0;
-    return [[option.spellId, { resourceId: resource?.resourceId, cost, label: resource?.label ?? "Signature Spell", consumesSpellSlot: resource?.consumesSpellSlot ?? true, saveDcBonus: option.spellSaveDcBonus ?? 0, concentrationBonus, ...(resource?.summonTracker ? { summonTracker: { name: resource.summonTracker.name, description: resource.summonTracker.description, rounds: classLevel >= (resource.summonTracker.untilDismissedAtClassLevel ?? Number.POSITIVE_INFINITY) ? 999 : Math.min(999, classLevel * resource.summonTracker.roundsPerClassLevel), replaceExisting: resource.summonTracker.replaceExisting, untilDismissed: classLevel >= (resource.summonTracker.untilDismissedAtClassLevel ?? Number.POSITIVE_INFINITY) } } : {}) }]];
+    return [[option.spellId, { resourceId: resource?.resourceId, cost, label: resource?.label ?? "Signature Spell", consumesSpellSlot: resource?.consumesSpellSlot ?? true, saveDcBonus: option.spellSaveDcBonus ?? 0, concentrationBonus, signatureSpellTechniques: option.signatureSpellTechniques ?? false, ...(resource?.summonTracker ? { summonTracker: { name: resource.summonTracker.name, description: resource.summonTracker.description, rounds: classLevel >= (resource.summonTracker.untilDismissedAtClassLevel ?? Number.POSITIVE_INFINITY) ? 999 : Math.min(999, classLevel * resource.summonTracker.roundsPerClassLevel), replaceExisting: resource.summonTracker.replaceExisting, untilDismissed: classLevel >= (resource.summonTracker.untilDismissedAtClassLevel ?? Number.POSITIVE_INFINITY) } } : {}) }]];
   })), [characterClass.id, classLevel, spellOptions]);
   const grantedSpellIds = useMemo(() => grantedSpells.map((spell) => spell.id), [grantedSpells]);
   const oppositionSchoolIds = useMemo(() => {
@@ -184,5 +187,5 @@ export function ClassSpellbook({
     onRefreshClassResources?.();
   };
   if (spontaneousCasting) return <SpontaneousSpellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={spontaneousCasting.slots} knownLimits={spontaneousCasting.known} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay} />;
-  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} casterLevel={classLevel} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} onDemandSpellCosts={onDemandSpellCosts} requiredPreparedSchool={requiredSchool} spellAutomation={classSpellAutomation(characterClass, classLevel, Object.values(selectedOptions))} criticalStrikeResource={criticalStrikeResource} bondedObjectCastResource={bondedObjectCastResource} abilityModifiers={calculateAbilityModifiers(abilities)} onAddEffect={onAddEffect} onRemoveEffectByName={onRemoveEffectByName} />;
+  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} casterLevel={classLevel} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} onDemandSpellCosts={onDemandSpellCosts} requiredPreparedSchool={requiredSchool} spellAutomation={classSpellAutomation(characterClass, classLevel, Object.values(selectedOptions))} criticalStrikeResource={criticalStrikeResource} bondedObjectCastResource={bondedObjectCastResource} abilityModifiers={calculateAbilityModifiers(abilities)} activeEffects={activeEffects} onAddEffect={onAddEffect} onRemoveEffectByName={onRemoveEffectByName} />;
 }
