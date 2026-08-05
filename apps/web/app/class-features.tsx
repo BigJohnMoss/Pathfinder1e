@@ -10,6 +10,7 @@ export type DailyResource = {
   used: number;
   refreshUsed?: number;
   refreshCadence?: "day" | "week";
+  hidden?: boolean;
   onUsedChange: (used: number) => void;
 };
 
@@ -49,7 +50,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
 
   return <section className="features">
     <div><p className="eyebrow">LEVEL {level}</p><h2>{className} features</h2><p>Review everything earned at this level, then configure required class choices below.</p></div>
-    {dailyResources.map((resource) => {
+    {dailyResources.filter((resource) => !resource.hidden).map((resource) => {
       const atWill = resource.maximum === null;
       const used = atWill ? 0 : Math.min(resource.used, resource.maximum ?? 0);
       const remaining = atWill ? 0 : (resource.maximum ?? 0) - used;

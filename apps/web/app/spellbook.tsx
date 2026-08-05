@@ -208,6 +208,28 @@ export function Spellbook({
     const slot = slots.find((entry) => entry.level === level);
     return slot ? slot.count - (slotUses[level] ?? 0) : Infinity;
   };
+  const deathReleaseEffect = activeEffects.find((effect) => effect.deathRelease);
+  const deathReleaseActive = Boolean(deathReleaseEffect);
+  const deathReleaseBlocks = (spell: Spell) => {
+    const rulesText = [spell.range, spell.effect, spell.summary, spell.description].filter(Boolean).join(" ");
+    return spell.range?.trim().toLowerCase() === "touch" || /\b(?:melee|ranged) touch attack\b/i.test(rulesText);
+  };
+  const deathReleaseCost = (level: number) => 1 + level;
+  const canCastWithDeathRelease = (spell: Spell, level: number) => !deathReleaseActive || Boolean(reservoir && !deathReleaseBlocks(spell) && reservoir.current >= deathReleaseCost(level));
+  const spendDeathRelease = (spell: Spell, level: number) => {
+    if (!deathReleaseActive) return true;
+    if (!reservoir || deathReleaseBlocks(spell) || reservoir.current < deathReleaseCost(level)) return false;
+    const remaining = reservoir.current - deathReleaseCost(level);
+    onReservoirChange(remaining);
+    onRemoveEffectByName?.(deathReleaseEffect!.name);
+    if (remaining > 0 && onAddEffect) onAddEffect({
+      ...deathReleaseEffect!,
+      id: `death-release-${Date.now()}-${Math.random()}`,
+      roundsRemaining: 2,
+      description: `${spell.name} cast from the corpse for ${deathReleaseCost(level)} reservoir points. Cast again next round or the spirit disappears.`,
+    });
+    return true;
+  };
   const fastHealingRules = spellAutomation?.fastHealingAura;
   const eligibleFastHealingSlots = fastHealingRules
     ? slots.filter((slot) => slot.level >= fastHealingRules.minimumSpellLevel && slot.count > 0)
@@ -266,6 +288,10 @@ export function Spellbook({
     setShareResult(
       `Shared ${spell.name} with ${shareTarget.trim()} ${shareRules.range === "touch" ? "by touch" : `within ${shareRules.range}`}.`,
     );
+  };
+  const castPreparedSpell = (spell: Spell, level: number) => {
+    if (!spendDeathRelease(spell, level)) return;
+    useSpellSlot(level);
   };
   const spellstrikeEligible = (spell: Spell) => Boolean(
     spellAutomation?.spellstrike && (
@@ -584,6 +610,7 @@ export function Spellbook({
         className="prepared-summary"
         aria-labelledby="prepared-today-heading"
       >
+        {deathReleaseActive && <aside className="death-release-casting" role="status"><strong>Death&apos;s Release spirit active</strong><span>Each spell costs 1 + its spell level in reservoir points. Touch and ranged-touch spells are unavailable. Cast this round or the spirit disappears.</span></aside>}
         {spellstrikeResult && <output aria-label="Spellstrike result">{spellstrikeResult}</output>}
         {bondedObjectCastResult && <output aria-label={`${bondedObjectCastResource?.label ?? "Bonded object"} result`}>{bondedObjectCastResult}</output>}
         <div className="prepared-summary-heading">
@@ -618,7 +645,7 @@ export function Spellbook({
                   </h4>
                   <ul>
                     {selections.map(({ spell, count }) => {
-                      const canCast = level === 0 || remainingSlots(level) > 0;
+                      const canCast = (level === 0 || remainingSlots(level) > 0) && canCastWithDeathRelease(spell, level);
                       const shareable = shareEligible(spell);
                       const boostDescriptor = qualifyingDescriptor(spell);
                       const automaticDuration = derivedDuration(spell);
@@ -646,7 +673,8 @@ export function Spellbook({
                               type="button"
                               aria-label={`Quick cast ${spell.name}`}
                               disabled={!canCast}
-                              onClick={() => useSpellSlot(level)}
+                              title={deathReleaseActive && deathReleaseBlocks(spell) ? "Death's Release cannot deliver touch or ranged-touch spells." : deathReleaseActive && reservoir && reservoir.current < deathReleaseCost(level) ? `Death's Release requires ${deathReleaseCost(level)} reservoir points.` : undefined}
+                              onClick={() => castPreparedSpell(spell, level)}
                             >
                               Cast
                             </button>
@@ -755,7 +783,7 @@ export function Spellbook({
                     && (restrictedIneligibleUsage[level] ?? 0) + preparationCost >= baseLimit;
                   const full =
                     preparedCount(level) + preparationCost > limitFor(level) || restrictedIneligibleFull || reservesRequiredSchoolSlot;
-                  const canCast = (level === 0 || remainingSlots(level) > 0) && requiredSchoolPrepared(level);
+                  const canCast = (level === 0 || remainingSlots(level) > 0) && requiredSchoolPrepared(level) && canCastWithDeathRelease(spell, level);
                   const onDemandCost = onDemandSpellCosts[spell.id];
                   const canCastOnDemand = Boolean(onDemandCost && (!onDemandCost.resourceId || (reservoir && reservoir.current >= onDemandCost.cost)));
                   const consumesSpellSlot = onDemandCost?.consumesSpellSlot ?? true;
@@ -795,6 +823,7 @@ export function Spellbook({
                     });
                   };
                   const castSpell = (signatureTechnique?: string) => {
+                    if (!spendDeathRelease(spell, level)) return;
                     if (signatureTechnique && reservoir)
                       onReservoirChange(reservoir.current - 1);
                     else if (prepared === 0 && onDemandCost?.resourceId && reservoir)
@@ -858,6 +887,7 @@ export function Spellbook({
                           className="cast-spell-button"
                           aria-label={`Cast ${spell.name}`}
                           disabled={(prepared === 0 && !canCastOnDemand) || (consumesSpellSlot && !canCast)}
+                          title={deathReleaseActive && deathReleaseBlocks(spell) ? "Death's Release cannot deliver touch or ranged-touch spells." : deathReleaseActive && reservoir && reservoir.current < deathReleaseCost(level) ? `Death's Release requires ${deathReleaseCost(level)} reservoir points.` : undefined}
                           onClick={() => castSpell()}
                         >
                               Cast

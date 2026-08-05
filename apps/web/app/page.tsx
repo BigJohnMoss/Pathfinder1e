@@ -35,6 +35,7 @@ import {
 } from "./equipment-panel";
 import { LevelUpPanel } from "./level-up-panel";
 import { ActivePlayPanel } from "./active-play-panel";
+import { TwilightSageControls } from "./twilight-sage-controls";
 import { CharacterWorkspace } from "./character-workspace";
 import { LevelProgression } from "./level-progression";
 import {
@@ -2515,6 +2516,7 @@ export default function Home() {
           unit: adjustment?.unit ?? resourceLabels[resourceId]?.[1] ?? "use",
           maximum: resourceMaximum,
           refreshCadence: adjustment?.refreshCadence ?? "day",
+          hidden: adjustment?.hidden ?? false,
           used: classResourceUsesByClass[resourceClassId]?.[resourceId] ?? 0,
           onUsedChange: (used: number) =>
             setClassResourceUsesByClass((current) => ({
@@ -3742,10 +3744,19 @@ export default function Home() {
     );
   };
   const loadCharacter = () => {
-    const active = characterLibrary.characters.find(
-      (entry) => entry.id === characterLibrary.activeCharacterId,
+    let latestLibrary = characterLibrary;
+    try {
+      const storedLibrary = localStorage.getItem(characterLibraryKey);
+      if (storedLibrary)
+        latestLibrary = normalizeCharacterLibrary(JSON.parse(storedLibrary));
+    } catch {
+      // Fall back to the last valid in-memory library.
+    }
+    const active = latestLibrary.characters.find(
+      (entry) => entry.id === latestLibrary.activeCharacterId,
     );
     if (active) {
+      if (latestLibrary !== characterLibrary) setCharacterLibrary(latestLibrary);
       applyCharacterDraft(active.draft, "Loaded saved character");
       return;
     }
@@ -4376,6 +4387,21 @@ export default function Home() {
                 onRemoveEffectByName={(name) => setActiveEffects((current) => current.filter((effect) => effect.name !== name))}
                 onTemporaryHitPointsChange={setTemporaryHitPoints}
               />
+              {progression.features.some((feature) => feature.id === "arcanist-twilight-sage-consume-life-su-1") && reservoir && <TwilightSageControls
+                characterLevel={level}
+                arcanistLevel={classLevelMap.arcanist ?? 0}
+                charismaModifier={combat.abilityModifiers.charisma}
+                reservoirPoints={reservoirPoints}
+                reservoirMaximum={reservoir.maximum}
+                onReservoirPointsChange={setReservoirPoints}
+                barrierUses={classDailyResources.find((resource) => resource.id === "twilightBarrierActivations")}
+                transferResource={classDailyResources.find((resource) => resource.id === "twilightTransfer")}
+                activeEffects={activeEffects}
+                temporaryHitPoints={temporaryHitPoints}
+                onTemporaryHitPointsChange={setTemporaryHitPoints}
+                onAddEffect={addActiveEffect}
+                onRemoveEffectByName={(name) => setActiveEffects((current) => current.filter((effect) => effect.name !== name))}
+              />}
               <FavoredClassBenefits allocations={favoredClassAlternateBonuses} />
               <ArchetypeAutomationStatus archetypes={selectedArchetypes} feats={feats} />
               {classOptionChoices.length > 0 && (

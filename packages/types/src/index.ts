@@ -126,6 +126,10 @@ export interface ActiveEffect {
   damageType?: string;
   temporaryHitPointsGranted?: number;
   consumeOnUse?: boolean;
+  expiresWhenTemporaryHitPointsLost?: boolean;
+  retaliationDamage?: number;
+  retaliationDamageType?: string;
+  deathRelease?: boolean;
   d20Check?: { label: string; modifier: number; targetDc: number; maximumSpellLevel?: number };
 }
 
@@ -437,6 +441,7 @@ export interface CharacterArchetype {
     advancementOptionId?: string;
     requiredOptionId?: string;
     refreshCadence?: "day" | "week";
+    hidden?: boolean;
   }>;
   optionGroupAugmentations?: OptionGroupAugmentation[];
   prohibitedOptionIds?: string[];
