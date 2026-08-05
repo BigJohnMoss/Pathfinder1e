@@ -94,10 +94,41 @@ test("inferred bonuses preserve specialized skills and do not duplicate explicit
   assert.equal(archetypeSkillBonuses([explicit], { wizard: 1 }).skillBonuses["Knowledge (planes)"], 4);
 });
 
+test("exact skill-bonus scaling language produces published milestone tables", () => {
+  const archetype = (id) => catalogueArchetypes.find((item) => item.id === id);
+  assert.equal(archetypeSkillBonuses([archetype("bard-wit")], { bard: 3 }).skillBonuses.Bluff, 1);
+  assert.equal(archetypeSkillBonuses([archetype("bard-wit")], { bard: 4 }).skillBonuses.Bluff, 2);
+  assert.equal(archetypeSkillBonuses([archetype("bard-wit")], { bard: 20 }).skillBonuses.Bluff, 6);
+  assert.equal(archetypeSkillBonuses([archetype("mesmerist-vexing-trickster")], { mesmerist: 1 }).skillBonuses.Stealth, 1);
+  assert.equal(archetypeSkillBonuses([archetype("mesmerist-vexing-trickster")], { mesmerist: 16 }).skillBonuses.Stealth, 6);
+  assert.equal(archetypeSkillBonuses([archetype("rogue-sczarni-swindler")], { rogue: 2 }).skillBonuses.Bluff, undefined);
+  assert.equal(archetypeSkillBonuses([archetype("rogue-sczarni-swindler")], { rogue: 18 }).skillBonuses["Profession (gambler)"], 6);
+  assert.equal(archetypeSkillBonuses([archetype("swashbuckler-daring-infiltrator")], { swashbuckler: 18 }).skillBonuses.Bluff, 5);
+  assert.ok(!archetypeAutomationSummary(archetype("mesmerist-vexing-trickster")).manual.some((item) => item.startsWith("Consummate Trickster")));
+  assert.ok(!archetypeAutomationSummary(archetype("swashbuckler-daring-infiltrator")).manual.some((item) => item.startsWith("Quick-Tongued")));
+
+  const milestones = {
+    id: "milestones",
+    name: "Milestones",
+    classId: "rogue",
+    replacements: [{ features: [{
+      id: "milestone-feature",
+      name: "Milestone Feature",
+      level: 3,
+      summary: "At 3rd level, she gains a +1 bonus on Perception checks. This bonus increases to +2 at 6th level, +3 at 9th level, and +4 at 12th level. This ability replaces trap sense.",
+    }] }],
+  };
+  assert.deepEqual(inferArchetypeSkillBonusAdjustments(milestones)[0].bonusByLevel, [
+    { level: 3, bonus: 1 },
+    { level: 6, bonus: 2 },
+    { level: 9, bonus: 3 },
+    { level: 12, bonus: 4 },
+  ]);
+});
+
 test("skill-bonus inference remains normalized and conservative across the full catalogue", () => {
   const unsafeFeatureIds = new Set([
     "alchemist-tinkerer-tinkering-ex-2",
-    "bard-wit-way-with-words-ex-4",
     "fighter-aerial-assaulter-aerial-expertise-ex-2",
     "hunter-courtly-hunter-refined-focus-su-8",
     "monk-sin-monk-well-of-sin-su-4",
@@ -115,6 +146,14 @@ test("skill-bonus inference remains normalized and conservative across the full 
       assert.match(adjustment.skill, /^(?:Acrobatics|Appraise|Bluff|Climb|Craft \([^)]+\)|Diplomacy|Disable Device|Disguise|Escape Artist|Fly|Handle Animal|Heal|Intimidate|Knowledge \([^)]+\)|Linguistics|Perception|Perform \([^)]+\)|Profession \([^)]+\)|Ride|Sense Motive|Sleight of Hand|Spellcraft|Stealth|Survival|Swim|Use Magic Device)$/);
       assert.ok(Number.isFinite(adjustment.base));
       assert.ok(adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20);
+      for (const [index, step] of (adjustment.bonusByLevel ?? []).entries()) {
+        assert.ok(step.level >= adjustment.minimumLevel && step.level <= 20);
+        assert.ok(Number.isFinite(step.bonus));
+        if (index) {
+          assert.ok(step.level > adjustment.bonusByLevel[index - 1].level, `${archetype.id} scaling levels increase`);
+          assert.ok(step.bonus >= adjustment.bonusByLevel[index - 1].bonus, `${archetype.id} scaling bonuses do not decrease`);
+        }
+      }
       const key = `${adjustment.sourceFeatureId}:${adjustment.skill}`;
       assert.ok(!keys.has(key), `${archetype.id} has no duplicate inferred adjustment ${key}`);
       keys.add(key);
