@@ -86,6 +86,10 @@ test(`enforces Twilight Sage daily transfer and necromancy preparation on ${jour
   const reservoir = page.getByLabel("Arcane Reservoir remaining");
   const transfer = page.getByLabel("Arcanist Twilight Transfer remaining");
   await expect(transfer).toHaveText("1/1 use remaining");
+  await page.getByLabel("Recipient is touched, died within the past round, and can receive breath of life").check();
+  await page.getByLabel("Donor is willing or unconscious").check();
+  await page.getByLabel("Donor is living and within 300 feet").check();
+  await page.getByLabel("Donor will actually die from this death effect").check();
   await page.getByRole("button", { name: "Use Twilight Transfer" }).click();
   await expect(reservoir).toHaveText("2/14 point remaining");
   await expect(transfer).toHaveText("0/1 use remaining");

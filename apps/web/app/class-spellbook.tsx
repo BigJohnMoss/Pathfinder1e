@@ -179,6 +179,10 @@ export function ClassSpellbook({
   useEffect(() => {
     if (reservoir && reservoirPoints > reservoir.maximum) onReservoirPointsChange(reservoir.maximum);
   }, [reservoir?.maximum, reservoirPoints]);
+  useEffect(() => {
+    const deathRelease = activeEffects.find((effect) => effect.deathRelease);
+    if (deathRelease && reservoirPoints <= 0) onRemoveEffectByName?.(deathRelease.name);
+  }, [activeEffects, onRemoveEffectByName, reservoirPoints]);
 
   if (!casting) return null;
   const refreshDay = () => {

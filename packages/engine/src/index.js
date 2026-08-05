@@ -868,6 +868,14 @@ export function normalizeCharacterDraft(
               ? { temporaryHitPointsGranted: effect.temporaryHitPointsGranted }
               : {}),
             ...(effect.consumeOnUse === true ? { consumeOnUse: true } : {}),
+            ...(effect.expiresWhenTemporaryHitPointsLost === true ? { expiresWhenTemporaryHitPointsLost: true } : {}),
+            ...(Number.isInteger(effect.retaliationDamage) && effect.retaliationDamage > 0 && effect.retaliationDamage <= 9999
+              ? { retaliationDamage: effect.retaliationDamage }
+              : {}),
+            ...(typeof effect.retaliationDamageType === "string" && effect.retaliationDamageType.trim()
+              ? { retaliationDamageType: effect.retaliationDamageType.trim().slice(0, 40) }
+              : {}),
+            ...(effect.deathRelease === true ? { deathRelease: true } : {}),
             ...(effect.d20Check && typeof effect.d20Check.label === "string" && effect.d20Check.label.trim() && Number.isInteger(effect.d20Check.modifier) && effect.d20Check.modifier >= -99 && effect.d20Check.modifier <= 99 && Number.isInteger(effect.d20Check.targetDc) && effect.d20Check.targetDc >= 1 && effect.d20Check.targetDc <= 999
               ? { d20Check: { label: effect.d20Check.label.trim().slice(0, 80), modifier: effect.d20Check.modifier, targetDc: effect.d20Check.targetDc, ...(Number.isInteger(effect.d20Check.maximumSpellLevel) && effect.d20Check.maximumSpellLevel >= 0 && effect.d20Check.maximumSpellLevel <= 9 ? { maximumSpellLevel: effect.d20Check.maximumSpellLevel } : {}) } }
               : {}),

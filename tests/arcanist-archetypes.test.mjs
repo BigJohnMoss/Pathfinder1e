@@ -343,7 +343,6 @@ test("reservoir-powered archetype features expose enforceable action costs", () 
     ["arcanist-aeromancer", [["wind-s-embrace", 2], ["rebuking-gale", 3]]],
     ["arcanist-brown-fur-transmuter", [["powerful-change", 1]]],
     ["arcanist-arcane-tinkerer", [["manipulate-construct", 1]]],
-    ["arcanist-twilight-sage", [["twilight-transfer", 1]]],
   ]);
   for (const [archetypeId, actions] of expected) {
     const archetype = archetypes.find((candidate) => candidate.id === archetypeId);
@@ -389,11 +388,9 @@ test("Twilight Sage enforces its mandatory exploit, necromancy focus, and daily 
   const transfer = features.find((feature) => feature.id === "arcanist-twilight-sage-twilight-transfer-su-11");
   assert.equal(barrier?.optionGroupId, "twilight-sage-mandatory-exploit");
   assert.equal(barrier?.grantsAllOptions, true);
-  assert.deepEqual(transfer?.resourceActions?.[0].costs, [
-    { resourceId: "arcaneReservoir", cost: 1 },
-    { resourceId: "twilightTransfer", cost: 1 },
-  ]);
+  assert.equal(transfer?.resourceActions, undefined);
   assert.equal(twilight.resourceAdjustments.find((resource) => resource.resourceId === "twilightTransfer")?.maximum, 1);
+  assert.equal(twilight.resourceAdjustments.find((resource) => resource.resourceId === "twilightBarrierActivations")?.hidden, true);
 });
 
 test("Arcane Tinkerer automates its construct effects and branches at 7th and 13th", () => {

@@ -75,6 +75,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [bonus, setBonus] = useState(1);
   const [rounds, setRounds] = useState(1);
   const [adjustment, setAdjustment] = useState(1);
+  const [damageFromAttack, setDamageFromAttack] = useState(true);
   const [combatRound, setCombatRound] = useState(1);
   const [rollHistory, setRollHistory] = useState<RollHistory[]>([]);
   const [selectedSkill, setSelectedSkill] = useState(skills[0]?.id ?? "");
@@ -87,6 +88,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [targetArmorClass, setTargetArmorClass] = useState(10);
   const [effectCheckDcs, setEffectCheckDcs] = useState<Record<string, number>>({});
   const [successfulMeleeAttackIds, setSuccessfulMeleeAttackIds] = useState<string[]>([]);
+  const deathReleaseActive = effects.some((effect) => effect.deathRelease);
   const oneShotEffects = (effectTarget: ActiveEffectTarget) => effects.filter((effect) => effect.consumeOnUse && effect.target === effectTarget);
   const consumeOneShotEffects = (effectTarget: ActiveEffectTarget) => {
     const consumedIds = new Set(oneShotEffects(effectTarget).map((effect) => effect.id));
@@ -102,8 +104,22 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   };
   const takeDamage = () => {
     const absorbed = Math.min(temporaryHitPoints, adjustment);
+    const losesLastTemporaryHitPoint = temporaryHitPoints > 0 && absorbed >= temporaryHitPoints;
+    const expiringEffects = losesLastTemporaryHitPoint
+      ? effects.filter((effect) => effect.expiresWhenTemporaryHitPointsLost)
+      : [];
     onTemporaryHitPointsChange(temporaryHitPoints - absorbed);
     onCurrentHitPointsChange(Math.max(0, currentHitPoints - (adjustment - absorbed)));
+    if (expiringEffects.length) {
+      if (damageFromAttack) expiringEffects.filter((effect) => effect.retaliationDamage).forEach((effect) => recordRoll({
+        label: `${effect.name} retaliation`,
+        formula: `${effect.retaliationDamage} ${effect.retaliationDamageType ?? "damage"} to the attacker`,
+        rolls: [],
+        total: effect.retaliationDamage ?? 0,
+        verdict: "The attack removed the barrier's last temporary hit point, triggering retaliation.",
+      }));
+      onEffectsChange(effects.filter((effect) => !expiringEffects.some((expired) => expired.id === effect.id)));
+    }
   };
   const heal = () => onCurrentHitPointsChange(Math.min(maximumHitPoints, currentHitPoints + adjustment));
   const magicalHealingBonus = oneShotEffects("healingReceived").reduce((total, effect) => total + effect.bonus, 0);
@@ -197,6 +213,8 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <div><p className="eyebrow">ACTIVE PLAY</p><h3 id="active-play-heading">Hit points and temporary effects</h3></div>
       <div className="round-controls"><strong aria-label={`Combat round ${combatRound}`}>Round {combatRound}</strong><button type="button" onClick={advanceRound}>Next round</button><button type="button" className="secondary-button" onClick={() => setCombatRound(1)}>Reset rounds</button></div>
     </div>
+    {deathReleaseActive && <p className="death-release-action-lock" role="status">Death&apos;s Release is active. This spirit can only cast legal spells; other Actions controls are locked until it ends.</p>}
+    <fieldset className="active-play-body" aria-label="Active play controls" disabled={deathReleaseActive}>
     <div className="hit-point-controls">
       <label>Current HP<input aria-label="Current HP" type="number" min="0" max="9999" value={currentHitPoints} onChange={event => onCurrentHitPointsChange(Math.max(0, Math.min(9999, Number(event.target.value) || 0)))} /></label>
       <p>of <strong>{maximumHitPoints}</strong> maximum</p>
@@ -209,6 +227,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <button type="button" onClick={heal}>Heal {adjustment} HP</button>
       <button type="button" onClick={receiveMagicalHealing}>Receive magical healing ({adjustment}{magicalHealingBonus ? ` + ${magicalHealingBonus} fate` : ""})</button>
       <small>Damage uses temporary HP before current HP.</small>
+      <label className="attack-damage-toggle"><input aria-label="Damage came from an attack" type="checkbox" checked={damageFromAttack} onChange={event => setDamageFromAttack(event.target.checked)} />Damage came from an attack</label>
     </div>
     <section className="combat-attacks" aria-labelledby="combat-attacks-heading">
       <div className="combat-attacks-heading"><div><h4 id="combat-attacks-heading">Equipped attacks</h4><p>Attack values include abilities, enhancement bonuses, and supported feat modifiers.</p></div><label>Target AC<input aria-label="Target Armor Class" type="number" min="1" max="999" value={targetArmorClass} onChange={event => setTargetArmorClass(Math.max(1, Math.min(999, Number(event.target.value) || 1)))} /></label></div>
@@ -254,5 +273,6 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       {effect.d20Check && <div className="effect-check"><label>Target DC<input aria-label={`${effect.name} target DC`} type="number" min="1" max="999" value={effectCheckDcs[effect.id] ?? effect.d20Check.targetDc} onChange={(event) => setEffectCheckDcs((current) => ({ ...current, [effect.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label><button type="button" onClick={() => resolveEffectCheck(effect)}>Roll {effect.d20Check.label}</button></div>}
       <button type="button" aria-label={`Remove ${effect.name}`} onClick={() => onEffectsChange(effects.filter(item => item.id !== effect.id))}>Remove</button>
     </li>)}</ul> : <p className="hint">No temporary effects are active.</p>}
+    </fieldset>
   </section>;
 }
