@@ -86,3 +86,15 @@ test("inferred conditional skill bonuses appear with their trigger in the live b
   assert.match(modifiers, /\+4 Survival checks/);
   assert.match(modifiers, /in coastal or marshy lands/);
 });
+
+test("compact imported skill rules calculate in the live builder", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "10" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "bard-magician");
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+
+  assert.equal(screen.getByText("Spellcraft").closest("label")?.querySelector(".skill-total strong")?.textContent, "+6 class");
+  assert.equal(screen.getByText("Use Magic Device").closest("label")?.querySelector(".skill-total strong")?.textContent, "+5 class");
+});
