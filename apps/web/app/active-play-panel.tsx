@@ -5,6 +5,18 @@ import type { EquipmentAttack } from "./equipment-panel";
 
 type CheckRoll = { id: string; name: string; modifier: number };
 type RollHistory = { id: string; label: string; formula: string; rolls: number[]; total: number; outcome?: string; verdict?: string };
+type CraftingOppositionSchool = { id: string; name: string };
+
+const magicSchools = [
+  { id: "abjuration", name: "Abjuration" },
+  { id: "conjuration", name: "Conjuration" },
+  { id: "divination", name: "Divination" },
+  { id: "enchantment", name: "Enchantment" },
+  { id: "evocation", name: "Evocation" },
+  { id: "illusion", name: "Illusion" },
+  { id: "necromancy", name: "Necromancy" },
+  { id: "transmutation", name: "Transmutation" },
+] as const;
 
 const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "initiative", name: "Initiative" },
@@ -38,7 +50,7 @@ const effectTargetName = (target: ActiveEffectTarget) =>
         : target === "enemy" ? "Enemy"
         : targets.find(item => item.id === target)?.name;
 
-export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, attacks, checks, skills, effects, onCurrentHitPointsChange, onTemporaryHitPointsChange, onEffectsChange }: {
+export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, attacks, checks, skills, effects, craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onEffectsChange }: {
   maximumHitPoints: number;
   currentHitPoints: number;
   temporaryHitPoints: number;
@@ -46,6 +58,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   checks: CheckRoll[];
   skills: CheckRoll[];
   effects: ActiveEffect[];
+  craftingOppositionSchools?: CraftingOppositionSchool[];
   onCurrentHitPointsChange: (value: number) => void;
   onTemporaryHitPointsChange: (value: number) => void;
   onEffectsChange: (effects: ActiveEffect[]) => void;
@@ -65,6 +78,9 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [combatRound, setCombatRound] = useState(1);
   const [rollHistory, setRollHistory] = useState<RollHistory[]>([]);
   const [selectedSkill, setSelectedSkill] = useState(skills[0]?.id ?? "");
+  const [craftingSkillId, setCraftingSkillId] = useState(skills.find((skill) => skill.id.toLowerCase() === "spellcraft")?.id ?? skills[0]?.id ?? "");
+  const [craftingSpellSchool, setCraftingSpellSchool] = useState("");
+  const [craftedItemCasterLevel, setCraftedItemCasterLevel] = useState(1);
   const [customCount, setCustomCount] = useState(1);
   const [customSides, setCustomSides] = useState(20);
   const [customModifier, setCustomModifier] = useState(0);
@@ -143,6 +159,25 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     const result = rollDice(customCount, customSides, customModifier);
     recordRoll({ label: "Custom roll", formula: `${customCount}d${customSides}${customModifier ? ` ${customModifier >= 0 ? "+" : "−"} ${Math.abs(customModifier)}` : ""}`, rolls: result.rolls, total: result.total });
   };
+  const rollMagicItemCraftingCheck = () => {
+    const skill = skills.find((item) => item.id === craftingSkillId);
+    if (!skill || !craftingSpellSchool) return;
+    const opposition = craftingOppositionSchools.some((school) => school.id === craftingSpellSchool);
+    const penalty = opposition ? -4 : 0;
+    const modifier = skill.modifier + penalty;
+    const dc = 5 + craftedItemCasterLevel;
+    const result = rollD20Check(modifier);
+    const success = result.total >= dc;
+    const schoolName = magicSchools.find((school) => school.id === craftingSpellSchool)?.name ?? craftingSpellSchool;
+    recordRoll({
+      label: `${schoolName} magic-item crafting check`,
+      formula: `1d20 ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}${opposition ? ` (${skill.modifier >= 0 ? "+" : "−"}${Math.abs(skill.modifier)} skill − 4 opposition school)` : ""} · ${success ? "success" : "failure"} against DC ${dc}`,
+      rolls: result.rolls,
+      total: result.total,
+      outcome: result.outcome,
+      verdict: success ? `Crafting check succeeds against DC ${dc}.` : `Crafting check fails against DC ${dc}.`,
+    });
+  };
   const resolveEffectCheck = (effect: ActiveEffect) => {
     if (!effect.d20Check) return;
     const targetDc = Math.max(1, Math.min(999, effectCheckDcs[effect.id] ?? effect.d20Check.targetDc));
@@ -195,6 +230,13 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
         <label>Modifier<input aria-label="Custom roll modifier" type="number" min="-999" max="999" value={customModifier} onChange={event => setCustomModifier(Math.max(-999, Math.min(999, Number(event.target.value) || 0)))} /></label>
         <button type="button" onClick={rollCustom}>Roll custom dice</button>
       </div>
+      {craftingOppositionSchools.length > 0 && <section className="magic-item-crafting" aria-labelledby="magic-item-crafting-heading">
+        <div><h5 id="magic-item-crafting-heading">Opposition-school item crafting</h5><p>The required −4 penalty is applied automatically when a prerequisite spell belongs to an opposition school.</p></div>
+        <label>Crafting skill<select aria-label="Magic-item crafting skill" value={craftingSkillId} onChange={event => setCraftingSkillId(event.target.value)}>{skills.map(skill => <option key={skill.id} value={skill.id}>{skill.name} ({skill.modifier >= 0 ? "+" : ""}{skill.modifier})</option>)}</select></label>
+        <label>Prerequisite spell school<select aria-label="Magic-item prerequisite spell school" value={craftingSpellSchool} onChange={event => setCraftingSpellSchool(event.target.value)}><option value="">Choose a school</option>{magicSchools.map(school => <option key={school.id} value={school.id}>{school.name}{craftingOppositionSchools.some(opposition => opposition.id === school.id) ? " — opposition" : ""}</option>)}</select></label>
+        <label>Item caster level<input aria-label="Crafted item caster level" type="number" min="1" max="999" value={craftedItemCasterLevel} onChange={event => setCraftedItemCasterLevel(Math.max(1, Math.min(999, Number(event.target.value) || 1)))} /></label>
+        <div className="crafting-resolution"><strong>DC {5 + craftedItemCasterLevel}</strong><span>{craftingSpellSchool && craftingOppositionSchools.some(school => school.id === craftingSpellSchool) ? "−4 opposition-school penalty" : "No opposition-school penalty"}</span><button type="button" disabled={!craftingSkillId || !craftingSpellSchool} onClick={rollMagicItemCraftingCheck}>Roll crafting check</button></div>
+      </section>}
     </section>
     <section className="roll-history" aria-labelledby="roll-history-heading">
       <div><h4 id="roll-history-heading">Roll history</h4>{rollHistory.length > 0 && <button type="button" className="secondary-button" onClick={() => setRollHistory([])}>Clear rolls</button>}</div>
