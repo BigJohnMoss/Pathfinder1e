@@ -1,0 +1,26 @@
+{
+  "id": "magaambyan-good-alignments",
+  "name": "Magaambyan Initiate Alignment",
+  "classIds": ["arcanist"],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Magaambyan%20Initiate"
+  },
+  "optionDefaults": {
+    "groupId": "magaambyan-good-alignments",
+    "classIds": ["arcanist"],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Magaambyan%20Initiate"
+    }
+  },
+  "options": [
+    { "id": "magaambyan-alignment-lawful-good", "name": "Lawful Good", "alignment": "lawful-good", "benefit": "A lawful and good alignment." },
+    { "id": "magaambyan-alignment-neutral-good", "name": "Neutral Good", "alignment": "neutral-good", "benefit": "A neutral and good alignment." },
+    { "id": "magaambyan-alignment-chaotic-good", "name": "Chaotic Good", "alignment": "chaotic-good", "benefit": "A chaotic and good alignment." }
+  ]
+}

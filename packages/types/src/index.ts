@@ -586,6 +586,7 @@ export interface CharacterFeat {
   id: string;
   name: string;
   type: string;
+  repeatable?: boolean;
   benefit: string;
   description?: string;
   rulesSections?: Array<{ label: string; text: string }>;
@@ -726,7 +727,11 @@ export interface CharacterOptionGroup {
   classIds: string[];
   options: CharacterOption[];
   generatedSpellOptions?: {
-    classId: string;
+    classId?: string;
+    spellSources?: Array<{
+      classId: string;
+      descriptors?: SpellDescriptor[];
+    }>;
     targetClassId?: string;
     school?: string;
     maximumSpellLevel?: number;

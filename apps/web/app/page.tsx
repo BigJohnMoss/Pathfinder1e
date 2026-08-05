@@ -179,6 +179,7 @@ const generatedFeatGroupIds = new Set([
   "brawler-bonus-feats",
   "bloodrager-bloodline-feats",
 ]);
+const magaambyanMasteryKeyPrefix = "magaambyan-spell-mastery-";
 const monkBonusFeatIds = [
   "catch-off-guard",
   "combat-reflexes",
@@ -1047,6 +1048,24 @@ export default function Home() {
     0,
     ...Object.values(effectiveSpellcastingLevelMap),
   );
+  const hasMagaambyanInitiate = selectedArchetypes.some(
+    (archetype) => archetype.id === "arcanist-magaambyan-initiate",
+  );
+  const repeatableFeatIds = useMemo(
+    () => feats.filter((feat) => feat.repeatable).map((feat) => feat.id),
+    [feats],
+  );
+  const spellMasteryCount = hasMagaambyanInitiate && (classLevelMap.arcanist ?? 0) >= 5
+    ? 1 + selectedFeatIds.filter((featId) => featId === "spell-mastery").length
+    : 0;
+  const spellMasteryLimit = spellMasteryCount * Math.max(0, combat.abilityModifiers.intelligence ?? 0);
+  const featClassLevelMap = useMemo(() => {
+    if (!hasMagaambyanInitiate) return classLevelMap;
+    return {
+      ...classLevelMap,
+      wizard: (classLevelMap.wizard ?? 0) + (classLevelMap.arcanist ?? 0),
+    };
+  }, [classLevelMap, hasMagaambyanInitiate]);
   const featSpellIds = useMemo(
     () => [
       ...new Set(
@@ -1140,7 +1159,7 @@ export default function Home() {
   const featContext = useMemo(
     () => ({
       classId: characterClass.id,
-      classLevels: classLevelMap,
+      classLevels: featClassLevelMap,
       ancestryId,
       size: ancestry.size,
       classLevel: level,
@@ -1174,7 +1193,7 @@ export default function Home() {
       ancestryId,
       casterLevel,
       characterClass.id,
-      classLevelMap,
+      featClassLevelMap,
       featSpellIds,
       featSpellLevels,
       level,
@@ -1224,13 +1243,14 @@ export default function Home() {
           featContext,
           featSlots.length,
           featSlots.map((slot) => slot.level),
+          repeatableFeatIds,
         );
         return next.length === current.length &&
           next.every((id, index) => id === current[index])
           ? current
           : next;
       }),
-    [featContext, featSlots],
+    [featContext, featSlots, repeatableFeatIds],
   );
   useEffect(
     () =>
@@ -1693,6 +1713,30 @@ export default function Home() {
       spells,
     ],
   );
+  const spellMasteryCatalogue = useMemo(() => {
+    const arcanistLevel = classLevelMap.arcanist ?? 0;
+    const highestSpellLevel = arcanistLevel > 0 ? Math.min(9, Math.floor((arcanistLevel + 1) / 2)) : 0;
+    return hasMagaambyanInitiate
+      ? spellsAvailableToClass(spells, "arcanist", highestSpellLevel)
+      : [];
+  }, [classLevelMap.arcanist, hasMagaambyanInitiate, spells]);
+  const spellMasterySpellIds = useMemo(
+    () => Object.entries(selectedOptions)
+      .filter(([key]) => key.startsWith(magaambyanMasteryKeyPrefix))
+      .sort(([left], [right]) => Number(left.slice(magaambyanMasteryKeyPrefix.length)) - Number(right.slice(magaambyanMasteryKeyPrefix.length)))
+      .map(([, spellId]) => spellId),
+    [selectedOptions],
+  );
+  const updateSpellMasterySpellIds = (spellIds: string[]) => setSelectedOptions((current) => {
+    const next = Object.fromEntries(Object.entries(current).filter(([key]) => !key.startsWith(magaambyanMasteryKeyPrefix)));
+    spellIds.slice(0, spellMasteryLimit).forEach((spellId, index) => { next[`${magaambyanMasteryKeyPrefix}${index}`] = spellId; });
+    return next;
+  });
+  useEffect(() => {
+    const legalIds = new Set(spellMasteryCatalogue.map((spell) => spell.id));
+    const normalized = [...new Set(spellMasterySpellIds.filter((spellId) => legalIds.has(spellId)))].slice(0, spellMasteryLimit);
+    if (normalized.length !== spellMasterySpellIds.length || normalized.some((spellId, index) => spellId !== spellMasterySpellIds[index])) updateSpellMasterySpellIds(normalized);
+  }, [spellMasteryCatalogue, spellMasteryLimit, spellMasterySpellIds]);
   const bloodlineSpells = useMemo(
     () =>
       classId === "sorcerer"
@@ -2705,6 +2749,7 @@ export default function Home() {
       criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
       bondedObjectCastResource={characterClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
       abilityModifiers={combat.abilityModifiers}
+      spellMastery={characterClass.id === "arcanist" && spellMasteryCount > 0 ? { limit: spellMasteryLimit, selectedIds: spellMasterySpellIds, catalogue: spellMasteryCatalogue, onChange: updateSpellMasterySpellIds } : undefined}
       onAddEffect={addActiveEffect}
     />
   ) : null;
@@ -2774,6 +2819,7 @@ export default function Home() {
         criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
         bondedObjectCastResource={secondaryCharacterClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
         abilityModifiers={combat.abilityModifiers}
+        spellMastery={secondaryCharacterClass.id === "arcanist" && spellMasteryCount > 0 ? { limit: spellMasteryLimit, selectedIds: spellMasterySpellIds, catalogue: spellMasteryCatalogue, onChange: updateSpellMasterySpellIds } : undefined}
         onAddEffect={addActiveEffect}
       />
     ) : null;
@@ -4177,6 +4223,7 @@ export default function Home() {
                 choices={featChoices}
                 selectedFeatIds={selectedFeatIds}
                 selectedFeatChoices={selectedFeatChoices}
+                repeatableFeatIds={repeatableFeatIds}
                 onFeatChange={updateFeat}
                 onFeatChoiceChange={updateFeatChoice}
               />

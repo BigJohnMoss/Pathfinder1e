@@ -69,17 +69,23 @@ const optionGroups=rawOptionGroups.map(group=>{
   if(!filter) return group;
   const additionalIds=new Set(filter.additionalSpellIds??[]);
   const spellIds=new Set(filter.spellIds??[]);
+  const sourceFilters=filter.spellSources??[{classId:filter.classId}];
+  const matchingSources=spell=>sourceFilters.filter(source=>
+    spell.levelByClass?.[source.classId]!==undefined&&
+    (!source.descriptors?.length||source.descriptors.every(descriptor=>spell.descriptors?.includes(descriptor)))
+  );
   const matchesSchool=spell=>!filter.school||spell.school===filter.school||spell.schools?.includes(filter.school);
   const matchesName=spell=>!filter.nameIncludes||spell.name.toLowerCase().includes(filter.nameIncludes.toLowerCase());
   const generated=spells.filter(spell=>additionalIds.has(spell.id)||(
     (!spellIds.size||spellIds.has(spell.id))&&
     matchesSchool(spell)&&
     matchesName(spell)&&
-    (filter.anyClassList?Object.keys(spell.levelByClass??{}).length>0:spell.levelByClass?.[filter.classId]!==undefined)&&
+    (filter.anyClassList?Object.keys(spell.levelByClass??{}).length>0:matchingSources(spell).length>0)&&
     (!filter.excludeClassId||spell.levelByClass?.[filter.excludeClassId]===undefined)
   )).map(spell=>{
     const publishedLevels=Object.values(spell.levelByClass??{}).filter(Number.isInteger);
-    const spellLevel=filter.additionalSpellLevels?.[spell.id]??(filter.anyClassList?Math.min(...publishedLevels):spell.levelByClass?.[filter.classId])??0;
+    const sourceLevels=matchingSources(spell).map(source=>spell.levelByClass[source.classId]);
+    const spellLevel=filter.additionalSpellLevels?.[spell.id]??(filter.anyClassList?Math.min(...publishedLevels):Math.min(...sourceLevels))??0;
     if(filter.maximumSpellLevel!==undefined&&spellLevel>filter.maximumSpellLevel) return null;
     const targetClassId=filter.targetClassId??filter.classId;
     const minimumLevel=filter.minimumClassLevelBySpellLevel?.[spellLevel]??classLevelForSpellLevel(targetClassId,spellLevel);

@@ -237,6 +237,8 @@ test("Magaambyan Initiate exposes one legal Druid spell choice per class level",
   assert.deepEqual(halcyonChoices.map((feature) => feature.level), Array.from({ length: 20 }, (_, index) => index + 1));
   assert.ok(halcyonChoices.every((feature) => feature.choiceRequired));
   assert.equal(applied.find((feature) => feature.id === "arcanist-magaambyan-initiate-spell-mastery-5")?.grantedFeatId, "spell-mastery");
+  const alignment = generatedData.optionGroups.find((group) => group.id === "magaambyan-good-alignments");
+  assert.deepEqual(alignment.options.map((option) => option.alignment), ["lawful-good", "neutral-good", "chaotic-good"]);
 
   const spells = generatedData.optionGroups.find((group) => group.id === "magaambyan-halcyon-spells").options;
   assert.ok(spells.length >= 100);
@@ -245,6 +247,9 @@ test("Magaambyan Initiate exposes one legal Druid spell choice per class level",
   assert.ok(spells.every((option) => option.resourceCost?.resourceId === "arcaneReservoir"));
   assert.ok(spells.every((option) => option.resourceCost?.levelDivisor === 2 && option.resourceCost?.minimum === 1));
   assert.ok(spells.every((option) => generatedData.spells.find((spell) => spell.id === option.spellId)?.levelByClass.arcanist === undefined));
+  assert.ok(spells.some((option) => option.name === "Entangle" && generatedData.spells.find((spell) => spell.id === option.spellId)?.levelByClass.druid === 1));
+  assert.ok(spells.some((option) => option.name === "Blessed Fist" && generatedData.spells.find((spell) => spell.id === option.spellId)?.levelByClass.cleric === 1));
+  assert.ok(spells.some((option) => option.name === "Dispel Evil" && generatedData.spells.find((spell) => spell.id === option.spellId)?.descriptors?.includes("good")));
   assert.deepEqual([1, 3, 5, 7, 9, 11, 13, 15, 17].map((level) =>
     Math.max(...spells.filter((option) => option.minimumLevel <= level).map((option) => option.spellLevel))
   ), [1, 2, 3, 4, 5, 6, 7, 8, 9]);

@@ -21,7 +21,7 @@ for (const spell of records) {
   if (!idsByName.get(key).includes(spell.id)) idsByName.get(key).push(spell.id);
 }
 
-const classes = ["Alchemist", "Arcanist", "Bloodrager", "Hunter", "Inquisitor", "Investigator", "Magus", "Medium", "Mesmerist", "Occultist", "Oracle", "Psychic", "Shaman", "Skald", "Spiritualist", "Summoner", "Warpriest", "Witch"];
+const classes = ["Alchemist", "Arcanist", "Bloodrager", "Hunter", "Inquisitor", "Investigator", "Magus", "Medium", "Mesmerist", "Occultist", "Oracle", "Psychic", "Shaman", "Skald", "Spiritualist", "Summoner", "Warpriest", "Witch", "Cleric"];
 const levelsBySpellId = {};
 const missing = [];
 const importedSpellsByName = new Map();

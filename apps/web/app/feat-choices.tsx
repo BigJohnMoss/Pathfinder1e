@@ -42,11 +42,12 @@ const prerequisiteLabel = (prerequisite: Prerequisite, featNames: Map<string, st
   return "id" in prerequisite ? `Ancestry: ${prerequisite.id}` : prerequisite.type;
 };
 
-export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoices, onFeatChange, onFeatChoiceChange }: {
+export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoices, repeatableFeatIds = [], onFeatChange, onFeatChoiceChange }: {
   feats: Feat[];
   choices: FeatChoice[];
   selectedFeatIds: string[];
   selectedFeatChoices: Record<string, string>;
+  repeatableFeatIds?: string[];
   onFeatChange: (index: number, featId: string) => void;
   onFeatChoiceChange: (featId: string, choice: string) => void;
 }) {
@@ -61,6 +62,7 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
   const activeChoice = choices.find((choice) => choice.index === activeSlotIndex);
   const activeEligibleIds = useMemo(() => new Set(activeChoice?.eligibleFeatIds ?? []), [activeChoice]);
   const selectedIds = useMemo(() => new Set(selectedFeatIds.filter(Boolean)), [selectedFeatIds]);
+  const repeatableIds = useMemo(() => new Set(repeatableFeatIds), [repeatableFeatIds]);
   const featTypes = useMemo(() => [...new Set(feats.map((feat) => feat.type))].sort(), [feats]);
   const unlockedBy = useMemo(() => {
     const children = new Map<string, Feat[]>();
@@ -87,7 +89,7 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
 
   const chooseFeat = (feat: Feat) => {
     if (activeChoice) {
-      const selectedElsewhere = selectedFeatIds.some((id, index) => id === feat.id && index !== activeChoice.index);
+      const selectedElsewhere = !repeatableIds.has(feat.id) && selectedFeatIds.some((id, index) => id === feat.id && index !== activeChoice.index);
       if (activeChoice.eligibleFeatIds.includes(feat.id) && !selectedElsewhere) {
         onFeatChange(activeChoice.index, feat.id);
         setActiveSlotIndex(null);
@@ -108,7 +110,7 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
   return <section className="feat-panel">
     <header className="feat-header">
       <div><p className="eyebrow">FEATS</p><h2>Feat manager</h2><p>Fill earned feat slots, browse legal choices, and follow prerequisite chains.</p></div>
-      <div className="feat-progress" aria-label={`${selectedIds.size} of ${choices.length} feat slots filled`}><strong>{selectedIds.size}/{choices.length}</strong><span>slots filled</span></div>
+      <div className="feat-progress" aria-label={`${selectedFeatIds.filter(Boolean).length} of ${choices.length} feat slots filled`}><strong>{selectedFeatIds.filter(Boolean).length}/{choices.length}</strong><span>slots filled</span></div>
     </header>
 
     <section aria-labelledby="feat-slots-heading">
@@ -147,7 +149,7 @@ export function FeatChoices({ feats, choices, selectedFeatIds, selectedFeatChoic
         const children = unlockedBy.get(feat.id) ?? [];
         const selected = selectedIds.has(feat.id);
         const eligible = (activeChoice ? activeEligibleIds : eligibleIds).has(feat.id);
-        const selectedElsewhere = selectedFeatIds.some((id, index) => id === feat.id && index !== activeChoice?.index);
+        const selectedElsewhere = !repeatableIds.has(feat.id) && selectedFeatIds.some((id, index) => id === feat.id && index !== activeChoice?.index);
         const hasOpenSlot = choices.some((choice) => !selectedFeatIds[choice.index] && choice.eligibleFeatIds.includes(feat.id));
         const canChooseActive = Boolean(activeChoice && eligible && !selectedElsewhere);
         return <details className="feat-card" key={`${feat.id}-${featIndex}`}>
