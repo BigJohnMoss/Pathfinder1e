@@ -47,6 +47,31 @@ test("inferred permanent save bonuses update the live quick-roll modifier", asyn
   assert.ok(screen.getByRole("button", { name: "Will roll, modifier +2" }));
 });
 
+test("inferred conditional combat bonuses appear with their exact trigger", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "alchemist");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "14" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "alchemist-aerochemist");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const modifier = screen.getByText("+4 Attack rolls").closest("li");
+  assert.match(modifier?.textContent ?? "", /thrown weapons against targets that are at least 10 feet below/i);
+});
+
+test("inferred permanent combat bonuses update live CMB and CMD", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "7" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "fighter-lore-warden-pfs-field-guide");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const panel = screen.getByRole("heading", { name: "Core statistics" }).closest("article");
+  assert.ok(panel);
+  assert.equal(within(panel).getByText("CMB / CMD").closest("div")?.querySelector("dd")?.textContent, "+11 / 21");
+});
+
 test("generated archetype bonuses appear in the live skill totals", async () => {
   const user = userEvent.setup();
   render(<Home />);

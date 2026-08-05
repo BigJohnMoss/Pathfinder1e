@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 
@@ -116,6 +116,55 @@ test("save inference is normalized, conservative, and duplicate-free across the 
   const legacyExplicit = catalogueArchetypes.find((archetype) => archetype.id === "barbarian-armored-hulk");
   assert.ok(legacyExplicit);
   assert.equal(archetypeConditionalModifiers([legacyExplicit], { barbarian: 3 }).filter((modifier) => modifier.label === "Reflex saves" && modifier.condition === "against trample attacks").length, 1);
+});
+
+test("conditional archetype combat bonuses preserve their trigger and exact progression", () => {
+  const aerochemist = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-aerochemist");
+  assert.ok(aerochemist);
+  assert.deepEqual(inferArchetypeCombatModifierAdjustments(aerochemist), [{
+    sourceFeatureId: "alchemist-aerochemist-bombs-away-ex-2",
+    label: "Attack rolls",
+    combatTargets: ["attackRolls"],
+    minimumLevel: 2,
+    base: 1,
+    condition: "made with thrown weapons against targets that are at least 10 feet below him",
+    maximum: 5,
+    bonusByLevel: [
+      { level: 2, bonus: 1 },
+      { level: 6, bonus: 2 },
+      { level: 10, bonus: 3 },
+      { level: 14, bonus: 4 },
+      { level: 18, bonus: 5 },
+    ],
+  }]);
+  assert.equal(archetypeConditionalModifiers([aerochemist], { alchemist: 14 }).find((modifier) => modifier.label === "Attack rolls")?.bonus, 4);
+  assert.equal(archetypeCombatBonuses([aerochemist], { alchemist: 20 }).attackRolls, 0);
+});
+
+test("permanent archetype combat bonuses update only their published targets", () => {
+  const loreWarden = catalogueArchetypes.find((archetype) => archetype.id === "fighter-lore-warden-pfs-field-guide");
+  assert.ok(loreWarden);
+  assert.deepEqual(archetypeCombatBonuses([loreWarden], { fighter: 2 }), { attackRolls: 0, damageRolls: 0, armorClass: { normal: 0, touch: 0, flatFooted: 0 }, combatManeuverBonus: 0, combatManeuverDefense: 0 });
+  assert.deepEqual(archetypeCombatBonuses([loreWarden], { fighter: 7 }), { attackRolls: 0, damageRolls: 0, armorClass: { normal: 0, touch: 0, flatFooted: 0 }, combatManeuverBonus: 4, combatManeuverDefense: 4 });
+});
+
+test("combat modifier inference is bounded, normalized, and conservative across the catalogue", () => {
+  for (const archetype of catalogueArchetypes) {
+    const adjustments = inferArchetypeCombatModifierAdjustments(archetype);
+    assert.equal(new Set(adjustments.map((adjustment) => JSON.stringify(adjustment))).size, adjustments.length, `${archetype.id} has duplicate inferred combat rows`);
+    for (const adjustment of adjustments) {
+      assert.ok(adjustment.combatTargets.length >= 1 && adjustment.combatTargets.every((target) => ["attackRolls", "damageRolls", "armorClass", "cmb", "cmd"].includes(target)), `${archetype.id} has valid combat targets`);
+      assert.ok(adjustment.base >= 0 && adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20, `${archetype.id} has bounded combat progression`);
+      assert.ok((adjustment.condition?.length ?? 0) <= 250, `${archetype.id} has a readable combat condition`);
+      assert.ok(!/Leader gains|sacred\/profane/i.test(adjustment.condition ?? ""), `${archetype.id} does not absorb a choice table`);
+      const levels = adjustment.bonusByLevel?.map((step) => step.level) ?? [];
+      assert.equal(new Set(levels).size, levels.length, `${archetype.id} has unique combat milestones`);
+    }
+  }
+  const armoredHulk = catalogueArchetypes.find((archetype) => archetype.id === "barbarian-armored-hulk");
+  assert.ok(armoredHulk);
+  assert.equal(archetypeCombatModifierAdjustments(armoredHulk).length, 0);
+  assert.equal(archetypeConditionalModifiers([armoredHulk], { barbarian: 3 }).length, 5);
 });
 
 test("common exact skill-bonus rules are inferred conservatively", () => {

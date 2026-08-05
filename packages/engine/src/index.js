@@ -4,6 +4,7 @@ import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchety
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
 import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, inferArchetypeSaveBonusAdjustments } from "./archetype-saves.js";
+import { archetypeCombatModifierAdjustments, inferredArchetypeCombatModifierDetails, inferArchetypeCombatModifierAdjustments } from "./archetype-combat.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
@@ -15,6 +16,7 @@ export { inferArchetypeFeatAlternatives };
 export { archetypeSkillBonusAdjustments, inferArchetypeSkillBonusAdjustments };
 export { archetypeInitiativeBonusAdjustments, inferArchetypeInitiativeBonusAdjustments };
 export { archetypeSaveBonusAdjustments, inferArchetypeSaveBonusAdjustments };
+export { archetypeCombatModifierAdjustments, inferArchetypeCombatModifierAdjustments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
@@ -356,6 +358,7 @@ export function archetypeConditionalModifiers(archetypes = [], classLevels = {})
       ...(archetype?.conditionalModifiers ?? []),
       ...archetypeInitiativeBonusAdjustments(archetype).filter((modifier) => modifier.condition),
       ...archetypeSaveBonusAdjustments(archetype).filter((modifier) => modifier.condition),
+      ...archetypeCombatModifierAdjustments(archetype).filter((modifier) => modifier.condition),
     ].flatMap((modifier) => {
       if (!adjustmentAppliesAtLevel(modifier, level)) return [];
       const bonus = adjustmentBonusAtLevel(modifier, level);
@@ -389,6 +392,52 @@ export function archetypeSavingThrowBonuses(archetypes = [], classLevels = {}) {
     }
   }
   return saves;
+}
+
+export function archetypeCombatBonuses(archetypes = [], classLevels = {}) {
+  const buckets = Object.fromEntries(["attackRolls", "damageRolls", "armorClass", "cmb", "cmd"].map((target) => [target, { stackable: 0, typed: new Map() }]));
+  const add = (target, adjustment, bonus) => {
+    const type = adjustment.bonusType;
+    if (!type || ["circumstance", "dodge", "untyped"].includes(type)) buckets[target].stackable += bonus;
+    else buckets[target].typed.set(type, Math.max(buckets[target].typed.get(type) ?? 0, bonus));
+  };
+  for (const archetype of archetypes ?? []) {
+    const level = archetypeLevel(archetype, classLevels);
+    for (const adjustment of archetypeCombatModifierAdjustments(archetype)) {
+      if (adjustment.condition || !adjustmentAppliesAtLevel(adjustment, level)) continue;
+      const bonus = adjustmentBonusAtLevel(adjustment, level);
+      for (const target of adjustment.combatTargets) if (target !== "armorClass") add(target, adjustment, bonus);
+    }
+  }
+  const total = (target) => buckets[target].stackable + [...buckets[target].typed.values()].reduce((sum, bonus) => sum + bonus, 0);
+  const armorAdjustments = archetypes.flatMap((archetype) => {
+    const level = archetypeLevel(archetype, classLevels);
+    return archetypeCombatModifierAdjustments(archetype).filter((adjustment) => !adjustment.condition && adjustment.combatTargets.includes("armorClass") && adjustmentAppliesAtLevel(adjustment, level)).map((adjustment) => ({ adjustment, bonus: adjustmentBonusAtLevel(adjustment, level) }));
+  });
+  const stackedArmorTotal = (rows) => {
+    let stackable = 0;
+    const typed = new Map();
+    for (const { adjustment, bonus } of rows) {
+      const type = adjustment.bonusType;
+      if (!type || ["circumstance", "dodge", "untyped"].includes(type)) stackable += bonus;
+      else typed.set(type, Math.max(typed.get(type) ?? 0, bonus));
+    }
+    return stackable + [...typed.values()].reduce((sum, bonus) => sum + bonus, 0);
+  };
+  const appliesToArmorPart = (adjustment, part) => {
+    if (adjustment.armorClassParts?.length) return adjustment.armorClassParts.includes(part);
+    if (part === "normal") return true;
+    if (part === "touch") return !["armor", "natural-armor", "shield"].includes(adjustment.bonusType);
+    return adjustment.bonusType !== "dodge";
+  };
+  const armorClass = Object.fromEntries(["normal", "touch", "flatFooted"].map((part) => [part, stackedArmorTotal(armorAdjustments.filter(({ adjustment }) => appliesToArmorPart(adjustment, part)))]));
+  return {
+    attackRolls: total("attackRolls"),
+    damageRolls: total("damageRolls"),
+    armorClass,
+    combatManeuverBonus: total("cmb"),
+    combatManeuverDefense: total("cmd"),
+  };
 }
 
 export function archetypeSkillBonuses(archetypes = [], classLevels = {}) {
@@ -1452,6 +1501,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const saveBonusAdjustments = archetypeSaveBonusAdjustments(archetype);
   if (saveBonusAdjustments.length)
     automated.push(`${saveBonusAdjustments.length} calculated saving-throw bonus${saveBonusAdjustments.length === 1 ? "" : "es"}`);
+  const combatModifierDetails = inferredArchetypeCombatModifierDetails(archetype);
+  const combatModifierAdjustments = archetypeCombatModifierAdjustments(archetype);
+  if (combatModifierAdjustments.length)
+    automated.push(`${combatModifierAdjustments.length} calculated combat modifier${combatModifierAdjustments.length === 1 ? "" : "s"}`);
   const skillBonusDetails = inferredArchetypeSkillBonusDetails(archetype);
   const skillBonusAdjustments = archetypeSkillBonusAdjustments(archetype);
   if (skillBonusAdjustments.length)
@@ -1480,6 +1533,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...initiativeBonusDetails.fullyAutomatedFeatureIds,
     ...saveBonusDetails.fullyAutomatedFeatureIds,
+    ...combatModifierDetails.fullyAutomatedFeatureIds,
     ...(archetype.skillBonusAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...skillBonusDetails.fullyAutomatedFeatureIds,
     ...(archetype.landSpeedAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
