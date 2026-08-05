@@ -1052,8 +1052,8 @@ export default function Home() {
     (archetype) => archetype.id === "arcanist-magaambyan-initiate",
   );
   const repeatableFeatIds = useMemo(
-    () => (hasMagaambyanInitiate ? ["spell-mastery"] : []),
-    [hasMagaambyanInitiate],
+    () => feats.filter((feat) => feat.repeatable).map((feat) => feat.id),
+    [feats],
   );
   const spellMasteryCount = hasMagaambyanInitiate && (classLevelMap.arcanist ?? 0) >= 5
     ? 1 + selectedFeatIds.filter((featId) => featId === "spell-mastery").length

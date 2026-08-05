@@ -2,6 +2,7 @@
   "id": "spell-mastery",
   "name": "Spell Mastery",
   "type": "general",
+  "repeatable": true,
   "prerequisites": [
     {
       "type": "class-level",

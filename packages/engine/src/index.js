@@ -1819,7 +1819,10 @@ export function normalizeSelectedFeats(
   )
     return [];
   const byId = new Map(feats.map((feat) => [feat.id, feat]));
-  const repeatable = new Set(repeatableFeatIds);
+  const repeatable = new Set([
+    ...repeatableFeatIds,
+    ...feats.filter((feat) => feat.repeatable).map((feat) => feat.id),
+  ]);
   let result = selectedFeatIds
     .filter(
       (id, index, ids) =>

@@ -586,6 +586,7 @@ export interface CharacterFeat {
   id: string;
   name: string;
   type: string;
+  repeatable?: boolean;
   benefit: string;
   description?: string;
   rulesSections?: Array<{ label: string; text: string }>;
