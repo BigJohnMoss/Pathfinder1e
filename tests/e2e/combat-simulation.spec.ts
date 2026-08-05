@@ -31,7 +31,11 @@ for (const journey of [
     await page.getByLabel("Custom roll modifier").fill("3");
     await page.getByRole("button", { name: "Roll custom dice" }).click();
     await expect(page.getByLabel("Custom roll total")).toBeVisible();
-    await expect(page.locator(".roll-history li")).toHaveCount(5);
+    const requiredRolls = ["Longsword attack", "Longsword damage", "Initiative", "Perception", "Custom roll"];
+    for (const label of requiredRolls) await expect(page.locator(".roll-history li").filter({ hasText: label })).toHaveCount(1);
+    const rollCount = await page.locator(".roll-history li").count();
+    expect([5, 6]).toContain(rollCount);
+    if (rollCount === 6) await expect(page.locator(".roll-history li").filter({ hasText: "Longsword critical confirmation" })).toHaveCount(1);
 
     const dimensions = await page.evaluate(() => ({
       pageWidth: document.documentElement.scrollWidth,

@@ -329,17 +329,26 @@ const adjustmentAppliesAtLevel = (adjustment, level) =>
   level >= (adjustment.minimumLevel ?? 1) &&
   (adjustment.maximumLevel === undefined || level <= adjustment.maximumLevel);
 
+const adjustmentBonusAtLevel = (adjustment, level) => {
+  const tableBonus = adjustment.bonusByLevel?.filter(step => step.level <= level).sort((left, right) => left.level - right.level).at(-1)?.bonus;
+  if (tableBonus !== undefined) return tableBonus;
+  const interval = Math.max(1, adjustment.interval ?? 1);
+  const increases = Math.floor((level - (adjustment.minimumLevel ?? 1)) / interval);
+  const calculated = adjustment.levelDivisor
+    ? adjustment.base + Math.floor(level / adjustment.levelDivisor) * (adjustment.levelMultiplier ?? 1)
+    : adjustment.base + increases * (adjustment.perInterval ?? 0);
+  return Math.min(
+    adjustment.maximum ?? Number.POSITIVE_INFINITY,
+    Math.max(adjustment.minimum ?? Number.NEGATIVE_INFINITY, calculated),
+  );
+};
+
 export function archetypeConditionalModifiers(archetypes = [], classLevels = {}) {
   return (archetypes ?? []).flatMap((archetype) => {
     const level = archetypeLevel(archetype, classLevels);
     return (archetype?.conditionalModifiers ?? []).flatMap((modifier) => {
       if (!adjustmentAppliesAtLevel(modifier, level)) return [];
-      const interval = Math.max(1, modifier.interval ?? 1);
-      const increases = Math.floor((level - (modifier.minimumLevel ?? 1)) / interval);
-      const bonus = Math.min(
-        modifier.maximum ?? Number.POSITIVE_INFINITY,
-        modifier.base + increases * (modifier.perInterval ?? 0),
-      );
+      const bonus = adjustmentBonusAtLevel(modifier, level);
       return [{
         label: modifier.label,
         condition: modifier.condition,
@@ -356,15 +365,7 @@ export function archetypeSkillBonuses(archetypes = [], classLevels = {}) {
     const level = archetypeLevel(archetype, classLevels);
     for (const adjustment of archetype?.skillBonusAdjustments ?? []) {
       if (!adjustmentAppliesAtLevel(adjustment, level)) continue;
-      const interval = Math.max(1, adjustment.interval ?? 1);
-      const increases = Math.floor((level - (adjustment.minimumLevel ?? 1)) / interval);
-      const calculated = adjustment.levelDivisor
-        ? adjustment.base + Math.floor(level / adjustment.levelDivisor) * (adjustment.levelMultiplier ?? 1)
-        : adjustment.base + increases * (adjustment.perInterval ?? 0);
-      const bonus = Math.min(
-        adjustment.maximum ?? Number.POSITIVE_INFINITY,
-        Math.max(adjustment.minimum ?? Number.NEGATIVE_INFINITY, calculated),
-      );
+      const bonus = adjustmentBonusAtLevel(adjustment, level);
       if (adjustment.condition) result.conditionalModifiers.push({
         label: `${adjustment.skill} checks`,
         condition: adjustment.condition,

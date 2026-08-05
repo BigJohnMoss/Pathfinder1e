@@ -1,0 +1,165 @@
+{
+  "batch": "skill-bonuses-02",
+  "overlays": [
+    {
+      "archetypeId": "barbarian-raging-cannibal",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "barbarian-raging-cannibal-intimidating-gouge-ex-3", "skill": "Intimidate", "minimumLevel": 3, "base": 0, "levelDivisor": 2, "condition": "after confirming a raging bite critical against a creature of the same type, for the rage's duration" }
+      ]
+    },
+    {
+      "archetypeId": "barbarian-sea-reaver",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "barbarian-sea-reaver-savage-sailor-ex-3", "skill": "Acrobatics", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3, "condition": "in aquatic terrain, aboard a ship, or along a shoreline" },
+        { "sourceFeatureId": "barbarian-sea-reaver-savage-sailor-ex-3", "skill": "Climb", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3, "condition": "in aquatic terrain, aboard a ship, or along a shoreline" },
+        { "sourceFeatureId": "barbarian-sea-reaver-savage-sailor-ex-3", "skill": "Profession (sailor)", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3, "condition": "in aquatic terrain, aboard a ship, or along a shoreline" },
+        { "sourceFeatureId": "barbarian-sea-reaver-savage-sailor-ex-3", "skill": "Survival", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3, "condition": "in aquatic terrain, aboard a ship, or along a shoreline" },
+        { "sourceFeatureId": "barbarian-sea-reaver-savage-sailor-ex-3", "skill": "Swim", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3, "condition": "in aquatic terrain, aboard a ship, or along a shoreline" }
+      ]
+    },
+    {
+      "archetypeId": "bard-court-fool",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "bard-court-fool-buffoonery-ex-1", "skill": "Acrobatics", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "sourceFeatureId": "bard-court-fool-buffoonery-ex-1", "skill": "Bluff", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "sourceFeatureId": "bard-court-fool-buffoonery-ex-1", "skill": "Climb", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "sourceFeatureId": "bard-court-fool-buffoonery-ex-1", "skill": "Disguise", "base": 0, "levelDivisor": 2, "minimum": 1 }
+      ]
+    },
+    {
+      "archetypeId": "bard-thundercaller",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "bard-thundercaller-bound-to-the-land-ex-1", "skill": "Handle Animal", "base": 0, "levelDivisor": 2 },
+        { "sourceFeatureId": "bard-thundercaller-bound-to-the-land-ex-1", "skill": "Knowledge (nature)", "base": 0, "levelDivisor": 2 },
+        { "sourceFeatureId": "bard-thundercaller-bound-to-the-land-ex-1", "skill": "Survival", "base": 0, "levelDivisor": 2 }
+      ]
+    },
+    {
+      "archetypeId": "druid-ancient-guardian",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "druid-ancient-guardian-patience-of-nature-ex-1", "skill": "Diplomacy", "minimumLevel": 2, "base": 0, "levelDivisor": 2 },
+        { "sourceFeatureId": "druid-ancient-guardian-patience-of-nature-ex-1", "skill": "Perform (oratory)", "minimumLevel": 2, "base": 0, "levelDivisor": 2 },
+        { "sourceFeatureId": "druid-ancient-guardian-patience-of-nature-ex-1", "skill": "Sense Motive", "minimumLevel": 2, "base": 0, "levelDivisor": 2 }
+      ]
+    },
+    {
+      "archetypeId": "druid-draconic-druid",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "druid-draconic-druid-dragon-sense-1", "skill": "Knowledge (arcana)", "base": 2 },
+        { "sourceFeatureId": "druid-draconic-druid-dragon-sense-1", "skill": "Knowledge (history)", "base": 2 }
+      ]
+    },
+    {
+      "archetypeId": "druid-green-faith-initiate",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "druid-green-faith-initiate-mediator-s-ear-ex-1", "skill": "Diplomacy", "minimumLevel": 3, "base": 0, "levelDivisor": 2 },
+        { "sourceFeatureId": "druid-green-faith-initiate-mediator-s-ear-ex-1", "skill": "Sense Motive", "minimumLevel": 3, "base": 0, "levelDivisor": 2 }
+      ]
+    },
+    {
+      "archetypeId": "druid-green-scourge",
+      "classSkillAdditions": ["Knowledge (dungeoneering)"],
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "druid-green-scourge-aberration-sense-ex-1", "skill": "Knowledge (dungeoneering)", "base": 2 }
+      ]
+    },
+    {
+      "archetypeId": "druid-nature-priest",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "druid-nature-priest-studious-piety-ex-1", "skill": "Knowledge (religion)", "base": 1 },
+        { "skill": "Knowledge (religion)", "base": 1, "condition": "the check involves the nature priest's deity or faith; add this to Studious Piety's permanent bonus" }
+      ]
+    },
+    {
+      "archetypeId": "druid-river-druid",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "druid-river-druid-ferrier-ex-1", "skill": "Diplomacy", "base": 2 },
+        { "sourceFeatureId": "druid-river-druid-ferrier-ex-1", "skill": "Knowledge (nature)", "base": 2 },
+        { "sourceFeatureId": "druid-river-druid-read-the-currents-ex-2", "skill": "Acrobatics", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "condition": "in, on, or adjacent to flowing water" },
+        { "sourceFeatureId": "druid-river-druid-read-the-currents-ex-2", "skill": "Knowledge (geography)", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "condition": "in, on, or adjacent to flowing water" },
+        { "sourceFeatureId": "druid-river-druid-read-the-currents-ex-2", "skill": "Perception", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "condition": "in, on, or adjacent to flowing water" },
+        { "sourceFeatureId": "druid-river-druid-read-the-currents-ex-2", "skill": "Stealth", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "condition": "in, on, or adjacent to flowing water" },
+        { "sourceFeatureId": "druid-river-druid-read-the-currents-ex-2", "skill": "Survival", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "condition": "in, on, or adjacent to flowing water" },
+        { "sourceFeatureId": "druid-river-druid-read-the-currents-ex-2", "skill": "Swim", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "condition": "in, on, or adjacent to flowing water" }
+      ],
+      "conditionalModifiers": [
+        { "sourceFeatureId": "druid-river-druid-read-the-currents-ex-2", "label": "initiative checks", "condition": "in, on, or adjacent to flowing water", "minimumLevel": 2, "base": 0, "levelDivisor": 2 }
+      ]
+    },
+    {
+      "archetypeId": "fighter-calistrian-hunter",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "fighter-calistrian-hunter-tenacious-tracker-ex-2", "skill": "Diplomacy", "minimumLevel": 2, "base": 1, "perInterval": 1, "interval": 4, "condition": "gathering information" },
+        { "sourceFeatureId": "fighter-calistrian-hunter-tenacious-tracker-ex-2", "skill": "Survival", "minimumLevel": 2, "base": 1, "perInterval": 1, "interval": 4, "condition": "identifying or following tracks" }
+      ]
+    },
+    {
+      "archetypeId": "fighter-cavern-sniper",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "fighter-cavern-sniper-silent-shooter-ex-2", "skill": "Stealth", "minimumLevel": 2, "base": 2, "perInterval": 2, "interval": 4, "condition": "loading a bow or crossbow, poisoning ammunition, or making a sniping attempt" }
+      ]
+    },
+    {
+      "archetypeId": "fighter-dragonheir-scion",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "fighter-dragonheir-scion-fearful-might-ex-1", "skill": "Intimidate", "base": 1, "condition": "demoralizing a foe", "bonusByLevel": [{ "level": 1, "bonus": 1 }, { "level": 6, "bonus": 2 }, { "level": 10, "bonus": 3 }, { "level": 14, "bonus": 4 }, { "level": 18, "bonus": 5 }] }
+      ]
+    },
+    {
+      "archetypeId": "fighter-spear-fighter",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "fighter-spear-fighter-balanced-stride-ex-2", "skill": "Acrobatics", "minimumLevel": 2, "base": 1, "perInterval": 1, "interval": 4, "condition": "avoiding attacks of opportunity" }
+      ]
+    },
+    {
+      "archetypeId": "gunslinger-siege-gunner",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "gunslinger-siege-gunner-engineer-training-ex-2", "skill": "Knowledge (engineering)", "minimumLevel": 2, "base": 0, "levelDivisor": 2 }
+      ]
+    },
+    {
+      "archetypeId": "inquisitor-royal-accuser",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "inquisitor-royal-accuser-meticulous-inspection-ex-1", "skill": "Perception", "base": 0, "levelDivisor": 2, "minimum": 1 }
+      ]
+    },
+    {
+      "archetypeId": "inquisitor-sworn-of-the-eldest",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "inquisitor-sworn-of-the-eldest-feytongue-ex-1", "skill": "Bluff", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "sourceFeatureId": "inquisitor-sworn-of-the-eldest-feytongue-ex-1", "skill": "Diplomacy", "base": 0, "levelDivisor": 2, "minimum": 1 }
+      ]
+    },
+    {
+      "archetypeId": "inquisitor-tactical-leader",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "inquisitor-tactical-leader-leader-s-words-ex-1", "skill": "Diplomacy", "base": 0, "levelDivisor": 2, "minimum": 1 }
+      ]
+    },
+    {
+      "archetypeId": "inquisitor-umbral-stalker",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "inquisitor-umbral-stalker-swift-and-silent-ex-1", "skill": "Acrobatics", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "sourceFeatureId": "inquisitor-umbral-stalker-swift-and-silent-ex-1", "skill": "Stealth", "base": 0, "levelDivisor": 2, "minimum": 1 }
+      ]
+    },
+    {
+      "archetypeId": "investigator-guardian-of-immortality",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "investigator-guardian-of-immortality-guardian-s-gaze-ex-2", "skill": "Sense Motive", "minimumLevel": 2, "base": 0, "levelDivisor": 2 }
+      ]
+    },
+    {
+      "archetypeId": "mesmerist-cult-master",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "mesmerist-cult-master-insidious-personality-ex-1", "skill": "Diplomacy", "base": 0, "levelDivisor": 2, "minimum": 1 }
+      ]
+    },
+    {
+      "archetypeId": "mesmerist-enigma",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "mesmerist-enigma-veiled-steps-1", "skill": "Stealth", "base": 0, "levelDivisor": 4, "minimum": 1 }
+      ]
+    }
+  ]
+}

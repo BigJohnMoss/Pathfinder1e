@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeProficiencyAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -21,6 +22,34 @@ test("archetype automation reports calculated and manual mechanics separately", 
 
 test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
+});
+
+test("generated automation overlays merge without mutating sources and calculate level-aware skill bonuses", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const overlay = JSON.parse(readFileSync(new URL("../packages/data/src/archetype-automation/skill-bonuses-02.json", import.meta.url), "utf8"));
+  const source = ["bard-court-fool", "barbarian-sea-reaver", "fighter-dragonheir-scion", "druid-river-druid"]
+    .map(record);
+  const snapshot = structuredClone(source);
+  const merged = mergeArchetypeAutomation(source, [overlay]);
+  const archetype = (id) => merged.find((item) => item.id === id);
+
+  assert.deepEqual(source, snapshot, "overlay merge leaves imported source records unchanged");
+  assert.deepEqual(archetypeSkillBonuses([archetype("bard-court-fool")], { bard: 10 }).skillBonuses, {
+    Acrobatics: 5,
+    Bluff: 5,
+    Climb: 5,
+    Disguise: 5,
+  });
+  assert.deepEqual(archetypeSkillBonuses([archetype("fighter-dragonheir-scion")], { fighter: 6 }).conditionalModifiers[0], {
+    label: "Intimidate checks",
+    condition: "demoralizing a foe",
+    bonus: 2,
+    source: "Dragonheir Scion",
+  });
+  assert.equal(archetypeSkillBonuses([archetype("barbarian-sea-reaver")], { barbarian: 9 }).conditionalModifiers.find((item) => item.label === "Profession (sailor) checks")?.bonus, 3);
+  assert.equal(archetypeSkillBonuses([archetype("druid-river-druid")], { druid: 10 }).conditionalModifiers.find((item) => item.label === "Swim checks")?.bonus, 5);
+  assert.equal(archetype("druid-river-druid").classSkillAdditions.filter((skill) => skill === "Diplomacy").length, 1);
+  assert.ok(!archetypeAutomationSummary(archetype("bard-court-fool")).manual.some((item) => item.startsWith("Buffoonery")));
 });
 
 test("Unlettered Arcanist replaces its spell catalogue without changing Arcanist casting progression", () => {
