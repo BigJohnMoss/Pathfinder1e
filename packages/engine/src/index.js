@@ -322,6 +322,64 @@ export function encumbrance(strength, items) {
   return { carriedWeight, capacity, load };
 }
 
+const archetypeLevel = (archetype, classLevels = {}) =>
+  Math.max(0, Number(classLevels?.[archetype?.classId]) || 0);
+
+const adjustmentAppliesAtLevel = (adjustment, level) =>
+  level >= (adjustment.minimumLevel ?? 1) &&
+  (adjustment.maximumLevel === undefined || level <= adjustment.maximumLevel);
+
+export function archetypeConditionalModifiers(archetypes = [], classLevels = {}) {
+  return (archetypes ?? []).flatMap((archetype) => {
+    const level = archetypeLevel(archetype, classLevels);
+    return (archetype?.conditionalModifiers ?? []).flatMap((modifier) => {
+      if (!adjustmentAppliesAtLevel(modifier, level)) return [];
+      const interval = Math.max(1, modifier.interval ?? 1);
+      const increases = Math.floor((level - (modifier.minimumLevel ?? 1)) / interval);
+      const bonus = Math.min(
+        modifier.maximum ?? Number.POSITIVE_INFINITY,
+        modifier.base + increases * (modifier.perInterval ?? 0),
+      );
+      return [{
+        label: modifier.label,
+        condition: modifier.condition,
+        bonus,
+        source: archetype.name,
+      }];
+    });
+  });
+}
+
+const armorOrLoadReducesSpeed = (armorCategory, load) =>
+  ["medium", "heavy"].includes(armorCategory) || ["medium", "heavy"].includes(load);
+
+const reducedLandSpeed = (speed) => Math.ceil((speed * 2) / 3 / 5) * 5;
+
+export function characterLandSpeed(baseSpeed, armorCategory = "none", load = "light", archetypes = [], classLevels = {}) {
+  if (!Number.isInteger(baseSpeed) || baseSpeed < 0)
+    throw new RangeError("Base land speed must be a non-negative integer.");
+  const adjustments = (archetypes ?? []).flatMap((archetype) => {
+    const level = archetypeLevel(archetype, classLevels);
+    return (archetype?.landSpeedAdjustments ?? [])
+      .filter((adjustment) => adjustmentAppliesAtLevel(adjustment, level))
+      .filter((adjustment) => !adjustment.armorCategories?.length || adjustment.armorCategories.includes(armorCategory))
+      .filter((adjustment) => !adjustment.prohibitedLoads?.includes(load))
+      .map((adjustment) => ({ ...adjustment, source: archetype.name }));
+  });
+  if (load === "overloaded") return { speed: 0, baseSpeed, armorCategory, load, adjustments: [] };
+  const beforeReduction = adjustments
+    .filter((adjustment) => adjustment.timing === "beforeReduction")
+    .reduce((total, adjustment) => total + adjustment.bonus, baseSpeed);
+  let speed = armorOrLoadReducesSpeed(armorCategory, load)
+    ? reducedLandSpeed(beforeReduction)
+    : beforeReduction;
+  for (const adjustment of adjustments.filter((item) => item.timing === "afterReduction")) {
+    speed += adjustment.bonus;
+    if (adjustment.capAtBaseSpeed) speed = Math.min(speed, baseSpeed);
+  }
+  return { speed, baseSpeed, armorCategory, load, adjustments };
+}
+
 export function spellsAvailableToClass(
   spells,
   classId,
@@ -1324,6 +1382,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ? archetype.resourceAdjustments
     : inferArchetypeResourceAdjustments(archetype);
   if (resourceAdjustments.length) automated.push(`${resourceAdjustments.length} tracked class resource adjustment${resourceAdjustments.length === 1 ? "" : "s"}`);
+  if (archetype.conditionalModifiers?.length)
+    automated.push(`${archetype.conditionalModifiers.length} level-aware conditional modifier${archetype.conditionalModifiers.length === 1 ? "" : "s"}`);
+  if (archetype.landSpeedAdjustments?.length)
+    automated.push(`${archetype.landSpeedAdjustments.length} equipment-aware land-speed adjustment${archetype.landSpeedAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   if (archetype.optionGroupAugmentations?.length)
     automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);

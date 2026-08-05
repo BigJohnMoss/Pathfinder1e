@@ -1285,6 +1285,25 @@ test("selects and persists the Barbarian Breaker archetype", async () => {
   assert.equal((screen.getByLabelText("Archetype") as HTMLSelectElement).value, "barbarian-breaker");
 });
 
+test("Armored Hulk updates land speed and conditional defenses from equipped armor", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-armored-hulk");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "2" } });
+  await user.click(screen.getByRole("tab", { name: "Storage" }));
+  await user.selectOptions(screen.getByLabelText("Equipment catalogue"), "full-plate");
+  await user.click(screen.getByLabelText("Equipped"));
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.match(screen.getByText("Land speed").parentElement?.textContent ?? "", /25 ft/);
+  assert.match(screen.getByLabelText("Land speed calculation").textContent ?? "", /heavy armor.*Armored Swiftness/);
+  assert.ok(screen.getByText("+1 CMB and CMD"));
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  assert.match(screen.getByText("Land speed").parentElement?.textContent ?? "", /30 ft/);
+  assert.match(screen.getByLabelText("Land speed calculation").textContent ?? "", /Improved Armored Swiftness/);
+  assert.equal(screen.getAllByText("+1 AC", { selector: ".conditional-modifiers strong" }).length, 2);
+});
+
 test("switches between the Drunken Brute and Hurler archetypes", async () => {
   const user = userEvent.setup();
   render(<Home />);

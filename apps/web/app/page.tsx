@@ -29,6 +29,8 @@ import { TraitChoices } from "./trait-choices";
 import {
   EquipmentPanel,
   equipmentCombatBonuses,
+  equipmentEncumbrance,
+  equippedArmorCategory,
   equippedWeaponAttacks,
   type CoinPurse,
   type InventoryEntry,
@@ -62,6 +64,7 @@ import {
   abilityBoostCount,
   abilityNames,
   apgClassResourceMaximums,
+  archetypeConditionalModifiers,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
   adjustedCompanionLevel,
@@ -69,6 +72,7 @@ import {
   availableOptions,
   bardicPerformanceRounds,
   characterCombatStats,
+  characterLandSpeed,
   classProgression,
   druidWildShapeUses,
   effectiveSpellcastingLevels,
@@ -1050,6 +1054,20 @@ export default function Home() {
     selectedFeatBonuses,
     selectedTraitBonuses,
   ]);
+  const landSpeed = useMemo(() => {
+    const load = equipmentEncumbrance(abilities.strength, inventory).load;
+    return characterLandSpeed(
+      ancestry.speed,
+      equippedArmorCategory(inventory),
+      load,
+      allSelectedArchetypes,
+      classLevelMap,
+    );
+  }, [abilities.strength, allSelectedArchetypes, ancestry.speed, classLevelMap, inventory]);
+  const selectedArchetypeConditionalModifiers = useMemo(
+    () => archetypeConditionalModifiers(allSelectedArchetypes, classLevelMap),
+    [allSelectedArchetypes, classLevelMap],
+  );
   const featSlots = useMemo(
     () =>
       Array.from({ length: progression.featSlots }, (_, index) => {
@@ -4238,8 +4256,12 @@ export default function Home() {
             <div className="actions-workspace">
               <CombatPanel
                 combat={combat}
+                landSpeed={landSpeed}
                 modifierSources={selectedFeatBonuses.sources}
-                conditionalModifiers={selectedTraitBonuses.conditionalModifiers}
+                conditionalModifiers={[
+                  ...(selectedTraitBonuses.conditionalModifiers ?? []),
+                  ...selectedArchetypeConditionalModifiers,
+                ]}
               />
               <ActivePlayPanel
                 maximumHitPoints={combat.averageHitPoints}

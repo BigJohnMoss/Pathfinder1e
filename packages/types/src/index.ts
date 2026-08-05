@@ -443,6 +443,26 @@ export interface CharacterArchetype {
     refreshCadence?: "day" | "week";
     hidden?: boolean;
   }>;
+  conditionalModifiers?: Array<{
+    label: string;
+    condition: string;
+    minimumLevel?: number;
+    maximumLevel?: number;
+    base: number;
+    perInterval?: number;
+    interval?: number;
+    maximum?: number;
+  }>;
+  landSpeedAdjustments?: Array<{
+    minimumLevel?: number;
+    maximumLevel?: number;
+    bonus: number;
+    timing: "beforeReduction" | "afterReduction";
+    armorCategories?: Array<"none" | "light" | "medium" | "heavy">;
+    prohibitedLoads?: Array<"light" | "medium" | "heavy" | "overloaded">;
+    capAtBaseSpeed?: boolean;
+    label: string;
+  }>;
   optionGroupAugmentations?: OptionGroupAugmentation[];
   prohibitedOptionIds?: string[];
   prohibitedCompanionKinds?: Array<"animal" | "mount" | "familiar" | "eidolon" | "drake">;
