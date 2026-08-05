@@ -27,6 +27,7 @@ const newRows = [];
 for (const archetype of archetypes) {
   const details = inferredArchetypeSkillBonusDetails(archetype);
   const explicitSourceKeys = new Set((archetype.skillBonusAdjustments ?? []).filter((adjustment) => adjustment.sourceFeatureId).map((adjustment) => `${adjustment.sourceFeatureId}:${adjustment.skill}`));
+  const explicitUnscopedSkills = new Set((archetype.skillBonusAdjustments ?? []).filter((adjustment) => !adjustment.sourceFeatureId).map((adjustment) => adjustment.skill));
   const explicitValueKeys = new Set((archetype.skillBonusAdjustments ?? []).map((adjustment) => `${adjustment.skill}:${adjustment.condition ?? ""}`));
   for (const adjustment of details.adjustments) {
     const row = {
@@ -37,7 +38,7 @@ for (const archetype of archetypes) {
       adjustment,
     };
     rows.push(row);
-    if (!explicitSourceKeys.has(`${adjustment.sourceFeatureId ?? ""}:${adjustment.skill}`) && !explicitValueKeys.has(`${adjustment.skill}:${adjustment.condition ?? ""}`)) newRows.push(row);
+    if (!explicitSourceKeys.has(`${adjustment.sourceFeatureId ?? ""}:${adjustment.skill}`) && !explicitUnscopedSkills.has(adjustment.skill) && !explicitValueKeys.has(`${adjustment.skill}:${adjustment.condition ?? ""}`)) newRows.push(row);
   }
 }
 

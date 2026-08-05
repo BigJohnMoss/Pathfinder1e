@@ -162,6 +162,10 @@ test("exact conditional skill bonuses retain their published trigger", () => {
   assert.ok(!archetypeAutomationSummary(archetype("gunslinger-commando")).manual.some((item) => item.startsWith("Track")));
   assert.ok(archetypeAutomationSummary(archetype("druid-aerie-protector")).manual.some((item) => item.startsWith("Sky and Stone")), "an additional untracked benefit keeps the feature manual");
   assert.ok(!inferArchetypeSkillBonusAdjustments(archetype("slayer-spiritslayer")).some((adjustment) => adjustment.sourceFeatureId === "slayer-spiritslayer-spiritslayer-talents-1"), "optional talents are never granted automatically");
+  assert.equal(archetypeSkillBonuses([archetype("bard-magician")], { bard: 10 }).skillBonuses.Spellcraft, 5);
+  assert.equal(archetypeSkillBonuses([archetype("bard-detective")], { bard: 10 }).conditionalModifiers.find((item) => item.label === "Perception checks")?.bonus, 5);
+  assert.equal(archetypeSkillBonuses([archetype("barbarian-brutish-swamper")], { barbarian: 20 }).conditionalModifiers.find((item) => item.label === "Survival checks")?.bonus, 8);
+  assert.ok(archetypeAutomationSummary(archetype("barbarian-brutish-swamper")).manual.some((item) => item.startsWith("Home")), "the parallel initiative bonus remains separately manual");
 });
 
 test("skill-bonus inference remains normalized and conservative across the full catalogue", () => {
@@ -247,6 +251,7 @@ test("generated automation overlays merge without mutating sources and calculate
   assert.equal(messenger.conditionalModifiers.find((item) => item.label === "Bluff checks")?.bonus, 5);
   assert.equal(archetype("bard-impervious-messenger").conditionalModifiers[0].base, 4);
   assert.equal(archetypeSkillBonuses([archetype("cavalier-castellan")], { cavalier: 13 }).conditionalModifiers.find((item) => item.label === "Stealth checks")?.bonus, 6);
+  assert.equal(archetypeSkillBonuses([archetype("cavalier-castellan")], { cavalier: 13 }).conditionalModifiers.filter((item) => item.label === "Stealth checks").length, 1);
   assert.equal(archetypeSkillBonuses([archetype("cavalier-courtly-knight")], { cavalier: 20 }).skillBonuses.Diplomacy, 6);
 });
 

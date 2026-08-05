@@ -78,8 +78,11 @@ function exactSkillsInClause(rawClause) {
 
 function exactSkillClause(rawClause) {
   let clause = String(rawClause).replace(/[â€™]/g, "'").trim().replace(/[.]$/, "");
+  const leadingInitiative = clause.match(/^(?:all )?initiative checks?(?:,\s*(?:and\s*)?|\s+and\s+)(?:on\s+)?(.+)$/i);
+  const omittedLeadingRoll = Boolean(leadingInitiative);
+  if (leadingInitiative) clause = leadingInitiative[1].trim();
   const tail = clause.match(/^(.*?),\s+and\s+(?:(?:he|she|they)\s+)?(?:can|cannot|may|must|also|creates?|takes?|treats?|is|are|has|gains?|receives?|learns?|becomes?)\b/i);
-  const omittedTail = Boolean(tail);
+  const omittedTail = omittedLeadingRoll || Boolean(tail);
   if (tail) clause = tail[1].trim();
   const conditional = clause.match(/^(.*?\bchecks?)(\s+(?:(?:made\s+)?to|when|while|against|during|within|in|involving|regarding|related\s+to|outside\s+of)\b.+)$/i);
   if (!conditional) {
@@ -105,6 +108,13 @@ function leadingConditionInPrefix(rawPrefix) {
 }
 
 const combinedCondition = (leading, trailing) => [leading, trailing].filter(Boolean).join("; ") || undefined;
+
+function safePrefixCondition(prefix) {
+  const leadingCondition = leadingConditionInPrefix(prefix);
+  const unresolvedCondition = /\b(?:when|whenever|while|if|unless|during|wearing|wielding|under|with at least)\b/i.test(prefix) && !leadingCondition;
+  const unsafeSubject = /\b(?:allies|ally|animals?|companions?|constructs?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(prefix);
+  return { safe: !unresolvedCondition && !unsafeSubject, leadingCondition };
+}
 
 const splitSentences = (summary) => String(summary ?? "")
   .replace(/\s+/g, " ")
@@ -184,7 +194,7 @@ function adjustmentsFromFeature(feature) {
     return { adjustments, fullyAutomated: false };
   const sentences = splitSentences(summary);
   const scaling = scalingSchedule(sentences);
-  const hasUnparsedScaling = /\b(?:this|the|these|both) bonus(?:es)?[^.]{0,80}(?:double|increase)|\bbonus increases (?:by|to)|\bbonuses increase\b/i.test(summary) && !scaling;
+  const hasUnparsedScaling = /\bbonus(?:es)?\b[^.]{0,100}\b(?:double|increase)/i.test(summary) && !scaling;
   if (hasUnparsedScaling) return { adjustments, fullyAutomated: false };
   let lastParsedSentenceIndex = -1;
   const minimumLevelFor = (sentence, sentenceIndex) => {
@@ -199,8 +209,8 @@ function adjustmentsFromFeature(feature) {
     const halfLevel = sentence.match(/\b(?:adds?|gains?|receives?) (?:an? )?(?:bonus equal to )?(?:(?:one-)?half|1\/2) (?:of )?(?:his|her|their) (?:(?:\w+ )?(?:class )?)?level(?: \(minimum \+?1\)|,? minimum \+?1)? (?:as a bonus )?(?:on|to) (.+?)[.]?$/i);
     if (halfLevel) {
       const prefix = sentence.slice(0, halfLevel.index);
-      const leadingCondition = leadingConditionInPrefix(prefix);
-      if ((/\b(?:when|whenever|while|if|unless|during|wearing|wielding|under|with at least)\b/i.test(prefix) && !leadingCondition) || /\b(?:allies|ally|animals?|companions?|constructs?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(prefix)) {
+      const { safe, leadingCondition } = safePrefixCondition(prefix);
+      if (!safe) {
         fullyAutomated = false;
         continue;
       }
@@ -220,11 +230,34 @@ function adjustmentsFromFeature(feature) {
         continue;
       }
     }
+    const trailingHalfLevel = sentence.match(/\b(?:adds?|gains?|receives?) (?:an? )?(?:\w+ )?bonus (?:on|to) (.+?) equal to (?:(?:one-)?half|1\/2) (?:of )?(?:his|her|their) (?:(?:\w+ )?(?:class )?)?level(?: \(minimum \+?1\)|,? minimum \+?1)?[.]?$/i);
+    const compactHalfLevel = sentence.match(/^(?:At \d+(?:st|nd|rd|th) level,? )?Add (?:(?:one-)?half|1\/2) (?:(?:your|his|her|their) )?(?:(?:\w+ )?(?:class )?)?level (?:as a bonus )?to (.+?)[.]?$/i);
+    const alternateHalfLevel = trailingHalfLevel ?? compactHalfLevel;
+    if (alternateHalfLevel) {
+      const prefix = trailingHalfLevel ? sentence.slice(0, trailingHalfLevel.index) : "";
+      const { safe, leadingCondition } = safePrefixCondition(prefix);
+      const parsed = safe ? exactSkillClause(alternateHalfLevel[1]) : null;
+      if (parsed) {
+        const condition = combinedCondition(leadingCondition, parsed.condition);
+        adjustments.push(...parsed.skills.map((skill) => ({
+          sourceFeatureId: feature.id,
+          skill,
+          minimumLevel: minimumLevelFor(sentence, sentenceIndex),
+          base: 0,
+          levelDivisor: 2,
+          minimum: 1,
+          ...(condition ? { condition } : {}),
+        })));
+        lastParsedSentenceIndex = sentenceIndex;
+        if (parsed.omittedTail) fullyAutomated = false;
+        continue;
+      }
+    }
     const fixed = sentence.match(/\b(?:gains?|receives?|has) (?:an? )?\+(\d+) (?:alchemical |circumstance |competence |enhancement |insight |morale |profane |racial |sacred |trait |untyped )?bonus (?:on|to) (.+?)[.]?$/i);
     if (fixed) {
       const prefix = sentence.slice(0, fixed.index);
-      const leadingCondition = leadingConditionInPrefix(prefix);
-      if ((/\b(?:when|whenever|while|if|unless|during|wearing|wielding|under|with at least)\b/i.test(prefix) && !leadingCondition) || /\b(?:allies|ally|animals?|companions?|constructs?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(prefix)) {
+      const { safe, leadingCondition } = safePrefixCondition(prefix);
+      if (!safe) {
         fullyAutomated = false;
         continue;
       }
@@ -276,9 +309,11 @@ export function inferArchetypeSkillBonusAdjustments(archetype) {
 export function archetypeSkillBonusAdjustments(archetype) {
   const explicit = archetype?.skillBonusAdjustments ?? [];
   const explicitSourceKeys = new Set(explicit.filter((adjustment) => adjustment.sourceFeatureId).map((adjustment) => `${adjustment.sourceFeatureId}:${adjustment.skill}`));
+  const explicitUnscopedSkills = new Set(explicit.filter((adjustment) => !adjustment.sourceFeatureId).map((adjustment) => adjustment.skill));
   const explicitValueKeys = new Set(explicit.map((adjustment) => `${adjustment.skill}:${adjustment.condition ?? ""}`));
   const inferred = inferArchetypeSkillBonusAdjustments(archetype).filter((adjustment) =>
     !explicitSourceKeys.has(`${adjustment.sourceFeatureId ?? ""}:${adjustment.skill}`) &&
+    !explicitUnscopedSkills.has(adjustment.skill) &&
     !explicitValueKeys.has(`${adjustment.skill}:${adjustment.condition ?? ""}`),
   );
   return [...explicit, ...inferred];
