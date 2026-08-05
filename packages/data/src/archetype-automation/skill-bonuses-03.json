@@ -1,0 +1,159 @@
+{
+  "batch": "skill-bonuses-03",
+  "overlays": [
+    {
+      "archetypeId": "alchemist-horticulturist",
+      "skillBonusAdjustments": [
+        { "skill": "Knowledge (nature)", "minimumLevel": 2, "base": 2 },
+        { "skill": "Survival", "minimumLevel": 2, "base": 2 }
+      ]
+    },
+    {
+      "archetypeId": "alchemist-perfumer",
+      "skillBonusAdjustments": [
+        { "skill": "Bluff", "base": 2, "condition": "while affected by the perfumer's pheromones" },
+        { "skill": "Diplomacy", "base": 2, "condition": "while affected by the perfumer's pheromones" }
+      ]
+    },
+    {
+      "archetypeId": "alchemist-dragonblood-chymist",
+      "skillBonusAdjustments": [
+        { "skill": "Intimidate", "minimumLevel": 2, "base": 2, "condition": "while the dragonblood mutagen is in effect" }
+      ]
+    },
+    {
+      "archetypeId": "barbarian-fearsome-defender",
+      "skillBonusAdjustments": [
+        { "skill": "Intimidate", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3 }
+      ]
+    },
+    {
+      "archetypeId": "barbarian-giant-stalker",
+      "skillBonusAdjustments": [
+        { "skill": "Intimidate", "base": 2, "condition": "while raging and speaking Giant, if the giant stalker already knows Giant" }
+      ]
+    },
+    {
+      "archetypeId": "barbarian-scarred-rager",
+      "skillBonusAdjustments": [
+        { "skill": "Intimidate", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "against humanoids who are not members of barbarian tribes" },
+        { "skill": "Diplomacy", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "when dealing with barbarians instead of applying Terrifying Visage to Intimidate" }
+      ]
+    },
+    {
+      "archetypeId": "barbarian-urban-barbarian",
+      "skillBonusAdjustments": [
+        { "skill": "Intimidate", "base": 0, "levelDivisor": 2, "condition": "when influencing crowds" }
+      ]
+    },
+    {
+      "archetypeId": "barbarian-wildborn",
+      "skillBonusAdjustments": [
+        { "skill": "Survival", "minimumLevel": 3, "base": 0, "levelDivisor": 2, "condition": "when hunting or gathering food" }
+      ]
+    },
+    {
+      "archetypeId": "bard-chelish-diva",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "bard-chelish-diva-famous-1", "skill": "Bluff", "base": 1, "maximumLevel": 16, "condition": "within the diva's famous region or when influencing people from that region", "bonusByLevel": [{ "level": 1, "bonus": 1 }, { "level": 5, "bonus": 2 }, { "level": 9, "bonus": 3 }, { "level": 13, "bonus": 4 }] },
+        { "sourceFeatureId": "bard-chelish-diva-famous-1", "skill": "Diplomacy", "minimumLevel": 17, "base": 5, "condition": "within the diva's famous region or when influencing people from that region" },
+        { "sourceFeatureId": "bard-chelish-diva-famous-1", "skill": "Intimidate", "base": 1, "condition": "within the diva's famous region or when influencing people from that region", "bonusByLevel": [{ "level": 1, "bonus": 1 }, { "level": 5, "bonus": 2 }, { "level": 9, "bonus": 3 }, { "level": 13, "bonus": 4 }, { "level": 17, "bonus": 5 }] }
+      ]
+    },
+    {
+      "archetypeId": "bard-impervious-messenger",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "bard-impervious-messenger-cryptic-whisper-ex-2", "skill": "Linguistics", "minimumLevel": 2, "base": 0, "levelDivisor": 2 },
+        { "sourceFeatureId": "bard-impervious-messenger-cryptic-whisper-ex-2", "skill": "Bluff", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "condition": "when delivering secret messages" }
+      ],
+      "conditionalModifiers": [
+        { "sourceFeatureId": "bard-impervious-messenger-cryptic-whisper-ex-2", "label": "saving throws", "condition": "against glyph spells, symbol spells, and language-dependent effects", "minimumLevel": 2, "base": 4 }
+      ]
+    },
+    {
+      "archetypeId": "bard-luring-piper",
+      "skillBonusAdjustments": [
+        { "sourceFeatureId": "bard-luring-piper-fey-secrets-1", "skill": "Bluff", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "when interacting with fey" },
+        { "sourceFeatureId": "bard-luring-piper-fey-secrets-1", "skill": "Knowledge (nature)", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "when interacting with fey" },
+        { "sourceFeatureId": "bard-luring-piper-fey-secrets-1", "skill": "Perception", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "when interacting with fey" },
+        { "sourceFeatureId": "bard-luring-piper-fey-secrets-1", "skill": "Sense Motive", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "when interacting with fey" },
+        { "sourceFeatureId": "bard-luring-piper-fey-secrets-1", "skill": "Survival", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "when interacting with fey" }
+      ]
+    },
+    {
+      "archetypeId": "bard-voice-of-brigh",
+      "skillBonusAdjustments": [
+        { "skill": "Knowledge (arcana)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "skill": "Knowledge (dungeoneering)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "skill": "Knowledge (engineering)", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "skill": "Knowledge (religion)", "base": 0, "levelDivisor": 2, "minimum": 1 }
+      ]
+    },
+    {
+      "archetypeId": "bard-wasteland-chronicler",
+      "skillBonusAdjustments": [
+        { "skill": "Diplomacy", "minimumLevel": 3, "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "when influencing the attitude of wasteland dwellers" }
+      ]
+    },
+    {
+      "archetypeId": "cavalier-castellan",
+      "skillBonusAdjustments": [
+        { "skill": "Knowledge (engineering)", "minimumLevel": 3, "base": 2, "perInterval": 2, "interval": 5, "condition": "in urban terrain, including fortifications" },
+        { "skill": "Knowledge (local)", "minimumLevel": 3, "base": 2, "perInterval": 2, "interval": 5, "condition": "in urban terrain, including fortifications" },
+        { "skill": "Knowledge (nobility)", "minimumLevel": 3, "base": 2, "perInterval": 2, "interval": 5, "condition": "in urban terrain, including fortifications" },
+        { "skill": "Perception", "minimumLevel": 3, "base": 2, "perInterval": 2, "interval": 5, "condition": "in urban terrain, including fortifications" },
+        { "skill": "Stealth", "minimumLevel": 3, "base": 2, "perInterval": 2, "interval": 5, "condition": "in urban terrain, including fortifications" }
+      ],
+      "conditionalModifiers": [
+        { "label": "initiative checks", "condition": "in urban terrain, including fortifications", "minimumLevel": 3, "base": 2, "perInterval": 2, "interval": 5 }
+      ]
+    },
+    {
+      "archetypeId": "cavalier-circuit-judge",
+      "skillBonusAdjustments": [
+        { "skill": "Intimidate", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "within the circuit judge's selected community circuit" },
+        { "skill": "Knowledge (local)", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "within the circuit judge's selected community circuit" },
+        { "skill": "Sense Motive", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "within the circuit judge's selected community circuit" },
+        { "skill": "Intimidate", "base": 2, "condition": "additional bonus in a community within the circuit that the judge has not visited for at least 1 week" }
+      ]
+    },
+    {
+      "archetypeId": "cavalier-courtly-knight",
+      "skillBonusAdjustments": [
+        { "skill": "Bluff", "base": 1, "levelDivisor": 4, "maximum": 6 },
+        { "skill": "Diplomacy", "base": 1, "levelDivisor": 4, "maximum": 6 },
+        { "skill": "Intimidate", "base": 1, "levelDivisor": 4, "maximum": 6 },
+        { "skill": "Sense Motive", "base": 1, "levelDivisor": 4, "maximum": 6 },
+        { "skill": "Diplomacy", "minimumLevel": 9, "base": 5, "condition": "when making a request after succeeding at Imperious Attitude's Intimidate check" }
+      ]
+    },
+    {
+      "archetypeId": "cavalier-fell-rider",
+      "skillBonusAdjustments": [
+        { "skill": "Intimidate", "minimumLevel": 4, "base": 0, "levelDivisor": 2, "condition": "while mounted" }
+      ]
+    },
+    {
+      "archetypeId": "investigator-conspirator",
+      "skillBonusAdjustments": [
+        { "skill": "Bluff", "base": 0, "levelDivisor": 2, "minimum": 1, "condition": "when attempting to appear innocent" },
+        { "skill": "Disguise", "base": 0, "levelDivisor": 2, "minimum": 1 },
+        { "skill": "Perception", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 3, "condition": "when noticing magical effects used to watch the conspirator or acting in the surprise round" }
+      ]
+    },
+    {
+      "archetypeId": "skald-court-poet",
+      "skillBonusAdjustments": [
+        { "skill": "Perform", "minimumLevel": 2, "base": 1, "condition": "when adjacent to two or more creatures" },
+        { "skill": "Diplomacy", "minimumLevel": 2, "base": 0, "levelDivisor": 2, "condition": "when influencing crowds" }
+      ]
+    },
+    {
+      "archetypeId": "swashbuckler-shackles-corsair",
+      "skillBonusAdjustments": [
+        { "skill": "Intimidate", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 4 },
+        { "skill": "Profession (sailor)", "minimumLevel": 3, "base": 1, "perInterval": 1, "interval": 4 }
+      ]
+    }
+  ]
+}

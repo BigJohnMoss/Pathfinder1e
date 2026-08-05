@@ -7,6 +7,7 @@ let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
 let cleanup: typeof import("@testing-library/react").cleanup;
 let fireEvent: typeof import("@testing-library/react").fireEvent;
+let waitFor: typeof import("@testing-library/react").waitFor;
 let userEvent: typeof import("@testing-library/user-event").default;
 let Home: typeof import("../apps/web/app/page").default;
 
@@ -15,7 +16,7 @@ test.before(async () => {
   Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, localStorage: dom.window.localStorage });
   Object.defineProperty(globalThis, "navigator", { configurable: true, value: dom.window.navigator });
   Object.assign(globalThis, { React });
-  ({ render, screen, cleanup, fireEvent } = await import("@testing-library/react"));
+  ({ render, screen, cleanup, fireEvent, waitFor } = await import("@testing-library/react"));
   userEvent = (await import("@testing-library/user-event")).default;
   Home = (await import("../apps/web/app/page")).default;
 });
@@ -55,13 +56,13 @@ test("Magaambyan Initiate enforces good alignment and manages repeatable Spell M
   assert.equal(screen.getByLabelText("Spell Mastery selections").textContent, "0/3 mastered");
   await user.type(screen.getByLabelText("Search Spell Mastery spells"), "Magic Missile");
   await user.click(screen.getByRole("button", { name: "Master Magic Missile" }));
-  assert.equal(screen.getByLabelText("Spell Mastery selections").textContent, "1/3 mastered");
+  await waitFor(() => assert.equal(screen.getByLabelText("Spell Mastery selections").textContent, "1/3 mastered"));
   assert.ok(screen.getByText(/Magic Missile · 1st-level/));
 
   await user.click(screen.getByRole("button", { name: "Save" }));
   await user.click(screen.getByRole("button", { name: "Reset" }));
   await user.click(screen.getByRole("button", { name: "Load" }));
   await user.click(screen.getByRole("tab", { name: "Spells" }));
-  assert.equal(screen.getByLabelText("Spell Mastery selections").textContent, "1/3 mastered");
+  await waitFor(() => assert.equal(screen.getByLabelText("Spell Mastery selections").textContent, "1/3 mastered"));
   assert.ok(screen.getByText(/Magic Missile · 1st-level/));
 });

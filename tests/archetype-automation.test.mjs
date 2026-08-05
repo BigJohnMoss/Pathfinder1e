@@ -27,10 +27,11 @@ test("full archetypes never report manual effects", () => {
 test("generated automation overlays merge without mutating sources and calculate level-aware skill bonuses", () => {
   const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const overlay = JSON.parse(readFileSync(new URL("../packages/data/src/archetype-automation/skill-bonuses-02.json", import.meta.url), "utf8"));
-  const source = ["bard-court-fool", "barbarian-sea-reaver", "fighter-dragonheir-scion", "druid-river-druid"]
+  const nextOverlay = JSON.parse(readFileSync(new URL("../packages/data/src/archetype-automation/skill-bonuses-03.json", import.meta.url), "utf8"));
+  const source = ["bard-court-fool", "barbarian-sea-reaver", "fighter-dragonheir-scion", "druid-river-druid", "bard-chelish-diva", "barbarian-fearsome-defender", "bard-impervious-messenger", "cavalier-castellan", "cavalier-courtly-knight"]
     .map(record);
   const snapshot = structuredClone(source);
-  const merged = mergeArchetypeAutomation(source, [overlay]);
+  const merged = mergeArchetypeAutomation(source, [overlay, nextOverlay]);
   const archetype = (id) => merged.find((item) => item.id === id);
 
   assert.deepEqual(source, snapshot, "overlay merge leaves imported source records unchanged");
@@ -50,6 +51,22 @@ test("generated automation overlays merge without mutating sources and calculate
   assert.equal(archetypeSkillBonuses([archetype("druid-river-druid")], { druid: 10 }).conditionalModifiers.find((item) => item.label === "Swim checks")?.bonus, 5);
   assert.equal(archetype("druid-river-druid").classSkillAdditions.filter((skill) => skill === "Diplomacy").length, 1);
   assert.ok(!archetypeAutomationSummary(archetype("bard-court-fool")).manual.some((item) => item.startsWith("Buffoonery")));
+
+  const diva16 = archetypeSkillBonuses([archetype("bard-chelish-diva")], { bard: 16 }).conditionalModifiers;
+  assert.equal(diva16.find((item) => item.label === "Bluff checks")?.bonus, 4);
+  assert.equal(diva16.find((item) => item.label === "Diplomacy checks"), undefined);
+  const diva17 = archetypeSkillBonuses([archetype("bard-chelish-diva")], { bard: 17 }).conditionalModifiers;
+  assert.equal(diva17.find((item) => item.label === "Bluff checks"), undefined);
+  assert.equal(diva17.find((item) => item.label === "Diplomacy checks")?.bonus, 5);
+  assert.equal(diva17.find((item) => item.label === "Intimidate checks")?.bonus, 5);
+  assert.equal(archetypeSkillBonuses([archetype("barbarian-fearsome-defender")], { barbarian: 15 }).skillBonuses.Intimidate, 5);
+
+  const messenger = archetypeSkillBonuses([archetype("bard-impervious-messenger")], { bard: 10 });
+  assert.equal(messenger.skillBonuses.Linguistics, 5);
+  assert.equal(messenger.conditionalModifiers.find((item) => item.label === "Bluff checks")?.bonus, 5);
+  assert.equal(archetype("bard-impervious-messenger").conditionalModifiers[0].base, 4);
+  assert.equal(archetypeSkillBonuses([archetype("cavalier-castellan")], { cavalier: 13 }).conditionalModifiers.find((item) => item.label === "Stealth checks")?.bonus, 6);
+  assert.equal(archetypeSkillBonuses([archetype("cavalier-courtly-knight")], { cavalier: 20 }).skillBonuses.Diplomacy, 6);
 });
 
 test("Unlettered Arcanist replaces its spell catalogue without changing Arcanist casting progression", () => {
