@@ -160,6 +160,7 @@ const signatureSpellOption = (spell: CharacterSpell): CharacterOption => ({
   preparedCapacityCost: 1,
   spellSaveDcBonus: 1,
   concentrationBonus: { base: 2, improvedAtLevel: 10, improved: 4 },
+  signatureSpellTechniques: true,
   source: { title: "Advanced Class Guide", page: 78, url: "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20Spell%20Specialist" },
 });
 const prerequisiteIncludesFeat = (prerequisites: Prerequisite[], featIds: string[]): boolean =>
@@ -338,6 +339,7 @@ function onDemandSpellCosts(options: CharacterOption[], classId: string, classLe
       consumesSpellSlot: resource?.consumesSpellSlot ?? true,
       saveDcBonus: option.spellSaveDcBonus ?? 0,
       concentrationBonus,
+      signatureSpellTechniques: option.signatureSpellTechniques ?? false,
       ...(resource?.summonTracker ? {
         summonTracker: {
           name: resource.summonTracker.name,
@@ -432,6 +434,10 @@ export default function Home() {
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>
   >({});
+  const [signatureSpellHighestClassLevel, setSignatureSpellHighestClassLevel] =
+    useState<number | null>(null);
+  const [signatureSpellExchangeCredits, setSignatureSpellExchangeCredits] =
+    useState(0);
   const [selectedSpellIds, setSelectedSpellIds] = useState<string[]>([]);
   const [spellSlotUses, setSpellSlotUses] = useState<Record<number, number>>(
     {},
@@ -600,6 +606,29 @@ export default function Home() {
       ),
     [classLevels],
   );
+  const hasSpellSpecialist = allSelectedArchetypes.some(
+    (archetype) => archetype.id === "arcanist-spell-specialist",
+  );
+  const arcanistClassLevel = classLevelMap.arcanist ?? 0;
+  useEffect(() => {
+    if (!hasSpellSpecialist) {
+      if (signatureSpellHighestClassLevel !== null)
+        setSignatureSpellHighestClassLevel(null);
+      if (signatureSpellExchangeCredits !== 0)
+        setSignatureSpellExchangeCredits(0);
+      return;
+    }
+    if (signatureSpellHighestClassLevel === null) {
+      setSignatureSpellHighestClassLevel(Math.max(1, arcanistClassLevel));
+      return;
+    }
+    if (arcanistClassLevel > signatureSpellHighestClassLevel) {
+      setSignatureSpellExchangeCredits((current) =>
+        Math.min(19, current + arcanistClassLevel - signatureSpellHighestClassLevel),
+      );
+      setSignatureSpellHighestClassLevel(arcanistClassLevel);
+    }
+  }, [arcanistClassLevel, hasSpellSpecialist, signatureSpellExchangeCredits, signatureSpellHighestClassLevel]);
   const effectiveSpellcastingLevelMap = useMemo(
     () =>
       effectiveSpellcastingLevels(
@@ -1629,8 +1658,44 @@ export default function Home() {
       requiredOptionMessage: feature.requiredOptionMessage,
     };
   });
-  const updateClassOption = (featureId: string, optionId: string) =>
+  const signatureSpellChoicePrefix = "arcanist-spell-specialist-signature-spells-";
+  const updateClassOption = (featureId: string, optionId: string) => {
+    const currentOptionId = selectedOptions[featureId] ?? "";
+    if (
+      featureId.startsWith(signatureSpellChoicePrefix) &&
+      currentOptionId &&
+      optionId !== currentOptionId
+    ) {
+      if (!optionId) {
+        setSaveNotice("A signature spell must be exchanged for another spell of the same level; it cannot be left empty.");
+        return;
+      }
+      if (signatureSpellExchangeCredits <= 0) {
+        setSaveNotice("Gain another Arcanist class level before exchanging a signature spell.");
+        return;
+      }
+      setSignatureSpellExchangeCredits((current) => Math.max(0, current - 1));
+      setSaveNotice(`Exchanged one signature spell. ${signatureSpellExchangeCredits - 1} exchange${signatureSpellExchangeCredits - 1 === 1 ? "" : "s"} remain from Arcanist levels gained.`);
+    }
     setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
+  };
+  const signatureSpellChoiceChangeRules = Object.fromEntries(
+    classOptionChoices
+      .filter((choice) => choice.id.startsWith(signatureSpellChoicePrefix))
+      .map((choice) => {
+        const selected = Boolean(selectedOptions[choice.id]);
+        const available = signatureSpellExchangeCredits > 0;
+        return [choice.id, {
+          locked: selected && !available,
+          preventClear: true,
+          message: selected
+            ? available
+              ? `${signatureSpellExchangeCredits} signature spell exchange${signatureSpellExchangeCredits === 1 ? "" : "s"} available from Arcanist levels gained.`
+              : "Locked until another Arcanist class level is gained."
+            : "Choose this signature spell once; later changes use one level-up exchange.",
+        }];
+      }),
+  );
   const updateTrait = (index: number, traitId: string) =>
     setSelectedTraitIds((current) => {
       const next = [...current];
@@ -2769,6 +2834,7 @@ export default function Home() {
       bondedObjectCastResource={characterClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
       abilityModifiers={combat.abilityModifiers}
       spellMastery={characterClass.id === "arcanist" && spellMasteryCount > 0 ? { limit: spellMasteryLimit, selectedIds: spellMasterySpellIds, catalogue: spellMasteryCatalogue, onChange: updateSpellMasterySpellIds } : undefined}
+      activeEffects={activeEffects}
       onAddEffect={addActiveEffect}
       onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
     />
@@ -2840,6 +2906,7 @@ export default function Home() {
         bondedObjectCastResource={secondaryCharacterClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
         abilityModifiers={combat.abilityModifiers}
         spellMastery={secondaryCharacterClass.id === "arcanist" && spellMasteryCount > 0 ? { limit: spellMasteryLimit, selectedIds: spellMasterySpellIds, catalogue: spellMasteryCatalogue, onChange: updateSpellMasterySpellIds } : undefined}
+        activeEffects={activeEffects}
         onAddEffect={addActiveEffect}
         onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
       />
@@ -2882,6 +2949,7 @@ export default function Home() {
         criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
         bondedObjectCastResource={extraActiveClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
         onRefreshClassResources={() => refreshTrackedClassResources(extraActiveClass.id)}
+        activeEffects={activeEffects}
         onAddEffect={addActiveEffect}
         onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
       />
@@ -2946,6 +3014,8 @@ export default function Home() {
     selectedFeatChoices,
     skillRanks,
     selectedOptions,
+    signatureSpellHighestClassLevel,
+    signatureSpellExchangeCredits,
     preparedSpells: selectedSpellIds,
     preparedSpellsByClass,
     knownPreparedSpellsByClass,
@@ -3548,6 +3618,18 @@ export default function Home() {
     );
     setSkillRanks(draft.skillRanks);
     setSelectedOptions(draft.selectedOptions);
+    const draftHasSpellSpecialist = Object.values(draft.archetypeStacksByClass ?? {})
+      .flat()
+      .includes("arcanist-spell-specialist") || draft.archetypeId === "arcanist-spell-specialist";
+    const loadedSpellSpecialistLevel = draft.classLevels.find((entry) => entry.classId === "arcanist")?.level ?? 0;
+    setSignatureSpellHighestClassLevel(
+      draftHasSpellSpecialist
+        ? draft.signatureSpellHighestClassLevel ?? Math.max(1, loadedSpellSpecialistLevel)
+        : null,
+    );
+    setSignatureSpellExchangeCredits(
+      draftHasSpellSpecialist ? draft.signatureSpellExchangeCredits ?? 0 : 0,
+    );
     setSelectedSpellIds(normalizedDraftSpells);
     setSecondarySelectedSpellIds(normalizedDraftSecondarySpells);
     setKnownPreparedSpellsByClass(draft.knownPreparedSpellsByClass ?? {});
@@ -3719,6 +3801,8 @@ export default function Home() {
     setSelectedFeatChoices({});
     setSkillRanks({});
     setSelectedOptions({});
+    setSignatureSpellHighestClassLevel(null);
+    setSignatureSpellExchangeCredits(0);
     setSelectedSpellIds([]);
     setSecondarySelectedSpellIds([]);
     setExtraSelectedSpellsByClass({});
@@ -4297,6 +4381,7 @@ export default function Home() {
                   archetypeReplacesText={
                     selectedArchetypeReplacesText || undefined
                   }
+                  choiceChangeRules={signatureSpellChoiceChangeRules}
                   onOptionChange={updateClassOption}
                   onAddEffect={addActiveEffect}
                 />

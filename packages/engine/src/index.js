@@ -681,6 +681,29 @@ export function normalizeCharacterDraft(
       favoredClassRemaining -= favoredClassAlternateBonuses[id];
     }
   }
+  const hasSpellSpecialist = (
+    normalizedArchetypeStacksByClass.arcanist ?? []
+  ).includes("arcanist-spell-specialist");
+  const arcanistClassLevel =
+    normalizedClassLevels.find((entry) => entry.classId === "arcanist")
+      ?.level ?? 0;
+  const signatureSpellHighestClassLevel =
+    hasSpellSpecialist &&
+    Number.isInteger(draft.signatureSpellHighestClassLevel) &&
+    draft.signatureSpellHighestClassLevel >= 1 &&
+    draft.signatureSpellHighestClassLevel <= 20
+      ? draft.signatureSpellHighestClassLevel
+      : null;
+  const signatureSpellExchangeCredits =
+    signatureSpellHighestClassLevel !== null &&
+    signatureSpellHighestClassLevel <= arcanistClassLevel &&
+    Number.isInteger(draft.signatureSpellExchangeCredits) &&
+    draft.signatureSpellExchangeCredits > 0
+      ? Math.min(
+          signatureSpellHighestClassLevel - 1,
+          draft.signatureSpellExchangeCredits,
+        )
+      : 0;
   return {
     version: 1,
     name: typeof draft.name === "string" ? draft.name.slice(0, 120) : "",
@@ -725,6 +748,8 @@ export function normalizeCharacterDraft(
     selectedFeatChoices: isStringRecord(draft.selectedFeatChoices),
     skillRanks: isRankRecord(draft.skillRanks),
     selectedOptions: isStringRecord(draft.selectedOptions),
+    signatureSpellHighestClassLevel,
+    signatureSpellExchangeCredits,
     preparedSpells,
     preparedSpellsByClass,
     knownPreparedSpellsByClass,

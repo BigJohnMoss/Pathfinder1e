@@ -74,6 +74,8 @@ export interface CharacterDraftV1 {
   selectedFeatChoices: Record<string, string>;
   skillRanks: Record<string, number>;
   selectedOptions: Record<string, string>;
+  signatureSpellHighestClassLevel?: number | null;
+  signatureSpellExchangeCredits?: number;
   preparedSpells: string[];
   preparedSpellsByClass: Record<string, string[]>;
   knownPreparedSpellsByClass?: Record<string, string[]>;
@@ -664,6 +666,7 @@ export interface CharacterOption extends SelectableOption {
   preparedCapacityCost?: number;
   spellSaveDcBonus?: number;
   concentrationBonus?: { base: number; improvedAtLevel?: number; improved?: number };
+  signatureSpellTechniques?: boolean;
   resourceCost?: {
     resourceId: string;
     base?: number;

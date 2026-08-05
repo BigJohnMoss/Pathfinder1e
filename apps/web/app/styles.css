@@ -420,6 +420,8 @@ a:focus-visible,
 
 .spell-day-controls > button,
 .archetype-spell-action button,
+.spell-actions > button,
+.signature-techniques button,
 .cast-spell-button,
 .descriptor-boost-button,
 .share-spell-button,
@@ -437,6 +439,8 @@ a:focus-visible,
 
 .cast-spell-button:disabled,
 .archetype-spell-action button:disabled,
+.spell-actions > button:disabled,
+.signature-techniques button:disabled,
 .descriptor-boost-button:disabled,
 .share-spell-button:disabled {
   cursor: not-allowed;
@@ -465,6 +469,45 @@ a:focus-visible,
   flex: 0 0 auto;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.signature-techniques {
+  align-items: end;
+  background: #faf6ee;
+  border: 1px solid #ddcfba;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+}
+
+.signature-techniques label {
+  color: #5b584f;
+  display: grid;
+  font-size: .72rem;
+  font-weight: 800;
+  gap: 3px;
+}
+
+.signature-techniques input,
+.signature-techniques select {
+  background: #fff;
+  border: 1px solid #b7ac99;
+  border-radius: 7px;
+  font: inherit;
+  min-height: 38px;
+  padding: 6px 8px;
+}
+
+.signature-techniques input { width: 76px; }
+.signature-technique-result {
+  color: #2e6d45;
+  flex: 1 0 100%;
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1.4;
+  text-align: right;
 }
 
 .spell-details {
@@ -728,6 +771,19 @@ a:focus-visible,
     justify-content: space-between;
     width: 100%;
   }
+
+  .signature-techniques {
+    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .signature-techniques input,
+  .signature-techniques select,
+  .signature-techniques button { width: 100%; }
+
+  .signature-technique-result { text-align: left; }
 
   .spell-details-body dl { grid-template-columns: 1fr; }
 
