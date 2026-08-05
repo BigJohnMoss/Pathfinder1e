@@ -23,9 +23,9 @@
     ]
   }],
   "source": {"title":"Archives of Nethys","page":null,"url":"https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Arcanist%20School%20Savant"},
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
     "Arcane school powers, two legal opposition schools, and one restricted specialist slot per spell level are automated.",
-    "The -4 opposition-school magic-item crafting penalty remains a displayed conditional rule."
+    "The Actions tab applies the -4 penalty automatically when a magic item requires a spell from either selected opposition school."
   ]
 }

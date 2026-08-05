@@ -1968,6 +1968,13 @@ export default function Home() {
     () => oppositionSchoolsFromOptions(classId, selectedOptions),
     [classId, selectedOptions],
   );
+  const craftingOppositionSchools = useMemo(
+    () => oppositionSchoolIds.map((optionId) => {
+      const id = optionId.replace(/^wizard-opposition-/, "");
+      return { id, name: id.charAt(0).toUpperCase() + id.slice(1) };
+    }),
+    [oppositionSchoolIds],
+  );
   const primaryOnDemandSpellCosts = useMemo(
     () => onDemandSpellCosts(selectedOptionSpellChoices, characterClass.id, primaryClassLevel),
     [characterClass.id, primaryClassLevel, selectedOptionSpellChoices],
@@ -4237,6 +4244,7 @@ export default function Home() {
                 ]}
                 skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total }))}
                 effects={activeEffects}
+                craftingOppositionSchools={craftingOppositionSchools}
                 onCurrentHitPointsChange={setCurrentHitPoints}
                 onTemporaryHitPointsChange={setTemporaryHitPoints}
                 onEffectsChange={setActiveEffects}
