@@ -4,6 +4,17 @@
   "classId": "fighter",
   "summary": "Not all battles are fought between armies; sometimes, a settlement or nation faces a threat too dire to fight in the open. In order to repel a much larger enemy force, some soldiers must abandon equipment and tactics designed for open-field warfare and instead rely on ambushes, hit-andrun tactics, and sabotage to whittle down their enemies’ strength and morale.",
   "replacesText": "Armor Proficiencies; Class Skills; Skill Ranks; 2nd-level Bonus Feat; Bravery; Armor Training; Armor Mastery",
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "fighter-skirmisher-mobile-mastery-ex-19",
+      "kind": "missChance",
+      "label": "Mobile Mastery",
+      "minimumLevel": 19,
+      "base": 20,
+      "qualifier": "miss chance",
+      "condition": "while not immobilized or helpless, wearing light or no armor, and carrying a light load"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [

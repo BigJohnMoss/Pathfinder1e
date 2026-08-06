@@ -4,6 +4,17 @@
   "classId": "druid",
   "summary": "A far-ranging grassland guardian who runs with the wind, ambushes from cover, turns while charging, and evades danger.",
   "wildShapeLevelAdjustment": -2,
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "plains-druid-savanna-ambush-4",
+      "kind": "concealment",
+      "label": "Savanna Ambush",
+      "minimumLevel": 4,
+      "base": 20,
+      "qualifier": "concealment",
+      "condition": "while prone in natural terrain"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [

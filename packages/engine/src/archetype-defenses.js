@@ -12,15 +12,18 @@ const sentenceLevel = (feature, sentence, matchIndex, matchEnd = matchIndex) => 
   return Number(immediate ?? previous ?? feature.level ?? 1);
 };
 
-const defenseSubjectUnsafe = (sentence, matchIndex) => archetypeUnsafeSubject(sentence, matchIndex) ||
+const defenseSubjectUnsafe = (sentence, matchIndex) => (archetypeUnsafeSubject(sentence, matchIndex) && !/\bno creatures\b[^,.;]{0,100},\s*(?:he|she|they|you|the [a-z]+)\s*$/i.test(sentence.slice(Math.max(0, matchIndex - 140), matchIndex))) ||
   /\b(?:armor|construct|covenant ally|homunculus|inscribed item|shield|weapon)\b(?:\s+(?:also|then|it))?\s*$/i.test(sentence.slice(Math.max(0, matchIndex - 100), matchIndex)) ||
+  /\b(?:attacker|enemy|opponent)\s*$/i.test(sentence.slice(Math.max(0, matchIndex - 40), matchIndex)) ||
   /\b(?:if|unless)\b[^,.;]{0,60}$|\bor\s*$/i.test(sentence.slice(Math.max(0, matchIndex - 70), matchIndex));
 
 function activationCondition(feature, sentence, matchStart, matchEnd, summary) {
-  const leading = sentence.slice(0, matchStart).match(/\b(when|whenever|while|during|as long as|if)\s+(.+?),\s*(?:(?:(?:he|she|they|it)(?: also)?|(?:an?|the) [^,.;]{1,60})\s*)?$/i);
+  const leading = sentence.slice(0, matchStart).match(/\b(when|whenever|while|during|as long as|if)\s+(.+?),\s*(?:(?:(?:he|she|they|it|you)(?: also)?|(?:an?|the) [^,.;]{1,60})\s*)?$/i);
   if (leading) return `${leading[1].toLowerCase()} ${leading[2]}`;
+  const broadLeading = sentence.slice(0, matchStart).match(/^(?:At \d+(?:st|nd|rd|th) level,?\s*)?(when|whenever|while|during|as long as|if)\s+(.+?),/i);
+  if (broadLeading) return `${broadLeading[1].toLowerCase()} ${broadLeading[2]}`;
   const direct = archetypeRuleCondition(sentence, matchEnd);
-  if (direct && !/^if (?:he|she|they|it) already has\b/i.test(direct)) return direct.replace(/\s+and (?:can|may|catch|return)\b.*$/i, "").trim();
+  if (direct && !/^if (?:he|she|they|it) already has\b/i.test(direct)) return direct.replace(/\s+and (?:can|may|catch|return)\b.*$/i, "").replace(/\s+in addition to\b.*$/i, "").trim();
   const withRequirement = sentence.slice(matchEnd).match(/^\s+(with (?:a|an|the|his|her|their) [^,.;]{1,60})/i)?.[1];
   if (withRequirement) return withRequirement.toLowerCase();
   const againstRequirement = sentence.slice(matchEnd).match(/\b(against (?:her|his|their|the) [^,.;]{1,80})/i)?.[1];
@@ -231,6 +234,34 @@ function rulesFromSentence(feature, sentence, summary) {
       ...(condition ? { condition } : {}),
     }, summary));
   }
+  const concealment = /\b(?:gains?|has|benefits? from)\s+(?:a )?(?:(\d+)% )?(total )?concealment\b/ig;
+  for (const match of sentence.matchAll(concealment)) {
+    if (defenseSubjectUnsafe(sentence, match.index)) continue;
+    const condition = activationCondition(feature, sentence, match.index, match.index + match[0].length, summary);
+    results.push({
+      sourceFeatureId: feature.id,
+      kind: "concealment",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: Number(match[1] ?? (match[2] ? 50 : 20)),
+      qualifier: match[2] ? "total concealment" : "concealment",
+      ...(condition ? { condition } : {}),
+    });
+  }
+  const missChance = /\b(?:gains?|has|benefits? from)\s+(?:a )?(\d+)% miss chance\b/ig;
+  for (const match of sentence.matchAll(missChance)) {
+    if (defenseSubjectUnsafe(sentence, match.index)) continue;
+    const condition = activationCondition(feature, sentence, match.index, match.index + match[0].length, summary);
+    results.push({
+      sourceFeatureId: feature.id,
+      kind: "missChance",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: Number(match[1]),
+      qualifier: "miss chance",
+      ...(condition ? { condition } : {}),
+    });
+  }
   if (/uncanny dodge/i.test(feature.name ?? "") && /\bcannot be caught flat-footed\b[^.]{0,160}\b(?:nor does (?:he|she|the [a-z]+)|(?:he|she|the [a-z]+) does not|(?:he|she|the [a-z]+) doesn't) lose (?:his|her|their) Dexterity bonus to AC\b/i.test(sentence)) results.push({
     sourceFeatureId: feature.id,
     kind: "uncannyDodge",
@@ -264,8 +295,11 @@ export function inferredArchetypeDefenseDetails(archetype) {
     if (/\b[A-Z][A-Za-z' -]{2,50}\s*(?:\((?:Ex|Su|Sp)\))?\s*:\s*[^.]{0,350}\b(?:spell resistance|damage reduction|\bDR\b|resistance)\b/i.test(summary)) continue;
     const sentences = archetypeRuleSentences(summary);
     const parsedSentenceIndexes = new Set();
+    let contextLevel = Number(feature.level ?? 1);
     for (const [index, sentence] of sentences.entries()) {
-      const rules = rulesFromSentence(feature, sentence, summary);
+      const announcedLevel = [...sentence.matchAll(/\b(?:At|Starting at|Beginning at) (\d+)(?:st|nd|rd|th)(?:-level| level)?\b/gi)].at(-1)?.[1];
+      if (announcedLevel) contextLevel = Number(announcedLevel);
+      const rules = rulesFromSentence({ ...feature, level: contextLevel }, sentence, summary);
       if (rules.length) parsedSentenceIndexes.add(index);
       adjustments.push(...rules);
     }
@@ -282,10 +316,20 @@ export function inferredArchetypeDefenseDetails(archetype) {
     const basic = adjustments.find((row) => row.sourceFeatureId === adjustment.sourceFeatureId && row.kind === "uncannyDodge" && row.condition);
     if (basic) adjustment.condition = basic.condition;
   }
+  for (const adjustment of adjustments.filter((row) => row.kind === "concealment" && !row.condition)) {
+    const earlier = adjustments.find((row) => row.sourceFeatureId === adjustment.sourceFeatureId && row.kind === "concealment" && row.minimumLevel < adjustment.minimumLevel && row.condition);
+    if (earlier) adjustment.condition = earlier.condition;
+  }
   const grouped = new Map();
   for (const adjustment of adjustments) {
     const key = JSON.stringify([adjustment.sourceFeatureId, adjustment.kind, adjustment.qualifier, adjustment.condition]);
     const previous = grouped.get(key);
+    if (previous && adjustment.kind === "concealment" && adjustment.minimumLevel !== previous.minimumLevel) {
+      const steps = [...(previous.bonusByLevel ?? [{ level: previous.minimumLevel, bonus: previous.base }]), { level: adjustment.minimumLevel, bonus: adjustment.base }]
+        .sort((left, right) => left.level - right.level);
+      grouped.set(key, { ...previous, minimumLevel: steps[0].level, base: steps[0].bonus, bonusByLevel: [...new Map(steps.map((step) => [step.level, step])).values()] });
+      continue;
+    }
     if (!previous || adjustment.minimumLevel < previous.minimumLevel || (adjustment.minimumLevel === previous.minimumLevel && (adjustment.bonusByLevel?.length ?? 0) > (previous.bonusByLevel?.length ?? 0))) grouped.set(key, adjustment);
   }
   const unique = [...grouped.values()].map((adjustment) => {

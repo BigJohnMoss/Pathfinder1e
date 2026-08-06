@@ -137,3 +137,34 @@ test("fortification displays its current level milestone", async () => {
   assert.ok(defenses);
   assert.ok(within(defenses).getByText("Fortification 50% (critical hits and sneak attacks)"));
 });
+
+test("concealment displays its current level milestone and trigger", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "oracle");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "7" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "oracle-hermit");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
+  assert.ok(defenses);
+  assert.ok(within(defenses).getByText("Concealment 20%"));
+  assert.match(defenses.textContent ?? "", /no creatures within 10 feet/i);
+
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "14" } });
+  assert.ok(within(defenses).getByText("Concealment 50%"));
+});
+
+test("miss chance displays its armor and load restrictions", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "19" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "fighter-skirmisher");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
+  assert.ok(defenses);
+  assert.ok(within(defenses).getByText("Miss chance 20%"));
+  assert.match(defenses.textContent ?? "", /wearing light or no armor/i);
+});

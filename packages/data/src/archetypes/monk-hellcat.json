@@ -4,6 +4,17 @@
   "classId": "monk",
   "summary": "Monks of the hellcat sect follow the teachings of Asmodeus or another infernal power.",
   "replacesText": "Alignment; Class Skills; Weapon Proficiencies; Bonus Feats; Stunning Fist; Fast Movement; Evasion; Purity of Body; Improved Evasion; Slow Fall; Still Mind; Ki Pool; Wholeness of Body; Diamond Body",
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "monk-hellcat-hellcat-ki-su-4",
+      "kind": "concealment",
+      "label": "Hellcat Ki",
+      "minimumLevel": 11,
+      "base": 20,
+      "qualifier": "concealment",
+      "condition": "while Hellcat Ki is active in normal light"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [
