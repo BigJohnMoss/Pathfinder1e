@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ActiveEffect, ActiveEffectTarget } from "../../../packages/types/src/index.js";
 import { confirmCriticalThreat, resolveAttackRoll, rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
 import type { EquipmentAttack } from "./equipment-panel";
@@ -6,6 +6,14 @@ import type { EquipmentAttack } from "./equipment-panel";
 type CheckRoll = { id: string; name: string; modifier: number };
 type RollHistory = { id: string; label: string; formula: string; rolls: number[]; total: number; outcome?: string; verdict?: string };
 type CraftingOppositionSchool = { id: string; name: string };
+type RecurringHealingRule = {
+  id: string;
+  kind: "fastHealing";
+  label: string;
+  value: number;
+  condition?: string;
+  source: string;
+};
 
 const magicSchools = [
   { id: "abjuration", name: "Abjuration" },
@@ -50,7 +58,7 @@ const effectTargetName = (target: ActiveEffectTarget) =>
         : target === "enemy" ? "Enemy"
         : targets.find(item => item.id === target)?.name;
 
-export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, attacks, checks, skills, effects, craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onEffectsChange }: {
+export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, attacks, checks, skills, effects, recurringHealing = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onEffectsChange }: {
   maximumHitPoints: number;
   currentHitPoints: number;
   temporaryHitPoints: number;
@@ -58,6 +66,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   checks: CheckRoll[];
   skills: CheckRoll[];
   effects: ActiveEffect[];
+  recurringHealing?: RecurringHealingRule[];
   craftingOppositionSchools?: CraftingOppositionSchool[];
   onCurrentHitPointsChange: (value: number) => void;
   onTemporaryHitPointsChange: (value: number) => void;
@@ -88,7 +97,25 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [targetArmorClass, setTargetArmorClass] = useState(10);
   const [effectCheckDcs, setEffectCheckDcs] = useState<Record<string, number>>({});
   const [successfulMeleeAttackIds, setSuccessfulMeleeAttackIds] = useState<string[]>([]);
+  const [roundHealingResult, setRoundHealingResult] = useState("");
   const deathReleaseActive = effects.some((effect) => effect.deathRelease);
+  useEffect(() => {
+    const ruleById = new Map(recurringHealing.map((rule) => [`archetype-healing-${rule.id}`, rule]));
+    let changed = false;
+    const next = effects.flatMap((effect) => {
+      if (!effect.id.startsWith("archetype-healing-")) return [effect];
+      const rule = ruleById.get(effect.id);
+      if (!rule) {
+        changed = true;
+        return [];
+      }
+      const description = `Fast healing ${rule.value}${rule.condition ? ` ${rule.condition}` : ""}`;
+      if (effect.bonus === rule.value && effect.fastHealing === rule.value && effect.description === description) return [effect];
+      changed = true;
+      return [{ ...effect, bonus: rule.value, fastHealing: rule.value, description }];
+    });
+    if (changed) onEffectsChange(next);
+  }, [effects, onEffectsChange, recurringHealing]);
   const oneShotEffects = (effectTarget: ActiveEffectTarget) => effects.filter((effect) => effect.consumeOnUse && effect.target === effectTarget);
   const consumeOneShotEffects = (effectTarget: ActiveEffectTarget) => {
     const consumedIds = new Set(oneShotEffects(effectTarget).map((effect) => effect.id));
@@ -98,9 +125,32 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     setRollHistory(current => [{ ...roll, id: globalThis.crypto?.randomUUID?.() ?? `roll-${Date.now()}-${Math.random()}` }, ...current].slice(0, 20));
   const advanceRound = () => {
     setCombatRound((current) => current + 1);
+    const passiveHealing = recurringHealing.filter((rule) => !rule.condition).reduce((maximum, rule) => Math.max(maximum, rule.value), 0);
+    const effectHealing = effects.filter((effect) => ["self", "allies"].includes(effect.target)).reduce((maximum, effect) => Math.max(maximum, effect.fastHealing ?? 0), 0);
+    const recurringHealingValue = Math.max(passiveHealing, effectHealing);
+    const healed = Math.min(recurringHealingValue, Math.max(0, maximumHitPoints - currentHitPoints));
+    if (healed > 0) onCurrentHitPointsChange(currentHitPoints + healed);
+    setRoundHealingResult(recurringHealingValue > 0 ? `Recurring healing restored ${healed} hit point${healed === 1 ? "" : "s"}.` : "");
     const expiringTemporaryHitPoints = effects.filter((effect) => effect.roundsRemaining <= 1 && effect.temporaryHitPointsGranted).reduce((maximum, effect) => Math.max(maximum, effect.temporaryHitPointsGranted ?? 0), 0);
     if (expiringTemporaryHitPoints > 0) onTemporaryHitPointsChange(Math.max(0, temporaryHitPoints - Math.min(temporaryHitPoints, expiringTemporaryHitPoints)));
     onEffectsChange(effects.flatMap(effect => effect.roundsRemaining > 1 ? [{ ...effect, roundsRemaining: effect.roundsRemaining - 1 }] : []));
+  };
+  const healingEffectId = (rule: RecurringHealingRule) => `archetype-healing-${rule.id}`;
+  const toggleRecurringHealing = (rule: RecurringHealingRule) => {
+    const id = healingEffectId(rule);
+    if (effects.some((effect) => effect.id === id)) {
+      onEffectsChange(effects.filter((effect) => effect.id !== id));
+      return;
+    }
+    onEffectsChange([...effects, {
+      id,
+      name: `${rule.source}: ${rule.label}`,
+      target: "self",
+      bonus: rule.value,
+      fastHealing: rule.value,
+      description: `Fast healing ${rule.value}${rule.condition ? ` ${rule.condition}` : ""}`,
+      roundsRemaining: 999,
+    }]);
   };
   const takeDamage = () => {
     const absorbed = Math.min(temporaryHitPoints, adjustment);
@@ -229,6 +279,14 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <small>Damage uses temporary HP before current HP.</small>
       <label className="attack-damage-toggle"><input aria-label="Damage came from an attack" type="checkbox" checked={damageFromAttack} onChange={event => setDamageFromAttack(event.target.checked)} />Damage came from an attack</label>
     </div>
+    {roundHealingResult && <p role="status">{roundHealingResult}</p>}
+    {recurringHealing.length > 0 && <section className="recurring-healing" aria-labelledby="recurring-healing-heading">
+      <div><h4 id="recurring-healing-heading">Recurring healing</h4><p>Activate conditional abilities when their requirement is currently true. Fast healing is applied automatically when you advance the round.</p></div>
+      <ul>{recurringHealing.map((rule) => {
+        const active = !rule.condition || effects.some((effect) => effect.id === healingEffectId(rule));
+        return <li key={rule.id}><div><strong>Fast healing {rule.value}</strong><span>{rule.source} · {rule.condition ?? "Always active"}</span></div>{rule.condition && <button type="button" aria-pressed={active} onClick={() => toggleRecurringHealing(rule)}>{active ? `Deactivate ${rule.label}` : `Activate ${rule.label}`}</button>}</li>;
+      })}</ul>
+    </section>}
     <section className="combat-attacks" aria-labelledby="combat-attacks-heading">
       <div className="combat-attacks-heading"><div><h4 id="combat-attacks-heading">Equipped attacks</h4><p>Attack values include abilities, enhancement bonuses, and supported feat modifiers.</p></div><label>Target AC<input aria-label="Target Armor Class" type="number" min="1" max="999" value={targetArmorClass} onChange={event => setTargetArmorClass(Math.max(1, Math.min(999, Number(event.target.value) || 1)))} /></label></div>
       {activeAttacks.length === 0 ? <p className="hint">Equip a weapon in Inventory to add it here.</p> : <div>{activeAttacks.map((attack) => <article key={attack.id}>

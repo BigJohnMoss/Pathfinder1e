@@ -4,6 +4,7 @@
   "classId": "paladin",
   "summary": "Invigorators devote themselves to keeping their allies bodily whole by bolstering their health and spirits.",
   "replacesText": "Smite Evil; Aura of Justice; Holy Champion",
+  "defenseAdjustments": [{"sourceFeatureId":"paladin-invigorator-holy-fount-su-11","kind":"fastHealing","label":"Holy Fount","minimumLevel":11,"base":10,"qualifier":"fast healing","condition":"when Holy Fount is active","partialFeature":true}],
   "replacements": [
     {
       "featureIds": [

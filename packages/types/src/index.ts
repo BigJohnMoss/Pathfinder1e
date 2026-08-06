@@ -489,7 +489,7 @@ export interface CharacterArchetype {
   }>;
   defenseAdjustments?: Array<{
     sourceFeatureId?: string;
-    kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity" | "evasion" | "improvedEvasion" | "uncannyDodge" | "improvedUncannyDodge" | "fortification" | "concealment" | "missChance";
+    kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity" | "evasion" | "improvedEvasion" | "uncannyDodge" | "improvedUncannyDodge" | "fortification" | "concealment" | "missChance" | "fastHealing";
     label: string;
     minimumLevel?: number;
     maximumLevel?: number;
@@ -499,6 +499,7 @@ export interface CharacterArchetype {
     bonusByLevel?: Array<{ level: number; bonus: number }>;
     qualifier: string;
     condition?: string;
+    partialFeature?: boolean;
   }>;
   optionGroupAugmentations?: OptionGroupAugmentation[];
   prohibitedOptionIds?: string[];

@@ -1852,6 +1852,50 @@ main#character-builder-main {
   color: #726c61;
 }
 
+.recurring-healing {
+  margin: 18px 0 22px;
+  padding: 16px;
+  border: 1px solid #c9dcc7;
+  border-radius: 12px;
+  background: #f4faf2;
+}
+
+.recurring-healing h4,
+.recurring-healing p {
+  margin: 0 0 6px;
+}
+
+.recurring-healing ul {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.recurring-healing li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #dbe8d9;
+}
+
+.recurring-healing span {
+  display: block;
+  margin-top: 3px;
+  color: #4f5f4b;
+  font-size: .84rem;
+}
+
+@media(max-width:540px) {
+  .recurring-healing li {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
 .combat-attacks {
   margin: 22px 0;
 }

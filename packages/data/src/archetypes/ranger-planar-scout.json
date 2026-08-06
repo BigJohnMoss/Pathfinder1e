@@ -4,6 +4,7 @@
   "classId": "ranger",
   "summary": "Planar scouts are rangers specializing in traversing the planes—and surviving their journeys.",
   "replacesText": "Class Skills; Wild Empathy; Favored Terrain; Hunter's Bond; Evasion; Improved Evasion",
+  "defenseAdjustments": [{"sourceFeatureId":"ranger-planar-scout-planar-bond-su-4","kind":"fastHealing","label":"First World Planar Bond","minimumLevel":4,"base":2,"qualifier":"fast healing","condition":"when bonded to the First World and Planar Bond is active","partialFeature":true}],
   "replacements": [
     {
       "featureIds": [

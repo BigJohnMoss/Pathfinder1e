@@ -4,6 +4,7 @@
   "classId": "cavalier",
   "summary": "Some vine leshys’ spirits are vibrant enough to project this animus beyond their own bodies",
   "replacesText": "Expert Trainer; Tactician; Banner; Greater Tactician; Greater Banner; Master Tactician; Bonus Feats; Cavalier's Charge",
+  "defenseAdjustments": [{"sourceFeatureId":"cavalier-verdivant-effloresce-2","kind":"fastHealing","label":"Bolsterbloom","minimumLevel":5,"base":1,"bonusByLevel":[{"level":5,"bonus":1},{"level":9,"bonus":2},{"level":14,"bonus":3},{"level":17,"bonus":4}],"qualifier":"fast healing","condition":"when Bolsterbloom is active","partialFeature":true}],
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."

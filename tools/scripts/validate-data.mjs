@@ -394,7 +394,8 @@ for (const [index, url] of archetypeUrls.entries()) {
   for (const adjustment of archetype.defenseAdjustments ?? []) {
     const prefix = `${file}: defense adjustment`;
     if (adjustment?.sourceFeatureId !== undefined && !archetype.replacements?.some(replacement => replacement.features?.some(feature => feature.id === adjustment.sourceFeatureId))) errors.push(`${prefix} references unknown sourceFeatureId ${adjustment.sourceFeatureId}`);
-    if (!["damageReduction", "energyResistance", "spellResistance", "immunity", "evasion", "improvedEvasion", "uncannyDodge", "improvedUncannyDodge", "fortification", "concealment", "missChance"].includes(adjustment?.kind)) errors.push(`${prefix} has an invalid kind`);
+    if (!["damageReduction", "energyResistance", "spellResistance", "immunity", "evasion", "improvedEvasion", "uncannyDodge", "improvedUncannyDodge", "fortification", "concealment", "missChance", "fastHealing"].includes(adjustment?.kind)) errors.push(`${prefix} has an invalid kind`);
+    if (adjustment?.partialFeature !== undefined && typeof adjustment.partialFeature !== "boolean") errors.push(`${prefix} partialFeature must be boolean`);
     if (typeof adjustment?.label !== "string" || !adjustment.label.trim()) errors.push(`${prefix} must have a label`);
     if (!Number.isInteger(adjustment?.base) || adjustment.base < 0) errors.push(`${prefix} base must be a non-negative integer`);
     if (adjustment?.minimumLevel !== undefined && (!Number.isInteger(adjustment.minimumLevel) || adjustment.minimumLevel < 1 || adjustment.minimumLevel > 20)) errors.push(`${prefix} has an invalid minimumLevel`);
