@@ -3,7 +3,7 @@ import type { ActiveEffect, ActiveEffectTarget } from "../../../packages/types/s
 import { confirmCriticalThreat, resolveAttackRoll, rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
 import type { EquipmentAttack } from "./equipment-panel";
 
-type CheckRoll = { id: string; name: string; modifier: number };
+type CheckRoll = { id: string; name: string; modifier: number; ranks?: number };
 type RollHistory = { id: string; label: string; formula: string; rolls: number[]; total: number; outcome?: string; verdict?: string };
 type CraftingOppositionSchool = { id: string; name: string };
 type RecurringHealingRule = {
@@ -14,6 +14,7 @@ type RecurringHealingRule = {
   condition?: string;
   source: string;
 };
+type SkillCheckRule = { id: string; label: string; skills: string[]; result: 10 | 20; allowsStress?: boolean; trainedOnly?: boolean; condition?: string; source: string };
 
 const magicSchools = [
   { id: "abjuration", name: "Abjuration" },
@@ -58,7 +59,7 @@ const effectTargetName = (target: ActiveEffectTarget) =>
         : target === "enemy" ? "Enemy"
         : targets.find(item => item.id === target)?.name;
 
-export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, nonlethalDamage = 0, attacks, checks, skills, effects, recurringHealing = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onNonlethalDamageChange = () => {}, onEffectsChange }: {
+export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, nonlethalDamage = 0, attacks, checks, skills, effects, recurringHealing = [], skillCheckRules = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onNonlethalDamageChange = () => {}, onEffectsChange }: {
   maximumHitPoints: number;
   currentHitPoints: number;
   temporaryHitPoints: number;
@@ -68,6 +69,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   skills: CheckRoll[];
   effects: ActiveEffect[];
   recurringHealing?: RecurringHealingRule[];
+  skillCheckRules?: SkillCheckRule[];
   craftingOppositionSchools?: CraftingOppositionSchool[];
   onCurrentHitPointsChange: (value: number) => void;
   onTemporaryHitPointsChange: (value: number) => void;
@@ -242,6 +244,17 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     recordRoll({ label: check.name, formula: `1d20 ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}`, rolls: result.rolls, total: result.total, outcome: result.outcome });
     if (oneShotTarget) consumeOneShotEffects(oneShotTarget);
   };
+  const takeSkillCheck = (check: CheckRoll, rule: SkillCheckRule) => {
+    const modifier = check.modifier + oneShotEffects("skillChecks").reduce((total, effect) => total + effect.bonus, 0);
+    recordRoll({
+      label: `${check.name} — ${rule.label}`,
+      formula: `Take ${rule.result} ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)} · ${rule.source}`,
+      rolls: [rule.result],
+      total: rule.result + modifier,
+      verdict: [rule.condition, rule.allowsStress ? "Usable while distracted or endangered." : ""].filter(Boolean).join(" "),
+    });
+    consumeOneShotEffects("skillChecks");
+  };
   const rollCustom = () => {
     const result = rollDice(customCount, customSides, customModifier);
     recordRoll({ label: "Custom roll", formula: `${customCount}d${customSides}${customModifier ? ` ${customModifier >= 0 ? "+" : "−"} ${Math.abs(customModifier)}` : ""}`, rolls: result.rolls, total: result.total });
@@ -325,6 +338,13 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
         <label>Skill<select aria-label="Skill to roll" value={selectedSkill} onChange={event => setSelectedSkill(event.target.value)}>{skills.map(skill => <option key={skill.id} value={skill.id}>{skill.name} ({skill.modifier >= 0 ? "+" : ""}{skill.modifier})</option>)}</select></label>
         <button type="button" disabled={!selectedSkill} onClick={() => { const skill = skills.find(item => item.id === selectedSkill); if (skill) rollCheck(skill, "skill"); }}>Roll selected skill</button>
       </div>
+      {selectedSkill && skillCheckRules.some((rule) => rule.skills.includes(selectedSkill)) && <div className="skill-check-rules" aria-label="Archetype skill check options">
+        {skillCheckRules.filter((rule) => rule.skills.includes(selectedSkill)).map((rule) => {
+          const skill = skills.find((item) => item.id === selectedSkill);
+          const trained = !rule.trainedOnly || (skill?.ranks ?? 0) > 0;
+          return <article key={`${rule.id}-${rule.result}`}><div><strong>{rule.label}</strong><span>{rule.source}{rule.condition ? ` · ${rule.condition}` : ""}{rule.trainedOnly ? " · requires at least 1 rank" : ""}{rule.allowsStress ? " · works while distracted or endangered" : ""}</span></div><button type="button" disabled={!skill || !trained} onClick={() => skill && trained && takeSkillCheck(skill, rule)}>Take {rule.result}</button></article>;
+        })}
+      </div>}
       <div className="custom-roll">
         <label>Dice<input aria-label="Custom dice count" type="number" min="1" max="100" value={customCount} onChange={event => setCustomCount(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label>
         <label>Sides<select aria-label="Custom die sides" value={customSides} onChange={event => setCustomSides(Number(event.target.value))}>{[4,6,8,10,12,20,100].map(sides => <option key={sides} value={sides}>d{sides}</option>)}</select></label>

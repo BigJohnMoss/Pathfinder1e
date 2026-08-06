@@ -887,6 +887,24 @@ for (const journey of journeys) {
     await expect(page.getByText(/Magic Missile · 1st-level/)).toBeVisible();
   });
 
+  test(`uses deterministic archetype skill checks on ${journey.name}`, async ({ page }) => {
+    await page.setViewportSize(journey.viewport);
+    await page.goto("/");
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
+    await openCharacterPanel(page, journey.mobile);
+    await page.getByLabel("Class", { exact: true }).selectOption("druid");
+    await page.locator('input[type="number"][min="1"][max="20"]').fill("2");
+    await page.getByLabel("Archetype", { exact: true }).selectOption("druid-kraken-caller");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
+    await page.getByRole("tab", { name: "Actions" }).click();
+    await page.getByLabel("Skill to roll").selectOption("Swim");
+    await expect(page.getByLabel("Archetype skill check options")).toContainText("Dauntless Swimmer");
+    await expect(page.getByLabel("Archetype skill check options")).toContainText("works while distracted or endangered");
+    await page.getByRole("button", { name: "Take 10" }).click();
+    await expect(page.getByLabel("Swim — Dauntless Swimmer total")).toHaveText("10");
+  });
+
   test(`casts White Mage healing and tracks Fast Healing on ${journey.name}`, async ({ page }) => {
     await page.setViewportSize(journey.viewport);
     await page.goto("/");

@@ -1,6 +1,7 @@
 export const archetypeAutomationArrayFields = [
   "conditionalModifiers",
   "skillBonusAdjustments",
+  "skillCheckRules",
   "landSpeedAdjustments",
   "resourceAdjustments",
   "companionGrants",

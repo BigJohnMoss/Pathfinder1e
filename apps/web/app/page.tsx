@@ -72,6 +72,7 @@ import {
   archetypeSenses,
   archetypeSkillBonusAdjustments,
   archetypeSkillBonuses,
+  archetypeSkillCheckRules,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
   adjustedCompanionLevel,
@@ -1026,6 +1027,10 @@ export default function Home() {
   );
   const selectedArchetypeDefenses = useMemo(
     () => archetypeDefenses(allSelectedArchetypes, classLevelMap),
+    [allSelectedArchetypes, classLevelMap],
+  );
+  const selectedArchetypeSkillCheckRules = useMemo(
+    () => archetypeSkillCheckRules(allSelectedArchetypes, classLevelMap),
     [allSelectedArchetypes, classLevelMap],
   );
   const combat = useMemo(() => {
@@ -4360,7 +4365,7 @@ export default function Home() {
                   { id: "will", name: "Will save", modifier: combat.saves.will },
                   { id: "caster-level", name: "Caster level check", modifier: Math.max(0, ...Object.values(effectiveSpellcastingLevelMap)) + eldritchSurgeCasterLevelBonus },
                 ]}
-                skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total }))}
+                skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total, ranks: skill.ranks }))}
                 effects={activeEffects}
                 recurringHealing={selectedArchetypeDefenses.filter((defense) => defense.kind === "fastHealing" || defense.kind === "regeneration").map((defense, index) => ({
                   id: defense.sourceFeatureId ?? `${defense.source}-${defense.kind}-${index}`,
@@ -4369,6 +4374,16 @@ export default function Home() {
                   value: defense.value,
                   condition: defense.condition,
                   source: defense.source,
+                }))}
+                skillCheckRules={selectedArchetypeSkillCheckRules.map((rule, index) => ({
+                  id: rule.sourceFeatureId ?? `${rule.source}-${rule.result}-${index}`,
+                  label: rule.label,
+                  skills: rule.skills,
+                  result: rule.result,
+                  allowsStress: rule.allowsStress,
+                  trainedOnly: rule.trainedOnly,
+                  condition: rule.condition,
+                  source: rule.source,
                 }))}
                 craftingOppositionSchools={craftingOppositionSchools}
                 onCurrentHitPointsChange={setCurrentHitPoints}

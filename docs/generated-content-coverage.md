@@ -42,6 +42,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Spell lists, slots, and casting | 49 |
 | Class skills and skill-rank progressions | 56 |
 | Combat statistics and proficiencies | 18 |
+| Deterministic Take 10 and Take 20 skill checks | 17 |
 
 Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
 

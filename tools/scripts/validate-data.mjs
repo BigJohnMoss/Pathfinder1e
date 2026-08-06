@@ -390,6 +390,18 @@ for (const [index, url] of archetypeUrls.entries()) {
     if (adjustment?.prohibitedLoads !== undefined && (!Array.isArray(adjustment.prohibitedLoads) || adjustment.prohibitedLoads.length === 0 || new Set(adjustment.prohibitedLoads).size !== adjustment.prohibitedLoads.length || adjustment.prohibitedLoads.some((load) => !["light", "medium", "heavy", "overloaded"].includes(load)))) errors.push(`${prefix} has invalid prohibitedLoads`);
     if (adjustment?.capAtBaseSpeed !== undefined && typeof adjustment.capAtBaseSpeed !== "boolean") errors.push(`${prefix} has invalid capAtBaseSpeed`);
   }
+  if (archetype.skillCheckRules !== undefined && (!Array.isArray(archetype.skillCheckRules) || archetype.skillCheckRules.length === 0)) errors.push(`${file}: skillCheckRules must be a non-empty array`);
+  for (const rule of archetype.skillCheckRules ?? []) {
+    const prefix = `${file}: skill check rule`;
+    if (rule?.sourceFeatureId !== undefined && !archetype.replacements?.some(replacement => replacement.features?.some(feature => feature.id === rule.sourceFeatureId))) errors.push(`${prefix} references unknown sourceFeatureId ${rule.sourceFeatureId}`);
+    if (typeof rule?.label !== "string" || !rule.label.trim()) errors.push(`${prefix} must have a label`);
+    if (![10, 20].includes(rule?.result)) errors.push(`${prefix} result must be 10 or 20`);
+    if (!Array.isArray(rule?.skills) || rule.skills.length === 0 || new Set(rule.skills).size !== rule.skills.length || rule.skills.some(skill => typeof skill !== "string" || !skill.trim())) errors.push(`${prefix} must contain unique skill names`);
+    if (rule?.minimumLevel !== undefined && (!Number.isInteger(rule.minimumLevel) || rule.minimumLevel < 1 || rule.minimumLevel > 20)) errors.push(`${prefix} has an invalid minimumLevel`);
+    if (rule?.maximumLevel !== undefined && (!Number.isInteger(rule.maximumLevel) || rule.maximumLevel < (rule.minimumLevel ?? 1) || rule.maximumLevel > 20)) errors.push(`${prefix} has an invalid maximumLevel`);
+    if (rule?.condition !== undefined && (typeof rule.condition !== "string" || !rule.condition.trim() || rule.condition.length > 250)) errors.push(`${prefix} has an invalid condition`);
+    for (const flag of ["allowsStress", "trainedOnly", "partialFeature"]) if (rule?.[flag] !== undefined && typeof rule[flag] !== "boolean") errors.push(`${prefix} ${flag} must be boolean`);
+  }
   if (archetype.defenseAdjustments !== undefined && (!Array.isArray(archetype.defenseAdjustments) || archetype.defenseAdjustments.length === 0)) errors.push(`${file}: defenseAdjustments must be a non-empty array`);
   for (const adjustment of archetype.defenseAdjustments ?? []) {
     const prefix = `${file}: defense adjustment`;
