@@ -81,7 +81,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           <output aria-label={calculation.outputLabel}>{calculation.outputLabel}: {base + input}</output>
           {calculation.summary && <small>{calculation.summary}</small>}
         </div>;
-      })}{feature.resourceActions?.filter((action) => !action.requiredOptionId || selectedOptionSet.has(action.requiredOptionId)).map((action) => {
+      })}{feature.resourceActions?.filter((action) => (action.classId ? classLevels[action.classId] ?? level : level) >= (action.minimumLevel ?? 1) && (!action.requiredOptionId || selectedOptionSet.has(action.requiredOptionId))).map((action) => {
         const actionClassLevel = action.classId ? classLevels[action.classId] ?? 0 : level;
         const actionLevel = action.advancementOptionId && selectedOptionSet.has(action.advancementOptionId)
           ? casterLevels[action.classId ?? ""] ?? actionClassLevel
@@ -139,6 +139,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const enteredTargetHitDice = Math.max(0, targetHitDice[action.id] ?? minimumTargetHitDice);
         const targetEligible = !action.targetHitDiceRequirement || enteredTargetHitDice >= minimumTargetHitDice;
         const temporaryHitPoints = action.temporaryHitPointsByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.amount;
+        const temporaryHitPointsDurationRounds = action.temporaryHitPointsDurationRoundsByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.rounds ?? action.temporaryHitPointsDurationRounds;
         const combatDiceCount = action.combatRoll?.damage.diceCountByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.count;
         const combatDieSides = action.combatRoll?.damage.dieSidesByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.sides;
         const combatRange = action.combatRoll?.rangeByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.range;
@@ -167,7 +168,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           resources.forEach(({ usedDelta, resource }) => resource?.onUsedChange(resource.used + usedDelta));
           if (temporaryHitPoints !== undefined) {
             onTemporaryHitPointsChange?.(temporaryHitPoints);
-            if (action.temporaryHitPointsDurationRounds) onAddEffect?.({ id: `${action.id}-temporary-hit-points-${Date.now()}-${Math.random()}`, name: action.label, target: "self", bonus: 0, description: `${temporaryHitPoints} temporary hit points expire when this duration ends if they have not already been spent.`, roundsRemaining: action.temporaryHitPointsDurationRounds, temporaryHitPointsGranted: temporaryHitPoints });
+            if (temporaryHitPointsDurationRounds) onAddEffect?.({ id: `${action.id}-temporary-hit-points-${Date.now()}-${Math.random()}`, name: action.label, target: "self", bonus: 0, description: `${temporaryHitPoints} temporary hit points expire when this duration ends if they have not already been spent.`, roundsRemaining: temporaryHitPointsDurationRounds, temporaryHitPointsGranted: temporaryHitPoints });
           }
           if (conditionStep && onAddEffect) {
             action.conditionEffectsByUseCount?.forEach((step) => onRemoveEffectByName?.(step.name));

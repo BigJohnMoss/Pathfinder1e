@@ -193,11 +193,13 @@ export interface ClassFeatureOccurrence {
     modeLabel?: string;
     modes?: Array<{ id: string; label: string; summary: string }>;
     classId?: string;
+    minimumLevel?: number;
     advancementOptionId?: string;
     requiredOptionId?: string;
     targetHitDiceRequirement?: { label: string; levelDivisor: number };
     temporaryHitPointsByLevel?: Array<{ level: number; amount: number }>;
     temporaryHitPointsDurationRounds?: number;
+    temporaryHitPointsDurationRoundsByLevel?: Array<{ level: number; rounds: number }>;
     savingThrow?: {
       label: string;
       ability?: AbilityName;
