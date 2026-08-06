@@ -246,7 +246,14 @@ test("archetype special defenses preserve level formulas, milestones, and condit
   const mooncaller = catalogueArchetypes.find((archetype) => archetype.id === "druid-mooncaller");
   const cinderwalker = catalogueArchetypes.find((archetype) => archetype.id === "ranger-cinderwalker");
   const untouchable = catalogueArchetypes.find((archetype) => archetype.id === "bloodrager-untouchable-rager");
-  assert.ok(spellscar && mooncaller && cinderwalker && untouchable);
+  const juggler = catalogueArchetypes.find((archetype) => archetype.id === "bard-juggler");
+  const drunkenRager = catalogueArchetypes.find((archetype) => archetype.id === "barbarian-drunken-rager");
+  const castellan = catalogueArchetypes.find((archetype) => archetype.id === "cavalier-castellan");
+  const mantisZealot = catalogueArchetypes.find((archetype) => archetype.id === "warpriest-mantis-zealot");
+  const internalAlchemist = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-internal-alchemist");
+  const supernaturalist = catalogueArchetypes.find((archetype) => archetype.id === "druid-supernaturalist");
+  const dragonheir = catalogueArchetypes.find((archetype) => archetype.id === "fighter-dragonheir-scion");
+  assert.ok(spellscar && mooncaller && cinderwalker && untouchable && juggler && drunkenRager && castellan && mantisZealot && internalAlchemist && supernaturalist && dragonheir);
   assert.equal(archetypeDefenses([spellscar], { cavalier: 12, fighter: 8 })[0]?.value, 30);
   assert.equal(archetypeDefenses([mooncaller], { druid: 13 })[0]?.value, 3);
   assert.equal(archetypeDefenses([mooncaller], { druid: 16 })[0]?.value, 4);
@@ -254,6 +261,18 @@ test("archetype special defenses preserve level formulas, milestones, and condit
   assert.deepEqual(archetypeDefenses([cinderwalker], { ranger: 16 }).map((defense) => [defense.kind, defense.value]), [["energyResistance", 30]]);
   assert.deepEqual(archetypeDefenses([cinderwalker], { ranger: 20 }).map((defense) => [defense.kind, defense.qualifier]), [["immunity", "fire"]]);
   assert.match(archetypeDefenses([untouchable], { bloodrager: 20 })[0]?.condition ?? "", /bloodraging/i);
+  assert.deepEqual(archetypeDefenses([juggler], { bard: 11 }).map((defense) => defense.kind), ["evasion"]);
+  assert.deepEqual(archetypeDefenses([juggler], { bard: 12 }).map((defense) => defense.kind), ["improvedEvasion"]);
+  assert.match(archetypeDefenses([drunkenRager], { barbarian: 2 })[0]?.condition ?? "", /at least 1 drunken rage point/i);
+  assert.match(archetypeDefenses([drunkenRager], { barbarian: 5 }).find((defense) => defense.kind === "improvedEvasion")?.condition ?? "", /at least 2 drunken rage points/i);
+  assert.match(archetypeDefenses([castellan], { cavalier: 16 })[0]?.condition ?? "", /cover \(but not soft cover\)/i);
+  assert.deepEqual(archetypeDefenses([mantisZealot], { warpriest: 10 }).map((defense) => [defense.kind, defense.condition]), [["evasion", "when he uses this ability"]]);
+  assert.deepEqual(archetypeDefenses([mantisZealot], { warpriest: 19 }).map((defense) => [defense.kind, defense.condition]), [["improvedEvasion", "when he uses this ability"]]);
+  assert.deepEqual(archetypeDefenses([internalAlchemist], { alchemist: 9 }), []);
+  assert.deepEqual(archetypeDefenses([internalAlchemist], { alchemist: 10 }).map((defense) => defense.qualifier), ["disease"]);
+  assert.deepEqual(archetypeDefenses([supernaturalist], { druid: 19 }), []);
+  assert.deepEqual(archetypeDefenses([supernaturalist], { druid: 20 }).map((defense) => defense.qualifier), ["effects that affect only humanoids"]);
+  assert.deepEqual(archetypeDefenses([dragonheir], { fighter: 20 }).map((defense) => defense.qualifier), ["paralysis, sleep, and damage of her energy type"]);
 });
 
 test("defense inference is player-owned, normalized, and bounded across the catalogue", () => {
@@ -263,9 +282,9 @@ test("defense inference is player-owned, normalized, and bounded across the cata
     assert.ok(runtime.length >= inferred.length, `${archetype.id} exposes safe inferred defenses at runtime`);
     const signatures = new Set();
     for (const adjustment of inferred) {
-      assert.ok(["damageReduction", "energyResistance", "spellResistance", "immunity"].includes(adjustment.kind), `${archetype.id} has a supported defense kind`);
+      assert.ok(["damageReduction", "energyResistance", "spellResistance", "immunity", "evasion", "improvedEvasion"].includes(adjustment.kind), `${archetype.id} has a supported defense kind`);
       assert.ok(adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20 && Number.isInteger(adjustment.base) && adjustment.base >= 0, `${archetype.id} has bounded defense values`);
-      assert.ok(adjustment.qualifier.length > 0 && adjustment.qualifier.length <= 80 && (adjustment.condition?.length ?? 0) <= 250, `${archetype.id} has readable defense details`);
+      assert.ok(adjustment.qualifier.length > 0 && adjustment.qualifier.length <= 120 && (adjustment.condition?.length ?? 0) <= 250, `${archetype.id} has readable defense details`);
       assert.doesNotMatch(adjustment.sourceFeatureId, /companion|familiar|eidolon|homunculus|mount/, `${archetype.id} excludes subordinate creature defenses`);
       const levels = adjustment.bonusByLevel?.map((step) => step.level) ?? [];
       assert.equal(new Set(levels).size, levels.length, `${archetype.id} has unique defense milestones`);

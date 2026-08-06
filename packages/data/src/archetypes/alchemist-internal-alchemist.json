@@ -8,6 +8,16 @@
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
   ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "alchemist-internal-alchemist-disease-resistance-3",
+      "kind": "immunity",
+      "label": "Disease Resistance",
+      "minimumLevel": 10,
+      "base": 0,
+      "qualifier": "disease"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [
