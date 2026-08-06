@@ -313,9 +313,9 @@ test("archetype special defenses preserve level formulas, milestones, and condit
   const sacredShield = catalogueArchetypes.find((archetype) => archetype.id === "paladin-sacred-shield");
   assert.ok(spellscar && mooncaller && cinderwalker && untouchable && juggler && drunkenRager && castellan && mantisZealot && internalAlchemist && supernaturalist && dragonheir && sensate && darklandsSailor && metamorph && putrefactor && livingAvalanche && phalanxSoldier && sixthWingBulwark && sorrowsoul && plainsDruid && skirmisher && hellcat && hermit && duskKnight && guerrilla && shadowScion && spelleater && foundation && verdivant && sacredShield);
   assert.equal(archetypeDefenses([spellscar], { cavalier: 12, fighter: 8 })[0]?.value, 30);
-  assert.equal(archetypeDefenses([mooncaller], { druid: 13 })[0]?.value, 3);
-  assert.equal(archetypeDefenses([mooncaller], { druid: 16 })[0]?.value, 4);
-  assert.equal(archetypeDefenses([mooncaller], { druid: 19 })[0]?.value, 5);
+  assert.equal(archetypeDefenses([mooncaller], { druid: 13 }).find((defense) => defense.kind === "damageReduction")?.value, 3);
+  assert.equal(archetypeDefenses([mooncaller], { druid: 16 }).find((defense) => defense.kind === "damageReduction")?.value, 4);
+  assert.equal(archetypeDefenses([mooncaller], { druid: 19 }).find((defense) => defense.kind === "damageReduction")?.value, 5);
   assert.deepEqual(archetypeDefenses([cinderwalker], { ranger: 16 }).map((defense) => [defense.kind, defense.value]), [["energyResistance", 30]]);
   assert.deepEqual(archetypeDefenses([cinderwalker], { ranger: 20 }).map((defense) => [defense.kind, defense.qualifier]), [["immunity", "fire"]]);
   assert.match(archetypeDefenses([untouchable], { bloodrager: 20 })[0]?.condition ?? "", /bloodraging/i);
@@ -382,6 +382,25 @@ test("defense inference is player-owned, normalized, and bounded across the cata
   const promethean = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-promethean-alchemist");
   assert.ok(promethean);
   assert.deepEqual(inferArchetypeDefenseAdjustments(promethean), []);
+});
+
+test("named-character immunities are inferred without capturing targets or negative rules", () => {
+  const byId = (id) => catalogueArchetypes.find((archetype) => archetype.id === id);
+  const dragonblood = byId("alchemist-dragonblood-chymist");
+  assert.equal(archetypeDefenses([dragonblood], { alchemist: 9 }).some((defense) => defense.kind === "immunity"), false);
+  assert.deepEqual(archetypeDefenses([dragonblood], { alchemist: 10 }).filter((defense) => defense.kind === "immunity").map((defense) => defense.qualifier), ["paralysis and sleep effects"]);
+
+  const greenKnight = byId("cavalier-green-knight");
+  assert.deepEqual(archetypeDefenses([greenKnight], { cavalier: 20 }).filter((defense) => defense.kind === "immunity").map((defense) => defense.qualifier), [
+    "disease, infestations, and poison",
+    "death effects and effects that would kill her without reducing her to 0 hit points",
+  ]);
+  const urushiol = byId("druid-urushiol");
+  assert.equal(archetypeDefenses([urushiol], { druid: 1 }).find((defense) => defense.kind === "immunity")?.qualifier, "his own poison");
+  assert.equal(archetypeDefenses([byId("investigator-spiritualist")], { investigator: 11 }).find((defense) => defense.kind === "immunity")?.qualifier, "death effects");
+
+  for (const id of ["alchemist-mixologist", "barbarian-giant-stalker", "inquisitor-keeper-of-construct", "paladin-martyr"])
+    assert.equal(inferArchetypeDefenseAdjustments(byId(id)).some((defense) => defense.kind === "immunity"), false, id);
 });
 
 test("common exact skill-bonus rules are inferred conservatively", () => {
