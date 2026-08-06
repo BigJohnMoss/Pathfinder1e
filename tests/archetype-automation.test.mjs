@@ -268,7 +268,10 @@ test("archetype special defenses preserve level formulas, milestones, and condit
   const duskKnight = catalogueArchetypes.find((archetype) => archetype.id === "paladin-dusk-knight");
   const guerrilla = catalogueArchetypes.find((archetype) => archetype.id === "rogue-guerrilla");
   const shadowScion = catalogueArchetypes.find((archetype) => archetype.id === "rogue-shadow-scion");
-  assert.ok(spellscar && mooncaller && cinderwalker && untouchable && juggler && drunkenRager && castellan && mantisZealot && internalAlchemist && supernaturalist && dragonheir && sensate && darklandsSailor && metamorph && putrefactor && livingAvalanche && phalanxSoldier && sixthWingBulwark && sorrowsoul && plainsDruid && skirmisher && hellcat && hermit && duskKnight && guerrilla && shadowScion);
+  const spelleater = catalogueArchetypes.find((archetype) => archetype.id === "bloodrager-spelleater");
+  const foundation = catalogueArchetypes.find((archetype) => archetype.id === "cleric-foundation-of-faith");
+  const verdivant = catalogueArchetypes.find((archetype) => archetype.id === "cavalier-verdivant");
+  assert.ok(spellscar && mooncaller && cinderwalker && untouchable && juggler && drunkenRager && castellan && mantisZealot && internalAlchemist && supernaturalist && dragonheir && sensate && darklandsSailor && metamorph && putrefactor && livingAvalanche && phalanxSoldier && sixthWingBulwark && sorrowsoul && plainsDruid && skirmisher && hellcat && hermit && duskKnight && guerrilla && shadowScion && spelleater && foundation && verdivant);
   assert.equal(archetypeDefenses([spellscar], { cavalier: 12, fighter: 8 })[0]?.value, 30);
   assert.equal(archetypeDefenses([mooncaller], { druid: 13 })[0]?.value, 3);
   assert.equal(archetypeDefenses([mooncaller], { druid: 16 })[0]?.value, 4);
@@ -309,6 +312,10 @@ test("archetype special defenses preserve level formulas, milestones, and condit
   assert.match(archetypeDefenses([duskKnight], { paladin: 1 }).find((defense) => defense.kind === "concealment")?.condition ?? "", /target of her smite evil/i);
   assert.deepEqual(archetypeDefenses([guerrilla], { rogue: 2 }).filter((defense) => defense.kind === "concealment").map((defense) => [defense.value, defense.condition]), [[50, "while in dim light or darkness and already benefiting from concealment"]]);
   assert.match(archetypeDefenses([shadowScion], { rogue: 8 }).find((defense) => defense.kind === "concealment")?.condition ?? "", /arrives on the Material Plane/i);
+  assert.deepEqual([2, 7, 10, 19].map((level) => archetypeDefenses([spelleater], { bloodrager: level }).find((defense) => defense.kind === "fastHealing")?.value), [1, 2, 3, 6]);
+  assert.match(archetypeDefenses([spelleater], { bloodrager: 19 }).find((defense) => defense.kind === "fastHealing")?.condition ?? "", /while bloodraging/i);
+  assert.deepEqual([5, 7, 13, 19].map((level) => archetypeDefenses([foundation], { cleric: level }).find((defense) => defense.kind === "fastHealing")?.value), [1, 2, 5, 8]);
+  assert.deepEqual([5, 9, 14, 17].map((level) => archetypeDefenses([verdivant], { cavalier: level }).find((defense) => defense.kind === "fastHealing")?.value), [1, 2, 3, 4]);
 });
 
 test("defense inference is player-owned, normalized, and bounded across the catalogue", () => {
@@ -318,7 +325,7 @@ test("defense inference is player-owned, normalized, and bounded across the cata
     assert.ok(runtime.length >= inferred.length, `${archetype.id} exposes safe inferred defenses at runtime`);
     const signatures = new Set();
     for (const adjustment of inferred) {
-      assert.ok(["damageReduction", "energyResistance", "spellResistance", "immunity", "evasion", "improvedEvasion", "uncannyDodge", "improvedUncannyDodge", "fortification", "concealment", "missChance"].includes(adjustment.kind), `${archetype.id} has a supported defense kind`);
+      assert.ok(["damageReduction", "energyResistance", "spellResistance", "immunity", "evasion", "improvedEvasion", "uncannyDodge", "improvedUncannyDodge", "fortification", "concealment", "missChance", "fastHealing"].includes(adjustment.kind), `${archetype.id} has a supported defense kind`);
       assert.ok(adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20 && Number.isInteger(adjustment.base) && adjustment.base >= 0, `${archetype.id} has bounded defense values`);
       assert.ok(adjustment.qualifier.length > 0 && adjustment.qualifier.length <= 120 && (adjustment.condition?.length ?? 0) <= 250, `${archetype.id} has readable defense details`);
       assert.doesNotMatch(adjustment.sourceFeatureId, /companion|familiar|eidolon|homunculus|mount/, `${archetype.id} excludes subordinate creature defenses`);

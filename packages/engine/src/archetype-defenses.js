@@ -22,6 +22,8 @@ function activationCondition(feature, sentence, matchStart, matchEnd, summary) {
   if (leading) return `${leading[1].toLowerCase()} ${leading[2]}`;
   const broadLeading = sentence.slice(0, matchStart).match(/^(?:At \d+(?:st|nd|rd|th) level,?\s*)?(when|whenever|while|during|as long as|if)\s+(.+?),/i);
   if (broadLeading) return `${broadLeading[1].toLowerCase()} ${broadLeading[2]}`;
+  const compactLeading = sentence.slice(0, matchStart).match(/\b(while|when)\s+(bloodraging|raging)\s+(?:(?:an?|the) [^,.;]{1,60})?$/i);
+  if (compactLeading) return `${compactLeading[1].toLowerCase()} ${compactLeading[2].toLowerCase()}`;
   const direct = archetypeRuleCondition(sentence, matchEnd);
   if (direct && !/^if (?:he|she|they|it) already has\b/i.test(direct)) return direct.replace(/\s+and (?:can|may|catch|return)\b.*$/i, "").replace(/\s+in addition to\b.*$/i, "").trim();
   const withRequirement = sentence.slice(matchEnd).match(/^\s+(with (?:a|an|the|his|her|their) [^,.;]{1,60})/i)?.[1];
@@ -102,6 +104,36 @@ function progression(adjustment, summary) {
       candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
     for (const match of text.matchAll(/(?:and )?to (\d+)% at (\d+)(?:st|nd|rd|th) level/gi))
       candidates.push({ level: Number(match[2]), bonus: Number(match[1]) });
+  } else if (adjustment.kind === "fastHealing") {
+    for (const match of text.matchAll(/At (\d+)(?:st|nd|rd|th) level[^.]{0,100}?(?:increases|improves) to fast healing (\d+)/gi))
+      candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
+    const recurring = text.match(/At (\d+)(?:st|nd|rd|th) level and every (\d+) levels? thereafter,? this increases by (\d+)/i);
+    if (recurring) {
+      let bonus = adjustment.base;
+      for (let level = Number(recurring[1]); level <= 20; level += Number(recurring[2])) {
+        if (level <= adjustment.minimumLevel) continue;
+        bonus += Number(recurring[3]);
+        candidates.push({ level, bonus });
+      }
+    }
+    const recurringAfterIncrease = text.match(/At (\d+)(?:st|nd|rd|th) level[^.]{0,100}?increases to fast healing (\d+),? and it increases by (?:an additional )?(\d+)(?: point)? every (\d+) levels? thereafter/i);
+    if (recurringAfterIncrease) {
+      let bonus = Number(recurringAfterIncrease[2]);
+      const first = Number(recurringAfterIncrease[1]);
+      candidates.push({ level: first, bonus });
+      for (let level = first + Number(recurringAfterIncrease[4]); level <= 20; level += Number(recurringAfterIncrease[4])) {
+        bonus += Number(recurringAfterIncrease[3]);
+        candidates.push({ level, bonus });
+      }
+    }
+    const listed = text.match(/fast healing increases by (\d+) at (\d+)(?:st|nd|rd|th) level,? and again at ([^.]+)/i);
+    if (listed) {
+      let bonus = adjustment.base;
+      for (const level of [Number(listed[2]), ...[...listed[3].matchAll(/\d+/g)].map((match) => Number(match[0]))]) {
+        bonus += Number(listed[1]);
+        candidates.push({ level, bonus });
+      }
+    }
   }
   const unique = [...new Map(candidates
     .filter((step) => step.level > adjustment.minimumLevel && step.level <= 20 && step.bonus > 0)
@@ -262,6 +294,20 @@ function rulesFromSentence(feature, sentence, summary) {
       ...(condition ? { condition } : {}),
     });
   }
+  const fastHealing = /\b(?:can\s+)?(?:gains?|has)\s+fast healing(?:\s*\([^)]*\))?\s+(?:equal to\s+)?(\d+)\b/ig;
+  for (const match of sentence.matchAll(fastHealing)) {
+    if (defenseSubjectUnsafe(sentence, match.index) || /\bdoes not\s+$/i.test(sentence.slice(Math.max(0, match.index - 20), match.index))) continue;
+    const condition = activationCondition(feature, sentence, match.index, match.index + match[0].length, summary);
+    results.push(progression({
+      sourceFeatureId: feature.id,
+      kind: "fastHealing",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: Number(match[1]),
+      qualifier: "fast healing",
+      ...(condition ? { condition } : {}),
+    }, summary));
+  }
   if (/uncanny dodge/i.test(feature.name ?? "") && /\bcannot be caught flat-footed\b[^.]{0,160}\b(?:nor does (?:he|she|the [a-z]+)|(?:he|she|the [a-z]+) does not|(?:he|she|the [a-z]+) doesn't) lose (?:his|her|their) Dexterity bonus to AC\b/i.test(sentence)) results.push({
     sourceFeatureId: feature.id,
     kind: "uncannyDodge",
@@ -292,6 +338,7 @@ export function inferredArchetypeDefenseDetails(archetype) {
   for (const replacement of archetype?.replacements ?? []) for (const feature of replacement.features ?? []) {
     const summary = String(feature.summary ?? "");
     if (/\b(?:one of the following|from the following list|selects? (?:one|an?|from))\b/i.test(summary)) continue;
+    if (/\bwho selects? (?:the )?[^.]{0,80}\bdiscovery\b/i.test(summary)) continue;
     if (/\b[A-Z][A-Za-z' -]{2,50}\s*(?:\((?:Ex|Su|Sp)\))?\s*:\s*[^.]{0,350}\b(?:spell resistance|damage reduction|\bDR\b|resistance)\b/i.test(summary)) continue;
     const sentences = archetypeRuleSentences(summary);
     const parsedSentenceIndexes = new Set();
@@ -324,7 +371,7 @@ export function inferredArchetypeDefenseDetails(archetype) {
   for (const adjustment of adjustments) {
     const key = JSON.stringify([adjustment.sourceFeatureId, adjustment.kind, adjustment.qualifier, adjustment.condition]);
     const previous = grouped.get(key);
-    if (previous && adjustment.kind === "concealment" && adjustment.minimumLevel !== previous.minimumLevel) {
+    if (previous && ["concealment", "fastHealing"].includes(adjustment.kind) && adjustment.minimumLevel !== previous.minimumLevel) {
       const steps = [...(previous.bonusByLevel ?? [{ level: previous.minimumLevel, bonus: previous.base }]), { level: adjustment.minimumLevel, bonus: adjustment.base }]
         .sort((left, right) => left.level - right.level);
       grouped.set(key, { ...previous, minimumLevel: steps[0].level, base: steps[0].bonus, bonusByLevel: [...new Map(steps.map((step) => [step.level, step])).values()] });

@@ -4,6 +4,7 @@
   "classId": "cleric",
   "summary": "Whether aiding the faithful or defending against the depredations of unbelievers, a foundation of faith is unshakable in her convictions.",
   "replacesText": "Channel Energy",
+  "defenseAdjustments": [{"sourceFeatureId":"cleric-foundation-of-faith-rooted-vitality-su-5","kind":"fastHealing","label":"Rooted Vitality","minimumLevel":5,"base":1,"bonusByLevel":[{"level":5,"bonus":1},{"level":7,"bonus":2},{"level":9,"bonus":3},{"level":11,"bonus":4},{"level":13,"bonus":5},{"level":15,"bonus":6},{"level":17,"bonus":7},{"level":19,"bonus":8}],"qualifier":"fast healing","condition":"while Rooted Vitality is active and standing on natural or worked stone","partialFeature":true}],
   "replacements": [
     {
       "featureIds": [

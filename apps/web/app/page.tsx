@@ -4357,6 +4357,14 @@ export default function Home() {
                 ]}
                 skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total }))}
                 effects={activeEffects}
+                recurringHealing={selectedArchetypeDefenses.filter((defense) => defense.kind === "fastHealing").map((defense, index) => ({
+                  id: defense.sourceFeatureId ?? `${defense.source}-${defense.kind}-${index}`,
+                  kind: defense.kind as "fastHealing",
+                  label: defense.label,
+                  value: defense.value,
+                  condition: defense.condition,
+                  source: defense.source,
+                }))}
                 craftingOppositionSchools={craftingOppositionSchools}
                 onCurrentHitPointsChange={setCurrentHitPoints}
                 onTemporaryHitPointsChange={setTemporaryHitPoints}

@@ -4,6 +4,7 @@
   "classId": "alchemist",
   "summary": "(Half-Elf Only) Some half-elven alchemists merge human curiosity with their elven link to nature.",
   "replacesText": "2nd-level Discovery; Mutagen; Greater Mutagen; Grand Mutagen",
+  "defenseAdjustments": [{"sourceFeatureId":"alchemist-bramble-brewer-dendrite-mutagen-su-1","kind":"fastHealing","label":"Dendrite Mutagen","minimumLevel":1,"base":1,"qualifier":"fast healing","condition":"when dendrite mutagen is active in bright light","partialFeature":true}],
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."

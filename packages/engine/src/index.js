@@ -1577,7 +1577,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ...skillBonusDetails.fullyAutomatedFeatureIds,
     ...landSpeedAdjustments.filter((adjustment) => !adjustment.condition).map(adjustment => adjustment.sourceFeatureId),
     ...landSpeedDetails.fullyAutomatedFeatureIds,
-    ...(archetype.defenseAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...(archetype.defenseAdjustments ?? []).filter(adjustment => !adjustment.partialFeature).map(adjustment => adjustment.sourceFeatureId),
     ...defenseDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
