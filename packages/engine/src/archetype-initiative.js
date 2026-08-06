@@ -12,7 +12,7 @@ export const archetypeReplacementBoilerplate = (sentence) =>
 
 export function archetypeRuleCondition(sentence, matchEnd) {
   const prefix = sentence.slice(0, Math.max(0, sentence.search(/\b(?:gains?|receives?|adds?|has)\b/i)));
-  const leading = prefix.match(/(?:^(?:At \d+(?:st|nd|rd|th) level,?\s*)?)(When|Whenever|While|During|Within|As long as|If)\s+(.+?),\s*(?:(?:he|she|they|it)|(?:an?|the)\s+[a-z][a-z' -]{0,60})\s*$/i);
+  const leading = prefix.match(/(?:^(?:At \d+(?:st|nd|rd|th) level,?\s*)?)(When|Whenever|While|During|Within|As long as|If)\s+(.+?),\s*(?:(?:he|she|they|it)|(?:an?|the)\s+[a-z][a-z' -]{0,60})\s*(?:also\s*)?$/i);
   const suffix = sentence.slice(matchEnd).match(/\b(when|whenever|while|during|within|involving|against|as long as|(?<!as )if)\s+(.+?)(?=,\s+and\b|[.]|$)/i);
   const raw = leading ? `${leading[1]} ${leading[2]}` : suffix ? `${suffix[1]} ${suffix[2]}` : "";
   if (!raw) return undefined;
@@ -20,7 +20,7 @@ export function archetypeRuleCondition(sentence, matchEnd) {
 }
 
 export const archetypeUnsafeSubject = (sentence, matchIndex) =>
-  /\b(?:allies|ally|animal companion|companions?|creatures?|eidolons?|familiars?|mounts?|phantoms?|targets?)\b/i.test(sentence.slice(Math.max(0, matchIndex - 100), matchIndex)) ||
+  /\b(?:allies|ally|animal companion|companions?|creatures?|eidolons?|familiars?|mounts?|phantoms?|spirit animals?|targets?)\b/i.test(sentence.slice(Math.max(0, matchIndex - 180), matchIndex)) ||
   /\b(?:does?|do|did) not\s+(?:gains?|receives?|has)\s*$/i.test(sentence.slice(Math.max(0, matchIndex - 30), matchIndex + 8));
 
 function adjustmentFromSentence(feature, sentence) {

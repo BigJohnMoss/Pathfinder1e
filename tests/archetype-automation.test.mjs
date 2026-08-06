@@ -148,6 +148,45 @@ test("permanent archetype combat bonuses update only their published targets", (
   assert.deepEqual(archetypeCombatBonuses([loreWarden], { fighter: 7 }), { attackRolls: 0, damageRolls: 0, armorClass: { normal: 0, touch: 0, flatFooted: 0 }, combatManeuverBonus: 4, combatManeuverDefense: 4 });
 });
 
+test("natural armor inference preserves level scaling, activation rules, and player ownership", () => {
+  const hagRiven = catalogueArchetypes.find((archetype) => archetype.id === "bloodrager-hag-riven");
+  const ragechemist = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-ragechemist");
+  const scarredWitchDoctor = catalogueArchetypes.find((archetype) => archetype.id === "witch-scarred-witch-doctor");
+  const treeSoul = catalogueArchetypes.find((archetype) => archetype.id === "oracle-tree-soul");
+  const crystalTender = catalogueArchetypes.find((archetype) => archetype.id === "shaman-crystal-tender");
+  assert.ok(hagRiven && ragechemist && scarredWitchDoctor && treeSoul && crystalTender);
+  assert.deepEqual(inferArchetypeCombatModifierAdjustments(hagRiven), [{
+    sourceFeatureId: "bloodrager-hag-riven-scarred-hide-ex-7",
+    label: "Armor Class",
+    combatTargets: ["armorClass"],
+    minimumLevel: 7,
+    base: 1,
+    bonusType: "natural-armor",
+    bonusByLevel: [
+      { level: 7, bonus: 1 },
+      { level: 10, bonus: 2 },
+      { level: 13, bonus: 3 },
+      { level: 16, bonus: 4 },
+      { level: 19, bonus: 5 },
+    ],
+  }]);
+  assert.deepEqual(archetypeCombatBonuses([hagRiven], { bloodrager: 19 }).armorClass, { normal: 5, touch: 0, flatFooted: 5 });
+  assert.equal(inferArchetypeCombatModifierAdjustments(ragechemist)[0]?.condition, "whenever a ragechemist uses his rage mutagen");
+  assert.deepEqual(inferArchetypeCombatModifierAdjustments(scarredWitchDoctor)[0], {
+    sourceFeatureId: "witch-scarred-witch-doctor-scarshield-su-1",
+    label: "Armor Class",
+    combatTargets: ["armorClass"],
+    minimumLevel: 1,
+    base: 0,
+    levelDivisor: 2,
+    minimum: 1,
+    bonusType: "enhancement",
+    condition: "when Scarshield applies",
+  });
+  assert.equal(inferArchetypeCombatModifierAdjustments(treeSoul)[0]?.base, 4);
+  assert.equal(inferArchetypeCombatModifierAdjustments(crystalTender).filter((adjustment) => adjustment.sourceFeatureId === "shaman-crystal-tender-scion-of-the-stones-ex-1").length, 0);
+});
+
 test("combat modifier inference is bounded, normalized, and conservative across the catalogue", () => {
   for (const archetype of catalogueArchetypes) {
     const adjustments = inferArchetypeCombatModifierAdjustments(archetype);
