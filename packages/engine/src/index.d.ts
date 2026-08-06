@@ -75,6 +75,8 @@ export function inferArchetypeLandSpeedAdjustments(archetype: CharacterArchetype
 export function archetypeDefenseAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["defenseAdjustments"]>;
 export function inferArchetypeDefenseAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["defenseAdjustments"]>;
 export function archetypeDefenses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["defenseAdjustments"]>[number] & { value: number; source: string }>;
+export function inferArchetypeSkillCheckRules(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillCheckRules"]>;
+export function archetypeSkillCheckRules(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["skillCheckRules"]>[number] & { source: string }>;
 export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): { skillBonuses: Record<string, number>; conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }> };
 export function inferArchetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;
 export function archetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;

@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { inferArchetypeSkillCheckRules } from "../../packages/engine/src/index.js";
 
 const root = new URL("../../", import.meta.url);
 const data = JSON.parse(await readFile(new URL("generated/pf1e-data.json", root), "utf8"));
@@ -29,6 +30,7 @@ const structuredArchetypeAutomation = {
   spellcasting: data.archetypes.filter((archetype) => archetype.removesSpellcasting || archetype.spellListAdditions || archetype.bonusSpellAdditions || archetype.spellSlotAdjustmentPerLevel !== undefined || archetype.preparedSpellAdjustmentPerLevel !== undefined || archetype.spellsKnownAdjustmentPerLevel !== undefined).length,
   skills: data.archetypes.filter((archetype) => archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length || archetype.skillRanksPerLevel !== undefined).length,
   combatAndProficiencies: data.archetypes.filter((archetype) => archetype.babProgression || archetype.saveProgressionOverrides || archetype.hitDie || archetype.proficiencyAdjustments?.length).length,
+  deterministicSkillChecks: data.archetypes.filter((archetype) => inferArchetypeSkillCheckRules(archetype).length).length,
 };
 const partialArchetypes = data.archetypes.filter((archetype) => (archetype.mechanicalCoverage ?? "partial") === "partial");
 const archetypeText = (archetype) => JSON.stringify({
@@ -106,6 +108,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Spell lists, slots, and casting | ${structuredArchetypeAutomation.spellcasting} |
 | Class skills and skill-rank progressions | ${structuredArchetypeAutomation.skills} |
 | Combat statistics and proficiencies | ${structuredArchetypeAutomation.combatAndProficiencies} |
+| Deterministic Take 10 and Take 20 skill checks | ${structuredArchetypeAutomation.deterministicSkillChecks} |
 
 Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
 

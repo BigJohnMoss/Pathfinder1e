@@ -489,6 +489,18 @@ export interface CharacterArchetype {
     capAtBaseSpeed?: boolean;
     label: string;
   }>;
+  skillCheckRules?: Array<{
+    sourceFeatureId?: string;
+    label: string;
+    minimumLevel?: number;
+    maximumLevel?: number;
+    skills: string[];
+    result: 10 | 20;
+    allowsStress?: boolean;
+    trainedOnly?: boolean;
+    condition?: string;
+    partialFeature?: boolean;
+  }>;
   defenseAdjustments?: Array<{
     sourceFeatureId?: string;
     kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity" | "evasion" | "improvedEvasion" | "uncannyDodge" | "improvedUncannyDodge" | "fortification" | "concealment" | "missChance" | "fastHealing" | "regeneration";

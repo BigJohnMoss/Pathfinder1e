@@ -27,6 +27,7 @@
     "coverage:archetypes": "node tools/scripts/annotate-archetype-coverage.mjs",
     "coverage:archetype-gaps": "node tools/scripts/classify-archetype-gaps.mjs",
     "coverage:archetype-skills": "node tools/scripts/analyze-archetype-skill-inference.mjs",
+    "coverage:archetype-skill-checks": "node tools/scripts/analyze-archetype-skill-check-inference.mjs",
     "coverage:archetype-initiative": "node tools/scripts/analyze-archetype-initiative-inference.mjs",
     "coverage:archetype-saves": "node tools/scripts/analyze-archetype-save-inference.mjs",
     "coverage:archetype-combat": "node tools/scripts/analyze-archetype-combat-inference.mjs",
