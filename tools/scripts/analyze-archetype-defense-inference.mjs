@@ -18,7 +18,7 @@ console.log(`Inferred defense adjustments: ${rows.length}`);
 console.log(`Runtime defense adjustments: ${runtimeRows.length}`);
 console.log(`Affected archetypes: ${new Set(runtimeRows.map((row) => row.archetypeId)).size}`);
 console.log(`Fully automated features: ${new Set(rows.filter((row) => row.fullyAutomated).map((row) => `${row.archetypeId}:${row.featureId}`)).size}`);
-for (const kind of ["damageReduction", "energyResistance", "spellResistance", "immunity", "evasion", "improvedEvasion", "uncannyDodge", "improvedUncannyDodge", "fortification", "concealment", "missChance", "fastHealing"]) console.log(`${kind}: ${runtimeRows.filter((row) => row.adjustment.kind === kind).length}`);
+for (const kind of ["damageReduction", "energyResistance", "spellResistance", "immunity", "evasion", "improvedEvasion", "uncannyDodge", "improvedUncannyDodge", "fortification", "concealment", "missChance", "fastHealing", "regeneration"]) console.log(`${kind}: ${runtimeRows.filter((row) => row.adjustment.kind === kind).length}`);
 console.log(`Conditional adjustments: ${runtimeRows.filter((row) => row.adjustment.condition).length}`);
 console.log(`Remaining manual features: ${manualFeatures}`);
 if (process.argv.includes("--details")) for (const row of rows) console.log(JSON.stringify(row));

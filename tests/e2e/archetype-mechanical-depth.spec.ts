@@ -928,7 +928,7 @@ for (const journey of journeys) {
     await page.getByLabel("Current HP").fill("1");
     await page.getByRole("button", { name: "Next round" }).click();
     await expect(page.getByLabel("Current HP")).toHaveValue("3");
-    await expect(page.getByRole("status")).toHaveText("Recurring healing restored 2 hit points.");
+    await expect(page.getByRole("status")).toHaveText("Fast healing restored 2 hit points.");
     await expect(page.getByText(/Allies within 30 feet gain fast healing 2/)).toContainText("2 rounds");
 
     if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();

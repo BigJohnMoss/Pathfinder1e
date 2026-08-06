@@ -8,7 +8,7 @@ type RollHistory = { id: string; label: string; formula: string; rolls: number[]
 type CraftingOppositionSchool = { id: string; name: string };
 type RecurringHealingRule = {
   id: string;
-  kind: "fastHealing";
+  kind: "fastHealing" | "regeneration";
   label: string;
   value: number;
   condition?: string;
@@ -58,10 +58,11 @@ const effectTargetName = (target: ActiveEffectTarget) =>
         : target === "enemy" ? "Enemy"
         : targets.find(item => item.id === target)?.name;
 
-export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, attacks, checks, skills, effects, recurringHealing = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onEffectsChange }: {
+export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, nonlethalDamage = 0, attacks, checks, skills, effects, recurringHealing = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onNonlethalDamageChange = () => {}, onEffectsChange }: {
   maximumHitPoints: number;
   currentHitPoints: number;
   temporaryHitPoints: number;
+  nonlethalDamage?: number;
   attacks: EquipmentAttack[];
   checks: CheckRoll[];
   skills: CheckRoll[];
@@ -70,6 +71,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   craftingOppositionSchools?: CraftingOppositionSchool[];
   onCurrentHitPointsChange: (value: number) => void;
   onTemporaryHitPointsChange: (value: number) => void;
+  onNonlethalDamageChange?: (value: number) => void;
   onEffectsChange: (effects: ActiveEffect[]) => void;
 }) {
   const appliesToAttack = (effect: ActiveEffect, attack: EquipmentAttack) => !effect.weaponIds?.length || effect.weaponIds.includes(attack.id);
@@ -85,6 +87,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [rounds, setRounds] = useState(1);
   const [adjustment, setAdjustment] = useState(1);
   const [damageFromAttack, setDamageFromAttack] = useState(true);
+  const [damageBypassesRegeneration, setDamageBypassesRegeneration] = useState(false);
   const [combatRound, setCombatRound] = useState(1);
   const [rollHistory, setRollHistory] = useState<RollHistory[]>([]);
   const [selectedSkill, setSelectedSkill] = useState(skills[0]?.id ?? "");
@@ -109,10 +112,10 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
         changed = true;
         return [];
       }
-      const description = `Fast healing ${rule.value}${rule.condition ? ` ${rule.condition}` : ""}`;
-      if (effect.bonus === rule.value && effect.fastHealing === rule.value && effect.description === description) return [effect];
+      const description = `${rule.kind === "fastHealing" ? "Fast healing" : "Regeneration"} ${rule.value}${rule.condition ? ` ${rule.condition}` : ""}`;
+      if (effect.bonus === rule.value && effect.fastHealing === (rule.kind === "fastHealing" ? rule.value : undefined) && effect.regeneration === (rule.kind === "regeneration" ? rule.value : undefined) && effect.description === description) return [effect];
       changed = true;
-      return [{ ...effect, bonus: rule.value, fastHealing: rule.value, description }];
+      return [{ ...effect, bonus: rule.value, fastHealing: rule.kind === "fastHealing" ? rule.value : undefined, regeneration: rule.kind === "regeneration" ? rule.value : undefined, description }];
     });
     if (changed) onEffectsChange(next);
   }, [effects, onEffectsChange, recurringHealing]);
@@ -123,14 +126,27 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   };
   const recordRoll = (roll: Omit<RollHistory, "id">) =>
     setRollHistory(current => [{ ...roll, id: globalThis.crypto?.randomUUID?.() ?? `roll-${Date.now()}-${Math.random()}` }, ...current].slice(0, 20));
+  const recurringRuleIsActive = (rule: RecurringHealingRule) => !rule.condition || effects.some((effect) => effect.id === `archetype-healing-${rule.id}`);
+  const currentFastHealing = Math.max(
+    0,
+    ...recurringHealing.filter((rule) => rule.kind === "fastHealing" && recurringRuleIsActive(rule)).map((rule) => rule.value),
+    ...effects.filter((effect) => ["self", "allies"].includes(effect.target)).map((effect) => effect.fastHealing ?? 0),
+  );
+  const currentRegeneration = Math.max(
+    0,
+    ...recurringHealing.filter((rule) => rule.kind === "regeneration" && recurringRuleIsActive(rule)).map((rule) => rule.value),
+    ...effects.filter((effect) => ["self", "allies"].includes(effect.target)).map((effect) => effect.regeneration ?? 0),
+  );
   const advanceRound = () => {
     setCombatRound((current) => current + 1);
-    const passiveHealing = recurringHealing.filter((rule) => !rule.condition).reduce((maximum, rule) => Math.max(maximum, rule.value), 0);
-    const effectHealing = effects.filter((effect) => ["self", "allies"].includes(effect.target)).reduce((maximum, effect) => Math.max(maximum, effect.fastHealing ?? 0), 0);
-    const recurringHealingValue = Math.max(passiveHealing, effectHealing);
-    const healed = Math.min(recurringHealingValue, Math.max(0, maximumHitPoints - currentHitPoints));
+    const healed = Math.min(currentFastHealing, Math.max(0, maximumHitPoints - currentHitPoints));
+    const regenerated = Math.min(currentRegeneration, nonlethalDamage);
     if (healed > 0) onCurrentHitPointsChange(currentHitPoints + healed);
-    setRoundHealingResult(recurringHealingValue > 0 ? `Recurring healing restored ${healed} hit point${healed === 1 ? "" : "s"}.` : "");
+    if (regenerated > 0) onNonlethalDamageChange(nonlethalDamage - regenerated);
+    setRoundHealingResult([
+      currentFastHealing > 0 ? `Fast healing restored ${healed} hit point${healed === 1 ? "" : "s"}.` : "",
+      currentRegeneration > 0 ? `Regeneration removed ${regenerated} nonlethal damage.` : "",
+    ].filter(Boolean).join(" "));
     const expiringTemporaryHitPoints = effects.filter((effect) => effect.roundsRemaining <= 1 && effect.temporaryHitPointsGranted).reduce((maximum, effect) => Math.max(maximum, effect.temporaryHitPointsGranted ?? 0), 0);
     if (expiringTemporaryHitPoints > 0) onTemporaryHitPointsChange(Math.max(0, temporaryHitPoints - Math.min(temporaryHitPoints, expiringTemporaryHitPoints)));
     onEffectsChange(effects.flatMap(effect => effect.roundsRemaining > 1 ? [{ ...effect, roundsRemaining: effect.roundsRemaining - 1 }] : []));
@@ -147,8 +163,9 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       name: `${rule.source}: ${rule.label}`,
       target: "self",
       bonus: rule.value,
-      fastHealing: rule.value,
-      description: `Fast healing ${rule.value}${rule.condition ? ` ${rule.condition}` : ""}`,
+      fastHealing: rule.kind === "fastHealing" ? rule.value : undefined,
+      regeneration: rule.kind === "regeneration" ? rule.value : undefined,
+      description: `${rule.kind === "fastHealing" ? "Fast healing" : "Regeneration"} ${rule.value}${rule.condition ? ` ${rule.condition}` : ""}`,
       roundsRemaining: 999,
     }]);
   };
@@ -159,7 +176,9 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       ? effects.filter((effect) => effect.expiresWhenTemporaryHitPointsLost)
       : [];
     onTemporaryHitPointsChange(temporaryHitPoints - absorbed);
-    onCurrentHitPointsChange(Math.max(0, currentHitPoints - (adjustment - absorbed)));
+    const remainingDamage = adjustment - absorbed;
+    if (currentRegeneration > 0 && !damageBypassesRegeneration) onNonlethalDamageChange(Math.min(9999, nonlethalDamage + remainingDamage));
+    else onCurrentHitPointsChange(Math.max(0, currentHitPoints - remainingDamage));
     if (expiringEffects.length) {
       if (damageFromAttack) expiringEffects.filter((effect) => effect.retaliationDamage).forEach((effect) => recordRoll({
         label: `${effect.name} retaliation`,
@@ -174,7 +193,9 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const heal = () => onCurrentHitPointsChange(Math.min(maximumHitPoints, currentHitPoints + adjustment));
   const magicalHealingBonus = oneShotEffects("healingReceived").reduce((total, effect) => total + effect.bonus, 0);
   const receiveMagicalHealing = () => {
-    onCurrentHitPointsChange(Math.min(maximumHitPoints, currentHitPoints + adjustment + magicalHealingBonus));
+    const amount = adjustment + magicalHealingBonus;
+    onCurrentHitPointsChange(Math.min(maximumHitPoints, currentHitPoints + amount));
+    onNonlethalDamageChange(Math.max(0, nonlethalDamage - amount));
     consumeOneShotEffects("healingReceived");
   };
   const rollAttack = (attack: EquipmentAttack) => {
@@ -269,22 +290,25 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <label>Current HP<input aria-label="Current HP" type="number" min="0" max="9999" value={currentHitPoints} onChange={event => onCurrentHitPointsChange(Math.max(0, Math.min(9999, Number(event.target.value) || 0)))} /></label>
       <p>of <strong>{maximumHitPoints}</strong> maximum</p>
       <label>Temporary HP<input aria-label="Temporary HP" type="number" min="0" max="9999" value={temporaryHitPoints} onChange={event => onTemporaryHitPointsChange(Math.max(0, Math.min(9999, Number(event.target.value) || 0)))} /></label>
-      <button type="button" onClick={() => { onCurrentHitPointsChange(maximumHitPoints); onTemporaryHitPointsChange(0); }}>Heal to full</button>
+      <label>Nonlethal damage<input aria-label="Nonlethal damage" type="number" min="0" max="9999" value={nonlethalDamage} onChange={event => onNonlethalDamageChange(Math.max(0, Math.min(9999, Number(event.target.value) || 0)))} /></label>
+      <button type="button" onClick={() => { onCurrentHitPointsChange(maximumHitPoints); onTemporaryHitPointsChange(0); onNonlethalDamageChange(0); }}>Heal to full</button>
     </div>
+    {nonlethalDamage >= currentHitPoints && nonlethalDamage > 0 && <p className="nonlethal-warning" role="alert">Nonlethal damage equals or exceeds current HP: unconscious.</p>}
     <div className="quick-hp-controls">
       <label>Amount<input aria-label="Hit point adjustment" type="number" min="1" max="9999" value={adjustment} onChange={(event) => setAdjustment(Math.max(1, Math.min(9999, Number(event.target.value) || 1)))} /></label>
       <button type="button" className="damage-button" onClick={takeDamage}>Take {adjustment} damage</button>
       <button type="button" onClick={heal}>Heal {adjustment} HP</button>
       <button type="button" onClick={receiveMagicalHealing}>Receive magical healing ({adjustment}{magicalHealingBonus ? ` + ${magicalHealingBonus} fate` : ""})</button>
-      <small>Damage uses temporary HP before current HP.</small>
+      <small>Damage uses temporary HP first. Active regeneration converts non-bypassing damage to nonlethal damage.</small>
       <label className="attack-damage-toggle"><input aria-label="Damage came from an attack" type="checkbox" checked={damageFromAttack} onChange={event => setDamageFromAttack(event.target.checked)} />Damage came from an attack</label>
+      {currentRegeneration > 0 && <label className="attack-damage-toggle"><input aria-label="Damage bypasses regeneration" type="checkbox" checked={damageBypassesRegeneration} onChange={event => setDamageBypassesRegeneration(event.target.checked)} />Damage bypasses regeneration</label>}
     </div>
     {roundHealingResult && <p role="status">{roundHealingResult}</p>}
     {recurringHealing.length > 0 && <section className="recurring-healing" aria-labelledby="recurring-healing-heading">
-      <div><h4 id="recurring-healing-heading">Recurring healing</h4><p>Activate conditional abilities when their requirement is currently true. Fast healing is applied automatically when you advance the round.</p></div>
+      <div><h4 id="recurring-healing-heading">Recurring healing</h4><p>Activate conditional abilities when their requirement is currently true. Fast healing restores HP; regeneration removes converted nonlethal damage when you advance the round.</p></div>
       <ul>{recurringHealing.map((rule) => {
         const active = !rule.condition || effects.some((effect) => effect.id === healingEffectId(rule));
-        return <li key={rule.id}><div><strong>Fast healing {rule.value}</strong><span>{rule.source} · {rule.condition ?? "Always active"}</span></div>{rule.condition && <button type="button" aria-pressed={active} onClick={() => toggleRecurringHealing(rule)}>{active ? `Deactivate ${rule.label}` : `Activate ${rule.label}`}</button>}</li>;
+        return <li key={rule.id}><div><strong>{rule.kind === "fastHealing" ? "Fast healing" : "Regeneration"} {rule.value}</strong><span>{rule.source} · {rule.condition ?? "Always active"}</span></div>{rule.condition && <button type="button" aria-pressed={active} onClick={() => toggleRecurringHealing(rule)}>{active ? `Deactivate ${rule.label}` : `Activate ${rule.label}`}</button>}</li>;
       })}</ul>
     </section>}
     <section className="combat-attacks" aria-labelledby="combat-attacks-heading">

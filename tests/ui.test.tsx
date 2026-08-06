@@ -1060,6 +1060,7 @@ test("tracks hit points and expires temporary combat effects by round", async ()
   assert.match(armorClass?.textContent ?? "", /10 \/ 10 \/ 10/);
   fireEvent.change(screen.getByLabelText("Current HP"), { target: { value: "3" } });
   fireEvent.change(screen.getByLabelText("Temporary HP"), { target: { value: "5" } });
+  fireEvent.change(screen.getByLabelText("Nonlethal damage"), { target: { value: "2" } });
   await user.type(screen.getByLabelText("Effect name"), "Shield");
   await user.selectOptions(screen.getByLabelText("Affects"), "armorClass");
   fireEvent.change(screen.getByLabelText("Rounds"), { target: { value: "2" } });
@@ -1073,6 +1074,7 @@ test("tracks hit points and expires temporary combat effects by round", async ()
   const saved = JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}");
   assert.equal(saved.currentHitPoints, 3);
   assert.equal(saved.temporaryHitPoints, 5);
+  assert.equal(saved.nonlethalDamage, 2);
 });
 
 test("uses equipped attacks and quick hit point controls during combat", async () => {

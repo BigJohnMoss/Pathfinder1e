@@ -491,6 +491,7 @@ export default function Home() {
   const [eidolonEvolutionIds, setEidolonEvolutionIds] = useState<string[]>([]);
   const [currentHitPoints, setCurrentHitPoints] = useState<number | null>(null);
   const [temporaryHitPoints, setTemporaryHitPoints] = useState(0);
+  const [nonlethalDamage, setNonlethalDamage] = useState(0);
   const [activeEffects, setActiveEffects] = useState<ActiveEffect[]>([]);
   const addActiveEffect = useCallback((effect: ActiveEffect) => {
     setActiveEffects((current) => [
@@ -3127,6 +3128,7 @@ export default function Home() {
     wildShapeUsed: druidClassLevel > 0 ? wildShapeUsed : 0,
     currentHitPoints,
     temporaryHitPoints,
+    nonlethalDamage,
     activeEffects,
     inventory,
     coins,
@@ -3793,6 +3795,7 @@ export default function Home() {
     );
     setCurrentHitPoints(draft.currentHitPoints);
     setTemporaryHitPoints(draft.temporaryHitPoints);
+    setNonlethalDamage(draft.nonlethalDamage ?? 0);
     setActiveEffects(draft.activeEffects);
     setInventory(draft.inventory);
     setCoins(draft.coins);
@@ -3933,6 +3936,7 @@ export default function Home() {
     setEidolonEvolutionIds([]);
     setCurrentHitPoints(null);
     setTemporaryHitPoints(0);
+    setNonlethalDamage(0);
     setActiveEffects([]);
     setInventory([]);
     setCoins({ cp: 0, sp: 0, gp: 0, pp: 0 });
@@ -4347,6 +4351,7 @@ export default function Home() {
                 maximumHitPoints={combat.averageHitPoints}
                 currentHitPoints={currentHitPoints ?? combat.averageHitPoints}
                 temporaryHitPoints={temporaryHitPoints}
+                nonlethalDamage={nonlethalDamage}
                 attacks={combatAttacks}
                 checks={[
                   { id: "initiative", name: "Initiative", modifier: combat.initiative },
@@ -4357,9 +4362,9 @@ export default function Home() {
                 ]}
                 skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total }))}
                 effects={activeEffects}
-                recurringHealing={selectedArchetypeDefenses.filter((defense) => defense.kind === "fastHealing").map((defense, index) => ({
+                recurringHealing={selectedArchetypeDefenses.filter((defense) => defense.kind === "fastHealing" || defense.kind === "regeneration").map((defense, index) => ({
                   id: defense.sourceFeatureId ?? `${defense.source}-${defense.kind}-${index}`,
-                  kind: defense.kind as "fastHealing",
+                  kind: defense.kind as "fastHealing" | "regeneration",
                   label: defense.label,
                   value: defense.value,
                   condition: defense.condition,
@@ -4368,6 +4373,7 @@ export default function Home() {
                 craftingOppositionSchools={craftingOppositionSchools}
                 onCurrentHitPointsChange={setCurrentHitPoints}
                 onTemporaryHitPointsChange={setTemporaryHitPoints}
+                onNonlethalDamageChange={setNonlethalDamage}
                 onEffectsChange={setActiveEffects}
               />
             </div>

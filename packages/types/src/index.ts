@@ -96,6 +96,7 @@ export interface CharacterDraftV1 {
   wildShapeUsed: number;
   currentHitPoints: number | null;
   temporaryHitPoints: number;
+  nonlethalDamage?: number;
   activeEffects: ActiveEffect[];
   inventory: Array<{
     itemId: string;
@@ -122,6 +123,7 @@ export interface ActiveEffect {
   roundsRemaining: number;
   description?: string;
   fastHealing?: number;
+  regeneration?: number;
   weaponIds?: string[];
   damageType?: string;
   temporaryHitPointsGranted?: number;
@@ -489,7 +491,7 @@ export interface CharacterArchetype {
   }>;
   defenseAdjustments?: Array<{
     sourceFeatureId?: string;
-    kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity" | "evasion" | "improvedEvasion" | "uncannyDodge" | "improvedUncannyDodge" | "fortification" | "concealment" | "missChance" | "fastHealing";
+    kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity" | "evasion" | "improvedEvasion" | "uncannyDodge" | "improvedUncannyDodge" | "fortification" | "concealment" | "missChance" | "fastHealing" | "regeneration";
     label: string;
     minimumLevel?: number;
     maximumLevel?: number;
