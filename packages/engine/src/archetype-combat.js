@@ -24,6 +24,8 @@ const targetPatterns = {
 };
 
 const bonusPattern = /\b(?:(?:gains?|receives?|has) (?:an? )?|(?:and|plus|as well as) (?:an? )?)\+(\d+) (?:(alchemical|armor|circumstance|competence|deflection|dodge|enhancement|insight|luck|morale|natural armor|profane|racial|resistance|sacred|shield|trait|untyped) )?bonus(?:es)? (?:on|to) /gi;
+const implicitNaturalArmorPattern = /\+(\d+)\s+(?:(natural armor) bonus|(?:(alchemical|armor|circumstance|competence|deflection|dodge|enhancement|insight|luck|morale|profane|racial|resistance|sacred|shield|trait|untyped) )?bonus to (?:(?:his|her|its|their|the) )?natural armor(?: bonus)?)/gi;
+const halfLevelNaturalArmorPattern = /\b(?:gains?|gaining|receives?|has) (?:an? )?(?:(alchemical|armor|circumstance|competence|deflection|dodge|enhancement|insight|luck|morale|profane|racial|resistance|sacred|shield|trait|untyped) )?bonus to (?:(?:his|her|its|their|your|the) )?natural armor(?: bonus)? equal to (?:(?:one-)?half|1\/2) (?:of )?(?:his|her|their|your) (?:(?:\w+ )?(?:class )?)?level(?: \(minimum \+?1\))?/gi;
 
 const targetLabel = (targets) => targets.map((target) => targetLabels[target]).join(" and ");
 
@@ -71,9 +73,17 @@ function cleanCondition(condition) {
   return cleaned;
 }
 
+function implicitNaturalArmorCondition(sentence, bonus) {
+  const prefix = sentence.slice(0, bonus.index);
+  const leading = prefix.match(/^(?:At \d+(?:st|nd|rd|th) level,?\s*)?(When|Whenever|While|During|Within|As long as|If)\s+(.+?),\s*(?:(?:he|she|they|it|you)|(?:an?|the)\s+[a-z][a-z' -]{0,60})\s*(?:also\s*)?(?:gains?|receives?|has|is granted)\s+(?:an?\s*)?$/i);
+  if (leading) return `${leading[1].toLowerCase()} ${leading[2]}`;
+  const suffix = sentence.slice(bonus.index + bonus[0].length).match(/^\s*(?:to (?:his|her|its|their|your|the) (?:AC|Armor Class)\s*)?(when|whenever|while|during|within|as long as|if)\s+(.+?)(?=,\s+(?:and|but)\b|[.;]|$)/i);
+  return suffix ? `${suffix[1].toLowerCase()} ${suffix[2]}` : undefined;
+}
+
 function sentenceAdjustments(feature, sentence) {
   const bonuses = [...sentence.matchAll(bonusPattern)];
-  const adjustments = bonuses.flatMap((bonus, index) => {
+  const explicitAdjustments = bonuses.flatMap((bonus, index) => {
     if (combatUnsafeSubject(sentence, bonus.index)) return [];
     const nextIndex = bonuses[index + 1]?.index ?? sentence.length;
     const segment = sentence.slice(bonus.index + bonus[0].length, nextIndex).split(/;|[.]/, 1)[0];
@@ -98,6 +108,33 @@ function sentenceAdjustments(feature, sentence) {
       ...(condition ? { condition } : {}),
     }];
   });
+  const naturalArmorAdjustments = [...sentence.matchAll(implicitNaturalArmorPattern)].flatMap((bonus) => {
+    if (combatUnsafeSubject(sentence, bonus.index)) return [];
+    const condition = cleanCondition(implicitNaturalArmorCondition(sentence, bonus));
+    return [{
+      sourceFeatureId: feature.id,
+      label: "Armor Class",
+      combatTargets: ["armorClass"],
+      minimumLevel: Number(sentence.slice(0, bonus.index).match(/\b(?:At|Beginning at) (\d+)(?:st|nd|rd|th) level\b/i)?.[1] ?? feature.level ?? 1),
+      base: Number(bonus[1]),
+      bonusType: bonus[2] ? "natural-armor" : String(bonus[3] ?? "natural-armor").toLowerCase(),
+      ...(condition ? { condition } : {}),
+    }];
+  });
+  const halfLevelNaturalArmorAdjustments = [...sentence.matchAll(halfLevelNaturalArmorPattern)].flatMap((bonus) => {
+    if (combatUnsafeSubject(sentence, bonus.index)) return [];
+    return [{
+      sourceFeatureId: feature.id,
+      label: "Armor Class",
+      combatTargets: ["armorClass"],
+      minimumLevel: Number(sentence.slice(0, bonus.index).match(/\b(?:At|Beginning at) (\d+)(?:st|nd|rd|th) level\b/i)?.[1] ?? feature.level ?? 1),
+      base: 0,
+      levelDivisor: 2,
+      minimum: 1,
+      bonusType: String(bonus[1] ?? "natural-armor").toLowerCase(),
+    }];
+  });
+  const adjustments = [...new Map([...explicitAdjustments, ...naturalArmorAdjustments, ...halfLevelNaturalArmorAdjustments].map((adjustment) => [JSON.stringify(adjustment), adjustment])).values()];
   const sharedCondition = adjustments.findLast((adjustment) => adjustment.condition)?.condition;
   return sharedCondition && adjustments.length > 1
     ? adjustments.map((adjustment) => adjustment.condition ? adjustment : { ...adjustment, condition: sharedCondition })
@@ -114,13 +151,25 @@ function directCombatRuleSentence(sentence, parsedCount) {
   const verbIndex = withoutLevel.search(/\b(?:gains?|receives?|has)\b/i);
   const subject = verbIndex >= 0 ? withoutLevel.slice(0, verbIndex).trim() : "";
   const direct = /^(?:he|she|they|it|(?:an?|the)\s+(?:[a-z'\u2019-]+\s+){0,4}[a-z'\u2019-]+)$/i.test(subject);
-  const numericBonuses = sentence.match(/\+\d+ (?:[a-z-]+ )?bonus(?:es)?\b/gi)?.length ?? 0;
+  const numericBonuses = sentence.match(/\+\d+ (?:(?:natural armor|[a-z-]+) )?bonus(?:es)?\b/gi)?.length ?? 0;
   return direct && numericBonuses === parsedCount &&
     !/\b(?:can|may|spends?|uses?|becomes? immune|is unaffected|cannot exceed|however|extra attack|critical|for each|equal to|initiative|saving throws?|skill checks?|speed|up to a maximum bonus equal to)\b/i.test(sentence);
 }
 
 function combatRuleProgression(adjustment, summary) {
-  const progressed = archetypeRuleProgression(adjustment, summary, /\b(?:attack|damage|AC|Armor Class|CMB|CMD|combat maneuver)\b/i);
+  const inferenceTargetPattern = adjustment.bonusType === "natural-armor"
+    ? /\bnatural armor\b|\b(?:AC|Armor Class)\b/i
+    : /\b(?:attack|damage|AC|Armor Class|CMB|CMD|combat maneuver)\b/i;
+  const progressed = archetypeRuleProgression(adjustment, summary, inferenceTargetPattern);
+  if (adjustment.bonusType === "natural-armor" && !progressed.bonusByLevel) {
+    const explicitIncrease = archetypeRuleSentences(summary).find((sentence) => /\bthis bonus increases by \+?\d+/i.test(sentence) && /\bAt \d+(?:st|nd|rd|th)(?:,| and)/i.test(sentence));
+    const increment = Number(explicitIncrease?.match(/\bthis bonus increases by \+?(\d+)/i)?.[1] ?? 0);
+    const levels = [...(explicitIncrease?.matchAll(/(\d+)(?:st|nd|rd|th)/gi) ?? [])].map((match) => Number(match[1])).filter((level) => level > adjustment.minimumLevel && level <= 20);
+    if (increment && levels.length) {
+      let bonus = adjustment.base;
+      return { ...adjustment, bonusByLevel: [{ level: adjustment.minimumLevel, bonus }, ...levels.map((level) => ({ level, bonus: bonus += increment }))] };
+    }
+  }
   if (!progressed.bonusByLevel || progressed.bonusByLevel.length < 2 || adjustment.combatTargets.length !== 1) return progressed;
   const target = adjustment.combatTargets[0];
   const targetPattern = target === "attackRolls" ? "attack(?: rolls?)?" : target === "damageRolls" ? "damage(?: rolls?)?" : target === "armorClass" ? "(?:AC|Armor Class)" : target === "cmb" ? "(?:CMB|combat maneuver checks?)" : "CMD";
@@ -152,7 +201,7 @@ export function inferredArchetypeCombatModifierDetails(archetype) {
         })),
       );
       const safeParsed = parsed.filter(({ index, adjustment }) =>
-        adjustment.condition || /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they|it)|(?:an?|the)\s+[a-z])/i.test(sentences[index]),
+        adjustment.condition || /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they|it|you|your)|(?:an?|the)\s+[a-z]|(?:this|that)\s+[a-z][a-z' -]{0,80}\s+grants?\s+(?:him|her|them|you)\b)/i.test(sentences[index]),
       );
       const unique = [...new Map(safeParsed.map((entry) => [JSON.stringify(entry.adjustment), entry])).values()];
       adjustments.push(...unique.map(({ adjustment }) => adjustment));
