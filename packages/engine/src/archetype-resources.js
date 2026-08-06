@@ -1,5 +1,5 @@
 const abilityNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
-const numberWords = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
+const numberWords = { once: 1, twice: 2, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
 const numericValue = (value) => numberWords[String(value).toLowerCase()] ?? Number(value);
 
 const resourceId = (feature) => `archetype-${feature.id}`;
@@ -43,7 +43,8 @@ export function inferArchetypeResourceAdjustments(archetype) {
     // creature abilities, so a tracker named after the heading would mislead.
     if (/^saving throws?$/i.test(String(feature.name ?? "").trim()) || /\bfamiliar\b/i.test(String(feature.name ?? ""))) continue;
     const minimumLevel = Math.max(1, Math.trunc(feature.level ?? 1));
-    const sentences = String(feature.summary ?? "").replace(/\s+/g, " ").split(/(?<=[.!?])\s+/);
+    const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
+    const sentences = summary.split(/(?<=[.!?])\s+/);
     for (const sentence of sentences) {
       if (/(?:companion|eidolon|familiar|homunculus|phantom|mount)\b[^.]{0,100}\b(?:times|rounds|points) per day/i.test(sentence)) continue;
       const unit = /rounds? per day/i.test(sentence) ? "round" : /\bpool\b|points? in/i.test(sentence) ? "point" : "use";
@@ -56,8 +57,12 @@ export function inferArchetypeResourceAdjustments(archetype) {
         const fixed = sentence.match(/(?:can|may) (?:use|cast|channel|attempt|perform)[^.]{0,100}?\b(once|twice|\d+ times?) per day/i);
         if (fixed) adjustment = { base: fixed[1].toLowerCase() === "once" ? 1 : fixed[1].toLowerCase() === "twice" ? 2 : Number(fixed[1].match(/\d+/)?.[0]), minimumLevel, minimum: 0 };
       }
+      if (!adjustment) {
+        const leadingFrequency = sentence.match(/\b(once|twice|\d+ times?) per day\b[^.]{0,180}\b(?:can|may)\b/i);
+        if (leadingFrequency) adjustment = { base: numericValue(leadingFrequency[1].replace(/\s+times?$/i, "")), minimumLevel, minimum: 0 };
+      }
       if (!adjustment) continue;
-      const perLevel = sentence.match(/once per day (?:for every|per)\s*(\d+|one|two|three|four|five|six)?\s*(?:(?:class|[a-z]+) )?levels?/i);
+      const perLevel = summary.match(/once per day (?:for every|per)\s*(\d+|one|two|three|four|five|six)?\s*(?:(?:class|[a-z]+) )?levels?/i);
       if (perLevel) {
         const divisor = perLevel[1] ? numericValue(perLevel[1]) : 1;
         adjustment.base = 0;
@@ -66,13 +71,20 @@ export function inferArchetypeResourceAdjustments(archetype) {
         if (divisor === 1) adjustment.levelMultiplier = 1;
         else adjustment.levelDivisor = divisor;
       }
-      const scaling = sentence.match(/(?:plus|and|gaining) (?:one|an) additional (?:use |time )?(?:per day )?(?:at [^.]{0,35}? and )?(?:for |at )?every\s+(\d+|one|two|three|four|five|six)\s+(?:(?:class|[a-z]+) )?levels?(?: beyond [^,.;]+| thereafter)?/i);
+      const scaling = summary.match(/(?:plus|and|gaining|use this ability) (?:one|an) additional (?:use |time )?(?:per day )?(?:at [^.]{0,35}? and )?(?:for |at )?every\s+(\d+|one|two|three|four|five|six)\s+(?:(?:class|[a-z]+) )?levels?(?: beyond [^,.;]+| thereafter)?/i);
       if (scaling) {
         adjustment.perInterval = 1;
         adjustment.interval = numericValue(scaling[1]);
       }
-      const maximum = sentence.match(/(?:maximum|total) of\s+(\d+)\s+(?:times|uses)/i);
-      if (maximum) adjustment.maximum = Number(maximum[1]);
+      const maximum = summary.match(/(?:maximum|total) of\s+(\d+|one|two|three|four|five|six)\s+(?:times|uses)/i);
+      if (maximum) adjustment.maximum = numericValue(maximum[1]);
+      const levelTiers = [...summary.matchAll(/\b(once|twice|\d+|one|two|three|four|five|six)(?: times?)? per day at (\d+)(?:st|nd|rd|th)(?: level)?/gi)]
+        .map((match) => ({ level: Number(match[2]), maximum: numericValue(match[1]) }))
+        .filter((entry) => entry.level >= minimumLevel && Number.isFinite(entry.maximum));
+      if (levelTiers.length && !adjustment.perInterval && !adjustment.levelDivisor && !adjustment.levelMultiplier) adjustment.maximumByLevel = [
+        { level: minimumLevel, maximum: adjustment.base },
+        ...levelTiers,
+      ].filter((entry, index, entries) => entries.findIndex((candidate) => candidate.level === entry.level) === index);
       inferred.push({
         resourceId: resourceId(feature),
         label: resourceLabel(feature),
@@ -84,4 +96,9 @@ export function inferArchetypeResourceAdjustments(archetype) {
     }
   }
   return inferred;
+}
+
+export function resolvedArchetypeResourceAdjustments(archetype) {
+  const explicit = archetype?.resourceAdjustments ?? [];
+  return explicit.length ? explicit : inferArchetypeResourceAdjustments(archetype);
 }

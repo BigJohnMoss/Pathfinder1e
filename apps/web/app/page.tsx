@@ -89,7 +89,7 @@ import {
   inferArchetypeFeatAlternatives,
   inferArchetypeFeatChoices,
   inferArchetypeGrantedFeats,
-  inferArchetypeResourceAdjustments,
+  resolvedArchetypeResourceAdjustments,
   multiclassAverageHitPoints,
   multiclassProgression,
   normalizeAbilityBoosts,
@@ -2578,11 +2578,7 @@ export default function Home() {
       const resourceArchetypes = archetypes.filter((archetype) =>
         archetype.classId === resourceClassId && (archetypeStacksByClass[resourceClassId] ?? []).includes(archetype.id)
       );
-      const adjustments = resourceArchetypes.flatMap((archetype) =>
-        archetype.resourceAdjustments?.length
-          ? archetype.resourceAdjustments
-          : inferArchetypeResourceAdjustments(archetype)
-      );
+      const adjustments = resourceArchetypes.flatMap(resolvedArchetypeResourceAdjustments);
       return Object.entries(
         applyArchetypeResourceAdjustments(
           apgClassResourceMaximums(resourceClassId, resourceClassLevel, combat.abilityModifiers),

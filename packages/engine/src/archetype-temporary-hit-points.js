@@ -1,4 +1,4 @@
-import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
+import { resolvedArchetypeResourceAdjustments } from "./archetype-resources.js";
 
 const sentences = (text) => String(text ?? "").replace(/\s+/g, " ").trim().split(/(?<=[.!?])\s+/).filter(Boolean);
 const featureLabel = (feature) => String(feature?.name ?? "Archetype feature").replace(/\s*\((?:Ex|Su|Sp)\)\s*$/i, "").trim();
@@ -65,7 +65,7 @@ function durationByLevel(minimumLevel, summary) {
 
 export function inferredArchetypeTemporaryHitPointActionDetails(archetype) {
   const actions = [];
-  const resources = new Map(inferArchetypeResourceAdjustments(archetype).map((resource) => [resource.resourceId.replace(/^archetype-/, ""), resource]));
+  const resources = new Map(resolvedArchetypeResourceAdjustments(archetype).map((resource) => [resource.resourceId.replace(/^archetype-/, ""), resource]));
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (feature.resourceActions?.length) continue;
     const summary = String(feature.summary ?? "");

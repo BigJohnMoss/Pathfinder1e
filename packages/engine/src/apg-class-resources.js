@@ -1,4 +1,4 @@
-import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
+import { resolvedArchetypeResourceAdjustments } from "./archetype-resources.js";
 
 const boundedLevel = (level) => Math.max(1, Math.min(20, Math.trunc(Number(level) || 1)));
 const nonNegativeModifier = (modifier) => Math.max(0, Math.trunc(Number(modifier) || 0));
@@ -73,7 +73,7 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
 
 export function applyArchetypeResourceAdjustments(maximums, archetypes, level, abilityModifiers = {}, context = {}) {
   const classLevel = boundedLevel(level);
-  return (archetypes ?? []).flatMap((archetype) => archetype?.resourceAdjustments?.length ? archetype.resourceAdjustments : inferArchetypeResourceAdjustments(archetype)).reduce((current, adjustment) => {
+  return (archetypes ?? []).flatMap(resolvedArchetypeResourceAdjustments).reduce((current, adjustment) => {
     if (!adjustment?.resourceId || classLevel < (adjustment.minimumLevel ?? 1) || (adjustment.requiredOptionId && !context.selectedOptionIds?.includes(adjustment.requiredOptionId))) return current;
     const progressionLevel = adjustment.advancementOptionId && context.selectedOptionIds?.includes(adjustment.advancementOptionId)
       ? boundedLevel(context.casterLevel ?? classLevel)

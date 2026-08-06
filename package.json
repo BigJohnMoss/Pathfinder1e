@@ -35,6 +35,7 @@
     "coverage:archetype-movement": "node tools/scripts/analyze-archetype-movement-inference.mjs",
     "coverage:archetype-defenses": "node tools/scripts/analyze-archetype-defense-inference.mjs",
     "coverage:archetype-temporary-hit-points": "node tools/scripts/analyze-archetype-temporary-hit-points.mjs",
+    "coverage:archetype-rerolls": "node tools/scripts/analyze-archetype-rerolls.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
     "performance:check": "node tools/scripts/check-client-budgets.mjs",
