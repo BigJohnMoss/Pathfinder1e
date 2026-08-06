@@ -72,6 +72,34 @@ test("inferred permanent combat bonuses update live CMB and CMD", async () => {
   assert.equal(within(panel).getByText("CMB / CMD").closest("div")?.querySelector("dd")?.textContent, "+11 / 21");
 });
 
+test("inferred movement progression updates live land speed", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "18" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "bard-flamesinger");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const panel = screen.getByRole("heading", { name: "Core statistics" }).closest("article");
+  assert.ok(panel);
+  assert.equal(within(panel).getByText("Land speed").closest("div")?.querySelector("dd")?.textContent, "55 ft.");
+});
+
+test("conditional movement remains opt-in and readable in the live builder", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "brawler");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "16" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "brawler-turfer");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const panel = screen.getByRole("heading", { name: "Core statistics" }).closest("article");
+  assert.ok(panel);
+  assert.equal(within(panel).getByText("Land speed").closest("div")?.querySelector("dd")?.textContent, "30 ft.");
+  const modifier = screen.getByText("+30 Land speed").closest("li");
+  assert.match(modifier?.textContent ?? "", /favored terrains/i);
+});
+
 test("generated archetype bonuses appear in the live skill totals", async () => {
   const user = userEvent.setup();
   render(<Home />);

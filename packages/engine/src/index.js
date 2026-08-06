@@ -6,6 +6,7 @@ import { archetypeInitiativeBonusAdjustments, inferredArchetypeInitiativeBonusDe
 import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, inferArchetypeSaveBonusAdjustments } from "./archetype-saves.js";
 import { archetypeCombatModifierAdjustments, inferredArchetypeCombatModifierDetails, inferArchetypeCombatModifierAdjustments } from "./archetype-combat.js";
 import { archetypeSenseAdjustments, inferredArchetypeSenseDetails, inferArchetypeSenseAdjustments } from "./archetype-senses.js";
+import { archetypeLandSpeedAdjustments, inferredArchetypeLandSpeedDetails, inferArchetypeLandSpeedAdjustments } from "./archetype-movement.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
@@ -19,6 +20,7 @@ export { archetypeInitiativeBonusAdjustments, inferArchetypeInitiativeBonusAdjus
 export { archetypeSaveBonusAdjustments, inferArchetypeSaveBonusAdjustments };
 export { archetypeCombatModifierAdjustments, inferArchetypeCombatModifierAdjustments };
 export { archetypeSenseAdjustments, inferArchetypeSenseAdjustments };
+export { archetypeLandSpeedAdjustments, inferArchetypeLandSpeedAdjustments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
@@ -361,6 +363,7 @@ export function archetypeConditionalModifiers(archetypes = [], classLevels = {})
       ...archetypeInitiativeBonusAdjustments(archetype).filter((modifier) => modifier.condition),
       ...archetypeSaveBonusAdjustments(archetype).filter((modifier) => modifier.condition),
       ...archetypeCombatModifierAdjustments(archetype).filter((modifier) => modifier.condition),
+      ...archetypeLandSpeedAdjustments(archetype).filter((modifier) => modifier.condition).map((modifier) => ({ ...modifier, base: modifier.bonus, label: "Land speed" })),
     ].flatMap((modifier) => {
       if (!adjustmentAppliesAtLevel(modifier, level)) return [];
       const bonus = adjustmentBonusAtLevel(modifier, level);
@@ -489,16 +492,19 @@ export function characterLandSpeed(baseSpeed, armorCategory = "none", load = "li
     throw new RangeError("Base land speed must be a non-negative integer.");
   const adjustments = (archetypes ?? []).flatMap((archetype) => {
     const level = archetypeLevel(archetype, classLevels);
-    return (archetype?.landSpeedAdjustments ?? [])
+    return archetypeLandSpeedAdjustments(archetype)
       .filter((adjustment) => adjustmentAppliesAtLevel(adjustment, level))
+      .filter((adjustment) => !adjustment.condition)
       .filter((adjustment) => !adjustment.armorCategories?.length || adjustment.armorCategories.includes(armorCategory))
       .filter((adjustment) => !adjustment.prohibitedLoads?.includes(load))
-      .map((adjustment) => ({ ...adjustment, source: archetype.name }));
+      .map((adjustment) => ({ ...adjustment, bonus: adjustment.bonusByLevel?.filter((step) => step.level <= level).sort((left, right) => left.level - right.level).at(-1)?.bonus ?? adjustment.bonus, source: archetype.name }));
   });
   if (load === "overloaded") return { speed: 0, baseSpeed, armorCategory, load, adjustments: [] };
-  const beforeReduction = adjustments
-    .filter((adjustment) => adjustment.timing === "beforeReduction")
-    .reduce((total, adjustment) => total + adjustment.bonus, baseSpeed);
+  const beforeRows = adjustments.filter((adjustment) => adjustment.timing === "beforeReduction");
+  const beforeTyped = new Map();
+  const beforeUntyped = beforeRows.filter((adjustment) => !adjustment.bonusType).reduce((total, adjustment) => total + adjustment.bonus, 0);
+  for (const adjustment of beforeRows.filter((item) => item.bonusType)) beforeTyped.set(adjustment.bonusType, Math.max(beforeTyped.get(adjustment.bonusType) ?? 0, adjustment.bonus));
+  const beforeReduction = baseSpeed + beforeUntyped + [...beforeTyped.values()].reduce((total, bonus) => total + bonus, 0);
   let speed = armorOrLoadReducesSpeed(armorCategory, load)
     ? reducedLandSpeed(beforeReduction)
     : beforeReduction;
@@ -1533,8 +1539,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const skillBonusAdjustments = archetypeSkillBonusAdjustments(archetype);
   if (skillBonusAdjustments.length)
     automated.push(`${skillBonusAdjustments.length} level-aware skill bonus${skillBonusAdjustments.length === 1 ? "" : "es"}`);
-  if (archetype.landSpeedAdjustments?.length)
-    automated.push(`${archetype.landSpeedAdjustments.length} equipment-aware land-speed adjustment${archetype.landSpeedAdjustments.length === 1 ? "" : "s"}`);
+  const landSpeedDetails = inferredArchetypeLandSpeedDetails(archetype);
+  const landSpeedAdjustments = archetypeLandSpeedAdjustments(archetype);
+  if (landSpeedAdjustments.length)
+    automated.push(`${landSpeedAdjustments.length} level-aware land-speed adjustment${landSpeedAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   if (archetype.optionGroupAugmentations?.length)
     automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);
@@ -1561,7 +1569,8 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ...senseDetails.fullyAutomatedFeatureIds,
     ...(archetype.skillBonusAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...skillBonusDetails.fullyAutomatedFeatureIds,
-    ...(archetype.landSpeedAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...landSpeedAdjustments.filter((adjustment) => !adjustment.condition).map(adjustment => adjustment.sourceFeatureId),
+    ...landSpeedDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

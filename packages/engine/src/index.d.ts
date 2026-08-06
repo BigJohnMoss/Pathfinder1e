@@ -70,6 +70,8 @@ export function inferArchetypeCombatModifierAdjustments(archetype: CharacterArch
 export function archetypeSenses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<{ sense: "darkvision" | "low-light-vision" | "scent" | "blindsense" | "blindsight" | "tremorsense"; label: string; operation: "grant" | "increase"; range?: number; condition?: string; source: string }>;
 export function archetypeSenseAdjustments(archetype: CharacterArchetype): Array<{ sourceFeatureId: string; sense: "darkvision" | "low-light-vision" | "scent" | "blindsense" | "blindsight" | "tremorsense"; label: string; operation: "grant" | "increase"; minimumLevel: number; range?: number; rangeByLevel?: Array<{ level: number; range: number }>; condition?: string }>;
 export function inferArchetypeSenseAdjustments(archetype: CharacterArchetype): ReturnType<typeof archetypeSenseAdjustments>;
+export function archetypeLandSpeedAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["landSpeedAdjustments"]>;
+export function inferArchetypeLandSpeedAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["landSpeedAdjustments"]>;
 export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): { skillBonuses: Record<string, number>; conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }> };
 export function inferArchetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;
 export function archetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;

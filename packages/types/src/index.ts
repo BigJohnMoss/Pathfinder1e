@@ -478,6 +478,9 @@ export interface CharacterArchetype {
     minimumLevel?: number;
     maximumLevel?: number;
     bonus: number;
+    bonusType?: "enhancement" | "insight" | "racial" | "untyped";
+    bonusByLevel?: Array<{ level: number; bonus: number }>;
+    condition?: string;
     timing: "beforeReduction" | "afterReduction";
     armorCategories?: Array<"none" | "light" | "medium" | "heavy">;
     prohibitedLoads?: Array<"light" | "medium" | "heavy" | "overloaded">;
