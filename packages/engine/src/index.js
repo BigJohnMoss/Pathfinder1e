@@ -7,6 +7,7 @@ import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, infer
 import { archetypeCombatModifierAdjustments, inferredArchetypeCombatModifierDetails, inferArchetypeCombatModifierAdjustments } from "./archetype-combat.js";
 import { archetypeSenseAdjustments, inferredArchetypeSenseDetails, inferArchetypeSenseAdjustments } from "./archetype-senses.js";
 import { archetypeLandSpeedAdjustments, inferredArchetypeLandSpeedDetails, inferArchetypeLandSpeedAdjustments } from "./archetype-movement.js";
+import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefenseDetails, inferArchetypeDefenseAdjustments } from "./archetype-defenses.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
@@ -21,6 +22,7 @@ export { archetypeSaveBonusAdjustments, inferArchetypeSaveBonusAdjustments };
 export { archetypeCombatModifierAdjustments, inferArchetypeCombatModifierAdjustments };
 export { archetypeSenseAdjustments, inferArchetypeSenseAdjustments };
 export { archetypeLandSpeedAdjustments, inferArchetypeLandSpeedAdjustments };
+export { archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAdjustments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
@@ -1543,6 +1545,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const landSpeedAdjustments = archetypeLandSpeedAdjustments(archetype);
   if (landSpeedAdjustments.length)
     automated.push(`${landSpeedAdjustments.length} level-aware land-speed adjustment${landSpeedAdjustments.length === 1 ? "" : "s"}`);
+  const defenseDetails = inferredArchetypeDefenseDetails(archetype);
+  const defenseAdjustments = archetypeDefenseAdjustments(archetype);
+  if (defenseAdjustments.length)
+    automated.push(`${defenseAdjustments.length} level-aware special defense${defenseAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   if (archetype.optionGroupAugmentations?.length)
     automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);
@@ -1571,6 +1577,8 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ...skillBonusDetails.fullyAutomatedFeatureIds,
     ...landSpeedAdjustments.filter((adjustment) => !adjustment.condition).map(adjustment => adjustment.sourceFeatureId),
     ...landSpeedDetails.fullyAutomatedFeatureIds,
+    ...(archetype.defenseAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...defenseDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

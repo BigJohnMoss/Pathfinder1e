@@ -487,6 +487,19 @@ export interface CharacterArchetype {
     capAtBaseSpeed?: boolean;
     label: string;
   }>;
+  defenseAdjustments?: Array<{
+    sourceFeatureId?: string;
+    kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity";
+    label: string;
+    minimumLevel?: number;
+    maximumLevel?: number;
+    base: number;
+    levelMultiplier?: number;
+    usesCharacterLevel?: boolean;
+    bonusByLevel?: Array<{ level: number; bonus: number }>;
+    qualifier: string;
+    condition?: string;
+  }>;
   optionGroupAugmentations?: OptionGroupAugmentation[];
   prohibitedOptionIds?: string[];
   prohibitedCompanionKinds?: Array<"animal" | "mount" | "familiar" | "eidolon" | "drake">;

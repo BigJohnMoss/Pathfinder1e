@@ -66,6 +66,7 @@ import {
   apgClassResourceMaximums,
   archetypeCombatBonuses,
   archetypeConditionalModifiers,
+  archetypeDefenses,
   archetypeInitiativeBonus,
   archetypeSavingThrowBonuses,
   archetypeSenses,
@@ -1020,6 +1021,10 @@ export default function Home() {
   );
   const selectedArchetypeSenses = useMemo(
     () => archetypeSenses(allSelectedArchetypes, classLevelMap),
+    [allSelectedArchetypes, classLevelMap],
+  );
+  const selectedArchetypeDefenses = useMemo(
+    () => archetypeDefenses(allSelectedArchetypes, classLevelMap),
     [allSelectedArchetypes, classLevelMap],
   );
   const combat = useMemo(() => {
@@ -4330,6 +4335,7 @@ export default function Home() {
                 combat={combat}
                 landSpeed={landSpeed}
                 senses={selectedArchetypeSenses}
+                defenses={selectedArchetypeDefenses}
                 modifierSources={selectedFeatBonuses.sources}
                 conditionalModifiers={[
                   ...(selectedTraitBonuses.conditionalModifiers ?? []),

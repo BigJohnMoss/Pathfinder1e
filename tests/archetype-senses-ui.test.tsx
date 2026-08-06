@@ -51,3 +51,34 @@ test("conditional inferred senses retain their activation requirement", async ()
   assert.ok(within(senses).getByText("Scent 30 ft."));
   assert.equal(within(senses).getAllByText(/when using her mutagen .* Mutagenic Mauler/i).length, 3);
 });
+
+test("level-aware archetype defenses appear in live character statistics", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "16" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-cinderwalker");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
+  assert.ok(defenses);
+  assert.ok(within(defenses).getByText("Fire resistance 30"));
+
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  assert.ok(within(defenses).getByText("Immune to fire"));
+  assert.equal(within(defenses).queryByText(/Fire resistance/), null);
+});
+
+test("conditional spell resistance retains its published trigger", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "ranger");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "19" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "ranger-wilderness-explorer");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
+  assert.ok(defenses);
+  assert.ok(within(defenses).getByText("Spell resistance 30"));
+  assert.match(defenses.textContent ?? "", /favored terrains/i);
+});

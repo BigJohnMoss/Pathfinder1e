@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 
@@ -239,6 +239,45 @@ test("typed movement bonuses stack correctly and movement inference stays normal
     }
     if (archetype.mechanicalCoverage === "full") assert.deepEqual(archetypeLandSpeedAdjustments(archetype), archetype.landSpeedAdjustments ?? [], `${archetype.id} does not mix inference into full automation`);
   }
+});
+
+test("archetype special defenses preserve level formulas, milestones, and conditions", () => {
+  const spellscar = catalogueArchetypes.find((archetype) => archetype.id === "cavalier-spellscar-drifter");
+  const mooncaller = catalogueArchetypes.find((archetype) => archetype.id === "druid-mooncaller");
+  const cinderwalker = catalogueArchetypes.find((archetype) => archetype.id === "ranger-cinderwalker");
+  const untouchable = catalogueArchetypes.find((archetype) => archetype.id === "bloodrager-untouchable-rager");
+  assert.ok(spellscar && mooncaller && cinderwalker && untouchable);
+  assert.equal(archetypeDefenses([spellscar], { cavalier: 12, fighter: 8 })[0]?.value, 30);
+  assert.equal(archetypeDefenses([mooncaller], { druid: 13 })[0]?.value, 3);
+  assert.equal(archetypeDefenses([mooncaller], { druid: 16 })[0]?.value, 4);
+  assert.equal(archetypeDefenses([mooncaller], { druid: 19 })[0]?.value, 5);
+  assert.deepEqual(archetypeDefenses([cinderwalker], { ranger: 16 }).map((defense) => [defense.kind, defense.value]), [["energyResistance", 30]]);
+  assert.deepEqual(archetypeDefenses([cinderwalker], { ranger: 20 }).map((defense) => [defense.kind, defense.qualifier]), [["immunity", "fire"]]);
+  assert.match(archetypeDefenses([untouchable], { bloodrager: 20 })[0]?.condition ?? "", /bloodraging/i);
+});
+
+test("defense inference is player-owned, normalized, and bounded across the catalogue", () => {
+  for (const archetype of catalogueArchetypes) {
+    const inferred = inferArchetypeDefenseAdjustments(archetype);
+    const runtime = archetypeDefenseAdjustments(archetype);
+    assert.ok(runtime.length >= inferred.length, `${archetype.id} exposes safe inferred defenses at runtime`);
+    const signatures = new Set();
+    for (const adjustment of inferred) {
+      assert.ok(["damageReduction", "energyResistance", "spellResistance", "immunity"].includes(adjustment.kind), `${archetype.id} has a supported defense kind`);
+      assert.ok(adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20 && Number.isInteger(adjustment.base) && adjustment.base >= 0, `${archetype.id} has bounded defense values`);
+      assert.ok(adjustment.qualifier.length > 0 && adjustment.qualifier.length <= 80 && (adjustment.condition?.length ?? 0) <= 250, `${archetype.id} has readable defense details`);
+      assert.doesNotMatch(adjustment.sourceFeatureId, /companion|familiar|eidolon|homunculus|mount/, `${archetype.id} excludes subordinate creature defenses`);
+      const levels = adjustment.bonusByLevel?.map((step) => step.level) ?? [];
+      assert.equal(new Set(levels).size, levels.length, `${archetype.id} has unique defense milestones`);
+      assert.ok(levels.every((level, index) => level >= adjustment.minimumLevel && level <= (adjustment.maximumLevel ?? 20) && (!index || level > levels[index - 1])), `${archetype.id} has ordered defense milestones`);
+      const signature = JSON.stringify([adjustment.sourceFeatureId, adjustment.kind, adjustment.qualifier, adjustment.condition]);
+      assert.ok(!signatures.has(signature), `${archetype.id} has no duplicate defense adjustment`);
+      signatures.add(signature);
+    }
+  }
+  const promethean = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-promethean-alchemist");
+  assert.ok(promethean);
+  assert.deepEqual(inferArchetypeDefenseAdjustments(promethean), []);
 });
 
 test("common exact skill-bonus rules are inferred conservatively", () => {
