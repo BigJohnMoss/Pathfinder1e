@@ -8,6 +8,49 @@
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
   ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "warpriest-sixth-wing-bulwark-sacred-shield-su-20",
+      "kind": "damageReduction",
+      "label": "Sacred Shield",
+      "minimumLevel": 4,
+      "base": 1,
+      "qualifier": "—",
+      "condition": "while Sacred Shield is active and protecting herself",
+      "bonusByLevel": [
+        { "level": 4, "bonus": 1 },
+        { "level": 8, "bonus": 2 },
+        { "level": 12, "bonus": 3 },
+        { "level": 16, "bonus": 4 },
+        { "level": 20, "bonus": 5 }
+      ]
+    },
+    {
+      "sourceFeatureId": "warpriest-sixth-wing-bulwark-sacred-shield-su-20",
+      "kind": "energyResistance",
+      "label": "Sacred Shield",
+      "minimumLevel": 4,
+      "maximumLevel": 19,
+      "base": 5,
+      "qualifier": "fire",
+      "condition": "while Sacred Shield is active and protecting herself",
+      "bonusByLevel": [
+        { "level": 4, "bonus": 5 },
+        { "level": 8, "bonus": 10 },
+        { "level": 12, "bonus": 15 },
+        { "level": 16, "bonus": 20 }
+      ]
+    },
+    {
+      "sourceFeatureId": "warpriest-sixth-wing-bulwark-sacred-shield-su-20",
+      "kind": "immunity",
+      "label": "Sacred Shield",
+      "minimumLevel": 20,
+      "base": 0,
+      "qualifier": "fire",
+      "condition": "while Sacred Shield is active and protecting herself"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [
