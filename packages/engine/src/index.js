@@ -1,6 +1,7 @@
 import { normalizeCompanionState } from "./companions.js";
-import { inferArchetypeResourceAdjustments } from "./archetype-resources.js";
+import { inferArchetypeResourceAdjustments, resolvedArchetypeResourceAdjustments } from "./archetype-resources.js";
 import { inferArchetypeTemporaryHitPointActions, inferredArchetypeTemporaryHitPointActionDetails } from "./archetype-temporary-hit-points.js";
+import { inferArchetypeRerollActions, inferredArchetypeRerollActionDetails } from "./archetype-rerolls.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
@@ -15,7 +16,9 @@ export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
 export { inferArchetypeResourceAdjustments };
+export { resolvedArchetypeResourceAdjustments };
 export { inferArchetypeTemporaryHitPointActions };
+export { inferArchetypeRerollActions };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
@@ -1160,11 +1163,15 @@ export function applyArchetype(characterClass, archetype) {
         : overridden;
     })
     .filter((feature) => feature.level <= 20);
-  const temporaryHitPointActions = new Map(inferArchetypeTemporaryHitPointActions(archetype).map(({ sourceFeatureId, action }) => [sourceFeatureId, action]));
+  const inferredResourceActions = new Map();
+  for (const { sourceFeatureId, action } of [
+    ...inferArchetypeTemporaryHitPointActions(archetype),
+    ...inferArchetypeRerollActions(archetype),
+  ]) inferredResourceActions.set(sourceFeatureId, [...(inferredResourceActions.get(sourceFeatureId) ?? []), action]);
   const replacements = archetype.replacements.flatMap(
     (replacement) => replacement.features,
-  ).map((feature) => temporaryHitPointActions.has(feature.id)
-    ? { ...feature, resourceActions: [...(feature.resourceActions ?? []), temporaryHitPointActions.get(feature.id)] }
+  ).map((feature) => inferredResourceActions.has(feature.id)
+    ? { ...feature, resourceActions: [...(feature.resourceActions ?? []), ...inferredResourceActions.get(feature.id)] }
     : feature);
   const adjustTable = (table, adjustment) =>
     adjustment === undefined
@@ -1534,9 +1541,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     automated.push(`Class skill-rank progression: ${archetype.skillRanksPerLevel} + Intelligence per level`);
   else if (inferredSkillRanks)
     automated.push(`Class skill-rank progression: ${inferredSkillRanks.operation === "add" ? "+" : ""}${inferredSkillRanks.value} per level${inferredSkillRanks.operation === "replace" ? " + Intelligence" : ""}`);
-  const resourceAdjustments = archetype.resourceAdjustments?.length
-    ? archetype.resourceAdjustments
-    : inferArchetypeResourceAdjustments(archetype);
+  const resourceAdjustments = resolvedArchetypeResourceAdjustments(archetype);
   if (resourceAdjustments.length) automated.push(`${resourceAdjustments.length} tracked class resource adjustment${resourceAdjustments.length === 1 ? "" : "s"}`);
   if (archetype.conditionalModifiers?.length)
     automated.push(`${archetype.conditionalModifiers.length} level-aware conditional modifier${archetype.conditionalModifiers.length === 1 ? "" : "s"}`);
@@ -1592,6 +1597,9 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const temporaryHitPointActionDetails = inferredArchetypeTemporaryHitPointActionDetails(archetype);
   if (temporaryHitPointActionDetails.actions.length)
     automated.push(`${temporaryHitPointActionDetails.actions.length} calculated temporary-hit-point action${temporaryHitPointActionDetails.actions.length === 1 ? "" : "s"}`);
+  const rerollActionDetails = inferredArchetypeRerollActionDetails(archetype);
+  if (rerollActionDetails.actions.length)
+    automated.push(`${rerollActionDetails.actions.length} rules-aware reroll action${rerollActionDetails.actions.length === 1 ? "" : "s"}`);
   const spellAutomations = replacementFeatures.filter(feature => feature.spellAutomation);
   if (spellAutomations.length) automated.push(`${spellAutomations.length} spell-powered archetype action${spellAutomations.length === 1 ? "" : "s"}`);
   const adjustmentFeatureIds = new Set([
@@ -1609,6 +1617,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ...(archetype.skillCheckRules ?? []).filter(rule => !rule.partialFeature).map(rule => rule.sourceFeatureId),
     ...skillCheckDetails.fullyAutomatedFeatureIds,
     ...temporaryHitPointActionDetails.fullyAutomatedFeatureIds,
+    ...rerollActionDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

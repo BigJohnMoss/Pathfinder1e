@@ -225,7 +225,7 @@ export interface ClassFeatureOccurrence {
       }>;
     }>;
     rerollAction?: {
-      kind: "d20" | "damage" | "lower-d20";
+        kind: "d20" | "damage" | "lower-d20" | "higher-d20";
       label: string;
     };
     combatRoll?: {
