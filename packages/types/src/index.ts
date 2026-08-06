@@ -489,7 +489,7 @@ export interface CharacterArchetype {
   }>;
   defenseAdjustments?: Array<{
     sourceFeatureId?: string;
-    kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity" | "evasion" | "improvedEvasion" | "uncannyDodge" | "improvedUncannyDodge" | "fortification";
+    kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity" | "evasion" | "improvedEvasion" | "uncannyDodge" | "improvedUncannyDodge" | "fortification" | "concealment" | "missChance";
     label: string;
     minimumLevel?: number;
     maximumLevel?: number;

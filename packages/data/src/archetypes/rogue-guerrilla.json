@@ -4,6 +4,17 @@
   "classId": "rogue",
   "summary": "Guerrillas fight against oppressive leadership and governments including Chelish colonization in Sargava and the power structures in Cheliax proper, Nidal, and Razmiran",
   "replacesText": "Trapfinding; Evasion; Trap Sense; Uncanny Dodge; Improved Uncanny Dodge",
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "rogue-guerrilla-cover-of-night-ex-2",
+      "kind": "concealment",
+      "label": "Cover of Night",
+      "minimumLevel": 2,
+      "base": 50,
+      "qualifier": "total concealment",
+      "condition": "while in dim light or darkness and already benefiting from concealment"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [
