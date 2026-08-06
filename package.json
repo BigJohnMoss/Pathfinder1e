@@ -32,6 +32,7 @@
     "coverage:archetype-combat": "node tools/scripts/analyze-archetype-combat-inference.mjs",
     "coverage:archetype-senses": "node tools/scripts/analyze-archetype-sense-inference.mjs",
     "coverage:archetype-movement": "node tools/scripts/analyze-archetype-movement-inference.mjs",
+    "coverage:archetype-defenses": "node tools/scripts/analyze-archetype-defense-inference.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
     "performance:check": "node tools/scripts/check-client-budgets.mjs",

@@ -390,6 +390,21 @@ for (const [index, url] of archetypeUrls.entries()) {
     if (adjustment?.prohibitedLoads !== undefined && (!Array.isArray(adjustment.prohibitedLoads) || adjustment.prohibitedLoads.length === 0 || new Set(adjustment.prohibitedLoads).size !== adjustment.prohibitedLoads.length || adjustment.prohibitedLoads.some((load) => !["light", "medium", "heavy", "overloaded"].includes(load)))) errors.push(`${prefix} has invalid prohibitedLoads`);
     if (adjustment?.capAtBaseSpeed !== undefined && typeof adjustment.capAtBaseSpeed !== "boolean") errors.push(`${prefix} has invalid capAtBaseSpeed`);
   }
+  if (archetype.defenseAdjustments !== undefined && (!Array.isArray(archetype.defenseAdjustments) || archetype.defenseAdjustments.length === 0)) errors.push(`${file}: defenseAdjustments must be a non-empty array`);
+  for (const adjustment of archetype.defenseAdjustments ?? []) {
+    const prefix = `${file}: defense adjustment`;
+    if (adjustment?.sourceFeatureId !== undefined && !archetype.replacements?.some(replacement => replacement.features?.some(feature => feature.id === adjustment.sourceFeatureId))) errors.push(`${prefix} references unknown sourceFeatureId ${adjustment.sourceFeatureId}`);
+    if (!["damageReduction", "energyResistance", "spellResistance", "immunity"].includes(adjustment?.kind)) errors.push(`${prefix} has an invalid kind`);
+    if (typeof adjustment?.label !== "string" || !adjustment.label.trim()) errors.push(`${prefix} must have a label`);
+    if (!Number.isInteger(adjustment?.base) || adjustment.base < 0) errors.push(`${prefix} base must be a non-negative integer`);
+    if (adjustment?.minimumLevel !== undefined && (!Number.isInteger(adjustment.minimumLevel) || adjustment.minimumLevel < 1 || adjustment.minimumLevel > 20)) errors.push(`${prefix} has an invalid minimumLevel`);
+    if (adjustment?.maximumLevel !== undefined && (!Number.isInteger(adjustment.maximumLevel) || adjustment.maximumLevel < (adjustment.minimumLevel ?? 1) || adjustment.maximumLevel > 20)) errors.push(`${prefix} has an invalid maximumLevel`);
+    if (adjustment?.levelMultiplier !== undefined && (!Number.isInteger(adjustment.levelMultiplier) || adjustment.levelMultiplier < 0)) errors.push(`${prefix} has an invalid levelMultiplier`);
+    if (adjustment?.usesCharacterLevel !== undefined && typeof adjustment.usesCharacterLevel !== "boolean") errors.push(`${prefix} has invalid usesCharacterLevel`);
+    if (adjustment?.bonusByLevel !== undefined && (!Array.isArray(adjustment.bonusByLevel) || adjustment.bonusByLevel.length === 0 || adjustment.bonusByLevel.some((step, index) => !Number.isInteger(step?.level) || step.level < (adjustment.minimumLevel ?? 1) || step.level > (adjustment.maximumLevel ?? 20) || !Number.isInteger(step?.bonus) || step.bonus < 0 || (index > 0 && step.level <= adjustment.bonusByLevel[index - 1].level)))) errors.push(`${prefix} has invalid bonusByLevel`);
+    if (typeof adjustment?.qualifier !== "string" || !adjustment.qualifier.trim() || adjustment.qualifier.length > 80) errors.push(`${prefix} has an invalid qualifier`);
+    if (adjustment?.condition !== undefined && (typeof adjustment.condition !== "string" || !adjustment.condition.trim() || adjustment.condition.length > 250)) errors.push(`${prefix} has an invalid condition`);
+  }
   if (archetype.prohibitedOptionIds !== undefined && (!Array.isArray(archetype.prohibitedOptionIds) || new Set(archetype.prohibitedOptionIds).size !== archetype.prohibitedOptionIds.length || archetype.prohibitedOptionIds.some((id) => typeof id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)))) errors.push(`${file}: prohibitedOptionIds must contain unique option ids`);
   else for (const optionId of archetype.prohibitedOptionIds ?? []) archetypeProhibitedOptionRefs.push({ file, optionId });
   if (archetype.prohibitedCompanionKinds !== undefined && (!Array.isArray(archetype.prohibitedCompanionKinds) || new Set(archetype.prohibitedCompanionKinds).size !== archetype.prohibitedCompanionKinds.length || archetype.prohibitedCompanionKinds.some((kind) => !["animal", "mount", "familiar", "eidolon", "drake"].includes(kind)))) errors.push(`${file}: prohibitedCompanionKinds is invalid`);

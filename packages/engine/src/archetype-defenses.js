@@ -1,0 +1,200 @@
+import {
+  archetypeReplacementBoilerplate,
+  archetypeRuleCondition,
+  archetypeRuleSentences,
+  archetypeUnsafeSubject,
+} from "./archetype-initiative.js";
+
+const featureLabel = (feature) => String(feature.name ?? "Special defense").replace(/\s*\((?:Ex|Su|Sp)\)\s*$/i, "");
+const sentenceLevel = (feature, sentence, matchIndex, matchEnd = matchIndex) => {
+  const immediate = sentence.slice(matchEnd).match(/^\s+at (\d+)(?:st|nd|rd|th) level\b/i)?.[1];
+  const previous = [...sentence.slice(0, matchIndex).matchAll(/\b(?:At|Starting at|Beginning at) (\d+)(?:st|nd|rd|th)(?:-level| level)?\b/gi)].at(-1)?.[1];
+  return Number(immediate ?? previous ?? feature.level ?? 1);
+};
+
+const defenseSubjectUnsafe = (sentence, matchIndex) => archetypeUnsafeSubject(sentence, matchIndex) ||
+  /\b(?:armor|construct|covenant ally|homunculus|inscribed item|shield|weapon)\b/i.test(sentence.slice(Math.max(0, matchIndex - 100), matchIndex));
+
+function activationCondition(feature, sentence, matchEnd, summary) {
+  const direct = archetypeRuleCondition(sentence, matchEnd);
+  if (direct) return direct.replace(/\s+and (?:can|may|catch|return)\b.*$/i, "").trim();
+  const only = String(summary).match(/\b(?:This ability|(?:The )?[A-Z][^.]{1,60}) functions? only (while|when|in|within|during)\s+(.+?)(?=[.]|$)/i);
+  if (only) return `${only[1].toLowerCase()} ${only[2]}`;
+  if (/\b(?:spend|expend|once per day|for \d+ (?:rounds?|minutes?|hours?)|bloodrag(?:e|ing)|mutagen|polymorph)\b/i.test(sentence) || /\b(?:spend|expend)[^.]{0,100}\b(?:to gain|gains?)\b/i.test(summary))
+    return `when ${featureLabel(feature)} is active`;
+  return undefined;
+}
+
+const normalizedBypass = (value) => String(value).trim().replace(/[–—-]/g, "—").replace(/\s+/g, " ");
+
+function progression(adjustment, summary) {
+  const text = String(summary ?? "");
+  const rows = [{ level: adjustment.minimumLevel, bonus: adjustment.base }];
+  const candidates = [];
+  if (adjustment.kind === "damageReduction") {
+    const bypass = adjustment.qualifier.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/—/g, "[–—-]");
+    for (const match of text.matchAll(new RegExp(`(?:DR|damage reduction)\\s+(\\d+)\\s*\\/\\s*${bypass}\\s+at (\\d+)(?:st|nd|rd|th)(?: level)?`, "gi")))
+      candidates.push({ level: Number(match[2]), bonus: Number(match[1]) });
+    for (const match of text.matchAll(new RegExp(`(?:^|[.!?]\\s+)At (\\d+)(?:st|nd|rd|th) level[^.]{0,100}?(?:DR|damage reduction)\\s+(\\d+)\\s*\\/\\s*${bypass}`, "gi")))
+      candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
+    const increaseAt = text.match(/damage reduction increases by (\d+)(?: point)? at (\d+)(?:st|nd|rd|th)(?: level)? and every (\d+) levels? thereafter/i);
+    const atAndEvery = text.match(/At (\d+)(?:st|nd|rd|th) level and every (\d+) levels? thereafter,? this damage reduction increases by (\d+)/i);
+    if (increaseAt || atAndEvery) {
+      const first = Number(increaseAt?.[2] ?? atAndEvery[1]);
+      const interval = Number(increaseAt?.[3] ?? atAndEvery[2]);
+      const increment = Number(increaseAt?.[1] ?? atAndEvery[3]);
+      let bonus = adjustment.base;
+      for (let level = first; level <= 20; level += interval) {
+        if (level <= adjustment.minimumLevel) continue;
+        bonus += increment;
+        candidates.push({ level, bonus });
+      }
+    }
+  } else if (adjustment.kind === "energyResistance") {
+    const energy = adjustment.qualifier.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    for (const match of text.matchAll(new RegExp(`(?:increases|improves) to ${energy} resistance (\\d+) at (\\d+)(?:st|nd|rd|th)(?: level)?`, "gi")))
+      candidates.push({ level: Number(match[2]), bonus: Number(match[1]) });
+    for (const match of text.matchAll(new RegExp(`${energy} resistance (\\d+) at (\\d+)(?:st|nd|rd|th)(?: level)?`, "gi")))
+      candidates.push({ level: Number(match[2]), bonus: Number(match[1]) });
+    for (const match of text.matchAll(new RegExp(`At (\\d+)(?:st|nd|rd|th)(?:-level| level)?[^.]{0,80}?(?:(?:this |the )?${energy} resistance|this resistance|it) (?:increases|improves) to (\\d+)`, "gi")))
+      candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
+    for (const match of text.matchAll(new RegExp(`At (\\d+)(?:st|nd|rd|th)(?:-level| level)?[^.]{0,40}?this increases to ${energy} resistance (\\d+)`, "gi")))
+      candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
+  } else if (adjustment.kind === "spellResistance") {
+    for (const match of text.matchAll(/At (\d+)(?:st|nd|rd|th) level[^.]{0,100}?spell resistance increases to (\d+)\s*\+/gi))
+      candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
+  }
+  const unique = [...new Map(candidates
+    .filter((step) => step.level > adjustment.minimumLevel && step.level <= 20 && step.bonus > 0)
+    .map((step) => [step.level, step])).values()].sort((left, right) => left.level - right.level);
+  return unique.length ? { ...adjustment, bonusByLevel: [...rows, ...unique] } : adjustment;
+}
+
+function rulesFromSentence(feature, sentence, summary) {
+  const results = [];
+  const bypassPattern = "(?:adamantine|bludgeoning|chaotic|cold iron|epic|evil|good|lawful|magic|piercing|silver|slashing|[–—-])(?:\\s+(?:and|or)\\s+(?:adamantine|bludgeoning|chaotic|cold iron|epic|evil|good|lawful|magic|piercing|silver|slashing))?";
+  const damageReduction = new RegExp(`\\b(?:gains?|has)\\s+(?:DR|damage reduction)\\s+(\\d+)\\s*\\/\\s*(${bypassPattern})`, "ig");
+  for (const match of sentence.matchAll(damageReduction)) {
+    if (defenseSubjectUnsafe(sentence, match.index)) continue;
+    const qualifier = normalizedBypass(match[2]);
+    if (!qualifier || qualifier.length > 40) continue;
+    const condition = activationCondition(feature, sentence, match.index + match[0].length, summary);
+    results.push(progression({
+      sourceFeatureId: feature.id,
+      kind: "damageReduction",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: Number(match[1]),
+      qualifier,
+      ...(condition ? { condition } : {}),
+    }, summary));
+  }
+
+  const energyResistance = /\b(?:gains?|has)\s+(acid|cold|electricity|fire|sonic) resistance(?: equal to)?\s+(\d+|(?:his|her|their) (?:(?:class|[a-z]+) )?level)\b/ig;
+  for (const match of sentence.matchAll(energyResistance)) {
+    if (defenseSubjectUnsafe(sentence, match.index)) continue;
+    const levelFormula = /level/i.test(match[2]);
+    const condition = activationCondition(feature, sentence, match.index + match[0].length, summary);
+    results.push(progression({
+      sourceFeatureId: feature.id,
+      kind: "energyResistance",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: levelFormula ? 0 : Number(match[2]),
+      ...(levelFormula ? { levelMultiplier: 1 } : {}),
+      qualifier: match[1].toLowerCase(),
+      ...(condition ? { condition } : {}),
+    }, summary));
+  }
+
+  const spellResistance = /\b(?:gains?|has) spell resistance(?: equal to)?\s+(\d+)(?:\s*\+\s*(?:his|her|their|the)?\s*(?:(class|character|[a-z]+) )?level)?\b/ig;
+  for (const match of sentence.matchAll(spellResistance)) {
+    if (defenseSubjectUnsafe(sentence, match.index)) continue;
+    const condition = activationCondition(feature, sentence, match.index + match[0].length, summary);
+    results.push(progression({
+      sourceFeatureId: feature.id,
+      kind: "spellResistance",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: Number(match[1]),
+      ...(match[2] ? { levelMultiplier: 1, ...(match[2].toLowerCase() === "character" ? { usesCharacterLevel: true } : {}) } : {}),
+      qualifier: "spell resistance",
+      ...(condition ? { condition } : {}),
+    }, summary));
+  }
+  const immunity = /\b(?:(?:he|she|they|it) (?:becomes?|is) immune to|(?:he|she|they|it) gains? immunity to|(?:and |becomes? )immunity to)\s*(acid|cold|electricity|fire|sonic)\b/ig;
+  for (const match of sentence.matchAll(immunity)) {
+    if (defenseSubjectUnsafe(sentence, match.index)) continue;
+    const condition = activationCondition(feature, sentence, match.index + match[0].length, summary);
+    results.push({
+      sourceFeatureId: feature.id,
+      kind: "immunity",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: 0,
+      qualifier: match[1].toLowerCase(),
+      ...(condition ? { condition } : {}),
+    });
+  }
+  return results;
+}
+
+const ruleIsEntireFeature = (parsedSentenceIndexes, sentences) => sentences.every((sentence, index) =>
+  parsedSentenceIndexes.has(index) || archetypeReplacementBoilerplate(sentence) ||
+  (!/\d|\b(?:can|gains?|has|resistance|damage reduction|DR|level|action|spell|attack|damage|save|skill|immune)\b/i.test(sentence)),
+);
+
+export function inferredArchetypeDefenseDetails(archetype) {
+  const adjustments = [];
+  const fullyAutomatedFeatureIds = new Set();
+  for (const replacement of archetype?.replacements ?? []) for (const feature of replacement.features ?? []) {
+    const summary = String(feature.summary ?? "");
+    if (/\b(?:one of the following|from the following list|selects? (?:one|an?|from))\b/i.test(summary)) continue;
+    if (/\b[A-Z][A-Za-z' -]{2,50}\s*(?:\((?:Ex|Su|Sp)\))?\s*:\s*[^.]{0,350}\b(?:spell resistance|damage reduction|\bDR\b|resistance)\b/i.test(summary)) continue;
+    const sentences = archetypeRuleSentences(summary);
+    const parsedSentenceIndexes = new Set();
+    for (const [index, sentence] of sentences.entries()) {
+      const rules = rulesFromSentence(feature, sentence, summary);
+      if (rules.length) parsedSentenceIndexes.add(index);
+      adjustments.push(...rules);
+    }
+    const featureAdjustments = adjustments.filter((adjustment) => adjustment.sourceFeatureId === feature.id);
+    const hasUnparsedImmunity = /\b(?:immune|immunity)\b/i.test(summary) && !featureAdjustments.some((adjustment) => adjustment.kind === "immunity");
+    if (parsedSentenceIndexes.size && ruleIsEntireFeature(parsedSentenceIndexes, sentences) && !hasUnparsedImmunity && !/\b(?:spend|expend)[^.]{0,100}\b|\b(?:standard|swift|immediate|move|full-round) action\b|\bonce per (?:day|week)\b|\buntil\b/i.test(summary)) fullyAutomatedFeatureIds.add(feature.id);
+  }
+  const grouped = new Map();
+  for (const adjustment of adjustments) {
+    const key = JSON.stringify([adjustment.sourceFeatureId, adjustment.kind, adjustment.qualifier, adjustment.condition]);
+    const previous = grouped.get(key);
+    if (!previous || adjustment.minimumLevel < previous.minimumLevel || (adjustment.minimumLevel === previous.minimumLevel && (adjustment.bonusByLevel?.length ?? 0) > (previous.bonusByLevel?.length ?? 0))) grouped.set(key, adjustment);
+  }
+  const unique = [...grouped.values()].map((adjustment) => {
+    if (adjustment.kind !== "energyResistance") return adjustment;
+    const immunityLevel = [...grouped.values()].find((row) => row.sourceFeatureId === adjustment.sourceFeatureId && row.kind === "immunity" && row.qualifier === adjustment.qualifier)?.minimumLevel;
+    return immunityLevel && immunityLevel > adjustment.minimumLevel ? { ...adjustment, maximumLevel: immunityLevel - 1 } : adjustment;
+  });
+  return { adjustments: unique, fullyAutomatedFeatureIds };
+}
+
+export const inferArchetypeDefenseAdjustments = (archetype) => inferredArchetypeDefenseDetails(archetype).adjustments;
+
+export function archetypeDefenseAdjustments(archetype) {
+  const explicit = archetype?.defenseAdjustments ?? [];
+  return [...explicit, ...inferArchetypeDefenseAdjustments(archetype).filter((adjustment) =>
+    !explicit.some((row) => row.sourceFeatureId && row.sourceFeatureId === adjustment.sourceFeatureId && row.kind === adjustment.kind && row.qualifier === adjustment.qualifier),
+  )];
+}
+
+const valueAtLevel = (adjustment, classLevel, characterLevel) => adjustment.bonusByLevel
+  ?.filter((step) => step.level <= classLevel)
+  .at(-1)?.bonus ?? adjustment.base + (adjustment.levelMultiplier ?? 0) * (adjustment.usesCharacterLevel ? characterLevel : classLevel);
+
+export function archetypeDefenses(archetypes = [], classLevels = {}) {
+  const characterLevel = Object.values(classLevels).reduce((total, level) => total + Math.max(0, Number(level) || 0), 0);
+  return archetypes.flatMap((archetype) => {
+    const classLevel = Math.max(0, Number(classLevels[archetype.classId]) || 0);
+    return archetypeDefenseAdjustments(archetype)
+      .filter((adjustment) => classLevel >= (adjustment.minimumLevel ?? 1) && classLevel <= (adjustment.maximumLevel ?? 20))
+      .map((adjustment) => ({ ...adjustment, value: valueAtLevel(adjustment, classLevel, characterLevel), source: archetype.name }));
+  });
+}
