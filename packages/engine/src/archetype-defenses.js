@@ -13,7 +13,7 @@ const sentenceLevel = (feature, sentence, matchIndex, matchEnd = matchIndex) => 
 };
 
 const defenseSubjectUnsafe = (sentence, matchIndex) => archetypeUnsafeSubject(sentence, matchIndex) ||
-  /\b(?:armor|construct|covenant ally|homunculus|inscribed item|shield|weapon)\b/i.test(sentence.slice(Math.max(0, matchIndex - 100), matchIndex)) ||
+  /\b(?:armor|construct|covenant ally|homunculus|inscribed item|shield|weapon)\b(?:\s+(?:also|then|it))?\s*$/i.test(sentence.slice(Math.max(0, matchIndex - 100), matchIndex)) ||
   /\b(?:if|unless)\b[^,.;]{0,60}$|\bor\s*$/i.test(sentence.slice(Math.max(0, matchIndex - 70), matchIndex));
 
 function activationCondition(feature, sentence, matchStart, matchEnd, summary) {
@@ -23,9 +23,13 @@ function activationCondition(feature, sentence, matchStart, matchEnd, summary) {
   if (direct && !/^if (?:he|she|they|it) already has\b/i.test(direct)) return direct.replace(/\s+and (?:can|may|catch|return)\b.*$/i, "").trim();
   const withRequirement = sentence.slice(matchEnd).match(/^\s+(with (?:a|an|the|his|her|their) [^,.;]{1,60})/i)?.[1];
   if (withRequirement) return withRequirement.toLowerCase();
+  const againstRequirement = sentence.slice(matchEnd).match(/\b(against (?:her|his|their|the) [^,.;]{1,80})/i)?.[1];
+  if (againstRequirement) return againstRequirement.toLowerCase();
   const only = String(summary).match(/\b(?:This ability|(?:The )?[A-Z][^.]{1,60}) functions? only (while|when|in|within|during)\s+(.+?)(?=[.]|$)/i);
   if (only) return `${only[1].toLowerCase()} ${only[2]}`;
-  if (/\b(?:spend|expend|once per day|for \d+ (?:rounds?|minutes?|hours?)|bloodrag(?:e|ing)|mutagen|polymorph)\b/i.test(sentence) || /\b(?:spend|expend)[^.]{0,100}\b(?:to gain|gains?)\b/i.test(summary))
+  if (/\bas (?:an?|the) (?:standard|move|swift|immediate|free|full-round) action\b/i.test(sentence) && /\b(?:rounds?|minutes?|hours?) per day\b/i.test(summary))
+    return `when ${featureLabel(feature)} is active`;
+  if (/\b(?:spend|expend|once per day|for (?:\d+|a number of) (?:rounds?|minutes?|hours?)|bloodrag(?:e|ing)|mutagen|polymorph)\b/i.test(sentence) || /\b(?:spend|expend)[^.]{0,100}\b(?:to gain|gains?)\b/i.test(summary))
     return `when ${featureLabel(feature)} is active`;
   return undefined;
 }
@@ -65,6 +69,14 @@ function progression(adjustment, summary) {
         candidates.push({ level, bonus });
       }
     }
+    const listedIncreases = text.match(/(?:this )?damage reduction increases by (\d+) at ([^.]+?) levels?\b/i);
+    if (listedIncreases) {
+      let bonus = adjustment.base;
+      for (const levelMatch of listedIncreases[2].matchAll(/\d+/g)) {
+        bonus += Number(listedIncreases[1]);
+        candidates.push({ level: Number(levelMatch[0]), bonus });
+      }
+    }
   } else if (adjustment.kind === "energyResistance") {
     const energy = adjustment.qualifier.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     for (const match of text.matchAll(new RegExp(`(?:increases|improves) to ${energy} resistance (\\d+) at (\\d+)(?:st|nd|rd|th)(?: level)?`, "gi")))
@@ -78,6 +90,15 @@ function progression(adjustment, summary) {
   } else if (adjustment.kind === "spellResistance") {
     for (const match of text.matchAll(/At (\d+)(?:st|nd|rd|th) level[^.]{0,100}?spell resistance increases to (\d+)\s*\+/gi))
       candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
+  } else if (adjustment.kind === "fortification") {
+    for (const match of text.matchAll(/(?:this (?:chance )?)?increases to (\d+)% at (\d+)(?:st|nd|rd|th) level/gi))
+      candidates.push({ level: Number(match[2]), bonus: Number(match[1]) });
+    for (const match of text.matchAll(/At (\d+)(?:st|nd|rd|th) level,? (?:this|the chance) increases to (?:a )?(\d+)%/gi))
+      candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
+    for (const match of text.matchAll(/(?:and )?at (\d+)(?:st|nd|rd|th) level (?:it|this) increases to (?:a )?(\d+)%/gi))
+      candidates.push({ level: Number(match[1]), bonus: Number(match[2]) });
+    for (const match of text.matchAll(/(?:and )?to (\d+)% at (\d+)(?:st|nd|rd|th) level/gi))
+      candidates.push({ level: Number(match[2]), bonus: Number(match[1]) });
   }
   const unique = [...new Map(candidates
     .filter((step) => step.level > adjustment.minimumLevel && step.level <= 20 && step.bonus > 0)
@@ -168,6 +189,64 @@ function rulesFromSentence(feature, sentence, summary) {
       ...(condition ? { condition } : {}),
     });
   }
+  const compactImprovedEvasion = /\b(improved evasion)\s+(with (?:a|an|the) [^,.;]{1,60})/ig;
+  for (const match of sentence.matchAll(compactImprovedEvasion)) {
+    if (defenseSubjectUnsafe(sentence, match.index) || !results.some((row) => row.kind === "evasion")) continue;
+    results.push({
+      sourceFeatureId: feature.id,
+      kind: "improvedEvasion",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: 0,
+      qualifier: "improved evasion",
+      condition: match[2].toLowerCase(),
+    });
+  }
+  const uncannyDodge = /\b(?:gains?|has|receives?)\s+(?:the )?(improved uncanny dodge|uncanny dodge)\b/ig;
+  for (const match of sentence.matchAll(uncannyDodge)) {
+    const prefix = sentence.slice(0, match.index);
+    if (defenseSubjectUnsafe(sentence, match.index) || /\b(?:does not|doesn't|may)\s*$/i.test(prefix.slice(-16)) || (/^improved/i.test(match[1]) && /\bif\b[^.;]{0,160}\balready (?:has|possesses)\b/i.test(prefix))) continue;
+    const condition = activationCondition(feature, sentence, match.index, match.index + match[0].length, summary);
+    results.push({
+      sourceFeatureId: feature.id,
+      kind: /^improved/i.test(match[1]) ? "improvedUncannyDodge" : "uncannyDodge",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: 0,
+      qualifier: match[1].toLowerCase(),
+      ...(condition ? { condition } : {}),
+    });
+  }
+  const fortification = /\b(?:gains?|has)\s+(?:a )?(\d+)% chance to negate (?:(?:the )?extra damage from )?(critical hits?(?: and (?:sneak attacks?|precision damage))?)/ig;
+  for (const match of sentence.matchAll(fortification)) {
+    if (defenseSubjectUnsafe(sentence, match.index)) continue;
+    const condition = activationCondition(feature, sentence, match.index, match.index + match[0].length, summary);
+    results.push(progression({
+      sourceFeatureId: feature.id,
+      kind: "fortification",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: Number(match[1]),
+      qualifier: match[2].toLowerCase(),
+      ...(condition ? { condition } : {}),
+    }, summary));
+  }
+  if (/uncanny dodge/i.test(feature.name ?? "") && /\bcannot be caught flat-footed\b[^.]{0,160}\b(?:nor does (?:he|she|the [a-z]+)|(?:he|she|the [a-z]+) does not|(?:he|she|the [a-z]+) doesn't) lose (?:his|her|their) Dexterity bonus to AC\b/i.test(sentence)) results.push({
+    sourceFeatureId: feature.id,
+    kind: "uncannyDodge",
+    label: featureLabel(feature),
+    minimumLevel: Number(feature.level ?? 1),
+    base: 0,
+    qualifier: "uncanny dodge",
+  });
+  if (/improved uncanny dodge/i.test(feature.name ?? "") && /\bcan no longer be flanked\b/i.test(sentence)) results.push({
+    sourceFeatureId: feature.id,
+    kind: "improvedUncannyDodge",
+    label: featureLabel(feature),
+    minimumLevel: Number(feature.level ?? 1),
+    base: 0,
+    qualifier: "improved uncanny dodge",
+  });
   return results;
 }
 
@@ -197,6 +276,10 @@ export function inferredArchetypeDefenseDetails(archetype) {
   }
   for (const adjustment of adjustments.filter((row) => row.kind === "improvedEvasion" && !row.condition)) {
     const basic = adjustments.find((row) => row.sourceFeatureId === adjustment.sourceFeatureId && row.kind === "evasion" && row.condition);
+    if (basic) adjustment.condition = basic.condition;
+  }
+  for (const adjustment of adjustments.filter((row) => row.kind === "improvedUncannyDodge" && !row.condition)) {
+    const basic = adjustments.find((row) => row.sourceFeatureId === adjustment.sourceFeatureId && row.kind === "uncannyDodge" && row.condition);
     if (basic) adjustment.condition = basic.condition;
   }
   const grouped = new Map();
@@ -234,5 +317,8 @@ export function archetypeDefenses(archetypes = [], classLevels = {}) {
       .filter((adjustment) => classLevel >= (adjustment.minimumLevel ?? 1) && classLevel <= (adjustment.maximumLevel ?? 20))
       .map((adjustment) => ({ ...adjustment, value: valueAtLevel(adjustment, classLevel, characterLevel), source: archetype.name }));
   });
-  return defenses.filter((defense) => defense.kind !== "evasion" || !defenses.some((other) => other.kind === "improvedEvasion" && other.source === defense.source && (!other.condition || other.condition === defense.condition)));
+  return defenses.filter((defense) =>
+    (defense.kind !== "evasion" || !defenses.some((other) => other.kind === "improvedEvasion" && other.source === defense.source && (!other.condition || other.condition === defense.condition))) &&
+    (defense.kind !== "uncannyDodge" || !defenses.some((other) => other.kind === "improvedUncannyDodge" && other.source === defense.source && (!other.condition || other.condition === defense.condition))),
+  );
 }

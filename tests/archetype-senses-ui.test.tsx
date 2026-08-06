@@ -110,3 +110,30 @@ test("conditional immunity appears with its activation requirement", async () =>
   assert.ok(within(defenses).getByText("Immune to fear effects"));
   assert.match(defenses.textContent ?? "", /while in rage/i);
 });
+
+test("improved uncanny dodge replaces uncanny dodge in live statistics", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "fighter");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "7" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "fighter-sensate");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
+  assert.ok(defenses);
+  assert.ok(within(defenses).getByText("Improved uncanny dodge"));
+  assert.equal(within(defenses).queryByText("Uncanny dodge"), null);
+});
+
+test("fortification displays its current level milestone", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "witch");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "10" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "witch-putrefactor");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
+  assert.ok(defenses);
+  assert.ok(within(defenses).getByText("Fortification 50% (critical hits and sneak attacks)"));
+});
