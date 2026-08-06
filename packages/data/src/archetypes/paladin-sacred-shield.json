@@ -4,6 +4,7 @@
   "classId": "paladin",
   "summary": "When faced by evil, the sacred shield reaches first not for a weapon, but for her trusty shield. With her faith, she can ward others from harm.",
   "replacesText": "Smite Evil; Channel Positive Energy; Divine Bond; Aura of Justice; Holy Champion",
+  "defenseAdjustments": [{"sourceFeatureId":"paladin-sacred-shield-perfect-bastion-20","kind":"regeneration","label":"Perfect Bastion","minimumLevel":20,"base":10,"qualifier":"regeneration","condition":"against damage caused by the active Bastion of Good target","partialFeature":true}],
   "replacements": [
     {
       "featureIds": [

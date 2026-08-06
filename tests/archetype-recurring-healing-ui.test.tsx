@@ -56,7 +56,7 @@ test("conditional archetype fast healing activates, heals each round, and deacti
   await user.click(screen.getByRole("button", { name: "Activate Blood of Life" }));
   await user.click(screen.getByRole("button", { name: "Next round" }));
   assert.equal((screen.getByLabelText("Current HP") as HTMLInputElement).value, "5");
-  assert.equal(screen.getByRole("status").textContent, "Recurring healing restored 2 hit points.");
+  assert.equal(screen.getByRole("status").textContent, "Fast healing restored 2 hit points.");
   await user.click(screen.getByRole("button", { name: "Deactivate Blood of Life" }));
   await user.click(screen.getByRole("button", { name: "Next round" }));
   assert.equal((screen.getByLabelText("Current HP") as HTMLInputElement).value, "5");
@@ -94,4 +94,63 @@ test("selected archetype exposes its current fast-healing progression in live co
   await user.click(screen.getByRole("button", { name: "Activate Blood of Life" }));
   await user.click(screen.getByRole("button", { name: "Next round" }));
   assert.equal((screen.getByLabelText("Current HP") as HTMLInputElement).value, "3");
+});
+
+function RegenerationHarness() {
+  const [hitPoints, setHitPoints] = useState(10);
+  const [nonlethalDamage, setNonlethalDamage] = useState(0);
+  const [effects, setEffects] = useState<ActiveEffect[]>([]);
+  return <ActivePlayPanel
+    maximumHitPoints={10}
+    currentHitPoints={hitPoints}
+    temporaryHitPoints={0}
+    nonlethalDamage={nonlethalDamage}
+    attacks={[]}
+    checks={[]}
+    skills={[]}
+    effects={effects}
+    recurringHealing={[{
+      id: "perfect-bastion",
+      kind: "regeneration",
+      label: "Perfect Bastion",
+      value: 10,
+      condition: "against damage caused by the active Bastion of Good target",
+      source: "Sacred Shield",
+    }]}
+    onCurrentHitPointsChange={setHitPoints}
+    onTemporaryHitPointsChange={() => {}}
+    onNonlethalDamageChange={setNonlethalDamage}
+    onEffectsChange={setEffects}
+  />;
+}
+
+test("regeneration converts damage, removes nonlethal damage, and respects bypass damage", async () => {
+  const user = userEvent.setup();
+  render(<RegenerationHarness />);
+  await user.click(screen.getByRole("button", { name: "Activate Perfect Bastion" }));
+  fireEvent.change(screen.getByLabelText("Hit point adjustment"), { target: { value: "10" } });
+  await user.click(screen.getByRole("button", { name: "Take 10 damage" }));
+  assert.equal((screen.getByLabelText("Current HP") as HTMLInputElement).value, "10");
+  assert.equal((screen.getByLabelText("Nonlethal damage") as HTMLInputElement).value, "10");
+  assert.ok(screen.getByRole("alert").textContent?.includes("unconscious"));
+  await user.click(screen.getByRole("button", { name: "Next round" }));
+  assert.equal((screen.getByLabelText("Nonlethal damage") as HTMLInputElement).value, "0");
+  assert.equal(screen.getByRole("status").textContent, "Regeneration removed 10 nonlethal damage.");
+  await user.click(screen.getByLabelText("Damage bypasses regeneration"));
+  fireEvent.change(screen.getByLabelText("Hit point adjustment"), { target: { value: "4" } });
+  await user.click(screen.getByRole("button", { name: "Take 4 damage" }));
+  assert.equal((screen.getByLabelText("Current HP") as HTMLInputElement).value, "6");
+  assert.equal((screen.getByLabelText("Nonlethal damage") as HTMLInputElement).value, "0");
+});
+
+test("Sacred Shield exposes Perfect Bastion regeneration in the live character path", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "paladin");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "20" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "paladin-sacred-shield");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+  assert.equal(screen.getAllByText("Regeneration 10").length, 2);
+  assert.ok(screen.getAllByText(/active Bastion of Good target/i).length >= 1);
+  assert.ok(screen.getByRole("button", { name: "Activate Perfect Bastion" }));
 });

@@ -988,6 +988,10 @@ export function normalizeCharacterDraft(
       draft.temporaryHitPoints >= 0
         ? Math.min(9999, draft.temporaryHitPoints)
         : 0,
+    nonlethalDamage:
+      Number.isInteger(draft.nonlethalDamage) && draft.nonlethalDamage >= 0
+        ? Math.min(9999, draft.nonlethalDamage)
+        : 0,
     activeEffects: Array.isArray(draft.activeEffects)
       ? draft.activeEffects
           .filter(
@@ -1031,6 +1035,9 @@ export function normalizeCharacterDraft(
                 ((Number.isInteger(effect.fastHealing) &&
                   effect.fastHealing > 0 &&
                   effect.fastHealing <= 20) ||
+                  (Number.isInteger(effect.regeneration) &&
+                    effect.regeneration > 0 &&
+                    effect.regeneration <= 20) ||
                   (typeof effect.description === "string" && effect.description.trim()))) &&
               (!["self", "area", "enemy", "allies"].includes(effect.target) ||
                 (typeof effect.description === "string" &&
@@ -1052,6 +1059,11 @@ export function normalizeCharacterDraft(
             effect.fastHealing > 0 &&
             effect.fastHealing <= 20
               ? { fastHealing: effect.fastHealing }
+              : {}),
+            ...(Number.isInteger(effect.regeneration) &&
+            effect.regeneration > 0 &&
+            effect.regeneration <= 20
+              ? { regeneration: effect.regeneration }
               : {}),
             ...(Array.isArray(effect.weaponIds)
               ? { weaponIds: [...new Set(effect.weaponIds.filter((id) => typeof id === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)))].slice(0, 10) }

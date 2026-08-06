@@ -308,6 +308,20 @@ function rulesFromSentence(feature, sentence, summary) {
       ...(condition ? { condition } : {}),
     }, summary));
   }
+  const regeneration = /\b(?:can\s+)?(?:gains?|has)\s+regeneration\s+(\d+)\b/ig;
+  for (const match of sentence.matchAll(regeneration)) {
+    if (defenseSubjectUnsafe(sentence, match.index)) continue;
+    const condition = activationCondition(feature, sentence, match.index, match.index + match[0].length, summary);
+    results.push({
+      sourceFeatureId: feature.id,
+      kind: "regeneration",
+      label: featureLabel(feature),
+      minimumLevel: sentenceLevel(feature, sentence, match.index, match.index + match[0].length),
+      base: Number(match[1]),
+      qualifier: "regeneration",
+      ...(condition ? { condition } : {}),
+    });
+  }
   if (/uncanny dodge/i.test(feature.name ?? "") && /\bcannot be caught flat-footed\b[^.]{0,160}\b(?:nor does (?:he|she|the [a-z]+)|(?:he|she|the [a-z]+) does not|(?:he|she|the [a-z]+) doesn't) lose (?:his|her|their) Dexterity bonus to AC\b/i.test(sentence)) results.push({
     sourceFeatureId: feature.id,
     kind: "uncannyDodge",
@@ -371,7 +385,7 @@ export function inferredArchetypeDefenseDetails(archetype) {
   for (const adjustment of adjustments) {
     const key = JSON.stringify([adjustment.sourceFeatureId, adjustment.kind, adjustment.qualifier, adjustment.condition]);
     const previous = grouped.get(key);
-    if (previous && ["concealment", "fastHealing"].includes(adjustment.kind) && adjustment.minimumLevel !== previous.minimumLevel) {
+    if (previous && ["concealment", "fastHealing", "regeneration"].includes(adjustment.kind) && adjustment.minimumLevel !== previous.minimumLevel) {
       const steps = [...(previous.bonusByLevel ?? [{ level: previous.minimumLevel, bonus: previous.base }]), { level: adjustment.minimumLevel, bonus: adjustment.base }]
         .sort((left, right) => left.level - right.level);
       grouped.set(key, { ...previous, minimumLevel: steps[0].level, base: steps[0].bonus, bonusByLevel: [...new Map(steps.map((step) => [step.level, step])).values()] });
