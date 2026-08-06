@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 
@@ -204,6 +204,40 @@ test("sense inference remains player-owned, normalized, and bounded across the c
       signatures.add(signature);
     }
     if (archetype.mechanicalCoverage === "full") assert.equal(archetypeSenseAdjustments(archetype).length, 0, `${archetype.id} does not duplicate curated full automation`);
+  }
+});
+
+test("archetype land-speed inference applies permanent progression and preserves conditional rules", () => {
+  const flamesinger = catalogueArchetypes.find((archetype) => archetype.id === "bard-flamesinger");
+  const turfer = catalogueArchetypes.find((archetype) => archetype.id === "brawler-turfer");
+  const nagaAspirant = catalogueArchetypes.find((archetype) => archetype.id === "druid-naga-aspirant");
+  assert.ok(flamesinger && turfer && nagaAspirant);
+  assert.equal(characterLandSpeed(30, "none", "light", [flamesinger], { bard: 1 }).speed, 30);
+  assert.equal(characterLandSpeed(30, "none", "light", [flamesinger], { bard: 2 }).speed, 35);
+  assert.equal(characterLandSpeed(30, "none", "light", [flamesinger], { bard: 18 }).speed, 55);
+  assert.equal(characterLandSpeed(30, "none", "light", [turfer], { brawler: 16 }).speed, 30);
+  assert.equal(archetypeConditionalModifiers([turfer], { brawler: 16 }).find((modifier) => modifier.label === "Land speed")?.bonus, 30);
+  assert.match(archetypeLandSpeedAdjustments(nagaAspirant)[0]?.condition ?? "", /naga form/i);
+  assert.equal(characterLandSpeed(30, "none", "light", [nagaAspirant], { druid: 20 }).speed, 30);
+});
+
+test("typed movement bonuses stack correctly and movement inference stays normalized", () => {
+  const fixture = (bonusType) => ({ name: bonusType ?? "Untyped", classId: "fighter", mechanicalCoverage: "full", landSpeedAdjustments: [{ label: "Speed", bonus: 10, ...(bonusType ? { bonusType } : {}), timing: "beforeReduction" }] });
+  assert.equal(characterLandSpeed(30, "none", "light", [fixture("enhancement"), fixture("enhancement")], { fighter: 1 }).speed, 40);
+  assert.equal(characterLandSpeed(30, "none", "light", [fixture("enhancement"), fixture("insight")], { fighter: 1 }).speed, 50);
+  assert.equal(characterLandSpeed(30, "none", "light", [fixture(), fixture()], { fighter: 1 }).speed, 50);
+  for (const archetype of catalogueArchetypes) {
+    const inferred = inferArchetypeLandSpeedAdjustments(archetype);
+    assert.equal(new Set(inferred.map((adjustment) => JSON.stringify(adjustment))).size, inferred.length, `${archetype.id} has duplicate inferred movement rows`);
+    for (const adjustment of inferred) {
+      assert.ok(adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20 && Number.isInteger(adjustment.bonus) && adjustment.bonus > 0, `${archetype.id} has bounded movement values`);
+      assert.ok((adjustment.condition?.length ?? 0) <= 250, `${archetype.id} has a readable movement condition`);
+      const levels = adjustment.bonusByLevel?.map((step) => step.level) ?? [];
+      assert.equal(new Set(levels).size, levels.length, `${archetype.id} has unique movement milestones`);
+      assert.ok(levels.every((level, index) => level >= adjustment.minimumLevel && level <= 20 && (!index || level > levels[index - 1])), `${archetype.id} has ordered movement milestones`);
+      assert.doesNotMatch(adjustment.sourceFeatureId, /companion|familiar|eidolon|mount/, `${archetype.id} excludes subordinate creature movement`);
+    }
+    if (archetype.mechanicalCoverage === "full") assert.deepEqual(archetypeLandSpeedAdjustments(archetype), archetype.landSpeedAdjustments ?? [], `${archetype.id} does not mix inference into full automation`);
   }
 });
 

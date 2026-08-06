@@ -44,8 +44,10 @@ test("conditional inferred senses retain their activation requirement", async ()
   await user.selectOptions(screen.getByLabelText("Archetype"), "brawler-mutagenic-mauler");
   await user.click(screen.getByRole("tab", { name: "Actions" }));
 
-  assert.ok(screen.getByText("Low-light vision"));
-  assert.ok(screen.getByText("Darkvision 30 ft."));
-  assert.ok(screen.getByText("Scent 30 ft."));
-  assert.equal(screen.getAllByText(/when using her mutagen · Mutagenic Mauler/i).length, 3);
+  const senses = screen.getByRole("heading", { name: "Special senses" }).closest("section");
+  assert.ok(senses);
+  assert.ok(within(senses).getByText("Low-light vision"));
+  assert.ok(within(senses).getByText("Darkvision 30 ft."));
+  assert.ok(within(senses).getByText("Scent 30 ft."));
+  assert.equal(within(senses).getAllByText(/when using her mutagen .* Mutagenic Mauler/i).length, 3);
 });
