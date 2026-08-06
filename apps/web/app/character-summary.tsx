@@ -8,7 +8,7 @@ export function CombatPanel({ combat, landSpeed, senses = [], defenses = [], mod
   combat: CombatStats;
   landSpeed: { speed: number; baseSpeed: number; armorCategory: string; load: string; adjustments: Array<{ label: string; bonus: number; source: string }> };
   senses?: Array<{ sense: string; label: string; operation: "grant" | "increase"; range?: number; condition?: string; source: string }>;
-  defenses?: Array<{ kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity"; value: number; qualifier: string; condition?: string; source: string }>;
+  defenses?: Array<{ kind: "damageReduction" | "energyResistance" | "spellResistance" | "immunity" | "evasion" | "improvedEvasion"; value: number; qualifier: string; condition?: string; source: string }>;
   modifierSources?: MechanicalBonusSource[];
   conditionalModifiers?: Array<{ label: string; bonus?: number; condition: string; source: string }>;
 }) {
@@ -33,7 +33,7 @@ export function CombatPanel({ combat, landSpeed, senses = [], defenses = [], mod
     {defenses.length > 0 && <section className="conditional-modifiers" aria-labelledby="character-defenses-title">
       <h3 id="character-defenses-title">Special defenses</h3>
       <ul>{defenses.map((defense, index) => <li key={`${defense.source}-${defense.kind}-${defense.qualifier}-${index}`}>
-        <strong>{defense.kind === "damageReduction" ? `DR ${defense.value}/${defense.qualifier}` : defense.kind === "energyResistance" ? `${defense.qualifier[0].toUpperCase()}${defense.qualifier.slice(1)} resistance ${defense.value}` : defense.kind === "immunity" ? `Immune to ${defense.qualifier}` : `Spell resistance ${defense.value}`}</strong>
+        <strong>{defense.kind === "damageReduction" ? `DR ${defense.value}/${defense.qualifier}` : defense.kind === "energyResistance" ? `${defense.qualifier[0].toUpperCase()}${defense.qualifier.slice(1)} resistance ${defense.value}` : defense.kind === "immunity" ? `Immune to ${defense.qualifier}` : defense.kind === "evasion" ? "Evasion" : defense.kind === "improvedEvasion" ? "Improved evasion" : `Spell resistance ${defense.value}`}</strong>
         <span>{defense.condition ? `${defense.condition} Â· ` : ""}{defense.source}</span>
       </li>)}</ul>
     </section>}

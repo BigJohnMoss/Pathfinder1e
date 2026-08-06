@@ -4,6 +4,16 @@
   "classId": "druid",
   "summary": "Supernaturalists wholly embrace paranormal phenomena as extensions of nature.",
   "replacesText": "Weapon/Armor Proficiencies; Nature Bond; Wild Empathy; Nature Sense; Trackless Step; Resist Nature’s Lure; Wild Shape",
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "druid-supernaturalist-animal-spirit-su-4",
+      "kind": "immunity",
+      "label": "Wild Heart",
+      "minimumLevel": 20,
+      "base": 0,
+      "qualifier": "effects that affect only humanoids"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [

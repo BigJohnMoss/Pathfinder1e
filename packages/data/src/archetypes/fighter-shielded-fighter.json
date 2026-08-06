@@ -3,6 +3,17 @@
   "name": "Shielded Fighter",
   "classId": "fighter",
   "summary": "A shield specialist who blends offense and defense, shares protection, controls flanking lanes, and masters shield resilience.",
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "shielded-shield-ward-20",
+      "kind": "evasion",
+      "label": "Shield Ward",
+      "minimumLevel": 20,
+      "base": 0,
+      "qualifier": "evasion",
+      "condition": "while wielding a shield"
+    }
+  ],
   "replacements": [
     {
       "progressionKeys": [

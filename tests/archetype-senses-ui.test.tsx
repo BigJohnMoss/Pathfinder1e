@@ -82,3 +82,31 @@ test("conditional spell resistance retains its published trigger", async () => {
   assert.ok(within(defenses).getByText("Spell resistance 30"));
   assert.match(defenses.textContent ?? "", /favored terrains/i);
 });
+
+test("improved evasion replaces evasion in live character statistics", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "bard");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "12" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "bard-juggler");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
+  assert.ok(defenses);
+  assert.ok(within(defenses).getByText("Improved evasion"));
+  assert.equal(within(defenses).queryByText("Evasion"), null);
+});
+
+test("conditional immunity appears with its activation requirement", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "barbarian");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "14" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "barbarian-dreadnought");
+  await user.click(screen.getByRole("tab", { name: "Actions" }));
+
+  const defenses = screen.getByRole("heading", { name: "Special defenses" }).closest("section");
+  assert.ok(defenses);
+  assert.ok(within(defenses).getByText("Immune to fear effects"));
+  assert.match(defenses.textContent ?? "", /while in rage/i);
+});
