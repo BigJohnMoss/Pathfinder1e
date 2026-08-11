@@ -51,3 +51,14 @@ test("trained-only deterministic checks remain unavailable without a skill rank"
   assert.equal((screen.getByRole("button", { name: "Take 10" }) as HTMLButtonElement).disabled, true);
   assert.match(screen.getByLabelText("Archetype skill check options").textContent ?? "", /requires at least 1 rank/);
 });
+
+test("timed skill bonuses apply only to their selected skill", async () => {
+  const user = userEvent.setup();
+  render(<ActivePlayPanel maximumHitPoints={10} currentHitPoints={10} temporaryHitPoints={0} attacks={[]} checks={[]} skills={[{ id: "Perception", name: "Perception", modifier: 2 }, { id: "Stealth", name: "Stealth", modifier: 4 }]} effects={[{ id: "augmentation", name: "Arcane Augmentation", target: "skillChecks", bonus: 5, roundsRemaining: 10, skillIds: ["Stealth"] }]} onCurrentHitPointsChange={() => {}} onTemporaryHitPointsChange={() => {}} onEffectsChange={() => {}} />);
+  await user.selectOptions(screen.getByLabelText("Skill to roll"), "Perception");
+  await user.click(screen.getByRole("button", { name: "Roll selected skill" }));
+  assert.match(screen.getByLabelText("Perception total").closest("li")?.textContent ?? "", /1d20 \+ 2/);
+  await user.selectOptions(screen.getByLabelText("Skill to roll"), "Stealth");
+  await user.click(screen.getByRole("button", { name: "Roll selected skill" }));
+  assert.match(screen.getByLabelText("Stealth total").closest("li")?.textContent ?? "", /1d20 \+ 9/);
+});

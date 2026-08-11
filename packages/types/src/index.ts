@@ -125,6 +125,7 @@ export interface ActiveEffect {
   fastHealing?: number;
   regeneration?: number;
   weaponIds?: string[];
+  skillIds?: string[];
   damageType?: string;
   temporaryHitPointsGranted?: number;
   consumeOnUse?: boolean;
@@ -278,6 +279,7 @@ export interface ClassFeatureOccurrence {
       usesSelectedModeAsDamageType?: boolean;
       applyToAllTargets?: boolean;
       replaceExisting?: boolean;
+      skillOptions?: string[];
     };
     labelsByUseCount?: string[];
     summary?: string;

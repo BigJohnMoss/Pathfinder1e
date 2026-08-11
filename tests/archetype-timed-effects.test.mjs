@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, applyArchetypeResourceAdjustments, apgClassResourceMaximums, inferArchetypeTimedEffectActions } from "../packages/engine/src/index.js";
+import { applyArchetype, applyArchetypeResourceAdjustments, apgClassResourceMaximums, inferArchetypeTimedEffectActions, normalizeCharacterDraft } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 
@@ -27,9 +27,19 @@ test("timed archetype effects spend shared resources and preserve exact scaling"
   assert.equal(sacredFist.activeEffect.defaultRounds, 10);
 });
 
-test("timed effect inference rejects conditional and skill-choice approximations", () => {
+test("timed effect inference rejects conditional approximations and preserves skill choices", () => {
   assert.deepEqual(inferArchetypeTimedEffectActions(archetype("magus-spell-dancer")), []);
-  assert.deepEqual(inferArchetypeTimedEffectActions(archetype("magus-spire-defender")), []);
+  const augmentation = inferArchetypeTimedEffectActions(archetype("magus-spire-defender"))[0].action;
+  assert.deepEqual(augmentation.activeEffect.skillOptions, ["Acrobatics", "Climb", "Escape Artist", "Perception", "Stealth", "Swim"]);
+  assert.deepEqual(augmentation.activeEffect.bonusByLevel, [
+    { level: 4, bonus: 5 }, { level: 7, bonus: 6 }, { level: 10, bonus: 7 }, { level: 13, bonus: 8 }, { level: 16, bonus: 9 }, { level: 19, bonus: 10 },
+  ]);
+  const splendor = inferArchetypeTimedEffectActions(archetype("occultist-battle-host"))[0].action;
+  assert.deepEqual(splendor.activeEffect.targets, ["strength", "dexterity", "constitution"]);
+  assert.equal(splendor.resourceId, "archetype-occultist-battle-host-heroic-splendor-su-6");
+  const insight = inferArchetypeTimedEffectActions(archetype("oracle-shigenjo"))[0].action;
+  assert.deepEqual(insight.activeEffect.skillOptions, ["Spellcraft"]);
+  assert.deepEqual(inferArchetypeTimedEffectActions(archetype("paladin-holy-tactician")), []);
 });
 
 test("applied archetypes expose timed effects without duplicate generic actions", () => {
@@ -47,7 +57,7 @@ test("monk and Sacred Fist ki pools use bounded class-level formulas", () => {
 
 test("timed effect parser remains narrowly bounded across the catalogue", () => {
   const actions = archetypes.flatMap((item) => inferArchetypeTimedEffectActions(item));
-  assert.equal(actions.length, 4);
+  assert.equal(actions.length, 7);
   assert.equal(new Set(actions.map(({ action }) => action.id)).size, actions.length);
   for (const { action } of actions) {
     assert.ok(action.cost >= 1);
@@ -55,4 +65,13 @@ test("timed effect parser remains narrowly bounded across the catalogue", () => 
     assert.ok(action.activeEffect.targets.length >= 1);
     assert.ok(action.activeEffect.defaultRounds >= 1);
   }
+});
+
+test("selected skill effects survive bounded character normalization", () => {
+  const normalized = normalizeCharacterDraft({
+    classId: "magus", level: 4, classLevels: [{ classId: "magus", level: 4 }],
+    baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 14, wisdom: 10, charisma: 10 },
+    activeEffects: [{ id: "augmentation", name: "Arcane Augmentation", target: "skillChecks", bonus: 5, roundsRemaining: 10, skillIds: ["Stealth", "<invalid>"] }],
+  }, { classIds: ["magus"] });
+  assert.deepEqual(normalized.activeEffects[0].skillIds, ["Stealth"]);
 });

@@ -20,16 +20,17 @@ function parseFormula(raw, minimumLevel) {
   const ability = abilityNames.find(name => new RegExp(`${name} (?:modifier|bonus)`, "i").test(text));
   const abilityMultiplier = ability && new RegExp(`(?:twice|double) (?:the )?${ability} (?:modifier|bonus)`, "i").test(text) ? 2 : 1;
   const constant = Number(text.match(/(?:^|\+)\s*(\d+)\s*(?:\+|$)/)?.[1] ?? 0);
-  const hasHalfLevel = /(?:1\s*\/\s*2|half) (?:class )?level/i.test(text);
+  const fractionalLevelDivisor = Number(text.match(/1\s*\/\s*(\d+) (?:class )?level/i)?.[1] ?? (/half (?:class )?level/i.test(text) ? 2 : 0));
   const hasDoubleLevel = /(?:twice|double) (?:class )?level/i.test(text);
-  const hasLevel = !hasHalfLevel && !hasDoubleLevel && /(?:class )?level/i.test(text);
-  if (!ability && !hasHalfLevel && !hasDoubleLevel && !hasLevel && !Number.isFinite(constant)) return undefined;
-  if (!ability && !hasHalfLevel && !hasDoubleLevel && !hasLevel && constant === 0) return undefined;
+  const hasFractionalLevel = fractionalLevelDivisor >= 2;
+  const hasLevel = !hasFractionalLevel && !hasDoubleLevel && /(?:class )?level/i.test(text);
+  if (!ability && !hasFractionalLevel && !hasDoubleLevel && !hasLevel && !Number.isFinite(constant)) return undefined;
+  if (!ability && !hasFractionalLevel && !hasDoubleLevel && !hasLevel && constant === 0) return undefined;
   return {
     base: constant,
     ...(ability ? { abilityModifier: ability } : {}),
     ...(abilityMultiplier > 1 ? { abilityMultiplier } : {}),
-    ...(hasHalfLevel ? { levelDivisor: 2 } : {}),
+    ...(hasFractionalLevel ? { levelDivisor: fractionalLevelDivisor } : {}),
     ...(hasDoubleLevel ? { levelMultiplier: 2 } : {}),
     ...(hasLevel ? { levelMultiplier: 1 } : {}),
     minimum: /minimum (?:of )?1|minimum 1/i.test(raw) ? 1 : 0,
