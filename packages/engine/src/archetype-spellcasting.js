@@ -6,6 +6,10 @@ const spellcastingRule = new RegExp(
 );
 
 const normalizedAbility = (value) => String(value ?? "").toLowerCase();
+const normalizedClassId = (value) => String(value ?? "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+const progressionRule = /\b(?:same number of spell slots per day|same number of spells known and spells per day) as (?:an?|the) ([a-z][a-z -]+?)(?:\s*\([^)]*\))? of (?:his|her|their|its|the) [^.]*?level\b/i;
+const spellListRule = /\b(?:casts?(?: arcane| divine| psychic)? spells (?:(?:spontaneously|drawn) )?from|prepares? spells from) the ([a-z][a-z -]+?) spell list\b/i;
 
 function explicitlyChangesSpellcasting(trailingText) {
   return /\bkey spellcasting ability(?: score)?\b/i.test(trailingText)
@@ -15,18 +19,41 @@ function explicitlyChangesSpellcasting(trailingText) {
 }
 
 export function inferredArchetypeSpellcastingAbilityDetails(archetype) {
+  let details;
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
-    const match = String(feature.summary ?? "").replace(/\s+/g, " ").match(spellcastingRule);
-    if (!match || !explicitlyChangesSpellcasting(match[3])) continue;
-    return {
+    const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
+    const match = summary.match(spellcastingRule);
+    if (match && explicitlyChangesSpellcasting(match[3])) details = {
+      ...details,
       ability: normalizedAbility(match[1]),
       replacesAbility: normalizedAbility(match[2]),
       sourceFeatureId: feature.id,
     };
+    const progression = summary.match(progressionRule);
+    const spellList = summary.match(spellListRule);
+    if (progression || spellList) details = {
+      ...details,
+      ...(progression ? {
+        progressionClassId: normalizedClassId(progression[1]),
+        minimumLevel: feature.level,
+      } : {}),
+      ...(spellList ? { spellListClassId: normalizedClassId(spellList[1]) } : {}),
+      sourceFeatureId: feature.id,
+    };
   }
-  return undefined;
+  return details;
 }
 
 export function inferArchetypeSpellcastingAbility(archetype) {
   return inferredArchetypeSpellcastingAbilityDetails(archetype)?.ability;
+}
+
+export function inferArchetypeSpellcastingProgression(archetype) {
+  const details = inferredArchetypeSpellcastingAbilityDetails(archetype);
+  if (!details?.progressionClassId) return undefined;
+  return {
+    classId: details.progressionClassId,
+    minimumLevel: details.minimumLevel ?? 1,
+    ...(details.spellListClassId ? { spellListClassId: details.spellListClassId } : {}),
+  };
 }

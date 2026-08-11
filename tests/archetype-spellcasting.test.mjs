@@ -2,7 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, archetypeAutomationSummary, inferArchetypeSpellcastingAbility, spellcastingProgression } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary, inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, spellcastingProgression } from "../packages/engine/src/index.js";
+import { spontaneousSpellcastingProgression } from "../packages/engine/src/spontaneous-spellcasting.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const characterClass = (id) => data.classes.find((item) => item.id === id);
@@ -46,5 +47,68 @@ test("the spellcasting substitution parser remains narrowly bounded across the c
     "inquisitor-living-grimoire",
     "paladin-tortured-crusader",
     "ranger-dandy",
+  ]);
+});
+
+test("Living Grimoire uses Warpriest prepared slots with the Inquisitor list", () => {
+  const selected = archetype("inquisitor-living-grimoire");
+  assert.deepEqual(inferArchetypeSpellcastingProgression(selected), { classId: "warpriest", minimumLevel: 1 });
+  const applied = applyArchetype(characterClass("inquisitor"), selected, data.classes);
+  const progression = spellcastingProgression(applied, 8, { abilityScore: 18 });
+  const warpriest = spellcastingProgression(characterClass("warpriest"), 8, { abilityScore: 18 });
+  assert.equal(applied.spellcasting?.ability, "intelligence");
+  assert.equal(applied.spellcasting?.castingType, "prepared");
+  assert.equal(applied.spellcasting?.preparesFromSlots, true);
+  assert.deepEqual(progression?.slots, warpriest?.slots);
+  assert.equal(applied.spellListClassId, undefined);
+});
+
+test("Dandy uses gated Medium spontaneous progression with the Bard list", () => {
+  const selected = archetype("ranger-dandy");
+  assert.deepEqual(inferArchetypeSpellcastingProgression(selected), { classId: "medium", minimumLevel: 4, spellListClassId: "bard" });
+  const applied = applyArchetype(characterClass("ranger"), selected, data.classes);
+  assert.equal(applied.spellcasting?.ability, "charisma");
+  assert.equal(applied.spellcasting?.castingType, "spontaneous");
+  assert.equal(applied.spellListClassId, "bard");
+  assert.deepEqual(spontaneousSpellcastingProgression(applied, 3, { abilityScore: 18 })?.slots, []);
+  assert.deepEqual(
+    spontaneousSpellcastingProgression(applied, 4, { abilityScore: 18 })?.slots,
+    spontaneousSpellcastingProgression(characterClass("medium"), 4, { abilityScore: 18 })?.slots,
+  );
+});
+
+test("Questioner uses gated Bard progression and list while retaining Intelligence casting", () => {
+  const selected = archetype("investigator-questioner");
+  assert.deepEqual(inferArchetypeSpellcastingProgression(selected), { classId: "bard", minimumLevel: 5, spellListClassId: "bard" });
+  const applied = applyArchetype(characterClass("investigator"), selected, data.classes);
+  assert.equal(applied.spellcasting?.ability, "intelligence");
+  assert.equal(applied.spellcasting?.castingType, "spontaneous");
+  assert.equal(applied.spellListClassId, "bard");
+  assert.deepEqual(spontaneousSpellcastingProgression(applied, 4, { abilityScore: 18 })?.slots, []);
+  assert.deepEqual(
+    spontaneousSpellcastingProgression(applied, 5, { abilityScore: 18 })?.slots,
+    spontaneousSpellcastingProgression(characterClass("bard"), 5, { abilityScore: 18 })?.slots,
+  );
+});
+
+test("Ley Line Guardian uses Sorcerer spontaneous progression with Intelligence", () => {
+  const selected = archetype("witch-ley-line-guardian");
+  assert.deepEqual(inferArchetypeSpellcastingProgression(selected), { classId: "sorcerer", minimumLevel: 1 });
+  const applied = applyArchetype(characterClass("witch"), selected, data.classes);
+  assert.equal(applied.spellcasting?.ability, "intelligence");
+  assert.equal(applied.spellcasting?.castingType, "spontaneous");
+  assert.equal(applied.spellListClassId, undefined);
+  assert.deepEqual(
+    spontaneousSpellcastingProgression(applied, 10, { abilityScore: 20 })?.slots,
+    spontaneousSpellcastingProgression(characterClass("sorcerer"), 10, { abilityScore: 20 })?.slots,
+  );
+});
+
+test("alternate spellcasting progression inference is bounded to exact catalogue rules", () => {
+  assert.deepEqual(archetypes.filter((item) => inferArchetypeSpellcastingProgression(item)).map((item) => item.id), [
+    "inquisitor-living-grimoire",
+    "investigator-questioner",
+    "ranger-dandy",
+    "witch-ley-line-guardian",
   ]);
 });
