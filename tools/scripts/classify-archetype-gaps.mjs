@@ -1,6 +1,7 @@
 import archetypes from "../../generated/pf1e-archetypes.mjs";
 import feats from "../../generated/pf1e-feats.mjs";
-import { archetypeAutomationSummary } from "../../packages/engine/src/index.js";
+import spells from "../../generated/pf1e-spells.mjs";
+import { archetypeAutomationSummary, inferArchetypeSpellAdditions } from "../../packages/engine/src/index.js";
 
 const args = new Map(process.argv.slice(2).map((value, index, values) => value.startsWith("--") ? [value, values[index + 1]?.startsWith("--") ? true : values[index + 1] ?? true] : [value, true]));
 const classFilter = typeof args.get("--class") === "string" ? args.get("--class") : null;
@@ -24,7 +25,7 @@ const records = archetypes
   .filter((archetype) => (archetype.mechanicalCoverage ?? "partial") !== "full")
   .filter((archetype) => !classFilter || archetype.classId === classFilter)
   .flatMap((archetype) => {
-    const manual = new Set(archetypeAutomationSummary(archetype, feats).manual);
+    const manual = new Set(archetypeAutomationSummary(archetype, feats, spells).manual);
     return (archetype.replacements ?? []).flatMap((replacement) => (replacement.features ?? []).flatMap((feature) => {
       if (!manual.has(`${feature.name} (level ${feature.level})`)) return [];
       const text = feature.summary ?? "";
@@ -32,6 +33,13 @@ const records = archetypes
       return [{ archetypeId: archetype.id, classId: archetype.classId, archetype: archetype.name, feature: feature.name, level: feature.level, tags: tags.length ? tags : ["narrative-exception"], summary: text }];
     }));
   });
+
+const inferredSpellBatches = archetypes.flatMap((archetype) => {
+  const inferred = inferArchetypeSpellAdditions(archetype, spells);
+  const spellList = Object.keys(inferred.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined);
+  const known = inferred.spellGrants.filter((grant) => archetype.bonusSpellAdditions?.[grant.spellId] === undefined && !(archetype.spellGrants ?? []).some((explicit) => explicit.mode === grant.mode && explicit.spellId === grant.spellId));
+  return spellList.length || known.length ? [{ archetypeId: archetype.id, rules: spellList.length + known.length }] : [];
+});
 
 const tagCounts = Object.entries(records.flatMap((record) => record.tags).reduce((counts, tag) => ({ ...counts, [tag]: (counts[tag] ?? 0) + 1 }), {})).sort((left, right) => right[1] - left[1]);
 const classCounts = Object.entries(records.reduce((counts, record) => ({ ...counts, [record.classId]: (counts[record.classId] ?? 0) + 1 }), {})).sort((left, right) => right[1] - left[1]);
@@ -41,6 +49,8 @@ const result = {
   tagCounts: Object.fromEntries(tagCounts),
   classCounts: Object.fromEntries(classCounts),
   records,
+  inferredFixedSpellRules: inferredSpellBatches.reduce((total, item) => total + item.rules, 0),
+  inferredFixedSpellArchetypes: inferredSpellBatches.length,
 };
 
 if (tagFilter) {
@@ -57,6 +67,7 @@ if (tagFilter) {
 else {
   console.log(`Partial archetypes with manual features: ${result.partialArchetypes}`);
   console.log(`Manual features: ${result.manualFeatures}`);
+  console.log(`Inferred fixed spell rules: ${result.inferredFixedSpellRules} across ${result.inferredFixedSpellArchetypes} archetypes`);
   console.log("\nReusable mechanic batches:");
   for (const [tag, count] of tagCounts) console.log(`${String(count).padStart(4)}  ${tag}`);
   console.log("\nLargest class queues:");

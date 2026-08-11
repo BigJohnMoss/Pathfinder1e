@@ -128,7 +128,8 @@ export function bonusSpellsPerDay(abilityScore: number, maximumSpellLevel: numbe
 export function spellSaveDC(abilityScore: number, spellLevel: number): number;
 export function spellcastingProgression(characterClass: CharacterClass & { spellcasting?: { ability: string; castingType: string; slotsByLevel: number[][]; preparedByLevel?: number[][]; spellLevelUnlocks?: number[]; preparesFromSlots?: boolean } }, level: number, options?: { abilityScore?: number }): { ability: string; castingType: string; maximumSpellLevel: number; slots: Array<{ level: number; base: number; bonus: number; count: number }>; prepared: Array<{ level: number; count: number }> } | null;
 export function normalizeCharacterDraft(value: unknown, options?: { classIds?: string[] | null; ancestryIds?: string[] | null; archetypeIds?: string[] | null; archetypeIdsByClass?: Record<string, string[]> | null }): CharacterDraftV1 | null;
-export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype, referenceClasses?: CharacterClass[]): CharacterClass;
+export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype, referenceClasses?: CharacterClass[], spellCatalog?: CharacterSpell[]): CharacterClass;
+export function inferArchetypeSpellAdditions(archetype?: CharacterArchetype, spells?: CharacterSpell[]): { spellListAdditions: Record<string, number>; bonusSpellAdditions: Record<string, number>; spellGrants: NonNullable<CharacterArchetype["spellGrants"]> };
 export function inferArchetypeClassSkillChanges(archetype?: CharacterArchetype): { additions: string[]; removals: string[] };
 export function inferArchetypeProficiencyAdjustments(archetype?: CharacterArchetype): Array<{ category: "weapon" | "armor" | "shield"; operation: "add" | "remove" | "replace"; proficiencies: string[] }>;
 export function inferArchetypeSkillRankAdjustment(archetype?: CharacterArchetype): { operation: "add" | "replace"; value: number } | undefined;
@@ -146,8 +147,8 @@ export function inferArchetypeFeatAlternatives(archetype: CharacterArchetype, fe
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];
-export function applyArchetypes(characterClass: CharacterClass, archetypes?: CharacterArchetype[], referenceClasses?: CharacterClass[]): CharacterClass;
-export function archetypeAutomationSummary(archetype?: CharacterArchetype, feats?: CharacterFeat[]): { automated: string[]; manual: string[] };
+export function applyArchetypes(characterClass: CharacterClass, archetypes?: CharacterArchetype[], referenceClasses?: CharacterClass[], spellCatalog?: CharacterSpell[]): CharacterClass;
+export function archetypeAutomationSummary(archetype?: CharacterArchetype, feats?: CharacterFeat[], spells?: CharacterSpell[]): { automated: string[]; manual: string[] };
 export function baseAttackBonus(progression: BabProgression, level: number): number;
 export function savingThrow(progression: SaveProgression, level: number): number;
 export function classBaseAttackBonus(characterClass: CharacterClass, level: number): number;
