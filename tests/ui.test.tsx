@@ -137,6 +137,21 @@ test("tracks point-buy costs and applies earned ability increases", async () => 
   assert.equal(JSON.parse(localStorage.getItem("pf1e-character-draft") ?? "{}").abilityBoosts[0], "dexterity");
 });
 
+test("Hagbound applies its published Strength progression to the live ability score", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "witch");
+  await user.selectOptions(screen.getByLabelText("Archetype"), "witch-hagbound");
+  const strengthTotal = () => screen.getByLabelText("Strength base score").closest("label")?.querySelector("strong")?.textContent ?? "";
+  assert.match(strengthTotal(), /10/);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "2" } });
+  assert.match(strengthTotal(), /12/);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "8" } });
+  assert.match(strengthTotal(), /16/);
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "14" } });
+  assert.match(strengthTotal(), /19/);
+});
+
 test("allows a mobile ability score to be cleared before entering one digit", async () => {
   const user = userEvent.setup();
   render(<Home />);

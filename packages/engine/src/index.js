@@ -11,6 +11,7 @@ import { archetypeSenseAdjustments, inferredArchetypeSenseDetails, inferArchetyp
 import { archetypeLandSpeedAdjustments, inferredArchetypeLandSpeedDetails, inferArchetypeLandSpeedAdjustments } from "./archetype-movement.js";
 import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefenseDetails, inferArchetypeDefenseAdjustments } from "./archetype-defenses.js";
 import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArchetypeSkillCheckRules } from "./archetype-skill-checks.js";
+import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
@@ -30,6 +31,7 @@ export { archetypeSenseAdjustments, inferArchetypeSenseAdjustments };
 export { archetypeLandSpeedAdjustments, inferArchetypeLandSpeedAdjustments };
 export { archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAdjustments };
 export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
+export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
@@ -373,6 +375,7 @@ export function archetypeConditionalModifiers(archetypes = [], classLevels = {})
       ...archetypeSaveBonusAdjustments(archetype).filter((modifier) => modifier.condition),
       ...archetypeCombatModifierAdjustments(archetype).filter((modifier) => modifier.condition),
       ...archetypeLandSpeedAdjustments(archetype).filter((modifier) => modifier.condition).map((modifier) => ({ ...modifier, base: modifier.bonus, label: "Land speed" })),
+      ...archetypeAbilityScoreAdjustments(archetype).filter((modifier) => modifier.condition),
     ].flatMap((modifier) => {
       if (!adjustmentAppliesAtLevel(modifier, level)) return [];
       const bonus = adjustmentBonusAtLevel(modifier, level);
@@ -384,6 +387,25 @@ export function archetypeConditionalModifiers(archetypes = [], classLevels = {})
       }];
     });
   });
+}
+
+export function archetypeAbilityScoreBonuses(archetypes = [], classLevels = {}) {
+  const result = Object.fromEntries(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].map((ability) => [ability, 0]));
+  for (const ability of Object.keys(result)) {
+    let stackable = 0;
+    const typed = new Map();
+    for (const archetype of archetypes ?? []) {
+      const level = archetypeLevel(archetype, classLevels);
+      for (const adjustment of archetypeAbilityScoreAdjustments(archetype)) {
+        if (adjustment.ability !== ability || adjustment.condition || !adjustmentAppliesAtLevel(adjustment, level)) continue;
+        const bonus = adjustmentBonusAtLevel(adjustment, level);
+        if (!adjustment.bonusType || ["circumstance", "untyped"].includes(adjustment.bonusType)) stackable += bonus;
+        else typed.set(adjustment.bonusType, Math.max(typed.get(adjustment.bonusType) ?? 0, bonus));
+      }
+    }
+    result[ability] = stackable + [...typed.values()].reduce((total, bonus) => total + bonus, 0);
+  }
+  return result;
 }
 
 export function archetypeInitiativeBonus(archetypes = [], classLevels = {}) {
@@ -1573,6 +1595,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const defenseAdjustments = archetypeDefenseAdjustments(archetype);
   if (defenseAdjustments.length)
     automated.push(`${defenseAdjustments.length} level-aware special defense${defenseAdjustments.length === 1 ? "" : "s"}`);
+  const abilityScoreDetails = inferredArchetypeAbilityScoreDetails(archetype);
+  const abilityScoreAdjustments = archetypeAbilityScoreAdjustments(archetype);
+  if (abilityScoreAdjustments.length)
+    automated.push(`${abilityScoreAdjustments.length} level-aware ability-score adjustment${abilityScoreAdjustments.length === 1 ? "" : "s"}`);
   const skillCheckDetails = inferredArchetypeSkillCheckDetails(archetype);
   const explicitSkillCheckRules = archetype.skillCheckRules ?? [];
   const skillCheckRules = [...explicitSkillCheckRules, ...skillCheckDetails.rules.filter((rule) => !explicitSkillCheckRules.some((explicit) => explicit.sourceFeatureId === rule.sourceFeatureId && explicit.result === rule.result))];
@@ -1614,6 +1640,8 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ...landSpeedDetails.fullyAutomatedFeatureIds,
     ...(archetype.defenseAdjustments ?? []).filter(adjustment => !adjustment.partialFeature).map(adjustment => adjustment.sourceFeatureId),
     ...defenseDetails.fullyAutomatedFeatureIds,
+    ...(archetype.abilityScoreAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
+    ...abilityScoreDetails.fullyAutomatedFeatureIds,
     ...(archetype.skillCheckRules ?? []).filter(rule => !rule.partialFeature).map(rule => rule.sourceFeatureId),
     ...skillCheckDetails.fullyAutomatedFeatureIds,
     ...temporaryHitPointActionDetails.fullyAutomatedFeatureIds,

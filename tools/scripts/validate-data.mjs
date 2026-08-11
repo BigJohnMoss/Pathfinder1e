@@ -355,6 +355,21 @@ for (const [index, url] of archetypeUrls.entries()) {
     if (modifier?.maximum !== undefined && !Number.isInteger(modifier.maximum)) errors.push(`${prefix} maximum must be an integer`);
     if (modifier?.bonusByLevel !== undefined && (!Array.isArray(modifier.bonusByLevel) || modifier.bonusByLevel.length === 0 || modifier.bonusByLevel.some((step, index) => !Number.isInteger(step?.level) || step.level < 1 || step.level > 20 || !Number.isInteger(step?.bonus) || (index > 0 && step.level <= modifier.bonusByLevel[index - 1].level)))) errors.push(`${prefix} has invalid bonusByLevel`);
   }
+  if (archetype.abilityScoreAdjustments !== undefined && (!Array.isArray(archetype.abilityScoreAdjustments) || archetype.abilityScoreAdjustments.length === 0)) errors.push(`${file}: abilityScoreAdjustments must be a non-empty array`);
+  for (const adjustment of archetype.abilityScoreAdjustments ?? []) {
+    const prefix = `${file}: ability-score adjustment`;
+    if (adjustment?.sourceFeatureId !== undefined && !archetype.replacements?.some(replacement => replacement.features?.some(feature => feature.id === adjustment.sourceFeatureId))) errors.push(`${prefix} references unknown sourceFeatureId ${adjustment.sourceFeatureId}`);
+    if (typeof adjustment?.label !== "string" || !adjustment.label.trim()) errors.push(`${prefix} must have a label`);
+    if (!["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].includes(adjustment?.ability)) errors.push(`${prefix} has an invalid ability`);
+    if (!Number.isInteger(adjustment?.base)) errors.push(`${prefix} base must be an integer`);
+    if (adjustment?.minimumLevel !== undefined && (!Number.isInteger(adjustment.minimumLevel) || adjustment.minimumLevel < 1 || adjustment.minimumLevel > 20)) errors.push(`${prefix} has an invalid minimumLevel`);
+    if (adjustment?.maximumLevel !== undefined && (!Number.isInteger(adjustment.maximumLevel) || adjustment.maximumLevel < (adjustment.minimumLevel ?? 1) || adjustment.maximumLevel > 20)) errors.push(`${prefix} has an invalid maximumLevel`);
+    if (adjustment?.minimum !== undefined && !Number.isInteger(adjustment.minimum)) errors.push(`${prefix} minimum must be an integer`);
+    if (adjustment?.maximum !== undefined && !Number.isInteger(adjustment.maximum)) errors.push(`${prefix} maximum must be an integer`);
+    if (adjustment?.bonusType !== undefined && !["alchemical", "circumstance", "competence", "enhancement", "inherent", "insight", "morale", "profane", "racial", "sacred", "size", "trait", "untyped"].includes(adjustment.bonusType)) errors.push(`${prefix} has an invalid bonusType`);
+    if (adjustment?.bonusByLevel !== undefined && (!Array.isArray(adjustment.bonusByLevel) || adjustment.bonusByLevel.length === 0 || adjustment.bonusByLevel.some((step, index) => !Number.isInteger(step?.level) || step.level < (adjustment.minimumLevel ?? 1) || step.level > 20 || !Number.isInteger(step?.bonus) || (index > 0 && step.level <= adjustment.bonusByLevel[index - 1].level)))) errors.push(`${prefix} has invalid bonusByLevel`);
+    if (adjustment?.condition !== undefined && (typeof adjustment.condition !== "string" || !adjustment.condition.trim() || adjustment.condition.length > 250)) errors.push(`${prefix} has an invalid condition`);
+  }
   if (archetype.skillBonusAdjustments !== undefined && (!Array.isArray(archetype.skillBonusAdjustments) || archetype.skillBonusAdjustments.length === 0)) errors.push(`${file}: skillBonusAdjustments must be a non-empty array`);
   for (const adjustment of archetype.skillBonusAdjustments ?? []) {
     const prefix = `${file}: skill bonus adjustment`;
