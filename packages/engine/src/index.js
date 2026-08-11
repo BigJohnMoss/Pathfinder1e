@@ -1,4 +1,5 @@
 import { normalizeCompanionState } from "./companions.js";
+import { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants } from "./archetype-companions.js";
 import { inferArchetypeResourceAdjustments, resolvedArchetypeResourceAdjustments } from "./archetype-resources.js";
 import { inferArchetypeTemporaryHitPointActions, inferredArchetypeTemporaryHitPointActionDetails } from "./archetype-temporary-hit-points.js";
 import { inferArchetypeRerollActions, inferredArchetypeRerollActionDetails } from "./archetype-rerolls.js";
@@ -18,6 +19,7 @@ import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefens
 import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArchetypeSkillCheckRules } from "./archetype-skill-checks.js";
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
+export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants };
 export { eidolonProgression } from "./eidolon.js";
 export { drakeCompanionProgression } from "./drake.js";
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
@@ -1296,7 +1298,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [])
     spellsKnownAdjustmentPerLevel: archetype.spellsKnownAdjustmentPerLevel,
     companionGrants: [
       ...(characterClass.companionGrants ?? []),
-      ...(archetype.companionGrants ?? []),
+      ...resolvedArchetypeCompanionGrants(archetype),
     ],
     companionProgressionAdjustments: [
       ...(characterClass.companionProgressionAdjustments ?? []),
@@ -1638,7 +1640,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (archetype.spellListAdditions && Object.keys(archetype.spellListAdditions).length) automated.push("Spell-list additions");
   if (archetype.bonusSpellAdditions && Object.keys(archetype.bonusSpellAdditions).length) automated.push("Bonus spells known");
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
-  if (archetype.companionGrants?.length) automated.push("Companion grants and effective-level progression");
+  if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
   if (archetype.companionProgressionAdjustments?.length) automated.push("Companion effective-level adjustments");
   if (archetype.removesSpellcasting) automated.push("Spellcasting removal");
   const inferredSpellcastingAbility = inferredArchetypeSpellcastingAbilityDetails(archetype);
