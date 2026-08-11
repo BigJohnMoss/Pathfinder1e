@@ -6,12 +6,14 @@ type Spell = CharacterSpell;
 type Slot = { level: number; base: number; bonus: number; count: number };
 type KnownLimit = { level: number; count: number };
 type SpellTraitBonuses = Record<string, { casterLevel: number; metamagicLevelAdjustment: number }>;
+type SpellArchetypeBonuses = Record<string, { casterLevel: number; saveDc: number; concentration: number; sources: string[] }>;
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, className, casterLevel, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], grantedSpellLabel = classId === "oracle" ? "Mystery" : "Bloodline", onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
+export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, spellArchetypeBonuses = {}, classId, className, casterLevel, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], grantedSpellLabel = classId === "oracle" ? "Mystery" : "Bloodline", onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
   spells: Spell[];
   spellTraitBonuses?: SpellTraitBonuses;
+  spellArchetypeBonuses?: SpellArchetypeBonuses;
   classId: string;
   className: string;
   casterLevel?: number;
@@ -73,7 +75,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, classId, 
           const full = knownCount(level) >= limitFor(level);
           const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
-            <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level]} · {spell.summary}{spellTraitBonuses[spell.id]?.casterLevel ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level` : ""}{spellTraitBonuses[spell.id]?.metamagicLevelAdjustment ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment` : ""}</small></div>
+            <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level] + (spellArchetypeBonuses[spell.id]?.saveDc ?? 0)} · {spell.summary}{spellTraitBonuses[spell.id]?.casterLevel ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level` : ""}{spellTraitBonuses[spell.id]?.metamagicLevelAdjustment ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment` : ""}{spellArchetypeBonuses[spell.id]?.sources.length ? ` · ${spellArchetypeBonuses[spell.id].sources.join("; ")}` : ""}</small></div>
             <div className="spell-actions"><button type="button" className="cast-spell-button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><div className="spell-selection-control"><button type="button" aria-label={`Forget ${spell.name}`} disabled={!learned || isGranted} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{isGranted ? grantedSpellLabel : learned ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div></div>
             <SpellDetails spell={spell} />
           </article>;

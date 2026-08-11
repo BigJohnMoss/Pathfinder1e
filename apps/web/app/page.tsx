@@ -76,6 +76,7 @@ import {
   archetypeSkillBonusAdjustments,
   archetypeSkillBonuses,
   archetypeSkillCheckRules,
+  archetypeSpellModifiers,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
   adjustedCompanionLevel,
@@ -2060,6 +2061,10 @@ export default function Home() {
     () => mergeSpellLists(baseAvailableSpells, grantedSpells),
     [baseAvailableSpells, grantedSpells],
   );
+  const primaryArchetypeSpellBonuses = useMemo(
+    () => Object.fromEntries(availableSpells.map((spell) => [spell.id, archetypeSpellModifiers(characterClass, primaryClassLevel, spell)])),
+    [availableSpells, characterClass, primaryClassLevel],
+  );
   const grantedSpellIds = useMemo(
     () => grantedSpells.map((spell) => spell.id),
     [grantedSpells],
@@ -2326,6 +2331,12 @@ export default function Home() {
   const secondaryAvailableSpells = useMemo(
     () => mergeSpellLists(secondaryBaseSpells, secondaryGrantedSpells),
     [secondaryBaseSpells, secondaryGrantedSpells],
+  );
+  const secondaryArchetypeSpellBonuses = useMemo(
+    () => secondaryCharacterClass
+      ? Object.fromEntries(secondaryAvailableSpells.map((spell) => [spell.id, archetypeSpellModifiers(secondaryCharacterClass, secondaryClassLevel, spell)]))
+      : {},
+    [secondaryAvailableSpells, secondaryCharacterClass, secondaryClassLevel],
   );
   const secondaryGrantedSpellIds = useMemo(
     () => secondaryGrantedSpells.map((spell) => spell.id),
@@ -2912,6 +2923,7 @@ export default function Home() {
       key={characterClass.id}
       spells={availableSpells}
       spellTraitBonuses={selectedTraitBonuses.spellBonuses}
+      spellArchetypeBonuses={primaryArchetypeSpellBonuses}
       classId={characterClass.spellListClassId ?? characterClass.id}
       className={characterClass.name}
       casterLevel={primarySpellcastingLevel + (characterClass.id === "arcanist" ? eldritchSurgeCasterLevelBonus : 0)}
@@ -2938,6 +2950,7 @@ export default function Home() {
       spells={primaryPreparedCatalogue}
       sourceBook={primarySourceBook}
       spellTraitBonuses={selectedTraitBonuses.spellBonuses}
+      spellArchetypeBonuses={primaryArchetypeSpellBonuses}
       classId={characterClass.spellListClassId ?? characterClass.id}
       className={characterClass.name}
       casterLevel={primarySpellcastingLevel + (characterClass.id === "arcanist" ? eldritchSurgeCasterLevelBonus : 0)}
@@ -2976,6 +2989,7 @@ export default function Home() {
         key={secondaryCharacterClass.id}
         spells={secondaryAvailableSpells}
         spellTraitBonuses={selectedTraitBonuses.spellBonuses}
+        spellArchetypeBonuses={secondaryArchetypeSpellBonuses}
         classId={secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id}
         className={secondaryCharacterClass.name}
         casterLevel={secondarySpellcastingLevel + (secondaryCharacterClass.id === "arcanist" ? eldritchSurgeCasterLevelBonus : 0)}
@@ -3004,6 +3018,7 @@ export default function Home() {
         spells={secondaryPreparedCatalogue}
         sourceBook={secondarySourceBook}
         spellTraitBonuses={selectedTraitBonuses.spellBonuses}
+        spellArchetypeBonuses={secondaryArchetypeSpellBonuses}
         classId={secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id}
         className={secondaryCharacterClass.name}
         casterLevel={secondarySpellcastingLevel + (secondaryCharacterClass.id === "arcanist" ? eldritchSurgeCasterLevelBonus : 0)}
