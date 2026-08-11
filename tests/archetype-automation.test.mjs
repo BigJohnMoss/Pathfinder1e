@@ -1158,6 +1158,36 @@ test("standard archetype rules text applies unannotated class-skill replacements
   }
 });
 
+test("complete structural class-skill rules leave the manual queue only when every named skill is applied", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  for (const [id, featureName] of [
+    ["brawler-wild-child", "Class Skills"],
+    ["alchemist-aquachymist", "Class Skills"],
+    ["fighter-cad", "Skills"],
+    ["monk-sensei", "Skills"],
+    ["inquisitor-suit-seeker", "Class Skills"],
+  ]) {
+    assert.ok(!archetypeAutomationSummary(record(id)).manual.some(item => item.startsWith(`${featureName} (level`)), `${id} structural rule`);
+  }
+  assert.ok(archetypeAutomationSummary(record("oracle-ancient-lorekeeper")).manual.some(item => item.startsWith("Class Skills (level")), "a feature with an additional skill bonus remains visible");
+});
+
+test("published replacement skill lists and all-Knowledge grants alter the applied class skill set", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const base = { id: "cleric", name: "Cleric", classSkills: ["Wrong"], features: [] };
+  const cloistered = applyArchetype(base, record("cleric-cloistered-cleric"));
+  assert.ok(cloistered.classSkills.includes("Appraise"));
+  assert.ok(cloistered.classSkills.includes("Knowledge (planes)"));
+  assert.ok(!cloistered.classSkills.includes("Wrong"));
+  assert.ok(!archetypeAutomationSummary(record("cleric-cloistered-cleric")).manual.some(item => item.startsWith("Class Skills (level")));
+
+  const sensei = applyArchetype({ id: "monk", name: "Monk", classSkills: [], features: [] }, record("monk-sensei"));
+  assert.equal(sensei.classSkills.filter(skill => skill.startsWith("Knowledge (")).length, 10);
+  const shigenjo = applyArchetype({ id: "oracle", name: "Oracle", classSkills: ["Diplomacy"], features: [] }, record("oracle-shigenjo"));
+  assert.ok(shigenjo.classSkills.includes("Survival"));
+  assert.ok(!shigenjo.classSkills.includes("Diplomacy"));
+});
+
 test("standard archetype rules text applies unannotated proficiency changes", () => {
   const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const cases = new Map([
@@ -1185,6 +1215,28 @@ test("standard archetype rules text applies unannotated proficiency changes", ()
   }
 });
 
+test("proficiency inference handles exclusions, replacements, and mixed gain-loss lists without fragments", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  assert.deepEqual(inferArchetypeProficiencyAdjustments(record("cavalier-beast-rider")), [
+    { category: "armor", operation: "add", proficiencies: ["Medium armor", "Light armor"] },
+    { category: "shield", operation: "add", proficiencies: ["All shields"] },
+    { category: "shield", operation: "remove", proficiencies: ["Tower shields"] },
+  ]);
+  assert.deepEqual(inferArchetypeProficiencyAdjustments(record("rogue-makeshift-scrapper")), [
+    { category: "weapon", operation: "replace", proficiencies: ["All simple weapons"] },
+  ]);
+  assert.deepEqual(inferArchetypeProficiencyAdjustments(record("rogue-skulking-slayer")), [
+    { category: "weapon", operation: "remove", proficiencies: ["Rapiers", "Hand Crossbows"] },
+    { category: "weapon", operation: "add", proficiencies: ["Greatclubs", "Whips"] },
+  ]);
+  assert.deepEqual(inferArchetypeProficiencyAdjustments(record("gunslinger-gun-tank")), [
+    { category: "armor", operation: "add", proficiencies: ["All armor"] },
+    { category: "shield", operation: "add", proficiencies: ["All shields", "Tower shields"] },
+  ]);
+  assert.ok(!archetypeAutomationSummary(record("rogue-makeshift-scrapper")).manual.some(item => item.startsWith("Weapon Proficiency (level")));
+  assert.ok(archetypeAutomationSummary(record("paladin-holy-gun")).manual.some(item => item.startsWith("Weapon and Armor Proficiency (level")), "an inferred positive list is not treated as a complete replacement");
+});
+
 test("inferred proficiency automation stays normalized across the full archetype catalogue", () => {
   const directory = new URL("../packages/data/src/archetypes/", import.meta.url);
   const records = readdirSync(directory)
@@ -1192,8 +1244,8 @@ test("inferred proficiency automation stays normalized across the full archetype
     .map(file => JSON.parse(readFileSync(new URL(file, directory), "utf8")));
   const inferred = records.map(archetype => ({ archetype, adjustments: inferArchetypeProficiencyAdjustments(archetype) }))
     .filter(item => item.adjustments.length > 0);
-  assert.equal(inferred.length, 158);
-  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 142);
+  assert.equal(inferred.length, 159);
+  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 143);
   for (const { archetype, adjustments } of inferred) {
     for (const adjustment of adjustments) {
       assert.ok(["weapon", "armor", "shield"].includes(adjustment.category), `${archetype.id} category`);
@@ -1223,6 +1275,8 @@ test("standard archetype rules text applies per-level skill-rank progression", (
     const applied = applyArchetype({ id: archetype.classId, name: "Class", skillRanksPerLevel: expected.base, classSkills: [], features: [] }, archetype);
     assert.equal(applied.skillRanksPerLevel, expected.expected, `${id} applied ranks`);
     assert.ok(archetypeAutomationSummary(archetype).automated.some(item => item.startsWith("Class skill-rank progression:")), `${id} summary`);
+    if (/^\d+\s*\+\s*Int modifier\.?$/i.test(archetype.replacements.flatMap(item => item.features).find(feature => feature.name === "Skill Ranks per Level")?.summary ?? ""))
+      assert.ok(!archetypeAutomationSummary(archetype).manual.some(item => item.startsWith("Skill Ranks per Level (level")), `${id} exact structural feature`);
   }
 });
 
