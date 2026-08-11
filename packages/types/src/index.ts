@@ -447,6 +447,7 @@ export interface CharacterArchetype {
     requiredOptionId?: string;
     refreshCadence?: "day" | "week";
     hidden?: boolean;
+    dedicatedAction?: boolean;
   }>;
   conditionalModifiers?: Array<{
     sourceFeatureId?: string;

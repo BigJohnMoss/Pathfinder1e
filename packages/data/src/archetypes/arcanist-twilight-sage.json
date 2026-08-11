@@ -2,7 +2,7 @@
   "id": "arcanist-twilight-sage",
   "name": "Twilight Sage",
   "classId": "arcanist",
-  "resourceAdjustments": [{"resourceId":"twilightTransfer","label":"Twilight Transfer","unit":"use","operation":"replace","minimumLevel":11,"base":1,"minimum":0,"maximum":1},{"resourceId":"twilightBarrierActivations","label":"Twilight Barrier activations","unit":"activation","operation":"replace","minimumLevel":1,"base":999,"minimum":0,"maximum":999,"hidden":true}],
+  "resourceAdjustments": [{"resourceId":"twilightTransfer","label":"Twilight Transfer","unit":"use","operation":"replace","minimumLevel":11,"base":1,"minimum":0,"maximum":1,"dedicatedAction":true},{"resourceId":"twilightBarrierActivations","label":"Twilight Barrier activations","unit":"activation","operation":"replace","minimumLevel":1,"base":999,"minimum":0,"maximum":999,"hidden":true}],
   "summary": "The twilight sages of Geb carry out experiments to solve the ultimate puzzle and unlock the secrets of life and death. While the twilight sages generally aren’t actively malicious, most are willing to perform human experimentation in pursuit of knowledge with little regard for the casualties.",
   "replacesText": "Consume Spells; Spells; 1st and 11th-level Arcanist Exploits; Magical Supremacy",
   "replacements": [
