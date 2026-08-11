@@ -368,6 +368,15 @@ for (const [index, url] of archetypeUrls.entries()) {
       }
     }
   }
+  if (archetype.spellModifierAdjustments !== undefined) {
+    if (!Array.isArray(archetype.spellModifierAdjustments) || archetype.spellModifierAdjustments.length === 0) errors.push(`${file}: spellModifierAdjustments must be a non-empty array`);
+    for (const adjustment of archetype.spellModifierAdjustments ?? []) {
+      if (!adjustment || typeof adjustment.label !== "string" || !["casterLevel", "saveDc", "concentration"].includes(adjustment.target) || !Number.isInteger(adjustment.base) || Math.abs(adjustment.base) > 20) errors.push(`${file}: spell modifier has invalid identity or base fields`);
+      for (const spellId of adjustment?.spellIds ?? []) if (!spellIds.has(spellId)) errors.push(`${file}: spell modifier references missing spell ${spellId}`);
+      for (const descriptor of adjustment?.descriptors ?? []) if (!spellDescriptors.has(descriptor)) errors.push(`${file}: spell modifier references invalid descriptor ${descriptor}`);
+      for (const school of adjustment?.schools ?? []) if (!["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "transmutation", "universal"].includes(school)) errors.push(`${file}: spell modifier references invalid school ${school}`);
+    }
+  }
   if (archetype.abilityScoreAdjustments !== undefined && (!Array.isArray(archetype.abilityScoreAdjustments) || archetype.abilityScoreAdjustments.length === 0)) errors.push(`${file}: abilityScoreAdjustments must be a non-empty array`);
   for (const adjustment of archetype.abilityScoreAdjustments ?? []) {
     const prefix = `${file}: ability-score adjustment`;

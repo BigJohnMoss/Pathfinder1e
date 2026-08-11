@@ -1,7 +1,7 @@
 import archetypes from "../../generated/pf1e-archetypes.mjs";
 import feats from "../../generated/pf1e-feats.mjs";
 import spells from "../../generated/pf1e-spells.mjs";
-import { archetypeAutomationSummary, inferArchetypeSpellAccess, inferArchetypeSpellAdditions } from "../../packages/engine/src/index.js";
+import { archetypeAutomationSummary, inferArchetypeSpellAccess, inferArchetypeSpellAdditions, inferArchetypeSpellModifiers } from "../../packages/engine/src/index.js";
 
 const args = new Map(process.argv.slice(2).map((value, index, values) => value.startsWith("--") ? [value, values[index + 1]?.startsWith("--") ? true : values[index + 1] ?? true] : [value, true]));
 const classFilter = typeof args.get("--class") === "string" ? args.get("--class") : null;
@@ -47,6 +47,10 @@ const inferredSpellAccessBatches = archetypes.flatMap((archetype) => {
   const exclusions = inferred.spellListExclusions.filter((id) => !archetype.spellListExclusions?.includes(id));
   return additions.length || exclusions.length ? [{ archetypeId: archetype.id, additions: additions.length, exclusions: exclusions.length }] : [];
 });
+const inferredSpellModifierBatches = archetypes.flatMap((archetype) => {
+  const adjustments = inferArchetypeSpellModifiers(archetype, spells);
+  return adjustments.length ? [{ archetypeId: archetype.id, rules: adjustments.length }] : [];
+});
 
 const tagCounts = Object.entries(records.flatMap((record) => record.tags).reduce((counts, tag) => ({ ...counts, [tag]: (counts[tag] ?? 0) + 1 }), {})).sort((left, right) => right[1] - left[1]);
 const classCounts = Object.entries(records.reduce((counts, record) => ({ ...counts, [record.classId]: (counts[record.classId] ?? 0) + 1 }), {})).sort((left, right) => right[1] - left[1]);
@@ -61,6 +65,8 @@ const result = {
   inferredSpellAccessAdditions: inferredSpellAccessBatches.reduce((total, item) => total + item.additions, 0),
   inferredSpellAccessExclusions: inferredSpellAccessBatches.reduce((total, item) => total + item.exclusions, 0),
   inferredSpellAccessArchetypes: inferredSpellAccessBatches.length,
+  inferredSpellModifierRules: inferredSpellModifierBatches.reduce((total, item) => total + item.rules, 0),
+  inferredSpellModifierArchetypes: inferredSpellModifierBatches.length,
 };
 
 if (tagFilter) {
@@ -79,6 +85,7 @@ else {
   console.log(`Manual features: ${result.manualFeatures}`);
   console.log(`Inferred fixed spell rules: ${result.inferredFixedSpellRules} across ${result.inferredFixedSpellArchetypes} archetypes`);
   console.log(`Inferred catalog spell access: ${result.inferredSpellAccessAdditions} additions and ${result.inferredSpellAccessExclusions} exclusions across ${result.inferredSpellAccessArchetypes} archetypes`);
+  console.log(`Inferred deterministic spell modifiers: ${result.inferredSpellModifierRules} across ${result.inferredSpellModifierArchetypes} archetypes`);
   console.log("\nReusable mechanic batches:");
   for (const [tag, count] of tagCounts) console.log(`${String(count).padStart(4)}  ${tag}`);
   console.log("\nLargest class queues:");

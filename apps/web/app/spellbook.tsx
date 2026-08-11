@@ -20,6 +20,7 @@ type SpellTraitBonuses = Record<
   string,
   { casterLevel: number; metamagicLevelAdjustment: number }
 >;
+type SpellArchetypeBonuses = Record<string, { casterLevel: number; saveDc: number; concentration: number; sources: string[] }>;
 type OnDemandSpellCost = {
   resourceId?: string;
   cost: number;
@@ -62,6 +63,7 @@ export function Spellbook({
   spells,
   sourceBook,
   spellTraitBonuses = {},
+  spellArchetypeBonuses = {},
   classId,
   className,
   casterLevel,
@@ -102,6 +104,7 @@ export function Spellbook({
     onChange: (ids: string[]) => void;
   };
   spellTraitBonuses?: SpellTraitBonuses;
+  spellArchetypeBonuses?: SpellArchetypeBonuses;
   classId: string;
   className: string;
   casterLevel?: number;
@@ -662,7 +665,7 @@ export function Spellbook({
                           <span>
                             <strong>{spell.name}</strong>
                             <small>
-                              DC {spellDcs[level]} · prepared ×{count}
+                              DC {spellDcs[level] + (spellArchetypeBonuses[spell.id]?.saveDc ?? 0)} · prepared ×{count}{spellArchetypeBonuses[spell.id]?.sources.length ? ` · ${spellArchetypeBonuses[spell.id].sources.join("; ")}` : ""}
                               {automaticDuration ? ` · ${spellAutomation!.automaticExtendDuration!.label}: ${automaticDuration}` : ""}
                               {shareable ? ` · ${shareRules!.label}: ${shareRules!.range}` : ""}
                               {boostDescriptor ? ` · ${descriptorBoostRules!.label}: ${boostDescriptor}` : ""}
@@ -854,12 +857,15 @@ export function Spellbook({
                       <div>
                         <strong>{spell.name}</strong>
                         <small>
-                          level {level} · DC {spellDcs[level] + (onDemandCost?.saveDcBonus ?? 0)} · {spell.summary}
+                          level {level} · DC {spellDcs[level] + (onDemandCost?.saveDcBonus ?? 0) + (spellArchetypeBonuses[spell.id]?.saveDc ?? 0)} · {spell.summary}
                           {spellTraitBonuses[spell.id]?.casterLevel
                             ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level`
                             : ""}
                           {spellTraitBonuses[spell.id]?.metamagicLevelAdjustment
                             ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment`
+                            : ""}
+                          {spellArchetypeBonuses[spell.id]?.sources.length
+                            ? ` · ${spellArchetypeBonuses[spell.id].sources.join("; ")}`
                             : ""}
                           {preparationCost === 2
                             ? " · opposition school: costs 2 prepared slots"

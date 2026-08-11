@@ -370,6 +370,7 @@ export interface CharacterClass {
   spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
   spellGrants?: ArchetypeSpellGrant[];
+  spellModifierAdjustments?: ArchetypeSpellModifierAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
@@ -416,6 +417,7 @@ export interface CharacterArchetype {
   spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
   spellGrants?: ArchetypeSpellGrant[];
+  spellModifierAdjustments?: ArchetypeSpellModifierAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
@@ -562,6 +564,19 @@ export interface ArchetypeSpellGrant {
   minimumClassLevel: number;
   mode: "list" | "known";
   sourceFeatureId?: string;
+}
+export interface ArchetypeSpellModifierAdjustment {
+  sourceFeatureId?: string;
+  label: string;
+  target: "casterLevel" | "saveDc" | "concentration";
+  minimumLevel?: number;
+  maximumLevel?: number;
+  base: number;
+  bonusByLevel?: Array<{ level: number; bonus: number }>;
+  spellIds?: string[];
+  schools?: string[];
+  descriptors?: string[];
+  condition?: string;
 }
 export interface OptionGroupAugmentation {
   targetGroupId: string;

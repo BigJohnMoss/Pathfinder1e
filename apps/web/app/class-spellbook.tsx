@@ -5,7 +5,7 @@ import { optionGroups } from "./character-catalogue";
 import { Spellbook } from "./spellbook";
 import { classSpellAutomation } from "./archetype-spell-automation";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
-import { abilityModifiers as calculateAbilityModifiers, arcaneReservoir, normalizeSpellSlotUses, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
+import { abilityModifiers as calculateAbilityModifiers, arcaneReservoir, archetypeSpellModifiers, normalizeSpellSlotUses, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells } from "../../../packages/engine/src/sorcerer-bloodlines.js";
@@ -132,6 +132,7 @@ export function ClassSpellbook({
       : [];
   }), [characterClass.id, excludedSpellIds, maximumSpellLevel, spellOptions, spells]);
   const availableSpells = useMemo(() => mergeSpellLists(baseSpells, [...allowedGrantedSpells, ...optionSpells]), [allowedGrantedSpells, baseSpells, optionSpells]);
+  const spellArchetypeBonuses = useMemo(() => Object.fromEntries(availableSpells.map((spell) => [spell.id, archetypeSpellModifiers(characterClass, classLevel, spell)])), [availableSpells, characterClass, classLevel]);
   const onDemandSpellCosts = useMemo(() => Object.fromEntries(spellOptions.flatMap((option) => {
     if (!option?.castsAsPrepared || !option.spellId || excludedSpellIds.has(option.spellId) || !option.classIds.includes(characterClass.id)) return [];
     const resource = option.resourceCost;
@@ -192,6 +193,24 @@ export function ClassSpellbook({
     if (reservoir) onReservoirPointsChange(reservoir.dailyRefresh);
     onRefreshClassResources?.();
   };
-  if (spontaneousCasting) return <SpontaneousSpellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]} slots={spontaneousCasting.slots} knownLimits={spontaneousCasting.known} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay} />;
-  return <Spellbook key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} classId={spellListClassId} className={characterClass.name} casterLevel={classLevel} castingAbilityName={abilityLabels[castingAbility]} slots={preparedCasting?.slots ?? []} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel} preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))} slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay} oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus} onDemandSpellCosts={onDemandSpellCosts} requiredPreparedSchool={requiredSchool} spellAutomation={classSpellAutomation(characterClass, classLevel, Object.values(selectedOptions))} criticalStrikeResource={criticalStrikeResource} bondedObjectCastResource={bondedObjectCastResource} abilityModifiers={calculateAbilityModifiers(abilities)} activeEffects={activeEffects} onAddEffect={onAddEffect} onRemoveEffectByName={onRemoveEffectByName} />;
+  if (spontaneousCasting) return <SpontaneousSpellbook
+    key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} spellArchetypeBonuses={spellArchetypeBonuses}
+    classId={spellListClassId} className={characterClass.name} castingAbilityName={abilityLabels[castingAbility]}
+    slots={spontaneousCasting.slots} knownLimits={spontaneousCasting.known} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel}
+    knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))}
+    slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay}
+  />;
+  return <Spellbook
+    key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} spellArchetypeBonuses={spellArchetypeBonuses}
+    classId={spellListClassId} className={characterClass.name} casterLevel={classLevel} castingAbilityName={abilityLabels[castingAbility]}
+    slots={preparedCasting?.slots ?? []} preparedLimits={preparedLimits} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel}
+    preparedSpellIds={selectedSpellIds} onPreparedSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))}
+    slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))}
+    reservoir={reservoir ? { current: reservoirPoints, ...reservoir } : null} onReservoirChange={onReservoirPointsChange} onRefreshDay={refreshDay}
+    oppositionSchoolIds={oppositionSchoolIds} oppositionSpellIds={oppositionSpellIds} restrictedBonus={restrictedBonus}
+    onDemandSpellCosts={onDemandSpellCosts} requiredPreparedSchool={requiredSchool}
+    spellAutomation={classSpellAutomation(characterClass, classLevel, Object.values(selectedOptions))}
+    criticalStrikeResource={criticalStrikeResource} bondedObjectCastResource={bondedObjectCastResource}
+    abilityModifiers={calculateAbilityModifiers(abilities)} activeEffects={activeEffects} onAddEffect={onAddEffect} onRemoveEffectByName={onRemoveEffectByName}
+  />;
 }

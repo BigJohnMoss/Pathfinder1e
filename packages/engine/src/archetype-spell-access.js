@@ -79,6 +79,7 @@ export function inferredArchetypeSpellAccessDetails(archetype, spells = []) {
   const spellListExclusions = new Set();
   const sourceFeatureIds = new Set();
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     const summary = normalizedText(feature.summary);
     const expansion = expansionRule(summary, names);
@@ -102,9 +103,12 @@ export function inferredArchetypeSpellAccessDetails(archetype, spells = []) {
       }
       if (spellListExclusions.size) sourceFeatureIds.add(feature.id);
       if (isFullyAutomatedRestriction(summary, names)) fullyAutomatedFeatureIds.add(feature.id);
+      summary.split(/(?<=[.!?])\s+/).forEach((sentence, sentenceIndex) => {
+        if (restrictionValues(sentence, names).length) sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+      });
     }
   }
-  const result = { spellListAdditions, spellListExclusions: [...spellListExclusions], sourceFeatureIds, fullyAutomatedFeatureIds };
+  const result = { spellListAdditions, spellListExclusions: [...spellListExclusions], sourceFeatureIds, fullyAutomatedFeatureIds, sentenceCoverage };
   if (archetype && spells && typeof archetype === "object" && typeof spells === "object") {
     const byCatalogue = detailsCache.get(archetype) ?? new WeakMap();
     byCatalogue.set(spells, result);
