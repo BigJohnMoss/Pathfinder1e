@@ -79,7 +79,7 @@ test("archetype resource catalogue covers reusable level and ability progression
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("bloodrager-symbol-striker")], 18, { charisma: 3 }), { weaponRune: 3, runeTrap: 6 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("cleric-forgemaster")], 1, { intelligence: 2 }), { runeforger: 5 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("brawler-exemplar")], 10, { charisma: 2 }), { inspiringProwess: 12 });
-  assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("gunslinger-mysterious-stranger")], 5, { charisma: 4 }), { strangersFortune: 4 });
+  assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("gunslinger-mysterious-stranger")], 5, { charisma: 4 }), { grit: 4, strangersFortune: 4 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("hunter-colluding-scoundrel")], 12), { scapegoat: 12 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("hunter-patient-ambusher")], 11, { wisdom: 3 }), { snareTraps: 8 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("medium-fiend-keeper")], 10), { darkCommunion: 10 });
@@ -112,6 +112,26 @@ test("archetype resource inference recognizes safe fixed, level, ability, and ca
 
   assert.deepEqual(inferArchetypeResourceAdjustments(archetype("kineticist-elemental-purist")), []);
   assert.equal(inferArchetypeResourceAdjustments(archetype("summoner-story-summoner"))[0]?.label, "Storykin Eidolon");
+});
+
+test("archetype ability substitutions replace base grit and ki formulas", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const abilities = { wisdom: 1, charisma: 4 };
+  const mysterious = archetype("gunslinger-mysterious-stranger");
+  const firebrand = archetype("gunslinger-firebrand");
+  const waterDancer = archetype("monk-water-dancer");
+
+  assert.equal(applyArchetypeResourceAdjustments(apgClassResourceMaximums("gunslinger", 1, abilities), [mysterious], 1, abilities).grit, 4);
+  assert.deepEqual(applyArchetypeResourceAdjustments(apgClassResourceMaximums("gunslinger", 5, abilities), [firebrand], 5, abilities), { grit: 4, bombs: 5 });
+  assert.equal(applyArchetypeResourceAdjustments(apgClassResourceMaximums("gunslinger", 20, abilities), [firebrand], 20, abilities).bombs, 20);
+  assert.equal(applyArchetypeResourceAdjustments(apgClassResourceMaximums("monk", 3, abilities), [waterDancer], 3, abilities).kiPool, undefined);
+  assert.equal(applyArchetypeResourceAdjustments(apgClassResourceMaximums("monk", 4, abilities), [waterDancer], 4, abilities).kiPool, 6);
+  assert.deepEqual(normalizeClassResourcesByClass(
+    { gunslinger: { grit: 69, bombs: 69 } },
+    [{ classId: "gunslinger", level: 5 }],
+    abilities,
+    { gunslinger: [firebrand] },
+  ), { gunslinger: { grit: 4, bombs: 5 } });
 });
 
 test("inferred archetype resources are bounded during persistence normalization", () => {

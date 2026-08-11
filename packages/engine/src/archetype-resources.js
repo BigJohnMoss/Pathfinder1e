@@ -7,6 +7,35 @@ const numericValue = (value) => numberWords[String(value).toLowerCase()] ?? Numb
 const resourceId = (feature) => `archetype-${feature.id}`;
 const resourceLabel = (feature) => String(feature.name ?? "Archetype resource").replace(/\s*\([A-Za-z, ]+\)\s*$/, "").trim();
 
+function replacementAbility(summary) {
+  const direct = summary.match(/\buses?\s+(?:(?:his|her|their|its)\s+)?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)(?:\s+(?:score|modifier))?\s+instead of\s+(?:(?:his|her|their|its)\s+)?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)/i);
+  if (direct) return { ability: direct[1].toLowerCase(), replacesAbility: direct[2].toLowerCase() };
+  const reversed = summary.match(/\binstead of using\s+(?:(?:his|her|their|its)\s+)?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)[^.]+?\b(?:he|she|they|it) uses?\s+(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\b/i);
+  return reversed ? { ability: reversed[2].toLowerCase(), replacesAbility: reversed[1].toLowerCase() } : undefined;
+}
+
+function baseResourceOverrides(archetype, feature, summary) {
+  const replacement = replacementAbility(summary);
+  const common = { sourceFeatureId: feature.id, operation: "replace", unit: "point", minimum: 1 };
+  if (archetype.classId === "gunslinger" && replacement?.replacesAbility === "wisdom" && /\bnumber of grit points\b/i.test(summary)) return [{
+    ...common, resourceId: "grit", label: "Grit", minimumLevel: 1, base: 0, abilityModifier: replacement.ability,
+  }];
+  if (archetype.classId === "monk" && replacement?.replacesAbility === "wisdom" && /\bsize of (?:his|her|their) ki pool\b/i.test(summary)) return [{
+    ...common, resourceId: "kiPool", label: "Ki pool", minimumLevel: 4, base: 0, levelDivisor: 2, abilityModifier: replacement.ability,
+  }];
+  if (archetype.classId === "gunslinger" && /\bgains the bombs ability as an alchemist of (?:his|her|their) gunslinger level\s*(?:-|–|−|minus)\s*4\b/i.test(summary)
+    && /\busing (?:his|her|their) Charisma modifier in place of (?:his|her|their) Intelligence modifier to determine (?:his|her|their) number of bombs per day\b/i.test(summary)) return [{
+    ...common, resourceId: "bombs", label: "Bombs", minimumLevel: 5, base: 1, perInterval: 1, interval: 1, abilityModifier: "charisma",
+  }];
+  return [];
+}
+
+function inferredBaseResourceOverrides(archetype) {
+  return (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? []).flatMap((feature) =>
+    baseResourceOverrides(archetype, feature, String(feature.summary ?? "").replace(/\s+/g, " ")),
+  );
+}
+
 function parseFormula(raw, minimumLevel) {
   let text = String(raw)
     .replace(/\([^)]*minimum[^)]*\)/gi, "")
@@ -47,6 +76,7 @@ export function inferArchetypeResourceAdjustments(archetype) {
     if (/^saving throws?$/i.test(String(feature.name ?? "").trim()) || /\bfamiliar\b/i.test(String(feature.name ?? ""))) continue;
     const minimumLevel = Math.max(1, Math.trunc(feature.level ?? 1));
     const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
+    inferred.push(...baseResourceOverrides(archetype, feature, summary));
     const sentences = summary.split(/(?<=[.!?])\s+/);
     for (const sentence of sentences) {
       if (/(?:companion|eidolon|familiar|homunculus|phantom|mount)\b[^.]{0,100}\b(?:times|rounds|points) per day/i.test(sentence)) continue;
@@ -105,7 +135,9 @@ export function resolvedArchetypeResourceAdjustments(archetype) {
   const explicit = archetype?.resourceAdjustments ?? [];
   const spellLike = inferArchetypeSpellLikeAbilityResources(archetype);
   const spellLikeFeatureIds = new Set(spellLike.map((resource) => resource.sourceFeatureId));
-  const general = (explicit.length ? explicit : inferArchetypeResourceAdjustments(archetype))
+  const baseOverrides = inferredBaseResourceOverrides(archetype)
+    .filter((resource) => !explicit.some((configured) => configured.resourceId === resource.resourceId));
+  const general = (explicit.length ? [...baseOverrides, ...explicit] : inferArchetypeResourceAdjustments(archetype))
     .filter((resource) => !spellLikeFeatureIds.has(resource.sourceFeatureId ?? resource.resourceId.replace(/^archetype-/, "")));
   return [...general, ...spellLike];
 }
