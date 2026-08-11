@@ -10,7 +10,7 @@ const resourceLabel = (feature) => String(feature.name ?? "Archetype resource").
 function replacementAbility(summary) {
   const direct = summary.match(/\buses?\s+(?:(?:his|her|their|its)\s+)?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)(?:\s+(?:score|modifier))?\s+instead of\s+(?:(?:his|her|their|its)\s+)?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)/i);
   if (direct) return { ability: direct[1].toLowerCase(), replacesAbility: direct[2].toLowerCase() };
-  const reversed = summary.match(/\binstead of using\s+(?:(?:his|her|their|its)\s+)?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)[^.]+?\b(?:he|she|they|it) uses?\s+(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\b/i);
+  const reversed = summary.match(/\binstead of using\s+(?:(?:his|her|their|its)\s+)?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)[^.]+?\b(?:he|she|they|it) uses?\s+(?:(?:his|her|their|its)\s+)?(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\b/i);
   return reversed ? { ability: reversed[2].toLowerCase(), replacesAbility: reversed[1].toLowerCase() } : undefined;
 }
 

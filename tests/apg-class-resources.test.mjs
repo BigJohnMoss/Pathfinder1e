@@ -117,10 +117,12 @@ test("archetype resource inference recognizes safe fixed, level, ability, and ca
 test("archetype ability substitutions replace base grit and ki formulas", () => {
   const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const abilities = { wisdom: 1, charisma: 4 };
+  const buccaneer = archetype("gunslinger-buccaneer");
   const mysterious = archetype("gunslinger-mysterious-stranger");
   const firebrand = archetype("gunslinger-firebrand");
   const waterDancer = archetype("monk-water-dancer");
 
+  assert.equal(applyArchetypeResourceAdjustments(apgClassResourceMaximums("gunslinger", 1, abilities), [buccaneer], 1, abilities).grit, 4);
   assert.equal(applyArchetypeResourceAdjustments(apgClassResourceMaximums("gunslinger", 1, abilities), [mysterious], 1, abilities).grit, 4);
   assert.deepEqual(applyArchetypeResourceAdjustments(apgClassResourceMaximums("gunslinger", 5, abilities), [firebrand], 5, abilities), { grit: 4, bombs: 5 });
   assert.equal(applyArchetypeResourceAdjustments(apgClassResourceMaximums("gunslinger", 20, abilities), [firebrand], 20, abilities).bombs, 20);
