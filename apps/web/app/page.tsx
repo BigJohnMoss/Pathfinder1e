@@ -555,7 +555,7 @@ export default function Home() {
     .filter(Boolean)
     .join("; ");
   const characterClass = useMemo(
-    () => applyArchetypes(baseCharacterClass, selectedArchetypes),
+    () => applyArchetypes(baseCharacterClass, selectedArchetypes, classes),
     [baseCharacterClass, selectedArchetypes],
   );
   const additionalCharacterClasses = useMemo(
@@ -575,7 +575,7 @@ export default function Home() {
               ) ?? [],
           );
           return baseClass
-            ? applyArchetypes(baseClass, selectedAdditionalArchetypes)
+            ? applyArchetypes(baseClass, selectedAdditionalArchetypes, classes)
             : undefined;
         })
         .filter((item): item is (typeof classes)[number] => Boolean(item)),
@@ -3305,6 +3305,7 @@ export default function Home() {
     const draftClass = applyArchetypes(
       draftBaseClass,
       draftArchetypes(draft.classId),
+      classes,
     );
     const draftPrimaryLevel = draft.classLevels[0]?.level ?? draft.level;
     const draftSecondaryLevel = draft.classLevels[1];
@@ -3315,12 +3316,13 @@ export default function Home() {
       ? applyArchetypes(
           draftSecondaryBaseClass,
           draftArchetypes(draftSecondaryBaseClass.id),
+          classes,
         )
       : undefined;
     const draftProgressionClasses = draft.classLevels.flatMap((entry) => {
       const baseClass = classes.find((item) => item.id === entry.classId);
       return baseClass
-        ? [applyArchetypes(baseClass, draftArchetypes(entry.classId))]
+        ? [applyArchetypes(baseClass, draftArchetypes(entry.classId), classes)]
         : [];
     });
     const draftEffectiveSpellcastingLevels = effectiveSpellcastingLevels(
