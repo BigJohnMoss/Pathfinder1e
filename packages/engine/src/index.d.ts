@@ -5,6 +5,9 @@ export type SaveProgression = "good" | "poor";
 
 export type CharacterClass = SharedCharacterClass;
 export function adjustedCompanionLevel(level: number, adjustment: CompanionProgressionAdjustment): number;
+export function archetypeCompanionEffectiveLevel(grant: NonNullable<CharacterArchetype["companionGrants"]>[number], classLevel: number, characterLevel?: number): number;
+export function inferArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;
+export function resolvedArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
 
 export interface ClassProgression {

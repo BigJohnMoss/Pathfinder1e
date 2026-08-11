@@ -1,0 +1,36 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import React from "react";
+import { JSDOM } from "jsdom";
+
+let render: typeof import("@testing-library/react").render;
+let screen: typeof import("@testing-library/react").screen;
+let cleanup: typeof import("@testing-library/react").cleanup;
+let fireEvent: typeof import("@testing-library/react").fireEvent;
+let within: typeof import("@testing-library/react").within;
+let userEvent: typeof import("@testing-library/user-event").default;
+let Home: typeof import("../apps/web/app/page").default;
+
+test.before(async () => {
+  const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
+  Object.assign(globalThis, { window: dom.window, document: dom.window.document, HTMLElement: dom.window.HTMLElement, localStorage: dom.window.localStorage, React });
+  Object.defineProperty(globalThis, "navigator", { configurable: true, value: dom.window.navigator });
+  ({ render, screen, cleanup, fireEvent, within } = await import("@testing-library/react"));
+  userEvent = (await import("@testing-library/user-event")).default;
+  Home = (await import("../apps/web/app/page")).default;
+});
+
+test.afterEach(() => { cleanup(); localStorage.clear(); });
+
+test("Buccaneer's inferred exotic pet appears at half effective level", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "gunslinger");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "gunslinger-buccaneer");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const manager = screen.getByRole("heading", { name: "Companion sheets" }).closest("section");
+  assert.ok(manager);
+  assert.match(within(manager).getByText("Exotic Pet (Ex)").closest("article")?.textContent ?? "", /familiar.*effective level 2/i);
+});

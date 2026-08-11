@@ -66,6 +66,7 @@ import {
   apgClassResourceMaximums,
   archetypeAbilityScoreBonuses,
   archetypeCombatBonuses,
+  archetypeCompanionEffectiveLevel,
   archetypeConditionalModifiers,
   archetypeDefenses,
   archetypeInitiativeBonus,
@@ -2494,7 +2495,7 @@ export default function Home() {
       const classLevel = classLevelMap[progressionClass.id] ?? 0;
       for (const grant of progressionClass.companionGrants ?? []) {
         if (classLevel < grant.minimumLevel) continue;
-        const effectiveLevel = Math.max(1, (grant.usesCharacterLevel ? level : classLevel) + (grant.effectiveLevelAdjustment ?? 0));
+        const effectiveLevel = archetypeCompanionEffectiveLevel(grant, classLevel, level);
         const existing = grant.stacksWithExisting
           ? descriptors.find((descriptor) => descriptor.kind === grant.kind)
           : undefined;

@@ -568,6 +568,7 @@ export interface ArchetypeCompanionGrant {
   optionId: string;
   minimumLevel: number;
   effectiveLevelAdjustment?: number;
+  effectiveLevelMultiplier?: number;
   stacksWithExisting?: boolean;
   usesCharacterLevel?: boolean;
 }
