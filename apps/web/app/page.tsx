@@ -84,6 +84,7 @@ import {
   characterLandSpeed,
   classProgression,
   druidWildShapeUses,
+  effectiveArchetypeSkillAbility,
   effectiveSpellcastingLevels,
   featBonuses,
   featPrerequisiteResults,
@@ -1471,14 +1472,16 @@ export default function Home() {
   }, [allSelectedArchetypes]);
   const skillEntries = displayedSkills.map((skill) => {
     const ranks = skillRanks[skill.name] ?? 0;
+    const ability = effectiveArchetypeSkillAbility(allSelectedArchetypes, classLevelMap, skill.name, skill.ability);
     const result = skillTotal(
       skillCharacterClass,
       skill,
-      abilities[skill.ability],
+      abilities[ability],
       ranks,
     );
     return {
       ...skill,
+      ability,
       ranks,
       ...result,
       total:

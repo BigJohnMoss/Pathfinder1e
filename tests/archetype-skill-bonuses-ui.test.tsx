@@ -22,6 +22,19 @@ test.before(async () => {
 
 test.afterEach(() => { cleanup(); localStorage.clear(); });
 
+test("Empiricist skill ability substitutions update the live Skills UI", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "investigator");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "2" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "investigator-empiricist");
+  await user.click(screen.getByRole("tab", { name: "Skills" }));
+
+  for (const skill of ["Disable Device", "Perception", "Sense Motive", "Use Magic Device"])
+    assert.match(screen.getByLabelText(`${skill} ranks`).closest("label")?.textContent ?? "", /Intelligence/);
+  assert.match(screen.getByLabelText("Diplomacy ranks").closest("label")?.textContent ?? "", /Charisma/);
+});
+
 test("inferred permanent initiative bonuses update the live combat total", async () => {
   const user = userEvent.setup();
   render(<Home />);
