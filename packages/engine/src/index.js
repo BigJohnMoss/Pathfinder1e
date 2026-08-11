@@ -1103,6 +1103,9 @@ export function normalizeCharacterDraft(
             ...(Array.isArray(effect.weaponIds)
               ? { weaponIds: [...new Set(effect.weaponIds.filter((id) => typeof id === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)))].slice(0, 10) }
               : {}),
+            ...(Array.isArray(effect.skillIds)
+              ? { skillIds: [...new Set(effect.skillIds.filter((id) => typeof id === "string" && /^[A-Za-z][A-Za-z ()]+$/.test(id)))].slice(0, 10) }
+              : {}),
             ...(typeof effect.damageType === "string" && ["cold", "electricity", "fire", "sonic", "force"].includes(effect.damageType)
               ? { damageType: effect.damageType }
               : {}),

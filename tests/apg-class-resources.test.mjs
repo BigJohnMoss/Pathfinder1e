@@ -94,6 +94,7 @@ test("archetype resource catalogue covers reusable level and ability progression
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("witch-medium")], 2, { intelligence: 4 }), { ectoplasmicAptitude: 4 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("witch-vellemancer")], 12, { intelligence: 3 }), { investedHexes: 9 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("wizard-wind-listener")], 20), { wispyForm: 20 });
+  assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("oracle-shigenjo")], 7, { charisma: 3 }), { "archetype-oracle-shigenjo-ki-pool-su-7": 5 });
 });
 
 test("archetype resource inference recognizes safe fixed, level, ability, and capped formulas", () => {

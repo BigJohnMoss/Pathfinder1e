@@ -14,6 +14,8 @@ let ClassFeatures: typeof import("../apps/web/app/class-features").ClassFeatures
 
 const monk = JSON.parse(readFileSync(new URL("../packages/data/src/classes/monk.json", import.meta.url), "utf8")) as CharacterClass;
 const sohei = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/monk-sohei.json", import.meta.url), "utf8")) as CharacterArchetype;
+const magus = JSON.parse(readFileSync(new URL("../packages/data/src/classes/magus.json", import.meta.url), "utf8")) as CharacterClass;
+const spireDefender = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/magus-spire-defender.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -22,6 +24,25 @@ test.before(async () => {
   ({ render, screen, cleanup } = await import("@testing-library/react"));
   userEvent = (await import("@testing-library/user-event")).default;
   ClassFeatures = (await import("../apps/web/app/class-features")).ClassFeatures;
+});
+
+test("skill-specific timed effects preserve the selected skill", async () => {
+  const effects: ActiveEffect[] = [];
+  const applied = applyArchetype(magus, spireDefender);
+  render(<ClassFeatures
+    level={19}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 19)}
+    classLevels={{ magus: 19 }}
+    dailyResources={[{ id: "arcanePool", label: "Magus Arcane Pool", unit: "point", maximum: 10, used: 0, onUsedChange: () => {} }]}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+  const user = userEvent.setup();
+  await user.selectOptions(screen.getByLabelText("Activate Arcane Augmentation affected skill"), "Stealth");
+  await user.click(screen.getByRole("button", { name: "Activate Arcane Augmentation" }));
+  assert.deepEqual(effects.map(({ target, bonus, roundsRemaining, skillIds }) => ({ target, bonus, roundsRemaining, skillIds })), [
+    { target: "skillChecks", bonus: 10, roundsRemaining: 10, skillIds: ["Stealth"] },
+  ]);
 });
 
 test.afterEach(() => cleanup());

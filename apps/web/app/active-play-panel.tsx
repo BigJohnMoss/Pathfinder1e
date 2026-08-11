@@ -239,7 +239,8 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   };
   const rollCheck = (check: CheckRoll, kind: "standard" | "skill" = "standard") => {
     const oneShotTarget: ActiveEffectTarget | undefined = kind === "skill" ? "skillChecks" : check.id === "caster-level" ? "casterLevelChecks" : ["fortitude", "reflex", "will"].includes(check.id) ? "savingThrows" : check.id === "initiative" ? "initiative" : undefined;
-    const modifier = check.modifier + (oneShotTarget && oneShotTarget !== "initiative" ? oneShotEffects(oneShotTarget).reduce((total, effect) => total + effect.bonus, 0) : 0);
+    const timedSkillEffects = kind === "skill" ? effects.filter((effect) => effect.target === "skillChecks" && !effect.consumeOnUse && (!effect.skillIds?.length || effect.skillIds.includes(check.id))) : [];
+    const modifier = check.modifier + timedSkillEffects.reduce((total, effect) => total + effect.bonus, 0) + (oneShotTarget && oneShotTarget !== "initiative" ? oneShotEffects(oneShotTarget).reduce((total, effect) => total + effect.bonus, 0) : 0);
     const result = rollD20Check(modifier);
     recordRoll({ label: check.name, formula: `1d20 ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}`, rolls: result.rolls, total: result.total, outcome: result.outcome });
     if (oneShotTarget) consumeOneShotEffects(oneShotTarget);
