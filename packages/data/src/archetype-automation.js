@@ -11,6 +11,7 @@ export const archetypeAutomationArrayFields = [
   "proficiencyAdjustments",
   "classSkillAdditions",
   "classSkillRemovals",
+  "spellListExclusions",
 ];
 
 export function mergeArchetypeAutomation(archetypes, overlayFiles = []) {
