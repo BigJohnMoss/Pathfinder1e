@@ -418,6 +418,7 @@ export interface CharacterArchetype {
   companionGrants?: ArchetypeCompanionGrant[];
   companionProgressionAdjustments?: CompanionProgressionAdjustment[];
   removesSpellcasting?: boolean;
+  spellcastingAbility?: "intelligence" | "wisdom" | "charisma";
   wildShapeLevelAdjustment?: number;
   druidDomainIds?: string[];
   rangerCombatStyleIds?: string[];

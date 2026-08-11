@@ -287,6 +287,7 @@ for (const [index, url] of archetypeUrls.entries()) {
     }
   }
   if (archetype.spellListClassId !== undefined && !classIds.has(archetype.spellListClassId)) errors.push(`${file}: spellListClassId references missing class ${archetype.spellListClassId}`);
+  if (archetype.spellcastingAbility !== undefined && !["intelligence", "wisdom", "charisma"].includes(archetype.spellcastingAbility)) errors.push(`${file}: spellcastingAbility has an invalid ability`);
   if (archetype.bonusSpellAdditions !== undefined) {
     if (!archetype.bonusSpellAdditions || typeof archetype.bonusSpellAdditions !== "object" || Array.isArray(archetype.bonusSpellAdditions) || Object.keys(archetype.bonusSpellAdditions).length === 0) errors.push(`${file}: bonusSpellAdditions must be a non-empty record`);
     else for (const [spellId, spellLevel] of Object.entries(archetype.bonusSpellAdditions)) {

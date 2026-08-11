@@ -5,6 +5,7 @@ import { inferArchetypeRerollActions, inferredArchetypeRerollActionDetails } fro
 import { inferArchetypeSpellLikeAbilityActions, inferredArchetypeSpellLikeAbilityDetails } from "./archetype-spell-like-abilities.js";
 import { inferArchetypeResourceActions, inferredArchetypeResourceActionDetails } from "./archetype-resource-actions.js";
 import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDetails } from "./archetype-timed-effects.js";
+import { inferArchetypeSpellcastingAbility, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, archetypeReplacementBoilerplate, archetypeRuleSentences, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
@@ -26,6 +27,7 @@ export { inferArchetypeRerollActions };
 export { inferArchetypeSpellLikeAbilityActions };
 export { inferArchetypeResourceActions };
 export { inferArchetypeTimedEffectActions };
+export { inferArchetypeSpellcastingAbility };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
@@ -1218,6 +1220,11 @@ export function applyArchetype(characterClass, archetype) {
   const baseSpellcasting = archetype.removesSpellcasting
     ? undefined
     : characterClass.spellcasting;
+  const inferredSpellcastingAbility = inferredArchetypeSpellcastingAbilityDetails(archetype);
+  const spellcastingAbility = archetype.spellcastingAbility
+    ?? (inferredSpellcastingAbility && inferredSpellcastingAbility.replacesAbility === baseSpellcasting?.ability
+      ? inferredSpellcastingAbility.ability
+      : undefined);
   const preparedAdjustment = archetype.preparedSpellAdjustmentPerLevel ??
     (baseSpellcasting?.castingType === "prepared" && !baseSpellcasting.preparesFromSlots
       ? archetype.spellSlotAdjustmentPerLevel
@@ -1268,6 +1275,7 @@ export function applyArchetype(characterClass, archetype) {
     spellcasting: baseSpellcasting
       ? {
           ...baseSpellcasting,
+          ability: spellcastingAbility ?? baseSpellcasting.ability,
           slotsByLevel: adjustTable(baseSpellcasting.slotsByLevel, archetype.spellSlotAdjustmentPerLevel),
           preparedByLevel: adjustTable(baseSpellcasting.preparedByLevel, preparedAdjustment),
           knownByLevel: adjustTable(baseSpellcasting.knownByLevel, archetype.spellsKnownAdjustmentPerLevel),
@@ -1623,6 +1631,9 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (archetype.companionGrants?.length) automated.push("Companion grants and effective-level progression");
   if (archetype.companionProgressionAdjustments?.length) automated.push("Companion effective-level adjustments");
   if (archetype.removesSpellcasting) automated.push("Spellcasting removal");
+  const inferredSpellcastingAbility = inferredArchetypeSpellcastingAbilityDetails(archetype);
+  const spellcastingAbility = archetype.spellcastingAbility ?? inferredSpellcastingAbility?.ability;
+  if (spellcastingAbility) automated.push(`Spellcasting ability: ${spellcastingAbility[0].toUpperCase()}${spellcastingAbility.slice(1)}`);
   if (archetype.wildShapeLevelAdjustment) automated.push("Wild shape effective level");
   if (archetype.druidDomainIds?.length) automated.push("Available druid domains");
   if (archetype.rangerCombatStyleIds?.length) automated.push("Available ranger combat styles");
