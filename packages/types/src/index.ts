@@ -368,6 +368,7 @@ export interface CharacterClass {
   spellListAdditions?: Record<string, number>;
   spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
+  spellGrants?: ArchetypeSpellGrant[];
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
@@ -412,6 +413,7 @@ export interface CharacterArchetype {
   spellListAdditions?: Record<string, number>;
   spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
+  spellGrants?: ArchetypeSpellGrant[];
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
@@ -550,6 +552,14 @@ export interface CharacterArchetype {
   prohibitedOptionIds?: string[];
   prohibitedCompanionKinds?: Array<"animal" | "mount" | "familiar" | "eidolon" | "drake">;
   source: SourceRef;
+}
+
+export interface ArchetypeSpellGrant {
+  spellId: string;
+  spellLevel: number;
+  minimumClassLevel: number;
+  mode: "list" | "known";
+  sourceFeatureId?: string;
 }
 export interface OptionGroupAugmentation {
   targetGroupId: string;

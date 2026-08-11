@@ -15,6 +15,7 @@ import { CharacterDetails } from "./character-details";
 import { ClassFeatures } from "./class-features";
 import { Spellbook } from "./spellbook";
 import { classSpellAutomation } from "./archetype-spell-automation";
+import { spellsFromArchetypeGrants } from "./archetype-spell-grants";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
 import { ClassSpellbook } from "./class-spellbook";
 import { SkillAllocation } from "./skill-allocation";
@@ -556,8 +557,8 @@ export default function Home() {
     .filter(Boolean)
     .join("; ");
   const characterClass = useMemo(
-    () => applyArchetypes(baseCharacterClass, selectedArchetypes, classes),
-    [baseCharacterClass, selectedArchetypes],
+    () => applyArchetypes(baseCharacterClass, selectedArchetypes, classes, spells),
+    [baseCharacterClass, selectedArchetypes, classes, spells],
   );
   const additionalCharacterClasses = useMemo(
     () =>
@@ -576,11 +577,11 @@ export default function Home() {
               ) ?? [],
           );
           return baseClass
-            ? applyArchetypes(baseClass, selectedAdditionalArchetypes, classes)
+            ? applyArchetypes(baseClass, selectedAdditionalArchetypes, classes, spells)
             : undefined;
         })
         .filter((item): item is (typeof classes)[number] => Boolean(item)),
-    [additionalArchetypeIds, additionalClassLevels, archetypeStacksByClass],
+    [additionalArchetypeIds, additionalClassLevels, archetypeStacksByClass, archetypes, classes, spells],
   );
   const allSelectedArchetypes = useMemo(() => {
     const selectedIds = new Set([
@@ -1877,19 +1878,21 @@ export default function Home() {
   const baseAvailableSpells = useMemo(
     () =>
       hasSpellcasting
-        ? spellsAvailableToClass(
+        ? mergeSpellLists(spellsAvailableToClass(
             spells,
             characterClass.spellListClassId ?? characterClass.id,
             maximumSpellLevel,
             characterClass.spellListAdditions,
-          )
+          ), spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "list"))
         : [],
     [
       characterClass.id,
       characterClass.spellListClassId,
       characterClass.spellListAdditions,
+      characterClass.spellGrants,
       hasSpellcasting,
       maximumSpellLevel,
+      primaryClassLevel,
       spells,
     ],
   );
@@ -2028,8 +2031,11 @@ export default function Home() {
     [characterClass.id, maximumSpellLevel, selectedOptionSpellChoices, spells],
   );
   const archetypeBonusSpells = useMemo(
-    () => spellsFromAdditions(spells, characterClass.bonusSpellAdditions, characterClass.id, maximumSpellLevel),
-    [characterClass.bonusSpellAdditions, characterClass.id, maximumSpellLevel, spells],
+    () => mergeSpellLists(
+      spellsFromAdditions(spells, characterClass.bonusSpellAdditions, characterClass.id, maximumSpellLevel),
+      spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "known"),
+    ),
+    [characterClass.bonusSpellAdditions, characterClass.id, characterClass.spellGrants, maximumSpellLevel, primaryClassLevel, spells],
   );
   const grantedSpells = useMemo(
     () => [
@@ -2169,17 +2175,18 @@ export default function Home() {
   const secondaryBaseSpells = useMemo(
     () =>
       secondaryHasSpellcasting && secondaryCharacterClass
-        ? spellsAvailableToClass(
+        ? mergeSpellLists(spellsAvailableToClass(
             spells,
             secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id,
             secondaryMaximumSpellLevel,
             secondaryCharacterClass.spellListAdditions,
-          )
+          ), spellsFromArchetypeGrants(spells, secondaryCharacterClass.spellGrants, secondaryCharacterClass.id, secondaryClassLevel, secondaryMaximumSpellLevel, "list"))
         : [],
     [
       secondaryCharacterClass,
       secondaryHasSpellcasting,
       secondaryMaximumSpellLevel,
+      secondaryClassLevel,
       spells,
     ],
   );
@@ -2292,6 +2299,7 @@ export default function Home() {
       ...secondaryPatronSpells,
       ...secondarySelectedOptionSpells,
       ...spellsFromAdditions(spells, secondaryCharacterClass?.bonusSpellAdditions, secondaryCharacterClass?.id ?? "", secondaryMaximumSpellLevel),
+      ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known"),
     ],
     [
       secondaryBloodlineSpells,
@@ -2300,6 +2308,7 @@ export default function Home() {
       secondarySelectedOptionSpells,
       secondaryCharacterClass,
       secondaryMaximumSpellLevel,
+      secondaryClassLevel,
       spells,
     ],
   );
@@ -3307,6 +3316,7 @@ export default function Home() {
       draftBaseClass,
       draftArchetypes(draft.classId),
       classes,
+      spells,
     );
     const draftPrimaryLevel = draft.classLevels[0]?.level ?? draft.level;
     const draftSecondaryLevel = draft.classLevels[1];
@@ -3318,12 +3328,13 @@ export default function Home() {
           draftSecondaryBaseClass,
           draftArchetypes(draftSecondaryBaseClass.id),
           classes,
+          spells,
         )
       : undefined;
     const draftProgressionClasses = draft.classLevels.flatMap((entry) => {
       const baseClass = classes.find((item) => item.id === entry.classId);
       return baseClass
-        ? [applyArchetypes(baseClass, draftArchetypes(entry.classId), classes)]
+        ? [applyArchetypes(baseClass, draftArchetypes(entry.classId), classes, spells)]
         : [];
     });
     const draftEffectiveSpellcastingLevels = effectiveSpellcastingLevels(
@@ -3492,6 +3503,7 @@ export default function Home() {
       ...draftPatronSpells,
       ...draftOptionSpells,
       ...spellsFromAdditions(spells, draftClass.bonusSpellAdditions, draftClass.id, draftCasting?.maximumSpellLevel ?? 0),
+      ...spellsFromArchetypeGrants(spells, draftClass.spellGrants, draftClass.id, draftPrimaryLevel, draftCasting?.maximumSpellLevel ?? 0, "known"),
     ];
     const draftSpells = mergeSpellLists(draftBaseSpells, draftGrantedSpells);
     const draftBloodlineSpellIds = draftGrantedSpells.map((spell) => spell.id);
@@ -3630,6 +3642,7 @@ export default function Home() {
       ...draftSecondaryPatronSpells,
       ...draftSecondaryOptionSpells,
       ...spellsFromAdditions(spells, draftSecondaryClass?.bonusSpellAdditions, draftSecondaryClass?.id ?? "", draftSecondaryCasting?.maximumSpellLevel ?? 0),
+      ...spellsFromArchetypeGrants(spells, draftSecondaryClass?.spellGrants, draftSecondaryClass?.id ?? "", draftSecondaryLevel?.level ?? 0, draftSecondaryCasting?.maximumSpellLevel ?? 0, "known"),
     ];
     const draftSecondarySpells = mergeSpellLists(
       draftSecondaryBaseSpells,
@@ -4545,7 +4558,7 @@ export default function Home() {
                 onRemoveEffectByName={(name) => setActiveEffects((current) => current.filter((effect) => effect.name !== name))}
               />}
               <FavoredClassBenefits allocations={favoredClassAlternateBonuses} />
-              <ArchetypeAutomationStatus archetypes={selectedArchetypes} feats={feats} />
+              <ArchetypeAutomationStatus archetypes={selectedArchetypes} feats={feats} spells={spells} />
               {classOptionChoices.length > 0 && (
                 <ClassOptions
                   choices={classOptionChoices.map((choice) => ({ ...choice, options: choice.options.filter((option) => !allSelectedArchetypes.some((archetype) => archetype.prohibitedOptionIds?.includes(option.id))) }))}

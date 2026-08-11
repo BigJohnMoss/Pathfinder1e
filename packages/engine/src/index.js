@@ -7,6 +7,7 @@ import { inferArchetypeSpellLikeAbilityActions, inferredArchetypeSpellLikeAbilit
 import { inferArchetypeResourceActions, inferredArchetypeResourceActionDetails } from "./archetype-resource-actions.js";
 import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDetails } from "./archetype-timed-effects.js";
 import { inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
+import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides } from "./archetype-skill-abilities.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
@@ -32,6 +33,7 @@ export { inferArchetypeResourceActions };
 export { inferArchetypeTimedEffectActions };
 export { inferArchetypeSpellcastingAbility };
 export { inferArchetypeSpellcastingProgression };
+export { inferArchetypeSpellAdditions };
 export { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
@@ -1163,7 +1165,7 @@ export function normalizeCharacterDraft(
   };
 }
 
-export function applyArchetype(characterClass, archetype, referenceClasses = []) {
+export function applyArchetype(characterClass, archetype, referenceClasses = [], spellCatalog = []) {
   if (!archetype || archetype.classId !== characterClass.id)
     return characterClass;
   const featureIds = new Set(
@@ -1226,6 +1228,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [])
     ? undefined
     : characterClass.spellcasting;
   const inferredSpellcastingAbility = inferredArchetypeSpellcastingAbilityDetails(archetype);
+  const inferredSpellAdditions = inferArchetypeSpellAdditions(archetype, spellCatalog);
   const spellcastingProgressionClassId = archetype.spellcastingProgressionClassId ?? inferredSpellcastingAbility?.progressionClassId;
   const progressionSpellcasting = referenceClasses.find((item) => item.id === spellcastingProgressionClassId)?.spellcasting;
   const baseSpellcasting = progressionSpellcasting ?? characterSpellcasting;
@@ -1277,13 +1280,20 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [])
     ],
     spellListAdditions: {
       ...(characterClass.spellListAdditions ?? {}),
+      ...inferredSpellAdditions.spellListAdditions,
       ...(archetype.spellListAdditions ?? {}),
     },
     spellListClassId: archetype.spellListClassId ?? inferredSpellcastingAbility?.spellListClassId ?? characterClass.spellListClassId,
     bonusSpellAdditions: {
       ...(characterClass.bonusSpellAdditions ?? {}),
+      ...inferredSpellAdditions.bonusSpellAdditions,
       ...(archetype.bonusSpellAdditions ?? {}),
     },
+    spellGrants: [...new Map([
+      ...(characterClass.spellGrants ?? []),
+      ...(inferredSpellAdditions.spellGrants ?? []),
+      ...(archetype.spellGrants ?? []),
+    ].map((grant) => [`${grant.mode}:${grant.spellId}`, grant])).values()],
     spellcasting: baseSpellcasting
       ? {
           ...baseSpellcasting,
@@ -1602,7 +1612,7 @@ export function archetypeEligibilityIssues(archetype, context = {}) {
   return [...new Set(issues)];
 }
 
-export function applyArchetypes(characterClass, archetypes = [], referenceClasses = []) {
+export function applyArchetypes(characterClass, archetypes = [], referenceClasses = [], spellCatalog = []) {
   const selected = archetypes.filter(
     (archetype) => archetype?.classId === characterClass.id,
   );
@@ -1619,7 +1629,7 @@ export function applyArchetypes(characterClass, archetypes = [], referenceClasse
     }
   }
   const applied = selected.reduce(
-    (current, archetype) => applyArchetype(current, archetype, referenceClasses),
+    (current, archetype) => applyArchetype(current, archetype, referenceClasses, spellCatalog),
     characterClass,
   );
   return selected.length
@@ -1630,7 +1640,7 @@ export function applyArchetypes(characterClass, archetypes = [], referenceClasse
     : applied;
 }
 
-export function archetypeAutomationSummary(archetype, feats = []) {
+export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (!archetype) return { automated: [], manual: [] };
   const automated = [];
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
@@ -1639,6 +1649,13 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (archetype.featureOverrides?.length) automated.push("Feature rules overrides");
   if (archetype.spellListAdditions && Object.keys(archetype.spellListAdditions).length) automated.push("Spell-list additions");
   if (archetype.bonusSpellAdditions && Object.keys(archetype.bonusSpellAdditions).length) automated.push("Bonus spells known");
+  const inferredSpellAdditions = inferredArchetypeSpellAdditionDetails(archetype, spells);
+  const inferredSpellListCount = Object.keys(inferredSpellAdditions.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined).length;
+  const inferredBonusSpellCount = Object.keys(inferredSpellAdditions.bonusSpellAdditions).filter((id) => archetype.bonusSpellAdditions?.[id] === undefined).length;
+  const inferredKnownGrantCount = inferredSpellAdditions.spellGrants.filter((grant) => grant.mode === "known" && archetype.bonusSpellAdditions?.[grant.spellId] === undefined && !(archetype.spellGrants ?? []).some((explicit) => explicit.mode === grant.mode && explicit.spellId === grant.spellId)).length;
+  if (inferredSpellListCount) automated.push(`${inferredSpellListCount} inferred spell-list addition${inferredSpellListCount === 1 ? "" : "s"}`);
+  if (inferredBonusSpellCount) automated.push(`${inferredBonusSpellCount} inferred bonus spell${inferredBonusSpellCount === 1 ? "" : "s"} known`);
+  if (inferredKnownGrantCount) automated.push(`${inferredKnownGrantCount} level-gated bonus spell${inferredKnownGrantCount === 1 ? "" : "s"} known`);
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
   if (archetype.companionProgressionAdjustments?.length) automated.push("Companion effective-level adjustments");

@@ -1,0 +1,199 @@
+const ordinal = "(?:st|nd|rd|th)";
+const detailsCache = new WeakMap();
+
+const normalizedText = (value) => String(value ?? "")
+  .replace(/[\u2018\u2019]/g, "'")
+  .replace(/[\u2013\u2014]/g, "-")
+  .replace(/â€™/g, "'")
+  .replace(/â€“|â€”/g, "-")
+  .replace(/(?<=[a-z')])(?:ACG|APG|ARG|HA|ISWG|OA|PCS|UC|UI|UM)\b/g, "")
+  .replace(/\s+/g, " ")
+  .trim();
+
+const escaped = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+function spellMatches(text, spells) {
+  const matches = [];
+  for (const spell of spells ?? []) {
+    const name = normalizedText(spell?.name);
+    if (!name) continue;
+    const aliases = [name];
+    const reordered = name.match(/^(greater|lesser|mass) (.+)$/i);
+    if (reordered) aliases.push(`${reordered[2]} (${reordered[1]})`);
+    const commaReordered = name.match(/^(.+), (communal|greater|lesser|mass)$/i);
+    if (commaReordered) aliases.push(`${commaReordered[2]} ${commaReordered[1]}`, `${commaReordered[1]} (${commaReordered[2]})`);
+    for (const alias of aliases) {
+      const pattern = new RegExp(`(^|[^a-z0-9])${escaped(alias)}(?=$|[^a-z0-9])`, "ig");
+      for (const match of text.matchAll(pattern)) matches.push({
+        spell,
+        index: match.index + match[1].length,
+        end: match.index + match[0].length,
+      });
+    }
+  }
+  return matches.sort((left, right) => left.index - right.index || right.end - left.end);
+}
+
+function uniqueMatches(matches) {
+  const occupied = [];
+  const bySpell = new Map();
+  for (const match of matches.toSorted((left, right) => left.index - right.index || (right.end - right.index) - (left.end - left.index))) {
+    if (occupied.some(([start, end]) => match.index < end && match.end > start)) continue;
+    occupied.push([match.index, match.end]);
+    bySpell.set(match.spell.id, match);
+  }
+  return [...bySpell.values()].sort((left, right) => left.index - right.index);
+}
+
+function tableEntries(summary, spells) {
+  const headings = [...summary.matchAll(new RegExp(`(?:^|[.;:]|\\s)\\s*(0|[1-9])${ordinal}?\\s*(?:-(?!level\\b)|:)\\s*`, "gi"))];
+  return headings.flatMap((heading, index) => {
+    const before = summary.slice(0, heading.index);
+    const nearestAdds = [...before.matchAll(/\badds?\b/gi)].at(-1);
+    const listContext = nearestAdds ? before.slice(nearestAdds.index) : "";
+    if (!/\b(?:spell list|class list|formula(?:e)? list)\b/i.test(listContext)) return [];
+    const level = Number(heading[1]);
+    const start = heading.index + heading[0].length;
+    const trailingSentence = summary.slice(start).search(/\s+[.]\s+(?=[A-Z])/);
+    const lastListEnd = trailingSentence < 0 ? summary.length : start + trailingSentence;
+    const end = headings[index + 1]?.index ?? lastListEnd;
+    const segment = summary.slice(start, end < start ? summary.length : end);
+    return uniqueMatches(spellMatches(segment, spells)).map((match) => ({ spell: match.spell, level, kind: "list" }));
+  });
+}
+
+function parentheticalEntries(summary, spells) {
+  return uniqueMatches(spellMatches(summary, spells)).flatMap((match) => {
+    const after = summary.slice(match.end, match.end + 90);
+    const level = after.match(new RegExp(`^\\s*(?:\\([^)]*?\\b([0-9])${ordinal}?[- ]level(?:\\s+(?:spell|extract))?[^)]*\\)|\\(([0-9])${ordinal}?\\)|.{0,120}?\\b(?:as|at) (?:(?:an?|the) )?(?:bonus )?([0-9])${ordinal}?[- ]level(?:\\s+(?:spell|extract))(?:s? known)?|.{0,100}?\\bto (?:his|her|their|the) ([0-9])${ordinal}?[- ]level spell list[^.;]{0,60})`, "i"));
+    if (!level) return [];
+    if (level[2] && /\bgains the following spells at the appropriate levels\b/i.test(summary)) return [];
+    const preceding = summary.slice(Math.max(0, match.index - 140), match.index);
+    const minimumClassLevel = Number([...preceding.matchAll(/\b(?:At|until) (\d+)(?:st|nd|rd|th) level\b/gi)].at(-1)?.[1] ?? 0);
+    const hasList = /\bspell list\b/i.test(level[0]);
+    const hasKnown = /\bspells? known\b/i.test(level[0]);
+    return [{ spell: match.spell, level: Number(level[1] ?? level[2] ?? level[3] ?? level[4]), ...(hasList && hasKnown ? { kind: "both" } : hasKnown ? { kind: "known" } : hasList ? { kind: "list" } : {}), ...(minimumClassLevel ? { minimumClassLevel } : {}) }];
+  });
+}
+
+function progressiveSummonEntries(summary, spells, entries) {
+  const interval = Number(summary.match(/\band so on every (\d+) levels? thereafter\b/i)?.[1] ?? 0);
+  const family = /\bsummon nature['’]s ally\b/i.test(summary) ? "Summon Nature's Ally" : /\bsummon monster\b/i.test(summary) ? "Summon Monster" : null;
+  if (!interval || !family) return [];
+  const roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+  const matching = entries.filter((entry) => normalizedText(entry.spell.name).toLowerCase().startsWith(family.toLowerCase()));
+  const second = matching.find((entry) => normalizedText(entry.spell.name).toLowerCase() === `${family} II`.toLowerCase());
+  if (!second?.minimumClassLevel) return [];
+  const hasList = /\bspell list\b/i.test(summary);
+  const hasKnown = /\bspells? known\b/i.test(summary);
+  const maximumSpellLevel = Math.max(...matching.map((entry) => entry.level));
+  return roman.slice(0, maximumSpellLevel).flatMap((suffix, index) => {
+    const spell = spells.find((candidate) => normalizedText(candidate.name).toLowerCase() === `${family} ${suffix}`.toLowerCase());
+    if (!spell) return [];
+    const explicit = matching.find((entry) => entry.spell.id === spell.id);
+    if (explicit) return [explicit];
+    const level = index + 1;
+    return [{ spell, level, minimumClassLevel: second.minimumClassLevel + Math.max(0, index - 1) * interval, kind: hasList && hasKnown ? "both" : hasKnown ? "known" : "list" }];
+  });
+}
+
+function groupedParentheticalEntries(summary, spells) {
+  if (!/\bgains the following spells at the appropriate levels\b/i.test(summary)) return [];
+  const entries = [];
+  const pattern = new RegExp(`(?:^|[:,;])\\s*([^,.;:]{1,180}?)\\s*\\(([0-9]{1,2})${ordinal}?\\)`, "gi");
+  let spellLevel = 0;
+  for (const match of summary.matchAll(pattern)) {
+    spellLevel += 1;
+    const names = uniqueMatches(spellMatches(match[1], spells));
+    for (const name of names) entries.push({ spell: name.spell, level: spellLevel, kind: "known", minimumClassLevel: Number(match[2]) });
+  }
+  return entries;
+}
+
+function respectiveEntries(summary, spells) {
+  const entries = [];
+  const pattern = new RegExp(`\\badds?\\s+(.{1,260}?)\\s+to (?:his|her|their|the) (?:list of )?(?:[a-z]+ )?(spells known|spell list|formula(?:e)? list)[^.]{0,100}?\\bas\\s+(.{1,100}?)\\s+respectively`, "gi");
+  for (const match of summary.matchAll(pattern)) {
+    const names = uniqueMatches(spellMatches(match[1], spells));
+    const levels = [...match[3].matchAll(new RegExp(`([0-9])${ordinal}?`, "gi"))].map((item) => Number(item[1]));
+    if (names.length !== levels.length) continue;
+    const kind = /known/i.test(match[2]) ? "known" : "list";
+    names.forEach((entry, index) => entries.push({ spell: entry.spell, level: levels[index], kind }));
+  }
+  return entries;
+}
+
+function parentheticalRespectiveEntries(summary, spells) {
+  const entries = [];
+  const pattern = new RegExp(`\\badds?\\s+(.{1,260}?)\\s*\\(as\\s+(.{1,100}?)\\s+(?:spells?|extracts?),?\\s+respectively\\)\\s+to (?:his|her|their|the) (?:[a-z]+ )?(spells known|spell list|formula(?:e)? list)`, "gi");
+  for (const match of summary.matchAll(pattern)) {
+    const names = uniqueMatches(spellMatches(match[1], spells));
+    const levels = [...match[2].matchAll(new RegExp(`([0-9])${ordinal}?`, "gi"))].map((item) => Number(item[1]));
+    if (names.length !== levels.length) continue;
+    const kind = /known/i.test(match[3]) ? "known" : "list";
+    names.forEach((entry, index) => entries.push({ spell: entry.spell, level: levels[index], kind }));
+  }
+  return entries;
+}
+
+function isFixedSpellExpansion(summary) {
+  return /\badds?\b[^.]{0,260}\b(?:spell list|class list|formula(?:e)? list|extracts? known|spells? known)\b/i.test(summary)
+    && !/\b(?:choose|chooses|chosen|select|selects|selected)\b[^.]{0,180}\b(?:spell|extract)s?\b/i.test(summary)
+    && !/\b(?:add|adds?) (?:any|one|two|three|four|\d+)\b[^.]{0,180}\b(?:spell|extract)s?\b/i.test(summary);
+}
+
+function additionKinds(summary) {
+  const spellList = /\b(?:spell list|class list|formula(?:e)? list)\b/i.test(summary);
+  const explicitlyKnown = /\b(?:extracts?|spells?) known\b|\bautomatically adds?\b[^.]{0,120}\bformula book\b/i.test(summary);
+  const mustLearn = /\bmust (?:still )?(?:learn|select|add)\b|\bdoesn['’]t automatically gain\b/i.test(summary);
+  return { spellList, bonusKnown: explicitlyKnown && !mustLearn, mustLearn };
+}
+
+export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
+  const cached = archetype && spells && detailsCache.get(archetype)?.get(spells);
+  if (cached) return cached;
+  const spellListAdditions = {};
+  const bonusSpellAdditions = {};
+  const spellGrants = [];
+  const sourceFeatureIds = new Set();
+  for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
+    const summary = normalizedText(feature.summary);
+    if (!isFixedSpellExpansion(summary)) continue;
+    const parsedEntries = [...tableEntries(summary, spells), ...parentheticalEntries(summary, spells), ...groupedParentheticalEntries(summary, spells), ...respectiveEntries(summary, spells), ...parentheticalRespectiveEntries(summary, spells)];
+    const entries = [...parsedEntries, ...progressiveSummonEntries(summary, spells, parsedEntries)];
+    const unique = new Map(entries.filter(({ level }) => Number.isInteger(level) && level >= 0 && level <= 9).map((entry) => [`${entry.spell.id}:${entry.level}`, entry]));
+    if (!unique.size) continue;
+    const kinds = additionKinds(summary);
+    const conditionalKnown = /\badds?\b[^.]{0,160}\bspells? known\b[^.]{0,80}\bwhile\b|\badds?\b[^.]{0,80}\bwhile\b[^.]{0,160}\bspells? known\b/i.test(summary);
+    for (const { spell, level, kind, minimumClassLevel } of unique.values()) {
+      const addToList = kind === "list" || kind === "both" || (!kind && kinds.spellList);
+      const addAsKnown = kind === "known" || kind === "both" || (!kind && kinds.bonusKnown);
+      if (addToList) spellListAdditions[spell.id] = Math.min(spellListAdditions[spell.id] ?? level, level);
+      if (addAsKnown && !kinds.mustLearn && !conditionalKnown) spellGrants.push({
+        spellId: spell.id,
+        spellLevel: level,
+        minimumClassLevel: minimumClassLevel ?? feature.level ?? 1,
+        mode: "known",
+        sourceFeatureId: feature.id,
+      });
+    }
+    if (kinds.spellList || kinds.bonusKnown) sourceFeatureIds.add(feature.id);
+  }
+  const result = {
+    spellListAdditions,
+    bonusSpellAdditions,
+    spellGrants: [...new Map(spellGrants.map((grant) => [`${grant.mode}:${grant.spellId}`, grant])).values()],
+    sourceFeatureIds,
+  };
+  if (archetype && spells && typeof archetype === "object" && typeof spells === "object") {
+    const byCatalogue = detailsCache.get(archetype) ?? new WeakMap();
+    byCatalogue.set(spells, result);
+    detailsCache.set(archetype, byCatalogue);
+  }
+  return result;
+}
+
+export function inferArchetypeSpellAdditions(archetype, spells = []) {
+  const { spellListAdditions, bonusSpellAdditions, spellGrants } = inferredArchetypeSpellAdditionDetails(archetype, spells);
+  return { spellListAdditions, bonusSpellAdditions, spellGrants };
+}
