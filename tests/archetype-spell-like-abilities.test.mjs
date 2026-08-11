@@ -18,6 +18,19 @@ test("fixed spell-like abilities become cast actions with the published cadence"
   assert.equal(atWill.resourceId, undefined);
 });
 
+test("named spell-equivalent powers become bounded activation actions", () => {
+  const enforcer = inferArchetypeSpellLikeAbilityActions(archetype("paladin-iomedaen-enforcer"));
+  assert.deepEqual(enforcer.map(({ action }) => [action.spellLikeAbility.spellName, action.spellLikeAbility.cadence, action.spellLikeAbility.kind]), [
+    ["detect chaos", "at-will", "spell-equivalent"],
+  ]);
+  const mesmerist = archetype("mesmerist-umbral-mesmerist");
+  const shadowSummoning = inferArchetypeSpellLikeAbilityActions(mesmerist).find(({ action }) => action.spellLikeAbility.spellName === "summon monster 1").action;
+  assert.equal(applyArchetypeResourceAdjustments({}, [mesmerist], 4, { charisma: 4 })[shadowSummoning.resourceId], 7);
+  const secretSeeker = archetype("inquisitor-secret-seeker");
+  const detectThoughts = inferArchetypeSpellLikeAbilityActions(secretSeeker).find(({ action }) => action.spellLikeAbility.spellName === "detect thoughts").action;
+  assert.equal(applyArchetypeResourceAdjustments({}, [secretSeeker], 9)[detectThoughts.resourceId], 18);
+});
+
 test("spell-like resources enforce daily, weekly, formula, and scaling limits", () => {
   const greenFaith = archetype("druid-green-faith-initiate");
   const maximums = applyArchetypeResourceAdjustments({}, [greenFaith], 10);

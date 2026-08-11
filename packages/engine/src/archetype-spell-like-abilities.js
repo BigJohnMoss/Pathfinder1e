@@ -6,6 +6,7 @@ const subordinate = /\b(?:animal companion|companion|eidolon|familiar|homunculus
 const unsafeName = /\b(?:ability|abilities|effect|effects|following|it|level|slot|spells?|extract|formula|infusion|power)\b/i;
 
 const cleanSpellName = (value) => String(value)
+  .replace(/[\u2018\u2019]/g, "'")
   .replace(/\([^)]*\)/g, "")
   .replace(/(?:APG|ARG|HA|OA|OC|UI|UM|UW)\b/g, "")
   .replace(/^[\s:;,.-]+|[\s:;,.-]+$/g, "")
@@ -26,18 +27,45 @@ function spellNames(raw) {
     .replace(/^one of (?:the )?following spells?(?:, chosen at the time of casting)?:?\s*/i, "")
     .replace(/^(?:either|the spell)\s+/i, "");
   if (!cleaned || cleaned.length > 150) return [];
+  const roman = { i: 1, ii: 2, iii: 3, iv: 4, v: 5, vi: 6, vii: 7, viii: 8, ix: 9 };
   return cleaned.split(/\s*(?:,|\bor\b|\band\b)\s*/i)
     .map(cleanSpellName)
-    .filter((name) => name && name.split(/\s+/).length <= 7 && !unsafeName.test(name));
+    .map((name) => name.replace(/^(summon monster) (i|ii|iii|iv|v|vi|vii|viii|ix)$/i, (_, family, tier) => `${family} ${roman[tier.toLowerCase()]}`))
+    .filter((name) => name && name.split(/\s+/).length <= 7 && !unsafeName.test(name) && !/^summon nature's ally$/i.test(name));
 }
 
 function parseFrequency(text) {
-  if (/\bat will\b/i.test(text)) return { cadence: "at-will" };
+  if (/\bat will\b|\bat all times\b/i.test(text)) return { cadence: "at-will" };
   const fixed = text.match(/\b(once|twice|\d+|one|two|three|four|five|six)(?: times?)? per (day|week)\b/i);
   if (fixed) return { cadence: fixed[2].toLowerCase(), base: numericValue(fixed[1]) };
   const ability = text.match(/\ba number of times per day equal to (?:his|her|their|the)?\s*(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) modifier(?:\s*\(minimum\s*(\d+)\))?/i);
   if (ability) return { cadence: "day", base: 0, abilityModifier: ability[1].toLowerCase(), minimum: Number(ability[2] ?? 0) };
+  const levelPool = text.match(/\bfor a number of (rounds|minutes) per day equal to\s*(twice|double)?\s*(?:his|her|their|the)?\s*(?:[a-z]+ )?(?:class )?level\b/i);
+  if (levelPool) return { cadence: "day", base: 0, levelMultiplier: levelPool[2] ? 2 : 1, unit: levelPool[1].toLowerCase().replace(/s$/, "") };
+  if (/\bfor 1 minute per (?:[a-z]+ )?(?:class )?level per day\b/i.test(text)) return { cadence: "day", base: 0, levelMultiplier: 1, unit: "minute" };
+  const perLevels = text.match(/\bonce per day for every (\d+|one|two|three|four|five|six) (?:[a-z]+ )?(?:class )?levels?\b/i);
+  if (perLevels) return { cadence: "day", base: 0, levelDivisor: numericValue(perLevels[1]), minimum: 0 };
   return undefined;
+}
+
+function equivalentSpellNames(sentence) {
+  const names = [];
+  const used = sentence.match(/\bcan\s+((?:use\s+)?(?:detect|cast|summon)\b.{1,110}?)(?=\s*(?:,?\s+as per|\s+at will|\s+once per|\s+twice per|\s+a number of times per|\s+for a number of|\s+for 1 minute per))/i)?.[1]?.replace(/^use\s+/i, "");
+  if (used) names.push(...spellNames(used));
+  for (const match of sentence.matchAll(/\bas per\s+(?:the\s+)?(?:spell\s+)?([a-z][a-z' -]*?)(?=\s*(?:[,).;]|\bor create\b|\ba number\b|\bonce\b|\bfor\b|\bat all\b))/gi))
+    names.push(...spellNames(match[1]));
+  return [...new Set(names.map((name) => name.toLowerCase()))];
+}
+
+function parsedEquivalentSentence(feature, sentence, sentenceIndex) {
+  if (!/\bas per\b/i.test(sentence) || subordinate.test(sentence) || /\b(?:spend|expend|sacrifice|forgo)\b|\b(?:when|if)\b[^.]{0,120}\binstead\b|\brounds? of (?:bardic performance|rage|raging song)\b/i.test(sentence)) return [];
+  const abilityPlusBase = sentence.match(/\ba number of times per day equal to\s*(\d+)\s*\+\s*(?:his|her|their|the)?\s*(Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) modifier(?:\s*\(minimum\s*(\d+)\))?/i);
+  const frequency = parseFrequency(sentence) ?? (abilityPlusBase ? { cadence: "day", base: Number(abilityPlusBase[1]), abilityModifier: abilityPlusBase[2].toLowerCase(), minimum: Number(abilityPlusBase[3] ?? 0) } : undefined);
+  if (!frequency) return [];
+  const names = equivalentSpellNames(sentence);
+  if (!names.length) return [];
+  const minimumLevel = Math.max(1, Number([...sentence.matchAll(/\bAt (\d+)(?:st|nd|rd|th) level\b/gi)].at(-1)?.[1] ?? feature.level ?? 1));
+  return names.map((name) => ({ name, spellId: spellId(name), frequency, minimumLevel, sentence, sentenceIndex, equivalent: true }));
 }
 
 function parsedSentence(feature, sentence, sentenceIndex) {
@@ -93,7 +121,10 @@ export function inferredArchetypeSpellLikeAbilityDetails(archetype) {
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (feature.resourceActions?.length) continue;
     const sentences = archetypeRuleSentences(feature.summary);
-    const parsed = sentences.flatMap((sentence, sentenceIndex) => parsedSentence(feature, sentence, sentenceIndex));
+    const parsed = sentences.flatMap((sentence, sentenceIndex) => [
+      ...parsedSentence(feature, sentence, sentenceIndex),
+      ...parsedEquivalentSentence(feature, sentence, sentenceIndex),
+    ]).filter((entry, index, entries) => entries.findIndex((candidate) => candidate.sentenceIndex === entry.sentenceIndex && candidate.spellId === entry.spellId) === index);
     if (!parsed.length) continue;
     const groups = new Map();
     for (const entry of parsed) {
@@ -121,6 +152,9 @@ export function inferredArchetypeSpellLikeAbilityDetails(archetype) {
             minimum: frequency.minimum ?? 0,
             minimumLevel: entry.minimumLevel,
             refreshCadence: frequency.cadence,
+            ...(frequency.levelMultiplier ? { levelMultiplier: frequency.levelMultiplier } : {}),
+            ...(frequency.levelDivisor ? { levelDivisor: frequency.levelDivisor } : {}),
+            ...(frequency.unit ? { unit: frequency.unit } : {}),
           }, feature.summary ?? ""));
         }
         actions.push({
@@ -131,13 +165,13 @@ export function inferredArchetypeSpellLikeAbilityDetails(archetype) {
             classId: archetype.classId,
             minimumLevel: entry.minimumLevel,
             ...(resourceId ? { resourceId, cost: 1 } : {}),
-            spellLikeAbility: { spellId: entry.spellId, spellName: entry.name, cadence: frequency.cadence },
+            spellLikeAbility: { spellId: entry.spellId, spellName: entry.name, cadence: frequency.cadence, ...(entry.equivalent ? { kind: "spell-equivalent" } : {}) },
             summary: entry.sentence,
           },
         });
       }
     }
-    if (isFullyRepresented(feature, parsed, sentences)) fullyAutomatedFeatureIds.add(feature.id);
+    if (isFullyRepresented(feature, parsed, sentences) && (!parsed.some((entry) => entry.equivalent) || !/\b(?:if|when|while|provided|only|instead|non-outsider|willing)\b/i.test(feature.summary ?? ""))) fullyAutomatedFeatureIds.add(feature.id);
   }
   return { actions, resources, fullyAutomatedFeatureIds };
 }

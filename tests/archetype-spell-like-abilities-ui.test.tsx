@@ -16,6 +16,8 @@ const alchemist = JSON.parse(readFileSync(new URL("../packages/data/src/classes/
 const torchbearer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/alchemist-blazing-torchbearer.json", import.meta.url), "utf8")) as CharacterArchetype;
 const druid = JSON.parse(readFileSync(new URL("../packages/data/src/classes/druid.json", import.meta.url), "utf8")) as CharacterClass;
 const greenFaith = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/druid-green-faith-initiate.json", import.meta.url), "utf8")) as CharacterArchetype;
+const paladin = JSON.parse(readFileSync(new URL("../packages/data/src/classes/paladin.json", import.meta.url), "utf8")) as CharacterClass;
+const enforcer = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/paladin-iomedaen-enforcer.json", import.meta.url), "utf8")) as CharacterArchetype;
 
 test.before(async () => {
   const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost" });
@@ -51,4 +53,11 @@ test("limited spell-like abilities spend their matching tracked resource", async
   await userEvent.setup().click(screen.getByRole("button", { name: "Cast whispering wind" }));
   assert.deepEqual(spent, [1]);
   assert.equal(screen.getByLabelText("Cast whispering wind result").textContent, "whispering wind cast as a spell-like ability.");
+});
+
+test("spell-equivalent archetype powers explain their activation accurately", async () => {
+  const applied = applyArchetype(paladin, enforcer);
+  render(<ClassFeatures level={1} className={applied.name} features={featuresThroughLevel(applied, 1)} classLevels={{ paladin: 1 }} />);
+  await userEvent.setup().click(screen.getByRole("button", { name: "Cast detect chaos" }));
+  assert.equal(screen.getByLabelText("Cast detect chaos result").textContent, "detect chaos activated as a spell-equivalent effect.");
 });
