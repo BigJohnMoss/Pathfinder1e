@@ -57,8 +57,10 @@ function narrativeLeadSentence(sentence) {
   return !/\d|\b(?:armor class|attack|bonus|can|check|damage|DC|feet?|gains?|immune|immunity|level|may|must|penalty|rank|receives?|resistance|roll|round|save|skill|spell|times? per|uses?)\b/i.test(withoutLevel);
 }
 
-function directSaveRuleSentence(sentence) {
-  return /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,80})\s+(?:gains?|receives?|has)\b/i.test(sentence) &&
+function directSaveRuleSentence(sentence, parsedCount = 1) {
+  const numericBonuses = sentence.match(/\+\d+ (?:(?:alchemical|circumstance|competence|dodge|enhancement|insight|luck|morale|profane|racial|resistance|sacred|trait|untyped) )?bonus(?:es)?\b/gi)?.length ?? 0;
+  return numericBonuses === parsedCount &&
+    /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,80})\s+(?:gains?|receives?|has)\b/i.test(sentence) &&
     !/\b(?:can|may|spends?|uses?|becomes? immune|is unaffected)\b/i.test(sentence) &&
     (sentence.match(/\b(?:gains?|receives?|has)\b/gi)?.length ?? 0) === 1;
 }
@@ -66,6 +68,7 @@ function directSaveRuleSentence(sentence) {
 export function inferredArchetypeSaveBonusDetails(archetype) {
   const adjustments = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const replacement of archetype?.replacements ?? []) {
     for (const feature of replacement.features ?? []) {
       if (/^(?:Deeds?|Bonus Feats?|Revelations?)$/i.test(feature.name ?? "")) continue;
@@ -84,6 +87,16 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
       adjustments.push(...unique.map(({ adjustment }) => adjustment));
       const hasScheduledProgression = unique.some(({ adjustment }) => adjustment.bonusByLevel || adjustment.interval);
       const firstParsedIndex = unique.length ? Math.min(...unique.map(({ index }) => index)) : -1;
+      for (const { index } of unique) {
+        if (directSaveRuleSentence(sentences[index]))
+          sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+      }
+      if (hasScheduledProgression) {
+        for (const [index, sentence] of sentences.entries()) {
+          if (/^(?:This|The) bonus\b[^.]{0,160}\b(?:increases?|improves?)\b/i.test(sentence))
+            sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+        }
+      }
       const remaining = sentences.filter((sentence, index) =>
         !archetypeReplacementBoilerplate(sentence) &&
         !(unique.some((entry) => entry.index === index) && directSaveRuleSentence(sentence)) &&
@@ -93,7 +106,11 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
       if (unique.length && remaining.length === 0) fullyAutomatedFeatureIds.add(feature.id);
     }
   }
-  return { adjustments, fullyAutomatedFeatureIds };
+  return {
+    adjustments,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export function inferArchetypeSaveBonusAdjustments(archetype) {

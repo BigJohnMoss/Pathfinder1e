@@ -356,9 +356,16 @@ const ruleIsEntireFeature = (parsedSentenceIndexes, sentences) => sentences.ever
   (!/\d|\b(?:can|gains?|has|resistance|damage reduction|DR|level|action|spell|attack|damage|save|skill|immune)\b/i.test(sentence)),
 );
 
+const directDefenseRuleSentence = (sentence, rules) => {
+  if (rules.length !== 1 || rules[0].kind !== "immunity") return false;
+  return /^(?:(?:At|Starting at|Beginning at) \d+(?:st|nd|rd|th)(?:-level| level)?,?\s*)?(?:(?:he|she|they|it)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,80})\s+(?:(?:becomes?|is)\s+(?:completely\s+)?immune to|gains?\s+(?:complete\s+)?immunity to)\s+.+[.]?$/i.test(sentence) &&
+    !/\b(?:can|may|spend|expend|until|while|when|whenever|if|as long as)\b/i.test(sentence);
+};
+
 export function inferredArchetypeDefenseDetails(archetype) {
   const adjustments = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const replacement of archetype?.replacements ?? []) for (const feature of replacement.features ?? []) {
     const summary = String(feature.summary ?? "");
     if (/\b(?:one of the following|from the following list|selects? (?:one|an?|from))\b/i.test(summary)) continue;
@@ -372,6 +379,8 @@ export function inferredArchetypeDefenseDetails(archetype) {
       if (announcedLevel) contextLevel = Number(announcedLevel);
       const rules = rulesFromSentence({ ...feature, level: contextLevel, sourceLevel: feature.level }, sentence, summary);
       if (rules.length) parsedSentenceIndexes.add(index);
+      if (directDefenseRuleSentence(sentence, rules))
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
       adjustments.push(...rules);
     }
     const featureAdjustments = adjustments.filter((adjustment) => adjustment.sourceFeatureId === feature.id);
@@ -408,7 +417,11 @@ export function inferredArchetypeDefenseDetails(archetype) {
     const immunityLevel = [...grouped.values()].find((row) => row.sourceFeatureId === adjustment.sourceFeatureId && row.kind === "immunity" && row.qualifier === adjustment.qualifier)?.minimumLevel;
     return immunityLevel && immunityLevel > adjustment.minimumLevel ? { ...adjustment, maximumLevel: immunityLevel - 1 } : adjustment;
   });
-  return { adjustments: unique, fullyAutomatedFeatureIds };
+  return {
+    adjustments: unique,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export const inferArchetypeDefenseAdjustments = (archetype) => inferredArchetypeDefenseDetails(archetype).adjustments;
