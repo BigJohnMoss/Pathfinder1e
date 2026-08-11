@@ -21,14 +21,15 @@ function saveConditionFromSentence(sentence, verbIndex, targetEnd) {
   const leading = prefix.match(/(?:^(?:At \d+(?:st|nd|rd|th) level,?\s*)?)(When|Whenever|While|During|Within|As long as|If)\s+(.+?),\s*(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z' -]{0,60})\s*$/i);
   if (leading) return `${leading[1].toLowerCase()} ${leading[2]}`;
   const tail = sentence.slice(targetEnd).trim();
-  const trailing = tail.match(/^((?:and to (?:his|her|their) CMD )?against|attempted against|made to|to (?:avoid|resist|resolve)|when|whenever|while|during|within|involving|as long as|if)\s+(.+?)(?=,?\s+and (?:an? \+\d|DCs?|the|he|she|they)|,\s+as well as|[.;]|$)/i);
+  const trailing = tail.match(/^((?:and to (?:his|her|their) CMD )?against|attempted against|caused by|made to|to (?:avoid|resist|resolve)|when|whenever|while|during|within|involving|as long as|if)\s+(.+?)(?=,?\s+and (?:an? \+\d|DCs?|the|he|she|they)|,\s+as well as|[.;]|$)/i);
   if (!trailing) return undefined;
   const trigger = /^and to /i.test(trailing[1]) ? "against" : trailing[1].toLowerCase();
   return `${trigger} ${trailing[2]}`;
 }
 
-function adjustmentFromSentence(feature, sentence) {
-  const bonusPattern = /\b(?:gains?|receives?|has) (?:an? )?\+(\d+) (?:alchemical |circumstance |competence |dodge |enhancement |insight |luck |morale |profane |racial |resistance |sacred |trait |untyped )?bonus (?:on|to) /gi;
+function adjustmentsFromSentence(feature, sentence) {
+  const adjustments = [];
+  const bonusPattern = /\b(?:(?:gains?|receives?|has) (?:an? )?|(?:and|plus|as well as) (?:an? )?)\+(\d+) (?:alchemical |circumstance |competence |dodge |enhancement |insight |luck |morale |profane |racial |resistance |sacred |trait |untyped )?bonus (?:on|to) /gi;
   for (const bonus of sentence.matchAll(bonusPattern)) {
     if (archetypeUnsafeSubject(sentence, bonus.index)) continue;
     const rawRest = sentence.slice(bonus.index + bonus[0].length);
@@ -40,16 +41,16 @@ function adjustmentFromSentence(feature, sentence) {
     const targetEnd = bonus.index + bonus[0].length + target.index + target[0].length;
     const condition = saveConditionFromSentence(sentence, bonus.index, targetEnd);
     const targets = condition ? saveTargets(rest) : initialTargets;
-    return {
+    adjustments.push({
       sourceFeatureId: feature.id,
       label: targets.length === 3 ? "Saving throws" : `${targets.map((item) => item[0].toUpperCase() + item.slice(1)).join(" and ")} saves`,
       saveTargets: targets,
       minimumLevel: Number(sentence.slice(0, bonus.index).match(/\bAt (\d+)(?:st|nd|rd|th) level\b/i)?.[1] ?? feature.level ?? 1),
       base: Number(bonus[1]),
       ...(condition ? { condition } : {}),
-    };
+    });
   }
-  return null;
+  return adjustments;
 }
 
 function narrativeLeadSentence(sentence) {
@@ -75,10 +76,12 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
       if (/\b(?:choose|chooses|chosen|select|selects|selected) (?:one|a|an|from)|\bone of the (?:following|options)|\bfollowing (?:abilities|benefits|options)\b/i.test(feature.summary ?? "")) continue;
       if (/\bcan spend\b[^.]{0,120}\bto gain\b|\b[A-Z][A-Za-z’' -]+ \((?:Ex|Su|Sp)\)\s*:/i.test(feature.summary ?? "")) continue;
       const sentences = archetypeRuleSentences(feature.summary);
-      const parsed = sentences.flatMap((sentence, index) => {
-        const adjustment = adjustmentFromSentence(feature, sentence);
-        return adjustment ? [{ index, adjustment: archetypeRuleProgression(adjustment, feature.summary, /\b(?:saving throws?|saves?)\b/i) }] : [];
-      });
+      const parsed = sentences.flatMap((sentence, index) =>
+        adjustmentsFromSentence(feature, sentence).map((adjustment) => ({
+          index,
+          adjustment: archetypeRuleProgression(adjustment, feature.summary, /\b(?:saving throws?|saves?)\b/i),
+        })),
+      );
       const safeParsed = parsed.filter(({ index, adjustment }) =>
         adjustment.condition ||
         /^(?:At \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z])/i.test(sentences[index]),
@@ -87,8 +90,10 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
       adjustments.push(...unique.map(({ adjustment }) => adjustment));
       const hasScheduledProgression = unique.some(({ adjustment }) => adjustment.bonusByLevel || adjustment.interval);
       const firstParsedIndex = unique.length ? Math.min(...unique.map(({ index }) => index)) : -1;
-      for (const { index } of unique) {
-        if (directSaveRuleSentence(sentences[index]))
+      const parsedBySentence = new Map();
+      for (const { index } of unique) parsedBySentence.set(index, (parsedBySentence.get(index) ?? 0) + 1);
+      for (const [index, count] of parsedBySentence) {
+        if (directSaveRuleSentence(sentences[index], count))
           sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
       }
       if (hasScheduledProgression) {
@@ -99,7 +104,7 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
       }
       const remaining = sentences.filter((sentence, index) =>
         !archetypeReplacementBoilerplate(sentence) &&
-        !(unique.some((entry) => entry.index === index) && directSaveRuleSentence(sentence)) &&
+        !(parsedBySentence.has(index) && directSaveRuleSentence(sentence, parsedBySentence.get(index))) &&
         !(index < firstParsedIndex && narrativeLeadSentence(sentence)) &&
         !(hasScheduledProgression && /\b(?:this|the) bonus\b[^.]{0,100}\b(?:increases?|improves?)\b/i.test(sentence)),
       );

@@ -55,6 +55,10 @@ function adjustmentFromSentence(feature, sentence) {
   };
 }
 
+const initiativeOnlySentence = (sentence) =>
+  (sentence.match(/\+\d+ (?:(?:alchemical|circumstance|competence|enhancement|insight|morale|profane|racial|sacred|trait|untyped) )?bonus\b/gi)?.length ?? 0) <= 1 &&
+  !/\b(?:AC|Armor Class|attack|CMB|CMD|damage|immune|immunity|movement|penalty|resistance|saving throws?|skill checks?|speed)\b/i.test(sentence);
+
 function copySkillProgression(adjustment, skillAdjustments) {
   const matching = skillAdjustments.filter((skill) => skill.sourceFeatureId === adjustment.sourceFeatureId && skill.base === adjustment.base);
   if (!matching.length) return adjustment;
@@ -163,6 +167,7 @@ export function archetypeRuleProgression(adjustment, summary, targetPattern = /\
 export function inferredArchetypeInitiativeBonusDetails(archetype) {
   const adjustments = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   const skillDetails = inferredArchetypeSkillBonusDetails(archetype);
   for (const replacement of archetype?.replacements ?? []) {
     for (const feature of replacement.features ?? []) {
@@ -180,6 +185,16 @@ export function inferredArchetypeInitiativeBonusDetails(archetype) {
       }
       adjustments.push(...parsed.map(({ adjustment }) => adjustment));
       const hasScheduledProgression = parsed.some(({ adjustment }) => adjustment.bonusByLevel || adjustment.interval);
+      for (const { index } of parsed) {
+        if (initiativeOnlySentence(sentences[index]))
+          sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+      }
+      if (hasScheduledProgression) {
+        for (const [index, sentence] of sentences.entries()) {
+          if (/^(?:This|The) bonus\b[^.]{0,160}\b(?:increases?|improves?)\b/i.test(sentence))
+            sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+        }
+      }
       const remaining = sentences.filter((sentence, index) =>
         !archetypeReplacementBoilerplate(sentence) &&
         !parsed.some((entry) => entry.index === index) &&
@@ -188,7 +203,11 @@ export function inferredArchetypeInitiativeBonusDetails(archetype) {
       if (parsed.length && remaining.length === 0) fullyAutomatedFeatureIds.add(feature.id);
     }
   }
-  return { adjustments, fullyAutomatedFeatureIds };
+  return {
+    adjustments,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export function inferArchetypeInitiativeBonusAdjustments(archetype) {

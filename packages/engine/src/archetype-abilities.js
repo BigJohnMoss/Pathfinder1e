@@ -73,10 +73,14 @@ function addProgression(adjustment, summary) {
 
 const progressionSentence = (sentence) => /\b(?:This|The|Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) (?:score )?bonus(?:es)?\b[^.]{0,120}\bincreases?\b/i.test(sentence);
 const nonMechanicalNarrative = (sentence) => !/\b(?:action|attack|bonus|can|damage|gains?|immune|penalty|receives?|resistance|save|score|spell|uses?)\b/i.test(sentence);
+const abilityOnlySentence = (sentence) =>
+  (sentence.match(/\+\d+ (?:(?:alchemical|circumstance|competence|enhancement|inherent|insight|morale|profane|racial|sacred|size|trait|untyped) )?bonus\b/gi)?.length ?? 0) === 1 &&
+  !/\b(?:AC|Armor Class|action|attack|can|CMB|CMD|damage|immune|immunity|movement|penalty|resistance|saving throws?|skill checks?|speed|spend|uses?)\b/i.test(sentence);
 
 export function inferredArchetypeAbilityScoreDetails(archetype) {
   const adjustments = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const replacement of archetype?.replacements ?? []) for (const feature of replacement.features ?? []) {
     const summary = String(feature.summary ?? "");
     if (/\b(?:one of the following|from the (?:following )?list|chosen from the list|split the bonus|appl(?:y|ies) the full bonus)\b/i.test(summary)) continue;
@@ -87,10 +91,18 @@ export function inferredArchetypeAbilityScoreDetails(archetype) {
       const parsed = adjustmentFromSentence(feature, sentence).map((adjustment) => addProgression(adjustment, summary));
       if (!parsed.length) continue;
       parsedIndexes.add(index);
+      if (abilityOnlySentence(sentence))
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
       adjustments.push(...parsed);
     }
     const featureAdjustments = adjustments.filter((adjustment) => adjustment.sourceFeatureId === feature.id);
     const hasProgression = featureAdjustments.some((adjustment) => adjustment.bonusByLevel);
+    if (hasProgression) {
+      for (const [index, sentence] of sentences.entries()) {
+        if (progressionSentence(sentence))
+          sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+      }
+    }
     const remaining = sentences.filter((sentence, index) =>
       !parsedIndexes.has(index)
       && !archetypeReplacementBoilerplate(sentence)
@@ -99,7 +111,11 @@ export function inferredArchetypeAbilityScoreDetails(archetype) {
     if (parsedIndexes.size && remaining.length === 0 && featureAdjustments.some((adjustment) => !adjustment.condition)) fullyAutomatedFeatureIds.add(feature.id);
   }
   const unique = [...new Map(adjustments.map((adjustment) => [JSON.stringify(adjustment), adjustment])).values()];
-  return { adjustments: unique, fullyAutomatedFeatureIds };
+  return {
+    adjustments: unique,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export function inferArchetypeAbilityScoreAdjustments(archetype) {
