@@ -166,6 +166,7 @@ export interface ClassFeatureOccurrence {
   resourceActions?: Array<{
     id: string;
     label: string;
+    spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week" };
     resourceId?: string;
     cost?: number;
     costs?: Array<{ resourceId: string; cost: number }>;
@@ -627,6 +628,7 @@ export interface SelectableOption {
   resourceActions?: Array<{
     id: string;
     label: string;
+    spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week" };
     resourceId: string;
     cost: number;
     variableCost?: { label: string; minimum: number; maximum?: number };

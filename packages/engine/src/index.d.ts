@@ -129,6 +129,7 @@ export function inferArchetypeResourceAdjustments(archetype?: CharacterArchetype
 export function resolvedArchetypeResourceAdjustments(archetype?: CharacterArchetype): NonNullable<CharacterArchetype["resourceAdjustments"]>;
 export function inferArchetypeTemporaryHitPointActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeRerollActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
+export function inferArchetypeSpellLikeAbilityActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeGrantedFeats(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ featureId: string; featId: string; level: number }>;
 export function inferArchetypeFeatChoices(archetype: CharacterArchetype, feats: CharacterFeat[], maximumLevel?: number): Array<CharacterClass["features"][number] & { classId: string }>;
 export function inferArchetypeFeatAlternatives(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ sourceFeatureId: string; optionGroupId: string; minimumLevel: number; mode: "augment" | "replace"; ignoreFeatPrerequisites: boolean; featChoiceIds?: string[]; featChoiceTypes?: string[] }>;
