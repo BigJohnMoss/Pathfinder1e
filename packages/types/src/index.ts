@@ -495,6 +495,15 @@ export interface CharacterArchetype {
     bonusByLevel?: Array<{ level: number; bonus: number }>;
     condition?: string;
   }>;
+  skillAbilityOverrides?: Array<{
+    sourceFeatureId?: string;
+    skill: string;
+    ability: AbilityName;
+    replacesAbility?: AbilityName;
+    minimumLevel?: number;
+    maximumLevel?: number;
+    condition?: string;
+  }>;
   landSpeedAdjustments?: Array<{
     sourceFeatureId?: string;
     minimumLevel?: number;

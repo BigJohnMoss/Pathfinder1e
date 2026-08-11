@@ -81,6 +81,9 @@ export function archetypeDefenses(archetypes: CharacterArchetype[], classLevels:
 export function inferArchetypeSkillCheckRules(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillCheckRules"]>;
 export function archetypeSkillCheckRules(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<NonNullable<CharacterArchetype["skillCheckRules"]>[number] & { source: string }>;
 export function archetypeSkillBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): { skillBonuses: Record<string, number>; conditionalModifiers: Array<{ label: string; bonus: number; condition: string; source: string }> };
+export function inferArchetypeSkillAbilityOverrides(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillAbilityOverrides"]>;
+export function archetypeSkillAbilityOverrides(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillAbilityOverrides"]>;
+export function effectiveArchetypeSkillAbility(archetypes: CharacterArchetype[], classLevels: Record<string, number>, skill: string, defaultAbility: AbilityName): AbilityName;
 export function inferArchetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;
 export function archetypeSkillBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["skillBonusAdjustments"]>;
 export function characterLandSpeed(baseSpeed: number, armorCategory: "none" | "light" | "medium" | "heavy", load: "light" | "medium" | "heavy" | "overloaded", archetypes: CharacterArchetype[], classLevels: Record<string, number>): { speed: number; baseSpeed: number; armorCategory: string; load: string; adjustments: Array<{ label: string; bonus: number; source: string }> };

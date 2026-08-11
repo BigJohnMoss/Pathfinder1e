@@ -6,6 +6,7 @@ import { inferArchetypeSpellLikeAbilityActions, inferredArchetypeSpellLikeAbilit
 import { inferArchetypeResourceActions, inferredArchetypeResourceActionDetails } from "./archetype-resource-actions.js";
 import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDetails } from "./archetype-timed-effects.js";
 import { inferArchetypeSpellcastingAbility, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
+import { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides } from "./archetype-skill-abilities.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, archetypeReplacementBoilerplate, archetypeRuleSentences, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
@@ -28,6 +29,7 @@ export { inferArchetypeSpellLikeAbilityActions };
 export { inferArchetypeResourceActions };
 export { inferArchetypeTimedEffectActions };
 export { inferArchetypeSpellcastingAbility };
+export { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
@@ -1682,6 +1684,9 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const skillBonusAdjustments = archetypeSkillBonusAdjustments(archetype);
   if (skillBonusAdjustments.length)
     automated.push(`${skillBonusAdjustments.length} level-aware skill bonus${skillBonusAdjustments.length === 1 ? "" : "es"}`);
+  const skillAbilityOverrides = archetypeSkillAbilityOverrides(archetype);
+  if (skillAbilityOverrides.length)
+    automated.push(`${skillAbilityOverrides.length} skill ability substitution${skillAbilityOverrides.length === 1 ? "" : "s"}`);
   const landSpeedDetails = inferredArchetypeLandSpeedDetails(archetype);
   const landSpeedAdjustments = archetypeLandSpeedAdjustments(archetype);
   if (landSpeedAdjustments.length)
