@@ -1663,11 +1663,19 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const defenseAdjustments = archetypeDefenseAdjustments(archetype);
   if (defenseAdjustments.length)
     automated.push(`${defenseAdjustments.length} level-aware special defense${defenseAdjustments.length === 1 ? "" : "s"}`);
+  const abilityScoreDetails = inferredArchetypeAbilityScoreDetails(archetype);
+  const abilityScoreAdjustments = archetypeAbilityScoreAdjustments(archetype);
+  if (abilityScoreAdjustments.length)
+    automated.push(`${abilityScoreAdjustments.length} level-aware ability-score adjustment${abilityScoreAdjustments.length === 1 ? "" : "s"}`);
   const ruleSentenceCoverage = [
+    ["initiative", initiativeBonusDetails.sentenceCoverage ?? []],
     ["saving throws", saveBonusDetails.sentenceCoverage ?? []],
     ["combat", combatModifierDetails.sentenceCoverage ?? []],
+    ["senses", senseDetails.sentenceCoverage ?? []],
     ["skills", skillBonusDetails.sentenceCoverage ?? []],
+    ["movement", landSpeedDetails.sentenceCoverage ?? []],
     ["defenses", defenseDetails.sentenceCoverage ?? []],
+    ["ability scores", abilityScoreDetails.sentenceCoverage ?? []],
   ];
   const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
     const coveringFamilies = ruleSentenceCoverage.filter(([, entries]) =>
@@ -1685,10 +1693,6 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   }).map((feature) => feature.id));
   if (crossRuleFeatureIds.size)
     automated.push(`${crossRuleFeatureIds.size} cross-rule feature${crossRuleFeatureIds.size === 1 ? "" : "s"}`);
-  const abilityScoreDetails = inferredArchetypeAbilityScoreDetails(archetype);
-  const abilityScoreAdjustments = archetypeAbilityScoreAdjustments(archetype);
-  if (abilityScoreAdjustments.length)
-    automated.push(`${abilityScoreAdjustments.length} level-aware ability-score adjustment${abilityScoreAdjustments.length === 1 ? "" : "s"}`);
   const skillCheckDetails = inferredArchetypeSkillCheckDetails(archetype);
   const explicitSkillCheckRules = archetype.skillCheckRules ?? [];
   const skillCheckRules = [...explicitSkillCheckRules, ...skillCheckDetails.rules.filter((rule) => !explicitSkillCheckRules.some((explicit) => explicit.sourceFeatureId === rule.sourceFeatureId && explicit.result === rule.result))];

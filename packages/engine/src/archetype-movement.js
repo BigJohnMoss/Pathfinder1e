@@ -98,9 +98,13 @@ const ruleIsEntireFeature = (feature, parsedSentenceIndexes, sentences) => sente
   (!/\d|\b(?:can|gains?|receives?|bonus|penalty|increases?|decreases?|level|armor|load|action|spell|attack|damage|save|skill)\b/i.test(sentence)),
 );
 
+const speedOnlySentence = (sentence) =>
+  !/\b(?:AC|Armor Class|attack|CMB|CMD|damage|immune|immunity|natural attack|penalty on|resistance|saving throws?|skill checks?)\b/i.test(sentence);
+
 export function inferredArchetypeLandSpeedDetails(archetype) {
   const adjustments = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const replacement of archetype?.replacements ?? []) for (const feature of replacement.features ?? []) {
     const summary = String(feature.summary ?? "");
     if (/\b(?:one of the following|from the (?:following )?list|selects? (?:one|an?|from)|roll \d+d?\d* to determine|following (?:types of )?(?:deeds|bardic performances|performances|revelations|abilities|benefits))\b/i.test(summary)) continue;
@@ -113,12 +117,16 @@ export function inferredArchetypeLandSpeedDetails(archetype) {
       if (!rule) continue;
       if (primaryAdjustmentAdded && /\b(?:bonus[^.]{0,100}?increases?|range[^.]{0,100}?increases?)\b/i.test(sentence)) {
         parsedSentenceIndexes.add(index);
+        if (/^(?:At \d+(?:st|nd|rd|th) level,?\s*)?(?:This|The) bonus\b[^.]{0,160}\b(?:increases?|improves?)\b/i.test(sentence))
+          sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
         continue;
       }
       const condition = conditionFor(sentence, rule.match.index + rule.match[0].length) ??
         (/(?:gains?|receives?) additional abilities when\s+(.+?)(?=;|[.])/i.test(summary) ? `when ${summary.match(/(?:gains?|receives?) additional abilities when\s+(.+?)(?=;|[.])/i)[1]}` : undefined) ??
         (/\bwhen (?:taking|assuming|using|in)\s+([^.,;]{1,80}?\bform)\b/i.test(summary) ? `when ${summary.match(/\bwhen (?:taking|assuming|using|in)\s+([^.,;]{1,80}?\bform)\b/i)[1]} is active` : undefined);
       parsedSentenceIndexes.add(index);
+      if (speedOnlySentence(sentence))
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
       adjustments.push(progression({
         sourceFeatureId: feature.id,
         label: featureLabel(feature),
@@ -134,7 +142,11 @@ export function inferredArchetypeLandSpeedDetails(archetype) {
     if (parsedSentenceIndexes.size && ruleIsEntireFeature(feature, parsedSentenceIndexes, sentences)) fullyAutomatedFeatureIds.add(feature.id);
   }
   const unique = [...new Map(adjustments.map((adjustment) => [JSON.stringify(adjustment), adjustment])).values()];
-  return { adjustments: unique, fullyAutomatedFeatureIds };
+  return {
+    adjustments: unique,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export function inferArchetypeLandSpeedAdjustments(archetype) {

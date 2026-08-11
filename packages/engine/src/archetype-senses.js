@@ -149,6 +149,7 @@ const senseOnlySentence = (sentence) => !/\b(?:bonus (?:feat|on|to)|penalty|immu
 export function inferredArchetypeSenseDetails(archetype) {
   const adjustments = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const replacement of archetype?.replacements ?? []) {
     for (const feature of replacement.features ?? []) {
       if (/\b(?:must choose|of (?:his|her|their) choice|from the list below|one of the following|following (?:discoveries|options|abilities|flourishes))\b/i.test(feature.summary ?? "")) continue;
@@ -163,8 +164,18 @@ export function inferredArchetypeSenseDetails(archetype) {
         if (sharedFeatureCondition) parsed = parsed.map((adjustment) => adjustment.condition ? adjustment : { ...adjustment, condition: `${sharedFeatureCondition[1].toLowerCase()} ${sharedFeatureCondition[2]}` });
         else if (/\b(?:can spend|for \d+ (?:rounds?|minutes?|hours?)|until|uses? this ability|activates?|assumes? a form|mutagen|rage|raging song|symbiosis|wild shape)\b/i.test(sentence))
           parsed = parsed.map((adjustment) => adjustment.condition ? adjustment : { ...adjustment, condition: "when this feature is active" });
-        if (parsed.length) parsedIndexes.add(index);
+        if (parsed.length) {
+          parsedIndexes.add(index);
+          if (senseOnlySentence(sentence))
+            sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+        }
         adjustments.push(...parsed);
+      }
+      if (adjustments.some((adjustment) => adjustment.sourceFeatureId === feature.id && adjustment.rangeByLevel)) {
+        for (const [index, sentence] of sentences.entries()) {
+          if (/\brange\b[^.]{0,80}\bincreases? by \d+ feet\b/i.test(sentence) && senseOnlySentence(sentence))
+            sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+        }
       }
       const remaining = sentences.filter((sentence, index) =>
         !(parsedIndexes.has(index) && senseOnlySentence(sentence)) &&
@@ -187,7 +198,11 @@ export function inferredArchetypeSenseDetails(archetype) {
     if (!existing || (!existing.range && adjustment.range) || (!existing.rangeByLevel && adjustment.rangeByLevel)) rows.set(key, adjustment);
     return rows;
   }, new Map()).values()];
-  return { adjustments: unique, fullyAutomatedFeatureIds };
+  return {
+    adjustments: unique,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export function inferArchetypeSenseAdjustments(archetype) {

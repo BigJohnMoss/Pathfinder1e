@@ -471,12 +471,20 @@ test("independent rule engines combine only when every feature sentence is cover
   const energyScientist = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-energy-scientist");
   const desertRaider = catalogueArchetypes.find((archetype) => archetype.id === "rogue-desert-raider");
   const skeptic = catalogueArchetypes.find((archetype) => archetype.id === "investigator-skeptic");
-  assert.ok(dragonblood && plagueBringer && energyScientist && desertRaider && skeptic);
+  const hamatulatsu = catalogueArchetypes.find((archetype) => archetype.id === "monk-hamatulatsu-master");
+  assert.ok(dragonblood && plagueBringer && energyScientist && desertRaider && skeptic && hamatulatsu);
   assert.ok(!archetypeAutomationSummary(dragonblood).manual.some((item) => item.startsWith("Draconic Resistances")));
   assert.ok(!archetypeAutomationSummary(plagueBringer).manual.some((item) => item.startsWith("Disease Resistance")));
   assert.ok(!archetypeAutomationSummary(desertRaider).manual.some((item) => item.startsWith("Desert Tracker")));
   assert.ok(archetypeAutomationSummary(energyScientist).manual.some((item) => item.startsWith("Attuned Resistance")), "a separate planar-adaptation effect remains manual");
-  assert.ok(archetypeAutomationSummary(skeptic).manual.some((item) => item.startsWith("Suspect Hoax")), "an unparsed second save condition remains manual");
+  assert.ok(!archetypeAutomationSummary(skeptic).manual.some((item) => item.startsWith("Suspect Hoax")));
+  assert.deepEqual(archetypeConditionalModifiers([skeptic], { investigator: 8 }).filter((item) => item.label === "Saving throws").map((item) => [item.condition, item.bonus]), [
+    ["against spells and spell-like abilities used to falsely create the impression of a supernatural presence", 3],
+    ["caused by the effects of actual haunts or incorporeal undead", 3],
+  ]);
+  assert.ok(!archetypeAutomationSummary(hamatulatsu).manual.some((item) => item.startsWith("Infernal Resilience")));
+  assert.equal(archetypeDefenses([hamatulatsu], { monk: 5 }).find((item) => item.kind === "immunity")?.qualifier, "all spells, spell-like abilities, and effects with the pain descriptor");
+  assert.equal(archetypeConditionalModifiers([hamatulatsu], { monk: 5 }).find((item) => item.label === "Saving throws")?.condition, "against effects that would sicken, nauseate, stagger, or stun her");
   assert.equal(archetypeConditionalModifiers([dragonblood], { alchemist: 10 }).find((item) => item.label === "Saving throws")?.bonus, 6);
   assert.equal(archetypeDefenses([dragonblood], { alchemist: 10 }).find((item) => item.kind === "immunity")?.qualifier, "paralysis and sleep effects");
 });
