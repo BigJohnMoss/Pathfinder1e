@@ -8,6 +8,7 @@ import { inferArchetypeResourceActions, inferredArchetypeResourceActionDetails }
 import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDetails } from "./archetype-timed-effects.js";
 import { inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
+import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 import { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides } from "./archetype-skill-abilities.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
@@ -48,6 +49,7 @@ export { archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAd
 export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
+export { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
   adjustment.minimumEffectiveLevel ?? 1,
@@ -566,6 +568,7 @@ export function spellsAvailableToClass(
   classId,
   maximumSpellLevel,
   spellListAdditions = {},
+  spellListExclusions = [],
 ) {
   if (
     !Number.isInteger(maximumSpellLevel) ||
@@ -573,6 +576,7 @@ export function spellsAvailableToClass(
     maximumSpellLevel > 9
   )
     throw new RangeError("Maximum spell level must be an integer from 0 to 9.");
+  const excluded = new Set(spellListExclusions);
   return spells
     .map((spell) =>
       spellListAdditions[spell.id] === undefined
@@ -587,6 +591,7 @@ export function spellsAvailableToClass(
     )
     .filter(
       (spell) =>
+        !excluded.has(spell.id) &&
         spell.levelByClass[classId] !== undefined &&
         spell.levelByClass[classId] <= maximumSpellLevel,
     )
@@ -1229,6 +1234,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     : characterClass.spellcasting;
   const inferredSpellcastingAbility = inferredArchetypeSpellcastingAbilityDetails(archetype);
   const inferredSpellAdditions = inferArchetypeSpellAdditions(archetype, spellCatalog);
+  const inferredSpellAccess = inferArchetypeSpellAccess(archetype, spellCatalog);
   const spellcastingProgressionClassId = archetype.spellcastingProgressionClassId ?? inferredSpellcastingAbility?.progressionClassId;
   const progressionSpellcasting = referenceClasses.find((item) => item.id === spellcastingProgressionClassId)?.spellcasting;
   const baseSpellcasting = progressionSpellcasting ?? characterSpellcasting;
@@ -1281,8 +1287,14 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     spellListAdditions: {
       ...(characterClass.spellListAdditions ?? {}),
       ...inferredSpellAdditions.spellListAdditions,
+      ...inferredSpellAccess.spellListAdditions,
       ...(archetype.spellListAdditions ?? {}),
     },
+    spellListExclusions: [...new Set([
+      ...(characterClass.spellListExclusions ?? []),
+      ...inferredSpellAccess.spellListExclusions,
+      ...(archetype.spellListExclusions ?? []),
+    ])],
     spellListClassId: archetype.spellListClassId ?? inferredSpellcastingAbility?.spellListClassId ?? characterClass.spellListClassId,
     bonusSpellAdditions: {
       ...(characterClass.bonusSpellAdditions ?? {}),
@@ -1650,12 +1662,17 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (archetype.spellListAdditions && Object.keys(archetype.spellListAdditions).length) automated.push("Spell-list additions");
   if (archetype.bonusSpellAdditions && Object.keys(archetype.bonusSpellAdditions).length) automated.push("Bonus spells known");
   const inferredSpellAdditions = inferredArchetypeSpellAdditionDetails(archetype, spells);
+  const inferredSpellAccess = inferredArchetypeSpellAccessDetails(archetype, spells);
   const inferredSpellListCount = Object.keys(inferredSpellAdditions.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined).length;
   const inferredBonusSpellCount = Object.keys(inferredSpellAdditions.bonusSpellAdditions).filter((id) => archetype.bonusSpellAdditions?.[id] === undefined).length;
   const inferredKnownGrantCount = inferredSpellAdditions.spellGrants.filter((grant) => grant.mode === "known" && archetype.bonusSpellAdditions?.[grant.spellId] === undefined && !(archetype.spellGrants ?? []).some((explicit) => explicit.mode === grant.mode && explicit.spellId === grant.spellId)).length;
   if (inferredSpellListCount) automated.push(`${inferredSpellListCount} inferred spell-list addition${inferredSpellListCount === 1 ? "" : "s"}`);
   if (inferredBonusSpellCount) automated.push(`${inferredBonusSpellCount} inferred bonus spell${inferredBonusSpellCount === 1 ? "" : "s"} known`);
   if (inferredKnownGrantCount) automated.push(`${inferredKnownGrantCount} level-gated bonus spell${inferredKnownGrantCount === 1 ? "" : "s"} known`);
+  const inferredAccessAdditionCount = Object.keys(inferredSpellAccess.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined).length;
+  const inferredAccessExclusionCount = inferredSpellAccess.spellListExclusions.filter((id) => !archetype.spellListExclusions?.includes(id)).length;
+  if (inferredAccessAdditionCount) automated.push(`${inferredAccessAdditionCount} catalog-driven spell-list addition${inferredAccessAdditionCount === 1 ? "" : "s"}`);
+  if (inferredAccessExclusionCount) automated.push(`${inferredAccessExclusionCount} prohibited spell${inferredAccessExclusionCount === 1 ? "" : "s"} removed`);
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
   if (archetype.companionProgressionAdjustments?.length) automated.push("Companion effective-level adjustments");
@@ -1823,6 +1840,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...temporaryHitPointActionDetails.fullyAutomatedFeatureIds,
     ...rerollActionDetails.fullyAutomatedFeatureIds,
     ...spellLikeAbilityDetails.fullyAutomatedFeatureIds,
+    ...inferredSpellAccess.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

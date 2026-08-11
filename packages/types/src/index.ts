@@ -366,6 +366,7 @@ export interface CharacterClass {
   source: SourceRef;
   features: ClassFeatureOccurrence[];
   spellListAdditions?: Record<string, number>;
+  spellListExclusions?: string[];
   spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
   spellGrants?: ArchetypeSpellGrant[];
@@ -411,6 +412,7 @@ export interface CharacterArchetype {
   }>;
   featureOverrides?: Array<{ featureId: string; summary: string }>;
   spellListAdditions?: Record<string, number>;
+  spellListExclusions?: string[];
   spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
   spellGrants?: ArchetypeSpellGrant[];

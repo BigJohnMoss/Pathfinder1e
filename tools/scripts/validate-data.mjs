@@ -357,6 +357,17 @@ for (const [index, url] of archetypeUrls.entries()) {
     if (modifier?.maximum !== undefined && !Number.isInteger(modifier.maximum)) errors.push(`${prefix} maximum must be an integer`);
     if (modifier?.bonusByLevel !== undefined && (!Array.isArray(modifier.bonusByLevel) || modifier.bonusByLevel.length === 0 || modifier.bonusByLevel.some((step, index) => !Number.isInteger(step?.level) || step.level < 1 || step.level > 20 || !Number.isInteger(step?.bonus) || (index > 0 && step.level <= modifier.bonusByLevel[index - 1].level)))) errors.push(`${prefix} has invalid bonusByLevel`);
   }
+  if (archetype.spellListExclusions !== undefined) {
+    if (!Array.isArray(archetype.spellListExclusions) || archetype.spellListExclusions.length === 0) errors.push(`${file}: spellListExclusions must be a non-empty array`);
+    else {
+      const excluded = new Set();
+      for (const spellId of archetype.spellListExclusions) {
+        if (typeof spellId !== "string" || !spellIds.has(spellId)) errors.push(`${file}: spellListExclusions references missing spell ${spellId}`);
+        if (excluded.has(spellId)) errors.push(`${file}: spellListExclusions contains duplicate spell ${spellId}`);
+        excluded.add(spellId);
+      }
+    }
+  }
   if (archetype.abilityScoreAdjustments !== undefined && (!Array.isArray(archetype.abilityScoreAdjustments) || archetype.abilityScoreAdjustments.length === 0)) errors.push(`${file}: abilityScoreAdjustments must be a non-empty array`);
   for (const adjustment of archetype.abilityScoreAdjustments ?? []) {
     const prefix = `${file}: ability-score adjustment`;

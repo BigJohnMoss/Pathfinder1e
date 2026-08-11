@@ -331,6 +331,12 @@ function mergeSpellLists<T extends { id: string }>(
   return [...byId.values()];
 }
 
+function withoutExcludedSpells<T extends { id: string }>(spells: T[], exclusions: string[] | undefined) {
+  if (!exclusions?.length) return spells;
+  const excluded = new Set(exclusions);
+  return spells.filter((spell) => !excluded.has(spell.id));
+}
+
 function spellsFromAdditions<T extends { id: string; levelByClass: Record<string, number> }>(
   catalogue: T[],
   additions: Record<string, number> | undefined,
@@ -1229,6 +1235,7 @@ export default function Home() {
                 entry.spellListClassId ?? entry.id,
                 availableSpellLevel,
                 entry.spellListAdditions,
+                entry.spellListExclusions,
               ).map((spell) => spell.id)
             : [];
         }),
@@ -1883,12 +1890,14 @@ export default function Home() {
             characterClass.spellListClassId ?? characterClass.id,
             maximumSpellLevel,
             characterClass.spellListAdditions,
+            characterClass.spellListExclusions,
           ), spellsFromArchetypeGrants(spells, characterClass.spellGrants, characterClass.id, primaryClassLevel, maximumSpellLevel, "list"))
         : [],
     [
       characterClass.id,
       characterClass.spellListClassId,
       characterClass.spellListAdditions,
+      characterClass.spellListExclusions,
       characterClass.spellGrants,
       hasSpellcasting,
       maximumSpellLevel,
@@ -2038,14 +2047,14 @@ export default function Home() {
     [characterClass.bonusSpellAdditions, characterClass.id, characterClass.spellGrants, maximumSpellLevel, primaryClassLevel, spells],
   );
   const grantedSpells = useMemo(
-    () => [
+    () => withoutExcludedSpells([
       ...bloodlineSpells,
       ...mysterySpells,
       ...patronSpells,
       ...selectedOptionSpells,
       ...archetypeBonusSpells,
-    ],
-    [archetypeBonusSpells, bloodlineSpells, mysterySpells, patronSpells, selectedOptionSpells],
+    ], characterClass.spellListExclusions),
+    [archetypeBonusSpells, bloodlineSpells, characterClass.spellListExclusions, mysterySpells, patronSpells, selectedOptionSpells],
   );
   const availableSpells = useMemo(
     () => mergeSpellLists(baseAvailableSpells, grantedSpells),
@@ -2180,6 +2189,7 @@ export default function Home() {
             secondaryCharacterClass.spellListClassId ?? secondaryCharacterClass.id,
             secondaryMaximumSpellLevel,
             secondaryCharacterClass.spellListAdditions,
+            secondaryCharacterClass.spellListExclusions,
           ), spellsFromArchetypeGrants(spells, secondaryCharacterClass.spellGrants, secondaryCharacterClass.id, secondaryClassLevel, secondaryMaximumSpellLevel, "list"))
         : [],
     [
@@ -2293,20 +2303,21 @@ export default function Home() {
     ],
   );
   const secondaryGrantedSpells = useMemo(
-    () => [
+    () => withoutExcludedSpells([
       ...secondaryBloodlineSpells,
       ...secondaryMysterySpells,
       ...secondaryPatronSpells,
       ...secondarySelectedOptionSpells,
       ...spellsFromAdditions(spells, secondaryCharacterClass?.bonusSpellAdditions, secondaryCharacterClass?.id ?? "", secondaryMaximumSpellLevel),
       ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known"),
-    ],
+    ], secondaryCharacterClass?.spellListExclusions),
     [
       secondaryBloodlineSpells,
       secondaryMysterySpells,
       secondaryPatronSpells,
       secondarySelectedOptionSpells,
       secondaryCharacterClass,
+      secondaryCharacterClass?.spellListExclusions,
       secondaryMaximumSpellLevel,
       secondaryClassLevel,
       spells,
@@ -3402,6 +3413,7 @@ export default function Home() {
           draftClass.spellListClassId ?? draftClass.id,
           draftCasting.maximumSpellLevel,
           draftClass.spellListAdditions,
+          draftClass.spellListExclusions,
         )
       : [];
     const draftReservoir =
@@ -3498,13 +3510,13 @@ export default function Home() {
             ]
           : [];
       });
-    const draftGrantedSpells = [
+    const draftGrantedSpells = withoutExcludedSpells([
       ...draftBloodlineSpells,
       ...draftPatronSpells,
       ...draftOptionSpells,
       ...spellsFromAdditions(spells, draftClass.bonusSpellAdditions, draftClass.id, draftCasting?.maximumSpellLevel ?? 0),
       ...spellsFromArchetypeGrants(spells, draftClass.spellGrants, draftClass.id, draftPrimaryLevel, draftCasting?.maximumSpellLevel ?? 0, "known"),
-    ];
+    ], draftClass.spellListExclusions);
     const draftSpells = mergeSpellLists(draftBaseSpells, draftGrantedSpells);
     const draftBloodlineSpellIds = draftGrantedSpells.map((spell) => spell.id);
     const draftPrimarySelections =
@@ -3565,6 +3577,7 @@ export default function Home() {
             draftSecondaryClass.spellListClassId ?? draftSecondaryClass.id,
             draftSecondaryCasting.maximumSpellLevel,
             draftSecondaryClass.spellListAdditions,
+            draftSecondaryClass.spellListExclusions,
           )
         : [];
     const draftSecondaryBloodline = draftSecondaryClass
@@ -3637,13 +3650,13 @@ export default function Home() {
                 ]
               : [];
           });
-    const draftAllSecondaryGranted = [
+    const draftAllSecondaryGranted = withoutExcludedSpells([
       ...draftSecondaryGranted,
       ...draftSecondaryPatronSpells,
       ...draftSecondaryOptionSpells,
       ...spellsFromAdditions(spells, draftSecondaryClass?.bonusSpellAdditions, draftSecondaryClass?.id ?? "", draftSecondaryCasting?.maximumSpellLevel ?? 0),
       ...spellsFromArchetypeGrants(spells, draftSecondaryClass?.spellGrants, draftSecondaryClass?.id ?? "", draftSecondaryLevel?.level ?? 0, draftSecondaryCasting?.maximumSpellLevel ?? 0, "known"),
-    ];
+    ], draftSecondaryClass?.spellListExclusions);
     const draftSecondarySpells = mergeSpellLists(
       draftSecondaryBaseSpells,
       draftAllSecondaryGranted,

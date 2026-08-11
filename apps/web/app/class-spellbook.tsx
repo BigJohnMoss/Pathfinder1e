@@ -95,7 +95,8 @@ export function ClassSpellbook({
   const casting = spontaneousCasting ?? preparedCasting;
   const maximumSpellLevel = casting?.maximumSpellLevel ?? 0;
   const spellListClassId = characterClass.spellListClassId ?? characterClass.id;
-  const baseSpells = useMemo(() => casting ? spellsAvailableToClass(spells, spellListClassId, maximumSpellLevel, characterClass.spellListAdditions) : [], [casting, characterClass.spellListAdditions, maximumSpellLevel, spellListClassId, spells]);
+  const excludedSpellIds = useMemo(() => new Set(characterClass.spellListExclusions ?? []), [characterClass.spellListExclusions]);
+  const baseSpells = useMemo(() => casting ? spellsAvailableToClass(spells, spellListClassId, maximumSpellLevel, characterClass.spellListAdditions, characterClass.spellListExclusions) : [], [casting, characterClass.spellListAdditions, characterClass.spellListExclusions, maximumSpellLevel, spellListClassId, spells]);
   const bloodline = selectedOption(characterClass.id, "sorcerer-bloodlines", "sorcerer-bloodline-1", selectedOptions);
   const mystery = selectedOption(characterClass.id, "oracle-mysteries", "oracle-mystery-1", selectedOptions);
   const wizardSchool = selectedOption(characterClass.id, "wizard-schools", "wizard-arcane-school-1", selectedOptions);
@@ -123,21 +124,22 @@ export function ClassSpellbook({
     : characterClass.id === "oracle" && casting
       ? mysteryBonusSpells(spells, mystery, classLevel, characterClass.id).filter((spell) => spell.levelByClass[characterClass.id] <= maximumSpellLevel)
       : [], [bloodline, casting, characterClass.id, classLevel, maximumSpellLevel, mystery]);
+  const allowedGrantedSpells = useMemo(() => grantedSpells.filter((spell) => !excludedSpellIds.has(spell.id)), [excludedSpellIds, grantedSpells]);
   const optionSpells = useMemo(() => spellOptions.flatMap((option) => {
     const spell = spells.find((candidate) => candidate.id === option.spellId);
-    return spell && option.spellLevel !== undefined && (option.ignoresMaximumSpellLevel || option.spellLevel <= maximumSpellLevel)
+    return spell && !excludedSpellIds.has(spell.id) && option.spellLevel !== undefined && (option.ignoresMaximumSpellLevel || option.spellLevel <= maximumSpellLevel)
       ? [{ ...spell, levelByClass: { ...spell.levelByClass, [characterClass.id]: option.spellLevel } }]
       : [];
-  }), [characterClass.id, maximumSpellLevel, spellOptions, spells]);
-  const availableSpells = useMemo(() => mergeSpellLists(baseSpells, [...grantedSpells, ...optionSpells]), [baseSpells, grantedSpells, optionSpells]);
+  }), [characterClass.id, excludedSpellIds, maximumSpellLevel, spellOptions, spells]);
+  const availableSpells = useMemo(() => mergeSpellLists(baseSpells, [...allowedGrantedSpells, ...optionSpells]), [allowedGrantedSpells, baseSpells, optionSpells]);
   const onDemandSpellCosts = useMemo(() => Object.fromEntries(spellOptions.flatMap((option) => {
-    if (!option?.castsAsPrepared || !option.spellId || !option.classIds.includes(characterClass.id)) return [];
+    if (!option?.castsAsPrepared || !option.spellId || excludedSpellIds.has(option.spellId) || !option.classIds.includes(characterClass.id)) return [];
     const resource = option.resourceCost;
     const cost = !resource || classLevel >= (resource.freeAtClassLevel ?? Number.POSITIVE_INFINITY) ? 0 : Math.max(resource.minimum ?? 0, (resource.base ?? 0) + (resource.levelDivisor ? Math.floor((option.spellLevel ?? 0) / resource.levelDivisor) : 0));
     const concentrationBonus = classLevel >= (option.concentrationBonus?.improvedAtLevel ?? Number.POSITIVE_INFINITY) ? option.concentrationBonus?.improved ?? option.concentrationBonus?.base ?? 0 : option.concentrationBonus?.base ?? 0;
     return [[option.spellId, { resourceId: resource?.resourceId, cost, label: resource?.label ?? "Signature Spell", consumesSpellSlot: resource?.consumesSpellSlot ?? true, saveDcBonus: option.spellSaveDcBonus ?? 0, concentrationBonus, signatureSpellTechniques: option.signatureSpellTechniques ?? false, ...(resource?.summonTracker ? { summonTracker: { name: resource.summonTracker.name, description: resource.summonTracker.description, rounds: classLevel >= (resource.summonTracker.untilDismissedAtClassLevel ?? Number.POSITIVE_INFINITY) ? 999 : Math.min(999, classLevel * resource.summonTracker.roundsPerClassLevel), replaceExisting: resource.summonTracker.replaceExisting, untilDismissed: classLevel >= (resource.summonTracker.untilDismissedAtClassLevel ?? Number.POSITIVE_INFINITY) } } : {}) }]];
-  })), [characterClass.id, classLevel, spellOptions]);
-  const grantedSpellIds = useMemo(() => grantedSpells.map((spell) => spell.id), [grantedSpells]);
+  })), [characterClass.id, classLevel, excludedSpellIds, spellOptions]);
+  const grantedSpellIds = useMemo(() => allowedGrantedSpells.map((spell) => spell.id), [allowedGrantedSpells]);
   const oppositionSchoolIds = useMemo(() => {
     const featureIds = characterClass.id === "wizard" ? wizardOppositionFeatureIds : characterClass.id === "arcanist" ? schoolSavantOppositionFeatureIds : [];
     return featureIds.map((featureId) => selectedOptions[featureId]).filter((id): id is string => Boolean(id));
