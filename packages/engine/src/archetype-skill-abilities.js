@@ -5,25 +5,42 @@ const skillAbilityRule = new RegExp(
   "i",
 );
 
+const classSkillAbilityRule = new RegExp(
+  `^All (.+?) become class skills and use ${abilityPattern} instead of ${abilityPattern}[.]?$`,
+  "i",
+);
+
 const normalizedAbility = (value) => String(value ?? "").toLowerCase();
 
 function listedSkills(value) {
   return value
     .replace(/,?\s+and\s+/i, ", ")
     .split(/,\s*/)
-    .map((skill) => skill.trim())
+    .map((skill) => skill.trim().replace(/\s+skills$/i, ""))
     .filter(Boolean);
 }
 
 export function inferredArchetypeSkillAbilityDetails(archetype) {
   const overrides = [];
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
-    const match = String(feature.summary ?? "").replace(/\s+/g, " ").match(skillAbilityRule);
-    if (!match) continue;
-    overrides.push(...listedSkills(match[2]).map((skill) => ({
+    const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
+    const match = summary.match(skillAbilityRule);
+    if (match) {
+      overrides.push(...listedSkills(match[2]).map((skill) => ({
+        sourceFeatureId: feature.id,
+        skill,
+        ability: normalizedAbility(match[1]),
+        minimumLevel: feature.level,
+      })));
+      continue;
+    }
+    const classSkillMatch = summary.match(classSkillAbilityRule);
+    if (!classSkillMatch) continue;
+    overrides.push(...listedSkills(classSkillMatch[1]).map((skill) => ({
       sourceFeatureId: feature.id,
       skill,
-      ability: normalizedAbility(match[1]),
+      ability: normalizedAbility(classSkillMatch[2]),
+      replacesAbility: normalizedAbility(classSkillMatch[3]),
       minimumLevel: feature.level,
     })));
   }
@@ -48,8 +65,10 @@ export function effectiveArchetypeSkillAbility(archetypes, classLevels, skill, d
   for (const archetype of archetypes ?? []) {
     const level = classLevels?.[archetype.classId] ?? 0;
     for (const override of archetypeSkillAbilityOverrides(archetype)) {
-      if (override.skill !== skill || override.condition) continue;
+      const skillGroup = skill.split(" (")[0];
+      if ((override.skill !== skill && override.skill !== skillGroup) || override.condition) continue;
       if (level < (override.minimumLevel ?? 1) || level > (override.maximumLevel ?? 20)) continue;
+      if (override.replacesAbility && result !== override.replacesAbility) continue;
       result = override.ability;
     }
   }

@@ -26,6 +26,20 @@ test("applies skill ability substitutions only from their minimum level", async 
   assert.equal(effectiveArchetypeSkillAbility([empiricist], { investigator: 20 }, "Diplomacy", "charisma"), "charisma");
 });
 
+test("applies Lotus Monk's grouped Knowledge and Linguistics substitutions at level 17", async () => {
+  const lotus = await load("monk-lotus");
+  assert.deepEqual(inferArchetypeSkillAbilityOverrides(lotus), ["Knowledge", "Linguistics"].map((skill) => ({
+    sourceFeatureId: "lotus-learned-master-17",
+    skill,
+    ability: "wisdom",
+    replacesAbility: "intelligence",
+    minimumLevel: 17,
+  })));
+  assert.equal(effectiveArchetypeSkillAbility([lotus], { monk: 16 }, "Knowledge (arcana)", "intelligence"), "intelligence");
+  assert.equal(effectiveArchetypeSkillAbility([lotus], { monk: 17 }, "Knowledge (arcana)", "intelligence"), "wisdom");
+  assert.equal(effectiveArchetypeSkillAbility([lotus], { monk: 17 }, "Linguistics", "intelligence"), "wisdom");
+});
+
 test("explicit skill ability substitutions take precedence over inferred ones", async () => {
   const empiricist = await load("investigator-empiricist");
   const overrides = archetypeSkillAbilityOverrides({
