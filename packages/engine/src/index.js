@@ -4,7 +4,7 @@ import { inferArchetypeTemporaryHitPointActions, inferredArchetypeTemporaryHitPo
 import { inferArchetypeRerollActions, inferredArchetypeRerollActionDetails } from "./archetype-rerolls.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
-import { archetypeInitiativeBonusAdjustments, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
+import { archetypeInitiativeBonusAdjustments, archetypeReplacementBoilerplate, archetypeRuleSentences, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
 import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, inferArchetypeSaveBonusAdjustments } from "./archetype-saves.js";
 import { archetypeCombatModifierAdjustments, inferredArchetypeCombatModifierDetails, inferArchetypeCombatModifierAdjustments } from "./archetype-combat.js";
 import { archetypeSenseAdjustments, inferredArchetypeSenseDetails, inferArchetypeSenseAdjustments } from "./archetype-senses.js";
@@ -1597,6 +1597,7 @@ export function applyArchetypes(characterClass, archetypes = []) {
 export function archetypeAutomationSummary(archetype, feats = []) {
   if (!archetype) return { automated: [], manual: [] };
   const automated = [];
+  const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
   if ((archetype.replacements ?? []).some(item => item.featureIds?.length || item.progressionKeys?.length))
     automated.push("Base feature replacements and level progression");
   if (archetype.featureOverrides?.length) automated.push("Feature rules overrides");
@@ -1662,6 +1663,28 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const defenseAdjustments = archetypeDefenseAdjustments(archetype);
   if (defenseAdjustments.length)
     automated.push(`${defenseAdjustments.length} level-aware special defense${defenseAdjustments.length === 1 ? "" : "s"}`);
+  const ruleSentenceCoverage = [
+    ["saving throws", saveBonusDetails.sentenceCoverage ?? []],
+    ["combat", combatModifierDetails.sentenceCoverage ?? []],
+    ["skills", skillBonusDetails.sentenceCoverage ?? []],
+    ["defenses", defenseDetails.sentenceCoverage ?? []],
+  ];
+  const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
+    const coveringFamilies = ruleSentenceCoverage.filter(([, entries]) =>
+      entries.some((entry) => entry.sourceFeatureId === feature.id),
+    );
+    if (coveringFamilies.length < 2) return false;
+    const covered = new Set(coveringFamilies.flatMap(([, entries]) =>
+      entries.filter((entry) => entry.sourceFeatureId === feature.id).map((entry) => entry.sentenceIndex),
+    ));
+    const sentences = archetypeRuleSentences(feature.summary);
+    return covered.size > 1 && sentences.every((sentence, index) =>
+      covered.has(index) || archetypeReplacementBoilerplate(sentence) ||
+      !/\d|\b(?:action|attack|bonus|can|check|damage|DC|gains?|has|immune|immunity|level|may|must|penalty|receives?|resistance|roll|round|save|skill|spell|speed|times? per|uses?)\b/i.test(sentence),
+    );
+  }).map((feature) => feature.id));
+  if (crossRuleFeatureIds.size)
+    automated.push(`${crossRuleFeatureIds.size} cross-rule feature${crossRuleFeatureIds.size === 1 ? "" : "s"}`);
   const abilityScoreDetails = inferredArchetypeAbilityScoreDetails(archetype);
   const abilityScoreAdjustments = archetypeAbilityScoreAdjustments(archetype);
   if (abilityScoreAdjustments.length)
@@ -1674,7 +1697,6 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
   if (archetype.optionGroupAugmentations?.length)
     automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);
-  const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
   const inferredFeatGrantDetails = inferredArchetypeGrantedFeatDetails(archetype, feats);
   const inferredFeatGrants = inferredFeatGrantDetails.grants;
   if (inferredFeatGrants.length) automated.push(`${inferredFeatGrants.length} level-aware bonus feat grant${inferredFeatGrants.length === 1 ? "" : "s"}`);
@@ -1711,6 +1733,7 @@ export function archetypeAutomationSummary(archetype, feats = []) {
     ...landSpeedDetails.fullyAutomatedFeatureIds,
     ...(archetype.defenseAdjustments ?? []).filter(adjustment => !adjustment.partialFeature).map(adjustment => adjustment.sourceFeatureId),
     ...defenseDetails.fullyAutomatedFeatureIds,
+    ...crossRuleFeatureIds,
     ...(archetype.abilityScoreAdjustments ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...abilityScoreDetails.fullyAutomatedFeatureIds,
     ...(archetype.skillCheckRules ?? []).filter(rule => !rule.partialFeature).map(rule => rule.sourceFeatureId),

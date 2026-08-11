@@ -188,14 +188,15 @@ function bonusTable(schedule, base, minimumLevel) {
 
 function adjustmentsFromFeature(feature) {
   const adjustments = [];
+  const coveredSentenceIndexes = new Set();
   let fullyAutomated = true;
   const summary = String(feature.summary ?? "");
   if (/\b(?:choose|chooses|chosen|select|selects|selected) (?:one|a|an|from)|\bone of the (?:following|options)|\bfollowing (?:abilities|aspects|benefits|blessings|enhancements|mutations|options)\b|\bcan select the following (?:discoveries|talents|revelations|deeds|options)\b|\bselects? this (?:discovery|talent|revelation|deed|option)\b/i.test(summary))
-    return { adjustments, fullyAutomated: false };
+    return { adjustments, fullyAutomated: false, coveredSentenceIndexes };
   const sentences = splitSentences(summary);
   const scaling = scalingSchedule(sentences);
   const hasUnparsedScaling = /\bbonus(?:es)?\b[^.]{0,100}\b(?:double|increase)/i.test(summary) && !scaling;
-  if (hasUnparsedScaling) return { adjustments, fullyAutomated: false };
+  if (hasUnparsedScaling) return { adjustments, fullyAutomated: false, coveredSentenceIndexes };
   let lastParsedSentenceIndex = -1;
   const minimumLevelFor = (sentence, sentenceIndex) => {
     const stated = sentence.match(/^(?:At|Beginning at|Starting at) (\d+)(?:st|nd|rd|th) level\b/i);
@@ -203,6 +204,9 @@ function adjustmentsFromFeature(feature) {
     if (scaling?.firstLevel === feature.level && sentenceIndex < scaling.index) return 1;
     return feature.level ?? 1;
   };
+  const sentenceIsFullyCovered = (sentence, matchIndex, parsed) =>
+    !parsed.omittedTail &&
+    !/\b(?:AC|Armor Class|attack|CMB|CMD|damage|DC|immune|immunity|movement|penalty|resistance|saving throws?|speed)\b/i.test(sentence.slice(0, matchIndex));
   for (const [sentenceIndex, sentence] of sentences.entries()) {
     if (replacementBoilerplate(sentence)) continue;
     if (sentenceIndex === scaling?.index) continue;
@@ -227,6 +231,7 @@ function adjustmentsFromFeature(feature) {
         })));
         lastParsedSentenceIndex = sentenceIndex;
         if (parsed.omittedTail) fullyAutomated = false;
+        else if (sentenceIsFullyCovered(sentence, halfLevel.index, parsed)) coveredSentenceIndexes.add(sentenceIndex);
         continue;
       }
     }
@@ -250,6 +255,7 @@ function adjustmentsFromFeature(feature) {
         })));
         lastParsedSentenceIndex = sentenceIndex;
         if (parsed.omittedTail) fullyAutomated = false;
+        else if (sentenceIsFullyCovered(sentence, alternateHalfLevel.index ?? 0, parsed)) coveredSentenceIndexes.add(sentenceIndex);
         continue;
       }
     }
@@ -272,6 +278,7 @@ function adjustmentsFromFeature(feature) {
         })));
         lastParsedSentenceIndex = sentenceIndex;
         if (parsed.omittedTail) fullyAutomated = false;
+        else if (sentenceIsFullyCovered(sentence, fixed.index, parsed)) coveredSentenceIndexes.add(sentenceIndex);
         continue;
       }
     }
@@ -279,27 +286,31 @@ function adjustmentsFromFeature(feature) {
   }
   if (scaling) {
     if (!adjustments.length || lastParsedSentenceIndex !== scaling.index - 1 || new Set(adjustments.map((adjustment) => adjustment.base)).size !== 1)
-      return { adjustments: [], fullyAutomated: false };
+      return { adjustments: [], fullyAutomated: false, coveredSentenceIndexes: new Set() };
     for (const adjustment of adjustments) {
       const table = bonusTable(scaling, adjustment.base, adjustment.minimumLevel);
-      if (!table) return { adjustments: [], fullyAutomated: false };
+      if (!table) return { adjustments: [], fullyAutomated: false, coveredSentenceIndexes: new Set() };
       adjustment.bonusByLevel = table;
     }
+    coveredSentenceIndexes.add(scaling.index);
   }
-  return { adjustments, fullyAutomated: fullyAutomated && adjustments.length > 0 };
+  return { adjustments, fullyAutomated: fullyAutomated && adjustments.length > 0, coveredSentenceIndexes };
 }
 
 export function inferredArchetypeSkillBonusDetails(archetype) {
   const adjustments = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const replacement of archetype?.replacements ?? []) {
     for (const feature of replacement.features ?? []) {
       const inferred = adjustmentsFromFeature(feature);
       adjustments.push(...inferred.adjustments);
+      for (const sentenceIndex of inferred.coveredSentenceIndexes)
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
       if (inferred.fullyAutomated) fullyAutomatedFeatureIds.add(feature.id);
     }
   }
-  return { adjustments, fullyAutomatedFeatureIds };
+  return { adjustments, fullyAutomatedFeatureIds, sentenceCoverage };
 }
 
 export function inferArchetypeSkillBonusAdjustments(archetype) {

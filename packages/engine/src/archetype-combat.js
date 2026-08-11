@@ -187,6 +187,7 @@ function combatRuleProgression(adjustment, summary) {
 export function inferredArchetypeCombatModifierDetails(archetype) {
   const adjustments = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const replacement of archetype?.replacements ?? []) {
     for (const feature of replacement.features ?? []) {
       if (/^(?:Deeds?|Bonus Feats?|Revelations?)$/i.test(feature.name ?? "")) continue;
@@ -209,6 +210,16 @@ export function inferredArchetypeCombatModifierDetails(archetype) {
       for (const entry of unique) parsedBySentence.set(entry.index, (parsedBySentence.get(entry.index) ?? 0) + 1);
       const hasScheduledProgression = unique.some(({ adjustment }) => adjustment.bonusByLevel || adjustment.interval);
       const firstParsedIndex = unique.length ? Math.min(...unique.map(({ index }) => index)) : -1;
+      for (const [index, count] of parsedBySentence) {
+        if (directCombatRuleSentence(sentences[index], count))
+          sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+      }
+      if (hasScheduledProgression) {
+        for (const [index, sentence] of sentences.entries()) {
+          if (/^(?:This|The|These) bonus(?:es)?\b[^.]{0,160}\b(?:increases?|improves?)\b/i.test(sentence))
+            sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+        }
+      }
       const hasOtherMechanics = (parsedIndex) => sentences.some((sentence, index) =>
         index !== parsedIndex &&
         !archetypeReplacementBoilerplate(sentence) &&
@@ -228,7 +239,11 @@ export function inferredArchetypeCombatModifierDetails(archetype) {
       if (unique.length && remaining.length === 0) fullyAutomatedFeatureIds.add(feature.id);
     }
   }
-  return { adjustments, fullyAutomatedFeatureIds };
+  return {
+    adjustments,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export function inferArchetypeCombatModifierAdjustments(archetype) {

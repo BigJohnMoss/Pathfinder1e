@@ -465,6 +465,22 @@ test("named-character immunities are inferred without capturing targets or negat
     assert.equal(inferArchetypeDefenseAdjustments(byId(id)).some((defense) => defense.kind === "immunity"), false, id);
 });
 
+test("independent rule engines combine only when every feature sentence is covered", () => {
+  const dragonblood = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-dragonblood-chymist");
+  const plagueBringer = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-plague-bringer");
+  const energyScientist = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-energy-scientist");
+  const desertRaider = catalogueArchetypes.find((archetype) => archetype.id === "rogue-desert-raider");
+  const skeptic = catalogueArchetypes.find((archetype) => archetype.id === "investigator-skeptic");
+  assert.ok(dragonblood && plagueBringer && energyScientist && desertRaider && skeptic);
+  assert.ok(!archetypeAutomationSummary(dragonblood).manual.some((item) => item.startsWith("Draconic Resistances")));
+  assert.ok(!archetypeAutomationSummary(plagueBringer).manual.some((item) => item.startsWith("Disease Resistance")));
+  assert.ok(!archetypeAutomationSummary(desertRaider).manual.some((item) => item.startsWith("Desert Tracker")));
+  assert.ok(archetypeAutomationSummary(energyScientist).manual.some((item) => item.startsWith("Attuned Resistance")), "a separate planar-adaptation effect remains manual");
+  assert.ok(archetypeAutomationSummary(skeptic).manual.some((item) => item.startsWith("Suspect Hoax")), "an unparsed second save condition remains manual");
+  assert.equal(archetypeConditionalModifiers([dragonblood], { alchemist: 10 }).find((item) => item.label === "Saving throws")?.bonus, 6);
+  assert.equal(archetypeDefenses([dragonblood], { alchemist: 10 }).find((item) => item.kind === "immunity")?.qualifier, "paralysis and sleep effects");
+});
+
 test("common exact skill-bonus rules are inferred conservatively", () => {
   const exact = {
     id: "exact",
