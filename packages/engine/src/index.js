@@ -2,7 +2,7 @@ import { normalizeCompanionState } from "./companions.js";
 import { inferArchetypeResourceAdjustments, resolvedArchetypeResourceAdjustments } from "./archetype-resources.js";
 import { inferArchetypeTemporaryHitPointActions, inferredArchetypeTemporaryHitPointActionDetails } from "./archetype-temporary-hit-points.js";
 import { inferArchetypeRerollActions, inferredArchetypeRerollActionDetails } from "./archetype-rerolls.js";
-import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats } from "./archetype-feats.js";
+import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
 import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, inferArchetypeSaveBonusAdjustments } from "./archetype-saves.js";
@@ -1675,9 +1675,10 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   if (archetype.optionGroupAugmentations?.length)
     automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
-  const inferredFeatGrants = inferArchetypeGrantedFeats(archetype, feats);
+  const inferredFeatGrantDetails = inferredArchetypeGrantedFeatDetails(archetype, feats);
+  const inferredFeatGrants = inferredFeatGrantDetails.grants;
   if (inferredFeatGrants.length) automated.push(`${inferredFeatGrants.length} level-aware bonus feat grant${inferredFeatGrants.length === 1 ? "" : "s"}`);
-  const inferredFeatFeatureIds = new Set(inferredFeatGrants.map(grant => grant.featureId));
+  const inferredFeatFeatureIds = new Set(inferredFeatGrantDetails.fullyAutomatedFeatureIds);
   const inferredFeatChoices = inferArchetypeFeatChoices(archetype, feats);
   if (inferredFeatChoices.length) automated.push(`${inferredFeatChoices.length} restricted bonus feat choice${inferredFeatChoices.length === 1 ? "" : "s"}`);
   const inferredFeatAlternatives = inferArchetypeFeatAlternatives(archetype, feats);

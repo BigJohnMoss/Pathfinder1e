@@ -774,12 +774,59 @@ test("standard bonus-feat wording grants exact catalogue feats at the stated lev
     { id: "deflect-arrows", name: "Deflect Arrows" },
     { id: "snatch-arrows", name: "Snatch Arrows" },
   ]).automated.includes("2 level-aware bonus feat grants"));
+  assert.ok(archetypeAutomationSummary(juggler, [
+    { id: "deflect-arrows", name: "Deflect Arrows" },
+    { id: "snatch-arrows", name: "Snatch Arrows" },
+  ]).manual.some(item => item.startsWith("Fast Reactions")), "unimplemented extra uses keep the source feature manual");
 
   const unsafe = { replacements: [{ features: [
     { id: "choice", level: 1, summary: "She gains either Dodge or Mobility as a bonus feat." },
     { id: "companion", level: 1, summary: "Her animal companion gains Dodge as a bonus feat." },
+    { id: "negative", level: 1, summary: "She does not gain Weapon Focus as a bonus feat." },
   ] }] };
-  assert.deepEqual(inferArchetypeGrantedFeats(unsafe, [{ id: "dodge", name: "Dodge" }, { id: "mobility", name: "Mobility" }]), []);
+  assert.deepEqual(inferArchetypeGrantedFeats(unsafe, [{ id: "dodge", name: "Dodge" }, { id: "mobility", name: "Mobility" }, { id: "weapon-focus", name: "Weapon Focus" }]), []);
+});
+
+test("fixed feat grants resolve source suffixes, direct feat wording, and names containing and", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const cases = [
+    ["cleric-forgemaster", { id: "craft-magic-arms-and-armor", name: "Craft Magic Arms and Armor" }, "cleric-forgemaster-craft-magic-arms-and-armor-3", 3],
+    ["fighter-cad", { id: "catch-off-guard", name: "Catch Off-Guard" }, "fighter-cad-catch-off-guard-3", 3],
+    ["ranger-ilsurian-archer", { id: "bullseye-shot", name: "Bullseye Shot" }, "ranger-ilsurian-archer-bullseye-shot-ex-1", 1],
+    ["skald-belkzen-war-drummer", { id: "craft-magic-arms-and-armor", name: "Craft Magic Arms and Armor" }, "skald-belkzen-war-drummer-weapon-master-ex-7", 7],
+  ];
+  for (const [id, feat, featureId, level] of cases) {
+    assert.ok(inferArchetypeGrantedFeats(record(id), [feat]).some(grant => grant.featureId === featureId && grant.featId === feat.id && grant.level === level), id);
+    assert.ok(!archetypeAutomationSummary(record(id), [feat]).manual.some(item => item.startsWith(record(id).replacements.flatMap(item => item.features).find(feature => feature.id === featureId).name)), `${id} complete fixed grant`);
+  }
+
+  const toxic = record("slayer-toxic-sniper");
+  assert.ok(inferArchetypeGrantedFeats(toxic, [{ id: "gunsmithing", name: "Gunsmithing" }]).some(grant => grant.featId === "gunsmithing"));
+  assert.ok(archetypeAutomationSummary(toxic, [{ id: "gunsmithing", name: "Gunsmithing" }]).manual.some(item => item.startsWith("Scrapper’s Gun")), "the battered gun and restoration rules remain manual");
+  assert.ok(!inferArchetypeGrantedFeats(record("spiritualist-grim-apostle"), [{ id: "power-attack", name: "Power Attack" }]).some(grant => grant.featId === "power-attack"), "a phantom's pronoun grant is not applied to the character");
+});
+
+test("multiple fixed grants in one sentence use their nearest published levels", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const warriorPoet = inferArchetypeGrantedFeats(record("samurai-warrior-poet"), [
+    { id: "spring-attack", name: "Spring Attack" },
+    { id: "improved-spring-attack", name: "Improved Spring Attack" },
+    { id: "greater-spring-attack", name: "Greater Spring Attack" },
+  ]).filter(grant => grant.featureId === "samurai-warrior-poet-battle-dance-ex-6");
+  assert.deepEqual(warriorPoet, [
+    { featureId: "samurai-warrior-poet-battle-dance-ex-6", featId: "spring-attack", level: 6 },
+    { featureId: "samurai-warrior-poet-battle-dance-ex-6", featId: "improved-spring-attack", level: 12 },
+    { featureId: "samurai-warrior-poet-battle-dance-ex-6", featId: "greater-spring-attack", level: 18 },
+  ]);
+  assert.deepEqual(inferArchetypeGrantedFeats(record("rogue-sharper"), [
+    { id: "improved-steal", name: "Improved Steal" },
+    { id: "greater-steal", name: "Greater Steal" },
+    { id: "quick-steal", name: "Quick Steal" },
+  ]), [
+    { featureId: "rogue-sharper-sticky-fingers-ex-2", featId: "improved-steal", level: 2 },
+    { featureId: "rogue-sharper-sticky-fingers-ex-2", featId: "greater-steal", level: 6 },
+    { featureId: "rogue-sharper-sticky-fingers-ex-2", featId: "quick-steal", level: 8 },
+  ]);
 });
 
 test("restricted archetype feat wording creates level-aware catalogue choices", () => {

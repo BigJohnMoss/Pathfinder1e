@@ -5,8 +5,9 @@ const normalizeName = (value) => String(value)
   .replace(/’|â€™|Ã¢â‚¬â„¢|ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢|ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢/g, "'")
   .replace(/-\s+/g, "-")
   .replace(/\s*\*+\s*$/, "")
-  .replace(sourceSuffix, "")
   .replace(/(?:\s*\([^)]*\))+\s*$/, "")
+  .replace(/\s+feat$/i, "")
+  .replace(sourceSuffix, "")
   .replace(/\s+feat$/i, "")
   .replace(/^(?:a|an|the)\s+/i, "")
   .trim()
@@ -31,34 +32,66 @@ const featIdsFromList = (value, featIdByName) => String(value).split(",").flatMa
   return name.split(/\s+(?:and|or)\s+/i).map(item => featIdByName.get(normalizeName(item.trim())));
 });
 
-export function inferArchetypeGrantedFeats(archetype, feats) {
+const fixedFeatIds = (value, featIdByName) => {
+  const normalized = String(value)
+    .replace(/\s+at\s+\d+(?:st|nd|rd|th)?\s+level$/i, "")
+    .trim();
+  const exact = featIdByName.get(normalizeName(normalized));
+  return exact ? [exact] : featIdsFromList(normalized, featIdByName);
+};
+
+const featGrantQualifier = /^(?:The\s+)?[^.]{0,100}?(?:need not|does not need to|doesn't need to|may ignore)\s+meet[^.]{0,100}?prerequisites?\.?$/i;
+const featGrantReplacement = /^(?:This (?:ability|feature|feat) |This |These )?(?:alters?|replaces?)[^.]+\.?$/i;
+
+export function inferredArchetypeGrantedFeatDetails(archetype, feats) {
   const featIdByName = featNameMap(feats);
   const grants = [];
   const seen = new Set();
+  const fullyAutomatedFeatureIds = [];
   for (const feature of (archetype?.replacements ?? []).flatMap(item => item.features ?? [])) {
     const explicit = new Set([feature.grantedFeatId, ...(feature.grantedFeatIds ?? [])].filter(Boolean));
-    for (const rawSentence of String(feature.summary ?? "").replace(/\s+/g, " ").split(/(?<=[.!?])\s+/)) {
+    const featureText = String(feature.summary ?? "").replace(/\s+/g, " ");
+    const sentences = featureText.split(/(?<=[.!?])\s+/).filter(Boolean);
+    const pureGrantSentences = new Set();
+    for (const [sentenceIndex, rawSentence] of sentences.entries()) {
       const sentence = rawSentence.replace(/â€™|Ã¢â‚¬â„¢|ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢/g, "'");
-      const gainIndex = sentence.search(/\b(?:gains?|receives?|is granted)\b/i);
-      if (gainIndex < 0) continue;
-      if (/\b(?:animal companion|companion|eidolon|familiar|homunculus|phantom|mount)\b/i.test(sentence.slice(0, gainIndex))) continue;
-      const match = sentence.match(/\b(?:gains?|receives?|is granted)\s+(?:the\s+)?(.+?)\s+as\s+(?:an?\s+)?(?:additional\s+)?bonus feats?\b/i);
-      if (!match || /\b(?:any|either|choice|chooses?|one of|for which)\b/i.test(match[1])) continue;
-      const names = match[1].split(/\s*,\s*|\s+and\s+/i).map(name => name.trim()).filter(Boolean);
-      const ids = names.map(name => featIdByName.get(normalizeName(name)));
-      if (ids.some(id => !id)) continue;
-      const statedLevel = sentence.match(/\b(?:at|upon reaching)\s+(\d+)(?:st|nd|rd|th)?\s+level\b/i);
-      const level = statedLevel ? Number(statedLevel[1]) : Math.max(1, Math.trunc(feature.level ?? 1));
-      for (const featId of ids) {
-        if (explicit.has(featId)) continue;
-        const key = `${feature.id}:${level}:${featId}`;
-        if (seen.has(key)) continue;
-        seen.add(key);
-        grants.push({ featureId: feature.id, featId, level });
+      const matchesByIndex = new Map();
+      for (const match of sentence.matchAll(/\b(?:gains?|receives?|is granted)\s+(?:the\s+)?(.+?)\s+as\s+(?:an?\s+)?(?:additional\s+)?bonus feats?\b/gi)) matchesByIndex.set(match.index, match);
+      for (const match of sentence.matchAll(/\b(?:gains?|receives?|is granted)\s+(?:the\s+)?(.+?)\s+(?:(?:APG|ACG|ARG|OA|UC|UI|UM|ISG|UW|HA|WMH|CoP)\s+)?feat\b/gi)) if (!matchesByIndex.has(match.index)) matchesByIndex.set(match.index, match);
+      for (const match of [...matchesByIndex.values()].sort((left, right) => left.index - right.index)) {
+        const gainIndex = match.index ?? 0;
+        if (/(?:does not|do not|doesn't|cannot|can't|is not)\s*$/i.test(sentence.slice(Math.max(0, gainIndex - 18), gainIndex))) continue;
+        const ownerPrefix = sentence.slice(0, gainIndex);
+        const subordinateOwner = /\b(?:animal companion|companion|eidolon|familiar|homunculus|phantom|mount)\b/i.test(ownerPrefix);
+        if (subordinateOwner && !/^Both\b/i.test(ownerPrefix.trim())) continue;
+        if (/^It\b/i.test(ownerPrefix.trim()) && /\b(?:animal companion|companion|eidolon|familiar|homunculus|phantom|mount)\b/i.test(featureText.slice(0, featureText.indexOf(sentence)))) continue;
+        if (/\b(?:any|either|choice|chooses?|one of|for which)\b/i.test(match[1])) continue;
+        const fragment = /^this$/i.test(match[1].trim()) ? String(feature.name ?? "").replace(/\s*\([^)]+\)\s*$/, "") : match[1];
+        const ids = fixedFeatIds(fragment, featIdByName);
+        if (ids.some(id => !id)) continue;
+        const statedLevels = [...sentence.slice(0, gainIndex).matchAll(/\b(?:at|upon reaching)\s+(\d+)(?:st|nd|rd|th)?\s+level\b/gi)];
+        const level = statedLevels.length ? Number(statedLevels.at(-1)[1]) : Math.max(1, Math.trunc(feature.level ?? 1));
+        for (const featId of ids) {
+          if (explicit.has(featId)) continue;
+          const key = `${feature.id}:${level}:${featId}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          grants.push({ featureId: feature.id, featId, level });
+        }
+        const suffix = sentence.slice(gainIndex + match[0].length).trim();
+        const prefix = sentence.slice(0, gainIndex).trim().replace(/^At\s+\d+(?:st|nd|rd|th)?\s+level,?\s*/i, "");
+        if (!subordinateOwner && prefix.length <= 120 && !/[,!?.]|\b(?:when|while|whenever|if|after|before)\b/i.test(prefix) && /^[,.]?\s*(?:at\s+\d+(?:st|nd|rd|th)?\s+level,?\s*)?(?:(?:even if|even though|whether or not)[^.]*(?:prerequisites?|qualif(?:y|ies|ied))[^.]*\s*)?\.?$/i.test(suffix))
+          pureGrantSentences.add(sentenceIndex);
       }
     }
+    if (grants.some(grant => grant.featureId === feature.id) && sentences.every((sentence, index) => pureGrantSentences.has(index) || featGrantQualifier.test(sentence) || featGrantReplacement.test(sentence)))
+      fullyAutomatedFeatureIds.push(feature.id);
   }
-  return grants;
+  return { grants, fullyAutomatedFeatureIds };
+}
+
+export function inferArchetypeGrantedFeats(archetype, feats) {
+  return inferredArchetypeGrantedFeatDetails(archetype, feats).grants;
 }
 
 const ordinalLevels = (text) => {
