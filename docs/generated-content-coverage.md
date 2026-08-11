@@ -37,7 +37,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Reusable subsystem | Archetypes |
 |---|---:|
-| Resources and limited uses | 31 |
+| Resources and limited uses | 32 |
 | Companions and effective levels | 34 |
 | Spell lists, slots, and casting | 49 |
 | Class skills and skill-rank progressions | 56 |

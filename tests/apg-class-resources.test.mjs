@@ -9,6 +9,8 @@ test("APG class resources follow their level and ability limits", () => {
   assert.deepEqual(apgClassResourceMaximums("inquisitor", 4), { judgments: 2 });
   assert.deepEqual(apgClassResourceMaximums("inquisitor", 20), { judgments: 7, baneRounds: 20 });
   assert.deepEqual(apgClassResourceMaximums("summoner", 10, { charisma: 3 }), { summonMonster: 6, bondSensesRounds: 10, makersCall: 2 });
+  assert.deepEqual(apgClassResourceMaximums("monk", 3, { wisdom: 4 }), {});
+  assert.deepEqual(apgClassResourceMaximums("monk", 4, { wisdom: 4 }), { kiPool: 6 });
 });
 
 test("character normalization keeps only resource counters for selected classes", () => {

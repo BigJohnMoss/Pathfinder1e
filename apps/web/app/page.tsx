@@ -2560,6 +2560,7 @@ export default function Home() {
     bondSensesRounds: ["Bond Senses", "round"],
     makersCall: ["Maker's Call", "use"],
     arcanePool: ["Arcane Pool", "point"],
+    kiPool: ["Ki Pool", "point"],
     grit: ["Grit", "point"],
     resolve: ["Resolve", "use"],
     martialFlexibility: ["Martial Flexibility", "use"],
@@ -2681,6 +2682,7 @@ export default function Home() {
     ...(bardClassLevel > 0
       ? [
           {
+            id: "bardicPerformance",
             label: "Performance rounds",
             unit: "round",
             maximum: bardicPerformanceMaximum,
@@ -2692,6 +2694,7 @@ export default function Home() {
     ...(wildShapeMaximum !== 0
       ? [
           {
+            id: "wildShape",
             label: "Wild Shape",
             unit: "use",
             maximum: wildShapeMaximum,

@@ -26,6 +26,8 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
       };
     case "magus":
       return { arcanePool: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.intelligence)) };
+    case "monk":
+      return classLevel >= 4 ? { kiPool: Math.max(1, Math.floor(classLevel / 2) + nonNegativeModifier(abilityModifiers.wisdom)) } : {};
     case "gunslinger":
       return { grit: Math.max(1, nonNegativeModifier(abilityModifiers.wisdom)) };
     case "samurai":
