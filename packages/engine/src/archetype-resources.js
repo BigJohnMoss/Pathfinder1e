@@ -1,3 +1,5 @@
+import { inferArchetypeSpellLikeAbilityResources } from "./archetype-spell-like-abilities.js";
+
 const abilityNames = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"];
 const numberWords = { once: 1, twice: 2, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
 const numericValue = (value) => numberWords[String(value).toLowerCase()] ?? Number(value);
@@ -100,5 +102,9 @@ export function inferArchetypeResourceAdjustments(archetype) {
 
 export function resolvedArchetypeResourceAdjustments(archetype) {
   const explicit = archetype?.resourceAdjustments ?? [];
-  return explicit.length ? explicit : inferArchetypeResourceAdjustments(archetype);
+  const spellLike = inferArchetypeSpellLikeAbilityResources(archetype);
+  const spellLikeFeatureIds = new Set(spellLike.map((resource) => resource.sourceFeatureId));
+  const general = (explicit.length ? explicit : inferArchetypeResourceAdjustments(archetype))
+    .filter((resource) => !spellLikeFeatureIds.has(resource.sourceFeatureId ?? resource.resourceId.replace(/^archetype-/, "")));
+  return [...general, ...spellLike];
 }
