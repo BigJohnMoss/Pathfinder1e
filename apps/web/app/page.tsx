@@ -64,6 +64,7 @@ import {
   abilityBoostCount,
   abilityNames,
   apgClassResourceMaximums,
+  archetypeAbilityScoreBonuses,
   archetypeCombatBonuses,
   archetypeConditionalModifiers,
   archetypeDefenses,
@@ -740,6 +741,10 @@ export default function Home() {
   const choiceAmount =
     (ancestry.abilityModifiers as { choice?: { amount: number } }).choice
       ?.amount ?? 0;
+  const selectedArchetypeAbilityScoreBonuses = useMemo(
+    () => archetypeAbilityScoreBonuses(allSelectedArchetypes, classLevelMap),
+    [allSelectedArchetypes, classLevelMap],
+  );
   const abilities = useMemo(
     () =>
       Object.fromEntries(
@@ -749,10 +754,11 @@ export default function Home() {
             (fixedModifiers[ability as keyof typeof baseAbilities] ?? 0) +
             (choiceAmount && ability === humanAbility ? choiceAmount : 0) +
             abilityBoosts.filter((boost) => boost === ability).length +
+            selectedArchetypeAbilityScoreBonuses[ability as keyof typeof selectedArchetypeAbilityScoreBonuses] +
             activeEffects.filter((effect) => effect.target === ability).reduce((total, effect) => total + effect.bonus, 0),
         ]),
       ) as typeof baseAbilities,
-    [abilityBoosts, activeEffects, baseAbilities, choiceAmount, fixedModifiers, humanAbility],
+    [abilityBoosts, activeEffects, baseAbilities, choiceAmount, fixedModifiers, humanAbility, selectedArchetypeAbilityScoreBonuses],
   );
   const pointBuy = pointBuySummary(baseAbilities, pointBuyBudget);
   useEffect(

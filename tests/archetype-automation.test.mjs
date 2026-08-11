@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferArchetypeAbilityScoreAdjustments } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 
@@ -23,6 +24,67 @@ test("archetype automation reports calculated and manual mechanics separately", 
 
 test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
+});
+
+test("permanent archetype ability-score bonuses apply at their published levels", () => {
+  const hagbound = catalogueArchetypes.find((archetype) => archetype.id === "witch-hagbound");
+  const greenKnight = catalogueArchetypes.find((archetype) => archetype.id === "cavalier-green-knight");
+  assert.ok(hagbound && greenKnight);
+  assert.deepEqual(inferArchetypeAbilityScoreAdjustments(hagbound), [{
+    sourceFeatureId: "witch-hagbound-hunched-muscle-ex-2",
+    label: "Hunched Muscle: Strength",
+    ability: "strength",
+    minimumLevel: 2,
+    base: 2,
+    bonusType: "size",
+    maximum: 6,
+    bonusByLevel: [
+      { level: 2, bonus: 2 },
+      { level: 8, bonus: 4 },
+      { level: 14, bonus: 6 },
+    ],
+  }]);
+  assert.equal(archetypeAbilityScoreBonuses([hagbound], { witch: 1 }).strength, 0);
+  assert.equal(archetypeAbilityScoreBonuses([hagbound], { witch: 8 }).strength, 4);
+  assert.equal(archetypeAbilityScoreBonuses([hagbound], { witch: 20 }).strength, 6);
+  assert.equal(archetypeAbilityScoreBonuses([greenKnight], { cavalier: 19 }).constitution, 0);
+  assert.equal(archetypeAbilityScoreBonuses([greenKnight], { cavalier: 20 }).constitution, 6);
+  assert.ok(!archetypeAutomationSummary(hagbound).manual.some((item) => item.startsWith("Hunched Muscle")));
+});
+
+test("conditional ability-score rules remain visible without becoming permanent bonuses", () => {
+  const dinosaurDruid = catalogueArchetypes.find((archetype) => archetype.id === "druid-dinosaur-druid");
+  const natureBonded = catalogueArchetypes.find((archetype) => archetype.id === "magus-nature-bonded-magus");
+  assert.ok(dinosaurDruid && natureBonded);
+  assert.equal(archetypeAbilityScoreBonuses([dinosaurDruid], { druid: 20 }).constitution, 0);
+  assert.deepEqual(archetypeConditionalModifiers([dinosaurDruid], { druid: 20 }).find((modifier) => modifier.label === "Dinosaur Shape: Constitution"), {
+    label: "Dinosaur Shape: Constitution",
+    condition: "when she assumes the form of a dinosaur via wild shape",
+    bonus: 2,
+    source: "Dinosaur Druid",
+  });
+  assert.deepEqual(archetypeAbilityScoreAdjustments(natureBonded).map((adjustment) => adjustment.ability), ["strength", "constitution"]);
+  assert.equal(archetypeAbilityScoreBonuses([natureBonded], { magus: 20 }).strength, 0);
+});
+
+test("ability-score inference excludes choices and subordinate creatures across the catalogue", () => {
+  for (const archetype of catalogueArchetypes) {
+    const inferred = inferArchetypeAbilityScoreAdjustments(archetype);
+    assert.equal(new Set(inferred.map((adjustment) => JSON.stringify(adjustment))).size, inferred.length, `${archetype.id} has duplicate ability-score rows`);
+    for (const adjustment of inferred) {
+      assert.ok(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].includes(adjustment.ability), `${archetype.id} has a valid ability target`);
+      assert.ok(adjustment.base > 0 && adjustment.minimumLevel >= 1 && adjustment.minimumLevel <= 20, `${archetype.id} has bounded ability progression`);
+      assert.doesNotMatch(adjustment.sourceFeatureId, /companion|mount|phantom/, `${archetype.id} excludes subordinate creature ability scores`);
+      const levels = adjustment.bonusByLevel?.map((step) => step.level) ?? [];
+      assert.ok(levels.every((level, index) => level >= adjustment.minimumLevel && level <= 20 && (!index || level > levels[index - 1])), `${archetype.id} has ordered ability milestones`);
+    }
+    if (archetype.mechanicalCoverage === "full") assert.deepEqual(archetypeAbilityScoreAdjustments(archetype), archetype.abilityScoreAdjustments ?? [], `${archetype.id} does not mix inference into full automation`);
+  }
+  const controlledRage = catalogueArchetypes.find((archetype) => archetype.id === "barbarian-urban-barbarian");
+  const saurianChampion = catalogueArchetypes.find((archetype) => archetype.id === "cavalier-saurian-champion");
+  assert.ok(controlledRage && saurianChampion);
+  assert.deepEqual(inferArchetypeAbilityScoreAdjustments(controlledRage), []);
+  assert.deepEqual(inferArchetypeAbilityScoreAdjustments(saurianChampion), []);
 });
 
 test("exact archetype initiative bonuses are inferred and scale at published levels", () => {

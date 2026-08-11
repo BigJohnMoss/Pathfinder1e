@@ -1,4 +1,4 @@
-import type { CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
+import type { AbilityScores, CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
@@ -58,6 +58,9 @@ export function multiclassAverageHitPoints(classes: CharacterClass[], classLevel
 export function carryingCapacity(strength: number): { light: number; medium: number; heavy: number };
 export function encumbrance(strength: number, items: Array<{ weight: number; quantity: number }>): { carriedWeight: number; capacity: { light: number; medium: number; heavy: number }; load: "light" | "medium" | "heavy" | "overloaded" };
 export function archetypeConditionalModifiers(archetypes: CharacterArchetype[], classLevels: Record<string, number>): Array<{ label: string; bonus: number; condition: string; source: string }>;
+export function archetypeAbilityScoreBonuses(archetypes: CharacterArchetype[], classLevels: Record<string, number>): AbilityScores;
+export function archetypeAbilityScoreAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["abilityScoreAdjustments"]>;
+export function inferArchetypeAbilityScoreAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["abilityScoreAdjustments"]>;
 export function archetypeInitiativeBonus(archetypes: CharacterArchetype[], classLevels: Record<string, number>): number;
 export function archetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
 export function inferArchetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;

@@ -462,6 +462,19 @@ export interface CharacterArchetype {
     maximum?: number;
     bonusByLevel?: Array<{ level: number; bonus: number }>;
   }>;
+  abilityScoreAdjustments?: Array<{
+    sourceFeatureId?: string;
+    label: string;
+    ability: AbilityName;
+    minimumLevel?: number;
+    maximumLevel?: number;
+    base: number;
+    minimum?: number;
+    maximum?: number;
+    bonusType?: "alchemical" | "circumstance" | "competence" | "enhancement" | "inherent" | "insight" | "morale" | "profane" | "racial" | "sacred" | "size" | "trait" | "untyped";
+    bonusByLevel?: Array<{ level: number; bonus: number }>;
+    condition?: string;
+  }>;
   skillBonusAdjustments?: Array<{
     sourceFeatureId?: string;
     skill: string;
