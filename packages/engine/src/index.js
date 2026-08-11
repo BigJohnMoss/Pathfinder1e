@@ -3,6 +3,7 @@ import { inferArchetypeResourceAdjustments, resolvedArchetypeResourceAdjustments
 import { inferArchetypeTemporaryHitPointActions, inferredArchetypeTemporaryHitPointActionDetails } from "./archetype-temporary-hit-points.js";
 import { inferArchetypeRerollActions, inferredArchetypeRerollActionDetails } from "./archetype-rerolls.js";
 import { inferArchetypeSpellLikeAbilityActions, inferredArchetypeSpellLikeAbilityDetails } from "./archetype-spell-like-abilities.js";
+import { inferArchetypeResourceActions, inferredArchetypeResourceActionDetails } from "./archetype-resource-actions.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, archetypeReplacementBoilerplate, archetypeRuleSentences, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
@@ -22,6 +23,7 @@ export { resolvedArchetypeResourceAdjustments };
 export { inferArchetypeTemporaryHitPointActions };
 export { inferArchetypeRerollActions };
 export { inferArchetypeSpellLikeAbilityActions };
+export { inferArchetypeResourceActions };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
@@ -1187,11 +1189,16 @@ export function applyArchetype(characterClass, archetype) {
         : overridden;
     })
     .filter((feature) => feature.level <= 20);
-  const inferredResourceActions = new Map();
-  for (const { sourceFeatureId, action } of [
+  const specializedResourceActions = [
     ...inferArchetypeTemporaryHitPointActions(archetype),
     ...inferArchetypeRerollActions(archetype),
     ...inferArchetypeSpellLikeAbilityActions(archetype),
+  ];
+  const specializedFeatureIds = new Set(specializedResourceActions.map(({ sourceFeatureId }) => sourceFeatureId));
+  const inferredResourceActions = new Map();
+  for (const { sourceFeatureId, action } of [
+    ...specializedResourceActions,
+    ...inferArchetypeResourceActions(archetype, specializedFeatureIds),
   ]) inferredResourceActions.set(sourceFeatureId, [...(inferredResourceActions.get(sourceFeatureId) ?? []), action]);
   const replacements = archetype.replacements.flatMap(
     (replacement) => replacement.features,
@@ -1726,6 +1733,14 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const spellLikeAbilityDetails = inferredArchetypeSpellLikeAbilityDetails(archetype);
   if (spellLikeAbilityDetails.actions.length)
     automated.push(`${spellLikeAbilityDetails.actions.length} tracked spell-like abilit${spellLikeAbilityDetails.actions.length === 1 ? "y" : "ies"}`);
+  const specializedResourceFeatureIds = new Set([
+    ...temporaryHitPointActionDetails.actions,
+    ...rerollActionDetails.actions,
+    ...spellLikeAbilityDetails.actions,
+  ].map(({ sourceFeatureId }) => sourceFeatureId));
+  const genericResourceActionDetails = inferredArchetypeResourceActionDetails(archetype, specializedResourceFeatureIds);
+  if (genericResourceActionDetails.actions.length)
+    automated.push(`${genericResourceActionDetails.actions.length} tracked generic feature activation${genericResourceActionDetails.actions.length === 1 ? "" : "s"}`);
   const spellAutomations = replacementFeatures.filter(feature => feature.spellAutomation);
   if (spellAutomations.length) automated.push(`${spellAutomations.length} spell-powered archetype action${spellAutomations.length === 1 ? "" : "s"}`);
   const adjustmentFeatureIds = new Set([

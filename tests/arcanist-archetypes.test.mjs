@@ -390,6 +390,7 @@ test("Twilight Sage enforces its mandatory exploit, necromancy focus, and daily 
   assert.equal(barrier?.grantsAllOptions, true);
   assert.equal(transfer?.resourceActions, undefined);
   assert.equal(twilight.resourceAdjustments.find((resource) => resource.resourceId === "twilightTransfer")?.maximum, 1);
+  assert.equal(twilight.resourceAdjustments.find((resource) => resource.resourceId === "twilightTransfer")?.dedicatedAction, true);
   assert.equal(twilight.resourceAdjustments.find((resource) => resource.resourceId === "twilightBarrierActivations")?.hidden, true);
 });
 
