@@ -268,7 +268,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             [action.id]: `${effectDescription || action.activeEffect!.name} Active for ${rounds} round${rounds === 1 ? "" : "s"}.`,
           }));
           else if (temporaryHitPoints !== undefined) setActionResults((current) => ({ ...current, [action.id]: `Gained ${temporaryHitPoints} temporary hit points.` }));
-          else if (!action.actorSavingThrow && !action.rerollAction && !action.combatRoll) setActionResults((current) => ({ ...current, [action.id]: action.spellLikeAbility ? `${action.spellLikeAbility.spellName} cast as a spell-like ability.` : "Ability used." }));
+          else if (!action.actorSavingThrow && !action.rerollAction && !action.combatRoll) setActionResults((current) => ({ ...current, [action.id]: action.spellLikeAbility ? action.spellLikeAbility.kind === "spell-equivalent" ? `${action.spellLikeAbility.spellName} activated as a spell-equivalent effect.` : `${action.spellLikeAbility.spellName} cast as a spell-like ability.` : "Ability used." }));
         };
         return <div className="feature-resource-action" key={action.id}>
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
