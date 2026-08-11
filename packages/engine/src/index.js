@@ -4,6 +4,7 @@ import { inferArchetypeTemporaryHitPointActions, inferredArchetypeTemporaryHitPo
 import { inferArchetypeRerollActions, inferredArchetypeRerollActionDetails } from "./archetype-rerolls.js";
 import { inferArchetypeSpellLikeAbilityActions, inferredArchetypeSpellLikeAbilityDetails } from "./archetype-spell-like-abilities.js";
 import { inferArchetypeResourceActions, inferredArchetypeResourceActionDetails } from "./archetype-resource-actions.js";
+import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDetails } from "./archetype-timed-effects.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, archetypeReplacementBoilerplate, archetypeRuleSentences, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
@@ -24,6 +25,7 @@ export { inferArchetypeTemporaryHitPointActions };
 export { inferArchetypeRerollActions };
 export { inferArchetypeSpellLikeAbilityActions };
 export { inferArchetypeResourceActions };
+export { inferArchetypeTimedEffectActions };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
@@ -1193,6 +1195,7 @@ export function applyArchetype(characterClass, archetype) {
     ...inferArchetypeTemporaryHitPointActions(archetype),
     ...inferArchetypeRerollActions(archetype),
     ...inferArchetypeSpellLikeAbilityActions(archetype),
+    ...inferArchetypeTimedEffectActions(archetype),
   ];
   const specializedFeatureIds = new Set(specializedResourceActions.map(({ sourceFeatureId }) => sourceFeatureId));
   const inferredResourceActions = new Map();
@@ -1733,10 +1736,14 @@ export function archetypeAutomationSummary(archetype, feats = []) {
   const spellLikeAbilityDetails = inferredArchetypeSpellLikeAbilityDetails(archetype);
   if (spellLikeAbilityDetails.actions.length)
     automated.push(`${spellLikeAbilityDetails.actions.length} tracked spell-like abilit${spellLikeAbilityDetails.actions.length === 1 ? "y" : "ies"}`);
+  const timedEffectActionDetails = inferredArchetypeTimedEffectActionDetails(archetype);
+  if (timedEffectActionDetails.actions.length)
+    automated.push(`${timedEffectActionDetails.actions.length} tracked timed-effect activation${timedEffectActionDetails.actions.length === 1 ? "" : "s"}`);
   const specializedResourceFeatureIds = new Set([
     ...temporaryHitPointActionDetails.actions,
     ...rerollActionDetails.actions,
     ...spellLikeAbilityDetails.actions,
+    ...timedEffectActionDetails.actions,
   ].map(({ sourceFeatureId }) => sourceFeatureId));
   const genericResourceActionDetails = inferredArchetypeResourceActionDetails(archetype, specializedResourceFeatureIds);
   if (genericResourceActionDetails.actions.length)

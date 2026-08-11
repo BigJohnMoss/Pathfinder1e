@@ -8,6 +8,20 @@
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
   ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "kiPool",
+      "label": "Ki Pool",
+      "unit": "point",
+      "operation": "replace",
+      "minimumLevel": 7,
+      "base": 2,
+      "perInterval": 1,
+      "interval": 2,
+      "abilityModifier": "wisdom",
+      "minimum": 1
+    }
+  ],
   "replacements": [
     {
       "featureIds": [
