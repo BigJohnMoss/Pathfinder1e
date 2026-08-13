@@ -149,6 +149,27 @@ function additionKinds(summary) {
   return { spellList, bonusKnown: explicitlyKnown && !mustLearn, mustLearn };
 }
 
+function oracleBonusSpellEntries(archetype, feature, spells) {
+  if (archetype?.classId !== "oracle" || !/^Bonus Spells$/i.test(feature?.name ?? "")) return [];
+  const summary = normalizedText(feature.summary);
+  if (/\b(?:choose|chooses|select|selects)\b/i.test(summary)) return [];
+  const levelMarkers = [...summary.matchAll(new RegExp(`\\((?:[^)]{0,80}?;\\s*)?(\\d{1,2})${ordinal}(?:[^)]{0,40})?\\)`, "gi"))];
+  if (levelMarkers.length < 3) return [];
+  const entries = uniqueMatches(spellMatches(summary, spells)).flatMap((match) => {
+    const marker = levelMarkers.find((candidate) => candidate.index > match.index && candidate.index - match.end <= 80);
+    if (!marker) return [];
+    const minimumClassLevel = Number(marker[1]);
+    if (!Number.isInteger(minimumClassLevel) || minimumClassLevel < 1 || minimumClassLevel > 20) return [];
+    return [{
+      spell: match.spell,
+      spellLevel: Math.max(1, Math.floor(minimumClassLevel / 2)),
+      minimumClassLevel,
+    }];
+  });
+  const unique = [...new Map(entries.map((entry) => [`${entry.spell.id}:${entry.minimumClassLevel}`, entry])).values()];
+  return unique.length === levelMarkers.length ? unique : [];
+}
+
 export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
   const cached = archetype && spells && detailsCache.get(archetype)?.get(spells);
   if (cached) return cached;
@@ -156,8 +177,20 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
   const bonusSpellAdditions = {};
   const spellGrants = [];
   const sourceFeatureIds = new Set();
+  const fullyAutomatedFeatureIds = new Set();
+  const bonusSpellReplacementClassLevels = new Set();
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     const summary = normalizedText(feature.summary);
+    const oracleBonusSpells = oracleBonusSpellEntries(archetype, feature, spells);
+    if (oracleBonusSpells.length) {
+      for (const { spell, spellLevel, minimumClassLevel } of oracleBonusSpells) {
+        spellGrants.push({ spellId: spell.id, spellLevel, minimumClassLevel, mode: "known", sourceFeatureId: feature.id });
+        bonusSpellReplacementClassLevels.add(minimumClassLevel);
+      }
+      sourceFeatureIds.add(feature.id);
+      fullyAutomatedFeatureIds.add(feature.id);
+      continue;
+    }
     if (!isFixedSpellExpansion(summary)) continue;
     const parsedEntries = [...tableEntries(summary, spells), ...parentheticalEntries(summary, spells), ...groupedParentheticalEntries(summary, spells), ...respectiveEntries(summary, spells), ...parentheticalRespectiveEntries(summary, spells)];
     const entries = [...parsedEntries, ...progressiveSummonEntries(summary, spells, parsedEntries)];
@@ -184,6 +217,8 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
     bonusSpellAdditions,
     spellGrants: [...new Map(spellGrants.map((grant) => [`${grant.mode}:${grant.spellId}`, grant])).values()],
     sourceFeatureIds,
+    fullyAutomatedFeatureIds: [...fullyAutomatedFeatureIds],
+    bonusSpellReplacementClassLevels: [...bonusSpellReplacementClassLevels].sort((left, right) => left - right),
   };
   if (archetype && spells && typeof archetype === "object" && typeof spells === "object") {
     const byCatalogue = detailsCache.get(archetype) ?? new WeakMap();
@@ -194,6 +229,6 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
 }
 
 export function inferArchetypeSpellAdditions(archetype, spells = []) {
-  const { spellListAdditions, bonusSpellAdditions, spellGrants } = inferredArchetypeSpellAdditionDetails(archetype, spells);
-  return { spellListAdditions, bonusSpellAdditions, spellGrants };
+  const { spellListAdditions, bonusSpellAdditions, spellGrants, bonusSpellReplacementClassLevels } = inferredArchetypeSpellAdditionDetails(archetype, spells);
+  return { spellListAdditions, bonusSpellAdditions, spellGrants, bonusSpellReplacementClassLevels };
 }

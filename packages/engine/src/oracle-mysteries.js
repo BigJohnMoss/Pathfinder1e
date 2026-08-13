@@ -9,12 +9,12 @@ const spellNameKeys = (name) => {
   return [normalized];
 };
 
-export function mysteryBonusSpells(spells, selectedMystery, oracleLevel, classId = "oracle") {
+export function mysteryBonusSpells(spells, selectedMystery, oracleLevel, classId = "oracle", replacedClassLevels = []) {
   if (!Array.isArray(spells) || !Array.isArray(selectedMystery?.mysterySpells) || !Number.isInteger(oracleLevel) || oracleLevel < 1) return [];
   const byName = new Map();
   for (const spell of spells) for (const key of spellNameKeys(spell.name)) if (!byName.has(key)) byName.set(key, spell);
   return selectedMystery.mysterySpells
-    .filter((entry) => entry.oracleLevel <= oracleLevel)
+    .filter((entry) => entry.oracleLevel <= oracleLevel && !replacedClassLevels.includes(entry.oracleLevel))
     .flatMap((entry) => {
       const spell = spellNameKeys(entry.name).map((key) => byName.get(key)).find(Boolean);
       return spell ? [{ ...spell, name: entry.name, levelByClass: { ...(spell.levelByClass ?? {}), [classId]: entry.spellLevel } }] : [];

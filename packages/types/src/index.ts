@@ -415,6 +415,7 @@ export interface CharacterClass {
   spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
   spellGrants?: ArchetypeSpellGrant[];
+  bonusSpellReplacementClassLevels?: number[];
   spellModifierAdjustments?: ArchetypeSpellModifierAdjustment[];
   wildEmpathyAdjustments?: ArchetypeWildEmpathyAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
@@ -465,6 +466,7 @@ export interface CharacterArchetype {
   spellListClassId?: string;
   bonusSpellAdditions?: Record<string, number>;
   spellGrants?: ArchetypeSpellGrant[];
+  bonusSpellReplacementClassLevels?: number[];
   spellModifierAdjustments?: ArchetypeSpellModifierAdjustment[];
   wildEmpathyAdjustments?: ArchetypeWildEmpathyAdjustment[];
   spellSlotAdjustmentPerLevel?: number;

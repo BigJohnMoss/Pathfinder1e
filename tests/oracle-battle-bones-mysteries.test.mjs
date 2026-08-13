@@ -25,6 +25,7 @@ test("Battle and Bones mysteries merge complete APG details", () => {
 test("Battle and Bones mystery spells unlock at even Oracle levels without consuming known limits", () => {
   assert.deepEqual(mysteryBonusSpells(bundle.spells, battle, 1), []);
   assert.deepEqual(mysteryBonusSpells(bundle.spells, battle, 8).map((spell) => spell.name), ["enlarge person", "fog cloud", "magic vestment", "wall of fire"]);
+  assert.deepEqual(mysteryBonusSpells(bundle.spells, battle, 8, "oracle", [4, 8]).map((spell) => spell.name), ["enlarge person", "magic vestment"]);
   assert.deepEqual(mysteryBonusSpells(bundle.spells, bones, 18).map((spell) => spell.name), bones.mysterySpells.map((entry) => entry.name));
   for (const mystery of [battle, bones]) {
     const spells = mysteryBonusSpells(bundle.spells, mystery, 20);
