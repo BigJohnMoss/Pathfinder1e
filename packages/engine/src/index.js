@@ -1340,6 +1340,11 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       ...(inferredSpellAdditions.spellGrants ?? []),
       ...(archetype.spellGrants ?? []),
     ].map((grant) => [`${grant.mode}:${grant.spellId}`, grant])).values()],
+    bonusSpellReplacementClassLevels: [...new Set([
+      ...(characterClass.bonusSpellReplacementClassLevels ?? []),
+      ...(inferredSpellAdditions.bonusSpellReplacementClassLevels ?? []),
+      ...(archetype.bonusSpellReplacementClassLevels ?? []),
+    ])].sort((left, right) => left - right),
     spellcasting: baseSpellcasting
       ? {
           ...baseSpellcasting,
@@ -2000,6 +2005,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...resourceDamageActionDetails.fullyAutomatedFeatureIds,
     ...saveEffectActionDetails.fullyAutomatedFeatureIds,
     ...inferredSpellAccess.fullyAutomatedFeatureIds,
+    ...inferredSpellAdditions.fullyAutomatedFeatureIds,
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,
     ...inferredWildEmpathy.fullyAutomatedFeatureIds,
     ...advisoryFeatureIds,

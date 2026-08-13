@@ -1970,12 +1970,14 @@ export default function Home() {
             selectedMystery,
             primaryClassLevel,
             characterClass.id,
+            characterClass.bonusSpellReplacementClassLevels,
           ).filter(
             (spell) =>
               spell.levelByClass[characterClass.id] <= maximumSpellLevel,
           )
         : [],
     [
+      characterClass.bonusSpellReplacementClassLevels,
       characterClass.id,
       classId,
       maximumSpellLevel,
@@ -2245,6 +2247,7 @@ export default function Home() {
             secondarySelectedMystery,
             secondaryClassLevel,
             secondaryCharacterClass.id,
+            secondaryCharacterClass.bonusSpellReplacementClassLevels,
           ).filter(
             (spell) =>
               spell.levelByClass[secondaryCharacterClass.id] <=
@@ -3639,6 +3642,7 @@ export default function Home() {
               draftSecondaryMystery,
               draftSecondaryLevel?.level ?? 1,
               draftSecondaryClass.id,
+              draftSecondaryClass.bonusSpellReplacementClassLevels,
             ).filter(
               (spell) =>
                 spell.levelByClass[draftSecondaryClass.id] <=

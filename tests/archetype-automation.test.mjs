@@ -1,10 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeClericDomainReductionFeatureIds, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, archetypeSpellcastingAdjustmentFeatureIds, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeClericDomainReductionFeatureIds, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, archetypeSpellcastingAdjustmentFeatureIds, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, inferArchetypeSpellAdditions, spellcastingProgression } from "../packages/engine/src/index.js";
 import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferArchetypeAbilityScoreAdjustments } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
+import catalogueSpells from "../generated/pf1e-spells.mjs";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -1062,6 +1063,24 @@ test("fixed archetype bonus spells are granted separately from normal spells kno
     assert.equal(Object.keys(bonusSpells).length, expectedCount, `${id} bonus spell count`);
     const applied = applyArchetype({ id: archetype(id).classId, name: "Base", features: [], classSkills: [] }, archetype(id));
     assert.deepEqual(applied.bonusSpellAdditions, bonusSpells, `${id} applied bonus spells`);
+  }
+});
+
+test("fixed Oracle bonus-spell replacements grant resolved spells at exact class milestones", () => {
+  const automated = catalogueArchetypes
+    .map((archetype) => ({ archetype, rules: inferArchetypeSpellAdditions(archetype, catalogueSpells) }))
+    .filter(({ rules }) => rules.bonusSpellReplacementClassLevels?.length);
+  assert.equal(automated.length, 14);
+  assert.equal(automated.reduce((total, { rules }) => total + rules.spellGrants.length, 0), 81);
+  for (const { archetype, rules } of automated) {
+    assert.equal(archetype.classId, "oracle");
+    assert.ok(rules.spellGrants.every((grant) => grant.mode === "known" && grant.minimumClassLevel >= 1 && grant.minimumClassLevel <= 18));
+    assert.equal(archetypeAutomationSummary(archetype, [], catalogueSpells).manual.includes("Bonus Spells (level 1)"), false, archetype.id);
+  }
+  for (const id of ["oracle-cyclopean-seer", "oracle-community-guardian"]) {
+    const source = catalogueArchetypes.find((archetype) => archetype.id === id);
+    assert.ok(source);
+    assert.equal(archetypeAutomationSummary(source, [], catalogueSpells).manual.includes("Bonus Spells (level 1)"), true, `${id} remains manual`);
   }
 });
 
