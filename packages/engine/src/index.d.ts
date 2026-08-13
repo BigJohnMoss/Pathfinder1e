@@ -147,6 +147,7 @@ export function resolvedArchetypeResourceAdjustments(archetype?: CharacterArchet
 export function inferArchetypeTemporaryHitPointActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeRerollActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeSpellLikeAbilityActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
+export function inferArchetypeResourceSpellActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeResourceActions(archetype?: CharacterArchetype, excludedFeatureIds?: Set<string>): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeTimedEffectActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeSpellcastingAbility(archetype?: CharacterArchetype): "intelligence" | "wisdom" | "charisma" | undefined;
