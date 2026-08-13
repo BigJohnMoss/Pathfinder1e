@@ -238,12 +238,14 @@ export interface ClassFeatureOccurrence {
       abilityModifier?: AbilityName;
     };
     combatRoll?: {
-      attack?: { kind: "ranged-touch"; label: string };
+      attack?: { kind: "ranged-touch" | "melee-touch"; label: string };
       damage: {
         type: string;
         diceCountByLevel: Array<{ level: number; count: number }>;
         dieSidesByLevel: Array<{ level: number; sides: number }>;
         abilityModifier?: AbilityName;
+        flatModifierByLevel?: Array<{ level: number; modifier: number }>;
+        usesSelectedModeAsDamageType?: boolean;
       };
       rangeByLevel: Array<{ level: number; range: string }>;
       targetSave?: {
