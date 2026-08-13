@@ -5,6 +5,7 @@ import React from "react";
 import { JSDOM } from "jsdom";
 import { applyArchetype, featuresThroughLevel } from "../packages/engine/src/index.js";
 import type { ActiveEffect, CharacterArchetype, CharacterClass } from "../packages/types/src/index.js";
+import { unarmedStrikeAttack } from "../apps/web/app/equipment-panel";
 
 let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
@@ -62,15 +63,42 @@ test("timed effect activation spends ki and applies every scaled target", async 
     features={featuresThroughLevel(applied, 20)}
     classLevels={{ monk: 20 }}
     dailyResources={[{ id: "kiPool", label: "Monk Ki Pool", unit: "point", maximum: 15, used: 0, onUsedChange: (used) => spent.push(used) }]}
+    equippedWeapons={[{ id: "longspear", name: "Longspear" }, { id: "longbow", name: "Longbow" }, { id: "unarmed-strike", name: "Unarmed strike" }]}
     onAddEffect={(effect) => effects.push(effect)}
   />);
-  await userEvent.setup().click(screen.getByRole("button", { name: "Activate Ki Weapon" }));
+  const user = userEvent.setup();
+  await user.selectOptions(screen.getByLabelText("Activate Ki Weapon affected weapon"), "longbow");
+  await user.click(screen.getByRole("button", { name: "Activate Ki Weapon" }));
   assert.deepEqual(spent, [1]);
-  assert.deepEqual(effects.map(({ target, bonus, roundsRemaining }) => ({ target, bonus, roundsRemaining })), [
-    { target: "attackRolls", bonus: 5, roundsRemaining: 1 },
-    { target: "damageRolls", bonus: 5, roundsRemaining: 1 },
+  assert.deepEqual(effects.map(({ target, bonus, roundsRemaining, weaponIds, weaponEnhancementBonus }) => ({ target, bonus, roundsRemaining, weaponIds, weaponEnhancementBonus })), [
+    { target: "attackRolls", bonus: 5, roundsRemaining: 1, weaponIds: ["longbow"], weaponEnhancementBonus: true },
+    { target: "damageRolls", bonus: 5, roundsRemaining: 1, weaponIds: ["longbow"], weaponEnhancementBonus: true },
   ]);
   assert.match(screen.getByLabelText("Activate Ki Weapon result").textContent ?? "", /Active for 1 round/);
+});
+
+test("unarmed attacks use normal and monk damage progressions", () => {
+  assert.equal(unarmedStrikeAttack(1, 2, "Small").damage, "1d2");
+  assert.deepEqual(unarmedStrikeAttack(15, 4, "Medium", 20), { id: "unarmed-strike", name: "Unarmed strike", attack: 19, damage: "2d10", damageBonus: 4, critical: "×2", enhancementBonus: 0 });
+});
+
+test("weapon enhancement effects raise rather than stack with an existing enhancement", () => {
+  render(<ActivePlayPanel
+    maximumHitPoints={20}
+    currentHitPoints={20}
+    temporaryHitPoints={0}
+    attacks={[{ id: "longbow", name: "Longbow +2", attack: 8, damage: "1d8", damageBonus: 2, critical: "×3", enhancementBonus: 2 }]}
+    checks={[]}
+    skills={[]}
+    effects={[
+      { id: "ki-attack", name: "Ki Weapon", target: "attackRolls", bonus: 5, roundsRemaining: 1, weaponIds: ["longbow"], weaponEnhancementBonus: true },
+      { id: "ki-damage", name: "Ki Weapon", target: "damageRolls", bonus: 5, roundsRemaining: 1, weaponIds: ["longbow"], weaponEnhancementBonus: true },
+    ]}
+    onCurrentHitPointsChange={() => {}}
+    onTemporaryHitPointsChange={() => {}}
+    onEffectsChange={() => {}}
+  />);
+  assert.match(screen.getByText("Longbow +2").closest("article")?.textContent ?? "", /Attack \+11 · Damage 1d8 \+5/);
 });
 
 test("Spurn Harm applies every defense earned at the current level", async () => {

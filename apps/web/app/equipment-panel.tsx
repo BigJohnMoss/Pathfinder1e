@@ -18,7 +18,7 @@ export type EquipmentItem = {
   ranged?: boolean;
   magicBonus?: { armorClass?: { deflection?: number; natural?: number }; saves?: number };
 };
-export type EquipmentAttack = { id: string; name: string; attack: number; damage: string; damageBonus: number; critical: string; range?: number };
+export type EquipmentAttack = { id: string; name: string; attack: number; damage: string; damageBonus: number; critical: string; range?: number; enhancementBonus?: number };
 
 export const equipmentItems = coreEquipment.items as EquipmentItem[];
 
@@ -83,8 +83,29 @@ export const equippedWeaponAttacks = (inventory: InventoryEntry[], baseAttackBon
     damageBonus: (item.ranged ? 0 : strengthModifier) + featBonus.damage + enhancement,
     critical: item.critical ?? "×2",
     range: item.range,
+    enhancementBonus: enhancement,
   }];
 });
+
+export const unarmedStrikeAttack = (baseAttackBonus: number, strengthModifier: number, size: string, monkLevel = 0, weaponBonuses: Record<string, { attack: number; damage: number }> = {}): EquipmentAttack => {
+  const small = String(size).toLowerCase() === "small";
+  const monkDamage = monkLevel >= 20 ? (small ? "2d8" : "2d10")
+    : monkLevel >= 16 ? (small ? "2d6" : "2d8")
+      : monkLevel >= 12 ? (small ? "1d10" : "2d6")
+        : monkLevel >= 8 ? (small ? "1d8" : "1d10")
+          : monkLevel >= 4 ? (small ? "1d6" : "1d8")
+            : (small ? "1d4" : "1d6");
+  const bonus = weaponBonuses["unarmed-strike"] ?? weaponBonuses["unarmed strike"] ?? { attack: 0, damage: 0 };
+  return {
+    id: "unarmed-strike",
+    name: "Unarmed strike",
+    attack: baseAttackBonus + strengthModifier + bonus.attack,
+    damage: monkLevel > 0 ? monkDamage : small ? "1d2" : "1d3",
+    damageBonus: strengthModifier + bonus.damage,
+    critical: "×2",
+    enhancementBonus: 0,
+  };
+};
 
 export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, baseAttackBonus, weaponBonuses = {}, minimumWeaponEnhancements = {}, inventory, coins, onInventoryChange, onCoinsChange }: {
   strength: number;

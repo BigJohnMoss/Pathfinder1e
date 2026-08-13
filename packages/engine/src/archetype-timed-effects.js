@@ -139,12 +139,13 @@ export function inferredArchetypeTimedEffectActionDetails(archetype) {
           ...(targets.length > 1 ? { applyToAllTargets: true } : {}),
           replaceExisting: true,
           ...(skills.length ? { skillOptions: skills } : {}),
+          ...(feature.id === "monk-sohei-ki-weapon-su-4" ? { selectEquippedWeapon: true, includeUnarmedStrike: true, usesWeaponEnhancementRules: true } : {}),
           ...(additionalEffectsByLevel ? { additionalEffectsByLevel } : {}),
         },
         summary,
       },
     });
-    if (["bard-sorrowsoul-spurn-harm-su-5", "magus-spire-defender-arcane-augmentation-su-4", "occultist-battle-host-heroic-splendor-su-6"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
+    if (["bard-sorrowsoul-spurn-harm-su-5", "magus-spire-defender-arcane-augmentation-su-4", "monk-sohei-ki-weapon-su-4", "occultist-battle-host-heroic-splendor-su-6"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
   }
   return { actions, fullyAutomatedFeatureIds };
 }

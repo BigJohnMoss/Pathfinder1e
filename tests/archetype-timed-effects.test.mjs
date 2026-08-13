@@ -16,6 +16,9 @@ test("timed archetype effects spend shared resources and preserve exact scaling"
   const sohei = inferArchetypeTimedEffectActions(archetype("monk-sohei"))[0].action;
   assert.equal(sohei.resourceId, "kiPool");
   assert.deepEqual(sohei.activeEffect.targets, ["attackRolls", "damageRolls"]);
+  assert.equal(sohei.activeEffect.selectEquippedWeapon, true);
+  assert.equal(sohei.activeEffect.includeUnarmedStrike, true);
+  assert.equal(sohei.activeEffect.usesWeaponEnhancementRules, true);
   assert.deepEqual(sohei.activeEffect.bonusByLevel, [
     { level: 4, bonus: 1 }, { level: 8, bonus: 2 }, { level: 12, bonus: 3 }, { level: 16, bonus: 4 }, { level: 20, bonus: 5 },
   ]);
@@ -52,6 +55,7 @@ test("complete timed effects leave the manual queue while partial effects remain
   assert.equal(archetypeAutomationSummary(archetype("magus-spire-defender"), data.feats, data.spells).manual.includes("Arcane Augmentation (Su) (level 4)"), false);
   assert.equal(archetypeAutomationSummary(archetype("occultist-battle-host"), data.feats, data.spells).manual.includes("Heroic Splendor (Su) (level 6)"), false);
   assert.equal(archetypeAutomationSummary(archetype("bard-sorrowsoul"), data.feats, data.spells).manual.includes("Spurn Harm (Su) (level 5)"), false);
+  assert.equal(archetypeAutomationSummary(archetype("monk-sohei"), data.feats, data.spells).manual.includes("Ki Weapon (Su) (level 4)"), false);
 });
 
 test("Spurn Harm gains its complete level-gated defensive package", () => {
@@ -84,15 +88,17 @@ test("timed effect parser remains narrowly bounded across the catalogue", () => 
   }
 });
 
-test("selected skill and damage-reduction effects survive bounded character normalization", () => {
+test("skill, damage-reduction, and weapon-enhancement effects survive bounded normalization", () => {
   const normalized = normalizeCharacterDraft({
     classId: "magus", level: 4, classLevels: [{ classId: "magus", level: 4 }],
     baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 14, wisdom: 10, charisma: 10 },
     activeEffects: [
       { id: "augmentation", name: "Arcane Augmentation", target: "skillChecks", bonus: 5, roundsRemaining: 10, skillIds: ["Stealth", "<invalid>"] },
       { id: "spurn-harm-dr", name: "Spurn Harm damage reduction", target: "damageReduction", bonus: 10, roundsRemaining: 1, description: "DR 10/—." },
+      { id: "ki-weapon", name: "Ki Weapon", target: "attackRolls", bonus: 5, roundsRemaining: 1, weaponIds: ["longbow"], weaponEnhancementBonus: true },
     ],
   }, { classIds: ["magus"] });
   assert.deepEqual(normalized.activeEffects[0].skillIds, ["Stealth"]);
   assert.deepEqual(normalized.activeEffects[1], { id: "spurn-harm-dr", name: "Spurn Harm damage reduction", target: "damageReduction", bonus: 10, roundsRemaining: 1, description: "DR 10/—." });
+  assert.deepEqual(normalized.activeEffects[2], { id: "ki-weapon", name: "Ki Weapon", target: "attackRolls", bonus: 5, roundsRemaining: 1, weaponIds: ["longbow"], weaponEnhancementBonus: true });
 });
