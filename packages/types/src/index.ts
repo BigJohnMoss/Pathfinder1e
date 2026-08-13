@@ -268,6 +268,23 @@ export interface ClassFeatureOccurrence {
         saveModifier: "fortitude" | "reflex" | "will";
       };
     };
+    targetEffectRoll?: {
+      modifier: "fortitude" | "reflex" | "will";
+      rangeByLevel?: Array<{ level: number; range: string }>;
+      effectsByLevel: Array<{
+        level: number;
+        name: string;
+        description: string;
+        duration:
+          | { kind: "fixed-rounds"; rounds: number }
+          | { kind: "dice-rounds"; count: number; sides: number }
+          | { kind: "level-rounds" }
+          | { kind: "level-minutes" };
+      }>;
+      successEffect?: { name: string; description: string; rounds: number };
+      targetHitDiceUpgrade?: { levelDivisor: number; name: string; description: string };
+      bypassesImmunitiesAtLevel?: number;
+    };
     activeEffect?: {
       name: string;
       targets: ActiveEffectTarget[];

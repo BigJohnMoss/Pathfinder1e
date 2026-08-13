@@ -9,6 +9,7 @@ import { inferArchetypeResourceActions, inferredArchetypeResourceActionDetails }
 import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDetails } from "./archetype-timed-effects.js";
 import { inferArchetypeChannelEnergyActions, inferredArchetypeChannelEnergyActionDetails } from "./archetype-channel-energy.js";
 import { inferArchetypeResourceDamageActions, inferredArchetypeResourceDamageActionDetails } from "./archetype-resource-damage.js";
+import { inferArchetypeSaveEffectActions, inferredArchetypeSaveEffectActionDetails } from "./archetype-save-effects.js";
 import { inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
@@ -41,6 +42,7 @@ export { inferArchetypeResourceActions };
 export { inferArchetypeTimedEffectActions };
 export { inferArchetypeChannelEnergyActions };
 export { inferArchetypeResourceDamageActions };
+export { inferArchetypeSaveEffectActions };
 export { inferArchetypeSpellcastingAbility };
 export { inferArchetypeSpellcastingProgression };
 export { inferArchetypeSpellAdditions };
@@ -1229,6 +1231,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     ...inferArchetypeTimedEffectActions(archetype),
     ...inferArchetypeChannelEnergyActions(archetype),
     ...inferArchetypeResourceDamageActions(archetype),
+    ...inferArchetypeSaveEffectActions(archetype),
   ];
   const specializedFeatureIds = new Set(specializedResourceActions.map(({ sourceFeatureId }) => sourceFeatureId));
   const inferredResourceActions = new Map();
@@ -1855,6 +1858,9 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const resourceDamageActionDetails = inferredArchetypeResourceDamageActionDetails(archetype);
   if (resourceDamageActionDetails.actions.length)
     automated.push(`${resourceDamageActionDetails.actions.length} calculated resource-damage action${resourceDamageActionDetails.actions.length === 1 ? "" : "s"}`);
+  const saveEffectActionDetails = inferredArchetypeSaveEffectActionDetails(archetype);
+  if (saveEffectActionDetails.actions.length)
+    automated.push(`${saveEffectActionDetails.actions.length} resolved save-effect action${saveEffectActionDetails.actions.length === 1 ? "" : "s"}`);
   const specializedResourceFeatureIds = new Set([
     ...temporaryHitPointActionDetails.actions,
     ...rerollActionDetails.actions,
@@ -1863,6 +1869,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...timedEffectActionDetails.actions,
     ...channelEnergyActionDetails.actions,
     ...resourceDamageActionDetails.actions,
+    ...saveEffectActionDetails.actions,
   ].map(({ sourceFeatureId }) => sourceFeatureId));
   const genericResourceActionDetails = inferredArchetypeResourceActionDetails(archetype, specializedResourceFeatureIds);
   if (genericResourceActionDetails.actions.length)
@@ -1895,6 +1902,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...resourceSpellActionDetails.fullyAutomatedFeatureIds,
     ...channelEnergyActionDetails.fullyAutomatedFeatureIds,
     ...resourceDamageActionDetails.fullyAutomatedFeatureIds,
+    ...saveEffectActionDetails.fullyAutomatedFeatureIds,
     ...inferredSpellAccess.fullyAutomatedFeatureIds,
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,
     ...inferredWildEmpathy.fullyAutomatedFeatureIds,
