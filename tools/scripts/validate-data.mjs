@@ -1,6 +1,6 @@
 import { readdir, readFile } from "node:fs/promises";
 import { validatePrerequisites } from "../../packages/data/src/validation.js";
-import { archetypeAutomationArrayFields, mergeArchetypeAutomation } from "../../packages/data/src/archetype-automation.js";
+import { archetypeAutomationArrayFields, archetypeAutomationObjectFields, mergeArchetypeAutomation } from "../../packages/data/src/archetype-automation.js";
 
 const root = new URL("../../packages/data/src/", import.meta.url);
 const errors = [];
@@ -24,7 +24,7 @@ for (const [index, overlay] of archetypeOverlays.entries()) {
   const prefix = `archetype automation overlay ${index + 1}`;
   if (typeof overlay?.archetypeId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(overlay.archetypeId)) errors.push(`${prefix}: invalid archetypeId`);
   archetypeOverlayIds.add(overlay.archetypeId);
-  if (!archetypeAutomationArrayFields.some(field => overlay[field]?.length) && !overlay.featurePatches?.length && !overlay.mechanicalCoverage) errors.push(`${prefix}: contains no automation`);
+  if (!archetypeAutomationArrayFields.some(field => overlay[field]?.length) && !archetypeAutomationObjectFields.some(field => overlay[field]) && !overlay.featurePatches?.length && !overlay.mechanicalCoverage) errors.push(`${prefix}: contains no automation`);
 }
 
 async function jsonFiles(directory) {

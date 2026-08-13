@@ -1,6 +1,7 @@
 ﻿import { encumbrance } from "../../../packages/engine/src/index.js";
 import coreEquipment from "../../../packages/data/src/equipment/core-equipment.json";
 import { useMemo, useState } from "react";
+import type { ArcaneSpellFailureRules } from "../../../packages/types/src/index.js";
 
 export type InventoryEntry = { itemId: string; quantity: number; equipped: boolean; enhancementBonus?: number };
 export type CoinPurse = { cp: number; sp: number; gp: number; pp: number };
@@ -12,6 +13,7 @@ export type EquipmentItem = {
   weight: number;
   armorBonus?: number;
   armorCategory?: "light" | "medium" | "heavy";
+  arcaneSpellFailure?: number;
   damage?: string;
   critical?: string;
   range?: number;
@@ -61,6 +63,26 @@ export const equippedArmorCategory = (inventory: InventoryEntry[]): "none" | "li
     .filter((entry) => entry.equipped)
     .map((entry) => equipmentItems.find((item) => item.id === entry.itemId)?.armorCategory ?? "none")
     .reduce<"none" | "light" | "medium" | "heavy">((heaviest, category) => order[category] > order[heaviest] ? category : heaviest, "none");
+};
+
+export const equippedArcaneSpellFailureChance = (
+  inventory: InventoryEntry[],
+  rules: ArcaneSpellFailureRules | undefined,
+  classLevel: number,
+) => {
+  if (rules?.applies === false) return 0;
+  const ignoredArmor = new Set((rules?.ignoredArmorCategories ?? [])
+    .filter(({ minimumLevel }) => classLevel >= minimumLevel)
+    .map(({ category }) => category));
+  const ignoresShields = Boolean(rules?.ignoreShieldsAtLevel && classLevel >= rules.ignoreShieldsAtLevel);
+  return Math.min(100, inventory.reduce((chance, entry) => {
+    if (!entry.equipped) return chance;
+    const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
+    if (!item?.arcaneSpellFailure) return chance;
+    if (item.category === "armor" && item.armorCategory && ignoredArmor.has(item.armorCategory)) return chance;
+    if (item.category === "shield" && ignoresShields) return chance;
+    return chance + item.arcaneSpellFailure;
+  }, 0));
 };
 
 export const equipmentEncumbrance = (strength: number, inventory: InventoryEntry[]) => encumbrance(strength, inventory.flatMap((entry) => {
@@ -160,7 +182,7 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
       const attack = item.damage ? baseAttackBonus + (item.ranged ? dexterityModifier : strengthModifier) + featBonus.attack + enhancement : null;
       const damageBonus = (item.ranged ? 0 : strengthModifier) + featBonus.damage + enhancement;
       const enhanceable = ["weapon", "armor", "shield"].includes(item.category);
-      return <article key={entry.itemId}><div><strong>{item.name}{enhancement > 0 ? ` +${enhancement}` : ""}</strong><span>{item.category} · {item.weight * entry.quantity} lb. · {equipmentMarketPrice(entry) * entry.quantity} gp</span>{attack !== null && <small>Attack {signed(attack)} · Damage {item.damage}{damageBonus !== 0 ? ` ${signed(damageBonus)}` : ""} · Critical {item.critical ?? "×2"}{item.range ? ` · Range ${item.range} ft.` : ""}</small>}</div><label>Qty<input aria-label={`${item.name} quantity`} type="number" min="1" max="999" value={entry.quantity} onChange={(event) => updateEntry(entry.itemId, { quantity: Math.max(1, Math.min(999, Number.parseInt(event.target.value, 10) || 1)) })} /></label>{enhanceable && <label>Enhancement<select aria-label={`${item.name} enhancement`} value={enhancement} onChange={(event) => updateEntry(entry.itemId, { enhancementBonus: Number(event.target.value) })}>{Array.from({ length: 6 }, (_, bonus) => <option key={bonus} value={bonus}>{bonus === 0 ? "Mundane" : `+${bonus}`}</option>)}</select></label>}{equippable && <label className="equip-toggle"><input type="checkbox" checked={entry.equipped} onChange={(event) => equip(entry, item, event.target.checked)} />Equipped</label>}<button type="button" onClick={() => removeEntry(entry.itemId)}>Remove</button></article>;
+      return <article key={entry.itemId}><div><strong>{item.name}{enhancement > 0 ? ` +${enhancement}` : ""}</strong><span>{item.category} · {item.weight * entry.quantity} lb. · {equipmentMarketPrice(entry) * entry.quantity} gp{item.arcaneSpellFailure ? ` · ${item.arcaneSpellFailure}% arcane spell failure` : ""}</span>{attack !== null && <small>Attack {signed(attack)} · Damage {item.damage}{damageBonus !== 0 ? ` ${signed(damageBonus)}` : ""} · Critical {item.critical ?? "×2"}{item.range ? ` · Range ${item.range} ft.` : ""}</small>}</div><label>Qty<input aria-label={`${item.name} quantity`} type="number" min="1" max="999" value={entry.quantity} onChange={(event) => updateEntry(entry.itemId, { quantity: Math.max(1, Math.min(999, Number.parseInt(event.target.value, 10) || 1)) })} /></label>{enhanceable && <label>Enhancement<select aria-label={`${item.name} enhancement`} value={enhancement} onChange={(event) => updateEntry(entry.itemId, { enhancementBonus: Number(event.target.value) })}>{Array.from({ length: 6 }, (_, bonus) => <option key={bonus} value={bonus}>{bonus === 0 ? "Mundane" : `+${bonus}`}</option>)}</select></label>}{equippable && <label className="equip-toggle"><input type="checkbox" checked={entry.equipped} onChange={(event) => equip(entry, item, event.target.checked)} />Equipped</label>}<button type="button" onClick={() => removeEntry(entry.itemId)}>Remove</button></article>;
     })}</div>}
   </section>;
 }

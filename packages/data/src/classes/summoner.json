@@ -1,6 +1,7 @@
 {
  "id":"summoner","name":"Summoner","classType":"base","hitDie":8,"babProgression":"three-quarters","saves":{"fortitude":"poor","reflex":"poor","will":"good"},"skillRanksPerLevel":2,
  "classSkills":["Craft","Fly","Handle Animal","Knowledge (arcana)","Knowledge (planes)","Linguistics","Profession","Ride","Spellcraft","Use Magic Device"],
+ "arcaneSpellFailure":{"applies":true,"ignoredArmorCategories":[{"category":"light","minimumLevel":1}]},
  "spellcasting":{"ability":"charisma","castingType":"spontaneous","slotsByLevel":[[1,0,0,0,0,0,0,0,0],[2,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,0,0,0],[3,1,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0],[4,3,1,0,0,0,0,0,0],[4,4,2,0,0,0,0,0,0],[5,4,3,0,0,0,0,0,0],[5,4,3,1,0,0,0,0,0],[5,4,4,2,0,0,0,0,0],[5,5,4,3,0,0,0,0,0],[5,5,4,3,1,0,0,0,0],[5,5,4,4,2,0,0,0,0],[5,5,5,4,3,0,0,0,0],[5,5,5,4,3,1,0,0,0],[5,5,5,4,4,2,0,0,0],[5,5,5,5,4,3,0,0,0],[5,5,5,5,5,4,0,0,0],[5,5,5,5,5,5,0,0,0]],
  "knownByLevel":[[4,2,0,0,0,0,0,0,0,0],[5,3,0,0,0,0,0,0,0,0],[6,4,0,0,0,0,0,0,0,0],[6,4,2,0,0,0,0,0,0,0],[6,4,3,0,0,0,0,0,0,0],[6,4,4,0,0,0,0,0,0,0],[6,5,4,2,0,0,0,0,0,0],[6,5,4,3,0,0,0,0,0,0],[6,5,4,4,0,0,0,0,0,0],[6,5,5,4,2,0,0,0,0,0],[6,6,5,4,3,0,0,0,0,0],[6,6,5,4,4,0,0,0,0,0],[6,6,5,5,4,2,0,0,0,0],[6,6,6,5,4,3,0,0,0,0],[6,6,6,5,4,4,0,0,0,0],[6,6,6,5,5,4,2,0,0,0],[6,6,6,6,5,4,3,0,0,0],[6,6,6,6,5,4,4,0,0,0],[6,6,6,6,5,5,4,0,0,0],[6,6,6,6,6,5,5,0,0,0]]},
  "source":{"title":"Advanced Player's Guide","page":54,"url":"https://legacy.aonprd.com/advancedPlayersGuide/baseClasses/summoner.html"},

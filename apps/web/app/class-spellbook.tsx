@@ -5,12 +5,13 @@ import { optionGroups } from "./character-catalogue";
 import { Spellbook } from "./spellbook";
 import { classSpellAutomation } from "./archetype-spell-automation";
 import { SpontaneousSpellbook } from "./spontaneous-spellbook";
-import { abilityModifiers as calculateAbilityModifiers, arcaneReservoir, archetypeSpellModifiers, normalizeSpellSlotUses, spellSaveDC, spellcastingProgression, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
+import { abilityModifiers as calculateAbilityModifiers, arcaneReservoir, archetypeSpellModifiers, normalizeSpellSlotUses, spellSaveDC, spellcastingProgression, spellcastingTradition, spellsAvailableToClass } from "../../../packages/engine/src/index.js";
 import { normalizePreparedSpellsWithOpposition } from "../../../packages/engine/src/wizard-opposition-preparation.js";
 import { normalizeKnownSpells, spontaneousSpellcastingProgression } from "../../../packages/engine/src/spontaneous-spellcasting.js";
 import { bloodlineBonusSpells } from "../../../packages/engine/src/sorcerer-bloodlines.js";
 import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
 import type { AbilityScores, ActiveEffect, CharacterClass, CharacterOption, CharacterSpell } from "../../../packages/types/src/index.js";
+import { equippedArcaneSpellFailureChance, type InventoryEntry } from "./equipment-panel";
 
 type SpellTraitBonuses = Record<string, { casterLevel: number; metamagicLevelAdjustment: number }>;
 
@@ -66,6 +67,7 @@ export function ClassSpellbook({
   activeEffects = [],
   onAddEffect,
   onRemoveEffectByName,
+  inventory = [],
 }: {
   characterClass: CharacterClass;
   spells: CharacterSpell[];
@@ -85,6 +87,7 @@ export function ClassSpellbook({
   activeEffects?: ActiveEffect[];
   onAddEffect?: (effect: ActiveEffect) => void;
   onRemoveEffectByName?: (name: string) => void;
+  inventory?: InventoryEntry[];
 }) {
   const spellcasting = characterClass.spellcasting;
   const castingAbility = spellcasting?.ability ?? "intelligence";
@@ -166,6 +169,7 @@ export function ClassSpellbook({
   const slots = casting?.slots ?? [];
   const spellDcs = casting ? Object.fromEntries(Array.from({ length: Math.max(maximumSpellLevel, ...spellOptions.map((option) => option.spellLevel ?? 0)) + 1 }, (_, spellLevel) => [spellLevel, spellSaveDC(abilityScore, spellLevel)])) : {};
   const reservoir = characterClass.id === "arcanist" ? arcaneReservoir(classLevel) : null;
+  const arcaneSpellFailureChance = equippedArcaneSpellFailureChance(inventory, spellcastingTradition(characterClass) === "arcane" ? characterClass.arcaneSpellFailure ?? characterClass.spellcasting?.arcaneSpellFailure ?? { applies: true } : { applies: false }, classLevel);
   const requiredSchool = characterClass.features.some((feature) => feature.id === "arcanist-twilight-sage-necromantic-focus-ex-1") ? "necromancy" : undefined;
   const normalizeSelections = (spellIds: string[]) => spontaneous
     ? normalizeKnownSpells(spellIds, availableSpells, spellListClassId, limits, grantedSpellIds)
@@ -199,6 +203,7 @@ export function ClassSpellbook({
     slots={spontaneousCasting.slots} knownLimits={spontaneousCasting.known} spellDcs={spellDcs} maximumSpellLevel={maximumSpellLevel}
     knownSpellIds={selectedSpellIds} grantedSpellIds={grantedSpellIds} onKnownSpellIdsChange={(spellIds) => onSelectedSpellIdsChange(normalizeSelections(spellIds))}
     slotUses={slotUses} onSlotUsesChange={(uses) => onSlotUsesChange(normalizeSpellSlotUses(uses, slots))} onRefreshDay={refreshDay}
+    arcaneSpellFailureChance={arcaneSpellFailureChance}
   />;
   return <Spellbook
     key={characterClass.id} spells={availableSpells} spellTraitBonuses={spellTraitBonuses} spellArchetypeBonuses={spellArchetypeBonuses}
@@ -212,5 +217,6 @@ export function ClassSpellbook({
     spellAutomation={classSpellAutomation(characterClass, classLevel, Object.values(selectedOptions))}
     criticalStrikeResource={criticalStrikeResource} bondedObjectCastResource={bondedObjectCastResource}
     abilityModifiers={calculateAbilityModifiers(abilities)} activeEffects={activeEffects} onAddEffect={onAddEffect} onRemoveEffectByName={onRemoveEffectByName}
+    arcaneSpellFailureChance={arcaneSpellFailureChance}
   />;
 }

@@ -92,6 +92,7 @@ export function Spellbook({
   activeEffects = [],
   onAddEffect,
   onRemoveEffectByName,
+  arcaneSpellFailureChance = 0,
 }: {
   spells: Spell[];
   sourceBook?: {
@@ -133,6 +134,7 @@ export function Spellbook({
   activeEffects?: ActiveEffect[];
   onAddEffect?: (effect: ActiveEffect) => void;
   onRemoveEffectByName?: (name: string) => void;
+  arcaneSpellFailureChance?: number;
 }) {
   const [query, setQuery] = useState("");
   const [sourceQuery, setSourceQuery] = useState("");
@@ -150,6 +152,7 @@ export function Spellbook({
   const [signatureTechniqueResults, setSignatureTechniqueResults] = useState<Record<string, string>>({});
   const [spellwarpModes, setSpellwarpModes] = useState<Record<string, "reduce" | "line">>({});
   const [spellwarpSizes, setSpellwarpSizes] = useState<Record<string, number>>({});
+  const [arcaneSpellFailureResult, setArcaneSpellFailureResult] = useState("");
   useEffect(
     () => setLevelFilter(String(maximumSpellLevel)),
     [maximumSpellLevel],
@@ -284,10 +287,21 @@ export function Spellbook({
         [level]: (slotUses[level] ?? 0) + 1,
       });
   };
+  const resolveArcaneSpellFailure = (spell: Spell) => {
+    if (arcaneSpellFailureChance <= 0 || !spell.components?.some((component) => component.split("/").includes("S"))) {
+      setArcaneSpellFailureResult("");
+      return true;
+    }
+    const roll = Math.floor(Math.random() * 100) + 1;
+    const succeeds = roll > arcaneSpellFailureChance;
+    setArcaneSpellFailureResult(`${spell.name}: rolled ${roll} against ${arcaneSpellFailureChance}% arcane spell failure — ${succeeds ? "spell cast" : "spell lost"}.`);
+    return succeeds;
+  };
   const shareSpell = (spell: Spell, level: number) => {
     if (!shareRules || !reservoir || !shareTarget.trim()) return;
     onReservoirChange(reservoir.current - shareRules.reservoirCost);
     useSpellSlot(level);
+    if (!resolveArcaneSpellFailure(spell)) return;
     setShareResult(
       `Shared ${spell.name} with ${shareTarget.trim()} ${shareRules.range === "touch" ? "by touch" : `within ${shareRules.range}`}.`,
     );
@@ -295,6 +309,7 @@ export function Spellbook({
   const castPreparedSpell = (spell: Spell, level: number) => {
     if (!spendDeathRelease(spell, level)) return;
     useSpellSlot(level);
+    resolveArcaneSpellFailure(spell);
   };
   const spellstrikeEligible = (spell: Spell) => Boolean(
     spellAutomation?.spellstrike && (
@@ -305,6 +320,7 @@ export function Spellbook({
   const useSpellstrike = (spell: Spell, level: number) => {
     if (!spellstrikeEligible(spell) || (level > 0 && remainingSlots(level) <= 0)) return;
     useSpellSlot(level);
+    if (!resolveArcaneSpellFailure(spell)) return;
     const closeRange = spell.range?.toLowerCase() !== "touch";
     const description = closeRange
       ? `${spell.name} is converted from a ray to a single melee touch effect and delivered with the bonded weapon; additional rays are lost.`
@@ -317,6 +333,7 @@ export function Spellbook({
     if (!criticalStrikeEligible(spell) || !criticalStrikeResource || (criticalStrikeResource.maximum !== null && criticalStrikeResource.used >= criticalStrikeResource.maximum) || (level > 0 && remainingSlots(level) <= 0)) return;
     useSpellSlot(level);
     criticalStrikeResource.onUsedChange(criticalStrikeResource.used + 1);
+    if (!resolveArcaneSpellFailure(spell)) return;
     const description = `${spell.name} is cast as a swift action after a melee critical hit and delivered against that target with a free touch attack.`;
     onAddEffect?.({ id: `critical-strike-${Date.now()}-${Math.random()}`, name: `${spellAutomation!.criticalStrike!.label}: ${spell.name}`, target: "self", bonus: 0, description, roundsRemaining: 1 });
     setSpellstrikeResult(description);
@@ -324,6 +341,7 @@ export function Spellbook({
   const useBondedObjectCast = (spell: Spell) => {
     if (!bondedObjectCastResource || (bondedObjectCastResource.maximum !== null && bondedObjectCastResource.used >= bondedObjectCastResource.maximum)) return;
     bondedObjectCastResource.onUsedChange(bondedObjectCastResource.used + 1);
+    if (!resolveArcaneSpellFailure(spell)) return;
     setBondedObjectCastResult(`Cast ${spell.name} from the bonded blade without preparing it or consuming a spell slot.`);
   };
   const useFastHealing = () => {
@@ -355,6 +373,7 @@ export function Spellbook({
     if (!descriptor) return;
     onReservoirChange(reservoir.current - descriptorBoostRules.reservoirCost);
     useSpellSlot(level);
+    if (!resolveArcaneSpellFailure(spell)) return;
     const bonus = mode === "casterLevel"
       ? descriptorBoostRules.casterLevelBonus
       : descriptorBoostRules.saveDcBonus;
@@ -419,6 +438,8 @@ export function Spellbook({
           .join(", ")}
         .
       </p>
+      {arcaneSpellFailureChance > 0 && <p role="status"><strong>Equipped arcane spell failure:</strong> {arcaneSpellFailureChance}% for spells with somatic components.</p>}
+      {arcaneSpellFailureResult && <output aria-label="Arcane spell failure result">{arcaneSpellFailureResult}</output>}
       {spellMastery && (
         <section className="archetype-spell-controls spell-mastery-controls" aria-label="Spell Mastery">
           <div>
@@ -836,6 +857,7 @@ export function Spellbook({
                         ...slotUses,
                         [level]: (slotUses[level] ?? 0) + 1,
                       });
+                    if (!resolveArcaneSpellFailure(spell)) return;
                     if (onDemandCost?.summonTracker && onAddEffect) {
                       const tracker = onDemandCost.summonTracker;
                       if (tracker.replaceExisting) onRemoveEffectByName?.(tracker.name);

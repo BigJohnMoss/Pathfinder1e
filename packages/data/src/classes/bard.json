@@ -2,6 +2,7 @@
   "id":"bard","name":"Bard","classType":"core","hitDie":8,"babProgression":"three-quarters",
   "saves":{"fortitude":"poor","reflex":"good","will":"good"},"skillRanksPerLevel":6,
   "classSkills":["Acrobatics","Appraise","Bluff","Climb","Craft","Diplomacy","Disguise","Escape Artist","Intimidate","Knowledge (arcana)","Knowledge (dungeoneering)","Knowledge (engineering)","Knowledge (geography)","Knowledge (history)","Knowledge (local)","Knowledge (nature)","Knowledge (nobility)","Knowledge (planes)","Knowledge (religion)","Linguistics","Perception","Perform","Profession","Sense Motive","Sleight of Hand","Spellcraft","Stealth","Use Magic Device"],
+  "arcaneSpellFailure":{"applies":true,"ignoredArmorCategories":[{"category":"light","minimumLevel":1}]},
   "spellcasting":{
     "ability":"charisma","castingType":"spontaneous",
     "slotsByLevel":[
