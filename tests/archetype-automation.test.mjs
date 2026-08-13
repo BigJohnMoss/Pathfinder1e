@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, archetypeSpellcastingAdjustmentFeatureIds, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeClericDomainReductionFeatureIds, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, archetypeSpellcastingAdjustmentFeatureIds, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferArchetypeAbilityScoreAdjustments } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
@@ -1094,7 +1094,7 @@ test("pure diminished spellcasting rules leave the manual queue only when fully 
   const pure = record("bard-arrowsong-minstrel");
   assert.equal(archetypeAutomationSummary(pure).manual.includes("Diminished Spellcasting (level 1)"), false);
 
-  for (const id of ["cleric-cloistered-cleric", "cleric-crusader", "oracle-purifier", "cleric-mendevian-priest"]) {
+  for (const id of ["oracle-purifier"]) {
     assert.equal(
       archetypeAutomationSummary(record(id)).manual.includes("Diminished Spellcasting (level 1)"),
       true,
@@ -1104,9 +1104,27 @@ test("pure diminished spellcasting rules leave the manual queue only when fully 
 
   assert.equal(
     catalogueArchetypes.flatMap(archetypeSpellcastingAdjustmentFeatureIds).length,
-    14,
+    17,
     "catalogue diminished-spellcasting coverage stays intentional",
   );
+});
+
+test("single-domain cleric archetypes retain one deity-filtered domain and every domain spell slot", () => {
+  const record = (directory, id) => JSON.parse(readFileSync(new URL(`../packages/data/src/${directory}/${id}.json`, import.meta.url), "utf8"));
+  const cleric = record("classes", "cleric");
+  for (const id of ["cleric-cloistered-cleric", "cleric-crusader", "cleric-mendevian-priest"]) {
+    const source = record("archetypes", id);
+    const applied = applyArchetype(cleric, source);
+    assert.ok(applied.features.some((feature) => feature.id === "cleric-domain-1-first"), `${id} retains its first domain selector`);
+    assert.ok(!applied.features.some((feature) => feature.id === "cleric-domain-1-second"), `${id} removes its second domain selector`);
+    assert.deepEqual(
+      applied.features.filter((feature) => /^cleric-domain-spell-/.test(feature.id)).map((feature) => feature.level),
+      [1, 3, 5, 7, 9, 11, 13, 15, 17],
+      `${id} retains all domain spell slots`,
+    );
+    assert.equal(archetypeAutomationSummary(source).manual.includes("Diminished Spellcasting (level 1)"), false);
+  }
+  assert.equal(catalogueArchetypes.flatMap(archetypeClericDomainReductionFeatureIds).length, 3);
 });
 
 test("archetype companion and familiar grants expose their unlock and effective-level rules", () => {

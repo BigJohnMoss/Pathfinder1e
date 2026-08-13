@@ -1740,13 +1740,28 @@ export function archetypeAdvisoryFeatureIds(archetype) {
 
 export function archetypeSpellcastingAdjustmentFeatureIds(archetype) {
   if (archetype?.spellSlotAdjustmentPerLevel !== -1) return [];
+  const replacedFeatureIds = new Set((archetype.replacements ?? []).flatMap((replacement) => replacement.featureIds ?? []));
+  const singleDomainRuleApplied = archetype.classId === "cleric" &&
+    replacedFeatureIds.has("cleric-domain-1-second") &&
+    !replacedFeatureIds.has("cleric-domain-1-first") &&
+    ![...replacedFeatureIds].some((id) => /^cleric-domain-spell-/.test(id));
   return (archetype.replacements ?? []).flatMap((replacement) => replacement.features ?? [])
     .filter((feature) => {
       const text = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
       return /^Diminished Spellcasting$/i.test(feature.name ?? "") &&
-        /one fewer spell(?: slot)?(?:s)? (?:of|per day of|at) each (?:spell )?level|casts? one fewer spell of each level|number of spells per day for each spell level is one less/i.test(text) &&
-        !/\bdomain\b|does not automatically learn/i.test(text);
+        /one fewer spell(?: slot)?(?:s)? (?:of|per day of|at) each (?:spell )?level|casts? one fewer spell of each level|number of (?:non-domain )?spells per day for each spell level is one less/i.test(text) &&
+        !/does not automatically learn/i.test(text) &&
+        (!/chooses? only one domain/i.test(text) || singleDomainRuleApplied);
     })
+    .map((feature) => feature.id);
+}
+
+export function archetypeClericDomainReductionFeatureIds(archetype) {
+  if (archetype?.classId !== "cleric") return [];
+  const replacedFeatureIds = new Set((archetype.replacements ?? []).flatMap((replacement) => replacement.featureIds ?? []));
+  if (!replacedFeatureIds.has("cleric-domain-1-second") || replacedFeatureIds.has("cleric-domain-1-first") || [...replacedFeatureIds].some((id) => /^cleric-domain-spell-/.test(id))) return [];
+  return (archetype.replacements ?? []).flatMap((replacement) => replacement.features ?? [])
+    .filter((feature) => /^Diminished Spellcasting$/i.test(feature.name ?? "") && /chooses? only one domain/i.test(feature.summary ?? ""))
     .map((feature) => feature.id);
 }
 
@@ -1756,8 +1771,10 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
   const advisoryFeatureIds = new Set(archetypeAdvisoryFeatureIds(archetype));
   const spellcastingAdjustmentFeatureIds = new Set(archetypeSpellcastingAdjustmentFeatureIds(archetype));
+  const clericDomainReductionFeatureIds = new Set(archetypeClericDomainReductionFeatureIds(archetype));
   if (advisoryFeatureIds.size)
     automated.push(`${advisoryFeatureIds.size} advisory option recommendation${advisoryFeatureIds.size === 1 ? "" : "s"} (no mechanical rule)`);
+  if (clericDomainReductionFeatureIds.size) automated.push("Single cleric domain selection and domain spell slots");
   if ((archetype.replacements ?? []).some(item => item.featureIds?.length || item.progressionKeys?.length))
     automated.push("Base feature replacements and level progression");
   if (archetype.featureOverrides?.length) automated.push("Feature rules overrides");
@@ -1987,6 +2004,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...inferredWildEmpathy.fullyAutomatedFeatureIds,
     ...advisoryFeatureIds,
     ...spellcastingAdjustmentFeatureIds,
+    ...clericDomainReductionFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

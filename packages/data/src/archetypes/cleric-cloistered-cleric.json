@@ -8,17 +8,7 @@
   "replacements": [
     {
       "featureIds": [
-        "cleric-domain-1-first",
         "cleric-domain-1-second",
-        "cleric-domain-spell-1",
-        "cleric-domain-spell-2",
-        "cleric-domain-spell-3",
-        "cleric-domain-spell-4",
-        "cleric-domain-spell-5",
-        "cleric-domain-spell-6",
-        "cleric-domain-spell-7",
-        "cleric-domain-spell-8",
-        "cleric-domain-spell-9",
         "cleric-spellcasting-1"
       ],
       "features": [
