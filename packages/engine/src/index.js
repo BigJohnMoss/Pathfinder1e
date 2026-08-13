@@ -1552,8 +1552,11 @@ function inferArchetypeProficiencyDetails(archetype) {
   const fullyAutomatedFeatureIds = features.filter(feature => {
     const name = String(feature.name ?? "").replace(/\s*\([^)]+\)\s*$/, "");
     const text = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
-    if (!/^(?:(?:Weapon and )?Armor Proficiency|Weapon Proficiencies|Weapon Proficiency)$/i.test(name) || text.length > 400) return false;
-    if (text.split(/(?<=[.!?])\s+/).filter(Boolean).length !== 1) return false;
+    if (!/^(?:Weapon and Armor|Armor and Weapon|Armor|Weapon) Proficienc(?:y|ies)$/i.test(name) || text.length > 400) return false;
+    const ruleText = text.replace(/\s+This (?:ability )?(?:alters|replaces|modifies) [^.]*?proficienc(?:y|ies)\.?$/i, "").trim();
+    if (ruleText.split(/(?<=[.!?])\s+/).filter(Boolean).length !== 1) return false;
+    if (/arcane spell failure|flurry of blows|class skills?|levels? stack|bonus feats?|chooses?|choices?|\bcan use\b/i.test(text)) return false;
+    if (/\bbut\b|\bloses?\b|\bas well as\b|\b(?:one|two)-?handed\b|\bfirearms?\b|\bis proficient with .+ only\b/i.test(ruleText)) return false;
     if (/all martial weapon proficiencies except|favored weapon of|\bincluding\b|,\s*but\s+loses?\b/i.test(text)) return false;
     if (!explicit.length && /\b(?:is|are) proficient\b/i.test(text) && !/\bin addition\b/i.test(text) && !/\bonly\b/i.test(text)) return false;
     const local = inferArchetypeProficiencyDetails({ replacements: [{ features: [{ ...feature, name: "Rule" }] }] }).adjustments;
