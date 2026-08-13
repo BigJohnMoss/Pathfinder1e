@@ -196,6 +196,7 @@ export interface ClassFeatureOccurrence {
     modes?: Array<{ id: string; label: string; summary: string }>;
     recipientLabel?: string;
     recipients?: Array<{ id: string; label: string }>;
+    confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
     classId?: string;
     minimumLevel?: number;
     advancementOptionId?: string;

@@ -84,6 +84,7 @@ function scalingBonuses(summary, minimumLevel, baseBonus, scaling) {
 
 export function inferredArchetypeTimedEffectActionDetails(archetype) {
   const actions = [];
+  const fullyAutomatedFeatureIds = new Set();
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (feature.resourceActions?.length || /\b(?:ability descriptions|bardic performance|mortifications|revelations|special)\b/i.test(feature.name ?? "")) continue;
     const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
@@ -125,8 +126,9 @@ export function inferredArchetypeTimedEffectActionDetails(archetype) {
         summary,
       },
     });
+    if (["magus-spire-defender-arcane-augmentation-su-4", "occultist-battle-host-heroic-splendor-su-6"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
   }
-  return { actions, fullyAutomatedFeatureIds: new Set() };
+  return { actions, fullyAutomatedFeatureIds };
 }
 
 export const inferArchetypeTimedEffectActions = (archetype) => inferredArchetypeTimedEffectActionDetails(archetype).actions;

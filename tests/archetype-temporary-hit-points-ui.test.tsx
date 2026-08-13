@@ -40,7 +40,10 @@ test("Armored Vigor spends its inferred resource and grants scaled temporary HP"
     onTemporaryHitPointsChange={(amount) => granted.push(amount)}
     onAddEffect={(effect) => effects.push(effect)}
   />);
-  await userEvent.setup().click(screen.getByRole("button", { name: "Gain Armored Vigor temporary HP" }));
+  const user = userEvent.setup();
+  assert.equal((screen.getByRole("button", { name: "Gain Armored Vigor temporary HP" }) as HTMLButtonElement).disabled, true);
+  await user.click(screen.getByLabelText("Gain Armored Vigor temporary HP Wearing armor"));
+  await user.click(screen.getByRole("button", { name: "Gain Armored Vigor temporary HP" }));
   assert.deepEqual(spent, [1]);
   assert.deepEqual(granted, [10]);
   assert.equal(effects[0]?.roundsRemaining, 10);
