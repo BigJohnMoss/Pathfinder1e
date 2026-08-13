@@ -1,7 +1,7 @@
 import archetypes from "../../generated/pf1e-archetypes.mjs";
 import feats from "../../generated/pf1e-feats.mjs";
 import spells from "../../generated/pf1e-spells.mjs";
-import { archetypeAutomationSummary, inferArchetypeChannelEnergyActions, inferArchetypeReplacementFeatureIds, inferArchetypeResourceSpellActions, inferArchetypeSpellAccess, inferArchetypeSpellAdditions, inferArchetypeSpellLikeAbilityActions, inferArchetypeSpellModifiers, inferArchetypeWildEmpathyAdjustments } from "../../packages/engine/src/index.js";
+import { archetypeAutomationSummary, inferArchetypeChannelEnergyActions, inferArchetypeReplacementFeatureIds, inferArchetypeResourceDamageActions, inferArchetypeResourceSpellActions, inferArchetypeSpellAccess, inferArchetypeSpellAdditions, inferArchetypeSpellLikeAbilityActions, inferArchetypeSpellModifiers, inferArchetypeWildEmpathyAdjustments } from "../../packages/engine/src/index.js";
 import data from "../../generated/pf1e-data.mjs";
 
 const args = new Map(process.argv.slice(2).map((value, index, values) => value.startsWith("--") ? [value, values[index + 1]?.startsWith("--") ? true : values[index + 1] ?? true] : [value, true]));
@@ -68,6 +68,10 @@ const inferredChannelEnergyBatches = archetypes.flatMap((archetype) => {
   const actions = inferArchetypeChannelEnergyActions(archetype);
   return actions.length ? [{ archetypeId: archetype.id, actions: actions.length }] : [];
 });
+const inferredResourceDamageBatches = archetypes.flatMap((archetype) => {
+  const actions = inferArchetypeResourceDamageActions(archetype);
+  return actions.length ? [{ archetypeId: archetype.id, actions: actions.length }] : [];
+});
 const inferredReplacementBatches = archetypes.flatMap((archetype) => {
   const characterClass = data.classes.find((entry) => entry.id === archetype.classId);
   const featureIds = characterClass ? inferArchetypeReplacementFeatureIds(characterClass, archetype) : [];
@@ -97,6 +101,8 @@ const result = {
   inferredResourceSpellArchetypes: inferredResourceSpellBatches.length,
   inferredChannelEnergyActions: inferredChannelEnergyBatches.reduce((total, item) => total + item.actions, 0),
   inferredChannelEnergyArchetypes: inferredChannelEnergyBatches.length,
+  inferredResourceDamageActions: inferredResourceDamageBatches.reduce((total, item) => total + item.actions, 0),
+  inferredResourceDamageArchetypes: inferredResourceDamageBatches.length,
   inferredReplacementFeatureIds: inferredReplacementBatches.reduce((total, item) => total + item.featureIds, 0),
   inferredReplacementArchetypes: inferredReplacementBatches.length,
 };
@@ -122,6 +128,7 @@ else {
   console.log(`Inferred spell-like ability actions: ${result.inferredSpellLikeAbilityActions} across ${result.inferredSpellLikeAbilityArchetypes} archetypes`);
   console.log(`Inferred resource-powered spell actions: ${result.inferredResourceSpellActions} across ${result.inferredResourceSpellArchetypes} archetypes`);
   console.log(`Inferred channel-energy actions: ${result.inferredChannelEnergyActions} across ${result.inferredChannelEnergyArchetypes} archetypes`);
+  console.log(`Inferred resource-damage actions: ${result.inferredResourceDamageActions} across ${result.inferredResourceDamageArchetypes} archetypes`);
   console.log(`Inferred missing replacement targets: ${result.inferredReplacementFeatureIds} across ${result.inferredReplacementArchetypes} archetypes`);
   console.log("\nReusable mechanic batches:");
   for (const [tag, count] of tagCounts) console.log(`${String(count).padStart(4)}  ${tag}`);
