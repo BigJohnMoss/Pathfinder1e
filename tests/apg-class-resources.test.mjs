@@ -85,7 +85,10 @@ test("archetype resource catalogue covers reusable level and ability progression
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("medium-fiend-keeper")], 10), { darkCommunion: 10 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("mesmerist-cult-master")], 3, { charisma: 4 }), { falseHealing: 7 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("occultist-esoteric-initiate")], 13), { symbolism: 13 });
-  assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("slayer-bloody-jake")], 20, { charisma: 2 }), { cruelTricks: 22 });
+  assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("slayer-bloody-jake")], 20, { charisma: 2 }), {
+    cruelTricks: 22,
+    "archetype-slayer-bloody-jake-woodland-shortcut-sp-13-spell-like-tree-stride": 1,
+  });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("kineticist-dark-elementalist")], 6, { intelligence: 4 }), { soulPower: 4 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("mesmerist-mindwyrm-mesmer")], 1, { charisma: -1 }), { phantasmagoricalBreath: 1 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("oracle-pei-zin-practitioner")], 1, { charisma: 3 }), { healersWay: 4 });

@@ -18,6 +18,26 @@ test("fixed spell-like abilities become cast actions with the published cadence"
   assert.equal(atWill.resourceId, undefined);
 });
 
+test("innate (Sp) features without redundant spell-like wording become bounded cast actions", () => {
+  const reincarnate = inferArchetypeSpellLikeAbilityActions(archetype("druid-restorer"))[0].action;
+  assert.equal(reincarnate.label, "Cast reincarnate");
+  assert.equal(reincarnate.minimumLevel, 13);
+  assert.equal(applyArchetypeResourceAdjustments({}, [archetype("druid-restorer")], 13)[reincarnate.resourceId], 1);
+
+  const invisibility = inferArchetypeSpellLikeAbilityActions(archetype("slayer-stygian-slayer"))[0].action;
+  assert.equal(invisibility.label, "Cast invisibility");
+  assert.equal(applyArchetypeResourceAdjustments({}, [archetype("slayer-stygian-slayer")], 4)[invisibility.resourceId], 1);
+  assert.equal(applyArchetypeResourceAdjustments({}, [archetype("slayer-stygian-slayer")], 20)[invisibility.resourceId], 5);
+
+  assert.deepEqual(inferArchetypeSpellLikeAbilityActions(archetype("inquisitor-exarch")).map(({ action }) => [action.label, action.resourceId]), [
+    ["Cast detect chaos", undefined],
+  ]);
+  const weekly = inferArchetypeSpellLikeAbilityActions(archetype("inquisitor-green-faith-marshal"))[0].action;
+  assert.equal(weekly.label, "Cast commune with nature");
+  assert.equal(applyArchetypeResourceAdjustments({}, [archetype("inquisitor-green-faith-marshal")], 5)[weekly.resourceId], 1);
+  assert.equal(inferArchetypeSpellLikeAbilityActions(archetype("slayer-bloody-jake"))[0].action.label, "Cast tree stride");
+});
+
 test("named spell-equivalent powers become bounded activation actions", () => {
   const enforcer = inferArchetypeSpellLikeAbilityActions(archetype("paladin-iomedaen-enforcer"));
   assert.deepEqual(enforcer.map(({ action }) => [action.spellLikeAbility.spellName, action.spellLikeAbility.cadence, action.spellLikeAbility.kind]), [
@@ -71,7 +91,7 @@ test("catalogue inference is bounded, unique, named, and player-owned", () => {
       assert.ok(spellNames.has(action.spellLikeAbility.spellName.toLowerCase()) || action.spellLikeAbility.spellName === "transmogrify", `${item.id} references a known spell name`);
     }
   }
-  assert.ok(actionCount >= 49, `expected broad catalogue coverage, received ${actionCount}`);
+  assert.ok(actionCount >= 89, `expected broad catalogue coverage, received ${actionCount}`);
   assert.deepEqual(inferArchetypeSpellLikeAbilityActions(archetype("inquisitor-living-grimoire")), []);
   assert.deepEqual(inferArchetypeSpellLikeAbilityActions(archetype("magus-esoteric")), []);
 });

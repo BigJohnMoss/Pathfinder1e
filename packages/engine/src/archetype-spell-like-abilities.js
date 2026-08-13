@@ -90,8 +90,25 @@ function parsedSentence(feature, sentence, sentenceIndex) {
   return parsed;
 }
 
+function parsedInnateSpellSentence(feature, sentence, sentenceIndex) {
+  if (!/\(Sp(?:,\s*(?:Ex|Su))*\)\s*$/i.test(feature.name ?? "") || subordinate.test(feature.name ?? "")) return [];
+  const frequency = parseFrequency(sentence);
+  if (!frequency) return [];
+  const spellPattern = "([a-z][a-z' -]{1,100}?)(?=\\s+(?:at will\\b|(?:once|twice|\\d+|one|two|three|four|five|six)(?: times?)? per (?:day|week)\\b|on (?:him|her|them)self\\b|without\\b|using\\b|as\\b|with a caster level\\b|[,.;]))";
+  const caster = sentence.match(new RegExp(`\\b(?:can|may) (?:cast|use)\\s+${spellPattern}`, "i"))
+    ?? sentence.match(new RegExp(`\\bgains? (?:the )?ability to (?:(?:cast|use)\\s+)?${spellPattern}`, "i"))
+    ?? sentence.match(new RegExp(`\\bas if using\\s+${spellPattern}`, "i"));
+  if (!caster) return [];
+  const prefix = sentence.slice(0, caster.index ?? 0);
+  if (subordinate.test(prefix)) return [];
+  const names = spellNames(caster[1]);
+  if (!names.length) return [];
+  const minimumLevel = Math.max(1, Number([...prefix.matchAll(/\bAt (\d+)(?:st|nd|rd|th) level\b/gi)].at(-1)?.[1] ?? feature.level ?? 1));
+  return names.map((name) => ({ name, spellId: spellId(name), frequency, minimumLevel, sentence, sentenceIndex }));
+}
+
 function progression(resource, summary) {
-  const scaling = summary.match(/(?:plus|and|gains?|use this ability) (?:one|an) additional (?:use|time)?(?: per day)? (?:for |at )?every (\d+|one|two|three|four|five|six) (?:class |[a-z]+ )?levels?(?: beyond [^,.;]+| thereafter)?/i)
+  const scaling = summary.match(/(?:plus|and|gains?|(?:can )?use this(?: ability)?) (?:one|an) additional (?:use|time)?(?: per day)? (?:at [^.]{0,35}? and )?(?:for |at )?every (\d+|one|two|three|four|five|six) (?:class |[a-z]+ )?levels?(?: beyond [^,.;]+| thereafter)?/i)
     ?? summary.match(/(?:an?|one) additional use each day at \d+(?:st|nd|rd|th) level and every (\d+|one|two|three|four|five|six) levels? thereafter/i);
   if (scaling) {
     resource.perInterval = 1;
@@ -124,6 +141,7 @@ export function inferredArchetypeSpellLikeAbilityDetails(archetype) {
     const parsed = sentences.flatMap((sentence, sentenceIndex) => [
       ...parsedSentence(feature, sentence, sentenceIndex),
       ...parsedEquivalentSentence(feature, sentence, sentenceIndex),
+      ...parsedInnateSpellSentence(feature, sentence, sentenceIndex),
     ]).filter((entry, index, entries) => entries.findIndex((candidate) => candidate.sentenceIndex === entry.sentenceIndex && candidate.spellId === entry.spellId) === index);
     if (!parsed.length) continue;
     const groups = new Map();
@@ -173,7 +191,11 @@ export function inferredArchetypeSpellLikeAbilityDetails(archetype) {
     }
     if (isFullyRepresented(feature, parsed, sentences) && (!parsed.some((entry) => entry.equivalent) || !/\b(?:if|when|while|provided|only|instead|non-outsider|willing)\b/i.test(feature.summary ?? ""))) fullyAutomatedFeatureIds.add(feature.id);
   }
-  return { actions, resources, fullyAutomatedFeatureIds };
+  const sentenceCoverage = [...new Map(actions.map(({ sourceFeatureId, action }) => {
+    const sentenceIndex = Number(action.id.match(/-(\d+)$/)?.[1]);
+    return [`${sourceFeatureId}:${sentenceIndex}`, { sourceFeatureId, sentenceIndex }];
+  })).values()].filter((entry) => Number.isInteger(entry.sentenceIndex));
+  return { actions, resources, sentenceCoverage, fullyAutomatedFeatureIds };
 }
 
 export function inferArchetypeSpellLikeAbilityActions(archetype) {
