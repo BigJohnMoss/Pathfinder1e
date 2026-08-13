@@ -17,7 +17,7 @@ import { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetyp
 import { archetypeWildEmpathyChecks, inferArchetypeWildEmpathyAdjustments, inferredArchetypeWildEmpathyDetails } from "./archetype-wild-empathy.js";
 import { inferArchetypeReplacementFeatureIds } from "./archetype-replacements.js";
 import { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides } from "./archetype-skill-abilities.js";
-import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeFeatAlternativeDetails, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
+import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeFeatAlternativeDetails, inferredArchetypeFeatChoiceDetails, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, archetypeReplacementBoilerplate, archetypeRuleSentences, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
 import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, inferArchetypeSaveBonusAdjustments } from "./archetype-saves.js";
@@ -51,6 +51,7 @@ export { inferArchetypeSpellAdditions };
 export { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides };
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
+export { inferredArchetypeFeatChoiceDetails };
 export { inferArchetypeFeatAlternatives };
 export { inferredArchetypeFeatAlternativeDetails };
 export { archetypeSkillBonusAdjustments, inferArchetypeSkillBonusAdjustments };
@@ -1903,6 +1904,9 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     automated.push(`${abilityScoreAdjustments.length} level-aware ability-score adjustment${abilityScoreAdjustments.length === 1 ? "" : "s"}`);
   const spellLikeAbilityDetails = inferredArchetypeSpellLikeAbilityDetails(archetype);
   const resourceSpellActionDetails = inferredArchetypeResourceSpellActionDetails(archetype);
+  const inferredFeatGrantDetails = inferredArchetypeGrantedFeatDetails(archetype, feats);
+  const inferredFeatChoiceDetails = inferredArchetypeFeatChoiceDetails(archetype, feats);
+  const inferredFeatAlternativeDetails = inferredArchetypeFeatAlternativeDetails(archetype, feats);
   const ruleSentenceCoverage = [
     ["initiative", initiativeBonusDetails.sentenceCoverage ?? []],
     ["saving throws", saveBonusDetails.sentenceCoverage ?? []],
@@ -1917,6 +1921,9 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["spell-like abilities", spellLikeAbilityDetails.sentenceCoverage ?? []],
     ["resource-powered spells", resourceSpellActionDetails.sentenceCoverage ?? []],
     ["Wild Empathy", inferredWildEmpathy.sentenceCoverage ?? []],
+    ["bonus feat grants", inferredFeatGrantDetails.sentenceCoverage ?? []],
+    ["bonus feat choices", inferredFeatChoiceDetails.sentenceCoverage ?? []],
+    ["feat alternatives", inferredFeatAlternativeDetails.sentenceCoverage ?? []],
   ];
   const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
     const coveringFamilies = ruleSentenceCoverage.filter(([, entries]) =>
@@ -1944,16 +1951,14 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (alignmentDetails.rules.length) automated.push("Alignment eligibility requirement");
   if (archetype.optionGroupAugmentations?.length)
     automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);
-  const inferredFeatGrantDetails = inferredArchetypeGrantedFeatDetails(archetype, feats);
   const inferredFeatGrants = inferredFeatGrantDetails.grants;
   if (inferredFeatGrants.length) automated.push(`${inferredFeatGrants.length} level-aware bonus feat grant${inferredFeatGrants.length === 1 ? "" : "s"}`);
   const inferredFeatFeatureIds = new Set(inferredFeatGrantDetails.fullyAutomatedFeatureIds);
-  const inferredFeatChoices = inferArchetypeFeatChoices(archetype, feats);
+  const inferredFeatChoices = inferredFeatChoiceDetails.choices;
   if (inferredFeatChoices.length) automated.push(`${inferredFeatChoices.length} restricted bonus feat choice${inferredFeatChoices.length === 1 ? "" : "s"}`);
-  const inferredFeatAlternativeDetails = inferredArchetypeFeatAlternativeDetails(archetype, feats);
   const inferredFeatAlternatives = inferredFeatAlternativeDetails.alternatives;
   if (inferredFeatAlternatives.length) automated.push(`${inferredFeatAlternatives.length} class-choice feat alternative${inferredFeatAlternatives.length === 1 ? "" : "s"}`);
-  const inferredFeatChoiceFeatureIds = new Set(inferredFeatChoices.map(choice => choice.sourceFeatureId));
+  const inferredFeatChoiceFeatureIds = inferredFeatChoiceDetails.fullyAutomatedFeatureIds;
   const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);
   if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
   const resourceActions = replacementFeatures.flatMap(feature => feature.resourceActions ?? []);
