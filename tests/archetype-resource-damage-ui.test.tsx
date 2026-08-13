@@ -5,6 +5,7 @@ import { JSDOM } from "jsdom";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
 import { applyArchetype, featuresThroughLevel } from "../packages/engine/src/index.js";
+import type { ActiveEffect } from "../packages/types/src/index.js";
 
 let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
@@ -42,12 +43,59 @@ test("resource damage rolls apply selected damage types, saves, and pool costs",
 
     const user = userEvent.setup();
     await user.selectOptions(screen.getByRole("combobox", { name: "Use Breath Weapon mode" }), "fire");
+    await user.selectOptions(screen.getByRole("combobox", { name: "Use Breath Weapon recipient" }), "ally");
+    await user.click(screen.getByLabelText("Use Breath Weapon Recipient is affected by Draconic Rage"));
     await user.clear(screen.getByLabelText("Use Breath Weapon target reflex modifier"));
     await user.type(screen.getByLabelText("Use Breath Weapon target reflex modifier"), "99");
     await user.click(screen.getByRole("button", { name: "Use Breath Weapon" }));
     assert.deepEqual(spent, [1]);
     assert.match(screen.getByLabelText("Use Breath Weapon result").textContent ?? "", /6d6 fire damage: 1 \+ 1 \+ 1 \+ 1 \+ 1 \+ 1 = 6/);
     assert.match(screen.getByLabelText("Use Breath Weapon result").textContent ?? "", /save halves to 3/);
+    assert.match(screen.getByLabelText("Use Breath Weapon result").textContent ?? "", /Recipient Ally/);
+  } finally {
+    Math.random = originalRandom;
+  }
+});
+
+test("Void Channeler applies confusion only to a low-Hit-Dice failed save", async () => {
+  const baseClass = data.classes.find((item) => item.id === "medium");
+  const archetype = archetypes.find((item) => item.id === "medium-voice-of-the-void");
+  const applied = applyArchetype(baseClass, archetype, data.classes, data.spells);
+  const effects: ActiveEffect[] = [];
+  const spent: number[] = [];
+  const originalRandom = Math.random;
+  Math.random = () => 0;
+  try {
+    render(<ClassFeatures level={7} className={applied.name} features={featuresThroughLevel(applied, 7)} classLevels={{ medium: 7 }} abilityModifiers={{ charisma: 3 }} dailyResources={[{ id: "archetype-medium-voice-of-the-void-void-channeler-su-3", label: "Void Channeler", unit: "use", maximum: 3, used: 0, onUsedChange: (used) => spent.push(used) }]} onAddEffect={(effect) => effects.push(effect)} />);
+    const user = userEvent.setup();
+    assert.equal((screen.getByRole("button", { name: "Use Void Channeler" }) as HTMLButtonElement).disabled, true);
+    await user.click(screen.getByLabelText("Use Void Channeler Exclude the acting medium and aberrations"));
+    await user.clear(screen.getByLabelText("Use Void Channeler target Hit Dice"));
+    await user.type(screen.getByLabelText("Use Void Channeler target Hit Dice"), "3");
+    await user.click(screen.getByRole("button", { name: "Use Void Channeler" }));
+    assert.deepEqual(spent, [1]);
+    assert.equal(effects[0].name, "Confused");
+    assert.equal(effects[0].roundsRemaining, 1);
+  } finally {
+    Math.random = originalRandom;
+  }
+});
+
+test("Wounding Words rolls its rider save only for a Compelling Voice target", async () => {
+  const baseClass = data.classes.find((item) => item.id === "mesmerist");
+  const archetype = archetypes.find((item) => item.id === "mesmerist-vox");
+  const applied = applyArchetype(baseClass, archetype, data.classes, data.spells);
+  const effects: ActiveEffect[] = [];
+  const originalRandom = Math.random;
+  Math.random = () => 0.5;
+  try {
+    render(<ClassFeatures level={3} className={applied.name} features={featuresThroughLevel(applied, 3)} classLevels={{ mesmerist: 3 }} abilityModifiers={{ strength: 3, charisma: 3 }} dailyResources={[{ id: "archetype-mesmerist-vox-wounding-words-su-3", label: "Wounding Words", unit: "use", maximum: 6, used: 0, onUsedChange: () => {} }]} onAddEffect={(effect) => effects.push(effect)} />);
+    const user = userEvent.setup();
+    await user.click(screen.getByLabelText("Use Wounding Words Target is affected by Compelling Voice"));
+    await user.click(screen.getByRole("button", { name: "Use Wounding Words" }));
+    assert.equal(effects[0].name, "Wounding Words penalty");
+    assert.equal(effects[0].roundsRemaining, 1);
+    assert.match(screen.getByLabelText("Use Wounding Words result").textContent ?? "", /Will save.*failure/i);
   } finally {
     Math.random = originalRandom;
   }

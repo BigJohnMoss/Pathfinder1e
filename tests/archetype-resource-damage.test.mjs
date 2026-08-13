@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, inferArchetypeResourceDamageActions } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary, inferArchetypeResourceDamageActions } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const characterClass = (id) => data.classes.find((item) => item.id === id);
@@ -16,10 +16,13 @@ test("resource-damage inference preserves published dice and save progressions",
   ]);
   assert.equal(voidChannel.savingThrow.ability, "charisma");
   assert.deepEqual(voidChannel.combatRoll.targetSave, { modifier: "will", outcome: "half-damage" });
+  assert.equal(voidChannel.combatRoll.riders[0].maximumTargetHitDiceDivisor, 2);
 
   const breath = inferArchetypeResourceDamageActions(archetype("skald-wyrm-singer"))[0].action;
   assert.equal(breath.combatRoll.damage.diceCountByLevel[0].count, 6);
   assert.deepEqual(breath.modes.map(({ id }) => id), ["acid", "cold", "electricity", "fire"]);
+  assert.deepEqual(breath.recipients.map(({ id }) => id), ["self", "ally"]);
+  assert.equal(breath.combatRoll.confirmations[0].requiredForActivation, true);
 });
 
 test("melee-touch damage uses a level-scaled flat modifier", () => {
@@ -30,6 +33,14 @@ test("melee-touch damage uses a level-scaled flat modifier", () => {
     { level: 4, modifier: 4 },
     { level: 5, modifier: 5 },
   ]);
+  assert.equal(action.combatRoll.targetSave.requiredConfirmationId, "compelling-voice");
+  assert.equal(action.combatRoll.riders[0].duration.rounds, 1);
+});
+
+test("fully represented damage actions leave the manual queue", () => {
+  assert.equal(archetypeAutomationSummary(archetype("medium-voice-of-the-void"), data.feats, data.spells).manual.includes("Void Channeler (Su) (level 3)"), false);
+  assert.equal(archetypeAutomationSummary(archetype("skald-wyrm-singer"), data.feats, data.spells).manual.includes("Breath Weapon (Su) (level 12)"), false);
+  assert.equal(archetypeAutomationSummary(archetype("mesmerist-vox"), data.feats, data.spells).manual.includes("Wounding Words (Su) (level 3)"), true);
 });
 
 test("core-resource damage actions spend Fervor and scale their areas", () => {

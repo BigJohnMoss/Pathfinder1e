@@ -194,6 +194,8 @@ export interface ClassFeatureOccurrence {
     };
     modeLabel?: string;
     modes?: Array<{ id: string; label: string; summary: string }>;
+    recipientLabel?: string;
+    recipients?: Array<{ id: string; label: string }>;
     classId?: string;
     minimumLevel?: number;
     advancementOptionId?: string;
@@ -251,10 +253,14 @@ export interface ClassFeatureOccurrence {
       targetSave?: {
         modifier: "fortitude" | "reflex" | "will";
         outcome: "half-damage" | "negates-riders" | "half-and-negates-riders";
+        requiredConfirmationId?: string;
       };
+      confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
       riders?: Array<{
         name: string;
         description: string;
+        requiredConfirmationId?: string;
+        maximumTargetHitDiceDivisor?: number;
         duration:
           | { kind: "fixed-rounds"; rounds: number }
           | { kind: "dice-rounds"; count: number; sides: number }
