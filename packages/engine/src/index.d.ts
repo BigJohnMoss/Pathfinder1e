@@ -150,6 +150,7 @@ export function inferArchetypeSpellLikeAbilityActions(archetype?: CharacterArche
 export function inferArchetypeResourceSpellActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeResourceActions(archetype?: CharacterArchetype, excludedFeatureIds?: Set<string>): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeTimedEffectActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
+export function inferArchetypeChannelEnergyActions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; action: NonNullable<CharacterClass["features"][number]["resourceActions"]>[number] }>;
 export function inferArchetypeSpellcastingAbility(archetype?: CharacterArchetype): "intelligence" | "wisdom" | "charisma" | undefined;
 export function inferArchetypeGrantedFeats(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ featureId: string; featId: string; level: number }>;
 export function inferArchetypeFeatChoices(archetype: CharacterArchetype, feats: CharacterFeat[], maximumLevel?: number): Array<CharacterClass["features"][number] & { classId: string }>;

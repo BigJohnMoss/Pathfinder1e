@@ -78,6 +78,7 @@ export function inferArchetypeResourceAdjustments(archetype) {
     const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
     inferred.push(...baseResourceOverrides(archetype, feature, summary));
     const sentences = summary.split(/(?<=[.!?])\s+/);
+    let foundResource = false;
     for (const sentence of sentences) {
       if (/(?:companion|eidolon|familiar|homunculus|phantom|mount)\b[^.]{0,100}\b(?:times|rounds|points) per day/i.test(sentence)) continue;
       const unit = /rounds? per day/i.test(sentence) ? "round" : /\bpool\b|points? in/i.test(sentence) ? "point" : "use";
@@ -111,7 +112,11 @@ export function inferArchetypeResourceAdjustments(archetype) {
       }
       const maximum = summary.match(/(?:maximum|total) of\s+(\d+|one|two|three|four|five|six)\s+(?:times|uses)/i);
       if (maximum) adjustment.maximum = numericValue(maximum[1]);
-      const levelTiers = [...summary.matchAll(/\b(once|twice|\d+|one|two|three|four|five|six)(?: times?)? per day at (\d+)(?:st|nd|rd|th)(?: level)?/gi)]
+      const levelTiers = [
+        ...summary.matchAll(/\b(once|twice|\d+|one|two|three|four|five|six)(?: times?)? per day at (\d+)(?:st|nd|rd|th)(?: level)?/gi),
+        ...[...summary.matchAll(/\bAt (\d+)(?:st|nd|rd|th) level[^.]{0,100}?\b(?:use|channel|perform|attempt)[^.]{0,60}?\b(once|twice|\d+|one|two|three|four|five|six)(?: times?)? per day\b/gi)]
+          .map((match) => [match[0], match[2], match[1]]),
+      ]
         .map((match) => ({ level: Number(match[2]), maximum: numericValue(match[1]) }))
         .filter((entry) => entry.level >= minimumLevel && Number.isFinite(entry.maximum));
       if (levelTiers.length && !adjustment.perInterval && !adjustment.levelDivisor && !adjustment.levelMultiplier) adjustment.maximumByLevel = [
@@ -125,7 +130,21 @@ export function inferArchetypeResourceAdjustments(archetype) {
         operation: "replace",
         ...adjustment,
       });
+      foundResource = true;
       break;
+    }
+    if (!foundResource) {
+      const metadataFormula = String(feature.uses ?? "").match(/^(.+?)\s+per day$/i);
+      if (metadataFormula && /\b(?:Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma)\s+(?:modifier|bonus)\b/i.test(metadataFormula[1]) && !/\b(?:slot|bardic performance|ki|grit|panache|fervor|channel energy|smite evil)\b/i.test(metadataFormula[1])) {
+        const adjustment = parseFormula(metadataFormula[1], minimumLevel);
+        if (adjustment) inferred.push({
+          resourceId: resourceId(feature),
+          label: resourceLabel(feature),
+          unit: "use",
+          operation: "replace",
+          ...adjustment,
+        });
+      }
     }
   }
   return inferred;

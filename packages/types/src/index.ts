@@ -208,6 +208,7 @@ export interface ClassFeatureOccurrence {
       base?: number;
       levelDivisor?: number;
       classId?: string;
+      levelAdjustment?: number;
       fixedDcByLevel?: Array<{ level: number; dc: number }>;
     };
     actorSavingThrow?: {
@@ -229,6 +230,12 @@ export interface ClassFeatureOccurrence {
     rerollAction?: {
         kind: "d20" | "damage" | "lower-d20" | "higher-d20";
       label: string;
+    };
+    diceRoll?: {
+      label: string;
+      diceCountByLevel: Array<{ level: number; count: number }>;
+      dieSidesByLevel: Array<{ level: number; sides: number }>;
+      abilityModifier?: AbilityName;
     };
     combatRoll?: {
       attack?: { kind: "ranged-touch"; label: string };

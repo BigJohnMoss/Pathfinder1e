@@ -7,6 +7,7 @@ import { inferArchetypeSpellLikeAbilityActions, inferredArchetypeSpellLikeAbilit
 import { inferArchetypeResourceSpellActions, inferredArchetypeResourceSpellActionDetails } from "./archetype-resource-spells.js";
 import { inferArchetypeResourceActions, inferredArchetypeResourceActionDetails } from "./archetype-resource-actions.js";
 import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDetails } from "./archetype-timed-effects.js";
+import { inferArchetypeChannelEnergyActions, inferredArchetypeChannelEnergyActionDetails } from "./archetype-channel-energy.js";
 import { inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
@@ -37,6 +38,7 @@ export { inferArchetypeSpellLikeAbilityActions };
 export { inferArchetypeResourceSpellActions };
 export { inferArchetypeResourceActions };
 export { inferArchetypeTimedEffectActions };
+export { inferArchetypeChannelEnergyActions };
 export { inferArchetypeSpellcastingAbility };
 export { inferArchetypeSpellcastingProgression };
 export { inferArchetypeSpellAdditions };
@@ -1223,6 +1225,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     ...inferArchetypeSpellLikeAbilityActions(archetype),
     ...inferArchetypeResourceSpellActions(archetype),
     ...inferArchetypeTimedEffectActions(archetype),
+    ...inferArchetypeChannelEnergyActions(archetype),
   ];
   const specializedFeatureIds = new Set(specializedResourceActions.map(({ sourceFeatureId }) => sourceFeatureId));
   const inferredResourceActions = new Map();
@@ -1843,12 +1846,16 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const timedEffectActionDetails = inferredArchetypeTimedEffectActionDetails(archetype);
   if (timedEffectActionDetails.actions.length)
     automated.push(`${timedEffectActionDetails.actions.length} tracked timed-effect activation${timedEffectActionDetails.actions.length === 1 ? "" : "s"}`);
+  const channelEnergyActionDetails = inferredArchetypeChannelEnergyActionDetails(archetype);
+  if (channelEnergyActionDetails.actions.length)
+    automated.push(`${channelEnergyActionDetails.actions.length} calculated channel-energy action${channelEnergyActionDetails.actions.length === 1 ? "" : "s"}`);
   const specializedResourceFeatureIds = new Set([
     ...temporaryHitPointActionDetails.actions,
     ...rerollActionDetails.actions,
     ...spellLikeAbilityDetails.actions,
     ...resourceSpellActionDetails.actions,
     ...timedEffectActionDetails.actions,
+    ...channelEnergyActionDetails.actions,
   ].map(({ sourceFeatureId }) => sourceFeatureId));
   const genericResourceActionDetails = inferredArchetypeResourceActionDetails(archetype, specializedResourceFeatureIds);
   if (genericResourceActionDetails.actions.length)
@@ -1879,6 +1886,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...rerollActionDetails.fullyAutomatedFeatureIds,
     ...spellLikeAbilityDetails.fullyAutomatedFeatureIds,
     ...resourceSpellActionDetails.fullyAutomatedFeatureIds,
+    ...channelEnergyActionDetails.fullyAutomatedFeatureIds,
     ...inferredSpellAccess.fullyAutomatedFeatureIds,
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,
     ...inferredWildEmpathy.fullyAutomatedFeatureIds,
