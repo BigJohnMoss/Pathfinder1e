@@ -1308,6 +1308,42 @@ test("proficiency inference handles exclusions, replacements, and mixed gain-los
   assert.ok(archetypeAutomationSummary(record("paladin-holy-gun")).manual.some(item => item.startsWith("Weapon and Armor Proficiency (level")), "an inferred positive list is not treated as a complete replacement");
 });
 
+test("complete multi-sentence proficiency rules leave the manual queue", () => {
+  const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const automated = [
+    ["bloodrager-urban-bloodrager", "Weapon and Armor Proficiency"],
+    ["brawler-battle-dancer", "Armor Proficiency"],
+    ["cavalier-saurian-champion", "Weapon and Armor Proficiency"],
+    ["cleric-angelfire-apostle", "Armor Proficiency"],
+    ["druid-nature-priest", "Weapon Proficiencies"],
+    ["druid-supernaturalist", "Weapon and Armor Proficiency"],
+    ["druid-tempest-druid", "Armor and Weapon Proficiencies"],
+    ["fighter-viking", "Weapon and Armor Proficiency"],
+    ["magus-iron-ring-striker", "Weapon Proficiency"],
+    ["medium-medium-of-the-master", "Armor Proficiency"],
+    ["paladin-hunting-paladin", "Weapon and Armor Proficiency"],
+    ["paladin-virtuous-bravo", "Weapon and Armor Proficiency"],
+    ["skald-urban-skald", "Weapon and Armor Proficiency"],
+    ["slayer-deliverer", "Weapon and Armor Proficiency"],
+    ["slayer-velvet-blade", "Armor Proficiency"],
+    ["warpriest-sixth-wing-bulwark", "Weapon and Armor Proficiency"],
+  ];
+  for (const [id, name] of automated)
+    assert.ok(!archetypeAutomationSummary(record(id)).manual.some(item => item.startsWith(`${name} (level`)), `${id} fully automated`);
+
+  assert.ok(archetypeAutomationSummary(record("monk-sohei")).manual.some(item => item.startsWith("Weapon and Armor Proficiency (level")), "Sohei's flurry and AC interactions remain manual");
+  assert.ok(archetypeAutomationSummary(record("rogue-eldritch-scoundrel")).manual.some(item => item.startsWith("Armor Proficiencies (level")), "spell-failure rules remain manual");
+  for (const [id, name] of [
+    ["druid-sunrider", "Weapon and Armor Proficiencies"],
+    ["fighter-child-of-acavna-and-amaznen", "Weapon and Armor Proficiency"],
+    ["investigator-star-watcher", "Weapon and Armor Proficiency"],
+    ["magus-esoteric", "Weapon and Armor Proficiency"],
+    ["swashbuckler-musketeer", "Weapon Proficiency"],
+    ["swashbuckler-mysterious-avenger", "Weapon and Armor Proficiency"],
+    ["swashbuckler-picaroon", "Weapon Proficiency"],
+  ]) assert.ok(archetypeAutomationSummary(record(id)).manual.some(item => item.startsWith(`${name} (level`)), `${id} retains unsupported details`);
+});
+
 test("inferred proficiency automation stays normalized across the full archetype catalogue", () => {
   const directory = new URL("../packages/data/src/archetypes/", import.meta.url);
   const records = readdirSync(directory)
