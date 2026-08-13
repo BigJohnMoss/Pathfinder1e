@@ -170,6 +170,7 @@ test("inferred conditional skill bonuses appear with their trigger in the live b
   const user = userEvent.setup();
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  await user.selectOptions(screen.getByLabelText("Alignment"), "chaotic-neutral");
   await user.selectOptions(screen.getByLabelText("Archetype"), "druid-tempest-druid");
   await user.click(screen.getByRole("tab", { name: "Actions" }));
 

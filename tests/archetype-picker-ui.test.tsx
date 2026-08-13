@@ -28,7 +28,7 @@ test.afterEach(() => cleanup());
 
 function Harness() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  return <ArchetypePicker className="Fighter" archetypes={archetypes} selectedIds={selectedIds} ancestryId="human" onChange={setSelectedIds} />;
+  return <ArchetypePicker className="Fighter" archetypes={archetypes} selectedIds={selectedIds} ancestryId="human" alignment="neutral" onChange={setSelectedIds} />;
 }
 
 test("archetype search filters choices and ancestry restrictions stay unavailable", async () => {
@@ -59,10 +59,27 @@ test("changing ancestry removes a selected archetype that is no longer legal", a
   function AncestryHarness() {
     const [selectedIds, setSelectedIds] = useState<string[]>(["dwarven"]);
     const [ancestryId, setAncestryId] = useState("dwarf");
-    return <><button type="button" onClick={() => setAncestryId("human")}>Become human</button><ArchetypePicker className="Fighter" archetypes={archetypes} selectedIds={selectedIds} ancestryId={ancestryId} onChange={setSelectedIds} /></>;
+    return <><button type="button" onClick={() => setAncestryId("human")}>Become human</button><ArchetypePicker className="Fighter" archetypes={archetypes} selectedIds={selectedIds} ancestryId={ancestryId} alignment="neutral" onChange={setSelectedIds} /></>;
   }
   render(<AncestryHarness />);
   assert.ok(screen.getByRole("button", { name: "Remove Dwarven Defender" }));
   await user.click(screen.getByRole("button", { name: "Become human" }));
+  assert.equal((screen.getByLabelText("Archetype") as HTMLSelectElement).value, "");
+});
+
+test("changing alignment removes an archetype whose static alignment requirement is no longer legal", async () => {
+  const user = userEvent.setup();
+  const lawful = [{
+    id: "law-speaker", name: "Law Speaker", classId: "fighter", summary: "A lawful path.", mechanicalCoverage: "partial" as const,
+    replacements: [{ features: [{ id: "law-speaker-alignment", name: "Alignment", level: 1, type: "core" as const, summary: "A law speaker must be lawful." }] }],
+  }];
+  function AlignmentHarness() {
+    const [selectedIds, setSelectedIds] = useState<string[]>(["law-speaker"]);
+    const [alignment, setAlignment] = useState<"lawful-neutral" | "chaotic-good">("lawful-neutral");
+    return <><button type="button" onClick={() => setAlignment("chaotic-good")}>Become chaotic</button><ArchetypePicker className="Fighter" archetypes={lawful} selectedIds={selectedIds} ancestryId="human" alignment={alignment} onChange={setSelectedIds} /></>;
+  }
+  render(<AlignmentHarness />);
+  assert.ok(screen.getByRole("button", { name: "Remove Law Speaker" }));
+  await user.click(screen.getByRole("button", { name: "Become chaotic" }));
   assert.equal((screen.getByLabelText("Archetype") as HTMLSelectElement).value, "");
 });

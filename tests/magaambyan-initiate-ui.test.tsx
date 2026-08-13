@@ -40,12 +40,12 @@ test("Magaambyan Initiate enforces good alignment and manages repeatable Spell M
   render(<Home />);
   await user.selectOptions(screen.getByLabelText("Class"), "arcanist");
   fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  const alignment = screen.getByLabelText("Alignment") as HTMLSelectElement;
+  assert.ok([...alignment.options].some((option) => option.value === "neutral-good"));
+  await user.selectOptions(alignment, "neutral-good");
   await user.selectOptions(screen.getByLabelText("Archetype"), "arcanist-magaambyan-initiate");
   await user.click(screen.getByRole("tab", { name: "Features" }));
 
-  const alignment = screen.getByLabelText("Alignment level 1") as HTMLSelectElement;
-  assert.deepEqual([...alignment.options].filter((option) => option.value).map((option) => option.text), ["Lawful Good", "Neutral Good", "Chaotic Good"]);
-  await user.selectOptions(alignment, "magaambyan-alignment-neutral-good");
   assert.ok([...screen.getByLabelText("Halcyon Spell Lore (Su) level 1").querySelectorAll("option")].some((option) => option.textContent === "Blessed Fist"));
 
   await user.click(screen.getByRole("tab", { name: "Feats" }));

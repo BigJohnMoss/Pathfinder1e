@@ -6,6 +6,7 @@ import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferAr
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
 import catalogueSpells from "../generated/pf1e-spells.mjs";
+import { inferArchetypeAllowedAlignments } from "../packages/engine/src/index.js";
 
 test("archetype automation reports calculated and manual mechanics separately", () => {
   const summary = archetypeAutomationSummary({
@@ -25,6 +26,22 @@ test("archetype automation reports calculated and manual mechanics separately", 
 
 test("full archetypes never report manual effects", () => {
   assert.deepEqual(archetypeAutomationSummary({ mechanicalCoverage: "full", replacements: [{ features: [{ name: "Feature", level: 1 }] }] }).manual, []);
+});
+
+test("static archetype alignment rules expose exact builder eligibility", () => {
+  const automated = catalogueArchetypes.filter((archetype) => inferArchetypeAllowedAlignments(archetype).length);
+  assert.equal(automated.length, 39);
+  const allowed = (id) => inferArchetypeAllowedAlignments(catalogueArchetypes.find((archetype) => archetype.id === id));
+  assert.deepEqual(allowed("cleric-elder-mythos-cultist"), ["chaotic-neutral", "chaotic-evil"]);
+  assert.deepEqual(allowed("monk-karmic-monk"), ["lawful-good", "lawful-neutral", "neutral", "lawful-evil"]);
+  assert.deepEqual(allowed("paladin-gray-paladin"), ["lawful-good", "neutral-good", "lawful-neutral"]);
+  assert.deepEqual(allowed("spiritualist-necrologist"), ["lawful-evil", "neutral-evil", "chaotic-evil"]);
+  assert.deepEqual(allowed("cleric-fiendish-vessel"), []);
+  assert.deepEqual(allowed("hunter-divine-hunter"), []);
+  for (const archetype of automated) {
+    const alignmentFeature = archetype.replacements.flatMap((replacement) => replacement.features ?? []).find((feature) => feature.name === "Alignment");
+    if (alignmentFeature) assert.equal(archetypeAutomationSummary(archetype, [], catalogueSpells).manual.includes(`Alignment (level ${alignmentFeature.level})`), false, archetype.id);
+  }
 });
 
 test("permanent archetype ability-score bonuses apply at their published levels", () => {

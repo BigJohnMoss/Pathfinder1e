@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
-import type { CharacterArchetype, CharacterClass } from "../../../packages/types/src/index.js";
+import type { Alignment, CharacterArchetype, CharacterClass } from "../../../packages/types/src/index.js";
 import { archetypeConflictReasons, archetypeEligibilityIssues, compatibleArchetypes } from "../../../packages/engine/src/index.js";
 
-export function ArchetypePicker({ className, characterClass, archetypes, selectedIds, ancestryId, onChange, label = "Archetype" }: {
+export function ArchetypePicker({ className, characterClass, archetypes, selectedIds, ancestryId, alignment, onChange, label = "Archetype" }: {
   className: string;
   characterClass?: CharacterClass;
   archetypes: CharacterArchetype[];
   selectedIds: string[];
   ancestryId: string;
+  alignment: Alignment;
   onChange: (ids: string[]) => void;
   label?: string;
 }) {
@@ -27,7 +28,7 @@ export function ArchetypePicker({ className, characterClass, archetypes, selecte
     : archetype.mechanicalCoverage === "descriptive"
       ? "Rules reference"
       : "Partially automated";
-  const requirementIssues = (archetype: CharacterArchetype) => archetypeEligibilityIssues(archetype, { ancestryId });
+  const requirementIssues = (archetype: CharacterArchetype) => archetypeEligibilityIssues(archetype, { ancestryId, alignment });
   const primaryOptions = [...selected, ...filtered.filter(archetype => !selectedIds.includes(archetype.id))];
   useEffect(() => {
     const legalIds = selectedIds.filter(id => {
@@ -35,7 +36,7 @@ export function ArchetypePicker({ className, characterClass, archetypes, selecte
       return archetype && requirementIssues(archetype).length === 0;
     });
     if (legalIds.length !== selectedIds.length) onChange(legalIds);
-  }, [ancestryId, archetypes, selectedIds.join("|")]);
+  }, [alignment, ancestryId, archetypes, selectedIds.join("|")]);
   return <section className="archetype-picker" aria-label={`${className} archetypes`}>
     <div className="archetype-picker-heading">
       <label>{label}

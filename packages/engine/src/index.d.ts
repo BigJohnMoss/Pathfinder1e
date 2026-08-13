@@ -1,9 +1,12 @@
-import type { AbilityName, AbilityScores, CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
+import type { AbilityName, AbilityScores, Alignment, CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
 
 export type CharacterClass = SharedCharacterClass;
+export const characterAlignments: Alignment[];
+export function characterAlignmentLabel(alignment: string): string;
+export function inferArchetypeAllowedAlignments(archetype?: CharacterArchetype): Alignment[];
 export function adjustedCompanionLevel(level: number, adjustment: CompanionProgressionAdjustment): number;
 export function archetypeCompanionEffectiveLevel(grant: NonNullable<CharacterArchetype["companionGrants"]>[number], classLevel: number, characterLevel?: number): number;
 export function inferArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;
@@ -46,7 +49,7 @@ export type Prerequisite =
   | { type: "choice-value"; featId: string; key: string; value: string }
   | { type: "any"; prerequisites: Exclude<Prerequisite, { type: "any" }>[] };
 export interface PrerequisiteResult { prerequisite: Prerequisite; met: boolean }
-export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; size?: string; classLevel?: number; acquisitionLevel?: number; casterLevel?: number; spellLevels?: Partial<Record<"prepared" | "spontaneous", number>>; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; spellIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
+export interface PrerequisiteContext { classId?: string; classLevels?: Record<string, number>; ancestryId?: string; alignment?: Alignment; size?: string; classLevel?: number; acquisitionLevel?: number; casterLevel?: number; spellLevels?: Partial<Record<"prepared" | "spontaneous", number>>; abilities?: Partial<AbilityScores>; baseAttackBonus?: number; saves?: Partial<Record<"fortitude" | "reflex" | "will", number>>; skillRanks?: Record<string, number>; selectedIds?: string[]; featureIds?: string[]; spellIds?: string[]; candidateId?: string; selectedFeatChoices?: Record<string, string> }
 
 export function abilityModifier(score: number): number;
 export const abilityNames: AbilityName[];
@@ -159,7 +162,7 @@ export function inferArchetypeFeatChoices(archetype: CharacterArchetype, feats: 
 export function inferArchetypeFeatAlternatives(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ sourceFeatureId: string; optionGroupId: string; minimumLevel: number; mode: "augment" | "replace"; ignoreFeatPrerequisites: boolean; featChoiceIds?: string[]; featChoiceTypes?: string[] }>;
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype, characterClass?: CharacterClass): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype, characterClass?: CharacterClass): boolean;
-export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];
+export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: PrerequisiteContext): string[];
 export function applyArchetypes(characterClass: CharacterClass, archetypes?: CharacterArchetype[], referenceClasses?: CharacterClass[], spellCatalog?: CharacterSpell[]): CharacterClass;
 export function archetypeAutomationSummary(archetype?: CharacterArchetype, feats?: CharacterFeat[], spells?: CharacterSpell[]): { automated: string[]; manual: string[] };
 export function baseAttackBonus(progression: BabProgression, level: number): number;
