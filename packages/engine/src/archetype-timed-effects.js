@@ -103,6 +103,23 @@ export function inferredArchetypeTimedEffectActionDetails(archetype) {
     const bonusByLevel = scalingBonuses(summary, minimumLevel, baseBonus, scaling);
     const label = featureLabel(feature);
     const skills = skillOptions(actionSentence);
+    const additionalEffectsByLevel = feature.id === "bard-sorrowsoul-spurn-harm-su-5" ? [
+      {
+        minimumLevel: 11,
+        name: `${label} spell resistance`,
+        target: "spellResistance",
+        bonus: 22,
+        bonusByLevel: Array.from({ length: 10 }, (_, index) => ({ level: 11 + index, bonus: 22 + index })),
+        description: "Spell resistance equal to 11 + bard level.",
+      },
+      {
+        minimumLevel: 17,
+        name: `${label} damage reduction`,
+        target: "damageReduction",
+        bonus: 10,
+        description: "DR 10/—.",
+      },
+    ] : undefined;
     actions.push({
       sourceFeatureId: feature.id,
       action: {
@@ -122,11 +139,12 @@ export function inferredArchetypeTimedEffectActionDetails(archetype) {
           ...(targets.length > 1 ? { applyToAllTargets: true } : {}),
           replaceExisting: true,
           ...(skills.length ? { skillOptions: skills } : {}),
+          ...(additionalEffectsByLevel ? { additionalEffectsByLevel } : {}),
         },
         summary,
       },
     });
-    if (["magus-spire-defender-arcane-augmentation-su-4", "occultist-battle-host-heroic-splendor-su-6"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
+    if (["bard-sorrowsoul-spurn-harm-su-5", "magus-spire-defender-arcane-augmentation-su-4", "occultist-battle-host-heroic-splendor-su-6"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
   }
   return { actions, fullyAutomatedFeatureIds };
 }

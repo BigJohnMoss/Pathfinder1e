@@ -141,6 +141,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const effectName = effectUpgrade?.name ?? action.activeEffect?.name;
         const tableEffectBonus = action.activeEffect?.bonusByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.bonus;
         const effectBonus = effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0);
+        const additionalActiveEffects = action.activeEffect?.additionalEffectsByLevel?.filter((effect) => effect.minimumLevel <= actionLevel) ?? [];
         const saveLevel = (action.savingThrow?.classId ? classLevels[action.savingThrow.classId] ?? 0 : level) + (action.savingThrow?.levelAdjustment ?? 0);
         const fixedSaveDc = action.savingThrow?.fixedDcByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.dc;
         const saveDc = action.savingThrow ? fixedSaveDc ?? (action.savingThrow.base ?? 0) + Math.floor(saveLevel / (action.savingThrow.levelDivisor ?? 1)) + (action.savingThrow.ability ? abilityModifiers[action.savingThrow.ability] ?? 0 : 0) : undefined;
@@ -209,6 +210,11 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               ...(action.activeEffect!.usesSelectedModeAsDamageType && selectedMode ? { damageType: selectedMode.id } : {}),
               ...(effectSkill ? { skillIds: [effectSkill] } : {}),
             }));
+            additionalActiveEffects.forEach((effect) => {
+              if (action.activeEffect?.replaceExisting) onRemoveEffectByName?.(effect.name);
+              const bonus = effect.bonusByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.bonus ?? effect.bonus;
+              onAddEffect({ id: `${action.id}-${effect.target}-${Date.now()}-${Math.random()}`, name: effect.name, target: effect.target, bonus, description: effect.description, roundsRemaining: rounds });
+            });
           }
           if (action.rerollAction?.kind === "d20") {
             const roll = rollD20Check(rerollInput.modifier);
