@@ -125,6 +125,7 @@ export interface ActiveEffect {
   fastHealing?: number;
   regeneration?: number;
   weaponIds?: string[];
+  weaponEnhancementBonus?: boolean;
   skillIds?: string[];
   damageType?: string;
   temporaryHitPointsGranted?: number;
@@ -309,6 +310,9 @@ export interface ClassFeatureOccurrence {
         description: string;
       }>;
       weaponSelectionFeatureId?: string;
+      selectEquippedWeapon?: boolean;
+      includeUnarmedStrike?: boolean;
+      usesWeaponEnhancementRules?: boolean;
       usesSelectedModeAsDamageType?: boolean;
       applyToAllTargets?: boolean;
       replaceExisting?: boolean;

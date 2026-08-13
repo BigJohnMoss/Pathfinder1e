@@ -17,7 +17,7 @@ export type DailyResource = {
 const effectTargetLabel = (target: ActiveEffectTarget) => target.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
 const abilityEffectTargets = new Set<ActiveEffectTarget>(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
 
-export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, baseAttackBonus = 0, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], activeEffects = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
+export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, baseAttackBonus = 0, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], activeEffects = [], equippedWeapons = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
   level: number;
   className: string;
   features: Feature[];
@@ -30,6 +30,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   selectedOptionIds?: string[];
   selectedOptions?: Record<string, string>;
   activeEffects?: ActiveEffect[];
+  equippedWeapons?: Array<{ id: string; name: string }>;
   onAddEffect?: (effect: ActiveEffect) => void;
   onRemoveEffectByName?: (name: string) => void;
   onTemporaryHitPointsChange?: (amount: number) => void;
@@ -38,6 +39,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   const [actionResults, setActionResults] = useState<Record<string, string>>({});
   const [effectTargets, setEffectTargets] = useState<Record<string, ActiveEffectTarget>>({});
   const [effectSkills, setEffectSkills] = useState<Record<string, string>>({});
+  const [effectWeaponIds, setEffectWeaponIds] = useState<Record<string, string>>({});
   const [effectRounds, setEffectRounds] = useState<Record<string, number>>({});
   const [actionModes, setActionModes] = useState<Record<string, string>>({});
   const [actionRecipients, setActionRecipients] = useState<Record<string, string>>({});
@@ -110,7 +112,11 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               effect.name === action.actorSavingThrow?.blockedByActiveEffectName,
           ),
         );
-        const unavailable = unavailableResource || unavailableCost || unavailableRecovery || blockedByActorCondition;
+        const weaponChoices = action.activeEffect?.selectEquippedWeapon
+          ? [...equippedWeapons, ...(action.activeEffect.includeUnarmedStrike && !equippedWeapons.some((weapon) => weapon.id === "unarmed-strike") ? [{ id: "unarmed-strike", name: "Unarmed strike" }] : [])]
+          : [];
+        const selectedEffectWeaponId = effectWeaponIds[action.id] ?? weaponChoices[0]?.id;
+        const unavailable = unavailableResource || unavailableCost || unavailableRecovery || blockedByActorCondition || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId);
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
@@ -168,7 +174,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const targetEffectHitDice = Math.max(0, targetHitDice[action.id] ?? actionLevel);
         const combatTargetHitDice = Math.max(0, targetHitDice[action.id] ?? actionLevel);
         const selectedWeaponOption = action.activeEffect?.weaponSelectionFeatureId ? selectedOptions[action.activeEffect.weaponSelectionFeatureId] : undefined;
-        const selectedWeapon = selectedWeaponOption === "blade-adept-bond-other"
+        const selectedWeapon = action.activeEffect?.selectEquippedWeapon ? selectedEffectWeaponId : selectedWeaponOption === "blade-adept-bond-other"
           ? selectedOptions[`${action.activeEffect!.weaponSelectionFeatureId}-weapon`]?.trim().toLowerCase()
           : selectedWeaponOption?.replace(/^blade-adept-bond-/, "");
         const activate = () => {
@@ -207,6 +213,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               ...(effectDescription ? { description: effectDescription } : {}),
               roundsRemaining: rounds,
               ...(selectedWeapon ? { weaponIds: [selectedWeapon] } : {}),
+              ...(action.activeEffect!.usesWeaponEnhancementRules ? { weaponEnhancementBonus: true } : {}),
               ...(action.activeEffect!.usesSelectedModeAsDamageType && selectedMode ? { damageType: selectedMode.id } : {}),
               ...(effectSkill ? { skillIds: [effectSkill] } : {}),
             }));
@@ -333,6 +340,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {action.combatRoll && combatDiceCount && combatDieSides && <><output aria-label={`${action.label} attack profile`}>{combatDiceCount}d{combatDieSides}{combatDamageModifier >= 0 ? "+" : ""}{combatDamageModifier} {combatDamageType} · {combatRange}</output>{action.combatRoll.attack && <label>Target touch AC<input aria-label={`${action.label} target touch AC`} type="number" min="1" max="999" value={combatInput.touchArmorClass} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, touchArmorClass: Math.max(1, Math.min(999, Number(event.target.value) || 1)) } }))} /></label>}{action.combatRoll.targetSave && <label>Target {action.combatRoll.targetSave.modifier} modifier<input aria-label={`${action.label} target ${action.combatRoll.targetSave.modifier} modifier`} type="number" min="-999" max="999" value={combatInput.saveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, saveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}{action.combatRoll.riders?.some((rider) => rider.maximumTargetHitDiceDivisor) && <label>Target Hit Dice<input aria-label={`${action.label} target Hit Dice`} type="number" min="0" max="999" value={combatTargetHitDice} onChange={(event) => setTargetHitDice((current) => ({ ...current, [action.id]: Math.max(0, Math.min(999, Number(event.target.value) || 0)) }))} /></label>}{action.combatRoll.secondaryDamage && <label>Adjacent {action.combatRoll.secondaryDamage.saveModifier} modifier<input aria-label={`${action.label} adjacent ${action.combatRoll.secondaryDamage.saveModifier} modifier`} type="number" min="-999" max="999" value={combatInput.secondarySaveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, secondarySaveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}</>}
           {action.targetEffectRoll && <><label>Target name<input aria-label={`${action.label} target name`} value={actionTargetNames[action.id] ?? ""} placeholder="Target" maxLength={80} onChange={(event) => setActionTargetNames((current) => ({ ...current, [action.id]: event.target.value }))} /></label><label>Target {action.targetEffectRoll.modifier} modifier<input aria-label={`${action.label} target ${action.targetEffectRoll.modifier} modifier`} type="number" min="-999" max="999" value={combatInput.saveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, saveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>{action.targetEffectRoll.targetHitDiceUpgrade && <label>Target Hit Dice<input aria-label={`${action.label} target Hit Dice`} type="number" min="0" max="999" value={targetEffectHitDice} onChange={(event) => setTargetHitDice((current) => ({ ...current, [action.id]: Math.max(0, Math.min(999, Number(event.target.value) || 0)) }))} /></label>}{action.targetEffectRoll.bypassesImmunitiesAtLevel && actionLevel >= action.targetEffectRoll.bypassesImmunitiesAtLevel && <small>Can affect mindless creatures and targets normally immune to mind-affecting effects.</small>}{targetHasSaveEffectImmunity && <small>{saveEffectTargetName} is immune to this ability until the tracked immunity is removed.</small>}</>}
           {action.diceRoll && diceCount && dieSides && <output aria-label={`${action.label} roll profile`}>{diceCount}d{dieSides}{diceModifier === 0 ? "" : diceModifier > 0 ? `+${diceModifier}` : diceModifier}</output>}
+          {action.activeEffect?.selectEquippedWeapon && <label>Affected weapon<select aria-label={`${action.label} affected weapon`} value={selectedEffectWeaponId} onChange={(event) => setEffectWeaponIds((current) => ({ ...current, [action.id]: event.target.value }))}>{weaponChoices.map((weapon) => <option key={weapon.id} value={weapon.id}>{weapon.name}</option>)}</select></label>}
           {action.rerollAction?.kind === "lower-d20" && <label>Original save total<input aria-label={`${action.label} original save total`} type="number" min="-999" max="999" value={rerollInput.original} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, original: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
           {action.rerollAction?.kind === "higher-d20" && <label>Original roll total<input aria-label={`${action.label} original roll total`} type="number" min="-999" max="999" value={rerollInput.original} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, original: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
           {(action.rerollAction?.kind === "d20" || action.rerollAction?.kind === "lower-d20" || action.rerollAction?.kind === "higher-d20") && <label>Modifier<input aria-label={`${action.label} modifier`} type="number" min="-999" max="999" value={rerollInput.modifier} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, modifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}

@@ -78,10 +78,11 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   onEffectsChange: (effects: ActiveEffect[]) => void;
 }) {
   const appliesToAttack = (effect: ActiveEffect, attack: EquipmentAttack) => !effect.weaponIds?.length || effect.weaponIds.includes(attack.id);
+  const attackEffectBonus = (effect: ActiveEffect, attack: EquipmentAttack) => effect.weaponEnhancementBonus ? Math.max(0, effect.bonus - (attack.enhancementBonus ?? 0)) : effect.bonus;
   const activeAttacks = attacks.map((attack) => {
-    const attackRollBonus = effects.filter((effect) => effect.target === "attackRolls" && appliesToAttack(effect, attack)).reduce((total, effect) => total + effect.bonus, 0);
+    const attackRollBonus = effects.filter((effect) => effect.target === "attackRolls" && appliesToAttack(effect, attack)).reduce((total, effect) => total + attackEffectBonus(effect, attack), 0);
     const damageEffects = effects.filter((effect) => effect.target === "damageRolls" && appliesToAttack(effect, attack));
-    const damageRollBonus = damageEffects.reduce((total, effect) => total + effect.bonus, 0);
+    const damageRollBonus = damageEffects.reduce((total, effect) => total + attackEffectBonus(effect, attack), 0);
     return { ...attack, attack: attack.attack + attackRollBonus, damageBonus: attack.damageBonus + damageRollBonus, damageType: damageEffects.findLast((effect) => effect.damageType)?.damageType };
   });
   const [name, setName] = useState("");

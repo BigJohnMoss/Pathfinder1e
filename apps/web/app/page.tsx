@@ -33,6 +33,7 @@ import {
   equipmentEncumbrance,
   equippedArmorCategory,
   equippedWeaponAttacks,
+  unarmedStrikeAttack,
   type CoinPurse,
   type InventoryEntry,
 } from "./equipment-panel";
@@ -3196,7 +3197,8 @@ export default function Home() {
     ? bladeAdeptAdvancementLevel >= 17 ? 5 : bladeAdeptAdvancementLevel >= 13 ? 4 : bladeAdeptAdvancementLevel >= 9 ? 3 : bladeAdeptAdvancementLevel >= 5 ? 2 : 1
     : 0;
   const intrinsicWeaponEnhancements = bladeAdeptWeaponKey && bladeAdeptEnhancement ? { [bladeAdeptWeaponKey]: bladeAdeptEnhancement } : {};
-  const combatAttacks = equippedWeaponAttacks(
+  const unarmedAttack = unarmedStrikeAttack(progression.baseAttackBonus, combat.abilityModifiers.strength, ancestry.size, classLevelMap.monk ?? 0, selectedFeatBonuses.weaponBonuses);
+  const combatAttacks = [...equippedWeaponAttacks(
     inventory,
     progression.baseAttackBonus,
     combat.abilityModifiers.strength,
@@ -3207,7 +3209,11 @@ export default function Home() {
     ...attack,
     attack: attack.attack + selectedArchetypeCombatBonuses.attackRolls,
     damageBonus: attack.damageBonus + selectedArchetypeCombatBonuses.damageRolls,
-  }));
+  })), {
+    ...unarmedAttack,
+    attack: unarmedAttack.attack + selectedArchetypeCombatBonuses.attackRolls,
+    damageBonus: unarmedAttack.damageBonus + selectedArchetypeCombatBonuses.damageRolls,
+  }];
   const serializedCharacterDraft = JSON.stringify(characterDraft);
   useEffect(() => {
     try {
@@ -4574,6 +4580,7 @@ export default function Home() {
                 selectedOptionIds={Object.values(selectedOptions)}
                 selectedOptions={selectedOptions}
                 activeEffects={activeEffects}
+                equippedWeapons={combatAttacks.map(({ id, name }) => ({ id, name }))}
                 onAddEffect={addActiveEffect}
                 onRemoveEffectByName={(name) => setActiveEffects((current) => current.filter((effect) => effect.name !== name))}
                 onTemporaryHitPointsChange={setTemporaryHitPoints}
