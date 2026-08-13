@@ -15,6 +15,7 @@ type RecurringHealingRule = {
   source: string;
 };
 type SkillCheckRule = { id: string; label: string; skills: string[]; result: 10 | 20; allowsStress?: boolean; trainedOnly?: boolean; condition?: string; source: string };
+type PrecisionDamageRule = { id: string; label: string; dice: number; dieSides: 6; condition: string; attackMode: "any" | "melee" | "ranged"; maximumRange?: number; source: string };
 
 const magicSchools = [
   { id: "abjuration", name: "Abjuration" },
@@ -60,7 +61,7 @@ const effectTargetName = (target: ActiveEffectTarget) =>
         : target === "enemy" ? "Enemy"
         : targets.find(item => item.id === target)?.name;
 
-export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, nonlethalDamage = 0, attacks, checks, skills, effects, recurringHealing = [], skillCheckRules = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onNonlethalDamageChange = () => {}, onEffectsChange }: {
+export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryHitPoints, nonlethalDamage = 0, attacks, checks, skills, effects, recurringHealing = [], skillCheckRules = [], precisionDamageRules = [], craftingOppositionSchools = [], onCurrentHitPointsChange, onTemporaryHitPointsChange, onNonlethalDamageChange = () => {}, onEffectsChange }: {
   maximumHitPoints: number;
   currentHitPoints: number;
   temporaryHitPoints: number;
@@ -71,6 +72,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   effects: ActiveEffect[];
   recurringHealing?: RecurringHealingRule[];
   skillCheckRules?: SkillCheckRule[];
+  precisionDamageRules?: PrecisionDamageRule[];
   craftingOppositionSchools?: CraftingOppositionSchool[];
   onCurrentHitPointsChange: (value: number) => void;
   onTemporaryHitPointsChange: (value: number) => void;
@@ -103,10 +105,16 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [customSides, setCustomSides] = useState(20);
   const [customModifier, setCustomModifier] = useState(0);
   const [targetArmorClass, setTargetArmorClass] = useState(10);
+  const [targetDistance, setTargetDistance] = useState(5);
+  const [enabledPrecisionDamageIds, setEnabledPrecisionDamageIds] = useState<string[]>([]);
   const [effectCheckDcs, setEffectCheckDcs] = useState<Record<string, number>>({});
   const [successfulMeleeAttackIds, setSuccessfulMeleeAttackIds] = useState<string[]>([]);
   const [roundHealingResult, setRoundHealingResult] = useState("");
   const deathReleaseActive = effects.some((effect) => effect.deathRelease);
+  useEffect(() => {
+    const available = new Set(precisionDamageRules.map((rule) => rule.id));
+    setEnabledPrecisionDamageIds((current) => current.filter((id) => available.has(id)));
+  }, [precisionDamageRules.map((rule) => rule.id).join("|")]);
   useEffect(() => {
     const ruleById = new Map(recurringHealing.map((rule) => [`archetype-healing-${rule.id}`, rule]));
     let changed = false;
@@ -236,7 +244,20 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     const appliesTrumpCard = attack.range === undefined && successfulMeleeAttackIds.includes(attack.id);
     const modifier = attack.damageBonus + (appliesTrumpCard ? oneShotEffects("meleeDamageRolls").reduce((total, effect) => total + effect.bonus, 0) : 0);
     const result = rollDice(Number(match[1]), Number(match[2]), modifier);
-    recordRoll({ label: `${attack.name} damage`, formula: `${attack.damage}${modifier ? ` ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}` : ""}`, rolls: result.rolls, total: result.total });
+    const precision = precisionDamageRules.filter((rule) =>
+      enabledPrecisionDamageIds.includes(rule.id) &&
+      (rule.attackMode === "any" || (rule.attackMode === "ranged") === (attack.range !== undefined)) &&
+      (!rule.maximumRange || targetDistance <= rule.maximumRange),
+    );
+    const precisionDice = precision.reduce((total, rule) => total + rule.dice, 0);
+    const precisionResult = precisionDice ? rollDice(precisionDice, 6, 0) : { rolls: [], total: 0 };
+    recordRoll({
+      label: `${attack.name} damage`,
+      formula: `${attack.damage}${modifier ? ` ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}` : ""}${precisionDice ? ` + ${precisionDice}d6 precision` : ""}`,
+      rolls: [...result.rolls, ...precisionResult.rolls],
+      total: result.total + precisionResult.total,
+      verdict: precision.length ? precision.map((rule) => rule.label).join(" + ") : undefined,
+    });
     if (appliesTrumpCard) {
       setSuccessfulMeleeAttackIds((current) => current.filter((id) => id !== attack.id));
       consumeOneShotEffects("meleeDamageRolls");
@@ -333,6 +354,12 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     </section>}
     <section className="combat-attacks" aria-labelledby="combat-attacks-heading">
       <div className="combat-attacks-heading"><div><h4 id="combat-attacks-heading">Equipped attacks</h4><p>Attack values include abilities, enhancement bonuses, and supported feat modifiers.</p></div><label>Target AC<input aria-label="Target Armor Class" type="number" min="1" max="999" value={targetArmorClass} onChange={event => setTargetArmorClass(Math.max(1, Math.min(999, Number(event.target.value) || 1)))} /></label></div>
+      {precisionDamageRules.length > 0 && <fieldset className="precision-damage-controls">
+        <legend>Precision damage</legend>
+        <label className="precision-target-distance">Target distance<input aria-label="Target distance in feet" type="number" min="0" max="999" value={targetDistance} onChange={event => setTargetDistance(Math.max(0, Math.min(999, Number(event.target.value) || 0)))} /> ft.</label>
+        <div>{precisionDamageRules.map((rule) => <label key={rule.id}><input type="checkbox" aria-label={`Apply ${rule.label} from ${rule.source}`} checked={enabledPrecisionDamageIds.includes(rule.id)} onChange={event => setEnabledPrecisionDamageIds((current) => event.target.checked ? [...new Set([...current, rule.id])] : current.filter((id) => id !== rule.id))} /><span><strong>{rule.label} +{rule.dice}d6</strong><small>{rule.source} · {rule.condition}{rule.maximumRange ? ` · within ${rule.maximumRange} ft.` : ""}{rule.attackMode === "ranged" ? " · ranged attacks only" : ""}</small></span></label>)}</div>
+        <p className="hint">Select a rule only when its listed condition is true. Eligible dice are added automatically to weapon damage rolls.</p>
+      </fieldset>}
       {activeAttacks.length === 0 ? <p className="hint">Equip a weapon in Inventory to add it here.</p> : <div>{activeAttacks.map((attack) => <article key={attack.id}>
         <div><strong>{attack.name}</strong><span>Attack {attack.attack >= 0 ? "+" : ""}{attack.attack} · Damage {attack.damage}{attack.damageBonus ? ` ${attack.damageBonus >= 0 ? "+" : ""}${attack.damageBonus}` : ""}{attack.damageType ? ` ${attack.damageType}` : ""}</span><small>Critical {attack.critical}{attack.range ? ` · Range ${attack.range} ft.` : ""}</small></div>
         <div className="attack-roll-actions"><button type="button" onClick={() => rollAttack(attack)}>Roll {attack.name} attack</button><button type="button" className="secondary-button" onClick={() => rollDamage(attack)}>Roll {attack.name} damage</button></div>

@@ -7,6 +7,7 @@ export type CharacterClass = SharedCharacterClass;
 export const characterAlignments: Alignment[];
 export function characterAlignmentLabel(alignment: string): string;
 export function inferArchetypeAllowedAlignments(archetype?: CharacterArchetype): Alignment[];
+export { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, precisionDamageAtLevel } from "./archetype-precision-damage.js";
 export function adjustedCompanionLevel(level: number, adjustment: CompanionProgressionAdjustment): number;
 export function archetypeCompanionEffectiveLevel(grant: NonNullable<CharacterArchetype["companionGrants"]>[number], classLevel: number, characterLevel?: number): number;
 export function inferArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;

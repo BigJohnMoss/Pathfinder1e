@@ -28,6 +28,7 @@ import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefens
 import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArchetypeSkillCheckRules } from "./archetype-skill-checks.js";
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments, inferredArchetypeAlignmentDetails } from "./archetype-alignment.js";
+import { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, inferredArchetypePrecisionDamageDetails, precisionDamageAtLevel } from "./archetype-precision-damage.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants };
 export { eidolonProgression } from "./eidolon.js";
@@ -61,6 +62,7 @@ export { archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAd
 export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments };
+export { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, precisionDamageAtLevel };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 export { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 export { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
@@ -1261,6 +1263,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
   const inferredSpellAccess = inferArchetypeSpellAccess(archetype, spellCatalog);
   const inferredSpellModifiers = inferArchetypeSpellModifiers(archetype, spellCatalog);
   const inferredWildEmpathy = inferArchetypeWildEmpathyAdjustments(archetype);
+  const inferredPrecisionDamage = inferArchetypePrecisionDamageAdjustments(archetype);
   const spellcastingProgressionClassId = archetype.spellcastingProgressionClassId ?? inferredSpellcastingAbility?.progressionClassId;
   const progressionSpellcasting = referenceClasses.find((item) => item.id === spellcastingProgressionClassId)?.spellcasting;
   const baseSpellcasting = progressionSpellcasting ?? characterSpellcasting;
@@ -1331,6 +1334,11 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       ...(characterClass.wildEmpathyAdjustments ?? []),
       ...inferredWildEmpathy,
       ...(archetype.wildEmpathyAdjustments ?? []),
+    ],
+    precisionDamageAdjustments: [
+      ...(characterClass.precisionDamageAdjustments ?? []),
+      ...inferredPrecisionDamage,
+      ...(archetype.precisionDamageAdjustments ?? []),
     ],
     spellListClassId: archetype.spellListClassId ?? inferredSpellcastingAbility?.spellListClassId ?? characterClass.spellListClassId,
     bonusSpellAdditions: {
@@ -1795,6 +1803,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const inferredSpellAccess = inferredArchetypeSpellAccessDetails(archetype, spells);
   const inferredSpellModifiers = inferredArchetypeSpellModifierDetails(archetype, spells);
   const inferredWildEmpathy = inferredArchetypeWildEmpathyDetails(archetype);
+  const precisionDamageDetails = inferredArchetypePrecisionDamageDetails(archetype);
   const inferredSpellListCount = Object.keys(inferredSpellAdditions.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined).length;
   const inferredBonusSpellCount = Object.keys(inferredSpellAdditions.bonusSpellAdditions).filter((id) => archetype.bonusSpellAdditions?.[id] === undefined).length;
   const inferredKnownGrantCount = inferredSpellAdditions.spellGrants.filter((grant) => grant.mode === "known" && archetype.bonusSpellAdditions?.[grant.spellId] === undefined && !(archetype.spellGrants ?? []).some((explicit) => explicit.mode === grant.mode && explicit.spellId === grant.spellId)).length;
@@ -1807,6 +1816,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (inferredAccessExclusionCount) automated.push(`${inferredAccessExclusionCount} prohibited spell${inferredAccessExclusionCount === 1 ? "" : "s"} removed`);
   if (inferredSpellModifiers.adjustments.length) automated.push(`${inferredSpellModifiers.adjustments.length} deterministic spell modifier${inferredSpellModifiers.adjustments.length === 1 ? "" : "s"}`);
   if (inferredWildEmpathy.adjustments.length) automated.push(`${inferredWildEmpathy.adjustments.length} Wild Empathy rule${inferredWildEmpathy.adjustments.length === 1 ? "" : "s"}`);
+  if (precisionDamageDetails.adjustments.length) automated.push(`${precisionDamageDetails.adjustments.length} level-aware precision-damage progression${precisionDamageDetails.adjustments.length === 1 ? "" : "s"}`);
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
   if (archetype.companionProgressionAdjustments?.length) automated.push("Companion effective-level adjustments");
@@ -2016,6 +2026,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...inferredSpellAdditions.fullyAutomatedFeatureIds,
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,
     ...inferredWildEmpathy.fullyAutomatedFeatureIds,
+    ...precisionDamageDetails.fullyAutomatedFeatureIds,
     ...advisoryFeatureIds,
     ...spellcastingAdjustmentFeatureIds,
     ...clericDomainReductionFeatureIds,
