@@ -1738,11 +1738,24 @@ export function archetypeAdvisoryFeatureIds(archetype) {
     .map((feature) => feature.id);
 }
 
+export function archetypeSpellcastingAdjustmentFeatureIds(archetype) {
+  if (archetype?.spellSlotAdjustmentPerLevel !== -1) return [];
+  return (archetype.replacements ?? []).flatMap((replacement) => replacement.features ?? [])
+    .filter((feature) => {
+      const text = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
+      return /^Diminished Spellcasting$/i.test(feature.name ?? "") &&
+        /one fewer spell(?: slot)?(?:s)? (?:of|per day of|at) each (?:spell )?level|casts? one fewer spell of each level|number of spells per day for each spell level is one less/i.test(text) &&
+        !/\bdomain\b|does not automatically learn/i.test(text);
+    })
+    .map((feature) => feature.id);
+}
+
 export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (!archetype) return { automated: [], manual: [] };
   const automated = [];
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
   const advisoryFeatureIds = new Set(archetypeAdvisoryFeatureIds(archetype));
+  const spellcastingAdjustmentFeatureIds = new Set(archetypeSpellcastingAdjustmentFeatureIds(archetype));
   if (advisoryFeatureIds.size)
     automated.push(`${advisoryFeatureIds.size} advisory option recommendation${advisoryFeatureIds.size === 1 ? "" : "s"} (no mechanical rule)`);
   if ((archetype.replacements ?? []).some(item => item.featureIds?.length || item.progressionKeys?.length))
@@ -1973,6 +1986,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,
     ...inferredWildEmpathy.fullyAutomatedFeatureIds,
     ...advisoryFeatureIds,
+    ...spellcastingAdjustmentFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))
