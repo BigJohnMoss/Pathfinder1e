@@ -1,7 +1,8 @@
 import archetypes from "../../generated/pf1e-archetypes.mjs";
 import feats from "../../generated/pf1e-feats.mjs";
 import spells from "../../generated/pf1e-spells.mjs";
-import { archetypeAutomationSummary, inferArchetypeSpellAccess, inferArchetypeSpellAdditions, inferArchetypeSpellModifiers } from "../../packages/engine/src/index.js";
+import { archetypeAutomationSummary, inferArchetypeReplacementFeatureIds, inferArchetypeSpellAccess, inferArchetypeSpellAdditions, inferArchetypeSpellModifiers, inferArchetypeWildEmpathyAdjustments } from "../../packages/engine/src/index.js";
+import data from "../../generated/pf1e-data.mjs";
 
 const args = new Map(process.argv.slice(2).map((value, index, values) => value.startsWith("--") ? [value, values[index + 1]?.startsWith("--") ? true : values[index + 1] ?? true] : [value, true]));
 const classFilter = typeof args.get("--class") === "string" ? args.get("--class") : null;
@@ -51,6 +52,15 @@ const inferredSpellModifierBatches = archetypes.flatMap((archetype) => {
   const adjustments = inferArchetypeSpellModifiers(archetype, spells);
   return adjustments.length ? [{ archetypeId: archetype.id, rules: adjustments.length }] : [];
 });
+const inferredWildEmpathyBatches = archetypes.flatMap((archetype) => {
+  const adjustments = inferArchetypeWildEmpathyAdjustments(archetype);
+  return adjustments.length ? [{ archetypeId: archetype.id, rules: adjustments.length }] : [];
+});
+const inferredReplacementBatches = archetypes.flatMap((archetype) => {
+  const characterClass = data.classes.find((entry) => entry.id === archetype.classId);
+  const featureIds = characterClass ? inferArchetypeReplacementFeatureIds(characterClass, archetype) : [];
+  return featureIds.length ? [{ archetypeId: archetype.id, featureIds: featureIds.length }] : [];
+});
 
 const tagCounts = Object.entries(records.flatMap((record) => record.tags).reduce((counts, tag) => ({ ...counts, [tag]: (counts[tag] ?? 0) + 1 }), {})).sort((left, right) => right[1] - left[1]);
 const classCounts = Object.entries(records.reduce((counts, record) => ({ ...counts, [record.classId]: (counts[record.classId] ?? 0) + 1 }), {})).sort((left, right) => right[1] - left[1]);
@@ -67,6 +77,10 @@ const result = {
   inferredSpellAccessArchetypes: inferredSpellAccessBatches.length,
   inferredSpellModifierRules: inferredSpellModifierBatches.reduce((total, item) => total + item.rules, 0),
   inferredSpellModifierArchetypes: inferredSpellModifierBatches.length,
+  inferredWildEmpathyRules: inferredWildEmpathyBatches.reduce((total, item) => total + item.rules, 0),
+  inferredWildEmpathyArchetypes: inferredWildEmpathyBatches.length,
+  inferredReplacementFeatureIds: inferredReplacementBatches.reduce((total, item) => total + item.featureIds, 0),
+  inferredReplacementArchetypes: inferredReplacementBatches.length,
 };
 
 if (tagFilter) {
@@ -86,6 +100,8 @@ else {
   console.log(`Inferred fixed spell rules: ${result.inferredFixedSpellRules} across ${result.inferredFixedSpellArchetypes} archetypes`);
   console.log(`Inferred catalog spell access: ${result.inferredSpellAccessAdditions} additions and ${result.inferredSpellAccessExclusions} exclusions across ${result.inferredSpellAccessArchetypes} archetypes`);
   console.log(`Inferred deterministic spell modifiers: ${result.inferredSpellModifierRules} across ${result.inferredSpellModifierArchetypes} archetypes`);
+  console.log(`Inferred Wild Empathy rules: ${result.inferredWildEmpathyRules} across ${result.inferredWildEmpathyArchetypes} archetypes`);
+  console.log(`Inferred missing replacement targets: ${result.inferredReplacementFeatureIds} across ${result.inferredReplacementArchetypes} archetypes`);
   console.log("\nReusable mechanic batches:");
   for (const [tag, count] of tagCounts) console.log(`${String(count).padStart(4)}  ${tag}`);
   console.log("\nLargest class queues:");

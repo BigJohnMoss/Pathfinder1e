@@ -13,6 +13,7 @@ export const archetypeAutomationArrayFields = [
   "classSkillRemovals",
   "spellListExclusions",
   "spellModifierAdjustments",
+  "wildEmpathyAdjustments",
 ];
 
 export function mergeArchetypeAutomation(archetypes, overlayFiles = []) {

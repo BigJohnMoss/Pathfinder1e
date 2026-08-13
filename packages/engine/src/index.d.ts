@@ -1,4 +1,4 @@
-import type { AbilityScores, CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
+import type { AbilityName, AbilityScores, CharacterArchetype, CharacterClass as SharedCharacterClass, CharacterDraftV1, CharacterFeat, CharacterSpell, CharacterTrait, CompanionProgressionAdjustment } from "../../types/src/index.js";
 
 export type BabProgression = "full" | "three-quarters" | "half";
 export type SaveProgression = "good" | "poor";
@@ -129,12 +129,16 @@ export function spellSaveDC(abilityScore: number, spellLevel: number): number;
 export function spellcastingProgression(characterClass: CharacterClass & { spellcasting?: { ability: string; castingType: string; slotsByLevel: number[][]; preparedByLevel?: number[][]; spellLevelUnlocks?: number[]; preparesFromSlots?: boolean } }, level: number, options?: { abilityScore?: number }): { ability: string; castingType: string; maximumSpellLevel: number; slots: Array<{ level: number; base: number; bonus: number; count: number }>; prepared: Array<{ level: number; count: number }> } | null;
 export function normalizeCharacterDraft(value: unknown, options?: { classIds?: string[] | null; ancestryIds?: string[] | null; archetypeIds?: string[] | null; archetypeIdsByClass?: Record<string, string[]> | null }): CharacterDraftV1 | null;
 export function applyArchetype(characterClass: CharacterClass, archetype?: CharacterArchetype, referenceClasses?: CharacterClass[], spellCatalog?: CharacterSpell[]): CharacterClass;
+export function inferArchetypeReplacementFeatureIds(characterClass: CharacterClass, archetype?: CharacterArchetype): string[];
 export function inferArchetypeSpellAdditions(archetype?: CharacterArchetype, spells?: CharacterSpell[]): { spellListAdditions: Record<string, number>; bonusSpellAdditions: Record<string, number>; spellGrants: NonNullable<CharacterArchetype["spellGrants"]> };
 export function inferArchetypeSpellAccess(archetype?: CharacterArchetype, spells?: CharacterSpell[]): { spellListAdditions: Record<string, number>; spellListExclusions: string[] };
 export function inferredArchetypeSpellAccessDetails(archetype?: CharacterArchetype, spells?: CharacterSpell[]): { spellListAdditions: Record<string, number>; spellListExclusions: string[]; sourceFeatureIds: Set<string>; fullyAutomatedFeatureIds: Set<string>; sentenceCoverage: Array<{ sourceFeatureId: string; sentenceIndex: number }> };
 export function inferArchetypeSpellModifiers(archetype?: CharacterArchetype, spells?: CharacterSpell[]): NonNullable<CharacterArchetype["spellModifierAdjustments"]>;
 export function inferredArchetypeSpellModifierDetails(archetype?: CharacterArchetype, spells?: CharacterSpell[]): { adjustments: NonNullable<CharacterArchetype["spellModifierAdjustments"]>; sentenceCoverage: Array<{ sourceFeatureId: string; sentenceIndex: number }>; fullyAutomatedFeatureIds: Set<string> };
 export function archetypeSpellModifiers(characterClass: CharacterClass, classLevel: number, spell: CharacterSpell): { casterLevel: number; saveDc: number; concentration: number; sources: string[] };
+export function inferArchetypeWildEmpathyAdjustments(archetype?: CharacterArchetype): NonNullable<CharacterArchetype["wildEmpathyAdjustments"]>;
+export function inferredArchetypeWildEmpathyDetails(archetype?: CharacterArchetype): { adjustments: NonNullable<CharacterArchetype["wildEmpathyAdjustments"]>; sentenceCoverage: Array<{ sourceFeatureId: string; sentenceIndex: number }>; fullyAutomatedFeatureIds: Set<string> };
+export function archetypeWildEmpathyChecks(characterClasses?: CharacterClass[], classLevels?: Record<string, number>, abilityModifiers?: Partial<Record<AbilityName, number>>, skillTotals?: Record<string, number>): Array<{ id: string; name: string; modifier: number; description: string }>;
 export function inferArchetypeClassSkillChanges(archetype?: CharacterArchetype): { additions: string[]; removals: string[] };
 export function inferArchetypeProficiencyAdjustments(archetype?: CharacterArchetype): Array<{ category: "weapon" | "armor" | "shield"; operation: "add" | "remove" | "replace"; proficiencies: string[] }>;
 export function inferArchetypeSkillRankAdjustment(archetype?: CharacterArchetype): { operation: "add" | "replace"; value: number } | undefined;
@@ -149,8 +153,8 @@ export function inferArchetypeSpellcastingAbility(archetype?: CharacterArchetype
 export function inferArchetypeGrantedFeats(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ featureId: string; featId: string; level: number }>;
 export function inferArchetypeFeatChoices(archetype: CharacterArchetype, feats: CharacterFeat[], maximumLevel?: number): Array<CharacterClass["features"][number] & { classId: string }>;
 export function inferArchetypeFeatAlternatives(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ sourceFeatureId: string; optionGroupId: string; minimumLevel: number; mode: "augment" | "replace"; ignoreFeatPrerequisites: boolean; featChoiceIds?: string[]; featChoiceTypes?: string[] }>;
-export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype): string[];
-export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype): boolean;
+export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype, characterClass?: CharacterClass): string[];
+export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype, characterClass?: CharacterClass): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: Record<string, unknown>): string[];
 export function applyArchetypes(characterClass: CharacterClass, archetypes?: CharacterArchetype[], referenceClasses?: CharacterClass[], spellCatalog?: CharacterSpell[]): CharacterClass;
 export function archetypeAutomationSummary(archetype?: CharacterArchetype, feats?: CharacterFeat[], spells?: CharacterSpell[]): { automated: string[]; manual: string[] };

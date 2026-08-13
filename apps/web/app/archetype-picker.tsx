@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import type { CharacterArchetype } from "../../../packages/types/src/index.js";
+import type { CharacterArchetype, CharacterClass } from "../../../packages/types/src/index.js";
 import { archetypeConflictReasons, archetypeEligibilityIssues, compatibleArchetypes } from "../../../packages/engine/src/index.js";
 
-export function ArchetypePicker({ className, archetypes, selectedIds, ancestryId, onChange, label = "Archetype" }: {
+export function ArchetypePicker({ className, characterClass, archetypes, selectedIds, ancestryId, onChange, label = "Archetype" }: {
   className: string;
+  characterClass?: CharacterClass;
   archetypes: CharacterArchetype[];
   selectedIds: string[];
   ancestryId: string;
@@ -69,9 +70,9 @@ export function ArchetypePicker({ className, archetypes, selectedIds, ancestryId
       <select aria-label="Add compatible archetype" value="" onChange={event => event.target.value && onChange([...selectedIds, event.target.value])}>
         <option value="">Choose another archetype</option>
         {candidates.map(archetype => {
-          const conflicts = selected.flatMap(current => archetypeConflictReasons(current, archetype));
+          const conflicts = selected.flatMap(current => archetypeConflictReasons(current, archetype, characterClass));
           const issues = requirementIssues(archetype);
-          const disabled = !compatibleArchetypes(selected, archetype) || issues.length > 0;
+          const disabled = !compatibleArchetypes(selected, archetype, characterClass) || issues.length > 0;
           return <option key={archetype.id} value={archetype.id} disabled={disabled}>{archetype.name}{conflicts.length ? ` — conflicts: ${conflicts[0]}` : issues.length ? ` — ${issues[0]}` : ""}</option>;
         })}
       </select>

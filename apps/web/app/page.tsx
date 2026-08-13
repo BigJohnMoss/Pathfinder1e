@@ -77,6 +77,7 @@ import {
   archetypeSkillBonuses,
   archetypeSkillCheckRules,
   archetypeSpellModifiers,
+  archetypeWildEmpathyChecks,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
   adjustedCompanionLevel,
@@ -1502,6 +1503,12 @@ export default function Home() {
         (wieldingBlackBlade && ["Perception", "Sense Motive"].includes(skill.name) ? (ranks >= 10 ? 4 : 2) : 0),
     };
   });
+  const selectedWildEmpathyChecks = archetypeWildEmpathyChecks(
+    progressionClasses,
+    classLevelMap,
+    combat.abilityModifiers,
+    Object.fromEntries(skillEntries.map((skill) => [skill.name, skill.total])),
+  );
   useEffect(
     () =>
       setSkillRanks((current) => {
@@ -4416,6 +4423,7 @@ export default function Home() {
                   { id: "reflex", name: "Reflex save", modifier: combat.saves.reflex },
                   { id: "will", name: "Will save", modifier: combat.saves.will },
                   { id: "caster-level", name: "Caster level check", modifier: Math.max(0, ...Object.values(effectiveSpellcastingLevelMap)) + eldritchSurgeCasterLevelBonus },
+                  ...selectedWildEmpathyChecks,
                 ]}
                 skills={skillEntries.map(skill => ({ id: skill.name, name: skill.name, modifier: skill.total, ranks: skill.ranks }))}
                 effects={activeEffects}

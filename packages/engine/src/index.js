@@ -10,6 +10,8 @@ import { inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgressio
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 import { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
+import { archetypeWildEmpathyChecks, inferArchetypeWildEmpathyAdjustments, inferredArchetypeWildEmpathyDetails } from "./archetype-wild-empathy.js";
+import { inferArchetypeReplacementFeatureIds } from "./archetype-replacements.js";
 import { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides } from "./archetype-skill-abilities.js";
 import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
@@ -52,6 +54,8 @@ export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 export { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 export { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
+export { archetypeWildEmpathyChecks, inferArchetypeWildEmpathyAdjustments, inferredArchetypeWildEmpathyDetails } from "./archetype-wild-empathy.js";
+export { inferArchetypeReplacementFeatureIds } from "./archetype-replacements.js";
 
 export const adjustedCompanionLevel = (level, adjustment) => Math.max(
   adjustment.minimumEffectiveLevel ?? 1,
@@ -1180,6 +1184,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       (replacement) => replacement.featureIds ?? [],
     ),
   );
+  for (const featureId of inferArchetypeReplacementFeatureIds(characterClass, archetype)) featureIds.add(featureId);
   const progressionKeys = new Set(
     archetype.replacements.flatMap(
       (replacement) => replacement.progressionKeys ?? [],
@@ -1238,6 +1243,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
   const inferredSpellAdditions = inferArchetypeSpellAdditions(archetype, spellCatalog);
   const inferredSpellAccess = inferArchetypeSpellAccess(archetype, spellCatalog);
   const inferredSpellModifiers = inferArchetypeSpellModifiers(archetype, spellCatalog);
+  const inferredWildEmpathy = inferArchetypeWildEmpathyAdjustments(archetype);
   const spellcastingProgressionClassId = archetype.spellcastingProgressionClassId ?? inferredSpellcastingAbility?.progressionClassId;
   const progressionSpellcasting = referenceClasses.find((item) => item.id === spellcastingProgressionClassId)?.spellcasting;
   const baseSpellcasting = progressionSpellcasting ?? characterSpellcasting;
@@ -1302,6 +1308,11 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       ...(characterClass.spellModifierAdjustments ?? []),
       ...inferredSpellModifiers,
       ...(archetype.spellModifierAdjustments ?? []),
+    ],
+    wildEmpathyAdjustments: [
+      ...(characterClass.wildEmpathyAdjustments ?? []),
+      ...inferredWildEmpathy,
+      ...(archetype.wildEmpathyAdjustments ?? []),
     ],
     spellListClassId: archetype.spellListClassId ?? inferredSpellcastingAbility?.spellListClassId ?? characterClass.spellListClassId,
     bonusSpellAdditions: {
@@ -1572,25 +1583,27 @@ export function inferArchetypeSkillRankAdjustment(archetype) {
   return inferArchetypeSkillRankDetails(archetype).adjustment;
 }
 
-function archetypeReplacementKeys(archetype) {
+function archetypeReplacementKeys(archetype, characterClass) {
   return new Set(
-    archetype?.replacements
+    [
+      ...(archetype?.replacements
       ?.flatMap((replacement) => [
         ...(replacement.featureIds ?? []).map((id) => `feature:${id}`),
         ...(replacement.progressionKeys ?? []).map(
           (key) => `progression:${key}`,
         ),
-      ])
-      .filter((key) => !key.startsWith("feature:nested-")) ?? [],
+      ]) ?? []),
+      ...(characterClass ? inferArchetypeReplacementFeatureIds(characterClass, archetype).map((id) => `feature:${id}`) : []),
+    ].filter((key) => !key.startsWith("feature:nested-")),
   );
 }
 
-export function archetypeConflictReasons(left, right) {
+export function archetypeConflictReasons(left, right, characterClass) {
   if (!left || !right) return [];
   if (left.classId !== right.classId)
     return ["Archetypes belong to different classes."];
-  const leftKeys = archetypeReplacementKeys(left);
-  const conflicts = [...archetypeReplacementKeys(right)].filter((key) =>
+  const leftKeys = archetypeReplacementKeys(left, characterClass);
+  const conflicts = [...archetypeReplacementKeys(right, characterClass)].filter((key) =>
     leftKeys.has(key),
   );
   const nested = (left.nestedReplacements ?? []).filter((replacement) =>
@@ -1607,9 +1620,9 @@ export function archetypeConflictReasons(left, right) {
   ];
 }
 
-export function compatibleArchetypes(selected, candidate) {
+export function compatibleArchetypes(selected, candidate, characterClass) {
   return !selected.some(
-    (archetype) => archetypeConflictReasons(archetype, candidate).length > 0,
+    (archetype) => archetypeConflictReasons(archetype, candidate, characterClass).length > 0,
   );
 }
 
@@ -1641,6 +1654,7 @@ export function applyArchetypes(characterClass, archetypes = [], referenceClasse
       const conflicts = archetypeConflictReasons(
         selected[index],
         selected[other],
+        characterClass,
       );
       if (conflicts.length)
         throw new Error(
@@ -1672,6 +1686,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const inferredSpellAdditions = inferredArchetypeSpellAdditionDetails(archetype, spells);
   const inferredSpellAccess = inferredArchetypeSpellAccessDetails(archetype, spells);
   const inferredSpellModifiers = inferredArchetypeSpellModifierDetails(archetype, spells);
+  const inferredWildEmpathy = inferredArchetypeWildEmpathyDetails(archetype);
   const inferredSpellListCount = Object.keys(inferredSpellAdditions.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined).length;
   const inferredBonusSpellCount = Object.keys(inferredSpellAdditions.bonusSpellAdditions).filter((id) => archetype.bonusSpellAdditions?.[id] === undefined).length;
   const inferredKnownGrantCount = inferredSpellAdditions.spellGrants.filter((grant) => grant.mode === "known" && archetype.bonusSpellAdditions?.[grant.spellId] === undefined && !(archetype.spellGrants ?? []).some((explicit) => explicit.mode === grant.mode && explicit.spellId === grant.spellId)).length;
@@ -1683,6 +1698,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (inferredAccessAdditionCount) automated.push(`${inferredAccessAdditionCount} catalog-driven spell-list addition${inferredAccessAdditionCount === 1 ? "" : "s"}`);
   if (inferredAccessExclusionCount) automated.push(`${inferredAccessExclusionCount} prohibited spell${inferredAccessExclusionCount === 1 ? "" : "s"} removed`);
   if (inferredSpellModifiers.adjustments.length) automated.push(`${inferredSpellModifiers.adjustments.length} deterministic spell modifier${inferredSpellModifiers.adjustments.length === 1 ? "" : "s"}`);
+  if (inferredWildEmpathy.adjustments.length) automated.push(`${inferredWildEmpathy.adjustments.length} Wild Empathy rule${inferredWildEmpathy.adjustments.length === 1 ? "" : "s"}`);
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
   if (archetype.companionProgressionAdjustments?.length) automated.push("Companion effective-level adjustments");
@@ -1768,6 +1784,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["ability scores", abilityScoreDetails.sentenceCoverage ?? []],
     ["spell access", inferredSpellAccess.sentenceCoverage ?? []],
     ["spell modifiers", inferredSpellModifiers.sentenceCoverage ?? []],
+    ["Wild Empathy", inferredWildEmpathy.sentenceCoverage ?? []],
   ];
   const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
     const coveringFamilies = ruleSentenceCoverage.filter(([, entries]) =>
@@ -1854,6 +1871,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...spellLikeAbilityDetails.fullyAutomatedFeatureIds,
     ...inferredSpellAccess.fullyAutomatedFeatureIds,
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,
+    ...inferredWildEmpathy.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))
