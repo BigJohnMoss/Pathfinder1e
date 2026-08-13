@@ -1,7 +1,7 @@
 import archetypes from "../../generated/pf1e-archetypes.mjs";
 import feats from "../../generated/pf1e-feats.mjs";
 import spells from "../../generated/pf1e-spells.mjs";
-import { archetypeAutomationSummary, inferArchetypeReplacementFeatureIds, inferArchetypeSpellAccess, inferArchetypeSpellAdditions, inferArchetypeSpellLikeAbilityActions, inferArchetypeSpellModifiers, inferArchetypeWildEmpathyAdjustments } from "../../packages/engine/src/index.js";
+import { archetypeAutomationSummary, inferArchetypeReplacementFeatureIds, inferArchetypeResourceSpellActions, inferArchetypeSpellAccess, inferArchetypeSpellAdditions, inferArchetypeSpellLikeAbilityActions, inferArchetypeSpellModifiers, inferArchetypeWildEmpathyAdjustments } from "../../packages/engine/src/index.js";
 import data from "../../generated/pf1e-data.mjs";
 
 const args = new Map(process.argv.slice(2).map((value, index, values) => value.startsWith("--") ? [value, values[index + 1]?.startsWith("--") ? true : values[index + 1] ?? true] : [value, true]));
@@ -60,6 +60,10 @@ const inferredSpellLikeAbilityBatches = archetypes.flatMap((archetype) => {
   const actions = inferArchetypeSpellLikeAbilityActions(archetype);
   return actions.length ? [{ archetypeId: archetype.id, actions: actions.length }] : [];
 });
+const inferredResourceSpellBatches = archetypes.flatMap((archetype) => {
+  const actions = inferArchetypeResourceSpellActions(archetype);
+  return actions.length ? [{ archetypeId: archetype.id, actions: actions.length }] : [];
+});
 const inferredReplacementBatches = archetypes.flatMap((archetype) => {
   const characterClass = data.classes.find((entry) => entry.id === archetype.classId);
   const featureIds = characterClass ? inferArchetypeReplacementFeatureIds(characterClass, archetype) : [];
@@ -85,6 +89,8 @@ const result = {
   inferredWildEmpathyArchetypes: inferredWildEmpathyBatches.length,
   inferredSpellLikeAbilityActions: inferredSpellLikeAbilityBatches.reduce((total, item) => total + item.actions, 0),
   inferredSpellLikeAbilityArchetypes: inferredSpellLikeAbilityBatches.length,
+  inferredResourceSpellActions: inferredResourceSpellBatches.reduce((total, item) => total + item.actions, 0),
+  inferredResourceSpellArchetypes: inferredResourceSpellBatches.length,
   inferredReplacementFeatureIds: inferredReplacementBatches.reduce((total, item) => total + item.featureIds, 0),
   inferredReplacementArchetypes: inferredReplacementBatches.length,
 };
@@ -108,6 +114,7 @@ else {
   console.log(`Inferred deterministic spell modifiers: ${result.inferredSpellModifierRules} across ${result.inferredSpellModifierArchetypes} archetypes`);
   console.log(`Inferred Wild Empathy rules: ${result.inferredWildEmpathyRules} across ${result.inferredWildEmpathyArchetypes} archetypes`);
   console.log(`Inferred spell-like ability actions: ${result.inferredSpellLikeAbilityActions} across ${result.inferredSpellLikeAbilityArchetypes} archetypes`);
+  console.log(`Inferred resource-powered spell actions: ${result.inferredResourceSpellActions} across ${result.inferredResourceSpellArchetypes} archetypes`);
   console.log(`Inferred missing replacement targets: ${result.inferredReplacementFeatureIds} across ${result.inferredReplacementArchetypes} archetypes`);
   console.log("\nReusable mechanic batches:");
   for (const [tag, count] of tagCounts) console.log(`${String(count).padStart(4)}  ${tag}`);
