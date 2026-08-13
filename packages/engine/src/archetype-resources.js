@@ -83,7 +83,7 @@ export function inferArchetypeResourceAdjustments(archetype) {
       if (/(?:companion|eidolon|familiar|homunculus|phantom|mount)\b[^.]{0,100}\b(?:times|rounds|points) per day/i.test(sentence)) continue;
       const unit = /rounds? per day/i.test(sentence) ? "round" : /\bpool\b|points? in/i.test(sentence) ? "point" : "use";
       if (/\beach (?:spell-like ability|of (?:these|the following))/i.test(sentence)) continue;
-      const formulaMatch = sentence.match(/(?:number|total number) of (?:times|rounds) per day equal to (.+?)(?:[,.;]|$)/i)
+      const formulaMatch = sentence.match(/(?:number|total number) of (?:times|rounds) (?:per|each) day equal to (.+?)(?:[,.;]|$)/i)
         ?? sentence.match(/(?:number of points in [^.]{0,60} pool|(?:begins with|has|gains?) (?:an? |the )?[a-z' -]{1,45} pool) (?:is )?equal to (.+?)(?:[,.;]|$)/i);
       let adjustment;
       if (formulaMatch) adjustment = parseFormula(formulaMatch[1], minimumLevel);
