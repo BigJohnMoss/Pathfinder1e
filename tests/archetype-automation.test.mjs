@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, spellcastingProgression } from "../packages/engine/src/index.js";
 import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferArchetypeAbilityScoreAdjustments } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
@@ -1507,4 +1507,36 @@ test("archetype combat-statistic and proficiency replacements alter the calculat
   const truePrimitive = applyArchetype({ ...cleric, id: "barbarian", name: "Barbarian" }, source("barbarian-true-primitive"));
   assert.equal(truePrimitive.proficiencyAdjustments.length, 3);
   assert.deepEqual(truePrimitive.proficiencyAdjustments.map(item => item.category), ["weapon", "armor", "shield"]);
+});
+
+test("advisory option lists stay visible without being reported as unimplemented mechanics", () => {
+  const advisory = {
+    replacements: [{ features: [{
+      id: "recommended-talents",
+      name: "Rogue Talents",
+      level: 1,
+      summary: "The following rogue talents complement this archetype: fast stealth, ledge walker, and wall scramble.",
+    }] }],
+  };
+  assert.deepEqual(archetypeAdvisoryFeatureIds(advisory), ["recommended-talents"]);
+  assert.deepEqual(archetypeAutomationSummary(advisory).manual, []);
+  assert.match(archetypeAutomationSummary(advisory).automated.join(" "), /advisory option recommendation/);
+
+  const optionExpansion = {
+    replacements: [{ features: [{
+      id: "expanded-talents",
+      name: "Rogue Talents",
+      level: 1,
+      summary: "A vaultbreaker can choose the following rogue talents in place of a discovery: fast stealth and wall scramble.",
+    }] }],
+  };
+  assert.deepEqual(archetypeAdvisoryFeatureIds(optionExpansion), []);
+  assert.deepEqual(archetypeAutomationSummary(optionExpansion).manual, ["Rogue Talents (level 1)"]);
+});
+
+test("catalogue advisory detection clears only recommendation-only feature records", () => {
+  const advisoryFeatures = catalogueArchetypes.flatMap((archetype) => archetypeAdvisoryFeatureIds(archetype));
+  assert.equal(advisoryFeatures.length, 236);
+  const madDog = catalogueArchetypes.find((archetype) => archetype.id === "barbarian-mad-dog");
+  assert.deepEqual(archetypeAdvisoryFeatureIds(madDog), []);
 });

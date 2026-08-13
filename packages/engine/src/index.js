@@ -1727,10 +1727,24 @@ export function applyArchetypes(characterClass, archetypes = [], referenceClasse
     : applied;
 }
 
+export function archetypeAdvisoryFeatureIds(archetype) {
+  const advisoryIntroduction = /^(?:The )?following .{0,100}?(?:complement|fit|are recommended for|work well with) (?:the |this )?.{0,80}archetype\s*:/i;
+  const mechanicalRule = /(?:\b(?:can|may) (?:choose|select|take)|\bin place of\b|\bin addition to\b|\bgains?\b|\breplaces?\b|\brequires?\b|\bmust\b|\bAt \d+(?:st|nd|rd|th)? level\b|\((?:Ex|Su|Sp)\)\s*:)/i;
+  return (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])
+    .filter((feature) => {
+      const text = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
+      return (/^Recommended Mysteries$/i.test(feature.name ?? "") || advisoryIntroduction.test(text)) && !mechanicalRule.test(text);
+    })
+    .map((feature) => feature.id);
+}
+
 export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (!archetype) return { automated: [], manual: [] };
   const automated = [];
   const replacementFeatures = (archetype.replacements ?? []).flatMap(item => item.features ?? []);
+  const advisoryFeatureIds = new Set(archetypeAdvisoryFeatureIds(archetype));
+  if (advisoryFeatureIds.size)
+    automated.push(`${advisoryFeatureIds.size} advisory option recommendation${advisoryFeatureIds.size === 1 ? "" : "s"} (no mechanical rule)`);
   if ((archetype.replacements ?? []).some(item => item.featureIds?.length || item.progressionKeys?.length))
     automated.push("Base feature replacements and level progression");
   if (archetype.featureOverrides?.length) automated.push("Feature rules overrides");
@@ -1958,6 +1972,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...inferredSpellAccess.fullyAutomatedFeatureIds,
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,
     ...inferredWildEmpathy.fullyAutomatedFeatureIds,
+    ...advisoryFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))
