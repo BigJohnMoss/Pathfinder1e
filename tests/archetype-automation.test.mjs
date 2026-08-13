@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeClericDomainReductionFeatureIds, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, archetypeSpellcastingAdjustmentFeatureIds, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, inferArchetypeSpellAdditions, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeClericDomainReductionFeatureIds, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, archetypeSpellcastingAdjustmentFeatureIds, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferredArchetypeFeatAlternativeDetails, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, inferArchetypeSpellAdditions, spellcastingProgression } from "../packages/engine/src/index.js";
 import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferArchetypeAbilityScoreAdjustments } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
@@ -984,6 +984,11 @@ test("archetype feat alternatives augment existing class choice slots without gr
   const hellcat = inferArchetypeFeatAlternatives(archetype("monk-hellcat"), feats);
   assert.deepEqual(hellcat.map(item => [item.minimumLevel, item.mode]), [[1, "replace"], [6, "augment"], [10, "augment"]]);
 
+  const flowing = inferArchetypeFeatAlternatives(archetype("monk-flowing-monk"), feats);
+  assert.deepEqual(flowing.map(item => [item.minimumLevel, item.mode]), [[1, "replace"], [6, "augment"], [10, "augment"]]);
+  assert.ok(flowing.find(item => item.minimumLevel === 6).featChoiceIds.includes("ki-throw"));
+  assert.ok(flowing.find(item => item.minimumLevel === 10).featChoiceIds.includes("tripping-strike"));
+
   const disenchanter = inferArchetypeFeatAlternatives(archetype("warpriest-disenchanter"), feats);
   assert.deepEqual(disenchanter.map(item => [item.minimumLevel, item.mode]), [[1, "replace"], [6, "augment"], [12, "augment"]]);
   assert.equal(disenchanter.every(item => item.ignoreFeatPrerequisites), true);
@@ -1005,6 +1010,19 @@ test("archetype feat alternatives augment existing class choice slots without gr
     ignoreFeatPrerequisites: false,
     featChoiceIds: ["craft-magic-arms-and-armor", "master-craftsman", "skill-focus"],
   });
+
+  const fullyAutomated = new Set(["alchemist-fire-bomber", "barbarian-pack-hunter", "investigator-steel-hound", "monk-flowing-monk", "monk-hellcat", "rogue-skulking-slayer", "slayer-butterfly-blade"]);
+  for (const id of fullyAutomated) {
+    const candidate = archetype(id);
+    const details = inferredArchetypeFeatAlternativeDetails(candidate, feats);
+    assert.equal(details.fullyAutomatedFeatureIds.size, 1, `${id} has one fully represented feat-alternative feature`);
+    const sourceFeature = candidate.replacements.flatMap(item => item.features).find(feature => details.fullyAutomatedFeatureIds.has(feature.id));
+    assert.ok(sourceFeature);
+    assert.equal(archetypeAutomationSummary(candidate, feats).manual.includes(`${sourceFeature.name} (level ${sourceFeature.level})`), false, id);
+  }
+  for (const id of ["brawler-constructed-pugilist", "gunslinger-buccaneer", "monk-hamatulatsu-master", "swashbuckler-daring-infiltrator", "warpriest-disenchanter"]) {
+    assert.equal(inferredArchetypeFeatAlternativeDetails(archetype(id), feats).fullyAutomatedFeatureIds.size, 0, `${id} retains its unmodeled constraint or alternate benefit`);
+  }
 });
 
 test("core monk, warpriest, swashbuckler, and brawler bonus feat milestones expose automated choice groups", () => {

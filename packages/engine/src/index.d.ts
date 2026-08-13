@@ -161,6 +161,7 @@ export function inferArchetypeSpellcastingAbility(archetype?: CharacterArchetype
 export function inferArchetypeGrantedFeats(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ featureId: string; featId: string; level: number }>;
 export function inferArchetypeFeatChoices(archetype: CharacterArchetype, feats: CharacterFeat[], maximumLevel?: number): Array<CharacterClass["features"][number] & { classId: string }>;
 export function inferArchetypeFeatAlternatives(archetype: CharacterArchetype, feats: CharacterFeat[]): Array<{ sourceFeatureId: string; optionGroupId: string; minimumLevel: number; mode: "augment" | "replace"; ignoreFeatPrerequisites: boolean; featChoiceIds?: string[]; featChoiceTypes?: string[] }>;
+export function inferredArchetypeFeatAlternativeDetails(archetype: CharacterArchetype, feats: CharacterFeat[]): { alternatives: ReturnType<typeof inferArchetypeFeatAlternatives>; fullyAutomatedFeatureIds: Set<string> };
 export function archetypeConflictReasons(left?: CharacterArchetype, right?: CharacterArchetype, characterClass?: CharacterClass): string[];
 export function compatibleArchetypes(selected: CharacterArchetype[], candidate: CharacterArchetype, characterClass?: CharacterClass): boolean;
 export function archetypeEligibilityIssues(archetype?: CharacterArchetype, context?: PrerequisiteContext): string[];
