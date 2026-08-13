@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { CharacterClassLevel } from "../../../packages/types/src/index.js";
+import type { CharacterClass, CharacterClassLevel } from "../../../packages/types/src/index.js";
 import type { CharacterArchetype } from "../../../packages/types/src/index.js";
 import { ArchetypePicker } from "./archetype-picker";
 
@@ -13,7 +13,7 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
   archetypeId: string;
   ancestryId: string;
   level: number;
-  classes: Array<{ id: string; name: string; classType: string; maximumLevel?: number; requirements?: string[]; spellcasting?: { tradition?: "arcane" | "divine" }; spellcastingAdvancement?: { tradition: "arcane" | "divine" | "any"; levels: number[]; targetCount?: number; targetTraditions?: Array<"arcane" | "divine"> } }>;
+  classes: CharacterClass[];
   archetypes: CharacterArchetype[];
   ancestries: Array<{ id: string; name: string }>;
   saveNotice: string;
@@ -109,7 +109,7 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
           const targetLabel = targetTraditions.length > 1 ? `${selectedClass?.name ?? "Prestige class"} ${targetTradition} spellcasting class` : `${selectedClass?.name ?? "Prestige class"} spellcasting class`;
           return <label className="prestige-spellcasting-target" key={`${entry.classId}-${targetTradition}-${targetIndex}`}>Advance {targetTradition === "any" ? "" : `${targetTradition} `}spellcasting<select aria-label={targetLabel} value={selectedTarget} onChange={(event) => onPrestigeSpellcastingTargetChange(entry.classId, event.target.value, targetIndex)}><option value="">Choose a class</option>{targetCandidates.map((candidate) => <option key={candidate.id} value={candidate.id}>{candidate.name}</option>)}</select></label>;
         })}
-        {classArchetypes.length > 0 && <ArchetypePicker className={classes.find((item) => item.id === entry.classId)?.name ?? label} archetypes={classArchetypes} selectedIds={archetypeStacksByClass[entry.classId] ?? (additionalArchetypeIds[entry.classId] ? [additionalArchetypeIds[entry.classId]] : [])} ancestryId={ancestryId} label={`${classes.find((item) => item.id === entry.classId)?.name ?? label} archetype`} onChange={ids => onArchetypeStackChange(entry.classId, ids)} />}
+        {classArchetypes.length > 0 && <ArchetypePicker className={classes.find((item) => item.id === entry.classId)?.name ?? label} characterClass={classes.find((item) => item.id === entry.classId)} archetypes={classArchetypes} selectedIds={archetypeStacksByClass[entry.classId] ?? (additionalArchetypeIds[entry.classId] ? [additionalArchetypeIds[entry.classId]] : [])} ancestryId={ancestryId} label={`${classes.find((item) => item.id === entry.classId)?.name ?? label} archetype`} onChange={ids => onArchetypeStackChange(entry.classId, ids)} />}
         <button type="button" className="secondary-button" aria-label={`Remove ${classes.find((item) => item.id === entry.classId)?.name ?? label}`} onClick={() => updateAdditionalClass(index, "")}>Remove</button>
       </div>;
     })}
@@ -121,7 +121,7 @@ export function CharacterDetails({ name, classId, additionalClassLevels, additio
     }}>Add another class</button>}
     {additionalClassLevels.length > 0 && <p className="class-level-summary">{level} total levels · {primaryLevels} in your starting class · {assignedAdditionalLevels} in other classes.</p>}
     </fieldset>
-    <ArchetypePicker className={selectedClassName} archetypes={primaryArchetypes} selectedIds={archetypeStacksByClass[classId] ?? (archetypeId ? [archetypeId] : [])} ancestryId={ancestryId} onChange={ids => { onArchetypeChange(ids[0] ?? ""); onArchetypeStackChange(classId, ids); }} />
+    <ArchetypePicker className={selectedClassName} characterClass={classes.find((item) => item.id === classId)} archetypes={primaryArchetypes} selectedIds={archetypeStacksByClass[classId] ?? (archetypeId ? [archetypeId] : [])} ancestryId={ancestryId} onChange={ids => { onArchetypeChange(ids[0] ?? ""); onArchetypeStackChange(classId, ids); }} />
     <label>Ancestry<select value={ancestryId} onChange={(event) => onAncestryChange(event.target.value)}>{ancestries.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
     <label>Level<input type="number" min="1" max="20" value={level} onChange={(event) => onLevelChange(Math.max(1, Math.min(20, Number(event.target.value) || 1)))} />{level < 20 && <button type="button" className="level-up-trigger" onClick={onReviewLevelUp}>Review level {level + 1}</button>}</label>
     </div>

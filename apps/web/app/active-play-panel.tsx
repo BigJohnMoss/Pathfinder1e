@@ -3,7 +3,7 @@ import type { ActiveEffect, ActiveEffectTarget } from "../../../packages/types/s
 import { confirmCriticalThreat, resolveAttackRoll, rollD20Check, rollDice } from "../../../packages/engine/src/index.js";
 import type { EquipmentAttack } from "./equipment-panel";
 
-type CheckRoll = { id: string; name: string; modifier: number; ranks?: number };
+type CheckRoll = { id: string; name: string; modifier: number; ranks?: number; description?: string };
 type RollHistory = { id: string; label: string; formula: string; rolls: number[]; total: number; outcome?: string; verdict?: string };
 type CraftingOppositionSchool = { id: string; name: string };
 type RecurringHealingRule = {
@@ -242,7 +242,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     const timedSkillEffects = kind === "skill" ? effects.filter((effect) => effect.target === "skillChecks" && !effect.consumeOnUse && (!effect.skillIds?.length || effect.skillIds.includes(check.id))) : [];
     const modifier = check.modifier + timedSkillEffects.reduce((total, effect) => total + effect.bonus, 0) + (oneShotTarget && oneShotTarget !== "initiative" ? oneShotEffects(oneShotTarget).reduce((total, effect) => total + effect.bonus, 0) : 0);
     const result = rollD20Check(modifier);
-    recordRoll({ label: check.name, formula: `1d20 ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}`, rolls: result.rolls, total: result.total, outcome: result.outcome });
+    recordRoll({ label: check.name, formula: `1d20 ${modifier >= 0 ? "+" : "−"} ${Math.abs(modifier)}`, rolls: result.rolls, total: result.total, outcome: result.outcome, verdict: check.description });
     if (oneShotTarget) consumeOneShotEffects(oneShotTarget);
   };
   const takeSkillCheck = (check: CheckRoll, rule: SkillCheckRule) => {
@@ -334,7 +334,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     </section>
     <section className="combat-roller" aria-labelledby="combat-roller-heading">
       <div><p className="eyebrow">DICE</p><h4 id="combat-roller-heading">Checks and custom rolls</h4><p>Modifiers include your current character statistics and active effects.</p></div>
-      <div className="quick-rolls">{checks.map(check => <button type="button" key={check.id} aria-label={`${check.name.replace(/ save$/i, "")} roll, modifier ${check.modifier >= 0 ? "+" : ""}${check.modifier}`} onClick={() => rollCheck(check)}>Roll {check.name} <span>{check.modifier >= 0 ? "+" : ""}{check.modifier}</span></button>)}</div>
+      <div className="quick-rolls">{checks.map(check => <button type="button" key={check.id} title={check.description} aria-label={`${check.name.replace(/ save$/i, "")} roll, modifier ${check.modifier >= 0 ? "+" : ""}${check.modifier}`} onClick={() => rollCheck(check)}>Roll {check.name} <span>{check.modifier >= 0 ? "+" : ""}{check.modifier}</span></button>)}</div>
       <div className="skill-roll">
         <label>Skill<select aria-label="Skill to roll" value={selectedSkill} onChange={event => setSelectedSkill(event.target.value)}>{skills.map(skill => <option key={skill.id} value={skill.id}>{skill.name} ({skill.modifier >= 0 ? "+" : ""}{skill.modifier})</option>)}</select></label>
         <button type="button" disabled={!selectedSkill} onClick={() => { const skill = skills.find(item => item.id === selectedSkill); if (skill) rollCheck(skill, "skill"); }}>Roll selected skill</button>
@@ -362,7 +362,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     </section>
     <section className="roll-history" aria-labelledby="roll-history-heading">
       <div><h4 id="roll-history-heading">Roll history</h4>{rollHistory.length > 0 && <button type="button" className="secondary-button" onClick={() => setRollHistory([])}>Clear rolls</button>}</div>
-      {rollHistory.length === 0 ? <p className="hint">Your latest 20 rolls will appear here.</p> : <ol aria-live="polite">{rollHistory.map(roll => <li key={roll.id}><div><strong>{roll.label}</strong><span>{roll.formula} · dice [{roll.rolls.join(", ")}]{roll.outcome === "natural-20" ? " · natural 20" : roll.outcome === "natural-1" ? " · natural 1" : ""}</span></div><output aria-label={`${roll.label} total`}>{roll.total}</output></li>)}</ol>}
+      {rollHistory.length === 0 ? <p className="hint">Your latest 20 rolls will appear here.</p> : <ol aria-live="polite">{rollHistory.map(roll => <li key={roll.id}><div><strong>{roll.label}</strong><span>{roll.formula} · dice [{roll.rolls.join(", ")}]{roll.outcome === "natural-20" ? " · natural 20" : roll.outcome === "natural-1" ? " · natural 1" : ""}</span>{roll.verdict && <small>{roll.verdict}</small>}</div><output aria-label={`${roll.label} total`}>{roll.total}</output></li>)}</ol>}
     </section>
     <div className="effect-form">
       <label>Effect name<input value={name} maxLength={80} placeholder="Bless" onChange={event => setName(event.target.value)} /></label>

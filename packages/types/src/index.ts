@@ -371,6 +371,7 @@ export interface CharacterClass {
   bonusSpellAdditions?: Record<string, number>;
   spellGrants?: ArchetypeSpellGrant[];
   spellModifierAdjustments?: ArchetypeSpellModifierAdjustment[];
+  wildEmpathyAdjustments?: ArchetypeWildEmpathyAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
@@ -418,6 +419,7 @@ export interface CharacterArchetype {
   bonusSpellAdditions?: Record<string, number>;
   spellGrants?: ArchetypeSpellGrant[];
   spellModifierAdjustments?: ArchetypeSpellModifierAdjustment[];
+  wildEmpathyAdjustments?: ArchetypeWildEmpathyAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
@@ -577,6 +579,20 @@ export interface ArchetypeSpellModifierAdjustment {
   schools?: string[];
   descriptors?: string[];
   condition?: string;
+}
+export interface ArchetypeWildEmpathyAdjustment {
+  sourceFeatureId?: string;
+  label: string;
+  classId?: string;
+  checkName?: string;
+  minimumLevel?: number;
+  maximumLevel?: number;
+  targets?: string;
+  bonus?: number;
+  action?: string;
+  condition?: string;
+  ability?: AbilityName;
+  skill?: string;
 }
 export interface OptionGroupAugmentation {
   targetGroupId: string;

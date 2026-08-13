@@ -377,6 +377,13 @@ for (const [index, url] of archetypeUrls.entries()) {
       for (const school of adjustment?.schools ?? []) if (!["abjuration", "conjuration", "divination", "enchantment", "evocation", "illusion", "necromancy", "transmutation", "universal"].includes(school)) errors.push(`${file}: spell modifier references invalid school ${school}`);
     }
   }
+  if (archetype.wildEmpathyAdjustments !== undefined) {
+    if (!Array.isArray(archetype.wildEmpathyAdjustments) || archetype.wildEmpathyAdjustments.length === 0) errors.push(`${file}: wildEmpathyAdjustments must be a non-empty array`);
+    for (const adjustment of archetype.wildEmpathyAdjustments ?? []) {
+      if (!adjustment || typeof adjustment.label !== "string" || (adjustment.bonus !== undefined && (!Number.isInteger(adjustment.bonus) || Math.abs(adjustment.bonus) > 20))) errors.push(`${file}: wild empathy adjustment has invalid identity or bonus fields`);
+      if (adjustment.ability !== undefined && !["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"].includes(adjustment.ability)) errors.push(`${file}: wild empathy adjustment has invalid ability ${adjustment.ability}`);
+    }
+  }
   if (archetype.abilityScoreAdjustments !== undefined && (!Array.isArray(archetype.abilityScoreAdjustments) || archetype.abilityScoreAdjustments.length === 0)) errors.push(`${file}: abilityScoreAdjustments must be a non-empty array`);
   for (const adjustment of archetype.abilityScoreAdjustments ?? []) {
     const prefix = `${file}: ability-score adjustment`;
