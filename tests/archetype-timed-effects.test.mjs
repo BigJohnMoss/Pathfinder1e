@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, applyArchetypeResourceAdjustments, apgClassResourceMaximums, inferArchetypeTimedEffectActions, normalizeCharacterDraft } from "../packages/engine/src/index.js";
+import { applyArchetype, applyArchetypeResourceAdjustments, apgClassResourceMaximums, archetypeAutomationSummary, inferArchetypeTimedEffectActions, normalizeCharacterDraft } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 
@@ -46,6 +46,12 @@ test("applied archetypes expose timed effects without duplicate generic actions"
   const monk = data.classes.find((item) => item.id === "monk");
   const applied = applyArchetype(monk, archetype("monk-sohei"));
   assert.deepEqual(applied.features.find((feature) => feature.id === "monk-sohei-ki-weapon-su-4").resourceActions.map((action) => action.label), ["Activate Ki Weapon"]);
+});
+
+test("complete timed effects leave the manual queue while partial effects remain", () => {
+  assert.equal(archetypeAutomationSummary(archetype("magus-spire-defender"), data.feats, data.spells).manual.includes("Arcane Augmentation (Su) (level 4)"), false);
+  assert.equal(archetypeAutomationSummary(archetype("occultist-battle-host"), data.feats, data.spells).manual.includes("Heroic Splendor (Su) (level 6)"), false);
+  assert.equal(archetypeAutomationSummary(archetype("bard-sorrowsoul"), data.feats, data.spells).manual.includes("Spurn Harm (Su) (level 5)"), true);
 });
 
 test("monk and Sacred Fist ki pools use bounded class-level formulas", () => {

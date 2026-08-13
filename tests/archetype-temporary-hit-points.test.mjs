@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, inferArchetypeTemporaryHitPointActions } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary, inferArchetypeTemporaryHitPointActions } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const classes = data.classes;
@@ -18,10 +18,16 @@ test("deterministic player-owned temporary hit points become level-aware feature
   ]);
   assert.deepEqual(armoredVigor.action.temporaryHitPointsDurationRoundsByLevel, [{ level: 2, rounds: 10 }]);
   assert.equal(armoredVigor.action.resourceId, "archetype-fighter-siegebreaker-armored-vigor-ex-2");
+  assert.deepEqual(armoredVigor.action.confirmations, [{ id: "wearing-armor", label: "Wearing armor", requiredForActivation: true }]);
 
   const rasugen = inferArchetypeTemporaryHitPointActions(archetype("alchemist-mnemostiller"))[0].action;
   assert.deepEqual(rasugen.temporaryHitPointsByLevel.slice(0, 2), [{ level: 1, amount: 2 }, { level: 2, amount: 4 }]);
   assert.equal(inferArchetypeTemporaryHitPointActions(archetype("medium-fiend-keeper"))[0].action.minimumLevel, 5);
+});
+
+test("complete temporary-HP actions leave the manual queue", () => {
+  assert.equal(archetypeAutomationSummary(archetype("fighter-siegebreaker"), data.feats, data.spells).manual.includes("Armored Vigor (Ex) (level 2)"), false);
+  assert.equal(archetypeAutomationSummary(archetype("alchemist-mnemostiller"), data.feats, data.spells).manual.includes("Rasugen (Su) (level 1)"), true);
 });
 
 test("temporary-hit-point inference excludes benefits owned by allies and subordinate creatures", () => {

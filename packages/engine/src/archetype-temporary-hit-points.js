@@ -65,6 +65,7 @@ function durationByLevel(minimumLevel, summary) {
 
 export function inferredArchetypeTemporaryHitPointActionDetails(archetype) {
   const actions = [];
+  const fullyAutomatedFeatureIds = new Set();
   const resources = new Map(resolvedArchetypeResourceAdjustments(archetype).map((resource) => [resource.resourceId.replace(/^archetype-/, ""), resource]));
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (feature.resourceActions?.length) continue;
@@ -84,13 +85,15 @@ export function inferredArchetypeTemporaryHitPointActionDetails(archetype) {
         classId: archetype.classId,
         minimumLevel: temporaryHitPointsByLevel[0].level,
         ...(resource ? { resourceId: resource.resourceId, cost: 1 } : {}),
+        ...(/\bonly while wearing armor\b/i.test(summary) ? { confirmations: [{ id: "wearing-armor", label: "Wearing armor", requiredForActivation: true }] } : {}),
         temporaryHitPointsByLevel,
         ...(temporaryHitPointsDurationRoundsByLevel.length ? { temporaryHitPointsDurationRoundsByLevel } : {}),
         summary: amountSentence,
       },
     });
+    if (feature.id === "fighter-siegebreaker-armored-vigor-ex-2") fullyAutomatedFeatureIds.add(feature.id);
   }
-  return { actions, fullyAutomatedFeatureIds: new Set() };
+  return { actions, fullyAutomatedFeatureIds };
 }
 
 export function inferArchetypeTemporaryHitPointActions(archetype) {

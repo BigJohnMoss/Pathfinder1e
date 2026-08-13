@@ -1900,6 +1900,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...rerollActionDetails.fullyAutomatedFeatureIds,
     ...spellLikeAbilityDetails.fullyAutomatedFeatureIds,
     ...resourceSpellActionDetails.fullyAutomatedFeatureIds,
+    ...timedEffectActionDetails.fullyAutomatedFeatureIds,
     ...channelEnergyActionDetails.fullyAutomatedFeatureIds,
     ...resourceDamageActionDetails.fullyAutomatedFeatureIds,
     ...saveEffectActionDetails.fullyAutomatedFeatureIds,
