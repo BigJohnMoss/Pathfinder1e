@@ -1303,6 +1303,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       ...(characterClass.proficiencyAdjustments ?? []),
       ...(archetype.proficiencyAdjustments ?? inferredProficiencies),
     ],
+    arcaneSpellFailure: archetype.arcaneSpellFailure ?? characterClass.arcaneSpellFailure,
     optionGroupAugmentations: [
       ...(characterClass.optionGroupAugmentations ?? []),
       ...(archetype.optionGroupAugmentations ?? []),
@@ -1346,6 +1347,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
           slotsByLevel: gateTable(adjustTable(baseSpellcasting.slotsByLevel, archetype.spellSlotAdjustmentPerLevel)),
           preparedByLevel: gateTable(adjustTable(baseSpellcasting.preparedByLevel, preparedAdjustment)),
           knownByLevel: gateTable(adjustTable(baseSpellcasting.knownByLevel, archetype.spellsKnownAdjustmentPerLevel)),
+          arcaneSpellFailure: archetype.arcaneSpellFailure ?? baseSpellcasting.arcaneSpellFailure,
         }
       : undefined,
     spellSlotAdjustmentPerLevel: archetype.spellSlotAdjustmentPerLevel,
@@ -1777,6 +1779,15 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     const action = adjustment.operation === "add" ? "gain" : adjustment.operation === "remove" ? "lose" : "use only";
     automated.push(`${adjustment.category[0].toUpperCase()}${adjustment.category.slice(1)} proficiencies: ${action} ${adjustment.proficiencies.join(", ") || "none"}`);
   }
+  if (archetype.arcaneSpellFailure) {
+    const ignoredArmor = (archetype.arcaneSpellFailure.ignoredArmorCategories ?? [])
+      .map(({ category, minimumLevel }) => `${category} armor at level ${minimumLevel}`);
+    if (archetype.arcaneSpellFailure.ignoreShieldsAtLevel)
+      ignoredArmor.push(`shields at level ${archetype.arcaneSpellFailure.ignoreShieldsAtLevel}`);
+    automated.push(archetype.arcaneSpellFailure.applies
+      ? `Arcane spell failure: ${ignoredArmor.length ? `ignored for ${ignoredArmor.join(", ")}` : "applies to all armor and shields"}`
+      : "Arcane spell failure: immune");
+  }
   const skillRankDetails = inferArchetypeSkillRankDetails(archetype);
   const inferredSkillRanks = archetype.skillRanksPerLevel === undefined
     ? skillRankDetails.adjustment
@@ -1918,6 +1929,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const adjustmentFeatureIds = new Set([
     ...classSkillDetails.fullyAutomatedFeatureIds,
     ...proficiencyDetails.fullyAutomatedFeatureIds,
+    ...(archetype.arcaneSpellFailure?.fullyAutomatedFeatureIds ?? []),
     ...skillRankDetails.fullyAutomatedFeatureIds,
     ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...initiativeBonusDetails.fullyAutomatedFeatureIds,

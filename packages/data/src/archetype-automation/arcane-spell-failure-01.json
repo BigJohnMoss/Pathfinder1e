@@ -1,0 +1,135 @@
+{
+  "source": "PF1e armor-based arcane spell failure rules",
+  "overlays": [
+    {
+      "archetypeId": "bard-arcane-duelist",
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [
+          { "category": "light", "minimumLevel": 1 },
+          { "category": "medium", "minimumLevel": 10 },
+          { "category": "heavy", "minimumLevel": 16 }
+        ],
+        "sourceFeatureIds": ["arcane-duelist-arcane-armor-medium-10", "arcane-duelist-arcane-armor-heavy-16"],
+        "fullyAutomatedFeatureIds": ["arcane-duelist-arcane-armor-medium-10", "arcane-duelist-arcane-armor-heavy-16"]
+      }
+    },
+    {
+      "archetypeId": "bard-chelish-diva",
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [
+          { "category": "light", "minimumLevel": 1 },
+          { "category": "medium", "minimumLevel": 5 },
+          { "category": "heavy", "minimumLevel": 11 }
+        ],
+        "sourceFeatureIds": ["bard-chelish-diva-costume-proficiency-ex-5"],
+        "fullyAutomatedFeatureIds": ["bard-chelish-diva-costume-proficiency-ex-5"]
+      }
+    },
+    {
+      "archetypeId": "bard-dragon-herald",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ],
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [{ "category": "light", "minimumLevel": 1 }],
+        "sourceFeatureIds": ["bard-dragon-herald-weapon-and-armor-proficiency-1"],
+        "fullyAutomatedFeatureIds": ["bard-dragon-herald-weapon-and-armor-proficiency-1"]
+      }
+    },
+    {
+      "archetypeId": "bard-filidh",
+      "arcaneSpellFailure": {
+        "applies": false,
+        "sourceFeatureIds": ["bard-filidh-natural-magic-1"]
+      }
+    },
+    {
+      "archetypeId": "bard-geisha",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "One monk weapon"] },
+        { "category": "armor", "operation": "remove", "proficiencies": ["All armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ],
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [],
+        "sourceFeatureIds": ["bard-geisha-weapon-and-armor-proficiency-1"],
+        "fullyAutomatedFeatureIds": ["bard-geisha-weapon-and-armor-proficiency-1"]
+      }
+    },
+    {
+      "archetypeId": "bloodrager-steelblood",
+      "proficiencyAdjustments": [
+        { "category": "armor", "operation": "replace", "proficiencies": ["Heavy armor"] }
+      ],
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [
+          { "category": "light", "minimumLevel": 4 },
+          { "category": "medium", "minimumLevel": 4 },
+          { "category": "heavy", "minimumLevel": 1 }
+        ],
+        "sourceFeatureIds": ["bloodrager-steelblood-weapon-and-armor-proficiency-1"],
+        "fullyAutomatedFeatureIds": ["bloodrager-steelblood-weapon-and-armor-proficiency-1"]
+      }
+    },
+    {
+      "archetypeId": "magus-deep-marshal",
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [
+          { "category": "light", "minimumLevel": 1 },
+          { "category": "medium", "minimumLevel": 1 },
+          { "category": "heavy", "minimumLevel": 9 }
+        ],
+        "sourceFeatureIds": ["magus-deep-marshal-weapon-and-armor-proficiency-9"]
+      }
+    },
+    {
+      "archetypeId": "magus-kapenia-dancer",
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [],
+        "sourceFeatureIds": ["magus-kapenia-dancer-weapon-and-armor-proficiency-1"]
+      }
+    },
+    {
+      "archetypeId": "magus-kensai",
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [],
+        "sourceFeatureIds": ["magus-kensai-weapon-and-armor-proficiency-1"]
+      }
+    },
+    {
+      "archetypeId": "magus-skirnir",
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [
+          { "category": "light", "minimumLevel": 1 },
+          { "category": "medium", "minimumLevel": 7 },
+          { "category": "heavy", "minimumLevel": 13 }
+        ],
+        "ignoreShieldsAtLevel": 1,
+        "sourceFeatureIds": ["magus-skirnir-sorcerous-shield-ex-1"]
+      }
+    },
+    {
+      "archetypeId": "magus-staff-magus",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons"] }
+      ],
+      "arcaneSpellFailure": {
+        "applies": true,
+        "ignoredArmorCategories": [{ "category": "light", "minimumLevel": 1 }],
+        "sourceFeatureIds": ["magus-staff-magus-weapon-and-armor-proficiency-1"],
+        "fullyAutomatedFeatureIds": ["magus-staff-magus-weapon-and-armor-proficiency-1"]
+      }
+    }
+  ]
+}

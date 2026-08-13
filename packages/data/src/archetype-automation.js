@@ -16,6 +16,8 @@ export const archetypeAutomationArrayFields = [
   "wildEmpathyAdjustments",
 ];
 
+export const archetypeAutomationObjectFields = ["arcaneSpellFailure"];
+
 export function mergeArchetypeAutomation(archetypes, overlayFiles = []) {
   const overlays = overlayFiles.flatMap((file) => file.overlays ?? []);
   const byArchetypeId = new Map();
@@ -36,6 +38,10 @@ export function mergeArchetypeAutomation(archetypes, overlayFiles = []) {
           return true;
         });
       }
+    }
+    for (const field of archetypeAutomationObjectFields) {
+      const replacement = matching.map((overlay) => overlay[field]).filter(Boolean).at(-1);
+      if (replacement) merged[field] = replacement;
     }
     const featurePatches = matching.flatMap((overlay) => overlay.featurePatches ?? []);
     if (featurePatches.length) {

@@ -32,6 +32,7 @@ import {
   equipmentCombatBonuses,
   equipmentEncumbrance,
   equippedArmorCategory,
+  equippedArcaneSpellFailureChance,
   equippedWeaponAttacks,
   unarmedStrikeAttack,
   type CoinPurse,
@@ -118,6 +119,7 @@ import {
   skillTotal,
   spellSaveDC,
   spellcastingProgression,
+  spellcastingTradition,
   spellsAvailableToClass,
   traitBonuses,
   validateEidolonEvolutions,
@@ -2951,6 +2953,7 @@ export default function Home() {
       slotUses={spellSlotUses}
       onSlotUsesChange={updateSpellSlotUses}
       onRefreshDay={refreshDay}
+      arcaneSpellFailureChance={equippedArcaneSpellFailureChance(inventory, spellcastingTradition(characterClass) === "arcane" ? characterClass.arcaneSpellFailure ?? characterClass.spellcasting?.arcaneSpellFailure ?? { applies: true } : { applies: false }, primaryClassLevel)}
     />
   ) : preparedCasting ? (
     <Spellbook
@@ -2989,6 +2992,7 @@ export default function Home() {
       activeEffects={activeEffects}
       onAddEffect={addActiveEffect}
       onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
+      arcaneSpellFailureChance={equippedArcaneSpellFailureChance(inventory, spellcastingTradition(characterClass) === "arcane" ? characterClass.arcaneSpellFailure ?? characterClass.spellcasting?.arcaneSpellFailure ?? { applies: true } : { applies: false }, primaryClassLevel)}
     />
   ) : null;
   const secondarySpellbook =
@@ -3019,6 +3023,7 @@ export default function Home() {
         slotUses={secondarySpellSlotUses}
         onSlotUsesChange={updateSecondarySpellSlotUses}
         onRefreshDay={refreshSecondaryDay}
+        arcaneSpellFailureChance={equippedArcaneSpellFailureChance(inventory, spellcastingTradition(secondaryCharacterClass) === "arcane" ? secondaryCharacterClass.arcaneSpellFailure ?? secondaryCharacterClass.spellcasting?.arcaneSpellFailure ?? { applies: true } : { applies: false }, secondaryClassLevel)}
       />
     ) : secondaryCharacterClass && secondaryPreparedCasting ? (
       <Spellbook
@@ -3063,6 +3068,7 @@ export default function Home() {
         activeEffects={activeEffects}
         onAddEffect={addActiveEffect}
         onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
+        arcaneSpellFailureChance={equippedArcaneSpellFailureChance(inventory, spellcastingTradition(secondaryCharacterClass) === "arcane" ? secondaryCharacterClass.arcaneSpellFailure ?? secondaryCharacterClass.spellcasting?.arcaneSpellFailure ?? { applies: true } : { applies: false }, secondaryClassLevel)}
       />
     ) : null;
   const extraActiveClassLevel = additionalClassLevels
@@ -3106,6 +3112,7 @@ export default function Home() {
         activeEffects={activeEffects}
         onAddEffect={addActiveEffect}
         onRemoveEffectByName={(effectName) => setActiveEffects((current) => current.filter((effect) => effect.name !== effectName))}
+        inventory={inventory}
       />
     ) : null;
 

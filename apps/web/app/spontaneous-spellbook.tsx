@@ -10,7 +10,7 @@ type SpellArchetypeBonuses = Record<string, { casterLevel: number; saveDc: numbe
 
 const levelLabel = (level: number) => level === 0 ? "Cantrips" : `${level}${level === 1 ? "st" : level === 2 ? "nd" : level === 3 ? "rd" : "th"}-level`;
 
-export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, spellArchetypeBonuses = {}, classId, className, casterLevel, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], grantedSpellLabel = classId === "oracle" ? "Mystery" : "Bloodline", onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay }: {
+export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, spellArchetypeBonuses = {}, classId, className, casterLevel, castingAbilityName, slots, knownLimits, spellDcs, maximumSpellLevel, knownSpellIds, grantedSpellIds = [], grantedSpellLabel = classId === "oracle" ? "Mystery" : "Bloodline", onKnownSpellIdsChange, slotUses, onSlotUsesChange, onRefreshDay, arcaneSpellFailureChance = 0 }: {
   spells: Spell[];
   spellTraitBonuses?: SpellTraitBonuses;
   spellArchetypeBonuses?: SpellArchetypeBonuses;
@@ -29,10 +29,12 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, spellArch
   slotUses: Record<number, number>;
   onSlotUsesChange: (uses: Record<number, number>) => void;
   onRefreshDay: () => void;
+  arcaneSpellFailureChance?: number;
 }) {
   const [query, setQuery] = useState("");
   const [levelFilter, setLevelFilter] = useState(String(maximumSpellLevel));
   const [visibleLimit, setVisibleLimit] = useState(250);
+  const [arcaneSpellFailureResult, setArcaneSpellFailureResult] = useState("");
   useEffect(() => setLevelFilter(String(maximumSpellLevel)), [maximumSpellLevel]);
 
   const granted = useMemo(() => new Set(grantedSpellIds), [grantedSpellIds]);
@@ -57,6 +59,8 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, spellArch
     <h2>Spontaneous spells</h2>
     {casterLevel !== undefined && <p><strong>Caster level:</strong> <output aria-label={`${className} caster level`}>{casterLevel}</output></p>}
     <p>{className} slots: {slots.length > 0 ? slots.map((slot) => `${remainingSlots(slot.level)}/${slot.count} ${levelLabel(slot.level)}${slot.bonus ? ` (${slot.base} base + ${slot.bonus} ${castingAbilityName})` : ""}`).join(", ") : "no leveled spell slots available"}.</p>
+    {arcaneSpellFailureChance > 0 && <p role="status"><strong>Equipped arcane spell failure:</strong> {arcaneSpellFailureChance}% for spells with somatic components.</p>}
+    {arcaneSpellFailureResult && <output aria-label="Arcane spell failure result">{arcaneSpellFailureResult}</output>}
     <p>{knownLimits.map((limit) => `${knownCount(limit.level)}/${limit.count} known ${levelLabel(limit.level)}${grantedCount(limit.level) ? ` + ${grantedCount(limit.level)} ${grantedSpellLabel.toLowerCase()}` : ""}`).join(" · ")}</p>
     <div className="spell-day-controls"><button type="button" onClick={onRefreshDay}>Refresh day</button></div>
     {maximumSpellLevel === 0 && <p className="hint">Increase {castingAbilityName} to 11 or higher to cast 1st-level spells.</p>}
@@ -76,7 +80,7 @@ export function SpontaneousSpellbook({ spells, spellTraitBonuses = {}, spellArch
           const canCast = level === 0 || remainingSlots(level) > 0;
           return <article key={spell.id}>
             <div><strong>{spell.name}</strong><small>level {level} · DC {spellDcs[level] + (spellArchetypeBonuses[spell.id]?.saveDc ?? 0)} · {spell.summary}{spellTraitBonuses[spell.id]?.casterLevel ? ` · trait: +${spellTraitBonuses[spell.id].casterLevel} caster level` : ""}{spellTraitBonuses[spell.id]?.metamagicLevelAdjustment ? ` · trait: ${spellTraitBonuses[spell.id].metamagicLevelAdjustment} metamagic level adjustment` : ""}{spellArchetypeBonuses[spell.id]?.sources.length ? ` · ${spellArchetypeBonuses[spell.id].sources.join("; ")}` : ""}</small></div>
-            <div className="spell-actions"><button type="button" className="cast-spell-button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); }}>Cast</button><div className="spell-selection-control"><button type="button" aria-label={`Forget ${spell.name}`} disabled={!learned || isGranted} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{isGranted ? grantedSpellLabel : learned ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div></div>
+            <div className="spell-actions"><button type="button" className="cast-spell-button" aria-label={`Cast ${spell.name}`} disabled={!known || !canCast} onClick={() => { if (level > 0) onSlotUsesChange({ ...slotUses, [level]: (slotUses[level] ?? 0) + 1 }); if (arcaneSpellFailureChance > 0 && spell.components?.some((component) => component.split("/").includes("S"))) { const roll = Math.floor(Math.random() * 100) + 1; setArcaneSpellFailureResult(`${spell.name}: rolled ${roll} against ${arcaneSpellFailureChance}% arcane spell failure — ${roll > arcaneSpellFailureChance ? "spell cast" : "spell lost"}.`); } else setArcaneSpellFailureResult(""); }}>Cast</button><div className="spell-selection-control"><button type="button" aria-label={`Forget ${spell.name}`} disabled={!learned || isGranted} onClick={() => onKnownSpellIdsChange(knownSpellIds.filter((id) => id !== spell.id))}>Forget</button><output aria-label={`${spell.name} known`}>{isGranted ? grantedSpellLabel : learned ? "Known" : "Unknown"}</output><button type="button" aria-label={`Learn ${spell.name}`} disabled={known || full} onClick={() => onKnownSpellIdsChange([...knownSpellIds, spell.id])}>Learn</button></div></div>
             <SpellDetails spell={spell} />
           </article>;
         })}</div>

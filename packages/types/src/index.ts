@@ -429,6 +429,7 @@ export interface CharacterClass {
   classSkillAdditions?: string[];
   classSkillRemovals?: string[];
   proficiencyAdjustments?: ProficiencyAdjustment[];
+  arcaneSpellFailure?: ArcaneSpellFailureRules;
   optionGroupAugmentations?: OptionGroupAugmentation[];
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
@@ -439,6 +440,7 @@ export interface CharacterClass {
     knownByLevel?: number[][];
     spellLevelUnlocks?: number[];
     preparesFromSlots?: boolean;
+    arcaneSpellFailure?: ArcaneSpellFailureRules;
   };
 }
 export interface CharacterArchetype {
@@ -485,6 +487,7 @@ export interface CharacterArchetype {
   skillRanksPerLevel?: number;
   hitDie?: 6 | 8 | 10 | 12;
   proficiencyAdjustments?: ProficiencyAdjustment[];
+  arcaneSpellFailure?: ArcaneSpellFailureRules;
   resourceAdjustments?: Array<{
     resourceId: string;
     label: string;
@@ -648,6 +651,16 @@ export interface ProficiencyAdjustment {
   category: "weapon" | "armor" | "shield";
   operation: "add" | "remove" | "replace";
   proficiencies: string[];
+}
+export interface ArcaneSpellFailureRules {
+  applies: boolean;
+  ignoredArmorCategories?: Array<{
+    category: "light" | "medium" | "heavy";
+    minimumLevel: number;
+  }>;
+  ignoreShieldsAtLevel?: number;
+  sourceFeatureIds?: string[];
+  fullyAutomatedFeatureIds?: string[];
 }
 export interface ArchetypeCompanionGrant {
   id: string;
