@@ -78,7 +78,7 @@ test("archetype resource catalogue covers reusable level and ability progression
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("bloodrager-ancestral-harbinger")], 18), { spiritGuardian: 5 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("bloodrager-symbol-striker")], 18, { charisma: 3 }), { weaponRune: 3, runeTrap: 6 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("cleric-forgemaster")], 1, { intelligence: 2 }), { runeforger: 5 });
-  assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("brawler-exemplar")], 10, { charisma: 2 }), { inspiringProwess: 12 });
+  assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("brawler-exemplar")], 10, { charisma: 2 }), { inspiringProwess: 12, fieldInstruction: 2 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("gunslinger-mysterious-stranger")], 5, { charisma: 4 }), { grit: 4, strangersFortune: 4 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("hunter-colluding-scoundrel")], 12), { scapegoat: 12 });
   assert.deepEqual(applyArchetypeResourceAdjustments({}, [archetype("hunter-patient-ambusher")], 11, { wisdom: 3 }), { snareTraps: 8 });

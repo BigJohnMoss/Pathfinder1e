@@ -46,7 +46,8 @@
     }
   ],
   "resourceAdjustments": [
-    { "resourceId": "inspiringProwess", "label": "Inspiring Prowess", "unit": "round", "minimumLevel": 3, "base": 3, "perInterval": 1, "interval": 1, "abilityModifier": "charisma", "minimum": 3 }
+    { "resourceId": "inspiringProwess", "label": "Inspiring Prowess", "unit": "round", "minimumLevel": 3, "base": 3, "perInterval": 1, "interval": 1, "abilityModifier": "charisma", "minimum": 3 },
+    { "resourceId": "fieldInstruction", "label": "Field Instruction", "unit": "use", "minimumLevel": 5, "base": 1, "maximumByLevel": [{ "level": 5, "maximum": 1 }, { "level": 9, "maximum": 2 }, { "level": 12, "maximum": 3 }, { "level": 17, "maximum": 4 }] }
   ],
   "source": {
     "title": "Archives of Nethys",

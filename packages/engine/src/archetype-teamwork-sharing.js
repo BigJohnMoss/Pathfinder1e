@@ -4,7 +4,7 @@ const featureLabel = (feature) => String(feature?.name ?? "Teamwork feat").repla
 
 function durationByLevel(summary, minimumLevel) {
   const base = Number(summary.match(/(?:retain|retains)[^.]{0,80}?for\s+(\d+)\s+rounds?/i)?.[1]);
-  const divisor = Number(summary.match(/plus\s+1\s+round\s+for\s+every\s+(\d+)\s+[^.]{0,30}?levels?/i)?.[1]);
+  const divisor = Number(summary.match(/(?:plus|\+)\s+1\s+round\s+for\s+every\s+(\d+)\s+[^.]{0,30}?levels?/i)?.[1]);
   if (!Number.isFinite(base) || !Number.isFinite(divisor) || divisor < 1) return undefined;
   const beyond = Number(summary.match(/for\s+every\s+\d+\s+levels?\s+beyond\s+(\d+)(?:st|nd|rd|th)/i)?.[1] ?? 0);
   const steps = [];
@@ -39,7 +39,7 @@ function actionTypes(summary, minimumLevel) {
 function resourceDetails(archetype, feature, summary) {
   if (/expend one use of smite evil/i.test(summary)) return { resourceId: "smiteEvil", cost: 1 };
   const resource = resolvedArchetypeResourceAdjustments(archetype).find((candidate) =>
-    candidate.sourceFeatureId === feature.id || candidate.resourceId === `archetype-${feature.id}`,
+    candidate.sourceFeatureId === feature.id || candidate.resourceId === `archetype-${feature.id}` || candidate.label?.toLowerCase() === featureLabel(feature).toLowerCase(),
   );
   return resource ? { resourceId: resource.resourceId, cost: 1 } : undefined;
 }
@@ -52,7 +52,7 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
   for (const feature of features) {
     if (feature.resourceActions?.length) continue;
     const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
-    if (!/gains? (?:an additional |a )teamwork feat as a bonus feat/i.test(summary) || !/grant this feat|grant one of these feats/i.test(summary)) continue;
+    if (!/\bgrant(?:s|ed)?\b[^.]{0,100}\b(?:teamwork feat|this feat|one of (?:these|his) feats)|\bgrant(?:s|ed)? the benefits of one teamwork feat/i.test(summary)) continue;
     const minimumLevel = Math.max(1, Number(feature.level ?? 1));
     const upgradeSummary = features.find((candidate) => /Greater Battle Tactician/i.test(candidate.name ?? ""))?.summary ?? "";
     const roundsByLevel = durationByLevel(summary, minimumLevel);
@@ -88,7 +88,7 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
       },
     });
     summary.split(/(?<=[.!?])\s+/).forEach((_, sentenceIndex) => sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex }));
-    fullyAutomatedFeatureIds.add(feature.id);
+    if (feature.id !== "brawler-exemplar-field-instruction-ex-5") fullyAutomatedFeatureIds.add(feature.id);
   }
 
   const greater = features.find((feature) => /Greater Battle Tactician/i.test(feature.name ?? ""));
