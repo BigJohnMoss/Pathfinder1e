@@ -1510,7 +1510,7 @@ function namedArchetypeProficiencies(fragment) {
   return results;
 }
 
-function inferArchetypeProficiencyDetails(archetype) {
+function inferArchetypeProficiencyDetails(archetype, includeFullyAutomatedFeatureIds = true) {
   const grouped = new Map();
   let replacementCategories = new Set();
   const record = (operation, fragment) => {
@@ -1575,6 +1575,7 @@ function inferArchetypeProficiencyDetails(archetype) {
   });
   const explicit = archetype?.proficiencyAdjustments ?? [];
   const applied = explicit.length ? explicit : adjustments;
+  if (!includeFullyAutomatedFeatureIds) return { adjustments, fullyAutomatedFeatureIds: [] };
   const fullyAutomatedFeatureIds = features.filter(feature => {
     const name = String(feature.name ?? "").replace(/\s*\([^)]+\)\s*$/, "");
     const text = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
@@ -1584,14 +1585,16 @@ function inferArchetypeProficiencyDetails(archetype) {
     if (/arcane spell failure|flurry of blows|class skills?|levels? stack|bonus feats?|chooses?|choices?|\bcan use\b|\bone exotic\b|\bone-handed simple\b|\bdisarm or trip\b/i.test(text)) return false;
     const supportedMixedRule = /gains? proficiency (?:with|in) .+?,\s*but not (?:with )?.+/i.test(ruleText)
       || /loses? (?:his |her |their )?proficiency with .+?,\s*but gains? proficiency (?:with|in) .+/i.test(ruleText);
-    if (/\bbut\b|\bloses?\b/i.test(ruleText) && !supportedMixedRule) return false;
+    const supportedSimpleLossRule = /^.+?\s+loses? (?:proficiency with .+|.+ proficiency)\.?$/i.test(ruleText);
+    if (/\bbut\b|\bloses?\b/i.test(ruleText) && !supportedMixedRule && !supportedSimpleLossRule) return false;
     if (/all martial weapon proficiencies except|favored weapon of|\bincluding\b|,\s*but\s+loses?\b/i.test(text)) return false;
-    const local = inferArchetypeProficiencyDetails({ replacements: [{ features: [{ ...feature, name: "Rule" }] }] }).adjustments;
+    const local = inferArchetypeProficiencyDetails({ replacements: [{ features: [feature] }] }, false).adjustments;
     if (!local.length) return false;
     if (!explicit.length && /\b(?:is|are) proficient\b/i.test(text) && !/\bin addition\b/i.test(text) && !/\bonly\b/i.test(text) && !local.some(adjustment => adjustment.operation === "replace")) return false;
     if (local.some(adjustment => adjustment.proficiencies.some(value => /\b(?:including|loses? proficiency|but)\b|^the\s|^All (?:Light|Medium|Heavy)$/i.test(value)))) return false;
     return local.every(expected => {
-      const match = applied.find(candidate => candidate.category === expected.category && candidate.operation === expected.operation);
+      const match = applied.find(candidate => candidate.category === expected.category
+        && (candidate.operation === expected.operation || (explicit.length && expected.operation === "add" && candidate.operation === "replace")));
       return match && expected.proficiencies.every(value => match.proficiencies.includes(value));
     });
   }).map(feature => feature.id);

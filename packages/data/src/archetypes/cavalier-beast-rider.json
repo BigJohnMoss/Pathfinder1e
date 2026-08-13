@@ -50,5 +50,10 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Beast%20Rider"
-  }
+  },
+  "proficiencyAdjustments": [
+    { "category": "armor", "operation": "replace", "proficiencies": ["Light armor", "Medium armor"] },
+    { "category": "shield", "operation": "replace", "proficiencies": ["All shields"] },
+    { "category": "shield", "operation": "remove", "proficiencies": ["Tower shields"] }
+  ]
 }

@@ -57,5 +57,8 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Skald%20Belkzen%20War%20Drummer"
-  }
+  },
+  "proficiencyAdjustments": [
+    { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "Greatclub"] }
+  ]
 }

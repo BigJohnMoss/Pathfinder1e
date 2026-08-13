@@ -1305,25 +1305,35 @@ test("proficiency inference handles exclusions, replacements, and mixed gain-los
     { category: "shield", operation: "add", proficiencies: ["All shields", "Tower shields"] },
   ]);
   assert.ok(!archetypeAutomationSummary(record("rogue-makeshift-scrapper")).manual.some(item => item.startsWith("Weapon Proficiency (level")));
-  assert.ok(archetypeAutomationSummary(record("paladin-holy-gun")).manual.some(item => item.startsWith("Weapon and Armor Proficiency (level")), "an inferred positive list is not treated as a complete replacement");
+  assert.ok(archetypeAutomationSummary({
+    id: "unannotated-positive-list",
+    replacements: [{ features: [{ id: "unannotated-positive-list-proficiency", name: "Weapon Proficiency", level: 1, summary: "The archetype is proficient with all simple weapons." }] }],
+  }).manual.some(item => item.startsWith("Weapon Proficiency (level")), "an unannotated positive list is not treated as a complete replacement");
 });
 
 test("complete multi-sentence proficiency rules leave the manual queue", () => {
   const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const automated = [
+    ["alchemist-fire-bomber", "Weapon and Armor Proficiency"],
+    ["barbarian-savage-technologist", "Weapon and Armor Proficiency"],
     ["bloodrager-urban-bloodrager", "Weapon and Armor Proficiency"],
     ["brawler-battle-dancer", "Armor Proficiency"],
     ["cavalier-saurian-champion", "Weapon and Armor Proficiency"],
+    ["cavalier-beast-rider", "Armor Proficiency"],
     ["cleric-angelfire-apostle", "Armor Proficiency"],
     ["druid-nature-priest", "Weapon Proficiencies"],
+    ["druid-feral-child", "Weapon and Armor Proficiency"],
+    ["druid-sky-druid", "Weapon and Armor Proficiency"],
     ["druid-supernaturalist", "Weapon and Armor Proficiency"],
     ["druid-tempest-druid", "Armor and Weapon Proficiencies"],
     ["fighter-viking", "Weapon and Armor Proficiency"],
     ["magus-iron-ring-striker", "Weapon Proficiency"],
     ["medium-medium-of-the-master", "Armor Proficiency"],
     ["paladin-hunting-paladin", "Weapon and Armor Proficiency"],
+    ["paladin-holy-gun", "Weapon and Armor Proficiency"],
     ["paladin-virtuous-bravo", "Weapon and Armor Proficiency"],
     ["skald-urban-skald", "Weapon and Armor Proficiency"],
+    ["skald-belkzen-war-drummer", "Weapon Proficiency"],
     ["slayer-deliverer", "Weapon and Armor Proficiency"],
     ["slayer-velvet-blade", "Armor Proficiency"],
     ["warpriest-sixth-wing-bulwark", "Weapon and Armor Proficiency"],
@@ -1372,6 +1382,25 @@ test("complete multi-sentence proficiency rules leave the manual queue", () => {
     { category: "armor", operation: "replace", proficiencies: ["Light armor"] },
     { category: "shield", operation: "remove", proficiencies: ["All shields"] },
   ]);
+  assert.deepEqual(record("barbarian-savage-technologist").proficiencyAdjustments, [
+    { category: "weapon", operation: "replace", proficiencies: ["All simple weapons", "All martial weapons", "Firearms"] },
+    { category: "armor", operation: "replace", proficiencies: ["Light armor"] },
+    { category: "shield", operation: "replace", proficiencies: ["All shields"] },
+    { category: "shield", operation: "remove", proficiencies: ["Tower shields"] },
+  ]);
+  assert.deepEqual(record("cavalier-beast-rider").proficiencyAdjustments, [
+    { category: "armor", operation: "replace", proficiencies: ["Light armor", "Medium armor"] },
+    { category: "shield", operation: "replace", proficiencies: ["All shields"] },
+    { category: "shield", operation: "remove", proficiencies: ["Tower shields"] },
+  ]);
+  assert.deepEqual(record("paladin-holy-gun").proficiencyAdjustments, [
+    { category: "weapon", operation: "replace", proficiencies: ["All simple weapons", "All martial weapons", "Firearms"] },
+    { category: "armor", operation: "replace", proficiencies: ["Light armor"] },
+    { category: "shield", operation: "remove", proficiencies: ["All shields"] },
+  ]);
+  assert.deepEqual(record("skald-belkzen-war-drummer").proficiencyAdjustments, [
+    { category: "weapon", operation: "replace", proficiencies: ["All simple weapons", "Greatclub"] },
+  ]);
   assert.ok(archetypeAutomationSummary(record("magus-spire-defender")).manual.some(item => item.startsWith("Weapon Proficiency (level")), "restricted weapon choices remain manual");
 });
 
@@ -1383,7 +1412,7 @@ test("inferred proficiency automation stays normalized across the full archetype
   const inferred = records.map(archetype => ({ archetype, adjustments: inferArchetypeProficiencyAdjustments(archetype) }))
     .filter(item => item.adjustments.length > 0);
   assert.equal(inferred.length, 159);
-  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 142);
+  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 138);
   for (const { archetype, adjustments } of inferred) {
     for (const adjustment of adjustments) {
       assert.ok(["weapon", "armor", "shield"].includes(adjustment.category), `${archetype.id} category`);
