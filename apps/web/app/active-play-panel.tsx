@@ -35,6 +35,7 @@ const targets: Array<{ id: ActiveEffectTarget; name: string }> = [
   { id: "will", name: "Will" },
   { id: "attackRolls", name: "Attack rolls" },
   { id: "damageRolls", name: "Damage rolls" },
+  { id: "damageReduction", name: "Damage reduction" },
   { id: "spellResistance", name: "Spell resistance" },
   { id: "casterLevel", name: "Caster level" },
   { id: "spellSaveDc", name: "Spell save DC" },
@@ -89,6 +90,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
   const [rounds, setRounds] = useState(1);
   const [adjustment, setAdjustment] = useState(1);
   const [damageFromAttack, setDamageFromAttack] = useState(true);
+  const [damageBypassesDamageReduction, setDamageBypassesDamageReduction] = useState(false);
   const [damageBypassesRegeneration, setDamageBypassesRegeneration] = useState(false);
   const [combatRound, setCombatRound] = useState(1);
   const [rollHistory, setRollHistory] = useState<RollHistory[]>([]);
@@ -139,6 +141,7 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     ...recurringHealing.filter((rule) => rule.kind === "regeneration" && recurringRuleIsActive(rule)).map((rule) => rule.value),
     ...effects.filter((effect) => ["self", "allies"].includes(effect.target)).map((effect) => effect.regeneration ?? 0),
   );
+  const currentDamageReduction = Math.max(0, ...effects.filter((effect) => effect.target === "damageReduction").map((effect) => effect.bonus));
   const advanceRound = () => {
     setCombatRound((current) => current + 1);
     const healed = Math.min(currentFastHealing, Math.max(0, maximumHitPoints - currentHitPoints));
@@ -172,13 +175,14 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
     }]);
   };
   const takeDamage = () => {
-    const absorbed = Math.min(temporaryHitPoints, adjustment);
+    const reducedDamage = Math.max(0, adjustment - (damageBypassesDamageReduction ? 0 : currentDamageReduction));
+    const absorbed = Math.min(temporaryHitPoints, reducedDamage);
     const losesLastTemporaryHitPoint = temporaryHitPoints > 0 && absorbed >= temporaryHitPoints;
     const expiringEffects = losesLastTemporaryHitPoint
       ? effects.filter((effect) => effect.expiresWhenTemporaryHitPointsLost)
       : [];
     onTemporaryHitPointsChange(temporaryHitPoints - absorbed);
-    const remainingDamage = adjustment - absorbed;
+    const remainingDamage = reducedDamage - absorbed;
     if (currentRegeneration > 0 && !damageBypassesRegeneration) onNonlethalDamageChange(Math.min(9999, nonlethalDamage + remainingDamage));
     else onCurrentHitPointsChange(Math.max(0, currentHitPoints - remainingDamage));
     if (expiringEffects.length) {
@@ -313,8 +317,9 @@ export function ActivePlayPanel({ maximumHitPoints, currentHitPoints, temporaryH
       <button type="button" className="damage-button" onClick={takeDamage}>Take {adjustment} damage</button>
       <button type="button" onClick={heal}>Heal {adjustment} HP</button>
       <button type="button" onClick={receiveMagicalHealing}>Receive magical healing ({adjustment}{magicalHealingBonus ? ` + ${magicalHealingBonus} fate` : ""})</button>
-      <small>Damage uses temporary HP first. Active regeneration converts non-bypassing damage to nonlethal damage.</small>
+      <small>Damage reduction applies first, then temporary HP. Active regeneration converts non-bypassing damage to nonlethal damage.{currentDamageReduction > 0 ? ` Current DR: ${currentDamageReduction}/—.` : ""}</small>
       <label className="attack-damage-toggle"><input aria-label="Damage came from an attack" type="checkbox" checked={damageFromAttack} onChange={event => setDamageFromAttack(event.target.checked)} />Damage came from an attack</label>
+      {currentDamageReduction > 0 && <label className="attack-damage-toggle"><input aria-label="Damage bypasses damage reduction" type="checkbox" checked={damageBypassesDamageReduction} onChange={event => setDamageBypassesDamageReduction(event.target.checked)} />Damage bypasses damage reduction</label>}
       {currentRegeneration > 0 && <label className="attack-damage-toggle"><input aria-label="Damage bypasses regeneration" type="checkbox" checked={damageBypassesRegeneration} onChange={event => setDamageBypassesRegeneration(event.target.checked)} />Damage bypasses regeneration</label>}
     </div>
     {roundHealingResult && <p role="status">{roundHealingResult}</p>}

@@ -110,7 +110,7 @@ export interface CharacterDraftV1 {
 export type CharacterDraft = CharacterDraftV1;
 export type ActiveEffectTarget =
   | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
-  | "attackRolls" | "damageRolls" | "spellResistance"
+  | "attackRolls" | "damageRolls" | "damageReduction" | "spellResistance"
   | "casterLevel" | "spellSaveDc" | "exploitEffectiveLevel"
   | "casterLevelChecks" | "savingThrows" | "meleeDamageRolls" | "healingReceived" | "skillChecks"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
@@ -313,6 +313,14 @@ export interface ClassFeatureOccurrence {
       applyToAllTargets?: boolean;
       replaceExisting?: boolean;
       skillOptions?: string[];
+      additionalEffectsByLevel?: Array<{
+        minimumLevel: number;
+        name: string;
+        target: ActiveEffectTarget;
+        bonus: number;
+        bonusByLevel?: Array<{ level: number; bonus: number }>;
+        description: string;
+      }>;
     };
     labelsByUseCount?: string[];
     summary?: string;

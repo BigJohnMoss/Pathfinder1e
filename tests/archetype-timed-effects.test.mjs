@@ -51,7 +51,18 @@ test("applied archetypes expose timed effects without duplicate generic actions"
 test("complete timed effects leave the manual queue while partial effects remain", () => {
   assert.equal(archetypeAutomationSummary(archetype("magus-spire-defender"), data.feats, data.spells).manual.includes("Arcane Augmentation (Su) (level 4)"), false);
   assert.equal(archetypeAutomationSummary(archetype("occultist-battle-host"), data.feats, data.spells).manual.includes("Heroic Splendor (Su) (level 6)"), false);
-  assert.equal(archetypeAutomationSummary(archetype("bard-sorrowsoul"), data.feats, data.spells).manual.includes("Spurn Harm (Su) (level 5)"), true);
+  assert.equal(archetypeAutomationSummary(archetype("bard-sorrowsoul"), data.feats, data.spells).manual.includes("Spurn Harm (Su) (level 5)"), false);
+});
+
+test("Spurn Harm gains its complete level-gated defensive package", () => {
+  const action = inferArchetypeTimedEffectActions(archetype("bard-sorrowsoul"))[0].action;
+  assert.deepEqual(action.activeEffect.targets, ["fortitude", "reflex", "will"]);
+  assert.equal(action.activeEffect.bonus, 2);
+  assert.deepEqual(action.activeEffect.additionalEffectsByLevel.map(({ minimumLevel, target, bonus }) => ({ minimumLevel, target, bonus })), [
+    { minimumLevel: 11, target: "spellResistance", bonus: 22 },
+    { minimumLevel: 17, target: "damageReduction", bonus: 10 },
+  ]);
+  assert.deepEqual(action.activeEffect.additionalEffectsByLevel[0].bonusByLevel.slice(-1), [{ level: 20, bonus: 31 }]);
 });
 
 test("monk and Sacred Fist ki pools use bounded class-level formulas", () => {
@@ -73,11 +84,15 @@ test("timed effect parser remains narrowly bounded across the catalogue", () => 
   }
 });
 
-test("selected skill effects survive bounded character normalization", () => {
+test("selected skill and damage-reduction effects survive bounded character normalization", () => {
   const normalized = normalizeCharacterDraft({
     classId: "magus", level: 4, classLevels: [{ classId: "magus", level: 4 }],
     baseAbilities: { strength: 10, dexterity: 10, constitution: 10, intelligence: 14, wisdom: 10, charisma: 10 },
-    activeEffects: [{ id: "augmentation", name: "Arcane Augmentation", target: "skillChecks", bonus: 5, roundsRemaining: 10, skillIds: ["Stealth", "<invalid>"] }],
+    activeEffects: [
+      { id: "augmentation", name: "Arcane Augmentation", target: "skillChecks", bonus: 5, roundsRemaining: 10, skillIds: ["Stealth", "<invalid>"] },
+      { id: "spurn-harm-dr", name: "Spurn Harm damage reduction", target: "damageReduction", bonus: 10, roundsRemaining: 1, description: "DR 10/—." },
+    ],
   }, { classIds: ["magus"] });
   assert.deepEqual(normalized.activeEffects[0].skillIds, ["Stealth"]);
+  assert.deepEqual(normalized.activeEffects[1], { id: "spurn-harm-dr", name: "Spurn Harm damage reduction", target: "damageReduction", bonus: 10, roundsRemaining: 1, description: "DR 10/—." });
 });

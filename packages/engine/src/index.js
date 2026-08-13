@@ -1071,6 +1071,7 @@ export function normalizeCharacterDraft(
                 "will",
                 "attackRolls",
                 "damageRolls",
+                "damageReduction",
                 "spellResistance",
                 "casterLevel",
                 "spellSaveDc",
