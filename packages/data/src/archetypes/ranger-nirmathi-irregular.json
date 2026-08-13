@@ -56,6 +56,11 @@
       ]
     }
   ],
+  "proficiencyAdjustments": [
+    {"category":"weapon","operation":"replace","proficiencies":["All simple weapons","All martial weapons"]},
+    {"category":"armor","operation":"replace","proficiencies":["Light armor"]},
+    {"category":"shield","operation":"remove","proficiencies":["All shields"]}
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,

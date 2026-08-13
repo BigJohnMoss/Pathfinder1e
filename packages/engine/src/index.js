@@ -1504,7 +1504,7 @@ function namedArchetypeProficiencies(fragment) {
       .replace(/\s+exotic weapon$/i, "")
       .replace(/\s+(?:as weapons?|as a weapon)$/i, "")
       .trim();
-    if (!value || value.length > 45 || /^(?:or|with|only|all|including|as well as|proficiency with|it|its use|light|medium|heavy|one-?handed|two-?handed)$/i.test(value) || /\bor\b/i.test(value) || /\b(?:armors?|shields?|weapons?|proficien|normal|choos|class|feat|spell|bloodline)\b/i.test(value)) continue;
+    if (!value || value.length > 45 || /^(?:or|with|only|all|including|as well as|proficiency with|it|its use|light|medium|heavy|all (?:light|medium|heavy)|one-?handed|two-?handed)$/i.test(value) || /\bor\b/i.test(value) || /\b(?:armors?|shields?|weapons?|proficien|normal|choos|class|feat|spell|bloodline)\b/i.test(value)) continue;
     if (/^[a-z][a-z' -]+$/i.test(value)) add("weapon", value.replace(/\b\w/g, letter => letter.toUpperCase()));
   }
   return results;
@@ -1512,12 +1512,14 @@ function namedArchetypeProficiencies(fragment) {
 
 function inferArchetypeProficiencyDetails(archetype) {
   const grouped = new Map();
+  let replacementCategories = new Set();
   const record = (operation, fragment) => {
     const normalizedFragment = String(fragment).replace(/\((?:with the exception of|except(?: for)?) ([^)]+)\)/gi, " but not $1");
     const exclusion = normalizedFragment.match(/^(.*?)(?:,?\s+(?:but not(?: with)?|except(?: for)?)\s+)(.+)$/i);
     const includedFragment = exclusion ? exclusion[1] : normalizedFragment;
     for (const { category, proficiency } of namedArchetypeProficiencies(includedFragment)) {
-      const key = `${category}:${operation}`;
+      const effectiveOperation = operation === "add" && replacementCategories.has(category) ? "replace" : operation;
+      const key = `${category}:${effectiveOperation}`;
       if (!grouped.has(key)) grouped.set(key, new Set());
       grouped.get(key).add(proficiency);
     }
@@ -1530,6 +1532,15 @@ function inferArchetypeProficiencyDetails(archetype) {
     const text = String(feature.summary ?? "")
       .replace(/(?:isn|aren|doesn|don)(?:'|’|â€™|Ã¢â‚¬â„¢)t/gi, match => match.toLowerCase().startsWith("isn") ? "is not" : match.toLowerCase().startsWith("aren") ? "are not" : match.toLowerCase().startsWith("doesn") ? "does not" : "do not")
       .replace(/\s+/g, " ");
+    const replacementTail = text.match(/This (?:ability )?replaces ([^.]+)\.?$/i)?.[1] ?? "";
+    replacementCategories = new Set();
+    if (/proficien/i.test(replacementTail) && !/proficiency with\b/i.test(replacementTail)) {
+      if (/weapon/i.test(replacementTail)) replacementCategories.add("weapon");
+      if (/armor/i.test(replacementTail)) {
+        replacementCategories.add("armor");
+        replacementCategories.add("shield");
+      }
+    }
     const replaceOnly = text.match(/(?:is|are) proficient (?:with|in) (?:only (.+?)|(.+?) only)(?:[.;]|$)/i);
     if (replaceOnly) record("replace", replaceOnly[1] ?? replaceOnly[2]);
     if (/picks? one martial weapon[^.]{0,100}becomes? proficient/i.test(text))
@@ -1570,15 +1581,15 @@ function inferArchetypeProficiencyDetails(archetype) {
     if (!/^(?:Weapon and Armor|Armor and Weapon|Armor|Weapon) Proficienc(?:y|ies)$/i.test(name) || text.length > 400) return false;
     const ruleText = text.replace(/\s+This (?:ability )?(?:alters|replaces|modifies) [^.]*?proficienc(?:y|ies)\.?$/i, "").trim();
     if (ruleText.split(/(?<=[.!?])\s+/).filter(Boolean).length !== 1) return false;
-    if (/arcane spell failure|flurry of blows|class skills?|levels? stack|bonus feats?|chooses?|choices?|\bcan use\b/i.test(text)) return false;
+    if (/arcane spell failure|flurry of blows|class skills?|levels? stack|bonus feats?|chooses?|choices?|\bcan use\b|\bone exotic\b|\bone-handed simple\b|\bdisarm or trip\b/i.test(text)) return false;
     const supportedMixedRule = /gains? proficiency (?:with|in) .+?,\s*but not (?:with )?.+/i.test(ruleText)
       || /loses? (?:his |her |their )?proficiency with .+?,\s*but gains? proficiency (?:with|in) .+/i.test(ruleText);
-    if ((/\bbut\b|\bloses?\b/i.test(ruleText) && !supportedMixedRule) || /\bas well as\b/i.test(ruleText)) return false;
+    if (/\bbut\b|\bloses?\b/i.test(ruleText) && !supportedMixedRule) return false;
     if (/all martial weapon proficiencies except|favored weapon of|\bincluding\b|,\s*but\s+loses?\b/i.test(text)) return false;
-    if (!explicit.length && /\b(?:is|are) proficient\b/i.test(text) && !/\bin addition\b/i.test(text) && !/\bonly\b/i.test(text)) return false;
     const local = inferArchetypeProficiencyDetails({ replacements: [{ features: [{ ...feature, name: "Rule" }] }] }).adjustments;
     if (!local.length) return false;
-    if (local.some(adjustment => adjustment.proficiencies.some(value => /\b(?:including|loses? proficiency|but)\b|^the\s/i.test(value)))) return false;
+    if (!explicit.length && /\b(?:is|are) proficient\b/i.test(text) && !/\bin addition\b/i.test(text) && !/\bonly\b/i.test(text) && !local.some(adjustment => adjustment.operation === "replace")) return false;
+    if (local.some(adjustment => adjustment.proficiencies.some(value => /\b(?:including|loses? proficiency|but)\b|^the\s|^All (?:Light|Medium|Heavy)$/i.test(value)))) return false;
     return local.every(expected => {
       const match = applied.find(candidate => candidate.category === expected.category && candidate.operation === expected.operation);
       return match && expected.proficiencies.every(value => match.proficiencies.includes(value));
@@ -1758,7 +1769,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     : proficiencyDetails.adjustments;
   for (const adjustment of proficiencyAdjustments) {
     const action = adjustment.operation === "add" ? "gain" : adjustment.operation === "remove" ? "lose" : "use only";
-    automated.push(`${adjustment.category[0].toUpperCase()}${adjustment.category.slice(1)} proficiencies: ${action} ${adjustment.proficiencies.join(", ")}`);
+    automated.push(`${adjustment.category[0].toUpperCase()}${adjustment.category.slice(1)} proficiencies: ${action} ${adjustment.proficiencies.join(", ") || "none"}`);
   }
   const skillRankDetails = inferArchetypeSkillRankDetails(archetype);
   const inferredSkillRanks = archetype.skillRanksPerLevel === undefined
