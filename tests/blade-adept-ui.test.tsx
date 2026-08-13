@@ -27,7 +27,7 @@ test.afterEach(() => { cleanup(); localStorage.clear(); });
 test("bonded blade enhancement is enforced on attack and damage rolls", () => {
   assert.deepEqual(
     equippedWeaponAttacks([{ itemId: "rapier", quantity: 1, equipped: true, enhancementBonus: 1 }], 10, 3, 2, {}, { rapier: 5 })[0],
-    { id: "rapier", name: "Rapier +5", attack: 18, damage: "1d6", damageBonus: 8, critical: "18–20/×2", range: undefined },
+    { id: "rapier", name: "Rapier +5", attack: 18, damage: "1d6", damageBonus: 8, critical: "18–20/×2", range: undefined, enhancementBonus: 5 },
   );
 });
 
