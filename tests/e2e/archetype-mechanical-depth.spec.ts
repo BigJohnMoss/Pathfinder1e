@@ -375,7 +375,7 @@ for (const journey of journeys) {
       await page.getByRole("button", { name: "Close", exact: true }).evaluate((button) => button.click());
     }
     await page.getByRole("tab", { name: "Features" }).click();
-    await expect(page.getByText("Weapon proficiencies: gain All simple weapons")).toBeVisible();
+    await expect(page.getByText("Weapon proficiencies: use only All simple weapons, One monk weapon")).toBeVisible();
     await expect(page.getByText("Armor proficiencies: lose All armor")).toBeVisible();
     await expect(page.getByText("Shield proficiencies: lose All shields")).toBeVisible();
   });
