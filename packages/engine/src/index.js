@@ -10,6 +10,7 @@ import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDet
 import { inferArchetypeChannelEnergyActions, inferredArchetypeChannelEnergyActionDetails } from "./archetype-channel-energy.js";
 import { inferArchetypeResourceDamageActions, inferredArchetypeResourceDamageActionDetails } from "./archetype-resource-damage.js";
 import { inferArchetypeSaveEffectActions, inferredArchetypeSaveEffectActionDetails } from "./archetype-save-effects.js";
+import { inferArchetypeTeamworkSharingActions, inferredArchetypeTeamworkSharingDetails } from "./archetype-teamwork-sharing.js";
 import { inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
@@ -45,6 +46,7 @@ export { inferArchetypeTimedEffectActions };
 export { inferArchetypeChannelEnergyActions };
 export { inferArchetypeResourceDamageActions };
 export { inferArchetypeSaveEffectActions };
+export { inferArchetypeTeamworkSharingActions };
 export { inferArchetypeSpellcastingAbility };
 export { inferArchetypeSpellcastingProgression };
 export { inferArchetypeSpellAdditions };
@@ -1241,6 +1243,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     ...inferArchetypeChannelEnergyActions(archetype),
     ...inferArchetypeResourceDamageActions(archetype),
     ...inferArchetypeSaveEffectActions(archetype),
+    ...inferArchetypeTeamworkSharingActions(archetype),
   ];
   const specializedFeatureIds = new Set(specializedResourceActions.map(({ sourceFeatureId }) => sourceFeatureId));
   const inferredResourceActions = new Map();
@@ -1907,6 +1910,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const inferredFeatGrantDetails = inferredArchetypeGrantedFeatDetails(archetype, feats);
   const inferredFeatChoiceDetails = inferredArchetypeFeatChoiceDetails(archetype, feats);
   const inferredFeatAlternativeDetails = inferredArchetypeFeatAlternativeDetails(archetype, feats);
+  const teamworkSharingDetails = inferredArchetypeTeamworkSharingDetails(archetype);
   const ruleSentenceCoverage = [
     ["initiative", initiativeBonusDetails.sentenceCoverage ?? []],
     ["saving throws", saveBonusDetails.sentenceCoverage ?? []],
@@ -1924,6 +1928,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["bonus feat grants", inferredFeatGrantDetails.sentenceCoverage ?? []],
     ["bonus feat choices", inferredFeatChoiceDetails.sentenceCoverage ?? []],
     ["feat alternatives", inferredFeatAlternativeDetails.sentenceCoverage ?? []],
+    ["teamwork feat sharing", teamworkSharingDetails.sentenceCoverage ?? []],
   ];
   const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
     const coveringFamilies = ruleSentenceCoverage.filter(([, entries]) =>
@@ -1985,6 +1990,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const saveEffectActionDetails = inferredArchetypeSaveEffectActionDetails(archetype);
   if (saveEffectActionDetails.actions.length)
     automated.push(`${saveEffectActionDetails.actions.length} resolved save-effect action${saveEffectActionDetails.actions.length === 1 ? "" : "s"}`);
+  if (teamworkSharingDetails.actions.length)
+    automated.push(`${teamworkSharingDetails.actions.length} teamwork-feat sharing action${teamworkSharingDetails.actions.length === 1 ? "" : "s"}`);
   const specializedResourceFeatureIds = new Set([
     ...temporaryHitPointActionDetails.actions,
     ...rerollActionDetails.actions,
@@ -1994,6 +2001,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...channelEnergyActionDetails.actions,
     ...resourceDamageActionDetails.actions,
     ...saveEffectActionDetails.actions,
+    ...teamworkSharingDetails.actions,
   ].map(({ sourceFeatureId }) => sourceFeatureId));
   const genericResourceActionDetails = inferredArchetypeResourceActionDetails(archetype, specializedResourceFeatureIds);
   if (genericResourceActionDetails.actions.length)
@@ -2029,6 +2037,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...channelEnergyActionDetails.fullyAutomatedFeatureIds,
     ...resourceDamageActionDetails.fullyAutomatedFeatureIds,
     ...saveEffectActionDetails.fullyAutomatedFeatureIds,
+    ...teamworkSharingDetails.fullyAutomatedFeatureIds,
     ...inferredSpellAccess.fullyAutomatedFeatureIds,
     ...inferredSpellAdditions.fullyAutomatedFeatureIds,
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,

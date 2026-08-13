@@ -2609,6 +2609,7 @@ export default function Home() {
     bombs: ["Bombs", "bomb"],
     challenges: ["Challenges", "challenge"],
     tactician: ["Tactician", "use"],
+    smiteEvil: ["Smite Evil", "use"],
     judgments: ["Judgments", "judgment"],
     baneRounds: ["Bane", "round"],
     summonMonster: ["Summon Monster", "use"],
@@ -2650,6 +2651,8 @@ export default function Home() {
           {
             selectedOptionIds: Object.values(selectedOptions),
             casterLevel: effectiveSpellcastingLevelMap[resourceClassId] ?? resourceClassLevel,
+            classId: resourceClassId,
+            classLevels: classLevelMap,
           },
         )
       ).map(([resourceId, maximum]) => {
@@ -2689,7 +2692,7 @@ export default function Home() {
           classLevels,
           combat.abilityModifiers,
           Object.fromEntries(classLevels.map(({ classId }) => [classId, archetypes.filter((archetype) => archetype.classId === classId && (archetypeStacksByClass[classId] ?? []).includes(archetype.id))])),
-          Object.fromEntries(classLevels.map(({ classId, level: classLevel }) => [classId, { selectedOptionIds: Object.values(selectedOptions), casterLevel: effectiveSpellcastingLevelMap[classId] ?? classLevel }])),
+          Object.fromEntries(classLevels.map(({ classId, level: classLevel }) => [classId, { selectedOptionIds: Object.values(selectedOptions), casterLevel: effectiveSpellcastingLevelMap[classId] ?? classLevel, classId, classLevels: classLevelMap }])),
         ),
       ),
     [
@@ -4607,6 +4610,7 @@ export default function Home() {
                 casterLevels={effectiveSpellcastingLevelMap}
                 selectedOptionIds={Object.values(selectedOptions)}
                 selectedOptions={selectedOptions}
+                selectedFeats={[...new Set([...selectedFeatIds, ...selectedClassFeatIds])].flatMap((id) => { const feat = feats.find((candidate) => candidate.id === id); return feat ? [{ id: feat.id, name: feat.name, type: feat.type }] : []; })}
                 activeEffects={activeEffects}
                 equippedWeapons={combatAttacks.map(({ id, name }) => ({ id, name }))}
                 onAddEffect={addActiveEffect}

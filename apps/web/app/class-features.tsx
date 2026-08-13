@@ -17,7 +17,7 @@ export type DailyResource = {
 const effectTargetLabel = (target: ActiveEffectTarget) => target.replace(/([A-Z])/g, " $1").replace(/^./, (letter) => letter.toUpperCase());
 const abilityEffectTargets = new Set<ActiveEffectTarget>(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
 
-export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, baseAttackBonus = 0, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], activeEffects = [], equippedWeapons = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
+export function ClassFeatures({ level, className, features, dailyResources = [], abilityModifiers = {}, saveModifiers = {}, baseAttackBonus = 0, classLevels = {}, casterLevels = {}, selectedOptions = {}, selectedOptionIds = [], selectedFeats = [], activeEffects = [], equippedWeapons = [], onAddEffect, onRemoveEffectByName, onTemporaryHitPointsChange }: {
   level: number;
   className: string;
   features: Feature[];
@@ -29,6 +29,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   casterLevels?: Record<string, number>;
   selectedOptionIds?: string[];
   selectedOptions?: Record<string, string>;
+  selectedFeats?: Array<{ id: string; name: string; type: string }>;
   activeEffects?: ActiveEffect[];
   equippedWeapons?: Array<{ id: string; name: string }>;
   onAddEffect?: (effect: ActiveEffect) => void;
@@ -43,6 +44,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   const [effectRounds, setEffectRounds] = useState<Record<string, number>>({});
   const [actionModes, setActionModes] = useState<Record<string, string>>({});
   const [actionRecipients, setActionRecipients] = useState<Record<string, string>>({});
+  const [actionFeatSelections, setActionFeatSelections] = useState<Record<string, string[]>>({});
   const [actionConfirmations, setActionConfirmations] = useState<Record<string, boolean>>({});
   const [calculationInputs, setCalculationInputs] = useState<Record<string, number>>({});
   const [targetHitDice, setTargetHitDice] = useState<Record<string, number>>({});
@@ -125,6 +127,12 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const conditionStep = action.conditionEffectsByUseCount?.[Math.min(useCount, action.conditionEffectsByUseCount.length - 1)];
         const selectedMode = action.modes?.find((mode) => mode.id === actionModes[action.id]) ?? action.modes?.[0];
         const selectedRecipient = action.recipients?.find((recipient) => recipient.id === actionRecipients[action.id]) ?? action.recipients?.[0];
+        const featSelectionCount = action.featSelection?.countByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.count ?? 0;
+        const availableFeats = action.featSelection ? selectedFeats.filter((feat) => feat.type === action.featSelection!.featType) : [];
+        const selectedActionFeatIds = Array.from({ length: featSelectionCount }, (_, index) => actionFeatSelections[action.id]?.[index] ?? availableFeats[index]?.id ?? "");
+        const selectedActionFeatNames = selectedActionFeatIds.map((id) => availableFeats.find((feat) => feat.id === id)?.name).filter((name): name is string => Boolean(name));
+        const missingFeatSelection = featSelectionCount > 0 && (selectedActionFeatNames.length < featSelectionCount || new Set(selectedActionFeatIds).size < featSelectionCount);
+        const actionType = action.actionTypeByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.actionType;
         const confirmationChecked = (id: string) => Boolean(actionConfirmations[`${action.id}:${id}`]);
         const allConfirmations = [...(action.confirmations ?? []), ...(action.combatRoll?.confirmations ?? [])];
         const missingRequiredConfirmation = Boolean(allConfirmations.some((confirmation) => confirmation.requiredForActivation && !confirmationChecked(confirmation.id)));
@@ -142,9 +150,10 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const effectTarget = action.activeEffect ? effectTargets[action.id] ?? action.activeEffect.targets[0] : undefined;
         const effectSkill = action.activeEffect?.skillOptions?.length ? effectSkills[action.id] ?? action.activeEffect.skillOptions[0] : undefined;
         const effectTargetChoiceLabel = action.activeEffect?.targets.every((target) => abilityEffectTargets.has(target)) ? "Affected ability" : "Affected target";
-        const rounds = action.activeEffect ? Math.max(1, Math.min(999, effectRounds[action.id] ?? action.activeEffect.defaultRounds ?? 10)) : 0;
+        const defaultRounds = action.activeEffect?.defaultRoundsByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.rounds ?? action.activeEffect?.defaultRounds ?? 10;
+        const rounds = action.activeEffect ? Math.max(1, Math.min(999, effectRounds[action.id] ?? defaultRounds)) : 0;
         const effectUpgrade = action.activeEffect?.upgrades?.filter((upgrade) => selectedOptionSet.has(upgrade.requiredOptionId)).at(-1);
-        const effectName = effectUpgrade?.name ?? action.activeEffect?.name;
+        const effectName = selectedActionFeatNames.length ? `${effectUpgrade?.name ?? action.activeEffect?.name} — ${selectedActionFeatNames.join(" + ")}` : effectUpgrade?.name ?? action.activeEffect?.name;
         const tableEffectBonus = action.activeEffect?.bonusByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.bonus;
         const effectBonus = effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0);
         const additionalActiveEffects = action.activeEffect?.additionalEffectsByLevel?.filter((effect) => effect.minimumLevel <= actionLevel) ?? [];
@@ -152,7 +161,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const fixedSaveDc = action.savingThrow?.fixedDcByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.dc;
         const saveDc = action.savingThrow ? fixedSaveDc ?? (action.savingThrow.base ?? 0) + Math.floor(saveLevel / (action.savingThrow.levelDivisor ?? 1)) + (action.savingThrow.ability ? abilityModifiers[action.savingThrow.ability] ?? 0 : 0) : undefined;
         const saveText = action.savingThrow ? `${action.savingThrow.label} DC ${saveDc} negates.` : undefined;
-        const effectDescription = [selectedMode?.summary, effectUpgrade?.description ?? action.activeEffect?.description, saveText].filter(Boolean).join(" ");
+        const effectDescription = [selectedActionFeatNames.length ? `Granted teamwork feat${selectedActionFeatNames.length === 1 ? "" : "s"}: ${selectedActionFeatNames.join(", ")}.` : undefined, selectedMode?.summary, effectUpgrade?.description ?? action.activeEffect?.description, saveText].filter(Boolean).join(" ");
         const minimumTargetHitDice = action.targetHitDiceRequirement ? Math.max(1, Math.ceil(level / action.targetHitDiceRequirement.levelDivisor)) : 0;
         const enteredTargetHitDice = Math.max(0, targetHitDice[action.id] ?? minimumTargetHitDice);
         const targetEligible = !action.targetHitDiceRequirement || enteredTargetHitDice >= minimumTargetHitDice;
@@ -222,6 +231,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               const bonus = effect.bonusByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.bonus ?? effect.bonus;
               onAddEffect({ id: `${action.id}-${effect.target}-${Date.now()}-${Math.random()}`, name: effect.name, target: effect.target, bonus, description: effect.description, roundsRemaining: rounds });
             });
+            if (action.featSelection) setActionResults((current) => ({ ...current, [action.id]: `${selectedActionFeatNames.join(" and ")} granted to eligible allies for ${rounds} round${rounds === 1 ? "" : "s"}${actionType ? ` as a ${actionType} action` : ""}.` }));
           }
           if (action.rerollAction?.kind === "d20") {
             const roll = rollD20Check(rerollInput.modifier);
@@ -332,6 +342,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
           {Boolean(action.modes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionTargetNames((current) => { const next = { ...current }; delete next[action.id]; return next; }); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{action.modes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
           {Boolean(action.recipients?.length) && <label>{action.recipientLabel ?? "Recipient"}<select aria-label={`${action.label} recipient`} value={selectedRecipient?.id} onChange={(event) => setActionRecipients((current) => ({ ...current, [action.id]: event.target.value }))}>{action.recipients!.map((recipient) => <option key={recipient.id} value={recipient.id}>{recipient.label}</option>)}</select></label>}
+          {action.featSelection && Array.from({ length: featSelectionCount }, (_, index) => <label key={`${action.id}-feat-${index}`}>{action.featSelection!.label}{featSelectionCount > 1 ? ` ${index + 1}` : ""}<select aria-label={`${action.label} ${action.featSelection!.label.toLowerCase()}${featSelectionCount > 1 ? ` ${index + 1}` : ""}`} value={selectedActionFeatIds[index]} onChange={(event) => setActionFeatSelections((current) => { const next = [...(current[action.id] ?? selectedActionFeatIds)]; next[index] = event.target.value; return { ...current, [action.id]: next }; })}><option value="">Choose a selected {action.featSelection!.featType} feat</option>{availableFeats.map((feat) => <option key={feat.id} value={feat.id} disabled={selectedActionFeatIds.some((id, selectedIndex) => selectedIndex !== index && id === feat.id)}>{feat.name}</option>)}</select></label>)}
+          {actionType && <small>Activation: {actionType} action.</small>}
           {allConfirmations.map((confirmation) => <label key={confirmation.id}><input aria-label={`${action.label} ${confirmation.label}`} type="checkbox" checked={confirmationChecked(confirmation.id)} onChange={(event) => setActionConfirmations((current) => ({ ...current, [`${action.id}:${confirmation.id}`]: event.target.checked }))} />{confirmation.label}</label>)}
           {action.randomOutcomeTarget && <label>{action.randomOutcomeTarget.label}<input aria-label={`${action.label} ${action.randomOutcomeTarget.label.toLowerCase()}`} value={actionTargetName} maxLength={80} onChange={(event) => setActionTargetNames((current) => ({ ...current, [action.id]: event.target.value }))} /></label>}
           {action.randomOutcomeTarget && selectedMode?.id === action.randomOutcomeTarget.enemyModeId && <label>Target {action.randomOutcomeTarget.enemySaveModifier} modifier<input aria-label={`${action.label} target ${action.randomOutcomeTarget.enemySaveModifier} modifier`} type="number" min="-999" max="999" value={combatInput.saveModifier} onChange={(event) => setCombatInputs((current) => ({ ...current, [action.id]: { ...combatInput, saveModifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
@@ -346,7 +358,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {(action.rerollAction?.kind === "d20" || action.rerollAction?.kind === "lower-d20" || action.rerollAction?.kind === "higher-d20") && <label>Modifier<input aria-label={`${action.label} modifier`} type="number" min="-999" max="999" value={rerollInput.modifier} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, modifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label>}
           {action.rerollAction?.kind === "damage" && <><label>Dice<input aria-label={`${action.label} dice count`} type="number" min="1" max="100" value={rerollInput.count} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, count: Math.max(1, Math.min(100, Number(event.target.value) || 1)) } }))} /></label><label>Die<select aria-label={`${action.label} die sides`} value={rerollInput.sides} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, sides: Number(event.target.value) } }))}>{[4, 6, 8, 10, 12, 20, 100].map((sides) => <option value={sides} key={sides}>d{sides}</option>)}</select></label><label>Modifier<input aria-label={`${action.label} modifier`} type="number" min="-999" max="999" value={rerollInput.modifier} onChange={(event) => setRerollInputs((current) => ({ ...current, [action.id]: { ...rerollInput, modifier: Math.max(-999, Math.min(999, Number(event.target.value) || 0)) } }))} /></label></>}
           {action.activeEffect && <>{action.activeEffect.targets.length > 1 && !action.activeEffect.applyToAllTargets && <label>{effectTargetChoiceLabel}<select aria-label={`${action.label} ${effectTargetChoiceLabel.toLowerCase()}`} value={effectTarget} onChange={(event) => setEffectTargets((current) => ({ ...current, [action.id]: event.target.value as ActiveEffectTarget }))}>{action.activeEffect.targets.map((target) => <option key={target} value={target}>{effectTargetLabel(target)}</option>)}</select></label>}{action.activeEffect.skillOptions && action.activeEffect.skillOptions.length > 1 && <label>Affected skill<select aria-label={`${action.label} affected skill`} value={effectSkill} onChange={(event) => setEffectSkills((current) => ({ ...current, [action.id]: event.target.value }))}>{action.activeEffect.skillOptions.map((skill) => <option key={skill} value={skill}>{skill}</option>)}</select></label>}{action.activeEffect.fixedRounds ? <small>Duration: {rounds} round{rounds === 1 ? "" : "s"}</small> : <label>Rounds<input aria-label={`${action.label} rounds`} type="number" min="1" max="999" value={rounds} onChange={(event) => setEffectRounds((current) => ({ ...current, [action.id]: Math.max(1, Math.min(999, Number(event.target.value) || 1)) }))} /></label>}</>}
-          <button type="button" disabled={(!action.activeEffect && temporaryHitPoints === undefined && appliedChanges.length === 0 && !action.rerollAction && !action.spellLikeAbility && !action.diceRoll && !action.combatRoll && !action.targetEffectRoll) || unavailable || !targetEligible || targetHasSaveEffectImmunity || missingRequiredConfirmation} title={blockedByActorCondition ? `Unavailable while ${action.actorSavingThrow?.blockedByActiveEffectName}.` : targetHasSaveEffectImmunity ? `${saveEffectTargetName} is immune to this ability.` : missingRequiredConfirmation ? "Confirm the required targeting conditions first." : undefined} onClick={activate}>{label}</button>
+          <button type="button" disabled={(!action.activeEffect && temporaryHitPoints === undefined && appliedChanges.length === 0 && !action.rerollAction && !action.spellLikeAbility && !action.diceRoll && !action.combatRoll && !action.targetEffectRoll) || unavailable || !targetEligible || targetHasSaveEffectImmunity || missingRequiredConfirmation || missingFeatSelection} title={blockedByActorCondition ? `Unavailable while ${action.actorSavingThrow?.blockedByActiveEffectName}.` : targetHasSaveEffectImmunity ? `${saveEffectTargetName} is immune to this ability.` : missingRequiredConfirmation ? "Confirm the required targeting conditions first." : missingFeatSelection ? `Select ${featSelectionCount} known ${action.featSelection?.featType ?? "qualifying"} feat${featSelectionCount === 1 ? "" : "s"} first.` : undefined} onClick={activate}>{label}</button>
           <small>{action.summary ?? costs.map(({ cost }) => `Spend ${cost}`).join(" and ")}</small>
           {result && <output aria-label={`${action.label} result`}>{result}</output>}
         </div>;
