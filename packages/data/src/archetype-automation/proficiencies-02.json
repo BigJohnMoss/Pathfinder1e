@@ -1,0 +1,155 @@
+{
+  "batch": "proficiencies-02",
+  "overlays": [
+    {
+      "archetypeId": "bard-dawnflower-dervish",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "add", "proficiencies": ["Scimitar"] },
+        { "category": "weapon", "operation": "remove", "proficiencies": ["Rapier", "Whip"] }
+      ]
+    },
+    {
+      "archetypeId": "bard-dervish-dancer",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "add", "proficiencies": ["Scimitar", "Kukri"] },
+        { "category": "weapon", "operation": "remove", "proficiencies": ["Rapier", "Whip"] }
+      ]
+    },
+    {
+      "archetypeId": "bard-juggler",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial thrown weapons"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "brawler-shield-champion",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "Shields as weapons"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "replace", "proficiencies": ["Bucklers", "Light shields", "Heavy shields"] }
+      ]
+    },
+    {
+      "archetypeId": "cavalier-huntmaster",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "add", "proficiencies": ["Net", "Whip"] },
+        { "category": "armor", "operation": "remove", "proficiencies": ["Heavy armor"] }
+      ]
+    },
+    {
+      "archetypeId": "cavalier-oceanrider",
+      "proficiencyAdjustments": [
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor", "Medium armor"] },
+        { "category": "shield", "operation": "replace", "proficiencies": ["All shields"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["Tower shields"] }
+      ]
+    },
+    {
+      "archetypeId": "cavalier-spellscar-drifter",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial weapons", "Whip", "Firearms"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "fighter-aquanaut",
+      "proficiencyAdjustments": [
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor", "Medium armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "fighter-calistrian-hunter",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial weapons", "Whip"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor", "Medium armor"] },
+        { "category": "shield", "operation": "replace", "proficiencies": ["All shields"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["Tower shields"] }
+      ]
+    },
+    {
+      "archetypeId": "fighter-swarm-fighter",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial weapons"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor", "Medium armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "fighter-unarmed-fighter",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "add", "proficiencies": ["All monk weapons"] },
+        { "category": "armor", "operation": "remove", "proficiencies": ["Medium armor", "Heavy armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "investigator-natural-philosopher",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "Handaxe", "Kukri", "Shortbow", "Throwing axe", "Whip"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "occultist-extemporaneous-channeler",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons"] }
+      ]
+    },
+    {
+      "archetypeId": "samurai-brawling-blademaster",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial weapons", "Katana", "Wakizashi"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "slayer-bounty-hunter",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial weapons", "Aklys", "Bolas", "Dan bong", "Lasso", "Net"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "replace", "proficiencies": ["Light shields", "Bucklers"] }
+      ]
+    },
+    {
+      "archetypeId": "slayer-stygian-slayer",
+      "proficiencyAdjustments": [
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "slayer-toxic-sniper",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "Firearms"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "spiritualist-phantom-blade",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial weapons"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor", "Medium armor"] }
+      ]
+    },
+    {
+      "archetypeId": "warpriest-mantis-zealot",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial weapons", "Sawtooth sabre"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "witch-tatterdemalion",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "add", "proficiencies": ["Bolas", "Nets", "Whips"] }
+      ]
+    }
+  ]
+}
