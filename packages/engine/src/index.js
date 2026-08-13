@@ -1773,6 +1773,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const abilityScoreAdjustments = archetypeAbilityScoreAdjustments(archetype);
   if (abilityScoreAdjustments.length)
     automated.push(`${abilityScoreAdjustments.length} level-aware ability-score adjustment${abilityScoreAdjustments.length === 1 ? "" : "s"}`);
+  const spellLikeAbilityDetails = inferredArchetypeSpellLikeAbilityDetails(archetype);
   const ruleSentenceCoverage = [
     ["initiative", initiativeBonusDetails.sentenceCoverage ?? []],
     ["saving throws", saveBonusDetails.sentenceCoverage ?? []],
@@ -1784,6 +1785,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["ability scores", abilityScoreDetails.sentenceCoverage ?? []],
     ["spell access", inferredSpellAccess.sentenceCoverage ?? []],
     ["spell modifiers", inferredSpellModifiers.sentenceCoverage ?? []],
+    ["spell-like abilities", spellLikeAbilityDetails.sentenceCoverage ?? []],
     ["Wild Empathy", inferredWildEmpathy.sentenceCoverage ?? []],
   ];
   const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
@@ -1829,7 +1831,6 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const rerollActionDetails = inferredArchetypeRerollActionDetails(archetype);
   if (rerollActionDetails.actions.length)
     automated.push(`${rerollActionDetails.actions.length} rules-aware reroll action${rerollActionDetails.actions.length === 1 ? "" : "s"}`);
-  const spellLikeAbilityDetails = inferredArchetypeSpellLikeAbilityDetails(archetype);
   if (spellLikeAbilityDetails.actions.length)
     automated.push(`${spellLikeAbilityDetails.actions.length} tracked spell-like abilit${spellLikeAbilityDetails.actions.length === 1 ? "y" : "ies"}`);
   const timedEffectActionDetails = inferredArchetypeTimedEffectActionDetails(archetype);
