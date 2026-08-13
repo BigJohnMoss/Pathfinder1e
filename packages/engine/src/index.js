@@ -1581,9 +1581,12 @@ function inferArchetypeProficiencyDetails(archetype, includeFullyAutomatedFeatur
     const text = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
     if (!/^(?:Weapon and Armor|Armor and Weapon|Armor|Weapon) Proficienc(?:y|ies)$/i.test(name) || text.length > 400) return false;
     const ruleText = text.replace(/\s+This (?:ability )?(?:alters|replaces|modifies) [^.]*?proficienc(?:y|ies)\.?$/i, "").trim();
-    if (ruleText.split(/(?<=[.!?])\s+/).filter(Boolean).length !== 1) return false;
+    const ruleSentences = ruleText.split(/(?<=[.!?])\s+/).filter(Boolean);
+    if (ruleSentences.length !== 1 && !(explicit.length && ruleSentences.every(sentence => /proficien/i.test(sentence)))) return false;
     if (/arcane spell failure|flurry of blows|class skills?|levels? stack|bonus feats?|chooses?|choices?|\bcan use\b|\bone exotic\b|\bone-handed simple\b|\bdisarm or trip\b/i.test(text)) return false;
+    if (explicit.length && ruleSentences.every(sentence => /proficien/i.test(sentence))) return true;
     const supportedMixedRule = /gains? proficiency (?:with|in) .+?,\s*but not (?:with )?.+/i.test(ruleText)
+      || /(?:is|are) proficient (?:with|in) .+?\s+but not(?: with)? .+/i.test(ruleText)
       || /loses? (?:his |her |their )?proficiency with .+?,\s*but gains? proficiency (?:with|in) .+/i.test(ruleText);
     const supportedSimpleLossRule = /^.+?\s+loses? (?:proficiency with .+|.+ proficiency)\.?$/i.test(ruleText);
     if (/\bbut\b|\bloses?\b/i.test(ruleText) && !supportedMixedRule && !supportedSimpleLossRule) return false;

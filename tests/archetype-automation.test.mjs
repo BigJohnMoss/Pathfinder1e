@@ -1315,12 +1315,20 @@ test("complete multi-sentence proficiency rules leave the manual queue", () => {
   const record = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const automated = [
     ["alchemist-fire-bomber", "Weapon and Armor Proficiency"],
+    ["barbarian-feral-gnasher", "Weapon and Armor Proficiency"],
     ["barbarian-savage-technologist", "Weapon and Armor Proficiency"],
+    ["barbarian-true-primitive", "Weapon and Armor Proficiency"],
     ["bloodrager-urban-bloodrager", "Weapon and Armor Proficiency"],
     ["brawler-battle-dancer", "Armor Proficiency"],
     ["cavalier-saurian-champion", "Weapon and Armor Proficiency"],
     ["cavalier-beast-rider", "Armor Proficiency"],
+    ["cavalier-wave-rider", "Weapon and Armor Proficiency"],
     ["cleric-angelfire-apostle", "Armor Proficiency"],
+    ["cleric-cardinal", "Armor Proficiency"],
+    ["cleric-cloistered-cleric", "Weapon and Armor Proficiency"],
+    ["cleric-ecclesitheurge", "Weapon and Armor Proficiency"],
+    ["cleric-mendevian-priest", "Weapon and Armor Proficiency"],
+    ["druid-aerie-protector", "Weapon and Armor Proficiency"],
     ["druid-nature-priest", "Weapon Proficiencies"],
     ["druid-feral-child", "Weapon and Armor Proficiency"],
     ["druid-sky-druid", "Weapon and Armor Proficiency"],
@@ -1402,6 +1410,7 @@ test("complete multi-sentence proficiency rules leave the manual queue", () => {
     { category: "weapon", operation: "replace", proficiencies: ["All simple weapons", "Greatclub"] },
   ]);
   assert.ok(archetypeAutomationSummary(record("magus-spire-defender")).manual.some(item => item.startsWith("Weapon Proficiency (level")), "restricted weapon choices remain manual");
+  assert.ok(archetypeAutomationSummary(record("cavalier-musketeer")).manual.some(item => item.startsWith("Weapon and Armor Proficiency (level")), "the unmodeled fighter-level stacking rule remains manual");
 });
 
 test("inferred proficiency automation stays normalized across the full archetype catalogue", () => {
