@@ -8,6 +8,8 @@ import {
   apgClassResourceMaximums,
   archetypeAutomationSummary,
   inferArchetypeTeamworkSharingActions,
+  inferArchetypePassiveTeamworkSharings,
+  inferArchetypeFeatChoices,
   resolvedArchetypeResourceAdjustments,
 } from "../packages/engine/src/index.js";
 
@@ -101,4 +103,40 @@ test("Majordomo Delegate models scaling feats, action economy, and long-duration
     { id: "until-refresh", minimumLevel: 16, featCount: 1, actionType: "1-minute" },
   ]);
   assert.equal(archetypeAutomationSummary(source, data.feats, data.spells).manual.some((entry) => entry.startsWith("Delegate")), true, "the alchemy prohibition remains honestly queued");
+});
+
+test("automatic companion teamwork sharing is inferred and removed from the manual audit", () => {
+  for (const [archetypeId, classId, featureName, target] of [
+    ["inquisitor-sacred-huntsmaster", "inquisitor", "Hunter Tactics", "animal-companion"],
+    ["summoner-twinned-summoner", "summoner", "Teamwork Feats", "eidolon"],
+  ]) {
+    const source = archetype(archetypeId);
+    const sharing = inferArchetypePassiveTeamworkSharings(source)[0];
+    assert.equal(sharing.sharing.target, target, archetypeId);
+    assert.equal(sharing.sharing.ignorePrerequisites, true, archetypeId);
+    const applied = applyArchetype(characterClass(classId), source, data.classes, data.spells);
+    assert.ok(applied.features.some((feature) => feature.teamworkFeatSharing?.target === target), archetypeId);
+    assert.equal(archetypeAutomationSummary(source, data.feats, data.spells).manual.some((entry) => entry.startsWith(featureName)), false, archetypeId);
+  }
+});
+
+test("Strategist Drill Instructor spends challenge, tracks recipients, and scales its training duration", () => {
+  const source = archetype("cavalier-strategist");
+  const action = inferArchetypeTeamworkSharingActions(source).find(({ sourceFeatureId }) => sourceFeatureId.includes("drill-instructor"))?.action;
+  assert.ok(action);
+  assert.equal(action.resourceId, "challenges");
+  assert.deepEqual(action.actionTypeByLevel, [{ level: 4, actionType: "10-minute" }]);
+  assert.deepEqual(action.recipients.map(({ label }) => label), ["1 ally", "2 allies", "3 allies", "4 allies"]);
+  assert.deepEqual(action.activeEffect.defaultRoundsByLevel.filter(({ level }) => [4, 6, 20].includes(level)), [
+    { level: 4, rounds: 120 }, { level: 6, rounds: 130 }, { level: 20, rounds: 200 },
+  ]);
+  assert.equal(action.confirmations[0].requiredForActivation, true);
+  assert.equal(archetypeAutomationSummary(source, data.feats, data.spells).manual.some((entry) => entry.startsWith("Drill Instructor")), false);
+});
+
+test("plain bonus teamwork feats preserve recurring levels without misreading conditional alternatives", () => {
+  assert.deepEqual(inferArchetypeFeatChoices(archetype("bard-averaka-arbiter"), data.feats).map(({ level }) => level), [2, 6, 10, 14, 18]);
+  assert.deepEqual(inferArchetypeFeatChoices(archetype("summoner-twinned-summoner"), data.feats).map(({ level }) => level), [4, 12]);
+  assert.deepEqual(inferArchetypeFeatChoices(archetype("hunter-packmaster"), data.feats), []);
+  assert.deepEqual(inferArchetypeFeatChoices(archetype("spiritualist-zeitgeist-binder"), data.feats), []);
 });

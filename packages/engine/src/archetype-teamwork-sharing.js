@@ -3,6 +3,17 @@ import { resolvedArchetypeResourceAdjustments } from "./archetype-resources.js";
 const featureLabel = (feature) => String(feature?.name ?? "Teamwork feat").replace(/\s*\((?:Ex|Su|Sp)\)\s*$/i, "").trim();
 
 function durationByLevel(summary, minimumLevel) {
+  const baseMinutes = Number(summary.match(/(?:retain|retains)[^.]{0,80}?for\s+(\d+)\s+minutes?/i)?.[1]);
+  const minuteDivisorText = summary.match(/(?:plus|\+)\s+1\s+minute\s+for\s+every\s+(\d+|two|three|four)\s+[^.]{0,30}?levels?/i)?.[1];
+  const minuteDivisor = Number(({ two: 2, three: 3, four: 4 }[minuteDivisorText?.toLowerCase()] ?? minuteDivisorText));
+  if (Number.isFinite(baseMinutes) && Number.isFinite(minuteDivisor) && minuteDivisor >= 1) {
+    const steps = [];
+    for (let level = minimumLevel; level <= 20; level += 1) {
+      const rounds = (baseMinutes + Math.floor(level / minuteDivisor)) * 10;
+      if (!steps.length || steps.at(-1).rounds !== rounds) steps.push({ level, rounds });
+    }
+    return steps;
+  }
   const base = Number(summary.match(/(?:retain|retains)[^.]{0,80}?for\s+(\d+)\s+rounds?/i)?.[1]);
   const divisor = Number(summary.match(/(?:plus|\+)\s+1\s+round\s+for\s+every\s+(\d+)\s+[^.]{0,30}?levels?/i)?.[1]);
   const levelDuration = summary.match(/number of rounds equal to\s+(\d+)\s*\+\s+(?:her|his|their|the)?\s*[a-z]+ level/i);
@@ -28,7 +39,10 @@ function selectionCounts(summary, minimumLevel) {
 }
 
 function actionTypes(summary, minimumLevel) {
-  const initial = /as a (free|immediate|move|standard|swift) action/i.exec(summary.split(/At\s+\d+(?:st|nd|rd|th) level/i)[0])?.[1] ?? "standard";
+  const initialText = summary.split(/At\s+\d+(?:st|nd|rd|th) level/i)[0];
+  const initial = /(?:spending|spends?) 10 minutes/i.test(summary)
+    ? "10-minute"
+    : /as a (free|immediate|move|standard|swift) action/i.exec(initialText)?.[1] ?? "standard";
   let currentLevel = minimumLevel;
   const steps = [{ level: minimumLevel, actionType: initial }];
   for (const sentence of summary.split(/(?<=[.!?])\s+/)) {
@@ -42,20 +56,54 @@ function actionTypes(summary, minimumLevel) {
 
 function resourceDetails(archetype, feature, summary) {
   if (/expend one use of smite evil/i.test(summary)) return { resourceId: "smiteEvil", cost: 1 };
+  if (/expend(?:ing)? 1 use of (?:his|her|their) challenge ability/i.test(summary)) return { resourceId: "challenges", cost: 1 };
   const resource = resolvedArchetypeResourceAdjustments(archetype).find((candidate) =>
     candidate.sourceFeatureId === feature.id || candidate.resourceId === `archetype-${feature.id}` || candidate.label?.toLowerCase() === featureLabel(feature).toLowerCase(),
   );
   return resource ? { resourceId: resource.resourceId, cost: 1 } : undefined;
 }
 
+function passiveSharingDetails(feature, summary) {
+  const match = summary.match(/automatically grants? (?:all of )?(?:her|his|their) teamwork feats to (?:her|his|their) (animal companion|eidolon)/i);
+  if (!match) return undefined;
+  const target = match[1].toLowerCase() === "eidolon" ? "eidolon" : "animal-companion";
+  return {
+    sourceFeatureId: feature.id,
+    sharing: {
+      featType: "teamwork",
+      target,
+      targetLabel: target === "eidolon" ? "Eidolon" : "Animal companion",
+      ignorePrerequisites: /(?:companion|eidolon) (?:doesn.t|does not) need to meet the prerequisites/i.test(summary),
+      summary: `All selected teamwork feats are automatically shared with the ${target === "eidolon" ? "eidolon" : "animal companion"}.`,
+    },
+  };
+}
+
+const replacementBoilerplate = (sentence) => /^(?:This ability )?(?:alters?|replaces?)\b/i.test(sentence.trim());
+
 export function inferredArchetypeTeamworkSharingDetails(archetype) {
   const actions = [];
+  const passiveSharings = [];
   const fullyAutomatedFeatureIds = new Set();
   const sentenceCoverage = [];
   const features = (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? []);
   for (const feature of features) {
-    if (feature.resourceActions?.length) continue;
     const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
+    const sentences = summary.split(/(?<=[.!?])\s+/);
+    const passive = passiveSharingDetails(feature, summary);
+    if (passive) {
+      passiveSharings.push(passive);
+      const covered = new Set();
+      sentences.forEach((sentence, sentenceIndex) => {
+        if (/automatically grants? (?:all of )?(?:her|his|their) teamwork feats to/i.test(sentence)
+          || /(?:companion|eidolon) (?:doesn.t|does not) need to meet the prerequisites of (?:these )?teamwork feats/i.test(sentence)) {
+          covered.add(sentenceIndex);
+          sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+        }
+      });
+      if (sentences.every((sentence, sentenceIndex) => covered.has(sentenceIndex) || replacementBoilerplate(sentence))) fullyAutomatedFeatureIds.add(feature.id);
+    }
+    if (feature.resourceActions?.length) continue;
     if (!/\bgrant(?:s|ed)?\b[^.]{0,100}\b(?:teamwork feat|this feat|one of (?:these|his) feats)|\bgrant(?:s|ed)? the benefits of one teamwork feat/i.test(summary)) continue;
     const minimumLevel = Math.max(1, Number(feature.level ?? 1));
     const upgradeSummary = features.find((candidate) => /Greater Battle Tactician/i.test(candidate.name ?? ""))?.summary ?? "";
@@ -64,6 +112,8 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
     if (!roundsByLevel || !resource) continue;
     const label = featureLabel(feature);
     const evilRestriction = /Evil creatures do not gain the benefit/i.test(summary);
+    const visibilityRestriction = /as long as (?:the cavalier|he|she|they) is visible and can be heard/i.test(summary);
+    const maximumRecipients = Number(summary.match(/up to (four|three|two|\d+) of (?:his|her|their) allies/i)?.[1]?.replace(/four/i, "4").replace(/three/i, "3").replace(/two/i, "2"));
     const delegateModes = feature.id === "investigator-majordomo-delegate-ex-1" ? [
       { id: "combat", label: "Combat delegation", summary: "Grant the selected feats for the normal round-based duration." },
       { id: "noncombat-task", label: "Noncombat task", minimumLevel: 4, defaultRounds: 999, actionType: "10-minute", summary: "Designate one uninterrupted noncombat task; benefits last until it is complete, up to 8 hours." },
@@ -83,9 +133,16 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
           countByLevel: selectionCounts(summary, minimumLevel),
           ...(feature.id === "investigator-majordomo-delegate-ex-1" ? { minimumCount: 1 } : {}),
         },
+        ...(Number.isFinite(maximumRecipients) ? {
+          recipientLabel: "Allies receiving the feat",
+          recipients: Array.from({ length: maximumRecipients }, (_, index) => ({ id: String(index + 1), label: `${index + 1} ${index === 0 ? "ally" : "allies"}` })),
+        } : {}),
         ...(delegateModes ? { modeLabel: "Delegation", modes: delegateModes } : {}),
         actionTypeByLevel: actionTypes(`${summary} ${upgradeSummary}`, minimumLevel),
-        ...(evilRestriction ? { confirmations: [{ id: "non-evil-allies", label: "All recipients are non-evil allies", requiredForActivation: true }] } : {}),
+        ...((evilRestriction || visibilityRestriction) ? { confirmations: [
+          ...(evilRestriction ? [{ id: "non-evil-allies", label: "All recipients are non-evil allies", requiredForActivation: true }] : []),
+          ...(visibilityRestriction ? [{ id: "visible-audible-conscious", label: "Recipients can see and hear you, and you remain conscious", requiredForActivation: true }] : []),
+        ] } : {}),
         activeEffect: {
           name: label,
           targets: ["allies"],
@@ -98,7 +155,9 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
         summary,
       },
     });
-    summary.split(/(?<=[.!?])\s+/).forEach((_, sentenceIndex) => sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex }));
+    summary.split(/(?<=[.!?])\s+/).forEach((sentence, sentenceIndex) => {
+      if (!/\b(?:can['’]?t|cannot|may not) (?:take|select|choose)\b/i.test(sentence)) sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+    });
     if (!["brawler-exemplar-field-instruction-ex-5", "investigator-majordomo-delegate-ex-1"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
   }
 
@@ -107,9 +166,13 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
     greater.summary.split(/(?<=[.!?])\s+/).forEach((_, sentenceIndex) => sentenceCoverage.push({ sourceFeatureId: greater.id, sentenceIndex }));
     fullyAutomatedFeatureIds.add(greater.id);
   }
-  return { actions, fullyAutomatedFeatureIds, sentenceCoverage };
+  return { actions, passiveSharings, fullyAutomatedFeatureIds, sentenceCoverage };
 }
 
 export function inferArchetypeTeamworkSharingActions(archetype) {
   return inferredArchetypeTeamworkSharingDetails(archetype).actions;
+}
+
+export function inferArchetypePassiveTeamworkSharings(archetype) {
+  return inferredArchetypeTeamworkSharingDetails(archetype).passiveSharings;
 }

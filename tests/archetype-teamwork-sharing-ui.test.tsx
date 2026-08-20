@@ -73,3 +73,35 @@ test("Majordomo Delegate exposes only legal modes and limits the daily mode to o
   assert.match(screen.getByLabelText("Grant Delegate result").textContent ?? "", /1-minute action/);
   cleanup();
 });
+
+test("automatic companion sharing lists the character's selected teamwork feats", () => {
+  const source = archetypes.find((candidate: { id: string }) => candidate.id === "inquisitor-sacred-huntsmaster");
+  const base = data.classes.find((candidate: { id: string }) => candidate.id === "inquisitor");
+  const applied = applyArchetype(base, source, data.classes, data.spells);
+  render(<ClassFeatures level={3} className={applied.name} features={featuresThroughLevel(applied, 3)} classLevels={{ inquisitor: 3 }} selectedFeats={[{ id: "outflank", name: "Outflank", type: "teamwork" }, { id: "power-attack", name: "Power Attack", type: "combat" }]} />);
+  const sharing = screen.getByRole("region", { name: "Hunter Tactics (Ex) shared teamwork feats" });
+  assert.match(sharing.textContent ?? "", /Shared with Animal companion/);
+  assert.match(sharing.textContent ?? "", /Outflank/);
+  assert.doesNotMatch(sharing.textContent ?? "", /Power Attack/);
+  assert.match(sharing.textContent ?? "", /does not need to meet their prerequisites/);
+  cleanup();
+});
+
+test("Strategist Drill Instructor enforces visibility and records the chosen ally count", () => {
+  const source = archetypes.find((candidate: { id: string }) => candidate.id === "cavalier-strategist");
+  const base = data.classes.find((candidate: { id: string }) => candidate.id === "cavalier");
+  const applied = applyArchetype(base, source, data.classes, data.spells);
+  const effects: ActiveEffect[] = [];
+  let used = 0;
+  render(<ClassFeatures level={6} className={applied.name} features={featuresThroughLevel(applied, 6)} classLevels={{ cavalier: 6 }} selectedFeats={[{ id: "outflank", name: "Outflank", type: "teamwork" }]} dailyResources={[{ id: "challenges", label: "Challenge", unit: "use", maximum: 3, used, onUsedChange: (next) => { used = next; } }, { id: "tactician", label: "Strategist Tactician", unit: "use", maximum: 2, used: 0, onUsedChange: () => {} }]} onAddEffect={(effect) => effects.push(effect)} />);
+  const button = screen.getByRole("button", { name: "Grant Drill Instructor" });
+  assert.equal(button.hasAttribute("disabled"), true);
+  fireEvent.change(screen.getByLabelText("Grant Drill Instructor recipient"), { target: { value: "4" } });
+  fireEvent.click(screen.getByLabelText("Grant Drill Instructor Recipients can see and hear you, and you remain conscious"));
+  fireEvent.click(button);
+  assert.equal(used, 1);
+  assert.equal(effects[0].roundsRemaining, 130);
+  assert.match(effects[0].description ?? "", /Recipients: 4 allies/);
+  assert.match(screen.getByLabelText("Grant Drill Instructor result").textContent ?? "", /4 allies.*130 rounds.*10-minute action/);
+  cleanup();
+});

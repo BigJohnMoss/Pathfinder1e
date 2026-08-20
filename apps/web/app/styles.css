@@ -214,6 +214,7 @@ a:focus-visible,
 .coverage-full { background: #dcecdf; color: #245b35; }
 .coverage-partial { background: #fff0c9; color: #754708; }
 .coverage-descriptive { background: #eeeae2; color: #5f584f; }
+.passive-feat-sharing{display:grid;gap:8px;margin-top:12px;padding:12px;border:1px solid #d8cbb8;border-radius:10px;background:#fbf7ef}.passive-feat-sharing>strong{color:#6f2424}.passive-feat-chips{display:flex;flex-wrap:wrap;gap:7px}.passive-feat-chips span{display:block;padding:5px 8px;border:1px solid #dbcdb8;border-radius:999px;background:#fff;font-size:.8rem;font-weight:700}.passive-feat-sharing p{margin:0!important}.passive-feat-sharing small{color:#5b584f;line-height:1.4}
 
 .archetype-requirements {
   color: #842f2f;

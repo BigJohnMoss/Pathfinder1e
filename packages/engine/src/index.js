@@ -10,7 +10,7 @@ import { inferArchetypeTimedEffectActions, inferredArchetypeTimedEffectActionDet
 import { inferArchetypeChannelEnergyActions, inferredArchetypeChannelEnergyActionDetails } from "./archetype-channel-energy.js";
 import { inferArchetypeResourceDamageActions, inferredArchetypeResourceDamageActionDetails } from "./archetype-resource-damage.js";
 import { inferArchetypeSaveEffectActions, inferredArchetypeSaveEffectActionDetails } from "./archetype-save-effects.js";
-import { inferArchetypeTeamworkSharingActions, inferredArchetypeTeamworkSharingDetails } from "./archetype-teamwork-sharing.js";
+import { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions, inferredArchetypeTeamworkSharingDetails } from "./archetype-teamwork-sharing.js";
 import { inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
@@ -46,7 +46,7 @@ export { inferArchetypeTimedEffectActions };
 export { inferArchetypeChannelEnergyActions };
 export { inferArchetypeResourceDamageActions };
 export { inferArchetypeSaveEffectActions };
-export { inferArchetypeTeamworkSharingActions };
+export { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions };
 export { inferArchetypeSpellcastingAbility };
 export { inferArchetypeSpellcastingProgression };
 export { inferArchetypeSpellAdditions };
@@ -1251,11 +1251,14 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     ...specializedResourceActions,
     ...inferArchetypeResourceActions(archetype, specializedFeatureIds),
   ]) inferredResourceActions.set(sourceFeatureId, [...(inferredResourceActions.get(sourceFeatureId) ?? []), action]);
+  const inferredPassiveTeamworkSharings = new Map(inferArchetypePassiveTeamworkSharings(archetype).map(({ sourceFeatureId, sharing }) => [sourceFeatureId, sharing]));
   const replacements = archetype.replacements.flatMap(
     (replacement) => replacement.features,
-  ).map((feature) => inferredResourceActions.has(feature.id)
-    ? { ...feature, resourceActions: [...(feature.resourceActions ?? []), ...inferredResourceActions.get(feature.id)] }
-    : feature);
+  ).map((feature) => ({
+    ...feature,
+    ...(inferredResourceActions.has(feature.id) ? { resourceActions: [...(feature.resourceActions ?? []), ...inferredResourceActions.get(feature.id)] } : {}),
+    ...(inferredPassiveTeamworkSharings.has(feature.id) ? { teamworkFeatSharing: inferredPassiveTeamworkSharings.get(feature.id) } : {}),
+  }));
   const adjustTable = (table, adjustment) =>
     adjustment === undefined
       ? table
@@ -1941,7 +1944,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     const sentences = archetypeRuleSentences(feature.summary);
     return covered.size > 1 && sentences.every((sentence, index) =>
       covered.has(index) || archetypeReplacementBoilerplate(sentence) ||
-      !/\d|\b(?:action|attack|bonus|can|check|damage|DC|gains?|has|immune|immunity|level|may|must|penalty|receives?|resistance|roll|round|save|skill|spell|speed|times? per|uses?)\b/i.test(sentence),
+      !/\d|\b(?:action|attack|bonus|can|can['’]?t|cannot|check|damage|DC|gains?|has|immune|immunity|level|may|must|penalty|prohibited|receives?|resistance|roll|round|save|skill|spell|speed|times? per|uses?)\b/i.test(sentence),
     );
   }).map((feature) => feature.id));
   if (crossRuleFeatureIds.size)
@@ -1992,6 +1995,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     automated.push(`${saveEffectActionDetails.actions.length} resolved save-effect action${saveEffectActionDetails.actions.length === 1 ? "" : "s"}`);
   if (teamworkSharingDetails.actions.length)
     automated.push(`${teamworkSharingDetails.actions.length} teamwork-feat sharing action${teamworkSharingDetails.actions.length === 1 ? "" : "s"}`);
+  if (teamworkSharingDetails.passiveSharings.length)
+    automated.push(`${teamworkSharingDetails.passiveSharings.length} automatic companion teamwork-feat sharing rule${teamworkSharingDetails.passiveSharings.length === 1 ? "" : "s"}`);
   const specializedResourceFeatureIds = new Set([
     ...temporaryHitPointActionDetails.actions,
     ...rerollActionDetails.actions,
