@@ -33,6 +33,7 @@ import { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments
 import { inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails } from "./archetype-favored-terrain.js";
 import { inferArchetypeFavoredEnemyChoices, inferredArchetypeFavoredEnemyChoiceDetails } from "./archetype-favored-enemy.js";
 import { inferArchetypeNatureBondRules, inferredArchetypeNatureBondDetails } from "./archetype-nature-bond.js";
+import { inferArchetypeOmissions, inferredArchetypeOmissionDetails } from "./archetype-omissions.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants };
 export { eidolonProgression } from "./eidolon.js";
@@ -73,6 +74,7 @@ export { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments
 export { inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails };
 export { inferArchetypeFavoredEnemyChoices, inferredArchetypeFavoredEnemyChoiceDetails };
 export { inferArchetypeNatureBondRules, inferredArchetypeNatureBondDetails };
+export { inferArchetypeOmissions, inferredArchetypeOmissionDetails };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 export { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 export { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
@@ -1887,6 +1889,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const favoredTerrainChoiceDetails = inferredArchetypeFavoredTerrainChoiceDetails(archetype);
   const favoredEnemyChoiceDetails = inferredArchetypeFavoredEnemyChoiceDetails(archetype);
   const natureBondDetails = inferredArchetypeNatureBondDetails(archetype);
+  const omissionDetails = inferredArchetypeOmissionDetails(archetype);
   const inferredWildEmpathy = inferredArchetypeWildEmpathyDetails(archetype);
   const precisionDamageDetails = inferredArchetypePrecisionDamageDetails(archetype);
   const inferredSpellListCount = Object.keys(inferredSpellAdditions.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined).length;
@@ -1906,6 +1909,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (natureBondDetails.natureBondOptionIds.length) automated.push("Nature Bond path restrictions");
   if (natureBondDetails.animalCompanionIds.length) automated.push("Available Nature Bond animal companions");
   if (natureBondDetails.domainIds.length) automated.push("Available Nature Bond domains");
+  if (omissionDetails.omissions.length) automated.push(`${omissionDetails.omissions.length} verified class-feature omission${omissionDetails.omissions.length === 1 ? "" : "s"}`);
   if (precisionDamageDetails.adjustments.length) automated.push(`${precisionDamageDetails.adjustments.length} level-aware precision-damage progression${precisionDamageDetails.adjustments.length === 1 ? "" : "s"}`);
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
@@ -2109,6 +2113,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...(archetype.arcaneSpellFailure?.fullyAutomatedFeatureIds ?? []),
     ...skillRankDetails.fullyAutomatedFeatureIds,
     ...natureBondDetails.fullyAutomatedFeatureIds,
+    ...omissionDetails.fullyAutomatedFeatureIds,
     ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...initiativeBonusDetails.fullyAutomatedFeatureIds,
     ...saveBonusDetails.fullyAutomatedFeatureIds,
