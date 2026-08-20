@@ -210,6 +210,24 @@ function adjustmentsFromFeature(feature) {
   for (const [sentenceIndex, sentence] of sentences.entries()) {
     if (replacementBoilerplate(sentence)) continue;
     if (sentenceIndex === scaling?.index) continue;
+    const conditionalKnowledgeHalfLevel = sentence.match(/\badds? (?:(?:one-)?half|1\/2) (?:of )?(?:his|her|their) (?:(?:\w+ )?(?:class )?)?level (?:as a bonus )?on (?:his|her|their) check[.]?$/i);
+    if (conditionalKnowledgeHalfLevel) {
+      const prefix = sentence.slice(0, conditionalKnowledgeHalfLevel.index);
+      const leadingCondition = leadingConditionInPrefix(prefix);
+      if (leadingCondition && /\bKnowledge checks?(?: of any kind)?\b/i.test(prefix)) {
+        adjustments.push(...knowledgeSkills.map((skill) => ({
+          sourceFeatureId: feature.id,
+          skill,
+          minimumLevel: minimumLevelFor(sentence, sentenceIndex),
+          base: 0,
+          levelDivisor: 2,
+          condition: leadingCondition,
+        })));
+        lastParsedSentenceIndex = sentenceIndex;
+        coveredSentenceIndexes.add(sentenceIndex);
+        continue;
+      }
+    }
     const halfLevel = sentence.match(/\b(?:adds?|gains?|receives?) (?:an? )?(?:bonus equal to )?(?:(?:one-)?half|1\/2) (?:of )?(?:his|her|their) (?:(?:\w+ )?(?:class )?)?level(?: \(minimum \+?1\)|,? minimum \+?1)? (?:as a bonus )?(?:on|to) (.+?)[.]?$/i);
     if (halfLevel) {
       const prefix = sentence.slice(0, halfLevel.index);
