@@ -23,20 +23,20 @@ const cleanSpellName = (value) => String(value ?? "")
 function spellNames(raw) {
   return cleanSpellName(raw).split(/\s*(?:,|\bor\b|\band\b)\s*/i)
     .map(cleanSpellName)
-    .filter((name) => name && name.length <= 80 && name.split(/\s+/).length <= 8 && !/\b(?:ability|effect|following|power|spell slot|spells?)\b/i.test(name));
+    .filter((name) => name && name.length <= 80 && name.split(/\s+/).length <= 8 && !/^(?:a|an|the)$/i.test(name) && !/\b(?:ability|action|casts?|effect|following|power|spell slot|spells?|when|whenever)\b/i.test(name));
 }
 
 function resourceReference(sentence) {
   const patterns = [
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+rounds? of (?:his|her|their)?\s*bardic performance\b/i, "bardicPerformance"],
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+rounds? of (?:his|her|their)?\s*raging song\b/i, "ragingSongRounds"],
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+(?:uses? of )?(?:his|her|their)?\s*inspiration\b/i, "inspiration"],
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+grit points?\b/i, "grit"],
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+panache points?\b/i, "panache"],
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+(?:points? from (?:his|her|their) |points? of )?arcane pool\b/i, "arcanePool"],
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+(?:points? from (?:his|her|their) |points? from (?:his|her|their) ki pool|ki points?)\b/i, "kiPool"],
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+(?:points? from (?:his|her|their) |points? of )?phrenic pool\b/i, "phrenicPool"],
-    [/\b(?:spend|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+uses? of (?:his|her|their)?\s*fervor\b/i, "fervor"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+rounds? of (?:his|her|their)?\s*bardic performance\b/i, "bardicPerformance"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+rounds? of (?:his|her|their)?\s*raging song\b/i, "ragingSongRounds"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+(?:uses? of )?(?:his|her|their)?\s*inspiration\b/i, "inspiration"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+grit points?\b/i, "grit"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+panache points?\b/i, "panache"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+(?:points? from (?:his|her|their) |points? of )?arcane pool\b/i, "arcanePool"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+(?:points? from (?:his|her|their) ki pool|ki points?)\b/i, "kiPool"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+(?:points? from (?:his|her|their) |points? of )?phrenic pool\b/i, "phrenicPool"],
+    [/\b(?:spend|spending|expend|expending)\s+(one|two|three|four|five|six|\d+)\s+uses? of (?:his|her|their)?\s*fervor\b/i, "fervor"],
   ];
   for (const [pattern, resourceId] of patterns) {
     const match = sentence.match(pattern);
@@ -49,7 +49,24 @@ function parsedSpells(sentence) {
   const found = [];
   for (const match of sentence.matchAll(/\b(?:to|can|may)\s+(?:cast|use)\s+(.{1,120}?)\s+as (?:a )?spell[- ]?like abilit(?:y|ies)\b/gi)) found.push(...spellNames(match[1]));
   for (const match of sentence.matchAll(/\bas if (?:he|she|they|the [a-z'\u2019 -]+)?\s*(?:had )?(?:cast|using)\s+(.{1,100}?)(?=[,.;]|$)/gi)) found.push(...spellNames(match[1]));
+  for (const match of sentence.matchAll(/\bgain(?:s|ing)? (?:the )?effects? of ([a-z][a-z'\u2019 -]{1,70}?)(?=\s+(?:for|until|by)\b|[,.;]|$)/gi)) found.push(...spellNames(match[1]));
+  for (const match of sentence.matchAll(/\bas (?:per )?(?:the )?([a-z][a-z'\u2019 -]{1,70}?) spell\b/gi)) found.push(...spellNames(match[1]));
+  for (const match of sentence.matchAll(/\b(?:create|produce|radiate)\s+([a-z][a-z'\u2019 -]{1,50}?)\s*\(as the spell\b/gi)) found.push(...spellNames(match[1]));
   return [...new Set(found.map((name) => name.toLowerCase()))];
+}
+
+function actionType(sentence) {
+  return sentence.match(/\b(?:as |use \w+ as )?(a |an )?(full-round|immediate|move|standard|swift) action\b/i)?.[2]?.toLowerCase();
+}
+
+function spellDuration(sentence, minimumLevel) {
+  if (/\bfor (?:a number of rounds equal to (?:his|her|their) [a-z]+ modifier|1 round per (?:[a-z]+ )?level)\b/i.test(sentence)) return {
+    defaultRoundsByLevel: Array.from({ length: 21 - minimumLevel }, (_, index) => ({ level: minimumLevel + index, rounds: minimumLevel + index })),
+  };
+  const fixed = sentence.match(/\bfor\s+(one|two|three|four|five|six|\d+)\s+(rounds?|minutes?)\b/i);
+  if (!fixed) return undefined;
+  const amount = numericValue(fixed[1]) * (/minute/i.test(fixed[2]) ? 10 : 1);
+  return { defaultRounds: amount };
 }
 
 export function inferredArchetypeResourceSpellActionDetails(archetype) {
@@ -67,6 +84,9 @@ export function inferredArchetypeResourceSpellActionDetails(archetype) {
       if (!names.length) continue;
       const prefix = sentence.slice(0, Math.max(0, sentence.search(/\b(?:cast|use|as if)\b/i)));
       const minimumLevel = Math.max(1, Number([...prefix.matchAll(/\b(?:At|Beginning at|Starting at) (\d+)(?:st|nd|rd|th) level\b/gi)].at(-1)?.[1] ?? feature.level ?? 1));
+      const activation = actionType(sentence);
+      const duration = spellDuration(sentence, minimumLevel);
+      const prerequisiteSpell = sentences[sentenceIndex + 1]?.match(/\bmust already have ([a-z][a-z'\u2019 -]{1,70}?) (?:available )?as a spell-like ability\b/i)?.[1]?.trim().toLowerCase();
       for (const name of names) actions.push({
         sourceFeatureId: feature.id,
         action: {
@@ -75,12 +95,19 @@ export function inferredArchetypeResourceSpellActionDetails(archetype) {
           classId: archetype.classId,
           minimumLevel,
           ...resource,
+          ...(activation ? { actionTypeByLevel: [{ level: minimumLevel, actionType: activation }] } : {}),
+          ...(prerequisiteSpell === name ? { confirmations: [{ id: `${spellId(name)}-spell-like-ability`, label: `Has ${name} as a spell-like ability`, requiredForActivation: true }] } : {}),
           spellLikeAbility: { spellId: spellId(name), spellName: name, cadence: "at-will" },
+          ...(duration ? { activeEffect: { name, targets: ["self"], bonus: 0, description: sentence, ...duration, fixedRounds: true, replaceExisting: true } } : {}),
           summary: sentence,
         },
       });
       sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
       covered.add(sentenceIndex);
+      if (prerequisiteSpell && names.includes(prerequisiteSpell)) {
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: sentenceIndex + 1 });
+        covered.add(sentenceIndex + 1);
+      }
     }
     if (covered.size && sentences.every((sentence, index) => covered.has(index) || archetypeReplacementBoilerplate(sentence))) fullyAutomatedFeatureIds.add(feature.id);
   }
