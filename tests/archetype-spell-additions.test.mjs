@@ -92,6 +92,18 @@ test("bonus spells known retain their class-level unlocks", () => {
   assert.deepEqual(inferArchetypeSpellAdditions(archetype("psychic-formless-adept"), data.spells).spellGrants, [], "conditional spells known remain manual");
 });
 
+test("semicolon-separated class-level bonus spells known retain their individual unlocks", () => {
+  const inferred = inferArchetypeSpellAdditions(archetype("paladin-pearl-seeker"), data.spells);
+  assert.deepEqual(inferred.spellGrants.map(({ spellId, spellLevel, minimumClassLevel }) => [spellId, spellLevel, minimumClassLevel]), [
+    ["slipstream", 1, 7],
+    ["ride-the-waves", 2, 10],
+    ["fluid-form", 3, 13],
+    ["seamantle", 4, 16],
+  ]);
+  assert.equal(inferred.spellListAdditions["hydraulic-push"], 1);
+  assert.equal(inferred.spellListAdditions["hydraulic-torrent"], 3);
+});
+
 test("choice lists and creature lists are not mistaken for spell grants", () => {
   assert.deepEqual(inferArchetypeSpellAdditions(archetype("mesmerist-dreamstalker"), data.spells).spellGrants, []);
   assert.deepEqual(inferArchetypeSpellAdditions(archetype("bard-fey-courtier"), data.spells).spellListAdditions, {});
