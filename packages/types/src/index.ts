@@ -166,6 +166,13 @@ export interface ClassFeatureOccurrence {
   ignoreFeatPrerequisites?: boolean;
   grantedFeatId?: string;
   grantedFeatIds?: string[];
+  teamworkFeatSharing?: {
+    featType: string;
+    target: "animal-companion" | "eidolon";
+    targetLabel: string;
+    ignorePrerequisites: boolean;
+    summary: string;
+  };
   source?: SourceRef;
   requiredOptionId?: string;
   requiredOptionMessage?: string;
@@ -206,7 +213,7 @@ export interface ClassFeatureOccurrence {
       countByLevel: Array<{ level: number; count: number }>;
       minimumCount?: number;
     };
-    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "immediate" | "move" | "standard" | "swift" }>;
+    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
     recipientLabel?: string;
     recipients?: Array<{ id: string; label: string }>;
     confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;

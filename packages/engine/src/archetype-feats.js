@@ -185,12 +185,21 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
         }
       }
     }
-    if (!/\b(?:teamwork|item creation) feat as (?:a )?bonus feat/i.test(text) || /^Bonus Feats?$/i.test(feature.name ?? "")) continue;
+    if (!/\b(?:(?:teamwork|item creation) feat as (?:a )?bonus feat|bonus (?:teamwork|item creation) feat)\b/i.test(text)
+      || /\bwould gain (?:an? |one |an additional )?bonus (?:teamwork|item creation) feat\b/i.test(text)
+      || /\bgains? (?:an? |one |an additional )?bonus (?:teamwork|item creation) feat as long as\b/i.test(text)
+      || /^Bonus Feats?$/i.test(feature.name ?? "")) continue;
     const featType = /item creation feat/i.test(text) ? "item-creation" : "teamwork";
     let levels = [];
-    const opening = text.match(/^(.{0,120}?)(?:gains?|receives?) (?:an? |one |an additional )?(?:teamwork|item creation) feat as (?:a )?bonus feat/i);
+    const opening = text.match(/^(.{0,120}?)(?:gains?|receives?) (?:(?:an? |one |an additional )?(?:teamwork|item creation) feat as (?:a )?bonus feat|(?:an? |one |an additional )?bonus (?:teamwork|item creation) feat)/i);
     if (opening) levels = ordinalLevels(opening[1]);
     if (!levels.length) levels = [Math.max(1, Math.trunc(feature.level ?? 1))];
+    const namedRecurring = text.match(/gains? an additional bonus (?:teamwork|item creation) feat at\s+(\d+)(?:st|nd|rd|th)?\s+level and every\s+(\d+|three|four|five|six)\s+levels? thereafter/i);
+    if (namedRecurring) {
+      const base = Number(namedRecurring[1]);
+      const interval = choiceNumber(namedRecurring[2]);
+      levels = [...levels, ...Array.from({ length: 20 }, (_, index) => base + index * interval).filter(level => level <= maximumLevel)];
+    }
     const every = text.match(/additional (?:item creation )?(?:bonus )?feat (?:at |for )?every\s+(\d+|four|six)\s+levels? (?:thereafter|attained after\s+(\d+)(?:st|nd|rd|th)?)/i);
     if (every) {
       const interval = choiceNumber(every[1]);

@@ -68,7 +68,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       </div>;
     })}
     <ol>{features.map((feature) => <li key={feature.id}>
-      <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.progressionProfiles?.filter((profile) => !profile.requiredOptionId || selectedOptionSet.has(profile.requiredOptionId)).map((profile) => {
+      <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.teamworkFeatSharing && <div className="passive-feat-sharing" role="region" aria-label={`${feature.name} shared teamwork feats`}><strong>Shared with {feature.teamworkFeatSharing.targetLabel}</strong>{selectedFeats.filter((feat) => feat.type === feature.teamworkFeatSharing?.featType).length ? <div className="passive-feat-chips">{selectedFeats.filter((feat) => feat.type === feature.teamworkFeatSharing?.featType).map((feat) => <span key={feat.id}>{feat.name}</span>)}</div> : <p>No teamwork feats selected yet.</p>}<small>{feature.teamworkFeatSharing.summary}{feature.teamworkFeatSharing.ignorePrerequisites ? ` The ${feature.teamworkFeatSharing.targetLabel.toLowerCase()} does not need to meet their prerequisites.` : ""}</small></div>}{feature.progressionProfiles?.filter((profile) => !profile.requiredOptionId || selectedOptionSet.has(profile.requiredOptionId)).map((profile) => {
         const usesCasterLevel = Boolean(profile.advancementOptionId && selectedOptionSet.has(profile.advancementOptionId));
         const advancementLevel = usesCasterLevel ? casterLevels[profile.classId] ?? classLevels[profile.classId] ?? 0 : classLevels[profile.classId] ?? 0;
         const current = profile.steps.filter((step) => step.level <= advancementLevel).sort((left, right) => left.level - right.level).at(-1);
@@ -163,7 +163,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const fixedSaveDc = action.savingThrow?.fixedDcByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.dc;
         const saveDc = action.savingThrow ? fixedSaveDc ?? (action.savingThrow.base ?? 0) + Math.floor(saveLevel / (action.savingThrow.levelDivisor ?? 1)) + (action.savingThrow.ability ? abilityModifiers[action.savingThrow.ability] ?? 0 : 0) : undefined;
         const saveText = action.savingThrow ? `${action.savingThrow.label} DC ${saveDc} negates.` : undefined;
-        const effectDescription = [selectedActionFeatNames.length ? `Granted teamwork feat${selectedActionFeatNames.length === 1 ? "" : "s"}: ${selectedActionFeatNames.join(", ")}.` : undefined, selectedMode?.summary, effectUpgrade?.description ?? action.activeEffect?.description, saveText].filter(Boolean).join(" ");
+        const effectDescription = [selectedActionFeatNames.length ? `Granted teamwork feat${selectedActionFeatNames.length === 1 ? "" : "s"}: ${selectedActionFeatNames.join(", ")}.` : undefined, selectedRecipient ? `Recipients: ${selectedRecipient.label}.` : undefined, selectedMode?.summary, effectUpgrade?.description ?? action.activeEffect?.description, saveText].filter(Boolean).join(" ");
         const minimumTargetHitDice = action.targetHitDiceRequirement ? Math.max(1, Math.ceil(level / action.targetHitDiceRequirement.levelDivisor)) : 0;
         const enteredTargetHitDice = Math.max(0, targetHitDice[action.id] ?? minimumTargetHitDice);
         const targetEligible = !action.targetHitDiceRequirement || enteredTargetHitDice >= minimumTargetHitDice;
@@ -335,7 +335,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           } else if (action.activeEffect && !action.rerollAction) setActionResults((current) => ({
             ...current,
             [action.id]: action.featSelection
-              ? `${selectedActionFeatNames.join(" and ")} granted to eligible allies for ${rounds} round${rounds === 1 ? "" : "s"}${actionType ? ` as a ${actionType} action` : ""}.`
+              ? `${selectedActionFeatNames.join(" and ")} granted to ${selectedRecipient?.label.toLowerCase() ?? "eligible allies"} for ${rounds} round${rounds === 1 ? "" : "s"}${actionType ? ` as a ${actionType} action` : ""}.`
               : `${effectDescription || action.activeEffect!.name} Active for ${rounds} round${rounds === 1 ? "" : "s"}.`,
           }));
           else if (temporaryHitPoints !== undefined) setActionResults((current) => ({ ...current, [action.id]: `Gained ${temporaryHitPoints} temporary hit points.` }));
