@@ -6,10 +6,28 @@ const spellcastingRule = new RegExp(
 );
 
 const normalizedAbility = (value) => String(value ?? "").toLowerCase();
-const normalizedClassId = (value) => String(value ?? "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const normalizedClassId = (value) => String(value ?? "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").replace(/-class$/, "");
 
-const progressionRule = /\b(?:same number of spell slots per day|same number of spells known and spells per day) as (?:an?|the) ([a-z][a-z -]+?)(?:\s*\([^)]*\))? of (?:his|her|their|its|the) [^.]*?level\b/i;
-const spellListRule = /\b(?:casts?(?: arcane| divine| psychic)? spells (?:(?:spontaneously|drawn) )?from|prepares? spells from) the ([a-z][a-z -]+?) spell list\b/i;
+const progressionRules = [
+  /\b(?:same number of spell slots per day|same number of spells known and spells per day) as (?:an?|the) ([a-z][a-z -]+?)(?:\s*\([^)]*\))? of (?:his|her|their|its|the) [^.]*?level\b/i,
+  /\bbase daily spell allotment is the same as (?:an?|the) ([a-z][a-z -]+?)(?:\s*\([^)]*\))? of the same level\b/i,
+  /\b(?:knows? the same number of spells and receives? the same number of spells? slots per day) as (?:an?|the) ([a-z][a-z -]+?)(?:\s*\([^)]*\))? of (?:his|her|their|its|the) [^.]*?level\b/i,
+];
+const spellListRule = /\b(?:casts?(?: arcane| divine| psychic)? spells (?:(?:spontaneously|drawn) )?from|prepares? spells from) the ([a-z]+(?:[ /-][a-z]+){0,2}?) (?:spell )?list\b/i;
+const directAbilityRule = new RegExp(
+  `\\bmust have (?:an? )?${abilityPattern} score[\\s\\S]{0,500}?\\b(?:saving throw )?DC[\\s\\S]{0,220}?\\1 modifier\\b`,
+  "i",
+);
+const completeProfileArchetypeIds = new Set([
+  "bard-speaker-of-the-palatine-eye",
+  "investigator-questioner",
+  "magus-eldritch-scion",
+  "magus-mindblade",
+]);
+
+function spellcastingMinimumLevel(summary) {
+  return Number(summary.match(/^At (\d+)(?:st|nd|rd|th)? level,[^.]{0,180}\b(?:gains? (?:a )?(?:different sort of )?spellcasting|begins? (?:to )?cast|casts? spells?)\b/i)?.[1] ?? 1);
+}
 
 function explicitlyChangesSpellcasting(trailingText) {
   return /\bkey spellcasting ability(?: score)?\b/i.test(trailingText)
@@ -20,6 +38,7 @@ function explicitlyChangesSpellcasting(trailingText) {
 
 export function inferredArchetypeSpellcastingAbilityDetails(archetype) {
   let details;
+  const fullyAutomatedFeatureIds = new Set();
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
     const match = summary.match(spellcastingRule);
@@ -29,19 +48,36 @@ export function inferredArchetypeSpellcastingAbilityDetails(archetype) {
       replacesAbility: normalizedAbility(match[2]),
       sourceFeatureId: feature.id,
     };
-    const progression = summary.match(progressionRule);
+    const directAbility = summary.match(directAbilityRule);
+    if (directAbility) details = {
+      ...details,
+      ability: normalizedAbility(directAbility[1]),
+      directAbility: true,
+      sourceFeatureId: feature.id,
+    };
+    const progression = progressionRules.map((rule) => summary.match(rule)).find(Boolean);
     const spellList = summary.match(spellListRule);
-    if (progression || spellList) details = {
+    const castingType = /\bcan cast any spell (?:he|she|they) knows? without preparing it ahead of time\b/i.test(summary)
+      ? "spontaneous"
+      : /\bmust prepare (?:his|her|their) spells ahead of time\b/i.test(summary)
+        ? "prepared"
+        : undefined;
+    const tradition = summary.match(/\bcasts? (?:spells?[^.]{0,100}? as |)(arcane|divine|psychic) spells\b/i)?.[1]?.toLowerCase()
+      ?? summary.match(/\bspells are considered (arcane|divine|psychic) spells\b/i)?.[1]?.toLowerCase();
+    if (progression || spellList || castingType || tradition) details = {
       ...details,
       ...(progression ? {
         progressionClassId: normalizedClassId(progression[1]),
-        minimumLevel: feature.level,
+        minimumLevel: spellcastingMinimumLevel(summary),
       } : {}),
       ...(spellList ? { spellListClassId: normalizedClassId(spellList[1]) } : {}),
+      ...(castingType ? { castingType } : {}),
+      ...(tradition ? { tradition } : {}),
       sourceFeatureId: feature.id,
     };
+    if (completeProfileArchetypeIds.has(archetype?.id) && /^Spells$/i.test(feature.name ?? "")) fullyAutomatedFeatureIds.add(feature.id);
   }
-  return details;
+  return details ? { ...details, fullyAutomatedFeatureIds } : undefined;
 }
 
 export function inferArchetypeSpellcastingAbility(archetype) {
@@ -55,6 +91,19 @@ export function inferArchetypeSpellcastingProgression(archetype) {
     classId: details.progressionClassId,
     minimumLevel: details.minimumLevel ?? 1,
     ...(details.spellListClassId ? { spellListClassId: details.spellListClassId } : {}),
+  };
+}
+
+export function inferArchetypeSpellcastingProfile(archetype) {
+  const details = inferredArchetypeSpellcastingAbilityDetails(archetype);
+  if (!details) return undefined;
+  return {
+    ...(details.ability ? { ability: details.ability } : {}),
+    ...(details.progressionClassId ? { progressionClassId: details.progressionClassId } : {}),
+    ...(details.spellListClassId ? { spellListClassId: details.spellListClassId } : {}),
+    ...(details.minimumLevel ? { minimumLevel: details.minimumLevel } : {}),
+    ...(details.castingType ? { castingType: details.castingType } : {}),
+    ...(details.tradition ? { tradition: details.tradition } : {}),
   };
 }
 
