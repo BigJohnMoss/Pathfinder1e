@@ -73,3 +73,28 @@ test("a named target's tracked immunity prevents another activation", async () =
   assert.equal((screen.getByRole("button", { name: "Use Terror" }) as HTMLButtonElement).disabled, true);
   assert.match(screen.getByText(/Ogre is immune to this ability/).textContent ?? "", /Ogre/);
 });
+
+test("Dazing Charm enforces its trigger and tracks immunity after a failed save", async () => {
+  const baseClass = data.classes.find((item) => item.id === "swashbuckler");
+  const archetype = archetypes.find((item) => item.id === "swashbuckler-dashing-thief");
+  const applied = applyArchetype(baseClass, archetype, data.classes, data.spells);
+  const effects: ActiveEffect[] = [];
+  let used = 0;
+  const originalRandom = Math.random;
+  Math.random = () => 0;
+  try {
+    render(<ClassFeatures level={3} className={applied.name} features={featuresThroughLevel(applied, 3)} classLevels={{ swashbuckler: 3 }} abilityModifiers={{ charisma: 3 }} dailyResources={[{ id: "panache", label: "Panache", unit: "point", maximum: 3, used: 0, onUsedChange: (value) => { used = value; } }]} onAddEffect={(effect) => effects.push(effect)} />);
+    const user = userEvent.setup();
+    const button = screen.getByRole("button", { name: "Use Dazing Charm Deed" }) as HTMLButtonElement;
+    assert.equal(button.disabled, true);
+    await user.click(screen.getByLabelText("Use Dazing Charm Deed Successfully feinted the target"));
+    await user.click(screen.getByLabelText("Use Dazing Charm Deed Target is eligible for this effect"));
+    await user.type(screen.getByLabelText("Use Dazing Charm Deed target name"), "Orc");
+    await user.click(button);
+    assert.equal(used, 1);
+    assert.deepEqual(effects.map((effect) => effect.name), ["Dazed — Orc", "Dazing Charm Deed immunity — Orc"]);
+    assert.match(screen.getByLabelText("Use Dazing Charm Deed result").textContent ?? "", /failure; dazed for 1 round and immunity tracked/i);
+  } finally {
+    Math.random = originalRandom;
+  }
+});
