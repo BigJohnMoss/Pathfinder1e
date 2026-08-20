@@ -2018,6 +2018,7 @@ export default function Home() {
             selectedWitchPatron,
             primaryClassLevel,
             characterClass.id,
+            characterClass.bonusSpellReplacementClassLevels,
           ).filter(
             (spell) =>
               spell.levelByClass[characterClass.id] <= maximumSpellLevel,
@@ -2025,6 +2026,7 @@ export default function Home() {
         : [],
     [
       characterClass.id,
+      characterClass.bonusSpellReplacementClassLevels,
       classId,
       maximumSpellLevel,
       primaryClassLevel,
@@ -2294,6 +2296,7 @@ export default function Home() {
             secondarySelectedWitchPatron,
             secondaryClassLevel,
             secondaryCharacterClass.id,
+            secondaryCharacterClass.bonusSpellReplacementClassLevels,
           ).filter(
             (spell) =>
               spell.levelByClass[secondaryCharacterClass.id] <=
@@ -3541,6 +3544,7 @@ export default function Home() {
             witchPatronFromOptions(draft.classId, draft.selectedOptions),
             draftPrimaryLevel,
             draftClass.id,
+            draftClass.bonusSpellReplacementClassLevels,
           ).filter(
             (spell) =>
               spell.levelByClass[draftClass.id] <=
@@ -3688,6 +3692,7 @@ export default function Home() {
             ),
             draftSecondaryLevel?.level ?? 1,
             draftSecondaryClass.id,
+            draftSecondaryClass.bonusSpellReplacementClassLevels,
           ).filter(
             (spell) =>
               spell.levelByClass[draftSecondaryClass.id] <=
