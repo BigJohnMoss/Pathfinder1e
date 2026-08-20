@@ -32,6 +32,7 @@ import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlig
 import { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, inferredArchetypePrecisionDamageDetails, precisionDamageAtLevel } from "./archetype-precision-damage.js";
 import { inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails } from "./archetype-favored-terrain.js";
 import { inferArchetypeFavoredEnemyChoices, inferredArchetypeFavoredEnemyChoiceDetails } from "./archetype-favored-enemy.js";
+import { inferArchetypeNatureBondRules, inferredArchetypeNatureBondDetails } from "./archetype-nature-bond.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants };
 export { eidolonProgression } from "./eidolon.js";
@@ -71,6 +72,7 @@ export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlig
 export { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, precisionDamageAtLevel };
 export { inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails };
 export { inferArchetypeFavoredEnemyChoices, inferredArchetypeFavoredEnemyChoiceDetails };
+export { inferArchetypeNatureBondRules, inferredArchetypeNatureBondDetails };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 export { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 export { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
@@ -1258,6 +1260,13 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
   const inferredPassiveTeamworkSharings = new Map(inferArchetypePassiveTeamworkSharings(archetype).map(({ sourceFeatureId, sharing }) => [sourceFeatureId, sharing]));
   const favoredTerrainChoiceDetails = inferredArchetypeFavoredTerrainChoiceDetails(archetype);
   const favoredEnemyChoiceDetails = inferredArchetypeFavoredEnemyChoiceDetails(archetype);
+  const natureBondDetails = inferredArchetypeNatureBondDetails(archetype);
+  const baseNatureBondSelector = characterClass.features.find(
+    (feature) => feature.optionGroupId === "druid-nature-bonds",
+  );
+  const retainedNatureBondSelector = retained.some(
+    (feature) => feature.optionGroupId === "druid-nature-bonds",
+  );
   const selectableChoicesByFeatureId = new Map();
   for (const { sourceFeatureId, feature } of [...favoredTerrainChoiceDetails.choices, ...favoredEnemyChoiceDetails.choices])
     selectableChoicesByFeatureId.set(sourceFeatureId, [...(selectableChoicesByFeatureId.get(sourceFeatureId) ?? []), feature]);
@@ -1265,6 +1274,16 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     (replacement) => replacement.features,
   ).flatMap((feature) => (selectableChoicesByFeatureId.get(feature.id) ?? [feature])).map((feature) => ({
     ...feature,
+    ...(!retainedNatureBondSelector &&
+    baseNatureBondSelector &&
+    natureBondDetails.fullyAutomatedFeatureIds.has(feature.id)
+      ? {
+          type: baseNatureBondSelector.type,
+          choiceRequired: baseNatureBondSelector.choiceRequired,
+          optionGroupId: baseNatureBondSelector.optionGroupId,
+          progressionKey: baseNatureBondSelector.progressionKey,
+        }
+      : {}),
     ...(inferredResourceActions.has(feature.id) ? { resourceActions: [...(feature.resourceActions ?? []), ...inferredResourceActions.get(feature.id)] } : {}),
     ...(inferredPassiveTeamworkSharings.has(feature.id) ? { teamworkFeatSharing: inferredPassiveTeamworkSharings.get(feature.id) } : {}),
   }));
@@ -1281,6 +1300,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
   const inferredSpellModifiers = inferArchetypeSpellModifiers(archetype, spellCatalog);
   const inferredWildEmpathy = inferArchetypeWildEmpathyAdjustments(archetype);
   const inferredPrecisionDamage = inferArchetypePrecisionDamageAdjustments(archetype);
+  const inferredNatureBond = inferArchetypeNatureBondRules(archetype);
   const spellcastingProgressionClassId = archetype.spellcastingProgressionClassId ?? inferredSpellcastingAbility?.progressionClassId;
   const progressionSpellcasting = referenceClasses.find((item) => item.id === spellcastingProgressionClassId)?.spellcasting;
   const baseSpellcasting = progressionSpellcasting ?? characterSpellcasting;
@@ -1397,7 +1417,9 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     wildShapeLevelAdjustment:
       archetype.wildShapeLevelAdjustment ??
       characterClass.wildShapeLevelAdjustment,
-    druidDomainIds: archetype.druidDomainIds ?? characterClass.druidDomainIds,
+    druidNatureBondOptionIds: archetype.druidNatureBondOptionIds ?? (inferredNatureBond.natureBondOptionIds.length ? inferredNatureBond.natureBondOptionIds : characterClass.druidNatureBondOptionIds),
+    druidAnimalCompanionIds: archetype.druidAnimalCompanionIds ?? (inferredNatureBond.animalCompanionIds.length ? inferredNatureBond.animalCompanionIds : characterClass.druidAnimalCompanionIds),
+    druidDomainIds: archetype.druidDomainIds ?? (inferredNatureBond.domainIds.length ? inferredNatureBond.domainIds : characterClass.druidDomainIds),
     rangerCombatStyleIds:
       archetype.rangerCombatStyleIds ?? characterClass.rangerCombatStyleIds,
     mountedCompanionOnly:
@@ -1864,6 +1886,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const inferredSpellModifiers = inferredArchetypeSpellModifierDetails(archetype, spells);
   const favoredTerrainChoiceDetails = inferredArchetypeFavoredTerrainChoiceDetails(archetype);
   const favoredEnemyChoiceDetails = inferredArchetypeFavoredEnemyChoiceDetails(archetype);
+  const natureBondDetails = inferredArchetypeNatureBondDetails(archetype);
   const inferredWildEmpathy = inferredArchetypeWildEmpathyDetails(archetype);
   const precisionDamageDetails = inferredArchetypePrecisionDamageDetails(archetype);
   const inferredSpellListCount = Object.keys(inferredSpellAdditions.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined).length;
@@ -1880,6 +1903,9 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (inferredWildEmpathy.adjustments.length) automated.push(`${inferredWildEmpathy.adjustments.length} Wild Empathy rule${inferredWildEmpathy.adjustments.length === 1 ? "" : "s"}`);
   if (favoredTerrainChoiceDetails.choices.length) automated.push(`${favoredTerrainChoiceDetails.choices.length} favored-terrain selection${favoredTerrainChoiceDetails.choices.length === 1 ? "" : "s"}`);
   if (favoredEnemyChoiceDetails.choices.length) automated.push(`${favoredEnemyChoiceDetails.choices.length} favored-enemy selection${favoredEnemyChoiceDetails.choices.length === 1 ? "" : "s"}`);
+  if (natureBondDetails.natureBondOptionIds.length) automated.push("Nature Bond path restrictions");
+  if (natureBondDetails.animalCompanionIds.length) automated.push("Available Nature Bond animal companions");
+  if (natureBondDetails.domainIds.length) automated.push("Available Nature Bond domains");
   if (precisionDamageDetails.adjustments.length) automated.push(`${precisionDamageDetails.adjustments.length} level-aware precision-damage progression${precisionDamageDetails.adjustments.length === 1 ? "" : "s"}`);
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
@@ -2082,6 +2108,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...proficiencyDetails.fullyAutomatedFeatureIds,
     ...(archetype.arcaneSpellFailure?.fullyAutomatedFeatureIds ?? []),
     ...skillRankDetails.fullyAutomatedFeatureIds,
+    ...natureBondDetails.fullyAutomatedFeatureIds,
     ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...initiativeBonusDetails.fullyAutomatedFeatureIds,
     ...saveBonusDetails.fullyAutomatedFeatureIds,

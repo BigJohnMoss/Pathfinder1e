@@ -1711,10 +1711,24 @@ export default function Home() {
                 })
               : group &&
                   featureClassId === "druid" &&
-                  group.id === "ranger-animal-companions"
-                ? group.options.filter(
-                    (option) => option.minimumLevel <= featureClassLevel,
+                  group.id === "druid-nature-bonds" &&
+                  featureCharacterClass?.druidNatureBondOptionIds
+                ? group.options.filter((option) =>
+                    featureCharacterClass.druidNatureBondOptionIds?.includes(
+                      option.id,
+                    ),
                   )
+                : group &&
+                  featureClassId === "druid" &&
+                group.id === "ranger-animal-companions"
+                ? group.options.filter(
+                      (option) =>
+                        !featureCharacterClass?.druidAnimalCompanionIds
+                          ?.length ||
+                        featureCharacterClass.druidAnimalCompanionIds.includes(
+                          option.id,
+                        ),
+                    )
                 : group &&
                     featureClassId === "druid" &&
                     group.id === "cleric-domains"
