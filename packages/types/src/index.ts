@@ -168,7 +168,7 @@ export interface ClassFeatureOccurrence {
   grantedFeatIds?: string[];
   teamworkFeatSharing?: {
     featType: string;
-    target: "animal-companion" | "eidolon";
+    target: "animal-companion" | "eidolon" | "aide-de-camp" | "summoned-animals" | "vermin-companion";
     targetLabel: string;
     ignorePrerequisites: boolean;
     summary: string;

@@ -137,3 +137,14 @@ test("Holy Tactician switches Battlefield Presence from a standard grant to a sw
   assert.match(screen.getByText("Activation: swift action.").textContent ?? "", /swift/);
   cleanup();
 });
+
+test("Feral Hunter shows which selected teamwork feats every summoned animal receives", () => {
+  const source = archetypes.find((candidate: { id: string }) => candidate.id === "hunter-feral-hunter");
+  const base = data.classes.find((candidate: { id: string }) => candidate.id === "hunter");
+  const applied = applyArchetype(base, source, data.classes, data.spells);
+  render(<ClassFeatures level={1} className={applied.name} features={featuresThroughLevel(applied, 1)} classLevels={{ hunter: 1 }} selectedFeats={[{ id: "outflank", name: "Outflank", type: "teamwork" }]} />);
+  const sharing = screen.getByRole("region", { name: "Precise Summoned Animal (Ex) shared teamwork feats" });
+  assert.match(sharing.textContent ?? "", /Shared with Summoned animals/);
+  assert.match(sharing.textContent ?? "", /Outflank/);
+  cleanup();
+});

@@ -81,17 +81,31 @@ function resourceDetails(archetype, feature, summary) {
 }
 
 function passiveSharingDetails(feature, summary) {
-  const match = summary.match(/automatically grants? (?:all of )?(?:her|his|their) teamwork feats to (?:her|his|their) (animal companion|eidolon)/i);
-  if (!match) return undefined;
-  const target = match[1].toLowerCase() === "eidolon" ? "eidolon" : "animal-companion";
+  const automatic = summary.match(/automatically grants? (?:all of )?(?:her|his|their) teamwork feats to (?:her|his|their) (animal companion|eidolon)/i);
+  const aide = /aide-de-camp is treated as having any teamwork feats (?:the|his|her|their) (?:esquire|master) has/i.test(summary);
+  const summonedAnimals = /grants? all (?:her|his|their) teamwork feats to all animals (?:she|he|they) summons?/i.test(summary);
+  const vermin = /hunter tactics[^.]{0,120}?grant (?:her|his|their) teamwork feats to a mindless vermin companion/i.test(summary);
+  if (!automatic && !aide && !summonedAnimals && !vermin) return undefined;
+  const target = automatic
+    ? automatic[1].toLowerCase() === "eidolon" ? "eidolon" : "animal-companion"
+    : aide ? "aide-de-camp"
+      : summonedAnimals ? "summoned-animals"
+        : "vermin-companion";
+  const targetLabel = {
+    "animal-companion": "Animal companion",
+    "eidolon": "Eidolon",
+    "aide-de-camp": "Aide-de-camp",
+    "summoned-animals": "Summoned animals",
+    "vermin-companion": "Vermin companion",
+  }[target];
   return {
     sourceFeatureId: feature.id,
     sharing: {
       featType: "teamwork",
       target,
-      targetLabel: target === "eidolon" ? "Eidolon" : "Animal companion",
-      ignorePrerequisites: /(?:companion|eidolon) (?:doesn.t|does not) need to meet the prerequisites/i.test(summary),
-      summary: `All selected teamwork feats are automatically shared with the ${target === "eidolon" ? "eidolon" : "animal companion"}.`,
+      targetLabel,
+      ignorePrerequisites: aide || summonedAnimals || vermin || /(?:companion|eidolon) (?:doesn.t|does not) need to meet the prerequisites/i.test(summary),
+      summary: `All selected teamwork feats are automatically shared with ${targetLabel.toLowerCase()}.`,
     },
   };
 }
@@ -112,7 +126,7 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
       passiveSharings.push(passive);
       const covered = new Set();
       sentences.forEach((sentence, sentenceIndex) => {
-        if (/automatically grants? (?:all of )?(?:her|his|their) teamwork feats to/i.test(sentence)
+        if (/automatically grants? (?:all of )?(?:her|his|their) teamwork feats to|(?:treated as having|share) any teamwork feats|grants? all (?:her|his|their) teamwork feats to all animals|hunter tactics[^.]{0,120}?grant (?:her|his|their) teamwork feats to a mindless vermin companion/i.test(sentence)
           || /(?:companion|eidolon) (?:doesn.t|does not) need to meet the prerequisites of (?:these )?teamwork feats/i.test(sentence)) {
           covered.add(sentenceIndex);
           sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
