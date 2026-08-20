@@ -100,3 +100,48 @@ test("Wounding Words rolls its rider save only for a Compelling Voice target", a
     Math.random = originalRandom;
   }
 });
+
+test("Demonic Channel applies its lawful-good save penalty and level-nine rider", async () => {
+  const baseClass = data.classes.find((item) => item.id === "cleric");
+  const archetype = archetypes.find((item) => item.id === "cleric-demonic-apostle");
+  const applied = applyArchetype(baseClass, archetype, data.classes, data.spells);
+  const effects: ActiveEffect[] = [];
+  const spent: number[] = [];
+  const originalRandom = Math.random;
+  Math.random = () => 0;
+  try {
+    render(<ClassFeatures level={9} className={applied.name} features={featuresThroughLevel(applied, 9)} classLevels={{ cleric: 9 }} abilityModifiers={{ charisma: 3 }} dailyResources={[{ id: "demonicChannel", label: "Demonic Channel", unit: "use", maximum: 6, used: 0, onUsedChange: (used) => spent.push(used) }]} onAddEffect={(effect) => effects.push(effect)} />);
+    const user = userEvent.setup();
+    await user.click(screen.getByLabelText("Use Demonic Channel Target is lawful or good"));
+    await user.click(screen.getByLabelText("Use Demonic Channel Target is lawful good"));
+    await user.clear(screen.getByLabelText("Use Demonic Channel target fortitude modifier"));
+    await user.type(screen.getByLabelText("Use Demonic Channel target fortitude modifier"), "6");
+    await user.click(screen.getByRole("button", { name: "Use Demonic Channel" }));
+    assert.deepEqual(spent, [1]);
+    assert.equal(effects[0].name, "Sickened by Demonic Channel");
+    assert.equal(effects[0].roundsRemaining, 1);
+    assert.match(screen.getByLabelText("Use Demonic Channel result").textContent ?? "", /Fortitude save: 1 \+ 4 = 5/);
+    assert.equal(screen.getAllByText("Activation: standard action.").length, 2);
+  } finally {
+    Math.random = originalRandom;
+  }
+});
+
+test("Demonic Channel tracks its level-five rage effect for chaotic evil allies", async () => {
+  const baseClass = data.classes.find((item) => item.id === "cleric");
+  const archetype = archetypes.find((item) => item.id === "cleric-demonic-apostle");
+  const applied = applyArchetype(baseClass, archetype, data.classes, data.spells);
+  const effects: ActiveEffect[] = [];
+  const spent: number[] = [];
+  render(<ClassFeatures level={5} className={applied.name} features={featuresThroughLevel(applied, 5)} classLevels={{ cleric: 5 }} abilityModifiers={{ charisma: 3 }} dailyResources={[{ id: "demonicChannel", label: "Demonic Channel", unit: "use", maximum: 6, used: 0, onUsedChange: (used) => spent.push(used) }]} onAddEffect={(effect) => effects.push(effect)} />);
+  const user = userEvent.setup();
+  const button = screen.getByRole("button", { name: "Bolster chaotic evil allies" }) as HTMLButtonElement;
+  assert.equal(button.disabled, true);
+  await user.click(screen.getByLabelText("Bolster chaotic evil allies Chaotic evil allies are in the burst"));
+  await user.click(button);
+  assert.deepEqual(spent, [1]);
+  assert.equal(effects[0].name, "Demonic Channel rage");
+  assert.equal(effects[0].target, "allies");
+  assert.equal(effects[0].roundsRemaining, 1);
+  assert.match(effects[0].description ?? "", /\+2 Strength.*–2 Armor Class/);
+});

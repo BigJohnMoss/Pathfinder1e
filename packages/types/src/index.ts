@@ -275,11 +275,13 @@ export interface ClassFeatureOccurrence {
         modifier: "fortitude" | "reflex" | "will";
         outcome: "half-damage" | "negates-riders" | "half-and-negates-riders";
         requiredConfirmationId?: string;
+        conditionalModifiers?: Array<{ confirmationId: string; label: string; modifier: number }>;
       };
       confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
       riders?: Array<{
         name: string;
         description: string;
+        minimumLevel?: number;
         requiredConfirmationId?: string;
         maximumTargetHitDiceDivisor?: number;
         duration:

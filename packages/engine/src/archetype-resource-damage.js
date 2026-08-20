@@ -12,6 +12,34 @@ function ownResource(archetype, feature) {
 
 function damageProfile(archetype, feature, summary) {
   const minimumLevel = Math.max(1, Number(feature.level ?? 1));
+  if (/channel demonic energy to damage creatures of lawful and good alignment/i.test(summary)) return {
+    resource: ownResource(archetype, feature),
+    actionType: "standard",
+    savingThrow: { label: "Fortitude", ability: "charisma", base: 10, levelDivisor: 2, classId: archetype.classId },
+    combatRoll: {
+      damage: {
+        type: "untyped",
+        diceCountByLevel: distinctSteps(levels(minimumLevel, (level) => ({ count: 1 + Math.floor((level - 1) / 2) })), "count"),
+        dieSidesByLevel: [{ level: minimumLevel, sides: 6 }],
+      },
+      rangeByLevel: [{ level: minimumLevel, range: "30-foot-radius burst" }],
+      targetSave: {
+        modifier: "fortitude",
+        outcome: "half-damage",
+        conditionalModifiers: [{ confirmationId: "lawful-good-target", label: "Lawful good target", modifier: -2 }],
+      },
+      confirmations: [
+        { id: "lawful-or-good-target", label: "Target is lawful or good", requiredForActivation: true },
+        { id: "lawful-good-target", label: "Target is lawful good" },
+      ],
+      riders: [{
+        name: "Sickened by Demonic Channel",
+        description: "A lawful or good enemy that fails its Fortitude save is sickened.",
+        minimumLevel: 9,
+        duration: { kind: "dice-rounds", count: 1, sides: 6 },
+      }],
+    },
+  };
   if (/melee touch attack that deals 1d6 points of sonic damage plus 1 point per mesmerist level/i.test(summary)) return {
     resource: ownResource(archetype, feature),
     savingThrow: { label: "Will", ability: "charisma", base: 10, levelDivisor: 2, classId: archetype.classId },
@@ -104,6 +132,7 @@ export function inferredArchetypeResourceDamageActionDetails(archetype) {
         minimumLevel: Math.max(1, Number(feature.level ?? 1)),
         resourceId: profile.resource.resourceId,
         cost: 1,
+        ...(profile.actionType ? { actionTypeByLevel: [{ level: Math.max(1, Number(feature.level ?? 1)), actionType: profile.actionType }] } : {}),
         ...(profile.modes ? { modeLabel: "Damage type", modes: profile.modes } : {}),
         ...(profile.recipients ? { recipientLabel: profile.recipientLabel, recipients: profile.recipients } : {}),
         ...(profile.savingThrow ? { savingThrow: profile.savingThrow } : {}),
@@ -111,7 +140,30 @@ export function inferredArchetypeResourceDamageActionDetails(archetype) {
         summary,
       },
     });
-    if (["medium-voice-of-the-void-void-channeler-su-3", "skald-wyrm-singer-breath-weapon-su-12"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
+    if (feature.id === "cleric-demonic-apostle-demonic-channel-su-1") actions.push({
+      sourceFeatureId: feature.id,
+      action: {
+        id: `${feature.id}-bolster-allies`,
+        label: "Bolster chaotic evil allies",
+        classId: archetype.classId,
+        minimumLevel: 5,
+        resourceId: profile.resource.resourceId,
+        cost: 1,
+        actionTypeByLevel: [{ level: 5, actionType: "standard" }],
+        confirmations: [{ id: "chaotic-evil-allies", label: "Chaotic evil allies are in the burst", requiredForActivation: true }],
+        activeEffect: {
+          name: "Demonic Channel rage",
+          targets: ["allies"],
+          bonus: 0,
+          description: "Chaotic evil allies in the burst gain the effects of rage: +2 Strength, +2 Constitution, +2 morale bonus on Will saves, and –2 Armor Class.",
+          defaultRounds: 1,
+          fixedRounds: true,
+          applyToAllTargets: true,
+        },
+        summary: "Chaotic evil allies within the 30-foot burst are affected as if targeted by rage for 1 round.",
+      },
+    });
+    if (["cleric-demonic-apostle-demonic-channel-su-1", "medium-voice-of-the-void-void-channeler-su-3", "skald-wyrm-singer-breath-weapon-su-12"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
   }
   return { actions, fullyAutomatedFeatureIds };
 }
