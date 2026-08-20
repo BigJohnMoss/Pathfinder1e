@@ -235,6 +235,25 @@ test("common save progression phrasings produce exact milestone schedules", () =
   }
 });
 
+test("shared save bonuses retain each published condition", () => {
+  const cases = [
+    ["druid-rot-warden", [
+      "against attacks and special abilities of vermin and swarms with the vermin type",
+      "against effects that would age or decay the rot warden or his equipment",
+    ]],
+    ["monk-karmic-monk", [
+      "against effects with the chaos, evil, good, or law subtype",
+      "against the abilities and effects of creatures of the listed subtypes",
+    ]],
+  ];
+  for (const [id, conditions] of cases) {
+    const source = catalogueArchetypes.find((archetype) => archetype.id === id);
+    const adjustments = inferArchetypeSaveBonusAdjustments(source);
+    assert.deepEqual(adjustments.map((adjustment) => adjustment.condition), conditions, id);
+    assert.equal(archetypeAutomationSummary(source).manual.some((entry) => adjustments.some((adjustment) => entry.startsWith(source.replacements.flatMap((replacement) => replacement.features).find((feature) => feature.id === adjustment.sourceFeatureId).name))), false, id);
+  }
+});
+
 test("save inference is normalized, conservative, and duplicate-free across the catalogue", () => {
   for (const archetype of catalogueArchetypes) {
     const adjustments = inferArchetypeSaveBonusAdjustments(archetype);
