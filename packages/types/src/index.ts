@@ -200,6 +200,12 @@ export interface ClassFeatureOccurrence {
     };
     modeLabel?: string;
     modes?: Array<{ id: string; label: string; summary: string }>;
+    featSelection?: {
+      label: string;
+      featType: string;
+      countByLevel: Array<{ level: number; count: number }>;
+    };
+    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "immediate" | "move" | "standard" | "swift" }>;
     recipientLabel?: string;
     recipients?: Array<{ id: string; label: string }>;
     confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
@@ -307,6 +313,7 @@ export interface ClassFeatureOccurrence {
       improvedAtLevel?: number;
       improvedBonus?: number;
       defaultRounds?: number;
+      defaultRoundsByLevel?: Array<{ level: number; rounds: number }>;
       fixedRounds?: boolean;
       upgrades?: Array<{
         requiredOptionId: string;
@@ -513,6 +520,7 @@ export interface CharacterArchetype {
     minimum?: number;
     maximum?: number;
     maximumByLevel?: Array<{ level: number; maximum: number }>;
+    effectiveLevelClassIds?: string[];
     advancementOptionId?: string;
     requiredOptionId?: string;
     refreshCadence?: "day" | "week";

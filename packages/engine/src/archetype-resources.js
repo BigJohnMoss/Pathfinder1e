@@ -123,6 +123,16 @@ export function inferArchetypeResourceAdjustments(archetype) {
         { level: minimumLevel, maximum: adjustment.base },
         ...levelTiers,
       ].filter((entry, index, entries) => entries.findIndex((candidate) => candidate.level === entry.level) === index);
+      const additionalUseLevels = summary.match(/plus one additional (?:time|use) per day at ([^.]+)/i)?.[1]
+        ?.match(/\d+(?=st|nd|rd|th)/gi)
+        ?.map(Number)
+        .filter((level) => level >= minimumLevel);
+      if (additionalUseLevels?.length && !adjustment.perInterval && !adjustment.levelDivisor && !adjustment.levelMultiplier) adjustment.maximumByLevel = [
+        { level: minimumLevel, maximum: adjustment.base },
+        ...additionalUseLevels.map((level, index) => ({ level, maximum: adjustment.base + index + 1 })),
+      ];
+      const stackingClassId = summary.match(/also has ([a-z]+) levels, these levels stack for determining the number of uses/i)?.[1]?.toLowerCase();
+      if (stackingClassId) adjustment.effectiveLevelClassIds = [archetype.classId, stackingClassId];
       inferred.push({
         resourceId: resourceId(feature),
         label: resourceLabel(feature),

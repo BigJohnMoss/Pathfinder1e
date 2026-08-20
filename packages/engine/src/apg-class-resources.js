@@ -18,6 +18,8 @@ export function apgClassResourceMaximums(classId, level, abilityModifiers = {}) 
         judgments: Math.min(7, 1 + Math.floor((classLevel - 1) / 3)),
         ...(classLevel >= 5 ? { baneRounds: classLevel } : {})
       };
+    case "paladin":
+      return { smiteEvil: Math.min(7, 1 + Math.floor((classLevel - 1) / 3)) };
     case "summoner":
       return {
         summonMonster: Math.max(1, 3 + Math.trunc(Number(abilityModifiers.charisma) || 0)),
@@ -77,9 +79,12 @@ export function applyArchetypeResourceAdjustments(maximums, archetypes, level, a
   const classLevel = boundedLevel(level);
   return (archetypes ?? []).flatMap(resolvedArchetypeResourceAdjustments).reduce((current, adjustment) => {
     if (!adjustment?.resourceId || classLevel < (adjustment.minimumLevel ?? 1) || (adjustment.requiredOptionId && !context.selectedOptionIds?.includes(adjustment.requiredOptionId))) return current;
+    const effectiveClassLevel = adjustment.effectiveLevelClassIds?.length
+      ? adjustment.effectiveLevelClassIds.reduce((total, classId, index) => total + Math.max(0, Math.trunc(context.classLevels?.[classId] ?? (classId === context.classId || (index === 0 && !context.classId) ? classLevel : 0))), 0)
+      : classLevel;
     const progressionLevel = adjustment.advancementOptionId && context.selectedOptionIds?.includes(adjustment.advancementOptionId)
       ? boundedLevel(context.casterLevel ?? classLevel)
-      : classLevel;
+      : boundedLevel(effectiveClassLevel);
     const interval = Math.max(1, Math.trunc(adjustment.interval ?? 1));
     const intervals = Math.floor((progressionLevel - (adjustment.minimumLevel ?? 1)) / interval);
     const abilityBonus = adjustment.abilityModifier
