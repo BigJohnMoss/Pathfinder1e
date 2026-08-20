@@ -1675,6 +1675,20 @@ test("authored catalogue proficiency overlays complete exact multi-sentence repl
   }
 });
 
+test("exact pure proficiency replacements complete the remaining shared chassis rules", () => {
+  const batch = JSON.parse(readFileSync(new URL("../packages/data/src/archetype-automation/proficiencies-03.json", import.meta.url), "utf8"));
+  assert.equal(batch.overlays.length, 9);
+  for (const overlay of batch.overlays) {
+    const archetype = catalogueArchetypes.find((entry) => entry.id === overlay.archetypeId);
+    assert.ok(archetype, `${overlay.archetypeId} generated archetype`);
+    assert.deepEqual(archetype.proficiencyAdjustments, overlay.proficiencyAdjustments, `${overlay.archetypeId} exact proficiency replacement`);
+    assert.ok(!archetypeAutomationSummary(archetype).manual.some((item) => /Proficienc(?:y|ies)(?: and Class Skills)? \(level/.test(item)), `${overlay.archetypeId} proficiency feature automated`);
+  }
+  const pearlSeeker = applyArchetype({ id: "paladin", name: "Paladin", classSkills: [], features: [] }, catalogueArchetypes.find((entry) => entry.id === "paladin-pearl-seeker"));
+  assert.ok(pearlSeeker.classSkills.includes("Swim"));
+  assert.deepEqual(pearlSeeker.proficiencyAdjustments, batch.overlays.find((entry) => entry.archetypeId === "paladin-pearl-seeker").proficiencyAdjustments);
+});
+
 test("inferred proficiency automation stays normalized across the full archetype catalogue", () => {
   const directory = new URL("../packages/data/src/archetypes/", import.meta.url);
   const records = readdirSync(directory)

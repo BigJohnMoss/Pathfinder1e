@@ -1458,7 +1458,7 @@ function inferArchetypeClassSkillDetails(archetype) {
       ];
       const removePatterns = [
         /(?:does not gain|do not gain|doesn't receive|does not receive|removes?|loses?|eliminate)\s+(.+?)(?:\s+(?:as|from).*?class skills|[.;]|$)/gi,
-        /(?:but|and) not\s+(.+?)(?:[.;]|$)/gi,
+        /(?:but|and) not\s+(.+?)(?=,\s*(?:and|but)\s+(?:adds?|gains?|receives?)|[.;]|$)/gi,
         /instead of\s+(.+?)(?:\s+as class skills?|[.;]|$)/gi,
         /in place of\s+(.+?)(?:\s+as class skills?|[.;]|$)/gi,
         /replace(?:s)?\s+(.+?)\s+as class skills?/gi,
@@ -1636,7 +1636,12 @@ function inferArchetypeProficiencyDetails(archetype, includeFullyAutomatedFeatur
   });
   const explicit = archetype?.proficiencyAdjustments ?? [];
   const applied = explicit.length ? explicit : adjustments;
-  if (!includeFullyAutomatedFeatureIds) return { adjustments, fullyAutomatedFeatureIds: [] };
+  if (!includeFullyAutomatedFeatureIds) return { adjustments, fullyAutomatedFeatureIds: [], sentenceCoverage: [] };
+  const sentenceCoverage = explicit.length ? features.flatMap(feature =>
+    archetypeRuleSentences(feature.summary).flatMap((sentence, sentenceIndex) =>
+      /proficien/i.test(sentence) ? [{ sourceFeatureId: feature.id, sentenceIndex }] : [],
+    ),
+  ) : [];
   const fullyAutomatedFeatureIds = features.filter(feature => {
     const name = String(feature.name ?? "").replace(/\s*\([^)]+\)\s*$/, "");
     const text = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
@@ -1662,7 +1667,7 @@ function inferArchetypeProficiencyDetails(archetype, includeFullyAutomatedFeatur
       return match && expected.proficiencies.every(value => match.proficiencies.includes(value));
     });
   }).map(feature => feature.id);
-  return { adjustments, fullyAutomatedFeatureIds };
+  return { adjustments, fullyAutomatedFeatureIds, sentenceCoverage };
 }
 
 export function inferArchetypeProficiencyAdjustments(archetype) {
@@ -1969,6 +1974,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const rerollActionDetails = inferredArchetypeRerollActionDetails(archetype);
   const ruleSentenceCoverage = [
     ["class skills", classSkillDetails.sentenceCoverage ?? []],
+    ["proficiencies", proficiencyDetails.sentenceCoverage ?? []],
     ["skill ranks", skillRankDetails.sentenceCoverage ?? []],
     ["initiative", initiativeBonusDetails.sentenceCoverage ?? []],
     ["saving throws", saveBonusDetails.sentenceCoverage ?? []],

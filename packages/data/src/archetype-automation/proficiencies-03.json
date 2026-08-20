@@ -1,0 +1,68 @@
+{
+  "batch": "proficiencies-03",
+  "overlays": [
+    {
+      "archetypeId": "bard-arrowsong-minstrel",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "add", "proficiencies": ["Longbow"] },
+        { "category": "weapon", "operation": "remove", "proficiencies": ["Longsword", "Rapier", "Whip"] }
+      ]
+    },
+    {
+      "archetypeId": "gunslinger-gun-tank",
+      "proficiencyAdjustments": [
+        { "category": "armor", "operation": "replace", "proficiencies": ["All armor"] },
+        { "category": "shield", "operation": "replace", "proficiencies": ["All shields", "Tower shields"] }
+      ]
+    },
+    {
+      "archetypeId": "gunslinger-musket-master",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["Two-handed firearms"] }
+      ]
+    },
+    {
+      "archetypeId": "gunslinger-pistolero",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["One-handed firearms"] }
+      ]
+    },
+    {
+      "archetypeId": "occultist-battle-host",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "replace", "proficiencies": ["All simple weapons", "All martial weapons"] },
+        { "category": "armor", "operation": "replace", "proficiencies": ["All armor"] },
+        { "category": "shield", "operation": "replace", "proficiencies": ["All shields", "Tower shields"] }
+      ]
+    },
+    {
+      "archetypeId": "paladin-champion-of-the-cascade",
+      "proficiencyAdjustments": [
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor", "Medium armor"] },
+        { "category": "shield", "operation": "replace", "proficiencies": ["All shields"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["Tower shields"] }
+      ]
+    },
+    {
+      "archetypeId": "paladin-pearl-seeker",
+      "proficiencyAdjustments": [
+        { "category": "armor", "operation": "replace", "proficiencies": ["Light armor", "Medium armor"] },
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] }
+      ]
+    },
+    {
+      "archetypeId": "ranger-abendego-diver",
+      "proficiencyAdjustments": [
+        { "category": "shield", "operation": "remove", "proficiencies": ["All shields"] },
+        { "category": "weapon", "operation": "add", "proficiencies": ["Harpoon", "Net"] }
+      ]
+    },
+    {
+      "archetypeId": "rogue-skulking-slayer",
+      "proficiencyAdjustments": [
+        { "category": "weapon", "operation": "add", "proficiencies": ["Greatclub", "Whip"] },
+        { "category": "weapon", "operation": "remove", "proficiencies": ["Rapier", "Hand Crossbow"] }
+      ]
+    }
+  ]
+}
