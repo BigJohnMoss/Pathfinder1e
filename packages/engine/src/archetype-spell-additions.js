@@ -169,7 +169,7 @@ function additionKinds(summary) {
 function fixedFormulaBookSentence(sentence, entries, spells) {
   if (!/^(?:At \d+(?:(?:st|nd|rd|th))? level,?\s*)?(?:an? |the )?[a-z][a-z'\u2019 -]{0,100}\s+adds?\b[^.]{1,600}\bto (?:his|her|their|the) formula book as (?:an? )?\d(?:st|nd|rd|th)[- ]level extracts?[.]?$/i.test(sentence)) return false;
   if (/\b(?:but|does not|doesn['’]t|except|only if|without)\b|\([^)]*\b(?:component|require|restriction)\b[^)]*\)/i.test(sentence)) return false;
-  const mentioned = uniqueMatches(spellMatches(sentence, spells)).map(({ spell }) => spell.id);
+  const mentioned = uniqueMatches(spellMatches(normalizedText(sentence), spells)).map(({ spell }) => spell.id);
   const parsed = new Set(entries.map(({ spell }) => spell.id));
   return mentioned.length > 0 && mentioned.every((id) => parsed.has(id));
 }
@@ -177,10 +177,46 @@ function fixedFormulaBookSentence(sentence, entries, spells) {
 function fixedSpellAdditionSentence(sentence, entries, spells) {
   if (!/^(?:At \d+(?:(?:st|nd|rd|th))? level,?\s*)?(?:(?:he|she|they)|(?:an? |the )?[a-z][a-z'\u2019 -]{0,120})\s+adds?\b[^.]{1,900}\b(?:spell list|class list|formula(?:e)? list|list of [a-z'\u2019 -]{0,60}spells? known|spells? known)\b[^.]*[.]?$/i.test(sentence)) return false;
   if (/\b(?:but|can|choose|chooses|does not|doesn['’]t|except|if|may|must|only|select|selects|while|without)\b|\([^)]*\b(?:component|require|restriction)\b[^)]*\)/i.test(sentence)) return false;
-  const mentioned = uniqueMatches(spellMatches(sentence, spells)).map(({ spell }) => spell.id);
+  const mentioned = uniqueMatches(spellMatches(normalizedText(sentence), spells)).map(({ spell }) => spell.id);
   const parsed = new Set(entries.map(({ spell }) => spell.id));
   return mentioned.length > 0 && mentioned.every((id) => parsed.has(id));
 }
+
+function fixedProgressiveSpellSentence(sentence, entries, spells) {
+  if (!/^At \d+(?:st|nd|rd|th) level\b[^.]{0,180}\badds?\b[^.]{0,500}\bspell list and spells? known\b[^.]{0,500}\band so on every \d+ levels? thereafter\b[^.]{0,300}\badds?\b[^.]{0,300}\bspell list and spells? known\b/i.test(sentence)) return false;
+  const mentioned = uniqueMatches(spellMatches(normalizedText(sentence), spells)).map(({ spell }) => spell.id);
+  const parsed = new Set(entries.map(({ spell }) => spell.id));
+  return mentioned.length >= 2 && mentioned.every((id) => parsed.has(id));
+}
+
+function structuralSpellTableCoverage(sentences, entries, spells) {
+  const covered = new Set();
+  const parsed = new Set(entries.map(({ spell }) => spell.id));
+  const completeTable = (sentence) => {
+    const mentioned = uniqueMatches(spellMatches(normalizedText(sentence), spells)).map(({ spell }) => spell.id);
+    return mentioned.length > 0 && mentioned.every((id) => parsed.has(id));
+  };
+  if (sentences.length >= 3 &&
+    /\badds? certain [^.]{0,120}\bspells? to (?:his|her|their|the) spell list[.]?$/i.test(sentences[0]) &&
+    /\badds? these (?:abilities|spells) to (?:his|her|their|the) spell list as soon as [^.]{0,160}\bspell level[.]?$/i.test(sentences[1]) &&
+    /^(?:0|1st)\s*[-—:]/i.test(sentences[2]) && completeTable(sentences[2])) {
+    covered.add(0);
+    covered.add(1);
+    covered.add(2);
+  }
+  for (let index = 0; index + 1 < sentences.length; index += 1) {
+    if (/\badds? the following spells to (?:his|her|their|the) [^.]{0,80}spell list at the (?:indicated|listed) levels?[.]?$/i.test(sentences[index]) &&
+      /^(?:He|She|They) casts? these as (?:divine|arcane|psychic) [^.]{0,80}spells?:/i.test(sentences[index + 1]) && completeTable(sentences[index + 1])) {
+      covered.add(index);
+      covered.add(index + 1);
+    }
+  }
+  return covered;
+}
+
+const nonMechanicalSpellNarrative = (sentence) =>
+  !/\d|\b(?:action|adds?|bonus|can|casts?|check|damage|DC|gains?|has|immune|level|may|must|penalty|resistance|roll|round|save|skill|spell|speed|uses?)\b/i.test(sentence) ||
+  /\bhas great power over the emotions of others, wielding (?:his|her|their) voice like a weapon\b/i.test(sentence);
 
 function oracleBonusSpellEntries(archetype, feature, spells) {
   if (archetype?.classId !== "oracle" || !/^Bonus Spells$/i.test(feature?.name ?? "")) return [];
@@ -248,10 +284,13 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
       sourceFeatureIds.add(feature.id);
       const sentences = archetypeRuleSentences(feature.summary);
       const covered = new Set(sentences.flatMap((sentence, index) =>
-        fixedFormulaBookSentence(sentence, [...unique.values()], spells) || fixedSpellAdditionSentence(sentence, [...unique.values()], spells) ? [index] : [],
+        fixedFormulaBookSentence(sentence, [...unique.values()], spells) ||
+        fixedSpellAdditionSentence(sentence, [...unique.values()], spells) ||
+        fixedProgressiveSpellSentence(sentence, [...unique.values()], spells) ? [index] : [],
       ));
+      for (const index of structuralSpellTableCoverage(sentences, [...unique.values()], spells)) covered.add(index);
       for (const sentenceIndex of covered) sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
-      if (covered.size && sentences.every((sentence, index) => covered.has(index) || archetypeReplacementBoilerplate(sentence))) fullyAutomatedFeatureIds.add(feature.id);
+      if (covered.size && sentences.every((sentence, index) => covered.has(index) || archetypeReplacementBoilerplate(sentence) || nonMechanicalSpellNarrative(sentence))) fullyAutomatedFeatureIds.add(feature.id);
     }
   }
   const result = {

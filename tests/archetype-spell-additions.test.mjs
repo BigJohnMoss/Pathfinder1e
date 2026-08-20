@@ -59,6 +59,9 @@ test("complete fixed spell-list and spells-known additions leave the manual queu
     ["ranger-summit-sentinel", "Spells"],
     ["bard-flame-dancer", "Fan the Flames"],
     ["sorcerer-razmiran-priest", "Lay Healer"],
+    ["bard-animal-speaker", "Summon Nature’s Ally"],
+    ["bard-watersinger", "Watersinger Spells"],
+    ["warpriest-proselytizer", "Emotional Appeal"],
   ];
   for (const [id, featureName] of cases) {
     const source = archetype(id);
