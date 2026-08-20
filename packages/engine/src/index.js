@@ -30,6 +30,7 @@ import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArch
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
 import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments, inferredArchetypeAlignmentDetails } from "./archetype-alignment.js";
 import { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, inferredArchetypePrecisionDamageDetails, precisionDamageAtLevel } from "./archetype-precision-damage.js";
+import { inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails } from "./archetype-favored-terrain.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants };
 export { eidolonProgression } from "./eidolon.js";
@@ -67,6 +68,7 @@ export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
 export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments };
 export { characterPrecisionDamageRules, inferArchetypePrecisionDamageAdjustments, precisionDamageAtLevel };
+export { inferArchetypeFavoredTerrainChoices, inferredArchetypeFavoredTerrainChoiceDetails };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 export { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 export { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
@@ -1252,9 +1254,13 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     ...inferArchetypeResourceActions(archetype, specializedFeatureIds),
   ]) inferredResourceActions.set(sourceFeatureId, [...(inferredResourceActions.get(sourceFeatureId) ?? []), action]);
   const inferredPassiveTeamworkSharings = new Map(inferArchetypePassiveTeamworkSharings(archetype).map(({ sourceFeatureId, sharing }) => [sourceFeatureId, sharing]));
+  const favoredTerrainChoiceDetails = inferredArchetypeFavoredTerrainChoiceDetails(archetype);
+  const favoredTerrainChoicesByFeatureId = new Map();
+  for (const { sourceFeatureId, feature } of favoredTerrainChoiceDetails.choices)
+    favoredTerrainChoicesByFeatureId.set(sourceFeatureId, [...(favoredTerrainChoicesByFeatureId.get(sourceFeatureId) ?? []), feature]);
   const replacements = archetype.replacements.flatMap(
     (replacement) => replacement.features,
-  ).map((feature) => ({
+  ).flatMap((feature) => (favoredTerrainChoicesByFeatureId.get(feature.id) ?? [feature])).map((feature) => ({
     ...feature,
     ...(inferredResourceActions.has(feature.id) ? { resourceActions: [...(feature.resourceActions ?? []), ...inferredResourceActions.get(feature.id)] } : {}),
     ...(inferredPassiveTeamworkSharings.has(feature.id) ? { teamworkFeatSharing: inferredPassiveTeamworkSharings.get(feature.id) } : {}),
@@ -1810,6 +1816,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const inferredSpellAdditions = inferredArchetypeSpellAdditionDetails(archetype, spells);
   const inferredSpellAccess = inferredArchetypeSpellAccessDetails(archetype, spells);
   const inferredSpellModifiers = inferredArchetypeSpellModifierDetails(archetype, spells);
+  const favoredTerrainChoiceDetails = inferredArchetypeFavoredTerrainChoiceDetails(archetype);
   const inferredWildEmpathy = inferredArchetypeWildEmpathyDetails(archetype);
   const precisionDamageDetails = inferredArchetypePrecisionDamageDetails(archetype);
   const inferredSpellListCount = Object.keys(inferredSpellAdditions.spellListAdditions).filter((id) => archetype.spellListAdditions?.[id] === undefined).length;
@@ -1824,6 +1831,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (inferredAccessExclusionCount) automated.push(`${inferredAccessExclusionCount} prohibited spell${inferredAccessExclusionCount === 1 ? "" : "s"} removed`);
   if (inferredSpellModifiers.adjustments.length) automated.push(`${inferredSpellModifiers.adjustments.length} deterministic spell modifier${inferredSpellModifiers.adjustments.length === 1 ? "" : "s"}`);
   if (inferredWildEmpathy.adjustments.length) automated.push(`${inferredWildEmpathy.adjustments.length} Wild Empathy rule${inferredWildEmpathy.adjustments.length === 1 ? "" : "s"}`);
+  if (favoredTerrainChoiceDetails.choices.length) automated.push(`${favoredTerrainChoiceDetails.choices.length} favored-terrain selection${favoredTerrainChoiceDetails.choices.length === 1 ? "" : "s"}`);
   if (precisionDamageDetails.adjustments.length) automated.push(`${precisionDamageDetails.adjustments.length} level-aware precision-damage progression${precisionDamageDetails.adjustments.length === 1 ? "" : "s"}`);
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
@@ -1937,6 +1945,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["teamwork feat sharing", teamworkSharingDetails.sentenceCoverage ?? []],
     ["temporary hit points", temporaryHitPointActionDetails.sentenceCoverage ?? []],
     ["rerolls", rerollActionDetails.sentenceCoverage ?? []],
+    ["favored terrain", favoredTerrainChoiceDetails.sentenceCoverage ?? []],
   ];
   const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
     const coveringFamilies = ruleSentenceCoverage.filter(([, entries]) =>
@@ -2056,6 +2065,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...clericDomainReductionFeatureIds,
     ...alignmentDetails.fullyAutomatedFeatureIds,
     ...inferredFeatAlternativeDetails.fullyAutomatedFeatureIds,
+    ...favoredTerrainChoiceDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

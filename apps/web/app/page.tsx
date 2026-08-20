@@ -1612,9 +1612,12 @@ export default function Home() {
             .map(signatureSpellOption),
         }
       : undefined;
-    const rawBaseGroup = generatedFeatGroup ?? signatureGroup ?? optionGroups.find(
+    const unrestrictedBaseGroup = generatedFeatGroup ?? signatureGroup ?? optionGroups.find(
       (item) => item.id === feature.optionGroupId,
     );
+    const rawBaseGroup = unrestrictedBaseGroup && feature.optionChoiceIds?.length
+      ? { ...unrestrictedBaseGroup, options: unrestrictedBaseGroup.options.filter((option) => feature.optionChoiceIds?.includes(option.id)) }
+      : unrestrictedBaseGroup;
     const augmentationOptions = (featureCharacterClass?.optionGroupAugmentations ?? [])
       .filter((augmentation) =>
         augmentation.targetGroupId === feature.optionGroupId &&

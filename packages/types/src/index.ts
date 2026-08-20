@@ -159,6 +159,7 @@ export interface ClassFeatureOccurrence {
   uses?: string | null;
   choiceRequired?: boolean;
   optionGroupId?: string | null;
+  optionChoiceIds?: string[];
   grantsAllOptions?: boolean;
   featChoiceIds?: string[];
   featChoiceTypes?: string[];
