@@ -36,6 +36,7 @@
     "coverage:archetype-defenses": "node tools/scripts/analyze-archetype-defense-inference.mjs",
     "coverage:archetype-temporary-hit-points": "node tools/scripts/analyze-archetype-temporary-hit-points.mjs",
     "coverage:archetype-rerolls": "node tools/scripts/analyze-archetype-rerolls.mjs",
+    "coverage:archetype-resource-spells": "node tools/scripts/analyze-archetype-resource-spell-candidates.mjs",
     "coverage": "npm run build:data && node tools/scripts/generate-coverage-report.mjs",
     "coverage:check": "node tools/scripts/generate-coverage-report.mjs --check",
     "performance:check": "node tools/scripts/check-client-budgets.mjs",

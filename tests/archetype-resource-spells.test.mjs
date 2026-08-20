@@ -50,10 +50,40 @@ test("applied archetypes expose resource-powered spells instead of generic use b
   assert.deepEqual(feature.resourceActions.map((action) => action.label), ["Cast discern next of kin", "Cast blood biography"]);
 });
 
+test("adjacent spell-equivalent rules retain their activation, saves, and triggers", () => {
+  const honeSoul = inferArchetypeResourceSpellActions(archetype("monk-disciple-of-wholeness"))[0].action;
+  assert.deepEqual([
+    honeSoul.label,
+    honeSoul.spellLikeAbility.spellName,
+    honeSoul.spellLikeAbility.kind,
+    honeSoul.resourceId,
+    honeSoul.cost,
+    honeSoul.actionTypeByLevel[0].actionType,
+  ], ["Use Hone Soul (greater dispel magic)", "greater dispel magic", "spell-equivalent", "kiPool", 1, "standard"]);
+  assert.equal(archetypeAutomationSummary(archetype("monk-disciple-of-wholeness"), data.feats, data.spells).manual.includes("Hone Soul (Su) (level 13)"), false);
+
+  const counterCurse = inferArchetypeResourceSpellActions(archetype("magus-hexbreaker")).find(({ sourceFeatureId }) => sourceFeatureId.endsWith("counter-curse-su-11")).action;
+  assert.equal(counterCurse.spellLikeAbility.spellName, "spell turning");
+  assert.equal(counterCurse.confirmations[0].requiredForActivation, true);
+  assert.match(counterCurse.confirmations[0].label, /successfully dispels a curse/i);
+  assert.equal(archetypeAutomationSummary(archetype("magus-hexbreaker"), data.feats, data.spells).manual.includes("Counter Curse (Su) (level 11)"), false);
+
+  const koan = inferArchetypeResourceSpellActions(archetype("monk-brazen-disciple"))[0].action;
+  assert.deepEqual([koan.spellLikeAbility.spellName, koan.savingThrow.base, koan.savingThrow.levelDivisor, koan.savingThrow.ability], ["confusion", 10, 2, "wisdom"]);
+  assert.equal(archetypeAutomationSummary(archetype("monk-brazen-disciple"), data.feats, data.spells).manual.includes("Confounding Koan (Sp) (level 12)"), false);
+});
+
+test("resource-powered transport exposes its per-creature variable cost", () => {
+  const planarGuide = inferArchetypeResourceSpellActions(archetype("monk-elemental-monk"))[0].action;
+  assert.deepEqual(planarGuide.variableCost, { label: "Ki points (including additional creatures)", minimum: 1, maximum: 8 });
+  assert.equal(planarGuide.spellLikeAbility.spellName, "plane shift");
+  assert.equal(archetypeAutomationSummary(archetype("monk-elemental-monk"), data.feats, data.spells).manual.includes("Planar Guide (Sp) (level 14)"), false);
+});
+
 test("catalogue inference remains concrete, bounded, and excludes container features", () => {
   const actions = archetypes.flatMap((entry) => inferArchetypeResourceSpellActions(entry));
-  assert.ok(actions.length >= 20, `expected the expanded resource-spell batch, received ${actions.length}`);
+  assert.ok(actions.length >= 24, `expected the expanded resource-spell batch, received ${actions.length}`);
   assert.ok(actions.every(({ action }) => action.resourceId && action.cost >= 1 && action.minimumLevel >= 1 && action.minimumLevel <= 20));
-  assert.ok(actions.every(({ action }) => !/\b(?:ability|action|casts?|effect|spell|when|whenever)\b/i.test(action.spellLikeAbility.spellName)));
+  assert.ok(actions.every(({ action }) => !/\b(?:ability|action|casts?|effect|when|whenever)\b/i.test(action.spellLikeAbility.spellName) && !/^(?:a )?spell$/i.test(action.spellLikeAbility.spellName)));
   assert.equal(actions.some(({ sourceFeatureId }) => /(?:forbidden-powers|special)-/i.test(sourceFeatureId)), false);
 });
