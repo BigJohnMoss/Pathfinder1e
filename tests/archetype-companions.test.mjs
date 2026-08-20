@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary, archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, inferredArchetypeCompanionGrantDetails, resolvedArchetypeCompanionGrants } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const characterClass = (id) => data.classes.find((item) => item.id === id);
@@ -41,4 +41,13 @@ test("companion effective levels preserve adjustments and character-level progre
   assert.equal(archetypeCompanionEffectiveLevel({ effectiveLevelAdjustment: -3 }, 8), 5);
   assert.equal(archetypeCompanionEffectiveLevel({ usesCharacterLevel: true }, 2, 9), 9);
   assert.equal(archetypeCompanionEffectiveLevel({ effectiveLevelMultiplier: 0.5, effectiveLevelAdjustment: -2 }, 3), 1);
+});
+
+test("pure structured companion grants leave the manual queue without hiding composite rules", () => {
+  const draconicDruid = archetype("druid-draconic-druid");
+  const details = inferredArchetypeCompanionGrantDetails(draconicDruid);
+  assert.deepEqual(details.grants, [], "the authored grant remains authoritative");
+  assert.ok(details.fullyAutomatedFeatureIds.has("druid-draconic-druid-drake-companion-1"));
+  assert.equal(archetypeAutomationSummary(draconicDruid, data.feats, data.spells).manual.includes("Drake Companion (level 1)"), false);
+  assert.equal(archetypeAutomationSummary(archetype("shaman-draconic-shaman"), data.feats, data.spells).manual.includes("Drake Companion (level 4)"), true);
 });
