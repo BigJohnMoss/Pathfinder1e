@@ -259,6 +259,23 @@ export interface ClassFeatureOccurrence {
       diceCountByLevel: Array<{ level: number; count: number }>;
       dieSidesByLevel: Array<{ level: number; sides: number }>;
       abilityModifier?: AbilityName;
+      modeEffects?: Array<{
+        modeId: string;
+        kind: "healing" | "damage";
+        targetSave?: {
+          modifier: "fortitude" | "reflex" | "will";
+          outcome: "half" | "negates";
+        };
+        riders?: Array<{
+          name: string;
+          description: string;
+          targetHitDice?: { comparison: "at-most" | "greater-than"; levelAdjustment: number };
+          duration:
+            | { kind: "fixed-rounds"; rounds: number }
+            | { kind: "dice-rounds"; count: number; sides: number }
+            | { kind: "fixed-then-dice-rounds"; fixedRounds: number; count: number; sides: number };
+        }>;
+      }>;
     };
     combatRoll?: {
       attack?: { kind: "ranged-touch" | "melee-touch"; label: string };
