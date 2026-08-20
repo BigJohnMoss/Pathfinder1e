@@ -34,3 +34,18 @@ test("Buccaneer's inferred exotic pet appears at half effective level", async ()
   assert.ok(manager);
   assert.match(within(manager).getByText("Exotic Pet (Ex)").closest("article")?.textContent ?? "", /familiar.*effective level 2/i);
 });
+
+test("Draconic Druid exposes its authored drake with automatic progression", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "5" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "druid-draconic-druid");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  const manager = screen.getByRole("heading", { name: "Companion sheets" }).closest("section");
+  assert.ok(manager);
+  const card = within(manager).getByText("Drake companion").closest("article");
+  assert.match(card?.textContent ?? "", /drake.*effective level 5/i);
+  assert.match(card?.textContent ?? "", /d12 HD.*BAB.*natural armour.*drake powers/i);
+});
