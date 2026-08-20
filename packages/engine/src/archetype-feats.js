@@ -18,6 +18,7 @@ const featNameMap = (feats) => {
   for (const feat of feats ?? []) {
     const name = normalizeName(feat.name);
     result.set(name, feat.id);
+    if (name === "chokehold") result.set("choke hold", feat.id);
     const armor = name.match(/^armor proficiency,\s*(light|medium|heavy)$/);
     if (armor) result.set(`${armor[1]} armor proficiency`, feat.id);
   }
@@ -41,7 +42,7 @@ const fixedFeatIds = (value, featIdByName) => {
 };
 
 const featGrantQualifier = /^(?:The\s+)?[^.]{0,100}?(?:need not|does not need to|doesn't need to|may ignore)\s+meet[^.]{0,100}?prerequisites?\.?$/i;
-const featGrantReplacement = /^(?:This (?:ability|feature|feat) |This |These )?(?:alters?|replaces?)[^.]+\.?$/i;
+const featGrantReplacement = /^(?:This (?:ability|feature|feat) |This |These (?:(?:bonus )?feats? )?)?(?:alters?|replaces?)[^.]+\.?$/i;
 
 export function inferredArchetypeGrantedFeatDetails(archetype, feats) {
   const featIdByName = featNameMap(feats);
@@ -56,6 +57,21 @@ export function inferredArchetypeGrantedFeatDetails(archetype, feats) {
     const pureGrantSentences = new Set();
     for (const [sentenceIndex, rawSentence] of sentences.entries()) {
       const sentence = rawSentence.replace(/â€™|Ã¢â‚¬â„¢|ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢/g, "'");
+      if (/\bgains? the following bonus feats?\s*:/i.test(sentence)) {
+        const entries = [...sentence.matchAll(/\b(\d+)(?:st|nd|rd|th)?\s+level\s*[-\u2013\u2014:]\s*(.+?)(?=,\s*\d+(?:st|nd|rd|th)?\s+level\s*[-\u2013\u2014:]|[.]?$)/gi)]
+          .map((match) => ({ level: Number(match[1]), featIds: fixedFeatIds(match[2], featIdByName) }));
+        if (entries.length > 1 && entries.every((entry) => entry.featIds.length === 1 && entry.featIds[0])) {
+          for (const entry of entries) {
+            const featId = entry.featIds[0];
+            if (explicit.has(featId)) continue;
+            const key = `${feature.id}:${entry.level}:${featId}`;
+            if (seen.has(key)) continue;
+            seen.add(key);
+            grants.push({ featureId: feature.id, featId, level: entry.level });
+          }
+          pureGrantSentences.add(sentenceIndex);
+        }
+      }
       const matchesByIndex = new Map();
       for (const match of sentence.matchAll(/\b(?:gains?|receives?|is granted)\s+(?:the\s+)?(.+?)\s+as\s+(?:an?\s+)?(?:additional\s+)?bonus feats?\b/gi)) matchesByIndex.set(match.index, match);
       for (const match of sentence.matchAll(/\b(?:gains?|receives?|is granted)\s+(?:the\s+)?(.+?)\s+(?:(?:APG|ACG|ARG|OA|UC|UI|UM|ISG|UW|HA|WMH|CoP)\s+)?feat\b/gi)) if (!matchesByIndex.has(match.index)) matchesByIndex.set(match.index, match);
