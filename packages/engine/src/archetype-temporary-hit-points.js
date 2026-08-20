@@ -66,12 +66,15 @@ function durationByLevel(minimumLevel, summary) {
 export function inferredArchetypeTemporaryHitPointActionDetails(archetype) {
   const actions = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   const resources = new Map(resolvedArchetypeResourceAdjustments(archetype).map((resource) => [resource.resourceId.replace(/^archetype-/, ""), resource]));
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (feature.resourceActions?.length) continue;
     const summary = String(feature.summary ?? "");
     if (/temporary hit points? stack/i.test(summary)) continue;
-    const amountSentence = sentences(summary).find((sentence) => playerOwnedTemporaryHitPoints(sentence));
+    const featureSentences = sentences(summary);
+    const amountSentenceIndex = featureSentences.findIndex((sentence) => playerOwnedTemporaryHitPoints(sentence));
+    const amountSentence = featureSentences[amountSentenceIndex];
     if (!amountSentence) continue;
     const temporaryHitPointsByLevel = amountByLevel(feature, amountSentence, summary);
     if (!temporaryHitPointsByLevel.length) continue;
@@ -91,9 +94,21 @@ export function inferredArchetypeTemporaryHitPointActionDetails(archetype) {
         summary: amountSentence,
       },
     });
+    sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: amountSentenceIndex });
+    featureSentences.forEach((sentence, sentenceIndex) => {
+      if (sentenceIndex === amountSentenceIndex) return;
+      if (/\btemporary hit points?\b[^.]{0,100}\b(?:increase|maximum)\b/i.test(sentence))
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+      else if (resource && /\b(?:can use this ability|uses? this ability|number of times per day)\b/i.test(sentence))
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+    });
     if (feature.id === "fighter-siegebreaker-armored-vigor-ex-2") fullyAutomatedFeatureIds.add(feature.id);
   }
-  return { actions, fullyAutomatedFeatureIds };
+  return {
+    actions,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export function inferArchetypeTemporaryHitPointActions(archetype) {

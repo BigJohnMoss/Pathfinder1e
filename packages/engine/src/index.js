@@ -1914,6 +1914,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const inferredFeatChoiceDetails = inferredArchetypeFeatChoiceDetails(archetype, feats);
   const inferredFeatAlternativeDetails = inferredArchetypeFeatAlternativeDetails(archetype, feats);
   const teamworkSharingDetails = inferredArchetypeTeamworkSharingDetails(archetype);
+  const temporaryHitPointActionDetails = inferredArchetypeTemporaryHitPointActionDetails(archetype);
+  const rerollActionDetails = inferredArchetypeRerollActionDetails(archetype);
   const ruleSentenceCoverage = [
     ["initiative", initiativeBonusDetails.sentenceCoverage ?? []],
     ["saving throws", saveBonusDetails.sentenceCoverage ?? []],
@@ -1932,6 +1934,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["bonus feat choices", inferredFeatChoiceDetails.sentenceCoverage ?? []],
     ["feat alternatives", inferredFeatAlternativeDetails.sentenceCoverage ?? []],
     ["teamwork feat sharing", teamworkSharingDetails.sentenceCoverage ?? []],
+    ["temporary hit points", temporaryHitPointActionDetails.sentenceCoverage ?? []],
+    ["rerolls", rerollActionDetails.sentenceCoverage ?? []],
   ];
   const crossRuleFeatureIds = new Set(replacementFeatures.filter((feature) => {
     const coveringFamilies = ruleSentenceCoverage.filter(([, entries]) =>
@@ -1971,10 +1975,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (configured.length) automated.push(`${configured.length} selectable feature choice${configured.length === 1 ? "" : "s"}`);
   const resourceActions = replacementFeatures.flatMap(feature => feature.resourceActions ?? []);
   if (resourceActions.length) automated.push(`${resourceActions.length} resource-powered feature action${resourceActions.length === 1 ? "" : "s"}`);
-  const temporaryHitPointActionDetails = inferredArchetypeTemporaryHitPointActionDetails(archetype);
   if (temporaryHitPointActionDetails.actions.length)
     automated.push(`${temporaryHitPointActionDetails.actions.length} calculated temporary-hit-point action${temporaryHitPointActionDetails.actions.length === 1 ? "" : "s"}`);
-  const rerollActionDetails = inferredArchetypeRerollActionDetails(archetype);
   if (rerollActionDetails.actions.length)
     automated.push(`${rerollActionDetails.actions.length} rules-aware reroll action${rerollActionDetails.actions.length === 1 ? "" : "s"}`);
   if (spellLikeAbilityDetails.actions.length)
