@@ -35,6 +35,14 @@ test("published nonstandard channel dice and modes remain intact", () => {
     { level: 5, count: 3 },
   ]);
   assert.deepEqual(fiendish.modes.map(({ id }) => id), ["heal-evil", "harm-good"]);
+  assert.deepEqual(fiendish.diceRoll.modeEffects.map(({ modeId, kind, targetSave }) => ({ modeId, kind, outcome: targetSave?.outcome })), [
+    { modeId: "heal-evil", kind: "healing", outcome: undefined },
+    { modeId: "harm-good", kind: "damage", outcome: "negates" },
+  ]);
+  assert.equal(fiendish.diceRoll.modeEffects[1].riders.length, 2);
+  assert.deepEqual(fiendish.actionTypeByLevel, [{ level: 1, actionType: "standard" }]);
+  assert.equal(fiendish.savingThrow.levelAdjustment, undefined);
+  assert.equal(archetypeAutomationSummary(archetype("cleric-fiendish-vessel"), data.feats, data.spells).manual.includes("Channel Evil (Su) (level 1)"), false);
 
   const fallen = inferArchetypeChannelEnergyActions(archetype("spiritualist-priest-of-the-fallen"))[0].action;
   assert.deepEqual(fallen.diceRoll.diceCountByLevel.slice(0, 3), [
@@ -65,6 +73,6 @@ test("applied archetypes expose calculated channel actions instead of generic bu
 test("catalogue channel inference remains exact and excludes incidental channel references", () => {
   const actions = archetypes.flatMap((entry) => inferArchetypeChannelEnergyActions(entry));
   assert.equal(actions.length, 9);
-  assert.ok(actions.every(({ action }) => action.resourceId && action.diceRoll && action.modes.length >= 2));
+  assert.ok(actions.every(({ action }) => action.resourceId && action.diceRoll && action.modes.length >= 2 && action.diceRoll.modeEffects.length === action.modes.length));
   assert.equal(actions.some(({ sourceFeatureId }) => /(?:cleansing-flames|maddening-gaze|luck-hexes)/i.test(sourceFeatureId)), false);
 });

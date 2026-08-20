@@ -27,6 +27,32 @@ function channelModes(summary) {
   ];
 }
 
+function channelModeEffects(summary, modes) {
+  const channelEvil = /channel evil|channels the pure evil/i.test(summary);
+  return modes.map((mode) => {
+    const harmful = /(?:^harm-|\bharm\b)/i.test(mode.id);
+    return {
+      modeId: mode.id,
+      kind: harmful ? "damage" : "healing",
+      ...(harmful ? { targetSave: { modifier: "will", outcome: channelEvil ? "negates" : "half" } } : {}),
+      ...(channelEvil && mode.id === "harm-good" ? { riders: [
+        {
+          name: "Sickened by Channel Evil",
+          description: "The good creature is sickened after failing its Will save.",
+          targetHitDice: { comparison: "greater-than", levelAdjustment: -5 },
+          duration: { kind: "dice-rounds", count: 1, sides: 4 },
+        },
+        {
+          name: "Nauseated, then sickened by Channel Evil",
+          description: "The good creature is nauseated for 1 round, then sickened for 1d4 rounds.",
+          targetHitDice: { comparison: "at-most", levelAdjustment: -5 },
+          duration: { kind: "fixed-then-dice-rounds", fixedRounds: 1, count: 1, sides: 4 },
+        },
+      ] } : {}),
+    };
+  });
+}
+
 function effectiveLevelAdjustment(summary) {
   if (/one level lower than (?:his|her|their) level/i.test(summary)) return -1;
   const adjustment = summary.match(/(?:level|level equal to (?:his|her|their) [a-z]+ level)\s*(?:-|–|−|minus)\s*(\d+)/i);
@@ -72,6 +98,7 @@ function fullyRepresented(feature, summary) {
   if (/uses (?:his|her|their) [a-z]+ level\s*(?:-|–|−|minus)\s*3 as (?:his|her|their) effective cleric level/i.test(summary) && /3 \+ (?:his|her|their) Charisma modifier/i.test(summary)) return true;
   if (/gains the ability to channel negative energy[^.]+effective cleric level equal to (?:his|her|their) [a-z]+ level\s*(?:-|–|−|minus)\s*3/i.test(summary) && /1 \+ (?:his|her|their) Charisma modifier/i.test(summary)) return true;
   if (/channel positive energy[^.]+3 \+ (?:his|her|their) Charisma modifier/i.test(summary) && /only to harm undead or haunts/i.test(summary)) return true;
+  if (/channels the pure evil|channel evil/i.test(summary) && /nauseated for 1 round and then sickened for 1d4 rounds/i.test(summary)) return true;
   return false;
 }
 
@@ -91,7 +118,8 @@ export function inferredArchetypeChannelEnergyActionDetails(archetype) {
     const resource = resources.find((candidate) => candidate.sourceFeatureId === feature.id || candidate.resourceId === `archetype-${feature.id}`);
     if (!resource) continue;
     const minimumLevel = Math.max(1, Number(resource.minimumLevel ?? feature.level ?? 1));
-    const levelAdjustment = /DC is equal to 10 \+ 1\/2 the [a-z]+(?:'s|’s) level/i.test(summary) ? 0 : effectiveLevelAdjustment(summary);
+    const levelAdjustment = /DC (?:of this save )?is equal to 10 \+ 1\/2 (?:the )?[^.]{0,80}\blevel/i.test(summary) ? 0 : effectiveLevelAdjustment(summary);
+    const modes = channelModes(summary);
     actions.push({
       sourceFeatureId: feature.id,
       action: {
@@ -102,8 +130,9 @@ export function inferredArchetypeChannelEnergyActionDetails(archetype) {
         resourceId: resource.resourceId,
         cost: 1,
         modeLabel: "Channel mode",
-        modes: channelModes(summary),
-        diceRoll: { label, ...diceRoll },
+        modes,
+        ...(/standard action/i.test(summary) ? { actionTypeByLevel: [{ level: minimumLevel, actionType: "standard" }] } : {}),
+        diceRoll: { label, ...diceRoll, modeEffects: channelModeEffects(summary, modes) },
         savingThrow: { label: "Will", ability: "charisma", base: 10, levelDivisor: 2, classId: archetype.classId, ...(levelAdjustment ? { levelAdjustment } : {}) },
         summary,
       },
