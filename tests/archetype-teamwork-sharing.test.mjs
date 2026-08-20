@@ -156,3 +156,18 @@ test("condition-driven teamwork sharing models rage and persistent aura rules", 
   assert.equal(presence.activeEffect.fixedRounds, true);
   assert.equal(archetypeAutomationSummary(archetype("paladin-holy-tactician"), data.feats, data.spells).manual.some((entry) => entry.startsWith("Battlefield Presence")), false);
 });
+
+test("automatic teamwork sharing covers aides, summoned animals, and vermin companions", () => {
+  for (const [archetypeId, target, featureName, fullyAutomated] of [
+    ["cavalier-esquire", "aide-de-camp", "Teamwork", true],
+    ["hunter-feral-hunter", "summoned-animals", "Precise Summoned Animal", true],
+    ["hunter-verminous-hunter", "vermin-companion", "Vermin Companion", false],
+  ]) {
+    const source = archetype(archetypeId);
+    const sharing = inferArchetypePassiveTeamworkSharings(source)[0];
+    assert.equal(sharing.sharing.target, target, archetypeId);
+    assert.equal(sharing.sharing.ignorePrerequisites, true, archetypeId);
+    const manual = archetypeAutomationSummary(source, data.feats, data.spells).manual;
+    assert.equal(manual.some((entry) => entry.startsWith(featureName)), !fullyAutomated, archetypeId);
+  }
+});
