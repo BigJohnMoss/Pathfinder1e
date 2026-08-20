@@ -14,14 +14,14 @@ function saveTargets(raw) {
   return targets.length ? targets : /\bsaves?\b/i.test(clause) ? allSaveTargets : [];
 }
 
-const targetPattern = /(?:all\s+)?saving throws?|(?:(?:Fortitude|Reflex|Will)(?:\s*(?:,|and|or)\s*(?:Fortitude|Reflex|Will))*)\s+(?:saving throws?|saves?)|(?:Fortitude|Reflex|Will)\s+saves?/i;
+const targetPattern = /(?:all\s+)?saving throws?|(?:all\s+)?saves?|(?:(?:Fortitude|Reflex|Will)(?:\s*(?:,|and|or)\s*(?:Fortitude|Reflex|Will))*)\s+(?:saving throws?|saves?)|(?:Fortitude|Reflex|Will)\s+saves?/i;
 
 function saveConditionFromSentence(sentence, verbIndex, targetEnd) {
   const prefix = sentence.slice(0, verbIndex);
   const leading = prefix.match(/(?:^(?:At \d+(?:st|nd|rd|th) level,?\s*)?)(When|Whenever|While|During|Within|As long as|If)\s+(.+?),\s*(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z' -]{0,60})\s*$/i);
   if (leading) return `${leading[1].toLowerCase()} ${leading[2]}`;
   const tail = sentence.slice(targetEnd).trim();
-  const trailing = tail.match(/^((?:and to (?:his|her|their) CMD )?against|attempted against|caused by|made to|to (?:avoid|resist|resolve)|when|whenever|while|during|within|involving|as long as|if)\s+(.+?)(?=,?\s+and (?:an? \+\d|DCs?|the|he|she|they)|,\s+as well as|[.;]|$)/i);
+  const trailing = tail.match(/^((?:and to (?:his|her|their) CMD )?against|attempted against|caused by|made to|to (?:avoid|resist|resolve)|when|whenever|while|during|within|involving|as long as|if)\s+(.+?)(?=,?\s+and (?:an? \+\d|DCs?|(?:(?:he|she|they)|the [a-z][a-z' -]{0,60}) (?:gains?|receives?|has|can|may))|,\s+as well as|[.;]|$)/i);
   if (!trailing) return undefined;
   const trigger = /^and to /i.test(trailing[1]) ? "against" : trailing[1].toLowerCase();
   return `${trigger} ${trailing[2]}`;
