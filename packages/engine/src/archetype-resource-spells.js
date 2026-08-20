@@ -1,6 +1,6 @@
 import { archetypeReplacementBoilerplate, archetypeRuleSentences } from "./archetype-initiative.js";
 
-const numberWords = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
+const numberWords = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
 const numericValue = (value) => numberWords[String(value).toLowerCase()] ?? Number(value);
 const containerFeature = /^(?:abilities|ability descriptions|deeds|forbidden powers|revelations|special)$/i;
 
@@ -20,10 +20,12 @@ const cleanSpellName = (value) => String(value ?? "")
   .replace(/\s+/g, " ")
   .trim();
 
+const featureLabel = (feature) => String(feature?.name ?? "Ability").replace(/\s*\((?:Ex|Su|Sp)\)\s*$/i, "");
+
 function spellNames(raw) {
   return cleanSpellName(raw).split(/\s*(?:,|\bor\b|\band\b)\s*/i)
     .map(cleanSpellName)
-    .filter((name) => name && name.length <= 80 && name.split(/\s+/).length <= 8 && !/^(?:a|an|the)$/i.test(name) && !/\b(?:ability|action|casts?|effect|following|power|spell slot|spells?|when|whenever)\b/i.test(name));
+    .filter((name) => name && name.length <= 80 && name.split(/\s+/).length <= 8 && !/^(?:a|an|the|a spell|spell)$/i.test(name) && !/\b(?:ability|action|casts?|effect|following|power|spell slot|when|whenever)\b/i.test(name));
 }
 
 function resourceReference(sentence) {
@@ -52,7 +54,39 @@ function parsedSpells(sentence) {
   for (const match of sentence.matchAll(/\bgain(?:s|ing)? (?:the )?effects? of ([a-z][a-z'\u2019 -]{1,70}?)(?=\s+(?:for|until|by)\b|[,.;]|$)/gi)) found.push(...spellNames(match[1]));
   for (const match of sentence.matchAll(/\bas (?:per )?(?:the )?([a-z][a-z'\u2019 -]{1,70}?) spell\b/gi)) found.push(...spellNames(match[1]));
   for (const match of sentence.matchAll(/\b(?:create|produce|radiate)\s+([a-z][a-z'\u2019 -]{1,50}?)\s*\(as the spell\b/gi)) found.push(...spellNames(match[1]));
+  for (const match of sentence.matchAll(/\bfunctions? (?:as|like)(?: per)? (?:the )?(?:targeted dispel(?: magic)? option of )?([a-z][a-z'\u2019/ -]{1,70}?)(?=\s*(?:,|\.|$))/gi)) found.push(...spellNames(match[1]));
   return [...new Set(found.map((name) => name.toLowerCase()))];
+}
+
+function variableResourceCost(sentences, sentenceIndex, sentence, resource) {
+  const nextSentence = sentences[sentenceIndex + 1];
+  if (!nextSentence) return undefined;
+  const additionalMaximum = sentence.match(/\bup to (one|two|three|four|five|six|seven|eight|nine|ten|\d+) additional (?:willing )?(creatures?|targets?)\b/i);
+  const increase = nextSentence.match(/\bEach additional (?:creature|target) increases the cost by (one|two|three|four|five|six|\d+)\b/i);
+  if (!additionalMaximum || !increase) return undefined;
+  const maximum = resource.cost + numericValue(additionalMaximum[1]) * numericValue(increase[1]);
+  const unit = resource.resourceId === "kiPool" ? "Ki points" : "Resource points";
+  return {
+    coverageIndex: sentenceIndex + 1,
+    variableCost: { label: `${unit} (including additional creatures)`, minimum: resource.cost, maximum },
+  };
+}
+
+function triggerConfirmations(sentence) {
+  const trigger = sentence.match(/\bwhenever (.{1,180}?),\s*(?:he|she|they|the [a-z'\u2019 -]+) can\b/i)?.[1]?.trim();
+  return trigger ? [{ id: "trigger-occurred", label: `Trigger occurred: ${trigger}`, requiredForActivation: true }] : [];
+}
+
+function parsedSavingThrow(sentence, classId) {
+  const match = sentence.match(/\bDC is equal to (\d+) \+ (?:1\/2|half) (?:the )?[a-z'\u2019 -]*class level \+ (?:his|her|their) (Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma) modifier\b/i);
+  if (!match) return undefined;
+  return {
+    label: "Spell",
+    base: Number(match[1]),
+    levelDivisor: 2,
+    ability: match[2].toLowerCase(),
+    classId,
+  };
 }
 
 function actionType(sentence) {
@@ -80,33 +114,61 @@ export function inferredArchetypeResourceSpellActionDetails(archetype) {
     for (const [sentenceIndex, sentence] of sentences.entries()) {
       const resource = resourceReference(sentence);
       if (!resource) continue;
-      const names = parsedSpells(sentence);
+      let spellSentenceIndex = sentenceIndex;
+      let names = parsedSpells(sentence);
+      if (!names.length && sentences[sentenceIndex + 1]) {
+        names = parsedSpells(sentences[sentenceIndex + 1]);
+        if (names.length) spellSentenceIndex = sentenceIndex + 1;
+      }
       if (!names.length) continue;
       const prefix = sentence.slice(0, Math.max(0, sentence.search(/\b(?:cast|use|as if)\b/i)));
       const minimumLevel = Math.max(1, Number([...prefix.matchAll(/\b(?:At|Beginning at|Starting at) (\d+)(?:st|nd|rd|th) level\b/gi)].at(-1)?.[1] ?? feature.level ?? 1));
-      const activation = actionType(sentence);
-      const duration = spellDuration(sentence, minimumLevel);
-      const prerequisiteSpell = sentences[sentenceIndex + 1]?.match(/\bmust already have ([a-z][a-z'\u2019 -]{1,70}?) (?:available )?as a spell-like ability\b/i)?.[1]?.trim().toLowerCase();
+      const spellSentence = sentences[spellSentenceIndex];
+      const combinedSentence = spellSentenceIndex === sentenceIndex ? sentence : `${sentence} ${spellSentence}`;
+      const activation = actionType(combinedSentence);
+      const duration = spellDuration(combinedSentence, minimumLevel);
+      const prerequisiteSpell = sentences[spellSentenceIndex + 1]?.match(/\bmust already have ([a-z][a-z'\u2019 -]{1,70}?) (?:available )?as a spell-like ability\b/i)?.[1]?.trim().toLowerCase();
+      const variableCost = variableResourceCost(sentences, sentenceIndex, sentence, resource);
+      const saveSentenceIndex = [spellSentenceIndex + 1, spellSentenceIndex + 2].find((index) => parsedSavingThrow(sentences[index] ?? "", archetype.classId));
+      const savingThrow = saveSentenceIndex === undefined ? undefined : parsedSavingThrow(sentences[saveSentenceIndex], archetype.classId);
+      const equivalent = spellSentenceIndex !== sentenceIndex || /\bfunctions? (?:as|like)\b/i.test(sentence);
       for (const name of names) actions.push({
         sourceFeatureId: feature.id,
         action: {
           id: `${feature.id}-resource-spell-${spellId(name)}-${sentenceIndex}`,
-          label: `Cast ${name}`,
+          label: equivalent ? `Use ${featureLabel(feature)} (${name})` : `Cast ${name}`,
           classId: archetype.classId,
           minimumLevel,
           ...resource,
+          ...(variableCost ? { variableCost: variableCost.variableCost } : {}),
           ...(activation ? { actionTypeByLevel: [{ level: minimumLevel, actionType: activation }] } : {}),
-          ...(prerequisiteSpell === name ? { confirmations: [{ id: `${spellId(name)}-spell-like-ability`, label: `Has ${name} as a spell-like ability`, requiredForActivation: true }] } : {}),
-          spellLikeAbility: { spellId: spellId(name), spellName: name, cadence: "at-will" },
-          ...(duration ? { activeEffect: { name, targets: ["self"], bonus: 0, description: sentence, ...duration, fixedRounds: true, replaceExisting: true } } : {}),
-          summary: sentence,
+          ...((prerequisiteSpell === name || triggerConfirmations(sentence).length) ? { confirmations: [
+            ...(prerequisiteSpell === name ? [{ id: `${spellId(name)}-spell-like-ability`, label: `Has ${name} as a spell-like ability`, requiredForActivation: true }] : []),
+            ...triggerConfirmations(sentence),
+          ] } : {}),
+          ...(savingThrow ? { savingThrow } : {}),
+          spellLikeAbility: { spellId: spellId(name), spellName: name, cadence: "at-will", ...(equivalent ? { kind: "spell-equivalent" } : {}) },
+          ...(duration ? { activeEffect: { name, targets: ["self"], bonus: 0, description: combinedSentence, ...duration, fixedRounds: true, replaceExisting: true } } : {}),
+          summary: combinedSentence,
         },
       });
       sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
       covered.add(sentenceIndex);
+      if (spellSentenceIndex !== sentenceIndex) {
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: spellSentenceIndex });
+        covered.add(spellSentenceIndex);
+      }
+      if (variableCost) {
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: variableCost.coverageIndex });
+        covered.add(variableCost.coverageIndex);
+      }
+      if (saveSentenceIndex !== undefined) {
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: saveSentenceIndex });
+        covered.add(saveSentenceIndex);
+      }
       if (prerequisiteSpell && names.includes(prerequisiteSpell)) {
-        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: sentenceIndex + 1 });
-        covered.add(sentenceIndex + 1);
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: spellSentenceIndex + 1 });
+        covered.add(spellSentenceIndex + 1);
       }
     }
     if (covered.size && sentences.every((sentence, index) => covered.has(index) || archetypeReplacementBoilerplate(sentence))) fullyAutomatedFeatureIds.add(feature.id);

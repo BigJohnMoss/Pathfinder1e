@@ -70,3 +70,25 @@ test("ki-powered spell equivalents enforce prerequisites and track their duratio
   assert.equal(effects[0].roundsRemaining, 1);
   assert.match(screen.getByLabelText("Cast invisibility result").textContent ?? "", /Active for 1 round/i);
 });
+
+test("variable spell-equivalent costs spend the selected number of ki points", async () => {
+  const monk = data.classes.find((item) => item.id === "monk");
+  const elementalMonk = archetypes.find((item) => item.id === "monk-elemental-monk");
+  const applied = applyArchetype(monk, elementalMonk, data.classes, data.spells);
+  const spent: number[] = [];
+  render(<ClassFeatures
+    level={14}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 14)}
+    classLevels={{ monk: 14 }}
+    dailyResources={[{ id: "kiPool", label: "Ki Pool", unit: "point", maximum: 10, used: 0, onUsedChange: (used) => spent.push(used) }]}
+  />);
+
+  const user = userEvent.setup();
+  const cost = screen.getByLabelText("Cast plane shift ki points (including additional creatures)");
+  await user.clear(cost);
+  await user.type(cost, "4");
+  await user.click(screen.getByRole("button", { name: "Cast plane shift" }));
+  assert.deepEqual(spent, [4]);
+  assert.equal(screen.getByLabelText("Cast plane shift result").textContent, "plane shift cast as a spell-like ability.");
+});

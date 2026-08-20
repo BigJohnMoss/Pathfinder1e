@@ -183,6 +183,7 @@ export interface ClassFeatureOccurrence {
     spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week"; kind?: "spell-like" | "spell-equivalent" };
     resourceId?: string;
     cost?: number;
+    variableCost?: { label: string; minimum: number; maximum?: number };
     costs?: Array<{ resourceId: string; cost: number }>;
     changes?: Array<{ resourceId: string; usedDelta: number }>;
     variableRecovery?: {

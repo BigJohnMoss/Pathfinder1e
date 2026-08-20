@@ -36,7 +36,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
   onRemoveEffectByName?: (name: string) => void;
   onTemporaryHitPointsChange?: (amount: number) => void;
 }) {
-  const [variableAmounts, setVariableAmounts] = useState<Record<string, number>>({});
+  const [variableAmounts, setVariableAmounts] = useState<Record<string, number | "">>({});
   const [actionResults, setActionResults] = useState<Record<string, string>>({});
   const [effectTargets, setEffectTargets] = useState<Record<string, ActiveEffectTarget>>({});
   const [effectSkills, setEffectSkills] = useState<Record<string, string>>({});
@@ -93,12 +93,21 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const actionLevel = action.advancementOptionId && selectedOptionSet.has(action.advancementOptionId)
           ? casterLevels[action.classId ?? ""] ?? actionClassLevel
           : actionClassLevel;
-        const costs = action.costs ?? (action.resourceId && action.cost !== undefined ? [{ resourceId: action.resourceId, cost: action.cost }] : []);
+        const variableCostResource = action.variableCost && action.resourceId ? dailyResources.find((candidate) => candidate.id === action.resourceId) : undefined;
+        const variableCostRemaining = variableCostResource?.maximum === null ? Number.POSITIVE_INFINITY : Math.max(0, (variableCostResource?.maximum ?? 0) - (variableCostResource?.used ?? 0));
+        const variableCostMaximum = action.variableCost
+          ? Math.max(action.variableCost.minimum, Math.min(action.variableCost.maximum ?? Number.POSITIVE_INFINITY, variableCostRemaining))
+          : 0;
+        const enteredVariableCost = variableAmounts[action.id];
+        const variableCost = action.variableCost ? Math.max(action.variableCost.minimum, Math.min(typeof enteredVariableCost === "number" ? enteredVariableCost : action.variableCost.minimum, variableCostMaximum)) : action.cost;
+        const variableCostInput = enteredVariableCost ?? action.variableCost?.minimum;
+        const costs = action.costs ?? (action.resourceId && variableCost !== undefined ? [{ resourceId: action.resourceId, cost: variableCost }] : []);
         const changes = action.changes ?? costs.map(({ resourceId, cost }) => ({ resourceId, usedDelta: cost }));
         const variableMaximum = action.variableRecovery
           ? Math.max(action.variableRecovery.minimum ?? 0, Math.min(action.variableRecovery.maximum ?? Number.POSITIVE_INFINITY, action.variableRecovery.levelDivisor ? Math.floor(level / action.variableRecovery.levelDivisor) : Number.POSITIVE_INFINITY))
           : 0;
-        const variableAmount = action.variableRecovery ? Math.max(action.variableRecovery.minimum ?? 0, Math.min(variableAmounts[action.id] ?? variableMaximum, variableMaximum)) : 0;
+        const enteredVariableRecovery = variableAmounts[action.id];
+        const variableAmount = action.variableRecovery ? Math.max(action.variableRecovery.minimum ?? 0, Math.min(typeof enteredVariableRecovery === "number" ? enteredVariableRecovery : variableMaximum, variableMaximum)) : 0;
         const appliedChanges = action.variableRecovery
           ? [...changes, { resourceId: action.variableRecovery.resourceId, usedDelta: -variableAmount }]
           : changes;
@@ -371,6 +380,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           else if (!action.actorSavingThrow && !action.rerollAction && !action.combatRoll && !action.diceRoll && !action.targetEffectRoll) setActionResults((current) => ({ ...current, [action.id]: action.spellLikeAbility ? action.spellLikeAbility.kind === "spell-equivalent" ? `${action.spellLikeAbility.spellName} activated as a spell-equivalent effect.` : `${action.spellLikeAbility.spellName} cast as a spell-like ability.` : "Ability used." }));
         };
         return <div className="feature-resource-action" key={action.id}>
+          {action.variableCost && <label>{action.variableCost.label}<input aria-label={`${action.label} ${action.variableCost.label.toLowerCase()}`} type="number" min={action.variableCost.minimum} max={variableCostMaximum} value={variableCostInput} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: event.target.value === "" ? "" : Math.max(action.variableCost!.minimum, Math.min(Number(event.target.value), variableCostMaximum)) }))} /></label>}
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
           {Boolean(availableModes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionTargetNames((current) => { const next = { ...current }; delete next[action.id]; return next; }); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{availableModes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
           {Boolean(action.recipients?.length) && <label>{action.recipientLabel ?? "Recipient"}<select aria-label={`${action.label} recipient`} value={selectedRecipient?.id} onChange={(event) => setActionRecipients((current) => ({ ...current, [action.id]: event.target.value }))}>{action.recipients!.map((recipient) => <option key={recipient.id} value={recipient.id}>{recipient.label}</option>)}</select></label>}
