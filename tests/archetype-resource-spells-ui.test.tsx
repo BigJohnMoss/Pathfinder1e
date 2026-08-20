@@ -92,3 +92,28 @@ test("variable spell-equivalent costs spend the selected number of ki points", a
   assert.deepEqual(spent, [4]);
   assert.equal(screen.getByLabelText("Cast plane shift result").textContent, "plane shift cast as a spell-like ability.");
 });
+
+test("reactive spell equivalents require their trigger and spend the formula cost", async () => {
+  const monk = data.classes.find((item) => item.id === "monk");
+  const flowingMonk = archetypes.find((item) => item.id === "monk-flowing-monk");
+  const applied = applyArchetype(monk, flowingMonk, data.classes, data.spells);
+  const spent: number[] = [];
+  render(<ClassFeatures
+    level={15}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 15)}
+    classLevels={{ monk: 15 }}
+    dailyResources={[{ id: "kiPool", label: "Ki Pool", unit: "point", maximum: 5, used: 0, onUsedChange: (used) => spent.push(used) }]}
+  />);
+
+  const user = userEvent.setup();
+  const useVolley = screen.getByRole("button", { name: "Use Volley Spell (spell turning)" }) as HTMLButtonElement;
+  assert.equal(useVolley.disabled, true);
+  await user.click(screen.getByRole("checkbox", { name: /trigger occurred/i }));
+  const cost = screen.getByLabelText("Use Volley Spell (spell turning) ki points (half the triggering spell level)");
+  await user.clear(cost);
+  await user.type(cost, "3");
+  await user.click(useVolley);
+  assert.deepEqual(spent, [3]);
+  assert.equal(screen.getByLabelText("Use Volley Spell (spell turning) result").textContent, "spell turning activated as a spell-equivalent effect.");
+});
