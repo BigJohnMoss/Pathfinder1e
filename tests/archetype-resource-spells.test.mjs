@@ -80,9 +80,36 @@ test("resource-powered transport exposes its per-creature variable cost", () => 
   assert.equal(archetypeAutomationSummary(archetype("monk-elemental-monk"), data.feats, data.spells).manual.includes("Planar Guide (Sp) (level 14)"), false);
 });
 
+test("reactive and restricted spell equivalents preserve formula costs and legal movement", () => {
+  const volley = inferArchetypeResourceSpellActions(archetype("monk-flowing-monk"))[0].action;
+  assert.deepEqual([
+    volley.label,
+    volley.spellLikeAbility.spellName,
+    volley.resourceId,
+    volley.variableCost,
+  ], [
+    "Use Volley Spell (spell turning)",
+    "spell turning",
+    "kiPool",
+    { label: "Ki points (half the triggering spell level)", minimum: 1, maximum: 4 },
+  ]);
+  assert.match(volley.confirmations[0].label, /fails to overcome.*spell resistance/i);
+  assert.equal(archetypeAutomationSummary(archetype("monk-flowing-monk"), data.feats, data.spells).manual.includes("Volley Spell (Su) (level 15)"), false);
+
+  const waterStride = inferArchetypeResourceSpellActions(archetype("monk-water-dancer"))[0].action;
+  assert.deepEqual([
+    waterStride.spellLikeAbility.spellName,
+    waterStride.resourceId,
+    waterStride.cost,
+    waterStride.actionTypeByLevel[0].actionType,
+    waterStride.confirmations.map(({ id }) => id),
+  ], ["dimension door", "kiPool", 1, "move", ["water-at-origin-and-destination", "travelling-alone"]]);
+  assert.equal(archetypeAutomationSummary(archetype("monk-water-dancer"), data.feats, data.spells).manual.includes("Water Stride (Sp) (level 12)"), false);
+});
+
 test("catalogue inference remains concrete, bounded, and excludes container features", () => {
   const actions = archetypes.flatMap((entry) => inferArchetypeResourceSpellActions(entry));
-  assert.ok(actions.length >= 24, `expected the expanded resource-spell batch, received ${actions.length}`);
+  assert.ok(actions.length >= 28, `expected the expanded resource-spell batch, received ${actions.length}`);
   assert.ok(actions.every(({ action }) => action.resourceId && action.cost >= 1 && action.minimumLevel >= 1 && action.minimumLevel <= 20));
   assert.ok(actions.every(({ action }) => !/\b(?:ability|action|casts?|effect|when|whenever)\b/i.test(action.spellLikeAbility.spellName) && !/^(?:a )?spell$/i.test(action.spellLikeAbility.spellName)));
   assert.equal(actions.some(({ sourceFeatureId }) => /(?:forbidden-powers|special)-/i.test(sourceFeatureId)), false);
