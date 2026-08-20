@@ -74,6 +74,25 @@ function adjustmentsFromSentence(feature, sentence) {
   return adjustments;
 }
 
+function referencedAdjustmentFromSentence(feature, sentence, source) {
+  const reference = /^(?:(?:This|The) bonus also applies|(?:(?:He|She|They)|(?:The|An?) [a-z][a-z'\u2019 -]{0,80}) also (?:receives?|applies?) (?:this|the) bonus)\b/i.exec(sentence);
+  if (!reference) return null;
+  const target = targetPattern.exec(sentence);
+  const targets = target ? saveTargets(target[0]) : source.saveTargets;
+  if (!targets?.length) return null;
+  const targetEnd = target ? target.index + target[0].length : reference[0].length;
+  const condition = saveConditionFromSentence(sentence, reference.index, targetEnd) ??
+    sentence.slice(targetEnd).trim().match(/^(against|to (?:avoid|resist|resolve)|when|whenever|while|during|within|if)\s+(.+?)[.]?$/i)?.slice(1).join(" ").trim().toLowerCase();
+  if (!condition) return null;
+  return {
+    ...source,
+    sourceFeatureId: feature.id,
+    label: targets.length === 3 ? "Saving throws" : `${targets.map((item) => item[0].toUpperCase() + item.slice(1)).join(" and ")} saves`,
+    saveTargets: targets,
+    condition,
+  };
+}
+
 function narrativeLeadSentence(sentence) {
   const withoutLevel = sentence.replace(/^At \d+(?:st|nd|rd|th) level,?\s*/i, "");
   return !/\d|\b(?:armor class|attack|bonus|can|check|damage|DC|feet?|gains?|immune|immunity|level|may|must|penalty|rank|receives?|resistance|roll|round|save|skill|spell|times? per|uses?)\b/i.test(withoutLevel);
@@ -113,16 +132,24 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
         adjustment.condition ||
         /^(?:At \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z])/i.test(sentences[index]),
       );
-      const unique = [...new Map(safeParsed.map((entry) => [JSON.stringify(entry.adjustment), entry])).values()];
+      const directUnique = [...new Map(safeParsed.map((entry) => [JSON.stringify(entry.adjustment), entry])).values()];
+      const references = directUnique.length === 1 ? sentences.flatMap((sentence, index) => {
+        if (directUnique.some((entry) => entry.index === index)) return [];
+        const adjustment = referencedAdjustmentFromSentence(feature, sentence, directUnique[0].adjustment);
+        return adjustment ? [{ index, adjustment, referenced: true }] : [];
+      }) : [];
+      const unique = [...new Map([...directUnique, ...references].map((entry) => [JSON.stringify(entry.adjustment), entry])).values()];
       adjustments.push(...unique.map(({ adjustment }) => adjustment));
       const hasScheduledProgression = unique.some(({ adjustment }) => adjustment.bonusByLevel || adjustment.interval);
       const firstParsedIndex = unique.length ? Math.min(...unique.map(({ index }) => index)) : -1;
       const parsedBySentence = new Map();
-      for (const { index } of unique) parsedBySentence.set(index, (parsedBySentence.get(index) ?? 0) + 1);
+      const referenceIndexes = new Set(references.map(({ index }) => index));
+      for (const { index, referenced } of unique) if (!referenced) parsedBySentence.set(index, (parsedBySentence.get(index) ?? 0) + 1);
       for (const [index, count] of parsedBySentence) {
         if (directSaveRuleSentence(sentences[index], count))
           sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
       }
+      for (const index of referenceIndexes) sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
       if (hasScheduledProgression) {
         for (const [index, sentence] of sentences.entries()) {
           if (/^(?:(?:This|The) bonus\b[^.]{0,160}\b(?:increases?|improves?)\b|This increases? to \+?\d+\b)/i.test(sentence))
@@ -132,6 +159,7 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
       const remaining = sentences.filter((sentence, index) =>
         !archetypeReplacementBoilerplate(sentence) &&
         !(parsedBySentence.has(index) && directSaveRuleSentence(sentence, parsedBySentence.get(index))) &&
+        !referenceIndexes.has(index) &&
         !(index < firstParsedIndex && narrativeLeadSentence(sentence)) &&
         !(hasScheduledProgression && /^(?:(?:This|The) bonus\b[^.]{0,160}\b(?:increases?|improves?)\b|This increases? to \+?\d+\b)/i.test(sentence)),
       );
