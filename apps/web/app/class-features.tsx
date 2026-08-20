@@ -147,7 +147,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           : "";
         const actionTargetName = actionTargetNames[action.id] ?? defaultActionTargetName;
         const saveEffectTargetName = action.targetEffectRoll ? actionTargetNames[action.id]?.trim() || "Target" : "";
-        const saveEffectImmunityName = action.targetEffectRoll?.successEffect ? `${action.targetEffectRoll.successEffect.name} — ${saveEffectTargetName}` : undefined;
+        const saveEffectImmunity = action.targetEffectRoll?.successEffect ?? action.targetEffectRoll?.failureEffect;
+        const saveEffectImmunityName = saveEffectImmunity ? `${saveEffectImmunity.name} — ${saveEffectTargetName}` : undefined;
         const targetHasSaveEffectImmunity = Boolean(saveEffectImmunityName && activeEffects.some((effect) => effect.name === saveEffectImmunityName));
         const effectTarget = action.activeEffect ? effectTargets[action.id] ?? action.activeEffect.targets[0] : undefined;
         const effectSkill = action.activeEffect?.skillOptions?.length ? effectSkills[action.id] ?? action.activeEffect.skillOptions[0] : undefined;
@@ -295,7 +296,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               const duration = targetEffect.duration;
               const effectDuration = duration.kind === "fixed-rounds" ? duration.rounds : duration.kind === "dice-rounds" ? rollDice(duration.count, duration.sides).total : duration.kind === "level-minutes" ? Math.min(999, actionLevel * 10) : Math.min(999, actionLevel);
               onAddEffect?.({ id: `${action.id}-target-${Date.now()}-${Math.random()}`, name: `${effectName} — ${saveEffectTargetName}`, target: "enemy", bonus: 0, description: effectDescription, roundsRemaining: effectDuration });
-              setActionResults((current) => ({ ...current, [action.id]: `${saveEffectTargetName}: ${targetEffectRange ? `range ${targetEffectRange}; ` : ""}${action.targetEffectRoll!.modifier[0].toUpperCase()}${action.targetEffectRoll!.modifier.slice(1)} save ${save.natural}${combatInput.saveModifier === 0 ? "" : ` ${combatInput.saveModifier >= 0 ? "+" : "−"} ${Math.abs(combatInput.saveModifier)}`} = ${save.total} vs DC ${saveDc} — failure; ${effectName.toLowerCase()} for ${effectDuration} round${effectDuration === 1 ? "" : "s"}.` }));
+              if (action.targetEffectRoll.failureEffect) onAddEffect?.({ id: `${action.id}-failure-immunity-${Date.now()}-${Math.random()}`, name: saveEffectImmunityName ?? action.targetEffectRoll.failureEffect.name, target: "enemy", bonus: 0, description: action.targetEffectRoll.failureEffect.description, roundsRemaining: action.targetEffectRoll.failureEffect.rounds });
+              setActionResults((current) => ({ ...current, [action.id]: `${saveEffectTargetName}: ${targetEffectRange ? `range ${targetEffectRange}; ` : ""}${action.targetEffectRoll!.modifier[0].toUpperCase()}${action.targetEffectRoll!.modifier.slice(1)} save ${save.natural}${combatInput.saveModifier === 0 ? "" : ` ${combatInput.saveModifier >= 0 ? "+" : "−"} ${Math.abs(combatInput.saveModifier)}`} = ${save.total} vs DC ${saveDc} — failure; ${effectName.toLowerCase()} for ${effectDuration} round${effectDuration === 1 ? "" : "s"}${action.targetEffectRoll!.failureEffect ? " and immunity tracked" : ""}.` }));
             } else setActionResults((current) => ({ ...current, [action.id]: `${saveEffectTargetName}: ${targetEffectRange ? `range ${targetEffectRange}; ` : ""}${action.targetEffectRoll!.modifier[0].toUpperCase()}${action.targetEffectRoll!.modifier.slice(1)} save ${save.natural}${combatInput.saveModifier === 0 ? "" : ` ${combatInput.saveModifier >= 0 ? "+" : "−"} ${Math.abs(combatInput.saveModifier)}`} = ${save.total} vs DC ${saveDc} — success; effect negated${action.targetEffectRoll!.successEffect ? " and immunity tracked" : ""}.` }));
           }
           if (action.diceRoll && diceCount && dieSides) {

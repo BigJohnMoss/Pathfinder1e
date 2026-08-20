@@ -206,14 +206,14 @@ export interface ClassFeatureOccurrence {
       enemySaveModifier: "fortitude" | "reflex" | "will";
     };
     modeLabel?: string;
-    modes?: Array<{ id: string; label: string; summary: string; minimumLevel?: number; defaultRounds?: number; featCount?: number; actionType?: "free" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
+    modes?: Array<{ id: string; label: string; summary: string; minimumLevel?: number; defaultRounds?: number; featCount?: number; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
     featSelection?: {
       label: string;
       featType: string;
       countByLevel: Array<{ level: number; count: number }>;
       minimumCount?: number;
     };
-    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
+    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
     recipientLabel?: string;
     recipients?: Array<{ id: string; label: string }>;
     confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
@@ -309,6 +309,7 @@ export interface ClassFeatureOccurrence {
           | { kind: "level-minutes" };
       }>;
       successEffect?: { name: string; description: string; rounds: number };
+      failureEffect?: { name: string; description: string; rounds: number };
       targetHitDiceUpgrade?: { levelDivisor: number; name: string; description: string };
       bypassesImmunitiesAtLevel?: number;
     };

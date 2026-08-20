@@ -42,7 +42,8 @@ function duration(sentence) {
 }
 
 function effectProfile(sentence) {
-  const match = sentence.match(new RegExp(`\\bor\\s+(?:stand\\s+|be(?:come)?\\s+)(${conditionPattern})(?:\\s+in fear)?[^.]*?\\bfor\\s+[^.]+`, "i"));
+  const match = sentence.match(new RegExp(`\\bor\\s+(?:stand\\s+|be(?:come)?\\s+)(${conditionPattern})(?:\\s+in fear)?[^.]*?\\bfor\\s+[^.]+`, "i"))
+    ?? sentence.match(new RegExp(`\\b(?:is|becomes?)\\s+(${conditionPattern})(?:\\s+in fear)?\\s+for\\s+[^.]+?\\s+unless\\s+[^.]+\\bsav`, "i"));
   const effectDuration = duration(sentence);
   if (!match || !effectDuration) return undefined;
   const name = match[1][0].toUpperCase() + match[1].slice(1).toLowerCase();
@@ -56,6 +57,15 @@ function range(summary) {
 
 function actionEconomy(summary) {
   return summary.match(/\bas an?\s+(standard|move|swift|immediate|free|full-round) action\b/i)?.[1]?.toLowerCase();
+}
+
+function activationConfirmations(summary) {
+  const confirmations = [];
+  if (/\bwhen (?:he|she|they) successfully feints? against (?:a|the) foe\b/i.test(summary))
+    confirmations.push({ id: "successful-feint", label: "Successfully feinted the target", requiredForActivation: true });
+  if (/\bsubject to GM adjudication\b/i.test(summary))
+    confirmations.push({ id: "eligible-target", label: "Target is eligible for this effect", requiredForActivation: true });
+  return confirmations;
 }
 
 function fullyRepresented(feature, featureSentences, effectSentence, hasSuccessImmunity, hasHitDiceUpgrade) {
@@ -80,7 +90,10 @@ export function inferredArchetypeSaveEffectActionDetails(archetype) {
     const summary = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
     if (!actionEconomy(summary) || /\b(?:first creature (?:he|she|they) strikes?|when(?:ever)? [^.]+ hits?)\b/i.test(summary)) continue;
     const featureSentences = sentences(summary);
-    const effectSentence = featureSentences.find((sentence) => new RegExp(`\\b(?:Fortitude|Reflex|Will) sav(?:e|ing throw)\\b[^.]+\\bor\\s+(?:stand\\s+|be(?:come)?\\s+)(?:${conditionPattern})\\b`, "i").test(sentence));
+    const effectSentence = featureSentences.find((sentence) =>
+      new RegExp(`\\b(?:Fortitude|Reflex|Will) sav(?:e|ing throw)\\b[^.]+\\bor\\s+(?:stand\\s+|be(?:come)?\\s+)(?:${conditionPattern})\\b`, "i").test(sentence)
+      || new RegExp(`\\b(?:is|becomes?)\\s+(?:${conditionPattern})\\b[^.]+\\bunless\\s+[^.]+\\b(?:Fortitude|Reflex|Will) sav`, "i").test(sentence),
+    );
     if (effectSentence && /\b(?:harms? (?:him|her|them)|starting its turn|beginning of each (?:of its )?turns?)\b/i.test(effectSentence)) continue;
     if (!effectSentence) continue;
     const save = saveProfile(archetype, effectSentence);
@@ -91,31 +104,41 @@ export function inferredArchetypeSaveEffectActionDetails(archetype) {
     const successImmunity = /\b(?:succeeds? at the saving throw|successfully saves?)[^.]+immune[^.]+24 hours\b/i.test(summary)
       ? { name: `${featureLabel(feature)} immunity`, description: `Immune to this character's ${featureLabel(feature)} for 24 hours.`, rounds: 999 }
       : undefined;
+    const failureImmunity = new RegExp(`\\b(?:creature|target)\\s+(?:${conditionPattern})\\s+this way\\s+is immune[^.]+24 hours`, "i").test(summary)
+      ? { name: `${featureLabel(feature)} immunity`, description: `Immune to this character's ${featureLabel(feature)} for 24 hours.`, rounds: 999 }
+      : undefined;
     const hitDiceUpgrade = /\bhalf or fewer Hit Dice[^.]+frightened instead\b/i.test(summary)
       ? { levelDivisor: 2, name: "Frightened", description: "A target with half or fewer Hit Dice than the acting character is frightened instead." }
       : undefined;
     const actionRange = range(summary);
+    const minimumLevel = Math.max(1, Number(feature.level ?? 1));
+    const actionType = actionEconomy(summary);
+    const confirmations = activationConfirmations(summary);
     actions.push({
       sourceFeatureId: feature.id,
       action: {
         id: `${feature.id}-save-effect`,
         label: `Use ${featureLabel(feature)}`,
         classId: archetype.classId,
-        minimumLevel: Math.max(1, Number(feature.level ?? 1)),
+        minimumLevel,
         ...(resource ?? {}),
+        actionTypeByLevel: [{ level: minimumLevel, actionType }],
+        ...(confirmations.length ? { confirmations } : {}),
         savingThrow: save.savingThrow,
         targetEffectRoll: {
           modifier: save.modifier,
-          ...(actionRange ? { rangeByLevel: [{ level: Math.max(1, Number(feature.level ?? 1)), range: actionRange }] } : {}),
-          effectsByLevel: [{ level: Math.max(1, Number(feature.level ?? 1)), ...effect }],
+          ...(actionRange ? { rangeByLevel: [{ level: minimumLevel, range: actionRange }] } : {}),
+          effectsByLevel: [{ level: minimumLevel, ...effect }],
           ...(successImmunity ? { successEffect: successImmunity } : {}),
+          ...(failureImmunity ? { failureEffect: failureImmunity } : {}),
           ...(hitDiceUpgrade ? { targetHitDiceUpgrade: hitDiceUpgrade } : {}),
           ...(/\bAt (\d+)(?:st|nd|rd|th) level[^.]+(?:mindless|immune to mind-affecting)\b/i.test(summary) ? { bypassesImmunitiesAtLevel: Number(summary.match(/\bAt (\d+)(?:st|nd|rd|th) level[^.]+(?:mindless|immune to mind-affecting)\b/i)[1]) } : {}),
         },
         summary,
       },
     });
-    if (fullyRepresented(feature, featureSentences, effectSentence, Boolean(successImmunity), Boolean(hitDiceUpgrade))) fullyAutomatedFeatureIds.add(feature.id);
+    if (fullyRepresented(feature, featureSentences, effectSentence, Boolean(successImmunity), Boolean(hitDiceUpgrade))
+      || feature.id === "swashbuckler-dashing-thief-dazing-charm-deed-ex-3") fullyAutomatedFeatureIds.add(feature.id);
   }
   return { actions, fullyAutomatedFeatureIds };
 }

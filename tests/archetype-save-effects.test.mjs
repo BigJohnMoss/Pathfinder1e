@@ -22,6 +22,16 @@ test("daily-use save effects receive a calculated resource and immunity bypass",
   assert.equal(action.targetEffectRoll.bypassesImmunitiesAtLevel, 9);
 });
 
+test("save-after-condition wording exposes action cost and activation requirements", () => {
+  const action = inferArchetypeSaveEffectActions(archetype("swashbuckler-dashing-thief"))[0].action;
+  assert.equal(action.resourceId, "panache");
+  assert.deepEqual(action.actionTypeByLevel, [{ level: 3, actionType: "free" }]);
+  assert.deepEqual(action.confirmations.map((item) => item.id), ["successful-feint", "eligible-target"]);
+  assert.equal(action.targetEffectRoll.effectsByLevel[0].name, "Dazed");
+  assert.deepEqual(action.targetEffectRoll.effectsByLevel[0].duration, { kind: "fixed-rounds", rounds: 1 });
+  assert.equal(action.targetEffectRoll.failureEffect.rounds, 999);
+});
+
 test("applied archetypes expose save-effect controls and leave trigger-only effects manual", () => {
   const fellRider = applyArchetype(characterClass("cavalier"), archetype("cavalier-fell-rider"), data.classes, data.spells);
   assert.ok(fellRider.features.find((feature) => feature.id === "cavalier-fell-rider-terror-ex-14").resourceActions[0].targetEffectRoll);
@@ -32,10 +42,11 @@ test("applied archetypes expose save-effect controls and leave trigger-only effe
 test("fully represented save effects leave the manual queue", () => {
   assert.equal(archetypeAutomationSummary(archetype("cavalier-fell-rider"), data.feats, data.spells).manual.includes("Terror (Ex) (level 14)"), false);
   assert.equal(archetypeAutomationSummary(archetype("cavalier-ghost-rider"), data.feats, data.spells).manual.includes("Frightful Gaze (Su) (level 1)"), false);
+  assert.equal(archetypeAutomationSummary(archetype("swashbuckler-dashing-thief"), data.feats, data.spells).manual.includes("Dazing Charm Deed (Ex) (level 3)"), false);
 });
 
 test("catalogue inference stays bounded to direct resolved actions", () => {
   const actions = archetypes.flatMap((entry) => inferArchetypeSaveEffectActions(entry));
-  assert.equal(actions.length, 2);
+  assert.equal(actions.length, 3);
   assert.ok(actions.every(({ action }) => action.savingThrow && action.targetEffectRoll?.effectsByLevel.length));
 });
