@@ -176,6 +176,27 @@ test("conditional save bonuses retain exact triggers and level scaling", () => {
   assert.deepEqual(inferArchetypeSaveBonusAdjustments(dragonHunter).find((adjustment) => adjustment.sourceFeatureId === "ranger-dragon-hunter-undaunted-ex-10")?.saveTargets, ["reflex", "will"]);
 });
 
+test("generic saves-against wording applies to all three saving throws", () => {
+  const cases = [
+    ["bard-dirge-bard", "Haunted Eyes", 4, "against fear, energy drain, death effects, and necromantic effects"],
+    ["bard-mute-musician", "Dulled Horror", 4, "against confusion, fear, insanity effects, and the supernatural abilities of aberrations"],
+    ["druid-ancient-guardian", "Unimpeachable", 4, "against enchantments"],
+  ];
+  for (const [id, featureName, bonus, condition] of cases) {
+    const source = catalogueArchetypes.find((archetype) => archetype.id === id);
+    const adjustment = inferArchetypeSaveBonusAdjustments(source).find((entry) => entry.sourceFeatureId.includes(featureName.toLowerCase().replace(/[^a-z]+/g, "-")));
+    assert.deepEqual(adjustment?.saveTargets, ["fortitude", "reflex", "will"], id);
+    assert.equal(adjustment?.base, bonus, id);
+    assert.equal(adjustment?.condition, condition, id);
+    assert.equal(archetypeAutomationSummary(source).manual.some((entry) => entry.startsWith(featureName)), false, id);
+  }
+
+  const coolHeaded = catalogueArchetypes.find((archetype) => archetype.id === "alchemist-ectochymist");
+  const scaling = inferArchetypeSaveBonusAdjustments(coolHeaded).find((entry) => entry.sourceFeatureId.endsWith("cool-headed-ex-2"));
+  assert.deepEqual(scaling?.bonusByLevel, [{ level: 2, bonus: 2 }, { level: 5, bonus: 4 }, { level: 8, bonus: 6 }]);
+  assert.equal(archetypeAutomationSummary(coolHeaded).manual.some((entry) => entry.startsWith("Cool-Headed")), false);
+});
+
 test("save inference is normalized, conservative, and duplicate-free across the catalogue", () => {
   for (const archetype of catalogueArchetypes) {
     const adjustments = inferArchetypeSaveBonusAdjustments(archetype);
