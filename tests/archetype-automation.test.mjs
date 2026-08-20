@@ -1461,7 +1461,7 @@ test("complete structural class-skill rules leave the manual queue only when eve
   ]) {
     assert.ok(!archetypeAutomationSummary(record(id)).manual.some(item => item.startsWith(`${featureName} (level`)), `${id} structural rule`);
   }
-  assert.ok(archetypeAutomationSummary(record("oracle-ancient-lorekeeper")).manual.some(item => item.startsWith("Class Skills (level")), "a feature with an additional skill bonus remains visible");
+  assert.ok(!archetypeAutomationSummary(record("oracle-ancient-lorekeeper")).manual.some(item => item.startsWith("Class Skills (level")), "the linked class skills and conditional Knowledge bonus are both automated");
 });
 
 test("published replacement skill lists and all-Knowledge grants alter the applied class skill set", () => {
@@ -1478,6 +1478,36 @@ test("published replacement skill lists and all-Knowledge grants alter the appli
   const shigenjo = applyArchetype({ id: "oracle", name: "Oracle", classSkills: ["Diplomacy"], features: [] }, record("oracle-shigenjo"));
   assert.ok(shigenjo.classSkills.includes("Survival"));
   assert.ok(!shigenjo.classSkills.includes("Diplomacy"));
+});
+
+test("class-skill inference completes terse lists, split rules, and altered rank progressions", () => {
+  const generated = (id) => catalogueArchetypes.find((entry) => entry.id === id);
+  const cases = new Map([
+    ["druid-ashvawg-tamer", [["Intimidate", "Knowledge (arcana)"], ["Diplomacy", "Heal"]]],
+    ["oracle-ancient-lorekeeper", [["Knowledge (arcana)", "Knowledge (local)"], []]],
+    ["oracle-keleshite-prophet", [["Perception", "Perform", ...["arcana", "dungeoneering", "engineering", "geography", "history", "local", "nature", "nobility", "planes", "religion"].map((skill) => `Knowledge (${skill})`)], []]],
+    ["rogue-eldritch-scoundrel", [["Knowledge (arcana)", "Spellcraft"], ["Diplomacy", "Disguise"]]],
+    ["slayer-sczarni-executioner", [["Appraise", "Diplomacy", "Escape Artist"], ["Knowledge (dungeoneering)", "Knowledge (geography)", "Ride", "Survival"]]],
+    ["warpriest-jistkan-magistrate", [["Knowledge (planes)"], ["Survival"]]],
+    ["witch-dreamweaver", [["Sense Motive"], ["Heal"]]],
+    ["wizard-arcane-warden", [["Climb", "Heal", "Survival", "Swim"], ["Appraise", "Fly", "Knowledge (nobility)", "Linguistics"]]],
+  ]);
+  for (const [id, [additions, removals]] of cases) {
+    const archetype = generated(id);
+    assert.deepEqual(inferArchetypeClassSkillChanges(archetype), { additions, removals }, `${id} class-skill changes`);
+    assert.ok(!archetypeAutomationSummary(archetype).manual.some((item) => item.startsWith("Class Skills (level") || item.startsWith("Class skills (level")), `${id} class skills automated`);
+  }
+
+  const savage = applyArchetype({ id: "barbarian", name: "Barbarian", classSkills: ["Handle Animal", "Knowledge (nature)"], features: [] }, generated("barbarian-savage-technologist"));
+  assert.deepEqual(savage.classSkills, ["Acrobatics", "Climb", "Craft", "Diplomacy", "Intimidate", "Knowledge (local)", "Perception", "Sense Motive", "Ride", "Survival", "Swim"]);
+  assert.deepEqual(inferArchetypeSkillRankAdjustment(generated("paladin-knight-of-coins")), { operation: "replace", value: 4 });
+  assert.deepEqual(inferArchetypeSkillRankAdjustment(generated("rogue-eldritch-scoundrel")), { operation: "replace", value: 4 });
+  assert.ok(!archetypeAutomationSummary(generated("paladin-knight-of-coins")).manual.some((item) => item.startsWith("Class Skills (level")));
+
+  const elvenKnowledge = inferArchetypeSkillBonusAdjustments(generated("oracle-ancient-lorekeeper"));
+  assert.equal(elvenKnowledge.length, 10);
+  assert.ok(elvenKnowledge.every((adjustment) => adjustment.levelDivisor === 2 && /regarding elves/i.test(adjustment.condition)));
+  assert.ok(archetypeAutomationSummary(generated("oracle-dual-cursed-oracle")).manual.some((item) => item.startsWith("Class Skills (level")), "dynamic mystery skill suppression remains manual");
 });
 
 test("standard archetype rules text applies unannotated proficiency changes", () => {
@@ -1695,7 +1725,7 @@ test("skill-rank inference covers only explicit player-character progressions", 
     .map(file => JSON.parse(readFileSync(new URL(file, directory), "utf8")))
     .map(archetype => ({ archetype, adjustment: inferArchetypeSkillRankAdjustment(archetype) }))
     .filter(item => item.adjustment);
-  assert.equal(inferred.length, 11);
+  assert.equal(inferred.length, 13);
   assert.ok(inferred.every(item => !/(?:companion|eidolon|familiar|homunculus|phantom|mount)/i.test(item.archetype.name)));
   assert.ok(inferred.every(item => item.adjustment.value >= 1 && item.adjustment.value <= 12));
 });

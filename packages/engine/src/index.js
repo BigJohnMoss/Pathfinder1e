@@ -1419,11 +1419,14 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
 }
 
 const archetypeKnowledgeSkills = ["Knowledge (arcana)", "Knowledge (dungeoneering)", "Knowledge (engineering)", "Knowledge (geography)", "Knowledge (history)", "Knowledge (local)", "Knowledge (nature)", "Knowledge (nobility)", "Knowledge (planes)", "Knowledge (religion)"];
-const archetypeSkillPattern = /(?<![A-Za-z])(?:all Knowledge skills|Knowledge \((?:all|arcana|dungeoneering|engineering|geography|history|local|nature|nobility|planes|religion)\)|Use Magic Device|Sl(?:ei|i)ght of Hand|Sense Motive|Handle Animal|Disable Device|Escape Artist|Acrobatics|Appraise|Bluff|Climb|Craft(?: \([^)]+\))?|Diplomacy|Disguise|Fly|Heal|Intimidate|Linguistics|Perception|Perform(?: \([^)]+\))?|Profession(?: \([^)]+\))?|Ride|Spellcraft|Stealth|Survival|Swim)(?![A-Za-z])/gi;
+const archetypeSkillPattern = /(?<![A-Za-z])(?:all Knowledge skills|Knowledge \((?:all|arcane|arcana|dungeoneering|engineering|geography|history|local|nature|nobility|planes|religion)\)|Use Magic Device|Sl(?:ei|i)ght of Hand|Sense Motive|Handle Animal|Disable Device|Escape Artist|Acrobatics|Appraise|Bluff|Climb|Craft(?: \([^)]+\))?|Diplomacy|Disguise|Fly|Healing|Heal|Intimidate|Linguistics|Perception|Perform(?: \([^)]+\))?|Profession(?: \([^)]+\))?|Ride|Spellcraft|Stealth|Survival|Swim)(?![A-Za-z])/gi;
 
 function namedArchetypeSkills(text) {
   return [...String(text).matchAll(archetypeSkillPattern)].flatMap(match => {
-    const skill = match[0].replace(/^(Craft|Perform|Profession) \([^)]+\)$/i, "$1");
+    const skill = match[0]
+      .replace(/^Healing$/i, "Heal")
+      .replace(/^Knowledge \(arcane\)$/i, "Knowledge (arcana)")
+      .replace(/^(Craft|Perform|Profession) \([^)]+\)$/i, "$1");
     if (/^(?:all Knowledge skills|Knowledge \(all\))$/i.test(skill)) return archetypeKnowledgeSkills;
     if (/^Slight of Hand$/i.test(skill)) return ["Sleight of Hand"];
     return [skill];
@@ -1434,31 +1437,44 @@ function inferArchetypeClassSkillDetails(archetype) {
   const additions = new Set();
   const removals = new Set();
   const features = (archetype?.replacements ?? []).flatMap(item => item.features ?? []);
-  const summaries = features.map(feature =>
-    String(feature.summary ?? "").replace(/doesn(?:'|’|â€™)t/gi, "does not"),
-  );
   const replacements = new Set();
-  for (const sentence of summaries.flatMap(summary => summary.split(/(?<=[.!?])\s+/))) {
-    if (sentence.length > 1200) continue;
-    if (!/class skills?/i.test(sentence) || /(?:companion|eidolon|familiar|homunculus).*class skills?/i.test(sentence)) continue;
-    const addPatterns = [
-      /(?:adds?|gains?|has|receives?|treats?)\s+(.+?)\s+(?:to (?:his|her|their|the)?\s*(?:list of )?class skills?|as (?:a )?class skills?)/gi,
-      /(?:and\s+)?adds?\s+(.+?)(?=\s+(?:in place of|instead of|to (?:his|her|their|the) (?:list|class skills?))|[.;]|$)/gi,
-      /(.+?)\s+are (?:all )?class skills for/gi,
-      /(.+?)\s+is a class skill for/gi,
-    ];
-    const removePatterns = [
-      /(?:does not gain|do not gain|doesn't receive|does not receive|removes?|loses?|eliminate)\s+(.+?)(?:\s+(?:as|from).*?class skills|[.;]|$)/gi,
-      /instead of\s+(.+?)(?:\s+as class skills?|[.;]|$)/gi,
-      /in place of\s+(.+?)(?:\s+as class skills?|[.;]|$)/gi,
-      /replace(?:s)?\s+(.+?)\s+as class skills?/gi,
-      /(.+?)\s+are not class skills/gi,
-      /(?:as )?replacements? for\s+(.+?)(?:[.;]|$)/gi,
-    ];
-    for (const pattern of addPatterns) for (const match of sentence.matchAll(pattern)) for (const skill of namedArchetypeSkills(match[1])) additions.add(skill);
-    for (const pattern of removePatterns) for (const match of sentence.matchAll(pattern)) for (const skill of namedArchetypeSkills(match[1])) removals.add(skill);
-    const replacement = sentence.match(/\bclass skills are\s+(.+?)(?:[.;]|$)/i);
-    if (replacement) for (const skill of namedArchetypeSkills(replacement[1])) replacements.add(skill);
+  const sentenceRecords = [];
+  for (const feature of features) {
+    const featureName = String(feature.name ?? "").replace(/\s*\([^)]+\)\s*$/, "");
+    const classSkillFeature = /^(?:Class Skills?|Skills?)$/i.test(featureName);
+    const sentences = String(feature.summary ?? "")
+      .replace(/doesn(?:'|’|â€™)t/gi, "does not")
+      .split(/(?<=[.!?])\s+/)
+      .filter(Boolean);
+    for (const [sentenceIndex, sentence] of sentences.entries()) {
+      if (sentence.length > 1200) continue;
+      if ((!classSkillFeature && !/class skills?/i.test(sentence)) || /(?:companion|eidolon|familiar|homunculus).*class skills?/i.test(sentence)) continue;
+      const addPatterns = [
+        /(?:adds?|gains?|has|receives?|treats?)\s+(.+?)\s+(?:to (?:his|her|their|the)?\s*(?:list of )?class skills?|as (?:a )?class skills?)/gi,
+        /(?:and\s+)?adds?\s+(.+?)(?=\s+(?:in place of|instead of|to (?:his|her|their|the) (?:list|class skills?))|[.;]|$)/gi,
+        /(?:instead,?\s+)?(?:he|she|they) receives?\s+(.+?)(?=\s+in addition to|[.;]|$)/gi,
+        /(.+?)\s+are (?:all )?class skills for/gi,
+        /(.+?)\s+is a class skill for/gi,
+      ];
+      const removePatterns = [
+        /(?:does not gain|do not gain|doesn't receive|does not receive|removes?|loses?|eliminate)\s+(.+?)(?:\s+(?:as|from).*?class skills|[.;]|$)/gi,
+        /(?:but|and) not\s+(.+?)(?:[.;]|$)/gi,
+        /instead of\s+(.+?)(?:\s+as class skills?|[.;]|$)/gi,
+        /in place of\s+(.+?)(?:\s+as class skills?|[.;]|$)/gi,
+        /replace(?:s)?\s+(.+?)\s+as class skills?/gi,
+        /(.+?)\s+(?:are|is) not (?:a )?class skills?/gi,
+        /(?:as )?replacements? for\s+(.+?)(?:[.;]|$)/gi,
+      ];
+      for (const pattern of addPatterns) for (const match of sentence.matchAll(pattern)) for (const skill of namedArchetypeSkills(match[1])) additions.add(skill);
+      for (const pattern of removePatterns) for (const match of sentence.matchAll(pattern)) for (const skill of namedArchetypeSkills(match[1])) removals.add(skill);
+      const replacement = sentence.match(/\bclass skills are\s+(.+?)(?:[.;]|$)/i);
+      if (replacement) for (const skill of namedArchetypeSkills(replacement[1])) replacements.add(skill);
+      const bareList = classSkillFeature && sentences.length === 1 && !/\b(?:add|gain|receive|remove|lose|eliminate|class skills?)\b/i.test(sentence)
+        ? namedArchetypeSkills(sentence)
+        : [];
+      for (const skill of bareList) replacements.add(skill);
+      sentenceRecords.push({ feature, sentence, sentenceIndex, classSkillFeature });
+    }
   }
   for (const skill of removals) additions.delete(skill);
   const inferred = { additions: [...additions], removals: [...removals], replacement: [...replacements] };
@@ -1466,17 +1482,27 @@ function inferArchetypeClassSkillDetails(archetype) {
   const appliedSkills = new Set(hasStructuredChanges
     ? [...(archetype.classSkillAdditions ?? []), ...(archetype.classSkillRemovals ?? [])]
     : [...inferred.additions, ...inferred.removals, ...inferred.replacement]);
+  const sentenceCoverage = sentenceRecords.flatMap(({ feature, sentence, sentenceIndex, classSkillFeature }) => {
+    const mentionedSkills = [...new Set(namedArchetypeSkills(sentence))];
+    if (!mentionedSkills.length || !mentionedSkills.every(skill => appliedSkills.has(skill))) return [];
+    if (!classSkillFeature && !/class skills?/i.test(sentence)) return [];
+    const singleSentenceFeature = String(feature.summary ?? "").split(/(?<=[.!?])\s+/).filter(Boolean).length === 1;
+    if (classSkillFeature && !singleSentenceFeature && !/class skills?|\b(?:add|eliminate|gain|lose|receive|remove)\b/i.test(sentence)) return [];
+    return [{ sourceFeatureId: feature.id, sentenceIndex }];
+  });
   const fullyAutomatedFeatureIds = features.filter(feature => {
     const name = String(feature.name ?? "").replace(/\s*\([^)]+\)\s*$/, "");
     const text = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
     if (!/^(?:Class Skills?|Skills?)$/i.test(name) || text.length > 600) return false;
     const sentences = text.split(/(?<=[.!?])\s+/).filter(Boolean);
-    if (!sentences.length || !sentences.every(sentence => /class skills?/i.test(sentence) || /^This alters the .+ skills\.?$/i.test(sentence))) return false;
-    if (/\bHealing\b|(?:companion|eidolon|familiar|homunculus).*class skills?/i.test(text)) return false;
-    const mentionedSkills = [...new Set(namedArchetypeSkills(text))];
-    return mentionedSkills.length > 0 && mentionedSkills.every(skill => appliedSkills.has(skill));
+    if (!sentences.length || /(?:companion|eidolon|familiar|homunculus).*class skills?/i.test(text)) return false;
+    const covered = new Set(sentenceCoverage.filter(entry => entry.sourceFeatureId === feature.id).map(entry => entry.sentenceIndex));
+    return covered.size > 0 && sentences.every((sentence, index) =>
+      covered.has(index) || archetypeReplacementBoilerplate(sentence) ||
+      (!/\d|\b(?:add|bonus|class skills?|gain|has|level|receive|remove|skill ranks?)\b/i.test(sentence) && index < Math.min(...covered)),
+    );
   }).map(feature => feature.id);
-  return { ...inferred, fullyAutomatedFeatureIds };
+  return { ...inferred, fullyAutomatedFeatureIds, sentenceCoverage };
 }
 
 export function inferArchetypeClassSkillChanges(archetype) {
@@ -1645,6 +1671,7 @@ export function inferArchetypeProficiencyAdjustments(archetype) {
 
 function inferArchetypeSkillRankDetails(archetype) {
   const features = (archetype?.replacements ?? []).flatMap(item => item.features ?? []);
+  const sentenceCoverage = [];
   for (const feature of features) {
     const text = `${feature.name ?? ""} ${feature.summary ?? ""}`.replace(/\s+/g, " ");
     if (/(?:companion|eidolon|familiar|homunculus|phantom|mount).*skill ranks?/i.test(text)) continue;
@@ -1654,15 +1681,26 @@ function inferArchetypeSkillRankDetails(archetype) {
       if (value >= 1 && value <= 12) return {
         adjustment: { operation: "replace", value },
         fullyAutomatedFeatureIds: /^Skill Ranks per Level$/i.test(feature.name ?? "") && /^\d+\s*\+\s*(?:Int|Intelligence)\s+modifier\.?$/i.test(feature.summary ?? "") ? [feature.id] : [],
+        sentenceCoverage,
       };
+    }
+    const sentences = archetypeRuleSentences(feature.summary);
+    for (const [sentenceIndex, sentence] of sentences.entries()) {
+      const replacement = sentence.match(/(?:gains?|receives?|has) a number of skill ranks equal to (\d+) \+ (?:his|her|their) Intelligence modifier (?:at each|each|per) level,? instead of (?:a (?:normal )?)?number of skill ranks equal to (\d+)/i)
+        ?? sentence.match(/(?:gains?|receives?|has) (\d+) skill ranks?(?: \(plus a number of ranks equal to (?:his|her|their) Intelligence modifier\)| \+ (?:his|her|their) Intelligence modifier)? (?:at each|each|per) level instead of (?:a (?:normal )?)?(?:number of skill ranks equal to )?(\d+)/i);
+      if (!replacement) continue;
+      const value = Number(replacement[1]);
+      if (value < 1 || value > 12 || value === Number(replacement[2])) continue;
+      sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+      return { adjustment: { operation: "replace", value }, fullyAutomatedFeatureIds: [], sentenceCoverage };
     }
     const additive = text.match(/(?:gains?|receives?)\s+(\d+)\s+(?:additional|bonus) skill ranks?\s+(?:at each|each|per) level/i);
     if (additive) {
       const value = Number(additive[1]);
-      if (value >= 1 && value <= 6) return { adjustment: { operation: "add", value }, fullyAutomatedFeatureIds: [] };
+      if (value >= 1 && value <= 6) return { adjustment: { operation: "add", value }, fullyAutomatedFeatureIds: [], sentenceCoverage };
     }
   }
-  return { adjustment: undefined, fullyAutomatedFeatureIds: [] };
+  return { adjustment: undefined, fullyAutomatedFeatureIds: [], sentenceCoverage };
 }
 
 export function inferArchetypeSkillRankAdjustment(archetype) {
@@ -1930,6 +1968,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const temporaryHitPointActionDetails = inferredArchetypeTemporaryHitPointActionDetails(archetype);
   const rerollActionDetails = inferredArchetypeRerollActionDetails(archetype);
   const ruleSentenceCoverage = [
+    ["class skills", classSkillDetails.sentenceCoverage ?? []],
+    ["skill ranks", skillRankDetails.sentenceCoverage ?? []],
     ["initiative", initiativeBonusDetails.sentenceCoverage ?? []],
     ["saving throws", saveBonusDetails.sentenceCoverage ?? []],
     ["combat", combatModifierDetails.sentenceCoverage ?? []],
@@ -1962,7 +2002,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
       entries.filter((entry) => entry.sourceFeatureId === feature.id).map((entry) => entry.sentenceIndex),
     ));
     const sentences = archetypeRuleSentences(feature.summary);
-    return covered.size > 1 && sentences.every((sentence, index) =>
+    return covered.size > 0 && sentences.every((sentence, index) =>
       covered.has(index) || archetypeReplacementBoilerplate(sentence) ||
       !/\d|\b(?:action|attack|bonus|can|can['’]?t|cannot|check|damage|DC|gains?|has|immune|immunity|level|may|must|penalty|prohibited|receives?|resistance|roll|round|save|skill|spell|speed|times? per|uses?)\b/i.test(sentence),
     );
