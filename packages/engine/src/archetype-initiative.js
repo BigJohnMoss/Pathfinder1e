@@ -92,6 +92,7 @@ export function archetypeRuleProgression(adjustment, summary, targetPattern = /\
   if (adjustment.bonusByLevel || adjustment.interval || adjustment.levelDivisor) return adjustment;
   const sentences = archetypeRuleSentences(summary).filter((sentence) =>
     (/\b(?:bonus|bonuses)\b/i.test(sentence) && /\b(?:increase|increases)\b/i.test(sentence)) ||
+    /^This increases? to \+?\d+ at \d+(?:st|nd|rd|th)(?: level)?/i.test(sentence) ||
     /\bgains? an additional \+\d+ on each of those checks\b/i.test(sentence),
   );
   const relevant = sentences.find((sentence) => targetPattern.test(sentence)) ??
@@ -115,6 +116,21 @@ export function archetypeRuleProgression(adjustment, summary, targetPattern = /\
     return { ...adjustment, ...(maximum ? { maximum } : {}), bonusByLevel };
   }
 
+  const increaseWhenThenEvery = relevant.match(/increases? by \+?(\d+) when [^.]{0,80}?reaches? (\d+)(?:st|nd|rd|th) level,? and by (?:an additional )?\+?(\d+) for every (\d+|one|two|three|four|five|six) [^.]{0,40}?levels? thereafter/i);
+  if (increaseWhenThenEvery) {
+    const bonusByLevel = [{ level: adjustment.minimumLevel, bonus: adjustment.base }];
+    let bonus = adjustment.base + Number(increaseWhenThenEvery[1]);
+    const firstLevel = Number(increaseWhenThenEvery[2]);
+    const interval = parsedNumber(increaseWhenThenEvery[4]);
+    bonusByLevel.push({ level: firstLevel, bonus });
+    for (let level = firstLevel + interval; level <= 20; level += interval) {
+      bonus = Math.min(maximum ?? Number.POSITIVE_INFINITY, bonus + Number(increaseWhenThenEvery[3]));
+      bonusByLevel.push({ level, bonus });
+      if (bonus === maximum) break;
+    }
+    return { ...adjustment, ...(maximum ? { maximum } : {}), bonusByLevel };
+  }
+
   if (/\bincreases? to\b/i.test(relevant)) {
     const milestones = [...relevant.matchAll(/\+(\d+) at (\d+)(?:st|nd|rd|th)(?: level)?/gi)]
       .map((match) => ({ level: Number(match[2]), bonus: Number(match[1]) }))
@@ -125,7 +141,9 @@ export function archetypeRuleProgression(adjustment, summary, targetPattern = /\
   const atAndEvery = relevant.match(/At (\d+)(?:st|nd|rd|th) level(?:,? and| and) every (\d+) [^.]{0,50}?levels? thereafter[^.]{0,100}?bonus(?:es)?[^.]{0,80}?increases? by \+?(\d+)/i);
   const everyThereafter = relevant.match(/Every (\d+) [^.]{0,50}?levels? thereafter[^.]{0,100}?bonus(?:es)?[^.]{0,80}?increases? by \+?(\d+)/i);
   const additionalEvery = relevant.match(/Every (\d+) [^.]{0,50}?levels? thereafter[^.]{0,100}?gains? an additional \+(\d+) on each of those checks/i);
-  const forEveryAfter = relevant.match(/bonus(?:es)?[^.]{0,60}?increases? by \+?(\d+) for every (\d+|one|two|three|four|five|six) [^.]{0,40}?levels? (?:after|beyond) (\d+)(?:st|nd|rd|th)/i);
+  const forEveryAfter = relevant.match(/bonus(?:es)?[^.]{0,60}?increases? by \+?(\d+) for every (\d+|one|two|three|four|five|six) [^.]{0,40}?levels? [^.]{0,50}?\b(?:after|beyond) (\d+)(?:st|nd|rd|th)/i);
+  const everyAfter = relevant.match(/bonus(?:es)?[^.]{0,60}?increases? by \+?(\d+) every (\d+|one|two|three|four|five|six) [^.]{0,40}?levels? [^.]{0,50}?\b(?:after|beyond) (\d+)(?:st|nd|rd|th)/i);
+  const forEveryThereafter = relevant.match(/bonus(?:es)?[^.]{0,60}?increases? by \+?(\d+) for every (\d+|one|two|three|four|five|six) [^.]{0,40}?levels? thereafter/i);
   const increaseAtAndEvery = relevant.match(/bonus(?:es)?[^.]{0,60}?increases? by \+?(\d+) at (\d+)(?:st|nd|rd|th) level(?:,? and| and) (?:again )?every (\d+) [^.]{0,30}?levels?/i);
   let firstLevel;
   let interval;
@@ -147,6 +165,14 @@ export function archetypeRuleProgression(adjustment, summary, targetPattern = /\
     increment = Number(forEveryAfter[1]);
     interval = parsedNumber(forEveryAfter[2]);
     firstLevel = Number(forEveryAfter[3]) + interval;
+  } else if (everyAfter) {
+    increment = Number(everyAfter[1]);
+    interval = parsedNumber(everyAfter[2]);
+    firstLevel = Number(everyAfter[3]) + interval;
+  } else if (forEveryThereafter) {
+    increment = Number(forEveryThereafter[1]);
+    interval = parsedNumber(forEveryThereafter[2]);
+    firstLevel = adjustment.minimumLevel + interval;
   } else if (increaseAtAndEvery) {
     increment = Number(increaseAtAndEvery[1]);
     firstLevel = Number(increaseAtAndEvery[2]);

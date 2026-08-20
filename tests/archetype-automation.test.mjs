@@ -217,6 +217,24 @@ test("participial and class-level save formulas retain their exact scaling and c
   assert.equal(archetypeAutomationSummary(infiltrator).manual.some((entry) => entry.startsWith("Necessary Lies")), false);
 });
 
+test("common save progression phrasings produce exact milestone schedules", () => {
+  const cases = [
+    ["barbarian-jungle-rager", "jungle-endurance-ex-3", [[3, 1], [6, 2], [9, 3], [12, 4], [15, 5], [18, 6]]],
+    ["fighter-druman-blackjacket", "well-paid-loyalty-ex-2", [[2, 1], [6, 2], [10, 3], [14, 4], [18, 5]]],
+    ["investigator-gravedigger", "deny-death-ex-2", [[2, 2], [5, 4], [8, 6], [11, 8]]],
+    ["bard-daredevil", "dauntless-ex-2", [[2, 1], [6, 2], [10, 3], [14, 4], [18, 5]]],
+    ["rogue-planar-sneak", "planar-sense-ex-3", [[3, 1], [6, 2], [9, 3], [12, 4], [15, 5], [18, 6]]],
+    ["barbarian-drunken-rager", "tolerance-ex-3", [[3, 1], [6, 2], [9, 3], [12, 4], [15, 5], [18, 6]]],
+    ["rogue-scroll-scoundrel", "adaptive-learning-ex-3", [[3, 1], [6, 2], [9, 3], [12, 4], [15, 5], [18, 6]]],
+  ];
+  for (const [id, featureId, expected] of cases) {
+    const source = catalogueArchetypes.find((archetype) => archetype.id === id);
+    const adjustment = inferArchetypeSaveBonusAdjustments(source).find((entry) => entry.sourceFeatureId.endsWith(featureId));
+    assert.deepEqual(adjustment?.bonusByLevel?.map(({ level, bonus }) => [level, bonus]), expected, id);
+    assert.equal(archetypeAutomationSummary(source).manual.some((entry) => entry.startsWith(source.replacements.flatMap((replacement) => replacement.features).find((feature) => feature.id.endsWith(featureId)).name)), false, id);
+  }
+});
+
 test("save inference is normalized, conservative, and duplicate-free across the catalogue", () => {
   for (const archetype of catalogueArchetypes) {
     const adjustments = inferArchetypeSaveBonusAdjustments(archetype);

@@ -82,12 +82,15 @@ function narrativeLeadSentence(sentence) {
 function directSaveRuleSentence(sentence, parsedCount = 1) {
   const numericBonuses = sentence.match(/\+\d+ (?:(?:alchemical|circumstance|competence|dodge|enhancement|insight|luck|morale|profane|racial|resistance|sacred|trait|untyped) )?bonus(?:es)?\b/gi)?.length ?? 0;
   const levelBonuses = sentence.match(/\b(?:adds?|gains?|receives?) (?:his|her|their) (?:class )?level (?:as a bonus )?(?:on|to)\b/gi)?.length ?? 0;
-  const directSubject = /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,80})\s+(?:gains?|receives?|has|adds?)\b/i.test(sentence);
+  const directSubject = /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:When|Whenever|While|During|Within|As long as|If)\s+[^,]{1,180},\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,80})\s+(?:gains?|receives?|has|adds?)\b/i.test(sentence);
   const participialSubject = /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,100})\s+[^.;]{0,220},\s*(?:gaining|granting (?:him|her|them)) (?:an? )?\+\d+\b/i.test(sentence);
+  const ruleVerbCount = sentence.match(/\b(?:gains?|receives?|has|adds?|gaining|granting)\b/gi)?.length ?? 0;
+  const conditionHas = /\b(?:When|Whenever|While|During|Within|As long as|If)\s+(?:he|she|they) has\b[^,.;]{0,180},/i.test(sentence) ||
+    /\b(?:against|when|whenever|while|during|within|if)\s+[^.;]{1,260}\b(?:he|she|they) has\b/i.test(sentence);
   return numericBonuses + levelBonuses === parsedCount &&
     (directSubject || participialSubject) &&
     !/\b(?:can|may|spends?|uses?|becomes? immune|is unaffected)\b/i.test(sentence) &&
-    (sentence.match(/\b(?:gains?|receives?|has|adds?|gaining|granting)\b/gi)?.length ?? 0) === 1;
+    ruleVerbCount - (conditionHas ? 1 : 0) === 1;
 }
 
 export function inferredArchetypeSaveBonusDetails(archetype) {
@@ -122,7 +125,7 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
       }
       if (hasScheduledProgression) {
         for (const [index, sentence] of sentences.entries()) {
-          if (/^(?:This|The) bonus\b[^.]{0,160}\b(?:increases?|improves?)\b/i.test(sentence))
+          if (/^(?:(?:This|The) bonus\b[^.]{0,160}\b(?:increases?|improves?)\b|This increases? to \+?\d+\b)/i.test(sentence))
             sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
         }
       }
@@ -130,7 +133,7 @@ export function inferredArchetypeSaveBonusDetails(archetype) {
         !archetypeReplacementBoilerplate(sentence) &&
         !(parsedBySentence.has(index) && directSaveRuleSentence(sentence, parsedBySentence.get(index))) &&
         !(index < firstParsedIndex && narrativeLeadSentence(sentence)) &&
-        !(hasScheduledProgression && /\b(?:this|the) bonus\b[^.]{0,100}\b(?:increases?|improves?)\b/i.test(sentence)),
+        !(hasScheduledProgression && /^(?:(?:This|The) bonus\b[^.]{0,160}\b(?:increases?|improves?)\b|This increases? to \+?\d+\b)/i.test(sentence)),
       );
       if (unique.length && remaining.length === 0) fullyAutomatedFeatureIds.add(feature.id);
     }
