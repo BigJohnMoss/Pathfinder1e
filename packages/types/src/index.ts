@@ -468,6 +468,8 @@ export interface CharacterClass {
   companionGrants?: ArchetypeCompanionGrant[];
   companionProgressionAdjustments?: CompanionProgressionAdjustment[];
   wildShapeLevelAdjustment?: number;
+  druidNatureBondOptionIds?: string[];
+  druidAnimalCompanionIds?: string[];
   druidDomainIds?: string[];
   rangerCombatStyleIds?: string[];
   mountedCompanionOnly?: boolean;
@@ -524,6 +526,8 @@ export interface CharacterArchetype {
   spellcastingProgressionClassId?: string;
   spellcastingMinimumLevel?: number;
   wildShapeLevelAdjustment?: number;
+  druidNatureBondOptionIds?: string[];
+  druidAnimalCompanionIds?: string[];
   druidDomainIds?: string[];
   rangerCombatStyleIds?: string[];
   mountedCompanionOnly?: boolean;
