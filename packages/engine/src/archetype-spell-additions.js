@@ -174,6 +174,14 @@ function fixedFormulaBookSentence(sentence, entries, spells) {
   return mentioned.length > 0 && mentioned.every((id) => parsed.has(id));
 }
 
+function fixedSpellAdditionSentence(sentence, entries, spells) {
+  if (!/^(?:At \d+(?:(?:st|nd|rd|th))? level,?\s*)?(?:(?:he|she|they)|(?:an? |the )?[a-z][a-z'\u2019 -]{0,120})\s+adds?\b[^.]{1,900}\b(?:spell list|class list|formula(?:e)? list|list of [a-z'\u2019 -]{0,60}spells? known|spells? known)\b[^.]*[.]?$/i.test(sentence)) return false;
+  if (/\b(?:but|can|choose|chooses|does not|doesn['’]t|except|if|may|must|only|select|selects|while|without)\b|\([^)]*\b(?:component|require|restriction)\b[^)]*\)/i.test(sentence)) return false;
+  const mentioned = uniqueMatches(spellMatches(sentence, spells)).map(({ spell }) => spell.id);
+  const parsed = new Set(entries.map(({ spell }) => spell.id));
+  return mentioned.length > 0 && mentioned.every((id) => parsed.has(id));
+}
+
 function oracleBonusSpellEntries(archetype, feature, spells) {
   if (archetype?.classId !== "oracle" || !/^Bonus Spells$/i.test(feature?.name ?? "")) return [];
   const summary = normalizedText(feature.summary);
@@ -239,7 +247,9 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
     if (kinds.spellList || kinds.bonusKnown) {
       sourceFeatureIds.add(feature.id);
       const sentences = archetypeRuleSentences(feature.summary);
-      const covered = new Set(sentences.flatMap((sentence, index) => fixedFormulaBookSentence(sentence, [...unique.values()], spells) ? [index] : []));
+      const covered = new Set(sentences.flatMap((sentence, index) =>
+        fixedFormulaBookSentence(sentence, [...unique.values()], spells) || fixedSpellAdditionSentence(sentence, [...unique.values()], spells) ? [index] : [],
+      ));
       for (const sentenceIndex of covered) sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
       if (covered.size && sentences.every((sentence, index) => covered.has(index) || archetypeReplacementBoilerplate(sentence))) fullyAutomatedFeatureIds.add(feature.id);
     }

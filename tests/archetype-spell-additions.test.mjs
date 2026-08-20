@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import data from "../generated/pf1e-data.mjs";
 import archetypes from "../generated/pf1e-archetypes.mjs";
-import { applyArchetype, inferArchetypeSpellAdditions } from "../packages/engine/src/index.js";
+import { applyArchetype, archetypeAutomationSummary, inferArchetypeSpellAdditions } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const characterClass = (id) => data.classes.find((item) => item.id === id);
@@ -47,6 +47,29 @@ test("fixed formula-book additions become level-gated known extracts", () => {
 
   const preservationist = inferArchetypeSpellAdditions(archetype("alchemist-preservationist"), data.spells);
   assert.ok(preservationist.spellGrants.some((grant) => grant.spellId === "summon-natures-ally-9" && grant.spellLevel === 6 && grant.minimumClassLevel === 18));
+});
+
+test("complete fixed spell-list and spells-known additions leave the manual queue", () => {
+  const cases = [
+    ["cleric-forgemaster", "Steel Spells"],
+    ["ranger-tanglebriar-demonslayer", "Expanded Spell List"],
+    ["spiritualist-necrologist", "Spells"],
+    ["warpriest-forgepriest", "Smith’s Spells"],
+    ["bard-cultivator", "Plant Magic"],
+    ["ranger-summit-sentinel", "Spells"],
+    ["bard-flame-dancer", "Fan the Flames"],
+    ["sorcerer-razmiran-priest", "Lay Healer"],
+  ];
+  for (const [id, featureName] of cases) {
+    const source = archetype(id);
+    assert.equal(archetypeAutomationSummary(source, [], data.spells).manual.some((entry) => entry.startsWith(featureName)), false, id);
+  }
+  const flameDancer = inferArchetypeSpellAdditions(archetype("bard-flame-dancer"), data.spells);
+  assert.deepEqual(flameDancer.spellGrants.map(({ spellId, spellLevel, minimumClassLevel }) => [spellId, spellLevel, minimumClassLevel]), [
+    ["burning-hands", 1, 8],
+    ["flaming-sphere", 2, 8],
+    ["fireball", 3, 8],
+  ]);
 });
 
 test("bonus spells known retain their class-level unlocks", () => {
