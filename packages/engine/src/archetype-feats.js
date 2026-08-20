@@ -266,6 +266,38 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
     ...limits,
   });
 
+  const fixedListAugmentations = (feature, optionGroupId) => {
+    if (!optionGroupId || !/^Bonus Feats?(?: \(Ex\))?$/i.test(feature.name ?? "")) return [];
+    const result = [];
+    const sentences = String(feature.summary ?? "").replace(/\s+/g, " ").split(/(?<=[.!?])\s+/).filter(Boolean);
+    for (const [sentenceIndex, sentence] of sentences.entries()) {
+      let level;
+      let list;
+      let match = sentence.match(/\badds?\s+(?:the\s+)?following feats?\s+to (?:his|her|their|the) list of bonus feats? at (\d+)(?:st|nd|rd|th)? level\s*:\s*(.+?)\.?$/i);
+      if (match) {
+        level = Number(match[1]);
+        list = match[2];
+      } else {
+        match = sentence.match(/\badds?\s+(.+?)\s+to (?:his|her|their|the) list of bonus feats? at (\d+)(?:st|nd|rd|th)? level\.?$/i);
+        if (match) {
+          level = Number(match[2]);
+          list = match[1];
+        } else {
+          match = sentence.match(/^At (\d+)(?:st|nd|rd|th)? level,?\s+(?:he|she|they|the [^.]{1,80})\s+adds?\s+(?:(?:the\s+)?following feats?\s*:\s*)?(.+?)\.?$/i);
+          if (match) {
+            level = Number(match[1]);
+            list = match[2].replace(/\s+to (?:the|this) list$/i, "");
+          }
+        }
+      }
+      if (!level || !list) continue;
+      const ids = featIdsFromList(list, featIdByName);
+      if (!ids.length || ids.some((id) => !id)) continue;
+      result.push({ sourceFeatureId: feature.id, optionGroupId, minimumLevel: level, mode: "augment", featChoiceIds: ids, sentenceIndex });
+    }
+    return result;
+  };
+
   for (const feature of (archetype?.replacements ?? []).flatMap(item => item.features ?? [])) {
     const text = String(feature.summary ?? "").replace(/\s+/g, " ");
     const classBonusFeatGroup = {
@@ -286,6 +318,11 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
         }
         continue;
       }
+    }
+    const fixedAugmentations = fixedListAugmentations(feature, classBonusFeatGroup);
+    if (fixedAugmentations.length) {
+      for (const { sentenceIndex: _sentenceIndex, ...alternative } of fixedAugmentations) alternatives.push(alternative);
+      continue;
     }
     const additionalBonusFeatList = text.match(/In addition to [^.]*?bonus feats?[^:]*:\s*([^.]+)/i);
     if (classBonusFeatGroup && additionalBonusFeatList) {
@@ -327,9 +364,10 @@ const alternativeReplacementSentence = /(?:replaces? (?:the )?(?:normal )?(?:mon
 const alternativeExpansionSentence = /^At\s+\d+(?:st|nd|rd|th)?\s+level,\s*(?:the )?following feats? (?:are (?:also available|added(?: to (?:the|this) list)?)|is added to (?:the|this) list)\s*:/i;
 const alternativeExactSentence = /\bcan select (?:the )?.+? feats?(?:\s*\([^)]*\))? in place of (?:an? )?(?:advanced )?(?:discovery|investigator talent|rogue talent)/i;
 const alternativeClassChoiceSentence = /\bwould gain (?:a new rage power|a slayer talent),[^.]+instead select/i;
-const alternativeQualifierSentence = /^(?:She|He|The [^.]+) (?:must still|must|does not need to|doesn't need to|need not) meet[^.]+prerequisites?|^This (?:ability )?(?:alters?|replaces?)/i;
+const alternativeQualifierSentence = /^(?:She|He|The [^.]+) (?:must still|must|does not need to|doesn't need to|need not) meet[^.]+prerequisites?|^This (?:ability )?(?:alters?|modifies|replaces?)/i;
 
 export function inferredArchetypeFeatAlternativeDetails(archetype, feats) {
+  const featIdByName = featNameMap(feats);
   const alternatives = inferArchetypeFeatAlternatives(archetype, feats);
   const fullyAutomatedFeatureIds = new Set();
   const sentenceCoverage = [];
@@ -338,16 +376,26 @@ export function inferredArchetypeFeatAlternativeDetails(archetype, feats) {
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (!(alternativesByFeature.get(feature.id)?.length) || /\([^)]*(?:Craft|Knowledge|Spellcraft|abjuration|unarmed strike|water vehicles?)[^)]*\)/i.test(feature.summary ?? "")) continue;
     const sentences = String(feature.summary ?? "").replace(/!/g, "").replace(/\s+/g, " ").split(/(?<=[.?])\s+/).filter(Boolean);
+    const covered = new Set();
     for (const [sentenceIndex, sentence] of sentences.entries())
-      if (alternativeReplacementSentence.test(sentence) || alternativeExpansionSentence.test(sentence) || alternativeExactSentence.test(sentence) || alternativeClassChoiceSentence.test(sentence))
+      if (alternativeReplacementSentence.test(sentence) || alternativeExpansionSentence.test(sentence) || alternativeExactSentence.test(sentence) || alternativeClassChoiceSentence.test(sentence)) {
+        covered.add(sentenceIndex);
         sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
-    if (sentences.every((sentence) =>
-      alternativeReplacementSentence.test(sentence) ||
-      alternativeExpansionSentence.test(sentence) ||
-      alternativeExactSentence.test(sentence) ||
-      alternativeClassChoiceSentence.test(sentence) ||
-      alternativeQualifierSentence.test(sentence),
-    )) fullyAutomatedFeatureIds.add(feature.id);
+      }
+    if (/^Bonus Feats?(?: \(Ex\))?$/i.test(feature.name ?? "")) {
+      for (const [sentenceIndex, sentence] of sentences.entries()) {
+        if (covered.has(sentenceIndex)) continue;
+        const direct = sentence.match(/\badds?\s+(?:(?:the\s+)?following feats?\s+to (?:his|her|their|the) list of bonus feats? at (\d+)(?:st|nd|rd|th)? level\s*:\s*(.+?)|(.+?)\s+to (?:his|her|their|the) list of bonus feats? at (\d+)(?:st|nd|rd|th)? level)\.?$/i);
+        const followup = sentence.match(/^At (\d+)(?:st|nd|rd|th)? level,?\s+(?:he|she|they|the [^.]{1,80})\s+adds?\s+(?:(?:the\s+)?following feats?\s*:\s*)?(.+?)\.?$/i);
+        const list = direct ? (direct[2] ?? direct[3]) : followup?.[2]?.replace(/\s+to (?:the|this) list$/i, "");
+        if (!list) continue;
+        const ids = featIdsFromList(list, featIdByName);
+        if (!ids.length || ids.some((id) => !id)) continue;
+        covered.add(sentenceIndex);
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+      }
+    }
+    if (sentences.every((sentence, index) => covered.has(index) || alternativeQualifierSentence.test(sentence))) fullyAutomatedFeatureIds.add(feature.id);
   }
   return { alternatives, fullyAutomatedFeatureIds, sentenceCoverage };
 }
