@@ -153,6 +153,17 @@ function formulaBookEntries(summary, spells) {
   return entries;
 }
 
+function classLevelBonusKnownEntries(summary, spells) {
+  const entries = [];
+  const pattern = new RegExp(`\\bAt (\\d{1,2})${ordinal} level,?[^.;]{0,80}?\\bgains?\\s+([^.;]{1,160}?)\\s+as (?:an? )?bonus ([0-9])${ordinal}[- ]level spells? known`, "gi");
+  for (const match of summary.matchAll(pattern)) {
+    const names = uniqueMatches(spellMatches(match[2], spells));
+    if (names.length !== 1) continue;
+    entries.push({ spell: names[0].spell, level: Number(match[3]), kind: "known", minimumClassLevel: Number(match[1]) });
+  }
+  return entries;
+}
+
 function isFixedSpellExpansion(summary) {
   return /\badds?\b[^.]{0,600}\b(?:spell list|class list|formula(?:e)? list|formula book|extracts? known|spells? known)\b/i.test(summary)
     && !/\b(?:choose|chooses|chosen|select|selects|selected)\b[^.]{0,180}\b(?:spell|extract)s?\b/i.test(summary)
@@ -187,6 +198,21 @@ function fixedProgressiveSpellSentence(sentence, entries, spells) {
   const mentioned = uniqueMatches(spellMatches(normalizedText(sentence), spells)).map(({ spell }) => spell.id);
   const parsed = new Set(entries.map(({ spell }) => spell.id));
   return mentioned.length >= 2 && mentioned.every((id) => parsed.has(id));
+}
+
+function fixedBonusKnownSequenceSentence(sentence, entries, spells) {
+  if (!/\bAt \d+(?:st|nd|rd|th) level\b[^.]{0,700}\bas (?:an? )?bonus \d(?:st|nd|rd|th)[- ]level spells? known\b/i.test(sentence)) return false;
+  if (/\b(?:choose|does not|doesn't|except|if|may|must|only|select|while|without)\b/i.test(sentence)) return false;
+  const mentioned = uniqueMatches(spellMatches(normalizedText(sentence), spells));
+  const parsed = entries.filter((entry) => entry.kind === "known" && entry.minimumClassLevel);
+  return mentioned.length > 0 && mentioned.every(({ spell }) => parsed.some((entry) => entry.spell.id === spell.id));
+}
+
+function fixedMustLearnSpellListSentence(sentence, entries, spells) {
+  if (!/\badds?\b[^.]{1,500}\bto (?:his|her|their|the) [a-z ]{0,60}spell list\b[^.]{0,100}\bmust learn these spells as normal\b/i.test(sentence)) return false;
+  const mentioned = uniqueMatches(spellMatches(normalizedText(sentence), spells)).map(({ spell }) => spell.id);
+  const parsed = new Set(entries.filter((entry) => entry.kind === "list" || entry.kind === "both").map(({ spell }) => spell.id));
+  return mentioned.length > 0 && mentioned.every((id) => parsed.has(id));
 }
 
 function structuralSpellTableCoverage(sentences, entries, spells) {
@@ -288,7 +314,7 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
       continue;
     }
     if (!isFixedSpellExpansion(summary)) continue;
-    const parsedEntries = [...tableEntries(summary, spells), ...parentheticalEntries(summary, spells), ...groupedParentheticalEntries(summary, spells), ...respectiveEntries(summary, spells), ...parentheticalRespectiveEntries(summary, spells), ...formulaBookEntries(summary, spells)];
+    const parsedEntries = [...tableEntries(summary, spells), ...parentheticalEntries(summary, spells), ...groupedParentheticalEntries(summary, spells), ...respectiveEntries(summary, spells), ...parentheticalRespectiveEntries(summary, spells), ...formulaBookEntries(summary, spells), ...classLevelBonusKnownEntries(summary, spells)];
     const entries = [...parsedEntries, ...progressiveSummonEntries(summary, spells, parsedEntries)];
     const unique = new Map(entries.filter(({ level }) => Number.isInteger(level) && level >= 0 && level <= 9).map((entry) => [`${entry.spell.id}:${entry.level}`, entry]));
     if (!unique.size) continue;
@@ -298,7 +324,7 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
       const addToList = kind === "list" || kind === "both" || (!kind && kinds.spellList);
       const addAsKnown = kind === "known" || kind === "both" || (!kind && kinds.bonusKnown);
       if (addToList) spellListAdditions[spell.id] = Math.min(spellListAdditions[spell.id] ?? level, level);
-      if (addAsKnown && !kinds.mustLearn && !conditionalKnown) spellGrants.push({
+      if (addAsKnown && (kind === "known" || kind === "both" || !kinds.mustLearn) && !conditionalKnown) spellGrants.push({
         spellId: spell.id,
         spellLevel: level,
         minimumClassLevel: minimumClassLevel ?? feature.level ?? 1,
@@ -312,7 +338,9 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
       const covered = new Set(sentences.flatMap((sentence, index) =>
         fixedFormulaBookSentence(sentence, [...unique.values()], spells) ||
         fixedSpellAdditionSentence(sentence, [...unique.values()], spells) ||
-        fixedProgressiveSpellSentence(sentence, [...unique.values()], spells) ? [index] : [],
+        fixedProgressiveSpellSentence(sentence, [...unique.values()], spells) ||
+        fixedBonusKnownSequenceSentence(sentence, [...unique.values()], spells) ||
+        fixedMustLearnSpellListSentence(sentence, [...unique.values()], spells) ? [index] : [],
       ));
       for (const index of structuralSpellTableCoverage(sentences, [...unique.values()], spells)) covered.add(index);
       for (const sentenceIndex of covered) sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
