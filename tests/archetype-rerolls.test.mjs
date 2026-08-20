@@ -4,6 +4,7 @@ import archetypes from "../generated/pf1e-archetypes.mjs";
 import feats from "../generated/pf1e-feats.mjs";
 import data from "../generated/pf1e-data.mjs";
 import { applyArchetype, applyArchetypeResourceAdjustments, archetypeAutomationSummary, inferArchetypeRerollActions, inferArchetypeResourceAdjustments } from "../packages/engine/src/index.js";
+import { inferredArchetypeRerollActionDetails } from "../packages/engine/src/archetype-rerolls.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 
@@ -47,6 +48,14 @@ test("applied archetypes expose inferred rerolls and complete pure reroll featur
   const applied = applyArchetype(rogue, archetype("rogue-sczarni-swindler"));
   assert.equal(applied.features.find((feature) => feature.id === "rogue-sczarni-swindler-cheat-fate-ex-8")?.resourceActions?.[0]?.rerollAction?.kind, "d20");
   assert.ok(!archetypeAutomationSummary(archetype("rogue-sczarni-swindler"), feats).manual.includes("Cheat Fate (Ex) (level 8)"));
+});
+
+test("reroll sentence coverage composes with saving-throw automation", () => {
+  const cultHunter = archetype("investigator-cult-hunter");
+  const details = inferredArchetypeRerollActionDetails(cultHunter);
+  assert.deepEqual(details.sentenceCoverage.map((entry) => entry.sentenceIndex), [2, 3]);
+  assert.ok(!archetypeAutomationSummary(cultHunter, feats).manual.includes("Purify Mind and Body (Ex) (level 2)"));
+  assert.ok(archetypeAutomationSummary(archetype("wizard-hallowed-necromancer"), feats).manual.includes("Guarded Life (Su) (level 15)"), "unmodeled damage prevention remains visible");
 });
 
 test("reroll inference stays unique and resource costs remain positive", () => {

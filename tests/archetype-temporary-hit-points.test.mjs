@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
 import { applyArchetype, archetypeAutomationSummary, inferArchetypeTemporaryHitPointActions } from "../packages/engine/src/index.js";
+import { inferredArchetypeTemporaryHitPointActionDetails } from "../packages/engine/src/archetype-temporary-hit-points.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const classes = data.classes;
@@ -28,6 +29,14 @@ test("deterministic player-owned temporary hit points become level-aware feature
 test("complete temporary-HP actions leave the manual queue", () => {
   assert.equal(archetypeAutomationSummary(archetype("fighter-siegebreaker"), data.feats, data.spells).manual.includes("Armored Vigor (Ex) (level 2)"), false);
   assert.equal(archetypeAutomationSummary(archetype("alchemist-mnemostiller"), data.feats, data.spells).manual.includes("Rasugen (Su) (level 1)"), true);
+});
+
+test("temporary-HP sentence coverage exposes only rules represented by the action", () => {
+  const armoredVigor = inferredArchetypeTemporaryHitPointActionDetails(archetype("fighter-siegebreaker"));
+  assert.deepEqual(armoredVigor.sentenceCoverage.map((entry) => entry.sentenceIndex), [0, 1, 2]);
+  const rasugen = inferredArchetypeTemporaryHitPointActionDetails(archetype("alchemist-mnemostiller"));
+  assert.deepEqual(rasugen.sentenceCoverage.map((entry) => entry.sentenceIndex), [2]);
+  assert.ok(archetypeAutomationSummary(archetype("alchemist-mnemostiller"), data.feats, data.spells).manual.includes("Rasugen (Su) (level 1)"), "unmodeled mutagen restrictions remain visible");
 });
 
 test("temporary-hit-point inference excludes benefits owned by allies and subordinate creatures", () => {

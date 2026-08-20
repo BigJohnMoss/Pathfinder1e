@@ -48,12 +48,14 @@ function resourceCost(sentence) {
 export function inferredArchetypeRerollActionDetails(archetype) {
   const actions = [];
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   const resources = resolvedArchetypeResourceAdjustments(archetype);
   const resourceByFeatureId = new Map(resources.map((resource) => [resource.resourceId.replace(/^archetype-/, ""), resource]));
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (feature.resourceActions?.length) continue;
     const featureSentences = sentences(feature.summary);
-    const sentence = featureSentences.find(playerOwnedReroll);
+    const sentenceIndex = featureSentences.findIndex(playerOwnedReroll);
+    const sentence = featureSentences[sentenceIndex];
     if (!sentence || /damage dice|damage roll|dismiss the fortune|choose to increase (?:his|her|their) number of uses/i.test(String(feature.summary ?? ""))) continue;
     const directResource = resourceByFeatureId.get(feature.id)
       ?? resources.find((resource) => normalizedLabel(resource.label) === normalizedLabel(featureLabel(feature)));
@@ -75,6 +77,14 @@ export function inferredArchetypeRerollActionDetails(archetype) {
         summary: sentence,
       },
     });
+    sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+    featureSentences.forEach((candidate, index) => {
+      if (index === sentenceIndex) return;
+      if (/\b(?:must|has to) (?:take|accept|keep)\b[^.]{0,100}\bresults?\b/i.test(candidate))
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+      else if (resource && /\b(?:use this ability|uses? this ability|additional time|twice|three times|four times|five times)\b[^.]{0,120}\bper day\b/i.test(candidate))
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex: index });
+    });
     const remainingRules = featureSentences.filter((candidate) =>
       candidate !== sentence
       && !/\b(?:must|has to) (?:take|accept|keep)\b[^.]{0,100}\bresults?\b/i.test(candidate)
@@ -82,7 +92,11 @@ export function inferredArchetypeRerollActionDetails(archetype) {
       && !/\bthis ability replaces\b/i.test(candidate));
     if (!remainingRules.length) fullyAutomatedFeatureIds.add(feature.id);
   }
-  return { actions, fullyAutomatedFeatureIds };
+  return {
+    actions,
+    fullyAutomatedFeatureIds,
+    sentenceCoverage: [...new Map(sentenceCoverage.map((entry) => [`${entry.sourceFeatureId}:${entry.sentenceIndex}`, entry])).values()],
+  };
 }
 
 export function inferArchetypeRerollActions(archetype) {
