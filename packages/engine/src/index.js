@@ -11,7 +11,7 @@ import { inferArchetypeChannelEnergyActions, inferredArchetypeChannelEnergyActio
 import { inferArchetypeResourceDamageActions, inferredArchetypeResourceDamageActionDetails } from "./archetype-resource-damage.js";
 import { inferArchetypeSaveEffectActions, inferredArchetypeSaveEffectActionDetails } from "./archetype-save-effects.js";
 import { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions, inferredArchetypeTeamworkSharingDetails } from "./archetype-teamwork-sharing.js";
-import { inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails } from "./archetype-spellcasting.js";
+import { inferArchetypeRemovesSpellcasting, inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails, inferredArchetypeSpellcastingRemovalDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 import { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
@@ -53,6 +53,7 @@ export { inferArchetypeSaveEffectActions };
 export { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions };
 export { inferArchetypeSpellcastingAbility };
 export { inferArchetypeSpellcastingProgression };
+export { inferArchetypeRemovesSpellcasting, inferredArchetypeSpellcastingRemovalDetails };
 export { inferArchetypeSpellAdditions };
 export { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides };
 export { inferArchetypeGrantedFeats };
@@ -1293,7 +1294,8 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     adjustment === undefined
       ? table
       : table?.map((row) => row.map((value) => Math.max(0, value + adjustment)));
-  const characterSpellcasting = archetype.removesSpellcasting
+  const removesSpellcasting = archetype.removesSpellcasting ?? inferArchetypeRemovesSpellcasting(archetype);
+  const characterSpellcasting = removesSpellcasting
     ? undefined
     : characterClass.spellcasting;
   const inferredSpellcastingAbility = inferredArchetypeSpellcastingAbilityDetails(archetype);
@@ -1914,7 +1916,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if ([archetype.spellSlotAdjustmentPerLevel, archetype.preparedSpellAdjustmentPerLevel, archetype.spellsKnownAdjustmentPerLevel].some((value) => value !== undefined)) automated.push("Spell-slot and spells-known adjustments");
   if (resolvedArchetypeCompanionGrants(archetype).length) automated.push("Companion grants and effective-level progression");
   if (archetype.companionProgressionAdjustments?.length) automated.push("Companion effective-level adjustments");
-  if (archetype.removesSpellcasting) automated.push("Spellcasting removal");
+  const spellcastingRemovalDetails = inferredArchetypeSpellcastingRemovalDetails(archetype);
+  if (archetype.removesSpellcasting || spellcastingRemovalDetails.rules.length) automated.push("Spellcasting removal");
   const inferredSpellcastingAbility = inferredArchetypeSpellcastingAbilityDetails(archetype);
   const spellcastingAbility = archetype.spellcastingAbility ?? inferredSpellcastingAbility?.ability;
   if (spellcastingAbility) automated.push(`Spellcasting ability: ${spellcastingAbility[0].toUpperCase()}${spellcastingAbility.slice(1)}`);
@@ -2114,6 +2117,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...skillRankDetails.fullyAutomatedFeatureIds,
     ...natureBondDetails.fullyAutomatedFeatureIds,
     ...omissionDetails.fullyAutomatedFeatureIds,
+    ...spellcastingRemovalDetails.fullyAutomatedFeatureIds,
     ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...initiativeBonusDetails.fullyAutomatedFeatureIds,
     ...saveBonusDetails.fullyAutomatedFeatureIds,

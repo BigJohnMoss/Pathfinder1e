@@ -48,6 +48,17 @@ test("Warrior of the Holy Light has no spellbook", async () => {
   assert.equal(screen.queryByRole("tab", { name: "Spells" }), null);
 });
 
+for (const [archetypeId, name] of [
+  ["paladin-divine-guardian", "Divine Guardian"],
+  ["paladin-temple-champion", "Temple Champion"],
+] as const) test(`${name} removes the live Paladin spellbook`, async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "paladin");
+  await user.selectOptions(screen.getByLabelText("Archetype"), archetypeId);
+  assert.equal(screen.queryByRole("tab", { name: "Spells" }), null);
+});
+
 test("Sacred Servant restricts deities and domains and prepares its domain slots", async () => {
   const user = userEvent.setup();
   render(<Home />);
