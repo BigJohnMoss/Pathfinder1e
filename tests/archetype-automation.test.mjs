@@ -197,6 +197,26 @@ test("generic saves-against wording applies to all three saving throws", () => {
   assert.equal(archetypeAutomationSummary(coolHeaded).manual.some((entry) => entry.startsWith("Cool-Headed")), false);
 });
 
+test("participial and class-level save formulas retain their exact scaling and conditions", () => {
+  const cases = [
+    ["skald-warlord", "Unshakable", "skald-warlord-unshakable-ex-2", 2, "against fear effects"],
+    ["investigator-guardian-of-immortality", "Orchid’s Drop", "investigator-guardian-of-immortality-orchid-s-drop-ex-11", 1, undefined],
+  ];
+  for (const [id, featureName, featureId, bonus, condition] of cases) {
+    const source = catalogueArchetypes.find((archetype) => archetype.id === id);
+    const adjustment = inferArchetypeSaveBonusAdjustments(source).find((entry) => entry.sourceFeatureId === featureId);
+    assert.deepEqual(adjustment?.saveTargets, ["fortitude", "reflex", "will"], id);
+    assert.equal(adjustment?.base, bonus, id);
+    assert.equal(adjustment?.condition, condition, id);
+    assert.equal(archetypeAutomationSummary(source).manual.some((entry) => entry.startsWith(featureName)), false, id);
+  }
+
+  const infiltrator = catalogueArchetypes.find((archetype) => archetype.id === "inquisitor-infiltrator");
+  const necessaryLies = inferArchetypeSaveBonusAdjustments(infiltrator).find((entry) => entry.sourceFeatureId.endsWith("necessary-lies-su-1"));
+  assert.deepEqual([necessaryLies?.base, necessaryLies?.levelMultiplier, necessaryLies?.condition], [0, 1, "against abilities that detect lies or reveal or force the truth, such as detect lies and zone of truth"]);
+  assert.equal(archetypeAutomationSummary(infiltrator).manual.some((entry) => entry.startsWith("Necessary Lies")), false);
+});
+
 test("save inference is normalized, conservative, and duplicate-free across the catalogue", () => {
   for (const archetype of catalogueArchetypes) {
     const adjustments = inferArchetypeSaveBonusAdjustments(archetype);

@@ -7,7 +7,7 @@ export const archetypeRuleSentences = (summary) => String(summary ?? "")
   .filter(Boolean);
 
 export const archetypeReplacementBoilerplate = (sentence) =>
-  /^(?:This|These) (?:class )?(?:ability|feature|abilities|features)?\s*(?:otherwise )?(?:replaces?|alters?|modifies?|counts? as|functions? as)\b/i.test(sentence) ||
+  /^(?:This|These) (?:class )?(?:ability|feature|power|abilities|features|powers)?\s*(?:otherwise )?(?:replaces?|alters?|modifies?|counts? as|functions? as)\b/i.test(sentence) ||
   /^(?:This|These) replaces?\b/i.test(sentence);
 
 export function archetypeRuleCondition(sentence, matchEnd) {

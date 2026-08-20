@@ -24,12 +24,12 @@ function saveConditionFromSentence(sentence, verbIndex, targetEnd) {
   const trailing = tail.match(/^((?:and to (?:his|her|their) CMD )?against|attempted against|caused by|made to|to (?:avoid|resist|resolve)|when|whenever|while|during|within|involving|as long as|if)\s+(.+?)(?=,?\s+and (?:an? \+\d|DCs?|(?:(?:he|she|they)|the [a-z][a-z' -]{0,60}) (?:gains?|receives?|has|can|may))|,\s+as well as|[.;]|$)/i);
   if (!trailing) return undefined;
   const trigger = /^and to /i.test(trailing[1]) ? "against" : trailing[1].toLowerCase();
-  return `${trigger} ${trailing[2]}`;
+  return `${trigger} ${trailing[2]}`.trim();
 }
 
 function adjustmentsFromSentence(feature, sentence) {
   const adjustments = [];
-  const bonusPattern = /\b(?:(?:gains?|receives?|has) (?:an? )?|(?:and|plus|as well as) (?:an? )?)\+(\d+) (?:alchemical |circumstance |competence |dodge |enhancement |insight |luck |morale |profane |racial |resistance |sacred |trait |untyped )?bonus (?:on|to) /gi;
+  const bonusPattern = /\b(?:(?:gains?|receives?|has) (?:an? )?|(?:and|plus|as well as) (?:an? )?|(?:gaining|granting (?:him|her|them)) (?:an? )?)\+(\d+) (?:alchemical |circumstance |competence |dodge |enhancement |insight |luck |morale |profane |racial |resistance |sacred |trait |untyped )?bonus (?:on|to) /gi;
   for (const bonus of sentence.matchAll(bonusPattern)) {
     if (archetypeUnsafeSubject(sentence, bonus.index)) continue;
     const rawRest = sentence.slice(bonus.index + bonus[0].length);
@@ -50,6 +50,27 @@ function adjustmentsFromSentence(feature, sentence) {
       ...(condition ? { condition } : {}),
     });
   }
+  const levelPattern = /\b(?:adds?|gains?|receives?) (?:his|her|their) (?:class )?level (?:as a bonus )?(?:on|to) /gi;
+  for (const bonus of sentence.matchAll(levelPattern)) {
+    if (archetypeUnsafeSubject(sentence, bonus.index)) continue;
+    const rawRest = sentence.slice(bonus.index + bonus[0].length);
+    const rest = rawRest.split(/,\s+but\b|;|[.]/i)[0];
+    const target = targetPattern.exec(rest);
+    if (!target) continue;
+    const targets = saveTargets(target[0]);
+    if (!targets.length) continue;
+    const targetEnd = bonus.index + bonus[0].length + target.index + target[0].length;
+    const condition = saveConditionFromSentence(sentence, bonus.index, targetEnd);
+    adjustments.push({
+      sourceFeatureId: feature.id,
+      label: targets.length === 3 ? "Saving throws" : `${targets.map((item) => item[0].toUpperCase() + item.slice(1)).join(" and ")} saves`,
+      saveTargets: targets,
+      minimumLevel: Number(sentence.slice(0, bonus.index).match(/\bAt (\d+)(?:st|nd|rd|th) level\b/i)?.[1] ?? feature.level ?? 1),
+      base: 0,
+      levelMultiplier: 1,
+      ...(condition ? { condition } : {}),
+    });
+  }
   return adjustments;
 }
 
@@ -60,10 +81,13 @@ function narrativeLeadSentence(sentence) {
 
 function directSaveRuleSentence(sentence, parsedCount = 1) {
   const numericBonuses = sentence.match(/\+\d+ (?:(?:alchemical|circumstance|competence|dodge|enhancement|insight|luck|morale|profane|racial|resistance|sacred|trait|untyped) )?bonus(?:es)?\b/gi)?.length ?? 0;
-  return numericBonuses === parsedCount &&
-    /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,80})\s+(?:gains?|receives?|has)\b/i.test(sentence) &&
+  const levelBonuses = sentence.match(/\b(?:adds?|gains?|receives?) (?:his|her|their) (?:class )?level (?:as a bonus )?(?:on|to)\b/gi)?.length ?? 0;
+  const directSubject = /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,80})\s+(?:gains?|receives?|has|adds?)\b/i.test(sentence);
+  const participialSubject = /^(?:(?:At|Beginning at) \d+(?:st|nd|rd|th) level,?\s*)?(?:(?:he|she|they)|(?:an?|the)\s+[a-z][a-z'\u2019 -]{0,100})\s+[^.;]{0,220},\s*(?:gaining|granting (?:him|her|them)) (?:an? )?\+\d+\b/i.test(sentence);
+  return numericBonuses + levelBonuses === parsedCount &&
+    (directSubject || participialSubject) &&
     !/\b(?:can|may|spends?|uses?|becomes? immune|is unaffected)\b/i.test(sentence) &&
-    (sentence.match(/\b(?:gains?|receives?|has)\b/gi)?.length ?? 0) === 1;
+    (sentence.match(/\b(?:gains?|receives?|has|adds?|gaining|granting)\b/gi)?.length ?? 0) === 1;
 }
 
 export function inferredArchetypeSaveBonusDetails(archetype) {
