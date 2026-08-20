@@ -46,6 +46,20 @@
       ]
     }
   ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "demonicChannel",
+      "sourceFeatureId": "cleric-demonic-apostle-demonic-channel-su-1",
+      "label": "Demonic Channel",
+      "unit": "use",
+      "operation": "replace",
+      "base": 3,
+      "abilityModifier": "charisma",
+      "minimum": 0,
+      "minimumLevel": 1,
+      "dedicatedAction": true
+    }
+  ],
   "companionGrants": [{"id":"demonic-familiar","kind":"familiar","label":"Demonic familiar","optionId":"demonic-familiar","minimumLevel":1,"stacksWithExisting":true}],
   "source": {
     "title": "Archives of Nethys",

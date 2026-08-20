@@ -138,6 +138,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const confirmationChecked = (id: string) => Boolean(actionConfirmations[`${action.id}:${id}`]);
         const allConfirmations = [...(action.confirmations ?? []), ...(action.combatRoll?.confirmations ?? [])];
         const missingRequiredConfirmation = Boolean(allConfirmations.some((confirmation) => confirmation.requiredForActivation && !confirmationChecked(confirmation.id)));
+        const combatTargetSaveModifier = combatInput.saveModifier + (action.combatRoll?.targetSave?.conditionalModifiers ?? []).filter((modifier) => confirmationChecked(modifier.confirmationId)).reduce((total, modifier) => total + modifier.modifier, 0);
         const defaultActionTargetName = action.randomOutcomeTarget
           ? selectedMode?.id === action.randomOutcomeTarget.allyModeId
             ? "Ally"
@@ -257,14 +258,16 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             if (hit) {
               const damage = rollDice(combatDiceCount, combatDieSides, combatDamageModifier);
               const targetSaveEnabled = Boolean(action.combatRoll.targetSave && (!action.combatRoll.targetSave.requiredConfirmationId || confirmationChecked(action.combatRoll.targetSave.requiredConfirmationId)));
-              const targetSave = targetSaveEnabled && saveDc !== undefined ? rollD20Check(combatInput.saveModifier) : undefined;
+              const targetSave = targetSaveEnabled && saveDc !== undefined ? rollD20Check(combatTargetSaveModifier) : undefined;
               const saveSucceeded = Boolean(targetSave && saveDc !== undefined && targetSave.total >= saveDc);
               const halvesDamage = saveSucceeded && ["half-damage", "half-and-negates-riders"].includes(action.combatRoll.targetSave?.outcome ?? "");
               const appliedDamage = halvesDamage ? Math.floor(damage.total / 2) : damage.total;
               parts.push(`${combatDiceCount}d${combatDieSides}${combatDamageModifier === 0 ? "" : combatDamageModifier > 0 ? ` + ${combatDamageModifier}` : ` − ${Math.abs(combatDamageModifier)}`} ${combatDamageType} damage: ${damage.rolls.join(" + ")}${combatDamageModifier === 0 ? "" : combatDamageModifier > 0 ? ` + ${combatDamageModifier}` : ` − ${Math.abs(combatDamageModifier)}`} = ${damage.total}${halvesDamage ? `; save halves to ${appliedDamage}` : ""}.`);
-              if (targetSave && saveDc !== undefined) parts.push(`${action.combatRoll.targetSave!.modifier[0].toUpperCase()}${action.combatRoll.targetSave!.modifier.slice(1)} save: ${targetSave.natural}${combatInput.saveModifier === 0 ? "" : ` ${combatInput.saveModifier >= 0 ? "+" : "−"} ${Math.abs(combatInput.saveModifier)}`} = ${targetSave.total} vs DC ${saveDc} — ${saveSucceeded ? "success" : "failure"}.`);
+              if (targetSave && saveDc !== undefined) parts.push(`${action.combatRoll.targetSave!.modifier[0].toUpperCase()}${action.combatRoll.targetSave!.modifier.slice(1)} save: ${targetSave.natural}${combatTargetSaveModifier === 0 ? "" : ` ${combatTargetSaveModifier >= 0 ? "+" : "−"} ${Math.abs(combatTargetSaveModifier)}`} = ${targetSave.total} vs DC ${saveDc} — ${saveSucceeded ? "success" : "failure"}.`);
               const ridersNegated = saveSucceeded && ["negates-riders", "half-and-negates-riders"].includes(action.combatRoll.targetSave?.outcome ?? "");
               if (!ridersNegated) action.combatRoll.riders?.filter((rider) =>
+                actionLevel >= (rider.minimumLevel ?? 1)
+                &&
                 (!rider.requiredConfirmationId || confirmationChecked(rider.requiredConfirmationId))
                 && (!rider.maximumTargetHitDiceDivisor || combatTargetHitDice < actionLevel / rider.maximumTargetHitDiceDivisor),
               ).forEach((rider, index) => {
