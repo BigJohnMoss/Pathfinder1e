@@ -405,7 +405,9 @@ for (const journey of journeys) {
     await page.reload();
     await openCharacterPanel(page, journey.mobile);
     await page.getByLabel("Class", { exact: true }).selectOption("monk");
+    await page.getByLabel("Alignment", { exact: true }).selectOption("lawful-neutral");
     await page.getByLabel("Archetype", { exact: true }).selectOption("monk-hamatulatsu-master");
+    await expect(page.getByLabel("Archetype", { exact: true })).toHaveValue("monk-hamatulatsu-master");
     await page.locator('input[type="number"][min="1"][max="20"]').fill("10");
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Features" }).click();
@@ -844,6 +846,7 @@ for (const journey of journeys) {
     await page.reload();
     await openCharacterPanel(page, journey.mobile);
     await page.getByLabel("Class", { exact: true }).selectOption("arcanist");
+    await page.getByLabel("Alignment", { exact: true }).selectOption("neutral-good");
     await page.getByLabel("Archetype", { exact: true }).selectOption("arcanist-magaambyan-initiate");
     await page.locator('input[type="number"][min="1"][max="20"]').fill("5");
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
@@ -851,7 +854,6 @@ for (const journey of journeys) {
 
     const first = page.getByLabel("Halcyon Spell Lore (Su) level 1");
     const second = page.getByLabel("Halcyon Spell Lore level 2");
-    await page.getByLabel("Alignment level 1").selectOption("magaambyan-alignment-neutral-good");
     await expect(first.locator('option[value="magaambyan-halcyon-spells-entangle"]')).toHaveCount(1);
     await expect(first.locator('option[value="magaambyan-halcyon-spells-later-spell-blessed-fist"]')).toHaveCount(1);
     await first.selectOption("magaambyan-halcyon-spells-entangle");
@@ -880,7 +882,9 @@ for (const journey of journeys) {
     else await load.click();
     if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await page.getByRole("tab", { name: "Features" }).click();
-    await expect(page.getByLabel("Alignment level 1")).toHaveValue("magaambyan-alignment-neutral-good");
+    if (journey.mobile) await page.getByRole("button", { name: "Character & levels" }).click();
+    await expect(page.getByLabel("Alignment", { exact: true })).toHaveValue("neutral-good");
+    if (journey.mobile) await page.getByRole("button", { name: "Close", exact: true }).evaluate((button: HTMLButtonElement) => button.click());
     await expect(page.getByLabel("Halcyon Spell Lore (Su) level 1")).toHaveValue("magaambyan-halcyon-spells-entangle");
     await page.getByRole("tab", { name: "Spells" }).click();
     await expect(page.getByLabel("Spell Mastery selections")).toHaveText("1/1 mastered");

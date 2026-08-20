@@ -27,6 +27,7 @@ import { archetypeLandSpeedAdjustments, inferredArchetypeLandSpeedDetails, infer
 import { archetypeDefenseAdjustments, archetypeDefenses, inferredArchetypeDefenseDetails, inferArchetypeDefenseAdjustments } from "./archetype-defenses.js";
 import { archetypeSkillCheckRules, inferredArchetypeSkillCheckDetails, inferArchetypeSkillCheckRules } from "./archetype-skill-checks.js";
 import { archetypeAbilityScoreAdjustments, inferredArchetypeAbilityScoreDetails, inferArchetypeAbilityScoreAdjustments } from "./archetype-abilities.js";
+import { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments, inferredArchetypeAlignmentDetails } from "./archetype-alignment.js";
 export { animalCompanionProgression, familiarProgression, normalizeCompanionState } from "./companions.js";
 export { archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, resolvedArchetypeCompanionGrants };
 export { eidolonProgression } from "./eidolon.js";
@@ -59,6 +60,7 @@ export { archetypeLandSpeedAdjustments, inferArchetypeLandSpeedAdjustments };
 export { archetypeDefenseAdjustments, archetypeDefenses, inferArchetypeDefenseAdjustments };
 export { archetypeSkillCheckRules, inferArchetypeSkillCheckRules };
 export { archetypeAbilityScoreAdjustments, inferArchetypeAbilityScoreAdjustments };
+export { characterAlignmentLabel, characterAlignments, inferArchetypeAllowedAlignments };
 export { extendedSpellDuration, isPersonalRangeSpell, isTransmutationSpell, spellHasDescriptor, spellHasSchool } from "./spell-modifiers.js";
 export { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 export { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
@@ -977,6 +979,7 @@ export function normalizeCharacterDraft(
       (!ancestryIds || ancestryIds.includes(draft.ancestryId))
         ? draft.ancestryId
         : "human",
+    alignment: characterAlignments.includes(draft.alignment) ? draft.alignment : "neutral",
     selectedAlternateRacialTraitIds: Array.isArray(
       draft.selectedAlternateRacialTraitIds,
     )
@@ -1700,6 +1703,9 @@ export function archetypeEligibilityIssues(archetype, context = {}) {
       );
     } else issues.push("Has an unmet requirement.");
   }
+  const allowedAlignments = inferArchetypeAllowedAlignments(archetype);
+  if (allowedAlignments.length && !allowedAlignments.includes(context.alignment))
+    issues.push(`Requires ${allowedAlignments.map(characterAlignmentLabel).join(" or ")} alignment.`);
   return [...new Set(issues)];
 }
 
@@ -1923,6 +1929,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (skillCheckRules.length)
     automated.push(`${skillCheckRules.length} deterministic skill-check rule${skillCheckRules.length === 1 ? "" : "s"}`);
   if (archetype.requirements?.length) automated.push("Builder-supported eligibility requirements");
+  const alignmentDetails = inferredArchetypeAlignmentDetails(archetype);
+  if (alignmentDetails.rules.length) automated.push("Alignment eligibility requirement");
   if (archetype.optionGroupAugmentations?.length)
     automated.push(`${archetype.optionGroupAugmentations.length} archetype-specific option-group augmentation${archetype.optionGroupAugmentations.length === 1 ? "" : "s"}`);
   const inferredFeatGrantDetails = inferredArchetypeGrantedFeatDetails(archetype, feats);
@@ -2011,6 +2019,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...advisoryFeatureIds,
     ...spellcastingAdjustmentFeatureIds,
     ...clericDomainReductionFeatureIds,
+    ...alignmentDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

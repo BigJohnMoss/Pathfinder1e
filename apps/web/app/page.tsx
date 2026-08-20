@@ -137,6 +137,7 @@ import {
 import { mysteryBonusSpells } from "../../../packages/engine/src/oracle-mysteries.js";
 import type {
   ActiveEffect,
+  Alignment,
   CharacterClassLevel,
   CharacterDraftV1,
   CharacterOption,
@@ -444,6 +445,7 @@ export default function Home() {
   const [prestigeSpellcastingTargets, setPrestigeSpellcastingTargets] =
     useState<Record<string, string[]>>({});
   const [ancestryId, setAncestryId] = useState("human");
+  const [alignment, setAlignment] = useState<Alignment>("neutral");
   const [selectedAlternateRacialTraitIds, setSelectedAlternateRacialTraitIds] =
     useState<string[]>([]);
   const [level, setLevel] = useState(1);
@@ -1801,6 +1803,10 @@ export default function Home() {
       setSaveNotice(`Exchanged one signature spell. ${signatureSpellExchangeCredits - 1} exchange${signatureSpellExchangeCredits - 1 === 1 ? "" : "s"} remain from Arcanist levels gained.`);
     }
     setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
+    if (featureId === "cleric-alignment-1") {
+      const nextAlignment = optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId)?.alignment;
+      if (nextAlignment) setAlignment(nextAlignment as Alignment);
+    }
   };
   const signatureSpellChoiceChangeRules = Object.fromEntries(
     classOptionChoices
@@ -3163,6 +3169,7 @@ export default function Home() {
     archetypeStacksByClass,
     prestigeSpellcastingTargets,
     ancestryId,
+    alignment,
     selectedAlternateRacialTraitIds,
     level,
     humanAbility,
@@ -3778,6 +3785,7 @@ export default function Home() {
     setArchetypeStacksByClass(draft.archetypeStacksByClass ?? {});
     setPrestigeSpellcastingTargets(draft.prestigeSpellcastingTargets);
     setAncestryId(draft.ancestryId);
+    setAlignment(draft.alignment);
     setLevel(draft.level);
     setHumanAbility(draft.humanAbility);
     setBaseAbilities(draft.baseAbilities);
@@ -3984,6 +3992,7 @@ export default function Home() {
     setArchetypeStacksByClass({});
     setPrestigeSpellcastingTargets({});
     setAncestryId("human");
+    setAlignment("neutral");
     setLevel(1);
     setHumanAbility("intelligence");
     setBaseAbilities(defaultAbilities);
@@ -4128,6 +4137,7 @@ export default function Home() {
               prestigeSpellcastingTargets={prestigeSpellcastingTargets}
               archetypeId={archetypeId}
               ancestryId={ancestryId}
+              alignment={alignment}
               level={level}
               classes={classes}
               archetypes={archetypes}
@@ -4229,6 +4239,10 @@ export default function Home() {
               onAncestryChange={(next) => {
                 setAncestryId(next);
                 setSelectedAlternateRacialTraitIds([]);
+              }}
+              onAlignmentChange={(next) => {
+                setAlignment(next);
+                if (classLevelMap.cleric) setSelectedOptions((current) => ({ ...current, "cleric-alignment-1": `alignment-${next}` }));
               }}
               onLevelChange={(next) => {
                 setAdditionalClassLevels((current) =>

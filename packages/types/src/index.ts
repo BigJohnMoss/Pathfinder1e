@@ -15,6 +15,10 @@ export type AbilityName =
   | "wisdom"
   | "charisma";
 export type AbilityScores = Record<AbilityName, number>;
+export type Alignment =
+  | "lawful-good" | "neutral-good" | "chaotic-good"
+  | "lawful-neutral" | "neutral" | "chaotic-neutral"
+  | "lawful-evil" | "neutral-evil" | "chaotic-evil";
 export type SpellDescriptor =
   | "acid"
   | "air"
@@ -59,6 +63,7 @@ export interface CharacterDraftV1 {
   archetypeStacksByClass?: Record<string, string[]>;
   prestigeSpellcastingTargets: Record<string, string[]>;
   ancestryId: string;
+  alignment: Alignment;
   selectedAlternateRacialTraitIds: string[];
   level: number;
   humanAbility: AbilityName;
