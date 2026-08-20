@@ -17,7 +17,7 @@ import { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetyp
 import { archetypeWildEmpathyChecks, inferArchetypeWildEmpathyAdjustments, inferredArchetypeWildEmpathyDetails } from "./archetype-wild-empathy.js";
 import { inferArchetypeReplacementFeatureIds } from "./archetype-replacements.js";
 import { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferArchetypeSkillAbilityOverrides } from "./archetype-skill-abilities.js";
-import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
+import { inferArchetypeFeatAlternatives, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferredArchetypeFeatAlternativeDetails, inferredArchetypeGrantedFeatDetails } from "./archetype-feats.js";
 import { archetypeSkillBonusAdjustments, inferredArchetypeSkillBonusDetails, inferArchetypeSkillBonusAdjustments } from "./archetype-skills.js";
 import { archetypeInitiativeBonusAdjustments, archetypeReplacementBoilerplate, archetypeRuleSentences, inferredArchetypeInitiativeBonusDetails, inferArchetypeInitiativeBonusAdjustments } from "./archetype-initiative.js";
 import { archetypeSaveBonusAdjustments, inferredArchetypeSaveBonusDetails, inferArchetypeSaveBonusAdjustments } from "./archetype-saves.js";
@@ -52,6 +52,7 @@ export { archetypeSkillAbilityOverrides, effectiveArchetypeSkillAbility, inferAr
 export { inferArchetypeGrantedFeats };
 export { inferArchetypeFeatChoices };
 export { inferArchetypeFeatAlternatives };
+export { inferredArchetypeFeatAlternativeDetails };
 export { archetypeSkillBonusAdjustments, inferArchetypeSkillBonusAdjustments };
 export { archetypeInitiativeBonusAdjustments, inferArchetypeInitiativeBonusAdjustments };
 export { archetypeSaveBonusAdjustments, inferArchetypeSaveBonusAdjustments };
@@ -1949,7 +1950,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const inferredFeatFeatureIds = new Set(inferredFeatGrantDetails.fullyAutomatedFeatureIds);
   const inferredFeatChoices = inferArchetypeFeatChoices(archetype, feats);
   if (inferredFeatChoices.length) automated.push(`${inferredFeatChoices.length} restricted bonus feat choice${inferredFeatChoices.length === 1 ? "" : "s"}`);
-  const inferredFeatAlternatives = inferArchetypeFeatAlternatives(archetype, feats);
+  const inferredFeatAlternativeDetails = inferredArchetypeFeatAlternativeDetails(archetype, feats);
+  const inferredFeatAlternatives = inferredFeatAlternativeDetails.alternatives;
   if (inferredFeatAlternatives.length) automated.push(`${inferredFeatAlternatives.length} class-choice feat alternative${inferredFeatAlternatives.length === 1 ? "" : "s"}`);
   const inferredFeatChoiceFeatureIds = new Set(inferredFeatChoices.map(choice => choice.sourceFeatureId));
   const configured = replacementFeatures.filter(feature => feature.choiceRequired && feature.optionGroupId);
@@ -2031,6 +2033,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...spellcastingAdjustmentFeatureIds,
     ...clericDomainReductionFeatureIds,
     ...alignmentDetails.fullyAutomatedFeatureIds,
+    ...inferredFeatAlternativeDetails.fullyAutomatedFeatureIds,
   ].filter(Boolean));
   const manualFeatures = replacementFeatures
     .filter(feature => !feature.optionGroupId && !feature.grantedFeatId && !feature.grantedFeatIds?.length && !feature.spellAutomation && !inferredFeatFeatureIds.has(feature.id) && !inferredFeatChoiceFeatureIds.has(feature.id) && !adjustmentFeatureIds.has(feature.id))

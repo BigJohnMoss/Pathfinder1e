@@ -226,7 +226,7 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
       const ids = featIdsFromList(replacementList[1], featIdByName);
       if (ids.length > 1 && ids.every(Boolean)) {
         add(feature, classBonusFeatGroup, 1, { mode: "replace", featChoiceIds: ids });
-        for (const expansion of text.matchAll(/At\s+(\d+)(?:st|nd|rd|th)?\s+level,[^.]*?(?:added to|adds?[^.]*?to) (?:the|this) list\s*:\s*([^.]+)/gi)) {
+        for (const expansion of text.matchAll(/At\s+(\d+)(?:st|nd|rd|th)?\s+level,\s*(?:(?:the )?following feats? (?:are (?:also available|added(?: to (?:the|this) list)?)|is added to (?:the|this) list)|[^.]*?(?:added to|adds?[^.]*?to) (?:the|this) list)\s*:\s*([^.]+)/gi)) {
           const expansionIds = featIdsFromList(expansion[2], featIdByName).filter(Boolean);
           if (expansionIds.length) add(feature, classBonusFeatGroup, Number(expansion[1]), { featChoiceIds: expansionIds });
         }
@@ -267,4 +267,29 @@ export function inferArchetypeFeatAlternatives(archetype, feats) {
     }
   }
   return alternatives;
+}
+
+const alternativeReplacementSentence = /(?:replaces? (?:the )?(?:normal )?(?:monk )?bonus feats? with|selects? bonus feats? from) the following(?: list)?\s*:/i;
+const alternativeExpansionSentence = /^At\s+\d+(?:st|nd|rd|th)?\s+level,\s*(?:the )?following feats? (?:are (?:also available|added(?: to (?:the|this) list)?)|is added to (?:the|this) list)\s*:/i;
+const alternativeExactSentence = /\bcan select (?:the )?.+? feats?(?:\s*\([^)]*\))? in place of (?:an? )?(?:advanced )?(?:discovery|investigator talent|rogue talent)/i;
+const alternativeClassChoiceSentence = /\bwould gain (?:a new rage power|a slayer talent),[^.]+instead select/i;
+const alternativeQualifierSentence = /^(?:She|He|The [^.]+) (?:must still|must|does not need to|doesn't need to|need not) meet[^.]+prerequisites?|^This (?:ability )?(?:alters?|replaces?)/i;
+
+export function inferredArchetypeFeatAlternativeDetails(archetype, feats) {
+  const alternatives = inferArchetypeFeatAlternatives(archetype, feats);
+  const fullyAutomatedFeatureIds = new Set();
+  const alternativesByFeature = new Map();
+  for (const alternative of alternatives) alternativesByFeature.set(alternative.sourceFeatureId, [...(alternativesByFeature.get(alternative.sourceFeatureId) ?? []), alternative]);
+  for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
+    if (!(alternativesByFeature.get(feature.id)?.length) || /\([^)]*(?:Craft|Knowledge|Spellcraft|abjuration|unarmed strike|water vehicles?)[^)]*\)/i.test(feature.summary ?? "")) continue;
+    const sentences = String(feature.summary ?? "").replace(/!/g, "").replace(/\s+/g, " ").split(/(?<=[.?])\s+/).filter(Boolean);
+    if (sentences.every((sentence) =>
+      alternativeReplacementSentence.test(sentence) ||
+      alternativeExpansionSentence.test(sentence) ||
+      alternativeExactSentence.test(sentence) ||
+      alternativeClassChoiceSentence.test(sentence) ||
+      alternativeQualifierSentence.test(sentence),
+    )) fullyAutomatedFeatureIds.add(feature.id);
+  }
+  return { alternatives, fullyAutomatedFeatureIds };
 }
