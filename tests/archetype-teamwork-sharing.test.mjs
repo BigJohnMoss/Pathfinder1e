@@ -62,3 +62,24 @@ test("teamwork sharing is attached to features and removed from the manual audit
     featureNames.forEach((name) => assert.equal(manual.some((entry) => entry.startsWith(name)), false, `${archetypeId}: ${name}`));
   }
 });
+
+test("the shared engine covers the wider tactician-style archetype family", () => {
+  const expected = {
+    "brawler-exemplar": { featureId: "brawler-exemplar-field-instruction-ex-5", levels: [[5, 1], [9, 2], [12, 3], [17, 4]] },
+    "hunter-forester": { featureId: "hunter-forester-tactician-ex-3", levels: [[3, 1], [7, 2], [12, 3], [17, 4]] },
+    "rogue-consigliere": { featureId: "rogue-consigliere-field-boss-ex-10", levels: [[10, 1], [14, 2], [18, 3]] },
+    "slayer-vanguard": { featureId: "slayer-vanguard-tactician-ex-2", levels: [[2, 1]] },
+  };
+  for (const [id, rule] of Object.entries(expected)) {
+    const source = archetype(id);
+    const action = inferArchetypeTeamworkSharingActions(source).find(({ sourceFeatureId }) => sourceFeatureId === rule.featureId)?.action;
+    assert.ok(action, id);
+    assert.equal(action.featSelection.featType, "teamwork");
+    assert.equal(action.activeEffect.defaultRoundsByLevel[0].rounds, id === "slayer-vanguard" ? 4 : id === "rogue-consigliere" ? 8 : id === "brawler-exemplar" ? 5 : 4);
+    const resource = resolvedArchetypeResourceAdjustments(source).find(({ resourceId }) => resourceId === action.resourceId);
+    assert.ok(resource, `${id} resource`);
+    for (const [level, maximum] of rule.levels) {
+      assert.equal(applyArchetypeResourceAdjustments({}, [source], level)[action.resourceId], maximum, `${id} level ${level}`);
+    }
+  }
+});
