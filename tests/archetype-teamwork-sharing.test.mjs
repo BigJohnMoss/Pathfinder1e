@@ -83,3 +83,22 @@ test("the shared engine covers the wider tactician-style archetype family", () =
     }
   }
 });
+
+test("Majordomo Delegate models scaling feats, action economy, and long-duration modes", () => {
+  const source = archetype("investigator-majordomo");
+  const action = inferArchetypeTeamworkSharingActions(source)[0].action;
+  assert.deepEqual(action.featSelection.countByLevel, [{ level: 1, count: 1 }, { level: 7, count: 2 }, { level: 13, count: 3 }]);
+  assert.equal(action.featSelection.minimumCount, 1);
+  assert.deepEqual(action.actionTypeByLevel, [
+    { level: 1, actionType: "standard" }, { level: 4, actionType: "move" }, { level: 10, actionType: "swift" },
+  ]);
+  assert.deepEqual(action.activeEffect.defaultRoundsByLevel.filter(({ level }) => [1, 10, 20].includes(level)), [
+    { level: 1, rounds: 4 }, { level: 10, rounds: 13 }, { level: 20, rounds: 23 },
+  ]);
+  assert.deepEqual(action.modes.map(({ id, minimumLevel, featCount, actionType }) => ({ id, minimumLevel, featCount, actionType })), [
+    { id: "combat", minimumLevel: undefined, featCount: undefined, actionType: undefined },
+    { id: "noncombat-task", minimumLevel: 4, featCount: undefined, actionType: "10-minute" },
+    { id: "until-refresh", minimumLevel: 16, featCount: 1, actionType: "1-minute" },
+  ]);
+  assert.equal(archetypeAutomationSummary(source, data.feats, data.spells).manual.some((entry) => entry.startsWith("Delegate")), true, "the alchemy prohibition remains honestly queued");
+});

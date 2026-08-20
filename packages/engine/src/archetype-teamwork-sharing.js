@@ -5,6 +5,8 @@ const featureLabel = (feature) => String(feature?.name ?? "Teamwork feat").repla
 function durationByLevel(summary, minimumLevel) {
   const base = Number(summary.match(/(?:retain|retains)[^.]{0,80}?for\s+(\d+)\s+rounds?/i)?.[1]);
   const divisor = Number(summary.match(/(?:plus|\+)\s+1\s+round\s+for\s+every\s+(\d+)\s+[^.]{0,30}?levels?/i)?.[1]);
+  const levelDuration = summary.match(/number of rounds equal to\s+(\d+)\s*\+\s+(?:her|his|their|the)?\s*[a-z]+ level/i);
+  if (levelDuration) return Array.from({ length: 21 - minimumLevel }, (_, index) => ({ level: minimumLevel + index, rounds: Number(levelDuration[1]) + minimumLevel + index }));
   if (!Number.isFinite(base) || !Number.isFinite(divisor) || divisor < 1) return undefined;
   const beyond = Number(summary.match(/for\s+every\s+\d+\s+levels?\s+beyond\s+(\d+)(?:st|nd|rd|th)/i)?.[1] ?? 0);
   const steps = [];
@@ -17,23 +19,25 @@ function durationByLevel(summary, minimumLevel) {
 
 function selectionCounts(summary, minimumLevel) {
   const twoAt = Number(summary.match(/At\s+(\d+)(?:st|nd|rd|th) level[^.]{0,100}?grants? any two teamwork feats/i)?.[1]);
+  const increments = [...summary.matchAll(/At\s+(\d+)(?:st|nd|rd|th) level[^.]{0,100}?grant (?:up to )?(two|three|\d+) teamwork feats/gi)]
+    .map((match) => ({ level: Number(match[1]), count: ({ two: 2, three: 3 }[match[2].toLowerCase()] ?? Number(match[2])) }));
+  if (increments.length) return [{ level: minimumLevel, count: 1 }, ...increments];
   return Number.isFinite(twoAt)
     ? [{ level: minimumLevel, count: 1 }, { level: twoAt, count: 2 }]
     : [{ level: minimumLevel, count: 1 }];
 }
 
 function actionTypes(summary, minimumLevel) {
-  const initial = /as a swift action/i.test(summary.split(/At\s+\d+(?:st|nd|rd|th) level/i)[0]) ? "swift" : "standard";
+  const initial = /as a (free|immediate|move|standard|swift) action/i.exec(summary.split(/At\s+\d+(?:st|nd|rd|th) level/i)[0])?.[1] ?? "standard";
   let currentLevel = minimumLevel;
-  let swiftAt;
+  const steps = [{ level: minimumLevel, actionType: initial }];
   for (const sentence of summary.split(/(?<=[.!?])\s+/)) {
     const statedLevel = Number(sentence.match(/At\s+(\d+)(?:st|nd|rd|th) level/i)?.[1]);
     if (Number.isFinite(statedLevel)) currentLevel = statedLevel;
-    if (/swift action/i.test(sentence)) { swiftAt = currentLevel; break; }
+    const actionType = sentence.match(/(?:as|is now) a (free|immediate|move|standard|swift) action/i)?.[1];
+    if (actionType && currentLevel > minimumLevel && steps.at(-1).actionType !== actionType) steps.push({ level: currentLevel, actionType });
   }
-  return Number.isFinite(swiftAt)
-    ? [{ level: minimumLevel, actionType: initial }, { level: swiftAt, actionType: "swift" }]
-    : [{ level: minimumLevel, actionType: initial }];
+  return steps;
 }
 
 function resourceDetails(archetype, feature, summary) {
@@ -60,6 +64,11 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
     if (!roundsByLevel || !resource) continue;
     const label = featureLabel(feature);
     const evilRestriction = /Evil creatures do not gain the benefit/i.test(summary);
+    const delegateModes = feature.id === "investigator-majordomo-delegate-ex-1" ? [
+      { id: "combat", label: "Combat delegation", summary: "Grant the selected feats for the normal round-based duration." },
+      { id: "noncombat-task", label: "Noncombat task", minimumLevel: 4, defaultRounds: 999, actionType: "10-minute", summary: "Designate one uninterrupted noncombat task; benefits last until it is complete, up to 8 hours." },
+      { id: "until-refresh", label: "Until daily refresh", minimumLevel: 16, defaultRounds: 999, featCount: 1, actionType: "1-minute", summary: "Grant one teamwork feat until Delegate uses refresh." },
+    ] : undefined;
     actions.push({
       sourceFeatureId: feature.id,
       action: {
@@ -72,7 +81,9 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
           label: "Teamwork feat",
           featType: "teamwork",
           countByLevel: selectionCounts(summary, minimumLevel),
+          ...(feature.id === "investigator-majordomo-delegate-ex-1" ? { minimumCount: 1 } : {}),
         },
+        ...(delegateModes ? { modeLabel: "Delegation", modes: delegateModes } : {}),
         actionTypeByLevel: actionTypes(`${summary} ${upgradeSummary}`, minimumLevel),
         ...(evilRestriction ? { confirmations: [{ id: "non-evil-allies", label: "All recipients are non-evil allies", requiredForActivation: true }] } : {}),
         activeEffect: {
@@ -88,7 +99,7 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
       },
     });
     summary.split(/(?<=[.!?])\s+/).forEach((_, sentenceIndex) => sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex }));
-    if (feature.id !== "brawler-exemplar-field-instruction-ex-5") fullyAutomatedFeatureIds.add(feature.id);
+    if (!["brawler-exemplar-field-instruction-ex-5", "investigator-majordomo-delegate-ex-1"].includes(feature.id)) fullyAutomatedFeatureIds.add(feature.id);
   }
 
   const greater = features.find((feature) => /Greater Battle Tactician/i.test(feature.name ?? ""));

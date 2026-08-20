@@ -199,11 +199,12 @@ export interface ClassFeatureOccurrence {
       enemySaveModifier: "fortitude" | "reflex" | "will";
     };
     modeLabel?: string;
-    modes?: Array<{ id: string; label: string; summary: string }>;
+    modes?: Array<{ id: string; label: string; summary: string; minimumLevel?: number; defaultRounds?: number; featCount?: number; actionType?: "free" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
     featSelection?: {
       label: string;
       featType: string;
       countByLevel: Array<{ level: number; count: number }>;
+      minimumCount?: number;
     };
     actionTypeByLevel?: Array<{ level: number; actionType: "free" | "immediate" | "move" | "standard" | "swift" }>;
     recipientLabel?: string;

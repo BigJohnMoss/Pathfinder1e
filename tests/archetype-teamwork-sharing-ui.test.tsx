@@ -57,3 +57,19 @@ test("Holy Guide requires the non-evil recipient confirmation", () => {
   assert.equal(button.hasAttribute("disabled"), false);
   cleanup();
 });
+
+test("Majordomo Delegate exposes only legal modes and limits the daily mode to one feat", () => {
+  const source = archetypes.find((candidate: { id: string }) => candidate.id === "investigator-majordomo");
+  const base = data.classes.find((candidate: { id: string }) => candidate.id === "investigator");
+  const applied = applyArchetype(base, source, data.classes, data.spells);
+  const effects: ActiveEffect[] = [];
+  render(<ClassFeatures level={16} className={applied.name} features={featuresThroughLevel(applied, 16)} classLevels={{ investigator: 16 }} selectedFeats={[{ id: "outflank", name: "Outflank", type: "teamwork" }, { id: "precise-strike", name: "Precise Strike", type: "teamwork" }, { id: "back-to-back", name: "Back to Back", type: "teamwork" }]} dailyResources={[{ id: "archetype-investigator-majordomo-delegate-ex-1", label: "Delegate", unit: "use", maximum: 6, used: 0, onUsedChange: () => {} }]} onAddEffect={(effect) => effects.push(effect)} />);
+  assert.equal(screen.getAllByLabelText(/Grant Delegate teamwork feat/).length, 3);
+  fireEvent.change(screen.getByLabelText("Grant Delegate mode"), { target: { value: "until-refresh" } });
+  assert.equal(screen.getAllByLabelText(/Grant Delegate teamwork feat/).length, 1);
+  assert.match(screen.getByText("Activation: 1-minute action.").textContent ?? "", /1-minute/);
+  fireEvent.click(screen.getByRole("button", { name: "Grant Delegate" }));
+  assert.equal(effects[0].roundsRemaining, 999);
+  assert.match(screen.getByLabelText("Grant Delegate result").textContent ?? "", /1-minute action/);
+  cleanup();
+});
