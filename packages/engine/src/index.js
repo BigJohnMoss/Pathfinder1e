@@ -1926,6 +1926,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["defenses", defenseDetails.sentenceCoverage ?? []],
     ["ability scores", abilityScoreDetails.sentenceCoverage ?? []],
     ["spell access", inferredSpellAccess.sentenceCoverage ?? []],
+    ["spell additions", inferredSpellAdditions.sentenceCoverage ?? []],
     ["spell modifiers", inferredSpellModifiers.sentenceCoverage ?? []],
     ["spell-like abilities", spellLikeAbilityDetails.sentenceCoverage ?? []],
     ["resource-powered spells", resourceSpellActionDetails.sentenceCoverage ?? []],

@@ -37,6 +37,18 @@ test("source suffixes and reversed greater spell names are recognized", () => {
   assert.equal(inferred.spellListAdditions["break-enchantment"], undefined);
 });
 
+test("fixed formula-book additions become level-gated known extracts", () => {
+  const cloneMaster = inferArchetypeSpellAdditions(archetype("alchemist-clone-master"), data.spells);
+  assert.deepEqual(cloneMaster.spellGrants.map(({ spellId, spellLevel, minimumClassLevel }) => [spellId, spellLevel, minimumClassLevel]), [
+    ["clone", 6, 16],
+    ["simulacrum-lesser", 3, 7],
+    ["simulacrum", 5, 13],
+  ]);
+
+  const preservationist = inferArchetypeSpellAdditions(archetype("alchemist-preservationist"), data.spells);
+  assert.ok(preservationist.spellGrants.some((grant) => grant.spellId === "summon-natures-ally-9" && grant.spellLevel === 6 && grant.minimumClassLevel === 18));
+});
+
 test("bonus spells known retain their class-level unlocks", () => {
   const inferred = inferArchetypeSpellAdditions(archetype("sorcerer-razmiran-priest"), data.spells);
   const grants = new Map(inferred.spellGrants.map((grant) => [grant.spellId, grant]));

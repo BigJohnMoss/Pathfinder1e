@@ -1,3 +1,5 @@
+import { archetypeReplacementBoilerplate, archetypeRuleSentences } from "./archetype-initiative.js";
+
 const ordinal = "(?:st|nd|rd|th)";
 const detailsCache = new WeakMap();
 
@@ -69,7 +71,7 @@ function parentheticalEntries(summary, spells) {
     if (!level) return [];
     if (level[2] && /\bgains the following spells at the appropriate levels\b/i.test(summary)) return [];
     const preceding = summary.slice(Math.max(0, match.index - 140), match.index);
-    const minimumClassLevel = Number([...preceding.matchAll(/\b(?:At|until) (\d+)(?:st|nd|rd|th) level\b/gi)].at(-1)?.[1] ?? 0);
+    const minimumClassLevel = Number([...preceding.matchAll(/\b(?:At|until) (\d+)(?:(?:st|nd|rd|th))? level\b/gi)].at(-1)?.[1] ?? 0);
     const hasList = /\bspell list\b/i.test(level[0]);
     const hasKnown = /\bspells? known\b/i.test(level[0]);
     return [{ spell: match.spell, level: Number(level[1] ?? level[2] ?? level[3] ?? level[4]), ...(hasList && hasKnown ? { kind: "both" } : hasKnown ? { kind: "known" } : hasList ? { kind: "list" } : {}), ...(minimumClassLevel ? { minimumClassLevel } : {}) }];
@@ -136,17 +138,40 @@ function parentheticalRespectiveEntries(summary, spells) {
   return entries;
 }
 
+function formulaBookEntries(summary, spells) {
+  const entries = [];
+  const pattern = new RegExp(`\\badds?\\s+(.{1,600}?)\\s+to (?:his|her|their|the) formula book as (?:an? )?([0-9])${ordinal}[- ]level extracts?`, "gi");
+  for (const match of summary.matchAll(pattern)) {
+    const minimumClassLevel = Number(summary.slice(0, match.index).match(/\bAt (\d+)(?:(?:st|nd|rd|th))? level\b/i)?.[1] ?? 0);
+    for (const entry of uniqueMatches(spellMatches(match[1], spells))) entries.push({
+      spell: entry.spell,
+      level: Number(match[2]),
+      kind: "known",
+      ...(minimumClassLevel ? { minimumClassLevel } : {}),
+    });
+  }
+  return entries;
+}
+
 function isFixedSpellExpansion(summary) {
-  return /\badds?\b[^.]{0,260}\b(?:spell list|class list|formula(?:e)? list|extracts? known|spells? known)\b/i.test(summary)
+  return /\badds?\b[^.]{0,600}\b(?:spell list|class list|formula(?:e)? list|formula book|extracts? known|spells? known)\b/i.test(summary)
     && !/\b(?:choose|chooses|chosen|select|selects|selected)\b[^.]{0,180}\b(?:spell|extract)s?\b/i.test(summary)
     && !/\b(?:add|adds?) (?:any|one|two|three|four|\d+)\b[^.]{0,180}\b(?:spell|extract)s?\b/i.test(summary);
 }
 
 function additionKinds(summary) {
   const spellList = /\b(?:spell list|class list|formula(?:e)? list)\b/i.test(summary);
-  const explicitlyKnown = /\b(?:extracts?|spells?) known\b|\bautomatically adds?\b[^.]{0,120}\bformula book\b/i.test(summary);
+  const explicitlyKnown = /\b(?:extracts?|spells?) known\b|\badds?\b[^.]{0,600}\bformula book\b/i.test(summary);
   const mustLearn = /\bmust (?:still )?(?:learn|select|add)\b|\bdoesn['’]t automatically gain\b/i.test(summary);
   return { spellList, bonusKnown: explicitlyKnown && !mustLearn, mustLearn };
+}
+
+function fixedFormulaBookSentence(sentence, entries, spells) {
+  if (!/^(?:At \d+(?:(?:st|nd|rd|th))? level,?\s*)?(?:an? |the )?[a-z][a-z'\u2019 -]{0,100}\s+adds?\b[^.]{1,600}\bto (?:his|her|their|the) formula book as (?:an? )?\d(?:st|nd|rd|th)[- ]level extracts?[.]?$/i.test(sentence)) return false;
+  if (/\b(?:but|does not|doesn['’]t|except|only if|without)\b|\([^)]*\b(?:component|require|restriction)\b[^)]*\)/i.test(sentence)) return false;
+  const mentioned = uniqueMatches(spellMatches(sentence, spells)).map(({ spell }) => spell.id);
+  const parsed = new Set(entries.map(({ spell }) => spell.id));
+  return mentioned.length > 0 && mentioned.every((id) => parsed.has(id));
 }
 
 function oracleBonusSpellEntries(archetype, feature, spells) {
@@ -178,6 +203,7 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
   const spellGrants = [];
   const sourceFeatureIds = new Set();
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   const bonusSpellReplacementClassLevels = new Set();
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     const summary = normalizedText(feature.summary);
@@ -192,7 +218,7 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
       continue;
     }
     if (!isFixedSpellExpansion(summary)) continue;
-    const parsedEntries = [...tableEntries(summary, spells), ...parentheticalEntries(summary, spells), ...groupedParentheticalEntries(summary, spells), ...respectiveEntries(summary, spells), ...parentheticalRespectiveEntries(summary, spells)];
+    const parsedEntries = [...tableEntries(summary, spells), ...parentheticalEntries(summary, spells), ...groupedParentheticalEntries(summary, spells), ...respectiveEntries(summary, spells), ...parentheticalRespectiveEntries(summary, spells), ...formulaBookEntries(summary, spells)];
     const entries = [...parsedEntries, ...progressiveSummonEntries(summary, spells, parsedEntries)];
     const unique = new Map(entries.filter(({ level }) => Number.isInteger(level) && level >= 0 && level <= 9).map((entry) => [`${entry.spell.id}:${entry.level}`, entry]));
     if (!unique.size) continue;
@@ -210,7 +236,13 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
         sourceFeatureId: feature.id,
       });
     }
-    if (kinds.spellList || kinds.bonusKnown) sourceFeatureIds.add(feature.id);
+    if (kinds.spellList || kinds.bonusKnown) {
+      sourceFeatureIds.add(feature.id);
+      const sentences = archetypeRuleSentences(feature.summary);
+      const covered = new Set(sentences.flatMap((sentence, index) => fixedFormulaBookSentence(sentence, [...unique.values()], spells) ? [index] : []));
+      for (const sentenceIndex of covered) sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+      if (covered.size && sentences.every((sentence, index) => covered.has(index) || archetypeReplacementBoilerplate(sentence))) fullyAutomatedFeatureIds.add(feature.id);
+    }
   }
   const result = {
     spellListAdditions,
@@ -218,6 +250,7 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
     spellGrants: [...new Map(spellGrants.map((grant) => [`${grant.mode}:${grant.spellId}`, grant])).values()],
     sourceFeatureIds,
     fullyAutomatedFeatureIds: [...fullyAutomatedFeatureIds],
+    sentenceCoverage,
     bonusSpellReplacementClassLevels: [...bonusSpellReplacementClassLevels].sort((left, right) => left - right),
   };
   if (archetype && spells && typeof archetype === "object" && typeof spells === "object") {
