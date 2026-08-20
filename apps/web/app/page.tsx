@@ -88,6 +88,7 @@ import {
   bardicPerformanceRounds,
   characterCombatStats,
   characterLandSpeed,
+  characterPrecisionDamageRules,
   classProgression,
   druidWildShapeUses,
   effectiveArchetypeSkillAbility,
@@ -3231,6 +3232,7 @@ export default function Home() {
     attack: unarmedAttack.attack + selectedArchetypeCombatBonuses.attackRolls,
     damageBonus: unarmedAttack.damageBonus + selectedArchetypeCombatBonuses.damageRolls,
   }];
+  const precisionDamageRules = characterPrecisionDamageRules(progressionClasses, classLevelMap);
   const serializedCharacterDraft = JSON.stringify(characterDraft);
   useEffect(() => {
     try {
@@ -4476,6 +4478,7 @@ export default function Home() {
                   condition: rule.condition,
                   source: rule.source,
                 }))}
+                precisionDamageRules={precisionDamageRules}
                 craftingOppositionSchools={craftingOppositionSchools}
                 onCurrentHitPointsChange={setCurrentHitPoints}
                 onTemporaryHitPointsChange={setTemporaryHitPoints}

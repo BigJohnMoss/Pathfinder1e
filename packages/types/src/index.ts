@@ -423,6 +423,7 @@ export interface CharacterClass {
   bonusSpellReplacementClassLevels?: number[];
   spellModifierAdjustments?: ArchetypeSpellModifierAdjustment[];
   wildEmpathyAdjustments?: ArchetypeWildEmpathyAdjustment[];
+  precisionDamageAdjustments?: PrecisionDamageAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
@@ -474,6 +475,7 @@ export interface CharacterArchetype {
   bonusSpellReplacementClassLevels?: number[];
   spellModifierAdjustments?: ArchetypeSpellModifierAdjustment[];
   wildEmpathyAdjustments?: ArchetypeWildEmpathyAdjustment[];
+  precisionDamageAdjustments?: PrecisionDamageAdjustment[];
   spellSlotAdjustmentPerLevel?: number;
   preparedSpellAdjustmentPerLevel?: number;
   spellsKnownAdjustmentPerLevel?: number;
@@ -613,6 +615,19 @@ export interface CharacterArchetype {
   prohibitedOptionIds?: string[];
   prohibitedCompanionKinds?: Array<"animal" | "mount" | "familiar" | "eidolon" | "drake">;
   source: SourceRef;
+}
+export interface PrecisionDamageAdjustment {
+  sourceFeatureId: string;
+  label: string;
+  dieSides: 6;
+  diceByLevel: Array<{ level: number; dice: number }>;
+  condition: string;
+  attackMode: "any" | "melee" | "ranged";
+  weaponType?: "firearm";
+  maximumRange?: number;
+  maximumRangeByLevel?: Array<{ level: number; range: number }>;
+  stacksAsRogueLevel?: boolean;
+  partialFeature?: boolean;
 }
 
 export interface ArchetypeSpellGrant {
