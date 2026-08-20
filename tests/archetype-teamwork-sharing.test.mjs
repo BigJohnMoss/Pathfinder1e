@@ -140,3 +140,19 @@ test("plain bonus teamwork feats preserve recurring levels without misreading co
   assert.deepEqual(inferArchetypeFeatChoices(archetype("hunter-packmaster"), data.feats), []);
   assert.deepEqual(inferArchetypeFeatChoices(archetype("spiritualist-zeitgeist-binder"), data.feats), []);
 });
+
+test("condition-driven teamwork sharing models rage and persistent aura rules", () => {
+  const pack = inferArchetypeTeamworkSharingActions(archetype("barbarian-pack-rager"))[0].action;
+  assert.deepEqual(pack.featSelection.countByLevel, [{ level: 7, count: 1 }, { level: 13, count: 2 }, { level: 19, count: 3 }]);
+  assert.deepEqual(pack.activeEffect.rangeByLevel, [{ level: 7, feet: 30 }, { level: 16, feet: 60 }]);
+  assert.equal(pack.activeEffect.fixedRounds, false);
+  assert.deepEqual(pack.actionTypeByLevel, []);
+  assert.deepEqual(pack.confirmations.map(({ id }) => id), ["visible-audible-conscious", "raging"]);
+  assert.equal(archetypeAutomationSummary(archetype("barbarian-pack-rager"), data.feats, data.spells).manual.some((entry) => entry.startsWith("Raging Tactician")), false);
+
+  const presence = inferArchetypeTeamworkSharingActions(archetype("paladin-holy-tactician"))[0].action;
+  assert.deepEqual(presence.modes.map(({ id, actionType }) => [id, actionType]), [["grant", "standard"], ["change", "swift"]]);
+  assert.deepEqual(presence.activeEffect.rangeByLevel, [{ level: 3, feet: 30 }]);
+  assert.equal(presence.activeEffect.fixedRounds, true);
+  assert.equal(archetypeAutomationSummary(archetype("paladin-holy-tactician"), data.feats, data.spells).manual.some((entry) => entry.startsWith("Battlefield Presence")), false);
+});

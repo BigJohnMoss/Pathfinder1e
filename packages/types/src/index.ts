@@ -322,6 +322,7 @@ export interface ClassFeatureOccurrence {
       improvedBonus?: number;
       defaultRounds?: number;
       defaultRoundsByLevel?: Array<{ level: number; rounds: number }>;
+      rangeByLevel?: Array<{ level: number; feet: number }>;
       fixedRounds?: boolean;
       upgrades?: Array<{
         requiredOptionId: string;

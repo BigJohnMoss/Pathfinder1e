@@ -38,6 +38,7 @@ test("level 18 Tactical Leader grants two selected teamwork feats with scaled du
   />);
   assert.equal((screen.getByLabelText("Grant Tactician teamwork feat 1") as HTMLSelectElement).value, "outflank");
   assert.equal((screen.getByLabelText("Grant Tactician teamwork feat 2") as HTMLSelectElement).value, "precise-strike");
+  fireEvent.click(screen.getByLabelText("Grant Tactician Recipients can see and hear you, and you remain conscious"));
   fireEvent.click(screen.getByRole("button", { name: "Grant Tactician" }));
   assert.equal(used, 1);
   assert.equal(effects[0].roundsRemaining, 12);
@@ -54,6 +55,7 @@ test("Holy Guide requires the non-evil recipient confirmation", () => {
   const button = screen.getByRole("button", { name: "Grant Teamwork Feat" });
   assert.equal(button.hasAttribute("disabled"), true);
   fireEvent.click(screen.getByLabelText("Grant Teamwork Feat All recipients are non-evil allies"));
+  fireEvent.click(screen.getByLabelText("Grant Teamwork Feat Recipients can see and hear you, and you remain conscious"));
   assert.equal(button.hasAttribute("disabled"), false);
   cleanup();
 });
@@ -103,5 +105,35 @@ test("Strategist Drill Instructor enforces visibility and records the chosen all
   assert.equal(effects[0].roundsRemaining, 130);
   assert.match(effects[0].description ?? "", /Recipients: 4 allies/);
   assert.match(screen.getByLabelText("Grant Drill Instructor result").textContent ?? "", /4 allies.*130 rounds.*10-minute action/);
+  cleanup();
+});
+
+test("Pack Rager selects its level-scaled rage feats and displays the current range", () => {
+  const source = archetypes.find((candidate: { id: string }) => candidate.id === "barbarian-pack-rager");
+  const base = data.classes.find((candidate: { id: string }) => candidate.id === "barbarian");
+  const applied = applyArchetype(base, source, data.classes, data.spells);
+  const effects: ActiveEffect[] = [];
+  render(<ClassFeatures level={19} className={applied.name} features={featuresThroughLevel(applied, 19)} classLevels={{ barbarian: 19 }} selectedFeats={[{ id: "outflank", name: "Outflank", type: "teamwork" }, { id: "precise-strike", name: "Precise Strike", type: "teamwork" }, { id: "back-to-back", name: "Back to Back", type: "teamwork" }]} onAddEffect={(effect) => effects.push(effect)} />);
+  assert.equal(screen.getAllByLabelText(/Grant Raging Tactician teamwork feat/).length, 3);
+  assert.match(screen.getByText("Range: 60 feet.").textContent ?? "", /60 feet/);
+  fireEvent.change(screen.getByLabelText("Grant Raging Tactician rounds"), { target: { value: "12" } });
+  fireEvent.click(screen.getByLabelText("Grant Raging Tactician Recipients can see and hear you, and you remain conscious"));
+  fireEvent.click(screen.getByLabelText("Grant Raging Tactician Rage is active"));
+  fireEvent.click(screen.getByRole("button", { name: "Grant Raging Tactician" }));
+  assert.equal(effects[0].roundsRemaining, 12);
+  assert.match(effects[0].description ?? "", /Range: 60 feet/);
+  cleanup();
+});
+
+test("Holy Tactician switches Battlefield Presence from a standard grant to a swift change", () => {
+  const source = archetypes.find((candidate: { id: string }) => candidate.id === "paladin-holy-tactician");
+  const base = data.classes.find((candidate: { id: string }) => candidate.id === "paladin");
+  const applied = applyArchetype(base, source, data.classes, data.spells);
+  render(<ClassFeatures level={3} className={applied.name} features={featuresThroughLevel(applied, 3)} classLevels={{ paladin: 3 }} selectedFeats={[{ id: "outflank", name: "Outflank", type: "teamwork" }]} />);
+  fireEvent.click(screen.getByLabelText("Grant Battlefield Presence Recipients can see and hear you, and you remain conscious"));
+  fireEvent.click(screen.getByLabelText("Grant Battlefield Presence You are not flat-footed or unconscious"));
+  assert.match(screen.getByText("Activation: standard action.").textContent ?? "", /standard/);
+  fireEvent.change(screen.getByLabelText("Grant Battlefield Presence mode"), { target: { value: "change" } });
+  assert.match(screen.getByText("Activation: swift action.").textContent ?? "", /swift/);
   cleanup();
 });

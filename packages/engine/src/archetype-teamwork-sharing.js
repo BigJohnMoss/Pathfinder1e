@@ -32,6 +32,10 @@ function selectionCounts(summary, minimumLevel) {
   const twoAt = Number(summary.match(/At\s+(\d+)(?:st|nd|rd|th) level[^.]{0,100}?grants? any two teamwork feats/i)?.[1]);
   const increments = [...summary.matchAll(/At\s+(\d+)(?:st|nd|rd|th) level[^.]{0,100}?grant (?:up to )?(two|three|\d+) teamwork feats/gi)]
     .map((match) => ({ level: Number(match[1]), count: ({ two: 2, three: 3 }[match[2].toLowerCase()] ?? Number(match[2])) }));
+  for (const match of summary.matchAll(/At\s+(\d+)(?:st|nd|rd|th) level[^.]{0,120}?chooses? (two|three|\d+) teamwork feats/gi)) {
+    increments.push({ level: Number(match[1]), count: ({ two: 2, three: 3 }[match[2].toLowerCase()] ?? Number(match[2])) });
+  }
+  increments.sort((left, right) => left.level - right.level);
   if (increments.length) return [{ level: minimumLevel, count: 1 }, ...increments];
   return Number.isFinite(twoAt)
     ? [{ level: minimumLevel, count: 1 }, { level: twoAt, count: 2 }]
@@ -39,6 +43,7 @@ function selectionCounts(summary, minimumLevel) {
 }
 
 function actionTypes(summary, minimumLevel) {
+  if (/chooses? (?:the|these|one|two|three|\d+) (?:teamwork )?feats? at the start of (?:the|a) rage/i.test(summary)) return [];
   const initialText = summary.split(/At\s+\d+(?:st|nd|rd|th) level/i)[0];
   const initial = /(?:spending|spends?) 10 minutes/i.test(summary)
     ? "10-minute"
@@ -52,6 +57,18 @@ function actionTypes(summary, minimumLevel) {
     if (actionType && currentLevel > minimumLevel && steps.at(-1).actionType !== actionType) steps.push({ level: currentLevel, actionType });
   }
   return steps;
+}
+
+function rangesByLevel(summary, minimumLevel) {
+  const initial = Number(summary.match(/(?:all(?:ies)?|ally|companions?)[^.]{0,80}?within\s+(\d+)\s+feet/i)?.[1]
+    ?? summary.match(/within\s+(\d+)\s+feet[^.]{0,80}?(?:allies|companions)/i)?.[1]);
+  if (!Number.isFinite(initial)) return undefined;
+  const steps = [{ level: minimumLevel, feet: initial }];
+  for (const match of summary.matchAll(/At\s+(\d+)(?:st|nd|rd|th) level[^.]{0,140}?within\s+(\d+)\s+feet/gi)) {
+    const next = { level: Number(match[1]), feet: Number(match[2]) };
+    if (steps.at(-1)?.feet !== next.feet) steps.push(next);
+  }
+  return steps.sort((left, right) => left.level - right.level);
 }
 
 function resourceDetails(archetype, feature, summary) {
@@ -104,15 +121,21 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
       if (sentences.every((sentence, sentenceIndex) => covered.has(sentenceIndex) || replacementBoilerplate(sentence))) fullyAutomatedFeatureIds.add(feature.id);
     }
     if (feature.resourceActions?.length) continue;
-    if (!/\bgrant(?:s|ed)?\b[^.]{0,100}\b(?:teamwork feat|this feat|one of (?:these|his) feats)|\bgrant(?:s|ed)? the benefits of one teamwork feat/i.test(summary)) continue;
+    if (!/\bgrant(?:s|ed|ing)?\b[^.]{0,100}\b(?:teamwork feat|this feat|one of (?:these|his) feats)|\bgrant(?:s|ed|ing)? the benefits of one teamwork feat/i.test(summary)) continue;
     const minimumLevel = Math.max(1, Number(feature.level ?? 1));
     const upgradeSummary = features.find((candidate) => /Greater Battle Tactician/i.test(candidate.name ?? ""))?.summary ?? "";
-    const roundsByLevel = durationByLevel(summary, minimumLevel);
+    const persistentSharing = /while (?:a |the )?[^.]{0,40}?is raging[^.]{0,120}?grants?/i.test(summary)
+      || /granting each ally within\s+\d+\s+feet one teamwork feat[^.]{0,80}?as a bonus feat/i.test(summary);
+    const roundsByLevel = durationByLevel(summary, minimumLevel) ?? (persistentSharing ? [{ level: minimumLevel, rounds: 999 }] : undefined);
     const resource = resourceDetails(archetype, feature, summary);
-    if (!roundsByLevel || !resource) continue;
+    if (!roundsByLevel || (!resource && !persistentSharing)) continue;
     const label = featureLabel(feature);
     const evilRestriction = /Evil creatures do not gain the benefit/i.test(summary);
-    const visibilityRestriction = /as long as (?:the cavalier|he|she|they) is visible and can be heard/i.test(summary);
+    const visibilityRestriction = /as long as (?:the cavalier|he|she|they) is visible and can be heard|allies must be able to see and hear|allies?[^.]{0,60}?who can see and hear/i.test(summary);
+    const rageRestriction = /while (?:a |the )?[^.]{0,40}?is raging/i.test(summary);
+    const readinessRestriction = /does not function if [^.]{0,80}?(?:flat-footed|unconscious)/i.test(summary);
+    const changeAsSwift = /Changing the bonus feat granted is a swift action/i.test(summary);
+    const rangeByLevel = rangesByLevel(summary, minimumLevel);
     const maximumRecipients = Number(summary.match(/up to (four|three|two|\d+) of (?:his|her|their) allies/i)?.[1]?.replace(/four/i, "4").replace(/three/i, "3").replace(/two/i, "2"));
     const delegateModes = feature.id === "investigator-majordomo-delegate-ex-1" ? [
       { id: "combat", label: "Combat delegation", summary: "Grant the selected feats for the normal round-based duration." },
@@ -137,11 +160,16 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
           recipientLabel: "Allies receiving the feat",
           recipients: Array.from({ length: maximumRecipients }, (_, index) => ({ id: String(index + 1), label: `${index + 1} ${index === 0 ? "ally" : "allies"}` })),
         } : {}),
-        ...(delegateModes ? { modeLabel: "Delegation", modes: delegateModes } : {}),
+        ...(delegateModes ? { modeLabel: "Delegation", modes: delegateModes } : changeAsSwift ? { modeLabel: "Use", modes: [
+          { id: "grant", label: "Grant feat", actionType: "standard", summary: "Begin sharing the selected teamwork feat." },
+          { id: "change", label: "Change feat", actionType: "swift", summary: "Replace the currently shared teamwork feat." },
+        ] } : {}),
         actionTypeByLevel: actionTypes(`${summary} ${upgradeSummary}`, minimumLevel),
-        ...((evilRestriction || visibilityRestriction) ? { confirmations: [
+        ...((evilRestriction || visibilityRestriction || rageRestriction || readinessRestriction) ? { confirmations: [
           ...(evilRestriction ? [{ id: "non-evil-allies", label: "All recipients are non-evil allies", requiredForActivation: true }] : []),
           ...(visibilityRestriction ? [{ id: "visible-audible-conscious", label: "Recipients can see and hear you, and you remain conscious", requiredForActivation: true }] : []),
+          ...(rageRestriction ? [{ id: "raging", label: "Rage is active", requiredForActivation: true }] : []),
+          ...(readinessRestriction ? [{ id: "ready", label: "You are not flat-footed or unconscious", requiredForActivation: true }] : []),
         ] } : {}),
         activeEffect: {
           name: label,
@@ -149,7 +177,8 @@ export function inferredArchetypeTeamworkSharingDetails(archetype) {
           bonus: 0,
           description: summary,
           defaultRoundsByLevel: roundsByLevel,
-          fixedRounds: true,
+          ...(rangeByLevel ? { rangeByLevel } : {}),
+          fixedRounds: !rageRestriction,
           replaceExisting: true,
         },
         summary,
