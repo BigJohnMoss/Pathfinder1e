@@ -48,6 +48,7 @@ export function inferredArchetypeGrantedFeatDetails(archetype, feats) {
   const grants = [];
   const seen = new Set();
   const fullyAutomatedFeatureIds = [];
+  const sentenceCoverage = [];
   for (const feature of (archetype?.replacements ?? []).flatMap(item => item.features ?? [])) {
     const explicit = new Set([feature.grantedFeatId, ...(feature.grantedFeatIds ?? [])].filter(Boolean));
     const featureText = String(feature.summary ?? "").replace(/\s+/g, " ");
@@ -86,8 +87,10 @@ export function inferredArchetypeGrantedFeatDetails(archetype, feats) {
     }
     if (grants.some(grant => grant.featureId === feature.id) && sentences.every((sentence, index) => pureGrantSentences.has(index) || featGrantQualifier.test(sentence) || featGrantReplacement.test(sentence)))
       fullyAutomatedFeatureIds.push(feature.id);
+    if (grants.some(grant => grant.featureId === feature.id))
+      for (const sentenceIndex of pureGrantSentences) sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
   }
-  return { grants, fullyAutomatedFeatureIds };
+  return { grants, fullyAutomatedFeatureIds, sentenceCoverage };
 }
 
 export function inferArchetypeGrantedFeats(archetype, feats) {
@@ -200,6 +203,32 @@ export function inferArchetypeFeatChoices(archetype, feats, maximumLevel = 20) {
   return choices;
 }
 
+const featChoiceSelectionSentence = /\b(?:(?:gains?|receives?|selects?|can select|may (?:also )?choose|can (?:also )?choose|adds?)\b[^.]{0,220}\b(?:bonus )?feats?\b|(?:bonus )?feats? must be chosen from the following|following feats? (?:are|is) added to (?:the|this) list)\b/i;
+const featChoiceQualificationSentence = /\b(?:must meet|need not meet|does not need to meet|doesn't need to meet|can choose[^.]+even if[^.]+does not meet)\b[^.]*\bprerequisites?\b|\bmust include [^.]+ as a prerequisite or be selected from\b/i;
+const featChoiceUnsupportedSentence = /\b(?:animal companion|both the|grant(?:s|ed)? (?:this|one of these|any two) feats? to|only to craft|as a standard action|fighter levels?|favou?red weapon|most recent bonus feat|change (?:her|his|their) bonus feat|functions? like|limitations? on armor|increased base weapon damage|use these feats? only)\b/i;
+
+export function inferredArchetypeFeatChoiceDetails(archetype, feats, maximumLevel = 20) {
+  const choices = inferArchetypeFeatChoices(archetype, feats, maximumLevel);
+  const choicesByFeature = new Map();
+  for (const choice of choices) choicesByFeature.set(choice.sourceFeatureId, [...(choicesByFeature.get(choice.sourceFeatureId) ?? []), choice]);
+  const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
+  for (const feature of (archetype?.replacements ?? []).flatMap(item => item.features ?? [])) {
+    if (!choicesByFeature.get(feature.id)?.length) continue;
+    const sentences = String(feature.summary ?? "").replace(/\s+/g, " ").split(/(?<=[.!?])\s+/).filter(Boolean);
+    const covered = new Set();
+    for (const [sentenceIndex, sentence] of sentences.entries()) {
+      if (featChoiceUnsupportedSentence.test(sentence)) continue;
+      if (featChoiceSelectionSentence.test(sentence) || featChoiceQualificationSentence.test(sentence)) {
+        covered.add(sentenceIndex);
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+      }
+    }
+    if (covered.size && sentences.every((sentence, index) => covered.has(index) || featGrantReplacement.test(sentence))) fullyAutomatedFeatureIds.add(feature.id);
+  }
+  return { choices, fullyAutomatedFeatureIds, sentenceCoverage };
+}
+
 export function inferArchetypeFeatAlternatives(archetype, feats) {
   const featIdByName = featNameMap(feats);
   const alternatives = [];
@@ -278,11 +307,15 @@ const alternativeQualifierSentence = /^(?:She|He|The [^.]+) (?:must still|must|d
 export function inferredArchetypeFeatAlternativeDetails(archetype, feats) {
   const alternatives = inferArchetypeFeatAlternatives(archetype, feats);
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   const alternativesByFeature = new Map();
   for (const alternative of alternatives) alternativesByFeature.set(alternative.sourceFeatureId, [...(alternativesByFeature.get(alternative.sourceFeatureId) ?? []), alternative]);
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     if (!(alternativesByFeature.get(feature.id)?.length) || /\([^)]*(?:Craft|Knowledge|Spellcraft|abjuration|unarmed strike|water vehicles?)[^)]*\)/i.test(feature.summary ?? "")) continue;
     const sentences = String(feature.summary ?? "").replace(/!/g, "").replace(/\s+/g, " ").split(/(?<=[.?])\s+/).filter(Boolean);
+    for (const [sentenceIndex, sentence] of sentences.entries())
+      if (alternativeReplacementSentence.test(sentence) || alternativeExpansionSentence.test(sentence) || alternativeExactSentence.test(sentence) || alternativeClassChoiceSentence.test(sentence))
+        sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
     if (sentences.every((sentence) =>
       alternativeReplacementSentence.test(sentence) ||
       alternativeExpansionSentence.test(sentence) ||
@@ -291,5 +324,5 @@ export function inferredArchetypeFeatAlternativeDetails(archetype, feats) {
       alternativeQualifierSentence.test(sentence),
     )) fullyAutomatedFeatureIds.add(feature.id);
   }
-  return { alternatives, fullyAutomatedFeatureIds };
+  return { alternatives, fullyAutomatedFeatureIds, sentenceCoverage };
 }

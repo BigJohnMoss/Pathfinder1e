@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeClericDomainReductionFeatureIds, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, archetypeSpellcastingAdjustmentFeatureIds, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferredArchetypeFeatAlternativeDetails, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, inferArchetypeSpellAdditions, spellcastingProgression } from "../packages/engine/src/index.js";
+import { adjustedCompanionLevel, applyArchetype, archetypeAdvisoryFeatureIds, archetypeAutomationSummary, archetypeClericDomainReductionFeatureIds, archetypeCombatBonuses, archetypeCombatModifierAdjustments, archetypeConditionalModifiers, archetypeDefenseAdjustments, archetypeDefenses, archetypeInitiativeBonus, archetypeInitiativeBonusAdjustments, archetypeLandSpeedAdjustments, archetypeSaveBonusAdjustments, archetypeSavingThrowBonuses, archetypeSenseAdjustments, archetypeSenses, archetypeSkillBonusAdjustments, archetypeSkillBonuses, archetypeSpellcastingAdjustmentFeatureIds, characterLandSpeed, drakeCompanionProgression, inferArchetypeClassSkillChanges, inferArchetypeCombatModifierAdjustments, inferArchetypeDefenseAdjustments, inferArchetypeFeatAlternatives, inferredArchetypeFeatAlternativeDetails, inferredArchetypeFeatChoiceDetails, inferArchetypeFeatChoices, inferArchetypeGrantedFeats, inferArchetypeInitiativeBonusAdjustments, inferArchetypeLandSpeedAdjustments, inferArchetypeProficiencyAdjustments, inferArchetypeSaveBonusAdjustments, inferArchetypeSenseAdjustments, inferArchetypeSkillBonusAdjustments, inferArchetypeSkillRankAdjustment, inferArchetypeSpellAdditions, spellcastingProgression } from "../packages/engine/src/index.js";
 import { archetypeAbilityScoreAdjustments, archetypeAbilityScoreBonuses, inferArchetypeAbilityScoreAdjustments } from "../packages/engine/src/index.js";
 import { mergeArchetypeAutomation } from "../packages/data/src/archetype-automation.js";
 import catalogueArchetypes from "../generated/pf1e-archetypes.mjs";
@@ -954,6 +954,57 @@ test("hybrid archetype feat lists include catalogue descendants of a required fe
   assert.deepEqual(choices[0].featChoiceIds, ["endurance", "great-fortitude", "improved-great-fortitude"]);
   assert.deepEqual(choices[0].featChoicePrerequisiteIds, ["endurance"]);
   assert.ok(feats.some(feat => feat.id === "diehard" && feat.prerequisites.some(item => item.type === "feat" && item.id === "endurance")));
+});
+
+test("feat-choice automation reports complete selection rules without hiding composite mechanics", () => {
+  const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
+  const feats = readdirSync(new URL("../packages/data/src/feats/", import.meta.url))
+    .filter(file => file.endsWith(".json"))
+    .map(file => JSON.parse(readFileSync(new URL(`../packages/data/src/feats/${file}`, import.meta.url), "utf8")));
+  for (const id of [
+    "bloodrager-id-rager",
+    "druid-bat-shaman",
+    "druid-dragon-shaman",
+    "druid-eagle-shaman",
+    "druid-lion-shaman",
+    "druid-saurian-shaman",
+    "druid-serpent-shaman",
+    "druid-shark-shaman",
+    "druid-wolf-shaman",
+    "hunter-flood-flourisher",
+    "monk-brazen-disciple",
+    "paladin-holy-tactician",
+    "skald-undying-word",
+  ]) {
+    const candidate = archetype(id);
+    const details = inferredArchetypeFeatChoiceDetails(candidate, feats);
+    assert.equal(details.fullyAutomatedFeatureIds.size, 1, `${id} has one complete feat-choice feature`);
+    const source = candidate.replacements.flatMap(item => item.features).find(feature => details.fullyAutomatedFeatureIds.has(feature.id));
+    assert.ok(source);
+    assert.equal(archetypeAutomationSummary(candidate, feats).manual.includes(`${source.name} (level ${source.level})`), false, id);
+  }
+  for (const id of [
+    "bard-hoaxer",
+    "cavalier-gendarme",
+    "cleric-crusader",
+    "hunter-urban-hunter",
+    "inquisitor-cloaked-wolf",
+    "inquisitor-tactical-leader",
+    "kineticist-elemental-annihilator",
+    "paladin-divine-guardian",
+    "paladin-holy-guide",
+    "paladin-tempered-champion",
+    "ranger-wave-warden",
+    "warpriest-divine-commander",
+  ]) {
+    const candidate = archetype(id);
+    assert.equal(inferredArchetypeFeatChoiceDetails(candidate, feats).fullyAutomatedFeatureIds.size, 0, `${id} keeps its unmodeled non-choice rules visible`);
+  }
+
+  const courser = archetype("swashbuckler-courser");
+  const courserManual = archetypeAutomationSummary(courser, feats).manual;
+  assert.equal(courserManual.some(item => item.startsWith("Swift Target (level")), false, "feat and movement engines jointly cover Swift Target");
+  assert.equal(courserManual.some(item => item.startsWith("Confounding Target (level")), false, "feat and movement engines jointly cover Confounding Target");
 });
 
 test("archetype feat alternatives augment existing class choice slots without granting extras", () => {
