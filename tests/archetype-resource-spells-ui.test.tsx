@@ -5,6 +5,7 @@ import { JSDOM } from "jsdom";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
 import { applyArchetype, featuresThroughLevel } from "../packages/engine/src/index.js";
+import type { ActiveEffect } from "../packages/types/src/index.js";
 
 let render: typeof import("@testing-library/react").render;
 let screen: typeof import("@testing-library/react").screen;
@@ -41,4 +42,31 @@ test("resource-powered spell buttons spend their existing class resource", async
   await user.click(screen.getByRole("button", { name: "Cast blood biography" }));
   assert.deepEqual(spent, [1, 2]);
   assert.equal(screen.getByLabelText("Cast blood biography result").textContent, "blood biography cast as a spell-like ability.");
+});
+
+test("ki-powered spell equivalents enforce prerequisites and track their duration", async () => {
+  const monk = data.classes.find((item) => item.id === "monk");
+  const grayDisciple = archetypes.find((item) => item.id === "monk-gray-disciple");
+  const applied = applyArchetype(monk, grayDisciple, data.classes, data.spells);
+  const spent: number[] = [];
+  const effects: ActiveEffect[] = [];
+  render(<ClassFeatures
+    level={4}
+    className={applied.name}
+    features={featuresThroughLevel(applied, 4)}
+    classLevels={{ monk: 4 }}
+    dailyResources={[{ id: "kiPool", label: "Ki Pool", unit: "point", maximum: 3, used: 0, onUsedChange: (used) => spent.push(used) }]}
+    onAddEffect={(effect) => effects.push(effect)}
+  />);
+
+  const user = userEvent.setup();
+  const cast = screen.getByRole("button", { name: "Cast invisibility" }) as HTMLButtonElement;
+  assert.equal(cast.disabled, true);
+  await user.click(screen.getByLabelText("Cast invisibility Has invisibility as a spell-like ability"));
+  await user.click(cast);
+  assert.deepEqual(spent, [1]);
+  assert.equal(effects[0].name, "invisibility");
+  assert.equal(effects[0].target, "self");
+  assert.equal(effects[0].roundsRemaining, 1);
+  assert.match(screen.getByLabelText("Cast invisibility result").textContent ?? "", /Active for 1 round/i);
 });
