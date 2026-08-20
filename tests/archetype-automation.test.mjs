@@ -1233,7 +1233,7 @@ test("fixed archetype bonus spells are granted separately from normal spells kno
 test("fixed Oracle bonus-spell replacements grant resolved spells at exact class milestones", () => {
   const automated = catalogueArchetypes
     .map((archetype) => ({ archetype, rules: inferArchetypeSpellAdditions(archetype, catalogueSpells) }))
-    .filter(({ rules }) => rules.bonusSpellReplacementClassLevels?.length);
+    .filter(({ archetype, rules }) => archetype.classId === "oracle" && rules.bonusSpellReplacementClassLevels?.length);
   assert.equal(automated.length, 14);
   assert.equal(automated.reduce((total, { rules }) => total + rules.spellGrants.length, 0), 81);
   for (const { archetype, rules } of automated) {
