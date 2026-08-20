@@ -57,3 +57,23 @@ export function inferArchetypeSpellcastingProgression(archetype) {
     ...(details.spellListClassId ? { spellListClassId: details.spellListClassId } : {}),
   };
 }
+
+export function inferredArchetypeSpellcastingRemovalDetails(archetype) {
+  const rules = [];
+  const fullyAutomatedFeatureIds = new Set();
+  for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
+    const summary = String(feature.summary ?? "").replace(/\s+/g, " ").trim();
+    const removesSpellcasting = /\bdoes not gain access to (?:divine )?spellcasting\b/i.test(summary)
+      || (/\bdoes not gain access to [a-z]+ spells\b/i.test(summary)
+        && /\bdoes not have an? [a-z]+ caster level or spell list\b/i.test(summary));
+    if (!removesSpellcasting) continue;
+    rules.push({ sourceFeatureId: feature.id, removesSpellcasting: true });
+    if (/^A [^.]+ does not gain access to [a-z]+ spells, and does not have an? [a-z]+ caster level or spell list\. This is not considered a spellcasting class\.$/i.test(summary))
+      fullyAutomatedFeatureIds.add(feature.id);
+  }
+  return { rules, fullyAutomatedFeatureIds };
+}
+
+export function inferArchetypeRemovesSpellcasting(archetype) {
+  return inferredArchetypeSpellcastingRemovalDetails(archetype).rules.some((rule) => rule.removesSpellcasting);
+}

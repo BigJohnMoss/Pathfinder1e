@@ -69,6 +69,8 @@ export function archetypeAbilityScoreBonuses(archetypes: CharacterArchetype[], c
 export function archetypeAbilityScoreAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["abilityScoreAdjustments"]>;
 export function inferArchetypeAbilityScoreAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["abilityScoreAdjustments"]>;
 export function inferArchetypeSpellcastingProgression(archetype: CharacterArchetype): { classId: string; minimumLevel: number; spellListClassId?: string } | undefined;
+export function inferArchetypeRemovesSpellcasting(archetype?: CharacterArchetype): boolean;
+export function inferredArchetypeSpellcastingRemovalDetails(archetype?: CharacterArchetype): { rules: Array<{ sourceFeatureId: string; removesSpellcasting: true }>; fullyAutomatedFeatureIds: Set<string> };
 export function archetypeInitiativeBonus(archetypes: CharacterArchetype[], classLevels: Record<string, number>): number;
 export function archetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
 export function inferArchetypeInitiativeBonusAdjustments(archetype: CharacterArchetype): NonNullable<CharacterArchetype["conditionalModifiers"]>;
