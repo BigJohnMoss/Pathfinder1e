@@ -59,11 +59,14 @@ export function inferredArchetypeSpellcastingAbilityDetails(archetype) {
     };
     const progression = progressionRules.map((rule) => summary.match(rule)).find(Boolean);
     const spellList = summary.match(spellListRule);
-    const castingType = /\bcasts? (?:arcane |divine |psychic )?spells spontaneously\b/i.test(summary) || /\bcan cast any spell (?:he|she|they) knows? without preparing it ahead of time\b/i.test(summary)
+    const describedCastingType = /\bcasts? (?:arcane |divine |psychic )?spells spontaneously\b/i.test(summary) || /\bcan cast any spell (?:he|she|they) knows? without preparing it ahead of time\b/i.test(summary)
       ? "spontaneous"
       : /\bmust prepare (?:his|her|their) spells ahead of time\b/i.test(summary)
         ? "prepared"
         : undefined;
+    const castingType = progression || spellList || completeProfileArchetypeIds.has(archetype?.id)
+      ? describedCastingType
+      : undefined;
     const tradition = summary.match(/\bcasts? (?:spells?[^.]{0,100}? as |)(arcane|divine|psychic) spells\b/i)?.[1]?.toLowerCase()
       ?? summary.match(/\bspells are considered (arcane|divine|psychic) spells\b/i)?.[1]?.toLowerCase();
     if (progression || spellList || castingType || tradition) details = {

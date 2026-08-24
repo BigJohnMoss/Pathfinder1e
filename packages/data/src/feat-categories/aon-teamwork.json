@@ -1,0 +1,639 @@
+{
+  "source": {
+    "title": "Archives of Nethys teamwork feat index",
+    "url": "https://aonprd.com/Feats.aspx?Category=Teamwork"
+  },
+  "categoriesByFeatId": {
+    "alien-mindpaths": [
+      "teamwork"
+    ],
+    "allied-spellcaster": [
+      "teamwork"
+    ],
+    "ambush-squad": [
+      "combat",
+      "teamwork"
+    ],
+    "amplified-radiance": [
+      "teamwork"
+    ],
+    "amplified-rage": [
+      "teamwork"
+    ],
+    "artillery-team": [
+      "combat",
+      "teamwork"
+    ],
+    "assisted-ascension": [
+      "teamwork"
+    ],
+    "back-to-back": [
+      "teamwork"
+    ],
+    "barrage-of-styles": [
+      "combat",
+      "teamwork"
+    ],
+    "basic-harmony": [
+      "teamwork"
+    ],
+    "blades-above-and-below": [
+      "combat",
+      "teamwork"
+    ],
+    "blood-for-the-empire": [
+      "teamwork"
+    ],
+    "bonded-mind": [
+      "teamwork"
+    ],
+    "broken-wing-gambit": [
+      "combat",
+      "teamwork"
+    ],
+    "brutal-grappler": [
+      "combat",
+      "teamwork"
+    ],
+    "burn-it-down": [
+      "combat",
+      "teamwork"
+    ],
+    "casting-conduit": [
+      "teamwork"
+    ],
+    "cavalry-formation": [
+      "combat",
+      "teamwork"
+    ],
+    "choir-of-blades": [
+      "combat",
+      "teamwork"
+    ],
+    "choral-support": [
+      "teamwork"
+    ],
+    "circling-offense": [
+      "combat",
+      "teamwork"
+    ],
+    "collective-recollection": [
+      "teamwork"
+    ],
+    "combat-medic": [
+      "teamwork"
+    ],
+    "compelling-harmonies": [
+      "teamwork"
+    ],
+    "concentrated-fire": [
+      "combat",
+      "teamwork"
+    ],
+    "conduit-casting": [
+      "teamwork"
+    ],
+    "cooperative-counterspelling": [
+      "teamwork"
+    ],
+    "cooperative-disabling": [
+      "teamwork"
+    ],
+    "cooperative-rend": [
+      "combat",
+      "teamwork"
+    ],
+    "coordinated-blast": [
+      "teamwork"
+    ],
+    "coordinated-capture": [
+      "combat",
+      "teamwork"
+    ],
+    "coordinated-charge": [
+      "combat",
+      "teamwork"
+    ],
+    "coordinated-defense": [
+      "combat",
+      "teamwork"
+    ],
+    "coordinated-distraction": [
+      "combat",
+      "teamwork"
+    ],
+    "coordinated-maneuvers": [
+      "combat",
+      "teamwork"
+    ],
+    "coordinated-reposition": [
+      "teamwork"
+    ],
+    "coordinated-shot": [
+      "combat",
+      "teamwork"
+    ],
+    "counterpoint-to-inspiration": [
+      "teamwork"
+    ],
+    "courage-in-numbers": [
+      "teamwork"
+    ],
+    "covering-fire-rtt": [
+      "combat",
+      "teamwork"
+    ],
+    "covering-fire-vc": [
+      "combat",
+      "teamwork"
+    ],
+    "crowd-control": [
+      "combat",
+      "teamwork"
+    ],
+    "crowd-of-bullies": [
+      "combat",
+      "teamwork"
+    ],
+    "darting-retrieval": [
+      "combat",
+      "teamwork"
+    ],
+    "deadly-troupe": [
+      "teamwork"
+    ],
+    "designated-antagonist": [
+      "teamwork"
+    ],
+    "diplomatic-ruse": [
+      "teamwork"
+    ],
+    "disarm-partner": [
+      "combat",
+      "teamwork"
+    ],
+    "distracting-charge": [
+      "combat",
+      "teamwork"
+    ],
+    "diversion-shot": [
+      "combat",
+      "teamwork"
+    ],
+    "drinking-buddy": [
+      "teamwork"
+    ],
+    "duck-and-cover": [
+      "teamwork"
+    ],
+    "echoes-of-the-first-world": [
+      "teamwork"
+    ],
+    "eclipse-strike": [
+      "teamwork"
+    ],
+    "electric-discharge": [
+      "teamwork"
+    ],
+    "elemental-commixture": [
+      "teamwork"
+    ],
+    "enfilading-fire": [
+      "combat",
+      "teamwork"
+    ],
+    "ensemble": [
+      "teamwork"
+    ],
+    "escape-route": [
+      "teamwork"
+    ],
+    "exceptional-aid": [
+      "teamwork"
+    ],
+    "extend-the-bulwark": [
+      "combat",
+      "teamwork"
+    ],
+    "extraplanar-conjunction": [
+      "teamwork"
+    ],
+    "fall-guy": [
+      "teamwork"
+    ],
+    "familiar-link": [
+      "teamwork"
+    ],
+    "feint-partner": [
+      "combat",
+      "teamwork"
+    ],
+    "ferocious-horde": [
+      "teamwork"
+    ],
+    "ferocious-loyalty": [
+      "teamwork"
+    ],
+    "fighting-frenzy": [
+      "combat",
+      "teamwork"
+    ],
+    "flow-of-elements": [
+      "teamwork"
+    ],
+    "focusing-blow": [
+      "teamwork"
+    ],
+    "friendly-fire-maneuvers": [
+      "combat",
+      "teamwork"
+    ],
+    "friendly-rivalry": [
+      "combat",
+      "teamwork"
+    ],
+    "giantslaying-team": [
+      "combat",
+      "teamwork"
+    ],
+    "got-your-back": [
+      "combat",
+      "teamwork"
+    ],
+    "group-deliver-touch-spells": [
+      "teamwork"
+    ],
+    "group-shared-spells": [
+      "teamwork"
+    ],
+    "hammer-guards-the-anvil": [
+      "teamwork"
+    ],
+    "harder-they-fall": [
+      "combat",
+      "teamwork"
+    ],
+    "harrying-partners": [
+      "combat",
+      "teamwork"
+    ],
+    "high-magic-focus": [
+      "teamwork"
+    ],
+    "horde-charge": [
+      "teamwork"
+    ],
+    "improved-back-to-back": [
+      "teamwork"
+    ],
+    "improved-disarm-partner": [
+      "combat",
+      "teamwork"
+    ],
+    "improved-duck-and-cover": [
+      "teamwork"
+    ],
+    "improved-feint-partner": [
+      "combat",
+      "teamwork"
+    ],
+    "improved-outflank": [
+      "combat",
+      "teamwork"
+    ],
+    "improved-precise-strike": [
+      "combat",
+      "teamwork"
+    ],
+    "improved-spell-sharing": [
+      "teamwork"
+    ],
+    "improved-swap-places": [
+      "combat",
+      "teamwork"
+    ],
+    "improved-underhanded-teamwork": [
+      "combat",
+      "teamwork"
+    ],
+    "inspiring-talent": [
+      "teamwork"
+    ],
+    "intercept-charge": [
+      "combat",
+      "teamwork"
+    ],
+    "interweave-composite-blast": [
+      "combat",
+      "teamwork"
+    ],
+    "joined-wings": [
+      "teamwork"
+    ],
+    "juju-way": [
+      "teamwork"
+    ],
+    "knotted-nets": [
+      "combat",
+      "teamwork"
+    ],
+    "lastwall-phalanx": [
+      "teamwork"
+    ],
+    "linnorm-hunter-coordination": [
+      "combat",
+      "teamwork"
+    ],
+    "linnorm-hunter-retreat": [
+      "combat",
+      "teamwork"
+    ],
+    "linnorm-hunter-style": [
+      "combat",
+      "teamwork"
+    ],
+    "living-fortress": [
+      "teamwork"
+    ],
+    "lookout": [
+      "combat",
+      "teamwork"
+    ],
+    "loyal-to-the-death": [
+      "teamwork"
+    ],
+    "metamagical-synergy": [
+      "teamwork"
+    ],
+    "mirror-kin": [
+      "teamwork"
+    ],
+    "my-blade-is-yours": [
+      "combat",
+      "teamwork"
+    ],
+    "mystical-reverberation": [
+      "teamwork"
+    ],
+    "one-mind": [
+      "teamwork"
+    ],
+    "open-up": [
+      "combat",
+      "teamwork"
+    ],
+    "out-of-the-sun": [
+      "teamwork"
+    ],
+    "outflank": [
+      "combat",
+      "teamwork"
+    ],
+    "overwhelm": [
+      "combat",
+      "teamwork"
+    ],
+    "pack-attack": [
+      "combat",
+      "teamwork"
+    ],
+    "pack-flanking": [
+      "combat",
+      "teamwork"
+    ],
+    "pack-intimidation": [
+      "combat",
+      "teamwork"
+    ],
+    "paired-opportunists": [
+      "combat",
+      "teamwork"
+    ],
+    "passing-grace": [
+      "teamwork"
+    ],
+    "piercing-gambit": [
+      "teamwork"
+    ],
+    "precise-strike": [
+      "combat",
+      "teamwork"
+    ],
+    "protective-line": [
+      "combat",
+      "teamwork"
+    ],
+    "punch-through": [
+      "combat",
+      "teamwork"
+    ],
+    "pursuit-of-glory": [
+      "combat",
+      "teamwork"
+    ],
+    "quah-bond": [
+      "teamwork"
+    ],
+    "rat-stack": [
+      "combat",
+      "teamwork"
+    ],
+    "relentless-cheer": [
+      "teamwork"
+    ],
+    "rending-swarm": [
+      "combat",
+      "teamwork"
+    ],
+    "returning-throw": [
+      "combat",
+      "teamwork"
+    ],
+    "ruthless-opportunist": [
+      "combat",
+      "teamwork"
+    ],
+    "sacrificial-aid": [
+      "teamwork"
+    ],
+    "scarred-legion": [
+      "teamwork"
+    ],
+    "scion-of-the-land": [
+      "teamwork"
+    ],
+    "scion-of-the-lost-empire": [
+      "teamwork"
+    ],
+    "secret-language": [
+      "teamwork"
+    ],
+    "seeping-darkness": [
+      "teamwork"
+    ],
+    "seize-the-moment": [
+      "combat",
+      "teamwork"
+    ],
+    "shake-it-off": [
+      "teamwork"
+    ],
+    "share-healing": [
+      "teamwork"
+    ],
+    "share-spells": [
+      "teamwork"
+    ],
+    "shared-ownership": [
+      "teamwork"
+    ],
+    "shared-remembrance": [
+      "teamwork"
+    ],
+    "shared-stash": [
+      "teamwork"
+    ],
+    "shield-wall": [
+      "combat",
+      "teamwork"
+    ],
+    "shielded-caster": [
+      "teamwork"
+    ],
+    "snapping-flank": [
+      "combat",
+      "teamwork"
+    ],
+    "special-delivery": [
+      "teamwork"
+    ],
+    "spell-bluff-ah": [
+      "teamwork"
+    ],
+    "spell-chain": [
+      "teamwork"
+    ],
+    "spell-synergy": [
+      "teamwork"
+    ],
+    "spirit-of-the-corps": [
+      "combat",
+      "teamwork"
+    ],
+    "squirming-pile": [
+      "combat",
+      "teamwork"
+    ],
+    "stealth-synergy": [
+      "teamwork"
+    ],
+    "stick-together": [
+      "combat",
+      "teamwork"
+    ],
+    "stone-dodger": [
+      "teamwork"
+    ],
+    "suppress-regeneration": [
+      "combat",
+      "teamwork"
+    ],
+    "suppressive-fire": [
+      "combat",
+      "teamwork"
+    ],
+    "swap-places": [
+      "combat",
+      "teamwork"
+    ],
+    "swarm-scatter": [
+      "teamwork"
+    ],
+    "swarm-strike": [
+      "teamwork"
+    ],
+    "swing-about": [
+      "teamwork"
+    ],
+    "tag-team-interrogation": [
+      "teamwork"
+    ],
+    "take-the-hit": [
+      "teamwork"
+    ],
+    "take-this": [
+      "teamwork"
+    ],
+    "tandem-evasion": [
+      "combat",
+      "teamwork"
+    ],
+    "tandem-trip": [
+      "combat",
+      "teamwork"
+    ],
+    "target-of-opportunity": [
+      "combat",
+      "teamwork"
+    ],
+    "team-pickpocketing": [
+      "teamwork"
+    ],
+    "thrune-trusted-agent": [
+      "teamwork"
+    ],
+    "thuvian-grenadier": [
+      "teamwork"
+    ],
+    "timely-coordination": [
+      "teamwork"
+    ],
+    "topple-foe": [
+      "combat",
+      "teamwork"
+    ],
+    "trade-initiative": [
+      "teamwork"
+    ],
+    "triangulate": [
+      "teamwork"
+    ],
+    "tribal-hunter": [
+      "combat",
+      "teamwork"
+    ],
+    "tribe-mentality": [
+      "teamwork"
+    ],
+    "umbral-shift": [
+      "teamwork"
+    ],
+    "underhanded-teamwork": [
+      "combat",
+      "teamwork"
+    ],
+    "undermine": [
+      "teamwork"
+    ],
+    "unspoken-bond": [
+      "teamwork"
+    ],
+    "unusual-heritage-changeling": [
+      "teamwork"
+    ],
+    "usurpers-guard": [
+      "teamwork"
+    ],
+    "volley-fire": [
+      "combat",
+      "teamwork"
+    ],
+    "wall-of-flesh": [
+      "teamwork"
+    ],
+    "wounded-paw-gambit": [
+      "combat",
+      "teamwork"
+    ]
+  }
+}
