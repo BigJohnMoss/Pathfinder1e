@@ -130,6 +130,7 @@ export interface ActiveEffect {
   fastHealing?: number;
   regeneration?: number;
   weaponIds?: string[];
+  grantedFeatIds?: string[];
   weaponEnhancementBonus?: boolean;
   skillIds?: string[];
   damageType?: string;
@@ -185,6 +186,7 @@ export interface ClassFeatureOccurrence {
     spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week"; kind?: "spell-like" | "spell-equivalent" };
     resourceId?: string;
     cost?: number;
+    costPerSelectedFeat?: boolean;
     variableCost?: { label: string; minimum: number; maximum?: number };
     costs?: Array<{ resourceId: string; cost: number }>;
     changes?: Array<{ resourceId: string; usedDelta: number }>;
@@ -209,10 +211,12 @@ export interface ClassFeatureOccurrence {
       enemySaveModifier: "fortitude" | "reflex" | "will";
     };
     modeLabel?: string;
-    modes?: Array<{ id: string; label: string; summary: string; minimumLevel?: number; defaultRounds?: number; featCount?: number; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
+    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
     featSelection?: {
       label: string;
       featType: string;
+      source?: "known" | "catalogue";
+      additionalFeatIds?: string[];
       countByLevel: Array<{ level: number; count: number }>;
       minimumCount?: number;
     };

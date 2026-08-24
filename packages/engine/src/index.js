@@ -11,6 +11,7 @@ import { inferArchetypeChannelEnergyActions, inferredArchetypeChannelEnergyActio
 import { inferArchetypeResourceDamageActions, inferredArchetypeResourceDamageActionDetails } from "./archetype-resource-damage.js";
 import { inferArchetypeSaveEffectActions, inferredArchetypeSaveEffectActionDetails } from "./archetype-save-effects.js";
 import { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions, inferredArchetypeTeamworkSharingDetails } from "./archetype-teamwork-sharing.js";
+import { inferArchetypeMartialFlexibilityActions, inferredArchetypeMartialFlexibilityDetails } from "./archetype-martial-flexibility.js";
 import { inferArchetypeRemovesSpellcasting, inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProfile, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails, inferredArchetypeSpellcastingRemovalDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
@@ -50,7 +51,7 @@ export { inferArchetypeTimedEffectActions };
 export { inferArchetypeChannelEnergyActions };
 export { inferArchetypeResourceDamageActions };
 export { inferArchetypeSaveEffectActions };
-export { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions };
+export { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions, inferArchetypeMartialFlexibilityActions };
 export { inferArchetypeSpellcastingAbility };
 export { inferArchetypeSpellcastingProfile };
 export { inferArchetypeSpellcastingProgression };
@@ -1151,6 +1152,9 @@ export function normalizeCharacterDraft(
             ...(Array.isArray(effect.weaponIds)
               ? { weaponIds: [...new Set(effect.weaponIds.filter((id) => typeof id === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)))].slice(0, 10) }
               : {}),
+            ...(Array.isArray(effect.grantedFeatIds)
+              ? { grantedFeatIds: [...new Set(effect.grantedFeatIds.filter((id) => typeof id === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)))].slice(0, 20) }
+              : {}),
             ...(effect.weaponEnhancementBonus === true ? { weaponEnhancementBonus: true } : {}),
             ...(Array.isArray(effect.skillIds)
               ? { skillIds: [...new Set(effect.skillIds.filter((id) => typeof id === "string" && /^[A-Za-z][A-Za-z ()]+$/.test(id)))].slice(0, 10) }
@@ -1254,6 +1258,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     ...inferArchetypeResourceDamageActions(archetype),
     ...inferArchetypeSaveEffectActions(archetype),
     ...inferArchetypeTeamworkSharingActions(archetype),
+    ...inferArchetypeMartialFlexibilityActions(archetype),
   ];
   const specializedFeatureIds = new Set(specializedResourceActions.map(({ sourceFeatureId }) => sourceFeatureId));
   const inferredResourceActions = new Map();
@@ -2009,6 +2014,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   const inferredFeatChoiceDetails = inferredArchetypeFeatChoiceDetails(archetype, feats);
   const inferredFeatAlternativeDetails = inferredArchetypeFeatAlternativeDetails(archetype, feats);
   const teamworkSharingDetails = inferredArchetypeTeamworkSharingDetails(archetype);
+  const martialFlexibilityDetails = inferredArchetypeMartialFlexibilityDetails(archetype);
   const temporaryHitPointActionDetails = inferredArchetypeTemporaryHitPointActionDetails(archetype);
   const rerollActionDetails = inferredArchetypeRerollActionDetails(archetype);
   const ruleSentenceCoverage = [
@@ -2034,6 +2040,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ["bonus feat choices", inferredFeatChoiceDetails.sentenceCoverage ?? []],
     ["feat alternatives", inferredFeatAlternativeDetails.sentenceCoverage ?? []],
     ["teamwork feat sharing", teamworkSharingDetails.sentenceCoverage ?? []],
+    ["martial flexibility", martialFlexibilityDetails.sentenceCoverage ?? []],
     ["temporary hit points", temporaryHitPointActionDetails.sentenceCoverage ?? []],
     ["rerolls", rerollActionDetails.sentenceCoverage ?? []],
     ["favored terrain", favoredTerrainChoiceDetails.sentenceCoverage ?? []],
@@ -2102,6 +2109,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     automated.push(`${teamworkSharingDetails.actions.length} teamwork-feat sharing action${teamworkSharingDetails.actions.length === 1 ? "" : "s"}`);
   if (teamworkSharingDetails.passiveSharings.length)
     automated.push(`${teamworkSharingDetails.passiveSharings.length} automatic companion teamwork-feat sharing rule${teamworkSharingDetails.passiveSharings.length === 1 ? "" : "s"}`);
+  if (martialFlexibilityDetails.actions.length)
+    automated.push(`${martialFlexibilityDetails.actions.length} catalogue-driven martial-flexibility action${martialFlexibilityDetails.actions.length === 1 ? "" : "s"}`);
   const specializedResourceFeatureIds = new Set([
     ...temporaryHitPointActionDetails.actions,
     ...rerollActionDetails.actions,
@@ -2112,6 +2121,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...resourceDamageActionDetails.actions,
     ...saveEffectActionDetails.actions,
     ...teamworkSharingDetails.actions,
+    ...martialFlexibilityDetails.actions,
   ].map(({ sourceFeatureId }) => sourceFeatureId));
   const genericResourceActionDetails = inferredArchetypeResourceActionDetails(archetype, specializedResourceFeatureIds);
   if (genericResourceActionDetails.actions.length)
@@ -2152,6 +2162,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...resourceDamageActionDetails.fullyAutomatedFeatureIds,
     ...saveEffectActionDetails.fullyAutomatedFeatureIds,
     ...teamworkSharingDetails.fullyAutomatedFeatureIds,
+    ...martialFlexibilityDetails.fullyAutomatedFeatureIds,
     ...inferredSpellAccess.fullyAutomatedFeatureIds,
     ...inferredSpellAdditions.fullyAutomatedFeatureIds,
     ...inferredSpellModifiers.fullyAutomatedFeatureIds,
