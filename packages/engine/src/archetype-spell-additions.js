@@ -239,6 +239,22 @@ function oracleBonusSpellEntries(archetype, feature, spells) {
   return unique.length === levelMarkers.length ? unique : [];
 }
 
+function witchPatronReplacementEntries(archetype, feature, spells) {
+  if (archetype?.classId !== "witch" || !/^(?:Patron )?Spells$/i.test(feature?.name ?? "")) return [];
+  const summary = normalizedText(feature.summary);
+  if (!/\breplaces?\b[^.]{0,100}\bpatron(?:'s)? spells? with the following\s*:/i.test(summary)) return [];
+  const headings = [...summary.matchAll(/(?:^|[:,;])\s*(2|4|6|8|10|12|14|16|18)(?:st|nd|rd|th)\s*[-:]/gi)];
+  if (!headings.length) return [];
+  const entries = headings.flatMap((heading, index) => {
+    const classLevel = Number(heading[1]);
+    const start = heading.index + heading[0].length;
+    const end = headings[index + 1]?.index ?? summary.length;
+    const matches = uniqueMatches(spellMatches(summary.slice(start, end), spells));
+    return matches.length === 1 ? [{ spell: matches[0].spell, spellLevel: classLevel / 2, minimumClassLevel: classLevel }] : [];
+  });
+  return entries.length === headings.length ? entries : [];
+}
+
 export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
   const cached = archetype && spells && detailsCache.get(archetype)?.get(spells);
   if (cached) return cached;
@@ -251,6 +267,16 @@ export function inferredArchetypeSpellAdditionDetails(archetype, spells = []) {
   const bonusSpellReplacementClassLevels = new Set();
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     const summary = normalizedText(feature.summary);
+    const witchPatronSpells = witchPatronReplacementEntries(archetype, feature, spells);
+    if (witchPatronSpells.length) {
+      for (const { spell, spellLevel, minimumClassLevel } of witchPatronSpells) {
+        spellGrants.push({ spellId: spell.id, spellLevel, minimumClassLevel, mode: "known", sourceFeatureId: feature.id });
+        bonusSpellReplacementClassLevels.add(minimumClassLevel);
+      }
+      sourceFeatureIds.add(feature.id);
+      fullyAutomatedFeatureIds.add(feature.id);
+      continue;
+    }
     const oracleBonusSpells = oracleBonusSpellEntries(archetype, feature, spells);
     if (oracleBonusSpells.length) {
       for (const { spell, spellLevel, minimumClassLevel } of oracleBonusSpells) {
