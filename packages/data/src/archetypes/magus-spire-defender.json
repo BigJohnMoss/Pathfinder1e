@@ -8,6 +8,24 @@
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
   ],
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "magus-spire-defender-weapon-proficiency-1",
+      "category": "weapon",
+      "operation": "replace",
+      "proficiencies": ["All light simple weapons", "All one-handed simple weapons", "All light martial weapons", "All one-handed martial weapons"]
+    }
+  ],
+  "proficiencyChoices": [
+    {
+      "sourceFeatureId": "magus-spire-defender-weapon-proficiency-1",
+      "category": "weapon",
+      "operation": "add",
+      "featureId": "magus-spire-defender-weapon-proficiency-1",
+      "choiceKey": "weapon",
+      "condition": "must be an exotic light or one-handed melee weapon with the disarm or trip special feature"
+    }
+  ],
   "replacements": [
     {
       "featureIds": [
@@ -20,6 +38,8 @@
           "name": "Weapon Proficiency",
           "level": 1,
           "type": "archetype",
+          "choiceRequired": true,
+          "optionGroupId": "spire-defender-exotic-weapon",
           "summary": "A spire defender is proficient with all light and one-handed simple and martial weapons, as well as one exotic light or one-handed melee weapon that has the disarm or trip special feature. This replaces the magus’s normal weapon proficiencies."
         },
         {

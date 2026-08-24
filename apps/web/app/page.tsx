@@ -82,6 +82,7 @@ import {
   archetypeSkillCheckRules,
   archetypeSpellModifiers,
   archetypeWildEmpathyChecks,
+  archetypeWeaponProficiencyRules,
   applyArchetypeResourceAdjustments,
   applyArchetypes,
   adjustedCompanionLevel,
@@ -1174,6 +1175,10 @@ export default function Home() {
   const selectedArchetypeSkillBonuses = useMemo(
     () => archetypeSkillBonuses(allSelectedArchetypes, classLevelMap),
     [allSelectedArchetypes, classLevelMap],
+  );
+  const selectedArchetypeWeaponProficiencyRules = useMemo(
+    () => archetypeWeaponProficiencyRules(allSelectedArchetypes, selectedOptions),
+    [allSelectedArchetypes, selectedOptions],
   );
   const featSlots = useMemo(
     () =>
@@ -4571,6 +4576,7 @@ export default function Home() {
                 baseAttackBonus={progression.baseAttackBonus}
                 weaponBonuses={selectedFeatBonuses.weaponBonuses}
                 minimumWeaponEnhancements={intrinsicWeaponEnhancements}
+                proficiencyRules={selectedArchetypeWeaponProficiencyRules}
                 inventory={inventory}
                 coins={coins}
                 onInventoryChange={setInventory}

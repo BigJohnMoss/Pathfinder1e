@@ -4,6 +4,23 @@
   "classId": "monk",
   "summary": "Monks of the hellcat sect follow the teachings of Asmodeus or another infernal power.",
   "replacesText": "Alignment; Class Skills; Weapon Proficiencies; Bonus Feats; Stunning Fist; Fast Movement; Evasion; Purity of Body; Improved Evasion; Slow Fall; Still Mind; Ki Pool; Wholeness of Body; Diamond Body",
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "monk-hellcat-weapon-proficiency-1",
+      "category": "weapon",
+      "operation": "replace",
+      "proficiencies": ["Club", "Light crossbow", "Heavy crossbow", "Dagger", "Kama", "Light mace", "Nunchaku", "Quarterstaff", "Light repeating crossbow", "Heavy repeating crossbow", "Sai", "Shuriken", "Siangham"]
+    }
+  ],
+  "weaponUseAdjustments": [
+    {
+      "sourceFeatureId": "monk-hellcat-weapon-proficiency-1",
+      "label": "Flurry of Blows weapon",
+      "use": "flurry-of-blows",
+      "operation": "add",
+      "proficiencies": ["Light mace"]
+    }
+  ],
   "defenseAdjustments": [
     {
       "sourceFeatureId": "monk-hellcat-hellcat-ki-su-4",
