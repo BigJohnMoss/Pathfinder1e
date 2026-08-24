@@ -139,6 +139,8 @@ export function inferArchetypeFavoredEnemyChoices(archetype?: CharacterArchetype
 export function inferredArchetypeFavoredEnemyChoiceDetails(archetype?: CharacterArchetype): { choices: ReturnType<typeof inferArchetypeFavoredEnemyChoices>; fullyAutomatedFeatureIds: Set<string>; sentenceCoverage: Array<{ sourceFeatureId: string; sentenceIndex: number }> };
 export function inferArchetypeNatureBondRules(archetype?: CharacterArchetype): { natureBondOptionIds: string[]; animalCompanionIds: string[]; domainIds: string[] };
 export function inferredArchetypeNatureBondDetails(archetype?: CharacterArchetype): ReturnType<typeof inferArchetypeNatureBondRules> & { fullyAutomatedFeatureIds: Set<string> };
+export function inferArchetypeOmissions(archetype?: CharacterArchetype): Array<{ sourceFeatureId: string; omittedNames: string[] }>;
+export function inferredArchetypeOmissionDetails(archetype?: CharacterArchetype): { omissions: ReturnType<typeof inferArchetypeOmissions>; fullyAutomatedFeatureIds: Set<string> };
 export function inferArchetypeReplacementFeatureIds(characterClass: CharacterClass, archetype?: CharacterArchetype): string[];
 export function inferArchetypeSpellAdditions(archetype?: CharacterArchetype, spells?: CharacterSpell[]): { spellListAdditions: Record<string, number>; bonusSpellAdditions: Record<string, number>; spellGrants: NonNullable<CharacterArchetype["spellGrants"]>; bonusSpellReplacementClassLevels: number[] };
 export function inferArchetypeSpellAccess(archetype?: CharacterArchetype, spells?: CharacterSpell[]): { spellListAdditions: Record<string, number>; spellListExclusions: string[] };
