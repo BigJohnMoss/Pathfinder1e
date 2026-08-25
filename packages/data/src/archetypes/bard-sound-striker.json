@@ -21,14 +21,315 @@
           "name": "Errata",
           "level": 1,
           "type": "archetype",
-          "summary": "Link They say that words can cut deeper than any blade, and the sound striker proves this true. Using music and words as a weapon, he can focus his performances into a deadly delivery."
+          "summary": "The current errata is incorporated into Wordstrike and Weird Words below; this introductory text has no separate mechanical effect."
         },
         {
           "id": "bard-sound-striker-bardic-performance-3",
           "name": "Bardic Performance",
           "level": 3,
           "type": "archetype",
-          "summary": "A sound striker gains the following type of bardic performance. Neither performance can be performed more quickly than a standard action. Wordstrike (Su) : At 3rd level, the sound striker bard can spend 1 round of bardic performance as a standard action to direct a burst of sonically charged words at a creature or object. This performance deals 1d4 points of damage plus the bard’s level to an object, or half this damage to a living creature. This performance replaces inspire competence. Weird Words (Su) : At 6th level the bard can start a performance that is always a standard action to speak up to one word per 4 bard levels laden with sonic energy. Each word deals 4d6 points of sonic damage as a ranged touch attack with a range of 30 feet. The bard adds his charisma modifier on damage rolls with weird words. Multiple words that strike the same target stack into a single powerful attack, applying energy resistance and bonuses on damage rolls only once. The bard can target all words at the same or different targets, but he unleashes all words simultaneously. Each word costs 1 round of bardic performance. This performance replaces suggestion ."
+          "summary": "A sound striker gains the following type of bardic performance. Neither performance can be performed more quickly than a standard action. Wordstrike (Su) : At 3rd level, the sound striker bard can spend 1 round of bardic performance as a standard action to direct a burst of sonically charged words at a creature or object. This performance deals 1d4 points of damage plus the bard’s level to an object, or half this damage to a living creature. This performance replaces inspire competence. Weird Words (Su) : At 6th level the bard can start a performance that is always a standard action to speak up to one word per 4 bard levels laden with sonic energy. Each word deals 4d6 points of sonic damage as a ranged touch attack with a range of 30 feet. The bard adds his charisma modifier on damage rolls with weird words. Multiple words that strike the same target stack into a single powerful attack, applying energy resistance and bonuses on damage rolls only once. The bard can target all words at the same or different targets, but he unleashes all words simultaneously. Each word costs 1 round of bardic performance. This performance replaces suggestion .",
+          "resourceActions": [
+            {
+              "id": "sound-striker-wordstrike-object",
+              "label": "Wordstrike — object",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                }
+              ],
+              "combatRoll": {
+                "damage": {
+                  "type": "untyped",
+                  "diceCountByLevel": [
+                    {
+                      "level": 3,
+                      "count": 1
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 3,
+                      "sides": 4
+                    }
+                  ],
+                  "flatModifierByLevel": [
+                    {
+                      "level": 3,
+                      "modifier": 3
+                    },
+                    {
+                      "level": 4,
+                      "modifier": 4
+                    },
+                    {
+                      "level": 5,
+                      "modifier": 5
+                    },
+                    {
+                      "level": 6,
+                      "modifier": 6
+                    },
+                    {
+                      "level": 7,
+                      "modifier": 7
+                    },
+                    {
+                      "level": 8,
+                      "modifier": 8
+                    },
+                    {
+                      "level": 9,
+                      "modifier": 9
+                    },
+                    {
+                      "level": 10,
+                      "modifier": 10
+                    },
+                    {
+                      "level": 11,
+                      "modifier": 11
+                    },
+                    {
+                      "level": 12,
+                      "modifier": 12
+                    },
+                    {
+                      "level": 13,
+                      "modifier": 13
+                    },
+                    {
+                      "level": 14,
+                      "modifier": 14
+                    },
+                    {
+                      "level": 15,
+                      "modifier": 15
+                    },
+                    {
+                      "level": 16,
+                      "modifier": 16
+                    },
+                    {
+                      "level": 17,
+                      "modifier": 17
+                    },
+                    {
+                      "level": 18,
+                      "modifier": 18
+                    },
+                    {
+                      "level": 19,
+                      "modifier": 19
+                    },
+                    {
+                      "level": 20,
+                      "modifier": 20
+                    }
+                  ]
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 3,
+                    "range": "targeted creature or object"
+                  }
+                ]
+              },
+              "summary": "Spend one performance round to deal 1d4 + Bard level damage to an object."
+            },
+            {
+              "id": "sound-striker-wordstrike-living",
+              "label": "Wordstrike — living creature",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                }
+              ],
+              "diceRoll": {
+                "label": "Half Wordstrike damage",
+                "diceCountByLevel": [
+                  {
+                    "level": 3,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 3,
+                    "sides": 4
+                  }
+                ],
+                "flatModifierByLevel": [
+                  {
+                    "level": 3,
+                    "modifier": 3
+                  },
+                  {
+                    "level": 4,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 5,
+                    "modifier": 5
+                  },
+                  {
+                    "level": 6,
+                    "modifier": 6
+                  },
+                  {
+                    "level": 7,
+                    "modifier": 7
+                  },
+                  {
+                    "level": 8,
+                    "modifier": 8
+                  },
+                  {
+                    "level": 9,
+                    "modifier": 9
+                  },
+                  {
+                    "level": 10,
+                    "modifier": 10
+                  },
+                  {
+                    "level": 11,
+                    "modifier": 11
+                  },
+                  {
+                    "level": 12,
+                    "modifier": 12
+                  },
+                  {
+                    "level": 13,
+                    "modifier": 13
+                  },
+                  {
+                    "level": 14,
+                    "modifier": 14
+                  },
+                  {
+                    "level": 15,
+                    "modifier": 15
+                  },
+                  {
+                    "level": 16,
+                    "modifier": 16
+                  },
+                  {
+                    "level": 17,
+                    "modifier": 17
+                  },
+                  {
+                    "level": 18,
+                    "modifier": 18
+                  },
+                  {
+                    "level": 19,
+                    "modifier": 19
+                  },
+                  {
+                    "level": 20,
+                    "modifier": 20
+                  }
+                ],
+                "resultDivisorByMode": [
+                  {
+                    "modeId": "living",
+                    "divisor": 2
+                  }
+                ],
+                "modeEffects": [
+                  {
+                    "modeId": "living",
+                    "kind": "damage"
+                  }
+                ]
+              },
+              "modes": [
+                {
+                  "id": "living",
+                  "label": "Living creature (half damage)",
+                  "summary": "Divide the rolled Wordstrike damage by two for a living creature."
+                }
+              ],
+              "summary": "Spend one performance round; a living creature takes half of 1d4 + Bard level damage."
+            },
+            {
+              "id": "sound-striker-weird-words",
+              "label": "Unleash Weird Words",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "variableCost": {
+                "label": "Words",
+                "minimum": 1,
+                "maximumLevelDivisor": 4
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Targeting",
+              "modes": [
+                {
+                  "id": "different-targets",
+                  "label": "Different targets",
+                  "summary": "Each word resolves separately and adds Charisma to its damage."
+                },
+                {
+                  "id": "same-target",
+                  "label": "Same target",
+                  "summary": "Successful words stack; energy resistance and Charisma apply only once."
+                }
+              ],
+              "combatRoll": {
+                "attack": {
+                  "kind": "ranged-touch",
+                  "label": "Ranged touch attack"
+                },
+                "attackCountFromVariableCost": true,
+                "abilityModifierOnceModeIds": [
+                  "same-target"
+                ],
+                "damage": {
+                  "type": "sonic",
+                  "diceCountByLevel": [
+                    {
+                      "level": 3,
+                      "count": 4
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 3,
+                      "sides": 6
+                    }
+                  ],
+                  "abilityModifier": "charisma"
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 3,
+                    "range": "30 feet"
+                  }
+                ]
+              },
+              "summary": "Choose up to one word per four Bard levels. Each word costs one performance round and makes its own ranged touch attack for 4d6 sonic damage; target grouping controls whether Charisma applies once or per target."
+            }
+          ]
         }
       ]
     }
@@ -38,8 +339,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Sound%20Striker"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Current errata is incorporated. Wordstrike object and living-target damage and simultaneous Weird Words costs, attack rolls, range, and damage are automated."
   ]
 }
