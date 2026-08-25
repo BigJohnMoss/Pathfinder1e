@@ -480,7 +480,7 @@ export interface CharacterClass {
   optionGroupAugmentations?: OptionGroupAugmentation[];
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
-    tradition?: "arcane" | "divine";
+    tradition?: "arcane" | "divine" | "psychic" | "alchemy";
     castingType: "prepared" | "spontaneous";
     slotsByLevel: number[][];
     preparedByLevel?: number[][];

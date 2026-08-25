@@ -11,7 +11,7 @@ import { inferArchetypeChannelEnergyActions, inferredArchetypeChannelEnergyActio
 import { inferArchetypeResourceDamageActions, inferredArchetypeResourceDamageActionDetails } from "./archetype-resource-damage.js";
 import { inferArchetypeSaveEffectActions, inferredArchetypeSaveEffectActionDetails } from "./archetype-save-effects.js";
 import { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions, inferredArchetypeTeamworkSharingDetails } from "./archetype-teamwork-sharing.js";
-import { inferArchetypeRemovesSpellcasting, inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails, inferredArchetypeSpellcastingRemovalDetails } from "./archetype-spellcasting.js";
+import { inferArchetypeRemovesSpellcasting, inferArchetypeSpellcastingAbility, inferArchetypeSpellcastingProfile, inferArchetypeSpellcastingProgression, inferredArchetypeSpellcastingAbilityDetails, inferredArchetypeSpellcastingRemovalDetails } from "./archetype-spellcasting.js";
 import { inferArchetypeSpellAdditions, inferredArchetypeSpellAdditionDetails } from "./archetype-spell-additions.js";
 import { inferArchetypeSpellAccess, inferredArchetypeSpellAccessDetails } from "./archetype-spell-access.js";
 import { archetypeSpellModifiers, inferArchetypeSpellModifiers, inferredArchetypeSpellModifierDetails } from "./archetype-spell-modifiers.js";
@@ -52,6 +52,7 @@ export { inferArchetypeResourceDamageActions };
 export { inferArchetypeSaveEffectActions };
 export { inferArchetypePassiveTeamworkSharings, inferArchetypeTeamworkSharingActions };
 export { inferArchetypeSpellcastingAbility };
+export { inferArchetypeSpellcastingProfile };
 export { inferArchetypeSpellcastingProgression };
 export { inferArchetypeRemovesSpellcasting, inferredArchetypeSpellcastingRemovalDetails };
 export { inferArchetypeSpellAdditions };
@@ -1313,7 +1314,7 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     ? table
     : table.map((row, index) => index + 1 < spellcastingMinimumLevel ? row.map(() => 0) : row);
   const spellcastingAbility = archetype.spellcastingAbility
-    ?? (inferredSpellcastingAbility && inferredSpellcastingAbility.replacesAbility === characterSpellcasting?.ability
+    ?? (inferredSpellcastingAbility && (inferredSpellcastingAbility.directAbility || inferredSpellcastingAbility.replacesAbility === characterSpellcasting?.ability)
       ? inferredSpellcastingAbility.ability
       : undefined);
   const preparedAdjustment = archetype.preparedSpellAdjustmentPerLevel ??
@@ -1401,6 +1402,8 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
       ? {
           ...baseSpellcasting,
           ability: spellcastingAbility ?? characterSpellcasting?.ability ?? baseSpellcasting.ability,
+          castingType: inferredSpellcastingAbility?.castingType ?? baseSpellcasting.castingType,
+          tradition: inferredSpellcastingAbility?.tradition ?? spellcastingTradition(characterClass) ?? baseSpellcasting.tradition,
           slotsByLevel: gateTable(adjustTable(baseSpellcasting.slotsByLevel, archetype.spellSlotAdjustmentPerLevel)),
           preparedByLevel: gateTable(adjustTable(baseSpellcasting.preparedByLevel, preparedAdjustment)),
           knownByLevel: gateTable(adjustTable(baseSpellcasting.knownByLevel, archetype.spellsKnownAdjustmentPerLevel)),
@@ -1925,6 +1928,8 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
   if (spellcastingProgressionClassId) automated.push(`Spellcasting progression: ${spellcastingProgressionClassId}`);
   const spellListClassId = archetype.spellListClassId ?? inferredSpellcastingAbility?.spellListClassId;
   if (spellListClassId) automated.push(`Spell list: ${spellListClassId}`);
+  if (inferredSpellcastingAbility?.castingType) automated.push(`Casting type: ${inferredSpellcastingAbility.castingType}`);
+  if (inferredSpellcastingAbility?.tradition) automated.push(`Spellcasting tradition: ${inferredSpellcastingAbility.tradition}`);
   if (archetype.wildShapeLevelAdjustment) automated.push("Wild shape effective level");
   if (archetype.druidDomainIds?.length) automated.push("Available druid domains");
   if (archetype.rangerCombatStyleIds?.length) automated.push("Available ranger combat styles");
@@ -2118,6 +2123,7 @@ export function archetypeAutomationSummary(archetype, feats = [], spells = []) {
     ...natureBondDetails.fullyAutomatedFeatureIds,
     ...omissionDetails.fullyAutomatedFeatureIds,
     ...spellcastingRemovalDetails.fullyAutomatedFeatureIds,
+    ...(inferredSpellcastingAbility?.fullyAutomatedFeatureIds ?? []),
     ...(archetype.conditionalModifiers ?? []).map(adjustment => adjustment.sourceFeatureId),
     ...initiativeBonusDetails.fullyAutomatedFeatureIds,
     ...saveBonusDetails.fullyAutomatedFeatureIds,
