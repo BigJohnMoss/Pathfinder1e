@@ -6,12 +6,13 @@ const spellcastingRule = new RegExp(
 );
 
 const normalizedAbility = (value) => String(value ?? "").toLowerCase();
-const normalizedClassId = (value) => String(value ?? "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").replace(/-class$/, "");
+const normalizedClassId = (value) => String(value ?? "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").replace(/-(?:acg|apg|arg|ha|iswg|oa|pcs|uc|ui|um)$/, "").replace(/-class$/, "");
 
 const progressionRules = [
   /\b(?:same number of spell slots per day|same number of spells known and spells per day) as (?:an?|the) ([a-z][a-z -]+?)(?:\s*\([^)]*\))? of (?:his|her|their|its|the) [^.]*?level\b/i,
   /\bbase daily spell allotment is the same as (?:an?|the) ([a-z][a-z -]+?)(?:\s*\([^)]*\))? of the same level\b/i,
   /\b(?:knows? the same number of spells and receives? the same number of spells? slots per day) as (?:an?|the) ([a-z][a-z -]+?)(?:\s*\([^)]*\))? of (?:his|her|their|its|the) [^.]*?level\b/i,
+  /\busing the spells known and spells per day from (?:the )?([a-z][a-z -]+?) progression table\b/i,
 ];
 const spellListRule = /\b(?:casts?(?: arcane| divine| psychic)? spells (?:(?:spontaneously|drawn) )?from|prepares? spells from) the ([a-z]+(?:[ /-][a-z]+){0,2}?) (?:spell )?list\b/i;
 const directAbilityRule = new RegExp(
@@ -39,6 +40,7 @@ function explicitlyChangesSpellcasting(trailingText) {
 export function inferredArchetypeSpellcastingAbilityDetails(archetype) {
   let details;
   const fullyAutomatedFeatureIds = new Set();
+  const sentenceCoverage = [];
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
     const summary = String(feature.summary ?? "").replace(/\s+/g, " ");
     const match = summary.match(spellcastingRule);
@@ -57,7 +59,7 @@ export function inferredArchetypeSpellcastingAbilityDetails(archetype) {
     };
     const progression = progressionRules.map((rule) => summary.match(rule)).find(Boolean);
     const spellList = summary.match(spellListRule);
-    const castingType = /\bcan cast any spell (?:he|she|they) knows? without preparing it ahead of time\b/i.test(summary)
+    const castingType = /\bcasts? (?:arcane |divine |psychic )?spells spontaneously\b/i.test(summary) || /\bcan cast any spell (?:he|she|they) knows? without preparing it ahead of time\b/i.test(summary)
       ? "spontaneous"
       : /\bmust prepare (?:his|her|their) spells ahead of time\b/i.test(summary)
         ? "prepared"
@@ -68,16 +70,30 @@ export function inferredArchetypeSpellcastingAbilityDetails(archetype) {
       ...details,
       ...(progression ? {
         progressionClassId: normalizedClassId(progression[1]),
-        minimumLevel: spellcastingMinimumLevel(summary),
+        minimumLevel: /\busing the spells known and spells per day from\b/i.test(progression[0])
+          ? feature.level ?? 1
+          : spellcastingMinimumLevel(summary),
       } : {}),
       ...(spellList ? { spellListClassId: normalizedClassId(spellList[1]) } : {}),
       ...(castingType ? { castingType } : {}),
       ...(tradition ? { tradition } : {}),
       sourceFeatureId: feature.id,
     };
+    if (match || directAbility || progression || spellList || castingType || tradition) {
+      const sentences = String(feature.summary ?? "").split(/(?<=[.!?])\s+/);
+      for (const [sentenceIndex, sentence] of sentences.entries()) {
+        if (spellcastingRule.test(sentence) || directAbilityRule.test(sentence) || progressionRules.some((rule) => rule.test(sentence)) || spellListRule.test(sentence) ||
+          /\bcasts? (?:arcane |divine |psychic )?spells spontaneously\b/i.test(sentence) ||
+          /\bcan cast any spell (?:he|she|they) knows? without preparing it ahead of time\b/i.test(sentence) ||
+          /\bmust prepare (?:his|her|their) spells ahead of time\b/i.test(sentence) ||
+          /\bcasts? (?:spells?[^.]{0,100}? as |)(?:arcane|divine|psychic) spells\b/i.test(sentence) ||
+          /\bspells are considered (?:arcane|divine|psychic) spells\b/i.test(sentence))
+          sentenceCoverage.push({ sourceFeatureId: feature.id, sentenceIndex });
+      }
+    }
     if (completeProfileArchetypeIds.has(archetype?.id) && /^Spells$/i.test(feature.name ?? "")) fullyAutomatedFeatureIds.add(feature.id);
   }
-  return details ? { ...details, fullyAutomatedFeatureIds } : undefined;
+  return details ? { ...details, fullyAutomatedFeatureIds, sentenceCoverage } : undefined;
 }
 
 export function inferArchetypeSpellcastingAbility(archetype) {

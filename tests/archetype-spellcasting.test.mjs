@@ -118,6 +118,25 @@ test("complete alternate spellcasting profiles apply list, progression, ability,
   }
 });
 
+test("Pearl Seeker uses gated Bloodrager spontaneous progression and its Paladin spell additions", () => {
+  const selected = archetype("paladin-pearl-seeker");
+  assert.deepEqual(inferArchetypeSpellcastingProfile(selected), {
+    progressionClassId: "bloodrager",
+    minimumLevel: 7,
+    castingType: "spontaneous",
+    tradition: "divine",
+  });
+  const applied = applyArchetype(characterClass("paladin"), selected, data.classes, data.spells);
+  assert.equal(applied.spellcasting?.castingType, "spontaneous");
+  assert.equal(spellcastingTradition(applied), "divine");
+  assert.deepEqual(spontaneousSpellcastingProgression(applied, 6, { abilityScore: 18 })?.slots, []);
+  assert.deepEqual(
+    spontaneousSpellcastingProgression(applied, 7, { abilityScore: 18 })?.slots,
+    spontaneousSpellcastingProgression(characterClass("bloodrager"), 7, { abilityScore: 18 })?.slots,
+  );
+  assert.equal(archetypeAutomationSummary(selected, data.feats, data.spells).manual.includes("Vision Magic (level 7)"), false);
+});
+
 test("partially covered spellcasting profiles retain unmodeled spell-table rules", () => {
   const selected = archetype("investigator-psychic-detective");
   const applied = applyArchetype(characterClass("investigator"), selected, data.classes, data.spells);
@@ -147,6 +166,7 @@ test("alternate spellcasting progression inference is bounded to exact catalogue
     "investigator-questioner",
     "magus-eldritch-scion",
     "magus-mindblade",
+    "paladin-pearl-seeker",
     "ranger-dandy",
     "witch-ley-line-guardian",
   ]);
