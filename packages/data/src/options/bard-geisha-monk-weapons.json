@@ -1,0 +1,35 @@
+{
+  "id": "bard-geisha-monk-weapons",
+  "name": "Geisha Monk Weapon",
+  "classIds": [
+    "bard"
+  ],
+  "options": [
+    {
+      "id": "bard-geisha-monk-weapon",
+      "name": "Chosen monk weapon",
+      "groupId": "bard-geisha-monk-weapons",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Gain proficiency with one weapon that has the monk special weapon quality.",
+      "choice": {
+        "key": "weapon",
+        "label": "Monk weapon",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+  }
+}

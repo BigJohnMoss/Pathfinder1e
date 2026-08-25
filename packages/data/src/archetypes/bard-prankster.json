@@ -20,14 +20,298 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A prankster’s bardic performance functions like a bard’s, but some of its performances are exchanged for those listed below. Mock (Su) : At 1st level, the prankster can use his performance to cause one or more creatures to become furious with him. Each creature to be mocked must be within 90 feet, able to see, hear, and understand the prankster, and capable of paying attention to him. The prankster must also be able to see the creatures affected. For every three levels the prankster has attained beyond 1st, he can target one additional creature with this ability. Each creature within range receives a Will save (DC 10 + 1/2 the prankster’s level + the prankster’s Charisma modifier) to negate the effect. If a creature’s saving throw succeeds, the prankster cannot successfully mock that creature for 24 hours. If its saving throw fails, the creature is angered by the performance and seeks to harm the prankster. While the prankster maintains the mocking, the target takes a –2 penalty on all attack rolls and skill checks until it has successfully attacked the prankster with a melee or ranged attack, or has harmed the creature with a spell that deals damage. Mock is an enchantment (compulsion) mind-affecting ability. Mock relies on audible and visual components in order to function. This ability replaces fascinate. Punchline (Sp) : At 6th level, the prankster can use his performance to tell a punchline to amuse a creature he has already mocked (see above), goading it into hideous laughter (as the spell). Using this ability does not disrupt the mock effect, but it does require a standard action to activate (in addition to the free action to continue the mock effect). A prankster can use this ability more than once against an individual creature during an individual performance. Telling a punchline does not count against a prankster’s daily use of bardic performance. A Will saving throw (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) negates the effect. This ability affects only a single creature. Punchline is an enchantment (compulsion), mind affecting, language-dependent ability and relies on audible components. This ability replaces the suggestion ability. Mass Punchline (Sp) : This ability functions just like punchline, but allows a prankster of 18th level or higher to use hideous laughter simultaneously against any number of creatures that he has mocked. This ability replaces the mass suggestion ability."
+          "summary": "A prankster’s bardic performance functions like a bard’s, but some of its performances are exchanged for those listed below. Mock (Su) : At 1st level, the prankster can use his performance to cause one or more creatures to become furious with him. Each creature to be mocked must be within 90 feet, able to see, hear, and understand the prankster, and capable of paying attention to him. The prankster must also be able to see the creatures affected. For every three levels the prankster has attained beyond 1st, he can target one additional creature with this ability. Each creature within range receives a Will save (DC 10 + 1/2 the prankster’s level + the prankster’s Charisma modifier) to negate the effect. If a creature’s saving throw succeeds, the prankster cannot successfully mock that creature for 24 hours. If its saving throw fails, the creature is angered by the performance and seeks to harm the prankster. While the prankster maintains the mocking, the target takes a –2 penalty on all attack rolls and skill checks until it has successfully attacked the prankster with a melee or ranged attack, or has harmed the creature with a spell that deals damage. Mock is an enchantment (compulsion) mind-affecting ability. Mock relies on audible and visual components in order to function. This ability replaces fascinate. Punchline (Sp) : At 6th level, the prankster can use his performance to tell a punchline to amuse a creature he has already mocked (see above), goading it into hideous laughter (as the spell). Using this ability does not disrupt the mock effect, but it does require a standard action to activate (in addition to the free action to continue the mock effect). A prankster can use this ability more than once against an individual creature during an individual performance. Telling a punchline does not count against a prankster’s daily use of bardic performance. A Will saving throw (DC 10 + 1/2 the bard’s level + the bard’s Charisma modifier) negates the effect. This ability affects only a single creature. Punchline is an enchantment (compulsion), mind affecting, language-dependent ability and relies on audible components. This ability replaces the suggestion ability. Mass Punchline (Sp) : This ability functions just like punchline, but allows a prankster of 18th level or higher to use hideous laughter simultaneously against any number of creatures that he has mocked. This ability replaces the mass suggestion ability.",
+          "resourceActions": [
+            {
+              "id": "prankster-begin-mock",
+              "label": "Begin Mock",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "targetCountByLevel": [
+                {
+                  "level": 1,
+                  "count": 1
+                },
+                {
+                  "level": 4,
+                  "count": 2
+                },
+                {
+                  "level": 7,
+                  "count": 3
+                },
+                {
+                  "level": 10,
+                  "count": 4
+                },
+                {
+                  "level": 13,
+                  "count": 5
+                },
+                {
+                  "level": 16,
+                  "count": 6
+                },
+                {
+                  "level": 19,
+                  "count": 7
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "valid-targets",
+                  "label": "Every target is within 90 feet and can see, hear, understand, and pay attention to you",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Mock performance",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Audible, visual, language-dependent, mind-affecting compulsion. Resolve each target's Will save with the separate button while maintaining this performance.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per round; the displayed target cap increases every three levels."
+            },
+            {
+              "id": "prankster-resolve-mock",
+              "label": "Resolve Mock target",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetCountByLevel": [
+                {
+                  "level": 1,
+                  "count": 1
+                },
+                {
+                  "level": 4,
+                  "count": 2
+                },
+                {
+                  "level": 7,
+                  "count": 3
+                },
+                {
+                  "level": 10,
+                  "count": 4
+                },
+                {
+                  "level": 13,
+                  "count": 5
+                },
+                {
+                  "level": 16,
+                  "count": 6
+                },
+                {
+                  "level": 19,
+                  "count": 7
+                }
+              ],
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 1,
+                    "range": "90 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Mocked",
+                    "description": "Angered and seeks to harm the Prankster. Remove after the target successfully attacks the Prankster or harms the Prankster with a damaging spell.",
+                    "activeEffects": [
+                      {
+                        "target": "attackRolls",
+                        "bonus": -2,
+                        "label": "Mock — attacks",
+                        "description": "−2 on attack rolls until the Mock ending condition is met."
+                      },
+                      {
+                        "target": "skillChecks",
+                        "bonus": -2,
+                        "label": "Mock — skills",
+                        "description": "−2 on skill checks until the Mock ending condition is met."
+                      }
+                    ],
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Mock immunity",
+                  "description": "This creature cannot be successfully mocked by this Prankster for 24 hours.",
+                  "rounds": 999
+                }
+              },
+              "summary": "Resolve one selected target at a time; failed saves apply both −2 penalties, while success tracks 24-hour immunity."
+            },
+            {
+              "id": "prankster-punchline",
+              "label": "Tell Punchline",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "mocked-target",
+                  "label": "The target is currently mocked by you",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 6,
+                    "range": "audible range"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 6,
+                    "name": "Hideous Laughter",
+                    "description": "Falls prone, can take no actions, and attempts a new save after its turn; language-dependent, mind-affecting compulsion.",
+                    "duration": {
+                      "kind": "level-rounds"
+                    }
+                  }
+                ]
+              },
+              "summary": "Costs no performance rounds and does not disrupt Mock; resolve hideous laughter against one mocked creature."
+            },
+            {
+              "id": "prankster-mass-punchline",
+              "label": "Tell Mass Punchline",
+              "minimumLevel": 18,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 18,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "mocked-targets",
+                  "label": "Every selected target is currently mocked by you",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 18,
+                    "range": "audible range"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 18,
+                    "name": "Mass Hideous Laughter",
+                    "description": "Falls prone, can take no actions, and attempts a new save after its turn; language-dependent, mind-affecting compulsion.",
+                    "duration": {
+                      "kind": "level-rounds"
+                    }
+                  }
+                ]
+              },
+              "summary": "Costs no performance rounds; resolve this once for each mocked creature selected without a target limit."
+            }
+          ]
         },
         {
           "id": "bard-prankster-swap-ex-1",
           "name": "Swap (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A prankster can steal an object from a creature and replace it with another object of the same size or smaller that the prankster has in his hand. This functions as the steal combat maneuver, but the prankster does not provoke an attack of opportunity, and may use his Sleight of Hand check in place of his combat maneuver check. If the prankster’s check exceeds the target’s CMD by 10 or more, the target is unaware the swap has been made until it tries to use the swapped object or the end of its next turn (whichever happens first). This ability replaces lore master."
+          "summary": "A prankster can steal an object from a creature and replace it with another object of the same size or smaller that the prankster has in his hand. This functions as the steal combat maneuver, but the prankster does not provoke an attack of opportunity, and may use his Sleight of Hand check in place of his combat maneuver check. If the prankster’s check exceeds the target’s CMD by 10 or more, the target is unaware the swap has been made until it tries to use the swapped object or the end of its next turn (whichever happens first). This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "prankster-swap",
+              "label": "Attempt Swap",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Sleight of Hand",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Sleight of Hand modifier",
+                "targetDcInputLabel": "Target CMD",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 10,
+                    "label": "swap succeeds and target remains unaware"
+                  },
+                  {
+                    "minimumMargin": 0,
+                    "label": "swap succeeds"
+                  }
+                ],
+                "failureLabel": "swap fails"
+              },
+              "summary": "Makes the steal maneuver without provoking; exceeding CMD by 10 tracks the target's delayed awareness."
+            }
+          ]
         }
       ]
     }
@@ -37,9 +321,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Prankster"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Gnome eligibility, Mock target scaling/conditions/save/DC/penalties/immunity, free Punchline and Mass Punchline saves and durations, and the full Sleight-of-Hand-versus-CMD Swap resolution are automated."
   ],
   "requirements": [
     {

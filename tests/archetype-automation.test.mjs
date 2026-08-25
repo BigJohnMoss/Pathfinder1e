@@ -894,10 +894,11 @@ test("standard bonus-feat wording grants exact catalogue feats at the stated lev
     { id: "deflect-arrows", name: "Deflect Arrows" },
     { id: "snatch-arrows", name: "Snatch Arrows" },
   ]).automated.includes("2 level-aware bonus feat grants"));
-  assert.ok(archetypeAutomationSummary(juggler, [
+  assert.ok(!archetypeAutomationSummary(juggler, [
     { id: "deflect-arrows", name: "Deflect Arrows" },
     { id: "snatch-arrows", name: "Snatch Arrows" },
-  ]).manual.some(item => item.startsWith("Fast Reactions")), "unimplemented extra uses keep the source feature manual");
+  ]).manual.some(item => item.startsWith("Fast Reactions")), "implemented extra reactions complete the source feature");
+  assert.deepEqual(juggler.replacements.flatMap((replacement) => replacement.features).find((feature) => feature.id === "bard-juggler-fast-reactions-ex-1").resourceActions.map((action) => action.diceRoll.flatModifierByLevel[0].modifier), [-5, -10]);
 
   const unsafe = { replacements: [{ features: [
     { id: "choice", level: 1, summary: "She gains either Dodge or Mobility as a bonus feat." },

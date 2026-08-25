@@ -1,0 +1,110 @@
+{
+  "id": "bard-geisha-performance-categories",
+  "name": "Geisha Knowledge Perform Skill",
+  "classIds": [
+    "bard"
+  ],
+  "options": [
+    {
+      "id": "bard-geisha-performance-act",
+      "name": "Act",
+      "groupId": "bard-geisha-performance-categories",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Apply Geisha Knowledge to Perform (act).",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+      }
+    },
+    {
+      "id": "bard-geisha-performance-dance",
+      "name": "Dance",
+      "groupId": "bard-geisha-performance-categories",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Apply Geisha Knowledge to Perform (dance).",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+      }
+    },
+    {
+      "id": "bard-geisha-performance-oratory",
+      "name": "Oratory",
+      "groupId": "bard-geisha-performance-categories",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Apply Geisha Knowledge to Perform (oratory).",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+      }
+    },
+    {
+      "id": "bard-geisha-performance-percussion",
+      "name": "Percussion",
+      "groupId": "bard-geisha-performance-categories",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Apply Geisha Knowledge to Perform (percussion).",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+      }
+    },
+    {
+      "id": "bard-geisha-performance-string",
+      "name": "String Instruments",
+      "groupId": "bard-geisha-performance-categories",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Apply Geisha Knowledge to Perform (string instruments).",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+      }
+    },
+    {
+      "id": "bard-geisha-performance-sing",
+      "name": "Sing",
+      "groupId": "bard-geisha-performance-categories",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Apply Geisha Knowledge to Perform (sing).",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Geisha"
+  }
+}
