@@ -115,9 +115,10 @@ export interface CharacterDraftV1 {
 export type CharacterDraft = CharacterDraftV1;
 export type ActiveEffectTarget =
   | "initiative" | "armorClass" | "fortitude" | "reflex" | "will"
-  | "attackRolls" | "damageRolls" | "damageReduction" | "spellResistance"
+  | "attackRolls" | "meleeAttackRolls" | "damageRolls" | "weaponDamageRolls" | "damageReduction" | "spellResistance"
   | "casterLevel" | "spellSaveDc" | "exploitEffectiveLevel"
-  | "casterLevelChecks" | "savingThrows" | "meleeDamageRolls" | "healingReceived" | "skillChecks"
+  | "casterLevelChecks" | "savingThrows" | "savingThrowsAgainstCharmAndFear" | "savingThrowsAgainstParalysisAndSleep"
+  | "meleeDamageRolls" | "healingReceived" | "skillChecks"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
   | "allies" | "self" | "area" | "enemy";
 export interface ActiveEffect {
