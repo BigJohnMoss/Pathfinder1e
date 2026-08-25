@@ -278,7 +278,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               new Set(action.modes?.flatMap((mode) => mode.activeEffects?.map((effect) => effect.label) ?? [])).forEach((label) => onRemoveEffectByName?.(label));
             }
             selectedMode?.activeEffects?.forEach((effect) => {
-              onAddEffect({ id: `${action.id}-${effect.target}-${Date.now()}-${Math.random()}`, name: effect.label, target: effect.target, bonus: effect.bonus, description: effect.description, roundsRemaining: rounds });
+              onAddEffect({ id: `${action.id}-${effect.target}-${Date.now()}-${Math.random()}`, name: effect.label, target: effect.target, bonus: effect.bonus, description: effect.description, roundsRemaining: rounds, ...(effect.fastHealing ? { fastHealing: effect.fastHealing } : {}) });
             });
           }
           if (action.rerollAction?.kind === "d20") {
