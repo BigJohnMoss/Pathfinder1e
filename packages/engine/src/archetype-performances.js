@@ -16,7 +16,7 @@ export function inferredArchetypePerformanceRuleDetails(archetype) {
   const rules = [];
   const fullyAutomatedFeatureIds = new Set();
   for (const feature of (archetype?.replacements ?? []).flatMap((replacement) => replacement.features ?? [])) {
-    if (!/^Bardic Performance(?:\s*\([^)]+\))?$/i.test(String(feature.name ?? "").trim()) || !feature.performanceRules?.length) continue;
+    if (!/^(?:Bardic Performance|Raging Song)(?:\s*\([^)]+\))?$/i.test(String(feature.name ?? "").trim()) || !feature.performanceRules?.length) continue;
     const actionIds = new Set((feature.resourceActions ?? []).map((action) => action.id));
     const rulesByName = new Map(feature.performanceRules.map((rule) => [normalized(rule.name), rule]));
     const publishedNames = namedPerformances(feature);
