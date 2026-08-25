@@ -1,0 +1,80 @@
+{
+  "id": "hex-channeler-channel-advancements",
+  "name": "Hex Channeler Channel Advancements",
+  "classIds": [
+    "witch"
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Hex%20Channeler"
+  },
+  "optionDefaults": {
+    "groupId": "hex-channeler-channel-advancements",
+    "classIds": [
+      "witch"
+    ],
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Witch%20Hex%20Channeler"
+    }
+  },
+  "options": [
+    {
+      "id": "hex-channeler-channel-die-4",
+      "name": "Increase Channel Energy (+1d6; level 4 opportunity)",
+      "minimumLevel": 4,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    },
+    {
+      "id": "hex-channeler-channel-die-6",
+      "name": "Increase Channel Energy (+1d6; level 6 opportunity)",
+      "minimumLevel": 6,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    },
+    {
+      "id": "hex-channeler-channel-die-8",
+      "name": "Increase Channel Energy (+1d6; level 8 opportunity)",
+      "minimumLevel": 8,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    },
+    {
+      "id": "hex-channeler-channel-die-10",
+      "name": "Increase Channel Energy (+1d6; level 10 opportunity)",
+      "minimumLevel": 10,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    },
+    {
+      "id": "hex-channeler-channel-die-12",
+      "name": "Increase Channel Energy (+1d6; level 12 opportunity)",
+      "minimumLevel": 12,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    },
+    {
+      "id": "hex-channeler-channel-die-14",
+      "name": "Increase Channel Energy (+1d6; level 14 opportunity)",
+      "minimumLevel": 14,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    },
+    {
+      "id": "hex-channeler-channel-die-16",
+      "name": "Increase Channel Energy (+1d6; level 16 opportunity)",
+      "minimumLevel": 16,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    },
+    {
+      "id": "hex-channeler-channel-die-18",
+      "name": "Increase Channel Energy (+1d6; level 18 opportunity)",
+      "minimumLevel": 18,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    },
+    {
+      "id": "hex-channeler-channel-die-20",
+      "name": "Increase Channel Energy (+1d6; level 20 opportunity)",
+      "minimumLevel": 20,
+      "benefit": "Forgo this hex selection to increase Channel Energy by 1d6 permanently."
+    }
+  ]
+}

@@ -7,3 +7,10 @@ export function channelEnergyProgression(level, charismaModifier = 0) {
     usesPerDay: Math.max(0, 3 + charismaModifier)
   };
 }
+
+export function channelEnergyPolarityOptionIdsForAlignment(alignment) {
+  const value = String(alignment ?? "neutral");
+  if (value.includes("good")) return ["hex-channeler-positive"];
+  if (value.includes("evil")) return ["hex-channeler-negative"];
+  return ["hex-channeler-positive", "hex-channeler-negative"];
+}

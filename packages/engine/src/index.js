@@ -694,6 +694,7 @@ export function arcaneReservoir(level) {
 }
 
 export { bardicPerformanceRounds } from "./bardic-performance.js";
+export { channelEnergyPolarityOptionIdsForAlignment } from "./channel-energy.js";
 export { druidWildShapeUses } from "./druid-wild-shape.js";
 export {
   apgClassResourceMaximums,

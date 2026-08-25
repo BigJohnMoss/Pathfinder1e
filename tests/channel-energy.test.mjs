@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { channelEnergyProgression } from "../packages/engine/src/channel-energy.js";
+import { channelEnergyPolarityOptionIdsForAlignment, channelEnergyProgression } from "../packages/engine/src/channel-energy.js";
 
 test("channel energy scales dice every odd Cleric level", () => {
   assert.deepEqual(channelEnergyProgression(1, 2), { dice: 1, saveDC: 12, usesPerDay: 5 });
@@ -12,4 +12,10 @@ test("channel energy daily uses follow Charisma and never become negative", () =
   assert.equal(channelEnergyProgression(1, -5).usesPerDay, 0);
   assert.equal(channelEnergyProgression(1, 0).usesPerDay, 3);
   assert.equal(channelEnergyProgression(1, 6).usesPerDay, 9);
+});
+
+test("Hex Channeler polarity follows alignment and leaves neutral witches a permanent choice", () => {
+  assert.deepEqual(channelEnergyPolarityOptionIdsForAlignment("lawful-good"), ["hex-channeler-positive"]);
+  assert.deepEqual(channelEnergyPolarityOptionIdsForAlignment("chaotic-evil"), ["hex-channeler-negative"]);
+  assert.deepEqual(channelEnergyPolarityOptionIdsForAlignment("neutral"), ["hex-channeler-positive", "hex-channeler-negative"]);
 });

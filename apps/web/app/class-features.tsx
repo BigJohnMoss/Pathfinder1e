@@ -98,7 +98,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const actionLevel = action.advancementOptionId && selectedOptionSet.has(action.advancementOptionId)
           ? casterLevels[action.classId ?? ""] ?? actionClassLevel
           : actionClassLevel;
-        const availableModes = action.modes?.filter((mode) => actionLevel >= (mode.minimumLevel ?? 1) && actionLevel <= (mode.maximumLevel ?? 20));
+        const availableModes = action.modes?.filter((mode) => actionLevel >= (mode.minimumLevel ?? 1) && actionLevel <= (mode.maximumLevel ?? 20) && (!mode.requiredOptionId || selectedOptionSet.has(mode.requiredOptionId)));
         const selectedMode = availableModes?.find((mode) => mode.id === actionModes[action.id]) ?? availableModes?.[0];
         const fixedFeatSelectionCount = selectedMode?.featCount ?? action.featSelection?.countByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.count ?? 0;
         const featSelectionResource = action.resourceId ? dailyResources.find((candidate) => candidate.id === action.resourceId) : undefined;
@@ -141,7 +141,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           ? [...equippedWeapons, ...(action.activeEffect.includeUnarmedStrike && !equippedWeapons.some((weapon) => weapon.id === "unarmed-strike") ? [{ id: "unarmed-strike", name: "Unarmed strike" }] : [])]
           : [];
         const selectedEffectWeaponId = effectWeaponIds[action.id] ?? weaponChoices[0]?.id;
-        const unavailable = unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId);
+        const unavailable = unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || Boolean(action.modes?.length && !availableModes?.length) || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId);
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
@@ -205,7 +205,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const combatRange = action.combatRoll?.rangeByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.range;
         const combatFlatModifier = action.combatRoll?.damage.flatModifierByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.modifier ?? 0;
         const combatDamageModifier = combatFlatModifier + (action.combatRoll?.damage.abilityModifier ? abilityModifiers[action.combatRoll.damage.abilityModifier] ?? 0 : 0);
-        const diceCount = action.diceRoll?.diceCountByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.count;
+        const diceCountBase = action.diceRoll?.diceCountByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.count;
+        const diceCount = diceCountBase === undefined ? undefined : diceCountBase + (action.diceRoll?.diceCountBonusOptionIds?.filter((id) => selectedOptionSet.has(id)).length ?? 0);
         const dieSides = action.diceRoll?.dieSidesByLevel.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.sides;
         const diceModifier = action.diceRoll?.abilityModifier ? abilityModifiers[action.diceRoll.abilityModifier] ?? 0 : 0;
         const diceModeEffect = action.diceRoll?.modeEffects?.find((effect) => effect.modeId === selectedMode?.id);
