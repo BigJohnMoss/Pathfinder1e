@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import archetypes from "../generated/pf1e-archetypes.mjs";
 import data from "../generated/pf1e-data.mjs";
-import { applyArchetype, applyArchetypeResourceAdjustments, archetypeAutomationSummary, archetypeCompanionEffectiveLevel, inferArchetypeCompanionGrants, inferredArchetypeCompanionGrantDetails, phantomFocusDetails, phantomProgression, resolvedArchetypeCompanionGrants } from "../packages/engine/src/index.js";
+import { applyArchetype, applyArchetypeResourceAdjustments, archetypeAutomationSummary, archetypeCompanionEffectiveLevel, availableOptions, inferArchetypeCompanionGrants, inferredArchetypeCompanionGrantDetails, phantomFocusDetails, phantomProgression, resolvedArchetypeCompanionGrants } from "../packages/engine/src/index.js";
 
 const archetype = (id) => archetypes.find((item) => item.id === id);
 const characterClass = (id) => data.classes.find((item) => item.id === id);
@@ -109,4 +109,17 @@ test("Death Druid emotional focuses inherit the full Spiritualist focus catalogu
   assert.deepEqual(group.classIds, ["druid"]);
   assert.equal(group.options.length, spiritualist.options.length);
   assert.ok(group.options.every((option) => option.groupId === group.id && option.classIds.includes("druid")));
+});
+
+test("Oceanrider automates size-legal aquatic mounts at full Cavalier level", () => {
+  const oceanrider = archetype("cavalier-oceanrider");
+  const group = data.optionGroups.find((item) => item.id === "oceanrider-aquatic-mounts");
+  const [grant] = resolvedArchetypeCompanionGrants(oceanrider);
+  assert.ok(group);
+  assert.deepEqual([grant.kind, grant.optionFeatureId, grant.minimumLevel], ["mount", "cavalier-oceanrider-aquatic-mount-1", 1]);
+  assert.equal(archetypeCompanionEffectiveLevel(grant, 20), 20);
+  assert.deepEqual(availableOptions(group, "cavalier", 1, [], { size: "medium" }).map((option) => option.name), ["Seahorse", "Orca"]);
+  assert.deepEqual(availableOptions(group, "cavalier", 1, [], { size: "small" }).map((option) => option.name), ["Dolphin"]);
+  assert.match(group.options.find((option) => option.id === "oceanrider-mount-orca").companionRules.join(" "), /starts at size Large.*before level 7/i);
+  assert.deepEqual(archetypeAutomationSummary(oceanrider, data.feats, data.spells).manual, []);
 });
