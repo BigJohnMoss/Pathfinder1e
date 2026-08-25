@@ -2642,6 +2642,8 @@ export default function Home() {
           optionId: grantOptionId,
           label: grant.optionFeatureId ? `${optionLabel(grantOptionId, grant.label)} ${grant.label}` : grant.label,
           effectiveLevel,
+          drakePowerLevels: grant.drakePowerLevels,
+          drakeSizeLevels: grant.drakeSizeLevels,
           rules: [...(grant.rules ?? []), ...(selectedOption?.companionRules ?? [])],
         });
       }

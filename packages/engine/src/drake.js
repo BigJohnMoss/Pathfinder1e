@@ -4,12 +4,14 @@ const saves = [2,3,3,3,4,4,5,5,5,6,6,6,7,7,8,8,8,9,9,9];
 const skillRanks = [3,6,9,12,15,18,21,24,27,30,34,36,39,42,45,48,51,54,57,60];
 const feats = [1,1,2,2,2,3,3,3,4,4,5,5,5,6,6,6,7,7,8,8];
 
-export function drakeCompanionProgression(level) {
+export function drakeCompanionProgression(level, schedule = {}) {
   const effectiveLevel = clampLevel(level);
   const index = effectiveLevel - 1;
   const naturalArmorIncreases = Math.floor(effectiveLevel / 3);
-  const sizeIncreases = effectiveLevel < 5 ? 0 : 1 + Math.floor((effectiveLevel - 5) / 4);
-  const drakePowers = effectiveLevel < 3 ? 0 : 1 + Math.floor((effectiveLevel - 3) / 4);
+  const powerLevels = schedule.powerLevels ?? [3, 7, 11, 15, 19];
+  const sizeLevels = schedule.sizeLevels ?? [5, 9, 13, 17];
+  const sizeIncreases = sizeLevels.filter((unlockLevel) => effectiveLevel >= unlockLevel).length;
+  const drakePowers = powerLevels.filter((unlockLevel) => effectiveLevel >= unlockLevel).length;
   return {
     effectiveLevel,
     hitDice: hitDice[index],
