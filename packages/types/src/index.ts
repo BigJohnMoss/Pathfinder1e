@@ -321,6 +321,8 @@ export interface ClassFeatureOccurrence {
     };
     combatRoll?: {
       attack?: { kind: "ranged-touch" | "melee-touch"; label: string };
+      attackCountFromVariableCost?: boolean;
+      abilityModifierOnceModeIds?: string[];
       damage: {
         type: string;
         diceCountByLevel: Array<{ level: number; count: number }>;

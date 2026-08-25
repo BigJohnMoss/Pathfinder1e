@@ -21,14 +21,129 @@
           "name": "Enhance Healing (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A number of times per day equal to his Charisma modifier, a songhealer can cause any healing effect from a spell completion or spell trigger item to function at a caster level equal to his class level. This ability replaces versatile performance."
+          "summary": "A number of times per day equal to his Charisma modifier, a songhealer can cause any healing effect from a spell completion or spell trigger item to function at a caster level equal to his class level. This ability replaces versatile performance.",
+          "resourceActions": [
+            {
+              "id": "songhealer-enhance-healing",
+              "label": "Enhance healing item",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "songhealerEnhanceHealing",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Enhanced healing item",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The selected spell-completion or spell-trigger healing effect uses the Songhealer's Bard level as its caster level.",
+                "defaultRounds": 1,
+                "consumeOnUse": true
+              },
+              "summary": "Spend one daily use when activating a healing effect from a spell-completion or spell-trigger item."
+            }
+          ]
         },
         {
           "id": "bard-songhealer-bardic-performance-1",
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A songhealer gains the following type of bardic performance. Healing Performance (Su) : A bard of 14th level or higher can use his performance to create an effect equivalent to heal on a living target (or harm on an undead target), using the bard’s level as the caster level. Using this ability requires 5 rounds of continuous performance, and the target must be able to see and hear the bard throughout the performance. The healing performance relies on audible and visual components. This ability replaces frightening tune. Funereal Ballad (Su) : A bard of 20th level or higher can use his performance to create an effect equivalent to resurrection on a dead creature, using the bard’s level as the caster level. Using this ability requires 20 rounds of continuous performance, and the target must be within 10 feet of the bard for the entire performance. Funereal ballad relies on audible and visual components. This ability replaces deadly performance."
+          "summary": "A songhealer gains the following type of bardic performance. Healing Performance (Su) : A bard of 14th level or higher can use his performance to create an effect equivalent to heal on a living target (or harm on an undead target), using the bard’s level as the caster level. Using this ability requires 5 rounds of continuous performance, and the target must be able to see and hear the bard throughout the performance. The healing performance relies on audible and visual components. This ability replaces frightening tune. Funereal Ballad (Su) : A bard of 20th level or higher can use his performance to create an effect equivalent to resurrection on a dead creature, using the bard’s level as the caster level. Using this ability requires 20 rounds of continuous performance, and the target must be within 10 feet of the bard for the entire performance. Funereal ballad relies on audible and visual components. This ability replaces deadly performance.",
+          "resourceActions": [
+            {
+              "id": "songhealer-healing-performance-living",
+              "label": "Complete Healing Performance — living target",
+              "minimumLevel": 14,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 5,
+              "actionTypeByLevel": [
+                {
+                  "level": 14,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "continuous-performance",
+                  "label": "The target saw and heard all 5 continuous rounds",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "heal",
+                "spellName": "Heal",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Spend five continuous rounds of performance to produce Heal at Bard caster level."
+            },
+            {
+              "id": "songhealer-healing-performance-undead",
+              "label": "Complete Healing Performance — undead target",
+              "minimumLevel": 14,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 5,
+              "actionTypeByLevel": [
+                {
+                  "level": 14,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "continuous-performance",
+                  "label": "The undead target saw and heard all 5 continuous rounds",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Healing Performance — Harm",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Resolve Harm against the undead target at caster level equal to Bard level.",
+                "defaultRounds": 1,
+                "consumeOnUse": true
+              },
+              "summary": "Spend five continuous rounds of performance to produce Harm at Bard caster level."
+            },
+            {
+              "id": "songhealer-funereal-ballad",
+              "label": "Complete Funereal Ballad",
+              "minimumLevel": 20,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 20,
+              "actionTypeByLevel": [
+                {
+                  "level": 20,
+                  "actionType": "full-round"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "continuous-ballad",
+                  "label": "The dead target remained within 10 feet for all 20 continuous rounds",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Funereal Ballad — Resurrection",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Resolve Resurrection at caster level equal to Bard level after the completed audible and visual performance.",
+                "defaultRounds": 1,
+                "consumeOnUse": true
+              },
+              "summary": "Spend twenty continuous rounds of performance to produce Resurrection at Bard caster level."
+            }
+          ]
         }
       ]
     }
@@ -38,8 +153,19 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Songhealer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Charisma-limited item healing and all Healing Performance and Funereal Ballad costs, unlocks, continuous-performance requirements, targets, and spell-equivalent results are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "songhealerEnhanceHealing",
+      "label": "Enhance Healing uses",
+      "unit": "use",
+      "minimumLevel": 1,
+      "base": 0,
+      "abilityModifier": "charisma",
+      "minimum": 0
+    }
   ]
 }

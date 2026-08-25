@@ -26,7 +26,225 @@
           "name": "Bardic Performance",
           "level": 6,
           "type": "archetype",
-          "summary": "A silver balladeer gains the bardic performances listed below. These bardic performances all require the use of a silver or silver-stringed instrument, which costs twice as much as a normal masterwork instrument. Break Curse (Su) : At 6th level, a silver balladeer can suppress a single curse affecting an ally within 30 feet that is able to see and hear her. Each round the silver balladeer uses break curse, she attempts a Perform check against the original DC of the curse. If successful, she suppresses the curse for 1 round. After she has suppressed the curse for 4 consecutive rounds, she can attempt a caster level check to remove the curse as if she had cast remove curse . This ability replaces suggestion. Holy Vibration (Su) : At 9th level, a silver balladeer can spend a round of bardic performance to make a single door or a window within 30 feet resonate with a holy vibration. Undead and creatures with the evil subtype are unable to open a door or window affected in this way (as arcane lock ) for 10 minutes per bard level. If such a creature has the incorporeal subtype, it is unable to move through the affected door or window, or through any walls, floors, or ceilings within 20 feet of it. Incorporeal creatures can attempt Charisma checks to break through areas warded by holy vibration, using the same break DC as for the object the creature is trying to move through. This ability replaces inspire greatness. Mass Break Curse (Su) : At 18th level, a silver balladeer can suppress all curses among any number of allies within 30 feet when using break curse. Every 4 consecutive rounds of using this performance, the silver balladeer can attempt a caster level check to remove a single curse on a single ally affected by this performance, as if she had cast remove curse . This ability replaces mass suggestion."
+          "summary": "A silver balladeer gains the bardic performances listed below. These bardic performances all require the use of a silver or silver-stringed instrument, which costs twice as much as a normal masterwork instrument. Break Curse (Su) : At 6th level, a silver balladeer can suppress a single curse affecting an ally within 30 feet that is able to see and hear her. Each round the silver balladeer uses break curse, she attempts a Perform check against the original DC of the curse. If successful, she suppresses the curse for 1 round. After she has suppressed the curse for 4 consecutive rounds, she can attempt a caster level check to remove the curse as if she had cast remove curse . This ability replaces suggestion. Holy Vibration (Su) : At 9th level, a silver balladeer can spend a round of bardic performance to make a single door or a window within 30 feet resonate with a holy vibration. Undead and creatures with the evil subtype are unable to open a door or window affected in this way (as arcane lock ) for 10 minutes per bard level. If such a creature has the incorporeal subtype, it is unable to move through the affected door or window, or through any walls, floors, or ceilings within 20 feet of it. Incorporeal creatures can attempt Charisma checks to break through areas warded by holy vibration, using the same break DC as for the object the creature is trying to move through. This ability replaces inspire greatness. Mass Break Curse (Su) : At 18th level, a silver balladeer can suppress all curses among any number of allies within 30 feet when using break curse. Every 4 consecutive rounds of using this performance, the silver balladeer can attempt a caster level check to remove a single curse on a single ally affected by this performance, as if she had cast remove curse . This ability replaces mass suggestion.",
+          "resourceActions": [
+            {
+              "id": "silver-balladeer-break-curse",
+              "label": "Maintain Break Curse",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "silver-instrument",
+                  "label": "A silver or silver-stringed masterwork instrument is in use",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Perform check against original curse DC",
+                "diceCountByLevel": [
+                  {
+                    "level": 6,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 6,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Perform modifier",
+                "modeEffects": [
+                  {
+                    "modeId": "single",
+                    "kind": "damage"
+                  }
+                ]
+              },
+              "modes": [
+                {
+                  "id": "single",
+                  "label": "Single curse",
+                  "summary": "Attempt the Perform check against one curse's original DC."
+                }
+              ],
+              "activeEffect": {
+                "name": "Break Curse suppression",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "A successful Perform check suppresses the curse for one round. After four consecutive successes, attempt a Bard-level caster check to remove it as Remove Curse.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round, roll Perform against the curse's original DC, and track consecutive suppression rounds."
+            },
+            {
+              "id": "silver-balladeer-holy-vibration",
+              "label": "Create Holy Vibration",
+              "minimumLevel": 9,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "silver-instrument",
+                  "label": "A silver or silver-stringed masterwork instrument is in use",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Holy Vibration",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "One door or window within 30 feet is locked against undead and evil-subtype creatures; affected incorporeal creatures cannot cross it or nearby surfaces without the object's break-DC Charisma check.",
+                "defaultRounds": 90,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 9,
+                    "rounds": 90
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 100
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 110
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 120
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 130
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 140
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 150
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 160
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 170
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 180
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 190
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 200
+                  }
+                ],
+                "fixedRounds": true
+              },
+              "summary": "Spend one performance round; the ward lasts 10 minutes per Bard level (shown in rounds)."
+            },
+            {
+              "id": "silver-balladeer-mass-break-curse",
+              "label": "Maintain Mass Break Curse",
+              "minimumLevel": 18,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 18,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "silver-instrument",
+                  "label": "A silver or silver-stringed masterwork instrument is in use",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Perform check against selected curse DC",
+                "diceCountByLevel": [
+                  {
+                    "level": 18,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 18,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Perform modifier",
+                "modeEffects": [
+                  {
+                    "modeId": "mass",
+                    "kind": "damage"
+                  }
+                ]
+              },
+              "modes": [
+                {
+                  "id": "mass",
+                  "label": "All allies within 30 feet",
+                  "summary": "Attempt the check for the selected curse while suppressing all affected allies' curses."
+                }
+              ],
+              "activeEffect": {
+                "name": "Mass Break Curse suppression",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Successful checks suppress the affected curses for one round. Every four consecutive rounds, attempt one Bard-level caster check to remove one selected curse.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round to suppress curses across the group and track four-round removal attempts."
+            }
+          ]
         },
         {
           "id": "bard-silver-balladeer-pure-heart-ex-2",
@@ -40,7 +258,27 @@
           "name": "Silver Mastery (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a silver balladeer treats silver weapons as if they were also cold iron for the purpose of overcoming damage reduction. Also, alchemical silver weapons do not impose a penalty on damage rolls when wielded by a silver balladeer, and a silver balladeer gains a +1 bonus on attack rolls made with mithral weapons. This ability replaces the 2nd-level versatile performance."
+          "summary": "At 2nd level, a silver balladeer treats silver weapons as if they were also cold iron for the purpose of overcoming damage reduction. Also, alchemical silver weapons do not impose a penalty on damage rolls when wielded by a silver balladeer, and a silver balladeer gains a +1 bonus on attack rolls made with mithral weapons. This ability replaces the 2nd-level versatile performance.",
+          "resourceActions": [
+            {
+              "id": "silver-balladeer-silver-mastery",
+              "label": "Apply Silver Mastery",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "activeEffect": {
+                "name": "Silver Mastery",
+                "targets": [
+                  "attackRolls"
+                ],
+                "bonus": 1,
+                "description": "Silver weapons also count as cold iron for overcoming DR; alchemical silver weapons lose their damage penalty; mithral weapon attacks gain +1.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Persistent equipment rule; activate this tracker only while using a mithral weapon."
+            }
+          ]
         }
       ]
     }
@@ -50,8 +288,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Silver%20Balladeer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Good-alignment eligibility, Pure Heart defenses, all silver-instrument performances, curse checks and consecutive-round tracking, Holy Vibration duration, and every Silver Mastery weapon rule are automated."
   ]
 }
