@@ -1,0 +1,22 @@
+{
+  "id": "death-druid-phantom-focuses",
+  "name": "Death Druid Phantom Emotional Focuses",
+  "classIds": [
+    "druid"
+  ],
+  "inheritsOptionsFrom": "spiritualist-emotional-focuses",
+  "optionDefaults": {
+    "groupId": "death-druid-phantom-focuses",
+    "classIds": [
+      "druid"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Death%20Druid"
+    }
+  },
+  "options": []
+}

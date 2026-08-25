@@ -49,3 +49,21 @@ test("Draconic Druid exposes its authored drake with automatic progression", asy
   assert.match(card?.textContent ?? "", /drake.*effective level 5/i);
   assert.match(card?.textContent ?? "", /d12 HD.*BAB.*natural armour.*drake powers/i);
 });
+
+test("Death Druid creates its phantom only after an emotional focus is selected", async () => {
+  const user = userEvent.setup();
+  render(<Home />);
+  await user.selectOptions(screen.getByLabelText("Class"), "druid");
+  fireEvent.change(screen.getByLabelText("Level"), { target: { value: "14" } });
+  await user.selectOptions(screen.getByLabelText("Archetype"), "druid-death-druid");
+  await user.click(screen.getByRole("tab", { name: "Features" }));
+
+  assert.equal(screen.queryByRole("heading", { name: "Companion sheets" }), null);
+  await user.selectOptions(screen.getByLabelText(/Phantom/), "spiritualist-focus-dedication");
+  const manager = screen.getByRole("heading", { name: "Companion sheets" }).closest("section");
+  assert.ok(manager);
+  const card = within(manager).getByText("Dedication phantom").closest("article");
+  assert.match(card?.textContent ?? "", /phantom.*effective level 14/i);
+  assert.match(card?.textContent ?? "", /11 d10 HD.*BAB.*2 × 2d6 slams/i);
+  assert.match(card?.textContent ?? "", /Etheric Tether limits the manifested phantom to 50 feet/i);
+});

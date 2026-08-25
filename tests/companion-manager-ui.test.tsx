@@ -34,3 +34,23 @@ test("companion sheets show level-scaled statistics and retain editable play sta
   assert.equal(latest.familiar.name, "Miso");
   assert.equal(latest.familiar.currentHitPoints, 17);
 });
+
+test("phantom sheets show progression, emotional focus, and Death Druid rules", () => {
+  render(<CompanionManager companions={[{
+    id: "death-druid-phantom",
+    kind: "phantom",
+    optionId: "spiritualist-focus-dedication",
+    label: "Dedication phantom",
+    effectiveLevel: 14,
+    rules: ["Etheric Tether limits the manifested phantom to 50 feet from the death druid."],
+  }]} states={{}} masterHitPoints={60} onChange={() => {}} />);
+  assert.ok(screen.getByText("Dedication phantom"));
+  assert.ok(screen.getByText("11", { selector: "b" }));
+  assert.ok(screen.getByText("2 × 2d6", { exact: false }));
+  assert.ok(screen.getByText(/Diplomacy and Sense Motive each gain 11 ranks/));
+  assert.ok(screen.getByText(/Defending Aura \(level 7\)/));
+  assert.ok(screen.getByText(/Devoted Servant \(level 12\)/));
+  assert.ok(screen.getByText("Etheric Tether limits the manifested phantom to 50 feet from the death druid."));
+  assert.ok(screen.getByText("Deliver touch spells (50 feet)"));
+  assert.ok(screen.getByText("Incorporeal flight"));
+});

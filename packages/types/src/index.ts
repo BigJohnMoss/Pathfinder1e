@@ -88,7 +88,7 @@ export interface CharacterDraftV1 {
   spellSlotUsesByClass: Record<string, Record<string, number>>;
   classResourceUsesByClass?: Record<string, Record<string, number>>;
   companions?: Record<string, {
-    kind: "animal" | "mount" | "familiar" | "eidolon" | "drake";
+    kind: "animal" | "mount" | "familiar" | "eidolon" | "drake" | "phantom";
     optionId: string;
     name: string;
     currentHitPoints: number | null;
@@ -720,7 +720,7 @@ export interface CharacterArchetype {
   optionGroupAugmentations?: OptionGroupAugmentation[];
   fixedOptionGrants?: FixedOptionGrant[];
   prohibitedOptionIds?: string[];
-  prohibitedCompanionKinds?: Array<"animal" | "mount" | "familiar" | "eidolon" | "drake">;
+  prohibitedCompanionKinds?: Array<"animal" | "mount" | "familiar" | "eidolon" | "drake" | "phantom">;
   source: SourceRef;
 }
 export interface PrecisionDamageAdjustment {
@@ -802,14 +802,17 @@ export interface ArcaneSpellFailureRules {
 }
 export interface ArchetypeCompanionGrant {
   id: string;
-  kind: "animal" | "mount" | "familiar" | "eidolon" | "drake";
+  kind: "animal" | "mount" | "familiar" | "eidolon" | "drake" | "phantom";
   label: string;
-  optionId: string;
+  optionId?: string;
+  optionFeatureId?: string;
+  sourceFeatureId?: string;
   minimumLevel: number;
   effectiveLevelAdjustment?: number;
   effectiveLevelMultiplier?: number;
   stacksWithExisting?: boolean;
   usesCharacterLevel?: boolean;
+  rules?: string[];
 }
 export interface CompanionProgressionAdjustment {
   companionId: string;

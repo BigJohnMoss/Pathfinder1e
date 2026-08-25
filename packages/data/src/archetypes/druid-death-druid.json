@@ -22,11 +22,21 @@
       ],
       "features": [
         {
+          "id": "druid-death-druid-etheric-tether-1",
+          "name": "Etheric Tether",
+          "level": 1,
+          "type": "archetype",
+          "summary": "The manifested phantom must remain within 50 feet. Beyond that distance it takes damage, and at the end of the turn it is forced back into the death druid's consciousness if still outside the tether."
+        },
+        {
           "id": "druid-death-druid-phantom-1",
           "name": "Phantom",
           "level": 1,
-          "type": "archetype",
-          "summary": "A death druid attracts phantoms like a spiritualist ( Pathfinder RPG Occult Adventures 72 ), though she focuses her efforts on putting those phantoms to rest. A death druid is continually attempting to figure out how to send her phantom to the afterlife (usually by completing the phantom’s unfinished business as determined by the GM). If she is able to do so, she gains a new phantom with no additional effort on her part, sometime during the next week. At 1st level, she gains the spiritualist’s phantom and etheric tether class features; at 4th level, she gains the bonded manifestation class feature; and at 14th level, she gains the spiritual bond class feature. She does not gain any of the other spiritualist abilities related to phantoms. The death druid treats her druid level as her spiritualist level for these abilities. This ability replaces nature bond and wild shape."
+          "type": "selectable",
+          "summary": "Choose the phantom's emotional focus. The phantom advances using the death druid's Druid level as its Spiritualist level.",
+          "choiceRequired": true,
+          "optionGroupId": "death-druid-phantom-focuses",
+          "progressionKey": "death-druid-phantom-focus"
         },
         {
           "id": "druid-death-druid-soul-magic-1",
@@ -34,6 +44,13 @@
           "level": 1,
           "type": "archetype",
           "summary": "A death druid adds the following spells to her druid spell list at the given spell levels: 0— grave wordsOA ; 1st— sanctify corpseUM ; 2nd— calm spiritOA, false life, ghostbane dirgeAPG, spiritual weapon ; 3rd— speak with dead ; 4th— speak with hauntACG, spiritual allyAPG ; 5th— breath of life, call spiritOA, mass ghostbane dirgeAPG ; 6th— circle of death, undeath to death. This ability replaces nature sense and wild empathy."
+        },
+        {
+          "id": "druid-death-druid-bonded-manifestation-4",
+          "name": "Bonded Manifestation",
+          "level": 4,
+          "type": "archetype",
+          "summary": "Manifest the phantom partially through the death druid for 3 plus Druid level rounds per day. The rounds need not be consecutive."
         },
         {
           "id": "druid-death-druid-resist-death-s-call-ex-4",
@@ -48,6 +65,13 @@
           "level": 9,
           "type": "archetype",
           "summary": "At 9th level, a death druid is immune to negative energy and energy drain. This ability replaces venom immunity."
+        },
+        {
+          "id": "druid-death-druid-spiritual-bond-14",
+          "name": "Spiritual Bond",
+          "level": 14,
+          "type": "archetype",
+          "summary": "When damage would reduce the death druid below 0 hit points, the phantom can sacrifice hit points to prevent an equal amount of that damage while manifested in ectoplasmic form or within the death druid's consciousness."
         }
       ]
     }
@@ -57,8 +81,37 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Death%20Druid"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Phantom emotional focus, full level-scaled companion statistics, Etheric Tether, Bonded Manifestation rounds, and Spiritual Bond rules are automated."
+  ],
+  "companionGrants": [
+    {
+      "id": "phantom",
+      "kind": "phantom",
+      "label": "phantom",
+      "sourceFeatureId": "druid-death-druid-phantom-1",
+      "optionFeatureId": "druid-death-druid-phantom-1",
+      "minimumLevel": 1,
+      "rules": [
+        "The phantom can manifest fully in ectoplasmic or incorporeal form after a 1-minute ritual.",
+        "Etheric Tether limits the manifested phantom to 50 feet from the death druid.",
+        "The phantom cannot manifest while an eidolon or shadow companion belonging to the death druid is manifested.",
+        "When the phantom's unfinished business is resolved, a replacement phantom arrives during the next week."
+      ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-death-druid-bonded-manifestation-4",
+      "resourceId": "bondedManifestation",
+      "label": "Bonded Manifestation",
+      "unit": "round",
+      "operation": "replace",
+      "minimumLevel": 4,
+      "base": 3,
+      "levelMultiplier": 1,
+      "minimum": 0
+    }
   ]
 }
