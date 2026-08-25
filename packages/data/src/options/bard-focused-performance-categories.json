@@ -1,0 +1,24 @@
+{
+  "id": "bard-focused-performance-categories",
+  "name": "Focused Performance Categories",
+  "classIds": ["bard"],
+  "optionDefaults": {
+    "groupId": "bard-focused-performance-categories",
+    "classIds": ["bard"],
+    "minimumLevel": 2,
+    "prerequisites": [],
+    "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Pitax%20%20Academy%20of%20Grand%20Arts" }
+  },
+  "options": [
+    { "id": "bard-focused-performance-act", "name": "Act", "benefit": "Extra Performance bonus rounds may be used only with Perform (act)." },
+    { "id": "bard-focused-performance-comedy", "name": "Comedy", "benefit": "Extra Performance bonus rounds may be used only with Perform (comedy)." },
+    { "id": "bard-focused-performance-dance", "name": "Dance", "benefit": "Extra Performance bonus rounds may be used only with Perform (dance)." },
+    { "id": "bard-focused-performance-keyboard", "name": "Keyboard Instruments", "benefit": "Extra Performance bonus rounds may be used only with Perform (keyboard instruments)." },
+    { "id": "bard-focused-performance-oratory", "name": "Oratory", "benefit": "Extra Performance bonus rounds may be used only with Perform (oratory)." },
+    { "id": "bard-focused-performance-percussion", "name": "Percussion", "benefit": "Extra Performance bonus rounds may be used only with Perform (percussion)." },
+    { "id": "bard-focused-performance-sing", "name": "Sing", "benefit": "Extra Performance bonus rounds may be used only with Perform (sing)." },
+    { "id": "bard-focused-performance-string", "name": "String Instruments", "benefit": "Extra Performance bonus rounds may be used only with Perform (string instruments)." },
+    { "id": "bard-focused-performance-wind", "name": "Wind Instruments", "benefit": "Extra Performance bonus rounds may be used only with Perform (wind instruments)." }
+  ],
+  "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Pitax%20%20Academy%20of%20Grand%20Arts" }
+}

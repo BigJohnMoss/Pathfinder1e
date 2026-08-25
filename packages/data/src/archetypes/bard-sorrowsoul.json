@@ -23,7 +23,204 @@
           "name": "Lyric Sorrow (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A sorrowsoul draws upon grief, rage, and tragedy to fuel his bardic performances. When a sorrowsoul begins a bardic performance, he can choose to alter its effects with lyric sorrow. If he does so, he uses twice the number of rounds of his bardic performance ability as normal, and even if the sorrowsoul has the Lingering Performance feat, the performance’s effects do not last for any additional rounds. At 1st level, a sorrowsoul can use his lyric sorrow in conjunction with inspire courage. When he chooses to do so, he increases his bonuses on saving throws and on weapon attack and damage rolls from +1 to +2, but his other allies receive no benefit. His bonuses when using lyric sorrow with inspire courage increase by 2 at 5th level and every 6 bard levels thereafter, to a maximum of +8 at 17th level. At 12th level, a sorrowsoul can use his lyric sorrow ability in conjunction with inspire greatness to grant himself 3 bonus Hit Dice, a +3 competence bonus on attack rolls, and a +2 competence bonus on Fortitude saves; if he does so, inspire greatness only affects him, not any other allies. At 15th level, a sorrowsoul can use his lyric sorrow ability in conjunction with the inspire heroics bardic performance. When using the lyric sorrow version of this performance, a sorrowsoul gains fast healing 5 and benefits from a 50% miss chance, as if under the effects of displacement, in addition to the standard bonuses conferred by this bardic performance, but if he does so, inspire heroics only affects him, not any other allies. This ability alters bardic performance and replaces soothing performance and versatile performance."
+          "summary": "A sorrowsoul draws upon grief, rage, and tragedy to fuel his bardic performances. When a sorrowsoul begins a bardic performance, he can choose to alter its effects with lyric sorrow. If he does so, he uses twice the number of rounds of his bardic performance ability as normal, and even if the sorrowsoul has the Lingering Performance feat, the performance’s effects do not last for any additional rounds. At 1st level, a sorrowsoul can use his lyric sorrow in conjunction with inspire courage. When he chooses to do so, he increases his bonuses on saving throws and on weapon attack and damage rolls from +1 to +2, but his other allies receive no benefit. His bonuses when using lyric sorrow with inspire courage increase by 2 at 5th level and every 6 bard levels thereafter, to a maximum of +8 at 17th level. At 12th level, a sorrowsoul can use his lyric sorrow ability in conjunction with inspire greatness to grant himself 3 bonus Hit Dice, a +3 competence bonus on attack rolls, and a +2 competence bonus on Fortitude saves; if he does so, inspire greatness only affects him, not any other allies. At 15th level, a sorrowsoul can use his lyric sorrow ability in conjunction with the inspire heroics bardic performance. When using the lyric sorrow version of this performance, a sorrowsoul gains fast healing 5 and benefits from a 50% miss chance, as if under the effects of displacement, in addition to the standard bonuses conferred by this bardic performance, but if he does so, inspire heroics only affects him, not any other allies. This ability alters bardic performance and replaces soothing performance and versatile performance.",
+          "resourceActions": [
+            {
+              "id": "sorrowsoul-lyric-sorrow",
+              "label": "Begin Lyric Sorrow",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Altered performance",
+              "modes": [
+                {
+                  "id": "courage-2",
+                  "label": "Inspire Courage +2",
+                  "maximumLevel": 4,
+                  "summary": "Self-only +2 bonuses.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrowsAgainstCharmAndFear",
+                      "bonus": 2,
+                      "label": "Lyric Sorrow Courage +2 — saves",
+                      "description": "Self-only +2 morale bonus against charm and fear."
+                    },
+                    {
+                      "target": "attackRolls",
+                      "bonus": 2,
+                      "label": "Lyric Sorrow Courage +2 — attacks",
+                      "description": "Self-only +2 morale bonus on weapon attacks."
+                    },
+                    {
+                      "target": "weaponDamageRolls",
+                      "bonus": 2,
+                      "label": "Lyric Sorrow Courage +2 — damage",
+                      "description": "Self-only +2 morale bonus on weapon damage."
+                    }
+                  ]
+                },
+                {
+                  "id": "courage-4",
+                  "label": "Inspire Courage +4",
+                  "minimumLevel": 5,
+                  "maximumLevel": 10,
+                  "summary": "Self-only +4 bonuses.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrowsAgainstCharmAndFear",
+                      "bonus": 4,
+                      "label": "Lyric Sorrow Courage +4 — saves",
+                      "description": "Self-only +4 morale bonus against charm and fear."
+                    },
+                    {
+                      "target": "attackRolls",
+                      "bonus": 4,
+                      "label": "Lyric Sorrow Courage +4 — attacks",
+                      "description": "Self-only +4 morale bonus on weapon attacks."
+                    },
+                    {
+                      "target": "weaponDamageRolls",
+                      "bonus": 4,
+                      "label": "Lyric Sorrow Courage +4 — damage",
+                      "description": "Self-only +4 morale bonus on weapon damage."
+                    }
+                  ]
+                },
+                {
+                  "id": "courage-6",
+                  "label": "Inspire Courage +6",
+                  "minimumLevel": 11,
+                  "maximumLevel": 16,
+                  "summary": "Self-only +6 bonuses.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrowsAgainstCharmAndFear",
+                      "bonus": 6,
+                      "label": "Lyric Sorrow Courage +6 — saves",
+                      "description": "Self-only +6 morale bonus against charm and fear."
+                    },
+                    {
+                      "target": "attackRolls",
+                      "bonus": 6,
+                      "label": "Lyric Sorrow Courage +6 — attacks",
+                      "description": "Self-only +6 morale bonus on weapon attacks."
+                    },
+                    {
+                      "target": "weaponDamageRolls",
+                      "bonus": 6,
+                      "label": "Lyric Sorrow Courage +6 — damage",
+                      "description": "Self-only +6 morale bonus on weapon damage."
+                    }
+                  ]
+                },
+                {
+                  "id": "courage-8",
+                  "label": "Inspire Courage +8",
+                  "minimumLevel": 17,
+                  "summary": "Self-only +8 bonuses.",
+                  "activeEffects": [
+                    {
+                      "target": "savingThrowsAgainstCharmAndFear",
+                      "bonus": 8,
+                      "label": "Lyric Sorrow Courage +8 — saves",
+                      "description": "Self-only +8 morale bonus against charm and fear."
+                    },
+                    {
+                      "target": "attackRolls",
+                      "bonus": 8,
+                      "label": "Lyric Sorrow Courage +8 — attacks",
+                      "description": "Self-only +8 morale bonus on weapon attacks."
+                    },
+                    {
+                      "target": "weaponDamageRolls",
+                      "bonus": 8,
+                      "label": "Lyric Sorrow Courage +8 — damage",
+                      "description": "Self-only +8 morale bonus on weapon damage."
+                    }
+                  ]
+                },
+                {
+                  "id": "greatness",
+                  "label": "Inspire Greatness",
+                  "minimumLevel": 12,
+                  "summary": "Self-only 3 bonus Hit Dice, +3 attacks, and +2 Fortitude.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Lyric Sorrow Greatness — bonus Hit Dice",
+                      "description": "Gain 3 bonus Hit Dice while active."
+                    },
+                    {
+                      "target": "attackRolls",
+                      "bonus": 3,
+                      "label": "Lyric Sorrow Greatness — attacks",
+                      "description": "+3 competence bonus on attacks."
+                    },
+                    {
+                      "target": "fortitude",
+                      "bonus": 2,
+                      "label": "Lyric Sorrow Greatness — Fortitude",
+                      "description": "+2 competence bonus on Fortitude saves."
+                    }
+                  ]
+                },
+                {
+                  "id": "heroics",
+                  "label": "Inspire Heroics",
+                  "minimumLevel": 15,
+                  "summary": "Self-only standard +4 AC/saves, fast healing 5, and 50% displacement miss chance.",
+                  "activeEffects": [
+                    {
+                      "target": "armorClass",
+                      "bonus": 4,
+                      "label": "Lyric Sorrow Heroics — AC",
+                      "description": "+4 dodge bonus to AC plus a 50% displacement miss chance."
+                    },
+                    {
+                      "target": "savingThrows",
+                      "bonus": 4,
+                      "label": "Lyric Sorrow Heroics — saves",
+                      "description": "+4 morale bonus on saving throws."
+                    },
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Lyric Sorrow Heroics — fast healing and displacement",
+                      "description": "Fast healing 5 and a 50% miss chance as displacement.",
+                      "fastHealing": 5
+                    }
+                  ]
+                }
+              ],
+              "activeEffect": {
+                "name": "Lyric Sorrow",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "defaultRounds": 1,
+                "replaceExisting": true,
+                "description": "Self-only altered performance; spends twice the usual rounds and cannot linger."
+              },
+              "summary": "Spend two bardic performance rounds per round. Lingering Performance does not extend this effect."
+            }
+          ]
         },
         {
           "id": "bard-sorrowsoul-darkness-denied-ex-2",
@@ -47,8 +244,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Sorrowsoul"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "All Lyric Sorrow tiers, self-only restrictions, doubled cost, non-lingering rule, bonus Hit Dice tracker, exact bonuses, fast healing, and displacement are automated alongside Darkness Denied and Spurn Harm."
   ]
 }

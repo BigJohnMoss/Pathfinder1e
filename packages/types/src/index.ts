@@ -240,7 +240,7 @@ export interface ClassFeatureOccurrence {
       enemySaveModifier: "fortitude" | "reflex" | "will";
     };
     modeLabel?: string;
-    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; label: string; description: string }> }>;
+    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; label: string; description: string; fastHealing?: number }> }>;
     featSelection?: {
       label: string;
       featType: string;
