@@ -1,0 +1,1274 @@
+{
+  "id": "bard-serpent-mind-curse-spells",
+  "name": "Serpent of the Mind Curse Spells",
+  "classIds": [
+    "bard"
+  ],
+  "options": [
+    {
+      "id": "bard-serpent-mind-later-spell-brand",
+      "name": "Brand",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Cantrip curse spell added to Bard spells known. Creates permanent brand on target creature.",
+      "spellId": "later-spell-brand",
+      "spellLevel": 0,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 207,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Brand"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-bleed-glory",
+      "name": "Bleed Glory",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "1st-level curse spell added to Bard spells known. Increase the cost to use mythic power.",
+      "spellId": "bleed-glory",
+      "spellLevel": 1,
+      "source": {
+        "title": "Mythic Adventures",
+        "page": 113,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bleed%20Glory"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-brand-of-conformity",
+      "name": "Brand of Conformity",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "1st-level curse spell added to Bard spells known. Brand a target with a mark that takes away its languages",
+      "spellId": "later-spell-brand-of-conformity",
+      "spellLevel": 1,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 97,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Brand%20of%20Conformity"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-crafters-curse",
+      "name": "Crafter's Curse",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "1st-level curse spell added to Bard spells known. Subject takes –5 on Craft skill checks.",
+      "spellId": "crafters-curse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 213,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Crafter's%20Curse"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-hex-vulnerability",
+      "name": "Hex Vulnerability",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "1st-level curse spell added to Bard spells known. Reuse a hex on a specific target.",
+      "spellId": "later-spell-hex-vulnerability",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 184,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hex%20Vulnerability"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-itching-curse",
+      "name": "Itching Curse",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "1st-level curse spell added to Bard spells known. Creature takes -1 penalty to attack, saves, skill checks, and ability checks",
+      "spellId": "itching-curse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Itching%20Curse"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-night-blindness",
+      "name": "Night Blindness",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "1st-level curse spell added to Bard spells known. Impair target’s vision as if it were darker.",
+      "spellId": "night-blindness",
+      "spellLevel": 1,
+      "source": {
+        "title": "Black Markets",
+        "page": 19,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Night%20Blindness"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-undines-curse",
+      "name": "Undine's Curse",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "1st-level curse spell added to Bard spells known. The target loses it’s body’s natural ability to breathe automatically.",
+      "spellId": "undines-curse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 179,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Undine's%20Curse"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-arcane-disruption",
+      "name": "Arcane Disruption",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Make it difficult for others to cast arcane spells.",
+      "spellId": "arcane-disruption",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Class Origins",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Arcane%20Disruption"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-beacon-of-guilt",
+      "name": "Beacon of Guilt",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Cursed object highlights creatures that attempt to take it.",
+      "spellId": "beacon-of-guilt",
+      "spellLevel": 2,
+      "source": {
+        "title": "Villain Codex",
+        "page": 44,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Beacon%20of%20Guilt"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-bestow-curse",
+      "name": "Bestow Curse",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. –6 to an ability score; –4 on attack rolls, saves, and checks; or 50% chance of losing each action.",
+      "spellId": "bestow-curse",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 247,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bestow%20Curse"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-blindness-deafness",
+      "name": "Blindness/Deafness",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Makes subject blinded or deafened.",
+      "spellId": "blindness-deafness",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 250,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blindness%2FDeafness"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-brand-of-hobbling",
+      "name": "Brand of Hobbling",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Brand a target with a mark that cripples its movement",
+      "spellId": "later-spell-brand-of-hobbling",
+      "spellLevel": 2,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 98,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Brand%20of%20Hobbling"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-contest-of-skill",
+      "name": "Contest of Skill",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Cause two creatures to automatically fail to confirm critical hits",
+      "spellId": "later-spell-contest-of-skill",
+      "spellLevel": 2,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contest%20of%20Skill"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-covetous-urge",
+      "name": "Covetous Urge",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Target is compelled to steal valuable objects",
+      "spellId": "covetous-urge",
+      "spellLevel": 2,
+      "source": {
+        "title": "Villain Codex",
+        "page": 8,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Covetous%20Urge"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-curse-of-keeping",
+      "name": "Curse of Keeping",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Curse a target with the inability to sell, barter, or give away any item they own.",
+      "spellId": "later-spell-curse-of-keeping",
+      "spellLevel": 2,
+      "source": {
+        "title": "Black Markets",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20Keeping"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-terrain-lesser",
+      "name": "Curse Terrain, Lesser",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Curse an area with three mild hazards",
+      "spellId": "curse-terrain-lesser",
+      "spellLevel": 2,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20Terrain%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-disfiguring-touch",
+      "name": "Disfiguring Touch",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Target becomes disfigured.",
+      "spellId": "disfiguring-touch",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 217,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Disfiguring%20Touch"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-fair-is-foul",
+      "name": "Fair is Foul",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Curse someone with a disfiguring or painful mutation.",
+      "spellId": "fair-is-foul",
+      "spellLevel": 2,
+      "source": {
+        "title": "Blood of the Coven",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fair%20is%20Foul"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-hag-s-seasoning",
+      "name": "Hag's Seasoning",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Curse a target with a supernatually delicious scent, attracting animalistic monsters.",
+      "spellId": "later-spell-hag-s-seasoning",
+      "spellLevel": 2,
+      "source": {
+        "title": "Blood of the Coven",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hag's%20Seasoning"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-irregular-size",
+      "name": "Irregular Size",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Creature's limb shrivels",
+      "spellId": "irregular-size",
+      "spellLevel": 2,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Irregular%20Size"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-kalistocrats-nightmare",
+      "name": "Kalistocrat's Nightmare",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Any coin a creature touches turns into a copper piece",
+      "spellId": "kalistocrats-nightmare",
+      "spellLevel": 2,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Kalistocrat's%20Nightmare"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-knell-of-the-depths",
+      "name": "Knell of the Depths",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Imbue someone with a curse that causes them to sink quickly in water and suffer a -10 penalty to Swim checks.",
+      "spellId": "knell-of-the-depths",
+      "spellLevel": 2,
+      "source": {
+        "title": "Blood of the Coven",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Knell%20of%20the%20Depths"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-mark-of-blood",
+      "name": "Mark of Blood",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Imbue some of your life force into a creature, being able to permanently detect its location.",
+      "spellId": "mark-of-blood",
+      "spellLevel": 2,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 160,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mark%20of%20Blood"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-mathematical-curse",
+      "name": "Mathematical Curse",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Use the Path of Numbers to place a mathematical curse on someone.",
+      "spellId": "mathematical-curse",
+      "spellLevel": 2,
+      "source": {
+        "title": "Occult Mysteries",
+        "page": 51,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mathematical%20Curse"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-mythic-severance",
+      "name": "Mythic Severance",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Restrict target’s access to its mythic power.",
+      "spellId": "mythic-severance",
+      "spellLevel": 2,
+      "source": {
+        "title": "Mythic Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mythic%20Severance"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-open-book",
+      "name": "Open Book",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Make it permanently easier to learn more about a target.",
+      "spellId": "open-book",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 220,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Open%20Book"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-oracle-s-burden",
+      "name": "Oracle's Burden",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Creature is affected by negative oracle's curse effects.",
+      "spellId": "later-spell-oracle-s-burden",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 234,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Oracle's%20Burden"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-puzzle-box",
+      "name": "Puzzle Box",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Target forgets how to use commonly used objects.",
+      "spellId": "puzzle-box",
+      "spellLevel": 2,
+      "source": {
+        "title": "Inner Sea Monster Codex",
+        "page": 41,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Puzzle%20Box"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-spellcurse",
+      "name": "Spellcurse",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Target takes 1d6 damage for each spell affecting it",
+      "spellId": "later-spell-spellcurse",
+      "spellLevel": 2,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 6,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spellcurse"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-suns-disdain",
+      "name": "Sun's Disdain",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Curse a creature, giving it light blindness and making it susceptible to light spells",
+      "spellId": "suns-disdain",
+      "spellLevel": 2,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sun's%20Disdain"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-violent-accident",
+      "name": "Violent Accident",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "2nd-level curse spell added to Bard spells known. Curse a target to have a lethal accident in the near future",
+      "spellId": "later-spell-violent-accident",
+      "spellLevel": 2,
+      "source": {
+        "title": "Inner Sea Intrigue",
+        "page": 63,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Violent%20Accident"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-accursed-glare",
+      "name": "Accursed Glare",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Channel a fell curse through your gaze.",
+      "spellId": "accursed-glare",
+      "spellLevel": 3,
+      "source": {
+        "title": "Blood of the Moon",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Accursed%20Glare"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-calamitous-flailing",
+      "name": "Calamitous Flailing",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Cause the target’s attacks to gain a miss chance.",
+      "spellId": "calamitous-flailing",
+      "spellLevel": 3,
+      "source": {
+        "title": "Blood of the Coven",
+        "page": 20,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Calamitous%20Flailing"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-conditional-curse",
+      "name": "Conditional Curse",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Bestow a curse that is difficult to remove without fulfilling the condition.",
+      "spellId": "conditional-curse",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 206,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Conditional%20Curse"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-of-disgust",
+      "name": "Curse of Disgust",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Target is sickened while viewing trigger.",
+      "spellId": "curse-of-disgust",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 215,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20Disgust"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-of-dragonflies",
+      "name": "Curse of Dragonflies",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Target a creature with a curse that impacts its ability to fly.",
+      "spellId": "curse-of-dragonflies",
+      "spellLevel": 3,
+      "source": {
+        "title": "Blood of the Coven",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20Dragonflies"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-cursed-treasure",
+      "name": "Cursed Treasure",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Target object curses the next creature to touch it",
+      "spellId": "cursed-treasure",
+      "spellLevel": 3,
+      "source": {
+        "title": "Villain Codex",
+        "page": 188,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cursed%20Treasure"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-eldritch-fever",
+      "name": "Eldritch Fever",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Target gains the eldritch ague spellblight.",
+      "spellId": "eldritch-fever",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Eldritch%20Fever"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-flexile-curse",
+      "name": "Flexile Curse",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Creature's armor and shield lose 1 AC and hardness/hour",
+      "spellId": "flexile-curse",
+      "spellLevel": 3,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flexile%20Curse"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-geas-lesser",
+      "name": "Geas, Lesser",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Commands subject of 7 HD or less.",
+      "spellId": "geas-lesser",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 288,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Geas%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-mark-of-obvious-ethics",
+      "name": "Mark of Obvious Ethics",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Other creatures can determine the target’s alignment.",
+      "spellId": "later-spell-mark-of-obvious-ethics",
+      "spellLevel": 3,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 187,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mark%20of%20Obvious%20Ethics"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-nature-s-exile",
+      "name": "Nature's Exile",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Gives subject –10 on Survival checks.",
+      "spellId": "later-spell-nature-s-exile",
+      "spellLevel": 3,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 233,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Nature's%20Exile"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-retributive-reparations",
+      "name": "Retributive Reparations",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Creatures that take this item become cursed with fatigue.",
+      "spellId": "later-spell-retributive-reparations",
+      "spellLevel": 3,
+      "source": {
+        "title": "Occult Origins",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Retributive%20Reparations"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-teratoid-caress",
+      "name": "Teratoid Caress",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "3rd-level curse spell added to Bard spells known. Imbue a creature with disfiguring abyssal energy, harming them when they use celestial or healing magic",
+      "spellId": "later-spell-teratoid-caress",
+      "spellLevel": 3,
+      "source": {
+        "title": "Pathfinder Comics #10",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Teratoid%20Caress"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-alaznists-jinx",
+      "name": "Alaznist's Jinx",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Inlfict the spell burn spellblight",
+      "spellId": "alaznists-jinx",
+      "spellLevel": 4,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Alaznist's%20Jinx"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-brand-of-tracking",
+      "name": "Brand of Tracking",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Brand a target with a mark that allows you to track it",
+      "spellId": "later-spell-brand-of-tracking",
+      "spellLevel": 4,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 98,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Brand%20of%20Tracking"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-brand-greater",
+      "name": "Brand, Greater",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. As brand , but brand glows when near your holy symbol.",
+      "spellId": "later-spell-brand-greater",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 207,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Brand%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-of-befouled-fortune",
+      "name": "Curse of Befouled Fortune",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Target can't gain the benefit of any luck ability.",
+      "spellId": "curse-of-befouled-fortune",
+      "spellLevel": 4,
+      "source": {
+        "title": "Blood of the Beast",
+        "page": 7,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20Befouled%20Fortune"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-of-burning-sleep",
+      "name": "Curse of Burning Sleep",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Creature catches fire the next time it sleeps for an hour.",
+      "spellId": "curse-of-burning-sleep",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 179,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20Burning%20Sleep"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-of-magic-negation",
+      "name": "Curse of Magic Negation",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Target gains the negated spellblight.",
+      "spellId": "curse-of-magic-negation",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 215,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20Magic%20Negation"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-curse-of-the-outcast",
+      "name": "Curse of the Outcast",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Curse someone to rub people the wrong way.",
+      "spellId": "later-spell-curse-of-the-outcast",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 209,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20the%20Outcast"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-terrain",
+      "name": "Curse Terrain",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Curse an area with four hazards",
+      "spellId": "curse-terrain",
+      "spellLevel": 4,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20Terrain"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-major",
+      "name": "Curse, Major",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. As bestow curse, but harder to remove.",
+      "spellId": "curse-major",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 215,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%2C%20Major"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-infuse-effigy",
+      "name": "Infuse Effigy",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Infuse an effigy with a powerful curse.",
+      "spellId": "infuse-effigy",
+      "spellLevel": 4,
+      "source": {
+        "title": "Lands of the Linnorm Kings",
+        "page": 48,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Infuse%20Effigy"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-malediction",
+      "name": "Malediction",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Banish a soul to Hell if it dies within the next minute.",
+      "spellId": "later-spell-malediction",
+      "spellLevel": 4,
+      "source": {
+        "title": "Book of the Damned",
+        "page": 184,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Malediction"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-mark-of-justice",
+      "name": "Mark of Justice",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Designate an action that triggers a curse on the subject.",
+      "spellId": "mark-of-justice",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 312,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mark%20of%20Justice"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-mark-of-the-reptile-god",
+      "name": "Mark of the Reptile God",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Mark a creature with an acidic curse.",
+      "spellId": "later-spell-mark-of-the-reptile-god",
+      "spellLevel": 4,
+      "source": {
+        "title": "Monster Codex",
+        "page": 213,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mark%20of%20the%20Reptile%20God"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-project-weakness",
+      "name": "Project Weakness",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Curse the target with the weaknesses of your vampirism.",
+      "spellId": "project-weakness",
+      "spellLevel": 4,
+      "source": {
+        "title": "Blood of the Night",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Project%20Weakness"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-rest-eternal",
+      "name": "Rest Eternal",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Dead creature cannot be revived.",
+      "spellId": "later-spell-rest-eternal",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 238,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rest%20Eternal"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-rune-of-ruin",
+      "name": "Rune of Ruin",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "4th-level curse spell added to Bard spells known. Curse a magic item, weakening it and causing its magical qualities to fail half of the time.",
+      "spellId": "rune-of-ruin",
+      "spellLevel": 4,
+      "source": {
+        "title": "Arcane Anthology",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rune%20of%20Ruin"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-befuddled-combatant",
+      "name": "Befuddled Combatant",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "5th-level curse spell added to Bard spells known. Curse a creature to weaken the DCs of its abilities and deal minimum damage with its attacks",
+      "spellId": "befuddled-combatant",
+      "spellLevel": 5,
+      "source": {
+        "title": "Healer's Handbook",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Befuddled%20Combatant"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-geas-quest",
+      "name": "Geas/Quest",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "5th-level curse spell added to Bard spells known. As lesser geas, but affects any creature.",
+      "spellId": "geas-quest",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 288,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Geas%2FQuest"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-pox-of-rumors",
+      "name": "Pox of Rumors",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "5th-level curse spell added to Bard spells known. Curse a creature to attract nasty rumors.",
+      "spellId": "pox-of-rumors",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 222,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Pox%20of%20Rumors"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-suns-disdain-mass",
+      "name": "Sun's Disdain, Mass",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "5th-level curse spell added to Bard spells known. As sun's disdain, but targeting multiple creatures",
+      "spellId": "suns-disdain-mass",
+      "spellLevel": 5,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sun's%20Disdain%2C%20Mass"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-curse-terrain-greater",
+      "name": "Curse Terrain, Greater",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "6th-level curse spell added to Bard spells known. Curse an area with six dangerous hazards",
+      "spellId": "curse-terrain-greater",
+      "spellLevel": 6,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20Terrain%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-life-of-crime",
+      "name": "Life of Crime",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "6th-level curse spell added to Bard spells known. Permanently turn someone into a crazed criminal.",
+      "spellId": "life-of-crime",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Life%20of%20Crime"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-lost-legacy",
+      "name": "Lost Legacy",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "6th-level curse spell added to Bard spells known. Target cannot leave a lasting impression on other creatures",
+      "spellId": "lost-legacy",
+      "spellLevel": 6,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Lost%20Legacy"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-prediction-of-failure",
+      "name": "Prediction of Failure",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "6th-level curse spell added to Bard spells known. Target is permanently shaken and sickened, and may gain a spellblight.",
+      "spellId": "prediction-of-failure",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 232,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Prediction%20of%20Failure"
+      }
+    },
+    {
+      "id": "bard-serpent-mind-later-spell-rotting-alliance",
+      "name": "Rotting Alliance",
+      "groupId": "bard-serpent-mind-curse-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "6th-level curse spell added to Bard spells known. Creatures waste away while close to one another",
+      "spellId": "later-spell-rotting-alliance",
+      "spellLevel": 6,
+      "source": {
+        "title": "Inner Sea Intrigue",
+        "page": 61,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rotting%20Alliance"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Disciple%20of%20the%20Forked%20Tongue"
+  }
+}

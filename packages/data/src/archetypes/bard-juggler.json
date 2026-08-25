@@ -32,14 +32,167 @@
           "name": "Fast Reactions (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a juggler gains Deflect Arrows as a bonus feat. At 5th level, he gains Snatch Arrows as a bonus feat. The juggler doesn’t need to meet the prerequisites for these feats. The juggler can use the ability granted by these feats an additional time each round at 11th level (with a –5 penalty on his second attack roll) and at 17th level (with a –10 penalty on his third attack roll). This ability replaces bardic knowledge and lore master."
+          "summary": "At 1st level, a juggler gains Deflect Arrows as a bonus feat. At 5th level, he gains Snatch Arrows as a bonus feat. The juggler doesn’t need to meet the prerequisites for these feats. The juggler can use the ability granted by these feats an additional time each round at 11th level (with a –5 penalty on his second attack roll) and at 17th level (with a –10 penalty on his third attack roll). This ability replaces bardic knowledge and lore master.",
+          "resourceActions": [
+            {
+              "id": "juggler-second-reaction",
+              "label": "Roll second Fast Reaction",
+              "minimumLevel": 11,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Second deflection or snatch",
+                "diceCountByLevel": [
+                  {
+                    "level": 11,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 11,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Base attack modifier",
+                "flatModifierByLevel": [
+                  {
+                    "level": 11,
+                    "modifier": -5
+                  }
+                ],
+                "targetDcInputLabel": "Incoming attack result",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "deflected or snatched"
+                  }
+                ],
+                "failureLabel": "not deflected"
+              },
+              "summary": "Resolve the additional level-11 reaction with its −5 attack-roll penalty."
+            },
+            {
+              "id": "juggler-third-reaction",
+              "label": "Roll third Fast Reaction",
+              "minimumLevel": 17,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Third deflection or snatch",
+                "diceCountByLevel": [
+                  {
+                    "level": 17,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 17,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Base attack modifier",
+                "flatModifierByLevel": [
+                  {
+                    "level": 17,
+                    "modifier": -10
+                  }
+                ],
+                "targetDcInputLabel": "Incoming attack result",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "deflected or snatched"
+                  }
+                ],
+                "failureLabel": "not deflected"
+              },
+              "summary": "Resolve the additional level-17 reaction with its −10 attack-roll penalty."
+            }
+          ]
         },
         {
           "id": "bard-juggler-combat-juggling-ex-2",
           "name": "Combat Juggling (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a juggler can hold and wield (in other words, “juggle”) up to three items or weapons in his hands. The juggler must be able to hold and wield an object in one hand in order to juggle it. This ability doesn’t grant the juggler additional attacks, though it does allow him to use different weapons as part of a full attack. As long as he is juggling fewer than three objects, the juggler is considered to have a free hand (for the purposes of drawing a weapon, using somatic components, using Deflect Arrows , and so on). At 6th level and every 4 levels thereafter, the maximum number of objects the juggler can juggle increases by one, to a maximum of seven objects at 18th level. If the juggler is affected by any action or condition that would require a concentration check while he is juggling, he must attempt a Sleight of Hand check to continue juggling and avoid losing concentration. The check’s DC is the same as a concentration check, treating the spell level as twice the number of objects being juggled. If the juggler fails his Sleight of Hand check, he drops all juggled objects but one, determined randomly. This ability replaces versatile performance."
+          "summary": "At 2nd level, a juggler can hold and wield (in other words, “juggle”) up to three items or weapons in his hands. The juggler must be able to hold and wield an object in one hand in order to juggle it. This ability doesn’t grant the juggler additional attacks, though it does allow him to use different weapons as part of a full attack. As long as he is juggling fewer than three objects, the juggler is considered to have a free hand (for the purposes of drawing a weapon, using somatic components, using Deflect Arrows , and so on). At 6th level and every 4 levels thereafter, the maximum number of objects the juggler can juggle increases by one, to a maximum of seven objects at 18th level. If the juggler is affected by any action or condition that would require a concentration check while he is juggling, he must attempt a Sleight of Hand check to continue juggling and avoid losing concentration. The check’s DC is the same as a concentration check, treating the spell level as twice the number of objects being juggled. If the juggler fails his Sleight of Hand check, he drops all juggled objects but one, determined randomly. This ability replaces versatile performance.",
+          "resourceActions": [
+            {
+              "id": "juggler-combat-juggling",
+              "label": "Begin Combat Juggling",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "variableCost": {
+                "label": "Objects juggled",
+                "minimum": 1,
+                "maximumByLevel": [
+                  {
+                    "level": 2,
+                    "maximum": 3
+                  },
+                  {
+                    "level": 6,
+                    "maximum": 4
+                  },
+                  {
+                    "level": 10,
+                    "maximum": 5
+                  },
+                  {
+                    "level": 14,
+                    "maximum": 6
+                  },
+                  {
+                    "level": 18,
+                    "maximum": 7
+                  }
+                ]
+              },
+              "activeEffect": {
+                "name": "Combat Juggling",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Juggling {amount} one-handed objects. Fewer than three counts as a free hand; this grants weapon access, not additional attacks. A failed required Sleight of Hand check drops all but one object.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "The object selector automatically follows the 3-to-7 level progression."
+            },
+            {
+              "id": "juggler-maintain-concentration",
+              "label": "Maintain Combat Juggling",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Sleight of Hand",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Sleight of Hand modifier",
+                "targetDcInputLabel": "Adjusted concentration DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "continue juggling"
+                  }
+                ],
+                "failureLabel": "drop all juggled objects but one"
+              },
+              "summary": "Enter the concentration DC after treating spell level as twice the number of objects, then roll Sleight of Hand."
+            }
+          ]
         },
         {
           "id": "bard-juggler-evasion-ex-2",
@@ -56,8 +209,27 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Juggler"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Replacement proficiencies, both bonus feats, additional Fast Reaction rolls and penalties, Combat Juggling capacity/free-hand/concentration workflow, Evasion, and Improved Evasion are automated."
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "bard-juggler-evasion-ex-2",
+      "kind": "evasion",
+      "label": "Evasion",
+      "minimumLevel": 2,
+      "maximumLevel": 11,
+      "base": 0,
+      "qualifier": "evasion"
+    },
+    {
+      "sourceFeatureId": "bard-juggler-evasion-ex-2",
+      "kind": "improvedEvasion",
+      "label": "Improved Evasion",
+      "minimumLevel": 12,
+      "base": 0,
+      "qualifier": "improved evasion"
+    }
   ]
 }
