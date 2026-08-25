@@ -98,6 +98,7 @@ import {
   effectiveSpellcastingLevels,
   featBonuses,
   featPrerequisiteResults,
+  fixedOptionIdsThroughLevel,
   inferArchetypeFeatAlternatives,
   inferArchetypeFeatChoices,
   inferArchetypeGrantedFeats,
@@ -650,6 +651,15 @@ export default function Home() {
       ),
     [classLevels],
   );
+  const effectiveSelectedOptionIds = useMemo(
+    () => [...new Set([
+      ...Object.values(selectedOptions),
+      ...progressionClasses.flatMap((entry) =>
+        fixedOptionIdsThroughLevel(entry, classLevelMap[entry.id] ?? 0),
+      ),
+    ])],
+    [classLevelMap, progressionClasses, selectedOptions],
+  );
   const hasSpellSpecialist = allSelectedArchetypes.some(
     (archetype) => archetype.id === "arcanist-spell-specialist",
   );
@@ -722,12 +732,12 @@ export default function Home() {
   const selectedBloodlineClassSkill =
     selectedOptions["sorcerer-bloodline-class-skill"];
   const selectedOptionClassSkills = useMemo(() => {
-    const selectedIds = new Set(Object.values(selectedOptions));
+    const selectedIds = new Set(effectiveSelectedOptionIds);
     return optionGroups
       .flatMap((group) => group.options)
       .filter((option) => selectedIds.has(option.id))
       .flatMap((option) => option.classSkills ?? []);
-  }, [selectedOptions]);
+  }, [effectiveSelectedOptionIds]);
   const skillCharacterClass = useMemo(() => {
     const bloodlineSkills = selectedBloodline?.classSkill
       ? bloodlineClassSkills(
@@ -1169,12 +1179,12 @@ export default function Home() {
     );
   }, [abilities.strength, allSelectedArchetypes, ancestry.speed, classLevelMap, inventory]);
   const selectedArchetypeConditionalModifiers = useMemo(
-    () => archetypeConditionalModifiers(allSelectedArchetypes, classLevelMap),
-    [allSelectedArchetypes, classLevelMap],
+    () => archetypeConditionalModifiers(allSelectedArchetypes, classLevelMap, combat.abilityModifiers),
+    [allSelectedArchetypes, classLevelMap, combat.abilityModifiers],
   );
   const selectedArchetypeSkillBonuses = useMemo(
-    () => archetypeSkillBonuses(allSelectedArchetypes, classLevelMap),
-    [allSelectedArchetypes, classLevelMap],
+    () => archetypeSkillBonuses(allSelectedArchetypes, classLevelMap, combat.abilityModifiers),
+    [allSelectedArchetypes, classLevelMap, combat.abilityModifiers],
   );
   const selectedArchetypeWeaponProficiencyRules = useMemo(
     () => archetypeWeaponProficiencyRules(allSelectedArchetypes, selectedOptions),
@@ -1316,7 +1326,7 @@ export default function Home() {
   );
   const selectedOptionFeatureIds = useMemo(
     () =>
-      Object.values(selectedOptions)
+      effectiveSelectedOptionIds
         .flatMap((optionId) => [
           optionId,
           optionId.startsWith("domain-") ? "domain" : null,
@@ -1326,7 +1336,7 @@ export default function Home() {
           optionId.includes("mount") ? "mount" : null,
         ])
         .filter((id): id is string => Boolean(id)),
-    [selectedOptions],
+    [effectiveSelectedOptionIds],
   );
   const featContext = useMemo(
     () => ({
@@ -1691,7 +1701,7 @@ export default function Home() {
     const group: (typeof optionGroups)[number] | undefined = baseGroup && alternativeOptions.length
       ? { ...baseGroup, options: [...retainedBaseOptions, ...alternativeOptions.filter((option) => !retainedBaseOptions.some((baseOption) => baseOption.id === option.id))] }
       : baseGroup;
-    const selectedIds = [...selectedFeatIds, ...Object.values(selectedOptions)];
+    const selectedIds = [...selectedFeatIds, ...effectiveSelectedOptionIds];
     const baseOptions =
       group && feature.id === "sacred-servant-deity-1"
         ? group.options.filter((option) =>
@@ -2697,8 +2707,11 @@ export default function Home() {
   };
   const apgDailyResources = classLevels.flatMap(
     ({ classId: resourceClassId, level: resourceClassLevel }) => {
+      const selectedResourceArchetypeIds = resourceClassId === classId
+        ? primaryArchetypeIds
+        : archetypeStacksByClass[resourceClassId] ?? (additionalArchetypeIds[resourceClassId] ? [additionalArchetypeIds[resourceClassId]] : []);
       const resourceArchetypes = archetypes.filter((archetype) =>
-        archetype.classId === resourceClassId && (archetypeStacksByClass[resourceClassId] ?? []).includes(archetype.id)
+        archetype.classId === resourceClassId && selectedResourceArchetypeIds.includes(archetype.id)
       );
       const adjustments = resourceArchetypes.flatMap(resolvedArchetypeResourceAdjustments);
       return Object.entries(
@@ -2708,7 +2721,7 @@ export default function Home() {
           resourceClassLevel,
           combat.abilityModifiers,
           {
-            selectedOptionIds: Object.values(selectedOptions),
+            selectedOptionIds: effectiveSelectedOptionIds,
             casterLevel: effectiveSpellcastingLevelMap[resourceClassId] ?? resourceClassLevel,
             classId: resourceClassId,
             classLevels: classLevelMap,
@@ -2751,7 +2764,7 @@ export default function Home() {
           classLevels,
           combat.abilityModifiers,
           Object.fromEntries(classLevels.map(({ classId }) => [classId, archetypes.filter((archetype) => archetype.classId === classId && (archetypeStacksByClass[classId] ?? []).includes(archetype.id))])),
-          Object.fromEntries(classLevels.map(({ classId, level: classLevel }) => [classId, { selectedOptionIds: Object.values(selectedOptions), casterLevel: effectiveSpellcastingLevelMap[classId] ?? classLevel, classId, classLevels: classLevelMap }])),
+          Object.fromEntries(classLevels.map(({ classId, level: classLevel }) => [classId, { selectedOptionIds: effectiveSelectedOptionIds, casterLevel: effectiveSpellcastingLevelMap[classId] ?? classLevel, classId, classLevels: classLevelMap }])),
         ),
       ),
     [
@@ -3056,7 +3069,7 @@ export default function Home() {
       restrictedBonus={elementalMasterPreparation}
       onDemandSpellCosts={primaryOnDemandSpellCosts}
       requiredPreparedSchool={requiredPreparedSchool(characterClass)}
-      spellAutomation={classSpellAutomation(characterClass, primaryClassLevel, Object.values(selectedOptions))}
+      spellAutomation={classSpellAutomation(characterClass, primaryClassLevel, effectiveSelectedOptionIds)}
       criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
       bondedObjectCastResource={characterClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
       abilityModifiers={combat.abilityModifiers}
@@ -3132,7 +3145,7 @@ export default function Home() {
         restrictedBonus={secondaryElementalMasterPreparation}
         onDemandSpellCosts={secondaryOnDemandSpellCosts}
         requiredPreparedSchool={requiredPreparedSchool(secondaryCharacterClass)}
-        spellAutomation={classSpellAutomation(secondaryCharacterClass, secondaryClassLevel, Object.values(selectedOptions))}
+        spellAutomation={classSpellAutomation(secondaryCharacterClass, secondaryClassLevel, effectiveSelectedOptionIds)}
         criticalStrikeResource={classDailyResources.find((resource) => resource.id === "bladeAdeptCriticalStrike")}
         bondedObjectCastResource={secondaryCharacterClass.features.some((feature) => feature.id === "arcanist-blade-adept-sword-bond-su-1") ? classDailyResources.find((resource) => resource.id === "bladeAdeptSwordBondSpell") : undefined}
         abilityModifiers={combat.abilityModifiers}
@@ -3270,7 +3283,7 @@ export default function Home() {
     inventory,
     coins,
   };
-  const bladeAdeptAdvancementLevel = Object.values(selectedOptions).includes("blade-adept-eldritch-blade")
+  const bladeAdeptAdvancementLevel = effectiveSelectedOptionIds.includes("blade-adept-eldritch-blade")
     ? effectiveSpellcastingLevelMap.arcanist ?? classLevelMap.arcanist ?? 0
     : classLevelMap.arcanist ?? 0;
   const bladeAdeptEnhancement = selectedArchetypes.some((archetype) => archetype.id === "arcanist-blade-adept") && bladeAdeptAdvancementLevel >= 3
@@ -4673,7 +4686,7 @@ export default function Home() {
                 baseAttackBonus={progression.baseAttackBonus}
                 classLevels={classLevelMap}
                 casterLevels={effectiveSpellcastingLevelMap}
-                selectedOptionIds={Object.values(selectedOptions)}
+                selectedOptionIds={effectiveSelectedOptionIds}
                 selectedOptions={selectedOptions}
                 selectedFeats={[...new Set([...selectedFeatIds, ...selectedClassFeatIds, ...activeTemporaryFeatIds])].flatMap((id) => { const feat = feats.find((candidate) => candidate.id === id); return feat ? [{ id: feat.id, name: feat.name, type: feat.type, types: feat.types }] : []; })}
                 featCatalogue={feats}

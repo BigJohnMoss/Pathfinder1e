@@ -31,10 +31,69 @@
           "name": "Revelations",
           "level": 1,
           "type": "archetype",
-          "summary": "A seer must take the following revelations at the listed levels. Natural Divination (Ex) : As the nature mystery revelation. You must take this revelation at 1st level. Gift of Prophecy (Su) : Once per day, you can enter a trance to gain a glimpse of the future. This trance lasts for 1 minute, which must be uninterrupted and during which you can take no other actions. At 3rd level, you gain the benefits of an augury spell with 90% effectiveness. At 5th level, you gain the benefits of a divination spell with 90% effectiveness. At 9th level, the knowledge you gain is equivalent to a commune spell. None of these spell effects require material components. You must take this revelation at 3rd level."
+          "summary": "A seer must take the following revelations at the listed levels. Natural Divination (Ex) : As the nature mystery revelation. You must take this revelation at 1st level. Gift of Prophecy (Su) : Once per day, you can enter a trance to gain a glimpse of the future. This trance lasts for 1 minute, which must be uninterrupted and during which you can take no other actions. At 3rd level, you gain the benefits of an augury spell with 90% effectiveness. At 5th level, you gain the benefits of a divination spell with 90% effectiveness. At 9th level, the knowledge you gain is equivalent to a commune spell. None of these spell effects require material components. You must take this revelation at 3rd level.",
+          "resourceActions": [
+            {
+              "id": "seer-natural-divination-save",
+              "label": "Prepare save divination",
+              "classId": "oracle",
+              "minimumLevel": 1,
+              "resourceId": "seerNaturalDivination",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 1, "actionType": "10-minute" }],
+              "activeEffect": { "name": "Natural Divination — saving throw", "targets": ["savingThrows"], "bonus": 0, "bonusAbilityModifier": "charisma", "description": "Insight bonus equal to Charisma modifier on the next saving throw within 24 hours; declare before rolling.", "defaultRounds": 999, "fixedRounds": true, "consumeOnUse": true, "replaceExisting": true },
+              "summary": "Read fresh entrails for a Charisma-modifier insight bonus on one saving throw in the next 24 hours."
+            },
+            {
+              "id": "seer-natural-divination-skill",
+              "label": "Prepare skill divination",
+              "classId": "oracle",
+              "minimumLevel": 1,
+              "resourceId": "seerNaturalDivination",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 1, "actionType": "10-minute" }],
+              "activeEffect": { "name": "Natural Divination — skill check", "targets": ["skillChecks"], "bonus": 10, "description": "+10 competence bonus on the next skill check within 24 hours; declare before rolling.", "defaultRounds": 999, "fixedRounds": true, "consumeOnUse": true, "replaceExisting": true },
+              "summary": "Interpret the flight of birds for a +10 competence bonus on one skill check in the next 24 hours."
+            },
+            {
+              "id": "seer-natural-divination-initiative",
+              "label": "Prepare initiative divination",
+              "classId": "oracle",
+              "minimumLevel": 1,
+              "resourceId": "seerNaturalDivination",
+              "cost": 1,
+              "actionTypeByLevel": [{ "level": 1, "actionType": "10-minute" }],
+              "activeEffect": { "name": "Natural Divination — initiative", "targets": ["initiative"], "bonus": 4, "description": "+4 insight bonus on the next initiative check within 24 hours; declare before rolling.", "defaultRounds": 999, "fixedRounds": true, "consumeOnUse": true, "replaceExisting": true },
+              "summary": "Read natural marks for a +4 insight bonus on one initiative check in the next 24 hours."
+            },
+            {
+              "id": "seer-gift-of-prophecy",
+              "label": "Enter prophetic trance",
+              "classId": "oracle",
+              "minimumLevel": 3,
+              "resourceId": "seerGiftOfProphecy",
+              "cost": 1,
+              "modeLabel": "Prophecy strength",
+              "modes": [
+                { "id": "augury", "label": "Augury (90% effective)", "summary": "Gain the benefits of augury with 90% effectiveness and no material components.", "minimumLevel": 3, "maximumLevel": 4, "actionType": "1-minute" },
+                { "id": "divination", "label": "Divination (90% effective)", "summary": "Gain the benefits of divination with 90% effectiveness and no material components.", "minimumLevel": 5, "maximumLevel": 8, "actionType": "1-minute" },
+                { "id": "commune", "label": "Commune-equivalent knowledge", "summary": "Gain knowledge equivalent to commune with no material components.", "minimumLevel": 9, "actionType": "1-minute" }
+              ],
+              "confirmations": [{ "id": "uninterrupted", "label": "I can complete the uninterrupted 1-minute trance", "requiredForActivation": true }],
+              "summary": "Use the strongest prophecy available at the current oracle level."
+            }
+          ]
         }
       ]
     }
+  ],
+  "fixedOptionGrants": [
+    { "sourceFeatureId": "oracle-seer-revelations-1", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-natural-divination", "minimumLevel": 1, "label": "Natural Divination" },
+    { "sourceFeatureId": "oracle-seer-revelations-1", "optionGroupId": "oracle-revelations", "optionId": "oracle-revelation-gift-of-prophecy", "minimumLevel": 3, "label": "Gift of Prophecy" }
+  ],
+  "resourceAdjustments": [
+    { "resourceId": "seerNaturalDivination", "label": "Natural Divination", "unit": "use", "operation": "replace", "minimumLevel": 1, "base": 1, "levelDivisor": 4, "minimum": 0, "dedicatedAction": true },
+    { "resourceId": "seerGiftOfProphecy", "label": "Gift of Prophecy", "unit": "use", "operation": "replace", "minimumLevel": 3, "base": 1, "minimum": 0, "maximum": 1, "dedicatedAction": true }
   ],
   "source": {
     "title": "Archives of Nethys",

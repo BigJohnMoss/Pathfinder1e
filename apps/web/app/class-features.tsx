@@ -184,7 +184,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           ? effectUpgrade?.name ?? action.activeEffect?.name
           : selectedActionFeatNames.length ? `${effectUpgrade?.name ?? action.activeEffect?.name} — ${selectedActionFeatNames.join(" + ")}` : effectUpgrade?.name ?? action.activeEffect?.name;
         const tableEffectBonus = action.activeEffect?.bonusByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.bonus;
-        const effectBonus = effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0);
+        const effectBonus = (effectUpgrade?.bonus ?? tableEffectBonus ?? (action.activeEffect ? (action.activeEffect.improvedAtLevel && level >= action.activeEffect.improvedAtLevel ? action.activeEffect.improvedBonus ?? action.activeEffect.bonus : action.activeEffect.bonus) : 0)) + (action.activeEffect?.bonusAbilityModifier ? abilityModifiers[action.activeEffect.bonusAbilityModifier] ?? 0 : 0);
         const additionalActiveEffects = action.activeEffect?.additionalEffectsByLevel?.filter((effect) => effect.minimumLevel <= actionLevel) ?? [];
         const saveLevel = (action.savingThrow?.classId ? classLevels[action.savingThrow.classId] ?? 0 : level) + (action.savingThrow?.levelAdjustment ?? 0);
         const fixedSaveDc = action.savingThrow?.fixedDcByLevel?.filter((step) => step.level <= actionLevel).sort((left, right) => left.level - right.level).at(-1)?.dc;
@@ -256,6 +256,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
               ...(action.activeEffect!.usesSelectedModeAsDamageType && selectedMode ? { damageType: selectedMode.id } : {}),
               ...(effectSkill ? { skillIds: [effectSkill] } : {}),
               ...(action.featSelection?.source === "catalogue" ? { grantedFeatIds: selectedActionFeatIds.filter(Boolean) } : {}),
+              ...(action.activeEffect!.consumeOnUse ? { consumeOnUse: true } : {}),
             }));
             additionalActiveEffects.forEach((effect) => {
               if (action.activeEffect?.replaceExisting) onRemoveEffectByName?.(effect.name);

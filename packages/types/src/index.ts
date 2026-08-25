@@ -343,6 +343,7 @@ export interface ClassFeatureOccurrence {
       name: string;
       targets: ActiveEffectTarget[];
       bonus: number;
+      bonusAbilityModifier?: AbilityName;
       bonusByLevel?: Array<{ level: number; bonus: number }>;
       description?: string;
       improvedAtLevel?: number;
@@ -364,6 +365,7 @@ export interface ClassFeatureOccurrence {
       usesSelectedModeAsDamageType?: boolean;
       applyToAllTargets?: boolean;
       replaceExisting?: boolean;
+      consumeOnUse?: boolean;
       skillOptions?: string[];
       additionalEffectsByLevel?: Array<{
         minimumLevel: number;
@@ -491,6 +493,7 @@ export interface CharacterClass {
   }>;
   arcaneSpellFailure?: ArcaneSpellFailureRules;
   optionGroupAugmentations?: OptionGroupAugmentation[];
+  fixedOptionGrants?: FixedOptionGrant[];
   spellcasting?: {
     ability: "intelligence" | "wisdom" | "charisma";
     tradition?: "arcane" | "divine" | "psychic" | "alchemy";
@@ -604,6 +607,7 @@ export interface CharacterArchetype {
     levelMultiplier?: number;
     minimum?: number;
     maximum?: number;
+    abilityModifier?: AbilityName;
     bonusByLevel?: Array<{ level: number; bonus: number }>;
   }>;
   abilityScoreAdjustments?: Array<{
@@ -631,6 +635,7 @@ export interface CharacterArchetype {
     levelMultiplier?: number;
     minimum?: number;
     maximum?: number;
+    abilityModifier?: AbilityName;
     bonusByLevel?: Array<{ level: number; bonus: number }>;
     condition?: string;
   }>;
@@ -684,6 +689,7 @@ export interface CharacterArchetype {
     partialFeature?: boolean;
   }>;
   optionGroupAugmentations?: OptionGroupAugmentation[];
+  fixedOptionGrants?: FixedOptionGrant[];
   prohibitedOptionIds?: string[];
   prohibitedCompanionKinds?: Array<"animal" | "mount" | "familiar" | "eidolon" | "drake">;
   source: SourceRef;
@@ -740,6 +746,13 @@ export interface OptionGroupAugmentation {
   targetGroupId: string;
   sourceGroupId: string;
   minimumFeatureLevel?: number;
+}
+export interface FixedOptionGrant {
+  sourceFeatureId: string;
+  optionGroupId: string;
+  optionId: string;
+  minimumLevel: number;
+  label: string;
 }
 export interface ProficiencyAdjustment {
   sourceFeatureId?: string;
