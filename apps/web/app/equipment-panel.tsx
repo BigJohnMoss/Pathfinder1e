@@ -138,13 +138,14 @@ export const unarmedStrikeAttack = (baseAttackBonus: number, strengthModifier: n
   };
 };
 
-export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, baseAttackBonus, weaponBonuses = {}, minimumWeaponEnhancements = {}, inventory, coins, onInventoryChange, onCoinsChange }: {
+export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, baseAttackBonus, weaponBonuses = {}, minimumWeaponEnhancements = {}, proficiencyRules = [], inventory, coins, onInventoryChange, onCoinsChange }: {
   strength: number;
   strengthModifier: number;
   dexterityModifier: number;
   baseAttackBonus: number;
   weaponBonuses?: Record<string, { attack: number; damage: number }>;
   minimumWeaponEnhancements?: Record<string, number>;
+  proficiencyRules?: Array<{ label: string; proficiencies: string[]; condition?: string; source: string }>;
   inventory: InventoryEntry[];
   coins: CoinPurse;
   onInventoryChange: (inventory: InventoryEntry[]) => void;
@@ -182,6 +183,13 @@ export function EquipmentPanel({ strength, strengthModifier, dexterityModifier, 
       <label>Add item<select aria-label="Equipment catalogue" value="" onChange={(event) => addItem(event.target.value)}><option value="">{filteredEquipment.length ? `Choose from ${filteredEquipment.length} items` : "No matching equipment"}</option>{filteredEquipment.map((item) => <option key={item.id} value={item.id}>{item.name} — {item.costGp} gp, {item.weight} lb.</option>)}</select></label>
     </div>
     <div className={`load-summary ${load.load}`}><strong>{load.carriedWeight} lb. carried — {load.load} load</strong><span>Light {load.capacity.light} lb. · Medium {load.capacity.medium} lb. · Heavy {load.capacity.heavy} lb.</span></div>
+    {proficiencyRules.length > 0 && <section className="conditional-modifiers" aria-labelledby="archetype-weapon-rules-title">
+      <h3 id="archetype-weapon-rules-title">Archetype weapon rules</h3>
+      <ul>{proficiencyRules.map((rule, index) => <li key={`${rule.source}-${rule.label}-${index}`}>
+        <strong>{rule.label}</strong>
+        <span>{rule.proficiencies.join(", ")}{rule.condition ? ` · ${rule.condition}` : ""} · {rule.source}</span>
+      </li>)}</ul>
+    </section>}
     {inventory.length === 0 ? <p className="empty-tab">No equipment added yet.</p> : <div className="inventory-list">{inventory.map((entry) => {
       const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
       if (!item) return null;

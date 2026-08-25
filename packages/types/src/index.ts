@@ -481,6 +481,14 @@ export interface CharacterClass {
   classSkillAdditions?: string[];
   classSkillRemovals?: string[];
   proficiencyAdjustments?: ProficiencyAdjustment[];
+  weaponUseAdjustments?: Array<{
+    sourceFeatureId?: string;
+    label: string;
+    use: "flurry-of-blows";
+    operation: "add" | "remove";
+    proficiencies: string[];
+    condition?: string;
+  }>;
   arcaneSpellFailure?: ArcaneSpellFailureRules;
   optionGroupAugmentations?: OptionGroupAugmentation[];
   spellcasting?: {
@@ -543,6 +551,22 @@ export interface CharacterArchetype {
   skillRanksPerLevel?: number;
   hitDie?: 6 | 8 | 10 | 12;
   proficiencyAdjustments?: ProficiencyAdjustment[];
+  proficiencyChoices?: Array<{
+    sourceFeatureId?: string;
+    category: "weapon" | "armor" | "shield";
+    operation: "add" | "remove" | "replace";
+    featureId: string;
+    choiceKey: string;
+    condition?: string;
+  }>;
+  weaponUseAdjustments?: Array<{
+    sourceFeatureId?: string;
+    label: string;
+    use: "flurry-of-blows";
+    operation: "add" | "remove";
+    proficiencies: string[];
+    condition?: string;
+  }>;
   arcaneSpellFailure?: ArcaneSpellFailureRules;
   resourceAdjustments?: Array<{
     resourceId: string;
@@ -718,9 +742,11 @@ export interface OptionGroupAugmentation {
   minimumFeatureLevel?: number;
 }
 export interface ProficiencyAdjustment {
+  sourceFeatureId?: string;
   category: "weapon" | "armor" | "shield";
   operation: "add" | "remove" | "replace";
   proficiencies: string[];
+  condition?: string;
 }
 export interface ArcaneSpellFailureRules {
   applies: boolean;

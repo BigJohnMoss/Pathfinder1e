@@ -9,7 +9,7 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 7 |
-| Option groups | 112 |
+| Option groups | 114 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2760 |
@@ -41,7 +41,7 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 | Companions and effective levels | 34 |
 | Spell lists, slots, and casting | 49 |
 | Class skills and skill-rank progressions | 56 |
-| Combat statistics and proficiencies | 56 |
+| Combat statistics and proficiencies | 59 |
 | Deterministic Take 10 and Take 20 skill checks | 17 |
 
 Partial archetypes apply their replacement progression, restrictions, stacking rules, and persistence. Bespoke effects without a shared builder subsystem remain visibly identified for manual handling.
