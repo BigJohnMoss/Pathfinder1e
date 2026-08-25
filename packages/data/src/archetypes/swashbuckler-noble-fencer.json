@@ -20,7 +20,78 @@
           "name": "Deeds",
           "level": 1,
           "type": "archetype",
-          "summary": "A noble fencer gains the following deeds. Social Panache (Ex) : At 1st level, a noble fencer can spend 1 panache point when he attempts a Bluff, Diplomacy, Intimidate, or Sense Motive check to roll 1d6 and add the result to the check. He can do this after he rolls the check but before the result is revealed. If the result of the d6 roll is a natural 6, he rolls another 1d6 and adds it to the check. He can continue to do this as long as he rolls natural 6s, up to a number of times equal to his Charisma modifier (minimum 1). Just before a verbal duel, a noble fencer can spend up to 4 panache points. For each point he spends, he selects a tactic for which he has chosen Bluff, Diplomacy, Intimidate, or Sense Motive as an associated skill and gains an edge he can only use with that tactic. This deed replaces the dodging panache deed. Incredible Aspirations (Ex) : At 7th level, a noble fencer strives for truly amazing results when he uses his derringdo and social panache deeds. As long as he has 1 panache point, the first time he rolls a natural 5 on the 1d6 for those deeds, he can roll another 1d6, subject to the other limitations of the respective deeds. He can still reroll as many rolls of 6 as normal. This deed replaces the superior feint deed. Unshakable Presence (Ex) At 11th level, a noble fencer cloaks himself in the combined bravado of a swashbuckler and a noble, girding himself against anything that attempts to shake his impossible confidence. While he has at least 1 panache point, he cannot be demoralized by the Intimidate skill. This ability replaces the subtle blade deed."
+          "summary": "A noble fencer gains the following deeds. Social Panache (Ex) : At 1st level, a noble fencer can spend 1 panache point when he attempts a Bluff, Diplomacy, Intimidate, or Sense Motive check to roll 1d6 and add the result to the check. He can do this after he rolls the check but before the result is revealed. If the result of the d6 roll is a natural 6, he rolls another 1d6 and adds it to the check. He can continue to do this as long as he rolls natural 6s, up to a number of times equal to his Charisma modifier (minimum 1). Just before a verbal duel, a noble fencer can spend up to 4 panache points. For each point he spends, he selects a tactic for which he has chosen Bluff, Diplomacy, Intimidate, or Sense Motive as an associated skill and gains an edge he can only use with that tactic. This deed replaces the dodging panache deed. Incredible Aspirations (Ex) : At 7th level, a noble fencer strives for truly amazing results when he uses his derringdo and social panache deeds. As long as he has 1 panache point, the first time he rolls a natural 5 on the 1d6 for those deeds, he can roll another 1d6, subject to the other limitations of the respective deeds. He can still reroll as many rolls of 6 as normal. This deed replaces the superior feint deed. Unshakable Presence (Ex) At 11th level, a noble fencer cloaks himself in the combined bravado of a swashbuckler and a noble, girding himself against anything that attempts to shake his impossible confidence. While he has at least 1 panache point, he cannot be demoralized by the Intimidate skill. This ability replaces the subtle blade deed.",
+          "deedRules": [
+            {
+              "id": "social-panache",
+              "name": "Social Panache",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "Spend panache after a listed social check to add an exploding d6, or spend up to 4 before a verbal duel to gain tactic edges.",
+              "resourceId": "panache",
+              "cost": 1,
+              "actionIds": [
+                "noble-fencer-social-panache",
+                "noble-fencer-verbal-duel"
+              ]
+            },
+            {
+              "id": "incredible-aspirations",
+              "name": "Incredible Aspirations",
+              "minimumLevel": 7,
+              "kind": "passive",
+              "summary": "While maintaining panache, the first natural 5 on derring-do or social panache also explodes; natural 6s continue normally.",
+              "resourceId": "panache",
+              "minimumResource": 1
+            },
+            {
+              "id": "unshakable-presence",
+              "name": "Unshakable Presence",
+              "minimumLevel": 11,
+              "kind": "passive",
+              "summary": "While maintaining panache, you cannot be demoralized by Intimidate.",
+              "resourceId": "panache",
+              "minimumResource": 1
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "noble-fencer-social-panache",
+              "label": "Roll Social Panache",
+              "minimumLevel": 1,
+              "resourceId": "panache",
+              "cost": 1,
+              "summary": "Add the d6 to Bluff, Diplomacy, Intimidate, or Sense Motive. Natural 6s explode; from level 7 the first natural 5 also explodes while panache remains.",
+              "diceRoll": {
+                "label": "Social Panache",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 6
+                  }
+                ]
+              }
+            },
+            {
+              "id": "noble-fencer-verbal-duel",
+              "label": "Prepare verbal-duel edges",
+              "minimumLevel": 1,
+              "resourceId": "panache",
+              "cost": 1,
+              "summary": "Spend 1–4 panache before a verbal duel; each point grants one edge tied to an eligible associated-skill tactic.",
+              "variableCost": {
+                "label": "Panache points",
+                "minimum": 1,
+                "maximum": 4
+              }
+            }
+          ]
         },
         {
           "id": "swashbuckler-noble-fencer-aristocratic-discipline-ex-2",

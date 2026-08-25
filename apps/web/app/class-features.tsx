@@ -71,6 +71,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       </div>;
     })}
     <ol>{features.map((feature) => <li key={feature.id}>
+      {Boolean(feature.deedRules?.length) && <div className="feature-deed-rules" role="region" aria-label={`${feature.name} deed rules`}>{feature.deedRules!.filter((rule) => level >= rule.minimumLevel).map((rule) => <article key={rule.id}><div><strong>{rule.name}</strong><span>{rule.kind === "active" ? "Active deed" : "Passive deed"} · level {rule.minimumLevel}</span></div><p>{rule.summary}</p>{rule.condition && <small>Requires: {rule.condition}</small>}{rule.resourceId && <small>{rule.minimumResource ? `Maintain at least ${rule.minimumResource} ${rule.resourceId} point${rule.minimumResource === 1 ? "" : "s"}.` : rule.cost ? `Costs ${rule.cost} ${rule.resourceId} point${rule.cost === 1 ? "" : "s"}.` : ""}</small>}</article>)}</div>}
       <div><strong>{feature.name}</strong><p>{feature.summary}</p>{feature.teamworkFeatSharing && <div className="passive-feat-sharing" role="region" aria-label={`${feature.name} shared teamwork feats`}><strong>Shared with {feature.teamworkFeatSharing.targetLabel}</strong>{selectedFeats.filter((feat) => feat.type === feature.teamworkFeatSharing?.featType).length ? <div className="passive-feat-chips">{selectedFeats.filter((feat) => feat.type === feature.teamworkFeatSharing?.featType).map((feat) => <span key={feat.id}>{feat.name}</span>)}</div> : <p>No teamwork feats selected yet.</p>}<small>{feature.teamworkFeatSharing.summary}{feature.teamworkFeatSharing.ignorePrerequisites ? ` The ${feature.teamworkFeatSharing.targetLabel.toLowerCase()} does not need to meet their prerequisites.` : ""}</small></div>}{feature.progressionProfiles?.filter((profile) => !profile.requiredOptionId || selectedOptionSet.has(profile.requiredOptionId)).map((profile) => {
         const usesCasterLevel = Boolean(profile.advancementOptionId && selectedOptionSet.has(profile.advancementOptionId));
         const advancementLevel = usesCasterLevel ? casterLevels[profile.classId] ?? classLevels[profile.classId] ?? 0 : classLevels[profile.classId] ?? 0;
@@ -124,6 +125,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const resources = appliedChanges.map((change) => ({ ...change, resource: dailyResources.find((candidate) => candidate.id === change.resourceId) }));
         const unavailableResource = resources.some(({ resource }) => !resource);
         const unavailableCost = resources.some(({ usedDelta, resource }) => usedDelta > 0 && resource?.maximum !== null && Math.max(0, (resource?.maximum ?? 0) - (resource?.used ?? 0)) < usedDelta);
+        const minimumResource = action.minimumResourceRemaining && action.resourceId ? dailyResources.find((candidate) => candidate.id === action.resourceId) : undefined;
+        const unavailableMinimumResource = Boolean(action.minimumResourceRemaining && (!minimumResource || minimumResource.maximum !== null && Math.max(0, (minimumResource.maximum ?? 0) - minimumResource.used) < action.minimumResourceRemaining));
         const recoveries = resources.filter(({ usedDelta }) => usedDelta < 0);
         const unavailableRecovery = !action.variableRecovery && recoveries.length > 0 && recoveries.every(({ resource }) => (resource?.used ?? 0) <= 0);
         const blockedByActorCondition = Boolean(
@@ -137,7 +140,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           ? [...equippedWeapons, ...(action.activeEffect.includeUnarmedStrike && !equippedWeapons.some((weapon) => weapon.id === "unarmed-strike") ? [{ id: "unarmed-strike", name: "Unarmed strike" }] : [])]
           : [];
         const selectedEffectWeaponId = effectWeaponIds[action.id] ?? weaponChoices[0]?.id;
-        const unavailable = unavailableResource || unavailableCost || unavailableRecovery || blockedByActorCondition || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId);
+        const unavailable = unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId);
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];

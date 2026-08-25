@@ -29,7 +29,143 @@
           "name": "Deeds",
           "level": 1,
           "type": "archetype",
-          "summary": "A blatherskite swaps four deeds for the following. Blatherskite’s Stagger (Ex) : At 1st level as an immediate action, when a ranged attack would normally miss a blatherskite, he can allow it to hit him and dramatically stagger a few steps backward, moving up to 10 feet directly away from the attacker. This movement provokes attacks of opportunity as normal. The attack deals the minimum amount of damage (as though the attacker had rolled a natural 1 on each damage die). At 2nd level, if a ranged attack hits the blatherskite but the attack roll exceeds his AC by no more than his bonus from the nimble class feature, he can spend 1 grit point as an immediate action to take the minimum amount of damage and move up to 10 feet directly away from the attacker. This movement provokes attacks of opportunity as normal. The gunslinger can perform this deed only while wearing medium or light armor and while carrying no more than a light load. This deed replaces the gunslinger’s dodge deed. Blatherskite’s Initiative (Ex) : At 3rd level, the blatherskite gains benefits as long as he has at least 1 grit point. The blatherskite gains a +2 bonus on initiative checks. Furthermore, if he is trained in Stealth (and as long as he is not paralyzed, prone, or otherwise immobilized), he can take a 5-foot step and attempt a Stealth check to hide as part of the initiative check, provided there is an object or a larger creature to hide behind; if he spends 1 grit point, he can move up to half his speed instead of taking only a 5-foot step as part of the initiative check. This deed replaces the gunslinger initiative deed. Cheap Shot (Ex) : At 3rd level, if the blatherskite has at least 1 grit point and makes a successful attack against an unarmed target with a firearm that is not making a scattering shot, he deals 1d6 additional points of damage. This is precision damage and is not multiplied on a critical hit. This deed replaces the pistol-whip deed. Blatherskite’s Surprise (Ex) : At 7th level, when the blatherskite succeeds at a saving throw against a spell or an effect that would cause him to be blinded, confused, dazed, fascinated, frightened, nauseated, paralyzed, or stunned, he can allow the effect to affect him normally. As long as he has at least 1 grit point, as an immediate action he can cause the creature from which the effect originated to lose its Dexterity bonus to AC for a number of rounds equal to half the duration of the effect (in rounds) or half the gunslinger’s level, whichever is lower (minimum 1 round). If he instead spends 1 grit point, he does not need to allow the effect to affect him normally to use this deed. This deed replaces the startling shot deed."
+          "summary": "A blatherskite swaps four deeds for the following. Blatherskite’s Stagger (Ex) : At 1st level as an immediate action, when a ranged attack would normally miss a blatherskite, he can allow it to hit him and dramatically stagger a few steps backward, moving up to 10 feet directly away from the attacker. This movement provokes attacks of opportunity as normal. The attack deals the minimum amount of damage (as though the attacker had rolled a natural 1 on each damage die). At 2nd level, if a ranged attack hits the blatherskite but the attack roll exceeds his AC by no more than his bonus from the nimble class feature, he can spend 1 grit point as an immediate action to take the minimum amount of damage and move up to 10 feet directly away from the attacker. This movement provokes attacks of opportunity as normal. The gunslinger can perform this deed only while wearing medium or light armor and while carrying no more than a light load. This deed replaces the gunslinger’s dodge deed. Blatherskite’s Initiative (Ex) : At 3rd level, the blatherskite gains benefits as long as he has at least 1 grit point. The blatherskite gains a +2 bonus on initiative checks. Furthermore, if he is trained in Stealth (and as long as he is not paralyzed, prone, or otherwise immobilized), he can take a 5-foot step and attempt a Stealth check to hide as part of the initiative check, provided there is an object or a larger creature to hide behind; if he spends 1 grit point, he can move up to half his speed instead of taking only a 5-foot step as part of the initiative check. This deed replaces the gunslinger initiative deed. Cheap Shot (Ex) : At 3rd level, if the blatherskite has at least 1 grit point and makes a successful attack against an unarmed target with a firearm that is not making a scattering shot, he deals 1d6 additional points of damage. This is precision damage and is not multiplied on a critical hit. This deed replaces the pistol-whip deed. Blatherskite’s Surprise (Ex) : At 7th level, when the blatherskite succeeds at a saving throw against a spell or an effect that would cause him to be blinded, confused, dazed, fascinated, frightened, nauseated, paralyzed, or stunned, he can allow the effect to affect him normally. As long as he has at least 1 grit point, as an immediate action he can cause the creature from which the effect originated to lose its Dexterity bonus to AC for a number of rounds equal to half the duration of the effect (in rounds) or half the gunslinger’s level, whichever is lower (minimum 1 round). If he instead spends 1 grit point, he does not need to allow the effect to affect him normally to use this deed. This deed replaces the startling shot deed.",
+          "deedRules": [
+            {
+              "id": "blatherskites-stagger",
+              "name": "Blatherskite's Stagger",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "Convert a qualifying ranged hit to minimum damage and move 10 feet away as an immediate action; the paid level-2 form applies to a narrow hit margin.",
+              "resourceId": "grit",
+              "actionIds": [
+                "blatherskite-stagger-miss",
+                "blatherskite-stagger-hit"
+              ]
+            },
+            {
+              "id": "blatherskites-initiative",
+              "name": "Blatherskite's Initiative",
+              "minimumLevel": 3,
+              "kind": "active",
+              "summary": "Maintain grit for +2 initiative and a 5-foot Stealth step; spend grit to move up to half speed instead.",
+              "resourceId": "grit",
+              "minimumResource": 1,
+              "actionIds": [
+                "blatherskite-initiative-move"
+              ]
+            },
+            {
+              "id": "cheap-shot",
+              "name": "Cheap Shot",
+              "minimumLevel": 3,
+              "kind": "passive",
+              "summary": "With grit, a non-scatter firearm hit against an unarmed target deals +1d6 precision damage.",
+              "resourceId": "grit",
+              "minimumResource": 1
+            },
+            {
+              "id": "blatherskites-surprise",
+              "name": "Blatherskite's Surprise",
+              "minimumLevel": 7,
+              "kind": "active",
+              "summary": "After succeeding against a listed condition, either accept it while maintaining grit or spend grit to make its source lose Dexterity to AC for the bounded duration.",
+              "resourceId": "grit",
+              "minimumResource": 1,
+              "actionIds": [
+                "blatherskite-surprise-accept",
+                "blatherskite-surprise-spend"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "blatherskite-stagger-miss",
+              "label": "Stagger from missed ranged attack",
+              "minimumLevel": 1,
+              "resourceId": "grit",
+              "cost": 0,
+              "activeEffect": {
+                "name": "Stagger from missed ranged attack",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Allow the missed ranged attack to deal minimum damage and move 10 feet directly away; movement provokes.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Allow the missed ranged attack to deal minimum damage and move 10 feet directly away; movement provokes."
+            },
+            {
+              "id": "blatherskite-stagger-hit",
+              "label": "Stagger from narrow ranged hit",
+              "minimumLevel": 2,
+              "resourceId": "grit",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Stagger from narrow ranged hit",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "When the hit exceeds AC by no more than nimble, take minimum damage and move 10 feet directly away; movement provokes.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "When the hit exceeds AC by no more than nimble, take minimum damage and move 10 feet directly away; movement provokes."
+            },
+            {
+              "id": "blatherskite-initiative-move",
+              "label": "Move during initiative",
+              "minimumLevel": 3,
+              "resourceId": "grit",
+              "cost": 1,
+              "minimumResourceRemaining": 1,
+              "summary": "Move up to half speed and attempt Stealth as part of initiative instead of the free 5-foot version."
+            },
+            {
+              "id": "blatherskite-surprise-accept",
+              "label": "Accept effect and surprise its source",
+              "minimumLevel": 7,
+              "resourceId": "grit",
+              "cost": 0,
+              "minimumResourceRemaining": 1,
+              "activeEffect": {
+                "name": "Accept effect and surprise its source",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Accept the resisted condition; its source loses Dexterity to AC for half the effect duration or half gunslinger level, whichever is lower (minimum 1 round).",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Accept the resisted condition; its source loses Dexterity to AC for half the effect duration or half gunslinger level, whichever is lower (minimum 1 round)."
+            },
+            {
+              "id": "blatherskite-surprise-spend",
+              "label": "Surprise source without accepting effect",
+              "minimumLevel": 7,
+              "resourceId": "grit",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Surprise source without accepting effect",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Its source loses Dexterity to AC for the bounded duration without you accepting the resisted condition.",
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Its source loses Dexterity to AC for the bounded duration without you accepting the resisted condition."
+            }
+          ]
         }
       ]
     }
@@ -38,5 +174,30 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Gunslinger%20Blatherskite"
-  }
+  },
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "gunslinger-blatherskite-deeds-1",
+      "label": "Initiative checks",
+      "condition": "At least 1 grit point remains",
+      "minimumLevel": 3,
+      "base": 2
+    }
+  ],
+  "precisionDamageAdjustments": [
+    {
+      "sourceFeatureId": "gunslinger-blatherskite-deeds-1",
+      "label": "Cheap Shot",
+      "dieSides": 6,
+      "diceByLevel": [
+        {
+          "level": 3,
+          "dice": 1
+        }
+      ],
+      "condition": "At least 1 grit remains; successful non-scatter firearm attack against an unarmed target",
+      "attackMode": "ranged",
+      "weaponType": "firearm"
+    }
+  ]
 }
