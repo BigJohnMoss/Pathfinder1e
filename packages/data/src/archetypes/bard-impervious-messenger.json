@@ -21,7 +21,105 @@
           "name": "Bardic Performance (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "An impervious messenger gains the following types of bardic performances. Chant of Perfect Recall (Su) : At 1st level, an impervious messenger can spend 1 round of his bardic performance to commit something to memory. This ability functions exactly as per memorize page , but the impervious messenger is the only recipient and he requires only 1 round to commit a single page to memory. An impervious messenger can commit additional pages worth of material to memory by using additional rounds of his bardic performance, but he can never memorize more than half his total bard level in pages (minimum 1). This ability replaces fascinate. Song of Subterfuge (Su) : At 6th level, an impervious messenger learns to use his performances to project various thoughts into his own mind to disrupt divination attempts. This acts similarly to distraction, except it only affects the impervious messenger and allows him to use the result of his Perform check in place of saving throws against attempts to read his mind, such as detect thoughts. At 18th level, if the impervious messenger succeeds on a saving throw while using song of subterfuge, the character who attempted the divination effect must succeed on a Will save (DC = 20 + the impervious messenger’s Charisma modifier) or else the impervious messenger instantly learns the nature of the effect and can allow the effect to continue, but provide whatever information he chooses to the divining character rather than the true results of the divination effect. This ability replaces suggestion and mass suggestion. Unbroken Stride (Su) : At 8th level, an impervious messenger draws upon his bardic abilities to imbue himself with grace and speed. While using this bardic performance, an impervious messenger gains an insight bonus equal to half his bard level on all Acrobatics, Climb, Fly, and Ride checks. In addition, while maintaining this performance, he gains the benefits of the ranger’s woodland stride ability and a +10-foot enhancement bonus to his base land speed. At 12th level, an impervious messenger using his unbroken stride bardic performance also acts as if under the effect of freedom of movement . In addition, the enhancement bonus to his base land speed increases to +30 feet. This ability replaces dirge of doom and frightening tune."
+          "summary": "An impervious messenger gains the following types of bardic performances. Chant of Perfect Recall (Su) : At 1st level, an impervious messenger can spend 1 round of his bardic performance to commit something to memory. This ability functions exactly as per memorize page , but the impervious messenger is the only recipient and he requires only 1 round to commit a single page to memory. An impervious messenger can commit additional pages worth of material to memory by using additional rounds of his bardic performance, but he can never memorize more than half his total bard level in pages (minimum 1). This ability replaces fascinate. Song of Subterfuge (Su) : At 6th level, an impervious messenger learns to use his performances to project various thoughts into his own mind to disrupt divination attempts. This acts similarly to distraction, except it only affects the impervious messenger and allows him to use the result of his Perform check in place of saving throws against attempts to read his mind, such as detect thoughts. At 18th level, if the impervious messenger succeeds on a saving throw while using song of subterfuge, the character who attempted the divination effect must succeed on a Will save (DC = 20 + the impervious messenger’s Charisma modifier) or else the impervious messenger instantly learns the nature of the effect and can allow the effect to continue, but provide whatever information he chooses to the divining character rather than the true results of the divination effect. This ability replaces suggestion and mass suggestion. Unbroken Stride (Su) : At 8th level, an impervious messenger draws upon his bardic abilities to imbue himself with grace and speed. While using this bardic performance, an impervious messenger gains an insight bonus equal to half his bard level on all Acrobatics, Climb, Fly, and Ride checks. In addition, while maintaining this performance, he gains the benefits of the ranger’s woodland stride ability and a +10-foot enhancement bonus to his base land speed. At 12th level, an impervious messenger using his unbroken stride bardic performance also acts as if under the effect of freedom of movement . In addition, the enhancement bonus to his base land speed increases to +30 feet. This ability replaces dirge of doom and frightening tune.",
+          "performanceRules": [
+            {
+              "id": "chant-of-perfect-recall",
+              "name": "Chant of Perfect Recall",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "Memorize one page per performance round, up to half your bard level in pages (minimum 1).",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "impervious-chant-perfect-recall"
+              ]
+            },
+            {
+              "id": "song-of-subterfuge",
+              "name": "Song of Subterfuge",
+              "minimumLevel": 6,
+              "kind": "active",
+              "summary": "Use Perform in place of saves against mind-reading; at level 18 a successful save can expose and feed false information to the diviner.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "impervious-song-subterfuge"
+              ]
+            },
+            {
+              "id": "unbroken-stride",
+              "name": "Unbroken Stride",
+              "minimumLevel": 8,
+              "kind": "active",
+              "summary": "Gain half bard level on four movement skills, woodland stride, and enhanced speed; level 12 improves speed and adds freedom of movement.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "impervious-unbroken-stride"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "impervious-chant-perfect-recall",
+              "label": "Memorize pages",
+              "minimumLevel": 1,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "variableCost": {
+                "label": "Pages and performance rounds",
+                "minimum": 1,
+                "maximum": 10,
+                "maximumLevelDivisor": 2
+              },
+              "spellLikeAbility": {
+                "spellId": "memorize-page",
+                "spellName": "Memorize Page",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Spend one round per page. The selector is capped at half bard level and 10 pages at level 20."
+            },
+            {
+              "id": "impervious-song-subterfuge",
+              "label": "Begin Song of Subterfuge",
+              "minimumLevel": 6,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Begin Song of Subterfuge",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Use Perform in place of saving throws against attempts to read your mind.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Use Perform in place of saving throws against attempts to read your mind."
+            },
+            {
+              "id": "impervious-unbroken-stride",
+              "label": "Begin Unbroken Stride",
+              "minimumLevel": 8,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Begin Unbroken Stride",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Gain the listed movement skill, terrain, speed, and level-12 freedom-of-movement benefits.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Gain the listed movement skill, terrain, speed, and level-12 freedom-of-movement benefits."
+            }
+          ]
         },
         {
           "id": "bard-impervious-messenger-cryptic-whisper-ex-2",
@@ -41,5 +139,60 @@
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
     "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-impervious-messenger-bardic-performance-su-1",
+      "skill": "Acrobatics",
+      "minimumLevel": 8,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "While using Unbroken Stride"
+    },
+    {
+      "sourceFeatureId": "bard-impervious-messenger-bardic-performance-su-1",
+      "skill": "Climb",
+      "minimumLevel": 8,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "While using Unbroken Stride"
+    },
+    {
+      "sourceFeatureId": "bard-impervious-messenger-bardic-performance-su-1",
+      "skill": "Fly",
+      "minimumLevel": 8,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "While using Unbroken Stride"
+    },
+    {
+      "sourceFeatureId": "bard-impervious-messenger-bardic-performance-su-1",
+      "skill": "Ride",
+      "minimumLevel": 8,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "While using Unbroken Stride"
+    }
+  ],
+  "landSpeedAdjustments": [
+    {
+      "sourceFeatureId": "bard-impervious-messenger-bardic-performance-su-1",
+      "minimumLevel": 8,
+      "bonus": 10,
+      "bonusType": "enhancement",
+      "bonusByLevel": [
+        {
+          "level": 8,
+          "bonus": 10
+        },
+        {
+          "level": 12,
+          "bonus": 30
+        }
+      ],
+      "condition": "While using Unbroken Stride",
+      "timing": "afterReduction",
+      "label": "Unbroken Stride"
+    }
   ]
 }

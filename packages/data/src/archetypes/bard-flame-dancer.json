@@ -28,7 +28,114 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A flame dancer gains the following bardic performances. Fire Dance (Su) : At 1st level, a fire dancer learns to protect himself and others from the pain of fire, and discovers how to control the flame while enduring its heat. Each round of the fire dance, he rolls a Perform (dance or sing) check. Any ally within 30 feet of the bard that has caught on fire or is affected by a fire effect or extreme heat can use the bard’s Perform check result in place of its saving throw against that fire. Any ally within 30 feet of the bard who is suffering from heatstroke can ignore the fatigue from heat exposure so long as the bard maintains this performance. Fire dance relies on audible or visual components. This ability replaces countersong. Song of the Fiery Gaze (Su) : At 3rd level, a fire dancer can allow allies to see through flames without any distortion. Any ally within 30 feet of the bard who can hear the performance can see through fire, fog, and smoke without penalty as long as the light is sufficient to allow him to see normally, as with the base effect of the gaze of flames oracle revelation . Song of the fiery gaze relies on audible components. This ability replaces inspire competence. Fire Break (Su) : At 6th level, a fire dancer’s performance can bend flames away from others. Any ally within 30 feet of the bard who can hear or see the bardic performance gains resist fire 20 as long as the performance is maintained. At 11th level, this resistance increases to 30. Fire break relies on audible or visual components. This ability replaces suggestion ."
+          "summary": "A flame dancer gains the following bardic performances. Fire Dance (Su) : At 1st level, a fire dancer learns to protect himself and others from the pain of fire, and discovers how to control the flame while enduring its heat. Each round of the fire dance, he rolls a Perform (dance or sing) check. Any ally within 30 feet of the bard that has caught on fire or is affected by a fire effect or extreme heat can use the bard’s Perform check result in place of its saving throw against that fire. Any ally within 30 feet of the bard who is suffering from heatstroke can ignore the fatigue from heat exposure so long as the bard maintains this performance. Fire dance relies on audible or visual components. This ability replaces countersong. Song of the Fiery Gaze (Su) : At 3rd level, a fire dancer can allow allies to see through flames without any distortion. Any ally within 30 feet of the bard who can hear the performance can see through fire, fog, and smoke without penalty as long as the light is sufficient to allow him to see normally, as with the base effect of the gaze of flames oracle revelation . Song of the fiery gaze relies on audible components. This ability replaces inspire competence. Fire Break (Su) : At 6th level, a fire dancer’s performance can bend flames away from others. Any ally within 30 feet of the bard who can hear or see the bardic performance gains resist fire 20 as long as the performance is maintained. At 11th level, this resistance increases to 30. Fire break relies on audible or visual components. This ability replaces suggestion .",
+          "performanceRules": [
+            {
+              "id": "fire-dance",
+              "name": "Fire Dance",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "Roll Perform (dance or sing) each round; allies within 30 feet may use that result for fire or extreme-heat saves and ignore heatstroke fatigue while maintained.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "flame-dancer-fire-dance"
+              ]
+            },
+            {
+              "id": "song-of-the-fiery-gaze",
+              "name": "Song of the Fiery Gaze",
+              "minimumLevel": 3,
+              "kind": "active",
+              "summary": "Allies within 30 feet who hear the performance see through fire, fog, and smoke when normal light is sufficient.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "flame-dancer-fiery-gaze"
+              ]
+            },
+            {
+              "id": "fire-break",
+              "name": "Fire Break",
+              "minimumLevel": 6,
+              "kind": "active",
+              "summary": "Audible or visible allies within 30 feet gain fire resistance 20, increasing to 30 at level 11, while maintained.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "flame-dancer-fire-break"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "flame-dancer-fire-dance",
+              "label": "Begin Fire Dance",
+              "minimumLevel": 1,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Begin Fire Dance",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Allies may substitute your Perform result for qualifying fire and heat saves and ignore heatstroke fatigue.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Allies may substitute your Perform result for qualifying fire and heat saves and ignore heatstroke fatigue."
+            },
+            {
+              "id": "flame-dancer-fiery-gaze",
+              "label": "Begin Song of the Fiery Gaze",
+              "minimumLevel": 3,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Begin Song of the Fiery Gaze",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Allies see through fire, fog, and smoke without distortion when light is sufficient.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Allies see through fire, fog, and smoke without distortion when light is sufficient."
+            },
+            {
+              "id": "flame-dancer-fire-break",
+              "label": "Begin Fire Break",
+              "minimumLevel": 6,
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "activeEffect": {
+                "name": "Begin Fire Break",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 20,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": 20
+                  },
+                  {
+                    "level": 11,
+                    "bonus": 30
+                  }
+                ],
+                "description": "Allies within 30 feet gain the displayed fire resistance while the performance is maintained.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Allies within 30 feet gain the displayed fire resistance while the performance is maintained."
+            }
+          ]
         },
         {
           "id": "bard-flame-dancer-fan-the-flames-su-8",

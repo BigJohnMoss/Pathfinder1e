@@ -15,6 +15,7 @@ export function inferredArchetypeCompanionGrantDetails(archetype: CharacterArche
 export function resolvedArchetypeCompanionGrants(archetype: CharacterArchetype): NonNullable<CharacterArchetype["companionGrants"]>;
 export function fixedOptionIdsThroughLevel(characterClass: SharedCharacterClass, level: number): string[];
 export { archetypeDeedRules, namedDeeds } from "./archetype-deeds.js";
+export { archetypePerformanceRules, namedPerformances } from "./archetype-performances.js";
 export { confirmCriticalThreat, parseCriticalThreatRange, parseDiceExpression, resolveAttackRoll, rollD20Check, rollDice, rollDiceExpression } from "./dice.js";
 
 export interface ClassProgression {
