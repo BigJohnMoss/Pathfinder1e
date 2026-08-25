@@ -11,4 +11,8 @@ export interface DrakeCompanionProgression {
   drakePowers: number;
   specialAbilities: string[];
 }
-export function drakeCompanionProgression(level: number): DrakeCompanionProgression;
+export interface DrakeCompanionSchedule {
+  powerLevels?: number[];
+  sizeLevels?: number[];
+}
+export function drakeCompanionProgression(level: number, schedule?: DrakeCompanionSchedule): DrakeCompanionProgression;

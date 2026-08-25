@@ -4,9 +4,9 @@
   "classId": "cavalier",
   "summary": "Throughout the Inner Sea region, wave riders patrol harbors, keeping them safe from dangerous sea creatures and watching for smugglers. The most famous of these is the hippocampus-riding Sea Cavalry of Absalom.",
   "replacesText": "Weapon/Armor Proficiency; Mount",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The restricted Monstrous Mount bonus feat, hippocampus grant, full-level progression, and proficiency changes are automated."
   ],
   "replacements": [
     {
@@ -25,16 +25,47 @@
           "id": "cavalier-wave-rider-seafaring-companion-1",
           "name": "Seafaring Companion",
           "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, a wave rider gains Monstrous Mount as a bonus feat. The wave rider can use this feat only to select a hippocampus mount . Otherwise, this ability functions identically to and replaces the cavalier’s mount ability."
+          "type": "bonus-feat",
+          "summary": "Gain Monstrous Mount as a bonus feat, restricted to a hippocampus mount. The hippocampus otherwise advances as the Cavalier's full-level mount.",
+          "grantedFeatId": "monstrous-mount"
         }
       ]
     }
   ],
-  "proficiencyAdjustments": [{"category":"armor","operation":"replace","proficiencies":["Light armor","Medium armor"]},{"category":"shield","operation":"remove","proficiencies":["All shields"]}],
+  "proficiencyAdjustments": [
+    {
+      "category": "armor",
+      "operation": "replace",
+      "proficiencies": [
+        "Light armor",
+        "Medium armor"
+      ]
+    },
+    {
+      "category": "shield",
+      "operation": "remove",
+      "proficiencies": [
+        "All shields"
+      ]
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Wave%20Rider"
-  }
+  },
+  "companionGrants": [
+    {
+      "id": "hippocampus-mount",
+      "kind": "mount",
+      "label": "Hippocampus mount",
+      "optionId": "wave-rider-hippocampus",
+      "sourceFeatureId": "cavalier-wave-rider-seafaring-companion-1",
+      "minimumLevel": 1,
+      "rules": [
+        "The hippocampus advances using the wave rider's full Cavalier level as its animal companion level.",
+        "The bonus Monstrous Mount feat is restricted to a hippocampus."
+      ]
+    }
+  ]
 }

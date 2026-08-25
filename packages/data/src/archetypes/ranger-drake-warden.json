@@ -22,14 +22,35 @@
       ]
     }
   ],
-  "companionGrants": [{"id":"young-drake","kind":"drake","label":"Young drake","optionId":"drake-warden-drake","minimumLevel":4,"effectiveLevelAdjustment":-3}],
+  "companionGrants": [
+    {
+      "id": "young-drake",
+      "kind": "drake",
+      "label": "Young drake",
+      "optionId": "drake-warden-drake",
+      "sourceFeatureId": "ranger-drake-warden-young-drake-4",
+      "minimumLevel": 4,
+      "effectiveLevelAdjustment": -3,
+      "drakePowerLevels": [
+        3,
+        7
+      ],
+      "drakeSizeLevels": [
+        5
+      ],
+      "rules": [
+        "The young drake's effective charge level equals the drake warden's Ranger level minus 3.",
+        "It gains drake powers only at effective levels 3 and 7, and increases in size only at effective level 5."
+      ]
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Ranger%20Drake%20Warden"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The young drake grant, Ranger-level-minus-3 progression, two drake-power unlocks, and single size increase are automated."
   ]
 }

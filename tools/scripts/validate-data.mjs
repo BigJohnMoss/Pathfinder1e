@@ -337,6 +337,11 @@ for (const [index, url] of archetypeUrls.entries()) {
       if (grant?.effectiveLevelMultiplier !== undefined && (typeof grant.effectiveLevelMultiplier !== "number" || !Number.isFinite(grant.effectiveLevelMultiplier) || grant.effectiveLevelMultiplier <= 0 || grant.effectiveLevelMultiplier > 4)) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid effectiveLevelMultiplier`);
       if (grant?.stacksWithExisting !== undefined && typeof grant.stacksWithExisting !== "boolean") errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid stacksWithExisting flag`);
       if (grant?.usesCharacterLevel !== undefined && typeof grant.usesCharacterLevel !== "boolean") errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid usesCharacterLevel flag`);
+      for (const scheduleKey of ["drakePowerLevels", "drakeSizeLevels"]) {
+        const schedule = grant?.[scheduleKey];
+        if (schedule === undefined) continue;
+        if (grant.kind !== "drake" || !Array.isArray(schedule) || schedule.length === 0 || schedule.some((level) => !Number.isInteger(level) || level < 1 || level > 20) || new Set(schedule).size !== schedule.length || schedule.some((level, index) => index > 0 && level <= schedule[index - 1])) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid ${scheduleKey}`);
+      }
     }
   }
   if (archetype.companionProgressionAdjustments !== undefined) {
