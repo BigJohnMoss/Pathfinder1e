@@ -326,7 +326,11 @@ for (const [index, url] of archetypeUrls.entries()) {
     if (!Array.isArray(archetype.companionGrants) || archetype.companionGrants.length === 0) errors.push(`${file}: companionGrants must be a non-empty array`);
     for (const grant of archetype.companionGrants ?? []) {
       if (!grant || typeof grant.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(grant.id) || grantIds.has(grant.id)) errors.push(`${file}: companion grant has an invalid or duplicate id`); else grantIds.add(grant.id);
-      if (!['animal', 'mount', 'familiar', 'eidolon', 'drake'].includes(grant?.kind) || typeof grant?.label !== "string" || !grant.label.trim() || typeof grant?.optionId !== "string" || !grant.optionId.trim()) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has invalid identity fields`);
+      const fixedOption = typeof grant?.optionId === "string" && Boolean(grant.optionId.trim());
+      const selectedOption = typeof grant?.optionFeatureId === "string" && Boolean(grant.optionFeatureId.trim());
+      if (!['animal', 'mount', 'familiar', 'eidolon', 'drake', 'phantom'].includes(grant?.kind) || typeof grant?.label !== "string" || !grant.label.trim() || fixedOption === selectedOption) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has invalid identity fields`);
+      if (grant?.sourceFeatureId !== undefined && (typeof grant.sourceFeatureId !== "string" || !grant.sourceFeatureId.trim())) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid sourceFeatureId`);
+      if (grant?.rules !== undefined && (!Array.isArray(grant.rules) || grant.rules.length === 0 || grant.rules.some((rule) => typeof rule !== "string" || !rule.trim()))) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has invalid rules`);
       if (!Number.isInteger(grant?.minimumLevel) || grant.minimumLevel < 1 || grant.minimumLevel > 20) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid minimumLevel`);
       if (grant?.effectiveLevelAdjustment !== undefined && (!Number.isInteger(grant.effectiveLevelAdjustment) || grant.effectiveLevelAdjustment < -19 || grant.effectiveLevelAdjustment > 19)) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid effectiveLevelAdjustment`);
       if (grant?.effectiveLevelMultiplier !== undefined && (typeof grant.effectiveLevelMultiplier !== "number" || !Number.isFinite(grant.effectiveLevelMultiplier) || grant.effectiveLevelMultiplier <= 0 || grant.effectiveLevelMultiplier > 4)) errors.push(`${file}: companion grant ${grant?.id ?? "unknown"} has an invalid effectiveLevelMultiplier`);
@@ -487,7 +491,7 @@ for (const [index, url] of archetypeUrls.entries()) {
   }
   if (archetype.prohibitedOptionIds !== undefined && (!Array.isArray(archetype.prohibitedOptionIds) || new Set(archetype.prohibitedOptionIds).size !== archetype.prohibitedOptionIds.length || archetype.prohibitedOptionIds.some((id) => typeof id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)))) errors.push(`${file}: prohibitedOptionIds must contain unique option ids`);
   else for (const optionId of archetype.prohibitedOptionIds ?? []) archetypeProhibitedOptionRefs.push({ file, optionId });
-  if (archetype.prohibitedCompanionKinds !== undefined && (!Array.isArray(archetype.prohibitedCompanionKinds) || new Set(archetype.prohibitedCompanionKinds).size !== archetype.prohibitedCompanionKinds.length || archetype.prohibitedCompanionKinds.some((kind) => !["animal", "mount", "familiar", "eidolon", "drake"].includes(kind)))) errors.push(`${file}: prohibitedCompanionKinds is invalid`);
+  if (archetype.prohibitedCompanionKinds !== undefined && (!Array.isArray(archetype.prohibitedCompanionKinds) || new Set(archetype.prohibitedCompanionKinds).size !== archetype.prohibitedCompanionKinds.length || archetype.prohibitedCompanionKinds.some((kind) => !["animal", "mount", "familiar", "eidolon", "drake", "phantom"].includes(kind)))) errors.push(`${file}: prohibitedCompanionKinds is invalid`);
   const resourceIds = new Set();
   for (const adjustment of archetype.resourceAdjustments ?? []) {
     const prefix = `${file}:${adjustment?.resourceId ?? "unknown resource"}`;
