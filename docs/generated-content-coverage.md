@@ -57,7 +57,7 @@ These rule-text signals are multi-label: one archetype can contribute to several
 | Spell lists, slots, and casting | 621 |
 | Selectable progressions and dependent choices | 751 |
 | Combat statistics and proficiencies | 848 |
-| Skills | 649 |
+| Skills | 650 |
 | Feats | 476 |
 | Narrative or uncategorized effects | 2 |
 

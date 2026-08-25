@@ -21,7 +21,70 @@
           "name": "Deeds",
           "level": 1,
           "type": "archetype",
-          "summary": "A maverick gains the following three deeds. Stacked Deck (Ex) At 1st level, the maverick can spend 1 grit point when she attempts a Bluff, Profession (gambler), or Sleight of Hand check to roll 1d6 and add the result to the check. She can do this after she rolls the check but before the result is revealed. If the result of the d6 roll is a natural 6, she rolls another 1d6 and adds it to the check. She can continue to do this as long as she rolls natural 6s, up to a number of times equal to her Wisdom modifier (minimum 1). This deed replaces the gunslinger's dodge deed. Fist Fighter (Ex) At 3rd level, as long as the maverick has at least 1 grit point, she gains the benefit of the Improved Unarmed Strike feat. This deed replaces the pistol whip deed. Gun Twirl (Ex) At 3rd level, as long as the maverick has at least 1 grit point, she can use flashy gunplay to intimidate her opponents. She gains the Dazzling Display feat and can use it with any firearm, even if she doesn't have Weapon Focus in that firearm. This deed replaces the gunslinger initiative deed."
+          "summary": "A maverick gains the following three deeds. Stacked Deck (Ex) At 1st level, the maverick can spend 1 grit point when she attempts a Bluff, Profession (gambler), or Sleight of Hand check to roll 1d6 and add the result to the check. She can do this after she rolls the check but before the result is revealed. If the result of the d6 roll is a natural 6, she rolls another 1d6 and adds it to the check. She can continue to do this as long as she rolls natural 6s, up to a number of times equal to her Wisdom modifier (minimum 1). This deed replaces the gunslinger's dodge deed. Fist Fighter (Ex) At 3rd level, as long as the maverick has at least 1 grit point, she gains the benefit of the Improved Unarmed Strike feat. This deed replaces the pistol whip deed. Gun Twirl (Ex) At 3rd level, as long as the maverick has at least 1 grit point, she can use flashy gunplay to intimidate her opponents. She gains the Dazzling Display feat and can use it with any firearm, even if she doesn't have Weapon Focus in that firearm. This deed replaces the gunslinger initiative deed.",
+          "deedRules": [
+            {
+              "id": "stacked-deck",
+              "name": "Stacked Deck",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "Spend grit after a Bluff, Profession (gambler), or Sleight of Hand roll to add an exploding d6, bounded by Wisdom modifier.",
+              "resourceId": "grit",
+              "cost": 1,
+              "actionIds": [
+                "maverick-stacked-deck"
+              ]
+            },
+            {
+              "id": "fist-fighter",
+              "name": "Fist Fighter",
+              "minimumLevel": 3,
+              "kind": "passive",
+              "summary": "Maintain grit to gain Improved Unarmed Strike.",
+              "resourceId": "grit",
+              "minimumResource": 1,
+              "grantedFeatIds": [
+                "improved-unarmed-strike"
+              ]
+            },
+            {
+              "id": "gun-twirl",
+              "name": "Gun Twirl",
+              "minimumLevel": 3,
+              "kind": "passive",
+              "summary": "Maintain grit to gain Dazzling Display and use it with any firearm without Weapon Focus.",
+              "resourceId": "grit",
+              "minimumResource": 1,
+              "grantedFeatIds": [
+                "dazzling-display"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "maverick-stacked-deck",
+              "label": "Roll Stacked Deck",
+              "minimumLevel": 1,
+              "resourceId": "grit",
+              "cost": 1,
+              "summary": "Add the result to the triggering skill check. Roll again on each natural 6, up to Wisdom modifier times (minimum 1).",
+              "diceRoll": {
+                "label": "Stacked Deck",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 6
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

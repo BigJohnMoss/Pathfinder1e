@@ -169,6 +169,19 @@ export interface ClassFeatureOccurrence {
   ignoreFeatPrerequisites?: boolean;
   grantedFeatId?: string;
   grantedFeatIds?: string[];
+  deedRules?: Array<{
+    id: string;
+    name: string;
+    minimumLevel: number;
+    kind: "active" | "passive";
+    summary: string;
+    condition?: string;
+    resourceId?: string;
+    minimumResource?: number;
+    cost?: number;
+    actionIds?: string[];
+    grantedFeatIds?: string[];
+  }>;
   teamworkFeatSharing?: {
     featType: string;
     target: "animal-companion" | "eidolon" | "aide-de-camp" | "summoned-animals" | "vermin-companion";
@@ -186,6 +199,7 @@ export interface ClassFeatureOccurrence {
     spellLikeAbility?: { spellId: string; spellName: string; cadence: "at-will" | "day" | "week"; kind?: "spell-like" | "spell-equivalent" };
     resourceId?: string;
     cost?: number;
+    minimumResourceRemaining?: number;
     costPerSelectedFeat?: boolean;
     variableCost?: { label: string; minimum: number; maximum?: number };
     costs?: Array<{ resourceId: string; cost: number }>;
