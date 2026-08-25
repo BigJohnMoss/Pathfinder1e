@@ -16,6 +16,7 @@
     "test:e2e": "playwright test",
     "build:data": "node tools/scripts/build-data.mjs",
     "import:feat-details": "node tools/scripts/import-feat-details.mjs --all",
+    "import:feat-categories": "node tools/scripts/import-feat-categories.mjs",
     "import:spell-details": "node tools/scripts/import-spell-details.mjs",
     "import:archetypes": "node tools/scripts/import-archetypes.mjs",
     "import:magus-arcana": "node tools/scripts/import-magus-arcana.mjs",

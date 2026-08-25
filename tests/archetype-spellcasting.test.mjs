@@ -118,6 +118,16 @@ test("complete alternate spellcasting profiles apply list, progression, ability,
   }
 });
 
+test("single signature spells do not convert a prepared class to spontaneous casting", () => {
+  const selected = archetype("arcanist-spell-specialist");
+  const applied = applyArchetype(characterClass("arcanist"), selected, data.classes, data.spells);
+
+  assert.equal(inferArchetypeSpellcastingProfile(selected), undefined);
+  assert.equal(applied.spellcasting.castingType, "prepared");
+  assert.ok(Array.isArray(applied.spellcasting.preparedByLevel));
+  assert.equal(applied.spellcasting.knownByLevel, undefined);
+});
+
 test("Pearl Seeker uses gated Bloodrager spontaneous progression and its Paladin spell additions", () => {
   const selected = archetype("paladin-pearl-seeker");
   assert.deepEqual(inferArchetypeSpellcastingProfile(selected), {

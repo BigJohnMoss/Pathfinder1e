@@ -967,6 +967,18 @@ test("restricted archetype feat wording creates level-aware catalogue choices", 
   assert.ok(archetypeAutomationSummary(archetype("hunter-flood-flourisher"), feats).automated.includes("1 restricted bonus feat choice"));
 });
 
+test("Pack Rager creates every recurring slot and requires combat teamwork feats", () => {
+  const archetype = JSON.parse(readFileSync(new URL("../packages/data/src/archetypes/barbarian-pack-rager.json", import.meta.url), "utf8"));
+  const feats = readdirSync(new URL("../packages/data/src/feats/", import.meta.url))
+    .filter(file => file.endsWith(".json"))
+    .map(file => JSON.parse(readFileSync(new URL(`../packages/data/src/feats/${file}`, import.meta.url), "utf8")));
+  const choices = inferArchetypeFeatChoices(archetype, feats);
+
+  assert.deepEqual(choices.map(choice => choice.level), [2, 6, 10, 14, 18]);
+  assert.ok(choices.every(choice => choice.featChoiceAllTypes?.join(",") === "teamwork,combat"));
+  assert.ok(inferredArchetypeFeatChoiceDetails(archetype, feats).fullyAutomatedFeatureIds.has("barbarian-pack-rager-bonus-feat-2"));
+});
+
 test("named archetype feat lists create every recurring selection slot", () => {
   const archetype = (id) => JSON.parse(readFileSync(new URL(`../packages/data/src/archetypes/${id}.json`, import.meta.url), "utf8"));
   const feats = readdirSync(new URL("../packages/data/src/feats/", import.meta.url))

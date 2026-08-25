@@ -163,6 +163,7 @@ export interface ClassFeatureOccurrence {
   grantsAllOptions?: boolean;
   featChoiceIds?: string[];
   featChoiceTypes?: string[];
+  featChoiceAllTypes?: string[];
   featChoicePrerequisiteIds?: string[];
   ignoreFeatPrerequisites?: boolean;
   grantedFeatId?: string;
@@ -865,6 +866,7 @@ export interface CharacterFeat {
   id: string;
   name: string;
   type: string;
+  types?: string[];
   repeatable?: boolean;
   benefit: string;
   description?: string;
