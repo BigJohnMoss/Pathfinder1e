@@ -13,6 +13,7 @@ const resourceAdvancementOptionRefs = [];
 const progressionAdvancementOptionRefs = [];
 const featureRequiredOptionRefs = [];
 const archetypeProhibitedOptionRefs = [];
+const favoredTerrainOptionRefs = [];
 const bloodlineDetailIds = new Set();
 const spellDescriptors = new Set(["acid", "air", "chaotic", "cold", "curse", "darkness", "death", "disease", "earth", "electricity", "emotion", "evil", "fear", "fire", "force", "good", "language-dependent", "lawful", "light", "meditative", "mind-affecting", "pain", "poison", "ruse", "shadow", "sonic", "water"]);
 const abilities = new Set(["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]);
@@ -52,9 +53,11 @@ function checkChoice(choice, file) {
   if (!choice || typeof choice !== "object" || Array.isArray(choice)) { errors.push(`${file}: choice must be an object`); return; }
   if (typeof choice.key !== "string" || !choice.key.trim()) errors.push(`${file}: choice needs a key`);
   if (typeof choice.label !== "string" || !choice.label.trim()) errors.push(`${file}: choice needs a label`);
-  if (!choice.allowCustom && (!Array.isArray(choice.options) || choice.options.length === 0)) { errors.push(`${file}: choice needs options`); return; }
+  if (!choice.allowCustom && !choice.optionSource && (!Array.isArray(choice.options) || choice.options.length === 0)) { errors.push(`${file}: choice needs options`); return; }
   if (choice.allowCustom !== undefined && typeof choice.allowCustom !== "boolean") errors.push(`${file}: choice allowCustom must be a boolean`);
   if (choice.uniqueAcrossSelections !== undefined && typeof choice.uniqueAcrossSelections !== "boolean") errors.push(`${file}: choice uniqueAcrossSelections must be a boolean`);
+  if (choice.optionSource !== undefined && choice.optionSource !== "selected-favored-terrains") errors.push(`${file}: choice has an invalid optionSource`);
+  if (choice.optionSource !== undefined && choice.options !== undefined) errors.push(`${file}: sourced choices cannot also declare static options`);
   if (!Array.isArray(choice.options)) return;
   const ids = new Set();
   for (const option of choice.options) { if (!option || typeof option.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option.id) || typeof option.name !== "string" || !option.name.trim()) errors.push(`${file}: choice has an invalid option`); else if (ids.has(option.id)) errors.push(`${file}: choice has duplicate option ${option.id}`); else ids.add(option.id); }
@@ -67,6 +70,11 @@ function checkSelectableOption(option, file) {
     if (option[key] !== undefined && (typeof option[key] !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option[key]))) errors.push(`${file}: ${key} must be a slug`);
   }
   if ((option.familyId === undefined) !== (option.exclusiveGroupId === undefined)) errors.push(`${file}: familyId and exclusiveGroupId must be used together`);
+  if (option.favoredTerrainId !== undefined) {
+    if (typeof option.favoredTerrainId !== "string" || !/^ranger-terrain-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(option.favoredTerrainId)) errors.push(`${file}: favoredTerrainId must reference a ranger terrain slug`);
+    else favoredTerrainOptionRefs.push({ file, optionId: option.favoredTerrainId });
+  }
+  if (option.favoredTerrainAdvancement !== undefined && (!option.favoredTerrainAdvancement || !Number.isInteger(option.favoredTerrainAdvancement.newTerrainBonus) || option.favoredTerrainAdvancement.newTerrainBonus <= 0 || !Number.isInteger(option.favoredTerrainAdvancement.increaseBonus) || option.favoredTerrainAdvancement.increaseBonus <= 0 || !option.favoredTerrainId || option.choice?.optionSource !== "selected-favored-terrains")) errors.push(`${file}: invalid favoredTerrainAdvancement`);
   checkChoice(option.choice, file);
 }
 function checkFeatEffects(effects, file) {
@@ -511,6 +519,7 @@ for (const archetypeId of archetypeOverlayIds) if (!sourceArchetypes.some(archet
 for (const reference of activeEffectUpgradeOptionRefs) if (!optionIds.has(reference.optionId)) errors.push(`${reference.file}: ${reference.featureId} ${reference.actionId} references unknown activeEffect upgrade option ${reference.optionId}`);
 for (const reference of resourceAdvancementOptionRefs) if (!optionIds.has(reference.optionId)) errors.push(`${reference.prefix} references unknown advancement option ${reference.optionId}`);
 for (const reference of archetypeProhibitedOptionRefs) if (!optionIds.has(reference.optionId)) errors.push(`${reference.file} prohibits unknown option ${reference.optionId}`);
+for (const reference of favoredTerrainOptionRefs) if (!optionIds.has(reference.optionId)) errors.push(`${reference.file} references unknown favored terrain ${reference.optionId}`);
 for (const reference of progressionAdvancementOptionRefs) if (!optionIds.has(reference.optionId)) errors.push(`${reference.file}: ${reference.featureId} progression profile references unknown advancement option ${reference.optionId}`);
 for (const reference of featureRequiredOptionRefs) if (!optionIds.has(reference.optionId)) errors.push(`${reference.file}: ${reference.featureId} ${reference.itemId} references unknown required option ${reference.optionId}`);
 for (const url of await jsonFiles("bloodline-details/")) { const details=await load(url); const file=url.pathname.split('/').pop(); if(!Array.isArray(details.bloodlines)) errors.push(`${file}: bloodlines must be an array`); else for(const bloodline of details.bloodlines) checkBloodlineDetail(bloodline,file); }
