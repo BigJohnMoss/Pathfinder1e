@@ -258,6 +258,7 @@ export interface ClassFeatureOccurrence {
     advancementOptionId?: string;
     requiredOptionId?: string;
     targetHitDiceRequirement?: { label: string; levelDivisor: number };
+    targetCountByLevel?: Array<{ level: number; count: number }>;
     temporaryHitPointsByLevel?: Array<{ level: number; amount: number }>;
     temporaryHitPointsDurationRounds?: number;
     temporaryHitPointsDurationRoundsByLevel?: Array<{ level: number; rounds: number }>;
@@ -418,6 +419,7 @@ export interface ClassFeatureOccurrence {
     inputDefault?: number;
     outputLabel: string;
     baseByLevel: Array<{ level: number; value: number }>;
+    inputMultiplierByLevel?: Array<{ level: number; multiplier: number }>;
     classId?: string;
     summary?: string;
   }>;
