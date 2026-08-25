@@ -1020,6 +1020,7 @@ export interface CharacterTrait {
 }
 
 export interface CharacterOption extends SelectableOption {
+  companionRules?: string[];
   castsAsPrepared?: boolean;
   ignoresMaximumSpellLevel?: boolean;
   preparedCapacityCost?: number;

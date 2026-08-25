@@ -4,9 +4,9 @@
   "classId": "cavalier",
   "summary": "Oceanriders are underwater cavaliers who ride dolphins, orcas, or seahorses.",
   "replacesText": "Armor Proficiency; Mount; Expert Trainer",
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Size-legal seahorse, orca, and dolphin selection, full-level mount progression, and the orca's early-Large exception are automated."
   ],
   "replacements": [
     {
@@ -26,8 +26,11 @@
           "id": "cavalier-oceanrider-aquatic-mount-1",
           "name": "Aquatic Mount",
           "level": 1,
-          "type": "archetype",
-          "summary": "A Medium oceanrider can ride either a seahorse or an orca (unlike most orcas, this one starts at size Large with none of the other level 7 abilities until level 7) instead of the normal options, while a Small oceanrider can ride a dolphin . This alters mount and replaces expert trainer."
+          "type": "selectable",
+          "summary": "Choose an aquatic mount allowed by the oceanrider's size. It advances as a full-level Cavalier mount.",
+          "choiceRequired": true,
+          "optionGroupId": "oceanrider-aquatic-mounts",
+          "progressionKey": "oceanrider-aquatic-mount"
         }
       ]
     }
@@ -36,5 +39,19 @@
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Oceanrider"
-  }
+  },
+  "companionGrants": [
+    {
+      "id": "aquatic-mount",
+      "kind": "mount",
+      "label": "aquatic mount",
+      "sourceFeatureId": "cavalier-oceanrider-aquatic-mount-1",
+      "optionFeatureId": "cavalier-oceanrider-aquatic-mount-1",
+      "minimumLevel": 1,
+      "rules": [
+        "The aquatic mount advances using the oceanrider's full Cavalier level as its animal companion level.",
+        "Aquatic Mount replaces Expert Trainer and alters the normal Cavalier mount choices."
+      ]
+    }
+  ]
 }

@@ -2593,8 +2593,10 @@ export default function Home() {
       Object.entries(selectedOptions).find(([featureId]) =>
         featureId.startsWith(prefix),
       )?.[1] ?? "";
+    const optionDefinition = (optionId: string) =>
+      optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId);
     const optionLabel = (optionId: string, fallback: string) =>
-      optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId)?.name ?? fallback;
+      optionDefinition(optionId)?.name ?? fallback;
     const reward = (id: string) => {
       const definition = alternateFavoredClassRewards.find(item => item.id === id);
       return definition ? alternateRewardValue(definition, favoredClassAlternateBonuses[id] ?? 0) : 0;
@@ -2633,13 +2635,14 @@ export default function Home() {
           existing.label = `${existing.label} / ${grant.label}`;
           continue;
         }
+        const selectedOption = optionDefinition(grantOptionId);
         descriptors.push({
           id: `archetype-${progressionClass.id}-${grant.id}`,
           kind: grant.kind,
           optionId: grantOptionId,
           label: grant.optionFeatureId ? `${optionLabel(grantOptionId, grant.label)} ${grant.label}` : grant.label,
           effectiveLevel,
-          rules: grant.rules,
+          rules: [...(grant.rules ?? []), ...(selectedOption?.companionRules ?? [])],
         });
       }
       for (const adjustment of progressionClass.companionProgressionAdjustments ?? []) {

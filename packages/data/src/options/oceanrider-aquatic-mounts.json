@@ -1,0 +1,66 @@
+{
+  "id": "oceanrider-aquatic-mounts",
+  "name": "Oceanrider Aquatic Mounts",
+  "classIds": [
+    "cavalier"
+  ],
+  "optionDefaults": {
+    "groupId": "oceanrider-aquatic-mounts",
+    "classIds": [
+      "cavalier"
+    ],
+    "minimumLevel": 1,
+    "source": {
+      "title": "Archives of Nethys",
+      "page": 53,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Cavalier%20Oceanrider"
+    }
+  },
+  "options": [
+    {
+      "id": "oceanrider-mount-seahorse",
+      "name": "Seahorse",
+      "prerequisites": [
+        {
+          "type": "size",
+          "minimum": "medium",
+          "maximum": "medium"
+        }
+      ],
+      "benefit": "A Medium oceanrider gains a seahorse mount advancing as a full-level animal companion.",
+      "companionRules": [
+        "This aquatic seahorse is available to a Medium oceanrider."
+      ]
+    },
+    {
+      "id": "oceanrider-mount-orca",
+      "name": "Orca",
+      "prerequisites": [
+        {
+          "type": "size",
+          "minimum": "medium",
+          "maximum": "medium"
+        }
+      ],
+      "benefit": "A Medium oceanrider gains an orca mount. It starts Large but gains none of the other level-7 animal companion abilities until level 7.",
+      "companionRules": [
+        "This orca starts at size Large, but gains none of its other level-7 animal companion abilities before level 7."
+      ]
+    },
+    {
+      "id": "oceanrider-mount-dolphin",
+      "name": "Dolphin",
+      "prerequisites": [
+        {
+          "type": "size",
+          "minimum": "small",
+          "maximum": "small"
+        }
+      ],
+      "benefit": "A Small oceanrider gains a dolphin mount advancing as a full-level animal companion.",
+      "companionRules": [
+        "This aquatic dolphin is available to a Small oceanrider."
+      ]
+    }
+  ]
+}
