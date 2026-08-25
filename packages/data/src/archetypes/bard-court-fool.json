@@ -31,14 +31,216 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A court fool gains the following types of bardic performance. Distracting Motley (Su) : At 1st level, a court fool can startle his allies back to their senses with erratic capering or by fluttering multicolored clothing. Each round, he attempts an Acrobatics check. Any ally (including the court fool) within 30 feet can use this check in place of her own saving throw against confusion and fascination effects. Those already under a confusion or fascination effect can attempt a new save each round using the court fool’s Acrobatics check. A court fool wearing an entertainer’s outfit gains a +2 bonus on these Acrobatics checks. Distracting motley doesn’t work on effects that don’t allow saves. This is a mind-affecting effect that uses visual components. This performance replaces countersong. Defuse Tension (Su) : At 3rd level, a court fool can use a silly performance to comfort a beleaguered ally. That ally must be within 30 feet and be able to see the court fool. The ally ignores the fatigued and shaken conditions (but not more extreme conditions, such as exhausted or frightened) as long as she continues to see the court fool’s performance. This performance affects one additional creature at 7th level and every 4 bard levels thereafter. A court fool can’t use defuse tension on himself. Defuse tension relies on visual components. This performance replaces inspire competence."
+          "summary": "A court fool gains the following types of bardic performance. Distracting Motley (Su) : At 1st level, a court fool can startle his allies back to their senses with erratic capering or by fluttering multicolored clothing. Each round, he attempts an Acrobatics check. Any ally (including the court fool) within 30 feet can use this check in place of her own saving throw against confusion and fascination effects. Those already under a confusion or fascination effect can attempt a new save each round using the court fool’s Acrobatics check. A court fool wearing an entertainer’s outfit gains a +2 bonus on these Acrobatics checks. Distracting motley doesn’t work on effects that don’t allow saves. This is a mind-affecting effect that uses visual components. This performance replaces countersong. Defuse Tension (Su) : At 3rd level, a court fool can use a silly performance to comfort a beleaguered ally. That ally must be within 30 feet and be able to see the court fool. The ally ignores the fatigued and shaken conditions (but not more extreme conditions, such as exhausted or frightened) as long as she continues to see the court fool’s performance. This performance affects one additional creature at 7th level and every 4 bard levels thereafter. A court fool can’t use defuse tension on himself. Defuse tension relies on visual components. This performance replaces inspire competence.",
+          "performanceRules": [
+            {
+              "id": "court-fool-distracting-motley",
+              "name": "Distracting Motley",
+              "minimumLevel": 1,
+              "kind": "active",
+              "summary": "Roll Acrobatics each round; allies within 30 feet may substitute the result for saves against confusion and fascination, including a new save each round.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "court-fool-distracting-motley"
+              ]
+            },
+            {
+              "id": "court-fool-defuse-tension",
+              "name": "Defuse Tension",
+              "minimumLevel": 3,
+              "kind": "active",
+              "summary": "Suppress fatigued and shaken for visible allies within 30 feet; one target at 3rd level and one more at 7th level and every 4 levels thereafter.",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "court-fool-defuse-tension"
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "court-fool-distracting-motley",
+              "label": "Distracting Motley",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "diceRoll": {
+                "label": "Acrobatics save substitute",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Acrobatics modifier"
+              },
+              "activeEffect": {
+                "name": "Distracting Motley",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "rangeByLevel": [
+                  {
+                    "level": 1,
+                    "feet": 30
+                  }
+                ],
+                "replaceExisting": true,
+                "description": "Use the rolled Acrobatics total instead of a save against confusion or fascination; affected allies may attempt a new substituted save each round. Add the entertainer’s outfit +2 to the entered modifier when applicable."
+              },
+              "summary": "Visual, mind-affecting performance; effects that do not allow saves are unaffected."
+            },
+            {
+              "id": "court-fool-defuse-tension",
+              "label": "Defuse Tension",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "targetCountByLevel": [
+                {
+                  "level": 3,
+                  "count": 1
+                },
+                {
+                  "level": 7,
+                  "count": 2
+                },
+                {
+                  "level": 11,
+                  "count": 3
+                },
+                {
+                  "level": 15,
+                  "count": 4
+                },
+                {
+                  "level": 19,
+                  "count": 5
+                }
+              ],
+              "activeEffect": {
+                "name": "Defuse Tension",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "rangeByLevel": [
+                  {
+                    "level": 3,
+                    "feet": 30
+                  }
+                ],
+                "replaceExisting": true,
+                "description": "The selected visible allies ignore fatigued and shaken while they continue to see the performance; this does not suppress exhausted or frightened and cannot target the court fool."
+              },
+              "summary": "Visual performance; maintain it with one bardic performance round each round."
+            }
+          ]
         },
         {
           "id": "bard-court-fool-caper-and-jeer-ex-5",
           "name": "Caper and Jeer (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a court fool can take 10 on Acrobatics and Bluff checks, even when in danger or distracted, and can use Bluff to create a diversion to hide (as per the Stealth skill) as a swift action. He can take 20 on an Acrobatics or Bluff check once per day, plus one time per 6 levels beyond 5th, even when in danger or distracted. This ability replaces lore master."
+          "summary": "At 5th level, a court fool can take 10 on Acrobatics and Bluff checks, even when in danger or distracted, and can use Bluff to create a diversion to hide (as per the Stealth skill) as a swift action. He can take 20 on an Acrobatics or Bluff check once per day, plus one time per 6 levels beyond 5th, even when in danger or distracted. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "court-fool-take-20",
+              "label": "Take 20",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "caperAndJeer",
+              "cost": 1,
+              "modes": [
+                {
+                  "id": "acrobatics",
+                  "label": "Acrobatics",
+                  "summary": "Treat the Acrobatics check’s d20 result as 20."
+                },
+                {
+                  "id": "bluff",
+                  "label": "Bluff",
+                  "summary": "Treat the Bluff check’s d20 result as 20."
+                }
+              ],
+              "fixedD20Result": {
+                "label": "Chosen skill d20 result",
+                "result": 20
+              },
+              "summary": "May be used even in danger or while distracted."
+            },
+            {
+              "id": "court-fool-swift-diversion",
+              "label": "Create diversion to hide",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "swift"
+                }
+              ],
+              "diceRoll": {
+                "label": "Bluff check",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Bluff modifier"
+              },
+              "summary": "Use the Bluff result to create a diversion to hide as a swift action."
+            }
+          ]
         }
       ]
     }
@@ -48,8 +250,56 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Court%20Fool"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Buffoonery scaling, both performances, exact target growth, save substitution, condition suppression, take-10/take-20 rules and daily uses, and the swift diversion are automated."
+  ],
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "bard-court-fool-caper-and-jeer-ex-5",
+      "label": "Caper and Jeer — take 10",
+      "minimumLevel": 5,
+      "skills": [
+        "Acrobatics",
+        "Bluff"
+      ],
+      "result": 10,
+      "allowsStress": true
+    },
+    {
+      "sourceFeatureId": "bard-court-fool-caper-and-jeer-ex-5",
+      "label": "Caper and Jeer — take 20",
+      "minimumLevel": 5,
+      "skills": [
+        "Acrobatics",
+        "Bluff"
+      ],
+      "result": 20,
+      "allowsStress": true,
+      "condition": "Spend one Caper and Jeer daily use."
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "caperAndJeer",
+      "label": "Caper and Jeer",
+      "unit": "use",
+      "minimumLevel": 5,
+      "base": 1,
+      "maximumByLevel": [
+        {
+          "level": 5,
+          "maximum": 1
+        },
+        {
+          "level": 11,
+          "maximum": 2
+        },
+        {
+          "level": 17,
+          "maximum": 3
+        }
+      ]
+    }
   ]
 }
