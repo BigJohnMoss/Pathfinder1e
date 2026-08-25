@@ -1,0 +1,25 @@
+{
+  "id": "molthuni-defender-maneuvers",
+  "name": "Molthuni Defender Maneuvers",
+  "classIds": ["fighter"],
+  "optionDefaults": {
+    "groupId": "molthuni-defender-maneuvers",
+    "classIds": ["fighter"],
+    "minimumLevel": 3,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Fighter%20Molthuni%20Defender"
+    }
+  },
+  "options": [
+    { "id": "molthuni-bull-rush", "name": "Bull Rush", "benefit": "Add half your armor training bonus on bull rush checks while wearing medium or heavy armor." },
+    { "id": "molthuni-dirty-trick", "name": "Dirty Trick", "benefit": "Add half your armor training bonus on dirty trick checks while wearing medium or heavy armor." },
+    { "id": "molthuni-drag", "name": "Drag", "benefit": "Add half your armor training bonus on drag checks while wearing medium or heavy armor." },
+    { "id": "molthuni-grapple", "name": "Grapple", "benefit": "Add half your armor training bonus on grapple checks while wearing medium or heavy armor." },
+    { "id": "molthuni-overrun", "name": "Overrun", "benefit": "Add half your armor training bonus on overrun checks while wearing medium or heavy armor." },
+    { "id": "molthuni-reposition", "name": "Reposition", "benefit": "Add half your armor training bonus on reposition checks while wearing medium or heavy armor." },
+    { "id": "molthuni-trip", "name": "Trip", "benefit": "Add half your armor training bonus on trip checks while wearing medium or heavy armor." }
+  ]
+}

@@ -65,6 +65,15 @@ export const equippedArmorCategory = (inventory: InventoryEntry[]): "none" | "li
     .reduce<"none" | "light" | "medium" | "heavy">((heaviest, category) => order[category] > order[heaviest] ? category : heaviest, "none");
 };
 
+export const equippedShieldBonus = (inventory: InventoryEntry[]) => inventory
+  .filter((entry) => entry.equipped)
+  .reduce((best, entry) => {
+    const item = equipmentItems.find((candidate) => candidate.id === entry.itemId);
+    return item?.category === "shield"
+      ? Math.max(best, (item.armorBonus ?? 0) + (entry.enhancementBonus ?? 0))
+      : best;
+  }, 0);
+
 export const equippedArcaneSpellFailureChance = (
   inventory: InventoryEntry[],
   rules: ArcaneSpellFailureRules | undefined,
