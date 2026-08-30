@@ -25,35 +25,347 @@
           "name": "Mischievous Talent (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A fey prankster adds half her class level (minimum 1) on Bluff, Disguise, Sleight of Hand, and Stealth skill checks, and can attempt Sleight of Hand checks untrained. This ability replaces bardic knowledge."
+          "summary": "A fey prankster adds half her class level (minimum 1) on Bluff, Disguise, Sleight of Hand, and Stealth skill checks, and can attempt Sleight of Hand checks untrained. This ability replaces bardic knowledge.",
+          "progressionProfiles": [
+            {
+              "id": "fey-prankster-untrained-sleight",
+              "label": "Mischievous Talent permissions",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "skill",
+                  "label": "Untrained skill"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "skill": "Sleight of Hand"
+                  }
+                }
+              ],
+              "summary": "Sleight of Hand can be attempted untrained."
+            }
+          ]
         },
         {
           "id": "bard-fey-prankster-bardic-performance-1",
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A fey prankster gains the following types of bardic performance. Song of Clumsiness (Su) : A fey prankster can use this performance to cause enemies within 30 feet that can hear her to suffer seemingly random mishaps. Any enemy in this area that draws a weapon or retrieves an item from a backpack or similar container immediately drops it, and falls prone the first time it enters a square of difficult terrain during its turn. A creature can negate a specific effect with a successful Reflex saving throw (DC = 10 + half the fey prankster’s bard level + her Charisma modifier), but an enemy must attempt a separate save for each potential effect during the song of clumsiness (for example, if it draws multiple weapons). Song of clumsiness is an enchantment (compulsion), mind-affecting ability that relies on audible components. This ability replaces countersong. Incite Unreliability (Su) : A fey prankster can use her performance to manipulate a single target into fighting erratically or haphazardly, as though affected by lesser confusion . To be affected, the target must be within 30 feet and able to hear the fey prankster’s performance. The effect persists for as long as the target can hear the performance. A target that succeeds at a Will saving throw (DC = 10 + half the fey prankster’s bard level + her Charisma modifier) negates the effect and becomes immune to incite unreliability from the same fey prankster for 24 hours. Incite unreliability is an enchantment (compulsion), mind-affecting ability that relies on audible components. This ability replaces inspire courage."
+          "summary": "A fey prankster gains the following types of bardic performance. Song of Clumsiness (Su) : A fey prankster can use this performance to cause enemies within 30 feet that can hear her to suffer seemingly random mishaps. Any enemy in this area that draws a weapon or retrieves an item from a backpack or similar container immediately drops it, and falls prone the first time it enters a square of difficult terrain during its turn. A creature can negate a specific effect with a successful Reflex saving throw (DC = 10 + half the fey prankster’s bard level + her Charisma modifier), but an enemy must attempt a separate save for each potential effect during the song of clumsiness (for example, if it draws multiple weapons). Song of clumsiness is an enchantment (compulsion), mind-affecting ability that relies on audible components. This ability replaces countersong. Incite Unreliability (Su) : A fey prankster can use her performance to manipulate a single target into fighting erratically or haphazardly, as though affected by lesser confusion . To be affected, the target must be within 30 feet and able to hear the fey prankster’s performance. The effect persists for as long as the target can hear the performance. A target that succeeds at a Will saving throw (DC = 10 + half the fey prankster’s bard level + her Charisma modifier) negates the effect and becomes immune to incite unreliability from the same fey prankster for 24 hours. Incite unreliability is an enchantment (compulsion), mind-affecting ability that relies on audible components. This ability replaces inspire courage.",
+          "resourceActions": [
+            {
+              "id": "fey-prankster-song-clumsiness",
+              "label": "Begin Song of Clumsiness",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Song of Clumsiness",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Enemies within 30 feet that can hear the performance save separately against each dropped-item or difficult-terrain mishap.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 performance round per round and track the audible 30-foot mishap aura."
+            },
+            {
+              "id": "fey-prankster-clumsiness-drop",
+              "label": "Resolve Song of Clumsiness — Drop",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 0,
+              "minimumResourceRemaining": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "trigger",
+                  "label": "The enemy drew a weapon or retrieved a stored item inside the active song",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Reflex",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "reflex",
+                "rangeByLevel": [
+                  {
+                    "level": 1,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Song of Clumsiness — Dropped Item",
+                    "description": "The triggering item is immediately dropped.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the separate Reflex save for a draw-or-retrieve trigger without an extra performance cost."
+            },
+            {
+              "id": "fey-prankster-clumsiness-prone",
+              "label": "Resolve Song of Clumsiness — Prone",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 0,
+              "minimumResourceRemaining": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "trigger",
+                  "label": "This is the enemy's first difficult-terrain square this turn inside the active song",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Reflex",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "reflex",
+                "rangeByLevel": [
+                  {
+                    "level": 1,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Song of Clumsiness — Prone",
+                    "description": "The target falls prone; remove the tracker when it stands.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the separate Reflex save for the first difficult-terrain entry without an extra performance cost."
+            },
+            {
+              "id": "fey-prankster-incite-unreliability",
+              "label": "Begin Incite Unreliability",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 1,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Incite Unreliability",
+                    "description": "Affected as lesser confusion while the target can hear the performance.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Incite Unreliability immunity",
+                  "description": "Immune to this Fey Prankster's Incite Unreliability for 24 hours.",
+                  "rounds": 999
+                }
+              },
+              "summary": "Spend 1 performance round, resolve the Will save, and track lesser confusion or 24-hour immunity."
+            }
+          ]
         },
         {
           "id": "bard-fey-prankster-embarrassing-satire-su-8",
           "name": "Embarrassing Satire (Su)",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, a fey prankster’s powerful satire raises painful blisters and ugly boils on the face of her target. The fey prankster selects one target within 30 feet to become sickened from the uncomfortable facial boils. The sickened effect continues for as long as the target is within 30 feet and the fey prankster continues the performance, though the boils remain for 1 day afterward. Embarrassing satire is a language-dependent, mind-affecting ability that relies on audible components. This ability replaces dirge of doom."
+          "summary": "At 8th level, a fey prankster’s powerful satire raises painful blisters and ugly boils on the face of her target. The fey prankster selects one target within 30 feet to become sickened from the uncomfortable facial boils. The sickened effect continues for as long as the target is within 30 feet and the fey prankster continues the performance, though the boils remain for 1 day afterward. Embarrassing satire is a language-dependent, mind-affecting ability that relies on audible components. This ability replaces dirge of doom.",
+          "resourceActions": [
+            {
+              "id": "fey-prankster-embarrassing-satire",
+              "label": "Begin Embarrassing Satire",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Embarrassing Satire",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "The target is sickened while within 30 feet during the audible performance; facial boils remain for 1 day afterward.",
+                "defaultRounds": 999,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 performance round per round and track the selected target's sickened condition and lingering boils."
+            }
+          ]
         },
         {
           "id": "bard-fey-prankster-dirty-trickster-ex-2",
           "name": "Dirty Trickster (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a fey prankster gains Improved Dirty Trick as a bonus feat and counts as having Combat Expertise for the purpose of meeting the prerequisites of feats that have Improved Dirty Trick as a prerequisite. This ability replaces well-versed."
+          "summary": "At 2nd level, a fey prankster gains Improved Dirty Trick as a bonus feat and counts as having Combat Expertise for the purpose of meeting the prerequisites of feats that have Improved Dirty Trick as a prerequisite. This ability replaces well-versed.",
+          "grantedFeatIds": [
+            "improved-dirty-trick"
+          ],
+          "progressionProfiles": [
+            {
+              "id": "fey-prankster-dirty-trick-prerequisites",
+              "label": "Dirty Trickster prerequisites",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "benefit": "Counts as Combat Expertise for feats requiring Improved Dirty Trick"
+                  }
+                }
+              ],
+              "summary": "Improved Dirty Trick is granted automatically and the prerequisite substitution remains visible."
+            }
+          ]
         },
         {
           "id": "bard-fey-prankster-master-of-mischief-ex-5",
           "name": "Master of Mischief (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a fey prankster can take 10 on a Bluff, Disguise, Sleight of Hand, or Stealth skill check (if she has ranks in that skill), even if distracted or endangered. In addition, once per day, the fey prankster can take 20 on one these skill checks (if she has ranks in that skill). She can use this ability one additional time per day for every 6 bard levels she has beyond 5th, to a maximum of three times per day at 17th level. This ability replaces lore master."
+          "summary": "At 5th level, a fey prankster can take 10 on a Bluff, Disguise, Sleight of Hand, or Stealth skill check (if she has ranks in that skill), even if distracted or endangered. In addition, once per day, the fey prankster can take 20 on one these skill checks (if she has ranks in that skill). She can use this ability one additional time per day for every 6 bard levels she has beyond 5th, to a maximum of three times per day at 17th level. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "fey-prankster-master-mischief",
+              "label": "Use Master of Mischief Take 20",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "masterOfMischiefTake20",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Skill",
+              "modes": [
+                {
+                  "id": "bluff",
+                  "label": "Bluff",
+                  "summary": "Use the result for a trained Bluff check."
+                },
+                {
+                  "id": "disguise",
+                  "label": "Disguise",
+                  "summary": "Use the result for a trained Disguise check."
+                },
+                {
+                  "id": "sleight-of-hand",
+                  "label": "Sleight of Hand",
+                  "summary": "Use the result for a trained Sleight of Hand check."
+                },
+                {
+                  "id": "stealth",
+                  "label": "Stealth",
+                  "summary": "Use the result for a trained Stealth check."
+                }
+              ],
+              "fixedD20Result": {
+                "label": "Natural d20 result",
+                "result": 20
+              },
+              "summary": "Spend one daily use and treat the selected check's natural d20 result as 20."
+            }
+          ]
         }
       ]
     }
@@ -63,8 +375,102 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Fey%20Prankster"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "All skill scaling, untrained permission, four performance controls, Improved Dirty Trick, take 10 rules, and bounded take 20 uses are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-fey-prankster-mischievous-talent-ex-1",
+      "skill": "Bluff",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-fey-prankster-mischievous-talent-ex-1",
+      "skill": "Disguise",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-fey-prankster-mischievous-talent-ex-1",
+      "skill": "Sleight of Hand",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-fey-prankster-mischievous-talent-ex-1",
+      "skill": "Stealth",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    }
+  ],
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "bard-fey-prankster-master-of-mischief-ex-5",
+      "label": "Master of Mischief",
+      "minimumLevel": 5,
+      "skills": [
+        "Bluff"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    },
+    {
+      "sourceFeatureId": "bard-fey-prankster-master-of-mischief-ex-5",
+      "label": "Master of Mischief",
+      "minimumLevel": 5,
+      "skills": [
+        "Disguise"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    },
+    {
+      "sourceFeatureId": "bard-fey-prankster-master-of-mischief-ex-5",
+      "label": "Master of Mischief",
+      "minimumLevel": 5,
+      "skills": [
+        "Sleight of Hand"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    },
+    {
+      "sourceFeatureId": "bard-fey-prankster-master-of-mischief-ex-5",
+      "label": "Master of Mischief",
+      "minimumLevel": 5,
+      "skills": [
+        "Stealth"
+      ],
+      "result": 10,
+      "allowsStress": true,
+      "trainedOnly": true
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "masterOfMischiefTake20",
+      "label": "Master of Mischief take 20",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 6,
+      "maximum": 3,
+      "refreshCadence": "day"
+    }
   ]
 }

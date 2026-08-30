@@ -25,14 +25,130 @@
           "name": "Calumny (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a provocateur can use his Perform (comedy, oratory, or sing) modifier in place of his Bluff and Diplomacy modifier on checks to spread a rumor and in place of his Intimidate modifier on checks to demoralize foes. This ability replaces the versatile performance gained at 2nd level."
+          "summary": "At 2nd level, a provocateur can use his Perform (comedy, oratory, or sing) modifier in place of his Bluff and Diplomacy modifier on checks to spread a rumor and in place of his Intimidate modifier on checks to demoralize foes. This ability replaces the versatile performance gained at 2nd level.",
+          "resourceActions": [
+            {
+              "id": "provocateur-calumny",
+              "label": "Roll Calumny",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Check replaced",
+              "modes": [
+                {
+                  "id": "rumor-bluff",
+                  "label": "Spread rumor — Bluff",
+                  "summary": "Use Perform (comedy, oratory, or sing) instead of Bluff."
+                },
+                {
+                  "id": "rumor-diplomacy",
+                  "label": "Spread rumor — Diplomacy",
+                  "summary": "Use Perform (comedy, oratory, or sing) instead of Diplomacy."
+                },
+                {
+                  "id": "demoralize",
+                  "label": "Demoralize — Intimidate",
+                  "summary": "Use Perform (comedy, oratory, or sing) instead of Intimidate."
+                }
+              ],
+              "diceRoll": {
+                "label": "Calumny check",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Selected Perform modifier",
+                "targetDcInputLabel": "Check DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "success"
+                  }
+                ],
+                "failureLabel": "failure"
+              },
+              "summary": "Select the replaced social check and roll with the configured qualifying Perform modifier."
+            }
+          ]
         },
         {
           "id": "bard-provocateur-damning-performance-su-4",
           "name": "Damning Performance (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a provocateur can cause all observers fascinated by her fascinate performance to become less friendly to a target creature or group of her choice for 10 minutes per bard level. Affected observers’ attitudes toward the target, the target’s influence ( Ultimate Intrigue 102 ) with affected observers, and affected observers’ trust level as contacts ( Ultimate Campaign 148 ) for the target are all reduced by one step. If she reveals information during the performance that would reduce those creatures’ attitudes anyway, those attitudes worsen by an additional step for the duration. If the provocateur engages in a verbal duel ( Ultimate Intrigue 176 ) against the target with an audience affected by damning performance, she automatically gains two edges. At 18th level, the duration increases to 1 day per bard level. This ability replaces suggestion and mass suggestion ."
+          "summary": "At 4th level, a provocateur can cause all observers fascinated by her fascinate performance to become less friendly to a target creature or group of her choice for 10 minutes per bard level. Affected observers’ attitudes toward the target, the target’s influence ( Ultimate Intrigue 102 ) with affected observers, and affected observers’ trust level as contacts ( Ultimate Campaign 148 ) for the target are all reduced by one step. If she reveals information during the performance that would reduce those creatures’ attitudes anyway, those attitudes worsen by an additional step for the duration. If the provocateur engages in a verbal duel ( Ultimate Intrigue 176 ) against the target with an audience affected by damning performance, she automatically gains two edges. At 18th level, the duration increases to 1 day per bard level. This ability replaces suggestion and mass suggestion .",
+          "resourceActions": [
+            {
+              "id": "provocateur-damning-performance",
+              "label": "Begin Damning Performance",
+              "minimumLevel": 4,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "fascinated",
+                  "label": "The observers are currently fascinated by this character's Fascinate performance",
+                  "requiredForActivation": true
+                }
+              ],
+              "modeLabel": "Duration tier",
+              "modes": [
+                {
+                  "id": "minutes",
+                  "label": "10 minutes per Bard level",
+                  "minimumLevel": 4,
+                  "maximumLevel": 17,
+                  "summary": "Reduce attitude, influence, and contact trust one step for 10 minutes per Bard level; relevant information worsens attitude one extra step."
+                },
+                {
+                  "id": "days",
+                  "label": "1 day per Bard level",
+                  "minimumLevel": 18,
+                  "summary": "Reduce attitude, influence, and contact trust one step for 1 day per Bard level; relevant information worsens attitude one extra step."
+                }
+              ],
+              "activeEffect": {
+                "name": "Damning Performance",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Affected observers' attitude, influence, and contact trust toward the named target are reduced one step; gain two automatic verbal-duel edges against that target.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 performance round, enforce the Fascinate prerequisite, and track every social penalty, extra reduction, duration tier, and two-edge benefit."
+            }
+          ]
         }
       ]
     }
@@ -42,8 +158,37 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Provocateur"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Influence and attitude bonuses, all three Calumny substitutions with rolls, and Damning Performance prerequisites, tiers, penalties, and verbal-duel edges are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-provocateur-provocateur-ex-1",
+      "skill": "Bluff",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "Checks to reduce a target's influence or attitude toward another creature or organization"
+    },
+    {
+      "sourceFeatureId": "bard-provocateur-provocateur-ex-1",
+      "skill": "Diplomacy",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "Checks to reduce a target's influence or attitude toward another creature or organization"
+    },
+    {
+      "sourceFeatureId": "bard-provocateur-provocateur-ex-1",
+      "skill": "Intimidate",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "Checks to reduce a target's influence or attitude toward another creature or organization"
+    }
   ]
 }
