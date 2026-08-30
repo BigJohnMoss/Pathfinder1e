@@ -111,7 +111,7 @@ test("reactive and restricted spell equivalents preserve formula costs and legal
 
 test("catalogue inference remains concrete, bounded, and excludes container features", () => {
   const actions = archetypes.flatMap((entry) => inferArchetypeResourceSpellActions(entry));
-  assert.ok(actions.length >= 25, `expected the inferred resource-spell batch after exact Arcane Healer authorship, received ${actions.length}`);
+  assert.ok(actions.length >= 22, `expected the inferred resource-spell batch after exact Arcane Healer and Plant Speaker authorship, received ${actions.length}`);
   assert.ok(actions.every(({ action }) => action.resourceId && action.cost >= 1 && action.minimumLevel >= 1 && action.minimumLevel <= 20));
   assert.ok(actions.every(({ action }) => !/\b(?:ability|action|casts?|effect|when|whenever)\b/i.test(action.spellLikeAbility.spellName) && !/^(?:a )?spell$/i.test(action.spellLikeAbility.spellName)));
   assert.equal(actions.some(({ sourceFeatureId }) => /(?:forbidden-powers|special)-/i.test(sourceFeatureId)), false);

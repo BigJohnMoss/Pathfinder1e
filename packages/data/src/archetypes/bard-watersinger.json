@@ -15,7 +15,290 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A watersinger has some unique bardic performances, which replace some of the standard bardic performances as listed in each entry. These bardic performances follow all the general rules and restrictions of a bard’s bardic performances. Watersong (Su) : At 1st level, a watersinger can use bardic performance to manipulate and control the shape of water within 30 feet. A successful Perform check allows the bard to animate and control a 5-foot-cube of water. The watersinger can command the water to take various forms, bend, rise, fall, or sustain a shape, and can make it support weight as if it were solid ice. For example, the watersinger could create a pillar of water (to provide cover), ladder, channel, bridge, stairs, slide, and so on. The manipulated water is as slippery as normal ice. This ability cannot create forms more fragile or complex than what could be carved in normal ice. While under the bard’s control, the water has hardness 0 and 3 hit points per inch of thickness. At level 3, the manipulated water gains hardness 1, and this increases by +1 for every 3 bard levels beyond that. At 5th, 10th, 15th, and 20th level, the volume affected increases by an additional 5-foot cube (these cubes must be adjacent to each other). The manipulated water retains its shape for 1 round after the bard stops spending bardic performance rounds to maintain it. This ability replaces fascinate, suggestion, and mass suggestion. Waterstrike (Su) : At 3rd level, the watersinger can spend 1 round of bardic performance to command any water he is currently manipulating with his watersong performance to lash out and strike an opponent with a slam attack. The watersinger uses his base attack bonus and Charisma bonus to make this attack, and deals 1d6 points of bludgeoning damage plus his Charisma bonus. The attack can originate from any square of water the bard is manipulating, and the water can get a flanking bonus or help a combatant get one, but cannot make attacks of opportunity. The water can make multiple attacks per round if your base attack bonus allows you to do so. At 10th level, the water’s slam damage increases to 1d8 points and the water gains a reach of 10 feet. At 15th level, the water’s slam damage increases to 2d6 points. At 20th level, the water’s slam damage increases to 2d8 points. This performance replaces inspire competence. Lifewater (Su) : At 5th level, the watersinger can spend 1 round of bardic performance as a standard action to manipulate the water, blood, and other fluids within a creature’s body, causing the target to become sickened for 1d4 rounds. Alternatively, he may use this ability to attempt a reposition combat maneuver , using his base attack bonus and his Charisma modifier as his CMB. This ability has a range of 30 feet, only works on creatures whose bodies contain fluid, and does not affect creatures that are immune to critical hits. This performance replaces the use of lore master gained at 5th level (though a watersinger still gains the use of lore master once per day at 11th level and twice per day at 17th)."
+          "summary": "A watersinger has some unique bardic performances, which replace some of the standard bardic performances as listed in each entry. These bardic performances follow all the general rules and restrictions of a bard’s bardic performances. Watersong (Su) : At 1st level, a watersinger can use bardic performance to manipulate and control the shape of water within 30 feet. A successful Perform check allows the bard to animate and control a 5-foot-cube of water. The watersinger can command the water to take various forms, bend, rise, fall, or sustain a shape, and can make it support weight as if it were solid ice. For example, the watersinger could create a pillar of water (to provide cover), ladder, channel, bridge, stairs, slide, and so on. The manipulated water is as slippery as normal ice. This ability cannot create forms more fragile or complex than what could be carved in normal ice. While under the bard’s control, the water has hardness 0 and 3 hit points per inch of thickness. At level 3, the manipulated water gains hardness 1, and this increases by +1 for every 3 bard levels beyond that. At 5th, 10th, 15th, and 20th level, the volume affected increases by an additional 5-foot cube (these cubes must be adjacent to each other). The manipulated water retains its shape for 1 round after the bard stops spending bardic performance rounds to maintain it. This ability replaces fascinate, suggestion, and mass suggestion. Waterstrike (Su) : At 3rd level, the watersinger can spend 1 round of bardic performance to command any water he is currently manipulating with his watersong performance to lash out and strike an opponent with a slam attack. The watersinger uses his base attack bonus and Charisma bonus to make this attack, and deals 1d6 points of bludgeoning damage plus his Charisma bonus. The attack can originate from any square of water the bard is manipulating, and the water can get a flanking bonus or help a combatant get one, but cannot make attacks of opportunity. The water can make multiple attacks per round if your base attack bonus allows you to do so. At 10th level, the water’s slam damage increases to 1d8 points and the water gains a reach of 10 feet. At 15th level, the water’s slam damage increases to 2d6 points. At 20th level, the water’s slam damage increases to 2d8 points. This performance replaces inspire competence. Lifewater (Su) : At 5th level, the watersinger can spend 1 round of bardic performance as a standard action to manipulate the water, blood, and other fluids within a creature’s body, causing the target to become sickened for 1d4 rounds. Alternatively, he may use this ability to attempt a reposition combat maneuver , using his base attack bonus and his Charisma modifier as his CMB. This ability has a range of 30 feet, only works on creatures whose bodies contain fluid, and does not affect creatures that are immune to critical hits. This performance replaces the use of lore master gained at 5th level (though a watersinger still gains the use of lore master once per day at 11th level and twice per day at 17th).",
+          "resourceActions": [
+            {
+              "id": "watersinger-watersong",
+              "label": "Begin Watersong",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Current capacity",
+              "modes": [
+                {
+                  "id": "level-1",
+                  "label": "Level 1+ · 1 cube · hardness 0",
+                  "minimumLevel": 1,
+                  "maximumLevel": 2,
+                  "summary": "Manipulate 1 adjacent 5-foot cube of water with hardness 0 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-3",
+                  "label": "Level 3+ · 1 cube · hardness 1",
+                  "minimumLevel": 3,
+                  "maximumLevel": 4,
+                  "summary": "Manipulate 1 adjacent 5-foot cube of water with hardness 1 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-5",
+                  "label": "Level 5+ · 2 cubes · hardness 1",
+                  "minimumLevel": 5,
+                  "maximumLevel": 5,
+                  "summary": "Manipulate 2 adjacent 5-foot cubes of water with hardness 1 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-6",
+                  "label": "Level 6+ · 2 cubes · hardness 2",
+                  "minimumLevel": 6,
+                  "maximumLevel": 8,
+                  "summary": "Manipulate 2 adjacent 5-foot cubes of water with hardness 2 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-9",
+                  "label": "Level 9+ · 2 cubes · hardness 3",
+                  "minimumLevel": 9,
+                  "maximumLevel": 9,
+                  "summary": "Manipulate 2 adjacent 5-foot cubes of water with hardness 3 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-10",
+                  "label": "Level 10+ · 3 cubes · hardness 3",
+                  "minimumLevel": 10,
+                  "maximumLevel": 11,
+                  "summary": "Manipulate 3 adjacent 5-foot cubes of water with hardness 3 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-12",
+                  "label": "Level 12+ · 3 cubes · hardness 4",
+                  "minimumLevel": 12,
+                  "maximumLevel": 14,
+                  "summary": "Manipulate 3 adjacent 5-foot cubes of water with hardness 4 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-15",
+                  "label": "Level 15+ · 4 cubes · hardness 5",
+                  "minimumLevel": 15,
+                  "maximumLevel": 17,
+                  "summary": "Manipulate 4 adjacent 5-foot cubes of water with hardness 5 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-18",
+                  "label": "Level 18+ · 4 cubes · hardness 6",
+                  "minimumLevel": 18,
+                  "maximumLevel": 19,
+                  "summary": "Manipulate 4 adjacent 5-foot cubes of water with hardness 6 and 3 hit points per inch of thickness."
+                },
+                {
+                  "id": "level-20",
+                  "label": "Level 20+ · 5 cubes · hardness 6",
+                  "minimumLevel": 20,
+                  "maximumLevel": null,
+                  "summary": "Manipulate 5 adjacent 5-foot cubes of water with hardness 6 and 3 hit points per inch of thickness."
+                }
+              ],
+              "activeEffect": {
+                "name": "Watersong",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "The selected water volume can bend, rise, fall, sustain simple ice-carvable shapes, support weight, provide structures or cover, and remains slippery. It keeps its shape for 1 round after performance spending stops.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per round; capacity and hardness follow the exact level progression."
+            },
+            {
+              "id": "watersinger-waterstrike",
+              "label": "Command Waterstrike",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "watersong-active",
+                  "label": "Watersong is currently manipulating the attacking water",
+                  "requiredForActivation": true
+                }
+              ],
+              "combatRoll": {
+                "attack": {
+                  "kind": "melee",
+                  "label": "Water slam",
+                  "abilityModifier": "charisma"
+                },
+                "attackCountByLevel": [
+                  {
+                    "level": 3,
+                    "count": 1
+                  },
+                  {
+                    "level": 8,
+                    "count": 2
+                  },
+                  {
+                    "level": 15,
+                    "count": 3
+                  }
+                ],
+                "iterativeAttackPenalty": 5,
+                "damage": {
+                  "type": "bludgeoning",
+                  "diceCountByLevel": [
+                    {
+                      "level": 3,
+                      "count": 1
+                    },
+                    {
+                      "level": 15,
+                      "count": 2
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 3,
+                      "sides": 6
+                    },
+                    {
+                      "level": 10,
+                      "sides": 8
+                    },
+                    {
+                      "level": 15,
+                      "sides": 6
+                    },
+                    {
+                      "level": 20,
+                      "sides": 8
+                    }
+                  ],
+                  "abilityModifier": "charisma"
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 3,
+                    "range": "from any manipulated water square; normal reach"
+                  },
+                  {
+                    "level": 10,
+                    "range": "from any manipulated water square; 10-foot reach"
+                  }
+                ]
+              },
+              "summary": "Spend one performance round; roll all BAB-granted iterative slam attacks with Charisma replacing the normal attack ability and add Charisma to damage."
+            },
+            {
+              "id": "watersinger-lifewater-sicken",
+              "label": "Use Lifewater — Sicken",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "fluid-target",
+                  "label": "The target is within 30 feet, contains fluid, and is not immune to critical hits",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Lifewater — Sickened",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "The target is sickened by manipulation of its bodily fluids.",
+                "durationDice": {
+                  "count": 1,
+                  "sides": 4
+                }
+              },
+              "summary": "Spend one performance round; the app rolls and tracks the exact 1d4-round sickened duration."
+            },
+            {
+              "id": "watersinger-lifewater-reposition",
+              "label": "Use Lifewater — Reposition",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "fluid-target",
+                  "label": "The target is within 30 feet, contains fluid, and is not immune to critical hits",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Reposition combat maneuver",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 20
+                  }
+                ],
+                "abilityModifier": "charisma",
+                "modifierInputLabel": "Base attack bonus",
+                "targetDcInputLabel": "Target CMD",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "reposition succeeds"
+                  }
+                ],
+                "failureLabel": "reposition fails"
+              },
+              "summary": "Spend one performance round and resolve BAB + Charisma against the target's CMD."
+            }
+          ]
         },
         {
           "id": "bard-watersinger-watersinger-spells-1",
@@ -32,9 +315,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Watersinger"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Watersong capacity, hardness, shape persistence, Waterstrike attacks/reach/damage, both Lifewater modes, eligibility, costs, timing, and all water spell-list additions are automated."
   ],
   "manualRequirements": [
     "Restricted to Undine characters; that ancestry is not yet available in this builder."
