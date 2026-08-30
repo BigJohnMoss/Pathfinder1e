@@ -119,6 +119,7 @@ export type ActiveEffectTarget =
   | "casterLevel" | "spellSaveDc" | "exploitEffectiveLevel"
   | "casterLevelChecks" | "savingThrows" | "savingThrowsAgainstCharmAndFear" | "savingThrowsAgainstParalysisAndSleep"
   | "meleeDamageRolls" | "healingReceived" | "skillChecks" | "performanceChecks" | "performanceSaveDc"
+  | "landSpeed"
   | "strength" | "dexterity" | "constitution" | "intelligence" | "wisdom" | "charisma"
   | "allies" | "self" | "area" | "enemy";
 export interface ActiveEffect {
@@ -247,7 +248,7 @@ export interface ClassFeatureOccurrence {
       enemySaveModifier: "fortitude" | "reflex" | "will";
     };
     modeLabel?: string;
-    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; label: string; description: string; fastHealing?: number }> }>;
+    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; bonusByLevel?: Array<{ level: number; bonus: number }>; label: string; description: string; fastHealing?: number; skillIds?: string[] }> }>;
     featSelection?: {
       label: string;
       featType: string;
@@ -262,6 +263,14 @@ export interface ClassFeatureOccurrence {
     confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
     classId?: string;
     minimumLevel?: number;
+    maximumActiveEffects?: {
+      name: string;
+      base?: number;
+      levelDivisor?: number;
+      abilityModifier?: AbilityName;
+      minimum?: number;
+      maximum?: number;
+    };
     advancementOptionId?: string;
     requiredOptionId?: string;
     targetHitDiceRequirement?: { label: string; levelDivisor: number };
@@ -1137,6 +1146,7 @@ export interface CharacterOptionGroup {
     targetClassId?: string;
     school?: string;
     maximumSpellLevel?: number;
+    minimumSpellLevel?: number;
     additionalSpellIds?: string[];
     additionalSpellLevels?: Record<string, number>;
     anyClassList?: boolean;
