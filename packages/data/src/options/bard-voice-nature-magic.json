@@ -1,0 +1,32 @@
+{
+  "id": "bard-voice-nature-magic",
+  "name": "Voice of the Wild Nature Magic",
+  "classIds": [
+    "bard"
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Voice%20of%20the%20Wild"
+  },
+  "optionDefaults": {
+    "groupId": "bard-voice-nature-magic",
+    "classIds": [
+      "bard"
+    ],
+    "prerequisites": []
+  },
+  "options": [],
+  "generatedSpellOptions": {
+    "spellSources": [
+      {
+        "classId": "druid"
+      },
+      {
+        "classId": "ranger"
+      }
+    ],
+    "targetClassId": "bard",
+    "maximumSpellLevel": 6
+  }
+}

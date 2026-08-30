@@ -37,28 +37,346 @@
           "name": "Earth Magic",
           "level": 1,
           "type": "archetype",
-          "summary": "A stonesinger is treated as having the Eschew Materials feat so long as he is touching natural or manufactured stone. Additionally, a stonesinger adds the following spells to the bard spell list at the listed level: 1— magic stone , 2— stone shield , 3— stone shape , 4— earth glide , 5— stoneskin , 6— stone tell . This ability alters spellcasting."
+          "summary": "A stonesinger is treated as having the Eschew Materials feat so long as he is touching natural or manufactured stone. Additionally, a stonesinger adds the following spells to the bard spell list at the listed level: 1— magic stone , 2— stone shield , 3— stone shape , 4— earth glide , 5— stoneskin , 6— stone tell . This ability alters spellcasting.",
+          "progressionProfiles": [
+            {
+              "id": "stonesinger-earth-magic",
+              "label": "Earth Magic",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "benefit": "Eschew Materials while touching natural or manufactured stone"
+                  }
+                }
+              ],
+              "summary": "The conditional feat benefit is always visible alongside all six spell-list additions."
+            }
+          ]
         },
         {
           "id": "bard-stonesinger-stone-song-su-1",
           "name": "Stone Song (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A stonesinger’s bardic performance is a subsonic vibration that resonates from his body and travels through solid rock. This vibration is subtle enough to not be heard, though creatures with the tremorsense universal monster ability can distinctly hear the stone song out to a range of 100 feet per bard level. All allies within 30 feet of the stonesinger benefit from stone song, perceiving the effect due to proximity. An allied creature with tremorsense benefits from stone song as long as it’s within the extended range, provided that there is an unobstructed path of solid earth between the creature and stonesinger. Natural and manufactured stone does not inhibit stone song’s range. A stonesinger must use Perform (song) or Perform (oratory) for this bardic performance. This ability modifies bardic performance."
+          "summary": "A stonesinger’s bardic performance is a subsonic vibration that resonates from his body and travels through solid rock. This vibration is subtle enough to not be heard, though creatures with the tremorsense universal monster ability can distinctly hear the stone song out to a range of 100 feet per bard level. All allies within 30 feet of the stonesinger benefit from stone song, perceiving the effect due to proximity. An allied creature with tremorsense benefits from stone song as long as it’s within the extended range, provided that there is an unobstructed path of solid earth between the creature and stonesinger. Natural and manufactured stone does not inhibit stone song’s range. A stonesinger must use Perform (song) or Perform (oratory) for this bardic performance. This ability modifies bardic performance.",
+          "resourceActions": [
+            {
+              "id": "stonesinger-stone-song",
+              "label": "Begin Stone Song",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Listener",
+              "modes": [
+                {
+                  "id": "nearby",
+                  "label": "Nearby allies",
+                  "summary": "All allies within 30 feet perceive the subtle vibration."
+                },
+                {
+                  "id": "tremorsense-1",
+                  "label": "Tremorsense allies — 100 feet",
+                  "minimumLevel": 1,
+                  "maximumLevel": 1,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 100 feet."
+                },
+                {
+                  "id": "tremorsense-2",
+                  "label": "Tremorsense allies — 200 feet",
+                  "minimumLevel": 2,
+                  "maximumLevel": 2,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 200 feet."
+                },
+                {
+                  "id": "tremorsense-3",
+                  "label": "Tremorsense allies — 300 feet",
+                  "minimumLevel": 3,
+                  "maximumLevel": 3,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 300 feet."
+                },
+                {
+                  "id": "tremorsense-4",
+                  "label": "Tremorsense allies — 400 feet",
+                  "minimumLevel": 4,
+                  "maximumLevel": 4,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 400 feet."
+                },
+                {
+                  "id": "tremorsense-5",
+                  "label": "Tremorsense allies — 500 feet",
+                  "minimumLevel": 5,
+                  "maximumLevel": 5,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 500 feet."
+                },
+                {
+                  "id": "tremorsense-6",
+                  "label": "Tremorsense allies — 600 feet",
+                  "minimumLevel": 6,
+                  "maximumLevel": 6,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 600 feet."
+                },
+                {
+                  "id": "tremorsense-7",
+                  "label": "Tremorsense allies — 700 feet",
+                  "minimumLevel": 7,
+                  "maximumLevel": 7,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 700 feet."
+                },
+                {
+                  "id": "tremorsense-8",
+                  "label": "Tremorsense allies — 800 feet",
+                  "minimumLevel": 8,
+                  "maximumLevel": 8,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 800 feet."
+                },
+                {
+                  "id": "tremorsense-9",
+                  "label": "Tremorsense allies — 900 feet",
+                  "minimumLevel": 9,
+                  "maximumLevel": 9,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 900 feet."
+                },
+                {
+                  "id": "tremorsense-10",
+                  "label": "Tremorsense allies — 1000 feet",
+                  "minimumLevel": 10,
+                  "maximumLevel": 10,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1000 feet."
+                },
+                {
+                  "id": "tremorsense-11",
+                  "label": "Tremorsense allies — 1100 feet",
+                  "minimumLevel": 11,
+                  "maximumLevel": 11,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1100 feet."
+                },
+                {
+                  "id": "tremorsense-12",
+                  "label": "Tremorsense allies — 1200 feet",
+                  "minimumLevel": 12,
+                  "maximumLevel": 12,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1200 feet."
+                },
+                {
+                  "id": "tremorsense-13",
+                  "label": "Tremorsense allies — 1300 feet",
+                  "minimumLevel": 13,
+                  "maximumLevel": 13,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1300 feet."
+                },
+                {
+                  "id": "tremorsense-14",
+                  "label": "Tremorsense allies — 1400 feet",
+                  "minimumLevel": 14,
+                  "maximumLevel": 14,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1400 feet."
+                },
+                {
+                  "id": "tremorsense-15",
+                  "label": "Tremorsense allies — 1500 feet",
+                  "minimumLevel": 15,
+                  "maximumLevel": 15,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1500 feet."
+                },
+                {
+                  "id": "tremorsense-16",
+                  "label": "Tremorsense allies — 1600 feet",
+                  "minimumLevel": 16,
+                  "maximumLevel": 16,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1600 feet."
+                },
+                {
+                  "id": "tremorsense-17",
+                  "label": "Tremorsense allies — 1700 feet",
+                  "minimumLevel": 17,
+                  "maximumLevel": 17,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1700 feet."
+                },
+                {
+                  "id": "tremorsense-18",
+                  "label": "Tremorsense allies — 1800 feet",
+                  "minimumLevel": 18,
+                  "maximumLevel": 18,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1800 feet."
+                },
+                {
+                  "id": "tremorsense-19",
+                  "label": "Tremorsense allies — 1900 feet",
+                  "minimumLevel": 19,
+                  "maximumLevel": 19,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 1900 feet."
+                },
+                {
+                  "id": "tremorsense-20",
+                  "label": "Tremorsense allies — 2000 feet",
+                  "minimumLevel": 20,
+                  "maximumLevel": 20,
+                  "summary": "Allies with tremorsense perceive Stone Song through unobstructed solid earth out to 2000 feet."
+                }
+              ],
+              "activeEffect": {
+                "name": "Stone Song",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Subsonic Perform (song) or Perform (oratory) carries through natural and manufactured stone according to the selected listener mode.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 performance round per round; select the normal 30-foot or exact 100-feet-per-level tremorsense range."
+            }
+          ]
         },
         {
-          "id": "bard-stonesinger-tremor-su-5",
+          "id": "bard-stonesinger-tremor-su-1",
           "name": "Tremor (Su)",
-          "level": 5,
+          "level": 1,
           "type": "archetype",
-          "summary": "As part of another bardic performance, a stonesinger can cause the ground within 30 feet to tremble, throwing enemies off balance and causing them to take a –1 circumstance penalty to AC as long as the stonesinger continues performing. This penalty increases by 1 at 5th level and every 6 levels thereafter. Creatures levitating or flying above the ground are unaffected by this ability. This replaces countersong."
+          "summary": "As part of another bardic performance, a stonesinger can cause the ground within 30 feet to tremble, throwing enemies off balance and causing them to take a –1 circumstance penalty to AC as long as the stonesinger continues performing. This penalty increases by 1 at 5th level and every 6 levels thereafter. Creatures levitating or flying above the ground are unaffected by this ability. This replaces countersong.",
+          "resourceActions": [
+            {
+              "id": "stonesinger-tremor",
+              "label": "Add Tremor to Current Performance",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 0,
+              "minimumResourceRemaining": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "performance-active",
+                  "label": "Another Bardic Performance is active",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "grounded-enemies",
+                  "label": "Affected enemies are grounded rather than flying or levitating",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Tremor",
+                "targets": [
+                  "armorClass"
+                ],
+                "bonus": -1,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": -1
+                  },
+                  {
+                    "level": 5,
+                    "bonus": -2
+                  },
+                  {
+                    "level": 11,
+                    "bonus": -3
+                  },
+                  {
+                    "level": 17,
+                    "bonus": -4
+                  }
+                ],
+                "description": "Grounded enemies within 30 feet take this circumstance penalty to AC while the performance continues.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Require an active performance and apply the exact level-scaled AC penalty only to grounded enemies, without charging an extra performance round."
+            }
+          ]
         },
         {
           "id": "bard-stonesinger-quake-su-8",
           "name": "Quake (Su)",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, a stonesinger causes the ground to shudder and buckle with his song. All enemies within 30 feet of the stonesinger must succeed at a Reflex save (DC = 10 + half the stonesinger’s level + his Charisma bonus) when he begins a bardic performance or be knocked prone. Prone and flying creatures, as well as creatures with the earth glide universal monster ability, are unaffected by this performance. This replaces dirge of doom."
+          "summary": "At 8th level, a stonesinger causes the ground to shudder and buckle with his song. All enemies within 30 feet of the stonesinger must succeed at a Reflex save (DC = 10 + half the stonesinger’s level + his Charisma bonus) when he begins a bardic performance or be knocked prone. Prone and flying creatures, as well as creatures with the earth glide universal monster ability, are unaffected by this performance. This replaces dirge of doom.",
+          "resourceActions": [
+            {
+              "id": "stonesinger-quake",
+              "label": "Resolve Quake",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "eligible-target",
+                  "label": "Targets are standing and grounded and do not have earth glide",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Reflex",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "reflex",
+                "rangeByLevel": [
+                  {
+                    "level": 8,
+                    "range": "all eligible enemies within 30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 8,
+                    "name": "Quake — Prone",
+                    "description": "The failed target is knocked prone; remove the tracker when it stands.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ]
+              },
+              "summary": "Begin performance, spend 1 round, resolve the exact Reflex DC, and track prone only for eligible grounded targets."
+            }
+          ]
         }
       ]
     }
@@ -68,8 +386,17 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Stonesinger"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "All six Earth Magic spells, conditional Eschew Materials, Stone Song ranges, Tremor's correct level-1 unlock and scaling, and Quake's save and eligibility are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-stonesinger-earth-magic-1",
+      "label": "Conditional Eschew Materials",
+      "condition": "While touching natural or manufactured stone",
+      "minimumLevel": 1,
+      "base": 0
+    }
   ]
 }

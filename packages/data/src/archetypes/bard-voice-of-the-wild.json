@@ -31,21 +31,423 @@
           "name": "Wild Knowledge (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a voice of the wild adds 1/2 his level (minimum 1) to all Knowledge (nature) checks. He can use Knowledge (geography) and Knowledge (nature) untrained. This ability replaces bardic knowledge."
+          "summary": "At 1st level, a voice of the wild adds 1/2 his level (minimum 1) to all Knowledge (nature) checks. He can use Knowledge (geography) and Knowledge (nature) untrained. This ability replaces bardic knowledge.",
+          "progressionProfiles": [
+            {
+              "id": "voice-wild-untrained-knowledge",
+              "label": "Wild Knowledge permissions",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "skills",
+                  "label": "Untrained checks"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "skills": "Knowledge (geography) and Knowledge (nature)"
+                  }
+                }
+              ],
+              "summary": "Both listed Knowledge skills can be attempted untrained."
+            }
+          ]
         },
         {
-          "id": "bard-voice-of-the-wild-nature-magic-1",
-          "name": "Nature Magic",
+          "id": "voice-wild-nature-spell-1",
+          "name": "Nature Magic Spell 1",
           "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, a voice of the wild can select a 1st-level druid or ranger spell as a bard spell known instead of a spell from the bard spell list. The voice of the wild can select another druid or ranger spell (of any bard spell level he can cast) at 4th, 7th, 10th, 13th, and 16th levels. If he chooses to learn a new spell in place of an old one, he can exchange a druid or ranger spell for another. This ability replaces countersong, all instances of versatile performance, and jack-of-all-trades."
+          "type": "selectable",
+          "summary": "Choose one 1st-level Druid or Ranger spell as a Bard spell known.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-voice-nature-magic-first"
+        },
+        {
+          "id": "voice-wild-nature-spell-4",
+          "name": "Nature Magic Spell 2",
+          "level": 4,
+          "type": "selectable",
+          "summary": "Choose one Druid or Ranger spell of any Bard spell level currently available.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-voice-nature-magic"
+        },
+        {
+          "id": "voice-wild-nature-spell-7",
+          "name": "Nature Magic Spell 3",
+          "level": 7,
+          "type": "selectable",
+          "summary": "Choose one Druid or Ranger spell of any Bard spell level currently available.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-voice-nature-magic"
+        },
+        {
+          "id": "voice-wild-nature-spell-10",
+          "name": "Nature Magic Spell 4",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose one Druid or Ranger spell of any Bard spell level currently available.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-voice-nature-magic"
+        },
+        {
+          "id": "voice-wild-nature-spell-13",
+          "name": "Nature Magic Spell 5",
+          "level": 13,
+          "type": "selectable",
+          "summary": "Choose one Druid or Ranger spell of any Bard spell level currently available.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-voice-nature-magic"
+        },
+        {
+          "id": "voice-wild-nature-spell-16",
+          "name": "Nature Magic Spell 6",
+          "level": 16,
+          "type": "selectable",
+          "summary": "Choose one Druid or Ranger spell of any Bard spell level currently available.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-voice-nature-magic"
         },
         {
           "id": "bard-voice-of-the-wild-bardic-performance-3",
           "name": "Bardic Performance",
           "level": 3,
           "type": "archetype",
-          "summary": "Voices of the wild gain the following bardic performance. Song of the Wild (Su) : At 3rd level, the voice of the wild can use bardic performance to grant an animal aspect to an ally, as if using the hunter’s animal focus class feature . The ally must be able to hear or see the performance. The voice of the wild uses his bard level as his hunter level for determining the effect of the animal aspect. The bard can affect a second ally with this performance at 10th level and a third at 17th level. Song of the wild relies on audible or visual components. This ability replaces all increments of inspire competence, dirge of doom, and inspire heroics."
+          "summary": "Voices of the wild gain the following bardic performance. Song of the Wild (Su) : At 3rd level, the voice of the wild can use bardic performance to grant an animal aspect to an ally, as if using the hunter’s animal focus class feature . The ally must be able to hear or see the performance. The voice of the wild uses his bard level as his hunter level for determining the effect of the animal aspect. The bard can affect a second ally with this performance at 10th level and a third at 17th level. Song of the wild relies on audible or visual components. This ability replaces all increments of inspire competence, dirge of doom, and inspire heroics.",
+          "resourceActions": [
+            {
+              "id": "voice-wild-song",
+              "label": "Begin Song of the Wild",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Animal aspect",
+              "modes": [
+                {
+                  "id": "bat",
+                  "label": "Bat",
+                  "summary": "Darkvision 60 feet; 90 feet at level 8; add blindsense 10 feet at level 15.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Song of the Wild — Bat",
+                      "description": "Darkvision 60 feet (90 feet at level 8); blindsense 10 feet at level 15."
+                    }
+                  ]
+                },
+                {
+                  "id": "bear",
+                  "label": "Bear",
+                  "summary": "Enhancement bonus to Constitution.",
+                  "activeEffects": [
+                    {
+                      "target": "constitution",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Song of the Wild — Bear",
+                      "description": "Level-scaled enhancement bonus to Constitution."
+                    }
+                  ]
+                },
+                {
+                  "id": "bull",
+                  "label": "Bull",
+                  "summary": "Enhancement bonus to Strength.",
+                  "activeEffects": [
+                    {
+                      "target": "strength",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Song of the Wild — Bull",
+                      "description": "Level-scaled enhancement bonus to Strength."
+                    }
+                  ]
+                },
+                {
+                  "id": "falcon",
+                  "label": "Falcon",
+                  "summary": "Competence bonus on Perception.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Song of the Wild — Falcon",
+                      "description": "Level-scaled competence bonus on Perception checks.",
+                      "skillIds": [
+                        "Perception"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "frog",
+                  "label": "Frog",
+                  "summary": "Competence bonus on Swim and Acrobatics checks to jump.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Song of the Wild — Frog",
+                      "description": "Level-scaled competence bonus on Swim and Acrobatics checks to jump.",
+                      "skillIds": [
+                        "Swim",
+                        "Acrobatics"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "monkey",
+                  "label": "Monkey",
+                  "summary": "Competence bonus on Climb.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Song of the Wild — Monkey",
+                      "description": "Level-scaled competence bonus on Climb checks.",
+                      "skillIds": [
+                        "Climb"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "mouse",
+                  "label": "Mouse",
+                  "summary": "Evasion, improving to improved evasion at level 12.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Song of the Wild — Mouse",
+                      "description": "Evasion applies; it improves to improved evasion at Bard level 12."
+                    }
+                  ]
+                },
+                {
+                  "id": "owl",
+                  "label": "Owl",
+                  "summary": "Competence bonus on Stealth.",
+                  "activeEffects": [
+                    {
+                      "target": "skillChecks",
+                      "bonus": 4,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 6
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 8
+                        }
+                      ],
+                      "label": "Song of the Wild — Owl",
+                      "description": "Level-scaled competence bonus on Stealth checks.",
+                      "skillIds": [
+                        "Stealth"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "snake",
+                  "label": "Snake",
+                  "summary": "Level-scaled attack and dodge AC bonuses for attacks of opportunity.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Song of the Wild — Snake",
+                      "description": "+2 on attacks of opportunity and +2 dodge AC against attacks of opportunity; +4 at level 8 and +6 at level 15."
+                    }
+                  ]
+                },
+                {
+                  "id": "stag",
+                  "label": "Stag",
+                  "summary": "Enhancement bonus to land speed.",
+                  "activeEffects": [
+                    {
+                      "target": "landSpeed",
+                      "bonus": 5,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 5
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 10
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 20
+                        }
+                      ],
+                      "label": "Song of the Wild — Stag",
+                      "description": "Level-scaled enhancement bonus to base land speed."
+                    }
+                  ]
+                },
+                {
+                  "id": "tiger",
+                  "label": "Tiger",
+                  "summary": "Enhancement bonus to Dexterity.",
+                  "activeEffects": [
+                    {
+                      "target": "dexterity",
+                      "bonus": 2,
+                      "bonusByLevel": [
+                        {
+                          "level": 1,
+                          "bonus": 2
+                        },
+                        {
+                          "level": 8,
+                          "bonus": 4
+                        },
+                        {
+                          "level": 15,
+                          "bonus": 6
+                        }
+                      ],
+                      "label": "Song of the Wild — Tiger",
+                      "description": "Level-scaled enhancement bonus to Dexterity."
+                    }
+                  ]
+                },
+                {
+                  "id": "wolf",
+                  "label": "Wolf",
+                  "summary": "Scent 10 feet; 20 feet at level 8; 30 feet at level 15.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Song of the Wild — Wolf",
+                      "description": "Scent 10 feet (20 feet at level 8, 30 feet at level 15); double upwind and half downwind."
+                    }
+                  ]
+                }
+              ],
+              "targetCountByLevel": [
+                {
+                  "level": 3,
+                  "count": 1
+                },
+                {
+                  "level": 10,
+                  "count": 2
+                },
+                {
+                  "level": 17,
+                  "count": 3
+                }
+              ],
+              "activeEffect": {
+                "name": "Song of the Wild",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "The selected Hunter animal focus applies to allies who can hear or see the performance.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend 1 performance round per round; every core Hunter animal focus, its level scaling, and the 1/2/3-ally cap are available."
+            }
+          ]
         }
       ]
     }
@@ -55,8 +457,18 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Voice%20of%20the%20Wild"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Wild Knowledge, six level-gated Druid/Ranger spell choices, and all twelve core Hunter animal-focus modes with level scaling and ally caps are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-voice-of-the-wild-wild-knowledge-ex-1",
+      "skill": "Knowledge (nature)",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    }
   ]
 }
