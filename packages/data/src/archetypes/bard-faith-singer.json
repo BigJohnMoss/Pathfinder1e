@@ -15,18 +15,86 @@
       ],
       "features": [
         {
-          "id": "bard-faith-singer-faithful-1",
-          "name": "Faithful",
+          "id": "faith-singer-deity-1",
+          "name": "Faithful Deity",
           "level": 1,
-          "type": "archetype",
-          "summary": "Like a cleric, a faith singer must worship a deity, and his alignment must be within one step of his deity’s alignment."
+          "type": "selectable",
+          "summary": "Choose the deity worshiped by the Faith Singer.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-deities"
         },
         {
-          "id": "bard-faith-singer-devout-spell-knowledge-su-2",
-          "name": "Devout Spell Knowledge (Su)",
+          "id": "faith-singer-alignment-1",
+          "name": "Faithful Alignment",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose an alignment within one step of the selected deity.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-alignments"
+        },
+        {
+          "id": "faith-singer-domain-2",
+          "name": "Devout Domain",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, a faith singer can select one domain from among those belonging to his deity. Once per day as a spell-like ability using his bard level as his caster level, he can cast the 1st-level domain spell while giving a bardic performance. At 6th level, and every 4 bard levels thereafter, he can similarly cast the next-higher domain spell as a spell-like ability (to a maximum of the 5th-level domain spell at bard level 18th). He can use each spell-like ability only once per day. This ability replaces versatile performance."
+          "type": "selectable",
+          "summary": "Choose one domain granted by the selected deity.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains"
+        },
+        {
+          "id": "faith-singer-domain-spell-1",
+          "name": "1st-level Devout Domain Spell",
+          "level": 2,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "progressionKey": "faith-singer-devout-domain-spells",
+          "summary": "Select the 1st-level spell from the chosen domain. Cast it once per day as a spell-like ability at Bard caster level while giving a bardic performance.",
+          "uses": "once per day"
+        },
+        {
+          "id": "faith-singer-domain-spell-2",
+          "name": "2nd-level Devout Domain Spell",
+          "level": 6,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "progressionKey": "faith-singer-devout-domain-spells",
+          "summary": "Select the 2nd-level spell from the chosen domain. Cast it once per day as a spell-like ability at Bard caster level while giving a bardic performance.",
+          "uses": "once per day"
+        },
+        {
+          "id": "faith-singer-domain-spell-3",
+          "name": "3rd-level Devout Domain Spell",
+          "level": 10,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "progressionKey": "faith-singer-devout-domain-spells",
+          "summary": "Select the 3rd-level spell from the chosen domain. Cast it once per day as a spell-like ability at Bard caster level while giving a bardic performance.",
+          "uses": "once per day"
+        },
+        {
+          "id": "faith-singer-domain-spell-4",
+          "name": "4th-level Devout Domain Spell",
+          "level": 14,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "progressionKey": "faith-singer-devout-domain-spells",
+          "summary": "Select the 4th-level spell from the chosen domain. Cast it once per day as a spell-like ability at Bard caster level while giving a bardic performance.",
+          "uses": "once per day"
+        },
+        {
+          "id": "faith-singer-domain-spell-5",
+          "name": "5th-level Devout Domain Spell",
+          "level": 18,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "progressionKey": "faith-singer-devout-domain-spells",
+          "summary": "Select the 5th-level spell from the chosen domain. Cast it once per day as a spell-like ability at Bard caster level while giving a bardic performance.",
+          "uses": "once per day"
         }
       ]
     }
@@ -36,8 +104,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Faith%20Singer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Deity and one-step alignment legality, deity-granted domain filtering, all five level-gated domain spells, daily cast status, and Bard-level spell-like caster guidance are automated."
   ]
 }

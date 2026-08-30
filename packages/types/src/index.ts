@@ -247,7 +247,7 @@ export interface ClassFeatureOccurrence {
       enemySaveModifier: "fortitude" | "reflex" | "will";
     };
     modeLabel?: string;
-    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; label: string; description: string; fastHealing?: number }> }>;
+    modes?: Array<{ id: string; label: string; summary?: string; minimumLevel?: number; maximumLevel?: number; defaultRounds?: number; featCount?: number; variableFeatCount?: boolean; actionType?: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour"; requiredOptionId?: string; activeEffects?: Array<{ target: ActiveEffectTarget; bonus: number; label: string; description: string; fastHealing?: number }> }>;
     featSelection?: {
       label: string;
       featType: string;
@@ -256,7 +256,7 @@ export interface ClassFeatureOccurrence {
       countByLevel: Array<{ level: number; count: number }>;
       minimumCount?: number;
     };
-    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" }>;
+    actionTypeByLevel?: Array<{ level: number; actionType: "free" | "full-round" | "immediate" | "move" | "standard" | "swift" | "1-minute" | "10-minute" | "1-hour" }>;
     recipientLabel?: string;
     recipients?: Array<{ id: string; label: string }>;
     confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
@@ -330,8 +330,10 @@ export interface ClassFeatureOccurrence {
       }>;
     };
     combatRoll?: {
-      attack?: { kind: "ranged-touch" | "melee-touch"; label: string };
+      attack?: { kind: "ranged-touch" | "melee-touch" | "ranged" | "melee"; label: string; abilityModifier?: AbilityName };
       attackCountFromVariableCost?: boolean;
+      attackCountByLevel?: Array<{ level: number; count: number }>;
+      iterativeAttackPenalty?: number;
       abilityModifierOnceModeIds?: string[];
       damage: {
         type: string;
@@ -404,6 +406,7 @@ export interface ClassFeatureOccurrence {
       improvedBonus?: number;
       defaultRounds?: number;
       defaultRoundsByLevel?: Array<{ level: number; rounds: number }>;
+      durationDice?: { count: number; sides: number };
       rangeByLevel?: Array<{ level: number; feet: number }>;
       fixedRounds?: boolean;
       upgrades?: Array<{

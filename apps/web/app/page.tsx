@@ -1702,9 +1702,12 @@ export default function Home() {
       choice: feat.choice,
     }));
     const retainedBaseOptions = matchingAlternatives.some((alternative) => alternative.mode === "replace") ? [] : (baseGroup?.options ?? []);
-    const group: (typeof optionGroups)[number] | undefined = baseGroup && alternativeOptions.length
+    const resolvedGroup: (typeof optionGroups)[number] | undefined = baseGroup && alternativeOptions.length
       ? { ...baseGroup, options: [...retainedBaseOptions, ...alternativeOptions.filter((option) => !retainedBaseOptions.some((baseOption) => baseOption.id === option.id))] }
       : baseGroup;
+    const group = resolvedGroup && feature.id.startsWith("faith-singer-")
+      ? { ...resolvedGroup, classIds: [featureClassId], options: resolvedGroup.options.map((option) => ({ ...option, classIds: [featureClassId] })) }
+      : resolvedGroup;
     const selectedIds = [...selectedFeatIds, ...effectiveSelectedOptionIds];
     const baseOptions =
       group && feature.id === "sacred-servant-deity-1"
@@ -1877,7 +1880,7 @@ export default function Home() {
       setSaveNotice(`Exchanged one signature spell. ${signatureSpellExchangeCredits - 1} exchange${signatureSpellExchangeCredits - 1 === 1 ? "" : "s"} remain from Arcanist levels gained.`);
     }
     setSelectedOptions((current) => ({ ...current, [featureId]: optionId }));
-    if (featureId === "cleric-alignment-1") {
+    if (featureId === "cleric-alignment-1" || featureId === "faith-singer-alignment-1") {
       const nextAlignment = optionGroups.flatMap((group) => group.options).find((option) => option.id === optionId)?.alignment;
       if (nextAlignment) setAlignment(nextAlignment as Alignment);
     }
