@@ -94,7 +94,10 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           <output aria-label={calculation.outputLabel}>{calculation.outputLabel}: {base + input * multiplier}</output>
           {calculation.summary && <small>{calculation.summary}</small>}
         </div>;
-      })}{feature.resourceActions?.filter((action) => (action.classId ? classLevels[action.classId] ?? level : level) >= (action.minimumLevel ?? 1) && (!action.requiredOptionId || selectedOptionSet.has(action.requiredOptionId))).map((action) => {
+      })}{feature.resourceActions?.filter((action) => {
+        const actionLevel = action.classId ? classLevels[action.classId] ?? level : level;
+        return actionLevel >= (action.minimumLevel ?? 1) && actionLevel <= (action.maximumLevel ?? 20) && (!action.requiredOptionId || selectedOptionSet.has(action.requiredOptionId));
+      }).map((action) => {
         const actionClassLevel = action.classId ? classLevels[action.classId] ?? 0 : level;
         const actionLevel = action.advancementOptionId && selectedOptionSet.has(action.advancementOptionId)
           ? casterLevels[action.classId ?? ""] ?? actionClassLevel

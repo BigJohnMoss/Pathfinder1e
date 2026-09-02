@@ -1,0 +1,8 @@
+{
+  "id": "bard-rogue-talents",
+  "name": "Rogue Talents",
+  "classIds": ["bard"],
+  "inheritsOptionsFrom": "rogue-talents",
+  "uniqueAcrossSelections": true,
+  "options": []
+}

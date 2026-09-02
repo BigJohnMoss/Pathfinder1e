@@ -34,21 +34,136 @@
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "Archaeologists do not gain the bardic performance ability or any of its performance types."
+          "summary": "Archaeologists do not gain the bardic performance ability or any of its performance types.",
+          "progressionProfiles": [
+            {
+              "id": "archaeologist-no-performance",
+              "label": "Bardic Performance replacement",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "benefit": "No Bardic Performance pool or performance types"
+                  }
+                }
+              ],
+              "summary": "The standard resource is removed from the character sheet."
+            }
+          ]
         },
         {
-          "id": "bard-archaeologist-archaeologist-s-luck-ex-5",
+          "id": "bard-archaeologist-archaeologist-s-luck-ex-1",
           "name": "Archaeologist’s Luck (Ex)",
-          "level": 5,
+          "level": 1,
           "type": "archetype",
-          "summary": "Fortune favors the archaeologist. As a swift action, an archaeologist can call on fortune’s favor, giving him a +1 luck bonus on attack rolls, saving throws, skill checks, and weapon damage rolls. He can use this ability for a number of rounds per day equal to 4 + his Charisma modifier. Maintaining this bonus is a free action, but it ends immediately if the archaeologist is killed, paralyzed, stunned, knocked unconscious, or otherwise prevented from taking a free action to maintain it each round. Archaeologist’s luck is treated as bardic performance for the purposes of feats, abilities, effects, and the like that affect bardic performance. Like bardic performance, it cannot be maintained at the same time as other performance abilities. This bonus increases to +2 at 5th level, +3 at 11th level, and +4 at 17th level."
+          "summary": "Fortune favors the archaeologist. As a swift action, an archaeologist can call on fortune’s favor, giving him a +1 luck bonus on attack rolls, saving throws, skill checks, and weapon damage rolls. He can use this ability for a number of rounds per day equal to 4 + his Charisma modifier. Maintaining this bonus is a free action, but it ends immediately if the archaeologist is killed, paralyzed, stunned, knocked unconscious, or otherwise prevented from taking a free action to maintain it each round. Archaeologist’s luck is treated as bardic performance for the purposes of feats, abilities, effects, and the like that affect bardic performance. Like bardic performance, it cannot be maintained at the same time as other performance abilities. This bonus increases to +2 at 5th level, +3 at 11th level, and +4 at 17th level.",
+          "resourceActions": [
+            {
+              "id": "archaeologists-luck",
+              "label": "Use Archaeologist's Luck",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "archaeologistsLuck",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Round",
+              "modes": [
+                {
+                  "id": "start",
+                  "label": "Start luck",
+                  "actionType": "swift",
+                  "summary": "Begin Archaeologist's Luck."
+                },
+                {
+                  "id": "maintain",
+                  "label": "Maintain luck",
+                  "actionType": "free",
+                  "summary": "Maintain Archaeologist's Luck for another round."
+                }
+              ],
+              "activeEffect": {
+                "name": "Archaeologist's Luck",
+                "targets": [
+                  "attackRolls",
+                  "savingThrows",
+                  "skillChecks",
+                  "weaponDamageRolls"
+                ],
+                "bonus": 1,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": 1
+                  },
+                  {
+                    "level": 5,
+                    "bonus": 2
+                  },
+                  {
+                    "level": 11,
+                    "bonus": 3
+                  },
+                  {
+                    "level": 17,
+                    "bonus": 4
+                  }
+                ],
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "applyToAllTargets": true,
+                "replaceExisting": true,
+                "description": "Luck bonus; treated as Bardic Performance and cannot coexist with another performance. It ends if a free action cannot be taken to maintain it."
+              },
+              "summary": "Spend one daily round and apply the level-scaled luck bonus for that round."
+            }
+          ]
         },
         {
           "id": "bard-archaeologist-clever-explorer-ex-2",
           "name": "Clever Explorer (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, an archaeologist gains a bonus equal to half his class level on Disable Device and Perception checks. He can disable intricate and complex devices in half the normal amount of time (minimum 1 round) and open a lock as a standard action. At 6th level, an archaeologist can take 10 on Disable Device checks, even if distracted or endangered, and can disarm magical traps. This ability replaces the versatile performance ability."
+          "summary": "At 2nd level, an archaeologist gains a bonus equal to half his class level on Disable Device and Perception checks. He can disable intricate and complex devices in half the normal amount of time (minimum 1 round) and open a lock as a standard action. At 6th level, an archaeologist can take 10 on Disable Device checks, even if distracted or endangered, and can disarm magical traps. This ability replaces the versatile performance ability.",
+          "progressionProfiles": [
+            {
+              "id": "archaeologist-clever-explorer",
+              "label": "Clever Explorer permissions",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "benefit": "Disable devices in half time (minimum 1 round); open locks as a standard action"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "benefit": "Also take 10 while distracted or endangered and disarm magical traps"
+                  }
+                }
+              ],
+              "summary": "The calculated skill bonuses appear on the sheet; this records the timing and magical-trap permissions."
+            }
+          ]
         },
         {
           "id": "bard-archaeologist-uncanny-dodge-ex-2",
@@ -66,10 +181,343 @@
         },
         {
           "id": "bard-archaeologist-rogue-talents-4",
-          "name": "Rogue Talents",
+          "name": "Rogue Talent 1",
           "level": 4,
-          "type": "archetype",
-          "summary": "At 4th level, an archaeologist gains a rogue talent . He gains an additional rogue talent for every four levels of archaeologist gained after 4th level. Otherwise, this works as the rogue’s rogue talent ability."
+          "type": "selectable",
+          "summary": "Choose a rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "bleeding-attack",
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "slow-reactions",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "assault-leader",
+            "befuddling-strike",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "distracting-attack",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-getaway",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "offensive-defense",
+            "peerless-maneuver",
+            "positioning-attack",
+            "powerful-sneak",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "snipers-eye",
+            "strong-impression",
+            "survivalist",
+            "swift-poison"
+          ]
+        },
+        {
+          "id": "bard-archaeologist-rogue-talents-8",
+          "name": "Rogue Talent 2",
+          "level": 8,
+          "type": "selectable",
+          "summary": "Choose a rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "bleeding-attack",
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "slow-reactions",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "assault-leader",
+            "befuddling-strike",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "distracting-attack",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-getaway",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "offensive-defense",
+            "peerless-maneuver",
+            "positioning-attack",
+            "powerful-sneak",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "snipers-eye",
+            "strong-impression",
+            "survivalist",
+            "swift-poison"
+          ]
+        },
+        {
+          "id": "bard-archaeologist-rogue-talents-12",
+          "name": "Rogue Talent 3",
+          "level": 12,
+          "type": "selectable",
+          "summary": "Choose a rogue or advanced rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "bleeding-attack",
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "slow-reactions",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "crippling-strike",
+            "defensive-roll",
+            "dispelling-attack",
+            "feat",
+            "improved-evasion",
+            "opportunist",
+            "skill-mastery",
+            "slippery-mind",
+            "assault-leader",
+            "befuddling-strike",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "distracting-attack",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-getaway",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "offensive-defense",
+            "peerless-maneuver",
+            "positioning-attack",
+            "powerful-sneak",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "snipers-eye",
+            "strong-impression",
+            "survivalist",
+            "swift-poison",
+            "another-day",
+            "deadly-cocktail",
+            "deadly-sneak",
+            "entanglement-of-blades",
+            "fast-tumble",
+            "frugal-trapsmith",
+            "hunters-surprise",
+            "knock-out-blow",
+            "master-of-disguise",
+            "redirect-attack",
+            "stealthy-sniper",
+            "thoughtful-reexamining"
+          ]
+        },
+        {
+          "id": "bard-archaeologist-rogue-talents-16",
+          "name": "Rogue Talent 4",
+          "level": 16,
+          "type": "selectable",
+          "summary": "Choose a rogue or advanced rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "bleeding-attack",
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "slow-reactions",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "crippling-strike",
+            "defensive-roll",
+            "dispelling-attack",
+            "feat",
+            "improved-evasion",
+            "opportunist",
+            "skill-mastery",
+            "slippery-mind",
+            "assault-leader",
+            "befuddling-strike",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "distracting-attack",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-getaway",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "offensive-defense",
+            "peerless-maneuver",
+            "positioning-attack",
+            "powerful-sneak",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "snipers-eye",
+            "strong-impression",
+            "survivalist",
+            "swift-poison",
+            "another-day",
+            "deadly-cocktail",
+            "deadly-sneak",
+            "entanglement-of-blades",
+            "fast-tumble",
+            "frugal-trapsmith",
+            "hunters-surprise",
+            "knock-out-blow",
+            "master-of-disguise",
+            "redirect-attack",
+            "stealthy-sniper",
+            "thoughtful-reexamining"
+          ]
+        },
+        {
+          "id": "bard-archaeologist-rogue-talents-20",
+          "name": "Rogue Talent 5",
+          "level": 20,
+          "type": "selectable",
+          "summary": "Choose a rogue or advanced rogue talent. The app enforces level eligibility and prevents duplicate selections.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-rogue-talents",
+          "optionChoiceIds": [
+            "bleeding-attack",
+            "combat-trick",
+            "fast-stealth",
+            "finesse-rogue",
+            "ledge-walker",
+            "major-magic",
+            "minor-magic",
+            "quick-disable",
+            "resiliency",
+            "rogue-crawl",
+            "slow-reactions",
+            "stand-up",
+            "surprise-attack",
+            "trap-spotter",
+            "weapon-training",
+            "crippling-strike",
+            "defensive-roll",
+            "dispelling-attack",
+            "feat",
+            "improved-evasion",
+            "opportunist",
+            "skill-mastery",
+            "slippery-mind",
+            "assault-leader",
+            "befuddling-strike",
+            "camouflage",
+            "canny-observer",
+            "charmer",
+            "coax-information",
+            "combat-swipe",
+            "cunning-trigger",
+            "distracting-attack",
+            "expert-leaper",
+            "fast-fingers",
+            "fast-getaway",
+            "fast-picks",
+            "follow-clues",
+            "guileful-polyglot",
+            "hard-to-fool",
+            "honeyed-words",
+            "lasting-poison",
+            "nimble-climber",
+            "offensive-defense",
+            "peerless-maneuver",
+            "positioning-attack",
+            "powerful-sneak",
+            "quick-disguise",
+            "quick-trapsmith",
+            "snap-shot",
+            "snipers-eye",
+            "strong-impression",
+            "survivalist",
+            "swift-poison",
+            "another-day",
+            "deadly-cocktail",
+            "deadly-sneak",
+            "entanglement-of-blades",
+            "fast-tumble",
+            "frugal-trapsmith",
+            "hunters-surprise",
+            "knock-out-blow",
+            "master-of-disguise",
+            "redirect-attack",
+            "stealthy-sniper",
+            "thoughtful-reexamining"
+          ]
         },
         {
           "id": "bard-archaeologist-evasion-ex-6",
@@ -83,7 +531,29 @@
           "name": "Advanced Talent",
           "level": 12,
           "type": "archetype",
-          "summary": "At 12th level, and every four levels thereafter, an archaeologist can choose an advanced rogue talent in place of a rogue talent."
+          "summary": "At 12th level, and every four levels thereafter, an archaeologist can choose an advanced rogue talent in place of a rogue talent.",
+          "progressionProfiles": [
+            {
+              "id": "archaeologist-advanced-talents",
+              "label": "Advanced Talent access",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 12,
+                  "values": {
+                    "benefit": "The level 12, 16, and 20 talent slots also allow advanced rogue talents"
+                  }
+                }
+              ],
+              "summary": "Advanced options are included only in the appropriate later slots."
+            }
+          ]
         }
       ]
     }
@@ -93,8 +563,90 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Archaeologist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Bardic Performance removal, Archaeologist's Luck, skill bonuses and permissions, defenses, trap sense, and all five level-aware rogue-talent choices are automated."
+  ],
+  "removesBardicPerformance": true,
+  "resourceAdjustments": [
+    {
+      "resourceId": "archaeologistsLuck",
+      "label": "Archaeologist's Luck",
+      "unit": "round",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 4,
+      "refreshCadence": "day",
+      "abilityModifier": "charisma",
+      "minimum": 0
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-archaeologist-clever-explorer-ex-2",
+      "skill": "Disable Device",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2
+    },
+    {
+      "sourceFeatureId": "bard-archaeologist-clever-explorer-ex-2",
+      "skill": "Perception",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2
+    }
+  ],
+  "skillCheckRules": [
+    {
+      "sourceFeatureId": "bard-archaeologist-clever-explorer-ex-2",
+      "label": "Clever Explorer",
+      "minimumLevel": 6,
+      "skills": [
+        "Disable Device"
+      ],
+      "result": 10,
+      "allowsStress": true
+    }
+  ],
+  "defenseAdjustments": [
+    {
+      "sourceFeatureId": "bard-archaeologist-uncanny-dodge-ex-2",
+      "kind": "uncannyDodge",
+      "label": "Uncanny Dodge",
+      "minimumLevel": 2,
+      "base": 1,
+      "qualifier": "retain Dexterity bonus to AC when flat-footed or attacked by an unseen foe"
+    },
+    {
+      "sourceFeatureId": "bard-archaeologist-evasion-ex-6",
+      "kind": "evasion",
+      "label": "Evasion",
+      "minimumLevel": 6,
+      "base": 1,
+      "qualifier": "take no damage on a successful Reflex save that normally halves damage"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-archaeologist-trap-sense-ex-3",
+      "label": "Trap Sense — Reflex",
+      "condition": "Reflex saves made to avoid traps",
+      "minimumLevel": 3,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 3,
+      "maximum": 6
+    },
+    {
+      "sourceFeatureId": "bard-archaeologist-trap-sense-ex-3",
+      "label": "Trap Sense — AC",
+      "condition": "Armor Class against attacks made by traps",
+      "minimumLevel": 3,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 3,
+      "maximum": 6
+    }
   ]
 }
