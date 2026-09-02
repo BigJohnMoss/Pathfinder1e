@@ -1,0 +1,4137 @@
+{
+  "id": "bard-mute-insight-spells",
+  "name": "Insights from Beyond Spells",
+  "classIds": [
+    "bard"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "bard-mute-resistance",
+      "name": "Resistance",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Cantrip qualifying Sorcerer/Wizard spell added to Bard spells known. Subject gains +1 on saving throws.",
+      "spellId": "resistance",
+      "spellLevel": 0,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 334,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Resistance"
+      }
+    },
+    {
+      "id": "bard-mute-abjuring-step",
+      "name": "Abjuring Step",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. You can move slowly and safely and still cast spells, until you move quickly, make an attack, or cast a harmful spell.",
+      "spellId": "abjuring-step",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Abjuring%20Step"
+      }
+    },
+    {
+      "id": "bard-mute-alarm",
+      "name": "Alarm",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Ward an area and receive a mental or audible alert when it is entered.",
+      "spellId": "alarm",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Alarm"
+      }
+    },
+    {
+      "id": "bard-mute-endure-elements",
+      "name": "Endure Elements",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Exist comfortably in hot or cold regions.",
+      "spellId": "endure-elements",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 277,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Endure%20Elements"
+      }
+    },
+    {
+      "id": "bard-mute-fastidiousness",
+      "name": "Fastidiousness",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Keep yourself and your equipment clean and dry",
+      "spellId": "fastidiousness",
+      "spellLevel": 1,
+      "source": {
+        "title": "Disciple's Doctrine",
+        "page": 13,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fastidiousness"
+      }
+    },
+    {
+      "id": "bard-mute-guardian-armor",
+      "name": "Guardian Armor",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Teleport your armor onto an ally in range",
+      "spellId": "guardian-armor",
+      "spellLevel": 1,
+      "source": {
+        "title": "Armor Master's Handbook",
+        "page": 23,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Guardian%20Armor"
+      }
+    },
+    {
+      "id": "bard-mute-hold-portal",
+      "name": "Hold Portal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Magically hold a door, gate, window, or shutter closed.",
+      "spellId": "hold-portal",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 297,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hold%20Portal"
+      }
+    },
+    {
+      "id": "bard-mute-incendiary-runes",
+      "name": "Incendiary Runes",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. As explosive runes, except it creates a small surge of flames instead of an explosion of force.",
+      "spellId": "incendiary-runes",
+      "spellLevel": 1,
+      "source": {
+        "title": "Black Markets",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Incendiary%20Runes"
+      }
+    },
+    {
+      "id": "bard-mute-invisibility-alarm",
+      "name": "Invisibility Alarm",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. As alarm, but reacting only to invisible creatures.",
+      "spellId": "invisibility-alarm",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 185,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Invisibility%20Alarm"
+      }
+    },
+    {
+      "id": "bard-mute-line-in-the-sand",
+      "name": "Line in the Sand",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Increase your attacks of opportunity per round.",
+      "spellId": "line-in-the-sand",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 186,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Line%20in%20the%20Sand"
+      }
+    },
+    {
+      "id": "bard-mute-mount",
+      "name": "Mount",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Summons riding horse for 2 hours/level.",
+      "spellId": "mount",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 315,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mount"
+      }
+    },
+    {
+      "id": "bard-mute-obscure-poison",
+      "name": "Obscure Poison",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Make it harder to detect a poison or venomous creature.",
+      "spellId": "obscure-poison",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 220,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Obscure%20Poison"
+      }
+    },
+    {
+      "id": "bard-mute-peace-bond",
+      "name": "Peace Bond",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Create a glowing rune of peace to protect targets from your own magic.",
+      "spellId": "peace-bond",
+      "spellLevel": 1,
+      "source": {
+        "title": "Heroes of the Streets",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Peace%20Bond"
+      }
+    },
+    {
+      "id": "bard-mute-peacebond",
+      "name": "Peacebond",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Locks a weapon in place on the target's body.",
+      "spellId": "peacebond",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 238,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Peacebond"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-chaos",
+      "name": "Protection from Chaos",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. +2 to AC and saves, plus additional protection against selected alignment.",
+      "spellId": "protection-from-chaos",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 327,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Chaos"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-evil",
+      "name": "Protection from Evil",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. +2 to AC and saves, plus additional protection against selected alignment.",
+      "spellId": "protection-from-evil",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 327,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Evil"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-good",
+      "name": "Protection from Good",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. +2 to AC and saves, plus additional protection against selected alignment.",
+      "spellId": "protection-from-good",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 328,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Good"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-law",
+      "name": "Protection from Law",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. +2 to AC and saves, plus additional protection against selected alignment.",
+      "spellId": "protection-from-law",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 328,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Law"
+      }
+    },
+    {
+      "id": "bard-mute-punishing-armor",
+      "name": "Punishing Armor",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Coat yourself with a thin layer of energy that turns back nonlethal damage on your attacker.",
+      "spellId": "punishing-armor",
+      "spellLevel": 1,
+      "source": {
+        "title": "Agents of Evil",
+        "page": 19,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Punishing%20Armor"
+      }
+    },
+    {
+      "id": "bard-mute-rite-of-centered-mind",
+      "name": "Rite of Centered Mind",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. +1 to saves vs mind-affecting effects for 24 hours, discharge to reroll a failed save vs a mind-affecting effect.",
+      "spellId": "rite-of-centered-mind",
+      "spellLevel": 1,
+      "source": {
+        "title": "Divine Anthology",
+        "page": 13,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rite%20of%20Centered%20Mind"
+      }
+    },
+    {
+      "id": "bard-mute-shield",
+      "name": "Shield",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Create an invisible force barrier that grants a shield bonus to AC.",
+      "spellId": "shield",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 342,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shield"
+      }
+    },
+    {
+      "id": "bard-mute-shield-companion-aa",
+      "name": "Shield Companion (AA)",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. As shield other, but affects the caster’s animal companion or familiar.",
+      "spellId": "shield-companion-aa",
+      "spellLevel": 1,
+      "source": {
+        "title": "Animal Archive",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shield%20Companion%20(AA)"
+      }
+    },
+    {
+      "id": "bard-mute-shield-speech",
+      "name": "Shield Speech",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Speak freely to one creature within 10 feet without being overheard.",
+      "spellId": "shield-speech",
+      "spellLevel": 1,
+      "source": {
+        "title": "Taldor, Echoes of Glory",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shield%20Speech"
+      }
+    },
+    {
+      "id": "bard-mute-shock-shield",
+      "name": "Shock Shield",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. A shield of force protects you until you dismiss it in an explosion of electricity.",
+      "spellId": "shock-shield",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 243,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shock%20Shield"
+      }
+    },
+    {
+      "id": "bard-mute-stone-shield",
+      "name": "Stone Shield",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a thick stone slab from the ground to shield you from attacks.",
+      "spellId": "stone-shield",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 149,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Stone%20Shield"
+      }
+    },
+    {
+      "id": "bard-mute-stunning-barrier",
+      "name": "Stunning Barrier",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Magical field grants a +1 bonus to AC and on saves, and stuns one creature attacking you.",
+      "spellId": "stunning-barrier",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 194,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Stunning%20Barrier"
+      }
+    },
+    {
+      "id": "bard-mute-summon-minor-monster",
+      "name": "Summon Minor Monster",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon 1d3 Tiny animals.",
+      "spellId": "summon-minor-monster",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 241,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Minor%20Monster"
+      }
+    },
+    {
+      "id": "bard-mute-summon-monster-1",
+      "name": "Summon Monster 1",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Summons extraplanar creature to fight for you.",
+      "spellId": "summon-monster-1",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 350,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Monster%201"
+      }
+    },
+    {
+      "id": "bard-mute-sunder-breaker",
+      "name": "Sunder Breaker",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. The next weapon that sunders an item belonging to the target takes damage.",
+      "spellId": "sunder-breaker",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 195,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sunder%20Breaker"
+      }
+    },
+    {
+      "id": "bard-mute-theft-ward",
+      "name": "Theft Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Gain a +10 Perception bonus to notice someone trying to take a specific object from you.",
+      "spellId": "theft-ward",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 167,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Theft%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-waterproof",
+      "name": "Waterproof",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Target becomes waterproof for the spells duration",
+      "spellId": "waterproof",
+      "spellLevel": 1,
+      "source": {
+        "title": "Elemental Master's Handbook",
+        "page": 14,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Waterproof"
+      }
+    },
+    {
+      "id": "bard-mute-wave-shield",
+      "name": "Wave Shield",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Water blunts one incoming attack or fire effect.",
+      "spellId": "wave-shield",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 199,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wave%20Shield"
+      }
+    },
+    {
+      "id": "bard-mute-winter-feathers",
+      "name": "Winter Feathers",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 qualifying Sorcerer/Wizard spell added to Bard spells known. Protect a feathered creature from the cold for a day.",
+      "spellId": "winter-feathers",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 167,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Winter%20Feathers"
+      }
+    },
+    {
+      "id": "bard-mute-ally-across-time",
+      "name": "Ally Across Time",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a duplicate of yourself from a parallel world to aid another",
+      "spellId": "ally-across-time",
+      "spellLevel": 2,
+      "source": {
+        "title": "Legacy of the First World",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ally%20Across%20Time"
+      }
+    },
+    {
+      "id": "bard-mute-alter-summoned-monster",
+      "name": "Alter Summoned Monster",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Swap one summoned creature with another.",
+      "spellId": "alter-summoned-monster",
+      "spellLevel": 2,
+      "source": {
+        "title": "Monster Summoner's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Alter%20Summoned%20Monster"
+      }
+    },
+    {
+      "id": "bard-mute-anti-summoning-shield",
+      "name": "Anti-Summoning Shield",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Impede the use of summon spells.",
+      "spellId": "anti-summoning-shield",
+      "spellLevel": 2,
+      "source": {
+        "title": "Demon Hunter's Handbook",
+        "page": 26,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Anti-Summoning%20Shield"
+      }
+    },
+    {
+      "id": "bard-mute-apport-object",
+      "name": "Apport Object",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Send or receive a small object via teleportation.",
+      "spellId": "apport-object",
+      "spellLevel": 2,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 157,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Apport%20Object"
+      }
+    },
+    {
+      "id": "bard-mute-arcane-lock",
+      "name": "Arcane Lock",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Magically locks a portal or chest.",
+      "spellId": "arcane-lock",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 243,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Arcane%20Lock"
+      }
+    },
+    {
+      "id": "bard-mute-blade-tutors-spirit",
+      "name": "Blade Tutor's Spirit",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a spirit to help your more reckless attacks.",
+      "spellId": "blade-tutors-spirit",
+      "spellLevel": 2,
+      "source": {
+        "title": "Melee Tactics Toolbox",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blade%20Tutor's%20Spirit"
+      }
+    },
+    {
+      "id": "bard-mute-book-ward",
+      "name": "Book Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Protect a book from fire, acid, and water.",
+      "spellId": "book-ward",
+      "spellLevel": 2,
+      "source": {
+        "title": "Seekers of Secrets",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Book%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-bullet-shield",
+      "name": "Bullet Shield",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. You gain a +4 deflection bonus to AC against firearm attacks.",
+      "spellId": "bullet-shield",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 225,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bullet%20Shield"
+      }
+    },
+    {
+      "id": "bard-mute-bullet-ward",
+      "name": "Bullet Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Adamantine bullets intercept firearm attacks.",
+      "spellId": "bullet-ward",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 176,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bullet%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-callback",
+      "name": "Callback",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Teleport a familiar or spirit animal to your side when it is injured",
+      "spellId": "callback",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 228,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Callback"
+      }
+    },
+    {
+      "id": "bard-mute-crimson-confession",
+      "name": "Crimson Confession",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Touching the marked object or area turns one’s skin red.",
+      "spellId": "crimson-confession",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 179,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Crimson%20Confession"
+      }
+    },
+    {
+      "id": "bard-mute-death-from-below",
+      "name": "Death from Below",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Target gains dodge bonus to AC against larger creatures.",
+      "spellId": "death-from-below",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 39,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Death%20from%20Below"
+      }
+    },
+    {
+      "id": "bard-mute-diminished-detection",
+      "name": "Diminished Detection",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Reduce the areas of divination spells for the purpose of targeting you",
+      "spellId": "diminished-detection",
+      "spellLevel": 2,
+      "source": {
+        "title": "Inner Sea Intrigue",
+        "page": 59,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Diminished%20Detection"
+      }
+    },
+    {
+      "id": "bard-mute-disrupt-link",
+      "name": "Disrupt Link",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Sever the target’s link with her bonded creature.",
+      "spellId": "disrupt-link",
+      "spellLevel": 2,
+      "source": {
+        "title": "Familiar Folio",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Disrupt%20Link"
+      }
+    },
+    {
+      "id": "bard-mute-endure-elements-communal",
+      "name": "Endure Elements, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. As endure elements, but you may divide the duration among creatures touched.",
+      "spellId": "endure-elements-communal",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 228,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Endure%20Elements%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-escape-alarm",
+      "name": "Escape Alarm",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. As alarm, but alerts you when a creatuer leaves the area",
+      "spellId": "escape-alarm",
+      "spellLevel": 2,
+      "source": {
+        "title": "Villain Codex",
+        "page": 45,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Escape%20Alarm"
+      }
+    },
+    {
+      "id": "bard-mute-escaping-ward",
+      "name": "Escaping Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Gain maneuverability by avoiding the attacks of larger creatures.",
+      "spellId": "escaping-ward",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 68,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Escaping%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-fiery-shuriken",
+      "name": "Fiery Shuriken",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Calls forth several fiery projectiles ready to be flung at opponents.",
+      "spellId": "fiery-shuriken",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 229,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fiery%20Shuriken"
+      }
+    },
+    {
+      "id": "bard-mute-gird-ally",
+      "name": "Gird Ally",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Grant your summoned creatures a deflection bonus to their AC.",
+      "spellId": "gird-ally",
+      "spellLevel": 2,
+      "source": {
+        "title": "Monster Summoner's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Gird%20Ally"
+      }
+    },
+    {
+      "id": "bard-mute-influence-wild-magic",
+      "name": "Influence Wild Magic",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Stabilize an area of primal magic",
+      "spellId": "influence-wild-magic",
+      "spellLevel": 2,
+      "source": {
+        "title": "People of the Wastes",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Influence%20Wild%20Magic"
+      }
+    },
+    {
+      "id": "bard-mute-instant-weapon",
+      "name": "Instant Weapon",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a melee weapon to wield.",
+      "spellId": "instant-weapon",
+      "spellLevel": 2,
+      "source": {
+        "title": "Melee Tactics Toolbox",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Instant%20Weapon"
+      }
+    },
+    {
+      "id": "bard-mute-miserable-pity",
+      "name": "Miserable Pity",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Opponents cannot attack a pathetic creature.",
+      "spellId": "miserable-pity",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 229,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Miserable%20Pity"
+      }
+    },
+    {
+      "id": "bard-mute-mount-communal",
+      "name": "Mount, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. As mount, but you may divide the duration among creatures touched.",
+      "spellId": "mount-communal",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 237,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mount%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-nondetection-lesser",
+      "name": "Nondetection, Lesser",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. As nondetection, but only protects against spells that target an area",
+      "spellId": "nondetection-lesser",
+      "spellLevel": 2,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Nondetection%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-mute-obscure-object",
+      "name": "Obscure Object",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Masks object against scrying.",
+      "spellId": "obscure-object",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 317,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Obscure%20Object"
+      }
+    },
+    {
+      "id": "bard-mute-painful-revelation",
+      "name": "Painful Revelation",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. damage creature who recognize an illusion for what it is",
+      "spellId": "painful-revelation",
+      "spellLevel": 2,
+      "source": {
+        "title": "Inner Sea Temples",
+        "page": 63,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Painful%20Revelation"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-arrows",
+      "name": "Protection from Arrows",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Subject gains DR 10/magic against ranged attacks.",
+      "spellId": "protection-from-arrows",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 327,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Arrows"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-chaos-communal",
+      "name": "Protection from Chaos, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection from chaos, but you may divide the duration among creatures touched.",
+      "spellId": "protection-from-chaos-communal",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Chaos%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-evil-communal",
+      "name": "Protection from Evil, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection from evil, but you may divide the duration among creatures touched.",
+      "spellId": "protection-from-evil-communal",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Evil%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-good-communal",
+      "name": "Protection from Good, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection from good, but you may divide the duration among creatures touched.",
+      "spellId": "protection-from-good-communal",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Good%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-law-communal",
+      "name": "Protection from Law, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection from law, but you may divide the duration among creatures touched.",
+      "spellId": "protection-from-law-communal",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Law%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-technology",
+      "name": "Protection from Technology",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. +2 to AC and saves, plus additional protection against technology.",
+      "spellId": "protection-from-technology",
+      "spellLevel": 2,
+      "source": {
+        "title": "Technology Guide",
+        "page": 10,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Technology"
+      }
+    },
+    {
+      "id": "bard-mute-radiation-ward",
+      "name": "Radiation Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Protect a creature against radiation",
+      "spellId": "radiation-ward",
+      "spellLevel": 2,
+      "source": {
+        "title": "Heroes of the Darklands",
+        "page": 15,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Radiation%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-resist-energy",
+      "name": "Resist Energy",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Ignores 10 (or more) points of damage/attack from specified energy type.",
+      "spellId": "resist-energy",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 334,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Resist%20Energy"
+      }
+    },
+    {
+      "id": "bard-mute-retrieve-item",
+      "name": "Retrieve Item",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Call a small item into your hand from anywhere.",
+      "spellId": "retrieve-item",
+      "spellLevel": 2,
+      "source": {
+        "title": "Classic Treasures Revisited",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Retrieve%20Item"
+      }
+    },
+    {
+      "id": "bard-mute-shackle",
+      "name": "Shackle",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon manacles onto a target creature",
+      "spellId": "shackle",
+      "spellLevel": 2,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 99,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shackle"
+      }
+    },
+    {
+      "id": "bard-mute-stone-call",
+      "name": "Stone Call",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. 2d6 damage to all creatures in area.",
+      "spellId": "stone-call",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 247,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Stone%20Call"
+      }
+    },
+    {
+      "id": "bard-mute-summon-cacodaemon",
+      "name": "Summon Cacodaemon",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a cacodaemon.",
+      "spellId": "summon-cacodaemon",
+      "spellLevel": 2,
+      "source": {
+        "title": "Book of the Damned - Volume 3: Horsemen of the Apocalypse",
+        "page": 39,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Cacodaemon"
+      }
+    },
+    {
+      "id": "bard-mute-summon-monster-2",
+      "name": "Summon Monster 2",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Summons extraplanar creature to fight for you.",
+      "spellId": "summon-monster-2",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 352,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Monster%202"
+      }
+    },
+    {
+      "id": "bard-mute-summon-swarm",
+      "name": "Summon Swarm",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Summons swarm of bats, rats, or spiders.",
+      "spellId": "summon-swarm",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 354,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Swarm"
+      }
+    },
+    {
+      "id": "bard-mute-suppress-charms-and-compulsions",
+      "name": "Suppress Charms and Compulsions",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Either grant a bonus to saves against, or suppress, charm and compulsion spells",
+      "spellId": "suppress-charms-and-compulsions",
+      "spellLevel": 2,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 77,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Suppress%20Charms%20and%20Compulsions"
+      }
+    },
+    {
+      "id": "bard-mute-warding-weapon",
+      "name": "Warding Weapon",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. The weapon you use for the focus of this spell defends you, allowing you to cast spells without provoking attacks of opportunity.",
+      "spellId": "warding-weapon",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 248,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Warding%20Weapon"
+      }
+    },
+    {
+      "id": "bard-mute-whip-of-spiders",
+      "name": "Whip of Spiders",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Create a whip made of poisonous spiders.",
+      "spellId": "whip-of-spiders",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 199,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Whip%20of%20Spiders"
+      }
+    },
+    {
+      "id": "bard-mute-with-the-wind",
+      "name": "With the Wind",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 qualifying Sorcerer/Wizard spell added to Bard spells known. Protect a target from being blown away by wind of less than windstorm force",
+      "spellId": "with-the-wind",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 237,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=With%20the%20Wind"
+      }
+    },
+    {
+      "id": "bard-mute-ablative-sphere-garundi",
+      "name": "Ablative Sphere (Garundi)",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Create a protective sphere around yourself, providing you with improved cover.",
+      "spellId": "ablative-sphere-garundi",
+      "spellLevel": 3,
+      "source": {
+        "title": "Humans of Golarion",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ablative%20Sphere%20(Garundi)"
+      }
+    },
+    {
+      "id": "bard-mute-allied-cloak",
+      "name": "Allied Cloak",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Enchanted cloak grants shield bonus to AC and can use aid another on you once per round",
+      "spellId": "allied-cloak",
+      "spellLevel": 3,
+      "source": {
+        "title": "Adventurer's Armory 2",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Allied%20Cloak"
+      }
+    },
+    {
+      "id": "bard-mute-blade-snare",
+      "name": "Blade Snare",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Create an invisible snare to trap weapons.",
+      "spellId": "blade-snare",
+      "spellLevel": 3,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 230,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blade%20Snare"
+      }
+    },
+    {
+      "id": "bard-mute-calistrias-guardian-wasps",
+      "name": "Calistria's Guardian Wasps",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a swarm of wasps to ward and area",
+      "spellId": "calistrias-guardian-wasps",
+      "spellLevel": 3,
+      "source": {
+        "title": "Inner Sea Intrigue",
+        "page": 58,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Calistria's%20Guardian%20Wasps"
+      }
+    },
+    {
+      "id": "bard-mute-clay-skin",
+      "name": "Clay Skin",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Grants DR 5/Adamantine",
+      "spellId": "clay-skin",
+      "spellLevel": 3,
+      "source": {
+        "title": "Potions and Poisons",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Clay%20Skin"
+      }
+    },
+    {
+      "id": "bard-mute-cloak-of-winds",
+      "name": "Cloak of Winds",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Creates a screen of wind around you.",
+      "spellId": "cloak-of-winds",
+      "spellLevel": 3,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 211,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cloak%20of%20Winds"
+      }
+    },
+    {
+      "id": "bard-mute-discharge",
+      "name": "Discharge",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Dissipate the charges from a technical object or hamper a creature with the robot subtype.",
+      "spellId": "discharge",
+      "spellLevel": 3,
+      "source": {
+        "title": "Technology Guide",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Discharge"
+      }
+    },
+    {
+      "id": "bard-mute-dispel-magic",
+      "name": "Dispel Magic",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Cancels one magical spell or effect.",
+      "spellId": "dispel-magic",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 272,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dispel%20Magic"
+      }
+    },
+    {
+      "id": "bard-mute-dragon-turtle-shell",
+      "name": "Dragon Turtle Shell",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Treat the natural attack damage of a creature attacking you as five sizes smaller.",
+      "spellId": "dragon-turtle-shell",
+      "spellLevel": 3,
+      "source": {
+        "title": "Dragonslayer's Handbook",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dragon%20Turtle%20Shell"
+      }
+    },
+    {
+      "id": "bard-mute-dweomer-retaliation",
+      "name": "Dweomer Retaliation",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Gain hit points and damage your opponent immediately after counterspelling a spell.",
+      "spellId": "dweomer-retaliation",
+      "spellLevel": 3,
+      "source": {
+        "title": "Cheliax, Empire of Devils",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dweomer%20Retaliation"
+      }
+    },
+    {
+      "id": "bard-mute-evaluators-lens",
+      "name": "Evaluator's Lens",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a lens of force to help protect yourself from figments/patterns or identify items.",
+      "spellId": "evaluators-lens",
+      "spellLevel": 3,
+      "source": {
+        "title": "Black Markets",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Evaluator's%20Lens"
+      }
+    },
+    {
+      "id": "bard-mute-explosive-runes",
+      "name": "Explosive Runes",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Deals 6d6 damage when read.",
+      "spellId": "explosive-runes",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 279,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Explosive%20Runes"
+      }
+    },
+    {
+      "id": "bard-mute-guardian-monument-lesser",
+      "name": "Guardian Monument, Lesser",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Bless a monument to imbue nearby humans with 2/magic damage reduction.",
+      "spellId": "guardian-monument-lesser",
+      "spellLevel": 3,
+      "source": {
+        "title": "Arcane Anthology",
+        "page": 8,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Guardian%20Monument%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-mute-guarding-knowledge",
+      "name": "Guarding Knowledge",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Gain a +4 insight bonus on saving throws vs a creature's abilitiy you have identified with a Knowledge check",
+      "spellId": "guarding-knowledge",
+      "spellLevel": 3,
+      "source": {
+        "title": "Monster Hunter's Handbook",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Guarding%20Knowledge"
+      }
+    },
+    {
+      "id": "bard-mute-infernal-challenger",
+      "name": "Infernal Challenger",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a bearded devil to preform a Hellknight initiation",
+      "spellId": "infernal-challenger",
+      "spellLevel": 3,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 98,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Infernal%20Challenger"
+      }
+    },
+    {
+      "id": "bard-mute-leshy-swarm",
+      "name": "Leshy Swarm",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Call for a leshy swarm to aid you.",
+      "spellId": "leshy-swarm",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Leshy%20Swarm"
+      }
+    },
+    {
+      "id": "bard-mute-mad-monkeys",
+      "name": "Mad Monkeys",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a swarm of mischievous monkeys.",
+      "spellId": "mad-monkeys",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 227,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mad%20Monkeys"
+      }
+    },
+    {
+      "id": "bard-mute-magic-circle-against-chaos",
+      "name": "Magic Circle against Chaos",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection spells, but 10-ft. radius and 10 min./level.",
+      "spellId": "magic-circle-against-chaos",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 308,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Circle%20against%20Chaos"
+      }
+    },
+    {
+      "id": "bard-mute-magic-circle-against-evil",
+      "name": "Magic Circle against Evil",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection spells, but 10-ft. radius and 10 min./level.",
+      "spellId": "magic-circle-against-evil",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 308,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Circle%20against%20Evil"
+      }
+    },
+    {
+      "id": "bard-mute-magic-circle-against-good",
+      "name": "Magic Circle against Good",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection spells, but 10-ft. radius and 10 min./level.",
+      "spellId": "magic-circle-against-good",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 308,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Circle%20against%20Good"
+      }
+    },
+    {
+      "id": "bard-mute-magic-circle-against-law",
+      "name": "Magic Circle against Law",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection spells, but 10-ft. radius and 10 min./level.",
+      "spellId": "magic-circle-against-law",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 308,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Circle%20against%20Law"
+      }
+    },
+    {
+      "id": "bard-mute-nondetection",
+      "name": "Nondetection",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Hides subject from divination, scrying.",
+      "spellId": "nondetection",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 317,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Nondetection"
+      }
+    },
+    {
+      "id": "bard-mute-numerological-resistance",
+      "name": "Numerological Resistance",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Use the Path of Numbers to grant your allies resilience in the face of elemental dangers.",
+      "spellId": "numerological-resistance",
+      "spellLevel": 3,
+      "source": {
+        "title": "Occult Mysteries",
+        "page": 51,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Numerological%20Resistance"
+      }
+    },
+    {
+      "id": "bard-mute-phase-step",
+      "name": "Phase Step",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As per dimension door, but with more restrictions and affecting a creature you touch",
+      "spellId": "phase-step",
+      "spellLevel": 3,
+      "source": {
+        "title": "Potions and Poisons",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Phase%20Step"
+      }
+    },
+    {
+      "id": "bard-mute-planar-inquiry",
+      "name": "Planar Inquiry",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Call an outsider to answer questions",
+      "spellId": "planar-inquiry",
+      "spellLevel": 3,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 125,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Planar%20Inquiry"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-arrows-communal",
+      "name": "Protection from Arrows, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection from arrows, but you may divide the duration among creatures touched.",
+      "spellId": "protection-from-arrows-communal",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Arrows%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-energy",
+      "name": "Protection from Energy",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Absorb 12 points/level of damage from one kind of energy.",
+      "spellId": "protection-from-energy",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 327,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Energy"
+      }
+    },
+    {
+      "id": "bard-mute-quell-energy",
+      "name": "Quell Energy",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Reduce the target’s ability to tap into a specific energy type",
+      "spellId": "quell-energy",
+      "spellLevel": 3,
+      "source": {
+        "title": "Occult Origins",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Quell%20Energy"
+      }
+    },
+    {
+      "id": "bard-mute-rain-of-frogs",
+      "name": "Rain of Frogs",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a swarm of poisonous frogs.",
+      "spellId": "rain-of-frogs",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 233,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rain%20of%20Frogs"
+      }
+    },
+    {
+      "id": "bard-mute-resist-energy-communal",
+      "name": "Resist Energy, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As resist energy, but you may divide the duration among creatures touched.",
+      "spellId": "resist-energy-communal",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 242,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Resist%20Energy%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-rune-of-warding",
+      "name": "Rune of Warding",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Place a visible glyph of warding to protect a door or other entryway.",
+      "spellId": "rune-of-warding",
+      "spellLevel": 3,
+      "source": {
+        "title": "Dwarves of Golarion",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rune%20of%20Warding"
+      }
+    },
+    {
+      "id": "bard-mute-scales-of-deflection",
+      "name": "Scales of Deflection",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Treat your normal AC as your touch AC against the next touch attack that targets you.",
+      "spellId": "scales-of-deflection",
+      "spellLevel": 3,
+      "source": {
+        "title": "Legacy of Dragons",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Scales%20of%20Deflection"
+      }
+    },
+    {
+      "id": "bard-mute-selective-alarm",
+      "name": "Selective Alarm",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As alarm, but only against selected creatures.",
+      "spellId": "selective-alarm",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 224,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Selective%20Alarm"
+      }
+    },
+    {
+      "id": "bard-mute-shield-companion-acg",
+      "name": "Shield Companion (ACG)",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. As shield other, but affecting your companion creature.",
+      "spellId": "shield-companion-acg",
+      "spellLevel": 3,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 191,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shield%20Companion%20(ACG)"
+      }
+    },
+    {
+      "id": "bard-mute-spectral-scout",
+      "name": "Spectral Scout",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a spectral animal to scout for you.",
+      "spellId": "spectral-scout",
+      "spellLevel": 3,
+      "source": {
+        "title": "Pathfinder #116: Fangs of War",
+        "page": 67,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spectral%20Scout"
+      }
+    },
+    {
+      "id": "bard-mute-storm-step",
+      "name": "Storm Step",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Use lightning to quickly travel a short distance, harming all in your path.",
+      "spellId": "storm-step",
+      "spellLevel": 3,
+      "source": {
+        "title": "Blood of the Elements",
+        "page": 13,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Storm%20Step"
+      }
+    },
+    {
+      "id": "bard-mute-stunning-barrier-greater",
+      "name": "Stunning Barrier, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Magical field grants a +2 bonus to AC and on saves, and stuns multiple creatures attacking you.",
+      "spellId": "stunning-barrier-greater",
+      "spellLevel": 3,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 195,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Stunning%20Barrier%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-summon-monster-3",
+      "name": "Summon Monster 3",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summons extraplanar creature to fight for you.",
+      "spellId": "summon-monster-3",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 352,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Monster%203"
+      }
+    },
+    {
+      "id": "bard-mute-summon-totem-creature-shoanti",
+      "name": "Summon Totem Creature (Shoanti)",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon animals sacred to your tribe.",
+      "spellId": "summon-totem-creature-shoanti",
+      "spellLevel": 3,
+      "source": {
+        "title": "Humans of Golarion",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Totem%20Creature%20(Shoanti)"
+      }
+    },
+    {
+      "id": "bard-mute-swarm-of-fangs",
+      "name": "Swarm of Fangs",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a swarm of animated, flying teeth.",
+      "spellId": "swarm-of-fangs",
+      "spellLevel": 3,
+      "source": {
+        "title": "Monster Codex",
+        "page": 213,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Swarm%20of%20Fangs"
+      }
+    },
+    {
+      "id": "bard-mute-swipe",
+      "name": "Swipe",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Attempt to magically wrest an item from the target.",
+      "spellId": "swipe",
+      "spellLevel": 3,
+      "source": {
+        "title": "Rise of the Runelords Anniversary Edition",
+        "page": 419,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Swipe"
+      }
+    },
+    {
+      "id": "bard-mute-urban-step",
+      "name": "Urban Step",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 qualifying Sorcerer/Wizard spell added to Bard spells known. Step into one doorway and out another.",
+      "spellId": "urban-step",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 228,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Urban%20Step"
+      }
+    },
+    {
+      "id": "bard-mute-absorb-rune-i",
+      "name": "Absorb Rune I",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Absorb a magic rune up to 3rd level, which can be moved or dispelled",
+      "spellId": "absorb-rune-i",
+      "spellLevel": 4,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 60,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Absorb%20Rune%20I"
+      }
+    },
+    {
+      "id": "bard-mute-absorbing-barrier",
+      "name": "Absorbing Barrier",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Protect an area from ranged attacks",
+      "spellId": "absorbing-barrier",
+      "spellLevel": 4,
+      "source": {
+        "title": "People of the Wastes",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Absorbing%20Barrier"
+      }
+    },
+    {
+      "id": "bard-mute-anywhere-but-here",
+      "name": "Anywhere but Here",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Transport yourself and willing creatures to a random planar destination",
+      "spellId": "anywhere-but-here",
+      "spellLevel": 4,
+      "source": {
+        "title": "Planar Adventures",
+        "page": 38,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Anywhere%20but%20Here"
+      }
+    },
+    {
+      "id": "bard-mute-aram-zeys-trap-ward",
+      "name": "Aram Zey's Trap Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Protect yourself against magical traps.",
+      "spellId": "aram-zeys-trap-ward",
+      "spellLevel": 4,
+      "source": {
+        "title": "Pathfinder Society Field Guide",
+        "page": 56,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Aram%20Zey's%20Trap%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-bind-sage",
+      "name": "Bind Sage",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a caulborn to answer questions",
+      "spellId": "bind-sage",
+      "spellLevel": 4,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bind%20Sage"
+      }
+    },
+    {
+      "id": "bard-mute-caustic-safeguard",
+      "name": "Caustic Safeguard",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Imbue an object with an acidic protective ward.",
+      "spellId": "caustic-safeguard",
+      "spellLevel": 4,
+      "source": {
+        "title": "Agents of Evil",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Caustic%20Safeguard"
+      }
+    },
+    {
+      "id": "bard-mute-charons-dispensation",
+      "name": "Charon's Dispensation",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Protection from the River Styx.",
+      "spellId": "charons-dispensation",
+      "spellLevel": 4,
+      "source": {
+        "title": "Book of the Damned",
+        "page": 183,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Charon's%20Dispensation"
+      }
+    },
+    {
+      "id": "bard-mute-conjuration-foil",
+      "name": "Conjuration Foil",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Interfere with nearby teleportation effects.",
+      "spellId": "conjuration-foil",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 207,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Conjuration%20Foil"
+      }
+    },
+    {
+      "id": "bard-mute-curse-of-magic-negation",
+      "name": "Curse of Magic Negation",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Target gains the negated spellblight.",
+      "spellId": "curse-of-magic-negation",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 215,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20Magic%20Negation"
+      }
+    },
+    {
+      "id": "bard-mute-dimension-door",
+      "name": "Dimension Door",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Teleports you a short distance.",
+      "spellId": "dimension-door",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 269,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dimension%20Door"
+      }
+    },
+    {
+      "id": "bard-mute-dimensional-anchor",
+      "name": "Dimensional Anchor",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Bars extradimensional movement.",
+      "spellId": "dimensional-anchor",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 270,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dimensional%20Anchor"
+      }
+    },
+    {
+      "id": "bard-mute-dream-shield",
+      "name": "Dream Shield",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Ward a target’s mind to protect them while unconscious.",
+      "spellId": "dream-shield",
+      "spellLevel": 4,
+      "source": {
+        "title": "Occult Origins",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dream%20Shield"
+      }
+    },
+    {
+      "id": "bard-mute-enchantment-foil",
+      "name": "Enchantment Foil",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Trick opponents who try to cast enchantments on you.",
+      "spellId": "enchantment-foil",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 180,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Enchantment%20Foil"
+      }
+    },
+    {
+      "id": "bard-mute-fire-trap",
+      "name": "Fire Trap",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Opened object deals 1d4 + 1/level damage.",
+      "spellId": "fire-trap",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 282,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fire%20Trap"
+      }
+    },
+    {
+      "id": "bard-mute-firewalkers-meditation",
+      "name": "Firewalker's Meditation",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. resist fire 5, DR 5/magic, +4 to saves vs pain for 24 hours, discharge to temporarily increase to resist 30, DR 10, and immunity to pain",
+      "spellId": "firewalkers-meditation",
+      "spellLevel": 4,
+      "source": {
+        "title": "Divine Anthology",
+        "page": 12,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Firewalker's%20Meditation"
+      }
+    },
+    {
+      "id": "bard-mute-freedoms-toast",
+      "name": "Freedom's Toast",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Teleport the target a short distance while freeing them from restraints.",
+      "spellId": "freedoms-toast",
+      "spellLevel": 4,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 234,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Freedom's%20Toast"
+      }
+    },
+    {
+      "id": "bard-mute-ghost-wolf",
+      "name": "Ghost Wolf",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a wolf mount made of black smoke which emanates fear.",
+      "spellId": "ghost-wolf",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 58,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ghost%20Wolf"
+      }
+    },
+    {
+      "id": "bard-mute-globe-of-invulnerability-lesser",
+      "name": "Globe of Invulnerability, Lesser",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Stops 1st- through 3rd-level spell effects.",
+      "spellId": "globe-of-invulnerability-lesser",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 290,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Globe%20of%20Invulnerability%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-mute-homeward-bound",
+      "name": "Homeward Bound",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Return a creature to its home plane",
+      "spellId": "homeward-bound",
+      "spellLevel": 4,
+      "source": {
+        "title": "Planar Adventures",
+        "page": 41,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Homeward%20Bound"
+      }
+    },
+    {
+      "id": "bard-mute-magic-circle-against-technology",
+      "name": "Magic Circle Against Technology",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Protects those in an area with protection from technology, and other effects that suppress or resist technology.",
+      "spellId": "magic-circle-against-technology",
+      "spellLevel": 4,
+      "source": {
+        "title": "Technology Guide",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Circle%20Against%20Technology"
+      }
+    },
+    {
+      "id": "bard-mute-masters-escape",
+      "name": "Master's Escape",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Create a link between you and a summoned creature, allowing you to switch places.",
+      "spellId": "masters-escape",
+      "spellLevel": 4,
+      "source": {
+        "title": "Monster Summoner's Handbook",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Master's%20Escape"
+      }
+    },
+    {
+      "id": "bard-mute-medusas-bane",
+      "name": "Medusa's Bane",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Become immune to gaze attacks and reflect them back on the creature using it",
+      "spellId": "medusas-bane",
+      "spellLevel": 4,
+      "source": {
+        "title": "Divine Anthology",
+        "page": 5,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Medusa's%20Bane"
+      }
+    },
+    {
+      "id": "bard-mute-nondetection-communal",
+      "name": "Nondetection, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. As nondetection, but you may divide the duration among creatures touched.",
+      "spellId": "nondetection-communal",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 238,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Nondetection%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-phantom-steed-communal",
+      "name": "Phantom Steed, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. As phantom steed, but you may divide the duration among creatures touched.",
+      "spellId": "phantom-steed-communal",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 239,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Phantom%20Steed%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-protection-from-energy-communal",
+      "name": "Protection from Energy, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. As protection from energy, but you may divide the duration among creatures touched.",
+      "spellId": "protection-from-energy-communal",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Protection%20from%20Energy%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-rebuke-technology",
+      "name": "Rebuke Technology",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Render a piece of technology inert.",
+      "spellId": "rebuke-technology",
+      "spellLevel": 4,
+      "source": {
+        "title": "Technology Guide",
+        "page": 10,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rebuke%20Technology"
+      }
+    },
+    {
+      "id": "bard-mute-remove-curse",
+      "name": "Remove Curse",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Frees object or person from curse.",
+      "spellId": "remove-curse",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 332,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Remove%20Curse"
+      }
+    },
+    {
+      "id": "bard-mute-shadow-invasion",
+      "name": "Shadow Invasion",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Create an area of darkness that strengthens shadow spells and attracts kytons",
+      "spellId": "shadow-invasion",
+      "spellLevel": 4,
+      "source": {
+        "title": "Planar Adventures",
+        "page": 44,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shadow%20Invasion"
+      }
+    },
+    {
+      "id": "bard-mute-shield-speech-greater",
+      "name": "Shield Speech, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Communicate freely with a group of nearby people without anyone else being able to overhear.",
+      "spellId": "shield-speech-greater",
+      "spellLevel": 4,
+      "source": {
+        "title": "Taldor, Echoes of Glory",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shield%20Speech%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-soul-vault",
+      "name": "Soul Vault",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Protect your soul from harmful effects after death",
+      "spellId": "soul-vault",
+      "spellLevel": 4,
+      "source": {
+        "title": "Inner Sea Temples",
+        "page": 33,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Soul%20Vault"
+      }
+    },
+    {
+      "id": "bard-mute-spellcrash-lesser",
+      "name": "Spellcrash, Lesser",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Target loses a 3rd-level prepared spell or spell slot.",
+      "spellId": "spellcrash-lesser",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 194,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spellcrash%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-mute-stoneskin",
+      "name": "Stoneskin",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Grants DR 10/adamantine.",
+      "spellId": "stoneskin",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 350,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Stoneskin"
+      }
+    },
+    {
+      "id": "bard-mute-summon-accuser",
+      "name": "Summon Accuser",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon an accuser devil to do your bidding.",
+      "spellId": "summon-accuser",
+      "spellLevel": 4,
+      "source": {
+        "title": "Rival Guide",
+        "page": 59,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Accuser"
+      }
+    },
+    {
+      "id": "bard-mute-summon-cacodaemon-greater",
+      "name": "Summon Cacodaemon, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon 1d4+1 cacodaemons.",
+      "spellId": "summon-cacodaemon-greater",
+      "spellLevel": 4,
+      "source": {
+        "title": "Book of the Damned - Volume 3: Horsemen of the Apocalypse",
+        "page": 39,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Cacodaemon%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-summon-genie-lesser",
+      "name": "Summon Genie, Lesser",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. As summon monster I, except you can summon one janni.",
+      "spellId": "summon-genie-lesser",
+      "spellLevel": 4,
+      "source": {
+        "title": "People of the Sands",
+        "page": 11,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Genie%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-mute-summon-monster-4",
+      "name": "Summon Monster 4",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Summons extraplanar creature to fight for you.",
+      "spellId": "summon-monster-4",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 352,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Monster%204"
+      }
+    },
+    {
+      "id": "bard-mute-summon-ship",
+      "name": "Summon Ship",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Conjure a ship out of extradimensional materials",
+      "spellId": "summon-ship",
+      "spellLevel": 4,
+      "source": {
+        "title": "Blood of the Ancients",
+        "page": 19,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Ship"
+      }
+    },
+    {
+      "id": "bard-mute-suppress-primal-magic",
+      "name": "Suppress Primal Magic",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Suppress the effects of primal magic.",
+      "spellId": "suppress-primal-magic",
+      "spellLevel": 4,
+      "source": {
+        "title": "Inner Sea Magic",
+        "page": 61,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Suppress%20Primal%20Magic"
+      }
+    },
+    {
+      "id": "bard-mute-thaumaturgic-circle",
+      "name": "Thaumaturgic Circle",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. As magic circle, but affecting a non-alignment subtype or outsider race.",
+      "spellId": "thaumaturgic-circle",
+      "spellLevel": 4,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 189,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Thaumaturgic%20Circle"
+      }
+    },
+    {
+      "id": "bard-mute-tough-crowd",
+      "name": "Tough Crowd",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Grant allies a +4 bonus to resist enchantments/illusions.",
+      "spellId": "tough-crowd",
+      "spellLevel": 4,
+      "source": {
+        "title": "Arcane Anthology",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Tough%20Crowd"
+      }
+    },
+    {
+      "id": "bard-mute-true-form",
+      "name": "True Form",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Removes polymorph effects.",
+      "spellId": "true-form",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 251,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=True%20Form"
+      }
+    },
+    {
+      "id": "bard-mute-unholy-ward",
+      "name": "Unholy Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Resist damage from holy sources, smite evil, etc.",
+      "spellId": "unholy-ward",
+      "spellLevel": 4,
+      "source": {
+        "title": "Agents of Evil",
+        "page": 19,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unholy%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-vomit-twin",
+      "name": "Vomit Twin",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Vomit an ooze copy of yourself that you can swap places with.",
+      "spellId": "vomit-twin",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 119,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Vomit%20Twin"
+      }
+    },
+    {
+      "id": "bard-mute-ward-shield",
+      "name": "Ward Shield",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 qualifying Sorcerer/Wizard spell added to Bard spells known. Enchant a shield with Spell Resistance and a bonus against area-effect spells.",
+      "spellId": "ward-shield",
+      "spellLevel": 4,
+      "source": {
+        "title": "Knights of the Inner Sea",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ward%20Shield"
+      }
+    },
+    {
+      "id": "bard-mute-arid-refuge",
+      "name": "Arid Refuge",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Creates a safe house for air-breathing creatures underwater",
+      "spellId": "arid-refuge",
+      "spellLevel": 5,
+      "source": {
+        "title": "Blood of the Sea",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Arid%20Refuge"
+      }
+    },
+    {
+      "id": "bard-mute-army-across-time",
+      "name": "Army Across Time",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. As ally across time, but more cubes and more duplicates",
+      "spellId": "army-across-time",
+      "spellLevel": 5,
+      "source": {
+        "title": "Legacy of the First World",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Army%20Across%20Time"
+      }
+    },
+    {
+      "id": "bard-mute-banishing-blade",
+      "name": "Banishing Blade",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Enhanced weapon gets free bull rush attempts on attacks.",
+      "spellId": "banishing-blade",
+      "spellLevel": 5,
+      "source": {
+        "title": "Arcane Anthology",
+        "page": 7,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Banishing%20Blade"
+      }
+    },
+    {
+      "id": "bard-mute-break-enchantment",
+      "name": "Break Enchantment",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Frees subjects from enchantments, transmutations, and curses.",
+      "spellId": "break-enchantment",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 251,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Break%20Enchantment"
+      }
+    },
+    {
+      "id": "bard-mute-callback-greater",
+      "name": "Callback, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Teleport a familiar or spirit animal to your side from miles away when it is injured",
+      "spellId": "callback-greater",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 228,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Callback%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-calm-air",
+      "name": "Calm Air",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Reduce the strength of wind in an area.",
+      "spellId": "calm-air",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ranged Tactics Toolbox",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Calm%20Air"
+      }
+    },
+    {
+      "id": "bard-mute-cold-iron-fetters",
+      "name": "Cold Iron Fetters",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Reduce the targets move speeds, increased effect with creatures vulnerable to cold iron",
+      "spellId": "cold-iron-fetters",
+      "spellLevel": 5,
+      "source": {
+        "title": "Legacy of the First World",
+        "page": 13,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cold%20Iron%20Fetters"
+      }
+    },
+    {
+      "id": "bard-mute-companion-transportation",
+      "name": "Companion Transportation",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Swap places with your animal companion, familiar, or spirit animal via teleportation",
+      "spellId": "companion-transportation",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Wilderness",
+        "page": 228,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Companion%20Transportation"
+      }
+    },
+    {
+      "id": "bard-mute-covetous-aura",
+      "name": "Covetous Aura",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Sap the powers of beneficial spells cast near to you.",
+      "spellId": "covetous-aura",
+      "spellLevel": 5,
+      "source": {
+        "title": "Rise of the Runelords Anniversary Edition",
+        "page": 418,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Covetous%20Aura"
+      }
+    },
+    {
+      "id": "bard-mute-damnation-stride",
+      "name": "Damnation Stride",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. As dimension door, except you leave behind a burst of flame.",
+      "spellId": "damnation-stride",
+      "spellLevel": 5,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 173,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Damnation%20Stride"
+      }
+    },
+    {
+      "id": "bard-mute-darkvault",
+      "name": "Darkvault",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Ward shadows so light cannot penetrate them.",
+      "spellId": "darkvault",
+      "spellLevel": 5,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 15,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Darkvault"
+      }
+    },
+    {
+      "id": "bard-mute-devil-snare",
+      "name": "Devil Snare",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Create an invisible circle to trap outsiders.",
+      "spellId": "devil-snare",
+      "spellLevel": 5,
+      "source": {
+        "title": "Agents of Evil",
+        "page": 17,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Devil%20Snare"
+      }
+    },
+    {
+      "id": "bard-mute-dismissal",
+      "name": "Dismissal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Forces a creature to return to native plane.",
+      "spellId": "dismissal",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 271,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dismissal"
+      }
+    },
+    {
+      "id": "bard-mute-draconic-suppression",
+      "name": "Draconic Suppression",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Stop a dragon from using its breath weapon along with reducing its magical prowess.",
+      "spellId": "draconic-suppression",
+      "spellLevel": 5,
+      "source": {
+        "title": "Dragonslayer's Handbook",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Draconic%20Suppression"
+      }
+    },
+    {
+      "id": "bard-mute-flash-forward",
+      "name": "Flash Forward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Charge, then teleport back to starting poisiton",
+      "spellId": "flash-forward",
+      "spellLevel": 5,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 5,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flash%20Forward"
+      }
+    },
+    {
+      "id": "bard-mute-globe-of-tranquil-water",
+      "name": "Globe of Tranquil Water",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Create a bubble to block out all natural and magical precipitation within an area.",
+      "spellId": "globe-of-tranquil-water",
+      "spellLevel": 5,
+      "source": {
+        "title": "Heroes of the Wild",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Globe%20of%20Tranquil%20Water"
+      }
+    },
+    {
+      "id": "bard-mute-guardian-monument-greater",
+      "name": "Guardian Monument, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. As lesser guardian monument, except with DR 4/magic.",
+      "spellId": "guardian-monument-greater",
+      "spellLevel": 5,
+      "source": {
+        "title": "Arcane Anthology",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Guardian%20Monument%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-hostile-juxtaposition",
+      "name": "Hostile Juxtaposition",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. You create a dimensional link with a targeted creature, and switch spots with it.",
+      "spellId": "hostile-juxtaposition",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 231,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hostile%20Juxtaposition"
+      }
+    },
+    {
+      "id": "bard-mute-life-bubble",
+      "name": "Life Bubble",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Protects creatures from sustained environmental effects.",
+      "spellId": "life-bubble",
+      "spellLevel": 5,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 230,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Life%20Bubble"
+      }
+    },
+    {
+      "id": "bard-mute-mages-private-sanctum",
+      "name": "Mage's Private Sanctum",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Prevents anyone from viewing or scrying an area for 24 hours.",
+      "spellId": "mages-private-sanctum",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 307,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mage's%20Private%20Sanctum"
+      }
+    },
+    {
+      "id": "bard-mute-nexs-secret-workshop",
+      "name": "Nex's Secret Workshop",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. As nondetection, but any number of creatures or objects in the area",
+      "spellId": "nexs-secret-workshop",
+      "spellLevel": 5,
+      "source": {
+        "title": "Inner Sea Intrigue",
+        "page": 60,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Nex's%20Secret%20Workshop"
+      }
+    },
+    {
+      "id": "bard-mute-peacebond-greater",
+      "name": "Peacebond, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. As peacebond, but on multiple weapons, even if they aren't sheathed.",
+      "spellId": "peacebond-greater",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Peacebond%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-pernicious-pranksters",
+      "name": "Pernicious Pranksters",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Fey forces target enemies with random combat maneuvers",
+      "spellId": "pernicious-pranksters",
+      "spellLevel": 5,
+      "source": {
+        "title": "Heroes from the Fringe",
+        "page": 18,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Pernicious%20Pranksters"
+      }
+    },
+    {
+      "id": "bard-mute-planar-aegis",
+      "name": "Planar Aegis",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Use planar energy to protect yourself and retaliate with one energy type",
+      "spellId": "planar-aegis",
+      "spellLevel": 5,
+      "source": {
+        "title": "Plane-Hopper's Handbook",
+        "page": 12,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Planar%20Aegis"
+      }
+    },
+    {
+      "id": "bard-mute-planar-binding-lesser",
+      "name": "Planar Binding, Lesser",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Traps extraplanar creature of 6 HD or less until it performs a task.",
+      "spellId": "planar-binding-lesser",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 321,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Planar%20Binding%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-mute-release-the-hounds",
+      "name": "Release the Hounds",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a swarm of wolves",
+      "spellId": "release-the-hounds",
+      "spellLevel": 5,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 10,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Release%20the%20Hounds"
+      }
+    },
+    {
+      "id": "bard-mute-siphon-magic",
+      "name": "Siphon Magic",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Transfer a magical effect from another creature to yourself.",
+      "spellId": "siphon-magic",
+      "spellLevel": 5,
+      "source": {
+        "title": "Inner Sea Magic",
+        "page": 60,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Siphon%20Magic"
+      }
+    },
+    {
+      "id": "bard-mute-soothe-construct",
+      "name": "Soothe Construct",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Reduce the berserk chance of a construct.",
+      "spellId": "soothe-construct",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 239,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Soothe%20Construct"
+      }
+    },
+    {
+      "id": "bard-mute-spell-absorption",
+      "name": "Spell Absorption",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Use a counterspelled spell's energy in order to regain the use of your own spells.",
+      "spellId": "spell-absorption",
+      "spellLevel": 5,
+      "source": {
+        "title": "Inner Sea Magic",
+        "page": 61,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spell%20Absorption"
+      }
+    },
+    {
+      "id": "bard-mute-spellsteal",
+      "name": "Spellsteal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Create a discordant blast of energy to disrupt a target’s hold on magic and transfer it to you.",
+      "spellId": "spellsteal",
+      "spellLevel": 5,
+      "source": {
+        "title": "Monster Codex",
+        "page": 200,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spellsteal"
+      }
+    },
+    {
+      "id": "bard-mute-stoneskin-communal",
+      "name": "Stoneskin, Communal",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. As stoneskin, but you may divide the duration among creatures touched.",
+      "spellId": "stoneskin-communal",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 245,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Stoneskin%2C%20Communal"
+      }
+    },
+    {
+      "id": "bard-mute-summon-ceustodaemon",
+      "name": "Summon Ceustodaemon",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a ceustodaemon.",
+      "spellId": "summon-ceustodaemon",
+      "spellLevel": 5,
+      "source": {
+        "title": "Book of the Damned - Volume 3: Horsemen of the Apocalypse",
+        "page": 39,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Ceustodaemon"
+      }
+    },
+    {
+      "id": "bard-mute-summon-genie",
+      "name": "Summon Genie",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. As lesser summon genie, except summon one djinni or 1d3 jann.",
+      "spellId": "summon-genie",
+      "spellLevel": 5,
+      "source": {
+        "title": "People of the Sands",
+        "page": 11,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Genie"
+      }
+    },
+    {
+      "id": "bard-mute-summon-infernal-host",
+      "name": "Summon Infernal Host",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon host devils.",
+      "spellId": "summon-infernal-host",
+      "spellLevel": 5,
+      "source": {
+        "title": "Rival Guide",
+        "page": 59,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Infernal%20Host"
+      }
+    },
+    {
+      "id": "bard-mute-summon-lesser-demon",
+      "name": "Summon Lesser Demon",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. As summon monster, except to summon a brimorak, incubus, thoxel demon, 1d3 schir demons, or 1d4+1 vermlek demons.",
+      "spellId": "summon-lesser-demon",
+      "spellLevel": 5,
+      "source": {
+        "title": "Pathfinder #74: Sword of Valor",
+        "page": 75,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Lesser%20Demon"
+      }
+    },
+    {
+      "id": "bard-mute-summon-lesser-psychopomp",
+      "name": "Summon Lesser Psychopomp",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon 1d3 esobok psychopomps or 1d4+1 nosoi psychopomps.",
+      "spellId": "summon-lesser-psychopomp",
+      "spellLevel": 5,
+      "source": {
+        "title": "Pathfinder #80: Empty Graves",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Lesser%20Psychopomp"
+      }
+    },
+    {
+      "id": "bard-mute-summon-monster-5",
+      "name": "Summon Monster 5",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Summons extraplanar creature to fight for you.",
+      "spellId": "summon-monster-5",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 352,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Monster%205"
+      }
+    },
+    {
+      "id": "bard-mute-surface-excursion",
+      "name": "Surface Excursion",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Temporarily teleport yourself and others to the surface",
+      "spellId": "surface-excursion",
+      "spellLevel": 5,
+      "source": {
+        "title": "Heroes of the Darklands",
+        "page": 21,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Surface%20Excursion"
+      }
+    },
+    {
+      "id": "bard-mute-teleport",
+      "name": "Teleport",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Instantly transports you as far as 100 miles per level.",
+      "spellId": "teleport",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 358,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Teleport"
+      }
+    },
+    {
+      "id": "bard-mute-unbreakable-construct",
+      "name": "Unbreakable Construct",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Increase construct hardness or DR.",
+      "spellId": "unbreakable-construct",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 244,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unbreakable%20Construct"
+      }
+    },
+    {
+      "id": "bard-mute-wreath-of-blades",
+      "name": "Wreath of Blades",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 qualifying Sorcerer/Wizard spell added to Bard spells known. Four mithral daggers speed around you, attacking nearby creatures and protecting your spellcasting from attacks of opportunity.",
+      "spellId": "wreath-of-blades",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 249,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wreath%20of%20Blades"
+      }
+    },
+    {
+      "id": "bard-mute-absorb-rune-ii",
+      "name": "Absorb Rune II",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. As absorb rune I, but affecting a rune up to 5th level",
+      "spellId": "absorb-rune-ii",
+      "spellLevel": 6,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 60,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Absorb%20Rune%20II"
+      }
+    },
+    {
+      "id": "bard-mute-antimagic-field",
+      "name": "Antimagic Field",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Negates magic within 10 ft.",
+      "spellId": "antimagic-field",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 242,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Antimagic%20Field"
+      }
+    },
+    {
+      "id": "bard-mute-chains-of-light",
+      "name": "Chains of Light",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Hold a creature immobile with glowing chains with the added benefit of preventing the use of any extradimension travel.",
+      "spellId": "chains-of-light",
+      "spellLevel": 6,
+      "source": {
+        "title": "Champions of Purity",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Chains%20of%20Light"
+      }
+    },
+    {
+      "id": "bard-mute-conjure-black-pudding",
+      "name": "Conjure Black Pudding",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a black pudding.",
+      "spellId": "conjure-black-pudding",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 211,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Conjure%20Black%20Pudding"
+      }
+    },
+    {
+      "id": "bard-mute-cruel-jaunt",
+      "name": "Cruel Jaunt",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Sense creatures suffering from fear, then teleport close to them.",
+      "spellId": "cruel-jaunt",
+      "spellLevel": 6,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cruel%20Jaunt"
+      }
+    },
+    {
+      "id": "bard-mute-discharge-greater",
+      "name": "Discharge, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. As discharge, but with greater effects that can effect an area.",
+      "spellId": "discharge-greater",
+      "spellLevel": 6,
+      "source": {
+        "title": "Technology Guide",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Discharge%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-dispel-magic-greater",
+      "name": "Dispel Magic, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Works as dispel magic, but can affect multiple targets.",
+      "spellId": "dispel-magic-greater",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 272,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dispel%20Magic%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-dust-ward",
+      "name": "Dust Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Ward an item so it will be destroyed if others try to learn its purpose or use it.",
+      "spellId": "dust-ward",
+      "spellLevel": 6,
+      "source": {
+        "title": "Monster Codex",
+        "page": 45,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dust%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-flash-flood",
+      "name": "Flash Flood",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Wave of water batters and pushes creatures",
+      "spellId": "flash-flood",
+      "spellLevel": 6,
+      "source": {
+        "title": "Wilderness Origins",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flash%20Flood"
+      }
+    },
+    {
+      "id": "bard-mute-globe-of-invulnerability",
+      "name": "Globe of Invulnerability",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. As lesser globe of invulnerability, plus 4th-level spell effects.",
+      "spellId": "globe-of-invulnerability",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 290,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Globe%20of%20Invulnerability"
+      }
+    },
+    {
+      "id": "bard-mute-guards-and-wards",
+      "name": "Guards and Wards",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Array of magic effects protect area.",
+      "spellId": "guards-and-wards",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 292,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Guards%20and%20Wards"
+      }
+    },
+    {
+      "id": "bard-mute-ice-crystal-teleport",
+      "name": "Ice Crystal Teleport",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Target is frozen, then teleported.",
+      "spellId": "ice-crystal-teleport",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 224,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ice%20Crystal%20Teleport"
+      }
+    },
+    {
+      "id": "bard-mute-jannis-jaunt",
+      "name": "Janni's Jaunt",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. As plane shift, but only works on willing creatures and only transports to the Inner Planes",
+      "spellId": "jannis-jaunt",
+      "spellLevel": 6,
+      "source": {
+        "title": "Planes of Power",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Janni's%20Jaunt"
+      }
+    },
+    {
+      "id": "bard-mute-planar-binding",
+      "name": "Planar Binding",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. As lesser planar binding, but up to 12 HD.",
+      "spellId": "planar-binding",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 321,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Planar%20Binding"
+      }
+    },
+    {
+      "id": "bard-mute-repulsion",
+      "name": "Repulsion",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Creatures can't approach you.",
+      "spellId": "repulsion",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 333,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Repulsion"
+      }
+    },
+    {
+      "id": "bard-mute-spellcrash",
+      "name": "Spellcrash",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Target loses a 5th-level prepared spell or spell slot.",
+      "spellId": "spellcrash",
+      "spellLevel": 6,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 193,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spellcrash"
+      }
+    },
+    {
+      "id": "bard-mute-summon-flight-of-eagles",
+      "name": "Summon Flight of Eagles",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon giant eagles as mounts or battle companions",
+      "spellId": "summon-flight-of-eagles",
+      "spellLevel": 6,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 77,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Flight%20of%20Eagles"
+      }
+    },
+    {
+      "id": "bard-mute-summon-genie-greater",
+      "name": "Summon Genie, Greater",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. As lesser summon genie, except summon one shaitan, 1d3 djinn, or 1d4+1 jann.",
+      "spellId": "summon-genie-greater",
+      "spellLevel": 6,
+      "source": {
+        "title": "People of the Sands",
+        "page": 11,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Genie%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-mute-summon-monster-6",
+      "name": "Summon Monster 6",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Summons extraplanar creature to fight for you.",
+      "spellId": "summon-monster-6",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 352,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Monster%206"
+      }
+    },
+    {
+      "id": "bard-mute-summon-vanth",
+      "name": "Summon Vanth",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Summon a single vanth psychopomp.",
+      "spellId": "summon-vanth",
+      "spellLevel": 6,
+      "source": {
+        "title": "Pathfinder #80: Empty Graves",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summon%20Vanth"
+      }
+    },
+    {
+      "id": "bard-mute-symbol-of-sealing",
+      "name": "Symbol of Sealing",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Create triggered wall of force.",
+      "spellId": "symbol-of-sealing",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 242,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Symbol%20of%20Sealing"
+      }
+    },
+    {
+      "id": "bard-mute-teleport-structure",
+      "name": "Teleport Structure",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. (Downtime Spell) Teleport a building to a different lot.",
+      "spellId": "teleport-structure",
+      "spellLevel": 6,
+      "source": {
+        "title": "Quests and Campaigns",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Teleport%20Structure"
+      }
+    },
+    {
+      "id": "bard-mute-treacherous-teleport",
+      "name": "Treacherous Teleport",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. As teleport, except you choose some creatures to suffer a mishap or go elsewhere.",
+      "spellId": "treacherous-teleport",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 227,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Treacherous%20Teleport"
+      }
+    },
+    {
+      "id": "bard-mute-undeath-ward",
+      "name": "Undeath Ward",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Create a barrier to repel undead.",
+      "spellId": "undeath-ward",
+      "spellLevel": 6,
+      "source": {
+        "title": "Dungeons of Golarion",
+        "page": 63,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Undeath%20Ward"
+      }
+    },
+    {
+      "id": "bard-mute-wall-of-silver",
+      "name": "Wall of Silver",
+      "groupId": "bard-mute-insight-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 qualifying Sorcerer/Wizard spell added to Bard spells known. Wall of energy that only blocks and affects evil creatures and spells",
+      "spellId": "wall-of-silver",
+      "spellLevel": 6,
+      "source": {
+        "title": "Adventurer's Guide",
+        "page": 177,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Silver"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Mute%20Musician"
+  }
+}

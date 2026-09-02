@@ -26,7 +26,141 @@
           "name": "Bardic Performance",
           "level": 10,
           "type": "archetype",
-          "summary": "A dirge bard gains the following type of bardic performance. Dance of the Dead (Su) : At 10th level, a dirge bard can use his bardic performance to cause dead bones or bodies to rise up and move or fight at his command. This ability functions like animate dead , but the created skeletons or zombies remain fully animate only as long as the dirge bard continues the performance. Once it stops, any created undead collapse into carrion. Bodies or bones cannot be animated more than once using this ability. Unlike animate dead , dance of the dead requires no components and does not have the evil descriptor. This performance replaces jack-of-all-trades."
+          "summary": "A dirge bard gains the following type of bardic performance. Dance of the Dead (Su) : At 10th level, a dirge bard can use his bardic performance to cause dead bones or bodies to rise up and move or fight at his command. This ability functions like animate dead , but the created skeletons or zombies remain fully animate only as long as the dirge bard continues the performance. Once it stops, any created undead collapse into carrion. Bodies or bones cannot be animated more than once using this ability. Unlike animate dead , dance of the dead requires no components and does not have the evil descriptor. This performance replaces jack-of-all-trades.",
+          "performanceRules": [
+            {
+              "id": "dirge-dance-dead",
+              "name": "Dance of the Dead",
+              "minimumLevel": 10,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "dirge-dance-dead"
+              ],
+              "summary": "Animate skeletons or zombies only while the performance continues."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "dirge-dance-dead",
+              "label": "Begin Dance of the Dead",
+              "minimumLevel": 10,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 10,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "corpses",
+                  "label": "Each selected body or set of bones has not been animated by this performance before",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Dance of the Dead",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Skeletons or zombies remain animate only while this performance is maintained; no components and no evil descriptor. The control limit is displayed in the feature profile.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per round and track the temporary animate dead effect."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "dirge-dance-dead-capacity",
+              "label": "Dance of the Dead control limit",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 10,
+                  "values": {
+                    "benefit": "40 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "benefit": "44 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "benefit": "48 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "benefit": "52 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "benefit": "56 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "benefit": "60 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "benefit": "64 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "benefit": "68 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "benefit": "72 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "benefit": "76 HD controlled (animate dead limit)"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "benefit": "80 HD controlled (animate dead limit)"
+                  }
+                }
+              ],
+              "summary": "Control at most 4 HD of undead per Bard level; corpses collapse when the performance ends."
+            }
+          ]
         },
         {
           "id": "bard-dirge-bard-haunted-eyes-ex-2",
@@ -36,18 +170,204 @@
           "summary": "At 2nd level, a dirge bard gains a +4 bonus on saves against fear, energy drain, death effects, and necromantic effects. This ability replaces well-versed."
         },
         {
-          "id": "bard-dirge-bard-secrets-of-the-grave-ex-2",
-          "name": "Secrets of the Grave (Ex)",
+          "id": "bard-dirge-bard-secrets-of-the-grave-2",
+          "name": "Secrets of the Grave 1",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, a dirge bard gains a bonus equal to half his bard level on Knowledge (religion) checks made to identify undead creatures and their abilities. A dirge bard may use mind-affecting spells to affect undead as if they were living creatures, even if they are mindless (though spells that affect only humanoids do not affect them, even if they were humanoids in life). In addition, he may add one necromancy spell from the spell list of any arcane spellcasting class to his list of spells known at 2nd level and every four levels thereafter. This ability replaces versatile performance."
+          "type": "selectable",
+          "summary": "Choose an arcane necromancy spell of a level the Bard can cast and add it to spells known (1 of 5). Mind-affecting spells can affect undead as living creatures, including mindless undead, but humanoid-only spells remain restricted.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-dirge-necromancy-spells"
+        },
+        {
+          "id": "bard-dirge-bard-secrets-of-the-grave-6",
+          "name": "Secrets of the Grave 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose an arcane necromancy spell of a level the Bard can cast and add it to spells known (2 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-dirge-necromancy-spells"
+        },
+        {
+          "id": "bard-dirge-bard-secrets-of-the-grave-10",
+          "name": "Secrets of the Grave 3",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose an arcane necromancy spell of a level the Bard can cast and add it to spells known (3 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-dirge-necromancy-spells"
+        },
+        {
+          "id": "bard-dirge-bard-secrets-of-the-grave-14",
+          "name": "Secrets of the Grave 4",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose an arcane necromancy spell of a level the Bard can cast and add it to spells known (4 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-dirge-necromancy-spells"
+        },
+        {
+          "id": "bard-dirge-bard-secrets-of-the-grave-18",
+          "name": "Secrets of the Grave 5",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose an arcane necromancy spell of a level the Bard can cast and add it to spells known (5 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-dirge-necromancy-spells"
         },
         {
           "id": "bard-dirge-bard-haunting-refrain-su-5",
           "name": "Haunting Refrain (Su)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a dirge bard is able to stir primal terrors in the hearts of listeners. He can use a Perform (keyboard) or Perform (percussion) check in place of an Intimidate check to demoralize an opponent, with a bonus equal to half his bard level. In addition, saving throws against any fear effect he creates are made with a –2 penalty, and this penalty increases by –1 every 5 levels beyond 5th. This ability replaces lore master."
+          "summary": "At 5th level, a dirge bard is able to stir primal terrors in the hearts of listeners. He can use a Perform (keyboard) or Perform (percussion) check in place of an Intimidate check to demoralize an opponent, with a bonus equal to half his bard level. In addition, saving throws against any fear effect he creates are made with a –2 penalty, and this penalty increases by –1 every 5 levels beyond 5th. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "dirge-haunting-refrain-demoralize",
+              "label": "Demoralize with Haunting Refrain",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "modeLabel": "Perform skill",
+              "modes": [
+                {
+                  "id": "keyboard",
+                  "label": "Perform (keyboard)",
+                  "summary": "Use the character's Perform (keyboard) modifier."
+                },
+                {
+                  "id": "percussion",
+                  "label": "Perform (percussion)",
+                  "summary": "Use the character's Perform (percussion) modifier."
+                }
+              ],
+              "diceRoll": {
+                "label": "Perform check",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Selected Perform modifier",
+                "flatModifierByLevel": [
+                  {
+                    "level": 5,
+                    "modifier": 2
+                  },
+                  {
+                    "level": 6,
+                    "modifier": 3
+                  },
+                  {
+                    "level": 7,
+                    "modifier": 3
+                  },
+                  {
+                    "level": 8,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 9,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 10,
+                    "modifier": 5
+                  },
+                  {
+                    "level": 11,
+                    "modifier": 5
+                  },
+                  {
+                    "level": 12,
+                    "modifier": 6
+                  },
+                  {
+                    "level": 13,
+                    "modifier": 6
+                  },
+                  {
+                    "level": 14,
+                    "modifier": 7
+                  },
+                  {
+                    "level": 15,
+                    "modifier": 7
+                  },
+                  {
+                    "level": 16,
+                    "modifier": 8
+                  },
+                  {
+                    "level": 17,
+                    "modifier": 8
+                  },
+                  {
+                    "level": 18,
+                    "modifier": 9
+                  },
+                  {
+                    "level": 19,
+                    "modifier": 9
+                  },
+                  {
+                    "level": 20,
+                    "modifier": 10
+                  }
+                ],
+                "targetDcInputLabel": "Demoralize DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "demoralized"
+                  }
+                ],
+                "failureLabel": "not demoralized"
+              },
+              "summary": "Roll the selected Perform skill in place of Intimidate and add half Bard level."
+            },
+            {
+              "id": "dirge-haunting-refrain-fear",
+              "label": "Apply Haunting Refrain fear penalty",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "activeEffect": {
+                "name": "Haunting Refrain",
+                "targets": [
+                  "savingThrows"
+                ],
+                "bonus": -2,
+                "bonusByLevel": [
+                  {
+                    "level": 5,
+                    "bonus": -2
+                  },
+                  {
+                    "level": 10,
+                    "bonus": -3
+                  },
+                  {
+                    "level": 15,
+                    "bonus": -4
+                  },
+                  {
+                    "level": 20,
+                    "bonus": -5
+                  }
+                ],
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "Penalty on saving throws against fear effects created by the Dirge Bard."
+              },
+              "summary": "Apply the exact level-scaled save penalty to the target for the fear effect being resolved."
+            }
+          ]
         }
       ]
     }
@@ -57,8 +377,48 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dirge%20Bard"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Dance of the Dead resource and control limit, Haunted Eyes saves, undead identification, five unique level-gated necromancy spells known, undead mind-affecting permission, and both Haunting Refrain paths are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-dirge-bard-haunted-eyes-ex-2",
+      "label": "Haunted Eyes — fear",
+      "condition": "saving throws against fear",
+      "minimumLevel": 2,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "bard-dirge-bard-haunted-eyes-ex-2",
+      "label": "Haunted Eyes — energy drain",
+      "condition": "saving throws against energy drain",
+      "minimumLevel": 2,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "bard-dirge-bard-haunted-eyes-ex-2",
+      "label": "Haunted Eyes — death effects",
+      "condition": "saving throws against death effects",
+      "minimumLevel": 2,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "bard-dirge-bard-haunted-eyes-ex-2",
+      "label": "Haunted Eyes — necromantic effects",
+      "condition": "saving throws against necromantic effects",
+      "minimumLevel": 2,
+      "base": 4
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-dirge-bard-secrets-of-the-grave-2",
+      "skill": "Knowledge (religion)",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "checks to identify undead and their abilities"
+    }
   ]
 }

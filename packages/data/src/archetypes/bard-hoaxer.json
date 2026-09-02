@@ -39,11 +39,403 @@
           "summary": "A hoaxer adds half his bard level (minimum 1) on all Appraise, Bluff, and Sleight of Hand checks, as well as on Craft, Knowledge, Linguistics, Perception, and Profession checks to create or detect a counterfeit or forgery. He can attempt such skill checks untrained. This ability replaces bardic knowledge."
         },
         {
-          "id": "bard-hoaxer-bardic-performance-su-1",
-          "name": "Bardic Performance (Su)",
+          "id": "bard-hoaxer-hex-1",
+          "name": "Bad Deal Hex 1",
           "level": 1,
-          "type": "archetype",
-          "summary": "A hoaxer dedicates his arcane energies to deceiving others rather than to entertaining them, granting him the following unique performances. Bad Deal (Su) : A hoaxer can use his performance to coax a bit of luck (good or bad) into a valuable-seeming object. As a standard action that provokes attacks of opportunity, the hoaxer can use 1 round of bardic performance to invest a single object in his possession with a hex he knows. This object must be light enough to hold in one hand, and cannot already have any magical properties. The object remains hexed as long as the hoaxer continues to spend 1 round of bardic performance each round as a swift action to maintain it, until the hoaxer drops the item, or until triggered. The hex triggers immediately upon being willingly accepted by another creature, targeting its new owner. A bad deal cannot be forced on a creature or slipped into its possession without its knowledge, but a hoaxer can lie or cheat to convince his mark to accept the object, or use spells like beguiling gift . At 1st level, the hoaxer knows one witch hex from the following list: blight, charm, evil eye, fortune, healing, misfortune, slumber, or unnerve beasts. At 3rd level and every 3 bard levels thereafter, he can learn one additional hex. The save DC for a hoaxer’s hexes is equal to 10 + 1/2 the hoaxer’s bard level + his Charisma modifier. These hexes function identically to witch hexes, except they can only target single creatures, and the hoaxer can only use his hexes by investing them into objects. If the hoaxer learns hexes from any other source (such as the witch class), he cannot invoke them into an object. Beginning at 12th level, the hoaxer adds the following major hexes to the list of hexes he can learn: agony, hoarfrost, ice tomb, infected wounds, nightmares, retribution, and speak in dreams. This performance replaces inspire courage, inspire competence, and inspire greatness. Buyer Beware (Su) : As a standard action, a hoaxer can convince someone to accept a gift or trade as per beguiling gift (DC = 10 + 1/2 the hoaxer’s bard level + his Charisma modifier) by spending 1 round of bardic performance on a supernatural sales pitch. The hoaxer can use this ability to convince a creature to accept a hexed object created with his bad deal performance. This performance replaces countersong. Personal Guarantee (Su) : A hoaxer can prevent his hexed wares from afflicting a target until he is safely out of sight. He can spend up to 1 round of bardic performance per bard level while hexing an object. For every round expended, the object’s hex is delayed for 1 minute before triggering and hexing its current owner. This performance replaces distraction. Curse Breaker (Su) : A hoaxer of 12th level or higher can use performance to create an effect equal to break enchantment . This otherwise functions as soothing performance. This performance replaces inspire greatness."
+          "type": "selectable",
+          "summary": "Choose one hex for Bad Deal; duplicate choices are disabled.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-hoaxer-hexes",
+          "optionChoiceIds": [
+            "bard-hoaxer-hex-blight",
+            "bard-hoaxer-hex-charm",
+            "bard-hoaxer-hex-evil-eye",
+            "bard-hoaxer-hex-fortune",
+            "bard-hoaxer-hex-healing",
+            "bard-hoaxer-hex-misfortune",
+            "bard-hoaxer-hex-slumber",
+            "bard-hoaxer-hex-unnerve-beasts"
+          ],
+          "performanceRules": [
+            {
+              "id": "hoaxer-bad-deal",
+              "name": "Bad Deal",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "hoaxer-bad-deal"
+              ],
+              "summary": "Invest a selected hex into a nonmagical one-handed object and maintain it each round."
+            },
+            {
+              "id": "hoaxer-buyer-beware",
+              "name": "Buyer Beware",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "hoaxer-buyer-beware"
+              ],
+              "summary": "Use beguiling gift with the Bard performance save DC."
+            },
+            {
+              "id": "hoaxer-personal-guarantee",
+              "name": "Personal Guarantee",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "actionIds": [
+                "hoaxer-personal-guarantee"
+              ],
+              "summary": "Spend up to Bard level in extra rounds to delay the hex by that many minutes."
+            },
+            {
+              "id": "hoaxer-curse-breaker",
+              "name": "Curse Breaker",
+              "minimumLevel": 12,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 5,
+              "actionIds": [
+                "hoaxer-curse-breaker"
+              ],
+              "summary": "Create break enchantment as soothing performance."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "hoaxer-bad-deal",
+              "label": "Invest Bad Deal",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "object",
+                  "label": "The object is nonmagical, one-handed, and in your possession",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Bad Deal",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "Selected hex is invested in the object; spend one performance round as a swift action each round to maintain it until accepted, dropped, or triggered.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Choose the hex above, spend one performance round, and track the invested object."
+            },
+            {
+              "id": "hoaxer-buyer-beware",
+              "label": "Use Buyer Beware",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "effectsByLevel": [
+                  {
+                    "level": 1,
+                    "name": "Buyer Beware",
+                    "description": "Target accepts the offered object as beguiling gift, including a Bad Deal object.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Spend one round and resolve beguiling gift with the exact Bard performance save DC."
+            },
+            {
+              "id": "hoaxer-personal-guarantee",
+              "label": "Delay Bad Deal",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "variableCost": {
+                "label": "Minutes of delay",
+                "minimum": 1,
+                "maximumByLevel": [
+                  {
+                    "level": 1,
+                    "maximum": 1
+                  },
+                  {
+                    "level": 2,
+                    "maximum": 2
+                  },
+                  {
+                    "level": 3,
+                    "maximum": 3
+                  },
+                  {
+                    "level": 4,
+                    "maximum": 4
+                  },
+                  {
+                    "level": 5,
+                    "maximum": 5
+                  },
+                  {
+                    "level": 6,
+                    "maximum": 6
+                  },
+                  {
+                    "level": 7,
+                    "maximum": 7
+                  },
+                  {
+                    "level": 8,
+                    "maximum": 8
+                  },
+                  {
+                    "level": 9,
+                    "maximum": 9
+                  },
+                  {
+                    "level": 10,
+                    "maximum": 10
+                  },
+                  {
+                    "level": 11,
+                    "maximum": 11
+                  },
+                  {
+                    "level": 12,
+                    "maximum": 12
+                  },
+                  {
+                    "level": 13,
+                    "maximum": 13
+                  },
+                  {
+                    "level": 14,
+                    "maximum": 14
+                  },
+                  {
+                    "level": 15,
+                    "maximum": 15
+                  },
+                  {
+                    "level": 16,
+                    "maximum": 16
+                  },
+                  {
+                    "level": 17,
+                    "maximum": 17
+                  },
+                  {
+                    "level": 18,
+                    "maximum": 18
+                  },
+                  {
+                    "level": 19,
+                    "maximum": 19
+                  },
+                  {
+                    "level": 20,
+                    "maximum": 20
+                  }
+                ]
+              },
+              "activeEffect": {
+                "name": "Personal Guarantee",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "The invested hex triggers after {amount} minute(s), unless otherwise triggered later by the Bad Deal rules.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per minute of delay, capped at Bard level."
+            },
+            {
+              "id": "hoaxer-curse-breaker",
+              "label": "Use Curse Breaker",
+              "minimumLevel": 12,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 5,
+              "actionTypeByLevel": [
+                {
+                  "level": 12,
+                  "actionType": "full-round"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "break-enchantment",
+                "spellName": "Break Enchantment",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Spend five performance rounds and resolve break enchantment as soothing performance."
+            }
+          ]
+        },
+        {
+          "id": "bard-hoaxer-hex-3",
+          "name": "Bad Deal Hex 2",
+          "level": 3,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-hoaxer-hexes",
+          "optionChoiceIds": [
+            "bard-hoaxer-hex-blight",
+            "bard-hoaxer-hex-charm",
+            "bard-hoaxer-hex-evil-eye",
+            "bard-hoaxer-hex-fortune",
+            "bard-hoaxer-hex-healing",
+            "bard-hoaxer-hex-misfortune",
+            "bard-hoaxer-hex-slumber",
+            "bard-hoaxer-hex-unnerve-beasts"
+          ],
+          "summary": "Choose one hex for Bad Deal; duplicate choices are disabled."
+        },
+        {
+          "id": "bard-hoaxer-hex-6",
+          "name": "Bad Deal Hex 3",
+          "level": 6,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-hoaxer-hexes",
+          "optionChoiceIds": [
+            "bard-hoaxer-hex-blight",
+            "bard-hoaxer-hex-charm",
+            "bard-hoaxer-hex-evil-eye",
+            "bard-hoaxer-hex-fortune",
+            "bard-hoaxer-hex-healing",
+            "bard-hoaxer-hex-misfortune",
+            "bard-hoaxer-hex-slumber",
+            "bard-hoaxer-hex-unnerve-beasts"
+          ],
+          "summary": "Choose one hex for Bad Deal; duplicate choices are disabled."
+        },
+        {
+          "id": "bard-hoaxer-hex-9",
+          "name": "Bad Deal Hex 4",
+          "level": 9,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-hoaxer-hexes",
+          "optionChoiceIds": [
+            "bard-hoaxer-hex-blight",
+            "bard-hoaxer-hex-charm",
+            "bard-hoaxer-hex-evil-eye",
+            "bard-hoaxer-hex-fortune",
+            "bard-hoaxer-hex-healing",
+            "bard-hoaxer-hex-misfortune",
+            "bard-hoaxer-hex-slumber",
+            "bard-hoaxer-hex-unnerve-beasts"
+          ],
+          "summary": "Choose one hex for Bad Deal; duplicate choices are disabled."
+        },
+        {
+          "id": "bard-hoaxer-hex-12",
+          "name": "Bad Deal Hex 5",
+          "level": 12,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-hoaxer-hexes",
+          "optionChoiceIds": [
+            "bard-hoaxer-hex-blight",
+            "bard-hoaxer-hex-charm",
+            "bard-hoaxer-hex-evil-eye",
+            "bard-hoaxer-hex-fortune",
+            "bard-hoaxer-hex-healing",
+            "bard-hoaxer-hex-misfortune",
+            "bard-hoaxer-hex-slumber",
+            "bard-hoaxer-hex-unnerve-beasts",
+            "bard-hoaxer-major-hex-agony",
+            "bard-hoaxer-major-hex-hoarfrost",
+            "bard-hoaxer-major-hex-ice-tomb",
+            "bard-hoaxer-major-hex-infected-wounds",
+            "bard-hoaxer-major-hex-nightmares",
+            "bard-hoaxer-major-hex-retribution",
+            "bard-hoaxer-major-hex-speak-in-dreams"
+          ],
+          "summary": "Choose one basic or major hex for Bad Deal; duplicate choices are disabled."
+        },
+        {
+          "id": "bard-hoaxer-hex-15",
+          "name": "Bad Deal Hex 6",
+          "level": 15,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-hoaxer-hexes",
+          "optionChoiceIds": [
+            "bard-hoaxer-hex-blight",
+            "bard-hoaxer-hex-charm",
+            "bard-hoaxer-hex-evil-eye",
+            "bard-hoaxer-hex-fortune",
+            "bard-hoaxer-hex-healing",
+            "bard-hoaxer-hex-misfortune",
+            "bard-hoaxer-hex-slumber",
+            "bard-hoaxer-hex-unnerve-beasts",
+            "bard-hoaxer-major-hex-agony",
+            "bard-hoaxer-major-hex-hoarfrost",
+            "bard-hoaxer-major-hex-ice-tomb",
+            "bard-hoaxer-major-hex-infected-wounds",
+            "bard-hoaxer-major-hex-nightmares",
+            "bard-hoaxer-major-hex-retribution",
+            "bard-hoaxer-major-hex-speak-in-dreams"
+          ],
+          "summary": "Choose one basic or major hex for Bad Deal; duplicate choices are disabled."
+        },
+        {
+          "id": "bard-hoaxer-hex-18",
+          "name": "Bad Deal Hex 7",
+          "level": 18,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-hoaxer-hexes",
+          "optionChoiceIds": [
+            "bard-hoaxer-hex-blight",
+            "bard-hoaxer-hex-charm",
+            "bard-hoaxer-hex-evil-eye",
+            "bard-hoaxer-hex-fortune",
+            "bard-hoaxer-hex-healing",
+            "bard-hoaxer-hex-misfortune",
+            "bard-hoaxer-hex-slumber",
+            "bard-hoaxer-hex-unnerve-beasts",
+            "bard-hoaxer-major-hex-agony",
+            "bard-hoaxer-major-hex-hoarfrost",
+            "bard-hoaxer-major-hex-ice-tomb",
+            "bard-hoaxer-major-hex-infected-wounds",
+            "bard-hoaxer-major-hex-nightmares",
+            "bard-hoaxer-major-hex-retribution",
+            "bard-hoaxer-major-hex-speak-in-dreams"
+          ],
+          "summary": "Choose one basic or major hex for Bad Deal; duplicate choices are disabled."
         },
         {
           "id": "bard-hoaxer-misery-ex-2",
@@ -64,7 +456,40 @@
           "name": "Curse Crafter (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a hoaxer learns how to craft cursed items. He gains one item creation feat as a bonus feat at 5th level, plus an additional item creation feat every 6 levels thereafter. He can use these feats only to craft cursed items. In addition, he can craft items that appear magical but have no true magical properties—as if permanently affected by the magic aura spell—for 50 gp. This ability replaces lore master."
+          "summary": "At 5th level, a hoaxer learns how to craft cursed items. He gains one item creation feat as a bonus feat at 5th level, plus an additional item creation feat every 6 levels thereafter. He can use these feats only to craft cursed items. In addition, he can craft items that appear magical but have no true magical properties—as if permanently affected by the magic aura spell—for 50 gp. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "hoaxer-curse-crafter",
+              "label": "Track Curse Crafter project",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "modeLabel": "Project",
+              "modes": [
+                {
+                  "id": "cursed-item",
+                  "label": "Cursed magic item",
+                  "summary": "Use one of the level-gated item creation feats granted below; it functions only for cursed items."
+                },
+                {
+                  "id": "false-aura",
+                  "label": "False magic aura item",
+                  "summary": "Spend 50 gp to create an item that appears magical but has no true magical properties."
+                }
+              ],
+              "activeEffect": {
+                "name": "Curse Crafter project",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Track the selected cursed-item or permanent false-aura crafting project and its restrictions.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "The inferred feat selectors grant item creation feats at levels 5, 11, and 17; this action records their restricted use."
+            }
+          ]
         }
       ]
     }
@@ -74,8 +499,163 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Counterfeiter bonuses, seven unique level-aware hex choices, all four performances, Misery scaling, Versed in Curses, and three item-creation feat choices are automated."
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "bard-hoaxer-counterfeiter-ex-1",
+      "skill": "Appraise",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-counterfeiter-ex-1",
+      "skill": "Bluff",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-counterfeiter-ex-1",
+      "skill": "Sleight of Hand",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-counterfeiter-ex-1",
+      "skill": "Craft",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "checks to create or detect a counterfeit or forgery; may be attempted untrained"
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-counterfeiter-ex-1",
+      "skill": "Knowledge",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "checks to create or detect a counterfeit or forgery; may be attempted untrained"
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-counterfeiter-ex-1",
+      "skill": "Linguistics",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "checks to create or detect a counterfeit or forgery; may be attempted untrained"
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-counterfeiter-ex-1",
+      "skill": "Perception",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "checks to create or detect a counterfeit or forgery; may be attempted untrained"
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-counterfeiter-ex-1",
+      "skill": "Profession",
+      "minimumLevel": 1,
+      "base": 0,
+      "levelDivisor": 2,
+      "minimum": 1,
+      "condition": "checks to create or detect a counterfeit or forgery; may be attempted untrained"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-hoaxer-misery-ex-2",
+      "label": "Misery — attacks",
+      "condition": "attack rolls against creatures suffering from a curse, hex, or harmful mind-affecting effect",
+      "minimumLevel": 2,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 2,
+          "bonus": 1
+        },
+        {
+          "level": 5,
+          "bonus": 2
+        },
+        {
+          "level": 11,
+          "bonus": 3
+        },
+        {
+          "level": 17,
+          "bonus": 4
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-misery-ex-2",
+      "label": "Misery — damage",
+      "condition": "damage rolls against creatures suffering from a curse, hex, or harmful mind-affecting effect",
+      "minimumLevel": 2,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 2,
+          "bonus": 1
+        },
+        {
+          "level": 5,
+          "bonus": 2
+        },
+        {
+          "level": 11,
+          "bonus": 3
+        },
+        {
+          "level": 17,
+          "bonus": 4
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-misery-ex-2",
+      "label": "Misery — Will",
+      "condition": "Will saves against spells from creatures suffering from a curse, hex, or harmful mind-affecting effect",
+      "minimumLevel": 2,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 2,
+          "bonus": 1
+        },
+        {
+          "level": 5,
+          "bonus": 2
+        },
+        {
+          "level": 11,
+          "bonus": 3
+        },
+        {
+          "level": 17,
+          "bonus": 4
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "bard-hoaxer-versed-in-curses-ex-2",
+      "label": "Versed in Curses",
+      "condition": "saving throws against curses, hexes, and language-dependent effects",
+      "minimumLevel": 2,
+      "base": 4
+    }
   ]
 }

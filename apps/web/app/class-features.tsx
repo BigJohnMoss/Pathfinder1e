@@ -9,7 +9,7 @@ export type DailyResource = {
   maximum: number | null;
   used: number;
   refreshUsed?: number;
-  refreshCadence?: "day" | "week";
+  refreshCadence?: "hour" | "day" | "week";
   hidden?: boolean;
   onUsedChange: (used: number) => void;
 };
@@ -67,7 +67,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       const refreshUsed = atWill ? 0 : Math.max(0, Math.min(resource.refreshUsed ?? 0, resource.maximum ?? 0));
       return <div className="daily-resource" key={resource.label}>
         <div><strong>{resource.label}</strong><output aria-label={`${resource.label} remaining`}>{atWill ? "At will" : `${remaining}/${resource.maximum} ${resource.unit} remaining`}</output></div>
-        {!atWill && <div><button type="button" onClick={() => resource.onUsedChange(used + 1)} disabled={remaining <= 0}>Spend 1 {resource.unit}</button><button type="button" onClick={() => { resource.onUsedChange(refreshUsed); effectNamesForResource(resource.id).forEach((name) => onRemoveEffectByName?.(name)); }} disabled={used === refreshUsed}>Refresh {resource.label.toLowerCase()}</button>{resource.refreshCadence === "week" && <small>Refreshes after one week, not on Refresh day.</small>}</div>}
+        {!atWill && <div><button type="button" onClick={() => resource.onUsedChange(used + 1)} disabled={remaining <= 0}>Spend 1 {resource.unit}</button><button type="button" onClick={() => { resource.onUsedChange(refreshUsed); effectNamesForResource(resource.id).forEach((name) => onRemoveEffectByName?.(name)); }} disabled={used === refreshUsed}>Refresh {resource.label.toLowerCase()}</button>{resource.refreshCadence === "week" && <small>Refreshes after one week, not on Refresh day.</small>}{resource.refreshCadence === "hour" && <small>Refreshes after one hour, not on Refresh day.</small>}</div>}
       </div>;
     })}
     <ol>{features.map((feature) => <li key={feature.id}>
@@ -390,8 +390,14 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
             const targetDc = rerollInput.original;
             const targetMargin = resolvedTotal - targetDc;
             const targetOutcome = action.diceRoll.outcomesByMargin?.filter((outcome) => targetMargin >= outcome.minimumMargin).sort((left, right) => right.minimumMargin - left.minimumMargin)[0]?.label ?? action.diceRoll.failureLabel;
+            const tableOutcome = action.diceRoll.outcomesByTotal?.find((outcome) => resolvedTotal >= outcome.minimumTotal && (outcome.maximumTotal === undefined || resolvedTotal <= outcome.maximumTotal));
             const targetText = action.diceRoll.targetDcInputLabel ? ` vs ${action.diceRoll.targetDcInputLabel} ${targetDc}${targetOutcome ? ` — ${targetOutcome}` : ""}` : "";
-            const parts = [`${mode}: ${roll.rolls.join(" + ")}${diceModifier === 0 ? "" : diceModifier > 0 ? ` + ${diceModifier}` : ` − ${Math.abs(diceModifier)}`}${diceResultDivisor > 1 ? `, divided by ${diceResultDivisor}` : ""} = ${resolvedTotal}${targetText}${diceModeEffect ? ` ${diceModeEffect.kind}` : ""}.`];
+            const tableText = tableOutcome ? ` — ${tableOutcome.label}${tableOutcome.summary ? `: ${tableOutcome.summary}` : ""}` : "";
+            const parts = [`${mode}: ${roll.rolls.join(" + ")}${diceModifier === 0 ? "" : diceModifier > 0 ? ` + ${diceModifier}` : ` − ${Math.abs(diceModifier)}`}${diceResultDivisor > 1 ? `, divided by ${diceResultDivisor}` : ""} = ${resolvedTotal}${targetText}${tableText}${diceModeEffect ? ` ${diceModeEffect.kind}` : ""}.`];
+            tableOutcome?.effectsByMode?.filter((effect) => effect.modeId === selectedMode?.id).forEach((effect, index) => {
+              onRemoveEffectByName?.(effect.name);
+              onAddEffect?.({ id: `${action.id}-table-${index}-${Date.now()}-${Math.random()}`, name: effect.name, target: effect.target, bonus: effect.bonus, description: effect.description, roundsRemaining: effect.rounds });
+            });
             const targetSave = diceModeEffect?.targetSave && saveDc !== undefined ? rollD20Check(combatInput.saveModifier) : undefined;
             const saveSucceeded = Boolean(targetSave && saveDc !== undefined && targetSave.total >= saveDc);
             if (targetSave && saveDc !== undefined && diceModeEffect?.targetSave) {
