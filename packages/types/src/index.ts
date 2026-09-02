@@ -263,6 +263,7 @@ export interface ClassFeatureOccurrence {
     confirmations?: Array<{ id: string; label: string; requiredForActivation?: boolean }>;
     classId?: string;
     minimumLevel?: number;
+    maximumLevel?: number;
     maximumActiveEffects?: {
       name: string;
       base?: number;
@@ -605,6 +606,7 @@ export interface CharacterArchetype {
   companionGrants?: ArchetypeCompanionGrant[];
   companionProgressionAdjustments?: CompanionProgressionAdjustment[];
   removesSpellcasting?: boolean;
+  removesBardicPerformance?: boolean;
   spellcastingAbility?: "intelligence" | "wisdom" | "charisma";
   spellcastingProgressionClassId?: string;
   spellcastingMinimumLevel?: number;
@@ -1137,6 +1139,7 @@ export interface CharacterOptionGroup {
   name: string;
   classIds: string[];
   options: CharacterOption[];
+  uniqueAcrossSelections?: boolean;
   generatedSpellOptions?: {
     classId?: string;
     spellSources?: Array<{

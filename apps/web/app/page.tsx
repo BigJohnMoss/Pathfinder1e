@@ -1832,11 +1832,13 @@ export default function Home() {
               option.id === selectedOptions[feature.id] ||
               !Object.entries(selectedOptions).some(([featureId, optionId]) => featureId !== feature.id && optionId === option.id),
             )
-          : feature.optionGroupId === "molthuni-defender-maneuvers"
+          : group?.uniqueAcrossSelections
             ? baseOptions.filter((option) =>
                 option.id === selectedOptions[feature.id] ||
                 !Object.entries(selectedOptions).some(([featureId, optionId]) =>
-                  featureId !== feature.id && featureId.startsWith("fighter-molthuni-defender-armored-defense-") && optionId === option.id,
+                  featureId !== feature.id &&
+                  optionId === option.id &&
+                  selectableProgressionFeatures.find((candidate) => candidate.id === featureId)?.optionGroupId === feature.optionGroupId,
                 ),
               )
           : feature.requiredSpellLevel !== undefined
@@ -2576,6 +2578,9 @@ export default function Home() {
       ? arcaneReservoir(secondaryClassLevel)
       : null;
   const bardClassLevel = classLevelMap.bard ?? 0;
+  const hasBardicPerformance = bardClassLevel > 0 && !allSelectedArchetypes.some(
+    (archetype) => archetype.classId === "bard" && archetype.removesBardicPerformance,
+  );
   const druidClassLevel = classLevelMap.druid ?? 0;
   const summonerClassLevel = classLevelMap.summoner ?? 0;
   const eidolonBaseFormId =
@@ -2688,7 +2693,7 @@ export default function Home() {
       0,
     );
   const bardicPerformanceMaximum =
-    bardClassLevel > 0
+    hasBardicPerformance
       ? bardicPerformanceRounds(
           bardClassLevel,
           combat.abilityModifiers.charisma,
@@ -2831,7 +2836,7 @@ export default function Home() {
           },
         ]
       : []),
-    ...(bardClassLevel > 0
+    ...(hasBardicPerformance
       ? [
           {
             id: "bardicPerformance",
@@ -2882,7 +2887,7 @@ export default function Home() {
     setSpellSlotUses({});
     refreshTrackedClassResources(classId);
     if (reservoir) setReservoirPoints(reservoir.dailyRefresh);
-    if (classId === "bard") setBardicPerformanceUsed(0);
+    if (classId === "bard" && hasBardicPerformance) setBardicPerformanceUsed(0);
     if (classId === "druid") setWildShapeUsed(0);
     setActiveEffects((current) => current.filter((effect) => !["Eldritch Surge fatigue", "Eldritch Surge exhaustion", "Eldritch Surge spell", "Eldritch Surge exploit"].includes(effect.name)));
   };
@@ -3296,7 +3301,7 @@ export default function Home() {
       ? { size: eidolonSize, evolutionIds: eidolonEvolutionIds }
       : undefined,
     arcaneReservoir: classLevelMap.arcanist ? reservoirPoints : null,
-    bardicPerformanceUsed: bardClassLevel > 0 ? bardicPerformanceUsed : 0,
+    bardicPerformanceUsed: hasBardicPerformance ? bardicPerformanceUsed : 0,
     wildShapeUsed: druidClassLevel > 0 ? wildShapeUsed : 0,
     currentHitPoints,
     temporaryHitPoints,
@@ -3564,10 +3569,13 @@ export default function Home() {
       draft.classId === "arcanist" ? arcaneReservoir(draftPrimaryLevel) : null;
     const draftBardLevel =
       draft.classLevels.find((entry) => entry.classId === "bard")?.level ?? 0;
+    const draftHasBardicPerformance = draftBardLevel > 0 && !draftArchetypes("bard").some(
+      (archetype) => archetype.removesBardicPerformance,
+    );
     const draftDruidLevel =
       draft.classLevels.find((entry) => entry.classId === "druid")?.level ?? 0;
     const draftBardicPerformanceMaximum =
-      draftBardLevel > 0
+      draftHasBardicPerformance
         ? bardicPerformanceRounds(
             draftBardLevel,
             Math.floor((draftAbilities.charisma - 10) / 2),
