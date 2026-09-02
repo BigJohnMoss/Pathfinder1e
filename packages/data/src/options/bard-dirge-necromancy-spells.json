@@ -1,0 +1,3813 @@
+{
+  "id": "bard-dirge-necromancy-spells",
+  "name": "Dirge Bard Necromancy Spells",
+  "classIds": [
+    "bard"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "bard-dirge-bleed",
+      "name": "Bleed",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Cantrip necromancy spell added to Bard spells known. Cause a stabilized creature to resume dying.",
+      "spellId": "bleed",
+      "spellLevel": 0,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 249,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bleed"
+      }
+    },
+    {
+      "id": "bard-dirge-disrupt-undead",
+      "name": "Disrupt Undead",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Cantrip necromancy spell added to Bard spells known. Deals 1d6 damage to one undead.",
+      "spellId": "disrupt-undead",
+      "spellLevel": 0,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 273,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Disrupt%20Undead"
+      }
+    },
+    {
+      "id": "bard-dirge-sotto-voce",
+      "name": "Sotto Voce",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Cantrip necromancy spell added to Bard spells known. Use your dry, rasping whisper to fill a creature with dread.",
+      "spellId": "sotto-voce",
+      "spellLevel": 0,
+      "source": {
+        "title": "Faction Guide",
+        "page": 61,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sotto%20Voce"
+      }
+    },
+    {
+      "id": "bard-dirge-touch-of-fatigue",
+      "name": "Touch of Fatigue",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Cantrip necromancy spell added to Bard spells known. Touch attack fatigues target.",
+      "spellId": "touch-of-fatigue",
+      "spellLevel": 0,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 360,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Touch%20of%20Fatigue"
+      }
+    },
+    {
+      "id": "bard-dirge-bed-of-iron",
+      "name": "Bed of Iron",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Allow the enchanted to sleep comfortably in medium or heavy armor.",
+      "spellId": "bed-of-iron",
+      "spellLevel": 1,
+      "source": {
+        "title": "Knights of the Inner Sea",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bed%20of%20Iron"
+      }
+    },
+    {
+      "id": "bard-dirge-cause-fear",
+      "name": "Cause Fear",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. One creature of 5 HD or less flees for 1d4 rounds.",
+      "spellId": "cause-fear",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 252,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cause%20Fear"
+      }
+    },
+    {
+      "id": "bard-dirge-chill-touch",
+      "name": "Chill Touch",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. One touch/level deals 1d6 damage and possibly 1 Str damage.",
+      "spellId": "chill-touch",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 255,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Chill%20Touch"
+      }
+    },
+    {
+      "id": "bard-dirge-decompose-corpse",
+      "name": "Decompose Corpse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Turn a corpse into a clean skeleton.",
+      "spellId": "decompose-corpse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 216,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Decompose%20Corpse"
+      }
+    },
+    {
+      "id": "bard-dirge-depilate",
+      "name": "Depilate",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Creature takes -2 penalty to Diplomacy, Intimidate, and Perform for 1 week",
+      "spellId": "depilate",
+      "spellLevel": 1,
+      "source": {
+        "title": "Blood of the Beast",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Depilate"
+      }
+    },
+    {
+      "id": "bard-dirge-grasping-corpse",
+      "name": "Grasping Corpse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Cause a corpse to grab or trip a foe",
+      "spellId": "grasping-corpse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 118,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Grasping%20Corpse"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-hex-vulnerability",
+      "name": "Hex Vulnerability",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Reuse a hex on a specific target.",
+      "spellId": "later-spell-hex-vulnerability",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 184,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hex%20Vulnerability"
+      }
+    },
+    {
+      "id": "bard-dirge-interrogation",
+      "name": "Interrogation",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Target answers questions or suffers pain.",
+      "spellId": "interrogation",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 225,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Interrogation"
+      }
+    },
+    {
+      "id": "bard-dirge-itching-curse",
+      "name": "Itching Curse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Creature takes -1 penalty to attack, saves, skill checks, and ability checks",
+      "spellId": "itching-curse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 22,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Itching%20Curse"
+      }
+    },
+    {
+      "id": "bard-dirge-night-blindness",
+      "name": "Night Blindness",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Impair target’s vision as if it were darker.",
+      "spellId": "night-blindness",
+      "spellLevel": 1,
+      "source": {
+        "title": "Black Markets",
+        "page": 19,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Night%20Blindness"
+      }
+    },
+    {
+      "id": "bard-dirge-phantom-blood",
+      "name": "Phantom Blood",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Gain temporary hp if Con loss would knock you out or kill you.",
+      "spellId": "phantom-blood",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 190,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Phantom%20Blood"
+      }
+    },
+    {
+      "id": "bard-dirge-positive-pulse",
+      "name": "Positive Pulse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Energy harms undead or bolsters the living",
+      "spellId": "positive-pulse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Planar Adventures",
+        "page": 43,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Positive%20Pulse"
+      }
+    },
+    {
+      "id": "bard-dirge-preserve",
+      "name": "Preserve",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Prevent objects from rotting and spoiling",
+      "spellId": "preserve",
+      "spellLevel": 1,
+      "source": {
+        "title": "Inner Sea Temples",
+        "page": 43,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Preserve"
+      }
+    },
+    {
+      "id": "bard-dirge-ray-of-enfeeblement",
+      "name": "Ray of Enfeeblement",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Ray causes 1d6 Str penalty + 1 per 2 levels.",
+      "spellId": "ray-of-enfeeblement",
+      "spellLevel": 1,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 329,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ray%20of%20Enfeeblement"
+      }
+    },
+    {
+      "id": "bard-dirge-ray-of-sickening",
+      "name": "Ray of Sickening",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Ray makes subject sickened.",
+      "spellId": "ray-of-sickening",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 234,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ray%20of%20Sickening"
+      }
+    },
+    {
+      "id": "bard-dirge-repair-undead",
+      "name": "Repair Undead",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Heals one undead of 1d8 hp + 1/level (max +5).",
+      "spellId": "repair-undead",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 191,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Repair%20Undead"
+      }
+    },
+    {
+      "id": "bard-dirge-restore-corpse",
+      "name": "Restore Corpse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Skeletal corpse grows flesh.",
+      "spellId": "restore-corpse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 235,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Restore%20Corpse"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-scarify",
+      "name": "Scarify",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Convert some lethal damage to nonlethal damage, causing massive scarring",
+      "spellId": "later-spell-scarify",
+      "spellLevel": 1,
+      "source": {
+        "title": "Inner Sea Temples",
+        "page": 13,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Scarify"
+      }
+    },
+    {
+      "id": "bard-dirge-sculpt-corpse",
+      "name": "Sculpt Corpse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Makes corpse look like another creature.",
+      "spellId": "sculpt-corpse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 241,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sculpt%20Corpse"
+      }
+    },
+    {
+      "id": "bard-dirge-skin-tag",
+      "name": "Skin Tag",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Curse food or drink to gain afamilar connection to the creature",
+      "spellId": "skin-tag",
+      "spellLevel": 1,
+      "source": {
+        "title": "Haunted Heroes Handbook",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Skin%20Tag"
+      }
+    },
+    {
+      "id": "bard-dirge-touch-of-blindness",
+      "name": "Touch of Blindness",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Coat a creature’s eyes in darkness, blinding them.",
+      "spellId": "touch-of-blindness",
+      "spellLevel": 1,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Touch%20of%20Blindness"
+      }
+    },
+    {
+      "id": "bard-dirge-undines-curse",
+      "name": "Undine's Curse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. The target loses it’s body’s natural ability to breathe automatically.",
+      "spellId": "undines-curse",
+      "spellLevel": 1,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 179,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Undine's%20Curse"
+      }
+    },
+    {
+      "id": "bard-dirge-unlock-flesh",
+      "name": "Unlock Flesh",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Level 1 necromancy spell added to Bard spells known. Stagger a living creature or deal 1d6 damage/level to a corporeal undead",
+      "spellId": "unlock-flesh",
+      "spellLevel": 1,
+      "source": {
+        "title": "Curse of the Crimson Throne",
+        "page": 453,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unlock%20Flesh"
+      }
+    },
+    {
+      "id": "bard-dirge-blindness-deafness",
+      "name": "Blindness/Deafness",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Makes subject blinded or deafened.",
+      "spellId": "blindness-deafness",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 250,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blindness%2FDeafness"
+      }
+    },
+    {
+      "id": "bard-dirge-blood-in-the-water",
+      "name": "Blood in the Water",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Enhance those with a blood frenzy.",
+      "spellId": "blood-in-the-water",
+      "spellLevel": 2,
+      "source": {
+        "title": "Monster Codex",
+        "page": 189,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blood%20in%20the%20Water"
+      }
+    },
+    {
+      "id": "bard-dirge-bloodbath",
+      "name": "Bloodbath",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Cause yourself and enemies to bleed.",
+      "spellId": "bloodbath",
+      "spellLevel": 2,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 110,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bloodbath"
+      }
+    },
+    {
+      "id": "bard-dirge-bloody-tears-and-jagged-smile",
+      "name": "Bloody Tears and Jagged Smile",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Become more intimidating with black eyes that weep blood and turn your teeth into jagged fangs.",
+      "spellId": "bloody-tears-and-jagged-smile",
+      "spellLevel": 2,
+      "source": {
+        "title": "Pathfinder #71: Rasputin Must Die!",
+        "page": 75,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bloody%20Tears%20and%20Jagged%20Smile"
+      }
+    },
+    {
+      "id": "bard-dirge-bone-fists",
+      "name": "Bone Fists",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Gain armor spikes which provide +1 natural armor and a +2 damage with natural weapons.",
+      "spellId": "bone-fists",
+      "spellLevel": 2,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 5,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bone%20Fists"
+      }
+    },
+    {
+      "id": "bard-dirge-boneshaker",
+      "name": "Boneshaker",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Momentarily control a living or undead creature's skeleton.",
+      "spellId": "boneshaker",
+      "spellLevel": 2,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 110,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Boneshaker"
+      }
+    },
+    {
+      "id": "bard-dirge-brow-gasher",
+      "name": "Brow Gasher",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Slashing weapon deals bleed damage to an opponent's head.",
+      "spellId": "brow-gasher",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 224,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Brow%20Gasher"
+      }
+    },
+    {
+      "id": "bard-dirge-command-undead",
+      "name": "Command Undead",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Undead creature obeys your commands.",
+      "spellId": "command-undead",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 257,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Command%20Undead"
+      }
+    },
+    {
+      "id": "bard-dirge-companion-life-link",
+      "name": "Companion Life Link",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Sense whenever your companion is wounded and call out to it in a time of need.",
+      "spellId": "companion-life-link",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 177,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Companion%20Life%20Link"
+      }
+    },
+    {
+      "id": "bard-dirge-corpse-lanterns",
+      "name": "Corpse Lanterns",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Create a sickly version of dancing lights.",
+      "spellId": "corpse-lanterns",
+      "spellLevel": 2,
+      "source": {
+        "title": "Pathfinder Society Field Guide",
+        "page": 57,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Corpse%20Lanterns"
+      }
+    },
+    {
+      "id": "bard-dirge-crafters-nightmare",
+      "name": "Crafter's Nightmare",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Create a poltergeist to disrupt crafting and spellcasting",
+      "spellId": "crafters-nightmare",
+      "spellLevel": 2,
+      "source": {
+        "title": "Haunted Heroes Handbook",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Crafter's%20Nightmare"
+      }
+    },
+    {
+      "id": "bard-dirge-curse-terrain-lesser",
+      "name": "Curse Terrain, Lesser",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Curse an area with three mild hazards",
+      "spellId": "curse-terrain-lesser",
+      "spellLevel": 2,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20Terrain%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-dirge-defending-bone",
+      "name": "Defending Bone",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Animate a bone to float near you and block physical attacks.",
+      "spellId": "defending-bone",
+      "spellLevel": 2,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 232,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Defending%20Bone"
+      }
+    },
+    {
+      "id": "bard-dirge-defoliate",
+      "name": "Defoliate",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Hurl a tiny ball of negative energy to destroy plant life.",
+      "spellId": "defoliate",
+      "spellLevel": 2,
+      "source": {
+        "title": "Sargava, the Lost Colony",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Defoliate"
+      }
+    },
+    {
+      "id": "bard-dirge-drain-construct",
+      "name": "Drain Construct",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Incapacitate a construct by draining its animating force",
+      "spellId": "drain-construct",
+      "spellLevel": 2,
+      "source": {
+        "title": "People of the Wastes",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Drain%20Construct"
+      }
+    },
+    {
+      "id": "bard-dirge-dress-corpse",
+      "name": "Dress Corpse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Doctor the evidence on a corpse.",
+      "spellId": "dress-corpse",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 212,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Dress%20Corpse"
+      }
+    },
+    {
+      "id": "bard-dirge-false-life",
+      "name": "False Life",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Gain 1d10 temporary hp + 1/level (max +10).",
+      "spellId": "false-life",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 280,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=False%20Life"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-fester",
+      "name": "Fester",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Gives subject SR 12 + your level vs. healing effects.",
+      "spellId": "later-spell-fester",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fester"
+      }
+    },
+    {
+      "id": "bard-dirge-gentle-repose",
+      "name": "Gentle Repose",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Preserves one corpse.",
+      "spellId": "gentle-repose",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 289,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Gentle%20Repose"
+      }
+    },
+    {
+      "id": "bard-dirge-ghoul-hunger",
+      "name": "Ghoul Hunger",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Awaken an unnatural hunger in the target, causing it to seek out humanoid flesh.",
+      "spellId": "ghoul-hunger",
+      "spellLevel": 2,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 234,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ghoul%20Hunger"
+      }
+    },
+    {
+      "id": "bard-dirge-ghoul-touch",
+      "name": "Ghoul Touch",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Paralyzes one subject, which exudes stench that makes those nearby sickened.",
+      "spellId": "ghoul-touch",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 289,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ghoul%20Touch"
+      }
+    },
+    {
+      "id": "bard-dirge-languid-venom",
+      "name": "Languid Venom",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Delay a poison's onset and hide its presence.",
+      "spellId": "languid-venom",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Languid%20Venom"
+      }
+    },
+    {
+      "id": "bard-dirge-life-pact",
+      "name": "Life Pact",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Affected creatures automatically donate hp to stabilize fallen ally.",
+      "spellId": "life-pact",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 186,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Life%20Pact"
+      }
+    },
+    {
+      "id": "bard-dirge-limp-lash",
+      "name": "Limp Lash",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Paralyze an enemy from the neck down.",
+      "spellId": "limp-lash",
+      "spellLevel": 2,
+      "source": {
+        "title": "Goblins of Golarion",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Limp%20Lash"
+      }
+    },
+    {
+      "id": "bard-dirge-lipstitch",
+      "name": "Lipstitch",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Sew the target's lips together.",
+      "spellId": "lipstitch",
+      "spellLevel": 2,
+      "source": {
+        "title": "Pathfinder Society Field Guide",
+        "page": 57,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Lipstitch"
+      }
+    },
+    {
+      "id": "bard-dirge-mathematical-curse",
+      "name": "Mathematical Curse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Use the Path of Numbers to place a mathematical curse on someone.",
+      "spellId": "mathematical-curse",
+      "spellLevel": 2,
+      "source": {
+        "title": "Occult Mysteries",
+        "page": 51,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mathematical%20Curse"
+      }
+    },
+    {
+      "id": "bard-dirge-necrostasis",
+      "name": "Necrostasis",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Stagger an undead creature",
+      "spellId": "necrostasis",
+      "spellLevel": 2,
+      "source": {
+        "title": "Inner Sea Temples",
+        "page": 42,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Necrostasis"
+      }
+    },
+    {
+      "id": "bard-dirge-pernicious-poison",
+      "name": "Pernicious Poison",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Target takes a -4 penalty against poison.",
+      "spellId": "pernicious-poison",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 231,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Pernicious%20Poison"
+      }
+    },
+    {
+      "id": "bard-dirge-scare",
+      "name": "Scare",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Panics creatures of less than 6 HD.",
+      "spellId": "scare",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 336,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Scare"
+      }
+    },
+    {
+      "id": "bard-dirge-sentry-skull",
+      "name": "Sentry Skull",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Create a grisly sentinel from the severed head of a humanoid or monstrous humanoid.",
+      "spellId": "sentry-skull",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Race Guide",
+        "page": 143,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sentry%20Skull"
+      }
+    },
+    {
+      "id": "bard-dirge-shared-suffering",
+      "name": "Shared Suffering",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Deal damage to another creature by harming yourself.",
+      "spellId": "shared-suffering",
+      "spellLevel": 2,
+      "source": {
+        "title": "Champions of Corruption",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shared%20Suffering"
+      }
+    },
+    {
+      "id": "bard-dirge-skinsend",
+      "name": "Skinsend",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Animate and possess your own skin as if it were a separate creature.",
+      "spellId": "skinsend",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 238,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Skinsend"
+      }
+    },
+    {
+      "id": "bard-dirge-spectral-hand",
+      "name": "Spectral Hand",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Creates disembodied glowing hand to deliver touch attacks.",
+      "spellId": "spectral-hand",
+      "spellLevel": 2,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 346,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spectral%20Hand"
+      }
+    },
+    {
+      "id": "bard-dirge-steal-voice",
+      "name": "Steal Voice",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Target gains the croaking spellblight.",
+      "spellId": "steal-voice",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 240,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Steal%20Voice"
+      }
+    },
+    {
+      "id": "bard-dirge-stricken-heart",
+      "name": "Stricken Heart",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Touch attack deals 2d6 damage and staggers target.",
+      "spellId": "stricken-heart",
+      "spellLevel": 2,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 194,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Stricken%20Heart"
+      }
+    },
+    {
+      "id": "bard-dirge-touch-of-bloodletting",
+      "name": "Touch of Bloodletting",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Cause any wounds the target has to bleed profusely.",
+      "spellId": "touch-of-bloodletting",
+      "spellLevel": 2,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 243,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Touch%20of%20Bloodletting"
+      }
+    },
+    {
+      "id": "bard-dirge-unsettling-presence",
+      "name": "Unsettling Presence",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Inflict creatures with paranoia and be repulsive to others",
+      "spellId": "unsettling-presence",
+      "spellLevel": 2,
+      "source": {
+        "title": "Haunted Heroes Handbook",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unsettling%20Presence"
+      }
+    },
+    {
+      "id": "bard-dirge-unshakable-chill",
+      "name": "Unshakable Chill",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 4,
+      "prerequisites": [],
+      "benefit": "Level 2 necromancy spell added to Bard spells known. Target is afflicted with severe cold.",
+      "spellId": "unshakable-chill",
+      "spellLevel": 2,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 246,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unshakable%20Chill"
+      }
+    },
+    {
+      "id": "bard-dirge-accursed-glare",
+      "name": "Accursed Glare",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Channel a fell curse through your gaze.",
+      "spellId": "accursed-glare",
+      "spellLevel": 3,
+      "source": {
+        "title": "Blood of the Moon",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Accursed%20Glare"
+      }
+    },
+    {
+      "id": "bard-dirge-aggravate-affliction",
+      "name": "Aggravate Affliction",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Force ongoing afflictions to trigger.",
+      "spellId": "aggravate-affliction",
+      "spellLevel": 3,
+      "source": {
+        "title": "Pathfinder #82: Secrets of the Sphinx",
+        "page": 75,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Aggravate%20Affliction"
+      }
+    },
+    {
+      "id": "bard-dirge-animate-dead-lesser",
+      "name": "Animate Dead, Lesser",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Create one skeleton or zombie.",
+      "spellId": "animate-dead-lesser",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 205,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Animate%20Dead%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-dirge-aura-of-cannibalism",
+      "name": "Aura of Cannibalism",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Sap the strength of those around you.",
+      "spellId": "aura-of-cannibalism",
+      "spellLevel": 3,
+      "source": {
+        "title": "Monster Codex",
+        "page": 9,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Aura%20of%20Cannibalism"
+      }
+    },
+    {
+      "id": "bard-dirge-barrow-haze",
+      "name": "Barrow Haze",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Fog obscures the vision of others and extends the range of your hexes.",
+      "spellId": "barrow-haze",
+      "spellLevel": 3,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 174,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Barrow%20Haze"
+      }
+    },
+    {
+      "id": "bard-dirge-bestow-curse",
+      "name": "Bestow Curse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. –6 to an ability score; –4 on attack rolls, saves, and checks; or 50% chance of losing each action.",
+      "spellId": "bestow-curse",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 247,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bestow%20Curse"
+      }
+    },
+    {
+      "id": "bard-dirge-black-sword-of-war",
+      "name": "Black Sword of War",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Enchant a weapon to deal extra bleed damage.",
+      "spellId": "black-sword-of-war",
+      "spellLevel": 3,
+      "source": {
+        "title": "Pathfinder #71: Rasputin Must Die!",
+        "page": 75,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Black%20Sword%20of%20War"
+      }
+    },
+    {
+      "id": "bard-dirge-bleed-glory",
+      "name": "Bleed Glory",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Increase the cost to use mythic power.",
+      "spellId": "bleed-glory",
+      "spellLevel": 3,
+      "source": {
+        "title": "Mythic Adventures",
+        "page": 113,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bleed%20Glory"
+      }
+    },
+    {
+      "id": "bard-dirge-bloody-arrows",
+      "name": "Bloody Arrows",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Enhance ranged weaponry to deal bleed damage.",
+      "spellId": "bloody-arrows",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ranged Tactics Toolbox",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bloody%20Arrows"
+      }
+    },
+    {
+      "id": "bard-dirge-calamitous-flailing",
+      "name": "Calamitous Flailing",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Cause the target’s attacks to gain a miss chance.",
+      "spellId": "calamitous-flailing",
+      "spellLevel": 3,
+      "source": {
+        "title": "Blood of the Coven",
+        "page": 20,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Calamitous%20Flailing"
+      }
+    },
+    {
+      "id": "bard-dirge-catatonia",
+      "name": "Catatonia",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Make a willing target appear to be dead.",
+      "spellId": "catatonia",
+      "spellLevel": 3,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 161,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Catatonia"
+      }
+    },
+    {
+      "id": "bard-dirge-create-soul-gem",
+      "name": "Create Soul Gem",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Draw a recently dead creature's soul into a gem.",
+      "spellId": "create-soul-gem",
+      "spellLevel": 3,
+      "source": {
+        "title": "Book of the Damned",
+        "page": 184,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Create%20Soul%20Gem"
+      }
+    },
+    {
+      "id": "bard-dirge-cursed-treasure",
+      "name": "Cursed Treasure",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Target object curses the next creature to touch it",
+      "spellId": "cursed-treasure",
+      "spellLevel": 3,
+      "source": {
+        "title": "Villain Codex",
+        "page": 188,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Cursed%20Treasure"
+      }
+    },
+    {
+      "id": "bard-dirge-deathwine",
+      "name": "Deathwine",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Turn a potion into a pool of necromantic energy.",
+      "spellId": "deathwine",
+      "spellLevel": 3,
+      "source": {
+        "title": "Rise of the Runelords Anniversary Edition",
+        "page": 418,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Deathwine"
+      }
+    },
+    {
+      "id": "bard-dirge-eldritch-fever",
+      "name": "Eldritch Fever",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Target gains the eldritch ague spellblight.",
+      "spellId": "eldritch-fever",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Eldritch%20Fever"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-garrulous-grin",
+      "name": "Garrulous Grin",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Plant a seed of doubt in the target, causing self-doubt.",
+      "spellId": "later-spell-garrulous-grin",
+      "spellLevel": 3,
+      "source": {
+        "title": "Spymaster's Handbook",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Garrulous%20Grin"
+      }
+    },
+    {
+      "id": "bard-dirge-halt-undead",
+      "name": "Halt Undead",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Immobilizes undead for 1 round/level.",
+      "spellId": "halt-undead",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 293,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Halt%20Undead"
+      }
+    },
+    {
+      "id": "bard-dirge-healing-leak",
+      "name": "Healing Leak",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Touched target only gains and grants half the benefits from magical healing",
+      "spellId": "healing-leak",
+      "spellLevel": 3,
+      "source": {
+        "title": "Plane-Hopper's Handbook",
+        "page": 13,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Healing%20Leak"
+      }
+    },
+    {
+      "id": "bard-dirge-healing-thief",
+      "name": "Healing Thief",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. You siphon half of all magical healing that the targeted creature receives.",
+      "spellId": "healing-thief",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 231,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Healing%20Thief"
+      }
+    },
+    {
+      "id": "bard-dirge-horrifying-visage",
+      "name": "Horrifying Visage",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Cause creatures to gain a phobia",
+      "spellId": "horrifying-visage",
+      "spellLevel": 3,
+      "source": {
+        "title": "Haunted Heroes Handbook",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Horrifying%20Visage"
+      }
+    },
+    {
+      "id": "bard-dirge-howling-agony",
+      "name": "Howling Agony",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Screaming pain limits the target's actions.",
+      "spellId": "howling-agony",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 223,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Howling%20Agony"
+      }
+    },
+    {
+      "id": "bard-dirge-hydrophobia",
+      "name": "Hydrophobia",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Make targets become deathly afraid of water.",
+      "spellId": "hydrophobia",
+      "spellLevel": 3,
+      "source": {
+        "title": "Magical Marketplace",
+        "page": 8,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hydrophobia"
+      }
+    },
+    {
+      "id": "bard-dirge-impede-speech",
+      "name": "Impede Speech",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Interfere with the target's ability to speak.",
+      "spellId": "impede-speech",
+      "spellLevel": 3,
+      "source": {
+        "title": "Second Darkness Player's Guide",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Impede%20Speech"
+      }
+    },
+    {
+      "id": "bard-dirge-ki-leech",
+      "name": "Ki Leech",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Add to your ki pool when you critically hit.",
+      "spellId": "ki-leech",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 225,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ki%20Leech"
+      }
+    },
+    {
+      "id": "bard-dirge-malediction-hero-points",
+      "name": "Malediction (Hero Points)",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Curse a dying creature to finish it off and gain hero points from its life force.",
+      "spellId": "malediction-hero-points",
+      "spellLevel": 3,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 324,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Malediction%20(Hero%20Points)"
+      }
+    },
+    {
+      "id": "bard-dirge-marionette-possession",
+      "name": "Marionette Possession",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. As magic jar, but limited to line of sight.",
+      "spellId": "marionette-possession",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 228,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Marionette%20Possession"
+      }
+    },
+    {
+      "id": "bard-dirge-mark-of-spite",
+      "name": "Mark of Spite",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Deal damage to yourself to damage the marked target",
+      "spellId": "mark-of-spite",
+      "spellLevel": 3,
+      "source": {
+        "title": "Heroes from the Fringe",
+        "page": 23,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mark%20of%20Spite"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-nature-s-ravages",
+      "name": "Nature's Ravages",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Speed up the decomposition of a corpse.",
+      "spellId": "later-spell-nature-s-ravages",
+      "spellLevel": 3,
+      "source": {
+        "title": "Dungeoneer's Handbook",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Nature's%20Ravages"
+      }
+    },
+    {
+      "id": "bard-dirge-necromantic-burden",
+      "name": "Necromantic Burden",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Make undead more difficult to control.",
+      "spellId": "necromantic-burden",
+      "spellLevel": 3,
+      "source": {
+        "title": "Undead Slayer's Handbook",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Necromantic%20Burden"
+      }
+    },
+    {
+      "id": "bard-dirge-outbreak",
+      "name": "Outbreak",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Diseased creatures in the area become extremely contagious",
+      "spellId": "outbreak",
+      "spellLevel": 3,
+      "source": {
+        "title": "Villain Codex",
+        "page": 69,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Outbreak"
+      }
+    },
+    {
+      "id": "bard-dirge-ray-of-exhaustion",
+      "name": "Ray of Exhaustion",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Ray makes subject exhausted.",
+      "spellId": "ray-of-exhaustion",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 330,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ray%20of%20Exhaustion"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-reaper-s-coterie",
+      "name": "Reaper's Coterie",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Target weapon gains bonus damage for defeating enemies.",
+      "spellId": "later-spell-reaper-s-coterie",
+      "spellLevel": 3,
+      "source": {
+        "title": "Melee Tactics Toolbox",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Reaper's%20Coterie"
+      }
+    },
+    {
+      "id": "bard-dirge-sands-of-time",
+      "name": "Sands of Time",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Target temporarily ages.",
+      "spellId": "sands-of-time",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 236,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sands%20of%20Time"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-sharesister",
+      "name": "Sharesister",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Take a negative level to grant another creature of the same gender a bonus on their casting ability.",
+      "spellId": "later-spell-sharesister",
+      "spellLevel": 3,
+      "source": {
+        "title": "Pathfinder Society Field Guide",
+        "page": 58,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sharesister"
+      }
+    },
+    {
+      "id": "bard-dirge-siphon-might",
+      "name": "Siphon Might",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Drain strength from a creature and transfer it to another.",
+      "spellId": "siphon-might",
+      "spellLevel": 3,
+      "source": {
+        "title": "Giant Hunter's Handbook",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Siphon%20Might"
+      }
+    },
+    {
+      "id": "bard-dirge-speak-with-dead",
+      "name": "Speak with Dead",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Question a corpse and receive limited answers based on what it knew in life.",
+      "spellId": "speak-with-dead",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 346,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Speak%20with%20Dead"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-spellcurse",
+      "name": "Spellcurse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Target takes 1d6 damage for each spell affecting it",
+      "spellId": "later-spell-spellcurse",
+      "spellLevel": 3,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 6,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spellcurse"
+      }
+    },
+    {
+      "id": "bard-dirge-symbol-of-exsanguination",
+      "name": "Symbol of Exsanguination",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Triggered rune causes nearby creatures to bleed.",
+      "spellId": "symbol-of-exsanguination",
+      "spellLevel": 3,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 129,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Symbol%20of%20Exsanguination"
+      }
+    },
+    {
+      "id": "bard-dirge-toxic-gift",
+      "name": "Toxic Gift",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Target suffers the effect of the poison in you.",
+      "spellId": "toxic-gift",
+      "spellLevel": 3,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 243,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Toxic%20Gift"
+      }
+    },
+    {
+      "id": "bard-dirge-toxic-rupture",
+      "name": "Toxic Rupture",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Force a target to save against its own poison.",
+      "spellId": "toxic-rupture",
+      "spellLevel": 3,
+      "source": {
+        "title": "Dirty Tactics Toolbox",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Toxic%20Rupture"
+      }
+    },
+    {
+      "id": "bard-dirge-unliving-rage",
+      "name": "Unliving Rage",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. As rage, except affecting only undead.",
+      "spellId": "unliving-rage",
+      "spellLevel": 3,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 198,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unliving%20Rage"
+      }
+    },
+    {
+      "id": "bard-dirge-vampiric-hunger",
+      "name": "Vampiric Hunger",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Grant a target the fangs and hunger of a vampire.",
+      "spellId": "vampiric-hunger",
+      "spellLevel": 3,
+      "source": {
+        "title": "Faiths of Corruption",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Vampiric%20Hunger"
+      }
+    },
+    {
+      "id": "bard-dirge-vampiric-touch",
+      "name": "Vampiric Touch",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. Touch deals 1d6 damage per two levels; caster gains damage as temporary hp.",
+      "spellId": "vampiric-touch",
+      "spellLevel": 3,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 364,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Vampiric%20Touch"
+      }
+    },
+    {
+      "id": "bard-dirge-virulent-miasma",
+      "name": "Virulent Miasma",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 7,
+      "prerequisites": [],
+      "benefit": "Level 3 necromancy spell added to Bard spells known. As fog cloud, but vapor is diseased",
+      "spellId": "virulent-miasma",
+      "spellLevel": 3,
+      "source": {
+        "title": "Villain Codex",
+        "page": 69,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Virulent%20Miasma"
+      }
+    },
+    {
+      "id": "bard-dirge-absorb-toxicity",
+      "name": "Absorb Toxicity",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. You become immune to diseases and toxins, absorb one, and then spread it to others.",
+      "spellId": "absorb-toxicity",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Absorb%20Toxicity"
+      }
+    },
+    {
+      "id": "bard-dirge-animate-dead",
+      "name": "Animate Dead",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Creates undead skeletons and zombies.",
+      "spellId": "animate-dead",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 241,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Animate%20Dead"
+      }
+    },
+    {
+      "id": "bard-dirge-black-spot",
+      "name": "Black Spot",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Inflict a specific and feared pirate curse onto your target.",
+      "spellId": "black-spot",
+      "spellLevel": 4,
+      "source": {
+        "title": "Pirates of the Inner Sea",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Black%20Spot"
+      }
+    },
+    {
+      "id": "bard-dirge-bloatbomb",
+      "name": "Bloatbomb",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Kill a weak creature and turn its corpse into an explosive trap.",
+      "spellId": "bloatbomb",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 175,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Bloatbomb"
+      }
+    },
+    {
+      "id": "bard-dirge-boneshatter",
+      "name": "Boneshatter",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Create fractures and splinters in the bones/carapace of a creature.",
+      "spellId": "boneshatter",
+      "spellLevel": 4,
+      "source": {
+        "title": "Pathfinder #84: Pyramid of the Sky Pharaoh",
+        "page": 15,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Boneshatter"
+      }
+    },
+    {
+      "id": "bard-dirge-conditional-curse",
+      "name": "Conditional Curse",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Bestow a curse that is difficult to remove without fulfilling the condition.",
+      "spellId": "conditional-curse",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 206,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Conditional%20Curse"
+      }
+    },
+    {
+      "id": "bard-dirge-contagion",
+      "name": "Contagion",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Infects subject with chosen disease.",
+      "spellId": "contagion",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 259,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contagion"
+      }
+    },
+    {
+      "id": "bard-dirge-contingent-venom",
+      "name": "Contingent Venom",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. As languid venom, but with a triggering condition.",
+      "spellId": "contingent-venom",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 208,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contingent%20Venom"
+      }
+    },
+    {
+      "id": "bard-dirge-curse-of-befouled-fortune",
+      "name": "Curse of Befouled Fortune",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Target can't gain the benefit of any luck ability.",
+      "spellId": "curse-of-befouled-fortune",
+      "spellLevel": 4,
+      "source": {
+        "title": "Blood of the Beast",
+        "page": 7,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20of%20Befouled%20Fortune"
+      }
+    },
+    {
+      "id": "bard-dirge-curse-terrain",
+      "name": "Curse Terrain",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Curse an area with four hazards",
+      "spellId": "curse-terrain",
+      "spellLevel": 4,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20Terrain"
+      }
+    },
+    {
+      "id": "bard-dirge-daemon-ward",
+      "name": "Daemon Ward",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. As death ward, but against daemons.",
+      "spellId": "daemon-ward",
+      "spellLevel": 4,
+      "source": {
+        "title": "Book of the Damned - Volume 3: Horsemen of the Apocalypse",
+        "page": 38,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Daemon%20Ward"
+      }
+    },
+    {
+      "id": "bard-dirge-death-knell-aura",
+      "name": "Death Knell Aura",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Create an aura that feeds on the souls of those who die within it.",
+      "spellId": "death-knell-aura",
+      "spellLevel": 4,
+      "source": {
+        "title": "Book of the Damned - Volume 3: Horsemen of the Apocalypse",
+        "page": 38,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Death%20Knell%20Aura"
+      }
+    },
+    {
+      "id": "bard-dirge-death-ward",
+      "name": "Death Ward",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Protect a subject from death effects, energy drain, and negative energy.",
+      "spellId": "death-ward",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 264,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Death%20Ward"
+      }
+    },
+    {
+      "id": "bard-dirge-deathless",
+      "name": "Deathless",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Prevent death from hit point damage so long as this spell persists.",
+      "spellId": "deathless",
+      "spellLevel": 4,
+      "source": {
+        "title": "Mythic Adventures",
+        "page": 113,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Deathless"
+      }
+    },
+    {
+      "id": "bard-dirge-earsend",
+      "name": "Earsend",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Animate and send your ear to spy for you",
+      "spellId": "earsend",
+      "spellLevel": 4,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Earsend"
+      }
+    },
+    {
+      "id": "bard-dirge-enervation",
+      "name": "Enervation",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Subject gains 1d4 negative levels.",
+      "spellId": "enervation",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 277,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Enervation"
+      }
+    },
+    {
+      "id": "bard-dirge-false-life-greater",
+      "name": "False Life, Greater",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Gain 2d10 temporary hp + 1/level.",
+      "spellId": "false-life-greater",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 219,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=False%20Life%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-dirge-familiar-melding",
+      "name": "Familiar Melding",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Possess your familiar.",
+      "spellId": "familiar-melding",
+      "spellLevel": 4,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 219,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Familiar%20Melding"
+      }
+    },
+    {
+      "id": "bard-dirge-fear",
+      "name": "Fear",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Subjects within cone flee for 1 round/level.",
+      "spellId": "fear",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 252,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fear"
+      }
+    },
+    {
+      "id": "bard-dirge-flesh-puppet",
+      "name": "Flesh Puppet",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Control a zombie in human guise.",
+      "spellId": "flesh-puppet",
+      "spellLevel": 4,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 117,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flesh%20Puppet"
+      }
+    },
+    {
+      "id": "bard-dirge-frigid-souls",
+      "name": "Frigid Souls",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Disrupt and dispel spells that protect against cold",
+      "spellId": "frigid-souls",
+      "spellLevel": 4,
+      "source": {
+        "title": "Haunted Heroes Handbook",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Frigid%20Souls"
+      }
+    },
+    {
+      "id": "bard-dirge-gebs-hammer",
+      "name": "Geb's Hammer",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Draw the remains of nearby destroyed undead, throwing them as a single mass of flesh at your enemy.",
+      "spellId": "gebs-hammer",
+      "spellLevel": 4,
+      "source": {
+        "title": "Inner Sea Magic",
+        "page": 55,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Geb's%20Hammer"
+      }
+    },
+    {
+      "id": "bard-dirge-hunger-for-flesh",
+      "name": "Hunger for Flesh",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Give a creature a bite attack and a hunger for its own kind's flesh.",
+      "spellId": "hunger-for-flesh",
+      "spellLevel": 4,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 120,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hunger%20for%20Flesh"
+      }
+    },
+    {
+      "id": "bard-dirge-infuse-decay",
+      "name": "Infuse Decay",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Imbue a corporeal undead's natural attacks with dangerous spells",
+      "spellId": "infuse-decay",
+      "spellLevel": 4,
+      "source": {
+        "title": "Curse of the Crimson Throne",
+        "page": 453,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Infuse%20Decay"
+      }
+    },
+    {
+      "id": "bard-dirge-infuse-effigy",
+      "name": "Infuse Effigy",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Infuse an effigy with a powerful curse.",
+      "spellId": "infuse-effigy",
+      "spellLevel": 4,
+      "source": {
+        "title": "Lands of the Linnorm Kings",
+        "page": 48,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Infuse%20Effigy"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-malediction",
+      "name": "Malediction",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Banish a soul to Hell if it dies within the next minute.",
+      "spellId": "later-spell-malediction",
+      "spellLevel": 4,
+      "source": {
+        "title": "Book of the Damned",
+        "page": 184,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Malediction"
+      }
+    },
+    {
+      "id": "bard-dirge-masochistic-shadow",
+      "name": "Masochistic Shadow",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Animate a target’s shadow, making it hunger for it’s owner’s life energy.",
+      "spellId": "masochistic-shadow",
+      "spellLevel": 4,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Masochistic%20Shadow"
+      }
+    },
+    {
+      "id": "bard-dirge-mischievous-shadow",
+      "name": "Mischievous Shadow",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Curse a creature's shadow to disrupt their actions",
+      "spellId": "mischievous-shadow",
+      "spellLevel": 4,
+      "source": {
+        "title": "Haunted Heroes Handbook",
+        "page": 28,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mischievous%20Shadow"
+      }
+    },
+    {
+      "id": "bard-dirge-mythic-severance",
+      "name": "Mythic Severance",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Restrict target’s access to its mythic power.",
+      "spellId": "mythic-severance",
+      "spellLevel": 4,
+      "source": {
+        "title": "Mythic Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mythic%20Severance"
+      }
+    },
+    {
+      "id": "bard-dirge-object-possession-lesser",
+      "name": "Object Possession, Lesser",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Project your soul into an object, animating it.",
+      "spellId": "object-possession-lesser",
+      "spellLevel": 4,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 179,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Object%20Possession%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-dirge-poison",
+      "name": "Poison",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Infect a touched creature with venom that deals Constitution damage immediately and again one minute later, with Fortitude saves negating each instance.",
+      "spellId": "poison",
+      "spellLevel": 4,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 323,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Poison"
+      }
+    },
+    {
+      "id": "bard-dirge-positive-pulse-greater",
+      "name": "Positive Pulse, Greater",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. A large pulse of positive enrgy damages undead and bolsters living creatures",
+      "spellId": "positive-pulse-greater",
+      "spellLevel": 4,
+      "source": {
+        "title": "Planar Adventures",
+        "page": 43,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Positive%20Pulse%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-dirge-project-weakness",
+      "name": "Project Weakness",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Curse the target with the weaknesses of your vampirism.",
+      "spellId": "project-weakness",
+      "spellLevel": 4,
+      "source": {
+        "title": "Blood of the Night",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Project%20Weakness"
+      }
+    },
+    {
+      "id": "bard-dirge-purge-spirit",
+      "name": "Purge Spirit",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Deal 1d6 points of damage per level to one haunt or spirit creature and stagger it.",
+      "spellId": "purge-spirit",
+      "spellLevel": 4,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 184,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Purge%20Spirit"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-retributive-reparations",
+      "name": "Retributive Reparations",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Creatures that take this item become cursed with fatigue.",
+      "spellId": "later-spell-retributive-reparations",
+      "spellLevel": 4,
+      "source": {
+        "title": "Occult Origins",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Retributive%20Reparations"
+      }
+    },
+    {
+      "id": "bard-dirge-riding-possession",
+      "name": "Riding Possession",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. As possession, but you observe instead of control the subject.",
+      "spellId": "riding-possession",
+      "spellLevel": 4,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 185,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Riding%20Possession"
+      }
+    },
+    {
+      "id": "bard-dirge-sadomasochism",
+      "name": "Sadomasochism",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Take more damage from opponents, but force them to become demoralized.",
+      "spellId": "sadomasochism",
+      "spellLevel": 4,
+      "source": {
+        "title": "Inner Sea Gods",
+        "page": 239,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sadomasochism"
+      }
+    },
+    {
+      "id": "bard-dirge-shadow-projection",
+      "name": "Shadow Projection",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Temporarily become a shadow.",
+      "spellId": "shadow-projection",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 243,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Shadow%20Projection"
+      }
+    },
+    {
+      "id": "bard-dirge-skeleton-crew",
+      "name": "Skeleton Crew",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Turn corpses into obedient skeleton crew.",
+      "spellId": "skeleton-crew",
+      "spellLevel": 4,
+      "source": {
+        "title": "Pirates of the Inner Sea",
+        "page": 29,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Skeleton%20Crew"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-speak-with-haunt",
+      "name": "Speak with Haunt",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Haunt answers one question/2 levels.",
+      "spellId": "later-spell-speak-with-haunt",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 193,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Speak%20with%20Haunt"
+      }
+    },
+    {
+      "id": "bard-dirge-umbral-infusion",
+      "name": "Umbral Infusion",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Infuse mindless undead with power from the Shadow Plane, increasing their power.",
+      "spellId": "umbral-infusion",
+      "spellLevel": 4,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 31,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Umbral%20Infusion"
+      }
+    },
+    {
+      "id": "bard-dirge-undeath-inversion",
+      "name": "Undeath Inversion",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Alter an undead creature’s energy affinity so it takes damage from negative energy and heals from positive energy.",
+      "spellId": "undeath-inversion",
+      "spellLevel": 4,
+      "source": {
+        "title": "Undead Slayer's Handbook",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Undeath%20Inversion"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-virulence",
+      "name": "Virulence",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Quickly advance the spread of diseases within the targeted creatures.",
+      "spellId": "later-spell-virulence",
+      "spellLevel": 4,
+      "source": {
+        "title": "Pathfinder #81: Shifting Sands",
+        "page": 73,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Virulence"
+      }
+    },
+    {
+      "id": "bard-dirge-wall-of-blindness-deafness",
+      "name": "Wall of Blindness/Deafness",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Translucent wall blinds or deafens creatures that pass through it.",
+      "spellId": "wall-of-blindness-deafness",
+      "spellLevel": 4,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 198,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Blindness%2FDeafness"
+      }
+    },
+    {
+      "id": "bard-dirge-wall-of-bone",
+      "name": "Wall of Bone",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 10,
+      "prerequisites": [],
+      "benefit": "Level 4 necromancy spell added to Bard spells known. Create a wall of bones that damages and grapples adjacent creatures",
+      "spellId": "wall-of-bone",
+      "spellLevel": 4,
+      "source": {
+        "title": "Magic Tactics Toolbox",
+        "page": 13,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wall%20of%20Bone"
+      }
+    },
+    {
+      "id": "bard-dirge-astral-projection-lesser",
+      "name": "Astral Projection, Lesser",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Limited astral travel.",
+      "spellId": "astral-projection-lesser",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 207,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Astral%20Projection%2C%20Lesser"
+      }
+    },
+    {
+      "id": "bard-dirge-blight",
+      "name": "Blight",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Withers one plant or deals 1d6/level damage to plant creature.",
+      "spellId": "blight",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 250,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blight"
+      }
+    },
+    {
+      "id": "bard-dirge-blood-boil",
+      "name": "Blood Boil",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Boil the blood of your enemies, dealing constitution damage and causing fatigue.",
+      "spellId": "blood-boil",
+      "spellLevel": 5,
+      "source": {
+        "title": "Magical Marketplace",
+        "page": 24,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blood%20Boil"
+      }
+    },
+    {
+      "id": "bard-dirge-blood-tentacles",
+      "name": "Blood Tentacles",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Create writhing tentacles from your chest.",
+      "spellId": "blood-tentacles",
+      "spellLevel": 5,
+      "source": {
+        "title": "Agents of Evil",
+        "page": 30,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blood%20Tentacles"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-blood-ties",
+      "name": "Blood Ties",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. When a target is harmed, so is the target's relative.",
+      "spellId": "later-spell-blood-ties",
+      "spellLevel": 5,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 110,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Blood%20Ties"
+      }
+    },
+    {
+      "id": "bard-dirge-contagion-greater",
+      "name": "Contagion, Greater",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Infect a subject with a magical disease.",
+      "spellId": "contagion-greater",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 211,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Contagion%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-dirge-curse-major",
+      "name": "Curse, Major",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. As bestow curse, but harder to remove.",
+      "spellId": "curse-major",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 215,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%2C%20Major"
+      }
+    },
+    {
+      "id": "bard-dirge-daywalker",
+      "name": "Daywalker",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Reshape an undead creature to appear living.",
+      "spellId": "daywalker",
+      "spellLevel": 5,
+      "source": {
+        "title": "Cohorts and Companions",
+        "page": 15,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Daywalker"
+      }
+    },
+    {
+      "id": "bard-dirge-decollate",
+      "name": "Decollate",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Target can safely remove its head",
+      "spellId": "decollate",
+      "spellLevel": 5,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 116,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Decollate"
+      }
+    },
+    {
+      "id": "bard-dirge-empathy-conduit",
+      "name": "Empathy Conduit",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Create a conduit between master and familiar, allowing you to affect one while targeting the other.",
+      "spellId": "empathy-conduit",
+      "spellLevel": 5,
+      "source": {
+        "title": "Familiar Folio",
+        "page": 23,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Empathy%20Conduit"
+      }
+    },
+    {
+      "id": "bard-dirge-feast-on-fear",
+      "name": "Feast on Fear",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Targets are panicked, and you gain temporary hit points.",
+      "spellId": "feast-on-fear",
+      "spellLevel": 5,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 181,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Feast%20on%20Fear"
+      }
+    },
+    {
+      "id": "bard-dirge-flesh-puppet-horde",
+      "name": "Flesh Puppet Horde",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Control multiple zombies in human guise.",
+      "spellId": "flesh-puppet-horde",
+      "spellLevel": 5,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 117,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flesh%20Puppet%20Horde"
+      }
+    },
+    {
+      "id": "bard-dirge-hasten-judgment",
+      "name": "Hasten Judgment",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Quicken a soul's journey to judgement-hampering ressurection or weakening undead foes",
+      "spellId": "hasten-judgment",
+      "spellLevel": 5,
+      "source": {
+        "title": "Planar Adventures",
+        "page": 40,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Hasten%20Judgment"
+      }
+    },
+    {
+      "id": "bard-dirge-khains-army",
+      "name": "Khain's Army",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Create a small squad of ghouls led by a ghast, charged with necromantic energy.",
+      "spellId": "khains-army",
+      "spellLevel": 5,
+      "source": {
+        "title": "Inner Sea Magic",
+        "page": 57,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Khain's%20Army"
+      }
+    },
+    {
+      "id": "bard-dirge-lash-of-the-astradaemon",
+      "name": "Lash of the Astradaemon",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Enhance your hands into fearsome claws that inflict negative levels.",
+      "spellId": "lash-of-the-astradaemon",
+      "spellLevel": 5,
+      "source": {
+        "title": "Book of the Damned",
+        "page": 184,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Lash%20of%20the%20Astradaemon"
+      }
+    },
+    {
+      "id": "bard-dirge-magic-jar",
+      "name": "Magic Jar",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Enables possession of another creature.",
+      "spellId": "magic-jar",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 309,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Magic%20Jar"
+      }
+    },
+    {
+      "id": "bard-dirge-mark-of-justice",
+      "name": "Mark of Justice",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Designate an action that triggers a curse on the subject.",
+      "spellId": "mark-of-justice",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 312,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mark%20of%20Justice"
+      }
+    },
+    {
+      "id": "bard-dirge-object-possession",
+      "name": "Object Possession",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. As lesser object possession, but with a larger object.",
+      "spellId": "object-possession",
+      "spellLevel": 5,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 179,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Object%20Possession"
+      }
+    },
+    {
+      "id": "bard-dirge-plague-carrier",
+      "name": "Plague Carrier",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Target's attacks carry filth fever.",
+      "spellId": "plague-carrier",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 231,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Plague%20Carrier"
+      }
+    },
+    {
+      "id": "bard-dirge-possess-object",
+      "name": "Possess Object",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Possess and animate one object.",
+      "spellId": "possess-object",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 232,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Possess%20Object"
+      }
+    },
+    {
+      "id": "bard-dirge-possession",
+      "name": "Possession",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Project your soul into a creature’s body.",
+      "spellId": "possession",
+      "spellLevel": 5,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 180,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Possession"
+      }
+    },
+    {
+      "id": "bard-dirge-possession-trap",
+      "name": "Possession Trap",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Place a protective ward to ensare creatures that attempt to possess you.",
+      "spellId": "possession-trap",
+      "spellLevel": 5,
+      "source": {
+        "title": "Undead Slayer's Handbook",
+        "page": 19,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Possession%20Trap"
+      }
+    },
+    {
+      "id": "bard-dirge-red-hand-of-the-killer",
+      "name": "Red Hand of the Killer",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Stain the hand of a creature's killer red.",
+      "spellId": "red-hand-of-the-killer",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 223,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Red%20Hand%20of%20the%20Killer"
+      }
+    },
+    {
+      "id": "bard-dirge-repair-undead-mass",
+      "name": "Repair Undead, Mass",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Heals undead of 1d8 hp + 1/level; affects 1 undead/level.",
+      "spellId": "repair-undead-mass",
+      "spellLevel": 5,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 191,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Repair%20Undead%2C%20Mass"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-rest-eternal",
+      "name": "Rest Eternal",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Dead creature cannot be revived.",
+      "spellId": "later-spell-rest-eternal",
+      "spellLevel": 5,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 238,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Rest%20Eternal"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-sessile-spirit",
+      "name": "Sessile Spirit",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Cause a spirit inhabiting a creature or an object to go dormant.",
+      "spellId": "later-spell-sessile-spirit",
+      "spellLevel": 5,
+      "source": {
+        "title": "Occult Adventures",
+        "page": 185,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Sessile%20Spirit"
+      }
+    },
+    {
+      "id": "bard-dirge-soulswitch",
+      "name": "Soulswitch",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Swap your soul with your familiar’s.",
+      "spellId": "soulswitch",
+      "spellLevel": 5,
+      "source": {
+        "title": "Familiar Folio",
+        "page": 23,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Soulswitch"
+      }
+    },
+    {
+      "id": "bard-dirge-steal-power",
+      "name": "Steal Power",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Sap mythic power from another creature.",
+      "spellId": "steal-power",
+      "spellLevel": 5,
+      "source": {
+        "title": "Mythic Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Steal%20Power"
+      }
+    },
+    {
+      "id": "bard-dirge-suffocation",
+      "name": "Suffocation",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Target quickly suffocates to death.",
+      "spellId": "suffocation",
+      "spellLevel": 5,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 248,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Suffocation"
+      }
+    },
+    {
+      "id": "bard-dirge-summoner-conduit",
+      "name": "Summoner Conduit",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. The target takes damage whenever its summoned creature does.",
+      "spellId": "summoner-conduit",
+      "spellLevel": 5,
+      "source": {
+        "title": "Ultimate Combat",
+        "page": 245,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Summoner%20Conduit"
+      }
+    },
+    {
+      "id": "bard-dirge-symbol-of-pain",
+      "name": "Symbol of Pain",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Triggered rune wracks nearby creatures with pain.",
+      "spellId": "symbol-of-pain",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 356,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Symbol%20of%20Pain"
+      }
+    },
+    {
+      "id": "bard-dirge-torpid-reanimation",
+      "name": "Torpid Reanimation",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Animate dead when a specific trigger condition occurs.",
+      "spellId": "torpid-reanimation",
+      "spellLevel": 5,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 130,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Torpid%20Reanimation"
+      }
+    },
+    {
+      "id": "bard-dirge-vampiric-shadow-shield",
+      "name": "Vampiric Shadow Shield",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. As fire shield, except attackers take negative energy damage and attacks heal you.",
+      "spellId": "vampiric-shadow-shield",
+      "spellLevel": 5,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 198,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Vampiric%20Shadow%20Shield"
+      }
+    },
+    {
+      "id": "bard-dirge-waves-of-fatigue",
+      "name": "Waves of Fatigue",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Several targets become fatigued.",
+      "spellId": "waves-of-fatigue",
+      "spellLevel": 5,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 368,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Waves%20of%20Fatigue"
+      }
+    },
+    {
+      "id": "bard-dirge-wracking-ray",
+      "name": "Wracking Ray",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 13,
+      "prerequisites": [],
+      "benefit": "Level 5 necromancy spell added to Bard spells known. Fire a ray to deal Dexterity and Strength damage.",
+      "spellId": "wracking-ray",
+      "spellLevel": 5,
+      "source": {
+        "title": "Champions of Corruption",
+        "page": 25,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wracking%20Ray"
+      }
+    },
+    {
+      "id": "bard-dirge-banshee-blast",
+      "name": "Banshee Blast",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Cone deals 1d4 per level and panics creatures.",
+      "spellId": "banshee-blast",
+      "spellLevel": 6,
+      "source": {
+        "title": "Advanced Class Guide",
+        "page": 174,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Banshee%20Blast"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-besmara-s-grasping-depths",
+      "name": "Besmara's Grasping Depths",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Use the restless dead to down your targets",
+      "spellId": "later-spell-besmara-s-grasping-depths",
+      "spellLevel": 6,
+      "source": {
+        "title": "Haunted Heroes Handbook",
+        "page": 26,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Besmara's%20Grasping%20Depths"
+      }
+    },
+    {
+      "id": "bard-dirge-circle-of-death",
+      "name": "Circle of Death",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Kills 1d4/level HD of creatures.",
+      "spellId": "circle-of-death",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 255,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Circle%20of%20Death"
+      }
+    },
+    {
+      "id": "bard-dirge-create-undead",
+      "name": "Create Undead",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Create ghasts, ghouls, mohrgs, or mummies.",
+      "spellId": "create-undead",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 262,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Create%20Undead"
+      }
+    },
+    {
+      "id": "bard-dirge-curse-terrain-greater",
+      "name": "Curse Terrain, Greater",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Curse an area with six dangerous hazards",
+      "spellId": "curse-terrain-greater",
+      "spellLevel": 6,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 114,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Curse%20Terrain%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-dirge-death-knell-aura-greater",
+      "name": "Death Knell Aura, Greater",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. As death knell aura, except dying creatures die much faster within the aura.",
+      "spellId": "death-knell-aura-greater",
+      "spellLevel": 6,
+      "source": {
+        "title": "Book of the Damned - Volume 3: Horsemen of the Apocalypse",
+        "page": 38,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Death%20Knell%20Aura%2C%20Greater"
+      }
+    },
+    {
+      "id": "bard-dirge-epidemic",
+      "name": "Epidemic",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Infect a subject with a highly contagious disease.",
+      "spellId": "epidemic",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 218,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Epidemic"
+      }
+    },
+    {
+      "id": "bard-dirge-eyebite",
+      "name": "Eyebite",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Target becomes panicked, sickened, and/or comatose.",
+      "spellId": "eyebite",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 280,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Eyebite"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-fester-mass",
+      "name": "Fester, Mass",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. As fester , but affecting multiple targets.",
+      "spellId": "later-spell-fester-mass",
+      "spellLevel": 6,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Fester%2C%20Mass"
+      }
+    },
+    {
+      "id": "bard-dirge-flesh-wall",
+      "name": "Flesh Wall",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Create a wall of zombies",
+      "spellId": "flesh-wall",
+      "spellLevel": 6,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 117,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Flesh%20Wall"
+      }
+    },
+    {
+      "id": "bard-dirge-grim-stalker",
+      "name": "Grim Stalker",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Create a Grim to disrupt the targets sleep",
+      "spellId": "grim-stalker",
+      "spellLevel": 6,
+      "source": {
+        "title": "Haunted Heroes Handbook",
+        "page": 27,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Grim%20Stalker"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-inflict-light-wounds-mass",
+      "name": "Inflict Light Wounds, Mass",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Deals 1d8 damage + 1/level, affects 1 subject/level.",
+      "spellId": "later-spell-inflict-light-wounds-mass",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 300,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Inflict%20Light%20Wounds%2C%20Mass"
+      }
+    },
+    {
+      "id": "bard-dirge-later-spell-overwhelming-poison",
+      "name": "Overwhelming Poison",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Make a poison more difficult to resist.",
+      "spellId": "later-spell-overwhelming-poison",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Intrigue",
+        "page": 221,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Overwhelming%20Poison"
+      }
+    },
+    {
+      "id": "bard-dirge-plague-storm",
+      "name": "Plague Storm",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Cloud infects creatures like contagion.",
+      "spellId": "plague-storm",
+      "spellLevel": 6,
+      "source": {
+        "title": "Ultimate Magic",
+        "page": 231,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Plague%20Storm"
+      }
+    },
+    {
+      "id": "bard-dirge-slay-living",
+      "name": "Slay Living",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Make a deadly touch attack that deals severe damage, reduced by a successful Fortitude save.",
+      "spellId": "slay-living",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 344,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Slay%20Living"
+      }
+    },
+    {
+      "id": "bard-dirge-spectral-saluqi",
+      "name": "Spectral Saluqi",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Create a spectral saluqi, an undead canine, that can assist you in fighting spirits.",
+      "spellId": "spectral-saluqi",
+      "spellLevel": 6,
+      "source": {
+        "title": "Occult Mysteries",
+        "page": 58,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Spectral%20Saluqi"
+      }
+    },
+    {
+      "id": "bard-dirge-symbol-of-fear",
+      "name": "Symbol of Fear",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Triggered rune panics nearby creatures.",
+      "spellId": "symbol-of-fear",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 356,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Symbol%20of%20Fear"
+      }
+    },
+    {
+      "id": "bard-dirge-umbral-strike",
+      "name": "Umbral Strike",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Throw a bolt of dark energy, dealing cold and negative energy damage.",
+      "spellId": "umbral-strike",
+      "spellLevel": 6,
+      "source": {
+        "title": "Blood of Shadows",
+        "page": 16,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Umbral%20Strike"
+      }
+    },
+    {
+      "id": "bard-dirge-undeath-to-death",
+      "name": "Undeath to Death",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Destroys 1d4 HD/level undead (max. 20d4).",
+      "spellId": "undeath-to-death",
+      "spellLevel": 6,
+      "source": {
+        "title": "PRPG Core Rulebook",
+        "page": 363,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Undeath%20to%20Death"
+      }
+    },
+    {
+      "id": "bard-dirge-unwilling-shield",
+      "name": "Unwilling Shield",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Subject shares wounds you receive.",
+      "spellId": "unwilling-shield",
+      "spellLevel": 6,
+      "source": {
+        "title": "Advanced Player's Guide",
+        "page": 253,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unwilling%20Shield"
+      }
+    },
+    {
+      "id": "bard-dirge-what-grows-within",
+      "name": "What Grows Within",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Infect others with Xhamen-Dor’s seeded infestation.",
+      "spellId": "what-grows-within",
+      "spellLevel": 6,
+      "source": {
+        "title": "Pathfinder #113: What Grows Within",
+        "page": 66,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=What%20Grows%20Within"
+      }
+    },
+    {
+      "id": "bard-dirge-wither-limb",
+      "name": "Wither Limb",
+      "groupId": "bard-dirge-necromancy-spells",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 16,
+      "prerequisites": [],
+      "benefit": "Level 6 necromancy spell added to Bard spells known. Make one of the creature's limbs useless.",
+      "spellId": "wither-limb",
+      "spellLevel": 6,
+      "source": {
+        "title": "Horror Adventures",
+        "page": 131,
+        "url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Wither%20Limb"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dirge%20Bard"
+  }
+}

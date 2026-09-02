@@ -1,0 +1,255 @@
+{
+  "id": "bard-hoaxer-hexes",
+  "name": "Hoaxer Hexes",
+  "classIds": [
+    "bard"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "bard-hoaxer-hex-blight",
+      "name": "Blight",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Curse an animal or plant with a wasting supernatural disease.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-hex-charm",
+      "name": "Charm",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Improve a nearby creature's attitude for a limited time.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-hex-evil-eye",
+      "name": "Evil Eye",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Penalize a target's AC, attacks, saves, ability checks, or skill checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-hex-fortune",
+      "name": "Fortune",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Let an ally reroll one attack, save, ability check, or skill check each round.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-hex-healing",
+      "name": "Healing",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Heal each creature once per day, improving at 5th level.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-hex-misfortune",
+      "name": "Misfortune",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Force a creature to roll twice and take the worse result.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-hex-slumber",
+      "name": "Slumber",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Put a creature of any Hit Dice into magical sleep.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-hex-unnerve-beasts",
+      "name": "Unnerve Beasts",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Make animals hostile toward the target.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-major-hex-agony",
+      "name": "Agony",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Sicken and then nauseate a creature for a number of rounds.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-major-hex-hoarfrost",
+      "name": "Hoarfrost",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Deal recurring Constitution damage through supernatural cold.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-major-hex-ice-tomb",
+      "name": "Ice Tomb",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Entomb a creature in supernatural ice.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-major-hex-infected-wounds",
+      "name": "Infected Wounds",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Cause wounds to fester and resist magical healing.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-major-hex-nightmares",
+      "name": "Nightmares",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Afflict a creature with recurring nightmares.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-major-hex-retribution",
+      "name": "Retribution",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Cause attackers to suffer half the damage they deal.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    },
+    {
+      "id": "bard-hoaxer-major-hex-speak-in-dreams",
+      "name": "Speak in Dreams",
+      "groupId": "bard-hoaxer-hexes",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 12,
+      "prerequisites": [],
+      "benefit": "Send a message to a sleeping creature through its dreams.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Hoaxer"
+  }
+}
