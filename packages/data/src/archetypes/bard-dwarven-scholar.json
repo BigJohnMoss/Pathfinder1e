@@ -24,29 +24,169 @@
           "id": "bard-dwarven-scholar-weapon-and-armor-proficiency-1",
           "name": "Weapon and Armor Proficiency",
           "level": 1,
-          "type": "archetype",
-          "summary": "A dwarven scholar is proficient with one weapon of her choosing with the word “dwarven” in its name, in addition to her normal weapon proficiencies. She is not proficient with shields. This alters the bard’s weapon and armor proficiency."
+          "type": "selectable",
+          "summary": "A dwarven scholar is proficient with one weapon of her choosing with the word “dwarven” in its name, in addition to her normal weapon proficiencies. She is not proficient with shields. This alters the bard’s weapon and armor proficiency.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-dwarven-scholar-weapons"
         },
         {
           "id": "bard-dwarven-scholar-studied-insight-ex-1",
           "name": "Studied Insight (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A dwarven scholar uses her Wisdom modifier instead of her Charisma modifier to determine all class features and effects relating to her bard class, including her bardic performance ability, bonus spells per day, the maximum spell level she can cast, and the save DCs of her spells."
+          "summary": "A dwarven scholar uses her Wisdom modifier instead of her Charisma modifier to determine all class features and effects relating to her bard class, including her bardic performance ability, bonus spells per day, the maximum spell level she can cast, and the save DCs of her spells.",
+          "progressionProfiles": [
+            {
+              "id": "dwarven-scholar-wisdom-key",
+              "label": "Studied Insight key ability",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "ability",
+                  "label": "Key ability"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "ability": "Wisdom for Bard spells and class-feature effects"
+                  }
+                }
+              ],
+              "summary": "The builder uses Wisdom for the Dwarven Scholar's spellcasting and the War Chant workflow."
+            }
+          ]
         },
         {
-          "id": "bard-dwarven-scholar-dwarven-training-ex-2",
-          "name": "Dwarven Training (Ex)",
+          "id": "bard-dwarven-scholar-training-2",
+          "name": "Dwarven Training 1",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, a dwarven scholar masters one aspect of dwarven combat and gains a bonus combat feat. She must meet the prerequisites for this feat, but she treats her bard level as her base attack bonus (in addition to base attack bonuses gained from other classes and racial Hit Dice) for the purpose of qualifying for this feat. At 6th level and every 4 levels thereafter, she gains another bonus combat feat. This replaces versatile performance."
+          "type": "selectable",
+          "summary": "Choose combat feat 1 of 5. Meet its prerequisites, treating Bard level as base attack bonus in addition to BAB from other classes and racial Hit Dice.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "combat"
+          ],
+          "featChoiceBabUsesClassLevel": true
+        },
+        {
+          "id": "bard-dwarven-scholar-training-6",
+          "name": "Dwarven Training 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose combat feat 2 of 5. Meet its prerequisites, treating Bard level as base attack bonus in addition to BAB from other classes and racial Hit Dice.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "combat"
+          ],
+          "featChoiceBabUsesClassLevel": true
+        },
+        {
+          "id": "bard-dwarven-scholar-training-10",
+          "name": "Dwarven Training 3",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose combat feat 3 of 5. Meet its prerequisites, treating Bard level as base attack bonus in addition to BAB from other classes and racial Hit Dice.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "combat"
+          ],
+          "featChoiceBabUsesClassLevel": true
+        },
+        {
+          "id": "bard-dwarven-scholar-training-14",
+          "name": "Dwarven Training 4",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose combat feat 4 of 5. Meet its prerequisites, treating Bard level as base attack bonus in addition to BAB from other classes and racial Hit Dice.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "combat"
+          ],
+          "featChoiceBabUsesClassLevel": true
+        },
+        {
+          "id": "bard-dwarven-scholar-training-18",
+          "name": "Dwarven Training 5",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose combat feat 5 of 5. Meet its prerequisites, treating Bard level as base attack bonus in addition to BAB from other classes and racial Hit Dice.",
+          "choiceRequired": true,
+          "optionGroupId": "archetype-feats",
+          "featChoiceTypes": [
+            "combat"
+          ],
+          "featChoiceBabUsesClassLevel": true
         },
         {
           "id": "bard-dwarven-scholar-bardic-performance-1",
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A dwarven scholar gains the following type of bardic performance. War Chant (Su) : At 1st level, a dwarven scholar can use her performance to inspire the martial prowess of the ancient dwarves in her allies. The dwarven scholar selects a single combat feat she knows. Allies affected by this performance gain the benefit of this feat for as long as the performance is maintained. To be affected, an ally must be able to perceive the dwarven scholar’s performance. If a combat feat has a daily use limitation (such as Stunning Fist ), any uses of that combat feat by the dwarven scholar’s allies while using this ability counts toward the dwarven scholar’s feat’s daily limit. At 6th level, the dwarven scholar may grant the benefit of two combat feats at the same time. She may use one of these feats to meet a prerequisite of the second feat. Maintaining two feats in this way requires spending 2 rounds of bardic performance every round. This replaces inspire courage and suggestion."
+          "summary": "A dwarven scholar gains the following type of bardic performance. War Chant (Su) : At 1st level, a dwarven scholar can use her performance to inspire the martial prowess of the ancient dwarves in her allies. The dwarven scholar selects a single combat feat she knows. Allies affected by this performance gain the benefit of this feat for as long as the performance is maintained. To be affected, an ally must be able to perceive the dwarven scholar’s performance. If a combat feat has a daily use limitation (such as Stunning Fist ), any uses of that combat feat by the dwarven scholar’s allies while using this ability counts toward the dwarven scholar’s feat’s daily limit. At 6th level, the dwarven scholar may grant the benefit of two combat feats at the same time. She may use one of these feats to meet a prerequisite of the second feat. Maintaining two feats in this way requires spending 2 rounds of bardic performance every round. This replaces inspire courage and suggestion.",
+          "performanceRules": [
+            {
+              "id": "dwarven-scholar-war-chant",
+              "name": "War Chant",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "dwarven-scholar-war-chant"
+              ],
+              "summary": "Share one known combat feat with allies, or two at level 6 by spending two performance rounds each round."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "dwarven-scholar-war-chant",
+              "label": "Begin War Chant",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "costPerSelectedFeat": true,
+              "featSelection": {
+                "label": "Known combat feat",
+                "featType": "combat",
+                "source": "known",
+                "countByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  },
+                  {
+                    "level": 6,
+                    "count": 2
+                  }
+                ],
+                "minimumCount": 1
+              },
+              "confirmations": [
+                {
+                  "id": "perceive",
+                  "label": "Affected allies can perceive the performance",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "War Chant",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Affected allies gain the selected known combat feat or feats. At level 6 one selected feat may satisfy a prerequisite of the other; limited daily uses count against the Dwarven Scholar's feat.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Select one known combat feat, or two from level 6, and spend one performance round per shared feat each round."
+            }
+          ]
         }
       ]
     }
@@ -56,8 +196,29 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dwarven%20Scholar"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ]
+    "The custom dwarven weapon proficiency and shield loss, Wisdom key ability, five prerequisite-aware combat feats using Bard level as BAB, and one- or two-feat War Chant are automated."
+  ],
+  "proficiencyChoices": [
+    {
+      "sourceFeatureId": "bard-dwarven-scholar-weapon-and-armor-proficiency-1",
+      "category": "weapon",
+      "operation": "add",
+      "featureId": "bard-dwarven-scholar-weapon-and-armor-proficiency-1",
+      "choiceKey": "weapon",
+      "condition": "weapon name must contain 'dwarven'"
+    }
+  ],
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "bard-dwarven-scholar-weapon-and-armor-proficiency-1",
+      "category": "shield",
+      "operation": "remove",
+      "proficiencies": [
+        "All shields"
+      ]
+    }
+  ],
+  "spellcastingAbility": "wisdom"
 }

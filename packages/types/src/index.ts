@@ -172,6 +172,7 @@ export interface ClassFeatureOccurrence {
   featChoiceAllTypes?: string[];
   featChoicePrerequisiteIds?: string[];
   ignoreFeatPrerequisites?: boolean;
+  featChoiceBabUsesClassLevel?: boolean;
   grantedFeatId?: string;
   grantedFeatIds?: string[];
   deedRules?: Array<{

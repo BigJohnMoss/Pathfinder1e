@@ -53,35 +53,528 @@
           "name": "Wanderer’s Insight",
           "level": 1,
           "type": "archetype",
-          "summary": "A chronicler of worlds gains power not from her personality but from an analytical understanding of existence. She uses Intelligence instead of Charisma to determine the effects of bard class features, including spellcasting and bardic performance. A chronicler of worlds must have an alignment with at least one neutral component; a character who does not meet this requirement cannot use or benefit from this archetype’s abilities."
+          "summary": "A chronicler of worlds gains power not from her personality but from an analytical understanding of existence. She uses Intelligence instead of Charisma to determine the effects of bard class features, including spellcasting and bardic performance. A chronicler of worlds must have an alignment with at least one neutral component; a character who does not meet this requirement cannot use or benefit from this archetype’s abilities.",
+          "progressionProfiles": [
+            {
+              "id": "chronicler-intelligence-key",
+              "label": "Wanderer's Insight key ability",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "ability",
+                  "label": "Key ability"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "ability": "Intelligence for Bard spells and class-feature effects"
+                  }
+                }
+              ],
+              "summary": "The builder uses Intelligence for this archetype's spellcasting; performance actions below also use Intelligence."
+            }
+          ]
         },
         {
           "id": "bard-chronicler-of-worlds-planar-lore-ex-5",
           "name": "Planar Lore (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "A chronicler of worlds can take 10 on Knowledge (planes) checks. A number of times per day equal to her Intelligence modifier, she can take 20 on a Knowledge (planes) check. This ability stacks with that gained by lore master at 5th level. A chronicler of worlds can attempt all Knowledge checks untrained. This alters bardic knowledge."
+          "summary": "A chronicler of worlds can take 10 on Knowledge (planes) checks. A number of times per day equal to her Intelligence modifier, she can take 20 on a Knowledge (planes) check. This ability stacks with that gained by lore master at 5th level. A chronicler of worlds can attempt all Knowledge checks untrained. This alters bardic knowledge.",
+          "resourceActions": [
+            {
+              "id": "chronicler-planar-lore-take-10",
+              "label": "Take 10 on Knowledge (planes)",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "fixedD20Result": {
+                "label": "Planar Lore Knowledge (planes) result",
+                "result": 10
+              },
+              "summary": "Resolve the check with a fixed d20 result of 10, even when ordinary take-10 rules would not allow it."
+            },
+            {
+              "id": "chronicler-planar-lore-take-20",
+              "label": "Take 20 on Knowledge (planes)",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "planarLoreTake20",
+              "cost": 1,
+              "fixedD20Result": {
+                "label": "Planar Lore Knowledge (planes) result",
+                "result": 20
+              },
+              "summary": "Spend one of the Intelligence-modifier daily uses and resolve the check with a fixed d20 result of 20."
+            },
+            {
+              "id": "chronicler-untrained-knowledge",
+              "label": "Attempt any Knowledge skill untrained",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "modeLabel": "Knowledge skill",
+              "modes": [
+                {
+                  "id": "arcana",
+                  "label": "Knowledge (arcana)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "dungeoneering",
+                  "label": "Knowledge (dungeoneering)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "engineering",
+                  "label": "Knowledge (engineering)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "geography",
+                  "label": "Knowledge (geography)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "history",
+                  "label": "Knowledge (history)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "local",
+                  "label": "Knowledge (local)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "nature",
+                  "label": "Knowledge (nature)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "nobility",
+                  "label": "Knowledge (nobility)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "planes",
+                  "label": "Knowledge (planes)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                },
+                {
+                  "id": "religion",
+                  "label": "Knowledge (religion)",
+                  "summary": "Planar Lore permits this check even with no ranks."
+                }
+              ],
+              "diceRoll": {
+                "label": "Untrained Knowledge check",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Knowledge modifier",
+                "targetDcInputLabel": "Knowledge DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Success"
+                  }
+                ],
+                "failureLabel": "Failure"
+              },
+              "summary": "Choose and roll any Knowledge skill without the normal trained-only restriction."
+            }
+          ]
         },
         {
           "id": "bard-chronicler-of-worlds-bardic-performance-9",
           "name": "Bardic Performance",
           "level": 9,
           "type": "archetype",
-          "summary": "The chronicler of worlds gains the following bardic performances. Quintessence Infusion (Su) : This performance infuses allies with planar quintessence. At 9th level, while on a plane other than the Material Plane, the chronicler of worlds can use this performance to target an ally within 30 feet. For every 3 bard levels she has beyond 9th, she can affect one additional creature. Affected allies gain the plane’s basic infusion effect (see Planar Infusions ). If the chronicler of worlds is 13th level or higher, affected creatures also gain the plane’s improved infusion. If she is 16th level or higher, affected creatures also gain the plane’s greater infusion. The first time each day a creature benefits from quintessence infusion, the plane infused is set for the day and additional infusions can grant only that plane’s infusions. Infusions that have limited uses per day remain limited in that way, regardless of how many times quintessence infusion is gained. Quintessence infusion relies on audible and visual components. This replaces inspire greatness. Mantra of Tabris (Su) : Tabris survived his travels through the darkest realms, his dedication to the pursuit of knowledge a shield against planar horrors. The chronicler of worlds walks in his footsteps. At 15th level, the chronicler of worlds can create a potent ward against outsiders. While maintaining this performance, when the chronicler of worlds is hit by an attack from an outsider or fails a saving throw against an outsider’s extraordinary, supernatural, or spell-like ability, as an immediate action she can attempt a Knowledge (planes) check and use the result as her Armor Class or her saving throw result against that attack or effect. The chronicler cannot use her planar lore ability to take 20 on this Knowledge (planes) check. This can retroactively alter the results of the attack or ability. The chronicler of worlds must decide to use this ability before the effects of the successful attack or failed saving throw have been announced. Mantra of Tabris relies on audible components. This replaces inspire heroics."
+          "summary": "The chronicler of worlds gains the following bardic performances. Quintessence Infusion (Su) : This performance infuses allies with planar quintessence. At 9th level, while on a plane other than the Material Plane, the chronicler of worlds can use this performance to target an ally within 30 feet. For every 3 bard levels she has beyond 9th, she can affect one additional creature. Affected allies gain the plane’s basic infusion effect (see Planar Infusions ). If the chronicler of worlds is 13th level or higher, affected creatures also gain the plane’s improved infusion. If she is 16th level or higher, affected creatures also gain the plane’s greater infusion. The first time each day a creature benefits from quintessence infusion, the plane infused is set for the day and additional infusions can grant only that plane’s infusions. Infusions that have limited uses per day remain limited in that way, regardless of how many times quintessence infusion is gained. Quintessence infusion relies on audible and visual components. This replaces inspire greatness. Mantra of Tabris (Su) : Tabris survived his travels through the darkest realms, his dedication to the pursuit of knowledge a shield against planar horrors. The chronicler of worlds walks in his footsteps. At 15th level, the chronicler of worlds can create a potent ward against outsiders. While maintaining this performance, when the chronicler of worlds is hit by an attack from an outsider or fails a saving throw against an outsider’s extraordinary, supernatural, or spell-like ability, as an immediate action she can attempt a Knowledge (planes) check and use the result as her Armor Class or her saving throw result against that attack or effect. The chronicler cannot use her planar lore ability to take 20 on this Knowledge (planes) check. This can retroactively alter the results of the attack or ability. The chronicler of worlds must decide to use this ability before the effects of the successful attack or failed saving throw have been announced. Mantra of Tabris relies on audible components. This replaces inspire heroics.",
+          "performanceRules": [
+            {
+              "id": "chronicler-quintessence-infusion",
+              "name": "Quintessence Infusion",
+              "minimumLevel": 9,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "chronicler-quintessence-infusion"
+              ],
+              "summary": "Grant the current non-Material plane's basic, improved, and greater Planar Infusion benefits at their exact levels."
+            },
+            {
+              "id": "chronicler-mantra-of-tabris",
+              "name": "Mantra of Tabris",
+              "minimumLevel": 15,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "chronicler-mantra-of-tabris"
+              ],
+              "summary": "Use a reactive Knowledge (planes) check as Armor Class or a saving throw against an outsider."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "chronicler-quintessence-infusion",
+              "label": "Begin Quintessence Infusion",
+              "minimumLevel": 9,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "variableCost": {
+                "label": "Targets (1 at 9th, +1 per 3 levels)",
+                "minimum": 1,
+                "maximumByLevel": [
+                  {
+                    "level": 9,
+                    "maximum": 1
+                  },
+                  {
+                    "level": 12,
+                    "maximum": 2
+                  },
+                  {
+                    "level": 15,
+                    "maximum": 3
+                  },
+                  {
+                    "level": 18,
+                    "maximum": 4
+                  }
+                ]
+              },
+              "confirmations": [
+                {
+                  "id": "plane",
+                  "label": "Currently on a plane other than the Material Plane",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "locked",
+                  "label": "Each target uses the same plane as its first infusion today",
+                  "requiredForActivation": true
+                }
+              ],
+              "modes": [
+                {
+                  "id": "basic",
+                  "label": "Basic infusion",
+                  "minimumLevel": 9,
+                  "maximumLevel": 12,
+                  "summary": "Grant the plane's basic Planar Infusion."
+                },
+                {
+                  "id": "improved",
+                  "label": "Basic + improved infusions",
+                  "minimumLevel": 13,
+                  "maximumLevel": 15,
+                  "summary": "Grant the plane's basic and improved Planar Infusions."
+                },
+                {
+                  "id": "greater",
+                  "label": "Basic + improved + greater infusions",
+                  "minimumLevel": 16,
+                  "summary": "Grant all three tiers of the plane's Planar Infusions."
+                }
+              ],
+              "activeEffect": {
+                "name": "Quintessence Infusion",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Affected allies gain the selected plane's level-appropriate Planar Infusion benefits; each infusion's own daily limits still apply.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track the exact target count, plane lock, and infusion tier."
+            },
+            {
+              "id": "chronicler-mantra-of-tabris",
+              "label": "Invoke Mantra of Tabris",
+              "minimumLevel": 15,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 15,
+                  "actionType": "immediate"
+                }
+              ],
+              "modeLabel": "Replacement",
+              "modes": [
+                {
+                  "id": "armor-class",
+                  "label": "Replace Armor Class",
+                  "summary": "Use the Knowledge (planes) result as AC against the triggering outsider attack."
+                },
+                {
+                  "id": "saving-throw",
+                  "label": "Replace saving throw",
+                  "summary": "Use the Knowledge (planes) result as the failed save result against the outsider ability."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "outsider",
+                  "label": "Trigger is an outsider's attack or extraordinary, supernatural, or spell-like ability",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "before-effects",
+                  "label": "Invoked before the attack or failed save's effects were announced",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Knowledge (planes) replacement result",
+                "diceCountByLevel": [
+                  {
+                    "level": 15,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 15,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Knowledge (planes) modifier",
+                "targetDcInputLabel": "Attack roll or effect DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Trigger negated"
+                  }
+                ],
+                "failureLabel": "Trigger still succeeds"
+              },
+              "summary": "Roll normally; Planar Lore's take 20 cannot be used for this reaction."
+            }
+          ]
         },
         {
           "id": "bard-chronicler-of-worlds-amoral-scholar-ex-2",
           "name": "Amoral Scholar (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "A chronicler of worlds rejects cosmic morality. At 2nd level, she does not take penalties imposed by planar alignment traits, and she gains a +4 bonus on saving throws against spells and effects that vary based on their target’s alignment. This replaces well-versed."
+          "summary": "A chronicler of worlds rejects cosmic morality. At 2nd level, she does not take penalties imposed by planar alignment traits, and she gains a +4 bonus on saving throws against spells and effects that vary based on their target’s alignment. This replaces well-versed.",
+          "resourceActions": [
+            {
+              "id": "chronicler-ignore-planar-alignment",
+              "label": "Ignore planar alignment penalties",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "activeEffect": {
+                "name": "Amoral Scholar",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Ignore penalties imposed by planar alignment traits while this reminder is active.",
+                "defaultRounds": 999,
+                "replaceExisting": true,
+                "fixedRounds": true
+              },
+              "summary": "Track immunity to planar alignment-trait penalties."
+            }
+          ]
         },
         {
-          "id": "bard-chronicler-of-worlds-scrivener-s-versatility-ex-2",
-          "name": "Scrivener’s Versatility (Ex)",
+          "id": "bard-chronicler-scrivener-versatility-2",
+          "name": "Scrivener's Versatility 1",
           "level": 2,
-          "type": "archetype",
-          "summary": "A chronicler of worlds seeks to emulate history’s greatest scribe; studying the lore of Tabris grants insight into widely varying subjects, from anatomy to discourse. At 2nd level, a chronicler of worlds selects a skill from the following list: Bluff, Diplomacy, Disable Device, Heal, Intimidate, Profession (scribe), Sense Motive, or Survival. When attempting skill checks of that type, a chronicler can use her Linguistics skill bonus in place of her bonus with the chosen skill. At 6th level and every 4 levels thereafter, a chronicler of worlds selects an additional skill to gain this benefit. This replaces versatile performance."
+          "type": "selectable",
+          "summary": "Choose a unique skill and use Linguistics in its place. This is Scrivener selection 1 of 5.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-chronicler-scrivener-skills",
+          "optionChoiceIds": [
+            "bard-chronicler-scrivener-bluff",
+            "bard-chronicler-scrivener-diplomacy",
+            "bard-chronicler-scrivener-disable-device",
+            "bard-chronicler-scrivener-heal",
+            "bard-chronicler-scrivener-intimidate",
+            "bard-chronicler-scrivener-profession-scribe",
+            "bard-chronicler-scrivener-sense-motive",
+            "bard-chronicler-scrivener-survival"
+          ],
+          "resourceActions": [
+            {
+              "id": "chronicler-scrivener-check",
+              "label": "Roll a Scrivener skill using Linguistics",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "modeLabel": "Selected skill",
+              "modes": [
+                {
+                  "id": "bluff",
+                  "label": "Bluff",
+                  "summary": "Use the Linguistics bonus for Bluff."
+                },
+                {
+                  "id": "diplomacy",
+                  "label": "Diplomacy",
+                  "summary": "Use the Linguistics bonus for Diplomacy."
+                },
+                {
+                  "id": "disable-device",
+                  "label": "Disable Device",
+                  "summary": "Use the Linguistics bonus for Disable Device."
+                },
+                {
+                  "id": "heal",
+                  "label": "Heal",
+                  "summary": "Use the Linguistics bonus for Heal."
+                },
+                {
+                  "id": "intimidate",
+                  "label": "Intimidate",
+                  "summary": "Use the Linguistics bonus for Intimidate."
+                },
+                {
+                  "id": "profession-scribe",
+                  "label": "Profession (scribe)",
+                  "summary": "Use the Linguistics bonus for Profession (scribe)."
+                },
+                {
+                  "id": "sense-motive",
+                  "label": "Sense Motive",
+                  "summary": "Use the Linguistics bonus for Sense Motive."
+                },
+                {
+                  "id": "survival",
+                  "label": "Survival",
+                  "summary": "Use the Linguistics bonus for Survival."
+                }
+              ],
+              "diceRoll": {
+                "label": "Skill check using Linguistics",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Linguistics modifier",
+                "targetDcInputLabel": "Skill DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Success"
+                  }
+                ],
+                "failureLabel": "Failure"
+              },
+              "summary": "Choose one of the character's selected Scrivener skills and substitute the full Linguistics bonus."
+            }
+          ]
+        },
+        {
+          "id": "bard-chronicler-scrivener-versatility-6",
+          "name": "Scrivener's Versatility 2",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Choose a unique skill and use Linguistics in its place. This is Scrivener selection 2 of 5.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-chronicler-scrivener-skills",
+          "optionChoiceIds": [
+            "bard-chronicler-scrivener-bluff",
+            "bard-chronicler-scrivener-diplomacy",
+            "bard-chronicler-scrivener-disable-device",
+            "bard-chronicler-scrivener-heal",
+            "bard-chronicler-scrivener-intimidate",
+            "bard-chronicler-scrivener-profession-scribe",
+            "bard-chronicler-scrivener-sense-motive",
+            "bard-chronicler-scrivener-survival"
+          ]
+        },
+        {
+          "id": "bard-chronicler-scrivener-versatility-10",
+          "name": "Scrivener's Versatility 3",
+          "level": 10,
+          "type": "selectable",
+          "summary": "Choose a unique skill and use Linguistics in its place. This is Scrivener selection 3 of 5.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-chronicler-scrivener-skills",
+          "optionChoiceIds": [
+            "bard-chronicler-scrivener-bluff",
+            "bard-chronicler-scrivener-diplomacy",
+            "bard-chronicler-scrivener-disable-device",
+            "bard-chronicler-scrivener-heal",
+            "bard-chronicler-scrivener-intimidate",
+            "bard-chronicler-scrivener-profession-scribe",
+            "bard-chronicler-scrivener-sense-motive",
+            "bard-chronicler-scrivener-survival"
+          ]
+        },
+        {
+          "id": "bard-chronicler-scrivener-versatility-14",
+          "name": "Scrivener's Versatility 4",
+          "level": 14,
+          "type": "selectable",
+          "summary": "Choose a unique skill and use Linguistics in its place. This is Scrivener selection 4 of 5.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-chronicler-scrivener-skills",
+          "optionChoiceIds": [
+            "bard-chronicler-scrivener-bluff",
+            "bard-chronicler-scrivener-diplomacy",
+            "bard-chronicler-scrivener-disable-device",
+            "bard-chronicler-scrivener-heal",
+            "bard-chronicler-scrivener-intimidate",
+            "bard-chronicler-scrivener-profession-scribe",
+            "bard-chronicler-scrivener-sense-motive",
+            "bard-chronicler-scrivener-survival"
+          ]
+        },
+        {
+          "id": "bard-chronicler-scrivener-versatility-18",
+          "name": "Scrivener's Versatility 5",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Choose a unique skill and use Linguistics in its place. This is Scrivener selection 5 of 5.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-chronicler-scrivener-skills",
+          "optionChoiceIds": [
+            "bard-chronicler-scrivener-bluff",
+            "bard-chronicler-scrivener-diplomacy",
+            "bard-chronicler-scrivener-disable-device",
+            "bard-chronicler-scrivener-heal",
+            "bard-chronicler-scrivener-intimidate",
+            "bard-chronicler-scrivener-profession-scribe",
+            "bard-chronicler-scrivener-sense-motive",
+            "bard-chronicler-scrivener-survival"
+          ]
         }
       ]
     }
@@ -91,8 +584,32 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Intelligence spellcasting, neutral alignment, Planar Lore uses and untrained checks, both planar performances, Amoral Scholar, and five unique Scrivener substitutions are automated."
+  ],
+  "spellcastingAbility": "intelligence",
+  "resourceAdjustments": [
+    {
+      "resourceId": "planarLoreTake20",
+      "label": "Planar Lore take 20",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 0,
+      "abilityModifier": "intelligence",
+      "minimum": 0,
+      "refreshCadence": "day",
+      "sourceFeatureId": "bard-chronicler-of-worlds-planar-lore-ex-5"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-chronicler-of-worlds-amoral-scholar-ex-2",
+      "label": "Amoral Scholar",
+      "condition": "saving throws against spells and effects whose outcome varies with the target's alignment",
+      "minimumLevel": 2,
+      "base": 4
+    }
   ]
 }

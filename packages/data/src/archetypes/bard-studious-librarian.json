@@ -22,35 +22,236 @@
           "name": "Scribe Scroll",
           "level": 6,
           "type": "archetype",
-          "summary": "A studious librarian gains Scribe Scroll as a bonus feat. This ability replaces distraction.Comparative Arcane Studies (Su): At 6th level, the studious librarian is exposed to a wide variety of magical writing, and can use his own magic to duplicate spells from other classes’ spell lists. Once per day, a studious librarian can cast any spell from the bard, sorcerer/wizard, or witch spell lists from a scroll or spellbook in hand as if it were one of his bard spells known, expending a bard spell slot of the same spell level to cast the desired spell. Casting a spell from a scroll this way does not cause the spell to vanish from the scroll. A spell cast in this way cannot be modified by metamagic. The studious librarian gains one additional daily use of this ability at 10th level and again every 4 bard levels thereafter, to a maximum of four times per day at 18th level. This ability replaces suggestion and jack-of-all-trades.Critical Research Focus (Ex): At 8th level, the studious librarian threatens a critical hit on a Research check (Ultimate Intrigue 148) with a roll of 18, 19, or 20. He gains a +4 bonus on Research checks to confirm a critical hit. This ability replaces dirge of doom.Perfect Recollection (Ex): At 19th level, the studious librarian can always take 20 on Knowledge checks. This ability replaces mass suggestion.One with the Library (Ex): At 20th level, the studious librarian can replace one of her spells known with any bard spell from a scroll once per day by studying the scroll for 1 hour. Doing so erases the spell from the scroll. This ability replaces deadly performance."
+          "summary": "At 6th level, a studious librarian gains Scribe Scroll as a bonus feat. This ability replaces distraction.",
+          "grantedFeatId": "scribe-scroll"
         },
         {
           "id": "bard-studious-librarian-comparative-arcane-studies-su-6",
           "name": "Comparative Arcane Studies (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, the studious librarian is exposed to a wide variety of magical writing, and can use his own magic to duplicate spells from other classes’ spell lists. Once per day, a studious librarian can cast any spell from the bard , sorcerer/wizard , or witch spell lists from a scroll or spellbook in hand as if it were one of his bard spells known, expending a bard spell slot of the same spell level to cast the desired spell. Casting a spell from a scroll this way does not cause the spell to vanish from the scroll. A spell cast in this way cannot be modified by metamagic. The studious librarian gains one additional daily use of this ability at 10th level and again every 4 bard levels thereafter, to a maximum of four times per day at 18th level. This ability replaces suggestion and jack-of-all-trades."
+          "summary": "At 6th level, the studious librarian is exposed to a wide variety of magical writing, and can use his own magic to duplicate spells from other classes’ spell lists. Once per day, a studious librarian can cast any spell from the bard , sorcerer/wizard , or witch spell lists from a scroll or spellbook in hand as if it were one of his bard spells known, expending a bard spell slot of the same spell level to cast the desired spell. Casting a spell from a scroll this way does not cause the spell to vanish from the scroll. A spell cast in this way cannot be modified by metamagic. The studious librarian gains one additional daily use of this ability at 10th level and again every 4 bard levels thereafter, to a maximum of four times per day at 18th level. This ability replaces suggestion and jack-of-all-trades.",
+          "resourceActions": [
+            {
+              "id": "librarian-comparative-studies",
+              "label": "Cast from a scroll or spellbook",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "resourceId": "comparativeArcaneStudies",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Source list",
+              "modes": [
+                {
+                  "id": "bard",
+                  "label": "Bard",
+                  "summary": "Cast a Bard-list spell from the held writing."
+                },
+                {
+                  "id": "wizard",
+                  "label": "Sorcerer/Wizard",
+                  "summary": "Cast a Sorcerer/Wizard-list spell from the held writing."
+                },
+                {
+                  "id": "witch",
+                  "label": "Witch",
+                  "summary": "Cast a Witch-list spell from the held writing."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "writing",
+                  "label": "A scroll or spellbook containing the spell is in hand",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "slot",
+                  "label": "Expend a Bard spell slot of the same spell level",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "no-metamagic",
+                  "label": "The borrowed spell is not modified by metamagic",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Comparative Arcane Studies casting",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Cast the selected written spell as a Bard spell known. A scroll used this way is not erased.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend a daily use and the matching Bard slot while preserving the source scroll."
+            }
+          ]
         },
         {
           "id": "bard-studious-librarian-critical-research-focus-ex-8",
           "name": "Critical Research Focus (Ex)",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, the studious librarian threatens a critical hit on a Research check ( Ultimate Intrigue 148 ) with a roll of 18, 19, or 20. He gains a +4 bonus on Research checks to confirm a critical hit. This ability replaces dirge of doom."
+          "summary": "At 8th level, the studious librarian threatens a critical hit on a Research check ( Ultimate Intrigue 148 ) with a roll of 18, 19, or 20. He gains a +4 bonus on Research checks to confirm a critical hit. This ability replaces dirge of doom.",
+          "resourceActions": [
+            {
+              "id": "librarian-critical-research",
+              "label": "Roll a Research check",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Research check (critical threat on natural 18–20)",
+                "diceCountByLevel": [
+                  {
+                    "level": 8,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 8,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Research modifier",
+                "targetDcInputLabel": "Research DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Success; if natural 18–20, confirm with +4"
+                  }
+                ],
+                "failureLabel": "Failure"
+              },
+              "summary": "The roll exposes the expanded natural 18–20 threat range and +4 confirmation bonus."
+            }
+          ]
         },
         {
           "id": "bard-studious-librarian-perfect-recollection-ex-19",
           "name": "Perfect Recollection (Ex)",
           "level": 19,
           "type": "archetype",
-          "summary": "At 19th level, the studious librarian can always take 20 on Knowledge checks. This ability replaces mass suggestion."
+          "summary": "At 19th level, the studious librarian can always take 20 on Knowledge checks. This ability replaces mass suggestion.",
+          "resourceActions": [
+            {
+              "id": "librarian-perfect-recollection",
+              "label": "Take 20 on a Knowledge check",
+              "minimumLevel": 19,
+              "classId": "bard",
+              "modeLabel": "Knowledge skill",
+              "modes": [
+                {
+                  "id": "arcana",
+                  "label": "Knowledge (arcana)",
+                  "summary": "Take 20 on Knowledge (arcana)."
+                },
+                {
+                  "id": "dungeoneering",
+                  "label": "Knowledge (dungeoneering)",
+                  "summary": "Take 20 on Knowledge (dungeoneering)."
+                },
+                {
+                  "id": "engineering",
+                  "label": "Knowledge (engineering)",
+                  "summary": "Take 20 on Knowledge (engineering)."
+                },
+                {
+                  "id": "geography",
+                  "label": "Knowledge (geography)",
+                  "summary": "Take 20 on Knowledge (geography)."
+                },
+                {
+                  "id": "history",
+                  "label": "Knowledge (history)",
+                  "summary": "Take 20 on Knowledge (history)."
+                },
+                {
+                  "id": "local",
+                  "label": "Knowledge (local)",
+                  "summary": "Take 20 on Knowledge (local)."
+                },
+                {
+                  "id": "nature",
+                  "label": "Knowledge (nature)",
+                  "summary": "Take 20 on Knowledge (nature)."
+                },
+                {
+                  "id": "nobility",
+                  "label": "Knowledge (nobility)",
+                  "summary": "Take 20 on Knowledge (nobility)."
+                },
+                {
+                  "id": "planes",
+                  "label": "Knowledge (planes)",
+                  "summary": "Take 20 on Knowledge (planes)."
+                },
+                {
+                  "id": "religion",
+                  "label": "Knowledge (religion)",
+                  "summary": "Take 20 on Knowledge (religion)."
+                }
+              ],
+              "fixedD20Result": {
+                "label": "Perfect Recollection result",
+                "result": 20
+              },
+              "summary": "Resolve any Knowledge check with a fixed d20 result of 20."
+            }
+          ]
         },
         {
           "id": "bard-studious-librarian-one-with-the-library-ex-20",
           "name": "One with the Library (Ex)",
           "level": 20,
           "type": "archetype",
-          "summary": "At 20th level, the studious librarian can replace one of her spells known with any bard spell from a scroll once per day by studying the scroll for 1 hour. Doing so erases the spell from the scroll. This ability replaces deadly performance."
+          "summary": "At 20th level, the studious librarian can replace one of her spells known with any bard spell from a scroll once per day by studying the scroll for 1 hour. Doing so erases the spell from the scroll. This ability replaces deadly performance.",
+          "resourceActions": [
+            {
+              "id": "librarian-one-with-library",
+              "label": "Replace a known spell from a scroll",
+              "minimumLevel": 20,
+              "classId": "bard",
+              "resourceId": "oneWithLibrary",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 20,
+                  "actionType": "1-hour"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "bard-spell",
+                  "label": "The replacement is a Bard spell contained on the scroll",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "erase",
+                  "label": "Erase the learned spell from the scroll",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "One with the Library",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Replace one Bard spell known with the chosen Bard spell from the studied scroll.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend the daily use after 1 hour of study and update the known spell selection."
+            }
+          ]
         }
       ]
     }
@@ -60,8 +261,34 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Studious%20Librarian"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Scribe Scroll, all four Comparative Arcane Studies uses, Research critical rules, unlimited Knowledge take 20, and the daily scroll-based known-spell replacement are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "comparativeArcaneStudies",
+      "label": "Comparative Arcane Studies",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 6,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 4,
+      "maximum": 4,
+      "refreshCadence": "day",
+      "sourceFeatureId": "bard-studious-librarian-comparative-arcane-studies-su-6"
+    },
+    {
+      "resourceId": "oneWithLibrary",
+      "label": "One with the Library",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 20,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "sourceFeatureId": "bard-studious-librarian-one-with-the-library-ex-20"
+    }
   ]
 }
