@@ -20,28 +20,205 @@
           "name": "Hilt Bash (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A buccaneer develops the ability to fight with the hilts and flats of his weapons, aiming to leave his victims alive. He can use a weapon that normally deals lethal damage to deal nonlethal damage with no penalty on his attack roll. This ability replaces bardic knowledge."
+          "summary": "A buccaneer develops the ability to fight with the hilts and flats of his weapons, aiming to leave his victims alive. He can use a weapon that normally deals lethal damage to deal nonlethal damage with no penalty on his attack roll. This ability replaces bardic knowledge.",
+          "resourceActions": [
+            {
+              "id": "buccaneer-hilt-bash",
+              "label": "Use Hilt Bash for nonlethal damage",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "activeEffect": {
+                "name": "Hilt Bash",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Manufactured weapons that normally deal lethal damage can deal nonlethal damage without the normal attack penalty.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track penalty-free nonlethal attacks with weapon hilts and flats."
+            }
+          ]
         },
         {
           "id": "bard-buccaneer-song-of-surrender-su-1",
           "name": "Song of Surrender (Su)",
-          "level": 1,
+          "level": 4,
           "type": "archetype",
-          "summary": "A buccaneer of 4th level or higher can use his performance to encourage an enemy to surrender. To be affected, an enemy must be within 30 feet and be able to see and hear the buccaneer’s performance. An affected enemy feels the irresistible urge to drop any held weapons and fall prone. This effect lasts for 1 round—essentially, the affected enemy takes no actions on its next turn other than to lie prone, although it is not considered flat-footed or helpless. A Will saving throw (DC 10 + 1/2 the buccaneer’s level + the buccaneer’s Charisma modifier) negates the effect. This ability affects only a single creature. Song of surrender is an enchantment (compulsion), mindaffecting, language-dependent ability and relies on audible components. This ability replaces suggestion ."
+          "summary": "A buccaneer of 4th level or higher can use his performance to encourage an enemy to surrender. To be affected, an enemy must be within 30 feet and be able to see and hear the buccaneer’s performance. An affected enemy feels the irresistible urge to drop any held weapons and fall prone. This effect lasts for 1 round—essentially, the affected enemy takes no actions on its next turn other than to lie prone, although it is not considered flat-footed or helpless. A Will saving throw (DC 10 + 1/2 the buccaneer’s level + the buccaneer’s Charisma modifier) negates the effect. This ability affects only a single creature. Song of surrender is an enchantment (compulsion), mindaffecting, language-dependent ability and relies on audible components. This ability replaces suggestion .",
+          "performanceRules": [
+            {
+              "id": "buccaneer-song-of-surrender",
+              "name": "Song of Surrender",
+              "minimumLevel": 4,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "buccaneer-song-of-surrender"
+              ],
+              "summary": "One enemy within 30 feet drops held weapons and falls prone for 1 round unless it succeeds at the Bard performance Will save."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "buccaneer-song-of-surrender",
+              "label": "Perform Song of Surrender",
+              "minimumLevel": 4,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "eligible",
+                  "label": "Target is within 30 feet and can see and hear the performance",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 4,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 4,
+                    "name": "Surrendering",
+                    "description": "Drop held weapons and take no action next turn other than falling prone; the target is not flat-footed or helpless.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the language-dependent, mind-affecting compulsion against one enemy."
+            }
+          ]
         },
         {
           "id": "bard-buccaneer-knock-out-ex-5",
           "name": "Knock Out (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a buccaneer may focus his blows in an attempt to knock out an opponent. Once per day as a swift action, the buccaneer can choose one target to attempt to knock out. The buccaneer adds his Charisma bonus (if any) on his attack roll and adds his buccaneer level on any nonlethal damage rolls made against the target. The bonus lasts until the buccaneer deals nonlethal damage to his target or until the buccaneer chooses a new target to attempt to knock out. He can use this ability one additional time per day for every six levels he possesses beyond 5th, to a maximum of three times per day at 17th level. This ability replaces lore master."
+          "summary": "At 5th level, a buccaneer may focus his blows in an attempt to knock out an opponent. Once per day as a swift action, the buccaneer can choose one target to attempt to knock out. The buccaneer adds his Charisma bonus (if any) on his attack roll and adds his buccaneer level on any nonlethal damage rolls made against the target. The bonus lasts until the buccaneer deals nonlethal damage to his target or until the buccaneer chooses a new target to attempt to knock out. He can use this ability one additional time per day for every six levels he possesses beyond 5th, to a maximum of three times per day at 17th level. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "buccaneer-knock-out",
+              "label": "Mark a Knock Out target",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "buccaneerKnockOut",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Knock Out target",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Add Charisma bonus to attack rolls and Bard level to nonlethal damage against the chosen target until nonlethal damage is dealt or a new target is chosen.",
+                "defaultRounds": 999,
+                "replaceExisting": true,
+                "fixedRounds": true
+              },
+              "summary": "Spend one daily use and track the chosen target and exact bonuses."
+            }
+          ]
         },
         {
           "id": "bard-buccaneer-mass-song-of-surrender-su-1",
           "name": "Mass Song of Surrender (Su)",
-          "level": 1,
+          "level": 16,
           "type": "archetype",
-          "summary": "This ability functions just like song of surrender but allows a buccaneer of 16th level or higher to affect all enemies within 30 feet. Enemies within range of this effect still receive a saving throw. Mass song of surrender is an enchantment (compulsion), mind-affecting, language-dependent ability that relies on audible components. This ability replaces mass suggestion ."
+          "summary": "This ability functions just like song of surrender but allows a buccaneer of 16th level or higher to affect all enemies within 30 feet. Enemies within range of this effect still receive a saving throw. Mass song of surrender is an enchantment (compulsion), mind-affecting, language-dependent ability that relies on audible components. This ability replaces mass suggestion .",
+          "performanceRules": [
+            {
+              "id": "buccaneer-mass-song-of-surrender",
+              "name": "Mass Song of Surrender",
+              "minimumLevel": 16,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "buccaneer-mass-song-of-surrender"
+              ],
+              "summary": "All enemies within 30 feet individually save against Song of Surrender."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "buccaneer-mass-song-of-surrender",
+              "label": "Perform Mass Song of Surrender",
+              "minimumLevel": 16,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "eligible",
+                  "label": "Target is within 30 feet and can see and hear the performance",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 4,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 16,
+                    "name": "Mass surrendering",
+                    "description": "Each affected enemy drops held weapons and takes no action next turn other than falling prone; targets are not flat-footed or helpless.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the Will save separately for every enemy within 30 feet."
+            }
+          ]
         }
       ]
     }
@@ -51,8 +228,23 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Buccaneer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Penalty-free nonlethal attacks, both exact surrender performances and DCs, and the level-scaled Knock Out daily pool are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "buccaneerKnockOut",
+      "label": "Knock Out",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 6,
+      "maximum": 3,
+      "refreshCadence": "day",
+      "sourceFeatureId": "bard-buccaneer-knock-out-ex-5"
+    }
   ]
 }
