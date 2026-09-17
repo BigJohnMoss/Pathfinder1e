@@ -51,7 +51,8 @@ test("Molthuni Defender exposes four distinct maneuver choices and resolves thei
   const first = screen.getByLabelText("Armored Defense (Ex) level 3") as HTMLSelectElement;
   await user.selectOptions(first, "molthuni-trip");
   const second = screen.getByLabelText("Armored Defense maneuver 2 level 7") as HTMLSelectElement;
-  assert.equal([...second.options].some((option) => option.value === "molthuni-trip"), false);
+  const duplicateTrip = [...second.options].find((option) => option.value === "molthuni-trip");
+  assert.equal(duplicateTrip?.disabled, true);
   await user.selectOptions(second, "molthuni-grapple");
   await user.click(screen.getByRole("tab", { name: "Storage" }));
   await user.selectOptions(screen.getByLabelText("Equipment catalogue"), "full-plate");

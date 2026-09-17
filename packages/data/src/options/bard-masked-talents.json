@@ -1,0 +1,186 @@
+{
+  "id": "bard-masked-talents",
+  "name": "Masked Performer Talents",
+  "classIds": [
+    "bard"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "bard-masked-talent-expert-leaper",
+      "groupId": "bard-masked-talents",
+      "name": "Expert Leaper",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 5,
+      "prerequisites": [],
+      "benefit": "Always count as having a running start for Acrobatics jumps and reduce effective falling distance.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-fast-stealth",
+      "groupId": "bard-masked-talents",
+      "name": "Fast Stealth",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 5,
+      "prerequisites": [],
+      "benefit": "Move at full speed while using Stealth without penalty.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-ledge-walker",
+      "groupId": "bard-masked-talents",
+      "name": "Ledge Walker",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 5,
+      "prerequisites": [],
+      "benefit": "Move at full speed across narrow surfaces without becoming flat-footed.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-rogue-crawl",
+      "groupId": "bard-masked-talents",
+      "name": "Rogue Crawl",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 5,
+      "prerequisites": [],
+      "benefit": "Crawl at half speed and take 5-foot steps while prone.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-rope-master",
+      "groupId": "bard-masked-talents",
+      "name": "Rope Master",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 5,
+      "prerequisites": [],
+      "benefit": "Move normally while climbing with rope, take 10 balancing under pressure, and add +4 to escape DCs for bonds you tie.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-stand-up",
+      "groupId": "bard-masked-talents",
+      "name": "Stand Up",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 5,
+      "prerequisites": [],
+      "benefit": "Stand from prone as a free action while still provoking normally.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-wall-scramble",
+      "groupId": "bard-masked-talents",
+      "name": "Wall Scramble",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 5,
+      "prerequisites": [],
+      "benefit": "Roll Climb twice and take the better result, with the talent's special interactions for multiple-roll effects.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-defensive-roll",
+      "groupId": "bard-masked-talents",
+      "name": "Defensive Roll",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 17,
+      "prerequisites": [],
+      "benefit": "Once per day, attempt the talent's Reflex save to halve damage from a potentially lethal blow.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-fast-tumble",
+      "groupId": "bard-masked-talents",
+      "name": "Fast Tumble",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 17,
+      "prerequisites": [],
+      "benefit": "Move at full speed through threatened areas without the usual +10 Acrobatics DC increase.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-hide-in-plain-sight",
+      "groupId": "bard-masked-talents",
+      "name": "Hide in Plain Sight",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 17,
+      "prerequisites": [],
+      "benefit": "Choose one favored terrain and use Stealth there while observed.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-talent-skill-mastery",
+      "groupId": "bard-masked-talents",
+      "name": "Skill Mastery",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 17,
+      "prerequisites": [],
+      "benefit": "Choose 3 + Intelligence modifier skills and take 10 with them under stress.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    }
+  ]
+}
