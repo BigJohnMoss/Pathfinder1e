@@ -1,0 +1,143 @@
+{
+  "id": "bard-chronicler-scrivener-skills",
+  "name": "Scrivener's Versatility Skills",
+  "classIds": [
+    "bard"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "bard-chronicler-scrivener-bluff",
+      "name": "Bluff",
+      "groupId": "bard-chronicler-scrivener-skills",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Use the Linguistics bonus in place of Bluff.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+      }
+    },
+    {
+      "id": "bard-chronicler-scrivener-diplomacy",
+      "name": "Diplomacy",
+      "groupId": "bard-chronicler-scrivener-skills",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Use the Linguistics bonus in place of Diplomacy.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+      }
+    },
+    {
+      "id": "bard-chronicler-scrivener-disable-device",
+      "name": "Disable Device",
+      "groupId": "bard-chronicler-scrivener-skills",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Use the Linguistics bonus in place of Disable Device.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+      }
+    },
+    {
+      "id": "bard-chronicler-scrivener-heal",
+      "name": "Heal",
+      "groupId": "bard-chronicler-scrivener-skills",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Use the Linguistics bonus in place of Heal.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+      }
+    },
+    {
+      "id": "bard-chronicler-scrivener-intimidate",
+      "name": "Intimidate",
+      "groupId": "bard-chronicler-scrivener-skills",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Use the Linguistics bonus in place of Intimidate.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+      }
+    },
+    {
+      "id": "bard-chronicler-scrivener-profession-scribe",
+      "name": "Profession (scribe)",
+      "groupId": "bard-chronicler-scrivener-skills",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Use the Linguistics bonus in place of Profession (scribe).",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+      }
+    },
+    {
+      "id": "bard-chronicler-scrivener-sense-motive",
+      "name": "Sense Motive",
+      "groupId": "bard-chronicler-scrivener-skills",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Use the Linguistics bonus in place of Sense Motive.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+      }
+    },
+    {
+      "id": "bard-chronicler-scrivener-survival",
+      "name": "Survival",
+      "groupId": "bard-chronicler-scrivener-skills",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "Use the Linguistics bonus in place of Survival.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+      }
+    }
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Chronicler%20of%20Worlds"
+  }
+}
