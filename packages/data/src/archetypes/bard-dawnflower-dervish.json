@@ -26,22 +26,247 @@
           "id": "bard-dawnflower-dervish-deity-1",
           "name": "Deity",
           "level": 1,
-          "type": "archetype",
-          "summary": "A Dawnflower dervish must be a worshiper of Sarenrae . A dervish who abandons or betrays this faith reverts to a standard bard."
+          "type": "selectable",
+          "summary": "A Dawnflower dervish must be a worshiper of Sarenrae . A dervish who abandons or betrays this faith reverts to a standard bard.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-dawnflower-deity",
+          "optionChoiceIds": [
+            "bard-dawnflower-deity-sarenrae"
+          ],
+          "resourceActions": [
+            {
+              "id": "dawnflower-faith-broken",
+              "label": "Suspend archetype after betraying the faith",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "activeEffect": {
+                "name": "Dawnflower Dervish abilities suspended",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The character abandoned or betrayed Sarenrae and reverts to a standard Bard until the faith requirement is restored.",
+                "defaultRounds": 999,
+                "replaceExisting": true,
+                "fixedRounds": true
+              },
+              "summary": "Track the source-mandated loss of the archetype after abandoning or betraying Sarenrae."
+            }
+          ]
         },
         {
           "id": "bard-dawnflower-dervish-battle-dance-10",
           "name": "Battle Dance",
-          "level": 10,
+          "level": 1,
           "type": "archetype",
-          "summary": "A Dawnflower dervish is trained in the use of the Perform skill, especially dance, to create magical effects on himself. This works like bardic performance, except that the Dawnflower dervish’s performances grant double their normal bonuses, but these bonuses only affect him. He does not need to be able to see or hear his own performance. Battle dancing is treated as bardic performance for the purposes of feats, abilities, and effects that affect bardic performance, except that battle dancing does not benefit from the Lingering Performance feat or any other ability that allows a bardic performance to grant bonuses after it has ended. The benefits of battle dancing apply only when the bard is wearing light or no armor. Like bardic performance, battle dancing cannot be maintained at the same time as other performance abilities. Starting a battle dance is a move action, but it can be maintained each round as a free action. Changing a battle dance from one effect to another requires the Dawnflower dervish to stop the previous performance and start the new one as a move action. Like a bard, a Dawnflower dervish’s performance ends immediately if he is killed, paralyzed, stunned, knocked unconscious, or otherwise prevented from taking a free action each round. A Dawnflower dervish cannot perform more than one battle dance at a time. At 10th level, a Dawnflower dervish can start a battle dance as a swift action instead of a move action. When the Dawnflower dervish uses the inspire courage, inspire greatness, or inspire heroics bardic performance types as battle dances, these performance types only provide benefit to the Dawnflower dervish himself. All other types of bardic performance work normally (affecting the bard and his allies, or the bard’s enemies, as appropriate). This ability alters the standard bardic performance ability."
+          "summary": "A Dawnflower dervish is trained in the use of the Perform skill, especially dance, to create magical effects on himself. This works like bardic performance, except that the Dawnflower dervish’s performances grant double their normal bonuses, but these bonuses only affect him. He does not need to be able to see or hear his own performance. Battle dancing is treated as bardic performance for the purposes of feats, abilities, and effects that affect bardic performance, except that battle dancing does not benefit from the Lingering Performance feat or any other ability that allows a bardic performance to grant bonuses after it has ended. The benefits of battle dancing apply only when the bard is wearing light or no armor. Like bardic performance, battle dancing cannot be maintained at the same time as other performance abilities. Starting a battle dance is a move action, but it can be maintained each round as a free action. Changing a battle dance from one effect to another requires the Dawnflower dervish to stop the previous performance and start the new one as a move action. Like a bard, a Dawnflower dervish’s performance ends immediately if he is killed, paralyzed, stunned, knocked unconscious, or otherwise prevented from taking a free action each round. A Dawnflower dervish cannot perform more than one battle dance at a time. At 10th level, a Dawnflower dervish can start a battle dance as a swift action instead of a move action. When the Dawnflower dervish uses the inspire courage, inspire greatness, or inspire heroics bardic performance types as battle dances, these performance types only provide benefit to the Dawnflower dervish himself. All other types of bardic performance work normally (affecting the bard and his allies, or the bard’s enemies, as appropriate). This ability alters the standard bardic performance ability.",
+          "performanceRules": [
+            {
+              "id": "dawnflower-inspire-courage",
+              "name": "Battle Dance — Inspire Courage",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "dawnflower-inspire-courage"
+              ],
+              "summary": "Double the normal bonuses for the Dervish only; light or no armor, no lingering."
+            },
+            {
+              "id": "dawnflower-inspire-greatness",
+              "name": "Battle Dance — Inspire Greatness",
+              "minimumLevel": 9,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "dawnflower-inspire-greatness"
+              ],
+              "summary": "Double the normal bonuses for the Dervish only; light or no armor, no lingering."
+            },
+            {
+              "id": "dawnflower-inspire-heroics",
+              "name": "Battle Dance — Inspire Heroics",
+              "minimumLevel": 15,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "dawnflower-inspire-heroics"
+              ],
+              "summary": "Double the normal bonuses for the Dervish only; light or no armor, no lingering."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "dawnflower-inspire-courage",
+              "label": "Begin doubled Inspire Courage dance",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "move"
+                },
+                {
+                  "level": 10,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "armor",
+                  "label": "Wearing light or no armor",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Dawnflower Inspire Courage",
+                "targets": [
+                  "attackRolls",
+                  "weaponDamageRolls",
+                  "savingThrowsAgainstCharmAndFear"
+                ],
+                "applyToAllTargets": true,
+                "bonus": 2,
+                "bonusByLevel": [
+                  {
+                    "level": 1,
+                    "bonus": 2
+                  },
+                  {
+                    "level": 5,
+                    "bonus": 4
+                  },
+                  {
+                    "level": 11,
+                    "bonus": 6
+                  },
+                  {
+                    "level": 17,
+                    "bonus": 8
+                  }
+                ],
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "Doubled inspire courage bonuses affect only the Dawnflower Dervish and end immediately with the dance; Lingering Performance never applies."
+              }
+            },
+            {
+              "id": "dawnflower-inspire-greatness",
+              "label": "Begin doubled Inspire Greatness dance",
+              "minimumLevel": 9,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "move"
+                },
+                {
+                  "level": 10,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "armor",
+                  "label": "Wearing light or no armor",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Temporary hit points from two bonus Hit Dice",
+                "diceCountByLevel": [
+                  {
+                    "level": 9,
+                    "count": 2
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 9,
+                    "sides": 10
+                  }
+                ],
+                "modifierInputLabel": "Twice Constitution modifier"
+              },
+              "activeEffect": {
+                "name": "Dawnflower Inspire Greatness",
+                "targets": [
+                  "attackRolls"
+                ],
+                "bonus": 4,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "+4 competence on attacks; the roll result is the temporary hit points from 2 bonus Hit Dice for the Dervish only.",
+                "additionalEffectsByLevel": [
+                  {
+                    "minimumLevel": 9,
+                    "name": "Dawnflower Inspire Greatness — Fortitude",
+                    "target": "fortitude",
+                    "bonus": 2,
+                    "description": "+2 competence on Fortitude saves."
+                  }
+                ]
+              }
+            },
+            {
+              "id": "dawnflower-inspire-heroics",
+              "label": "Begin doubled Inspire Heroics dance",
+              "minimumLevel": 15,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 15,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "armor",
+                  "label": "Wearing light or no armor",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Dawnflower Inspire Heroics",
+                "targets": [
+                  "savingThrows"
+                ],
+                "bonus": 8,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "+8 morale on all saves for the Dervish only.",
+                "additionalEffectsByLevel": [
+                  {
+                    "minimumLevel": 15,
+                    "name": "Dawnflower Inspire Heroics — Armor Class",
+                    "target": "armorClass",
+                    "bonus": 8,
+                    "description": "+8 dodge bonus to Armor Class."
+                  }
+                ]
+              }
+            }
+          ]
         },
         {
           "id": "bard-dawnflower-dervish-dervish-dance-ex-1",
           "name": "Dervish Dance (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A Dawnflower dervish gains the Dervish Dance feat as a bonus feat. This ability replaces bardic knowledge."
+          "summary": "A Dawnflower dervish gains the Dervish Dance feat as a bonus feat. This ability replaces bardic knowledge.",
+          "grantedFeatId": "dervish-dance"
         },
         {
           "id": "bard-dawnflower-dervish-spinning-spellcaster-ex-5",
@@ -55,7 +280,47 @@
           "name": "Meditative Whirl (Ex)",
           "level": 8,
           "type": "archetype",
-          "summary": "At 8th level, when using battle dance, the Dawnflower dervish can enter a trancelike state where his spinning motion represents the movement of the planets around the sun, and his spirit is attuned to the healing aspects of Sarenrae. By spending a move action focusing on his whirling, the dervish can apply the Quicken Spell feat to any cure spell he is about to cast (effectively spending a move action and swift action to cast the spell). This does not alter the level of the spell or the casting time. The dervish can use this ability once per day at 8th level and one additional time per day for every two dervish levels he has beyond 8th. This ability replaces the dirge of doom bardic performance."
+          "summary": "At 8th level, when using battle dance, the Dawnflower dervish can enter a trancelike state where his spinning motion represents the movement of the planets around the sun, and his spirit is attuned to the healing aspects of Sarenrae. By spending a move action focusing on his whirling, the dervish can apply the Quicken Spell feat to any cure spell he is about to cast (effectively spending a move action and swift action to cast the spell). This does not alter the level of the spell or the casting time. The dervish can use this ability once per day at 8th level and one additional time per day for every two dervish levels he has beyond 8th. This ability replaces the dirge of doom bardic performance.",
+          "resourceActions": [
+            {
+              "id": "dawnflower-meditative-whirl",
+              "label": "Quicken a cure spell with Meditative Whirl",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "meditativeWhirl",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "move"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "dance",
+                  "label": "A battle dance is active",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "cure",
+                  "label": "The next spell is a cure spell",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Meditative Whirl",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The next cure spell is Quickened without changing its spell level or casting time; completing it also uses the required swift action.",
+                "defaultRounds": 1,
+                "replaceExisting": true,
+                "consumeOnUse": true
+              },
+              "summary": "Spend the daily use and move action, then track the Quickened cure spell."
+            }
+          ]
         }
       ]
     }
@@ -65,8 +330,32 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Dawnflower%20Dervish"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Sarenrae faith, doubled self-only Battle Dance modes and action timing, Dervish Dance, defensive concentration, and every daily Meditative Whirl use are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-dawnflower-dervish-spinning-spellcaster-ex-5",
+      "label": "Spinning Spellcaster",
+      "condition": "concentration checks to cast defensively",
+      "minimumLevel": 5,
+      "base": 4
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "meditativeWhirl",
+      "label": "Meditative Whirl",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 8,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 2,
+      "maximum": 7,
+      "refreshCadence": "day",
+      "sourceFeatureId": "bard-dawnflower-dervish-meditative-whirl-ex-8"
+    }
   ]
 }

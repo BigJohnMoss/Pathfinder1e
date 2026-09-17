@@ -1,0 +1,394 @@
+{
+  "id": "bard-masked-social-grace",
+  "name": "Masked Performer Social Grace Skills",
+  "classIds": [
+    "bard"
+  ],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "bard-masked-social-grace-appraise",
+      "groupId": "bard-masked-social-grace",
+      "name": "Appraise",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Appraise checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-bluff",
+      "groupId": "bard-masked-social-grace",
+      "name": "Bluff",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Bluff checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-craft",
+      "groupId": "bard-masked-social-grace",
+      "name": "Craft",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Craft checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-diplomacy",
+      "groupId": "bard-masked-social-grace",
+      "name": "Diplomacy",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Diplomacy checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-disguise",
+      "groupId": "bard-masked-social-grace",
+      "name": "Disguise",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Disguise checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-handle-animal",
+      "groupId": "bard-masked-social-grace",
+      "name": "Handle Animal",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Handle Animal checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-heal",
+      "groupId": "bard-masked-social-grace",
+      "name": "Heal",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Heal checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-intimidate",
+      "groupId": "bard-masked-social-grace",
+      "name": "Intimidate",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Intimidate checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-arcana",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (arcana)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (arcana) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-dungeoneering",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (dungeoneering)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (dungeoneering) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-engineering",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (engineering)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (engineering) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-geography",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (geography)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (geography) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-history",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (history)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (history) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-local",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (local)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (local) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-nature",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (nature)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (nature) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-nobility",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (nobility)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (nobility) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-planes",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (planes)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (planes) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-knowledge-religion",
+      "groupId": "bard-masked-social-grace",
+      "name": "Knowledge (religion)",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Knowledge (religion) checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-linguistics",
+      "groupId": "bard-masked-social-grace",
+      "name": "Linguistics",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Linguistics checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-perform",
+      "groupId": "bard-masked-social-grace",
+      "name": "Perform",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Perform checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-profession",
+      "groupId": "bard-masked-social-grace",
+      "name": "Profession",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Profession checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-sense-motive",
+      "groupId": "bard-masked-social-grace",
+      "name": "Sense Motive",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Sense Motive checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-spellcraft",
+      "groupId": "bard-masked-social-grace",
+      "name": "Spellcraft",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Spellcraft checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    },
+    {
+      "id": "bard-masked-social-grace-survival",
+      "groupId": "bard-masked-social-grace",
+      "name": "Survival",
+      "classIds": [
+        "bard"
+      ],
+      "minimumLevel": 2,
+      "prerequisites": [],
+      "benefit": "While in the social identity, gain a +4 circumstance bonus on Survival checks.",
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
+      }
+    }
+  ]
+}

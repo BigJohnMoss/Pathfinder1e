@@ -31,28 +31,506 @@
           "name": "Dual Identity (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "This ability acts as the vigilante ability of the same name , except as follows. The masked performer’s identities are referred to as social and masked, rather than social and vigilante. Unlike a vigilante, most people who know of the masked performer actually know that the masked performer’s identities are one and the same. Nonetheless, the dual identity ability is valuable to the masked performer due to offering her two perspectives on any problem and two different alignments. This ability replaces bardic knowledge."
+          "summary": "This ability acts as the vigilante ability of the same name , except as follows. The masked performer’s identities are referred to as social and masked, rather than social and vigilante. Unlike a vigilante, most people who know of the masked performer actually know that the masked performer’s identities are one and the same. Nonetheless, the dual identity ability is valuable to the masked performer due to offering her two perspectives on any problem and two different alignments. This ability replaces bardic knowledge.",
+          "resourceActions": [
+            {
+              "id": "masked-performer-identity",
+              "label": "Assume Masked Performer identity",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "modeLabel": "Identity",
+              "modes": [
+                {
+                  "id": "social",
+                  "label": "Social identity",
+                  "summary": "Use the social identity, its alignment, and selected Social Grace bonuses."
+                },
+                {
+                  "id": "masked",
+                  "label": "Masked identity",
+                  "summary": "Use the masked identity and its separately chosen alignment."
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "1-minute"
+                }
+              ],
+              "activeEffect": {
+                "name": "Masked Performer identity",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The selected social or masked identity and its alignment are active.",
+                "defaultRounds": 999,
+                "replaceExisting": true,
+                "fixedRounds": true
+              },
+              "summary": "Track which identity and alignment currently apply."
+            }
+          ]
         },
         {
           "id": "bard-masked-performer-bardic-performance-1",
           "name": "Bardic Performance",
           "level": 1,
           "type": "archetype",
-          "summary": "A masked performer gains the following types of bardic performance. Seamless Guise (Ex) : At 1st level, a masked performer learns to behave in a way that appears perfectly proper and normal for her current role, on stage or off. She can maintain this performance for 1 hour for every 3 rounds of bardic performance she spends. While this performance is active, she receives a +10 bonus on Disguise and Perform (act) checks to remain in character after she has already established her character. For instance, this bonus does not apply against the initial Perception check when meeting a creature paying attention to her but does apply on the automatic additional Perception check each hour of interacting. This ability replaces countersong. Exaggerated Pose (Su) : At 3rd level, a masked performer can enhance her own physical and social abilities by simply altering her posture. When she starts this performance, the masked performer chooses a Strength-, Dexterity-, or Charisma-based skill and gains a +2 competence bonus on checks with that skill as long as she maintains this performance. This bonus increases by 1 for every 4 bard levels the masked performer has beyond 3rd (+3 at 7th level, +4 at 11th level, +5 at 15th level, and +6 at 19th level). The masked performer can change the chosen skill as a swift action. Exaggerated pose is an emotion effect and relies on visual components. This ability replaces inspire competence. Stage Combat (Su) : At 6th level, a masked performer gains the benefit of a combat feat she doesn’t have as long as she maintains this performance. The masked performer chooses the feat when she starts this performance. The masked performer must meet all the feat’s prerequisites. As usual when temporarily gaining a feat, if the feat she chooses has any limitations on uses, such as Stunning Fist ’s daily uses, all uses of that combat feat while maintaining stage combat count toward that feat’s limit. In the case of Stunning Fist, if the masked performer gained that feat again later the same day, the expended uses would remain expended. Stage combat relies on visual components. This ability replaces suggestion. Multiplicity of Masks (Su) : At 18th level, a masked performer can cause any number of her allies to appear as herself or as another ally within 60 feet. To be affected, an ally must be within 60 feet of the masker performer and able to see her. As long as the masked performer maintains this performance, enemies perceive all affected allies as the chosen character. If an affected ally is a different size or creature type than the chosen character, enemies can attempt a Will save (DC = 10 + 1/2 the masked performer’s bard level + her Charisma modifier) to disbelieve. Otherwise, there is no saving throw, but a successful attack against a disguised ally automatically reveals the ally’s true form. If an ally moves out of range, that ally reverts to his original form, and the entire effect ends if the ally providing his appearance to the others moves out of range. Multiplicity of masks is an illusion (glamer) effect that relies on visual components. This ability replaces mass suggestion."
+          "summary": "A masked performer gains the following types of bardic performance. Seamless Guise (Ex) : At 1st level, a masked performer learns to behave in a way that appears perfectly proper and normal for her current role, on stage or off. She can maintain this performance for 1 hour for every 3 rounds of bardic performance she spends. While this performance is active, she receives a +10 bonus on Disguise and Perform (act) checks to remain in character after she has already established her character. For instance, this bonus does not apply against the initial Perception check when meeting a creature paying attention to her but does apply on the automatic additional Perception check each hour of interacting. This ability replaces countersong. Exaggerated Pose (Su) : At 3rd level, a masked performer can enhance her own physical and social abilities by simply altering her posture. When she starts this performance, the masked performer chooses a Strength-, Dexterity-, or Charisma-based skill and gains a +2 competence bonus on checks with that skill as long as she maintains this performance. This bonus increases by 1 for every 4 bard levels the masked performer has beyond 3rd (+3 at 7th level, +4 at 11th level, +5 at 15th level, and +6 at 19th level). The masked performer can change the chosen skill as a swift action. Exaggerated pose is an emotion effect and relies on visual components. This ability replaces inspire competence. Stage Combat (Su) : At 6th level, a masked performer gains the benefit of a combat feat she doesn’t have as long as she maintains this performance. The masked performer chooses the feat when she starts this performance. The masked performer must meet all the feat’s prerequisites. As usual when temporarily gaining a feat, if the feat she chooses has any limitations on uses, such as Stunning Fist ’s daily uses, all uses of that combat feat while maintaining stage combat count toward that feat’s limit. In the case of Stunning Fist, if the masked performer gained that feat again later the same day, the expended uses would remain expended. Stage combat relies on visual components. This ability replaces suggestion. Multiplicity of Masks (Su) : At 18th level, a masked performer can cause any number of her allies to appear as herself or as another ally within 60 feet. To be affected, an ally must be within 60 feet of the masker performer and able to see her. As long as the masked performer maintains this performance, enemies perceive all affected allies as the chosen character. If an affected ally is a different size or creature type than the chosen character, enemies can attempt a Will save (DC = 10 + 1/2 the masked performer’s bard level + her Charisma modifier) to disbelieve. Otherwise, there is no saving throw, but a successful attack against a disguised ally automatically reveals the ally’s true form. If an ally moves out of range, that ally reverts to his original form, and the entire effect ends if the ally providing his appearance to the others moves out of range. Multiplicity of masks is an illusion (glamer) effect that relies on visual components. This ability replaces mass suggestion.",
+          "performanceRules": [
+            {
+              "id": "masked-seamless-guise",
+              "name": "Seamless Guise",
+              "minimumLevel": 1,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 3,
+              "actionIds": [
+                "masked-seamless-guise"
+              ],
+              "summary": "Spend 3 rounds for 1 hour of +10 on checks to remain in an established character."
+            },
+            {
+              "id": "masked-exaggerated-pose",
+              "name": "Exaggerated Pose",
+              "minimumLevel": 3,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "masked-exaggerated-pose"
+              ],
+              "summary": "Choose a Strength-, Dexterity-, or Charisma-based skill for a scaling competence bonus."
+            },
+            {
+              "id": "masked-stage-combat",
+              "name": "Stage Combat",
+              "minimumLevel": 6,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "masked-stage-combat"
+              ],
+              "summary": "Temporarily gain one eligible combat feat while maintaining the visual performance."
+            },
+            {
+              "id": "masked-multiplicity-same",
+              "name": "Multiplicity of Masks — matching form",
+              "minimumLevel": 18,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "masked-multiplicity-same"
+              ],
+              "summary": "Disguise allies of the same size and type without a saving throw."
+            },
+            {
+              "id": "masked-multiplicity-different",
+              "name": "Multiplicity of Masks — different form",
+              "minimumLevel": 18,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "masked-multiplicity-different"
+              ],
+              "summary": "Disguise allies of a different size or type; enemies may disbelieve."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "masked-seamless-guise",
+              "label": "Begin Seamless Guise",
+              "minimumLevel": 1,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 3,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "established",
+                  "label": "The character has already been established; this is not the initial Perception check",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Seamless Guise",
+                "targets": [
+                  "skillChecks"
+                ],
+                "bonus": 10,
+                "skillOptions": [
+                  "Disguise",
+                  "Perform (act)"
+                ],
+                "defaultRounds": 600,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "+10 to the chosen check to remain in the established character for 1 hour."
+              },
+              "summary": "Spend exactly 3 performance rounds and track the hour-long role-maintenance bonus."
+            },
+            {
+              "id": "masked-exaggerated-pose",
+              "label": "Begin or change Exaggerated Pose",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Exaggerated Pose",
+                "targets": [
+                  "skillChecks"
+                ],
+                "bonus": 2,
+                "bonusByLevel": [
+                  {
+                    "level": 3,
+                    "bonus": 2
+                  },
+                  {
+                    "level": 7,
+                    "bonus": 3
+                  },
+                  {
+                    "level": 11,
+                    "bonus": 4
+                  },
+                  {
+                    "level": 15,
+                    "bonus": 5
+                  },
+                  {
+                    "level": 19,
+                    "bonus": 6
+                  }
+                ],
+                "skillOptions": [
+                  "Acrobatics",
+                  "Bluff",
+                  "Climb",
+                  "Disguise",
+                  "Escape Artist",
+                  "Fly",
+                  "Handle Animal",
+                  "Intimidate",
+                  "Perform",
+                  "Ride",
+                  "Sleight of Hand",
+                  "Stealth",
+                  "Swim"
+                ],
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "Competence bonus on the chosen Strength-, Dexterity-, or Charisma-based skill; changing the skill is a swift action while maintained."
+              },
+              "summary": "Select the affected skill and apply the exact level-scaled competence bonus."
+            },
+            {
+              "id": "masked-stage-combat",
+              "label": "Begin Stage Combat",
+              "minimumLevel": 6,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "featSelection": {
+                "label": "Combat feat",
+                "featType": "combat",
+                "source": "catalogue",
+                "countByLevel": [
+                  {
+                    "level": 6,
+                    "count": 1
+                  }
+                ],
+                "minimumCount": 1
+              },
+              "activeEffect": {
+                "name": "Stage Combat",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Gain the selected eligible combat feat while the visual performance is maintained; limited-use expenditure persists if the feat is selected again.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "The selector filters out possessed feats and uses the character's normal prerequisite evaluator."
+            },
+            {
+              "id": "masked-multiplicity-same",
+              "label": "Begin Multiplicity with matching forms",
+              "minimumLevel": 18,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 18,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "range",
+                  "label": "Affected allies are within 60 feet and can see the performer",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "matching",
+                  "label": "Each affected ally matches the chosen character's size and creature type",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Multiplicity of Masks",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "rangeByLevel": [
+                  {
+                    "level": 18,
+                    "feet": 60
+                  }
+                ],
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "replaceExisting": true,
+                "description": "No save. Enemies perceive affected allies as the chosen character; a successful attack reveals an ally, leaving range reverts that ally, and the source ally leaving ends the effect."
+              },
+              "summary": "Track the no-save glamer for matching size and creature type."
+            },
+            {
+              "id": "masked-multiplicity-different",
+              "label": "Begin Multiplicity with different forms",
+              "minimumLevel": 18,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 18,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "range",
+                  "label": "Affected allies are within 60 feet and can see the performer",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 18,
+                    "range": "60 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 18,
+                    "name": "Multiplicity of Masks",
+                    "description": "Enemy fails to disbelieve the different-size or different-type glamer; successful attacks reveal individual allies and range rules still apply.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 1
+                    }
+                  }
+                ]
+              },
+              "summary": "Resolve the exact Will save for enemies viewing a different-size or different-type form."
+            }
+          ]
         },
         {
-          "id": "bard-masked-performer-social-grace-ex-2",
-          "name": "Social Grace (Ex)",
+          "id": "bard-masked-performer-social-grace-2",
+          "name": "Social Grace Skill 1",
           "level": 2,
-          "type": "archetype",
-          "summary": "At 2nd level, a masked performer gains the social grace vigilante social talent . She gains an additional skill with social grace 1 level later than a vigilante (at 6th level, 10th level, and so on). This ability replaces versatile performance."
+          "type": "selectable",
+          "summary": "Choose a unique Intelligence-, Wisdom-, or Charisma-based skill other than Perception or Use Magic Device (1 of 5).",
+          "choiceRequired": true,
+          "optionGroupId": "bard-masked-social-grace",
+          "resourceActions": [
+            {
+              "id": "masked-social-grace",
+              "label": "Apply selected Social Grace bonus",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "confirmations": [
+                {
+                  "id": "social",
+                  "label": "Currently in the social identity",
+                  "requiredForActivation": true
+                }
+              ],
+              "maximumActiveEffects": {
+                "name": "Social Grace",
+                "base": 1,
+                "levelDivisor": 4,
+                "maximum": 5
+              },
+              "activeEffect": {
+                "name": "Social Grace",
+                "targets": [
+                  "skillChecks"
+                ],
+                "bonus": 4,
+                "skillOptions": [
+                  "Appraise",
+                  "Bluff",
+                  "Craft",
+                  "Diplomacy",
+                  "Disguise",
+                  "Handle Animal",
+                  "Heal",
+                  "Intimidate",
+                  "Knowledge (arcana)",
+                  "Knowledge (dungeoneering)",
+                  "Knowledge (engineering)",
+                  "Knowledge (geography)",
+                  "Knowledge (history)",
+                  "Knowledge (local)",
+                  "Knowledge (nature)",
+                  "Knowledge (nobility)",
+                  "Knowledge (planes)",
+                  "Knowledge (religion)",
+                  "Linguistics",
+                  "Perform",
+                  "Profession",
+                  "Sense Motive",
+                  "Spellcraft",
+                  "Survival"
+                ],
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "description": "+4 circumstance bonus on a skill selected in the Social Grace option cards while in the social identity."
+              },
+              "summary": "Apply one persistent effect for each selected Social Grace skill; the level-aware limit is 1–5."
+            }
+          ]
         },
         {
-          "id": "bard-masked-performer-masked-talents-5",
-          "name": "Masked Talents",
+          "id": "bard-masked-performer-social-grace-6",
+          "name": "Social Grace Skill 2",
+          "level": 6,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-masked-social-grace",
+          "summary": "Choose a unique Intelligence-, Wisdom-, or Charisma-based skill other than Perception or Use Magic Device (2 of 5)."
+        },
+        {
+          "id": "bard-masked-performer-social-grace-10",
+          "name": "Social Grace Skill 3",
+          "level": 10,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-masked-social-grace",
+          "summary": "Choose a unique Intelligence-, Wisdom-, or Charisma-based skill other than Perception or Use Magic Device (3 of 5)."
+        },
+        {
+          "id": "bard-masked-performer-social-grace-14",
+          "name": "Social Grace Skill 4",
+          "level": 14,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-masked-social-grace",
+          "summary": "Choose a unique Intelligence-, Wisdom-, or Charisma-based skill other than Perception or Use Magic Device (4 of 5)."
+        },
+        {
+          "id": "bard-masked-performer-social-grace-18",
+          "name": "Social Grace Skill 5",
+          "level": 18,
+          "type": "selectable",
+          "choiceRequired": true,
+          "optionGroupId": "bard-masked-social-grace",
+          "summary": "Choose a unique Intelligence-, Wisdom-, or Charisma-based skill other than Perception or Use Magic Device (5 of 5)."
+        },
+        {
+          "id": "bard-masked-performer-masked-talent-5",
+          "name": "Masked Talent 1",
           "level": 5,
-          "type": "archetype",
-          "summary": "At 5th level, a masked performer gains a rogue talent from the following list: expert leaper, fast stealth, ledge walker, rogue crawl, rope master, stand up, and wall scramble. At 17th level, a masked performer can choose any of the above talents or an advanced talent from the following list: defensive roll, fast tumble, hide in plain sight, and skill mastery. This ability does not qualify her for the Extra Rogue Talent feat. This ability replaces lore master."
+          "type": "selectable",
+          "summary": "Choose one of the seven permitted basic rogue talents; this does not qualify for Extra Rogue Talent.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-masked-talents",
+          "optionChoiceIds": [
+            "bard-masked-talent-expert-leaper",
+            "bard-masked-talent-fast-stealth",
+            "bard-masked-talent-ledge-walker",
+            "bard-masked-talent-rogue-crawl",
+            "bard-masked-talent-rope-master",
+            "bard-masked-talent-stand-up",
+            "bard-masked-talent-wall-scramble"
+          ]
+        },
+        {
+          "id": "bard-masked-performer-masked-talent-17",
+          "name": "Masked Talent 2",
+          "level": 17,
+          "type": "selectable",
+          "summary": "Choose another permitted basic talent or one of the four permitted advanced talents.",
+          "choiceRequired": true,
+          "optionGroupId": "bard-masked-talents",
+          "optionChoiceIds": [
+            "bard-masked-talent-expert-leaper",
+            "bard-masked-talent-fast-stealth",
+            "bard-masked-talent-ledge-walker",
+            "bard-masked-talent-rogue-crawl",
+            "bard-masked-talent-rope-master",
+            "bard-masked-talent-stand-up",
+            "bard-masked-talent-wall-scramble",
+            "bard-masked-talent-defensive-roll",
+            "bard-masked-talent-fast-tumble",
+            "bard-masked-talent-hide-in-plain-sight",
+            "bard-masked-talent-skill-mastery"
+          ]
         }
       ]
     }
@@ -62,8 +540,8 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Masked%20Performer"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Dual identity, all four performances, exact Social Grace progression and legal skills, and both level-gated Masked Talent selections are automated."
   ]
 }
