@@ -30,14 +30,221 @@
           "name": "Bardic Performance",
           "level": 3,
           "type": "archetype",
-          "summary": "A ringleader gains an altered version of inspire competence that grants greater effects at higher levels. Inspire Competence (Su) : At 3rd level, a ringleader can use his performance to help an ally succeed at a task. This ability acts as the inspire competence bardic performance with the following additions. At 8th level, the ringleader’s ally gains a competence bonus on an additional skill (for a total of two skills). In addition, he can end the effect to reroll a check with one of the affected skills (the reroll still applies the bonus from inspire competence). Each ally can only use this latter ability once per day, regardless of the number of skills affected and the number of times they are affected by inspire competence. At 14th level, the ringleader’s ally gains a competence bonus on an additional skill (for a total of three skills). In addition, he can take 10 on the affected skills when stressed or distracted. This ability alters inspire competence and replaces dirge of doom and frightening tune."
+          "summary": "A ringleader gains an altered version of inspire competence that grants greater effects at higher levels. Inspire Competence (Su) : At 3rd level, a ringleader can use his performance to help an ally succeed at a task. This ability acts as the inspire competence bardic performance with the following additions. At 8th level, the ringleader’s ally gains a competence bonus on an additional skill (for a total of two skills). In addition, he can end the effect to reroll a check with one of the affected skills (the reroll still applies the bonus from inspire competence). Each ally can only use this latter ability once per day, regardless of the number of skills affected and the number of times they are affected by inspire competence. At 14th level, the ringleader’s ally gains a competence bonus on an additional skill (for a total of three skills). In addition, he can take 10 on the affected skills when stressed or distracted. This ability alters inspire competence and replaces dirge of doom and frightening tune.",
+          "performanceRules": [
+            {
+              "id": "ringleader-ui-inspire-competence",
+              "name": "Enhanced Inspire Competence",
+              "minimumLevel": 3,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "ringleader-ui-inspire-competence"
+              ],
+              "summary": "Affect one skill, two skills at level 8, or three skills at level 14; at 8 each ally may end it for one daily reroll, and at 14 may take 10 under pressure."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "ringleader-ui-inspire-competence",
+              "label": "Begin enhanced Inspire Competence",
+              "minimumLevel": 3,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 3,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 13,
+                  "actionType": "swift"
+                }
+              ],
+              "variableCost": {
+                "label": "Affected skills (maximum 1 at 3rd, 2 at 8th, 3 at 14th)",
+                "minimum": 1,
+                "maximum": 3
+              },
+              "activeEffect": {
+                "name": "Enhanced Inspire Competence",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Apply the Bard's normal Inspire Competence bonus to the level-appropriate number of chosen skills. At 14th level the ally may take 10 while stressed or distracted.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Choose the legal number of skills and track the enhanced performance."
+            },
+            {
+              "id": "ringleader-ui-competence-reroll",
+              "label": "End Inspire Competence to reroll",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "confirmations": [
+                {
+                  "id": "daily",
+                  "label": "This ally has not used this reroll today",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Affected skill reroll",
+                "diceCountByLevel": [
+                  {
+                    "level": 8,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 8,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Affected skill modifier including Inspire Competence",
+                "targetDcInputLabel": "Skill DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Success"
+                  }
+                ],
+                "failureLabel": "Failure"
+              },
+              "summary": "End the effect and resolve the ally's once-per-day reroll with the performance bonus."
+            }
+          ]
         },
         {
           "id": "bard-ringleader-ui-inspired-plan-su-2",
           "name": "Inspired Plan (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a ringleader can alter his performance so it affects a single ally at a later time. The ringleader must explain his plan to that ally for a number of minutes equal to the number of bardic performance rounds he expends on the effect, and use audible and/or visual components according to the performance altered. This costs the ringleader the chosen number of rounds of bardic performance. At any time before the ringleader recovers bardic performance rounds for the day, the inspired character can activate the performance as a standard action wherever she is. When activated, the altered performance affects only the inspired ally and has no audible or visible components. If the performance could normally affect any number of allies, its effects last 2 rounds for each round the ringleader spent on the performance. Otherwise, the effects last 1 round for each round the ringleader spent on the performance. A ringleader can alter only the countersong, distraction, inspire courage, inspire competence, inspire greatness, and inspire heroics performances in this way. The ringleader makes any necessary choices when establishing the performance, though in the case of countersong and distraction, the ringleader attempts Perform checks once his ally triggers the plan, ignoring any temporary bonuses or penalties, no matter whether they applied when he explained the plan or when the ally triggers it. A character can be subject to only one inspired plan at a time and cannot be subject to a ringleader’s inspired plan and any of the ringleader’s normal performances at the same time, but she can benefit from other bardic performances in the interim. The ringleader cannot use inspired plan on himself, but he can have dormant plans ready to trigger on as many different allies as he can afford to affect at once. This ability replaces versatile performance."
+          "summary": "At 2nd level, a ringleader can alter his performance so it affects a single ally at a later time. The ringleader must explain his plan to that ally for a number of minutes equal to the number of bardic performance rounds he expends on the effect, and use audible and/or visual components according to the performance altered. This costs the ringleader the chosen number of rounds of bardic performance. At any time before the ringleader recovers bardic performance rounds for the day, the inspired character can activate the performance as a standard action wherever she is. When activated, the altered performance affects only the inspired ally and has no audible or visible components. If the performance could normally affect any number of allies, its effects last 2 rounds for each round the ringleader spent on the performance. Otherwise, the effects last 1 round for each round the ringleader spent on the performance. A ringleader can alter only the countersong, distraction, inspire courage, inspire competence, inspire greatness, and inspire heroics performances in this way. The ringleader makes any necessary choices when establishing the performance, though in the case of countersong and distraction, the ringleader attempts Perform checks once his ally triggers the plan, ignoring any temporary bonuses or penalties, no matter whether they applied when he explained the plan or when the ally triggers it. A character can be subject to only one inspired plan at a time and cannot be subject to a ringleader’s inspired plan and any of the ringleader’s normal performances at the same time, but she can benefit from other bardic performances in the interim. The ringleader cannot use inspired plan on himself, but he can have dormant plans ready to trigger on as many different allies as he can afford to affect at once. This ability replaces versatile performance.",
+          "performanceRules": [
+            {
+              "id": "ringleader-ui-inspired-plan",
+              "name": "Inspired Plan",
+              "minimumLevel": 2,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "ringleader-ui-inspired-plan"
+              ],
+              "summary": "Invest performance rounds in one ally, who can activate the chosen performance later before daily recovery."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "ringleader-ui-inspired-plan",
+              "label": "Prepare an Inspired Plan",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "variableCost": {
+                "label": "Performance rounds invested",
+                "minimum": 1,
+                "maximum": 100
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "1-minute"
+                }
+              ],
+              "modeLabel": "Performance",
+              "modes": [
+                {
+                  "id": "countersong",
+                  "label": "Countersong",
+                  "summary": "Prepare Countersong for one ally."
+                },
+                {
+                  "id": "distraction",
+                  "label": "Distraction",
+                  "summary": "Prepare Distraction for one ally."
+                },
+                {
+                  "id": "inspire-courage",
+                  "label": "Inspire Courage",
+                  "summary": "Prepare Inspire Courage for one ally."
+                },
+                {
+                  "id": "inspire-competence",
+                  "label": "Inspire Competence",
+                  "summary": "Prepare Inspire Competence for one ally."
+                },
+                {
+                  "id": "inspire-greatness",
+                  "label": "Inspire Greatness",
+                  "summary": "Prepare Inspire Greatness for one ally."
+                },
+                {
+                  "id": "inspire-heroics",
+                  "label": "Inspire Heroics",
+                  "summary": "Prepare Inspire Heroics for one ally."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "ally",
+                  "label": "The plan targets one ally other than the Ringleader",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Inspired Plan prepared",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The chosen ally can activate this silent, invisible performance before the Ringleader recovers Bardic Performance rounds.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one minute of explanation per invested round and record the ally and performance."
+            },
+            {
+              "id": "ringleader-ui-activate-inspired-plan",
+              "label": "Activate an Inspired Plan",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "prepared",
+                  "label": "This ally has this plan prepared and no conflicting Ringleader performance",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Inspired Plan active",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "An unlimited-target performance lasts 2 rounds per invested round; any other permitted performance lasts 1 round per invested round.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Activate the dormant plan wherever the ally is, without audible or visual components."
+            }
+          ]
         },
         {
           "id": "bard-ringleader-ui-hidden-plans-ex-2",
@@ -51,7 +258,54 @@
           "name": "Prepared (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a ringleader expects the unexpected. When the ringleader is in a situation where he could use a particular piece of nonmagical gear, the ringleader can attempt a Knowledge check appropriate to his current situation to have purchased that item in advance. The DC of the check is equal to the item’s cost in gp. If he succeeds, he deducts the appropriate cost of the item from his current gp total and now has the item in question on his person. He cannot use this ability to retroactively gain an item that would change his encumbrance to a different load category, though in this case, he can attempt to retrieve such objects from a pack mule, extradimensional storage space, or other location that would not affect his encumbrance. He can use this ability once per day at 5th level, plus one additional time per day for every 5 bard levels beyond 5th. This ability replaces lore master."
+          "summary": "At 5th level, a ringleader expects the unexpected. When the ringleader is in a situation where he could use a particular piece of nonmagical gear, the ringleader can attempt a Knowledge check appropriate to his current situation to have purchased that item in advance. The DC of the check is equal to the item’s cost in gp. If he succeeds, he deducts the appropriate cost of the item from his current gp total and now has the item in question on his person. He cannot use this ability to retroactively gain an item that would change his encumbrance to a different load category, though in this case, he can attempt to retrieve such objects from a pack mule, extradimensional storage space, or other location that would not affect his encumbrance. He can use this ability once per day at 5th level, plus one additional time per day for every 5 bard levels beyond 5th. This ability replaces lore master.",
+          "resourceActions": [
+            {
+              "id": "ringleader-ui-prepared",
+              "label": "Reveal a Prepared item",
+              "minimumLevel": 5,
+              "classId": "bard",
+              "resourceId": "ringleaderPrepared",
+              "cost": 1,
+              "diceRoll": {
+                "label": "Appropriate Knowledge check",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Knowledge modifier",
+                "targetDcInputLabel": "Item cost in gp",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Item was purchased in advance"
+                  }
+                ],
+                "failureLabel": "Item unavailable"
+              },
+              "confirmations": [
+                {
+                  "id": "nonmagical",
+                  "label": "Item is nonmagical and does not change the current load category",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "funds",
+                  "label": "Deduct the item's cost from current gp on success",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Spend a daily use and resolve the cost-based Knowledge check for an eligible item."
+            }
+          ]
         }
       ]
     }
@@ -61,8 +315,32 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Ringleader%20(UI)"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Enhanced Inspire Competence and its reroll, Inspired Plan preparation and activation, Hidden Plans, and every level-scaled Prepared use are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "bard-ringleader-ui-hidden-plans-ex-2",
+      "label": "Hidden Plans",
+      "condition": "saving throws against effects that read thoughts or compel truth",
+      "minimumLevel": 2,
+      "base": 4
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "ringleaderPrepared",
+      "label": "Prepared",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 5,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 5,
+      "maximum": 4,
+      "refreshCadence": "day",
+      "sourceFeatureId": "bard-ringleader-ui-prepared-ex-5"
+    }
   ]
 }
