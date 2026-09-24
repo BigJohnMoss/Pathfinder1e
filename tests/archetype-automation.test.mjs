@@ -385,7 +385,7 @@ test("sense inference remains player-owned, normalized, and bounded across the c
   const allowed = new Set(["darkvision", "low-light-vision", "scent", "blindsense", "blindsight", "tremorsense"]);
   for (const archetype of catalogueArchetypes) {
     const inferred = inferArchetypeSenseAdjustments(archetype);
-    if (archetype.mechanicalCoverage !== "full") assert.deepEqual(archetypeSenseAdjustments(archetype), inferred, `${archetype.id} exposes inferred senses at runtime`);
+    assert.deepEqual(archetypeSenseAdjustments(archetype), inferred, `${archetype.id} exposes inferred senses at runtime`);
     const signatures = new Set();
     for (const adjustment of inferred) {
       assert.ok(allowed.has(adjustment.sense), `${archetype.id} has a supported sense`);
@@ -400,7 +400,6 @@ test("sense inference remains player-owned, normalized, and bounded across the c
       assert.ok(!signatures.has(signature), `${archetype.id} has no duplicate sense adjustment`);
       signatures.add(signature);
     }
-    if (archetype.mechanicalCoverage === "full") assert.equal(archetypeSenseAdjustments(archetype).length, 0, `${archetype.id} does not duplicate curated full automation`);
   }
 });
 

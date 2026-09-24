@@ -49,8 +49,24 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Mooncaller"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Night Sight, both conditional +4 save bonuses, disease immunity, and scaling silver damage reduction are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-mooncaller-resist-call-of-the-wild-ex-4",
+      "label": "Resist Call of the Wild — mental effects",
+      "condition": "Saving throws to avoid confusion, daze, feeblemind, and insanity effects",
+      "minimumLevel": 4,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "druid-mooncaller-resist-call-of-the-wild-ex-4",
+      "label": "Resist Call of the Wild — shapechangers",
+      "condition": "Saving throws against exceptional, spell-like, and supernatural abilities of creatures with the shapechanger subtype",
+      "minimumLevel": 4,
+      "base": 4
+    }
   ]
 }
