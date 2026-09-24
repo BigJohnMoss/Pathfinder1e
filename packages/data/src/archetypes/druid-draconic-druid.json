@@ -43,19 +43,104 @@
           "name": "Dragon Shape",
           "level": 4,
           "type": "archetype",
-          "summary": "A draconic druid can’t use wild shape to change into any of the usual forms available to a druid. Instead, at 4th level, she can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size (1d6 points of damage for a Medium druid) but otherwise retaining her usual form. At 10th level, she can spend two uses of wild shape to transform into a Medium dragon as per form of the dragon I , and at 12th level, she can spend two uses to change into a Large dragon as per form of the dragon II . Each time that a draconic druid uses wild shape counts as a separate casting of the spell for the purpose of refreshing her uses of her breath weapon."
+          "summary": "A draconic druid can’t use wild shape to change into any of the usual forms available to a druid. Instead, at 4th level, she can use wild shape to change into a dragon-scaled version of herself with long fangs, gaining a +1 natural armor bonus to her AC and a bite attack appropriate for her size (1d6 points of damage for a Medium druid) but otherwise retaining her usual form. At 10th level, she can spend two uses of wild shape to transform into a Medium dragon as per form of the dragon I , and at 12th level, she can spend two uses to change into a Large dragon as per form of the dragon II . Each time that a draconic druid uses wild shape counts as a separate casting of the spell for the purpose of refreshing her uses of her breath weapon.",
+          "resourceActions": [
+            {
+              "id": "draconic-druid-scaled-shape",
+              "label": "Assume dragon-scaled shape",
+              "minimumLevel": 4,
+              "classId": "druid",
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Dragon-scaled shape",
+                "targets": [
+                  "armorClass"
+                ],
+                "bonus": 1,
+                "description": "Gain +1 natural armor and a size-appropriate bite (1d6 for Medium). This activation separately refreshes the form's breath-weapon uses.",
+                "defaultRounds": 600,
+                "fixedRounds": true
+              },
+              "summary": "Spend 1 wild shape use and track the basic dragon-scaled form."
+            },
+            {
+              "id": "draconic-druid-medium-dragon-shape",
+              "label": "Assume Medium dragon shape",
+              "minimumLevel": 10,
+              "classId": "druid",
+              "resourceId": "wildShape",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 10,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Medium dragon shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Apply form of the dragon I as a Medium dragon. This activation separately refreshes the form's breath-weapon uses.",
+                "defaultRounds": 600,
+                "fixedRounds": true
+              },
+              "summary": "Spend exactly 2 wild shape uses and track form of the dragon I."
+            },
+            {
+              "id": "draconic-druid-large-dragon-shape",
+              "label": "Assume Large dragon shape",
+              "minimumLevel": 12,
+              "classId": "druid",
+              "resourceId": "wildShape",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 12,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Large dragon shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Apply form of the dragon II as a Large dragon. This activation separately refreshes the form's breath-weapon uses.",
+                "defaultRounds": 600,
+                "fixedRounds": true
+              },
+              "summary": "Spend exactly 2 wild shape uses and track form of the dragon II."
+            }
+          ]
         }
       ]
     }
   ],
-  "companionGrants": [{"id":"drake-companion","kind":"drake","label":"Drake companion","optionId":"draconic-druid-drake","minimumLevel":1}],
+  "companionGrants": [
+    {
+      "id": "drake-companion",
+      "kind": "drake",
+      "label": "Drake companion",
+      "optionId": "draconic-druid-drake",
+      "minimumLevel": 1
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Draconic%20Druid"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Drake companion progression, Dragon Sense, dragon-specific saves, and all three wild-shape forms with exact costs are automated."
   ]
 }
