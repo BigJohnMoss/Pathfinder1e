@@ -1341,6 +1341,23 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
     (baseSpellcasting?.castingType === "prepared" && !baseSpellcasting.preparesFromSlots
       ? archetype.spellSlotAdjustmentPerLevel
       : undefined);
+  const inferredSpellLevelUnlocks = baseSpellcasting?.slotsByLevel
+    ? Array.from(
+        {
+          length: Math.max(
+            0,
+            ...baseSpellcasting.slotsByLevel.map((row) =>
+              row.reduce((last, count, index) => (count > 0 ? index + 1 : last), 0),
+            ),
+          ),
+        },
+        (_, spellLevelIndex) =>
+          Math.max(
+            baseSpellcasting.slotsByLevel.findIndex((row) => (row[spellLevelIndex] ?? 0) > 0) + 1,
+            spellcastingMinimumLevel ?? 1,
+          ),
+      )
+    : undefined;
   const hasStructuredClassSkills = archetype.classSkillAdditions?.length || archetype.classSkillRemovals?.length;
   const inferredClassSkillDetails = inferArchetypeClassSkillDetails(archetype);
   const inferredClassSkills = hasStructuredClassSkills
@@ -1435,6 +1452,9 @@ export function applyArchetype(characterClass, archetype, referenceClasses = [],
           slotsByLevel: gateTable(adjustTable(baseSpellcasting.slotsByLevel, archetype.spellSlotAdjustmentPerLevel)),
           preparedByLevel: gateTable(adjustTable(baseSpellcasting.preparedByLevel, preparedAdjustment)),
           knownByLevel: gateTable(adjustTable(baseSpellcasting.knownByLevel, archetype.spellsKnownAdjustmentPerLevel)),
+          spellLevelUnlocks: (baseSpellcasting.spellLevelUnlocks ?? inferredSpellLevelUnlocks)?.map(
+            (unlockLevel) => Math.max(unlockLevel, spellcastingMinimumLevel ?? 1),
+          ),
           arcaneSpellFailure: archetype.arcaneSpellFailure ?? baseSpellcasting.arcaneSpellFailure,
         }
       : undefined,

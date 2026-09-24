@@ -900,8 +900,23 @@ export default function Home() {
     );
   }, [archetypeFeatAlternatives, baseCharacterClass.features, characterClass.features, primaryClassLevel]);
   const selectableProgressionFeatures = useMemo(
-    () => [...progression.features, ...inferredArchetypeFeatChoices, ...retainedArchetypeFeatSlots],
-    [inferredArchetypeFeatChoices, progression.features, retainedArchetypeFeatSlots],
+    () => [...progression.features, ...inferredArchetypeFeatChoices, ...retainedArchetypeFeatSlots].flatMap((feature) => {
+      if (!feature.choiceCount) return [feature];
+      const abilityBonus = feature.choiceCount.abilityModifier
+        ? Math.floor(((abilities[feature.choiceCount.abilityModifier] ?? 10) - 10) / 2)
+        : 0;
+      const count = Math.max(
+        feature.choiceCount.minimum ?? 0,
+        Math.min(feature.choiceCount.maximum ?? 20, feature.choiceCount.base + abilityBonus),
+      );
+      return Array.from({ length: count }, (_, index) => ({
+        ...feature,
+        id: `${feature.id}-choice-${index + 1}`,
+        name: `${feature.name} ${index + 1}`,
+        choiceCount: undefined,
+      }));
+    }),
+    [abilities, inferredArchetypeFeatChoices, progression.features, retainedArchetypeFeatSlots],
   );
   const alternativeAllowsFeat = (feature: (typeof progression.features)[number], feat: (typeof feats)[number]) =>
     archetypeFeatAlternatives.some((alternative) =>
@@ -1344,7 +1359,11 @@ export default function Home() {
     [effectiveSelectedOptionIds],
   );
   const featContext = useMemo(
-    () => ({
+    () => {
+      const bardLevelAsBab = selectedArchetypes.some((archetype) => archetype.featPrerequisiteBabUsesClassLevel)
+        ? Math.max(0, (classLevelMap.bard ?? 0) - Math.floor((classLevelMap.bard ?? 0) * 3 / 4))
+        : 0;
+      return ({
       classId: characterClass.id,
       classLevels: featClassLevelMap,
       ancestryId,
@@ -1353,7 +1372,7 @@ export default function Home() {
       casterLevel,
       spellLevels: featSpellLevels,
       abilities,
-      baseAttackBonus: progression.baseAttackBonus,
+      baseAttackBonus: progression.baseAttackBonus + bardLevelAsBab,
       saves: progression.saves,
       skillRanks,
       featureIds: [
@@ -1373,7 +1392,8 @@ export default function Home() {
       spellIds: featSpellIds,
       selectedIds: selectedClassFeatIds,
       selectedFeatChoices,
-    }),
+    });
+    },
     [
       abilities,
       ancestry.size,
@@ -1387,6 +1407,7 @@ export default function Home() {
       progression.baseAttackBonus,
       progression.features,
       progression.saves,
+      selectedArchetypes,
       selectedClassFeatIds,
       selectedFeatChoices,
       selectedOptionFeatureIds,
@@ -2133,6 +2154,7 @@ export default function Home() {
             ? [
                 {
                   ...spell,
+                  selectedAccessOnly: Boolean(option.spellAccessOnly),
                   levelByClass: {
                     ...spell.levelByClass,
                     [characterClass.id]: spellLevel,
@@ -2155,14 +2177,14 @@ export default function Home() {
       ...bloodlineSpells,
       ...mysterySpells,
       ...patronSpells,
-      ...selectedOptionSpells,
+      ...selectedOptionSpells.filter((spell) => !spell.selectedAccessOnly),
       ...archetypeBonusSpells,
     ], characterClass.spellListExclusions),
     [archetypeBonusSpells, bloodlineSpells, characterClass.spellListExclusions, mysterySpells, patronSpells, selectedOptionSpells],
   );
   const availableSpells = useMemo(
-    () => mergeSpellLists(baseAvailableSpells, grantedSpells),
-    [baseAvailableSpells, grantedSpells],
+    () => mergeSpellLists(baseAvailableSpells, [...grantedSpells, ...selectedOptionSpells]),
+    [baseAvailableSpells, grantedSpells, selectedOptionSpells],
   );
   const primaryArchetypeSpellBonuses = useMemo(
     () => Object.fromEntries(availableSpells.map((spell) => [spell.id, archetypeSpellModifiers(characterClass, primaryClassLevel, spell)])),
@@ -2397,6 +2419,7 @@ export default function Home() {
                 ? [
                     {
                       ...spell,
+                      selectedAccessOnly: Boolean(option.spellAccessOnly),
                       levelByClass: {
                         ...spell.levelByClass,
                         [secondaryCharacterClass.id]: spellLevel,
@@ -2417,7 +2440,7 @@ export default function Home() {
       ...secondaryBloodlineSpells,
       ...secondaryMysterySpells,
       ...secondaryPatronSpells,
-      ...secondarySelectedOptionSpells,
+      ...secondarySelectedOptionSpells.filter((spell) => !spell.selectedAccessOnly),
       ...spellsFromAdditions(spells, secondaryCharacterClass?.bonusSpellAdditions, secondaryCharacterClass?.id ?? "", secondaryMaximumSpellLevel),
       ...spellsFromArchetypeGrants(spells, secondaryCharacterClass?.spellGrants, secondaryCharacterClass?.id ?? "", secondaryClassLevel, secondaryMaximumSpellLevel, "known"),
     ], secondaryCharacterClass?.spellListExclusions),
@@ -2434,8 +2457,8 @@ export default function Home() {
     ],
   );
   const secondaryAvailableSpells = useMemo(
-    () => mergeSpellLists(secondaryBaseSpells, secondaryGrantedSpells),
-    [secondaryBaseSpells, secondaryGrantedSpells],
+    () => mergeSpellLists(secondaryBaseSpells, [...secondaryGrantedSpells, ...secondarySelectedOptionSpells]),
+    [secondaryBaseSpells, secondaryGrantedSpells, secondarySelectedOptionSpells],
   );
   const secondaryArchetypeSpellBonuses = useMemo(
     () => secondaryCharacterClass
@@ -3059,7 +3082,7 @@ export default function Home() {
       knownSpellIds={selectedSpellIds}
       grantedSpellIds={grantedSpellIds}
       grantedSpellLabel={
-        selectedOptionSpells.length > 0 ? "Feature" : undefined
+        selectedOptionSpells.some((spell) => !spell.selectedAccessOnly) ? "Feature" : undefined
       }
       onKnownSpellIdsChange={updateSelectedSpells}
       slotUses={spellSlotUses}
@@ -3129,7 +3152,7 @@ export default function Home() {
         knownSpellIds={secondarySelectedSpellIds}
         grantedSpellIds={secondaryGrantedSpellIds}
         grantedSpellLabel={
-          secondarySelectedOptionSpells.length > 0 ? "Feature" : undefined
+          secondarySelectedOptionSpells.some((spell) => !spell.selectedAccessOnly) ? "Feature" : undefined
         }
         onKnownSpellIdsChange={updateSecondarySelectedSpells}
         slotUses={secondarySpellSlotUses}

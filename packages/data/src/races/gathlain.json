@@ -1,0 +1,26 @@
+{
+  "id": "gathlain",
+  "name": "Gathlain",
+  "size": "small",
+  "speed": 30,
+  "type": "fey",
+  "subtypes": [],
+  "abilityModifiers": {
+    "fixed": {"dexterity": 2, "charisma": 2, "constitution": -2}
+  },
+  "languages": {
+    "automatic": ["Common", "Sylvan"],
+    "bonus": ["Draconic", "Elven", "Goblin", "Halfling", "Orc"]
+  },
+  "traits": [
+    {"id": "gathlain-flight", "name": "Flight", "summary": "Gain a 40-foot fly speed with poor maneuverability."},
+    {"id": "gathlain-low-light-vision", "name": "Low-Light Vision", "summary": "See twice as far as a human in dim light."},
+    {"id": "gathlain-natural-armor", "name": "Natural Armor", "summary": "Gain a +1 natural armor bonus."},
+    {"id": "gathlain-spell-like-abilities", "name": "Spell-Like Abilities", "summary": "Cast entangle and feather step once per day each, using character level as caster level."}
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/RacesDisplay.aspx?ItemName=Gathlain"
+  }
+}

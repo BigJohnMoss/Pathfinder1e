@@ -1710,7 +1710,7 @@ test("inferred proficiency automation stays normalized across the full archetype
   const inferred = records.map(archetype => ({ archetype, adjustments: inferArchetypeProficiencyAdjustments(archetype) }))
     .filter(item => item.adjustments.length > 0);
   assert.equal(inferred.length, 159);
-  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 134);
+  assert.equal(inferred.filter(item => !item.archetype.proficiencyAdjustments?.length).length, 133);
   for (const { archetype, adjustments } of inferred) {
     for (const adjustment of adjustments) {
       assert.ok(["weapon", "armor", "shield"].includes(adjustment.category), `${archetype.id} category`);

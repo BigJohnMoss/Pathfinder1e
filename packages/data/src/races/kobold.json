@@ -1,0 +1,26 @@
+{
+  "id": "kobold",
+  "name": "Kobold",
+  "size": "small",
+  "speed": 30,
+  "type": "humanoid",
+  "subtypes": ["reptilian"],
+  "abilityModifiers": {
+    "fixed": {"strength": -4, "dexterity": 2, "constitution": -2}
+  },
+  "languages": {
+    "automatic": ["Draconic"],
+    "bonus": ["Common", "Dwarven", "Gnome", "Undercommon"]
+  },
+  "traits": [
+    {"id": "kobold-darkvision", "name": "Darkvision", "summary": "See in darkness up to 60 feet."},
+    {"id": "kobold-armor", "name": "Armor", "summary": "Gain a +1 natural armor bonus."},
+    {"id": "kobold-crafty", "name": "Crafty", "summary": "Gain +2 racial bonuses on Craft (traps), Perception, and Profession (miner); Craft (traps) and Stealth are class skills."},
+    {"id": "kobold-light-sensitivity", "name": "Light Sensitivity", "summary": "Become dazzled while in bright light."}
+  ],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/RacesDisplay.aspx?ItemName=Kobold"
+  }
+}

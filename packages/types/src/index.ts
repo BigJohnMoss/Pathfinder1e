@@ -161,6 +161,12 @@ export interface ClassFeatureOccurrence {
   scaling?: string | null;
   uses?: string | null;
   choiceRequired?: boolean;
+  choiceCount?: {
+    base: number;
+    abilityModifier?: AbilityName;
+    minimum?: number;
+    maximum?: number;
+  };
   optionGroupId?: string | null;
   optionChoiceIds?: string[];
   channelEnergyDiceAdvancementOptionIds?: string[];
@@ -625,6 +631,7 @@ export interface CharacterArchetype {
   spellcastingAbility?: "intelligence" | "wisdom" | "charisma";
   spellcastingProgressionClassId?: string;
   spellcastingMinimumLevel?: number;
+  featPrerequisiteBabUsesClassLevel?: boolean;
   wildShapeLevelAdjustment?: number;
   druidNatureBondOptionIds?: string[];
   druidAnimalCompanionIds?: string[];
@@ -929,6 +936,7 @@ export interface SelectableOption {
   featId?: string;
   spellId?: string;
   spellLevel?: number;
+  spellAccessOnly?: boolean;
   repeatable?: boolean;
   selectionLimit?: number;
   familyId?: string;
