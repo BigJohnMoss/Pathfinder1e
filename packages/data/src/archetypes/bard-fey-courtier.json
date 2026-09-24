@@ -35,21 +35,324 @@
           "name": "Bardic Performance",
           "level": 8,
           "type": "archetype",
-          "summary": "The fey courtier has access to the following bardic performances. Scorn of the Wilds (Sp) : At 8th level, the fey courtier can use bardic performance to permanently mark a creature with nature's displeasure by spending 2 rounds performing while the target remains within 30 feet. The performance includes a litany of the target's misdeeds against fey and nature. Unless the target succeeds at a Will saving throw (DC = 10 + half the bard's level + his Charisma modifier), it is cursed as per nature's exile or bestow curse . At 14th level, the fey courtier's options expand to include baleful polymorph and green caress . As part of the performance, the fey courtier must define a condition under which the curse will be lifted, which must relate to making amends for the crime against fey or nature and cannot be suicidal to carry out. A creature that succeeds at its saving throw is immune to the fey courtier's scorn of the wild for 24 hours. This is a curse effect. This replaces dirge of doom and frightening tune. Stone Dance (Sp) : At 15th level, the bard's performance can move even the features of the natural world. This performance functions as animate plants (DC = 10 + half the bard's level + his Charisma modifier) except it can also animate unworked stone and water from natural bodies of water (with statistics equivalent to an appropriate plant). This replaces inspire heroics."
+          "summary": "The fey courtier has access to the following bardic performances. Scorn of the Wilds (Sp) : At 8th level, the fey courtier can use bardic performance to permanently mark a creature with nature's displeasure by spending 2 rounds performing while the target remains within 30 feet. The performance includes a litany of the target's misdeeds against fey and nature. Unless the target succeeds at a Will saving throw (DC = 10 + half the bard's level + his Charisma modifier), it is cursed as per nature's exile or bestow curse . At 14th level, the fey courtier's options expand to include baleful polymorph and green caress . As part of the performance, the fey courtier must define a condition under which the curse will be lifted, which must relate to making amends for the crime against fey or nature and cannot be suicidal to carry out. A creature that succeeds at its saving throw is immune to the fey courtier's scorn of the wild for 24 hours. This is a curse effect. This replaces dirge of doom and frightening tune. Stone Dance (Sp) : At 15th level, the bard's performance can move even the features of the natural world. This performance functions as animate plants (DC = 10 + half the bard's level + his Charisma modifier) except it can also animate unworked stone and water from natural bodies of water (with statistics equivalent to an appropriate plant). This replaces inspire heroics.",
+          "performanceRules": [
+            {
+              "id": "fey-courtier-scorn",
+              "name": "Scorn of the Wilds",
+              "minimumLevel": 8,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 2,
+              "actionIds": [
+                "fey-courtier-scorn"
+              ],
+              "summary": "Spend 2 rounds to inflict a permanent, atonement-conditioned curse within 30 feet; Will negates."
+            },
+            {
+              "id": "fey-courtier-stone-dance",
+              "name": "Stone Dance",
+              "minimumLevel": 15,
+              "kind": "active",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionIds": [
+                "fey-courtier-stone-dance"
+              ],
+              "summary": "Animate plants, unworked stone, or natural water as animate plants."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "fey-courtier-scorn",
+              "label": "Use Scorn of the Wilds",
+              "minimumLevel": 8,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "full-round"
+                }
+              ],
+              "modeLabel": "Curse",
+              "modes": [
+                {
+                  "id": "natures-exile",
+                  "label": "Nature's Exile",
+                  "summary": "Apply nature's exile with a non-suicidal atonement condition."
+                },
+                {
+                  "id": "bestow-curse",
+                  "label": "Bestow Curse",
+                  "summary": "Apply bestow curse with a non-suicidal atonement condition."
+                },
+                {
+                  "id": "baleful-polymorph",
+                  "label": "Baleful Polymorph",
+                  "minimumLevel": 14,
+                  "summary": "Apply baleful polymorph with a non-suicidal atonement condition."
+                },
+                {
+                  "id": "green-caress",
+                  "label": "Green Caress",
+                  "minimumLevel": 14,
+                  "summary": "Apply green caress with a non-suicidal atonement condition."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "range",
+                  "label": "Target remained within 30 feet for both performance rounds",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "atonement",
+                  "label": "A relevant, non-suicidal condition for lifting the curse has been defined",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "rangeByLevel": [
+                  {
+                    "level": 8,
+                    "range": "30 feet"
+                  }
+                ],
+                "effectsByLevel": [
+                  {
+                    "level": 8,
+                    "name": "Scorn of the Wilds",
+                    "description": "The selected permanent curse applies until its defined atonement condition is fulfilled or the curse is otherwise removed.",
+                    "duration": {
+                      "kind": "fixed-rounds",
+                      "rounds": 999
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Scorn immunity",
+                  "description": "Immune to this Fey Courtier's Scorn of the Wilds for 24 hours.",
+                  "rounds": 999
+                }
+              },
+              "summary": "Spend 2 rounds and resolve the exact Charisma-based Will DC."
+            },
+            {
+              "id": "fey-courtier-stone-dance",
+              "label": "Begin Stone Dance",
+              "minimumLevel": 15,
+              "classId": "bard",
+              "resourceId": "bardicPerformance",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 15,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Natural material",
+              "modes": [
+                {
+                  "id": "plants",
+                  "label": "Plants",
+                  "summary": "Animate plants using appropriate animate plants statistics."
+                },
+                {
+                  "id": "unworked-stone",
+                  "label": "Unworked stone",
+                  "summary": "Animate unworked stone using appropriate animate plants statistics."
+                },
+                {
+                  "id": "natural-water",
+                  "label": "Natural water",
+                  "summary": "Animate natural water using appropriate animate plants statistics."
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "charisma",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "bard"
+              },
+              "activeEffect": {
+                "name": "Stone Dance",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The selected natural material is animated as animate plants using the exact Bard performance save DC.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Spend one performance round per round to animate the selected natural material."
+            }
+          ]
         },
         {
           "id": "bard-fey-courtier-fey-contacts-2",
           "name": "Fey Contacts",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, thanks to his fey contacts and knowledge of the byzantine trade customs of the fey courts, a fey courtier can treat any wilderness area with fey residents as a settlement with a certain base value and purchase limit based on his bard level for the purpose of buying and selling magic items. See here for rules on settlement base values and purchase limits. The fey courtier can also use these contacts to gather information about the residents, geography, and nearby areas with Diplomacy. This replaces versatile performance. Bard LevelBase ValuePurchase Limit 2nd50 gp500 gp 6th500 gp2,500 gp 10th2,000 gp10,000 gp 14th8,000 gp50,000 gp 18th32,000 gp200,000 gp"
+          "summary": "At 2nd level, thanks to his fey contacts and knowledge of the byzantine trade customs of the fey courts, a fey courtier can treat any wilderness area with fey residents as a settlement with a certain base value and purchase limit based on his bard level for the purpose of buying and selling magic items. See here for rules on settlement base values and purchase limits. The fey courtier can also use these contacts to gather information about the residents, geography, and nearby areas with Diplomacy. This replaces versatile performance. Bard LevelBase ValuePurchase Limit 2nd50 gp500 gp 6th500 gp2,500 gp 10th2,000 gp10,000 gp 14th8,000 gp50,000 gp 18th32,000 gp200,000 gp",
+          "progressionProfiles": [
+            {
+              "id": "fey-courtier-settlement",
+              "label": "Fey Contacts settlement access",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "base",
+                  "label": "Base value"
+                },
+                {
+                  "id": "limit",
+                  "label": "Purchase limit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "base": "50 gp",
+                    "limit": "500 gp"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "base": "500 gp",
+                    "limit": "2,500 gp"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "base": "2,000 gp",
+                    "limit": "10,000 gp"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "base": "8,000 gp",
+                    "limit": "50,000 gp"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "base": "32,000 gp",
+                    "limit": "200,000 gp"
+                  }
+                }
+              ],
+              "summary": "Treat a wilderness area with fey residents as a settlement at the displayed values; Diplomacy can gather local information."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "fey-courtier-gather-information",
+              "label": "Gather information through Fey Contacts",
+              "minimumLevel": 2,
+              "classId": "bard",
+              "diceRoll": {
+                "label": "Fey Contacts Diplomacy",
+                "diceCountByLevel": [
+                  {
+                    "level": 2,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 2,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Diplomacy modifier",
+                "targetDcInputLabel": "Information DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "Information gathered"
+                  }
+                ],
+                "failureLabel": "No useful information"
+              },
+              "summary": "Ask about local residents, geography, or nearby areas."
+            }
+          ]
         },
         {
           "id": "bard-fey-courtier-summon-fey-allies-3",
           "name": "Summon Fey Allies",
           "level": 3,
           "type": "archetype",
-          "summary": "At 3rd level, the fey courtier gains Augment Summoning as a bonus feat and can call upon natural allies who owe him favors. He adds summon nature’s ally I to his list of 1st-level bard spells known. Whenever he gains access to another spell level, he adds the next-higher summon nature’s ally spell to his list of bard spells known. The fey courtier adds the following creatures to the summon nature’s ally list: 1st— grimple (gremlin) , mite , sprite ; 2nd— atomie , fuath (gremlin) , nixie ; 3rd— leprechaun , nuglub (gremlin) , pooka ; 4th— kelpie , korred , twigjack ; 5th— lampad , lurker in light , swan maiden ; 6th— cold rider , oceanid , sangoi . This replaces inspire competence."
+          "summary": "At 3rd level, the fey courtier gains Augment Summoning as a bonus feat and can call upon natural allies who owe him favors. He adds summon nature’s ally I to his list of 1st-level bard spells known. Whenever he gains access to another spell level, he adds the next-higher summon nature’s ally spell to his list of bard spells known. The fey courtier adds the following creatures to the summon nature’s ally list: 1st— grimple (gremlin) , mite , sprite ; 2nd— atomie , fuath (gremlin) , nixie ; 3rd— leprechaun , nuglub (gremlin) , pooka ; 4th— kelpie , korred , twigjack ; 5th— lampad , lurker in light , swan maiden ; 6th— cold rider , oceanid , sangoi . This replaces inspire competence.",
+          "grantedFeatId": "augment-summoning",
+          "progressionProfiles": [
+            {
+              "id": "fey-courtier-summons",
+              "label": "Additional fey summons",
+              "classId": "bard",
+              "columns": [
+                {
+                  "id": "creatures",
+                  "label": "Added creatures"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 3,
+                  "values": {
+                    "creatures": "SNA I: grimple, mite, sprite"
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "creatures": "SNA II: atomie, fuath, nixie"
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "creatures": "SNA III: leprechaun, nuglub, pooka"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "creatures": "SNA IV: kelpie, korred, twigjack"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "creatures": "SNA V: lampad, lurker in light, swan maiden"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "creatures": "SNA VI: cold rider, oceanid, sangoi"
+                  }
+                }
+              ],
+              "summary": "The listed fey are added to each Summon Nature's Ally option at the Bard level that unlocks that spell level."
+            }
+          ]
         }
       ]
     }
@@ -59,8 +362,14 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Bard%20Fey%20Courtier"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Gathlain eligibility, settlement thresholds, Diplomacy workflow, Augment Summoning, bonus spells and added fey, plus both save-aware performances are automated."
+  ],
+  "requirements": [
+    {
+      "type": "ancestry",
+      "id": "gathlain"
+    }
   ]
 }
