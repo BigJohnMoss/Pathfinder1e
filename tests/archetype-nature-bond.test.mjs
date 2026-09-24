@@ -44,7 +44,7 @@ test("Nature Bond archetypes expose their exact path restrictions", () => {
 test("totem shamans expose their exact companion and domain lists", () => {
   const expected = {
     "druid-eagle-shaman": [[companion("bird")], ["domain-air", "domain-animal", "domain-nobility", "domain-weather"]],
-    "druid-lion-shaman": [[companion("small-cat")], ["domain-animal", "domain-glory", "domain-nobility", "domain-sun"]],
+    "druid-lion-shaman": [[companion("big-cat")], ["domain-animal", "domain-glory", "domain-nobility", "domain-sun"]],
     "druid-serpent-shaman": [[companion("constrictor-snake"), companion("viper-snake")], ["domain-animal", "domain-charm", "domain-trickery", "domain-water"]],
     "druid-shark-shaman": [[companion("shark")], ["domain-animal", "domain-death", "domain-war", "domain-water"]],
     "druid-wolf-shaman": [[companion("wolf")], ["domain-animal", "domain-community", "domain-liberation", "domain-travel"]],
@@ -79,7 +79,7 @@ test("complete Nature Bond restriction rules leave the manual queue", () => {
   ];
   for (const id of ids)
     assert.ok(!archetypeAutomationSummary(archetype(id), feats).manual.some((entry) => /^Nature Bond/.test(entry)), id);
-  assert.ok(archetypeAutomationSummary(archetype("druid-ape-shaman"), feats).manual.some((entry) => /^Nature Bond/.test(entry)));
+  assert.ok(!archetypeAutomationSummary(archetype("druid-ape-shaman"), feats).manual.some((entry) => /^Nature Bond/.test(entry)));
 });
 
 test("every inferred restriction references a known catalog option", () => {
