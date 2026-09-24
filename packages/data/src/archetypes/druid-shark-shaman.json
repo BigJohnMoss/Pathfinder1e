@@ -30,21 +30,370 @@
           "name": "Totem Transformation (Su)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a shark shaman may adopt an aspect of the shark while retaining her normal form. This ability functions as the dragon shaman’s totem transformation ability, but the druid may select from the following bonuses: movement (can breathe water, swim speed 30 feet), senses (scent 30 feet, scent 90 feet in water), natural weapons (bite 1d6 for a Medium shaman), or shark skin (+2 natural armor, creatures grappling the shaman take 1 point of slashing damage per round of grapple). While using totem transformation, the shark shaman may speak normally and can cast speak with animals (fish only) at will."
+          "summary": "At 2nd level, a shark shaman may adopt an aspect of the shark while retaining her normal form. This ability functions as the dragon shaman’s totem transformation ability, but the druid may select from the following bonuses: movement (can breathe water, swim speed 30 feet), senses (scent 30 feet, scent 90 feet in water), natural weapons (bite 1d6 for a Medium shaman), or shark skin (+2 natural armor, creatures grappling the shaman take 1 point of slashing damage per round of grapple). While using totem transformation, the shark shaman may speak normally and can cast speak with animals (fish only) at will.",
+          "resourceActions": [
+            {
+              "id": "shark-shaman-totem-transformation",
+              "label": "Activate Totem Transformation",
+              "resourceId": "totemTransformation",
+              "cost": 1,
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                },
+                {
+                  "level": 7,
+                  "actionType": "move"
+                },
+                {
+                  "level": 12,
+                  "actionType": "swift"
+                }
+              ],
+              "modeLabel": "Aspect",
+              "modes": [
+                {
+                  "id": "movement",
+                  "label": "Movement",
+                  "summary": "Breathe water and gain a 30-foot swim speed.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Aquatic movement",
+                      "description": "Breathe water and gain a 30-foot swim speed."
+                    }
+                  ]
+                },
+                {
+                  "id": "senses",
+                  "label": "Senses",
+                  "summary": "Gain scent 30 feet, increased to 90 feet in water.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Shark scent",
+                      "description": "Gain scent 30 feet, increased to 90 feet in water."
+                    }
+                  ]
+                },
+                {
+                  "id": "natural-weapons",
+                  "label": "Natural weapons",
+                  "summary": "Gain a bite attack (1d6 for Medium).",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Shark bite",
+                      "description": "Gain a bite attack (1d6 for Medium)."
+                    }
+                  ]
+                },
+                {
+                  "id": "shark-skin",
+                  "label": "Shark skin",
+                  "summary": "+2 natural armor bonus to AC. Creatures grappling you take 1 slashing damage each round.",
+                  "defaultRounds": 10,
+                  "activeEffects": [
+                    {
+                      "target": "armorClass",
+                      "bonus": 2,
+                      "label": "Natural armor",
+                      "description": "+2 natural armor bonus to AC."
+                    },
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Rough skin",
+                      "description": "Creatures grappling you take 1 slashing damage each round."
+                    }
+                  ]
+                }
+              ],
+              "summary": "Spend 1 minute of Totem Transformation and apply the selected aspect for 10 rounds."
+            },
+            {
+              "id": "shark-shaman-speak-with-animals",
+              "label": "Speak with rays and sharks",
+              "classId": "druid",
+              "minimumLevel": 2,
+              "actionTypeByLevel": [
+                {
+                  "level": 2,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "speak-with-animals",
+                "spellName": "Speak with Animals",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "confirmations": [
+                {
+                  "id": "totem-creature",
+                  "label": "The target is one of the permitted rays and sharks",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "At-will speak with animals, restricted to rays and sharks."
+            }
+          ]
         },
         {
           "id": "druid-shark-shaman-totemic-summons-su-5",
           "name": "Totemic Summons (Su)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, a shark shaman may use summon nature’s ally I to summon a stingray and summon nature’s ally II to summon a manta ray. She may cast summon nature’s ally as a standard action when summoning rays and sharks, and summond rays and sharks gain a number of temporary hit points equal to her druid level. This ability otherwise functions as the dragon shaman’s totemic summons ability."
+          "summary": "At 5th level, a shark shaman may use summon nature’s ally I to summon a stingray and summon nature’s ally II to summon a manta ray. She may cast summon nature’s ally as a standard action when summoning rays and sharks, and summond rays and sharks gain a number of temporary hit points equal to her druid level. This ability otherwise functions as the dragon shaman’s totemic summons ability.",
+          "resourceActions": [
+            {
+              "id": "shark-shaman-totemic-summons",
+              "label": "Resolve Totemic Summons",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "totem-summon",
+                  "label": "The summon creates rays and sharks",
+                  "requiredForActivation": true
+                }
+              ],
+              "modeLabel": "Template adjustment",
+              "modes": [
+                {
+                  "id": "young",
+                  "label": "Young (spell level -1)",
+                  "summary": "Apply the young template and reduce the required summon spell level by 1."
+                },
+                {
+                  "id": "normal",
+                  "label": "Normal",
+                  "summary": "Use the normal summon spell level."
+                },
+                {
+                  "id": "advanced",
+                  "label": "Advanced (spell level +1)",
+                  "summary": "Apply the advanced template and increase the required summon spell level by 1."
+                },
+                {
+                  "id": "giant",
+                  "label": "Giant (spell level +1)",
+                  "summary": "Apply the giant template and increase the required summon spell level by 1."
+                },
+                {
+                  "id": "advanced-giant",
+                  "label": "Advanced + giant (spell level +2)",
+                  "summary": "Apply both templates and increase the required summon spell level by 2."
+                }
+              ],
+              "activeEffect": {
+                "name": "Shark Shaman Totemic Summons",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "defaultRounds": 1,
+                "fixedRounds": true,
+                "description": "Summoned rays and sharks gain temporary hit points equal to your druid level; track their summon duration separately."
+              },
+              "summary": "Cast summon nature's ally as a standard action for rays and sharks; summoned creatures gain temporary hit points equal to druid level."
+            }
+          ]
         },
         {
           "id": "druid-shark-shaman-wild-shape-su-6",
           "name": "Wild Shape (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, a shark shaman’s wild shape ability functions at her druid level –2. If she takes on the form of a shark, she instead uses her druid level +2. This ability replaces wild shape."
+          "summary": "At 6th level, a shark shaman’s wild shape ability functions at her druid level –2. If she takes on the form of a shark, she instead uses her druid level +2. This ability replaces wild shape.",
+          "resourceActions": [
+            {
+              "id": "shark-shaman-wild-shape",
+              "label": "Assume Shaman Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Form type",
+              "modes": [
+                {
+                  "id": "totem-form",
+                  "label": "Favored shark form",
+                  "summary": "Use druid level +2.",
+                  "defaultRounds": 999,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Favored wild shape",
+                      "description": "Resolve wild shape at druid level +2."
+                    }
+                  ]
+                },
+                {
+                  "id": "other-form",
+                  "label": "Other permitted form",
+                  "summary": "Use druid level -2.",
+                  "defaultRounds": 999,
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Adjusted wild shape",
+                      "description": "Resolve wild shape at druid level -2."
+                    }
+                  ]
+                }
+              ],
+              "summary": "Spend 1 wild shape use and track the correct effective druid level for the selected form."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "shark-shaman-wild-shape-levels",
+              "label": "Wild Shape Effective Level",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "other",
+                  "label": "Other forms"
+                },
+                {
+                  "id": "favored",
+                  "label": "Favored shark"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 6,
+                  "values": {
+                    "other": 4,
+                    "favored": 8
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "other": 5,
+                    "favored": 9
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "other": 6,
+                    "favored": 10
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "other": 7,
+                    "favored": 11
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "other": 8,
+                    "favored": 12
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "other": 9,
+                    "favored": 13
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "other": 10,
+                    "favored": 14
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "other": 11,
+                    "favored": 15
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "other": 12,
+                    "favored": 16
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "other": 13,
+                    "favored": 17
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "other": 14,
+                    "favored": 18
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "other": 15,
+                    "favored": 19
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "other": 16,
+                    "favored": 20
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "other": 17,
+                    "favored": 21
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "other": 18,
+                    "favored": 22
+                  }
+                }
+              ],
+              "summary": "Effective druid levels used by normal and totem-favored wild shape forms."
+            }
+          ]
         },
         {
           "id": "druid-shark-shaman-bonus-feat-9",
@@ -61,8 +410,36 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Shark%20Shaman"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Nature Bond restrictions, Wild Empathy, daily transformation minutes, aspect modes, at-will animal speech, template-aware summons, effective wild-shape levels, and all bonus-feat slots are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal",
+    "druid-nature-bond-domain"
+  ],
+  "druidAnimalCompanionIds": [
+    "ranger-animal-companion-shark"
+  ],
+  "druidDomainIds": [
+    "domain-animal",
+    "domain-death",
+    "domain-war",
+    "domain-water"
+  ],
+  "wildShapeLevelAdjustment": -2,
+  "resourceAdjustments": [
+    {
+      "resourceId": "totemTransformation",
+      "label": "Totem Transformation",
+      "unit": "minute",
+      "operation": "add",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelMultiplier": 1,
+      "minimum": 0,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }

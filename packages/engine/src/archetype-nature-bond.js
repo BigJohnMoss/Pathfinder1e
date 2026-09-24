@@ -46,7 +46,16 @@ const exactRules = new Map([
 ]);
 
 export function inferredArchetypeNatureBondDetails(archetype) {
-  const rule = exactRules.get(archetype?.id);
+  const explicitRule = archetype && (
+    archetype.druidNatureBondOptionIds?.length ||
+    archetype.druidAnimalCompanionIds?.length ||
+    archetype.druidDomainIds?.length
+  ) ? {
+    natureBondOptionIds: archetype.druidNatureBondOptionIds ?? [],
+    animalCompanionIds: archetype.druidAnimalCompanionIds ?? [],
+    domainIds: archetype.druidDomainIds ?? [],
+  } : undefined;
+  const rule = explicitRule ?? exactRules.get(archetype?.id);
   const feature = (archetype?.replacements ?? [])
     .flatMap((replacement) => replacement.features ?? [])
     .find((entry) => /^Nature Bond(?: \(Ex\))?$/i.test(entry.name ?? ""));
