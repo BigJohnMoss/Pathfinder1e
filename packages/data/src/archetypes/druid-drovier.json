@@ -30,7 +30,319 @@
           "name": "Communal Aspect (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a drovier can imbue her allies (including herself) with an aspect of a wild animal. As a standard action, she chooses an animal totem and grants the abilities of that totem to every ally within 30 feet. This otherwise functions like the spell animal aspectUC . She can use this ability for 10 minutes per druid level each day. This duration does not need to be consecutive, but it must be used in 10-minute increments. If she uses the ability to grant a new aspect, any previous aspect immediately ends. At 20th level, the drovier can use this ability at will. At 6th level, the drovier’s communal aspect ability grants the benefits of the spell greater animal aspectUC . The drovier can still choose only one aspect to grant her allies. At 8th level, the drovier can choose to grant her allies the benefits of the spell aspect of the falconAPG instead of an animal aspect. At 10th level, the drovier can choose to grant her allies the benefits of the spell aspect of the bearAPG instead of an animal aspect. At 12th level, the drovier can choose to grant her allies the benefits of the spell aspect of the stagAPG instead of an animal aspect. At 14th level, the drovier can choose to grant her allies the benefits of the spell aspect of the wolfAPG rather than an animal aspect. This replaces wild shape."
+          "summary": "At 4th level, a drovier can imbue her allies (including herself) with an aspect of a wild animal. As a standard action, she chooses an animal totem and grants the abilities of that totem to every ally within 30 feet. This otherwise functions like the spell animal aspectUC . She can use this ability for 10 minutes per druid level each day. This duration does not need to be consecutive, but it must be used in 10-minute increments. If she uses the ability to grant a new aspect, any previous aspect immediately ends. At 20th level, the drovier can use this ability at will. At 6th level, the drovier’s communal aspect ability grants the benefits of the spell greater animal aspectUC . The drovier can still choose only one aspect to grant her allies. At 8th level, the drovier can choose to grant her allies the benefits of the spell aspect of the falconAPG instead of an animal aspect. At 10th level, the drovier can choose to grant her allies the benefits of the spell aspect of the bearAPG instead of an animal aspect. At 12th level, the drovier can choose to grant her allies the benefits of the spell aspect of the stagAPG instead of an animal aspect. At 14th level, the drovier can choose to grant her allies the benefits of the spell aspect of the wolfAPG rather than an animal aspect. This replaces wild shape.",
+          "resourceActions": [
+            {
+              "id": "drovier-communal-aspect",
+              "label": "Grant Communal Aspect",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "communalAspectIncrements",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Animal aspect",
+              "modes": [
+                {
+                  "id": "frog",
+                  "label": "Frog",
+                  "summary": "+4 competence on Acrobatics and always jump with a running start.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 4,
+                      "label": "Frog Aspect",
+                      "description": "+4 competence on Acrobatics; always jump with a running start.",
+                      "skillIds": [
+                        "Acrobatics"
+                      ]
+                    }
+                  ],
+                  "maximumLevel": 5
+                },
+                {
+                  "id": "gorilla",
+                  "label": "Gorilla",
+                  "summary": "Increase unarmed damage one step and gain +4 competence on grapple and reposition checks.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Gorilla",
+                      "description": "Increase unarmed damage one step and gain +4 competence on grapple and reposition checks."
+                    }
+                  ],
+                  "maximumLevel": 5
+                },
+                {
+                  "id": "monkey",
+                  "label": "Monkey",
+                  "summary": "+4 competence on Climb and use improvised thrown weapons as with Throw Anything.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 4,
+                      "label": "Monkey Aspect",
+                      "description": "+4 competence on Climb; gain the Throw Anything benefit.",
+                      "skillIds": [
+                        "Climb"
+                      ]
+                    }
+                  ],
+                  "maximumLevel": 5
+                },
+                {
+                  "id": "otter",
+                  "label": "Otter",
+                  "summary": "Gain a swim speed equal to half land speed and hold breath for 4 rounds per Constitution point.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Otter",
+                      "description": "Gain a swim speed equal to half land speed and hold breath for 4 rounds per Constitution point."
+                    }
+                  ],
+                  "maximumLevel": 5
+                },
+                {
+                  "id": "raccoon",
+                  "label": "Raccoon",
+                  "summary": "+2 competence on Disable Device, Sleight of Hand, and Stealth.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 2,
+                      "label": "Raccoon Aspect",
+                      "description": "+2 competence on Disable Device, Sleight of Hand, and Stealth.",
+                      "skillIds": [
+                        "Disable Device",
+                        "Sleight of Hand",
+                        "Stealth"
+                      ]
+                    }
+                  ],
+                  "maximumLevel": 5
+                },
+                {
+                  "id": "raptor",
+                  "label": "Raptor",
+                  "summary": "Gain a +20-foot enhancement bonus to land speed.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "landSpeed",
+                      "bonus": 20,
+                      "label": "Raptor Aspect",
+                      "description": "+20-foot enhancement bonus to land speed."
+                    }
+                  ],
+                  "maximumLevel": 5
+                },
+                {
+                  "id": "tree-lizard",
+                  "label": "Tree Lizard",
+                  "summary": "Gain a climb speed equal to half normal speed and the benefits of a natural climb speed.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Tree Lizard",
+                      "description": "Gain a climb speed equal to half normal speed and the benefits of a natural climb speed."
+                    }
+                  ],
+                  "maximumLevel": 5
+                },
+                {
+                  "id": "frog-greater",
+                  "label": "Frog (greater)",
+                  "summary": "+4 competence on Acrobatics, running-start jumps, and a swim speed equal to half land speed.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Frog Greater Aspect",
+                      "description": "+4 competence on Acrobatics, running-start jumps, and a swim speed equal to half land speed."
+                    }
+                  ],
+                  "minimumLevel": 6
+                },
+                {
+                  "id": "gorilla-greater",
+                  "label": "Gorilla (greater)",
+                  "summary": "Increase unarmed damage one step; +4 competence on grapple and reposition, +2 Perception, and +1 Fortitude.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Gorilla Greater Aspect",
+                      "description": "Increase unarmed damage one step; +4 competence on grapple and reposition, +2 Perception, and +1 Fortitude."
+                    }
+                  ],
+                  "minimumLevel": 6
+                },
+                {
+                  "id": "monkey-greater",
+                  "label": "Monkey (greater)",
+                  "summary": "+4 competence on Climb and Acrobatics, plus the Throw Anything benefit.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Monkey Greater Aspect",
+                      "description": "+4 competence on Climb and Acrobatics, plus the Throw Anything benefit."
+                    }
+                  ],
+                  "minimumLevel": 6
+                },
+                {
+                  "id": "otter-greater",
+                  "label": "Otter (greater)",
+                  "summary": "Gain a swim speed equal to land speed, extended breath, and cast underwater without concentration checks.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Otter Greater Aspect",
+                      "description": "Gain a swim speed equal to land speed, extended breath, and cast underwater without concentration checks."
+                    }
+                  ],
+                  "minimumLevel": 6
+                },
+                {
+                  "id": "raccoon-greater",
+                  "label": "Raccoon (greater)",
+                  "summary": "+4 competence on Disable Device, Sleight of Hand, and Stealth.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Raccoon Greater Aspect",
+                      "description": "+4 competence on Disable Device, Sleight of Hand, and Stealth."
+                    }
+                  ],
+                  "minimumLevel": 6
+                },
+                {
+                  "id": "raptor-greater",
+                  "label": "Raptor (greater)",
+                  "summary": "Gain +30 feet to land speed and the Run feat benefit.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Raptor Greater Aspect",
+                      "description": "Gain +30 feet to land speed and the Run feat benefit."
+                    }
+                  ],
+                  "minimumLevel": 6
+                },
+                {
+                  "id": "tree-lizard-greater",
+                  "label": "Tree Lizard (greater)",
+                  "summary": "Gain a climb speed equal to half normal speed and +4 competence on Stealth.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Tree Lizard Greater Aspect",
+                      "description": "Gain a climb speed equal to half normal speed and +4 competence on Stealth."
+                    }
+                  ],
+                  "minimumLevel": 6
+                },
+                {
+                  "id": "aspect-of-the-falcon",
+                  "label": "Aspect of the Falcon",
+                  "summary": "Gain the spell's Perception and ranged-attack benefits.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Aspect of the Falcon",
+                      "description": "Gain the spell's Perception and ranged-attack benefits."
+                    }
+                  ],
+                  "minimumLevel": 8
+                },
+                {
+                  "id": "aspect-of-the-bear",
+                  "label": "Aspect of the Bear",
+                  "summary": "Gain +2 natural armor and +2 on combat maneuver checks.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Aspect of the Bear",
+                      "description": "Gain +2 natural armor and +2 on combat maneuver checks."
+                    }
+                  ],
+                  "minimumLevel": 10
+                },
+                {
+                  "id": "aspect-of-the-stag",
+                  "label": "Aspect of the Stag",
+                  "summary": "Gain +2 dodge AC against attacks of opportunity and the spell's increased speed.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Aspect of the Stag",
+                      "description": "Gain +2 dodge AC against attacks of opportunity and the spell's increased speed."
+                    }
+                  ],
+                  "minimumLevel": 12
+                },
+                {
+                  "id": "aspect-of-the-wolf",
+                  "label": "Aspect of the Wolf",
+                  "summary": "Gain +4 Strength, +4 Dexterity, and +2 on trip checks.",
+                  "defaultRounds": 100,
+                  "activeEffects": [
+                    {
+                      "target": "allies",
+                      "bonus": 0,
+                      "label": "Aspect of the Wolf",
+                      "description": "Gain +4 Strength, +4 Dexterity, and +2 on trip checks."
+                    }
+                  ],
+                  "minimumLevel": 14
+                }
+              ],
+              "activeEffect": {
+                "name": "Communal Aspect",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "All allies within 30 feet gain the selected aspect for this 10-minute increment.",
+                "defaultRounds": 100,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one 10-minute increment to grant one selected aspect to every ally within 30 feet; choosing another aspect ends the prior one."
+            }
+          ]
         }
       ]
     }
@@ -40,8 +352,38 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Drovier"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Animal, Eagle, and Wolf domain legality, the level-sized 10-minute Communal Aspect pool, level-gated aspect modes, replacement behavior, and the level-20 at-will capstone are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-domain"
+  ],
+  "druidDomainIds": [
+    "domain-animal",
+    "domain-eagle",
+    "domain-wolf"
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "cleric-domains",
+      "sourceGroupId": "drovier-domains"
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "communalAspectIncrements",
+      "label": "Communal Aspect",
+      "unit": "10-minute increment",
+      "operation": "add",
+      "minimumLevel": 4,
+      "base": 0,
+      "levelMultiplier": 1,
+      "minimum": 4,
+      "maximum": 20,
+      "atWillAtLevel": 20,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }

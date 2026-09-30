@@ -1,0 +1,37 @@
+{
+  "id": "drovier-domains",
+  "name": "Drovier Animal Domains",
+  "classIds": [
+    "druid"
+  ],
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimatemagic/spellcastingClassOptions/druid.html"
+  },
+  "optionDefaults": {
+    "groupId": "drovier-domains",
+    "classIds": [
+      "druid"
+    ],
+    "minimumLevel": 1,
+    "prerequisites": [],
+    "source": {
+      "title": "Ultimate Magic",
+      "page": null,
+      "url": "https://legacy.aonprd.com/ultimatemagic/spellcastingClassOptions/druid.html"
+    }
+  },
+  "options": [
+    {
+      "id": "domain-eagle",
+      "name": "Eagle Domain",
+      "benefit": "Gain a hawk familiar, Hawkeye, aerial evasion, and the Eagle domain spell list."
+    },
+    {
+      "id": "domain-wolf",
+      "name": "Wolf Domain",
+      "benefit": "Gain Improved Trip, Pack Tactics, and the Wolf domain spell list."
+    }
+  ]
+}

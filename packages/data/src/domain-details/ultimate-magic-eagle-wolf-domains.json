@@ -1,0 +1,120 @@
+{
+  "source": {
+    "title": "Ultimate Magic",
+    "page": null,
+    "url": "https://legacy.aonprd.com/ultimatemagic/spellcastingClassOptions/druid.html"
+  },
+  "domains": [
+    {
+      "id": "domain-eagle",
+      "powers": [
+        {
+          "name": "Hawk Familiar",
+          "level": 1,
+          "summary": "Gain a hawk familiar using druid level as effective wizard level; familiar-granting class levels stack."
+        },
+        {
+          "name": "Hawkeye",
+          "level": 1,
+          "summary": "As a swift action, add half druid level (minimum +1) to one ranged attack or Perception check, 3 + Wisdom modifier times per day."
+        },
+        {
+          "name": "Aerial Evasion",
+          "level": 6,
+          "summary": "Gain evasion while flying, improving to improved evasion at level 12."
+        }
+      ],
+      "domainSpells": [
+        {
+          "level": 1,
+          "name": "aspect of the falcon"
+        },
+        {
+          "level": 2,
+          "name": "eagle's splendor"
+        },
+        {
+          "level": 3,
+          "name": "fly"
+        },
+        {
+          "level": 4,
+          "name": "river of wind"
+        },
+        {
+          "level": 5,
+          "name": "overland flight"
+        },
+        {
+          "level": 6,
+          "name": "eagle aerie"
+        },
+        {
+          "level": 7,
+          "name": "animal shapes (birds only)"
+        },
+        {
+          "level": 8,
+          "name": "sunburst"
+        },
+        {
+          "level": 9,
+          "name": "winds of vengeance"
+        }
+      ]
+    },
+    {
+      "id": "domain-wolf",
+      "powers": [
+        {
+          "name": "Improved Trip",
+          "level": 1,
+          "summary": "Gain Improved Trip as a bonus feat."
+        },
+        {
+          "name": "Pack Tactics",
+          "level": 8,
+          "summary": "As a free action, designate an adjacent square for flanking until the next turn or movement; alternatively add Wisdom instead of +2 when already flanking. Uses per day equal 3 + Wisdom modifier."
+        }
+      ],
+      "domainSpells": [
+        {
+          "level": 1,
+          "name": "hunter's howl"
+        },
+        {
+          "level": 2,
+          "name": "bloodhound"
+        },
+        {
+          "level": 3,
+          "name": "aspect of the wolf"
+        },
+        {
+          "level": 4,
+          "name": "strong jaw"
+        },
+        {
+          "level": 5,
+          "name": "tireless pursuers"
+        },
+        {
+          "level": 6,
+          "name": "find the path"
+        },
+        {
+          "level": 7,
+          "name": "animal shapes (canines only)"
+        },
+        {
+          "level": 8,
+          "name": "phantasmal revenge"
+        },
+        {
+          "level": 9,
+          "name": "freedom"
+        }
+      ]
+    }
+  ]
+}

@@ -678,6 +678,7 @@ export interface CharacterArchetype {
     minimum?: number;
     maximum?: number;
     maximumByLevel?: Array<{ level: number; maximum: number }>;
+    atWillAtLevel?: number;
     effectiveLevelClassIds?: string[];
     advancementOptionId?: string;
     requiredOptionId?: string;
