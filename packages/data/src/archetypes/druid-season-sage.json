@@ -23,14 +23,327 @@
           "name": "Season’s Touch (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a season sage can infuse living things with the essence of a season with a touch, causing them to manifest the changes associated with that season—for example, a touch of winter can make some animals grow a thick winter coat, while a touch of summer can make them shed. A touch of autumn would make a deciduous tree’s leaves change colors, a touch of winter would make its leaves fall, and a touch of spring would make it put forth new leaves. In addition, a season sage can use the following abilities (in any combination) a total number of times per day equal to 1 + his Wisdom modifier. This replaces wild shape. Vernal Growth : A touched living creature gains the effects of enlarge person (even if it is not a humanoid) for 1 minute per druid level. A touched non-creature plant likewise doubles in all dimensions for the same duration. Summer Might : A touched creature gains a +4 enhancement bonus to Constitution for 1 minute per druid level. Autumn Rot : A touched creature or object made of plant matter takes 1d6 points of acid damage per 2 druid levels. Winter Frost : A touched creature or object takes 1d6 points of cold damage per 2 druid levels."
+          "summary": "At 4th level, a season sage can infuse living things with the essence of a season with a touch, causing them to manifest the changes associated with that season—for example, a touch of winter can make some animals grow a thick winter coat, while a touch of summer can make them shed. A touch of autumn would make a deciduous tree’s leaves change colors, a touch of winter would make its leaves fall, and a touch of spring would make it put forth new leaves. In addition, a season sage can use the following abilities (in any combination) a total number of times per day equal to 1 + his Wisdom modifier. This replaces wild shape. Vernal Growth : A touched living creature gains the effects of enlarge person (even if it is not a humanoid) for 1 minute per druid level. A touched non-creature plant likewise doubles in all dimensions for the same duration. Summer Might : A touched creature gains a +4 enhancement bonus to Constitution for 1 minute per druid level. Autumn Rot : A touched creature or object made of plant matter takes 1d6 points of acid damage per 2 druid levels. Winter Frost : A touched creature or object takes 1d6 points of cold damage per 2 druid levels.",
+          "resourceActions": [
+            {
+              "id": "season-sage-vernal-growth",
+              "label": "Use Vernal Growth",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "seasonsTouch",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Vernal Growth",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "The touched living creature gains enlarge person even if it is not humanoid; a touched non-creature plant doubles in all dimensions. Duration is 1 minute per druid level.",
+                "defaultRounds": 999,
+                "fixedRounds": true
+              },
+              "summary": "Spend 1 use and track the level-duration enlargement effect."
+            },
+            {
+              "id": "season-sage-summer-might",
+              "label": "Use Summer Might",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "seasonsTouch",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Summer Might",
+                "targets": [
+                  "constitution"
+                ],
+                "bonus": 4,
+                "description": "The touched character gains +4 enhancement to Constitution for 1 minute per druid level.",
+                "defaultRounds": 999,
+                "fixedRounds": true
+              },
+              "summary": "Spend 1 use and track the touched creature's +4 Constitution enhancement."
+            },
+            {
+              "id": "season-sage-autumn-rot",
+              "label": "Use Autumn Rot",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "seasonsTouch",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "combatRoll": {
+                "attack": {
+                  "kind": "melee-touch",
+                  "label": "Touch attack",
+                  "abilityModifier": "strength"
+                },
+                "damage": {
+                  "type": "acid",
+                  "diceCountByLevel": [
+                    {
+                      "level": 4,
+                      "count": 2
+                    },
+                    {
+                      "level": 6,
+                      "count": 3
+                    },
+                    {
+                      "level": 8,
+                      "count": 4
+                    },
+                    {
+                      "level": 10,
+                      "count": 5
+                    },
+                    {
+                      "level": 12,
+                      "count": 6
+                    },
+                    {
+                      "level": 14,
+                      "count": 7
+                    },
+                    {
+                      "level": 16,
+                      "count": 8
+                    },
+                    {
+                      "level": 18,
+                      "count": 9
+                    },
+                    {
+                      "level": 20,
+                      "count": 10
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 4,
+                      "sides": 6
+                    }
+                  ]
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 4,
+                    "range": "touch"
+                  }
+                ]
+              },
+              "summary": "Spend 1 use, resolve the touch attack, and roll 1d6 acid damage per 2 druid levels."
+            },
+            {
+              "id": "season-sage-winter-frost",
+              "label": "Use Winter Frost",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "seasonsTouch",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "combatRoll": {
+                "attack": {
+                  "kind": "melee-touch",
+                  "label": "Touch attack",
+                  "abilityModifier": "strength"
+                },
+                "damage": {
+                  "type": "cold",
+                  "diceCountByLevel": [
+                    {
+                      "level": 4,
+                      "count": 2
+                    },
+                    {
+                      "level": 6,
+                      "count": 3
+                    },
+                    {
+                      "level": 8,
+                      "count": 4
+                    },
+                    {
+                      "level": 10,
+                      "count": 5
+                    },
+                    {
+                      "level": 12,
+                      "count": 6
+                    },
+                    {
+                      "level": 14,
+                      "count": 7
+                    },
+                    {
+                      "level": 16,
+                      "count": 8
+                    },
+                    {
+                      "level": 18,
+                      "count": 9
+                    },
+                    {
+                      "level": 20,
+                      "count": 10
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 4,
+                      "sides": 6
+                    }
+                  ]
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 4,
+                    "range": "touch"
+                  }
+                ]
+              },
+              "summary": "Spend 1 use, resolve the touch attack, and roll 1d6 cold damage per 2 druid levels."
+            }
+          ]
         },
         {
           "id": "druid-season-sage-season-s-veil-su-6",
           "name": "Season’s Veil (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, a season sage can radiate an aura of seasonal power as a standard action once per day. This affects a 20-foot-radius burst centered on the season sage and lasts in that area for 10 minutes, regardless of where the season sage moves afterward. At 8th level and every 2 levels thereafter, the season sage can use this ability an additional time per day. At 10th level, the radius increases to 40 feet. Vernal Bloom : The area surges with life. Plants form vibrant, heavy undergrowth (see page 426 of the Pathfinder RPG Core Rulebook ) while in the aura. If the area can support plants, a circle of minor plants lingers afterward. At 8th level, the season sage can affect the area with plant growth as a swift action at will, which can linger after the aura passes. Summer Heat : The area of effect is treated as if it were under the effects of extreme heat. At 8th level, as a swift action the season sage can have the area deal 1d6 points of fire damage each round to other creatures in the area. Autumn Squall : The area is filled with fog, rain, and blown leaves. All creatures in the area gain concealment (abilities to specifically see through fog or rain don’t apply). At 8th level, the season sage can affect the area with diminish plants as a swift action at will, which also lingers after the aura passes. Winter Chill : The area of effect is treated as if it were under the effects of extreme cold. At 8th level, as a swift action the season sage can have the area deal 1d6 points of cold damage each round to other creatures in the area."
+          "summary": "At 6th level, a season sage can radiate an aura of seasonal power as a standard action once per day. This affects a 20-foot-radius burst centered on the season sage and lasts in that area for 10 minutes, regardless of where the season sage moves afterward. At 8th level and every 2 levels thereafter, the season sage can use this ability an additional time per day. At 10th level, the radius increases to 40 feet. Vernal Bloom : The area surges with life. Plants form vibrant, heavy undergrowth (see page 426 of the Pathfinder RPG Core Rulebook ) while in the aura. If the area can support plants, a circle of minor plants lingers afterward. At 8th level, the season sage can affect the area with plant growth as a swift action at will, which can linger after the aura passes. Summer Heat : The area of effect is treated as if it were under the effects of extreme heat. At 8th level, as a swift action the season sage can have the area deal 1d6 points of fire damage each round to other creatures in the area. Autumn Squall : The area is filled with fog, rain, and blown leaves. All creatures in the area gain concealment (abilities to specifically see through fog or rain don’t apply). At 8th level, the season sage can affect the area with diminish plants as a swift action at will, which also lingers after the aura passes. Winter Chill : The area of effect is treated as if it were under the effects of extreme cold. At 8th level, as a swift action the season sage can have the area deal 1d6 points of cold damage each round to other creatures in the area.",
+          "resourceActions": [
+            {
+              "id": "season-sage-seasons-veil",
+              "label": "Create Season's Veil",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "seasonsVeil",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Season",
+              "modes": [
+                {
+                  "id": "spring",
+                  "label": "Vernal Bloom",
+                  "summary": "Heavy undergrowth; at level 8, plant growth can be applied as a swift action.",
+                  "defaultRounds": 100
+                },
+                {
+                  "id": "summer",
+                  "label": "Summer Heat",
+                  "summary": "Extreme heat; at level 8, pulse 1d6 fire damage each round.",
+                  "defaultRounds": 100
+                },
+                {
+                  "id": "autumn",
+                  "label": "Autumn Squall",
+                  "summary": "Fog, rain, and leaves grant concealment; at level 8, diminish plants can be applied as a swift action.",
+                  "defaultRounds": 100
+                },
+                {
+                  "id": "winter",
+                  "label": "Winter Chill",
+                  "summary": "Extreme cold; at level 8, pulse 1d6 cold damage each round.",
+                  "defaultRounds": 100
+                }
+              ],
+              "activeEffect": {
+                "name": "Season's Veil",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "A 20-foot-radius seasonal aura (40 feet at level 10) persists in place for 10 minutes.",
+                "defaultRounds": 100,
+                "fixedRounds": true
+              },
+              "summary": "Spend 1 use, choose the seasonal mode, and track the fixed 10-minute area effect."
+            },
+            {
+              "id": "season-sage-veil-swift-effect",
+              "label": "Use Active Veil Effect",
+              "classId": "druid",
+              "minimumLevel": 8,
+              "actionTypeByLevel": [
+                {
+                  "level": 8,
+                  "actionType": "swift"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "matching-veil",
+                  "label": "The matching Season's Veil mode is active",
+                  "requiredForActivation": true
+                }
+              ],
+              "modeLabel": "Active veil",
+              "modes": [
+                {
+                  "id": "spring",
+                  "label": "Plant Growth",
+                  "summary": "Apply plant growth within Vernal Bloom.",
+                  "defaultRounds": 1
+                },
+                {
+                  "id": "summer",
+                  "label": "1d6 Fire",
+                  "summary": "Deal 1d6 fire damage to other creatures in Summer Heat.",
+                  "defaultRounds": 1
+                },
+                {
+                  "id": "autumn",
+                  "label": "Diminish Plants",
+                  "summary": "Apply diminish plants within Autumn Squall.",
+                  "defaultRounds": 1
+                },
+                {
+                  "id": "winter",
+                  "label": "1d6 Cold",
+                  "summary": "Deal 1d6 cold damage to other creatures in Winter Chill.",
+                  "defaultRounds": 1
+                }
+              ],
+              "activeEffect": {
+                "name": "Season's Veil Swift Effect",
+                "targets": [
+                  "area"
+                ],
+                "bonus": 0,
+                "description": "Resolve the selected at-will swift effect inside the currently active matching veil.",
+                "defaultRounds": 1,
+                "fixedRounds": true
+              },
+              "summary": "Resolve the matching at-will swift effect within an active veil."
+            }
+          ]
         },
         {
           "id": "druid-season-sage-season-mastery-sp-12",
@@ -47,8 +360,37 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Season%20Sage"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Both daily pools, all four touch modes with calculated damage, all veil modes and swift riders, and the inferred control weather spell-like ability are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "seasonsTouch",
+      "label": "Season's Touch",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 4,
+      "base": 1,
+      "abilityModifier": "wisdom",
+      "abilityMultiplier": 1,
+      "minimum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "seasonsVeil",
+      "label": "Season's Veil",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 6,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 2,
+      "minimum": 1,
+      "maximum": 8,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }
