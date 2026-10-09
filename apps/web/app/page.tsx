@@ -1879,6 +1879,7 @@ export default function Home() {
       level: feature.level,
       classLevel: featureClassLevel,
       favoredTerrainBaseBonus: feature.favoredTerrainBaseBonus,
+      companionRoster: feature.companionRoster,
       options: levelAwareOptions,
       selected: levelAwareOptions.find(
         (option) => option.id === selectedOptions[feature.id],
@@ -2649,6 +2650,14 @@ export default function Home() {
     if (selectedValue("ranger-hunters-bond-") === "ranger-hunters-bond-animal")
       add("ranger-companion", "animal", selectedValue("ranger-animal-companion-"), "Animal companion", Math.max(1, (classLevelMap.ranger ?? 0) - 3), { bonusHitPoints: reward("half-orc-ranger-companion"), bonusSkillRanks: reward("half-elf-ranger-companion") });
     add("hunter-companion", "animal", selectedValue("hunter-animal-companion-"), "Hunter companion", classLevelMap.hunter ?? 0);
+    for (const feature of progression.features.filter((item) => item.companionRoster || item.id === "beast-master-companion-roster-4")) {
+      const rosterLabel = feature.companionRoster?.label ?? "Beast Master";
+      for (let index = 0; index < 20; index += 1) {
+        const optionId = selectedOptions[`${feature.id}-${index}-companion`] ?? "";
+        const effectiveLevel = Number.parseInt(selectedOptions[`${feature.id}-${index}-level`] ?? "0", 10) || 0;
+        add(`roster-${feature.id}-${index}`, "animal", optionId, `${rosterLabel} companion ${index + 1}`, effectiveLevel);
+      }
+    }
     if (selectedValue("paladin-divine-bond-") === "paladin-divine-bond-mount")
       descriptors.push({ id: "paladin-mount", kind: "mount", optionId: "paladin-divine-bond-mount", label: "Bonded mount", effectiveLevel: classLevelMap.paladin ?? 1 });
     add("cavalier-mount", "mount", selectedValue("cavalier-mount-"), "Cavalier mount", classLevelMap.cavalier ?? 0, { bonusHitPoints: reward("elf-cavalier-mount") });
