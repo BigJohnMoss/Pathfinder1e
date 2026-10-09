@@ -44,22 +44,631 @@
           "id": "druid-supernaturalist-eldritch-botanist-ex-1",
           "name": "Eldritch Botanist (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A supernaturalist can affect plants with mind-affecting effects she creates and with spells that normally affect animals. Any such spell that allows a Will save can instead be negated by the target plant with a successful Fortitude save at the same DC. She also can choose plant bond and green empathy, as a treesinger druid ( Advanced Race Guide 25), in place of nature bond and wild empathy."
+          "type": "selectable",
+          "summary": "A supernaturalist can affect plants with mind-affecting effects she creates and with spells that normally affect animals. Any such spell that allows a Will save can instead be negated by the target plant with a successful Fortitude save at the same DC. She also can choose plant bond and green empathy, as a treesinger druid ( Advanced Race Guide 25), in place of nature bond and wild empathy.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "resourceActions": [
+            {
+              "id": "supernaturalist-green-empathy",
+              "label": "Resolve Green Empathy",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "1-minute"
+                }
+              ],
+              "modeLabel": "Target",
+              "modes": [
+                {
+                  "id": "green-empathy-plant",
+                  "label": "Plant creature",
+                  "summary": "Use the normal druid-level + Charisma modifier check."
+                },
+                {
+                  "id": "green-empathy-animal",
+                  "label": "Animal",
+                  "summary": "Use the check with the required −4 penalty."
+                }
+              ],
+              "diceRoll": {
+                "label": "Green Empathy",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Druid level + Charisma modifier (apply −4 for animals)",
+                "targetDcInputLabel": "Attitude DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "attitude improves"
+                  }
+                ],
+                "failureLabel": "attitude unchanged"
+              },
+              "summary": "Resolve Green Empathy within 30 feet when the plant-bond alternative is selected."
+            }
+          ]
         },
         {
           "id": "druid-supernaturalist-paranormal-scholar-ex-3",
           "name": "Paranormal Scholar (Ex)",
           "level": 3,
-          "type": "archetype",
-          "summary": "A supernaturalist gains Psychic Sensitivity OA as a bonus feat and adds Diplomacy, Knowledge (arcana), and Sense Motive as class skills. At 3rd level and every 3 levels thereafter, she can select a spell from the psychic class’s spell list ( Occult Adventures 69) and add it to her druid spell list, and is able to prepare and cast it as a druid spell. This replaces nature sense, trackless step, and resist nature’s lure."
+          "type": "selectable",
+          "summary": "A supernaturalist gains Psychic Sensitivity OA as a bonus feat and adds Diplomacy, Knowledge (arcana), and Sense Motive as class skills. At 3rd level and every 3 levels thereafter, she can select a spell from the psychic class’s spell list ( Occult Adventures 69) and add it to her druid spell list, and is able to prepare and cast it as a druid spell. This replaces nature sense, trackless step, and resist nature’s lure.",
+          "grantedFeatId": "psychic-sensitivity",
+          "choiceRequired": true,
+          "optionGroupId": "supernaturalist-psychic-spells",
+          "progressionKey": "supernaturalist-psychic-spell"
         },
         {
           "id": "druid-supernaturalist-animal-spirit-su-4",
           "name": "Animal Spirit (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a supernaturalist can perform a seance to call an animal spirit of any animal with which she is familiar to serve as her companion and guide. The supernaturalist gains spirit, spirit bonus, spirit surge, and taboo abilities as a medium ( Occult Adventures 30) 3 levels lower than her druid level. The supernaturalist’s allies cannot participate in this seance. This ability replaces wild shape. The spirit abilities of the animal spirit are as follows. Spirit Bonus : Your spirit bonus applies on attack and damage rolls with natural weapons and on skill checks relating to animals and plants. Seance Boon : Your natural armor bonus to AC increases by 1. Favored Location : Native terrain of the animal type being invoked. Influence Penalty : You become wild and savage, taking a penalty equal to your spirit bonus on caster level checks, Charisma- and Intelligencebased ability checks, and skill checks. Taboos : Choose one: you must not speak (except with animals and plants); you must not wield manufactured weapons; you must not eat anything you did not kill or harvest yourself. Totem Transformation (Lesser, Su) : You gain any of the following abilities possessed by the animal you select as your animal spirit: bite (1d6 for a Medium druid), 2 claws (1d4 for a Medium druid), darkvision, improved land movement speed (up to a +20-foot enhancement bonus to the druid’s base land movement speed), low-light vision, scent, and swim (up to 30 feet). Pack Leader (Intermediate, Su) : When you summon animals that match your animal spirit, they gain a +2 bonus on attack rolls, damage rolls, and saving throws. Wildstrike (Greater, Su) : You can allow your animal spirit to gain 1 point of influence over you as a swift action to allow an animal or plant (including your companion) within 30 feet that can see or hear you to immediately take an additional standard action. Wild Heart (Supreme, Ex) : You gain a +4 bonus on saves against enchantment and mind-affecting effects, and immunity to effects that affect only humanoids. Once per day, you can cast any summon nature’s ally spell you can cast spontaneously as a standard action without expending a spell slot."
+          "summary": "At 4th level, a supernaturalist can perform a seance to call an animal spirit of any animal with which she is familiar to serve as her companion and guide. The supernaturalist gains spirit, spirit bonus, spirit surge, and taboo abilities as a medium ( Occult Adventures 30) 3 levels lower than her druid level. The supernaturalist’s allies cannot participate in this seance. This ability replaces wild shape. The spirit abilities of the animal spirit are as follows. Spirit Bonus : Your spirit bonus applies on attack and damage rolls with natural weapons and on skill checks relating to animals and plants. Seance Boon : Your natural armor bonus to AC increases by 1. Favored Location : Native terrain of the animal type being invoked. Influence Penalty : You become wild and savage, taking a penalty equal to your spirit bonus on caster level checks, Charisma- and Intelligencebased ability checks, and skill checks. Taboos : Choose one: you must not speak (except with animals and plants); you must not wield manufactured weapons; you must not eat anything you did not kill or harvest yourself. Totem Transformation (Lesser, Su) : You gain any of the following abilities possessed by the animal you select as your animal spirit: bite (1d6 for a Medium druid), 2 claws (1d4 for a Medium druid), darkvision, improved land movement speed (up to a +20-foot enhancement bonus to the druid’s base land movement speed), low-light vision, scent, and swim (up to 30 feet). Pack Leader (Intermediate, Su) : When you summon animals that match your animal spirit, they gain a +2 bonus on attack rolls, damage rolls, and saving throws. Wildstrike (Greater, Su) : You can allow your animal spirit to gain 1 point of influence over you as a swift action to allow an animal or plant (including your companion) within 30 feet that can see or hear you to immediately take an additional standard action. Wild Heart (Supreme, Ex) : You gain a +4 bonus on saves against enchantment and mind-affecting effects, and immunity to effects that affect only humanoids. Once per day, you can cast any summon nature’s ally spell you can cast spontaneously as a standard action without expending a spell slot.",
+          "progressionProfiles": [
+            {
+              "id": "supernaturalist-animal-spirit-progression",
+              "label": "Animal Spirit",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "mediumLevel",
+                  "label": "Effective medium level"
+                },
+                {
+                  "id": "spiritBonus",
+                  "label": "Spirit bonus"
+                },
+                {
+                  "id": "surge",
+                  "label": "Spirit surge"
+                },
+                {
+                  "id": "powers",
+                  "label": "Spirit powers"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "mediumLevel": 1,
+                    "spiritBonus": 1,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "mediumLevel": 2,
+                    "spiritBonus": 1,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "mediumLevel": 3,
+                    "spiritBonus": 1,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation"
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "mediumLevel": 4,
+                    "spiritBonus": 2,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "mediumLevel": 5,
+                    "spiritBonus": 2,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "mediumLevel": 6,
+                    "spiritBonus": 2,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation, Pack Leader"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "mediumLevel": 7,
+                    "spiritBonus": 2,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation, Pack Leader"
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "mediumLevel": 8,
+                    "spiritBonus": 3,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation, Pack Leader"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "mediumLevel": 9,
+                    "spiritBonus": 3,
+                    "surge": "1d6",
+                    "powers": "Totem Transformation, Pack Leader"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "mediumLevel": 10,
+                    "spiritBonus": 3,
+                    "surge": "1d8",
+                    "powers": "Totem Transformation, Pack Leader"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "mediumLevel": 11,
+                    "spiritBonus": 3,
+                    "surge": "1d8",
+                    "powers": "Totem Transformation, Pack Leader, Wildstrike"
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "mediumLevel": 12,
+                    "spiritBonus": 4,
+                    "surge": "1d8",
+                    "powers": "Totem Transformation, Pack Leader, Wildstrike"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "mediumLevel": 13,
+                    "spiritBonus": 4,
+                    "surge": "1d8",
+                    "powers": "Totem Transformation, Pack Leader, Wildstrike"
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "mediumLevel": 14,
+                    "spiritBonus": 4,
+                    "surge": "1d8",
+                    "powers": "Totem Transformation, Pack Leader, Wildstrike"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "mediumLevel": 15,
+                    "spiritBonus": 4,
+                    "surge": "1d8",
+                    "powers": "Totem Transformation, Pack Leader, Wildstrike"
+                  }
+                },
+                {
+                  "level": 19,
+                  "values": {
+                    "mediumLevel": 16,
+                    "spiritBonus": 5,
+                    "surge": "1d8",
+                    "powers": "Totem Transformation, Pack Leader, Wildstrike"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "mediumLevel": 17,
+                    "spiritBonus": 5,
+                    "surge": "1d8",
+                    "powers": "Totem Transformation, Pack Leader, Wildstrike, Wild Heart"
+                  }
+                }
+              ],
+              "summary": "Animal Spirit advances as a medium three levels lower than druid level."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "supernaturalist-spirit-surge",
+              "label": "Use Spirit Surge",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "animalSpiritInfluence",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "immediate"
+                }
+              ],
+              "diceRoll": {
+                "label": "Spirit Surge bonus",
+                "diceCountByLevel": [
+                  {
+                    "level": 4,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 4,
+                    "sides": 6
+                  },
+                  {
+                    "level": 13,
+                    "sides": 8
+                  }
+                ],
+                "flatModifierByLevel": [
+                  {
+                    "level": 4,
+                    "modifier": 0
+                  }
+                ]
+              },
+              "summary": "Gain 1 influence and roll the displayed surge die for a failed associated d20 roll (1d10 at druid 21 is outside this builder's level cap)."
+            },
+            {
+              "id": "supernaturalist-taboo-spirit-surge",
+              "label": "Use Taboo Spirit Surge",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "resourceId": "animalSpiritFreeSurges",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "immediate"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "taboo-kept",
+                  "label": "The selected animal-spirit taboo has not been broken",
+                  "requiredForActivation": true
+                }
+              ],
+              "diceRoll": {
+                "label": "Spirit Surge bonus",
+                "diceCountByLevel": [
+                  {
+                    "level": 5,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 5,
+                    "sides": 6
+                  },
+                  {
+                    "level": 13,
+                    "sides": 8
+                  }
+                ],
+                "flatModifierByLevel": [
+                  {
+                    "level": 5,
+                    "modifier": 0
+                  }
+                ]
+              },
+              "summary": "Spend one of the two taboo-granted surges without gaining influence."
+            },
+            {
+              "id": "supernaturalist-animal-spirit-taboo",
+              "label": "Set Animal Spirit Taboo",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "modeLabel": "Taboo",
+              "modes": [
+                {
+                  "id": "animal-spirit-taboo-silence",
+                  "label": "Do not speak except with animals and plants",
+                  "summary": "Do not speak except with animals and plants",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Spirit Taboo — Do not speak except with animals and plants",
+                      "description": "Do not speak except with animals and plants"
+                    }
+                  ]
+                },
+                {
+                  "id": "animal-spirit-taboo-natural-weapons",
+                  "label": "Do not wield manufactured weapons",
+                  "summary": "Do not wield manufactured weapons",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Spirit Taboo — Do not wield manufactured weapons",
+                      "description": "Do not wield manufactured weapons"
+                    }
+                  ]
+                },
+                {
+                  "id": "animal-spirit-taboo-self-provision",
+                  "label": "Eat only what you killed or harvested",
+                  "summary": "Eat only what you killed or harvested",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Animal Spirit Taboo — Eat only what you killed or harvested",
+                      "description": "Eat only what you killed or harvested"
+                    }
+                  ]
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 5,
+                  "actionType": "1-hour"
+                }
+              ],
+              "activeEffect": {
+                "name": "Animal Spirit Taboo",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Tracks the taboo accepted during the animal-spirit seance.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Choose the taboo accepted for the current animal-spirit seance."
+            },
+            {
+              "id": "supernaturalist-totem-transformation",
+              "label": "Apply Totem Transformation",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "modeLabel": "Ability possessed by animal spirit",
+              "modes": [
+                {
+                  "id": "animal-spirit-bite",
+                  "label": "Bite 1d6",
+                  "summary": "Gain Bite 1d6 while this transformation is active.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Totem Transformation — Bite 1d6",
+                      "description": "Animal spirit grants Bite 1d6."
+                    }
+                  ]
+                },
+                {
+                  "id": "animal-spirit-claws",
+                  "label": "Two claws 1d4",
+                  "summary": "Gain Two claws 1d4 while this transformation is active.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Totem Transformation — Two claws 1d4",
+                      "description": "Animal spirit grants Two claws 1d4."
+                    }
+                  ]
+                },
+                {
+                  "id": "animal-spirit-darkvision",
+                  "label": "Darkvision",
+                  "summary": "Gain Darkvision while this transformation is active.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Totem Transformation — Darkvision",
+                      "description": "Animal spirit grants Darkvision."
+                    }
+                  ]
+                },
+                {
+                  "id": "animal-spirit-speed",
+                  "label": "Land speed +20 feet",
+                  "summary": "Gain Land speed +20 feet while this transformation is active.",
+                  "activeEffects": [
+                    {
+                      "target": "landSpeed",
+                      "bonus": 20,
+                      "label": "Totem Transformation — Land speed +20 feet",
+                      "description": "Animal spirit grants Land speed +20 feet."
+                    }
+                  ]
+                },
+                {
+                  "id": "animal-spirit-low-light",
+                  "label": "Low-light vision",
+                  "summary": "Gain Low-light vision while this transformation is active.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Totem Transformation — Low-light vision",
+                      "description": "Animal spirit grants Low-light vision."
+                    }
+                  ]
+                },
+                {
+                  "id": "animal-spirit-scent",
+                  "label": "Scent",
+                  "summary": "Gain Scent while this transformation is active.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Totem Transformation — Scent",
+                      "description": "Animal spirit grants Scent."
+                    }
+                  ]
+                },
+                {
+                  "id": "animal-spirit-swim",
+                  "label": "Swim 30 feet",
+                  "summary": "Gain Swim 30 feet while this transformation is active.",
+                  "activeEffects": [
+                    {
+                      "target": "self",
+                      "bonus": 0,
+                      "label": "Totem Transformation — Swim 30 feet",
+                      "description": "Animal spirit grants Swim 30 feet."
+                    }
+                  ]
+                }
+              ],
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Totem Transformation",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Tracks the selected lesser animal-spirit power.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Select an ability possessed by the animal called in the seance."
+            },
+            {
+              "id": "supernaturalist-wildstrike",
+              "label": "Use Wildstrike",
+              "classId": "druid",
+              "minimumLevel": 14,
+              "resourceId": "animalSpiritInfluence",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 14,
+                  "actionType": "swift"
+                }
+              ],
+              "activeEffect": {
+                "name": "Wildstrike extra action",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "An animal or plant within 30 feet that can see or hear the supernaturalist immediately takes one additional standard action.",
+                "defaultRounds": 1,
+                "fixedRounds": true
+              },
+              "summary": "Gain 1 influence and grant one eligible animal or plant an immediate extra standard action."
+            },
+            {
+              "id": "supernaturalist-wild-heart-summon",
+              "label": "Cast Summon Nature's Ally",
+              "classId": "druid",
+              "minimumLevel": 20,
+              "resourceId": "wildHeartSummon",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 20,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "castable-tier",
+                  "label": "Selected summon nature's ally spell is a tier this character can cast",
+                  "requiredForActivation": true
+                }
+              ],
+              "summary": "Cast one spontaneously available summon nature's ally spell without expending a spell slot."
+            }
+          ]
+        },
+        {
+          "id": "druid-supernaturalist-paranormal-scholar-6",
+          "name": "Paranormal Scholar",
+          "level": 6,
+          "type": "selectable",
+          "summary": "Select another spell from the psychic class spell list and add it to the druid spell list.",
+          "choiceRequired": true,
+          "optionGroupId": "supernaturalist-psychic-spells",
+          "progressionKey": "supernaturalist-psychic-spell"
+        },
+        {
+          "id": "druid-supernaturalist-paranormal-scholar-9",
+          "name": "Paranormal Scholar",
+          "level": 9,
+          "type": "selectable",
+          "summary": "Select another spell from the psychic class spell list and add it to the druid spell list.",
+          "choiceRequired": true,
+          "optionGroupId": "supernaturalist-psychic-spells",
+          "progressionKey": "supernaturalist-psychic-spell"
+        },
+        {
+          "id": "druid-supernaturalist-paranormal-scholar-12",
+          "name": "Paranormal Scholar",
+          "level": 12,
+          "type": "selectable",
+          "summary": "Select another spell from the psychic class spell list and add it to the druid spell list.",
+          "choiceRequired": true,
+          "optionGroupId": "supernaturalist-psychic-spells",
+          "progressionKey": "supernaturalist-psychic-spell"
+        },
+        {
+          "id": "druid-supernaturalist-paranormal-scholar-15",
+          "name": "Paranormal Scholar",
+          "level": 15,
+          "type": "selectable",
+          "summary": "Select another spell from the psychic class spell list and add it to the druid spell list.",
+          "choiceRequired": true,
+          "optionGroupId": "supernaturalist-psychic-spells",
+          "progressionKey": "supernaturalist-psychic-spell"
+        },
+        {
+          "id": "druid-supernaturalist-paranormal-scholar-18",
+          "name": "Paranormal Scholar",
+          "level": 18,
+          "type": "selectable",
+          "summary": "Select another spell from the psychic class spell list and add it to the druid spell list.",
+          "choiceRequired": true,
+          "optionGroupId": "supernaturalist-psychic-spells",
+          "progressionKey": "supernaturalist-psychic-spell"
         }
       ]
     }
@@ -71,6 +680,138 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Armor loss, Psychic Sensitivity, class skills, six unique Psychic-list spell additions, Green Empathy, effective medium progression, influence, taboo surges, spirit surge, totem choices, Pack Leader, Wildstrike, Wild Heart defenses, and the daily slot-free summon are automated.",
+    "Plant Bond still depends on the incomplete Treesinger plant-domain and plant-companion catalogue, so this archetype remains partial rather than being overstated as fully automated."
+  ],
+  "classSkillAdditions": [
+    "Diplomacy",
+    "Knowledge (arcana)",
+    "Sense Motive"
+  ],
+  "proficiencyAdjustments": [
+    {
+      "sourceFeatureId": "druid-supernaturalist-weapon-and-armor-proficiency-1",
+      "category": "armor",
+      "operation": "remove",
+      "proficiencies": [
+        "All armor"
+      ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "animalSpiritInfluence",
+      "label": "Animal Spirit Influence",
+      "unit": "point",
+      "operation": "add",
+      "minimumLevel": 4,
+      "base": 6,
+      "maximum": 6,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "animalSpiritFreeSurges",
+      "label": "Taboo Spirit Surges",
+      "unit": "surge",
+      "operation": "add",
+      "minimumLevel": 5,
+      "base": 2,
+      "maximum": 2,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "resourceId": "wildHeartSummon",
+      "label": "Wild Heart Summon",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 20,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-supernaturalist-animal-spirit-su-4",
+      "label": "Animal Spirit Bonus",
+      "condition": "attack and damage rolls with natural weapons and skill checks relating to animals and plants",
+      "minimumLevel": 4,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 4,
+          "bonus": 1
+        },
+        {
+          "level": 7,
+          "bonus": 2
+        },
+        {
+          "level": 11,
+          "bonus": 3
+        },
+        {
+          "level": 15,
+          "bonus": 4
+        },
+        {
+          "level": 19,
+          "bonus": 5
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "druid-supernaturalist-animal-spirit-su-4",
+      "label": "Animal Spirit Influence Penalty",
+      "condition": "caster level checks and Charisma- and Intelligence-based ability and skill checks while the spirit has 3 or more influence",
+      "minimumLevel": 4,
+      "base": -1,
+      "bonusByLevel": [
+        {
+          "level": 4,
+          "bonus": -1
+        },
+        {
+          "level": 7,
+          "bonus": -2
+        },
+        {
+          "level": 11,
+          "bonus": -3
+        },
+        {
+          "level": 15,
+          "bonus": -4
+        },
+        {
+          "level": 19,
+          "bonus": -5
+        }
+      ]
+    },
+    {
+      "sourceFeatureId": "druid-supernaturalist-animal-spirit-su-4",
+      "label": "Animal Spirit Seance Boon",
+      "condition": "natural armor bonus to Armor Class while channeling the animal spirit",
+      "minimumLevel": 4,
+      "base": 1
+    },
+    {
+      "sourceFeatureId": "druid-supernaturalist-animal-spirit-su-4",
+      "label": "Pack Leader",
+      "condition": "attack rolls, damage rolls, and saving throws for summoned animals matching the animal spirit",
+      "minimumLevel": 9,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-supernaturalist-animal-spirit-su-4",
+      "label": "Wild Heart",
+      "condition": "saving throws against enchantment and mind-affecting effects",
+      "minimumLevel": 20,
+      "base": 4
+    }
   ]
 }
