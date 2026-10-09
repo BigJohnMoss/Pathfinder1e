@@ -15,23 +15,187 @@
         {
           "id": "druid-devolutionist-devolved-companion-ex-4",
           "name": "Devolved Companion (Ex)",
-          "level": 4,
-          "type": "archetype",
-          "summary": "A devolutionist must choose a devolved humanoid as an animal companion for her nature bond. Use the stats for an ape animal companion, but at 4th level, the devolved humanoid doesn’t increase to size Large (it still gains all the other benefits at 4th level). This ability alters nature bond."
+          "level": 1,
+          "type": "selectable",
+          "summary": "A devolutionist must choose a devolved humanoid as an animal companion for her nature bond. Use the stats for an ape animal companion, but at 4th level, the devolved humanoid doesn’t increase to size Large (it still gains all the other benefits at 4th level). This ability alters nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-animal-companions",
+          "optionChoiceIds": [
+            "ranger-animal-companion-ape"
+          ],
+          "progressionKey": "druid-nature-bond"
         },
         {
           "id": "druid-devolutionist-undomesticate-su-4",
           "name": "Undomesticate (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a devolutionist can spend 1 minute with a willing or restrained domesticated animal to undo the effects of domestication, transforming it into a wild animal and causing it to lose any tricks it knew. The animal no longer recognizes any humanoids as friends or allies and gladly tears former playmates apart for food. Handle Animal checks don’t work on an undomesticated creature, though wild empathy does. This ability doesn’t function on animal companions, special mounts, or the like, and other exceptional domesticated animals can attempt a Will save (DC = 10 + 1/2 the devolutionist’s druid level + her Wisdom modifier) to negate the effect and become immune to it for 24 hours. Though this ability is instantaneous, break enchantment, limited wish, miracle, or wish can reverse the effects. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, a devolutionist can spend 1 minute with a willing or restrained domesticated animal to undo the effects of domestication, transforming it into a wild animal and causing it to lose any tricks it knew. The animal no longer recognizes any humanoids as friends or allies and gladly tears former playmates apart for food. Handle Animal checks don’t work on an undomesticated creature, though wild empathy does. This ability doesn’t function on animal companions, special mounts, or the like, and other exceptional domesticated animals can attempt a Will save (DC = 10 + 1/2 the devolutionist’s druid level + her Wisdom modifier) to negate the effect and become immune to it for 24 hours. Though this ability is instantaneous, break enchantment, limited wish, miracle, or wish can reverse the effects. This ability replaces resist nature’s lure.",
+          "resourceActions": [
+            {
+              "id": "devolutionist-undomesticate-ordinary",
+              "label": "Undomesticate ordinary animal",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "1-minute"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "domesticated-animal",
+                  "label": "Target is a domesticated animal",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "willing-or-restrained",
+                  "label": "Target is willing or restrained",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "not-special-companion",
+                  "label": "Target is not an animal companion, special mount, or similar creature",
+                  "requiredForActivation": true
+                }
+              ],
+              "targetEffectRoll": {
+                "modifier": "none",
+                "effectsByLevel": [
+                  {
+                    "level": 4,
+                    "name": "Undomesticated",
+                    "description": "The animal loses its tricks, no longer recognizes humanoids as allies, cannot be handled with Handle Animal, and can still be influenced with wild empathy. Break enchantment, limited wish, miracle, or wish reverses this instantaneous change.",
+                    "duration": {
+                      "kind": "until-ended"
+                    }
+                  }
+                ]
+              },
+              "summary": "Apply the instantaneous undomestication rules to an eligible ordinary animal; no saving throw applies."
+            },
+            {
+              "id": "devolutionist-undomesticate-exceptional",
+              "label": "Undomesticate exceptional animal",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "1-minute"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "domesticated-animal",
+                  "label": "Target is a domesticated animal",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "willing-or-restrained",
+                  "label": "Target is willing or restrained",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "not-special-companion",
+                  "label": "Target is not an animal companion, special mount, or similar creature",
+                  "requiredForActivation": true
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "targetEffectRoll": {
+                "modifier": "will",
+                "effectsByLevel": [
+                  {
+                    "level": 4,
+                    "name": "Undomesticated",
+                    "description": "The exceptional animal loses its tricks and humanoid allegiances; Handle Animal no longer works, but wild empathy does. Break enchantment, limited wish, miracle, or wish reverses the change.",
+                    "duration": {
+                      "kind": "until-ended"
+                    }
+                  }
+                ],
+                "successEffect": {
+                  "name": "Undomesticate immunity",
+                  "description": "Immune to this devolutionist's Undomesticate for 24 hours.",
+                  "rounds": 14400
+                }
+              },
+              "summary": "Resolve an exceptional domesticated animal's Will save and track either the transformation or its 24-hour immunity."
+            }
+          ]
         },
         {
           "id": "druid-devolutionist-devolution-sp-9",
           "name": "Devolution (Sp)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, a devolutionist can perform a 24-hour ritual to irrevocably transform a humanoid or animal into a devolved feral state. There is no saving throw, but the target must be present and stay relatively still for the entire ritual, which typically requires a willing or restrained target. An affected humanoid’s Intelligence score is instantly reduced to 2; its type changes to animal; it loses all spellcasting and abilities that require intelligence; it can’t wield manufactured weapons; it gains two claw attacks and a bite attack (all dealing 1d4 points of damage for a Medium humanoid or 1d3 for Small humanoids); and it can’t use skills other than Acrobatics, Climb, Escape Artist, Fly, Intimidate, Perception, Stealth, Survival, and Swim. An affected animal is undomesticated (see above) if applicable and then either gains the advanced template, except without any increases to mental ability scores, or becomes a dire version of the animal (if a dire version exists and at the GM’s discretion). The devolved creature starts out friendly toward the devolutionist, though it typically tries to kill and devour other sentient humanoids. The devolutionist has no special empathy or connection with a creature she devolves, and if it was her animal companion before, it ceases to be so. The druid can communicate her desires to a devolved creature using wild empathy. This ability counters and dispels awaken, and only awaken, miracle, or wish can reverse it. This ability replaces venom immunity."
+          "summary": "At 9th level, a devolutionist can perform a 24-hour ritual to irrevocably transform a humanoid or animal into a devolved feral state. There is no saving throw, but the target must be present and stay relatively still for the entire ritual, which typically requires a willing or restrained target. An affected humanoid’s Intelligence score is instantly reduced to 2; its type changes to animal; it loses all spellcasting and abilities that require intelligence; it can’t wield manufactured weapons; it gains two claw attacks and a bite attack (all dealing 1d4 points of damage for a Medium humanoid or 1d3 for Small humanoids); and it can’t use skills other than Acrobatics, Climb, Escape Artist, Fly, Intimidate, Perception, Stealth, Survival, and Swim. An affected animal is undomesticated (see above) if applicable and then either gains the advanced template, except without any increases to mental ability scores, or becomes a dire version of the animal (if a dire version exists and at the GM’s discretion). The devolved creature starts out friendly toward the devolutionist, though it typically tries to kill and devour other sentient humanoids. The devolutionist has no special empathy or connection with a creature she devolves, and if it was her animal companion before, it ceases to be so. The druid can communicate her desires to a devolved creature using wild empathy. This ability counters and dispels awaken, and only awaken, miracle, or wish can reverse it. This ability replaces venom immunity.",
+          "resourceActions": [
+            {
+              "id": "devolutionist-devolution-ritual",
+              "label": "Complete Devolution ritual",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "24-hour"
+                }
+              ],
+              "modeLabel": "Target type",
+              "modes": [
+                {
+                  "id": "humanoid",
+                  "label": "Humanoid",
+                  "summary": "Intelligence becomes 2; type becomes animal; spellcasting, Intelligence-dependent abilities, manufactured weapons, and most skills are lost; gains two claws and a bite."
+                },
+                {
+                  "id": "animal-advanced",
+                  "label": "Animal — advanced",
+                  "summary": "Undomesticate the animal if applicable, then apply the advanced template without increasing mental ability scores."
+                },
+                {
+                  "id": "animal-dire",
+                  "label": "Animal — dire",
+                  "summary": "Undomesticate the animal if applicable, then use its dire version with GM approval."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "eligible-target",
+                  "label": "Target is a humanoid or animal",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "present-full-ritual",
+                  "label": "Target remains present and relatively still for the full 24-hour ritual",
+                  "requiredForActivation": true
+                }
+              ],
+              "targetEffectRoll": {
+                "modifier": "none",
+                "effectsByLevel": [
+                  {
+                    "level": 9,
+                    "name": "Devolved",
+                    "description": "Apply the selected permanent feral-state rules. The creature begins friendly to the devolutionist, loses any animal-companion bond, can be directed with wild empathy, counters and dispels awaken, and can be reversed only by awaken, miracle, or wish.",
+                    "duration": {
+                      "kind": "until-ended"
+                    }
+                  }
+                ]
+              },
+              "summary": "Track the no-save 24-hour ritual and its permanent result until a listed reversal removes it."
+            }
+          ]
         }
       ]
     }
@@ -41,8 +205,30 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Devolutionist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "The mandatory Medium ape-stat companion, Undomesticate eligibility and exceptional-animal save/immunity, and the no-save 24-hour Devolution ritual with humanoid, advanced-animal, and dire-animal outcomes are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal"
+  ],
+  "druidAnimalCompanionIds": [
+    "ranger-animal-companion-ape"
+  ],
+  "companionGrants": [
+    {
+      "id": "devolutionist-devolved-companion",
+      "kind": "animal",
+      "label": "Devolved humanoid companion",
+      "optionFeatureId": "druid-devolutionist-devolved-companion-ex-4",
+      "sourceFeatureId": "druid-devolutionist-devolved-companion-ex-4",
+      "minimumLevel": 1,
+      "effectiveLevelAdjustment": 0,
+      "rules": [
+        "Uses ape animal-companion statistics",
+        "Remains Medium at 4th level",
+        "Gains all other 4th-level companion benefits"
+      ]
+    }
   ]
 }
