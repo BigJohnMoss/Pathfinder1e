@@ -222,10 +222,9 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Treesinger"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Plant Bond selection, all four plant companions and their advancement data, Green Empathy, full companion progression, and plant-only Wild Shape tiers and uses are automated.",
-    "Plant and Growth domain data are available; Jungle and Swamp terrain-domain definitions still need importing before Treesinger can be promoted to full automation."
+    "Plant, Growth, Jungle, and Swamp domain choices, all four plant companions and their advancement data, Green Empathy, full companion progression, and plant-only Wild Shape tiers and uses are automated."
   ],
   "requirements": [
     {
@@ -243,8 +242,8 @@
   "druidDomainIds": [
     "domain-plant",
     "subdomain-growth",
-    "subdomain-jungle",
-    "subdomain-swamp"
+    "domain-jungle",
+    "domain-swamp"
   ],
   "companionGrants": [
     {
