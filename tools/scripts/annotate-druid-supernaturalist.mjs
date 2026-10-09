@@ -11,7 +11,7 @@ if (!botanist || !scholar || !spirit) throw new Error("Supernaturalist features 
 Object.assign(botanist, {
   type: "selectable",
   choiceRequired: true,
-  optionGroupId: "druid-nature-bonds",
+  optionGroupId: "treesinger-plant-bonds",
   resourceActions: [{
     id: "supernaturalist-green-empathy",
     label: "Resolve Green Empathy",
@@ -45,6 +45,8 @@ Object.assign(scholar, {
 });
 const replacement = archetype.replacements.find((item) => item.features?.includes(scholar));
 replacement.features = replacement.features.filter((feature) => !/^druid-supernaturalist-paranormal-scholar-(?:6|9|12|15|18)$/.test(feature.id));
+replacement.features = replacement.features.filter((feature) => feature.id !== "supernaturalist-plant-companion-1");
+replacement.features.push({ id: "supernaturalist-plant-companion-1", name: "Plant Companion Choice", level: 1, type: "selectable", summary: "Choose the plant companion granted by Plant Bond.", choiceRequired: true, optionGroupId: "treesinger-plant-companions", requiredOptionId: "druid-nature-bond-plant", requiredOptionMessage: "Choose Plant Companion for Plant Bond first." });
 for (const level of [6, 9, 12, 15, 18]) replacement.features.push({
   id: `druid-supernaturalist-paranormal-scholar-${level}`,
   name: "Paranormal Scholar",
@@ -152,11 +154,14 @@ spirit.resourceActions = [{
 }];
 
 archetype.classSkillAdditions = ["Diplomacy", "Knowledge (arcana)", "Sense Motive"];
+archetype.druidNatureBondOptionIds = ["treesinger-nature-bond-domain", "druid-nature-bond-plant"];
+archetype.druidDomainIds = ["domain-plant", "subdomain-growth", "domain-jungle", "domain-swamp"];
+archetype.companionGrants = [{ id: "supernaturalist-plant-companion", kind: "animal", label: "Plant companion", optionFeatureId: "supernaturalist-plant-companion-1", sourceFeatureId: botanist.id, minimumLevel: 1, effectiveLevelAdjustment: 0, rules: ["Plant type", "Cannot gain armor or weapon proficiency feats", "Cannot use manufactured weapons unless its description says otherwise"] }];
 archetype.proficiencyAdjustments = [{ sourceFeatureId: "druid-supernaturalist-weapon-and-armor-proficiency-1", category: "armor", operation: "remove", proficiencies: ["All armor"] }];
 archetype.resourceAdjustments = [{ resourceId: "animalSpiritInfluence", label: "Animal Spirit Influence", unit: "point", operation: "add", minimumLevel: 4, base: 6, maximum: 6, refreshCadence: "day", dedicatedAction: true }, { resourceId: "animalSpiritFreeSurges", label: "Taboo Spirit Surges", unit: "surge", operation: "add", minimumLevel: 5, base: 2, maximum: 2, refreshCadence: "day", dedicatedAction: true }, { resourceId: "wildHeartSummon", label: "Wild Heart Summon", unit: "use", operation: "add", minimumLevel: 20, base: 1, maximum: 1, refreshCadence: "day", dedicatedAction: true }];
 archetype.conditionalModifiers = [{ sourceFeatureId: spirit.id, label: "Animal Spirit Bonus", condition: "attack and damage rolls with natural weapons and skill checks relating to animals and plants", minimumLevel: 4, base: 1, bonusByLevel: [{ level: 4, bonus: 1 }, { level: 7, bonus: 2 }, { level: 11, bonus: 3 }, { level: 15, bonus: 4 }, { level: 19, bonus: 5 }] }, { sourceFeatureId: spirit.id, label: "Animal Spirit Influence Penalty", condition: "caster level checks and Charisma- and Intelligence-based ability and skill checks while the spirit has 3 or more influence", minimumLevel: 4, base: -1, bonusByLevel: [{ level: 4, bonus: -1 }, { level: 7, bonus: -2 }, { level: 11, bonus: -3 }, { level: 15, bonus: -4 }, { level: 19, bonus: -5 }] }, { sourceFeatureId: spirit.id, label: "Animal Spirit Seance Boon", condition: "natural armor bonus to Armor Class while channeling the animal spirit", minimumLevel: 4, base: 1 }, { sourceFeatureId: spirit.id, label: "Pack Leader", condition: "attack rolls, damage rolls, and saving throws for summoned animals matching the animal spirit", minimumLevel: 9, base: 2 }, { sourceFeatureId: spirit.id, label: "Wild Heart", condition: "saving throws against enchantment and mind-affecting effects", minimumLevel: 20, base: 4 }];
-archetype.mechanicalCoverage = "partial";
-archetype.mechanicalNotes = ["Armor loss, Psychic Sensitivity, class skills, six unique Psychic-list spell additions, Green Empathy, effective medium progression, influence, taboo surges, spirit surge, totem choices, Pack Leader, Wildstrike, Wild Heart defenses, and the daily slot-free summon are automated.", "Plant Bond still depends on the incomplete Treesinger plant-domain and plant-companion catalogue, so this archetype remains partial rather than being overstated as fully automated."];
+archetype.mechanicalCoverage = "full";
+archetype.mechanicalNotes = ["Armor loss, Plant Bond domains and companions, Psychic Sensitivity, class skills, six unique Psychic-list spell additions, Green Empathy, effective medium progression, influence, taboo surges, spirit surge, totem choices, Pack Leader, Wildstrike, Wild Heart defenses, and the daily slot-free summon are automated."];
 
 await writeFile(archetypeUrl, `${JSON.stringify(archetype, null, 2)}\n`);
 console.log("Annotated Supernaturalist automation.");

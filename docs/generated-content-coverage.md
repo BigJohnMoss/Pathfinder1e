@@ -9,7 +9,7 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 10 |
-| Option groups | 140 |
+| Option groups | 142 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2760 |
@@ -29,16 +29,16 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Coverage | Count |
 |---|---:|
-| Fully automated | 181 |
-| Partially automated | 1014 |
+| Fully automated | 183 |
+| Partially automated | 1012 |
 | Rules reference only | 0 |
 
 ### Structured automation
 
 | Reusable subsystem | Archetypes |
 |---|---:|
-| Resources and limited uses | 76 |
-| Companions and effective levels | 37 |
+| Resources and limited uses | 77 |
+| Companions and effective levels | 39 |
 | Spell lists, slots, and casting | 50 |
 | Class skills and skill-rank progressions | 58 |
 | Combat statistics and proficiencies | 62 |
@@ -52,13 +52,13 @@ These rule-text signals are multi-label: one archetype can contribute to several
 
 | Candidate subsystem | Partial archetypes |
 |---|---:|
-| Resources and limited uses | 572 |
-| Companions, mounts, familiars, and eidolons | 216 |
-| Spell lists, slots, and casting | 574 |
-| Selectable progressions and dependent choices | 700 |
-| Combat statistics and proficiencies | 791 |
-| Skills | 589 |
-| Feats | 441 |
+| Resources and limited uses | 571 |
+| Companions, mounts, familiars, and eidolons | 214 |
+| Spell lists, slots, and casting | 572 |
+| Selectable progressions and dependent choices | 698 |
+| Combat statistics and proficiencies | 789 |
+| Skills | 588 |
+| Feats | 440 |
 | Narrative or uncategorized effects | 2 |
 
 ## Spell details
