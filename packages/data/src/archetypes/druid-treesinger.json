@@ -21,25 +21,138 @@
       ],
       "features": [
         {
-          "id": "druid-treesinger-plant-bond-ex-1",
+          "id": "druid-nature-bond-treesinger-1",
           "name": "Plant Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "At 1st level, a treesinger forms a mystic bond with plant life. This bond can take one of two forms. The first grants the treesinger one of the following domains: Plant ( Core Rulebook ); Growth ; Jungle, Swamp. When determining the powers and bonus spells granted by this domain, the treesinger’s effective cleric level is equal to her druid level. A treesinger who selects this option also receives additional domain spell slots, just like a cleric. She must prepare the spell from her domain in this slot, and this spell cannot be used to cast a spell spontaneously. The second option is to form a close bond with a plant companion. A treesinger may begin play with any of the plants listed in Plant Companions. This plant is a loyal companion that accompanies the treesinger on her adventures. Except for the companion being a creature of the plant type, drawn from the list of plant companions, this ability otherwise works like the standard druid’s animal companion ability. Plant bond replaces the druid’s nature bond ability."
+          "type": "selectable",
+          "summary": "At 1st level, a treesinger forms a mystic bond with plant life. This bond can take one of two forms. The first grants the treesinger one of the following domains: Plant ( Core Rulebook ); Growth ; Jungle, Swamp. When determining the powers and bonus spells granted by this domain, the treesinger’s effective cleric level is equal to her druid level. A treesinger who selects this option also receives additional domain spell slots, just like a cleric. She must prepare the spell from her domain in this slot, and this spell cannot be used to cast a spell spontaneously. The second option is to form a close bond with a plant companion. A treesinger may begin play with any of the plants listed in Plant Companions. This plant is a loyal companion that accompanies the treesinger on her adventures. Except for the companion being a creature of the plant type, drawn from the list of plant companions, this ability otherwise works like the standard druid’s animal companion ability. Plant bond replaces the druid’s nature bond ability.",
+          "choiceRequired": true,
+          "optionGroupId": "treesinger-plant-bonds",
+          "progressionKey": "druid-nature-bond"
         },
         {
           "id": "druid-treesinger-green-empathy-ex-1",
           "name": "Green Empathy (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "At 1st level, a treesinger can improve the attitude of a plant creature. This ability functions just like a Diplomacy check made to improve the attitude of a person. The treesinger rolls 1d20 and adds her druid level and her Charisma modifier to determine the wild empathy check result. The typical wild plant creature has a starting attitude of indifferent. To use green empathy, the treesinger and the plant creature must be within 30 feet of one another under normal conditions. Generally, influencing a plant creature in this way takes 1 minute but, as with influencing people, it might take more or less time. A treesinger can also use this ability to influence an animal, but she takes a –4 penalty on the check. This ability replaces the wild empathy class feature."
+          "summary": "At 1st level, a treesinger can improve the attitude of a plant creature. This ability functions just like a Diplomacy check made to improve the attitude of a person. The treesinger rolls 1d20 and adds her druid level and her Charisma modifier to determine the wild empathy check result. The typical wild plant creature has a starting attitude of indifferent. To use green empathy, the treesinger and the plant creature must be within 30 feet of one another under normal conditions. Generally, influencing a plant creature in this way takes 1 minute but, as with influencing people, it might take more or less time. A treesinger can also use this ability to influence an animal, but she takes a –4 penalty on the check. This ability replaces the wild empathy class feature.",
+          "resourceActions": [
+            {
+              "id": "treesinger-green-empathy",
+              "label": "Resolve Green Empathy",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "1-minute"
+                }
+              ],
+              "modeLabel": "Target",
+              "modes": [
+                {
+                  "id": "plant",
+                  "label": "Plant creature",
+                  "summary": "Roll druid level + Charisma modifier."
+                },
+                {
+                  "id": "animal",
+                  "label": "Animal (−4)",
+                  "summary": "Apply the required −4 penalty."
+                }
+              ],
+              "diceRoll": {
+                "label": "Green Empathy",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Druid level + Charisma modifier",
+                "targetDcInputLabel": "Attitude DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "attitude improves"
+                  }
+                ],
+                "failureLabel": "attitude unchanged"
+              },
+              "summary": "Resolve Green Empathy against a creature within 30 feet."
+            }
+          ]
         },
         {
           "id": "druid-treesinger-wild-shape-su-4",
           "name": "Wild Shape (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a treesinger gains the ability to wild shape. This ability functions at her actual druid level. A treesinger cannot use wild shape to adopt an animal or elemental form. Instead, when she gains this ability at 4th level, she can assume the form of a Small or Medium plant. This functions as plant shape I , except the treesinger does not yet gain access to the constrict or poison abilities of the plant form assumed. At 8th level, the treesinger’s wild shape gains the full range of abilities available from plant shape I . At 10th level, a treesinger can assume the form of a Large or Tiny plant. Her wild shape ability now functions like plant shape II . At 12th level, a treesinger can assume the form of a Huge plant. Her wild shape ability now functions like plant shape III . This ability replaces, and otherwise functions like, the normal druid wild shape ability. Plant Companions Each plant companion has different starting sizes, speed, attacks, ability scores, and special qualities. All plant attacks are made using the creature’s full base attack bonus unless otherwise noted. Plant attacks add the plant’s Strength modifier on the damage roll, unless it has only one attack, in which case it adds 1-1/2 times its Strength modifier. Some plant companions have special abilities, such as scent. Plant companions cannot gain armor or weapon proficiency feats, even as they advance in hit dice, and cannot use manufactured weapons at all unless their description says otherwise. As you gain levels, your plant companion grows in power as well. It gains the same bonuses that are gained by animal companions. Each plant companion gains an additional bonus, usually at 4th or 7th level, as listed with each plant choice. Instead of taking the listed benefit at 4th level, you can instead choose to increase the companion’s Strength and Constitution by 2. Carnivorous Flower"
+          "summary": "At 4th level, a treesinger gains the ability to wild shape. This ability functions at her actual druid level. A treesinger cannot use wild shape to adopt an animal or elemental form. Instead, when she gains this ability at 4th level, she can assume the form of a Small or Medium plant. This functions as plant shape I , except the treesinger does not yet gain access to the constrict or poison abilities of the plant form assumed. At 8th level, the treesinger’s wild shape gains the full range of abilities available from plant shape I . At 10th level, a treesinger can assume the form of a Large or Tiny plant. Her wild shape ability now functions like plant shape II . At 12th level, a treesinger can assume the form of a Huge plant. Her wild shape ability now functions like plant shape III . This ability replaces, and otherwise functions like, the normal druid wild shape ability. Plant Companions Each plant companion has different starting sizes, speed, attacks, ability scores, and special qualities. All plant attacks are made using the creature’s full base attack bonus unless otherwise noted. Plant attacks add the plant’s Strength modifier on the damage roll, unless it has only one attack, in which case it adds 1-1/2 times its Strength modifier. Some plant companions have special abilities, such as scent. Plant companions cannot gain armor or weapon proficiency feats, even as they advance in hit dice, and cannot use manufactured weapons at all unless their description says otherwise. As you gain levels, your plant companion grows in power as well. It gains the same bonuses that are gained by animal companions. Each plant companion gains an additional bonus, usually at 4th or 7th level, as listed with each plant choice. Instead of taking the listed benefit at 4th level, you can instead choose to increase the companion’s Strength and Constitution by 2. Carnivorous Flower",
+          "resourceActions": [
+            {
+              "id": "treesinger-plant-wild-shape",
+              "label": "Assume Plant Form",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "treesingerWildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Plant shape tier",
+              "modes": [
+                {
+                  "id": "plant-shape-i-limited",
+                  "label": "Small or Medium plant",
+                  "minimumLevel": 4,
+                  "maximumLevel": 7,
+                  "summary": "Plant shape I without constrict or poison."
+                },
+                {
+                  "id": "plant-shape-i",
+                  "label": "Plant shape I",
+                  "minimumLevel": 8,
+                  "maximumLevel": 9,
+                  "summary": "Full plant shape I abilities."
+                },
+                {
+                  "id": "plant-shape-ii",
+                  "label": "Plant shape II",
+                  "minimumLevel": 10,
+                  "maximumLevel": 11,
+                  "summary": "Tiny or Large plant form."
+                },
+                {
+                  "id": "plant-shape-iii",
+                  "label": "Plant shape III",
+                  "minimumLevel": 12,
+                  "summary": "Up to Huge plant form."
+                }
+              ],
+              "activeEffect": {
+                "name": "Treesinger Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Plant-only Wild Shape using the selected plant shape tier.",
+                "defaultRounds": 999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one daily use to assume a legal plant form for 1 hour per druid level."
+            }
+          ]
         },
         {
           "id": "druid-treesinger-size-1",
@@ -89,6 +202,17 @@
           "level": 1,
           "type": "archetype",
           "summary": "rage (1/day, as the barbarian class feature for 6 rounds). Crawling Vine"
+        },
+        {
+          "id": "treesinger-generated-plant-companion-1",
+          "name": "Plant Companion Choice",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose the plant companion granted by Plant Bond.",
+          "choiceRequired": true,
+          "optionGroupId": "treesinger-plant-companions",
+          "requiredOptionId": "druid-nature-bond-plant",
+          "requiredOptionMessage": "Choose Plant Companion for Plant Bond first."
         }
       ]
     }
@@ -100,7 +224,8 @@
   },
   "mechanicalCoverage": "partial",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Plant Bond selection, all four plant companions and their advancement data, Green Empathy, full companion progression, and plant-only Wild Shape tiers and uses are automated.",
+    "Plant and Growth domain data are available; Jungle and Swamp terrain-domain definitions still need importing before Treesinger can be promoted to full automation."
   ],
   "requirements": [
     {
@@ -110,5 +235,78 @@
   ],
   "manualRequirements": [
     "Restricted to Elf and Vine Leshy characters; that ancestry is not yet available in this builder."
+  ],
+  "druidNatureBondOptionIds": [
+    "treesinger-nature-bond-domain",
+    "druid-nature-bond-plant"
+  ],
+  "druidDomainIds": [
+    "domain-plant",
+    "subdomain-growth",
+    "subdomain-jungle",
+    "subdomain-swamp"
+  ],
+  "companionGrants": [
+    {
+      "id": "treesinger-plant-companion",
+      "kind": "animal",
+      "label": "Plant companion",
+      "optionFeatureId": "treesinger-generated-plant-companion-1",
+      "sourceFeatureId": "druid-nature-bond-treesinger-1",
+      "minimumLevel": 1,
+      "effectiveLevelAdjustment": 0,
+      "rules": [
+        "Plant type",
+        "Cannot gain armor or weapon proficiency feats",
+        "Cannot use manufactured weapons unless its description says otherwise"
+      ]
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "resourceId": "treesingerWildShape",
+      "label": "Plant Wild Shape",
+      "unit": "use",
+      "operation": "add",
+      "minimumLevel": 4,
+      "base": 0,
+      "maximumByLevel": [
+        {
+          "level": 4,
+          "maximum": 1
+        },
+        {
+          "level": 6,
+          "maximum": 2
+        },
+        {
+          "level": 8,
+          "maximum": 3
+        },
+        {
+          "level": 10,
+          "maximum": 4
+        },
+        {
+          "level": 12,
+          "maximum": 5
+        },
+        {
+          "level": 14,
+          "maximum": 6
+        },
+        {
+          "level": 16,
+          "maximum": 7
+        },
+        {
+          "level": 18,
+          "maximum": 8
+        }
+      ],
+      "atWillAtLevel": 20,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
   ]
 }
