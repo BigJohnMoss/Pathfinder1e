@@ -1,0 +1,40 @@
+{
+  "id": "world-walker-favored-terrain-advancements",
+  "name": "World Walker Favored Terrain Advancements",
+  "classIds": ["druid"],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20World%20Walker"
+  },
+  "optionDefaults": {
+    "groupId": "world-walker-favored-terrain-advancements",
+    "classIds": ["druid"],
+    "minimumLevel": 3,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20World%20Walker"
+    },
+    "favoredTerrainAdvancement": { "newTerrainBonus": 2, "increaseBonus": 2 },
+    "choice": {
+      "key": "favoredTerrainIncrease",
+      "label": "Increase favored terrain bonus",
+      "optionSource": "selected-favored-terrains"
+    }
+  },
+  "options": [
+    { "id": "world-walker-terrain-cold", "name": "Cold favored terrain", "favoredTerrainId": "ranger-terrain-cold", "benefit": "Add cold as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-desert", "name": "Desert favored terrain", "favoredTerrainId": "ranger-terrain-desert", "benefit": "Add desert as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-forest", "name": "Forest favored terrain", "favoredTerrainId": "ranger-terrain-forest", "benefit": "Add forest as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-jungle", "name": "Jungle favored terrain", "favoredTerrainId": "ranger-terrain-jungle", "benefit": "Add jungle as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-mountain", "name": "Mountain favored terrain", "favoredTerrainId": "ranger-terrain-mountain", "benefit": "Add mountain as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-plains", "name": "Plains favored terrain", "favoredTerrainId": "ranger-terrain-plains", "benefit": "Add plains as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-planes", "name": "Planes (choose one) favored terrain", "favoredTerrainId": "ranger-terrain-planes", "benefit": "Add one plane as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-swamp", "name": "Swamp favored terrain", "favoredTerrainId": "ranger-terrain-swamp", "benefit": "Add swamp as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-underground", "name": "Underground favored terrain", "favoredTerrainId": "ranger-terrain-underground", "benefit": "Add underground as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-urban", "name": "Urban favored terrain", "favoredTerrainId": "ranger-terrain-urban", "benefit": "Add urban as a new favored terrain at +2, then increase one favored-terrain bonus by +2." },
+    { "id": "world-walker-terrain-water", "name": "Water favored terrain", "favoredTerrainId": "ranger-terrain-water", "benefit": "Add water as a new favored terrain at +2, then increase one favored-terrain bonus by +2." }
+  ]
+}

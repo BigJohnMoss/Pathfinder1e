@@ -172,6 +172,9 @@ export interface ClassFeatureOccurrence {
   channelEnergyDiceAdvancementOptionIds?: string[];
   channelEnergyPolarityOptionIds?: { positive: string; negative: string };
   favoredTerrainBaseBonus?: number;
+  favoredTerrainAdvancementOptionGroupId?: string;
+  effectiveLevelClassIds?: string[];
+  minimumEffectiveLevel?: number;
   companionRoster?: {
     label: string;
     budgetBase?: number;
