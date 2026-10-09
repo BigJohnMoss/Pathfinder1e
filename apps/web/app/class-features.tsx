@@ -162,15 +162,24 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const weaponChoices = action.activeEffect?.selectEquippedWeapon
           ? [...equippedWeapons, ...(action.activeEffect.includeUnarmedStrike && !equippedWeapons.some((weapon) => weapon.id === "unarmed-strike") ? [{ id: "unarmed-strike", name: "Unarmed strike" }] : [])]
           : [];
+        const rosterRecipients = action.companionRosterFeatureId
+          ? Object.entries(selectedOptions)
+              .flatMap(([key, optionId]) => {
+                const match = key.match(new RegExp(`^${action.companionRosterFeatureId}-(\\d+)-companion$`));
+                return match && optionId ? [{ id: key, label: `Companion ${Number(match[1]) + 1}` }] : [];
+              })
+              .sort((left, right) => left.label.localeCompare(right.label, undefined, { numeric: true }))
+          : [];
+        const availableRecipients = action.companionRosterFeatureId ? rosterRecipients : action.recipients ?? [];
         const selectedEffectWeaponId = effectWeaponIds[action.id] ?? weaponChoices[0]?.id;
-        const unavailable = unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || activeEffectLimitReached || Boolean(action.modes?.length && !availableModes?.length) || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId);
+        const unavailable = unavailableResource || unavailableCost || unavailableMinimumResource || unavailableRecovery || blockedByActorCondition || activeEffectLimitReached || Boolean(action.modes?.length && !availableModes?.length) || Boolean(action.companionRosterFeatureId && !availableRecipients.length) || (Boolean(action.activeEffect?.selectEquippedWeapon) && !selectedEffectWeaponId);
         const useCount = Math.max(0, resources[0]?.resource?.used ?? 0);
         const label = action.labelsByUseCount?.[Math.min(useCount, action.labelsByUseCount.length - 1)] ?? action.label;
         const result = actionResults[action.id];
         const rerollInput = rerollInputs[action.id] ?? { original: 10, modifier: 0, count: 1, sides: 6 };
         const combatInput = combatInputs[action.id] ?? { touchArmorClass: 10, saveModifier: 0, secondarySaveModifier: 0 };
         const conditionStep = action.conditionEffectsByUseCount?.[Math.min(useCount, action.conditionEffectsByUseCount.length - 1)];
-        const selectedRecipient = action.recipients?.find((recipient) => recipient.id === actionRecipients[action.id]) ?? action.recipients?.[0];
+        const selectedRecipient = availableRecipients.find((recipient) => recipient.id === actionRecipients[action.id]) ?? availableRecipients[0];
         const possessedFeatIds = new Set(selectedFeats.map((feat) => feat.id));
         const featSource = action.featSelection?.source === "catalogue" ? featCatalogue : selectedFeats;
         const baseAvailableFeats = action.featSelection ? featSource.filter((feat) => {
@@ -467,7 +476,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
           {action.variableRecovery && <label>{action.variableRecovery.label}<input type="number" min={action.variableRecovery.minimum ?? 0} max={variableMaximum} value={variableAmount} onChange={(event) => setVariableAmounts((current) => ({ ...current, [action.id]: Math.max(action.variableRecovery!.minimum ?? 0, Math.min(Number(event.target.value) || 0, variableMaximum)) }))} /></label>}
           {Boolean(availableModes?.length) && <label>{action.modeLabel ?? "Mode"}<select aria-label={`${action.label} mode`} value={selectedMode?.id} onChange={(event) => { setActionModes((current) => ({ ...current, [action.id]: event.target.value })); setActionTargetNames((current) => { const next = { ...current }; delete next[action.id]; return next; }); setActionResults((current) => ({ ...current, [action.id]: "" })); }}>{availableModes!.map((mode) => <option key={mode.id} value={mode.id}>{mode.label}</option>)}</select></label>}
           {selectedMode?.variableFeatCount && <label>Number of feats<input aria-label={`${action.label} number of feats`} type="number" min="1" max={variableFeatMaximum} value={featSelectionCount} onChange={(event) => setActionFeatCounts((current) => ({ ...current, [action.id]: Math.max(1, Math.min(variableFeatMaximum, Number(event.target.value) || 1)) }))} /></label>}
-          {Boolean(action.recipients?.length) && <label>{action.recipientLabel ?? "Recipient"}<select aria-label={`${action.label} recipient`} value={selectedRecipient?.id} onChange={(event) => setActionRecipients((current) => ({ ...current, [action.id]: event.target.value }))}>{action.recipients!.map((recipient) => <option key={recipient.id} value={recipient.id}>{recipient.label}</option>)}</select></label>}
+          {Boolean(availableRecipients.length) && <label>{action.recipientLabel ?? "Recipient"}<select aria-label={`${action.label} recipient`} value={selectedRecipient?.id} onChange={(event) => setActionRecipients((current) => ({ ...current, [action.id]: event.target.value }))}>{availableRecipients.map((recipient) => <option key={recipient.id} value={recipient.id}>{recipient.label}</option>)}</select></label>}
           {action.featSelection && Array.from({ length: featSelectionCount }, (_, index) => <label key={`${action.id}-feat-${index}`}>{action.featSelection!.label}{featSelectionCount > 1 ? ` ${index + 1}` : ""}<select aria-label={`${action.label} ${action.featSelection!.label.toLowerCase()}${featSelectionCount > 1 ? ` ${index + 1}` : ""}`} value={selectedActionFeatIds[index]} onChange={(event) => setActionFeatSelections((current) => { const next = [...(current[action.id] ?? selectedActionFeatIds)]; next[index] = event.target.value; next.splice(index + 1); return { ...current, [action.id]: next }; })}><option value="">Choose {action.featSelection!.source === "catalogue" ? "an eligible" : "a selected"} {action.featSelection!.featType} feat</option>{availableFeatsForIndex(index).map((feat) => <option key={feat.id} value={feat.id} disabled={selectedActionFeatIds.some((id, selectedIndex) => selectedIndex !== index && id === feat.id)}>{feat.name}</option>)}</select></label>)}
           {actionType && <small>Activation: {actionType} action.</small>}
           {allConfirmations.map((confirmation) => <label key={confirmation.id}><input aria-label={`${action.label} ${confirmation.label}`} type="checkbox" checked={confirmationChecked(confirmation.id)} onChange={(event) => setActionConfirmations((current) => ({ ...current, [`${action.id}:${confirmation.id}`]: event.target.checked }))} />{confirmation.label}</label>)}

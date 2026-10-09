@@ -12,7 +12,7 @@ import type { DailyResource } from "./class-features";
 
 type BloodlineVariant = NonNullable<CharacterOption["variants"]>[number];
 type Option = Pick<CharacterOption, "id" | "name" | "benefit"> & Partial<Omit<CharacterOption, "id" | "name" | "benefit">>;
-type Choice = { id: string; name: string; level: number; classLevel?: number; favoredTerrainBaseBonus?: number; options: Option[]; selected?: Option; requiredOptionId?: string; requiredOptionMessage?: string };
+type Choice = { id: string; name: string; level: number; classLevel?: number; favoredTerrainBaseBonus?: number; companionRoster?: { label: string; budgetBase?: number; levelMultiplier?: number; levelAdjustment?: number; minimumBudget?: number; lockAllocatedLevels?: boolean }; options: Option[]; selected?: Option; requiredOptionId?: string; requiredOptionMessage?: string };
 type ChoiceChangeRule = { locked: boolean; preventClear?: boolean; message: string };
 
 const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -81,8 +81,12 @@ function ChannelEnergyTracker({ level, charismaModifier, used, onUsedChange }: {
   </div>;
 }
 
-function BeastMasterRoster({ choice, selectedOptions, classLevel, onOptionChange }: { choice: Choice; selectedOptions: Record<string, string>; classLevel: number; onOptionChange: (featureId: string, optionId: string) => void }) {
-  const budget = classLevel >= 12 ? classLevel : Math.max(1, classLevel - 3);
+function CompanionRoster({ choice, selectedOptions, classLevel, onOptionChange }: { choice: Choice; selectedOptions: Record<string, string>; classLevel: number; onOptionChange: (featureId: string, optionId: string) => void }) {
+  const config = choice.companionRoster;
+  const budget = config
+    ? Math.max(config.minimumBudget ?? 1, (config.budgetBase ?? 0) + classLevel * (config.levelMultiplier ?? 1) + (config.levelAdjustment ?? 0))
+    : classLevel >= 12 ? classLevel : Math.max(1, classLevel - 3);
+  const rosterLabel = config?.label ?? "Beast Master";
   const key = (index: number, field: "companion" | "level") => `${choice.id}-${index}-${field}`;
   const entries = Array.from({ length: budget }, (_, index) => ({
     index,
@@ -93,6 +97,9 @@ function BeastMasterRoster({ choice, selectedOptions, classLevel, onOptionChange
   const nextIndex = Array.from({ length: budget }, (_, index) => index).find((index) => !selectedOptions[key(index, "companion")]);
 
   useEffect(() => {
+    const configured = entries.length > 0;
+    if (configured && selectedOptions[choice.id] !== "roster-configured") onOptionChange(choice.id, "roster-configured");
+    if (!configured && selectedOptions[choice.id] === "roster-configured") onOptionChange(choice.id, "");
     let remaining = budget;
     for (let index = 0; index < 20; index += 1) {
       const companionKey = key(index, "companion");
@@ -125,13 +132,13 @@ function BeastMasterRoster({ choice, selectedOptions, classLevel, onOptionChange
     const otherAllocated = allocated - level;
     const maximum = Math.max(1, budget - otherAllocated);
     return <div className="beast-master-companion" key={index}>
-      <label>Companion {index + 1}<select aria-label={`Beast Master companion ${index + 1}`} value={companionId} onChange={(event) => { onOptionChange(key(index, "companion"), event.target.value); onOptionChange(key(index, "level"), event.target.value ? "1" : ""); }}><option value="">Choose a companion</option>{choice.options.map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}</select></label>
-      {companionId && <label>Effective Druid levels<select aria-label={`Beast Master companion ${index + 1} effective levels`} value={level || 1} onChange={(event) => onOptionChange(key(index, "level"), event.target.value)}>{Array.from({ length: maximum }, (_, value) => value + 1).map((value) => <option key={value} value={value}>{value}</option>)}</select></label>}
+      <label>Companion {index + 1}<select aria-label={`${rosterLabel} companion ${index + 1}`} value={companionId} onChange={(event) => { onOptionChange(key(index, "companion"), event.target.value); onOptionChange(key(index, "level"), event.target.value ? "1" : ""); }}><option value="">Choose a companion</option>{choice.options.map((option) => <option key={option.id} value={option.id}>{option.name}</option>)}</select></label>
+      {companionId && <label>Effective Druid levels<select aria-label={`${rosterLabel} companion ${index + 1} effective levels`} value={level || 1} onChange={(event) => onOptionChange(key(index, "level"), event.target.value)}>{Array.from({ length: maximum }, (_, value) => value + 1).map((value) => <option key={value} value={value} disabled={Boolean(config?.lockAllocatedLevels && value < level)}>{value}</option>)}</select></label>}
       {companionId && <button type="button" onClick={() => { onOptionChange(key(index, "companion"), ""); onOptionChange(key(index, "level"), ""); }}>Remove companion {index + 1}</button>}
     </div>;
   };
 
-  return <article className="choice-card beast-master-roster"><h3>{choice.name} <small>level {choice.level}</small></h3><p>Allocate up to {budget} effective Druid level{budget === 1 ? "" : "s"} across any number of companions.</p><output aria-label="Beast Master allocation">{allocated}/{budget} levels allocated</output>{entries.map((entry) => row(entry.index, entry.companionId, entry.level))}{nextIndex !== undefined && allocated < budget && row(nextIndex, "", 0)}</article>;
+  return <article className="choice-card beast-master-roster"><h3>{choice.name} <small>level {choice.level}</small></h3><p>Allocate up to {budget} effective Druid level{budget === 1 ? "" : "s"} across any number of companions.</p>{config?.lockAllocatedLevels && <small>Allocated levels remain attached to a companion until it is released or lost.</small>}<output aria-label={`${rosterLabel} allocation`}>{allocated}/{budget} levels allocated</output>{entries.map((entry) => row(entry.index, entry.companionId, entry.level))}{nextIndex !== undefined && allocated < budget && row(nextIndex, "", 0)}</article>;
 }
 
 const spellAsOption = (spell: CharacterSpell, schoolName: string): Option => ({
@@ -297,7 +304,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const refreshSpecialistSlots = () => specialistSlotChoices.forEach((choice) => onOptionChange(`${choice.id}-used`, ""));
 
   return <section className="choice-panel"><div><p className="eyebrow">FEATURE CHOICES</p><h2>Configure class features</h2><p>Dependent choices are ordered so each selection unlocks the next legal options.</p></div>{favoredTerrainBonuses.length > 0 && <aside className="favored-terrain-summary" aria-label="Favored terrain bonuses"><strong>Favored terrain bonuses</strong><ul>{favoredTerrainBonuses.map((terrain) => <li key={terrain.id}><span>{terrain.name}</span><b>+{terrain.bonus}</b></li>)}</ul></aside>}{domainSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshDomainSlots}>Refresh domain spell slots</button>}{specialistSlotChoices.length > 0 && <button type="button" className="domain-slot-refresh" onClick={refreshSpecialistSlots}>Refresh specialist school slots</button>}{orderedChoices.map((choice) => {
-    if (choice.id === "beast-master-companion-roster-4") return <BeastMasterRoster key={choice.id} choice={choice} selectedOptions={selectedOptions} classLevel={choice.classLevel ?? classLevel} onOptionChange={onOptionChange} />;
+    if (choice.companionRoster || choice.id === "beast-master-companion-roster-4") return <CompanionRoster key={choice.id} choice={choice} selectedOptions={selectedOptions} classLevel={choice.classLevel ?? classLevel} onOptionChange={onOptionChange} />;
     const options = optionsFor(choice);
     const domainLevel = domainSpellLevel(choice);
     const specialistLevel = specialistSpellLevel(choice);
