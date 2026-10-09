@@ -290,6 +290,7 @@ export interface ClassFeatureOccurrence {
     };
     advancementOptionId?: string;
     requiredOptionId?: string;
+    requiredActiveEffectName?: string;
     targetHitDiceRequirement?: { label: string; levelDivisor: number };
     targetCountByLevel?: Array<{ level: number; count: number }>;
     temporaryHitPointsByLevel?: Array<{ level: number; amount: number }>;
@@ -463,6 +464,7 @@ export interface ClassFeatureOccurrence {
       applyToAllTargets?: boolean;
       replaceExisting?: boolean;
       consumeOnUse?: boolean;
+      grantedFeatIds?: string[];
       skillOptions?: string[];
       additionalEffectsByLevel?: Array<{
         minimumLevel: number;
@@ -572,6 +574,14 @@ export interface CharacterClass {
   spellsKnownAdjustmentPerLevel?: number;
   companionGrants?: ArchetypeCompanionGrant[];
   companionProgressionAdjustments?: CompanionProgressionAdjustment[];
+  unarmedDamageProgressions?: Array<{
+    sourceFeatureId?: string;
+    classId: string;
+    minimumLevel?: number;
+    levelAdjustment?: number;
+    requiredActiveEffectName?: string;
+    grantsImprovedUnarmedStrike?: boolean;
+  }>;
   wildShapeLevelAdjustment?: number;
   druidNatureBondOptionIds?: string[];
   druidAnimalCompanionIds?: string[];
@@ -635,6 +645,14 @@ export interface CharacterArchetype {
   spellsKnownAdjustmentPerLevel?: number;
   companionGrants?: ArchetypeCompanionGrant[];
   companionProgressionAdjustments?: CompanionProgressionAdjustment[];
+  unarmedDamageProgressions?: Array<{
+    sourceFeatureId?: string;
+    classId: string;
+    minimumLevel?: number;
+    levelAdjustment?: number;
+    requiredActiveEffectName?: string;
+    grantsImprovedUnarmedStrike?: boolean;
+  }>;
   removesSpellcasting?: boolean;
   removesBardicPerformance?: boolean;
   spellcastingAbility?: "intelligence" | "wisdom" | "charisma";
