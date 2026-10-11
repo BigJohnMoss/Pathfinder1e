@@ -17,7 +17,7 @@
         {
           "id": "druid-green-faith-initiate-mediator-s-ear-ex-1",
           "name": "Mediator’s Ear (Ex)",
-          "level": 1,
+          "level": 3,
           "type": "archetype",
           "summary": "By 3rd level, a Green Faith initiate is respected for her neutrality and even-handed attitude toward all people as well as other living things. She quickly develops a sense of other peoples’ attitudes, much as she does with animals. A Green Faith initiate gains a bonus on Diplomacy and Sense Motive checks equal to half her druid level. This replaces trackless step."
         },
@@ -26,28 +26,126 @@
           "name": "Zephyr Message (Sp)",
           "level": 6,
           "type": "archetype",
-          "summary": "At 6th level, once per day, a Green Faith initiate can cast whispering wind as a spell-like ability, treating her druid level as her caster level. This replaces the druid’s additional daily use of wild shape gained at 6th level."
+          "summary": "At 6th level, once per day, a Green Faith initiate can cast whispering wind as a spell-like ability, treating her druid level as her caster level. This replaces the druid’s additional daily use of wild shape gained at 6th level.",
+          "resourceActions": [
+            {
+              "id": "green-faith-zephyr-message",
+              "label": "Send Zephyr Message",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "greenFaithZephyr",
+              "cost": 1,
+              "spellLikeAbility": {
+                "spellId": "whispering-wind",
+                "spellName": "Whispering Wind",
+                "cadence": "day",
+                "kind": "spell-like"
+              },
+              "summary": "Spend the once-daily use and cast whispering wind at Druid caster level."
+            }
+          ]
         },
         {
           "id": "druid-green-faith-initiate-path-to-refuge-sp-9",
           "name": "Path to Refuge (Sp)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, once per day, a Green Faith initiate can travel as if with transport via plants to any major Green Faith druid circle or important holy site. Each of these sites is marked with special standing stones that allow all Green Faith followers within range using transport via plants or tree stride to sense their distance from it and the direction to it. At 14th level and again at 19th level, she can use this ability one additional time per day. This replaces venom immunity."
+          "summary": "At 9th level, once per day, a Green Faith initiate can travel as if with transport via plants to any major Green Faith druid circle or important holy site. Each of these sites is marked with special standing stones that allow all Green Faith followers within range using transport via plants or tree stride to sense their distance from it and the direction to it. At 14th level and again at 19th level, she can use this ability one additional time per day. This replaces venom immunity.",
+          "resourceActions": [
+            {
+              "id": "green-faith-path-to-refuge",
+              "label": "Travel Path to Refuge",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "greenFaithRefuge",
+              "cost": 1,
+              "confirmations": [
+                {
+                  "id": "green-faith-site",
+                  "label": "Destination is a major Green Faith circle or holy site marked by its standing stones",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "transport-via-plants",
+                "spellName": "Transport via Plants (Green Faith refuge)",
+                "cadence": "day",
+                "kind": "spell-like"
+              },
+              "summary": "Spend one scaling daily use and travel only to a legal Green Faith refuge."
+            }
+          ]
         },
         {
           "id": "druid-green-faith-initiate-secrets-across-lifetimes-sp-10",
           "name": "Secrets across Lifetimes (Sp)",
           "level": 10,
           "type": "archetype",
-          "summary": "At 10th level, a Green Faith initiate can use legend lore once per week as a spell-like ability, drawing upon the knowledge of Green Faith archdruids recorded in secret across the generations in places where magic such as this can retrieve it. This ability does not require material components. This replaces the druid’s additional daily use of wild shape gained at 10th level."
+          "summary": "At 10th level, a Green Faith initiate can use legend lore once per week as a spell-like ability, drawing upon the knowledge of Green Faith archdruids recorded in secret across the generations in places where magic such as this can retrieve it. This ability does not require material components. This replaces the druid’s additional daily use of wild shape gained at 10th level.",
+          "resourceActions": [
+            {
+              "id": "green-faith-secrets-lifetimes",
+              "label": "Consult Secrets across Lifetimes",
+              "classId": "druid",
+              "minimumLevel": 10,
+              "resourceId": "greenFaithSecrets",
+              "cost": 1,
+              "spellLikeAbility": {
+                "spellId": "legend-lore",
+                "spellName": "Legend Lore without material components",
+                "cadence": "week",
+                "kind": "spell-like"
+              },
+              "summary": "Spend the weekly use and cast legend lore without material components."
+            }
+          ]
         },
         {
           "id": "druid-green-faith-initiate-a-thousand-voices-su-13",
           "name": "A Thousand Voices (Su)",
           "level": 13,
           "type": "archetype",
-          "summary": "At 13th level, a Green Faith initiate can communicate with any creature that has a language or with any stone, as if using tongues or stone tell , respectively, for up to 1 minute per druid level each day. This duration does not need to be consecutive, but it must be spent in 1-minute increments. This replaces a thousand faces."
+          "summary": "At 13th level, a Green Faith initiate can communicate with any creature that has a language or with any stone, as if using tongues or stone tell , respectively, for up to 1 minute per druid level each day. This duration does not need to be consecutive, but it must be spent in 1-minute increments. This replaces a thousand faces.",
+          "resourceActions": [
+            {
+              "id": "green-faith-thousand-voices",
+              "label": "Use A Thousand Voices",
+              "classId": "druid",
+              "minimumLevel": 13,
+              "resourceId": "greenFaithVoicesMinutes",
+              "variableCost": {
+                "label": "Minutes",
+                "minimum": 1,
+                "maximumLevelDivisor": 1
+              },
+              "modeLabel": "Communication target",
+              "modes": [
+                {
+                  "id": "language",
+                  "label": "Creature with a language",
+                  "summary": "Communicate as tongues."
+                },
+                {
+                  "id": "stone",
+                  "label": "Stone",
+                  "summary": "Communicate as stone tell."
+                }
+              ],
+              "activeEffect": {
+                "name": "A Thousand Voices",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Communicate using the selected tongues or stone tell mode for the selected number of minutes.",
+                "defaultRounds": 10,
+                "durationFromVariableCost": true,
+                "durationFromVariableCostMultiplier": 10,
+                "replaceExisting": true
+              },
+              "summary": "Choose a mode and spend the same number of minutes from the Druid-level daily pool as the tracked duration."
+            }
+          ]
         }
       ]
     }
@@ -57,8 +155,102 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Green%20Faith%20Initiate"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Mediator's Ear scaling, both removed Wild Shape uses, Zephyr Message, scaling Path to Refuge uses and site restriction, weekly component-free Legend Lore, and minute-for-minute A Thousand Voices modes are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-green-faith-initiate-mediator-s-ear-ex-1",
+      "label": "Mediator's Ear — Diplomacy",
+      "condition": "Diplomacy checks",
+      "minimumLevel": 3,
+      "base": 0,
+      "levelDivisor": 2,
+      "levelMultiplier": 1
+    },
+    {
+      "sourceFeatureId": "druid-green-faith-initiate-mediator-s-ear-ex-1",
+      "label": "Mediator's Ear — Sense Motive",
+      "condition": "Sense Motive checks",
+      "minimumLevel": 3,
+      "base": 0,
+      "levelDivisor": 2,
+      "levelMultiplier": 1
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-green-faith-initiate-zephyr-message-sp-6",
+      "resourceId": "greenFaithZephyr",
+      "label": "Zephyr Message",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 6,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "druid-green-faith-initiate-path-to-refuge-sp-9",
+      "resourceId": "greenFaithRefuge",
+      "label": "Path to Refuge",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 9,
+      "base": 1,
+      "maximumByLevel": [
+        {
+          "level": 9,
+          "maximum": 1
+        },
+        {
+          "level": 14,
+          "maximum": 2
+        },
+        {
+          "level": 19,
+          "maximum": 3
+        }
+      ],
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "druid-green-faith-initiate-secrets-across-lifetimes-sp-10",
+      "resourceId": "greenFaithSecrets",
+      "label": "Secrets across Lifetimes",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 10,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "week",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "druid-green-faith-initiate-a-thousand-voices-su-13",
+      "resourceId": "greenFaithVoicesMinutes",
+      "label": "A Thousand Voices",
+      "unit": "minute",
+      "operation": "replace",
+      "minimumLevel": 13,
+      "base": 0,
+      "levelMultiplier": 1,
+      "maximum": 20,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "wildShapeUseAdjustments": [
+    {
+      "level": 6,
+      "delta": -1
+    },
+    {
+      "level": 10,
+      "delta": -1
+    }
   ]
 }
