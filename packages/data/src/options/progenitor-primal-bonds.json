@@ -1,0 +1,25 @@
+{
+  "id": "progenitor-primal-bonds",
+  "name": "Progenitor Primal Bonds",
+  "classIds": ["druid"],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Progenitor"
+  },
+  "optionDefaults": {
+    "groupId": "progenitor-primal-bonds",
+    "classIds": ["druid"],
+    "minimumLevel": 5,
+    "prerequisites": [],
+    "source": {
+      "title": "Archives of Nethys",
+      "page": null,
+      "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Progenitor"
+    }
+  },
+  "options": [
+    { "id": "progenitor-primal-bond-magic", "name": "Magic", "benefit": "Use wild magic to attempt to cast a prepared spell without expending its slot." },
+    { "id": "progenitor-primal-bond-nature", "name": "Nature", "benefit": "Create mobile undergrowth that provides cover to allies or difficult terrain for enemies." }
+  ]
+}
