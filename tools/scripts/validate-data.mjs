@@ -294,6 +294,7 @@ for (const [index, url] of archetypeUrls.entries()) {
         for (const effectNameKey of ["requiredActiveEffectName", "blockedByActiveEffectName", "removeActiveEffectName"]) {
           if (action[effectNameKey] !== undefined && (typeof action[effectNameKey] !== "string" || !action[effectNameKey].trim())) errors.push(`${file}: ${feature.id} ${action.id} has an invalid ${effectNameKey}`);
         }
+        if (action.blockedByActiveEffectNames !== undefined && (!Array.isArray(action.blockedByActiveEffectNames) || action.blockedByActiveEffectNames.length === 0 || new Set(action.blockedByActiveEffectNames).size !== action.blockedByActiveEffectNames.length || action.blockedByActiveEffectNames.some((name) => typeof name !== "string" || !name.trim()))) errors.push(`${file}: ${feature.id} ${action.id} has invalid blockedByActiveEffectNames`);
         if (action.targetEffectRoll !== undefined) {
           const roll = action.targetEffectRoll;
           const minimumLevel = action.minimumLevel ?? feature.level;
@@ -319,7 +320,7 @@ for (const [index, url] of archetypeUrls.entries()) {
           if (effect.weaponSelectionFeatureId !== undefined && (typeof effect.weaponSelectionFeatureId !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(effect.weaponSelectionFeatureId))) errors.push(`${file}: ${feature.id} ${action.id} has an invalid weaponSelectionFeatureId`);
           if (effect.usesSelectedModeAsDamageType !== undefined && (typeof effect.usesSelectedModeAsDamageType !== "boolean" || !action.modes?.length)) errors.push(`${file}: ${feature.id} ${action.id} has an invalid usesSelectedModeAsDamageType`);
           if (effect.targets.some(target => target === "self" || target === "area" || target === "enemy") && (typeof effect.description !== "string" || !effect.description.trim())) errors.push(`${file}: ${feature.id} ${action.id} descriptive activeEffect is missing its description`);
-          if (effect.defaultRounds !== undefined && (!Number.isInteger(effect.defaultRounds) || effect.defaultRounds < 1 || effect.defaultRounds > 99999)) errors.push(`${file}: ${feature.id} ${action.id} has invalid activeEffect rounds`);
+          if (effect.defaultRounds !== undefined && (!Number.isInteger(effect.defaultRounds) || effect.defaultRounds < 1 || effect.defaultRounds > 999999)) errors.push(`${file}: ${feature.id} ${action.id} has invalid activeEffect rounds`);
           if (effect.durationAbilityModifier !== undefined && !abilities.has(effect.durationAbilityModifier)) errors.push(`${file}: ${feature.id} ${action.id} has invalid activeEffect duration ability`);
           if (effect.durationFromVariableCost !== undefined && (effect.durationFromVariableCost !== true || !action.variableCost || effect.durationDice !== undefined)) errors.push(`${file}: ${feature.id} ${action.id} has invalid activeEffect variable-cost duration`);
           if (effect.durationFromVariableCostMultiplier !== undefined && (!effect.durationFromVariableCost || !Number.isInteger(effect.durationFromVariableCostMultiplier) || effect.durationFromVariableCostMultiplier < 1 || effect.durationFromVariableCostMultiplier > 600)) errors.push(`${file}: ${feature.id} ${action.id} has invalid activeEffect variable-cost duration multiplier`);

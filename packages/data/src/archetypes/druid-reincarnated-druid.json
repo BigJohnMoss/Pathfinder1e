@@ -32,28 +32,296 @@
           "name": "Many Lives (Ex)",
           "level": 5,
           "type": "archetype",
-          "summary": "At 5th level, if a reincarnated druid is killed, she may automatically reincarnate (as the spell) 1 day later. The reincarnated druid appears in a safe location within 1 mile of her previous body. At will for the next 7 days, she can sense the presence of her remains as if using locate object as a spell-like ability. If she is killed during these 7 days, she remains dead and does not reincarnate. The many lives ability does not function ifthe reincarnated druid is slain by a death effect. A reincarnated druid cannot be raised from the dead or resurrected, though she can be reincarnated."
+          "summary": "At 5th level, if a reincarnated druid is killed, she may automatically reincarnate (as the spell) 1 day later. The reincarnated druid appears in a safe location within 1 mile of her previous body. At will for the next 7 days, she can sense the presence of her remains as if using locate object as a spell-like ability. If she is killed during these 7 days, she remains dead and does not reincarnate. The many lives ability does not function ifthe reincarnated druid is slain by a death effect. A reincarnated druid cannot be raised from the dead or resurrected, though she can be reincarnated.",
+          "resourceActions": [
+            {
+              "id": "reincarnated-druid-record-death",
+              "label": "Record qualifying death",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "blockedByActiveEffectNames": [
+                "Many Lives — awaiting reincarnation",
+                "Many Lives — seven-day vulnerability"
+              ],
+              "confirmations": [
+                {
+                  "id": "killed",
+                  "label": "The character was killed",
+                  "requiredForActivation": true
+                },
+                {
+                  "id": "not-death-effect",
+                  "label": "The killing effect was not a death effect",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Many Lives — awaiting reincarnation",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The character returns automatically via reincarnate after 1 day in a safe location within 1 mile of the previous body. Raise dead and resurrection are unavailable.",
+                "defaultRounds": 14400,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Start the exact one-day delay before automatic reincarnation."
+            },
+            {
+              "id": "reincarnated-druid-complete-return",
+              "label": "Complete automatic reincarnation",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "requiredActiveEffectName": "Many Lives — awaiting reincarnation",
+              "removeActiveEffectName": "Many Lives — awaiting reincarnation",
+              "activeEffect": {
+                "name": "Many Lives — seven-day vulnerability",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "For 7 days, sense the previous remains at will as locate object. If killed during this window, remain dead and do not reincarnate.",
+                "defaultRounds": 100800,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Finish the return and begin the exact seven-day remains-sensing and no-second-reincarnation window."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "reincarnated-druid-death-restrictions",
+              "label": "Many Lives restrictions",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "rule",
+                  "label": "Death and return rule"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 5,
+                  "values": {
+                    "rule": "Cannot be raised or resurrected; may still be reincarnated. Death effects prevent Many Lives."
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-reincarnated-druid-wild-shape-su-6",
           "name": "Wild Shape (Su)",
           "level": 6,
           "type": "archetype",
-          "summary": "A reincarnated druid gains this ability at 6th level, and it functions at her druid level – 2."
+          "summary": "A reincarnated druid gains this ability at 6th level, and it functions at her druid level – 2.",
+          "progressionKey": "druid-wild-shape",
+          "resourceActions": [
+            {
+              "id": "reincarnated-druid-wild-shape",
+              "label": "Assume Reincarnated Druid Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Form tier",
+              "modes": [
+                {
+                  "id": "animal-small-medium",
+                  "label": "Small or Medium animal",
+                  "minimumLevel": 6,
+                  "summary": "Use beast shape I."
+                },
+                {
+                  "id": "animal-large",
+                  "label": "Large animal",
+                  "minimumLevel": 8,
+                  "summary": "Use beast shape II."
+                },
+                {
+                  "id": "elemental-small",
+                  "label": "Small elemental",
+                  "minimumLevel": 8,
+                  "summary": "Use elemental body I."
+                },
+                {
+                  "id": "animal-tiny-huge",
+                  "label": "Tiny or Huge animal",
+                  "minimumLevel": 10,
+                  "summary": "Use beast shape III."
+                },
+                {
+                  "id": "elemental-medium",
+                  "label": "Medium elemental",
+                  "minimumLevel": 10,
+                  "summary": "Use elemental body II."
+                },
+                {
+                  "id": "plant",
+                  "label": "Plant creature",
+                  "minimumLevel": 10,
+                  "summary": "Use plant shape at the tier allowed by effective level."
+                },
+                {
+                  "id": "elemental-large",
+                  "label": "Large elemental",
+                  "minimumLevel": 12,
+                  "summary": "Use elemental body III."
+                },
+                {
+                  "id": "elemental-huge",
+                  "label": "Huge elemental",
+                  "minimumLevel": 14,
+                  "summary": "Use elemental body IV."
+                }
+              ],
+              "activeEffect": {
+                "name": "Reincarnated Druid Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected form using an effective Druid level 2 lower than actual level.",
+                "defaultRounds": 2400,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 6,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 10800
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one use; form access, daily uses, and duration all use Druid level − 2."
+            }
+          ]
         },
         {
           "id": "druid-reincarnated-druid-cheat-death-ex-9",
           "name": "Cheat Death (Ex)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, once per day, a reincarnated druid may reroll a save against a death effect, energy drain, or necromancy effect before the result of the roll is revealed, or reroll a failed stabilization check while dying. She must take the result of the second roll, even if it is worse than the original roll. This ability replaces venom immunity."
+          "summary": "At 9th level, once per day, a reincarnated druid may reroll a save against a death effect, energy drain, or necromancy effect before the result of the roll is revealed, or reroll a failed stabilization check while dying. She must take the result of the second roll, even if it is worse than the original roll. This ability replaces venom immunity.",
+          "resourceActions": [
+            {
+              "id": "reincarnated-druid-cheat-death",
+              "label": "Cheat Death reroll",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "reincarnatedCheatDeath",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 9,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "qualifying",
+                  "label": "Save is against death, energy drain, or necromancy before result is revealed, or is a failed stabilization check",
+                  "requiredForActivation": true
+                }
+              ],
+              "rerollAction": {
+                "kind": "d20",
+                "label": "Required second result"
+              },
+              "summary": "Spend the daily use and take the second roll even if it is worse."
+            }
+          ]
         },
         {
           "id": "druid-reincarnated-druid-tongue-of-the-sun-and-moon-ex-15",
           "name": "Tongue of the Sun and Moon (Ex)",
           "level": 15,
           "type": "archetype",
-          "summary": "At 15th level, a reincarnated druid can speak with any living creature. This ability replaces timeless body."
+          "summary": "At 15th level, a reincarnated druid can speak with any living creature. This ability replaces timeless body.",
+          "progressionProfiles": [
+            {
+              "id": "reincarnated-druid-universal-speech",
+              "label": "Tongue of the Sun and Moon",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Communication"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 15,
+                  "values": {
+                    "benefit": "Speak with every living creature"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -63,8 +331,48 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Reincarnated%20Druid"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ]
+    "Information DC scaling, every death/necromancy defense, the one-day reincarnation and separate seven-day vulnerability lifecycle, level − 2 Wild Shape, mandatory Cheat Death reroll, and universal speech are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-reincarnated-druid-mysterious-stranger-ex-2",
+      "label": "Mysterious Stranger information DC",
+      "condition": "DC of Sense Motive, Diplomacy, and Knowledge checks made to learn about this character",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "levelMultiplier": 1
+    },
+    {
+      "sourceFeatureId": "druid-reincarnated-druid-resist-death-s-touch-ex-4",
+      "label": "Resist Death's Touch — saves",
+      "condition": "Saving throws against death effects, energy drain, and necromancy effects",
+      "minimumLevel": 4,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "druid-reincarnated-druid-resist-death-s-touch-ex-4",
+      "label": "Resist Death's Touch — stabilization",
+      "condition": "Stabilization checks while dying",
+      "minimumLevel": 4,
+      "base": 4
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-reincarnated-druid-cheat-death-ex-9",
+      "resourceId": "reincarnatedCheatDeath",
+      "label": "Cheat Death",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 9,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "wildShapeLevelAdjustment": -2
 }
