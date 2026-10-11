@@ -2926,7 +2926,7 @@ export default function Home() {
       ...current,
       [resourceClassId]: Object.fromEntries(
         Object.entries(current[resourceClassId] ?? {}).filter(([resourceId]) =>
-          apgDailyResources.some((resource) => resource.classId === resourceClassId && resource.id === resourceId && resource.refreshCadence === "week"),
+          apgDailyResources.some((resource) => resource.classId === resourceClassId && resource.id === resourceId && resource.refreshCadence !== "day"),
         ),
       ),
     }));
