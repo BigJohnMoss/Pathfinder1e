@@ -2738,8 +2738,15 @@ export default function Home() {
           combat.abilityModifiers.charisma,
         ) + alternateBardicPerformanceRounds
       : 0;
+  const hasWildShape = progression.features.some(
+    (feature) =>
+      feature.progressionKey === "druid-wild-shape" ||
+      feature.resourceActions?.some((action) => action.resourceId === "wildShape"),
+  );
   const wildShapeMaximum =
-    druidClassLevel > 0 ? druidWildShapeUses(druidWildShapeEffectiveLevel) : 0;
+    druidClassLevel > 0 && hasWildShape
+      ? druidWildShapeUses(druidWildShapeEffectiveLevel)
+      : 0;
   const resourceLabels: Record<string, [string, string]> = {
     bombs: ["Bombs", "bomb"],
     challenges: ["Challenges", "challenge"],
