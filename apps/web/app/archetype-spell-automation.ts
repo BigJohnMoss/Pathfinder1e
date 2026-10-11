@@ -21,6 +21,7 @@ export type PreparedSpellAutomation = {
   preparedKeywordConversion?: {
     label: string;
     keyword: string;
+    requiresTargetPrepared: boolean;
   };
   fastHealingAura?: {
     label: string;
@@ -113,6 +114,7 @@ export function classSpellAutomation(
       ? { preparedKeywordConversion: {
           label: conversion.label,
           keyword: conversion.keyword,
+          requiresTargetPrepared: Boolean(conversion.requiresTargetPrepared),
         } }
       : {}),
     ...(fastHealing

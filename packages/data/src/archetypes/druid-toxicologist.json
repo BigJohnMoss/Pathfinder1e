@@ -35,14 +35,65 @@
           "name": "Expanded Repertoire (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A toxicologist adds the following extracts and spells to her druid spell list as druid spells of the listed spell level: poisoned egg (1st level, Pathfinder Campaign Setting: Inner Sea Gods 238 ), transmute potion to poisonAPG (2nd level), stinking cloud (3rd level), toxic giftUM (4th level), and cloudkill (5th level). A toxicologist can channel stored spell energy only into summoning spells she has prepared ahead of time. This ability alters spells and replaces spontaneous casting."
+          "summary": "A toxicologist adds the following extracts and spells to her druid spell list as druid spells of the listed spell level: poisoned egg (1st level, Pathfinder Campaign Setting: Inner Sea Gods 238 ), transmute potion to poisonAPG (2nd level), stinking cloud (3rd level), toxic giftUM (4th level), and cloudkill (5th level). A toxicologist can channel stored spell energy only into summoning spells she has prepared ahead of time. This ability alters spells and replaces spontaneous casting.",
+          "spellAutomation": {
+            "preparedKeywordConversion": {
+              "label": "Prepared Summoning",
+              "keyword": "summon",
+              "requiresTargetPrepared": true
+            }
+          },
+          "progressionProfiles": [
+            {
+              "id": "toxicologist-expanded-repertoire",
+              "label": "Expanded Repertoire",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "spells",
+                  "label": "Added Druid spells"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "spells": "Poisoned Egg (1st); Transmute Potion to Poison (2nd); Stinking Cloud (3rd); Toxic Gift (4th); Cloudkill (5th)"
+                  }
+                }
+              ],
+              "summary": "All five spells are in the Druid catalogue at their published levels. Spontaneous conversion is restricted to summoning spells that were prepared ahead of time."
+            }
+          ]
         },
         {
           "id": "druid-toxicologist-natural-poison-lore-ex-2",
           "name": "Natural Poison Lore (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "A toxicologist has a deep understanding of and appreciation for poisons. At 2nd level, she cannot accidentally poison herself when applying poison to a weapon and cannot accidentally poison an animal companion or summoned creature when applying poison to its claws (though poison obviously should not be applied to a creature’s bite). This ability replaces wild empathy and woodland stride."
+          "summary": "A toxicologist has a deep understanding of and appreciation for poisons. At 2nd level, she cannot accidentally poison herself when applying poison to a weapon and cannot accidentally poison an animal companion or summoned creature when applying poison to its claws (though poison obviously should not be applied to a creature’s bite). This ability replaces wild empathy and woodland stride.",
+          "progressionProfiles": [
+            {
+              "id": "toxicologist-safe-poison-application",
+              "label": "Natural Poison Lore",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "safeTargets",
+                  "label": "Safe poison application"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "safeTargets": "Self when poisoning a weapon; animal companion or summoned creature when poisoning claws (never bites)"
+                  }
+                }
+              ],
+              "summary": "The listed accidental-poisoning risks are removed automatically; the bite restriction remains explicit."
+            }
+          ]
         },
         {
           "id": "druid-toxicologist-expert-poisoner-su-4",
@@ -56,7 +107,179 @@
           "name": "Toxic Shaper (Su)",
           "level": 8,
           "type": "archetype",
-          "summary": "A toxicologist never gains the ability to use wild shape to transform into an elemental or plant. At 8th level, a toxicologist can transform into a Small or Medium vermin. When she takes this form, her wild shape functions as vermin shape IUM . At 10th level, a toxicologist can transform into a tiny or large vermin. When she takes this form, her wild shape functions as vermin shape IIUM . This ability alters wild shape."
+          "summary": "A toxicologist never gains the ability to use wild shape to transform into an elemental or plant. At 8th level, a toxicologist can transform into a Small or Medium vermin. When she takes this form, her wild shape functions as vermin shape IUM . At 10th level, a toxicologist can transform into a tiny or large vermin. When she takes this form, her wild shape functions as vermin shape IIUM . This ability alters wild shape.",
+          "progressionProfiles": [
+            {
+              "id": "toxicologist-vermin-forms",
+              "label": "Toxic Shaper progression",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "vermin",
+                  "label": "Vermin forms"
+                },
+                {
+                  "id": "prohibited",
+                  "label": "Prohibited forms"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 8,
+                  "values": {
+                    "vermin": "Small or Medium via vermin shape I",
+                    "prohibited": "Elemental and plant"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "vermin": "Tiny, Small, Medium, or Large via vermin shape II",
+                    "prohibited": "Elemental and plant"
+                  }
+                }
+              ],
+              "summary": "The Wild Shape control exposes only forms legal at the current Druid level."
+            }
+          ]
+        },
+        {
+          "id": "druid-toxicologist-altered-wild-shape-4",
+          "name": "Wild Shape (Altered)",
+          "level": 4,
+          "type": "archetype",
+          "summary": "A toxicologist retains animal wild shape, never unlocks elemental or plant forms, and adds vermin shape forms through Toxic Shaper at levels 8 and 10.",
+          "resourceActions": [
+            {
+              "id": "toxicologist-wild-shape",
+              "label": "Assume Toxicologist Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Legal form tier",
+              "modes": [
+                {
+                  "id": "animal-small-medium",
+                  "label": "Small or Medium animal",
+                  "minimumLevel": 4,
+                  "summary": "Use beast shape I."
+                },
+                {
+                  "id": "animal-large",
+                  "label": "Large animal",
+                  "minimumLevel": 6,
+                  "summary": "Use beast shape II."
+                },
+                {
+                  "id": "animal-tiny-huge",
+                  "label": "Tiny or Huge animal",
+                  "minimumLevel": 8,
+                  "summary": "Use beast shape III."
+                },
+                {
+                  "id": "vermin-small-medium",
+                  "label": "Small or Medium vermin",
+                  "minimumLevel": 8,
+                  "summary": "Use vermin shape I."
+                },
+                {
+                  "id": "vermin-tiny-large",
+                  "label": "Tiny or Large vermin",
+                  "minimumLevel": 10,
+                  "summary": "Use vermin shape II."
+                }
+              ],
+              "activeEffect": {
+                "name": "Toxicologist Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected legal animal or vermin form. Elemental and plant forms are prohibited.",
+                "defaultRounds": 2400,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use; the legal tier and exact 1-hour-per-level duration are calculated automatically."
+            }
+          ]
         }
       ]
     }
@@ -66,8 +289,21 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Toxicologist"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "All five added spells, prepared-only summoning conversion, safe poison application rules, poison-descriptor save DC increase, retained animal Wild Shape, added vermin tiers, prohibited elemental/plant forms, and exact duration are automated."
+  ],
+  "spellModifierAdjustments": [
+    {
+      "sourceFeatureId": "druid-toxicologist-expert-poisoner-su-4",
+      "label": "Expert Poisoner",
+      "target": "saveDc",
+      "minimumLevel": 4,
+      "base": 1,
+      "descriptors": [
+        "poison"
+      ],
+      "condition": "Spells with the poison descriptor"
+    }
   ]
 }
