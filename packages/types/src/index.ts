@@ -455,6 +455,7 @@ export interface ClassFeatureOccurrence {
       defaultRounds?: number;
       defaultRoundsByLevel?: Array<{ level: number; rounds: number }>;
       durationAbilityModifier?: AbilityName;
+      durationFromVariableCost?: boolean;
       durationDice?: { count: number; sides: number };
       rangeByLevel?: Array<{ level: number; feet: number }>;
       fixedRounds?: boolean;
