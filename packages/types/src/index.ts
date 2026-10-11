@@ -295,6 +295,8 @@ export interface ClassFeatureOccurrence {
     advancementOptionId?: string;
     requiredOptionId?: string;
     requiredActiveEffectName?: string;
+    blockedByActiveEffectName?: string;
+    removeActiveEffectName?: string;
     targetHitDiceRequirement?: { label: string; levelDivisor: number };
     targetCountByLevel?: Array<{ level: number; count: number }>;
     temporaryHitPointsByLevel?: Array<{ level: number; amount: number }>;
