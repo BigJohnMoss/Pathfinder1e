@@ -296,6 +296,7 @@ export interface ClassFeatureOccurrence {
     requiredOptionId?: string;
     requiredActiveEffectName?: string;
     blockedByActiveEffectName?: string;
+    blockedByActiveEffectNames?: string[];
     removeActiveEffectName?: string;
     targetHitDiceRequirement?: { label: string; levelDivisor: number };
     targetCountByLevel?: Array<{ level: number; count: number }>;
