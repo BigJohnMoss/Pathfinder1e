@@ -9,7 +9,7 @@ This report is generated from the application's source data by `npm run coverage
 | Classes | 46 |
 | Archetypes | 1195 |
 | Ancestries | 10 |
-| Option groups | 143 |
+| Option groups | 144 |
 | Feats | 3447 |
 | Traits | 40 |
 | Spells | 2760 |
@@ -29,8 +29,8 @@ Manual-review rules remain visibly locked in the builder. They are not silently 
 
 | Coverage | Count |
 |---|---:|
-| Fully automated | 186 |
-| Partially automated | 1009 |
+| Fully automated | 187 |
+| Partially automated | 1008 |
 | Rules reference only | 0 |
 
 ### Structured automation
@@ -54,10 +54,10 @@ These rule-text signals are multi-label: one archetype can contribute to several
 |---|---:|
 | Resources and limited uses | 571 |
 | Companions, mounts, familiars, and eidolons | 213 |
-| Spell lists, slots, and casting | 570 |
-| Selectable progressions and dependent choices | 696 |
-| Combat statistics and proficiencies | 787 |
-| Skills | 587 |
+| Spell lists, slots, and casting | 569 |
+| Selectable progressions and dependent choices | 695 |
+| Combat statistics and proficiencies | 786 |
+| Skills | 586 |
 | Feats | 440 |
 | Narrative or uncategorized effects | 2 |
 

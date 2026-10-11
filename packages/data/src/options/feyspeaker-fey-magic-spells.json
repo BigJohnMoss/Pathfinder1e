@@ -1,0 +1,36 @@
+{
+  "id": "feyspeaker-fey-magic-spells",
+  "name": "Feyspeaker Fey Magic Spells",
+  "classIds": ["druid"],
+  "source": {
+    "title": "Archives of Nethys",
+    "page": null,
+    "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feyspeaker"
+  },
+  "optionDefaults": {
+    "groupId": "feyspeaker-fey-magic-spells",
+    "classIds": ["druid"],
+    "prerequisites": []
+  },
+  "options": [],
+  "generatedSpellOptions": {
+    "spellSources": [{ "classId": "wizard" }],
+    "schools": ["enchantment", "illusion"],
+    "targetClassId": "druid",
+    "minimumSpellLevel": 0,
+    "maximumSpellLevel": 8,
+    "spellLevelAdjustment": 1,
+    "benefitMode": "spell-list",
+    "minimumClassLevelBySpellLevel": {
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 8,
+      "5": 10,
+      "6": 12,
+      "7": 14,
+      "8": 16,
+      "9": 18
+    }
+  }
+}
