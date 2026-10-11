@@ -17,7 +17,9 @@
         "druid-wild-shape-16",
         "druid-wild-shape-18",
         "druid-wild-shape-20",
-        "druid-resist-natures-lure-4"
+        "druid-resist-natures-lure-4",
+        "druid-nature-bond-1",
+        "druid-animal-companion-1"
       ],
       "features": [
         {
@@ -25,28 +27,412 @@
           "name": "Summon Dinosaur (Sp)",
           "level": 1,
           "type": "archetype",
-          "summary": "A dinosaur druid can summon a wide range of dinosaurs and related prehistoric beasts using summon nature’s ally spells. She adds the following options to these spells when using spontaneous casting to cast such a spell. Summon Nature’s Ally I : Compsognathus. Summon Nature’s Ally II : Dimorphodon, troodon. Summon Nature’s Ally III : Plesiosaurus, velociraptor. Summon Nature’s Ally IV : Dimetrodon, pachycephalosaurus, parasaurolophus. Summon Nature’s Ally V : Amargasaurus, ceratosaurus, iguanodon, kentrosaurus, styracosaurus. Summon Nature’s Ally VI : Allosaurus, quetzalcoatlus, tylosaurus. Summon Nature’s Ally VII : Therizinosaurus. Summon Nature’s Ally VIII : Diplodocus, spinosaurus. Summon Nature’s Ally IX : Giganotosaurus. This alters spontaneous casting."
+          "summary": "A dinosaur druid can summon a wide range of dinosaurs and related prehistoric beasts using summon nature’s ally spells. She adds the following options to these spells when using spontaneous casting to cast such a spell. Summon Nature’s Ally I : Compsognathus. Summon Nature’s Ally II : Dimorphodon, troodon. Summon Nature’s Ally III : Plesiosaurus, velociraptor. Summon Nature’s Ally IV : Dimetrodon, pachycephalosaurus, parasaurolophus. Summon Nature’s Ally V : Amargasaurus, ceratosaurus, iguanodon, kentrosaurus, styracosaurus. Summon Nature’s Ally VI : Allosaurus, quetzalcoatlus, tylosaurus. Summon Nature’s Ally VII : Therizinosaurus. Summon Nature’s Ally VIII : Diplodocus, spinosaurus. Summon Nature’s Ally IX : Giganotosaurus. This alters spontaneous casting.",
+          "spellAutomation": {
+            "preparedKeywordConversion": {
+              "label": "Spontaneous Dinosaur Summoning",
+              "keyword": "summon nature's ally"
+            }
+          },
+          "progressionProfiles": [
+            {
+              "id": "dinosaur-druid-summon-options",
+              "label": "Added dinosaur summons",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "creatures",
+                  "label": "Added summon options"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "creatures": "SNA I: Compsognathus"
+                  }
+                },
+                {
+                  "level": 3,
+                  "values": {
+                    "creatures": "SNA II: Dimorphodon; troodon"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "creatures": "SNA III: Plesiosaurus; velociraptor"
+                  }
+                },
+                {
+                  "level": 7,
+                  "values": {
+                    "creatures": "SNA IV: Dimetrodon; pachycephalosaurus; parasaurolophus"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "creatures": "SNA V: Amargasaurus; ceratosaurus; iguanodon; kentrosaurus; styracosaurus"
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "creatures": "SNA VI: Allosaurus; quetzalcoatlus; tylosaurus"
+                  }
+                },
+                {
+                  "level": 13,
+                  "values": {
+                    "creatures": "SNA VII: Therizinosaurus"
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "creatures": "SNA VIII: Diplodocus; spinosaurus"
+                  }
+                },
+                {
+                  "level": 17,
+                  "values": {
+                    "creatures": "SNA IX: Giganotosaurus"
+                  }
+                }
+              ],
+              "summary": "Every published prehistoric creature is shown at the matching summon nature's ally spell level and each spell has a spontaneous-cast control."
+            }
+          ]
         },
         {
           "id": "druid-dinosaur-druid-dinosaur-bond-ex-1",
           "name": "Dinosaur Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A dinosaur druid must choose an animal companion as her nature’s bond, and the animal companion must be a dinosaur (including those detailed in Pathfinder RPG Bestiary volumes). This alters nature’s bond."
+          "type": "selectable",
+          "summary": "A dinosaur druid must choose an animal companion as her nature’s bond, and the animal companion must be a dinosaur (including those detailed in Pathfinder RPG Bestiary volumes). This alters nature’s bond.",
+          "choiceRequired": true,
+          "optionGroupId": "ranger-animal-companions",
+          "optionChoiceIds": [
+            "ranger-animal-companion-dinosaur"
+          ],
+          "progressionKey": "druid-nature-bond"
         },
         {
           "id": "druid-dinosaur-druid-dinosaur-shape-su-1",
           "name": "Dinosaur Shape (Su)",
           "level": 1,
           "type": "archetype",
-          "summary": "A dinosaur druid specializes in assuming the form of dinosaurs when using wild shape. When she assumes the form of a dinosaur via wild shape, she gains a +2 size bonus to her Constitution in addition to the other modifiers granted by beast shape . When she uses wild shape to assume the form of a creature other than a dinosaur, the wild shape effect lasts for only 1 minute per level, rather than 1 hour per level. This alters wild shape."
+          "summary": "A dinosaur druid specializes in assuming the form of dinosaurs when using wild shape. When she assumes the form of a dinosaur via wild shape, she gains a +2 size bonus to her Constitution in addition to the other modifiers granted by beast shape . When she uses wild shape to assume the form of a creature other than a dinosaur, the wild shape effect lasts for only 1 minute per level, rather than 1 hour per level. This alters wild shape.",
+          "resourceActions": [
+            {
+              "id": "dinosaur-druid-dinosaur-shape",
+              "label": "Wild Shape into dinosaur",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Dinosaur size tier",
+              "modes": [
+                {
+                  "id": "dinosaur-small-medium-animal",
+                  "label": "Small or Medium dinosaur",
+                  "minimumLevel": 4,
+                  "summary": "Use beast shape I."
+                },
+                {
+                  "id": "dinosaur-large-animal",
+                  "label": "Large dinosaur",
+                  "minimumLevel": 6,
+                  "summary": "Use beast shape II."
+                },
+                {
+                  "id": "dinosaur-tiny-huge-animal",
+                  "label": "Tiny or Huge dinosaur",
+                  "minimumLevel": 8,
+                  "summary": "Use beast shape III."
+                }
+              ],
+              "activeEffect": {
+                "name": "Dinosaur Shape",
+                "targets": [
+                  "constitution"
+                ],
+                "bonus": 2,
+                "description": "+2 size bonus to Constitution in addition to the selected beast shape modifiers; duration is 1 hour per Druid level.",
+                "defaultRounds": 2400,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 12000
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use, select the legal dinosaur tier, apply +2 Constitution, and track the exact hour-per-level duration."
+            },
+            {
+              "id": "dinosaur-druid-other-shape",
+              "label": "Wild Shape into another creature",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "modeLabel": "Other form tier",
+              "modes": [
+                {
+                  "id": "small-medium-animal",
+                  "label": "Small or Medium animal",
+                  "minimumLevel": 4,
+                  "summary": "Use beast shape I."
+                },
+                {
+                  "id": "large-animal",
+                  "label": "Large animal",
+                  "minimumLevel": 6,
+                  "summary": "Use beast shape II."
+                },
+                {
+                  "id": "tiny-huge-animal",
+                  "label": "Tiny or Huge animal",
+                  "minimumLevel": 8,
+                  "summary": "Use beast shape III."
+                },
+                {
+                  "id": "small-elemental",
+                  "label": "Small elemental",
+                  "minimumLevel": 6,
+                  "summary": "Use elemental body I."
+                },
+                {
+                  "id": "medium-elemental",
+                  "label": "Medium elemental",
+                  "minimumLevel": 8,
+                  "summary": "Use elemental body II."
+                },
+                {
+                  "id": "plant",
+                  "label": "Plant creature",
+                  "minimumLevel": 8,
+                  "summary": "Use plant shape at the tier allowed by Druid level."
+                },
+                {
+                  "id": "large-elemental",
+                  "label": "Large elemental",
+                  "minimumLevel": 10,
+                  "summary": "Use elemental body III."
+                },
+                {
+                  "id": "huge-elemental",
+                  "label": "Huge elemental",
+                  "minimumLevel": 12,
+                  "summary": "Use elemental body IV."
+                }
+              ],
+              "activeEffect": {
+                "name": "Dinosaur Druid Other Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume the selected non-dinosaur form for the shortened duration of 1 minute per Druid level.",
+                "defaultRounds": 40,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 40
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 50
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 60
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 70
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 80
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 90
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 100
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 110
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 120
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 130
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 140
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 150
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 160
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 170
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 180
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 190
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 200
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use and automatically apply the archetype's minute-per-level duration to every non-dinosaur form."
+            }
+          ]
         },
         {
           "id": "druid-dinosaur-druid-primeval-voice-su-4",
           "name": "Primeval Voice (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a dinosaur druid gains the ability to speak with dinosaurs (as per speak with animals ) at all times. This replaces resist nature’s lure."
+          "summary": "At 4th level, a dinosaur druid gains the ability to speak with dinosaurs (as per speak with animals ) at all times. This replaces resist nature’s lure.",
+          "resourceActions": [
+            {
+              "id": "dinosaur-druid-primeval-voice",
+              "label": "Speak with dinosaur",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "spellLikeAbility": {
+                "spellId": "speak-with-animals",
+                "spellName": "Speak with Animals (dinosaurs only)",
+                "cadence": "at-will",
+                "kind": "spell-equivalent"
+              },
+              "summary": "Use the constant speak-with-animals permission for dinosaurs without spending a resource."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "dinosaur-druid-primeval-language",
+              "label": "Primeval Voice",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "benefit",
+                  "label": "Constant benefit"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "benefit": "Speak with dinosaurs at all times as speak with animals"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -56,8 +442,14 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Dinosaur%20Druid"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Every dinosaur summon addition, spontaneous summon conversion, dinosaur-only full-level companion selection, all Wild Shape form tiers, +2 Constitution, form-dependent duration, and constant dinosaur speech are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal"
+  ],
+  "druidAnimalCompanionIds": [
+    "ranger-animal-companion-dinosaur"
   ]
 }
