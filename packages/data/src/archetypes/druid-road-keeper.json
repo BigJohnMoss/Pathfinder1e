@@ -26,23 +26,110 @@
         {
           "id": "druid-road-keeper-one-with-the-road-su-9",
           "name": "One with the Road (Su)",
-          "level": 9,
+          "level": 1,
           "type": "archetype",
-          "summary": "A road keeper casts the following spells as though her caster level were 1 higher: 1st— longstrider , 2nd— scent trail , 3rd— nature’s exile , 4th— freedom of movement , 5th— tree stride , 6th— find the path , 7th— wind walk , 8th— word of recall , 9th— world wave . At 9th level, the bonus to her caster level for these spells increases to +2. This replaces spontaneous casting."
+          "summary": "A road keeper casts the following spells as though her caster level were 1 higher: 1st— longstrider , 2nd— scent trail , 3rd— nature’s exile , 4th— freedom of movement , 5th— tree stride , 6th— find the path , 7th— wind walk , 8th— word of recall , 9th— world wave . At 9th level, the bonus to her caster level for these spells increases to +2. This replaces spontaneous casting.",
+          "progressionProfiles": [
+            {
+              "id": "road-keeper-road-spells",
+              "label": "One with the Road caster-level bonus",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Caster level"
+                },
+                {
+                  "id": "spells",
+                  "label": "Affected spells"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "bonus": "+1",
+                    "spells": "Longstrider; scent trail; nature's exile; freedom of movement; tree stride; find the path; wind walk; word of recall; world wave"
+                  }
+                },
+                {
+                  "level": 9,
+                  "values": {
+                    "bonus": "+2",
+                    "spells": "All listed road spells"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-road-keeper-road-bond-ex-1",
           "name": "Road Bond (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "If the road keeper chooses a cleric domain as her nature bond, she must choose from the Community, Liberation, Protection, Travel, or Weather domains. The road keeper can also choose any subdomain associated with these domains. This alters nature bond and replaces wild empathy."
+          "type": "selectable",
+          "summary": "If the road keeper chooses a cleric domain as her nature bond, she must choose from the Community, Liberation, Protection, Travel, or Weather domains. The road keeper can also choose any subdomain associated with these domains. This alters nature bond and replaces wild empathy.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-animal",
+            "druid-nature-bond-domain"
+          ],
+          "progressionKey": "druid-nature-bond",
+          "progressionProfiles": [
+            {
+              "id": "road-keeper-bond-restriction",
+              "label": "Road Bond",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "rule",
+                  "label": "Legal bond"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "rule": "Animal companion, or Community, Liberation, Protection, Travel, or Weather domain and associated subdomains"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-road-keeper-take-the-high-road-ex-2",
           "name": "Take the High Road (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a road keeper travels over roads and paths at an accelerated rate. She and her allies can hustle for 2 hours without taking nonlethal damage, instead of 1, provided they travel along a road or path. Additionally, as long as they travel on a road or path, the road keeper and her allies count as traveling along a highway regardless of the quality of the road or path on which they travel. Allies must remain within 30 feet of the road keeper to benefit from this ability. This replaces woodland stride."
+          "summary": "At 2nd level, a road keeper travels over roads and paths at an accelerated rate. She and her allies can hustle for 2 hours without taking nonlethal damage, instead of 1, provided they travel along a road or path. Additionally, as long as they travel on a road or path, the road keeper and her allies count as traveling along a highway regardless of the quality of the road or path on which they travel. Allies must remain within 30 feet of the road keeper to benefit from this ability. This replaces woodland stride.",
+          "progressionProfiles": [
+            {
+              "id": "road-keeper-high-road",
+              "label": "Take the High Road",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "hustle",
+                  "label": "Safe hustle"
+                },
+                {
+                  "id": "travel",
+                  "label": "Road travel"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "hustle": "2 hours before nonlethal damage",
+                    "travel": "Roads and paths count as highways for the Road Keeper and allies within 30 feet"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-road-keeper-trodden-path-ex-4",
@@ -56,7 +143,261 @@
           "name": "Road Less Traveled (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a road keeper can discourage creatures from entering or exiting the wild. Once per day as a standard action, she can target a creature within 30 feet and curse it with clumsiness and disorientation. The road keeper chooses whether to punish her target for entering the wild from a road or building, or vice versa. If her target is entering the wild, it treats every square of wilderness not on a road or in a building as difficult terrain. If her target is exiting the wild, it treats every square on a road or inside a building as difficult terrain. In either case, the ground feels uneven and the target suffers extreme vertigo during movement. The victim of this curse can attempt a Will saving throw (DC = 10 + half the road keeper’s level + her Wisdom modifier) at the beginning of its turn each round to end the effect. The effect lasts until the target successfully saves or for a number of minutes equal to the road keeper’s level. A creature’s movement isn’t affected if it is burrowing, climbing, earth gliding, flying, or swimming. This is a mind-affecting curse effect. At 6th level and every 2 levels thereafter, the road keeper can target an additional creature per day with this ability (to a maximum number of nine targets per day at 20th level). She can target more than one creature with a single use of this ability or the same target more than once in the same day (though its effects do not stack), but her total number of targets per day cannot exceed this daily maximum. If she targets more than one creature at one time, each target must be within 30 feet of the road keeper. This replaces wild shape."
+          "summary": "At 4th level, a road keeper can discourage creatures from entering or exiting the wild. Once per day as a standard action, she can target a creature within 30 feet and curse it with clumsiness and disorientation. The road keeper chooses whether to punish her target for entering the wild from a road or building, or vice versa. If her target is entering the wild, it treats every square of wilderness not on a road or in a building as difficult terrain. If her target is exiting the wild, it treats every square on a road or inside a building as difficult terrain. In either case, the ground feels uneven and the target suffers extreme vertigo during movement. The victim of this curse can attempt a Will saving throw (DC = 10 + half the road keeper’s level + her Wisdom modifier) at the beginning of its turn each round to end the effect. The effect lasts until the target successfully saves or for a number of minutes equal to the road keeper’s level. A creature’s movement isn’t affected if it is burrowing, climbing, earth gliding, flying, or swimming. This is a mind-affecting curse effect. At 6th level and every 2 levels thereafter, the road keeper can target an additional creature per day with this ability (to a maximum number of nine targets per day at 20th level). She can target more than one creature with a single use of this ability or the same target more than once in the same day (though its effects do not stack), but her total number of targets per day cannot exceed this daily maximum. If she targets more than one creature at one time, each target must be within 30 feet of the road keeper. This replaces wild shape.",
+          "numericCalculations": [
+            {
+              "id": "road-keeper-curse-dc",
+              "label": "Road Less Traveled",
+              "inputLabel": "Wisdom modifier",
+              "inputMinimum": -5,
+              "inputMaximum": 20,
+              "inputDefault": 3,
+              "outputLabel": "Will save DC",
+              "baseByLevel": [
+                {
+                  "level": 4,
+                  "value": 12
+                },
+                {
+                  "level": 5,
+                  "value": 12
+                },
+                {
+                  "level": 6,
+                  "value": 13
+                },
+                {
+                  "level": 7,
+                  "value": 13
+                },
+                {
+                  "level": 8,
+                  "value": 14
+                },
+                {
+                  "level": 9,
+                  "value": 14
+                },
+                {
+                  "level": 10,
+                  "value": 15
+                },
+                {
+                  "level": 11,
+                  "value": 15
+                },
+                {
+                  "level": 12,
+                  "value": 16
+                },
+                {
+                  "level": 13,
+                  "value": 16
+                },
+                {
+                  "level": 14,
+                  "value": 17
+                },
+                {
+                  "level": 15,
+                  "value": 17
+                },
+                {
+                  "level": 16,
+                  "value": 18
+                },
+                {
+                  "level": 17,
+                  "value": 18
+                },
+                {
+                  "level": 18,
+                  "value": 19
+                },
+                {
+                  "level": 19,
+                  "value": 19
+                },
+                {
+                  "level": 20,
+                  "value": 20
+                }
+              ],
+              "inputMultiplierByLevel": [
+                {
+                  "level": 4,
+                  "multiplier": 1
+                }
+              ],
+              "classId": "druid",
+              "summary": "DC equals 10 + half Druid level + Wisdom modifier."
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "road-keeper-road-less-traveled",
+              "label": "Curse Travelers",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "roadLessTraveledTargets",
+              "variableCost": {
+                "label": "Targets",
+                "minimum": 1,
+                "maximumByLevel": [
+                  {
+                    "level": 4,
+                    "maximum": 1
+                  },
+                  {
+                    "level": 6,
+                    "maximum": 2
+                  },
+                  {
+                    "level": 8,
+                    "maximum": 3
+                  },
+                  {
+                    "level": 10,
+                    "maximum": 4
+                  },
+                  {
+                    "level": 12,
+                    "maximum": 5
+                  },
+                  {
+                    "level": 14,
+                    "maximum": 6
+                  },
+                  {
+                    "level": 16,
+                    "maximum": 7
+                  },
+                  {
+                    "level": 18,
+                    "maximum": 8
+                  },
+                  {
+                    "level": 20,
+                    "maximum": 9
+                  }
+                ]
+              },
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "savingThrow": {
+                "label": "Will",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "modeLabel": "Punished transition",
+              "modes": [
+                {
+                  "id": "entering-wild",
+                  "label": "Entering the wild",
+                  "summary": "Wilderness squares outside roads and buildings are difficult terrain."
+                },
+                {
+                  "id": "leaving-wild",
+                  "label": "Leaving the wild",
+                  "summary": "Road and building squares are difficult terrain."
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "valid-movement",
+                  "label": "Targets are not burrowing, climbing, earth gliding, flying, or swimming",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Road Less Traveled",
+                "targets": [
+                  "enemy"
+                ],
+                "bonus": 0,
+                "description": "The selected ground category is difficult terrain for affected targets. Each target attempts a Will save at the start of every turn to end this mind-affecting curse.",
+                "defaultRounds": 40,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 40
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 50
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 60
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 70
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 80
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 90
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 100
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 110
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 120
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 130
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 140
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 150
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 160
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 170
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 180
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 190
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 200
+                  }
+                ],
+                "fixedRounds": true
+              },
+              "summary": "Spend one daily target per creature, choose the punished direction, and track the minute-per-level curse until a target saves."
+            }
+          ]
         }
       ]
     }
@@ -66,8 +407,81 @@
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Road%20Keeper"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "All nine road-spell caster-level bonuses, Road Bond choices, highway travel benefits, both Trodden Path bonuses, the exact daily target progression, curse direction, save DC, exclusions, duration, and per-round saves are automated."
+  ],
+  "spellModifierAdjustments": [
+    {
+      "sourceFeatureId": "druid-road-keeper-one-with-the-road-su-9",
+      "label": "One with the Road",
+      "target": "casterLevel",
+      "minimumLevel": 1,
+      "base": 1,
+      "bonusByLevel": [
+        {
+          "level": 1,
+          "bonus": 1
+        },
+        {
+          "level": 9,
+          "bonus": 2
+        }
+      ],
+      "spellIds": [
+        "longstrider",
+        "later-spell-scent-trail",
+        "later-spell-nature-s-exile",
+        "freedom-of-movement",
+        "tree-stride",
+        "find-the-path",
+        "wind-walk",
+        "word-of-recall",
+        "world-wave"
+      ]
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-road-keeper-trodden-path-ex-4",
+      "label": "Trodden Path — tracking",
+      "condition": "Survival checks to follow or identify tracks",
+      "minimumLevel": 4,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "druid-road-keeper-trodden-path-ex-4",
+      "label": "Trodden Path — severe weather",
+      "condition": "Saving throws against severe weather effects",
+      "minimumLevel": 4,
+      "base": 4
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-road-keeper-road-less-traveled-su-4",
+      "resourceId": "roadLessTraveledTargets",
+      "label": "Road Less Traveled targets",
+      "unit": "target",
+      "operation": "replace",
+      "minimumLevel": 4,
+      "base": 1,
+      "perInterval": 1,
+      "interval": 2,
+      "maximum": 9,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal",
+    "druid-nature-bond-domain"
+  ],
+  "druidDomainIds": [
+    "domain-community",
+    "domain-liberation",
+    "domain-protection",
+    "domain-travel",
+    "domain-weather"
   ]
 }
