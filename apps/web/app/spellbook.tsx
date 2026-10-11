@@ -826,6 +826,14 @@ export function Spellbook({
                   const shareable = shareEligible(spell);
                   const boostDescriptor = qualifyingDescriptor(spell);
                   const automaticDuration = derivedDuration(spell);
+                  const preparedConversion = spellAutomation?.preparedKeywordConversion;
+                  const conversionEligible = Boolean(preparedConversion && spell.name.toLowerCase().includes(preparedConversion.keyword.toLowerCase()));
+                  const conversionSourceLevel = conversionEligible
+                    ? preparedLimits
+                        .map((entry) => entry.level)
+                        .filter((sourceLevel) => sourceLevel > 0 && sourceLevel >= level && preparedCount(sourceLevel) > 0 && remainingSlots(sourceLevel) > 0)
+                        .sort((left, right) => left - right)[0]
+                    : undefined;
                   const canShare = Boolean(
                     shareable &&
                       prepared > 0 &&
@@ -873,6 +881,17 @@ export function Spellbook({
                     recordSignatureDuration();
                     if (signatureTechnique)
                       setSignatureTechniqueResults((current) => ({ ...current, [spell.id]: signatureTechnique }));
+                  };
+                  const castPreparedConversion = () => {
+                    if (!preparedConversion || conversionSourceLevel === undefined) return;
+                    onSlotUsesChange({
+                      ...slotUses,
+                      [conversionSourceLevel]: (slotUses[conversionSourceLevel] ?? 0) + 1,
+                    });
+                    setSignatureTechniqueResults((current) => ({
+                      ...current,
+                      [spell.id]: `${preparedConversion.label}: cast ${spell.name} by losing a prepared ${levelLabel(conversionSourceLevel)} spell.`,
+                    }));
                   };
                   return (
                     <article key={spell.id}>
@@ -930,6 +949,7 @@ export function Spellbook({
                             {spellstrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Spellstrike`} disabled={!canCast} onClick={() => useSpellstrike(spell, level)}>Spellstrike</button>}
                             {criticalStrikeEligible(spell) && <button type="button" aria-label={`Cast ${spell.name} with Critical Strike`} disabled={!canCast || !criticalStrikeResource || (criticalStrikeResource.maximum !== null && criticalStrikeResource.used >= criticalStrikeResource.maximum)} onClick={() => useCriticalStrike(spell, level)}>Critical Strike</button>}
                             {bondedObjectCastResource && <button type="button" aria-label={`Cast ${spell.name} with ${bondedObjectCastResource.label}`} disabled={bondedObjectCastResource.maximum !== null && bondedObjectCastResource.used >= bondedObjectCastResource.maximum} onClick={() => useBondedObjectCast(spell)}>{bondedObjectCastResource.label}</button>}
+                            {conversionEligible && <button type="button" aria-label={`Cast ${spell.name} with ${preparedConversion!.label}`} disabled={conversionSourceLevel === undefined} onClick={castPreparedConversion}>{preparedConversion!.label}</button>}
                         {shareable && (
                           <button
                             type="button"
