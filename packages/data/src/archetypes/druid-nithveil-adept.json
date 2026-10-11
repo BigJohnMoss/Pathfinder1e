@@ -24,41 +24,299 @@
           "id": "druid-nithveil-adept-nature-bond-su-1",
           "name": "Nature Bond (Su)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A Nithveil adept cannot select an animal companion, and can take only a domain. If she worships an Eldest, the Nithveil trickster can choose any of the domains or subdomains granted by that Eldest in addition to those normally available to druids. This ability alters nature bond."
+          "type": "selectable",
+          "summary": "A Nithveil adept cannot select an animal companion, and can take only a domain. If she worships an Eldest, the Nithveil trickster can choose any of the domains or subdomains granted by that Eldest in addition to those normally available to druids. This ability alters nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-domain"
+          ],
+          "progressionKey": "druid-nature-bond",
+          "progressionProfiles": [
+            {
+              "id": "nithveil-eldest-domains",
+              "label": "Nithveil domain permission",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "domains",
+                  "label": "Legal domains"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "domains": "Normal Druid domains; if worshiping an Eldest, also every domain or subdomain granted by that Eldest"
+                  }
+                }
+              ],
+              "summary": "Animal Companion is unavailable and the Nature Bond selector is restricted to Domain."
+            }
+          ]
         },
         {
           "id": "druid-nithveil-adept-animal-speech-su-4",
           "name": "Animal Speech (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "A Nithveil adept can imbue normal animals with the ability to speak for a brief period. Once per day as a standard action, the Nithveil adept can touch an animal to grant it the ability to speak any language the druid knows for 1 minute per druid level. This does not increase the animal’s Intelligence or improve its attitude, and the animal behaves as though communicating with someone under the effects of a speak with animals spell, save that it can speak with anyone who understands the language the Nithveil adept grants it. The Nithveil adept gains one additional use of this ability at 4th level and every 4 levels thereafter. This ability replaces spontaneous casting."
+          "summary": "A Nithveil adept can imbue normal animals with the ability to speak for a brief period. Once per day as a standard action, the Nithveil adept can touch an animal to grant it the ability to speak any language the druid knows for 1 minute per druid level. This does not increase the animal’s Intelligence or improve its attitude, and the animal behaves as though communicating with someone under the effects of a speak with animals spell, save that it can speak with anyone who understands the language the Nithveil adept grants it. The Nithveil adept gains one additional use of this ability at 4th level and every 4 levels thereafter. This ability replaces spontaneous casting.",
+          "resourceActions": [
+            {
+              "id": "nithveil-animal-speech",
+              "label": "Grant Animal Speech",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "nithveilAnimalSpeech",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "normal-animal",
+                  "label": "Touched target is a normal animal",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Nithveil Animal Speech",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "The touched animal can speak one language the Druid knows with anyone who understands it. Intelligence and attitude are unchanged.",
+                "defaultRounds": 400,
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 4,
+                    "rounds": 40
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 50
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 60
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 70
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 80
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 90
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 100
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 110
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 120
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 130
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 140
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 150
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 160
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 170
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 180
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 190
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 200
+                  }
+                ],
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one scaling daily use and track the exact 1-minute-per-level speech duration."
+            }
+          ]
         },
         {
           "id": "druid-nithveil-adept-resist-fey-influence-ex-4",
           "name": "Resist Fey Influence (Ex)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a Nithveil adept gains a +4 bonus on saving throws against the spell-like and supernatural abilities of fey. Once per day before attempting such a saving throw, the Nithveil adept can choose to roll two dice and take the better result, applying the +4 bonus as normal. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, a Nithveil adept gains a +4 bonus on saving throws against the spell-like and supernatural abilities of fey. Once per day before attempting such a saving throw, the Nithveil adept can choose to roll two dice and take the better result, applying the +4 bonus as normal. This ability replaces resist nature’s lure.",
+          "resourceActions": [
+            {
+              "id": "nithveil-resist-fey-reroll",
+              "label": "Reroll fey-influence save",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "nithveilFeyReroll",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "free"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "before-roll",
+                  "label": "Declared before attempting a save against a fey spell-like or supernatural ability",
+                  "requiredForActivation": true
+                }
+              ],
+              "rerollAction": {
+                "kind": "higher-d20",
+                "label": "Fey-influence saving throw"
+              },
+              "summary": "Spend the once-daily use, roll twice, and keep the higher result; enter the save modifier including the automatic +4 bonus."
+            }
+          ]
         },
         {
           "id": "druid-nithveil-adept-locate-nithveil-sp-9",
           "name": "Locate Nithveil (Sp)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, a Nithveil adept can cast find the path as a spell-like ability, but only to locate Nithveil. The spell’s duration is extended until the druid reaches her destination or until Nithveil recedes from the Material Plane at the end of the new moon. This ability can be used only once per month, during the new moon."
+          "summary": "At 9th level, a Nithveil adept can cast find the path as a spell-like ability, but only to locate Nithveil. The spell’s duration is extended until the druid reaches her destination or until Nithveil recedes from the Material Plane at the end of the new moon. This ability can be used only once per month, during the new moon.",
+          "resourceActions": [
+            {
+              "id": "nithveil-locate-city",
+              "label": "Locate Nithveil",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "resourceId": "nithveilLocate",
+              "cost": 1,
+              "confirmations": [
+                {
+                  "id": "new-moon",
+                  "label": "It is the new moon and Nithveil is present on the Material Plane",
+                  "requiredForActivation": true
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "find-the-path",
+                "spellName": "Find the Path (Nithveil only)",
+                "cadence": "month",
+                "kind": "spell-like"
+              },
+              "activeEffect": {
+                "name": "Path to Nithveil",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Find the path leads only to Nithveil and persists until arrival or until Nithveil recedes from the Material Plane at the end of the new moon.",
+                "defaultRounds": 99999,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend the monthly new-moon use and track the source-defined extended duration."
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Bluff","Diplomacy","Disguise","Perform","Sense Motive","Stealth"],
+  "classSkillAdditions": [
+    "Bluff",
+    "Diplomacy",
+    "Disguise",
+    "Perform",
+    "Sense Motive",
+    "Stealth"
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nithveil%20Adept"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Class skills, domain-only Nature Bond, Eldest domain permission, scaling Animal Speech uses and duration, +4 fey saves, predeclared daily reroll, and true monthly new-moon Locate Nithveil tracking are automated."
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-nithveil-adept-resist-fey-influence-ex-4",
+      "label": "Resist Fey Influence",
+      "condition": "Saving throws against fey spell-like and supernatural abilities",
+      "minimumLevel": 4,
+      "base": 4
+    }
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-nithveil-adept-animal-speech-su-4",
+      "resourceId": "nithveilAnimalSpeech",
+      "label": "Animal Speech",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 4,
+      "base": 2,
+      "perInterval": 1,
+      "interval": 4,
+      "maximum": 6,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "druid-nithveil-adept-resist-fey-influence-ex-4",
+      "resourceId": "nithveilFeyReroll",
+      "label": "Resist Fey Influence reroll",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 4,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "druid-nithveil-adept-locate-nithveil-sp-9",
+      "resourceId": "nithveilLocate",
+      "label": "Locate Nithveil",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 9,
+      "base": 1,
+      "maximum": 1,
+      "refreshCadence": "month",
+      "dedicatedAction": true
+    }
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-domain"
+  ],
+  "prohibitedCompanionKinds": [
+    "animal"
   ]
 }

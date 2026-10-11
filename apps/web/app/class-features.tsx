@@ -9,7 +9,7 @@ export type DailyResource = {
   maximum: number | null;
   used: number;
   refreshUsed?: number;
-  refreshCadence?: "hour" | "day" | "week";
+  refreshCadence?: "hour" | "day" | "week" | "month";
   hidden?: boolean;
   onUsedChange: (used: number) => void;
 };
@@ -67,7 +67,7 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
       const refreshUsed = atWill ? 0 : Math.max(0, Math.min(resource.refreshUsed ?? 0, resource.maximum ?? 0));
       return <div className="daily-resource" key={resource.label}>
         <div><strong>{resource.label}</strong><output aria-label={`${resource.label} remaining`}>{atWill ? "At will" : `${remaining}/${resource.maximum} ${resource.unit} remaining`}</output></div>
-        {!atWill && <div><button type="button" onClick={() => resource.onUsedChange(used + 1)} disabled={remaining <= 0}>Spend 1 {resource.unit}</button><button type="button" onClick={() => { resource.onUsedChange(refreshUsed); effectNamesForResource(resource.id).forEach((name) => onRemoveEffectByName?.(name)); }} disabled={used === refreshUsed}>Refresh {resource.label.toLowerCase()}</button>{resource.refreshCadence === "week" && <small>Refreshes after one week, not on Refresh day.</small>}{resource.refreshCadence === "hour" && <small>Refreshes after one hour, not on Refresh day.</small>}</div>}
+        {!atWill && <div><button type="button" onClick={() => resource.onUsedChange(used + 1)} disabled={remaining <= 0}>Spend 1 {resource.unit}</button><button type="button" onClick={() => { resource.onUsedChange(refreshUsed); effectNamesForResource(resource.id).forEach((name) => onRemoveEffectByName?.(name)); }} disabled={used === refreshUsed}>Refresh {resource.label.toLowerCase()}</button>{resource.refreshCadence === "week" && <small>Refreshes after one week, not on Refresh day.</small>}{resource.refreshCadence === "month" && <small>Refreshes after one month, not on Refresh day.</small>}{resource.refreshCadence === "hour" && <small>Refreshes after one hour, not on Refresh day.</small>}</div>}
       </div>;
     })}
     <ol>{features.filter((feature) => !feature.minimumEffectiveLevel || (feature.effectiveLevelClassIds ?? []).reduce((total, classId) => total + (classLevels[classId] ?? 0), 0) >= feature.minimumEffectiveLevel).map((feature) => <li key={feature.id}>
