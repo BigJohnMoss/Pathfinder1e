@@ -1,0 +1,27 @@
+{
+  "id": "feral-child-beast-families",
+  "name": "Feral Child Beast Family",
+  "classIds": ["druid"],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "feral-child-beast-family",
+      "groupId": "feral-child-beast-families",
+      "name": "Animal family",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Name the specific animal type that raised the Feral Child. Gain the Beast Family communication and circumstance bonuses with that type.",
+      "choice": {
+        "key": "animal-type",
+        "label": "Animal type",
+        "allowCustom": true
+      },
+      "source": {
+        "title": "Archives of Nethys",
+        "page": null,
+        "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Feral%20Child"
+      }
+    }
+  ]
+}
