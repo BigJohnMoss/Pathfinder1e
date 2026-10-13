@@ -1733,7 +1733,7 @@ export default function Home() {
     const resolvedGroup: (typeof optionGroups)[number] | undefined = baseGroup && alternativeOptions.length
       ? { ...baseGroup, options: [...retainedBaseOptions, ...alternativeOptions.filter((option) => !retainedBaseOptions.some((baseOption) => baseOption.id === option.id))] }
       : baseGroup;
-    const group = resolvedGroup && feature.id.startsWith("faith-singer-")
+    const group = resolvedGroup && (feature.id.startsWith("faith-singer-") || (featureClassId !== "cleric" && ["cleric-deities", "cleric-alignments"].includes(resolvedGroup.id)))
       ? { ...resolvedGroup, classIds: [featureClassId], options: resolvedGroup.options.map((option) => ({ ...option, classIds: [featureClassId] })) }
       : resolvedGroup;
     const selectedIds = [...selectedFeatIds, ...effectiveSelectedOptionIds];

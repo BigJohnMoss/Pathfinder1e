@@ -89,7 +89,8 @@ export function ClassFeatures({ level, className, features, dailyResources = [],
         const calculationLevel = calculation.classId ? classLevels[calculation.classId] ?? 0 : level;
         const base = calculation.baseByLevel.filter((step) => step.level <= calculationLevel).sort((left, right) => left.level - right.level).at(-1)?.value ?? 0;
         const multiplier = calculation.inputMultiplierByLevel?.filter((step) => step.level <= calculationLevel).sort((left, right) => left.level - right.level).at(-1)?.multiplier ?? 1;
-        const result = Math.min(calculation.maximumClassLevel ? calculationLevel : Number.POSITIVE_INFINITY, base + input * multiplier);
+          const unboundedResult = Math.floor((base + input * multiplier) / (calculation.outputDivisor ?? 1));
+          const result = Math.min(calculation.maximumClassLevel ? calculationLevel : Number.POSITIVE_INFINITY, unboundedResult);
         return <div className="feature-rule-calculation" role="group" aria-label={calculation.label} key={calculation.id}>
           <label>{calculation.inputLabel}<input aria-label={calculation.inputLabel} type="number" min={calculation.inputMinimum} max={calculation.inputMaximum} value={input} onChange={(event) => setCalculationInputs((current) => ({ ...current, [calculation.id]: Math.max(calculation.inputMinimum, Math.min(calculation.inputMaximum, Number(event.target.value) || calculation.inputMinimum)) }))} /></label>
           <output aria-label={calculation.outputLabel}>{calculation.outputLabel}: {result}</output>

@@ -151,8 +151,8 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const [actionAmounts, setActionAmounts] = useState<Record<string, number>>({});
   const [actionResults, setActionResults] = useState<Record<string, string>>({});
   const orderedChoices = [...choices].sort((left, right) => choiceOrder(left) - choiceOrder(right));
-  const selectedDeity = orderedChoices.find((choice) => choice.id === "cleric-deity-1" || choice.id === "sacred-servant-deity-1" || choice.id === "faith-singer-deity-1")?.selected;
-  const selectedAlignment = orderedChoices.find((choice) => choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1")?.selected;
+  const selectedDeity = orderedChoices.find((choice) => choice.id === "cleric-deity-1" || choice.id === "sacred-servant-deity-1" || choice.id === "faith-singer-deity-1" || choice.id === "nature-priest-deity-1")?.selected;
+  const selectedAlignment = orderedChoices.find((choice) => choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1" || choice.id === "nature-priest-alignment-1")?.selected;
   const selectedArcaneBond = orderedChoices.find((choice) => choice.id === "wizard-arcane-bond-1")?.selected;
   const selectedHuntersBond = orderedChoices.find((choice) => choice.id === "ranger-hunters-bond-4")?.selected;
   const selectedNatureBond = orderedChoices.find((choice) => choice.id === "druid-nature-bond-1")?.selected;
@@ -190,7 +190,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
   const optionsFor = (choice: Choice) => {
     if (choice.id === "blood-arcanist-bloodline-1" && selectedSorcererBloodline) return choice.options.filter((option) => (option.familyId ?? option.id) === selectedSorcererBloodline.id && (!selectedBloodlineVariant || option.selectedVariant?.id === selectedBloodlineVariant.id));
     if (choice.id === "sorcerer-bloodline-1" && selectedBloodArcanistBloodline) return choice.options.filter((option) => option.id === (selectedBloodArcanistBloodline.familyId ?? selectedBloodArcanistBloodline.id));
-    if (choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1") return alignmentsWithinOneStep(choice.options, selectedDeity?.alignment);
+    if (choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1" || choice.id === "nature-priest-alignment-1") return alignmentsWithinOneStep(choice.options, selectedDeity?.alignment);
     if (choice.id === "cleric-channel-energy-type-1") return channelEnergyChoices(choice.options, selectedAlignment?.alignment, selectedDeity?.alignment);
     if (choice.id === "wizard-familiar-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-familiar");
     if (choice.id === "wizard-bonded-object-1") return arcaneBondDetailOptions(choice.options, selectedArcaneBond, "wizard-arcane-bond-object");
@@ -222,7 +222,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     if (isWizardOpposition(choice)) return oppositionSchoolOptions(choice.options, selectedWizardSchool);
     const domainLevel = domainSpellLevel(choice);
     if (domainLevel) return domainSpellOptions(domainLevel);
-    if (choice.id === "druid-domain-1") return choice.options;
+    if (choice.id === "druid-domain-1") return selectedDeity ? optionsGrantedBySelection(choice.options, selectedDeity) : choice.options;
     if (choice.id === "sacred-servant-domain-4" || choice.id === "faith-singer-domain-2") return optionsGrantedBySelection(choice.options, selectedDeity);
     if (!choice.id.startsWith("cleric-domain-")) return choice.options;
     return optionsGrantedBySelection(choice.options, selectedDeity);
@@ -331,7 +331,7 @@ export function ClassOptions({ choices, selectedOptions, classLevel, charismaMod
     const needsNatureBond = (druidCompanionChoice || druidDomainChoice || druidDomainSlot) && !selectedNatureBond;
     const hasDomainNatureBond = selectedNatureBond?.id?.endsWith("nature-bond-domain") ?? false;
     const wrongNatureBond = (druidCompanionChoice && selectedNatureBond?.id !== "druid-nature-bond-animal") || ((druidDomainChoice || druidDomainSlot) && !hasDomainNatureBond);
-    const needsDeity = (choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1" || choice.id === "sacred-servant-domain-4" || choice.id === "faith-singer-domain-2" || (!domainLevel && choice.id.startsWith("cleric-domain-"))) && !selectedDeity;
+    const needsDeity = (choice.id === "cleric-alignment-1" || choice.id === "faith-singer-alignment-1" || choice.id === "nature-priest-alignment-1" || choice.id === "sacred-servant-domain-4" || choice.id === "faith-singer-domain-2" || (choice.id === "druid-domain-1" && orderedChoices.some((candidate) => candidate.id === "nature-priest-deity-1")) || (!domainLevel && choice.id.startsWith("cleric-domain-"))) && !selectedDeity;
     const needsAlignment = choice.id === "cleric-channel-energy-type-1" && !selectedAlignment;
     const needsDomains = Boolean(domainLevel) && selectedDomains.length === 0;
     const needsOracleMystery = isOracleRevelation(choice) && !selectedOracleMystery;
