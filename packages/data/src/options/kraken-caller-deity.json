@@ -1,0 +1,18 @@
+{
+  "id": "kraken-caller-deity",
+  "name": "Kraken Caller Deity",
+  "classIds": ["druid"],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "kraken-caller-deity-besmara",
+      "groupId": "kraken-caller-deity",
+      "name": "Besmara",
+      "classIds": ["druid"],
+      "minimumLevel": 1,
+      "prerequisites": [],
+      "benefit": "Worship Besmara. Changing deity removes the Kraken Caller archetype.",
+      "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/DeityDisplay.aspx?ItemName=Besmara" }
+    }
+  ]
+}
