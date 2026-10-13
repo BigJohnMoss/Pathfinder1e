@@ -14,11 +14,22 @@
       ],
       "features": [
         {
-          "id": "druid-nature-priest-faithful-1",
-          "name": "Faithful",
+          "id": "nature-priest-deity-1",
+          "name": "Faithful Deity",
           "level": 1,
-          "type": "archetype",
-          "summary": "Like a cleric, a nature priest must worship a deity and her alignment must be within one step of her deity’s ( Pathfinder RPG Core Rulebook 166 )."
+          "type": "selectable",
+          "summary": "Choose the deity worshiped by the Nature Priest.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-deities"
+        },
+        {
+          "id": "nature-priest-alignment-1",
+          "name": "Faithful Alignment",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose an alignment within one step of the selected deity.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-alignments"
         },
         {
           "id": "druid-nature-priest-class-skills-1",
@@ -31,50 +42,264 @@
           "id": "druid-nature-priest-weapon-proficiencies-1",
           "name": "Weapon Proficiencies",
           "level": 1,
-          "type": "archetype",
-          "summary": "A nature priest is proficient with her deity’s favored weapon in addition to a druid’s typical weapon proficiencies. This alters the druid’s weapon proficiencies."
+          "type": "selectable",
+          "summary": "A nature priest is proficient with her deity’s favored weapon in addition to a druid’s typical weapon proficiencies. This alters the druid’s weapon proficiencies.",
+          "choiceRequired": true,
+          "optionGroupId": "nature-priest-favored-weapons",
+          "optionChoiceIds": [
+            "nature-priest-favored-weapon"
+          ],
+          "progressionKey": "nature-priest-favored-weapon"
         },
         {
           "id": "druid-nature-priest-studious-piety-ex-1",
           "name": "Studious Piety (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A nature priest gains a +1 bonus on Knowledge (religion) checks. This bonus increases to +2 when attempting checks that involve knowledge of her deity or her faith. This ability replaces nature sense."
+          "summary": "A nature priest gains a +1 bonus on Knowledge (religion) checks. This bonus increases to +2 when attempting checks that involve knowledge of her deity or her faith. This ability replaces nature sense.",
+          "progressionProfiles": [
+            {
+              "id": "nature-priest-studious-piety",
+              "label": "Studious Piety",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "religion",
+                  "label": "Knowledge (religion)"
+                },
+                {
+                  "id": "faith",
+                  "label": "Checks about deity or faith"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "religion": "+1",
+                    "faith": "+2 total"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
-          "id": "druid-nature-priest-chosen-druid-ex-1",
-          "name": "Chosen Druid (Ex)",
+          "id": "druid-nature-bond-1",
+          "name": "Nature Bond",
           "level": 1,
-          "type": "archetype",
-          "summary": "If a nature priest chooses a domain for her nature bond, she must choose one of her deity’s domains (or subdomains) in place of those typically available to a druid. This ability alters nature bond."
+          "type": "selectable",
+          "summary": "Choose an animal companion or a domain. A selected domain must be granted by the Nature Priest's deity.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "progressionKey": "druid-nature-bond"
+        },
+        {
+          "id": "druid-domain-1",
+          "name": "Deity Domain",
+          "level": 1,
+          "type": "selectable",
+          "summary": "Choose one domain granted by the selected deity.",
+          "choiceRequired": true,
+          "optionGroupId": "cleric-domains",
+          "requiredOptionId": "druid-nature-bond-domain",
+          "requiredOptionMessage": "Choose the Domain nature bond first",
+          "progressionKey": "druid-domain"
         },
         {
           "id": "druid-nature-priest-shepherd-of-the-faithful-su-4",
           "name": "Shepherd of the Faithful (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, a nature priest and all allies within 60 feet that can see or hear her gain a +2 insight bonus on skill checks to notice or avoid natural hazards, difficult terrain, and rough winds or water, as well as on saving throws against natural hazards. This ability offers no protection against the abilities of creatures or the effects of spells or items. This ability replaces resist nature’s lure."
+          "summary": "At 4th level, a nature priest and all allies within 60 feet that can see or hear her gain a +2 insight bonus on skill checks to notice or avoid natural hazards, difficult terrain, and rough winds or water, as well as on saving throws against natural hazards. This ability offers no protection against the abilities of creatures or the effects of spells or items. This ability replaces resist nature’s lure.",
+          "resourceActions": [
+            {
+              "id": "nature-priest-shepherd-hazards",
+              "label": "Track Shepherd of the Faithful",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "confirmations": [
+                {
+                  "id": "natural-hazard",
+                  "label": "The check or save concerns a natural hazard, difficult terrain, or rough wind or water—not a creature, spell, or item",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Shepherd of the Faithful",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "Self and allies within 60 feet who can see or hear the Nature Priest gain +2 insight on qualifying checks and saves.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Track the conditional 60-foot aura for a qualifying natural hazard."
+            }
+          ]
         },
         {
           "id": "druid-nature-priest-divine-servants-su-9",
           "name": "Divine Servants (Su)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, a nature priest adds the spells lesser planar ally, planar ally, and greater planar ally to her druid spell list at their cleric spell levels. When she casts these spells, the planar allies summoned require half the payment described in those spells. This ability replaces the venom immunity ability."
+          "summary": "At 9th level, a nature priest adds the spells lesser planar ally, planar ally, and greater planar ally to her druid spell list at their cleric spell levels. When she casts these spells, the planar allies summoned require half the payment described in those spells. This ability replaces the venom immunity ability.",
+          "numericCalculations": [
+            {
+              "id": "nature-priest-planar-ally-payment",
+              "label": "Divine Servants payment",
+              "inputLabel": "Normal negotiated payment (gp)",
+              "inputMinimum": 0,
+              "inputMaximum": 999999,
+              "inputDefault": 0,
+              "outputLabel": "Nature Priest payment (gp)",
+              "baseByLevel": [
+                {
+                  "level": 9,
+                  "value": 0
+                }
+              ],
+              "outputDivisor": 2,
+              "classId": "druid",
+              "summary": "The result is half the normal payment, rounded down if necessary."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "nature-priest-divine-servants",
+              "label": "Divine Servants",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "spell",
+                  "label": "Added spell"
+                },
+                {
+                  "id": "payment",
+                  "label": "Payment"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 9,
+                  "values": {
+                    "spell": "Lesser planar ally (4th)",
+                    "payment": "Half normal"
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "spell": "Planar ally (6th)",
+                    "payment": "Half normal"
+                  }
+                },
+                {
+                  "level": 15,
+                  "values": {
+                    "spell": "Greater planar ally (8th)",
+                    "payment": "Half normal"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }
   ],
-  "classSkillAdditions": ["Knowledge (religion)"],
-  "classSkillRemovals": ["Knowledge (geography)"],
-  "proficiencyAdjustments": [{"category":"weapon","operation":"add","proficiencies":["Deity's favored weapon"]}],
+  "classSkillAdditions": [
+    "Knowledge (religion)"
+  ],
+  "classSkillRemovals": [
+    "Knowledge (geography)"
+  ],
+  "proficiencyAdjustments": [
+    {
+      "category": "weapon",
+      "operation": "add",
+      "proficiencies": [
+        "Deity's favored weapon"
+      ]
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Nature%20Priest"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
-  ]
+    "Deity and one-step alignment legality, custom favored-weapon proficiency, animal-or-deity-domain Nature Bond, deity-filtered domain choices and slots, class skills, Studious Piety, both Shepherd hazard bonuses, all three planar ally additions, and exact half-payment calculation are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal",
+    "druid-nature-bond-domain"
+  ],
+  "druidDomainIds": [
+    "domain-air",
+    "domain-animal",
+    "domain-artifice",
+    "domain-chaos",
+    "domain-charm",
+    "domain-community",
+    "domain-darkness",
+    "domain-death",
+    "domain-destruction",
+    "domain-earth",
+    "domain-evil",
+    "domain-fire",
+    "domain-glory",
+    "domain-good",
+    "domain-healing",
+    "domain-knowledge",
+    "domain-law",
+    "domain-liberation",
+    "domain-luck",
+    "domain-madness",
+    "domain-magic",
+    "domain-nobility",
+    "domain-plant",
+    "domain-protection",
+    "domain-repose",
+    "domain-rune",
+    "domain-strength",
+    "domain-sun",
+    "domain-travel",
+    "domain-trickery",
+    "domain-war",
+    "domain-water",
+    "domain-weather"
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-nature-priest-studious-piety-ex-1",
+      "skill": "Knowledge (religion)",
+      "minimumLevel": 1,
+      "base": 1,
+      "condition": "+2 total when the check concerns the Nature Priest's deity or faith"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-nature-priest-shepherd-of-the-faithful-su-4",
+      "label": "Shepherd of the Faithful — checks",
+      "condition": "Self and allies within 60 feet that can see or hear the Nature Priest: skill checks to notice or avoid natural hazards, difficult terrain, or rough wind or water",
+      "minimumLevel": 4,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-nature-priest-shepherd-of-the-faithful-su-4",
+      "label": "Shepherd of the Faithful — saves",
+      "condition": "Self and allies within 60 feet that can see or hear the Nature Priest: saving throws against natural hazards",
+      "minimumLevel": 4,
+      "base": 2
+    }
+  ],
+  "spellListAdditions": {
+    "planar-ally-lesser": 4,
+    "planar-ally": 6,
+    "later-spell-planar-ally-greater": 8
+  }
 }
