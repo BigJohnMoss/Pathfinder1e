@@ -1,0 +1,28 @@
+{
+  "id": "leshy-warden-tender-8",
+  "name": "Leshy Tender — 8th Level",
+  "classIds": ["druid"],
+  "uniqueAcrossSelections": true,
+  "options": [
+    {
+      "id": "leshy-warden-tender-8-reinforce",
+      "groupId": "leshy-warden-tender-8",
+      "name": "Reinforce Current Leshy",
+      "classIds": ["druid"],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "benefit": "Keep the current form and grant the familiar another +2 Strength and +2 Dexterity.",
+      "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Leshy%20Warden" }
+    },
+    {
+      "id": "leshy-warden-tender-8-fungus",
+      "groupId": "leshy-warden-tender-8",
+      "name": "Transform into Fungus Leshy",
+      "classIds": ["druid"],
+      "minimumLevel": 8,
+      "prerequisites": [],
+      "benefit": "Transform the familiar into a fungus leshy using that form's normal ability scores; earlier Leshy Tender increases do not carry over.",
+      "source": { "title": "Archives of Nethys", "page": null, "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Leshy%20Warden" }
+    }
+  ]
+}
