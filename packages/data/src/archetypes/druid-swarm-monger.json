@@ -18,48 +18,690 @@
           "id": "druid-swarm-monger-fecund-familiar-ex-1",
           "name": "Fecund Familiar (Ex)",
           "level": 1,
-          "type": "archetype",
-          "summary": "A swarm monger bonds with an urban familiar, treating her druid level as her wizard level for the purposes of determining her familiar’s abilities. The swarm monger must select her familiar from the following options: cat, house centipede UM , rat, raven, or scarlet spider UM . The fecund familiar gains the benefits of its master’s child of pollution, shadowy opportunist, and venom immunity class abilities. As a standard action, a swarm monger can cause her familiar to burst forth into a full swarm of identical creatures, filling four contiguous 5-foot squares and gaining temporary hit points equal to half its master’s maximum hit points. While in swarm form, the familiar loses the improved evasion, share spells, deliver touch attack, and scry on familiar special abilities. It uses its normal AC, saving throws, and skill bonuses, and it gains the swarm subtype and the ability to make swarm attacks (dealing 1d6 points of damage at 1st level and using the swarm monger’s druid level as the swarm’s Hit Dice to determine damage increases as per the swarm subtype). The swarm monger is immune to her own familiar’s swarm attack. Beginning at 5th level, any creature damaged by a fecund familiar’s swarm attack must succeed at a Fortitude saving throw (DC = 10 + 1/2 the swarm monger’s druid level + the swarm monger’s Wisdom modifier) or be sickened for 1d6 rounds. At 12th level, creatures that fail their Fortitude saving throws instead become nauseated. A swarm monger can transform her familiar into a swarm a number of times each day equal to her Wisdom modifier (minimum 1), and the transformation lasts for 1 minute per druid level, or until the swarm monger reverts her familiar back to a singular form as a standard action. A fecund familiar cannot be reduced in size to Diminutive or smaller when in swarm form. This ability replaces nature bond."
+          "type": "selectable",
+          "summary": "A swarm monger bonds with an urban familiar, treating her druid level as her wizard level for the purposes of determining her familiar’s abilities. The swarm monger must select her familiar from the following options: cat, house centipede UM , rat, raven, or scarlet spider UM . The fecund familiar gains the benefits of its master’s child of pollution, shadowy opportunist, and venom immunity class abilities. As a standard action, a swarm monger can cause her familiar to burst forth into a full swarm of identical creatures, filling four contiguous 5-foot squares and gaining temporary hit points equal to half its master’s maximum hit points. While in swarm form, the familiar loses the improved evasion, share spells, deliver touch attack, and scry on familiar special abilities. It uses its normal AC, saving throws, and skill bonuses, and it gains the swarm subtype and the ability to make swarm attacks (dealing 1d6 points of damage at 1st level and using the swarm monger’s druid level as the swarm’s Hit Dice to determine damage increases as per the swarm subtype). The swarm monger is immune to her own familiar’s swarm attack. Beginning at 5th level, any creature damaged by a fecund familiar’s swarm attack must succeed at a Fortitude saving throw (DC = 10 + 1/2 the swarm monger’s druid level + the swarm monger’s Wisdom modifier) or be sickened for 1d6 rounds. At 12th level, creatures that fail their Fortitude saving throws instead become nauseated. A swarm monger can transform her familiar into a swarm a number of times each day equal to her Wisdom modifier (minimum 1), and the transformation lasts for 1 minute per druid level, or until the swarm monger reverts her familiar back to a singular form as a standard action. A fecund familiar cannot be reduced in size to Diminutive or smaller when in swarm form. This ability replaces nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "swarm-monger-familiars",
+          "progressionKey": "swarm-monger-fecund-familiar",
+          "resourceActions": [
+            {
+              "id": "swarm-monger-enter-familiar-swarm",
+              "label": "Transform Familiar into Swarm",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "resourceId": "fecundFamiliarSwarmUses",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "activeEffect": {
+                "name": "Fecund Familiar Swarm Form",
+                "targets": [
+                  "allies"
+                ],
+                "bonus": 0,
+                "description": "The selected familiar fills four contiguous 5-foot squares, gains the swarm subtype and swarm attack, retains its normal AC, saves, and skills, cannot become Diminutive or smaller, and temporarily loses improved evasion, share spells, deliver touch attack, and scry on familiar. The master is immune to this swarm attack.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 1,
+                    "rounds": 10
+                  },
+                  {
+                    "level": 2,
+                    "rounds": 20
+                  },
+                  {
+                    "level": 3,
+                    "rounds": 30
+                  },
+                  {
+                    "level": 4,
+                    "rounds": 40
+                  },
+                  {
+                    "level": 5,
+                    "rounds": 50
+                  },
+                  {
+                    "level": 6,
+                    "rounds": 60
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 70
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 80
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 90
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 100
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 110
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 120
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 130
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 140
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 150
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 160
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 170
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 180
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 190
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 200
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wisdom-based daily use. The duration is 1 minute per Druid level; use the displayed calculation to grant half the master's maximum hit points as temporary hit points."
+            },
+            {
+              "id": "swarm-monger-end-familiar-swarm",
+              "label": "Revert Familiar from Swarm",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 1,
+                  "actionType": "standard"
+                }
+              ],
+              "requiredActiveEffectName": "Fecund Familiar Swarm Form",
+              "removeActiveEffectName": "Fecund Familiar Swarm Form",
+              "summary": "End the familiar's swarm form before its duration expires."
+            },
+            {
+              "id": "swarm-monger-familiar-swarm-attack-basic",
+              "label": "Roll Familiar Swarm Attack",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "maximumLevel": 4,
+              "requiredActiveEffectName": "Fecund Familiar Swarm Form",
+              "combatRoll": {
+                "damage": {
+                  "type": "swarm",
+                  "diceCountByLevel": [
+                    {
+                      "level": 1,
+                      "count": 1
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 1,
+                      "sides": 6
+                    }
+                  ]
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 1,
+                    "range": "creatures in the familiar's four swarm squares"
+                  }
+                ]
+              },
+              "summary": "Roll 1d6 swarm damage; the Fortitude condition rider has not unlocked yet."
+            },
+            {
+              "id": "swarm-monger-familiar-swarm-attack-sickened",
+              "label": "Roll Familiar Swarm Attack",
+              "classId": "druid",
+              "minimumLevel": 5,
+              "maximumLevel": 11,
+              "requiredActiveEffectName": "Fecund Familiar Swarm Form",
+              "savingThrow": {
+                "label": "Fortitude",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "combatRoll": {
+                "damage": {
+                  "type": "swarm",
+                  "diceCountByLevel": [
+                    {
+                      "level": 5,
+                      "count": 1
+                    },
+                    {
+                      "level": 6,
+                      "count": 2
+                    },
+                    {
+                      "level": 11,
+                      "count": 3
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 5,
+                      "sides": 6
+                    }
+                  ]
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 5,
+                    "range": "creatures in the familiar's four swarm squares"
+                  }
+                ],
+                "targetSave": {
+                  "modifier": "fortitude",
+                  "outcome": "negates-riders"
+                },
+                "riders": [
+                  {
+                    "name": "Sickened",
+                    "description": "A failed Fortitude save sickens the target for 1d6 rounds.",
+                    "duration": {
+                      "kind": "dice-rounds",
+                      "count": 1,
+                      "sides": 6
+                    }
+                  }
+                ]
+              },
+              "summary": "Roll level-scaled swarm damage and resolve the sickened rider against the calculated Fortitude DC."
+            },
+            {
+              "id": "swarm-monger-familiar-swarm-attack-nauseated",
+              "label": "Roll Familiar Swarm Attack",
+              "classId": "druid",
+              "minimumLevel": 12,
+              "requiredActiveEffectName": "Fecund Familiar Swarm Form",
+              "savingThrow": {
+                "label": "Fortitude",
+                "ability": "wisdom",
+                "base": 10,
+                "levelDivisor": 2,
+                "classId": "druid"
+              },
+              "combatRoll": {
+                "damage": {
+                  "type": "swarm",
+                  "diceCountByLevel": [
+                    {
+                      "level": 12,
+                      "count": 3
+                    },
+                    {
+                      "level": 16,
+                      "count": 4
+                    }
+                  ],
+                  "dieSidesByLevel": [
+                    {
+                      "level": 12,
+                      "sides": 6
+                    }
+                  ]
+                },
+                "rangeByLevel": [
+                  {
+                    "level": 12,
+                    "range": "creatures in the familiar's four swarm squares"
+                  }
+                ],
+                "targetSave": {
+                  "modifier": "fortitude",
+                  "outcome": "negates-riders"
+                },
+                "riders": [
+                  {
+                    "name": "Nauseated",
+                    "description": "A failed Fortitude save nauseates the target for 1d6 rounds.",
+                    "duration": {
+                      "kind": "dice-rounds",
+                      "count": 1,
+                      "sides": 6
+                    }
+                  }
+                ]
+              },
+              "summary": "Roll level-scaled swarm damage and resolve the upgraded nauseated rider against the calculated Fortitude DC."
+            }
+          ],
+          "numericCalculations": [
+            {
+              "id": "fecund-familiar-temporary-hit-points",
+              "label": "Fecund Familiar temporary hit points",
+              "inputLabel": "Half the master's maximum hit points (round down)",
+              "inputMinimum": 0,
+              "inputMaximum": 9999,
+              "inputDefault": 0,
+              "outputLabel": "Temporary hit points to grant",
+              "baseByLevel": [
+                {
+                  "level": 1,
+                  "value": 0
+                }
+              ],
+              "classId": "druid",
+              "summary": "Enter half the master's maximum hit points, rounded down; grant this amount when swarm form begins."
+            }
+          ],
+          "progressionProfiles": [
+            {
+              "id": "swarm-monger-fecund-familiar",
+              "label": "Fecund Familiar Swarm",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "damage",
+                  "label": "Swarm damage"
+                },
+                {
+                  "id": "rider",
+                  "label": "Failed Fortitude save"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "damage": "1d6",
+                    "rider": "—"
+                  }
+                },
+                {
+                  "level": 5,
+                  "values": {
+                    "damage": "1d6",
+                    "rider": "Sickened 1d6 rounds"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "damage": "2d6",
+                    "rider": "Sickened 1d6 rounds"
+                  }
+                },
+                {
+                  "level": 11,
+                  "values": {
+                    "damage": "3d6",
+                    "rider": "Sickened 1d6 rounds"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "damage": "3d6",
+                    "rider": "Nauseated 1d6 rounds"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "damage": "4d6",
+                    "rider": "Nauseated 1d6 rounds"
+                  }
+                }
+              ],
+              "summary": "Save DC is 10 + half Druid level + Wisdom modifier."
+            }
+          ]
         },
         {
           "id": "druid-swarm-monger-low-friends-ex-2",
           "name": "Low Friends (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, a swarm monger gains Vermin Heart APG as a bonus feat. This ability replaces woodland stride."
+          "summary": "At 2nd level, a swarm monger gains Vermin Heart APG as a bonus feat. This ability replaces woodland stride.",
+          "grantedFeatId": "vermin-heart"
         },
         {
           "id": "druid-swarm-monger-shadowy-opportunist-ex-1",
           "name": "Shadowy Opportunist (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "A swarm monger gains a +2 bonus on Knowledge (local) and Stealth checks. This ability replaces nature sense."
+          "summary": "A swarm monger gains a +2 bonus on Knowledge (local) and Stealth checks. This ability replaces nature sense.",
+          "progressionProfiles": [
+            {
+              "id": "swarm-monger-shadowy-opportunist",
+              "label": "Shadowy Opportunist",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "local",
+                  "label": "Knowledge (local)"
+                },
+                {
+                  "id": "stealth",
+                  "label": "Stealth"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 1,
+                  "values": {
+                    "local": "+2",
+                    "stealth": "+2"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-swarm-monger-child-of-pollution-su-4",
           "name": "Child of Pollution (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "Starting at 4th level, a swarm monger gains a +4 bonus on saving throws against disease and poisons, and she can eat spoiled or rotting food and drink without ill effect. Once per day for every 4 druid levels she has, a swarm monger can devour a handful of rotting food as a standard action to gain a number of temporary hit points equal to 1d8 + her druid level that last for 1 hour. This ability replaces resist nature’s lure."
+          "summary": "Starting at 4th level, a swarm monger gains a +4 bonus on saving throws against disease and poisons, and she can eat spoiled or rotting food and drink without ill effect. Once per day for every 4 druid levels she has, a swarm monger can devour a handful of rotting food as a standard action to gain a number of temporary hit points equal to 1d8 + her druid level that last for 1 hour. This ability replaces resist nature’s lure.",
+          "resourceActions": [
+            {
+              "id": "swarm-monger-devour-rot",
+              "label": "Devour Rotting Food",
+              "classId": "druid",
+              "minimumLevel": 4,
+              "resourceId": "childOfPollutionUses",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 4,
+                  "actionType": "standard"
+                }
+              ],
+              "diceRoll": {
+                "label": "Temporary hit points",
+                "diceCountByLevel": [
+                  {
+                    "level": 4,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 4,
+                    "sides": 8
+                  }
+                ],
+                "flatModifierByLevel": [
+                  {
+                    "level": 4,
+                    "modifier": 4
+                  },
+                  {
+                    "level": 5,
+                    "modifier": 5
+                  },
+                  {
+                    "level": 6,
+                    "modifier": 6
+                  },
+                  {
+                    "level": 7,
+                    "modifier": 7
+                  },
+                  {
+                    "level": 8,
+                    "modifier": 8
+                  },
+                  {
+                    "level": 9,
+                    "modifier": 9
+                  },
+                  {
+                    "level": 10,
+                    "modifier": 10
+                  },
+                  {
+                    "level": 11,
+                    "modifier": 11
+                  },
+                  {
+                    "level": 12,
+                    "modifier": 12
+                  },
+                  {
+                    "level": 13,
+                    "modifier": 13
+                  },
+                  {
+                    "level": 14,
+                    "modifier": 14
+                  },
+                  {
+                    "level": 15,
+                    "modifier": 15
+                  },
+                  {
+                    "level": 16,
+                    "modifier": 16
+                  },
+                  {
+                    "level": 17,
+                    "modifier": 17
+                  },
+                  {
+                    "level": 18,
+                    "modifier": 18
+                  },
+                  {
+                    "level": 19,
+                    "modifier": 19
+                  },
+                  {
+                    "level": 20,
+                    "modifier": 20
+                  }
+                ]
+              },
+              "activeEffect": {
+                "name": "Child of Pollution temporary hit points",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "The rolled 1d8 + Druid level temporary hit points last for 1 hour.",
+                "defaultRounds": 600,
+                "fixedRounds": true,
+                "replaceExisting": true
+              },
+              "summary": "Spend one level-scaled daily use and roll 1d8 + Druid level temporary hit points lasting 1 hour."
+            }
+          ]
         },
         {
           "id": "druid-swarm-monger-swarm-shape-su-12",
           "name": "Swarm Shape (Su)",
           "level": 12,
           "type": "archetype",
-          "summary": "At 12th level, a swarm monger can use wild shape to transform into a swarm of vermin, functioning as swarm skinAPG , but not allowing her to split into more than one contiguous swarm. She doesn’t leave her gear behind when she uses this ability, and she can revert to her mundane form normally. This ability replaces the normal wild shape options gained at 12th level."
+          "summary": "At 12th level, a swarm monger can use wild shape to transform into a swarm of vermin, functioning as swarm skinAPG , but not allowing her to split into more than one contiguous swarm. She doesn’t leave her gear behind when she uses this ability, and she can revert to her mundane form normally. This ability replaces the normal wild shape options gained at 12th level.",
+          "resourceActions": [
+            {
+              "id": "swarm-monger-swarm-shape",
+              "label": "Use Swarm Shape",
+              "classId": "druid",
+              "minimumLevel": 12,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 12,
+                  "actionType": "standard"
+                }
+              ],
+              "spellLikeAbility": {
+                "spellId": "swarm-skin",
+                "spellName": "Swarm Skin",
+                "cadence": "day",
+                "kind": "spell-equivalent"
+              },
+              "confirmations": [
+                {
+                  "id": "contiguous",
+                  "label": "The form remains one contiguous vermin swarm",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Swarm Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Transform into one contiguous vermin swarm as swarm skin, retaining gear and the ability to revert normally.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 12,
+                    "rounds": 120
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 130
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 140
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 150
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 160
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 170
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 180
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 190
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 200
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one Wild Shape use to assume a single contiguous swarm form."
+            }
+          ]
         }
       ]
     }
   ],
-  "companionGrants": [{"id":"fecund-familiar","kind":"familiar","label":"Fecund familiar","optionId":"fecund-familiar","minimumLevel":1,"stacksWithExisting":true}],
+  "companionGrants": [
+    {
+      "id": "fecund-familiar",
+      "kind": "familiar",
+      "label": "Fecund familiar",
+      "optionFeatureId": "druid-swarm-monger-fecund-familiar-ex-1",
+      "sourceFeatureId": "druid-swarm-monger-fecund-familiar-ex-1",
+      "minimumLevel": 1,
+      "stacksWithExisting": true,
+      "rules": [
+        "Uses Druid level as effective Wizard level",
+        "Shares Child of Pollution, Shadowy Opportunist, and Venom Immunity benefits"
+      ]
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Swarm%20Monger"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "All five legal Fecund Familiar choices, familiar progression and shared benefits, Wisdom-based transformation uses, swarm duration and damage tiers, save DC and condition upgrade, Vermin Heart, skill bonuses, Child of Pollution saves/uses/roll/duration, and Swarm Shape Wild Shape consumption are automated."
+  ],
+  "resourceAdjustments": [
+    {
+      "sourceFeatureId": "druid-swarm-monger-fecund-familiar-ex-1",
+      "resourceId": "fecundFamiliarSwarmUses",
+      "label": "Fecund Familiar swarm transformations",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 1,
+      "base": 0,
+      "abilityModifier": "wisdom",
+      "minimum": 1,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    },
+    {
+      "sourceFeatureId": "druid-swarm-monger-child-of-pollution-su-4",
+      "resourceId": "childOfPollutionUses",
+      "label": "Child of Pollution",
+      "unit": "use",
+      "operation": "replace",
+      "minimumLevel": 4,
+      "base": 0,
+      "levelDivisor": 4,
+      "levelMultiplier": 1,
+      "minimum": 1,
+      "maximum": 5,
+      "refreshCadence": "day",
+      "dedicatedAction": true
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-swarm-monger-shadowy-opportunist-ex-1",
+      "skill": "Knowledge (local)",
+      "minimumLevel": 1,
+      "base": 2
+    },
+    {
+      "sourceFeatureId": "druid-swarm-monger-shadowy-opportunist-ex-1",
+      "skill": "Stealth",
+      "minimumLevel": 1,
+      "base": 2
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-swarm-monger-child-of-pollution-su-4",
+      "label": "Child of Pollution",
+      "condition": "Saving throws against disease and poison",
+      "minimumLevel": 4,
+      "base": 4
+    }
   ]
 }
