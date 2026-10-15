@@ -34,55 +34,590 @@
           "id": "druid-aerie-protector-nature-bond-1",
           "name": "Nature Bond",
           "level": 1,
-          "type": "archetype",
-          "summary": "If the aerie protector chooses an animal companion as her nature bond, she must choose an animal with a fly speed. She can use spells or other effects to alter her companion’s fly speed, but it must be able to fly on its own before it becomes her companion. If the aerie protector chooses a domain as her nature bond, she must choose the Air, Eagle, Earth, Mountain, or Weather domain. This alters nature bond."
+          "type": "selectable",
+          "summary": "If the aerie protector chooses an animal companion as her nature bond, she must choose an animal with a fly speed. She can use spells or other effects to alter her companion’s fly speed, but it must be able to fly on its own before it becomes her companion. If the aerie protector chooses a domain as her nature bond, she must choose the Air, Eagle, Earth, Mountain, or Weather domain. This alters nature bond.",
+          "choiceRequired": true,
+          "optionGroupId": "druid-nature-bonds",
+          "optionChoiceIds": [
+            "druid-nature-bond-animal",
+            "druid-nature-bond-domain"
+          ],
+          "progressionKey": "druid-nature-bond"
         },
         {
           "id": "druid-aerie-protector-wild-empathy-ex-1",
           "name": "Wild Empathy (Ex)",
           "level": 1,
           "type": "archetype",
-          "summary": "An aerie protector gains a +4 bonus on wild empathy checks on flying animals, but she takes a –4 penalty on checks on other animals. This alters wild empathy."
+          "summary": "An aerie protector gains a +4 bonus on wild empathy checks on flying animals, but she takes a –4 penalty on checks on other animals. This alters wild empathy.",
+          "resourceActions": [
+            {
+              "id": "aerie-protector-empathy-flying",
+              "label": "Wild Empathy — Flying Animal",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "diceRoll": {
+                "label": "Wild Empathy check",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Druid level + Charisma modifier + 4",
+                "targetDcInputLabel": "Animal attitude DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "attitude improves"
+                  }
+                ],
+                "failureLabel": "attitude unchanged"
+              },
+              "summary": "Influence a flying animal with the +4 archetype bonus."
+            },
+            {
+              "id": "aerie-protector-empathy-other",
+              "label": "Wild Empathy — Other Animal",
+              "classId": "druid",
+              "minimumLevel": 1,
+              "diceRoll": {
+                "label": "Wild Empathy check",
+                "diceCountByLevel": [
+                  {
+                    "level": 1,
+                    "count": 1
+                  }
+                ],
+                "dieSidesByLevel": [
+                  {
+                    "level": 1,
+                    "sides": 20
+                  }
+                ],
+                "modifierInputLabel": "Druid level + Charisma modifier − 4",
+                "targetDcInputLabel": "Animal attitude DC",
+                "outcomesByMargin": [
+                  {
+                    "minimumMargin": 0,
+                    "label": "attitude improves"
+                  }
+                ],
+                "failureLabel": "attitude unchanged"
+              },
+              "summary": "Influence a nonflying animal with the mandatory −4 penalty."
+            }
+          ]
         },
         {
           "id": "druid-aerie-protector-sky-and-stone-ex-2",
           "name": "Sky and Stone (Ex)",
           "level": 2,
           "type": "archetype",
-          "summary": "At 2nd level, an aerie protector gains a bonus equal to half her level on Knowledge (geography) and Survival checks involving mountainous terrain or high altitudes, and she cannot be tracked in such an environment. This replaces woodland stride."
+          "summary": "At 2nd level, an aerie protector gains a bonus equal to half her level on Knowledge (geography) and Survival checks involving mountainous terrain or high altitudes, and she cannot be tracked in such an environment. This replaces woodland stride.",
+          "progressionProfiles": [
+            {
+              "id": "aerie-protector-sky-stone",
+              "label": "Sky and Stone",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Geography and Survival"
+                },
+                {
+                  "id": "tracking",
+                  "label": "Tracking"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 2,
+                  "values": {
+                    "bonus": "+1",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 4,
+                  "values": {
+                    "bonus": "+2",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 6,
+                  "values": {
+                    "bonus": "+3",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 8,
+                  "values": {
+                    "bonus": "+4",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 10,
+                  "values": {
+                    "bonus": "+5",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 12,
+                  "values": {
+                    "bonus": "+6",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 14,
+                  "values": {
+                    "bonus": "+7",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 16,
+                  "values": {
+                    "bonus": "+8",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 18,
+                  "values": {
+                    "bonus": "+9",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                },
+                {
+                  "level": 20,
+                  "values": {
+                    "bonus": "+10",
+                    "tracking": "Cannot be tracked in mountains or at high altitude"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-aerie-protector-wind-at-her-back-su-4",
           "name": "Wind at Her Back (Su)",
           "level": 4,
           "type": "archetype",
-          "summary": "At 4th level, an aerie protector gains a +4 bonus to CMD and on saving throws against the effects of high altitude and effects that rely on air pressure or strong wind to move her or impede her flight. This bonus also applies on Reflex saves against effects that deal electricity damage. This replaces resist nature’s lure."
+          "summary": "At 4th level, an aerie protector gains a +4 bonus to CMD and on saving throws against the effects of high altitude and effects that rely on air pressure or strong wind to move her or impede her flight. This bonus also applies on Reflex saves against effects that deal electricity damage. This replaces resist nature’s lure.",
+          "progressionProfiles": [
+            {
+              "id": "aerie-protector-wind-back",
+              "label": "Wind at Her Back",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "bonus",
+                  "label": "Bonus"
+                },
+                {
+                  "id": "applies",
+                  "label": "Applies to"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 4,
+                  "values": {
+                    "bonus": "+4",
+                    "applies": "CMD and saves vs altitude/air pressure/wind; Reflex vs electricity damage"
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "druid-aerie-protector-wild-shape-6",
           "name": "Wild Shape",
           "level": 6,
           "type": "archetype",
-          "summary": "An aerie protector gains this ability at 6th level, except her effective druid level is her druid level – 2. If she takes on the form of a flying animal, she instead uses her druid level + 2."
+          "summary": "An aerie protector gains this ability at 6th level, except her effective druid level is her druid level – 2. If she takes on the form of a flying animal, she instead uses her druid level + 2.",
+          "progressionProfiles": [
+            {
+              "id": "aerie-protector-wild-shape",
+              "label": "Aerie Protector Wild Shape",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "flying",
+                  "label": "Flying animal"
+                },
+                {
+                  "id": "other",
+                  "label": "Other legal form"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 6,
+                  "values": {
+                    "flying": "Druid level + 2",
+                    "other": "Druid level − 2"
+                  }
+                }
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "aerie-protector-flying-wild-shape",
+              "label": "Use Flying-Animal Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "flying-animal",
+                  "label": "Selected form is an animal with a fly speed",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Aerie Protector Flying Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume a flying animal form at effective Druid level +2.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 6,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 10800
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 11400
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 12000
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 12600
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 13200
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one adjusted Wild Shape use with the flying-animal effective-level bonus."
+            },
+            {
+              "id": "aerie-protector-other-wild-shape",
+              "label": "Use Other Wild Shape",
+              "classId": "druid",
+              "minimumLevel": 6,
+              "resourceId": "wildShape",
+              "cost": 1,
+              "actionTypeByLevel": [
+                {
+                  "level": 6,
+                  "actionType": "standard"
+                }
+              ],
+              "confirmations": [
+                {
+                  "id": "legal-form",
+                  "label": "Selected form is legal at effective Druid level −2",
+                  "requiredForActivation": true
+                }
+              ],
+              "activeEffect": {
+                "name": "Aerie Protector Wild Shape",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "Assume a legal form at effective Druid level −2.",
+                "defaultRoundsByLevel": [
+                  {
+                    "level": 6,
+                    "rounds": 2400
+                  },
+                  {
+                    "level": 7,
+                    "rounds": 3000
+                  },
+                  {
+                    "level": 8,
+                    "rounds": 3600
+                  },
+                  {
+                    "level": 9,
+                    "rounds": 4200
+                  },
+                  {
+                    "level": 10,
+                    "rounds": 4800
+                  },
+                  {
+                    "level": 11,
+                    "rounds": 5400
+                  },
+                  {
+                    "level": 12,
+                    "rounds": 6000
+                  },
+                  {
+                    "level": 13,
+                    "rounds": 6600
+                  },
+                  {
+                    "level": 14,
+                    "rounds": 7200
+                  },
+                  {
+                    "level": 15,
+                    "rounds": 7800
+                  },
+                  {
+                    "level": 16,
+                    "rounds": 8400
+                  },
+                  {
+                    "level": 17,
+                    "rounds": 9000
+                  },
+                  {
+                    "level": 18,
+                    "rounds": 9600
+                  },
+                  {
+                    "level": 19,
+                    "rounds": 10200
+                  },
+                  {
+                    "level": 20,
+                    "rounds": 10800
+                  }
+                ],
+                "replaceExisting": true
+              },
+              "summary": "Spend one adjusted Wild Shape use at the reduced effective level."
+            }
+          ]
         },
         {
           "id": "druid-aerie-protector-in-the-wind-ex-9",
           "name": "In the Wind (Ex)",
           "level": 9,
           "type": "archetype",
-          "summary": "At 9th level, the climb and fly speeds of forms the aerie protector assumes with her wild shape ability (if any) increase by 10 feet. The maneuverability of her flying forms improves by one category. This replaces venom immunity."
+          "summary": "At 9th level, the climb and fly speeds of forms the aerie protector assumes with her wild shape ability (if any) increase by 10 feet. The maneuverability of her flying forms improves by one category. This replaces venom immunity.",
+          "progressionProfiles": [
+            {
+              "id": "aerie-protector-in-wind",
+              "label": "In the Wind",
+              "classId": "druid",
+              "columns": [
+                {
+                  "id": "speeds",
+                  "label": "Wild Shape speeds"
+                },
+                {
+                  "id": "flight",
+                  "label": "Flying maneuverability"
+                }
+              ],
+              "steps": [
+                {
+                  "level": 9,
+                  "values": {
+                    "speeds": "Climb and fly +10 feet",
+                    "flight": "Improve by one category"
+                  }
+                }
+              ]
+            }
+          ],
+          "resourceActions": [
+            {
+              "id": "aerie-protector-track-in-wind",
+              "label": "Track In the Wind",
+              "classId": "druid",
+              "minimumLevel": 9,
+              "requiredActiveEffectName": "Aerie Protector Flying Wild Shape",
+              "activeEffect": {
+                "name": "In the Wind",
+                "targets": [
+                  "self"
+                ],
+                "bonus": 0,
+                "description": "While Wild Shaped, climb and fly speeds increase by 10 feet; flying maneuverability improves by one category.",
+                "defaultRounds": 1,
+                "replaceExisting": true
+              },
+              "summary": "Record the movement upgrade while a qualifying Wild Shape effect is active."
+            }
+          ]
         }
       ]
     }
   ],
-  "proficiencyAdjustments": [{"category":"weapon","operation":"add","proficiencies":["Javelin","Shortbow"]},{"category":"weapon","operation":"remove","proficiencies":["Scimitar","Scythe"]},{"category":"armor","operation":"remove","proficiencies":["Medium armor"]}],
+  "proficiencyAdjustments": [
+    {
+      "category": "weapon",
+      "operation": "add",
+      "proficiencies": [
+        "Javelin",
+        "Shortbow"
+      ]
+    },
+    {
+      "category": "weapon",
+      "operation": "remove",
+      "proficiencies": [
+        "Scimitar",
+        "Scythe"
+      ]
+    },
+    {
+      "category": "armor",
+      "operation": "remove",
+      "proficiencies": [
+        "Medium armor"
+      ]
+    }
+  ],
   "source": {
     "title": "Archives of Nethys",
     "page": null,
     "url": "https://www.aonprd.com/ArchetypeDisplay.aspx?FixedName=Druid%20Aerie%20Protector"
   },
-  "mechanicalCoverage": "partial",
+  "mechanicalCoverage": "full",
   "mechanicalNotes": [
-    "Replacement progression is automated. Bespoke effects without a shared builder subsystem remain descriptive."
+    "Proficiency changes, flying-companion and five-domain Nature Bond restrictions, both Wild Empathy cases, mountain skill scaling and track immunity, Wind at Her Back defenses, reduced and flying-animal Wild Shape paths, and In the Wind movement upgrades are automated."
+  ],
+  "druidNatureBondOptionIds": [
+    "druid-nature-bond-animal",
+    "druid-nature-bond-domain"
+  ],
+  "druidAnimalCompanionIds": [
+    "ranger-animal-companion-bird",
+    "ranger-animal-companion-bat"
+  ],
+  "druidDomainIds": [
+    "domain-air",
+    "domain-eagle",
+    "domain-earth",
+    "domain-mountain",
+    "domain-weather"
+  ],
+  "wildShapeUseAdjustments": [
+    {
+      "level": 6,
+      "delta": -1
+    }
+  ],
+  "skillBonusAdjustments": [
+    {
+      "sourceFeatureId": "druid-aerie-protector-sky-and-stone-ex-2",
+      "skill": "Knowledge (geography)",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "checks involving mountainous terrain or high altitude"
+    },
+    {
+      "sourceFeatureId": "druid-aerie-protector-sky-and-stone-ex-2",
+      "skill": "Survival",
+      "minimumLevel": 2,
+      "base": 0,
+      "levelDivisor": 2,
+      "condition": "checks involving mountainous terrain or high altitude"
+    }
+  ],
+  "conditionalModifiers": [
+    {
+      "sourceFeatureId": "druid-aerie-protector-wind-at-her-back-su-4",
+      "label": "Wind at Her Back — CMD and saves",
+      "condition": "CMD or saving throws against high altitude, air pressure, or strong wind that moves the Aerie Protector or impedes flight",
+      "minimumLevel": 4,
+      "base": 4
+    },
+    {
+      "sourceFeatureId": "druid-aerie-protector-wind-at-her-back-su-4",
+      "label": "Wind at Her Back — electricity",
+      "condition": "Reflex saves against effects that deal electricity damage",
+      "minimumLevel": 4,
+      "base": 4
+    }
+  ],
+  "optionGroupAugmentations": [
+    {
+      "targetGroupId": "cleric-domains",
+      "sourceGroupId": "drovier-domains"
+    },
+    {
+      "targetGroupId": "cleric-domains",
+      "sourceGroupId": "aerie-protector-domains"
+    }
   ]
 }
